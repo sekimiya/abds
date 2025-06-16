@@ -11,12 +11,14 @@
         .card-item img { max-width: 100%; height: auto; background: #111; border-radius: 4px; }
         .card-number { color: #4caf50; font-weight: bold; margin-top: 0.5rem; }
         .card-name { margin-top: 0.2rem; font-size: 1.1rem; }
+        .card-select { width: 100%; margin-top: 0.5rem; padding: 0.3rem; border-radius: 4px; border: 1px solid #444; background: #333; color: #fff; }
     </style>
 </head>
 <body>
     <div class="header">ガンダムアーセナルベース Deck Simulator</div>
     <div id="cardGrid" class="card-grid"></div>
     <script>
+        let allCards = [];
         document.addEventListener('DOMContentLoaded', function() {
             fetch('/fetch_cards')
                 .then(res => res.json())
@@ -25,29 +27,54 @@
                         document.getElementById('cardGrid').innerText = 'カードデータの取得に失敗しました';
                         return;
                     }
-                    const cards = data.images;
+                    allCards = data.images;
                     const cardGrid = document.getElementById('cardGrid');
                     cardGrid.innerHTML = '';
-                    for (let i = 0; i < Math.min(10, cards.length); i++) {
-                        const card = cards[i];
-                        const div = document.createElement('div');
-                        div.className = 'card-item';
-                        const img = document.createElement('img');
-                        img.src = card.url;
-                        img.alt = card.name;
-                        const number = document.createElement('div');
-                        number.className = 'card-number';
-                        number.textContent = card.number;
-                        const name = document.createElement('div');
-                        name.className = 'card-name';
-                        name.textContent = card.name;
-                        div.appendChild(img);
-                        div.appendChild(number);
-                        div.appendChild(name);
-                        cardGrid.appendChild(div);
+                    for (let i = 0; i < Math.min(10, allCards.length); i++) {
+                        createCardItem(i, allCards[i]);
                     }
                 });
         });
+
+        function createCardItem(index, card) {
+            const cardGrid = document.getElementById('cardGrid');
+            const div = document.createElement('div');
+            div.className = 'card-item';
+            const img = document.createElement('img');
+            img.src = card.url;
+            img.alt = card.name;
+            img.id = `card-img-${index}`;
+            const number = document.createElement('div');
+            number.className = 'card-number';
+            number.id = `card-number-${index}`;
+            number.textContent = card.number;
+            const name = document.createElement('div');
+            name.className = 'card-name';
+            name.id = `card-name-${index}`;
+            name.textContent = card.name;
+            const select = document.createElement('select');
+            select.className = 'card-select';
+            select.id = `card-select-${index}`;
+            allCards.forEach((c, idx) => {
+                const opt = document.createElement('option');
+                opt.value = idx;
+                opt.textContent = `${c.number} - ${c.name}`;
+                if (c.number === card.number) opt.selected = true;
+                select.appendChild(opt);
+            });
+            select.onchange = function() {
+                const selectedCard = allCards[this.value];
+                document.getElementById(`card-img-${index}`).src = selectedCard.url;
+                document.getElementById(`card-img-${index}`).alt = selectedCard.name;
+                document.getElementById(`card-number-${index}`).textContent = selectedCard.number;
+                document.getElementById(`card-name-${index}`).textContent = selectedCard.name;
+            };
+            div.appendChild(img);
+            div.appendChild(number);
+            div.appendChild(name);
+            div.appendChild(select);
+            cardGrid.appendChild(div);
+        }
     </script>
 </body>
 </html> 
