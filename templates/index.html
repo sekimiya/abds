@@ -12,13 +12,18 @@
         .card-number { color: #4caf50; font-weight: bold; margin-top: 0.5rem; }
         .card-name { margin-top: 0.2rem; font-size: 1.1rem; }
         .card-select { width: 100%; margin-top: 0.5rem; padding: 0.3rem; border-radius: 4px; border: 1px solid #444; background: #333; color: #fff; }
+        .ocr-params { background: #181818; border-radius: 6px; margin-top: 0.7rem; padding: 0.5rem; min-height: 2.5em; font-size: 0.95em; color: #b2ffb2; }
+        .ocr-params .label { color: #4caf50; margin-right: 0.5em; }
     </style>
 </head>
 <body>
     <div class="header">ガンダムアーセナルベース Deck Simulator</div>
     <div id="cardGrid" class="card-grid"></div>
+    <div id="activeLinkAbilities" style="max-width:900px;margin:2rem auto 0 auto;padding:1rem;background:#222;border-radius:8px;color:#ffe082;font-size:1.1em;"></div>
     <script>
         let allCards = [];
+        let selectedCardNumbers = Array(10).fill(null); // 現在選択中のカード番号
+        let selectedOcrData = Array(10).fill(null); // 各枠のOCRデータ
         document.addEventListener('DOMContentLoaded', function() {
             fetch('/fetch_cards')
                 .then(res => res.json())
@@ -62,18 +67,141 @@
                 if (c.number === card.number) opt.selected = true;
                 select.appendChild(opt);
             });
+            // OCRパラメータ表示欄
+            const ocrDiv = document.createElement('div');
+            ocrDiv.className = 'ocr-params';
+            ocrDiv.id = `ocr-params-${index}`;
+            // 初期表示
+            updateOcrParams(card.number, ocrDiv, index);
             select.onchange = function() {
                 const selectedCard = allCards[this.value];
                 document.getElementById(`card-img-${index}`).src = selectedCard.url;
                 document.getElementById(`card-img-${index}`).alt = selectedCard.name;
                 document.getElementById(`card-number-${index}`).textContent = selectedCard.number;
                 document.getElementById(`card-name-${index}`).textContent = selectedCard.name;
+                updateOcrParams(selectedCard.number, ocrDiv, index);
             };
             div.appendChild(img);
             div.appendChild(number);
             div.appendChild(name);
             div.appendChild(select);
+            div.appendChild(ocrDiv);
             cardGrid.appendChild(div);
+        }
+
+        // OCRパラメータ表示更新
+        function updateOcrParams(cardNumber, ocrDiv, index) {
+            selectedCardNumbers[index] = cardNumber;
+            // ファイル名生成（_bを付与）
+            const ocrFile = `ocr_results/${cardNumber}_b_ocr.json`;
+            fetch(ocrFile)
+                .then(res => {
+                    if (!res.ok) throw new Error('not found');
+                    return res.json();
+                })
+                .then(data => {
+                    // ocr_resultは文字列なのでパース
+                    let params = '';
+                    let linkAbility = '';
+                    let ocrJson = null;
+                    try {
+                        const match = data.ocr_result.match(/```json\n([\s\S]*)```/);
+                        if (match) {
+                            ocrJson = JSON.parse(match[1]);
+                            // 横並びで1行表示
+                            params += `<span class='label'>機動力:</span>${ocrJson.ステータス?.機動力 ?? ''} `;
+                            params += `<span class='label'>遠距離:</span>${ocrJson.ステータス?.遠距離攻撃 ?? ''} `;
+                            params += `<span class='label'>近距離:</span>${ocrJson.ステータス?.近距離攻撃 ?? ''} `;
+                            params += `<span class='label'>HP:</span>${ocrJson.ステータス?.HP ?? ''}`;
+                            // リンクアビリティ
+                            if (Array.isArray(ocrJson.リンクアビリティ) && ocrJson.リンクアビリティ.length > 0) {
+                                linkAbility += '<div style="margin-top:0.5em;color:#ffe082;">リンクアビリティ:</div>';
+                                ocrJson.リンクアビリティ.forEach((ab, idx) => {
+                                    linkAbility += `<div style='font-size:0.95em;margin-left:1em;'>・<span style='color:#b2ffb2;'>${ab.条件 ?? ''}</span> <span style='color:#fff;'>${ab.効果 ?? ''}</span></div>`;
+                                });
+                            }
+                        } else {
+                            params = '';
+                        }
+                    } catch (e) {
+                        params = '';
+                    }
+                    ocrDiv.innerHTML = params + linkAbility;
+                    selectedOcrData[index] = ocrJson;
+                    updateActiveLinkAbilities();
+                })
+                .catch(() => {
+                    ocrDiv.innerHTML = '';
+                    selectedOcrData[index] = null;
+                    updateActiveLinkAbilities();
+                });
+        }
+
+        // 発動中のリンクアビリティをUI下部に表示
+        function updateActiveLinkAbilities() {
+            // 10枚のカードの全リンクアビリティを抽出
+            let allAbilities = [];
+            selectedOcrData.forEach((ocr, idx) => {
+                if (!ocr || !Array.isArray(ocr.リンクアビリティ)) return;
+                ocr.リンクアビリティ.forEach(ab => {
+                    // スペースで分割: [スキル名, 発動条件]
+                    let cond = ab.条件 ?? '';
+                    let skillName = '';
+                    let condRest = '';
+                    const firstSpace = cond.indexOf(' ');
+                    if (firstSpace !== -1) {
+                        skillName = cond.slice(0, firstSpace).trim();
+                        condRest = cond.slice(firstSpace + 1).trim();
+                    } else {
+                        skillName = cond;
+                        condRest = '';
+                    }
+                    allAbilities.push({
+                        cardIndex: idx,
+                        cardName: ocr.機体情報?.名称 ?? '',
+                        series: ocr.シリーズ ?? '',
+                        pilot: ocr.機体情報?.パイロット ?? '',
+                        skillName: skillName,
+                        condRest: condRest,
+                        effect: ab.効果 ?? ''
+                    });
+                });
+            });
+
+            // 条件ごとに「該当するカードが何枚あるか」を集計
+            let activeList = [];
+            allAbilities.forEach((ab, i) => {
+                // 例：「デッキにn枚以上」
+                let m = ab.condRest.match(/デッキに(\d+)枚以上/);
+                if (m) {
+                    const count = parseInt(m[1], 10);
+                    // デッキ内で「スキル名（リンクアビリティ名）」が一致するカードの枚数をカウント
+                    let found = selectedOcrData.filter(d => {
+                        if (!d) return false;
+                        // 各カードのリンクアビリティ名を抽出し、ab.skillNameと一致するものがあるか
+                        if (!Array.isArray(d.リンクアビリティ)) return false;
+                        return d.リンクアビリティ.some(link => {
+                            let c = link.条件 ?? '';
+                            let s = '';
+                            const sp = c.indexOf(' ');
+                            if (sp !== -1) s = c.slice(0, sp).trim();
+                            else s = c.trim();
+                            return s === ab.skillName;
+                        });
+                    }).length;
+                    if (found >= count) {
+                        activeList.push(`<span style='color:#ffe082;'>${ab.skillName}</span> <span style='color:#fff;'>${ab.condRest}</span> <span style='color:#b2ffb2;'>${ab.effect}</span> <span style='color:#ff5252;'>リンクアビリティ発動中</span>`);
+                    }
+                    return;
+                }
+                // その他の条件式は今後拡張
+            });
+            const area = document.getElementById('activeLinkAbilities');
+            if (activeList.length > 0) {
+                area.innerHTML = '<b>発動中のリンクアビリティ</b><ul style="margin:0.5em 0 0 1.5em;">' + activeList.map(x => `<li>${x}</li>`).join('') + '</ul>';
+            } else {
+                area.innerHTML = '';
+            }
         }
     </script>
 </body>
