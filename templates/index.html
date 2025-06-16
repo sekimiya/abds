@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>ガンダムアーセナルベース Deck Simulator</title>
+    <style>
+        body { background: #1a1a1a; color: #fff; font-family: sans-serif; }
+        .header { background: #1a472a; color: #fff; text-align: center; padding: 1rem; font-size: 2rem; }
+        .card-list { max-width: 400px; margin: 2rem auto; }
+        .card-item { background: #222; border: 1px solid #444; border-radius: 8px; margin-bottom: 1rem; padding: 1rem; text-align: center; }
+        .card-item img { max-width: 100%; height: auto; background: #111; border-radius: 4px; }
+        .card-number { color: #4caf50; font-weight: bold; margin-top: 0.5rem; }
+        .card-name { margin-top: 0.2rem; font-size: 1.1rem; }
+    </style>
+</head>
+<body>
+    <div class="header">ガンダムアーセナルベース Deck Simulator</div>
+    <div id="cardList" class="card-list"></div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('/fetch_cards')
+                .then(res => res.json())
+                .then(data => {
+                    if (!data.success) {
+                        document.getElementById('cardList').innerText = 'カードデータの取得に失敗しました';
+                        return;
+                    }
+                    const cards = data.images;
+                    const cardList = document.getElementById('cardList');
+                    cardList.innerHTML = '';
+                    for (let i = 0; i < Math.min(10, cards.length); i++) {
+                        const card = cards[i];
+                        const div = document.createElement('div');
+                        div.className = 'card-item';
+                        const img = document.createElement('img');
+                        img.src = card.url;
+                        img.alt = card.name;
+                        const number = document.createElement('div');
+                        number.className = 'card-number';
+                        number.textContent = card.number;
+                        const name = document.createElement('div');
+                        name.className = 'card-name';
+                        name.textContent = card.name;
+                        div.appendChild(img);
+                        div.appendChild(number);
+                        div.appendChild(name);
+                        cardList.appendChild(div);
+                    }
+                });
+        });
+    </script>
+</body>
+</html> 
