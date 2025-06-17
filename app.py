@@ -11,6 +11,18 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
+@app.route('/index2.html')
+def index2():
+    return render_template('index2.html')
+
+@app.route('/photo')
+def photo():
+    return render_template('photo.html')
+
+@app.route('/illustrator')
+def illustrator():
+    return render_template('illustrator.html')
+
 @app.route('/fetch_cards')
 def fetch_cards():
     # series_data/series_list.jsonからURLリストを取得
@@ -62,4 +74,4 @@ def serve_ocr_results(filename):
     return send_from_directory('ocr_results', filename)
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5001) 
+    app.run(debug=True, host='0.0.0.0', port=5001) 
