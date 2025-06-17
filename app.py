@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify, send_from_directory
 import requests
 from bs4 import BeautifulSoup
 import os
@@ -56,6 +56,10 @@ def fetch_cards():
         return jsonify({'success': True, 'images': card_images})
     except Exception as e:
         return jsonify({'success': False, 'error': str(e)})
+
+@app.route('/ocr_results/<path:filename>')
+def serve_ocr_results(filename):
+    return send_from_directory('ocr_results', filename)
 
 if __name__ == '__main__':
     app.run(debug=True, port=5001) 
