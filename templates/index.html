@@ -584,11 +584,14 @@
                     }
                     
                     // 発動中の場合は色を変更
-                    const nameColor = isActive ? '#ff5252' : '#b2ffb2';
-                    const conditionColor = isActive ? '#ff5252' : '#ffe082';
-                    const effectColor = isActive ? '#ff5252' : '#fff';
+                    const nameColor = isActive ? '#42a5f5' : '#888';
+                    const conditionColor = isActive ? '#42a5f5' : '#aaa';
+                    const effectColor = isActive ? '#42a5f5' : '#bbb';
+                    const fontWeight = isActive ? 'bold' : 'normal';
+                    const fontStyle = isActive ? 'normal' : 'italic';
+                    const opacity = isActive ? 1 : 0.7;
                     
-                    linkAbility += `<div style='font-size:0.95em;margin-top:0.1em;'>・<span style='color:${nameColor};'>${ab.name || ''}</span> <span style='color:${conditionColor};'>${ab.condition || ''}</span> <span style='color:${effectColor};'>${ab.effect || ''}</span>${activeText}</div>`;
+                    linkAbility += `<div style='font-size:0.95em;margin-top:0.1em;'>・<span style='color:${nameColor};font-weight:${fontWeight};font-style:${fontStyle};opacity:${opacity};'>${ab.name || ''}</span> <span style='color:${conditionColor};font-weight:${fontWeight};font-style:${fontStyle};opacity:${opacity};'>${ab.condition || ''}</span> <span style='color:${effectColor};font-weight:${fontWeight};font-style:${fontStyle};opacity:${opacity};'>${ab.effect || ''}</span>${activeText}</div>`;
                 });
                 linkAbility += '</div>';
             }
