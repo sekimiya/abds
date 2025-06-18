@@ -160,7 +160,6 @@
     
     <div id="cardGrid" class="card-grid"></div>
     <div id="totalStatsBars" style="max-width:1200px;margin:2rem auto 0 auto;padding:1.5rem 1rem 2rem 1rem;background:#181818;border-radius:16px;box-shadow:0 0 16px #000;display:grid;grid-template-columns:repeat(5,1fr);gap:2.5rem;justify-items:center;align-items:start;"></div>
-    <div id="activeLinkAbilities" style="max-width:900px;margin:2rem auto 0 auto;padding:1rem;background:#222;border-radius:8px;color:#ffe082;font-size:1.1em;"></div>
     
     <script>
         let allCards = [];
@@ -471,7 +470,6 @@
             if (!card || !card.ocr_data) {
                 ocrDiv.innerHTML = '';
                 selectedOcrData[index] = null;
-                updateActiveLinkAbilities();
                 updateTotalCost();
                 updateSumStats();
                 return;
@@ -526,70 +524,38 @@
             if (Array.isArray(ocrJson.link_abilities) && ocrJson.link_abilities.length > 0) {
                 linkAbility += '<div style="margin-top:0.5em;color:#ffe082;">リンクアビリティ:</div>';
                 ocrJson.link_abilities.forEach((ab, idx) => {
-                    linkAbility += `<div style='font-size:0.95em;margin-left:1em;'>・<span style='color:#b2ffb2;'>${ab.name || ''}</span> <span style='color:#ffe082;'>${ab.condition || ''}</span> <span style='color:#fff;'>${ab.effect || ''}</span></div>`;
+                    // リンクアビリティが発動中かどうかをチェック
+                    let isActive = false;
+                    let activeText = '';
+                    if (ab.condition && ab.condition.match(/デッキに(\d+)枚以上/)) {
+                        const match = ab.condition.match(/デッキに(\d+)枚以上/);
+                        const count = parseInt(match[1], 10);
+                        let found = selectedOcrData.filter(d => {
+                            if (!d) return false;
+                            if (!Array.isArray(d.link_abilities)) return false;
+                            return d.link_abilities.some(link => {
+                                let n = link.name ?? '';
+                                return n === ab.name;
+                            });
+                        }).length;
+                        if (found >= count) {
+                            isActive = true;
+                            activeText = ' <span style="color:#ff5252;font-weight:bold;">【発動中】</span>';
+                        }
+                    }
+                    
+                    // 発動中の場合は色を変更
+                    const nameColor = isActive ? '#ff5252' : '#b2ffb2';
+                    const conditionColor = isActive ? '#ff5252' : '#ffe082';
+                    const effectColor = isActive ? '#ff5252' : '#fff';
+                    
+                    linkAbility += `<div style='font-size:0.95em;margin-left:1em;'>・<span style='color:${nameColor};'>${ab.name || ''}</span> <span style='color:${conditionColor};'>${ab.condition || ''}</span> <span style='color:${effectColor};'>${ab.effect || ''}</span>${activeText}</div>`;
                 });
             }
             
             ocrDiv.innerHTML = params + linkAbility;
-            updateActiveLinkAbilities();
             updateTotalCost();
             updateSumStats();
-        }
-
-        // 発動中のリンクアビリティをUI下部に表示
-        function updateActiveLinkAbilities() {
-            let allAbilities = [];
-            selectedOcrData.forEach((ocr, idx) => {
-                if (!ocr || !Array.isArray(ocr.link_abilities)) return;
-                ocr.link_abilities.forEach(ab => {
-                    let name = ab.name ?? '';
-                    let cond = ab.condition ?? '';
-                    let effect = ab.effect ?? '';
-                    let skillName = name;
-                    let condRest = cond;
-                    allAbilities.push({
-                        cardIndex: idx,
-                        cardName: ocr.name ?? '',
-                        series: ocr.category ?? '',
-                        pilot: ocr.pilot ?? '',
-                        skillName: skillName,
-                        condRest: condRest,
-                        effect: effect
-                    });
-                });
-            });
-
-            let activeList = [];
-            let uniqueSet = new Set();
-            allAbilities.forEach((ab, i) => {
-                let m = ab.condRest.match(/デッキに(\d+)枚以上/);
-                if (m) {
-                    const count = parseInt(m[1], 10);
-                    let found = selectedOcrData.filter(d => {
-                        if (!d) return false;
-                        if (!Array.isArray(d.link_abilities)) return false;
-                        return d.link_abilities.some(link => {
-                            let n = link.name ?? '';
-                            return n === ab.skillName;
-                        });
-                    }).length;
-                    if (found >= count) {
-                        // ユニークキーを生成（スキル名＋条件＋効果）
-                        const key = `${ab.skillName}|${ab.condRest}|${ab.effect}`;
-                        if (!uniqueSet.has(key)) {
-                            uniqueSet.add(key);
-                            activeList.push(`<span style='color:#ffe082;'>${ab.skillName}</span> <span style='color:#fff;'>${ab.condRest}</span> <span style='color:#b2ffb2;'>${ab.effect}</span> <span style='color:#ff5252;'>リンクアビリティ発動中</span>`);
-                        }
-                    }
-                    return;
-                }
-            });
-            const area = document.getElementById('activeLinkAbilities');
-            if (activeList.length > 0) {
-                area.innerHTML = '<b>発動中のリンクアビリティ</b><ul style="margin:0.5em 0 0 1.5em;">' + activeList.map(x => `<li>${x}</li>`).join('') + '</ul>';
-            } else {
-                area.innerHTML = '';
-            }
         }
 
         // 総コスト更新
