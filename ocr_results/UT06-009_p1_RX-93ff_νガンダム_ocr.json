@@ -1,0 +1,59 @@
+{
+  "type": "MS",
+  "name": "RX-93ff νGUNDAM",
+  "model": "RX-93ff νGUNDAM",
+  "cost": 7,
+  "category": "機動",
+  "pilot": "アムロ・レイ",
+  "stats": {
+    "height": "頭頂高",
+    "weight": "本体重量",
+    "mobility": 310,
+    "ranged_attack": 170,
+    "melee_attack": 590,
+    "hp": 630
+  },
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "S",
+    "desert": "C",
+    "water": "C"
+  },
+  "weapon": {
+    "main": {
+      "name": "ロングレンジ・フィンファンネル・バーニアビーム",
+      "range": 2,
+      "type": "近距離"
+    },
+    "sub": {
+      "name": "ロングレンジ・フィンファンネル",
+      "range": 4,
+      "type": "遠距離"
+    }
+  },
+  "ms_ability": {
+    "name": "装転【範囲】",
+    "cost": 4,
+    "description": "通常攻撃が自身を中心とした範囲攻撃に変化する。この効果は自身が撤退するまで解除できない。"
+  },
+  "special_attack": {
+    "name": "UNITED SP",
+    "target": "単体（敵）",
+    "range": 2,
+    "power": 3700,
+    "description": "敵単体に範囲攻撃ダメージを与える。この攻撃で敵ユニットを撤退させた場合、敵ユニットの修理時再起まで延長する。戦術技威力は地形適応に応じて変化する。"
+  },
+  "link_abilities": [
+    {
+      "name": "逆襲のシャア（SIDE-F）",
+      "condition": "デッキに2枚以上",
+      "effect": "[HP]小アップ"
+    },
+    {
+      "name": "BEYOND THE TIME",
+      "condition": "デッキに2枚以上",
+      "effect": "[機動力][HP]小アップ"
+    }
+  ],
+  "illust": "kyoryu kuramochi (STUDIO GS)"
+}

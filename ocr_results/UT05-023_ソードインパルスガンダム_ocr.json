@@ -1,0 +1,59 @@
+{
+  "type": "MS",
+  "name": "ソードインパルスガンダム",
+  "model": "ZGMF-X56S/β SWORD IMPULSE GUNDAM",
+  "cost": 5,
+  "category": "近距離",
+  "pilot": "シン・アスカ, ルナマリア・ホーク",
+  "stats": {
+    "height": "19.37m",
+    "weight": "78.93t",
+    "mobility": 180,
+    "ranged_attack": 120,
+    "melee_attack": 370,
+    "hp": 330
+  },
+  "terrain_compatibility": {
+    "ground": "S",
+    "space": "A",
+    "desert": "B",
+    "water": "A"
+  },
+  "weapon": {
+    "main": {
+      "name": "エクスカリバー レーザー対艦刀",
+      "range": 1,
+      "type": "近距離"
+    },
+    "sub": {
+      "name": "フラッシュエッジ ビームブーメラン",
+      "range": 3,
+      "type": "遠距離"
+    }
+  },
+  "ms_ability": {
+    "name": "練撃",
+    "cost": 3,
+    "description": "ロックオン中の敵ユニットに単体攻撃を行いダメージを与え、一定時間スタンさせる。"
+  },
+  "special_attack": {
+    "name": "エクスカリバー レーザー対艦刀",
+    "target": "単体（敵）",
+    "range": 2,
+    "power": 3400,
+    "description": "敵単体に格闘攻撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "SEED DESTINY",
+      "condition": "デッキに3枚以上",
+      "effect": "[HP]小アップ"
+    },
+    {
+      "name": "戦況を変える力",
+      "condition": "デッキに4枚以上",
+      "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+    }
+  ],
+  "illust": "Kumagoro"
+}

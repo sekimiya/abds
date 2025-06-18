@@ -12,17 +12,17 @@
         .card-number { color: #4caf50; font-weight: bold; margin-top: 0.3rem; margin-bottom: 0.15rem; line-height: 1.2; font-size: 1.25rem; }
         .card-name { margin-top: 0.15rem; margin-bottom: 0.15rem; font-size: 1.25rem; line-height: 1.2; }
         .card-select { width: 100%; margin-top: 0.3rem; margin-bottom: 0.3rem; padding: 0.5rem; border-radius: 6px; border: 1.5px solid #444; background: #333; color: #fff; line-height: 1.2; font-size: 1.1rem; }
-        .ocr-params { background: #181818; border-radius: 8px; margin-top: 0.15rem; padding: 0.15rem; min-height: 1.5em; font-size: 1.08em; color: #b2ffb2; display: flex; flex-wrap: wrap; align-items: center; gap: 0.9em; line-height: 1.1; }
-        .ocr-params .label { color: #4caf50; margin-right: 0.3em; }
-        .ocr-params span { margin-right: 0.7em; }
+        .ocr-params { background: #181818; border-radius: 8px; margin-top: 0.15rem; padding: 0.15rem; min-height: 1.5em; font-size: 1.08em; color: #b2ffb2; display: flex; flex-wrap: wrap; align-items: center; gap: 0.3em; line-height: 1.1; }
+        .ocr-params .label { color: #4caf50; margin-right: 0.2em; }
+        .ocr-params span { margin-right: 0.4em; }
         .card-item.row-top { 
             padding-top: 0.05rem; 
             padding-bottom: 0.05rem; 
             min-height: unset; 
-            height: 800px;
+            height: auto;
         }
         .card-item:not(.row-top) {
-            height: 360px;
+            height: auto;
         }
         .card-grid .card-item:nth-child(-n+5) {
             margin-bottom: 4px;
@@ -176,16 +176,18 @@
             if (savedDeck && savedDeck.cards) {
                 console.log('保存済みデッキを復元中...');
                 applySavedDeck(savedDeck);
-                return;
+                console.log('デッキの復元が完了しました');
             }
+            updateSumStats();
             
             // 次に自動保存デッキをチェック
             const autoSavedData = getCookie('gundamAutoSave');
             if (autoSavedData && autoSavedData.cards) {
                 console.log('自動保存されたデッキを復元中...');
                 applySavedDeck(autoSavedData);
-                return;
+                console.log('デッキの復元が完了しました');
             }
+            updateSumStats();
         }
         
         // 保存されたデッキを適用する共通関数
@@ -207,6 +209,7 @@
                 
                 console.log('デッキの復元が完了しました');
             }
+            updateSumStats();
         }
 
         document.addEventListener('DOMContentLoaded', function() {
@@ -440,6 +443,7 @@
                 selectedOcrData[index] = null;
                 updateActiveLinkAbilities();
                 updateTotalCost();
+                updateSumStats();
                 return;
             }
 
@@ -452,8 +456,8 @@
             if (ocrJson.type === 'MS') {
                 if (ocrJson.stats) {
                     params += `<span class='label'>機動力:</span><span>${ocrJson.stats.mobility || ''}</span>`;
-                    params += `<span class='label'>遠距離:</span><span>${ocrJson.stats.ranged_attack || ''}</span>`;
-                    params += `<span class='label'>近距離:</span><span>${ocrJson.stats.melee_attack || ''}</span><br>`;
+                    params += `<span class='label'>遠距離:</span><span>${ocrJson.stats.ranged_attack || ''}</span><br>`;
+                    params += `<span class='label'>近距離:</span><span>${ocrJson.stats.melee_attack || ''}</span>`;
                     params += `<span class='label'>HP:</span><span>${ocrJson.stats.hp || ''}</span>`;
                 }
                 
@@ -475,8 +479,8 @@
             } else if (ocrJson.type === 'PL') {
                 if (ocrJson.stats) {
                     params += `<span class='label'>機動力:</span><span>${ocrJson.stats.mobility || ''}</span>`;
-                    params += `<span class='label'>遠距離:</span><span>${ocrJson.stats.ranged_attack || ''}</span>`;
-                    params += `<span class='label'>近距離:</span><span>${ocrJson.stats.melee_attack || ''}</span><br>`;
+                    params += `<span class='label'>遠距離:</span><span>${ocrJson.stats.ranged_attack || ''}</span><br>`;
+                    params += `<span class='label'>近距離:</span><span>${ocrJson.stats.melee_attack || ''}</span>`;
                     params += `<span class='label'>HP:</span><span>${ocrJson.stats.hp || ''}</span>`;
                 }
                 
@@ -499,6 +503,7 @@
             ocrDiv.innerHTML = params + linkAbility;
             updateActiveLinkAbilities();
             updateTotalCost();
+            updateSumStats();
         }
 
         // 発動中のリンクアビリティをUI下部に表示
@@ -563,6 +568,72 @@
                 }
             });
             document.getElementById('totalCost').textContent = `総コスト: ${totalCost}`;
+        }
+
+        // 合計ステータス更新
+        function updateSumStats() {
+            // 6〜10番目のカードに合計値を表示
+            for (let i = 5; i < 10; i++) {
+                const msIndex = i - 5; // 対応するMSカードのインデックス (0,1,2,3,4)
+                const plIndex = i; // パイロットカードのインデックス (5,6,7,8,9)
+                
+                let totalMobility = 0;
+                let totalRanged = 0;
+                let totalMelee = 0;
+                let totalHp = 0;
+
+                // MSカードの統計を取得
+                const msOcr = selectedOcrData[msIndex];
+                if (msOcr && msOcr.stats) {
+                    if (msOcr.stats.mobility) {
+                        const mobility = parseInt(msOcr.stats.mobility, 10);
+                        if (!isNaN(mobility)) totalMobility += mobility;
+                    }
+                    if (msOcr.stats.ranged_attack) {
+                        const ranged = parseInt(msOcr.stats.ranged_attack, 10);
+                        if (!isNaN(ranged)) totalRanged += ranged;
+                    }
+                    if (msOcr.stats.melee_attack) {
+                        const melee = parseInt(msOcr.stats.melee_attack, 10);
+                        if (!isNaN(melee)) totalMelee += melee;
+                    }
+                    if (msOcr.stats.hp) {
+                        const hp = parseInt(msOcr.stats.hp, 10);
+                        if (!isNaN(hp)) totalHp += hp;
+                    }
+                }
+
+                // パイロットカードの統計を取得
+                const plOcr = selectedOcrData[plIndex];
+                if (plOcr && plOcr.stats) {
+                    if (plOcr.stats.mobility) {
+                        const mobility = parseInt(plOcr.stats.mobility, 10);
+                        if (!isNaN(mobility)) totalMobility += mobility;
+                    }
+                    if (plOcr.stats.ranged_attack) {
+                        const ranged = parseInt(plOcr.stats.ranged_attack, 10);
+                        if (!isNaN(ranged)) totalRanged += ranged;
+                    }
+                    if (plOcr.stats.melee_attack) {
+                        const melee = parseInt(plOcr.stats.melee_attack, 10);
+                        if (!isNaN(melee)) totalMelee += melee;
+                    }
+                    if (plOcr.stats.hp) {
+                        const hp = parseInt(plOcr.stats.hp, 10);
+                        if (!isNaN(hp)) totalHp += hp;
+                    }
+                }
+
+                const sumMobDiv = document.getElementById(`sum-mobility-${i}`);
+                const sumRanDiv = document.getElementById(`sum-ranged-${i}`);
+                const sumMelDiv = document.getElementById(`sum-melee-${i}`);
+                const sumHpDiv = document.getElementById(`sum-hp-${i}`);
+
+                if (sumMobDiv) sumMobDiv.textContent = `機動力合計: ${totalMobility}`;
+                if (sumRanDiv) sumRanDiv.textContent = `遠距離合計: ${totalRanged}`;
+                if (sumMelDiv) sumMelDiv.textContent = `近距離合計: ${totalMelee}`;
+                if (sumHpDiv) sumHpDiv.textContent = `HP合計: ${totalHp}`;
+            }
         }
 
         // 検索モーダル表示

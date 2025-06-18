@@ -1,0 +1,36 @@
+{
+  "type": "PL",
+  "name": "ロラン・セアック",
+  "english_name": "ROLAN CEHACK",
+  "cost": 3,
+  "category": "制圧",
+  "age": 17,
+  "height": "-",
+  "units": [
+    "∀ガンダム"
+  ],
+  "pl_skill": {
+    "name": "迅速な強襲",
+    "trigger": "出撃時",
+    "effect": "40秒間、自身の「機動力」「遠距離攻撃力」「近距離攻撃力」を小アップする。"
+  },
+  "link_abilities": [
+    {
+      "name": "∀ガンダム",
+      "condition": "デッキに3枚以上",
+      "effect": "[HP]小アップ"
+    },
+    {
+      "name": "戦況を変える力",
+      "condition": "デッキに4枚以上",
+      "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+    }
+  ],
+  "stats": {
+    "mobility": 150,
+    "ranged_attack": 80,
+    "melee_attack": 220,
+    "hp": 170
+  },
+  "illust": "-"
+}

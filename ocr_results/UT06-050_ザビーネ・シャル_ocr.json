@@ -1,0 +1,36 @@
+{
+  "type": "PL",
+  "name": "ザビーネ・シャル",
+  "english_name": "ZABINE CHAREUX",
+  "cost": 4,
+  "category": "殲滅",
+  "age": 24,
+  "height": "-",
+  "units": [
+    "ベルガ・ギロス（ザビーネ・シャル専用機）"
+  ],
+  "pl_skill": {
+    "name": "確固たる信念",
+    "trigger": "HP50%以下の時",
+    "effect": "自身が受けるダメージを軽減する。"
+  },
+  "link_abilities": [
+    {
+      "name": "機動戦士ガンダムF91",
+      "condition": "デッキに2枚以上",
+      "effect": "[機動力]小アップ"
+    },
+    {
+      "name": "戦況を変える力",
+      "condition": "デッキに4枚以上",
+      "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+    }
+  ],
+  "stats": {
+    "mobility": 170,
+    "ranged_attack": 40,
+    "melee_attack": 210,
+    "hp": 350
+  },
+  "illust": "-"
+}

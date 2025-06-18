@@ -1,0 +1,38 @@
+{
+  "type": "PL",
+  "name": "シン・アスカ",
+  "english_name": "SHINN ASUKA",
+  "cost": 4,
+  "category": "制圧",
+  "age": 16,
+  "height": "168cm",
+  "units": [
+    "デスティニーガンダム",
+    "フォースインパルスガンダム",
+    "ソードインパルスガンダム"
+  ],
+  "pl_skill": {
+    "name": "決定的な一撃",
+    "trigger": "敵戦艦／拠点をロックオン時",
+    "effect": "敵戦艦／拠点へのダメージを中アップする。"
+  },
+  "link_abilities": [
+    {
+      "name": "SEED DESTINY",
+      "condition": "デッキに3枚以上",
+      "effect": "[HP]小アップ"
+    },
+    {
+      "name": "多彩な戦術",
+      "condition": "デッキに4枚以上",
+      "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+    }
+  ],
+  "stats": {
+    "mobility": 220,
+    "ranged_attack": 80,
+    "melee_attack": 210,
+    "hp": 260
+  },
+  "illust": ""
+}

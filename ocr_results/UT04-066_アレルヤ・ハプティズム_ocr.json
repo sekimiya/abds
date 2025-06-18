@@ -1,0 +1,36 @@
+{
+  "type": "PL",
+  "name": "アレルヤ・ハプティズム",
+  "english_name": "ALLELUJAH HAPTISM",
+  "cost": 1,
+  "category": "制圧",
+  "age": 24,
+  "height": "186cm",
+  "units": [
+    "アリオスガンダム"
+  ],
+  "pl_skill": {
+    "name": "周到な奇襲作戦",
+    "trigger": "出撃時",
+    "effect": "自身が使用するMSアビリティ「奇襲」の初回使用コストを2ダウンする。"
+  },
+  "link_abilities": [
+    {
+      "name": "ガンダム00",
+      "condition": "デッキに3枚以上",
+      "effect": "[機動力]小アップ"
+    },
+    {
+      "name": "戦況を変える力",
+      "condition": "デッキに4枚以上",
+      "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+    }
+  ],
+  "stats": {
+    "mobility": 170,
+    "ranged_attack": 150,
+    "melee_attack": 40,
+    "hp": 200
+  },
+  "illust": "string"
+}

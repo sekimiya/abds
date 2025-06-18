@@ -1,0 +1,59 @@
+{
+  "type": "MS",
+  "name": "ドム",
+  "model": "MS-09 DOM",
+  "cost": 3,
+  "category": "近距離",
+  "pilot": "ガイア, オルテガ, マッシュ",
+  "stats": {
+    "height": "18.6m",
+    "weight": "62.6t",
+    "mobility": 150,
+    "ranged_attack": 80,
+    "melee_attack": 200,
+    "hp": 220
+  },
+  "terrain_compatibility": {
+    "ground": "S",
+    "space": "C",
+    "desert": "A",
+    "water": "C"
+  },
+  "weapon": {
+    "main": {
+      "name": "ヒート・サーベル",
+      "range": 1,
+      "type": "近距離"
+    },
+    "sub": {
+      "name": "ジャイアント・バズ",
+      "range": 3,
+      "type": "遠距離"
+    }
+  },
+  "ms_ability": {
+    "name": "再縮",
+    "cost": 2,
+    "description": "自身を中心にした大範囲内にいる、自身を除く味方ユニットのMSアビリティのクールタイムを、一定時間短縮する。"
+  },
+  "special_attack": {
+    "name": "ヒート・サーベル強撃",
+    "target": "単体（敵）",
+    "range": 2,
+    "power": 3200,
+    "description": "敵単体に格闘攻撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "機動戦士ガンダム",
+      "condition": "デッキに3枚以上",
+      "effect": "[機動力]小アップ"
+    },
+    {
+      "name": "戦況を変える力",
+      "condition": "デッキに4枚以上",
+      "effect": "[遠距離攻撃力] [近距離攻撃力]小アップ"
+    }
+  ],
+  "illust": "deraken"
+}

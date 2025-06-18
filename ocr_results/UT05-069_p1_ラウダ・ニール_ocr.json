@@ -1,0 +1,36 @@
+{
+  "type": "PL",
+  "name": "ラウダ・ニール",
+  "english_name": "LAUDA NEILL",
+  "cost": 4,
+  "category": "難滅",
+  "age": null,
+  "height": null,
+  "units": [
+    "ガンダム・シュバルゼッテ"
+  ],
+  "pl_skill": {
+    "name": "強靭な執念",
+    "trigger": "HP50%以下の時",
+    "effect": "40秒間、自身が受けるダメージを大きく軽減する。"
+  },
+  "link_abilities": [
+    {
+      "name": "水星の魔女",
+      "condition": "デッキに3枚以上",
+      "effect": "[機動力]小アップ"
+    },
+    {
+      "name": "肉薄する戦い",
+      "condition": "デッキに4枚以上",
+      "effect": "[機動力][近距離攻撃力]小アップ"
+    }
+  ],
+  "stats": {
+    "mobility": 190,
+    "ranged_attack": 60,
+    "melee_attack": 330,
+    "hp": 370
+  },
+  "illust": "Kumi Hori + funbolt"
+}

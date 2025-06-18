@@ -1,0 +1,59 @@
+{
+  "type": "MS",
+  "name": "マスターガンダム＆風雲再起",
+  "model": "GF13-001NHII MASTER GUNDAM & FUUNSAIKI",
+  "cost": 8,
+  "category": "ネオホンコン",
+  "pilot": "マスター・アジア＆風雲再起",
+  "stats": {
+    "height": "16.7m",
+    "weight": "7.2t",
+    "mobility": 330,
+    "ranged_attack": 220,
+    "melee_attack": 650,
+    "hp": 650
+  },
+  "terrain_compatibility": {
+    "ground": "S",
+    "space": "A",
+    "desert": "A",
+    "water": "C"
+  },
+  "weapon": {
+    "main": {
+      "name": "格闘",
+      "range": 1,
+      "type": "近距離"
+    },
+    "sub": {
+      "name": "ダークネスショット",
+      "range": 3,
+      "type": "遠距離"
+    }
+  },
+  "ms_ability": {
+    "name": "断砕",
+    "cost": 3,
+    "description": "ロックオン中の敵に単体攻撃でダメージを与え、強化状態を無効化する。"
+  },
+  "special_attack": {
+    "name": "ダークネスフィンガー",
+    "target": "敵",
+    "range": 2,
+    "power": 4000,
+    "description": "対象の敵を中心とした小範囲に格闘攻撃でダメージを与え、自身に小ダメージ。戦術支援スキルは地形適性に応じて変化する。"
+  },
+  "link_abilities": [
+    {
+      "name": "Gガンダム",
+      "condition": "デッキに3枚以上",
+      "effect": "[近距離攻撃力]小アップ"
+    },
+    {
+      "name": "肉薄する戦い",
+      "condition": "デッキに4枚以上",
+      "effect": "[機動力][近距離攻撃力]小アップ"
+    }
+  ],
+  "illust": "Naoya Wada"
+}

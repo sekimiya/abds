@@ -1,0 +1,59 @@
+{
+  "type": "MS",
+  "name": "デストロイガンダム",
+  "model": "GFAS-X1 DESTROY GUNDAM",
+  "cost": 8,
+  "category": "遠距離",
+  "pilot": "ステラ・ルーシェ",
+  "stats": {
+    "height": "38.07m",
+    "weight": "404.93t",
+    "mobility": 100,
+    "ranged_attack": 370,
+    "melee_attack": 0,
+    "hp": 700
+  },
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "A",
+    "desert": "C",
+    "water": "B"
+  },
+  "weapon": {
+    "main": {
+      "name": "アファラシール・ドライツェーン",
+      "range": 4,
+      "type": "遠距離"
+    },
+    "sub": {
+      "name": "",
+      "range": 0,
+      "type": ""
+    }
+  },
+  "ms_ability": {
+    "name": "威圧",
+    "cost": 4,
+    "description": "自身を中心とした範囲内の敵ユニットをスタンさせ、一定時間被ダメージを少しアップする。"
+  },
+  "special_attack": {
+    "name": "スーパーキュラ撃射",
+    "target": "敵",
+    "range": 4,
+    "power": 3400,
+    "description": "MS形態に変形、射線上の敵に貫通射撃でダメージを与える。変形後は能力が上昇、自身が撤退するまで効果は持続する。"
+  },
+  "link_abilities": [
+    {
+      "name": "SEED DESTINY",
+      "condition": "デッキに3枚以上",
+      "effect": "[HP]小アップ"
+    },
+    {
+      "name": "固めた装甲",
+      "condition": "デッキに2枚以上",
+      "effect": "[HP]小アップ"
+    }
+  ],
+  "illust": "yujiuchi"
+}

@@ -1,0 +1,59 @@
+{
+  "type": "MS",
+  "name": "ガンダムTRYAGEマグナム",
+  "model": "AGE-TRYMAG GUNDAM TRY AGE MAGNUM",
+  "cost": 5,
+  "category": "遠距離",
+  "pilot": "クジョウ・キョウヤ",
+  "stats": {
+    "height": "18.5m",
+    "weight": "53.3t",
+    "mobility": 150,
+    "ranged_attack": 300,
+    "melee_attack": 50,
+    "hp": 350
+  },
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "A",
+    "desert": "A",
+    "water": "A"
+  },
+  "weapon": {
+    "main": {
+      "name": "トライドッズライフル",
+      "range": 3,
+      "type": "遠距離"
+    },
+    "sub": {
+      "name": "トライアームソード",
+      "range": 1,
+      "type": "近距離"
+    }
+  },
+  "ms_ability": {
+    "name": "鼓舞【遠距離】[弱体化解除]",
+    "cost": 6,
+    "description": "自身を中心とした大範囲内の味方ユニットの弱体化状態を無効化し、30秒間、[遠距離攻撃力]を中アップする。"
+  },
+  "special_attack": {
+    "name": "トライドッズライフル撃射",
+    "target": "単体（敵）",
+    "range": 3,
+    "power": 3200,
+    "description": "敵単体に射撃攻撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "Re:RISE",
+      "condition": "デッキに3枚以上",
+      "effect": "[遠距離攻撃力]小アップ"
+    },
+    {
+      "name": "多彩な戦術",
+      "condition": "デッキに4枚以上",
+      "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+    }
+  ],
+  "illust": "Robographer"
+}

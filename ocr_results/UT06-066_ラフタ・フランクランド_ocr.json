@@ -1,0 +1,36 @@
+{
+  "type": "PL",
+  "name": "ラフタ・フランクランド",
+  "english_name": "LAFTER FRANKLAND",
+  "cost": 1,
+  "category": "タービンズ",
+  "age": null,
+  "height": null,
+  "units": [
+    "漏影"
+  ],
+  "pl_skill": {
+    "name": "先手の急接近",
+    "trigger": "出撃時",
+    "effect": "40秒間、自身の「機動力」「近距離攻撃力」を小アップする。"
+  },
+  "link_abilities": [
+    {
+      "name": "鉄血のオルフェンズ",
+      "condition": "デッキに3枚以上",
+      "effect": "「近距離攻撃力」小アップ"
+    },
+    {
+      "name": "肉薄する戦い",
+      "condition": "デッキに4枚以上",
+      "effect": "「機動力」「近距離攻撃力」小アップ"
+    }
+  ],
+  "stats": {
+    "mobility": 170,
+    "ranged_attack": 30,
+    "melee_attack": 180,
+    "hp": 180
+  },
+  "illust": null
+}

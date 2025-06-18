@@ -1,0 +1,59 @@
+{
+  "type": "MS",
+  "name": "ケルディムガンダム",
+  "model": "GN-006 CHERUDIM GUNDAM",
+  "cost": 2,
+  "category": "遠距離",
+  "pilot": "ロックオン・ストラトス",
+  "stats": {
+    "height": "18.0m",
+    "weight": "58.9t",
+    "mobility": 150,
+    "ranged_attack": 240,
+    "melee_attack": 30,
+    "hp": 280
+  },
+  "terrain_compatibility": {
+    "ground": "S",
+    "space": "A",
+    "desert": "C",
+    "water": "B"
+  },
+  "weapon": {
+    "main": {
+      "name": "GNスナイパーライフルII",
+      "range": 4,
+      "type": "遠距離"
+    },
+    "sub": {
+      "name": "GNビームピストルII",
+      "range": 2,
+      "type": "近距離"
+    }
+  },
+  "ms_ability": {
+    "name": "断砕",
+    "cost": 3,
+    "description": "任意発動 単体（敵） 射程 4 コスト 3\nロックオン中の敵に単体攻撃でダメージを与え、強化状態を無効化する。"
+  },
+  "special_attack": {
+    "name": "トランザム一斉射",
+    "target": "範囲（敵）",
+    "range": 4,
+    "power": 2600,
+    "description": "ロックオン中の敵を中心に扇状の範囲攻撃を行い、範囲内の敵にダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "ガンダム00",
+      "condition": "デッキに3枚以上",
+      "effect": "[機動力]小アップ"
+    },
+    {
+      "name": "戦況を変える力",
+      "condition": "デッキに4枚以上",
+      "effect": "[遠距離攻撃力] [近距離攻撃力]小アップ"
+    }
+  ],
+  "illust": "hiropon"
+}

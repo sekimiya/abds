@@ -1,0 +1,59 @@
+{
+  "type": "MS",
+  "name": "クロスボーン・ガンダムX-1",
+  "model": "XM-X1 CROSSBONE GUNDAM X-1",
+  "cost": 5,
+  "category": "宇宙海賊クロスボーン・バンガード",
+  "pilot": "キングドゥ・ナウ",
+  "stats": {
+    "height": "15.9m",
+    "weight": "9.5t",
+    "mobility": 250,
+    "ranged_attack": 140,
+    "melee_attack": 530,
+    "hp": 530
+  },
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "S",
+    "desert": "B",
+    "water": "B"
+  },
+  "weapon": {
+    "main": {
+      "name": "ビーム・ザンバー",
+      "range": 1,
+      "type": "近距離"
+    },
+    "sub": {
+      "name": "ザンバスター",
+      "range": 3,
+      "type": "遠距離"
+    }
+  },
+  "ms_ability": {
+    "name": "烈撃",
+    "cost": 2,
+    "description": "任意発動 単体(敵) 射程2 コスト4 ロックオン中の敵ユニットに単体攻撃を行い、残りHPを半分にする。"
+  },
+  "special_attack": {
+    "name": "ビーム・ザンバー旋撃",
+    "target": "範囲(敵)",
+    "range": 2,
+    "power": 3300,
+    "description": "自分を中心にした小範囲に格闘攻撃でダメージを与え、一定時間、自身の[近距離攻撃力]をアップする。"
+  },
+  "link_abilities": [
+    {
+      "name": "クロスボーン・ガンダム",
+      "condition": "デッキに2枚以上",
+      "effect": "[機動力]小アップ"
+    },
+    {
+      "name": "正義の宇宙海賊",
+      "condition": "デッキに2枚以上",
+      "effect": "[近距離攻撃力][HP]小アップ"
+    }
+  ],
+  "illust": "TAKA-F"
+}

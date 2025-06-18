@@ -1,0 +1,59 @@
+{
+  "type": "MS",
+  "name": "ギラ・ドーガ（レズン・シュナイダー専用機）",
+  "model": "AMS-119 GEARA DOGA",
+  "cost": 4,
+  "category": "近距離",
+  "pilot": "レズン・シュナイダー",
+  "stats": {
+    "height": "20.0m",
+    "weight": "23.0t",
+    "mobility": 150,
+    "ranged_attack": 50,
+    "melee_attack": 280,
+    "hp": 270
+  },
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "A",
+    "desert": "C",
+    "water": "C"
+  },
+  "weapon": {
+    "main": {
+      "name": "ビーム・ソード・アックス",
+      "range": 1,
+      "type": "近距離"
+    },
+    "sub": {
+      "name": "ビーム・マシンガン",
+      "range": 3,
+      "type": "遠距離"
+    }
+  },
+  "ms_ability": {
+    "name": "双甲",
+    "cost": 4,
+    "description": "指定した味方ユニットの範囲内に移動後、一定時間連携状態となり、自身と連携中の味方が受けるダメージを軽減する。"
+  },
+  "special_attack": {
+    "name": "ビーム・ソード・アックス強撃",
+    "target": "単体（敵）",
+    "range": 2,
+    "power": 3200,
+    "description": "敵単体に格闘攻撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "逆襲のシャア",
+      "condition": "デッキに3枚以上",
+      "effect": "遠距離攻撃力小アップ"
+    },
+    {
+      "name": "追撃の近距離機",
+      "condition": "デッキに近距離機2枚以上",
+      "effect": "近距離攻撃力中アップ"
+    }
+  ],
+  "illust": "Kouki Tajima"
+}
