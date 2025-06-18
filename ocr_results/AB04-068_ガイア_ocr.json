@@ -1,0 +1,37 @@
+{
+  "type": "PL",
+  "name": "ガイア",
+  "english_name": "GAIA",
+  "cost": 4,
+  "category": "ジオン公国軍",
+  "age": null,
+  "height": null,
+  "units": [
+    "ドム",
+    "高機動型ザクII（ガイア専用機）"
+  ],
+  "pl_skill": {
+    "name": "冴える戦闘勘",
+    "trigger": "出撃後一定時間経過毎",
+    "effect": "40秒経過毎に自身の【機動力】と【遠距離攻撃力】を小アップする。最大3回まで発動。"
+  },
+  "link_abilities": [
+    {
+      "name": "機動戦士ガンダム",
+      "condition": "デッキに3枚以上",
+      "effect": "【機動力】小アップ"
+    },
+    {
+      "name": "巧みな連携戦術",
+      "condition": "デッキに2枚以上",
+      "effect": "【遠距離攻撃力】小アップ"
+    }
+  ],
+  "stats": {
+    "mobility": 190,
+    "ranged_attack": 130,
+    "melee_attack": 100,
+    "hp": 180
+  },
+  "illust": null
+}

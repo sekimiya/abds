@@ -1,0 +1,59 @@
+{
+  "type": "MS",
+  "name": "バンシィ・ノルン（デストロイモード）",
+  "model": "RX-0[N] UNICORN GUNDAM 02 BANSHEE NORN",
+  "cost": 3,
+  "category": "近距離",
+  "pilot": "リディ・マーセナス",
+  "stats": {
+    "height": "21.7m",
+    "weight": "27.3t",
+    "mobility": 220,
+    "ranged_attack": 40,
+    "melee_attack": 300,
+    "hp": 340
+  },
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "S",
+    "desert": "B",
+    "water": "B"
+  },
+  "weapon": {
+    "main": {
+      "name": "ビーム・サーベル",
+      "range": 1,
+      "type": "近距離"
+    },
+    "sub": {
+      "name": "ビーム・マグナム",
+      "range": 3,
+      "type": "遠距離"
+    }
+  },
+  "ms_ability": {
+    "name": "デコイ【ユニット】",
+    "cost": 2,
+    "description": "自分の周囲にユニット扱いでロックオンされるデコイを3体配置する。※上限6体まで。効果の対象やユニット数には含まれない。"
+  },
+  "special_attack": {
+    "name": "ビーム・サーベル強撃",
+    "target": "単体（敵）",
+    "range": 2,
+    "power": 3300,
+    "description": "敵単体に格闘攻撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "ガンダムUC",
+      "condition": "デッキに3枚以上",
+      "effect": "[機動力]小アップ"
+    },
+    {
+      "name": "多彩な戦術",
+      "condition": "デッキに4枚以上",
+      "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+    }
+  ],
+  "illust": "TAKA-F"
+}

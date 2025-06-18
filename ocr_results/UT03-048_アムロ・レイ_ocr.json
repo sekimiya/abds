@@ -1,0 +1,37 @@
+{
+  "type": "PL",
+  "name": "アムロ・レイ",
+  "english_name": "AMURO RAY",
+  "cost": 2,
+  "category": "地球連邦軍",
+  "age": 29,
+  "height": "―",
+  "units": [
+    "Hi-νガンダム",
+    "νガンダム"
+  ],
+  "pl_skill": {
+    "name": "先手の急接近",
+    "trigger": "出撃時",
+    "effect": "40秒間、自身の「機動力」「近距離攻撃力」を小アップする。"
+  },
+  "link_abilities": [
+    {
+      "name": "逆襲のシャア",
+      "condition": "デッキに3枚以上",
+      "effect": "「遠距離攻撃力」小アップ"
+    },
+    {
+      "name": "戦況を変える力",
+      "condition": "デッキに4枚以上",
+      "effect": "「遠距離攻撃力」「近距離攻撃力」小アップ"
+    }
+  ],
+  "stats": {
+    "mobility": 140,
+    "ranged_attack": 60,
+    "melee_attack": 180,
+    "hp": 180
+  },
+  "illust": "―"
+}

@@ -1,0 +1,32 @@
+{
+  "type": "PL",
+  "name": "アスラン・ザラ",
+  "english_name": "ATHRUN ZALA",
+  "cost": 3,
+  "category": "殲滅",
+  "age": 16,
+  "height": "170cm",
+  "units": [
+    "ジャスティスガンダム",
+    "イージスガンダム"
+  ],
+  "pl_skill": {
+    "name": "決死の覚悟",
+    "trigger": "HP50%以下の時",
+    "effect": "40秒間、自身の[SP威力]を中アップする。"
+  },
+  "link_abilities": [
+    {
+      "name": "ガンダムSEED",
+      "condition": "デッキに3枚以上",
+      "effect": "[機動力]小アップ"
+    }
+  ],
+  "stats": {
+    "mobility": 140,
+    "ranged_attack": 110,
+    "melee_attack": 140,
+    "hp": 150
+  },
+  "illust": "-"
+}

@@ -1,0 +1,59 @@
+{
+  "type": "MS",
+  "name": "赤いガンダム (0085)",
+  "model": "Red Gundam (0085)",
+  "cost": 5,
+  "category": "近距離",
+  "pilot": "シュウジ・イトウ",
+  "stats": {
+    "height": "-",
+    "weight": "-",
+    "mobility": 210,
+    "ranged_attack": 40,
+    "melee_attack": 450,
+    "hp": 550
+  },
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "S",
+    "desert": "C",
+    "water": "A"
+  },
+  "weapon": {
+    "main": {
+      "name": "ガンダム・ハンマー",
+      "range": 2,
+      "type": "近距離"
+    },
+    "sub": {
+      "name": "ビット",
+      "range": 4,
+      "type": "遠距離"
+    }
+  },
+  "ms_ability": {
+    "name": "奮起",
+    "cost": 1,
+    "description": "自身のHPが1以上で一定割合以下になると、一定時間、撃破されなくなり「遠近攻撃力」を中アップする。出撃時1度のみ発動。"
+  },
+  "special_attack": {
+    "name": "ビーム・サーベル強襲",
+    "target": "単体（敵）",
+    "range": 2,
+    "power": 4000,
+    "description": "連携攻撃でダメージを与え、自身に小ダメージ。戦術技威力は地形適性に応じて変化する。"
+  },
+  "link_abilities": [
+    {
+      "name": "GQuuuuuuX",
+      "condition": "デッキに3体以上",
+      "effect": "[HP]小アップ"
+    },
+    {
+      "name": "戦況を変える力",
+      "condition": "デッキに4体以上",
+      "effect": "[遠距離攻撃力] [近距離攻撃力]小アップ"
+    }
+  ],
+  "illust": "toryufu"
+}

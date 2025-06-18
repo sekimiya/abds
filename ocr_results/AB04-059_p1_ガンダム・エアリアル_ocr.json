@@ -1,0 +1,59 @@
+{
+  "type": "MS",
+  "name": "ガンダム・エアリアル",
+  "model": "XVVX-016 GUNDAM AERIAL",
+  "cost": 6,
+  "category": "遠距離",
+  "pilot": "スレッタ・マーキュリー",
+  "stats": {
+    "height": "18.0m",
+    "weight": "43.9t",
+    "mobility": 260,
+    "ranged_attack": 460,
+    "melee_attack": 350,
+    "hp": 420
+  },
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "A",
+    "desert": "C",
+    "water": "-"
+  },
+  "weapon": {
+    "main": {
+      "name": "ビームライフル",
+      "range": 3,
+      "type": "遠距離"
+    },
+    "sub": {
+      "name": "ビームサーベル",
+      "range": 1,
+      "type": "近距離"
+    }
+  },
+  "ms_ability": {
+    "name": "連射",
+    "cost": 3,
+    "description": "任意発動 単体(敵) 射程3 コスト3 ロックオン中の敵に単体攻撃でダメージを与える。"
+  },
+  "special_attack": {
+    "name": "ビットステイブ斉射",
+    "target": "単体(敵)",
+    "range": 4,
+    "power": 3500,
+    "description": "敵単体に射撃攻撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "水星の魔女",
+      "condition": "デッキに3枚以上",
+      "effect": "[機動力]小アップ"
+    },
+    {
+      "name": "その名はガンダム",
+      "condition": "デッキに3枚以上",
+      "effect": "[機動力]小アップ"
+    }
+  ],
+  "illust": "funbolt"
+}

@@ -1,0 +1,37 @@
+{
+  "type": "PL",
+  "name": "プルツー",
+  "english_name": "PLE TWO",
+  "cost": 4,
+  "category": "殲滅",
+  "age": null,
+  "height": null,
+  "units": [
+    "クィン・マンサ",
+    "サイコ・ガンダムMk-II"
+  ],
+  "pl_skill": {
+    "name": "臨機応変な狙い",
+    "trigger": "HP80%以下の時",
+    "effect": "40秒間、自身の【遠距離攻撃力】を中アップし、受けるダメージを軽減する。"
+  },
+  "link_abilities": [
+    {
+      "name": "機動戦士ガンダムZZ",
+      "condition": "デッキに3枚以上",
+      "effect": "[HP]小アップ"
+    },
+    {
+      "name": "圧倒する脅威力",
+      "condition": "デッキに殲滅系が3枚以上",
+      "effect": "殲滅タイプに対してダメージ中アップ"
+    }
+  ],
+  "stats": {
+    "mobility": 190,
+    "ranged_attack": 300,
+    "melee_attack": 60,
+    "hp": 400
+  },
+  "illust": "ー"
+}

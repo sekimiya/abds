@@ -1,0 +1,37 @@
+{
+  "type": "PL",
+  "name": "ルナマリア・ホーク",
+  "english_name": "Lunamaria Hawke",
+  "cost": 2,
+  "category": "防衛",
+  "age": 17,
+  "height": "164cm",
+  "units": [
+    "ザフト",
+    "ガナーザクウォーリア(ルナマリア・ホーク専用機)"
+  ],
+  "pl_skill": {
+    "name": "迎撃の構え",
+    "trigger": "一方向に敵をロックオン時",
+    "effect": "30秒間、自身の「機動力」「遠距離攻撃力」を中アップする。"
+  },
+  "link_abilities": [
+    {
+      "name": "SEED DESTINY",
+      "condition": "デッキに3枚以上",
+      "effect": "[HP]小アップ"
+    },
+    {
+      "name": "的確な一撃",
+      "condition": "デッキに4枚以上",
+      "effect": "[機動力][遠距離攻撃力]小アップ"
+    }
+  ],
+  "stats": {
+    "mobility": 230,
+    "ranged_attack": 300,
+    "melee_attack": 40,
+    "hp": 220
+  },
+  "illust": "不明"
+}

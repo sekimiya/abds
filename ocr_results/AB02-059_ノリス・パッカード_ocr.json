@@ -1,0 +1,36 @@
+{
+  "type": "PL",
+  "name": "ノリス・パッカード",
+  "english_name": "NORRIS PACKARD",
+  "cost": 2,
+  "category": "ジオン公国軍",
+  "age": null,
+  "height": null,
+  "units": [
+    "グフ・カスタム"
+  ],
+  "pl_skill": {
+    "name": "勇猛な先陣",
+    "trigger": "出撃時",
+    "effect": "40秒間、自身の「機動力」「近距離攻撃力」を中アップする。"
+  },
+  "link_abilities": [
+    {
+      "name": "第08MS小隊",
+      "condition": "デッキに3枚以上",
+      "effect": "遠距離攻撃力小アップ"
+    },
+    {
+      "name": "ベテランの技量",
+      "condition": "デッキに2枚以上",
+      "effect": "近距離攻撃力小アップ"
+    }
+  ],
+  "stats": {
+    "mobility": 190,
+    "ranged_attack": 100,
+    "melee_attack": 250,
+    "hp": 250
+  },
+  "illust": null
+}

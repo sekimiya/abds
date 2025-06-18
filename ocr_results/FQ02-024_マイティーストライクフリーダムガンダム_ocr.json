@@ -1,0 +1,59 @@
+{
+  "type": "MS",
+  "name": "マイティーストライクフリーダムガンダム",
+  "model": "ZGMF/A-262PD-P MIGHTY STRIKE FREEDOM GUNDAM",
+  "cost": 3,
+  "category": "遠距離",
+  "pilot": "キラ・ヤマト & ラクス・クライン",
+  "stats": {
+    "height": "18.88m",
+    "weight": "91.65t",
+    "mobility": 210,
+    "ranged_attack": 220,
+    "melee_attack": 90,
+    "hp": 230
+  },
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "S",
+    "desert": "A",
+    "water": "A"
+  },
+  "weapon": {
+    "main": {
+      "name": "高エネルギービームライフル",
+      "range": 3,
+      "type": "遠距離"
+    },
+    "sub": {
+      "name": "アクティブカノン&高エネルギー砲",
+      "range": 1,
+      "type": "近距離"
+    }
+  },
+  "ms_ability": {
+    "name": "奮起",
+    "cost": 1,
+    "description": "自身のHPが1以上で一定割合以下になると、一定時間、撃破されなくなり【遠近攻撃力】を中アップする。出撃時1度のみ発動。"
+  },
+  "special_attack": {
+    "name": "高エネルギービームライフル連射",
+    "target": "単体（敵）",
+    "range": 3,
+    "power": 3100,
+    "description": "敵単体に射撃攻撃でダメージを与える。射線上の敵に貫通射撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "SEED FREEDOM",
+      "condition": "デッキに3枚以上",
+      "effect": "[機動力]小アップ"
+    },
+    {
+      "name": "撃ち倒す遠距離機",
+      "condition": "デッキに遠距離が2枚以上",
+      "effect": "[遠距離攻撃力]中アップ"
+    }
+  ],
+  "illust": "amasaki"
+}

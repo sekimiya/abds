@@ -1,0 +1,36 @@
+{
+  "type": "PL",
+  "name": "ディアッカ・エルスマン",
+  "english_name": "DEARKA ELTHMAN",
+  "cost": 3,
+  "category": "ザフト",
+  "age": 19,
+  "height": "180cm",
+  "units": [
+    "ガズゥウォーリア（ディアッカ・エルスマン専用機）"
+  ],
+  "pl_skill": {
+    "name": "戦局の見極め",
+    "trigger": "MSアビリティ発動時",
+    "effect": "30秒間、自身の「機動力」「遠距離攻撃力」を中アップする。"
+  },
+  "link_abilities": [
+    {
+      "name": "SEED DESTINY",
+      "condition": "デッキに3枚以上",
+      "effect": "[HP]小アップ"
+    },
+    {
+      "name": "的確な一撃",
+      "condition": "デッキに4枚以上",
+      "effect": "[機動力][遠距離攻撃力]小アップ"
+    }
+  ],
+  "stats": {
+    "mobility": 100,
+    "ranged_attack": 260,
+    "melee_attack": 50,
+    "hp": 230
+  },
+  "illust": "C"
+}

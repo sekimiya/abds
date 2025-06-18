@@ -1,0 +1,59 @@
+{
+  "type": "MS",
+  "name": "陸戦型ガンダム",
+  "model": "RX-79[G] GUNDAM GROUND TYPE",
+  "cost": 3,
+  "category": "地球連邦軍",
+  "pilot": "シロー・アマダ、カルシュマ・デリーサザース",
+  "stats": {
+    "height": "18.0m",
+    "weight": "52.8t",
+    "mobility": 140,
+    "ranged_attack": 250,
+    "melee_attack": 60,
+    "hp": 200
+  },
+  "terrain_compatibility": {
+    "ground": "S",
+    "space": "C",
+    "desert": "A",
+    "water": "C"
+  },
+  "weapon": {
+    "main": {
+      "name": "180mmキャノン",
+      "range": 4,
+      "type": "遠距離"
+    },
+    "sub": {
+      "name": "ビーム・サーベル",
+      "range": 1,
+      "type": "近距離"
+    }
+  },
+  "ms_ability": {
+    "name": "精密射撃",
+    "cost": 3,
+    "description": "任意発動 単体(敵) 射程 4 コスト 3 ロックオン中の敵に単体攻撃でダメージを与える。"
+  },
+  "special_attack": {
+    "name": "180mmキャノン砲撃",
+    "target": "単体(敵)",
+    "range": 4,
+    "power": 3000,
+    "description": "敵単体に射撃攻撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "第08MS小隊",
+      "condition": "デッキに3枚以上",
+      "effect": "遠距離攻撃力小アップ"
+    },
+    {
+      "name": "多彩な機術",
+      "condition": "デッキに4枚以上",
+      "effect": "遠距離攻撃力、近距離攻撃力小アップ"
+    }
+  ],
+  "illust": "BIRU YAMAGUCHI"
+}

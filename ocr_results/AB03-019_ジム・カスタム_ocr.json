@@ -1,0 +1,59 @@
+{
+  "type": "MS",
+  "name": "ジム・カスタム",
+  "model": "RGM-79N GM CUSTOM",
+  "cost": 4,
+  "category": "遠距離",
+  "pilot": "サウス・バニング, アルファ・A・ベイト, ベルナルド・モンシア",
+  "stats": {
+    "height": "18.0m",
+    "weight": "42.0t",
+    "mobility": 250,
+    "ranged_attack": 300,
+    "melee_attack": 170,
+    "hp": 330
+  },
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "A",
+    "desert": "C",
+    "water": "-"
+  },
+  "weapon": {
+    "main": {
+      "name": "ジム・ライフル",
+      "range": 3,
+      "type": "遠距離"
+    },
+    "sub": {
+      "name": "ビーム・サーベル",
+      "range": 1,
+      "type": "近距離"
+    }
+  },
+  "ms_ability": {
+    "name": "補給",
+    "cost": 4,
+    "description": "自身を中心とした大範囲の味方ユニットのHPを中回復する。"
+  },
+  "special_attack": {
+    "name": "ジム・ライフル撃射",
+    "target": "単体（敵）",
+    "range": 3,
+    "power": 3300,
+    "description": "敵単体に射撃攻撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "ガンダム0083",
+      "condition": "デッキに3枚以上",
+      "effect": "[機動力]小アップ"
+    },
+    {
+      "name": "実弾の突破力",
+      "condition": "デッキに2枚以上",
+      "effect": "[遠距離攻撃力]小アップ"
+    }
+  ],
+  "illust": "deraken"
+}

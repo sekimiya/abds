@@ -1,0 +1,59 @@
+{
+  "type": "MS",
+  "name": "Zガンダム",
+  "model": "MSZ-006 Z GUNDAM",
+  "cost": 3,
+  "category": "近距離",
+  "pilot": "カミーユ・ビダン",
+  "stats": {
+    "height": "19.85m",
+    "weight": "28.7t",
+    "mobility": 260,
+    "ranged_attack": 70,
+    "melee_attack": 320,
+    "hp": 400
+  },
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "S",
+    "desert": "C",
+    "water": "C"
+  },
+  "weapon": {
+    "main": {
+      "name": "ビーム・サーベル",
+      "range": 1,
+      "type": "近距離"
+    },
+    "sub": {
+      "name": "ビーム・ライフル",
+      "range": 3,
+      "type": "遠距離"
+    }
+  },
+  "ms_ability": {
+    "name": "転化【妨害】",
+    "cost": 4,
+    "description": "一定発動。自身を中心とした範囲内の敵ユニットを弱体化する。使用回数に応じて、弱体化効果、範囲が変わる。[1回:遠/近攻撃力ダウン][2回:被ダメージアップ][3回以上:出撃中の全敵ユニットの遠/近攻撃力&SP威力ダウン]"
+  },
+  "special_attack": {
+    "name": "ビーム・サーベル連撃",
+    "target": "単体（敵）",
+    "range": 2,
+    "power": 3500,
+    "description": "敵単体に格闘攻撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "機動戦士Zガンダム",
+      "condition": "デッキに3枚以上",
+      "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+    },
+    {
+      "name": "多彩な戦術",
+      "condition": "デッキに4枚以上",
+      "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+    }
+  ],
+  "illust": "toriyufu"
+}

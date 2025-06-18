@@ -1,0 +1,36 @@
+{
+  "type": "PL",
+  "name": "ソーマ・ピーリス",
+  "english_name": "SOMA PERIES",
+  "cost": 4,
+  "category": "防衛",
+  "age": 18,
+  "height": "156cm",
+  "units": [
+    "ジンクス"
+  ],
+  "pl_skill": {
+    "name": "戦士の矜持",
+    "trigger": "出撃時",
+    "effect": "自身が使用するMSアビリティ「増援」の初回使用コストを1ダウンする。"
+  },
+  "link_abilities": [
+    {
+      "name": "ガンダム00",
+      "condition": "デッキに3枚以上",
+      "effect": "[機動力]小アップ"
+    },
+    {
+      "name": "最優先の任務",
+      "condition": "デッキに2枚以上",
+      "effect": "[機動力]小アップ"
+    }
+  ],
+  "stats": {
+    "mobility": 120,
+    "ranged_attack": 140,
+    "melee_attack": 200,
+    "hp": 160
+  },
+  "illust": "不明"
+}

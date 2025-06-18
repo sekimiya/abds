@@ -1,0 +1,36 @@
+{
+  "type": "PL",
+  "name": "コウ・ウラキ",
+  "english_name": "KOU URAKI",
+  "cost": 3,
+  "category": "防衛",
+  "age": 19,
+  "height": "-",
+  "units": [
+    "ガンダム試作1号機"
+  ],
+  "pl_skill": {
+    "name": "先行する闘志",
+    "trigger": "出撃時",
+    "effect": "40秒間、自身の「機動力」「遠距離攻撃力」「近距離攻撃力」を中アップする。"
+  },
+  "link_abilities": [
+    {
+      "name": "ガンダム0083",
+      "condition": "デッキに3枚以上",
+      "effect": "「機動力」小アップ"
+    },
+    {
+      "name": "優秀な士官",
+      "condition": "デッキに2枚以上",
+      "effect": "「機動力」小アップ"
+    }
+  ],
+  "stats": {
+    "mobility": 220,
+    "ranged_attack": 210,
+    "melee_attack": 180,
+    "hp": 260
+  },
+  "illust": "サンライズ"
+}

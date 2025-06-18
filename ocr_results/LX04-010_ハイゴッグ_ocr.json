@@ -1,0 +1,59 @@
+{
+  "type": "MS",
+  "name": "ハイゴッグ",
+  "model": "MSM-03C HY-GOGG",
+  "cost": 5,
+  "category": "ジオン公国軍",
+  "pilot": "ミハイル・カミンスキー, アディス・マッケンジー",
+  "stats": {
+    "height": "15.4m",
+    "weight": "54.5t",
+    "mobility": 280,
+    "ranged_attack": 440,
+    "melee_attack": 110,
+    "hp": 470
+  },
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "C",
+    "desert": "C",
+    "water": "S"
+  },
+  "weapon": {
+    "main": {
+      "name": "ビーム・カノン",
+      "range": 3,
+      "type": "遠距離"
+    },
+    "sub": {
+      "name": "バイス・クロー",
+      "range": 1,
+      "type": "近距離"
+    }
+  },
+  "ms_ability": {
+    "name": "爆撃",
+    "cost": 3,
+    "description": "任意発動 範囲(敵) 射程3 コスト3 ロックオン中の敵を中心に小範囲攻撃を行い、範囲内の敵にダメージを与える。"
+  },
+  "special_attack": {
+    "name": "ハンド・ミサイル・ユニット爆撃",
+    "target": "範囲(敵)",
+    "range": 3,
+    "power": 3600,
+    "description": "対象の敵を中心にして範囲射撃でダメージを与え、20秒間、自身の「遠距離攻撃力」を大アップする。"
+  },
+  "link_abilities": [
+    {
+      "name": "ポケットの中の戦争",
+      "condition": "デッキに3枚以上",
+      "effect": "[HP]小アップ"
+    },
+    {
+      "name": "機動で制する射撃戦",
+      "condition": "デッキに機動が2枚以上",
+      "effect": "[遠距離攻撃力]中アップ"
+    }
+  ],
+  "illust": "deraken"
+}

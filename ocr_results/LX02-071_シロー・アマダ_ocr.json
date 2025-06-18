@@ -1,0 +1,37 @@
+{
+  "type": "PL",
+  "name": "シロー・アマダ",
+  "english_name": "SHIRO AMADA",
+  "cost": 4,
+  "category": "地球連邦軍",
+  "age": 23,
+  "height": "―",
+  "units": [
+    "ガンダムEz8",
+    "陸戦型ガンダム"
+  ],
+  "pl_skill": {
+    "name": "打開の起点",
+    "trigger": "HP50%以下の時",
+    "effect": "35秒間、自身の【近距離攻撃力】をアップする。残りHPが少ない程、効果値が上昇する。"
+  },
+  "link_abilities": [
+    {
+      "name": "第08MS小隊",
+      "condition": "デッキに3枚以上",
+      "effect": "【遠距離攻撃力】小アップ"
+    },
+    {
+      "name": "優秀な士官",
+      "condition": "デッキに2枚以上",
+      "effect": "【機動力】小アップ"
+    }
+  ],
+  "stats": {
+    "mobility": 160,
+    "ranged_attack": 110,
+    "melee_attack": 200,
+    "hp": 180
+  },
+  "illust": "―"
+}

@@ -1,0 +1,54 @@
+{
+  "type": "MS",
+  "name": "百式",
+  "model": "MSN-00100 HYAKU-SHIKI",
+  "cost": 5,
+  "category": "エゥーゴ",
+  "pilot": "クワトロ・バジーナ",
+  "stats": {
+    "height": "19.2m",
+    "weight": "31.5t",
+    "mobility": 310,
+    "ranged_attack": 170,
+    "melee_attack": 250,
+    "hp": 170
+  },
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "A",
+    "desert": "C",
+    "water": "-"
+  },
+  "weapon": {
+    "main": {
+      "name": "ビーム・サーベル",
+      "range": 1,
+      "type": "近距離"
+    },
+    "sub": {
+      "name": "ビーム・ライフル",
+      "range": 3,
+      "type": "遠距離"
+    }
+  },
+  "ms_ability": {
+    "name": "鼓舞【機動】",
+    "cost": 4,
+    "description": "30秒間、自身を中心とした大範囲内の味方ユニットの【機動力】を小アップする。"
+  },
+  "special_attack": {
+    "name": "ビーム・サーベル強撃",
+    "target": "単体(敵)",
+    "range": 2,
+    "power": 3400,
+    "description": "敵単体に格闘攻撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "機動戦士Zガンダム",
+      "condition": "デッキに3枚以上",
+      "effect": "【遠距離攻撃力】小アップ"
+    }
+  ],
+  "illust": "PLANETA_Tsuji"
+}

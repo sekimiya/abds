@@ -1,0 +1,31 @@
+{
+  "type": "PL",
+  "name": "マスター・アジア",
+  "english_name": "MASTER ASIA",
+  "cost": 3,
+  "category": "ネオホンコン",
+  "age": null,
+  "height": null,
+  "units": [
+    "マスターガンダム"
+  ],
+  "pl_skill": {
+    "name": "追撃の意志",
+    "trigger": "敵ユニットを撃破時",
+    "effect": "30秒間、自身の「近距離攻撃力」をアップする。"
+  },
+  "link_abilities": [
+    {
+      "name": "Gガンダム",
+      "condition": "デッキに3枚以上",
+      "effect": "「近距離攻撃力」小アップ"
+    }
+  ],
+  "stats": {
+    "mobility": 140,
+    "ranged_attack": 80,
+    "melee_attack": 170,
+    "hp": 150
+  },
+  "illust": null
+}

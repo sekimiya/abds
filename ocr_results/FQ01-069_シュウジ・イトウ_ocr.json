@@ -1,0 +1,36 @@
+{
+  "type": "PL",
+  "name": "シュウジ・イトウ",
+  "english_name": "SHUJI ITO",
+  "cost": 3,
+  "category": "防衛",
+  "age": null,
+  "height": null,
+  "units": [
+    "赤いガンダム (0085)"
+  ],
+  "pl_skill": {
+    "name": "堅守の心得",
+    "trigger": "防衛拠点変更開始時",
+    "effect": "一定時間、防衛拠点変更する前の拠点が戦艦の被ダメージをかなり軽減する。"
+  },
+  "link_abilities": [
+    {
+      "name": "GQuuuuuX",
+      "condition": "デッキに3枚以上",
+      "effect": "[HP]小アップ"
+    },
+    {
+      "name": "戦況を変える力",
+      "condition": "デッキに4枚以上",
+      "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+    }
+  ],
+  "stats": {
+    "mobility": 230,
+    "ranged_attack": 200,
+    "melee_attack": 40,
+    "hp": 300
+  },
+  "illust": null
+}

@@ -1,0 +1,36 @@
+{
+  "type": "PL",
+  "name": "マクギリス・ファリド",
+  "english_name": "MCGILLIS FAREED",
+  "cost": 4,
+  "category": "殲滅",
+  "age": null,
+  "height": null,
+  "units": [
+    "ガンダム・バエル"
+  ],
+  "pl_skill": {
+    "name": "揺るがない攻勢",
+    "trigger": "敵ユニットを撃破時",
+    "effect": "30秒間、自身の「遠距離攻撃力」「近距離攻撃力」を小アップする。"
+  },
+  "link_abilities": [
+    {
+      "name": "鉄血のオルフェンズ",
+      "condition": "デッキに3枚以上",
+      "effect": "「遠距離攻撃力」「近距離攻撃力」小アップ"
+    },
+    {
+      "name": "肉薄する戦い",
+      "condition": "デッキに4枚以上",
+      "effect": "「機動力」「近距離攻撃力」小アップ"
+    }
+  ],
+  "stats": {
+    "mobility": 210,
+    "ranged_attack": 80,
+    "melee_attack": 240,
+    "hp": 230
+  },
+  "illust": null
+}

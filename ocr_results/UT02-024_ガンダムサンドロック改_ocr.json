@@ -1,0 +1,59 @@
+{
+  "type": "MS",
+  "name": "ガンダムサンドロック改",
+  "model": "XXXG-01SR2 GUNDAM SANDROCK CUSTOM",
+  "cost": 3,
+  "category": "近距離",
+  "pilot": "カトル・ラバーバ・ウィナー",
+  "stats": {
+    "height": "16.5m",
+    "weight": "7.5t",
+    "mobility": 240,
+    "ranged_attack": 70,
+    "melee_attack": 300,
+    "hp": 340
+  },
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "S",
+    "desert": "S",
+    "water": "B"
+  },
+  "weapon": {
+    "main": {
+      "name": "ヒートショーテル",
+      "range": 1,
+      "type": "近距離"
+    },
+    "sub": {
+      "name": "ビームマシンガン",
+      "range": 3,
+      "type": "遠距離"
+    }
+  },
+  "ms_ability": {
+    "name": "双甲",
+    "cost": 4,
+    "description": "指定した味方ユニットの範囲内に移動し後、一定時間連携状態となり、自身と連携中の味方が受けるダメージを軽減する。"
+  },
+  "special_attack": {
+    "name": "ヒートショーテル強撃",
+    "target": "単体（敵）",
+    "range": 2,
+    "power": 3400,
+    "description": "単体に格闘攻撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "ガンダムW",
+      "condition": "デッキに3枚以上",
+      "effect": "[機動力]小アップ"
+    },
+    {
+      "name": "肉薄する戦い",
+      "condition": "デッキに4枚以上",
+      "effect": "[機動力][近距離攻撃力]小アップ"
+    }
+  ],
+  "illust": "S. Keji"
+}

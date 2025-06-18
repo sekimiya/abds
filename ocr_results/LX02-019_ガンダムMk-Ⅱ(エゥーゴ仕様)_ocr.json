@@ -1,0 +1,59 @@
+{
+  "type": "MS",
+  "name": "ガンダムMk-II (エゥーゴ仕様)",
+  "model": "RX-178 GUNDAM Mk-II [A.E.U.G.]",
+  "cost": 5,
+  "category": "遠距離",
+  "pilot": "エル・ビアンノ",
+  "stats": {
+    "height": "18.5m",
+    "weight": "33.4t",
+    "mobility": 240,
+    "ranged_attack": 400,
+    "melee_attack": 200,
+    "hp": 310
+  },
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "A",
+    "desert": "C",
+    "water": "B"
+  },
+  "weapon": {
+    "main": {
+      "name": "ビーム・ライフル",
+      "range": 3,
+      "type": "遠距離"
+    },
+    "sub": {
+      "name": "ビーム・サーベル",
+      "range": 1,
+      "type": "近距離"
+    }
+  },
+  "ms_ability": {
+    "name": "増援【殲滅/貫通】",
+    "cost": 4,
+    "description": "自分の周囲に貫通射撃を行う殲滅タイプの味方ユニットを呼び出す。このユニットは移動しない。※上限3ユニットまで。"
+  },
+  "special_attack": {
+    "name": "ビーム・ライフル撃墜",
+    "target": "単体（敵）",
+    "range": 3,
+    "power": 3400,
+    "description": "敵単体に射撃攻撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "機動戦士ガンダムZZ",
+      "condition": "デッキに3枚以上",
+      "effect": "[HP]小アップ"
+    },
+    {
+      "name": "その名はガンダム",
+      "condition": "デッキに3枚以上",
+      "effect": "[機動力]小アップ"
+    }
+  ],
+  "illust": "Tomotake Kinoshita"
+}

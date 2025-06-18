@@ -125,40 +125,54 @@
 
         function categorizeCardsByIllustrator() {
             const illustrators = new Set();
+            let processedCount = 0;
+            let illustratorFoundCount = 0;
             
-            // 各カードのOCRデータを取得してイラストレータ情報を抽出
-            const promises = allCards.map(card => {
-                const ocrFile = `ocr_results/${card.number}_b_ocr.json`;
-                return fetch(ocrFile)
-                    .then(res => res.ok ? res.json() : null)
-                    .then(data => {
-                        if (data) {
-                            try {
-                                const match = data.ocr_result.match(/```json\n([\s\S]*)```/);
-                                if (match) {
-                                    const ocrJson = JSON.parse(match[1]);
-                                    const illustrator = ocrJson.著者情報?.イラストレータ || '不明';
-                                    illustrators.add(illustrator);
-                                    
-                                    if (!illustratorCards[illustrator]) {
-                                        illustratorCards[illustrator] = [];
-                                    }
-                                    illustratorCards[illustrator].push(card);
-                                }
-                            } catch (e) {
-                                // OCRデータの解析に失敗した場合はスキップ
-                            }
+            // 各カードのOCRデータからイラストレータ情報を抽出
+            allCards.forEach(card => {
+                if (card.ocr_data) {
+                    processedCount++;
+                    try {
+                        // 新しいデータ構造では、ocr_dataが直接JSONオブジェクトとして格納されている
+                        const ocrJson = card.ocr_data;
+                        
+                        // イラストレータ情報を抽出（複数の可能性のあるフィールド名に対応）
+                        let illustrator = '不明';
+                        
+                        // 実際のOCRデータ構造に基づいてイラストレータを取得
+                        if (ocrJson.illust) {
+                            illustrator = ocrJson.illust;
+                        } else if (ocrJson.著者情報 && ocrJson.著者情報.イラストレータ) {
+                            illustrator = ocrJson.著者情報.イラストレータ;
+                        } else if (ocrJson.author_info && ocrJson.author_info.illustrator) {
+                            illustrator = ocrJson.author_info.illustrator;
+                        } else if (ocrJson.illustrator) {
+                            illustrator = ocrJson.illustrator;
+                        } else if (ocrJson.artist) {
+                            illustrator = ocrJson.artist;
                         }
-                    })
-                    .catch(() => {
-                        // ファイルが見つからない場合はスキップ
-                    });
+                        
+                        // イラストレータ名を正規化（空白除去、統一）
+                        illustrator = illustrator.trim();
+                        if (illustrator && illustrator !== '不明') {
+                            illustratorFoundCount++;
+                            illustrators.add(illustrator);
+                            
+                            if (!illustratorCards[illustrator]) {
+                                illustratorCards[illustrator] = [];
+                            }
+                            illustratorCards[illustrator].push(card);
+                        }
+                    } catch (e) {
+                        console.log('OCRデータの解析に失敗:', card.number, e);
+                    }
+                }
             });
 
-            Promise.all(promises).then(() => {
-                // ドロップダウンリストを更新
-                updateIllustratorSelect(Array.from(illustrators).sort());
-            });
+            console.log(`イラストレータ情報抽出完了: ${processedCount}枚処理, ${illustratorFoundCount}枚でイラストレータ発見, ${illustrators.size}人のイラストレータ`);
+            
+            // ドロップダウンリストを更新
+            updateIllustratorSelect(Array.from(illustrators).sort());
         }
 
         function updateIllustratorSelect(illustrators) {
@@ -200,7 +214,7 @@
                 div.className = 'card-item';
                 
                 const img = document.createElement('img');
-                img.src = card.url;
+                img.src = card.front ? card.front.url : card.url;
                 img.alt = card.name;
                 
                 const number = document.createElement('div');

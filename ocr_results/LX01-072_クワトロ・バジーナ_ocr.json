@@ -1,0 +1,36 @@
+{
+  "type": "PL",
+  "name": "クワトロ・バジーナ",
+  "english_name": "QUATTRO BAJEENA",
+  "cost": 5,
+  "category": "制圧",
+  "age": 27,
+  "height": "—",
+  "units": [
+    "百式"
+  ],
+  "pl_skill": {
+    "name": "敵討ちの覚悟",
+    "trigger": "味方ユニットが撤退時",
+    "effect": "35秒間、自身の「遠距離攻撃力」「近距離攻撃力」を小アップする。"
+  },
+  "link_abilities": [
+    {
+      "name": "機動戦士ガンダム",
+      "condition": "デッキに3枚以上",
+      "effect": "「遠距離攻撃力」小アップ"
+    },
+    {
+      "name": "揺るがぬ意志",
+      "condition": "デッキに2枚以上",
+      "effect": "「HP」小アップ"
+    }
+  ],
+  "stats": {
+    "mobility": 180,
+    "ranged_attack": 160,
+    "melee_attack": 210,
+    "hp": 170
+  },
+  "illust": "—"
+}

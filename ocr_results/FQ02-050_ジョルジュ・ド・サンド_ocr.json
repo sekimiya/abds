@@ -1,0 +1,36 @@
+{
+  "type": "PL",
+  "name": "ジョルジュ・ド・サンド",
+  "english_name": "GEORGE DE SAND",
+  "cost": 3,
+  "category": "防衛",
+  "age": 20,
+  "height": "181cm",
+  "units": [
+    "ガンダムローズ"
+  ],
+  "pl_skill": {
+    "name": "迷いなき信念",
+    "trigger": "敵ユニットをロックオン時",
+    "effect": "SQゲージ小アップ。"
+  },
+  "link_abilities": [
+    {
+      "name": "新シャッフル同盟",
+      "condition": "デッキに3枚以上",
+      "effect": "SQゲージが溜まるとSQUAD RUSHが発動できる。[機動力][HP]小アップ"
+    },
+    {
+      "name": "ガンダムファイター",
+      "condition": "デッキに3枚以上",
+      "effect": "[機動力][HP]小アップ"
+    }
+  ],
+  "stats": {
+    "mobility": 200,
+    "ranged_attack": 290,
+    "melee_attack": 210,
+    "hp": 310
+  },
+  "illust": "不明"
+}

@@ -1,0 +1,36 @@
+{
+  "type": "PL",
+  "name": "ボブ",
+  "english_name": "BOB",
+  "cost": 3,
+  "category": "ジオン公国軍",
+  "age": null,
+  "height": null,
+  "units": [
+    "ザメル"
+  ],
+  "pl_skill": {
+    "name": "剥き出しの敵意",
+    "trigger": "敵ユニットをロックオン時",
+    "effect": "20秒間、ロックオン中の敵ユニットの「機動力」「遠距離攻撃力」を小ダウンする。"
+  },
+  "link_abilities": [
+    {
+      "name": "ガンダム0083",
+      "condition": "デッキに3枚以上",
+      "effect": "「機動力」小アップ"
+    },
+    {
+      "name": "優れた射撃センス",
+      "condition": "デッキに2枚以上",
+      "effect": "「遠距離攻撃力」小アップ"
+    }
+  ],
+  "stats": {
+    "mobility": 170,
+    "ranged_attack": 160,
+    "melee_attack": 80,
+    "hp": 150
+  },
+  "illust": null
+}

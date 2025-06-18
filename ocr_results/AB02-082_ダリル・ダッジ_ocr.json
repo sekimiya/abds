@@ -1,0 +1,37 @@
+{
+  "type": "PL",
+  "name": "ダリル・ダッジ",
+  "english_name": "DARYL DODGE",
+  "cost": 1,
+  "category": "制圧",
+  "age": 26,
+  "height": "—",
+  "units": [
+    "ユニオンフラッグ",
+    "ジンクス"
+  ],
+  "pl_skill": {
+    "name": "先手の急接近",
+    "trigger": "出撃時",
+    "effect": "40秒間、自身の「機動力」「近距離攻撃力」を小アップする。"
+  },
+  "link_abilities": [
+    {
+      "name": "ガンダム00",
+      "condition": "デッキに3枚以上",
+      "effect": "「機動力」小アップ"
+    },
+    {
+      "name": "可変機ファイター",
+      "condition": "デッキに3枚以上",
+      "effect": "専用作戦カードが使用可能"
+    }
+  ],
+  "stats": {
+    "mobility": 120,
+    "ranged_attack": 90,
+    "melee_attack": 120,
+    "hp": 150
+  },
+  "illust": "—"
+}

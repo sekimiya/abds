@@ -6,101 +6,425 @@
     <style>
         body { background: #1a1a1a; color: #fff; font-family: sans-serif; line-height: 1.1; padding-bottom: 0; }
         .header { background: #1a472a; color: #fff; text-align: center; padding: 1rem; font-size: 2rem; }
-        .card-grid { display: grid; grid-template-columns: repeat(5, 1fr); grid-template-rows: repeat(2, 1fr); gap: 16px; max-width: 900px; margin: 2rem auto; margin-bottom: 0; }
-        .card-item { background: #222; border: 1px solid #444; border-radius: 8px; padding: 0.3rem 0.5rem 0.3rem 0.5rem; text-align: center; line-height: 1.1; padding-bottom: 0.5rem; min-height: unset; }
-        .card-item img { max-width: 160px; max-height: 240px; height: auto; background: #111; border-radius: 4px; margin-top: 0.2rem; margin-bottom: 0.2rem; display: block; }
-        .card-number { color: #4caf50; font-weight: bold; margin-top: 0.2rem; margin-bottom: 0.1rem; line-height: 1.1; }
-        .card-name { margin-top: 0.1rem; margin-bottom: 0.1rem; font-size: 1.1rem; line-height: 1.1; }
-        .card-select { width: 100%; margin-top: 0.2rem; margin-bottom: 0.2rem; padding: 0.3rem; border-radius: 4px; border: 1px solid #444; background: #333; color: #fff; line-height: 1.1; }
-        .ocr-params { background: #181818; border-radius: 6px; margin-top: 0.4rem; padding: 0.3rem; min-height: 1.5em; font-size: 0.95em; color: #b2ffb2; display: flex; flex-wrap: wrap; align-items: center; gap: 0.7em; line-height: 1.05; }
+        .card-grid { display: grid; grid-template-columns: repeat(5, 1fr); grid-template-rows: repeat(2, 1fr); gap: 24px; max-width: 1200px; margin: 2.5rem auto; margin-bottom: 0; }
+        .card-item { background: #222; border: 1.5px solid #444; border-radius: 12px; padding: 0.6rem 1rem 0.6rem 1rem; text-align: center; line-height: 1.2; padding-bottom: 1rem; min-height: unset; overflow: hidden; width: 220px; box-sizing: border-box; margin: 0 auto; }
+        .card-item img { max-width: 220px; max-height: 330px; width: 220px; height: auto; background: #111; border-radius: 8px; margin-top: 0.3rem; margin-bottom: 0.3rem; display: block; }
+        .card-number { color: #4caf50; font-weight: bold; margin-top: 0.3rem; margin-bottom: 0.15rem; line-height: 1.2; font-size: 1.25rem; }
+        .card-name { margin-top: 0.15rem; margin-bottom: 0.15rem; font-size: 1.25rem; line-height: 1.2; }
+        .card-select { width: 100%; margin-top: 0.3rem; margin-bottom: 0.3rem; padding: 0.5rem; border-radius: 6px; border: 1.5px solid #444; background: #333; color: #fff; line-height: 1.2; font-size: 1.1rem; }
+        .ocr-params { background: #181818; border-radius: 8px; margin-top: 0.15rem; padding: 0.15rem; min-height: 1.5em; font-size: 1.08em; color: #b2ffb2; display: flex; flex-wrap: wrap; align-items: center; gap: 0.9em; line-height: 1.1; }
         .ocr-params .label { color: #4caf50; margin-right: 0.3em; }
         .ocr-params span { margin-right: 0.7em; }
-        .card-item.row-top { padding-top: 0.1rem; padding-bottom: 0.1rem; min-height: unset; }
+        .card-item.row-top { 
+            padding-top: 0.05rem; 
+            padding-bottom: 0.05rem; 
+            min-height: unset; 
+            height: 800px;
+        }
+        .card-item:not(.row-top) {
+            height: 360px;
+        }
+        .card-grid .card-item:nth-child(-n+5) {
+            margin-bottom: 4px;
+        }
+        .card-grid .card-item:nth-child(n+6) {
+            height: 1100px;
+        }
+        .card-item > div {
+            margin-bottom: 0.15em;
+        }
+        .deck-save-section {
+            max-width: 900px;
+            margin: 1rem auto;
+            padding: 1rem;
+            background: #333;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .deck-save-input {
+            padding: 0.5rem;
+            border-radius: 4px;
+            border: 1px solid #444;
+            background: #222;
+            color: #fff;
+            margin-right: 0.5rem;
+            width: 200px;
+        }
+        .deck-save-btn {
+            padding: 0.5rem 1rem;
+            background: #4caf50;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 0.5rem;
+        }
+        .deck-load-btn {
+            padding: 0.5rem 1rem;
+            background: #2196f3;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .auto-save-toggle {
+            margin: 1rem 0;
+            padding: 0.5rem;
+            background: #222;
+            border-radius: 4px;
+            display: inline-block;
+        }
+        .saved-decks-list {
+            text-align: left;
+            max-height: 200px;
+            overflow-y: auto;
+            background: #222;
+            padding: 1rem;
+            border-radius: 4px;
+            display: none;
+        }
     </style>
 </head>
 <body>
     <div class="header">ガンダムアーセナルベース Deck Simulator</div>
+    
     <div id="totalCost" style="max-width:900px;margin:1rem auto;padding:0.5rem;background:#333;border-radius:6px;color:#4caf50;font-size:1.2em;text-align:center;font-weight:bold;">総コスト: 0</div>
+    
+    <!-- デッキ保存・読み込み機能 -->
+    <div class="deck-save-section">
+        <div style="margin-bottom:1rem;">
+            <input type="text" id="deckName" placeholder="デッキ名を入力" class="deck-save-input">
+            <button onclick="saveDeck()" class="deck-save-btn">デッキ保存</button>
+            <button onclick="loadDeck()" class="deck-load-btn">デッキ読み込み</button>
+        </div>
+        <div class="auto-save-toggle">
+            <label style="color:#ffe082;margin-right:0.5rem;">
+                <input type="checkbox" id="autoSaveToggle" checked style="margin-right:0.3rem;" onchange="toggleAutoSave()">
+                自動保存（クッキー）
+            </label>
+            <span style="font-size:0.8em;color:#888;">※ページを離れても自動的にデッキが保存されます</span>
+        </div>
+        <div id="savedDecks" class="saved-decks-list">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem;">
+                <h4 style="margin:0;color:#4caf50;">保存済みデッキ一覧</h4>
+                <button onclick="toggleDeckList()" id="toggleDeckListBtn" style="padding:0.2rem 0.5rem;background:#444;color:#fff;border:none;border-radius:4px;cursor:pointer;font-size:0.8em;">▼ 開く</button>
+            </div>
+            <div id="deckListContent" style="transition:max-height 0.3s ease-in-out;overflow:hidden;max-height:0px;">
+                <div id="deckList"></div>
+            </div>
+        </div>
+    </div>
+    
     <div id="cardGrid" class="card-grid"></div>
     <div id="activeLinkAbilities" style="max-width:900px;margin:2rem auto 0 auto;padding:1rem;background:#222;border-radius:8px;color:#ffe082;font-size:1.1em;"></div>
+    
     <script>
         let allCards = [];
-        let selectedCardNumbers = Array(10).fill(null); // 現在選択中のカード番号
-        let selectedOcrData = Array(10).fill(null); // 各枠のOCRデータ
+        let selectedCardNumbers = Array(10).fill(null);
+        let selectedOcrData = Array(10).fill(null);
+        let usedCardNumbers = [];
+        let autoSaveEnabled = true;
+        
+        // クッキー操作のヘルパー関数
+        function setCookie(name, value, days = 30) {
+            const expires = new Date();
+            expires.setTime(expires.getTime() + (days * 24 * 60 * 60 * 1000));
+            document.cookie = `${name}=${encodeURIComponent(JSON.stringify(value))};expires=${expires.toUTCString()};path=/`;
+        }
+        
+        function getCookie(name) {
+            const nameEQ = name + "=";
+            const ca = document.cookie.split(';');
+            for (let i = 0; i < ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+                if (c.indexOf(nameEQ) === 0) {
+                    try {
+                        return JSON.parse(decodeURIComponent(c.substring(nameEQ.length, c.length)));
+                    } catch (e) {
+                        return null;
+                    }
+                }
+            }
+            return null;
+        }
+        
+        // 自動保存機能
+        function autoSaveDeck() {
+            if (!autoSaveEnabled) return;
+            
+            const deckData = {
+                timestamp: new Date().toISOString(),
+                cards: selectedCardNumbers.map((cardNumber, index) => {
+                    const card = allCards.find(c => c.number === cardNumber);
+                    return {
+                        index: index,
+                        number: cardNumber,
+                        name: card ? card.name : ''
+                    };
+                }),
+                totalCost: document.getElementById('totalCost').textContent
+            };
+            
+            setCookie('gundamAutoSave', deckData, 30);
+        }
+        
+        // 自動復元機能
+        function autoLoadDeck() {
+            // まず保存済みデッキをチェック
+            const savedDeck = getCookie('gundamLastSavedDeck');
+            if (savedDeck && savedDeck.cards) {
+                console.log('保存済みデッキを復元中...');
+                applySavedDeck(savedDeck);
+                return;
+            }
+            
+            // 次に自動保存デッキをチェック
+            const autoSavedData = getCookie('gundamAutoSave');
+            if (autoSavedData && autoSavedData.cards) {
+                console.log('自動保存されたデッキを復元中...');
+                applySavedDeck(autoSavedData);
+                return;
+            }
+        }
+        
+        // 保存されたデッキを適用する共通関数
+        function applySavedDeck(deckData) {
+            if (allCards.length > 0) {
+                deckData.cards.forEach(cardInfo => {
+                    if (cardInfo.number) {
+                        const card = allCards.find(c => c.number === cardInfo.number);
+                        if (card) {
+                            const select = document.getElementById(`card-select-${cardInfo.index}`);
+                            if (select) {
+                                const cardIndex = allCards.indexOf(card);
+                                select.value = cardIndex;
+                                select.dispatchEvent(new Event('change'));
+                            }
+                        }
+                    }
+                });
+                
+                console.log('デッキの復元が完了しました');
+            }
+        }
+
         document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM loaded, fetching cards...');
             fetch('/fetch_cards')
                 .then(res => res.json())
                 .then(data => {
+                    console.log('Fetched data:', data);
                     if (!data.success) {
                         document.getElementById('cardGrid').innerText = 'カードデータの取得に失敗しました';
                         return;
                     }
                     allCards = data.images;
+                    console.log('All cards loaded:', allCards.length, 'cards');
                     const cardGrid = document.getElementById('cardGrid');
                     cardGrid.innerHTML = '';
                     for (let i = 0; i < Math.min(10, allCards.length); i++) {
                         createCardItem(i, allCards[i]);
                     }
+                    // 全カード初期化後に自動復元を実行
+                    setTimeout(() => {
+                        autoLoadDeck();
+                    }, 100);
+                })
+                .catch(error => {
+                    console.error('Error fetching cards:', error);
                 });
         });
+
+        // 検索用モーダルのHTMLをbody末尾に追加
+        if (!document.getElementById('search-modal')) {
+            const modal = document.createElement('div');
+            modal.id = 'search-modal';
+            modal.style.display = 'none';
+            modal.style.position = 'fixed';
+            modal.style.top = '0';
+            modal.style.left = '0';
+            modal.style.width = '100vw';
+            modal.style.height = '100vh';
+            modal.style.background = 'rgba(0,0,0,0.85)';
+            modal.style.zIndex = '9999';
+            modal.style.overflowY = 'auto';
+            modal.innerHTML = `<div id="search-modal-content" style="max-width:1100px;margin:1em auto;background:#222;padding:1em;border-radius:16px;box-shadow:0 0 24px #000;min-height:200px;position:relative;max-height:90vh;overflow-y:auto;"></div>`;
+            document.body.appendChild(modal);
+        }
 
         function createCardItem(index, card) {
             const cardGrid = document.getElementById('cardGrid');
             const div = document.createElement('div');
             div.className = 'card-item row-top';
+            
+            const isPilotSlot = index >= 5;
+            const isMSSlot = index < 5;
+            
+            const candidateCards = allCards.filter(c => {
+                const isPilot = (c.ocr_data && c.ocr_data.type === 'PL') || c.category === 'PL';
+                const isMS = (c.ocr_data && c.ocr_data.type === 'MS') || c.category === 'MS';
+                if (isPilotSlot) return isPilot;
+                if (isMSSlot) return isMS;
+                return true;
+            });
+            
+            const availableCards = candidateCards.filter(c => !usedCardNumbers.includes(c.number));
+            const defaultCard = availableCards.length > 0 ? availableCards[0] : candidateCards[0];
+            usedCardNumbers[index] = defaultCard.number;
+            
+            const frontUrl = defaultCard.front ? defaultCard.front.url : defaultCard.url;
+            const backUrl = defaultCard.back && defaultCard.back.url ? defaultCard.back.url : null;
+            let isFront = true;
+            
             const img = document.createElement('img');
-            img.src = card.url;
-            img.alt = card.name;
+            img.src = frontUrl;
+            img.alt = defaultCard.name;
             img.id = `card-img-${index}`;
+            img.style.cursor = 'pointer';
+            img.addEventListener('click', function() {
+                if (backUrl) {
+                    isFront = !isFront;
+                    img.src = isFront ? frontUrl : backUrl;
+                }
+            });
+            
             const number = document.createElement('div');
             number.className = 'card-number';
             number.id = `card-number-${index}`;
-            number.textContent = card.number;
+            number.textContent = defaultCard.number;
+            
             const name = document.createElement('div');
             name.className = 'card-name';
             name.id = `card-name-${index}`;
-            name.textContent = card.name;
+            name.textContent = defaultCard.name;
+            
             const select = document.createElement('select');
             select.className = 'card-select';
             select.id = `card-select-${index}`;
-            allCards.forEach((c, idx) => {
+            candidateCards.forEach((c, idx) => {
                 const opt = document.createElement('option');
-                opt.value = idx;
+                opt.value = allCards.indexOf(c);
                 opt.textContent = `${c.number} - ${c.name}`;
-                if (c.number === card.number) opt.selected = true;
+                if (c.number === defaultCard.number) opt.selected = true;
                 select.appendChild(opt);
             });
-            // OCRパラメータ表示欄
+            
             const ocrDiv = document.createElement('div');
             ocrDiv.className = 'ocr-params';
             ocrDiv.id = `ocr-params-${index}`;
-            // 初期表示
-            updateOcrParams(card.number, ocrDiv, index);
+            updateOcrParams(defaultCard.number, ocrDiv, index);
+            
             select.onchange = function() {
                 const selectedCard = allCards[this.value];
-                document.getElementById(`card-img-${index}`).src = selectedCard.url;
-                document.getElementById(`card-img-${index}`).alt = selectedCard.name;
+                const newFrontUrl = selectedCard.front ? selectedCard.front.url : selectedCard.url;
+                const newBackUrl = selectedCard.back && selectedCard.back.url ? selectedCard.back.url : null;
+                isFront = true;
+                img.src = newFrontUrl;
+                img.alt = selectedCard.name;
+                img.onclick = null;
+                img.addEventListener('click', function() {
+                    if (newBackUrl) {
+                        isFront = !isFront;
+                        img.src = isFront ? newFrontUrl : newBackUrl;
+                    }
+                });
                 document.getElementById(`card-number-${index}`).textContent = selectedCard.number;
                 document.getElementById(`card-name-${index}`).textContent = selectedCard.name;
                 updateOcrParams(selectedCard.number, ocrDiv, index);
+                usedCardNumbers[index] = selectedCard.number;
+                
+                // 自動保存を実行
+                setTimeout(() => {
+                    autoSaveDeck();
+                }, 100);
             };
+            
             div.appendChild(img);
             div.appendChild(number);
             div.appendChild(name);
             div.appendChild(select);
             div.appendChild(ocrDiv);
+
+            // 横断検索テキストボックスとボタン
+            const searchDiv = document.createElement('div');
+            searchDiv.style.margin = '0.5em 0 0.2em 0';
+            searchDiv.style.display = 'flex';
+            searchDiv.style.flexDirection = 'column';
+            searchDiv.style.alignItems = 'stretch';
+            searchDiv.style.gap = '0.3em';
+            const searchInput = document.createElement('input');
+            searchInput.type = 'text';
+            searchInput.placeholder = 'カード横断検索...';
+            searchInput.style.width = '100%';
+            searchInput.style.padding = '0.3em';
+            searchInput.style.borderRadius = '4px';
+            searchInput.style.border = '1px solid #444';
+            searchInput.style.background = '#333';
+            searchInput.style.color = '#fff';
+            searchInput.style.fontSize = '1em';
+            searchInput.style.boxSizing = 'border-box';
+            const searchBtn = document.createElement('button');
+            searchBtn.textContent = '検索';
+            searchBtn.style.padding = '0.4em 1em';
+            searchBtn.style.borderRadius = '4px';
+            searchBtn.style.border = '1px solid #4caf50';
+            searchBtn.style.background = '#222';
+            searchBtn.style.color = '#4caf50';
+            searchBtn.style.cursor = 'pointer';
+            searchBtn.style.width = '100%';
+            searchBtn.style.fontSize = '1em';
+            searchBtn.onclick = function() {
+                const keyword = searchInput.value.trim();
+                if (!keyword) return;
+                showSearchModal(keyword, index);
+            };
+            searchDiv.appendChild(searchInput);
+            searchDiv.appendChild(searchBtn);
+            div.appendChild(searchDiv);
             cardGrid.appendChild(div);
+
             // 合計ステータス表示欄（6〜10番目のみ）
             if (index >= 5) {
-                const sumDiv = document.createElement('div');
-                sumDiv.className = 'ocr-params';
-                sumDiv.id = `sum-params-${index}`;
-                sumDiv.style.background = '#222';
-                sumDiv.style.color = '#ffe082';
-                sumDiv.style.fontSize = '0.92em';
-                sumDiv.style.marginTop = '0.4em';
-                sumDiv.textContent = '';
-                div.appendChild(sumDiv);
+                const sumMobDiv = document.createElement('div');
+                sumMobDiv.className = 'ocr-params';
+                sumMobDiv.id = `sum-mobility-${index}`;
+                sumMobDiv.style.background = '#222';
+                sumMobDiv.style.color = '#4caf50';
+                sumMobDiv.style.fontSize = '0.92em';
+                sumMobDiv.style.marginTop = '0.2em';
+                sumMobDiv.textContent = '';
+                div.appendChild(sumMobDiv);
+                
+                const sumRanDiv = document.createElement('div');
+                sumRanDiv.className = 'ocr-params';
+                sumRanDiv.id = `sum-ranged-${index}`;
+                sumRanDiv.style.background = '#222';
+                sumRanDiv.style.color = '#42a5f5';
+                sumRanDiv.style.fontSize = '0.92em';
+                sumRanDiv.style.marginTop = '0.2em';
+                sumRanDiv.textContent = '';
+                div.appendChild(sumRanDiv);
+                
+                const sumMelDiv = document.createElement('div');
+                sumMelDiv.className = 'ocr-params';
+                sumMelDiv.id = `sum-melee-${index}`;
+                sumMelDiv.style.background = '#222';
+                sumMelDiv.style.color = '#ffb300';
+                sumMelDiv.style.fontSize = '0.92em';
+                sumMelDiv.style.marginTop = '0.2em';
+                sumMelDiv.textContent = '';
+                div.appendChild(sumMelDiv);
+                
+                const sumHpDiv = document.createElement('div');
+                sumHpDiv.className = 'ocr-params';
+                sumHpDiv.id = `sum-hp-${index}`;
+                sumHpDiv.style.background = '#222';
+                sumHpDiv.style.color = '#e57373';
+                sumHpDiv.style.fontSize = '0.92em';
+                sumHpDiv.style.marginTop = '0.2em';
+                sumHpDiv.textContent = '';
+                div.appendChild(sumHpDiv);
             }
             if (index < 5) div.classList.add('row-top');
         }
@@ -108,129 +432,109 @@
         // OCRパラメータ表示更新
         function updateOcrParams(cardNumber, ocrDiv, index) {
             selectedCardNumbers[index] = cardNumber;
-            // ファイル名生成（_bを付与）
-            const ocrFile = `ocr_results/${cardNumber}_b_ocr.json`;
-            fetch(ocrFile)
-                .then(res => {
-                    if (!res.ok) throw new Error('not found');
-                    return res.json();
-                })
-                .then(data => {
-                    // ocr_resultは文字列なのでパース
-                    let params = '';
-                    let linkAbility = '';
-                    let ocrJson = null;
-                    try {
-                        const match = data.ocr_result.match(/```json\n([\s\S]*)```/);
-                        if (match) {
-                            ocrJson = JSON.parse(match[1]);
-                            // 横並びで1行表示
-                            params += `<span class='label'>機動力:</span><span>${ocrJson.ステータス?.機動力 ?? ''}</span>`;
-                            params += `<span class='label'>遠距離:</span><span>${ocrJson.ステータス?.遠距離攻撃 ?? ''}</span>`;
-                            params += `<span class='label'>近距離:</span><span>${ocrJson.ステータス?.近距離攻撃 ?? ''}</span>`;
-                            params += `<span class='label'>HP:</span><span>${ocrJson.ステータス?.HP ?? ''}</span>`;
-                            // リンクアビリティ
-                            if (Array.isArray(ocrJson.リンクアビリティ) && ocrJson.リンクアビリティ.length > 0) {
-                                linkAbility += '<div style="margin-top:0.5em;color:#ffe082;">リンクアビリティ:</div>';
-                                ocrJson.リンクアビリティ.forEach((ab, idx) => {
-                                    linkAbility += `<div style='font-size:0.95em;margin-left:1em;'>・<span style='color:#b2ffb2;'>${ab.条件 ?? ''}</span> <span style='color:#fff;'>${ab.効果 ?? ''}</span></div>`;
-                                });
-                            }
-                            // パラメータ表示部分のHTML生成箇所の下にMSスキル・PLスキルを追加
-                            if (ocrJson.MSアビリティ) {
-                                params += `<div style='color:#b2e5ff;font-size:0.97em;margin-top:0.2em;'>MSスキル: <span style='color:#fff;'>${ocrJson.MSアビリティ}</span>`;
-                                if (ocrJson.MSアビリティ効果) {
-                                    params += `<div style='color:#b2e5ff;font-size:0.92em;margin-top:0.1em;margin-left:1em;'>${ocrJson.MSアビリティ効果}</div>`;
-                                }
-                                if (ocrJson.MSスキル説明) {
-                                    params += `<div style='color:#b2e5ff;font-size:0.88em;margin-top:0.05em;margin-left:1.5em;'>${ocrJson.MSスキル説明}</div>`;
-                                }
-                                params += `</div>`;
-                            }
-                            if (ocrJson.スペシャルアタック && ocrJson.スペシャルアタック.説明) {
-                                params += `<div style='color:#ffb2b2;font-size:0.92em;margin-top:0.2em;margin-left:0.5em;'>SPアタック説明: ${ocrJson.スペシャルアタック.説明}</div>`;
-                            }
-                            if (ocrJson.PLスキル) {
-                                params += `<div style='color:#ffe082;font-size:0.97em;margin-top:0.1em;'>PLスキル: <span style='color:#fff;'>${ocrJson.PLスキル}</span>`;
-                                if (ocrJson.PLスキル効果) {
-                                    params += `<div style='color:#ffe082;font-size:0.92em;margin-top:0.1em;margin-left:1em;'>${ocrJson.PLスキル効果}</div>`;
-                                }
-                                if (ocrJson.PLスキル説明) {
-                                    params += `<div style='color:#ffe082;font-size:0.88em;margin-top:0.05em;margin-left:1.5em;'>${ocrJson.PLスキル説明}</div>`;
-                                }
-                                params += `</div>`;
-                            }
-                        } else {
-                            params = '';
-                        }
-                    } catch (e) {
-                        params = '';
+            
+            const card = allCards.find(c => c.number === cardNumber);
+            
+            if (!card || !card.ocr_data) {
+                ocrDiv.innerHTML = '';
+                selectedOcrData[index] = null;
+                updateActiveLinkAbilities();
+                updateTotalCost();
+                return;
+            }
+
+            const ocrJson = card.ocr_data;
+            selectedOcrData[index] = ocrJson;
+            
+            let params = '';
+            let linkAbility = '';
+
+            if (ocrJson.type === 'MS') {
+                if (ocrJson.stats) {
+                    params += `<span class='label'>機動力:</span><span>${ocrJson.stats.mobility || ''}</span>`;
+                    params += `<span class='label'>遠距離:</span><span>${ocrJson.stats.ranged_attack || ''}</span>`;
+                    params += `<span class='label'>近距離:</span><span>${ocrJson.stats.melee_attack || ''}</span><br>`;
+                    params += `<span class='label'>HP:</span><span>${ocrJson.stats.hp || ''}</span>`;
+                }
+                
+                if (ocrJson.ms_ability) {
+                    params += `<div style='color:#b2e5ff;font-size:0.97em;margin-top:0.2em;'>MSスキル: <span style='color:#fff;'>${ocrJson.ms_ability.name || ''}</span>`;
+                    if (ocrJson.ms_ability.description) {
+                        params += `<div style='color:#b2e5ff;font-size:0.92em;margin-top:0.1em;margin-left:1em;'>${ocrJson.ms_ability.description}</div>`;
                     }
-                    ocrDiv.innerHTML = params + linkAbility;
-                    selectedOcrData[index] = ocrJson;
-                    updateActiveLinkAbilities();
-                    updateTotalCost();
-                    updateSumParams();
-                })
-                .catch(() => {
-                    ocrDiv.innerHTML = '';
-                    selectedOcrData[index] = null;
-                    updateActiveLinkAbilities();
-                    updateTotalCost();
-                    updateSumParams();
+                    params += `</div>`;
+                }
+                
+                if (ocrJson.special_attack) {
+                    params += `<div style='color:#ffb2b2;font-size:0.92em;margin-top:0.2em;margin-left:0.5em;'>SPアタック: ${ocrJson.special_attack.name || ''}</div>`;
+                    if (ocrJson.special_attack.description) {
+                        params += `<div style='color:#ffb2b2;font-size:0.88em;margin-top:0.05em;margin-left:1em;'>${ocrJson.special_attack.description}</div>`;
+                    }
+                }
+                
+            } else if (ocrJson.type === 'PL') {
+                if (ocrJson.stats) {
+                    params += `<span class='label'>機動力:</span><span>${ocrJson.stats.mobility || ''}</span>`;
+                    params += `<span class='label'>遠距離:</span><span>${ocrJson.stats.ranged_attack || ''}</span>`;
+                    params += `<span class='label'>近距離:</span><span>${ocrJson.stats.melee_attack || ''}</span><br>`;
+                    params += `<span class='label'>HP:</span><span>${ocrJson.stats.hp || ''}</span>`;
+                }
+                
+                if (ocrJson.pl_skill) {
+                    params += `<div style='color:#ffe082;font-size:0.97em;margin-top:0.1em;'>PLスキル: <span style='color:#fff;'>${ocrJson.pl_skill.name || ''}</span>`;
+                    if (ocrJson.pl_skill.effect) {
+                        params += `<div style='color:#ffe082;font-size:0.92em;margin-top:0.1em;margin-left:1em;'>${ocrJson.pl_skill.effect}</div>`;
+                    }
+                    params += `</div>`;
+                }
+            }
+            
+            if (Array.isArray(ocrJson.link_abilities) && ocrJson.link_abilities.length > 0) {
+                linkAbility += '<div style="margin-top:0.5em;color:#ffe082;">リンクアビリティ:</div>';
+                ocrJson.link_abilities.forEach((ab, idx) => {
+                    linkAbility += `<div style='font-size:0.95em;margin-left:1em;'>・<span style='color:#b2ffb2;'>${ab.name || ''}</span> <span style='color:#ffe082;'>${ab.condition || ''}</span> <span style='color:#fff;'>${ab.effect || ''}</span></div>`;
                 });
+            }
+            
+            ocrDiv.innerHTML = params + linkAbility;
+            updateActiveLinkAbilities();
+            updateTotalCost();
         }
 
         // 発動中のリンクアビリティをUI下部に表示
         function updateActiveLinkAbilities() {
-            // 10枚のカードの全リンクアビリティを抽出
             let allAbilities = [];
             selectedOcrData.forEach((ocr, idx) => {
-                if (!ocr || !Array.isArray(ocr.リンクアビリティ)) return;
-                ocr.リンクアビリティ.forEach(ab => {
-                    // スペースで分割: [スキル名, 発動条件]
-                    let cond = ab.条件 ?? '';
-                    let skillName = '';
-                    let condRest = '';
-                    const firstSpace = cond.indexOf(' ');
-                    if (firstSpace !== -1) {
-                        skillName = cond.slice(0, firstSpace).trim();
-                        condRest = cond.slice(firstSpace + 1).trim();
-                    } else {
-                        skillName = cond;
-                        condRest = '';
-                    }
+                if (!ocr || !Array.isArray(ocr.link_abilities)) return;
+                ocr.link_abilities.forEach(ab => {
+                    let name = ab.name ?? '';
+                    let cond = ab.condition ?? '';
+                    let effect = ab.effect ?? '';
+                    let skillName = name;
+                    let condRest = cond;
                     allAbilities.push({
                         cardIndex: idx,
-                        cardName: ocr.機体情報?.名称 ?? '',
-                        series: ocr.シリーズ ?? '',
-                        pilot: ocr.機体情報?.パイロット ?? '',
+                        cardName: ocr.name ?? '',
+                        series: ocr.category ?? '',
+                        pilot: ocr.pilot ?? '',
                         skillName: skillName,
                         condRest: condRest,
-                        effect: ab.効果 ?? ''
+                        effect: effect
                     });
                 });
             });
 
-            // 条件ごとに「該当するカードが何枚あるか」を集計
             let activeList = [];
             allAbilities.forEach((ab, i) => {
-                // 例：「デッキにn枚以上」
                 let m = ab.condRest.match(/デッキに(\d+)枚以上/);
                 if (m) {
                     const count = parseInt(m[1], 10);
-                    // デッキ内で「スキル名（リンクアビリティ名）」が一致するカードの枚数をカウント
                     let found = selectedOcrData.filter(d => {
                         if (!d) return false;
-                        // 各カードのリンクアビリティ名を抽出し、ab.skillNameと一致するものがあるか
-                        if (!Array.isArray(d.リンクアビリティ)) return false;
-                        return d.リンクアビリティ.some(link => {
-                            let c = link.条件 ?? '';
-                            let s = '';
-                            const sp = c.indexOf(' ');
-                            if (sp !== -1) s = c.slice(0, sp).trim();
-                            else s = c.trim();
-                            return s === ab.skillName;
+                        if (!Array.isArray(d.link_abilities)) return false;
+                        return d.link_abilities.some(link => {
+                            let n = link.name ?? '';
+                            return n === ab.skillName;
                         });
                     }).length;
                     if (found >= count) {
@@ -238,7 +542,6 @@
                     }
                     return;
                 }
-                // その他の条件式は今後拡張
             });
             const area = document.getElementById('activeLinkAbilities');
             if (activeList.length > 0) {
@@ -252,8 +555,8 @@
         function updateTotalCost() {
             let totalCost = 0;
             selectedOcrData.forEach(ocr => {
-                if (ocr && ocr.機体情報 && ocr.機体情報.コスト) {
-                    const cost = parseInt(ocr.機体情報.コスト, 10);
+                if (ocr && ocr.cost) {
+                    const cost = parseInt(ocr.cost, 10);
                     if (!isNaN(cost)) {
                         totalCost += cost;
                     }
@@ -262,31 +565,373 @@
             document.getElementById('totalCost').textContent = `総コスト: ${totalCost}`;
         }
 
-        function updateSumParams() {
-            for (let i = 5; i < 10; i++) {
-                const idx1 = i - 5;
-                const idx2 = i;
-                const ocr1 = selectedOcrData[idx1];
-                const ocr2 = selectedOcrData[idx2];
-                let sumMob = '', sumRan = '', sumMel = '', sumHp = '';
-                if (ocr1 && ocr2) {
-                    const mob = (parseInt(ocr1.ステータス?.機動力)||0) + (parseInt(ocr2.ステータス?.機動力)||0);
-                    const ran = (parseInt(ocr1.ステータス?.遠距離攻撃)||0) + (parseInt(ocr2.ステータス?.遠距離攻撃)||0);
-                    const mel = (parseInt(ocr1.ステータス?.近距離攻撃)||0) + (parseInt(ocr2.ステータス?.近距離攻撃)||0);
-                    const hp  = (parseInt(ocr1.ステータス?.HP)||0) + (parseInt(ocr2.ステータス?.HP)||0);
-                    sumMob = mob; sumRan = ran; sumMel = mel; sumHp = hp;
-                }
-                const sumDiv = document.getElementById(`sum-params-${idx2}`);
-                if (sumDiv) {
-                    if (sumMob || sumRan || sumMel || sumHp) {
-                        sumDiv.innerHTML = `<span class='label'>合計 機動力:</span><span>${sumMob}</span> <span class='label'>遠距離:</span><span>${sumRan}</span> <span class='label'>近距離:</span><span>${sumMel}</span> <span class='label'>HP:</span><span>${sumHp}</span>`;
-                    } else {
-                        sumDiv.innerHTML = '';
+        // 検索モーダル表示
+        function showSearchModal(keyword, targetIndex) {
+            const modal = document.getElementById('search-modal');
+            const modalContent = document.getElementById('search-modal-content');
+            
+            const searchResults = allCards.filter(card => {
+                const keywordLower = keyword.toLowerCase();
+                
+                const nameMatch = card.name && card.name.toLowerCase().includes(keywordLower);
+                const numberMatch = card.number && card.number.toLowerCase().includes(keywordLower);
+                const seriesMatch = card.front && card.front.series && card.front.series.toLowerCase().includes(keywordLower);
+                
+                let ocrMatch = false;
+                if (card.ocr_data) {
+                    const ocr = card.ocr_data;
+                    
+                    if (ocr.category && ocr.category.toLowerCase().includes(keywordLower)) ocrMatch = true;
+                    if (ocr.type && ocr.type.toLowerCase().includes(keywordLower)) ocrMatch = true;
+                    if (ocr.pilot && ocr.pilot.toLowerCase().includes(keywordLower)) ocrMatch = true;
+                    
+                    if (ocr.stats) {
+                        const stats = ocr.stats;
+                        if (stats.mobility && stats.mobility.toString().includes(keyword)) ocrMatch = true;
+                        if (stats.ranged_attack && stats.ranged_attack.toString().includes(keyword)) ocrMatch = true;
+                        if (stats.melee_attack && stats.melee_attack.toString().includes(keyword)) ocrMatch = true;
+                        if (stats.hp && stats.hp.toString().includes(keyword)) ocrMatch = true;
                     }
+                    
+                    if (ocr.cost && ocr.cost.toString().includes(keyword)) ocrMatch = true;
+                    if (ocr.terrain && ocr.terrain.toLowerCase().includes(keywordLower)) ocrMatch = true;
+                    
+                    if (ocr.ms_ability) {
+                        if (ocr.ms_ability.name && ocr.ms_ability.name.toLowerCase().includes(keywordLower)) ocrMatch = true;
+                        if (ocr.ms_ability.description && ocr.ms_ability.description.toLowerCase().includes(keywordLower)) ocrMatch = true;
+                    }
+                    
+                    if (ocr.pl_skill) {
+                        if (ocr.pl_skill.name && ocr.pl_skill.name.toLowerCase().includes(keywordLower)) ocrMatch = true;
+                        if (ocr.pl_skill.effect && ocr.pl_skill.effect.toLowerCase().includes(keywordLower)) ocrMatch = true;
+                    }
+                    
+                    if (ocr.special_attack) {
+                        if (ocr.special_attack.name && ocr.special_attack.name.toLowerCase().includes(keywordLower)) ocrMatch = true;
+                        if (ocr.special_attack.description && ocr.special_attack.description.toLowerCase().includes(keywordLower)) ocrMatch = true;
+                    }
+                    
+                    if (Array.isArray(ocr.link_abilities)) {
+                        ocr.link_abilities.forEach(ab => {
+                            if (ab.name && ab.name.toLowerCase().includes(keywordLower)) ocrMatch = true;
+                            if (ab.condition && ab.condition.toLowerCase().includes(keywordLower)) ocrMatch = true;
+                            if (ab.effect && ab.effect.toLowerCase().includes(keywordLower)) ocrMatch = true;
+                        });
+                    }
+                    
+                    if (ocr.tactics && ocr.tactics.toLowerCase().includes(keywordLower)) ocrMatch = true;
                 }
+                
+                return nameMatch || numberMatch || seriesMatch || ocrMatch;
+            });
+            
+            let html = `<h2 style="color:#4caf50;margin-bottom:1em;">検索結果: "${keyword}" (${searchResults.length}件)</h2>`;
+            
+            if (searchResults.length === 0) {
+                html += '<p style="color:#ff5252;">該当するカードが見つかりませんでした。</p>';
+            } else {
+                html += '<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1em;">';
+                searchResults.forEach(card => {
+                    let matchReason = '';
+                    const keywordLower = keyword.toLowerCase();
+                    
+                    if (card.name && card.name.toLowerCase().includes(keywordLower)) {
+                        matchReason += '名前 ';
+                    }
+                    if (card.number && card.number.toLowerCase().includes(keywordLower)) {
+                        matchReason += '番号 ';
+                    }
+                    if (card.front && card.front.series && card.front.series.toLowerCase().includes(keywordLower)) {
+                        matchReason += 'シリーズ ';
+                    }
+                    if (card.ocr_data) {
+                        const ocr = card.ocr_data;
+                        if (ocr.category && ocr.category.toLowerCase().includes(keywordLower)) matchReason += 'カテゴリ ';
+                        if (ocr.pilot && ocr.pilot.toLowerCase().includes(keywordLower)) matchReason += 'パイロット ';
+                        if (ocr.ms_ability && ocr.ms_ability.name && ocr.ms_ability.name.toLowerCase().includes(keywordLower)) matchReason += 'MSスキル ';
+                        if (ocr.pl_skill && ocr.pl_skill.name && ocr.pl_skill.name.toLowerCase().includes(keywordLower)) matchReason += 'PLスキル ';
+                    }
+                    
+                    html += `
+                        <div style="background:#333;padding:0.5em;border-radius:8px;cursor:pointer;border:1px solid #444;" 
+                             onclick="selectCardFromSearch('${card.number}', ${targetIndex})">
+                            <img src="${card.front ? card.front.url : card.url}" 
+                                 style="width:100%;height:auto;border-radius:4px;margin-bottom:0.5em;" 
+                                 alt="${card.name}">
+                            <div style="font-size:0.9em;color:#4caf50;">${card.number}</div>
+                            <div style="font-size:0.9em;">${card.name}</div>
+                            <div style="font-size:0.8em;color:#888;margin-top:0.2em;">${card.front ? card.front.series : ''}</div>
+                            ${matchReason ? `<div style="font-size:0.75em;color:#ffb74d;margin-top:0.1em;">マッチ: ${matchReason}</div>` : ''}
+                        </div>
+                    `;
+                });
+                html += '</div>';
+            }
+            
+            html += '<div style="text-align:center;margin-top:1em;"><button onclick="closeSearchModal()" style="padding:0.5em 1em;background:#4caf50;color:#fff;border:none;border-radius:4px;cursor:pointer;">閉じる</button></div>';
+            
+            modalContent.innerHTML = html;
+            modal.style.display = 'block';
+        }
+
+        // 検索結果からカードを選択
+        function selectCardFromSearch(cardNumber, targetIndex) {
+            const card = allCards.find(c => c.number === cardNumber);
+            if (card) {
+                const select = document.getElementById(`card-select-${targetIndex}`);
+                const cardIndex = allCards.indexOf(card);
+                select.value = cardIndex;
+                select.dispatchEvent(new Event('change'));
+                
+                closeSearchModal();
             }
         }
+
+        // 検索モーダルを閉じる
+        function closeSearchModal() {
+            document.getElementById('search-modal').style.display = 'none';
+        }
+
+        // デッキ保存機能
+        function saveDeck() {
+            const deckName = document.getElementById('deckName').value.trim();
+            if (!deckName) {
+                alert('デッキ名を入力してください');
+                return;
+            }
+
+            const deckData = {
+                name: deckName,
+                timestamp: new Date().toISOString(),
+                cards: selectedCardNumbers.map((cardNumber, index) => {
+                    const card = allCards.find(c => c.number === cardNumber);
+                    return {
+                        index: index,
+                        number: cardNumber,
+                        name: card ? card.name : '',
+                        isFront: true
+                    };
+                }),
+                totalCost: document.getElementById('totalCost').textContent
+            };
+
+            // ローカルストレージに保存
+            const savedDecks = JSON.parse(localStorage.getItem('gundamDecks') || '{}');
+            savedDecks[deckName] = deckData;
+            localStorage.setItem('gundamDecks', JSON.stringify(savedDecks));
+
+            // クッキーにも保存（最新のデッキとして）
+            setCookie('gundamLastSavedDeck', deckData, 30);
+
+            alert(`デッキ「${deckName}」を保存しました（ローカルストレージとクッキーの両方に保存）`);
+            document.getElementById('deckName').value = '';
+            showSavedDecks();
+        }
+
+        // デッキ読み込み機能
+        function loadDeck() {
+            showSavedDecks();
+        }
+
+        // 保存済みデッキ一覧を表示
+        function showSavedDecks() {
+            const savedDecks = JSON.parse(localStorage.getItem('gundamDecks') || '{}');
+            const deckList = document.getElementById('deckList');
+            const savedDecksDiv = document.getElementById('savedDecks');
+
+            let html = '';
+            
+            // クッキーから最新のデッキを取得
+            const cookieDeck = getCookie('gundamLastSavedDeck');
+            const autoSavedDeck = getCookie('gundamAutoSave');
+            
+            // クッキーから読み取れるデッキを表示
+            if (cookieDeck && cookieDeck.cards) {
+                const date = new Date(cookieDeck.timestamp).toLocaleString('ja-JP');
+                html += `
+                    <div style="background:#2a4a2a;padding:0.8rem;margin-bottom:0.5rem;border-radius:4px;border:2px solid #4caf50;">
+                        <div style="display:flex;justify-content:space-between;align-items:center;">
+                            <div>
+                                <strong style="color:#4caf50;">📋 最新のデッキ（クッキー）</strong>
+                                <div style="font-size:0.8em;color:#888;margin-top:0.2rem;">保存日時: ${date}</div>
+                                <div style="font-size:0.8em;color:#888;">${cookieDeck.totalCost}</div>
+                            </div>
+                            <div>
+                                <button onclick="applyCookieDeck()" style="padding:0.3rem 0.8rem;background:#4caf50;color:#fff;border:none;border-radius:4px;cursor:pointer;font-size:0.8em;">適用</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+            
+            // 自動保存デッキを表示（最新のデッキと異なる場合のみ）
+            if (autoSavedDeck && autoSavedDeck.cards && 
+                (!cookieDeck || JSON.stringify(autoSavedDeck) !== JSON.stringify(cookieDeck))) {
+                const date = new Date(autoSavedDeck.timestamp).toLocaleString('ja-JP');
+                html += `
+                    <div style="background:#2a2a4a;padding:0.8rem;margin-bottom:0.5rem;border-radius:4px;border:2px solid #2196f3;">
+                        <div style="display:flex;justify-content:space-between;align-items:center;">
+                            <div>
+                                <strong style="color:#2196f3;">🔄 自動保存デッキ（クッキー）</strong>
+                                <div style="font-size:0.8em;color:#888;margin-top:0.2rem;">保存日時: ${date}</div>
+                                <div style="font-size:0.8em;color:#888;">${autoSavedDeck.totalCost}</div>
+                            </div>
+                            <div>
+                                <button onclick="applyAutoSavedDeck()" style="padding:0.3rem 0.8rem;background:#2196f3;color:#fff;border:none;border-radius:4px;cursor:pointer;font-size:0.8em;">適用</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+
+            // ローカルストレージの保存済みデッキを表示
+            if (Object.keys(savedDecks).length === 0) {
+                if ((!cookieDeck || !cookieDeck.cards) && (!autoSavedDeck || !autoSavedDeck.cards)) {
+                    deckList.innerHTML = '<p style="color:#888;">保存済みデッキがありません</p>';
+                    savedDecksDiv.style.display = 'block';
+                    // デッキリストを開いた状態にする
+                    setTimeout(() => {
+                        openDeckList();
+                    }, 100);
+                    return;
+                }
+            } else {
+                html += '<h5 style="color:#ffe082;margin:1rem 0 0.5rem 0;">ローカルストレージの保存済みデッキ</h5>';
+                Object.values(savedDecks).forEach(deck => {
+                    const date = new Date(deck.timestamp).toLocaleString('ja-JP');
+                    html += `
+                        <div style="background:#333;padding:0.8rem;margin-bottom:0.5rem;border-radius:4px;border:1px solid #444;">
+                            <div style="display:flex;justify-content:space-between;align-items:center;">
+                                <div>
+                                    <strong style="color:#4caf50;">${deck.name}</strong>
+                                    <div style="font-size:0.8em;color:#888;margin-top:0.2rem;">保存日時: ${date}</div>
+                                    <div style="font-size:0.8em;color:#888;">${deck.totalCost}</div>
+                                </div>
+                                <div>
+                                    <button onclick="applyDeck('${deck.name}')" style="padding:0.3rem 0.8rem;background:#2196f3;color:#fff;border:none;border-radius:4px;cursor:pointer;margin-right:0.3rem;font-size:0.8em;">適用</button>
+                                    <button onclick="deleteDeck('${deck.name}')" style="padding:0.3rem 0.8rem;background:#f44336;color:#fff;border:none;border-radius:4px;cursor:pointer;font-size:0.8em;">削除</button>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
+            }
+
+            deckList.innerHTML = html;
+            savedDecksDiv.style.display = 'block';
+            
+            // デッキリストを開いた状態にする
+            setTimeout(() => {
+                openDeckList();
+            }, 100);
+        }
+
+        // 保存済みデッキを適用
+        function applyDeck(deckName) {
+            const savedDecks = JSON.parse(localStorage.getItem('gundamDecks') || '{}');
+            const deck = savedDecks[deckName];
+
+            if (!deck) {
+                alert('デッキが見つかりません');
+                return;
+            }
+
+            deck.cards.forEach(cardInfo => {
+                const card = allCards.find(c => c.number === cardInfo.number);
+                if (card) {
+                    const select = document.getElementById(`card-select-${cardInfo.index}`);
+                    const cardIndex = allCards.indexOf(card);
+                    select.value = cardIndex;
+                    select.dispatchEvent(new Event('change'));
+                }
+            });
+
+            // 適用したデッキをクッキーにも保存（最新のデッキとして）
+            setCookie('gundamLastSavedDeck', deck, 30);
+
+            closeDeckList();
+            alert(`デッキ「${deckName}」を適用しました（クッキーにも保存されました）`);
+        }
+
+        // 保存済みデッキを削除
+        function deleteDeck(deckName) {
+            if (!confirm(`デッキ「${deckName}」を削除しますか？`)) {
+                return;
+            }
+
+            const savedDecks = JSON.parse(localStorage.getItem('gundamDecks') || '{}');
+            delete savedDecks[deckName];
+            localStorage.setItem('gundamDecks', JSON.stringify(savedDecks));
+
+            showSavedDecks();
+            alert(`デッキ「${deckName}」を削除しました`);
+        }
+
+        // クッキーからデッキを適用
+        function applyCookieDeck() {
+            const cookieDeck = getCookie('gundamLastSavedDeck');
+            if (!cookieDeck || !cookieDeck.cards) {
+                alert('クッキーに保存されたデッキが見つかりません');
+                return;
+            }
+
+            applySavedDeck(cookieDeck);
+            closeDeckList();
+            alert('クッキーからデッキを適用しました');
+        }
+
+        // 自動保存デッキを適用
+        function applyAutoSavedDeck() {
+            const autoSavedDeck = getCookie('gundamAutoSave');
+            if (!autoSavedDeck || !autoSavedDeck.cards) {
+                alert('自動保存されたデッキが見つかりません');
+                return;
+            }
+
+            applySavedDeck(autoSavedDeck);
+            closeDeckList();
+            alert('自動保存デッキを適用しました');
+        }
+
+        // 自動保存の有効/無効を切り替える関数
+        function toggleAutoSave() {
+            autoSaveEnabled = document.getElementById('autoSaveToggle').checked;
+            if (autoSaveEnabled) {
+                autoSaveDeck();
+            }
+        }
+
+        // デッキリストを折り畳む
+        function toggleDeckList() {
+            const deckListContent = document.getElementById('deckListContent');
+            const toggleBtn = document.getElementById('toggleDeckListBtn');
+            
+            if (deckListContent.style.maxHeight === '500px') {
+                deckListContent.style.maxHeight = '0px';
+                toggleBtn.textContent = '▼ 開く';
+            } else {
+                deckListContent.style.maxHeight = '500px';
+                toggleBtn.textContent = '▼ 折り畳む';
+            }
+        }
+
+        // デッキリストを閉じる
+        function closeDeckList() {
+            const deckListContent = document.getElementById('deckListContent');
+            const toggleBtn = document.getElementById('toggleDeckListBtn');
+            deckListContent.style.maxHeight = '0px';
+            toggleBtn.textContent = '▼ 開く';
+        }
+
+        // デッキリストを開いた状態にする
+        function openDeckList() {
+            const deckListContent = document.getElementById('deckListContent');
+            const toggleBtn = document.getElementById('toggleDeckListBtn');
+            deckListContent.style.maxHeight = '500px';
+            toggleBtn.textContent = '▼ 折り畳む';
+        }
     </script>
+    
     <div style="text-align:center;margin:2em 0 1em 0;">
         <a href="/index2.html" style="color:#ffe082;font-size:1.1em;text-decoration:underline;">▶ 詳細デッキ表ページ（新UI）はこちら</a>
         <br><br>
@@ -295,4 +940,4 @@
         <a href="/illustrator" style="color:#b2e5ff;font-size:1.1em;text-decoration:underline;">🎨 イラストレータ別カード一覧へ</a>
     </div>
 </body>
-</html> 
+</html>

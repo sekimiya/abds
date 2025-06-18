@@ -1,0 +1,59 @@
+{
+  "type": "MS",
+  "name": "グレイズ・アイン",
+  "model": "EB-AX2 GRAZE EIN",
+  "cost": 8,
+  "category": "近距離",
+  "pilot": "ギャラルホルン",
+  "stats": {
+    "height": "22.2m",
+    "weight": "38.6t",
+    "mobility": 250,
+    "ranged_attack": 110,
+    "melee_attack": 620,
+    "hp": 590
+  },
+  "terrain_compatibility": {
+    "ground": "S",
+    "space": "B",
+    "desert": "A",
+    "water": "A"
+  },
+  "weapon": {
+    "main": {
+      "name": "専用大型アックス",
+      "range": 1,
+      "type": "近距離"
+    },
+    "sub": {
+      "name": "肩部格納式機関銃",
+      "range": 3,
+      "type": "遠距離"
+    }
+  },
+  "ms_ability": {
+    "name": "特攻",
+    "cost": null,
+    "description": "自身の【遠／近攻撃力】をアップし【怯み無効】となるが、【回避／ガード不可】【修理時間延長】となる。効果は撤退するまで持続。"
+  },
+  "special_attack": {
+    "name": "専用大型アックス連撃",
+    "target": "単体（敵）",
+    "range": 2,
+    "power": 4200,
+    "description": "敵単体に格闘攻撃でダメージを与え、20秒間、自身の【近距離攻撃力】を大アップする。"
+  },
+  "link_abilities": [
+    {
+      "name": "鉄血のオルフェンズ",
+      "condition": "デッキに3枚以上",
+      "effect": "【近距離攻撃力】小アップ"
+    },
+    {
+      "name": "揺るがぬ意志",
+      "condition": "デッキに2枚以上",
+      "effect": "【HP】小アップ"
+    }
+  ],
+  "illust": "toriyufu"
+}

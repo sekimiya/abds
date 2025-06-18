@@ -1,0 +1,31 @@
+{
+  "type": "PL",
+  "name": "ノリス・パッカード",
+  "english_name": "NORRIS PACKARD",
+  "cost": 2,
+  "category": "制圧",
+  "age": null,
+  "height": null,
+  "units": [
+    "グフ・カスタム"
+  ],
+  "pl_skill": {
+    "name": "冴える戦闘勘",
+    "trigger": "出撃後一定時間経過毎",
+    "effect": "40秒経過毎に自身の「機動力」「遠距離攻撃力」を小アップする。最大3回まで発動。"
+  },
+  "link_abilities": [
+    {
+      "name": "第08MS小隊",
+      "condition": "デッキに3枚以上",
+      "effect": "「遠距離攻撃力」小アップ"
+    }
+  ],
+  "stats": {
+    "mobility": 120,
+    "ranged_attack": 170,
+    "melee_attack": 90,
+    "hp": 130
+  },
+  "illust": null
+}

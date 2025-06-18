@@ -1,0 +1,59 @@
+{
+  "type": "MS",
+  "name": "ザクII",
+  "model": "MS-06F ZAKU II",
+  "cost": 2,
+  "category": "量産機",
+  "pilot": "ジオン公国軍",
+  "stats": {
+    "height": "17.5m",
+    "weight": "56.2t",
+    "mobility": 170,
+    "ranged_attack": 70,
+    "melee_attack": 200,
+    "hp": 210
+  },
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "A",
+    "desert": "C",
+    "water": "C"
+  },
+  "weapon": {
+    "main": {
+      "name": "ヒート・ホーク",
+      "range": 1,
+      "type": "近距離"
+    },
+    "sub": {
+      "name": "ザク・マシンガン",
+      "range": 2,
+      "type": "遠距離"
+    }
+  },
+  "ms_ability": {
+    "name": "集中砲火",
+    "cost": 4,
+    "description": "20秒間、ロックオンしている敵に周囲の味方ターゲットを集め、[遠・近攻撃力]を中アップ。攻撃対象が変わると効果は終了する。"
+  },
+  "special_attack": {
+    "name": "ヒート・ホーク強撃",
+    "target": "単体（敵）",
+    "range": 2,
+    "power": 3200,
+    "description": "敵単体に格闘攻撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "機動戦士ガンダム",
+      "condition": "デッキに3枚以上",
+      "effect": "[機動力]小アップ"
+    },
+    {
+      "name": "量産機の戦い方",
+      "condition": "デッキに2枚以上",
+      "effect": "[機動力]小アップ"
+    }
+  ],
+  "illust": "STYLE ZERO"
+}

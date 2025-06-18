@@ -1,0 +1,59 @@
+{
+  "type": "MS",
+  "name": "ビルドバーニングガンダム",
+  "model": "BG-011B BUILD BURNING GUNDAM",
+  "cost": 6,
+  "category": "トライ・ファイターズ",
+  "pilot": "カミキ・セカイ",
+  "stats": {
+    "height": "18.0m",
+    "weight": "78.3t",
+    "mobility": 270,
+    "ranged_attack": 100,
+    "melee_attack": 550,
+    "hp": 480
+  },
+  "terrain_compatibility": {
+    "ground": "S",
+    "space": "B",
+    "desert": "A",
+    "water": "B"
+  },
+  "weapon": {
+    "main": {
+      "name": "次元覇王流流星突き",
+      "range": 1,
+      "type": "近距離"
+    },
+    "sub": {
+      "name": "次元覇王流爆熱脚",
+      "range": 2,
+      "type": "遠距離"
+    }
+  },
+  "ms_ability": {
+    "name": "奮起",
+    "cost": 1,
+    "description": "自身のHPが1以上で一定割合以下になると、一定時間、撃破されなくなり【遠近距離攻撃力】を中アップする。出撃時1度のみ発動。"
+  },
+  "special_attack": {
+    "name": "鳳凰覇王拳",
+    "target": "単体（敵）",
+    "range": 3,
+    "power": 3900,
+    "description": "敵単体に射撃攻撃でダメージを与え、自身に小ダメージ。"
+  },
+  "link_abilities": [
+    {
+      "name": "トライ",
+      "condition": "デッキに3枚以上",
+      "effect": "[HP]小アップ"
+    },
+    {
+      "name": "追撃の近距離機",
+      "condition": "デッキに近距離が2枚以上",
+      "effect": "[近距離攻撃力]中アップ"
+    }
+  ],
+  "illust": "Naohiro Morishita"
+}

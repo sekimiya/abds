@@ -1,0 +1,31 @@
+{
+  "type": "PL",
+  "name": "シン・マツナガ",
+  "english_name": "SHIN MATSUNAGA",
+  "cost": 4,
+  "category": "制圧",
+  "age": null,
+  "height": null,
+  "units": [
+    "高機動型ザクII（シン・マツナガ専用機）"
+  ],
+  "pl_skill": {
+    "name": "綿密な戦闘準備",
+    "trigger": "出撃時",
+    "effect": "40秒間、自身の「機動力」「遠距離攻撃力」を小アップする。"
+  },
+  "link_abilities": [
+    {
+      "name": "MSV",
+      "condition": "デッキに2枚以上",
+      "effect": "「遠距離攻撃力」小アップ"
+    }
+  ],
+  "stats": {
+    "mobility": 170,
+    "ranged_attack": 180,
+    "melee_attack": null,
+    "hp": 150
+  },
+  "illust": null
+}

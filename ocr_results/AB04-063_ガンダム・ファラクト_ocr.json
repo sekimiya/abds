@@ -1,0 +1,59 @@
+{
+  "type": "MS",
+  "name": "ガンダム・ファラクト",
+  "model": "FP/A-77 GUNDAM PHARACT",
+  "cost": 4,
+  "category": "ペイル・テクノロジーズ",
+  "pilot": "エラン・ケレス",
+  "stats": {
+    "height": "19.1m",
+    "weight": "57.1t",
+    "mobility": 300,
+    "ranged_attack": 380,
+    "melee_attack": 210,
+    "hp": 260
+  },
+  "terrain_compatibility": {
+    "ground": "B",
+    "space": "S",
+    "desert": "C",
+    "water": "-"
+  },
+  "weapon": {
+    "main": {
+      "name": "ビームアルケビュース",
+      "range": 4,
+      "type": "遠距離"
+    },
+    "sub": {
+      "name": "ビームサーベル",
+      "range": 1,
+      "type": "近距離"
+    }
+  },
+  "ms_ability": {
+    "name": "綱射",
+    "cost": 3,
+    "description": "ロックオン中の敵ユニットに単体攻撃を行いダメージを与え、一定時間スタンさせる。"
+  },
+  "special_attack": {
+    "name": "ビームアルケビュース精密射撃",
+    "target": "単体（敵）",
+    "range": 4,
+    "power": 3600,
+    "description": "敵単体に射撃攻撃でダメージを与え、一定時間スタンさせる。"
+  },
+  "link_abilities": [
+    {
+      "name": "機動力小アップ",
+      "condition": "水星の魔女デッキに3枚以上",
+      "effect": "機動力小アップ"
+    },
+    {
+      "name": "遠距離攻撃撃力小アップ",
+      "condition": "距離をとった射撃戦デッキに2枚以上",
+      "effect": "遠距離攻撃撃力小アップ"
+    }
+  ],
+  "illust": "toriyufu"
+}

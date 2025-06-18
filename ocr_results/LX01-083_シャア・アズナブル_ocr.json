@@ -1,0 +1,36 @@
+{
+  "type": "PL",
+  "name": "シャア・アズナブル",
+  "english_name": "CHAR AZNABLE",
+  "cost": 6,
+  "category": "殲滅",
+  "age": 34,
+  "height": "―",
+  "units": [
+    "サザビー"
+  ],
+  "pl_skill": {
+    "name": "先手の急接近",
+    "trigger": "出撃時",
+    "effect": "40秒間、自身の「機動力」「近距離攻撃力」を小アップする。"
+  },
+  "link_abilities": [
+    {
+      "name": "逆襲のシャア",
+      "condition": "デッキに3枚以上",
+      "effect": "「遠距離攻撃力」小アップ"
+    },
+    {
+      "name": "優秀な士官",
+      "condition": "デッキに2枚以上",
+      "effect": "「機動力」小アップ"
+    }
+  ],
+  "stats": {
+    "mobility": 180,
+    "ranged_attack": 160,
+    "melee_attack": 200,
+    "hp": 210
+  },
+  "illust": "―"
+}

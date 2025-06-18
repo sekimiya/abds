@@ -1,0 +1,36 @@
+{
+  "type": "PL",
+  "name": "リク",
+  "english_name": "RIKU",
+  "cost": 3,
+  "category": "制圧",
+  "age": 14,
+  "height": "-",
+  "units": [
+    "ガンダムダブルオーダイバー"
+  ],
+  "pl_skill": {
+    "name": "天賦の才",
+    "trigger": "出撃時",
+    "effect": "自身搭乗MSのSPコストが3の場合、初回使用SPコストを1ダウンする。"
+  },
+  "link_abilities": [
+    {
+      "name": "ビルドダイバーズ",
+      "condition": "デッキに3枚以上",
+      "effect": "[HP]小アップ"
+    },
+    {
+      "name": "多彩な戦術",
+      "condition": "デッキに4枚以上",
+      "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+    }
+  ],
+  "stats": {
+    "mobility": 190,
+    "ranged_attack": 50,
+    "melee_attack": 230,
+    "hp": 350
+  },
+  "illust": "-"
+}

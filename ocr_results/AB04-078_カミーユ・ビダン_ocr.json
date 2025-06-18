@@ -1,0 +1,37 @@
+{
+  "type": "PL",
+  "name": "カミーユ・ビダン",
+  "english_name": "KAMILLE BIDAN",
+  "cost": 2,
+  "category": "エゥーゴ",
+  "age": 17,
+  "height": "―",
+  "units": [
+    "Zガンダム",
+    "ガンダムMk-II"
+  ],
+  "pl_skill": {
+    "name": "逆境の奮戦",
+    "trigger": "複数の敵ユニットにロックオンされている時",
+    "effect": "20秒間、自身の「遠距離攻撃力」を中アップする。"
+  },
+  "link_abilities": [
+    {
+      "name": "機動戦士Zガンダム",
+      "condition": "デッキに3枚以上",
+      "effect": "「遠距離攻撃力」小アップ"
+    },
+    {
+      "name": "可変ファイター",
+      "condition": "デッキに3枚以上",
+      "effect": "専用作戦カードが使用可能"
+    }
+  ],
+  "stats": {
+    "mobility": 150,
+    "ranged_attack": 250,
+    "melee_attack": 150,
+    "hp": 190
+  },
+  "illust": "―"
+}

@@ -1,0 +1,59 @@
+{
+  "type": "MS",
+  "name": "ハイゴッグ",
+  "model": "MSM-03C HY-GOGG",
+  "cost": 7,
+  "category": "ジオン公国軍",
+  "pilot": "ミハイル・カミンスキー, アディ・ストロス",
+  "stats": {
+    "height": "15.4m",
+    "weight": "54.5t",
+    "mobility": 290,
+    "ranged_attack": 470,
+    "melee_attack": 150,
+    "hp": 440
+  },
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "C",
+    "desert": "C",
+    "water": "S"
+  },
+  "weapon": {
+    "main": {
+      "name": "ビーム・カノン",
+      "range": 3,
+      "type": "遠距離"
+    },
+    "sub": {
+      "name": "バイス・クロー",
+      "range": 1,
+      "type": "近距離"
+    }
+  },
+  "ms_ability": {
+    "name": "増援【防衛】",
+    "cost": 4,
+    "description": "自身の周囲に防衛タイプの味方ユニットを呼び出す。※上限3ユニットまで。"
+  },
+  "special_attack": {
+    "name": "ビーム・カノン撃射",
+    "target": "単体（敵）",
+    "range": 3,
+    "power": 3300,
+    "description": "敵単体に射撃攻撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "ボックスの中の戦争",
+      "condition": "デッキに3枚以上",
+      "effect": "[HP]小アップ"
+    },
+    {
+      "name": "多彩な戦術",
+      "condition": "デッキに4枚以上",
+      "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+    }
+  ],
+  "illust": "Kazue Saitou"
+}

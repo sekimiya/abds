@@ -1,0 +1,36 @@
+{
+  "type": "PL",
+  "name": "クロト・ブエル",
+  "english_name": "Crot Buer",
+  "cost": 4,
+  "category": "殲滅",
+  "age": null,
+  "height": null,
+  "units": [
+    "レイダーガンダム"
+  ],
+  "pl_skill": {
+    "name": "無慈悲な撃滅者",
+    "trigger": "MSアビリティ【撃滅】発動時",
+    "effect": "30秒間、自身の【機動力】【近距離攻撃力】を中アップし、受けるダメージを軽減する。"
+  },
+  "link_abilities": [
+    {
+      "name": "ガンダムSEED",
+      "condition": "デッキに3枚以上",
+      "effect": "【機動力】小アップ"
+    },
+    {
+      "name": "戦況を変える力",
+      "condition": "デッキに4枚以上",
+      "effect": "【遠距離攻撃力】【近距離攻撃力】小アップ"
+    }
+  ],
+  "stats": {
+    "mobility": 210,
+    "ranged_attack": 100,
+    "melee_attack": 310,
+    "hp": 330
+  },
+  "illust": null
+}

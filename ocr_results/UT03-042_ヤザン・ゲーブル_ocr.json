@@ -1,0 +1,36 @@
+{
+  "type": "PL",
+  "name": "ヤザン・ゲーブル",
+  "english_name": "YAZAN GABLE",
+  "cost": 1,
+  "category": "ティターンズ",
+  "age": 29,
+  "height": "―",
+  "units": [
+    "ハンブラビ"
+  ],
+  "pl_skill": {
+    "name": "戦士の矜持",
+    "trigger": "出撃時",
+    "effect": "自身が使用するMSアビリティ「増援」の初回使用コストを1ダウンする。"
+  },
+  "link_abilities": [
+    {
+      "name": "機動戦士ガンダム",
+      "condition": "デッキに3枚以上",
+      "effect": "「遠距離攻撃力」小アップ"
+    },
+    {
+      "name": "戦況を変える力",
+      "condition": "デッキに4枚以上",
+      "effect": "「遠距離攻撃力」「近距離攻撃力」小アップ"
+    }
+  ],
+  "stats": {
+    "mobility": 150,
+    "ranged_attack": 170,
+    "melee_attack": 50,
+    "hp": 190
+  },
+  "illust": "―"
+}

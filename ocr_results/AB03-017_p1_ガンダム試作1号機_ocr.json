@@ -1,0 +1,59 @@
+{
+  "type": "MS",
+  "name": "ガンダム試作1号機",
+  "model": "RX-78GP01 GUNDAM GP01",
+  "cost": 4,
+  "category": "地球連邦軍",
+  "pilot": "コウ・ウラキ",
+  "stats": {
+    "height": "18.0m",
+    "weight": "39.7t",
+    "mobility": 350,
+    "ranged_attack": 340,
+    "melee_attack": 110,
+    "hp": 400
+  },
+  "terrain_compatibility": {
+    "ground": "S",
+    "space": "C",
+    "desert": "A",
+    "water": "A"
+  },
+  "weapon": {
+    "main": {
+      "name": "ビーム・ライフル",
+      "range": 3,
+      "type": "遠距離"
+    },
+    "sub": {
+      "name": "ビーム・サーベル",
+      "range": 1,
+      "type": "近距離"
+    }
+  },
+  "ms_ability": {
+    "name": "集中砲火",
+    "cost": 4,
+    "description": "20秒間、ロックオンしている敵に周囲の味方ターゲットを集め、[遠・近攻撃力]をアップ。攻撃対象が変わると効果は終了する。"
+  },
+  "special_attack": {
+    "name": "ビーム・ライフル連射",
+    "target": "単体(敵)",
+    "range": 3,
+    "power": 3500,
+    "description": "敵単体に射撃攻撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "ガンダム0083",
+      "condition": "デッキに3枚以上",
+      "effect": "[機動力]小アップ"
+    },
+    {
+      "name": "その名はガンダム",
+      "condition": "デッキに3枚以上",
+      "effect": "[機動力]小アップ"
+    }
+  ],
+  "illust": "unagimogoro"
+}

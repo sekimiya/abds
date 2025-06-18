@@ -1,0 +1,54 @@
+{
+  "type": "MS",
+  "name": "ガンダム試作2号機",
+  "model": "RX-78GP02A GUNDAM GP02A",
+  "cost": 2,
+  "category": "ジオン公国軍",
+  "pilot": "アナベル・ガトー",
+  "stats": {
+    "height": "18.5m",
+    "weight": "54.5t",
+    "mobility": 170,
+    "ranged_attack": 50,
+    "melee_attack": 180,
+    "hp": 200
+  },
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "A",
+    "desert": "A",
+    "water": "C"
+  },
+  "weapon": {
+    "main": {
+      "name": "ビーム・サーベル",
+      "range": 1,
+      "type": "近距離"
+    },
+    "sub": {
+      "name": "頭部バルカン",
+      "range": 2,
+      "type": "遠距離"
+    }
+  },
+  "ms_ability": {
+    "name": "逆襲",
+    "cost": 4,
+    "description": "任意発動 単体(敵) 射程1 コスト4\nロックオン中の敵に単体攻撃でダメージを与える。自身の残りHPが少ない程、ダメージが上昇する。"
+  },
+  "special_attack": {
+    "name": "ビーム・サーベル強撃",
+    "target": "単体(敵)",
+    "range": 2,
+    "power": 3100,
+    "description": "敵単体に格闘攻撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "ガンダム0083",
+      "condition": "デッキに3枚以上",
+      "effect": "[機動力]小アップ"
+    }
+  ],
+  "illust": "akimaho"
+}

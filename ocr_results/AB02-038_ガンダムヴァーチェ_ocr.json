@@ -1,0 +1,59 @@
+{
+  "type": "MS",
+  "name": "ガンダムヴァーチェ",
+  "model": "GN-005 GUNDAM VIRTUE",
+  "cost": 7,
+  "category": "ソレスタルビーイング",
+  "pilot": "ティエリア・アーデ",
+  "stats": {
+    "height": "18.4m",
+    "weight": "66.7t",
+    "mobility": 140,
+    "ranged_attack": 430,
+    "melee_attack": 260,
+    "hp": 400
+  },
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "S",
+    "desert": "C",
+    "water": "C"
+  },
+  "weapon": {
+    "main": {
+      "name": "GNバズーカ",
+      "range": 4,
+      "type": "遠距離"
+    },
+    "sub": {
+      "name": "GNビームサーベル",
+      "range": 1,
+      "type": "近距離"
+    }
+  },
+  "ms_ability": {
+    "name": "貫通",
+    "cost": 3,
+    "description": "任意発動 貫通(敵) 射程4 コスト3 ロックオン中の敵に一定時間チャージ後、貫通射撃座行い、射線上の敵にダメージを与える。"
+  },
+  "special_attack": {
+    "name": "GNバズーカ掃射",
+    "target": "範囲(敵)",
+    "range": 4,
+    "power": 3600,
+    "description": "ロックオン中の敵を中心に扇状の範囲攻撃を行い、範囲内の敵にダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "ガンダム00",
+      "condition": "デッキに3枚以上",
+      "effect": "[機動力]小アップ"
+    },
+    {
+      "name": "その名はガンダム",
+      "condition": "デッキに3枚以上",
+      "effect": "[機動力]小アップ"
+    }
+  ],
+  "illust": "Eske Yoshinob"
+}

@@ -1,0 +1,37 @@
+{
+  "type": "PL",
+  "name": "ミゲル・アイマン",
+  "english_name": "MIGUEL AYMAN",
+  "cost": 3,
+  "category": "防衛",
+  "age": 19,
+  "height": "—",
+  "units": [
+    "ジン（ミゲル・アイマン専用機）",
+    "ジン"
+  ],
+  "pl_skill": {
+    "name": "容赦なしの接近戦",
+    "trigger": "敵ユニットをロックオン時",
+    "effect": "30秒間、自身の「近距離攻撃力」を中アップする。"
+  },
+  "link_abilities": [
+    {
+      "name": "機動力小アップ",
+      "condition": "デッキに3枚以上",
+      "effect": "ガンダムSEED"
+    },
+    {
+      "name": "近距離攻撃力小アップ",
+      "condition": "デッキに2枚以上",
+      "effect": "ベテランの技量"
+    }
+  ],
+  "stats": {
+    "mobility": 130,
+    "ranged_attack": 60,
+    "melee_attack": 120,
+    "hp": 150
+  },
+  "illust": "—"
+}

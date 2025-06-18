@@ -1,0 +1,59 @@
+{
+  "type": "MS",
+  "name": "ザクII改",
+  "model": "MS-06FZ ZAKUⅡ FZ",
+  "cost": 4,
+  "category": "近距離",
+  "pilot": "バーナード・ワイズマン",
+  "stats": {
+    "height": "17.5m",
+    "weight": "56.2t",
+    "mobility": 250,
+    "ranged_attack": 180,
+    "melee_attack": 390,
+    "hp": 380
+  },
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "A",
+    "desert": "A",
+    "water": "C"
+  },
+  "weapon": {
+    "main": {
+      "name": "ヒート・ホーク",
+      "range": 1,
+      "type": "近距離"
+    },
+    "sub": {
+      "name": "MMP-80 90mmマシンガン",
+      "range": 3,
+      "type": "遠距離"
+    }
+  },
+  "ms_ability": {
+    "name": "デコイ【ユニット】",
+    "cost": 2,
+    "description": "自分の周囲にユニット扱いでロックオンされるデコイを3体配置する。※上限6体まで。効果の対象やユニット数には含まれない。"
+  },
+  "special_attack": {
+    "name": "ヒート・ホーク強襲",
+    "target": "単体（敵）",
+    "range": 2,
+    "power": 3600,
+    "description": "敵単体に格闘攻撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "ボックスの中の戦争",
+      "condition": "デッキに3枚以上",
+      "effect": "[HP]小アップ"
+    },
+    {
+      "name": "追撃の近距離戦",
+      "condition": "デッキに近距離2枚以上",
+      "effect": "[近距離攻撃力]中アップ"
+    }
+  ],
+  "illust": "Robographer"
+}

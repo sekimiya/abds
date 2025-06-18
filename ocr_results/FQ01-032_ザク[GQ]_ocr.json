@@ -1,0 +1,59 @@
+{
+  "type": "MS",
+  "name": "ザク[GQ]",
+  "model": "Zaku[GQ]",
+  "cost": 4,
+  "category": "ジオン公国軍",
+  "pilot": "不明",
+  "stats": {
+    "height": "不明",
+    "weight": "不明",
+    "mobility": 250,
+    "ranged_attack": 300,
+    "melee_attack": 100,
+    "hp": 400
+  },
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "A",
+    "desert": "C",
+    "water": "C"
+  },
+  "weapon": {
+    "main": {
+      "name": "ザク・マシンガン",
+      "range": 3,
+      "type": "遠距離"
+    },
+    "sub": {
+      "name": "ヒート・ホーク",
+      "range": 1,
+      "type": "近距離"
+    }
+  },
+  "ms_ability": {
+    "name": "再縮",
+    "cost": 2,
+    "description": "自身を除く味方ユニットのMSアビリティのクールタイムを一定時間短縮する。"
+  },
+  "special_attack": {
+    "name": "ザク・マシンガン撃射",
+    "target": "単体（敵）",
+    "range": 3,
+    "power": 3300,
+    "description": "敵単体に射撃攻撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "GQuuuuuX",
+      "condition": "デッキに3枚以上",
+      "effect": "[HP]小アップ"
+    },
+    {
+      "name": "戦況を変える力",
+      "condition": "デッキに4枚以上",
+      "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+    }
+  ],
+  "illust": "ZB"
+}

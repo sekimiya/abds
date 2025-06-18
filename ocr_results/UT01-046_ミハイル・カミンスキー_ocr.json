@@ -1,0 +1,37 @@
+{
+  "type": "PL",
+  "name": "ミハイル・カミンスキー",
+  "english_name": "MIKHAIL KAMINSKY",
+  "cost": 2,
+  "category": "ジオン公国軍",
+  "age": 48,
+  "height": "―",
+  "units": [
+    "ケンプファー",
+    "ハイゴッグ"
+  ],
+  "pl_skill": {
+    "name": "猛烈な襲撃",
+    "trigger": "戦術技発動時",
+    "effect": "20秒間、自身の「機動力」「近距離攻撃力」を中アップする。"
+  },
+  "link_abilities": [
+    {
+      "name": "ポケットの中の戦争",
+      "condition": "デッキに3枚以上",
+      "effect": "[HP]小アップ"
+    },
+    {
+      "name": "揺るがぬ意志",
+      "condition": "デッキに2枚以上",
+      "effect": "[HP]小アップ"
+    }
+  ],
+  "stats": {
+    "mobility": 120,
+    "ranged_attack": 60,
+    "melee_attack": 180,
+    "hp": 200
+  },
+  "illust": "―"
+}

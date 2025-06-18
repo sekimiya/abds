@@ -1,0 +1,36 @@
+{
+  "type": "PL",
+  "name": "シン・アスカ",
+  "english_name": "SHINN ASUKA",
+  "cost": 4,
+  "category": "殲滅",
+  "age": 17,
+  "height": "169cm",
+  "units": [
+    "イモータルジャスティスガンダム"
+  ],
+  "pl_skill": {
+    "name": "粘り強い執念",
+    "trigger": "HP50%以下の時",
+    "effect": "35秒間、自身の「遠距離攻撃力」「近距離攻撃力」を小アップする。"
+  },
+  "link_abilities": [
+    {
+      "name": "SEED FREEDOM",
+      "condition": "デッキに3枚以上",
+      "effect": "機動力小アップ"
+    },
+    {
+      "name": "多彩な戦術",
+      "condition": "デッキに4枚以上",
+      "effect": "遠距離攻撃力、近距離攻撃力小アップ"
+    }
+  ],
+  "stats": {
+    "mobility": 160,
+    "ranged_attack": 280,
+    "melee_attack": 80,
+    "hp": 280
+  },
+  "illust": "不明"
+}

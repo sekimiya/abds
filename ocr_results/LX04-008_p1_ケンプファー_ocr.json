@@ -1,0 +1,59 @@
+{
+  "type": "MS",
+  "name": "ケンプファー",
+  "model": "MS-18E KÄMPFER",
+  "cost": 6,
+  "category": "機動",
+  "pilot": "ミハイル・カミンスキー",
+  "stats": {
+    "height": "17.7m",
+    "weight": "43.5t",
+    "mobility": 300,
+    "ranged_attack": 520,
+    "melee_attack": 200,
+    "hp": 530
+  },
+  "terrain_compatibility": {
+    "ground": "S",
+    "space": "B",
+    "desert": "S",
+    "water": "S"
+  },
+  "weapon": {
+    "main": {
+      "name": "ショットガン",
+      "range": 3,
+      "type": "遠距離"
+    },
+    "sub": {
+      "name": "ビーム・サーベル",
+      "range": 1,
+      "type": "近距離"
+    }
+  },
+  "ms_ability": {
+    "name": "逆襲",
+    "cost": 4,
+    "description": "ロック中の敵に単体攻撃でダメージを与える。自分の残りHPが少ない程、ダメージが上昇する。"
+  },
+  "special_attack": {
+    "name": "チェーン・マイン爆撃",
+    "target": "単体（敵）",
+    "range": 3,
+    "power": 3500,
+    "description": "敵単体に射撃攻撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "ボケットの中の戦争",
+      "condition": "デッキに3枚以上",
+      "effect": "[HP]小アップ"
+    },
+    {
+      "name": "実弾の突破力",
+      "condition": "デッキに2枚以上",
+      "effect": "[遠距離攻撃力]小アップ"
+    }
+  ],
+  "illust": "Robographer"
+}

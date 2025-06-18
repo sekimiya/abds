@@ -1,0 +1,36 @@
+{
+  "type": "PL",
+  "name": "アスラン・ザラ",
+  "english_name": "ATHRUN ZALA",
+  "cost": 4,
+  "category": "防衛",
+  "age": 19,
+  "height": "174cm",
+  "units": [
+    "ジャスティス (SEED FREEDOM Ver.)"
+  ],
+  "pl_skill": {
+    "name": "冷静な戦況把握",
+    "trigger": "出撃後一定時間経過毎",
+    "effect": "40秒経過毎に自身の【機動力】を小アップする。最大3回まで発動。"
+  },
+  "link_abilities": [
+    {
+      "name": "SEED FREEDOM",
+      "condition": "デッキに3枚以上",
+      "effect": "[機動力]小アップ"
+    },
+    {
+      "name": "肉薄する戦い",
+      "condition": "デッキに4枚以上",
+      "effect": "[機動力][近距離攻撃力]小アップ"
+    }
+  ],
+  "stats": {
+    "mobility": 210,
+    "ranged_attack": 120,
+    "melee_attack": 210,
+    "hp": 230
+  },
+  "illust": "C"
+}

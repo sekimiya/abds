@@ -1,0 +1,59 @@
+{
+  "type": "MS",
+  "name": "ガンダム試作2号機",
+  "model": "RX-78GP02A GUNDAM GP02A",
+  "cost": 6,
+  "category": "近距離",
+  "pilot": "アナベル・ガトー",
+  "stats": {
+    "height": "18.5m",
+    "weight": "54.5t",
+    "mobility": 260,
+    "ranged_attack": 0,
+    "melee_attack": 450,
+    "hp": 570
+  },
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "A",
+    "desert": "C",
+    "water": "C"
+  },
+  "weapon": {
+    "main": {
+      "name": "ビーム・サーベル",
+      "range": 1,
+      "type": "近距離"
+    },
+    "sub": {
+      "name": "シールド",
+      "range": 2,
+      "type": "近距離"
+    }
+  },
+  "ms_ability": {
+    "name": "誘導",
+    "cost": 4,
+    "description": "25秒間、自身をロックオン距離内に捉えている敵ユニットのターゲットを自身に集める。"
+  },
+  "special_attack": {
+    "name": "アトミックバズーカ爆撃",
+    "target": "範囲",
+    "range": 4,
+    "power": 4200,
+    "description": "対象の敵を中心にして範囲射撃でダメージを与える。この攻撃は敵味方関係なくヒットする。"
+  },
+  "link_abilities": [
+    {
+      "name": "ガンダム0083",
+      "condition": "デッキに3枚以上",
+      "effect": "[機動力]小アップ"
+    },
+    {
+      "name": "間合いを詰めた接近戦",
+      "condition": "デッキに2枚以上",
+      "effect": "[近距離攻撃力]小アップ"
+    }
+  ],
+  "illust": "unaginogoro"
+}

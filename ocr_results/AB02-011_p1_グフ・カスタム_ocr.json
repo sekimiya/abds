@@ -1,0 +1,59 @@
+{
+  "type": "MS",
+  "name": "グフ・カスタム",
+  "model": "MS-07B-3 GOUF CUSTOM",
+  "cost": 3,
+  "category": "近距離",
+  "pilot": "ノリス・パッカード",
+  "stats": {
+    "height": "18.2m",
+    "weight": "58.5t",
+    "mobility": 200,
+    "ranged_attack": 130,
+    "melee_attack": 360,
+    "hp": 350
+  },
+  "terrain_compatibility": {
+    "ground": "S",
+    "space": "C",
+    "desert": "A",
+    "water": "C"
+  },
+  "weapon": {
+    "main": {
+      "name": "ヒート・サーベル",
+      "range": 1,
+      "type": "近距離"
+    },
+    "sub": {
+      "name": "ガトリング・シールド",
+      "range": 3,
+      "type": "遠距離"
+    }
+  },
+  "ms_ability": {
+    "name": "練撃",
+    "cost": 3,
+    "description": "ロックオン中の敵ユニットに単体攻撃を行いダメージを与え、一定時間スタンさせる。"
+  },
+  "special_attack": {
+    "name": "ヒート・サーベル激突",
+    "target": "単体（敵）",
+    "range": 2,
+    "power": 3600,
+    "description": "敵単体に格闘攻撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "第08MS小隊",
+      "condition": "デッキに3枚以上",
+      "effect": "[遠距離攻撃力]小アップ"
+    },
+    {
+      "name": "陸戦特化の戦い",
+      "condition": "デッキに2枚以上",
+      "effect": "[機動力]小アップ"
+    }
+  ],
+  "illust": "TAKA-F"
+}

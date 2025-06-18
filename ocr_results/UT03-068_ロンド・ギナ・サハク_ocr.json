@@ -1,0 +1,37 @@
+{
+  "type": "PL",
+  "name": "ロンド・ギナ・サハク",
+  "english_name": "RONDO GINA SAHAKU",
+  "cost": 5,
+  "category": "オーブ",
+  "age": null,
+  "height": null,
+  "units": [
+    "ガンダムアストレイゴールドフレーム天",
+    "ガンダムアストレイゴールドフレーム"
+  ],
+  "pl_skill": {
+    "name": "非情な戦略",
+    "trigger": "敵ユニットをロックオン時",
+    "effect": "20秒間、ロックオン中の敵ユニットの「遠距離攻撃力」「近距離攻撃力」「SP威力」を大ダウンする。"
+  },
+  "link_abilities": [
+    {
+      "name": "SEED ASTRAY",
+      "condition": "デッキに2枚以上",
+      "effect": "「近距離攻撃力」小アップ"
+    },
+    {
+      "name": "選ばれし者",
+      "condition": "デッキに2枚以上",
+      "effect": "「近距離攻撃力」「HP」小アップ"
+    }
+  ],
+  "stats": {
+    "mobility": 240,
+    "ranged_attack": 110,
+    "melee_attack": 240,
+    "hp": 400
+  },
+  "illust": null
+}

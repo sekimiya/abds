@@ -1,0 +1,59 @@
+{
+  "type": "MS",
+  "name": "バスターガンダム",
+  "model": "GAT-X103 BUSTER GUNDAM",
+  "cost": 5,
+  "category": "機動",
+  "pilot": "ディアッカ・エルスマン",
+  "stats": {
+    "height": "18.8m",
+    "weight": "84.2t",
+    "mobility": 260,
+    "ranged_attack": 200,
+    "melee_attack": 100,
+    "hp": 240
+  },
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "A",
+    "desert": "A",
+    "water": "C"
+  },
+  "weapon": {
+    "main": {
+      "name": "高エネルギー収束火線ライフル",
+      "range": 4,
+      "type": "遠距離"
+    },
+    "sub": {
+      "name": "ガンランチャー",
+      "range": 2,
+      "type": "近距離"
+    }
+  },
+  "ms_ability": {
+    "name": "全弾発射",
+    "cost": 5,
+    "description": "ロックオン中の敵を中心に扇状の範囲攻撃を行い、範囲内の敵にダメージを与え、以後通常攻撃がサブ武装のみになる。"
+  },
+  "special_attack": {
+    "name": "ライフル貫通射撃",
+    "target": "貫通（敵）",
+    "range": 4,
+    "power": 2800,
+    "description": "射線上の敵に貫通射撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "ガンダムSEED",
+      "condition": "デッキに3枚以上",
+      "effect": "[機動力]小アップ"
+    },
+    {
+      "name": "撃ちわれ機体",
+      "condition": "デッキに2枚以上",
+      "effect": "[遠距離攻撃力]小アップ"
+    }
+  ],
+  "illust": "sakusaku sakurai"
+}

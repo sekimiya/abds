@@ -1,0 +1,59 @@
+{
+  "type": "MS",
+  "name": "ライジングフリーダムガンダム",
+  "model": "STTS-909 RISING FREEDOM GUNDAM",
+  "cost": 5,
+  "category": "遠距離",
+  "pilot": "キラ・ヤマト",
+  "stats": {
+    "height": "17.80m",
+    "weight": "67.90t",
+    "mobility": 260,
+    "ranged_attack": 500,
+    "melee_attack": 210,
+    "hp": 480
+  },
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "S",
+    "desert": "A",
+    "water": "C"
+  },
+  "weapon": {
+    "main": {
+      "name": "高エネルギービームライフル",
+      "range": 3,
+      "type": "遠距離"
+    },
+    "sub": {
+      "name": "ヴェルンナービームサーベル",
+      "range": 1,
+      "type": "近距離"
+    }
+  },
+  "ms_ability": {
+    "name": "双甲",
+    "cost": 4,
+    "description": "指定した味方ユニットの範囲内に移動し、一定時間連携状態となり、自身と連携中の味方が受けるダメージを軽減する。"
+  },
+  "special_attack": {
+    "name": "ハイマットフルバースト",
+    "target": "単体（敵）",
+    "range": 4,
+    "power": 3300,
+    "description": "ロックオン中の敵を中心に扇状の範囲攻撃を行い、範囲内の敵にダメージを与える。敵機を格闘攻撃で撃破すると発動する。出撃中1度のみ使用可能。"
+  },
+  "link_abilities": [
+    {
+      "name": "SEED FREEDOM",
+      "condition": "デッキに3枚以上",
+      "effect": "[機動力]小アップ"
+    },
+    {
+      "name": "多彩な戦術",
+      "condition": "デッキに4枚以上",
+      "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+    }
+  ],
+  "illust": "toriyufu"
+}

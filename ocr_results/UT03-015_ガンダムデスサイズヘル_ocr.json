@@ -1,0 +1,59 @@
+{
+  "type": "MS",
+  "name": "ガンダムデスサイズヘル",
+  "model": "XXXG-01D2 GUNDAM DEATHSCYTHE HELL",
+  "cost": 3,
+  "category": "機動",
+  "pilot": "デュオ・マックスウェル",
+  "stats": {
+    "height": "16.3m",
+    "weight": "7.4t",
+    "mobility": 150,
+    "ranged_attack": 70,
+    "melee_attack": 190,
+    "hp": 190
+  },
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "S",
+    "desert": "C",
+    "water": "A"
+  },
+  "weapon": {
+    "main": {
+      "name": "ツインビームサイズ",
+      "range": 1,
+      "type": "近距離"
+    },
+    "sub": {
+      "name": "バスターシールド",
+      "range": 3,
+      "type": "遠距離"
+    }
+  },
+  "ms_ability": {
+    "name": "隠密",
+    "cost": 1,
+    "description": "20秒間、敵側の表示から消えてロックオンされなくなる。効果時間が切れるか、何らかの攻撃が当たると効果が解除される。"
+  },
+  "special_attack": {
+    "name": "ツインビームサイズ強撃",
+    "target": "単体（敵）",
+    "range": 2,
+    "power": 3200,
+    "description": "敵単体に格闘攻撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "ガンダムW",
+      "condition": "デッキに3枚以上",
+      "effect": "[機動力]小アップ"
+    },
+    {
+      "name": "肉薄する戦い",
+      "condition": "デッキに4枚以上",
+      "effect": "[機動力][近距離攻撃力]小アップ"
+    }
+  ],
+  "illust": "TAKA-F"
+}

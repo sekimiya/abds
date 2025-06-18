@@ -1,0 +1,36 @@
+{
+  "type": "PL",
+  "name": "クロト・ブエル",
+  "english_name": "Crot Buer",
+  "cost": 2,
+  "category": "地球連合軍",
+  "age": null,
+  "height": null,
+  "units": [
+    "レイダーガンダム"
+  ],
+  "pl_skill": {
+    "name": "手慣れた戦闘態勢",
+    "trigger": "自身が撤退時",
+    "effect": "自身の修理時間を短縮する。"
+  },
+  "link_abilities": [
+    {
+      "name": "機動力小アップ",
+      "condition": "デッキに3枚以上",
+      "effect": "ガンダムSEED"
+    },
+    {
+      "name": "遠距離攻撃力・近距離攻撃力小アップ",
+      "condition": "デッキに4枚以上",
+      "effect": "戦況を変える力"
+    }
+  ],
+  "stats": {
+    "mobility": 140,
+    "ranged_attack": 200,
+    "melee_attack": 100,
+    "hp": 150
+  },
+  "illust": null
+}

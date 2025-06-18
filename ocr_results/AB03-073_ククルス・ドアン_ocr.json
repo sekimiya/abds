@@ -1,0 +1,36 @@
+{
+  "type": "PL",
+  "name": "ククルス・ドアン",
+  "english_name": "CUCURUZ DOAN",
+  "cost": 3,
+  "category": "制圧",
+  "age": null,
+  "height": null,
+  "units": [
+    "ドアン専用ザク"
+  ],
+  "pl_skill": {
+    "name": "不屈の意思",
+    "trigger": "HP50%以下の時",
+    "effect": "自身が受けるダメージを少し軽減する。"
+  },
+  "link_abilities": [
+    {
+      "name": "ククルス・ドアンの島",
+      "condition": "デッキに2枚以上",
+      "effect": "近距離攻撃力小アップ"
+    },
+    {
+      "name": "優れた格闘センス",
+      "condition": "デッキに2枚以上",
+      "effect": "近距離攻撃力小アップ"
+    }
+  ],
+  "stats": {
+    "mobility": 180,
+    "ranged_attack": 130,
+    "melee_attack": 200,
+    "hp": 260
+  },
+  "illust": null
+}

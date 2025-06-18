@@ -1,0 +1,59 @@
+{
+  "type": "MS",
+  "name": "マスターガンダム",
+  "model": "GF13-001NHII MASTER GUNDAM",
+  "cost": 7,
+  "category": "近距離",
+  "pilot": "マスター・アジア",
+  "stats": {
+    "height": "16.7m",
+    "weight": "7.2t",
+    "mobility": 330,
+    "ranged_attack": 30,
+    "melee_attack": 600,
+    "hp": 500
+  },
+  "terrain_compatibility": {
+    "ground": "S",
+    "space": "C",
+    "desert": "B",
+    "water": "-"
+  },
+  "weapon": {
+    "main": {
+      "name": "格闘",
+      "range": 1,
+      "type": "近距離"
+    },
+    "sub": {
+      "name": "マスタークロス",
+      "range": 2,
+      "type": "遠距離"
+    }
+  },
+  "ms_ability": {
+    "name": "繰撃",
+    "cost": 3,
+    "description": "ロックオン中の敵ユニットに単体攻撃を行いダメージを与え、一定時間スタンさせる。"
+  },
+  "special_attack": {
+    "name": "超級覇王電影弾",
+    "target": "貫通(敵)",
+    "range": 4,
+    "power": 3500,
+    "description": "射線上の敵に貫通格闘攻撃でダメージを与え、一定時間スタンさせる。"
+  },
+  "link_abilities": [
+    {
+      "name": "Gガンダム",
+      "condition": "デッキに3枚以上",
+      "effect": "[近距離攻撃力]小アップ"
+    },
+    {
+      "name": "漆黒の戦士",
+      "condition": "デッキに2枚以上",
+      "effect": "[機動力]小アップ"
+    }
+  ],
+  "illust": "funbolt"
+}

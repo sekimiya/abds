@@ -1,0 +1,37 @@
+{
+  "type": "PL",
+  "name": "デュオ・マックスウェル",
+  "english_name": "DUO MAXWELL",
+  "cost": 3,
+  "category": "制圧",
+  "age": 15,
+  "height": "156cm",
+  "units": [
+    "ガンダムデスサイズヘル",
+    "ガンダムデスサイズ"
+  ],
+  "pl_skill": {
+    "name": "戦局の見極め",
+    "trigger": "MSアビリティ発動時",
+    "effect": "30秒間、自身の「機動力」「遠距離攻撃力」を中アップする。"
+  },
+  "link_abilities": [
+    {
+      "name": "ガンダムW",
+      "condition": "デッキに3枚以上",
+      "effect": "[機動力]小アップ"
+    },
+    {
+      "name": "多彩な技術",
+      "condition": "デッキに4枚以上",
+      "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+    }
+  ],
+  "stats": {
+    "mobility": 140,
+    "ranged_attack": 230,
+    "melee_attack": 100,
+    "hp": 150
+  },
+  "illust": "R"
+}

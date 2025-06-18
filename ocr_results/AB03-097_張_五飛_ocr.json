@@ -1,0 +1,36 @@
+{
+  "type": "PL",
+  "name": "張 五飛",
+  "english_name": "Chang Wufei",
+  "cost": 5,
+  "category": "殲滅",
+  "age": 15,
+  "height": "156cm",
+  "units": [
+    "シェンロンガンダム"
+  ],
+  "pl_skill": {
+    "name": "勇猛な先陣",
+    "trigger": "出撃時",
+    "effect": "40秒間、自身の【機動力】【近距離攻撃力】を中アップする。"
+  },
+  "link_abilities": [
+    {
+      "name": "ガンダムW",
+      "condition": "デッキに3枚以上",
+      "effect": "【機動力】小アップ"
+    },
+    {
+      "name": "優れた格闘センス",
+      "condition": "デッキに2枚以上",
+      "effect": "【近距離攻撃力】小アップ"
+    }
+  ],
+  "stats": {
+    "mobility": 260,
+    "ranged_attack": 140,
+    "melee_attack": 350,
+    "hp": 300
+  },
+  "illust": "©創通・サンライズ"
+}

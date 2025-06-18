@@ -1,0 +1,36 @@
+{
+  "type": "PL",
+  "name": "アマテ・ユズリハ（マチュ）",
+  "english_name": "AMATE YUZURIHA (MACHU)",
+  "cost": 4,
+  "category": "殲滅",
+  "age": null,
+  "height": null,
+  "units": [
+    "ジークアス（オメガゾイド3号機動）"
+  ],
+  "pl_skill": {
+    "name": "以心伝心",
+    "trigger": "出撃時",
+    "effect": "出撃の味方ユニット数に応じて【近距離攻撃力】【SP威力】をアップし、30秒間、自身の【遠距離攻撃力】を中ダウンする。味方ユニット数は自陣全を含む。"
+  },
+  "link_abilities": [
+    {
+      "name": "GQuuuuuX",
+      "condition": "デッキに3枚以上",
+      "effect": "[HP]小アップ"
+    },
+    {
+      "name": "戦況を変える力",
+      "condition": "デッキに4枚以上",
+      "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+    }
+  ],
+  "stats": {
+    "mobility": 220,
+    "ranged_attack": 30,
+    "melee_attack": 400,
+    "hp": 350
+  },
+  "illust": "Watanabe Yoshihiro"
+}

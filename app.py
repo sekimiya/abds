@@ -25,49 +25,60 @@ def illustrator():
 
 @app.route('/fetch_cards')
 def fetch_cards():
-    # series_data/series_list.jsonからURLリストを取得
+    # all_cards_list/all_cards.jsonからカードデータを取得
     try:
-        with open('series_data/series_list.json', 'r', encoding='utf-8') as f:
-            series_list = json.load(f)
-        urls = [s['url'] for s in series_list if 'url' in s]
+        with open('all_cards_list/all_cards.json', 'r', encoding='utf-8') as f:
+            all_cards = json.load(f)
+        print(f"Loaded {len(all_cards)} cards from all_cards.json")
     except Exception as e:
-        return jsonify({'success': False, 'error': f'series_list.jsonの読み込みエラー: {str(e)}'})
+        print(f"Error loading all_cards.json: {str(e)}")
+        return jsonify({'success': False, 'error': f'all_cards.jsonの読み込みエラー: {str(e)}'})
 
-    headers = {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
-    }
-    
-    try:
-        card_images = []
-        processed_cards = set()
+    # OCR結果も読み込む
+    ocr_results = {}
+    ocr_dir = 'ocr_results'
+    if os.path.exists(ocr_dir):
+        ocr_files = [f for f in os.listdir(ocr_dir) if f.endswith('_ocr.json')]
+        print(f"Found {len(ocr_files)} OCR files")
+        for filename in ocr_files:
+            try:
+                with open(os.path.join(ocr_dir, filename), 'r', encoding='utf-8') as f:
+                    ocr_data = json.load(f)
+                    # ファイル名からカード番号とカード名を抽出
+                    base = filename.replace('_ocr.json', '')
+                    ocr_results[base] = ocr_data
+            except Exception as e:
+                print(f"OCRファイル読み込みエラー {filename}: {str(e)}")
+    else:
+        print(f"OCR directory {ocr_dir} not found")
+
+    print(f"Loaded {len(ocr_results)} OCR results")
+
+    # カードデータとOCRデータを統合
+    card_images = []
+    for card in all_cards:
+        card_number = card['front']['number']
+        card_name = card['front']['name']
+        key = f'{card_number}_{card_name}'
+        ocr_data = ocr_results.get(key)
         
-        for url in urls:
-            response = requests.get(url, headers=headers)
-            response.raise_for_status()
-            soup = BeautifulSoup(response.text, 'html.parser')
-            links = soup.find_all('a', onclick='javascript:imgBack(this);')
-            for link in links:
-                img = link.find('img', class_='front')
-                if img:
-                    src = img.get('src', '')
-                    if src and ('card' in src.lower() or 'gundam' in src.lower()):
-                        if not src.startswith('http'):
-                            src = 'https://www.gundam-ab.com' + src
-                        card_number = src.split('/')[-1].split('.')[0]
-                        if card_number not in processed_cards:
-                            processed_cards.add(card_number)
-                            card_name = img.get('alt', card_number)
-                            card_info = {
-                                'url': src,
-                                'number': card_number,
-                                'name': card_name,
-                                'category': 'MS'  # デフォルトでMSカテゴリ
-                            }
-                            card_images.append(card_info)
-        card_images.sort(key=lambda x: x['number'])
-        return jsonify({'success': True, 'images': card_images})
-    except Exception as e:
-        return jsonify({'success': False, 'error': str(e)})
+        card_info = {
+            'url': card['front']['url'],  # 後方互換性のため残す
+            'number': card_number,
+            'name': card['front']['name'],
+            'category': ocr_data.get('type', 'MS') if ocr_data else 'MS',
+            'ocr_data': ocr_data,
+            'front': card['front'],  # 表面データを追加
+            'back': card['back']     # 裏面データを追加
+        }
+        card_images.append(card_info)
+
+    card_images.sort(key=lambda x: x['number'])
+    print(f"Returning {len(card_images)} cards with OCR data")
+    if card_images:
+        print(f"First card example: {card_images[0]['number']} - {card_images[0]['name']} - OCR data: {card_images[0]['ocr_data'] is not None}")
+    
+    return jsonify({'success': True, 'images': card_images})
 
 @app.route('/ocr_results/<path:filename>')
 def serve_ocr_results(filename):

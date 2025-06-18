@@ -1,0 +1,36 @@
+{
+  "type": "PL",
+  "name": "ギルボア・サント",
+  "english_name": "GILBOA SANT",
+  "cost": 4,
+  "category": "殲滅",
+  "age": 30,
+  "height": "-",
+  "units": [
+    "ギラ・ズール"
+  ],
+  "pl_skill": {
+    "name": "先手必勝の構え",
+    "trigger": "敵ユニットを撃破時",
+    "effect": "SQゲージ大アップ。"
+  },
+  "link_abilities": [
+    {
+      "name": "虹の彼方に",
+      "condition": "デッキに3枚以上",
+      "effect": "SQゲージが表示される。SQゲージを満めるとSQUAD RUSHが発動できる。[HP] [SP威力] 小アップ"
+    },
+    {
+      "name": "的確な一撃",
+      "condition": "デッキに4枚以上",
+      "effect": "[機動力] [遠距離攻撃力] 小アップ"
+    }
+  ],
+  "stats": {
+    "mobility": 170,
+    "ranged_attack": 310,
+    "melee_attack": 20,
+    "hp": 400
+  },
+  "illust": "サンライズ"
+}

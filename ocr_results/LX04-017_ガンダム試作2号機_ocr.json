@@ -1,0 +1,59 @@
+{
+  "type": "MS",
+  "name": "ガンダム試作2号機",
+  "model": "RX-78GP02A GUNDAM GP02A",
+  "cost": 4,
+  "category": "ジオン公国軍",
+  "pilot": "アナベル・ガトー",
+  "stats": {
+    "height": "18.5m",
+    "weight": "54.5t",
+    "mobility": 170,
+    "ranged_attack": 50,
+    "melee_attack": 220,
+    "hp": 310
+  },
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "A",
+    "desert": "A",
+    "water": "C"
+  },
+  "weapon": {
+    "main": {
+      "name": "ビーム・サーベル",
+      "range": 1,
+      "type": "近距離"
+    },
+    "sub": {
+      "name": "頭部バルカン",
+      "range": 2,
+      "type": "遠距離"
+    }
+  },
+  "ms_ability": {
+    "name": "デコイ【ユニット】",
+    "cost": 2,
+    "description": "任意発動 特殊（自分） 射程1 コスト2\n自分の周囲にユニット扱いでロックオンされるデコイを3体配置する。※上限6体まで。効果の対象やユニット数には含まれない。"
+  },
+  "special_attack": {
+    "name": "ビーム・サーベル強撃",
+    "target": "単体（敵）",
+    "range": 2,
+    "power": 3200,
+    "description": "敵単体に格闘攻撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "ガンダム0083",
+      "condition": "デッキに3枚以上",
+      "effect": "[機動力]小アップ"
+    },
+    {
+      "name": "高速機動の接近戦",
+      "condition": "デッキに機動力2枚以上",
+      "effect": "[近距離攻撃力]中アップ"
+    }
+  ],
+  "illust": "Tatsumi Takuan"
+}

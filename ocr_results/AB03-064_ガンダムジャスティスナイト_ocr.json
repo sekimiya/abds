@@ -1,0 +1,59 @@
+{
+  "type": "MS",
+  "name": "ガンダムジャスティスナイト",
+  "model": "ZGMF-X19AK GUNDAM JUSTICE KNIGHT",
+  "cost": 2,
+  "category": "近距離",
+  "pilot": "カザミ",
+  "stats": {
+    "height": "18.9m",
+    "weight": "61.78t",
+    "mobility": 100,
+    "ranged_attack": 90,
+    "melee_attack": 230,
+    "hp": 180
+  },
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "S",
+    "desert": "A",
+    "water": "B"
+  },
+  "weapon": {
+    "main": {
+      "name": "ライティショットランサー",
+      "range": 1,
+      "type": "近距離"
+    },
+    "sub": {
+      "name": "ライティショットランサー",
+      "range": 3,
+      "type": "遠距離"
+    }
+  },
+  "ms_ability": {
+    "name": "強撃",
+    "cost": 3,
+    "description": "任意発動 単体(敵) 射程 1 コスト 3 ロックオン中の敵に単体攻撃でダメージを与える。"
+  },
+  "special_attack": {
+    "name": "ライティショットランサー激突",
+    "target": "単体(敵)",
+    "range": 2,
+    "power": 3100,
+    "description": "敵単体に格闘攻撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "Re:RISE",
+      "condition": "デッキに3枚以上",
+      "effect": "[遠距離攻撃力]小アップ"
+    },
+    {
+      "name": "間合いを詰めた接近戦",
+      "condition": "デッキに2枚以上",
+      "effect": "[近距離攻撃力]小アップ"
+    }
+  ],
+  "illust": "Robographer"
+}

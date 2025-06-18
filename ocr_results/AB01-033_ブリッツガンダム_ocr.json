@@ -1,0 +1,59 @@
+{
+  "type": "MS",
+  "name": "ブリッツガンダム",
+  "model": "GAT-X207 BLITZ GUNDAM",
+  "cost": 5,
+  "category": "機動",
+  "pilot": "ニコル・アマルフィ",
+  "stats": {
+    "height": "18.63m",
+    "weight": "73.5t",
+    "mobility": 210,
+    "ranged_attack": 160,
+    "melee_attack": 120,
+    "hp": 170
+  },
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "A",
+    "desert": "C",
+    "water": "C"
+  },
+  "weapon": {
+    "main": {
+      "name": "高エネルギービームライフル",
+      "range": 3,
+      "type": "遠距離"
+    },
+    "sub": {
+      "name": "ビームサーベル",
+      "range": 1,
+      "type": "近距離"
+    }
+  },
+  "ms_ability": {
+    "name": "隠密",
+    "cost": 0,
+    "description": "20秒間、敵側の表示から消えてロックオンされなくなる。効果時間が切れるか、何らかの攻撃が当たると効果が解除される。"
+  },
+  "special_attack": {
+    "name": "高エネルギービームライフル撃射",
+    "target": "単体（敵）",
+    "range": 3,
+    "power": 3100,
+    "description": "敵単体に射撃攻撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "[機動力]小アップ",
+      "condition": "デッキに3枚以上",
+      "effect": "ガンダムSEED"
+    },
+    {
+      "name": "[機動力]小アップ",
+      "condition": "デッキに2枚以上",
+      "effect": "漆黒の戦士"
+    }
+  ],
+  "illust": "gomibako"
+}

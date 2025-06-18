@@ -1,0 +1,59 @@
+{
+  "type": "MS",
+  "name": "ユニコーンガンダム",
+  "model": "RX-0 UNICORN GUNDAM",
+  "cost": 7,
+  "category": "ビスト財団",
+  "pilot": "バナージ・リンクス",
+  "stats": {
+    "height": "21.7m",
+    "weight": "23.7t",
+    "mobility": 220,
+    "ranged_attack": 510,
+    "melee_attack": 240,
+    "hp": 420
+  },
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "S",
+    "desert": "A",
+    "water": "C"
+  },
+  "weapon": {
+    "main": {
+      "name": "ビーム・マグナム",
+      "range": 3,
+      "type": "遠距離"
+    },
+    "sub": {
+      "name": "ビーム・サーベル",
+      "range": 1,
+      "type": "近距離"
+    }
+  },
+  "ms_ability": {
+    "name": "貫通",
+    "cost": 3,
+    "description": "任意発動 貫通(敵) 射程 3 コスト 3\nロックオン中の敵に一定時間チャージ後、貫通射撃を行い、射線上の敵にダメージを与える。"
+  },
+  "special_attack": {
+    "name": "ビーム・マグナム貫通射撃(変身)",
+    "target": "貫通(敵)",
+    "range": 3,
+    "power": 3700,
+    "description": "デストロイモードに変身、射線上の敵にダメージを与える。変身後は能力が上昇。自分が撤退するまで効果は持続する。"
+  },
+  "link_abilities": [
+    {
+      "name": "機動力小アップ",
+      "condition": "デッキに3枚以上",
+      "effect": "ガンダムUC"
+    },
+    {
+      "name": "遠距離攻撃力小アップ",
+      "condition": "デッキに3枚以上",
+      "effect": "サイコニューの使い手"
+    }
+  ],
+  "illust": "Eske Yoshinob"
+}

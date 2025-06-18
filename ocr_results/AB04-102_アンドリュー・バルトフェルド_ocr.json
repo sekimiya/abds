@@ -1,0 +1,36 @@
+{
+  "type": "PL",
+  "name": "アンドリュー・バルトフェルド",
+  "english_name": "ANDREW WALDFELD",
+  "cost": 4,
+  "category": "難滅",
+  "age": 30,
+  "height": "181cm",
+  "units": [
+    "ラゴゥ"
+  ],
+  "pl_skill": {
+    "name": "冷静な戦況把握",
+    "trigger": "出撃後一定時間経過毎",
+    "effect": "40秒経過毎に自身の【機動力】を小アップする。最大3回まで発動。"
+  },
+  "link_abilities": [
+    {
+      "name": "ガンダムSEED",
+      "condition": "デッキに3枚以上",
+      "effect": "[機動力]小アップ"
+    },
+    {
+      "name": "優秀な士官",
+      "condition": "デッキに2枚以上",
+      "effect": "[機動力]小アップ"
+    }
+  ],
+  "stats": {
+    "mobility": 200,
+    "ranged_attack": 150,
+    "melee_attack": 110,
+    "hp": 110
+  },
+  "illust": ""
+}

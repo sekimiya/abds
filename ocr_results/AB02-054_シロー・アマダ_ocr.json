@@ -1,0 +1,37 @@
+{
+  "type": "PL",
+  "name": "シロー・アマダ",
+  "english_name": "SHIRO AMADA",
+  "cost": 3,
+  "category": "防衛",
+  "age": 23,
+  "height": "—",
+  "units": [
+    "ガンダムEz8",
+    "陸戦型ガンダム"
+  ],
+  "pl_skill": {
+    "name": "戦士の矜持",
+    "trigger": "出撃時",
+    "effect": "自身が使用するMSアビリティ「増援」の初回使用コストを1ダウンする。"
+  },
+  "link_abilities": [
+    {
+      "name": "第08MS小隊",
+      "condition": "デッキに3枚以上",
+      "effect": "「遠距離攻撃力」小アップ"
+    },
+    {
+      "name": "巧みな連携術",
+      "condition": "デッキに2枚以上",
+      "effect": "「遠距離攻撃力」小アップ"
+    }
+  ],
+  "stats": {
+    "mobility": 100,
+    "ranged_attack": 150,
+    "melee_attack": 160,
+    "hp": 130
+  },
+  "illust": "—"
+}

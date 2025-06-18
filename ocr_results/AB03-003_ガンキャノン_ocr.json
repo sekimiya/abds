@@ -1,0 +1,59 @@
+{
+  "type": "MS",
+  "name": "ガンキャノン",
+  "model": "RX-77-2 GUNCANNON",
+  "cost": 5,
+  "category": "地球連邦軍",
+  "pilot": "カイ・シデン",
+  "stats": {
+    "height": "17.5m",
+    "weight": "51.0t",
+    "mobility": 290,
+    "ranged_attack": 270,
+    "melee_attack": 200,
+    "hp": 140
+  },
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "A",
+    "desert": "A",
+    "water": "C"
+  },
+  "weapon": {
+    "main": {
+      "name": "240mmキャノン砲",
+      "range": 4,
+      "type": "遠距離"
+    },
+    "sub": {
+      "name": "ビーム・ライフル",
+      "range": 3,
+      "type": "近距離"
+    }
+  },
+  "ms_ability": {
+    "name": "集中砲火",
+    "cost": 4,
+    "description": "20秒間、ロックオンしている敵に周囲の味方ターゲットを集め、[遠・近攻撃力]を中アップ。攻撃対象が変わると効果は終了する。"
+  },
+  "special_attack": {
+    "name": "240mmキャノン砲砲撃",
+    "target": "単体（敵）",
+    "range": 4,
+    "power": 3200,
+    "description": "敵単体に射撃攻撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "機動戦士ガンダム",
+      "condition": "デッキに3枚以上",
+      "effect": "[機動力]小アップ"
+    },
+    {
+      "name": "実弾の突破力",
+      "condition": "デッキに2枚以上",
+      "effect": "[遠距離攻撃力]小アップ"
+    }
+  ],
+  "illust": "gomibako"
+}

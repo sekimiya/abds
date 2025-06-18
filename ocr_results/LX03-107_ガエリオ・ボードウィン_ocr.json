@@ -1,0 +1,38 @@
+{
+  "type": "PL",
+  "name": "ガエリオ・ボードウィン",
+  "english_name": "GAELIO BAUDUIN",
+  "cost": 1,
+  "category": "制圧",
+  "age": null,
+  "height": null,
+  "units": [
+    "ガンダム・キマリス",
+    "ガンダム・キマリス",
+    "シュヴァルベ・グレイズ(ガエリオボードウィン専用)"
+  ],
+  "pl_skill": {
+    "name": "立ち止まらぬ決意",
+    "trigger": "HP50%以下の時",
+    "effect": "30秒間、自身の[機動力]を中アップする。"
+  },
+  "link_abilities": [
+    {
+      "name": "鉄血のオルフェンズ",
+      "condition": "デッキに3枚以上",
+      "effect": "[近距離攻撃力]小アップ"
+    },
+    {
+      "name": "騎兵の激突",
+      "condition": "デッキに2枚以上",
+      "effect": "[近距離攻撃力][HP]小アップ"
+    }
+  ],
+  "stats": {
+    "mobility": 120,
+    "ranged_attack": 60,
+    "melee_attack": 160,
+    "hp": 140
+  },
+  "illust": null
+}

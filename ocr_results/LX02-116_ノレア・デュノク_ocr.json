@@ -1,0 +1,36 @@
+{
+  "type": "PL",
+  "name": "ノレア・デュノク",
+  "english_name": "NOREA DU NOC",
+  "cost": 5,
+  "category": "殲滅",
+  "age": null,
+  "height": "—",
+  "units": [
+    "ガンダム・ルブリス・ソーン"
+  ],
+  "pl_skill": {
+    "name": "敵討ちの覚悟",
+    "trigger": "味方ユニットが撤退時",
+    "effect": "35秒間、自身の「遠距離攻撃力」「近距離攻撃力」を小アップする。"
+  },
+  "link_abilities": [
+    {
+      "name": "水星の魔女",
+      "condition": "デッキに3枚以上",
+      "effect": "「機動力」小アップ"
+    },
+    {
+      "name": "優れた格闘センス",
+      "condition": "デッキに2枚以上",
+      "effect": "「近距離攻撃力」小アップ"
+    }
+  ],
+  "stats": {
+    "mobility": 210,
+    "ranged_attack": 130,
+    "melee_attack": 120,
+    "hp": 200
+  },
+  "illust": "—"
+}

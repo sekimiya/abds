@@ -1,0 +1,59 @@
+{
+  "type": "MS",
+  "name": "シルバースモー",
+  "model": "MRC-F20 SILVER SUMO",
+  "cost": 3,
+  "category": "ディアナ親衛隊",
+  "pilot": "ポゥ・エイジ",
+  "stats": {
+    "height": "20.3m",
+    "weight": "34.2t",
+    "mobility": 240,
+    "ranged_attack": 260,
+    "melee_attack": 70,
+    "hp": 280
+  },
+  "terrain_compatibility": {
+    "ground": "L",
+    "space": "S",
+    "desert": "C",
+    "water": "C"
+  },
+  "weapon": {
+    "main": {
+      "name": "ハンドビームガン",
+      "range": 3,
+      "type": "遠距離"
+    },
+    "sub": {
+      "name": "ヒートファン",
+      "range": 1,
+      "type": "近距離"
+    }
+  },
+  "ms_ability": {
+    "name": "再縮",
+    "cost": 2,
+    "description": "自身を中心とした大範囲内にいる、自身を除く味方ユニットのMSアビリティのクールタイムを、一定時間短縮する。"
+  },
+  "special_attack": {
+    "name": "ハンドビームガン撃射",
+    "target": "単体（敵）",
+    "range": 3,
+    "power": 3100,
+    "description": "敵単体に射撃攻撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "∀ガンダム",
+      "condition": "デッキに3枚以上",
+      "effect": "[HP]小アップ"
+    },
+    {
+      "name": "的確な一撃",
+      "condition": "デッキに4枚以上",
+      "effect": "[機動力]と[遠距離攻撃力]小アップ"
+    }
+  ],
+  "illust": "Robographer"
+}

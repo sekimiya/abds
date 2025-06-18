@@ -1,0 +1,36 @@
+{
+  "type": "PL",
+  "name": "マリーダ・クルス",
+  "english_name": "MARIDA CRUZ",
+  "cost": 5,
+  "category": "ネオ・ジオン残党軍「袖付き」",
+  "age": 18,
+  "height": "-",
+  "units": [
+    "クシャトリヤ"
+  ],
+  "pl_skill": {
+    "name": "高揚する戦意",
+    "trigger": "敵ユニットを撃破時",
+    "effect": "30秒間、自身の「遠距離攻撃力」をアップする。"
+  },
+  "link_abilities": [
+    {
+      "name": "ガンダムUC",
+      "condition": "デッキに3枚以上",
+      "effect": "[機動力]小アップ"
+    },
+    {
+      "name": "優れた射撃センス",
+      "condition": "デッキに2枚以上",
+      "effect": "[遠距離攻撃力]小アップ"
+    }
+  ],
+  "stats": {
+    "mobility": 60,
+    "ranged_attack": 420,
+    "melee_attack": 240,
+    "hp": 240
+  },
+  "illust": "AB01-067"
+}

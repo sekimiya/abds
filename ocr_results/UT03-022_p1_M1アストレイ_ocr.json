@@ -1,0 +1,59 @@
+{
+  "type": "MS",
+  "name": "M1アストレイ",
+  "model": "MBF-M1 M1 ASTRAY",
+  "cost": 1,
+  "category": "オーブ",
+  "pilot": "アサギ・コードウェル, マユラ・ラバッツ, ジュリ・ウー・ニェン",
+  "stats": {
+    "height": "17.53m",
+    "weight": "53.5t",
+    "mobility": 200,
+    "ranged_attack": 220,
+    "melee_attack": 80,
+    "hp": 250
+  },
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "A",
+    "desert": "C",
+    "water": "C"
+  },
+  "weapon": {
+    "main": {
+      "name": "71式ビームライフル",
+      "range": 3,
+      "type": "遠距離"
+    },
+    "sub": {
+      "name": "70式ビームサーベル",
+      "range": 1,
+      "type": "近距離"
+    }
+  },
+  "ms_ability": {
+    "name": "増援【殲滅／破甲】",
+    "cost": 5,
+    "description": "自身の周囲に殲滅タイプの味方ユニットを呼び出す。このユニットの攻撃は一定時間、被ダメージを一定値アップさせる。※上限3ユニットまで。"
+  },
+  "special_attack": {
+    "name": "71式ビームライフル撃射",
+    "target": "単体（敵）",
+    "range": 2,
+    "power": 3200,
+    "description": "敵単体に射撃攻撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "機動力小アップ",
+      "condition": "ガンダムSEEDデッキに3枚以上",
+      "effect": "機動力を制する者撃破"
+    },
+    {
+      "name": "遠距離攻撃力中アップ",
+      "condition": "デッキに機動力2枚以上",
+      "effect": "遠距離攻撃力中アップ"
+    }
+  ],
+  "illust": "Makoto Eto + Daisuke Shibukawa"
+}

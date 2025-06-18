@@ -1,0 +1,36 @@
+{
+  "type": "PL",
+  "name": "シャディク・ゼネリ",
+  "english_name": "SHADDIQ ZENELLI",
+  "cost": 2,
+  "category": "グラスレー寮",
+  "age": null,
+  "height": null,
+  "units": [
+    "ミカエリス"
+  ],
+  "pl_skill": {
+    "name": "先手の急接近",
+    "trigger": "出撃時",
+    "effect": "40秒間、自身の【機動力】【近距離攻撃力】を小アップする。"
+  },
+  "link_abilities": [
+    {
+      "name": "水星の魔女",
+      "condition": "デッキに3枚以上",
+      "effect": "【機動力】小アップ"
+    },
+    {
+      "name": "揺るがぬ意志",
+      "condition": "デッキに2枚以上",
+      "effect": "【HP】小アップ"
+    }
+  ],
+  "stats": {
+    "mobility": 110,
+    "ranged_attack": 80,
+    "melee_attack": 120,
+    "hp": 180
+  },
+  "illust": null
+}

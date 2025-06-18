@@ -1,0 +1,36 @@
+{
+  "type": "PL",
+  "name": "張 五飛",
+  "english_name": "CHANG WUFEI",
+  "cost": 3,
+  "category": "制圧",
+  "age": 15,
+  "height": "156cm",
+  "units": [
+    "シェンロンガンダム"
+  ],
+  "pl_skill": {
+    "name": "愚直な正義感",
+    "trigger": "味方ユニットが撤退時",
+    "effect": "40秒間、自身の[SP威力]を中アップする。"
+  },
+  "link_abilities": [
+    {
+      "name": "ガンダムW",
+      "condition": "デッキに3枚以上",
+      "effect": "[機動力]小アップ"
+    },
+    {
+      "name": "揺るがぬ意志",
+      "condition": "デッキに2枚以上",
+      "effect": "[HP]小アップ"
+    }
+  ],
+  "stats": {
+    "mobility": 110,
+    "ranged_attack": 140,
+    "melee_attack": 120,
+    "hp": 170
+  },
+  "illust": "C"
+}

@@ -1,0 +1,36 @@
+{
+  "type": "PL",
+  "name": "ハマーン・カーン",
+  "english_name": "HAMAN KARN",
+  "cost": 2,
+  "category": "防衛",
+  "age": 20,
+  "height": "―",
+  "units": [
+    "キュベレイ"
+  ],
+  "pl_skill": {
+    "name": "無慈悲な射撃",
+    "trigger": "HP50%以下の時",
+    "effect": "35秒間、自身の【遠距離攻撃力】をアップする。残りHPが少ない程、効果値が上昇する。"
+  },
+  "link_abilities": [
+    {
+      "name": "機動戦士Zガンダム",
+      "condition": "デッキに3枚以上",
+      "effect": "【遠距離攻撃力】小アップ"
+    },
+    {
+      "name": "ニュータイプの潜在能力",
+      "condition": "デッキに3枚以上",
+      "effect": "【機動力】小アップ"
+    }
+  ],
+  "stats": {
+    "mobility": 110,
+    "ranged_attack": 200,
+    "melee_attack": 130,
+    "hp": 130
+  },
+  "illust": "―"
+}

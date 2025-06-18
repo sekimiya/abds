@@ -1,0 +1,36 @@
+{
+  "type": "PL",
+  "name": "ロラン・セアック",
+  "english_name": "ROLAN CEHACK",
+  "cost": 3,
+  "category": "殲滅",
+  "age": 17,
+  "height": "―",
+  "units": [
+    "∀ガンダム"
+  ],
+  "pl_skill": {
+    "name": "即応の射撃体勢",
+    "trigger": "MSアビリティ発動時",
+    "effect": "SQゲージ中アップ。"
+  },
+  "link_abilities": [
+    {
+      "name": "∀ガンダム",
+      "condition": "デッキに3枚以上",
+      "effect": "[HP]小アップ"
+    },
+    {
+      "name": "的確な一撃",
+      "condition": "デッキに4枚以上",
+      "effect": "[機動力][遠距離攻撃力]小アップ"
+    }
+  ],
+  "stats": {
+    "mobility": 150,
+    "ranged_attack": 210,
+    "melee_attack": 80,
+    "hp": 230
+  },
+  "illust": "―"
+}

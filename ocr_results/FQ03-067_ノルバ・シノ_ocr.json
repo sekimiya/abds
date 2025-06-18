@@ -1,0 +1,36 @@
+{
+  "type": "PL",
+  "name": "ノルバ・シノ",
+  "english_name": "NORBA SHINO",
+  "cost": 1,
+  "category": "鉄華団",
+  "age": null,
+  "height": null,
+  "units": [
+    "ガンダム・フラウロス"
+  ],
+  "pl_skill": {
+    "name": "揺れない思い",
+    "trigger": "HP80%以下の時",
+    "effect": "自身が受けるダメージを軽減する。"
+  },
+  "link_abilities": [
+    {
+      "name": "鉄血のオルフェンズ",
+      "condition": "デッキに3枚以上",
+      "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+    },
+    {
+      "name": "可変機ファイター",
+      "condition": "デッキに3枚以上",
+      "effect": "専用作戦カードが使用可能"
+    }
+  ],
+  "stats": {
+    "mobility": 170,
+    "ranged_attack": 200,
+    "melee_attack": 40,
+    "hp": 200
+  },
+  "illust": null
+}

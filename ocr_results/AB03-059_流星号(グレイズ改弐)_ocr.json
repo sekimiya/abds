@@ -1,0 +1,59 @@
+{
+  "type": "MS",
+  "name": "流星号 (グレイズ改弐)",
+  "model": "EB-06/tc2 RYUSEI-GO (GRAZE CUSTOM II)",
+  "cost": 3,
+  "category": "近距離",
+  "pilot": "ノルバ・シノ",
+  "stats": {
+    "height": "18.9m",
+    "weight": "31.2t",
+    "mobility": 130,
+    "ranged_attack": 90,
+    "melee_attack": 260,
+    "hp": 170
+  },
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "A",
+    "desert": "C",
+    "water": "-"
+  },
+  "weapon": {
+    "main": {
+      "name": "バトルアックス",
+      "range": 1,
+      "type": "近距離"
+    },
+    "sub": {
+      "name": "120mmライフル",
+      "range": 3,
+      "type": "遠距離"
+    }
+  },
+  "ms_ability": {
+    "name": "鼓舞【近距離】",
+    "cost": 4,
+    "description": "30秒間、自身を中心とした大範囲内の味方ユニットの【近距離攻撃力】を小アップする。"
+  },
+  "special_attack": {
+    "name": "バトルアックス強撃",
+    "target": "単体（敵）",
+    "range": 2,
+    "power": 3200,
+    "description": "敵単体に格闘攻撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "鉄血のオルフェンズ",
+      "condition": "デッキに3枚以上",
+      "effect": "【近距離攻撃力】小アップ"
+    },
+    {
+      "name": "間合いを詰めた接近戦",
+      "condition": "デッキに2枚以上",
+      "effect": "【近距離攻撃力】小アップ"
+    }
+  ],
+  "illust": "gomibako"
+}

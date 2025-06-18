@@ -1,0 +1,54 @@
+{
+  "type": "MS",
+  "name": "ドム",
+  "model": "MS-09 DOM",
+  "cost": 7,
+  "category": "近距離",
+  "pilot": "ガイア, オルテガ, マッシュ",
+  "stats": {
+    "height": "18.6m",
+    "weight": "62.6t",
+    "mobility": 240,
+    "ranged_attack": 140,
+    "melee_attack": 390,
+    "hp": 330
+  },
+  "terrain_compatibility": {
+    "ground": "S",
+    "space": "C",
+    "desert": "A",
+    "water": "A"
+  },
+  "weapon": {
+    "main": {
+      "name": "ヒート・サーベル",
+      "range": 1,
+      "type": "近距離"
+    },
+    "sub": {
+      "name": "ジャイアント・バズ",
+      "range": 3,
+      "type": "遠距離"
+    }
+  },
+  "ms_ability": {
+    "name": "誘導",
+    "cost": 4,
+    "description": "25秒間、自身をロックオン距離内に捉えている敵ユニットのターゲットを自身に集める。"
+  },
+  "special_attack": {
+    "name": "ヒート・サーベル強撃",
+    "target": "単体（敵）",
+    "range": 2,
+    "power": 3400,
+    "description": "敵単体に格闘攻撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "機動戦士ガンダム",
+      "condition": "デッキに3枚以上",
+      "effect": "[機動力]小アップ"
+    }
+  ],
+  "illust": "KOU"
+}

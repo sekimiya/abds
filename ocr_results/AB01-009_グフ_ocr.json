@@ -1,0 +1,54 @@
+{
+  "type": "MS",
+  "name": "グフ",
+  "model": "MS-07B GOUF",
+  "cost": 3,
+  "category": "機動",
+  "pilot": "ランバ・ラル",
+  "stats": {
+    "height": "18.2m",
+    "weight": "58.5t",
+    "mobility": 210,
+    "ranged_attack": 190,
+    "melee_attack": 150,
+    "hp": 170
+  },
+  "terrain_compatibility": {
+    "ground": "S",
+    "space": "C",
+    "desert": "A",
+    "water": "C"
+  },
+  "weapon": {
+    "main": {
+      "name": "フィンガー・バルカン",
+      "range": 2,
+      "type": "遠距離"
+    },
+    "sub": {
+      "name": "ヒート・サーベル",
+      "range": 1,
+      "type": "近距離"
+    }
+  },
+  "ms_ability": {
+    "name": "補給",
+    "cost": 4,
+    "description": "自機を中心とした大範囲の味方ユニットのHPを中回復する。"
+  },
+  "special_attack": {
+    "name": "フィンガー・バルカン射撃",
+    "target": "単体（敵）",
+    "range": 3,
+    "power": 3200,
+    "description": "敵単体に射撃攻撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "機動戦士ガンダム",
+      "condition": "デッキに3枚以上",
+      "effect": "[機動力]小アップ"
+    }
+  ],
+  "illust": "Hayaken sarena"
+}

@@ -1,0 +1,36 @@
+{
+  "type": "PL",
+  "name": "カトル・ラバー・バ・ウィナー",
+  "english_name": "QUATRE RABERBA WINNER",
+  "cost": 4,
+  "category": "殲滅",
+  "age": 15,
+  "height": "156cm",
+  "units": [
+    "ガンダムサンドロック"
+  ],
+  "pl_skill": {
+    "name": "攻め立てる集中砲火",
+    "trigger": "MSアビリティ「集中砲火」発動時",
+    "effect": "20秒間、「集中砲火」の対象ユニットの「機動力」をわずかダウンし、被ダメージを少し上昇させる。"
+  },
+  "link_abilities": [
+    {
+      "name": "ガンダムW",
+      "condition": "デッキに3枚以上",
+      "effect": "[機動力]小アップ"
+    },
+    {
+      "name": "巧みな連携術",
+      "condition": "デッキに2枚以上",
+      "effect": "[遠距離攻撃力]小アップ"
+    }
+  ],
+  "stats": {
+    "mobility": 140,
+    "ranged_attack": 190,
+    "melee_attack": 90,
+    "hp": 150
+  },
+  "illust": "―"
+}

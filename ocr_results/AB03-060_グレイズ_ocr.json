@@ -1,0 +1,59 @@
+{
+  "type": "MS",
+  "name": "グレイズ",
+  "model": "EB-06 GRAZE",
+  "cost": 3,
+  "category": "近距離",
+  "pilot": "クランク・ゼント, アイン・ダルトン",
+  "stats": {
+    "height": "17.8m",
+    "weight": "30.2t",
+    "mobility": 130,
+    "ranged_attack": 90,
+    "melee_attack": 240,
+    "hp": 290
+  },
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "A",
+    "desert": "C",
+    "water": "C"
+  },
+  "weapon": {
+    "main": {
+      "name": "バトルアックス",
+      "range": 1,
+      "type": "近距離"
+    },
+    "sub": {
+      "name": "バズーカ砲",
+      "range": 3,
+      "type": "遠距離"
+    }
+  },
+  "ms_ability": {
+    "name": "強化[防御]",
+    "cost": 3,
+    "description": "30秒間、自身が受けるダメージを少し軽減する。"
+  },
+  "special_attack": {
+    "name": "バトルアックス強撃",
+    "target": "単体（敵）",
+    "range": 2,
+    "power": 3300,
+    "description": "敵単体に格闘攻撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "鉄血のオルフェンズ",
+      "condition": "デッキに3枚以上",
+      "effect": "[近距離攻撃力]小アップ"
+    },
+    {
+      "name": "間合いを詰めた接近戦",
+      "condition": "デッキに2枚以上",
+      "effect": "[近距離攻撃力]小アップ"
+    }
+  ],
+  "illust": "Robographer"
+}
