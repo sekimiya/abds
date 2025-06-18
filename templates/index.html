@@ -6,7 +6,7 @@
     <style>
         body { background: #1a1a1a; color: #fff; font-family: sans-serif; line-height: 1.1; padding-bottom: 0; }
         .header { background: #1a472a; color: #fff; text-align: center; padding: 1rem; font-size: 2rem; }
-        .card-grid { display: grid; grid-template-columns: repeat(5, 1fr); grid-template-rows: repeat(2, 1fr); gap: 24px; max-width: 1200px; margin: 2.5rem auto; margin-bottom: 0; }
+        .card-grid { display: grid; grid-template-columns: repeat(5, 1fr); grid-template-rows: repeat(2, 1fr); gap: 10px; max-width: 1200px; margin: 2.5rem auto 0 auto; }
         .card-item { background: #222; border: 1.5px solid #444; border-radius: 12px; padding: 0.6rem 1rem 0.6rem 1rem; text-align: center; line-height: 1.2; padding-bottom: 1rem; min-height: unset; overflow: hidden; width: 220px; box-sizing: border-box; margin: 0 auto; }
         .card-item img { max-width: 220px; max-height: 330px; width: 220px; height: auto; background: #111; border-radius: 8px; margin-top: 0.3rem; margin-bottom: 0.3rem; display: block; }
         .card-number { color: #4caf50; font-weight: bold; margin-top: 0.3rem; margin-bottom: 0.15rem; line-height: 1.2; font-size: 1.25rem; }
@@ -83,6 +83,7 @@
             border-radius: 4px;
             display: none;
         }
+        #totalStatsBars { max-width:1200px; margin:0.5rem auto 0 auto; padding:0.5rem 1rem 2rem 1rem; background:#181818; border-radius:16px; box-shadow:0 0 16px #000; display:grid; grid-template-columns:repeat(5,1fr); gap:1rem; justify-items:center; align-items:start; }
     </style>
 </head>
 <body>
@@ -116,6 +117,7 @@
     </div>
     
     <div id="cardGrid" class="card-grid"></div>
+    <div id="totalStatsBars" style="max-width:1200px;margin:2rem auto 0 auto;padding:1.5rem 1rem 2rem 1rem;background:#181818;border-radius:16px;box-shadow:0 0 16px #000;display:grid;grid-template-columns:repeat(5,1fr);gap:2.5rem;justify-items:center;align-items:start;"></div>
     <div id="activeLinkAbilities" style="max-width:900px;margin:2rem auto 0 auto;padding:1rem;background:#222;border-radius:8px;color:#ffe082;font-size:1.1em;"></div>
     
     <script>
@@ -223,7 +225,19 @@
                         return;
                     }
                     allCards = data.images;
-                    console.log('All cards loaded:', allCards.length, 'cards');
+                    
+                    // 重複を除去（カード番号で一意にする）
+                    const uniqueCards = [];
+                    const seenNumbers = new Set();
+                    for (const card of allCards) {
+                        if (!seenNumbers.has(card.number)) {
+                            uniqueCards.push(card);
+                            seenNumbers.add(card.number);
+                        }
+                    }
+                    allCards = uniqueCards;
+                    
+                    console.log('All cards loaded:', allCards.length, 'cards (duplicates removed)');
                     const cardGrid = document.getElementById('cardGrid');
                     cardGrid.innerHTML = '';
                     for (let i = 0; i < Math.min(10, allCards.length); i++) {
@@ -389,45 +403,19 @@
 
             // 合計ステータス表示欄（6〜10番目のみ）
             if (index >= 5) {
-                const sumMobDiv = document.createElement('div');
-                sumMobDiv.className = 'ocr-params';
-                sumMobDiv.id = `sum-mobility-${index}`;
-                sumMobDiv.style.background = '#222';
-                sumMobDiv.style.color = '#4caf50';
-                sumMobDiv.style.fontSize = '0.92em';
-                sumMobDiv.style.marginTop = '0.2em';
-                sumMobDiv.textContent = '';
-                div.appendChild(sumMobDiv);
-                
-                const sumRanDiv = document.createElement('div');
-                sumRanDiv.className = 'ocr-params';
-                sumRanDiv.id = `sum-ranged-${index}`;
-                sumRanDiv.style.background = '#222';
-                sumRanDiv.style.color = '#42a5f5';
-                sumRanDiv.style.fontSize = '0.92em';
-                sumRanDiv.style.marginTop = '0.2em';
-                sumRanDiv.textContent = '';
-                div.appendChild(sumRanDiv);
-                
-                const sumMelDiv = document.createElement('div');
-                sumMelDiv.className = 'ocr-params';
-                sumMelDiv.id = `sum-melee-${index}`;
-                sumMelDiv.style.background = '#222';
-                sumMelDiv.style.color = '#ffb300';
-                sumMelDiv.style.fontSize = '0.92em';
-                sumMelDiv.style.marginTop = '0.2em';
-                sumMelDiv.textContent = '';
-                div.appendChild(sumMelDiv);
-                
-                const sumHpDiv = document.createElement('div');
-                sumHpDiv.className = 'ocr-params';
-                sumHpDiv.id = `sum-hp-${index}`;
-                sumHpDiv.style.background = '#222';
-                sumHpDiv.style.color = '#e57373';
-                sumHpDiv.style.fontSize = '0.92em';
-                sumHpDiv.style.marginTop = '0.2em';
-                sumHpDiv.textContent = '';
-                div.appendChild(sumHpDiv);
+                const sumStatsDiv = document.createElement('div');
+                sumStatsDiv.className = 'ocr-params';
+                sumStatsDiv.id = `sum-stats-${index}`;
+                sumStatsDiv.style.background = '#222';
+                sumStatsDiv.style.color = '#fff';
+                sumStatsDiv.style.fontSize = '0.92em';
+                sumStatsDiv.style.marginTop = '0.2em';
+                sumStatsDiv.style.minHeight = '180px';
+                sumStatsDiv.style.display = 'flex';
+                sumStatsDiv.style.flexDirection = 'column';
+                sumStatsDiv.style.justifyContent = 'center';
+                sumStatsDiv.textContent = '';
+                div.appendChild(sumStatsDiv);
             }
             if (index < 5) div.classList.add('row-top');
         }
@@ -530,6 +518,7 @@
             });
 
             let activeList = [];
+            let uniqueSet = new Set();
             allAbilities.forEach((ab, i) => {
                 let m = ab.condRest.match(/デッキに(\d+)枚以上/);
                 if (m) {
@@ -543,7 +532,12 @@
                         });
                     }).length;
                     if (found >= count) {
-                        activeList.push(`<span style='color:#ffe082;'>${ab.skillName}</span> <span style='color:#fff;'>${ab.condRest}</span> <span style='color:#b2ffb2;'>${ab.effect}</span> <span style='color:#ff5252;'>リンクアビリティ発動中</span>`);
+                        // ユニークキーを生成（スキル名＋条件＋効果）
+                        const key = `${ab.skillName}|${ab.condRest}|${ab.effect}`;
+                        if (!uniqueSet.has(key)) {
+                            uniqueSet.add(key);
+                            activeList.push(`<span style='color:#ffe082;'>${ab.skillName}</span> <span style='color:#fff;'>${ab.condRest}</span> <span style='color:#b2ffb2;'>${ab.effect}</span> <span style='color:#ff5252;'>リンクアビリティ発動中</span>`);
+                        }
                     }
                     return;
                 }
@@ -602,121 +596,91 @@
             });
 
             // 最大値の2倍（MS+PLの最大組み合わせ）を基準とする
-            const maxMobilityTotal = maxMobility * 2;
-            const maxRangedTotal = maxRanged * 2;
-            const maxMeleeTotal = maxMelee * 2;
-            const maxHpTotal = maxHp * 2;
+            const maxMobilityTotal = 1000;
+            const maxRangedTotal = 1000;
+            const maxMeleeTotal = 1000;
+            const maxHpTotal = 1000;
 
             // 6〜10番目のカードに合計値を表示
-            for (let i = 5; i < 10; i++) {
-                const msIndex = i - 5; // 対応するMSカードのインデックス (0,1,2,3,4)
-                const plIndex = i; // パイロットカードのインデックス (5,6,7,8,9)
-                
-                let totalMobility = 0;
-                let totalRanged = 0;
-                let totalMelee = 0;
-                let totalHp = 0;
+            const totalStatsBars = document.getElementById('totalStatsBars');
+            if (totalStatsBars) {
+                totalStatsBars.innerHTML = '';
+                for (let i = 5; i < 10; i++) {
+                    const msIndex = i - 5; // 対応するMSカードのインデックス (0,1,2,3,4)
+                    const plIndex = i; // パイロットカードのインデックス (5,6,7,8,9)
+                    
+                    let totalMobility = 0;
+                    let totalRanged = 0;
+                    let totalMelee = 0;
+                    let totalHp = 0;
 
-                // MSカードの統計を取得
-                const msOcr = selectedOcrData[msIndex];
-                if (msOcr && msOcr.stats) {
-                    if (msOcr.stats.mobility) {
-                        const mobility = parseInt(msOcr.stats.mobility, 10);
-                        if (!isNaN(mobility)) totalMobility += mobility;
+                    // MSカードの統計を取得
+                    const msOcr = selectedOcrData[msIndex];
+                    if (msOcr && msOcr.stats) {
+                        if (msOcr.stats.mobility) {
+                            const mobility = parseInt(msOcr.stats.mobility, 10);
+                            if (!isNaN(mobility)) totalMobility += mobility;
+                        }
+                        if (msOcr.stats.ranged_attack) {
+                            const ranged = parseInt(msOcr.stats.ranged_attack, 10);
+                            if (!isNaN(ranged)) totalRanged += ranged;
+                        }
+                        if (msOcr.stats.melee_attack) {
+                            const melee = parseInt(msOcr.stats.melee_attack, 10);
+                            if (!isNaN(melee)) totalMelee += melee;
+                        }
+                        if (msOcr.stats.hp) {
+                            const hp = parseInt(msOcr.stats.hp, 10);
+                            if (!isNaN(hp)) totalHp += hp;
+                        }
                     }
-                    if (msOcr.stats.ranged_attack) {
-                        const ranged = parseInt(msOcr.stats.ranged_attack, 10);
-                        if (!isNaN(ranged)) totalRanged += ranged;
-                    }
-                    if (msOcr.stats.melee_attack) {
-                        const melee = parseInt(msOcr.stats.melee_attack, 10);
-                        if (!isNaN(melee)) totalMelee += melee;
-                    }
-                    if (msOcr.stats.hp) {
-                        const hp = parseInt(msOcr.stats.hp, 10);
-                        if (!isNaN(hp)) totalHp += hp;
-                    }
-                }
 
-                // パイロットカードの統計を取得
-                const plOcr = selectedOcrData[plIndex];
-                if (plOcr && plOcr.stats) {
-                    if (plOcr.stats.mobility) {
-                        const mobility = parseInt(plOcr.stats.mobility, 10);
-                        if (!isNaN(mobility)) totalMobility += mobility;
+                    // パイロットカードの統計を取得
+                    const plOcr = selectedOcrData[plIndex];
+                    if (plOcr && plOcr.stats) {
+                        if (plOcr.stats.mobility) {
+                            const mobility = parseInt(plOcr.stats.mobility, 10);
+                            if (!isNaN(mobility)) totalMobility += mobility;
+                        }
+                        if (plOcr.stats.ranged_attack) {
+                            const ranged = parseInt(plOcr.stats.ranged_attack, 10);
+                            if (!isNaN(ranged)) totalRanged += ranged;
+                        }
+                        if (plOcr.stats.melee_attack) {
+                            const melee = parseInt(plOcr.stats.melee_attack, 10);
+                            if (!isNaN(melee)) totalMelee += melee;
+                        }
+                        if (plOcr.stats.hp) {
+                            const hp = parseInt(plOcr.stats.hp, 10);
+                            if (!isNaN(hp)) totalHp += hp;
+                        }
                     }
-                    if (plOcr.stats.ranged_attack) {
-                        const ranged = parseInt(plOcr.stats.ranged_attack, 10);
-                        if (!isNaN(ranged)) totalRanged += ranged;
-                    }
-                    if (plOcr.stats.melee_attack) {
-                        const melee = parseInt(plOcr.stats.melee_attack, 10);
-                        if (!isNaN(melee)) totalMelee += melee;
-                    }
-                    if (plOcr.stats.hp) {
-                        const hp = parseInt(plOcr.stats.hp, 10);
-                        if (!isNaN(hp)) totalHp += hp;
-                    }
-                }
 
-                // パーセンテージを計算
-                const mobilityPercent = maxMobilityTotal > 0 ? (totalMobility / maxMobilityTotal) * 100 : 0;
-                const rangedPercent = maxRangedTotal > 0 ? (totalRanged / maxRangedTotal) * 100 : 0;
-                const meleePercent = maxMeleeTotal > 0 ? (totalMelee / maxMeleeTotal) * 100 : 0;
-                const hpPercent = maxHpTotal > 0 ? (totalHp / maxHpTotal) * 100 : 0;
+                    // パーセンテージを計算
+                    const mobilityPercent = maxMobilityTotal > 0 ? (totalMobility / maxMobilityTotal) * 100 : 0;
+                    const rangedPercent = maxRangedTotal > 0 ? (totalRanged / maxRangedTotal) * 100 : 0;
+                    const meleePercent = maxMeleeTotal > 0 ? (totalMelee / maxMeleeTotal) * 100 : 0;
+                    const hpPercent = maxHpTotal > 0 ? (totalHp / maxHpTotal) * 100 : 0;
 
-                const sumMobDiv = document.getElementById(`sum-mobility-${i}`);
-                const sumRanDiv = document.getElementById(`sum-ranged-${i}`);
-                const sumMelDiv = document.getElementById(`sum-melee-${i}`);
-                const sumHpDiv = document.getElementById(`sum-hp-${i}`);
+                    // 目盛りHTML（200ごと、白色ライン）
+                    const scaleHtml = `
+                        <div style=\"position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:20;\">\n                            <div style='position:absolute;left:0%;top:0;height:100%;width:2px;background:#fff;opacity:0.5;'></div>\n                            <div style='position:absolute;left:20%;top:0;height:100%;width:2px;background:#fff;opacity:0.5;'></div>\n                            <div style='position:absolute;left:40%;top:0;height:100%;width:2px;background:#fff;opacity:0.5;'></div>\n                            <div style='position:absolute;left:60%;top:0;height:100%;width:2px;background:#fff;opacity:0.5;'></div>\n                            <div style='position:absolute;left:80%;top:0;height:100%;width:2px;background:#fff;opacity:0.5;'></div>\n                            <div style='position:absolute;left:100%;top:0;height:100%;width:2px;background:#fff;opacity:0.7;'></div>\n                        </div>\n                    `;
 
-                if (sumMobDiv) {
-                    sumMobDiv.innerHTML = `
-                        <div>機動力合計: ${totalMobility}</div>
-                        <div style="background:#333;height:24px;border-radius:12px;margin-top:6px;overflow:hidden;">
-                            <div style="background:#4caf50;height:100%;width:${mobilityPercent}%;transition:width 0.3s ease;"></div>
-                        </div>
-                        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:6px;">
-                            <div style="background:#4caf50;color:#fff;padding:4px 16px;border-radius:8px;font-size:0.9em;font-weight:bold;">${mobilityPercent.toFixed(1)}%</div>
-                            <div style="font-size:0.8em;color:#888;">最大: ${maxMobilityTotal}</div>
-                        </div>
-                    `;
-                }
-                if (sumRanDiv) {
-                    sumRanDiv.innerHTML = `
-                        <div>遠距離合計: ${totalRanged}</div>
-                        <div style="background:#333;height:24px;border-radius:12px;margin-top:6px;overflow:hidden;">
-                            <div style="background:#42a5f5;height:100%;width:${rangedPercent}%;transition:width 0.3s ease;"></div>
-                        </div>
-                        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:6px;">
-                            <div style="background:#42a5f5;color:#fff;padding:4px 16px;border-radius:8px;font-size:0.9em;font-weight:bold;">${rangedPercent.toFixed(1)}%</div>
-                            <div style="font-size:0.8em;color:#888;">最大: ${maxRangedTotal}</div>
-                        </div>
-                    `;
-                }
-                if (sumMelDiv) {
-                    sumMelDiv.innerHTML = `
-                        <div>近距離合計: ${totalMelee}</div>
-                        <div style="background:#333;height:24px;border-radius:12px;margin-top:6px;overflow:hidden;">
-                            <div style="background:#ffb300;height:100%;width:${meleePercent}%;transition:width 0.3s ease;"></div>
-                        </div>
-                        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:6px;">
-                            <div style="background:#ffb300;color:#fff;padding:4px 16px;border-radius:8px;font-size:0.9em;font-weight:bold;">${meleePercent.toFixed(1)}%</div>
-                            <div style="font-size:0.8em;color:#888;">最大: ${maxMeleeTotal}</div>
-                        </div>
-                    `;
-                }
-                if (sumHpDiv) {
-                    sumHpDiv.innerHTML = `
-                        <div>HP合計: ${totalHp}</div>
-                        <div style="background:#333;height:24px;border-radius:12px;margin-top:6px;overflow:hidden;">
-                            <div style="background:#e57373;height:100%;width:${hpPercent}%;transition:width 0.3s ease;"></div>
-                        </div>
-                        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:6px;">
-                            <div style="background:#e57373;color:#fff;padding:4px 16px;border-radius:8px;font-size:0.9em;font-weight:bold;">${hpPercent.toFixed(1)}%</div>
-                            <div style="font-size:0.8em;color:#888;">最大: ${maxHpTotal}</div>
-                        </div>
-                    `;
+                    const barHtml = `
+                    <div style=\"background:#222;border-radius:12px;padding:1.2em 1.2em 1.5em 1.2em;min-width:220px;max-width:260px;box-sizing:border-box;display:flex;flex-direction:column;align-items:center;margin-bottom:1em;\">\n                        <div style='color:#4caf50;font-weight:bold;font-size:1.1em;margin-bottom:0.2em;'>${i-4}番機</div>\n                        <div style='color:#4caf50;'>機動力合計: ${totalMobility}</div>\n                        <div style=\"position:relative;background:#333;height:24px;border-radius:0;overflow:visible;margin-bottom:8px;width:100%;\">
+                            <div style="background:#4caf50;height:100%;width:${mobilityPercent}%;transition:width 0.3s ease;position:relative;z-index:10;border-radius:0;"></div>
+                            ${scaleHtml}
+                        </div>\n                        <div style=\"display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;width:100%;\">\n                            <div style=\"font-size:0.8em;color:#888;\">最大: 1000</div>\n                        </div>\n                        <div style='color:#42a5f5;'>遠距離合計: ${totalRanged}</div>\n                        <div style=\"position:relative;background:#333;height:24px;border-radius:0;overflow:visible;margin-bottom:8px;width:100%;\">
+                            <div style="background:#42a5f5;height:100%;width:${rangedPercent}%;transition:width 0.3s ease;position:relative;z-index:10;border-radius:0;"></div>
+                            ${scaleHtml}
+                        </div>\n                        <div style=\"display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;width:100%;\">\n                            <div style=\"font-size:0.8em;color:#888;\">最大: 1000</div>\n                        </div>\n                        <div style='color:#ffb300;'>近距離合計: ${totalMelee}</div>\n                        <div style=\"position:relative;background:#333;height:24px;border-radius:0;overflow:visible;margin-bottom:8px;width:100%;\">
+                            <div style="background:#ffb300;height:100%;width:${meleePercent}%;transition:width 0.3s ease;position:relative;z-index:10;border-radius:0;"></div>
+                            ${scaleHtml}
+                        </div>\n                        <div style=\"display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;width:100%;\">\n                            <div style=\"font-size:0.8em;color:#888;\">最大: 1000</div>\n                        </div>\n                        <div style='color:#e57373;'>HP合計: ${totalHp}</div>\n                        <div style=\"position:relative;background:#333;height:24px;border-radius:0;overflow:visible;margin-bottom:8px;width:100%;\">
+                            <div style="background:#e57373;height:100%;width:${hpPercent}%;transition:width 0.3s ease;position:relative;z-index:10;border-radius:0;"></div>
+                            ${scaleHtml}
+                        </div>\n                        <div style=\"display:flex;justify-content:space-between;align-items:center;width:100%;\">\n                            <div style=\"font-size:0.8em;color:#888;\">最大: 1000</div>\n                        </div>\n                    </div>`;
+                    totalStatsBars.innerHTML += barHtml;
                 }
             }
         }
@@ -781,13 +745,23 @@
                 return nameMatch || numberMatch || seriesMatch || ocrMatch;
             });
             
-            let html = `<h2 style="color:#4caf50;margin-bottom:1em;">検索結果: "${keyword}" (${searchResults.length}件)</h2>`;
+            // 重複を排除（カード番号で一意にする）
+            const uniqueResults = [];
+            const seenNumbers = new Set();
+            for (const card of searchResults) {
+                if (card.number && !seenNumbers.has(card.number)) {
+                    uniqueResults.push(card);
+                    seenNumbers.add(card.number);
+                }
+            }
             
-            if (searchResults.length === 0) {
+            let html = `<h2 style="color:#4caf50;margin-bottom:1em;">検索結果: "${keyword}" (${uniqueResults.length}件)</h2>`;
+            
+            if (uniqueResults.length === 0) {
                 html += '<p style="color:#ff5252;">該当するカードが見つかりませんでした。</p>';
             } else {
                 html += '<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1em;">';
-                searchResults.forEach(card => {
+                uniqueResults.forEach(card => {
                     let matchReason = '';
                     const keywordLower = keyword.toLowerCase();
                     
