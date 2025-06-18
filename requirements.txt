@@ -1,8 +1,9 @@
-# Python 3.10環境でのビルドを推奨（Python 3.13ではpip/setuptools関連エラーが発生）
-# Render環境変数で PYTHON_VERSION=3.10.14 を設定してください
+# Python 3.10 環境推奨（Render 環境変数 PYTHON_VERSION=3.10.14 を指定）
+
 pip==23.3.2
-setuptools==68.2.2
+setuptools==68.2.2     # 明示的に1つだけ指定（重複禁止）
 wheel==0.41.2
+
 flask==2.0.1
 requests==2.31.0
 beautifulsoup4==4.12.2
@@ -10,6 +11,4 @@ pytesseract==0.3.8
 Pillow>=10.0.0
 numpy==1.26.4
 opencv-python==4.5.3.56
-gunicorn==20.1.0 
-setuptools>=65
-wheel
+gunicorn==20.1.0
