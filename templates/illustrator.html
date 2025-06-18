@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <title>ガンダムアーセナルベース イラストレータ別カード一覧</title>
+    <title>Gundam Arsenal Base - Illustrator Cards</title>
     <style>
         body { 
             background: #1a1a1a; 
@@ -18,6 +18,22 @@
             padding: 1rem;
             font-size: 2rem;
             margin-bottom: 2rem;
+            min-width: 100%;
+            box-sizing: border-box;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+        @media (max-width: 768px) {
+            .header {
+                font-size: 1.5rem;
+                padding: 0.8rem;
+            }
+        }
+        @media (max-width: 480px) {
+            .header {
+                font-size: 1.2rem;
+                padding: 0.6rem;
+            }
         }
         .controls {
             max-width: 1200px;
@@ -89,7 +105,7 @@
     </style>
 </head>
 <body>
-    <div class="header">イラストレータ別カード一覧</div>
+    <div class="header">Illustrator Cards</div>
     
     <div class="controls">
         <select id="illustratorSelect" class="illustrator-select">

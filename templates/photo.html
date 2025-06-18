@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <title>ガンダムアーセナルベース デッキ撮影</title>
+    <title>Gundam Arsenal Base - Deck Photo Mode</title>
     <style>
         body { 
             background: #fff;
@@ -16,6 +16,22 @@
             padding: 1rem;
             font-size: 1.5rem;
             margin-bottom: 2rem;
+            min-width: 100%;
+            box-sizing: border-box;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+        @media (max-width: 768px) {
+            .header {
+                font-size: 1.3rem;
+                padding: 0.8rem;
+            }
+        }
+        @media (max-width: 480px) {
+            .header {
+                font-size: 1.1rem;
+                padding: 0.6rem;
+            }
         }
         .card-grid {
             display: grid;
@@ -51,7 +67,7 @@
     </style>
 </head>
 <body>
-    <div class="header">デッキ撮影モード</div>
+    <div class="header">Deck Photo Mode</div>
     <div id="cardGrid" class="card-grid"></div>
     <div class="back-link">
         <a href="/">← デッキビルダーに戻る</a>

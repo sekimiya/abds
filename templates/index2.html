@@ -2,10 +2,32 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <title>ガンダムアーセナルベース Deck詳細シミュレーター</title>
+    <title>Gundam Arsenal Base - Detailed Deck Simulator</title>
     <style>
         body { background: #1a1a1a; color: #fff; font-family: sans-serif; }
-        .header { background: #1a472a; color: #fff; text-align: center; padding: 1rem; font-size: 2rem; }
+        .header { 
+            background: #1a472a; 
+            color: #fff; 
+            text-align: center; 
+            padding: 1rem; 
+            font-size: 2rem; 
+            min-width: 100%;
+            box-sizing: border-box;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+        @media (max-width: 768px) {
+            .header {
+                font-size: 1.5rem;
+                padding: 0.8rem;
+            }
+        }
+        @media (max-width: 480px) {
+            .header {
+                font-size: 1.2rem;
+                padding: 0.6rem;
+            }
+        }
         .deck-table2 { border-collapse: collapse; width: 100%; max-width: 1800px; margin: 2rem auto; background: #222; }
         .deck-table2 th, .deck-table2 td { border: 1px solid #444; padding: 0.3em 0.5em; font-size: 0.95em; }
         .deck-table2 th { background: #333; color: #ffe082; }
@@ -19,7 +41,7 @@
     </style>
 </head>
 <body>
-    <div class="header">ガンダムアーセナルベース Deck詳細シミュレーター</div>
+    <div class="header">Gundam Arsenal Base - Detailed Deck Simulator</div>
     <div style="max-width:1800px;margin:1rem auto 0 auto;display:flex;align-items:center;gap:2em;">
         <div class="cost-box" id="totalCost2">総コスト 0</div>
         <div>

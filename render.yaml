@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: gundam-arsenal-base
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.10.14
+      - key: PYTHONPATH
+        value: /opt/render/project/src 
