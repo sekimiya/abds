@@ -627,84 +627,128 @@
                     const msIndex = i - 5; // 対応するMSカードのインデックス (0,1,2,3,4)
                     const plIndex = i; // パイロットカードのインデックス (5,6,7,8,9)
                     
-                    let totalMobility = 0;
-                    let totalRanged = 0;
-                    let totalMelee = 0;
-                    let totalHp = 0;
-
                     // MSカードの統計を取得
                     const msOcr = selectedOcrData[msIndex];
+                    let msMobility = 0, msRanged = 0, msMelee = 0, msHp = 0;
                     if (msOcr && msOcr.stats) {
-                        if (msOcr.stats.mobility) {
-                            const mobility = parseInt(msOcr.stats.mobility, 10);
-                            if (!isNaN(mobility)) totalMobility += mobility;
-                        }
-                        if (msOcr.stats.ranged_attack) {
-                            const ranged = parseInt(msOcr.stats.ranged_attack, 10);
-                            if (!isNaN(ranged)) totalRanged += ranged;
-                        }
-                        if (msOcr.stats.melee_attack) {
-                            const melee = parseInt(msOcr.stats.melee_attack, 10);
-                            if (!isNaN(melee)) totalMelee += melee;
-                        }
-                        if (msOcr.stats.hp) {
-                            const hp = parseInt(msOcr.stats.hp, 10);
-                            if (!isNaN(hp)) totalHp += hp;
-                        }
+                        msMobility = parseInt(msOcr.stats.mobility, 10) || 0;
+                        msRanged = parseInt(msOcr.stats.ranged_attack, 10) || 0;
+                        msMelee = parseInt(msOcr.stats.melee_attack, 10) || 0;
+                        msHp = parseInt(msOcr.stats.hp, 10) || 0;
                     }
-
                     // パイロットカードの統計を取得
                     const plOcr = selectedOcrData[plIndex];
+                    let plMobility = 0, plRanged = 0, plMelee = 0, plHp = 0;
                     if (plOcr && plOcr.stats) {
-                        if (plOcr.stats.mobility) {
-                            const mobility = parseInt(plOcr.stats.mobility, 10);
-                            if (!isNaN(mobility)) totalMobility += mobility;
-                        }
-                        if (plOcr.stats.ranged_attack) {
-                            const ranged = parseInt(plOcr.stats.ranged_attack, 10);
-                            if (!isNaN(ranged)) totalRanged += ranged;
-                        }
-                        if (plOcr.stats.melee_attack) {
-                            const melee = parseInt(plOcr.stats.melee_attack, 10);
-                            if (!isNaN(melee)) totalMelee += melee;
-                        }
-                        if (plOcr.stats.hp) {
-                            const hp = parseInt(plOcr.stats.hp, 10);
-                            if (!isNaN(hp)) totalHp += hp;
-                        }
+                        plMobility = parseInt(plOcr.stats.mobility, 10) || 0;
+                        plRanged = parseInt(plOcr.stats.ranged_attack, 10) || 0;
+                        plMelee = parseInt(plOcr.stats.melee_attack, 10) || 0;
+                        plHp = parseInt(plOcr.stats.hp, 10) || 0;
                     }
+                    // --- リンクアビリティ補正 ---
+                    function getLinkBuffs(ocr) {
+                        const buffs = {
+                            mobility: { small: 0, medium: 0 },
+                            ranged: { small: 0, medium: 0 },
+                            melee: { small: 0, medium: 0 },
+                            hp: { small: 0, medium: 0 }
+                        };
+                        if (!ocr || !Array.isArray(ocr.link_abilities)) return buffs;
+                        ocr.link_abilities.forEach(link => {
+                            const eff = link.effect || '';
+                            // 小アップ
+                            if (eff.match(/機動力.*小アップ|\[機動力\].*小アップ|"機動力".*小アップ/)) buffs.mobility.small++;
+                            if (eff.match(/遠距離攻撃力.*小アップ|\[遠距離攻撃力\].*小アップ|"遠距離攻撃力".*小アップ/)) buffs.ranged.small++;
+                            if (eff.match(/近距離攻撃力.*小アップ|\[近距離攻撃力\].*小アップ|"近距離攻撃力".*小アップ/)) buffs.melee.small++;
+                            if (eff.match(/HP.*小アップ|\[HP\].*小アップ|"HP".*小アップ/)) buffs.hp.small++;
+                            // 中アップ
+                            if (eff.match(/機動力.*中アップ|\[機動力\].*中アップ|"機動力".*中アップ/)) buffs.mobility.medium++;
+                            if (eff.match(/遠距離攻撃力.*中アップ|\[遠距離攻撃力\].*中アップ|"遠距離攻撃力".*中アップ/)) buffs.ranged.medium++;
+                            if (eff.match(/近距離攻撃力.*中アップ|\[近距離攻撃力\].*中アップ|"近距離攻撃力".*中アップ/)) buffs.melee.medium++;
+                            if (eff.match(/HP.*中アップ|\[HP\].*中アップ|"HP".*中アップ/)) buffs.hp.medium++;
+                        });
+                        return buffs;
+                    }
+                    // MS/PLごとに補正値を計算
+                    const msBuffs = getLinkBuffs(msOcr);
+                    const plBuffs = getLinkBuffs(plOcr);
+                    function applyBuff(val, small, medium) {
+                        return Math.round(val * Math.pow(1.1, small) * Math.pow(1.2, medium));
+                    }
+                    // 補正後の値
+                    const msMobilityBuffed = applyBuff(msMobility, msBuffs.mobility.small, msBuffs.mobility.medium);
+                    const msRangedBuffed = applyBuff(msRanged, msBuffs.ranged.small, msBuffs.ranged.medium);
+                    const msMeleeBuffed = applyBuff(msMelee, msBuffs.melee.small, msBuffs.melee.medium);
+                    const msHpBuffed = applyBuff(msHp, msBuffs.hp.small, msBuffs.hp.medium);
+                    const plMobilityBuffed = applyBuff(plMobility, plBuffs.mobility.small, plBuffs.mobility.medium);
+                    const plRangedBuffed = applyBuff(plRanged, plBuffs.ranged.small, plBuffs.ranged.medium);
+                    const plMeleeBuffed = applyBuff(plMelee, plBuffs.melee.small, plBuffs.melee.medium);
+                    const plHpBuffed = applyBuff(plHp, plBuffs.hp.small, plBuffs.hp.medium);
+                    
+                    // 元の値（補正なし）
+                    const baseMobility = msMobility + plMobility;
+                    const baseRanged = msRanged + plRanged;
+                    const baseMelee = msMelee + plMelee;
+                    const baseHp = msHp + plHp;
+                    
+                    // 補正後の合計値
+                    const totalMobility = msMobilityBuffed + plMobilityBuffed;
+                    const totalRanged = msRangedBuffed + plRangedBuffed;
+                    const totalMelee = msMeleeBuffed + plMeleeBuffed;
+                    const totalHp = msHpBuffed + plHpBuffed;
+                    
+                    // 上昇分を計算
+                    const mobilityBuff = totalMobility - baseMobility;
+                    const rangedBuff = totalRanged - baseRanged;
+                    const meleeBuff = totalMelee - baseMelee;
+                    const hpBuff = totalHp - baseHp;
 
                     // パーセンテージを計算
                     const mobilityPercent = maxMobilityTotal > 0 ? (totalMobility / maxMobilityTotal) * 100 : 0;
                     const rangedPercent = maxRangedTotal > 0 ? (totalRanged / maxRangedTotal) * 100 : 0;
                     const meleePercent = maxMeleeTotal > 0 ? (totalMelee / maxMeleeTotal) * 100 : 0;
                     const hpPercent = maxHpTotal > 0 ? (totalHp / maxHpTotal) * 100 : 0;
+                    
+                    // 元の値と上昇分のパーセンテージ
+                    const baseMobilityPercent = maxMobilityTotal > 0 ? (baseMobility / maxMobilityTotal) * 100 : 0;
+                    const baseRangedPercent = maxRangedTotal > 0 ? (baseRanged / maxRangedTotal) * 100 : 0;
+                    const baseMeleePercent = maxMeleeTotal > 0 ? (baseMelee / maxMeleeTotal) * 100 : 0;
+                    const baseHpPercent = maxHpTotal > 0 ? (baseHp / maxHpTotal) * 100 : 0;
+                    
+                    const mobilityBuffPercent = maxMobilityTotal > 0 ? (mobilityBuff / maxMobilityTotal) * 100 : 0;
+                    const rangedBuffPercent = maxRangedTotal > 0 ? (rangedBuff / maxRangedTotal) * 100 : 0;
+                    const meleeBuffPercent = maxMeleeTotal > 0 ? (meleeBuff / maxMeleeTotal) * 100 : 0;
+                    const hpBuffPercent = maxHpTotal > 0 ? (hpBuff / maxHpTotal) * 100 : 0;
 
                     // 目盛りHTML（200ごと、白色ライン）
                     const scaleHtml = `
                         <div style=\"position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:20;\">\n                            <div style='position:absolute;left:0%;top:0;height:100%;width:2px;background:#fff;opacity:0.5;'></div>\n                            <div style='position:absolute;left:20%;top:0;height:100%;width:2px;background:#fff;opacity:0.5;'></div>\n                            <div style='position:absolute;left:40%;top:0;height:100%;width:2px;background:#fff;opacity:0.5;'></div>\n                            <div style='position:absolute;left:60%;top:0;height:100%;width:2px;background:#fff;opacity:0.5;'></div>\n                            <div style='position:absolute;left:80%;top:0;height:100%;width:2px;background:#fff;opacity:0.5;'></div>\n                            <div style='position:absolute;left:100%;top:0;height:100%;width:2px;background:#fff;opacity:0.7;'></div>\n                        </div>\n                    `;
 
                     const barHtml = `
-                    <div style=\"background:#222;border-radius:12px;padding:1.2em 1.2em 1.5em 1.2em;min-width:220px;max-width:260px;box-sizing:border-box;display:flex;flex-direction:column;align-items:center;margin-bottom:1em;\">\n                        <div style='color:#4caf50;font-weight:bold;font-size:1.1em;margin-bottom:0.2em;'>${i-4}番機</div>\n                        <div style='color:#4caf50;'>機動力合計: ${totalMobility}</div>\n                        <div style="position:relative;background:#333;height:24px;border-radius:0;overflow:visible;margin-bottom:8px;width:100%;">
-                            <div style=\"background:#2196f3;height:100%;width:${mobilityPercent}%;transition:width 0.3s ease;position:relative;z-index:10;border-radius:0;\"></div>
+                    <div style=\"background:#222;border-radius:12px;padding:1.2em 1.2em 1.5em 1.2em;min-width:220px;max-width:260px;box-sizing:border-box;display:flex;flex-direction:column;align-items:center;margin-bottom:1em;\">\n                        <div style='color:#4caf50;font-weight:bold;font-size:1.1em;margin-bottom:0.2em;'>${i-4}番機</div>\n                        <div style='color:#4caf50;'>機動力合計: ${totalMobility} <span style='color:#e91e63;font-size:0.9em;'>(+${mobilityBuff})</span></div>\n                        <div style="position:relative;background:#333;height:24px;border-radius:0;overflow:visible;margin-bottom:8px;width:100%;">
+                            <div style=\"background:#2196f3;height:100%;width:${baseMobilityPercent}%;transition:width 0.3s ease;position:absolute;left:0;top:0;z-index:10;border-radius:0;\"></div>
+                            <div style=\"background:#e91e63;height:100%;width:${mobilityBuffPercent}%;transition:width 0.3s ease;position:absolute;left:${baseMobilityPercent}%;top:0;z-index:10;border-radius:0;\"></div>
                             ${scaleHtml}
                         </div>
                         <div style=\"display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;width:100%;\">\n                            <div style=\"background:#2196f3;color:#fff;padding:4px 16px;border-radius:8px;font-size:0.9em;font-weight:bold;\">${mobilityPercent.toFixed(1)}%</div>\n                        </div>
-                        <div style='color:#2196f3;'>遠距離合計: ${totalRanged}</div>
+                        <div style='color:#2196f3;'>遠距離合計: ${totalRanged} <span style='color:#e91e63;font-size:0.9em;'>(+${rangedBuff})</span></div>
                         <div style="position:relative;background:#333;height:24px;border-radius:0;overflow:visible;margin-bottom:8px;width:100%;">
-                            <div style=\"background:#2196f3;height:100%;width:${rangedPercent}%;transition:width 0.3s ease;position:relative;z-index:10;border-radius:0;\"></div>
+                            <div style=\"background:#2196f3;height:100%;width:${baseRangedPercent}%;transition:width 0.3s ease;position:absolute;left:0;top:0;z-index:10;border-radius:0;\"></div>
+                            <div style=\"background:#e91e63;height:100%;width:${rangedBuffPercent}%;transition:width 0.3s ease;position:absolute;left:${baseRangedPercent}%;top:0;z-index:10;border-radius:0;\"></div>
                             ${scaleHtml}
                         </div>
                         <div style=\"display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;width:100%;\">\n                            <div style=\"background:#2196f3;color:#fff;padding:4px 16px;border-radius:8px;font-size:0.9em;font-weight:bold;\">${rangedPercent.toFixed(1)}%</div>\n                        </div>
-                        <div style='color:#2196f3;'>近距離合計: ${totalMelee}</div>
+                        <div style='color:#2196f3;'>近距離合計: ${totalMelee} <span style='color:#e91e63;font-size:0.9em;'>(+${meleeBuff})</span></div>
                         <div style="position:relative;background:#333;height:24px;border-radius:0;overflow:visible;margin-bottom:8px;width:100%;">
-                            <div style=\"background:#2196f3;height:100%;width:${meleePercent}%;transition:width 0.3s ease;position:relative;z-index:10;border-radius:0;\"></div>
+                            <div style=\"background:#2196f3;height:100%;width:${baseMeleePercent}%;transition:width 0.3s ease;position:absolute;left:0;top:0;z-index:10;border-radius:0;\"></div>
+                            <div style=\"background:#e91e63;height:100%;width:${meleeBuffPercent}%;transition:width 0.3s ease;position:absolute;left:${baseMeleePercent}%;top:0;z-index:10;border-radius:0;\"></div>
                             ${scaleHtml}
                         </div>
                         <div style=\"display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;width:100%;\">\n                            <div style=\"background:#2196f3;color:#fff;padding:4px 16px;border-radius:8px;font-size:0.9em;font-weight:bold;\">${meleePercent.toFixed(1)}%</div>\n                        </div>
-                        <div style='color:#2196f3;'>HP合計: ${totalHp}</div>
+                        <div style='color:#2196f3;'>HP合計: ${totalHp} <span style='color:#e91e63;font-size:0.9em;'>(+${hpBuff})</span></div>
                         <div style="position:relative;background:#333;height:24px;border-radius:0;overflow:visible;margin-bottom:8px;width:100%;">
-                            <div style=\"background:#2196f3;height:100%;width:${hpPercent}%;transition:width 0.3s ease;position:relative;z-index:10;border-radius:0;\"></div>
+                            <div style=\"background:#2196f3;height:100%;width:${baseHpPercent}%;transition:width 0.3s ease;position:absolute;left:0;top:0;z-index:10;border-radius:0;\"></div>
+                            <div style=\"background:#e91e63;height:100%;width:${hpBuffPercent}%;transition:width 0.3s ease;position:absolute;left:${baseHpPercent}%;top:0;z-index:10;border-radius:0;\"></div>
                             ${scaleHtml}
                         </div>
                         <div style=\"display:flex;justify-content:space-between;align-items:center;width:100%;\">\n                            <div style=\"background:#2196f3;color:#fff;padding:4px 16px;border-radius:8px;font-size:0.9em;font-weight:bold;\">${hpPercent.toFixed(1)}%</div>\n                        </div>\n                    </div>`;
