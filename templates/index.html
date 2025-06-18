@@ -572,6 +572,41 @@
 
         // 合計ステータス更新
         function updateSumStats() {
+            // 各パラメータの最大値を計算
+            let maxMobility = 0;
+            let maxRanged = 0;
+            let maxMelee = 0;
+            let maxHp = 0;
+
+            // 全カードから最大値を取得
+            allCards.forEach(card => {
+                if (card.ocr_data && card.ocr_data.stats) {
+                    const stats = card.ocr_data.stats;
+                    if (stats.mobility) {
+                        const mobility = parseInt(stats.mobility, 10);
+                        if (!isNaN(mobility)) maxMobility = Math.max(maxMobility, mobility);
+                    }
+                    if (stats.ranged_attack) {
+                        const ranged = parseInt(stats.ranged_attack, 10);
+                        if (!isNaN(ranged)) maxRanged = Math.max(maxRanged, ranged);
+                    }
+                    if (stats.melee_attack) {
+                        const melee = parseInt(stats.melee_attack, 10);
+                        if (!isNaN(melee)) maxMelee = Math.max(maxMelee, melee);
+                    }
+                    if (stats.hp) {
+                        const hp = parseInt(stats.hp, 10);
+                        if (!isNaN(hp)) maxHp = Math.max(maxHp, hp);
+                    }
+                }
+            });
+
+            // 最大値の2倍（MS+PLの最大組み合わせ）を基準とする
+            const maxMobilityTotal = maxMobility * 2;
+            const maxRangedTotal = maxRanged * 2;
+            const maxMeleeTotal = maxMelee * 2;
+            const maxHpTotal = maxHp * 2;
+
             // 6〜10番目のカードに合計値を表示
             for (let i = 5; i < 10; i++) {
                 const msIndex = i - 5; // 対応するMSカードのインデックス (0,1,2,3,4)
@@ -624,15 +659,53 @@
                     }
                 }
 
+                // パーセンテージを計算
+                const mobilityPercent = maxMobilityTotal > 0 ? (totalMobility / maxMobilityTotal) * 100 : 0;
+                const rangedPercent = maxRangedTotal > 0 ? (totalRanged / maxRangedTotal) * 100 : 0;
+                const meleePercent = maxMeleeTotal > 0 ? (totalMelee / maxMeleeTotal) * 100 : 0;
+                const hpPercent = maxHpTotal > 0 ? (totalHp / maxHpTotal) * 100 : 0;
+
                 const sumMobDiv = document.getElementById(`sum-mobility-${i}`);
                 const sumRanDiv = document.getElementById(`sum-ranged-${i}`);
                 const sumMelDiv = document.getElementById(`sum-melee-${i}`);
                 const sumHpDiv = document.getElementById(`sum-hp-${i}`);
 
-                if (sumMobDiv) sumMobDiv.textContent = `機動力合計: ${totalMobility}`;
-                if (sumRanDiv) sumRanDiv.textContent = `遠距離合計: ${totalRanged}`;
-                if (sumMelDiv) sumMelDiv.textContent = `近距離合計: ${totalMelee}`;
-                if (sumHpDiv) sumHpDiv.textContent = `HP合計: ${totalHp}`;
+                if (sumMobDiv) {
+                    sumMobDiv.innerHTML = `
+                        <div>機動力合計: ${totalMobility}</div>
+                        <div style="background:#333;height:8px;border-radius:4px;margin-top:2px;overflow:hidden;">
+                            <div style="background:#4caf50;height:100%;width:${mobilityPercent}%;transition:width 0.3s ease;"></div>
+                        </div>
+                        <div style="font-size:0.7em;color:#888;margin-top:1px;">${mobilityPercent.toFixed(1)}% (最大: ${maxMobilityTotal})</div>
+                    `;
+                }
+                if (sumRanDiv) {
+                    sumRanDiv.innerHTML = `
+                        <div>遠距離合計: ${totalRanged}</div>
+                        <div style="background:#333;height:8px;border-radius:4px;margin-top:2px;overflow:hidden;">
+                            <div style="background:#42a5f5;height:100%;width:${rangedPercent}%;transition:width 0.3s ease;"></div>
+                        </div>
+                        <div style="font-size:0.7em;color:#888;margin-top:1px;">${rangedPercent.toFixed(1)}% (最大: ${maxRangedTotal})</div>
+                    `;
+                }
+                if (sumMelDiv) {
+                    sumMelDiv.innerHTML = `
+                        <div>近距離合計: ${totalMelee}</div>
+                        <div style="background:#333;height:8px;border-radius:4px;margin-top:2px;overflow:hidden;">
+                            <div style="background:#ffb300;height:100%;width:${meleePercent}%;transition:width 0.3s ease;"></div>
+                        </div>
+                        <div style="font-size:0.7em;color:#888;margin-top:1px;">${meleePercent.toFixed(1)}% (最大: ${maxMeleeTotal})</div>
+                    `;
+                }
+                if (sumHpDiv) {
+                    sumHpDiv.innerHTML = `
+                        <div>HP合計: ${totalHp}</div>
+                        <div style="background:#333;height:8px;border-radius:4px;margin-top:2px;overflow:hidden;">
+                            <div style="background:#e57373;height:100%;width:${hpPercent}%;transition:width 0.3s ease;"></div>
+                        </div>
+                        <div style="font-size:0.7em;color:#888;margin-top:1px;">${hpPercent.toFixed(1)}% (最大: ${maxHpTotal})</div>
+                    `;
+                }
             }
         }
 
