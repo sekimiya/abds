@@ -5,13 +5,13 @@
     <title>ガンダムアーセナルベース Deck Simulator</title>
     <style>
         body { background: #1a1a1a; color: #fff; font-family: sans-serif; line-height: 1.1; padding-bottom: 0; }
-        .header { background: #1a472a; color: #fff; text-align: center; padding: 1rem; font-size: 2rem; }
+        .header { background: #66f2c5; color: #222; text-align: center; padding: 1rem; font-size: 2rem; font-weight: bold; letter-spacing: 0.05em; }
         .card-grid { display: grid; grid-template-columns: repeat(5, 1fr); grid-template-rows: repeat(2, 1fr); gap: 10px; max-width: 1200px; margin: 2.5rem auto 0 auto; }
         .card-item { background: #222; border: 1.5px solid #444; border-radius: 12px; padding: 0.6rem 1rem 0.6rem 1rem; text-align: center; line-height: 1.2; padding-bottom: 1rem; min-height: unset; overflow: hidden; width: 220px; box-sizing: border-box; margin: 0 auto; }
         .card-item img { max-width: 220px; max-height: 330px; width: 220px; height: auto; background: #111; border-radius: 8px; margin-top: 0.3rem; margin-bottom: 0.3rem; display: block; }
-        .card-number { color: #4caf50; font-weight: bold; margin-top: 0.3rem; margin-bottom: 0.15rem; line-height: 1.2; font-size: 1.25rem; }
+        .card-number { color: #66f2c5; font-weight: bold; margin-top: 0.3rem; margin-bottom: 0.15rem; line-height: 1.2; font-size: 1.25rem; }
         .card-name { margin-top: 0.15rem; margin-bottom: 0.15rem; font-size: 1.25rem; line-height: 1.2; }
-        .card-select { width: 100%; margin-top: 0.3rem; margin-bottom: 0.3rem; padding: 0.5rem; border-radius: 6px; border: 1.5px solid #444; background: #333; color: #fff; line-height: 1.2; font-size: 1.1rem; }
+        .card-select { width: 100%; margin-top: 0.3rem; margin-bottom: 0.3rem; padding: 0.5rem; border-radius: 6px; border: 1.5px solid #66f2c5; background: #333; color: #fff; line-height: 1.2; font-size: 1.1rem; }
         .ocr-params { background: #181818; border-radius: 8px; margin-top: 0.15rem; padding: 0.15rem; min-height: 1.5em; font-size: 1.08em; color: #b2ffb2; display: flex; flex-wrap: wrap; align-items: center; gap: 0.3em; line-height: 1.1; }
         .ocr-params .label { color: #4caf50; margin-right: 0.2em; }
         .ocr-params span { margin-right: 0.4em; }
@@ -52,20 +52,22 @@
         }
         .deck-save-btn {
             padding: 0.5rem 1rem;
-            background: #4caf50;
-            color: #fff;
+            background: #66f2c5;
+            color: #222;
             border: none;
             border-radius: 4px;
             cursor: pointer;
             margin-right: 0.5rem;
+            font-weight: bold;
         }
         .deck-load-btn {
             padding: 0.5rem 1rem;
-            background: #2196f3;
-            color: #fff;
+            background: #66f2c5;
+            color: #222;
             border: none;
             border-radius: 4px;
             cursor: pointer;
+            font-weight: bold;
         }
         .auto-save-toggle {
             margin: 1rem 0;
@@ -83,13 +85,29 @@
             border-radius: 4px;
             display: none;
         }
-        #totalStatsBars { max-width:1200px; margin:0.5rem auto 0 auto; padding:0.5rem 1rem 2rem 1rem; background:#181818; border-radius:16px; box-shadow:0 0 16px #000; display:grid; grid-template-columns:repeat(5,1fr); gap:1rem; justify-items:center; align-items:start; }
+        #totalStatsBars { max-width:1200px; margin:0.5rem auto 0 auto; padding:0.5rem 1rem 2rem 1rem; background:#181818; border-radius:16px; box-shadow:0 0 16px #000; display:grid; grid-template-columns:repeat(5,1fr); gap:0.25rem; justify-items:center; align-items:start; }
+        a {
+            color: #66f2c5;
+        }
+        .deck-save-input:focus {
+            border: 1.5px solid #66f2c5;
+            outline: none;
+        }
+        #totalCost {
+            color: #66f2c5;
+        }
+        #totalStatsBars .card-number {
+            color: #66f2c5;
+        }
+        .auto-save-toggle label {
+            color: #66f2c5;
+        }
     </style>
 </head>
 <body>
     <div class="header">ガンダムアーセナルベース Deck Simulator</div>
     
-    <div id="totalCost" style="max-width:900px;margin:1rem auto;padding:0.5rem;background:#333;border-radius:6px;color:#4caf50;font-size:1.2em;text-align:center;font-weight:bold;">総コスト: 0</div>
+    <div id="totalCost" style="max-width:900px;margin:1rem auto;padding:0.5rem;background:#333;border-radius:6px;color:#66f2c5;font-size:1.2em;text-align:center;font-weight:bold;">総コスト: 0</div>
     
     <!-- デッキ保存・読み込み機能 -->
     <div class="deck-save-section">
@@ -385,9 +403,9 @@
             searchBtn.textContent = '検索';
             searchBtn.style.padding = '0.4em 1em';
             searchBtn.style.borderRadius = '4px';
-            searchBtn.style.border = '1px solid #4caf50';
-            searchBtn.style.background = '#222';
-            searchBtn.style.color = '#4caf50';
+            searchBtn.style.border = '1px solid #66f2c5';
+            searchBtn.style.background = '#66f2c5';
+            searchBtn.style.color = '#222';
             searchBtn.style.cursor = 'pointer';
             searchBtn.style.width = '100%';
             searchBtn.style.fontSize = '1em';
@@ -667,19 +685,29 @@
                         <div style=\"position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:20;\">\n                            <div style='position:absolute;left:0%;top:0;height:100%;width:2px;background:#fff;opacity:0.5;'></div>\n                            <div style='position:absolute;left:20%;top:0;height:100%;width:2px;background:#fff;opacity:0.5;'></div>\n                            <div style='position:absolute;left:40%;top:0;height:100%;width:2px;background:#fff;opacity:0.5;'></div>\n                            <div style='position:absolute;left:60%;top:0;height:100%;width:2px;background:#fff;opacity:0.5;'></div>\n                            <div style='position:absolute;left:80%;top:0;height:100%;width:2px;background:#fff;opacity:0.5;'></div>\n                            <div style='position:absolute;left:100%;top:0;height:100%;width:2px;background:#fff;opacity:0.7;'></div>\n                        </div>\n                    `;
 
                     const barHtml = `
-                    <div style=\"background:#222;border-radius:12px;padding:1.2em 1.2em 1.5em 1.2em;min-width:220px;max-width:260px;box-sizing:border-box;display:flex;flex-direction:column;align-items:center;margin-bottom:1em;\">\n                        <div style='color:#4caf50;font-weight:bold;font-size:1.1em;margin-bottom:0.2em;'>${i-4}番機</div>\n                        <div style='color:#4caf50;'>機動力合計: ${totalMobility}</div>\n                        <div style=\"position:relative;background:#333;height:24px;border-radius:0;overflow:visible;margin-bottom:8px;width:100%;\">
-                            <div style="background:#4caf50;height:100%;width:${mobilityPercent}%;transition:width 0.3s ease;position:relative;z-index:10;border-radius:0;"></div>
+                    <div style=\"background:#222;border-radius:12px;padding:1.2em 1.2em 1.5em 1.2em;min-width:220px;max-width:260px;box-sizing:border-box;display:flex;flex-direction:column;align-items:center;margin-bottom:1em;\">\n                        <div style='color:#4caf50;font-weight:bold;font-size:1.1em;margin-bottom:0.2em;'>${i-4}番機</div>\n                        <div style='color:#4caf50;'>機動力合計: ${totalMobility}</div>\n                        <div style="position:relative;background:#333;height:24px;border-radius:0;overflow:visible;margin-bottom:8px;width:100%;">
+                            <div style=\"background:#2196f3;height:100%;width:${mobilityPercent}%;transition:width 0.3s ease;position:relative;z-index:10;border-radius:0;\"></div>
                             ${scaleHtml}
-                        </div>\n                        <div style=\"display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;width:100%;\">\n                            <div style=\"font-size:0.8em;color:#888;\">最大: 1000</div>\n                        </div>\n                        <div style='color:#42a5f5;'>遠距離合計: ${totalRanged}</div>\n                        <div style=\"position:relative;background:#333;height:24px;border-radius:0;overflow:visible;margin-bottom:8px;width:100%;\">
-                            <div style="background:#42a5f5;height:100%;width:${rangedPercent}%;transition:width 0.3s ease;position:relative;z-index:10;border-radius:0;"></div>
+                        </div>
+                        <div style=\"display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;width:100%;\">\n                            <div style=\"background:#2196f3;color:#fff;padding:4px 16px;border-radius:8px;font-size:0.9em;font-weight:bold;\">${mobilityPercent.toFixed(1)}%</div>\n                        </div>
+                        <div style='color:#2196f3;'>遠距離合計: ${totalRanged}</div>
+                        <div style="position:relative;background:#333;height:24px;border-radius:0;overflow:visible;margin-bottom:8px;width:100%;">
+                            <div style=\"background:#2196f3;height:100%;width:${rangedPercent}%;transition:width 0.3s ease;position:relative;z-index:10;border-radius:0;\"></div>
                             ${scaleHtml}
-                        </div>\n                        <div style=\"display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;width:100%;\">\n                            <div style=\"font-size:0.8em;color:#888;\">最大: 1000</div>\n                        </div>\n                        <div style='color:#ffb300;'>近距離合計: ${totalMelee}</div>\n                        <div style=\"position:relative;background:#333;height:24px;border-radius:0;overflow:visible;margin-bottom:8px;width:100%;\">
-                            <div style="background:#ffb300;height:100%;width:${meleePercent}%;transition:width 0.3s ease;position:relative;z-index:10;border-radius:0;"></div>
+                        </div>
+                        <div style=\"display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;width:100%;\">\n                            <div style=\"background:#2196f3;color:#fff;padding:4px 16px;border-radius:8px;font-size:0.9em;font-weight:bold;\">${rangedPercent.toFixed(1)}%</div>\n                        </div>
+                        <div style='color:#2196f3;'>近距離合計: ${totalMelee}</div>
+                        <div style="position:relative;background:#333;height:24px;border-radius:0;overflow:visible;margin-bottom:8px;width:100%;">
+                            <div style=\"background:#2196f3;height:100%;width:${meleePercent}%;transition:width 0.3s ease;position:relative;z-index:10;border-radius:0;\"></div>
                             ${scaleHtml}
-                        </div>\n                        <div style=\"display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;width:100%;\">\n                            <div style=\"font-size:0.8em;color:#888;\">最大: 1000</div>\n                        </div>\n                        <div style='color:#e57373;'>HP合計: ${totalHp}</div>\n                        <div style=\"position:relative;background:#333;height:24px;border-radius:0;overflow:visible;margin-bottom:8px;width:100%;\">
-                            <div style="background:#e57373;height:100%;width:${hpPercent}%;transition:width 0.3s ease;position:relative;z-index:10;border-radius:0;"></div>
+                        </div>
+                        <div style=\"display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;width:100%;\">\n                            <div style=\"background:#2196f3;color:#fff;padding:4px 16px;border-radius:8px;font-size:0.9em;font-weight:bold;\">${meleePercent.toFixed(1)}%</div>\n                        </div>
+                        <div style='color:#2196f3;'>HP合計: ${totalHp}</div>
+                        <div style="position:relative;background:#333;height:24px;border-radius:0;overflow:visible;margin-bottom:8px;width:100%;">
+                            <div style=\"background:#2196f3;height:100%;width:${hpPercent}%;transition:width 0.3s ease;position:relative;z-index:10;border-radius:0;\"></div>
                             ${scaleHtml}
-                        </div>\n                        <div style=\"display:flex;justify-content:space-between;align-items:center;width:100%;\">\n                            <div style=\"font-size:0.8em;color:#888;\">最大: 1000</div>\n                        </div>\n                    </div>`;
+                        </div>
+                        <div style=\"display:flex;justify-content:space-between;align-items:center;width:100%;\">\n                            <div style=\"background:#2196f3;color:#fff;padding:4px 16px;border-radius:8px;font-size:0.9em;font-weight:bold;\">${hpPercent.toFixed(1)}%</div>\n                        </div>\n                    </div>`;
                     totalStatsBars.innerHTML += barHtml;
                 }
             }
