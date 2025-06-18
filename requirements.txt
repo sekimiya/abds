@@ -1,6 +1,8 @@
-pip>=24.0
-setuptools>=65.0.0
-wheel
+# Python 3.10環境でのビルドを推奨（Python 3.13ではpip/setuptools関連エラーが発生）
+# Render環境変数で PYTHON_VERSION=3.10.14 を設定してください
+pip==23.3.2
+setuptools==68.2.2
+wheel==0.41.2
 flask==2.0.1
 requests==2.31.0
 beautifulsoup4==4.12.2
