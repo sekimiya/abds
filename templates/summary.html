@@ -358,11 +358,11 @@
                 const pl = cards[i + 5];
                 
                 const msImgEl = document.getElementById(`ms-img-${i}`);
-                msImgEl.src = ms ? ms.front.url : '';
+                msImgEl.src = ms ? ms.front.image_url : '';
                 msImgEl.onclick = () => openSelectionModal(i, 'MS');
 
                 const plImgEl = document.getElementById(`pl-img-${i}`);
-                plImgEl.src = pl ? pl.front.url : '';
+                plImgEl.src = pl ? pl.front.image_url : '';
                 plImgEl.onclick = () => openSelectionModal(i, 'PL');
 
                 document.getElementById(`ms-name-${i}`).textContent = ms ? `${ms.number} ${ms.name}` : '-';
@@ -769,7 +769,7 @@
                     const seriesId = seriesCodeToId[card.series];
                     const seriesLabel = seriesId ? seriesLabels[seriesId] : card.series;
                     cardEl.innerHTML = `
-                        <img src="${card.front.url}" alt="${card.name}">
+                        <img src="${card.front.image_url}" alt="${card.name}">
                         <div class="modal-card-name">${card.number}<br>${card.name}</div>
                         <div class="modal-card-series">${seriesLabel}</div>
                     `;

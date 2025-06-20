@@ -53,15 +53,15 @@
                 let num = card.number || '';
                 let imgUrl = '';
                 // 1. ocr情報から
-                if (card.ocr && card.ocr.front && card.ocr.front.url) {
-                    imgUrl = card.ocr.front.url;
+                if (card.ocr && card.ocr.front && card.ocr.front.image_url) {
+                    imgUrl = card.ocr.front.image_url;
                 } else if (card.ocr && card.ocr.url) {
                     imgUrl = card.ocr.url;
                 }
                 // 2. allCardsから
                 if (!imgUrl && allCards.length > 0) {
                     const found = allCards.find(c => c.number == num);
-                    if (found && found.front && found.front.url) imgUrl = found.front.url;
+                    if (found && found.front && found.front.image_url) imgUrl = found.front.image_url;
                     else if (found && found.url) imgUrl = found.url;
                 }
                 html += `<div class="deck-card-thumb">`;

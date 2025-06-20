@@ -575,8 +575,8 @@
             const defaultCard = availableCards.length > 0 ? availableCards[0] : candidateCards[0];
             usedCardNumbers[index] = defaultCard.number;
             
-            const frontUrl = defaultCard.front ? defaultCard.front.url : defaultCard.url;
-            const backUrl = defaultCard.back && defaultCard.back.url ? defaultCard.back.url : null;
+            const frontUrl = defaultCard.front ? defaultCard.front.image_url : defaultCard.url;
+            const backUrl = defaultCard.back && defaultCard.back.image_url ? defaultCard.back.image_url : null;
             let isFront = true;
             
             const img = document.createElement('img');
@@ -620,8 +620,8 @@
             
             select.onchange = function() {
                 const selectedCard = allCards[this.value];
-                const newFrontUrl = selectedCard.front ? selectedCard.front.url : selectedCard.url;
-                const newBackUrl = selectedCard.back && selectedCard.back.url ? selectedCard.back.url : null;
+                const newFrontUrl = selectedCard.front ? selectedCard.front.image_url : selectedCard.url;
+                const newBackUrl = selectedCard.back && selectedCard.back.image_url ? selectedCard.back.image_url : null;
                 isFront = true;
                 img.src = newFrontUrl;
                 img.alt = selectedCard.name;
@@ -1227,7 +1227,7 @@
                     html += `
                         <div style="background:#333;padding:0.5em;border-radius:8px;cursor:pointer;border:1px solid #444;" 
                              onclick="selectCardFromSearch('${card.number}', ${targetIndex})">
-                            <img src="${card.front ? card.front.url : card.url}" 
+                            <img src="${card.front ? card.front.image_url : card.url}" 
                                  style="width:100%;height:auto;border-radius:4px;margin-bottom:0.5em;" 
                                  alt="${card.name}">
                             <div style="font-size:0.9em;color:#4caf50;">${card.number}</div>

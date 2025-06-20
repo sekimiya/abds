@@ -1,0 +1,62 @@
+{
+  "type": "MS",
+  "name": "赤いガンダム(0085)",
+  "model": "Red Gundam(0085)",
+  "cost": 5,
+  "category": "機動",
+  "pilot": "シュウジ・イトウ",
+  "stats": {
+    "height": "—",
+    "weight": "—",
+    "mobility": 300,
+    "ranged_attack": 360,
+    "melee_attack": 100,
+    "hp": 340
+  },
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "S",
+    "desert": "C",
+    "water": "A"
+  },
+  "weapon": {
+    "main": {
+      "name": "ビット",
+      "range": 4,
+      "type": "遠距離"
+    },
+    "sub": {
+      "name": "ガンダム・ハンマー",
+      "range": 2,
+      "type": "近距離"
+    }
+  },
+  "ms_ability": {
+    "name": "精密射撃",
+    "cost": 3,
+    "description": "ロックオン中の敵に単体攻撃でダメージを与える。"
+  },
+  "special_attack": {
+    "name": "ビット撃射",
+    "target": "単体（敵）",
+    "range": 4,
+    "power": 3100,
+    "description": "敵単体に射撃攻撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "GQuuuuuX",
+      "condition": "デッキに3枚以上",
+      "effect": "[HP]小アップ"
+    },
+    {
+      "name": "状況を変える力",
+      "condition": "デッキに4枚以上",
+      "effect": "[遠距離攻撃力] [近距離攻撃力] 小アップ"
+    }
+  ],
+  "illust": "PaintedMIKE",
+  "card_number": "FQ01-031",
+  "card_name": "赤いガンダム(0085)",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ01-031_b.jpg?v8"
+}

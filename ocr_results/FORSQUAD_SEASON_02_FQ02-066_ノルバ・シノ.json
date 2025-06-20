@@ -1,0 +1,39 @@
+{
+  "type": "PL",
+  "name": "ノルバ・シノ",
+  "english_name": "NORBA SHINO",
+  "cost": 3,
+  "category": "防衛",
+  "age": null,
+  "height": null,
+  "units": [
+    "ガンダム・フラウロス"
+  ],
+  "pl_skill": {
+    "name": "迫り来る射撃術",
+    "trigger": "敵ユニットをロックオン時",
+    "effect": "SQゲージ小アップ。"
+  },
+  "link_abilities": [
+    {
+      "name": "彼等の居場所",
+      "condition": "デッキに3枚以上",
+      "effect": "SQゲージが溜まると、SQゲージ消費でSQUAD RUSHが発動できる。[遠距離攻撃力][近距離攻撃力]小アップ"
+    },
+    {
+      "name": "戦力を整える",
+      "condition": "デッキに4枚以上",
+      "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+    }
+  ],
+  "stats": {
+    "mobility": 210,
+    "ranged_attack": 320,
+    "melee_attack": 210,
+    "hp": 270
+  },
+  "illust": null,
+  "card_number": "FQ02-066",
+  "card_name": "ノルバ・シノ",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-066_b.jpg?v8"
+}

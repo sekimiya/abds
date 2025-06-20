@@ -131,12 +131,20 @@ def extract_structured_data_from_url(image_url, api_key):
 
     return response.choices[0].message.content
 
-def save_result_to_file(card_number, card_name, result_json):
+def save_result_to_file(card_number, card_name, result_json, series_name=""):
     # ファイル名に使えない文字をアンダースコアに変換
     safe_number = sanitize_filename(card_number)
     safe_name = sanitize_filename(card_name)
-    os.makedirs('ocr_results_back', exist_ok=True)
-    file_path = os.path.join('ocr_results_back', f"{safe_number}_{safe_name}_ocr.json")
+    safe_series = sanitize_filename(series_name)
+    
+    # 収録パック+カードナンバー+カード名.jsonの形式
+    if safe_series:
+        filename = f"{safe_series}_{safe_number}_{safe_name}.json"
+    else:
+        filename = f"{safe_number}_{safe_name}.json"
+    
+    os.makedirs('ocr_results', exist_ok=True)
+    file_path = os.path.join('ocr_results', filename)
     with open(file_path, 'w', encoding='utf-8') as f:
         json.dump(result_json, f, ensure_ascii=False, indent=2)
 
@@ -148,7 +156,7 @@ def ocr_back_cards_from_all_cards_list(api_key_path):
     import time
     
     # OCR結果保存ディレクトリ
-    results_dir = 'ocr_results_back'
+    results_dir = 'ocr_results'
     os.makedirs(results_dir, exist_ok=True)
     
     # all_cards_listディレクトリのJSONファイルを取得
@@ -179,6 +187,7 @@ def ocr_back_cards_from_all_cards_list(api_key_path):
             
             card_number = card_data.get('number', '')
             card_name = card_data.get('name', '')
+            series_name = card_data.get('series', '')
             back_image_url = card_data.get('back', {}).get('image_url', '')
             
             # 裏面画像URLがない場合はスキップ
@@ -190,7 +199,11 @@ def ocr_back_cards_from_all_cards_list(api_key_path):
             # 既にOCR結果が存在する場合はスキップ
             safe_number = sanitize_filename(card_number)
             safe_name = sanitize_filename(card_name)
-            ocr_result_file = os.path.join(results_dir, f"{safe_number}_{safe_name}_ocr.json")
+            safe_series = sanitize_filename(series_name)
+            if safe_series:
+                ocr_result_file = os.path.join('ocr_results', f"{safe_series}_{safe_number}_{safe_name}.json")
+            else:
+                ocr_result_file = os.path.join('ocr_results', f"{safe_number}_{safe_name}.json")
             if os.path.exists(ocr_result_file):
                 print(f"[{idx}/{len(json_files)}] スキップ: 既存のOCR結果 - {card_number} {card_name}")
                 skipped_count += 1
@@ -238,7 +251,7 @@ def ocr_back_cards_from_all_cards_list(api_key_path):
                     }
                 
                 # 結果を保存
-                save_result_to_file(card_number, card_name, result_json)
+                save_result_to_file(card_number, card_name, result_json, series_name)
                 processed_count += 1
                 
             except Exception as e:
@@ -249,7 +262,7 @@ def ocr_back_cards_from_all_cards_list(api_key_path):
                     "card_name": card_name, 
                     "image_url": back_image_url
                 }
-                save_result_to_file(card_number, card_name, error_result)
+                save_result_to_file(card_number, card_name, error_result, series_name)
                 error_count += 1
             
             # API制限対策

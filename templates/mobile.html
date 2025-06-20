@@ -832,8 +832,8 @@
             const defaultCard = availableCards.length > 0 ? availableCards[0] : candidateCards[0];
             usedCardNumbers[index] = defaultCard.number;
             
-            const frontUrl = defaultCard.front ? defaultCard.front.url : defaultCard.url;
-            const backUrl = defaultCard.back && defaultCard.back.url ? defaultCard.back.url : null;
+            const frontUrl = defaultCard.front ? defaultCard.front.image_url : defaultCard.url;
+            const backUrl = defaultCard.back && defaultCard.back.image_url ? defaultCard.back.image_url : null;
             let isFront = true;
             
             // カード番号
@@ -916,8 +916,8 @@
             // セレクトボックスのイベント
             select.onchange = function() {
                 const selectedCard = allCards[this.value];
-                const newFrontUrl = selectedCard.front ? selectedCard.front.url : selectedCard.url;
-                const newBackUrl = selectedCard.back && selectedCard.back.url ? selectedCard.back.url : null;
+                const newFrontUrl = selectedCard.front ? selectedCard.front.image_url : selectedCard.url;
+                const newBackUrl = selectedCard.back && selectedCard.back.image_url ? selectedCard.back.image_url : null;
                 isFront = true;
                 img.src = newFrontUrl;
                 img.alt = selectedCard.name;

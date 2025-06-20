@@ -29,27 +29,46 @@ def illustrator():
 
 @app.route('/fetch_cards')
 def fetch_cards():
-    # all_cards_list/all_cards.jsonからカードデータを取得
+    # all_cards_listディレクトリから個別のJSONファイルを読み込み
+    all_cards = []
+    all_cards_dir = 'all_cards_list'
+    
     try:
-        with open('all_cards_list/all_cards.json', 'r', encoding='utf-8') as f:
-            all_cards = json.load(f)
-        print(f"Loaded {len(all_cards)} cards from all_cards.json")
+        if not os.path.exists(all_cards_dir):
+            print(f"Error: {all_cards_dir} directory not found")
+            return jsonify({'success': False, 'error': f'{all_cards_dir}ディレクトリが見つかりません'})
+        
+        # 個別のJSONファイルを読み込み
+        json_files = [f for f in os.listdir(all_cards_dir) if f.endswith('.json')]
+        print(f"Found {len(json_files)} card files in {all_cards_dir}")
+        
+        for filename in json_files:
+            try:
+                with open(os.path.join(all_cards_dir, filename), 'r', encoding='utf-8') as f:
+                    card_data = json.load(f)
+                    all_cards.append(card_data)
+            except Exception as e:
+                print(f"Error loading {filename}: {str(e)}")
+                continue
+        
+        print(f"Loaded {len(all_cards)} cards from individual files")
+        
     except Exception as e:
-        print(f"Error loading all_cards.json: {str(e)}")
-        return jsonify({'success': False, 'error': f'all_cards.jsonの読み込みエラー: {str(e)}'})
+        print(f"Error loading card data: {str(e)}")
+        return jsonify({'success': False, 'error': f'カードデータの読み込みエラー: {str(e)}'})
 
     # OCR結果も読み込む
     ocr_results = {}
     ocr_dir = 'ocr_results'
     if os.path.exists(ocr_dir):
-        ocr_files = [f for f in os.listdir(ocr_dir) if f.endswith('_ocr.json')]
+        ocr_files = [f for f in os.listdir(ocr_dir) if f.endswith('.json')]
         print(f"Found {len(ocr_files)} OCR files")
         for filename in ocr_files:
             try:
                 with open(os.path.join(ocr_dir, filename), 'r', encoding='utf-8') as f:
                     ocr_data = json.load(f)
                     # ファイル名からカード番号とカード名を抽出
-                    base = filename.replace('_ocr.json', '')
+                    base = filename.replace('.json', '')
                     ocr_results[base] = ocr_data
             except Exception as e:
                 print(f"OCRファイル読み込みエラー {filename}: {str(e)}")
@@ -61,27 +80,49 @@ def fetch_cards():
     # カードデータとOCRデータを統合
     card_images = []
     for card in all_cards:
-        card_number = card['front']['number']
-        card_name = card['front']['name']
-        key = f'{card_number}_{card_name}'
-        ocr_data = ocr_results.get(key)
+        card_number = card.get('number', '')
+        card_name = card.get('name', '')
+        series_name = card.get('series', '')
+        
+        # OCRデータのキーを生成（収録パック+カードナンバー+カード名の形式）
+        if series_name:
+            ocr_key = f"{series_name}_{card_number}_{card_name}"
+        else:
+            ocr_key = f"{card_number}_{card_name}"
+        
+        ocr_data = ocr_results.get(ocr_key)
+        
+        # 画像URLを取得（front.image_urlを優先）
+        image_url = card.get('front', {}).get('image_url', '')
+        if not image_url:
+            # 後方互換性のため、直接のurlフィールドも確認
+            image_url = card.get('url', '')
         
         card_info = {
-            'url': card['front']['url'],  # 後方互換性のため残す
+            'url': image_url,  # 画像URL
             'number': card_number,
-            'name': card['front']['name'],
+            'name': card_name,
             'category': ocr_data.get('type', 'MS') if ocr_data else 'MS',
             'ocr_data': ocr_data,
-            'front': card['front'],  # 表面データを追加
-            'back': card['back'],     # 裏面データを追加
-            'series': card['front'].get('series', '')  # 収録弾数情報を追加
+            'front': card.get('front', {}),  # 表面データを追加
+            'back': card.get('back', {}),     # 裏面データを追加
+            'series': series_name  # 収録弾数情報を追加
         }
         card_images.append(card_info)
+        
+        # デバッグ: 最初の数枚のカードの情報を出力
+        if len(card_images) <= 3:
+            print(f"Debug - Card {len(card_images)}: {card_number} {card_name}")
+            print(f"  Image URL: {image_url}")
+            print(f"  Front data: {card.get('front', {})}")
+            print(f"  OCR key: {ocr_key}")
 
     card_images.sort(key=lambda x: x['number'])
     print(f"Returning {len(card_images)} cards with OCR data")
     if card_images:
-        print(f"First card example: {card_images[0]['number']} - {card_images[0]['name']} - OCR data: {card_images[0]['ocr_data'] is not None}")
+        print(f"First card example: {card_images[0]['number']} - {card_images[0]['name']}")
+        print(f"First card URL: {card_images[0]['url']}")
+        print(f"First card OCR data: {card_images[0]['ocr_data'] is not None}")
     
     return jsonify({'success': True, 'images': card_images})
 

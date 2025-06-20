@@ -436,7 +436,7 @@
             
             // カード画像
             const img = document.createElement('img');
-            img.src = card.front ? card.front.url : card.url;
+            img.src = card.front ? card.front.image_url : card.url;
             img.alt = card.name;
             img.style.cursor = 'pointer';
             
@@ -451,7 +451,7 @@
                 } else if (backUrl) {
                     // 通常モードの場合は裏面表示
                     isFront = !isFront;
-                    img.src = isFront ? (card.front ? card.front.url : card.url) : backUrl;
+                    img.src = isFront ? (card.front ? card.front.image_url : card.url) : backUrl;
                 }
             });
             

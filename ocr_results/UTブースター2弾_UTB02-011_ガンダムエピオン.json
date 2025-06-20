@@ -1,0 +1,62 @@
+{
+  "type": "MS",
+  "name": "ガンダムエピオン",
+  "model": "OZ-13MS GUNDAM EPYON",
+  "cost": 7,
+  "category": "近距離",
+  "pilot": "ミリアルド・ピースクラフト, ヒイロ・ユイ",
+  "stats": {
+    "height": "17.4m",
+    "weight": "8.5t",
+    "mobility": 300,
+    "ranged_attack": 170,
+    "melee_attack": 640,
+    "hp": 590
+  },
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "S",
+    "desert": "C",
+    "water": "C"
+  },
+  "weapon": {
+    "main": {
+      "name": "ビームソード",
+      "range": 1,
+      "type": "近距離"
+    },
+    "sub": {
+      "name": "ヒートロッド",
+      "range": 2,
+      "type": "遠距離"
+    }
+  },
+  "ms_ability": {
+    "name": "圧倒",
+    "cost": 3,
+    "description": "ロックオン中の敵が弱体化状態の時に発動可能となり、敵に単体攻撃でダメージを与え、その攻撃は必ずクリティカルになる"
+  },
+  "special_attack": {
+    "name": "ビームソード最大出力",
+    "target": "単体（敵）",
+    "range": 2,
+    "power": 3400,
+    "description": "射線上の敵に貫通格闘攻撃でダメージを与える。戦術威力は地形適性に応じて変化する。"
+  },
+  "link_abilities": [
+    {
+      "name": "ガンダムW",
+      "condition": "デッキに3枚以上",
+      "effect": "[機動力]小アップ"
+    },
+    {
+      "name": "システムが見せる未来",
+      "condition": "デッキに2枚以上",
+      "effect": "[HP] [SP威力]小アップ"
+    }
+  ],
+  "illust": "haru",
+  "card_number": "UTB02-011",
+  "card_name": "ガンダムエピオン",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/UTB02-011_b.jpg?v8"
+}
