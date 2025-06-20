@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>デッキ投稿一覧</title>
+    <style>
+        body { background: #181818; color: #fff; font-family: sans-serif; }
+        .header { background: #4caf50; color: #222; text-align: center; padding: 1rem; font-size: 2rem; font-weight: bold; letter-spacing: 0.05em; }
+        .deck-list { max-width: 1100px; margin: 2em auto; }
+        .deck-entry { background: #222; border-radius: 12px; box-shadow: 0 0 12px #000; margin-bottom: 2em; padding: 1.5em; }
+        .deck-title { color: #4caf50; font-size: 1.3em; font-weight: bold; margin-bottom: 0.3em; cursor:pointer; text-decoration:underline; }
+        .deck-title:hover { color:#ffe082; }
+        .deck-meta { color: #ffe082; font-size: 0.95em; margin-bottom: 0.7em; }
+        .deck-comment { color: #b2e5ff; margin-bottom: 1em; }
+        .deck-cards { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 0.5em; }
+        .deck-card-thumb { background: #111; border-radius: 6px; border: 1px solid #444; width: 60px; height: 90px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        .deck-card-thumb img { width: 100%; height: auto; display: block; }
+        .back-link { display: block; text-align: center; margin: 2em 0 1em 0; color: #ffe082; font-size: 1.1em; text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <div class="header">デッキ投稿一覧</div>
+    <div class="deck-list" id="deckList"></div>
+    <a href="/" class="back-link">← メインページに戻る</a>
+    <script>
+    let allCards = [];
+    async function fetchAllCards() {
+        const res = await fetch('/fetch_cards');
+        const data = await res.json();
+        if (data.success) allCards = data.images;
+    }
+    async function fetchDecks() {
+        await fetchAllCards();
+        const res = await fetch('/decks');
+        const data = await res.json();
+        if (!data.success) {
+            document.getElementById('deckList').innerHTML = '<p style="color:#ff5252;">デッキ一覧の取得に失敗しました</p>';
+            return;
+        }
+        const decks = data.decks || [];
+        if (decks.length === 0) {
+            document.getElementById('deckList').innerHTML = '<p style="color:#888;">まだ投稿されたデッキはありません</p>';
+            return;
+        }
+        let html = '';
+        decks.slice().reverse().forEach((deck, idx) => {
+            html += `<div class="deck-entry">
+                <div class="deck-title" data-index="${idx}">${deck.deck_name || ''}</div>
+                <div class="deck-meta">${deck.timestamp ? new Date(deck.timestamp).toLocaleString('ja-JP') : ''}</div>
+                <div class="deck-comment">${deck.comment ? deck.comment.replace(/\n/g, '<br>') : ''}</div>
+                <div class="deck-cards">`;
+            (deck.cards || []).forEach(card => {
+                let num = card.number || '';
+                let imgUrl = '';
+                // 1. ocr情報から
+                if (card.ocr && card.ocr.front && card.ocr.front.url) {
+                    imgUrl = card.ocr.front.url;
+                } else if (card.ocr && card.ocr.url) {
+                    imgUrl = card.ocr.url;
+                }
+                // 2. allCardsから
+                if (!imgUrl && allCards.length > 0) {
+                    const found = allCards.find(c => c.number == num);
+                    if (found && found.front && found.front.url) imgUrl = found.front.url;
+                    else if (found && found.url) imgUrl = found.url;
+                }
+                html += `<div class="deck-card-thumb">`;
+                if (imgUrl) {
+                    html += `<img src="${imgUrl}" alt="${num}">`;
+                } else {
+                    html += `<span style='color:#888;font-size:0.9em;'>${num}</span>`;
+                }
+                html += `</div>`;
+            });
+            html += `</div></div>`;
+        });
+        document.getElementById('deckList').innerHTML = html;
+        // タイトルクリックでデッキインポート
+        document.querySelectorAll('.deck-title').forEach((el, idx) => {
+            el.onclick = function() {
+                const deck = decks.slice().reverse()[idx];
+                localStorage.setItem('gundamDecks_import', JSON.stringify(deck));
+                window.location.href = '/';
+            };
+        });
+    }
+    fetchDecks();
+    </script>
+</body>
+</html> 

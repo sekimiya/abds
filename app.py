@@ -4,8 +4,12 @@ from bs4 import BeautifulSoup
 import os
 import re
 import json
+import threading
 
 app = Flask(__name__)
+
+decks_file = 'decks.json'
+decks_lock = threading.Lock()
 
 @app.route('/')
 def index():
@@ -83,6 +87,57 @@ def fetch_cards():
 @app.route('/ocr_results/<path:filename>')
 def serve_ocr_results(filename):
     return send_from_directory('ocr_results', filename)
+
+# --- デッキ投稿API ---
+@app.route('/post_deck', methods=['POST'])
+def post_deck():
+    data = request.get_json()
+    if not data:
+        return jsonify({'success': False, 'error': 'No data received'}), 400
+    deck_name = data.get('deck_name', '').strip()
+    comment = data.get('comment', '').strip()
+    cards = data.get('cards', [])
+    if not deck_name or not cards:
+        return jsonify({'success': False, 'error': 'デッキ名とカード構成は必須です'}), 400
+    deck_entry = {
+        'deck_name': deck_name,
+        'comment': comment,
+        'cards': cards,
+        'timestamp': data.get('timestamp')
+    }
+    with decks_lock:
+        if os.path.exists(decks_file):
+            with open(decks_file, 'r', encoding='utf-8') as f:
+                try:
+                    decks = json.load(f)
+                except Exception:
+                    decks = []
+        else:
+            decks = []
+        decks.append(deck_entry)
+        with open(decks_file, 'w', encoding='utf-8') as f:
+            json.dump(decks, f, ensure_ascii=False, indent=2)
+    return jsonify({'success': True, 'message': 'デッキを投稿しました'})
+
+# --- デッキ一覧API ---
+@app.route('/decks', methods=['GET'])
+def get_decks():
+    if not os.path.exists(decks_file):
+        return jsonify({'success': True, 'decks': []})
+    with open(decks_file, 'r', encoding='utf-8') as f:
+        try:
+            decks = json.load(f)
+        except Exception:
+            decks = []
+    return jsonify({'success': True, 'decks': decks})
+
+@app.route('/decks.html')
+def decks_html():
+    return render_template('decks.html')
+
+@app.route('/search')
+def search():
+    return render_template('search.html')
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5001) 

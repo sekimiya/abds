@@ -177,6 +177,28 @@
         </div>
     </div>
     
+    <div style="text-align:center;margin:1.5em 0;">
+        <button id="openDeckPostModal" style="padding:0.7em 1.5em;background:#4caf50;color:#fff;border:none;border-radius:6px;font-size:1.1em;font-weight:bold;cursor:pointer;">デッキ投稿</button>
+        <a href="/decks.html" style="margin-left:2em;color:#ffe082;font-size:1.1em;text-decoration:underline;">▶ デッキ投稿一覧</a>
+        <a href="/search" style="margin-left:2em;color:#66f2c5;font-size:1.1em;text-decoration:underline;">▶ カード検索</a>
+    </div>
+
+    <!-- デッキ投稿モーダル -->
+    <div id="deckPostModal" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.85);z-index:9999;align-items:center;justify-content:center;">
+      <div style="background:#222;padding:2em 2em 1.5em 2em;border-radius:16px;max-width:420px;width:90vw;box-shadow:0 0 24px #000;position:relative;">
+        <h2 style="color:#4caf50;margin-bottom:1em;">デッキ投稿</h2>
+        <label style="color:#ffe082;">デッキ名</label><br>
+        <input type="text" id="postDeckName" style="width:100%;padding:0.5em;margin-bottom:1em;border-radius:6px;border:1px solid #444;background:#181818;color:#fff;">
+        <br>
+        <label style="color:#ffe082;">コメント（任意）</label><br>
+        <textarea id="postDeckComment" style="width:100%;height:4em;padding:0.5em;margin-bottom:1em;border-radius:6px;border:1px solid #444;background:#181818;color:#fff;"></textarea>
+        <br>
+        <button id="submitDeckPost" style="padding:0.6em 1.5em;background:#4caf50;color:#fff;border:none;border-radius:6px;font-size:1em;font-weight:bold;cursor:pointer;">投稿</button>
+        <button id="closeDeckPostModal" style="padding:0.6em 1.2em;background:#888;color:#fff;border:none;border-radius:6px;font-size:1em;margin-left:1em;cursor:pointer;">閉じる</button>
+        <div id="deckPostMsg" style="margin-top:1em;color:#ff5252;"></div>
+      </div>
+    </div>
+    
     <div id="cardGrid" class="card-grid"></div>
     <div id="totalStatsBars" style="max-width:1200px;margin:2rem auto 0 auto;padding:1.5rem 1rem 2rem 1rem;background:#181818;border-radius:16px;box-shadow:0 0 16px #000;display:grid;grid-template-columns:repeat(5,1fr);gap:2.5rem;justify-items:center;align-items:start;"></div>
     
@@ -311,6 +333,30 @@
                 .catch(error => {
                     console.error('Error fetching cards:', error);
                 });
+
+            // デッキインポート処理
+            const imported = localStorage.getItem('gundamDecks_import');
+            if (imported) {
+                try {
+                    const deck = JSON.parse(imported);
+                    if (deck && Array.isArray(deck.cards)) {
+                        setTimeout(() => {
+                            deck.cards.forEach((card, idx) => {
+                                if (card && card.number) {
+                                    const select = document.getElementById(`card-select-${idx}`);
+                                    if (select) {
+                                        select.value = Array.from(select.options).find(opt => {
+                                            return allCards[opt.value] && allCards[opt.value].number == card.number;
+                                        })?.value || select.value;
+                                        select.dispatchEvent(new Event('change'));
+                                    }
+                                }
+                            });
+                        }, 500); // allCards取得後に実行
+                    }
+                } catch (e) {}
+                localStorage.removeItem('gundamDecks_import');
+            }
         });
 
         // 検索用モーダルのHTMLをbody末尾に追加
@@ -1166,22 +1212,81 @@
             toggleBtn.textContent = '▼ 折り畳む';
         }
 
-        function adjustParamGroupHeights() {
-            const skillEls = Array.from(document.querySelectorAll('.param-group.skill'));
-            const spEls = Array.from(document.querySelectorAll('.param-group.spattack'));
-            const linkEls = Array.from(document.querySelectorAll('.param-group.link'));
-            let maxSkill = 0, maxSp = 0, maxLink = 0;
-            skillEls.forEach(el => { maxSkill = Math.max(maxSkill, el.offsetHeight); });
-            spEls.forEach(el => { maxSp = Math.max(maxSp, el.offsetHeight); });
-            linkEls.forEach(el => { maxLink = Math.max(maxLink, el.offsetHeight); });
-            skillEls.forEach(el => { el.style.height = maxSkill + 'px'; });
-            spEls.forEach(el => { el.style.height = maxSp + 'px'; });
-            linkEls.forEach(el => { el.style.height = maxLink + 'px'; });
+        function adjustParamGroupHeightsByContent() {
+            // 各param-groupごとに最大高さを計算
+            const groupTypes = ['skill', 'spattack', 'link'];
+            groupTypes.forEach(type => {
+                let maxHeight = 0;
+                document.querySelectorAll(`.param-group.${type}`).forEach(el => {
+                    const dummy = el.cloneNode(true);
+                    dummy.style.visibility = 'hidden';
+                    dummy.style.position = 'absolute';
+                    dummy.style.height = 'auto';
+                    dummy.style.width = el.offsetWidth + 'px';
+                    document.body.appendChild(dummy);
+                    maxHeight = Math.max(maxHeight, dummy.offsetHeight);
+                    document.body.removeChild(dummy);
+                });
+                document.querySelectorAll(`.param-group.${type}`).forEach(el => {
+                    el.style.height = maxHeight + 'px';
+                });
+            });
         }
+        // 既存のadjustParamGroupHeightsの呼び出し箇所をadjustParamGroupHeightsByContentに置き換え
+        // 例: setTimeout(adjustParamGroupHeights, 500); → setTimeout(adjustParamGroupHeightsByContent, 500);
+        // カード切り替え時も同様に置き換え
         document.addEventListener('DOMContentLoaded', function() {
-            setTimeout(adjustParamGroupHeights, 500); // レンダリング後に実行
+            setTimeout(adjustParamGroupHeightsByContent, 500); // レンダリング後に実行
         });
-        window.adjustParamGroupHeights = adjustParamGroupHeights;
+        window.adjustParamGroupHeightsByContent = adjustParamGroupHeightsByContent;
+
+        // デッキ投稿モーダルの開閉
+        const openDeckPostModalBtn = document.getElementById('openDeckPostModal');
+        const deckPostModal = document.getElementById('deckPostModal');
+        const closeDeckPostModalBtn = document.getElementById('closeDeckPostModal');
+        if (openDeckPostModalBtn && deckPostModal && closeDeckPostModalBtn) {
+            openDeckPostModalBtn.onclick = () => { deckPostModal.style.display = 'flex'; };
+            closeDeckPostModalBtn.onclick = () => { deckPostModal.style.display = 'none'; document.getElementById('deckPostMsg').textContent = ''; };
+        }
+        // 投稿処理
+        const submitDeckPostBtn = document.getElementById('submitDeckPost');
+        if (submitDeckPostBtn) {
+            submitDeckPostBtn.onclick = async function() {
+                const deckName = document.getElementById('postDeckName').value.trim();
+                const comment = document.getElementById('postDeckComment').value.trim();
+                if (!deckName) {
+                    document.getElementById('deckPostMsg').textContent = 'デッキ名を入力してください';
+                    return;
+                }
+                // 現在のデッキ構成を取得
+                const cards = selectedCardNumbers.map((num, idx) => ({ number: num, ocr: selectedOcrData[idx] }));
+                const payload = {
+                    deck_name: deckName,
+                    comment: comment,
+                    cards: cards,
+                    timestamp: new Date().toISOString()
+                };
+                try {
+                    const res = await fetch('/post_deck', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+                    const data = await res.json();
+                    if (data.success) {
+                        document.getElementById('deckPostMsg').style.color = '#4caf50';
+                        document.getElementById('deckPostMsg').textContent = 'デッキを投稿しました！';
+                        setTimeout(() => { deckPostModal.style.display = 'none'; document.getElementById('deckPostMsg').textContent = ''; }, 1200);
+                    } else {
+                        document.getElementById('deckPostMsg').style.color = '#ff5252';
+                        document.getElementById('deckPostMsg').textContent = data.error || '投稿に失敗しました';
+                    }
+                } catch (e) {
+                    document.getElementById('deckPostMsg').style.color = '#ff5252';
+                    document.getElementById('deckPostMsg').textContent = 'サーバーエラー';
+                }
+            };
+        }
     </script>
     
     <div style="text-align:center;margin:2em 0 1em 0;">
