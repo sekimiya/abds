@@ -174,7 +174,11 @@
                 </tr>
                 <tr>
                     <th class="row-header">地形補正</th>
-                    <td id="terrain" colspan="15"></td>
+                    <td id="terrain-0" colspan="3"></td>
+                    <td id="terrain-1" colspan="3"></td>
+                    <td id="terrain-2" colspan="3"></td>
+                    <td id="terrain-3" colspan="3"></td>
+                    <td id="terrain-4" colspan="3"></td>
                 </tr>
                 <!-- Card Images -->
                 <tr>
@@ -347,6 +351,14 @@
                 tbody.removeChild(tbody.lastChild);
             }
 
+            // デバッグ: 最初のユニットのカード情報をコンソールに出力
+            if (cards[0]) {
+                console.log("Unit 1 MS Card Data:", JSON.parse(JSON.stringify(cards[0])));
+            }
+            if (cards[5]) {
+                console.log("Unit 1 PL Card Data:", JSON.parse(JSON.stringify(cards[5])));
+            }
+
             let totalCost = 0;
 
             // リンクアビリティのバフを計算
@@ -372,7 +384,13 @@
                 if(pl && pl.ocr_data && pl.ocr_data.cost) totalCost += parseInt(pl.ocr_data.cost, 10);
             }
             document.getElementById('totalCost').textContent = totalCost;
-            document.getElementById('terrain').textContent = '（未実装）';
+            
+            // 地形補正の計算と表示
+            for (let i = 0; i < 5; i++) {
+                const ms = cards[i];
+                const terrainElement = document.getElementById(`terrain-${i}`);
+                terrainElement.innerHTML = calculateMSTerrain(ms);
+            }
 
             // Data rows definition
             const rows = [
@@ -383,11 +401,12 @@
                 { header: '遠距離攻撃力', ms_key: 'stats.ranged_attack', pl_key: 'stats.ranged_attack', total: true, bar: true, max: 800 },
                 { header: '近距離攻撃力', ms_key: 'stats.melee_attack', pl_key: 'stats.melee_attack', total: true, bar: true, max: 800 },
                 { header: 'HP', ms_key: 'stats.hp', pl_key: 'stats.hp', total: true, bar: true, max: 2000 },
-                { header: '射程/適正', ms_key: 'special_attack.range', pl_key: 'terrain', formatter: formatRangeAptitude },
-                { header: 'リンクアビリティ(MS)', ms_key: 'link_abilities', formatter: formatLinkAbility, colspan: 2 },
-                { header: 'リンクアビリティ(PL)', pl_key: 'link_abilities', formatter: formatLinkAbility, colspan: 2 },
-                { header: 'MSアビリティ', ms_key: 'ms_ability', formatter: formatSkill, colspan: 3, isSkill: true },
-                { header: 'PLスキル', pl_key: 'pl_skill', formatter: formatSkill, colspan: 3, isSkill: true },
+                { header: '射程', ms_key: 'weapon.main.range', formatter: formatRange },
+                { header: '地形適性', ms_key: 'terrain_compatibility', pl_key: 'terrain_compatibility', formatter: formatTerrain },
+                { header: 'リンクアビリティ(MS)', ms_key: 'link_abilities', formatter: formatLinkAbility, colspan: 2, separate: true },
+                { header: 'リンクアビリティ(PL)', pl_key: 'link_abilities', formatter: formatLinkAbility, colspan: 2, separate: true },
+                { header: 'MSアビリティ', ms_key: 'ms_ability', formatter: formatSkill, colspan: 3, isSkill: true, separate: true },
+                { header: 'PLスキル', pl_key: 'pl_skill', formatter: formatSkill, colspan: 3, isSkill: true, separate: true },
                 { header: '戦術技', ms_key: 'special_attack', pl_key: 'special_attack', formatter: formatSP },
                 { header: 'UNITED SP/SQUAD SP', ms_key: 'squad_sp', pl_key: 'squad_sp', formatter: formatSquadSP, colspan: 3 }
             ];
@@ -403,7 +422,31 @@
                     const msCard = cards[i];
                     const plCard = cards[i + 5];
 
-                    if (def.colspan) {
+                    if (def.separate) {
+                        const td = document.createElement('td');
+                        td.colSpan = def.colspan;
+                        if (def.isSkill) td.classList.add('skill-cell');
+                        
+                        let value = null;
+                        let card_context = null;
+
+                        if (def.ms_key) {
+                            value = getDeepValue(msCard, `ocr_data.${def.ms_key}`);
+                            card_context = msCard;
+                        } else if (def.pl_key) {
+                            value = getDeepValue(plCard, `ocr_data.${def.pl_key}`);
+                            card_context = plCard;
+                        }
+                        
+                        td.innerHTML = def.formatter ? def.formatter(value, cards, card_context) : (value || '-');
+                        tr.appendChild(td);
+                        
+                        // total列のための空セルを追加
+                        if (def.colspan === 2) {
+                            tr.appendChild(document.createElement('td'));
+                        }
+
+                    } else if (def.colspan) {
                         const td = document.createElement('td');
                         td.colSpan = def.colspan;
                         if (def.isSkill) td.classList.add('skill-cell');
@@ -551,32 +594,32 @@
             return `<span class="${style}" style="font-size:16px; font-weight:bold;">${value}</span>`;
         }
 
-        function formatRangeAptitude(value, cards, card) {
-            if (!card || !card.ocr_data) return '-';
+        function formatRange(value, cards, card) {
+            if (!card || !card.ocr_data || card.ocr_data.type !== 'MS') return '-';
+            const range = getDeepValue(card, 'ocr_data.weapon.main.range');
+            return range ? `遠: ${range}` : '-';
+        }
 
-            // MS Card: show range
-            if (card.ocr_data.type === 'MS') {
-                const range = getDeepValue(card, 'ocr_data.special_attack.range');
-                return range ? `遠:${range}` : '-';
-            }
-            // PL Card: show terrain aptitude
-            if (card.ocr_data.type === 'PL') {
-                const terrain = getDeepValue(card, 'ocr_data.terrain');
-                if (!terrain) return '-';
-                let html = '';
-                const aptitudes = ['ground', 'space', 'desert', 'water'];
-                const ja = {'ground': '地', 'space': '宇', 'desert': '砂', 'water': '水'};
-                aptitudes.forEach(t => {
-                    if (terrain[t]) {
-                        html += `<div>${ja[t]}: <span class="aptitude-${terrain[t].toLowerCase()}">${terrain[t]}</span></div>`;
-                    }
-                });
-                return html;
-            }
-            return '-';
+        function formatTerrain(value, cards, card) {
+            if (!card || !card.ocr_data) return '-';
+            const terrain = getDeepValue(card, 'ocr_data.terrain_compatibility');
+            if (!terrain) return '-';
+            
+            let html = '<div style="text-align: center; display: flex; flex-wrap: wrap; gap: 8px; justify-content: center;">';
+            const aptitudes = ['ground', 'space', 'desert', 'water'];
+            const ja = {'ground': '地', 'space': '宇', 'desert': '砂', 'water': '水'};
+            
+            aptitudes.forEach(t => {
+                if (terrain[t]) {
+                    html += `<div>${ja[t]}:<span class="aptitude-${terrain[t].toLowerCase()}">${terrain[t]}</span></div>`;
+                }
+            });
+            
+            html += '</div>';
+            return html;
         }
         
-        function formatLinkAbility(value, cards) {
+        function formatLinkAbility(value, cards, card) {
             if (!value || value.length === 0) return '-';
             let html = '';
             value.forEach(link => {
@@ -647,7 +690,16 @@
 
         function formatSkill(value) {
             if (!value) return '-';
-            return `<b>${value.name || ''}</b><br>${value.description || value.effect || ''}`;
+            let html = '';
+            if (value.name) {
+                html += `<b>${value.name}</b>`;
+                if (value.cost) {
+                    html += ` (コスト: ${value.cost})`;
+                }
+                html += '<br>';
+            }
+            html += value.description || value.effect || '';
+            return html;
         }
         
         function formatSP(value, cards, card) {
@@ -730,7 +782,11 @@
 
             const isPilot = cardType === 'PL';
             const availableCards = allCards.filter(c => {
-                const type = (c.ocr_data && c.ocr_data.type) || c.category;
+                // ルール：OCRデータが存在するカードのみに絞り込む
+                if (!c.ocr_data) {
+                    return false;
+                }
+                const type = c.ocr_data.type || c.category;
                 return isPilot ? type === 'PL' : type === 'MS';
             });
 
@@ -800,6 +856,31 @@
             populateTable(selectedCards);
 
             closeSelectionModal();
+        }
+
+        function calculateMSTerrain(ms) {
+            if (!ms || !ms.ocr_data || !ms.ocr_data.terrain_compatibility) {
+                return '-';
+            }
+
+            const terrain = ms.ocr_data.terrain_compatibility;
+
+            let html = '<div style="text-align: center; font-size: 12px;">';
+            const terrainTypes = ['ground', 'space', 'desert', 'water'];
+            const terrainNames = { ground: '地', space: '宇', desert: '砂', water: '水' };
+            
+            const terrainParts = [];
+            terrainTypes.forEach(type => {
+                if (terrain[type]) {
+                    terrainParts.push(`${terrainNames[type]}:<span class="aptitude-${terrain[type].toLowerCase()}">${terrain[type]}</span>`);
+                } else {
+                    terrainParts.push(`${terrainNames[type]}:<span style="color: #666;">-</span>`);
+                }
+            });
+            
+            html += terrainParts.join(' / ');
+            html += '</div>';
+            return html;
         }
     </script>
 </body>
