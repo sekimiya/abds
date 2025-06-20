@@ -25,7 +25,7 @@
         .pl-col { width: 7.5%; }
         .total-col { width: 3.6%; }
 
-        .card-image-container { height: 170px; padding: 2px; }
+        .card-image-container { height: 200px; padding: 2px; }
         .card-image { max-width: 100%; max-height: 100%; object-fit: contain; cursor: pointer; }
         .card-name { height: 40px; font-size: 12px; }
         .stat-bar-container { background: #444; border-radius: 3px; height: 16px; position: relative; width: 100%; }
@@ -183,40 +183,70 @@
                 <!-- Card Images -->
                 <tr>
                     <th class="row-header"></th>
-                    <td class="card-image-container ms-col"><img id="ms-img-0" class="card-image"></td>
-                    <td class="card-image-container pl-col"><img id="pl-img-0" class="card-image"></td>
-                    <td class="total-col"></td>
-                    <td class="card-image-container ms-col"><img id="ms-img-1" class="card-image"></td>
-                    <td class="card-image-container pl-col"><img id="pl-img-1" class="card-image"></td>
-                    <td class="total-col"></td>
-                    <td class="card-image-container ms-col"><img id="ms-img-2" class="card-image"></td>
-                    <td class="card-image-container pl-col"><img id="pl-img-2" class="card-image"></td>
-                    <td class="total-col"></td>
-                    <td class="card-image-container ms-col"><img id="ms-img-3" class="card-image"></td>
-                    <td class="card-image-container pl-col"><img id="pl-img-3" class="card-image"></td>
-                    <td class="total-col"></td>
-                    <td class="card-image-container ms-col"><img id="ms-img-4" class="card-image"></td>
-                    <td class="card-image-container pl-col"><img id="pl-img-4" class="card-image"></td>
-                    <td class="total-col"></td>
+                    <td colspan="3">
+                        <div style="display: flex; justify-content: space-evenly; align-items: center; height: 100%;">
+                            <div class="card-image-container"><img id="ms-img-0" class="card-image"></div>
+                            <div class="card-image-container"><img id="pl-img-0" class="card-image"></div>
+                        </div>
+                    </td>
+                    <td colspan="3">
+                        <div style="display: flex; justify-content: space-evenly; align-items: center; height: 100%;">
+                            <div class="card-image-container"><img id="ms-img-1" class="card-image"></div>
+                            <div class="card-image-container"><img id="pl-img-1" class="card-image"></div>
+                        </div>
+                    </td>
+                    <td colspan="3">
+                        <div style="display: flex; justify-content: space-evenly; align-items: center; height: 100%;">
+                            <div class="card-image-container"><img id="ms-img-2" class="card-image"></div>
+                            <div class="card-image-container"><img id="pl-img-2" class="card-image"></div>
+                        </div>
+                    </td>
+                    <td colspan="3">
+                        <div style="display: flex; justify-content: space-evenly; align-items: center; height: 100%;">
+                            <div class="card-image-container"><img id="ms-img-3" class="card-image"></div>
+                            <div class="card-image-container"><img id="pl-img-3" class="card-image"></div>
+                        </div>
+                    </td>
+                    <td colspan="3">
+                        <div style="display: flex; justify-content: space-evenly; align-items: center; height: 100%;">
+                            <div class="card-image-container"><img id="ms-img-4" class="card-image"></div>
+                            <div class="card-image-container"><img id="pl-img-4" class="card-image"></div>
+                        </div>
+                    </td>
                 </tr>
                 <!-- Card Names -->
                 <tr>
                     <th class="row-header"></th>
-                    <td class="card-name ms-col" id="ms-name-0"></td>
-                    <td class="card-name pl-col" id="pl-name-0"></td>
-                    <td class="total-col"></td>
-                    <td class="card-name ms-col" id="ms-name-1"></td>
-                    <td class="card-name pl-col" id="pl-name-1"></td>
-                    <td class="total-col"></td>
-                    <td class="card-name ms-col" id="ms-name-2"></td>
-                    <td class="card-name pl-col" id="pl-name-2"></td>
-                    <td class="total-col"></td>
-                    <td class="card-name ms-col" id="ms-name-3"></td>
-                    <td class="card-name pl-col" id="pl-name-3"></td>
-                    <td class="total-col"></td>
-                    <td class="card-name ms-col" id="ms-name-4"></td>
-                    <td class="card-name pl-col" id="pl-name-4"></td>
-                    <td class="total-col"></td>
+                    <td colspan="3">
+                        <div style="display: flex; justify-content: space-evenly; align-items: center; height: 100%;">
+                            <div class="card-name" id="ms-name-0" style="width: 45%; text-align: center;"></div>
+                            <div class="card-name" id="pl-name-0" style="width: 45%; text-align: center;"></div>
+                        </div>
+                    </td>
+                    <td colspan="3">
+                        <div style="display: flex; justify-content: space-evenly; align-items: center; height: 100%;">
+                            <div class="card-name" id="ms-name-1" style="width: 45%; text-align: center;"></div>
+                            <div class="card-name" id="pl-name-1" style="width: 45%; text-align: center;"></div>
+                        </div>
+                    </td>
+                    <td colspan="3">
+                        <div style="display: flex; justify-content: space-evenly; align-items: center; height: 100%;">
+                            <div class="card-name" id="ms-name-2" style="width: 45%; text-align: center;"></div>
+                            <div class="card-name" id="pl-name-2" style="width: 45%; text-align: center;"></div>
+                        </div>
+                    </td>
+                    <td colspan="3">
+                        <div style="display: flex; justify-content: space-evenly; align-items: center; height: 100%;">
+                            <div class="card-name" id="ms-name-3" style="width: 45%; text-align: center;"></div>
+                            <div class="card-name" id="pl-name-3" style="width: 45%; text-align: center;"></div>
+                        </div>
+                    </td>
+                    <td colspan="3">
+                        <div style="display: flex; justify-content: space-evenly; align-items: center; height: 100%;">
+                            <div class="card-name" id="ms-name-4" style="width: 45%; text-align: center;"></div>
+                            <div class="card-name" id="pl-name-4" style="width: 45%; text-align: center;"></div>
+                        </div>
+                    </td>
                 </tr>
                 <!-- Rows for stats will be generated by JS -->
             </tbody>
