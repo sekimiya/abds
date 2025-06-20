@@ -357,6 +357,53 @@
                 } catch (e) {}
                 localStorage.removeItem('gundamDecks_import');
             }
+            
+            // 検索ページから戻ってきた際のカードセット処理
+            const selectedCardData = localStorage.getItem('selectedCardForDeck');
+            if (selectedCardData) {
+                try {
+                    const data = JSON.parse(selectedCardData);
+                    if (data && data.slot !== undefined && data.cardNumber) {
+                        setTimeout(() => {
+                            const card = allCards.find(c => c.number === data.cardNumber);
+                            if (card) {
+                                const select = document.getElementById(`card-select-${data.slot}`);
+                                if (select) {
+                                    const cardIndex = allCards.indexOf(card);
+                                    select.value = cardIndex;
+                                    select.dispatchEvent(new Event('change'));
+                                    
+                                    // 成功メッセージを表示
+                                    const successMsg = document.createElement('div');
+                                    successMsg.style.position = 'fixed';
+                                    successMsg.style.top = '20px';
+                                    successMsg.style.left = '50%';
+                                    successMsg.style.transform = 'translateX(-50%)';
+                                    successMsg.style.background = '#4caf50';
+                                    successMsg.style.color = '#fff';
+                                    successMsg.style.padding = '1rem 2rem';
+                                    successMsg.style.borderRadius = '8px';
+                                    successMsg.style.zIndex = '10000';
+                                    successMsg.style.fontWeight = 'bold';
+                                    successMsg.textContent = `スロット${data.slot + 1}に「${data.cardName}」をセットしました！`;
+                                    document.body.appendChild(successMsg);
+                                    
+                                    // 3秒後にメッセージを削除
+                                    setTimeout(() => {
+                                        if (successMsg.parentNode) {
+                                            successMsg.parentNode.removeChild(successMsg);
+                                        }
+                                    }, 3000);
+                                }
+                            }
+                        }, 600); // 他の初期化処理の後に実行
+                    }
+                } catch (e) {
+                    console.error('Error parsing selected card data:', e);
+                }
+                // 処理後にローカルストレージから削除
+                localStorage.removeItem('selectedCardForDeck');
+            }
         });
 
         // 検索用モーダルのHTMLをbody末尾に追加
@@ -508,6 +555,26 @@
             searchDiv.appendChild(searchInput);
             searchDiv.appendChild(searchBtn);
             div.appendChild(searchDiv);
+            
+            // 数値検索からカードをセットボタン
+            const paramSearchBtn = document.createElement('button');
+            paramSearchBtn.textContent = '数値検索からカードをセット';
+            paramSearchBtn.style.padding = '0.4em 1em';
+            paramSearchBtn.style.borderRadius = '4px';
+            paramSearchBtn.style.border = '1px solid #ff9800';
+            paramSearchBtn.style.background = '#ff9800';
+            paramSearchBtn.style.color = '#222';
+            paramSearchBtn.style.cursor = 'pointer';
+            paramSearchBtn.style.width = '100%';
+            paramSearchBtn.style.fontSize = '0.9em';
+            paramSearchBtn.style.marginTop = '0.3em';
+            paramSearchBtn.style.fontWeight = 'bold';
+            paramSearchBtn.onclick = function() {
+                // 検索ページに遷移し、対象スロット番号を渡す
+                window.location.href = `/search?slot=${index}`;
+            };
+            div.appendChild(paramSearchBtn);
+            
             cardGrid.appendChild(div);
 
             // 合計ステータス表示欄（6〜10番目のみ）

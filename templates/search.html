@@ -108,9 +108,29 @@
     <script>
         let allCards = [];
         let filteredCards = [];
+        let targetSlot = null; // 対象スロット番号
+
+        // URLパラメータからスロット番号を取得
+        function getUrlParameter(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
+        }
 
         // ページ読み込み時の初期化
         document.addEventListener('DOMContentLoaded', function() {
+            // スロット番号を取得
+            targetSlot = getUrlParameter('slot');
+            
+            // スロット番号がある場合はヘッダーを更新
+            if (targetSlot !== null) {
+                const header = document.querySelector('.header');
+                header.textContent = `カード検索 - スロット${parseInt(targetSlot) + 1}にセット`;
+                
+                // 戻るリンクも更新
+                const backLink = document.querySelector('a[href="/"]');
+                backLink.textContent = '← デッキシミュレーターに戻る（選択したカードをセット）';
+            }
+            
             console.log('Search page loaded, fetching cards...');
             fetch('/fetch_cards')
                 .then(res => res.json())
@@ -316,17 +336,39 @@
             const div = document.createElement('div');
             div.className = 'card-item';
             
+            // スロット番号がある場合はクリック可能にする
+            if (targetSlot !== null) {
+                div.style.cursor = 'pointer';
+                div.style.transition = 'transform 0.2s ease, box-shadow 0.2s ease';
+                div.addEventListener('mouseenter', function() {
+                    this.style.transform = 'scale(1.02)';
+                    this.style.boxShadow = '0 4px 12px rgba(255, 152, 0, 0.3)';
+                });
+                div.addEventListener('mouseleave', function() {
+                    this.style.transform = 'scale(1)';
+                    this.style.boxShadow = 'none';
+                });
+                div.addEventListener('click', function() {
+                    selectCardForDeck(card);
+                });
+            }
+            
             // カード画像
             const img = document.createElement('img');
             img.src = card.front ? card.front.url : card.url;
             img.alt = card.name;
             img.style.cursor = 'pointer';
             
-            // 画像クリックで裏面表示
+            // 画像クリックで裏面表示（スロット選択モードでない場合のみ）
             let isFront = true;
             const backUrl = card.back && card.back.url ? card.back.url : null;
-            img.addEventListener('click', function() {
-                if (backUrl) {
+            img.addEventListener('click', function(e) {
+                if (targetSlot !== null) {
+                    // スロット選択モードの場合は、カード全体のクリックイベントを発火
+                    e.stopPropagation();
+                    selectCardForDeck(card);
+                } else if (backUrl) {
+                    // 通常モードの場合は裏面表示
                     isFront = !isFront;
                     img.src = isFront ? (card.front ? card.front.url : card.url) : backUrl;
                 }
@@ -377,12 +419,56 @@
                 params.innerHTML = paramElements.join('');
             }
             
-            div.appendChild(img);
-            div.appendChild(number);
-            div.appendChild(name);
-            div.appendChild(params);
+            // スロット選択モードの場合は選択ボタンを追加
+            if (targetSlot !== null) {
+                const selectBtn = document.createElement('button');
+                selectBtn.textContent = 'このカードを選択';
+                selectBtn.style.padding = '0.5em 1em';
+                selectBtn.style.borderRadius = '4px';
+                selectBtn.style.border = '1px solid #ff9800';
+                selectBtn.style.background = '#ff9800';
+                selectBtn.style.color = '#222';
+                selectBtn.style.cursor = 'pointer';
+                selectBtn.style.width = '100%';
+                selectBtn.style.fontSize = '0.9em';
+                selectBtn.style.marginTop = '0.5em';
+                selectBtn.style.fontWeight = 'bold';
+                selectBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    selectCardForDeck(card);
+                });
+                
+                div.appendChild(img);
+                div.appendChild(number);
+                div.appendChild(name);
+                div.appendChild(params);
+                div.appendChild(selectBtn);
+            } else {
+                div.appendChild(img);
+                div.appendChild(number);
+                div.appendChild(name);
+                div.appendChild(params);
+            }
             
             return div;
+        }
+
+        // カードをデッキにセットする関数
+        function selectCardForDeck(card) {
+            if (targetSlot === null) return;
+            
+            // ローカルストレージに選択したカード情報を保存
+            const selectedCardData = {
+                slot: parseInt(targetSlot),
+                cardNumber: card.number,
+                cardName: card.name,
+                timestamp: new Date().toISOString()
+            };
+            
+            localStorage.setItem('selectedCardForDeck', JSON.stringify(selectedCardData));
+            
+            // デッキシミュレーターに戻る
+            window.location.href = '/';
         }
     </script>
 </body>
