@@ -30,6 +30,42 @@
                 padding: 0.6rem;
             }
         }
+        @media (max-width: 1400px) {
+            #totalStatsBars {
+                position: relative;
+                left: auto;
+                top: auto;
+                transform: none;
+                width: 100%;
+                max-width: 1200px;
+                margin: 2rem auto;
+                max-height: none;
+                overflow-y: visible;
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 1rem;
+            }
+            
+            .container {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+        }
+        @media (max-width: 1200px) {
+            #totalStatsBars {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+        }
+        @media (max-width: 768px) {
+            #totalStatsBars {
+                grid-template-columns: 1fr;
+                margin: 1rem auto;
+            }
+            
+            .stats-bar {
+                padding: 1rem;
+            }
+        }
         .card-grid { display: grid; grid-template-columns: repeat(5, 1fr); grid-template-rows: repeat(2, 1fr); gap: 10px; max-width: 1200px; margin: 2.5rem auto 0 auto; }
         .card-item { background: #222; border: 1.5px solid #444; border-radius: 12px; padding: 0.6rem 1rem 0.6rem 1rem; text-align: center; line-height: 1.2; padding-bottom: 1rem; width: 220px; box-sizing: border-box; margin: 0 auto; display: flex; flex-direction: column; min-height: 600px; }
         .card-item img { max-width: 220px; max-height: 330px; width: 220px; height: auto; background: #111; border-radius: 8px; margin-top: 0.3rem; margin-bottom: 0.3rem; display: block; flex-shrink: 0; }
@@ -128,7 +164,102 @@
             border-radius: 4px;
             display: none;
         }
-        #totalStatsBars { max-width:1200px; margin:0.5rem auto 0 auto; padding:0.5rem 1rem 2rem 1rem; background:#181818; border-radius:16px; box-shadow:0 0 16px #000; display:grid; grid-template-columns:repeat(5,1fr); gap:0.25rem; justify-items:center; align-items:start; }
+        #totalStatsBars { 
+            max-width: 1200px;
+            margin: 2rem auto 0 auto;
+            padding: 1.5rem 1rem 2rem 1rem;
+            background: #181818;
+            border-radius: 16px;
+            box-shadow: 0 0 16px #000;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 2.5rem;
+            justify-items: center;
+            align-items: start;
+        }
+        .stats-bar {
+            background: #222;
+            border-radius: 12px;
+            padding: 1.2em 1.2em 1.5em 1.2em;
+            min-width: 220px;
+            max-width: 260px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 1em;
+        }
+        .stats-title {
+            color: #4caf50;
+            font-weight: bold;
+            font-size: 1.1em;
+            margin-bottom: 0.2em;
+        }
+        .stats-value {
+            color: #4caf50;
+            font-size: 0.9em;
+            margin-bottom: 0.5em;
+        }
+        .stats-buff {
+            color: #e91e63;
+            font-size: 0.8em;
+        }
+        .stats-bar-container {
+            position: relative;
+            background: #333;
+            height: 24px;
+            border-radius: 0;
+            overflow: visible;
+            margin-bottom: 8px;
+            width: 100%;
+        }
+        .stats-bar-base {
+            background: #2196f3;
+            height: 100%;
+            transition: width 0.3s ease;
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: 10;
+            border-radius: 0;
+        }
+        .stats-bar-buff {
+            background: #e91e63;
+            height: 100%;
+            transition: width 0.3s ease;
+            position: absolute;
+            top: 0;
+            z-index: 10;
+            border-radius: 0;
+        }
+        .stats-scale {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 20;
+        }
+        .stats-scale-line {
+            position: absolute;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background: #fff;
+            opacity: 0.5;
+        }
+        .stats-scale-line:last-child {
+            opacity: 0.7;
+        }
+        .stats-percent {
+            background: #2196f3;
+            color: #fff;
+            padding: 4px 16px;
+            border-radius: 8px;
+            font-size: 0.9em;
+            font-weight: bold;
+        }
         a {
             color: #66f2c5;
         }
@@ -181,6 +312,7 @@
         <button id="openDeckPostModal" style="padding:0.7em 1.5em;background:#4caf50;color:#fff;border:none;border-radius:6px;font-size:1.1em;font-weight:bold;cursor:pointer;">デッキ投稿</button>
         <a href="/decks.html" style="margin-left:2em;color:#ffe082;font-size:1.1em;text-decoration:underline;">▶ デッキ投稿一覧</a>
         <a href="/search" style="margin-left:2em;color:#66f2c5;font-size:1.1em;text-decoration:underline;">▶ カード検索</a>
+        <a href="/mobile" style="margin-left:2em;color:#ff9800;font-size:1.1em;text-decoration:underline;">📱 モバイル版</a>
     </div>
 
     <!-- デッキ投稿モーダル -->
@@ -200,7 +332,7 @@
     </div>
     
     <div id="cardGrid" class="card-grid"></div>
-    <div id="totalStatsBars" style="max-width:1200px;margin:2rem auto 0 auto;padding:1.5rem 1rem 2rem 1rem;background:#181818;border-radius:16px;box-shadow:0 0 16px #000;display:grid;grid-template-columns:repeat(5,1fr);gap:2.5rem;justify-items:center;align-items:start;"></div>
+    <div id="totalStatsBars"></div>
     
     <script>
         let allCards = [];
@@ -607,6 +739,7 @@
                 selectedOcrData[index] = null;
                 updateTotalCost();
                 updateSumStats();
+                updateAllLinkAbilities(); // 全リンクアビリティを更新
                 return;
             }
 
@@ -712,6 +845,66 @@
             ocrDiv.innerHTML = params + linkAbility;
             updateTotalCost();
             updateSumStats();
+            updateAllLinkAbilities(); // 全リンクアビリティを更新
+        }
+
+        // 全カードのリンクアビリティを一括更新する関数
+        function updateAllLinkAbilities() {
+            // 各カードのリンクアビリティ発動状態を再計算
+            for (let i = 0; i < 10; i++) {
+                const ocrDiv = document.getElementById(`ocr-params-${i}`);
+                if (ocrDiv && selectedOcrData[i]) {
+                    updateLinkAbilitiesForCard(i, selectedOcrData[i], ocrDiv);
+                }
+            }
+        }
+
+        // 特定のカードのリンクアビリティ表示を更新
+        function updateLinkAbilitiesForCard(index, ocrJson, ocrDiv) {
+            if (!Array.isArray(ocrJson.link_abilities) || ocrJson.link_abilities.length === 0) {
+                return;
+            }
+
+            // 既存のリンクアビリティ部分を探して更新
+            const linkGroup = ocrDiv.querySelector('.param-group.link');
+            if (!linkGroup) {
+                return;
+            }
+
+            let linkAbility = '<div style="color:#ffe082;">リンクアビリティ:</div>';
+            ocrJson.link_abilities.forEach((ab, idx) => {
+                // リンクアビリティが発動中かどうかをチェック
+                let isActive = false;
+                let activeText = '';
+                if (ab.condition && ab.condition.match(/デッキに(\d+)枚以上/)) {
+                    const match = ab.condition.match(/デッキに(\d+)枚以上/);
+                    const count = parseInt(match[1], 10);
+                    let found = selectedOcrData.filter(d => {
+                        if (!d) return false;
+                        if (!Array.isArray(d.link_abilities)) return false;
+                        return d.link_abilities.some(link => {
+                            let n = link.name ?? '';
+                            return n === ab.name;
+                        });
+                    }).length;
+                    if (found >= count) {
+                        isActive = true;
+                        activeText = ' <span style="color:#ff5252;font-weight:bold;">【発動中】</span>';
+                    }
+                }
+                
+                // 発動中の場合は色を変更
+                const nameColor = isActive ? '#42a5f5' : '#888';
+                const conditionColor = isActive ? '#42a5f5' : '#aaa';
+                const effectColor = isActive ? '#42a5f5' : '#bbb';
+                const fontWeight = isActive ? 'bold' : 'normal';
+                const fontStyle = isActive ? 'normal' : 'italic';
+                const opacity = isActive ? 1 : 0.7;
+                
+                linkAbility += `<div style='font-size:0.95em;margin-top:0.1em;'>・<span style='color:${nameColor};font-weight:${fontWeight};font-style:${fontStyle};opacity:${opacity};'>${ab.name || ''}</span> <span style='color:${conditionColor};font-weight:${fontWeight};font-style:${fontStyle};opacity:${opacity};'>${ab.condition || ''}</span> <span style='color:${effectColor};font-weight:${fontWeight};font-style:${fontStyle};opacity:${opacity};'>${ab.effect || ''}</span>${activeText}</div>`;
+            });
+
+            linkGroup.innerHTML = linkAbility;
         }
 
         // 総コスト更新
@@ -866,38 +1059,69 @@
                     const meleeBuffPercent = maxMeleeTotal > 0 ? (meleeBuff / maxMeleeTotal) * 100 : 0;
                     const hpBuffPercent = maxHpTotal > 0 ? (hpBuff / maxHpTotal) * 100 : 0;
 
-                    // 目盛りHTML（200ごと、白色ライン）
-                    const scaleHtml = `
-                        <div style=\"position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:20;\">\n                            <div style='position:absolute;left:0%;top:0;height:100%;width:2px;background:#fff;opacity:0.5;'></div>\n                            <div style='position:absolute;left:20%;top:0;height:100%;width:2px;background:#fff;opacity:0.5;'></div>\n                            <div style='position:absolute;left:40%;top:0;height:100%;width:2px;background:#fff;opacity:0.5;'></div>\n                            <div style='position:absolute;left:60%;top:0;height:100%;width:2px;background:#fff;opacity:0.5;'></div>\n                            <div style='position:absolute;left:80%;top:0;height:100%;width:2px;background:#fff;opacity:0.5;'></div>\n                            <div style='position:absolute;left:100%;top:0;height:100%;width:2px;background:#fff;opacity:0.7;'></div>\n                        </div>\n                    `;
-
                     const barHtml = `
-                    <div style=\"background:#222;border-radius:12px;padding:1.2em 1.2em 1.5em 1.2em;min-width:220px;max-width:260px;box-sizing:border-box;display:flex;flex-direction:column;align-items:center;margin-bottom:1em;\">\n                        <div style='color:#4caf50;font-weight:bold;font-size:1.1em;margin-bottom:0.2em;'>${i-4}番機</div>\n                        <div style='color:#4caf50;'>機動力合計: ${totalMobility} <span style='color:#e91e63;font-size:0.9em;'>(+${mobilityBuff})</span></div>\n                        <div style="position:relative;background:#333;height:24px;border-radius:0;overflow:visible;margin-bottom:8px;width:100%;">
-                            <div style=\"background:#2196f3;height:100%;width:${baseMobilityPercent}%;transition:width 0.3s ease;position:absolute;left:0;top:0;z-index:10;border-radius:0;\"></div>
-                            <div style=\"background:#e91e63;height:100%;width:${mobilityBuffPercent}%;transition:width 0.3s ease;position:absolute;left:${baseMobilityPercent}%;top:0;z-index:10;border-radius:0;\"></div>
-                            ${scaleHtml}
+                    <div class="stats-bar">
+                        <div class="stats-title">${i-4}番機</div>
+                        <div class="stats-value">機動力合計: ${totalMobility} <span class="stats-buff">(+${mobilityBuff})</span></div>
+                        <div class="stats-bar-container">
+                            <div class="stats-bar-base" style="width:${baseMobilityPercent}%"></div>
+                            <div class="stats-bar-buff" style="width:${mobilityBuffPercent}%;left:${baseMobilityPercent}%"></div>
+                            <div class="stats-scale">
+                                <div class="stats-scale-line" style="left:0%"></div>
+                                <div class="stats-scale-line" style="left:20%"></div>
+                                <div class="stats-scale-line" style="left:40%"></div>
+                                <div class="stats-scale-line" style="left:60%"></div>
+                                <div class="stats-scale-line" style="left:80%"></div>
+                                <div class="stats-scale-line" style="left:100%"></div>
+                            </div>
                         </div>
-                        <div style=\"display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;width:100%;\">\n                            <div style=\"background:#2196f3;color:#fff;padding:4px 16px;border-radius:8px;font-size:0.9em;font-weight:bold;\">${mobilityPercent.toFixed(1)}%</div>\n                        </div>
-                        <div style='color:#2196f3;'>遠距離合計: ${totalRanged} <span style='color:#e91e63;font-size:0.9em;'>(+${rangedBuff})</span></div>
-                        <div style="position:relative;background:#333;height:24px;border-radius:0;overflow:visible;margin-bottom:8px;width:100%;">
-                            <div style=\"background:#2196f3;height:100%;width:${baseRangedPercent}%;transition:width 0.3s ease;position:absolute;left:0;top:0;z-index:10;border-radius:0;\"></div>
-                            <div style=\"background:#e91e63;height:100%;width:${rangedBuffPercent}%;transition:width 0.3s ease;position:absolute;left:${baseRangedPercent}%;top:0;z-index:10;border-radius:0;\"></div>
-                            ${scaleHtml}
+                        <div class="stats-percent">${mobilityPercent.toFixed(1)}%</div>
+                        
+                        <div class="stats-value">遠距離合計: ${totalRanged} <span class="stats-buff">(+${rangedBuff})</span></div>
+                        <div class="stats-bar-container">
+                            <div class="stats-bar-base" style="width:${baseRangedPercent}%"></div>
+                            <div class="stats-bar-buff" style="width:${rangedBuffPercent}%;left:${baseRangedPercent}%"></div>
+                            <div class="stats-scale">
+                                <div class="stats-scale-line" style="left:0%"></div>
+                                <div class="stats-scale-line" style="left:20%"></div>
+                                <div class="stats-scale-line" style="left:40%"></div>
+                                <div class="stats-scale-line" style="left:60%"></div>
+                                <div class="stats-scale-line" style="left:80%"></div>
+                                <div class="stats-scale-line" style="left:100%"></div>
+                            </div>
                         </div>
-                        <div style=\"display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;width:100%;\">\n                            <div style=\"background:#2196f3;color:#fff;padding:4px 16px;border-radius:8px;font-size:0.9em;font-weight:bold;\">${rangedPercent.toFixed(1)}%</div>\n                        </div>
-                        <div style='color:#2196f3;'>近距離合計: ${totalMelee} <span style='color:#e91e63;font-size:0.9em;'>(+${meleeBuff})</span></div>
-                        <div style="position:relative;background:#333;height:24px;border-radius:0;overflow:visible;margin-bottom:8px;width:100%;">
-                            <div style=\"background:#2196f3;height:100%;width:${baseMeleePercent}%;transition:width 0.3s ease;position:absolute;left:0;top:0;z-index:10;border-radius:0;\"></div>
-                            <div style=\"background:#e91e63;height:100%;width:${meleeBuffPercent}%;transition:width 0.3s ease;position:absolute;left:${baseMeleePercent}%;top:0;z-index:10;border-radius:0;\"></div>
-                            ${scaleHtml}
+                        <div class="stats-percent">${rangedPercent.toFixed(1)}%</div>
+                        
+                        <div class="stats-value">近距離合計: ${totalMelee} <span class="stats-buff">(+${meleeBuff})</span></div>
+                        <div class="stats-bar-container">
+                            <div class="stats-bar-base" style="width:${baseMeleePercent}%"></div>
+                            <div class="stats-bar-buff" style="width:${meleeBuffPercent}%;left:${baseMeleePercent}%"></div>
+                            <div class="stats-scale">
+                                <div class="stats-scale-line" style="left:0%"></div>
+                                <div class="stats-scale-line" style="left:20%"></div>
+                                <div class="stats-scale-line" style="left:40%"></div>
+                                <div class="stats-scale-line" style="left:60%"></div>
+                                <div class="stats-scale-line" style="left:80%"></div>
+                                <div class="stats-scale-line" style="left:100%"></div>
+                            </div>
                         </div>
-                        <div style=\"display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;width:100%;\">\n                            <div style=\"background:#2196f3;color:#fff;padding:4px 16px;border-radius:8px;font-size:0.9em;font-weight:bold;\">${meleePercent.toFixed(1)}%</div>\n                        </div>
-                        <div style='color:#2196f3;'>HP合計: ${totalHp} <span style='color:#e91e63;font-size:0.9em;'>(+${hpBuff})</span></div>
-                        <div style="position:relative;background:#333;height:24px;border-radius:0;overflow:visible;margin-bottom:8px;width:100%;">
-                            <div style=\"background:#2196f3;height:100%;width:${baseHpPercent}%;transition:width 0.3s ease;position:absolute;left:0;top:0;z-index:10;border-radius:0;\"></div>
-                            <div style=\"background:#e91e63;height:100%;width:${hpBuffPercent}%;transition:width 0.3s ease;position:absolute;left:${baseHpPercent}%;top:0;z-index:10;border-radius:0;\"></div>
-                            ${scaleHtml}
+                        <div class="stats-percent">${meleePercent.toFixed(1)}%</div>
+                        
+                        <div class="stats-value">HP合計: ${totalHp} <span class="stats-buff">(+${hpBuff})</span></div>
+                        <div class="stats-bar-container">
+                            <div class="stats-bar-base" style="width:${baseHpPercent}%"></div>
+                            <div class="stats-bar-buff" style="width:${hpBuffPercent}%;left:${baseHpPercent}%"></div>
+                            <div class="stats-scale">
+                                <div class="stats-scale-line" style="left:0%"></div>
+                                <div class="stats-scale-line" style="left:20%"></div>
+                                <div class="stats-scale-line" style="left:40%"></div>
+                                <div class="stats-scale-line" style="left:60%"></div>
+                                <div class="stats-scale-line" style="left:80%"></div>
+                                <div class="stats-scale-line" style="left:100%"></div>
+                            </div>
                         </div>
-                        <div style=\"display:flex;justify-content:space-between;align-items:center;width:100%;\">\n                            <div style=\"background:#2196f3;color:#fff;padding:4px 16px;border-radius:8px;font-size:0.9em;font-weight:bold;\">${hpPercent.toFixed(1)}%</div>\n                        </div>\n                    </div>`;
+                        <div class="stats-percent">${hpPercent.toFixed(1)}%</div>
+                    </div>`;
                     totalStatsBars.innerHTML += barHtml;
                 }
             }
