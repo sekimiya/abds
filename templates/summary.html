@@ -29,7 +29,7 @@
         .card-image { max-width: 100%; max-height: 100%; object-fit: contain; cursor: pointer; }
         .card-name { height: 40px; font-size: 12px; }
         .stat-bar-container { background: #444; border-radius: 3px; height: 16px; position: relative; width: 100%; }
-        .stat-bar { background: linear-gradient(to right, #2196f3, #64b5f6); height: 100%; border-radius: 3px; }
+        .stat-bar { background: linear-gradient(to right, #2196f3, #64b5f6); height: 100%; border-radius: 3px; position: absolute; top: 0; left: 0; }
         .stat-value { position: absolute; right: 5px; top: 50%; transform: translateY(-50%); font-size: 11px; color: #fff; text-shadow: 1px 1px 2px #000; font-weight: bold; }
         .total-value { font-weight: bold; font-size: 14px; }
 
@@ -43,6 +43,7 @@
         .aptitude-c { color: #9e9e9e; }
         .link-active { background: #1a334a; color: #bbdefb; font-weight: bold; }
         .link-item { padding: 2px; margin: 1px 0; border-radius: 3px; }
+        .sq-link-active { background: #4a1a4a; color: #f8bbd9; font-weight: bold; }
         .skill-cell { height: 90px; overflow-y: auto; text-align: left; padding: 8px; font-size: 12px; line-height: 1.3; }
         #loading { text-align: center; font-size: 20px; padding: 50px; }
 
@@ -472,12 +473,34 @@
                                 if (totalBuff > 0) {
                                     displayText += ` (+${totalBuff})`;
                                 }
-                                tdTotal.innerHTML = `
-                                    <div style="display:flex; align-items:center; gap:5px;">
-                                        <div class="total-value" style="width:60px;">${displayText}</div>
+                                
+                                // 基本値とバフ値を分離して計算
+                                const baseTotal = total - totalBuff;
+                                const basePercent = (baseTotal / def.max) * 100;
+                                const buffPercent = (totalBuff / def.max) * 100;
+                                
+                                let barHtml = '';
+                                if (totalBuff > 0) {
+                                    // バフがある場合：基本値（青）+ バフ値（ピンク）
+                                    barHtml = `
+                                        <div class="stat-bar-container">
+                                            <div class="stat-bar" style="width:${basePercent}%; background: linear-gradient(to right, #2196f3, #64b5f6);"></div>
+                                            <div class="stat-bar" style="width:${buffPercent}%; background: linear-gradient(to right, #e91e63, #f06292); left: ${basePercent}%;"></div>
+                                        </div>
+                                    `;
+                                } else {
+                                    // バフがない場合：通常の青いバー
+                                    barHtml = `
                                         <div class="stat-bar-container">
                                             <div class="stat-bar" style="width:${percent}%"></div>
                                         </div>
+                                    `;
+                                }
+                                
+                                tdTotal.innerHTML = `
+                                    <div style="display:flex; align-items:center; gap:5px;">
+                                        <div class="total-value" style="width:60px;">${displayText}</div>
+                                        ${barHtml}
                                     </div>
                                 `;
                             } else if (def.header === 'コスト') {
@@ -558,14 +581,57 @@
             let html = '';
             value.forEach(link => {
                 const isActive = checkLinkIsActive(link, cards);
+                const isSQLinkActive = checkSQLinkActive(link, cards);
                 const activeText = isActive ? ' 【発動中】' : '';
-                const linkClass = isActive ? 'link-item link-active' : 'link-item';
-                html += `<div class="${linkClass}">・${link.name}${activeText}</div>`;
+                
+                // SQリンクの場合はピンク色、通常のリンクアビリティは青色
+                let linkClass = 'link-item';
+                if (isSQLinkActive) {
+                    linkClass = 'link-item sq-link-active';
+                } else if (isActive) {
+                    linkClass = 'link-item link-active';
+                }
+                
+                // 効果を解析して表示（数値は記載しない）
+                let effectText = '';
+                if (link.effect && isActive) {
+                    const effects = [];
+                    const eff = link.effect;
+                    
+                    if (eff.match(/機動力.*アップ/)) effects.push('機動力');
+                    if (eff.match(/遠距離攻撃力.*アップ/)) effects.push('遠距離攻撃力');
+                    if (eff.match(/近距離攻撃力.*アップ/)) effects.push('近距離攻撃力');
+                    if (eff.match(/HP.*アップ/)) effects.push('HP');
+                    
+                    if (effects.length > 0) {
+                        effectText = ` (${effects.join(', ')}上昇)`;
+                    }
+                }
+                
+                html += `<div class="${linkClass}">・${link.name}${activeText}${effectText}</div>`;
             });
             return html;
         }
 
         function checkLinkIsActive(link, allSelectedCards) {
+            if (!link.condition || !link.condition.includes('デッキに')) return false;
+            const match = link.condition.match(/デッキに(\d+)枚以上/);
+            if (!match) return false;
+            const requiredCount = parseInt(match[1], 10);
+            
+            const count = allSelectedCards.filter(c => {
+                if (!c || !c.ocr_data || !c.ocr_data.link_abilities) return false;
+                return c.ocr_data.link_abilities.some(l => l.name === link.name);
+            }).length;
+            
+            return count >= requiredCount;
+        }
+
+        function checkSQLinkActive(link, allSelectedCards) {
+            // SQリンクの判定（SQゲージ関連の効果を持つリンクアビリティ）
+            if (!link.effect || !link.effect.includes('SQゲージ')) return false;
+            
+            // SQリンクの発動条件をチェック（通常のリンクアビリティと同じ条件）
             if (!link.condition || !link.condition.includes('デッキに')) return false;
             const match = link.condition.match(/デッキに(\d+)枚以上/);
             if (!match) return false;
