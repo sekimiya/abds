@@ -4,6 +4,7 @@ import os
 import json
 import re
 import argparse
+import glob
 
 from openai import OpenAI
 
@@ -130,112 +131,151 @@ def extract_structured_data_from_url(image_url, api_key):
 
     return response.choices[0].message.content
 
-def save_result_to_file(card_name, result_json):
+def save_result_to_file(card_number, card_name, result_json):
     # ファイル名に使えない文字をアンダースコアに変換
-    safe_name = card_name.replace('/', '_').replace('\\', '_').replace(':', '_').replace('*', '_').replace('?', '_').replace('"', '_').replace('<', '_').replace('>', '_').replace('|', '_').replace(' ', '_')
-    os.makedirs('ocr_results', exist_ok=True)
-    file_path = os.path.join('ocr_results', f"{safe_name}_ocr.json")
+    safe_number = sanitize_filename(card_number)
+    safe_name = sanitize_filename(card_name)
+    os.makedirs('ocr_results_back', exist_ok=True)
+    file_path = os.path.join('ocr_results_back', f"{safe_number}_{safe_name}_ocr.json")
     with open(file_path, 'w', encoding='utf-8') as f:
         json.dump(result_json, f, ensure_ascii=False, indent=2)
 
 def sanitize_filename(s):
     return s.replace('/', '_').replace('\\', '_').replace(':', '_').replace('*', '_').replace('?', '_').replace('"', '_').replace('<', '_').replace('>', '_').replace('|', '_').replace(' ', '_')
 
-def ocr_all_cards(all_cards_path, api_key_path):
+def ocr_back_cards_from_all_cards_list(api_key_path):
+    """all_cards_listディレクトリのJSONファイルから裏面画像を読み込み、OCRを実行"""
     import time
+    
     # OCR結果保存ディレクトリ
-    results_dir = 'ocr_results'
+    results_dir = 'ocr_results_back'
     os.makedirs(results_dir, exist_ok=True)
-    # 全カードリスト読み込み
-    with open(all_cards_path, encoding='utf-8') as f:
-        all_cards = json.load(f)
-    # APIキー
+    
+    # all_cards_listディレクトリのJSONファイルを取得
+    all_cards_list_dir = 'all_cards_list'
+    if not os.path.exists(all_cards_list_dir):
+        print(f"エラー: {all_cards_list_dir}ディレクトリが見つかりません")
+        return
+    
+    json_files = glob.glob(os.path.join(all_cards_list_dir, '*.json'))
+    if not json_files:
+        print(f"エラー: {all_cards_list_dir}ディレクトリにJSONファイルが見つかりません")
+        return
+    
+    print(f"見つかったJSONファイル数: {len(json_files)}")
+    
+    # APIキー読み込み
     api_key = read_api_key(api_key_path)
-    all_ocr_results = []
-    for idx, card in enumerate(all_cards):
-        card_number = card['front']['number']
-        card_name = card['front']['name']
-        # 裏面のURLを使用
-        image_url = card['back']['url'] if card['back'] else None
-        
-        if not image_url:
-            print(f"[スキップ] 裏面なし: {card_number} {card_name}")
-            continue
-            
-        print(f"[{idx+1}/{len(all_cards)}] OCR開始: {card_number} {card_name} {image_url}")
+    
+    processed_count = 0
+    skipped_count = 0
+    error_count = 0
+    
+    for idx, json_file in enumerate(json_files, 1):
         try:
-            result = extract_structured_data_from_url(image_url, api_key)
-            print(f"[APIレスポンス] {result}")
-            # コードブロックを除去
-            json_str = result
-            if "```json" in result:
-                # コードブロックからJSONを抽出
-                json_str = result.split("```json")[1].split("```")[0].strip()
-            elif "```" in result:
-                # 通常のコードブロックからJSONを抽出
-                json_str = result.split("```")[1].strip()
+            # JSONファイルを読み込み
+            with open(json_file, 'r', encoding='utf-8') as f:
+                card_data = json.load(f)
             
-            # Jsonとしてパース
+            card_number = card_data.get('number', '')
+            card_name = card_data.get('name', '')
+            back_image_url = card_data.get('back', {}).get('image_url', '')
+            
+            # 裏面画像URLがない場合はスキップ
+            if not back_image_url:
+                print(f"[{idx}/{len(json_files)}] スキップ: 裏面画像なし - {card_number} {card_name}")
+                skipped_count += 1
+                continue
+            
+            # 既にOCR結果が存在する場合はスキップ
+            safe_number = sanitize_filename(card_number)
+            safe_name = sanitize_filename(card_name)
+            ocr_result_file = os.path.join(results_dir, f"{safe_number}_{safe_name}_ocr.json")
+            if os.path.exists(ocr_result_file):
+                print(f"[{idx}/{len(json_files)}] スキップ: 既存のOCR結果 - {card_number} {card_name}")
+                skipped_count += 1
+                continue
+            
+            print(f"[{idx}/{len(json_files)}] OCR開始: {card_number} {card_name}")
+            print(f"   URL: {back_image_url}")
+            
             try:
-                result_json = json.loads(json_str)
-                # 必要なフィールドが存在するか確認
-                if 'type' in result_json and 'name' in result_json:
-                    print(f"[成功] OCR成功: {card_number} {card_name}")
-                else:
-                    print(f"[警告] 不完全なデータ: {card_number} {card_name}")
-                    result_json = {"warning": "不完全なデータ", "number": card_number, "name": card_name, "url": image_url, "raw": json_str}
-            except Exception as e2:
-                print(f"[エラー] JSONパース失敗: {card_number} {card_name} {str(e2)}")
-                result_json = {"error": str(e2), "number": card_number, "name": card_name, "url": image_url, "raw": json_str}
+                result = extract_structured_data_from_url(back_image_url, api_key)
+                
+                # コードブロックを除去
+                json_str = result
+                if "```json" in result:
+                    json_str = result.split("```json")[1].split("```")[0].strip()
+                elif "```" in result:
+                    json_str = result.split("```")[1].strip()
+                
+                # JSONとしてパース
+                try:
+                    result_json = json.loads(json_str)
+                    # 必要なフィールドが存在するか確認
+                    if 'type' in result_json and 'name' in result_json:
+                        print(f"  ✓ OCR成功: {card_number} {card_name}")
+                        result_json['card_number'] = card_number
+                        result_json['card_name'] = card_name
+                        result_json['image_url'] = back_image_url
+                    else:
+                        print(f"  ⚠ 不完全なデータ: {card_number} {card_name}")
+                        result_json = {
+                            "warning": "不完全なデータ", 
+                            "card_number": card_number, 
+                            "card_name": card_name, 
+                            "image_url": back_image_url, 
+                            "raw": json_str
+                        }
+                except Exception as e2:
+                    print(f"  ✗ JSONパース失敗: {card_number} {card_name} {str(e2)}")
+                    result_json = {
+                        "error": str(e2), 
+                        "card_number": card_number, 
+                        "card_name": card_name, 
+                        "image_url": back_image_url, 
+                        "raw": json_str
+                    }
+                
+                # 結果を保存
+                save_result_to_file(card_number, card_name, result_json)
+                processed_count += 1
+                
+            except Exception as e:
+                print(f"  ✗ API呼び出し失敗: {card_number} {card_name} {str(e)}")
+                error_result = {
+                    "error": str(e), 
+                    "card_number": card_number, 
+                    "card_name": card_name, 
+                    "image_url": back_image_url
+                }
+                save_result_to_file(card_number, card_name, error_result)
+                error_count += 1
+            
+            # API制限対策
+            time.sleep(1.2)
+            
         except Exception as e:
-            print(f"[エラー] API呼び出し失敗: {card_number} {card_name} {str(e)}")
-            result_json = {"error": str(e), "number": card_number, "name": card_name, "url": image_url}
-        # ファイル名生成
-        safe_number = sanitize_filename(card_number)
-        safe_name = sanitize_filename(card_name)
-        out_path = os.path.join(results_dir, f"{safe_number}_{safe_name}_ocr.json")
-        with open(out_path, 'w', encoding='utf-8') as f:
-            json.dump(result_json, f, ensure_ascii=False, indent=2)
-        all_ocr_results.append(result_json)
-        time.sleep(1.2)  # API制限対策
-    # 全OCRまとめjson
-    with open(os.path.join(results_dir, 'all_ocr_results.json'), 'w', encoding='utf-8') as f:
-        json.dump(all_ocr_results, f, ensure_ascii=False, indent=2)
-    print(f"全{len(all_cards)}件のOCR処理が完了しました。")
+            print(f"  ✗ ファイル処理エラー: {json_file} {str(e)}")
+            error_count += 1
+    
+    print(f"\n=== OCR処理完了 ===")
+    print(f"処理済み: {processed_count}件")
+    print(f"スキップ: {skipped_count}件")
+    print(f"エラー: {error_count}件")
+    print(f"合計: {len(json_files)}件")
 
 def main():
-    api_key_path = "APIKey.txt"
-    default_url = "https://www.gundam-ab.com/images/cardlist/card/FQ01-001_b.jpg?v8"
-
-    image_url = sys.argv[1] if len(sys.argv) > 1 else default_url
-
-    # カード名（ファイル名候補）をURLから推測（例: AB01-001_b など）
-    match = re.search(r"([A-Z0-9\-]+_b)", image_url)
-    card_name_guess = match.group(1) if match else "unknown"
-    print(f"--- 識別開始 ---\nカード名（推定）: {card_name_guess}\nカードURL: {image_url}\n")
-
-    try:
-        api_key = read_api_key(api_key_path)
-        print("[進捗] OpenAI APIへリクエスト中...")
-        result = extract_structured_data_from_url(image_url, api_key)
-        print("[進捗] 構造化データ取得完了\n")
-        print("✅ 構造化されたデータ:\n")
-        print(result)
-        # JSONとしてパース
-        result_json = json.loads(result)
-        # カード名取得
-        card_name = result_json.get('name', card_name_guess)
-        print(f"[進捗] ファイル保存: ocr_results/{card_name}_ocr.json\n")
-        save_result_to_file(card_name, result_json)
-        print("[完了] 識別・保存が完了しました。\n")
-    except Exception as e:
-        print(f"❌ エラーが発生しました: {str(e)}")
+    parser = argparse.ArgumentParser(description='カードの裏面画像からOCRを実行')
+    parser.add_argument('--api-key', default='APIkey.txt', help='APIキーファイルのパス')
+    parser.add_argument('--mode', choices=['back'], default='back', help='OCRモード')
+    
+    args = parser.parse_args()
+    
+    if args.mode == 'back':
+        ocr_back_cards_from_all_cards_list(args.api_key)
+    else:
+        print("サポートされていないモードです")
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser()
-    parser.add_argument('--all', action='store_true', help='全カード一括OCR')
-    args = parser.parse_args()
-    if args.all:
-        ocr_all_cards('all_cards_list/all_cards.json', 'APIKey.txt')
-    else:
-        main()
+    main()

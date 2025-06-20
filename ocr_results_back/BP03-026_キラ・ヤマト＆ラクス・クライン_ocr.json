@@ -1,0 +1,39 @@
+{
+  "type": "PL",
+  "name": "キラ・ヤマト＆ラクス・クライン",
+  "english_name": "KIRA YAMATO & LACUS CLYNE",
+  "cost": 4,
+  "category": "殲滅",
+  "age": 19,
+  "height": "170cm/160cm",
+  "units": [
+    "マイティーストライクフリーダムガンダム"
+  ],
+  "pl_skill": {
+    "name": "愛から生まれる力",
+    "trigger": "SQゲージが最大時",
+    "effect": "出撃中の敵ユニット数に応じて機動力/近距離攻撃力をアップする。"
+  },
+  "link_abilities": [
+    {
+      "name": "SEEDの系譜",
+      "condition": "デッキに3枚以上",
+      "effect": "SQゲージが表示される。SQゲージを消費するとSQUAD RUSHが発動できる。[遠距離攻撃力][近距離攻撃力]小アップ"
+    },
+    {
+      "name": "圧倒する演説力",
+      "condition": "デッキに殲滅系3枚以上",
+      "effect": "殲滅タイプに対してダメージ中アップ"
+    }
+  ],
+  "stats": {
+    "mobility": 200,
+    "ranged_attack": 30,
+    "melee_attack": 340,
+    "hp": 430
+  },
+  "illust": "",
+  "card_number": "BP03-026",
+  "card_name": "キラ・ヤマト＆ラクス・クライン",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/BP03-026_b.jpg?v8"
+}
