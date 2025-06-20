@@ -139,5 +139,13 @@ def decks_html():
 def search():
     return render_template('search.html')
 
+@app.route('/mobile')
+def mobile():
+    return render_template('mobile.html')
+
+@app.route('/summary')
+def summary():
+    return render_template('summary.html')
+
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5001) 

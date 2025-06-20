@@ -1,0 +1,1390 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>モバイル版 - Gundam Arsenal Base Deck Simulator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: #fff;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.4;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ヘッダー */
+        .header {
+            background: linear-gradient(135deg, #66f2c5 0%, #4caf50 100%);
+            color: #222;
+            text-align: center;
+            padding: 1rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        /* ナビゲーション */
+        .nav {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 0.8rem;
+            text-align: center;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .nav a {
+            color: #66f2c5;
+            text-decoration: none;
+            font-size: 0.9rem;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            background: rgba(102, 242, 197, 0.1);
+            margin: 0 0.3rem;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .nav a:hover {
+            background: rgba(102, 242, 197, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* メインコンテナ */
+        .container {
+            max-width: 100%;
+            padding: 1rem;
+        }
+
+        /* 総コスト表示 */
+        .total-cost {
+            background: linear-gradient(135deg, #333 0%, #444 100%);
+            border-radius: 15px;
+            padding: 1rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            border: 1px solid rgba(102, 242, 197, 0.3);
+        }
+
+        .total-cost h2 {
+            color: #66f2c5;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .cost-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        /* カードグリッド */
+        .card-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        /* カードアイテム */
+        .card-item {
+            background: linear-gradient(135deg, #222 0%, #333 100%);
+            border-radius: 20px;
+            padding: 1.5rem;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+            border: 1px solid rgba(102, 242, 197, 0.2);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #66f2c5, #4caf50);
+        }
+
+        .card-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.5);
+        }
+
+        /* カード番号 */
+        .card-number {
+            color: #66f2c5;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+
+        /* カード画像 */
+        .card-image {
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+            border-radius: 15px;
+            margin: 0 auto 1rem auto;
+            display: block;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .card-image:hover {
+            transform: scale(1.02);
+        }
+
+        /* カード名 */
+        .card-name {
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: #fff;
+            line-height: 1.3;
+        }
+
+        /* セレクトボックス */
+        .card-select {
+            width: 100%;
+            padding: 1rem;
+            border-radius: 12px;
+            border: 2px solid #66f2c5;
+            background: rgba(102, 242, 197, 0.1);
+            color: #fff;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2366f2c5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            background-size: 1rem;
+        }
+
+        .card-select:focus {
+            outline: none;
+            border-color: #4caf50;
+            box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.3);
+        }
+
+        /* パラメータ表示 */
+        .card-params {
+            background: rgba(0,0,0,0.3);
+            border-radius: 12px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .param-group {
+            margin-bottom: 1rem;
+            padding: 0.8rem;
+            background: rgba(255,255,255,0.05);
+            border-radius: 8px;
+            border-left: 3px solid #66f2c5;
+        }
+
+        .param-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .param-item {
+            background: rgba(102, 242, 197, 0.2);
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            border: 1px solid rgba(102, 242, 197, 0.3);
+        }
+
+        .param-label {
+            color: #66f2c5;
+            font-weight: bold;
+        }
+
+        /* スキル表示 */
+        .skill-section {
+            background: rgba(102, 229, 255, 0.1);
+            border-radius: 8px;
+            padding: 0.8rem;
+            margin-bottom: 0.5rem;
+            border-left: 3px solid #66e5ff;
+        }
+
+        .skill-title {
+            color: #66e5ff;
+            font-weight: bold;
+            margin-bottom: 0.3rem;
+        }
+
+        .skill-description {
+            color: #fff;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        /* SPアタック表示 */
+        .spattack-section {
+            background: rgba(255, 178, 178, 0.1);
+            border-radius: 8px;
+            padding: 0.8rem;
+            margin-bottom: 0.5rem;
+            border-left: 3px solid #ffb2b2;
+        }
+
+        .spattack-title {
+            color: #ffb2b2;
+            font-weight: bold;
+            margin-bottom: 0.3rem;
+        }
+
+        .spattack-description {
+            color: #fff;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        /* リンクアビリティ表示 */
+        .link-section {
+            background: rgba(255, 224, 130, 0.1);
+            border-radius: 8px;
+            padding: 0.8rem;
+            margin-bottom: 0.5rem;
+            border-left: 3px solid #ffe082;
+        }
+
+        .link-title {
+            color: #ffe082;
+            font-weight: bold;
+            margin-bottom: 0.3rem;
+        }
+
+        .link-item {
+            color: #fff;
+            font-size: 0.9rem;
+            line-height: 1.4;
+            margin-bottom: 0.3rem;
+            padding: 0.3rem;
+            background: rgba(255,255,255,0.05);
+            border-radius: 4px;
+        }
+
+        .link-active {
+            background: rgba(66, 165, 245, 0.2);
+            border-left: 3px solid #42a5f5;
+        }
+
+        /* 検索ボタン */
+        .search-section {
+            margin-top: 1rem;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 0.8rem;
+            border-radius: 12px;
+            border: 2px solid #66f2c5;
+            background: rgba(102, 242, 197, 0.1);
+            color: #fff;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .search-input::placeholder {
+            color: rgba(255,255,255,0.6);
+        }
+
+        .search-btn {
+            width: 100%;
+            padding: 0.8rem;
+            border-radius: 12px;
+            border: none;
+            background: linear-gradient(135deg, #66f2c5, #4caf50);
+            color: #222;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .search-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(102, 242, 197, 0.4);
+        }
+
+        /* 数値検索ボタン */
+        .param-search-btn {
+            width: 100%;
+            padding: 0.8rem;
+            border-radius: 12px;
+            border: 2px solid #ff9800;
+            background: linear-gradient(135deg, #ff9800, #f57c00);
+            color: #fff;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 0.5rem;
+        }
+
+        .param-search-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(255, 152, 0, 0.4);
+        }
+
+        /* 合計ステータス表示 */
+        .total-stats {
+            background: linear-gradient(135deg, #181818 0%, #222 100%);
+            border-radius: 20px;
+            padding: 1.5rem;
+            margin-top: 2rem;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+            border: 1px solid rgba(102, 242, 197, 0.2);
+        }
+
+        .stats-title {
+            color: #66f2c5;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+        }
+
+        .stat-item {
+            background: rgba(255,255,255,0.05);
+            border-radius: 12px;
+            padding: 1rem;
+            text-align: center;
+            border: 1px solid rgba(102, 242, 197, 0.2);
+        }
+
+        .stat-label {
+            color: #66f2c5;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .stat-buff {
+            color: #e91e63;
+            font-size: 0.8rem;
+        }
+
+        /* レスポンシブ対応 */
+        @media (max-width: 480px) {
+            .header {
+                font-size: 1.3rem;
+                padding: 0.8rem;
+            }
+
+            .container {
+                padding: 0.8rem;
+            }
+
+            .card-item {
+                padding: 1rem;
+            }
+
+            .card-image {
+                max-width: 250px;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* アニメーション */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card-item {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .card-item:nth-child(1) { animation-delay: 0.1s; }
+        .card-item:nth-child(2) { animation-delay: 0.2s; }
+        .card-item:nth-child(3) { animation-delay: 0.3s; }
+        .card-item:nth-child(4) { animation-delay: 0.4s; }
+        .card-item:nth-child(5) { animation-delay: 0.5s; }
+        .card-item:nth-child(6) { animation-delay: 0.6s; }
+        .card-item:nth-child(7) { animation-delay: 0.7s; }
+        .card-item:nth-child(8) { animation-delay: 0.8s; }
+        .card-item:nth-child(9) { animation-delay: 0.9s; }
+        .card-item:nth-child(10) { animation-delay: 1.0s; }
+
+        /* ローディング */
+        .loading {
+            text-align: center;
+            padding: 2rem;
+            color: #66f2c5;
+            font-size: 1.2rem;
+        }
+
+        /* エラー表示 */
+        .error {
+            text-align: center;
+            padding: 2rem;
+            color: #ff5252;
+            font-size: 1.2rem;
+        }
+
+        /* スライドメニュー */
+        .menu-toggle {
+            position: fixed;
+            top: 1rem;
+            left: 1rem;
+            z-index: 1001;
+            background: rgba(102, 242, 197, 0.9);
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+        }
+
+        .menu-toggle:hover {
+            background: rgba(102, 242, 197, 1);
+            transform: scale(1.1);
+        }
+
+        .menu-toggle span {
+            display: block;
+            width: 20px;
+            height: 2px;
+            background: #222;
+            margin: 3px 0;
+            transition: all 0.3s ease;
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+
+        .slide-menu {
+            position: fixed;
+            top: 0;
+            left: -300px;
+            width: 300px;
+            height: 100vh;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            z-index: 1000;
+            transition: left 0.3s ease;
+            box-shadow: 2px 0 15px rgba(0,0,0,0.5);
+            overflow-y: auto;
+        }
+
+        .slide-menu.active {
+            left: 0;
+        }
+
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0,0,0,0.5);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .menu-header {
+            background: linear-gradient(135deg, #66f2c5 0%, #4caf50 100%);
+            color: #222;
+            padding: 2rem 1.5rem 1.5rem 1.5rem;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .menu-content {
+            padding: 1rem;
+        }
+
+        .menu-section {
+            margin-bottom: 2rem;
+        }
+
+        .menu-section-title {
+            color: #66f2c5;
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #66f2c5;
+        }
+
+        .menu-item {
+            display: block;
+            padding: 0.8rem 1rem;
+            margin-bottom: 0.5rem;
+            background: rgba(255,255,255,0.05);
+            border-radius: 8px;
+            color: #fff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border-left: 3px solid transparent;
+        }
+
+        .menu-item:hover {
+            background: rgba(102, 242, 197, 0.2);
+            border-left-color: #66f2c5;
+            transform: translateX(5px);
+        }
+
+        .menu-item.ms {
+            border-left-color: #2196f3;
+        }
+
+        .menu-item.pl {
+            border-left-color: #ff9800;
+        }
+
+        .menu-item.ms:hover {
+            background: rgba(33, 150, 243, 0.2);
+        }
+
+        .menu-item.pl:hover {
+            background: rgba(255, 152, 0, 0.2);
+        }
+
+        .menu-item-icon {
+            margin-right: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .menu-item-text {
+            font-size: 0.9rem;
+        }
+
+        .menu-item-subtitle {
+            font-size: 0.8rem;
+            color: #888;
+            margin-top: 0.2rem;
+        }
+
+        /* メニューが開いている時のメインコンテンツ調整 */
+        body.menu-open {
+            overflow: hidden;
+        }
+
+        .container.menu-open {
+            transform: translateX(300px);
+            transition: transform 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <!-- ハンバーガーメニューボタン -->
+    <button class="menu-toggle" id="menuToggle">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <!-- スライドメニュー -->
+    <div class="slide-menu" id="slideMenu">
+        <div class="menu-header">
+            📱 ガンダムデッキシミュレーター
+        </div>
+        <div class="menu-content">
+            <div class="menu-section">
+                <div class="menu-section-title">🚀 モバイルナビゲーション</div>
+                <a href="/" class="menu-item">
+                    <span class="menu-item-icon">🏠</span>
+                    <span class="menu-item-text">デスクトップ版</span>
+                </a>
+                <a href="/search" class="menu-item">
+                    <span class="menu-item-icon">🔍</span>
+                    <span class="menu-item-text">カード検索</span>
+                </a>
+                <a href="/decks.html" class="menu-item">
+                    <span class="menu-item-icon">📋</span>
+                    <span class="menu-item-text">投稿一覧</span>
+                </a>
+            </div>
+
+            <div class="menu-section">
+                <div class="menu-section-title">🤖 MSスロット</div>
+                <a href="#" class="menu-item ms" onclick="scrollToCard(0)">
+                    <span class="menu-item-icon">⚔️</span>
+                    <span class="menu-item-text">1番機</span>
+                    <div class="menu-item-subtitle">MSスロット</div>
+                </a>
+                <a href="#" class="menu-item ms" onclick="scrollToCard(1)">
+                    <span class="menu-item-icon">⚔️</span>
+                    <span class="menu-item-text">2番機</span>
+                    <div class="menu-item-subtitle">MSスロット</div>
+                </a>
+                <a href="#" class="menu-item ms" onclick="scrollToCard(2)">
+                    <span class="menu-item-icon">⚔️</span>
+                    <span class="menu-item-text">3番機</span>
+                    <div class="menu-item-subtitle">MSスロット</div>
+                </a>
+                <a href="#" class="menu-item ms" onclick="scrollToCard(3)">
+                    <span class="menu-item-icon">⚔️</span>
+                    <span class="menu-item-text">4番機</span>
+                    <div class="menu-item-subtitle">MSスロット</div>
+                </a>
+                <a href="#" class="menu-item ms" onclick="scrollToCard(4)">
+                    <span class="menu-item-icon">⚔️</span>
+                    <span class="menu-item-text">5番機</span>
+                    <div class="menu-item-subtitle">MSスロット</div>
+                </a>
+            </div>
+
+            <div class="menu-section">
+                <div class="menu-section-title">👨‍🚀 パイロットスロット</div>
+                <a href="#" class="menu-item pl" onclick="scrollToCard(5)">
+                    <span class="menu-item-icon">👤</span>
+                    <span class="menu-item-text">1番機パイロット</span>
+                    <div class="menu-item-subtitle">PLスロット</div>
+                </a>
+                <a href="#" class="menu-item pl" onclick="scrollToCard(6)">
+                    <span class="menu-item-icon">👤</span>
+                    <span class="menu-item-text">2番機パイロット</span>
+                    <div class="menu-item-subtitle">PLスロット</div>
+                </a>
+                <a href="#" class="menu-item pl" onclick="scrollToCard(7)">
+                    <span class="menu-item-icon">👤</span>
+                    <span class="menu-item-text">3番機パイロット</span>
+                    <div class="menu-item-subtitle">PLスロット</div>
+                </a>
+                <a href="#" class="menu-item pl" onclick="scrollToCard(8)">
+                    <span class="menu-item-icon">👤</span>
+                    <span class="menu-item-text">4番機パイロット</span>
+                    <div class="menu-item-subtitle">PLスロット</div>
+                </a>
+                <a href="#" class="menu-item pl" onclick="scrollToCard(9)">
+                    <span class="menu-item-icon">👤</span>
+                    <span class="menu-item-text">5番機パイロット</span>
+                    <div class="menu-item-subtitle">PLスロット</div>
+                </a>
+            </div>
+
+            <div class="menu-section">
+                <div class="menu-section-title">📊 デッキ情報</div>
+                <a href="#" class="menu-item" onclick="scrollToTop()">
+                    <span class="menu-item-icon">📈</span>
+                    <span class="menu-item-text">総コスト表示</span>
+                </a>
+                <a href="#" class="menu-item" onclick="scrollToStats()">
+                    <span class="menu-item-icon">📊</span>
+                    <span class="menu-item-text">合計ステータス</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- メニューオーバーレイ -->
+    <div class="menu-overlay" id="menuOverlay"></div>
+
+    <div class="header">📱 モバイル版デッキシミュレーター</div>
+    
+    <div class="nav">
+        <a href="/">🏠 デスクトップ版</a>
+        <a href="/search">🔍 カード検索</a>
+        <a href="/decks.html">📋 投稿一覧</a>
+    </div>
+
+    <div class="container">
+        <div class="total-cost">
+            <h2>総コスト</h2>
+            <div class="cost-value" id="totalCost">0</div>
+        </div>
+
+        <div class="card-grid" id="cardGrid">
+            <div class="loading">カードデータを読み込み中...</div>
+        </div>
+
+        <div class="total-stats" id="totalStats" style="display: none;">
+            <div class="stats-title">合計ステータス</div>
+            <div class="stats-grid" id="statsGrid"></div>
+        </div>
+    </div>
+
+    <script>
+        let allCards = [];
+        let selectedCardNumbers = Array(10).fill(null);
+        let selectedOcrData = Array(10).fill(null);
+        let usedCardNumbers = [];
+
+        // ページ読み込み時の初期化
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Mobile page loaded, fetching cards...');
+            fetch('/fetch_cards')
+                .then(res => res.json())
+                .then(data => {
+                    console.log('Fetched data:', data);
+                    if (!data.success) {
+                        document.getElementById('cardGrid').innerHTML = '<div class="error">カードデータの取得に失敗しました</div>';
+                        return;
+                    }
+                    allCards = data.images;
+                    
+                    // 重複を除去
+                    const uniqueCards = [];
+                    const seenNumbers = new Set();
+                    for (const card of allCards) {
+                        if (!seenNumbers.has(card.number)) {
+                            uniqueCards.push(card);
+                            seenNumbers.add(card.number);
+                        }
+                    }
+                    allCards = uniqueCards;
+                    
+                    console.log('All cards loaded:', allCards.length, 'cards');
+                    
+                    // カードグリッドを初期化
+                    const cardGrid = document.getElementById('cardGrid');
+                    cardGrid.innerHTML = '';
+                    
+                    for (let i = 0; i < 10; i++) {
+                        createCardItem(i);
+                    }
+                    
+                    // 自動保存デッキを復元
+                    setTimeout(() => {
+                        autoLoadDeck();
+                    }, 100);
+                })
+                .catch(error => {
+                    console.error('Error fetching cards:', error);
+                    document.getElementById('cardGrid').innerHTML = '<div class="error">カードデータの取得中にエラーが発生しました</div>';
+                });
+        });
+
+        // カードアイテムの作成
+        function createCardItem(index) {
+            const cardGrid = document.getElementById('cardGrid');
+            const div = document.createElement('div');
+            div.className = 'card-item';
+            
+            const isPilotSlot = index >= 5;
+            const isMSSlot = index < 5;
+            
+            // 候補カードをフィルタリング
+            const candidateCards = allCards.filter(c => {
+                const isPilot = (c.ocr_data && c.ocr_data.type === 'PL') || c.category === 'PL';
+                const isMS = (c.ocr_data && c.ocr_data.type === 'MS') || c.category === 'MS';
+                if (isPilotSlot) return isPilot;
+                if (isMSSlot) return isMS;
+                return true;
+            });
+            
+            const availableCards = candidateCards.filter(c => !usedCardNumbers.includes(c.number));
+            const defaultCard = availableCards.length > 0 ? availableCards[0] : candidateCards[0];
+            usedCardNumbers[index] = defaultCard.number;
+            
+            const frontUrl = defaultCard.front ? defaultCard.front.url : defaultCard.url;
+            const backUrl = defaultCard.back && defaultCard.back.url ? defaultCard.back.url : null;
+            let isFront = true;
+            
+            // カード番号
+            const number = document.createElement('div');
+            number.className = 'card-number';
+            number.textContent = defaultCard.number;
+            
+            // カード画像
+            const img = document.createElement('img');
+            img.src = frontUrl;
+            img.alt = defaultCard.name;
+            img.className = 'card-image';
+            img.addEventListener('click', function() {
+                if (backUrl) {
+                    isFront = !isFront;
+                    img.src = isFront ? frontUrl : backUrl;
+                }
+            });
+            
+            // カード名
+            const name = document.createElement('div');
+            name.className = 'card-name';
+            name.textContent = defaultCard.name;
+            
+            // セレクトボックス
+            const select = document.createElement('select');
+            select.className = 'card-select';
+            select.id = `card-select-${index}`;
+            
+            candidateCards.forEach((c, idx) => {
+                const opt = document.createElement('option');
+                opt.value = allCards.indexOf(c);
+                opt.textContent = `${c.number} - ${c.name}`;
+                if (c.number === defaultCard.number) opt.selected = true;
+                select.appendChild(opt);
+            });
+            
+            // パラメータ表示エリア
+            const paramsDiv = document.createElement('div');
+            paramsDiv.className = 'card-params';
+            paramsDiv.id = `card-params-${index}`;
+            
+            // 検索セクション
+            const searchDiv = document.createElement('div');
+            searchDiv.className = 'search-section';
+            
+            const searchInput = document.createElement('input');
+            searchInput.type = 'text';
+            searchInput.placeholder = 'カード横断検索...';
+            searchInput.className = 'search-input';
+            
+            const searchBtn = document.createElement('button');
+            searchBtn.textContent = '🔍 検索';
+            searchBtn.className = 'search-btn';
+            searchBtn.onclick = function() {
+                const keyword = searchInput.value.trim();
+                if (!keyword) return;
+                showSearchModal(keyword, index);
+            };
+            
+            const paramSearchBtn = document.createElement('button');
+            paramSearchBtn.textContent = '📊 数値検索からカードをセット';
+            paramSearchBtn.className = 'param-search-btn';
+            paramSearchBtn.onclick = function() {
+                window.location.href = `/search?slot=${index}`;
+            };
+            
+            searchDiv.appendChild(searchInput);
+            searchDiv.appendChild(searchBtn);
+            searchDiv.appendChild(paramSearchBtn);
+            
+            // 要素を組み立て
+            div.appendChild(number);
+            div.appendChild(img);
+            div.appendChild(name);
+            div.appendChild(select);
+            div.appendChild(paramsDiv);
+            div.appendChild(searchDiv);
+            
+            // セレクトボックスのイベント
+            select.onchange = function() {
+                const selectedCard = allCards[this.value];
+                const newFrontUrl = selectedCard.front ? selectedCard.front.url : selectedCard.url;
+                const newBackUrl = selectedCard.back && selectedCard.back.url ? selectedCard.back.url : null;
+                isFront = true;
+                img.src = newFrontUrl;
+                img.alt = selectedCard.name;
+                img.onclick = null;
+                img.addEventListener('click', function() {
+                    if (newBackUrl) {
+                        isFront = !isFront;
+                        img.src = isFront ? newFrontUrl : newBackUrl;
+                    }
+                });
+                number.textContent = selectedCard.number;
+                name.textContent = selectedCard.name;
+                updateCardParams(selectedCard.number, paramsDiv, index);
+                usedCardNumbers[index] = selectedCard.number;
+                
+                // 自動保存
+                setTimeout(() => {
+                    autoSaveDeck();
+                }, 100);
+            };
+            
+            // 初期パラメータ表示
+            updateCardParams(defaultCard.number, paramsDiv, index);
+            
+            cardGrid.appendChild(div);
+        }
+
+        // カードパラメータの更新
+        function updateCardParams(cardNumber, paramsDiv, index) {
+            selectedCardNumbers[index] = cardNumber;
+            
+            const card = allCards.find(c => c.number === cardNumber);
+            
+            if (!card || !card.ocr_data) {
+                paramsDiv.innerHTML = '';
+                selectedOcrData[index] = null;
+                updateTotalCost();
+                updateTotalStats();
+                updateAllLinkAbilities(); // 全リンクアビリティを更新
+                return;
+            }
+
+            const ocrJson = card.ocr_data;
+            selectedOcrData[index] = ocrJson;
+            
+            let params = '';
+
+            // 基本パラメータ
+            if (ocrJson.stats) {
+                params += '<div class="param-group">';
+                params += '<div class="param-row">';
+                if (ocrJson.stats.mobility) {
+                    params += `<div class="param-item"><span class="param-label">機動力:</span> ${ocrJson.stats.mobility}</div>`;
+                }
+                if (ocrJson.stats.ranged_attack) {
+                    params += `<div class="param-item"><span class="param-label">遠距離:</span> ${ocrJson.stats.ranged_attack}</div>`;
+                }
+                params += '</div>';
+                params += '<div class="param-row">';
+                if (ocrJson.stats.melee_attack) {
+                    params += `<div class="param-item"><span class="param-label">近距離:</span> ${ocrJson.stats.melee_attack}</div>`;
+                }
+                if (ocrJson.stats.hp) {
+                    params += `<div class="param-item"><span class="param-label">HP:</span> ${ocrJson.stats.hp}</div>`;
+                }
+                params += '</div>';
+                params += '</div>';
+            }
+            
+            // MSスキル
+            if (ocrJson.ms_ability) {
+                params += '<div class="skill-section">';
+                params += `<div class="skill-title">MSスキル: ${ocrJson.ms_ability.name || ''}</div>`;
+                if (ocrJson.ms_ability.description) {
+                    params += `<div class="skill-description">${ocrJson.ms_ability.description}</div>`;
+                }
+                params += '</div>';
+            }
+            
+            // PLスキル
+            if (ocrJson.pl_skill) {
+                params += '<div class="skill-section">';
+                params += `<div class="skill-title">PLスキル: ${ocrJson.pl_skill.name || ''}</div>`;
+                if (ocrJson.pl_skill.effect) {
+                    params += `<div class="skill-description">${ocrJson.pl_skill.effect}</div>`;
+                }
+                params += '</div>';
+            }
+            
+            // SPアタック
+            if (ocrJson.special_attack) {
+                params += '<div class="spattack-section">';
+                params += `<div class="spattack-title">SPアタック: ${ocrJson.special_attack.name || ''}</div>`;
+                if (ocrJson.special_attack.description) {
+                    params += `<div class="spattack-description">${ocrJson.special_attack.description}</div>`;
+                }
+                params += '</div>';
+            }
+            
+            // リンクアビリティ
+            if (Array.isArray(ocrJson.link_abilities) && ocrJson.link_abilities.length > 0) {
+                params += '<div class="link-section">';
+                params += '<div class="link-title">リンクアビリティ:</div>';
+                ocrJson.link_abilities.forEach((ab, idx) => {
+                    let isActive = false;
+                    if (ab.condition && ab.condition.match(/デッキに(\d+)枚以上/)) {
+                        const match = ab.condition.match(/デッキに(\d+)枚以上/);
+                        const count = parseInt(match[1], 10);
+                        let found = selectedOcrData.filter(d => {
+                            if (!d) return false;
+                            if (!Array.isArray(d.link_abilities)) return false;
+                            return d.link_abilities.some(link => {
+                                let n = link.name ?? '';
+                                return n === ab.name;
+                            });
+                        }).length;
+                        if (found >= count) {
+                            isActive = true;
+                        }
+                    }
+                    
+                    const linkClass = isActive ? 'link-item link-active' : 'link-item';
+                    params += `<div class="${linkClass}">・${ab.name || ''} ${ab.condition || ''} ${ab.effect || ''}${isActive ? ' 【発動中】' : ''}</div>`;
+                });
+                params += '</div>';
+            }
+            
+            paramsDiv.innerHTML = params;
+            updateTotalCost();
+            updateTotalStats();
+            updateAllLinkAbilities(); // 全リンクアビリティを更新
+        }
+
+        // 全カードのリンクアビリティを一括更新する関数
+        function updateAllLinkAbilities() {
+            // 各カードのリンクアビリティ発動状態を再計算
+            for (let i = 0; i < 10; i++) {
+                const paramsDiv = document.getElementById(`card-params-${i}`);
+                if (paramsDiv && selectedOcrData[i]) {
+                    updateLinkAbilitiesForCard(i, selectedOcrData[i], paramsDiv);
+                }
+            }
+        }
+
+        // 特定のカードのリンクアビリティ表示を更新
+        function updateLinkAbilitiesForCard(index, ocrJson, paramsDiv) {
+            if (!Array.isArray(ocrJson.link_abilities) || ocrJson.link_abilities.length === 0) {
+                return;
+            }
+
+            // 既存のリンクアビリティ部分を探して更新
+            const linkSection = paramsDiv.querySelector('.link-section');
+            if (!linkSection) {
+                return;
+            }
+
+            let linkContent = '<div class="link-title">リンクアビリティ:</div>';
+            ocrJson.link_abilities.forEach((ab, idx) => {
+                let isActive = false;
+                if (ab.condition && ab.condition.match(/デッキに(\d+)枚以上/)) {
+                    const match = ab.condition.match(/デッキに(\d+)枚以上/);
+                    const count = parseInt(match[1], 10);
+                    let found = selectedOcrData.filter(d => {
+                        if (!d) return false;
+                        if (!Array.isArray(d.link_abilities)) return false;
+                        return d.link_abilities.some(link => {
+                            let n = link.name ?? '';
+                            return n === ab.name;
+                        });
+                    }).length;
+                    if (found >= count) {
+                        isActive = true;
+                    }
+                }
+                
+                const linkClass = isActive ? 'link-item link-active' : 'link-item';
+                linkContent += `<div class="${linkClass}">・${ab.name || ''} ${ab.condition || ''} ${ab.effect || ''}${isActive ? ' 【発動中】' : ''}</div>`;
+            });
+
+            linkSection.innerHTML = linkContent;
+        }
+
+        // 総コスト更新
+        function updateTotalCost() {
+            let totalCost = 0;
+            selectedOcrData.forEach(ocr => {
+                if (ocr && ocr.cost) {
+                    const cost = parseInt(ocr.cost, 10);
+                    if (!isNaN(cost)) {
+                        totalCost += cost;
+                    }
+                }
+            });
+            document.getElementById('totalCost').textContent = totalCost;
+        }
+
+        // 合計ステータス更新
+        function updateTotalStats() {
+            const totalStats = document.getElementById('totalStats');
+            const statsGrid = document.getElementById('statsGrid');
+            
+            // 6〜10番目のカードの合計ステータスを計算
+            let totalMobility = 0, totalRanged = 0, totalMelee = 0, totalHp = 0;
+            
+            for (let i = 5; i < 10; i++) {
+                const msIndex = i - 5;
+                const plIndex = i;
+                
+                // MSカードの統計
+                const msOcr = selectedOcrData[msIndex];
+                if (msOcr && msOcr.stats) {
+                    totalMobility += parseInt(msOcr.stats.mobility, 10) || 0;
+                    totalRanged += parseInt(msOcr.stats.ranged_attack, 10) || 0;
+                    totalMelee += parseInt(msOcr.stats.melee_attack, 10) || 0;
+                    totalHp += parseInt(msOcr.stats.hp, 10) || 0;
+                }
+                
+                // パイロットカードの統計
+                const plOcr = selectedOcrData[plIndex];
+                if (plOcr && plOcr.stats) {
+                    totalMobility += parseInt(plOcr.stats.mobility, 10) || 0;
+                    totalRanged += parseInt(plOcr.stats.ranged_attack, 10) || 0;
+                    totalMelee += parseInt(plOcr.stats.melee_attack, 10) || 0;
+                    totalHp += parseInt(plOcr.stats.hp, 10) || 0;
+                }
+            }
+            
+            if (totalMobility > 0 || totalRanged > 0 || totalMelee > 0 || totalHp > 0) {
+                statsGrid.innerHTML = `
+                    <div class="stat-item">
+                        <div class="stat-label">機動力合計</div>
+                        <div class="stat-value">${totalMobility}</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-label">遠距離合計</div>
+                        <div class="stat-value">${totalRanged}</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-label">近距離合計</div>
+                        <div class="stat-value">${totalMelee}</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-label">HP合計</div>
+                        <div class="stat-value">${totalHp}</div>
+                    </div>
+                `;
+                totalStats.style.display = 'block';
+            } else {
+                totalStats.style.display = 'none';
+            }
+        }
+
+        // 自動保存機能
+        function autoSaveDeck() {
+            const deckData = {
+                timestamp: new Date().toISOString(),
+                cards: selectedCardNumbers.map((cardNumber, index) => {
+                    const card = allCards.find(c => c.number === cardNumber);
+                    return {
+                        index: index,
+                        number: cardNumber,
+                        name: card ? card.name : ''
+                    };
+                }),
+                totalCost: document.getElementById('totalCost').textContent
+            };
+            
+            localStorage.setItem('gundamMobileAutoSave', JSON.stringify(deckData));
+        }
+
+        // 自動復元機能
+        function autoLoadDeck() {
+            const autoSavedData = localStorage.getItem('gundamMobileAutoSave');
+            if (autoSavedData) {
+                try {
+                    const data = JSON.parse(autoSavedData);
+                    if (data && data.cards) {
+                        data.cards.forEach(cardInfo => {
+                            if (cardInfo.number) {
+                                const card = allCards.find(c => c.number === cardInfo.number);
+                                if (card) {
+                                    const select = document.getElementById(`card-select-${cardInfo.index}`);
+                                    if (select) {
+                                        const cardIndex = allCards.indexOf(card);
+                                        select.value = cardIndex;
+                                        select.dispatchEvent(new Event('change'));
+                                    }
+                                }
+                            }
+                        });
+                    }
+                } catch (e) {
+                    console.error('Error loading auto-saved deck:', e);
+                }
+            }
+            updateTotalStats();
+        }
+
+        // 検索モーダル表示（簡易版）
+        function showSearchModal(keyword, targetIndex) {
+            const searchResults = allCards.filter(card => {
+                const keywordLower = keyword.toLowerCase();
+                const nameMatch = card.name && card.name.toLowerCase().includes(keywordLower);
+                const numberMatch = card.number && card.number.toLowerCase().includes(keywordLower);
+                return nameMatch || numberMatch;
+            });
+            
+            if (searchResults.length === 0) {
+                alert('該当するカードが見つかりませんでした。');
+                return;
+            }
+            
+            if (searchResults.length === 1) {
+                // 1件のみの場合は自動選択
+                selectCardFromSearch(searchResults[0].number, targetIndex);
+                return;
+            }
+            
+            // 複数件の場合は最初の5件を表示
+            const message = searchResults.slice(0, 5).map(card => 
+                `${card.number} - ${card.name}`
+            ).join('\n');
+            
+            if (searchResults.length > 5) {
+                alert(`検索結果（最初の5件）:\n${message}\n\n他にも${searchResults.length - 5}件見つかりました。`);
+            } else {
+                alert(`検索結果:\n${message}`);
+            }
+        }
+
+        // 検索結果からカードを選択
+        function selectCardFromSearch(cardNumber, targetIndex) {
+            const card = allCards.find(c => c.number === cardNumber);
+            if (card) {
+                const select = document.getElementById(`card-select-${targetIndex}`);
+                const cardIndex = allCards.indexOf(card);
+                select.value = cardIndex;
+                select.dispatchEvent(new Event('change'));
+            }
+        }
+
+        // スライドメニュー機能
+        const menuToggle = document.getElementById('menuToggle');
+        const slideMenu = document.getElementById('slideMenu');
+        const menuOverlay = document.getElementById('menuOverlay');
+        const container = document.querySelector('.container');
+
+        // メニューの開閉
+        function toggleMenu() {
+            const isOpen = slideMenu.classList.contains('active');
+            
+            if (isOpen) {
+                closeMenu();
+            } else {
+                openMenu();
+            }
+        }
+
+        function openMenu() {
+            slideMenu.classList.add('active');
+            menuOverlay.classList.add('active');
+            menuToggle.classList.add('active');
+            document.body.classList.add('menu-open');
+            container.classList.add('menu-open');
+        }
+
+        function closeMenu() {
+            slideMenu.classList.remove('active');
+            menuOverlay.classList.remove('active');
+            menuToggle.classList.remove('active');
+            document.body.classList.remove('menu-open');
+            container.classList.remove('menu-open');
+        }
+
+        // イベントリスナー
+        menuToggle.addEventListener('click', toggleMenu);
+        menuOverlay.addEventListener('click', closeMenu);
+
+        // 特定のカードにスクロール
+        function scrollToCard(index) {
+            closeMenu();
+            
+            setTimeout(() => {
+                const cardItems = document.querySelectorAll('.card-item');
+                if (cardItems[index]) {
+                    cardItems[index].scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'center'
+                    });
+                    
+                    // ハイライト効果
+                    cardItems[index].style.animation = 'none';
+                    cardItems[index].offsetHeight; // リフロー
+                    cardItems[index].style.animation = 'fadeInUp 0.6s ease forwards';
+                    cardItems[index].style.boxShadow = '0 0 30px rgba(102, 242, 197, 0.5)';
+                    
+                    setTimeout(() => {
+                        cardItems[index].style.boxShadow = '';
+                    }, 2000);
+                }
+            }, 300);
+        }
+
+        // ページトップにスクロール
+        function scrollToTop() {
+            closeMenu();
+            setTimeout(() => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            }, 300);
+        }
+
+        // 合計ステータスにスクロール
+        function scrollToStats() {
+            closeMenu();
+            setTimeout(() => {
+                const totalStats = document.getElementById('totalStats');
+                if (totalStats && totalStats.style.display !== 'none') {
+                    totalStats.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'center'
+                    });
+                } else {
+                    // 合計ステータスが非表示の場合はページ下部にスクロール
+                    window.scrollTo({
+                        top: document.body.scrollHeight,
+                        behavior: 'smooth'
+                    });
+                }
+            }, 300);
+        }
+
+        // キーボードショートカット（ESCキーでメニューを閉じる）
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeMenu();
+            }
+        });
+
+        // スワイプジェスチャー（左から右にスワイプでメニューを開く）
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        document.addEventListener('touchstart', function(e) {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+
+        document.addEventListener('touchend', function(e) {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        });
+
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            const swipeDistance = touchEndX - touchStartX;
+            
+            // 左から右にスワイプ（メニューを開く）
+            if (swipeDistance > swipeThreshold && touchStartX < 50) {
+                openMenu();
+            }
+            // 右から左にスワイプ（メニューを閉じる）
+            else if (swipeDistance < -swipeThreshold && slideMenu.classList.contains('active')) {
+                closeMenu();
+            }
+        }
+    </script>
+</body>
+</html> 

@@ -78,27 +78,53 @@
 
     <div class="search-controls">
         <div class="control-group">
+            <label style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+                <input type="checkbox" id="cost-check" checked style="width: auto; margin: 0;">
+                <span style="color: #66f2c5; font-weight: bold;">コスト</span>
+            </label>
             <label for="cost">コスト: <span id="cost-value">0</span></label>
             <input type="range" id="cost" name="cost" min="0" max="10">
         </div>
         <div class="control-group">
+            <label style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+                <input type="checkbox" id="hp-check" checked style="width: auto; margin: 0;">
+                <span style="color: #66f2c5; font-weight: bold;">HP</span>
+            </label>
             <label for="hp">HP: <span id="hp-value">0</span></label>
             <input type="range" id="hp" name="hp" min="0" max="1000">
         </div>
         <div class="control-group">
+            <label style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+                <input type="checkbox" id="mobility-check" checked style="width: auto; margin: 0;">
+                <span style="color: #66f2c5; font-weight: bold;">機動力</span>
+            </label>
             <label for="mobility">機動力: <span id="mobility-value">0</span></label>
             <input type="range" id="mobility" name="mobility" min="0" max="1000">
         </div>
         <div class="control-group">
+            <label style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+                <input type="checkbox" id="long_range_atk-check" checked style="width: auto; margin: 0;">
+                <span style="color: #66f2c5; font-weight: bold;">遠距離攻撃</span>
+            </label>
             <label for="long_range_atk">遠距離攻撃: <span id="long_range_atk-value">0</span></label>
             <input type="range" id="long_range_atk" name="long_range_atk" min="0" max="1000">
         </div>
         <div class="control-group">
+            <label style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+                <input type="checkbox" id="short_range_atk-check" checked style="width: auto; margin: 0;">
+                <span style="color: #66f2c5; font-weight: bold;">近距離攻撃</span>
+            </label>
             <label for="short_range_atk">近距離攻撃: <span id="short_range_atk-value">0</span></label>
             <input type="range" id="short_range_atk" name="short_range_atk" min="0" max="1000">
         </div>
     </div>
     
+    <!-- 全選択/全解除ボタン -->
+    <div style="text-align: center; margin: 1rem 0;">
+        <button id="select-all-btn" style="padding: 0.5em 1em; background: #4caf50; color: #fff; border: none; border-radius: 4px; cursor: pointer; margin-right: 1rem;">全選択</button>
+        <button id="deselect-all-btn" style="padding: 0.5em 1em; background: #f44336; color: #fff; border: none; border-radius: 4px; cursor: pointer;">全解除</button>
+    </div>
+
     <div id="card-count"></div>
 
     <div id="card-grid" class="card-grid">
@@ -252,6 +278,30 @@
                     filterCards();
                 });
             });
+            
+            // チェックボックスのイベントリスナーを設定
+            const checkboxes = ['cost-check', 'hp-check', 'mobility-check', 'long_range_atk-check', 'short_range_atk-check'];
+            checkboxes.forEach(checkboxId => {
+                const checkbox = document.getElementById(checkboxId);
+                checkbox.addEventListener('change', function() {
+                    filterCards();
+                });
+            });
+            
+            // 全選択/全解除ボタンのイベントリスナーを設定
+            document.getElementById('select-all-btn').addEventListener('click', function() {
+                checkboxes.forEach(checkboxId => {
+                    document.getElementById(checkboxId).checked = true;
+                });
+                filterCards();
+            });
+            
+            document.getElementById('deselect-all-btn').addEventListener('click', function() {
+                checkboxes.forEach(checkboxId => {
+                    document.getElementById(checkboxId).checked = false;
+                });
+                filterCards();
+            });
         }
 
         // カードのフィルタリング
@@ -262,41 +312,48 @@
             const longRangeLimit = parseInt(document.getElementById('long_range_atk').value, 10);
             const shortRangeLimit = parseInt(document.getElementById('short_range_atk').value, 10);
 
+            // チェックボックスの状態を取得
+            const costChecked = document.getElementById('cost-check').checked;
+            const hpChecked = document.getElementById('hp-check').checked;
+            const mobilityChecked = document.getElementById('mobility-check').checked;
+            const longRangeChecked = document.getElementById('long_range_atk-check').checked;
+            const shortRangeChecked = document.getElementById('short_range_atk-check').checked;
+
             filteredCards = allCards.filter(card => {
                 if (!card.ocr_data) return false;
 
                 const ocr = card.ocr_data;
                 
-                // コストチェック
-                if (ocr.cost) {
+                // コストチェック（チェックされている場合のみ）
+                if (costChecked && ocr.cost) {
                     const cost = parseInt(ocr.cost, 10);
                     if (!isNaN(cost) && cost > costLimit) return false;
                 }
                 
-                // パラメータチェック
+                // パラメータチェック（チェックされている場合のみ）
                 if (ocr.stats) {
                     const stats = ocr.stats;
                     
-                    // HP
-                    if (stats.hp) {
+                    // HP（チェックされている場合のみ）
+                    if (hpChecked && stats.hp) {
                         const hp = parseInt(stats.hp, 10);
                         if (!isNaN(hp) && hp > hpLimit) return false;
                     }
                     
-                    // 機動力
-                    if (stats.mobility) {
+                    // 機動力（チェックされている場合のみ）
+                    if (mobilityChecked && stats.mobility) {
                         const mobility = parseInt(stats.mobility, 10);
                         if (!isNaN(mobility) && mobility > mobilityLimit) return false;
                     }
                     
-                    // 遠距離攻撃
-                    if (stats.ranged_attack) {
+                    // 遠距離攻撃（チェックされている場合のみ）
+                    if (longRangeChecked && stats.ranged_attack) {
                         const ranged = parseInt(stats.ranged_attack, 10);
                         if (!isNaN(ranged) && ranged > longRangeLimit) return false;
                     }
                     
-                    // 近距離攻撃
-                    if (stats.melee_attack) {
+                    // 近距離攻撃（チェックされている場合のみ）
+                    if (shortRangeChecked && stats.melee_attack) {
                         const melee = parseInt(stats.melee_attack, 10);
                         if (!isNaN(melee) && melee > shortRangeLimit) return false;
                     }
@@ -313,8 +370,32 @@
             const cardGrid = document.getElementById('card-grid');
             const cardCount = document.getElementById('card-count');
             
-            // カード数を表示
-            cardCount.textContent = `検索結果: ${filteredCards.length}件`;
+            // 現在の検索条件を取得
+            const activeConditions = [];
+            if (document.getElementById('cost-check').checked) {
+                activeConditions.push(`コスト: ${document.getElementById('cost').value}以下`);
+            }
+            if (document.getElementById('hp-check').checked) {
+                activeConditions.push(`HP: ${document.getElementById('hp').value}以下`);
+            }
+            if (document.getElementById('mobility-check').checked) {
+                activeConditions.push(`機動力: ${document.getElementById('mobility').value}以下`);
+            }
+            if (document.getElementById('long_range_atk-check').checked) {
+                activeConditions.push(`遠距離攻撃: ${document.getElementById('long_range_atk').value}以下`);
+            }
+            if (document.getElementById('short_range_atk-check').checked) {
+                activeConditions.push(`近距離攻撃: ${document.getElementById('short_range_atk').value}以下`);
+            }
+            
+            // カード数と検索条件を表示
+            let countText = `検索結果: ${filteredCards.length}件`;
+            if (activeConditions.length > 0) {
+                countText += ` (条件: ${activeConditions.join(', ')})`;
+            } else {
+                countText += ' (検索条件なし - 全カード表示)';
+            }
+            cardCount.textContent = countText;
             
             // カードグリッドをクリア
             cardGrid.innerHTML = '';
