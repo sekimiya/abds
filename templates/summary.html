@@ -348,6 +348,9 @@
 
             let totalCost = 0;
 
+            // リンクアビリティのバフを計算
+            updateAllLinkAbilities();
+
             // Populate images and names
             for (let i = 0; i < 5; i++) {
                 const ms = cards[i];
@@ -420,6 +423,10 @@
                         const msValue = getDeepValue(msCard, `ocr_data.${def.ms_key}`);
                         const plValue = getDeepValue(plCard, `ocr_data.${def.pl_key}`);
 
+                        // リンクアビリティのバフを適用
+                        const msBuffs = msCard && msCard.ocr_data ? getLinkBuffs(msCard.ocr_data) : { mobility: { small: 0, medium: 0 }, ranged: { small: 0, medium: 0 }, melee: { small: 0, medium: 0 }, hp: { small: 0, medium: 0 } };
+                        const plBuffs = plCard && plCard.ocr_data ? getLinkBuffs(plCard.ocr_data) : { mobility: { small: 0, medium: 0 }, ranged: { small: 0, medium: 0 }, melee: { small: 0, medium: 0 }, hp: { small: 0, medium: 0 } };
+
                         tdMs.innerHTML = def.formatter ? def.formatter(msValue, cards, msCard) : (msValue || '-');
                         tdPl.innerHTML = def.formatter ? def.formatter(plValue, cards, plCard) : (plValue || '-');
                         
@@ -429,15 +436,45 @@
                         if (def.total) {
                             const tdTotal = document.createElement('td');
                             tdTotal.classList.add('total-col');
-                            const msVal = parseInt(msValue, 10) || 0;
-                            const plVal = parseInt(plValue, 10) || 0;
+                            let msVal = parseInt(msValue, 10) || 0;
+                            let plVal = parseInt(plValue, 10) || 0;
+                            
+                            // リンクアビリティのバフを適用
+                            let msBuff = 0, plBuff = 0;
+                            if (def.header === '機動力') {
+                                msBuff = msBuffs.mobility.small * 10 + msBuffs.mobility.medium * 20;
+                                plBuff = plBuffs.mobility.small * 10 + plBuffs.mobility.medium * 20;
+                                msVal += msBuff;
+                                plVal += plBuff;
+                            } else if (def.header === '遠距離攻撃力') {
+                                msBuff = msBuffs.ranged.small * 10 + msBuffs.ranged.medium * 20;
+                                plBuff = plBuffs.ranged.small * 10 + plBuffs.ranged.medium * 20;
+                                msVal += msBuff;
+                                plVal += plBuff;
+                            } else if (def.header === '近距離攻撃力') {
+                                msBuff = msBuffs.melee.small * 10 + msBuffs.melee.medium * 20;
+                                plBuff = plBuffs.melee.small * 10 + plBuffs.melee.medium * 20;
+                                msVal += msBuff;
+                                plVal += plBuff;
+                            } else if (def.header === 'HP') {
+                                msBuff = msBuffs.hp.small * 10 + msBuffs.hp.medium * 20;
+                                plBuff = plBuffs.hp.small * 10 + plBuffs.hp.medium * 20;
+                                msVal += msBuff;
+                                plVal += plBuff;
+                            }
+                            
                             const total = msVal + plVal;
+                            const totalBuff = msBuff + plBuff;
                             
                             if (def.bar) {
                                 const percent = (total / def.max) * 100;
+                                let displayText = total.toString();
+                                if (totalBuff > 0) {
+                                    displayText += ` (+${totalBuff})`;
+                                }
                                 tdTotal.innerHTML = `
                                     <div style="display:flex; align-items:center; gap:5px;">
-                                        <div class="total-value" style="width:40px;">${total}</div>
+                                        <div class="total-value" style="width:60px;">${displayText}</div>
                                         <div class="stat-bar-container">
                                             <div class="stat-bar" style="width:${percent}%"></div>
                                         </div>
@@ -447,7 +484,11 @@
                                  tdTotal.innerHTML = formatCost(total, null, msCard, plCard);
                             }
                             else {
-                                tdTotal.textContent = total;
+                                let displayText = total.toString();
+                                if (totalBuff > 0) {
+                                    displayText += ` (+${totalBuff})`;
+                                }
+                                tdTotal.textContent = displayText;
                             }
                             tr.appendChild(tdTotal);
                         } else {
@@ -517,7 +558,9 @@
             let html = '';
             value.forEach(link => {
                 const isActive = checkLinkIsActive(link, cards);
-                html += `<div class="link-item ${isActive ? 'link-active' : ''}">${link.name}</div>`;
+                const activeText = isActive ? ' 【発動中】' : '';
+                const linkClass = isActive ? 'link-item link-active' : 'link-item';
+                html += `<div class="${linkClass}">・${link.name}${activeText}</div>`;
             });
             return html;
         }
@@ -552,6 +595,61 @@
         }
         function formatSquadSP(value){
             return '-'; // Placeholder
+        }
+
+        // リンクアビリティのパラメータバフ計算ロジック
+        function getLinkBuffs(ocr) {
+            const buffs = {
+                mobility: { small: 0, medium: 0 },
+                ranged: { small: 0, medium: 0 },
+                melee: { small: 0, medium: 0 },
+                hp: { small: 0, medium: 0 }
+            };
+            if (!ocr || !Array.isArray(ocr.link_abilities)) return buffs;
+            ocr.link_abilities.forEach(link => {
+                const eff = link.effect || '';
+                // 小アップ
+                if (eff.match(/機動力.*小アップ|\[機動力\].*小アップ|"機動力".*小アップ/)) buffs.mobility.small++;
+                if (eff.match(/遠距離攻撃力.*小アップ|\[遠距離攻撃力\].*小アップ|"遠距離攻撃力".*小アップ/)) buffs.ranged.small++;
+                if (eff.match(/近距離攻撃力.*小アップ|\[近距離攻撃力\].*小アップ|"近距離攻撃力".*小アップ/)) buffs.melee.small++;
+                if (eff.match(/HP.*小アップ|\[HP\].*小アップ|"HP".*小アップ/)) buffs.hp.small++;
+                // 中アップ
+                if (eff.match(/機動力.*中アップ|\[機動力\].*中アップ|"機動力".*中アップ/)) buffs.mobility.medium++;
+                if (eff.match(/遠距離攻撃力.*中アップ|\[遠距離攻撃力\].*中アップ|"遠距離攻撃力".*中アップ/)) buffs.ranged.medium++;
+                if (eff.match(/近距離攻撃力.*中アップ|\[近距離攻撃力\].*中アップ|"近距離攻撃力".*中アップ/)) buffs.melee.medium++;
+                if (eff.match(/HP.*中アップ|\[HP\].*中アップ|"HP".*中アップ/)) buffs.hp.medium++;
+            });
+            return buffs;
+        }
+
+        // 全カードのリンクアビリティを一括更新する関数
+        function updateAllLinkAbilities() {
+            // 各カードのリンクアビリティ発動状態を再計算
+            for (let i = 0; i < 10; i++) {
+                if (selectedCards[i] && selectedCards[i].ocr_data) {
+                    updateLinkAbilitiesForCard(i, selectedCards[i].ocr_data);
+                }
+            }
+        }
+
+        // 特定のカードのリンクアビリティ表示を更新
+        function updateLinkAbilitiesForCard(index, ocrJson) {
+            if (!Array.isArray(ocrJson.link_abilities) || ocrJson.link_abilities.length === 0) {
+                return;
+            }
+
+            // リンクアビリティの発動状態を再計算
+            ocrJson.link_abilities.forEach(link => {
+                if (link.condition && link.condition.match(/デッキに(\d+)枚以上/)) {
+                    const match = link.condition.match(/デッキに(\d+)枚以上/);
+                    const count = parseInt(match[1], 10);
+                    let found = selectedCards.filter(card => {
+                        if (!card || !card.ocr_data || !Array.isArray(card.ocr_data.link_abilities)) return false;
+                        return card.ocr_data.link_abilities.some(l => l.name === link.name);
+                    }).length;
+                    link.isActive = found >= count;
+                }
+            });
         }
 
         // --- Modal Logic ---
