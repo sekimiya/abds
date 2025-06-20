@@ -73,7 +73,8 @@ def fetch_cards():
             'category': ocr_data.get('type', 'MS') if ocr_data else 'MS',
             'ocr_data': ocr_data,
             'front': card['front'],  # 表面データを追加
-            'back': card['back']     # 裏面データを追加
+            'back': card['back'],     # 裏面データを追加
+            'series': card['front'].get('series', '')  # 収録弾数情報を追加
         }
         card_images.append(card_info)
 
@@ -146,6 +147,15 @@ def mobile():
 @app.route('/summary')
 def summary():
     return render_template('summary.html')
+
+@app.route('/series_list')
+def series_list():
+    try:
+        with open('series_data/series_list.json', 'r', encoding='utf-8') as f:
+            series_data = json.load(f)
+        return jsonify(series_data)
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5001) 

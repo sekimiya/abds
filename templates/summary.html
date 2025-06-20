@@ -118,6 +118,31 @@
             margin-top: 8px;
             color: #e0e0e0;
         }
+        .modal-filters {
+            display: flex;
+            gap: 10px;
+            padding: 15px 20px;
+            border-bottom: 1px solid #444;
+            background: #333;
+        }
+        .filter-select {
+            background: #444;
+            color: #e0e0e0;
+            border: 1px solid #666;
+            border-radius: 5px;
+            padding: 8px 12px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        .filter-select:focus {
+            outline: none;
+            border-color: #66f2c5;
+        }
+        .modal-card-series {
+            font-size: 11px;
+            margin-top: 4px;
+            color: #888;
+        }
     </style>
 </head>
 <body>
@@ -200,6 +225,11 @@
                 <h2 id="modal-title">カードを選択</h2>
                 <button class="modal-close" onclick="closeSelectionModal()">&times;</button>
             </div>
+            <div class="modal-filters">
+                <select class="filter-select" id="series-filter">
+                    <option value="">すべての収録弾</option>
+                </select>
+            </div>
             <div class="modal-body" id="modal-card-list">
                 <!-- Card list will be populated here -->
             </div>
@@ -209,12 +239,31 @@
     <script>
         let allCards = [];
         let selectedCards = [];
+        let seriesLabels = {}; // 収録弾数の表示名マッピング
+
+        // シリーズコードとIDのマッピング
+        const seriesCodeToId = {
+            'FQ01': '529015', 'FQ02': '529016', 'FQ03': '529017',
+            'UT01': '529113', 'UT02': '529114', 'UT03': '529115', 'UT04': '529116', 'UT05': '529117', 'UT06': '529118',
+            'AB01': '529001', 'AB02': '529002', 'AB03': '529003', 'AB04': '529004', 'AB05': '529005', 'AB06': '529006',
+            'AB07': '529007', 'AB08': '529008', 'AB09': '529009', 'AB10': '529010', 'AB11': '529011', 'AB12': '529012',
+            'AB13': '529013', 'AB14': '529014'
+        };
 
         document.addEventListener('DOMContentLoaded', async () => {
             const loadingEl = document.getElementById('loading');
             const tableEl = document.getElementById('summaryTable');
 
             try {
+                // シリーズ情報を読み込み
+                const seriesRes = await fetch('/series_list');
+                if (seriesRes.ok) {
+                    const seriesData = await seriesRes.json();
+                    seriesData.forEach(series => {
+                        seriesLabels[series.id] = series.label;
+                    });
+                }
+
                 // Fetch all cards data
                 const cardsRes = await fetch('/fetch_cards');
                 const cardsData = await cardsRes.json();
@@ -510,6 +559,7 @@
             const modal = document.getElementById('selection-modal');
             const cardListEl = document.getElementById('modal-card-list');
             const modalTitle = document.getElementById('modal-title');
+            const seriesFilter = document.getElementById('series-filter');
             cardListEl.innerHTML = '';
 
             modalTitle.textContent = `${unitIndex + 1}番機 ${cardType === 'MS' ? 'MS' : 'パイロット'} を選択`;
@@ -520,16 +570,54 @@
                 return isPilot ? type === 'PL' : type === 'MS';
             });
 
+            // 収録弾数のオプションを設定
+            const seriesOptions = new Set();
             availableCards.forEach(card => {
-                const cardEl = document.createElement('div');
-                cardEl.className = 'modal-card';
-                cardEl.onclick = () => selectCard(card.number, unitIndex, cardType);
-                cardEl.innerHTML = `
-                    <img src="${card.front.url}" alt="${card.name}">
-                    <div class="modal-card-name">${card.number}<br>${card.name}</div>
-                `;
-                cardListEl.appendChild(cardEl);
+                if (card.series) {
+                    seriesOptions.add(card.series);
+                }
             });
+            
+            seriesFilter.innerHTML = '<option value="">すべての収録弾</option>';
+            Array.from(seriesOptions).sort().forEach(series => {
+                const option = document.createElement('option');
+                option.value = series;
+                const seriesId = seriesCodeToId[series];
+                const seriesLabel = seriesId ? seriesLabels[seriesId] : series;
+                option.textContent = seriesLabel;
+                seriesFilter.appendChild(option);
+            });
+
+            // フィルター機能を実装
+            function filterAndDisplayCards() {
+                const selectedSeries = seriesFilter.value;
+                
+                const filteredCards = availableCards.filter(card => {
+                    const seriesMatch = !selectedSeries || card.series === selectedSeries;
+                    return seriesMatch;
+                });
+
+                cardListEl.innerHTML = '';
+                filteredCards.forEach(card => {
+                    const cardEl = document.createElement('div');
+                    cardEl.className = 'modal-card';
+                    cardEl.onclick = () => selectCard(card.number, unitIndex, cardType);
+                    const seriesId = seriesCodeToId[card.series];
+                    const seriesLabel = seriesId ? seriesLabels[seriesId] : card.series;
+                    cardEl.innerHTML = `
+                        <img src="${card.front.url}" alt="${card.name}">
+                        <div class="modal-card-name">${card.number}<br>${card.name}</div>
+                        <div class="modal-card-series">${seriesLabel}</div>
+                    `;
+                    cardListEl.appendChild(cardEl);
+                });
+            }
+
+            // 初期表示
+            filterAndDisplayCards();
+
+            // フィルター変更時のイベントリスナー
+            seriesFilter.onchange = filterAndDisplayCards;
 
             modal.style.display = 'flex';
         }
