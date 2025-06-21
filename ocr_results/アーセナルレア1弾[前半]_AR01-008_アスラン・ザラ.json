@@ -1,0 +1,39 @@
+{
+  "type": "PL",
+  "name": "アスラン・ザラ",
+  "english_name": "ATHRUN ZALA",
+  "cost": 3,
+  "category": "制圧",
+  "age": 16,
+  "height": "170cm",
+  "units": [
+    "イージスガンダム"
+  ],
+  "pl_skill": {
+    "name": "覚醒の兆し",
+    "trigger": "HP50%以下の時",
+    "effect": "35秒間、自身の「機動力」「遠距離攻撃力」「近距離攻撃力」を中アップする。"
+  },
+  "link_abilities": [
+    {
+      "name": "ガンダムSEED",
+      "condition": "デッキに3枚以上",
+      "effect": "[機動力]小アップ"
+    },
+    {
+      "name": "優れた格闘センス",
+      "condition": "デッキに2枚以上",
+      "effect": "[近距離攻撃力]小アップ"
+    }
+  ],
+  "stats": {
+    "mobility": 150,
+    "ranged_attack": 90,
+    "melee_attack": 230,
+    "hp": 250
+  },
+  "illust": "Hisashi Hirai",
+  "card_number": "AR01-008",
+  "card_name": "アスラン・ザラ",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/AR01-008_b.jpg?v8"
+}

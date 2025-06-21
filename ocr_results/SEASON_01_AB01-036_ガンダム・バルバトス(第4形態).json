@@ -1,0 +1,62 @@
+{
+  "type": "MS",
+  "name": "ガンダム・バルバトス（第4形態）",
+  "model": "ASW-G-08 GUNDAM BARBATOS",
+  "cost": 3,
+  "category": "鉄華団",
+  "pilot": "三日月・オーガス",
+  "stats": {
+    "height": "18.0m",
+    "weight": "28.5t",
+    "mobility": 180,
+    "ranged_attack": 150,
+    "melee_attack": 50,
+    "hp": 80
+  },
+  "terrain_compatibility": {
+    "ground": "S",
+    "space": "A",
+    "desert": "B",
+    "water": "B"
+  },
+  "weapon": {
+    "main": {
+      "name": "滑腔砲",
+      "range": 2,
+      "type": "遠距離"
+    },
+    "sub": {
+      "name": "太刀",
+      "range": 1,
+      "type": "近距離"
+    }
+  },
+  "ms_ability": {
+    "name": "",
+    "cost": 0,
+    "description": ""
+  },
+  "special_attack": {
+    "name": "滑腔砲撃射",
+    "target": "単体（敵）",
+    "range": 3,
+    "power": 3100,
+    "description": "敵単体に射撃攻撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "鉄血のオルフェンズ",
+      "condition": "デッキに3枚以上",
+      "effect": "[近距離攻撃力]小アップ"
+    },
+    {
+      "name": "屈強なる鉄の華",
+      "condition": "デッキに3枚以上",
+      "effect": "[近距離攻撃力]小アップ"
+    }
+  ],
+  "illust": "Tatumi Takuan",
+  "card_number": "AB01-036",
+  "card_name": "ガンダム・バルバトス(第4形態)",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/AB01-036_b.jpg?v8"
+}

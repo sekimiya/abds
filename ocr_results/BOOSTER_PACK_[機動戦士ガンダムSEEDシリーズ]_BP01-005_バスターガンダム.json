@@ -1,0 +1,62 @@
+{
+  "type": "MS",
+  "name": "バスターガンダム",
+  "model": "GAT-X103 BUSTER GUNDAM",
+  "cost": 2,
+  "category": "遠距離",
+  "pilot": "ディアッカ・エルスマン",
+  "stats": {
+    "height": "18.86m",
+    "weight": "84.2t",
+    "mobility": 240,
+    "ranged_attack": 260,
+    "melee_attack": 80,
+    "hp": 270
+  },
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "A",
+    "desert": "C",
+    "water": "C"
+  },
+  "weapon": {
+    "main": {
+      "name": "高エネルギー収束火線ライフル",
+      "range": 4,
+      "type": "遠距離"
+    },
+    "sub": {
+      "name": "ガンランチャー",
+      "range": 2,
+      "type": "近距離"
+    }
+  },
+  "ms_ability": {
+    "name": "精密射撃",
+    "cost": 3,
+    "description": "任意発動 単体(敵) 射程4 コスト3 ロックオン中の敵に単体攻撃でダメージを与える。"
+  },
+  "special_attack": {
+    "name": "ライフル貫通射撃",
+    "target": "貫通(敵)",
+    "range": 4,
+    "power": 2800,
+    "description": "射線上の敵に貫通射撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "ガンダムSEED",
+      "condition": "デッキに3枚以上",
+      "effect": "[機動力]小アップ"
+    },
+    {
+      "name": "的確な一撃",
+      "condition": "デッキに4枚以上",
+      "effect": "[機動力][遠距離攻撃力]小アップ"
+    }
+  ],
+  "illust": "ZB",
+  "card_number": "BP01-005",
+  "card_name": "バスターガンダム",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/BP01-005_b.jpg?v8"
+}

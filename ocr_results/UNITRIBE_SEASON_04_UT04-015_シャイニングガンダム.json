@@ -1,0 +1,62 @@
+{
+  "type": "MS",
+  "name": "シャイニングガンダム",
+  "model": "GF13-017NJ",
+  "cost": 2,
+  "category": "近距離",
+  "pilot": "ドモン・カッシュ, レイン・ミカムラ",
+  "stats": {
+    "height": "16.2m",
+    "weight": "6.8t",
+    "mobility": 200,
+    "ranged_attack": 60,
+    "melee_attack": 270,
+    "hp": 320
+  },
+  "terrain_compatibility": {
+    "ground": "B",
+    "space": "S",
+    "desert": "C",
+    "water": "B"
+  },
+  "weapon": {
+    "main": {
+      "name": "格闘",
+      "range": 1,
+      "type": "近距離"
+    },
+    "sub": {
+      "name": "遠距離格闘",
+      "range": 2,
+      "type": "遠距離"
+    }
+  },
+  "ms_ability": {
+    "name": "解撃",
+    "cost": 3,
+    "description": "自身が弱体化状態の時に発動可能となり、自身の弱体化状態を無効化し、ロックオン中の敵に単体攻撃でダメージを与える。"
+  },
+  "special_attack": {
+    "name": "シャイニングフィンガー",
+    "target": "単体（敵）",
+    "range": 2,
+    "power": 3300,
+    "description": "単体に格闘攻撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "Gガンダム",
+      "condition": "デッキに3枚以上",
+      "effect": "[近距離攻撃力]小アップ"
+    },
+    {
+      "name": "肉弾戦を戦い",
+      "condition": "デッキに4枚以上",
+      "effect": "[機動力][近距離攻撃力]小アップ"
+    }
+  ],
+  "illust": "kenko",
+  "card_number": "UT04-015",
+  "card_name": "シャイニングガンダム",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/UT04-015_b.jpg?v8"
+}

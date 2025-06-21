@@ -1,0 +1,62 @@
+{
+  "type": "MS",
+  "name": "ガンダムアストレイゴールドフレーム天",
+  "model": "MBF-P01-Re GUNDAM ASTRAY GOLD FRAME AMATSU",
+  "cost": 5,
+  "category": "オーブ",
+  "pilot": "ロンド・ギナ・サハク",
+  "stats": {
+    "height": "17.99m",
+    "weight": "73.2t",
+    "mobility": 230,
+    "ranged_attack": 350,
+    "melee_attack": 100,
+    "hp": 420
+  },
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "B",
+    "desert": "B",
+    "water": "B"
+  },
+  "weapon": {
+    "main": {
+      "name": "トリケロス改(ビームライフル)",
+      "range": 3,
+      "type": "遠距離"
+    },
+    "sub": {
+      "name": "トリケロス改(ビームサーベル)",
+      "range": 1,
+      "type": "近距離"
+    }
+  },
+  "ms_ability": {
+    "name": "精密射撃",
+    "cost": 3,
+    "description": "任意発動 単体(敵) 射程3 コスト3 ロックオン中の敵に単体攻撃でダメージを与える。"
+  },
+  "special_attack": {
+    "name": "トリケロス改(ビームライフル連射)",
+    "target": "単体(敵)",
+    "range": 3,
+    "power": 3200,
+    "description": "敵単体に射撃攻撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "SEED ASTRAY",
+      "condition": "デッキに2枚以上",
+      "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+    },
+    {
+      "name": "固めた装甲",
+      "condition": "デッキに2枚以上",
+      "effect": "[HP]小アップ"
+    }
+  ],
+  "illust": "PaintedMIKE",
+  "card_number": "FQ03-025",
+  "card_name": "ガンダムアストレイ ゴールドフレーム天",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ03-025_b.jpg?v8"
+}

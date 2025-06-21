@@ -1,0 +1,62 @@
+{
+  "type": "MS",
+  "name": "プロヴィデンスガンダム",
+  "model": "ZGMF-X13A PROVIDENCE GUNDAM",
+  "cost": 7,
+  "category": "遠距離",
+  "pilot": "ラウ・ル・クルーゼ",
+  "stats": {
+    "height": "18.16m",
+    "weight": "90.68t",
+    "mobility": 300,
+    "ranged_attack": 540,
+    "melee_attack": 320,
+    "hp": 440
+  },
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "S",
+    "desert": "A",
+    "water": "C"
+  },
+  "weapon": {
+    "main": {
+      "name": "ユーディキウム・ビームライフル",
+      "range": 3,
+      "type": "遠距離"
+    },
+    "sub": {
+      "name": "複合兵装防盾システム",
+      "range": 1,
+      "type": "近距離"
+    }
+  },
+  "ms_ability": {
+    "name": "オールレンジ【妨撃】",
+    "cost": 3,
+    "description": "30秒間、自身の周囲の敵ユニットに継続的にダメージを与え、[遠距離攻撃力]と[近距離攻撃力]を小ダウンする。"
+  },
+  "special_attack": {
+    "name": "ドラグーン斉射",
+    "target": "単体（敵）",
+    "range": 3,
+    "power": 3900,
+    "description": "敵単体に射撃攻撃でダメージを与え、20秒間、[遠距離攻撃力]と[近距離攻撃力]を中ダウンする。"
+  },
+  "link_abilities": [
+    {
+      "name": "ガンダムSEED",
+      "condition": "デッキに3枚以上",
+      "effect": "[機動力]小アップ"
+    },
+    {
+      "name": "オールレンジ兵器",
+      "condition": "デッキに2枚以上",
+      "effect": "[遠距離攻撃力]小アップ"
+    }
+  ],
+  "illust": "Moyasi",
+  "card_number": "LX01-038",
+  "card_name": "プロヴィデンスガンダム",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/LX01-038_b.jpg?v8"
+}

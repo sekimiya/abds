@@ -1,0 +1,62 @@
+{
+  "type": "MS",
+  "name": "ガンダム・グシオンリベイクフルシティ",
+  "model": "ASW-G-11 GUNDAM GUSION REBAKE FULL CITY",
+  "cost": 6,
+  "category": "遠距離",
+  "pilot": "昭弘・アルトランド",
+  "stats": {
+    "height": "18.2m",
+    "weight": "36.5t",
+    "mobility": 190,
+    "ranged_attack": 350,
+    "melee_attack": 170,
+    "hp": 280
+  },
+  "terrain_compatibility": {
+    "ground": "S",
+    "space": "A",
+    "desert": "S",
+    "water": "C"
+  },
+  "weapon": {
+    "main": {
+      "name": "ロングレンジライフル",
+      "range": 4,
+      "type": "遠距離"
+    },
+    "sub": {
+      "name": "グシオンハンガーバルド",
+      "range": 1,
+      "type": "近距離"
+    }
+  },
+  "ms_ability": {
+    "name": "掃射【広角】",
+    "cost": 3,
+    "description": "ロックオン中の敵を中心に扇状の範囲攻撃を行い、範囲内の敵にダメージを与える。"
+  },
+  "special_attack": {
+    "name": "ロングレンジライフル射撃",
+    "target": "単体（敵）",
+    "range": 4,
+    "power": 3200,
+    "description": "敵単体に射撃攻撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "鉄血のオルフェンズ",
+      "condition": "デッキに3枚以上",
+      "effect": "[近距離攻撃力]小アップ"
+    },
+    {
+      "name": "戦況を変える力",
+      "condition": "デッキに4枚以上",
+      "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+    }
+  ],
+  "illust": "kenko",
+  "card_number": "LX02-051",
+  "card_name": "ガンダム・グシオンリベイクフルシティ",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/LX02-051_b.jpg?v8"
+}

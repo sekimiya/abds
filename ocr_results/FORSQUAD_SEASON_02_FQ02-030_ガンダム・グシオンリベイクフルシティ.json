@@ -1,0 +1,62 @@
+{
+  "type": "MS",
+  "name": "ガンダム・グシオンリベイクフルシティ",
+  "model": "ASW-G-11 GUNDAM GUSION REBAKE FULL CITY",
+  "cost": 4,
+  "category": "遠距離",
+  "pilot": "昭弘・アルトランド",
+  "stats": {
+    "height": "18.2m",
+    "weight": "36.5t",
+    "mobility": 250,
+    "ranged_attack": 320,
+    "melee_attack": 90,
+    "hp": 290
+  },
+  "terrain_compatibility": {
+    "ground": "S",
+    "space": "A",
+    "desert": "A",
+    "water": "C"
+  },
+  "weapon": {
+    "main": {
+      "name": "ロングレンジライフル",
+      "range": 4,
+      "type": "遠距離"
+    },
+    "sub": {
+      "name": "グシオンハンマー/ハルバード",
+      "range": 1,
+      "type": "近距離"
+    }
+  },
+  "ms_ability": {
+    "name": "練射",
+    "cost": 3,
+    "description": "ロックオン中の敵ユニットに単体攻撃を行いダメージを与え、一定時間スタンさせる。"
+  },
+  "special_attack": {
+    "name": "ロングレンジライフル撃射",
+    "target": "単体（敵）",
+    "range": 4,
+    "power": 3000,
+    "description": "敵単体に射撃攻撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "鉄血のオルフェンズ",
+      "condition": "デッキに3枚以上",
+      "effect": "[遠距離攻撃力] [近距離攻撃力]小アップ"
+    },
+    {
+      "name": "撃ち倒す遠距離機",
+      "condition": "デッキに遠距離機2枚以上",
+      "effect": "[遠距離攻撃力]中アップ"
+    }
+  ],
+  "illust": "J.YUZURU (willow_works)",
+  "card_number": "FQ02-030",
+  "card_name": "ガンダム・グシオンリベイクフルシティ",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-030_b.jpg?v8"
+}

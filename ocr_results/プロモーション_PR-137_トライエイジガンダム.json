@@ -1,0 +1,62 @@
+{
+  "type": "MS",
+  "name": "トライエイジガンダム",
+  "model": "TRYAGE GUNDAM",
+  "cost": 5,
+  "category": "機動",
+  "pilot": "クジョウ・キョウヤ",
+  "stats": {
+    "height": "全高 -",
+    "weight": "本体重量 -",
+    "mobility": 300,
+    "ranged_attack": 430,
+    "melee_attack": 150,
+    "hp": 420
+  },
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "A",
+    "desert": "A",
+    "water": "A"
+  },
+  "weapon": {
+    "main": {
+      "name": "トライドッツライフル",
+      "range": 3,
+      "type": "遠距離"
+    },
+    "sub": {
+      "name": "トライアームソード",
+      "range": 1,
+      "type": "近距離"
+    }
+  },
+  "ms_ability": {
+    "name": "逆襲",
+    "cost": 4,
+    "description": "任意発動 単体(敵) 射程 3 コスト 4\nロックオン中の敵に単体攻撃でダメージを与える。自身の残りHPが少ない程、ダメージが上昇する。"
+  },
+  "special_attack": {
+    "name": "トライエイジ・エタニティシューティング",
+    "target": "貫通(敵)",
+    "range": 4,
+    "power": 3600,
+    "description": "射線上の敵に貫通射撃でダメージを与え、一定時間スタンさせる。"
+  },
+  "link_abilities": [
+    {
+      "name": "ビルドダイバーズ",
+      "condition": "デッキに2枚以上",
+      "effect": "[HP]小アップ"
+    },
+    {
+      "name": "チャンピオン",
+      "condition": "デッキに2枚以上",
+      "effect": "[遠距離攻撃力][HP]小アップ"
+    }
+  ],
+  "illust": "kenko",
+  "card_number": "PR-137",
+  "card_name": "トライエイジガンダム",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-137_b.jpg?v8"
+}

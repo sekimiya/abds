@@ -1,0 +1,7 @@
+{
+  "error": "Expecting value: line 30 column 16 (char 535)",
+  "card_number": "LXR01-001",
+  "card_name": "ドアン専用ザク",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/LXR01-001_b.jpg?v8",
+  "raw": "{\n  \"type\": \"MS\",\n  \"name\": \"ドアン専用ザク\",\n  \"model\": \"MS-06F CUCURUZ DOAN'S ZAKU\",\n  \"cost\": 4,\n  \"category\": \"近距離\",\n  \"pilot\": \"ククルス・ドアン\",\n  \"stats\": {\n    \"height\": \"全高ー\",\n    \"weight\": \"本体重量ー\",\n    \"mobility\": 270,\n    \"ranged_attack\": 0,\n    \"melee_attack\": 270,\n    \"hp\": 300\n  },\n  \"terrain_compatibility\": {\n    \"ground\": \"A\",\n    \"space\": \"A\",\n    \"desert\": \"C\",\n    \"water\": \"ー\"\n  },\n  \"weapon\": {\n    \"main\": {\n      \"name\": \"ヒート・ホーク\",\n      \"range\": 1,\n      \"type\": \"近距離\"\n    },\n    \"sub\": {\n      \"name\": \"ー\",\n      \"range\": ー,\n      \"type\": \"ー\"\n    }\n  },\n  \"ms_ability\": {\n    \"name\": \"集中砲火\",\n    \"cost\": 4,\n    \"description\": \"20秒間、ロックオンしている敵に周囲の味方ターゲットを集め、[遠／近攻撃力]を中アップ。攻撃対象が変わると効果は終了する。\"\n  },\n  \"special_attack\": {\n    \"name\": \"ヒート・ホーク強撃\",\n    \"target\": \"単体（敵）\",\n    \"range\": 2,\n    \"power\": 3400,\n    \"description\": \"敵単体に格闘攻撃でダメージを与える。\"\n  },\n  \"link_abilities\": [\n    {\n      \"name\": \"ククルス・ドアンの島\",\n      \"condition\": \"デッキに2枚以上\",\n      \"effect\": \"[近距離攻撃力]小アップ\"\n    },\n    {\n      \"name\": \"間合いを詰めた接近戦\",\n      \"condition\": \"デッキに2枚以上\",\n      \"effect\": \"[近距離攻撃力]小アップ\"\n    }\n  ],\n  \"illust\": \"ToMo\"\n}"
+}

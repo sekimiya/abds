@@ -1,0 +1,62 @@
+{
+  "type": "MS",
+  "name": "フルアーマー・ユニコーンガンダム",
+  "model": "RX-0 FULL ARMOR UNICORN GUNDAM",
+  "cost": 8,
+  "category": "機動",
+  "pilot": "バナージ・リンクス",
+  "stats": {
+    "height": "21.7m",
+    "weight": "45.1t",
+    "mobility": 280,
+    "ranged_attack": 600,
+    "melee_attack": 380,
+    "hp": 590
+  },
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "S",
+    "desert": "C",
+    "water": "B"
+  },
+  "weapon": {
+    "main": {
+      "name": "ビーム・ガトリングガン",
+      "range": 3,
+      "type": "遠距離"
+    },
+    "sub": {
+      "name": "ビーム・サーベル",
+      "range": 1,
+      "type": "近距離"
+    }
+  },
+  "ms_ability": {
+    "name": "圧倒",
+    "cost": 3,
+    "description": "ロック中の敵が弱体化状態の時に発動可能となり、敵に単体攻撃でダメージを与え、その攻撃は必ずクリティカルになる。"
+  },
+  "special_attack": {
+    "name": "ビームガトリングガン連射(変形)",
+    "target": "敵",
+    "range": 3,
+    "power": 4300,
+    "description": "デストロイモードに変身、最初の範囲攻撃を行い、自身のHPを大回復する。能力が大きく上昇し、自身が撤退するまで効果は続ける。"
+  },
+  "link_abilities": [
+    {
+      "name": "ガンダムUC",
+      "condition": "デッキに3枚以上",
+      "effect": "[機動力]小アップ"
+    },
+    {
+      "name": "的確な一撃",
+      "condition": "デッキに4枚以上",
+      "effect": "[機動力][遠距離攻撃力]小アップ"
+    }
+  ],
+  "illust": "Chifuyu Yukishiro",
+  "card_number": "UT02-010",
+  "card_name": "フルアーマー・ユニコーンガンダム",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/UT02-010_b.jpg?v8"
+}

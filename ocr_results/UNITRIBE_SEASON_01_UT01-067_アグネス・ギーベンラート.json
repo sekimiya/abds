@@ -1,0 +1,39 @@
+{
+  "type": "PL",
+  "name": "アグネス・ギーベンラート",
+  "english_name": "AGNES GIEBENRATH",
+  "cost": 3,
+  "category": "制圧",
+  "age": 18,
+  "height": "163cm",
+  "units": [
+    "ギャンシャローム（アグネス・ギーベンラート専用機）"
+  ],
+  "pl_skill": {
+    "name": "決死の覚悟",
+    "trigger": "HP50%以下の時",
+    "effect": "40秒間、自身の[SP威力]を中アップする。"
+  },
+  "link_abilities": [
+    {
+      "name": "SEED FREEDOM",
+      "condition": "デッキに3枚以上",
+      "effect": "[機動力]小アップ"
+    },
+    {
+      "name": "優れた射撃センス",
+      "condition": "デッキに2枚以上",
+      "effect": "[遠距離攻撃力]小アップ"
+    }
+  ],
+  "stats": {
+    "mobility": 150,
+    "ranged_attack": 180,
+    "melee_attack": 100,
+    "hp": 190
+  },
+  "illust": "不明",
+  "card_number": "UT01-067",
+  "card_name": "アグネス・ギーベンラート",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/UT01-067_b.jpg?v8"
+}

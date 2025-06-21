@@ -1,0 +1,62 @@
+{
+  "type": "MS",
+  "name": "ガーベラ・テトラ",
+  "model": "AGX-04 GERBERA-TETRA",
+  "cost": 4,
+  "category": "近距離",
+  "pilot": "シーマ・ガラハウ",
+  "stats": {
+    "height": "18.0m",
+    "weight": "46.7t",
+    "mobility": 180,
+    "ranged_attack": 70,
+    "melee_attack": 260,
+    "hp": 290
+  },
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "B",
+    "desert": "C",
+    "water": "C"
+  },
+  "weapon": {
+    "main": {
+      "name": "ビーム・サーベル",
+      "range": 1,
+      "type": "近距離"
+    },
+    "sub": {
+      "name": "ビーム・マシンガン",
+      "range": 3,
+      "type": "遠距離"
+    }
+  },
+  "ms_ability": {
+    "name": "鼓舞【近距離】【弱体化解除】",
+    "cost": 6,
+    "description": "自身を中心とした大範囲内の味方ユニットの弱体化状態を無効化し、30秒間、【近距離攻撃力】を中アップする。"
+  },
+  "special_attack": {
+    "name": "ビーム・サーベル強撃",
+    "target": "単体（敵）",
+    "range": 2,
+    "power": 3300,
+    "description": "敵単体に格闘攻撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "機動力小アップ",
+      "condition": "ガンダム0083デッキに3枚以上",
+      "effect": "【機動力】小アップ"
+    },
+    {
+      "name": "近距離攻撃力小アップ",
+      "condition": "デッキに2枚以上",
+      "effect": "【近距離攻撃力】小アップ"
+    }
+  ],
+  "illust": "Ayato",
+  "card_number": "LX04-019",
+  "card_name": "ガーベラ・テトラ",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/LX04-019_b.jpg?v8"
+}

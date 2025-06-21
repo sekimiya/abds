@@ -1,0 +1,62 @@
+{
+  "type": "MS",
+  "name": "セラヴィーガンダム",
+  "model": "GN-008 SERAVEE GUNDAM",
+  "cost": 3,
+  "category": "近距離",
+  "pilot": "ティエリア・アーデ",
+  "stats": {
+    "height": "18.2m",
+    "weight": "67.2t",
+    "mobility": 200,
+    "ranged_attack": 30,
+    "melee_attack": 250,
+    "hp": 320
+  },
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "S",
+    "desert": "C",
+    "water": "B"
+  },
+  "weapon": {
+    "main": {
+      "name": "GNビームサーベル",
+      "range": 1,
+      "type": "近距離"
+    },
+    "sub": {
+      "name": "GNバズーカII",
+      "range": 4,
+      "type": "遠距離"
+    }
+  },
+  "ms_ability": {
+    "name": "砕撃",
+    "cost": 1,
+    "description": "任意発動 単体(敵) 射程 1 コスト 3\nロックオン中の敵に単体攻撃でダメージを与え、メイン武装を使用不能にさせる。出撃時1度のみ使用可能。"
+  },
+  "special_attack": {
+    "name": "GNビームサーベル強撃",
+    "target": "単体(敵)",
+    "range": 1,
+    "power": 3300,
+    "description": "敵単体に格闘攻撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "機動力小アップ",
+      "condition": "ガンダム00 デッキに3枚以上",
+      "effect": "機動力小アップ"
+    },
+    {
+      "name": "遠距離攻撃力小アップ",
+      "condition": "デッキに4枚以上",
+      "effect": "遠距離攻撃力小アップ 近距離攻撃力小アップ"
+    }
+  ],
+  "illust": "Ryohei Miyazaki",
+  "card_number": "UT04-034",
+  "card_name": "セラヴィーガンダム",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/UT04-034_b.jpg?v8"
+}

@@ -1,0 +1,39 @@
+{
+  "type": "PL",
+  "name": "ブレイア・リュード",
+  "english_name": "BRAIER RYUDE",
+  "cost": 2,
+  "category": "殲滅",
+  "age": null,
+  "height": null,
+  "units": [
+    "ガンダムデルタカイ"
+  ],
+  "pl_skill": {
+    "name": "追撃の意志",
+    "trigger": "敵ユニットを撃破時",
+    "effect": "30秒間、自身の「近距離攻撃力」を中アップする。"
+  },
+  "link_abilities": [
+    {
+      "name": "アクロス・ザ・スカイ",
+      "condition": "デッキに2枚以上",
+      "effect": "「機動力」小アップ"
+    },
+    {
+      "name": "肉薄する戦い",
+      "condition": "デッキに4枚以上",
+      "effect": "「機動力」「近距離攻撃力」小アップ"
+    }
+  ],
+  "stats": {
+    "mobility": 180,
+    "ranged_attack": 50,
+    "melee_attack": 200,
+    "hp": 160
+  },
+  "illust": null,
+  "card_number": "UTB05-022",
+  "card_name": "ブレイア・リュード",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/UTB05-022_b.jpg?v8"
+}

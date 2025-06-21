@@ -1,0 +1,40 @@
+{
+  "type": "PL",
+  "name": "ミハイル・カミンスキー",
+  "english_name": "MIKHAIL KAMINSKY",
+  "cost": 3,
+  "category": "制圧",
+  "age": 48,
+  "height": "—",
+  "units": [
+    "ケンプファー",
+    "ハイゴッグ"
+  ],
+  "pl_skill": {
+    "name": "加速する力",
+    "trigger": "出撃後一定時間経過毎",
+    "effect": "15秒経過毎に自身の敵戦艦／拠点へのダメージを小アップする。最大3回まで発動。"
+  },
+  "link_abilities": [
+    {
+      "name": "ポケットの中の戦争",
+      "condition": "デッキに3枚以上",
+      "effect": "[HP]小アップ"
+    },
+    {
+      "name": "優れた格闘センス",
+      "condition": "デッキに2枚以上",
+      "effect": "[近距離攻撃力]小アップ"
+    }
+  ],
+  "stats": {
+    "mobility": 150,
+    "ranged_attack": 40,
+    "melee_attack": 310,
+    "hp": 320
+  },
+  "illust": "Fukano Yoichi",
+  "card_number": "PR-163",
+  "card_name": "ミハイル・カミンスキー",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-163_b.jpg?v8"
+}

@@ -1,0 +1,39 @@
+{
+  "type": "PL",
+  "name": "ジョニー・ライデン",
+  "english_name": "JOHNNY RIDDEN",
+  "cost": 4,
+  "category": "防衛",
+  "age": null,
+  "height": null,
+  "units": [
+    "高機動型ザクII（ジョニー・ライデン専用機）"
+  ],
+  "pl_skill": {
+    "name": "追い散らす牽制",
+    "trigger": "敵ユニットをロックオン時",
+    "effect": "20秒間、ロックオン中の敵ユニットの「機動力」「近距離攻撃力」を中ダウンする。"
+  },
+  "link_abilities": [
+    {
+      "name": "U.C. ENGAGE",
+      "condition": "デッキに2枚以上",
+      "effect": "[機動力]小アップ"
+    },
+    {
+      "name": "多彩な戦術",
+      "condition": "デッキに4枚以上",
+      "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+    }
+  ],
+  "stats": {
+    "mobility": 190,
+    "ranged_attack": 220,
+    "melee_attack": 210,
+    "hp": 240
+  },
+  "illust": null,
+  "card_number": "FQ02-074",
+  "card_name": "ジョニー・ライデン",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-074_b.jpg?v8"
+}

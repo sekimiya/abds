@@ -1,0 +1,39 @@
+{
+  "type": "PL",
+  "name": "ゼクス・マーキス",
+  "english_name": "Zechs Merquise",
+  "cost": 5,
+  "category": "殲滅",
+  "age": 19,
+  "height": "184cm",
+  "units": [
+    "トールギス"
+  ],
+  "pl_skill": {
+    "name": "強者の重圧",
+    "trigger": "敵ユニットをロックオン時",
+    "effect": "20秒間、ロックオン中の敵ユニットの「近距離攻撃力」「遠距離攻撃力」を中ダウンする。"
+  },
+  "link_abilities": [
+    {
+      "name": "ガンダムW",
+      "condition": "デッキに3枚以上",
+      "effect": "[機動力]小アップ"
+    },
+    {
+      "name": "優秀な士官",
+      "condition": "デッキに2枚以上",
+      "effect": "[機動力]小アップ"
+    }
+  ],
+  "stats": {
+    "mobility": 310,
+    "ranged_attack": 330,
+    "melee_attack": 170,
+    "hp": 240
+  },
+  "illust": "Yoshihito Hishinuma",
+  "card_number": "AR03-014",
+  "card_name": "ゼクス・マーキス",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/AR03-014_b.jpg?v8"
+}

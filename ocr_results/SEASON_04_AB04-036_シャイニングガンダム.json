@@ -1,0 +1,62 @@
+{
+  "type": "MS",
+  "name": "シャイニングガンダム",
+  "model": "GF13-017NJ SHINING GUNDAM",
+  "cost": 5,
+  "category": "ネオジャパン",
+  "pilot": "ドモン・カッシュ",
+  "stats": {
+    "height": "16.2m",
+    "weight": "6.8t",
+    "mobility": 300,
+    "ranged_attack": 250,
+    "melee_attack": 170,
+    "hp": 180
+  },
+  "terrain_compatibility": {
+    "ground": "C",
+    "space": "C",
+    "desert": "B",
+    "water": ""
+  },
+  "weapon": {
+    "main": {
+      "name": "シャイニングショット",
+      "range": 3,
+      "type": "遠距離"
+    },
+    "sub": {
+      "name": "格闘",
+      "range": 1,
+      "type": "近距離"
+    }
+  },
+  "ms_ability": {
+    "name": "強化[遠距離]",
+    "cost": 3,
+    "description": "30秒間、自身の[遠距離攻撃力]を小アップする。"
+  },
+  "special_attack": {
+    "name": "シャイニングショット撃射",
+    "target": "単体（敵）",
+    "range": 2,
+    "power": 3200,
+    "description": "敵単体に射撃攻撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "[近距離攻撃力]小アップ",
+      "condition": "Gガンダム デッキに3枚以上",
+      "effect": ""
+    },
+    {
+      "name": "[機動力]小アップ",
+      "condition": "その他はガンダム デッキに3枚以上",
+      "effect": ""
+    }
+  ],
+  "illust": "Tonbi Aburaya",
+  "card_number": "AB04-036",
+  "card_name": "シャイニングガンダム",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/AB04-036_b.jpg?v8"
+}

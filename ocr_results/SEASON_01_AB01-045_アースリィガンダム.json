@@ -1,0 +1,62 @@
+{
+  "type": "MS",
+  "name": "アースリィガンダム",
+  "model": "PFF-X7/E3 EARTHREE GUNDAM",
+  "cost": 6,
+  "category": "機動",
+  "pilot": "ヒロト",
+  "stats": {
+    "height": "18.7m",
+    "weight": "45.4t",
+    "mobility": 390,
+    "ranged_attack": 440,
+    "melee_attack": 380,
+    "hp": 420
+  },
+  "terrain_compatibility": {
+    "ground": "S",
+    "space": "A",
+    "desert": "C",
+    "water": "C"
+  },
+  "weapon": {
+    "main": {
+      "name": "ビームライフル",
+      "range": 3,
+      "type": "遠距離"
+    },
+    "sub": {
+      "name": "ビームサーベル",
+      "range": 1,
+      "type": "近距離"
+    }
+  },
+  "ms_ability": {
+    "name": "鼓舞【遠距離】",
+    "cost": 4,
+    "description": "30秒間、自身を中心とした大範囲内の味方ユニットの【遠距離攻撃力】を小アップする。"
+  },
+  "special_attack": {
+    "name": "ビームライフル精密射撃",
+    "target": "単体（敵）",
+    "range": 3,
+    "power": 3500,
+    "description": "敵単体に射撃攻撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "Re:Rise",
+      "condition": "デッキに3枚以上",
+      "effect": "【遠距離攻撃力】小アップ"
+    },
+    {
+      "name": "その名はガンダム",
+      "condition": "デッキに3枚以上",
+      "effect": "【機動力】小アップ"
+    }
+  ],
+  "illust": "Naohika Morishita",
+  "card_number": "AB01-045",
+  "card_name": "アースリィガンダム",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/AB01-045_b.jpg?v8"
+}

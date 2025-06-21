@@ -1,0 +1,41 @@
+{
+  "type": "PL",
+  "name": "シン・アスカ",
+  "english_name": "SHINN ASUKA",
+  "cost": 3,
+  "category": "ザフト",
+  "age": 16,
+  "height": "168cm",
+  "units": [
+    "デスティニーガンダム",
+    "フォースインパルスガンダム",
+    "ソードインパルスガンダム"
+  ],
+  "pl_skill": {
+    "name": "強固な意志",
+    "trigger": "MSアビリティ発動時",
+    "effect": "35秒間、自身の「遠距離攻撃力」を中アップし、受けるダメージを軽減する。"
+  },
+  "link_abilities": [
+    {
+      "name": "SEED DESTINY",
+      "condition": "デッキに3枚以上",
+      "effect": "[HP]小アップ"
+    },
+    {
+      "name": "多彩な戦術",
+      "condition": "デッキに4枚以上",
+      "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+    }
+  ],
+  "stats": {
+    "mobility": 240,
+    "ranged_attack": 240,
+    "melee_attack": 50,
+    "hp": 290
+  },
+  "illust": "Yuto Ogura (STUDIO GS)",
+  "card_number": "PR-262",
+  "card_name": "シン・アスカ",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-262_b.jpg?v8"
+}

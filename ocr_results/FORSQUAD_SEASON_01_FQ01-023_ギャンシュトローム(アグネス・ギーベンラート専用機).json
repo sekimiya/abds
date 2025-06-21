@@ -1,0 +1,62 @@
+{
+  "type": "MS",
+  "name": "ギャンシュトローム（アグネス・ギーベンラート専用機）",
+  "model": "ZGMF-2027/A GYAN STROM(AGNES GIEBENRATH CUSTOM)",
+  "cost": 3,
+  "category": "コンパス",
+  "pilot": "アグネス・ギーベンラート",
+  "stats": {
+    "height": "20.00m",
+    "weight": "74.56t",
+    "mobility": 220,
+    "ranged_attack": 130,
+    "melee_attack": 290,
+    "hp": 260
+  },
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "C",
+    "desert": "C",
+    "water": "C"
+  },
+  "weapon": {
+    "main": {
+      "name": "ファルクスG7 ビームアックス",
+      "range": 1,
+      "type": "近距離"
+    },
+    "sub": {
+      "name": "トリデントビームランサー",
+      "range": 2,
+      "type": "遠距離"
+    }
+  },
+  "ms_ability": {
+    "name": "双甲",
+    "cost": 4,
+    "description": "指定した味方ユニットの範囲内に移動し、一定時間連携状態となり、自身と連携中の味方が受けるダメージを軽減する。"
+  },
+  "special_attack": {
+    "name": "ファルクスG7 ビームアックス連撃",
+    "target": "単体（敵）",
+    "range": 2,
+    "power": 3300,
+    "description": "敵単体に格闘攻撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "SEED FREEDOM",
+      "condition": "デッキに3枚以上",
+      "effect": "[機動力]小アップ"
+    },
+    {
+      "name": "多彩な戦術",
+      "condition": "デッキに4枚以上",
+      "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+    }
+  ],
+  "illust": "SOEZY",
+  "card_number": "FQ01-023",
+  "card_name": "ギャンシュトローム(アグネス・ギーベンラート専用機)",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ01-023_b.jpg?v8"
+}

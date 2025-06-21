@@ -1,0 +1,39 @@
+{
+  "type": "PL",
+  "name": "ミリアルド・ピースクラフト",
+  "english_name": "MILIARDO PEACECRAFT",
+  "cost": 4,
+  "category": "制圧",
+  "age": 19,
+  "height": "184cm",
+  "units": [
+    "ガンダムエピオン"
+  ],
+  "pl_skill": {
+    "name": "巡る気勢",
+    "trigger": "出撃時",
+    "effect": "20秒間、出撃中の全味方殲滅タイプユニットの「遠距離攻撃力」「近距離攻撃力」をアップする。"
+  },
+  "link_abilities": [
+    {
+      "name": "ガンダムW",
+      "condition": "デッキに3枚以上",
+      "effect": "[機動力]小アップ"
+    },
+    {
+      "name": "肉薄する戦い",
+      "condition": "デッキに4枚以上",
+      "effect": "[機動力][近距離攻撃力]小アップ"
+    }
+  ],
+  "stats": {
+    "mobility": 190,
+    "ranged_attack": 200,
+    "melee_attack": 310,
+    "hp": 330
+  },
+  "illust": "Sakura Asagi",
+  "card_number": "PR-247",
+  "card_name": "ミリアルド・ピースクラフト",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-247_b.jpg?v8"
+}

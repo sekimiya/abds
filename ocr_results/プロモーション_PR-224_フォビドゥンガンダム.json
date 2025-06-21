@@ -1,0 +1,62 @@
+{
+  "type": "MS",
+  "name": "フォビドゥンガンダム",
+  "model": "GAT-X252 FORBIDDEN GUNDAM",
+  "cost": 5,
+  "category": "地球連合軍",
+  "pilot": "シャニ・アンドラス",
+  "stats": {
+    "height": "17.47m",
+    "weight": "85.3t",
+    "mobility": 150,
+    "ranged_attack": 50,
+    "melee_attack": 300,
+    "hp": 550
+  },
+  "terrain_compatibility": {
+    "ground": "S",
+    "space": "A",
+    "desert": "C",
+    "water": "A"
+  },
+  "weapon": {
+    "main": {
+      "name": "ニーズヘグ",
+      "range": 1,
+      "type": "近距離"
+    },
+    "sub": {
+      "name": "エクツァーン",
+      "range": 3,
+      "type": "遠距離"
+    }
+  },
+  "ms_ability": {
+    "name": "誘導",
+    "cost": 4,
+    "description": "25秒間、自身をロックオン距離内に捉えている敵ユニットのターゲットを自身に集める。"
+  },
+  "special_attack": {
+    "name": "ニーズヘグ強撃",
+    "target": "単体（敵）",
+    "range": 2,
+    "power": 3500,
+    "description": "敵単体に格闘攻撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "[機動力]小アップ",
+      "condition": "ガンダムSEED デッキに3枚以上",
+      "effect": "[HP]小アップ"
+    },
+    {
+      "name": "[HP]小アップ",
+      "condition": "固めた装甲 デッキに2枚以上",
+      "effect": "[HP]小アップ"
+    }
+  ],
+  "illust": "yuuguchi",
+  "card_number": "PR-224",
+  "card_name": "フォビドゥンガンダム",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-224_b.jpg?v8"
+}

@@ -1,0 +1,62 @@
+{
+  "type": "MS",
+  "name": "ジン（ミゲル・アイマン専用機）",
+  "model": "ZGMF-1017 MIGUEL'S GINN",
+  "cost": 3,
+  "category": "近距離",
+  "pilot": "ミゲル・アイマン",
+  "stats": {
+    "height": "21.43m",
+    "weight": "78.5t",
+    "mobility": 190,
+    "ranged_attack": 90,
+    "melee_attack": 140,
+    "hp": 230
+  },
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "A",
+    "desert": "B",
+    "water": "-"
+  },
+  "weapon": {
+    "main": {
+      "name": "重斬刀",
+      "range": 1,
+      "type": "近距離"
+    },
+    "sub": {
+      "name": "76mm重突撃機銃",
+      "range": 1,
+      "type": "遠距離"
+    }
+  },
+  "ms_ability": {
+    "name": "妨害（遠距離）",
+    "cost": 3,
+    "description": "20秒間、自身を中心とした大範囲内の敵ユニットの[遠距離攻撃力]を小ダウンする。"
+  },
+  "special_attack": {
+    "name": "重斬刀強撃",
+    "target": "単体",
+    "range": 2,
+    "power": 3300,
+    "description": "敵単体に格闘攻撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "[機動力]小アップ",
+      "condition": "ガンダムSEEDデッキに3枚以上",
+      "effect": "[機動力]小アップ"
+    },
+    {
+      "name": "[近距離攻撃力]小アップ",
+      "condition": "専用機の力デッキに2枚以上",
+      "effect": "[近距離攻撃力]小アップ"
+    }
+  ],
+  "illust": "gomibako",
+  "card_number": "LX01-043",
+  "card_name": "ジン(ミゲル・アイマン専用機)",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/LX01-043_b.jpg?v8"
+}

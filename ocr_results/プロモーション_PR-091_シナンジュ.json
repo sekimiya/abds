@@ -1,0 +1,62 @@
+{
+  "type": "MS",
+  "name": "シナンジュ",
+  "model": "MSN-06S SINANJU",
+  "cost": 5,
+  "category": "ネオ・ジオン残党軍「袖付き」",
+  "pilot": "フル・フロンタル",
+  "stats": {
+    "height": "22.6m",
+    "weight": "25.2t",
+    "mobility": 300,
+    "ranged_attack": 250,
+    "melee_attack": 200,
+    "hp": 400
+  },
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "S",
+    "desert": "C",
+    "water": "C"
+  },
+  "weapon": {
+    "main": {
+      "name": "ビーム・ライフル",
+      "range": 3,
+      "type": "遠距離"
+    },
+    "sub": {
+      "name": "ビーム・アックス",
+      "range": 1,
+      "type": "近距離"
+    }
+  },
+  "ms_ability": {
+    "name": "絞射",
+    "cost": 3,
+    "description": "ロックオン中の敵ユニットに単体攻撃を行いダメージを与え、一定時間スタンさせる。"
+  },
+  "special_attack": {
+    "name": "ビーム・ライフル絞射",
+    "target": "単体（敵）",
+    "range": 3,
+    "power": 3400,
+    "description": "敵単体に射撃攻撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "ガンダムUC",
+      "condition": "デッキに3枚以上",
+      "effect": "[機動力]小アップ"
+    },
+    {
+      "name": "練度の機体",
+      "condition": "デッキに2枚以上",
+      "effect": "[HP]小アップ"
+    }
+  ],
+  "illust": "Chifuyu Yukishiro",
+  "card_number": "PR-091",
+  "card_name": "シナンジュ",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-091_b.jpg?v8"
+}

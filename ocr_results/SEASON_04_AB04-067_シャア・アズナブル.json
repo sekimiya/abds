@@ -1,0 +1,39 @@
+{
+  "type": "PL",
+  "name": "シャア・アズナブル",
+  "english_name": "CHAR AZNABLE",
+  "cost": 4,
+  "category": "ジオン公国軍",
+  "age": 20,
+  "height": "175cm",
+  "units": [
+    "ザクII（シャア・アズナブル専用機）"
+  ],
+  "pl_skill": {
+    "name": "粘り強い執念",
+    "trigger": "HP50%以下の時",
+    "effect": "35秒間、自身の「遠距離攻撃力」「近距離攻撃力」を小アップする。"
+  },
+  "link_abilities": [
+    {
+      "name": "機動戦士ガンダム",
+      "condition": "デッキに3枚以上",
+      "effect": "[機動力]小アップ"
+    },
+    {
+      "name": "優秀な士官",
+      "condition": "デッキに2枚以上",
+      "effect": "[機動力]小アップ"
+    }
+  ],
+  "stats": {
+    "mobility": 150,
+    "ranged_attack": 160,
+    "melee_attack": 120,
+    "hp": 170
+  },
+  "illust": "不明",
+  "card_number": "AB04-067",
+  "card_name": "シャア・アズナブル",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/AB04-067_b.jpg?v8"
+}

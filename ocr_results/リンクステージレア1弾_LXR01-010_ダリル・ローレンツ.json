@@ -1,0 +1,39 @@
+{
+  "type": "PL",
+  "name": "ダリル・ローレンツ",
+  "english_name": "DARYL LORENZ",
+  "cost": 5,
+  "category": "殲滅",
+  "age": null,
+  "height": null,
+  "units": [
+    "サイコ・ザク"
+  ],
+  "pl_skill": {
+    "name": "徹底抗戦",
+    "trigger": "味方ユニットが撤退時",
+    "effect": "45秒間、自身の遠距離攻撃力[近距離攻撃力][SP威力]を中アップする。"
+  },
+  "link_abilities": [
+    {
+      "name": "サンダーボルト",
+      "condition": "デッキに2枚以上",
+      "effect": "[遠距離攻撃力]小アップ"
+    },
+    {
+      "name": "数奇な運命",
+      "condition": "デッキに2枚以上",
+      "effect": "[機動力]小アップ"
+    }
+  ],
+  "stats": {
+    "mobility": 160,
+    "ranged_attack": 300,
+    "melee_attack": 200,
+    "hp": 290
+  },
+  "illust": "Hirotoshi Takaya",
+  "card_number": "LXR01-010",
+  "card_name": "ダリル・ローレンツ",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/LXR01-010_b.jpg?v8"
+}

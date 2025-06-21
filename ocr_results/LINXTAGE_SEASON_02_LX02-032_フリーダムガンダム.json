@@ -1,0 +1,62 @@
+{
+  "type": "MS",
+  "name": "フリーダムガンダム",
+  "model": "ZGMF-X10A FREEDOM GUNDAM",
+  "cost": 3,
+  "category": "遠距離",
+  "pilot": "キラ・ヤマト",
+  "stats": {
+    "height": "18.03m",
+    "weight": "71.5t",
+    "mobility": 160,
+    "ranged_attack": 250,
+    "melee_attack": 60,
+    "hp": 180
+  },
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "S",
+    "desert": "A",
+    "water": "C"
+  },
+  "weapon": {
+    "main": {
+      "name": "ルプス・ビームライフル",
+      "range": 3,
+      "type": "遠距離"
+    },
+    "sub": {
+      "name": "ラケルタ・ビームサーベル",
+      "range": 1,
+      "type": "近距離"
+    }
+  },
+  "ms_ability": {
+    "name": "精密射撃",
+    "cost": 3,
+    "description": "ロックオン中の敵に単体攻撃でダメージを与える。"
+  },
+  "special_attack": {
+    "name": "ルプス・ビームライフル射撃",
+    "target": "単体（敵）",
+    "range": 3,
+    "power": 3100,
+    "description": "敵単体に射撃攻撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "ガンダムSEED",
+      "condition": "デッキに3枚以上",
+      "effect": "[機動力]小アップ"
+    },
+    {
+      "name": "距離をとった射撃戦",
+      "condition": "デッキに2枚以上",
+      "effect": "[遠距離攻撃力]小アップ"
+    }
+  ],
+  "illust": "Ryouta Magaki",
+  "card_number": "LX02-032",
+  "card_name": "フリーダムガンダム",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/LX02-032_b.jpg?v8"
+}

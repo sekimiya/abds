@@ -1,0 +1,62 @@
+{
+  "type": "MS",
+  "name": "ギャンシュトローム（アグネス・ギーベンラート専用機）",
+  "model": "ZGMF-2027/A GYAN STROM [AGNES GIEBENRATH CUSTOM]",
+  "cost": 3,
+  "category": "遠距離",
+  "pilot": "アグネス・ギーベンラート",
+  "stats": {
+    "height": "20.00m",
+    "weight": "74.56t",
+    "mobility": 240,
+    "ranged_attack": 280,
+    "melee_attack": 80,
+    "hp": 260
+  },
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "B",
+    "desert": "C",
+    "water": "C"
+  },
+  "weapon": {
+    "main": {
+      "name": "トリプテライ 3連式回転ビーム機関砲",
+      "range": 2,
+      "type": "遠距離"
+    },
+    "sub": {
+      "name": "アルフスグアズ ビームブック",
+      "range": 1,
+      "type": "近距離"
+    }
+  },
+  "ms_ability": {
+    "name": "鼓舞【遠距離】【弱体化解除】",
+    "cost": 6,
+    "description": "自身を中心とした大範囲内の味方ユニットの弱体化状態を無効化し、30秒間、【遠距離攻撃力】を中アップする。"
+  },
+  "special_attack": {
+    "name": "トリプテライ 3連式回転ビーム機関砲",
+    "target": "単体（敵）",
+    "range": 3,
+    "power": 3100,
+    "description": "敵単体に射撃攻撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "SEED FREEDOM",
+      "condition": "デッキに3枚以上",
+      "effect": "【機動力】小アップ"
+    },
+    {
+      "name": "多彩な戦術",
+      "condition": "デッキに4枚以上",
+      "effect": "【遠距離攻撃力】【近距離攻撃力】小アップ"
+    }
+  ],
+  "illust": "yujiiguchi",
+  "card_number": "FQ01-024",
+  "card_name": "ギャンシュトローム(アグネス・ギーベンラート専用機)",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ01-024_b.jpg?v8"
+}

@@ -1,0 +1,39 @@
+{
+  "type": "PL",
+  "name": "シーマ・ガラハウ",
+  "english_name": "CIMA GARAHU",
+  "cost": 3,
+  "category": "ジオン公国軍",
+  "age": 35,
+  "height": "-",
+  "units": [
+    "ガーベラ・テトラ"
+  ],
+  "pl_skill": {
+    "name": "強引な襲撃",
+    "trigger": "MSアビリティ発動時",
+    "effect": "30秒間、ロックオン中の敵ユニットの「機動力」を中ダウンし、被ダメージを少し上昇させる。"
+  },
+  "link_abilities": [
+    {
+      "name": "ガンダム0083",
+      "condition": "デッキに3枚以上",
+      "effect": "「機動力」小アップ"
+    },
+    {
+      "name": "的確な一撃",
+      "condition": "デッキに4枚以上",
+      "effect": "「機動力」「遠距離攻撃力」小アップ"
+    }
+  ],
+  "stats": {
+    "mobility": 170,
+    "ranged_attack": 240,
+    "melee_attack": 80,
+    "hp": 280
+  },
+  "illust": "M",
+  "card_number": "UT04-040",
+  "card_name": "シーマ・ガラハウ",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/UT04-040_b.jpg?v8"
+}

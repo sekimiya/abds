@@ -1,0 +1,62 @@
+{
+  "type": "MS",
+  "name": "ブルーディスティニー1号機",
+  "model": "RX-79BD-1 BLUE DESTINY UNIT 1",
+  "cost": 3,
+  "category": "地球連邦軍",
+  "pilot": "ユウ・カジマ",
+  "stats": {
+    "height": "18.0m",
+    "weight": "52.8t",
+    "mobility": 190,
+    "ranged_attack": 40,
+    "melee_attack": 200,
+    "hp": 220
+  },
+  "terrain_compatibility": {
+    "ground": "S",
+    "space": "C",
+    "desert": "C",
+    "water": "B"
+  },
+  "weapon": {
+    "main": {
+      "name": "ビーム・サーベル",
+      "range": 1,
+      "type": "近距離"
+    },
+    "sub": {
+      "name": "100mmマシンガン",
+      "range": 3,
+      "type": "遠距離"
+    }
+  },
+  "ms_ability": {
+    "name": "EXAMシステム",
+    "cost": 4,
+    "description": "30秒間、自身の「近距離攻撃力」を大アップ、攻撃頻度を小アップする。"
+  },
+  "special_attack": {
+    "name": "ビーム・サーベル強撃",
+    "target": "単体（敵）",
+    "range": 2,
+    "power": 3200,
+    "description": "敵単体に格闘攻撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "THE BLUE DESTINY",
+      "condition": "デッキに2枚以上",
+      "effect": "「近距離攻撃力」小アップ"
+    },
+    {
+      "name": "高速機動の接近戦",
+      "condition": "デッキに機動力2枚以上",
+      "effect": "「近距離攻撃力」中アップ"
+    }
+  ],
+  "illust": "Hayaken-sarena",
+  "card_number": "LX03-005",
+  "card_name": "ブルーディスティニー1号機",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/LX03-005_b.jpg?v8"
+}

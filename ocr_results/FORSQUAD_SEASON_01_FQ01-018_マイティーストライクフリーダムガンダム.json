@@ -1,0 +1,62 @@
+{
+  "type": "MS",
+  "name": "マイティーストライクフリーダムガンダム",
+  "model": "ZGMF/A-262PD-P MIGHTY STRIKE FREEDOM GUNDAM",
+  "cost": 2,
+  "category": "コンバス",
+  "pilot": "キラ・ヤマト & ラクス・クライン",
+  "stats": {
+    "height": "18.88m",
+    "weight": "91.65t",
+    "mobility": 220,
+    "ranged_attack": 70,
+    "melee_attack": 240,
+    "hp": 270
+  },
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "S",
+    "desert": "A",
+    "water": "A"
+  },
+  "weapon": {
+    "main": {
+      "name": "アクティブカノン&高エネルギービームライフル",
+      "range": 1,
+      "type": "近距離"
+    },
+    "sub": {
+      "name": "高エネルギービームライフル",
+      "range": 3,
+      "type": "遠距離"
+    }
+  },
+  "ms_ability": {
+    "name": "威圧",
+    "cost": 4,
+    "description": "自身を中心にした範囲内の敵ユニットをスタンさせ、一定時間被ダメージを少しアップする。"
+  },
+  "special_attack": {
+    "name": "アクティブカノン&高エネルギービームライフル",
+    "target": "単体（敵）",
+    "range": 2,
+    "power": 3200,
+    "description": "SQUAD RUSH発動中に1度だけ、SQUAD SPを使用できる。"
+  },
+  "link_abilities": [
+    {
+      "name": "SEED FREEDOM",
+      "condition": "デッキに3枚以上",
+      "effect": "[機動力]小アップ"
+    },
+    {
+      "name": "多彩な戦術",
+      "condition": "デッキに4枚以上",
+      "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+    }
+  ],
+  "illust": "kenko",
+  "card_number": "FQ01-018",
+  "card_name": "マイティーストライクフリーダムガンダム",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ01-018_b.jpg?v8"
+}

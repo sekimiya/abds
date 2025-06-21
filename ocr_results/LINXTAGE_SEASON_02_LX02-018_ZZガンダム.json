@@ -1,0 +1,62 @@
+{
+  "type": "MS",
+  "name": "ZZガンダム",
+  "model": "MSZ-010 ZZ GUNDAM",
+  "cost": 6,
+  "category": "エゥーゴ",
+  "pilot": "ジュドー・アーシタ",
+  "stats": {
+    "height": "19.86m",
+    "weight": "32.7t",
+    "mobility": 190,
+    "ranged_attack": 350,
+    "melee_attack": 180,
+    "hp": 280
+  },
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "S",
+    "desert": "B",
+    "water": "A"
+  },
+  "weapon": {
+    "main": {
+      "name": "ダブル・ビーム・ライフル",
+      "range": 3,
+      "type": "遠距離"
+    },
+    "sub": {
+      "name": "ハイパー・ビーム・サーベル",
+      "range": 1,
+      "type": "近距離"
+    }
+  },
+  "ms_ability": {
+    "name": "全弾発射",
+    "cost": 5,
+    "description": "ロックオン中の敵を中心に扇状の範囲攻撃を行い、範囲内の敵にダメージを与え、以後通常攻撃がサブ武装のみになる。"
+  },
+  "special_attack": {
+    "name": "ダブル・ビーム・ライフル撃射",
+    "target": "単体（敵）",
+    "range": 3,
+    "power": 3200,
+    "description": "敵単体に射撃攻撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "機動戦士ガンダムZZ",
+      "condition": "デッキに3枚以上",
+      "effect": "[HP]小アップ"
+    },
+    {
+      "name": "戦況を変える力",
+      "condition": "デッキに4枚以上",
+      "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+    }
+  ],
+  "illust": "funbolt",
+  "card_number": "LX02-018",
+  "card_name": "ZZガンダム",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/LX02-018_b.jpg?v8"
+}

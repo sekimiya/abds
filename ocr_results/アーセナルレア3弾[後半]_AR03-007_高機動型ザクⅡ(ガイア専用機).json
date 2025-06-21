@@ -1,0 +1,62 @@
+{
+  "type": "MS",
+  "name": "高機動型ザクII（ガイア専用機）",
+  "model": "MS-06R-1A ZAKU II HIGH MOBILITY TYPE",
+  "cost": 2,
+  "category": "遠距離",
+  "pilot": "ガイア",
+  "stats": {
+    "height": "18.0m",
+    "weight": "61.8t",
+    "mobility": 160,
+    "ranged_attack": 260,
+    "melee_attack": 90,
+    "hp": 340
+  },
+  "terrain_compatibility": {
+    "ground": "L",
+    "space": "A",
+    "desert": "S",
+    "water": "C"
+  },
+  "weapon": {
+    "main": {
+      "name": "320mm試作バズーカ",
+      "range": 3,
+      "type": "遠距離"
+    },
+    "sub": {
+      "name": "ヒートホーク",
+      "range": 1,
+      "type": "近距離"
+    }
+  },
+  "ms_ability": {
+    "name": "集中砲火",
+    "cost": 4,
+    "description": "20秒間、ロックオンしている敵に周囲の味方ターゲットを集め、[遠／近攻撃力]を中アップ。攻撃対象が変わると効果は終了する。"
+  },
+  "special_attack": {
+    "name": "320mm試作バズーカ撃射",
+    "target": "単体（敵）",
+    "range": 3,
+    "power": 3200,
+    "description": "敵単体に射撃攻撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "MSV",
+      "condition": "デッキに2枚以上",
+      "effect": "[遠距離攻撃力]小アップ"
+    },
+    {
+      "name": "漆黒の戦士",
+      "condition": "デッキに2枚以上",
+      "effect": "[機動力]小アップ"
+    }
+  ],
+  "illust": "Kotakan",
+  "card_number": "AR03-007",
+  "card_name": "高機動型ザクⅡ(ガイア専用機)",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/AR03-007_b.jpg?v8"
+}

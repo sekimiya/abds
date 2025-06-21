@@ -1,0 +1,62 @@
+{
+  "type": "MS",
+  "name": "ガーベラ・テトラ",
+  "model": "AGX-04 GERBERA-TETRA",
+  "cost": 2,
+  "category": "遠距離",
+  "pilot": "シーマ・ガラハウ",
+  "stats": {
+    "height": "18.0m",
+    "weight": "46.7t",
+    "mobility": 250,
+    "ranged_attack": 300,
+    "melee_attack": 100,
+    "hp": 300
+  },
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "S",
+    "desert": "C",
+    "water": "C"
+  },
+  "weapon": {
+    "main": {
+      "name": "ビーム・マシンガン",
+      "range": 3,
+      "type": "遠距離"
+    },
+    "sub": {
+      "name": "ビーム・サーベル",
+      "range": 1,
+      "type": "近距離"
+    }
+  },
+  "ms_ability": {
+    "name": "支援砲撃",
+    "cost": 5,
+    "description": "任意発動 範囲(敵) 射程1 コスト5 指定した位置に中範囲の支援砲撃を要請し、範囲内の敵にダメージを与える。"
+  },
+  "special_attack": {
+    "name": "ビーム・マシンガン連射",
+    "target": "単体(敵)",
+    "range": 3,
+    "power": 3300,
+    "description": "敵単体に射撃攻撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "ガンダム0083",
+      "condition": "デッキに3枚以上",
+      "effect": "[機動力]小アップ"
+    },
+    {
+      "name": "的確な一撃",
+      "condition": "デッキに4枚以上",
+      "effect": "[機動力][遠距離攻撃力]小アップ"
+    }
+  ],
+  "illust": "TAKA-F",
+  "card_number": "LX04-018",
+  "card_name": "ガーベラ・テトラ",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/LX04-018_b.jpg?v8"
+}

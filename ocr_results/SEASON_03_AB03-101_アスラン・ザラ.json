@@ -1,0 +1,39 @@
+{
+  "type": "PL",
+  "name": "アスラン・ザラ",
+  "english_name": "ATHRUN ZALA",
+  "cost": 4,
+  "category": "殲滅",
+  "age": 16,
+  "height": "170cm",
+  "units": [
+    "イージスガンダム"
+  ],
+  "pl_skill": {
+    "name": "抑えきれない激情",
+    "trigger": "HP50%以下の時",
+    "effect": "40秒間、自身の【近距離攻撃力】を中アップ、【機動力】を小アップする。"
+  },
+  "link_abilities": [
+    {
+      "name": "ガンダムSEED",
+      "condition": "デッキに3枚以上",
+      "effect": "【機動力】小アップ"
+    },
+    {
+      "name": "ガンダムを奪いし者",
+      "condition": "デッキに2枚以上",
+      "effect": "【HP】小アップ"
+    }
+  ],
+  "stats": {
+    "mobility": 140,
+    "ranged_attack": 70,
+    "melee_attack": 220,
+    "hp": 140
+  },
+  "illust": "ヤスダスズヒト",
+  "card_number": "AB03-101",
+  "card_name": "アスラン・ザラ",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/AB03-101_b.jpg?v8"
+}

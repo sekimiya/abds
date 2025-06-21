@@ -1,0 +1,39 @@
+{
+  "type": "PL",
+  "name": "アサギ・コールドウェル",
+  "english_name": "ASAGI CALDWELL",
+  "cost": 3,
+  "category": "防衛",
+  "age": null,
+  "height": null,
+  "units": [
+    "M1アストレイ"
+  ],
+  "pl_skill": {
+    "name": "後方支援",
+    "trigger": "防衛拠点変更開始時",
+    "effect": "30秒間、出撃中の全味方ユニットの「遠距離攻撃力」「近距離攻撃力」を中アップする。"
+  },
+  "link_abilities": [
+    {
+      "name": "ガンダムSEED",
+      "condition": "デッキに3枚以上",
+      "effect": "[機動力]小アップ"
+    },
+    {
+      "name": "揺るがぬ意志",
+      "condition": "デッキに2枚以上",
+      "effect": "[HP]小アップ"
+    }
+  ],
+  "stats": {
+    "mobility": 230,
+    "ranged_attack": 240,
+    "melee_attack": 120,
+    "hp": 230
+  },
+  "illust": "Makoto Eto",
+  "card_number": "PR-231",
+  "card_name": "アサギ・コードウェル",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-231_b.jpg?v8"
+}

@@ -1,0 +1,62 @@
+{
+  "type": "MS",
+  "name": "ガンダムアストレイブルーフレームセカンドL",
+  "model": "MBF-P03 second L GUNDAM ASTRAY BLUE FRAME SECOND L",
+  "cost": 7,
+  "category": "近距離",
+  "pilot": "叢雲劾",
+  "stats": {
+    "height": "17.78m",
+    "weight": "64.4t",
+    "mobility": 330,
+    "ranged_attack": 200,
+    "melee_attack": 600,
+    "hp": 570
+  },
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "C",
+    "desert": "C",
+    "water": "C"
+  },
+  "weapon": {
+    "main": {
+      "name": "タクティカルアームズ（ソード）",
+      "range": 1,
+      "type": "近距離"
+    },
+    "sub": {
+      "name": "ビームライフル",
+      "range": 3,
+      "type": "遠距離"
+    }
+  },
+  "ms_ability": {
+    "name": "撃滅",
+    "cost": 4,
+    "description": "任意発動 単体（敵） 射程2 コスト4\nロックオン中の敵に単体攻撃でダメージを与える。この攻撃で敵ユニットを撃破した場合、敵ユニットの修理時間を延長させる。"
+  },
+  "special_attack": {
+    "name": "タクティカルアームズ（ソード）強襲",
+    "target": "単体（敵）",
+    "range": 2,
+    "power": 3800,
+    "description": "敵単体に格闘攻撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "SEED ASTRAY",
+      "condition": "デッキに2枚以上",
+      "effect": "[近距離攻撃力]小アップ"
+    },
+    {
+      "name": "多彩な戦術",
+      "condition": "デッキに4枚以上",
+      "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+    }
+  ],
+  "illust": "Gas1",
+  "card_number": "LX04-047",
+  "card_name": "ガンダムアストレイ ブルーフレーム セカンドL",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/LX04-047_b.jpg?v8"
+}

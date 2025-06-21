@@ -1,0 +1,62 @@
+{
+  "type": "MS",
+  "name": "プロトタイプガンダム",
+  "model": "RX-78-1 PROTOTYPE GUNDAM",
+  "cost": 6,
+  "category": "地球連邦軍",
+  "pilot": "－",
+  "stats": {
+    "height": "18.0m",
+    "weight": "43.4t",
+    "mobility": 350,
+    "ranged_attack": 260,
+    "melee_attack": 220,
+    "hp": 270
+  },
+  "terrain_compatibility": {
+    "ground": "B",
+    "space": "A",
+    "desert": "C",
+    "water": "C"
+  },
+  "weapon": {
+    "main": {
+      "name": "ビーム・ライフル",
+      "range": 3,
+      "type": "遠距離"
+    },
+    "sub": {
+      "name": "ビーム・サーベル",
+      "range": 1,
+      "type": "近距離"
+    }
+  },
+  "ms_ability": {
+    "name": "強化[機動力]",
+    "cost": 3,
+    "description": "30秒間、自身の「機動力」を小アップする。"
+  },
+  "special_attack": {
+    "name": "ビーム・ライフル撃射",
+    "target": "単体（敵）",
+    "range": 3,
+    "power": 3300,
+    "description": "敵単体に射撃攻撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "MSV",
+      "condition": "デッキに2枚以上",
+      "effect": "[遠距離攻撃力]小アップ"
+    },
+    {
+      "name": "その名はガンダム",
+      "condition": "デッキに3枚以上",
+      "effect": "[機動力]小アップ"
+    }
+  ],
+  "illust": "Tomotake Kinoshita",
+  "card_number": "AB03-011",
+  "card_name": "プロトタイプガンダム",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/AB03-011_b.jpg?v8"
+}

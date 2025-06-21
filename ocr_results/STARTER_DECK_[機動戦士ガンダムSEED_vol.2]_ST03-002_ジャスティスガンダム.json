@@ -1,0 +1,62 @@
+{
+  "type": "MS",
+  "name": "ジャスティスガンダム",
+  "model": "ZGMF-X09A JUSTICE GUNDAM",
+  "cost": 4,
+  "category": "機動",
+  "pilot": "アスラン・ザラ",
+  "stats": {
+    "height": "18.56m",
+    "weight": "75.4t",
+    "mobility": 270,
+    "ranged_attack": 130,
+    "melee_attack": 400,
+    "hp": 250
+  },
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "S",
+    "desert": "A",
+    "water": "-"
+  },
+  "weapon": {
+    "main": {
+      "name": "アンビデクストラス・ハルバード",
+      "range": 1,
+      "type": "近距離"
+    },
+    "sub": {
+      "name": "ルプス・ビームライフル",
+      "range": 3,
+      "type": "遠距離"
+    }
+  },
+  "ms_ability": {
+    "name": "強襲",
+    "cost": 3,
+    "description": "任意発動 単体（敵） 射程 1 コスト 3 ロックオン中の敵に単体攻撃でダメージを与える。"
+  },
+  "special_attack": {
+    "name": "ファトゥム-00連携",
+    "target": "単体（敵）",
+    "range": 2,
+    "power": 3400,
+    "description": "敵単体に格闘攻撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "ガンダムSEED",
+      "condition": "デッキに3枚以上",
+      "effect": "[機動力]小アップ"
+    },
+    {
+      "name": "無類の力",
+      "condition": "デッキに4枚以上",
+      "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+    }
+  ],
+  "illust": "toriyufu",
+  "card_number": "ST03-002",
+  "card_name": "ジャスティスガンダム",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/ST03-002_b.jpg?v8"
+}

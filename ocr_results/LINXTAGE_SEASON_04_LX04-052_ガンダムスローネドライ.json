@@ -1,0 +1,62 @@
+{
+  "type": "MS",
+  "name": "ガンダムスローネドライ",
+  "model": "GNW-003 GUNDAM THRONE DREI",
+  "cost": 3,
+  "category": "遠距離",
+  "pilot": "ネーナ・トリニティ",
+  "stats": {
+    "height": "19.4m",
+    "weight": "67.7t",
+    "mobility": 130,
+    "ranged_attack": 200,
+    "melee_attack": 0,
+    "hp": 180
+  },
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "A",
+    "desert": "C",
+    "water": "C"
+  },
+  "weapon": {
+    "main": {
+      "name": "GNハンドガン",
+      "range": 3,
+      "type": "遠距離"
+    },
+    "sub": {
+      "name": "GNビームサーベル",
+      "range": 1,
+      "type": "近距離"
+    }
+  },
+  "ms_ability": {
+    "name": "妨害攻撃",
+    "cost": 0,
+    "description": "20秒間、自身を中心とした大範囲内の敵ユニットの「遠距離攻撃力」「近距離攻撃力」を小ダウンする。"
+  },
+  "special_attack": {
+    "name": "GNハンドガン射撃",
+    "target": "単体（敵）",
+    "range": 3,
+    "power": 3100,
+    "description": "敵単体に射撃攻撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "ガンダム00",
+      "condition": "デッキに3枚以上",
+      "effect": "[機動力]小アップ"
+    },
+    {
+      "name": "的確な一撃",
+      "condition": "デッキに4枚以上",
+      "effect": "[機動力][遠距離攻撃力]小アップ"
+    }
+  ],
+  "illust": "kazumasa yasukuni",
+  "card_number": "LX04-052",
+  "card_name": "ガンダムスローネドライ",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/LX04-052_b.jpg?v8"
+}

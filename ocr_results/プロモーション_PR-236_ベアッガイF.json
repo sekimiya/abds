@@ -1,0 +1,62 @@
+{
+  "type": "MS",
+  "name": "ベアッガイF",
+  "model": "KUMA-F BEARGGUY F[Family]",
+  "cost": 5,
+  "category": "近距離",
+  "pilot": "カミキ・ミライ",
+  "stats": {
+    "height": "23.0m",
+    "weight": "110.0t",
+    "mobility": 260,
+    "ranged_attack": 110,
+    "melee_attack": 500,
+    "hp": 530
+  },
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "A",
+    "desert": "B",
+    "water": "B"
+  },
+  "weapon": {
+    "main": {
+      "name": "ビームサーベル",
+      "range": 1,
+      "type": "近距離"
+    },
+    "sub": {
+      "name": "ビーム砲",
+      "range": 3,
+      "type": "遠距離"
+    }
+  },
+  "ms_ability": {
+    "name": "練撃",
+    "cost": 1,
+    "description": "ロックオン中の敵ユニットに単体攻撃を行いダメージを与え、一定時間スタンさせる。"
+  },
+  "special_attack": {
+    "name": "蒼天紅蓮拳",
+    "target": "単体（敵）",
+    "range": 2,
+    "power": 3600,
+    "description": "敵単体に格闘攻撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "トライ",
+      "condition": "デッキに3枚以上",
+      "effect": "[HP]小アップ"
+    },
+    {
+      "name": "多彩な機術",
+      "condition": "デッキに4枚以上",
+      "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+    }
+  ],
+  "illust": "Akinori Takaba (Studio GS)",
+  "card_number": "PR-236",
+  "card_name": "ベアッガイF",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-236_b.jpg?v8"
+}

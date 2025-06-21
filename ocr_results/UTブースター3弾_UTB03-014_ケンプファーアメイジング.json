@@ -1,0 +1,62 @@
+{
+  "type": "MS",
+  "name": "ケンプファーアメイジング",
+  "model": "PPMS-18E KÄMPFER AMAZING",
+  "cost": 3,
+  "category": "近距離",
+  "pilot": "メイジン・カワグチ",
+  "stats": {
+    "height": "17.7m",
+    "weight": "47.8t",
+    "mobility": 220,
+    "ranged_attack": 50,
+    "melee_attack": 350,
+    "hp": 330
+  },
+  "terrain_compatibility": {
+    "ground": "S",
+    "space": "A",
+    "desert": "B",
+    "water": "A"
+  },
+  "weapon": {
+    "main": {
+      "name": "ビームサーベル",
+      "range": 1,
+      "type": "近距離"
+    },
+    "sub": {
+      "name": "アメイジングライフル",
+      "range": 3,
+      "type": "遠距離"
+    }
+  },
+  "ms_ability": {
+    "name": "陣略【妨害／機動】",
+    "cost": 4,
+    "description": "任意発動　範囲（敵）　射程２　コスト４\n一定時間、範囲内に入った敵ユニットの「機動力」をダウンするエリアを設置する。※上限３箇所まで。"
+  },
+  "special_attack": {
+    "name": "ビームサーベル強撃",
+    "target": "単体（敵）",
+    "range": 2,
+    "power": 3400,
+    "description": "敵単体に格闘攻撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "機動力小アップ",
+      "condition": "ビルドファイターズ　デッキに３枚以上",
+      "effect": "機動力小アップ"
+    },
+    {
+      "name": "機動力【近距離攻撃力】小アップ",
+      "condition": "肉薄する戦い　デッキに４枚以上",
+      "effect": "機動力【近距離攻撃力】小アップ"
+    }
+  ],
+  "illust": "Eske Yoshinob",
+  "card_number": "UTB03-014",
+  "card_name": "ケンプファーアメイジング",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/UTB03-014_b.jpg?v8"
+}

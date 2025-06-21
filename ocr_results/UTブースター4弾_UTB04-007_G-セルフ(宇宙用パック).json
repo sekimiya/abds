@@ -1,0 +1,62 @@
+{
+  "type": "MS",
+  "name": "G-セルフ（宇宙用パック）",
+  "model": "YG-111 G-SELF [SPACE PACK]",
+  "cost": 2,
+  "category": "メガファウナ",
+  "pilot": "ベルリ・ゼナム、ラライヤ・アクパール",
+  "stats": {
+    "height": "18.0m",
+    "weight": "31.1t",
+    "mobility": 200,
+    "ranged_attack": 60,
+    "melee_attack": 220,
+    "hp": 220
+  },
+  "terrain_compatibility": {
+    "ground": "B",
+    "space": "S",
+    "desert": "C",
+    "water": "C"
+  },
+  "weapon": {
+    "main": {
+      "name": "ビームサーベル",
+      "range": 1,
+      "type": "近距離"
+    },
+    "sub": {
+      "name": "ビームライフル",
+      "range": 3,
+      "type": "遠距離"
+    }
+  },
+  "ms_ability": {
+    "name": "鼓舞【近距離】【弱体化解除】",
+    "cost": 6,
+    "description": "自身を中心とした大範囲内の味方ユニットの弱体化状態を無効化し、30秒間、【近距離攻撃力】を中アップする。"
+  },
+  "special_attack": {
+    "name": "ビーム・サーベル強撃",
+    "target": "単体（敵）",
+    "range": 2,
+    "power": 3200,
+    "description": "敵単体に格闘攻撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "Gのレコンギスタ",
+      "condition": "デッキに2枚以上",
+      "effect": "[HP]小アップ"
+    },
+    {
+      "name": "戦況を変える力",
+      "condition": "デッキに4枚以上",
+      "effect": "[遠距離攻撃力] [近距離攻撃力]小アップ"
+    }
+  ],
+  "illust": "S Keji",
+  "card_number": "UTB04-007",
+  "card_name": "G-セルフ(宇宙用パック)",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/UTB04-007_b.jpg?v8"
+}

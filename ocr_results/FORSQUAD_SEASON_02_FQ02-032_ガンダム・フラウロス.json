@@ -1,0 +1,62 @@
+{
+  "type": "MS",
+  "name": "ガンダム・フラウロス",
+  "model": "ASW-G-64 GUNDAM FLAUROS",
+  "cost": 3,
+  "category": "鉄華団",
+  "pilot": "ノルバ・シノ",
+  "stats": {
+    "height": "17.8m",
+    "weight": "29.9t",
+    "mobility": 200,
+    "ranged_attack": 40,
+    "melee_attack": 300,
+    "hp": 270
+  },
+  "terrain_compatibility": {
+    "ground": "B",
+    "space": "A",
+    "desert": "S",
+    "water": "C"
+  },
+  "weapon": {
+    "main": {
+      "name": "アサルトナイフ",
+      "range": 1,
+      "type": "近距離"
+    },
+    "sub": {
+      "name": "背部レールガン",
+      "range": 4,
+      "type": "遠距離"
+    }
+  },
+  "ms_ability": {
+    "name": "特攻",
+    "cost": 1,
+    "description": "自身の【遠／近距離攻撃】をアップし【体力無効】となるが、【回避／ガード不可】【修理時間延長】となる。効果は撤退するまで持続。"
+  },
+  "special_attack": {
+    "name": "アサルトナイフ強撃",
+    "target": "単体（敵）",
+    "range": 2,
+    "power": 3300,
+    "description": "敵単体に格闘攻撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "鉄血のオルフェンズ",
+      "condition": "デッキに3枚以上",
+      "effect": "【遠距離攻撃】小アップ【近距離攻撃】小アップ"
+    },
+    {
+      "name": "肉弾する戦い",
+      "condition": "デッキに4枚以上",
+      "effect": "【機動力】【近距離攻撃】小アップ"
+    }
+  ],
+  "illust": "amasaki",
+  "card_number": "FQ02-032",
+  "card_name": "ガンダム・フラウロス",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-032_b.jpg?v8"
+}

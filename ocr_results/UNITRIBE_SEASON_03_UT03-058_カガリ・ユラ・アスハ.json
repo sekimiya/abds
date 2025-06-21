@@ -1,0 +1,39 @@
+{
+  "type": "PL",
+  "name": "カガリ・ユラ・アスハ",
+  "english_name": "CAGALLI YULA ATHHA",
+  "cost": 3,
+  "category": "オーブ",
+  "age": 16,
+  "height": "162cm",
+  "units": [
+    "ストライクルージュ"
+  ],
+  "pl_skill": {
+    "name": "統率された戦い",
+    "trigger": "MSアビリティ【集中砲火】発動時",
+    "effect": "20秒間、世界中の全味方ユニットの【遠距離攻撃力】【近距離攻撃力】をアップし、受けるダメージを少し軽減する。"
+  },
+  "link_abilities": [
+    {
+      "name": "ガンダムSEED",
+      "condition": "デッキに3枚以上",
+      "effect": "[機動力]小アップ"
+    },
+    {
+      "name": "的確な一撃",
+      "condition": "デッキに4枚以上",
+      "effect": "[機動力][遠距離攻撃力]小アップ"
+    }
+  ],
+  "stats": {
+    "mobility": 190,
+    "ranged_attack": 230,
+    "melee_attack": 100,
+    "hp": 250
+  },
+  "illust": "―",
+  "card_number": "UT03-058",
+  "card_name": "カガリ・ユラ・アスハ",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/UT03-058_b.jpg?v8"
+}

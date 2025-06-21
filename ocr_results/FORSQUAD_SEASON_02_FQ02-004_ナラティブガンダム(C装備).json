@@ -1,0 +1,62 @@
+{
+  "type": "MS",
+  "name": "ナラティブガンダム (C装備)",
+  "model": "RX-9/C NARRATIVE GUNDAM C-PACKS",
+  "cost": 4,
+  "category": "近距離",
+  "pilot": "ヨナ・バシュタ",
+  "stats": {
+    "height": "21.0m",
+    "weight": "26.8t",
+    "mobility": 240,
+    "ranged_attack": 90,
+    "melee_attack": 350,
+    "hp": 270
+  },
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "S",
+    "desert": "C",
+    "water": "C"
+  },
+  "weapon": {
+    "main": {
+      "name": "ビーム・サーベル",
+      "range": 1,
+      "type": "近距離"
+    },
+    "sub": {
+      "name": "ビーム・ライフル",
+      "range": 3,
+      "type": "遠距離"
+    }
+  },
+  "ms_ability": {
+    "name": "鼓舞【近距離】【弱体化解除】",
+    "cost": 6,
+    "description": "自身を中心とした大範囲内の味方ユニットの弱体化状態を無効化し、30秒間、【近距離攻撃力】を中アップする。"
+  },
+  "special_attack": {
+    "name": "ビーム・サーベル強撃",
+    "target": "単体（敵）",
+    "range": 2,
+    "power": 3200,
+    "description": "敵単体に格闘攻撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "機動力小アップ",
+      "condition": "搭乗機がナラティブガンダムNT",
+      "effect": "デッキに2枚以上"
+    },
+    {
+      "name": "機動力【近距離攻撃力】小アップ",
+      "condition": "肉薄する戦い",
+      "effect": "デッキに4枚以上"
+    }
+  ],
+  "illust": "ishima060123",
+  "card_number": "FQ02-004",
+  "card_name": "ナラティブガンダム(C装備)",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-004_b.jpg?v8"
+}

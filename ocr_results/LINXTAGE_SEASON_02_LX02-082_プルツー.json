@@ -1,0 +1,39 @@
+{
+  "type": "PL",
+  "name": "プルツー",
+  "english_name": "PLE TWO",
+  "cost": 3,
+  "category": "防衛",
+  "age": null,
+  "height": null,
+  "units": [
+    "サイコ・ガンダムMk-II"
+  ],
+  "pl_skill": {
+    "name": "冷静な防衛戦",
+    "trigger": "防衛拠点変更完了時",
+    "effect": "30秒間、自身の「遠距離攻撃力」をアップする。"
+  },
+  "link_abilities": [
+    {
+      "name": "機動戦士ガンダムZZ",
+      "condition": "デッキに3枚以上",
+      "effect": "[HP]小アップ"
+    },
+    {
+      "name": "戦況を変える力",
+      "condition": "デッキに4枚以上",
+      "effect": "[遠距離攻撃力]と[近距離攻撃力]小アップ"
+    }
+  ],
+  "stats": {
+    "mobility": 170,
+    "ranged_attack": 280,
+    "melee_attack": 70,
+    "hp": 250
+  },
+  "illust": null,
+  "card_number": "LX02-082",
+  "card_name": "プルツー",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/LX02-082_b.jpg?v8"
+}

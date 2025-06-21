@@ -1,0 +1,62 @@
+{
+  "type": "MS",
+  "name": "ガーベラ・テトラ",
+  "model": "AGX-04 GERBERA-TETRA",
+  "cost": 2,
+  "category": "ジオン公国軍",
+  "pilot": "シーマ・ガラハウ",
+  "stats": {
+    "height": "18.0m",
+    "weight": "46.7t",
+    "mobility": 180,
+    "ranged_attack": 180,
+    "melee_attack": 60,
+    "hp": 180
+  },
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "S",
+    "desert": "C",
+    "water": "C"
+  },
+  "weapon": {
+    "main": {
+      "name": "ビーム・マシンガン",
+      "range": 3,
+      "type": "遠距離"
+    },
+    "sub": {
+      "name": "ビーム・サーベル",
+      "range": 1,
+      "type": "近距離"
+    }
+  },
+  "ms_ability": {
+    "name": "鼓舞【遠距離】[弱体化解除]",
+    "cost": 6,
+    "description": "自身を中心とした大範囲内の味方ユニットの弱体化状態を無効化し、30秒間、[遠距離攻撃力]を中アップする。"
+  },
+  "special_attack": {
+    "name": "ビーム・マシンガン撃射",
+    "target": "単体（敵）",
+    "range": 2,
+    "power": 3000,
+    "description": "敵単体に射撃攻撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "ガンダム0083",
+      "condition": "デッキに3枚以上",
+      "effect": "[機動力]小アップ"
+    },
+    {
+      "name": "多彩な戦術",
+      "condition": "デッキに4枚以上",
+      "effect": "[遠距離攻撃力]と[近距離攻撃力]小アップ"
+    }
+  ],
+  "illust": "Misaki Yuzuruha",
+  "card_number": "UT01-013",
+  "card_name": "ガーベラ・テトラ",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/UT01-013_b.jpg?v8"
+}

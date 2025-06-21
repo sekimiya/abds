@@ -1,0 +1,62 @@
+{
+  "type": "MS",
+  "name": "ガンダムキュリオス",
+  "model": "GN-003 GUNDAM KYRIOS",
+  "cost": 4,
+  "category": "遠距離",
+  "pilot": "アレルヤ・ハプティズム",
+  "stats": {
+    "height": "18.9m",
+    "weight": "54.8t",
+    "mobility": 110,
+    "ranged_attack": 180,
+    "melee_attack": 90,
+    "hp": 110
+  },
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "A",
+    "desert": "A",
+    "water": "B"
+  },
+  "weapon": {
+    "main": {
+      "name": "GNハンドミサイル",
+      "range": 3,
+      "type": "遠距離"
+    },
+    "sub": {
+      "name": "GNビームサーベル",
+      "range": 1,
+      "type": "近距離"
+    }
+  },
+  "ms_ability": {
+    "name": "トランザム【遠距離】",
+    "cost": 4,
+    "description": "20秒間、自身の【機動力】を大アップ、【遠距離攻撃力】を中アップする。"
+  },
+  "special_attack": {
+    "name": "GNハンドミサイル斉射",
+    "target": "単体（敵）",
+    "range": 3,
+    "power": 3100,
+    "description": "敵単体に射撃攻撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "ガンダム00",
+      "condition": "デッキに3枚以上",
+      "effect": "[機動力]小アップ"
+    },
+    {
+      "name": "トランザムシステム",
+      "condition": "デッキに2枚以上",
+      "effect": "専用作戦カードが使用可能"
+    }
+  ],
+  "illust": "PLANETA_Yamashita",
+  "card_number": "AB02-037",
+  "card_name": "ガンダムキュリオス",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/AB02-037_b.jpg?v8"
+}

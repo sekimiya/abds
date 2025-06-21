@@ -1,0 +1,62 @@
+{
+  "type": "MS",
+  "name": "マイティーストライクフリーダムガンダム",
+  "model": "ZGMF/A-262PD-P MIGHTY STRIKE FREEDOM GUNDAM",
+  "cost": 2,
+  "category": "コンパス",
+  "pilot": "キラ・ヤマト & ラクス・クライン",
+  "stats": {
+    "height": "18.88m",
+    "weight": "91.65t",
+    "mobility": 200,
+    "ranged_attack": 60,
+    "melee_attack": 270,
+    "hp": 320
+  },
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "S",
+    "desert": "A",
+    "water": "C"
+  },
+  "weapon": {
+    "main": {
+      "name": "アークエンジェル級戦艦フリマタシア砲",
+      "range": 1,
+      "type": "近距離"
+    },
+    "sub": {
+      "name": "高エネルギービームライフル",
+      "range": 3,
+      "type": "遠距離"
+    }
+  },
+  "ms_ability": {
+    "name": "断砕",
+    "cost": 3,
+    "description": "ロックオン中の敵に単体攻撃でダメージを与え、強化状態を無効化する。"
+  },
+  "special_attack": {
+    "name": "UNITED SP",
+    "target": "単体（敵）",
+    "range": 2,
+    "power": 3300,
+    "description": "敵単体に格闘攻撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "SEED FREEDOM",
+      "condition": "デッキに3枚以上",
+      "effect": "[機動力]小アップ"
+    },
+    {
+      "name": "追撃の近距離離",
+      "condition": "デッキに近距離2枚以上",
+      "effect": "[近距離攻撃力]中アップ"
+    }
+  ],
+  "illust": "ishima060123",
+  "card_number": "PR-306",
+  "card_name": "マイティーストライクフリーダムガンダム",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-306_b.jpg?v8"
+}

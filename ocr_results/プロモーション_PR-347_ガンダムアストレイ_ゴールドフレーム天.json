@@ -1,0 +1,62 @@
+{
+  "type": "MS",
+  "name": "ガンダムアストレイゴールドフレーム天",
+  "model": "MBF-P01-Re GUNDAM ASTRAY GOLD FRAME AMATSU",
+  "cost": 3,
+  "category": "近距離",
+  "pilot": "ロンド・ギナ・サハク",
+  "stats": {
+    "height": "17.99m",
+    "weight": "73.2t",
+    "mobility": 230,
+    "ranged_attack": 40,
+    "melee_attack": 230,
+    "hp": 350
+  },
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "S",
+    "desert": "B",
+    "water": "B"
+  },
+  "weapon": {
+    "main": {
+      "name": "トリケロス改(ビームサーベル)",
+      "range": 1,
+      "type": "近距離"
+    },
+    "sub": {
+      "name": "トリケロス改(ビームライフル)",
+      "range": 3,
+      "type": "遠距離"
+    }
+  },
+  "ms_ability": {
+    "name": "誘導",
+    "cost": 4,
+    "description": "25秒間、自身をロックオン距離内に捉えている敵ユニットのターゲットを自身に集める。"
+  },
+  "special_attack": {
+    "name": "UNITED SP",
+    "target": "単体(敵)",
+    "range": 2,
+    "power": 3400,
+    "description": "敵単体に格闘攻撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "SEED ASTRAY",
+      "condition": "デッキに2枚以上",
+      "effect": "[遠距離攻撃力] [近距離攻撃力] 小アップ"
+    },
+    {
+      "name": "近距離攻撃力",
+      "condition": "デッキに近距離2枚以上",
+      "effect": "中アップ"
+    }
+  ],
+  "illust": "Yasunari Toda",
+  "card_number": "PR-347",
+  "card_name": "ガンダムアストレイ ゴールドフレーム天",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-347_b.jpg?v8"
+}

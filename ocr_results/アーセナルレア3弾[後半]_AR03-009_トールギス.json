@@ -1,0 +1,62 @@
+{
+  "type": "MS",
+  "name": "トールギス",
+  "model": "OZ-00MS TALLGEESE",
+  "cost": 5,
+  "category": "遠距離",
+  "pilot": "ゼクス・マーキス",
+  "stats": {
+    "height": "17.4m",
+    "weight": "8.8t",
+    "mobility": 300,
+    "ranged_attack": 470,
+    "melee_attack": 240,
+    "hp": 290
+  },
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "A",
+    "desert": "A",
+    "water": "C"
+  },
+  "weapon": {
+    "main": {
+      "name": "ドーバーガン",
+      "range": 4,
+      "type": "遠距離"
+    },
+    "sub": {
+      "name": "ビームサーベル",
+      "range": 1,
+      "type": "近距離"
+    }
+  },
+  "ms_ability": {
+    "name": "貫通",
+    "cost": 3,
+    "description": "ロックオン中の敵に一定時間チャージ後、貫通射撃を行い、射線上の敵にダメージを与える。"
+  },
+  "special_attack": {
+    "name": "ドーバーガン爆撃",
+    "target": "範囲",
+    "range": 4,
+    "power": 3000,
+    "description": "対象の敵を中心として範囲射撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "ガンダムW",
+      "condition": "デッキに3枚以上",
+      "effect": "[機動力]小アップ"
+    },
+    {
+      "name": "距離をとった射撃戦",
+      "condition": "デッキに2枚以上",
+      "effect": "[遠距離攻撃力]小アップ"
+    }
+  ],
+  "illust": "Akinori Takaba (STUDIO GS)",
+  "card_number": "AR03-009",
+  "card_name": "トールギス",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/AR03-009_b.jpg?v8"
+}

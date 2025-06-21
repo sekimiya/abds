@@ -1,0 +1,62 @@
+{
+  "type": "MS",
+  "name": "ガンダム試作1号機フルバーニアン",
+  "model": "RX-78GP01-Fb GUNDAM GP01Fb",
+  "cost": 2,
+  "category": "地球連邦軍",
+  "pilot": "コウ・ウラキ",
+  "stats": {
+    "height": "18.5m",
+    "weight": "43.2t",
+    "mobility": 180,
+    "ranged_attack": 100,
+    "melee_attack": 240,
+    "hp": 330
+  },
+  "terrain_compatibility": {
+    "ground": "B",
+    "space": "S",
+    "desert": "B",
+    "water": "C"
+  },
+  "weapon": {
+    "main": {
+      "name": "ビーム・サーベル",
+      "range": 1,
+      "type": "近距離"
+    },
+    "sub": {
+      "name": "ビーム・ライフル",
+      "range": 3,
+      "type": "遠距離"
+    }
+  },
+  "ms_ability": {
+    "name": "補給【弱体化解除】",
+    "cost": 5,
+    "description": "自身を中心とした大範囲の味方ユニットのHPを中回復し、弱体化状態を無効化にする。"
+  },
+  "special_attack": {
+    "name": "ビーム・サーベル強撃",
+    "target": "単体（敵）",
+    "range": 2,
+    "power": 3300,
+    "description": "敵単体に格闘攻撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "ガンダム0083",
+      "condition": "デッキに3枚以上",
+      "effect": "[機動力]小アップ"
+    },
+    {
+      "name": "追撃の近距離戦",
+      "condition": "デッキに近距離2枚以上",
+      "effect": "[近距離攻撃力]中アップ"
+    }
+  ],
+  "illust": "Daiki Ueda",
+  "card_number": "UT05-002",
+  "card_name": "ガンダム試作1号機フルバーニアン",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/UT05-002_b.jpg?v8"
+}

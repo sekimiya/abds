@@ -1,0 +1,39 @@
+{
+  "type": "PL",
+  "name": "ザビーネ・シャル",
+  "english_name": "ZABINE CHAREUX",
+  "cost": 2,
+  "category": "制圧",
+  "age": 35,
+  "height": "-",
+  "units": [
+    "クロスボーン・ガンダムX-2"
+  ],
+  "pl_skill": {
+    "name": "確固たる信念",
+    "trigger": "HP50%以下の時",
+    "effect": "自身が受けるダメージを軽減する。"
+  },
+  "link_abilities": [
+    {
+      "name": "クロスボーン・ガンダム",
+      "condition": "デッキに2枚以上",
+      "effect": "[機動力]小アップ"
+    },
+    {
+      "name": "肉薄する戦い",
+      "condition": "デッキに4枚以上",
+      "effect": "[機動力][近距離攻撃力]小アップ"
+    }
+  ],
+  "stats": {
+    "mobility": 200,
+    "ranged_attack": 40,
+    "melee_attack": 150,
+    "hp": 250
+  },
+  "illust": "R",
+  "card_number": "UT05-046",
+  "card_name": "ザビーネ・シャル",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/UT05-046_b.jpg?v8"
+}

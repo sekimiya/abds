@@ -1,0 +1,40 @@
+{
+  "type": "PL",
+  "name": "バナージ・リンクス",
+  "english_name": "Banagher Links",
+  "cost": 1,
+  "category": "防衛",
+  "age": 16,
+  "height": "－",
+  "units": [
+    "フルアーマー・ユニコーンガンダム",
+    "ユニコーンガンダム"
+  ],
+  "pl_skill": {
+    "name": "破竹の如き勢力",
+    "trigger": "MSアビリティ発動時",
+    "effect": "SQゲージ中アップ。"
+  },
+  "link_abilities": [
+    {
+      "name": "虹の彼方に",
+      "condition": "デッキに3枚以上",
+      "effect": "SQゲージが表示される。SQゲージを満たすとSQUAD RUSHが発動できる。[HP] [SP威力]小アップ"
+    },
+    {
+      "name": "多彩な施策",
+      "condition": "デッキに4枚以上",
+      "effect": "[遠距離攻撃力] [近距離攻撃力]小アップ"
+    }
+  ],
+  "stats": {
+    "mobility": 180,
+    "ranged_attack": 40,
+    "melee_attack": 200,
+    "hp": 250
+  },
+  "illust": "－",
+  "card_number": "FQ03-042",
+  "card_name": "バナージ・リンクス",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ03-042_b.jpg?v8"
+}

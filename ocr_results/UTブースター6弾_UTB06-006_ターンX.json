@@ -1,0 +1,62 @@
+{
+  "type": "MS",
+  "name": "ターンX",
+  "model": "Concept-X6-1-2 TURN X",
+  "cost": 8,
+  "category": "ギンガナム艦隊",
+  "pilot": "ギム・ギンガナム",
+  "stats": {
+    "height": "20.5m",
+    "weight": "50.6t",
+    "mobility": 260,
+    "ranged_attack": 320,
+    "melee_attack": 670,
+    "hp": 600
+  },
+  "terrain_compatibility": {
+    "ground": "S",
+    "space": "A",
+    "desert": "B",
+    "water": "B"
+  },
+  "weapon": {
+    "main": {
+      "name": "液断破砕マニピュレーター",
+      "range": 1,
+      "type": "近距離"
+    },
+    "sub": {
+      "name": "液断破砕マニピュレーター",
+      "range": 3,
+      "type": "遠距離"
+    }
+  },
+  "ms_ability": {
+    "name": "圧倒",
+    "cost": 3,
+    "description": "ロックオン中の敵が弱体化状態の時に発動可能となり、敵に単体攻撃でダメージを与え、その攻撃は必ずクリティカルになる。"
+  },
+  "special_attack": {
+    "name": "月光蝶",
+    "target": "敵",
+    "range": 2,
+    "power": 3800,
+    "description": "自身を中心とした範囲に格闘攻撃でダメージを与え、[月光蝶状態]となる。自身が撤退するまで効果は持続する。"
+  },
+  "link_abilities": [
+    {
+      "name": "[HP]小アップ",
+      "condition": "∀ガンダム デッキに3枚以上",
+      "effect": "[HP]小アップ"
+    },
+    {
+      "name": "[遠距離攻撃力][近距離攻撃力]小アップ",
+      "condition": "デッキに4枚以上",
+      "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+    }
+  ],
+  "illust": "Moyasi",
+  "card_number": "UTB06-006",
+  "card_name": "ターンX",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/UTB06-006_b.jpg?v8"
+}

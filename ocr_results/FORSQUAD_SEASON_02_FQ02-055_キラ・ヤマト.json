@@ -1,0 +1,41 @@
+{
+  "type": "PL",
+  "name": "キラ・ヤマト",
+  "english_name": "KIRA YAMATO",
+  "cost": 2,
+  "category": "殲滅",
+  "age": 16,
+  "height": "165cm",
+  "units": [
+    "フリーダムガンダム",
+    "エールストライクガンダム",
+    "ストライクガンダム"
+  ],
+  "pl_skill": {
+    "name": "強者の重圧",
+    "trigger": "敵ユニットをロックオン時",
+    "effect": "20秒間、ロックオン中の敵ユニットの「近距離攻撃力」「遠距離攻撃力」を中ダウンする。"
+  },
+  "link_abilities": [
+    {
+      "name": "ガンダムSEED",
+      "condition": "デッキに3枚以上",
+      "effect": "[機動力]小アップ"
+    },
+    {
+      "name": "圧倒する殲滅力",
+      "condition": "デッキに殲滅系が3枚以上",
+      "effect": "殲滅タイプに対してダメージ中アップ"
+    }
+  ],
+  "stats": {
+    "mobility": 150,
+    "ranged_attack": 70,
+    "melee_attack": 210,
+    "hp": 260
+  },
+  "illust": "R",
+  "card_number": "FQ02-055",
+  "card_name": "キラ・ヤマト",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-055_b.jpg?v8"
+}

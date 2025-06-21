@@ -1,0 +1,39 @@
+{
+  "type": "PL",
+  "name": "ノレア・デュノク",
+  "english_name": "NOREA DU NOC",
+  "cost": 4,
+  "category": "制圧",
+  "age": null,
+  "height": null,
+  "units": [
+    "ガンダム・ルブリス・ソーン"
+  ],
+  "pl_skill": {
+    "name": "静けさに隠れた厭世観",
+    "trigger": "出撃時",
+    "effect": "20秒間、出撃中の全味方ユニットの「遠距離攻撃力」「近距離攻撃力」を中アップする。"
+  },
+  "link_abilities": [
+    {
+      "name": "水星の魔女",
+      "condition": "デッキに3枚以上",
+      "effect": "[機動力]小アップ"
+    },
+    {
+      "name": "地球の魔女",
+      "condition": "デッキに2枚以上",
+      "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+    }
+  ],
+  "stats": {
+    "mobility": 230,
+    "ranged_attack": 320,
+    "melee_attack": 110,
+    "hp": 290
+  },
+  "illust": null,
+  "card_number": "LX02-115",
+  "card_name": "ノレア・デュノク",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/LX02-115_b.jpg?v8"
+}

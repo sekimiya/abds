@@ -1,0 +1,62 @@
+{
+  "type": "MS",
+  "name": "ジークアクス",
+  "model": "GQuuuuuX (Omega Psycommu)",
+  "cost": 5,
+  "category": "近距離",
+  "pilot": "アマテ・ユスリハ（マチュ）",
+  "stats": {
+    "height": "18.0m",
+    "weight": "42.4t",
+    "mobility": 240,
+    "ranged_attack": 0,
+    "melee_attack": 320,
+    "hp": 340
+  },
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "C",
+    "desert": "C",
+    "water": "A"
+  },
+  "weapon": {
+    "main": {
+      "name": "トメノヅケ・ヒート・ホーク",
+      "range": 1,
+      "type": "近距離"
+    },
+    "sub": {
+      "name": "シールド",
+      "range": 1,
+      "type": "近距離"
+    }
+  },
+  "ms_ability": {
+    "name": "特攻",
+    "cost": 1,
+    "description": "自身の【遠／近攻撃力】をアップし【体力無効】となるが、【回避／ガード不可】【修理時間延長】となる。効果は撤退するまで持続。"
+  },
+  "special_attack": {
+    "name": "トメノヅケ・ヒート・ホーク強襲",
+    "target": "単体（敵）",
+    "range": 2,
+    "power": 3400,
+    "description": "敵単体に格闘攻撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "GQuuuuuX",
+      "condition": "デッキに3枚以上",
+      "effect": "[HP]小アップ"
+    },
+    {
+      "name": "状況を変える力",
+      "condition": "デッキに4枚以上",
+      "effect": "[遠距離攻撃力] [近距離攻撃力]小アップ"
+    }
+  ],
+  "illust": "サンスケ",
+  "card_number": "FQ01-029",
+  "card_name": "ジークアクス(オメガサイコミュ発動)",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ01-029_b.jpg?v8"
+}

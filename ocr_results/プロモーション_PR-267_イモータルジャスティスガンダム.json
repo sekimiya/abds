@@ -1,0 +1,62 @@
+{
+  "type": "MS",
+  "name": "イモータルジャスティスガンダム",
+  "model": "STTS-808 IMMORTAL JUSTICE GUNDAM",
+  "cost": 4,
+  "category": "近距離",
+  "pilot": "シン・アスカ",
+  "stats": {
+    "height": "18.50m",
+    "weight": "71.62t",
+    "mobility": 180,
+    "ranged_attack": 50,
+    "melee_attack": 270,
+    "hp": 450
+  },
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "A",
+    "desert": "S",
+    "water": "C"
+  },
+  "weapon": {
+    "main": {
+      "name": "ヴィーゼルガードビームブーメラン",
+      "range": 1,
+      "type": "近距離"
+    },
+    "sub": {
+      "name": "高エネルギービームライフル",
+      "range": 3,
+      "type": "遠距離"
+    }
+  },
+  "ms_ability": {
+    "name": "誘導",
+    "cost": 4,
+    "description": "25秒間、自身をロックオン距離内に捉えている敵ユニットのターゲットを自身に集める。"
+  },
+  "special_attack": {
+    "name": "カルキラビーム斬断鋸撃",
+    "target": "単体（敵）",
+    "range": 2,
+    "power": 3400,
+    "description": "敵単体に格闘攻撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "SEED FREEDOM",
+      "condition": "デッキに3枚以上",
+      "effect": "[機動力]小アップ"
+    },
+    {
+      "name": "多彩な戦術",
+      "condition": "デッキに4枚以上",
+      "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+    }
+  ],
+  "illust": "haru",
+  "card_number": "PR-267",
+  "card_name": "イモータルジャスティスガンダム",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-267_b.jpg?v8"
+}

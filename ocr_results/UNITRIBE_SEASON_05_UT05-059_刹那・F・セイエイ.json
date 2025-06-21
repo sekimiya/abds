@@ -1,0 +1,39 @@
+{
+  "type": "PL",
+  "name": "刹那・F・セイエイ",
+  "english_name": "SETSUNA F SEIEI",
+  "cost": 5,
+  "category": "制圧",
+  "age": 21,
+  "height": "175cm",
+  "units": [
+    "ダブルオーガンダム"
+  ],
+  "pl_skill": {
+    "name": "鋭い追撃",
+    "trigger": "戦術技発動時",
+    "effect": "30秒間、自身の「機動力」「遠距離攻撃力」をアップする。"
+  },
+  "link_abilities": [
+    {
+      "name": "ガンダム00",
+      "condition": "デッキに3枚以上",
+      "effect": "[機動力]小アップ"
+    },
+    {
+      "name": "万全の制圧態勢",
+      "condition": "デッキに制圧属性が3枚以上",
+      "effect": "[修理時間]短縮"
+    }
+  ],
+  "stats": {
+    "mobility": 200,
+    "ranged_attack": 270,
+    "melee_attack": 120,
+    "hp": 280
+  },
+  "illust": "C",
+  "card_number": "UT05-059",
+  "card_name": "刹那・F・セイエイ",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/UT05-059_b.jpg?v8"
+}

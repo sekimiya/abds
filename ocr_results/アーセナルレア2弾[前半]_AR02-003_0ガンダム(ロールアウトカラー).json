@@ -1,0 +1,57 @@
+{
+  "type": "MS",
+  "name": "0ガンダム（ロールアウトカラー）",
+  "model": "GN-000 0 GUNDAM (ROLL OUT COLOR)",
+  "cost": 4,
+  "category": "機動",
+  "pilot": "リボンズ・アルマーク",
+  "stats": {
+    "height": "18.0m",
+    "weight": "53.4t",
+    "mobility": 300,
+    "ranged_attack": 280,
+    "melee_attack": 210,
+    "hp": 230
+  },
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "A",
+    "desert": "C",
+    "water": "-"
+  },
+  "weapon": {
+    "main": {
+      "name": "ビームガン",
+      "range": 3,
+      "type": "遠距離"
+    },
+    "sub": {
+      "name": "ビームサーベル",
+      "range": 1,
+      "type": "近距離"
+    }
+  },
+  "ms_ability": {
+    "name": "妨害攻撃",
+    "cost": "-",
+    "description": "20秒間、自身を中心とした大範囲内の敵ユニットの[遠距離攻撃力][近距離攻撃力]を小ダウンする。"
+  },
+  "special_attack": {
+    "name": "ビームガン射撃",
+    "target": "単体（敵）",
+    "range": 3,
+    "power": 3300,
+    "description": "敵単体に射撃攻撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "ガンダム00",
+      "condition": "デッキに3枚以上",
+      "effect": "[機動力]小アップ"
+    }
+  ],
+  "illust": "Syusei Yamashiro",
+  "card_number": "AR02-003",
+  "card_name": "0ガンダム(ロールアウトカラー)",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/AR02-003_b.jpg?v8"
+}

@@ -1,0 +1,39 @@
+{
+  "type": "PL",
+  "name": "メイ",
+  "english_name": "MAY",
+  "cost": 2,
+  "category": "制圧",
+  "age": null,
+  "height": null,
+  "units": [
+    "ウォドムポッド"
+  ],
+  "pl_skill": {
+    "name": "加速する力",
+    "trigger": "出撃後一定時間経過毎",
+    "effect": "15秒経過毎に自身の敵戦艦・拠点へのダメージを小アップする。最大3回まで発動。"
+  },
+  "link_abilities": [
+    {
+      "name": "Re:RISE",
+      "condition": "デッキに3枚以上",
+      "effect": "遠距離攻撃力小アップ"
+    },
+    {
+      "name": "万全の制圧態勢",
+      "condition": "デッキに制圧が3枚以上",
+      "effect": "修理時間1短縮"
+    }
+  ],
+  "stats": {
+    "mobility": 200,
+    "ranged_attack": 150,
+    "melee_attack": 70,
+    "hp": 320
+  },
+  "illust": null,
+  "card_number": "UT06-071",
+  "card_name": "メイ",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/UT06-071_b.jpg?v8"
+}

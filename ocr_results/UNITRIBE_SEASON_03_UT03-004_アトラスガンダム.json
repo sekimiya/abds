@@ -1,0 +1,62 @@
+{
+  "type": "MS",
+  "name": "アトラスガンダム",
+  "model": "RX-78AL ATLAS GUNDAM",
+  "cost": 5,
+  "category": "地球連邦軍",
+  "pilot": "イオ・フレミング",
+  "stats": {
+    "height": "頭頂高 -",
+    "weight": "本体重量 -",
+    "mobility": 300,
+    "ranged_attack": 520,
+    "melee_attack": 100,
+    "hp": 530
+  },
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "B",
+    "desert": "C",
+    "water": "S"
+  },
+  "weapon": {
+    "main": {
+      "name": "レールガン",
+      "range": 4,
+      "type": "遠距離"
+    },
+    "sub": {
+      "name": "ビーム・サーベル",
+      "range": 1,
+      "type": "近距離"
+    }
+  },
+  "ms_ability": {
+    "name": "断砕",
+    "cost": 3,
+    "description": "ロックオン中の敵ユニットに単体攻撃でダメージを与え、強化状態を無効化する。"
+  },
+  "special_attack": {
+    "name": "レールガン強襲",
+    "target": "単体（敵）",
+    "range": 4,
+    "power": 3500,
+    "description": "敵単体に射撃攻撃でダメージを与える。戦術威力は地形適性に応じて変化する。"
+  },
+  "link_abilities": [
+    {
+      "name": "サンダーボルト",
+      "condition": "デッキに4枚以上",
+      "effect": "[遠距離攻撃力]小アップ"
+    },
+    {
+      "name": "戦況を変える力",
+      "condition": "デッキに4枚以上",
+      "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+    }
+  ],
+  "illust": "Takuji Kato",
+  "card_number": "UT03-004",
+  "card_name": "アトラスガンダム",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/UT03-004_b.jpg?v8"
+}

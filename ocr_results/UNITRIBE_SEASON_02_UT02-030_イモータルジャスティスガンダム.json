@@ -1,0 +1,62 @@
+{
+  "type": "MS",
+  "name": "イモータルジャスティスガンダム",
+  "model": "STTS-808 IMMORTAL JUSTICE GUNDAM",
+  "cost": 2,
+  "category": "近距離",
+  "pilot": "シン・アスカ",
+  "stats": {
+    "height": "18.5m",
+    "weight": "71.62t",
+    "mobility": 170,
+    "ranged_attack": 40,
+    "melee_attack": 200,
+    "hp": 190
+  },
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "S",
+    "desert": "A",
+    "water": "A"
+  },
+  "weapon": {
+    "main": {
+      "name": "ヴィーナルサーガルビームブーメラン",
+      "range": 1,
+      "type": "近距離"
+    },
+    "sub": {
+      "name": "高エネルギービームライフル",
+      "range": 3,
+      "type": "遠距離"
+    }
+  },
+  "ms_ability": {
+    "name": "断砕",
+    "cost": 3,
+    "description": "ロックオン中の敵ユニットに単体攻撃でダメージを与え、強化状態を無効化する。"
+  },
+  "special_attack": {
+    "name": "ヴィーナルサーガルビームブーメラン",
+    "target": "単体（敵）",
+    "range": 2,
+    "power": 3100,
+    "description": "単体に格闘攻撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "SEED FREEDOM",
+      "condition": "デッキに3体以上",
+      "effect": "[機動力]小アップ"
+    },
+    {
+      "name": "肉薄する戦い",
+      "condition": "デッキに4体以上",
+      "effect": "[機動力][近距離攻撃力]小アップ"
+    }
+  ],
+  "illust": "kenko",
+  "card_number": "UT02-030",
+  "card_name": "イモータルジャスティスガンダム",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/UT02-030_b.jpg?v8"
+}

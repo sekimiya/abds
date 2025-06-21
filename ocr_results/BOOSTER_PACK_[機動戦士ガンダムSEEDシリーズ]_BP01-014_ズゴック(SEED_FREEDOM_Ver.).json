@@ -1,0 +1,62 @@
+{
+  "type": "MS",
+  "name": "ズゴック (SEED FREEDOM Ver.)",
+  "model": "ZGMF-MM07 Z'GOK [SEED FREEDOM Ver.]",
+  "cost": 3,
+  "category": "ターミナル",
+  "pilot": "アスラン・ザラ",
+  "stats": {
+    "height": "—",
+    "weight": "—",
+    "mobility": 200,
+    "ranged_attack": 30,
+    "melee_attack": 150,
+    "hp": 320
+  },
+  "terrain_compatibility": {
+    "ground": "B",
+    "space": "S",
+    "desert": "S",
+    "water": "S"
+  },
+  "weapon": {
+    "main": {
+      "name": "対装甲斬撃爪",
+      "range": 1,
+      "type": "近距離"
+    },
+    "sub": {
+      "name": "粒子力砲",
+      "range": 3,
+      "type": "遠距離"
+    }
+  },
+  "ms_ability": {
+    "name": "誘導",
+    "cost": 4,
+    "description": "25秒間、自身をロックオン距離内に捉えている敵ユニットのターゲットを自身に集める。"
+  },
+  "special_attack": {
+    "name": "対装甲斬撃爪強撃",
+    "target": "単体（敵）",
+    "range": 2,
+    "power": 3300,
+    "description": "敵単体に格闘攻撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "SEED FREEDOM",
+      "condition": "デッキに3枚以上",
+      "effect": "[機動力]小アップ"
+    },
+    {
+      "name": "多彩な戦術",
+      "condition": "デッキに4枚以上",
+      "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+    }
+  ],
+  "illust": "Kumagoro",
+  "card_number": "BP01-014",
+  "card_name": "ズゴック(SEED FREEDOM Ver.)",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/BP01-014_b.jpg?v8"
+}

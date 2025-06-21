@@ -1,0 +1,40 @@
+{
+  "type": "PL",
+  "name": "バナージ・リンクス",
+  "english_name": "BANAGHER LINKS",
+  "cost": 5,
+  "category": "殲滅",
+  "age": 16,
+  "height": "-",
+  "units": [
+    "フルアーマー・ユニコーンガンダム",
+    "ユニコーンガンダム"
+  ],
+  "pl_skill": {
+    "name": "解り合う力",
+    "trigger": "敵ユニットをロックオン時",
+    "effect": "30秒間、出撃中の全敵ユニットの「遠距離攻撃力」「近距離攻撃力」をダウンする。"
+  },
+  "link_abilities": [
+    {
+      "name": "ガンダムUC",
+      "condition": "デッキに3枚以上",
+      "effect": "[機動力]小アップ"
+    },
+    {
+      "name": "的確な一撃",
+      "condition": "デッキに4枚以上",
+      "effect": "[機動力][遠距離攻撃力]小アップ"
+    }
+  ],
+  "stats": {
+    "mobility": 240,
+    "ranged_attack": 410,
+    "melee_attack": 100,
+    "hp": 400
+  },
+  "illust": "-",
+  "card_number": "UT02-049",
+  "card_name": "バナージ・リンクス",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/UT02-049_b.jpg?v8"
+}

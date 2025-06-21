@@ -1,0 +1,39 @@
+{
+  "type": "PL",
+  "name": "ベルナルド・モンシア",
+  "english_name": "BERNARD MONSHA",
+  "cost": 3,
+  "category": "地球連邦軍",
+  "age": 28,
+  "height": "-",
+  "units": [
+    "ジム・カスタム"
+  ],
+  "pl_skill": {
+    "name": "無駄のない遂行力",
+    "trigger": "敵戦艦／拠点をロックオン時",
+    "effect": "SQゲージがアップ。"
+  },
+  "link_abilities": [
+    {
+      "name": "駆け抜ける嵐",
+      "condition": "デッキに3枚以上",
+      "effect": "SQゲージが表示される。SQゲージを消費するとSQUAD RUSHが発動できる。"
+    },
+    {
+      "name": "肉薄する戦い",
+      "condition": "デッキに4枚以上",
+      "effect": "[機動力][近距離攻撃力]小アップ"
+    }
+  ],
+  "stats": {
+    "mobility": 200,
+    "ranged_attack": 80,
+    "melee_attack": 200,
+    "hp": 190
+  },
+  "illust": "C",
+  "card_number": "FQ01-043",
+  "card_name": "ベルナルド・モンシア",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ01-043_b.jpg?v8"
+}

@@ -1,0 +1,62 @@
+{
+  "type": "MS",
+  "name": "イフリート改",
+  "model": "MS-08TX[EXAM] EFREET CUSTOM",
+  "cost": 4,
+  "category": "近距離",
+  "pilot": "ニムバス・シュターゼン",
+  "stats": {
+    "height": "17.2m",
+    "weight": "50.4t",
+    "mobility": 200,
+    "ranged_attack": 30,
+    "melee_attack": 350,
+    "hp": 470
+  },
+  "terrain_compatibility": {
+    "ground": "S",
+    "space": "C",
+    "desert": "S",
+    "water": "C"
+  },
+  "weapon": {
+    "main": {
+      "name": "ヒートサーベル二刀流",
+      "range": 1,
+      "type": "近距離"
+    },
+    "sub": {
+      "name": "腕部2連装バルカン・ランチャー",
+      "range": 3,
+      "type": "遠距離"
+    }
+  },
+  "ms_ability": {
+    "name": "逆襲",
+    "cost": 4,
+    "description": "ロックオン中の敵に単体攻撃でダメージを与える。自身の残りHPが少ない程、ダメージが上昇する。"
+  },
+  "special_attack": {
+    "name": "ヒートサーベル二刀流襲撃",
+    "target": "単体（敵）",
+    "range": 2,
+    "power": 3400,
+    "description": "敵単体に格闘攻撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "THE BLUE DESTINY",
+      "condition": "デッキに2枚以上",
+      "effect": "[近距離攻撃力]小アップ"
+    },
+    {
+      "name": "練度の機体",
+      "condition": "デッキに2枚以上",
+      "effect": "[HP]小アップ"
+    }
+  ],
+  "illust": "TAKA-F",
+  "card_number": "UTB01-001",
+  "card_name": "イフリート改",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/UTB01-001_b.jpg?v8"
+}

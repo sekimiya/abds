@@ -1,0 +1,39 @@
+{
+  "type": "PL",
+  "name": "ベルリ・ゼナム",
+  "english_name": "BELLRI ZENAM",
+  "cost": 3,
+  "category": "制圧",
+  "age": null,
+  "height": null,
+  "units": [
+    "G-セルフ（宇宙用パック）"
+  ],
+  "pl_skill": {
+    "name": "巡る気勢",
+    "trigger": "出撃時",
+    "effect": "20秒間、出撃中の全味方殲滅タイプユニットの【遠距離攻撃力】【近距離攻撃力】をアップする。"
+  },
+  "link_abilities": [
+    {
+      "name": "Gのレコンギスタ",
+      "condition": "デッキに2枚以上",
+      "effect": "[HP]小アップ"
+    },
+    {
+      "name": "戦況を変える力",
+      "condition": "デッキに4枚以上",
+      "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+    }
+  ],
+  "stats": {
+    "mobility": 150,
+    "ranged_attack": 280,
+    "melee_attack": 90,
+    "hp": 300
+  },
+  "illust": null,
+  "card_number": "UT04-069",
+  "card_name": "ベルリ・ゼナム",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/UT04-069_b.jpg?v8"
+}

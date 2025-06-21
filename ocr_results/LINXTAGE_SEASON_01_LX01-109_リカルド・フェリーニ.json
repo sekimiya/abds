@@ -1,0 +1,39 @@
+{
+  "type": "PL",
+  "name": "リカルド・フェリーニ",
+  "english_name": "RICARDO FELLINI",
+  "cost": 5,
+  "category": "防衛",
+  "age": 24,
+  "height": "-",
+  "units": [
+    "ウイングガンダムフェニーチェ"
+  ],
+  "pl_skill": {
+    "name": "封じる進軍",
+    "trigger": "敵ユニットをロックオン時",
+    "effect": "20秒間、ロックオン中の敵ユニットの「機動力」を大ダウンする。"
+  },
+  "link_abilities": [
+    {
+      "name": "ビルドファイターズ",
+      "condition": "デッキに3枚以上",
+      "effect": "[機動力]小アップ"
+    },
+    {
+      "name": "戦況を変える",
+      "condition": "デッキに4枚以上",
+      "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+    }
+  ],
+  "stats": {
+    "mobility": 250,
+    "ranged_attack": 100,
+    "melee_attack": 300,
+    "hp": 300
+  },
+  "illust": "-",
+  "card_number": "LX01-109",
+  "card_name": "リカルド・フェリーニ",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/LX01-109_b.jpg?v8"
+}

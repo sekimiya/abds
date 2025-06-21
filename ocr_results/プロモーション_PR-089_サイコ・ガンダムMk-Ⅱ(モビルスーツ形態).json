@@ -1,0 +1,62 @@
+{
+  "type": "MS",
+  "name": "サイコ・ガンダムMk-II（モビルスーツ形態）",
+  "model": "MRX-010 PSYCHO GUNDAM Mk-II",
+  "cost": 7,
+  "category": "遠距離",
+  "pilot": "ブルゥー",
+  "stats": {
+    "height": "39.98m",
+    "weight": "283.9t",
+    "mobility": 170,
+    "ranged_attack": 400,
+    "melee_attack": 360,
+    "hp": 420
+  },
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "A",
+    "desert": "A",
+    "water": "B"
+  },
+  "weapon": {
+    "main": {
+      "name": "有線サイコミュ式5連装ビーム砲",
+      "range": 3,
+      "type": "遠距離"
+    },
+    "sub": {
+      "name": "有線サイコミュ式ビーム・ソード",
+      "range": 1,
+      "type": "近距離"
+    }
+  },
+  "ms_ability": {
+    "name": "鉄壁",
+    "cost": 1,
+    "description": "自身の受けるダメージを少し軽減する。自身が撤退するまで効果は持続する。"
+  },
+  "special_attack": {
+    "name": "有線サイコミュ式5連装ビーム砲撃射",
+    "target": "単体（敵）",
+    "range": 3,
+    "power": 3500,
+    "description": "敵単体に射撃攻撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "[HP]小アップ",
+      "condition": "機動戦士ガンダムZZ デッキに3枚以上",
+      "effect": "[HP]小アップ"
+    },
+    {
+      "name": "[HP]小アップ",
+      "condition": "固めた装甲 デッキに2枚以上",
+      "effect": "[HP]小アップ"
+    }
+  ],
+  "illust": "Robographer",
+  "card_number": "PR-089",
+  "card_name": "サイコ・ガンダムMk-Ⅱ(モビルスーツ形態)",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-089_b.jpg?v8"
+}

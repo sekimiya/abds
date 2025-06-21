@@ -1,0 +1,62 @@
+{
+  "type": "MS",
+  "name": "RX-93ff νGUNDAM",
+  "model": "RX-93ff νGUNDAM",
+  "cost": 7,
+  "category": "ロンド・ベル",
+  "pilot": "アムロ・レイ",
+  "stats": {
+    "height": "—",
+    "weight": "—",
+    "mobility": 310,
+    "ranged_attack": 170,
+    "melee_attack": 590,
+    "hp": 630
+  },
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "S",
+    "desert": "C",
+    "water": "C"
+  },
+  "weapon": {
+    "main": {
+      "name": "ロングレンジ・フィン・ファンネル(バーレルモード)",
+      "range": 2,
+      "type": "近距離"
+    },
+    "sub": {
+      "name": "ロングレンジ・フィン・ファンネル",
+      "range": 4,
+      "type": "遠距離"
+    }
+  },
+  "ms_ability": {
+    "name": "装転【範囲】",
+    "cost": 4,
+    "description": "任意発動 自分 射程— コスト4\n通常攻撃が自身を中心とした範囲攻撃に変化する。この効果は自身が撤退するまで解除できない。"
+  },
+  "special_attack": {
+    "name": "ロングレンジ・フィン・ファンネル(バーレルモード)",
+    "target": "単体（敵）",
+    "range": 3,
+    "power": 3700,
+    "description": "戦闘体に格闘攻撃でダメージを与える。この攻撃で敵ユニットを撃破した場合、敵ユニットの修理時間を延長させる。戦術技及び地形適性に応じて変化する。"
+  },
+  "link_abilities": [
+    {
+      "name": "逆襲のシャア (SIDE-F)",
+      "condition": "デッキに2枚以上",
+      "effect": "[HP]小アップ"
+    },
+    {
+      "name": "BEYOND THE TIME",
+      "condition": "デッキに2枚以上",
+      "effect": "[機動力][HP]小アップ"
+    }
+  ],
+  "illust": "サンライズ",
+  "card_number": "UT06-009",
+  "card_name": "RX-93ff νガンダム",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/UT06-009_b.jpg?v8"
+}

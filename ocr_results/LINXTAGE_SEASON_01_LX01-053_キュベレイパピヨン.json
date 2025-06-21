@@ -1,0 +1,62 @@
+{
+  "type": "MS",
+  "name": "キュベレイパピヨン",
+  "model": "NMX-004 QUBELEY PAPILLON",
+  "cost": 4,
+  "category": "遠距離",
+  "pilot": "アイラ・ユルキアイネン",
+  "stats": {
+    "height": "18.9m",
+    "weight": "40.1t",
+    "mobility": 160,
+    "ranged_attack": 250,
+    "melee_attack": 100,
+    "hp": 240
+  },
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "S",
+    "desert": "C",
+    "water": "C"
+  },
+  "weapon": {
+    "main": {
+      "name": "ビームガン",
+      "range": 3,
+      "type": "遠距離"
+    },
+    "sub": {
+      "name": "ランスビット",
+      "range": 1,
+      "type": "近距離"
+    }
+  },
+  "ms_ability": {
+    "name": "妨害[防御]",
+    "cost": 1,
+    "description": "20秒間、自身を中心とした大範囲内の敵ユニットの被ダメージを少しアップする。"
+  },
+  "special_attack": {
+    "name": "ビームガン撃射",
+    "target": "単体(敵)",
+    "range": 3,
+    "power": 3200,
+    "description": "敵単体に射撃攻撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "[機動力]小アップ",
+      "condition": "ビルドファイターズ デッキに3枚以上",
+      "effect": "機動力が小アップ"
+    },
+    {
+      "name": "[遠距離攻撃力]小アップ",
+      "condition": "距離をとった射撃戦 デッキに2枚以上",
+      "effect": "遠距離攻撃力が小アップ"
+    }
+  ],
+  "illust": "StudioVIGOR Co.,Ltd.",
+  "card_number": "LX01-053",
+  "card_name": "キュベレイパピヨン",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/LX01-053_b.jpg?v8"
+}

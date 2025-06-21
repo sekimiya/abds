@@ -1,0 +1,40 @@
+{
+  "type": "PL",
+  "name": "ドモン・カッシュ",
+  "english_name": "DOMON KASSHU",
+  "cost": 2,
+  "category": "防衛",
+  "age": 20,
+  "height": "180cm",
+  "units": [
+    "ゴッドガンダム",
+    "シャイニングガンダム"
+  ],
+  "pl_skill": {
+    "name": "迫り狙う射撃術",
+    "trigger": "敵ユニットをロックオン時",
+    "effect": "SQゲージ小アップ。"
+  },
+  "link_abilities": [
+    {
+      "name": "新シャッフル同盟",
+      "condition": "デッキに3枚以上",
+      "effect": "SQゲージが溜まるとSQUAD RUSHが発動できる。[機動力][HP]小アップ"
+    },
+    {
+      "name": "戦況を変える力",
+      "condition": "デッキに4枚以上",
+      "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+    }
+  ],
+  "stats": {
+    "mobility": 150,
+    "ranged_attack": 240,
+    "melee_attack": 80,
+    "hp": 220
+  },
+  "illust": "©創通・サンライズ",
+  "card_number": "FQ02-045",
+  "card_name": "ドモン・カッシュ",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-045_b.jpg?v8"
+}

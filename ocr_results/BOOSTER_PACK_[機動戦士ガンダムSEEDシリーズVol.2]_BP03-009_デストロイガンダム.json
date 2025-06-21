@@ -1,0 +1,62 @@
+{
+  "type": "MS",
+  "name": "デストロイガンダム",
+  "model": "GFAS-X1 DESTROY GUNDAM",
+  "cost": 5,
+  "category": "地球連合軍",
+  "pilot": "ステラ・ルーシェ",
+  "stats": {
+    "height": "38.07m",
+    "weight": "404.93t",
+    "mobility": 200,
+    "ranged_attack": 300,
+    "melee_attack": 0,
+    "hp": 500
+  },
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "A",
+    "desert": "C",
+    "water": "B"
+  },
+  "weapon": {
+    "main": {
+      "name": "アファールドライヴェーン",
+      "range": 4,
+      "type": "遠距離"
+    },
+    "sub": {
+      "name": "",
+      "range": 0,
+      "type": ""
+    }
+  },
+  "ms_ability": {
+    "name": "奮起",
+    "cost": 0,
+    "description": "自身のHPが1以上で一定割合以下になると、一定時間、撃破されなくなり「遠近距離攻撃力」を中アップする。出撃時1度のみ発動。"
+  },
+  "special_attack": {
+    "name": "スーパーキュラ撃射",
+    "target": "黄範（敵）",
+    "range": 4,
+    "power": 3500,
+    "description": "MS形態に変形、射線上の敵に貫通射撃でダメージを与える。変形後は能力が上昇、自身が撤退するまで効果は持続する。"
+  },
+  "link_abilities": [
+    {
+      "name": "SEED DESTINY",
+      "condition": "デッキに3枚以上",
+      "effect": "[HP]小アップ"
+    },
+    {
+      "name": "漆黒の破壊者",
+      "condition": "デッキに2枚以上",
+      "effect": "[遠距離攻撃力][SP威力]小アップ"
+    }
+  ],
+  "illust": "merry rabbit",
+  "card_number": "BP03-009",
+  "card_name": "デストロイガンダム",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/BP03-009_b.jpg?v8"
+}

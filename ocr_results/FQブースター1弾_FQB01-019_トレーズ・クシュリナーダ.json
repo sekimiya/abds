@@ -1,0 +1,39 @@
+{
+  "type": "PL",
+  "name": "トレーズ・クシュリナーダ",
+  "english_name": "TREIZE KHUSHRENADA",
+  "cost": 2,
+  "category": "防衛",
+  "age": 24,
+  "height": "181cm",
+  "units": [
+    "トールギスII"
+  ],
+  "pl_skill": {
+    "name": "冷静な防衛戦",
+    "trigger": "防衛拠点変更完了時",
+    "effect": "30秒間、自身の「遠距離攻撃力」を中アップする。"
+  },
+  "link_abilities": [
+    {
+      "name": "ガンダムW",
+      "condition": "デッキに3枚以上",
+      "effect": "「機動力」小アップ"
+    },
+    {
+      "name": "的確な一撃",
+      "condition": "デッキに4枚以上",
+      "effect": "「機動力」「遠距離攻撃力」小アップ"
+    }
+  ],
+  "stats": {
+    "mobility": 260,
+    "ranged_attack": 250,
+    "melee_attack": 30,
+    "hp": 200
+  },
+  "illust": "不明",
+  "card_number": "FQB01-019",
+  "card_name": "トレーズ・クシュリナーダ",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/FQB01-019_b.jpg?v8"
+}

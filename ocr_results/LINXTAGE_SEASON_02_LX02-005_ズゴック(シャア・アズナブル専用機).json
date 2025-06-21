@@ -1,0 +1,62 @@
+{
+  "type": "MS",
+  "name": "ズゴック（シャア・アズナブル専用機）",
+  "model": "MSM-07S CHAR'S Z'GOK",
+  "cost": 5,
+  "category": "近距離",
+  "pilot": "シャア・アズナブル",
+  "stats": {
+    "height": "18.4m",
+    "weight": "65.1t",
+    "mobility": 300,
+    "ranged_attack": 320,
+    "melee_attack": 400,
+    "hp": 330
+  },
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "C",
+    "desert": "C",
+    "water": "S"
+  },
+  "weapon": {
+    "main": {
+      "name": "アイアン・ネイル",
+      "range": 1,
+      "type": "近距離"
+    },
+    "sub": {
+      "name": "メガ粒子砲",
+      "range": 3,
+      "type": "遠距離"
+    }
+  },
+  "ms_ability": {
+    "name": "強撃",
+    "cost": 3,
+    "description": "ロックオン中の敵に単体攻撃でダメージを与える。"
+  },
+  "special_attack": {
+    "name": "アイアン・ネイル強襲",
+    "target": "単体（敵）",
+    "range": 3,
+    "power": 3600,
+    "description": "敵単体に格闘攻撃でダメージを与える。戦術技威力は地形適性に応じて変化する。"
+  },
+  "link_abilities": [
+    {
+      "name": "機動戦士ガンダム",
+      "condition": "デッキに3枚以上",
+      "effect": "[機動力]小アップ"
+    },
+    {
+      "name": "水面下の闘争",
+      "condition": "デッキに2枚以上",
+      "effect": "[近距離攻撃力][HP]小アップ"
+    }
+  ],
+  "illust": "YAMAGUCHI JUN",
+  "card_number": "LX02-005",
+  "card_name": "ズゴック(シャア・アズナブル専用機)",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/LX02-005_b.jpg?v8"
+}

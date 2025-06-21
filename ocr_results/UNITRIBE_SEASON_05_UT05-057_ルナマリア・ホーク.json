@@ -1,0 +1,41 @@
+{
+  "type": "PL",
+  "name": "ルナマリア・ホーク",
+  "english_name": "LUNAMARIA HAWKE",
+  "cost": 3,
+  "category": "制圧",
+  "age": 17,
+  "height": "164cm",
+  "units": [
+    "フォースインパルスガンダム",
+    "ソードインパルスガンダム",
+    "ガナーザクウォーリア（ルナマリア・ホーク専用機）"
+  ],
+  "pl_skill": {
+    "name": "攻防一体の制圧戦術",
+    "trigger": "敵戦艦／拠点をロックオン時",
+    "effect": "40秒間、自身の「近距離攻撃力」を中アップし、受けるダメージを軽減する。"
+  },
+  "link_abilities": [
+    {
+      "name": "SEED DESTINY",
+      "condition": "デッキに3枚以上",
+      "effect": "[HP]小アップ"
+    },
+    {
+      "name": "多彩な戦術",
+      "condition": "デッキに4枚以上",
+      "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+    }
+  ],
+  "stats": {
+    "mobility": 150,
+    "ranged_attack": 30,
+    "melee_attack": 30,
+    "hp": 340
+  },
+  "illust": "",
+  "card_number": "UT05-057",
+  "card_name": "ルナマリア・ホーク",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/UT05-057_b.jpg?v8"
+}

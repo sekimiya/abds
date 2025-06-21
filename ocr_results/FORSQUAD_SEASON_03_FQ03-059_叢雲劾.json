@@ -1,0 +1,41 @@
+{
+  "type": "PL",
+  "name": "叢雲劾",
+  "english_name": "GAI MURAKUMO",
+  "cost": 3,
+  "category": "制圧",
+  "age": 26,
+  "height": "-",
+  "units": [
+    "ガンダムアストレイ ブルーフレーム セカンドリバイ",
+    "ガンダムアストレイ ブルーフレーム セカンドL",
+    "ガンダムアストレイ ブルーフレーム"
+  ],
+  "pl_skill": {
+    "name": "巡る気勢",
+    "trigger": "出撃時",
+    "effect": "20秒間、出撃中の全味方殲滅タイプユニットの【遠距離攻撃力】【近距離攻撃力】をアップする。"
+  },
+  "link_abilities": [
+    {
+      "name": "SEED ASTRAY",
+      "condition": "デッキに2枚以上",
+      "effect": "【遠距離攻撃力】【近距離攻撃力】小アップ"
+    },
+    {
+      "name": "肉薄する戦い",
+      "condition": "デッキに4枚以上",
+      "effect": "【機動力】【近距離攻撃力】小アップ"
+    }
+  ],
+  "stats": {
+    "mobility": 220,
+    "ranged_attack": 70,
+    "melee_attack": 240,
+    "hp": 290
+  },
+  "illust": "P",
+  "card_number": "FQ03-059",
+  "card_name": "叢雲劾",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ03-059_b.jpg?v8"
+}

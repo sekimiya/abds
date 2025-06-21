@@ -1,0 +1,62 @@
+{
+  "type": "MS",
+  "name": "デスティニーガンダム",
+  "model": "ZGMF-X42S DESTINY GUNDAM",
+  "cost": 5,
+  "category": "近距離",
+  "pilot": "シン・アスカ",
+  "stats": {
+    "height": "18.08m",
+    "weight": "79.44t",
+    "mobility": 260,
+    "ranged_attack": 70,
+    "melee_attack": 540,
+    "hp": 530
+  },
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "S",
+    "desert": "B",
+    "water": "A"
+  },
+  "weapon": {
+    "main": {
+      "name": "アロンダイトビームソード",
+      "range": 1,
+      "type": "近距離"
+    },
+    "sub": {
+      "name": "高エネルギービームライフル",
+      "range": 3,
+      "type": "遠距離"
+    }
+  },
+  "ms_ability": {
+    "name": "練撃",
+    "cost": 3,
+    "description": "任意発動 単体(敵) 射程2 コスト3 ロックオン中の敵ユニットに単体攻撃を行いダメージを与え、一定時間スタンさせる。"
+  },
+  "special_attack": {
+    "name": "一斉連撃",
+    "target": "単体(敵)",
+    "range": 2,
+    "power": 3500,
+    "description": "光の翼を展開し、敵単体に格闘攻撃でダメージを与える。光の翼展開後は、一定時間能力が上昇する。"
+  },
+  "link_abilities": [
+    {
+      "name": "SEED DESTINY",
+      "condition": "デッキに3枚以上",
+      "effect": "[HP]小アップ"
+    },
+    {
+      "name": "戦いの運命",
+      "condition": "デッキに2枚以上",
+      "effect": "[機動力][HP]小アップ"
+    }
+  ],
+  "illust": "Robographer",
+  "card_number": "BP03-006",
+  "card_name": "デスティニーガンダム",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/BP03-006_b.jpg?v8"
+}

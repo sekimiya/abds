@@ -1,0 +1,62 @@
+{
+  "type": "MS",
+  "name": "トールギス",
+  "model": "OZ-00MS TALLGEESE",
+  "cost": 3,
+  "category": "機動",
+  "pilot": "ゼクス・マーキス",
+  "stats": {
+    "height": "17.4m",
+    "weight": "8.8t",
+    "mobility": 180,
+    "ranged_attack": 160,
+    "melee_attack": 210,
+    "hp": 200
+  },
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "A",
+    "desert": "A",
+    "water": "C"
+  },
+  "weapon": {
+    "main": {
+      "name": "ビームサーベル",
+      "range": 1,
+      "type": "近距離"
+    },
+    "sub": {
+      "name": "ドーバーガン",
+      "range": 4,
+      "type": "遠距離"
+    }
+  },
+  "ms_ability": {
+    "name": "妨害【攻撃】",
+    "cost": 4,
+    "description": "ロックオン中の敵ユニットに単体攻撃でダメージを与え、20秒間、遠距離攻撃力↓を中ダウンする。"
+  },
+  "special_attack": {
+    "name": "ビームサーベル強撃",
+    "target": "単体（敵）",
+    "range": 2,
+    "power": 3300,
+    "description": "敵単体に格闘攻撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "ガンダムW",
+      "condition": "デッキに3枚以上",
+      "effect": "[機動力]小アップ"
+    },
+    {
+      "name": "問合せを詰めた接近戦",
+      "condition": "デッキに2枚以上",
+      "effect": "[近距離攻撃力]小アップ"
+    }
+  ],
+  "illust": "Ishibashi Yosuke",
+  "card_number": "LX01-028",
+  "card_name": "トールギス",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/LX01-028_b.jpg?v8"
+}

@@ -1,0 +1,39 @@
+{
+  "type": "PL",
+  "name": "刹那・F・セイエイ",
+  "english_name": "SETSUNA F SEIEI",
+  "cost": 3,
+  "category": "制圧",
+  "age": 21,
+  "height": "175cm",
+  "units": [
+    "ダブルオーガンダム"
+  ],
+  "pl_skill": {
+    "name": "切り開く力",
+    "trigger": "出撃時",
+    "effect": "出撃中の味方ユニット数に応じて[機動力][近距離攻撃力]をアップする。味方ユニット数には自身を含む。"
+  },
+  "link_abilities": [
+    {
+      "name": "ガンダム00",
+      "condition": "デッキに3枚以上",
+      "effect": "[機動力]小アップ"
+    },
+    {
+      "name": "トランザムの真価",
+      "condition": "デッキに2枚以上",
+      "effect": "[遠/近距離攻撃力]小アップ。専用作戦カードが使用可能"
+    }
+  ],
+  "stats": {
+    "mobility": 220,
+    "ranged_attack": 70,
+    "melee_attack": 230,
+    "hp": 260
+  },
+  "illust": "©創通・サンライズ",
+  "card_number": "UT04-061",
+  "card_name": "刹那・F・セイエイ",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/UT04-061_b.jpg?v8"
+}

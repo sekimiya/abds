@@ -1,0 +1,39 @@
+{
+  "type": "PL",
+  "name": "イーノ・アッバーブ",
+  "english_name": "IINO ABBAV",
+  "cost": 1,
+  "category": "防衛",
+  "age": 14,
+  "height": "-",
+  "units": [
+    "Zザク"
+  ],
+  "pl_skill": {
+    "name": "戦術の切り替え",
+    "trigger": "MSアビリティ発動時",
+    "effect": "20秒間、自身の「機動力」「遠距離攻撃力」を小アップする。"
+  },
+  "link_abilities": [
+    {
+      "name": "機動戦士ガンダムZZ",
+      "condition": "デッキに3枚以上",
+      "effect": "[HP]小アップ"
+    },
+    {
+      "name": "的確な一撃",
+      "condition": "デッキに4枚以上",
+      "effect": "[機動力][遠距離攻撃力]小アップ"
+    }
+  ],
+  "stats": {
+    "mobility": 170,
+    "ranged_attack": 170,
+    "melee_attack": 50,
+    "hp": 170
+  },
+  "illust": "R",
+  "card_number": "UTB06-017",
+  "card_name": "イーノ・アッバーブ",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/UTB06-017_b.jpg?v8"
+}

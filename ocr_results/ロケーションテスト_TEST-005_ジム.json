@@ -1,0 +1,51 @@
+{
+  "type": "MS",
+  "name": "ジム",
+  "model": "RGM-79 GM",
+  "cost": 2,
+  "category": "地球連邦軍",
+  "pilot": "",
+  "stats": {
+    "height": "18.0m",
+    "weight": "41.2t",
+    "mobility": 210,
+    "ranged_attack": 100,
+    "melee_attack": 200,
+    "hp": 200
+  },
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "A",
+    "desert": "C",
+    "water": "-"
+  },
+  "weapon": {
+    "main": {
+      "name": "ビーム・サーベル",
+      "range": 1,
+      "type": "近距離"
+    },
+    "sub": {
+      "name": "ビーム・スプレーガン",
+      "range": 3,
+      "type": "遠距離"
+    }
+  },
+  "ms_ability": {
+    "name": "支援砲撃",
+    "cost": 5,
+    "description": "指定した位置に中範囲の支援砲撃を要請し、範囲内の敵にダメージを与える。"
+  },
+  "special_attack": {
+    "name": "ビーム・サーベル強撃",
+    "target": "単体（敵）",
+    "range": 2,
+    "power": 2800,
+    "description": "敵単体に格闘攻撃でダメージを与える。"
+  },
+  "link_abilities": [],
+  "illust": "kaz",
+  "card_number": "TEST-005",
+  "card_name": "ジム",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/TEST-005_b.jpg?v8"
+}

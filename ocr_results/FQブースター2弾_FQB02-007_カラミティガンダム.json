@@ -1,0 +1,62 @@
+{
+  "type": "MS",
+  "name": "カラミティガンダム",
+  "model": "GAT-X131 CALAMITY GUNDAM",
+  "cost": 5,
+  "category": "遠距離",
+  "pilot": "オルガ・サブナック",
+  "stats": {
+    "height": "18.26m",
+    "weight": "81.48t",
+    "mobility": 190,
+    "ranged_attack": 470,
+    "melee_attack": 100,
+    "hp": 440
+  },
+  "terrain_compatibility": {
+    "ground": "B",
+    "space": "S",
+    "desert": "A",
+    "water": "C"
+  },
+  "weapon": {
+    "main": {
+      "name": "シュラーク",
+      "range": 4,
+      "type": "遠距離"
+    },
+    "sub": {
+      "name": "トーデスブロック",
+      "range": 2,
+      "type": "近距離"
+    }
+  },
+  "ms_ability": {
+    "name": "装転【貫通改】",
+    "cost": 5,
+    "description": "通常攻撃がチャージを伴う強力な貫通射撃のメイン攻撃のみになる。この効果は自身が撤退するまで解除できない。"
+  },
+  "special_attack": {
+    "name": "一斉射撃",
+    "target": "連携",
+    "range": 3,
+    "power": 3800,
+    "description": "射線上の敵に貫通射撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "ガンダムSEED",
+      "condition": "デッキに3枚以上",
+      "effect": "[機動力]小アップ"
+    },
+    {
+      "name": "戦況を変える力",
+      "condition": "デッキに4枚以上",
+      "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+    }
+  ],
+  "illust": "Kumoguro",
+  "card_number": "FQB02-007",
+  "card_name": "カラミティガンダム",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/FQB02-007_b.jpg?v8"
+}

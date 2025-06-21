@@ -46,6 +46,12 @@
         .sq-link-active { background: #4a1a4a; color: #f8bbd9; font-weight: bold; }
         .skill-cell { height: 90px; overflow-y: auto; text-align: left; padding: 8px; font-size: 12px; line-height: 1.3; }
         #loading { text-align: center; font-size: 20px; padding: 50px; }
+        .terrain-cell {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            font-size: 12px;
+        }
 
         /* Modal Styles */
         .modal-overlay {
@@ -174,11 +180,11 @@
                 </tr>
                 <tr>
                     <th class="row-header">地形補正</th>
-                    <td id="terrain-0" colspan="3"></td>
-                    <td id="terrain-1" colspan="3"></td>
-                    <td id="terrain-2" colspan="3"></td>
-                    <td id="terrain-3" colspan="3"></td>
-                    <td id="terrain-4" colspan="3"></td>
+                    <td id="terrain-0" colspan="3" class="terrain-cell"></td>
+                    <td id="terrain-1" colspan="3" class="terrain-cell"></td>
+                    <td id="terrain-2" colspan="3" class="terrain-cell"></td>
+                    <td id="terrain-3" colspan="3" class="terrain-cell"></td>
+                    <td id="terrain-4" colspan="3" class="terrain-cell"></td>
                 </tr>
                 <!-- Card Images -->
                 <tr>
@@ -396,7 +402,8 @@
 
             // Populate images and names
             for (let i = 0; i < 5; i++) {
-                const ms = cards[i];
+                const card = cards[i];
+                const ms = card;
                 const pl = cards[i + 5];
                 
                 const msImgEl = document.getElementById(`ms-img-${i}`);
@@ -412,16 +419,34 @@
             
                 if(ms && ms.ocr_data && ms.ocr_data.cost) totalCost += parseInt(ms.ocr_data.cost, 10);
                 if(pl && pl.ocr_data && pl.ocr_data.cost) totalCost += parseInt(pl.ocr_data.cost, 10);
+
+                // Terrain
+                const terrainElement = document.getElementById(`terrain-${i}`);
+                if (terrainElement) {
+                    const msTerrain = getDeepValue(ms, 'ocr_data.terrain_suitability');
+                    if (msTerrain) {
+                        terrainElement.innerHTML = calculateMSTerrain(ms);
+                    } else {
+                        terrainElement.textContent = '-';
+                    }
+                }
+
+                // Level Selectors
+                const msLevel = (ms && ms.ocr_data) ? ms.ocr_data.level : 1;
+                const plLevel = (pl && pl.ocr_data) ? pl.ocr_data.level : 1;
+                const msLevelSelect = createLevelSelector(i, 'ms', msLevel);
+                const plLevelSelect = createLevelSelector(i, 'pl', plLevel);
+
+                const msLevelCell = document.getElementById(`ms-level-${i}`);
+                const plLevelCell = document.getElementById(`pl-level-${i}`);
+
+                // Append selectors to the appropriate cells (this needs to be defined where they should go)
+                // For example, if they go into the name cells:
+                // msNameCell.appendChild(msLevelSelect);
+                // plNameCell.appendChild(plLevelSelect);
             }
             document.getElementById('totalCost').textContent = totalCost;
             
-            // 地形補正の計算と表示
-            for (let i = 0; i < 5; i++) {
-                const ms = cards[i];
-                const terrainElement = document.getElementById(`terrain-${i}`);
-                terrainElement.innerHTML = calculateMSTerrain(ms);
-            }
-
             // Data rows definition
             const rows = [
                 { header: 'レベル', ms_key: 'level', pl_key: 'level' },
@@ -889,28 +914,24 @@
         }
 
         function calculateMSTerrain(ms) {
-            if (!ms || !ms.ocr_data || !ms.ocr_data.terrain_compatibility) {
-                return '-';
-            }
+            if (!ms || !ms.ocr_data || !ms.ocr_data.terrain_suitability) return '-';
+            const terrain = ms.ocr_data.terrain_suitability;
+            const parts = [
+                `地:${formatAptitude(terrain.ground)}`,
+                `宇:${formatAptitude(terrain.space)}`,
+                `森:${formatAptitude(terrain.forest)}`,
+                `砂:${formatAptitude(terrain.desert)}`
+            ];
+            return parts.join(' / ');
+        }
 
-            const terrain = ms.ocr_data.terrain_compatibility;
+        function formatAptitude(aptitude) {
+            if (!aptitude) return '-';
+            return `<span class="aptitude-${aptitude.toLowerCase()}">${aptitude}</span>`;
+        }
 
-            let html = '<div style="text-align: center; font-size: 12px;">';
-            const terrainTypes = ['ground', 'space', 'desert', 'water'];
-            const terrainNames = { ground: '地', space: '宇', desert: '砂', water: '水' };
-            
-            const terrainParts = [];
-            terrainTypes.forEach(type => {
-                if (terrain[type]) {
-                    terrainParts.push(`${terrainNames[type]}:<span class="aptitude-${terrain[type].toLowerCase()}">${terrain[type]}</span>`);
-                } else {
-                    terrainParts.push(`${terrainNames[type]}:<span style="color: #666;">-</span>`);
-                }
-            });
-            
-            html += terrainParts.join(' / ');
-            html += '</div>';
-            return html;
+        function createLevelSelector(unitIndex, type, currentLevel) {
+            // Implementation of createLevelSelector function
         }
     </script>
 </body>

@@ -1,0 +1,62 @@
+{
+  "type": "MS",
+  "name": "ウイングガンダムゼロ",
+  "model": "XXXG-00W0 WING GUNDAM ZERO",
+  "cost": 2,
+  "category": "近距離",
+  "pilot": "ヒイロ・ユイ、ゼクス・マーキス",
+  "stats": {
+    "height": "16.7m",
+    "weight": "8.0t",
+    "mobility": 160,
+    "ranged_attack": 90,
+    "melee_attack": 200,
+    "hp": 250
+  },
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "S",
+    "desert": "C",
+    "water": "C"
+  },
+  "weapon": {
+    "main": {
+      "name": "ビームサーベル",
+      "range": 1,
+      "type": "近距離"
+    },
+    "sub": {
+      "name": "ツインバスターライフル",
+      "range": 4,
+      "type": "遠距離"
+    }
+  },
+  "ms_ability": {
+    "name": "強襲",
+    "cost": 4,
+    "description": "一定範囲内のロックオン可能な残りHPの割合が最も高い敵ユニットにターゲットを切り替え、単体攻撃でダメージを与える。"
+  },
+  "special_attack": {
+    "name": "ビームサーベル強襲",
+    "target": "単体（敵）",
+    "range": 2,
+    "power": 3200,
+    "description": "敵単体に格闘攻撃でダメージを与える。対象の敵を中心にその範囲内射撃ダメージを与える。出撃中1度のみ使用可能。"
+  },
+  "link_abilities": [
+    {
+      "name": "ガンダムW",
+      "condition": "デッキに3枚以上",
+      "effect": "[機動力]小アップ"
+    },
+    {
+      "name": "肉薄する戦い",
+      "condition": "デッキに4枚以上",
+      "effect": "[機動力][近距離攻撃力]小アップ"
+    }
+  ],
+  "illust": "Hayaken-sarena",
+  "card_number": "UT02-019",
+  "card_name": "ウイングガンダムゼロ",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/UT02-019_b.jpg?v8"
+}

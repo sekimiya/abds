@@ -1,0 +1,62 @@
+{
+  "type": "MS",
+  "name": "ユニコーンガンダム（ユニコーンモード）",
+  "model": "RX-0 UNICORN GUNDAM",
+  "cost": 5,
+  "category": "機動",
+  "pilot": "バナージ・リンクス",
+  "stats": {
+    "height": "19.7m",
+    "weight": "23.7t",
+    "mobility": 200,
+    "ranged_attack": 120,
+    "melee_attack": 150,
+    "hp": 240
+  },
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "S",
+    "desert": "C",
+    "water": "C"
+  },
+  "weapon": {
+    "main": {
+      "name": "ビーム・サーベル",
+      "range": 1,
+      "type": "近距離"
+    },
+    "sub": {
+      "name": "ビーム・マグナム",
+      "range": 3,
+      "type": "遠距離"
+    }
+  },
+  "ms_ability": {
+    "name": "",
+    "cost": null,
+    "description": ""
+  },
+  "special_attack": {
+    "name": "ビーム・サーベル強撃",
+    "target": "単体（敵）",
+    "range": 2,
+    "power": 3300,
+    "description": "敵単体に格闘攻撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "ガンダムUC",
+      "condition": "デッキに3枚以上",
+      "effect": "[機動力]小アップ"
+    },
+    {
+      "name": "その名はガンダム",
+      "condition": "デッキに3枚以上",
+      "effect": "[機動力]小アップ"
+    }
+  ],
+  "illust": "Ayaragi Hiroshi",
+  "card_number": "AB01-016",
+  "card_name": "ユニコーンガンダム(ユニコーンモード)",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/AB01-016_b.jpg?v8"
+}

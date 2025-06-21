@@ -1,0 +1,62 @@
+{
+  "type": "MS",
+  "name": "ズゴック (SEED FREEDOM Ver.)",
+  "model": "ZGMF-MM07 Z'GOK [SEED FREEDOM Ver.]",
+  "cost": 2,
+  "category": "ターミナル",
+  "pilot": "アスラン・ザラ",
+  "stats": {
+    "height": "—",
+    "weight": "—",
+    "mobility": 150,
+    "ranged_attack": 150,
+    "melee_attack": 50,
+    "hp": 250
+  },
+  "terrain_compatibility": {
+    "ground": "B",
+    "space": "S",
+    "desert": "C",
+    "water": "S"
+  },
+  "weapon": {
+    "main": {
+      "name": "粒子力弾級砲",
+      "range": 3,
+      "type": "遠距離"
+    },
+    "sub": {
+      "name": "対装甲専用爪",
+      "range": 1,
+      "type": "近距離"
+    }
+  },
+  "ms_ability": {
+    "name": "鉄壁",
+    "cost": 1,
+    "description": "自身の受けるダメージを少し軽減する。自身が撤退するまで効果は持続する。"
+  },
+  "special_attack": {
+    "name": "連粒子力弾級砲射",
+    "target": "単体（敵）",
+    "range": 2,
+    "power": 3100,
+    "description": "敵単体に射撃攻撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "SEED FREEDOM",
+      "condition": "デッキに3枚以上",
+      "effect": "[機動力]小アップ"
+    },
+    {
+      "name": "固めた装甲",
+      "condition": "デッキに2枚以上",
+      "effect": "[HP]小アップ"
+    }
+  ],
+  "illust": "Hiroshi Ayaragi",
+  "card_number": "UT01-033",
+  "card_name": "ズゴック(SEED FREEDOM Ver.)",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/UT01-033_b.jpg?v8"
+}

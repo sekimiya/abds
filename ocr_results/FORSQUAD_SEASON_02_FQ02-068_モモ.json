@@ -1,0 +1,39 @@
+{
+  "type": "PL",
+  "name": "モモ",
+  "english_name": "MOMO",
+  "cost": 2,
+  "category": "制圧",
+  "age": 14,
+  "height": "-",
+  "units": [
+    "モモカプル"
+  ],
+  "pl_skill": {
+    "name": "強固な意志",
+    "trigger": "MSアビリティ発動時",
+    "effect": "35秒間、自身の「遠距離攻撃力」を中アップし、受けるダメージを軽減する。"
+  },
+  "link_abilities": [
+    {
+      "name": "ビルドダイバーズ",
+      "condition": "デッキに3枚以上",
+      "effect": "[HP]小アップ"
+    },
+    {
+      "name": "多彩な趣味",
+      "condition": "デッキに4枚以上",
+      "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+    }
+  ],
+  "stats": {
+    "mobility": 170,
+    "ranged_attack": 200,
+    "melee_attack": 90,
+    "hp": 180
+  },
+  "illust": "-",
+  "card_number": "FQ02-068",
+  "card_name": "モモ",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-068_b.jpg?v8"
+}

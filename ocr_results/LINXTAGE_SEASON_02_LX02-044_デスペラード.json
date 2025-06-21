@@ -1,0 +1,57 @@
+{
+  "type": "MS",
+  "name": "デスペラード",
+  "model": "CMS-328 DESPERADO",
+  "cost": 5,
+  "category": "近距離",
+  "pilot": "イワーク・ブライア",
+  "stats": {
+    "height": "-",
+    "weight": "50.3t",
+    "mobility": 160,
+    "ranged_attack": 180,
+    "melee_attack": 250,
+    "hp": 210
+  },
+  "terrain_compatibility": {
+    "ground": "B",
+    "space": "B",
+    "desert": "B",
+    "water": "C"
+  },
+  "weapon": {
+    "main": {
+      "name": "ヒートスコップ",
+      "range": 1,
+      "type": "近距離"
+    },
+    "sub": {
+      "name": "シシマシンガンZ06",
+      "range": 3,
+      "type": "遠距離"
+    }
+  },
+  "ms_ability": {
+    "name": "撃滅",
+    "cost": 4,
+    "description": "任意発動 単体(敵) 射程2 コスト4\nロックオン中の敵に単体攻撃でダメージを与える。この攻撃で敵ユニットを撃破した場合、敵ユニットの修理時間を延長させる。"
+  },
+  "special_attack": {
+    "name": "ヒートスコップ強撃",
+    "target": "単体(敵)",
+    "range": 2,
+    "power": 3300,
+    "description": "敵単体に格闘攻撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "ガンダムAGE",
+      "condition": "デッキに3枚以上",
+      "effect": "[遠距離攻撃力]小アップ"
+    }
+  ],
+  "illust": "kazuyuki hayashi",
+  "card_number": "LX02-044",
+  "card_name": "デスペラード",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/LX02-044_b.jpg?v8"
+}

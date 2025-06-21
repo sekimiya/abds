@@ -1,0 +1,39 @@
+{
+  "type": "PL",
+  "name": "アグネス・ギーベンラート",
+  "english_name": "AGNES GIEBENRATH",
+  "cost": 4,
+  "category": "殲滅",
+  "age": 18,
+  "height": "163cm",
+  "units": [
+    "ギャンバルカロム（アグネス・ギーベンラート専用機）"
+  ],
+  "pl_skill": {
+    "name": "迫り狙う射撃術",
+    "trigger": "敵ユニットをロックオン時",
+    "effect": "SQゲージ小アップ。"
+  },
+  "link_abilities": [
+    {
+      "name": "運命に抗う意志",
+      "condition": "デッキに3枚以上",
+      "effect": "SQゲージが溜まると、SQゲージ満タン時にSQUAD RUSHが発動できる。[遠距離攻撃力][近距離攻撃力]小アップ"
+    },
+    {
+      "name": "多彩な戦法",
+      "condition": "デッキに4枚以上",
+      "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+    }
+  ],
+  "stats": {
+    "mobility": 200,
+    "ranged_attack": 230,
+    "melee_attack": 80,
+    "hp": 240
+  },
+  "illust": "C",
+  "card_number": "FQ01-061",
+  "card_name": "アグネス・ギーベンラート",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ01-061_b.jpg?v8"
+}

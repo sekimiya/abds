@@ -1,0 +1,62 @@
+{
+  "type": "MS",
+  "name": "マスターガンダム＆風雲再起",
+  "model": "GF13-001NHII MASTER GUNDAM & FUUNSAIKI",
+  "cost": 3,
+  "category": "ネオホンコン",
+  "pilot": "マスター・アジア＆風雲再起",
+  "stats": {
+    "height": "16.7m",
+    "weight": "7.2t",
+    "mobility": 200,
+    "ranged_attack": 40,
+    "melee_attack": 350,
+    "hp": 360
+  },
+  "terrain_compatibility": {
+    "ground": "S",
+    "space": "A",
+    "desert": "S",
+    "water": "B"
+  },
+  "weapon": {
+    "main": {
+      "name": "格闘",
+      "range": 1,
+      "type": "近距離"
+    },
+    "sub": {
+      "name": "ダークネスショット",
+      "range": 3,
+      "type": "遠距離"
+    }
+  },
+  "ms_ability": {
+    "name": "強撃",
+    "cost": 1,
+    "description": "ロックオン中の敵に単体攻撃でダメージを与える。"
+  },
+  "special_attack": {
+    "name": "ダークネスフィンガー",
+    "target": "単体（敵）",
+    "range": 1,
+    "power": 3400,
+    "description": "対象の敵を中心とした小範囲に格闘攻撃でダメージを与え、自身に小ダメージ。戦術状況は地形適性に応じて変化する。"
+  },
+  "link_abilities": [
+    {
+      "name": "Gガンダム",
+      "condition": "デッキに3枚以上",
+      "effect": "[近距離攻撃力]小アップ"
+    },
+    {
+      "name": "肉薄する戦い",
+      "condition": "デッキに4枚以上",
+      "effect": "[機動力][近距離攻撃力]小アップ"
+    }
+  ],
+  "illust": "kazumasa yasukun",
+  "card_number": "PR-242",
+  "card_name": "マスターガンダム＆風雲再起",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-242_b.jpg?v8"
+}

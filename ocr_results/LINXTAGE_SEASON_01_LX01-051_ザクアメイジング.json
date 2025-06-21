@@ -1,0 +1,62 @@
+{
+  "type": "MS",
+  "name": "ザクアメイジング",
+  "model": "MS-06R-AB ZAKU AMAZING",
+  "cost": 5,
+  "category": "近距離",
+  "pilot": "ユウキ・タツヤ",
+  "stats": {
+    "height": "18.0m",
+    "weight": "86.8t",
+    "mobility": 200,
+    "ranged_attack": 170,
+    "melee_attack": 230,
+    "hp": 300
+  },
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "S",
+    "desert": "C",
+    "water": "-"
+  },
+  "weapon": {
+    "main": {
+      "name": "ヒートナタ二刀流",
+      "range": 1,
+      "type": "近距離"
+    },
+    "sub": {
+      "name": "ロングライフル",
+      "range": 4,
+      "type": "遠距離"
+    }
+  },
+  "ms_ability": {
+    "name": "集中砲火",
+    "cost": 4,
+    "description": "20秒間、ロックオンしている敵に周囲の味方ターゲットを集め、[遠・近攻撃力]を中アップ。攻撃対象が変わると効果は終了する。"
+  },
+  "special_attack": {
+    "name": "ヒートナタ二刀流強撃",
+    "target": "単体（敵）",
+    "range": 2,
+    "power": 3400,
+    "description": "敵単体に格闘攻撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "ビルドファイターズ",
+      "condition": "デッキに3枚以上",
+      "effect": "[機動力]小アップ"
+    },
+    {
+      "name": "問合いを詰めた接近戦",
+      "condition": "デッキに2枚以上",
+      "effect": "[近距離攻撃力]小アップ"
+    }
+  ],
+  "illust": "Chifuyu Yukishiro",
+  "card_number": "LX01-051",
+  "card_name": "ザクアメイジング",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/LX01-051_b.jpg?v8"
+}

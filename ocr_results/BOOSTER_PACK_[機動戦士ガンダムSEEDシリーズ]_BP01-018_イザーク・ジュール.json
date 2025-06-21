@@ -1,0 +1,40 @@
+{
+  "type": "PL",
+  "name": "イザーク・ジュール",
+  "english_name": "YZAK JULE",
+  "cost": 1,
+  "category": "制圧",
+  "age": 17,
+  "height": "175cm",
+  "units": [
+    "デュエルガンダムアサルトシュラウド",
+    "デュエルガンダム"
+  ],
+  "pl_skill": {
+    "name": "徹底抗戦",
+    "trigger": "味方ユニットが撤退時",
+    "effect": "45秒間、自身の「遠距離攻撃力」「近距離攻撃力」「SP威力」を中アップする。"
+  },
+  "link_abilities": [
+    {
+      "name": "ガンダムSEED",
+      "condition": "デッキに3枚以上",
+      "effect": "機動力小アップ"
+    },
+    {
+      "name": "優れた射撃センス",
+      "condition": "デッキに2枚以上",
+      "effect": "遠距離攻撃力小アップ"
+    }
+  ],
+  "stats": {
+    "mobility": 140,
+    "ranged_attack": 150,
+    "melee_attack": 70,
+    "hp": 150
+  },
+  "illust": "",
+  "card_number": "BP01-018",
+  "card_name": "イザーク・ジュール",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/BP01-018_b.jpg?v8"
+}

@@ -1,0 +1,62 @@
+{
+  "type": "MS",
+  "name": "陸戦型ガンダム（ジム頭）",
+  "model": "RX-79［G］ GUNDAM GROUND TYPE (GM HEAD)",
+  "cost": 3,
+  "category": "近距離",
+  "pilot": "カレン・ジョシュア",
+  "stats": {
+    "height": "18.0m",
+    "weight": "52.8t",
+    "mobility": 120,
+    "ranged_attack": 0,
+    "melee_attack": 190,
+    "hp": 250
+  },
+  "terrain_compatibility": {
+    "ground": "S",
+    "space": "C",
+    "desert": "A",
+    "water": "A"
+  },
+  "weapon": {
+    "main": {
+      "name": "ビーム・サーベル",
+      "range": 1,
+      "type": "近距離"
+    },
+    "sub": {
+      "name": "シールド",
+      "range": 1,
+      "type": "―"
+    }
+  },
+  "ms_ability": {
+    "name": "補給",
+    "cost": 4,
+    "description": "自分を中心とした大範囲の味方ユニットのHPを中回復する。"
+  },
+  "special_attack": {
+    "name": "ビーム・サーベル強襲",
+    "target": "単体（敵）",
+    "range": 2,
+    "power": 3100,
+    "description": "敵単体に格闘攻撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "遠距離攻撃力小アップ",
+      "condition": "第08MS小隊 デッキに3枚以上",
+      "effect": "―"
+    },
+    {
+      "name": "機動力小アップ",
+      "condition": "陸戦特化の戦い デッキに2枚以上",
+      "effect": "―"
+    }
+  ],
+  "illust": "tonamikani",
+  "card_number": "AB02-007",
+  "card_name": "陸戦型ガンダム(ジム頭)",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/AB02-007_b.jpg?v8"
+}

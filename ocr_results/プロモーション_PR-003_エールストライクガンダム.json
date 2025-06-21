@@ -1,0 +1,57 @@
+{
+  "type": "MS",
+  "name": "エールストライクガンダム",
+  "model": "GAT-X105+AQM/E-X01 AILE STRIKE GUNDAM",
+  "cost": 4,
+  "category": "近距離",
+  "pilot": "キラ・ヤマト",
+  "stats": {
+    "height": "17.72m",
+    "weight": "85.1t",
+    "mobility": 160,
+    "ranged_attack": 100,
+    "melee_attack": 280,
+    "hp": 320
+  },
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "S",
+    "desert": "A",
+    "water": "C"
+  },
+  "weapon": {
+    "main": {
+      "name": "ビームサーベル",
+      "range": 1,
+      "type": "近距離攻撃"
+    },
+    "sub": {
+      "name": "高エネルギービームライフル",
+      "range": 3,
+      "type": "遠距離攻撃"
+    }
+  },
+  "ms_ability": {
+    "name": "強化【近接】",
+    "cost": 3,
+    "description": "30秒間、自身の【機動力】【近距離攻撃力】を小アップする。"
+  },
+  "special_attack": {
+    "name": "ビームサーベル強撃",
+    "target": "敵単体",
+    "range": 1,
+    "power": 3700,
+    "description": "敵単体に格闘攻撃で大ダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "その名はガンダム",
+      "condition": "デッキに【その名はガンダム】のカードが3枚以上編成されている時",
+      "effect": "【機動力】を小アップする。"
+    }
+  ],
+  "illust": "KENJI OKADA",
+  "card_number": "PR-003",
+  "card_name": "エールストライクガンダム",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-003_b.jpg?v8"
+}

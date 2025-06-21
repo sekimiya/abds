@@ -1,0 +1,62 @@
+{
+  "type": "MS",
+  "name": "Hi-νガンダム",
+  "model": "RX-93-ν2 Hi-ν GUNDAM",
+  "cost": 8,
+  "category": "地球連邦軍",
+  "pilot": "アムロ・レイ",
+  "stats": {
+    "height": "20.0m",
+    "weight": "27.9t",
+    "mobility": 200,
+    "ranged_attack": 420,
+    "melee_attack": 480,
+    "hp": 500
+  },
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "S",
+    "desert": "-",
+    "water": "C"
+  },
+  "weapon": {
+    "main": {
+      "name": "ビーム・サーベル",
+      "range": 1,
+      "type": "近距離"
+    },
+    "sub": {
+      "name": "ビーム・ライフル",
+      "range": 3,
+      "type": "遠距離"
+    }
+  },
+  "ms_ability": {
+    "name": "オールレンジ【妨撃】",
+    "cost": 3,
+    "description": "30秒間、自身の周囲の敵ユニットに継続的にダメージを与え、[遠距離攻撃力] [近距離攻撃力]を小ダウンする。"
+  },
+  "special_attack": {
+    "name": "ハイパー・メガ・バズーカ・ランチャー【貫通】",
+    "target": "敵",
+    "range": 2,
+    "power": 3100,
+    "description": "射線上の敵に貫通射撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "逆襲のシャア",
+      "condition": "デッキに3枚以上",
+      "effect": "[遠距離攻撃力]小アップ"
+    },
+    {
+      "name": "多彩な戦術",
+      "condition": "デッキに4枚以上",
+      "effect": "[遠距離攻撃力] [近距離攻撃力]小アップ"
+    }
+  ],
+  "illust": "S Keji",
+  "card_number": "UT01-014",
+  "card_name": "Hi-νガンダム",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/UT01-014_b.jpg?v8"
+}

@@ -1,0 +1,62 @@
+{
+  "type": "MS",
+  "name": "赤いガンダム",
+  "model": "Red Gundam(0085)",
+  "cost": 5,
+  "category": "遠距離",
+  "pilot": "シュウジ・イトウ",
+  "stats": {
+    "height": "ー",
+    "weight": "ー",
+    "mobility": 260,
+    "ranged_attack": 370,
+    "melee_attack": 150,
+    "hp": 420
+  },
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "B",
+    "desert": "C",
+    "water": "A"
+  },
+  "weapon": {
+    "main": {
+      "name": "ビット",
+      "range": 4,
+      "type": "遠距離"
+    },
+    "sub": {
+      "name": "ガンダム・ハンマー",
+      "range": 2,
+      "type": "近距離"
+    }
+  },
+  "ms_ability": {
+    "name": "集中砲火",
+    "cost": 4,
+    "description": "20秒間、ロックオンしている敵に周囲の味方ターゲットを集め、[遠・近攻撃力]を中アップ。攻撃対象が変わると効果は終了する。"
+  },
+  "special_attack": {
+    "name": "ビット射撃",
+    "target": "単体（敵）",
+    "range": 2,
+    "power": 3300,
+    "description": "敵単体に射撃攻撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "GQuuuuuxX",
+      "condition": "デッキに3枚以上",
+      "effect": "[HP]小アップ"
+    },
+    {
+      "name": "戦況を変える力",
+      "condition": "デッキに4枚以上",
+      "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+    }
+  ],
+  "illust": "YAMAGUCHI JUN",
+  "card_number": "BP02-006",
+  "card_name": "赤いガンダム(0085)",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/BP02-006_b.jpg?v8"
+}

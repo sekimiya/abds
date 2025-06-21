@@ -1,0 +1,62 @@
+{
+  "type": "MS",
+  "name": "ガンダム・バエル",
+  "model": "ASW-G-01 GUNDAM BAEL",
+  "cost": 6,
+  "category": "近距離",
+  "pilot": "マクギリス・ファリド",
+  "stats": {
+    "height": "18.0m",
+    "weight": "30.0t",
+    "mobility": 300,
+    "ranged_attack": 150,
+    "melee_attack": 550,
+    "hp": 600
+  },
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "S",
+    "desert": "A",
+    "water": "B"
+  },
+  "weapon": {
+    "main": {
+      "name": "バエル・ソード",
+      "range": 1,
+      "type": "近距離"
+    },
+    "sub": {
+      "name": "電磁砲",
+      "range": 3,
+      "type": "遠距離"
+    }
+  },
+  "ms_ability": {
+    "name": "大号令",
+    "cost": 4,
+    "description": "一定時間、ロックオンしている敵に周囲の味方ターゲットを集め、[遠／近攻撃力]をアップ。攻撃対象が変わると効果は終了する。"
+  },
+  "special_attack": {
+    "name": "バエル・ソード連撃",
+    "target": "単体（敵）",
+    "range": 3,
+    "power": 3600,
+    "description": "敵単体に格闘攻撃でダメージを与え、一定時間、出撃中の全味方ユニットの[遠距離攻撃力]と[近距離攻撃力]をアップする。"
+  },
+  "link_abilities": [
+    {
+      "name": "鉄血のオルフェンズ",
+      "condition": "デッキに3枚以上",
+      "effect": "[近距離攻撃力]小アップ"
+    },
+    {
+      "name": "肉薄する戦い",
+      "condition": "デッキに4枚以上",
+      "effect": "[機動力]と[近距離攻撃力]小アップ"
+    }
+  ],
+  "illust": "Eske Yoshinob",
+  "card_number": "UT06-032",
+  "card_name": "ガンダム・バエル",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/UT06-032_b.jpg?v8"
+}

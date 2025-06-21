@@ -1,0 +1,62 @@
+{
+  "type": "MS",
+  "name": "陸戦型ガンダム（ジム頭）",
+  "model": "RX-79[G] GUNDAM GROUND TYPE(GM HEAD)",
+  "cost": 2,
+  "category": "地球連邦軍",
+  "pilot": "カレン・ジョシュワ",
+  "stats": {
+    "height": "18.0m",
+    "weight": "52.8t",
+    "mobility": 110,
+    "ranged_attack": 280,
+    "melee_attack": 100,
+    "hp": 210
+  },
+  "terrain_compatibility": {
+    "ground": "S",
+    "space": "C",
+    "desert": "A",
+    "water": "C"
+  },
+  "weapon": {
+    "main": {
+      "name": "ビーム・ライフル",
+      "range": 3,
+      "type": "遠距離"
+    },
+    "sub": {
+      "name": "ビーム・サーベル",
+      "range": 1,
+      "type": "近距離"
+    }
+  },
+  "ms_ability": {
+    "name": "砲撃",
+    "cost": 4,
+    "description": "射程範囲内の指定した位置に小範囲の砲撃を行い、範囲内の敵にダメージを与える。"
+  },
+  "special_attack": {
+    "name": "ビーム・ライフル狙撃射",
+    "target": "単体（敵）",
+    "range": 3,
+    "power": 3200,
+    "description": "敵単体に射撃攻撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "遠距離攻撃力小アップ",
+      "condition": "第08MS小隊 デッキに3枚以上",
+      "effect": "遠距離攻撃力小アップ"
+    },
+    {
+      "name": "機動力小アップ",
+      "condition": "陸戦特化の戦い デッキに2枚以上",
+      "effect": "機動力小アップ"
+    }
+  ],
+  "illust": "Naohika Morishita",
+  "card_number": "AB02-006",
+  "card_name": "陸戦型ガンダム(ジム頭)",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/AB02-006_b.jpg?v8"
+}

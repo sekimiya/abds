@@ -1,0 +1,62 @@
+{
+  "type": "MS",
+  "name": "ラゴゥ",
+  "model": "TMF/A-803 LaGOWE",
+  "cost": 2,
+  "category": "機動",
+  "pilot": "アンドリュー・バルトフェルド",
+  "stats": {
+    "height": "11.49m (ターレット基部まで)",
+    "weight": "70.18t",
+    "mobility": 350,
+    "ranged_attack": 160,
+    "melee_attack": 200,
+    "hp": 240
+  },
+  "terrain_compatibility": {
+    "ground": "S",
+    "space": "C",
+    "desert": "S",
+    "water": "C"
+  },
+  "weapon": {
+    "main": {
+      "name": "2連装ビームサーベル",
+      "range": 1,
+      "type": "近距離"
+    },
+    "sub": {
+      "name": "2連装ビームキャノン",
+      "range": 2,
+      "type": "遠距離"
+    }
+  },
+  "ms_ability": {
+    "name": "鼓舞【近接】",
+    "cost": 5,
+    "description": "30秒間、自身を中心とした大範囲内の味方ユニットの「機動力」「近距離攻撃力」を小アップする。"
+  },
+  "special_attack": {
+    "name": "2連装ビームサーベル強撃",
+    "target": "単体（敵）",
+    "range": 2,
+    "power": 3300,
+    "description": "敵単体に格闘攻撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "【機動力】小アップ",
+      "condition": "デッキに3枚以上",
+      "effect": "ガンダムSEED"
+    },
+    {
+      "name": "【機動力】小アップ",
+      "condition": "デッキに2枚以上",
+      "effect": "陸戦特化の戦い"
+    }
+  ],
+  "illust": "gombakko",
+  "card_number": "PR-021",
+  "card_name": "ラゴゥ",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-021_b.jpg?v8"
+}

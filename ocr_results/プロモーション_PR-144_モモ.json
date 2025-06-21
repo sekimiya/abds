@@ -1,0 +1,39 @@
+{
+  "type": "PL",
+  "name": "モモ",
+  "english_name": "MOMO",
+  "cost": 3,
+  "category": "ビルドダイバーズ",
+  "age": 14,
+  "height": "—",
+  "units": [
+    "モモカプル"
+  ],
+  "pl_skill": {
+    "name": "不屈の意思",
+    "trigger": "HP50%以下の時",
+    "effect": "自身が受けるダメージを少し軽減する。"
+  },
+  "link_abilities": [
+    {
+      "name": "ビルドダイバーズ",
+      "condition": "デッキに3枚以上",
+      "effect": "[HP]小アップ"
+    },
+    {
+      "name": "優れた格闘センス",
+      "condition": "デッキに2枚以上",
+      "effect": "[近距離攻撃力]小アップ"
+    }
+  ],
+  "stats": {
+    "mobility": 180,
+    "ranged_attack": 100,
+    "melee_attack": 250,
+    "hp": 240
+  },
+  "illust": "Kai Iida + Hiroyuki Nishimura",
+  "card_number": "PR-144",
+  "card_name": "モモ",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-144_b.jpg?v8"
+}

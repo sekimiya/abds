@@ -1,0 +1,39 @@
+{
+  "type": "PL",
+  "name": "パルヴィーズ",
+  "english_name": "PARVIZ",
+  "cost": 2,
+  "category": "防衛",
+  "age": null,
+  "height": null,
+  "units": [
+    "ヴァルキランダー"
+  ],
+  "pl_skill": {
+    "name": "集結する力",
+    "trigger": "味方ユニットと同じ敵をロックオン時",
+    "effect": "30秒間、自身の「遠距離攻撃力」「近距離攻撃力」を中アップする。"
+  },
+  "link_abilities": [
+    {
+      "name": "Re:RISE",
+      "condition": "デッキに3枚以上",
+      "effect": "「遠距離攻撃力」小アップ"
+    },
+    {
+      "name": "巧みな連携術",
+      "condition": "デッキに2枚以上",
+      "effect": "「遠距離攻撃力」小アップ"
+    }
+  ],
+  "stats": {
+    "mobility": 120,
+    "ranged_attack": 250,
+    "melee_attack": 170,
+    "hp": 200
+  },
+  "illust": "Yoshika Sagawa・Hiroyki Nishimura",
+  "card_number": "PR-148",
+  "card_name": "パルヴィーズ",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-148_b.jpg?v8"
+}

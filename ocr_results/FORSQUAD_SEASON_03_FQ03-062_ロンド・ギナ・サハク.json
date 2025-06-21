@@ -1,0 +1,40 @@
+{
+  "type": "PL",
+  "name": "ロンド・ギナ・サハク",
+  "english_name": "Rondo Gina Sahaku",
+  "cost": 3,
+  "category": "制圧",
+  "age": null,
+  "height": null,
+  "units": [
+    "ガンダムアストレイゴールドフレーム天",
+    "ガンダムアストレイゴールドフレーム"
+  ],
+  "pl_skill": {
+    "name": "揺れない思い",
+    "trigger": "HP80%以下の時",
+    "effect": "自身が受けるダメージを軽減する。"
+  },
+  "link_abilities": [
+    {
+      "name": "SEED ASTRAY",
+      "condition": "デッキに2枚以上",
+      "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+    },
+    {
+      "name": "揺るがぬ意志",
+      "condition": "デッキに2枚以上",
+      "effect": "[HP]小アップ"
+    }
+  ],
+  "stats": {
+    "mobility": 190,
+    "ranged_attack": 200,
+    "melee_attack": 60,
+    "hp": 220
+  },
+  "illust": null,
+  "card_number": "FQ03-062",
+  "card_name": "ロンド・ギナ・サハク",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ03-062_b.jpg?v8"
+}

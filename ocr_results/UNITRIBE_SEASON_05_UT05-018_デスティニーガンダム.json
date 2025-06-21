@@ -1,0 +1,62 @@
+{
+  "type": "MS",
+  "name": "デスティニーガンダム",
+  "model": "ZGMF-X42S DESTINY GUNDAM",
+  "cost": 7,
+  "category": "機動",
+  "pilot": "シン・アスカ",
+  "stats": {
+    "height": "18.08m",
+    "weight": "79.44t",
+    "mobility": 300,
+    "ranged_attack": 200,
+    "melee_attack": 600,
+    "hp": 600
+  },
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "S",
+    "desert": "B",
+    "water": "A"
+  },
+  "weapon": {
+    "main": {
+      "name": "アロンダイトビームソード",
+      "range": 1,
+      "type": "近距離"
+    },
+    "sub": {
+      "name": "高エネルギービームライフル",
+      "range": 3,
+      "type": "遠距離"
+    }
+  },
+  "ms_ability": {
+    "name": "解撃",
+    "cost": 3,
+    "description": "自身が弱体化状態の時に発動可能となり、自身の弱体化状態を無効化し、ロックオン中の敵に単体攻撃でダメージを与える。"
+  },
+  "special_attack": {
+    "name": "一斉連撃",
+    "target": "単体（敵）",
+    "range": 2,
+    "power": 3500,
+    "description": "光の翼展開し、敵単体に格闘攻撃でダメージを与える。光の翼展開中、機動力が上昇する。光の翼展開中、敵の射撃攻撃を回避する。"
+  },
+  "link_abilities": [
+    {
+      "name": "SEED DESTINY",
+      "condition": "デッキに3枚以上",
+      "effect": "[HP]小アップ"
+    },
+    {
+      "name": "戦いの運命",
+      "condition": "デッキに2枚以上",
+      "effect": "[機動力][HP]小アップ"
+    }
+  ],
+  "illust": "Eiji Komatsu",
+  "card_number": "UT05-018",
+  "card_name": "デスティニーガンダム",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/UT05-018_b.jpg?v8"
+}

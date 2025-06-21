@@ -1,0 +1,41 @@
+{
+  "type": "PL",
+  "name": "シン・アスカ",
+  "english_name": "SHINN ASUKA",
+  "cost": 1,
+  "category": "殲滅",
+  "age": 16,
+  "height": "168cm",
+  "units": [
+    "デスティニーガンダム",
+    "フォースインパルスガンダム",
+    "ソードインパルスガンダム"
+  ],
+  "pl_skill": {
+    "name": "激化する戦闘意欲",
+    "trigger": "MSアビリティ発動時",
+    "effect": "SQゲージ中アップ。"
+  },
+  "link_abilities": [
+    {
+      "name": "SEEDの系譜",
+      "condition": "デッキに3枚以上",
+      "effect": "SQゲージが表示される。SQゲージ溜めるとSQUAD RUSHが発動できる。[遠距離攻撃力]近距離攻撃力小アップ"
+    },
+    {
+      "name": "戦いの運命",
+      "condition": "デッキに2枚以上",
+      "effect": "[機動力][HP]小アップ"
+    }
+  ],
+  "stats": {
+    "mobility": 170,
+    "ranged_attack": 100,
+    "melee_attack": 220,
+    "hp": 220
+  },
+  "illust": "",
+  "card_number": "BP03-020",
+  "card_name": "シン・アスカ",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/BP03-020_b.jpg?v8"
+}

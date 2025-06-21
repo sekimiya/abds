@@ -1,0 +1,62 @@
+{
+  "type": "MS",
+  "name": "百式",
+  "model": "MSN-00100 HYAKU-SHIKI",
+  "cost": 1,
+  "category": "遠距離",
+  "pilot": "ビーチャ・オーレグ",
+  "stats": {
+    "height": "19.2m",
+    "weight": "31.5t",
+    "mobility": 150,
+    "ranged_attack": 260,
+    "melee_attack": 50,
+    "hp": 290
+  },
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "A",
+    "desert": "C",
+    "water": "B"
+  },
+  "weapon": {
+    "main": {
+      "name": "ビーム・ライフル",
+      "range": 3,
+      "type": "遠距離"
+    },
+    "sub": {
+      "name": "ビーム・サーベル",
+      "range": 1,
+      "type": "近距離"
+    }
+  },
+  "ms_ability": {
+    "name": "補給【弱体化解除】",
+    "cost": 5,
+    "description": "自身を中心とした大範囲の味方ユニットのHPを中回復し、弱体化状態を無効化する。"
+  },
+  "special_attack": {
+    "name": "ビーム・ライフル連射",
+    "target": "単体（敵）",
+    "range": 3,
+    "power": 3200,
+    "description": "敵単体に射撃攻撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "機動戦士ガンダムZZ",
+      "condition": "デッキに3枚以上",
+      "effect": "[HP]小アップ"
+    },
+    {
+      "name": "距離をとった射撃戦",
+      "condition": "デッキに2枚以上",
+      "effect": "[遠距離攻撃力]小アップ"
+    }
+  ],
+  "illust": "PLANETA_Mochizuki",
+  "card_number": "LXR04-004",
+  "card_name": "百式",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/LXR04-004_b.jpg?v8"
+}

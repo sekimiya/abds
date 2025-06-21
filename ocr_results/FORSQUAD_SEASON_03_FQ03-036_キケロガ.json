@@ -1,0 +1,62 @@
+{
+  "type": "MS",
+  "name": "キケロガ",
+  "model": "GQUuuuX",
+  "cost": 9,
+  "category": "ジオン公国軍",
+  "pilot": "―",
+  "stats": {
+    "height": "―",
+    "weight": "―",
+    "mobility": 240,
+    "ranged_attack": 760,
+    "melee_attack": 0,
+    "hp": 760
+  },
+  "terrain_compatibility": {
+    "ground": "B",
+    "space": "S",
+    "desert": "B",
+    "water": "B"
+  },
+  "weapon": {
+    "main": {
+      "name": "メガ粒子砲",
+      "range": 4,
+      "type": "遠距離"
+    },
+    "sub": {
+      "name": "―",
+      "range": 0,
+      "type": "―"
+    }
+  },
+  "ms_ability": {
+    "name": "絞射",
+    "cost": 3,
+    "description": "ロックオン中の敵ユニットに単体攻撃を行いダメージを与え、一定時間スタンさせる。"
+  },
+  "special_attack": {
+    "name": "メガ粒子砲絞射",
+    "target": "範囲（敵）",
+    "range": 4,
+    "power": 3700,
+    "description": "MS形態に変形し、自身を中心に半円状の範囲攻撃でダメージを与える。変形後は能力が上昇。自身が撤退するまで効果は持続する。"
+  },
+  "link_abilities": [
+    {
+      "name": "GQUuuuX",
+      "condition": "デッキに3枚以上",
+      "effect": "[HP]小アップ"
+    },
+    {
+      "name": "戦況を変える力",
+      "condition": "デッキに4枚以上",
+      "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+    }
+  ],
+  "illust": "Kumagoro",
+  "card_number": "FQ03-036",
+  "card_name": "キケロガ",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ03-036_b.jpg?v8"
+}

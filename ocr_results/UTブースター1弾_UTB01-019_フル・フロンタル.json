@@ -1,0 +1,39 @@
+{
+  "type": "PL",
+  "name": "フル・フロンタル",
+  "english_name": "Full Frontal",
+  "cost": 4,
+  "category": "殲滅",
+  "age": null,
+  "height": "—",
+  "units": [
+    "シナンジュ"
+  ],
+  "pl_skill": {
+    "name": "慎重な遠距離戦",
+    "trigger": "敵ユニットをロックオン時",
+    "effect": "20秒間、自身の「遠距離攻撃力」を小アップする。"
+  },
+  "link_abilities": [
+    {
+      "name": "機動力小アップ",
+      "condition": "デッキに3枚以上",
+      "effect": "ガンダムUC"
+    },
+    {
+      "name": "遠距離攻撃力小アップ [近距離攻撃力小アップ]",
+      "condition": "デッキに4枚以上",
+      "effect": "多彩な戦術"
+    }
+  ],
+  "stats": {
+    "mobility": 180,
+    "ranged_attack": 300,
+    "melee_attack": 80,
+    "hp": 240
+  },
+  "illust": "—",
+  "card_number": "UTB01-019",
+  "card_name": "フル・フロンタル",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/UTB01-019_b.jpg?v8"
+}

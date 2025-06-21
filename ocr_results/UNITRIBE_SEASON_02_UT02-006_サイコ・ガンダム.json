@@ -1,0 +1,62 @@
+{
+  "type": "MS",
+  "name": "サイコ・ガンダム",
+  "model": "MRX-009 PSYCHO GUNDAM",
+  "cost": 13,
+  "category": "ティターンズ",
+  "pilot": "フォウ・ムラサメ",
+  "stats": {
+    "height": "40.0m",
+    "weight": "214.1t",
+    "mobility": 240,
+    "ranged_attack": 999,
+    "melee_attack": 0,
+    "hp": 999
+  },
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "A",
+    "desert": "A",
+    "water": "B"
+  },
+  "weapon": {
+    "main": {
+      "name": "3連装拡散メガ粒子砲",
+      "range": 2,
+      "type": "遠距離"
+    },
+    "sub": {
+      "name": "",
+      "range": 0,
+      "type": ""
+    }
+  },
+  "ms_ability": {
+    "name": "巨壁",
+    "cost": 1,
+    "description": "自身の受けるダメージをかなり軽減し、[怯み無効]となる。効果は解除できず、自身が撤退するまで持続する。"
+  },
+  "special_attack": {
+    "name": "一斉射・改（変形）",
+    "target": "敵",
+    "range": 3,
+    "power": 4500,
+    "description": "MS形態に変形。範囲内の敵にダメージを与える。能力が上昇。一定時間受けるダメージをさらに軽減。効果は解除できず、自身が撤退するまで持続。"
+  },
+  "link_abilities": [
+    {
+      "name": "機動戦士ガンダム",
+      "condition": "デッキに3枚以上",
+      "effect": "[遠距離攻撃力]小アップ"
+    },
+    {
+      "name": "黒き脅威",
+      "condition": "デッキに2枚以上",
+      "effect": "[HP]小アップ"
+    }
+  ],
+  "illust": "PLANETA Tsuji",
+  "card_number": "UT02-006",
+  "card_name": "サイコ・ガンダム",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/UT02-006_b.jpg?v8"
+}

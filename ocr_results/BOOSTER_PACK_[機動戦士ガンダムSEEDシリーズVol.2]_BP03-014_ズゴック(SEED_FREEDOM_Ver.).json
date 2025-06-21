@@ -1,0 +1,62 @@
+{
+  "type": "MS",
+  "name": "ズゴック (SEED FREEDOM Ver.)",
+  "model": "ZGMF-MM07 Z'GOK (SEED FREEDOM Ver.)",
+  "cost": 5,
+  "category": "ターミナル",
+  "pilot": "アスラン・ザラ",
+  "stats": {
+    "height": "—",
+    "weight": "—",
+    "mobility": 230,
+    "ranged_attack": 80,
+    "melee_attack": 540,
+    "hp": 600
+  },
+  "terrain_compatibility": {
+    "ground": "B",
+    "space": "S",
+    "desert": "C",
+    "water": "S"
+  },
+  "weapon": {
+    "main": {
+      "name": "対艦用斬撃爪",
+      "range": 1,
+      "type": "近距離"
+    },
+    "sub": {
+      "name": "粒子カノン砲",
+      "range": 3,
+      "type": "遠距離"
+    }
+  },
+  "ms_ability": {
+    "name": "陣略【妨害／機動】",
+    "cost": 4,
+    "description": "任意発動 範囲（敵） 射程1 コスト4\n一定時間、範囲内に入った敵ユニットの「機動力」をダウンするエリアを設置する。※上限3箇所まで。"
+  },
+  "special_attack": {
+    "name": "対艦用斬撃爪強襲",
+    "target": "単体（敵）",
+    "range": 1,
+    "power": 3600,
+    "description": "敵単体に格闘攻撃でダメージを与え、一時的にスタンさせる。"
+  },
+  "link_abilities": [
+    {
+      "name": "SEED FREEDOM",
+      "condition": "デッキに3枚以上",
+      "effect": "[機動力]小アップ"
+    },
+    {
+      "name": "爆発する怒軍",
+      "condition": "デッキに2枚以上",
+      "effect": "[近距離攻撃力][HP]小アップ"
+    }
+  ],
+  "illust": "yujiuchii",
+  "card_number": "BP03-014",
+  "card_name": "ズゴック(SEED FREEDOM Ver.)",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/BP03-014_b.jpg?v8"
+}

@@ -1,0 +1,62 @@
+{
+  "type": "MS",
+  "name": "ライジングフリーダムガンダム",
+  "model": "STTS-909 RISING FREEDOM GUNDAM",
+  "cost": 4,
+  "category": "機動",
+  "pilot": "キラ・ヤマト",
+  "stats": {
+    "height": "17.80m",
+    "weight": "67.90t",
+    "mobility": 280,
+    "ranged_attack": 480,
+    "melee_attack": 70,
+    "hp": 370
+  },
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "S",
+    "desert": "A",
+    "water": "C"
+  },
+  "weapon": {
+    "main": {
+      "name": "高エネルギービームライフル",
+      "range": 3,
+      "type": "遠距離"
+    },
+    "sub": {
+      "name": "ヴェルンナービームサーベル",
+      "range": 1,
+      "type": "近距離"
+    }
+  },
+  "ms_ability": {
+    "name": "増援【防衛】",
+    "cost": 4,
+    "description": "自身の周囲に防衛タイプの味方ユニットを呼び出す。※上限3ユニットまで。"
+  },
+  "special_attack": {
+    "name": "ハイマットフルバースト",
+    "target": "敵",
+    "range": 4,
+    "power": 2900,
+    "description": "ロックオン中の敵を中心に扇状の範囲攻撃を行い、範囲内の敵にダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "SEED FREEDOM",
+      "condition": "デッキに3枚以上",
+      "effect": "【機動力】小アップ"
+    },
+    {
+      "name": "機動で制する射撃戦",
+      "condition": "デッキに機動力2枚以上",
+      "effect": "【遠距離攻撃力】中アップ"
+    }
+  ],
+  "illust": "kenko",
+  "card_number": "PR-260",
+  "card_name": "ライジングフリーダムガンダム",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-260_b.jpg?v8"
+}

@@ -1,0 +1,62 @@
+{
+  "type": "MS",
+  "name": "ヴィクトリーガンダム",
+  "model": "LM312V04 VICTORY GUNDAM",
+  "cost": 3,
+  "category": "リガ・ミリティア",
+  "pilot": "ウッソ・エヴィン",
+  "stats": {
+    "height": "15.2m",
+    "weight": "7.6t",
+    "mobility": 300,
+    "ranged_attack": 340,
+    "melee_attack": 50,
+    "hp": 360
+  },
+  "terrain_compatibility": {
+    "ground": "S",
+    "space": "A",
+    "desert": "B",
+    "water": "C"
+  },
+  "weapon": {
+    "main": {
+      "name": "ビーム・ライフル",
+      "range": 3,
+      "type": "遠距離"
+    },
+    "sub": {
+      "name": "ビーム・サーベル",
+      "range": 1,
+      "type": "近距離"
+    }
+  },
+  "ms_ability": {
+    "name": "増援【殲滅／破甲】",
+    "cost": 5,
+    "description": "自身の周囲に殲滅タイプの味方ユニットを呼び出す。このユニットの攻撃は一定時間、被ダメージを一定値アップさせる。※上限3ユニットまで。"
+  },
+  "special_attack": {
+    "name": "ボトムアタック",
+    "target": "単体（敵）",
+    "range": 2,
+    "power": 3400,
+    "description": "敵単体に突撃攻撃でダメージを与え、一定時間スタンさせる。"
+  },
+  "link_abilities": [
+    {
+      "name": "機動戦士Vガンダム",
+      "condition": "デッキに2枚以上",
+      "effect": "[機動力]小アップ"
+    },
+    {
+      "name": "的確な一撃",
+      "condition": "デッキに4枚以上",
+      "effect": "[機動力] [遠距離攻撃力]小アップ"
+    }
+  ],
+  "illust": "robomitsuya",
+  "card_number": "UTB03-005",
+  "card_name": "ヴィクトリーガンダム",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/UTB03-005_b.jpg?v8"
+}

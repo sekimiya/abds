@@ -1,0 +1,39 @@
+{
+  "type": "PL",
+  "name": "ディアッカ・エルスマン",
+  "english_name": "Dearka Elthman",
+  "cost": 2,
+  "category": "制圧",
+  "age": 17,
+  "height": "176cm",
+  "units": [
+    "バスターガンダム"
+  ],
+  "pl_skill": {
+    "name": "精密な照準",
+    "trigger": "MSアビリティ発動時",
+    "effect": "30秒間、自身の「遠距離攻撃力」を中アップする。"
+  },
+  "link_abilities": [
+    {
+      "name": "機動力小アップ",
+      "condition": "デッキに3枚以上",
+      "effect": "ガンダムSEED"
+    },
+    {
+      "name": "遠距離攻撃力・近距離攻撃力小アップ",
+      "condition": "デッキに4枚以上",
+      "effect": "優れた洞察力"
+    }
+  ],
+  "stats": {
+    "mobility": 130,
+    "ranged_attack": 220,
+    "melee_attack": 80,
+    "hp": 150
+  },
+  "illust": "C",
+  "card_number": "ST03-009",
+  "card_name": "ディアッカ・エルスマン",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/ST03-009_b.jpg?v8"
+}

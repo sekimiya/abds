@@ -1,0 +1,41 @@
+{
+  "type": "PL",
+  "name": "アムロ・レイ",
+  "english_name": "AMURO RAY",
+  "cost": 2,
+  "category": "防衛",
+  "age": 29,
+  "height": "-",
+  "units": [
+    "RX-93ff νガンダム",
+    "Hi-νガンダム",
+    "νガンダム"
+  ],
+  "pl_skill": {
+    "name": "強まる弾幕",
+    "trigger": "出撃後一定時間経過毎",
+    "effect": "40秒経過毎に自身の遠距離攻撃力を小アップする。最大3回まで発動。"
+  },
+  "link_abilities": [
+    {
+      "name": "逆襲のシャア (SIDE-F)",
+      "condition": "デッキに2枚以上",
+      "effect": "[HP]小アップ"
+    },
+    {
+      "name": "的確な一撃",
+      "condition": "デッキに4枚以上",
+      "effect": "[機動力][遠距離攻撃力]小アップ"
+    }
+  ],
+  "stats": {
+    "mobility": 220,
+    "ranged_attack": 150,
+    "melee_attack": 40,
+    "hp": 180
+  },
+  "illust": "THE LIFE-SIZED ν GUNDAM STATUE",
+  "card_number": "UT06-046",
+  "card_name": "アムロ・レイ",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/UT06-046_b.jpg?v8"
+}

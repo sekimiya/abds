@@ -1,0 +1,62 @@
+{
+  "type": "MS",
+  "name": "フリーダムガンダム",
+  "model": "ZGMF-X10A FREEDOM GUNDAM",
+  "cost": 4,
+  "category": "機動",
+  "pilot": "キラ・ヤマト",
+  "stats": {
+    "height": "18.03m",
+    "weight": "71.5t",
+    "mobility": 240,
+    "ranged_attack": 90,
+    "melee_attack": 250,
+    "hp": 320
+  },
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "S",
+    "desert": "A",
+    "water": "C"
+  },
+  "weapon": {
+    "main": {
+      "name": "ラケルタ・ビームサーベル",
+      "range": 1,
+      "type": "近距離"
+    },
+    "sub": {
+      "name": "ルプス・ビームライフル",
+      "range": 3,
+      "type": "遠距離"
+    }
+  },
+  "ms_ability": {
+    "name": "誘導",
+    "cost": 4,
+    "description": "25秒間、自身をロックオン距離内に捉えている敵ユニットのターゲットを自身に集める。"
+  },
+  "special_attack": {
+    "name": "ラケルタ・ビームサーベル連続",
+    "target": "単体（敵）",
+    "range": 2,
+    "power": 3300,
+    "description": "敵単体に格闘攻撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "ガンダムSEED",
+      "condition": "デッキに3枚以上",
+      "effect": "[機動力]小アップ"
+    },
+    {
+      "name": "高速機動の接近戦",
+      "condition": "デッキに機動力2枚以上",
+      "effect": "[近距離攻撃力]中アップ"
+    }
+  ],
+  "illust": "JYUZURU (willow_works)",
+  "card_number": "FQ02-018",
+  "card_name": "フリーダムガンダム",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-018_b.jpg?v8"
+}

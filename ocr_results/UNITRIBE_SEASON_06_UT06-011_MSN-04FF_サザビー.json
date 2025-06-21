@@ -1,0 +1,62 @@
+{
+  "type": "MS",
+  "name": "MSN-04FF サザビー",
+  "model": "MSN-04FF SAZABI",
+  "cost": 6,
+  "category": "近距離",
+  "pilot": "シャア・アズナブル",
+  "stats": {
+    "height": "頭頂高",
+    "weight": "本体重量",
+    "mobility": 260,
+    "ranged_attack": 200,
+    "melee_attack": 620,
+    "hp": 520
+  },
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "S",
+    "desert": "C",
+    "water": "C"
+  },
+  "weapon": {
+    "main": {
+      "name": "ダブル・ホーン・ファンネル（サーベルモード）",
+      "range": 2,
+      "type": "近距離"
+    },
+    "sub": {
+      "name": "ダブル・ホーン・ファンネル",
+      "range": 4,
+      "type": "遠距離"
+    }
+  },
+  "ms_ability": {
+    "name": "烈撃",
+    "cost": 4,
+    "description": "任意発動\nロックオン中の敵ユニットに単体攻撃を行い、残りHPを半分にする。"
+  },
+  "special_attack": {
+    "name": "ダブル・ホーン・ファンネル（サーベルモード連携）",
+    "target": "単体（敵）",
+    "range": 3,
+    "power": 3600,
+    "description": "敵単体に格闘攻撃でダメージを与え、一定時間スタンさせる。"
+  },
+  "link_abilities": [
+    {
+      "name": "逆襲のシャア（SIDE-F）",
+      "condition": "デッキに2枚以上",
+      "effect": "[HP]小アップ"
+    },
+    {
+      "name": "BEYOND THE TIME",
+      "condition": "デッキに2枚以上",
+      "effect": "[機動力][HP]小アップ"
+    }
+  ],
+  "illust": "haru",
+  "card_number": "UT06-011",
+  "card_name": "MSN-04FF サザビー",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/UT06-011_b.jpg?v8"
+}

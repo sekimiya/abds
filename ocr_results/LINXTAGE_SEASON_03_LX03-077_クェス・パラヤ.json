@@ -1,0 +1,39 @@
+{
+  "type": "PL",
+  "name": "クェス・パラヤ",
+  "english_name": "QUESS PARAYA",
+  "cost": 2,
+  "category": "制圧",
+  "age": 13,
+  "height": "-",
+  "units": [
+    "ヤクト・ドーガ（クェス・パラヤ専用機）"
+  ],
+  "pl_skill": {
+    "name": "乱れる心",
+    "trigger": "HP50%以下の時",
+    "effect": "35秒間、自身の【遠距離攻撃力】を中アップ、【近距離攻撃力】を小ダウンする。"
+  },
+  "link_abilities": [
+    {
+      "name": "逆襲のシャア",
+      "condition": "デッキに3枚以上",
+      "effect": "【遠距離攻撃力】小アップ"
+    },
+    {
+      "name": "数奇な運命",
+      "condition": "デッキに2枚以上",
+      "effect": "【機動力】小アップ"
+    }
+  ],
+  "stats": {
+    "mobility": 140,
+    "ranged_attack": 170,
+    "melee_attack": 60,
+    "hp": 140
+  },
+  "illust": "ー",
+  "card_number": "LX03-077",
+  "card_name": "クェス・パラヤ",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/LX03-077_b.jpg?v8"
+}

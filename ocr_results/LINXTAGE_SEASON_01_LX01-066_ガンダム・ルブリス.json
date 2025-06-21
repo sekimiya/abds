@@ -1,0 +1,62 @@
+{
+  "type": "MS",
+  "name": "ガンダム・ルブリス",
+  "model": "XGF-02 GUNDAM LFRITH",
+  "cost": 6,
+  "category": "オックス・アース・コーポレーション",
+  "pilot": "エルノラ・サマヤ",
+  "stats": {
+    "height": "18.0m",
+    "weight": "49.3t",
+    "mobility": 170,
+    "ranged_attack": 330,
+    "melee_attack": 290,
+    "hp": 310
+  },
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "A",
+    "desert": "C",
+    "water": "-"
+  },
+  "weapon": {
+    "main": {
+      "name": "レシーバーガン",
+      "range": 3,
+      "type": "遠距離"
+    },
+    "sub": {
+      "name": "ビームブレイド",
+      "range": 1,
+      "type": "近距離"
+    }
+  },
+  "ms_ability": {
+    "name": "鼓舞【遠隔】",
+    "cost": 5,
+    "description": "30秒間、自身を中心とした大範囲内の味方ユニットの「機動力」「遠距離攻撃力」を中アップする。"
+  },
+  "special_attack": {
+    "name": "レシーバーガン射撃",
+    "target": "単体（敵）",
+    "range": 3,
+    "power": 3300,
+    "description": "敵単体に射撃攻撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "水星の魔女",
+      "condition": "デッキに3枚以上",
+      "effect": "[機動力]小アップ"
+    },
+    {
+      "name": "その名はガンダム",
+      "condition": "デッキに3枚以上",
+      "effect": "[機動力]小アップ"
+    }
+  ],
+  "illust": "kazumasa yasukuni",
+  "card_number": "LX01-066",
+  "card_name": "ガンダム・ルブリス",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/LX01-066_b.jpg?v8"
+}

@@ -1,0 +1,62 @@
+{
+  "type": "MS",
+  "name": "ゲルググメナース（ルナマリア・ホーク専用機）",
+  "model": "ZGMF-2025F GELGOOG MENACE (LUNAMARIA HAWKE CUSTOM)",
+  "cost": 4,
+  "category": "近距離",
+  "pilot": "ルナマリア・ホーク",
+  "stats": {
+    "height": "19.50m",
+    "weight": "73.5t",
+    "mobility": 200,
+    "ranged_attack": 50,
+    "melee_attack": 400,
+    "hp": 350
+  },
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "A",
+    "desert": "A",
+    "water": "C"
+  },
+  "weapon": {
+    "main": {
+      "name": "マグナクラティウス 特斬機",
+      "range": 1,
+      "type": "近距離"
+    },
+    "sub": {
+      "name": "強化ビームライフル",
+      "range": 2,
+      "type": "射程"
+    }
+  },
+  "ms_ability": {
+    "name": "特攻",
+    "cost": 1,
+    "description": "自分の「遠／近攻撃力」をアップし【怯み無効】となるが、【回避／ガード不可】【修理時間延長】となる。効果は撤退するまで持続。"
+  },
+  "special_attack": {
+    "name": "マグナクラティウス 特斬機連撃",
+    "target": "単体（敵）",
+    "range": 2,
+    "power": 3400,
+    "description": "敵単体に格闘攻撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "SEED FREEDOM",
+      "condition": "デッキに3枚以上",
+      "effect": "【機動力】小アップ"
+    },
+    {
+      "name": "追撃の近距離機",
+      "condition": "デッキに近距離2枚以上",
+      "effect": "【近距離攻撃力】中アップ"
+    }
+  ],
+  "illust": "kenko",
+  "card_number": "PR-192",
+  "card_name": "ゲルググメナース(ルナマリア・ホーク専用機)",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-192_b.jpg?v8"
+}

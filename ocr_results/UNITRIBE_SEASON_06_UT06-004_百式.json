@@ -1,0 +1,62 @@
+{
+  "type": "MS",
+  "name": "百式",
+  "model": "MSN-00100 HYAKU-SHIKI",
+  "cost": 6,
+  "category": "遠距離",
+  "pilot": "クワトロ・バジーナ",
+  "stats": {
+    "height": "19.2m",
+    "weight": "31.5t",
+    "mobility": 220,
+    "ranged_attack": 500,
+    "melee_attack": 60,
+    "hp": 570
+  },
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "A",
+    "desert": "A",
+    "water": "B"
+  },
+  "weapon": {
+    "main": {
+      "name": "ビーム・ライフル",
+      "range": 3,
+      "type": "遠距離"
+    },
+    "sub": {
+      "name": "ビーム・サーベル",
+      "range": 1,
+      "type": "近距離"
+    }
+  },
+  "ms_ability": {
+    "name": "増援【殲滅／破甲】",
+    "cost": 5,
+    "description": "自身の周囲に殲滅タイプの味方ユニットを呼び出す。このユニットの攻撃は一定時間、被ダメージを一定値アップさせる。※上限3ユニットまで。"
+  },
+  "special_attack": {
+    "name": "メガ・バズーカ・ランチャー貫通射撃",
+    "target": "敵",
+    "range": 4,
+    "power": 3000,
+    "description": "射線上の敵に貫通射撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "遠距離攻撃力小アップ",
+      "condition": "機動戦士ガンダムデッキに3枚以上",
+      "effect": "遠距離攻撃力小アップ"
+    },
+    {
+      "name": "遠距離攻撃力【近距離攻撃力】小アップ",
+      "condition": "多彩な戦術デッキに4枚以上",
+      "effect": "遠距離攻撃力【近距離攻撃力】小アップ"
+    }
+  ],
+  "illust": "deraken",
+  "card_number": "UT06-004",
+  "card_name": "百式",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/UT06-004_b.jpg?v8"
+}

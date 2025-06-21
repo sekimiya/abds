@@ -1,0 +1,57 @@
+{
+  "type": "MS",
+  "name": "エールストライクガンダム",
+  "model": "GAT-X105+AQM/E-X01 AILE STRIKE GUNDAM",
+  "cost": 5,
+  "category": "地球連合軍",
+  "pilot": "キラ・ヤマト",
+  "stats": {
+    "height": "17.72m",
+    "weight": "85.1t",
+    "mobility": 130,
+    "ranged_attack": 380,
+    "melee_attack": 140,
+    "hp": 250
+  },
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "B",
+    "desert": "C",
+    "water": "C"
+  },
+  "weapon": {
+    "main": {
+      "name": "高エネルギービームライフル",
+      "range": 3,
+      "type": "遠距離"
+    },
+    "sub": {
+      "name": "ビームサーベル",
+      "range": 1,
+      "type": "近距離"
+    }
+  },
+  "ms_ability": {
+    "name": "強化[遠距離]",
+    "cost": 3,
+    "description": "30秒間、自身の[遠距離攻撃力]を小アップする。"
+  },
+  "special_attack": {
+    "name": "高エネルギービームライフル撃射",
+    "target": "単体",
+    "range": 3,
+    "power": 3400,
+    "description": "敵単体に射撃攻撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "ガンダムSEED",
+      "condition": "デッキに3枚以上",
+      "effect": "[機動力]小アップ"
+    }
+  ],
+  "illust": "toriyufu",
+  "card_number": "ST01-001",
+  "card_name": "エールストライクガンダム",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/ST01-001_b.jpg?v8"
+}

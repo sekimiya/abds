@@ -1,0 +1,39 @@
+{
+  "type": "PL",
+  "name": "バナージ・リンクス",
+  "english_name": "BANAGHER LINKS",
+  "cost": 2,
+  "category": "防衛",
+  "age": 16,
+  "height": "-",
+  "units": [
+    "ユニコーンガンダム"
+  ],
+  "pl_skill": {
+    "name": "解放される闘志",
+    "trigger": "出撃後一定時間経過毎",
+    "effect": "40秒経過毎に自身の「遠距離攻撃力」「近距離攻撃力」を小アップする。最大3回まで発動。"
+  },
+  "link_abilities": [
+    {
+      "name": "ガンダムUC",
+      "condition": "デッキに3枚以上",
+      "effect": "機動力小アップ"
+    },
+    {
+      "name": "多彩な戦術",
+      "condition": "デッキに4枚以上",
+      "effect": "「遠距離攻撃力」「近距離攻撃力」小アップ"
+    }
+  ],
+  "stats": {
+    "mobility": 120,
+    "ranged_attack": 150,
+    "melee_attack": 100,
+    "hp": 140
+  },
+  "illust": "-",
+  "card_number": "LX03-079",
+  "card_name": "バナージ・リンクス",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/LX03-079_b.jpg?v8"
+}

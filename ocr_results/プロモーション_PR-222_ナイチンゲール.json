@@ -1,0 +1,62 @@
+{
+  "type": "MS",
+  "name": "ナイチンゲール",
+  "model": "MSN-04II NIGHTINGALE",
+  "cost": 2,
+  "category": "遠距離",
+  "pilot": "シャア・アズナブル",
+  "stats": {
+    "height": "27.8m",
+    "weight": "48.2t",
+    "mobility": 220,
+    "ranged_attack": 200,
+    "melee_attack": 90,
+    "hp": 340
+  },
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "S",
+    "desert": "C",
+    "water": "C"
+  },
+  "weapon": {
+    "main": {
+      "name": "大型メガ・ビーム・ライフル",
+      "range": 4,
+      "type": "遠距離"
+    },
+    "sub": {
+      "name": "ビーム・トマホーク",
+      "range": 1,
+      "type": "近距離"
+    }
+  },
+  "ms_ability": {
+    "name": "デコイ【ユニット】",
+    "cost": 2,
+    "description": "自身の周囲にユニット扱いでロックオンされるデコイを3体配置する。※上限6体まで。効果の対象やユニット数には含まれない。"
+  },
+  "special_attack": {
+    "name": "ファンネル射",
+    "target": "範囲（敵）",
+    "range": 4,
+    "power": 2700,
+    "description": "ロックオン中の敵を中心に扇状の範囲攻撃を行い、範囲内の敵にダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "逆襲のシャア",
+      "condition": "デッキに3枚以上",
+      "effect": "【遠距離攻撃力】【近距離攻撃力】小アップ"
+    },
+    {
+      "name": "多彩な戦術",
+      "condition": "デッキに4枚以上",
+      "effect": "【遠距離攻撃力】小アップ"
+    }
+  ],
+  "illust": "Tomotake Kinoshita",
+  "card_number": "PR-222",
+  "card_name": "ナイチンゲール",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-222_b.jpg?v8"
+}

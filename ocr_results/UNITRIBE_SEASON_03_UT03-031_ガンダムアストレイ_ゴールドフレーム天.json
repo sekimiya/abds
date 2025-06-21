@@ -1,0 +1,62 @@
+{
+  "type": "MS",
+  "name": "ガンダムアストレイゴールドフレーム天",
+  "model": "MBF-P01-Re GUNDAM ASTRAY GOLD FRAME AMATSU",
+  "cost": 3,
+  "category": "オーブ",
+  "pilot": "ロンド・ギナ・サハク",
+  "stats": {
+    "height": "17.99m",
+    "weight": "73.2t",
+    "mobility": 200,
+    "ranged_attack": 170,
+    "melee_attack": 80,
+    "hp": 250
+  },
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "S",
+    "desert": "B",
+    "water": "B"
+  },
+  "weapon": {
+    "main": {
+      "name": "トリケロス改(ビームライフル)",
+      "range": 3,
+      "type": "遠距離"
+    },
+    "sub": {
+      "name": "トリケロス改(ビームサーベル)",
+      "range": 1,
+      "type": "近距離"
+    }
+  },
+  "ms_ability": {
+    "name": "隠密",
+    "cost": 1,
+    "description": "20秒間、敵側の表示から消えてロックオンされなくなる。効果時間が切れるか、何らかの攻撃が当たると効果が解除される。"
+  },
+  "special_attack": {
+    "name": "トリケロス改(ビームライフル撃ち)",
+    "target": "単体(敵)",
+    "range": 3,
+    "power": 3200,
+    "description": "敵単体に射撃攻撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "SEED ASTRAY",
+      "condition": "デッキに2枚以上",
+      "effect": "[近距離攻撃力]小アップ"
+    },
+    {
+      "name": "多彩な機術",
+      "condition": "デッキに4枚以上",
+      "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+    }
+  ],
+  "illust": "シキノハヤシ",
+  "card_number": "UT03-031",
+  "card_name": "ガンダムアストレイ ゴールドフレーム天",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/UT03-031_b.jpg?v8"
+}

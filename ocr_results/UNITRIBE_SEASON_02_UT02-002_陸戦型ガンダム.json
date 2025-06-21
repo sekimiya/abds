@@ -1,0 +1,62 @@
+{
+  "type": "MS",
+  "name": "陸戦型ガンダム",
+  "model": "RX-79[G] GUNDAM GROUND TYPE",
+  "cost": 3,
+  "category": "近距離",
+  "pilot": "シロー・アマダ、カルシュウ・デリーサザンス",
+  "stats": {
+    "height": "18.0m",
+    "weight": "52.8t",
+    "mobility": 170,
+    "ranged_attack": 80,
+    "melee_attack": 270,
+    "hp": 280
+  },
+  "terrain_compatibility": {
+    "ground": "S",
+    "space": "C",
+    "desert": "A",
+    "water": "B"
+  },
+  "weapon": {
+    "main": {
+      "name": "ビーム・サーベル",
+      "range": 1,
+      "type": "近距離"
+    },
+    "sub": {
+      "name": "100mmマシンガン",
+      "range": 3,
+      "type": "遠距離"
+    }
+  },
+  "ms_ability": {
+    "name": "集中砲火",
+    "cost": 4,
+    "description": "20秒間、ロックオンしている敵に周囲の味方ターゲットを集め、[遠・近攻撃力]を中アップ。攻撃対象が変わると効果は終了する。"
+  },
+  "special_attack": {
+    "name": "ビーム・サーベル強撃",
+    "target": "単体（敵）",
+    "range": 2,
+    "power": 3300,
+    "description": "単体に格闘攻撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "第08MS小隊",
+      "condition": "デッキに3枚以上",
+      "effect": "[遠距離攻撃力]小アップ"
+    },
+    {
+      "name": "間合いを詰めた接近戦",
+      "condition": "デッキに2枚以上",
+      "effect": "[近距離攻撃力]小アップ"
+    }
+  ],
+  "illust": "Kouki Tajima",
+  "card_number": "UT02-002",
+  "card_name": "陸戦型ガンダム",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/UT02-002_b.jpg?v8"
+}

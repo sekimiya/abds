@@ -1,0 +1,62 @@
+{
+  "type": "MS",
+  "name": "ナイチンゲール",
+  "model": "MSN-04II NIGHTINGALE",
+  "cost": 4,
+  "category": "新生ネオ・ジオン",
+  "pilot": "シャア・アズナブル",
+  "stats": {
+    "height": "27.8m",
+    "weight": "48.2t",
+    "mobility": 260,
+    "ranged_attack": 320,
+    "melee_attack": 110,
+    "hp": 360
+  },
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "S",
+    "desert": "C",
+    "water": "C"
+  },
+  "weapon": {
+    "main": {
+      "name": "大型メガ・ビーム・ライフル",
+      "range": 4,
+      "type": "遠距離"
+    },
+    "sub": {
+      "name": "ビーム・トマホーク",
+      "range": 1,
+      "type": "近距離"
+    }
+  },
+  "ms_ability": {
+    "name": "精密射撃",
+    "cost": 3,
+    "description": "ロックオン中の敵に単体攻撃でダメージを与える。"
+  },
+  "special_attack": {
+    "name": "大型メガ・ビーム・ライフル撃射",
+    "target": "単体（敵）",
+    "range": 4,
+    "power": 3200,
+    "description": "敵単体に射撃攻撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "逆襲のシャア",
+      "condition": "デッキに3枚以上",
+      "effect": "[遠距離攻撃力]小アップ"
+    },
+    {
+      "name": "多彩な戦術",
+      "condition": "デッキに4枚以上",
+      "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+    }
+  ],
+  "illust": "鶴谷サツヲ",
+  "card_number": "PR-153",
+  "card_name": "ナイチンゲール",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-153_b.jpg?v8"
+}

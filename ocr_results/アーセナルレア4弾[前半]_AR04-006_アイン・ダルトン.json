@@ -1,0 +1,40 @@
+{
+  "type": "PL",
+  "name": "アイン・ダルトン",
+  "english_name": "EIN DALTON",
+  "cost": 2,
+  "category": "殲滅",
+  "age": null,
+  "height": null,
+  "units": [
+    "グレイズ",
+    "シュヴァルベ・グレイズ（アイン・ダルトン専用）"
+  ],
+  "pl_skill": {
+    "name": "愚直な正義感",
+    "trigger": "味方ユニットが撤退時",
+    "effect": "40秒間、自身の[SP威力]を中アップする。"
+  },
+  "link_abilities": [
+    {
+      "name": "鉄血のオルフェンズ",
+      "condition": "デッキに3枚以上",
+      "effect": "[近距離攻撃力]小アップ"
+    },
+    {
+      "name": "揺るがぬ意志",
+      "condition": "デッキに2枚以上",
+      "effect": "[HP]小アップ"
+    }
+  ],
+  "stats": {
+    "mobility": 230,
+    "ranged_attack": 200,
+    "melee_attack": 120,
+    "hp": 190
+  },
+  "illust": "Kayo Ikeda",
+  "card_number": "AR04-006",
+  "card_name": "アイン・ダルトン",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/AR04-006_b.jpg?v8"
+}

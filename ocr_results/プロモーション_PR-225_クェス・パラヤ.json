@@ -1,0 +1,39 @@
+{
+  "type": "PL",
+  "name": "クェス・パラヤ",
+  "english_name": "QUESS PARAYA",
+  "cost": 1,
+  "category": "防衛",
+  "age": 13,
+  "height": "-",
+  "units": [
+    "ヤクト・ドーガ（クェス・パラヤ専用機）"
+  ],
+  "pl_skill": {
+    "name": "強まる弾幕",
+    "trigger": "出撃後一定時間経過毎",
+    "effect": "40秒経過毎に自身の「遠距離攻撃力」を小アップする。最大3回まで発動。"
+  },
+  "link_abilities": [
+    {
+      "name": "逆襲のシャア",
+      "condition": "デッキに3枚以上",
+      "effect": "「遠距離攻撃力」小アップ"
+    },
+    {
+      "name": "優れた射撃センス",
+      "condition": "デッキに2枚以上",
+      "effect": "「遠距離攻撃力」小アップ"
+    }
+  ],
+  "stats": {
+    "mobility": 150,
+    "ranged_attack": 190,
+    "melee_attack": 150,
+    "hp": 220
+  },
+  "illust": "©創通・サンライズ",
+  "card_number": "PR-225",
+  "card_name": "クェス・パラヤ",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-225_b.jpg?v8"
+}

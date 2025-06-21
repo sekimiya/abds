@@ -1,0 +1,62 @@
+{
+  "type": "MS",
+  "name": "ガンダムスローネツヴァイ",
+  "model": "GNW-002 GUNDAM THRONE ZWEI",
+  "cost": 2,
+  "category": "遠距離",
+  "pilot": "アリー・アル・サーシェス/ミハエル・トリニティ",
+  "stats": {
+    "height": "18.6m",
+    "weight": "67.1t",
+    "mobility": 170,
+    "ranged_attack": 190,
+    "melee_attack": 140,
+    "hp": 200
+  },
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "A",
+    "desert": "C",
+    "water": "C"
+  },
+  "weapon": {
+    "main": {
+      "name": "GNハンドガン",
+      "range": 3,
+      "type": "遠距離"
+    },
+    "sub": {
+      "name": "GNバスターソード",
+      "range": 1,
+      "type": "近距離"
+    }
+  },
+  "ms_ability": {
+    "name": "補給[弱体化解除]",
+    "cost": 5,
+    "description": "自身を中心とした大範囲の味方ユニットのHPを中回復し、弱体化状態を無効化にする。"
+  },
+  "special_attack": {
+    "name": "GNハンドガン撃射",
+    "target": "単体（敵）",
+    "range": 2,
+    "power": 3100,
+    "description": "単体に射撃攻撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "ガンダム00",
+      "condition": "デッキに3枚以上",
+      "effect": "[機動力]小アップ"
+    },
+    {
+      "name": "的確な一撃",
+      "condition": "デッキに4枚以上",
+      "effect": "[機動力][遠距離攻撃力]小アップ"
+    }
+  ],
+  "illust": "PaintedMIKE",
+  "card_number": "UTB05-012",
+  "card_name": "ガンダムスローネツヴァイ",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/UTB05-012_b.jpg?v8"
+}

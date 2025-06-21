@@ -1,0 +1,39 @@
+{
+  "type": "PL",
+  "name": "ノルバ・シノ",
+  "english_name": "NORBA SHINO",
+  "cost": 3,
+  "category": "鉄華団",
+  "age": null,
+  "height": null,
+  "units": [
+    "ガンダム・フラウロス"
+  ],
+  "pl_skill": {
+    "name": "澄みない戦闘思考",
+    "trigger": "敵ユニットをロックオン時",
+    "effect": "SQゲージ小アップ。"
+  },
+  "link_abilities": [
+    {
+      "name": "彼等の居場所",
+      "condition": "デッキに3枚以上",
+      "effect": "SQゲージが溜まると、SQゲージを消費してSQUAD RUSHが発動できる。[遠距離攻撃力][近距離攻撃力]小アップ"
+    },
+    {
+      "name": "肉薄する",
+      "condition": "デッキに4枚以上",
+      "effect": "[機動力][近距離攻撃力]小アップ"
+    }
+  ],
+  "stats": {
+    "mobility": 180,
+    "ranged_attack": 80,
+    "melee_attack": 250,
+    "hp": 210
+  },
+  "illust": "R",
+  "card_number": "FQ02-067",
+  "card_name": "ノルバ・シノ",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-067_b.jpg?v8"
+}

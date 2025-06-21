@@ -1,0 +1,39 @@
+{
+  "type": "PL",
+  "name": "ユリン・ルシェル",
+  "english_name": "YURIN LUCIEL",
+  "cost": 2,
+  "category": "制圧",
+  "age": 15,
+  "height": "-",
+  "units": [
+    "ファルシア"
+  ],
+  "pl_skill": {
+    "name": "決死の覚悟",
+    "trigger": "HP50%以下の時",
+    "effect": "40秒間、自身の[SP威力]を中アップする。"
+  },
+  "link_abilities": [
+    {
+      "name": "ガンダムAGE",
+      "condition": "デッキに3枚以上",
+      "effect": "[遠距離攻撃力]小アップ"
+    },
+    {
+      "name": "的確な一撃",
+      "condition": "デッキに4枚以上",
+      "effect": "[機動力][遠距離攻撃力]小アップ"
+    }
+  ],
+  "stats": {
+    "mobility": 150,
+    "ranged_attack": 200,
+    "melee_attack": 70,
+    "hp": 170
+  },
+  "illust": "-",
+  "card_number": "UTB01-027",
+  "card_name": "ユリン・ルシェル",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/UTB01-027_b.jpg?v8"
+}

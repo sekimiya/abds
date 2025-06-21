@@ -1,0 +1,62 @@
+{
+  "type": "MS",
+  "name": "デスティニーガンダム（ハイネ・ヴェステンフルス専用機）",
+  "model": "ZGMF-X42S-REVOLUTION HEINE'S DESTINY GUNDAM",
+  "cost": 4,
+  "category": "遠距離",
+  "pilot": "ハイネ・ヴェステンフルス",
+  "stats": {
+    "height": "18.08m",
+    "weight": "79.44t",
+    "mobility": 250,
+    "ranged_attack": 330,
+    "melee_attack": 130,
+    "hp": 300
+  },
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "S",
+    "desert": "B",
+    "water": "A"
+  },
+  "weapon": {
+    "main": {
+      "name": "高エネルギービームライフル",
+      "range": 3,
+      "type": "遠距離"
+    },
+    "sub": {
+      "name": "アロンダイトビームソード",
+      "range": 1,
+      "type": "近距離"
+    }
+  },
+  "ms_ability": {
+    "name": "転化【支援】",
+    "cost": 4,
+    "description": "一定時間、自身を中心とした範囲内の味方ユニットを強化する。使用回数に応じて、強化効果が変わる。[1回:遠/近攻撃力アップ][2回:遠/近攻撃力アップ][3回以上:遠/近攻撃力アップ&回復]"
+  },
+  "special_attack": {
+    "name": "高エネルギー長射程ビーム砲撃",
+    "target": "単体（敵）",
+    "range": 2,
+    "power": 3200,
+    "description": "敵単体に射撃攻撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "SEED DESTINY",
+      "condition": "デッキに3枚以上",
+      "effect": "[HP]小アップ"
+    },
+    {
+      "name": "多彩な戦術",
+      "condition": "デッキに4枚以上",
+      "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+    }
+  ],
+  "illust": "BIRU YAMAGUCHI",
+  "card_number": "FQ01-016",
+  "card_name": "デスティニーガンダム(ハイネ・ヴェステンフルス専用機)",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ01-016_b.jpg?v8"
+}

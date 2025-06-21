@@ -1,0 +1,62 @@
+{
+  "type": "MS",
+  "name": "ZZガンダム",
+  "model": "MSZ-010 ZZ GUNDAM",
+  "cost": 4,
+  "category": "遠距離",
+  "pilot": "ジュドー・アーシタ",
+  "stats": {
+    "height": "19.86m",
+    "weight": "32.7t",
+    "mobility": 270,
+    "ranged_attack": 350,
+    "melee_attack": 110,
+    "hp": 320
+  },
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "S",
+    "desert": "B",
+    "water": "B"
+  },
+  "weapon": {
+    "main": {
+      "name": "ダブル・ビーム・ライフル",
+      "range": 3,
+      "type": "遠距離"
+    },
+    "sub": {
+      "name": "ハイパー・ビーム・サーベル",
+      "range": 1,
+      "type": "近距離"
+    }
+  },
+  "ms_ability": {
+    "name": "全弾発射",
+    "cost": 5,
+    "description": "任意発動 範囲(敵) 射程3 コスト5\nロックオン中の敵を中心に扇状の範囲攻撃を行い、範囲内の敵にダメージを与え、以後通常攻撃がサブの武装のみになる。"
+  },
+  "special_attack": {
+    "name": "ダブル・ビーム・ライフル連射",
+    "target": "単体(敵)",
+    "range": 3,
+    "power": 3300,
+    "description": "敵単体に射撃攻撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "[HP]小アップ",
+      "condition": "機動戦士ガンダムZZ デッキに3枚以上",
+      "effect": ""
+    },
+    {
+      "name": "[遠距離攻撃力][近距離攻撃力]小アップ",
+      "condition": "戦況を変える力 デッキに4枚以上",
+      "effect": ""
+    }
+  ],
+  "illust": "Tatsumi Takuan",
+  "card_number": "PR-069",
+  "card_name": "ZZガンダム",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-069_b.jpg?v8"
+}

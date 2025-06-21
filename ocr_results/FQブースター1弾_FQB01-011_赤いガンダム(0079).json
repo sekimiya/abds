@@ -1,0 +1,62 @@
+{
+  "type": "MS",
+  "name": "赤いガンダム(0079)",
+  "model": "Red Gundam(0079)",
+  "cost": 6,
+  "category": "ジオン公国軍",
+  "pilot": "ー",
+  "stats": {
+    "height": "ー",
+    "weight": "ー",
+    "mobility": 250,
+    "ranged_attack": 570,
+    "melee_attack": 230,
+    "hp": 500
+  },
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "S",
+    "desert": "C",
+    "water": "A"
+  },
+  "weapon": {
+    "main": {
+      "name": "ビット",
+      "range": 4,
+      "type": "遠距離"
+    },
+    "sub": {
+      "name": "ビーム・サーベル",
+      "range": 1,
+      "type": "近距離"
+    }
+  },
+  "ms_ability": {
+    "name": "烈撃",
+    "cost": 4,
+    "description": "任意発動\nロックオン中の敵ユニットに単体攻撃を行い、残りHPを半分にする。"
+  },
+  "special_attack": {
+    "name": "ビット撃射",
+    "target": "単体(敵)",
+    "range": 4,
+    "power": 3400,
+    "description": "敵単体に射撃攻撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "GQuuuuux",
+      "condition": "デッキに3枚以上",
+      "effect": "[HP]小アップ"
+    },
+    {
+      "name": "戦況を変える力",
+      "condition": "デッキに4枚以上",
+      "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+    }
+  ],
+  "illust": "Gas1",
+  "card_number": "FQB01-011",
+  "card_name": "赤いガンダム(0079)",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/FQB01-011_b.jpg?v8"
+}

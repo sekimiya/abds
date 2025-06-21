@@ -1,0 +1,39 @@
+{
+  "type": "PL",
+  "name": "ルナマリア・ホーク",
+  "english_name": "LUNAMARIA HAWKE",
+  "cost": 2,
+  "category": "制圧",
+  "age": 17,
+  "height": "164cm",
+  "units": [
+    "ガナーザクウォーリア（ルナマリア・ホーク専用機）"
+  ],
+  "pl_skill": {
+    "name": "決定的な一撃",
+    "trigger": "敵戦艦／拠点をロックオン時",
+    "effect": "敵戦艦／拠点へのダメージを中アップする。"
+  },
+  "link_abilities": [
+    {
+      "name": "SEED DESTINY",
+      "condition": "デッキに3枚以上",
+      "effect": "[HP]小アップ"
+    },
+    {
+      "name": "優れた射撃センス",
+      "condition": "デッキに2枚以上",
+      "effect": "[遠距離攻撃力]小アップ"
+    }
+  ],
+  "stats": {
+    "mobility": 180,
+    "ranged_attack": 290,
+    "melee_attack": 50,
+    "hp": 220
+  },
+  "illust": "Yoichi Fukano",
+  "card_number": "PR-182",
+  "card_name": "ルナマリア・ホーク",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-182_b.jpg?v8"
+}

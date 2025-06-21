@@ -1,0 +1,62 @@
+{
+  "type": "MS",
+  "name": "デスティニーガンダム",
+  "model": "ZGMF-X42S DESTINY GUNDAM",
+  "cost": 6,
+  "category": "遠距離",
+  "pilot": "シン・アスカ",
+  "stats": {
+    "height": "18.08m",
+    "weight": "79.44t",
+    "mobility": 320,
+    "ranged_attack": 530,
+    "melee_attack": 200,
+    "hp": 500
+  },
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "B",
+    "desert": "B",
+    "water": "A"
+  },
+  "weapon": {
+    "main": {
+      "name": "高エネルギービームライフル",
+      "range": 3,
+      "type": "遠距離"
+    },
+    "sub": {
+      "name": "アロンダイトビームソード",
+      "range": 1,
+      "type": "近距離"
+    }
+  },
+  "ms_ability": {
+    "name": "双甲",
+    "cost": 4,
+    "description": "任意発動 特殊(自分) 射程1 コスト4\n指定した味方ユニットの範囲内に移動後、一定時間連携状態となり、自身と連携中の味方が受けるダメージを軽減する。"
+  },
+  "special_attack": {
+    "name": "高エネルギー長射程ビーム砲撃",
+    "target": "単体(敵)",
+    "range": 4,
+    "power": 3400,
+    "description": "単体に射撃攻撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "SEED DESTINY",
+      "condition": "デッキに3枚以上",
+      "effect": "[HP]小アップ"
+    },
+    {
+      "name": "遠距離攻撃力",
+      "condition": "デッキに遠距離2枚以上",
+      "effect": "[遠距離攻撃力]中アップ"
+    }
+  ],
+  "illust": "Moyasi",
+  "card_number": "PR-258",
+  "card_name": "デスティニーガンダム",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-258_b.jpg?v8"
+}

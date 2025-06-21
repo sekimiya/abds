@@ -1,0 +1,62 @@
+{
+  "type": "MS",
+  "name": "ゲルググメナス（ルナマリア・ホーク専用機）",
+  "model": "ZGMF-2025/P GELGOOG MENACE (LUNAMARIA HAWKE CUSTOM)",
+  "cost": 2,
+  "category": "コンパス",
+  "pilot": "ルナマリア・ホーク",
+  "stats": {
+    "height": "19.50m",
+    "weight": "73.51t",
+    "mobility": 150,
+    "ranged_attack": 200,
+    "melee_attack": 100,
+    "hp": 200
+  },
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "C",
+    "desert": "A",
+    "water": "A"
+  },
+  "weapon": {
+    "main": {
+      "name": "強化ビームライフル",
+      "range": 4,
+      "type": "遠距離"
+    },
+    "sub": {
+      "name": "マダラスティカ特製剣",
+      "range": 1,
+      "type": "近距離"
+    }
+  },
+  "ms_ability": {
+    "name": "補給【弱体化解除】",
+    "cost": 5,
+    "description": "自分を中心とした大範囲の味方ユニットのHPを中回復し、弱体化状態を無効化する。"
+  },
+  "special_attack": {
+    "name": "強化ビームライフル撃射",
+    "target": "単体（敵）",
+    "range": 4,
+    "power": 3000,
+    "description": "敵単体に射撃攻撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "SEED FREEDOM",
+      "condition": "デッキに3枚以上",
+      "effect": "【機動力】小アップ"
+    },
+    {
+      "name": "多彩な戦術",
+      "condition": "デッキに4枚以上",
+      "effect": "【遠距離攻撃力】【近距離攻撃力】小アップ"
+    }
+  ],
+  "illust": "kazumasa yasukun",
+  "card_number": "BP01-012",
+  "card_name": "ゲルググメナース(ルナマリア・ホーク専用機)",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/BP01-012_b.jpg?v8"
+}

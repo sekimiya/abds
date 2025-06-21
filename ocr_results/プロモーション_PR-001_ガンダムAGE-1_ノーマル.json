@@ -1,0 +1,57 @@
+{
+  "type": "MS",
+  "name": "GUNDAM AGE-1 NORMAL",
+  "model": "AGE-1",
+  "cost": 3,
+  "category": "遠距離",
+  "pilot": "フリット・アスノ",
+  "stats": {
+    "height": "18.0m",
+    "weight": "43.4t",
+    "mobility": 160,
+    "ranged_attack": 300,
+    "melee_attack": 130,
+    "hp": 200
+  },
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "A",
+    "desert": "A",
+    "water": "C"
+  },
+  "weapon": {
+    "main": {
+      "name": "ドッズライフル",
+      "range": 3,
+      "type": "中距離射撃"
+    },
+    "sub": {
+      "name": "ビームサーベル",
+      "range": 1,
+      "type": "近接格闘"
+    }
+  },
+  "ms_ability": {
+    "name": "連続射撃",
+    "cost": 3,
+    "description": "任意発動。ロックオン中の敵ユニットに単体攻撃を行いダメージを与える。"
+  },
+  "special_attack": {
+    "name": "ドッズライフル撃射",
+    "target": "単体",
+    "range": 3,
+    "power": 3000,
+    "description": "敵単体に射撃攻撃で大ダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "その名はガンダム",
+      "condition": "",
+      "effect": ""
+    }
+  ],
+  "illust": "Naohicka Morishita",
+  "card_number": "PR-001",
+  "card_name": "ガンダムAGE-1 ノーマル",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-001_b.jpg?v8"
+}

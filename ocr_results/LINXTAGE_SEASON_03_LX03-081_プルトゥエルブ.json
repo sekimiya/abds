@@ -1,0 +1,39 @@
+{
+  "type": "PL",
+  "name": "プルトゥエルブ",
+  "english_name": "PLE TWELVE",
+  "cost": 4,
+  "category": "地球連邦軍",
+  "age": 18,
+  "height": "-",
+  "units": [
+    "バンシィ"
+  ],
+  "pl_skill": {
+    "name": "乱れる心",
+    "trigger": "HP50%以下の時",
+    "effect": "35秒間、自身の[遠距離攻撃力]を中アップ、[近距離攻撃力]を小ダウンする。"
+  },
+  "link_abilities": [
+    {
+      "name": "ガンダムUC",
+      "condition": "デッキに3枚以上",
+      "effect": "[機動力]小アップ"
+    },
+    {
+      "name": "圧倒する殲滅力",
+      "condition": "デッキに殲滅系が3枚以上",
+      "effect": "殲滅タイプに対してダメージ中アップ"
+    }
+  ],
+  "stats": {
+    "mobility": 180,
+    "ranged_attack": 200,
+    "melee_attack": 80,
+    "hp": 190
+  },
+  "illust": "R",
+  "card_number": "LX03-081",
+  "card_name": "プルトゥエルブ",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/LX03-081_b.jpg?v8"
+}

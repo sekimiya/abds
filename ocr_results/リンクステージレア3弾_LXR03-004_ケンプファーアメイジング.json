@@ -1,0 +1,62 @@
+{
+  "type": "MS",
+  "name": "ケンプファーアメイジング",
+  "model": "PPMS-18E KÄMPFER AMAZING",
+  "cost": 7,
+  "category": "機動",
+  "pilot": "メイジン・カワグチ",
+  "stats": {
+    "height": "17.7m",
+    "weight": "47.8t",
+    "mobility": 270,
+    "ranged_attack": 580,
+    "melee_attack": 200,
+    "hp": 550
+  },
+  "terrain_compatibility": {
+    "ground": "B",
+    "space": "A",
+    "desert": "B",
+    "water": "A"
+  },
+  "weapon": {
+    "main": {
+      "name": "アメイジングライフル",
+      "range": 3,
+      "type": "遠距離"
+    },
+    "sub": {
+      "name": "ビームサーベル",
+      "range": 1,
+      "type": "近距離"
+    }
+  },
+  "ms_ability": {
+    "name": "奮起",
+    "cost": null,
+    "description": "自身のHPが1以上で一定割合以下になると、一定時間、撃破されなくなり「遠近攻撃力」を中アップする。出撃時1度のみ発動。"
+  },
+  "special_attack": {
+    "name": "アメイジングロングレンジライフル撃射",
+    "target": "単体",
+    "range": 4,
+    "power": 3600,
+    "description": "敵単体に射撃攻撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "ビルドファイターズ",
+      "condition": "デッキに3枚以上",
+      "effect": "[機動力]小アップ"
+    },
+    {
+      "name": "多彩な戦術",
+      "condition": "デッキに4枚以上",
+      "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+    }
+  ],
+  "illust": "PLANETA_Yamashita",
+  "card_number": "LXR03-004",
+  "card_name": "ケンプファーアメイジング",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/LXR03-004_b.jpg?v8"
+}

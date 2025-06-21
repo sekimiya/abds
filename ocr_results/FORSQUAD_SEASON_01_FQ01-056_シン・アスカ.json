@@ -1,0 +1,39 @@
+{
+  "type": "PL",
+  "name": "シン・アスカ",
+  "english_name": "SHINN ASUKA",
+  "cost": 2,
+  "category": "制圧",
+  "age": 17,
+  "height": "169cm",
+  "units": [
+    "イモータルジャスティスガンダム"
+  ],
+  "pl_skill": {
+    "name": "激化する戦闘意欲",
+    "trigger": "MSアビリティ発動時",
+    "effect": "SQゲージ中アップ。"
+  },
+  "link_abilities": [
+    {
+      "name": "運命に抗う意志",
+      "condition": "デッキに3枚以上",
+      "effect": "SQゲージが溜まったら、SQゲージ消費後にSQUAD RUSHが発動できる。"
+    },
+    {
+      "name": "多彩な戦術",
+      "condition": "デッキに4枚以上",
+      "effect": "[遠距離攻撃力][近距離攻撃力]アップ"
+    }
+  ],
+  "stats": {
+    "mobility": 210,
+    "ranged_attack": 40,
+    "melee_attack": 190,
+    "hp": 350
+  },
+  "illust": "不明",
+  "card_number": "FQ01-056",
+  "card_name": "シン・アスカ",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ01-056_b.jpg?v8"
+}

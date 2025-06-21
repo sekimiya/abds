@@ -1,0 +1,62 @@
+{
+  "type": "MS",
+  "name": "サイコ・ガンダム（モビルスーツ形態）",
+  "model": "MRX-009 PSYCHO GUNDAM",
+  "cost": 6,
+  "category": "ティターンズ",
+  "pilot": "フォウ・ムラサメ",
+  "stats": {
+    "height": "40.0m",
+    "weight": "214.1t",
+    "mobility": 310,
+    "ranged_attack": 290,
+    "melee_attack": 250,
+    "hp": 250
+  },
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "A",
+    "desert": "C",
+    "water": "-"
+  },
+  "weapon": {
+    "main": {
+      "name": "ビーム砲",
+      "range": 3,
+      "type": "遠距離"
+    },
+    "sub": {
+      "name": "格闘",
+      "range": 1,
+      "type": "近距離"
+    }
+  },
+  "ms_ability": {
+    "name": "",
+    "cost": 0,
+    "description": ""
+  },
+  "special_attack": {
+    "name": "ビーム砲撃射",
+    "target": "単体（敵）",
+    "range": 3,
+    "power": 3100,
+    "description": "敵単体に射撃攻撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "遠距離攻撃力小アップ",
+      "condition": "デッキに3枚以上",
+      "effect": ""
+    },
+    {
+      "name": "機動力小アップ",
+      "condition": "デッキに2枚以上",
+      "effect": ""
+    }
+  ],
+  "illust": "Hayaken sarena",
+  "card_number": "AB04-021",
+  "card_name": "サイコ・ガンダム(モビルスーツ形態)",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/AB04-021_b.jpg?v8"
+}

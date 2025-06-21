@@ -1,0 +1,62 @@
+{
+  "type": "MS",
+  "name": "シェンロンガンダム",
+  "model": "XXXG-01S SHENLONG GUNDAM",
+  "cost": 5,
+  "category": "遠距離",
+  "pilot": "張 五飛",
+  "stats": {
+    "height": "16.4m",
+    "weight": "7.4t",
+    "mobility": 160,
+    "ranged_attack": 240,
+    "melee_attack": 150,
+    "hp": 250
+  },
+  "terrain_compatibility": {
+    "ground": "B",
+    "space": "S",
+    "desert": "C",
+    "water": ""
+  },
+  "weapon": {
+    "main": {
+      "name": "ドラゴンハングファイヤー",
+      "range": 3,
+      "type": "遠距離"
+    },
+    "sub": {
+      "name": "ビームグレイブ",
+      "range": 1,
+      "type": "近距離"
+    }
+  },
+  "ms_ability": {
+    "name": "強化[防御]",
+    "cost": 3,
+    "description": "30秒間、自身が受けるダメージを少し軽減する。"
+  },
+  "special_attack": {
+    "name": "ドラゴンハングファイヤー一斉射",
+    "target": "単体(敵)",
+    "range": 3,
+    "power": 3200,
+    "description": "敵単体に射撃攻撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "ガンダムW",
+      "condition": "デッキに3枚以上",
+      "effect": "[機動力]小アップ"
+    },
+    {
+      "name": "その名はガンダム",
+      "condition": "デッキに3枚以上",
+      "effect": "[機動力]小アップ"
+    }
+  ],
+  "illust": "sakusaku sakurai",
+  "card_number": "AB03-043",
+  "card_name": "シェンロンガンダム",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/AB03-043_b.jpg?v8"
+}

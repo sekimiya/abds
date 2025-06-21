@@ -1,0 +1,62 @@
+{
+  "type": "MS",
+  "name": "ギラ・ズール（アンジェロ・ザウパー専用機）",
+  "model": "AMS-129 GEARA ZULU (ANGELO SAUPER USE)",
+  "cost": 2,
+  "category": "遠距離",
+  "pilot": "アンジェロ・ザウパー",
+  "stats": {
+    "height": "20.0m",
+    "weight": "27.3t",
+    "mobility": 130,
+    "ranged_attack": 270,
+    "melee_attack": 240,
+    "hp": 310
+  },
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "A",
+    "desert": "C",
+    "water": ""
+  },
+  "weapon": {
+    "main": {
+      "name": "ランチャー・ブルパップ砲・改",
+      "range": 4,
+      "type": "遠距離"
+    },
+    "sub": {
+      "name": "ビーム・ホーク",
+      "range": 4,
+      "type": "近距離"
+    }
+  },
+  "ms_ability": {
+    "name": "鼓舞【遠距離】",
+    "cost": 4,
+    "description": "30秒間、自身を中心とした大範囲内の味方ユニットの【遠距離攻撃力】を小アップする。"
+  },
+  "special_attack": {
+    "name": "ビーム・ショット・ライフル 斉面射撃",
+    "target": "貫通（敵）",
+    "range": 4,
+    "power": 3400,
+    "description": "射線上の敵に貫通射撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "ガンダムUC",
+      "condition": "デッキに3枚以上",
+      "effect": "【機動力】小アップ"
+    },
+    {
+      "name": "距離をとった射撃戦",
+      "condition": "デッキに2枚以上",
+      "effect": "【遠距離攻撃力】小アップ"
+    }
+  ],
+  "illust": "KENT",
+  "card_number": "AR03-008",
+  "card_name": "ギラ・ズール(アンジェロ・ザウパー専用機)",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/AR03-008_b.jpg?v8"
+}

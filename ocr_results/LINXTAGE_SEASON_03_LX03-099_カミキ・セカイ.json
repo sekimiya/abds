@@ -1,0 +1,39 @@
+{
+  "type": "PL",
+  "name": "カミキ・セカイ",
+  "english_name": "SEKAI KAMIKI",
+  "cost": 3,
+  "category": "防衛",
+  "age": 14,
+  "height": "―",
+  "units": [
+    "ビルドバーニングガンダム"
+  ],
+  "pl_skill": {
+    "name": "強引な襲撃",
+    "trigger": "MSアビリティ発動時",
+    "effect": "30秒間、ロックオン中の敵ユニットの「機動力」をダウンし、被ダメージを少し上昇させる。"
+  },
+  "link_abilities": [
+    {
+      "name": "トライ",
+      "condition": "デッキに3枚以上",
+      "effect": "[HP]小アップ"
+    },
+    {
+      "name": "徹底した防衛陣",
+      "condition": "デッキに防衛が2枚以上",
+      "effect": "[防衛拠点の攻撃力]中アップ"
+    }
+  ],
+  "stats": {
+    "mobility": 140,
+    "ranged_attack": 190,
+    "melee_attack": 100,
+    "hp": 140
+  },
+  "illust": "―",
+  "card_number": "LX03-099",
+  "card_name": "カミキ・セカイ",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/LX03-099_b.jpg?v8"
+}

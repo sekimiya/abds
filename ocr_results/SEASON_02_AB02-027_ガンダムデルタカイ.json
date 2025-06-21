@@ -1,0 +1,62 @@
+{
+  "type": "MS",
+  "name": "ガンダムデルタカイ",
+  "model": "MSN-001X GUNDAM DELTA KAI",
+  "cost": 5,
+  "category": "地球連邦軍",
+  "pilot": "ブレイア・リュード",
+  "stats": {
+    "height": "19.6m",
+    "weight": "28.0t",
+    "mobility": 260,
+    "ranged_attack": 120,
+    "melee_attack": 180,
+    "hp": 180
+  },
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "A",
+    "desert": "A",
+    "water": "C"
+  },
+  "weapon": {
+    "main": {
+      "name": "ビーム・サーベル",
+      "range": 1,
+      "type": "近距離"
+    },
+    "sub": {
+      "name": "ロング・メガ・バスター",
+      "range": 3,
+      "type": "遠距離"
+    }
+  },
+  "ms_ability": {
+    "name": "強化[近距離]",
+    "cost": 3,
+    "description": "30秒間、自身の[近距離攻撃力]を小アップする。"
+  },
+  "special_attack": {
+    "name": "ビーム・サーベル強撃",
+    "target": "単体",
+    "range": 2,
+    "power": 3300,
+    "description": "敵単体に格闘攻撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "アクロス・ザ・スカイ",
+      "condition": "デッキに2枚以上",
+      "effect": "[機動力]小アップ"
+    },
+    {
+      "name": "可変機ファイター",
+      "condition": "デッキに3枚以上",
+      "effect": "専用作戦カードが使用可能"
+    }
+  ],
+  "illust": "kazumasa yasukuni",
+  "card_number": "AB02-027",
+  "card_name": "ガンダムデルタカイ",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/AB02-027_b.jpg?v8"
+}

@@ -1,0 +1,39 @@
+{
+  "type": "PL",
+  "name": "アヤメ",
+  "english_name": "AYAME",
+  "cost": 1,
+  "category": "制圧",
+  "age": null,
+  "height": null,
+  "units": [
+    "RX-零丸"
+  ],
+  "pl_skill": {
+    "name": "決死の覚悟",
+    "trigger": "HP50%以下の時",
+    "effect": "40秒間、自身の[SP威力]を中アップする。"
+  },
+  "link_abilities": [
+    {
+      "name": "ビルドダイバーズ",
+      "condition": "デッキに3枚以上",
+      "effect": "[HP]小アップ"
+    },
+    {
+      "name": "多彩な戦術",
+      "condition": "デッキに4枚以上",
+      "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+    }
+  ],
+  "stats": {
+    "mobility": 170,
+    "ranged_attack": 50,
+    "melee_attack": 160,
+    "hp": 150
+  },
+  "illust": null,
+  "card_number": "UT03-071",
+  "card_name": "アヤメ",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/UT03-071_b.jpg?v8"
+}

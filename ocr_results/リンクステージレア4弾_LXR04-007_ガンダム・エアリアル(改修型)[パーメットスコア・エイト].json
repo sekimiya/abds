@@ -1,0 +1,62 @@
+{
+  "type": "MS",
+  "name": "ガンダム・エアリアル（改修型）[パーメットスコア8]",
+  "model": "XXV-016RN GUNDAM AERIAL REBUILD [PERMET SCORE EIGHT]",
+  "cost": 5,
+  "category": "シン・セー開発公社",
+  "pilot": "―",
+  "stats": {
+    "height": "18.2m",
+    "weight": "53.2t",
+    "mobility": 200,
+    "ranged_attack": 500,
+    "melee_attack": 180,
+    "hp": 470
+  },
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "S",
+    "desert": "C",
+    "water": "C"
+  },
+  "weapon": {
+    "main": {
+      "name": "ガンビット",
+      "range": 4,
+      "type": "遠距離"
+    },
+    "sub": {
+      "name": "ビームサーベル",
+      "range": 1,
+      "type": "近距離"
+    }
+  },
+  "ms_ability": {
+    "name": "絆射",
+    "cost": 3,
+    "description": "ロックオン中の敵ユニットに単体攻撃を行いダメージを与え、一定時間スタンさせる。"
+  },
+  "special_attack": {
+    "name": "ガンビット斉射",
+    "target": "単体（敵）",
+    "range": 4,
+    "power": 3500,
+    "description": "敵単体に射撃攻撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "水星の魔女",
+      "condition": "デッキに3枚以上",
+      "effect": "[機動力]小アップ"
+    },
+    {
+      "name": "的確な一撃",
+      "condition": "デッキに4枚以上",
+      "effect": "[機動力][遠距離攻撃力]小アップ"
+    }
+  ],
+  "illust": "futaba/Tsutomu Ohnio-Shinya Kusumegi",
+  "card_number": "LXR04-007",
+  "card_name": "ガンダム・エアリアル(改修型)[パーメットスコア・エイト]",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/LXR04-007_b.jpg?v8"
+}

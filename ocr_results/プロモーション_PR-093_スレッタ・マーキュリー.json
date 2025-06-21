@@ -1,0 +1,40 @@
+{
+  "type": "PL",
+  "name": "スレッタ・マーキュリー",
+  "english_name": "SULETTA MERCURY",
+  "cost": 3,
+  "category": "地球寮",
+  "age": null,
+  "height": null,
+  "units": [
+    "ガンダム・エアリアル（改修型）",
+    "ガンダム・エアリアル"
+  ],
+  "pl_skill": {
+    "name": "冴える戦闘勘",
+    "trigger": "出撃後一定時間経過毎",
+    "effect": "40秒経過毎に自身の『機動力』『遠距離攻撃力』を小アップする。最大3回まで発動。"
+  },
+  "link_abilities": [
+    {
+      "name": "水星の魔女",
+      "condition": "デッキに3枚以上",
+      "effect": "『機動力』小アップ"
+    },
+    {
+      "name": "優れた射撃センス",
+      "condition": "デッキに2枚以上",
+      "effect": "『遠距離攻撃力』小アップ"
+    }
+  ],
+  "stats": {
+    "mobility": 180,
+    "ranged_attack": 200,
+    "melee_attack": 150,
+    "hp": 240
+  },
+  "illust": null,
+  "card_number": "PR-093",
+  "card_name": "スレッタ・マーキュリー",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-093_b.jpg?v8"
+}

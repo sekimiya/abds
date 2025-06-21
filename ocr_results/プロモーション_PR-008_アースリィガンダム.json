@@ -1,0 +1,57 @@
+{
+  "type": "MS",
+  "name": "アースリィガンダム",
+  "model": "PFF-X7/E3 EARTHREE GUNDAM",
+  "cost": 6,
+  "category": "機動",
+  "pilot": "ヒロト",
+  "stats": {
+    "height": "18.7m",
+    "weight": "45.4t",
+    "mobility": 330,
+    "ranged_attack": 360,
+    "melee_attack": 310,
+    "hp": 320
+  },
+  "terrain_compatibility": {
+    "ground": "S",
+    "space": "A",
+    "desert": "C",
+    "water": "-"
+  },
+  "weapon": {
+    "main": {
+      "name": "ビームライフル",
+      "range": 3,
+      "type": "遠距離"
+    },
+    "sub": {
+      "name": "ビームサーベル",
+      "range": 1,
+      "type": "近距離"
+    }
+  },
+  "ms_ability": {
+    "name": "貫通",
+    "cost": 3,
+    "description": "任意発動 貫通(敵) 射程3 コスト3\nロックオン中の敵に一定時間チャージ後、貫通射撃を行い、射線上の敵にダメージを与える。"
+  },
+  "special_attack": {
+    "name": "ビームライフル精密射撃",
+    "target": "単体(敵)",
+    "range": 3,
+    "power": 3400,
+    "description": "敵単体に射撃攻撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "Re:RISE",
+      "condition": "デッキに3枚以上",
+      "effect": "[遠距離攻撃力]小アップ"
+    }
+  ],
+  "illust": "Tonamikianji",
+  "card_number": "PR-008",
+  "card_name": "アースリィガンダム",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-008_b.jpg?v8"
+}

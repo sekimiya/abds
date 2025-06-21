@@ -1,0 +1,57 @@
+{
+  "type": "MS",
+  "name": "ユニオンフラッグ",
+  "model": "SVMS-01 UNION FLAG",
+  "cost": 2,
+  "category": "ユニオン",
+  "pilot": "グラハム・エーカー、ハワード・メイスン、ダリル・ダッジ",
+  "stats": {
+    "height": "17.9m",
+    "weight": "67.1t",
+    "mobility": 230,
+    "ranged_attack": 130,
+    "melee_attack": 130,
+    "hp": 110
+  },
+  "terrain_compatibility": {
+    "ground": "B",
+    "space": "S",
+    "desert": "C",
+    "water": "C"
+  },
+  "weapon": {
+    "main": {
+      "name": "リニアライフル",
+      "range": 3,
+      "type": "遠距離"
+    },
+    "sub": {
+      "name": "プラズマソード",
+      "range": 1,
+      "type": "近距離"
+    }
+  },
+  "ms_ability": {
+    "name": "-",
+    "cost": 0,
+    "description": "-"
+  },
+  "special_attack": {
+    "name": "リニアライフル撃射",
+    "target": "単体（敵）",
+    "range": 3,
+    "power": 3000,
+    "description": "敵単体に射撃攻撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "ガンダム00",
+      "condition": "デッキに3枚以上",
+      "effect": "[機動力]小アップ"
+    }
+  ],
+  "illust": "Tatumi Takuan",
+  "card_number": "AB02-042",
+  "card_name": "ユニオンフラッグ",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/AB02-042_b.jpg?v8"
+}

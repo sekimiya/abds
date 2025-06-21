@@ -1,0 +1,40 @@
+{
+  "type": "PL",
+  "name": "張 五飛",
+  "english_name": "CHANG WUFEI",
+  "cost": 6,
+  "category": "殲滅",
+  "age": 15,
+  "height": "156cm",
+  "units": [
+    "アルトロンガンダム",
+    "シェンロンガンダム"
+  ],
+  "pl_skill": {
+    "name": "折り重なる斬撃",
+    "trigger": "出撃後一定時間経過毎",
+    "effect": "40秒経過毎に自身の「近距離攻撃力」を小アップする。最大3回まで発動。"
+  },
+  "link_abilities": [
+    {
+      "name": "ガンダムW",
+      "condition": "デッキに3枚以上",
+      "effect": "「機動力」小アップ"
+    },
+    {
+      "name": "肉薄する戦い",
+      "condition": "デッキに4枚以上",
+      "effect": "「近距離攻撃力」小アップ"
+    }
+  ],
+  "stats": {
+    "mobility": 200,
+    "ranged_attack": 30,
+    "melee_attack": 320,
+    "hp": 450
+  },
+  "illust": "M",
+  "card_number": "UT02-064",
+  "card_name": "張 五飛",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/UT02-064_b.jpg?v8"
+}

@@ -1,0 +1,57 @@
+{
+  "type": "MS",
+  "name": "ギラ・ズール（量産機）",
+  "model": "AMS-129 GEARA ZULU",
+  "cost": 2,
+  "category": "ネオ・ジオン残党軍『袖付き』",
+  "pilot": "",
+  "stats": {
+    "height": "20.0m",
+    "weight": "21.8t",
+    "mobility": 110,
+    "ranged_attack": 100,
+    "melee_attack": 150,
+    "hp": 230
+  },
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "A",
+    "desert": "C",
+    "water": "-"
+  },
+  "weapon": {
+    "main": {
+      "name": "ビーム・ホーク",
+      "range": 1,
+      "type": "近距離"
+    },
+    "sub": {
+      "name": "グレネード・ランチャー",
+      "range": 3,
+      "type": "遠距離"
+    }
+  },
+  "ms_ability": {
+    "name": "補給",
+    "cost": 4,
+    "description": "自機を中心にした大範囲の味方ユニットのHPを中回復する。"
+  },
+  "special_attack": {
+    "name": "ビーム・ホーク強撃",
+    "target": "単体（敵）",
+    "range": 2,
+    "power": 3100,
+    "description": "敵単体に格闘攻撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "ガンダムUC",
+      "condition": "デッキに3枚以上",
+      "effect": "[機動力]小アップ"
+    }
+  ],
+  "illust": "Masato Yoshimura",
+  "card_number": "AB01-024",
+  "card_name": "ギラ・ズール(量産機)",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/AB01-024_b.jpg?v8"
+}

@@ -196,18 +196,28 @@ def ocr_back_cards_from_all_cards_list(api_key_path):
                 skipped_count += 1
                 continue
             
-            # 既にOCR結果が存在する場合はスキップ
+            # 既にOCR結果が存在し、かつ内容が有効な場合はスキップ
             safe_number = sanitize_filename(card_number)
             safe_name = sanitize_filename(card_name)
             safe_series = sanitize_filename(series_name)
             if safe_series:
-                ocr_result_file = os.path.join('ocr_results', f"{safe_series}_{safe_number}_{safe_name}.json")
+                ocr_result_file = os.path.join(results_dir, f"{safe_series}_{safe_number}_{safe_name}.json")
             else:
-                ocr_result_file = os.path.join('ocr_results', f"{safe_number}_{safe_name}.json")
+                ocr_result_file = os.path.join(results_dir, f"{safe_number}_{safe_name}.json")
+
             if os.path.exists(ocr_result_file):
-                print(f"[{idx}/{len(json_files)}] スキップ: 既存のOCR結果 - {card_number} {card_name}")
-                skipped_count += 1
-                continue
+                try:
+                    with open(ocr_result_file, 'r', encoding='utf-8') as f:
+                        existing_data = json.load(f)
+                    # データが空の辞書やリストでないことを確認
+                    if existing_data and (isinstance(existing_data, dict) and existing_data):
+                        print(f"[{idx}/{len(json_files)}] スキップ: 有効な既存のOCR結果 - {card_number} {card_name}")
+                        skipped_count += 1
+                        continue
+                    else:
+                        print(f"[{idx}/{len(json_files)}] 再処理: 既存のOCR結果は空または無効 - {card_number} {card_name}")
+                except (json.JSONDecodeError, IOError) as e:
+                    print(f"[{idx}/{len(json_files)}] 再処理: 既存のOCR結果が破損 ({e}) - {card_number} {card_name}")
             
             print(f"[{idx}/{len(json_files)}] OCR開始: {card_number} {card_name}")
             print(f"   URL: {back_image_url}")

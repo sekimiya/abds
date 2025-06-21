@@ -1,0 +1,62 @@
+{
+  "type": "MS",
+  "name": "ストライクノワールガンダム",
+  "model": "GAT-X105E+AQM/E-X09S STRIKE NOIR GUNDAM",
+  "cost": 5,
+  "category": "近距離",
+  "pilot": "スウェン・カル・バヤン",
+  "stats": {
+    "height": "17.72m",
+    "weight": "90.51t",
+    "mobility": 230,
+    "ranged_attack": 110,
+    "melee_attack": 270,
+    "hp": 220
+  },
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "S",
+    "desert": "C",
+    "water": "B"
+  },
+  "weapon": {
+    "main": {
+      "name": "フラガラッハ3ビームブレイド",
+      "range": 1,
+      "type": "近距離"
+    },
+    "sub": {
+      "name": "ビームライフルショーティー",
+      "range": 3,
+      "type": "遠距離"
+    }
+  },
+  "ms_ability": {
+    "name": "強撃",
+    "cost": 3,
+    "description": "ロックオン中の敵に単体攻撃でダメージを与える。"
+  },
+  "special_attack": {
+    "name": "フラガラッハ3ビームブレイド強撃",
+    "target": "単体（敵）",
+    "range": 2,
+    "power": 3400,
+    "description": "敵単体に格闘攻撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "STARGAZER",
+      "condition": "デッキに2枚以上",
+      "effect": "[遠距離攻撃力]小アップ"
+    },
+    {
+      "name": "問合いを詰めた接近戦",
+      "condition": "デッキに2枚以上",
+      "effect": "[近距離攻撃力]小アップ"
+    }
+  ],
+  "illust": "Takujii Kato",
+  "card_number": "LX02-039",
+  "card_name": "ストライクノワールガンダム",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/LX02-039_b.jpg?v8"
+}

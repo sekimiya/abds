@@ -1,0 +1,62 @@
+{
+  "type": "MS",
+  "name": "ガンダムアストレイレッドドラゴン",
+  "model": "MBF-P02 GUNDAM ASTRAY RED DRAGON",
+  "cost": 6,
+  "category": "近距離",
+  "pilot": "ロウ・ギュール",
+  "stats": {
+    "height": "―",
+    "weight": "―",
+    "mobility": 250,
+    "ranged_attack": 100,
+    "melee_attack": 650,
+    "hp": 600
+  },
+  "terrain_compatibility": {
+    "ground": "S",
+    "space": "A",
+    "desert": "B",
+    "water": "B"
+  },
+  "weapon": {
+    "main": {
+      "name": "カレトヴルッフSモード",
+      "range": 1,
+      "type": "近距離"
+    },
+    "sub": {
+      "name": "カレトヴルッフEモード",
+      "range": 3,
+      "type": "遠距離"
+    }
+  },
+  "ms_ability": {
+    "name": "撃滅",
+    "cost": 2,
+    "description": "ロック中の敵に単体攻撃でダメージを与える。この攻撃で敵ユニットを撃破した場合、敵ユニットの修理時間を延長させる。"
+  },
+  "special_attack": {
+    "name": "赤い衝撃",
+    "target": "単体（敵）",
+    "range": 2,
+    "power": 3500,
+    "description": "リミッターを解除し、敵単体に格闘攻撃でダメージを与える。リミッター解除後は、一定時間能力が上昇する。"
+  },
+  "link_abilities": [
+    {
+      "name": "SEED ASTRAY",
+      "condition": "デッキに2枚以上",
+      "effect": "[近距離攻撃力]小アップ"
+    },
+    {
+      "name": "肉薄する戦い",
+      "condition": "デッキに4枚以上",
+      "effect": "[機動力][近距離攻撃力]小アップ"
+    }
+  ],
+  "illust": "PaintedMIKE",
+  "card_number": "UTB03-009",
+  "card_name": "ガンダムアストレイ レッドドラゴン",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/UTB03-009_b.jpg?v8"
+}

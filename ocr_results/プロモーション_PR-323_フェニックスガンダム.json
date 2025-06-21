@@ -1,0 +1,62 @@
+{
+  "type": "MS",
+  "name": "フェニックスガンダム",
+  "model": "GGF-001 PHOENIX GUNDAM",
+  "cost": 4,
+  "category": "遠距離",
+  "pilot": "",
+  "stats": {
+    "height": "",
+    "weight": "",
+    "mobility": 250,
+    "ranged_attack": 400,
+    "melee_attack": 100,
+    "hp": 350
+  },
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "A",
+    "desert": "A",
+    "water": "A"
+  },
+  "weapon": {
+    "main": {
+      "name": "フェザーファンネル",
+      "range": 4,
+      "type": "遠距離"
+    },
+    "sub": {
+      "name": "ビームサーベル",
+      "range": 1,
+      "type": "近距離"
+    }
+  },
+  "ms_ability": {
+    "name": "砕撃【貫通】",
+    "cost": 4,
+    "description": "任意発動 貫通(敵) 射程4 コスト4\nロックオン中の敵に貫通射撃を行い、メイン武装を使用不能にさせる。出撃時1度のみ使用可能。"
+  },
+  "special_attack": {
+    "name": "メガ・ビーム・キャノン砲射",
+    "target": "貫通(敵)",
+    "range": 4,
+    "power": 2900,
+    "description": "射線上の敵に貫通射撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "ジーニネ",
+      "condition": "デッキに2枚以上",
+      "effect": "[HP]小アップ"
+    },
+    {
+      "name": "遠距離攻撃力中アップ",
+      "condition": "撃ち倒し遠距離",
+      "effect": "デッキに遠距離2枚以上"
+    }
+  ],
+  "illust": "TAKA-F",
+  "card_number": "PR-323",
+  "card_name": "フェニックスガンダム",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-323_b.jpg?v8"
+}

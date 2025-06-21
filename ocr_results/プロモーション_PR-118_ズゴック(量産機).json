@@ -1,0 +1,62 @@
+{
+  "type": "MS",
+  "name": "ズゴック（量産機）",
+  "model": "MSM-07 Z'GOK",
+  "cost": 4,
+  "category": "ジオン公国軍",
+  "pilot": "－",
+  "stats": {
+    "height": "18.4m",
+    "weight": "65.1t",
+    "mobility": 250,
+    "ranged_attack": 150,
+    "melee_attack": 400,
+    "hp": 350
+  },
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "C",
+    "desert": "C",
+    "water": "S"
+  },
+  "weapon": {
+    "main": {
+      "name": "アイアン・ネイル",
+      "range": 1,
+      "type": "近距離"
+    },
+    "sub": {
+      "name": "メガ粒子砲",
+      "range": 3,
+      "type": "遠距離"
+    }
+  },
+  "ms_ability": {
+    "name": "撃滅",
+    "cost": 4,
+    "description": "任意発動 単体（敵） 射程2 コスト4 ロック中の敵に単体攻撃でダメージを与える。この攻撃で敵ユニットを撃破した場合、敵ユニットの修理時間を延長させる。"
+  },
+  "special_attack": {
+    "name": "アイアン・ネイル強襲",
+    "target": "単体（敵）",
+    "range": 2,
+    "power": 3400,
+    "description": "敵単体に格闘攻撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "機動戦士ガンダム",
+      "condition": "デッキに3枚以上",
+      "effect": "[機動力]小アップ"
+    },
+    {
+      "name": "水面下の闘争",
+      "condition": "デッキに2枚以上",
+      "effect": "[近距離攻撃力][HP]小アップ"
+    }
+  ],
+  "illust": "Ayato",
+  "card_number": "PR-118",
+  "card_name": "ズゴック(量産機)",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-118_b.jpg?v8"
+}

@@ -1,0 +1,39 @@
+{
+  "type": "PL",
+  "name": "ハンス・ホルガー",
+  "english_name": "HANS HOLGER",
+  "cost": 4,
+  "category": "防衛",
+  "age": null,
+  "height": null,
+  "units": [
+    "マーメイドガンダム"
+  ],
+  "pl_skill": {
+    "name": "強者の覚醒",
+    "trigger": "敵ユニットをロックオン時",
+    "effect": "20秒間、自身の「機動力」「遠距離攻撃力」「近距離攻撃力」「SP威力」を小アップする。"
+  },
+  "link_abilities": [
+    {
+      "name": "Gガンダム",
+      "condition": "デッキに3枚以上",
+      "effect": "「近距離攻撃力」小アップ"
+    },
+    {
+      "name": "戦況を変える力",
+      "condition": "デッキに4枚以上",
+      "effect": "「遠距離攻撃力」「近距離攻撃力」小アップ"
+    }
+  ],
+  "stats": {
+    "mobility": 120,
+    "ranged_attack": 190,
+    "melee_attack": 110,
+    "hp": 200
+  },
+  "illust": "C",
+  "card_number": "LX03-083",
+  "card_name": "ハンス・ホルガー",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/LX03-083_b.jpg?v8"
+}

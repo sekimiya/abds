@@ -1,0 +1,62 @@
+{
+  "type": "MS",
+  "name": "フォビドゥンガンダム",
+  "model": "GAT-X252 FORBIDDEN GUNDAM",
+  "cost": 6,
+  "category": "地球連合軍",
+  "pilot": "シャニ・アンドラス",
+  "stats": {
+    "height": "17.47m",
+    "weight": "85.33t",
+    "mobility": 250,
+    "ranged_attack": 350,
+    "melee_attack": 330,
+    "hp": 370
+  },
+  "terrain_compatibility": {
+    "ground": "S",
+    "space": "A",
+    "desert": "C",
+    "water": "A"
+  },
+  "weapon": {
+    "main": {
+      "name": "ニーズヘグ",
+      "range": 1,
+      "type": "近距離"
+    },
+    "sub": {
+      "name": "エクツァーン",
+      "range": 3,
+      "type": "遠距離"
+    }
+  },
+  "ms_ability": {
+    "name": "強襲",
+    "cost": 3,
+    "description": "任意発動 単体（敵） 射程1 コスト3 ロックオン中の敵に単体攻撃でダメージを与える。"
+  },
+  "special_attack": {
+    "name": "ニーズヘグ強襲",
+    "target": "単体（敵）",
+    "range": 2,
+    "power": 3300,
+    "description": "敵単体に格闘攻撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "[機動力]小アップ",
+      "condition": "ガンダムSEED デッキに3枚以上",
+      "effect": "機動力小アップ"
+    },
+    {
+      "name": "[遠距離攻撃力][近距離攻撃力]小アップ",
+      "condition": "デッキに4枚以上",
+      "effect": "遠距離攻撃力小アップ 近距離攻撃力小アップ"
+    }
+  ],
+  "illust": "JYUZURU (willow_works)",
+  "card_number": "UT04-022",
+  "card_name": "フォビドゥンガンダム",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/UT04-022_b.jpg?v8"
+}

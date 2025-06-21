@@ -1,0 +1,39 @@
+{
+  "type": "PL",
+  "name": "パプテマス・シロッコ",
+  "english_name": "Paptimus Scirocco",
+  "cost": 4,
+  "category": "ティターンズ",
+  "age": 26,
+  "height": "-",
+  "units": [
+    "ジ・O"
+  ],
+  "pl_skill": {
+    "name": "打開の起点",
+    "trigger": "HP50%以下の時",
+    "effect": "35秒間、自身の「近距離攻撃力」をアップする。残りHPが少ない程、効果値が上昇する。"
+  },
+  "link_abilities": [
+    {
+      "name": "機動戦士ガンダム",
+      "condition": "デッキに3枚以上",
+      "effect": "「遠距離攻撃力」小アップ"
+    },
+    {
+      "name": "戦況を変える力",
+      "condition": "デッキに4枚以上",
+      "effect": "「遠距離攻撃力」「近距離攻撃力」小アップ"
+    }
+  ],
+  "stats": {
+    "mobility": 180,
+    "ranged_attack": 80,
+    "melee_attack": 200,
+    "hp": 190
+  },
+  "illust": "R",
+  "card_number": "LX03-076",
+  "card_name": "パプテマス・シロッコ",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/LX03-076_b.jpg?v8"
+}

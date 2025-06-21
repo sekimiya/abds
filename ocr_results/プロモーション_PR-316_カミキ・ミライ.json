@@ -1,0 +1,39 @@
+{
+  "type": "PL",
+  "name": "カミキ・ミライ",
+  "english_name": "MIRAI KAMIKI",
+  "cost": 3,
+  "category": "制圧",
+  "age": 17,
+  "height": "-",
+  "units": [
+    "ベアッガイF"
+  ],
+  "pl_skill": {
+    "name": "巡る気勢",
+    "trigger": "出撃時",
+    "effect": "20秒間、出撃中の全味方殲滅タイプユニットの「遠距離攻撃力」「近距離攻撃力」をアップする。"
+  },
+  "link_abilities": [
+    {
+      "name": "トライ",
+      "condition": "デッキに3枚以上",
+      "effect": "[HP]小アップ"
+    },
+    {
+      "name": "多彩な趣術",
+      "condition": "デッキに4枚以上",
+      "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+    }
+  ],
+  "stats": {
+    "mobility": 210,
+    "ranged_attack": 260,
+    "melee_attack": 50,
+    "hp": 300
+  },
+  "illust": "Akinori Takaba (STUDIO GS)",
+  "card_number": "PR-316",
+  "card_name": "カミキ・ミライ",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-316_b.jpg?v8"
+}

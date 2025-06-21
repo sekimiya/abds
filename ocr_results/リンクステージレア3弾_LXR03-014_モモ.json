@@ -1,0 +1,39 @@
+{
+  "type": "PL",
+  "name": "モモ",
+  "english_name": "MOMO",
+  "cost": 2,
+  "category": "防衛",
+  "age": 14,
+  "height": "—",
+  "units": [
+    "モモカプル"
+  ],
+  "pl_skill": {
+    "name": "熾烈な補給線",
+    "trigger": "出撃時",
+    "effect": "40秒間、自身が受けるダメージを軽減し、使用するMSアビリティ「補給」の回復量を中アップする。"
+  },
+  "link_abilities": [
+    {
+      "name": "ビルドダイバーズ",
+      "condition": "デッキに3枚以上",
+      "effect": "[HP]小アップ"
+    },
+    {
+      "name": "揺るがぬ意志",
+      "condition": "デッキに2枚以上",
+      "effect": "[HP]小アップ"
+    }
+  ],
+  "stats": {
+    "mobility": 180,
+    "ranged_attack": 80,
+    "melee_attack": 170,
+    "hp": 310
+  },
+  "illust": "Yousuke Ichikawa",
+  "card_number": "LXR03-014",
+  "card_name": "モモ",
+  "image_url": "https://www.gundam-ab.com/images/cardlist/card/LXR03-014_b.jpg?v8"
+}
