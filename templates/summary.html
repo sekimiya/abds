@@ -279,17 +279,27 @@
 
     <script>
         let allCards = [];
-        let selectedCards = [];
-        let seriesLabels = {}; // 収録弾数の表示名マッピング
+        let selectedCards = new Array(10).fill(null);
+        let seriesLabels = {};
+        let seriesCodeToId = {};
 
-        // シリーズコードとIDのマッピング
-        const seriesCodeToId = {
+        const seriesCodeToIdConst = {
             'FQ01': '529015', 'FQ02': '529016', 'FQ03': '529017',
             'UT01': '529113', 'UT02': '529114', 'UT03': '529115', 'UT04': '529116', 'UT05': '529117', 'UT06': '529118',
             'AB01': '529001', 'AB02': '529002', 'AB03': '529003', 'AB04': '529004', 'AB05': '529005', 'AB06': '529006',
             'AB07': '529007', 'AB08': '529008', 'AB09': '529009', 'AB10': '529010', 'AB11': '529011', 'AB12': '529012',
             'AB13': '529013', 'AB14': '529014'
         };
+
+        function isValidValue(value) {
+            if (value === null || value === undefined || value === '') return false;
+            if (typeof value === 'string') {
+                if (value.trim() === '') return false;
+                if (value.toLowerCase() === 'null') return false;
+                if (value.toLowerCase() === 'undefined') return false;
+            }
+            return true;
+        }
 
         document.addEventListener('DOMContentLoaded', async () => {
             const loadingEl = document.getElementById('loading');
@@ -465,7 +475,7 @@
                 { header: '遠距離攻撃力', ms_key: 'stats.ranged_attack', pl_key: 'stats.ranged_attack', total: true, bar: true, max: 800 },
                 { header: '近距離攻撃力', ms_key: 'stats.melee_attack', pl_key: 'stats.melee_attack', total: true, bar: true, max: 800 },
                 { header: 'HP', ms_key: 'stats.hp', pl_key: 'stats.hp', total: true, bar: true, max: 2000 },
-                { header: '射程', ms_key: 'weapon.main.range', formatter: formatRange },
+                { header: '射程', ms_key: 'weapon' },
                 { header: '地形適性', ms_key: 'terrain_compatibility', pl_key: 'terrain_compatibility', formatter: formatTerrain, colspan: 3 },
                 { header: 'リンクアビリティ', ms_key: 'link_abilities', pl_key: 'link_abilities', formatter: formatLinkAbility, colspan: 3 },
                 { header: 'MSアビリティ', ms_key: 'ms_ability', formatter: formatSkill, colspan: 3, isSkill: true, separate: true },
@@ -500,17 +510,6 @@
                             value = getDeepValue(plCard, `ocr_data.${def.pl_key}`);
                             card_context = plCard;
                         }
-                        
-                        // 適切でないデータをフィルタリング
-                        const isValidValue = (value) => {
-                            if (value === null || value === undefined || value === '') return false;
-                            if (typeof value === 'string') {
-                                if (value.trim() === '') return false;
-                                if (value.toLowerCase() === 'null') return false;
-                                if (value.toLowerCase() === 'undefined') return false;
-                            }
-                            return true;
-                        };
                         
                         td.innerHTML = def.formatter ? def.formatter(value, cards, card_context) : (isValidValue(value) ? value : '-');
                         tr.appendChild(td);
@@ -551,17 +550,6 @@
                             }
                         }
                         
-                        // 適切でないデータをフィルタリング
-                        const isValidValue = (value) => {
-                            if (value === null || value === undefined || value === '') return false;
-                            if (typeof value === 'string') {
-                                if (value.trim() === '') return false;
-                                if (value.toLowerCase() === 'null') return false;
-                                if (value.toLowerCase() === 'undefined') return false;
-                            }
-                            return true;
-                        };
-                        
                         td.innerHTML = def.formatter ? def.formatter(value, cards, card_context) : (isValidValue(value) ? value : '-');
                         tr.appendChild(td);
                         if (def.colspan === 2) {
@@ -570,27 +558,27 @@
                     } else {
                         const tdMs = document.createElement('td');
                         const tdPl = document.createElement('td');
-
-                        const msValue = getDeepValue(msCard, `ocr_data.${def.ms_key}`);
-                        const plValue = getDeepValue(plCard, `ocr_data.${def.pl_key}`);
-
-                        // 適切でないデータをフィルタリング
-                        const isValidValue = (value) => {
-                            if (value === null || value === undefined || value === '') return false;
-                            if (typeof value === 'string') {
-                                if (value.trim() === '') return false;
-                                if (value.toLowerCase() === 'null') return false;
-                                if (value.toLowerCase() === 'undefined') return false;
-                            }
-                            return true;
-                        };
+                        let msValue = null;
+                        let plValue = null;
 
                         // リンクアビリティのバフを適用
                         const msBuffs = msCard && msCard.ocr_data ? getLinkBuffs(msCard.ocr_data) : { mobility: { small: 0, medium: 0 }, ranged: { small: 0, medium: 0 }, melee: { small: 0, medium: 0 }, hp: { small: 0, medium: 0 } };
                         const plBuffs = plCard && plCard.ocr_data ? getLinkBuffs(plCard.ocr_data) : { mobility: { small: 0, medium: 0 }, ranged: { small: 0, medium: 0 }, melee: { small: 0, medium: 0 }, hp: { small: 0, medium: 0 } };
 
-                        tdMs.innerHTML = def.formatter ? def.formatter(msValue, cards, msCard) : (isValidValue(msValue) ? msValue : '-');
-                        tdPl.innerHTML = def.formatter ? def.formatter(plValue, cards, plCard) : (isValidValue(plValue) ? plValue : '-');
+                        if (def.header === '射程') {
+                            const weapon = getDeepValue(msCard, 'ocr_data.weapon');
+                            const mainRange = weapon && weapon.main ? weapon.main.range : null;
+                            const subRange = weapon && weapon.sub ? weapon.sub.range : null;
+                            tdMs.innerHTML = isValidValue(mainRange) ? mainRange : '-';
+                            tdPl.innerHTML = isValidValue(subRange) ? subRange : '-';
+                            tdPl.colSpan = 2;
+                        } else {
+                            msValue = getDeepValue(msCard, `ocr_data.${def.ms_key}`);
+                            plValue = getDeepValue(plCard, `ocr_data.${def.pl_key}`);
+                            
+                            tdMs.innerHTML = def.formatter ? def.formatter(msValue, cards, msCard) : (isValidValue(msValue) ? msValue : '-');
+                            tdPl.innerHTML = def.formatter ? def.formatter(plValue, cards, plCard) : (isValidValue(plValue) ? plValue : '-');
+                        }
                         
                         tr.appendChild(tdMs);
                         tr.appendChild(tdPl);
@@ -675,7 +663,7 @@
                                 tdTotal.textContent = displayText;
                             }
                             tr.appendChild(tdTotal);
-                        } else {
+                        } else if (def.header !== '射程') {
                             tr.appendChild(document.createElement('td'));
                         }
                     }
@@ -710,12 +698,6 @@
                 '殲滅': 'cost-annihilation', '制圧': 'cost-suppression', '防衛': 'cost-defense'
             }[type] || '';
             return `<span class="${style}" style="font-size:16px; font-weight:bold;">${value}</span>`;
-        }
-
-        function formatRange(value, cards, card) {
-            if (!card || !card.ocr_data || card.ocr_data.type !== 'MS') return '-';
-            const range = getDeepValue(card, 'ocr_data.weapon.main.range');
-            return (range && (typeof range !== 'string' || (range !== 'null' && range !== 'undefined' && range.trim() !== ''))) ? `遠: ${range}` : '-';
         }
 
         function formatTerrain(value, cards, card) {
