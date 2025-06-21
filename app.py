@@ -29,102 +29,101 @@ def illustrator():
 
 @app.route('/fetch_cards')
 def fetch_cards():
-    # all_cards_listディレクトリから個別のJSONファイルを読み込み
+    # カードデータを読み込む
     all_cards = []
     all_cards_dir = 'all_cards_list'
-    
-    try:
-        if not os.path.exists(all_cards_dir):
-            print(f"Error: {all_cards_dir} directory not found")
-            return jsonify({'success': False, 'error': f'{all_cards_dir}ディレクトリが見つかりません'})
-        
-        # 個別のJSONファイルを読み込み
-        json_files = [f for f in os.listdir(all_cards_dir) if f.endswith('.json')]
-        print(f"Found {len(json_files)} card files in {all_cards_dir}")
-        
-        for filename in json_files:
+    if os.path.exists(all_cards_dir):
+        card_files = [f for f in os.listdir(all_cards_dir) if f.endswith('.json')]
+        for filename in card_files:
             try:
                 with open(os.path.join(all_cards_dir, filename), 'r', encoding='utf-8') as f:
                     card_data = json.load(f)
                     all_cards.append(card_data)
             except Exception as e:
-                print(f"Error loading {filename}: {str(e)}")
-                continue
-        
-        print(f"Loaded {len(all_cards)} cards from individual files")
-        
-    except Exception as e:
-        print(f"Error loading card data: {str(e)}")
-        return jsonify({'success': False, 'error': f'カードデータの読み込みエラー: {str(e)}'})
-
-    # OCR結果も読み込む
+                print(f"カードファイル読み込みエラー {filename}: {str(e)}")
+    
+    # OCR結果を読み込む
     ocr_results = {}
     ocr_dir = 'ocr_results'
     if os.path.exists(ocr_dir):
         ocr_files = [f for f in os.listdir(ocr_dir) if f.endswith('.json')]
-        print(f"Found {len(ocr_files)} OCR files")
         for filename in ocr_files:
             try:
                 with open(os.path.join(ocr_dir, filename), 'r', encoding='utf-8') as f:
                     ocr_data = json.load(f)
-                    # ファイル名からカード番号とカード名を抽出
                     base = filename.replace('.json', '')
-                    ocr_results[base] = ocr_data
+                    
+                    # カード番号を抽出
+                    number_match = re.search(r'([A-Z0-9\-]{4,}-\d{2,4})', base)
+                    if number_match:
+                        number = number_match.group(1)
+                        ocr_results[number] = ocr_data
             except Exception as e:
                 print(f"OCRファイル読み込みエラー {filename}: {str(e)}")
-    else:
-        print(f"OCR directory {ocr_dir} not found")
-
-    print(f"Loaded {len(ocr_results)} OCR results")
-
-    # カードデータとOCRデータを統合
-    card_images = []
+    
+    # カードデータとOCRデータを突合
+    result_cards = []
     for card in all_cards:
         card_number = card.get('number', '')
-        card_name = card.get('name', '')
-        series_name = card.get('series', '')
+        ocr_data = ocr_results.get(card_number, {})
         
-        # OCRデータのキーを生成（収録パック+カードナンバー+カード名の形式）
-        if series_name:
-            ocr_key = f"{series_name}_{card_number}_{card_name}"
-        else:
-            ocr_key = f"{card_number}_{card_name}"
+        # 表面画像URL生成
+        front_image_url = ''
+        # 1. OCRデータのfront.image_url優先
+        if 'front' in ocr_data and 'image_url' in ocr_data['front']:
+            front_image_url = ocr_data['front']['image_url']
+        # 2. OCRデータのimage_url（表面用）
+        elif 'image_url' in ocr_data:
+            front_image_url = ocr_data['image_url']
+        # 3. カード番号から画像URLを生成
+        if not front_image_url and card_number:
+            front_image_url = f"https://www.gundam-ab.com/images/cardlist/card/{card_number}.jpg?v8"
+        # 4. 裏面画像URLから表面画像URLを生成（_bを除去）
+        if front_image_url and '_b' in front_image_url:
+            front_image_url = front_image_url.replace('_b', '')
         
-        ocr_data = ocr_results.get(ocr_key)
+        # 裏面画像URL生成
+        back_image_url = ''
+        # 1. OCRデータのback.image_url優先
+        if 'back' in ocr_data and 'image_url' in ocr_data['back']:
+            back_image_url = ocr_data['back']['image_url']
+        # 2. OCRデータのback_image_url
+        elif 'back_image_url' in ocr_data:
+            back_image_url = ocr_data['back_image_url']
+        # 3. カード番号から裏面画像URLを生成
+        if not back_image_url and card_number:
+            back_image_url = f"https://www.gundam-ab.com/images/cardlist/card/{card_number}_b.jpg?v8"
         
-        # 画像URLを取得（front.image_urlを優先）
-        image_url = card.get('front', {}).get('image_url', '')
-        if not image_url:
-            # 後方互換性のため、直接のurlフィールドも確認
-            image_url = card.get('url', '')
+        # frontとbackオブジェクトを構築
+        front_obj = {}
+        if front_image_url:
+            front_obj['image_url'] = front_image_url
+        
+        back_obj = {}
+        if back_image_url:
+            back_obj['image_url'] = back_image_url
         
         card_info = {
-            'url': image_url,  # 画像URL
+            'url': front_image_url,  # デフォルトURL（表面）
             'number': card_number,
-            'name': card_name,
-            'category': ocr_data.get('type', 'MS') if ocr_data else 'MS',
+            'name': card.get('name', ''),
+            'category': card.get('category', 'MS'),
             'ocr_data': ocr_data,
-            'front': card.get('front', {}),  # 表面データを追加
-            'back': card.get('back', {}),     # 裏面データを追加
-            'series': series_name  # 収録弾数情報を追加
+            'front': front_obj,
+            'back': back_obj,
+            'series': card.get('series', '')
         }
-        card_images.append(card_info)
         
-        # デバッグ: 最初の数枚のカードの情報を出力
-        if len(card_images) <= 3:
-            print(f"Debug - Card {len(card_images)}: {card_number} {card_name}")
-            print(f"  Image URL: {image_url}")
-            print(f"  Front data: {card.get('front', {})}")
-            print(f"  OCR key: {ocr_key}")
-
-    card_images.sort(key=lambda x: x['number'])
-    print(f"Returning {len(card_images)} cards with OCR data")
-    if card_images:
-        print(f"First card example: {card_images[0]['number']} - {card_images[0]['name']}")
-        print(f"First card URL: {card_images[0]['url']}")
-        print(f"First card OCR data: {card_images[0]['ocr_data'] is not None}")
+        # カード番号からシリーズコードを生成（SQリンク用）
+        if card_number:
+            series_match = re.match(r'([A-Z]{2}\d{2})', card_number)
+            if series_match:
+                card_info['series'] = series_match.group(1)
+        
+        result_cards.append(card_info)
     
-    return jsonify({'success': True, 'images': card_images})
+    result_cards.sort(key=lambda x: x['number'])
+    return jsonify({'success': True, 'images': result_cards})
 
 @app.route('/ocr_results/<path:filename>')
 def serve_ocr_results(filename):

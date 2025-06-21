@@ -314,8 +314,17 @@
                 // Load deck data from cookie/localStorage
                 const deckData = getDeckData();
                 if (!deckData || !deckData.cards) {
-                    loadingEl.textContent = '表示するデッキデータがありません。メインページでデッキを構築してください。';
-                    return;
+                    // デッキデータがない場合、適当なカードを10枚セット
+                    selectedCards = buildSampleDeck();
+                    if (selectedCards.length > 0) {
+                        populateTable(selectedCards);
+                        loadingEl.style.display = 'none';
+                        tableEl.style.display = '';
+                        return;
+                    } else {
+                        loadingEl.textContent = '表示するデッキデータがありません。メインページでデッキを構築してください。';
+                        return;
+                    }
                 }
                 
                 selectedCards = deckData.cards.map(c => {
@@ -457,12 +466,11 @@
                 { header: '近距離攻撃力', ms_key: 'stats.melee_attack', pl_key: 'stats.melee_attack', total: true, bar: true, max: 800 },
                 { header: 'HP', ms_key: 'stats.hp', pl_key: 'stats.hp', total: true, bar: true, max: 2000 },
                 { header: '射程', ms_key: 'weapon.main.range', formatter: formatRange },
-                { header: '地形適性', ms_key: 'terrain_compatibility', pl_key: 'terrain_compatibility', formatter: formatTerrain },
-                { header: 'リンクアビリティ(MS)', ms_key: 'link_abilities', formatter: formatLinkAbility, colspan: 2, separate: true },
-                { header: 'リンクアビリティ(PL)', pl_key: 'link_abilities', formatter: formatLinkAbility, colspan: 2, separate: true },
+                { header: '地形適性', ms_key: 'terrain_compatibility', pl_key: 'terrain_compatibility', formatter: formatTerrain, colspan: 3 },
+                { header: 'リンクアビリティ', ms_key: 'link_abilities', pl_key: 'link_abilities', formatter: formatLinkAbility, colspan: 3 },
                 { header: 'MSアビリティ', ms_key: 'ms_ability', formatter: formatSkill, colspan: 3, isSkill: true, separate: true },
                 { header: 'PLスキル', pl_key: 'pl_skill', formatter: formatSkill, colspan: 3, isSkill: true, separate: true },
-                { header: '戦術技', ms_key: 'special_attack', pl_key: 'special_attack', formatter: formatSP },
+                { header: '戦術技', ms_key: 'special_attack', pl_key: 'special_attack', formatter: formatSP, colspan: 3 },
                 { header: 'UNITED SP/SQUAD SP', ms_key: 'squad_sp', pl_key: 'squad_sp', formatter: formatSquadSP, colspan: 3 }
             ];
 
@@ -493,7 +501,18 @@
                             card_context = plCard;
                         }
                         
-                        td.innerHTML = def.formatter ? def.formatter(value, cards, card_context) : (value || '-');
+                        // 適切でないデータをフィルタリング
+                        const isValidValue = (value) => {
+                            if (value === null || value === undefined || value === '') return false;
+                            if (typeof value === 'string') {
+                                if (value.trim() === '') return false;
+                                if (value.toLowerCase() === 'null') return false;
+                                if (value.toLowerCase() === 'undefined') return false;
+                            }
+                            return true;
+                        };
+                        
+                        td.innerHTML = def.formatter ? def.formatter(value, cards, card_context) : (isValidValue(value) ? value : '-');
                         tr.appendChild(td);
                         
                         // total列のための空セルを追加
@@ -507,10 +526,43 @@
                         if (def.isSkill) td.classList.add('skill-cell');
                         
                         let value = null;
-                        if (def.ms_key) value = getDeepValue(msCard, `ocr_data.${def.ms_key}`);
-                        if (def.pl_key && !value) value = getDeepValue(plCard, `ocr_data.${def.pl_key}`);
+                        let card_context = null;
+
+                        if (def.header === 'リンクアビリティ') {
+                            const ms_links = getDeepValue(msCard, `ocr_data.${def.ms_key}`);
+                            const pl_links = getDeepValue(plCard, `ocr_data.${def.pl_key}`);
+                            let all_links = [];
+                            if(ms_links && Array.isArray(ms_links)) all_links = all_links.concat(ms_links);
+                            if(pl_links && Array.isArray(pl_links)) all_links = all_links.concat(pl_links);
+                            
+                            // 重複を削除
+                            value = all_links.filter((link, index, self) =>
+                                link && link.name && self.findIndex(l => l && l.name === link.name) === index
+                            );
+                            card_context = msCard; // フォーマッターには代表してMSカードを渡す
+                        } else {
+                            if (def.ms_key) {
+                                value = getDeepValue(msCard, `ocr_data.${def.ms_key}`);
+                                if (value) card_context = msCard;
+                            }
+                            if (def.pl_key && !value) {
+                                value = getDeepValue(plCard, `ocr_data.${def.pl_key}`);
+                                if (value) card_context = plCard;
+                            }
+                        }
                         
-                        td.innerHTML = def.formatter ? def.formatter(value, cards) : (value || '-');
+                        // 適切でないデータをフィルタリング
+                        const isValidValue = (value) => {
+                            if (value === null || value === undefined || value === '') return false;
+                            if (typeof value === 'string') {
+                                if (value.trim() === '') return false;
+                                if (value.toLowerCase() === 'null') return false;
+                                if (value.toLowerCase() === 'undefined') return false;
+                            }
+                            return true;
+                        };
+                        
+                        td.innerHTML = def.formatter ? def.formatter(value, cards, card_context) : (isValidValue(value) ? value : '-');
                         tr.appendChild(td);
                         if (def.colspan === 2) {
                             tr.appendChild(document.createElement('td')); // Empty cell for total
@@ -522,12 +574,23 @@
                         const msValue = getDeepValue(msCard, `ocr_data.${def.ms_key}`);
                         const plValue = getDeepValue(plCard, `ocr_data.${def.pl_key}`);
 
+                        // 適切でないデータをフィルタリング
+                        const isValidValue = (value) => {
+                            if (value === null || value === undefined || value === '') return false;
+                            if (typeof value === 'string') {
+                                if (value.trim() === '') return false;
+                                if (value.toLowerCase() === 'null') return false;
+                                if (value.toLowerCase() === 'undefined') return false;
+                            }
+                            return true;
+                        };
+
                         // リンクアビリティのバフを適用
                         const msBuffs = msCard && msCard.ocr_data ? getLinkBuffs(msCard.ocr_data) : { mobility: { small: 0, medium: 0 }, ranged: { small: 0, medium: 0 }, melee: { small: 0, medium: 0 }, hp: { small: 0, medium: 0 } };
                         const plBuffs = plCard && plCard.ocr_data ? getLinkBuffs(plCard.ocr_data) : { mobility: { small: 0, medium: 0 }, ranged: { small: 0, medium: 0 }, melee: { small: 0, medium: 0 }, hp: { small: 0, medium: 0 } };
 
-                        tdMs.innerHTML = def.formatter ? def.formatter(msValue, cards, msCard) : (msValue || '-');
-                        tdPl.innerHTML = def.formatter ? def.formatter(plValue, cards, plCard) : (plValue || '-');
+                        tdMs.innerHTML = def.formatter ? def.formatter(msValue, cards, msCard) : (isValidValue(msValue) ? msValue : '-');
+                        tdPl.innerHTML = def.formatter ? def.formatter(plValue, cards, plCard) : (isValidValue(plValue) ? plValue : '-');
                         
                         tr.appendChild(tdMs);
                         tr.appendChild(tdPl);
@@ -627,7 +690,7 @@
         }
 
         function formatType(value) {
-            if (!value) return '-';
+            if (!value || (typeof value === 'string' && (value === 'null' || value === 'undefined' || value.trim() === ''))) return '-';
             const style = {
                 '殲滅': 'cost-annihilation', '制圧': 'cost-suppression', '防衛': 'cost-defense'
             }[value] || '';
@@ -636,7 +699,7 @@
 
         function formatCost(value, cards, card) {
             if(card) { // Single card
-                 return value || '-';
+                 return (value && (typeof value !== 'string' || (value !== 'null' && value !== 'undefined' && value.trim() !== ''))) ? value : '-';
             }
             // Total cost for a unit
             const ms = arguments[2], pl = arguments[3];
@@ -652,20 +715,20 @@
         function formatRange(value, cards, card) {
             if (!card || !card.ocr_data || card.ocr_data.type !== 'MS') return '-';
             const range = getDeepValue(card, 'ocr_data.weapon.main.range');
-            return range ? `遠: ${range}` : '-';
+            return (range && (typeof range !== 'string' || (range !== 'null' && range !== 'undefined' && range.trim() !== ''))) ? `遠: ${range}` : '-';
         }
 
         function formatTerrain(value, cards, card) {
             if (!card || !card.ocr_data) return '-';
             const terrain = getDeepValue(card, 'ocr_data.terrain_compatibility');
-            if (!terrain) return '-';
+            if (!terrain || typeof terrain !== 'object') return '-';
             
             let html = '<div style="text-align: center; display: flex; flex-wrap: wrap; gap: 8px; justify-content: center;">';
             const aptitudes = ['ground', 'space', 'desert', 'water'];
             const ja = {'ground': '地', 'space': '宇', 'desert': '砂', 'water': '水'};
             
             aptitudes.forEach(t => {
-                if (terrain[t]) {
+                if (terrain[t] && (typeof terrain[t] !== 'string' || (terrain[t] !== 'null' && terrain[t] !== 'undefined' && terrain[t].trim() !== ''))) {
                     html += `<div>${ja[t]}:<span class="aptitude-${terrain[t].toLowerCase()}">${terrain[t]}</span></div>`;
                 }
             });
@@ -675,9 +738,12 @@
         }
         
         function formatLinkAbility(value, cards, card) {
-            if (!value || value.length === 0) return '-';
+            if (!value || !Array.isArray(value) || value.length === 0) return '-';
+
             let html = '';
             value.forEach(link => {
+                if (!link || !link.name) return; // 不適切なリンクデータをスキップ
+                
                 const isActive = checkLinkIsActive(link, cards);
                 const isSQLinkActive = checkSQLinkActive(link, cards);
                 const activeText = isActive ? ' 【発動中】' : '';
@@ -692,7 +758,7 @@
                 
                 // 効果を解析して表示（数値は記載しない）
                 let effectText = '';
-                if (link.effect && isActive) {
+                if (link.effect && isActive && typeof link.effect === 'string' && (link.effect !== 'null' && link.effect !== 'undefined')) {
                     const effects = [];
                     const eff = link.effect;
                     
@@ -708,7 +774,7 @@
                 
                 html += `<div class="${linkClass}">・${link.name}${activeText}${effectText}</div>`;
             });
-            return html;
+            return html || '-';
         }
 
         function checkLinkIsActive(link, allSelectedCards) {
@@ -744,30 +810,40 @@
         }
 
         function formatSkill(value) {
-            if (!value) return '-';
+            if (!value || (typeof value === 'string' && (value === 'null' || value === 'undefined'))) return '-';
             let html = '';
-            if (value.name) {
+            if (value.name && (typeof value.name !== 'string' || (value.name !== 'null' && value.name !== 'undefined' && value.name.trim() !== ''))) {
                 html += `<b>${value.name}</b>`;
-                if (value.cost) {
+                if (value.cost && (typeof value.cost !== 'string' || (value.cost !== 'null' && value.cost !== 'undefined'))) {
                     html += ` (コスト: ${value.cost})`;
                 }
                 html += '<br>';
             }
-            html += value.description || value.effect || '';
-            return html;
+            const description = value.description || value.effect || '';
+            if (description && (typeof description !== 'string' || (description !== 'null' && description !== 'undefined' && description.trim() !== ''))) {
+                html += description;
+            }
+            return html || '-';
         }
         
         function formatSP(value, cards, card) {
-             if (!value) return '-';
-             let html = `<b>${value.name || ''}</b>`;
-             if(value.power) html += ` (威力: ${value.power})`;
-             if(getDeepValue(card, 'ocr_data.type') === 'MS') {
-                if(value.description) html += `<br>${value.description}`;
+             if (!value || (typeof value === 'string' && (value === 'null' || value === 'undefined'))) return '-';
+             let html = '';
+             if (value.name && (typeof value.name !== 'string' || (value.name !== 'null' && value.name !== 'undefined' && value.name.trim() !== ''))) {
+                 html += `<b>${value.name}</b>`;
              }
-             return html;
+             if(value.power && (typeof value.power !== 'string' || (value.power !== 'null' && value.power !== 'undefined'))) {
+                 html += ` (威力: ${value.power})`;
+             }
+             if(getDeepValue(card, 'ocr_data.type') === 'MS') {
+                if(value.description && (typeof value.description !== 'string' || (value.description !== 'null' && value.description !== 'undefined' && value.description.trim() !== ''))) {
+                    html += `<br>${value.description}`;
+                }
+             }
+             return html || '-';
         }
-        function formatSquadSP(value){
-            return '-'; // Placeholder
+        function formatSquadSP(value, cards, card_context){
+            return '-';
         }
 
         // リンクアビリティのパラメータバフ計算ロジック
@@ -780,7 +856,10 @@
             };
             if (!ocr || !Array.isArray(ocr.link_abilities)) return buffs;
             ocr.link_abilities.forEach(link => {
-                const eff = link.effect || '';
+                if (!link || !link.effect) return; // 不適切なリンクデータをスキップ
+                const eff = link.effect;
+                if (typeof eff === 'string' && (eff === 'null' || eff === 'undefined' || eff.trim() === '')) return; // 不適切な効果データをスキップ
+                
                 // 小アップ
                 if (eff.match(/機動力.*小アップ|\[機動力\].*小アップ|"機動力".*小アップ/)) buffs.mobility.small++;
                 if (eff.match(/遠距離攻撃力.*小アップ|\[遠距離攻撃力\].*小アップ|"遠距離攻撃力".*小アップ/)) buffs.ranged.small++;
@@ -813,12 +892,15 @@
 
             // リンクアビリティの発動状態を再計算
             ocrJson.link_abilities.forEach(link => {
-                if (link.condition && link.condition.match(/デッキに(\d+)枚以上/)) {
+                if (!link || !link.condition || !link.name) return; // 不適切なリンクデータをスキップ
+                if (typeof link.condition === 'string' && (link.condition === 'null' || link.condition === 'undefined' || link.condition.trim() === '')) return; // 不適切な条件データをスキップ
+                
+                if (link.condition.match(/デッキに(\d+)枚以上/)) {
                     const match = link.condition.match(/デッキに(\d+)枚以上/);
                     const count = parseInt(match[1], 10);
                     let found = selectedCards.filter(card => {
                         if (!card || !card.ocr_data || !Array.isArray(card.ocr_data.link_abilities)) return false;
-                        return card.ocr_data.link_abilities.some(l => l.name === link.name);
+                        return card.ocr_data.link_abilities.some(l => l && l.name && l.name === link.name);
                     }).length;
                     link.isActive = found >= count;
                 }
@@ -932,6 +1014,62 @@
 
         function createLevelSelector(unitIndex, type, currentLevel) {
             // Implementation of createLevelSelector function
+        }
+
+        // 適当なカードを10枚セットするサンプルデッキを構築
+        function buildSampleDeck() {
+            const sampleDeck = [];
+            
+            // OCRデータが存在し、適切なカードのみを対象とする
+            const availableCards = allCards.filter(c => {
+                // OCRデータが存在する
+                if (!c.ocr_data) return false;
+                
+                // カード番号が正しい形式（例：AB01-001, FQ03-001）
+                if (!c.number || !/^[A-Z]{2}\d{2}-\d{3}$/.test(c.number)) return false;
+                
+                // 名前が存在する
+                if (!c.name || c.name.trim() === '') return false;
+                
+                // 画像URLが存在する
+                if (!c.front || !c.front.image_url) return false;
+                
+                return true;
+            });
+            
+            // MSカード（5枚）を選択
+            const msCards = availableCards.filter(c => {
+                const type = c.ocr_data.type || c.category;
+                return type === 'MS';
+            });
+            
+            // PLカード（5枚）を選択
+            const plCards = availableCards.filter(c => {
+                const type = c.ocr_data.type || c.category;
+                return type === 'PL';
+            });
+            
+            // MSカードを5枚追加（最初の5枚）
+            for (let i = 0; i < 5 && i < msCards.length; i++) {
+                sampleDeck.push(msCards[i]);
+            }
+            
+            // PLカードを5枚追加（最初の5枚）
+            for (let i = 0; i < 5 && i < plCards.length; i++) {
+                sampleDeck.push(plCards[i]);
+            }
+            
+            // 10枚揃わない場合は、他の適切なカードで補完
+            while (sampleDeck.length < 10 && availableCards.length > sampleDeck.length) {
+                const remainingCards = availableCards.filter(c => !sampleDeck.includes(c));
+                if (remainingCards.length > 0) {
+                    sampleDeck.push(remainingCards[0]);
+                } else {
+                    break;
+                }
+            }
+            
+            return sampleDeck;
         }
     </script>
 </body>
