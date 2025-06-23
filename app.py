@@ -34,6 +34,7 @@ def fetch_cards():
     all_cards_dir = 'all_cards_list'
     if os.path.exists(all_cards_dir):
         card_files = [f for f in os.listdir(all_cards_dir) if f.endswith('.json')]
+        print(f"カードファイル数: {len(card_files)}")
         for filename in card_files:
             try:
                 with open(os.path.join(all_cards_dir, filename), 'r', encoding='utf-8') as f:
@@ -41,12 +42,17 @@ def fetch_cards():
                     all_cards.append(card_data)
             except Exception as e:
                 print(f"カードファイル読み込みエラー {filename}: {str(e)}")
+    else:
+        print(f"ディレクトリが存在しません: {all_cards_dir}")
+    
+    print(f"読み込まれたカード数: {len(all_cards)}")
     
     # OCR結果を読み込む
     ocr_results = {}
     ocr_dir = 'ocr_results'
     if os.path.exists(ocr_dir):
         ocr_files = [f for f in os.listdir(ocr_dir) if f.endswith('.json')]
+        print(f"OCRファイル数: {len(ocr_files)}")
         for filename in ocr_files:
             try:
                 with open(os.path.join(ocr_dir, filename), 'r', encoding='utf-8') as f:
@@ -60,6 +66,10 @@ def fetch_cards():
                         ocr_results[number] = ocr_data
             except Exception as e:
                 print(f"OCRファイル読み込みエラー {filename}: {str(e)}")
+    else:
+        print(f"OCRディレクトリが存在しません: {ocr_dir}")
+    
+    print(f"OCR結果数: {len(ocr_results)}")
     
     # カードデータとOCRデータを突合
     result_cards = []
@@ -69,28 +79,34 @@ def fetch_cards():
         
         # 表面画像URL生成
         front_image_url = ''
-        # 1. OCRデータのfront.image_url優先
-        if 'front' in ocr_data and 'image_url' in ocr_data['front']:
+        # 1. カードデータのfront.image_urlを優先
+        if 'front' in card and 'image_url' in card['front']:
+            front_image_url = card['front']['image_url']
+        # 2. OCRデータのfront.image_url
+        elif 'front' in ocr_data and 'image_url' in ocr_data['front']:
             front_image_url = ocr_data['front']['image_url']
-        # 2. OCRデータのimage_url（表面用）
+        # 3. OCRデータのimage_url（表面用）
         elif 'image_url' in ocr_data:
             front_image_url = ocr_data['image_url']
-        # 3. カード番号から画像URLを生成
+        # 4. カード番号から画像URLを生成
         if not front_image_url and card_number:
             front_image_url = f"https://www.gundam-ab.com/images/cardlist/card/{card_number}.jpg?v8"
-        # 4. 裏面画像URLから表面画像URLを生成（_bを除去）
+        # 5. 裏面画像URLから表面画像URLを生成（_bを除去）
         if front_image_url and '_b' in front_image_url:
             front_image_url = front_image_url.replace('_b', '')
         
         # 裏面画像URL生成
         back_image_url = ''
-        # 1. OCRデータのback.image_url優先
-        if 'back' in ocr_data and 'image_url' in ocr_data['back']:
+        # 1. カードデータのback.image_urlを優先
+        if 'back' in card and 'image_url' in card['back']:
+            back_image_url = card['back']['image_url']
+        # 2. OCRデータのback.image_url
+        elif 'back' in ocr_data and 'image_url' in ocr_data['back']:
             back_image_url = ocr_data['back']['image_url']
-        # 2. OCRデータのback_image_url
+        # 3. OCRデータのback_image_url
         elif 'back_image_url' in ocr_data:
             back_image_url = ocr_data['back_image_url']
-        # 3. カード番号から裏面画像URLを生成
+        # 4. カード番号から裏面画像URLを生成
         if not back_image_url and card_number:
             back_image_url = f"https://www.gundam-ab.com/images/cardlist/card/{card_number}_b.jpg?v8"
         
@@ -122,6 +138,7 @@ def fetch_cards():
         
         result_cards.append(card_info)
     
+    print(f"結果カード数: {len(result_cards)}")
     result_cards.sort(key=lambda x: x['number'])
     return jsonify({'success': True, 'images': result_cards})
 

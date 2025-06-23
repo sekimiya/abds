@@ -1,0 +1,38 @@
+{
+  "card_info": {
+    "card_number": "MS-001",
+    "card_name": "テストMSカード",
+    "series": "テストシリーズ",
+    "type": "",
+    "name": "",
+    "cost": "",
+    "power": "",
+    "attribute": "",
+    "rarity": "",
+    "effect": "",
+    "front_image_url": "https://example.com/front.jpg",
+    "back_image_url": "https://example.com/back.jpg"
+  },
+  "sp_data": {
+    "has_sp_data": false,
+    "sp_detail": null,
+    "sp_raw": null
+  },
+  "source_data": {
+    "number": "MS-001",
+    "name": "テストMSカード",
+    "series": "テストシリーズ",
+    "front": {
+      "image_url": "https://example.com/front.jpg"
+    },
+    "back": {
+      "image_url": "https://example.com/back.jpg"
+    }
+  },
+  "merge_info": {
+    "merge_timestamp": "2025-06-23T16:57:48.107133",
+    "merge_version": "1.0",
+    "card_error": "Error code: 400 - {'error': {'message': 'Error while downloading https://example.com/back.jpg.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_image_url'}}",
+    "card_warning": null
+  }
+}

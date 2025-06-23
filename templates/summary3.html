@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Deck Summary</title>
+    <style>
+        body { background: #1a1a1a; color: #e0e0e0; font-family: 'Meiryo UI', 'Hiragino Kaku Gothic ProN', sans-serif; }
+        .container { max-width: 1600px; margin: 15px auto; padding: 15px; background: #222; border-radius: 10px; }
+        table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+        th, td {
+            border: 1px solid #444;
+            padding: 8px;
+            text-align: center;
+            font-size: 13px;
+            vertical-align: middle;
+            white-space: normal;
+            word-break: break-word;
+            box-sizing: border-box;
+        }
+        th { background: #333; color: #66f2c5; font-weight: bold; }
+        .row-header { width: 100px; background-color: #333; color: #66f2c5; font-weight: bold; }
+        .unit-header { background-color: #282828; }
+
+        .ms-col { width: 7.5%; }
+        .pl-col { width: 7.5%; }
+        .total-col { width: 3.6%; font-weight: bold; color: #f92672; }
+
+        .card-image {
+            width: 80px;
+            height: auto;
+            object-fit: contain;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .card-name { height: 40px; font-size: 12px; }
+        .stat-bar-container {
+            width: 100px;
+            height: 10px;
+            background-color: #555;
+            border-radius: 5px;
+            overflow: hidden;
+            position: relative;
+        }
+        .stat-bar {
+            height: 100%;
+            background: linear-gradient(to right, #2196f3, #64b5f6);
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        .stat-value { position: absolute; right: 5px; top: 50%; transform: translateY(-50%); font-size: 11px; color: #fff; text-shadow: 1px 1px 2px #000; font-weight: bold; }
+        .total-value { font-weight: bold; font-size: 14px; }
+
+        .cost-annihilation { color: #ff6b6b; font-weight: bold; }
+        .cost-suppression { color: #4db6ac; font-weight: bold; }
+        .cost-defense { color: #4a90e2; font-weight: bold; }
+        
+        .aptitude-s, .aptitude-a, .aptitude-b, .aptitude-c { font-weight: bold; }
+        .aptitude-s { color: #ffeb3b; }
+        .aptitude-a { color: #ff9800; }
+        .aptitude-b { color: #8bc34a; }
+        .aptitude-c { color: #9e9e9e; }
+        .link-active { color: #66d9ef; font-weight: bold; }
+        .link-item { margin-bottom: 4px; }
+        .sq-link-active { color: #f92672; font-weight: bold; }
+        .skill-cell { text-align: left; vertical-align: top; font-size: 12px; }
+        #loading { text-align: center; font-size: 20px; padding: 50px; }
+        .terrain-cell {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            font-size: 12px;
+        }
+
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.85);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .modal-content {
+            background: #2c2c2c;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 1400px;
+            height: 90vh;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.5);
+        }
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            border-bottom: 1px solid #444;
+        }
+        .modal-header h2 {
+            margin: 0;
+            color: #66f2c5;
+        }
+        .modal-close {
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 30px;
+            cursor: pointer;
+            line-height: 1;
+        }
+        .modal-body {
+            overflow-y: auto;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 20px;
+        }
+        .modal-card {
+            background: #333;
+            border-radius: 8px;
+            padding: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: center;
+            border: 1px solid #444;
+        }
+        .modal-card:hover {
+            background: #4a4a4a;
+            transform: translateY(-5px);
+            border-color: #66f2c5;
+        }
+        .modal-card img {
+            width: 100%;
+            border-radius: 5px;
+        }
+        .modal-card-name {
+            font-size: 13px;
+            margin-top: 8px;
+            color: #e0e0e0;
+        }
+        .modal-filters {
+            display: flex;
+            gap: 10px;
+            padding: 15px 20px;
+            border-bottom: 1px solid #444;
+            background: #333;
+        }
+        .filter-select {
+            background: #444;
+            color: #e0e0e0;
+            border: 1px solid #666;
+            border-radius: 5px;
+            padding: 8px 12px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        .filter-select:focus {
+            outline: none;
+            border-color: #66f2c5;
+        }
+        .modal-card-series {
+            font-size: 11px;
+            margin-top: 4px;
+            color: #888;
+        }
+
+        .param-header {
+            background-color: #27ae60;
+            color: #ecf0f1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="loading">デッキデータを読み込み中...</div>
+        <table id="summaryTable">
+            <thead>
+                <tr>
+                    <th class="row-header"></th>
+                    <th colspan="3">Unit 1</th>
+                    <th colspan="3">Unit 2</th>
+                    <th colspan="3">Unit 3</th>
+                    <th colspan="3">Unit 4</th>
+                    <th colspan="3">Unit 5</th>
+                </tr>
+                <tr id="card-images-row">
+                    <th class="row-header"></th>
+                    <!-- Card images will be populated by JavaScript -->
+                </tr>
+                <tr id="card-names-row">
+                    <th class="row-header"></th>
+                    <!-- Card names will be populated by JavaScript -->
+                </tr>
+                <tr>
+                    <th class="row-header">Total Cost</th>
+                    <td colspan="15" id="totalCost" style="text-align: left; padding-left: 20px;">-</td>
+                </tr>
+            </thead>
+            <tbody id="summary-tbody">
+                <!-- Data rows will be populated here -->
+            </tbody>
+        </table>
+    </div>
+    
+    <!-- Card Selection Modal -->
+    <div id="selection-modal" class="modal-overlay" style="display:none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-title">カードを選択</h2>
+                <button class="modal-close" onclick="closeSelectionModal()">&times;</button>
+            </div>
+            <div class="modal-filters">
+                <select class="filter-select" id="series-filter">
+                    <option value="">すべての収録弾</option>
+                </select>
+            </div>
+            <div class="modal-body" id="modal-card-list">
+                <!-- Card list will be populated here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let allCards = [];
+        let selectedCards = new Array(10).fill(null);
+        let seriesLabels = {};
+        let seriesCodeToId = {};
+
+        const seriesCodeToIdConst = {
+            'FQ01': '529015', 'FQ02': '529016', 'FQ03': '529017',
+            'UT01': '529113', 'UT02': '529114', 'UT03': '529115', 'UT04': '529116', 'UT05': '529117', 'UT06': '529118',
+            'AB01': '529001', 'AB02': '529002', 'AB03': '529003', 'AB04': '529004', 'AB05': '529005', 'AB06': '529006',
+            'AB07': '529007', 'AB08': '529008', 'AB09': '529009', 'AB10': '529010', 'AB11': '529011', 'AB12': '529012',
+            'AB13': '529013', 'AB14': '529014'
+        };
+
+        function isValidValue(value) {
+            if (value === null || value === undefined || value === '') return false;
+            if (typeof value === 'string') {
+                if (value.trim() === '') return false;
+                if (value.toLowerCase() === 'null') return false;
+                if (value.toLowerCase() === 'undefined') return false;
+            }
+            return true;
+        }
+
+        function getNestedValue(obj, path, defaultValue = '-') {
+            const value = path.split('.').reduce((acc, part) => acc && acc[part], obj);
+            return isValidValue(value) ? value : defaultValue;
+        }
+
+        function getStat(card, statPath) {
+            const value = getNestedValue(card, statPath);
+            return (value === '-' || isNaN(parseInt(value, 10))) ? 0 : parseInt(value, 10);
+        }
+
+        function createStatBar(value) {
+            const percentage = (value / 500) * 100;
+            return `<div class="stat-bar-container">
+                        <div class="stat-bar" style="width: ${percentage}%;"></div>
+                        <div class="stat-value">${value}</div>
+                    </div>`;
+        }
+        
+        function getSkillDescription(card, skillNumber) {
+            const skillType = getNestedValue(card.ocr_data, `skill_type${skillNumber}`, '');
+            const skillName = getNestedValue(card.ocr_data, `skill_name${skillNumber}`, '');
+            const skillDesc = getNestedValue(card.ocr_data, `skill_description${skillNumber}`, '');
+            
+            if (!skillType && !skillName && !skillDesc) {
+                return '-';
+            }
+            
+            let html = '';
+            if (skillType) {
+                html += `<strong>[${skillType}]</strong> `;
+            }
+            if (skillName) {
+                html += `${skillName}<br>`;
+            }
+            if (skillDesc) {
+                html += skillDesc.replace(/\\n/g, '<br>');
+            }
+            
+            return html;
+        }
+
+        function updateSummary() {
+            console.log("Updating summary with selected cards:", selectedCards);
+            const tbody = document.getElementById('summary-tbody');
+            const totalCostEl = document.getElementById('totalCost');
+            tbody.innerHTML = '';
+
+            const headers = [
+                { key: 'HP', label: 'HP' },
+                { key: 'M-ATK', label: '近距離攻撃' },
+                { key: 'S-ATK', label: '遠距離攻撃' },
+                { key: 'Cost', label: 'Cost' },
+                { key: 'Terrain', label: '地形適性' },
+                { key: 'Link', label: 'リンクアビリティ' },
+                { key: 'Ability', label: 'アビリティ' },
+                { key: 'PL Skill', label: 'パイロットスキル' },
+                { key: 'SQ Link', label: 'SPタクティカルリンク' },
+                { key: 'Illust', label: 'イラストレーター' }
+            ];
+
+            const totals = { 'M-ATK': 0, 'S-ATK': 0, 'HP': 0 };
+
+            headers.forEach(header => {
+                const row = document.createElement('tr');
+                const headerCell = document.createElement('th');
+                headerCell.className = 'row-header';
+                headerCell.textContent = header.label;
+                row.appendChild(headerCell);
+
+                for (let i = 0; i < 5; i++) {
+                    const unitIndex = i * 2;
+                    const msCard = selectedCards[unitIndex];
+                    const plCard = selectedCards[unitIndex + 1];
+
+                    let msCellContent = '-';
+                    let plCellContent = '-';
+                    let totalCellContent = '';
+
+                    if (header.key === 'HP' || header.key === 'M-ATK' || header.key === 'S-ATK') {
+                        let msValue = msCard ? getStat(msCard, `front.${header.key.toLowerCase().replace('-', '_')}`) : 0;
+                        let plValue = plCard ? getStat(plCard, `front.${header.key.toLowerCase().replace('-', '_')}`) : 0;
+                        const totalValue = msValue + plValue;
+
+                        if (msCard || plCard) {
+                            msCellContent = createStatBar(msValue);
+                            plCellContent = createStatBar(plValue);
+                            totalCellContent = `<div class="total-value">${totalValue}</div>`;
+                            totals[header.key] += totalValue;
+                        } else {
+                            msCellContent = createStatBar(0);
+                            plCellContent = createStatBar(0);
+                            totalCellContent = '<div class="total-value">0</div>';
+                        }
+                    } else if (header.key === 'Cost') {
+                        if (msCard) msCellContent = getNestedValue(msCard, 'front.cost', '-');
+                        if (plCard) plCellContent = getNestedValue(plCard, 'front.cost', '-');
+                        totalCellContent = '-';
+                    } else if (header.key === 'Terrain') {
+                        if (msCard) {
+                            const space = getNestedValue(msCard, 'front.terrain_type.Space');
+                            const ground = getNestedValue(msCard, 'front.terrain_type.Ground');
+                            const desert = getNestedValue(msCard, 'front.terrain_type.Desert');
+                            const underwater = getNestedValue(msCard, 'front.terrain_type.Underwater');
+                            const forest = getNestedValue(msCard, 'front.terrain_type.Forest');
+                            const snow = getNestedValue(msCard, 'front.terrain_type.Snowfield');
+                            const urban = getNestedValue(msCard, 'front.terrain_type.Urban');
+                            const water = getNestedValue(msCard, 'front.terrain_type.Waterside');
+
+                            msCellContent = `<div class="terrain-cell">
+                                <span class="aptitude-${space.toLowerCase()}">宇宙:${space}</span> 
+                                <span class="aptitude-${ground.toLowerCase()}">地上:${ground}</span> 
+                                <span class="aptitude-${desert.toLowerCase()}">砂漠:${desert}</span> 
+                                <span class="aptitude-${underwater.toLowerCase()}">水中:${underwater}</span>
+                                <span class="aptitude-${forest.toLowerCase()}">森林:${forest}</span> 
+                                <span class="aptitude-${snow.toLowerCase()}">雪原:${snow}</span> 
+                                <span class="aptitude-${urban.toLowerCase()}">市街:${urban}</span>
+                                <span class="aptitude-${water.toLowerCase()}">水辺:${water}</span>
+                            </div>`;
+                        } else {
+                            msCellContent = '-';
+                        }
+                        plCellContent = '-';
+                        totalCellContent = '-';
+                    } else if (header.key === 'Link') {
+                        if (msCard) {
+                             const links = [];
+                             for(let j=1; j<=5; j++){
+                                 const link = getNestedValue(msCard, `front.link_ability${j}`);
+                                 if(link !== '-') links.push(link);
+                             }
+                             msCellContent = links.length > 0 ? links.map(l => `<div class="link-item">${l}</div>`).join('') : '-';
+                        }
+                         if (plCard) {
+                             const links = [];
+                             for(let j=1; j<=5; j++){
+                                 const link = getNestedValue(plCard, `front.link_ability${j}`);
+                                 if(link !== '-') links.push(link);
+                             }
+                             plCellContent = links.length > 0 ? links.map(l => `<div class="link-item">${l}</div>`).join('') : '-';
+                        }
+                        
+                        let totalLinksHtml = '-';
+                        if (msCard && plCard) {
+                            const msLinks = [];
+                            for(let j=1; j<=5; j++) {
+                                const link = getNestedValue(msCard, `front.link_ability${j}`);
+                                if(link !== '-') msLinks.push(link);
+                            }
+                            const plLinks = [];
+                             for(let j=1; j<=5; j++) {
+                                const link = getNestedValue(plCard, `front.link_ability${j}`);
+                                if(link !== '-') plLinks.push(link);
+                            }
+                            
+                            const allLinks = [...new Set([...msLinks, ...plLinks])];
+                            const commonLinks = msLinks.filter(link => plLinks.includes(link));
+                            
+                            totalLinksHtml = allLinks.map(link => {
+                                return `<div class="link-item ${commonLinks.includes(link) ? 'link-active' : ''}">${link}</div>`;
+                            }).join('');
+                        }
+                        totalCellContent = totalLinksHtml;
+
+                    } else if (header.key === 'Ability') {
+                        msCellContent = msCard && msCard.ocr_data ? getSkillDescription(msCard, 1) : '-';
+                        plCellContent = plCard && plCard.ocr_data ? getSkillDescription(plCard, 1) : '-';
+                        totalCellContent = '-';
+
+                    } else if (header.key === 'PL Skill') {
+                        msCellContent = '-';
+                        plCellContent = plCard && plCard.ocr_data ? getSkillDescription(plCard, 2) : '-';
+                        totalCellContent = '-';
+                    } else if (header.key === 'SQ Link') {
+                        let sqLinkHtml = '-';
+                        if (msCard && plCard && msCard.ocr_data && plCard.ocr_data) {
+                            const msLinkName = getNestedValue(msCard.ocr_data, 'skill_name2');
+                            const plLinkName = getNestedValue(plCard.ocr_data, 'skill_name3');
+
+                            if (msLinkName !== '-' && plLinkName !== '-' && msLinkName === plLinkName) {
+                                sqLinkHtml = `<div class="sq-link-active">${msLinkName}<br>${getNestedValue(msCard.ocr_data, 'skill_description2', '').replace(/\\n/g, '<br>')}</div>`;
+                            } else {
+                                const msHtml = msLinkName !== '-' ? `MS: ${msLinkName}` : '';
+                                const plHtml = plLinkName !== '-' ? `PL: ${plLinkName}` : '';
+                                sqLinkHtml = `${msHtml}<br>${plHtml}`.trim();
+                                if(sqLinkHtml === '') sqLinkHtml = '-';
+                            }
+                        }
+                        msCellContent = msCard && msCard.ocr_data ? getSkillDescription(msCard, 2) : '-';
+                        plCellContent = plCard && plCard.ocr_data ? getSkillDescription(plCard, 3) : '-';
+                        totalCellContent = sqLinkHtml;
+                    } else if (header.key === 'Illust') {
+                        if (msCard) msCellContent = getNestedValue(msCard.ocr_data, 'illustrator', '-');
+                        if (plCard) plCellContent = getNestedValue(plCard.ocr_data, 'illustrator', '-');
+                        totalCellContent = '-';
+                    }
+
+                    const msCell = document.createElement('td');
+                    msCell.className = 'ms-col';
+                    if (header.key === 'Ability' || header.key === 'PL Skill' || header.key === 'SQ Link') msCell.classList.add('skill-cell');
+                    msCell.innerHTML = msCellContent;
+                    row.appendChild(msCell);
+
+                    const plCell = document.createElement('td');
+                    plCell.className = 'pl-col';
+                    if (header.key === 'Ability' || header.key === 'PL Skill') plCell.classList.add('skill-cell');
+                    plCell.innerHTML = plCellContent;
+                    row.appendChild(plCell);
+
+                    const totalCell = document.createElement('td');
+                    totalCell.className = 'total-col';
+                    if (header.key === 'Link' || header.key === 'SQ Link') totalCell.classList.add('skill-cell');
+                    totalCell.innerHTML = totalCellContent;
+                    row.appendChild(totalCell);
+                }
+                tbody.appendChild(row);
+            });
+
+            // Add total stat row
+            const totalStatRow = document.createElement('tr');
+            const totalStatHeader = document.createElement('th');
+            totalStatHeader.className = 'row-header';
+            totalStatHeader.textContent = '総合計';
+            totalStatRow.appendChild(totalStatHeader);
+
+            for (let i = 0; i < 5; i++) {
+                const emptyMs = document.createElement('td');
+                const emptyPl = document.createElement('td');
+                const totalCell = document.createElement('td');
+                totalCell.className = 'total-col';
+                totalCell.innerHTML = `<div class="total-value">
+                    HP: ${totals.HP}<br>
+                    近: ${totals['M-ATK']}<br>
+                    遠: ${totals['S-ATK']}
+                </div>`;
+                totalStatRow.appendChild(emptyMs);
+                totalStatRow.appendChild(emptyPl);
+                totalStatRow.appendChild(totalCell);
+            }
+            //tbody.appendChild(totalStatRow);
+             tbody.insertBefore(totalStatRow, tbody.firstChild);
+
+
+            updateImagesAndNames();
+            updateTotalCost();
+        }
+
+        function updateImagesAndNames() {
+            const imagesRow = document.getElementById('card-images-row');
+            const namesRow = document.getElementById('card-names-row');
+            imagesRow.innerHTML = '<th class="row-header"></th>';
+            namesRow.innerHTML = '<th class="row-header"></th>';
+
+            for (let i = 0; i < 5; i++) {
+                const unitIndex = i * 2;
+                const msCard = selectedCards[unitIndex];
+                const plCard = selectedCards[unitIndex + 1];
+
+                const msImgCell = document.createElement('td');
+                const plImgCell = document.createElement('td');
+                const totalImgCell = document.createElement('td'); // Placeholder for total column
+                msImgCell.innerHTML = msCard ? `<img src="${getNestedValue(msCard.front, 'image_url')}" class="card-image" onclick="openSelectionModal(${unitIndex})">` : `<div class="card-image" style="background:#444; display:flex; align-items:center; justify-content:center; height:100px; cursor:pointer;" onclick="openSelectionModal(${unitIndex})">MS</div>`;
+                plImgCell.innerHTML = plCard ? `<img src="${getNestedValue(plCard.front, 'image_url')}" class="card-image" onclick="openSelectionModal(${unitIndex + 1})">` : `<div class="card-image" style="background:#444; display:flex; align-items:center; justify-content:center; height:100px; cursor:pointer;" onclick="openSelectionModal(${unitIndex + 1})">PL</div>`;
+                totalImgCell.innerHTML = '';
+                msImgCell.className = 'ms-col';
+                plImgCell.className = 'pl-col';
+                totalImgCell.className = 'total-col';
+                imagesRow.appendChild(msImgCell);
+                imagesRow.appendChild(plImgCell);
+                imagesRow.appendChild(totalImgCell);
+
+                const msNameCell = document.createElement('td');
+                const plNameCell = document.createElement('td');
+                const totalNameCell = document.createElement('td');
+                msNameCell.innerHTML = `<div class="card-name">${msCard ? getNestedValue(msCard.front, 'card_name') : '-'}</div>`;
+                plNameCell.innerHTML = `<div class="card-name">${plCard ? getNestedValue(plCard.front, 'card_name') : '-'}</div>`;
+                totalNameCell.innerHTML = '';
+                msNameCell.className = 'ms-col';
+                plNameCell.className = 'pl-col';
+                totalNameCell.className = 'total-col';
+                namesRow.appendChild(msNameCell);
+                namesRow.appendChild(plNameCell);
+                namesRow.appendChild(totalNameCell);
+            }
+        }
+        
+        function updateTotalCost() {
+            let totalAnnihilation = 0;
+            let totalSuppression = 0;
+            let totalDefense = 0;
+            
+            for(let i=0; i<5; i++) {
+                const msCard = selectedCards[i*2];
+                const plCard = selectedCards[i*2+1];
+                
+                if(msCard) {
+                    const cost = parseInt(getNestedValue(msCard, 'front.cost', '0'));
+                    const type = getNestedValue(msCard, 'front.combat_style');
+                    if (type === '殲滅') totalAnnihilation += cost;
+                    else if (type === '制圧') totalSuppression += cost;
+                    else if (type === '防衛') totalDefense += cost;
+                }
+                if(plCard) {
+                    const cost = parseInt(getNestedValue(plCard, 'front.cost', '0'));
+                    const type = getNestedValue(plCard, 'front.combat_style');
+                    if (type === '殲滅') totalAnnihilation += cost;
+                    else if (type === '制圧') totalSuppression += cost;
+                    else if (type === '防衛') totalDefense += cost;
+                }
+            }
+            
+            const totalCostEl = document.getElementById('totalCost');
+            totalCostEl.innerHTML = `
+                <span class="cost-annihilation">殲滅: ${totalAnnihilation}</span> / 
+                <span class="cost-suppression">制圧: ${totalSuppression}</span> / 
+                <span class="cost-defense">防衛: ${totalDefense}</span> | 
+                <strong>Total: ${totalAnnihilation + totalSuppression + totalDefense}</strong>
+            `;
+        }
+
+        let currentSelectionIndex = -1;
+        function openSelectionModal(index) {
+            currentSelectionIndex = index;
+            const isPilot = index % 2 !== 0;
+            document.getElementById('modal-title').textContent = isPilot ? 'パイロットを選択' : 'モビルスーツを選択';
+            
+            const cardTypeFilter = isPilot ? 'パイロット' : 'モビルスーツ';
+            
+            const filteredCards = allCards.filter(card => {
+                const type = getNestedValue(card.front, 'card_type', 'unknown');
+                return type === cardTypeFilter;
+            });
+            
+            const modalList = document.getElementById('modal-card-list');
+            modalList.innerHTML = '';
+            
+            filteredCards.forEach(card => {
+                const cardEl = document.createElement('div');
+                cardEl.className = 'modal-card';
+                cardEl.onclick = () => selectCard(card.card_id);
+                
+                const seriesId = getNestedValue(card.front, 'series_id');
+                const seriesName = seriesLabels[seriesId] || 'Unknown Series';
+
+                cardEl.innerHTML = `
+                    <img src="${getNestedValue(card.front, 'image_url')}" alt="${getNestedValue(card.front, 'card_name')}">
+                    <div class="modal-card-name">${getNestedValue(card.front, 'card_name')}</div>
+                    <div class="modal-card-series">${seriesName}</div>
+                `;
+                modalList.appendChild(cardEl);
+            });
+            
+            document.getElementById('selection-modal').style.display = 'flex';
+        }
+
+        function closeSelectionModal() {
+            document.getElementById('selection-modal').style.display = 'none';
+        }
+
+        function selectCard(cardId) {
+            const selectedCard = allCards.find(c => c.card_id === cardId);
+            if (currentSelectionIndex !== -1) {
+                selectedCards[currentSelectionIndex] = selectedCard;
+                updateSummary();
+            }
+            closeSelectionModal();
+        }
+
+        function buildSampleDeck() {
+            const sampleDeck = [
+                "FQ01-001", "FQ01-036", // Unit 1
+                "FQ01-007", "FQ01-046", // Unit 2
+                "FQ01-008", "FQ01-047", // Unit 3
+                "FQ01-017", "FQ01-054", // Unit 4
+                "FQ01-015", "FQ01-056"  // Unit 5
+            ];
+
+            selectedCards = sampleDeck.map(id => allCards.find(c => c.card_id === id) || null);
+            updateSummary();
+        }
+
+        async function init() {
+            try {
+                const response = await fetch('/fetch_cards');
+                const data = await response.json();
+                console.log("Fetched data:", data);
+
+                if (!data || !data.all_cards) {
+                    throw new Error('Invalid data structure received from server.');
+                }
+                
+                allCards = data.all_cards.filter(card => card && card.front && card.front.card_id && card.front.card_name);
+                seriesLabels = data.series_labels || {};
+                
+                console.log("Processed cards:", allCards);
+                
+                // Populate series filter
+                const seriesFilter = document.getElementById('series-filter');
+                for (const [id, name] of Object.entries(seriesLabels)) {
+                    const option = document.createElement('option');
+                    option.value = id;
+                    option.textContent = name;
+                    seriesFilter.appendChild(option);
+                }
+                seriesFilter.addEventListener('change', () => {
+                    // Re-filter the modal content when series changes
+                    if (currentSelectionIndex !== -1) {
+                         openSelectionModal(currentSelectionIndex);
+                    }
+                });
+
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('summaryTable').style.visibility = 'visible';
+                
+                buildSampleDeck();
+                updateSummary();
+                
+            } catch (error) {
+                console.error('Failed to initialize summary page:', error);
+                document.getElementById('loading').textContent = 'データの読み込みに失敗しました。';
+            }
+        }
+        
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html> 

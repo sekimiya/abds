@@ -1,0 +1,73 @@
+{
+  "card_number": "_p1",
+  "card_name": "ウイングガンダムゼロ",
+  "series": "AB10",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/_p1.jpg?v8",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT02-018_p1_b.jpg?v8",
+  "ocr_data": {
+    "card_id": "UT02-018",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト7"
+    },
+    "name": "ウイングガンダムゼロ",
+    "model": "XXXG-00W0 WING GUNDAM ZERO",
+    "cost": 7,
+    "category": "遠距離",
+    "pilot": "ヒイロ・ユイ、ゼクス・マーキス",
+    "stats": {
+      "height": "16.7m",
+      "weight": "8.0t",
+      "mobility": 310,
+      "ranged_attack": 580,
+      "melee_attack": 280,
+      "hp": 530
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "C",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "ツインバスターライフル",
+        "range": 4,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ビームサーベル",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "奇襲",
+      "type": "任意発動",
+      "range": 6,
+      "cost": 6,
+      "description": "指定した位置に範囲攻撃を行い、その地点に移動する。"
+    },
+    "link_ability": [
+      {
+        "name": "ガンダムW",
+        "condition": "デッキに3枚以上",
+        "effect": "機動力小アップ"
+      },
+      {
+        "name": "システムが見せる未来",
+        "condition": "デッキに2枚以上",
+        "effect": "[HP] [SP]威力小アップ"
+      }
+    ],
+    "impact_area": {
+      "type": "circular",
+      "radius": 3200,
+      "centered": true
+    },
+    "illustrator": "kyoryu kuramochi + Sakura Asagi"
+  },
+  "ocr_timestamp": "2025-06-23T23:17:24.130525",
+  "ocr_type": "basic"
+}
