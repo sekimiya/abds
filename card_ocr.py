@@ -140,32 +140,56 @@ def extract_structured_data_from_url(image_path_or_url, api_key):
 
 1. **SQ関連スキルの判定**: パイロットスキルに「SQ」「SQUAD」「ゲージ」「ガージ」などのキーワードが含まれている場合は `has_sq_skill: true` にしてください。
 
-2. **pilot_skill.effectフィールドの重要事項**: 
+2. **pilot_skillオブジェクトの構造**:
+   - `pilot_skill`オブジェクトには必ず以下のフィールドを含めてください：
+     - `name`: スキル名
+     - `effect`: スキル効果の説明文
+     - `has_sq_skill`: SQ関連スキルがあるかどうか（true/false）
+     - `sq_skill_details`: SQ関連スキルの詳細（has_sq_skill: trueの場合のみ）
+
+3. **pilot_skill.effectフィールドの重要事項**: 
    - パイロットスキルの説明文には、SQ関連の条件や効果を必ず含めてください
    - 「SQゲージが最大時」「SQUAD RUSH中」などの条件文があれば、それらをeffectフィールドに含めてください
    - 複数の効果がある場合は、改行（\\n）で区切って記載してください
    - 例: "SQゲージが最大時\\n自身の「遠距離攻撃力」「SP威力」をアップする。\\nSQUAD RUSH中\\n「遠距離攻撃力」「SP威力」の効果がさらに上昇する。"
 
-3. **SQゲージ変動効果**: パイロットスキルの説明文で、SQゲージの増減に関する記述（例: "SQゲージ+1"、"SQゲージ-1"など）があれば抽出してください。
+4. **sq_skill_detailsフィールドの新しい構造**:
+   - **すべてのパイロットスキルで以下の6つのフィールドを含めてください**：
+     - `trigger`: スキル発動条件（例: "敵ユニットを撃破時", "SQゲージが最大時", "敵戦艦／拠点をロックオン時"）
+     - `effect`: 基本効果（例: "SQゲージ大アップ", "自身の「遠距離攻撃力」をアップする", "40秒間、自身の「機動力」「近距離攻撃力」を中アップする"）
+     - `sq_rush_effect`: SQUAD RUSH中の追加効果（SQ関連スキルの場合のみ、例: "SQUAD RUSH中\\n「遠距離攻撃力」の効果がさらに上昇する"）
+     - `sq_gauge_effect`: SQゲージの増減効果（SQ関連スキルの場合のみ、例: "SQゲージ+1", "SQゲージ大アップ"）
+     - `sq_max_effect`: SQゲージ最大時の効果（SQ関連スキルの場合のみ、例: "SQゲージが最大時\\n自身の「遠距離攻撃力」をアップする"）
+     - `squad_rush_effect`: SQUAD RUSH中の効果（SQ関連スキルの場合のみ、例: "SQUAD RUSH中\\n「遠距離攻撃力」の効果がさらに上昇する"）
+   - **SQ関連スキルがない場合でも、`trigger`と`effect`は必ず抽出してください**
+   - SQ関連スキルがない場合、`sq_rush_effect`、`sq_gauge_effect`、`sq_max_effect`、`squad_rush_effect`は`null`にしてください
+   - **重要**: `sq_skill_details`を`null`にしないでください。常に6つのフィールドを含むオブジェクトにしてください
 
-4. **SQゲージ最大値効果**: パイロットスキルの説明文で、SQゲージが最大値の場合の効果（例: "SQゲージが最大時"、"SQゲージ最大時"など）があれば抽出してください。
+5. **新しいフィールドの抽出ルール**:
+   - `trigger`: スキル発動の条件部分（「時」「場合」「時点」「発動」「ロックオン」「撃破」などのキーワードを含む行）
+   - `effect`: triggerとsq_rush_effect以外のSQゲージ関連の基本効果
+   - `sq_rush_effect`: "SQUAD RUSH中"で始まる追加効果
+   - 該当する効果がない場合は`null`を使用してください
 
-5. **SQUAD RUSH効果**: パイロットスキルの説明文で、以下のSQUAD RUSH関連の記述があれば、その効果を抽出してください：
-   - 「SQUAD RUSH中」で始まる効果
-   - 「SQUADRUSH中」で始まる効果
-   - 「スクワッドラッシュ中」で始まる効果
-   - 「SQUAD RUSH発動中」で始まる効果
-   - 「SQUADRUSH発動中」で始まる効果
-   - 「SQUAD RUSHが発動」で始まる効果
-   - 「SQUADRUSHが発動」で始まる効果
+6. **効果の抽出ルール（既存）**:
+   - SQゲージ変動効果: "SQゲージ+1", "SQゲージ-1", "SQゲージ大アップ"など
+   - SQゲージ最大値効果: "SQゲージが最大時"で始まる効果文
+   - SQUAD RUSH効果: "SQUAD RUSH中"で始まる効果文
+   - 該当する効果がない場合は`null`を使用してください
 
-6. **効果の分離**: 説明文が複数の効果を含む場合は、適切に分離して各フィールドに格納してください。特に「SQUAD RUSH発動中」の効果は、その直後に続く効果文を正確に抽出してください。
-
-7. **該当なしの場合**: 各効果が存在しない場合は `null` または空文字列を使用してください。
+7. **データ構造の最適化**:
+   - 冗長なネスト構造を避け、シンプルで直感的な構造にしてください
+   - 不要な空配列や空オブジェクトは含めないでください
+   - `has_sq_skill: false`の場合は`sq_skill_details`を`null`にすることで、データサイズを削減してください
 
 **重要**: 
-- SQ関連スキルを持つPLカードは、多くの場合「SQUAD RUSH発動中」に発動する効果を持ちます。この効果を正確に識別し、`squad_rush_effect`フィールドに格納してください。
+- **pilot_skillオブジェクトには必ず`has_sq_skill`フィールドを含めてください。**
 - **pilot_skill.effectフィールドには、SQ関連の条件や効果を必ず含めてください。これが最も重要です。**
+- **すべてのパイロットスキルで`sq_skill_details`フィールドを含めてください（SQ関連スキルがない場合でも基本的な構造を含む）。**
+- **`sq_skill_details`を`null`にしないでください。常に6つのフィールドを含むオブジェクトにしてください。**
+- `has_sq_skill`の値に応じて`sq_skill_details`の構造を適切に設定してください。
+- 新しいフィールド（`trigger`、`effect`、`sq_rush_effect`）を優先的に抽出し、既存フィールド（`sq_gauge_effect`、`sq_max_effect`、`squad_rush_effect`）も後方互換性のために含めてください。
+- データの冗長性を避け、効率的な構造にしてください。
 
 **rawフィールドについて**:
 - 出力するJSONには必ず "raw" フィールドを含めてください。
@@ -1562,230 +1586,118 @@ def analyze_pl_sq_skills(pl_card_data):
     sq_keywords = ['SQゲージ', 'SQガージ', 'ゲージ', 'ガージ', 'SQUAD RUSH', 'SQUADRUSH', 'スクワッドラッシュ']
     has_sq_skill = any(keyword in skill_effect for keyword in sq_keywords)
 
-    # --- 必ずhas_sq_skill, sq_skill_detailsを埋める ---
+    # スキル効果を改行で分割
+    lines = skill_effect.split('\n')
+    
+    # trigger（発動条件）の抽出
+    trigger = None
+    if lines:
+        first_line = lines[0].strip()
+        # 条件を示すキーワードを含む行をtriggerとして抽出
+        trigger_keywords = ['時', '場合', '時点', '発動', 'ロックオン', '撃破', 'ダメージ', 'HP', '戦艦', '拠点']
+        if any(keyword in first_line for keyword in trigger_keywords):
+            trigger = first_line
+    
+    # 基本効果の抽出（trigger以外の部分）
+    effect_parts = []
+    for line in lines:
+        line = line.strip()
+        if line and line != trigger:
+            effect_parts.append(line)
+    
+    effect = '\n'.join(effect_parts) if effect_parts else None
+
+    # --- SQスキルがない場合は基本的な構造のみ返す ---
+    if not has_sq_skill:
+        return {
+            'has_sq_skill': False,
+            'sq_skill_details': {
+                'trigger': trigger,
+                'effect': effect,
+                'sq_rush_effect': None,
+                'sq_gauge_effect': None,
+                'sq_max_effect': None,
+                'squad_rush_effect': None
+            }
+        }
+
+    # --- SQスキルがある場合の詳細分析 ---
+    sq_rush_effect = None
     sq_gauge_effect = None
     sq_max_effect = None
     squad_rush_effect = None
-    sq_conditions = {
-        'gauge_condition': None,
-        'max_condition': None,
-        'rush_condition': None,
-        'other_conditions': []
-    }
-    sq_effects = {
-        'gauge_effects': [],
-        'max_effects': [],
-        'rush_effects': [],
-        'other_effects': []
-    }
+    
+    # SQUAD RUSH効果の抽出（最後の部分）
+    rush_patterns = [
+        r'SQUAD RUSH中[^。]*',
+        r'SQUADRUSH中[^。]*',
+        r'スクワッドラッシュ中[^。]*',
+        r'SQUAD RUSH発動中[^。]*',
+        r'SQUADRUSH発動中[^。]*',
+        r'SQUAD RUSHが発動[^。]*',
+        r'SQUADRUSHが発動[^。]*'
+    ]
+    
+    for pattern in rush_patterns:
+        match = re.search(pattern, skill_effect)
+        if match:
+            squad_rush_effect = match.group()
+            sq_rush_effect = match.group()
+            break
+    
+    # 基本効果の抽出（triggerとsq_rush_effect以外の部分）
+    effect_parts = []
+    for line in lines:
+        line = line.strip()
+        if line and line != trigger and line != sq_rush_effect:
+            # SQゲージ関連の効果を基本効果として抽出
+            if any(keyword in line for keyword in ['SQゲージ', 'SQガージ', 'ゲージ', 'ガージ']):
+                effect_parts.append(line)
+    
+    if effect_parts:
+        effect = '\n'.join(effect_parts)
+    
+    # 既存の詳細抽出（後方互換性のため）
     # SQゲージ効果の抽出
     gauge_patterns = [
-        r'SQゲージ[^。]*',
-        r'SQガージ[^。]*',
-        r'ゲージ[^。]*',
-        r'ガージ[^。]*'
+        r'SQゲージ[＋+]\d+',
+        r'SQゲージ[ー-]\d+',
+        r'SQゲージ(?:が|を)?(?:増加|減少|アップ|ダウン)',
+        r'SQゲージ(?:大|中|小)?(?:アップ|ダウン)'
     ]
+    
     for pattern in gauge_patterns:
         match = re.search(pattern, skill_effect)
         if match:
             sq_gauge_effect = match.group()
             break
+    
     # SQゲージ最大値効果の抽出
     max_patterns = [
         r'SQゲージが最大時[^。]*',
-        r'SQガージが最大時[^。]*',
-        r'ゲージが最大時[^。]*',
-        r'ガージが最大時[^。]*',
         r'SQゲージ最大時[^。]*',
-        r'SQガージ最大時[^。]*',
-        r'ゲージ最大時[^。]*',
-        r'ガージ最大時[^。]*',
-        r'SQゲージが最大値の時[^。]*',
-        r'SQガージが最大値の時[^。]*',
-        r'ゲージが最大値の時[^。]*',
-        r'ガージが最大値の時[^。]*',
-        r'SQゲージ最大値の時[^。]*',
-        r'SQガージ最大値の時[^。]*',
-        r'ゲージ最大値の時[^。]*',
-        r'ガージ最大値の時[^。]*'
+        r'SQゲージが最大[^。]*'
     ]
+    
     for pattern in max_patterns:
         match = re.search(pattern, skill_effect)
         if match:
-            sq_max_effect = match.group().strip()
-            if '最大' in sq_max_effect:
-                sq_gauge_effect = None
+            sq_max_effect = match.group()
             break
-    # SQUAD RUSH効果の抽出
-    rush_patterns = [
-        r'SQUAD RUSH中[^。]*',
-        r'SQUAD RUSH時[^。]*',
-        r'SQUADRUSH中[^。]*',
-        r'SQUADRUSH時[^。]*',
-        r'スクワッドラッシュ中[^。]*',
-        r'スクワッドラッシュ時[^。]*',
-        r'SQUAD RUSHが発動[^。]*',
-        r'SQUADRUSHが発動[^。]*',
-        r'SQUAD RUSH発動[^。]*',
-        r'SQUADRUSH発動[^。]*'
-    ]
-    for pattern in rush_patterns:
-        match = re.search(pattern, skill_effect)
-        if match:
-            squad_rush_effect = match.group().strip()
-            break
-    # SQゲージ最大値条件の詳細分析
-    if sq_max_effect:
-        sq_conditions['max_condition'] = 'SQゲージが最大時'
-        max_effect_patterns = [
-            r'SQゲージが最大時[^。]*?、([^。]*?をアップする?[^。]*)',
-            r'SQガージが最大時[^。]*?、([^。]*?をアップする?[^。]*)',
-            r'ゲージが最大時[^。]*?、([^。]*?をアップする?[^。]*)',
-            r'ガージが最大時[^。]*?、([^。]*?をアップする?[^。]*)',
-            r'SQゲージ最大時[^。]*?、([^。]*?をアップする?[^。]*)',
-            r'SQガージ最大時[^。]*?、([^。]*?をアップする?[^。]*)',
-            r'ゲージ最大時[^。]*?、([^。]*?をアップする?[^。]*)',
-            r'ガージ最大時[^。]*?、([^。]*?をアップする?[^。]*)'
-        ]
-        for pattern in max_effect_patterns:
-            match = re.search(pattern, skill_effect)
-            if match:
-                effect_text = match.group(1).strip()
-                if effect_text and effect_text not in sq_effects['max_effects']:
-                    sq_effects['max_effects'].append(effect_text)
-                break
-    # SQUAD RUSH条件の詳細分析
-    if squad_rush_effect:
-        rush_condition_patterns = [
-            r'(SQUAD RUSH中)',
-            r'(SQUAD RUSH時)',
-            r'(SQUADRUSH中)',
-            r'(SQUADRUSH時)',
-            r'(スクワッドラッシュ中)',
-            r'(スクワッドラッシュ時)'
-        ]
-        for pattern in rush_condition_patterns:
-            match = re.search(pattern, squad_rush_effect)
-            if match:
-                sq_conditions['rush_condition'] = match.group(1)
-                break
-        rush_effect_patterns = [
-            r'SQUAD RUSH中[^。]*?、([^。]*?をアップする?[^。]*)',
-            r'SQUAD RUSH時[^。]*?、([^。]*?をアップする?[^。]*)',
-            r'SQUADRUSH中[^。]*?、([^。]*?をアップする?[^。]*)',
-            r'SQUADRUSH時[^。]*?、([^。]*?をアップする?[^。]*)'
-        ]
-        for pattern in rush_effect_patterns:
-            match = re.search(pattern, skill_effect)
-            if match:
-                effect_text = match.group(1).strip()
-                if effect_text and effect_text not in sq_effects['rush_effects']:
-                    sq_effects['rush_effects'].append(effect_text)
-                break
-    # SQゲージ一般条件の詳細分析
-    if sq_gauge_effect and not sq_max_effect:
-        gauge_condition_patterns = [
-            r'(SQゲージ[^時]*時)',
-            r'(SQガージ[^時]*時)',
-            r'(ゲージ[^時]*時)',
-            r'(ガージ[^時]*時)'
-        ]
-        for pattern in gauge_condition_patterns:
-            match = re.search(pattern, sq_gauge_effect)
-            if match:
-                sq_conditions['gauge_condition'] = match.group(1)
-                break
-    # その他の条件を抽出（SQ関連を除外）
-    other_condition_patterns = [
-        r'([^。]*?時[^。]*)',
-        r'([^。]*?中[^。]*)',
-        r'([^。]*?の時[^。]*)'
-    ]
-    for pattern in other_condition_patterns:
-        matches = re.findall(pattern, skill_effect)
-        for match in matches:
-            match = match.strip()
-            if (match and 
-                'SQ' not in match and 
-                'ゲージ' not in match and 
-                'ガージ' not in match and
-                match not in sq_conditions['other_conditions']):
-                sq_conditions['other_conditions'].append(match)
-    # その他の効果を抽出（SQ関連を除外）
-    effect_patterns = [
-        r'([^。]*?をアップする?[^。]*)',
-        r'([^。]*?アップ[^。]*)',
-        r'([^。]*?強化[^。]*)'
-    ]
-    for pattern in effect_patterns:
-        matches = re.findall(pattern, skill_effect)
-        for match in matches:
-            match = match.strip()
-            if (match and 
-                match not in sq_effects['max_effects'] and 
-                match not in sq_effects['rush_effects'] and
-                match not in sq_effects['other_effects'] and
-                'SQ' not in match and
-                'ゲージ' not in match and
-                'ガージ' not in match):
-                sq_effects['other_effects'].append(match)
-    # SQUAD RUSH発動時条件・効果の抽出
-    rush_trigger_condition = None
-    rush_trigger_effects = []
-    rush_trigger_patterns_direct = [
-        r'SQUAD RUSH発動中[、:：]?(.*?)(。|\n|$)',
-        r'SQUADRUSH発動中[、:：]?(.*?)(。|\n|$)',
-        r'スクワッドラッシュ発動中[、:：]?(.*?)(。|\n|$)'
-    ]
-    for pattern in rush_trigger_patterns_direct:
-        match = re.search(pattern, skill_effect)
-        if match:
-            rush_trigger_condition = 'SQUAD RUSH発動中'
-            effect_text = match.group(1).strip()
-            if effect_text and effect_text not in rush_trigger_effects:
-                rush_trigger_effects.append(effect_text)
-            break
-    if not rush_trigger_condition:
-        rush_trigger_patterns = [
-            r'(SQUAD RUSHが発動[^。]*)',
-            r'(SQUADRUSHが発動[^。]*)',
-            r'(SQUAD RUSH発動[^。]*)',
-            r'(SQUADRUSH発動[^。]*)',
-            r'(スクワッドラッシュが発動[^。]*)',
-            r'(スクワッドラッシュ発動[^。]*)'
-        ]
-        for pattern in rush_trigger_patterns:
-            match = re.search(pattern, skill_effect)
-            if match:
-                rush_trigger_condition = match.group(1)
-                break
-        if rush_trigger_condition:
-            effect_patterns = [
-                r'、([^。]*?をアップする?[^。]*)',
-                r'、([^。]*?アップ[^。]*)',
-                r'、([^。]*?強化[^。]*)'
-            ]
-            for pattern in effect_patterns:
-                match = re.search(pattern, rush_trigger_condition)
-                if match:
-                    effect_text = match.group(1).strip()
-                    if effect_text and effect_text not in rush_trigger_effects:
-                        rush_trigger_effects.append(effect_text)
-                    break
-    sq_conditions['rush_trigger_condition'] = rush_trigger_condition
-    sq_effects['rush_trigger_effects'] = rush_trigger_effects
-    # --- ここまで詳細分析 ---
-    pilot_skill.update({
-        'has_sq_skill': has_sq_skill,
+
+    return {
+        'has_sq_skill': True,
         'sq_skill_details': {
+            # 新しい構造化フィールド
+            'trigger': trigger,
+            'effect': effect,
+            'sq_rush_effect': sq_rush_effect,
+            # 既存フィールド（後方互換性）
             'sq_gauge_effect': sq_gauge_effect,
             'sq_max_effect': sq_max_effect,
-            'squad_rush_effect': squad_rush_effect,
-            'sq_conditions': sq_conditions,
-            'sq_effects': sq_effects
+            'squad_rush_effect': squad_rush_effect
         }
-    })
-    return pl_card_data
+    }
 
 def extract_pl_sq_skills_from_basic_results(results_dir='ocr_results'):
     """基本OCR結果からPLカードを抽出し、SQ関連スキルを詳細分析"""
@@ -1805,44 +1717,67 @@ def extract_pl_sq_skills_from_basic_results(results_dir='ocr_results'):
             
             ocr_data = basic_data.get('ocr_data', {})
             card_type = ocr_data.get('type', '')
+            raw_str = basic_data.get('raw', '')
+            raw_json = None
             
-            if card_type == 'PL':
+            # rawがJSON文字列ならパース
+            if isinstance(raw_str, str):
+                import re
+                raw_str_clean = re.sub(r'^```json|```$', '', raw_str.strip(), flags=re.MULTILINE).strip()
+                try:
+                    raw_json = json.loads(raw_str_clean)
+                except Exception:
+                    raw_json = None
+            
+            # データソースを決定（rawデータを優先）
+            data_source = raw_json if (raw_json and raw_json.get('type', '') == 'PL') else ocr_data
+            
+            if data_source.get('type', '') == 'PL':
                 # PLカードのSQ関連スキルを分析
-                analyzed_data = analyze_pl_sq_skills(ocr_data)
+                sq_analysis = analyze_pl_sq_skills(data_source)
                 
+                # pilot_skillデータを取得（rawデータから優先）
+                orig_pilot_skill = data_source.get('pilot_skill', {})
+                pilot_skill = {
+                    'name': orig_pilot_skill.get('name', ''),
+                    'effect': orig_pilot_skill.get('effect', ''),
+                    'has_sq_skill': sq_analysis['has_sq_skill']
+                }
+                
+                # sq_skill_detailsは常に含める（SQ関連スキルがない場合でも基本的な構造を含む）
+                if sq_analysis['sq_skill_details']:
+                    pilot_skill['sq_skill_details'] = sq_analysis['sq_skill_details']
+                
+                # link_abilityデータを取得（rawデータから優先）
+                link_ability = data_source.get('link_ability', [])
+                
+                # full_ocr_dataにもpilot_skillを含める
+                full_ocr_data = dict(data_source)
+                full_ocr_data['pilot_skill'] = pilot_skill
+                
+                # 最適化されたPLカード情報を作成
                 pl_card_info = {
-                    'file_path': basic_file,
-                    'card_number': basic_data.get('card_number', ''),
-                    'card_name': basic_data.get('card_name', ''),
+                    'card_number': data_source.get('card_id', ''),
+                    'card_name': data_source.get('name', ''),
                     'series': basic_data.get('series', ''),
-                    'ocr_data': analyzed_data,
-                    'raw': basic_data.get('raw', None)  # rawデータを追加
+                    'sq_analysis_timestamp': datetime.now().isoformat(),
+                    'sq_analysis_type': 'detailed',
+                    'pilot_skill': pilot_skill,
+                    'link_ability': link_ability,
+                    'full_ocr_data': full_ocr_data,
+                    'raw': raw_str
                 }
                 
                 pl_cards.append(pl_card_info)
-                
-                # 分析結果を表示
-                pilot_skill = analyzed_data.get('pilot_skill', {})
-                has_sq_skill = pilot_skill.get('has_sq_skill', False)
-                sq_details = pilot_skill.get('sq_skill_details', {})
-                
-                print(f"  ✓ PLカード分析: {basic_data.get('card_number', '')} {basic_data.get('card_name', '')}")
-                print(f"    SQ関連スキル: {'あり' if has_sq_skill else 'なし'}")
-                
-                if has_sq_skill:
-                    print(f"    SQゲージ効果: {sq_details.get('sq_gauge_effect', 'なし')}")
-                    print(f"    SQ最大値効果: {sq_details.get('sq_max_effect', 'なし')}")
-                    print(f"    SQUAD RUSH効果: {sq_details.get('squad_rush_effect', 'なし')}")
-                
                 analyzed_count += 1
+                print(f"分析完了: {pl_card_info['card_name']} ({pl_card_info['card_number']})")
                 
         except Exception as e:
-            print(f"  ✗ ファイル読み込みエラー: {basic_file} - {str(e)}")
+            print(f"エラー: {basic_file} の処理中にエラーが発生しました - {e}")
+            continue
     
-    print(f"\n=== PLカードSQ関連スキル分析完了 ===")
-    print(f"分析対象PLカード数: {analyzed_count}件")
-    print(f"SQ関連スキルあり: {sum(1 for card in pl_cards if card['ocr_data'].get('pilot_skill', {}).get('has_sq_skill', False))}件")
-    
+    print(f"\n=== PLカードのSQ関連スキル分析完了 ===")
+    print(f"分析対象PLカード数: {analyzed_count}")
     return pl_cards
 
 def save_pl_sq_analysis_results(pl_cards, results_dir='ocr_results'):
@@ -1853,11 +1788,15 @@ def save_pl_sq_analysis_results(pl_cards, results_dir='ocr_results'):
     
     for pl_card in pl_cards:
         try:
-            card_number = pl_card['card_number']
-            card_name = pl_card['card_name']
-            series_name = pl_card['series']
-            analyzed_data = pl_card['ocr_data']
-            raw_ocr = pl_card.get('raw', None)
+            card_number = pl_card.get('card_number', '')
+            card_name = pl_card.get('card_name', '')
+            series_name = pl_card.get('series', '')
+            sq_analysis_timestamp = pl_card.get('sq_analysis_timestamp') or datetime.now().isoformat()
+            sq_analysis_type = pl_card.get('sq_analysis_type', 'detailed')
+            pilot_skill = pl_card.get('pilot_skill', {})
+            link_ability = pl_card.get('link_ability', [])
+            full_ocr_data = pl_card.get('full_ocr_data', {})
+            raw = pl_card.get('raw', '')
             # ファイル名を生成
             safe_number = sanitize_filename(card_number)
             safe_name = sanitize_filename(card_name)
@@ -1871,23 +1810,21 @@ def save_pl_sq_analysis_results(pl_cards, results_dir='ocr_results'):
                 'card_number': card_number,
                 'card_name': card_name,
                 'series': series_name,
-                'sq_analysis_timestamp': datetime.now().isoformat(),
-                'sq_analysis_type': 'detailed',
-                'pilot_skill': analyzed_data.get('pilot_skill', {}),
-                'full_ocr_data': analyzed_data
+                'sq_analysis_timestamp': sq_analysis_timestamp,
+                'sq_analysis_type': sq_analysis_type,
+                'pilot_skill': pilot_skill,
+                'link_ability': link_ability,
+                'full_ocr_data': full_ocr_data,
+                'raw': raw
             }
-            if raw_ocr is not None:
-                sq_analysis_data['raw'] = raw_ocr
             with open(sq_analysis_file, 'w', encoding='utf-8') as f:
                 json.dump(sq_analysis_data, f, ensure_ascii=False, indent=2)
             saved_count += 1
-            
+            print(f"保存完了: {card_name} ({card_number})")
         except Exception as e:
-            print(f"  ✗ SQ分析結果保存エラー: {card_number} {card_name} - {str(e)}")
-    
+            print(f"保存エラー: {card_number} {card_name} - {str(e)}")
     print(f"\n=== SQ分析結果保存完了 ===")
     print(f"保存成功: {saved_count}件")
-    
     return saved_count
 
 def main():
