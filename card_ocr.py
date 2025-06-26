@@ -247,6 +247,46 @@ def extract_structured_data_from_url(image_path_or_url, api_key):
 
     return response.choices[0].message.content
 
+def save_error_log(card_number, card_name, series_name, error_message, error_type, results_dir='ocr_results'):
+    """エラーログを保存する関数"""
+    try:
+        # ファイル名を生成
+        safe_number = sanitize_filename(card_number)
+        safe_name = sanitize_filename(card_name)
+        safe_series = sanitize_filename(series_name)
+        
+        if safe_series:
+            error_log_file = os.path.join(results_dir, f"{safe_series}_{safe_number}_{safe_name}_err_log.json")
+        else:
+            error_log_file = os.path.join(results_dir, f"{safe_number}_{safe_name}_err_log.json")
+        
+        # エラーログデータを構築
+        error_log_data = {
+            'card_number': card_number,
+            'card_name': card_name,
+            'series': series_name,
+            'error_type': error_type,
+            'error_message': error_message,
+            'error_timestamp': datetime.now().isoformat(),
+            'expected_files': {
+                'basic': f"{safe_series}_{safe_number}_{safe_name}_basic.json" if safe_series else f"{safe_number}_{safe_name}_basic.json",
+                'sp_raw': f"{safe_series}_{safe_number}_{safe_name}_sp_raw.json" if safe_series else f"{safe_number}_{safe_name}_sp_raw.json",
+                'sp': f"{safe_series}_{safe_number}_{safe_name}_sp.json" if safe_series else f"{safe_number}_{safe_name}_sp.json",
+                'sq_analysis': f"{safe_series}_{safe_number}_{safe_name}_sq_analysis.json" if safe_series else f"{safe_number}_{safe_name}_sq_analysis.json"
+            }
+        }
+        
+        # エラーログを保存
+        with open(error_log_file, 'w', encoding='utf-8') as f:
+            json.dump(error_log_data, f, ensure_ascii=False, indent=2)
+        
+        print(f"    📝 エラーログ保存: {error_log_file}")
+        return error_log_file
+        
+    except Exception as e:
+        print(f"    ⚠ エラーログ保存失敗: {str(e)}")
+        return None
+
 def save_result_to_file(card_number, card_name, result_json, series_name="", results_dir='ocr_results', suffix=""):
     # ファイル名に使えない文字をアンダースコアに変換
     safe_number = sanitize_filename(card_number)
@@ -477,11 +517,19 @@ def ocr_back_cards_from_all_cards_list(api_key_path, cards_dir='all_cards_list',
                         print(f"    ✓ SP詳細OCRパース済みデータ保存: {sp_parsed_result_file}")
                     except Exception as sp_parse_error:
                         print(f"    ⚠ SP詳細OCR結果のパース失敗: {str(sp_parse_error)}")
+                        save_error_log(card_number, card_name, series_name, str(sp_parse_error), "sp_parse_error", results_dir)
+                        error_count += 1
                 else:
                     print(f"    ⚠ SP部分の切り取りに失敗")
+                    save_error_log(card_number, card_name, series_name, "SP部分の切り取りに失敗", "sp_crop_error", results_dir)
+                    error_count += 1
+                
             except Exception as e:
                 error_message = str(e)
                 print(f"  ✗ API呼び出し失敗: {card_number} {card_name} {error_message}")
+                
+                # エラーログを保存
+                save_error_log(card_number, card_name, series_name, error_message, "api_call_error", results_dir)
                 
                 # APIクォータエラーの場合は特別な処理
                 if "429" in error_message or "insufficient_quota" in error_message:
@@ -1208,10 +1256,27 @@ def re_ocr_all_sp_sections(results_dir, api_key):
                     print(f"    ✓ SP詳細OCRパース済みデータ保存: {sp_parsed_result_file}")
                 except Exception as sp_parse_error:
                     print(f"    ⚠ SP詳細OCR結果のパース失敗: {str(sp_parse_error)}")
+                    save_error_log(card_number, card_name, series_name, str(sp_parse_error), "sp_parse_error", results_dir)
+                    error_count += 1
             else:
                 print(f"    ⚠ SP部分の切り取りに失敗")
+                save_error_log(card_number, card_name, series_name, "SP部分の切り取りに失敗", "sp_crop_error", results_dir)
+                error_count += 1
+                
         except Exception as e:
+            error_message = str(e)
             print(f"  ✗ SP再OCR処理エラー: {card_file} {str(e)}")
+            save_error_log(card_number, card_name, series_name, error_message, "sp_ocr_error", results_dir)
+            
+            # エラーログを保存
+            save_error_log(card_number, card_name, series_name, error_message, "sp_ocr_error", results_dir)
+            
+            # APIクォータエラーの場合は特別な処理
+            if "429" in error_message or "insufficient_quota" in error_message:
+                print(f"    ⚠ APIクォータの上限に達しました。処理を停止します。")
+                break
+            
+            error_count += 1
 
 def ocr_all_cards_basic(api_key_path, cards_dir='all_cards_list', results_dir='ocr_results'):
     """すべてのカードの基本OCRを実行し、SP以外のOCR結果をJsonで保存"""
@@ -1342,11 +1407,15 @@ def ocr_all_cards_basic(api_key_path, cards_dir='all_cards_list', results_dir='o
                     
                 except Exception as parse_error:
                     print(f"  ⚠ OCR結果のパース失敗: {str(parse_error)}")
+                    save_error_log(card_number, card_name, series_name, str(parse_error), "ocr_parse_error", results_dir)
                     error_count += 1
                     
             except Exception as e:
                 error_message = str(e)
                 print(f"  ✗ API呼び出し失敗: {card_number} {card_name} {error_message}")
+                
+                # エラーログを保存
+                save_error_log(card_number, card_name, series_name, error_message, "api_call_error", results_dir)
                 
                 # APIクォータエラーの場合は特別な処理
                 if "429" in error_message or "insufficient_quota" in error_message:
@@ -1361,6 +1430,7 @@ def ocr_all_cards_basic(api_key_path, cards_dir='all_cards_list', results_dir='o
             
         except Exception as e:
             print(f"  ✗ ファイル処理エラー: {json_file} - {str(e)}")
+            save_error_log(card_number, card_name, series_name, str(e), "file_processing_error", results_dir)
             error_count += 1
     
     print(f"\n=== 基本OCR処理完了 ===")
@@ -1506,14 +1576,19 @@ def apply_sp_ocr_to_ms_cards(ms_cards, api_key_path, results_dir='ocr_results'):
                     
                 except Exception as sp_parse_error:
                     print(f"    ⚠ SP詳細OCR結果のパース失敗: {str(sp_parse_error)}")
+                    save_error_log(card_number, card_name, series_name, str(sp_parse_error), "sp_parse_error", results_dir)
                     error_count += 1
             else:
                 print(f"    ⚠ SP部分の切り取りに失敗")
+                save_error_log(card_number, card_name, series_name, "SP部分の切り取りに失敗", "sp_crop_error", results_dir)
                 error_count += 1
                 
         except Exception as e:
             error_message = str(e)
             print(f"  ✗ SP OCR処理エラー: {card_number} {card_name} {error_message}")
+            
+            # エラーログを保存
+            save_error_log(card_number, card_name, series_name, error_message, "sp_ocr_error", results_dir)
             
             # APIクォータエラーの場合は特別な処理
             if "429" in error_message or "insufficient_quota" in error_message:
@@ -1774,6 +1849,11 @@ def extract_pl_sq_skills_from_basic_results(results_dir='ocr_results'):
                 
         except Exception as e:
             print(f"エラー: {basic_file} の処理中にエラーが発生しました - {e}")
+            # エラーログを保存
+            card_number = basic_data.get('card_number', '') if 'basic_data' in locals() else 'unknown'
+            card_name = basic_data.get('card_name', '') if 'basic_data' in locals() else 'unknown'
+            series_name = basic_data.get('series', '') if 'basic_data' in locals() else 'unknown'
+            save_error_log(card_number, card_name, series_name, str(e), "sq_analysis_error", results_dir)
             continue
     
     print(f"\n=== PLカードのSQ関連スキル分析完了 ===")
@@ -1823,6 +1903,7 @@ def save_pl_sq_analysis_results(pl_cards, results_dir='ocr_results'):
             print(f"保存完了: {card_name} ({card_number})")
         except Exception as e:
             print(f"保存エラー: {card_number} {card_name} - {str(e)}")
+            save_error_log(card_number, card_name, series_name, str(e), "sq_save_error", results_dir)
     print(f"\n=== SQ分析結果保存完了 ===")
     print(f"保存成功: {saved_count}件")
     return saved_count
