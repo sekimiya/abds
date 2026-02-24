@@ -1,0 +1,49 @@
+% main.tex
+\documentclass[a4paper,11pt]{jsarticle}
+\usepackage[dvipdfmx]{graphicx}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{booktabs}
+\usepackage{url}
+\usepackage{ruby}
+
+% ページ設定
+\geometry{left=25mm,right=25mm,top=30mm,bottom=30mm}
+
+% コードブロックの設定
+\lstset{
+    basicstyle=\ttfamily\small,
+    breaklines=true,
+    frame=single,
+    numbers=left,
+    numberstyle=\tiny,
+    keywordstyle=\color{blue},
+    commentstyle=\color{green!60!black},
+    stringstyle=\color{red},
+    backgroundcolor=\color{gray!10},
+    showstringspaces=false
+}
+
+% タイトル設定
+\title{アーセナルベース（ARMS）カードOCRシステムの開発記録}
+\author{開発者}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+この記事では、アーセナルベース（ARMS）というカードゲームのカード情報を自動的に読み取るOCRシステムの開発について記録します。このシステムは、カード画像から構造化されたデータを抽出し、ゲームデータベースの構築を自動化することを目的としています。OpenAI GPT-4oを活用したマルチモーダルAI技術により、従来のOCR技術では困難だった複雑なカード情報の構造化抽出を実現しました。
+\end{abstract}
+
+\input{content}
+
+\end{document} 

@@ -137,59 +137,9 @@ def extract_structured_data_from_url(image_path_or_url, api_key):
 ```
 
 **PLカードのSQ関連スキルについて**:
-
-1. **SQ関連スキルの判定**: パイロットスキルに「SQ」「SQUAD」「ゲージ」「ガージ」などのキーワードが含まれている場合は `has_sq_skill: true` にしてください。
-
-2. **pilot_skillオブジェクトの構造**:
-   - `pilot_skill`オブジェクトには必ず以下のフィールドを含めてください：
-     - `name`: スキル名
-     - `effect`: スキル効果の説明文
-     - `has_sq_skill`: SQ関連スキルがあるかどうか（true/false）
-     - `sq_skill_details`: SQ関連スキルの詳細（has_sq_skill: trueの場合のみ）
-
-3. **pilot_skill.effectフィールドの重要事項**: 
-   - パイロットスキルの説明文には、SQ関連の条件や効果を必ず含めてください
-   - 「SQゲージが最大時」「SQUAD RUSH中」などの条件文があれば、それらをeffectフィールドに含めてください
-   - 複数の効果がある場合は、改行（\\n）で区切って記載してください
-   - 例: "SQゲージが最大時\\n自身の「遠距離攻撃力」「SP威力」をアップする。\\nSQUAD RUSH中\\n「遠距離攻撃力」「SP威力」の効果がさらに上昇する。"
-
-4. **sq_skill_detailsフィールドの新しい構造**:
-   - **すべてのパイロットスキルで以下の6つのフィールドを含めてください**：
-     - `trigger`: スキル発動条件（例: "敵ユニットを撃破時", "SQゲージが最大時", "敵戦艦／拠点をロックオン時"）
-     - `effect`: 基本効果（例: "SQゲージ大アップ", "自身の「遠距離攻撃力」をアップする", "40秒間、自身の「機動力」「近距離攻撃力」を中アップする"）
-     - `sq_rush_effect`: SQUAD RUSH中の追加効果（SQ関連スキルの場合のみ、例: "SQUAD RUSH中\\n「遠距離攻撃力」の効果がさらに上昇する"）
-     - `sq_gauge_effect`: SQゲージの増減効果（SQ関連スキルの場合のみ、例: "SQゲージ+1", "SQゲージ大アップ"）
-     - `sq_max_effect`: SQゲージ最大時の効果（SQ関連スキルの場合のみ、例: "SQゲージが最大時\\n自身の「遠距離攻撃力」をアップする"）
-     - `squad_rush_effect`: SQUAD RUSH中の効果（SQ関連スキルの場合のみ、例: "SQUAD RUSH中\\n「遠距離攻撃力」の効果がさらに上昇する"）
-   - **SQ関連スキルがない場合でも、`trigger`と`effect`は必ず抽出してください**
-   - SQ関連スキルがない場合、`sq_rush_effect`、`sq_gauge_effect`、`sq_max_effect`、`squad_rush_effect`は`null`にしてください
-   - **重要**: `sq_skill_details`を`null`にしないでください。常に6つのフィールドを含むオブジェクトにしてください
-
-5. **新しいフィールドの抽出ルール**:
-   - `trigger`: スキル発動の条件部分（「時」「場合」「時点」「発動」「ロックオン」「撃破」などのキーワードを含む行）
-   - `effect`: triggerとsq_rush_effect以外のSQゲージ関連の基本効果
-   - `sq_rush_effect`: "SQUAD RUSH中"で始まる追加効果
-   - 該当する効果がない場合は`null`を使用してください
-
-6. **効果の抽出ルール（既存）**:
-   - SQゲージ変動効果: "SQゲージ+1", "SQゲージ-1", "SQゲージ大アップ"など
-   - SQゲージ最大値効果: "SQゲージが最大時"で始まる効果文
-   - SQUAD RUSH効果: "SQUAD RUSH中"で始まる効果文
-   - 該当する効果がない場合は`null`を使用してください
-
-7. **データ構造の最適化**:
-   - 冗長なネスト構造を避け、シンプルで直感的な構造にしてください
-   - 不要な空配列や空オブジェクトは含めないでください
-   - `has_sq_skill: false`の場合は`sq_skill_details`を`null`にすることで、データサイズを削減してください
-
-**重要**: 
-- **pilot_skillオブジェクトには必ず`has_sq_skill`フィールドを含めてください。**
-- **pilot_skill.effectフィールドには、SQ関連の条件や効果を必ず含めてください。これが最も重要です。**
-- **すべてのパイロットスキルで`sq_skill_details`フィールドを含めてください（SQ関連スキルがない場合でも基本的な構造を含む）。**
-- **`sq_skill_details`を`null`にしないでください。常に6つのフィールドを含むオブジェクトにしてください。**
-- `has_sq_skill`の値に応じて`sq_skill_details`の構造を適切に設定してください。
-- 新しいフィールド（`trigger`、`effect`、`sq_rush_effect`）を優先的に抽出し、既存フィールド（`sq_gauge_effect`、`sq_max_effect`、`squad_rush_effect`）も後方互換性のために含めてください。
-- データの冗長性を避け、効率的な構造にしてください。
+- `has_sq_skill`: SQ/SQUAD/ゲージ関連キーワードがあれば true
+- `sq_skill_details`: has_sq_skill が false なら null
+- `pilot_skill.effect` にはSQ関連の条件・効果テキストを改行区切りで含めてください
 
 **rawフィールドについて**:
 - 出力するJSONには必ず "raw" フィールドを含めてください。
@@ -1280,13 +1230,10 @@ def re_ocr_all_sp_sections(results_dir, api_key):
 
 def ocr_all_cards_basic(api_key_path, cards_dir='all_cards_list', results_dir='ocr_results'):
     """すべてのカードの基本OCRを実行し、SP以外のOCR結果をJsonで保存"""
-    
-    # 出力ディレクトリをクリーンアップ
-    if os.path.exists(results_dir):
-        print(f"出力ディレクトリ ({results_dir}) をクリーンアップしています...")
-        shutil.rmtree(results_dir)
-    os.makedirs(results_dir)
-    print(f"出力ディレクトリ ({results_dir}) を作成しました。")
+
+    # 出力ディレクトリを作成（既存ファイルは保持してスキップする）
+    os.makedirs(results_dir, exist_ok=True)
+    print(f"出力ディレクトリ: {results_dir}")
     
     # カードリストディレクトリのJSONファイルを取得
     if not os.path.exists(cards_dir):
@@ -1356,11 +1303,31 @@ def ocr_all_cards_basic(api_key_path, cards_dir='all_cards_list', results_dir='o
                 print(f"[{idx}/{len(json_files)}] スキップ: 裏面画像なし - {card_number} {card_name}")
                 skipped_count += 1
                 continue
-            
+
+            # 既存の有効な _basic.json があればスキップ
+            safe_number = sanitize_filename(card_number)
+            safe_name = sanitize_filename(card_name)
+            safe_series = sanitize_filename(series_name)
+            if safe_series:
+                basic_result_file = os.path.join(results_dir, f"{safe_series}_{safe_number}_{safe_name}_basic.json")
+            else:
+                basic_result_file = os.path.join(results_dir, f"{safe_number}_{safe_name}_basic.json")
+
+            if os.path.exists(basic_result_file):
+                try:
+                    with open(basic_result_file, 'r', encoding='utf-8') as f:
+                        existing_data = json.load(f)
+                    if existing_data and isinstance(existing_data, dict) and existing_data.get('ocr_data'):
+                        print(f"[{idx}/{len(json_files)}] スキップ: 有効な既存の _basic.json - {card_number} {card_name}")
+                        skipped_count += 1
+                        continue
+                except (json.JSONDecodeError, IOError):
+                    pass  # 破損ファイルは再処理
+
             print(f"[{idx}/{len(json_files)}] 基本OCR開始: {card_number} {card_name}")
             print(f"   表面URL: {front_image_url}")
             print(f"   裏面URL: {back_image_url}")
-            
+
             try:
                 # カード全体の基本OCR（SP部分は含まない）
                 ocr_result = extract_structured_data_from_url(back_image_url, api_key)
@@ -1604,62 +1571,74 @@ def apply_sp_ocr_to_ms_cards(ms_cards, api_key_path, results_dir='ocr_results'):
     return processed_count, error_count
 
 def ocr_all_cards_new_workflow(api_key_path, cards_dir='all_cards_list', results_dir='ocr_results'):
-    """新しい4段階OCRワークフローを実行"""
-    print("=== 新しい4段階OCRワークフローを開始します ===")
+    """新しい3段階OCRワークフローを実行（SP用の追加API呼び出しを廃止）"""
+    print("=== 最適化OCRワークフローを開始します ===")
     print("1. すべてのカードの基本OCRを実行")
     print("2. MSカードを抽出")
-    print("3. MSカードにSP OCRを適用")
-    print("4. PLカードのSQ関連スキルを分析")
+    print("3. 基本OCR結果から _sp.json / _sq_analysis.json を一括生成（API不要）")
     print()
-    
+
     # 段階1: すべてのカードの基本OCR
     print("=== 段階1: すべてのカードの基本OCR ===")
     basic_processed, basic_errors = ocr_all_cards_basic(api_key_path, cards_dir, results_dir)
-    
+
     if basic_processed == 0:
-        print("基本OCRで処理されたカードがありません。処理を終了します。")
-        return
-    
-    # 段階2: MSカードの抽出
+        print("基本OCRで処理されたカードがありません。既存ファイルから派生データを生成します。")
+
+    # 段階2: MSカードの抽出（ログ用）
     print("\n=== 段階2: MSカードの抽出 ===")
     ms_cards, other_cards = extract_ms_cards_from_basic_results(results_dir)
-    
-    # 段階3: MSカードへのSP OCR適用
-    if len(ms_cards) > 0:
-        print("\n=== 段階3: MSカードへのSP OCR適用 ===")
-        sp_processed, sp_errors = apply_sp_ocr_to_ms_cards(ms_cards, api_key_path, results_dir)
-    else:
-        print("\n=== 段階3: MSカードへのSP OCR適用 ===")
-        print("MSカードが見つかりませんでした。SP OCR処理をスキップします。")
-        sp_processed, sp_errors = 0, 0
-    
-    # 段階4: PLカードのSQ関連スキル分析
-    print("\n=== 段階4: PLカードのSQ関連スキル分析 ===")
-    pl_cards = extract_pl_sq_skills_from_basic_results(results_dir)
-    
-    # SQ分析結果の保存
-    if len(pl_cards) > 0:
-        sq_saved = save_pl_sq_analysis_results(pl_cards, results_dir)
-    else:
-        sq_saved = 0
-    
-    print(f"\n=== 新しいOCRワークフロー完了 ===")
+
+    # 段階3: _basic.json から _sp.json / _sq_analysis.json を一括生成（API呼び出し不要）
+    print("\n=== 段階3: 派生ファイル一括生成（API不要） ===")
+    try:
+        from generate_derivatives import find_basic_files, generate_derivatives_for_file
+        basic_files = find_basic_files(results_dir)
+        sp_count = 0
+        sq_count = 0
+        for basic_path in basic_files:
+            sp_ok, sq_ok = generate_derivatives_for_file(basic_path, force=False)
+            if sp_ok:
+                sp_count += 1
+            if sq_ok:
+                sq_count += 1
+        print(f"  SP派生ファイル生成: {sp_count}件")
+        print(f"  SQ分析派生ファイル生成: {sq_count}件")
+    except ImportError:
+        print("  WARNING: generate_derivatives.py が見つかりません。旧ワークフローにフォールバック。")
+        # フォールバック: 旧方式のSQ分析のみ実行
+        pl_cards = extract_pl_sq_skills_from_basic_results(results_dir)
+        if len(pl_cards) > 0:
+            sq_count = save_pl_sq_analysis_results(pl_cards, results_dir)
+        else:
+            sq_count = 0
+        sp_count = 0
+
+    print(f"\n=== 最適化OCRワークフロー完了 ===")
     print(f"基本OCR処理: {basic_processed}件")
     print(f"MSカード抽出: {len(ms_cards)}件")
-    print(f"SP OCR処理: {sp_processed}件")
-    print(f"PLカード分析: {len(pl_cards)}件")
-    print(f"SQ分析結果保存: {sq_saved}件")
+    print(f"SP派生生成: {sp_count}件（API呼び出し不要）")
+    print(f"SQ分析生成: {sq_count}件（API呼び出し不要）")
     print(f"基本OCRエラー: {basic_errors}件")
-    print(f"SP OCRエラー: {sp_errors}件")
 
 def analyze_pl_sq_skills(pl_card_data):
     """PLカードのSQ関連スキルを詳細分析"""
     pilot_skill = pl_card_data.get('pilot_skill', {})
     skill_effect = pilot_skill.get('effect', '')
 
-    # SQ関連スキルの判定
-    sq_keywords = ['SQゲージ', 'SQガージ', 'ゲージ', 'ガージ', 'SQUAD RUSH', 'SQUADRUSH', 'スクワッドラッシュ']
-    has_sq_skill = any(keyword in skill_effect for keyword in sq_keywords)
+    # EB（ECHOES BEAT）カードの判定 — EBカードはSQではない
+    eb_keywords = ['ECHOES BEAT', 'EBLv.', 'EB Lv.', '戦術技']
+    raw_text = pl_card_data.get('raw', '') or ''
+    link_abilities = pl_card_data.get('link_ability', []) or []
+    link_text = ' '.join(
+        la.get('effect', '') for la in link_abilities if isinstance(la, dict)
+    )
+    combined_text = f'{skill_effect} {link_text} {raw_text}'
+    is_eb_card = any(kw in combined_text for kw in eb_keywords)
+
+    # SQ関連スキルの判定（"ゲージ" 単体は "SPゲージ" 等に誤マッチするため除外）
+    sq_keywords = ['SQゲージ', 'SQガージ', 'SQUAD RUSH', 'SQUADRUSH', 'スクワッドラッシュ']
+    has_sq_skill = any(keyword in skill_effect for keyword in sq_keywords) and not is_eb_card
 
     # スキル効果を改行で分割
     lines = skill_effect.split('\n')
@@ -1726,7 +1705,7 @@ def analyze_pl_sq_skills(pl_card_data):
         line = line.strip()
         if line and line != trigger and line != sq_rush_effect:
             # SQゲージ関連の効果を基本効果として抽出
-            if any(keyword in line for keyword in ['SQゲージ', 'SQガージ', 'ゲージ', 'ガージ']):
+            if any(keyword in line for keyword in ['SQゲージ', 'SQガージ']):
                 effect_parts.append(line)
     
     if effect_parts:

@@ -1,1593 +1,2300 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <title>Gundam Arsenal Base Deck Simulator</title>
-    <style>
-        body { background: #1a1a1a; color: #fff; font-family: sans-serif; line-height: 1.1; padding-bottom: 0; }
-        .header { 
-            background: #66f2c5; 
-            color: #222; 
-            text-align: center; 
-            padding: 1rem; 
-            font-size: 2rem; 
-            font-weight: bold; 
-            letter-spacing: 0.05em; 
-            min-width: 100%;
-            box-sizing: border-box;
-            word-wrap: break-word;
-            overflow-wrap: break-word;
-        }
-        @media (max-width: 768px) {
-            .header {
-                font-size: 1.5rem;
-                padding: 0.8rem;
-            }
-        }
-        @media (max-width: 480px) {
-            .header {
-                font-size: 1.2rem;
-                padding: 0.6rem;
-            }
-        }
-        @media (max-width: 1400px) {
-            #totalStatsBars {
-                position: relative;
-                left: auto;
-                top: auto;
-                transform: none;
-                width: 100%;
-                max-width: 1200px;
-                margin: 2rem auto;
-                max-height: none;
-                overflow-y: visible;
-                display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-                gap: 1rem;
-            }
-            
-            .container {
-                padding-left: 20px;
-                padding-right: 20px;
-            }
-        }
-        @media (max-width: 1200px) {
-            #totalStatsBars {
-                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            }
-        }
-        @media (max-width: 768px) {
-            #totalStatsBars {
-                grid-template-columns: 1fr;
-                margin: 1rem auto;
-            }
-            
-            .stats-bar {
-                padding: 1rem;
-            }
-        }
-        .card-grid { display: grid; grid-template-columns: repeat(5, 1fr); grid-template-rows: repeat(2, 1fr); gap: 10px; max-width: 1200px; margin: 2.5rem auto 0 auto; }
-        .card-item { background: #222; border: 1.5px solid #444; border-radius: 12px; padding: 0.6rem 1rem 0.6rem 1rem; text-align: center; line-height: 1.2; padding-bottom: 1rem; width: 220px; box-sizing: border-box; margin: 0 auto; display: flex; flex-direction: column; min-height: 600px; }
-        .card-item img { max-width: 220px; max-height: 330px; width: 220px; height: auto; background: #111; border-radius: 8px; margin-top: 0.3rem; margin-bottom: 0.3rem; display: block; flex-shrink: 0; }
-        .card-number { color: #66f2c5; font-weight: bold; margin-top: 0.3rem; margin-bottom: 0.15rem; line-height: 1.2; font-size: 1.25rem; flex-shrink: 0; }
-        .card-name { margin-top: 0.15rem; margin-bottom: 0.15rem; font-size: 1.25rem; line-height: 1.2; flex-shrink: 0; height: 2.4em; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; word-break: break-word; }
-        .card-select { width: 100%; margin-top: 0.3rem; margin-bottom: 0.3rem; padding: 0.5rem; border-radius: 6px; border: 1.5px solid #66f2c5; background: #333; color: #fff; line-height: 1.2; font-size: 1.1rem; flex-shrink: 0; }
-        .ocr-params { background: #181818; border-radius: 8px; margin-top: 0.15rem; padding: 0.15rem; font-size: 1.08em; color: #b2ffb2; display: flex; flex-direction: column; align-items: flex-start; gap: 0.3em; line-height: 1.1; flex: 1; overflow: hidden; min-height: 0; }
-        .ocr-params .label { color: #4caf50; margin-right: 0.2em; }
-        .ocr-params span { margin-right: 0.4em; }
-        .ocr-params .param-group {
-            background: #333;
-            border: 1px solid #555;
-            border-radius: 4px;
-            padding: 0.3em;
-            margin-bottom: 0.2em;
-            width: 100%;
-            box-sizing: border-box;
-            min-height: 60px;
-        }
-        .param-group.skill {
-            min-height: 90px;
-            overflow: visible;
-            white-space: pre-line;
-        }
-        .param-group.spattack {
-            min-height: 90px;
-            overflow: visible;
-            white-space: pre-line;
-        }
-        .param-group.link {
-            min-height: 90px;
-            overflow: visible;
-            white-space: pre-line;
-        }
-        .ocr-params .param-row { display: flex; flex-wrap: wrap; gap: 0.3em; margin-bottom: 0.2em; }
-        .ocr-params .param-item { background: #444; border: 1px solid #666; border-radius: 3px; padding: 0.2em 0.4em; font-size: 0.9em; }
-        .card-item.row-top { 
-            padding-top: 0.05rem; 
-            padding-bottom: 0.05rem; 
-        }
-        .card-grid .card-item:nth-child(-n+5) {
-            margin-bottom: 4px;
-        }
-        .card-item > div {
-            margin-bottom: 0.15em;
-        }
-        .deck-save-section {
-            max-width: 900px;
-            margin: 1rem auto;
-            padding: 1rem;
-            background: #333;
-            border-radius: 8px;
-            text-align: center;
-        }
-        .deck-save-input {
-            padding: 0.5rem;
-            border-radius: 4px;
-            border: 1px solid #444;
-            background: #222;
-            color: #fff;
-            margin-right: 0.5rem;
-            width: 200px;
-        }
-        .deck-save-btn {
-            padding: 0.5rem 1rem;
-            background: #66f2c5;
-            color: #222;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            margin-right: 0.5rem;
-            font-weight: bold;
-        }
-        .deck-load-btn {
-            padding: 0.5rem 1rem;
-            background: #66f2c5;
-            color: #222;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: bold;
-        }
-        .auto-save-toggle {
-            margin: 1rem 0;
-            padding: 0.5rem;
-            background: #222;
-            border-radius: 4px;
-            display: inline-block;
-        }
-        .saved-decks-list {
-            text-align: left;
-            max-height: 200px;
-            overflow-y: auto;
-            background: #222;
-            padding: 1rem;
-            border-radius: 4px;
-            display: none;
-        }
-        #totalStatsBars { 
-            max-width: 1200px;
-            margin: 2rem auto 0 auto;
-            padding: 1.5rem 1rem 2rem 1rem;
-            background: #181818;
-            border-radius: 16px;
-            box-shadow: 0 0 16px #000;
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 2.5rem;
-            justify-items: center;
-            align-items: start;
-        }
-        .stats-bar {
-            background: #222;
-            border-radius: 12px;
-            padding: 1.2em 1.2em 1.5em 1.2em;
-            min-width: 220px;
-            max-width: 260px;
-            box-sizing: border-box;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-bottom: 1em;
-        }
-        .stats-title {
-            color: #4caf50;
-            font-weight: bold;
-            font-size: 1.1em;
-            margin-bottom: 0.2em;
-        }
-        .stats-value {
-            color: #4caf50;
-            font-size: 0.9em;
-            margin-bottom: 0.5em;
-        }
-        .stats-buff {
-            color: #e91e63;
-            font-size: 0.8em;
-        }
-        .stats-bar-container {
-            position: relative;
-            background: #333;
-            height: 24px;
-            border-radius: 0;
-            overflow: visible;
-            margin-bottom: 8px;
-            width: 100%;
-        }
-        .stats-bar-base {
-            background: #2196f3;
-            height: 100%;
-            transition: width 0.3s ease;
-            position: absolute;
-            left: 0;
-            top: 0;
-            z-index: 10;
-            border-radius: 0;
-        }
-        .stats-bar-buff {
-            background: #e91e63;
-            height: 100%;
-            transition: width 0.3s ease;
-            position: absolute;
-            top: 0;
-            z-index: 10;
-            border-radius: 0;
-        }
-        .stats-scale {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 20;
-        }
-        .stats-scale-line {
-            position: absolute;
-            top: 0;
-            height: 100%;
-            width: 2px;
-            background: #fff;
-            opacity: 0.5;
-        }
-        .stats-scale-line:last-child {
-            opacity: 0.7;
-        }
-        .stats-percent {
-            background: #2196f3;
-            color: #fff;
-            padding: 4px 16px;
-            border-radius: 8px;
-            font-size: 0.9em;
-            font-weight: bold;
-        }
-        a {
-            color: #66f2c5;
-        }
-        .deck-save-input:focus {
-            border: 1.5px solid #66f2c5;
-            outline: none;
-        }
-        #totalCost {
-            color: #66f2c5;
-        }
-        #totalStatsBars .card-number {
-            color: #66f2c5;
-        }
-        .auto-save-toggle label {
-            color: #66f2c5;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gundam Arsenal Base Deck Simulator</title>
+<style>
+/* ===== RESET & BASE ===== */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:14px;height:100%}
+body{background:#0f0f0f;color:#e0e0e0;font-family:'Segoe UI','Hiragino Sans',sans-serif;height:100%;overflow:hidden}
+a{color:#66f2c5;text-decoration:none}
+button{cursor:pointer;font-family:inherit}
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:#1a1a1a}
+::-webkit-scrollbar-thumb{background:#444;border-radius:3px}
+
+/* ===== HEADER ===== */
+.app-header{
+  display:flex;align-items:center;justify-content:space-between;
+  background:linear-gradient(135deg,#1a3a2a,#0f2a1f);
+  border-bottom:2px solid #66f2c5;
+  padding:0 1rem;height:52px;flex-shrink:0;
+  gap:0.5rem;
+}
+.app-header .logo{color:#66f2c5;font-weight:bold;font-size:1.15rem;white-space:nowrap}
+.header-center{display:flex;align-items:center;gap:0.5rem;flex:1;justify-content:center;min-width:0}
+.deck-name-input{
+  background:#1a1a1a;border:1px solid #444;border-radius:6px;color:#fff;
+  padding:0.35rem 0.6rem;font-size:0.95rem;width:180px;
+}
+.deck-name-input:focus{border-color:#66f2c5;outline:none}
+.header-btn{
+  background:#222;border:1px solid #555;border-radius:6px;
+  color:#ccc;padding:0.35rem 0.7rem;font-size:0.85rem;
+  transition:all 0.15s;white-space:nowrap;
+}
+.header-btn:hover{background:#333;border-color:#66f2c5;color:#66f2c5}
+.header-btn.primary{background:#1a4a30;border-color:#66f2c5;color:#66f2c5}
+.header-btn.primary:hover{background:#2a6a45}
+.header-right{display:flex;align-items:center;gap:0.4rem}
+.undo-redo-group{display:flex;gap:2px}
+.undo-redo-group .header-btn{padding:0.35rem 0.5rem;font-size:0.8rem}
+
+/* ===== MAIN LAYOUT ===== */
+.app-body{display:flex;height:calc(100vh - 88px);overflow:hidden}
+
+/* Left panel - Card Browser */
+.panel-left{
+  width:320px;min-width:280px;max-width:400px;
+  background:#151515;border-right:1px solid #333;
+  display:flex;flex-direction:column;flex-shrink:0;
+  transition:transform 0.3s;
+}
+.panel-left.hidden{transform:translateX(-100%);position:absolute;z-index:100;height:calc(100vh - 88px)}
+.panel-left.hidden.open{transform:translateX(0)}
+
+/* Center panel - Deck Builder */
+.panel-center{
+  flex:1;overflow-y:auto;overflow-x:hidden;
+  padding:1rem;display:flex;flex-direction:column;align-items:center;
+  background:#0f0f0f;
+}
+
+/* Right panel - Deck Analysis */
+.panel-right{
+  width:320px;min-width:280px;max-width:400px;
+  background:#151515;border-left:1px solid #333;
+  overflow-y:auto;flex-shrink:0;
+  transition:transform 0.3s;
+}
+.panel-right.hidden{transform:translateX(100%);position:absolute;right:0;z-index:100;height:calc(100vh - 88px)}
+.panel-right.hidden.open{transform:translateX(0)}
+
+/* ===== CARD BROWSER (LEFT) ===== */
+.browser-header{padding:0.6rem 0.8rem;border-bottom:1px solid #333}
+.browser-tabs{display:flex;gap:2px;margin-bottom:0.5rem}
+.browser-tab{
+  flex:1;text-align:center;padding:0.4rem;
+  background:#1a1a1a;border:1px solid #333;border-radius:4px;
+  color:#888;font-size:0.85rem;cursor:pointer;
+  transition:all 0.15s;
+}
+.browser-tab.active{background:#1a4a30;border-color:#66f2c5;color:#66f2c5}
+.browser-search{
+  width:100%;padding:0.4rem 0.6rem;background:#1a1a1a;
+  border:1px solid #333;border-radius:6px;color:#fff;font-size:0.9rem;
+}
+.browser-search:focus{border-color:#66f2c5;outline:none}
+.browser-filters{padding:0.5rem 0.8rem;border-bottom:1px solid #333;display:flex;flex-direction:column;gap:0.4rem}
+.filter-row{display:flex;gap:0.4rem;align-items:center}
+.filter-select{
+  flex:1;padding:0.3rem;background:#1a1a1a;border:1px solid #333;
+  border-radius:4px;color:#ccc;font-size:0.8rem;
+}
+.filter-input{
+  width:60px;padding:0.3rem;background:#1a1a1a;border:1px solid #333;
+  border-radius:4px;color:#ccc;font-size:0.8rem;text-align:center;
+}
+.sort-row{display:flex;gap:0.3rem;align-items:center}
+.sort-btn{
+  padding:0.2rem 0.4rem;background:#222;border:1px solid #444;
+  border-radius:3px;color:#888;font-size:0.75rem;cursor:pointer;
+}
+.sort-btn.active{background:#1a4a30;border-color:#66f2c5;color:#66f2c5}
+.browser-list{flex:1;overflow-y:auto;padding:0.4rem}
+.browser-card{
+  display:flex;align-items:center;gap:0.5rem;
+  padding:0.4rem;margin-bottom:3px;border-radius:6px;
+  cursor:pointer;border:1px solid transparent;
+  transition:all 0.15s;
+}
+.browser-card:hover{background:#1a2a22;border-color:#333}
+.browser-card.selected{background:#1a4a30;border-color:#66f2c5}
+.browser-card-img{
+  width:48px;height:72px;object-fit:cover;border-radius:4px;
+  background:#222;flex-shrink:0;
+}
+.browser-card-info{flex:1;min-width:0;overflow:hidden}
+.browser-card-number{color:#66f2c5;font-size:0.75rem;font-weight:bold}
+.browser-card-name{font-size:0.85rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.browser-card-meta{font-size:0.7rem;color:#888;display:flex;gap:0.4rem;flex-wrap:wrap}
+.browser-card-cost{
+  background:#333;border-radius:3px;padding:0 0.3rem;
+  color:#ffe082;font-size:0.7rem;font-weight:bold;
+}
+.browser-status{
+  padding:0.5rem 0.8rem;border-top:1px solid #333;
+  font-size:0.75rem;color:#888;text-align:center;
+}
+.browser-loading{text-align:center;padding:2rem;color:#888}
+
+/* Virtual scroll sentinel */
+.scroll-sentinel{height:1px}
+
+/* ===== DECK BUILDER (CENTER) ===== */
+.deck-grid{
+  display:grid;grid-template-columns:repeat(5,1fr);
+  gap:10px;max-width:1200px;width:100%;
+}
+.deck-slot{
+  background:#1a1a1a;border:2px dashed #333;border-radius:12px;
+  padding:0.5rem;text-align:center;min-height:280px;
+  display:flex;flex-direction:column;align-items:center;
+  transition:all 0.2s;position:relative;cursor:pointer;
+}
+.deck-slot:hover{border-color:#555;background:#1e1e1e}
+.deck-slot.active{border-color:#66f2c5;border-style:solid;background:#1a2a22}
+.deck-slot.has-card{border-style:solid;border-color:#333}
+.deck-slot.has-card:hover{border-color:#66f2c5}
+.slot-label{
+  color:#555;font-size:0.75rem;font-weight:bold;
+  margin-bottom:0.3rem;
+}
+.slot-empty{
+  flex:1;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;color:#444;
+}
+.slot-empty-icon{font-size:2rem;margin-bottom:0.3rem}
+.slot-empty-text{font-size:0.8rem}
+.slot-card-img{
+  width:100%;max-width:180px;height:auto;border-radius:6px;
+  cursor:pointer;transition:transform 0.15s;
+}
+.slot-card-img:hover{transform:scale(1.02)}
+.slot-card-number{color:#66f2c5;font-weight:bold;font-size:0.85rem;margin-top:0.3rem}
+.slot-card-name{font-size:0.85rem;margin-top:0.1rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:100%}
+.slot-clear{
+  position:absolute;top:4px;right:6px;
+  background:#333;border:none;border-radius:50%;
+  color:#888;width:22px;height:22px;font-size:0.8rem;
+  display:none;align-items:center;justify-content:center;
+  transition:all 0.15s;
+}
+.deck-slot.has-card .slot-clear{display:flex}
+.slot-clear:hover{background:#f44336;color:#fff}
+.row-label{
+  grid-column:1/-1;text-align:center;
+  color:#66f2c5;font-weight:bold;font-size:0.9rem;
+  padding:0.3rem 0;
+}
+
+/* Unit Status (below grid) */
+.unit-stats-section{
+  max-width:1200px;width:100%;margin-top:1.5rem;
+  background:#151515;border-radius:12px;padding:1rem;
+}
+.unit-stats-grid{
+  display:grid;grid-template-columns:repeat(5,1fr);gap:1rem;
+}
+.unit-stat-card{
+  background:#1a1a1a;border-radius:8px;padding:0.8rem;
+  text-align:center;
+}
+.unit-stat-title{color:#66f2c5;font-weight:bold;font-size:0.85rem;margin-bottom:0.5rem}
+.stat-bar-row{display:flex;align-items:center;gap:0.3rem;margin-bottom:0.4rem}
+.stat-bar-label{color:#888;font-size:0.7rem;width:32px;text-align:right;flex-shrink:0}
+.stat-bar-track{flex:1;height:14px;background:#222;border-radius:2px;overflow:hidden;position:relative}
+.stat-bar-base{height:100%;background:#2196f3;transition:width 0.3s}
+.stat-bar-buff{height:100%;background:#e91e63;position:absolute;top:0;transition:all 0.3s}
+.stat-bar-terrain-pos{height:100%;background:#66f2c5;position:absolute;top:0;transition:all 0.3s}
+.stat-bar-terrain-neg{height:100%;position:absolute;top:0;transition:all 0.3s;background:repeating-linear-gradient(135deg,rgba(244,67,54,0.6),rgba(244,67,54,0.6) 2px,rgba(244,67,54,0.3) 2px,rgba(244,67,54,0.3) 4px)}
+.stat-bar-value{color:#ccc;font-size:0.65rem;min-width:40px;text-align:left;flex-shrink:0;white-space:nowrap}
+
+/* ===== DECK ANALYSIS (RIGHT) ===== */
+.analysis-section{padding:0.8rem;border-bottom:1px solid #222}
+.analysis-title{color:#66f2c5;font-weight:bold;font-size:0.85rem;margin-bottom:0.5rem}
+.cost-summary{display:flex;gap:0.5rem;align-items:baseline;flex-wrap:wrap}
+.cost-total{font-size:1.4rem;font-weight:bold;color:#ffe082}
+.cost-breakdown{font-size:0.75rem;color:#888}
+.category-badges{display:flex;gap:0.3rem;flex-wrap:wrap;margin-top:0.3rem}
+.category-badge{
+  padding:0.15rem 0.5rem;border-radius:3px;font-size:0.7rem;font-weight:bold;
+}
+.category-badge.senmetsu{background:#8b1a1a;color:#ff8a80}
+.category-badge.seiatsu{background:#1a4a8b;color:#82b1ff}
+.category-badge.bouei{background:#1a6b1a;color:#a5d6a7}
+.link-list{max-height:250px;overflow-y:auto}
+.link-item{
+  padding:0.4rem;margin-bottom:0.3rem;border-radius:4px;
+  font-size:0.8rem;background:#1a1a1a;
+  border-left:3px solid #444;transition:all 0.2s;
+}
+.link-item.active{border-left-color:#42a5f5;background:#1a2a3a}
+.link-name{font-weight:bold}
+.link-condition{color:#888;font-size:0.75rem}
+.link-effect{color:#aaa;font-size:0.75rem}
+.link-badge{
+  display:inline-block;padding:0 0.3rem;border-radius:2px;
+  font-size:0.65rem;font-weight:bold;margin-left:0.3rem;
+}
+.link-badge.on{background:#1b5e20;color:#a5d6a7}
+.link-badge.off{background:#333;color:#666}
+.terrain-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0.3rem}
+.terrain-cell{text-align:center;padding:0.3rem;background:#1a1a1a;border-radius:4px}
+.terrain-label{font-size:0.65rem;color:#888;display:block}
+.terrain-value{font-size:0.85rem;font-weight:bold}
+.terrain-S{color:#ffd740}
+.terrain-A{color:#66f2c5}
+.terrain-B{color:#64b5f6}
+.terrain-C{color:#888}
+.terrain-D{color:#f44336}
+.terrain-selector{display:flex;gap:0.3rem;margin-bottom:0.4rem}
+.terrain-sel-btn{
+  flex:1;padding:0.3rem;background:#1a1a1a;border:1px solid #333;
+  border-radius:4px;color:#888;font-size:0.7rem;cursor:pointer;
+  transition:all 0.15s;
+}
+.terrain-sel-btn:hover{border-color:#66f2c5;color:#ccc}
+.terrain-sel-btn.active{background:#1a3a2a;border-color:#66f2c5;color:#66f2c5}
+.terrain-cell.terrain-active{background:#1a3a2a;border:1px solid #66f2c5}
+
+/* Deck code section */
+.deck-code-section{padding:0.8rem}
+.deck-code-area{
+  display:flex;gap:0.3rem;margin-top:0.3rem;
+}
+.deck-code-input{
+  flex:1;padding:0.3rem 0.5rem;background:#1a1a1a;
+  border:1px solid #333;border-radius:4px;color:#ccc;
+  font-size:0.8rem;font-family:monospace;
+}
+.deck-code-btn{
+  padding:0.3rem 0.6rem;background:#222;border:1px solid #444;
+  border-radius:4px;color:#ccc;font-size:0.75rem;
+}
+.deck-code-btn:hover{background:#333;border-color:#66f2c5;color:#66f2c5}
+
+/* ===== TACTICS CARD BAR ===== */
+.tactics-bar{
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  background:#1a1800;border-bottom:1px solid #3a3500;
+  padding:4px 1rem;min-height:36px;flex-wrap:wrap;
+}
+.tactics-btn{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:4px 12px;background:#222;border:1px solid #4a3a00;
+  border-radius:6px;color:#ffe082;font-size:0.8rem;cursor:pointer;
+  transition:all 0.15s;max-width:280px;
+}
+.tactics-btn:hover{background:#2a2510;border-color:#ffe082}
+.tactics-btn.has-card{border-color:#ffe082;background:#2a2510}
+.tactics-btn .tactics-btn-label{color:#998a40;font-size:0.7rem;font-weight:bold;flex-shrink:0}
+.tactics-btn .tactics-btn-name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.tactics-btn .tactics-btn-clear{
+  color:#888;font-size:0.9rem;margin-left:2px;flex-shrink:0;
+  border:none;background:none;cursor:pointer;padding:0 2px;line-height:1;
+}
+.tactics-btn .tactics-btn-clear:hover{color:#f44336}
+.tactics-btn img{width:28px;height:auto;border-radius:3px;flex-shrink:0}
+
+/* ===== TACTICS PICKER MODAL ===== */
+.tactics-picker-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
+  gap:12px;padding:0.5rem 0;
+}
+.tactics-picker-card{
+  background:#222;border:2px solid #333;border-radius:10px;
+  padding:0.6rem;cursor:pointer;transition:all 0.2s;
+  display:flex;gap:0.6rem;align-items:flex-start;
+}
+.tactics-picker-card:hover{border-color:#ffe082;background:#2a2510}
+.tactics-picker-card.selected{border-color:#ffe082;background:#332d10;box-shadow:0 0 8px rgba(255,224,130,0.3)}
+.tactics-picker-card img{
+  width:80px;height:auto;border-radius:6px;flex-shrink:0;
+}
+.tactics-picker-card .tp-info{flex:1;min-width:0}
+.tactics-picker-card .tp-name{font-weight:bold;font-size:0.9rem;color:#ffe082;margin-bottom:0.3rem}
+.tactics-picker-card .tp-effect{font-size:0.75rem;color:#aaa;line-height:1.4}
+.tactics-picker-card .tp-condition{font-size:0.7rem;color:#e91e63;margin-top:0.2rem}
+
+/* ===== TOAST ===== */
+.toast-container{
+  position:fixed;top:60px;right:16px;z-index:10000;
+  display:flex;flex-direction:column;gap:8px;
+}
+.toast{
+  padding:0.6rem 1rem;border-radius:8px;font-size:0.85rem;
+  box-shadow:0 4px 12px rgba(0,0,0,0.5);
+  animation:toastIn 0.3s ease-out;
+  max-width:320px;
+}
+.toast.success{background:#1b5e20;color:#a5d6a7;border-left:4px solid #4caf50}
+.toast.error{background:#5e1b1b;color:#ef9a9a;border-left:4px solid #f44336}
+.toast.info{background:#1a3a5e;color:#90caf9;border-left:4px solid #2196f3}
+.toast.fadeout{animation:toastOut 0.3s ease-in forwards}
+@keyframes toastIn{from{opacity:0;transform:translateX(100px)}to{opacity:1;transform:translateX(0)}}
+@keyframes toastOut{from{opacity:1}to{opacity:0;transform:translateY(-20px)}}
+
+/* ===== CARD DETAIL MODAL ===== */
+.modal-overlay{
+  display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;
+  background:rgba(0,0,0,0.85);z-index:9999;
+  align-items:center;justify-content:center;
+}
+.modal-overlay.open{display:flex}
+.modal-content{
+  background:#1a1a1a;border-radius:16px;padding:1.5rem;
+  max-width:700px;width:90vw;max-height:90vh;overflow-y:auto;
+  box-shadow:0 0 24px rgba(0,0,0,0.8);position:relative;
+}
+.modal-close{
+  position:absolute;top:8px;right:12px;background:none;border:none;
+  color:#888;font-size:1.5rem;cursor:pointer;
+}
+.modal-close:hover{color:#fff}
+.modal-card-header{display:flex;gap:1rem;margin-bottom:1rem}
+.modal-card-image{width:200px;height:auto;border-radius:8px;flex-shrink:0}
+.modal-card-info{flex:1}
+.modal-card-number{color:#66f2c5;font-weight:bold;font-size:1.1rem}
+.modal-card-name{font-size:1.3rem;font-weight:bold;margin-top:0.2rem}
+.modal-param-group{
+  background:#222;border-radius:6px;padding:0.6rem;margin-top:0.5rem;
+}
+.modal-param-title{color:#4caf50;font-weight:bold;font-size:0.85rem;margin-bottom:0.3rem}
+.modal-param-row{display:flex;flex-wrap:wrap;gap:0.3rem;margin-bottom:0.2rem}
+.modal-param-item{
+  background:#333;border-radius:3px;padding:0.2rem 0.5rem;font-size:0.85rem;
+}
+.modal-param-label{color:#4caf50;margin-right:0.2rem}
+
+/* ===== NAV LINKS ===== */
+.nav-links{
+  max-width:1200px;width:100%;margin-top:1.5rem;padding:1rem;
+  text-align:center;display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;
+}
+.nav-link{
+  padding:0.5rem 1rem;background:#1a1a1a;border:1px solid #333;
+  border-radius:6px;color:#888;font-size:0.85rem;transition:all 0.15s;
+}
+.nav-link:hover{border-color:#66f2c5;color:#66f2c5}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:1200px){
+  .panel-left{position:absolute;z-index:100;height:calc(100vh - 88px);transform:translateX(-100%)}
+  .panel-left.open{transform:translateX(0)}
+  .panel-right{position:absolute;right:0;z-index:100;height:calc(100vh - 88px);transform:translateX(100%)}
+  .panel-right.open{transform:translateX(0)}
+  .panel-toggle{display:inline-flex !important}
+}
+@media(min-width:1201px){
+  .panel-toggle{display:none !important}
+}
+@media(max-width:768px){
+  .deck-grid{grid-template-columns:repeat(3,1fr);gap:6px}
+  .unit-stats-grid{grid-template-columns:repeat(3,1fr)}
+  .app-header{padding:0 0.5rem}
+  .deck-name-input{width:120px}
+  .header-btn{padding:0.3rem 0.5rem;font-size:0.8rem}
+  .slot-card-img{max-width:140px}
+  .deck-slot{min-height:220px;padding:0.3rem}
+}
+@media(max-width:480px){
+  .deck-grid{grid-template-columns:repeat(2,1fr);gap:4px}
+  .unit-stats-grid{grid-template-columns:repeat(2,1fr)}
+  .app-header .logo{font-size:0.9rem}
+  .deck-slot{min-height:180px}
+  .slot-card-img{max-width:120px}
+  .header-center{gap:0.3rem}
+}
+
+/* Panel overlay for mobile */
+.panel-overlay{
+  display:none;position:fixed;top:88px;left:0;width:100vw;height:calc(100vh - 88px);
+  background:rgba(0,0,0,0.5);z-index:99;
+}
+.panel-overlay.active{display:block}
+</style>
 </head>
 <body>
-    <div class="header">Gundam Arsenal Base Deck Simulator</div>
-    
-    <div id="totalCost" style="max-width:900px;margin:1rem auto;padding:0.5rem;background:#333;border-radius:6px;color:#66f2c5;font-size:1.2em;text-align:center;font-weight:bold;">総コスト: 0</div>
-    
-    <!-- デッキ保存・読み込み機能 -->
-    <div class="deck-save-section">
-        <div style="margin-bottom:1rem;">
-            <input type="text" id="deckName" placeholder="デッキ名を入力" class="deck-save-input">
-            <button onclick="saveDeck()" class="deck-save-btn">デッキ保存</button>
-            <button onclick="loadDeck()" class="deck-load-btn">デッキ読み込み</button>
-        </div>
-        <div class="auto-save-toggle">
-            <label style="color:#ffe082;margin-right:0.5rem;">
-                <input type="checkbox" id="autoSaveToggle" checked style="margin-right:0.3rem;" onchange="toggleAutoSave()">
-                自動保存（クッキー）
-            </label>
-            <span style="font-size:0.8em;color:#888;">※ページを離れても自動的にデッキが保存されます</span>
-        </div>
-        <div id="savedDecks" class="saved-decks-list">
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem;">
-                <h4 style="margin:0;color:#4caf50;">保存済みデッキ一覧</h4>
-                <button onclick="toggleDeckList()" id="toggleDeckListBtn" style="padding:0.2rem 0.5rem;background:#444;color:#fff;border:none;border-radius:4px;cursor:pointer;font-size:0.8em;">▼ 開く</button>
-            </div>
-            <div id="deckListContent" style="transition:max-height 0.3s ease-in-out;overflow:hidden;max-height:0px;">
-                <div id="deckList"></div>
-            </div>
-        </div>
-    </div>
-    
-    <div style="text-align:center;margin:1.5em 0;">
-        <button id="openDeckPostModal" style="padding:0.7em 1.5em;background:#4caf50;color:#fff;border:none;border-radius:6px;font-size:1.1em;font-weight:bold;cursor:pointer;">デッキ投稿</button>
-        <a href="/decks.html" style="margin-left:2em;color:#ffe082;font-size:1.1em;text-decoration:underline;">▶ デッキ投稿一覧</a>
-        <a href="/search" style="margin-left:2em;color:#66f2c5;font-size:1.1em;text-decoration:underline;">▶ カード検索</a>
-        <a href="/mobile" style="margin-left:2em;color:#ff9800;font-size:1.1em;text-decoration:underline;">📱 モバイル版</a>
-    </div>
 
-    <!-- デッキ投稿モーダル -->
-    <div id="deckPostModal" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.85);z-index:9999;align-items:center;justify-content:center;">
-      <div style="background:#222;padding:2em 2em 1.5em 2em;border-radius:16px;max-width:420px;width:90vw;box-shadow:0 0 24px #000;position:relative;">
-        <h2 style="color:#4caf50;margin-bottom:1em;">デッキ投稿</h2>
-        <label style="color:#ffe082;">デッキ名</label><br>
-        <input type="text" id="postDeckName" style="width:100%;padding:0.5em;margin-bottom:1em;border-radius:6px;border:1px solid #444;background:#181818;color:#fff;">
-        <br>
-        <label style="color:#ffe082;">コメント（任意）</label><br>
-        <textarea id="postDeckComment" style="width:100%;height:4em;padding:0.5em;margin-bottom:1em;border-radius:6px;border:1px solid #444;background:#181818;color:#fff;"></textarea>
-        <br>
-        <button id="submitDeckPost" style="padding:0.6em 1.5em;background:#4caf50;color:#fff;border:none;border-radius:6px;font-size:1em;font-weight:bold;cursor:pointer;">投稿</button>
-        <button id="closeDeckPostModal" style="padding:0.6em 1.2em;background:#888;color:#fff;border:none;border-radius:6px;font-size:1em;margin-left:1em;cursor:pointer;">閉じる</button>
-        <div id="deckPostMsg" style="margin-top:1em;color:#ff5252;"></div>
+<!-- ===== HEADER ===== -->
+<header class="app-header">
+  <div style="display:flex;align-items:center;gap:0.5rem">
+    <button class="header-btn panel-toggle" onclick="togglePanel('left')" title="カードブラウザ">&#9776;</button>
+    <span class="logo">GAB Deck Sim</span>
+  </div>
+  <div class="header-center">
+    <input type="text" class="deck-name-input" id="deckNameInput" placeholder="デッキ名">
+    <button class="header-btn primary" onclick="DeckManager.save()" title="Ctrl+S">保存</button>
+    <button class="header-btn" onclick="DeckManager.showLoadModal()">読込</button>
+    <button class="header-btn" onclick="DeckManager.duplicate()">複製</button>
+    <button class="header-btn" onclick="DeckManager.postToServer()">投稿</button>
+  </div>
+  <div class="header-right">
+    <div class="undo-redo-group">
+      <button class="header-btn" id="undoBtn" onclick="UndoManager.undo()" title="Ctrl+Z" disabled>&larr;</button>
+      <button class="header-btn" id="redoBtn" onclick="UndoManager.redo()" title="Ctrl+Shift+Z" disabled>&rarr;</button>
+    </div>
+    <button class="header-btn panel-toggle" onclick="togglePanel('right')" title="デッキ分析">&#9881;</button>
+  </div>
+</header>
+
+<!-- Tactics Card Bar -->
+<div class="tactics-bar">
+  <div id="tacticsBtnMain" class="tactics-btn" onclick="TacticsPicker.open('main')">
+    <span class="tactics-btn-label">メイン</span><span class="tactics-btn-name">未選択</span>
+  </div>
+  <div id="tacticsBtnSub" class="tactics-btn" onclick="TacticsPicker.open('sub')">
+    <span class="tactics-btn-label">サブ</span><span class="tactics-btn-name">未選択</span>
+  </div>
+</div>
+
+<!-- Panel overlay -->
+<div class="panel-overlay" id="panelOverlay" onclick="closeAllPanels()"></div>
+
+<!-- ===== MAIN BODY ===== -->
+<div class="app-body">
+
+<!-- LEFT PANEL: Card Browser -->
+<aside class="panel-left" id="panelLeft">
+  <div class="browser-header">
+    <div class="browser-tabs">
+      <div class="browser-tab active" data-type="MS" onclick="CardBrowser.setType('MS')">MS</div>
+      <div class="browser-tab" data-type="PL" onclick="CardBrowser.setType('PL')">PL</div>
+      <div class="browser-tab" data-type="" onclick="CardBrowser.setType('')">全て</div>
+    </div>
+    <input type="text" class="browser-search" id="browserSearch" placeholder="名前・番号・スキルで検索... ( / )" autocomplete="off">
+  </div>
+  <div class="browser-filters">
+    <div class="filter-row">
+      <select class="filter-select" id="filterCategory" onchange="CardBrowser.applyFilters()">
+        <option value="">カテゴリ</option>
+        <option value="機動">機動</option>
+        <option value="近距離">近距離</option>
+        <option value="遠距離">遠距離</option>
+        <option value="装甲">装甲</option>
+        <option value="汎用">汎用</option>
+        <option value="殲滅">殲滅</option>
+        <option value="制圧">制圧</option>
+        <option value="防衛">防衛</option>
+      </select>
+      <select class="filter-select" id="filterSeries" onchange="CardBrowser.applyFilters()">
+        <option value="">シリーズ</option>
+      </select>
+    </div>
+    <div class="filter-row">
+      <span style="color:#888;font-size:0.75rem;flex-shrink:0">コスト:</span>
+      <input type="number" class="filter-input" id="filterCostMin" placeholder="Min" min="0" max="20" onchange="CardBrowser.applyFilters()">
+      <span style="color:#666">〜</span>
+      <input type="number" class="filter-input" id="filterCostMax" placeholder="Max" min="0" max="20" onchange="CardBrowser.applyFilters()">
+    </div>
+    <div class="sort-row">
+      <span style="color:#888;font-size:0.7rem">順:</span>
+      <button class="sort-btn active" data-sort="number" onclick="CardBrowser.setSort('number')">番号</button>
+      <button class="sort-btn" data-sort="cost" onclick="CardBrowser.setSort('cost')">コスト</button>
+      <button class="sort-btn" data-sort="mobility" onclick="CardBrowser.setSort('mobility')">機動</button>
+      <button class="sort-btn" data-sort="ranged" onclick="CardBrowser.setSort('ranged')">遠距離</button>
+      <button class="sort-btn" data-sort="melee" onclick="CardBrowser.setSort('melee')">近距離</button>
+      <button class="sort-btn" data-sort="hp" onclick="CardBrowser.setSort('hp')">HP</button>
+      <button class="sort-btn" id="sortOrderBtn" onclick="CardBrowser.toggleOrder()" title="昇順/降順">&uarr;</button>
+    </div>
+  </div>
+  <div class="browser-list" id="browserList">
+    <div class="browser-loading">カードを読み込み中...</div>
+  </div>
+  <div class="browser-status" id="browserStatus">-</div>
+</aside>
+
+<!-- CENTER PANEL: Deck Builder -->
+<main class="panel-center" id="panelCenter">
+  <div class="deck-grid" id="deckGrid">
+    <div class="row-label">MS（モビルスーツ）</div>
+    <!-- MS slots 0-4 generated by JS -->
+    <div class="row-label">PL（パイロット）</div>
+    <!-- PL slots 5-9 generated by JS -->
+  </div>
+  <div class="unit-stats-section">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem">
+      <span class="analysis-title" style="margin-bottom:0">ユニットステータス</span>
+      <span id="totalCostBadge" style="color:#ffe082;font-weight:bold;font-size:1.1rem">総コスト: 0</span>
+    </div>
+    <div class="unit-stats-grid" id="unitStatsGrid"></div>
+  </div>
+  <div class="nav-links">
+    <a href="/v2" class="nav-link" style="border-color:#66f2c5;color:#66f2c5">v2 デッキシミュレーター</a>
+    <a href="/decks.html" class="nav-link">デッキ投稿一覧</a>
+    <a href="/search" class="nav-link">カード検索(旧)</a>
+    <a href="/summary" class="nav-link">サマリー</a>
+    <a href="/photo" class="nav-link">撮影モード</a>
+    <a href="/illustrator" class="nav-link">イラストレータ別</a>
+    <a href="/mobile" class="nav-link">モバイル版(旧)</a>
+  </div>
+</main>
+
+<!-- RIGHT PANEL: Deck Analysis -->
+<aside class="panel-right" id="panelRight">
+  <div class="analysis-section">
+    <div class="analysis-title">コスト概要</div>
+    <div class="cost-summary">
+      <span class="cost-total" id="analysisTotalCost">0</span>
+      <span class="cost-breakdown" id="analysisCostBreakdown"></span>
+    </div>
+    <div class="category-badges" id="analysisCategoryBadges"></div>
+  </div>
+  <div class="analysis-section">
+    <div class="analysis-title">リンクアビリティ</div>
+    <div class="link-list" id="analysisLinkList">
+      <div style="color:#555;font-size:0.8rem;padding:0.5rem">カードを配置するとリンクが表示されます</div>
+    </div>
+  </div>
+  <div class="analysis-section">
+    <div class="analysis-title">地形適性</div>
+    <div class="terrain-selector" id="terrainSelector">
+      <button class="terrain-sel-btn" data-terrain="ground" onclick="TerrainLogic.select('ground')">地上</button>
+      <button class="terrain-sel-btn" data-terrain="space" onclick="TerrainLogic.select('space')">宇宙</button>
+      <button class="terrain-sel-btn" data-terrain="desert" onclick="TerrainLogic.select('desert')">砂漠</button>
+      <button class="terrain-sel-btn" data-terrain="water" onclick="TerrainLogic.select('water')">水中</button>
+    </div>
+    <div class="terrain-grid" id="analysisTerrainGrid">
+      <div class="terrain-cell"><span class="terrain-label">地上</span><span class="terrain-value">-</span></div>
+      <div class="terrain-cell"><span class="terrain-label">宇宙</span><span class="terrain-value">-</span></div>
+      <div class="terrain-cell"><span class="terrain-label">砂漠</span><span class="terrain-value">-</span></div>
+      <div class="terrain-cell"><span class="terrain-label">水中</span><span class="terrain-value">-</span></div>
+    </div>
+  </div>
+  <div class="deck-code-section">
+    <div class="analysis-title">デッキコード</div>
+    <div class="deck-code-area">
+      <input type="text" class="deck-code-input" id="deckCodeInput" placeholder="コードを入力してインポート" readonly>
+      <button class="deck-code-btn" onclick="DeckManager.copyCode()" title="コピー">Copy</button>
+    </div>
+    <div class="deck-code-area" style="margin-top:0.3rem">
+      <input type="text" class="deck-code-input" id="deckCodeImport" placeholder="コードを貼り付けてインポート">
+      <button class="deck-code-btn" onclick="DeckManager.importCode()">Import</button>
+    </div>
+  </div>
+  <div class="analysis-section">
+    <div class="analysis-title">デッキ管理</div>
+    <div style="display:flex;flex-direction:column;gap:0.3rem">
+      <button class="header-btn" style="width:100%" onclick="DeckManager.clearAll()">デッキをクリア</button>
+      <button class="header-btn" style="width:100%" onclick="DeckManager.randomDeck()">ランダム生成</button>
+    </div>
+  </div>
+  <div class="analysis-section">
+    <div class="analysis-title">リンク指定生成</div>
+    <div style="display:flex;flex-direction:column;gap:0.3rem">
+      <select class="filter-select" id="linkSelect1" style="width:100%;padding:0.4rem">
+        <option value="">-- リンク1を選択 --</option>
+      </select>
+      <select class="filter-select" id="linkSelect2" style="width:100%;padding:0.4rem">
+        <option value="">-- リンク2 (任意) --</option>
+      </select>
+      <button class="header-btn primary" style="width:100%" onclick="DeckManager.linkRandomDeck()">リンク指定ランダム生成</button>
+    </div>
+  </div>
+</aside>
+
+</div><!-- /app-body -->
+
+<!-- Toast Container -->
+<div class="toast-container" id="toastContainer"></div>
+
+<!-- Card Detail Modal -->
+<div class="modal-overlay" id="cardDetailModal">
+  <div class="modal-content" id="cardDetailContent">
+    <button class="modal-close" onclick="closeCardModal()">&times;</button>
+    <div id="cardDetailBody"></div>
+  </div>
+</div>
+
+<!-- Deck Load Modal -->
+<div class="modal-overlay" id="deckLoadModal">
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeDeckLoadModal()">&times;</button>
+    <h3 style="color:#66f2c5;margin-bottom:1rem">デッキ読み込み</h3>
+    <div id="deckLoadList"></div>
+  </div>
+</div>
+
+<!-- Tactics Picker Modal -->
+<div class="modal-overlay" id="tacticsPickerModal">
+  <div class="modal-content" style="max-width:900px">
+    <button class="modal-close" onclick="TacticsPicker.close()">&times;</button>
+    <h3 id="tacticsPickerTitle" style="color:#ffe082;margin-bottom:1rem">作戦カードを選択</h3>
+    <div id="tacticsPickerBody"></div>
+  </div>
+</div>
+
+<script>
+// ================================================================
+// AppState - グローバル状態管理
+// ================================================================
+const AppState = {
+  cardIndex: [],          // 軽量カードインデックス
+  cardDetails: {},        // 番号→詳細のキャッシュ
+  deck: Array(10).fill(null),  // 番号 or null
+  deckOcr: Array(10).fill(null), // OCRデータキャッシュ
+  activeSlot: null,       // 現在選択中のスロット
+  filters: { type: 'MS', q: '', category: '', series: '', costMin: null, costMax: null, sort: 'number', order: 'asc' },
+  filteredCards: [],
+  renderOffset: 0,
+  renderBatch: 40,
+  isLoading: false,
+  seriesList: [],
+  linkIndex: {},
+  tacticsMain: null,
+  tacticsSub: null,
+  tacticsCards: { main: [], sub: [] },
+  selectedTerrain: null,  // 'ground'|'space'|'desert'|'water'|null
+};
+
+// ================================================================
+// Toast - 通知
+// ================================================================
+const Toast = {
+  show(msg, type='info', duration=2500) {
+    const container = document.getElementById('toastContainer');
+    const el = document.createElement('div');
+    el.className = `toast ${type}`;
+    el.textContent = msg;
+    container.appendChild(el);
+    setTimeout(() => {
+      el.classList.add('fadeout');
+      setTimeout(() => el.remove(), 300);
+    }, duration);
+  }
+};
+
+// ================================================================
+// TerrainLogic - 地形適性ステータス補正
+// ================================================================
+const TerrainLogic = {
+  BONUS: { S: 0.10, A: 0.05, B: 0, C: -0.05, D: -0.10 },
+
+  select(terrain) {
+    AppState.selectedTerrain = (AppState.selectedTerrain === terrain) ? null : terrain;
+    console.log('[TerrainLogic] selected:', AppState.selectedTerrain);
+    console.log('[TerrainLogic] deckOcr[0]?.terrain_compatibility:', AppState.deckOcr[0]?.terrain_compatibility);
+    console.log('[TerrainLogic] multiplier for unit0:', this.getMultiplier(AppState.deckOcr[0]));
+    this._updateButtons();
+    UIRenderer._updateUnitStats();
+    DeckAnalysis._updateTerrain();
+  },
+
+  _updateButtons() {
+    document.querySelectorAll('.terrain-sel-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.terrain === AppState.selectedTerrain);
+    });
+  },
+
+  getMultiplier(msOcr) {
+    if (!AppState.selectedTerrain) return 1.0;
+    const tc = msOcr?.terrain_compatibility;
+    if (!tc) return 1.0;
+    const rank = tc[AppState.selectedTerrain];
+    if (!rank) return 1.0;
+    return 1.0 + (this.BONUS[rank] || 0);
+  }
+};
+
+// ================================================================
+// UndoManager
+// ================================================================
+const UndoManager = {
+  _stack: [],
+  _pos: -1,
+
+  snapshot() {
+    const state = JSON.stringify({deck: AppState.deck, tm: AppState.tacticsMain, ts: AppState.tacticsSub});
+    // 重複排除
+    if (this._pos >= 0 && this._stack[this._pos] === state) return;
+    this._stack = this._stack.slice(0, this._pos + 1);
+    this._stack.push(state);
+    this._pos = this._stack.length - 1;
+    if (this._stack.length > 50) { this._stack.shift(); this._pos--; }
+    this._updateButtons();
+  },
+
+  undo() {
+    if (this._pos <= 0) return;
+    this._pos--;
+    this._apply();
+  },
+
+  redo() {
+    if (this._pos >= this._stack.length - 1) return;
+    this._pos++;
+    this._apply();
+  },
+
+  _apply() {
+    const raw = JSON.parse(this._stack[this._pos]);
+    // 後方互換: 旧形式(配列)と新形式(オブジェクト)の両方をサポート
+    if (Array.isArray(raw)) {
+      AppState.deck = raw;
+    } else {
+      AppState.deck = raw.deck;
+      AppState.tacticsMain = raw.tm || null;
+      AppState.tacticsSub = raw.ts || null;
+    }
+    // 詳細を再取得して描画
+    const numbers = AppState.deck.filter(n => n);
+    if (numbers.length > 0) {
+      CardService.batchDetails(numbers).then(() => {
+        for (let i = 0; i < 10; i++) {
+          AppState.deckOcr[i] = AppState.deck[i] ? (AppState.cardDetails[AppState.deck[i]]?.ocr_data || null) : null;
+        }
+        UIRenderer.renderAllSlots();
+        DeckAnalysis.update();
+      });
+    } else {
+      AppState.deckOcr = Array(10).fill(null);
+      UIRenderer.renderAllSlots();
+      DeckAnalysis.update();
+    }
+    this._updateButtons();
+  },
+
+  _updateButtons() {
+    document.getElementById('undoBtn').disabled = this._pos <= 0;
+    document.getElementById('redoBtn').disabled = this._pos >= this._stack.length - 1;
+  }
+};
+
+// ================================================================
+// CardService - API通信
+// ================================================================
+const CardService = {
+  async fetchIndex() {
+    const res = await fetch('/api/card_index');
+    const data = await res.json();
+    if (data.success) {
+      AppState.cardIndex = data.cards;
+      // シリーズリスト構築
+      const seriesSet = new Set();
+      data.cards.forEach(c => { if (c.series) seriesSet.add(c.series); });
+      AppState.seriesList = [...seriesSet].sort();
+      this._populateSeriesFilter();
+    }
+    return data;
+  },
+
+  async fetchDetail(number) {
+    if (AppState.cardDetails[number]) return AppState.cardDetails[number];
+    const res = await fetch(`/api/card/${number}`);
+    const data = await res.json();
+    if (data.success) {
+      AppState.cardDetails[number] = data.card;
+      return data.card;
+    }
+    return null;
+  },
+
+  async batchDetails(numbers) {
+    const needed = numbers.filter(n => !AppState.cardDetails[n]);
+    if (needed.length === 0) return;
+    const res = await fetch('/api/cards/batch', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ numbers: needed })
+    });
+    const data = await res.json();
+    if (data.success) {
+      Object.assign(AppState.cardDetails, data.cards);
+    }
+  },
+
+  async fetchTacticsCards() {
+    try {
+      const res = await fetch('/api/tactics_cards');
+      const data = await res.json();
+      if (data.success) {
+        AppState.tacticsCards = data.data;
+      }
+    } catch (e) {
+      console.error('作戦カードデータの取得に失敗:', e);
+    }
+  },
+
+  _populateSeriesFilter() {
+    const sel = document.getElementById('filterSeries');
+    sel.innerHTML = '<option value="">シリーズ</option>';
+    AppState.seriesList.forEach(s => {
+      const opt = document.createElement('option');
+      opt.value = s;
+      opt.textContent = s;
+      sel.appendChild(opt);
+    });
+  }
+};
+
+// ================================================================
+// CardBrowser - 左パネル
+// ================================================================
+const CardBrowser = {
+  _debounceTimer: null,
+
+  init() {
+    const searchInput = document.getElementById('browserSearch');
+    searchInput.addEventListener('input', () => {
+      clearTimeout(this._debounceTimer);
+      this._debounceTimer = setTimeout(() => {
+        AppState.filters.q = searchInput.value.trim();
+        this.applyFilters();
+      }, 300);
+    });
+    // 仮想スクロール
+    const list = document.getElementById('browserList');
+    list.addEventListener('scroll', () => {
+      if (list.scrollTop + list.clientHeight >= list.scrollHeight - 100) {
+        this._renderMore();
+      }
+    });
+  },
+
+  setType(type) {
+    AppState.filters.type = type;
+    document.querySelectorAll('.browser-tab').forEach(t => {
+      t.classList.toggle('active', t.dataset.type === type);
+    });
+    this.applyFilters();
+  },
+
+  setSort(sort) {
+    AppState.filters.sort = sort;
+    document.querySelectorAll('.sort-btn[data-sort]').forEach(b => {
+      b.classList.toggle('active', b.dataset.sort === sort);
+    });
+    this.applyFilters();
+  },
+
+  toggleOrder() {
+    AppState.filters.order = AppState.filters.order === 'asc' ? 'desc' : 'asc';
+    document.getElementById('sortOrderBtn').innerHTML = AppState.filters.order === 'asc' ? '&uarr;' : '&darr;';
+    this.applyFilters();
+  },
+
+  applyFilters() {
+    const f = AppState.filters;
+    f.category = document.getElementById('filterCategory').value;
+    f.series = document.getElementById('filterSeries').value;
+    const costMinEl = document.getElementById('filterCostMin');
+    const costMaxEl = document.getElementById('filterCostMax');
+    f.costMin = costMinEl.value ? parseInt(costMinEl.value) : null;
+    f.costMax = costMaxEl.value ? parseInt(costMaxEl.value) : null;
+
+    let cards = AppState.cardIndex;
+
+    // Type filter
+    if (f.type) {
+      cards = cards.filter(c => c.type === f.type);
+    }
+    // Category filter
+    if (f.category) {
+      cards = cards.filter(c => c.category === f.category);
+    }
+    // Series filter
+    if (f.series) {
+      cards = cards.filter(c => c.series === f.series);
+    }
+    // Cost filter
+    if (f.costMin !== null) {
+      cards = cards.filter(c => c.cost !== null && c.cost >= f.costMin);
+    }
+    if (f.costMax !== null) {
+      cards = cards.filter(c => c.cost !== null && c.cost <= f.costMax);
+    }
+    // Text search
+    if (f.q) {
+      const q = f.q.toLowerCase();
+      cards = cards.filter(c =>
+        (c.number || '').toLowerCase().includes(q) ||
+        (c.name || '').toLowerCase().includes(q) ||
+        (c.series || '').toLowerCase().includes(q)
+      );
+    }
+    // Sort
+    const key = f.sort;
+    const rev = f.order === 'desc';
+    cards = [...cards].sort((a, b) => {
+      let va = a[key], vb = b[key];
+      if (va === null || va === undefined) va = rev ? -Infinity : Infinity;
+      if (vb === null || vb === undefined) vb = rev ? -Infinity : Infinity;
+      if (typeof va === 'string') {
+        const cmp = va.localeCompare(vb);
+        return rev ? -cmp : cmp;
+      }
+      return rev ? vb - va : va - vb;
+    });
+
+    AppState.filteredCards = cards;
+    AppState.renderOffset = 0;
+    this._renderList(true);
+  },
+
+  _renderList(reset) {
+    const list = document.getElementById('browserList');
+    if (reset) list.innerHTML = '';
+    const cards = AppState.filteredCards;
+    const start = AppState.renderOffset;
+    const end = Math.min(start + AppState.renderBatch, cards.length);
+
+    const fragment = document.createDocumentFragment();
+    for (let i = start; i < end; i++) {
+      fragment.appendChild(this._createCardEl(cards[i]));
+    }
+    list.appendChild(fragment);
+    AppState.renderOffset = end;
+
+    document.getElementById('browserStatus').textContent =
+      `${cards.length} 件 (${AppState.cardIndex.length} 枚中)`;
+  },
+
+  _renderMore() {
+    if (AppState.renderOffset >= AppState.filteredCards.length) return;
+    this._renderList(false);
+  },
+
+  _createCardEl(card) {
+    const el = document.createElement('div');
+    el.className = 'browser-card';
+    el.dataset.number = card.number;
+    el.innerHTML = `
+      <img class="browser-card-img" src="${card.front_url}" alt="${card.name}" loading="lazy"
+           onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2248%22 height=%2272%22><rect fill=%22%23222%22 width=%2248%22 height=%2272%22/></svg>'">
+      <div class="browser-card-info">
+        <div class="browser-card-number">${card.number}</div>
+        <div class="browser-card-name">${card.name}</div>
+        <div class="browser-card-meta">
+          <span class="browser-card-cost">${card.cost !== null ? 'C' + card.cost : '-'}</span>
+          <span>${card.category || card.type}</span>
+          ${card.mobility ? `<span>機${card.mobility}</span>` : ''}
+        </div>
       </div>
-    </div>
-    
-    <div id="cardGrid" class="card-grid"></div>
-    <div id="totalStatsBars"></div>
-    
-    <script>
-        let allCards = [];
-        let selectedCardNumbers = Array(10).fill(null);
-        let selectedOcrData = Array(10).fill(null);
-        let usedCardNumbers = [];
-        let autoSaveEnabled = true;
-        
-        // クッキー操作のヘルパー関数
-        function setCookie(name, value, days = 30) {
-            const expires = new Date();
-            expires.setTime(expires.getTime() + (days * 24 * 60 * 60 * 1000));
-            document.cookie = `${name}=${encodeURIComponent(JSON.stringify(value))};expires=${expires.toUTCString()};path=/`;
+    `;
+    el.addEventListener('click', () => this._selectCard(card));
+    el.addEventListener('dblclick', (e) => { e.preventDefault(); showCardModal(card.number); });
+    return el;
+  },
+
+  _selectCard(card) {
+    const slot = AppState.activeSlot;
+    if (slot === null) {
+      // スロットが選ばれていない場合：自動判定
+      const type = card.type;
+      const range = type === 'MS' ? [0,1,2,3,4] : [5,6,7,8,9];
+      const emptySlot = range.find(i => !AppState.deck[i]);
+      if (emptySlot !== undefined) {
+        DeckManager.setCard(emptySlot, card.number);
+      } else {
+        Toast.show(`${type}の空きスロットがありません（最大5枚）`, 'info');
+      }
+      return;
+    }
+    // スロットとカードタイプの整合性チェック
+    const slotType = slot < 5 ? 'MS' : 'PL';
+    if (card.type && card.type !== slotType) {
+      Toast.show(`${slotType}スロットに${card.type}カードはセットできません`, 'error');
+      return;
+    }
+    // アクティブスロットにセット
+    DeckManager.setCard(slot, card.number);
+    // 次のスロットを自動選択
+    const nextSlot = slot < 9 ? slot + 1 : null;
+    if (nextSlot !== null && !AppState.deck[nextSlot]) {
+      UIRenderer.setActiveSlot(nextSlot);
+      // タイプを切り替え
+      const nextType = nextSlot >= 5 ? 'PL' : 'MS';
+      if (AppState.filters.type !== nextType) {
+        this.setType(nextType);
+      }
+    } else {
+      UIRenderer.setActiveSlot(null);
+    }
+  },
+
+  highlightCard(number) {
+    document.querySelectorAll('.browser-card').forEach(el => {
+      el.classList.toggle('selected', el.dataset.number === number);
+    });
+  }
+};
+
+// ================================================================
+// DeckManager - デッキ操作
+// ================================================================
+const DeckManager = {
+  async setCard(slotIndex, cardNumber) {
+    UndoManager.snapshot();
+    AppState.deck[slotIndex] = cardNumber;
+    // 詳細取得
+    const detail = await CardService.fetchDetail(cardNumber);
+    if (detail) {
+      AppState.deckOcr[slotIndex] = detail.ocr_data || null;
+    }
+    UIRenderer.renderSlot(slotIndex);
+    DeckAnalysis.update();
+    UndoManager.snapshot();
+    this._autoSave();
+    this._updateDeckCode();
+    this._updateHash();
+  },
+
+  clearCard(slotIndex) {
+    UndoManager.snapshot();
+    AppState.deck[slotIndex] = null;
+    AppState.deckOcr[slotIndex] = null;
+    UIRenderer.renderSlot(slotIndex);
+    DeckAnalysis.update();
+    UndoManager.snapshot();
+    this._autoSave();
+    this._updateDeckCode();
+    this._updateHash();
+  },
+
+  setTactics(type, id) {
+    UndoManager.snapshot();
+    if (type === 'main') AppState.tacticsMain = id;
+    else AppState.tacticsSub = id;
+    UIRenderer.renderTacticsSlot(type);
+    UndoManager.snapshot();
+    this._autoSave();
+    this._updateDeckCode();
+    this._updateHash();
+  },
+
+  clearTactics(type) {
+    UndoManager.snapshot();
+    if (type === 'main') AppState.tacticsMain = null;
+    else AppState.tacticsSub = null;
+    UIRenderer.renderTacticsSlot(type);
+    UndoManager.snapshot();
+    this._autoSave();
+    this._updateDeckCode();
+    this._updateHash();
+  },
+
+  clearAll() {
+    UndoManager.snapshot();
+    AppState.deck = Array(10).fill(null);
+    AppState.deckOcr = Array(10).fill(null);
+    AppState.tacticsMain = null;
+    AppState.tacticsSub = null;
+    UIRenderer.renderAllSlots();
+    DeckAnalysis.update();
+    UndoManager.snapshot();
+    this._autoSave();
+    this._updateDeckCode();
+    this._updateHash();
+    Toast.show('デッキをクリアしました', 'info');
+  },
+
+  async randomDeck() {
+    UndoManager.snapshot();
+    const msCards = AppState.cardIndex.filter(c => c.type === 'MS');
+    const plCards = AppState.cardIndex.filter(c => c.type === 'PL');
+    const pickRandom = (arr, n) => {
+      const a = [...arr];
+      for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
+      }
+      return a.slice(0, n);
+    };
+    const msPick = pickRandom(msCards, 5);
+    const plPick = pickRandom(plCards, 5);
+    const numbers = [...msPick, ...plPick].map(c => c.number);
+    AppState.deck = numbers;
+    await CardService.batchDetails(numbers);
+    for (let i = 0; i < 10; i++) {
+      AppState.deckOcr[i] = AppState.cardDetails[numbers[i]]?.ocr_data || null;
+    }
+    UIRenderer.renderAllSlots();
+    DeckAnalysis.update();
+    UndoManager.snapshot();
+    this._autoSave();
+    this._updateDeckCode();
+    this._updateHash();
+    Toast.show('ランダムデッキを生成しました', 'success');
+  },
+
+  async linkRandomDeck() {
+    const linkName1 = document.getElementById('linkSelect1').value;
+    const linkName2 = document.getElementById('linkSelect2').value;
+    if (!linkName1) { Toast.show('リンク1を選択してください', 'error'); return; }
+    if (linkName2 && linkName2 === linkName1) { Toast.show('異なるリンクを選択してください', 'error'); return; }
+
+    const li = AppState.linkIndex;
+    const link1 = li[linkName1];
+    if (!link1) { Toast.show('リンク情報が見つかりません', 'error'); return; }
+    const link2 = linkName2 ? li[linkName2] : null;
+
+    const r1 = link1.required;
+    const r2 = link2 ? link2.required : 0;
+    const ms1 = new Set(link1.ms_cards);
+    const pl1 = new Set(link1.pl_cards);
+    const ms2 = link2 ? new Set(link2.ms_cards) : new Set();
+    const pl2 = link2 ? new Set(link2.pl_cards) : new Set();
+
+    // 両リンク持ちカード
+    const msBoth = link2 ? [...ms1].filter(c => ms2.has(c)) : [];
+    const plBoth = link2 ? [...pl1].filter(c => pl2.has(c)) : [];
+    // link1のみ
+    const msOnly1 = [...ms1].filter(c => !ms2.has(c));
+    const plOnly1 = [...pl1].filter(c => !pl2.has(c));
+    // link2のみ
+    const msOnly2 = link2 ? [...ms2].filter(c => !ms1.has(c)) : [];
+    const plOnly2 = link2 ? [...pl2].filter(c => !pl1.has(c)) : [];
+
+    const shuffle = (arr) => {
+      const a = [...arr];
+      for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
+      }
+      return a;
+    };
+
+    // 貪欲にカードを選択
+    const msSelected = [];
+    const plSelected = [];
+    let need1 = r1;
+    let need2 = r2;
+    const usedCards = new Set();
+
+    const pick = (pool, targetArr, maxSlots) => {
+      const shuffled = shuffle(pool);
+      const picked = [];
+      for (const c of shuffled) {
+        if (usedCards.has(c)) continue;
+        if (targetArr.length + picked.length >= maxSlots) break;
+        picked.push(c);
+        usedCards.add(c);
+      }
+      return picked;
+    };
+
+    // 1. 両リンク持ちを優先（MS/PLバランス考慮）
+    if (link2) {
+      const bothMs = shuffle(msBoth);
+      for (const c of bothMs) {
+        if (msSelected.length >= 5) break;
+        if (need1 <= 0 && need2 <= 0) break;
+        msSelected.push(c);
+        usedCards.add(c);
+        need1--; need2--;
+      }
+      const bothPl = shuffle(plBoth);
+      for (const c of bothPl) {
+        if (plSelected.length >= 5) break;
+        if (need1 <= 0 && need2 <= 0) break;
+        plSelected.push(c);
+        usedCards.add(c);
+        need1--; need2--;
+      }
+    }
+
+    // 2. link1のみ持つカードで不足分補完
+    if (need1 > 0) {
+      const pool1Ms = shuffle(msOnly1);
+      for (const c of pool1Ms) {
+        if (need1 <= 0) break;
+        if (usedCards.has(c) || msSelected.length >= 5) continue;
+        msSelected.push(c);
+        usedCards.add(c);
+        need1--;
+      }
+    }
+    if (need1 > 0) {
+      const pool1Pl = shuffle(plOnly1);
+      for (const c of pool1Pl) {
+        if (need1 <= 0) break;
+        if (usedCards.has(c) || plSelected.length >= 5) continue;
+        plSelected.push(c);
+        usedCards.add(c);
+        need1--;
+      }
+    }
+    // 両リンク持ちでまだlink1が足りなければ追加
+    if (need1 > 0 && link2) {
+      for (const c of shuffle([...msBoth, ...plBoth])) {
+        if (need1 <= 0) break;
+        if (usedCards.has(c)) continue;
+        const isMs = ms1.has(c) && !pl1.has(c) ? true : ms1.has(c);
+        if (isMs && msSelected.length < 5) { msSelected.push(c); }
+        else if (plSelected.length < 5) { plSelected.push(c); }
+        else continue;
+        usedCards.add(c);
+        need1--;
+      }
+    }
+
+    // 3. link2のみ持つカードで不足分補完
+    if (need2 > 0) {
+      const pool2Ms = shuffle(msOnly2);
+      for (const c of pool2Ms) {
+        if (need2 <= 0) break;
+        if (usedCards.has(c) || msSelected.length >= 5) continue;
+        msSelected.push(c);
+        usedCards.add(c);
+        need2--;
+      }
+    }
+    if (need2 > 0) {
+      const pool2Pl = shuffle(plOnly2);
+      for (const c of pool2Pl) {
+        if (need2 <= 0) break;
+        if (usedCards.has(c) || plSelected.length >= 5) continue;
+        plSelected.push(c);
+        usedCards.add(c);
+        need2--;
+      }
+    }
+
+    // 条件充足チェック
+    if (need1 > 0) {
+      Toast.show(`「${linkName1}」の条件を満たすカードが不足しています（あと${need1}枚）`, 'error');
+      return;
+    }
+    if (need2 > 0) {
+      Toast.show(`「${linkName2}」の条件を満たすカードが不足しています（あと${need2}枚）`, 'error');
+      return;
+    }
+
+    // 4. 残りスロットをランダムカードで埋める
+    const allMs = AppState.cardIndex.filter(c => c.type === 'MS');
+    const allPl = AppState.cardIndex.filter(c => c.type === 'PL');
+    while (msSelected.length < 5) {
+      const pool = shuffle(allMs.map(c => c.number).filter(n => !usedCards.has(n)));
+      if (pool.length === 0) break;
+      msSelected.push(pool[0]);
+      usedCards.add(pool[0]);
+    }
+    while (plSelected.length < 5) {
+      const pool = shuffle(allPl.map(c => c.number).filter(n => !usedCards.has(n)));
+      if (pool.length === 0) break;
+      plSelected.push(pool[0]);
+      usedCards.add(pool[0]);
+    }
+
+    // デッキに適用
+    UndoManager.snapshot();
+    const numbers = [...msSelected.slice(0, 5), ...plSelected.slice(0, 5)];
+    // 不足分をnullで埋める
+    while (numbers.length < 10) numbers.push(null);
+    AppState.deck = numbers;
+    const validNumbers = numbers.filter(n => n);
+    if (validNumbers.length > 0) await CardService.batchDetails(validNumbers);
+    for (let i = 0; i < 10; i++) {
+      AppState.deckOcr[i] = AppState.deck[i] ? (AppState.cardDetails[AppState.deck[i]]?.ocr_data || null) : null;
+    }
+    UIRenderer.renderAllSlots();
+    DeckAnalysis.update();
+    UndoManager.snapshot();
+    this._autoSave();
+    this._updateDeckCode();
+    this._updateHash();
+    const msg = link2 ? `「${linkName1}」+「${linkName2}」指定デッキを生成しました` : `「${linkName1}」指定デッキを生成しました`;
+    Toast.show(msg, 'success');
+  },
+
+  // デッキコード生成（base64エンコード）
+  generateCode() {
+    const numbers = AppState.deck.map(n => n || '');
+    // 作戦カードがある場合は12エントリに拡張
+    if (AppState.tacticsMain || AppState.tacticsSub) {
+      numbers.push(AppState.tacticsMain || '');
+      numbers.push(AppState.tacticsSub || '');
+    }
+    return btoa(unescape(encodeURIComponent(numbers.join(','))));
+  },
+
+  parseCode(code) {
+    try {
+      const decoded = decodeURIComponent(escape(atob(code)));
+      return decoded.split(',');
+    } catch {
+      return null;
+    }
+  },
+
+  _updateDeckCode() {
+    const code = this.generateCode();
+    document.getElementById('deckCodeInput').value = code;
+  },
+
+  _updateHash() {
+    const hasCards = AppState.deck.some(n => n) || AppState.tacticsMain || AppState.tacticsSub;
+    if (hasCards) {
+      location.hash = this.generateCode();
+    } else {
+      history.replaceState(null, '', location.pathname);
+    }
+  },
+
+  copyCode() {
+    const code = document.getElementById('deckCodeInput').value;
+    navigator.clipboard.writeText(code).then(() => {
+      Toast.show('デッキコードをコピーしました', 'success');
+    });
+  },
+
+  async importCode() {
+    const code = document.getElementById('deckCodeImport').value.trim();
+    if (!code) { Toast.show('コードを入力してください', 'error'); return; }
+    const numbers = this.parseCode(code);
+    if (!numbers || (numbers.length !== 10 && numbers.length !== 12)) { Toast.show('無効なデッキコードです', 'error'); return; }
+    await this._applyNumbers(numbers);
+    document.getElementById('deckCodeImport').value = '';
+    Toast.show('デッキをインポートしました', 'success');
+  },
+
+  async _applyNumbers(numbers) {
+    UndoManager.snapshot();
+    // 先頭10エントリはMS/PL、11-12は作戦カード
+    const deckNumbers = numbers.slice(0, 10);
+    AppState.deck = deckNumbers.map(n => n || null);
+    if (numbers.length >= 12) {
+      AppState.tacticsMain = numbers[10] || null;
+      AppState.tacticsSub = numbers[11] || null;
+    }
+    const validNumbers = deckNumbers.filter(n => n);
+    if (validNumbers.length > 0) {
+      await CardService.batchDetails(validNumbers);
+    }
+    for (let i = 0; i < 10; i++) {
+      AppState.deckOcr[i] = AppState.deck[i] ? (AppState.cardDetails[AppState.deck[i]]?.ocr_data || null) : null;
+    }
+    UIRenderer.renderAllSlots();
+    DeckAnalysis.update();
+    UndoManager.snapshot();
+    this._autoSave();
+    this._updateDeckCode();
+    this._updateHash();
+  },
+
+  // ストレージ操作
+  save() {
+    const name = document.getElementById('deckNameInput').value.trim();
+    if (!name) { Toast.show('デッキ名を入力してください', 'error'); return; }
+    const decks = JSON.parse(localStorage.getItem('gab_decks') || '{}');
+    decks[name] = {
+      name,
+      cards: [...AppState.deck],
+      tacticsMain: AppState.tacticsMain,
+      tacticsSub: AppState.tacticsSub,
+      timestamp: new Date().toISOString()
+    };
+    localStorage.setItem('gab_decks', JSON.stringify(decks));
+    Toast.show(`デッキ「${name}」を保存しました`, 'success');
+  },
+
+  duplicate() {
+    const name = document.getElementById('deckNameInput').value.trim();
+    const newName = (name || 'デッキ') + ' (Copy)';
+    document.getElementById('deckNameInput').value = newName;
+    this.save();
+  },
+
+  _autoSave() {
+    localStorage.setItem('gab_autosave', JSON.stringify({
+      cards: [...AppState.deck],
+      tacticsMain: AppState.tacticsMain,
+      tacticsSub: AppState.tacticsSub,
+      timestamp: new Date().toISOString()
+    }));
+  },
+
+  async _autoLoad() {
+    // ハッシュからのインポート
+    if (location.hash && location.hash.length > 1) {
+      const code = location.hash.substring(1);
+      const numbers = this.parseCode(code);
+      if (numbers && (numbers.length === 10 || numbers.length === 12)) {
+        await this._applyNumbers(numbers);
+        Toast.show('URLからデッキを復元しました', 'info');
+        return;
+      }
+    }
+    // 旧形式マイグレーション
+    const oldAutoSave = getCookieValue('gundamAutoSave');
+    if (oldAutoSave) {
+      try {
+        const data = JSON.parse(oldAutoSave);
+        if (data && data.cards) {
+          const numbers = data.cards.map(c => c.number || null);
+          if (numbers.some(n => n)) {
+            await this._applyNumbers(numbers);
+            Toast.show('旧形式デッキを移行しました', 'info');
+            return;
+          }
         }
-        
-        function getCookie(name) {
-            const nameEQ = name + "=";
-            const ca = document.cookie.split(';');
-            for (let i = 0; i < ca.length; i++) {
-                let c = ca[i];
-                while (c.charAt(0) === ' ') c = c.substring(1, c.length);
-                if (c.indexOf(nameEQ) === 0) {
-                    try {
-                        return JSON.parse(decodeURIComponent(c.substring(nameEQ.length, c.length)));
-                    } catch (e) {
-                        return null;
-                    }
-                }
-            }
-            return null;
+      } catch {}
+    }
+    // localStorage自動保存
+    const saved = localStorage.getItem('gab_autosave');
+    if (saved) {
+      try {
+        const data = JSON.parse(saved);
+        if (data.cards && data.cards.some(n => n)) {
+          // 作戦カードも復元
+          if (data.tacticsMain) AppState.tacticsMain = data.tacticsMain;
+          if (data.tacticsSub) AppState.tacticsSub = data.tacticsSub;
+          await this._applyNumbers(data.cards);
+          return;
         }
-        
-        // 自動保存機能
-        function autoSaveDeck() {
-            if (!autoSaveEnabled) return;
-            
-            const deckData = {
-                timestamp: new Date().toISOString(),
-                cards: selectedCardNumbers.map((cardNumber, index) => {
-                    const card = allCards.find(c => c.number === cardNumber);
-                    return {
-                        index: index,
-                        number: cardNumber,
-                        name: card ? card.name : ''
-                    };
-                }),
-                totalCost: document.getElementById('totalCost').textContent
-            };
-            
-            setCookie('gundamAutoSave', deckData, 30);
-        }
-        
-        // 自動復元機能
-        function autoLoadDeck() {
-            // まず保存済みデッキをチェック
-            const savedDeck = getCookie('gundamLastSavedDeck');
-            if (savedDeck && savedDeck.cards) {
-                console.log('保存済みデッキを復元中...');
-                applySavedDeck(savedDeck);
-                console.log('デッキの復元が完了しました');
-            }
-            updateSumStats();
-            
-            // 次に自動保存デッキをチェック
-            const autoSavedData = getCookie('gundamAutoSave');
-            if (autoSavedData && autoSavedData.cards) {
-                console.log('自動保存されたデッキを復元中...');
-                applySavedDeck(autoSavedData);
-                console.log('デッキの復元が完了しました');
-            }
-            updateSumStats();
-        }
-        
-        // 保存されたデッキを適用する共通関数
-        function applySavedDeck(deckData) {
-            if (allCards.length > 0) {
-                deckData.cards.forEach(cardInfo => {
-                    if (cardInfo.number) {
-                        const card = allCards.find(c => c.number === cardInfo.number);
-                        if (card) {
-                            const select = document.getElementById(`card-select-${cardInfo.index}`);
-                            if (select) {
-                                const cardIndex = allCards.indexOf(card);
-                                select.value = cardIndex;
-                                select.dispatchEvent(new Event('change'));
-                            }
-                        }
-                    }
-                });
-                
-                console.log('デッキの復元が完了しました');
-            }
-            updateSumStats();
-        }
+      } catch {}
+    }
+  },
 
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('DOM loaded, fetching cards...');
-            fetch('/fetch_cards')
-                .then(res => res.json())
-                .then(data => {
-                    console.log('Fetched data:', data);
-                    if (!data.success) {
-                        document.getElementById('cardGrid').innerText = 'カードデータの取得に失敗しました';
-                        return;
-                    }
-                    allCards = data.images;
-                    
-                    // 重複を除去（カード番号で一意にする）
-                    const uniqueCards = [];
-                    const seenNumbers = new Set();
-                    for (const card of allCards) {
-                        if (!seenNumbers.has(card.number)) {
-                            uniqueCards.push(card);
-                            seenNumbers.add(card.number);
-                        }
-                    }
-                    allCards = uniqueCards;
-                    
-                    console.log('All cards loaded:', allCards.length, 'cards (duplicates removed)');
-                    const cardGrid = document.getElementById('cardGrid');
-                    cardGrid.innerHTML = '';
-                    for (let i = 0; i < Math.min(10, allCards.length); i++) {
-                        createCardItem(i, allCards[i]);
-                    }
-                    // 全カード初期化後に自動復元を実行
-                    setTimeout(() => {
-                        autoLoadDeck();
-                    }, 100);
-                })
-                .catch(error => {
-                    console.error('Error fetching cards:', error);
-                });
+  showLoadModal() {
+    const decks = JSON.parse(localStorage.getItem('gab_decks') || '{}');
+    const list = document.getElementById('deckLoadList');
+    const entries = Object.values(decks).sort((a, b) => (b.timestamp || '').localeCompare(a.timestamp || ''));
 
-            // デッキインポート処理
-            const imported = localStorage.getItem('gundamDecks_import');
-            if (imported) {
-                try {
-                    const deck = JSON.parse(imported);
-                    if (deck && Array.isArray(deck.cards)) {
-                        setTimeout(() => {
-                            deck.cards.forEach((card, idx) => {
-                                if (card && card.number) {
-                                    const select = document.getElementById(`card-select-${idx}`);
-                                    if (select) {
-                                        select.value = Array.from(select.options).find(opt => {
-                                            return allCards[opt.value] && allCards[opt.value].number == card.number;
-                                        })?.value || select.value;
-                                        select.dispatchEvent(new Event('change'));
-                                    }
-                                }
-                            });
-                        }, 500); // allCards取得後に実行
-                    }
-                } catch (e) {}
-                localStorage.removeItem('gundamDecks_import');
-            }
-            
-            // 検索ページから戻ってきた際のカードセット処理
-            const selectedCardData = localStorage.getItem('selectedCardForDeck');
-            if (selectedCardData) {
-                try {
-                    const data = JSON.parse(selectedCardData);
-                    if (data && data.slot !== undefined && data.cardNumber) {
-                        setTimeout(() => {
-                            const card = allCards.find(c => c.number === data.cardNumber);
-                            if (card) {
-                                const select = document.getElementById(`card-select-${data.slot}`);
-                                if (select) {
-                                    const cardIndex = allCards.indexOf(card);
-                                    select.value = cardIndex;
-                                    select.dispatchEvent(new Event('change'));
-                                    
-                                    // 成功メッセージを表示
-                                    const successMsg = document.createElement('div');
-                                    successMsg.style.position = 'fixed';
-                                    successMsg.style.top = '20px';
-                                    successMsg.style.left = '50%';
-                                    successMsg.style.transform = 'translateX(-50%)';
-                                    successMsg.style.background = '#4caf50';
-                                    successMsg.style.color = '#fff';
-                                    successMsg.style.padding = '1rem 2rem';
-                                    successMsg.style.borderRadius = '8px';
-                                    successMsg.style.zIndex = '10000';
-                                    successMsg.style.fontWeight = 'bold';
-                                    successMsg.textContent = `スロット${data.slot + 1}に「${data.cardName}」をセットしました！`;
-                                    document.body.appendChild(successMsg);
-                                    
-                                    // 3秒後にメッセージを削除
-                                    setTimeout(() => {
-                                        if (successMsg.parentNode) {
-                                            successMsg.parentNode.removeChild(successMsg);
-                                        }
-                                    }, 3000);
-                                }
-                            }
-                        }, 600); // 他の初期化処理の後に実行
-                    }
-                } catch (e) {
-                    console.error('Error parsing selected card data:', e);
-                }
-                // 処理後にローカルストレージから削除
-                localStorage.removeItem('selectedCardForDeck');
-            }
-        });
+    if (entries.length === 0) {
+      list.innerHTML = '<p style="color:#888">保存済みデッキがありません</p>';
+    } else {
+      list.innerHTML = entries.map(d => `
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:0.5rem;margin-bottom:0.3rem;background:#222;border-radius:6px;border:1px solid #333">
+          <div>
+            <div style="font-weight:bold;color:#66f2c5">${escapeHtml(d.name)}</div>
+            <div style="font-size:0.75rem;color:#888">${d.timestamp ? new Date(d.timestamp).toLocaleString('ja-JP') : ''}</div>
+          </div>
+          <div style="display:flex;gap:0.3rem">
+            <button class="header-btn" onclick="DeckManager._loadByName('${escapeHtml(d.name)}')">適用</button>
+            <button class="header-btn" style="color:#f44336;border-color:#f44336" onclick="DeckManager._deleteByName('${escapeHtml(d.name)}')">削除</button>
+          </div>
+        </div>
+      `).join('');
+    }
+    document.getElementById('deckLoadModal').classList.add('open');
+  },
 
-        // 検索用モーダルのHTMLをbody末尾に追加
-        if (!document.getElementById('search-modal')) {
-            const modal = document.createElement('div');
-            modal.id = 'search-modal';
-            modal.style.display = 'none';
-            modal.style.position = 'fixed';
-            modal.style.top = '0';
-            modal.style.left = '0';
-            modal.style.width = '100vw';
-            modal.style.height = '100vh';
-            modal.style.background = 'rgba(0,0,0,0.85)';
-            modal.style.zIndex = '9999';
-            modal.style.overflowY = 'auto';
-            modal.innerHTML = `<div id="search-modal-content" style="max-width:1100px;margin:1em auto;background:#222;padding:1em;border-radius:16px;box-shadow:0 0 24px #000;min-height:200px;position:relative;max-height:90vh;overflow-y:auto;"></div>`;
-            document.body.appendChild(modal);
-        }
+  async _loadByName(name) {
+    const decks = JSON.parse(localStorage.getItem('gab_decks') || '{}');
+    const deck = decks[name];
+    if (!deck) return;
+    // 作戦カードも復元
+    AppState.tacticsMain = deck.tacticsMain || null;
+    AppState.tacticsSub = deck.tacticsSub || null;
+    await this._applyNumbers(deck.cards);
+    document.getElementById('deckNameInput').value = name;
+    closeDeckLoadModal();
+    Toast.show(`デッキ「${name}」を適用しました`, 'success');
+  },
 
-        function createCardItem(index, card) {
-            const cardGrid = document.getElementById('cardGrid');
-            const div = document.createElement('div');
-            div.className = 'card-item row-top';
-            
-            const isPilotSlot = index >= 5;
-            const isMSSlot = index < 5;
-            
-            const candidateCards = allCards.filter(c => {
-                const isPilot = (c.ocr_data && c.ocr_data.type === 'PL') || c.category === 'PL';
-                const isMS = (c.ocr_data && c.ocr_data.type === 'MS') || c.category === 'MS';
-                if (isPilotSlot) return isPilot;
-                if (isMSSlot) return isMS;
-                return true;
-            });
-            
-            const availableCards = candidateCards.filter(c => !usedCardNumbers.includes(c.number));
-            const defaultCard = availableCards.length > 0 ? availableCards[0] : candidateCards[0];
-            usedCardNumbers[index] = defaultCard.number;
-            
-            const frontUrl = defaultCard.front ? defaultCard.front.image_url : defaultCard.url;
-            const backUrl = defaultCard.back && defaultCard.back.image_url ? defaultCard.back.image_url : null;
-            let isFront = true;
-            
-            const img = document.createElement('img');
-            img.src = frontUrl;
-            img.alt = defaultCard.name;
-            img.id = `card-img-${index}`;
-            img.style.cursor = 'pointer';
-            img.addEventListener('click', function() {
-                if (backUrl) {
-                    isFront = !isFront;
-                    img.src = isFront ? frontUrl : backUrl;
-                }
-            });
-            
-            const number = document.createElement('div');
-            number.className = 'card-number';
-            number.id = `card-number-${index}`;
-            number.textContent = defaultCard.number;
-            
-            const name = document.createElement('div');
-            name.className = 'card-name';
-            name.id = `card-name-${index}`;
-            name.textContent = defaultCard.name;
-            name.title = defaultCard.name;
-            
-            const select = document.createElement('select');
-            select.className = 'card-select';
-            select.id = `card-select-${index}`;
-            candidateCards.forEach((c, idx) => {
-                const opt = document.createElement('option');
-                opt.value = allCards.indexOf(c);
-                opt.textContent = `${c.number} - ${c.name}`;
-                if (c.number === defaultCard.number) opt.selected = true;
-                select.appendChild(opt);
-            });
-            
-            const ocrDiv = document.createElement('div');
-            ocrDiv.className = 'ocr-params';
-            ocrDiv.id = `ocr-params-${index}`;
-            updateOcrParams(defaultCard.number, ocrDiv, index);
-            
-            select.onchange = function() {
-                const selectedCard = allCards[this.value];
-                const newFrontUrl = selectedCard.front ? selectedCard.front.image_url : selectedCard.url;
-                const newBackUrl = selectedCard.back && selectedCard.back.image_url ? selectedCard.back.image_url : null;
-                isFront = true;
-                img.src = newFrontUrl;
-                img.alt = selectedCard.name;
-                img.onclick = null;
-                img.addEventListener('click', function() {
-                    if (newBackUrl) {
-                        isFront = !isFront;
-                        img.src = isFront ? newFrontUrl : newBackUrl;
-                    }
-                });
-                document.getElementById(`card-number-${index}`).textContent = selectedCard.number;
-                document.getElementById(`card-name-${index}`).textContent = selectedCard.name;
-                document.getElementById(`card-name-${index}`).title = selectedCard.name;
-                updateOcrParams(selectedCard.number, ocrDiv, index);
-                usedCardNumbers[index] = selectedCard.number;
-                
-                // 自動保存を実行
-                setTimeout(() => {
-                    autoSaveDeck();
-                }, 100);
-            };
-            
-            div.appendChild(img);
-            div.appendChild(number);
-            div.appendChild(name);
-            div.appendChild(select);
-            div.appendChild(ocrDiv);
+  _deleteByName(name) {
+    const decks = JSON.parse(localStorage.getItem('gab_decks') || '{}');
+    delete decks[name];
+    localStorage.setItem('gab_decks', JSON.stringify(decks));
+    this.showLoadModal();
+    Toast.show(`デッキ「${name}」を削除しました`, 'info');
+  },
 
-            // 横断検索テキストボックスとボタン
-            const searchDiv = document.createElement('div');
-            searchDiv.style.margin = '0.5em 0 0.2em 0';
-            searchDiv.style.display = 'flex';
-            searchDiv.style.flexDirection = 'column';
-            searchDiv.style.alignItems = 'stretch';
-            searchDiv.style.gap = '0.3em';
-            searchDiv.style.flexShrink = '0';
-            const searchInput = document.createElement('input');
-            searchInput.type = 'text';
-            searchInput.placeholder = 'カード横断検索...';
-            searchInput.style.width = '100%';
-            searchInput.style.padding = '0.3em';
-            searchInput.style.borderRadius = '4px';
-            searchInput.style.border = '1px solid #444';
-            searchInput.style.background = '#333';
-            searchInput.style.color = '#fff';
-            searchInput.style.fontSize = '1em';
-            searchInput.style.boxSizing = 'border-box';
-            const searchBtn = document.createElement('button');
-            searchBtn.textContent = '検索';
-            searchBtn.style.padding = '0.4em 1em';
-            searchBtn.style.borderRadius = '4px';
-            searchBtn.style.border = '1px solid #66f2c5';
-            searchBtn.style.background = '#66f2c5';
-            searchBtn.style.color = '#222';
-            searchBtn.style.cursor = 'pointer';
-            searchBtn.style.width = '100%';
-            searchBtn.style.fontSize = '1em';
-            searchBtn.onclick = function() {
-                const keyword = searchInput.value.trim();
-                if (!keyword) return;
-                showSearchModal(keyword, index);
-            };
-            searchDiv.appendChild(searchInput);
-            searchDiv.appendChild(searchBtn);
-            div.appendChild(searchDiv);
-            
-            // 数値検索からカードをセットボタン
-            const paramSearchBtn = document.createElement('button');
-            paramSearchBtn.textContent = '数値検索からカードをセット';
-            paramSearchBtn.style.padding = '0.4em 1em';
-            paramSearchBtn.style.borderRadius = '4px';
-            paramSearchBtn.style.border = '1px solid #ff9800';
-            paramSearchBtn.style.background = '#ff9800';
-            paramSearchBtn.style.color = '#222';
-            paramSearchBtn.style.cursor = 'pointer';
-            paramSearchBtn.style.width = '100%';
-            paramSearchBtn.style.fontSize = '0.9em';
-            paramSearchBtn.style.marginTop = '0.3em';
-            paramSearchBtn.style.fontWeight = 'bold';
-            paramSearchBtn.onclick = function() {
-                // 検索ページに遷移し、対象スロット番号を渡す
-                window.location.href = `/search?slot=${index}`;
-            };
-            div.appendChild(paramSearchBtn);
-            
-            cardGrid.appendChild(div);
+  async postToServer() {
+    const name = document.getElementById('deckNameInput').value.trim() || '無名デッキ';
+    const cards = AppState.deck.map((num, idx) => ({
+      number: num,
+      ocr: AppState.deckOcr[idx]
+    }));
+    try {
+      const res = await fetch('/post_deck', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          deck_name: name,
+          comment: '',
+          cards,
+          tactics_main: AppState.tacticsMain,
+          tactics_sub: AppState.tacticsSub,
+          timestamp: new Date().toISOString()
+        })
+      });
+      const data = await res.json();
+      if (data.success) {
+        Toast.show('デッキを投稿しました', 'success');
+      } else {
+        Toast.show(data.error || '投稿に失敗しました', 'error');
+      }
+    } catch {
+      Toast.show('サーバーエラー', 'error');
+    }
+  }
+};
 
-            // 合計ステータス表示欄（6〜10番目のみ）
-            if (index >= 5) {
-                const sumStatsDiv = document.createElement('div');
-                sumStatsDiv.className = 'ocr-params';
-                sumStatsDiv.id = `sum-stats-${index}`;
-                sumStatsDiv.style.background = '#222';
-                sumStatsDiv.style.color = '#fff';
-                sumStatsDiv.style.fontSize = '0.92em';
-                sumStatsDiv.style.marginTop = '0.2em';
-                sumStatsDiv.style.flexShrink = '0';
-                sumStatsDiv.style.display = 'flex';
-                sumStatsDiv.style.flexDirection = 'column';
-                sumStatsDiv.style.justifyContent = 'center';
-                sumStatsDiv.textContent = '';
-                div.appendChild(sumStatsDiv);
-            }
-            if (index < 5) div.classList.add('row-top');
-        }
+// ================================================================
+// UIRenderer - デッキグリッド描画
+// ================================================================
+const UIRenderer = {
+  init() {
+    const grid = document.getElementById('deckGrid');
+    const msLabel = grid.children[0];
+    const plLabel = grid.children[1];
+    // MS slots 0-4
+    for (let i = 0; i < 5; i++) {
+      const slot = this._createSlotEl(i, 'MS');
+      grid.insertBefore(slot, plLabel);
+    }
+    // PL slots 5-9
+    for (let i = 5; i < 10; i++) {
+      grid.appendChild(this._createSlotEl(i, 'PL'));
+    }
+  },
 
-        // OCRパラメータ表示更新
-        function updateOcrParams(cardNumber, ocrDiv, index) {
-            selectedCardNumbers[index] = cardNumber;
-            
-            const card = allCards.find(c => c.number === cardNumber);
-            
-            if (!card || !card.ocr_data) {
-                ocrDiv.innerHTML = '';
-                selectedOcrData[index] = null;
-                updateTotalCost();
-                updateSumStats();
-                updateAllLinkAbilities(); // 全リンクアビリティを更新
-                return;
-            }
+  _createSlotEl(index, type) {
+    const div = document.createElement('div');
+    div.className = 'deck-slot';
+    div.id = `deck-slot-${index}`;
+    div.innerHTML = `
+      <div class="slot-label">${type} ${(index % 5) + 1}</div>
+      <button class="slot-clear" onclick="event.stopPropagation();DeckManager.clearCard(${index})">&times;</button>
+      <div class="slot-empty">
+        <div class="slot-empty-icon">+</div>
+        <div class="slot-empty-text">${type}カードを選択</div>
+      </div>
+    `;
+    div.addEventListener('click', () => {
+      this.setActiveSlot(index);
+      // ブラウザをMS/PL切替
+      const targetType = index < 5 ? 'MS' : 'PL';
+      if (AppState.filters.type !== targetType) {
+        CardBrowser.setType(targetType);
+      }
+      // モバイルではブラウザを開く
+      if (window.innerWidth <= 1200) {
+        openPanel('left');
+      }
+    });
+    return div;
+  },
 
-            const ocrJson = card.ocr_data;
-            selectedOcrData[index] = ocrJson;
-            
-            let params = '';
-            let linkAbility = '';
+  setActiveSlot(index) {
+    AppState.activeSlot = index;
+    document.querySelectorAll('.deck-slot').forEach((el, i) => {
+      el.classList.toggle('active', i === index);
+    });
+  },
 
-            if (ocrJson.type === 'MS') {
-                if (ocrJson.stats) {
-                    params += '<div class="param-group">';
-                    params += '<div class="param-row">';
-                    params += `<div class="param-item"><span class="label">機動力:</span><span>${ocrJson.stats.mobility || ''}</span></div>`;
-                    params += `<div class="param-item"><span class="label">遠距離:</span><span>${ocrJson.stats.ranged_attack || ''}</span></div>`;
-                    params += '</div>';
-                    params += '<div class="param-row">';
-                    params += `<div class="param-item"><span class="label">近距離:</span><span>${ocrJson.stats.melee_attack || ''}</span></div>`;
-                    params += `<div class="param-item"><span class="label">HP:</span><span>${ocrJson.stats.hp || ''}</span></div>`;
-                    params += '</div>';
-                    params += '</div>';
-                }
-                
-                if (ocrJson.ms_ability) {
-                    params += '<div class="param-group skill">';
-                    params += `<div style='color:#b2e5ff;font-size:0.97em;'>MSスキル: <span style='color:#fff;'>${ocrJson.ms_ability.name || ''}</span></div>`;
-                    if (ocrJson.ms_ability.description) {
-                        params += `<div style='color:#b2e5ff;font-size:0.92em;margin-top:0.1em;'>${ocrJson.ms_ability.description}</div>`;
-                    }
-                    params += '</div>';
-                }
-                
-                if (ocrJson.special_attack) {
-                    params += '<div class="param-group spattack">';
-                    params += `<div style='color:#ffb2b2;font-size:0.92em;'>SPアタック: ${ocrJson.special_attack.name || ''}</div>`;
-                    if (ocrJson.special_attack.description) {
-                        params += `<div style='color:#ffb2b2;font-size:0.88em;margin-top:0.05em;'>${ocrJson.special_attack.description}</div>`;
-                    }
-                    params += '</div>';
-                }
-                
-            } else if (ocrJson.type === 'PL') {
-                if (ocrJson.stats) {
-                    params += '<div class="param-group">';
-                    params += '<div class="param-row">';
-                    params += `<div class="param-item"><span class="label">機動力:</span><span>${ocrJson.stats.mobility || ''}</span></div>`;
-                    params += `<div class="param-item"><span class="label">遠距離:</span><span>${ocrJson.stats.ranged_attack || ''}</span></div>`;
-                    params += '</div>';
-                    params += '<div class="param-row">';
-                    params += `<div class="param-item"><span class="label">近距離:</span><span>${ocrJson.stats.melee_attack || ''}</span></div>`;
-                    params += `<div class="param-item"><span class="label">HP:</span><span>${ocrJson.stats.hp || ''}</span></div>`;
-                    params += '</div>';
-                    params += '</div>';
-                }
-                
-                if (ocrJson.pl_skill) {
-                    params += '<div class="param-group skill">';
-                    params += `<div style='color:#ffe082;font-size:0.97em;'>PLスキル: <span style='color:#fff;'>${ocrJson.pl_skill.name || ''}</span></div>`;
-                    if (ocrJson.pl_skill.effect) {
-                        params += `<div style='color:#ffe082;font-size:0.92em;margin-top:0.1em;'>${ocrJson.pl_skill.effect}</div>`;
-                    }
-                    params += '</div>';
-                }
-            }
-            
-            if (Array.isArray(ocrJson.link_abilities) && ocrJson.link_abilities.length > 0) {
-                linkAbility += '<div class="param-group link">';
-                linkAbility += '<div style="color:#ffe082;">リンクアビリティ:</div>';
-                ocrJson.link_abilities.forEach((ab, idx) => {
-                    // リンクアビリティが発動中かどうかをチェック
-                    let isActive = false;
-                    let activeText = '';
-                    if (ab.condition && ab.condition.match(/デッキに(\d+)枚以上/)) {
-                        const match = ab.condition.match(/デッキに(\d+)枚以上/);
-                        const count = parseInt(match[1], 10);
-                        let found = selectedOcrData.filter(d => {
-                            if (!d) return false;
-                            if (!Array.isArray(d.link_abilities)) return false;
-                            return d.link_abilities.some(link => {
-                                let n = link.name ?? '';
-                                return n === ab.name;
-                            });
-                        }).length;
-                        if (found >= count) {
-                            isActive = true;
-                            activeText = ' <span style="color:#ff5252;font-weight:bold;">【発動中】</span>';
-                        }
-                    }
-                    
-                    // 発動中の場合は色を変更
-                    const nameColor = isActive ? '#42a5f5' : '#888';
-                    const conditionColor = isActive ? '#42a5f5' : '#aaa';
-                    const effectColor = isActive ? '#42a5f5' : '#bbb';
-                    const fontWeight = isActive ? 'bold' : 'normal';
-                    const fontStyle = isActive ? 'normal' : 'italic';
-                    const opacity = isActive ? 1 : 0.7;
-                    
-                    linkAbility += `<div style='font-size:0.95em;margin-top:0.1em;'>・<span style='color:${nameColor};font-weight:${fontWeight};font-style:${fontStyle};opacity:${opacity};'>${ab.name || ''}</span> <span style='color:${conditionColor};font-weight:${fontWeight};font-style:${fontStyle};opacity:${opacity};'>${ab.condition || ''}</span> <span style='color:${effectColor};font-weight:${fontWeight};font-style:${fontStyle};opacity:${opacity};'>${ab.effect || ''}</span>${activeText}</div>`;
-                });
-                linkAbility += '</div>';
-            }
-            
-            ocrDiv.innerHTML = params + linkAbility;
-            updateTotalCost();
-            updateSumStats();
-            updateAllLinkAbilities(); // 全リンクアビリティを更新
-        }
+  renderSlot(index) {
+    const slot = document.getElementById(`deck-slot-${index}`);
+    const number = AppState.deck[index];
+    const type = index < 5 ? 'MS' : 'PL';
 
-        // 全カードのリンクアビリティを一括更新する関数
-        function updateAllLinkAbilities() {
-            // 各カードのリンクアビリティ発動状態を再計算
-            for (let i = 0; i < 10; i++) {
-                const ocrDiv = document.getElementById(`ocr-params-${i}`);
-                if (ocrDiv && selectedOcrData[i]) {
-                    updateLinkAbilitiesForCard(i, selectedOcrData[i], ocrDiv);
-                }
-            }
-        }
+    if (!number) {
+      slot.className = 'deck-slot';
+      slot.innerHTML = `
+        <div class="slot-label">${type} ${(index % 5) + 1}</div>
+        <button class="slot-clear" onclick="event.stopPropagation();DeckManager.clearCard(${index})">&times;</button>
+        <div class="slot-empty">
+          <div class="slot-empty-icon">+</div>
+          <div class="slot-empty-text">${type}カードを選択</div>
+        </div>
+      `;
+      // re-attach click handler
+      slot.onclick = () => {
+        this.setActiveSlot(index);
+        const targetType = index < 5 ? 'MS' : 'PL';
+        if (AppState.filters.type !== targetType) CardBrowser.setType(targetType);
+        if (window.innerWidth <= 1200) openPanel('left');
+      };
+      this._updateUnitStats();
+      return;
+    }
 
-        // 特定のカードのリンクアビリティ表示を更新
-        function updateLinkAbilitiesForCard(index, ocrJson, ocrDiv) {
-            if (!Array.isArray(ocrJson.link_abilities) || ocrJson.link_abilities.length === 0) {
-                return;
-            }
+    // Find card info from index or detail
+    const card = AppState.cardIndex.find(c => c.number === number);
+    const detail = AppState.cardDetails[number];
+    const frontUrl = card?.front_url || detail?.front?.image_url || `http://www.gundam-ab.com/images/cardlist/card/${number}.jpg?v8`;
+    const backUrl = card?.back_url || detail?.back?.image_url || `http://www.gundam-ab.com/images/cardlist/card/${number}_b.jpg?v8`;
+    const name = card?.name || detail?.name || number;
 
-            // 既存のリンクアビリティ部分を探して更新
-            const linkGroup = ocrDiv.querySelector('.param-group.link');
-            if (!linkGroup) {
-                return;
-            }
+    slot.className = 'deck-slot has-card';
+    if (AppState.activeSlot === index) slot.classList.add('active');
 
-            let linkAbility = '<div style="color:#ffe082;">リンクアビリティ:</div>';
-            ocrJson.link_abilities.forEach((ab, idx) => {
-                // リンクアビリティが発動中かどうかをチェック
-                let isActive = false;
-                let activeText = '';
-                if (ab.condition && ab.condition.match(/デッキに(\d+)枚以上/)) {
-                    const match = ab.condition.match(/デッキに(\d+)枚以上/);
-                    const count = parseInt(match[1], 10);
-                    let found = selectedOcrData.filter(d => {
-                        if (!d) return false;
-                        if (!Array.isArray(d.link_abilities)) return false;
-                        return d.link_abilities.some(link => {
-                            let n = link.name ?? '';
-                            return n === ab.name;
-                        });
-                    }).length;
-                    if (found >= count) {
-                        isActive = true;
-                        activeText = ' <span style="color:#ff5252;font-weight:bold;">【発動中】</span>';
-                    }
-                }
-                
-                // 発動中の場合は色を変更
-                const nameColor = isActive ? '#42a5f5' : '#888';
-                const conditionColor = isActive ? '#42a5f5' : '#aaa';
-                const effectColor = isActive ? '#42a5f5' : '#bbb';
-                const fontWeight = isActive ? 'bold' : 'normal';
-                const fontStyle = isActive ? 'normal' : 'italic';
-                const opacity = isActive ? 1 : 0.7;
-                
-                linkAbility += `<div style='font-size:0.95em;margin-top:0.1em;'>・<span style='color:${nameColor};font-weight:${fontWeight};font-style:${fontStyle};opacity:${opacity};'>${ab.name || ''}</span> <span style='color:${conditionColor};font-weight:${fontWeight};font-style:${fontStyle};opacity:${opacity};'>${ab.condition || ''}</span> <span style='color:${effectColor};font-weight:${fontWeight};font-style:${fontStyle};opacity:${opacity};'>${ab.effect || ''}</span>${activeText}</div>`;
-            });
+    let isFront = true;
+    slot.innerHTML = `
+      <div class="slot-label">${type} ${(index % 5) + 1}</div>
+      <button class="slot-clear" onclick="event.stopPropagation();DeckManager.clearCard(${index})">&times;</button>
+      <img class="slot-card-img" id="slot-img-${index}" src="${frontUrl}" alt="${name}"
+           onerror="this.onerror=null;this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22180%22 height=%22270%22><rect fill=%22%23222%22 width=%22180%22 height=%22270%22/><text x=%2290%22 y=%22135%22 fill=%22%23666%22 text-anchor=%22middle%22>No Image</text></svg>'">
+      <div class="slot-card-number">${number}</div>
+      <div class="slot-card-name" title="${name}">${name}</div>
+    `;
 
-            linkGroup.innerHTML = linkAbility;
-        }
+    // Image click to toggle front/back
+    const img = slot.querySelector('.slot-card-img');
+    img.addEventListener('click', (e) => {
+      e.stopPropagation();
+      isFront = !isFront;
+      img.src = isFront ? frontUrl : backUrl;
+    });
+    // Double-click for detail modal
+    img.addEventListener('dblclick', (e) => {
+      e.stopPropagation();
+      showCardModal(number);
+    });
 
-        // 総コスト更新
-        function updateTotalCost() {
-            let totalCost = 0;
-            selectedOcrData.forEach(ocr => {
-                if (ocr && ocr.cost) {
-                    const cost = parseInt(ocr.cost, 10);
-                    if (!isNaN(cost)) {
-                        totalCost += cost;
-                    }
-                }
-            });
-            document.getElementById('totalCost').textContent = `総コスト: ${totalCost}`;
-        }
+    // Slot click handler
+    slot.onclick = () => {
+      this.setActiveSlot(index);
+      const targetType = index < 5 ? 'MS' : 'PL';
+      if (AppState.filters.type !== targetType) CardBrowser.setType(targetType);
+      if (window.innerWidth <= 1200) openPanel('left');
+    };
 
-        // 合計ステータス更新
-        function updateSumStats() {
-            // 各パラメータの最大値を計算
-            let maxMobility = 0;
-            let maxRanged = 0;
-            let maxMelee = 0;
-            let maxHp = 0;
+    this._updateUnitStats();
+  },
 
-            // 全カードから最大値を取得
-            allCards.forEach(card => {
-                if (card.ocr_data && card.ocr_data.stats) {
-                    const stats = card.ocr_data.stats;
-                    if (stats.mobility) {
-                        const mobility = parseInt(stats.mobility, 10);
-                        if (!isNaN(mobility)) maxMobility = Math.max(maxMobility, mobility);
-                    }
-                    if (stats.ranged_attack) {
-                        const ranged = parseInt(stats.ranged_attack, 10);
-                        if (!isNaN(ranged)) maxRanged = Math.max(maxRanged, ranged);
-                    }
-                    if (stats.melee_attack) {
-                        const melee = parseInt(stats.melee_attack, 10);
-                        if (!isNaN(melee)) maxMelee = Math.max(maxMelee, melee);
-                    }
-                    if (stats.hp) {
-                        const hp = parseInt(stats.hp, 10);
-                        if (!isNaN(hp)) maxHp = Math.max(maxHp, hp);
-                    }
-                }
-            });
+  renderAllSlots() {
+    for (let i = 0; i < 10; i++) this.renderSlot(i);
+    this.renderTacticsSlot('main');
+    this.renderTacticsSlot('sub');
+  },
 
-            // 最大値の2倍（MS+PLの最大組み合わせ）を基準とする
-            const maxMobilityTotal = 1000;
-            const maxRangedTotal = 1000;
-            const maxMeleeTotal = 1000;
-            const maxHpTotal = 1000;
+  renderTacticsSlot(type) {
+    const btnId = type === 'main' ? 'tacticsBtnMain' : 'tacticsBtnSub';
+    const btn = document.getElementById(btnId);
+    if (!btn) return;
+    const label = type === 'main' ? 'メイン' : 'サブ';
+    const id = type === 'main' ? AppState.tacticsMain : AppState.tacticsSub;
+    const cards = type === 'main' ? AppState.tacticsCards.main : AppState.tacticsCards.sub;
+    const card = id ? cards.find(c => c.id === id) : null;
 
-            // 6〜10番目のカードに合計値を表示
-            const totalStatsBars = document.getElementById('totalStatsBars');
-            if (totalStatsBars) {
-                totalStatsBars.innerHTML = '';
-                for (let i = 5; i < 10; i++) {
-                    const msIndex = i - 5; // 対応するMSカードのインデックス (0,1,2,3,4)
-                    const plIndex = i; // パイロットカードのインデックス (5,6,7,8,9)
-                    
-                    // MSカードの統計を取得
-                    const msOcr = selectedOcrData[msIndex];
-                    let msMobility = 0, msRanged = 0, msMelee = 0, msHp = 0;
-                    if (msOcr && msOcr.stats) {
-                        msMobility = parseInt(msOcr.stats.mobility, 10) || 0;
-                        msRanged = parseInt(msOcr.stats.ranged_attack, 10) || 0;
-                        msMelee = parseInt(msOcr.stats.melee_attack, 10) || 0;
-                        msHp = parseInt(msOcr.stats.hp, 10) || 0;
-                    }
-                    // パイロットカードの統計を取得
-                    const plOcr = selectedOcrData[plIndex];
-                    let plMobility = 0, plRanged = 0, plMelee = 0, plHp = 0;
-                    if (plOcr && plOcr.stats) {
-                        plMobility = parseInt(plOcr.stats.mobility, 10) || 0;
-                        plRanged = parseInt(plOcr.stats.ranged_attack, 10) || 0;
-                        plMelee = parseInt(plOcr.stats.melee_attack, 10) || 0;
-                        plHp = parseInt(plOcr.stats.hp, 10) || 0;
-                    }
-                    // --- リンクアビリティ補正 ---
-                    function getLinkBuffs(ocr) {
-                        const buffs = {
-                            mobility: { small: 0, medium: 0 },
-                            ranged: { small: 0, medium: 0 },
-                            melee: { small: 0, medium: 0 },
-                            hp: { small: 0, medium: 0 }
-                        };
-                        if (!ocr || !Array.isArray(ocr.link_abilities)) return buffs;
-                        ocr.link_abilities.forEach(link => {
-                            const eff = link.effect || '';
-                            // 小アップ
-                            if (eff.match(/機動力.*小アップ|\[機動力\].*小アップ|"機動力".*小アップ/)) buffs.mobility.small++;
-                            if (eff.match(/遠距離攻撃力.*小アップ|\[遠距離攻撃力\].*小アップ|"遠距離攻撃力".*小アップ/)) buffs.ranged.small++;
-                            if (eff.match(/近距離攻撃力.*小アップ|\[近距離攻撃力\].*小アップ|"近距離攻撃力".*小アップ/)) buffs.melee.small++;
-                            if (eff.match(/HP.*小アップ|\[HP\].*小アップ|"HP".*小アップ/)) buffs.hp.small++;
-                            // 中アップ
-                            if (eff.match(/機動力.*中アップ|\[機動力\].*中アップ|"機動力".*中アップ/)) buffs.mobility.medium++;
-                            if (eff.match(/遠距離攻撃力.*中アップ|\[遠距離攻撃力\].*中アップ|"遠距離攻撃力".*中アップ/)) buffs.ranged.medium++;
-                            if (eff.match(/近距離攻撃力.*中アップ|\[近距離攻撃力\].*中アップ|"近距離攻撃力".*中アップ/)) buffs.melee.medium++;
-                            if (eff.match(/HP.*中アップ|\[HP\].*中アップ|"HP".*中アップ/)) buffs.hp.medium++;
-                        });
-                        return buffs;
-                    }
-                    // MS/PLごとに補正値を計算
-                    const msBuffs = getLinkBuffs(msOcr);
-                    const plBuffs = getLinkBuffs(plOcr);
-                    function applyBuff(val, small, medium) {
-                        return Math.round(val * Math.pow(1.1, small) * Math.pow(1.2, medium));
-                    }
-                    // 補正後の値
-                    const msMobilityBuffed = applyBuff(msMobility, msBuffs.mobility.small, msBuffs.mobility.medium);
-                    const msRangedBuffed = applyBuff(msRanged, msBuffs.ranged.small, msBuffs.ranged.medium);
-                    const msMeleeBuffed = applyBuff(msMelee, msBuffs.melee.small, msBuffs.melee.medium);
-                    const msHpBuffed = applyBuff(msHp, msBuffs.hp.small, msBuffs.hp.medium);
-                    const plMobilityBuffed = applyBuff(plMobility, plBuffs.mobility.small, plBuffs.mobility.medium);
-                    const plRangedBuffed = applyBuff(plRanged, plBuffs.ranged.small, plBuffs.ranged.medium);
-                    const plMeleeBuffed = applyBuff(plMelee, plBuffs.melee.small, plBuffs.melee.medium);
-                    const plHpBuffed = applyBuff(plHp, plBuffs.hp.small, plBuffs.hp.medium);
-                    
-                    // 元の値（補正なし）
-                    const baseMobility = msMobility + plMobility;
-                    const baseRanged = msRanged + plRanged;
-                    const baseMelee = msMelee + plMelee;
-                    const baseHp = msHp + plHp;
-                    
-                    // 補正後の合計値
-                    const totalMobility = msMobilityBuffed + plMobilityBuffed;
-                    const totalRanged = msRangedBuffed + plRangedBuffed;
-                    const totalMelee = msMeleeBuffed + plMeleeBuffed;
-                    const totalHp = msHpBuffed + plHpBuffed;
-                    
-                    // 上昇分を計算
-                    const mobilityBuff = totalMobility - baseMobility;
-                    const rangedBuff = totalRanged - baseRanged;
-                    const meleeBuff = totalMelee - baseMelee;
-                    const hpBuff = totalHp - baseHp;
+    if (!card) {
+      btn.className = 'tactics-btn';
+      btn.innerHTML = `<span class="tactics-btn-label">${label}</span><span class="tactics-btn-name">未選択</span>`;
+      return;
+    }
 
-                    // パーセンテージを計算
-                    const mobilityPercent = maxMobilityTotal > 0 ? (totalMobility / maxMobilityTotal) * 100 : 0;
-                    const rangedPercent = maxRangedTotal > 0 ? (totalRanged / maxRangedTotal) * 100 : 0;
-                    const meleePercent = maxMeleeTotal > 0 ? (totalMelee / maxMeleeTotal) * 100 : 0;
-                    const hpPercent = maxHpTotal > 0 ? (totalHp / maxHpTotal) * 100 : 0;
-                    
-                    // 元の値と上昇分のパーセンテージ
-                    const baseMobilityPercent = maxMobilityTotal > 0 ? (baseMobility / maxMobilityTotal) * 100 : 0;
-                    const baseRangedPercent = maxRangedTotal > 0 ? (baseRanged / maxRangedTotal) * 100 : 0;
-                    const baseMeleePercent = maxMeleeTotal > 0 ? (baseMelee / maxMeleeTotal) * 100 : 0;
-                    const baseHpPercent = maxHpTotal > 0 ? (baseHp / maxHpTotal) * 100 : 0;
-                    
-                    const mobilityBuffPercent = maxMobilityTotal > 0 ? (mobilityBuff / maxMobilityTotal) * 100 : 0;
-                    const rangedBuffPercent = maxRangedTotal > 0 ? (rangedBuff / maxRangedTotal) * 100 : 0;
-                    const meleeBuffPercent = maxMeleeTotal > 0 ? (meleeBuff / maxMeleeTotal) * 100 : 0;
-                    const hpBuffPercent = maxHpTotal > 0 ? (hpBuff / maxHpTotal) * 100 : 0;
+    btn.className = 'tactics-btn has-card';
+    btn.innerHTML = `
+      <img src="${card.thumbnail_url}" alt="${card.name}"
+           onerror="this.style.display='none'">
+      <span class="tactics-btn-label">${label}</span>
+      <span class="tactics-btn-name">${card.name}</span>
+      <button class="tactics-btn-clear" onclick="event.stopPropagation();DeckManager.clearTactics('${type}')" title="解除">&times;</button>
+    `;
+  },
 
-                    const barHtml = `
-                    <div class="stats-bar">
-                        <div class="stats-title">${i-4}番機</div>
-                        <div class="stats-value">機動力合計: ${totalMobility} <span class="stats-buff">(+${mobilityBuff})</span></div>
-                        <div class="stats-bar-container">
-                            <div class="stats-bar-base" style="width:${baseMobilityPercent}%"></div>
-                            <div class="stats-bar-buff" style="width:${mobilityBuffPercent}%;left:${baseMobilityPercent}%"></div>
-                            <div class="stats-scale">
-                                <div class="stats-scale-line" style="left:0%"></div>
-                                <div class="stats-scale-line" style="left:20%"></div>
-                                <div class="stats-scale-line" style="left:40%"></div>
-                                <div class="stats-scale-line" style="left:60%"></div>
-                                <div class="stats-scale-line" style="left:80%"></div>
-                                <div class="stats-scale-line" style="left:100%"></div>
-                            </div>
-                        </div>
-                        <div class="stats-percent">${mobilityPercent.toFixed(1)}%</div>
-                        
-                        <div class="stats-value">遠距離合計: ${totalRanged} <span class="stats-buff">(+${rangedBuff})</span></div>
-                        <div class="stats-bar-container">
-                            <div class="stats-bar-base" style="width:${baseRangedPercent}%"></div>
-                            <div class="stats-bar-buff" style="width:${rangedBuffPercent}%;left:${baseRangedPercent}%"></div>
-                            <div class="stats-scale">
-                                <div class="stats-scale-line" style="left:0%"></div>
-                                <div class="stats-scale-line" style="left:20%"></div>
-                                <div class="stats-scale-line" style="left:40%"></div>
-                                <div class="stats-scale-line" style="left:60%"></div>
-                                <div class="stats-scale-line" style="left:80%"></div>
-                                <div class="stats-scale-line" style="left:100%"></div>
-                            </div>
-                        </div>
-                        <div class="stats-percent">${rangedPercent.toFixed(1)}%</div>
-                        
-                        <div class="stats-value">近距離合計: ${totalMelee} <span class="stats-buff">(+${meleeBuff})</span></div>
-                        <div class="stats-bar-container">
-                            <div class="stats-bar-base" style="width:${baseMeleePercent}%"></div>
-                            <div class="stats-bar-buff" style="width:${meleeBuffPercent}%;left:${baseMeleePercent}%"></div>
-                            <div class="stats-scale">
-                                <div class="stats-scale-line" style="left:0%"></div>
-                                <div class="stats-scale-line" style="left:20%"></div>
-                                <div class="stats-scale-line" style="left:40%"></div>
-                                <div class="stats-scale-line" style="left:60%"></div>
-                                <div class="stats-scale-line" style="left:80%"></div>
-                                <div class="stats-scale-line" style="left:100%"></div>
-                            </div>
-                        </div>
-                        <div class="stats-percent">${meleePercent.toFixed(1)}%</div>
-                        
-                        <div class="stats-value">HP合計: ${totalHp} <span class="stats-buff">(+${hpBuff})</span></div>
-                        <div class="stats-bar-container">
-                            <div class="stats-bar-base" style="width:${baseHpPercent}%"></div>
-                            <div class="stats-bar-buff" style="width:${hpBuffPercent}%;left:${baseHpPercent}%"></div>
-                            <div class="stats-scale">
-                                <div class="stats-scale-line" style="left:0%"></div>
-                                <div class="stats-scale-line" style="left:20%"></div>
-                                <div class="stats-scale-line" style="left:40%"></div>
-                                <div class="stats-scale-line" style="left:60%"></div>
-                                <div class="stats-scale-line" style="left:80%"></div>
-                                <div class="stats-scale-line" style="left:100%"></div>
-                            </div>
-                        </div>
-                        <div class="stats-percent">${hpPercent.toFixed(1)}%</div>
-                    </div>`;
-                    totalStatsBars.innerHTML += barHtml;
-                }
-            }
+  _updateUnitStats() {
+    const grid = document.getElementById('unitStatsGrid');
+    grid.innerHTML = '';
+    const maxVal = 1000;
+
+    for (let u = 0; u < 5; u++) {
+      const msOcr = AppState.deckOcr[u];
+      const plOcr = AppState.deckOcr[u + 5];
+
+      const getStats = (ocr) => ({
+        mobility: safeInt(ocr?.stats?.mobility),
+        ranged: safeInt(ocr?.stats?.ranged_attack),
+        melee: safeInt(ocr?.stats?.melee_attack),
+        hp: safeInt(ocr?.stats?.hp)
+      });
+      const ms = getStats(msOcr);
+      const pl = getStats(plOcr);
+
+      // Link buffs
+      const msBuffs = getLinkBuffs(msOcr);
+      const plBuffs = getLinkBuffs(plOcr);
+      const applyBuff = (val, sm, med) => Math.round(val * Math.pow(1.1, sm) * Math.pow(1.2, med));
+
+      const stats = ['mobility', 'ranged', 'melee', 'hp'];
+      const statLabels = { mobility: '機動', ranged: '遠距', melee: '近距', hp: 'HP' };
+      const buffKeys = { ranged: 'ranged', melee: 'melee', mobility: 'mobility', hp: 'hp' };
+
+      const card = document.createElement('div');
+      card.className = 'unit-stat-card';
+      let html = `<div class="unit-stat-title">${u + 1}番機</div>`;
+
+      const terrainMult = TerrainLogic.getMultiplier(msOcr);
+
+      stats.forEach(s => {
+        const bk = buffKeys[s];
+        const base = ms[s] + pl[s];
+        const msB = applyBuff(ms[s], msBuffs[bk].small, msBuffs[bk].medium);
+        const plB = applyBuff(pl[s], plBuffs[bk].small, plBuffs[bk].medium);
+        const buffedTotal = msB + plB;
+        let total = buffedTotal;
+
+        // 地形適性補正（HPには適用しない、MSの素ステータスに対して計算）
+        let terrainBuff = 0;
+        if (s !== 'hp' && terrainMult !== 1.0) {
+          terrainBuff = Math.round(ms[s] * (terrainMult - 1));
+          total += terrainBuff;
         }
 
-        // 検索モーダル表示
-        function showSearchModal(keyword, targetIndex) {
-            const modal = document.getElementById('search-modal');
-            const modalContent = document.getElementById('search-modal-content');
-            
-            const searchResults = allCards.filter(card => {
-                const keywordLower = keyword.toLowerCase();
-                
-                const nameMatch = card.name && card.name.toLowerCase().includes(keywordLower);
-                const numberMatch = card.number && card.number.toLowerCase().includes(keywordLower);
-                const seriesMatch = card.front && card.front.series && card.front.series.toLowerCase().includes(keywordLower);
-                
-                let ocrMatch = false;
-                if (card.ocr_data) {
-                    const ocr = card.ocr_data;
-                    
-                    if (ocr.category && ocr.category.toLowerCase().includes(keywordLower)) ocrMatch = true;
-                    if (ocr.type && ocr.type.toLowerCase().includes(keywordLower)) ocrMatch = true;
-                    if (ocr.pilot && ocr.pilot.toLowerCase().includes(keywordLower)) ocrMatch = true;
-                    
-                    if (ocr.stats) {
-                        const stats = ocr.stats;
-                        if (stats.mobility && stats.mobility.toString().includes(keyword)) ocrMatch = true;
-                        if (stats.ranged_attack && stats.ranged_attack.toString().includes(keyword)) ocrMatch = true;
-                        if (stats.melee_attack && stats.melee_attack.toString().includes(keyword)) ocrMatch = true;
-                        if (stats.hp && stats.hp.toString().includes(keyword)) ocrMatch = true;
-                    }
-                    
-                    if (ocr.cost && ocr.cost.toString().includes(keyword)) ocrMatch = true;
-                    if (ocr.terrain && ocr.terrain.toLowerCase().includes(keywordLower)) ocrMatch = true;
-                    
-                    if (ocr.ms_ability) {
-                        if (ocr.ms_ability.name && ocr.ms_ability.name.toLowerCase().includes(keywordLower)) ocrMatch = true;
-                        if (ocr.ms_ability.description && ocr.ms_ability.description.toLowerCase().includes(keywordLower)) ocrMatch = true;
-                    }
-                    
-                    if (ocr.pl_skill) {
-                        if (ocr.pl_skill.name && ocr.pl_skill.name.toLowerCase().includes(keywordLower)) ocrMatch = true;
-                        if (ocr.pl_skill.effect && ocr.pl_skill.effect.toLowerCase().includes(keywordLower)) ocrMatch = true;
-                    }
-                    
-                    if (ocr.special_attack) {
-                        if (ocr.special_attack.name && ocr.special_attack.name.toLowerCase().includes(keywordLower)) ocrMatch = true;
-                        if (ocr.special_attack.description && ocr.special_attack.description.toLowerCase().includes(keywordLower)) ocrMatch = true;
-                    }
-                    
-                    if (Array.isArray(ocr.link_abilities)) {
-                        ocr.link_abilities.forEach(ab => {
-                            if (ab.name && ab.name.toLowerCase().includes(keywordLower)) ocrMatch = true;
-                            if (ab.condition && ab.condition.toLowerCase().includes(keywordLower)) ocrMatch = true;
-                            if (ab.effect && ab.effect.toLowerCase().includes(keywordLower)) ocrMatch = true;
-                        });
-                    }
-                    
-                    if (ocr.tactics && ocr.tactics.toLowerCase().includes(keywordLower)) ocrMatch = true;
-                }
-                
-                return nameMatch || numberMatch || seriesMatch || ocrMatch;
-            });
-            
-            // 重複を排除（カード番号で一意にする）
-            const uniqueResults = [];
-            const seenNumbers = new Set();
-            for (const card of searchResults) {
-                if (card.number && !seenNumbers.has(card.number)) {
-                    uniqueResults.push(card);
-                    seenNumbers.add(card.number);
-                }
-            }
-            
-            let html = `<h2 style="color:#4caf50;margin-bottom:1em;">検索結果: "${keyword}" (${uniqueResults.length}件)</h2>`;
-            
-            if (uniqueResults.length === 0) {
-                html += '<p style="color:#ff5252;">該当するカードが見つかりませんでした。</p>';
-            } else {
-                html += '<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1em;">';
-                uniqueResults.forEach(card => {
-                    let matchReason = '';
-                    const keywordLower = keyword.toLowerCase();
-                    
-                    if (card.name && card.name.toLowerCase().includes(keywordLower)) {
-                        matchReason += '名前 ';
-                    }
-                    if (card.number && card.number.toLowerCase().includes(keywordLower)) {
-                        matchReason += '番号 ';
-                    }
-                    if (card.front && card.front.series && card.front.series.toLowerCase().includes(keywordLower)) {
-                        matchReason += 'シリーズ ';
-                    }
-                    if (card.ocr_data) {
-                        const ocr = card.ocr_data;
-                        if (ocr.category && ocr.category.toLowerCase().includes(keywordLower)) matchReason += 'カテゴリ ';
-                        if (ocr.pilot && ocr.pilot.toLowerCase().includes(keywordLower)) matchReason += 'パイロット ';
-                        if (ocr.ms_ability && ocr.ms_ability.name && ocr.ms_ability.name.toLowerCase().includes(keywordLower)) matchReason += 'MSスキル ';
-                        if (ocr.pl_skill && ocr.pl_skill.name && ocr.pl_skill.name.toLowerCase().includes(keywordLower)) matchReason += 'PLスキル ';
-                    }
-                    
-                    html += `
-                        <div style="background:#333;padding:0.5em;border-radius:8px;cursor:pointer;border:1px solid #444;" 
-                             onclick="selectCardFromSearch('${card.number}', ${targetIndex})">
-                            <img src="${card.front ? card.front.image_url : card.url}" 
-                                 style="width:100%;height:auto;border-radius:4px;margin-bottom:0.5em;" 
-                                 alt="${card.name}">
-                            <div style="font-size:0.9em;color:#4caf50;">${card.number}</div>
-                            <div style="font-size:0.9em;">${card.name}</div>
-                            <div style="font-size:0.8em;color:#888;margin-top:0.2em;">${card.front ? card.front.series : ''}</div>
-                            ${matchReason ? `<div style="font-size:0.75em;color:#ffb74d;margin-top:0.1em;">マッチ: ${matchReason}</div>` : ''}
-                        </div>
-                    `;
-                });
-                html += '</div>';
-            }
-            
-            html += '<div style="text-align:center;margin-top:1em;"><button onclick="closeSearchModal()" style="padding:0.5em 1em;background:#4caf50;color:#fff;border:none;border-radius:4px;cursor:pointer;">閉じる</button></div>';
-            
-            modalContent.innerHTML = html;
-            modal.style.display = 'block';
+        const linkBuff = buffedTotal - base;
+        const basePct = (base / maxVal) * 100;
+        const linkBuffPct = (linkBuff / maxVal) * 100;
+
+        // 地形バー: 正なら緑で延伸、負なら赤ストライプで減少域を示す
+        let terrainBarHtml = '';
+        if (terrainBuff > 0) {
+          const tLeft = Math.min(basePct + linkBuffPct, 100);
+          const tWidth = Math.min((terrainBuff / maxVal) * 100, 100 - tLeft);
+          terrainBarHtml = `<div class="stat-bar-terrain-pos" style="left:${tLeft}%;width:${tWidth}%"></div>`;
+        } else if (terrainBuff < 0) {
+          const totalPct = (Math.max(total, 0) / maxVal) * 100;
+          const lossPct = (Math.abs(terrainBuff) / maxVal) * 100;
+          terrainBarHtml = `<div class="stat-bar-terrain-neg" style="left:${totalPct}%;width:${Math.min(lossPct, 100 - totalPct)}%"></div>`;
         }
 
-        // 検索結果からカードを選択
-        function selectCardFromSearch(cardNumber, targetIndex) {
-            const card = allCards.find(c => c.number === cardNumber);
-            if (card) {
-                const select = document.getElementById(`card-select-${targetIndex}`);
-                const cardIndex = allCards.indexOf(card);
-                select.value = cardIndex;
-                select.dispatchEvent(new Event('change'));
-                
-                closeSearchModal();
-            }
+        // テキストラベル
+        let terrainLabel = '';
+        if (terrainBuff > 0) terrainLabel = `<span style="color:#66f2c5">(地形+${terrainBuff})</span>`;
+        else if (terrainBuff < 0) terrainLabel = `<span style="color:#f44336">(地形${terrainBuff})</span>`;
+
+        html += `
+          <div class="stat-bar-row">
+            <span class="stat-bar-label">${statLabels[s]}</span>
+            <div class="stat-bar-track">
+              <div class="stat-bar-base" style="width:${Math.min(basePct, 100)}%"></div>
+              <div class="stat-bar-buff" style="left:${Math.min(basePct, 100)}%;width:${Math.min(linkBuffPct, 100 - basePct)}%"></div>
+              ${terrainBarHtml}
+            </div>
+            <span class="stat-bar-value">${total}${linkBuff > 0 ? `<span style="color:#e91e63">(+${linkBuff})</span>` : ''}${terrainLabel}</span>
+          </div>
+        `;
+      });
+
+      card.innerHTML = html;
+      grid.appendChild(card);
+    }
+
+    // Update total cost badge
+    let totalCost = 0;
+    AppState.deckOcr.forEach(ocr => {
+      if (ocr?.cost) totalCost += safeInt(ocr.cost);
+    });
+    document.getElementById('totalCostBadge').textContent = `総コスト: ${totalCost}`;
+  }
+};
+
+// ================================================================
+// TacticsPicker - 作戦カード選択モーダル
+// ================================================================
+const TacticsPicker = {
+  _currentType: null,
+
+  open(type) {
+    this._currentType = type;
+    const cards = type === 'main' ? AppState.tacticsCards.main : AppState.tacticsCards.sub;
+    const title = type === 'main' ? 'メイン作戦カードを選択' : 'サブ作戦カードを選択';
+    const currentId = type === 'main' ? AppState.tacticsMain : AppState.tacticsSub;
+
+    document.getElementById('tacticsPickerTitle').textContent = title;
+    const body = document.getElementById('tacticsPickerBody');
+
+    if (!cards || cards.length === 0) {
+      body.innerHTML = '<p style="color:#888">作戦カードデータを読み込み中...</p>';
+      document.getElementById('tacticsPickerModal').classList.add('open');
+      return;
+    }
+
+    body.innerHTML = `<div class="tactics-picker-grid">${cards.map(card => `
+      <div class="tactics-picker-card${card.id === currentId ? ' selected' : ''}" data-id="${card.id}" onclick="TacticsPicker._select('${card.id}')">
+        <img src="${card.thumbnail_url}" alt="${card.name}"
+             onerror="this.onerror=null;this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2280%22 height=%2250%22><rect fill=%22%23222%22 width=%2280%22 height=%2250%22/></svg>'">
+        <div class="tp-info">
+          <div class="tp-name">${card.name}</div>
+          <div class="tp-effect">${card.effect}</div>
+          ${card.condition ? `<div class="tp-condition">${card.condition}</div>` : ''}
+        </div>
+      </div>
+    `).join('')}</div>`;
+
+    document.getElementById('tacticsPickerModal').classList.add('open');
+  },
+
+  _select(id) {
+    DeckManager.setTactics(this._currentType, id);
+    this.close();
+    const cards = this._currentType === 'main' ? AppState.tacticsCards.main : AppState.tacticsCards.sub;
+    const card = cards.find(c => c.id === id);
+    Toast.show(`作戦カード「${card?.name || id}」を選択しました`, 'success');
+  },
+
+  close() {
+    document.getElementById('tacticsPickerModal').classList.remove('open');
+  },
+
+  showDetail(card) {
+    if (!card) return;
+    const html = `
+      <div class="modal-card-header">
+        <img class="modal-card-image" src="${card.popup_url || card.thumbnail_url}" alt="${card.name}"
+             style="width:250px" onerror="this.src='${card.thumbnail_url}'">
+        <div class="modal-card-info">
+          <div class="modal-card-number" style="color:#ffe082">${card.id}</div>
+          <div class="modal-card-name">${card.name}</div>
+          <div class="modal-param-group" style="margin-top:0.8rem">
+            <div class="modal-param-title" style="color:#ffe082">効果</div>
+            <div style="font-size:0.9rem;line-height:1.5;color:#ccc">${card.effect}</div>
+          </div>
+          ${card.condition ? `<div class="modal-param-group">
+            <div class="modal-param-title" style="color:#e91e63">使用条件</div>
+            <div style="font-size:0.85rem;color:#ccc">${card.condition}</div>
+          </div>` : ''}
+        </div>
+      </div>
+    `;
+    document.getElementById('cardDetailBody').innerHTML = html;
+    document.getElementById('cardDetailModal').classList.add('open');
+  }
+};
+
+// ================================================================
+// DeckAnalysis - 右パネル
+// ================================================================
+const DeckAnalysis = {
+  update() {
+    this._updateCost();
+    this._updateLinks();
+    this._updateTerrain();
+  },
+
+  _updateCost() {
+    let total = 0;
+    const categories = {};
+    AppState.deckOcr.forEach(ocr => {
+      if (!ocr) return;
+      const cost = safeInt(ocr.cost);
+      total += cost;
+      const cat = ocr.category || ocr.type || '';
+      if (cat) categories[cat] = (categories[cat] || 0) + 1;
+    });
+    document.getElementById('analysisTotalCost').textContent = total;
+    const breakdown = Object.entries(categories).map(([k, v]) => `${k}:${v}`).join(' / ');
+    document.getElementById('analysisCostBreakdown').textContent = breakdown;
+
+    // Category badges
+    const badgeContainer = document.getElementById('analysisCategoryBadges');
+    badgeContainer.innerHTML = '';
+    Object.entries(categories).forEach(([cat, count]) => {
+      const badge = document.createElement('span');
+      let cls = 'category-badge';
+      if (cat === '殲滅') cls += ' senmetsu';
+      else if (cat === '制圧') cls += ' seiatsu';
+      else if (cat === '防衛') cls += ' bouei';
+      badge.className = cls;
+      badge.textContent = `${cat} x${count}`;
+      badgeContainer.appendChild(badge);
+    });
+  },
+
+  _updateLinks() {
+    const container = document.getElementById('analysisLinkList');
+    // Collect all link abilities across deck
+    const allLinks = {};
+    const linkCards = {};
+
+    for (let i = 0; i < 10; i++) {
+      const ocr = AppState.deckOcr[i];
+      if (!ocr) continue;
+      const links = ocr.link_abilities || ocr.link_ability || [];
+      if (!Array.isArray(links)) continue;
+      links.forEach(link => {
+        const name = link.name || '';
+        if (!name) return;
+        if (!allLinks[name]) {
+          allLinks[name] = { name, condition: link.condition || '', effect: link.effect || '', count: 0 };
+          linkCards[name] = [];
         }
+        allLinks[name].count++;
+        linkCards[name].push(AppState.deck[i]);
+      });
+    }
 
-        // 検索モーダルを閉じる
-        function closeSearchModal() {
-            document.getElementById('search-modal').style.display = 'none';
+    if (Object.keys(allLinks).length === 0) {
+      container.innerHTML = '<div style="color:#555;font-size:0.8rem;padding:0.5rem">リンクアビリティなし</div>';
+      return;
+    }
+
+    container.innerHTML = '';
+    Object.values(allLinks).forEach(link => {
+      // Check activation
+      let isActive = false;
+      const cond = parseLinkCondition(link.condition);
+      if (cond) {
+        const cnt = countForCondition(cond, link.name, AppState.deckOcr);
+        if (cnt >= cond.required) isActive = true;
+      }
+
+      const el = document.createElement('div');
+      el.className = `link-item${isActive ? ' active' : ''}`;
+      el.innerHTML = `
+        <div>
+          <span class="link-name">${link.name}</span>
+          <span class="link-badge ${isActive ? 'on' : 'off'}">${isActive ? '発動' : `${link.count}/${cond ? cond.required : '?'}`}</span>
+        </div>
+        <div class="link-condition">${link.condition}</div>
+        <div class="link-effect">${link.effect}</div>
+      `;
+      container.appendChild(el);
+    });
+  },
+
+  _updateTerrain() {
+    const terrains = { ground: [], space: [], desert: [], water: [] };
+    const terrainLabels = { ground: '地上', space: '宇宙', desert: '砂漠', water: '水中' };
+    const terrainRank = { S: 5, A: 4, B: 3, C: 2, D: 1 };
+
+    for (let i = 0; i < 5; i++) {
+      const ocr = AppState.deckOcr[i];
+      if (!ocr || !ocr.terrain_compatibility) continue;
+      const tc = ocr.terrain_compatibility;
+      ['ground', 'space', 'desert', 'water'].forEach(t => {
+        if (tc[t]) terrains[t].push(tc[t]);
+      });
+    }
+
+    const grid = document.getElementById('analysisTerrainGrid');
+    grid.innerHTML = '';
+    ['ground', 'space', 'desert', 'water'].forEach(t => {
+      const vals = terrains[t];
+      let display = '-';
+      let colorClass = '';
+      if (vals.length > 0) {
+        // 最頻値
+        const freq = {};
+        vals.forEach(v => freq[v] = (freq[v] || 0) + 1);
+        const best = Object.entries(freq).sort((a, b) => (terrainRank[b[0]] || 0) - (terrainRank[a[0]] || 0))[0];
+        display = vals.join('/');
+        colorClass = `terrain-${best[0]}`;
+      }
+      const activeClass = (AppState.selectedTerrain === t) ? ' terrain-active' : '';
+      grid.innerHTML += `<div class="terrain-cell${activeClass}"><span class="terrain-label">${terrainLabels[t]}</span><span class="terrain-value ${colorClass}">${display}</span></div>`;
+    });
+  }
+};
+
+// ================================================================
+// Shortcuts - キーボードショートカット
+// ================================================================
+const Shortcuts = {
+  init() {
+    document.addEventListener('keydown', (e) => {
+      // Ctrl+Z / Cmd+Z
+      if ((e.ctrlKey || e.metaKey) && e.key === 'z' && !e.shiftKey) {
+        e.preventDefault();
+        UndoManager.undo();
+        return;
+      }
+      // Ctrl+Shift+Z / Cmd+Shift+Z
+      if ((e.ctrlKey || e.metaKey) && e.key === 'z' && e.shiftKey) {
+        e.preventDefault();
+        UndoManager.redo();
+        return;
+      }
+      // Ctrl+S / Cmd+S
+      if ((e.ctrlKey || e.metaKey) && e.key === 's') {
+        e.preventDefault();
+        DeckManager.save();
+        return;
+      }
+      // Escape
+      if (e.key === 'Escape') {
+        closeAllPanels();
+        closeCardModal();
+        closeDeckLoadModal();
+        TacticsPicker.close();
+        UIRenderer.setActiveSlot(null);
+        return;
+      }
+      // "/" to focus search (when not in input)
+      if (e.key === '/' && !isInputFocused()) {
+        e.preventDefault();
+        document.getElementById('browserSearch').focus();
+        if (window.innerWidth <= 1200) openPanel('left');
+        return;
+      }
+      // 1-5 for MS slots, 6-0 for PL slots (when not in input)
+      if (!isInputFocused()) {
+        const keyMap = { '1': 0, '2': 1, '3': 2, '4': 3, '5': 4, '6': 5, '7': 6, '8': 7, '9': 8, '0': 9 };
+        if (keyMap[e.key] !== undefined) {
+          e.preventDefault();
+          UIRenderer.setActiveSlot(keyMap[e.key]);
+          const targetType = keyMap[e.key] < 5 ? 'MS' : 'PL';
+          if (AppState.filters.type !== targetType) CardBrowser.setType(targetType);
         }
+      }
+    });
+  }
+};
 
-        // デッキ保存機能
-        function saveDeck() {
-            const deckName = document.getElementById('deckName').value.trim();
-            if (!deckName) {
-                alert('デッキ名を入力してください');
-                return;
-            }
+// ================================================================
+// Utility Functions
+// ================================================================
+function safeInt(val, def = 0) {
+  if (val === null || val === undefined) return def;
+  const n = parseInt(val, 10);
+  return isNaN(n) ? def : n;
+}
 
-            const deckData = {
-                name: deckName,
-                timestamp: new Date().toISOString(),
-                cards: selectedCardNumbers.map((cardNumber, index) => {
-                    const card = allCards.find(c => c.number === cardNumber);
-                    return {
-                        index: index,
-                        number: cardNumber,
-                        name: card ? card.name : '',
-                        isFront: true
-                    };
-                }),
-                totalCost: document.getElementById('totalCost').textContent
-            };
+function escapeHtml(str) {
+  const div = document.createElement('div');
+  div.textContent = str;
+  return div.innerHTML;
+}
 
-            // ローカルストレージに保存
-            const savedDecks = JSON.parse(localStorage.getItem('gundamDecks') || '{}');
-            savedDecks[deckName] = deckData;
-            localStorage.setItem('gundamDecks', JSON.stringify(savedDecks));
+function isInputFocused() {
+  const el = document.activeElement;
+  return el && (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA' || el.tagName === 'SELECT');
+}
 
-            // クッキーにも保存（最新のデッキとして）
-            setCookie('gundamLastSavedDeck', deckData, 30);
+function parseLinkCondition(condition) {
+  const CATEGORY_MAP = {
+    '機動': '機動', '機動力': '機動',
+    '遠距離': '遠距離', '近距離': '近距離',
+    '殲滅': '殲滅', '殲滅系': '殲滅',
+    '制圧': '制圧', '制圧/圧': '制圧', '防衛': '防衛',
+  };
+  const m = (condition || '').match(/(?:デッキに)?(.+?)(?:が|の)?(\d+)(?:枚|体)以上/);
+  if (!m) return null;
+  const prefix = m[1].trim();
+  return { required: parseInt(m[2]), categoryFilter: CATEGORY_MAP[prefix] || null };
+}
 
-            alert(`デッキ「${deckName}」を保存しました（ローカルストレージとクッキーの両方に保存）`);
-            document.getElementById('deckName').value = '';
-            showSavedDecks();
-        }
+function getCardStyle(ocr) {
+  if (!ocr) return null;
+  if (ocr.type === 'PL') {
+    const cls = ocr.card_label && ocr.card_label.class;
+    if (['殲滅','制圧','防衛'].includes(cls)) return cls;
+    if (['殲滅','制圧','防衛'].includes(ocr.category)) return ocr.category;
+    return null;
+  }
+  return ocr.category || null;
+}
 
-        // デッキ読み込み機能
-        function loadDeck() {
-            showSavedDecks();
-        }
+function countForCondition(cond, linkName, deckOcr) {
+  if (cond.categoryFilter) {
+    return deckOcr.filter(o => o && getCardStyle(o) === cond.categoryFilter).length;
+  }
+  return deckOcr.filter(o => {
+    if (!o) return false;
+    const links = o.link_abilities || o.link_ability || [];
+    return Array.isArray(links) && links.some(l => l.name === linkName);
+  }).length;
+}
 
-        // 保存済みデッキ一覧を表示
-        function showSavedDecks() {
-            const savedDecks = JSON.parse(localStorage.getItem('gundamDecks') || '{}');
-            const deckList = document.getElementById('deckList');
-            const savedDecksDiv = document.getElementById('savedDecks');
+function getLinkBuffs(ocr) {
+  const buffs = {
+    mobility: { small: 0, medium: 0 },
+    ranged: { small: 0, medium: 0 },
+    melee: { small: 0, medium: 0 },
+    hp: { small: 0, medium: 0 }
+  };
+  if (!ocr || !Array.isArray(ocr.link_abilities)) return buffs;
 
-            let html = '';
-            
-            // クッキーから最新のデッキを取得
-            const cookieDeck = getCookie('gundamLastSavedDeck');
-            const autoSavedDeck = getCookie('gundamAutoSave');
-            
-            // クッキーから読み取れるデッキを表示
-            if (cookieDeck && cookieDeck.cards) {
-                const date = new Date(cookieDeck.timestamp).toLocaleString('ja-JP');
-                html += `
-                    <div style="background:#2a4a2a;padding:0.8rem;margin-bottom:0.5rem;border-radius:4px;border:2px solid #4caf50;">
-                        <div style="display:flex;justify-content:space-between;align-items:center;">
-                            <div>
-                                <strong style="color:#4caf50;">📋 最新のデッキ（クッキー）</strong>
-                                <div style="font-size:0.8em;color:#888;margin-top:0.2rem;">保存日時: ${date}</div>
-                                <div style="font-size:0.8em;color:#888;">${cookieDeck.totalCost}</div>
-                            </div>
-                            <div>
-                                <button onclick="applyCookieDeck()" style="padding:0.3rem 0.8rem;background:#4caf50;color:#fff;border:none;border-radius:4px;cursor:pointer;font-size:0.8em;">適用</button>
-                            </div>
-                        </div>
-                    </div>
-                `;
-            }
-            
-            // 自動保存デッキを表示（最新のデッキと異なる場合のみ）
-            if (autoSavedDeck && autoSavedDeck.cards && 
-                (!cookieDeck || JSON.stringify(autoSavedDeck) !== JSON.stringify(cookieDeck))) {
-                const date = new Date(autoSavedDeck.timestamp).toLocaleString('ja-JP');
-                html += `
-                    <div style="background:#2a2a4a;padding:0.8rem;margin-bottom:0.5rem;border-radius:4px;border:2px solid #2196f3;">
-                        <div style="display:flex;justify-content:space-between;align-items:center;">
-                            <div>
-                                <strong style="color:#2196f3;">🔄 自動保存デッキ（クッキー）</strong>
-                                <div style="font-size:0.8em;color:#888;margin-top:0.2rem;">保存日時: ${date}</div>
-                                <div style="font-size:0.8em;color:#888;">${autoSavedDeck.totalCost}</div>
-                            </div>
-                            <div>
-                                <button onclick="applyAutoSavedDeck()" style="padding:0.3rem 0.8rem;background:#2196f3;color:#fff;border:none;border-radius:4px;cursor:pointer;font-size:0.8em;">適用</button>
-                            </div>
-                        </div>
-                    </div>
-                `;
-            }
+  ocr.link_abilities.forEach(link => {
+    const eff = link.effect || '';
+    const cond = parseLinkCondition(link.condition);
+    if (!cond) return;
+    const count = countForCondition(cond, link.name, AppState.deckOcr);
+    if (count < cond.required) return;
 
-            // ローカルストレージの保存済みデッキを表示
-            if (Object.keys(savedDecks).length === 0) {
-                if ((!cookieDeck || !cookieDeck.cards) && (!autoSavedDeck || !autoSavedDeck.cards)) {
-                    deckList.innerHTML = '<p style="color:#888;">保存済みデッキがありません</p>';
-                    savedDecksDiv.style.display = 'block';
-                    // デッキリストを開いた状態にする
-                    setTimeout(() => {
-                        openDeckList();
-                    }, 100);
-                    return;
-                }
-            } else {
-                html += '<h5 style="color:#ffe082;margin:1rem 0 0.5rem 0;">ローカルストレージの保存済みデッキ</h5>';
-                Object.values(savedDecks).forEach(deck => {
-                    const date = new Date(deck.timestamp).toLocaleString('ja-JP');
-                    html += `
-                        <div style="background:#333;padding:0.8rem;margin-bottom:0.5rem;border-radius:4px;border:1px solid #444;">
-                            <div style="display:flex;justify-content:space-between;align-items:center;">
-                                <div>
-                                    <strong style="color:#4caf50;">${deck.name}</strong>
-                                    <div style="font-size:0.8em;color:#888;margin-top:0.2rem;">保存日時: ${date}</div>
-                                    <div style="font-size:0.8em;color:#888;">${deck.totalCost}</div>
-                                </div>
-                                <div>
-                                    <button onclick="applyDeck('${deck.name}')" style="padding:0.3rem 0.8rem;background:#2196f3;color:#fff;border:none;border-radius:4px;cursor:pointer;margin-right:0.3rem;font-size:0.8em;">適用</button>
-                                    <button onclick="deleteDeck('${deck.name}')" style="padding:0.3rem 0.8rem;background:#f44336;color:#fff;border:none;border-radius:4px;cursor:pointer;font-size:0.8em;">削除</button>
-                                </div>
-                            </div>
-                        </div>
-                    `;
-                });
-            }
+    // Parse effect
+    if (eff.match(/機動力.*小アップ/)) buffs.mobility.small++;
+    if (eff.match(/遠距離攻撃力.*小アップ/)) buffs.ranged.small++;
+    if (eff.match(/近距離攻撃力.*小アップ/)) buffs.melee.small++;
+    if (eff.match(/HP.*小アップ/)) buffs.hp.small++;
+    if (eff.match(/機動力.*中アップ/)) buffs.mobility.medium++;
+    if (eff.match(/遠距離攻撃力.*中アップ/)) buffs.ranged.medium++;
+    if (eff.match(/近距離攻撃力.*中アップ/)) buffs.melee.medium++;
+    if (eff.match(/HP.*中アップ/)) buffs.hp.medium++;
+  });
+  return buffs;
+}
 
-            deckList.innerHTML = html;
-            savedDecksDiv.style.display = 'block';
-            
-            // デッキリストを開いた状態にする
-            setTimeout(() => {
-                openDeckList();
-            }, 100);
-        }
+function getCookieValue(name) {
+  const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+  if (match) {
+    try { return decodeURIComponent(match[2]); } catch { return null; }
+  }
+  return null;
+}
 
-        // 保存済みデッキを適用
-        function applyDeck(deckName) {
-            const savedDecks = JSON.parse(localStorage.getItem('gundamDecks') || '{}');
-            const deck = savedDecks[deckName];
+// ===== Panel Toggle =====
+function togglePanel(side) {
+  const panel = side === 'left' ? document.getElementById('panelLeft') : document.getElementById('panelRight');
+  const overlay = document.getElementById('panelOverlay');
+  const isOpen = panel.classList.contains('open');
+  closeAllPanels();
+  if (!isOpen) {
+    panel.classList.add('open');
+    overlay.classList.add('active');
+  }
+}
 
-            if (!deck) {
-                alert('デッキが見つかりません');
-                return;
-            }
+function openPanel(side) {
+  closeAllPanels();
+  const panel = side === 'left' ? document.getElementById('panelLeft') : document.getElementById('panelRight');
+  panel.classList.add('open');
+  document.getElementById('panelOverlay').classList.add('active');
+}
 
-            deck.cards.forEach(cardInfo => {
-                const card = allCards.find(c => c.number === cardInfo.number);
-                if (card) {
-                    const select = document.getElementById(`card-select-${cardInfo.index}`);
-                    const cardIndex = allCards.indexOf(card);
-                    select.value = cardIndex;
-                    select.dispatchEvent(new Event('change'));
-                }
-            });
+function closeAllPanels() {
+  document.getElementById('panelLeft').classList.remove('open');
+  document.getElementById('panelRight').classList.remove('open');
+  document.getElementById('panelOverlay').classList.remove('active');
+}
 
-            // 適用したデッキをクッキーにも保存（最新のデッキとして）
-            setCookie('gundamLastSavedDeck', deck, 30);
+// ===== Card Detail Modal =====
+async function showCardModal(number) {
+  const detail = await CardService.fetchDetail(number);
+  if (!detail) { Toast.show('カード情報を取得できません', 'error'); return; }
+  const ocr = detail.ocr_data || {};
+  const frontUrl = detail.front?.image_url || '';
+  const name = detail.name || number;
 
-            closeDeckList();
-            alert(`デッキ「${deckName}」を適用しました（クッキーにも保存されました）`);
-        }
+  let html = `<div class="modal-card-header">
+    <img class="modal-card-image" src="${frontUrl}" alt="${name}">
+    <div class="modal-card-info">
+      <div class="modal-card-number">${number}</div>
+      <div class="modal-card-name">${name}</div>
+      <div style="color:#888;font-size:0.85rem;margin-top:0.3rem">
+        ${ocr.type || ''} | ${ocr.category || ''} | コスト: ${ocr.cost || '-'} | ${detail.series || ''}
+      </div>`;
 
-        // 保存済みデッキを削除
-        function deleteDeck(deckName) {
-            if (!confirm(`デッキ「${deckName}」を削除しますか？`)) {
-                return;
-            }
+  if (ocr.stats) {
+    html += `<div class="modal-param-group">
+      <div class="modal-param-title">ステータス</div>
+      <div class="modal-param-row">
+        <div class="modal-param-item"><span class="modal-param-label">機動力:</span>${ocr.stats.mobility || '-'}</div>
+        <div class="modal-param-item"><span class="modal-param-label">遠距離:</span>${ocr.stats.ranged_attack || '-'}</div>
+        <div class="modal-param-item"><span class="modal-param-label">近距離:</span>${ocr.stats.melee_attack || '-'}</div>
+        <div class="modal-param-item"><span class="modal-param-label">HP:</span>${ocr.stats.hp || '-'}</div>
+      </div>
+    </div>`;
+  }
 
-            const savedDecks = JSON.parse(localStorage.getItem('gundamDecks') || '{}');
-            delete savedDecks[deckName];
-            localStorage.setItem('gundamDecks', JSON.stringify(savedDecks));
+  if (ocr.weapon) {
+    html += `<div class="modal-param-group">
+      <div class="modal-param-title">武装</div>`;
+    if (ocr.weapon.main) html += `<div style="font-size:0.85rem">主: ${ocr.weapon.main.name || ''} (射程${ocr.weapon.main.range || '-'} / ${ocr.weapon.main.type || ''})</div>`;
+    if (ocr.weapon.sub) html += `<div style="font-size:0.85rem">副: ${ocr.weapon.sub.name || ''} (射程${ocr.weapon.sub.range || '-'} / ${ocr.weapon.sub.type || ''})</div>`;
+    html += '</div>';
+  }
 
-            showSavedDecks();
-            alert(`デッキ「${deckName}」を削除しました`);
-        }
+  html += '</div></div>';
 
-        // クッキーからデッキを適用
-        function applyCookieDeck() {
-            const cookieDeck = getCookie('gundamLastSavedDeck');
-            if (!cookieDeck || !cookieDeck.cards) {
-                alert('クッキーに保存されたデッキが見つかりません');
-                return;
-            }
+  if (ocr.ms_ability) {
+    html += `<div class="modal-param-group">
+      <div class="modal-param-title">MSスキル</div>
+      <div style="font-size:0.9rem;color:#b2e5ff">${ocr.ms_ability.name || ''}</div>
+      <div style="font-size:0.85rem;color:#ccc;margin-top:0.2rem">${ocr.ms_ability.description || ''}</div>
+    </div>`;
+  }
+  if (ocr.pl_skill) {
+    html += `<div class="modal-param-group">
+      <div class="modal-param-title">PLスキル</div>
+      <div style="font-size:0.9rem;color:#ffe082">${ocr.pl_skill.name || ''}</div>
+      <div style="font-size:0.85rem;color:#ccc;margin-top:0.2rem">${ocr.pl_skill.effect || ''}</div>
+    </div>`;
+  }
+  if (ocr.special_attack) {
+    html += `<div class="modal-param-group">
+      <div class="modal-param-title">SPアタック</div>
+      <div style="font-size:0.9rem;color:#ffb2b2">${ocr.special_attack.name || ''}</div>
+      <div style="font-size:0.85rem;color:#ccc;margin-top:0.2rem">${ocr.special_attack.description || ''}</div>
+    </div>`;
+  }
 
-            applySavedDeck(cookieDeck);
-            closeDeckList();
-            alert('クッキーからデッキを適用しました');
-        }
+  const links = ocr.link_abilities || ocr.link_ability || [];
+  if (Array.isArray(links) && links.length > 0) {
+    html += `<div class="modal-param-group"><div class="modal-param-title">リンクアビリティ</div>`;
+    links.forEach(l => {
+      html += `<div style="font-size:0.85rem;margin-top:0.2rem">
+        <span style="color:#ffe082">${l.name || ''}</span>
+        <span style="color:#888"> ${l.condition || ''}</span>
+        <span style="color:#aaa"> ${l.effect || ''}</span>
+      </div>`;
+    });
+    html += '</div>';
+  }
 
-        // 自動保存デッキを適用
-        function applyAutoSavedDeck() {
-            const autoSavedDeck = getCookie('gundamAutoSave');
-            if (!autoSavedDeck || !autoSavedDeck.cards) {
-                alert('自動保存されたデッキが見つかりません');
-                return;
-            }
+  if (ocr.terrain_compatibility) {
+    const tc = ocr.terrain_compatibility;
+    html += `<div class="modal-param-group">
+      <div class="modal-param-title">地形適性</div>
+      <div class="modal-param-row">
+        <div class="modal-param-item"><span class="modal-param-label">地上:</span>${tc.ground || '-'}</div>
+        <div class="modal-param-item"><span class="modal-param-label">宇宙:</span>${tc.space || '-'}</div>
+        <div class="modal-param-item"><span class="modal-param-label">砂漠:</span>${tc.desert || '-'}</div>
+        <div class="modal-param-item"><span class="modal-param-label">水中:</span>${tc.water || '-'}</div>
+      </div>
+    </div>`;
+  }
 
-            applySavedDeck(autoSavedDeck);
-            closeDeckList();
-            alert('自動保存デッキを適用しました');
-        }
+  document.getElementById('cardDetailBody').innerHTML = html;
+  document.getElementById('cardDetailModal').classList.add('open');
+}
 
-        // 自動保存の有効/無効を切り替える関数
-        function toggleAutoSave() {
-            autoSaveEnabled = document.getElementById('autoSaveToggle').checked;
-            if (autoSaveEnabled) {
-                autoSaveDeck();
-            }
-        }
+function closeCardModal() {
+  document.getElementById('cardDetailModal').classList.remove('open');
+}
 
-        // デッキリストを折り畳む
-        function toggleDeckList() {
-            const deckListContent = document.getElementById('deckListContent');
-            const toggleBtn = document.getElementById('toggleDeckListBtn');
-            
-            if (deckListContent.style.maxHeight === '500px') {
-                deckListContent.style.maxHeight = '0px';
-                toggleBtn.textContent = '▼ 開く';
-            } else {
-                deckListContent.style.maxHeight = '500px';
-                toggleBtn.textContent = '▼ 折り畳む';
-            }
-        }
+function closeDeckLoadModal() {
+  document.getElementById('deckLoadModal').classList.remove('open');
+}
 
-        // デッキリストを閉じる
-        function closeDeckList() {
-            const deckListContent = document.getElementById('deckListContent');
-            const toggleBtn = document.getElementById('toggleDeckListBtn');
-            deckListContent.style.maxHeight = '0px';
-            toggleBtn.textContent = '▼ 開く';
-        }
+// ================================================================
+// INIT
+// ================================================================
+document.addEventListener('DOMContentLoaded', async () => {
+  UIRenderer.init();
+  CardBrowser.init();
+  Shortcuts.init();
+  UndoManager.snapshot();
 
-        // デッキリストを開いた状態にする
-        function openDeckList() {
-            const deckListContent = document.getElementById('deckListContent');
-            const toggleBtn = document.getElementById('toggleDeckListBtn');
-            deckListContent.style.maxHeight = '500px';
-            toggleBtn.textContent = '▼ 折り畳む';
-        }
+  // カードインデックスを取得
+  try {
+    await CardService.fetchIndex();
+    CardBrowser.applyFilters();
+    Toast.show(`${AppState.cardIndex.length} 枚のカードを読み込みました`, 'success', 2000);
+  } catch (e) {
+    Toast.show('カードデータの取得に失敗しました', 'error');
+    console.error(e);
+    return;
+  }
 
-        function adjustParamGroupHeightsByContent() {
-            // 各param-groupごとに最大高さを計算
-            const groupTypes = ['skill', 'spattack', 'link'];
-            groupTypes.forEach(type => {
-                let maxHeight = 0;
-                document.querySelectorAll(`.param-group.${type}`).forEach(el => {
-                    const dummy = el.cloneNode(true);
-                    dummy.style.visibility = 'hidden';
-                    dummy.style.position = 'absolute';
-                    dummy.style.height = 'auto';
-                    dummy.style.width = el.offsetWidth + 'px';
-                    document.body.appendChild(dummy);
-                    maxHeight = Math.max(maxHeight, dummy.offsetHeight);
-                    document.body.removeChild(dummy);
-                });
-                document.querySelectorAll(`.param-group.${type}`).forEach(el => {
-                    el.style.height = maxHeight + 'px';
-                });
-            });
-        }
-        // 既存のadjustParamGroupHeightsの呼び出し箇所をadjustParamGroupHeightsByContentに置き換え
-        // 例: setTimeout(adjustParamGroupHeights, 500); → setTimeout(adjustParamGroupHeightsByContent, 500);
-        // カード切り替え時も同様に置き換え
-        document.addEventListener('DOMContentLoaded', function() {
-            setTimeout(adjustParamGroupHeightsByContent, 500); // レンダリング後に実行
-        });
-        window.adjustParamGroupHeightsByContent = adjustParamGroupHeightsByContent;
+  // 作戦カードデータを取得
+  await CardService.fetchTacticsCards();
 
-        // デッキ投稿モーダルの開閉
-        const openDeckPostModalBtn = document.getElementById('openDeckPostModal');
-        const deckPostModal = document.getElementById('deckPostModal');
-        const closeDeckPostModalBtn = document.getElementById('closeDeckPostModal');
-        if (openDeckPostModalBtn && deckPostModal && closeDeckPostModalBtn) {
-            openDeckPostModalBtn.onclick = () => { deckPostModal.style.display = 'flex'; };
-            closeDeckPostModalBtn.onclick = () => { deckPostModal.style.display = 'none'; document.getElementById('deckPostMsg').textContent = ''; };
-        }
-        // 投稿処理
-        const submitDeckPostBtn = document.getElementById('submitDeckPost');
-        if (submitDeckPostBtn) {
-            submitDeckPostBtn.onclick = async function() {
-                const deckName = document.getElementById('postDeckName').value.trim();
-                const comment = document.getElementById('postDeckComment').value.trim();
-                if (!deckName) {
-                    document.getElementById('deckPostMsg').textContent = 'デッキ名を入力してください';
-                    return;
-                }
-                // 現在のデッキ構成を取得
-                const cards = selectedCardNumbers.map((num, idx) => ({ number: num, ocr: selectedOcrData[idx] }));
-                const payload = {
-                    deck_name: deckName,
-                    comment: comment,
-                    cards: cards,
-                    timestamp: new Date().toISOString()
-                };
-                try {
-                    const res = await fetch('/post_deck', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(payload)
-                    });
-                    const data = await res.json();
-                    if (data.success) {
-                        document.getElementById('deckPostMsg').style.color = '#4caf50';
-                        document.getElementById('deckPostMsg').textContent = 'デッキを投稿しました！';
-                        setTimeout(() => { deckPostModal.style.display = 'none'; document.getElementById('deckPostMsg').textContent = ''; }, 1200);
-                    } else {
-                        document.getElementById('deckPostMsg').style.color = '#ff5252';
-                        document.getElementById('deckPostMsg').textContent = data.error || '投稿に失敗しました';
-                    }
-                } catch (e) {
-                    document.getElementById('deckPostMsg').style.color = '#ff5252';
-                    document.getElementById('deckPostMsg').textContent = 'サーバーエラー';
-                }
-            };
-        }
-    </script>
-    
-    <div style="text-align:center;margin:2em 0 1em 0;">
-        <a href="/index2.html" style="color:#ffe082;font-size:1.1em;text-decoration:underline;">▶ 詳細デッキ表ページ（新UI）はこちら</a>
-        <br><br>
-        <a href="/summary" style="color:#ff9800;font-size:1.1em;text-decoration:underline;">▶ 新デッキサマリーページ</a>
-        <br><br>
-        <a href="/photo" style="color:#4caf50;font-size:1.1em;text-decoration:underline;">📸 デッキ撮影モードへ</a>
-        <br><br>
-        <a href="/illustrator" style="color:#b2e5ff;font-size:1.1em;text-decoration:underline;">🎨 イラストレータ別カード一覧へ</a>
-    </div>
+  // リンクアビリティ索引を取得
+  try {
+    const linkRes = await fetch('/api/link_index');
+    const linkData = await linkRes.json();
+    if (linkData.success) {
+      AppState.linkIndex = linkData.links;
+      const names = Object.keys(linkData.links).sort();
+      const sel1 = document.getElementById('linkSelect1');
+      const sel2 = document.getElementById('linkSelect2');
+      names.forEach(name => {
+        const info = linkData.links[name];
+        const label = `${name} (${info.required}枚)`;
+        const opt1 = document.createElement('option');
+        opt1.value = name;
+        opt1.textContent = label;
+        sel1.appendChild(opt1);
+        const opt2 = document.createElement('option');
+        opt2.value = name;
+        opt2.textContent = label;
+        sel2.appendChild(opt2);
+      });
+    }
+  } catch (e) {
+    console.error('リンク索引の取得に失敗:', e);
+  }
+
+  // 自動復元
+  await DeckManager._autoLoad();
+});
+
+// ===== Handle hash change for URL sharing =====
+window.addEventListener('hashchange', async () => {
+  if (location.hash && location.hash.length > 1) {
+    const code = location.hash.substring(1);
+    const numbers = DeckManager.parseCode(code);
+    if (numbers && (numbers.length === 10 || numbers.length === 12)) {
+      await DeckManager._applyNumbers(numbers);
+    }
+  }
+});
+</script>
 </body>
 </html>

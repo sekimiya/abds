@@ -1,0 +1,1108 @@
+% content.tex
+
+\section*{はじめに}
+はじめまして、関宮といいます。
+今回は最近ゲームセンターでプレイしているアーケードゲーム「ガンダム・アーセナルベース」について、カードのOCRシステムを構築してみたのでそれについてまとめようと思います。
+この記事では、アーケードゲーム、ガンダム・アーセナルベースのカード情報OCRシステムの開発について記録します。
+
+
+\begin{figure}[]
+\centering
+\includegraphics[width=5.5cm]{images/im02_b.png}
+\caption{こういう感じの筐体に10枚のカードをセットしてプレイします。公式サイトより引用}
+\label{fig:setup}
+\end{figure}
+
+\begin{figure}[]
+\centering
+\includegraphics[width=4.5cm]{images/im1.png}
+\caption{最上位ランク一歩前まで上がって喜ぶ筆者の様子。いくら使ったかは聞かないでください}
+\label{fig:rank}
+\end{figure}
+
+
+\section*{開発背景}
+今回実装するカードOCRシステムは、現在開発を行っているデッキシミュレータの一部となります。
+デッキシミュレータはカードゲームではよくあるサービスで、実際に使うカードをアプリ上で組み合わせることでデッキの検討を行うことができます。
+公式から提供されたりするのですが、アーセナルベースでは公式からのデッキシミュレータ提供がないので自炊しようという取り組みです。
+本記事のOCRシステムが大方完成したので、こちらも鋭意制作中です。
+なんらかの形でリリースしたいと思っています。
+
+カードOCRの話に戻ります。
+アーセナルベースでは公式サイトでカード画像は公開されています。
+しかし、これは、画像のみでテキストではデータが提供されていません。
+コンピュータでカードデータを扱うためには、各種パラメータを何らかの方法でテキストデータに変換しておく必要があります。
+ですがカードが追加されるたびに手作業でテキスト化を行うのはできればやりたくありません。
+そこで、カード画像から構造化されたデータを抽出し、ゲームデータベースの構築を自動化することが今回の目標となります。
+
+\subsection{アーセナルベースとは？}
+Wikiより引用します。
+「プレイヤーが指揮官となり、5機のモビルスーツ (MS) と5名のパイロットを指揮して敵艦を撃破するための戦闘を行う、アーケード用のリアルタイムストラテジー型カードゲームである。カードゲームを遊ぶことに特化した大型タッチパネル筐体を操作することにより、部隊の指揮を執る」
+
+平たくいうと、筐体に10枚のカードをセットしてタッチパネルを操作することでゲームを行います。
+この10枚のカード、PLカードとMSカードをどのように組み合わせてデッキを作るのかというのが重要な要素になるゲームです。
+
+現在、カードは約4000枚程度あり、これらのカードプールから10枚を選択することになります。
+アーセナルベースでは人間が裁定を行わずゲームセンターに設置されたゲーム筐体が対戦時の各種裁定を行います。
+そのため、カードの組み合わせで変化するパラメータの数が人間が裁定を行うカードゲームよりも多く、それらを計算してデッキを構築する必要があります。
+
+\section*{アーセナルベースのカード種類}
+
+アーセナルベースのカードには大きく分けてMSカードとPLカードの二種類があります。
+下記に各カードに表記されるパラメータについて示します。
+
+
+\subsection*{MSカード（モビルスーツカード）}
+\subsubsection*{基本情報}
+\begin{itemize}
+    \item \textbf{カードID}: 一意の識別番号（例：FQ01-001）
+    \item \textbf{カード名}: MSの名称（例：ガンダム試作3号機）
+    \item \textbf{モデル}: 機体の正式名称（例：RX-78GP03S GUNDAM GP03S）
+    \item \textbf{コスト}: デッキ構築時のコスト（1-10）
+    \item \textbf{カテゴリ}: 機体の分類（近距離、遠距離、機動）
+\end{itemize}
+
+\subsubsection*{能力値}
+\begin{itemize}
+    \item \textbf{機動力}: 移動力と回避力に影響
+    \item \textbf{遠距離攻撃力}: 射撃攻撃の威力
+    \item \textbf{近距離攻撃力}: 格闘攻撃の威力
+    \item \textbf{HP}: 耐久力
+\end{itemize}
+
+\subsubsection*{地形適性}
+\begin{itemize}
+    \item \textbf{地上}: A/S/B/C/D
+    \item \textbf{宇宙}: A/S/B/C/D
+    \item \textbf{砂漠}: A/S/B/C/D
+    \item \textbf{水中}: A/S/B/C/D
+\end{itemize}
+
+\subsubsection*{武器情報}
+\begin{itemize}
+    \item \textbf{メイン武器}: 主要攻撃手段（射程、攻撃種別）
+    \item \textbf{サブ武器}: 補助攻撃手段（射程、攻撃種別）
+\end{itemize}
+
+\subsubsection*{各種アビリティ}
+\begin{itemize}
+    \item \textbf{MSアビリティ}: 機体固有の特殊能力
+    \item \textbf{リンクアビリティ}: バフ効果、デッキに特定の数揃えることでパラメータに上方補正がかかる
+    \item \textbf{SP（スペシャルアタック）/USP/SQSP}: 強力な攻撃技。ゲーム中でチャージされるSPを消費することで発動する。SPのみ、SP+USP、SP+SQSPの組み合わせを持つこともある。USPとSQSPは排他。
+\end{itemize}
+
+\subsubsection*{リンクアビリティ}
+デッキ内に特定の条件を満たすカードが含まれている場合に発動する効果。PL/MSカードがそれぞれ２個ずつ異なるアビリティを持ち、デッキで20個のアビリティを持つ。
+条件を満たすとそのアビリティを持つカードに対して各種パラメータを上昇させるバフとして発動する。
+\begin{itemize}
+    \item \textbf{リンクアビリティ個数条件}: ``デッキに3枚以上''など
+    \item \textbf{他パラメータ参照条件}: 特定の機体属性/パイロット種別
+\end{itemize}
+
+\subsubsection*{SP詳細}
+\begin{itemize}
+    \item \textbf{通常SP}: 基本的なSP
+    \item \textbf{SQUAD SP}: スクワッドシステム発動中のSP
+    \item \textbf{UNITED SP}: 特定のパイロットとの連携SP
+\end{itemize}
+
+\subsubsection*{USP（Unique Special Power）}
+MSカードに記載される機体固有の特殊能力：
+\begin{itemize}
+    \item \textbf{USP名}: 機体固有の特殊能力の名称
+    \item \textbf{発動条件}: USPを発動するための条件
+    \item \textbf{効果}: USP発動時の効果
+    \item \textbf{制限}: 発動回数や条件の制限
+\end{itemize}
+
+\subsubsection*{SQSP}
+特定の条件下（SQUAD RUSH中）で対戦中一度のみ使用できるSP
+\begin{itemize}
+    \item \textbf{SQSP名}: 機体固有の特殊能力の名称
+    \item \textbf{発動条件}: SQSPを発動するための条件
+    \item \textbf{効果}: SQSP発動時の効果
+\end{itemize}
+
+
+\subsection*{PLカード（パイロットカード）}
+
+\subsubsection*{基本情報}
+\begin{itemize}
+    \item \textbf{カードID}: 一意の識別番号（例：FQ01-P01）
+    \item \textbf{カード名}: パイロットの名称（例：アムロ・レイ）
+    \item \textbf{コスト}: デッキ構築時のコスト（1-5）
+    \item \textbf{カテゴリ}: パイロット
+\end{itemize}
+
+\subsubsection*{各種アビリティ}
+\begin{itemize}
+    \item \textbf{パイロットスキル}: パイロット固有の特殊能力
+    \item \textbf{SQ関連スキル}: スクワッドシステムに関連する能力
+    \begin{itemize}
+        \item SQゲージ効果
+        \item SQUAD RUSH中の効果
+        \item 発動条件と効果
+    \end{itemize}
+    \item \textbf{リンクアビリティ}: デッキ内の特定カードとの連携効果
+\end{itemize}
+
+\subsection*{カードのレアリティ}
+\begin{itemize}
+    \item \textbf{コモン（C）}: 最も一般的なカード
+    \item \textbf{アンコモン（UC）}: やや珍しいカード
+    \item \textbf{レア（R）}: 珍しいカード
+    \item \textbf{スーパーレア（SR）}: 非常に珍しいカード
+    \item \textbf{ウルトラレア（UR）}: 最も珍しいカード
+\end{itemize}
+
+\subsection*{カードの枠外テキスト}
+\begin{itemize}
+\item \textbf{シリーズ名：AB,FQ,FQB,UT, UTB,PR等} 
+\item \textbf{イラストレーター名}
+\end{itemize}
+
+\section*{技術構成}
+技術構成要素は下記のとおりです。カードの内容識別にはChatGPT-4oのAPIを使用しました。大体500円くらいで4000枚のカードをOCRすることができました。本来OCRに使うAPIではないので少し高価に感じましたが、基本的に各カードに対し識別は一度しか行わないのでまーいっか！という感じで採用しました。PILはカード画像の前処理に使っています。
+識別結果は識別ミスがあったときにエディタで修正したいので特にDBなどは使わずJSON形式のテキストで保存しています。Pythonは最近仕事で使うことが増えてきたので採用しました。
+
+
+\subsection*{使用技術}
+\begin{itemize}
+    \item \textbf{Python3}: メインの開発言語
+    \item \textbf{OpenAI GPT-4o}: 画像認識とテキスト抽出
+    \item \textbf{PIL (Pillow)}: 画像処理
+    \item \textbf{JSON}: データ形式
+\end{itemize}
+
+\subsection*{システムアーキテクチャ}
+システムアーキテクチャとしては下記のとおりです。
+
+最初はカード裏面の画像をそのまま渡してOCRを実施していたのですが、アーセナルベースのカード裏面は薄くカード表面の絵柄が入ったデザインであったり、パラメータ表記が排他であったりするため一部のカードに対して満足な認識結果が出ませんでした。
+そこで、ChatGPTのAPI性能に頼り切ってカード全体を渡して適当にOCRをおこなってもらうのではなく、カードのパラメータ表示部分が静的なことを前提にOCRに渡す画像の領域を、各パラメータが表記されている部分のみに限定して渡したりもしています。
+
+今回OCRプログラムを書いていて非常に困ったのはMSの持つSPとPLの持つPLスキルのOCRです。
+どちらも表記が非常に込み入っており、あるパラメータがある場合は他のあるパラメータが暗黙的にないことや、そもそも文章が記述されているスペースの背景がイラストになっており文字の視認性が極めて悪いなどの問題がありました。
+このあたりはChatGPT APIの自然言語を理解し、ロバスト性のある対応がとれる特性に非常に助けられました。
+
+このような多様なカード種類と情報構造を持つアーセナルベース（ARMS）のカード情報を、効率的かつ正確に抽出することが、このOCRシステムの主要な課題でした。
+OCRを個別に行う関係上、APIのコール回数は増えてしまうのが悩みどころですが、満足する認識結果が得られたのでよしとしました。下記のような手順で処理を実行します。
+
+
+\begin{verbatim}
+入力: カード画像URL/ファイル
+    ↓
+1. 基本OCR処理 
+(extract_structured_data_from_url)
+    ↓
+2. MSカード抽出 
+(extract_ms_cards_from_basic_results)
+    ↓
+3. MSカードSP部OCR処理 
+(extract_sp_details_from_image)
+    ↓
+4. PLカードSQ部OCR処理 
+(analyze_pl_sq_skills)
+    ↓
+5. JSONファイル統合
+    ↓
+出力: 構造化JSONデータ
+\end{verbatim}
+\section*{ChatGPT APIの活用}
+
+\subsection*{OpenAI GPT-4oについて}
+
+今回、OCRシステムの核となる技術は、OpenAIが提供するGPT-4o（GPT-4 Omni）モデルです。
+GPT-4oは、テキストと画像の両方を理解できるマルチモーダルAIモデルで、画像認識とテキスト生成を同時に行うことができます。
+ChatGPTはWeb、アプリで利用できるのと同等の機能がAPIとして提供されています。
+このAPIを使ってカード裏面のテキストをOCR実行します。
+
+\subsubsection*{GPT-4oの特徴}
+\begin{itemize}
+    \item \textbf{マルチモーダル対応}: テキストと画像の両方を入力として受け取れる
+    \item \textbf{高精度な画像認識}: 複雑なレイアウトや小さな文字も正確に読み取り
+    \item \textbf{構造化データ出力}: JSON形式での出力に対応
+    \item \textbf{日本語対応}: 日本語のテキスト認識と生成に優れている
+    \item \textbf{コンテキスト理解}: カードゲーム特有の情報構造を理解
+\end{itemize}
+
+\subsection*{APIの使用方法}
+
+\subsubsection*{基本的なAPI呼び出し}
+基本的なAPIの呼び出しは下記の通りです。
+\begin{lstlisting}[language=Python]
+from openai import OpenAI
+
+client = OpenAI(api_key=api_key)
+
+response = client.chat.completions.create(
+    model="gpt-4o",
+    messages=[
+        {"role": "system", "content": "あなたは画像からカード情報を抽出してJSONに変換するOCRアシスタントです。"},
+        {"role": "user", "content": [
+            {"type": "text", "text": prompt},
+            {"type": "image_url", "image_url": {"url": image_url}}
+        ]}
+    ],
+    max_tokens=4096,
+    temperature=0.0,
+)
+\end{lstlisting}
+
+\subsubsection*{画像の入力方法}
+画像の入力に関しては、アップロード済みの画像URLからの入力とローカルのからの入力2つの入力をサポートするようにしました。
+実際のOCR処理では、ローカルに識別対象の画像を用意し、ローカル入力を使ってOCRを実施しました。
+
+
+\textbf{URLからの画像読み込み:}
+\begin{lstlisting}[language=Python]
+image_url = "https://example.com/card.jpg"
+\end{lstlisting}
+
+\textbf{ローカルファイルからの読み込み:}
+\begin{lstlisting}[language=Python]
+import base64
+
+with open(image_path, "rb") as image_file:
+    image_bytes = image_file.read()
+    image_b64 = base64.b64encode(image_bytes).decode('utf-8')
+    data_url = f"data:image/jpeg;base64,{image_b64}"
+\end{lstlisting}
+
+\subsection*{プロンプトの解説}
+実際にOCRで利用したPromptについて解説を行います。
+
+\subsubsection*{プロンプトの構造}
+
+効果的なOCR結果を得るため、以下の構造でプロンプトを設計しました。
+
+今回ChatGPTをOCRに使ってみて面白かったのは、OCR画像といっしょに渡す下記のPromptが識別結果に優位な差をもたらしたことです。
+識別対象の画像ファイルと下記に示すプロンプトを同時に渡すのですが、Promptではかなりいろいろなことができます。
+例えば、下記の例だとプロンプトに返却してほしいJSONの構造を渡し、特定のデータがあった場合は他の特定のキーをNullにせよ、のような本来はコードしてロジックに落とさなければ行けない分岐条件も自然言語としてプロンプトで書くことができます。
+
+ただ、この手法はあまりにも複雑になった場合、ChatGPT APIに無視されることもあったので、複雑性としては下記Promptに定義したくらいが限界かと思います。解決法をChatGPTに尋ねたら「自然言語っていう高級言語は複雑なんだから俺だって間違えるって！絶対に実行してほしいことはコードでロジックとして記述しいや？」と説教されたので、やっぱりプログラミング言語は誤解のないように頭のいい人が頭を捻ってつくってるんだなぁと思いました。
+
+\begin{lstlisting}[language=Python]
+prompt = """
+これは「アーセナルベース（ARMS）」というカードゲームのカード画像です。
+このカードがどの形式かを判別し、対応するJSON形式で出力してください。
+
+---
+
+カードは以下の2種です：
+
+1. MSカード（モビルスーツ）
+2. PLカード（パイロット）
+
+---
+
+それぞれ、以下の形式でJSONを出力してください。
+各フィールドの型を守り、実際に読み取れた値だけを埋めてください。
+
+### 【MSカードの形式】
+```json
+{
+  "card_id": "string",                   // 例: "FQ01-001"
+  "type": "MS",
+  "card_label": {
+    "class": "string",                  // 「近距離」「遠距離」「機動」など
+    "cost_label": "string"             // 表示ラベル 例: "コスト6"
+  },
+  "name": "string",
+  "model": "string",
+  "cost": number,
+  "category": "string",                // 「近距離」「遠距離」「機動」など
+  "pilot": "string",
+  "stats": {
+    "height": "string",
+    "weight": "string",
+    "mobility": number,
+    "ranged_attack": number,
+    "melee_attack": number,
+    "hp": number
+  },
+  "terrain_compatibility": {
+    "ground": "string",
+    "space": "string",
+    "desert": "string",
+    "water": "string"
+  },
+  "weapon": {
+    "main": {
+      "name": "string",
+      "range": number,
+      "type": "string"
+    },
+    "sub": {
+      "name": "string",
+      "range": number,
+      "type": "string"
+    }
+  },
+  "ms_ability": {
+    "name": "string",
+    "type": "string",
+    "range": number,
+    "cost": number,
+    "description": "string"
+  },
+  "link_ability": [
+    {
+      "name": "string",
+      "condition": "string",
+      "effect": "string"
+    }
+  ],
+  "impact_area": {
+    "type": "string",              // "circular" など
+    "radius": number,
+    "centered": boolean
+  },
+  "illustrator": "string",
+  "raw": "string"                        // OCRの生レスポンス文字列を必ず含めてください
+}
+```
+
+### 【PLカードの形式】
+```json
+{
+  "card_id": "string",                   // 例: "FQ01-P01"
+  "type": "PL",
+  "card_label": {
+    "class": "string",                  // 「パイロット」など
+    "cost_label": "string"             // 表示ラベル 例: "コスト3"
+  },
+  "name": "string",
+  "cost": number,
+  "category": "string",                // 「パイロット」など
+  "pilot_skill": {
+    "name": "string",
+    "effect": "string",
+    "has_sq_skill": boolean,           // SQ関連スキルを持つかどうか
+    "sq_skill_details": {
+      "sq_gauge_effect": "string",     // SQゲージ変動に関する効果（例: "SQゲージ+1"）
+      "sq_max_effect": "string",       // SQゲージが最大値の場合の効果
+      "squad_rush_effect": "string"    // SQUAD RUSH中に発動する効果
+    }
+  },
+  "link_ability": [
+    {
+      "name": "string",
+      "condition": "string",
+      "effect": "string"
+    }
+  ],
+  "illustrator": "string",
+  "raw": "string"                        // OCRの生レスポンス文字列を必ず含めてください
+}
+```
+
+**PLカードのSQ関連スキルについて**:
+
+1. **SQ関連スキルの判定**: パイロットスキルに「SQ」「SQUAD」「ゲージ」「ガージ」などのキーワードが含まれている場合は `has_sq_skill: true` にしてください。
+
+2. **pilot_skillオブジェクトの構造**:
+   - `pilot_skill`オブジェクトには必ず以下のフィールドを含めてください：
+     - `name`: スキル名
+     - `effect`: スキル効果の説明文
+     - `has_sq_skill`: SQ関連スキルがあるかどうか（true/false）
+     - `sq_skill_details`: SQ関連スキルの詳細（has_sq_skill: trueの場合のみ）
+
+3. **pilot_skill.effectフィールドの重要事項**: 
+   - パイロットスキルの説明文には、SQ関連の条件や効果を必ず含めてください
+   - 「SQゲージが最大時」「SQUAD RUSH中」などの条件文があれば、それらをeffectフィールドに含めてください
+   - 複数の効果がある場合は、改行（\\n）で区切って記載してください
+   - 例: "SQゲージが最大時\\n自身の「遠距離攻撃力」「SP威力」をアップする。\\nSQUAD RUSH中\\n「遠距離攻撃力」「SP威力」の効果がさらに上昇する。"
+
+4. **sq_skill_detailsフィールドの新しい構造**:
+   - **すべてのパイロットスキルで以下の6つのフィールドを含めてください**：
+     - `trigger`: スキル発動条件（例: "敵ユニットを撃破時", "SQゲージが最大時", "敵戦艦／拠点をロックオン時"）
+     - `effect`: 基本効果（例: "SQゲージ大アップ", "自身の「遠距離攻撃力」をアップする", "40秒間、自身の「機動力」「近距離攻撃力」を中アップする"）
+     - `sq_rush_effect`: SQUAD RUSH中の追加効果（SQ関連スキルの場合のみ、例: "SQUAD RUSH中\\n「遠距離攻撃力」の効果がさらに上昇する"）
+     - `sq_gauge_effect`: SQゲージの増減効果（SQ関連スキルの場合のみ、例: "SQゲージ+1", "SQゲージ大アップ"）
+     - `sq_max_effect`: SQゲージ最大時の効果（SQ関連スキルの場合のみ、例: "SQゲージが最大時\\n自身の「遠距離攻撃力」をアップする"）
+     - `squad_rush_effect`: SQUAD RUSH中の効果（SQ関連スキルの場合のみ、例: "SQUAD RUSH中\\n「遠距離攻撃力」の効果がさらに上昇する"）
+   - **SQ関連スキルがない場合でも、`trigger`と`effect`は必ず抽出してください**
+   - SQ関連スキルがない場合、`sq_rush_effect`、`sq_gauge_effect`、`sq_max_effect`、`squad_rush_effect`は`null`にしてください
+   - **重要**: `sq_skill_details`を`null`にしないでください。常に6つのフィールドを含むオブジェクトにしてください
+
+5. **新しいフィールドの抽出ルール**:
+   - `trigger`: スキル発動の条件部分（「時」「場合」「時点」「発動」「ロックオン」「撃破」などのキーワードを含む行）
+   - `effect`: triggerとsq_rush_effect以外のSQゲージ関連の基本効果
+   - `sq_rush_effect`: "SQUAD RUSH中"で始まる追加効果
+   - 該当する効果がない場合は`null`を使用してください
+
+6. **効果の抽出ルール（既存）**:
+   - SQゲージ変動効果: "SQゲージ+1", "SQゲージ-1", "SQゲージ大アップ"など
+   - SQゲージ最大値効果: "SQゲージが最大時"で始まる効果文
+   - SQUAD RUSH効果: "SQUAD RUSH中"で始まる効果文
+   - 該当する効果がない場合は`null`を使用してください
+
+7. **データ構造の最適化**:
+   - 冗長なネスト構造を避け、シンプルで直感的な構造にしてください
+   - 不要な空配列や空オブジェクトは含めないでください
+   - `has_sq_skill: false`の場合は`sq_skill_details`を`null`にすることで、データサイズを削減してください
+
+**重要**: 
+- **pilot_skillオブジェクトには必ず`has_sq_skill`フィールドを含めてください。**
+- **pilot_skill.effectフィールドには、SQ関連の条件や効果を必ず含めてください。これが最も重要です。**
+- **すべてのパイロットスキルで`sq_skill_details`フィールドを含めてください（SQ関連スキルがない場合でも基本的な構造を含む）。**
+- **`sq_skill_details`を`null`にしないでください。常に6つのフィールドを含むオブジェクトにしてください。**
+- `has_sq_skill`の値に応じて`sq_skill_details`の構造を適切に設定してください。
+- 新しいフィールド（`trigger`、`effect`、`sq_rush_effect`）を優先的に抽出し、既存フィールド（`sq_gauge_effect`、`sq_max_effect`、`squad_rush_effect`）も後方互換性のために含めてください。
+- データの冗長性を避け、効率的な構造にしてください。
+
+**rawフィールドについて**:
+- 出力するJSONには必ず "raw" フィールドを含めてください。
+- rawにはOCRで読み取った生のテキストやレスポンス全体をそのまま格納してください。
+"""
+\end{lstlisting}
+
+
+
+\begin{lstlisting}[language=Python]
+    sp_prompt = """
+    これは「アーセナルベース（ARMS）」というカードゲームのMSカードのSP（スペシャルアタック）部分の画像です。
+    SPの詳細情報を正確に抽出して、構造化されたJSON形式で出力してください。
+    
+    以下の形式でJSONを出力してください：
+    
+    ```json
+    {
+      "sp_info": {
+        "type": "string",                    // 種類（"normal", "SQUAD SP", "UNITED SP"）
+        "name": "string",                    // SP名（例: "バズーカ連射"）
+        "partner": ["string", "null"],       // 連携相手（UNITED のみ、それ以外は null）
+        "target": "string",                  // 攻撃対象（例: "単体（敵）"）
+        "attack_type": "string",             // 攻撃種別（例: "貫通（敵）"）
+        "range": "number",                   // 射程
+        "squad_sp": "boolean",               // SQUAD SP の場合 true
+        "united_sp": "boolean"               // 連携相手がいる場合 true
+      },
+      "power": {
+        "normal": "number",                  // 通常SP威力
+        "squad": ["number", "null"],         // SQUAD SP威力（SQUADのみ、それ以外は null）
+        "united": ["number", "null"]         // UNITED SP威力（UNITEDのみ、それ以外は null）
+      },
+      "descriptions": {
+        "all_description": "string",         // SPにかかれている全ての説明文、推論を混ぜずにできるだけそのままにする
+        "normal_description": "string",      // 通常SPの効果説明
+        "squad_description": ["string", "null"],   // SQUAD効果の説明（なければ null）
+        "united_description": ["string", "null"]   // UNITED効果の説明（なければ null）
+      },
+      "metadata": {
+        "note": ["string", "null"],          // 任意の補足（例: "／ー"）
+        "ocr_confidence": "number",          // OCR信頼度（0-1）
+        "processing_notes": ["string", "null"] // 処理時の注意事項
+      }
+    }
+    ```
+    
+    **重要な処理ルール**:
+    
+    1. **説明文の処理**: まず全文をOCRしてください。その後、その説明文に/があれば/で分割してください。
+       - /がない場合: squad_spとunited_spをfalseにし、説明文をnormal_descriptionに格納
+       - /がある場合: 前半部分をnormal_description、後半部分をsquad_descriptionまたはunited_descriptionに格納
+    
+    2. **「／ー」記号の処理**: 説明文に「／ー」（全角スラッシュ＋長音符）が含まれている場合：
+       - squad_spとunited_spをfalseにする
+       - normal_descriptionに「／ー」を含む説明文をそのまま格納
+       - squad_descriptionとunited_descriptionはnullにする
+       - metadata.noteに「／ー」を記録
+    
+    3. **typeフィールドの設定**:
+       - partnerが存在する場合: type = "UNITED SP", united_sp = true
+       - partnerが存在しない場合: type = "normal", united_sp = false
+       - SQUAD SPの場合: type = "SQUAD SP", squad_sp = true
+    
+    4. **複数の/が含まれる場合**: 最初の/で分割し、前半をnormal_description、後半全体をsquad_descriptionまたはunited_descriptionに格納
+    
+    5. **記号のみの場合**: -などの記号のみで日本語の文章が書かれていない場合は、squad_spとunited_spをfalseにし、normal_descriptionにそのままの説明文を格納
+    
+    6. **数値の処理**: 
+       - 射程や威力は数値として出力（文字列ではなく）
+       - 不明な場合はnullを使用
+    
+    7. **信頼度の設定**:
+       - テキストが明確に読み取れる場合: ocr_confidence = 0.9-1.0
+       - 一部不明瞭な場合: ocr_confidence = 0.7-0.8
+       - 読み取り困難な場合: ocr_confidence = 0.5-0.6
+    
+    8. **処理注意事項**:
+       - 推論は避け、実際に画像に書かれている内容のみを抽出
+       - 不明な部分はnullを使用
+       - 処理時の判断や注意点があればprocessing_notesに記録
+    """
+
+\end{lstlisting}
+
+
+
+\subsubsection*{プロンプト設計}
+Promptでは出力を期待するJSONの構造を事前に準備し、そのJSONをPromptの一部とし、出力は提供JSONに絶対に従うこととPromptを与えて一意な出力が得られるようにしました。
+また、各データのレコードが何を期待するのか？などもPromptとして与えることでOCR時に参照できる事前情報を増やし識別率を向上させています。
+
+
+\textbf{明確な指示:}
+\begin{itemize}
+    \item カードの種類を明確に定義
+    \item 出力形式を具体的に指定
+    \item エラーハンドリングの指示を含める
+\end{itemize}
+
+\textbf{具体例の提示:}
+\begin{itemize}
+    \item 実際のカード情報を例として含める
+    \item 期待される出力形式を示す
+    \item エッジケースの処理方法を明記
+\end{itemize}
+
+\textbf{制約の設定:}
+\begin{itemize}
+    \item 読み取れない情報の処理方法
+    \item 数値の型変換ルール
+    \item 空データの扱い方
+\end{itemize}
+
+% \subsection*{API使用の最適化}
+
+% \subsubsection*{パラメータ設定}
+
+% \textbf{max\_tokens:}
+% \begin{itemize}
+%     \item 基本OCR: 4096（十分な出力長を確保）
+%     \item SP詳細OCR: 2000（SP情報に特化）
+%     \item 温度設定: 0.0（一貫性のある出力）
+% \end{itemize}
+
+% \textbf{temperature:}
+% \begin{itemize}
+%     \item 0.0に設定して一貫性のある結果を確保
+%     \item カード情報の正確性を重視
+% \end{itemize}
+
+% \subsubsection*{エラーハンドリング}
+
+% \begin{lstlisting}[language=Python]
+% try:
+%     response = client.chat.completions.create(...)
+%     result = response.choices[0].message.content
+% except openai.RateLimitError:
+%     # APIクォータ制限の処理
+%     print("APIクォータの上限に達しました")
+% except openai.APIError as e:
+%     # その他のAPIエラーの処理
+%     print(f"APIエラー: {e}")
+% except Exception as e:
+%     # 予期しないエラーの処理
+%     print(f"予期しないエラー: {e}")
+% \end{lstlisting}
+
+% \subsubsection*{コスト最適化}
+
+% \textbf{画像サイズの最適化:}
+% \begin{itemize}
+%     \item 必要最小限の画像サイズに調整
+%     \item 画質とファイルサイズのバランス
+% \end{itemize}
+
+% \textbf{プロンプトの効率化:}
+% \begin{itemize}
+%     \item 冗長な指示を削除
+%     \item 必要最小限の情報のみ含める
+% \end{itemize}
+
+% \textbf{バッチ処理:}
+% \begin{itemize}
+%     \item 複数カードの一括処理
+%     \item API呼び出し回数の削減
+% \end{itemize}
+
+% \subsection*{API制限と対策}
+
+% \subsubsection*{レート制限}
+% \begin{itemize}
+%     \item \textbf{制限}: 1分間に60リクエスト
+%     \item \textbf{対策}: リクエスト間隔の調整
+%     \item \textbf{実装}: 指数バックオフアルゴリズム
+% \end{itemize}
+
+% \subsubsection*{トークン制限}
+% \begin{itemize}
+%     \item \textbf{入力制限}: 約128Kトークン
+%     \item \textbf{出力制限}: 約4Kトークン
+%     \item \textbf{対策}: プロンプトの最適化
+% \end{itemize}
+
+% \subsubsection*{コスト管理}
+% \begin{itemize}
+%     \item \textbf{料金}: 入力・出力トークン数に応じた課金
+%     \item \textbf{監視}: 使用量の追跡とアラート
+%     \item \textbf{最適化}: 効率的なプロンプト設計
+% \end{itemize}
+
+% \subsection*{セキュリティ考慮事項}
+
+% \subsubsection*{APIキーの管理}
+% \begin{lstlisting}[language=Python]
+% def read_api_key(file_path):
+%     with open(file_path, 'r') as f:
+%         return f.read().strip()
+% \end{lstlisting}
+
+
+% \subsection*{今後の展望}
+
+% \subsubsection*{モデルの進化}
+% \begin{itemize}
+%     \item \textbf{GPT-4o-mini}: より高速で低コスト
+%     \item \textbf{GPT-5}: さらなる精度向上
+%     \item \textbf{カスタムモデル}: カードゲーム特化
+% \end{itemize}
+
+% \subsubsection*{機能拡張}
+% \begin{itemize}
+%     \item \textbf{リアルタイム処理}: カメラからの即座の認識
+%     \item \textbf{多言語対応}: 英語版カードへの対応
+%     \item \textbf{音声認識}: 音声でのカード情報入力
+% \end{itemize}
+
+% \subsubsection*{統合化}
+% \begin{itemize}
+%     \item \textbf{モバイルアプリ}: スマートフォンでの利用
+%     \item \textbf{Webアプリ}: ブラウザでの直接利用
+%     \item \textbf{APIサービス}: 他開発者向けの提供
+% \end{itemize}
+
+ChatGPT APIの活用により、従来のOCR技術では困難だった複雑なカード情報の構造化抽出が可能になりました。
+特に、カードゲーム特有の情報構造を理解し、適切なJSON形式で出力できる点が、このシステムの大きな特徴となっています。
+
+\section*{主要機能の詳細}
+
+\subsection*{基本OCR処理}
+
+カード全体の情報を読み取る基本処理です。MSカードとPLカードで異なるJSONスキーマを使用します。
+Prompt中でMSカードかPLカードかの判定を行い、カードタイプを判別し適切なスキーマで出力を行います。ここも本来ならコードのロジックとして実装を行わないといけない部分ですが、Promptの制御で出力が可能になっています。
+
+\begin{lstlisting}[language=Python]
+def extract_structured_data_from_url(image_path_or_url, api_key):
+    # GPT-4oを使用して画像から構造化データを抽出
+    # MSカードとPLカードで異なるプロンプトを使用
+\end{lstlisting}
+
+\textbf{MSカードの抽出項目:}
+\begin{itemize}
+    \item カードID、名前、モデル
+    \item コスト、カテゴリ
+    \item 能力値（機動力、攻撃力、HP）
+    \item 地形適性
+    \item 武器情報（メイン/サブ）
+    \item MSアビリティ
+    \item リンクアビリティ
+\end{itemize}
+
+\textbf{PLカードの抽出項目:}
+\begin{itemize}
+    \item カードID、名前
+    \item コスト、カテゴリ
+    \item パイロットスキル
+    \item SQ関連スキル（詳細分析）
+    \item リンクアビリティ
+\end{itemize}
+
+\subsection*{MSカードのSP関連の詳細OCR}
+
+MSカードの裏面に記載されているSP（スペシャルアタック）情報は先述の通り、一括のOCR処理では識別率が良くないので、専用の処理で抽出します。
+
+\begin{lstlisting}[language=Python]
+def extract_sp_details_from_image(image_path_or_url, api_key):
+    # SP部分専用のプロンプトで詳細情報を抽出
+    # 通常SP、SQUAD SP、UNITED SPを区別
+\end{lstlisting}
+
+\textbf{SP情報の抽出項目:}
+\begin{itemize}
+    \item SPタイプ（通常/SQUAD/UNITED）
+    \item SP名、対象、攻撃種別
+    \item 射程、威力
+    \item 効果説明文
+    \item 連携相手情報（UNITED SPの場合）
+\end{itemize}
+
+\subsection*{PLカードのSQ関連の詳細}
+
+PLスキル関連も同様に識別率が良くなかったので、専用の処理で抽出を行います。
+
+\begin{lstlisting}[language=Python]
+def analyze_pl_sq_skills(pl_card_data):
+    # SQ関連キーワードの検出
+    # スキル効果の構造化
+    # 発動条件と効果の分離
+\end{lstlisting}
+
+\textbf{SQスキル分析項目:}
+\begin{itemize}
+    \item SQゲージ効果の検出
+    \item 発動条件の抽出
+    \item SQUAD RUSH中の効果
+    \item 基本効果と追加効果の分離
+\end{itemize}
+
+\section*{実装}
+
+\subsection*{プロンプトエンジニアリング}
+
+最も重要なのは、GPT-4oに適切な指示を与えるプロンプトの設計でした。カードゲーム特有の情報構造を理解させるため、以下の工夫を行いました：
+
+\begin{itemize}
+    \item \textbf{詳細なJSONスキーマ}: 出力形式を明確に定義
+    \item \textbf{具体例の提示}: 実際のカード情報を例として含める
+    \item \textbf{エラーハンドリング指示}: 不明な情報の処理方法を明記
+    \item \textbf{後方互換性}: 既存データとの整合性を保つ
+\end{itemize}
+
+\subsection*{画像前処理}
+USP、SP、SQなどの表記が込み入っており、単にカード画像を渡すだけでは精度が出ない部分の対応を行いました。各スキルの表示されている領域を指定して切り抜き、ChatGPT APIに渡しています。それ以外にもOCRでよく使われる基本的な画像正規化を行っています。
+これによりOCRの精度がかなり上がりました。
+
+\begin{lstlisting}[language=Python]
+def crop_sp_section(image_path_or_url, crop_coords=None, save_dir=None):
+    # カードの左下部分を切り出し
+    # 座標の微調整が必要
+    # 異なるカードサイズへの対応
+\end{lstlisting}
+
+\subsection*{エラーハンドリング}
+今回はあまりエラーにはなりませんでしたが、一応基本的なエラーハンドリングを行っています。
+APIから返されるエラーの保存、エラー時の再送処理などを行っています。
+
+\subsection*{データ正規化}
+
+OCR結果の品質向上のため、データの正規化処理を実装しました。
+スキル名など定型が定まっているものは、公式サイトよりスキル一覧を取得し、OCR済みのJSONデータと照合をかけ、文字列編集距離が一定以内のものは上書き保存しています。これにより、一文字だけOCRに失敗して別のスキルとみなされてしまうなどのデータのエラーを補正できます。
+
+他にも下記のような基本的な正規化を行っています。
+
+\textbf{正規化項目:}
+\begin{itemize}
+    \item 文字列の前後空白除去
+    \item 数値フィールドの型変換
+    \item カード番号の形式統一（例：FQ01-001）
+    \item 空データの適切な処理
+\end{itemize}
+
+\subsection*{USP（Unique Special Power）の処理}
+
+USPは機体固有の特殊能力で、通常のMSアビリティとは異なる構造を持つため、専用の処理が必要でした：
+
+\begin{lstlisting}[language=Python]
+def extract_usp_from_card_data(card_data):
+    # USP情報の抽出と構造化
+    # 発動条件の解析
+    # 効果の分類
+\end{lstlisting}
+
+
+\section*{処理フローの最適化}
+
+\subsection*{4段階ワークフロー}
+
+効率的な処理のため、4段階のワークフローを設計しました：
+
+\begin{enumerate}
+    \item \textbf{基本OCR}: 全カードの基本情報を抽出
+    \item \textbf{MS・PLカード分類}: MSカードとPLカードに分類
+    \item \textbf{SP OCR}: MSカードのSP部分を詳細処理
+    \item \textbf{SQ分析}: PLカードのPLスキル部分を詳細処理
+\end{enumerate}
+
+この段階的処理により、以下のメリットを実現しました：
+\begin{itemize}
+    \item \textbf{処理時間の短縮}: 必要なカードのみ詳細処理
+    \item \textbf{エラーの局所化}: 段階ごとのエラー管理
+    \item \textbf{リソース効率}: API使用量の最適化
+\end{itemize}
+
+\section*{結果と成果}
+識別結果を簡単なテスト、公式サイトに公開されているスキル名やアビリティ名を取得し、簡単なテストを作成しました。その結果おおよそ９割超え程度の精度は出ているようでした。いくつかOCRミスで存在しないスキル名やアビリティ名が確認できましたが、少し工夫すれば自動で正規化可能な範囲かなという感じなので自動化としては及第点とさせてください！
+
+\subsection*{出力データ例}
+下記に実施の出力結果を提示します。ガンダム試作三号機いいですよね。みんなでガンダム0083スターダストメモリーを見よう！筆者は幼稚園児のときに0083を観てしまったせいで作画オタクになってしまいました。
+
+
+アーセナルベースのプレイヤーにしか伝わらないかもしれませんが、かなり詳細にJSONのパラメータを切ったので、公式サイトでは行えないPLスキル発動条件やSQRUSH時のバフ効果などでの検索、イラストレータさん毎でのカード検索も可能となっています。
+
+
+\begin{figure}[]
+\centering
+\includegraphics[width=8cm]{images/im04.JPG}
+\caption{MSカード・ガンダム試作三号機表面＆PLカード・コウ・ウラキ裏面}
+\label{fig:sample}
+\end{figure}
+
+\begin{figure}[]
+\centering
+\includegraphics[width=8cm]{images/im03.JPG}
+\caption{PLカード・コウ・ウラキ表面＆MSカード・ガンダム試作三号機裏面}
+\label{fig:sample}
+\end{figure}
+
+
+
+\begin{lstlisting}[language=JSON]
+{
+  "card_number": "FQ01-001",
+  "card_name": "ガンダム試作3号機",
+  "type": "MS",
+  "cost": 6,
+  "stats": {
+    "mobility": 320,
+    "ranged_attack": 570,
+    "melee_attack": 130,
+    "hp": 580
+  },
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "S",
+    "desert": "C",
+    "water": "C"
+  },
+  "weapon": {
+    "main": {
+      "name": "フォールディング・バズーカ",
+      "range": 4,
+      "type": "遠距離"
+    },
+    "sub": {
+      "name": "ビーム・サーベル",
+      "range": 1,
+      "type": "近距離"
+    }
+  },
+  "ms_ability": {
+    "name": "陣略【妨害／機動】",
+    "type": "範囲（敵）",
+    "range": 4,
+    "cost": 4,
+    "description": "一定時間、範囲内に入った敵ユニットの「機動力」をダウンさせるエリアを設置する。※上限3箇所まで。"
+  },
+  "usp": {
+    "name": "ニュータイプ覚醒",
+    "condition": "HPが30\%以下で、かつ敵ユニットが2体以上存在する場合",
+    "effect": "自身の「機動力」「遠距離攻撃力」「近距離攻撃力」を50\%アップ",
+    "limitation": "ゲーム中1回のみ発動可能",
+    "activation_cost": 0
+  },
+  "special_attack": {
+    "name": "フォールディング・バズーカ連射",
+    "type": "normal",
+    "target": "単体（敵）",
+    "range": 2,
+    "power": 3500
+  },
+  "link_ability": [
+    {
+      "name": "ガンダム0083",
+      "condition": "デッキに3枚以上",
+      "effect": "【機動力】小アップ"
+    },
+    {
+      "name": "的確な一撃",
+      "condition": "デッキに4枚以上",
+      "effect": "【機動力】【遠距離攻撃力】小アップ"
+    }
+  ]
+}
+\end{lstlisting}
+
+
+\begin{lstlisting}[language=JSON]
+{
+  "sp_info": {
+    "type": "SQUAD SP",
+    "name": "フォールディング・バズーカ連射",
+    "partner": null,
+    "target": "単体（敵）",
+    "attack_type": "貫通（敵）",
+    "range": 4,
+    "squad_sp": true,
+    "united_sp": false
+  },
+  "power": {
+    "normal": 3500,
+    "squad": 5600,
+    "united": null
+  },
+  "descriptions": {
+    "all_description": "敵単体に射撃攻撃でダメージを与える。戦術威力は地形適性に応じて変化する。対象の敵を中心として射程よりも広い範囲で、射線上の敵に貫通射撃でダメージを与え、自身のHPを大回復する。一度使用、ロックオン中の味方として支援攻撃が発生する。",
+    "normal_description": "敵単体に射撃攻撃でダメージを与える。戦術威力は地形適性に応じて変化する。対象の敵を中心として射程よりも広い範囲で、射線上の敵に貫通射撃でダメージを与え、自身のHPを大回復する。",
+    "squad_description": null,
+    "united_description": null
+  },
+  "metadata": {
+    "note": null,
+    "ocr_confidence": 0.9,
+    "processing_notes": null
+  },
+  "card_number": "FQ01-001",
+  "card_name": "ガンダム試作3号機",
+  "series": "FORSQUAD SEASON:01",
+  "sp_ocr_timestamp": "2025-06-28T02:21:40.714535",
+  "sp_ocr_type": "detailed"
+}
+\end{lstlisting}
+
+\begin{lstlisting}[language=JSON]
+{
+  "card_number": "FQ01-036",
+  "card_name": "コウ・ウラキ",
+  "series": "FORSQUAD SEASON:01",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ01-036.jpg?v9",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ01-036_b.jpg?v9",
+  "ocr_data": {
+    "card_id": "FQ01-036",
+    "type": "PL",
+    "stats": {
+      "mobility": 190,
+      "ranged_attack": 370,
+      "melee_attack": 80,
+      "hp": 310
+    },
+    "card_label": {
+      "class": "パイロット",
+      "cost_label": "コスト4"
+    },
+    "name": "コウ・ウラキ",
+    "cost": 4,
+    "category": "殲滅",
+    "pilot_skill": {
+      "name": "貫く闘志",
+      "effect": "SQゲージが最大時\n自身の「遠距離攻撃力」「SP威力」をアップする。\nSQUAD RUSH中\n「遠距離攻撃力」「SP威力」の効果がさらに上昇する。",
+      "has_sq_skill": true,
+      "sq_skill_details": {
+        "trigger": "SQゲージが最大時",
+        "effect": "自身の「遠距離攻撃力」「SP威力」をアップする。",
+        "sq_rush_effect": "SQUAD RUSH中\n「遠距離攻撃力」「SP威力」の効果がさらに上昇する。",
+        "sq_gauge_effect": null,
+        "sq_max_effect": "SQゲージが最大時\n自身の「遠距離攻撃力」「SP威力」をアップする。",
+        "squad_rush_effect": "SQUAD RUSH中\n「遠距離攻撃力」「SP威力」の効果がさらに上昇する。"
+      }
+    },
+    "link_ability": [
+      {
+        "name": "駆け抜ける嵐",
+        "condition": "デッキに3枚以上",
+        "effect": "SQゲージが表示される。\nSQゲージを消費するとSQUAD RUSHが発動できる。\n「遠距離攻撃力」「近距離攻撃力」小アップ"
+      },
+      {
+        "name": "的確な一撃",
+        "condition": "デッキに4枚以上",
+        "effect": "「機動力」「遠距離攻撃力」小アップ"
+      }
+    ],
+    "illustrator": "不明",
+    "raw": "殲滅 コスト4\nPL\nコウ・ウラキ\nKOU URAKI\n身長\n年齢\n所属\n搭乗機体\n一\n19歳\n地球連邦軍\nガンダム試作3号機、ガンダム試作1号機フルバーニアン、ガンダム試作1号機\nPL SKILL\n貫く闘志\nSQゲージが最大時\n自身の「遠距離攻撃力」「SP威力」をアップする。\nSQUAD RUSH中\n「遠距離攻撃力」「SP威力」の効果がさらに上昇する。\nLINK ABILITY\n駆け抜ける嵐\nデッキに3枚以上\nSQゲージが表示される。\nSQゲージを消費するとSQUAD RUSHが発動できる。\n「遠距離攻撃力」「近距離攻撃力」小アップ\n的確な一撃\nデッキに4枚以上\n「機動力」「遠距離攻撃力」小アップ\n機動力 190\n遠距離攻撃 370\n近距離攻撃 80\nHP 310\nFQ01-036\n©創通・サンライズ\nBANDAI MADE IN JAPAN"
+  },
+  "ocr_timestamp": "2025-06-28T01:49:54.381586",
+  "ocr_type": "basic"
+}
+
+\end{lstlisting}
+
+
+
+\begin{lstlisting}[language=JSON]
+
+{
+  "card_number": "FQ01-036",
+  "card_name": "コウ・ウラキ",
+  "series": "FORSQUAD SEASON:01",
+  "sq_analysis_timestamp": "2025-06-28T02:30:12.360068",
+  "sq_analysis_type": "detailed",
+  "pilot_skill": {
+    "name": "貫く闘志",
+    "effect": "SQゲージが最大時\n自身の「遠距離攻撃力」「SP威力」をアップする。\nSQUAD RUSH中\n「遠距離攻撃力」「SP威力」の効果がさらに上昇する。",
+    "has_sq_skill": true,
+    "sq_skill_details": {
+      "trigger": "SQゲージが最大時",
+      "effect": "自身の「遠距離攻撃力」「SP威力」をアップする。\nSQUAD RUSH中\n「遠距離攻撃力」「SP威力」の効果がさらに上昇する。",
+      "sq_rush_effect": "SQUAD RUSH中\n「遠距離攻撃力」「SP威力」の効果がさらに上昇する",
+      "sq_gauge_effect": null,
+      "sq_max_effect": "SQゲージが最大時\n自身の「遠距離攻撃力」「SP威力」をアップする",
+      "squad_rush_effect": "SQUAD RUSH中\n「遠距離攻撃力」「SP威力」の効果がさらに上昇する"
+    }
+  },
+  "link_ability": [
+    {
+      "name": "駆け抜ける嵐",
+      "condition": "デッキに3枚以上",
+      "effect": "SQゲージが表示される。\nSQゲージを消費するとSQUAD RUSHが発動できる。\n「遠距離攻撃力」「近距離攻撃力」小アップ"
+    },
+    {
+      "name": "的確な一撃",
+      "condition": "デッキに4枚以上",
+      "effect": "「機動力」「遠距離攻撃力」小アップ"
+    }
+  ],
+  "full_ocr_data": {
+    "card_id": "FQ01-036",
+    "type": "PL",
+    "stats": {
+      "mobility": 190,
+      "ranged_attack": 370,
+      "melee_attack": 80,
+      "hp": 310
+    },
+    "card_label": {
+      "class": "パイロット",
+      "cost_label": "コスト4"
+    },
+    "name": "コウ・ウラキ",
+    "cost": 4,
+    "category": "殲滅",
+    "pilot_skill": {
+      "name": "貫く闘志",
+      "effect": "SQゲージが最大時\n自身の「遠距離攻撃力」「SP威力」をアップする。\nSQUAD RUSH中\n「遠距離攻撃力」「SP威力」の効果がさらに上昇する。",
+      "has_sq_skill": true,
+      "sq_skill_details": {
+        "trigger": "SQゲージが最大時",
+        "effect": "自身の「遠距離攻撃力」「SP威力」をアップする。\nSQUAD RUSH中\n「遠距離攻撃力」「SP威力」の効果がさらに上昇する。",
+        "sq_rush_effect": "SQUAD RUSH中\n「遠距離攻撃力」「SP威力」の効果がさらに上昇する",
+        "sq_gauge_effect": null,
+        "sq_max_effect": "SQゲージが最大時\n自身の「遠距離攻撃力」「SP威力」をアップする",
+        "squad_rush_effect": "SQUAD RUSH中\n「遠距離攻撃力」「SP威力」の効果がさらに上昇する"
+      }
+    },
+    "link_ability": [
+      {
+        "name": "駆け抜ける嵐",
+        "condition": "デッキに3枚以上",
+        "effect": "SQゲージが表示される。\nSQゲージを消費するとSQUAD RUSHが発動できる。\n「遠距離攻撃力」「近距離攻撃力」小アップ"
+      },
+      {
+        "name": "的確な一撃",
+        "condition": "デッキに4枚以上",
+        "effect": "「機動力」「遠距離攻撃力」小アップ"
+      }
+    ],
+    "illustrator": "不明",
+    "raw": "殲滅 コスト4\nPL\nコウ・ウラキ\nKOU URAKI\n身長\n年齢\n所属\n搭乗機体\n一\n19歳\n地球連邦軍\nガンダム試作3号機、ガンダム試作1号機フルバーニアン、ガンダム試作1号機\nPL SKILL\n貫く闘志\nSQゲージが最大時\n自身の「遠距離攻撃力」「SP威力」をアップする。\nSQUAD RUSH中\n「遠距離攻撃力」「SP威力」の効果がさらに上昇する。\nLINK ABILITY\n駆け抜ける嵐\nデッキに3枚以上\nSQゲージが表示される。\nSQゲージを消費するとSQUAD RUSHが発動できる。\n「遠距離攻撃力」「近距離攻撃力」小アップ\n的確な一撃\nデッキに4枚以上\n「機動力」「遠距離攻撃力」小アップ\n機動力 190\n遠距離攻撃 370\n近距離攻撃 80\nHP 310\nFQ01-036\n©創通・サンライズ\nBANDAI MADE IN JAPAN"
+  },
+  "raw": ""
+}
+\end{lstlisting}
+
+
+\section*{まとめ}
+
+このOCRシステムの開発を通じて、AI技術を活用した実用的なソリューションの構築について多くの学びを得ました。特に、プロンプト設計の重要性、段階的処理の効果、そして古典的な前処理技術の必要性を実感しました。
+
+ChatGPT APIの活用により、従来のOCR技術では困難だった複雑なカード情報の構造化抽出が可能になりました。特に、カードゲーム特有の情報構造を理解し、適切なJSON形式で自動出力できる点が、このシステムの大きな特徴となっています。
+
+軽い気持ちでデッキシミュレータを作るか〜〜とツイートしたらフォロワーが300人程度増えてしまい引っ込みがつかなくなったので頑張って作ろうと思います。
+お時間いただいてしまっていますが生暖い目で見守ってくださると幸いです。
+
+\vspace{2em}
+
+\begin{center}
+\textit{この記事は、アーセナルベース（ARMS）カードOCRシステムの開発記録として執筆されました。技術的な詳細や実装の工夫について、同様のプロジェクトに取り組む方々の参考になれば幸いです。}
+\end{center} 

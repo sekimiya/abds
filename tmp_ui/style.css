@@ -1,0 +1,113 @@
+:root {
+    --bg-color: #1c1c1f;
+    --header-bg-color: #242428;
+    --content-bg-color: #2a2a2e;
+    --text-color: #f0f0f0;
+    --text-color-sub: #a0a0a0;
+    --border-color: #3a3a3c;
+    --accent-blue: #00aaff;
+    --accent-green: #29f8b5;
+    --type-blue-bg: rgba(61, 141, 255, 0.15);
+    --type-blue-text: #66b3ff;
+    --type-red-bg: rgba(255, 77, 77, 0.15);
+    --type-red-text: #ff6666;
+    --type-green-bg: rgba(61, 255, 141, 0.15);
+    --type-green-text: #66ff99;
+    --type-yellow-bg: rgba(255, 255, 77, 0.15);
+    --type-yellow-text: #ffff66;
+    --font-sans: 'Roboto', 'Noto Sans JP', sans-serif;
+    --font-mono: 'Roboto Mono', monospace;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-sans);
+    margin: 0;
+    padding: 16px;
+    font-size: 13px;
+}
+
+.main-content-wrapper {
+    overflow-x: auto;
+    background-color: var(--header-bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 16px;
+}
+
+.grid-table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.label-cell {
+    width: 100px;
+    padding: 8px;
+    vertical-align: top;
+    padding-top: 12px;
+    color: var(--text-color-sub);
+    font-weight: 500;
+    font-size: 0.9em;
+    border-right: 1px solid var(--border-color);
+}
+tr:first-child .label-cell {
+    padding-top: 0;
+}
+
+
+.unit-cell {
+    width: 280px;
+    padding: 8px;
+    vertical-align: top;
+    background-color: var(--content-bg-color);
+    border-right: 1px solid var(--border-color);
+}
+td.unit-cell:last-child {
+    border-right: none;
+}
+
+
+.unit-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+.unit-cost { font-family: var(--font-mono); font-size: 2em; font-weight: 700; color: var(--accent-blue); }
+.terrain-info { display: flex; gap: 8px; font-size: 0.9em; color: var(--text-color-sub); }
+.terrain-info b { color: var(--text-color); margin-left: 2px; }
+
+.card-pair { display: flex; gap: 4px; }
+.card-pair img { width: 50%; object-fit: cover; border-radius: 4px; }
+
+.type-cell { display: flex; align-items: center; gap: 6px; }
+.card-type { font-weight: 500; padding: 3px 8px; border-radius: 12px; font-size: 0.85em; }
+.card-type.type-blue { background-color: var(--type-blue-bg); color: var(--type-blue-text); }
+.card-type.type-red { background-color: var(--type-red-bg); color: var(--type-red-text); }
+.card-type.type-green { background-color: var(--type-green-bg); color: var(--type-green-text); }
+.card-type.type-yellow { background-color: var(--type-yellow-bg); color: var(--type-yellow-text); }
+
+.level-cell { display: flex; flex-direction: column; gap: 4px; }
+.level-bar-container { background-color: #111; border-radius: 3px; height: 6px; overflow: hidden; margin-bottom: 4px; }
+.level-bar { background-color: var(--accent-blue); height: 100%; }
+.level-details { display: flex; justify-content: space-between; width: 100%; font-size: 0.9em; }
+.level-details span:first-child { color: var(--text-color-sub); }
+.level-details span:last-child { font-family: var(--font-mono); font-weight: 700; }
+
+.atk-range-cell { font-family: var(--font-mono); }
+
+.score-cell { display: flex; flex-direction: column; gap: 2px; font-family: var(--font-mono); }
+.score-cell span { font-size: 0.95em; }
+.score-cell small { font-size: 0.7em; margin: 0 1px; color: var(--text-color-sub); }
+.score-cell b { color: var(--accent-blue); font-weight: 700; }
+
+.link-cell { font-size: 0.9em; }
+
+.ability-cell { display: flex; flex-direction: column; gap: 4px; }
+.ability-header { display: flex; justify-content: space-between; align-items: center; }
+.ability-header span:first-child { font-weight: 700; font-size: 1em; }
+.ability-cost { font-family: var(--font-mono); font-weight: 700; font-size: 1em; background-color: var(--border-color); color: var(--text-color); width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+.ability-cell p { font-size: 0.9em; color: var(--text-color-sub); line-height: 1.4; margin: 0; }
