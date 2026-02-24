@@ -1597,8 +1597,9 @@ const UIRenderer = {
     // Find card info from index or detail
     const card = AppState.cardIndex.find(c => c.number === number);
     const detail = AppState.cardDetails[number];
-    const frontUrl = card?.front_url || detail?.front?.image_url || `http://www.gundam-ab.com/images/cardlist/card/${number}.jpg?v8`;
-    const backUrl = card?.back_url || detail?.back?.image_url || `http://www.gundam-ab.com/images/cardlist/card/${number}_b.jpg?v8`;
+    const _PLACEHOLDER = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='280'%3E%3Crect fill='%231a1a1a' width='200' height='280'/%3E%3Ctext fill='%23555' font-size='12' x='100' y='140' text-anchor='middle'%3Eno image%3C/text%3E%3C/svg%3E";
+    const frontUrl = card?.front_url || detail?.front?.image_url || _PLACEHOLDER;
+    const backUrl = card?.back_url || detail?.back?.image_url || _PLACEHOLDER;
     const name = card?.name || detail?.name || number;
 
     slot.className = 'deck-slot has-card';

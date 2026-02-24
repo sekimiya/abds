@@ -1269,7 +1269,7 @@ select,input{font-family:inherit}
       <div class="cache-modal-pct" id="cmPct" style="display:none"></div>
       <div class="cache-modal-detail" id="cmDetail"></div>
       <div class="cache-modal-warn" id="cmWarn">
-        ⚠ 公式サイト(gundam-ab.com)からカード画像を取得し、ブラウザにキャッシュします。通信量が大きくなる場合があります。
+        ⚠ 公式サイトからカード画像を取得し、ブラウザにキャッシュします。通信量が大きくなる場合があります。
       </div>
       <div class="cache-modal-btns">
         <button class="primary" id="cmDlBtn" onclick="ImageCache.startDownload()">キャッシュ作成</button>
@@ -2139,8 +2139,8 @@ const ImageCache = {
       const num = c.number;
       if (!num) return;
       // Use actual URLs from card data (includes version parameter) with fallback
-      const frontUrl = c.front_url || `https://www.gundam-ab.com/images/cardlist/card/${num}.jpg`;
-      const backUrl = c.back_url || `https://www.gundam-ab.com/images/cardlist/card/${num}_b.jpg`;
+      const frontUrl = c.front_url || `http://www.gundam-ab.com/images/cardlist/card/${num}.jpg?v8`;
+      const backUrl = c.back_url || `http://www.gundam-ab.com/images/cardlist/card/${num}_b.jpg?v8`;
       items.push({ key: num, url: frontUrl });
       items.push({ key: `${num}_b`, url: backUrl });
     });
@@ -2198,20 +2198,11 @@ const ImageCache = {
 // Image URL resolver - returns cached blob URL, original URL, or placeholder
 // ================================================================
 function resolveImageUrl(originalUrl, cardNumber, side = 'front') {
+  // キャッシュ作成時以外、公式サイトにアクセスしない。
+  // ImageCache にあればそれを返し、なければプレースホルダー。
+  const key = side === 'back' ? `${cardNumber}_b` : cardNumber;
   const cached = ImageCache.resolve(cardNumber, side);
   if (cached) return cached;
-  // Fallback: use provided URL or construct from card index / card number
-  if (originalUrl) return originalUrl;
-  if (cardNumber) {
-    const card = (AppState.cardIndex || []).find(c => c.number === cardNumber);
-    if (card) {
-      const url = side === 'back' ? card.back_url : card.front_url;
-      if (url) return url;
-    }
-    // Last resort: construct URL
-    const suffix = side === 'back' ? '_b' : '';
-    return `https://www.gundam-ab.com/images/cardlist/card/${cardNumber}${suffix}.jpg`;
-  }
   return PLACEHOLDER_SVG;
 }
 

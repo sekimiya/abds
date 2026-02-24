@@ -1212,9 +1212,19 @@ def image_proxy():
     except Exception:
         return 'Failed to fetch image', 502
 
+_PLACEHOLDER_SVG = (
+    '<svg xmlns="http://www.w3.org/2000/svg" width="250" height="350" viewBox="0 0 250 350">'
+    '<rect width="250" height="350" fill="#e0e0e0" rx="8"/>'
+    '<text x="125" y="175" text-anchor="middle" fill="#999" font-size="14" '
+    'font-family="sans-serif">No Image</text></svg>'
+)
+
 @app.route('/card_images/<path:filename>')
 def serve_card_image(filename):
-    return send_from_directory('card_images', filename)
+    filepath = os.path.join('card_images', filename)
+    if os.path.isfile(filepath):
+        return send_from_directory('card_images', filename)
+    return Response(_PLACEHOLDER_SVG, content_type='image/svg+xml')
 
 
 @app.route('/v2')
@@ -1340,13 +1350,13 @@ def fetch_cards():
         # 3.5 デバッグ由来のfront.image_url
         elif ocr_data and isinstance(ocr_data, dict) and 'front' in ocr_data and isinstance(ocr_data['front'], dict) and 'image_url' in ocr_data['front']:
             front_image_url = ocr_data['front']['image_url']
-        # 4. カード番号から画像URLを生成（HTTPを使用してSSL証明書エラーを回避）
+        # 4. カード番号から画像URLを生成
         if not front_image_url and card_number:
             front_image_url = f"http://www.gundam-ab.com/images/cardlist/card/{card_number}.jpg?v8"
         # 5. 裏面画像URLから表面画像URLを生成（_bを除去）
         if front_image_url and '_b' in front_image_url:
             front_image_url = front_image_url.replace('_b', '')
-        
+
         # 裏面画像URL生成
         back_image_url = ''
         # 1. カードデータのback.image_urlを優先
@@ -1361,7 +1371,7 @@ def fetch_cards():
         # 3.5 デバッグ由来のtop-level → すでに front/back に移植済みだが保険
         elif debug_flag and isinstance(ocr_data, dict):
             back_image_url = get_nested(ocr_data, ['back', 'image_url']) if 'back' in ocr_data else None
-        # 4. カード番号から裏面画像URLを生成（HTTPを使用してSSL証明書エラーを回避）
+        # 4. カード番号から裏面画像URLを生成
         if not back_image_url and card_number:
             back_image_url = f"http://www.gundam-ab.com/images/cardlist/card/{card_number}_b.jpg?v8"
         
