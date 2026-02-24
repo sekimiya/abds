@@ -2247,16 +2247,25 @@ const ImageCache = {
       while (queue.length) {
         const { key, url } = queue.shift();
         try {
-          const res = await fetch(`/api/image-proxy?url=${encodeURIComponent(url)}`);
+          // Stage 1: 直接 fetch (CORS 許可時 → blob → IndexedDB)
+          const res = await fetch(url);
           if (!res.ok) throw new Error(res.status);
-          const ct = res.headers.get('Content-Type') || '';
-          if (!ct.startsWith('image/')) throw new Error('not image: ' + ct);
           const blob = await res.blob();
-          if (blob.size < 100) throw new Error('too small');
-          // Store in IndexedDB (no-op if memory-only), then create blob URL
+          if (!blob.type.startsWith('image/') || blob.size < 100) throw new Error('invalid');
           await this._put(key, blob);
           this._blobUrls[key] = URL.createObjectURL(blob);
-        } catch (e) { failed++; }
+        } catch (e) {
+          // Stage 2: CORS ブロック → <img> プリロード (ブラウザキャッシュ)
+          try {
+            await new Promise((resolve, reject) => {
+              const img = new Image();
+              img.onload = resolve;
+              img.onerror = reject;
+              img.src = url;
+            });
+            this._blobUrls[key] = url; // ブラウザキャッシュから配信される
+          } catch (e2) { failed++; }
+        }
         done++;
         if (done % 5 === 0 || done === total) this._onProgress(done, total, failed);
       }
@@ -4267,19 +4276,22 @@ window.addEventListener('hashchange', async () => {
 // Convert an external image to a data URL via the local proxy
 async function imgToDataUrl(img) {
   const src = img.src;
-  if (!src || src.startsWith('data:') || src.startsWith('blob:')) return null;
-  // Skip same-origin images
-  try { const u = new URL(src, location.origin); if (u.origin === location.origin) return null; } catch(e) { return null; }
-  try {
-    const resp = await fetch('/api/image-proxy?url=' + encodeURIComponent(src));
-    if (!resp.ok) return null;
-    const blob = await resp.blob();
-    return await new Promise(resolve => {
-      const reader = new FileReader();
-      reader.onloadend = () => resolve(reader.result);
-      reader.readAsDataURL(blob);
-    });
-  } catch(e) { return null; }
+  if (!src || src.startsWith('data:')) return null;
+  // blob URL はそのまま canvas で使える
+  if (src.startsWith('blob:')) {
+    try {
+      const resp = await fetch(src);
+      const blob = await resp.blob();
+      return await new Promise(resolve => {
+        const reader = new FileReader();
+        reader.onloadend = () => resolve(reader.result);
+        reader.readAsDataURL(blob);
+      });
+    } catch(e) { return null; }
+  }
+  // same-origin もスキップ
+  try { const u = new URL(src, location.origin); if (u.origin === location.origin) return null; } catch(e) {}
+  return null; // 外部URLはプロキシなしでは canvas 変換不可
 }
 
 async function captureFullPage() {

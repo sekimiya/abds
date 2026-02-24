@@ -1,5 +1,4 @@
 from flask import Flask, render_template, request, jsonify, send_from_directory, redirect, Response
-import requests
 from bs4 import BeautifulSoup
 import os
 import re
@@ -1223,22 +1222,6 @@ def readme():
 @app.route('/sim')
 def index():
     return render_template('index.html')
-
-@app.route('/api/image-proxy')
-def image_proxy():
-    url = request.args.get('url', '')
-    if not url or not url.startswith('http'):
-        return 'Missing or invalid url', 400
-    try:
-        resp = requests.get(url, timeout=10)
-        if resp.status_code >= 400:
-            return 'Upstream error', resp.status_code
-        ct = resp.headers.get('Content-Type', 'image/jpeg')
-        if not ct.startswith('image/'):
-            return 'Not an image', 502
-        return Response(resp.content, content_type=ct)
-    except Exception:
-        return 'Failed to fetch image', 502
 
 _PLACEHOLDER_SVG = (
     '<svg xmlns="http://www.w3.org/2000/svg" width="250" height="350" viewBox="0 0 250 350">'
