@@ -133,9 +133,9 @@ select,input{font-family:inherit}
 .rec-btn{
   background:linear-gradient(135deg,#d32f2f,#b71c1c);
   border:1px solid #f44336;border-radius:6px;
-  color:#fff;padding:0.3rem 0.7rem;font-size:0.8rem;font-weight:bold;
+  color:#fff;padding:0.4rem 0.7rem;font-size:0.8rem;font-weight:bold;
   cursor:pointer;white-space:nowrap;transition:all 0.15s;
-  display:flex;align-items:center;gap:4px;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;gap:4px;width:100%;
 }
 .rec-btn::before{
   content:'';display:inline-block;width:8px;height:8px;
@@ -226,12 +226,21 @@ select,input{font-family:inherit}
 
 /* Unit column sections */
 .unit-cost-badge{
-  display:flex;align-items:center;justify-content:center;gap:4px;
-  padding:0.2rem;margin-bottom:0.3rem;
-  background:#222;border-radius:4px;
-  color:#ffe082;font-weight:bold;font-size:0.85rem;
-  flex-shrink:0;flex-wrap:wrap;
+  display:flex;align-items:center;justify-content:center;gap:3px;
+  padding:0.2rem 0.3rem;margin-bottom:0.3rem;
+  background:linear-gradient(135deg,#1a1a1a,#222);border-radius:5px;
+  border:1px solid #333;
+  font-weight:bold;font-size:0.8rem;
+  flex-shrink:0;flex-wrap:nowrap;
 }
+.unit-cost-value{
+  display:inline-flex;align-items:center;gap:2px;
+  background:linear-gradient(135deg,#2a1f0a,#3a2a0a);
+  border:1px solid #5a4a1a;border-radius:3px;
+  padding:0.1rem 0.35rem;color:#ffe082;
+}
+.unit-cost-value .cost-label{color:#aa8a42;font-size:0.6rem}
+.unit-cost-value .cost-num{font-size:0.85rem;line-height:1}
 
 .card-slot{
   position:relative;background:#1a1a1a;border:2px dashed #333;border-radius:8px;
@@ -246,29 +255,18 @@ select,input{font-family:inherit}
 .card-slot.has-card:hover{border-color:#68efbd}
 .card-slot.sqsp{border-color:#ff69b4;border-width:3px;box-shadow:0 0 8px rgba(255,105,180,0.5)}
 .card-slot.sqsp:hover{border-color:#ff8cc8}
-.sqsp-badge{
-  position:absolute;top:20px;left:4px;z-index:2;
-  background:linear-gradient(135deg,#ff69b4,#e91e8c);color:#fff;
-  font-size:0.6rem;font-weight:bold;padding:1px 5px;border-radius:3px;
-  letter-spacing:0.5px;box-shadow:0 1px 3px rgba(0,0,0,0.4);
+.sqsp-badge,.sq-badge,.eb-badge{
+  position:absolute;top:28px;left:4px;z-index:2;
+  font-size:0.9rem;font-weight:bold;padding:0.14rem 0.5rem;border-radius:4px;
+  color:#fff;letter-spacing:0.5px;box-shadow:0 1px 3px rgba(0,0,0,0.4);
 }
+.sqsp-badge,.sq-badge{background:linear-gradient(135deg,#ff69b4,#e91e8c)}
+.eb-badge{background:linear-gradient(135deg,#ff9800,#e65100)}
 .card-slot.sq{border-color:#ff69b4;border-width:3px;box-shadow:0 0 8px rgba(255,105,180,0.5)}
 .card-slot.sq:hover{border-color:#ff8cc8}
-.sq-badge{
-  position:absolute;top:20px;left:4px;z-index:2;
-  background:linear-gradient(135deg,#ff69b4,#e91e8c);color:#fff;
-  font-size:0.6rem;font-weight:bold;padding:1px 5px;border-radius:3px;
-  letter-spacing:0.5px;box-shadow:0 1px 3px rgba(0,0,0,0.4);
-}
 /* ECHOES BEAT orange theme */
 .card-slot.eb{border-color:#ff9800;border-width:3px;box-shadow:0 0 8px rgba(255,152,0,0.5)}
 .card-slot.eb:hover{border-color:#ffb74d}
-.eb-badge{
-  position:absolute;top:20px;left:4px;z-index:2;
-  background:linear-gradient(135deg,#ff9800,#e65100);color:#fff;
-  font-size:0.6rem;font-weight:bold;padding:1px 5px;border-radius:3px;
-  letter-spacing:0.5px;box-shadow:0 1px 3px rgba(0,0,0,0.4);
-}
 /* Link Ability active border & badge */
 .card-slot.link-active{border-color:#68efbd;border-width:3px;box-shadow:0 0 8px rgba(104,239,189,0.4)}
 .card-slot.link-active:hover{border-color:#8cf8d8}
@@ -305,7 +303,7 @@ select,input{font-family:inherit}
   position:absolute;top:2px;left:4px;
   background:rgba(0,0,0,0.8);border:1px solid #68efbd;
   color:#68efbd;border-radius:4px;
-  font-size:0.65rem;font-weight:bold;padding:0.1rem 0.35rem;
+  font-size:0.9rem;font-weight:bold;padding:0.14rem 0.5rem;
   cursor:pointer;display:none;z-index:3;
   transition:all 0.15s;
 }
@@ -334,11 +332,16 @@ select,input{font-family:inherit}
 
 /* Card names */
 .unit-card-names{
-  text-align:center;font-size:0.78rem;margin-bottom:0.3rem;
-  flex-shrink:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+  text-align:left;font-size:0.95rem;margin-bottom:0.3rem;
+  flex-shrink:0;line-height:1.3;
 }
-.unit-card-names .ms-name{color:#82b1ff}
-.unit-card-names .pl-name{color:#ffe082}
+.unit-card-names .ms-name,.unit-card-names .pl-name{
+  display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+}
+.unit-card-names .ms-name{color:#68efbd}
+.unit-card-names .pl-name{color:#68efbd}
+.unit-card-names.names-eb .ms-name,.unit-card-names.names-eb .pl-name{color:#ffb74d}
+.unit-card-names.names-sq .ms-name,.unit-card-names.names-sq .pl-name{color:#ff8cc8}
 
 /* MS Detail info */
 .unit-ms-detail{
@@ -477,9 +480,10 @@ select,input{font-family:inherit}
 
 /* Rarity badge */
 .rarity-tag{
-  display:inline-block;padding:0 0.3rem;border-radius:2px;
-  font-size:0.65rem;font-weight:bold;margin-left:0.3rem;
-  vertical-align:middle;
+  display:inline-flex;align-items:center;justify-content:center;
+  padding:0.1rem 0.4rem;border-radius:4px;
+  font-size:0.9rem;font-weight:bold;
+  min-width:1.6rem;text-align:center;
 }
 .rarity-tag.rarity-M{background:#5e3a1a;color:#ffcc80}
 .rarity-tag.rarity-C{background:#1a3a1a;color:#a5d6a7}
@@ -497,7 +501,7 @@ select,input{font-family:inherit}
   display:flex;gap:3px;margin-bottom:0.3rem;justify-content:center;flex-wrap:wrap;
 }
 .terrain-badge{
-  padding:0.1rem 0.25rem;border-radius:2px;font-size:0.6rem;font-weight:bold;
+  padding:0.05rem 0.25rem;border-radius:3px;font-size:0.7rem;font-weight:bold;
   background:#1a1a1a;border:1px solid #333;
 }
 .terrain-badge.rank-S{color:#ff8a80;border-color:#c62828}
@@ -770,8 +774,8 @@ select,input{font-family:inherit}
 .thumb-detail-btn{
   position:absolute;bottom:0;left:0;right:0;
   background:rgba(0,0,0,0.8);color:#68efbd;
-  font-size:0.72rem;font-weight:bold;
-  padding:0.3rem;text-align:center;cursor:pointer;
+  font-size:1rem;font-weight:bold;
+  padding:0.4rem;text-align:center;cursor:pointer;
   opacity:0;transition:opacity 0.15s;z-index:3;
 }
 .thumb-card:hover .thumb-detail-btn{opacity:1}
@@ -970,8 +974,6 @@ select,input{font-family:inherit}
 
   <span class="logo">ABD Simulator</span>
 
-  <button class="rec-btn" id="recBtn" onclick="captureFullPage()" title="ページ全体を画像として保存"><span id="recBtnLabel">REC</span></button>
-
   <div class="header-menu-wrap">
     <button class="header-menu-toggle" id="headerMenuToggle" onclick="toggleHeaderMenu()" title="メニュー">&#9776;</button>
     <div class="header-menu-overlay" id="headerMenuOverlay" onclick="closeHeaderMenu()"></div>
@@ -992,6 +994,9 @@ select,input{font-family:inherit}
       </div>
       <div class="header-menu-row">
         <button class="header-btn" id="alignBtn" onclick="UIRenderer.alignDisplay()" title="カラム表示を揃える">表示を整理</button>
+      </div>
+      <div class="header-menu-row">
+        <button class="rec-btn" id="recBtn" onclick="captureFullPage()" title="ページ全体を画像として保存"><span id="recBtnLabel">REC</span></button>
       </div>
       <div class="header-menu-divider"></div>
       <span class="header-menu-label">地形設定</span>
@@ -2473,8 +2478,14 @@ const UIRenderer = {
     const plCard = plNumber ? AppState.cardIndex.find(c => c.number === plNumber) : null;
     const msName = msCard?.name || (msNumber ? msNumber : '');
     const plName = plCard?.name || (plNumber ? plNumber : '');
+    const msRarityName = msCard?.rarity || '';
+    const plRarityName = plCard?.rarity || '';
+    const namesCls = (hasSqSp || hasSqSkill) ? 'names-sq' : (hasEb || hasEbSkill) ? 'names-eb' : '';
+    namesEl.className = 'unit-card-names' + (namesCls ? ' ' + namesCls : '');
+    const msRarityHtml = msRarityName ? `<span class="rarity-tag rarity-${escapeHtml(msRarityName)}">${escapeHtml(msRarityName)}</span> ` : '';
+    const plRarityHtml = plRarityName ? `<span class="rarity-tag rarity-${escapeHtml(plRarityName)}">${escapeHtml(plRarityName)}</span> ` : '';
     namesEl.innerHTML = msName || plName
-      ? `<span class="ms-name">${escapeHtml(msName)}</span>${msName && plName ? ' / ' : ''}<span class="pl-name">${escapeHtml(plName)}</span>`
+      ? `<span class="ms-name">${msRarityHtml}${escapeHtml(msName)}</span><span class="pl-name">${plRarityHtml}${escapeHtml(plName)}</span>`
       : '&nbsp;';
 
     // Sub info (model, pilot)
@@ -2484,11 +2495,7 @@ const UIRenderer = {
     const msCost = safeInt(msOcr?.cost);
     const plCost = safeInt(plOcr?.cost);
     const unitCost = msCost + plCost;
-    const msRarity = msCard?.rarity || null;
-    const plRarity = plCard?.rarity || null;
-    let costHtml = `<span>C: ${unitCost || '-'}</span>`;
-    if (msRarity) costHtml += `<span class="rarity-tag rarity-${escapeHtml(msRarity)}">${escapeHtml(msRarity)}</span>`;
-    if (plRarity) costHtml += `<span class="rarity-tag rarity-${escapeHtml(plRarity)}">${escapeHtml(plRarity)}</span>`;
+    let costHtml = `<span class="unit-cost-value"><span class="cost-label">TCOST</span><span class="cost-num">${unitCost || '-'}</span></span>`;
     // 地形適性（MSのOCRデータ or cardIndexのterrain）— 常に表示してレイアウト固定
     const tc = msOcr?.terrain_compatibility || msCard?.terrain || null;
     const tList = [{k:'ground',l:'地'},{k:'space',l:'宇'},{k:'desert',l:'砂'},{k:'water',l:'水'}];
@@ -3308,12 +3315,6 @@ const UIRenderer = {
       const cnt = slotActiveCounts[i] || 0;
       if (cnt > 0) {
         slotEl.classList.add('link-active');
-        const names = (slotActiveNames && slotActiveNames[i]) || [];
-        const badge = document.createElement('div');
-        badge.className = 'link-active-badge';
-        badge.textContent = cnt >= 2 ? `LINK×${cnt}` : 'LINK';
-        badge.title = names.join('\n');
-        slotEl.appendChild(badge);
       }
 
       // カードが持つリンクアビリティをタグ表示
@@ -4471,6 +4472,7 @@ async function imgToDataUrl(img) {
 }
 
 async function captureFullPage() {
+  closeHeaderMenu(); // close menu before capture
   const btn = document.getElementById('recBtn');
   if (btn.classList.contains('capturing')) return;
   btn.classList.add('capturing');
@@ -4536,8 +4538,8 @@ async function captureFullPage() {
 
     await new Promise(r => setTimeout(r, 100));
 
-    // --- Step 3: Capture ---
-    const canvas = await html2canvas(body, {
+    // --- Step 3: Capture full page ---
+    const rawCanvas = await html2canvas(body, {
       backgroundColor: '#0f0f0f',
       scale: 2,
       useCORS: true,
@@ -4550,7 +4552,32 @@ async function captureFullPage() {
       scrollY: 0
     });
 
-    // --- Step 4: Restore layout ---
+    // --- Step 4: Trim bottom whitespace by scanning pixels ---
+    const ctx = rawCanvas.getContext('2d');
+    const w = rawCanvas.width;
+    const h = rawCanvas.height;
+    const bgR = 15, bgG = 15, bgB = 15; // #0f0f0f
+    let bottomY = h;
+    const scanStep = 4; // check every 4th row for speed
+    for (let y = h - 1; y > 0; y -= scanStep) {
+      const row = ctx.getImageData(0, y, w, 1).data;
+      let hasContent = false;
+      for (let x = 0; x < w * 4; x += 16) { // sample every 4th pixel
+        const r = row[x], g = row[x+1], b = row[x+2];
+        if (Math.abs(r - bgR) > 8 || Math.abs(g - bgG) > 8 || Math.abs(b - bgB) > 8) {
+          hasContent = true; break;
+        }
+      }
+      if (hasContent) { bottomY = Math.min(h, y + 20); break; } // +20px padding
+    }
+    // Create trimmed canvas
+    const canvas = document.createElement('canvas');
+    canvas.width = w;
+    canvas.height = bottomY;
+    const trimCtx = canvas.getContext('2d');
+    trimCtx.drawImage(rawCanvas, 0, 0, w, bottomY, 0, 0, w, bottomY);
+
+    // --- Step 5: Restore layout ---
     body.style.overflow = orig.bodyOverflow;
     body.style.height = orig.bodyHeight;
     appBody.style.overflow = orig.appBodyOverflow;
@@ -4565,12 +4592,12 @@ async function captureFullPage() {
       col.style.height = orig.columns[i].height;
     });
 
-    // --- Step 5: Restore original image sources ---
+    // --- Step 6: Restore original image sources ---
     for (const [img, src] of origSrcs) {
       img.src = src;
     }
 
-    // --- Step 6: Download ---
+    // --- Step 7: Download ---
     const link = document.createElement('a');
     const deckName = document.getElementById('deckNameInput').value.trim() || 'deck';
     const ts = new Date().toISOString().replace(/[:.]/g, '-').slice(0, 19);
