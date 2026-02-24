@@ -1587,6 +1587,11 @@ def api_cards_search():
 def api_list_decks():
     """デッキ一覧を返す"""
     decks = db.list_decks()
+    # Sanitize: replace hash with boolean flag
+    for d in decks:
+        has_pw = bool(d.get('delete_password_hash'))
+        d.pop('delete_password_hash', None)
+        d['delete_password_hash'] = has_pw
     return jsonify({'success': True, 'decks': decks})
 
 
@@ -1608,6 +1613,8 @@ def api_create_deck():
         'tactics_main': data.get('tactics_main'),
         'tactics_sub': data.get('tactics_sub'),
         'timestamp': data.get('timestamp') or time.strftime('%Y-%m-%dT%H:%M:%S'),
+        'delete_password': data.get('delete_password', '').strip(),
+        'author': data.get('author', '').strip()[:30],
     }
     entry, err = db.create_deck(deck_data)
     if err:
@@ -1629,7 +1636,14 @@ def api_update_deck(deck_id):
 
 @app.route('/api/decks/<deck_id>', methods=['DELETE'])
 def api_delete_deck(deck_id):
-    """デッキを削除"""
+    """デッキを削除（パスワード認証）"""
+    data = request.get_json() or {}
+    password = data.get('password', '').strip()
+    if not password:
+        return jsonify({'success': False, 'error': '削除パスワードを入力してください'}), 400
+    ok, err = db.verify_delete_password(deck_id, password)
+    if not ok:
+        return jsonify({'success': False, 'error': err}), 403
     ok, err = db.delete_deck(deck_id)
     if not ok:
         return jsonify({'success': False, 'error': err}), 404
@@ -1666,7 +1680,8 @@ def api_post_comment(deck_id):
         return jsonify({'success': False, 'error': 'コメントを入力してください'}), 400
     if len(text) > 500:
         return jsonify({'success': False, 'error': 'コメントは500文字以内にしてください'}), 400
-    comment, err = db.post_comment(deck_id, name, text)
+    reply_to = (data.get('reply_to') or '').strip() or None
+    comment, err = db.post_comment(deck_id, name, text, reply_to=reply_to)
     if err:
         return jsonify({'success': False, 'error': err}), 404
     return jsonify({'success': True, 'comment': comment})

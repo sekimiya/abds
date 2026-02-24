@@ -34,6 +34,42 @@ select,input{font-family:inherit}
 .header-group{display:flex;align-items:center;gap:0.4rem;flex-shrink:0}
 .header-label{color:#888;font-size:0.75rem;white-space:nowrap}
 .header-value{color:#ffe082;font-weight:bold;font-size:1.2rem;min-width:28px;text-align:center}
+.total-cost-box{
+  display:flex;align-items:center;gap:0.5rem;
+  background:linear-gradient(135deg,rgba(255,224,130,0.08),rgba(255,183,77,0.04));
+  border:1px solid rgba(255,224,130,0.2);border-radius:8px;
+  padding:0.3rem 0.8rem;position:relative;overflow:hidden;
+}
+.total-cost-box::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(255,224,130,0.06),transparent 60%);
+  pointer-events:none;
+}
+.total-cost-label{
+  color:#999;font-size:0.65rem;text-transform:uppercase;letter-spacing:1.5px;
+  font-weight:600;white-space:nowrap;
+}
+.total-cost-value{
+  font-family:'Courier New',monospace;font-size:1.5rem;font-weight:900;
+  min-width:32px;text-align:right;letter-spacing:-0.5px;
+  background:linear-gradient(180deg,#ffe082,#ffb74d);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  filter:drop-shadow(0 0 6px rgba(255,183,77,0.3));
+  transition:transform 0.2s ease,filter 0.2s ease;
+}
+.total-cost-value.cost-pop{
+  transform:scale(1.2);filter:drop-shadow(0 0 12px rgba(255,183,77,0.6));
+}
+.total-cost-41{
+  background:linear-gradient(180deg,#ff5252,#ff1744) !important;
+  -webkit-background-clip:text !important;-webkit-text-fill-color:transparent !important;
+  filter:drop-shadow(0 0 8px rgba(255,23,68,0.5)) !important;
+  animation:cost-pulse 1.2s ease-in-out infinite;
+}
+@keyframes cost-pulse{
+  0%,100%{filter:drop-shadow(0 0 6px rgba(255,23,68,0.4))}
+  50%{filter:drop-shadow(0 0 14px rgba(255,23,68,0.8))}
+}
 .header-select{
   background:#1a1a1a;border:1px solid #444;border-radius:4px;color:#ccc;
   padding:0.25rem 0.4rem;font-size:0.8rem;
@@ -114,11 +150,6 @@ select,input{font-family:inherit}
 .link-chip.eb-link.active .link-chip-count{background:rgba(255,152,0,0.15);color:#ffb74d}
 .link-chip.eb-link.active .link-chip-effect{color:#ffcc80}
 
-.deck-name-input{
-  background:#1a1a1a;border:1px solid #444;border-radius:6px;color:#fff;
-  padding:0.3rem 0.5rem;font-size:0.85rem;width:140px;
-}
-.deck-name-input:focus{border-color:#68efbd;outline:none}
 .header-btn{
   background:#222;border:1px solid #555;border-radius:6px;
   color:#ccc;padding:0.3rem 0.6rem;font-size:0.8rem;
@@ -128,6 +159,41 @@ select,input{font-family:inherit}
 .header-btn.primary{background:#1e2924;border-color:#68efbd;color:#68efbd}
 .header-btn.primary:hover{background:#2a6a45}
 .header-btn:disabled{opacity:0.4;cursor:default}
+
+/* Terrain picker */
+.terrain-picker{position:relative;flex-shrink:0}
+.terrain-picker-btn{
+  display:flex;align-items:center;gap:5px;
+  background:linear-gradient(135deg,#1a2420,#1a2a22);
+  border:1px solid #3a5a4a;border-radius:6px;
+  color:#68efbd;padding:0.3rem 0.6rem;font-size:0.8rem;font-weight:bold;
+  cursor:pointer;transition:all 0.2s;white-space:nowrap;
+}
+.terrain-picker-btn:hover{border-color:#68efbd;box-shadow:0 0 8px rgba(104,239,189,0.2)}
+.terrain-picker-btn.active{border-color:#68efbd;box-shadow:0 0 10px rgba(104,239,189,0.3)}
+.terrain-picker-label{font-size:0.8rem;letter-spacing:0.5px}
+.terrain-picker-arrow{font-size:0.6rem;opacity:0.6;transition:transform 0.2s}
+.terrain-picker.open .terrain-picker-arrow{transform:rotate(180deg)}
+.terrain-picker-menu{
+  display:none;position:absolute;top:calc(100% + 4px);left:50%;transform:translateX(-50%);
+  background:#1a1a1a;border:1px solid #3a5a4a;border-radius:8px;
+  box-shadow:0 8px 24px rgba(0,0,0,0.6);
+  overflow:hidden;z-index:50;min-width:120px;
+  animation:terrainMenuIn 0.15s ease;
+}
+.terrain-picker.open .terrain-picker-menu{display:block}
+@keyframes terrainMenuIn{from{opacity:0;transform:translateX(-50%) translateY(-6px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
+.terrain-picker-item{
+  display:flex;align-items:center;gap:8px;
+  padding:0.5rem 0.8rem;color:#ccc;font-size:0.8rem;
+  cursor:pointer;transition:all 0.12s;white-space:nowrap;
+}
+.terrain-picker-item:hover{background:#2a4a35;color:#68efbd}
+.terrain-picker-item.active{background:#1e2924;color:#68efbd;font-weight:bold}
+.terrain-picker-btn.t-ground{border-color:#66bb6a;color:#a5d6a7;background:linear-gradient(135deg,#1a2a1a,#223322)}
+.terrain-picker-btn.t-space{border-color:#5c6bc0;color:#9fa8da;background:linear-gradient(135deg,#1a1a2a,#222233)}
+.terrain-picker-btn.t-desert{border-color:#ff8f00;color:#ffe082;background:linear-gradient(135deg,#2a2a1a,#332d22)}
+.terrain-picker-btn.t-water{border-color:#29b6f6;color:#81d4fa;background:linear-gradient(135deg,#1a2a2a,#223333)}
 
 /* REC button */
 .rec-btn{
@@ -167,7 +233,6 @@ select,input{font-family:inherit}
   overflow-y:auto;
 }
 .header-menu-panel.open{transform:translateX(0)}
-.header-menu-panel .deck-name-input{width:100%}
 .header-menu-close{
   align-self:flex-end;background:transparent;border:none;
   color:#888;font-size:1.4rem;cursor:pointer;padding:0 0.2rem;
@@ -586,7 +651,7 @@ select,input{font-family:inherit}
   border:none;background:none;cursor:pointer;padding:0 2px;line-height:1;
 }
 .tactics-btn .tactics-btn-clear:hover{color:#f44336}
-.tactics-btn img{width:28px;height:auto;border-radius:3px;flex-shrink:0}
+.tactics-btn img{width:40px;height:auto;border-radius:3px;flex-shrink:0}
 
 /* Tactics Picker Modal */
 .tactics-picker-grid{
@@ -622,7 +687,7 @@ select,input{font-family:inherit}
 }
 .sidebar-body{display:flex;flex:1;overflow:hidden;min-height:0}
 .sidebar-left{
-  width:280px;flex-shrink:0;overflow-y:auto;
+  width:280px;flex-shrink:0;overflow-y:scroll;
   padding:0.6rem;border-right:1px solid #333;
 }
 .sidebar-left > *{margin-bottom:0.3rem}
@@ -632,8 +697,8 @@ select,input{font-family:inherit}
   position:sticky;bottom:0;z-index:1;
   background:#151515;padding:0.4rem 0 0;
 }
-.sidebar-right{flex:1;display:flex;flex-direction:column;overflow:hidden}
-.sidebar-right .thumb-grid{flex:1;overflow-y:auto;padding:0.5rem}
+.sidebar-right{flex:1;display:flex;flex-direction:column;overflow:hidden;min-height:0}
+.sidebar-right .thumb-grid{flex-grow:1;height:0;overflow-y:scroll;padding:0.5rem}
 .sidebar-right .sidebar-pagination{flex-shrink:0}
 /* Filter group (collapsible) */
 .filter-group{border:1px solid #2a2a2a;border-radius:4px;overflow:hidden}
@@ -749,14 +814,15 @@ select,input{font-family:inherit}
 
 /* Thumbnail grid */
 .thumb-grid{
-  flex:1 1 0;min-height:0;overflow-y:auto;padding:0.5rem;
-  display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:8px;
-  align-content:start;
+  flex:1 1 0;min-height:0;overflow-y:scroll;padding:0.5rem;
+  display:grid;grid-template-columns:repeat(auto-fill,110px);gap:8px;
+  align-content:start;justify-content:start;
 }
 .thumb-card{
   cursor:pointer;border:2px solid transparent;border-radius:4px;
   overflow:hidden;transition:all 0.15s;position:relative;
   background:#1a1a1a;display:flex;flex-direction:column;
+  width:110px;min-width:110px;max-width:110px;
 }
 .thumb-card:hover{border-color:#68efbd;transform:scale(1.05);z-index:2}
 .thumb-card.card-eb{border-color:rgba(255,152,0,0.6)}
@@ -772,14 +838,29 @@ select,input{font-family:inherit}
   position:absolute;top:0;left:0;
 }
 .thumb-detail-btn{
-  position:absolute;bottom:0;left:0;right:0;
-  background:rgba(0,0,0,0.8);color:#68efbd;
-  font-size:1rem;font-weight:bold;
-  padding:0.4rem;text-align:center;cursor:pointer;
+  position:absolute;bottom:3px;right:3px;
+  background:rgba(0,0,0,0.85);color:#68efbd;
+  font-size:0.55rem;font-weight:bold;
+  padding:0.1rem 0.35rem;border-radius:3px;
+  border:1px solid rgba(104,239,189,0.4);
+  text-align:center;cursor:pointer;
   opacity:0;transition:opacity 0.15s;z-index:3;
+  line-height:1.2;
 }
 .thumb-card:hover .thumb-detail-btn{opacity:1}
-.thumb-detail-btn:hover{background:rgba(104,239,189,0.3);color:#fff}
+.thumb-detail-btn:hover{background:rgba(104,239,189,0.25);color:#fff;border-color:#68efbd}
+.thumb-bm-btn{
+  position:absolute;top:3px;right:3px;
+  background:rgba(0,0,0,0.7);color:#666;
+  font-size:0.85rem;line-height:1;
+  padding:1px 3px;border-radius:3px;
+  cursor:pointer;z-index:3;
+  opacity:0;transition:opacity 0.15s;
+  border:none;
+}
+.thumb-card:hover .thumb-bm-btn{opacity:1}
+.thumb-bm-btn.bm-on{color:#ffe082;opacity:1}
+.thumb-bm-btn:hover{color:#ffe082}
 .thumb-card-info{
   padding:2px 3px;background:#111;display:flex;flex-direction:column;gap:1px;
 }
@@ -852,6 +933,12 @@ select,input{font-family:inherit}
 .thumb-overlay-title{
   font-weight:bold;font-size:0.72rem;margin-bottom:2px;color:#fff;
 }
+.thumb-card.card-bookmarked .thumb-card-info{
+  background:linear-gradient(135deg,#2a2210,#1f1a0a);
+  border:1px solid rgba(255,224,130,0.3);border-top:none;
+}
+.thumb-card.card-bookmarked .thumb-card-number{color:#ffe082}
+.thumb-card.card-bookmarked .thumb-card-name{color:#ffe082}
 
 /* Pagination */
 .sidebar-pagination{
@@ -930,7 +1017,6 @@ select,input{font-family:inherit}
   .unit-column{min-width:180px}
   .main-area{gap:0}
   .app-header{padding:0 0.4rem;gap:0.3rem}
-  .deck-name-input{width:100px}
   .header-btn{padding:0.25rem 0.4rem;font-size:0.75rem}
 }
 @media(max-width:480px){
@@ -942,9 +1028,9 @@ select,input{font-family:inherit}
 
 <!-- ===== HEADER ===== -->
 <header class="app-header">
-  <div class="header-group">
-    <span class="header-label">Total Cost</span>
-    <span class="header-value" id="headerTotalCost">0</span>
+  <div class="total-cost-box">
+    <span class="total-cost-label">Total<br>Cost</span>
+    <span class="total-cost-value" id="headerTotalCost">0</span>
   </div>
   <div class="header-sep"></div>
 
@@ -972,6 +1058,20 @@ select,input{font-family:inherit}
     </button>
   </div>
 
+  <div class="terrain-picker" id="terrainPicker">
+    <button class="terrain-picker-btn" id="terrainPickerBtn" onclick="toggleTerrainPicker()">
+      <span class="terrain-picker-label" id="terrainPickerLabel">TERRAIN</span>
+      <span class="terrain-picker-arrow">&#9662;</span>
+    </button>
+    <div class="terrain-picker-menu" id="terrainPickerMenu">
+      <div class="terrain-picker-item" data-terrain="" onclick="pickTerrain('')">-- なし --</div>
+      <div class="terrain-picker-item" data-terrain="ground" onclick="pickTerrain('ground')">地上</div>
+      <div class="terrain-picker-item" data-terrain="space" onclick="pickTerrain('space')">宇宙</div>
+      <div class="terrain-picker-item" data-terrain="desert" onclick="pickTerrain('desert')">砂漠</div>
+      <div class="terrain-picker-item" data-terrain="water" onclick="pickTerrain('water')">水中</div>
+    </div>
+  </div>
+
   <span class="logo">ABD Simulator</span>
 
   <div class="header-menu-wrap">
@@ -979,14 +1079,13 @@ select,input{font-family:inherit}
     <div class="header-menu-overlay" id="headerMenuOverlay" onclick="closeHeaderMenu()"></div>
     <div class="header-menu-panel" id="headerMenuPanel">
       <button class="header-menu-close" onclick="closeHeaderMenu()" title="閉じる">&times;</button>
-      <input type="text" class="deck-name-input" id="deckNameInput" placeholder="デッキ名">
       <div class="header-menu-row">
         <button class="header-btn primary" onclick="DeckManager.save()" title="Ctrl+S">保存</button>
         <button class="header-btn" onclick="DeckManager.showLoadModal()">読込</button>
         <button class="header-btn" onclick="DeckManager.copyCode()" title="コード共有">共有</button>
       </div>
       <div class="header-menu-row">
-        <button class="header-btn" onclick="DeckManager.postToServer()">投稿</button>
+        <button class="header-btn" onclick="DeckManager.postToServer()">デッキ投稿</button>
       </div>
       <div class="header-menu-row">
         <button class="header-btn" id="undoBtn" onclick="UndoManager.undo()" title="Ctrl+Z" disabled>&#8592; 戻す</button>
@@ -1074,6 +1173,9 @@ select,input{font-family:inherit}
           </div>
           <div class="category-filter" id="categoryFilter"></div>
           <div class="series-filter" id="seriesFilter"></div>
+          <div style="margin-top:0.4rem">
+            <label class="ocr-toggle bm-switch" style="margin:0;border:2px solid #ffe082;border-radius:6px;padding:0.25rem 0.6rem;background:rgba(255,224,130,0.08);display:inline-flex"><input type="checkbox" id="filterBookmarkCards" onchange="SearchPanel.applyFilters()" style="accent-color:#ffe082"><span class="ocr-toggle-text" style="color:#ffe082;font-weight:bold">&#9733; ブックマーク</span></label>
+          </div>
           <select class="filter-select" id="filterIllustrator" onchange="SearchPanel.applyFilters()" style="width:100%;margin-top:0.3rem">
             <option value="">イラストレーター</option>
           </select>
@@ -1301,10 +1403,8 @@ select,input{font-family:inherit}
     <!-- RIGHT PANE: RESULTS -->
     <div class="sidebar-right">
       <div class="thumb-grid" id="thumbGrid"></div>
-      <div class="sidebar-pagination">
-        <button class="page-btn" id="prevBtn" onclick="SearchPanel.prevPage()" disabled>PREV</button>
+      <div class="sidebar-pagination" style="justify-content:center">
         <span class="page-info" id="pageInfo">-</span>
-        <button class="page-btn" id="nextBtn" onclick="SearchPanel.nextPage()">NEXT</button>
       </div>
     </div>
   </div>
@@ -1383,6 +1483,32 @@ select,input{font-family:inherit}
   </div>
 </div>
 
+<!-- ===== DECK POST MODAL ===== -->
+<div class="modal-overlay" id="deckPostModal">
+  <div class="modal-content" style="max-width:420px">
+    <button class="modal-close" onclick="document.getElementById('deckPostModal').classList.remove('open')">&times;</button>
+    <h3 style="color:#68efbd;margin-bottom:1rem">デッキ投稿</h3>
+    <div style="margin-bottom:0.6rem">
+      <div style="color:#888;font-size:0.8rem;margin-bottom:0.3rem">デッキ名:</div>
+      <input type="text" class="search-input" id="postDeckName" placeholder="デッキ名を入力" maxlength="50" style="width:100%">
+    </div>
+    <div style="margin-bottom:0.6rem">
+      <div style="color:#888;font-size:0.8rem;margin-bottom:0.3rem">投稿者名（任意）:</div>
+      <input type="text" class="search-input" id="postAuthor" placeholder="アースノイド" maxlength="30" style="width:100%">
+    </div>
+    <div style="margin-bottom:0.6rem">
+      <div style="color:#888;font-size:0.8rem;margin-bottom:0.3rem">投稿者コメント（任意）:</div>
+      <textarea class="search-input" id="postComment" placeholder="デッキの説明やコメント" rows="3" style="width:100%;resize:vertical;font-family:inherit"></textarea>
+    </div>
+    <div style="margin-bottom:0.8rem">
+      <div style="color:#888;font-size:0.8rem;margin-bottom:0.3rem">削除パスワード（任意）:</div>
+      <input type="password" class="search-input" id="postDeletePassword" placeholder="設定すると後から削除可能" style="width:100%">
+      <div style="color:#555;font-size:0.7rem;margin-top:0.2rem">※ 忘れると削除できなくなります</div>
+    </div>
+    <button class="header-btn primary" style="width:100%" onclick="DeckManager._doPost()">投稿する</button>
+  </div>
+</div>
+
 <script>
 // ================================================================
 // AppState - グローバル状態管理
@@ -1401,6 +1527,7 @@ const AppState = {
   tacticsCards: { main: [], sub: [] },
   activeTerrain: null,  // 'ground'|'space'|'desert'|'water'|null
   imageSource: 'cache',
+  _lastDeckName: '',
 };
 
 // ================================================================
@@ -1941,18 +2068,20 @@ const DeckManager = {
   },
 
   save() {
-    const name = document.getElementById('deckNameInput').value.trim();
-    if (!name) { Toast.show('デッキ名を入力してください', 'error'); return; }
+    const name = prompt('デッキ名を入力してください:', AppState._lastDeckName || '');
+    if (!name || !name.trim()) { Toast.show('デッキ名を入力してください', 'error'); return; }
+    const trimmed = name.trim();
+    AppState._lastDeckName = trimmed;
     const decks = JSON.parse(localStorage.getItem('gab_decks') || '{}');
-    decks[name] = {
-      name,
+    decks[trimmed] = {
+      name: trimmed,
       cards: [...AppState.deck],
       tacticsMain: AppState.tacticsMain,
       tacticsSub: AppState.tacticsSub,
       timestamp: new Date().toISOString()
     };
     localStorage.setItem('gab_decks', JSON.stringify(decks));
-    Toast.show(`デッキ「${name}」を保存しました`, 'success');
+    Toast.show(`デッキ「${trimmed}」を保存しました`, 'success');
   },
 
   _autoSave() {
@@ -1976,7 +2105,7 @@ const DeckManager = {
         while (numbers.length < 10) numbers.push('');
         await this._applyNumbers(numbers);
         if (isCopy) {
-          document.getElementById('deckNameInput').value = '';
+          AppState._lastDeckName = '';
           // Remove &copy from hash so reload won't re-trigger
           history.replaceState(null, '', '/v2#' + code);
           Toast.show('デッキをコピーしました — 編集して保存できます', 'success');
@@ -2033,7 +2162,7 @@ const DeckManager = {
     AppState.tacticsMain = deck.tacticsMain || null;
     AppState.tacticsSub = deck.tacticsSub || null;
     await this._applyNumbers(deck.cards);
-    document.getElementById('deckNameInput').value = name;
+    AppState._lastDeckName = name;
     closeDeckLoadModal();
     Toast.show(`デッキ「${name}」を適用しました`, 'success');
   },
@@ -2046,26 +2175,46 @@ const DeckManager = {
     Toast.show(`デッキ「${name}」を削除しました`, 'info');
   },
 
-  async postToServer() {
-    const name = document.getElementById('deckNameInput').value.trim();
-    if (!name) { Toast.show('デッキ名を入力してください', 'error'); return; }
+  postToServer() {
     if (!AppState.deck.some(n => n)) { Toast.show('デッキにカードがありません', 'error'); return; }
+    closeHeaderMenu();
+    document.getElementById('postDeckName').value = '';
+    document.getElementById('postAuthor').value = localStorage.getItem('gab_author_name') || '';
+    document.getElementById('postComment').value = '';
+    document.getElementById('postDeletePassword').value = '';
+    document.getElementById('deckPostModal').classList.add('open');
+    document.getElementById('postDeckName').focus();
+  },
+
+  async _doPost() {
+    const name = document.getElementById('postDeckName').value.trim();
+    if (!name) { Toast.show('デッキ名を入力してください', 'error'); return; }
+    const author = document.getElementById('postAuthor').value.trim();
+    const comment = document.getElementById('postComment').value.trim();
+    const deletePassword = document.getElementById('postDeletePassword').value;
     const cards = AppState.deck.map(n => n || '');
+    // 投稿者名を永続保存
+    if (author) {
+      localStorage.setItem('gab_author_name', author);
+    }
     try {
       const res = await fetch('/api/decks', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           deck_name: name,
-          comment: '',
+          author,
+          comment,
           cards,
           tactics_main: AppState.tacticsMain || null,
           tactics_sub: AppState.tacticsSub || null,
-          timestamp: new Date().toISOString()
+          timestamp: new Date().toISOString(),
+          delete_password: deletePassword
         })
       });
       const data = await res.json();
       if (data.success) {
+        document.getElementById('deckPostModal').classList.remove('open');
         Toast.show('デッキを投稿しました — <a href="/decks" style="color:#68efbd;text-decoration:underline">一覧を見る</a>', 'success', 5000);
       } else {
         Toast.show(data.error || '投稿に失敗', 'error');
@@ -3159,7 +3308,14 @@ const UIRenderer = {
       if (cat && classCounts[cat] !== undefined) classCounts[cat]++;
     }
 
-    document.getElementById('headerTotalCost').textContent = totalCost;
+    const costEl = document.getElementById('headerTotalCost');
+    const prevCost = parseInt(costEl.textContent) || 0;
+    costEl.textContent = totalCost;
+    costEl.classList.toggle('total-cost-41', totalCost === 41);
+    if (totalCost !== prevCost) {
+      costEl.classList.add('cost-pop');
+      setTimeout(() => costEl.classList.remove('cost-pop'), 250);
+    }
     document.getElementById('badgeSenmetsu').textContent = `殲滅 ${classCounts['殲滅']}`;
     document.getElementById('badgeSeiatsu').textContent = `制圧 ${classCounts['制圧']}`;
     document.getElementById('badgeBouei').textContent = `防衛 ${classCounts['防衛']}`;
@@ -3476,6 +3632,30 @@ const UIRenderer = {
       }
     }
   }
+};
+
+// ================================================================
+// CardBookmark - カードブックマーク管理 (localStorage)
+// ================================================================
+const CardBookmark = {
+  _KEY: 'gab_card_bookmarks',
+  _set: null,
+  _load() {
+    if (!this._set) {
+      try { this._set = new Set(JSON.parse(localStorage.getItem(this._KEY) || '[]')); }
+      catch { this._set = new Set(); }
+    }
+    return this._set;
+  },
+  _save() { localStorage.setItem(this._KEY, JSON.stringify([...this._load()])); },
+  has(number) { return this._load().has(number); },
+  toggle(number) {
+    const s = this._load();
+    if (s.has(number)) { s.delete(number); } else { s.add(number); }
+    this._save();
+    return s.has(number);
+  },
+  getAll() { return this._load(); }
 };
 
 // ================================================================
@@ -3889,6 +4069,14 @@ const SearchPanel = {
       });
     }
 
+    // Bookmark OR merge: bookmarked cards are added to results (union)
+    if (document.getElementById('filterBookmarkCards').checked) {
+      const bmSet = CardBookmark.getAll();
+      const inResult = new Set(cards.map(c => c.number));
+      const bmCards = AppState.cardIndex.filter(c => bmSet.has(c.number) && !inResult.has(c.number));
+      cards = cards.concat(bmCards);
+    }
+
     this._filteredCards = cards;
     this._page = 0;
     this._renderGrid();
@@ -3938,9 +4126,7 @@ const SearchPanel = {
 
   _renderGrid() {
     const grid = document.getElementById('thumbGrid');
-    const start = this._page * this._perPage;
-    const end = Math.min(start + this._perPage, this._filteredCards.length);
-    const cards = this._filteredCards.slice(start, end);
+    const cards = this._filteredCards;
 
     const showSqsp = document.getElementById('filterSqsp').checked;
     const showEb = document.getElementById('filterEb').checked;
@@ -3952,7 +4138,8 @@ const SearchPanel = {
       const el = document.createElement('div');
       const isEb = card.has_eb || card.has_eb_skill || card.has_eb_link;
       const isSq = card.has_sqsp || card.has_sq_skill || card.has_sq_link || !!card.sq_rush_effect;
-      el.className = 'thumb-card' + (isEb ? ' card-eb' : '') + (isSq ? ' card-sq' : '');
+      const isBm = CardBookmark.has(card.number);
+      el.className = 'thumb-card' + (isEb ? ' card-eb' : '') + (isSq ? ' card-sq' : '') + (isBm ? ' card-bookmarked' : '');
       const pilotOrModel = card.pilot || card.model || '';
       const rarityHtml = card.rarity
         ? `<span class="thumb-card-rarity r-${escapeHtml(card.rarity)}">${escapeHtml(card.rarity)}</span>` : '';
@@ -3985,6 +4172,7 @@ const SearchPanel = {
           ${card.has_eb || card.has_eb_skill || card.has_eb_link ? '<div class="thumb-eb-badge">EB</div>' : ''}
           ${overlayHtml}
           <div class="thumb-detail-btn" onclick="event.stopPropagation();showCardModal('${card.number}')">詳細</div>
+          <button class="thumb-bm-btn${CardBookmark.has(card.number) ? ' bm-on' : ''}" onclick="event.stopPropagation();SearchPanel._toggleBm(this,'${card.number}')" title="ブックマーク">${CardBookmark.has(card.number) ? '&#9733;' : '&#9734;'}</button>
         </div>
         <div class="thumb-card-info">
           <div class="thumb-card-number">
@@ -4002,14 +4190,20 @@ const SearchPanel = {
       grid.appendChild(el);
     });
 
-    // Pagination
-    const total = this._filteredCards.length;
-    const totalPages = Math.ceil(total / this._perPage);
-    document.getElementById('pageInfo').textContent = total > 0
-      ? `${start+1}-${end} / ${total}件`
+    // Card count display
+    document.getElementById('pageInfo').textContent = cards.length > 0
+      ? `${cards.length}件`
       : '0件';
-    document.getElementById('prevBtn').disabled = this._page <= 0;
-    document.getElementById('nextBtn').disabled = end >= total;
+  },
+
+  _toggleBm(btn, number) {
+    const on = CardBookmark.toggle(number);
+    btn.innerHTML = on ? '&#9733;' : '&#9734;';
+    btn.classList.toggle('bm-on', on);
+    // If bookmark filter is active, re-render to hide/show
+    if (document.getElementById('filterBookmarkCards').checked) {
+      this.applyFilters();
+    }
   },
 
   nextPage() {
@@ -4202,12 +4396,48 @@ function closeHeaderMenu() {
 }
 
 // Terrain setting
-function setActiveTerrain(terrain) {
-  if (AppState.activeTerrain === terrain) {
+const TERRAIN_META = {
+  ground: {label: '地上'},
+  space:  {label: '宇宙'},
+  desert: {label: '砂漠'},
+  water:  {label: '水中'},
+};
+
+function toggleTerrainPicker() {
+  document.getElementById('terrainPicker').classList.toggle('open');
+}
+
+function pickTerrain(terrain) {
+  setActiveTerrain(terrain || null, true);
+  document.getElementById('terrainPicker').classList.remove('open');
+}
+
+// Close picker on outside click
+document.addEventListener('click', e => {
+  const picker = document.getElementById('terrainPicker');
+  if (picker && !picker.contains(e.target)) picker.classList.remove('open');
+});
+
+function setActiveTerrain(terrain, force) {
+  if (!force && AppState.activeTerrain === terrain) {
     AppState.activeTerrain = null;
   } else {
     AppState.activeTerrain = terrain;
   }
+  // Sync picker button appearance
+  const btn = document.getElementById('terrainPickerBtn');
+  const labelEl = document.getElementById('terrainPickerLabel');
+  btn.className = 'terrain-picker-btn' + (AppState.activeTerrain ? ` active t-${AppState.activeTerrain}` : '');
+  if (AppState.activeTerrain && TERRAIN_META[AppState.activeTerrain]) {
+    labelEl.textContent = TERRAIN_META[AppState.activeTerrain].label;
+  } else {
+    labelEl.textContent = 'TERRAIN';
+  }
+  // Sync picker menu active state
+  document.querySelectorAll('.terrain-picker-item').forEach(el => {
+    el.classList.toggle('active', el.dataset.terrain === (AppState.activeTerrain || ''));
+  });
+  // Sync menu buttons
   document.querySelectorAll('.terrain-sel').forEach(b => {
     b.classList.toggle('active', b.dataset.terrain === AppState.activeTerrain);
   });
@@ -4599,7 +4829,7 @@ async function captureFullPage() {
 
     // --- Step 7: Download ---
     const link = document.createElement('a');
-    const deckName = document.getElementById('deckNameInput').value.trim() || 'deck';
+    const deckName = AppState._lastDeckName || 'deck';
     const ts = new Date().toISOString().replace(/[:.]/g, '-').slice(0, 19);
     link.download = `${deckName}_${ts}.png`;
     link.href = canvas.toDataURL('image/png');

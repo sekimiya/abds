@@ -8,6 +8,7 @@ import os
 import json
 import uuid
 import time
+import hashlib
 import threading
 
 from dotenv import load_dotenv
@@ -29,8 +30,11 @@ def get_client():
     if not SUPABASE_URL or not SUPABASE_KEY:
         return None
     if _client is None:
-        from supabase import create_client
-        _client = create_client(SUPABASE_URL, SUPABASE_KEY)
+        try:
+            from supabase import create_client
+            _client = create_client(SUPABASE_URL, SUPABASE_KEY)
+        except ImportError:
+            return None
     return _client
 
 
@@ -76,9 +80,44 @@ def list_decks():
     return resp.data
 
 
+def _hash_password(pw):
+    """Hash a password with SHA-256. Returns hex digest or None."""
+    if not pw:
+        return None
+    return hashlib.sha256(pw.encode('utf-8')).hexdigest()
+
+
+def verify_delete_password(deck_id, password):
+    """Verify delete password. Returns (ok, error)."""
+    client = get_client()
+    if client is None:
+        with _decks_lock:
+            decks = _read_json()
+            for deck in decks:
+                if deck.get('id') == deck_id:
+                    stored = deck.get('delete_password_hash')
+                    if not stored:
+                        return False, 'このデッキには削除パスワードが設定されていません'
+                    if _hash_password(password) != stored:
+                        return False, 'パスワードが違います'
+                    return True, None
+        return False, 'Deck not found'
+
+    resp = client.table('decks').select('delete_password_hash').eq('id', deck_id).execute()
+    if not resp.data:
+        return False, 'Deck not found'
+    stored = resp.data[0].get('delete_password_hash')
+    if not stored:
+        return False, 'このデッキには削除パスワードが設定されていません'
+    if _hash_password(password) != stored:
+        return False, 'パスワードが違います'
+    return True, None
+
+
 def create_deck(data):
     """Create a new deck. Returns (deck_dict, error_string|None)."""
     deck_id = str(uuid.uuid4())[:8]
+    pw_hash = _hash_password(data.get('delete_password', ''))
     client = get_client()
     if client is None:
         deck_entry = {
@@ -90,6 +129,11 @@ def create_deck(data):
             'tactics_sub': data.get('tactics_sub'),
             'timestamp': data.get('timestamp') or time.strftime('%Y-%m-%dT%H:%M:%S'),
         }
+        author = data.get('author', '').strip()
+        if author:
+            deck_entry['author'] = author
+        if pw_hash:
+            deck_entry['delete_password_hash'] = pw_hash
         with _decks_lock:
             decks = _read_json()
             decks.append(deck_entry)
@@ -104,6 +148,11 @@ def create_deck(data):
         'tactics_main': data.get('tactics_main'),
         'tactics_sub': data.get('tactics_sub'),
     }
+    author = data.get('author', '').strip()
+    if author:
+        row['author'] = author
+    if pw_hash:
+        row['delete_password_hash'] = pw_hash
     resp = client.table('decks').insert(row).execute()
     return resp.data[0], None
 
@@ -218,7 +267,7 @@ def get_comments(deck_id):
     return resp.data, None
 
 
-def post_comment(deck_id, name, text):
+def post_comment(deck_id, name, text, reply_to=None):
     """Post a comment. Returns (comment_dict, error_string|None)."""
     comment_id = str(uuid.uuid4())[:8]
     client = get_client()
@@ -235,6 +284,8 @@ def post_comment(deck_id, name, text):
                         'text': text,
                         'timestamp': time.strftime('%Y-%m-%dT%H:%M:%S'),
                     }
+                    if reply_to:
+                        entry['reply_to'] = reply_to
                     deck['comments'].append(entry)
                     _write_json(decks)
                     return entry, None
@@ -250,5 +301,7 @@ def post_comment(deck_id, name, text):
         'name': name[:20],
         'text': text,
     }
+    if reply_to:
+        row['reply_to'] = reply_to
     resp = client.table('comments').insert(row).execute()
     return resp.data[0], None

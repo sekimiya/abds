@@ -35,6 +35,63 @@ button{cursor:pointer;font-family:inherit}
 }
 .header-btn:hover{background:#333;border-color:#68efbd;color:#68efbd}
 
+/* ===== HAMBURGER + SLIDE MENU ===== */
+.hamburger-btn{
+  background:none;border:none;color:#ccc;font-size:1.4rem;
+  padding:0.2rem 0.4rem;cursor:pointer;display:flex;align-items:center;
+  transition:color 0.15s;line-height:1;
+}
+.hamburger-btn:hover{color:#68efbd}
+.slide-overlay{
+  display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);
+  z-index:50;transition:opacity 0.25s;
+}
+.slide-overlay.active{display:block}
+.slide-menu{
+  position:fixed;top:0;left:-280px;width:280px;height:100%;
+  background:#1a1a1a;border-right:2px solid #333;
+  z-index:51;transition:left 0.25s ease;
+  display:flex;flex-direction:column;overflow-y:auto;
+}
+.slide-menu.open{left:0}
+.slide-menu-header{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0.8rem 1rem;border-bottom:1px solid #333;
+  background:#1e2924;
+}
+.slide-menu-title{color:#68efbd;font-weight:bold;font-size:0.9rem}
+.slide-menu-close{
+  background:none;border:none;color:#888;font-size:1.2rem;
+  cursor:pointer;padding:0.2rem 0.4rem;line-height:1;
+}
+.slide-menu-close:hover{color:#ff5252}
+.slide-menu-body{padding:0.8rem 1rem;display:flex;flex-direction:column;gap:0.3rem}
+.menu-section-label{color:#888;font-size:0.7rem;padding:0.4rem 0 0.2rem;text-transform:uppercase;letter-spacing:1px}
+.menu-item{
+  display:flex;align-items:center;gap:0.5rem;
+  background:transparent;border:1px solid transparent;border-radius:6px;
+  color:#ccc;padding:0.5rem 0.6rem;font-size:0.8rem;
+  cursor:pointer;transition:all 0.15s;width:100%;text-align:left;
+}
+.menu-item:hover{background:#222;border-color:#333;color:#68efbd}
+.menu-item.active{background:#1e2924;border-color:#3a5a4a;color:#68efbd}
+.menu-item .menu-icon{font-size:0.85rem;width:20px;text-align:center;flex-shrink:0}
+.menu-badge{
+  margin-left:auto;background:#333;color:#888;
+  font-size:0.65rem;padding:0.1rem 0.4rem;border-radius:10px;
+}
+.menu-item.active .menu-badge{background:#3a5a4a;color:#68efbd}
+
+/* Bookmark button */
+.btn-bookmark{
+  background:transparent;border:1px solid #555;border-radius:4px;
+  color:#888;padding:0.2rem 0.5rem;font-size:0.75rem;
+  transition:all 0.15s;display:inline-flex;align-items:center;gap:3px;
+}
+.btn-bookmark:hover{border-color:#ffe082;color:#ffe082;background:rgba(255,224,130,0.1)}
+.btn-bookmark.bookmarked{border-color:#ffe082;color:#ffe082}
+.btn-bookmark .bm-icon{font-size:0.85rem}
+
 /* ===== CONTENT ===== */
 .content{max-width:1000px;margin:0 auto;padding:1.5rem 1rem 3rem}
 
@@ -45,6 +102,16 @@ button{cursor:pointer;font-family:inherit}
   transition:all 0.2s ease;
 }
 .deck-entry:hover{border-color:#68efbd;box-shadow:0 2px 12px rgba(104,239,189,0.1)}
+.deck-entry.deck-entry-eb{
+  background:linear-gradient(135deg,#1a1610,#1f1a12);
+  border-color:#5a3a10;
+}
+.deck-entry.deck-entry-eb:hover{border-color:#ff9800;box-shadow:0 2px 12px rgba(255,152,0,0.15)}
+.deck-entry.deck-entry-sq{
+  background:linear-gradient(135deg,#1a1018,#1f1219);
+  border-color:#5a1040;
+}
+.deck-entry.deck-entry-sq:hover{border-color:#ff69b4;box-shadow:0 2px 12px rgba(255,105,180,0.15)}
 
 .deck-header{display:flex;align-items:flex-start;justify-content:space-between;gap:0.8rem;margin-bottom:0.5rem}
 .deck-title{
@@ -78,14 +145,111 @@ button{cursor:pointer;font-family:inherit}
 .deck-meta{color:#888;font-size:0.8rem;margin-bottom:0.5rem}
 .deck-comment{color:#aaa;font-size:0.85rem;margin-bottom:0.8rem;line-height:1.5}
 
-.deck-cards{display:flex;flex-wrap:wrap;gap:6px}
-.deck-card-thumb{
-  background:#111;border-radius:4px;border:1px solid #333;
-  width:52px;aspect-ratio:63/88;
-  display:flex;align-items:center;justify-content:center;overflow:hidden;
-  font-size:0.55rem;color:#555;
+/* ===== DECK PREVIEW (mini simulator view) ===== */
+.deck-preview{
+  display:flex;gap:0;
+  background:#111;border:1px solid #2a2a2a;border-radius:6px;
+  overflow-x:auto;overflow-y:hidden;
+  padding:0;
 }
-.deck-card-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.dp-unit{
+  flex:1;min-width:120px;max-width:200px;
+  border-right:1px solid #1a1a1a;
+  display:flex;flex-direction:column;
+  padding:0.25rem;
+}
+.dp-unit:last-child{border-right:none}
+
+/* Card names */
+.dp-names{
+  text-align:left;font-size:0.6rem;margin-bottom:0.2rem;
+  flex-shrink:0;line-height:1.25;
+}
+.dp-names .dp-ms-name,.dp-names .dp-pl-name{
+  display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+}
+.dp-names .dp-ms-name{color:#68efbd}
+.dp-names .dp-pl-name{color:#68efbd}
+.dp-names.names-eb .dp-ms-name,.dp-names.names-eb .dp-pl-name{color:#ffb74d}
+.dp-names.names-sq .dp-ms-name,.dp-names.names-sq .dp-pl-name{color:#ff8cc8}
+
+/* Rarity tag (mini) */
+.dp-rarity{
+  display:inline-flex;align-items:center;justify-content:center;
+  padding:0rem 0.2rem;border-radius:2px;
+  font-size:0.5rem;font-weight:bold;
+  min-width:1rem;text-align:center;vertical-align:middle;
+}
+.dp-rarity.rarity-M{background:#5e3a1a;color:#ffcc80}
+.dp-rarity.rarity-C{background:#1a3a1a;color:#a5d6a7}
+.dp-rarity.rarity-R{background:#1a1a5e;color:#90caf9}
+.dp-rarity.rarity-SR{background:#5e1a5e;color:#ce93d8}
+.dp-rarity.rarity-U{background:#5e5e1a;color:#fff59d}
+.dp-rarity.rarity-P{background:#1a5e5e;color:#80deea}
+.dp-rarity.rarity-PR{background:#4a1a4a;color:#f48fb1}
+.dp-rarity.rarity-LR{background:#5e4a1a;color:#ffe082}
+.dp-rarity.rarity-LE{background:#4a1a1a;color:#ff8a80}
+.dp-rarity.rarity-CP{background:#3a3a3a;color:#bdbdbd}
+
+/* Cost + terrain badge row */
+.dp-cost-row{
+  display:flex;align-items:center;justify-content:center;gap:2px;
+  padding:0.1rem 0.15rem;margin-bottom:0.2rem;
+  background:linear-gradient(135deg,#1a1a1a,#1e1e1e);border-radius:3px;
+  border:1px solid #2a2a2a;
+  font-weight:bold;font-size:0.55rem;
+  flex-shrink:0;flex-wrap:nowrap;
+}
+.dp-cost-val{
+  display:inline-flex;align-items:center;gap:1px;
+  background:linear-gradient(135deg,#2a1f0a,#3a2a0a);
+  border:1px solid #5a4a1a;border-radius:2px;
+  padding:0rem 0.2rem;color:#ffe082;
+}
+.dp-cost-val .cost-label{color:#aa8a42;font-size:0.4rem}
+.dp-cost-val .cost-num{font-size:0.55rem;line-height:1}
+.dp-terrain{
+  padding:0rem 0.15rem;border-radius:2px;font-size:0.45rem;font-weight:bold;
+  background:#1a1a1a;border:1px solid #333;
+}
+.dp-terrain.rank-S{color:#ff8a80;border-color:#c62828}
+.dp-terrain.rank-A{color:#82b1ff;border-color:#1565c0}
+.dp-terrain.rank-B{color:#a5d6a7;border-color:#2e7d32}
+.dp-terrain.rank-C{color:#ffcc80;border-color:#e65100}
+.dp-terrain.rank-none{color:#444;border-color:#222}
+
+/* Card images (stacked MS + PL) */
+.dp-card-img-wrap{
+  position:relative;background:#0f0f0f;border:1px solid #2a2a2a;border-radius:4px;
+  aspect-ratio:63/88;overflow:hidden;margin-bottom:0.15rem;flex-shrink:0;
+}
+.dp-card-img-wrap img{
+  width:100%;height:100%;object-fit:cover;display:block;
+}
+.dp-card-img-wrap .dp-no-img{
+  width:100%;height:100%;display:flex;align-items:center;justify-content:center;
+  color:#444;font-size:0.5rem;
+}
+/* SQ/EB/SQSP highlight borders on card images */
+.dp-card-img-wrap.dp-sqsp{border-color:#ff69b4;border-width:2px;box-shadow:0 0 4px rgba(255,105,180,0.4)}
+.dp-card-img-wrap.dp-sq{border-color:#ff69b4;border-width:2px;box-shadow:0 0 4px rgba(255,105,180,0.4)}
+.dp-card-img-wrap.dp-eb{border-color:#ff9800;border-width:2px;box-shadow:0 0 4px rgba(255,152,0,0.4)}
+/* Badge overlay */
+.dp-badge{
+  position:absolute;top:2px;left:2px;z-index:2;
+  font-size:0.45rem;font-weight:bold;padding:0.05rem 0.25rem;border-radius:2px;
+  color:#fff;letter-spacing:0.3px;box-shadow:0 1px 2px rgba(0,0,0,0.5);
+}
+.dp-badge-sqsp,.dp-badge-sq{background:linear-gradient(135deg,#ff69b4,#e91e8c)}
+.dp-badge-eb{background:linear-gradient(135deg,#ff9800,#e65100)}
+
+/* Stat bars (mini) */
+.dp-stats{margin-bottom:0.1rem}
+.dp-stat{display:flex;align-items:center;gap:2px;margin-bottom:1px}
+.dp-stat-label{color:#888;font-size:0.45rem;width:16px;text-align:right;flex-shrink:0}
+.dp-stat-track{flex:0 0 45%;height:8px;background:#1a1a1a;border-radius:1px;overflow:hidden;position:relative;display:flex}
+.dp-stat-bar{height:100%;background:#2196f3;transition:width 0.3s}
+.dp-stat-value{color:#aaa;font-size:0.45rem;flex:1;min-width:0;text-align:left;padding-left:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 
 /* ===== COMMENTS ===== */
 .deck-comments{margin-top:0.8rem;border-top:1px solid #2a2a2a;padding-top:0.6rem}
@@ -98,6 +262,10 @@ button{cursor:pointer;font-family:inherit}
 .comment-item{
   background:#111;border:1px solid #2a2a2a;border-radius:4px;
   padding:0.4rem 0.6rem;font-size:0.8rem;
+}
+.comment-item.is-reply{
+  margin-left:1.5rem;border-left:2px solid #3a5a4a;
+  background:#0d1510;
 }
 .comment-header{display:flex;align-items:center;gap:0.5rem;margin-bottom:0.2rem}
 .comment-name{color:#68efbd;font-weight:bold;font-size:0.75rem}
@@ -121,6 +289,26 @@ button{cursor:pointer;font-family:inherit}
 }
 .comment-submit:hover{background:#2a4a35;border-color:#68efbd}
 .comment-submit:disabled{opacity:0.4;cursor:default}
+.comment-reply-btn{
+  background:none;border:none;color:#555;font-size:0.65rem;
+  cursor:pointer;padding:0;margin-left:auto;transition:color 0.15s;
+}
+.comment-reply-btn:hover{color:#68efbd}
+.comment-reply-tag{
+  display:inline-block;background:#1e2924;border:1px solid #3a5a4a;
+  border-radius:3px;color:#68efbd;font-size:0.65rem;
+  padding:0 0.3rem;margin-right:0.3rem;vertical-align:middle;
+}
+.comment-reply-indicator{
+  display:inline-flex;align-items:center;gap:4px;
+  background:#1e2924;border:1px solid #3a5a4a;border-radius:4px;
+  color:#68efbd;font-size:0.7rem;padding:0.15rem 0.4rem;margin-bottom:0.3rem;
+}
+.comment-reply-indicator .reply-cancel{
+  background:none;border:none;color:#888;font-size:0.8rem;
+  cursor:pointer;padding:0 0 0 4px;line-height:1;
+}
+.comment-reply-indicator .reply-cancel:hover{color:#ff5252}
 
 .deck-tactics{margin-top:0.6rem;display:flex;gap:0.6rem;align-items:center;flex-wrap:wrap}
 .deck-tactics-label{color:#888;font-size:0.75rem}
@@ -130,6 +318,29 @@ button{cursor:pointer;font-family:inherit}
   display:inline-flex;align-items:center;gap:4px;
 }
 .tactics-thumb{width:20px;height:20px;border-radius:2px;object-fit:cover}
+
+/* ===== ACTIVE LINKS ===== */
+.deck-links{margin-top:0.4rem;display:flex;gap:0.4rem;align-items:center;flex-wrap:wrap}
+.deck-links-label{color:#888;font-size:0.75rem;flex-shrink:0}
+.link-chip{
+  display:inline-flex;align-items:center;gap:3px;
+  background:#222;border:1px solid #555;border-radius:4px;
+  padding:0.15rem 0.5rem;font-size:0.7rem;color:#aaa;
+  transition:all 0.15s;
+}
+.link-chip .link-badge{
+  font-size:0.55rem;font-weight:bold;padding:0.05rem 0.2rem;
+  border-radius:2px;color:#fff;letter-spacing:0.3px;
+}
+.link-chip .link-name{color:#aaa}
+.link-chip.link-sq{border-color:#ff69b4;background:#2a1a24}
+.link-chip.link-sq .link-name{color:#ff8cc8}
+.link-chip.link-sq .link-badge{background:linear-gradient(135deg,#ff69b4,#e91e8c)}
+.link-chip.link-eb{border-color:#ff9800;background:#2a2218}
+.link-chip.link-eb .link-name{color:#ffb74d}
+.link-chip.link-eb .link-badge{background:linear-gradient(135deg,#ff9800,#e65100)}
+.link-chip.link-normal{border-color:#555;background:#222}
+.link-chip.link-normal .link-name{color:#aaa}
 
 .toast-container{position:fixed;top:60px;right:1rem;z-index:200;display:flex;flex-direction:column;gap:0.4rem}
 .toast{
@@ -182,12 +393,27 @@ button{cursor:pointer;font-family:inherit}
 .dialog-btn.danger{border-color:#ff5252;color:#ff5252}
 .dialog-btn.danger:hover{background:rgba(255,82,82,0.15)}
 
+/* ===== COMPACT MODE ===== */
+body.compact-mode .dp-card-img-wrap{display:none}
+body.compact-mode .dp-stats{display:none}
+body.compact-mode .dp-unit{min-width:80px}
+body.compact-mode .deck-preview{gap:0}
+
 /* ===== RESPONSIVE ===== */
-@media(max-width:600px){
+@media(max-width:700px){
   .content{padding:1rem 0.6rem 2rem}
   .deck-entry{padding:0.8rem}
-  .deck-card-thumb{width:42px}
   .deck-title{font-size:1rem}
+  .dp-unit{min-width:100px}
+  .dp-names{font-size:0.5rem}
+  .dp-cost-row{font-size:0.45rem}
+  .dp-stat-label{font-size:0.4rem;width:14px}
+  .dp-stat-value{font-size:0.4rem}
+  .dp-stat-track{height:6px}
+}
+@media(max-width:480px){
+  .deck-preview{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .dp-unit{min-width:90px}
 }
 </style>
 </head>
@@ -195,13 +421,76 @@ button{cursor:pointer;font-family:inherit}
 
 <div class="app-header">
   <div class="header-left">
+    <button class="hamburger-btn" id="hamburgerBtn" onclick="toggleSlideMenu()">&#9776;</button>
     <span class="logo">ABDS</span>
     <span class="header-title">デッキ一覧</span>
   </div>
   <a href="/" class="header-btn">← ホーム</a>
 </div>
 
+<!-- Slide menu -->
+<div class="slide-overlay" id="slideOverlay" onclick="closeSlideMenu()"></div>
+<div class="slide-menu" id="slideMenu">
+  <div class="slide-menu-header">
+    <span class="slide-menu-title">メニュー</span>
+    <button class="slide-menu-close" onclick="closeSlideMenu()">&times;</button>
+  </div>
+  <div class="slide-menu-body">
+    <div class="menu-section-label">フィルター</div>
+    <button class="menu-item active" id="filterAll" onclick="setFilter('all')">
+      <span class="menu-icon">&#9744;</span>すべてのデッキ<span class="menu-badge" id="badgeAll">0</span>
+    </button>
+    <button class="menu-item" id="filterBookmark" onclick="setFilter('bookmark')">
+      <span class="menu-icon">&#9733;</span>ブックマーク<span class="menu-badge" id="badgeBookmark">0</span>
+    </button>
+    <div class="menu-section-label">ソート</div>
+    <button class="menu-item active" id="sortNewest" onclick="setSort('newest')">
+      <span class="menu-icon">&#8595;</span>新着順
+    </button>
+    <button class="menu-item" id="sortLikes" onclick="setSort('likes')">
+      <span class="menu-icon">&#9829;</span>イイネ順
+    </button>
+    <button class="menu-item" id="sortBookmarks" onclick="setSort('bookmarks')">
+      <span class="menu-icon">&#9733;</span>ブックマーク数順
+    </button>
+    <div class="menu-section-label">期間</div>
+    <button class="menu-item active" id="periodAll" onclick="setPeriod('all')">
+      <span class="menu-icon">&#8734;</span>全期間
+    </button>
+    <button class="menu-item" id="periodWeek" onclick="setPeriod('week')">
+      <span class="menu-icon">7</span>週間
+    </button>
+    <button class="menu-item" id="periodMonth" onclick="setPeriod('month')">
+      <span class="menu-icon">30</span>月間
+    </button>
+    <div class="menu-section-label">表示</div>
+    <label class="menu-item" style="cursor:pointer">
+      <input type="checkbox" id="compactToggle" onchange="toggleCompact(this.checked)" style="accent-color:#68efbd">
+      <span>カード画像を折りたたむ</span>
+    </label>
+    <div class="menu-section-label">ナビゲーション</div>
+    <a class="menu-item" href="/v2" style="text-decoration:none">
+      <span class="menu-icon">&#9998;</span>デッキエディター
+    </a>
+    <a class="menu-item" href="/" style="text-decoration:none">
+      <span class="menu-icon">&#8962;</span>ホーム
+    </a>
+  </div>
+</div>
+
 <div class="toast-container" id="toastContainer"></div>
+
+<!-- Delete confirmation dialog -->
+<div class="overlay" id="deleteOverlay">
+  <div class="dialog">
+    <p>削除パスワードを入力してください</p>
+    <input type="password" id="deletePasswordInput" style="background:#111;border:1px solid #333;border-radius:4px;color:#ccc;padding:0.4rem 0.6rem;font-size:0.85rem;width:100%;margin-bottom:1rem" placeholder="パスワード">
+    <div class="dialog-btns">
+      <button class="dialog-btn" onclick="closeDeleteDialog()">キャンセル</button>
+      <button class="dialog-btn danger" id="deleteConfirmBtn" onclick="confirmDelete()">削除</button>
+    </div>
+  </div>
+</div>
 
 <div class="content">
   <div id="deckList">
@@ -214,6 +503,140 @@ button{cursor:pointer;font-family:inherit}
 
 
 <script>
+// --- Slide menu ---
+function toggleSlideMenu() {
+  const menu = document.getElementById('slideMenu');
+  const overlay = document.getElementById('slideOverlay');
+  const isOpen = menu.classList.contains('open');
+  if (isOpen) { closeSlideMenu(); } else {
+    menu.classList.add('open');
+    overlay.classList.add('active');
+  }
+}
+function closeSlideMenu() {
+  document.getElementById('slideMenu').classList.remove('open');
+  document.getElementById('slideOverlay').classList.remove('active');
+}
+
+// --- Compact mode ---
+function toggleCompact(checked) {
+  document.body.classList.toggle('compact-mode', checked);
+  localStorage.setItem('gab_compact_mode', checked ? '1' : '0');
+}
+// Restore compact mode from localStorage
+if (localStorage.getItem('gab_compact_mode') === '1') {
+  document.body.classList.add('compact-mode');
+  setTimeout(() => { const cb = document.getElementById('compactToggle'); if (cb) cb.checked = true; }, 0);
+}
+
+// --- Bookmark管理 (localStorage) ---
+function getBookmarkSet() {
+  try { return new Set(JSON.parse(localStorage.getItem('gab_bookmarked_decks') || '[]')); }
+  catch { return new Set(); }
+}
+function isBookmarked(deckId) { return getBookmarkSet().has(deckId); }
+function toggleBookmark(deckId, btn) {
+  const s = getBookmarkSet();
+  if (s.has(deckId)) {
+    s.delete(deckId);
+    btn.classList.remove('bookmarked');
+    btn.querySelector('.bm-icon').innerHTML = '&#9734;';
+    showToast('ブックマークを解除しました');
+  } else {
+    s.add(deckId);
+    btn.classList.add('bookmarked');
+    btn.querySelector('.bm-icon').innerHTML = '&#9733;';
+    showToast('ブックマークしました');
+  }
+  localStorage.setItem('gab_bookmarked_decks', JSON.stringify([...s]));
+  updateBadgeCounts();
+}
+
+// --- Filter, Sort & Period state ---
+let _currentFilter = 'all';
+let _currentSort = 'newest';
+let _currentPeriod = 'all';
+let _cachedDecks = null;
+let _cachedCardData = null;
+let _cachedTacticsMap = null;
+
+function setFilter(filter) {
+  _currentFilter = filter;
+  document.getElementById('filterAll').classList.toggle('active', filter === 'all');
+  document.getElementById('filterBookmark').classList.toggle('active', filter === 'bookmark');
+  if (_cachedDecks) renderDeckList(_cachedDecks, _cachedCardData, _cachedTacticsMap);
+  closeSlideMenu();
+}
+function setSort(sort) {
+  _currentSort = sort;
+  document.getElementById('sortNewest').classList.toggle('active', sort === 'newest');
+  document.getElementById('sortLikes').classList.toggle('active', sort === 'likes');
+  document.getElementById('sortBookmarks').classList.toggle('active', sort === 'bookmarks');
+  if (_cachedDecks) renderDeckList(_cachedDecks, _cachedCardData, _cachedTacticsMap);
+  closeSlideMenu();
+}
+function setPeriod(period) {
+  _currentPeriod = period;
+  document.getElementById('periodAll').classList.toggle('active', period === 'all');
+  document.getElementById('periodWeek').classList.toggle('active', period === 'week');
+  document.getElementById('periodMonth').classList.toggle('active', period === 'month');
+  if (_cachedDecks) renderDeckList(_cachedDecks, _cachedCardData, _cachedTacticsMap);
+  closeSlideMenu();
+}
+function filterByPeriod(decks) {
+  if (_currentPeriod === 'all') return decks;
+  const now = Date.now();
+  const ms = _currentPeriod === 'week' ? 7 * 24 * 3600 * 1000 : 30 * 24 * 3600 * 1000;
+  const cutoff = now - ms;
+  return decks.filter(d => {
+    const ts = d.timestamp || d.created_at;
+    if (!ts) return true;
+    return new Date(ts).getTime() >= cutoff;
+  });
+}
+function filterByBookmark(decks) {
+  if (_currentFilter !== 'bookmark') return decks;
+  const bmSet = getBookmarkSet();
+  return decks.filter(d => bmSet.has(d.id));
+}
+function sortDecks(decks) {
+  const sorted = decks.slice();
+  if (_currentSort === 'likes') {
+    sorted.sort((a, b) => (b.likes || 0) - (a.likes || 0));
+  } else if (_currentSort === 'bookmarks') {
+    const bmSet = getBookmarkSet();
+    sorted.sort((a, b) => {
+      const aBm = bmSet.has(a.id) ? 1 : 0;
+      const bBm = bmSet.has(b.id) ? 1 : 0;
+      return bBm - aBm || (b.likes || 0) - (a.likes || 0);
+    });
+  } else {
+    // newest first (reverse chronological)
+    sorted.reverse();
+  }
+  return sorted;
+}
+function updateBadgeCounts(totalCount) {
+  const bmSet = getBookmarkSet();
+  let bmCount = 0;
+  if (_cachedDecks) {
+    _cachedDecks.forEach(d => { if (bmSet.has(d.id)) bmCount++; });
+  }
+  document.getElementById('badgeAll').textContent = totalCount ?? (_cachedDecks ? _cachedDecks.length : 0);
+  document.getElementById('badgeBookmark').textContent = bmCount;
+}
+
+// --- 匿名ID (localStorage永続) ---
+function getAnonId() {
+  let id = localStorage.getItem('gab_anon_id');
+  if (!id) {
+    id = String(Math.floor(10000 + Math.random() * 90000));
+    localStorage.setItem('gab_anon_id', id);
+  }
+  return id;
+}
+function getDefaultName() { return 'アースノイド#' + getAnonId(); }
+
 // --- イイネ管理 (localStorage) ---
 function getLikedSet() {
   try { return new Set(JSON.parse(localStorage.getItem('gab_liked_decks') || '[]')); }
@@ -331,6 +754,225 @@ async function fetchTacticsMap() {
   } catch { return {}; }
 }
 
+let _deleteDeckId = null;
+function openDeleteDialog(deckId) {
+  _deleteDeckId = deckId;
+  document.getElementById('deletePasswordInput').value = '';
+  document.getElementById('deleteOverlay').classList.add('active');
+  document.getElementById('deletePasswordInput').focus();
+}
+function closeDeleteDialog() {
+  _deleteDeckId = null;
+  document.getElementById('deleteOverlay').classList.remove('active');
+}
+async function confirmDelete() {
+  if (!_deleteDeckId) return;
+  const pw = document.getElementById('deletePasswordInput').value;
+  if (!pw) { showToast('パスワードを入力してください'); return; }
+  const btn = document.getElementById('deleteConfirmBtn');
+  btn.disabled = true;
+  try {
+    const res = await fetch(`/api/decks/${_deleteDeckId}`, {
+      method: 'DELETE',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({ password: pw })
+    });
+    const data = await res.json();
+    if (data.success) {
+      closeDeleteDialog();
+      showToast('デッキを削除しました');
+      renderDecks();
+    } else {
+      showToast(data.error || '削除に失敗しました');
+    }
+  } catch { showToast('通信エラー'); }
+  btn.disabled = false;
+}
+
+// --- Reply state ---
+const _replyState = {}; // deckId -> replyToName
+
+function setReplyTo(deckId, name) {
+  _replyState[deckId] = name;
+  const indicator = document.getElementById('reply-indicator-' + deckId);
+  indicator.style.display = '';
+  indicator.innerHTML = `<div class="comment-reply-indicator">@${escapeHtml(name)} に返信<button class="reply-cancel" onclick="clearReplyTo('${deckId}')">&times;</button></div>`;
+  const textInput = document.getElementById('ctext-' + deckId);
+  textInput.focus();
+}
+
+function clearReplyTo(deckId) {
+  delete _replyState[deckId];
+  const indicator = document.getElementById('reply-indicator-' + deckId);
+  if (indicator) { indicator.style.display = 'none'; indicator.innerHTML = ''; }
+}
+
+function safeInt(val, def = 0) {
+  if (val === null || val === undefined) return def;
+  const n = parseInt(val, 10);
+  return isNaN(n) ? def : n;
+}
+
+function computeActiveLinks(deck, cardData) {
+  const cards = (deck.cards || []).map(c => typeof c === 'string' ? c : (c.number || ''));
+  while (cards.length < 10) cards.push('');
+
+  // Collect all link abilities with their source card info
+  const linkMap = {}; // linkName -> { link, count, sqCount, ebCount }
+  for (let i = 0; i < 10; i++) {
+    const num = cards[i];
+    const detail = cardData[num] || null;
+    const ocr = detail?.ocr_data || null;
+    if (!ocr) continue;
+    const links = ocr.link_abilities || ocr.link_ability || [];
+    if (!Array.isArray(links)) continue;
+
+    // Determine if this card is SQ or EB
+    const isSq = ocr.special_attack?.sp_type === 'SQUAD SP' || !!(ocr.pilot_skill?.has_sq_skill || ocr.pl_skill?.has_sq_skill);
+    const isEb = !!(ocr.echoes_beat?.has_eb) || !!(ocr.pilot_skill?.is_eb_skill || ocr.pl_skill?.is_eb_skill);
+
+    links.forEach(link => {
+      if (!link.name) return;
+      if (!linkMap[link.name]) {
+        linkMap[link.name] = { link, count: 0, sqCount: 0, ebCount: 0 };
+      }
+      linkMap[link.name].count++;
+      if (isSq) linkMap[link.name].sqCount++;
+      if (isEb) linkMap[link.name].ebCount++;
+    });
+  }
+
+  // Filter to active links only
+  const active = [];
+  Object.values(linkMap).forEach(entry => {
+    const condMatch = (entry.link.condition || '').match(/(\d+)枚以上/);
+    const required = condMatch ? parseInt(condMatch[1]) : 2;
+    if (entry.count >= required) {
+      const type = entry.sqCount > 0 ? 'sq' : (entry.ebCount > 0 ? 'eb' : 'normal');
+      active.push({ name: entry.link.name, effect: entry.link.effect || '', type, count: entry.count, required });
+    }
+  });
+  return active;
+}
+
+function renderDeckPreview(deck, cardData) {
+  const cards = (deck.cards || []).map(c => typeof c === 'string' ? c : (c.number || ''));
+  while (cards.length < 10) cards.push('');
+
+  let html = '<div class="deck-preview">';
+  for (let u = 0; u < 5; u++) {
+    const msNum = cards[u];
+    const plNum = cards[u + 5];
+    const msDetail = cardData[msNum] || null;
+    const plDetail = cardData[plNum] || null;
+    const msOcr = msDetail?.ocr_data || null;
+    const plOcr = plDetail?.ocr_data || null;
+
+    // Determine highlight type
+    const hasSqSp = msOcr?.special_attack?.sp_type === 'SQUAD SP';
+    const hasEb = !!(msOcr?.echoes_beat?.has_eb);
+    const plSkill = plOcr?.pilot_skill || plOcr?.pl_skill;
+    const hasSqSkill = !!(plSkill?.has_sq_skill);
+    const hasEbSkill = !!(plSkill?.is_eb_skill);
+    const namesCls = (hasSqSp || hasSqSkill) ? ' names-sq' : (hasEb || hasEbSkill) ? ' names-eb' : '';
+
+    html += '<div class="dp-unit">';
+
+    // --- Card names with rarity ---
+    const msName = msDetail?.name || (msNum || '');
+    const plName = plDetail?.name || (plNum || '');
+    const msRarity = msOcr?.rarity || '';
+    const plRarity = plOcr?.rarity || '';
+    const msRarityHtml = msRarity ? `<span class="dp-rarity rarity-${escapeHtml(msRarity)}">${escapeHtml(msRarity)}</span> ` : '';
+    const plRarityHtml = plRarity ? `<span class="dp-rarity rarity-${escapeHtml(plRarity)}">${escapeHtml(plRarity)}</span> ` : '';
+    if (msName || plName) {
+      html += `<div class="dp-names${namesCls}">`;
+      html += `<span class="dp-ms-name">${msRarityHtml}${escapeHtml(msName)}</span>`;
+      html += `<span class="dp-pl-name">${plRarityHtml}${escapeHtml(plName)}</span>`;
+      html += '</div>';
+    } else {
+      html += '<div class="dp-names">&nbsp;</div>';
+    }
+
+    // --- Cost + terrain badges ---
+    const msCost = safeInt(msOcr?.cost);
+    const plCost = safeInt(plOcr?.cost);
+    const unitCost = msCost + plCost;
+    html += '<div class="dp-cost-row">';
+    html += `<span class="dp-cost-val"><span class="cost-label">TCOST</span><span class="cost-num">${unitCost || '-'}</span></span>`;
+    const tc = msOcr?.terrain_compatibility || null;
+    const tList = [{k:'ground',l:'地'},{k:'space',l:'宇'},{k:'desert',l:'砂'},{k:'water',l:'水'}];
+    tList.forEach(t => {
+      const rank = tc ? (tc[t.k] || null) : null;
+      const cls = rank ? `rank-${rank}` : 'rank-none';
+      html += `<span class="dp-terrain ${cls}">${t.l}:${rank || '-'}</span>`;
+    });
+    html += '</div>';
+
+    // --- MS card image ---
+    const msHighlight = hasSqSp ? ' dp-sqsp' : (hasEb ? ' dp-eb' : '');
+    const msImgUrl = getImageUrl(msDetail);
+    const msBadge = hasSqSp ? '<span class="dp-badge dp-badge-sqsp">SQSP</span>'
+                 : hasEb ? '<span class="dp-badge dp-badge-eb">EB</span>' : '';
+    html += `<div class="dp-card-img-wrap${msHighlight}">`;
+    if (msImgUrl) {
+      html += `${msBadge}<img src="${msImgUrl}" alt="${escapeHtml(msNum)}" loading="lazy" onerror="this.onerror=null;this.parentElement.innerHTML='<div class=\\'dp-no-img\\'>No Image</div>'">`;
+    } else {
+      html += `<div class="dp-no-img">${msNum ? escapeHtml(msNum) : 'MS'}</div>`;
+    }
+    html += '</div>';
+
+    // --- PL card image ---
+    const plHighlight = hasSqSkill ? ' dp-sq' : (hasEbSkill ? ' dp-eb' : '');
+    const plImgUrl = getImageUrl(plDetail);
+    const plBadge = hasSqSkill ? '<span class="dp-badge dp-badge-sq">SQ</span>'
+                 : hasEbSkill ? '<span class="dp-badge dp-badge-eb">EB</span>' : '';
+    html += `<div class="dp-card-img-wrap${plHighlight}">`;
+    if (plImgUrl) {
+      html += `${plBadge}<img src="${plImgUrl}" alt="${escapeHtml(plNum)}" loading="lazy" onerror="this.onerror=null;this.parentElement.innerHTML='<div class=\\'dp-no-img\\'>No Image</div>'">`;
+    } else {
+      html += `<div class="dp-no-img">${plNum ? escapeHtml(plNum) : 'PL'}</div>`;
+    }
+    html += '</div>';
+
+    // --- Stat bars (base stats only, no link buffs) ---
+    const maxVal = 660;
+    const msStats = {
+      mobility: safeInt(msOcr?.stats?.mobility),
+      ranged: safeInt(msOcr?.stats?.ranged_attack),
+      melee: safeInt(msOcr?.stats?.melee_attack),
+      hp: safeInt(msOcr?.stats?.hp)
+    };
+    const plStats = {
+      mobility: safeInt(plOcr?.stats?.mobility),
+      ranged: safeInt(plOcr?.stats?.ranged_attack),
+      melee: safeInt(plOcr?.stats?.melee_attack),
+      hp: safeInt(plOcr?.stats?.hp)
+    };
+    const statDefs = [
+      {key:'mobility', label:'機動'},
+      {key:'ranged', label:'遠距'},
+      {key:'melee', label:'近距'},
+      {key:'hp', label:'HP'}
+    ];
+    html += '<div class="dp-stats">';
+    statDefs.forEach(s => {
+      const base = msStats[s.key] + plStats[s.key];
+      const pct = Math.min((base / maxVal) * 100, 100);
+      html += `<div class="dp-stat">`;
+      html += `<span class="dp-stat-label">${s.label}</span>`;
+      html += `<div class="dp-stat-track"><div class="dp-stat-bar" style="width:${pct}%"></div></div>`;
+      html += `<span class="dp-stat-value">${base || '-'}</span>`;
+      html += '</div>';
+    });
+    html += '</div>';
+
+    html += '</div>'; // .dp-unit
+  }
+  html += '</div>'; // .deck-preview
+  return html;
+}
+
 async function renderDecks() {
   const decks = await fetchDecks();
   if (decks === null) return;
@@ -356,8 +998,25 @@ async function renderDecks() {
     fetchTacticsMap()
   ]);
 
-  // Render newest first
-  const sorted = decks.slice().reverse();
+  // Cache for re-render on sort/filter change
+  _cachedDecks = decks;
+  _cachedCardData = cardData;
+  _cachedTacticsMap = tacticsMap;
+
+  renderDeckList(decks, cardData, tacticsMap);
+}
+
+function renderDeckList(decks, cardData, tacticsMap) {
+  let filtered = filterByPeriod(decks);
+  filtered = filterByBookmark(filtered);
+  const sorted = sortDecks(filtered);
+
+  if (sorted.length === 0) {
+    document.getElementById('deckList').innerHTML =
+      '<div class="empty-state"><p>条件に一致するデッキがありません</p></div>';
+    updateBadgeCounts(decks.length);
+    return;
+  }
   let html = '';
   sorted.forEach((deck, idx) => {
     const name = escapeHtml(deck.deck_name || '無名デッキ');
@@ -365,7 +1024,13 @@ async function renderDecks() {
     const comment = deck.comment ? escapeHtml(deck.comment).replace(/\n/g, '<br>') : '';
     const deckId = deck.id || '';
 
-    html += `<div class="deck-entry" data-id="${deckId}">`;
+    // Compute active links early for background color
+    const activeLinks = computeActiveLinks(deck, cardData);
+    const hasSqLink = activeLinks.some(l => l.type === 'sq');
+    const hasEbLink = activeLinks.some(l => l.type === 'eb');
+    const deckBgCls = hasSqLink ? ' deck-entry-sq' : (hasEbLink ? ' deck-entry-eb' : '');
+
+    html += `<div class="deck-entry${deckBgCls}" data-id="${deckId}">`;
     html += `<div class="deck-header">`;
     html += `<a class="deck-title" href="${escapeHtml(getDeckV2Url(deck))}">${name}</a>`;
     html += `<div class="deck-actions">`;
@@ -376,43 +1041,58 @@ async function renderDecks() {
       const likes = deck.likes || 0;
       const liked = isLiked(deckId);
       html += `<button class="btn-like${liked ? ' liked' : ''}" data-id="${deckId}"><span class="like-heart">${liked ? '&#9829;' : '&#9825;'}</span><span class="like-count">${likes || ''}</span></button>`;
+      const bm = isBookmarked(deckId);
+      html += `<button class="btn-bookmark${bm ? ' bookmarked' : ''}" data-id="${deckId}"><span class="bm-icon">${bm ? '&#9733;' : '&#9734;'}</span></button>`;
+      if (deck.delete_password_hash) {
+        html += `<button class="btn-action btn-delete" data-id="${deckId}" style="border-color:#ff5252;color:#ff5252">削除</button>`;
+      }
     }
     html += `</div></div>`;
-    if (ts) html += `<div class="deck-meta">${ts}</div>`;
-    if (comment) html += `<div class="deck-comment">${comment}</div>`;
-
-    html += `<div class="deck-cards">`;
-    (deck.cards || []).forEach(c => {
-      const num = typeof c === 'string' ? c : (c.number || '');
-      const imgUrl = getImageUrl(cardData[num]);
-      html += `<div class="deck-card-thumb">`;
-      if (imgUrl) {
-        html += `<img src="${imgUrl}" alt="${escapeHtml(num)}" loading="lazy">`;
-      } else {
-        html += escapeHtml(num);
-      }
-      html += `</div>`;
-    });
-    html += `</div>`;
-
-    // Tactics display
-    if (deck.tactics_main || deck.tactics_sub) {
-      html += `<div class="deck-tactics">`;
-      html += `<span class="deck-tactics-label">作戦:</span>`;
-      if (deck.tactics_main) {
-        const t = tacticsMap[deck.tactics_main];
-        const tName = t ? t.name : deck.tactics_main;
-        const tImg = t ? t.thumbnail_url : '';
-        html += `<span class="deck-tactics-card">${tImg ? `<img src="${tImg}" class="tactics-thumb">` : ''}${escapeHtml(tName)}</span>`;
-      }
-      if (deck.tactics_sub) {
-        const t = tacticsMap[deck.tactics_sub];
-        const tName = t ? t.name : deck.tactics_sub;
-        const tImg = t ? t.thumbnail_url : '';
-        html += `<span class="deck-tactics-card">${tImg ? `<img src="${tImg}" class="tactics-thumb">` : ''}${escapeHtml(tName)}</span>`;
-      }
+    const author = deck.author ? escapeHtml(deck.author) : '';
+    if (ts || author) {
+      html += `<div class="deck-meta">`;
+      if (author) html += `<span style="color:#68efbd">${author}</span>`;
+      if (author && ts) html += ' ・ ';
+      if (ts) html += ts;
       html += `</div>`;
     }
+    if (comment) html += `<div class="deck-comment">${comment}</div>`;
+
+    // Tactics + Active Links display (ABOVE deck preview)
+    if (deck.tactics_main || deck.tactics_sub || activeLinks.length > 0) {
+      // Tactics
+      if (deck.tactics_main || deck.tactics_sub) {
+        html += `<div class="deck-tactics">`;
+        html += `<span class="deck-tactics-label">作戦:</span>`;
+        if (deck.tactics_main) {
+          const t = tacticsMap[deck.tactics_main];
+          const tName = t ? t.name : deck.tactics_main;
+          const tImg = t ? t.thumbnail_url : '';
+          html += `<span class="deck-tactics-card">${tImg ? `<img src="${tImg}" class="tactics-thumb">` : ''}${escapeHtml(tName)}</span>`;
+        }
+        if (deck.tactics_sub) {
+          const t = tacticsMap[deck.tactics_sub];
+          const tName = t ? t.name : deck.tactics_sub;
+          const tImg = t ? t.thumbnail_url : '';
+          html += `<span class="deck-tactics-card">${tImg ? `<img src="${tImg}" class="tactics-thumb">` : ''}${escapeHtml(tName)}</span>`;
+        }
+        html += `</div>`;
+      }
+      // Active links
+      if (activeLinks.length > 0) {
+        html += `<div class="deck-links">`;
+        html += `<span class="deck-links-label">発動LINK:</span>`;
+        activeLinks.forEach(lk => {
+          const typeCls = `link-${lk.type}`;
+          const badgeLabel = lk.type === 'sq' ? 'SQ' : (lk.type === 'eb' ? 'EB' : '');
+          const badgeHtml = badgeLabel ? `<span class="link-badge">${badgeLabel}</span>` : '';
+          html += `<span class="link-chip ${typeCls}">${badgeHtml}<span class="link-name">${escapeHtml(lk.name)}</span></span>`;
+        });
+        html += `</div>`;
+      }
+    }
+
+    html += renderDeckPreview(deck, cardData);
 
     // Comments section
     if (deckId) {
@@ -423,11 +1103,15 @@ async function renderDecks() {
       html += `<div class="comments-list" id="clist-${deckId}">`;
       comments.forEach(c => {
         const cTime = c.timestamp ? new Date(c.timestamp).toLocaleString('ja-JP') : '';
-        html += `<div class="comment-item"><div class="comment-header"><span class="comment-name">${escapeHtml(c.name || 'アースノイド')}</span><span class="comment-time">${cTime}</span></div><div class="comment-text">${escapeHtml(c.text).replace(/\n/g, '<br>')}</div></div>`;
+        const cName = escapeHtml(c.name || 'アースノイド');
+        const replyTag = c.reply_to ? `<span class="comment-reply-tag">@${escapeHtml(c.reply_to)}</span>` : '';
+        const replyCls = c.reply_to ? ' is-reply' : '';
+        html += `<div class="comment-item${replyCls}" data-comment-id="${c.id}" data-comment-name="${cName}"><div class="comment-header"><span class="comment-name">${cName}</span><span class="comment-time">${cTime}</span><button class="comment-reply-btn" data-deck-id="${deckId}" data-reply-name="${cName}">返信</button></div><div class="comment-text">${replyTag}${escapeHtml(c.text).replace(/\n/g, '<br>')}</div></div>`;
       });
       html += `</div>`;
+      html += `<div id="reply-indicator-${deckId}" style="display:none"></div>`;
       html += `<div class="comment-form">`;
-      html += `<input class="comment-name-input" id="cname-${deckId}" placeholder="名前" maxlength="20">`;
+      html += `<input class="comment-name-input" id="cname-${deckId}" placeholder="${getDefaultName()}" maxlength="20">`;
       html += `<textarea class="comment-text-input" id="ctext-${deckId}" placeholder="コメントを入力..." maxlength="500" rows="1"></textarea>`;
       html += `<button class="comment-submit" data-deck-id="${deckId}">送信</button>`;
       html += `</div></div></div>`;
@@ -455,6 +1139,21 @@ async function renderDecks() {
     });
   });
 
+  // Bookmark buttons
+  document.querySelectorAll('.btn-bookmark').forEach(el => {
+    el.addEventListener('click', e => {
+      e.stopPropagation();
+      toggleBookmark(el.dataset.id, el);
+    });
+  });
+
+  // Delete buttons
+  document.querySelectorAll('.btn-delete').forEach(el => {
+    el.addEventListener('click', e => {
+      e.stopPropagation();
+      openDeleteDialog(el.dataset.id);
+    });
+  });
 
   // Comment toggles
   document.querySelectorAll('.comments-toggle').forEach(el => {
@@ -468,6 +1167,13 @@ async function renderDecks() {
     });
   });
 
+  // Reply buttons
+  document.querySelectorAll('.comment-reply-btn').forEach(el => {
+    el.addEventListener('click', () => {
+      setReplyTo(el.dataset.deckId, el.dataset.replyName);
+    });
+  });
+
   // Comment submit buttons
   document.querySelectorAll('.comment-submit').forEach(el => {
     el.addEventListener('click', async () => {
@@ -476,23 +1182,31 @@ async function renderDecks() {
       const textInput = document.getElementById('ctext-' + deckId);
       const text = textInput.value.trim();
       if (!text) { showToast('コメントを入力してください'); return; }
+      const replyTo = _replyState[deckId] || null;
       el.disabled = true;
       try {
         const res = await fetch(`/api/decks/${deckId}/comments`, {
           method: 'POST',
           headers: {'Content-Type': 'application/json'},
-          body: JSON.stringify({ name: nameInput.value.trim(), text })
+          body: JSON.stringify({ name: nameInput.value.trim() || getDefaultName(), text, reply_to: replyTo })
         });
         const data = await res.json();
         if (data.success) {
           const c = data.comment;
           const cTime = c.timestamp ? new Date(c.timestamp).toLocaleString('ja-JP') : '';
+          const cName = escapeHtml(c.name || 'アースノイド');
+          const replyTag = c.reply_to ? `<span class="comment-reply-tag">@${escapeHtml(c.reply_to)}</span>` : '';
+          const replyCls = c.reply_to ? ' is-reply' : '';
           const list = document.getElementById('clist-' + deckId);
           list.insertAdjacentHTML('beforeend',
-            `<div class="comment-item"><div class="comment-header"><span class="comment-name">${escapeHtml(c.name || 'アースノイド')}</span><span class="comment-time">${cTime}</span></div><div class="comment-text">${escapeHtml(c.text).replace(/\n/g, '<br>')}</div></div>`
+            `<div class="comment-item${replyCls}" data-comment-name="${cName}"><div class="comment-header"><span class="comment-name">${cName}</span><span class="comment-time">${cTime}</span><button class="comment-reply-btn" data-deck-id="${deckId}" data-reply-name="${cName}">返信</button></div><div class="comment-text">${replyTag}${escapeHtml(c.text).replace(/\n/g, '<br>')}</div></div>`
           );
+          // Bind reply on new comment
+          list.querySelector('.comment-item:last-child .comment-reply-btn')?.addEventListener('click', function() {
+            setReplyTo(this.dataset.deckId, this.dataset.replyName);
+          });
           textInput.value = '';
-          // Update toggle count
+          clearReplyTo(deckId);
           const toggle = document.querySelector(`.comments-toggle[data-deck-id="${deckId}"]`);
           const count = list.querySelectorAll('.comment-item').length;
           toggle.textContent = `コメント (${count})`;
@@ -504,6 +1218,9 @@ async function renderDecks() {
       el.disabled = false;
     });
   });
+
+  // Update badge counts
+  updateBadgeCounts(decks.length);
 }
 
 renderDecks();
