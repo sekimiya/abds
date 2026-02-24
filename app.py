@@ -686,6 +686,7 @@ def _build_card_index():
             'search_text': search_text,
             'pilot': ocr_data.get('pilot') or '',
             'model': ocr_data.get('model') or '',
+            'illustrator': ocr_data.get('illustrator') or '',
             'sq_rush_effect': '',
             'sqsp_text': '',
             'sq_skill_text': '',

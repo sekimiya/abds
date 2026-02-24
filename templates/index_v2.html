@@ -32,8 +32,8 @@ select,input{font-family:inherit}
 }
 .header-sep{width:1px;height:28px;background:#333;flex-shrink:0}
 .header-group{display:flex;align-items:center;gap:0.4rem;flex-shrink:0}
-.header-label{color:#888;font-size:0.7rem;white-space:nowrap}
-.header-value{color:#ffe082;font-weight:bold;font-size:1.3rem;min-width:28px;text-align:center}
+.header-label{color:#888;font-size:0.75rem;white-space:nowrap}
+.header-value{color:#ffe082;font-weight:bold;font-size:1.2rem;min-width:28px;text-align:center}
 .header-select{
   background:#1a1a1a;border:1px solid #444;border-radius:4px;color:#ccc;
   padding:0.25rem 0.4rem;font-size:0.8rem;
@@ -177,9 +177,9 @@ select,input{font-family:inherit}
 .header-menu-row{display:flex;gap:0.3rem}
 .header-menu-row .header-btn{flex:1}
 .header-menu-divider{height:1px;background:#333;margin:0.2rem 0}
-.header-menu-label{color:#888;font-size:0.7rem}
+.header-menu-label{color:#888;font-size:0.75rem}
 .header-btn.terrain-sel.active{background:#1e2924;border-color:#68efbd;color:#68efbd}
-.cache-info-row{display:flex;align-items:center;gap:0.4rem;font-size:0.7rem;color:#aaa}
+.cache-info-row{display:flex;align-items:center;gap:0.4rem;font-size:0.75rem;color:#aaa}
 .cache-info-row .cache-count{flex:1}
 .cache-modal-body{text-align:center}
 .cache-modal-body h3{color:#ffe082;margin:0 0 1rem}
@@ -202,7 +202,7 @@ select,input{font-family:inherit}
 /* Terrain badge highlight for active terrain */
 .terrain-badge.terrain-active{
   background:#1e2924;border-color:#68efbd;color:#68efbd;
-  box-shadow:0 0 4px rgba(104,239,189,0.4);font-size:0.65rem;
+  box-shadow:0 0 4px rgba(104,239,189,0.4);font-size:0.68rem;
 }
 
 /* ===== MAIN LAYOUT ===== */
@@ -249,7 +249,7 @@ select,input{font-family:inherit}
 .sqsp-badge{
   position:absolute;top:20px;left:4px;z-index:2;
   background:linear-gradient(135deg,#ff69b4,#e91e8c);color:#fff;
-  font-size:0.55rem;font-weight:bold;padding:1px 5px;border-radius:3px;
+  font-size:0.6rem;font-weight:bold;padding:1px 5px;border-radius:3px;
   letter-spacing:0.5px;box-shadow:0 1px 3px rgba(0,0,0,0.4);
 }
 .card-slot.sq{border-color:#ff69b4;border-width:3px;box-shadow:0 0 8px rgba(255,105,180,0.5)}
@@ -257,7 +257,7 @@ select,input{font-family:inherit}
 .sq-badge{
   position:absolute;top:20px;left:4px;z-index:2;
   background:linear-gradient(135deg,#ff69b4,#e91e8c);color:#fff;
-  font-size:0.55rem;font-weight:bold;padding:1px 5px;border-radius:3px;
+  font-size:0.6rem;font-weight:bold;padding:1px 5px;border-radius:3px;
   letter-spacing:0.5px;box-shadow:0 1px 3px rgba(0,0,0,0.4);
 }
 /* ECHOES BEAT orange theme */
@@ -266,7 +266,7 @@ select,input{font-family:inherit}
 .eb-badge{
   position:absolute;top:20px;left:4px;z-index:2;
   background:linear-gradient(135deg,#ff9800,#e65100);color:#fff;
-  font-size:0.55rem;font-weight:bold;padding:1px 5px;border-radius:3px;
+  font-size:0.6rem;font-weight:bold;padding:1px 5px;border-radius:3px;
   letter-spacing:0.5px;box-shadow:0 1px 3px rgba(0,0,0,0.4);
 }
 /* Link Ability active border & badge */
@@ -283,10 +283,10 @@ select,input{font-family:inherit}
 .link-active-badge{
   position:absolute;top:20px;right:4px;z-index:2;
   background:linear-gradient(135deg,#68efbd,#68efbd);color:#0a0a0a;
-  font-size:0.55rem;font-weight:bold;padding:1px 5px;border-radius:3px;
+  font-size:0.6rem;font-weight:bold;padding:1px 5px;border-radius:3px;
   letter-spacing:0.5px;box-shadow:0 1px 3px rgba(0,0,0,0.4);
 }
-.card-slot-label{color:#555;font-size:0.65rem;font-weight:bold;margin-bottom:0.2rem}
+.card-slot-label{color:#555;font-size:0.72rem;font-weight:bold;margin-bottom:0.2rem}
 .card-slot-img{
   width:100%;height:auto;border-radius:4px;
   cursor:pointer;transition:transform 0.15s;
@@ -301,8 +301,18 @@ select,input{font-family:inherit}
 }
 .card-slot.has-card .card-slot-clear{display:flex}
 .card-slot-clear:hover{background:#f44336;color:#fff}
+.card-slot-detail{
+  position:absolute;top:2px;left:4px;
+  background:rgba(0,0,0,0.8);border:1px solid #68efbd;
+  color:#68efbd;border-radius:4px;
+  font-size:0.65rem;font-weight:bold;padding:0.1rem 0.35rem;
+  cursor:pointer;display:none;z-index:3;
+  transition:all 0.15s;
+}
+.card-slot.has-card:hover .card-slot-detail{display:block}
+.card-slot-detail:hover{background:rgba(104,239,189,0.3);color:#fff}
 .slot-empty-icon{font-size:1.5rem;color:#444;margin-bottom:0.2rem}
-.slot-empty-text{font-size:0.7rem;color:#444}
+.slot-empty-text{font-size:0.72rem;color:#444}
 .card-slot-name{display:none}
 /* Card slot link ability tags */
 .slot-link-tags{
@@ -324,7 +334,7 @@ select,input{font-family:inherit}
 
 /* Card names */
 .unit-card-names{
-  text-align:center;font-size:0.75rem;margin-bottom:0.3rem;
+  text-align:center;font-size:0.78rem;margin-bottom:0.3rem;
   flex-shrink:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
 }
 .unit-card-names .ms-name{color:#82b1ff}
@@ -333,29 +343,29 @@ select,input{font-family:inherit}
 /* MS Detail info */
 .unit-ms-detail{
   background:#151515;border-radius:4px;padding:0.4rem 0.5rem;margin-bottom:0.3rem;
-  font-size:0.975rem;
+  font-size:0.88rem;
 }
-.ms-detail-title{color:#82b1ff;font-weight:bold;font-size:0.91rem;margin-bottom:0.25rem;
+.ms-detail-title{color:#82b1ff;font-weight:bold;font-size:0.85rem;margin-bottom:0.25rem;
   border-bottom:1px solid #2a2a2a;padding-bottom:0.15rem;
 }
 .ms-detail-title.weapon-color{color:#ff8a80}
 .ms-detail-title.sp-color{color:#ffb2b2}
 .ms-detail-title.terrain-color{color:#a5d6a7}
 .ms-detail-title.info-color{color:#888}
-.ms-detail-ability-name{font-weight:bold;color:#b2e5ff;font-size:1.04rem;margin-bottom:0.2rem}
+.ms-detail-ability-name{font-weight:bold;color:#b2e5ff;font-size:0.92rem;margin-bottom:0.2rem}
 .ms-detail-ability-name.sp-color{color:#ffb2b2}
 .ms-detail-row{display:flex;gap:0.3rem;margin-bottom:2px;align-items:baseline}
-.ms-detail-label{color:#666;font-size:0.91rem;flex-shrink:0;min-width:40px}
-.ms-detail-value{color:#ccc;font-size:0.975rem;word-break:break-all}
-.ms-detail-desc{color:#bbb;font-size:0.91rem;line-height:1.4;margin-top:0.2rem}
-.ms-detail-power{color:#ffe082;font-weight:bold;font-size:0.975rem;margin-top:0.15rem}
-.ms-detail-impact{color:#888;font-size:0.85rem;margin-top:0.1rem}
-.no-ocr-msg{color:#888;font-size:0.975rem;text-align:center;padding:0.5rem 0}
-.no-ocr-hint{color:#666;font-size:0.85rem}
+.ms-detail-label{color:#666;font-size:0.82rem;flex-shrink:0;min-width:40px}
+.ms-detail-value{color:#ccc;font-size:0.88rem;word-break:break-all}
+.ms-detail-desc{color:#bbb;font-size:0.85rem;line-height:1.4;margin-top:0.2rem}
+.ms-detail-power{color:#ffe082;font-weight:bold;font-size:0.88rem;margin-top:0.15rem}
+.ms-detail-impact{color:#888;font-size:0.8rem;margin-top:0.1rem}
+.no-ocr-msg{color:#888;font-size:0.85rem;text-align:center;padding:0.5rem 0}
+.no-ocr-hint{color:#666;font-size:0.8rem}
 .no-ocr-back-img{width:100%;border-radius:4px;margin-top:0.3rem;opacity:0.9}
 .ms-detail-tags{display:flex;gap:3px;flex-wrap:wrap;margin-top:0.2rem;margin-bottom:0.15rem}
 .ms-detail-tag{
-  padding:0.15rem 0.45rem;border-radius:3px;font-size:0.85rem;font-weight:bold;
+  padding:0.15rem 0.45rem;border-radius:3px;font-size:0.78rem;font-weight:bold;
   background:#1a3a4a;color:#82b1ff;border:1px solid #2a5a6a;
 }
 .ms-detail-tag.sp-tag-color{background:#3a1a1a;color:#ffb2b2;border-color:#5a2a2a}
@@ -365,11 +375,11 @@ select,input{font-family:inherit}
   padding:0.05rem 0.3rem;border-radius:2px;flex-shrink:0;
 }
 .ms-detail-weapon-slot.sub{background:#82b1ff}
-.ms-detail-weapon-name{color:#ccc;font-weight:bold;font-size:0.975rem}
-.ms-detail-weapon-info{color:#888;font-size:0.85rem;flex-shrink:0}
+.ms-detail-weapon-name{color:#ccc;font-weight:bold;font-size:0.88rem}
+.ms-detail-weapon-info{color:#888;font-size:0.8rem;flex-shrink:0}
 .ms-detail-terrain{display:flex;gap:4px;flex-wrap:wrap}
 .ms-terrain-item{
-  padding:0.15rem 0.4rem;border-radius:3px;font-size:0.91rem;font-weight:bold;
+  padding:0.15rem 0.4rem;border-radius:3px;font-size:0.82rem;font-weight:bold;
   background:#222;color:#888;border:1px solid #333;
 }
 .ms-terrain-item.rank-S{background:#4a1a4a;color:#f48fb1;border-color:#6a2a6a}
@@ -382,11 +392,11 @@ select,input{font-family:inherit}
 .ms-detail-title.pl-color{color:#ffe082}
 .ms-detail-ability-name.pl-color{color:#ffe082}
 .sq-inline-badge{
-  font-size:0.72rem;background:#4a1a4a;color:#f48fb1;padding:0.05rem 0.3rem;
+  font-size:0.75rem;background:#4a1a4a;color:#f48fb1;padding:0.05rem 0.3rem;
   border-radius:3px;vertical-align:middle;margin-left:0.2rem;
 }
 .eb-inline-badge{
-  font-size:0.72rem;background:#3d2800;color:#ffb74d;padding:0.05rem 0.3rem;
+  font-size:0.75rem;background:#3d2800;color:#ffb74d;padding:0.05rem 0.3rem;
   border-radius:3px;vertical-align:middle;margin-left:0.2rem;
 }
 .pl-sq-details{
@@ -399,7 +409,7 @@ select,input{font-family:inherit}
   padding:0.05rem 0.3rem;border-radius:2px;flex-shrink:0;
 }
 .pl-sq-label.rush{background:#f48fb1}
-.pl-sq-text{color:#bbb;font-size:0.91rem;line-height:1.3}
+.pl-sq-text{color:#bbb;font-size:0.85rem;line-height:1.3}
 .ms-detail-tag.pl-tag-color{background:#3a3a1a;color:#ffe082;border-color:#5a5a2a}
 .ms-detail-tag.pl-cat-殲滅{background:#3a1a1a;color:#ff8a80;border-color:#5a2a2a}
 .ms-detail-tag.pl-cat-制圧{background:#1a2a4a;color:#82b1ff;border-color:#2a3a6a}
@@ -414,25 +424,25 @@ select,input{font-family:inherit}
 .stat-bar-buff{height:100%;background:#e91e63;transition:width 0.3s}
 .stat-bar-terrain-pos{height:100%;background:#68efbd;transition:width 0.3s}
 .stat-bar-terrain-neg{height:100%;transition:width 0.3s;background:repeating-linear-gradient(135deg,rgba(244,67,54,0.6),rgba(244,67,54,0.6) 2px,rgba(244,67,54,0.3) 2px,rgba(244,67,54,0.3) 4px)}
-.stat-terrain-text{font-size:0.55rem}
+.stat-terrain-text{font-size:0.6rem}
 .stat-terrain-text.positive{color:#68efbd}
 .stat-terrain-text.negative{color:#f44336}
 .stat-value{color:#ccc;font-size:0.75rem;flex:1;min-width:0;text-align:left;flex-shrink:1;padding-left:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.stat-buff-text{color:#e91e63;font-size:0.55rem}
+.stat-buff-text{color:#e91e63;font-size:0.6rem}
 
 /* Ability / Skill sections */
 .unit-ability-section{
   background:#151515;border-radius:4px;padding:0.3rem 0.4rem;margin-bottom:0.3rem;
-  font-size:0.7rem;
+  font-size:0.75rem;
 }
-.ability-title{color:#82b1ff;font-weight:bold;font-size:0.65rem;margin-bottom:0.15rem}
+.ability-title{color:#82b1ff;font-weight:bold;font-size:0.72rem;margin-bottom:0.15rem}
 .ability-name{color:#b2e5ff;font-weight:bold}
-.ability-desc{color:#999;font-size:0.65rem;line-height:1.3;
+.ability-desc{color:#999;font-size:0.72rem;line-height:1.3;
   display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;
 }
-.skill-title{color:#ffe082;font-weight:bold;font-size:0.65rem;margin-bottom:0.15rem}
+.skill-title{color:#ffe082;font-weight:bold;font-size:0.72rem;margin-bottom:0.15rem}
 .skill-name{color:#ffe082;font-weight:bold}
-.skill-desc{color:#999;font-size:0.65rem;line-height:1.3;
+.skill-desc{color:#999;font-size:0.72rem;line-height:1.3;
   display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;
 }
 
@@ -449,7 +459,7 @@ select,input{font-family:inherit}
 .unit-link-name{font-weight:bold;color:#ccc}
 .unit-link-badge{
   display:inline-block;padding:0 0.25rem;border-radius:2px;
-  font-size:0.72rem;font-weight:bold;margin-left:0.2rem;
+  font-size:0.75rem;font-weight:bold;margin-left:0.2rem;
 }
 .unit-link-badge.on{background:#1b5e20;color:#a5d6a7}
 .unit-link-badge.off{background:#333;color:#666}
@@ -468,7 +478,7 @@ select,input{font-family:inherit}
 /* Rarity badge */
 .rarity-tag{
   display:inline-block;padding:0 0.3rem;border-radius:2px;
-  font-size:0.6rem;font-weight:bold;margin-left:0.3rem;
+  font-size:0.65rem;font-weight:bold;margin-left:0.3rem;
   vertical-align:middle;
 }
 .rarity-tag.rarity-M{background:#5e3a1a;color:#ffcc80}
@@ -487,7 +497,7 @@ select,input{font-family:inherit}
   display:flex;gap:3px;margin-bottom:0.3rem;justify-content:center;flex-wrap:wrap;
 }
 .terrain-badge{
-  padding:0.1rem 0.25rem;border-radius:2px;font-size:0.55rem;font-weight:bold;
+  padding:0.1rem 0.25rem;border-radius:2px;font-size:0.6rem;font-weight:bold;
   background:#1a1a1a;border:1px solid #333;
 }
 .terrain-badge.rank-S{color:#ff8a80;border-color:#c62828}
@@ -499,7 +509,7 @@ select,input{font-family:inherit}
 /* Ability detail tags */
 .ability-tags{display:flex;gap:3px;flex-wrap:wrap;margin:0.15rem 0}
 .ability-tag{
-  padding:0.1rem 0.3rem;border-radius:2px;font-size:0.55rem;
+  padding:0.1rem 0.3rem;border-radius:2px;font-size:0.6rem;
   background:#1a2a3a;color:#82b1ff;border:1px solid #2a4a6a;
 }
 .ability-tag.cost-tag{background:#3a2a1a;color:#ffcc80;border-color:#6a4a2a}
@@ -509,7 +519,7 @@ select,input{font-family:inherit}
 /* SQ Skill details */
 .sq-badge{
   display:inline-block;padding:0.1rem 0.3rem;border-radius:2px;
-  font-size:0.55rem;font-weight:bold;margin-left:0.2rem;
+  font-size:0.6rem;font-weight:bold;margin-left:0.2rem;
   background:#1a1a4a;color:#7c4dff;border:1px solid #4a3a8a;
 }
 .sq-details{
@@ -517,32 +527,32 @@ select,input{font-family:inherit}
   background:#0f0f1f;border-radius:3px;border-left:2px solid #7c4dff;
   font-size:0.78rem;line-height:1.3;
 }
-.sq-detail-label{color:#7c4dff;font-weight:bold;font-size:0.72rem}
+.sq-detail-label{color:#7c4dff;font-weight:bold;font-size:0.75rem}
 .sq-detail-text{color:#999;font-size:0.78rem}
 
 /* SP detail tags */
 .sp-tags{display:flex;gap:3px;flex-wrap:wrap;margin:0.15rem 0}
 .sp-tag{
-  padding:0.1rem 0.3rem;border-radius:2px;font-size:0.72rem;
+  padding:0.1rem 0.3rem;border-radius:2px;font-size:0.75rem;
   background:#3a1a1a;color:#ff8a80;border:1px solid #6a2a2a;
 }
 .sp-tag.squad-sp{background:#1a1a4a;color:#7c4dff;border-color:#4a3a8a}
 .sp-tag.united-sp{background:#4a1a1a;color:#ff6e40;border-color:#8a3a1a}
-.sp-desc{color:#999;font-size:0.6rem;line-height:1.3;
+.sp-desc{color:#999;font-size:0.68rem;line-height:1.3;
   display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;
 }
 .impact-area-info{
   display:inline-flex;align-items:center;gap:2px;
-  padding:0.1rem 0.3rem;border-radius:2px;font-size:0.55rem;
+  padding:0.1rem 0.3rem;border-radius:2px;font-size:0.6rem;
   background:#2a2a1a;color:#ffcc80;border:1px solid #4a4a2a;
 }
 
 /* Weapon info */
 .unit-weapon-section{
   background:#151515;border-radius:4px;padding:0.3rem 0.4rem;margin-bottom:0.3rem;
-  font-size:0.65rem;
+  font-size:0.72rem;
 }
-.weapon-title{color:#ff8a80;font-weight:bold;font-size:0.65rem;margin-bottom:0.15rem}
+.weapon-title{color:#ff8a80;font-weight:bold;font-size:0.72rem;margin-bottom:0.15rem}
 .weapon-row{color:#999;display:flex;gap:0.3rem}
 .weapon-name{color:#ccc}
 .weapon-range{color:#ff8a80}
@@ -550,9 +560,9 @@ select,input{font-family:inherit}
 /* SP Attack */
 .unit-sp-section{
   background:#151515;border-radius:4px;padding:0.3rem 0.4rem;margin-bottom:0.3rem;
-  font-size:0.65rem;
+  font-size:0.72rem;
 }
-.sp-title{color:#ffb2b2;font-weight:bold;font-size:0.65rem;margin-bottom:0.15rem}
+.sp-title{color:#ffb2b2;font-weight:bold;font-size:0.72rem;margin-bottom:0.15rem}
 .sp-name{color:#ffb2b2;font-weight:bold}
 .sp-power{color:#888}
 
@@ -565,7 +575,7 @@ select,input{font-family:inherit}
 }
 .tactics-btn:hover{background:#2a2510;border-color:#ffe082}
 .tactics-btn.has-card{border-color:#ffe082;background:#2a2510}
-.tactics-btn .tactics-btn-label{color:#998a40;font-size:0.7rem;font-weight:bold;flex-shrink:0}
+.tactics-btn .tactics-btn-label{color:#998a40;font-size:0.75rem;font-weight:bold;flex-shrink:0}
 .tactics-btn .tactics-btn-name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .tactics-btn .tactics-btn-clear{
   color:#888;font-size:0.9rem;margin-left:2px;flex-shrink:0;
@@ -590,7 +600,7 @@ select,input{font-family:inherit}
 .tactics-picker-card .tp-info{flex:1;min-width:0}
 .tactics-picker-card .tp-name{font-weight:bold;font-size:0.9rem;color:#ffe082;margin-bottom:0.3rem}
 .tactics-picker-card .tp-effect{font-size:0.75rem;color:#aaa;line-height:1.4}
-.tactics-picker-card .tp-condition{font-size:0.7rem;color:#e91e63;margin-top:0.2rem}
+.tactics-picker-card .tp-condition{font-size:0.75rem;color:#e91e63;margin-top:0.2rem}
 
 /* ===== CARD PICKER OVERLAY ===== */
 .sidebar{
@@ -606,11 +616,17 @@ select,input{font-family:inherit}
   display:flex;align-items:center;gap:0.5rem;
   padding:0.5rem 0.8rem;border-bottom:1px solid #333;flex-shrink:0;
 }
-.sidebar-body{display:flex;flex:1;overflow:hidden}
+.sidebar-body{display:flex;flex:1;overflow:hidden;min-height:0}
 .sidebar-left{
   width:280px;flex-shrink:0;overflow-y:auto;
   padding:0.6rem;border-right:1px solid #333;
-  display:flex;flex-direction:column;gap:0.3rem;
+}
+.sidebar-left > *{margin-bottom:0.3rem}
+.sidebar-left > *:last-child{margin-bottom:0}
+.sidebar-left-actions{
+  display:flex;gap:0.4rem;
+  position:sticky;bottom:0;z-index:1;
+  background:#151515;padding:0.4rem 0 0;
 }
 .sidebar-right{flex:1;display:flex;flex-direction:column;overflow:hidden}
 .sidebar-right .thumb-grid{flex:1;overflow-y:auto;padding:0.5rem}
@@ -620,9 +636,9 @@ select,input{font-family:inherit}
 .filter-group-title{
   display:flex;align-items:center;justify-content:space-between;
   padding:0.3rem 0.5rem;background:#1a1a1a;
-  color:#888;font-size:0.7rem;cursor:pointer;user-select:none;
+  color:#888;font-size:0.75rem;cursor:pointer;user-select:none;
 }
-.filter-group-title::after{content:'▼';font-size:0.5rem;transition:transform 0.2s}
+.filter-group-title::after{content:'▼';font-size:0.55rem;transition:transform 0.2s}
 .filter-group.collapsed .filter-group-title::after{transform:rotate(-90deg)}
 .filter-group-body{padding:0.4rem 0.5rem;display:flex;flex-direction:column;gap:0.35rem}
 .filter-group.collapsed .filter-group-body{display:none}
@@ -636,19 +652,19 @@ select,input{font-family:inherit}
 
 /* Rarity filter */
 .rarity-filter{display:flex;gap:3px;flex-wrap:wrap;align-items:center}
-.rarity-label{color:#888;font-size:0.7rem;flex-shrink:0}
+.rarity-label{color:#888;font-size:0.75rem;flex-shrink:0}
 .rarity-btn{
   padding:0.2rem 0.45rem;background:#222;border:1px solid #444;
-  border-radius:3px;color:#888;font-size:0.7rem;cursor:pointer;transition:all 0.15s;
+  border-radius:3px;color:#888;font-size:0.75rem;cursor:pointer;transition:all 0.15s;
 }
 .rarity-btn.active{background:#4a1a1a;border-color:#ff8a80;color:#ff8a80}
 
 /* Toggle filter buttons */
 .toggle-filter{display:flex;gap:3px;flex-wrap:wrap;margin-bottom:0.2rem}
-.toggle-filter-label{color:#666;font-size:0.6rem;flex-basis:100%;margin-bottom:-1px}
+.toggle-filter-label{color:#666;font-size:0.7rem;flex-basis:100%;margin-bottom:-1px}
 .tbtn{
   padding:0.15rem 0.35rem;background:#222;border:1px solid #444;
-  border-radius:3px;color:#888;font-size:0.65rem;cursor:pointer;transition:all 0.15s;white-space:nowrap;
+  border-radius:3px;color:#888;font-size:0.7rem;cursor:pointer;transition:all 0.15s;white-space:nowrap;
 }
 .tbtn.active-eb{background:#3a2200;border-color:#ff9800;color:#ff9800}
 .tbtn.active-sq{background:#2a0020;border-color:#ff69b4;color:#ff69b4}
@@ -659,17 +675,23 @@ select,input{font-family:inherit}
 .category-filter{display:flex;gap:3px;flex-wrap:wrap}
 .cat-btn{
   padding:0.2rem 0.4rem;background:#222;border:1px solid #444;
-  border-radius:3px;color:#888;font-size:0.7rem;cursor:pointer;transition:all 0.15s;
+  border-radius:3px;color:#888;font-size:0.75rem;cursor:pointer;transition:all 0.15s;
 }
+.cat-btn[data-cat="殲滅"]{border-color:rgba(255,138,128,0.6);color:#ff8a80}
+.cat-btn[data-cat="制圧"]{border-color:rgba(130,177,255,0.6);color:#82b1ff}
+.cat-btn[data-cat="防衛"]{border-color:rgba(165,214,167,0.6);color:#a5d6a7}
 .cat-btn.active{background:#1e2924;border-color:#68efbd;color:#68efbd}
 
 /* Series filter (toggle buttons) */
 .series-filter{display:flex;gap:3px;flex-wrap:wrap}
 .series-btn{
   padding:0.2rem 0.4rem;background:#222;border:1px solid #444;
-  border-radius:3px;color:#888;font-size:0.7rem;cursor:pointer;transition:all 0.15s;
+  border-radius:3px;color:#888;font-size:0.75rem;cursor:pointer;transition:all 0.15s;
 }
-.series-btn.active{background:#1e2924;border-color:#68efbd;color:#68efbd}
+.series-btn.has-sq{border-color:rgba(255,105,180,0.6)}
+.series-btn.has-eb{border-color:rgba(255,152,0,0.6)}
+.series-btn.has-sq.has-eb{border-image:linear-gradient(135deg,rgba(255,152,0,0.7),rgba(255,105,180,0.7)) 1}
+.series-btn.active{background:#1e2924;border-color:#68efbd;color:#68efbd;border-image:none}
 
 .filter-row{display:flex;gap:0.3rem;align-items:center}
 .filter-select{
@@ -683,8 +705,8 @@ select,input{font-family:inherit}
 
 /* Range filter (sliders) */
 .range-filter{display:flex;align-items:center;gap:0.3rem}
-.range-label{color:#888;font-size:0.7rem;flex-shrink:0;min-width:42px;text-align:right}
-.range-value{color:#68efbd;font-size:0.7rem;min-width:36px;text-align:center;flex-shrink:0}
+.range-label{color:#888;font-size:0.75rem;flex-shrink:0;min-width:42px;text-align:right}
+.range-value{color:#68efbd;font-size:0.75rem;min-width:36px;text-align:center;flex-shrink:0}
 .range-filter input[type="range"]{
   flex:1;-webkit-appearance:none;appearance:none;height:6px;
   background:#333;border-radius:3px;outline:none;min-width:40px;
@@ -710,11 +732,11 @@ select,input{font-family:inherit}
 .search-btn:hover{background:#2a6a45}
 
 /* Stat filter grid (legacy - kept for compat) */
-.sfg-label{color:#888;font-size:0.7rem;text-align:right;white-space:nowrap}
+.sfg-label{color:#888;font-size:0.75rem;text-align:right;white-space:nowrap}
 .filter-select-sm{width:auto;min-width:50px;flex:0 1 auto;padding:0.25rem;font-size:0.75rem}
 .ocr-toggle{display:flex;align-items:center;gap:3px;cursor:pointer;margin-left:auto;flex-shrink:0}
 .ocr-toggle input{accent-color:#68efbd;width:14px;height:14px}
-.ocr-toggle-text{color:#888;font-size:0.7rem;white-space:nowrap}
+.ocr-toggle-text{color:#888;font-size:0.75rem;white-space:nowrap}
 .clear-btn{
   padding:0.4rem 0.8rem;background:#333;border:1px solid #555;
   border-radius:6px;color:#ccc;font-size:0.8rem;cursor:pointer;transition:all 0.15s;flex-shrink:0;
@@ -732,7 +754,7 @@ select,input{font-family:inherit}
   overflow:hidden;transition:all 0.15s;position:relative;
   background:#1a1a1a;display:flex;flex-direction:column;
 }
-.thumb-card:hover{border-color:#68efbd}
+.thumb-card:hover{border-color:#68efbd;transform:scale(1.05);z-index:2}
 .thumb-card.card-eb{border-color:rgba(255,152,0,0.6)}
 .thumb-card.card-sq{border-color:rgba(255,105,180,0.6)}
 .thumb-card.card-eb.card-sq{border-image:linear-gradient(135deg,rgba(255,152,0,0.7),rgba(255,105,180,0.7)) 1}
@@ -745,35 +767,44 @@ select,input{font-family:inherit}
   object-fit:cover;object-position:top center;
   position:absolute;top:0;left:0;
 }
+.thumb-detail-btn{
+  position:absolute;bottom:0;left:0;right:0;
+  background:rgba(0,0,0,0.8);color:#68efbd;
+  font-size:0.72rem;font-weight:bold;
+  padding:0.3rem;text-align:center;cursor:pointer;
+  opacity:0;transition:opacity 0.15s;z-index:3;
+}
+.thumb-card:hover .thumb-detail-btn{opacity:1}
+.thumb-detail-btn:hover{background:rgba(104,239,189,0.3);color:#fff}
 .thumb-card-info{
   padding:2px 3px;background:#111;display:flex;flex-direction:column;gap:1px;
 }
 .thumb-card-number{
   display:flex;align-items:center;gap:3px;
-  color:#68efbd;font-size:0.55rem;white-space:nowrap;overflow:hidden;
+  color:#68efbd;font-size:0.65rem;white-space:nowrap;overflow:hidden;
 }
 .thumb-card-number .thumb-inline-rarity{
-  font-size:0.5rem;font-weight:bold;padding:0 2px;border-radius:2px;
+  font-size:0.58rem;font-weight:bold;padding:0 2px;border-radius:2px;
   background:#222;flex-shrink:0;
 }
 .thumb-card-number .thumb-no-ocr{
-  color:#666;font-size:0.5rem;font-style:italic;flex-shrink:0;
+  color:#666;font-size:0.58rem;font-style:italic;flex-shrink:0;
 }
 .thumb-card-name{
-  color:#ddd;font-size:0.6rem;font-weight:bold;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  color:#ddd;font-size:0.68rem;font-weight:bold;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
 }
 .thumb-card-sub{
-  color:#888;font-size:0.5rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  color:#888;font-size:0.6rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
 }
 .thumb-card-badges{
   position:absolute;top:2px;right:2px;display:flex;flex-direction:column;gap:1px;align-items:flex-end;
 }
 .thumb-card-cost{
   background:rgba(0,0,0,0.75);color:#ffe082;
-  font-size:0.55rem;font-weight:bold;padding:0 3px;border-radius:2px;line-height:1.4;
+  font-size:0.6rem;font-weight:bold;padding:0 3px;border-radius:2px;line-height:1.4;
 }
 .thumb-card-rarity{
-  background:rgba(0,0,0,0.75);font-size:0.55rem;font-weight:bold;padding:0 3px;border-radius:2px;line-height:1.4;
+  background:rgba(0,0,0,0.75);font-size:0.6rem;font-weight:bold;padding:0 3px;border-radius:2px;line-height:1.4;
 }
 .thumb-card-rarity.r-M{color:#82b1ff}.thumb-card-rarity.r-C{color:#aaa}
 .thumb-card-rarity.r-R{color:#ffe082}.thumb-card-rarity.r-SR{color:#ff8a80}
@@ -783,39 +814,39 @@ select,input{font-family:inherit}
 .thumb-ocr-badge{
   position:absolute;bottom:2px;right:2px;
   background:rgba(104,239,189,0.85);color:#000;
-  font-size:0.45rem;font-weight:bold;padding:0 3px;border-radius:2px;
+  font-size:0.55rem;font-weight:bold;padding:0 3px;border-radius:2px;
   line-height:1.4;
 }
 .thumb-sq-badge{
   position:absolute;bottom:2px;left:2px;
   background:rgba(255,105,180,0.9);color:#fff;
-  font-size:0.45rem;font-weight:bold;padding:0 3px;border-radius:2px;
+  font-size:0.55rem;font-weight:bold;padding:0 3px;border-radius:2px;
   line-height:1.4;
 }
 .thumb-eb-badge{
   position:absolute;bottom:2px;right:2px;
   background:rgba(255,152,0,0.9);color:#fff;
-  font-size:0.45rem;font-weight:bold;padding:0 3px;border-radius:2px;
+  font-size:0.55rem;font-weight:bold;padding:0 3px;border-radius:2px;
   line-height:1.4;
 }
 .thumb-card-sq{
-  font-size:0.55rem;color:#ff69b4;line-height:1.3;
+  font-size:0.6rem;color:#ff69b4;line-height:1.3;
 }
 .thumb-card-eb-lv{
-  font-size:0.55rem;color:#ff9800;line-height:1.3;
+  font-size:0.6rem;color:#ff9800;line-height:1.3;
   margin-top:1px;overflow:hidden;
   display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;
 }
 .thumb-overlay{
   position:absolute;top:0;left:0;right:0;bottom:0;
   background:rgba(0,0,0,0.82);color:#ff69b4;
-  font-size:0.55rem;line-height:1.4;padding:4px;
+  font-size:0.6rem;line-height:1.4;padding:4px;
   display:flex;flex-direction:column;justify-content:center;
   overflow:hidden;word-break:break-all;
   white-space:pre-wrap;
 }
 .thumb-overlay-title{
-  font-weight:bold;font-size:0.65rem;margin-bottom:2px;color:#fff;
+  font-weight:bold;font-size:0.72rem;margin-bottom:2px;color:#fff;
 }
 
 /* Pagination */
@@ -868,8 +899,8 @@ select,input{font-family:inherit}
 .modal-card-header{display:flex;gap:1rem;margin-bottom:1rem}
 .modal-card-image{width:200px;height:auto;border-radius:8px;flex-shrink:0}
 .modal-card-info{flex:1}
-.modal-card-number{color:#68efbd;font-weight:bold;font-size:1.1rem}
-.modal-card-name{font-size:1.3rem;font-weight:bold;margin-top:0.2rem}
+.modal-card-number{color:#68efbd;font-weight:bold;font-size:1.05rem}
+.modal-card-name{font-size:1.2rem;font-weight:bold;margin-top:0.2rem}
 .modal-param-group{background:#222;border-radius:6px;padding:0.6rem;margin-top:0.5rem}
 .modal-param-title{color:#4caf50;font-weight:bold;font-size:0.85rem;margin-bottom:0.3rem}
 .modal-param-row{display:flex;flex-wrap:wrap;gap:0.3rem;margin-bottom:0.2rem}
@@ -1015,8 +1046,6 @@ select,input{font-family:inherit}
       <div class="sidebar-tab" data-type="PL" onclick="SearchPanel.setType('PL')">PL</div>
     </div>
     <div style="flex:1"></div>
-    <button class="search-btn" onclick="SearchPanel.applyFilters()">SEARCH</button>
-    <button class="clear-btn" onclick="SearchPanel.clearFilters()">CLEAR</button>
     <button onclick="closeCardPicker()" style="background:none;border:none;color:#888;font-size:1.2rem;cursor:pointer;padding:0 4px">&times;</button>
   </div>
 
@@ -1040,6 +1069,9 @@ select,input{font-family:inherit}
           </div>
           <div class="category-filter" id="categoryFilter"></div>
           <div class="series-filter" id="seriesFilter"></div>
+          <select class="filter-select" id="filterIllustrator" onchange="SearchPanel.applyFilters()" style="width:100%;margin-top:0.3rem">
+            <option value="">イラストレーター</option>
+          </select>
         </div>
       </div>
 
@@ -1138,8 +1170,8 @@ select,input{font-family:inherit}
             <button class="tbtn" data-key="Lv到達時" onclick="SearchPanel.toggle('ebCond',this)">Lv到達時</button>
           </div>
           <div style="display:flex;flex-wrap:wrap;gap:0.3rem">
-            <label class="ocr-toggle" data-for="MS" id="filterEbLabel"><input type="checkbox" id="filterEb" onchange="SearchPanel.applyFilters()"><span class="ocr-toggle-text" style="color:#ff9800">EB表示</span></label>
-            <label class="ocr-toggle" data-for="PL" id="filterEbSkillLabel"><input type="checkbox" id="filterEbSkill" onchange="SearchPanel.applyFilters()"><span class="ocr-toggle-text" style="color:#ff9800">EBスキル表示</span></label>
+            <label class="ocr-toggle" style="margin-left:0" data-for="MS" id="filterEbLabel"><input type="checkbox" id="filterEb" onchange="SearchPanel.applyFilters()"><span class="ocr-toggle-text" style="color:#ff9800">EBSP詳細表示</span></label>
+            <label class="ocr-toggle" style="margin-left:0" data-for="PL" id="filterEbSkillLabel"><input type="checkbox" id="filterEbSkill" onchange="SearchPanel.applyFilters()"><span class="ocr-toggle-text" style="color:#ff9800">EBスキル表示</span></label>
           </div>
         </div>
       </div>
@@ -1193,8 +1225,8 @@ select,input{font-family:inherit}
             <button class="tbtn" data-key="全味方バフ" onclick="SearchPanel.toggle('sqEff',this)">全味方</button>
           </div>
           <div style="display:flex;flex-wrap:wrap;gap:0.3rem">
-            <label class="ocr-toggle" data-for="MS" id="filterSqspLabel"><input type="checkbox" id="filterSqsp" onchange="SearchPanel.applyFilters()"><span class="ocr-toggle-text" style="color:#ff69b4">SQSP表示</span></label>
-            <label class="ocr-toggle" data-for="PL" id="filterSqSkillLabel"><input type="checkbox" id="filterSqSkill" onchange="SearchPanel.applyFilters()"><span class="ocr-toggle-text" style="color:#ff69b4">SQスキル表示</span></label>
+            <label class="ocr-toggle" style="margin-left:0" data-for="MS" id="filterSqspLabel"><input type="checkbox" id="filterSqsp" onchange="SearchPanel.applyFilters()"><span class="ocr-toggle-text" style="color:#ff69b4">SQSP詳細表示</span></label>
+            <label class="ocr-toggle" style="margin-left:0" data-for="PL" id="filterSqSkillLabel"><input type="checkbox" id="filterSqSkill" onchange="SearchPanel.applyFilters()"><span class="ocr-toggle-text" style="color:#ff69b4">SQスキル表示</span></label>
           </div>
         </div>
       </div>
@@ -1252,6 +1284,12 @@ select,input{font-family:inherit}
           <input type="text" class="search-input" id="searchInput" placeholder="名前・番号で検索..." autocomplete="off">
           <input type="text" class="search-input" id="searchTextInput" placeholder="カードテキスト検索..." autocomplete="off">
         </div>
+      </div>
+
+      <!-- SEARCH / CLEAR buttons -->
+      <div class="sidebar-left-actions">
+        <button class="search-btn" onclick="SearchPanel.applyFilters()" style="flex:1">SEARCH</button>
+        <button class="clear-btn" onclick="SearchPanel.clearFilters()" style="flex:1">CLEAR</button>
       </div>
     </div>
 
@@ -1453,6 +1491,10 @@ const CardService = {
       data.cards.forEach(c => { if (c.series) seriesSet.add(c.series); });
       AppState.seriesList = [...seriesSet].sort();
       this._populateSeriesFilter();
+      const illustratorSet = new Set();
+      data.cards.forEach(c => { if (c.illustrator) illustratorSet.add(c.illustrator); });
+      AppState.illustratorList = [...illustratorSet].sort();
+      this._populateIllustratorFilter();
     }
     return data;
   },
@@ -1497,13 +1539,34 @@ const CardService = {
   _populateSeriesFilter() {
     const container = document.getElementById('seriesFilter');
     container.innerHTML = '';
+    // シリーズごとのSQ/EB収録判定
+    const sqSeries = new Set();
+    const ebSeries = new Set();
+    AppState.cardIndex.forEach(c => {
+      if (!c.series) return;
+      if (c.has_sqsp || c.has_sq_skill || c.has_sq_link || c.sq_rush_effect) sqSeries.add(c.series);
+      if (c.has_eb || c.has_eb_skill || c.has_eb_link) ebSeries.add(c.series);
+    });
     AppState.seriesList.forEach(s => {
       const btn = document.createElement('button');
-      btn.className = 'series-btn';
+      btn.className = 'series-btn'
+        + (sqSeries.has(s) ? ' has-sq' : '')
+        + (ebSeries.has(s) ? ' has-eb' : '');
       btn.dataset.series = s;
       btn.textContent = s;
       btn.addEventListener('click', () => SearchPanel.toggleSeries(s));
       container.appendChild(btn);
+    });
+  },
+
+  _populateIllustratorFilter() {
+    const sel = document.getElementById('filterIllustrator');
+    sel.innerHTML = '<option value="">イラストレーター</option>';
+    (AppState.illustratorList || []).forEach(name => {
+      const opt = document.createElement('option');
+      opt.value = name;
+      opt.textContent = name;
+      sel.appendChild(opt);
     });
   }
 };
@@ -2327,8 +2390,8 @@ const UIRenderer = {
       col.className = 'unit-column';
       col.id = `unit-col-${u}`;
       col.innerHTML = `
-        <div class="unit-cost-badge" id="unit-cost-${u}">C: -</div>
         <div class="unit-card-names" id="unit-names-${u}"></div>
+        <div class="unit-cost-badge" id="unit-cost-${u}">C: -</div>
         <div class="card-slot" id="ms-slot-${u}" data-slot="${u}" data-type="MS">
           <div class="card-slot-label">MS ${u+1}</div>
           <button class="card-slot-clear" onclick="event.stopPropagation();DeckManager.clearCard(${u})">&times;</button>
@@ -2412,7 +2475,7 @@ const UIRenderer = {
     const plName = plCard?.name || (plNumber ? plNumber : '');
     namesEl.innerHTML = msName || plName
       ? `<span class="ms-name">${escapeHtml(msName)}</span>${msName && plName ? ' / ' : ''}<span class="pl-name">${escapeHtml(plName)}</span>`
-      : '';
+      : '&nbsp;';
 
     // Sub info (model, pilot)
     this._renderSubInfo(u, msOcr, plOcr, msCard, plCard);
@@ -2426,17 +2489,15 @@ const UIRenderer = {
     let costHtml = `<span>C: ${unitCost || '-'}</span>`;
     if (msRarity) costHtml += `<span class="rarity-tag rarity-${escapeHtml(msRarity)}">${escapeHtml(msRarity)}</span>`;
     if (plRarity) costHtml += `<span class="rarity-tag rarity-${escapeHtml(plRarity)}">${escapeHtml(plRarity)}</span>`;
-    // 地形適性（MSのOCRデータ or cardIndexのterrain）
+    // 地形適性（MSのOCRデータ or cardIndexのterrain）— 常に表示してレイアウト固定
     const tc = msOcr?.terrain_compatibility || msCard?.terrain || null;
-    if (tc) {
-      const tList = [{k:'ground',l:'地'},{k:'space',l:'宇'},{k:'desert',l:'砂'},{k:'water',l:'水'}];
-      tList.forEach(t => {
-        const rank = tc[t.k] || null;
-        const cls = rank ? `rank-${rank}` : 'rank-none';
-        const active = AppState.activeTerrain === t.k ? ' terrain-active' : '';
-        costHtml += `<span class="terrain-badge ${cls}${active}">${t.l}:${rank || '-'}</span>`;
-      });
-    }
+    const tList = [{k:'ground',l:'地'},{k:'space',l:'宇'},{k:'desert',l:'砂'},{k:'water',l:'水'}];
+    tList.forEach(t => {
+      const rank = tc ? (tc[t.k] || null) : null;
+      const cls = rank ? `rank-${rank}` : 'rank-none';
+      const active = AppState.activeTerrain === t.k ? ' terrain-active' : '';
+      costHtml += `<span class="terrain-badge ${cls}${active}">${t.l}:${rank || '-'}</span>`;
+    });
     document.getElementById(`unit-cost-${u}`).innerHTML = costHtml;
 
     // Stats
@@ -2483,6 +2544,7 @@ const UIRenderer = {
       ${badgeHtml}
       <img class="card-slot-img" src="${frontUrl}" alt="${cardNumber}"
            onerror="this.onerror=null;this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22160%22 height=%22240%22><rect fill=%22%23222%22 width=%22160%22 height=%22240%22/><text x=%2280%22 y=%22120%22 fill=%22%23666%22 text-anchor=%22middle%22>No Image</text></svg>'">
+      <button class="card-slot-detail" onclick="event.stopPropagation();showCardModal('${cardNumber}')">詳細</button>
       ${cardName ? `<div class="card-slot-name">${escapeHtml(cardName)}</div>` : ''}
     `;
 
@@ -2491,10 +2553,6 @@ const UIRenderer = {
       e.stopPropagation();
       isFront = !isFront;
       img.src = isFront ? frontUrl : backUrl;
-    });
-    img.addEventListener('dblclick', (e) => {
-      e.stopPropagation();
-      showCardModal(cardNumber);
     });
   },
 
@@ -2587,7 +2645,7 @@ const UIRenderer = {
     const parts = [];
     if (msOcr?.model) parts.push(`<span class="model-name">${escapeHtml(msOcr.model)}</span>`);
     if (msOcr?.pilot) parts.push(`<span class="pilot-name">${escapeHtml(msOcr.pilot)}</span>`);
-    el.innerHTML = parts.length > 0 ? parts.join(' / ') : '';
+    el.innerHTML = parts.length > 0 ? parts.join(' / ') : '&nbsp;';
   },
 
   _renderMsDetail(u, msOcr, msNumber) {
@@ -3470,6 +3528,107 @@ const SearchPanel = {
     });
     // PLスキル名プルダウンを初期化
     this._populateSkillNames();
+    // localStorageから検索条件を復元
+    this._restoreFilters();
+  },
+
+  _saveFilters() {
+    const state = {
+      searchInput: document.getElementById('searchInput').value,
+      searchTextInput: document.getElementById('searchTextInput').value,
+      rarity: [...this._currentRarity],
+      category: this._currentCategory,
+      series: [...this._selectedSeries],
+      illustrator: document.getElementById('filterIllustrator').value,
+      costMin: document.getElementById('filterCostMin').value,
+      costMax: document.getElementById('filterCostMax').value,
+      mobility: document.getElementById('filterMobility').value,
+      ranged: document.getElementById('filterRanged').value,
+      melee: document.getElementById('filterMelee').value,
+      hp: document.getElementById('filterHp').value,
+      terrainType: document.getElementById('filterTerrainType').value,
+      terrainRank: document.getElementById('filterTerrainRank').value,
+      ocr: document.getElementById('filterOcr').checked,
+      sqsp: document.getElementById('filterSqsp').checked,
+      eb: document.getElementById('filterEb').checked,
+      sqSkill: document.getElementById('filterSqSkill').checked,
+      ebSkill: document.getElementById('filterEbSkill').checked,
+      skillName: document.getElementById('filterSkillName').value,
+      toggles: Object.fromEntries(Object.entries(this._t).map(([k,v]) => [k, [...v]])),
+    };
+    localStorage.setItem('abds_search_filters', JSON.stringify(state));
+  },
+
+  _restoreFilters() {
+    const raw = localStorage.getItem('abds_search_filters');
+    if (!raw) return;
+    try {
+      const s = JSON.parse(raw);
+      document.getElementById('searchInput').value = s.searchInput || '';
+      document.getElementById('searchTextInput').value = s.searchTextInput || '';
+      // Rarity
+      this._currentRarity = new Set(s.rarity || []);
+      document.querySelectorAll('.rarity-btn').forEach(b => {
+        b.classList.toggle('active', this._currentRarity.has(b.dataset.rarity));
+      });
+      // Category
+      this._currentCategory = s.category || '';
+      document.querySelectorAll('.cat-btn').forEach(b => {
+        b.classList.toggle('active', b.dataset.cat === this._currentCategory);
+      });
+      // Series
+      this._selectedSeries = new Set(s.series || []);
+      document.querySelectorAll('.series-btn').forEach(b => {
+        b.classList.toggle('active', this._selectedSeries.has(b.dataset.series));
+      });
+      // Selects
+      document.getElementById('filterIllustrator').value = s.illustrator || '';
+      document.getElementById('filterSkillName').value = s.skillName || '';
+      // Cost sliders
+      document.getElementById('filterCostMin').value = s.costMin ?? 0;
+      document.getElementById('filterCostMax').value = s.costMax ?? 13;
+      document.getElementById('costRangeValue').textContent = (s.costMin ?? 0) + '〜' + (s.costMax ?? 13);
+      // Stat sliders
+      document.getElementById('filterMobility').value = s.mobility ?? 0;
+      document.getElementById('filterRanged').value = s.ranged ?? 0;
+      document.getElementById('filterMelee').value = s.melee ?? 0;
+      document.getElementById('filterHp').value = s.hp ?? 0;
+      document.getElementById('mobilityValue').textContent = s.mobility ?? '0';
+      document.getElementById('rangedValue').textContent = s.ranged ?? '0';
+      document.getElementById('meleeValue').textContent = s.melee ?? '0';
+      document.getElementById('hpValue').textContent = s.hp ?? '0';
+      // Terrain
+      document.getElementById('filterTerrainType').value = s.terrainType || '';
+      document.getElementById('filterTerrainRank').value = s.terrainRank || '';
+      document.getElementById('filterTerrainRank').disabled = !s.terrainType;
+      // Checkboxes
+      document.getElementById('filterOcr').checked = !!s.ocr;
+      document.getElementById('filterSqsp').checked = !!s.sqsp;
+      document.getElementById('filterEb').checked = !!s.eb;
+      document.getElementById('filterSqSkill').checked = !!s.sqSkill;
+      document.getElementById('filterEbSkill').checked = !!s.ebSkill;
+      // Toggle filters
+      if (s.toggles) {
+        Object.entries(s.toggles).forEach(([group, keys]) => {
+          this._t[group] = new Set(keys);
+        });
+        document.querySelectorAll('.tbtn').forEach(btn => {
+          const container = btn.closest('.toggle-filter');
+          if (!container) return;
+          const groupId = container.id;
+          const groupMap = {
+            'ebCategoryBtns':'ebCat','ebLevelBtns':'ebLv','ebCondBtns':'ebCond','ebspEffectBtns':'ebspEff',
+            'sqCategoryBtns':'sqCat','sqGaugeBtns':'sqGauge','sqTriggerBtns':'sqTrig',
+            'sqEffectBtns':'sqEff','sqspEffectBtns':'sqspEff','spEffectBtns':'spEff','skillEffectBtns':'skEff'
+          };
+          const group = groupMap[groupId];
+          if (group && this._t[group].has(btn.dataset.key)) {
+            btn.classList.add('active-' + this._tStyle[group]);
+          }
+        });
+      }
+      this.applyFilters();
+    } catch(e) { /* ignore corrupt data */ }
   },
 
   // _lockedType に応じてフィルタ要素の表示/非表示を切り替え
@@ -3603,6 +3762,11 @@ const SearchPanel = {
     if (this._selectedSeries.size > 0) {
       cards = cards.filter(c => this._selectedSeries.has(c.series));
     }
+    // Illustrator
+    const illustrator = document.getElementById('filterIllustrator').value;
+    if (illustrator) {
+      cards = cards.filter(c => c.illustrator === illustrator);
+    }
     // Cost (range slider)
     const costMin = parseInt(document.getElementById('filterCostMin').value);
     const costMax = parseInt(document.getElementById('filterCostMax').value);
@@ -3727,6 +3891,7 @@ const SearchPanel = {
     this._filteredCards = cards;
     this._page = 0;
     this._renderGrid();
+    this._saveFilters();
   },
 
   clearFilters() {
@@ -3756,6 +3921,7 @@ const SearchPanel = {
     document.getElementById('filterSqSkill').checked = false;
     document.getElementById('filterEbSkill').checked = false;
     document.getElementById('filterSkillName').value = '';
+    document.getElementById('filterIllustrator').value = '';
     document.getElementById('searchInput').value = '';
     document.getElementById('searchTextInput').value = '';
     // Toggle filters clear
@@ -3765,6 +3931,7 @@ const SearchPanel = {
     this._currentCategory = '';
     document.querySelectorAll('.rarity-btn').forEach(b => b.classList.remove('active'));
     document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+    localStorage.removeItem('abds_search_filters');
     this.applyFilters();
   },
 
@@ -3816,6 +3983,7 @@ const SearchPanel = {
           ${card.sq_rush_effect || card.sqsp_text ? '<div class="thumb-sq-badge">SQ</div>' : ''}
           ${card.has_eb || card.has_eb_skill || card.has_eb_link ? '<div class="thumb-eb-badge">EB</div>' : ''}
           ${overlayHtml}
+          <div class="thumb-detail-btn" onclick="event.stopPropagation();showCardModal('${card.number}')">詳細</div>
         </div>
         <div class="thumb-card-info">
           <div class="thumb-card-number">
@@ -3830,7 +3998,6 @@ const SearchPanel = {
         </div>
       `;
       el.addEventListener('click', () => this._selectCard(card));
-      el.addEventListener('dblclick', (e) => { e.preventDefault(); showCardModal(card.number); });
       grid.appendChild(el);
     });
 

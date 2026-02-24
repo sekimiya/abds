@@ -10,6 +10,9 @@ import uuid
 import time
 import threading
 
+from dotenv import load_dotenv
+load_dotenv()
+
 # ---------------------------------------------------------------------------
 # Supabase client (lazy singleton)
 # ---------------------------------------------------------------------------
