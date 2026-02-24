@@ -130,6 +130,14 @@ STRUCTURE_PROMPT = r"""カード裏面のOCR生テキストを解析し、JSON�
 }
 ```
 UNITED SP がある場合（FQ/UT系）: special_attack.united_sp = { "partner1", "partner2", "range", "power", "description" }。連携相手が「ー」なら null。
+ECHOES BEAT がある場合: special_attack に以下のフィールドを追加（キー名は必ずこの通りにすること）:
+- "eb_level": EBレベル（整数。例: 2）
+- "eb_power": EB時の威力（整数。通常威力とEB威力が「3200 / 3800」のように併記される場合、後者がeb_power）
+- "eb_description": EB発動時の効果説明（通常説明と「／」で区切られている場合、「／」以降がEB説明）
+- "eb_target": EB時の対象（例: "単体(敵)"。通常と同じ場合も記載）
+- "eb_range": EB時の射程（整数。通常と同じ場合も記載）
+- "sp_type": "ECHOES BEAT SP"（ECHOES BEAT SPの場合のみ。通常のECHOES BEATにはこのフィールドを付けない）
+※ echoes_beat_lv, power_eb 等の別名は使わないこと。必ず上記のキー名を使用する。
 
 ## PLカードの場合
 ```json
@@ -215,6 +223,14 @@ PART Aで書き起こしたテキストを元に、以下のJSON形式で構造�
 }
 ```
 UNITED SP がある場合（FQ/UT系）: special_attack.united_sp = { "partner1", "partner2", "range", "power", "description" }。連携相手が「ー」なら null。
+ECHOES BEAT がある場合: special_attack に以下のフィールドを追加（キー名は必ずこの通りにすること）:
+- "eb_level": EBレベル（整数。例: 2）
+- "eb_power": EB時の威力（整数。通常威力とEB威力が「3200 / 3800」のように併記される場合、後者がeb_power）
+- "eb_description": EB発動時の効果説明（通常説明と「／」で区切られている場合、「／」以降がEB説明）
+- "eb_target": EB時の対象（例: "単体(敵)"。通常と同じ場合も記載）
+- "eb_range": EB時の射程（整数。通常と同じ場合も記載）
+- "sp_type": "ECHOES BEAT SP"（ECHOES BEAT SPの場合のみ。通常のECHOES BEATにはこのフィールドを付けない）
+※ echoes_beat_lv, power_eb 等の別名は使わないこと。必ず上記のキー名を使用する。
 
 ## PLカードの場合
 ```json

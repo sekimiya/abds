@@ -333,8 +333,8 @@ def _build_card_index():
                             eb_entry['eb_description'] = eb_entry['eb_description'] or src['lv_down'].get('description', '')
                         prev['echoes_beat'] = eb_entry
 
-                    # パターン2: フラットフィールド（eb_level, eb_power, eb_description）
-                    elif sa_data.get('eb_level') or sa_data.get('eb_power') or sa_data.get('eb_description'):
+                    # パターン2: フラットフィールド（eb_level/echoes_beat_lv, eb_power/power_eb, eb_description）
+                    elif sa_data.get('eb_level') or sa_data.get('echoes_beat_lv') or sa_data.get('eb_power') or sa_data.get('power_eb') or sa_data.get('eb_description'):
                         # name から EB SP名を分離
                         eb_sp_name2 = ''
                         full_name2 = sa_data.get('name', '') or ''
@@ -351,15 +351,22 @@ def _build_card_index():
                                     found2 = True
                                     eb_name_parts2.append(p2)
                             eb_sp_name2 = ' '.join(eb_name_parts2)
+                        _eb_lv2 = sa_data.get('eb_level') or sa_data.get('echoes_beat_lv')
+                        _eb_pw2 = sa_data.get('eb_power') or sa_data.get('power_eb') or sa_data.get('power_enhanced')
+                        _eb_desc2 = sa_data.get('eb_description', '')
+                        if not _eb_desc2:
+                            _full_desc2 = sa_data.get('description', '') or ''
+                            if '／' in _full_desc2:
+                                _eb_desc2 = _full_desc2.split('／', 1)[1].strip()
                         prev['echoes_beat'] = {
                             'has_eb': True,
                             'eb_type': 'sp' if is_eb_sp else 'normal',
-                            'eb_level': sa_data.get('eb_level'),
+                            'eb_level': _eb_lv2,
                             'eb_sp_name': eb_sp_name2,
-                            'eb_description': sa_data.get('eb_description', ''),
-                            'eb_power': sa_data.get('eb_power') or sa_data.get('power_enhanced'),
-                            'eb_target': '',
-                            'eb_range': None,
+                            'eb_description': _eb_desc2,
+                            'eb_power': _eb_pw2,
+                            'eb_target': sa_data.get('eb_target', '') or sa_data.get('target', ''),
+                            'eb_range': sa_data.get('eb_range') or sa_data.get('range'),
                         }
 
                     # パターン3: power_enhanced のみ（ECHOES BEAT SP）
