@@ -34,18 +34,7 @@ _safe_int = safe_int
 
 app = Flask(__name__)
 
-@app.before_request
-def require_basic_auth():
-    username = os.environ.get('BASIC_AUTH_USERNAME')
-    password = os.environ.get('BASIC_AUTH_PASSWORD')
-    if not username or not password:
-        return  # 環境変数未設定ならスキップ
-    auth = request.authorization
-    if not auth or auth.username != username or auth.password != password:
-        return Response(
-            'Unauthorized', 401,
-            {'WWW-Authenticate': 'Basic realm="Login Required"'}
-        )
+
 
 decks_file = 'decks.json'
 decks_lock = threading.Lock()
