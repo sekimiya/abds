@@ -685,7 +685,7 @@ select,input{font-family:inherit}
   display:flex;align-items:center;gap:0.5rem;
   padding:0.5rem 0.8rem;border-bottom:1px solid #333;flex-shrink:0;
 }
-.sidebar-body{display:flex;flex:1;overflow:hidden;min-height:0}
+.sidebar-body{display:flex;height:calc(100vh - 45px);overflow:hidden}
 .sidebar-left{
   width:280px;flex-shrink:0;overflow-y:scroll;
   padding:0.6rem;border-right:1px solid #333;
@@ -698,8 +698,8 @@ select,input{font-family:inherit}
   background:#151515;padding:0.4rem 0 0;
 }
 .sidebar-right{flex:1;display:flex;flex-direction:column;overflow:hidden;min-height:0}
-.sidebar-right .thumb-grid{flex-grow:1;height:0;overflow-y:scroll;padding:0.5rem}
-.sidebar-right .sidebar-pagination{flex-shrink:0}
+.sidebar-right .thumb-grid-wrap{flex:1 1 0;min-height:0;overflow-y:scroll;padding:0.5rem}
+.sidebar-right .sidebar-pagination{flex-shrink:0;padding:0.3rem}
 /* Filter group (collapsible) */
 .filter-group{border:1px solid #2a2a2a;border-radius:4px;overflow:hidden}
 .filter-group-title{
@@ -814,7 +814,6 @@ select,input{font-family:inherit}
 
 /* Thumbnail grid */
 .thumb-grid{
-  flex:1 1 0;min-height:0;overflow-y:scroll;padding:0.5rem;
   display:grid;grid-template-columns:repeat(auto-fill,110px);gap:8px;
   align-content:start;justify-content:start;
 }
@@ -1402,7 +1401,9 @@ select,input{font-family:inherit}
 
     <!-- RIGHT PANE: RESULTS -->
     <div class="sidebar-right">
-      <div class="thumb-grid" id="thumbGrid"></div>
+      <div class="thumb-grid-wrap">
+        <div class="thumb-grid" id="thumbGrid"></div>
+      </div>
       <div class="sidebar-pagination" style="justify-content:center">
         <span class="page-info" id="pageInfo">-</span>
       </div>
