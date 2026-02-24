@@ -1,0 +1,83 @@
+{
+  "card_number": "AB03-038",
+  "card_name": "ガンダムヘビーアームズ",
+  "series": "SEASON:03",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB03-038.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB03-038_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "AB03-038",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト5"
+    },
+    "name": "ガンダムヘビーアームズ",
+    "model": "XXXG-01H GUNDAM HEAVYARMS",
+    "cost": 5,
+    "category": "遠距離",
+    "affiliation": "―",
+    "pilot": "トロワ・バートン",
+    "stats": {
+      "height": "16.7m",
+      "weight": "7.7t",
+      "mobility": 290,
+      "ranged_attack": 530,
+      "melee_attack": 140,
+      "hp": 340
+    },
+    "terrain_compatibility": {
+      "ground": "S",
+      "space": "B",
+      "desert": "A",
+      "water": null
+    },
+    "weapon": {
+      "main": {
+        "name": "ビームガトリング",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "アーミーナイフ",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "全弾発射",
+      "activation": "任意発動",
+      "target": "範囲(敵)",
+      "range": 3,
+      "cost": 5,
+      "description": "ロックオン中の敵を中心に扇状の範囲攻撃を行い、範囲内の敵にダメージを与え、以後通常攻撃がサブ武装のみになる。"
+    },
+    "link_ability": [
+      {
+        "name": "ガンダムW",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "距離をとった射撃戦",
+        "condition": "デッキに2枚以上",
+        "effect": "[遠距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "一斉射撃",
+      "target": "範囲(敵)",
+      "range": 3,
+      "sp_cost": 3,
+      "power": 3600,
+      "description": "対象の敵を中心として範囲射撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "P",
+    "illustrator": "Eske Yoshinob",
+    "raw": "MS\n\n遠距離 コスト5\n\nXXXG-01H GUNDAM HEAVYARMS\nガンダムヘビーアームズ\n\n[アイコン:新機動戦記ガンダムW]\n\n全高 16.7m\n本体重量 7.7t\n所属 ―\nパイロット トロワ・バートン\n\n地上 S 宇宙 B 砂漠 A\n機動力 290\n遠距離攻撃 530\n近距離攻撃 140\nHP 340\n\nWEAPON\nMAIN ビームガトリング 射程 3 遠距離\nSUB アーミーナイフ 射程 1 近距離\n\nLINK ABILITY\nガンダムW デッキに3枚以上\n[機動力]小アップ\n\n距離をとった射撃戦 デッキに2枚以上\n[遠距離攻撃力]小アップ\n\nMS ABILITY\n全弾発射\n任意発動 範囲(敵) 射程 3 コスト 5\n\nロックオン中の敵を中心に扇状の範囲攻撃を行い、範囲内の敵にダメージを与え、以後通常攻撃がサブ武装のみになる。\n\nSPECIAL ATTACK\n一斉射撃\n範囲(敵) 射程 3\nSPコスト 3 威力 3600\n\n対象の敵を中心として範囲射撃でダメージを与える。\n\nIMPACT AREA\n[アイコン:前方扇状範囲、中心にX印、下方に三角マーカー]\n\nillust Eske Yoshinob\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n[アイコン:機動戦士ガンダム]\nAS ARSENAL BASE®\n\nAB03-038 P"
+  },
+  "ocr_raw_file": "SEASON_03_AB03-038_ガンダムヘビーアームズ_ocr_raw.json",
+  "ocr_timestamp": "2026-02-23T15:15:28.694787",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli"
+}

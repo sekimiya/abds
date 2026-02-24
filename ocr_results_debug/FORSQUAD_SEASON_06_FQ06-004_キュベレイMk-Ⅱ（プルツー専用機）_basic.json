@@ -1,0 +1,83 @@
+{
+  "card_number": "FQ06-004",
+  "card_name": "キュベレイMk-Ⅱ（プルツー専用機）",
+  "series": "FORSQUAD SEASON:06",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ06-004.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ06-004_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "FQ06-004",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト2"
+    },
+    "name": "キュベレイMk-Ⅱ(プルツー専用機)",
+    "model": "AMX-004-3 PLE TWO'S QUBELEY Mk-Ⅱ",
+    "cost": 2,
+    "category": "遠距離",
+    "affiliation": "ネオ・ジオン",
+    "pilot": "プルツー",
+    "stats": {
+      "height": "18.4m",
+      "weight": "35.2t",
+      "mobility": 210,
+      "ranged_attack": 270,
+      "melee_attack": 80,
+      "hp": 190
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "C",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "ビーム・ガン",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ビーム・サーベル",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "縛射",
+      "activation": "任意発動",
+      "target": "単体(敵)",
+      "range": 3,
+      "cost": 3,
+      "description": "ロックオン中の敵ユニットに単体攻撃を行いダメージを与え、一定時間スタンさせる。"
+    },
+    "link_ability": [
+      {
+        "name": "機動戦士ガンダムZZ",
+        "condition": "デッキに3枚以上",
+        "effect": "[HP]小アップ"
+      },
+      {
+        "name": "的確な一撃",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][遠距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ビーム・ガン撃射",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3000,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "C",
+    "illustrator": "Ultimateinudog",
+    "raw": "遠距離 コスト2\n\nAMX-004-3 PLE TWO'S QUBELEY Mk-Ⅱ\n\nキュベレイMk-Ⅱ(プルツー専用機)\n\nMS\n[アイコン:機動戦士ガンダムZZ]\n\n頭頂高 18.4m\n本体重量 35.2t\n所属 ネオ・ジオン\nパイロット プルツー\n\n地上 A 宇宙 S 砂漠 C 水中 C\n\n機動力 210\n遠距離攻撃 270\n近距離攻撃 80\nHP 190\n\nWEAPON\nMAIN ビーム・ガン 射程3 遠距離\nSUB ビーム・サーベル 射程1 近距離\n\nLINK ABILITY\n機動戦士ガンダムZZ デッキに3枚以上\n[HP]小アップ\n\n的確な一撃 デッキに4枚以上\n[機動力][遠距離攻撃力]小アップ\n\nMS ABILITY\n縛射\n任意発動 単体(敵) 射程3 コスト3\nロックオン中の敵ユニットに単体攻撃を行いダメージを与え、一定時間スタンさせる。\n\nSPECIAL ATTACK\nビーム・ガン撃射\n\nUNITED SP\nー\n\n連携 ー 連携 ー\n連携 ー 連携 ー\n単体(敵) 射程3 ー 射程 ー\nSPコスト 2 威力 3000 / ー\n\n敵単体に射撃攻撃でダメージを与える。\n/ ー\n\nIMPACT AREA\n[アイコン:正面中距離1マス]\n\nillust Ultimateinudog\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nFQ06-004 C"
+  },
+  "ocr_raw_file": "FORSQUAD_SEASON_06_FQ06-004_キュベレイMk-Ⅱ（プルツー専用機）_ocr_raw.json",
+  "ocr_timestamp": "2026-02-24T18:38:00.531382",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

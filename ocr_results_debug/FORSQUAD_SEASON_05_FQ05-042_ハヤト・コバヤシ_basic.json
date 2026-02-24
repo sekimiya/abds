@@ -1,0 +1,64 @@
+{
+  "card_number": "FQ05-042",
+  "card_name": "ハヤト・コバヤシ",
+  "series": "FORSQUAD SEASON:05",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ05-042.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ05-042_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "FQ05-042",
+    "type": "PL",
+    "card_label": {
+      "class": "防衛",
+      "cost_label": "コスト2"
+    },
+    "name": "ハヤト・コバヤシ",
+    "english_name": "HAYATO KOBAYASHI",
+    "cost": 2,
+    "category": "防衛",
+    "affiliation": "地球連邦軍",
+    "physical": {
+      "height": "150cm",
+      "age": 15
+    },
+    "units": [
+      "ガンキャノン",
+      "ガンタンク"
+    ],
+    "stats": {
+      "mobility": 210,
+      "ranged_attack": 300,
+      "melee_attack": 30,
+      "hp": 250
+    },
+    "pilot_skill": {
+      "name": "追り狙う射撃術",
+      "trigger": "敵ユニットをロックオン時",
+      "effect": "SQゲージ小アップ。\n\nSQUAD RUSH中\n自身の[機動力][遠距離攻撃力]をアップする。",
+      "has_sq_skill": true,
+      "sq_skill_details": {
+        "sq_gauge_effect": "SQゲージ小アップ。",
+        "sq_max_effect": null,
+        "squad_rush_effect": "自身の[機動力][遠距離攻撃力]をアップする。"
+      }
+    },
+    "link_ability": [
+      {
+        "name": "めぐりあい宇宙",
+        "condition": "デッキに3枚以上",
+        "effect": "SQゲージが表示される。SQゲージを溜めるとSQUAD RUSHが発動できる。\n[機動力][HP]小アップ"
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "rarity": "M",
+    "illustrator": null,
+    "raw": "防衛 コスト2\n\nハヤト・コバヤシ\nHAYATO KOBAYASHI\n\nPL\nガンダム\n[アイコン:地球連邦軍]\n\n身長 150cm\n年齢 15歳\n所属 地球連邦軍\n搭乗機体 ガンキャノン、ガンタンク\n\nSQ PL SKILL\n追り狙う射撃術\n敵ユニットをロックオン時\nSQゲージ小アップ。\n\nSQUAD RUSH中\n自身の[機動力][遠距離攻撃力]をアップする。\n\nSQ LINK ABILITY\nめぐりあい宇宙 デッキに3枚以上\nSQゲージが表示される。\nSQゲージを溜めるとSQUAD RUSHが発動できる。\n\n[機動力][HP]小アップ\n\n多彩な戦術 デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]\n小アップ\n\n機動力 210\n遠距離攻撃 300\n近距離攻撃 30\nHP 250\n\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nFQ05-042 M"
+  },
+  "ocr_raw_file": "FORSQUAD_SEASON_05_FQ05-042_ハヤト・コバヤシ_ocr_raw.json",
+  "ocr_timestamp": "2026-02-24T18:29:25.234148",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

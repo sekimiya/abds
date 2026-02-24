@@ -1,0 +1,63 @@
+{
+  "card_number": "FQ03-053",
+  "card_name": "アルゴ・ガルスキー",
+  "series": "FORSQUAD SEASON:03",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ03-053.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ03-053_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "FQ03-053",
+    "type": "PL",
+    "card_label": {
+      "class": "制圧",
+      "cost_label": "コスト1"
+    },
+    "name": "アルゴ・ガルスキー",
+    "english_name": "ARGO GULSKII",
+    "cost": 1,
+    "category": "制圧",
+    "affiliation": "ネオロシア",
+    "physical": {
+      "height": "219cm",
+      "age": 26
+    },
+    "units": [
+      "ボルトガンダム"
+    ],
+    "stats": {
+      "mobility": 170,
+      "ranged_attack": 40,
+      "melee_attack": 180,
+      "hp": 220
+    },
+    "pilot_skill": {
+      "name": "計算された優位性",
+      "trigger": "敵戦艦／拠点をロックオン時",
+      "effect": "SQゲージ小アップ。\nSQUAD RUSH中\n出撃中の全敵ユニットの[機動力][遠／近攻撃力]をダウンする。",
+      "has_sq_skill": true,
+      "sq_skill_details": {
+        "sq_gauge_effect": "SQゲージ小アップ。",
+        "sq_max_effect": null,
+        "squad_rush_effect": "出撃中の全敵ユニットの[機動力][遠／近攻撃力]をダウンする。"
+      }
+    },
+    "link_ability": [
+      {
+        "name": "新シャッフル同盟",
+        "condition": "デッキに3枚以上",
+        "effect": "SQゲージが表示される。SQゲージを溜めるとSQUAD RUSHが発動できる。\n[機動力][HP]小アップ"
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "rarity": "C",
+    "illustrator": null,
+    "raw": "制圧 コスト1\n\nPL\n\nアルゴ・ガルスキー\nARGO GULSKII\n\n機動武闘伝Gガンダム\n\n身長 219cm\n年齢 26歳\n所属 ネオロシア\n搭乗機体 ボルトガンダム\n\nSQ PL SKILL\n\n計算された優位性\n\n敵戦艦／拠点をロックオン時\n\nSQゲージ小アップ。\n\nSQUAD RUSH中\n出撃中の全敵ユニットの[機動力][遠／近攻撃力]をダウンする。\n\nSQ LINK ABILITY\n\n新シャッフル同盟 デッキに3枚以上\nSQゲージが表示される。\nSQゲージを溜めるとSQUAD RUSHが発動できる。\n\n[機動力][HP]小アップ\n\n多彩な戦術 デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]\n小アップ\n\n機動力 170\n遠距離攻撃 40\n近距離攻撃 180\nHP 220\n\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\n\nFQ03-053 C"
+  },
+  "ocr_raw_file": "FORSQUAD_SEASON_03_FQ03-053_アルゴ・ガルスキー_ocr_raw.json",
+  "ocr_timestamp": "2026-02-24T16:24:03.474746",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

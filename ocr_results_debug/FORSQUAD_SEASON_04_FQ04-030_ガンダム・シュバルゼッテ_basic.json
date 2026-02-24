@@ -1,0 +1,83 @@
+{
+  "card_number": "FQ04-030",
+  "card_name": "ガンダム・シュバルゼッテ",
+  "series": "FORSQUAD SEASON:04",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ04-030.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ04-030_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "FQ04-030",
+    "type": "MS",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト3"
+    },
+    "name": "ガンダム・シュバルゼッテ",
+    "model": "MDX-0003 GUNDAM SCHWARZETTE",
+    "cost": 3,
+    "category": "近距離",
+    "affiliation": "ジェターク・ヘビー・マシーナリー",
+    "pilot": "ラウダ・ニール",
+    "stats": {
+      "height": "18.7m",
+      "weight": "73.3t",
+      "mobility": 200,
+      "ranged_attack": 70,
+      "melee_attack": 330,
+      "hp": 350
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "C",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "ガーディアン・シース",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "ガーディアン・シース(射撃)",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "練破",
+      "activation": "任意発動",
+      "target": "単体(敵)",
+      "range": 2,
+      "cost": 3,
+      "description": "1回目の発動でチャージ状態になり、2回目の発動でロックオン中の敵にダメージを与える。チャージ時間に応じて、ダメージ値が上昇する。"
+    },
+    "link_ability": [
+      {
+        "name": "水星の魔女",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "肉薄する戦い",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ビームブレイド突撃",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3300,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "M",
+    "illustrator": "haru",
+    "raw": "近距離 コスト3 MS\n\n水星の魔女\n\nMDX-0003 GUNDAM SCHWARZETTE\nガンダム・シュバルゼッテ\n\n頭頂高 18.7m\n本体重量 73.3t\n所属 ジェターク・ヘビー・マシーナリー\nパイロット ラウダ・ニール\n\n地上 A 宇宙 S 砂漠 C 水中 C\n機動力 200\n遠距離攻撃 70\n近距離攻撃 330\nHP 350\n\nWEAPON\nMAIN ガーディアン・シース 射程 1 近距離\nSUB ガーディアン・シース(射撃) 射程 3 遠距離\n\nLINK ABILITY\n水星の魔女 デッキに3枚以上\n[機動力]小アップ\n\nMS ABILITY\n練破\n任意発動 単体(敵) 射程 2 コスト 3\n1回目の発動でチャージ状態になり、2回目の発動でロックオン中の敵にダメージを与える。チャージ時間に応じて、ダメージ値が上昇する。\n\n肉薄する戦い デッキに4枚以上\n[機動力][近距離攻撃力]小アップ\n\nIMPACT AREA\n[アイコン:5×5グリッド、中央下に黄丸、その左に緑丸、最下段中央に三角]\n\nSPECIAL ATTACK\nビームブレイド突撃\n連携 ー\n連携 ー\n単体(敵) 射程 3\nSPコスト 2 威力 3300 /ー\n\nUNITED SP\n連携 ー\n連携 ー\n射程 ー\n\n敵単体に格闘攻撃でダメージを与える。\n/ー\n\nillust haru\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\nFQ04-030 M"
+  },
+  "ocr_raw_file": "FORSQUAD_SEASON_04_FQ04-030_ガンダム・シュバルゼッテ_ocr_raw.json",
+  "ocr_timestamp": "2026-02-24T18:21:38.723221",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

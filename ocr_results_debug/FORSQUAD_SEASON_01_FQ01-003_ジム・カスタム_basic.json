@@ -1,0 +1,83 @@
+{
+  "card_number": "FQ01-003",
+  "card_name": "ジム・カスタム",
+  "series": "FORSQUAD SEASON:01",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ01-003.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ01-003_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "FQ01-003",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト5"
+    },
+    "name": "ジム・カスタム",
+    "model": "RGM-79N GM CUSTOM",
+    "cost": 5,
+    "category": "遠距離",
+    "affiliation": "地球連邦軍",
+    "pilot": "サウス・バニング、アルファ・A・ベイト、ベルナルド・モンシア",
+    "stats": {
+      "height": "18.0m",
+      "weight": "42.0t",
+      "mobility": 240,
+      "ranged_attack": 400,
+      "melee_attack": 80,
+      "hp": 530
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "A",
+      "desert": "C",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "ジム・ライフル",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ビーム・サーベル",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "転化[支援]",
+      "activation": "任意発動",
+      "target": "範囲(味方)",
+      "range": null,
+      "cost": 4,
+      "description": "一定時間、自身を中心とした範囲内の味方ユニットを強化する。使用回数に応じて、強化効果が変わる。[1回:遠／近攻撃力アップ][2回:遠／近攻撃力アップ][3回以上:遠／近攻撃力アップ&回復]"
+    },
+    "link_ability": [
+      {
+        "name": "ガンダム0083",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "的確な一撃",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][遠距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ジム・ライフル撃射",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3400,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "M",
+    "illustrator": "Kumagoro",
+    "raw": "MS\n\n遠距離 コスト5\n\nRGM-79N GM CUSTOM\nジム・カスタム\n\n[アイコン:SEASON] SEASON 01 拡張\n[アイコン:地球連邦軍エンブレム]\n\n頭頂高 18.0m\n本体重量 42.0t\n所属 地球連邦軍\nパイロット サウス・バニング、アルファ・A・ベイト、ベルナルド・モンシア\n\n地上 A 宇宙 A 砂漠 C 水中 C\n機動力 240\n遠距離攻撃 400\n近距離攻撃 80\nHP 530\n\nWEAPON\n\nMAIN ジム・ライフル 射程 3 遠距離\nSUB ビーム・サーベル 射程 1 近距離\n\nLINK ABILITY\n\nガンダム0083 デッキに3枚以上\n[機動力]小アップ\n\nMS ABILITY\n\n転化[支援]\n任意発動 範囲(味方) 射程 — コスト 4\n\n一定時間、自身を中心とした範囲内の味方ユニットを強化する。使用回数に応じて、強化効果が変わる。[1回:遠／近攻撃力アップ][2回:遠／近攻撃力アップ][3回以上:遠／近攻撃力アップ&回復]\n\n的確な一撃 デッキに4枚以上\n[機動力][遠距離攻撃力]小アップ\n\nSPECIAL ATTACK\n\nジム・ライフル撃射\n連携 —  連携 —\n連携 —  連携 —\n単体(敵) 射程 3 — 射程 —\nSPコスト 2 威力 3400 / —\n\n敵単体に射撃攻撃でダメージを与える。\n/ —\n\nUNITED SP\n\n—\n\nIMPACT AREA\n\n[アイコン:円形範囲・中央前方]\n\nillust Kumagoro\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\n\nFQ01-003 M"
+  },
+  "ocr_raw_file": "FORSQUAD_SEASON_01_FQ01-003_ジム・カスタム_ocr_raw.json",
+  "ocr_timestamp": "2026-02-24T01:18:17.919408",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli"
+}

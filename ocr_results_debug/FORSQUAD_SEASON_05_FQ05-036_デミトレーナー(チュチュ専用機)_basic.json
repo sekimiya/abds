@@ -1,0 +1,83 @@
+{
+  "card_number": "FQ05-036",
+  "card_name": "デミトレーナー(チュチュ専用機)",
+  "series": "FORSQUAD SEASON:05",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ05-036.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ05-036_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "FQ05-036",
+    "type": "MS",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト4"
+    },
+    "name": "デミトレーナー（チュチュ専用機）",
+    "model": "MSJ-105CC CHUCHU'S DEMI TRAINER",
+    "cost": 4,
+    "category": "近距離",
+    "affiliation": "地球寮",
+    "pilot": "チュアチュリー・パンランチ",
+    "stats": {
+      "height": "17.4m",
+      "weight": "63.5t",
+      "mobility": 230,
+      "ranged_attack": 50,
+      "melee_attack": 420,
+      "hp": 350
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "A",
+      "desert": "C",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "格闘",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "大型ビームライフル",
+        "range": 4,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "瞬撃",
+      "activation": "任意発動",
+      "target": "範囲(敵)",
+      "range": 5,
+      "cost": 4,
+      "description": "射程範囲内の指定した位置に小範囲攻撃を行い、範囲内の敵にダメージを与える。"
+    },
+    "link_ability": [
+      {
+        "name": "水星の魔女",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "肉薄する戦い",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "大型ビームライフル強撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3400,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "M",
+    "illustrator": "robomisutya",
+    "raw": "MS\n\n近距離 コスト4\n\nMSJ-105CC CHUCHU'S DEMI TRAINER\n水星の魔女\nデミトレーナー（チュチュ専用機）\n\n頭頂高 17.4m\n本体重量 63.5t\n所属 地球寮\nパイロット チュアチュリー・パンランチ\n\n地上 A 宇宙 A 砂漠 C 水中 C\n\n[アイコン:緑丸アイコン]\n機動力 230\n遠距離攻撃 50\n近距離攻撃 420\nHP 350\n\nWEAPON\nMAIN 格闘 射程 1 近距離\nSUB 大型ビームライフル 射程 4 遠距離\n\nLINK ABILITY\n水星の魔女 デッキに3枚以上\n[機動力]小アップ\n\nMS ABILITY\n瞬撃\n任意発動 範囲(敵) 射程 5 コスト 4\n射程範囲内の指定した位置に小範囲攻撃を行い、範囲内の敵にダメージを与える。\n\n肉薄する戦い デッキに4枚以上\n[機動力][近距離攻撃力]小アップ\n\nIMPACT AREA\n[アイコン:×マーカー 上段中央]\n[アイコン:○マーカー 下段中央]\n\nSPECIAL ATTACK　　UNITED SP\n大型ビームライフル強撃　ー\n連携 ー　　連携 ー\n連携 ー　　連携 ー\n単体(敵) 射程 2　ー 射程 ー\nSPコスト 2 威力 3400 / ー\n敵単体に格闘攻撃でダメージを与える。\n/ ー\n\nillust robomisutya\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\nFQ05-036　M"
+  },
+  "ocr_raw_file": "FORSQUAD_SEASON_05_FQ05-036_デミトレーナー(チュチュ専用機)_ocr_raw.json",
+  "ocr_timestamp": "2026-02-24T18:29:30.144541",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

@@ -1,0 +1,83 @@
+{
+  "card_number": "VE01-027",
+  "card_name": "ダブルオーライザー",
+  "series": "WAVECHOES SEASON:01",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE01-027.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE01-027_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "VE01-027",
+    "type": "MS",
+    "card_label": {
+      "class": "機動",
+      "cost_label": "コスト4"
+    },
+    "name": "ダブルオーライザー",
+    "model": "GN-0000+GNR-010 00 RAISER",
+    "cost": 4,
+    "category": "機動",
+    "affiliation": "ソレスタルビーイング",
+    "pilot": "刹那・F・セイエイ&沙慈・クロスロード",
+    "stats": {
+      "height": "18.3m",
+      "weight": "75.1t",
+      "mobility": 240,
+      "ranged_attack": 80,
+      "melee_attack": 250,
+      "hp": 280
+    },
+    "terrain_compatibility": {
+      "ground": "S",
+      "space": "S",
+      "desert": "C",
+      "water": "A"
+    },
+    "weapon": {
+      "main": {
+        "name": "GNソードII",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "GNソードII(ライフルモード)",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "誘導",
+      "activation": "任意発動",
+      "target": "特殊(敵)",
+      "range": null,
+      "cost": 4,
+      "description": "25秒間、自身をロックオン距離内に捉えている敵ユニットのターゲットを自身に集める。"
+    },
+    "link_ability": [
+      {
+        "name": "ガンダム00",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "トランザムの真価",
+        "condition": "デッキに2枚以上",
+        "effect": "[遠/近攻撃力]小アップ、専用作戦カードが使用可能"
+      }
+    ],
+    "special_attack": {
+      "name": "GNツインランス強撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3200,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "C",
+    "illustrator": "sakusaku sakurai",
+    "raw": "MS\n\n機動 コスト4\nGN-0000+GNR-010 00 RAISER\nダブルオーライザー\n\n頭頂高 18.3m\n本体重量 75.1t\n所属 ソレスタルビーイング\nパイロット 刹那・F・セイエイ&沙慈・クロスロード\n\n地上S 宇宙S 砂漠C 水中A\n機動力 240\n遠距離攻撃 80\n近距離攻撃 250\nHP 280\n\nWEAPON\nMAIN GNソードII 射程1 近距離\nSUB GNソードII(ライフルモード) 射程3 遠距離\n\nLINK ABILITY\nガンダム00 デッキに3枚以上\n[機動力]小アップ\n\nMS ABILITY\n誘導\n任意発動 特殊(敵) 射程— コスト 4\n\n25秒間、自身をロックオン距離内に捉えている敵ユニットのターゲットを自身に集める。\n\nトランザムの真価 デッキに2枚以上\n[遠/近攻撃力]小アップ、専用作戦カードが使用可能\n\nSPECIAL ATTACK\nGNツインランス強撃\n—\n単体(敵) 射程2\n\nECHOES BEAT\n—\n— 射程—\n\nSPコスト 2 威力 3200 /—\n\n敵単体に格闘攻撃でダメージを与える。\n/—\n\nIMPACT AREA\n[アイコン:緑丸 中央]\n[アイコン:黄三角 中央下]\n\nillust sakusaku sakurai\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nVE01-027 C"
+  },
+  "ocr_raw_file": "WAVECHOES_SEASON_01_VE01-027_ダブルオーライザー_ocr_raw.json",
+  "ocr_timestamp": "2026-02-23T13:14:19.271753",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli"
+}

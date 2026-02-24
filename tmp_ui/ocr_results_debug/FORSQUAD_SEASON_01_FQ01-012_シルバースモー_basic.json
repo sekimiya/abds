@@ -1,0 +1,74 @@
+{
+  "card_number": "FQ01-012",
+  "card_name": "シルバースモー",
+  "series": "FORSQUAD SEASON:01",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ01-012.jpg?v9",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ01-012_b.jpg?v9",
+  "ocr_data": {
+    "card_id": "FQ01-012",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト3"
+    },
+    "name": "シルバースモー",
+    "model": "MRC-F20 SILVER SUMO",
+    "cost": 3,
+    "category": "遠距離",
+    "pilot": "ポゥ・エイジ",
+    "stats": {
+      "height": "20.3m",
+      "weight": "34.2t",
+      "mobility": 240,
+      "ranged_attack": 260,
+      "melee_attack": 70,
+      "hp": 280
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "C",
+      "desert": "C",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "ハンドビームガン",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ヒートファン",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "再縮",
+      "type": "任意発動",
+      "range": 2,
+      "cost": 2,
+      "description": "自身を中心とした大範囲内にいる、自身を除く味方ユニットのMSアビリティのクールタイムを、一定時間短縮する。"
+    },
+    "link_ability": [
+      {
+        "name": "サブガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[HP]小アップ"
+      },
+      {
+        "name": "的確な一撃",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力]と[遠距離攻撃力]小アップ"
+      }
+    ],
+    "impact_area": {
+      "type": "circular",
+      "radius": 3,
+      "centered": true
+    },
+    "illustrator": "Robographer",
+    "raw": "遠距離 コスト3 MRC-F20 SILVER SUMO シルバースモー 頭頂高 20.3m 本体重量 34.2t 所属 ディアナ親衛隊 パイロット ポゥ・エイジ 地上 S 宇宙 A 砂漠 C 水中 C 機動力 240 遠距離攻撃 260 近距離攻撃 70 HP 280 WEAPON MAIN ハンドビームガン 射程 3 遠距離 SUB ヒートファン 射程 1 近距離 MS ABILITY 再縮 任意発動 範囲 (味方) 射程 2 コスト 2 自身を中心とした大範囲内にいる、自身を除く味方ユニットのMSアビリティのクールタイムを、一定時間短縮する。 LINK ABILITY サブガンダム デッキに3枚以上 [HP]小アップ 的確な一撃 デッキに4枚以上 [機動力]と[遠距離攻撃力]小アップ IMPACT AREA SPECIAL ATTACK ハンドビームガン撃射 単体 (敵) 射程 3 威力 3100 / SPコスト 2 成功 3 / 単体に射撃攻撃でダメージを与える。/ - UNITED SP illust Robographer 企画・制作 ライフバ BANDAI MADE IN JAPAN"
+  },
+  "ocr_timestamp": "2025-06-28T01:51:27.859674",
+  "ocr_type": "basic"
+}

@@ -1,0 +1,83 @@
+{
+  "card_number": "FQ03-021",
+  "card_name": "ガンダムアストレイ レッドフレーム パワードレッド",
+  "series": "FORSQUAD SEASON:03",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ03-021.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ03-021_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "FQ03-021",
+    "type": "MS",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト2"
+    },
+    "name": "ガンダムアストレイ レッドフレーム パワードレッド",
+    "model": "MBF-P02 GUNDAM ASTRAY RED FRAME POWERED RED",
+    "cost": 2,
+    "category": "近距離",
+    "affiliation": "ジャンク屋組合",
+    "pilot": "ロウ・ギュール",
+    "stats": {
+      "height": null,
+      "weight": null,
+      "mobility": 230,
+      "ranged_attack": 70,
+      "melee_attack": 230,
+      "hp": 270
+    },
+    "terrain_compatibility": {
+      "ground": "S",
+      "space": "A",
+      "desert": "B",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "ガーベラ・ストレート",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "イーゲルシュテルン",
+        "range": 2,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "強撃",
+      "activation": "任意発動",
+      "target": "単体(敵)",
+      "range": 1,
+      "cost": 3,
+      "description": "ロックオン中の敵に単体攻撃でダメージを与える。"
+    },
+    "link_ability": [
+      {
+        "name": "SEED ASTRAY",
+        "condition": "デッキに2枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      },
+      {
+        "name": "固めた装甲",
+        "condition": "デッキに2枚以上",
+        "effect": "[HP]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "赤い一撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3200,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "R",
+    "illustrator": "J.YUZURU(willow_works)",
+    "raw": "近距離 コスト2 MS\n\nMBF-P02 GUNDAM ASTRAY RED FRAME POWERED RED\n\nガンダムアストレイ レッドフレーム パワードレッド\n\n頭頂高 ー\n本体重量 ー\n所属 ジャンク屋組合\nパイロット ロウ・ギュール\n\n地上 S 宇宙 A 砂漠 B 水中 C\n\n機動力 230\n遠距離攻撃 70\n近距離攻撃 230\nHP 270\n\nWEAPON\nMAIN ガーベラ・ストレート 射程 1 近距離\nSUB イーゲルシュテルン 射程 2 遠距離\n\nLINK ABILITY\nSEED ASTRAY デッキに2枚以上\n[遠距離攻撃力][近距離攻撃力]\n小アップ\n\nMS ABILITY\n強撃\n任意発動 単体(敵) 射程 1 コスト 3\n\nロックオン中の敵に単体攻撃でダメージ\nを与える。\n\n固めた装甲 デッキに2枚以上\n[HP]小アップ\n\nSPECIAL ATTACK UNITED SP\n赤い一撃\n連携 ー 連携 ー\n連携 ー 連携 ー\n単体(敵) 射程 2 ー 射程 ー\nSPコスト 2 威力 3200 / ー\n\n敵単体に格闘攻撃でダメージを与える。\n/ ー\n\nIMPACT AREA\n[アイコン:中央縦2マス緑丸]\n\nillust J.YUZURU(willow_works)\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nFQ03-021 R"
+  },
+  "ocr_raw_file": "FORSQUAD_SEASON_03_FQ03-021_ガンダムアストレイ_レッドフレーム_パワードレッド_ocr_raw.json",
+  "ocr_timestamp": "2026-02-24T15:32:26.004224",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

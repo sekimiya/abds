@@ -1,0 +1,78 @@
+{
+  "card_number": "AB01-050",
+  "card_name": "ヴァルキランダー",
+  "series": "SEASON:01",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB01-050.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB01-050_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "AB01-050",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト3"
+    },
+    "name": "ヴァルキランダー",
+    "model": "機竜化士 VALKYLANDER",
+    "cost": 3,
+    "category": "遠距離",
+    "affiliation": "BUILD DiVERS",
+    "pilot": "パルヴィーズ",
+    "stats": {
+      "height": "12.0m",
+      "weight": "29.2t",
+      "mobility": 210,
+      "ranged_attack": 330,
+      "melee_attack": 110,
+      "hp": 120
+    },
+    "terrain_compatibility": {
+      "ground": "S",
+      "space": "A",
+      "desert": "B",
+      "water": null
+    },
+    "weapon": {
+      "main": {
+        "name": "GNフレアーデバイス",
+        "range": 4,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "GNガンソード",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "装転[貫通]",
+      "activation": "任意発動",
+      "target": "自分",
+      "range": null,
+      "cost": 4,
+      "description": "通常攻撃がチャージ時間を伴う貫通射撃に変化する。この効果は自身が撤退するまで解除できない。"
+    },
+    "link_ability": [
+      {
+        "name": "Re:RISE",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "GNメガフレアーデバイス貫通射撃",
+      "target": "貫通(敵)",
+      "range": 4,
+      "sp_cost": 3,
+      "power": 3400,
+      "description": "射線上の敵に貫通射撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "M",
+    "illustrator": "Tonamikanji",
+    "raw": "MS\n\n遠距離　コスト3\n\n機竜化士 VALKYLANDER\nヴァルキランダー\n\n全高　12.0m\n本体重量　29.2t\n所属　BUILD DiVERS\nパイロット　パルヴィーズ\n\n地上 S　宇宙 A　砂漠 B\n機動力 210\n遠距離攻撃 330\n近距離攻撃 110\nHP 120\n\nWEAPON\nMAIN　GNフレアーデバイス　射程 4　遠距離\nSUB　GNガンソード　射程 1　近距離\n\nLINK ABILITY\nRe:RISE　デッキに3枚以上\n[遠距離攻撃力]小アップ\n\nMS ABILITY\n装転[貫通]\n任意発動　自分　射程 ー　コスト 4\n通常攻撃がチャージ時間を伴う貫通射撃に変化する。この効果は自身が撤退するまで解除できない。\n\nSPECIAL ATTACK\nGNメガフレアーデバイス貫通射撃\n貫通(敵)　射程 4\nSPコスト 3　威力 3400\n射線上の敵に貫通射撃でダメージを与える。\n\nIMPACT AREA\n[アイコン:自機位置から前方へ直線状に伸びる貫通射程範囲]\n\nillust Tonamikanji\n©創通・サンライズ\n機動戦士ガンダム\nARSENAL BASE\nBANDAI MADE IN JAPAN\n\nAB01-050　M"
+  },
+  "ocr_raw_file": "SEASON_01_AB01-050_ヴァルキランダー_ocr_raw.json",
+  "ocr_timestamp": "2026-02-23T12:35:11.214880",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli"
+}

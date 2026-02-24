@@ -1,0 +1,83 @@
+{
+  "card_number": "AB03-045",
+  "card_name": "ストライクルージュ",
+  "series": "SEASON:03",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB03-045.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB03-045_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "AB03-045",
+    "type": "MS",
+    "card_label": {
+      "class": "機動",
+      "cost_label": "コスト5"
+    },
+    "name": "ストライクルージュ",
+    "model": "MBF-02 STRIKE ROUGE",
+    "cost": 5,
+    "category": "機動",
+    "affiliation": "オーブ",
+    "pilot": "カガリ・ユラ・アスハ",
+    "stats": {
+      "height": "17.72m",
+      "weight": "85.1t",
+      "mobility": 320,
+      "ranged_attack": 220,
+      "melee_attack": 110,
+      "hp": 400
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "C",
+      "water": null
+    },
+    "weapon": {
+      "main": {
+        "name": "高エネルギービームライフル",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ビームサーベル",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "妨害[攻撃]",
+      "activation": "出撃時発動",
+      "target": "範囲(敵)",
+      "range": null,
+      "cost": null,
+      "description": "20秒間、自身を中心とした大範囲内の敵ユニットの[遠距離攻撃力][近距離攻撃力]を小ダウンする。"
+    },
+    "link_ability": [
+      {
+        "name": "ガンダムSEED",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "赤のプライド",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "高エネルギービームライフル撃射",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3400,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "M",
+    "illustrator": "PLANETA_Yamashita",
+    "raw": "MS\n\n機動 コスト5\n\nMBF-02 STRIKE ROUGE\nストライクルージュ\n\n全高 17.72m\n本体重量 85.1t\n所属 オーブ\nパイロット カガリ・ユラ・アスハ\n\n地上 A 宇宙 S 砂漠 C\n\n機動力 320\n遠距離攻撃力 220\n近距離攻撃力 110\nHP 400\n\nWEAPON\n\nMAIN 高エネルギービームライフル 射程 3 遠距離\nSUB ビームサーベル 射程 1 近距離\n\nLINK ABILITY\n\nガンダムSEED デッキに3枚以上\n[機動力]小アップ\n\n赤のプライド デッキに3枚以上\n[機動力]小アップ\n\nMS ABILITY\n\n妨害[攻撃]\n出撃時発動 範囲(敵) 射程 - コスト -\n\n20秒間、自身を中心とした大範囲内の敵ユニットの[遠距離攻撃力][近距離攻撃力]を小ダウンする。\n\nIMPACT AREA\n\n[アイコン:黄色円形・中央下寄り配置]\n\nSPECIAL ATTACK\n\n高エネルギービームライフル撃射\n単体(敵) 射程 3\nSPコスト 2 威力 3400\n\n敵単体に射撃攻撃でダメージを与える。\n\nillust PLANETA_Yamashita\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n\n機動戦士ガンダム ARSENAL BASE\n\nAB03-045 M"
+  },
+  "ocr_raw_file": "SEASON_03_AB03-045_ストライクルージュ_ocr_raw.json",
+  "ocr_timestamp": "2026-02-23T15:16:03.032667",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli"
+}

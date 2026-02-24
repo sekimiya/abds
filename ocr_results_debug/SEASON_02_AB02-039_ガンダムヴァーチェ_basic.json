@@ -1,0 +1,84 @@
+{
+  "card_number": "AB02-039",
+  "card_name": "ガンダムヴァーチェ",
+  "series": "SEASON:02",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB02-039.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB02-039_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "AB02-039",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト4"
+    },
+    "name": "ガンダムヴァーチェ",
+    "model": "GN-005 GUNDAM VIRTUE",
+    "cost": 4,
+    "category": "遠距離",
+    "affiliation": "ソレスタルビーイング",
+    "pilot": "ティエリア・アーデ",
+    "stats": {
+      "height": "18.4m",
+      "weight": "66.7t",
+      "mobility": 50,
+      "ranged_attack": 280,
+      "melee_attack": 80,
+      "hp": 200
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "C",
+      "water": null
+    },
+    "weapon": {
+      "main": {
+        "name": "GNバズーカ",
+        "range": 4,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "GNビームサーベル",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "トランザム[遠距離]",
+      "activation": "任意発動",
+      "target": "自分",
+      "range": null,
+      "cost": 4,
+      "description": "20秒間、自身の[機動力]を大アップ、[遠距離攻撃力]を中アップする。"
+    },
+    "link_ability": [
+      {
+        "name": "ガンダム00",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "トランザムシステム",
+        "condition": "デッキに2枚以上",
+        "effect": "専用作戦カードが使用可能"
+      }
+    ],
+    "special_attack": {
+      "name": "GNバズーカ撃射",
+      "target": "単体(敵)",
+      "range": 4,
+      "sp_cost": 2,
+      "power": 3200,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "impact_area": "黄緑丸 中央上段, 黄三角 中央下段",
+    "rarity": "R",
+    "illustrator": "sakusaku sakurai",
+    "raw": "MS\n\n遠距離 コスト4\nGN-005 GUNDAM VIRTUE\nガンダムヴァーチェ\n[アイコン:ガンダム00]\n\n全高 18.4m\n本体重量 66.7t\n所属 ソレスタルビーイング\nパイロット ティエリア・アーデ\n\n地上 A 宇宙 S 砂漠 C\n機動力 50\n遠距離攻撃 280\n近距離攻撃 80\nHP 200\n\nWEAPON\nMAIN GNバズーカ 射程 4 遠距離\nSUB GNビームサーベル 射程 1 近距離\n\nLINK ABILITY\nガンダム00 デッキに3枚以上\n[機動力]小アップ\n\nMS ABILITY\nトランザム[遠距離]\n任意発動 自分 射程 - コスト 4\n\n20秒間、自身の[機動力]を大アップ、\n[遠距離攻撃力]を中アップする。\n\nトランザムシステム デッキに2枚以上\n専用作戦カードが使用可能\n\nSPECIAL ATTACK\nGNバズーカ撃射\n単体(敵) 射程 4\nSPコスト 2 威力 3200\n\n敵単体に射撃攻撃でダメージを与える。\n\nIMPACT AREA\n[アイコン:黄緑丸 中央上段]\n[アイコン:黄三角 中央下段]\n\nillust sakusaku sakurai\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nAB02-039 R"
+  },
+  "ocr_raw_file": "SEASON_02_AB02-039_ガンダムヴァーチェ_ocr_raw.json",
+  "ocr_timestamp": "2026-02-23T15:09:52.032843",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli"
+}

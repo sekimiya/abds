@@ -1,0 +1,74 @@
+{
+  "card_number": "FQ01-034",
+  "card_name": "高機動型ザクⅡ(ジョニー・ライデン専用機)",
+  "series": "FORSQUAD SEASON:01",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ01-034.jpg?v9",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ01-034_b.jpg?v9",
+  "ocr_data": {
+    "card_id": "FQ01-034",
+    "type": "MS",
+    "card_label": {
+      "class": "機動",
+      "cost_label": "コスト5"
+    },
+    "name": "高機動型ザクII（ジョニー・ライデン専用機）",
+    "model": "MS-06R-2 ZAKUII HIGH MOBILITY TYPE",
+    "cost": 5,
+    "category": "機動",
+    "pilot": "ジョニー・ライデン",
+    "stats": {
+      "height": "18.0m",
+      "weight": "58.2t",
+      "mobility": 290,
+      "ranged_attack": 500,
+      "melee_attack": 90,
+      "hp": 520
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "B",
+      "desert": "C",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "ジャイアント・バズ",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ヒート・ホーク",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "断絶",
+      "type": "任意発動",
+      "range": 3,
+      "cost": 3,
+      "description": "ロックオン中の敵に単体攻撃でダメージを与え、強化状態を無効化する。"
+    },
+    "link_ability": [
+      {
+        "name": "U.C. ENGAGE",
+        "condition": "デッキに2枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "impact_area": {
+      "type": "circular",
+      "radius": 1,
+      "centered": true
+    },
+    "illustrator": "ハラカズヒロ",
+    "raw": "機動 コスト5\nMS-06R-2 ZAKUII HIGH MOBILITY TYPE\n高機動型ザクII（ジョニー・ライデン専用機）\n頭頂高 18.0m\n本体重 58.2t\n所属 ジオン公国軍\nパイロット ジョニー・ライデン\n地上A 宇宙B 砂漠C 水中C\n機動力 290\n遠距離攻撃 500\n近距離攻撃 90\nHP 520\nWEAPON\nMAIN ジャイアント・バズ\n射程3 遠距離\nSUB ヒート・ホーク\n射程1 近距離\nLINK ABILITY\nU.C. ENGAGE デッキに2枚以上\n[機動力]小アップ\n多彩な戦術 デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\nMS ABILITY\n断絶\n任意発動 単体（敵） 射程3 コスト3\nロックオン中の敵に単体攻撃でダメージを与え、強化状態を無効化する。\nSPECIAL ATTACK\nジャイアント・バズ撃射\n進撃\n連携\n単体（敵） 射程3\nSPコスト2 威力3700\n敵単体に射撃攻撃でダメージを与える。この攻撃で敵ユニットを撃破した場合、敵ユニットの修理時間を延長させる。"
+  },
+  "ocr_timestamp": "2025-06-28T02:19:29.917132",
+  "ocr_type": "basic"
+}

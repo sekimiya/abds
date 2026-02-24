@@ -1,0 +1,83 @@
+{
+  "card_number": "AB03-027",
+  "card_name": "ガンダムMk-Ⅱ(ティターンズ仕様)",
+  "series": "SEASON:03",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB03-027.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB03-027_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "AB03-027",
+    "type": "MS",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト2"
+    },
+    "name": "ガンダムMk-Ⅱ(ティターンズ仕様)",
+    "model": "RX-178 GUNDAM Mk-Ⅱ[TITANS]",
+    "cost": 2,
+    "category": "近距離",
+    "affiliation": "ティターンズ",
+    "pilot": "ジェリド・メサ",
+    "stats": {
+      "height": "18.5m",
+      "weight": "33.4t",
+      "mobility": 140,
+      "ranged_attack": 50,
+      "melee_attack": 250,
+      "hp": 210
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "A",
+      "desert": "C",
+      "water": null
+    },
+    "weapon": {
+      "main": {
+        "name": "ビーム・サーベル",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "ビーム・ライフル",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "強化[近接]",
+      "activation": "任意発動",
+      "target": "自分",
+      "range": null,
+      "cost": 4,
+      "description": "30秒間、自身の[機動力][近距離攻撃力]を中アップする。"
+    },
+    "link_ability": [
+      {
+        "name": "機動戦士Zガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力]小アップ"
+      },
+      {
+        "name": "漆黒の戦士",
+        "condition": "デッキに2枚以上",
+        "effect": "[機動力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ビーム・サーベル強撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3200,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "R",
+    "illustrator": "Painted MIKE",
+    "raw": "MS\n\n近距離 コスト2\n\nRX-178 GUNDAM Mk-Ⅱ[TITANS]\nガンダムMk-Ⅱ(ティターンズ仕様)\n\n全高 18.5m\n本体重量 33.4t\n所属 ティターンズ\nパイロット ジェリド・メサ\n\n地上 A 宇宙 A 砂漠 C\n機動力 140\n遠距離攻撃力 50\n近距離攻撃力 250\nHP 210\n\nWEAPON\nMAIN ビーム・サーベル 射程 1 近距離\nSUB ビーム・ライフル 射程 3 遠距離\n\nLINK ABILITY\n機動戦士Zガンダム デッキに3枚以上\n[遠距離攻撃力]小アップ\n\n漆黒の戦士 デッキに2枚以上\n[機動力]小アップ\n\nMS ABILITY\n強化[近接]\n任意発動 自分 射程 - コスト 4\n30秒間、自身の[機動力][近距離攻撃力]を中アップする。\n\nIMPACT AREA\n[アイコン:緑丸 中央やや左]\n[アイコン:黄三角 中央下]\n\nSPECIAL ATTACK\nビーム・サーベル強撃\n単体(敵) 射程 2\nSPコスト 2 威力 3200\n敵単体に格闘攻撃でダメージを与える。\n\nillust Painted MIKE\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\nAB03-027 R"
+  },
+  "ocr_raw_file": "SEASON_03_AB03-027_ガンダムMk-Ⅱ(ティターンズ仕様)_ocr_raw.json",
+  "ocr_timestamp": "2026-02-23T15:14:48.144833",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli"
+}

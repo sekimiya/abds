@@ -1,0 +1,74 @@
+{
+  "card_number": "FQ01-003",
+  "card_name": "ジム・カスタム",
+  "series": "FORSQUAD SEASON:01",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ01-003.jpg?v9",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ01-003_b.jpg?v9",
+  "ocr_data": {
+    "card_id": "FQ01-003",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト5"
+    },
+    "name": "ジム・カスタム",
+    "model": "RGM-79N GM CUSTOM",
+    "cost": 5,
+    "category": "遠距離",
+    "pilot": "カスパ・バルバロッサ、ベルナルド・モンシア",
+    "stats": {
+      "height": "18.0m",
+      "weight": "42.0t",
+      "mobility": 240,
+      "ranged_attack": 400,
+      "melee_attack": 80,
+      "hp": 530
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "A",
+      "desert": "C",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "ジム・ライフル",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ビーム・サーベル",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "転化【支援】",
+      "type": "任意発動",
+      "range": 1,
+      "cost": 4,
+      "description": "一定時間、自身を中心とした範囲内の味方ユニットを強化する。使用回数に応じて、強化効果が変わる。[1回:遠・近攻撃力アップ][2回:遠・近攻撃力アップ][3回以上:遠・近攻撃力アップ&回復]"
+    },
+    "link_ability": [
+      {
+        "name": "ガンダム0083",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "的確な一撃",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][遠距離攻撃力]小アップ"
+      }
+    ],
+    "impact_area": {
+      "type": "circular",
+      "radius": 4,
+      "centered": true
+    },
+    "illustrator": "Kumogoro",
+    "raw": "遠距離 コスト5 RGM-79N GM CUSTOM ジム・カスタム 頭頂高 18.0m 本体重量 42.0t 所属 地球連邦軍 パイロット カスパ・バルバロッサ、ベルナルド・モンシア 地上 A 宇宙 A 砂漠 C 水中 C 機動力 240 遠距離攻撃 400 近距離攻撃 80 HP 530 WEAPON MAIN ジム・ライフル 射程 3 遠距離 SUB ビーム・サーベル 射程 1 近距離 MS ABILITY 転化【支援】 任意発動 範囲 (味方) 射程 1 コスト 4 一定時間、自身を中心とした範囲内の味方ユニットを強化する。使用回数に応じて、強化効果が変わる。[1回:遠・近攻撃力アップ][2回:遠・近攻撃力アップ][3回以上:遠・近攻撃力アップ&回復] SPECIAL ATTACK UNITED SP ジム・ライフル撃射 連携 単体 (敵) 射程 2 SPコスト 2 3400 / - 敵単体に射撃攻撃でダメージを与える。/ - LINK ABILITY ガンダム0083 デッキに3枚以上 [機動力]小アップ 的確な一撃 デッキに4枚以上 [機動力][遠距離攻撃力]小アップ IMPACT AREA illust Kumogoro BANDAI MADE IN JAPAN"
+  },
+  "ocr_timestamp": "2025-06-28T01:28:37.634010",
+  "ocr_type": "basic"
+}

@@ -1,0 +1,83 @@
+{
+  "card_number": "AB01-027",
+  "card_name": "エールストライクガンダム",
+  "series": "SEASON:01",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB01-027.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB01-027_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "AB01-027",
+    "type": "MS",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト3"
+    },
+    "name": "エールストライクガンダム",
+    "model": "GAT-X105+AQM/E-X01 AILE STRIKE GUNDAM",
+    "cost": 3,
+    "category": "近距離",
+    "affiliation": "地球連合軍",
+    "pilot": "キラ・ヤマト",
+    "stats": {
+      "height": "17.72m",
+      "weight": "85.1t",
+      "mobility": 140,
+      "ranged_attack": 100,
+      "melee_attack": 160,
+      "hp": 170
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "C",
+      "water": null
+    },
+    "weapon": {
+      "main": {
+        "name": "ビームサーベル",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "ビームライフル",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "鼓舞[防御]",
+      "activation": "任意発動",
+      "target": "範囲(味方)",
+      "range": null,
+      "cost": 4,
+      "description": "20秒間、自身を中心とした大範囲内の味方ユニットのダメージを少し軽減する。"
+    },
+    "link_ability": [
+      {
+        "name": "ガンダムSEED",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "その名はガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ビームサーベル強撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3200,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "C",
+    "illustrator": "MIKE",
+    "raw": "MS\n\n近距離 コスト3\nGAT-X105+AQM/E-X01 AILE STRIKE GUNDAM\n[アイコン:機動戦士ガンダムSEED]\nエールストライクガンダム\n\n全高 17.72m\n本体重量 85.1t\n所属 地球連合軍\nパイロット キラ・ヤマト\n\n地上 A 宇宙 S 砂漠 C\n機動力 140\n遠距離攻撃 100\n近距離攻撃 160\nHP 170\n\nWEAPON\nMAIN ビームサーベル 射程 1 近距離\nSUB ビームライフル 射程 3 遠距離\n\nLINK ABILITY\nガンダムSEED デッキに3枚以上\n[機動力]小アップ\n\nその名はガンダム デッキに3枚以上\n[機動力]小アップ\n\nMS ABILITY\n鼓舞[防御]\n任意発動 範囲(味方) 射程 - コスト 4\n\n20秒間、自身を中心とした大範囲内の味方ユニットのダメージを少し軽減する。\n\nSPECIAL ATTACK\nビームサーベル強撃\n単体(敵) 射程 2\nSPコスト 2 威力 3200\n\n敵単体に格闘攻撃でダメージを与える。\n\nIMPACT AREA\n[アイコン:単体ターゲット - 中央やや上に黄色円、下部中央に三角マーカー]\n\nillust Painted MIKE\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nAB01-027 C"
+  },
+  "ocr_raw_file": "SEASON_01_AB01-027_エールストライクガンダム_ocr_raw.json",
+  "ocr_timestamp": "2026-02-23T12:17:19.188532",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli"
+}

@@ -1,0 +1,83 @@
+{
+  "card_number": "VE01-022",
+  "card_name": "ギャンシュトローム（アグネス・ギーベンラート専用機）",
+  "series": "WAVECHOES SEASON:01",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE01-022.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE01-022_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "VE01-022",
+    "type": "MS",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト1"
+    },
+    "name": "ギャンシュトローム(アグネス・ギーベンラート専用機)",
+    "model": "ZGMF-2027/A GYAN STROM[AGNES GIEBENRATH CUSTOM]",
+    "cost": 1,
+    "category": "近距離",
+    "affiliation": "コンパス",
+    "pilot": "アグネス・ギーベンラート",
+    "stats": {
+      "height": "20.00m",
+      "weight": "74.56t",
+      "mobility": 230,
+      "ranged_attack": 40,
+      "melee_attack": 150,
+      "hp": 230
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "C",
+      "desert": "C",
+      "water": "A"
+    },
+    "weapon": {
+      "main": {
+        "name": "ファルクスG7 ビームアックス",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "トリデンティ 3銃身回ビーム機銃",
+        "range": 2,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "増援[殲滅]",
+      "activation": "任意発動",
+      "target": "特殊（自分）",
+      "range": null,
+      "cost": 3,
+      "description": "自身の周囲に殲滅タイプの味方ユニットを呼び出す。※上限3ユニットまで。"
+    },
+    "link_ability": [
+      {
+        "name": "SEED FREEDOM",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ファルクスG7 ビームアックス強撃",
+      "target": "単体（敵）",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3100,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "C",
+    "illustrator": "S Kei",
+    "raw": "MS\n\n近距離　コスト1\n\nZGMF-2027/A GYAN STROM[AGNES GIEBENRATH CUSTOM]\nギャンシュトローム(アグネス・ギーベンラート専用機)\n\n頭頂高　20.00m\n本体重量　74.56t\n所属　コンパス\nパイロット　アグネス・ギーベンラート\n\n地上 A　宇宙 C　砂漠 C　水中 A\n機動力 230\n遠距離攻撃 40\n近距離攻撃 150\nHP 230\n\n[アイコン:SEED FREEDOM]\n\nWEAPON\n\nMAIN　ファルクスG7 ビームアックス　射程 1　近距離\nSUB　トリデンティ 3銃身回ビーム機銃　射程 2　遠距離\n\nLINK ABILITY\n\nSEED FREEDOM　デッキに3枚以上\n\n[機動力]小アップ\n\n多彩な戦術　デッキに4枚以上\n\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nMS ABILITY\n\n増援[殲滅]\n任意発動　特殊（自分）　射程 ―　コスト 3\n\n自身の周囲に殲滅タイプの味方ユニットを呼び出す。※上限3ユニットまで。\n\nSPECIAL ATTACK　　ECHOES BEAT\n\nファルクスG7 ビームアックス強撃　―\n―\n単体（敵）　射程 2　―　射程 ―\nSPコスト 2　威力 3100　/―\n\n敵単体に格闘攻撃でダメージを与える。\n/―\n\nIMPACT AREA\n\n[アイコン:黄色丸 中央]\n[アイコン:黄色三角 中央下]\n\nillust　S Kei\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n[アイコン:機動戦士ガンダム]\n[アイコン:ARSENAL BASE ロゴ]\n\nVE01-022　C"
+  },
+  "ocr_raw_file": "WAVECHOES_SEASON_01_VE01-022_ギャンシュトローム（アグネス・ギーベンラート専用機）_ocr_raw.json",
+  "ocr_timestamp": "2026-02-23T13:11:57.615460",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli"
+}

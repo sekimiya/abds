@@ -1,0 +1,83 @@
+{
+  "card_number": "AB02-036",
+  "card_name": "ガンダムキュリオス",
+  "series": "SEASON:02",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB02-036.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB02-036_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "AB02-036",
+    "type": "MS",
+    "card_label": {
+      "class": "機動",
+      "cost_label": "コスト4"
+    },
+    "name": "ガンダムキュリオス",
+    "model": "GN-003 GUNDAM KYRIOS",
+    "cost": 4,
+    "category": "機動",
+    "affiliation": "ソレスタルビーイング",
+    "pilot": "アレルヤ・ハプティズム",
+    "stats": {
+      "height": "18.9m",
+      "weight": "54.8t",
+      "mobility": 260,
+      "ranged_attack": 160,
+      "melee_attack": 230,
+      "hp": 280
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "A",
+      "desert": "B",
+      "water": null
+    },
+    "weapon": {
+      "main": {
+        "name": "GNビームサーベル",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "GNビームサブマシンガン",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "奇襲",
+      "activation": "任意発動",
+      "target": "範囲(敵)",
+      "range": null,
+      "cost": 6,
+      "description": "指定した位置に範囲攻撃を行い、その地点に移動する。"
+    },
+    "link_ability": [
+      {
+        "name": "ガンダム00",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "可変機ファイター",
+        "condition": "デッキに3枚以上",
+        "effect": "専用作戦カードが使用可能"
+      }
+    ],
+    "special_attack": {
+      "name": "シールドニードル激突",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3300,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "P",
+    "illustrator": "MIKE",
+    "raw": "MS\n\n機動 コスト4\nGN-003 GUNDAM KYRIOS\nガンダムキュリオス\n\n全高 18.9m\n本体重量 54.8t\n所属 ソレスタルビーイング\nパイロット アレルヤ・ハプティズム\n\n地上 A 宇宙 A 砂漠 B\n機動力 260\n遠距離攻撃 160\n近距離攻撃 230\nHP 280\n\nWEAPON\nMAIN GNビームサーベル 射程 1 近距離\nSUB GNビームサブマシンガン 射程 3 遠距離\n\nLINK ABILITY\nガンダム00 デッキに3枚以上\n[機動力]小アップ\n\n可変機ファイター デッキに3枚以上\n専用作戦カードが使用可能\n\nMS ABILITY\n奇襲\n任意発動 範囲(敵) 射程 - コスト 6\n指定した位置に範囲攻撃を行い、その地点に移動する。\n\nIMPACT AREA\n[アイコン:×印 中央上段]\n[アイコン:●緑 中央中段]\n[アイコン:▲ 中央下段]\n\nSPECIAL ATTACK\nシールドニードル激突\n単体(敵) 射程 2\nSPコスト 2 威力 3300\n敵単体に格闘攻撃でダメージを与える。\n\nillust Painted MIKE\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nAB02-036 P"
+  },
+  "ocr_raw_file": "SEASON_02_AB02-036_ガンダムキュリオス_ocr_raw.json",
+  "ocr_timestamp": "2026-02-23T15:09:36.211810",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli"
+}

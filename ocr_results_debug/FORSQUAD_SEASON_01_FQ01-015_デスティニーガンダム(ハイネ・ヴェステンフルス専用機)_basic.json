@@ -1,0 +1,83 @@
+{
+  "card_number": "FQ01-015",
+  "card_name": "デスティニーガンダム(ハイネ・ヴェステンフルス専用機)",
+  "series": "FORSQUAD SEASON:01",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ01-015.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ01-015_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "FQ01-015",
+    "type": "MS",
+    "card_label": {
+      "class": "機動",
+      "cost_label": "コスト6"
+    },
+    "name": "デスティニーガンダム(ハイネ・ヴェステンフルス専用機)",
+    "model": "ZGMF-X42S-REVOLUTION HEINE'S DESTINY GUNDAM",
+    "cost": 6,
+    "category": "機動",
+    "affiliation": "ザフト",
+    "pilot": "ハイネ・ヴェステンフルス",
+    "stats": {
+      "height": "18.08m",
+      "weight": "79.44t",
+      "mobility": 340,
+      "ranged_attack": 110,
+      "melee_attack": 580,
+      "hp": 520
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "B",
+      "water": "A"
+    },
+    "weapon": {
+      "main": {
+        "name": "アロンダイトビームソード",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "高エネルギービームライフル",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "圧倒",
+      "activation": "任意発動",
+      "target": "単体(敵)",
+      "range": 2,
+      "cost": 3,
+      "description": "ロックオン中の敵が弱体化状態の時に発動可能となり、敵に単体攻撃でダメージを与え、その攻撃は必ずクリティカルになる。"
+    },
+    "link_ability": [
+      {
+        "name": "SEED DESTINY",
+        "condition": "デッキに3枚以上",
+        "effect": "[HP]小アップ"
+      },
+      {
+        "name": "絆",
+        "condition": "デッキに2枚以上",
+        "effect": "[機動力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "パルマフィオキーナ連撃",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3300,
+      "description": "光の翼を展開し、敵単体に格闘攻撃でダメージを与える。光の翼展開後は、一定時間能力が上昇する。",
+      "united_sp": null
+    },
+    "rarity": "P",
+    "illustrator": "SOEZY",
+    "raw": "MS\n\n機動 コスト6\n\nZGMF-X42S-REVOLUTION HEINE'S DESTINY GUNDAM\nデスティニーガンダム(ハイネ・ヴェステンフルス専用機)\n\n頭頂高 18.08m\n本体重量 79.44t\n所属 ザフト\nパイロット ハイネ・ヴェステンフルス\n\n地上 A 宇宙 S 砂漠 B 水中 A\n機動力 340\n遠距離攻撃 110\n近距離攻撃 580\nHP 520\n\nWEAPON\n\nMAIN アロンダイトビームソード 射程 1 近距離\nSUB 高エネルギービームライフル 射程 3 遠距離\n\nLINK ABILITY\n\nSEED DESTINY デッキに3枚以上\n[HP]小アップ\n\n絆 デッキに2枚以上\n[機動力][近距離攻撃力]小アップ\n\nMS ABILITY\n\n圧倒\n任意発動 単体(敵) 射程 2 コスト 3\n\nロックオン中の敵が弱体化状態の時に発動可能となり、敵に単体攻撃でダメージを与え、その攻撃は必ずクリティカルになる。\n\nSPECIAL ATTACK\n\nパルマフィオキーナ連撃\n連携 ―\n連携 ―\n単体(敵) 射程 3 ― 射程 ―\nSPコスト 2 威力 3300 / ―\n\nUNITED SP\n\n―\n連携 ―\n連携 ―\n\nIMPACT AREA\n\n[アイコン:3x3グリッド、中央と中央下に緑丸、最下段中央に三角]\n\n光の翼を展開し、敵単体に格闘攻撃でダメージを与える。光の翼展開後は、一定時間能力が上昇する。/ ―\n\nillust SOEZY\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム\nARSENAL BASE\n\nFQ01-015 P"
+  },
+  "ocr_raw_file": "FORSQUAD_SEASON_01_FQ01-015_デスティニーガンダム(ハイネ・ヴェステンフルス専用機)_ocr_raw.json",
+  "ocr_timestamp": "2026-02-24T01:22:50.701001",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli"
+}

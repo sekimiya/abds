@@ -1,0 +1,74 @@
+{
+  "card_number": "FQ01-013",
+  "card_name": "ターンX",
+  "series": "FORSQUAD SEASON:01",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ01-013.jpg?v9",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ01-013_b.jpg?v9",
+  "ocr_data": {
+    "card_id": "FQ01-013",
+    "type": "MS",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト4"
+    },
+    "name": "ターンX",
+    "model": "Concept-X6-1-2 TURN X",
+    "cost": 4,
+    "category": "近距離",
+    "pilot": "ギム・ギンガナム",
+    "stats": {
+      "height": "20.5m",
+      "weight": "50.6t",
+      "mobility": 250,
+      "ranged_attack": 120,
+      "melee_attack": 280,
+      "hp": 300
+    },
+    "terrain_compatibility": {
+      "ground": "S",
+      "space": "A",
+      "desert": "B",
+      "water": "B"
+    },
+    "weapon": {
+      "main": {
+        "name": "溶断破砕マニピュレーター",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "溶断破砕マニピュレーター(射撃)",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "集中砲火",
+      "type": "任意発動",
+      "range": 1,
+      "cost": 4,
+      "description": "20秒間、ロックオンしている敵に周囲の味方ターゲットを集め、[遠・近攻撃力]を中アップ。攻撃対象が変わると効果は終了する。"
+    },
+    "link_ability": [
+      {
+        "name": "HP小アップ",
+        "condition": "デッキに3枚以上",
+        "effect": "[HP]小アップ"
+      },
+      {
+        "name": "遠距離攻撃力小アップ",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "impact_area": {
+      "type": "circular",
+      "radius": 3,
+      "centered": true
+    },
+    "illustrator": "Robographer",
+    "raw": "近距離 コスト4\nConcept-X6-1-2 TURN X\nターンX\n頭頂高 20.5m\n本体重量 50.6t\n所属 ギンガナム艦隊\nパイロット ギム・ギンガナム\n地上 S 宇宙 A 砂漠 B 水中 B\n機動力 250\n遠距離攻撃 120\n近距離攻撃 280\nHP 300\nWEAPON\nMAIN 溶断破砕マニピュレーター 射程 1 近距離\nSUB 溶断破砕マニピュレーター(射撃) 射程 3 遠距離\nMS ABILITY\n集中砲火\n任意発動 範囲(味方) 射程 1 コスト 4\n20秒間、ロックオンしている敵に周囲の味方ターゲットを集め、[遠・近攻撃力]を中アップ。攻撃対象が変わると効果は終了する。\nSPECIAL ATTACK\n溶断破砕マニピュレーター強撃\n連携\n単体(敵) 威力 3200 / 射程 2\nSP ATTACK\n連携\n敵単体に格闘攻撃でダメージを与える。/\nLINK ABILITY\nHP小アップ\nデッキに3枚以上\n[HP]小アップ\n状況を変える力\nデッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\nIMPACT AREA\nillust Robographer\n企画・製作 サンライズ\nBANDAI MADE IN JAPAN\nFQ01-013"
+  },
+  "ocr_timestamp": "2025-06-28T02:05:56.569659",
+  "ocr_type": "basic"
+}

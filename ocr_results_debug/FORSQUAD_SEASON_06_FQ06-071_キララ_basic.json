@@ -1,0 +1,63 @@
+{
+  "card_number": "FQ06-071",
+  "card_name": "キララ",
+  "series": "FORSQUAD SEASON:06",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ06-071.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ06-071_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "FQ06-071",
+    "type": "PL",
+    "card_label": {
+      "class": "殲滅",
+      "cost_label": "コスト2"
+    },
+    "name": "キララ",
+    "english_name": "KIRARA",
+    "cost": 2,
+    "category": "殲滅",
+    "affiliation": null,
+    "physical": {
+      "height": null,
+      "age": null
+    },
+    "units": [
+      "ガーベラ・テトラ(キララ専用機)"
+    ],
+    "stats": {
+      "mobility": 190,
+      "ranged_attack": 40,
+      "melee_attack": 220,
+      "hp": 250
+    },
+    "pilot_skill": {
+      "name": "蓄積する経験",
+      "trigger": "出撃後一定時間経過毎",
+      "effect": "20秒 経過毎にSQゲージアップ。最大3回まで発動。SQUAD RUSH中 自身の[近距離攻撃力][SP威力]をアップする。",
+      "has_sq_skill": true,
+      "sq_skill_details": {
+        "sq_gauge_effect": "20秒 経過毎にSQゲージアップ。最大3回まで発動。",
+        "sq_max_effect": null,
+        "squad_rush_effect": "自身の[近距離攻撃力][SP威力]をアップする。"
+      }
+    },
+    "link_ability": [
+      {
+        "name": "戦士のかがやき",
+        "condition": "デッキに3枚以上",
+        "effect": "SQゲージが表示される。SQゲージを溜めるとSQUAD RUSHが発動できる。[HP][SP威力]小アップ"
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "rarity": "R",
+    "illustrator": null,
+    "raw": "PL\n\n殲滅　コスト2\n\nキララ\nKIRARA\n\n身長　ー\n年齢　ー\n所属　ー\n\n搭乗機体　ガーベラ・テトラ(キララ専用機)\n\n機動力 190\n遠距離攻撃 40\n近距離攻撃 220\nHP 250\n\nSQ　PL SKILL\n蓄積する経験\n出撃後一定時間経過毎\n20秒 経過毎にSQゲージアップ。最大3回まで発動。\nSQUAD RUSH中\n自身の[近距離攻撃力][SP威力]をアップする。\n\nSQ　LINK ABILITY\n戦士のかがやき　デッキに3枚以上\nSQゲージが表示される。SQゲージを溜めるとSQUAD RUSHが発動できる。\n[HP][SP威力]小アップ\n\n多彩な戦術　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nFQ06-071　R"
+  },
+  "ocr_raw_file": "FORSQUAD_SEASON_06_FQ06-071_キララ_ocr_raw.json",
+  "ocr_timestamp": "2026-02-24T18:41:25.175623",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

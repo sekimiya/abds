@@ -1,0 +1,74 @@
+{
+  "card_number": "FQ02-008",
+  "card_name": "ガンダムマックスター",
+  "series": "FORSQUAD SEASON:02",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-008.jpg?v9",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-008_b.jpg?v9",
+  "ocr_data": {
+    "card_id": "FQ02-008",
+    "type": "MS",
+    "card_label": {
+      "class": "機動",
+      "cost_label": "コスト6"
+    },
+    "name": "ガンダムマックスター",
+    "model": "GF13-006NA GUNDAM MAXTER",
+    "cost": 6,
+    "category": "機動",
+    "pilot": "チボデー・クロケット",
+    "stats": {
+      "height": "16.3m",
+      "weight": "7.3t",
+      "mobility": 280,
+      "ranged_attack": 130,
+      "melee_attack": 560,
+      "hp": 580
+    },
+    "terrain_compatibility": {
+      "ground": "S",
+      "space": "A",
+      "desert": "A",
+      "water": "B"
+    },
+    "weapon": {
+      "main": {
+        "name": "ファイティングナックル",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "ギガンティックマグナム",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "決闘",
+      "type": "任意発動",
+      "range": 2,
+      "cost": 4,
+      "description": "敵ユニットのターゲットを自身に変更し、ロックオン中の敵ユニットに単体攻撃を行う。効果中は対象の味方、敵ユニットをロックオンすることが出来ない。"
+    },
+    "link_ability": [
+      {
+        "name": "Gガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      },
+      {
+        "name": "黄金のMF",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力][HP]小アップ"
+      }
+    ],
+    "impact_area": {
+      "type": "circular",
+      "radius": 2,
+      "centered": true
+    },
+    "illustrator": "yuji iguchi",
+    "raw": "機動 コスト6 GF13-006NA GUNDAM MAXTER ガンダムマックスター 頭頂高 16.3m 本体重 7.3t 所属 ネオアメリカ パイロット チボデー・クロケット 地上S 宇宙A 砂漠A 水中B 機動力 280 遠距離攻撃 130 近距離攻撃 560 HP 580 WEAPON MAIN ファイティングナックル 射程1 近距離 SUB ギガンティックマグナム 射程3 遠距離 MS ABILITY 決闘 任意発動 単体(敵) 射程2 コスト4 敵ユニットのターゲットを自身に変更し、ロックオン中の敵ユニットに単体攻撃を行う。効果中は対象の味方、敵ユニットをロックオンすることが出来ない。 SPECIAL ATTACK UNITED SP 豪熱マシンガンパンチ 単体(敵) 射程3 射程3 SPコスト 2 威力 3300 / ボクサーモードに変化し、敵単体に格闘攻撃でダメージを与える。ボクサーモード変化後は、一定時間能力が上昇する。 LINK ABILITY Gガンダム デッキに3枚以上 [遠距離攻撃力][近距離攻撃力]小アップ 黄金のMF デッキに3枚以上 [機動力][HP]小アップ IMPACT AREA illust yujiiguchi 機動戦士ガンダム BANDAI MADE IN JAPAN FQ02-008"
+  },
+  "ocr_timestamp": "2025-06-28T02:03:15.937102",
+  "ocr_type": "basic"
+}

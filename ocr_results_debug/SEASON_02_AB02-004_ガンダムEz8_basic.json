@@ -1,0 +1,83 @@
+{
+  "card_number": "AB02-004",
+  "card_name": "ガンダムEz8",
+  "series": "SEASON:02",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB02-004.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB02-004_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "AB02-004",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト3"
+    },
+    "name": "ガンダムEz8",
+    "model": "RX-79[G]Ez-8 GUNDAM Ez8",
+    "cost": 3,
+    "category": "遠距離",
+    "affiliation": "地球連邦軍",
+    "pilot": "シロー・アマダ",
+    "stats": {
+      "height": "18.0m",
+      "weight": "51.5t",
+      "mobility": 150,
+      "ranged_attack": 330,
+      "melee_attack": 130,
+      "hp": 230
+    },
+    "terrain_compatibility": {
+      "ground": "S",
+      "space": "C",
+      "desert": "A",
+      "water": null
+    },
+    "weapon": {
+      "main": {
+        "name": "100mmマシンガン",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ビーム・サーベル",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "増援[殲滅]",
+      "activation": "任意発動",
+      "target": "特殊(自分)",
+      "range": null,
+      "cost": 3,
+      "description": "自身の周囲に殲滅タイプの味方ユニットを呼び出す。※上限3ユニットまで。"
+    },
+    "link_ability": [
+      {
+        "name": "第08MS小隊",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力]小アップ"
+      },
+      {
+        "name": "陸戦特化の戦い",
+        "condition": "デッキに2枚以上",
+        "effect": "[機動力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "一斉射撃",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3700,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "U",
+    "illustrator": "Eske Yoshinob",
+    "raw": "MS\n\n遠距離　コスト3\nRX-79[G]Ez-8 GUNDAM Ez8\nガンダムEz8\n\n全高　18.0m\n本体重量　51.5t\n所属　地球連邦軍\nパイロット　シロー・アマダ\n\n地上 S　宇宙 C　砂漠 A\n機動力 150\n遠距離攻撃 330\n近距離攻撃 130\nHP 230\n\n[アイコン:第08MS小隊]\n[アイコン:陸戦特化の戦い]\n\nWEAPON\nMAIN 100mmマシンガン　射程 3　遠距離\nSUB ビーム・サーベル　射程 1　近距離\n\nLINK ABILITY\n第08MS小隊　デッキに3枚以上\n[遠距離攻撃力]小アップ\n\n陸戦特化の戦い　デッキに2枚以上\n[機動力]小アップ\n\nMS ABILITY\n増援[殲滅]\n任意発動　特殊(自分)　射程 ー　コスト 3\n自身の周囲に殲滅タイプの味方ユニットを呼び出す。※上限3ユニットまで。\n\nSPECIAL ATTACK\n一斉射撃\n単体(敵)　射程 3\nSPコスト 2　威力 3700\n敵単体に射撃攻撃でダメージを与える。\n\nIMPACT AREA\n[アイコン:緑丸 中央やや上]\n[アイコン:黄三角 中央下]\n\nillust Eske Yoshinob\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n[アイコン:機動戦士ガンダム]\nARSENAL BASE®\n\nAB02-004　U"
+  },
+  "ocr_raw_file": "SEASON_02_AB02-004_ガンダムEz8_ocr_raw.json",
+  "ocr_timestamp": "2026-02-23T15:07:18.855059",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli"
+}

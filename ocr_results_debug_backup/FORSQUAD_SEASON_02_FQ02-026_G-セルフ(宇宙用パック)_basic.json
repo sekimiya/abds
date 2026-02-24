@@ -1,0 +1,74 @@
+{
+  "card_number": "FQ02-026",
+  "card_name": "G-セルフ(宇宙用パック)",
+  "series": "FORSQUAD SEASON:02",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-026.jpg?v9",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-026_b.jpg?v9",
+  "ocr_data": {
+    "card_id": "FQ02-026",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト1"
+    },
+    "name": "G-セルフ（宇宙用パック）",
+    "model": "YG-111 G-SELF [SPACE PACK]",
+    "cost": 1,
+    "category": "遠距離",
+    "pilot": "ベルリ・ゼナム、ラライヤ・アクパール",
+    "stats": {
+      "height": "18.0m",
+      "weight": "31.1t",
+      "mobility": 220,
+      "ranged_attack": 230,
+      "melee_attack": 50,
+      "hp": 250
+    },
+    "terrain_compatibility": {
+      "ground": "B",
+      "space": "S",
+      "desert": "C",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "ビーム・ライフル",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ビーム・サーベル",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "双甲",
+      "type": "任意発動",
+      "range": 1,
+      "cost": 4,
+      "description": "指定した味方ユニットの範囲内に移動後、一定時間連携状態となり、自身と連携中の味方が受けるダメージを軽減する。"
+    },
+    "link_ability": [
+      {
+        "name": "Gのレコンギスタ",
+        "condition": "デッキに2枚以上",
+        "effect": "[HP]小アップ"
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "impact_area": {
+      "type": "circular",
+      "radius": 1,
+      "centered": true
+    },
+    "illustrator": "Moyasi",
+    "raw": "遠距離 コスト1 YG-111 G-SELF [SPACE PACK] G-セルフ（宇宙用パック） 頭頂高 18.0m 本体重量 31.1t 所属 メガファウナ パイロット ベルリ・ゼナム、ラライヤ・アクパール 地上 B 宇宙 S 砂漠 C 水中 C 機動力 220 遠距離攻撃 230 近距離攻撃 50 HP 250 WEAPON MAIN ビーム・ライフル 射程 3 遠距離 SUB ビーム・サーベル 射程 1 近距離 MS ABILITY 双甲 任意発動 特殊(自分) 射程 1 コスト 4 指定した味方ユニットの範囲内に移動後、一定時間連携状態となり、自身と連携中の味方が受けるダメージを軽減する。 LINK ABILITY Gのレコンギスタ デッキに2枚以上 [HP]小アップ 戦況を変える力 デッキに4枚以上 [遠距離攻撃力][近距離攻撃力]小アップ IMPACT AREA SPECIAL ATTACK UNITED SP ビーム・ライフル強襲 連携 連携 単体(敵) 射程 2 威力 3200 / 敵単体に射撃攻撃でダメージを与える。/ー illust Moyasi"
+  },
+  "ocr_timestamp": "2025-06-28T01:40:59.389431",
+  "ocr_type": "basic"
+}

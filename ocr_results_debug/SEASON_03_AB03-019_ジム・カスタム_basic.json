@@ -1,0 +1,83 @@
+{
+  "card_number": "AB03-019",
+  "card_name": "ジム・カスタム",
+  "series": "SEASON:03",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB03-019.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB03-019_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "AB03-019",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト4"
+    },
+    "name": "ジム・カスタム",
+    "model": "RGM-79N GM CUSTOM",
+    "cost": 4,
+    "category": "遠距離",
+    "affiliation": "地球連邦軍",
+    "pilot": "サウス・バニング,アルファ・A・ベイト,ベルナルド・モンシア",
+    "stats": {
+      "height": "18.0m",
+      "weight": "42.0t",
+      "mobility": 250,
+      "ranged_attack": 300,
+      "melee_attack": 170,
+      "hp": 330
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "A",
+      "desert": "C",
+      "water": null
+    },
+    "weapon": {
+      "main": {
+        "name": "ジム・ライフル",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ビーム・サーベル",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "補給",
+      "activation": "任意発動",
+      "target": "範囲(味方)",
+      "range": null,
+      "cost": 4,
+      "description": "自身を中心とした大範囲の味方ユニットのHPを中回復する。"
+    },
+    "link_ability": [
+      {
+        "name": "ガンダム0083",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "実弾の突破力",
+        "condition": "デッキに2枚以上",
+        "effect": "[遠距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ジム・ライフル撃射",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3300,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "M",
+    "illustrator": "deraken",
+    "raw": "MS\n\n遠距離 コスト4\nRGM-79N GM CUSTOM\nジム・カスタム\n\n全高 18.0m\n本体重量 42.0t\n所属 地球連邦軍\nパイロット サウス・バニング,アルファ・A・ベイト,ベルナルド・モンシア\n\n地上 A 宇宙 A 砂漠 C\n機動力 250\n遠距離攻撃 300\n近距離攻撃 170\nHP 330\n\nWEAPON\nMAIN ジム・ライフル 射程 3 遠距離\nSUB ビーム・サーベル 射程 1 近距離\n\nLINK ABILITY\nガンダム0083 デッキに3枚以上\n[機動力]小アップ\n\n実弾の突破力 デッキに2枚以上\n[遠距離攻撃力]小アップ\n\nMS ABILITY\n補給\n任意発動 範囲(味方) 射程 — コスト 4\n\n自身を中心とした大範囲の味方ユニットのHPを中回復する。\n\nSPECIAL ATTACK\nジム・ライフル撃射\n単体(敵) 射程 3\nSPコスト 2 威力 3300\n\n敵単体に射撃攻撃でダメージを与える。\n\nIMPACT AREA\n[アイコン:緑丸 中央やや上に小丸、中央に大丸、下部に三角マーカー]\n\nillust deraken\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\n\nAB03-019 M"
+  },
+  "ocr_raw_file": "SEASON_03_AB03-019_ジム・カスタム_ocr_raw.json",
+  "ocr_timestamp": "2026-02-23T15:14:01.912070",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli"
+}

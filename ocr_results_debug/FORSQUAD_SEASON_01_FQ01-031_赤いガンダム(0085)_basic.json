@@ -1,0 +1,83 @@
+{
+  "card_number": "FQ01-031",
+  "card_name": "赤いガンダム(0085)",
+  "series": "FORSQUAD SEASON:01",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ01-031.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ01-031_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "FQ01-031",
+    "type": "MS",
+    "card_label": {
+      "class": "機動",
+      "cost_label": "コスト5"
+    },
+    "name": "赤いガンダム（0085）",
+    "model": "Red Gundam(0085)",
+    "cost": 5,
+    "category": "機動",
+    "affiliation": null,
+    "pilot": "シュウジ・イトウ",
+    "stats": {
+      "height": null,
+      "weight": null,
+      "mobility": 300,
+      "ranged_attack": 360,
+      "melee_attack": 100,
+      "hp": 340
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "C",
+      "water": "A"
+    },
+    "weapon": {
+      "main": {
+        "name": "ビット",
+        "range": 4,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ガンダム・ハンマー",
+        "range": 2,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "精密射撃",
+      "activation": "任意発動",
+      "target": "単体(敵)",
+      "range": 4,
+      "cost": 3,
+      "description": "ロックオン中の敵に単体攻撃でダメージを与える。"
+    },
+    "link_ability": [
+      {
+        "name": "GQuuuuuX",
+        "condition": "デッキに3枚以上",
+        "effect": "[HP]小アップ"
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ビット撃射",
+      "target": "単体(敵)",
+      "range": 4,
+      "sp_cost": 2,
+      "power": 3100,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "C",
+    "illustrator": "PaintedMIKE",
+    "raw": "MS\n\n機動 コスト5\nRed Gundam(0085)\n赤いガンダム（0085）\n\n頭頂高 —\n本体重量 —\n所属 —\nパイロット シュウジ・イトウ\n\n地上 A 宇宙 S 砂漠 C 水中 A\n機動力 300\n遠距離攻撃 360\n近距離攻撃 100\nHP 340\n\n[アイコン:GQuuuuuX]\n[アイコン:SGQuuuuuX]\n\nWEAPON\nMAIN ビット 射程 4 遠距離\nSUB ガンダム・ハンマー 射程 2 近距離\n\nMS ABILITY\n精密射撃\n任意発動 単体(敵) 射程 4 コスト 3\n\nロックオン中の敵に単体攻撃でダメージを与える。\n\nLINK ABILITY\nGQuuuuuX デッキに3枚以上\n[HP]小アップ\n\n戦況を変える力 デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nSPECIAL ATTACK\nビット撃射\n連携 —\n連携 —\n単体(敵) 射程 4\nSPコスト 2 威力 3100 / —\n\n敵単体に射撃攻撃でダメージを与える。\n/ —\n\nUNITED SP\n—\n連携 —\n連携 —\n射程 —\n\nIMPACT AREA\n[アイコン:中央やや左に着弾点]\n\nillust PaintedMIKE\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nFQ01-031 C"
+  },
+  "ocr_raw_file": "FORSQUAD_SEASON_01_FQ01-031_赤いガンダム(0085)_ocr_raw.json",
+  "ocr_timestamp": "2026-02-24T01:31:18.112419",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli"
+}

@@ -1,0 +1,83 @@
+{
+  "card_number": "VE01-033",
+  "card_name": "G-セルフ（宇宙用パック）",
+  "series": "WAVECHOES SEASON:01",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE01-033.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE01-033_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "VE01-033",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト2"
+    },
+    "name": "G-セルフ（宇宙用パック）",
+    "model": "YG-111 G-SELF[SPACE PACK]",
+    "cost": 2,
+    "category": "遠距離",
+    "affiliation": "メガファウナ",
+    "pilot": "ベルリ・ゼナム、ラライヤ・アクパール",
+    "stats": {
+      "height": "18.0m",
+      "weight": "31.1t",
+      "mobility": 180,
+      "ranged_attack": 200,
+      "melee_attack": 100,
+      "hp": 270
+    },
+    "terrain_compatibility": {
+      "ground": "B",
+      "space": "S",
+      "desert": "C",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "ビーム・ライフル",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ビーム・サーベル",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "補給[弱体化解除]",
+      "activation": "任意発動",
+      "target": "範囲(味方)",
+      "range": null,
+      "cost": 5,
+      "description": "自身を中心とした大範囲の味方ユニットのHPを中回復し、弱体化状態を無効化する。"
+    },
+    "link_ability": [
+      {
+        "name": "Gのレコンギスタ",
+        "condition": "デッキに2枚以上",
+        "effect": "[HP]小アップ"
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ビーム・ライフル強襲",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3000,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "C",
+    "illustrator": "Ultimateinudog",
+    "raw": "MS\n\n遠距離 コスト2\n\nYG-111 G-SELF[SPACE PACK]\nG-セルフ（宇宙用パック）\n\n[アイコン:Gのレコンギスタ]\n\n頭頂高 18.0m\n本体重量 31.1t\n所属 メガファウナ\nパイロット ベルリ・ゼナム、ラライヤ・アクパール\n\n地上 B 宇宙 S 砂漠 C 水中 C\n機動力 180\n遠距離攻撃 200\n近距離攻撃 100\nHP 270\n\nWEAPON\n\nMAIN ビーム・ライフル 射程 3 遠距離\nSUB ビーム・サーベル 射程 1 近距離\n\nLINK ABILITY\n\nGのレコンギスタ デッキに2枚以上\n\n[HP]小アップ\n\n戦況を変える力 デッキに4枚以上\n\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nMS ABILITY\n\n補給[弱体化解除]\n\n任意発動 範囲(味方) 射程 — コスト 5\n\n自身を中心とした大範囲の味方ユニットのHPを中回復し、弱体化状態を無効化する。\n\nIMPACT AREA\n\n[アイコン:黄色の大きな円形範囲、中央下寄りに三角マーカー]\n\nSPECIAL ATTACK\n\nビーム・ライフル強襲\n\nECHOES BEAT\n\n—\n\n単体(敵) 射程 3 — 射程 —\n\nSPコスト 2 威力 3000/—\n\n敵単体に射撃攻撃でダメージを与える。\n/—\n\nillust Ultimateinudog\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n\n[アイコン:機動戦士ガンダム ARSENAL BASE ロゴ]\n\nVE01-033 C"
+  },
+  "ocr_raw_file": "WAVECHOES_SEASON_01_VE01-033_G-セルフ（宇宙用パック）_ocr_raw.json",
+  "ocr_timestamp": "2026-02-23T13:15:52.745601",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli"
+}

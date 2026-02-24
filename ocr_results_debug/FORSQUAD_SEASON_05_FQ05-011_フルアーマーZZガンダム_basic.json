@@ -1,0 +1,90 @@
+{
+  "card_number": "FQ05-011",
+  "card_name": "フルアーマーZZガンダム",
+  "series": "FORSQUAD SEASON:05",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ05-011.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ05-011_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "FQ05-011",
+    "type": "MS",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト5"
+    },
+    "name": "フルアーマーZZガンダム",
+    "model": "FA-010S FULL ARMOR ZZ GUNDAM",
+    "cost": 5,
+    "category": "近距離",
+    "affiliation": "エゥーゴ",
+    "pilot": "ジュドー・アーシタ",
+    "stats": {
+      "height": "19.86m",
+      "weight": "32.7t",
+      "mobility": 220,
+      "ranged_attack": 100,
+      "melee_attack": 380,
+      "hp": 400
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "B",
+      "water": "A"
+    },
+    "weapon": {
+      "main": {
+        "name": "ハイパー・ビーム・サーベル",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "ダブル・ビーム・ライフル",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "増援[殲滅]",
+      "activation": "任意発動",
+      "target": "特殊(自分)",
+      "range": null,
+      "cost": 3,
+      "description": "自身の周囲に殲滅タイプの味方ユニットを呼び出す。※上限3ユニットまで。"
+    },
+    "link_ability": [
+      {
+        "name": "機動戦士ガンダムZZ",
+        "condition": "デッキに3枚以上",
+        "effect": "[HP]小アップ"
+      },
+      {
+        "name": "固めた装甲",
+        "condition": "デッキに2枚以上",
+        "effect": "[HP]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ハイパー・ビーム・サーベル強撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 3,
+      "power": 3800,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": {
+        "name": "ダブル・メガ・ランチャー",
+        "partner1": "Zガンダム",
+        "partner2": null,
+        "range": 4,
+        "power": 3800,
+        "description": "自身を中心に半円状の範囲攻撃を行い、範囲内の敵にダメージを与える。出撃時1度のみ使用可能。"
+      }
+    },
+    "rarity": "C",
+    "illustrator": "Robographer",
+    "raw": "MS\n\n近距離　コスト5\n\nFA-010S FULL ARMOR ZZ GUNDAM\nフルアーマーZZガンダム\n\n頭頂高　19.86m\n本体重量　32.7t\n所属　エゥーゴ\nパイロット　ジュドー・アーシタ\n\n地上 A　宇宙 S　砂漠 B　水中 A\n\n機動力 220\n遠距離攻撃 100\n近距離攻撃 380\nHP 400\n\nWEAPON\nMAIN ハイパー・ビーム・サーベル　射程 1　近距離\nSUB ダブル・ビーム・ライフル　射程 3　遠距離\n\nLINK ABILITY\n機動戦士ガンダムZZ　デッキに3枚以上\n[HP]小アップ\n\nMS ABILITY\n増援[殲滅]\n任意発動　特殊(自分)　射程 ー　コスト 3\n\n自身の周囲に殲滅タイプの味方ユニットを呼び出す。※上限3ユニットまで。\n\n固めた装甲　デッキに2枚以上\n[HP]小アップ\n\nSPECIAL ATTACK　　UNITED SP\nハイパー・ビーム・サーベル強撃　ダブル・メガ・ランチャー\n連携 Zガンダム　　連携 ー\n連携 ー　　　　　　連携 ー\n単体(敵)　射程 2　範囲(敵)　射程 4\nSPコスト 3　威力 3800 / 3800\n\n敵単体に格闘攻撃でダメージを与える。／自身を中心に半円状の範囲攻撃を行い、範囲内の敵にダメージを与える。出撃時1度のみ使用可能。\n\nIMPACT AREA\n[アイコン:半円状の範囲攻撃エリア、前方扇形、自機位置は下部中央の三角]\n\nillust Robographer\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\nFQ05-011　C"
+  },
+  "ocr_raw_file": "FORSQUAD_SEASON_05_FQ05-011_フルアーマーZZガンダム_ocr_raw.json",
+  "ocr_timestamp": "2026-02-24T18:27:42.626416",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

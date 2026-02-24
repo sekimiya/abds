@@ -1,0 +1,83 @@
+{
+  "card_number": "AB01-042",
+  "card_name": "シュヴァルベ・グレイズ(ガエリオ・ボードウィン専用)",
+  "series": "SEASON:01",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB01-042.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB01-042_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "AB01-042",
+    "type": "MS",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト5"
+    },
+    "name": "シュヴァルベ・グレイズ（ガエリオ・ボードウィン専用）",
+    "model": "EB-05s SCHWALBE GRAZE",
+    "cost": 5,
+    "category": "近距離",
+    "affiliation": "ギャラルホルン",
+    "pilot": "ガエリオ・ボードウィン",
+    "stats": {
+      "height": "18.1m",
+      "weight": "32.5t",
+      "mobility": 160,
+      "ranged_attack": 60,
+      "melee_attack": 200,
+      "hp": 180
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "A",
+      "desert": "C",
+      "water": null
+    },
+    "weapon": {
+      "main": {
+        "name": "ランス",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "ランス(射撃)",
+        "range": 2,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "鼓舞[近接]",
+      "activation": "任意発動",
+      "target": "範囲(味方)",
+      "range": null,
+      "cost": 5,
+      "description": "30秒間、自身を中心とした大範囲内の味方ユニットの[機動力][近距離攻撃力]を小アップする。"
+    },
+    "link_ability": [
+      {
+        "name": "鉄血のオルフェンズ",
+        "condition": "デッキに3枚以上",
+        "effect": "[近距離攻撃力]小アップ"
+      },
+      {
+        "name": "専用機の実力",
+        "condition": "デッキに2枚以上",
+        "effect": "[近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ランス激突",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3300,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "C",
+    "illustrator": "ToMo",
+    "raw": "MS\n\n近距離 コスト5\nEB-05s SCHWALBE GRAZE\nシュヴァルベ・グレイズ（ガエリオ・ボードウィン専用）\n\n全高 18.1m\n本体重量 32.5t\n所属 ギャラルホルン\nパイロット ガエリオ・ボードウィン\n\n地上 A 宇宙 A 砂漠 C\n\n機動力 160\n遠距離攻撃 60\n近距離攻撃 200\nHP 180\n\nWEAPON\n\nMAIN ランス 射程 1 近距離\nSUB ランス(射撃) 射程 2 遠距離\n\nMS ABILITY\n\n鼓舞[近接]\n任意発動 範囲(味方) 射程 ー コスト 5\n30秒間、自身を中心とした大範囲内の味方ユニットの[機動力][近距離攻撃力]を小アップする。\n\nLINK ABILITY\n\n鉄血のオルフェンズ デッキに3枚以上\n[近距離攻撃力]小アップ\n\n専用機の実力 デッキに2枚以上\n[近距離攻撃力]小アップ\n\nSPECIAL ATTACK\n\nランス激突\n単体(敵) 射程 2\nSPコスト 2 威力 3300\n敵単体に格闘攻撃でダメージを与える。\n\nIMPACT AREA\n\n[アイコン:中央やや上に緑小丸、中央に黄大丸、中央やや下に黄三角]\n\nillust ToMo\n\n[アイコン:機動戦士ガンダム ARSENAL BASE ロゴ]\nBANDAI MADE IN JAPAN\nAB01-042 C"
+  },
+  "ocr_raw_file": "SEASON_01_AB01-042_シュヴァルベ・グレイズ(ガエリオ・ボードウィン専用)_ocr_raw.json",
+  "ocr_timestamp": "2026-02-23T12:28:56.718931",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli"
+}

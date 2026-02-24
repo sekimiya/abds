@@ -1,0 +1,83 @@
+{
+  "card_number": "AB01-015_p1",
+  "card_name": "ユニコーンガンダム",
+  "series": "",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB01-015_p1.jpg?v8",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB01-015_p1_b.jpg?v8",
+  "ocr_data": {
+    "card_id": "AB01-015",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト7"
+    },
+    "name": "ユニコーンガンダム",
+    "model": "RX-0 UNICORN GUNDAM",
+    "cost": 7,
+    "category": "遠距離",
+    "affiliation": "ビスト財団",
+    "pilot": "バナージ・リンクス",
+    "stats": {
+      "height": "21.7m",
+      "weight": "23.7t",
+      "mobility": 220,
+      "ranged_attack": 510,
+      "melee_attack": 240,
+      "hp": 420
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "C",
+      "water": null
+    },
+    "weapon": {
+      "main": {
+        "name": "ビーム・マグナム",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ビーム・サーベル",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "貫通",
+      "activation": "任意発動",
+      "target": "貫通(敵)",
+      "range": 3,
+      "cost": 3,
+      "description": "ロックオン中の敵に一定時間チャージ後、貫通射撃を行い、射線上の敵にダメージを与える。"
+    },
+    "link_ability": [
+      {
+        "name": "ガンダมUC",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "サイコミュの使い手",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ビーム・マグナム貫通射撃(変身)",
+      "target": "貫通(敵)",
+      "range": 3,
+      "sp_cost": 3,
+      "power": 3700,
+      "description": "デストロイモードに変身、射線上の敵にダメージを与える。変身後は能力が上昇。自身が撤退するまで効果は持続する。",
+      "united_sp": null
+    },
+    "rarity": "U",
+    "illustrator": "Eske Yoshinob",
+    "raw": "MS\n\n遠距離 コスト7\nRX-0 UNICORN GUNDAM\nユニコーンガンダム\n\n全高 21.7m\n本体重量 23.7t\n所属 ビスト財団\nパイロット バナージ・リンクス\n\n地上 A 宇宙 S 砂漠 C\n機動力 220\n遠距離攻撃 510\n近距離攻撃 240\nHP 420\n\nWEAPON\nMAIN ビーム・マグナム 射程 3 遠距離\nSUB ビーム・サーベル 射程 1 近距離\n\nLINK ABILITY\nガンダムUC デッキに3枚以上\n[機動力]小アップ\n\nサイコミュの使い手 デッキに3枚以上\n[遠距離攻撃力]小アップ\n\nMS ABILITY\n貫通\n任意発動 貫通(敵) 射程 3 コスト 3\n\nロックオン中の敵に一定時間チャージ後、貫通射撃を行い、射線上の敵にダメージを与える。\n\nSPECIAL ATTACK\nビーム・マグナム貫通射撃(変身)\n貫通(敵) 射程 3\nSPコスト 3 威力 3700\n\nデストロイモードに変身、射線上の敵にダメージを与える。変身後は能力が上昇。自身が撤退するまで効果は持続する。\n\nIMPACT AREA\n[アイコン:縦長の長方形の貫通射撃範囲、中央下に三角マーカー]\n\nillust Eske Yoshinob\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nPARALLEL AB01-015 U"
+  },
+  "ocr_raw_file": "AB01-015_p1_ユニコーンガンダム_ocr_raw.json",
+  "ocr_timestamp": "2026-02-23T12:07:27.902977",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli"
+}

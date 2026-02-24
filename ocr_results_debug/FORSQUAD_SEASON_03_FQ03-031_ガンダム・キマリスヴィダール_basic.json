@@ -1,0 +1,83 @@
+{
+  "card_number": "FQ03-031",
+  "card_name": "ガンダム・キマリスヴィダール",
+  "series": "FORSQUAD SEASON:03",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ03-031.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ03-031_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "FQ03-031",
+    "type": "MS",
+    "card_label": {
+      "class": "機動",
+      "cost_label": "コスト2"
+    },
+    "name": "ガンダム・キマリスヴィダール",
+    "model": "ASW-G-66 GUNDAM KIMARIS VIDAR",
+    "cost": 2,
+    "category": "機動",
+    "affiliation": "ギャラルホルン",
+    "pilot": "ガエリオ・ボードウィン",
+    "stats": {
+      "height": "19.5m",
+      "weight": "34.5t",
+      "mobility": 190,
+      "ranged_attack": 30,
+      "melee_attack": 200,
+      "hp": 230
+    },
+    "terrain_compatibility": {
+      "ground": "S",
+      "space": "S",
+      "desert": "A",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "ドリルランス",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "ドリルランス(200mm砲)",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "誘導",
+      "activation": "任意発動",
+      "target": "特殊(敵)",
+      "range": null,
+      "cost": 4,
+      "description": "25秒間、自身をロックオン距離内に捉えている敵ユニットのターゲットを自身に集める。"
+    },
+    "link_ability": [
+      {
+        "name": "鉄血のオルフェンズ",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ドリルランス強撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3100,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "C",
+    "illustrator": "amasaki",
+    "raw": "機動 コスト2 MS\n\nASW-G-66 GUNDAM KIMARIS VIDAR\nガンダム・キマリスヴィダール\n\n鉄血のオルフェンズ [アイコン:作品ロゴ]\n\n頭頂高 19.5m\n本体重量 34.5t\n地上 S 宇宙 S 砂漠 A 水中 C\n所属 ギャラルホルン\nパイロット ガエリオ・ボードウィン\n機動力 190\n遠距離攻撃 30\n近距離攻撃 200\nHP 230\n\nWEAPON\nMAIN ドリルランス 射程 1 近距離\nSUB ドリルランス(200mm砲) 射程 3 遠距離\n\nLINK ABILITY\n鉄血のオルフェンズ デッキに3枚以上\n[遠距離攻撃力][近距離攻撃力]\n小アップ\n\n多彩な戦術 デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]\n小アップ\n\nMS ABILITY\n誘導\n任意発動 特殊(敵) 射程 ー コスト 4\n25秒間、自身をロックオン距離内に捉えている敵ユニットのターゲットを自身に集める。\n\nSPECIAL ATTACK          UNITED SP\nドリルランス強撃         ー\n連携 ー                  連携 ー\n連携 ー                  連携 ー\n単体(敵) 射程 2          ー 射程\nSPコスト 2  威力 3100    /ー\n敵単体に格闘攻撃でダメージを与える。\n/ー\n\nIMPACT AREA\n[アイコン:緑丸 中央]\n[アイコン:黄三角 中央下]\n\nillust amasaki\n©創通・サンライズ\n機動戦士ガンダム\nARSENAL BASE®\nBANDAI MADE IN JAPAN\nFQ03-031 C"
+  },
+  "ocr_raw_file": "FORSQUAD_SEASON_03_FQ03-031_ガンダム・キマリスヴィダール_ocr_raw.json",
+  "ocr_timestamp": "2026-02-24T15:40:14.121048",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

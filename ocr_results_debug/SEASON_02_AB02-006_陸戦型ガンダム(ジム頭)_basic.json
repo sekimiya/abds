@@ -1,0 +1,83 @@
+{
+  "card_number": "AB02-006",
+  "card_name": "陸戦型ガンダム(ジム頭)",
+  "series": "SEASON:02",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB02-006.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB02-006_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "AB02-006",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト2"
+    },
+    "name": "陸戦型ガンダム(ジム頭)",
+    "model": "RX-79[G] GUNDAM GROUND TYPE(GM HEAD)",
+    "cost": 2,
+    "category": "遠距離",
+    "affiliation": "地球連邦軍",
+    "pilot": "カレン・ジョシュワ",
+    "stats": {
+      "height": "18.0m",
+      "weight": "52.8t",
+      "mobility": 110,
+      "ranged_attack": 280,
+      "melee_attack": 100,
+      "hp": 210
+    },
+    "terrain_compatibility": {
+      "ground": "S",
+      "space": "C",
+      "desert": "A",
+      "water": null
+    },
+    "weapon": {
+      "main": {
+        "name": "ビーム・ライフル",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ビーム・サーベル",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "砲撃",
+      "activation": "任意発動",
+      "target": "範囲(敵)",
+      "range": 5,
+      "cost": 4,
+      "description": "射程範囲内の指定した位置に小範囲の砲撃を行い、範囲内の敵にダメージを与える。"
+    },
+    "link_ability": [
+      {
+        "name": "第08MS小隊",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力]小アップ"
+      },
+      {
+        "name": "陸戦特化の戦い",
+        "condition": "デッキに2枚以上",
+        "effect": "[機動力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ビーム・ライフル撃射",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3200,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "M",
+    "illustrator": "Naochika Morishita",
+    "raw": "MS\n\n遠距離 コスト2\nRX-79[G] GUNDAM GROUND TYPE(GM HEAD)\n陸戦型ガンダム(ジム頭)\n\n全高 18.0m\n本体重量 52.8t\n所属 地球連邦軍\nパイロット カレン・ジョシュワ\n\n地上 S 宇宙 C 砂漠 A\n\n機動力 110\n遠距離攻撃 280\n近距離攻撃 100\nHP 210\n\n[アイコン:機動戦士ガンダム 第08MS小隊]\n[アイコン:地上適性]\n\nWEAPON\nMAIN ビーム・ライフル 射程 3 遠距離\nSUB ビーム・サーベル 射程 1 近距離\n\nLINK ABILITY\n第08MS小隊 デッキに3枚以上\n[遠距離攻撃力]小アップ\n\n陸戦特化の戦い デッキに2枚以上\n[機動力]小アップ\n\nMS ABILITY\n砲撃\n任意発動 範囲(敵) 射程 5 コスト 4\n\n射程範囲内の指定した位置に小範囲の砲撃を行い、範囲内の敵にダメージを与える。\n\nSPECIAL ATTACK\nビーム・ライフル撃射\n単体(敵) 射程 3\nSPコスト 2 威力 3200\n\n敵単体に射撃攻撃でダメージを与える。\n\nIMPACT AREA\n[アイコン:×印 中央上部]\n[アイコン:●印 中央]\n[アイコン:▲印 中央下部]\n\nillust Naochika Morishita\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n[アイコン:機動戦士ガンダム] ARSENAL BASE®\nAB02-006 M"
+  },
+  "ocr_raw_file": "SEASON_02_AB02-006_陸戦型ガンダム(ジム頭)_ocr_raw.json",
+  "ocr_timestamp": "2026-02-23T15:07:11.264390",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli"
+}

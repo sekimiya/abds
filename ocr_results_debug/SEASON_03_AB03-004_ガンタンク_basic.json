@@ -1,0 +1,83 @@
+{
+  "card_number": "AB03-004",
+  "card_name": "ガンタンク",
+  "series": "SEASON:03",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB03-004.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB03-004_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "AB03-004",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト6"
+    },
+    "name": "ガンタンク",
+    "model": "RX-75 GUNTANK",
+    "cost": 6,
+    "category": "遠距離",
+    "affiliation": "地球連邦軍",
+    "pilot": "ハヤト・コバヤシ",
+    "stats": {
+      "height": "15.0m",
+      "weight": "56.0t",
+      "mobility": 190,
+      "ranged_attack": 340,
+      "melee_attack": 210,
+      "hp": 360
+    },
+    "terrain_compatibility": {
+      "ground": "S",
+      "space": "C",
+      "desert": "S",
+      "water": null
+    },
+    "weapon": {
+      "main": {
+        "name": "120mmキャノン砲",
+        "range": 4,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ポップ・ミサイル",
+        "range": 2,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "全弾発射",
+      "activation": "任意発動",
+      "target": "範囲(敵)",
+      "range": 4,
+      "cost": 5,
+      "description": "ロックオン中の敵を中心に扇状の範囲攻撃を行い、範囲内の敵にダメージを与え、以後通常攻撃がサブ武装のみになる。"
+    },
+    "link_ability": [
+      {
+        "name": "機動戦士ガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "実弾の突破力",
+        "condition": "デッキに2枚以上",
+        "effect": "[遠距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "120mmキャノン砲砲撃",
+      "target": "範囲(敵)",
+      "range": 4,
+      "sp_cost": 3,
+      "power": 3300,
+      "description": "対象の敵を中心として範囲射撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "R",
+    "illustrator": "sakusaku sakurai",
+    "raw": "MS\n\n遠距離 コスト6\n\nRX-75 GUNTANK\nガンタンク\n\n全高 15.0m\n本体重量 56.0t\n所属 地球連邦軍\nパイロット ハヤト・コバヤシ\n\n地上 S 宇宙 C 砂漠 S\n\n機動力 190\n遠距離攻撃 340\n近距離攻撃 210\nHP 360\n\n[アイコン:ガンダム作品ロゴ]\n[アイコン:地上適性]\n\nWEAPON\nMAIN 120mmキャノン砲 射程 4 遠距離\nSUB ポップ・ミサイル 射程 2 近距離\n\nLINK ABILITY\n機動戦士ガンダム デッキに3枚以上\n[機動力]小アップ\n\n実弾の突破力 デッキに2枚以上\n[遠距離攻撃力]小アップ\n\nMS ABILITY\n全弾発射\n任意発動 範囲(敵) 射程4 コスト 5\n\nロックオン中の敵を中心に扇状の範囲攻撃を行い、範囲内の敵にダメージを与え、以後通常攻撃がサブ武装のみになる。\n\nSPECIAL ATTACK\n120mmキャノン砲砲撃\n範囲(敵) 射程 4\nSPコスト 3 威力 3300\n\n対象の敵を中心として範囲射撃でダメージを与える。\n\nIMPACT AREA\n[アイコン:扇状範囲図 前方に広がる黄色の扇形エリア]\n\nillust sakusaku sakurai\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n\n機動戦士ガンダム\nARSENAL BASE\n\nAB03-004 R"
+  },
+  "ocr_raw_file": "SEASON_03_AB03-004_ガンタンク_ocr_raw.json",
+  "ocr_timestamp": "2026-02-23T15:12:57.542691",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli"
+}

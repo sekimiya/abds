@@ -1,0 +1,83 @@
+{
+  "card_number": "AB03-047",
+  "card_name": "デュエルガンダム",
+  "series": "SEASON:03",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB03-047.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB03-047_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "AB03-047",
+    "type": "MS",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト2"
+    },
+    "name": "デュエルガンダム",
+    "model": "GAT-X102 DUEL GUNDAM",
+    "cost": 2,
+    "category": "近距離",
+    "affiliation": "ザフト",
+    "pilot": "イザーク・ジュール",
+    "stats": {
+      "height": "17.5m",
+      "weight": "61.9t",
+      "mobility": 120,
+      "ranged_attack": 90,
+      "melee_attack": 310,
+      "hp": 130
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "A",
+      "desert": "C",
+      "water": null
+    },
+    "weapon": {
+      "main": {
+        "name": "ビームサーベル",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "高エネルギービームライフル",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "強撃",
+      "activation": "任意発動",
+      "target": "単体(敵)",
+      "range": 1,
+      "cost": 3,
+      "description": "ロックオン中の敵に単体攻撃でダメージを与える。"
+    },
+    "link_ability": [
+      {
+        "name": "ガンダムSEED",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "間合いを詰めた接近戦",
+        "condition": "デッキに2枚以上",
+        "effect": "[近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ビームサーベル強撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3200,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "R",
+    "illustrator": "takumi kousaka",
+    "raw": "MS\n\n近距離 コスト2\nGAT-X102 DUEL GUNDAM\nデュエルガンダム\n\n全高 17.5m\n本体重量 61.9t\n所属 ザフト\nパイロット イザーク・ジュール\n\n地上 A 宇宙 A 砂漠 C\n機動力 120\n遠距離攻撃 90\n近距離攻撃 310\nHP 130\n\nWEAPON\n\nMAIN ビームサーベル 射程 1 近距離\nSUB 高エネルギービームライフル 射程 3 遠距離\n\nLINK ABILITY\n\nガンダムSEED デッキに3枚以上\n[機動力]小アップ\n\n間合いを詰めた接近戦 デッキに2枚以上\n[近距離攻撃力]小アップ\n\nMS ABILITY\n\n強撃\n任意発動 単体(敵) 射程 1 コスト 3\nロックオン中の敵に単体攻撃でダメージを与える。\n\nSPECIAL ATTACK\n\nビームサーベル強撃\n単体(敵) 射程 2\nSPコスト 2 威力 3200\n敵単体に格闘攻撃でダメージを与える。\n\nIMPACT AREA\n\n[アイコン:緑丸] 中央やや上\n[アイコン:緑丸] 中央やや下\n[アイコン:三角] 下中央\n\nillust takumi kousaka\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nAB03-047 R"
+  },
+  "ocr_raw_file": "SEASON_03_AB03-047_デュエルガンダム_ocr_raw.json",
+  "ocr_timestamp": "2026-02-23T15:16:09.781891",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli"
+}

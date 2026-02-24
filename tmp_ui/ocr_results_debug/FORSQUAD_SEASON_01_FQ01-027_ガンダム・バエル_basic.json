@@ -1,0 +1,74 @@
+{
+  "card_number": "FQ01-027",
+  "card_name": "ガンダム・バエル",
+  "series": "FORSQUAD SEASON:01",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ01-027.jpg?v9",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ01-027_b.jpg?v9",
+  "ocr_data": {
+    "card_id": "FQ01-027",
+    "type": "MS",
+    "card_label": {
+      "class": "機動",
+      "cost_label": "コスト3"
+    },
+    "name": "ガンダム・バエル",
+    "model": "ASW-G-01 GUNDAM BAEL",
+    "cost": 3,
+    "category": "機動",
+    "pilot": "マクギリス・ファリド",
+    "stats": {
+      "height": "18.0m",
+      "weight": "30.0t",
+      "mobility": 240,
+      "ranged_attack": 60,
+      "melee_attack": 310,
+      "hp": 300
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "A",
+      "water": "B"
+    },
+    "weapon": {
+      "main": {
+        "name": "バエル・ソード",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "電磁砲",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "強襲",
+      "type": "任意発動",
+      "range": 4,
+      "cost": 4,
+      "description": "一定範囲内のロックオン可能な残りHPの割合が最も高い敵ユニットにターゲットを切り替え、単体攻撃でダメージを与える。"
+    },
+    "link_ability": [
+      {
+        "name": "鉄血のオルフェンズ",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      },
+      {
+        "name": "肉薄する戦い",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][近距離攻撃力]小アップ"
+      }
+    ],
+    "impact_area": {
+      "type": "circular",
+      "radius": 2,
+      "centered": true
+    },
+    "illustrator": "amasaki",
+    "raw": "機動 コスト3 ASW-G-01 GUNDAM BAEL ガンダム・バエル 頭頂高 18.0m 本体重量 30.0t 所属 ギャラルホルン パイロット マクギリス・ファリド 地上 A 宇宙 S 砂漠 A 水中 B 機動力 240 遠距離攻撃 60 近距離攻撃 310 HP 300 WEAPON MAIN バエル・ソード 射程 1 近距離 SUB 電磁砲 射程 3 遠距離 MS ABILITY 強襲 任意発動 単体(敵) 射程 4 コスト 4 一定範囲内のロックオン可能な残りHPの割合が最も高い敵ユニットにターゲットを切り替え、単体攻撃でダメージを与える。 SPECIAL ATTACK UNITED SP バエル・ソード強撃 連携 連携 単体(敵) 射程 2 威力 3300 / 敵単体に格闘攻撃でダメージを与える。 / SPスキル / / IMPACT AREA FQ01-027 R"
+  },
+  "ocr_timestamp": "2025-06-28T01:44:50.620277",
+  "ocr_type": "basic"
+}

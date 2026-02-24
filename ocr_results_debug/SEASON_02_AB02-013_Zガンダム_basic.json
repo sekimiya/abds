@@ -1,0 +1,83 @@
+{
+  "card_number": "AB02-013",
+  "card_name": "Zガンダム",
+  "series": "SEASON:02",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB02-013.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB02-013_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "AB02-013",
+    "type": "MS",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト7"
+    },
+    "name": "Zガンダム",
+    "model": "MSZ-006 Z GUNDAM",
+    "cost": 7,
+    "category": "近距離",
+    "affiliation": "エゥーゴ",
+    "pilot": "カミーユ・ビダン",
+    "stats": {
+      "height": "19.85m",
+      "weight": "28.7t",
+      "mobility": 240,
+      "ranged_attack": 210,
+      "melee_attack": 390,
+      "hp": 460
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "C",
+      "water": null
+    },
+    "weapon": {
+      "main": {
+        "name": "ビーム・サーベル",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "ビーム・ライフル",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "奇襲",
+      "activation": "任意発動",
+      "target": "範囲(敵)",
+      "range": null,
+      "cost": 6,
+      "description": "指定した位置に範囲攻撃を行い、その地点に移動する。"
+    },
+    "link_ability": [
+      {
+        "name": "機動戦士Zガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力]小アップ"
+      },
+      {
+        "name": "可変機ファイター",
+        "condition": "デッキに3枚以上",
+        "effect": "専用作戦カードが使用可能"
+      }
+    ],
+    "special_attack": {
+      "name": "ビーム・サーベル強撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3500,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "U",
+    "illustrator": "Naochika Morishita",
+    "raw": "MS\n\n近距離 コスト7\n\nMSZ-006 Z GUNDAM\nZガンダム\n\n全高 19.85m\n本体重量 28.7t\n所属 エゥーゴ\nパイロット カミーユ・ビダン\n\n地上 A 宇宙 S 砂漠 C\n機動力 240\n遠距離攻撃 210\n近距離攻撃 390\nHP 460\n\nWEAPON\nMAIN ビーム・サーベル 射程 1 近距離\nSUB ビーム・ライフル 射程 3 遠距離\n\nLINK ABILITY\n機動戦士Zガンダム デッキに3枚以上\n[遠距離攻撃力] 小アップ\n\n可変機ファイター デッキに3枚以上\n専用作戦カードが使用可能\n\nMS ABILITY\n奇襲\n任意発動 範囲(敵) 射程 − コスト 6\n指定した位置に範囲攻撃を行い、その地点に移動する。\n\nSPECIAL ATTACK\nビーム・サーベル強撃\n単体(敵) 射程 2\nSPコスト 2 威力 3500\n敵単体に格闘攻撃でダメージを与える。\n\nIMPACT AREA\n[アイコン:×マーク 中央上]\n[アイコン:黄色大丸 中央]\n[アイコン:緑丸 中央下]\n[アイコン:▲ 最下部中央]\n\nillust Naochika Morishita\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\nAB02-013 U"
+  },
+  "ocr_raw_file": "SEASON_02_AB02-013_Zガンダム_ocr_raw.json",
+  "ocr_timestamp": "2026-02-23T15:08:02.351037",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli"
+}

@@ -1,0 +1,83 @@
+{
+  "card_number": "FQ01-014",
+  "card_name": "グフイグナイテッド(ハイネ・ヴェステンフルス専用機)",
+  "series": "FORSQUAD SEASON:01",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ01-014.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ01-014_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "FQ01-014",
+    "type": "MS",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト6"
+    },
+    "name": "グフイグナイテッド（ハイネ・ヴェステンフルス専用機）",
+    "model": "ZGMF-X2000 HEINE'S GOUF IGNITED",
+    "cost": 6,
+    "category": "近距離",
+    "affiliation": "ザフト",
+    "pilot": "ハイネ・ヴェステンフルス",
+    "stats": {
+      "height": "19.2m",
+      "weight": "72.13t",
+      "mobility": 270,
+      "ranged_attack": 0,
+      "melee_attack": 390,
+      "hp": 560
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "A",
+      "desert": "C",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "テンペスト ビームソード",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "シールド",
+        "range": null,
+        "type": null
+      }
+    },
+    "ms_ability": {
+      "name": "増援[殲滅/砲撃]",
+      "activation": "任意発動",
+      "target": "特殊(自分)",
+      "range": null,
+      "cost": 4,
+      "description": "自身の周囲に砲撃を行う殲滅タイプの味方ユニットを呼び出す。このユニットは移動しない。※上限3ユニットまで。"
+    },
+    "link_ability": [
+      {
+        "name": "SEED DESTINY",
+        "condition": "デッキに3枚以上",
+        "effect": "[HP]小アップ"
+      },
+      {
+        "name": "緋紫",
+        "condition": "デッキに2枚以上",
+        "effect": "[機動力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "テンペスト ビームソード強撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3500,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "M",
+    "illustrator": "deraken",
+    "raw": "MS\n\n近距離 コスト6\n\nZGMF-X2000 HEINE'S GOUF IGNITED\n\nグフイグナイテッド（ハイネ・ヴェステンフルス専用機）\n\n頭頂高 19.2m\n本体重量 72.13t\n所属 ザフト\nパイロット ハイネ・ヴェステンフルス\n\n地上 A 宇宙 A 砂漠 C 水中 C\n機動力 270\n遠距離攻撃 0\n近距離攻撃 390\nHP 560\n\nWEAPON\n\nMAIN テンペスト ビームソード 射程 1 近距離\nSUB シールド 射程 —\n\nLINK ABILITY\n\nSEED DESTINY デッキに3枚以上\n[HP]小アップ\n\n緋紫 デッキに2枚以上\n[機動力][近距離攻撃力]小アップ\n\nMS ABILITY\n\n増援[殲滅/砲撃]\n\n任意発動 特殊(自分) 射程— コスト 4\n\n自身の周囲に砲撃を行う殲滅タイプの味方ユニットを呼び出す。このユニットは移動しない。※上限3ユニットまで。\n\nSPECIAL ATTACK\n\nテンペスト ビームソード強撃\n連携 —\n連携 —\n単体(敵) 射程 2\n\nSPコスト 2 威力 3500 /—\n\n敵単体に格闘攻撃でダメージを与える。\n/—\n\nUNITED SP\n\n連携 —\n連携 —\n射程 —\n\nIMPACT AREA\n\n[アイコン:緑丸 中央やや左]\n[アイコン:黄三角 中央下]\n\nillust deraken\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\n\nFQ01-014 M"
+  },
+  "ocr_raw_file": "FORSQUAD_SEASON_01_FQ01-014_グフイグナイテッド(ハイネ・ヴェステンフルス専用機)_ocr_raw.json",
+  "ocr_timestamp": "2026-02-24T01:22:35.922497",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli"
+}

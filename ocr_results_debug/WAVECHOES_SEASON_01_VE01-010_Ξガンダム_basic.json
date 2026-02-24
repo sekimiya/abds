@@ -1,0 +1,91 @@
+{
+  "card_number": "VE01-010",
+  "card_name": "Ξガンダム",
+  "series": "WAVECHOES SEASON:01",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE01-010.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE01-010_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "VE01-010",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト2"
+    },
+    "name": "Ξガンダム",
+    "model": "RX-105 XI GUNDAM",
+    "cost": 2,
+    "category": "遠距離",
+    "affiliation": "マフティー",
+    "pilot": "ハサウェイ・ノア",
+    "stats": {
+      "height": "26.0m",
+      "weight": "32.0t",
+      "mobility": 240,
+      "ranged_attack": 250,
+      "melee_attack": 60,
+      "hp": 300
+    },
+    "terrain_compatibility": {
+      "ground": "S",
+      "space": "A",
+      "desert": "B",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "ビーム・ライフル",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ビーム・サーベル",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "デコイ[ユニット]",
+      "activation": "任意発動",
+      "target": "特殊(自分)",
+      "range": null,
+      "cost": 2,
+      "description": "自身の周囲にユニット扱いでロックオンされるデコイを3体配置する。※上限6体まで。効果の対象やユニット数には含まれない。"
+    },
+    "link_ability": [
+      {
+        "name": "閃光のハサウェイ",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      },
+      {
+        "name": "戦況を変える",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ビーム・ライフル斉射",
+      "target": "貫通(敵)",
+      "range": 4,
+      "sp_cost": 2,
+      "power": 3700,
+      "description": "射線上の敵に貫通射撃でダメージを与える。",
+      "united_sp": null,
+      "echoes_beat": {
+        "name": "ビーム・ライフル斉射",
+        "level": 1,
+        "target": "貫通(敵)",
+        "range": 4,
+        "power": 4700,
+        "description": "EBLv.を1下げる。射線上の敵に貫通射撃でダメージを与える。出撃時1度のみ使用可能。"
+      }
+    },
+    "rarity": "M",
+    "illustrator": "ZB",
+    "raw": "MS\n\n遠距離 コスト2\nRX-105 XI GUNDAM\nΞガンダム\n\n頭頂高 26.0m\n本体重量 32.0t\n所属 マフティー\nパイロット ハサウェイ・ノア\n\n地上 S 宇宙 A 砂漠 B 水中 C\n\n機動力 240\n遠距離攻撃 250\n近距離攻撃 60\nHP 300\n\n閃光のハサウェイ [アイコン:十字]\n\nWEAPON\n\nMAIN ビーム・ライフル 射程 3 遠距離\nSUB ビーム・サーベル 射程 1 近距離\n\nLINK ABILITY\n\n閃光のハサウェイ デッキに3枚以上\n\n[遠距離攻撃力][近距離攻撃力]\n小アップ\n\nMS ABILITY\n\nデコイ[ユニット]\n任意発動 特殊(自分) 射程 — コスト 2\n\n自身の周囲にユニット扱いでロックオンされるデコイを3体配置する。※上限6体まで。効果の対象やユニット数には含まれない。\n\n戦況を変える デッキに4枚以上\n\n[遠距離攻撃力][近距離攻撃力]\n小アップ\n\nSPECIAL ATTACK\n\nビーム・ライフル斉射\n\nECHOES BEAT\n\nビーム・ライフル斉射 Lv.1\n\nECHOES BEAT Lv.を下げることで、Lv.戦術技が発動する。\n\n貫通(敵) 射程 4 貫通(敵) 射程 4\nSPコスト 2 威力 3700 / 4700\n\nIMPACT AREA\n\n射線上の敵に貫通射撃でダメージを与える。/ EBLv.を1下げる。射線上の敵に貫通射撃でダメージを与える。出撃時1度のみ使用可能。\n\nillust ZB\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n\n機動戦士ガンダム ARSENAL BASE®\n\nVE01-010 M"
+  },
+  "ocr_raw_file": "WAVECHOES_SEASON_01_VE01-010_Ξガンダム_ocr_raw.json",
+  "ocr_timestamp": "2026-02-23T13:09:50.211909",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli"
+}

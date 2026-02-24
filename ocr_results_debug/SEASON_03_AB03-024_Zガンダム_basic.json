@@ -1,0 +1,83 @@
+{
+  "card_number": "AB03-024",
+  "card_name": "Zガンダム",
+  "series": "SEASON:03",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB03-024.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB03-024_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "AB03-024",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト5"
+    },
+    "name": "Zガンダム",
+    "model": "MSZ-006 Z GUNDAM",
+    "cost": 5,
+    "category": "遠距離",
+    "affiliation": "エゥーゴ",
+    "pilot": "カミーユ・ビダン",
+    "stats": {
+      "height": "19.85m",
+      "weight": "28.7t",
+      "mobility": 180,
+      "ranged_attack": 290,
+      "melee_attack": 130,
+      "hp": 200
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "C",
+      "water": null
+    },
+    "weapon": {
+      "main": {
+        "name": "ビーム・ライフル",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ビーム・サーベル",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "強化[遠距離]",
+      "activation": "任意発動",
+      "target": "自分",
+      "range": null,
+      "cost": 3,
+      "description": "30秒間、自身の[遠距離攻撃力]を小アップする。"
+    },
+    "link_ability": [
+      {
+        "name": "機動戦士Zガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力]小アップ"
+      },
+      {
+        "name": "その名はガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ビーム・ライフル撃射",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3200,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "C",
+    "illustrator": "Ippei Soeda",
+    "raw": "MS\n\n遠距離 コスト5\n\nMSZ-006 Z GUNDAM\nZガンダム\n\n全高 19.85m\n本体重量 28.7t\n所属 エゥーゴ\nパイロット カミーユ・ビダン\n\n地上 A 宇宙 S 砂漠 C\n機動力 180\n遠距離攻撃 290\n近距離攻撃 130\nHP 200\n\nWEAPON\n\nMAIN ビーム・ライフル 射程 3 遠距離\nSUB ビーム・サーベル 射程 1 近距離\n\nMS ABILITY\n\n強化[遠距離]\n任意発動 自分 射程 - コスト 3\n\n30秒間、自身の[遠距離攻撃力]を小アップする。\n\nSPECIAL ATTACK\n\nビーム・ライフル撃射\n単体(敵) 射程 3\nSPコスト 2 威力 3200\n\n敵単体に射撃攻撃でダメージを与える。\n\nLINK ABILITY\n\n機動戦士Zガンダム デッキに3枚以上\n\n[遠距離攻撃力]小アップ\n\nその名はガンダム デッキに3枚以上\n\n[機動力]小アップ\n\nIMPACT AREA\n\n[アイコン:中央に黄緑色の丸、下部に黄色の三角]\n\nillust Ippei Soeda\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n\n機動戦士ガンダム\nARSENAL BASE®\n\nAB03-024 C"
+  },
+  "ocr_raw_file": "SEASON_03_AB03-024_Zガンダム_ocr_raw.json",
+  "ocr_timestamp": "2026-02-23T15:14:19.986333",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli"
+}

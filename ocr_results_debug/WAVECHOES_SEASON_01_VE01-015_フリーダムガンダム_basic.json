@@ -1,0 +1,84 @@
+{
+  "card_number": "VE01-015",
+  "card_name": "フリーダムガンダム",
+  "series": "WAVECHOES SEASON:01",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE01-015.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE01-015_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "VE01-015",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト5"
+    },
+    "name": "フリーダムガンダム",
+    "model": "ZGMF-X10A FREEDOM GUNDAM",
+    "cost": 5,
+    "category": "遠距離",
+    "affiliation": null,
+    "pilot": "キラ・ヤマト",
+    "stats": {
+      "height": "18.03m",
+      "weight": "71.5t",
+      "mobility": 260,
+      "ranged_attack": 520,
+      "melee_attack": 50,
+      "hp": 470
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "A",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "ルプス・ビームライフル",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ラケルタ・ビームサーベル",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "舞い降りる剣",
+      "activation": "任意発動",
+      "target": "範囲(敵)",
+      "range": null,
+      "cost": 5,
+      "description": "指定した位置に範囲攻撃を行い、その地点に移動する。"
+    },
+    "link_ability": [
+      {
+        "name": "ガンダムSEED",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "撃ち倒す遠距離戦",
+        "condition": "デッキに遠距離が2枚以上",
+        "effect": "[遠距離攻撃力]中アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ハイマットフルバースト",
+      "echoes_beat": true,
+      "target": "範囲(敵)",
+      "range": 4,
+      "sp_cost": 2,
+      "power": 3100,
+      "description": "ロックオン中の敵を中心に扇状の範囲攻撃を行い、範囲内の敵にダメージを与え、強化状態を無効化する。次に使用する自身のMSアビリティ[舞い降りる剣]の使用コストを0にする。[SEED]を含むリンクアビリティが発動している場合、出撃中の[SEED]を含むリンクアビリティを持つ味方ユニットは、一定時間、[遠/近攻撃力][SP威力]をアップする。",
+      "united_sp": null
+    },
+    "rarity": "LE",
+    "illustrator": "Toshiaki Takayama",
+    "raw": "MS\n\n遠距離 コスト5\nZGMF-X10A FREEDOM GUNDAM\nフリーダムガンダム\n\n頭頂高 18.03m\n本体重量 71.5t\n所属 ー\nパイロット キラ・ヤマト\n\n地上 A 宇宙 S 砂漠 A 水中 C\n\n機動力 260\n遠距離攻撃 520\n近距離攻撃 50\nHP 470\n\nWEAPON\nMAIN ルプス・ビームライフル 射程 3 遠距離\nSUB ラケルタ・ビームサーベル 射程 1 近距離\n\nMS ABILITY\n舞い降りる剣\n任意発動 範囲(敵) 射程 ー コスト 5\n\n指定した位置に範囲攻撃を行い、その地点に移動する。\n\nLINK ABILITY\nガンダムSEED デッキに3枚以上\n[機動力]小アップ\n\n撃ち倒す遠距離戦 デッキに遠距離が2枚以上\n[遠距離攻撃力]中アップ\n\nSPECIAL ATTACK ECHOES BEAT\nハイマットフルバースト ー\nー\n範囲(敵) 射程 4 ー 射程 ー\nSPコスト 2 威力 3100 / ー\n\nIMPACT AREA\n[アイコン:菱形範囲・中央×印]\n\nロックオン中の敵を中心に扇状の範囲攻撃を行い、範囲内の敵にダメージを与え、強化状態を無効化する。次に使用する自身のMSアビリティ[舞い降りる剣]の使用コストを0にする。[SEED]を含むリンクアビリティが発動している場合、出撃中の[SEED]を含むリンクアビリティを持つ味方ユニットは、一定時間、[遠/近攻撃力][SP威力]をアップする。/ー\n\nillust Toshiaki Takayama\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n\n機動戦士ガンダム ARSENAL BASE\n\nVE01-015 LE"
+  },
+  "ocr_raw_file": "WAVECHOES_SEASON_01_VE01-015_フリーダムガンダム_ocr_raw.json",
+  "ocr_timestamp": "2026-02-23T13:10:30.860562",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli"
+}

@@ -1,0 +1,83 @@
+{
+  "card_number": "AB03-001",
+  "card_name": "ガンダム",
+  "series": "SEASON:03",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB03-001.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB03-001_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "AB03-001",
+    "type": "MS",
+    "card_label": {
+      "class": "機動",
+      "cost_label": "コスト7"
+    },
+    "name": "ガンダム",
+    "model": "RX-78-2 GUNDAM",
+    "cost": 7,
+    "category": "機動",
+    "affiliation": "地球連邦軍",
+    "pilot": "アムロ・レイ",
+    "stats": {
+      "height": "18.0m",
+      "weight": "43.4t",
+      "mobility": 370,
+      "ranged_attack": 450,
+      "melee_attack": 400,
+      "hp": 480
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "A",
+      "desert": "C",
+      "water": null
+    },
+    "weapon": {
+      "main": {
+        "name": "ハイパー・バズーカ",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ビーム・サーベル",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "全弾発射",
+      "activation": "任意発動",
+      "target": "範囲(敵)",
+      "range": 3,
+      "cost": 5,
+      "description": "ロックオン中の敵を中心に扇状の範囲攻撃を行い、範囲内の敵にダメージを与え、以後通常攻撃がサブ武装のみになる。"
+    },
+    "link_ability": [
+      {
+        "name": "機動戦士ガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "実弾の突破力",
+        "condition": "デッキに2枚以上",
+        "effect": "[遠距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ハイパー・バズーカ撃射",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3700,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "U",
+    "illustrator": "Naochika Morishita",
+    "raw": "MS\n\n機動 コスト7\n\nRX-78-2 GUNDAM\nガンダム\n\n全高 18.0m\n本体重量 43.4t\n所属 地球連邦軍\nパイロット アムロ・レイ\n\n地上 A 宇宙 A 砂漠 C\n\n機動力 370\n遠距離攻撃 450\n近距離攻撃 400\nHP 480\n\nWEAPON\n\nMAIN ハイパー・バズーカ 射程 3 遠距離\nSUB ビーム・サーベル 射程 1 近距離\n\nLINK ABILITY\n\n機動戦士ガンダム デッキに3枚以上\n[機動力]小アップ\n\n実弾の突破力 デッキに2枚以上\n[遠距離攻撃力]小アップ\n\nMS ABILITY\n\n全弾発射\n任意発動 範囲(敵) 射程 3 コスト 5\n\nロックオン中の敵を中心に扇状の範囲攻撃を行い、範囲内の敵にダメージを与え、以後通常攻撃がサブ武装のみになる。\n\nSPECIAL ATTACK\n\nハイパー・バズーカ撃射\n単体(敵) 射程 3\nSPコスト 2 威力 3700\n\n敵単体に射撃攻撃でダメージを与える。\n\nIMPACT AREA\n\n[アイコン:前方扇状の攻撃範囲図]\n\nillust Naochika Morishita\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n\n機動戦士ガンダム\nARSENAL BASE\n\nAB03-001 U"
+  },
+  "ocr_raw_file": "SEASON_03_AB03-001_ガンダム_ocr_raw.json",
+  "ocr_timestamp": "2026-02-23T15:12:40.540170",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli"
+}

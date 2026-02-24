@@ -1,0 +1,83 @@
+{
+  "card_number": "AB03-017_p1",
+  "card_name": "ガンダム試作1号機",
+  "series": "",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB03-017_p1.jpg?v8",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB03-017_p1_b.jpg?v8",
+  "ocr_data": {
+    "card_id": "AB03-017",
+    "type": "MS",
+    "card_label": {
+      "class": "機動",
+      "cost_label": "コスト4"
+    },
+    "name": "ガンダム試作1号機",
+    "model": "RX-78GP01 GUNDAM GP01",
+    "cost": 4,
+    "category": "機動",
+    "affiliation": "地球連邦軍",
+    "pilot": "コウ・ウラキ",
+    "stats": {
+      "height": "18.0m",
+      "weight": "39.7t",
+      "mobility": 350,
+      "ranged_attack": 340,
+      "melee_attack": 110,
+      "hp": 400
+    },
+    "terrain_compatibility": {
+      "ground": "S",
+      "space": "C",
+      "desert": "A",
+      "water": null
+    },
+    "weapon": {
+      "main": {
+        "name": "ビーム・ライフル",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ビーム・サーベル",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "集中砲火",
+      "activation": "任意発動",
+      "target": "範囲(味方)",
+      "range": null,
+      "cost": 4,
+      "description": "20秒間、ロックオンしている敵に周囲の味方ターゲットを集め、[遠／近攻撃力]を中アップ。攻撃対象が変わると効果は終了する。"
+    },
+    "link_ability": [
+      {
+        "name": "ガンダム0083",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "その名はガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ビーム・ライフル撃射",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3500,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "U",
+    "illustrator": "unaginogoro",
+    "raw": "MS\n\n機動 コスト4\n\nRX-78GP01 GUNDAM GP01\nガンダム試作1号機\n\n全高 18.0m\n本体重量 39.7t\n所属 地球連邦軍\nパイロット コウ・ウラキ\n\n地上 S 宇宙 C 砂漠 A\n\n[アイコン:機動タイプ] [アイコン:SEASON 03]\n\n機動力 350\n遠距離攻撃 340\n近距離攻撃 110\nHP 400\n\nWEAPON\n\nMAIN ビーム・ライフル 射程 3 遠距離\nSUB ビーム・サーベル 射程 1 近距離\n\nLINK ABILITY\n\nガンダム0083 デッキに3枚以上\n[機動力]小アップ\n\nその名はガンダム デッキに3枚以上\n[機動力]小アップ\n\nMS ABILITY\n\n集中砲火\n任意発動 範囲(味方) 射程 ー コスト 4\n\n20秒間、ロックオンしている敵に周囲の味方ターゲットを集め、[遠／近攻撃力]を中アップ。攻撃対象が変わると効果は終了する。\n\nSPECIAL ATTACK\n\nビーム・ライフル撃射\n単体(敵) 射程 3\nSPコスト 2 威力 3500\n\n敵単体に射撃攻撃でダメージを与える。\n\nIMPACT AREA\n\n[アイコン:円形範囲、中央やや下に三角マーカー]\n\nillust unaginogoro\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n\n機動戦士ガンダム\nARSENAL BASE®\n\nPARALLEL\nAB03-017 U"
+  },
+  "ocr_raw_file": "AB03-017_p1_ガンダム試作1号機_ocr_raw.json",
+  "ocr_timestamp": "2026-02-23T15:13:51.379870",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli"
+}

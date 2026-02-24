@@ -1,0 +1,74 @@
+{
+  "card_number": "FQ01-026",
+  "card_name": "ガンダム・ヴィダール",
+  "series": "FORSQUAD SEASON:01",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ01-026.jpg?v9",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ01-026_b.jpg?v9",
+  "ocr_data": {
+    "card_id": "FQ01-026",
+    "type": "MS",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト5"
+    },
+    "name": "ガンダム・ヴィダール",
+    "model": "ASW-G-XX GUNDAM VIDAR",
+    "cost": 5,
+    "category": "近距離",
+    "pilot": "ヴィダール",
+    "stats": {
+      "height": "18.5m",
+      "weight": "30.9t",
+      "mobility": 300,
+      "ranged_attack": 80,
+      "melee_attack": 380,
+      "hp": 340
+    },
+    "terrain_compatibility": {
+      "ground": "S",
+      "space": "A",
+      "desert": "A",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "バーストサーベル",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "ハンドガン",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "断砕",
+      "type": "任意発動",
+      "range": 2,
+      "cost": 3,
+      "description": "ロックオン中の敵に単体攻撃でダメージを与え、強化状態を無効化する。"
+    },
+    "link_ability": [
+      {
+        "name": "鉄血のオルフェンズ",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      },
+      {
+        "name": "肉薄する戦い",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][近距離攻撃力]小アップ"
+      }
+    ],
+    "impact_area": {
+      "type": "circular",
+      "radius": 1,
+      "centered": true
+    },
+    "illustrator": "amasaki",
+    "raw": "近距離 コスト5\nASW-G-XX GUNDAM VIDAR\nガンダム・ヴィダール\n頭頂高 18.5m\n本体重量 30.9t\n所属 ギャラルホルン\nパイロット ヴィダール\n地上S 宇宙A 砂漠A 水中C\n機動力 300\n遠距離攻撃 80\n近距離攻撃 380\nHP 340\nWEAPON\nMAIN バーストサーベル\n射程 1 近距離\nSUB ハンドガン\n射程 3 遠距離\nLINK ABILITY\n鉄血のオルフェンズ デッキに3枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n肉薄する戦い デッキに4枚以上\n[機動力][近距離攻撃力]小アップ\nMS ABILITY\n断砕\n任意発動 単体(敵) 射程 2 コスト 3\nロックオン中の敵に単体攻撃でダメージを与え、強化状態を無効化する。\nSPECIAL ATTACK\nバーストサーベル強撃\nUNITED SP\n連撃\n連撃\n単体(敵) 射程 2\nコスト 2 威力 3300/\n敵単体に格闘攻撃でダメージを与える。/\nillust -amasaki\n©創通・サンライズ\nBANDAI MADE IN JAPAN"
+  },
+  "ocr_timestamp": "2025-06-28T02:03:47.483034",
+  "ocr_type": "basic"
+}

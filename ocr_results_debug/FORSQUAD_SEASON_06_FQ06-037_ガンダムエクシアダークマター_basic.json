@@ -1,0 +1,83 @@
+{
+  "card_number": "FQ06-037",
+  "card_name": "ガンダムエクシアダークマター",
+  "series": "FORSQUAD SEASON:06",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ06-037.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ06-037_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "FQ06-037",
+    "type": "MS",
+    "card_label": {
+      "class": "機動",
+      "cost_label": "コスト6"
+    },
+    "name": "ガンダムエクシアダークマター",
+    "model": "PPGN-001 GUNDAM EXIA DARK MATTER",
+    "cost": 6,
+    "category": "機動",
+    "affiliation": null,
+    "pilot": "メイジン・カワグチ",
+    "stats": {
+      "height": "18.3m",
+      "weight": "81.1t",
+      "mobility": 270,
+      "ranged_attack": 100,
+      "melee_attack": 600,
+      "hp": 580
+    },
+    "terrain_compatibility": {
+      "ground": "S",
+      "space": "A",
+      "desert": "C",
+      "water": "B"
+    },
+    "weapon": {
+      "main": {
+        "name": "プロミネンスブレイド&ブライニクルブレイド二刀流",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "GNバルカン",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "解撃",
+      "activation": "任意発動",
+      "target": "単体(敵)",
+      "range": 2,
+      "cost": 3,
+      "description": "自身が弱体化状態の時に発動可能となり、自身の弱体化状態を無効化し、ロックオン中の敵に単体攻撃でダメージを与える。"
+    },
+    "link_ability": [
+      {
+        "name": "ビルドファイターズ",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "GNビームサーベル強襲",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3600,
+      "description": "一定時間トランザムを発動し、敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "P",
+    "illustrator": "hippo",
+    "raw": "MS\n\n機動 コスト6\n\nPPGN-001 GUNDAM EXIA DARK MATTER\nガンダムエクシアダークマター\n\n頭頂高 18.3m\n本体重量 81.1t\n所属 ー\nパイロット メイジン・カワグチ\n\n地上 S 宇宙 A 砂漠 C 水中 B\n\n機動力 270\n遠距離攻撃 100\n近距離攻撃 600\nHP 580\n\nWEAPON\nMAIN プロミネンスブレイド&ブライニクルブレイド二刀流 射程 1 近距離\nSUB GNバルカン 射程 3 遠距離\n\nLINK ABILITY\nビルドファイターズ デッキに3枚以上\n[機動力]小アップ\n\nMS ABILITY\n解撃\n任意発動 単体(敵) 射程 2 コスト 3\n自身が弱体化状態の時に発動可能となり、自身の弱体化状態を無効化し、ロックオン中の敵に単体攻撃でダメージを与える。\n\n多彩な戦術 デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nSPECIAL ATTACK          UNITED SP\nGNビームサーベル強襲     ー\n連携 ー                  連携 ー\n連携 ー                  連携 ー\n単体(敵) 射程 2          ー 射程 ー\nSPコスト 2 威力 3600 / ー\n\n一定時間トランザムを発動し、敵単体に格闘攻撃でダメージを与える。/ ー\n\nIMPACT AREA\n[アイコン:攻撃範囲図 十字型グリッド、前方2マス目に黄緑マーカー、最下部に▲(自機位置)]\n\nillust hippo\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\nFQ06-037 P"
+  },
+  "ocr_raw_file": "FORSQUAD_SEASON_06_FQ06-037_ガンダムエクシアダークマター_ocr_raw.json",
+  "ocr_timestamp": "2026-02-24T18:43:27.896867",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

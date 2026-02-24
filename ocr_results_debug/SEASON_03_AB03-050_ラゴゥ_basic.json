@@ -1,0 +1,83 @@
+{
+  "card_number": "AB03-050",
+  "card_name": "ラゴゥ",
+  "series": "SEASON:03",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB03-050.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB03-050_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "AB03-050",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト3"
+    },
+    "name": "ラゴゥ",
+    "model": "TMF/A-803 LaGOWE",
+    "cost": 3,
+    "category": "遠距離",
+    "affiliation": "ザフト",
+    "pilot": "アンドリュー・バルトフェルド",
+    "stats": {
+      "height": "11.49m(ターレット基部まで)",
+      "weight": "70.18t",
+      "mobility": 190,
+      "ranged_attack": 360,
+      "melee_attack": 60,
+      "hp": 240
+    },
+    "terrain_compatibility": {
+      "ground": "S",
+      "space": "C",
+      "desert": "S",
+      "water": null
+    },
+    "weapon": {
+      "main": {
+        "name": "2連装ビームキャノン",
+        "range": 2,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "2連装ビームサーベル",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "妨害[機動]",
+      "activation": "出撃時発動",
+      "target": "範囲(敵)",
+      "range": null,
+      "cost": null,
+      "description": "20秒間、自身を中心とした大範囲内の敵ユニットの[機動力]を小ダウンする。"
+    },
+    "link_ability": [
+      {
+        "name": "ガンダムSEED",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "陸戦特化の戦い",
+        "condition": "デッキに2枚以上",
+        "effect": "[機動力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "2連装ビームキャノン撃射",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3300,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "M",
+    "illustrator": "MIKE",
+    "raw": "MS\n\n遠距離 コスト3\n\nTMF/A-803 LaGOWE\nラゴゥ\n\n全高 11.49m(ターレット基部まで)\n本体重量 70.18t\n所属 ザフト\nパイロット アンドリュー・バルトフェルド\n\n地上 S 宇宙 C 砂漠 S\n機動力 190\n遠距離攻撃 360\n近距離攻撃 60\nHP 240\n\nWEAPON\nMAIN 2連装ビームキャノン 射程 2 遠距離\nSUB 2連装ビームサーベル 射程 1 近距離\n\nLINK ABILITY\nガンダムSEED デッキに3枚以上\n[機動力]小アップ\n\n陸戦特化の戦い デッキに2枚以上\n[機動力]小アップ\n\nMS ABILITY\n妨害[機動]\n出撃時発動 範囲(敵) 射程― コスト―\n\n20秒間、自身を中心とした大範囲内の敵ユニットの[機動力]を小ダウンする。\n\nSPECIAL ATTACK\n2連装ビームキャノン撃射\n単体(敵) 射程 3\nSPコスト 2 威力 3300\n\n敵単体に射撃攻撃でダメージを与える。\n\nIMPACT AREA\n[アイコン:円形の着弾範囲図、中央下部に三角マーカー]\n\nillust Painted MIKE\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nAB03-050 M"
+  },
+  "ocr_raw_file": "SEASON_03_AB03-050_ラゴゥ_ocr_raw.json",
+  "ocr_timestamp": "2026-02-23T15:16:30.258076",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli"
+}

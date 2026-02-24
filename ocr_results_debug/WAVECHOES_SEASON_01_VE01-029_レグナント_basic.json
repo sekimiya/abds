@@ -1,0 +1,83 @@
+{
+  "card_number": "VE01-029",
+  "card_name": "レグナント",
+  "series": "WAVECHOES SEASON:01",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE01-029.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE01-029_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "VE01-029",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト5"
+    },
+    "name": "レグナント",
+    "model": "GNMA-0001V REGNANT",
+    "cost": 5,
+    "category": "遠距離",
+    "affiliation": "イノベイター",
+    "pilot": "ルイス・ハレヴィ",
+    "stats": {
+      "height": "32.3m",
+      "weight": "586.1t",
+      "mobility": 270,
+      "ranged_attack": 390,
+      "melee_attack": 80,
+      "hp": 360
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "C",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "GNマイクロミサイル",
+        "range": 4,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "GNファング（格闘）",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "逆襲",
+      "activation": "任意発動",
+      "target": "単体(敵)",
+      "range": 4,
+      "cost": 4,
+      "description": "ロックオン中の敵に単体攻撃でダメージを与える。自分の残りHPが少ない程、ダメージが上昇する。"
+    },
+    "link_ability": [
+      {
+        "name": "ガンダム00",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "GNファング撃射",
+      "target": "貫通(敵)",
+      "range": 4,
+      "sp_cost": 2,
+      "power": 2800,
+      "description": "射線上の敵に貫通射撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "C",
+    "illustrator": "Robographer",
+    "raw": "MS\n\n遠距離 コスト5\nGNMA-0001V REGNANT\nレグナント\n\n頭頂高 32.3m\n本体重量 586.1t\n所属 イノベイター\nパイロット ルイス・ハレヴィ\n\n地上 A 宇宙 S 砂漠 C 水中 C\n機動力 270\n遠距離攻撃 390\n近距離攻撃 80\nHP 360\n\nWEAPON\n\nMAIN GNマイクロミサイル 射程 4 遠距離\nSUB GNファング（格闘） 射程 1 近距離\n\nLINK ABILITY\n\nガンダム00 デッキに3枚以上\n[機動力]小アップ\n\n戦況を変える力 デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nMS ABILITY\n\n逆襲\n任意発動 単体(敵) 射程 4 コスト 4\n\nロックオン中の敵に単体攻撃でダメージを与える。自分の残りHPが少ない程、ダメージが上昇する。\n\nSPECIAL ATTACK\n\nGNファング撃射\n貫通(敵) 射程 4 射程 —\nSPコスト 2 威力 2800 / —\n\n射線上の敵に貫通射撃でダメージを与える。/ —\n\nECHOES BEAT\n\n—\n\nIMPACT AREA\n\n[アイコン:縦方向の貫通射程エリア表示]\n\nillust Robographer\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\nVE01-029 C"
+  },
+  "ocr_raw_file": "WAVECHOES_SEASON_01_VE01-029_レグナント_ocr_raw.json",
+  "ocr_timestamp": "2026-02-23T13:14:59.068679",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli"
+}

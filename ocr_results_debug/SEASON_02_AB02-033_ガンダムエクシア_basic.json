@@ -1,0 +1,83 @@
+{
+  "card_number": "AB02-033",
+  "card_name": "ガンダムエクシア",
+  "series": "SEASON:02",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB02-033.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB02-033_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "AB02-033",
+    "type": "MS",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト4"
+    },
+    "name": "ガンダムエクシア",
+    "model": "GN-001 GUNDAM EXIA",
+    "cost": 4,
+    "category": "近距離",
+    "affiliation": "ソレスタルビーイング",
+    "pilot": "刹那・F・セイエイ",
+    "stats": {
+      "height": "18.3m",
+      "weight": "57.2t",
+      "mobility": 130,
+      "ranged_attack": 90,
+      "melee_attack": 200,
+      "hp": 150
+    },
+    "terrain_compatibility": {
+      "ground": "S",
+      "space": "A",
+      "desert": "C",
+      "water": null
+    },
+    "weapon": {
+      "main": {
+        "name": "GNソード",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "GNソード(ライフルモード)",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "妨害[近距離]",
+      "activation": "出撃時発動",
+      "target": "範囲(敵)",
+      "range": null,
+      "cost": null,
+      "description": "20秒間、自身を中心とした大範囲内の敵ユニットの[近距離攻撃力]を小ダウンする。"
+    },
+    "link_ability": [
+      {
+        "name": "ガンダム00",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "その名はガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "トランザム連撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3300,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "R",
+    "illustrator": "Chifuyu Yukishiro",
+    "raw": "MS\n\n近距離 コスト4\n\nGN-001 GUNDAM EXIA\nガンダムエクシア\n\n[アイコン:ガンダム00ロゴ]\n\n全高 18.3m\n本体重量 57.2t\n所属 ソレスタルビーイング\nパイロット 刹那・F・セイエイ\n\n地上 S 宇宙 A 砂漠 C\n機動力 130\n遠距離攻撃 90\n近距離攻撃 200\nHP 150\n\nWEAPON\nMAIN GNソード 射程 1 近距離\nSUB GNソード(ライフルモード) 射程 3 遠距離\n\nLINK ABILITY\nガンダム00 デッキに3枚以上\n[機動力]小アップ\n\nその名はガンダム デッキに3枚以上\n[機動力]小アップ\n\nMS ABILITY\n妨害[近距離]\n出撃時発動 範囲(敵) 射程 - コスト -\n20秒間、自身を中心とした大範囲内の敵ユニットの[近距離攻撃力]を小ダウンする。\n\nSPECIAL ATTACK\nトランザム連撃\n単体(敵) 射程 2\nSPコスト 2 威力 3300\n敵単体に格闘攻撃でダメージを与える。\n\nIMPACT AREA\n[アイコン:黄色円形エリア、中央やや下に三角マーカー]\n\nillust Chifuyu Yukishiro\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\nAB02-033 R"
+  },
+  "ocr_raw_file": "SEASON_02_AB02-033_ガンダムエクシア_ocr_raw.json",
+  "ocr_timestamp": "2026-02-23T15:09:19.044667",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli"
+}

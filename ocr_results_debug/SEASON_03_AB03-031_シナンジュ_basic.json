@@ -1,0 +1,83 @@
+{
+  "card_number": "AB03-031",
+  "card_name": "シナンジュ",
+  "series": "SEASON:03",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB03-031.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB03-031_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "AB03-031",
+    "type": "MS",
+    "card_label": {
+      "class": "機動",
+      "cost_label": "コスト4"
+    },
+    "name": "シナンジュ",
+    "model": "MSN-06S SINANJU",
+    "cost": 4,
+    "category": "機動",
+    "affiliation": "ネオ・ジオン残党軍「袖付き」",
+    "pilot": "フル・フロンタル",
+    "stats": {
+      "height": "22.6m",
+      "weight": "25.2t",
+      "mobility": 250,
+      "ranged_attack": 190,
+      "melee_attack": 150,
+      "hp": 210
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "C",
+      "water": null
+    },
+    "weapon": {
+      "main": {
+        "name": "ビーム・ライフル",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ビーム・アックス",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "集中砲火",
+      "activation": "任意発動",
+      "target": "範囲(味方)",
+      "range": null,
+      "cost": 4,
+      "description": "20秒間、ロックオンしている敵に周囲の味方ターゲットを集め、[遠／近攻撃力]を中アップ。攻撃対象が変わると効果は終了する。"
+    },
+    "link_ability": [
+      {
+        "name": "ガンダムUC",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "赤のプライド",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ビーム・ライフル撃射",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3200,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "R",
+    "illustrator": "Eske Yoshinob",
+    "raw": "MS\n\n機動 コスト4\n\nMSN-06S SINANJU\nシナンジュ\n\n全高 22.6m\n本体重量 25.2t\n所属 ネオ・ジオン残党軍「袖付き」\nパイロット フル・フロンタル\n\n地上 A 宇宙 S 砂漠 C\n\n機動力 250\n遠距離攻撃 190\n近距離攻撃 150\nHP 210\n\nWEAPON\n\nMAIN ビーム・ライフル 射程 3 遠距離\nSUB ビーム・アックス 射程 1 近距離\n\nLINK ABILITY\n\nガンダムUC デッキに3枚以上\n[機動力]小アップ\n\n赤のプライド デッキに3枚以上\n[機動力]小アップ\n\nMS ABILITY\n\n集中砲火\n任意発動 範囲(味方) 射程 — コスト 4\n\n20秒間、ロックオンしている敵に周囲の味方ターゲットを集め、[遠／近攻撃力]を中アップ。攻撃対象が変わると効果は終了する。\n\nSPECIAL ATTACK\n\nビーム・ライフル撃射\n単体(敵) 射程 3\nSPコスト 2 威力 3200\n\n敵単体に射撃攻撃でダメージを与える。\n\nIMPACT AREA\n\n[アイコン:中央やや左下に黄緑色の小円、中央下寄りに大きな黄色円、黄色円内右下に小さな三角形]\n\nillust Eske Yoshinob\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\n\nAB03-031 R"
+  },
+  "ocr_raw_file": "SEASON_03_AB03-031_シナンジュ_ocr_raw.json",
+  "ocr_timestamp": "2026-02-23T15:14:55.473870",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli"
+}

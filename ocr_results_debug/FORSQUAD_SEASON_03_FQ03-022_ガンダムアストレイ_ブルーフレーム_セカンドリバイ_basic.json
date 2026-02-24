@@ -1,0 +1,83 @@
+{
+  "card_number": "FQ03-022",
+  "card_name": "ガンダムアストレイ ブルーフレーム セカンドリバイ",
+  "series": "FORSQUAD SEASON:03",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ03-022.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ03-022_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "FQ03-022",
+    "type": "MS",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト7"
+    },
+    "name": "ガンダムアストレイ ブルーフレーム セカンドリバイ",
+    "model": "MBF-P03R GUNDAM ASTRAY BLUE FRAME SECOND REVISE",
+    "cost": 7,
+    "category": "近距離",
+    "affiliation": "サーペントテール",
+    "pilot": "叢雲劾",
+    "stats": {
+      "height": "18.32m",
+      "weight": "62.7t",
+      "mobility": 320,
+      "ranged_attack": 150,
+      "melee_attack": 530,
+      "hp": 550
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "C",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "ソードアーム",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "ガトリングアーム",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "奮起",
+      "activation": "出撃時発動",
+      "target": "自分",
+      "range": null,
+      "cost": null,
+      "description": "自身のHPが1以上で一定割合以下になると、一定時間、撃破されなくなり[遠／近距離攻撃力]を中アップする。出撃時1度のみ発動。"
+    },
+    "link_ability": [
+      {
+        "name": "SEED ASTRAY",
+        "condition": "デッキに2枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      },
+      {
+        "name": "肉薄する戦い",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "タクティカルアームズⅡ強襲",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3600,
+      "description": "敵単体に格闘攻撃でダメージを与える。戦術技威力は地形適性に応じて変化する。",
+      "united_sp": null
+    },
+    "rarity": "P",
+    "illustrator": "KURI (studio toujyou)",
+    "raw": "近距離　コスト7　MS\n\nMBF-P03R GUNDAM ASTRAY BLUE FRAME SECOND REVISE\n\nガンダムアストレイ ブルーフレーム セカンドリバイ\n\n頭頂高　18.32m\n本体重量　62.7t\n所属　サーペントテール\nパイロット　叢雲劾\n\n地上 A　宇宙 S　砂漠 C　水中 C\n\n機動力　320\n遠距離攻撃　150\n近距離攻撃　530\nHP　550\n\nWEAPON\nMAIN ソードアーム　射程 1　近距離\nSUB ガトリングアーム　射程 3　遠距離\n\nLINK ABILITY\nSEED ASTRAY　デッキに2枚以上\n[遠距離攻撃力] [近距離攻撃力] 小アップ\n\n肉薄する戦い　デッキに4枚以上\n[機動力] [近距離攻撃力] 小アップ\n\nMS ABILITY\n奮起\n出撃時発動　自分　射程 ー　コスト ー\n\n自身のHPが1以上で一定割合以下になると、一定時間、撃破されなくなり[遠／近距離攻撃力]を中アップする。出撃時1度のみ発動。\n\nSPECIAL ATTACK　　UNITED SP\nタクティカルアームズⅡ強襲　ー\n連携 ー　　連携 ー\n連携 ー　　連携 ー\n単体(敵)　射程 3　ー　射程 ー\nSPコスト 2　威力 3600 / ー\n\n敵単体に格闘攻撃でダメージを与える。戦術技威力は地形適性に応じて変化する。/ ー\n\nIMPACT AREA\n[アイコン:グリッド5x5、中央に緑丸、下部中央に黄三角]\n\nillust KURI (studio toujyou)\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n\n機動戦士ガンダム\nARSENAL BASE\n\nFQ03-022　P"
+  },
+  "ocr_raw_file": "FORSQUAD_SEASON_03_FQ03-022_ガンダムアストレイ_ブルーフレーム_セカンドリバイ_ocr_raw.json",
+  "ocr_timestamp": "2026-02-24T15:32:56.784748",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

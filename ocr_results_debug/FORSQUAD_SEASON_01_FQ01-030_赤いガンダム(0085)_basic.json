@@ -1,0 +1,83 @@
+{
+  "card_number": "FQ01-030",
+  "card_name": "赤いガンダム(0085)",
+  "series": "FORSQUAD SEASON:01",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ01-030.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ01-030_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "FQ01-030",
+    "type": "MS",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト5"
+    },
+    "name": "赤いガンダム（0085）",
+    "model": "Red Gundam(0085)",
+    "cost": 5,
+    "category": "近距離",
+    "affiliation": null,
+    "pilot": "シュウジ・イトウ",
+    "stats": {
+      "height": null,
+      "weight": null,
+      "mobility": 210,
+      "ranged_attack": 40,
+      "melee_attack": 450,
+      "hp": 550
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "C",
+      "water": "A"
+    },
+    "weapon": {
+      "main": {
+        "name": "ガンダム・ハンマー",
+        "range": 2,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "ビット",
+        "range": 4,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "奮起",
+      "activation": "出撃時発動",
+      "target": "自分",
+      "range": null,
+      "cost": null,
+      "description": "自身のHPが1以上で一定割合以下になると、一定時間、撃破されなくなり[遠／近攻撃力]を中アップする。出撃時1度のみ発動。"
+    },
+    "link_ability": [
+      {
+        "name": "GQuuuuuX",
+        "condition": "デッキに3枚以上",
+        "effect": "[HP]小アップ"
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ビーム・サーベル強襲",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 4000,
+      "description": "敵単体に格闘攻撃でダメージを与え、自身に小ダメージ。戦術技威力は地形適性に応じて変化する。",
+      "united_sp": null
+    },
+    "rarity": "P",
+    "illustrator": "toriyufu",
+    "raw": "MS\n\n近距離 コスト5\nRed Gundam(0085)\n赤いガンダム（0085）\n\n頭頂高 ―\n本体重量 ―\n所属 ―\nパイロット シュウジ・イトウ\n\n地上 A 宇宙 S 砂漠 C 水中 A\n機動力 210\n遠距離攻撃 40\n近距離攻撃 450\nHP 550\n\nGQuuuuuX\n[アイコン:GQuuuuuX]\n\nWEAPON\nMAIN ガンダム・ハンマー 射程 2 近距離\nSUB ビット 射程 4 遠距離\n\nLINK ABILITY\nGQuuuuuX デッキに3枚以上\n[HP]小アップ\n\nMS ABILITY\n奮起\n出撃時発動 自分 射程 ― コスト ―\n\n自身のHPが1以上で一定割合以下になると、一定時間、撃破されなくなり[遠／近攻撃力]を中アップする。出撃時1度のみ発動。\n\n戦況を変える力 デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nSPECIAL ATTACK\nビーム・サーベル強襲\n連携 ― 連携 ―\n連携 ― 連携 ―\n単体(敵) 射程 2\nSPコスト 2 威力 4000／―\n\nUNITED SP\n―\n― 射程 ―\n\nIMPACT AREA\n[アイコン:緑丸 中央やや左]\n[アイコン:黄三角 中央下やや右]\n\n敵単体に格闘攻撃でダメージを与え、自身に小ダメージ。戦術技威力は地形適性に応じて変化する。／―\n\nillust toriyufu\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nFQ01-030 P"
+  },
+  "ocr_raw_file": "FORSQUAD_SEASON_01_FQ01-030_赤いガンダム(0085)_ocr_raw.json",
+  "ocr_timestamp": "2026-02-24T01:30:02.653476",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli"
+}

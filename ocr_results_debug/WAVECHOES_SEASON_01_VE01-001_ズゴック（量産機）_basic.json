@@ -1,0 +1,83 @@
+{
+  "card_number": "VE01-001",
+  "card_name": "ズゴック（量産機）",
+  "series": "WAVECHOES SEASON:01",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE01-001.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE01-001_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "VE01-001",
+    "type": "MS",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト3"
+    },
+    "name": "ズゴック（量産機）",
+    "model": "MSM-07 Z'GOK",
+    "cost": 3,
+    "category": "近距離",
+    "affiliation": "ジオン公国軍",
+    "pilot": null,
+    "stats": {
+      "height": "18.4m",
+      "weight": "65.1t",
+      "mobility": 210,
+      "ranged_attack": 90,
+      "melee_attack": 260,
+      "hp": 300
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "C",
+      "desert": "C",
+      "water": "S"
+    },
+    "weapon": {
+      "main": {
+        "name": "アイアン・ネイル",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "メガ粒子砲",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "増援[防衛]",
+      "activation": "任意発動",
+      "target": "特殊(自分)",
+      "range": null,
+      "cost": 4,
+      "description": "自身の周囲に防衛タイプの味方ユニットを呼び出す。※上限3ユニットまで。"
+    },
+    "link_ability": [
+      {
+        "name": "機動戦士ガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "迫撃の近距離戦",
+        "condition": "デッキに近距離が2枚以上",
+        "effect": "[近距離攻撃力]中アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "アイアン・ネイル強襲",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3200,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "C",
+    "illustrator": "Kazue Saitou",
+    "raw": "MS\n\n近距離 コスト3\n\nMSM-07 Z'GOK\nズゴック（量産機）\n\n頭頂高 18.4m\n本体重量 65.1t\n所属 ジオン公国軍\nパイロット ー\n\n地上 A 宇宙 C 砂漠 C 水中 S\n機動力 210\n遠距離攻撃 90\n近距離攻撃 260\nHP 300\n\nWEAPON\n\nMAIN アイアン・ネイル 射程 1 近距離\nSUB メガ粒子砲 射程 3 遠距離\n\nLINK ABILITY\n\n機動戦士ガンダム デッキに3枚以上\n[機動力]小アップ\n\n迫撃の近距離戦 デッキに近距離が2枚以上\n[近距離攻撃力]中アップ\n\nMS ABILITY\n\n増援[防衛]\n任意発動 特殊(自分) 射程 ー コスト 4\n\n自身の周囲に防衛タイプの味方ユニットを呼び出す。※上限3ユニットまで。\n\nSPECIAL ATTACK\n\nアイアン・ネイル強襲\nー\n単体(敵) 射程 2\nSPコスト 2 威力 3200 / ー\n敵単体に格闘攻撃でダメージを与える。\n/ ー\n\nECHOES BEAT\n\nー 射程 ー\n\nIMPACT AREA\n\n[アイコン:緑丸 中央やや下]\n[アイコン:黄三角 中央下]\n\nillust Kazue Saitou\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n[アイコン:機動戦士ガンダム ロゴ]\n[アイコン:ARSENAL BASE ロゴ]\nVE01-001 C"
+  },
+  "ocr_raw_file": "WAVECHOES_SEASON_01_VE01-001_ズゴック（量産機）_ocr_raw.json",
+  "ocr_timestamp": "2026-02-24T05:24:30.917637",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli"
+}

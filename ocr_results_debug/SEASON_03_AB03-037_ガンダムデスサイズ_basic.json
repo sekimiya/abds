@@ -1,0 +1,83 @@
+{
+  "card_number": "AB03-037",
+  "card_name": "ガンダムデスサイズ",
+  "series": "SEASON:03",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB03-037.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB03-037_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "AB03-037",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト5"
+    },
+    "name": "ガンダムデスサイズ",
+    "model": "XXXG-01D GUNDAM DEATHSCYTHE",
+    "cost": 5,
+    "category": "遠距離",
+    "affiliation": "ー",
+    "pilot": "デュオ・マックスウェル",
+    "stats": {
+      "height": "16.3m",
+      "weight": "7.2t",
+      "mobility": 150,
+      "ranged_attack": 290,
+      "melee_attack": 170,
+      "hp": 190
+    },
+    "terrain_compatibility": {
+      "ground": "S",
+      "space": "B",
+      "desert": "C",
+      "water": null
+    },
+    "weapon": {
+      "main": {
+        "name": "バスターシールド",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "マシンキャノン",
+        "range": 2,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "妨害[近距離]",
+      "activation": "出撃時発動",
+      "target": "範囲(敵)",
+      "range": null,
+      "cost": null,
+      "description": "20秒間、自身を中心とした大範囲内の敵ユニットの[近距離攻撃力]を小ダウンする。"
+    },
+    "link_ability": [
+      {
+        "name": "ガンダムW",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "漆黒の戦士",
+        "condition": "デッキに2枚以上",
+        "effect": "[機動力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "バスターシールド撃射",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3300,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "R",
+    "illustrator": "ToMo",
+    "raw": "MS\n\n遠距離 コスト5\n\nXXXG-01D GUNDAM DEATHSCYTHE\nガンダムデスサイズ\n\n全高 16.3m\n本体重量 7.2t\n所属 ー\nパイロット デュオ・マックスウェル\n\n地上 S 宇宙 B 砂漠 C\n\n機動力 150\n遠距離攻撃 290\n近距離攻撃 170\nHP 190\n\nWEAPON\n\nMAIN バスターシールド 射程 3 遠距離\nSUB マシンキャノン 射程 2 近距離\n\nLINK ABILITY\n\nガンダムW デッキに3枚以上\n[機動力]小アップ\n\n漆黒の戦士 デッキに2枚以上\n[機動力]小アップ\n\nMS ABILITY\n\n妨害[近距離]\n出撃時発動 範囲(敵) 射程ー コストー\n\n20秒間、自身を中心とした大範囲内の敵ユニットの[近距離攻撃力]を小ダウンする。\n\nSPECIAL ATTACK\n\nバスターシールド撃射\n単体(敵) 射程 3\nSPコスト 2 威力 3300\n\n敵単体に射撃攻撃でダメージを与える。\n\nIMPACT AREA\n\n[アイコン:円形の黄色い攻撃範囲、中央やや下寄りに三角マーカー]\n\nillust ToMo\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n\n[アイコン:機動戦士ガンダム ロゴ]\n[アイコン:ARSENAL BASE ロゴ]\n\nAB03-037 R"
+  },
+  "ocr_raw_file": "SEASON_03_AB03-037_ガンダムデスサイズ_ocr_raw.json",
+  "ocr_timestamp": "2026-02-23T15:15:24.213101",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli"
+}

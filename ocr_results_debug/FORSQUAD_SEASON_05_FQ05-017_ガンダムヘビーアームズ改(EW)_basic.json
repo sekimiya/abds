@@ -1,0 +1,83 @@
+{
+  "card_number": "FQ05-017",
+  "card_name": "ガンダムヘビーアームズ改(EW)",
+  "series": "FORSQUAD SEASON:05",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ05-017.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ05-017_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "FQ05-017",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト2"
+    },
+    "name": "ガンダムヘビーアームズ改（EW）",
+    "model": "XXXG-01H2 GUNDAM HEAVYARMS CUSTOM[EW]",
+    "cost": 2,
+    "category": "遠距離",
+    "affiliation": "ー",
+    "pilot": "トロワ・バートン",
+    "stats": {
+      "height": "16.7m",
+      "weight": "8.2t",
+      "mobility": 220,
+      "ranged_attack": 320,
+      "melee_attack": 60,
+      "hp": 350
+    },
+    "terrain_compatibility": {
+      "ground": "S",
+      "space": "A",
+      "desert": "A",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "ダブルガトリングガン",
+        "range": 4,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ホーミングミサイル",
+        "range": 2,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "断砕",
+      "activation": "任意発動",
+      "target": "単体(敵)",
+      "range": 4,
+      "cost": 3,
+      "description": "ロックオン中の敵に単体攻撃でダメージを与え、強化状態を無効化する。"
+    },
+    "link_ability": [
+      {
+        "name": "Endless Waltz",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      },
+      {
+        "name": "的確な一撃",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][遠距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "フルオープンアタック",
+      "target": "貫通(敵)",
+      "range": 4,
+      "sp_cost": 2,
+      "power": 2900,
+      "description": "射線上の敵に貫通射撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "P",
+    "illustrator": "S Kei",
+    "raw": "遠距離　コスト2\n\nMS GUNDAM W Endless Waltz\n\nXXXG-01H2 GUNDAM HEAVYARMS CUSTOM[EW]\nガンダムヘビーアームズ改（EW）\n\n頭頂高　16.7m\n本体重量　8.2t\n所属　ー\nパイロット　トロワ・バートン\n\n地上 S　宇宙 A　砂漠 A　水中 C\n\n機動力 220\n遠距離攻撃 320\n近距離攻撃 60\nHP 350\n\nWEAPON\nMAIN ダブルガトリングガン　射程 4　遠距離\nSUB ホーミングミサイル　射程 2　遠距離\n\nLINK ABILITY\nEndless Waltz　デッキに3枚以上\n[遠距離攻撃力][近距離攻撃力]\n小アップ\n\n的確な一撃　デッキに4枚以上\n[機動力][遠距離攻撃力]小アップ\n\nMS ABILITY\n断砕\n任意発動　単体(敵)　射程 4　コスト 3\nロックオン中の敵に単体攻撃でダメージ\nを与え、強化状態を無効化する。\n\nSPECIAL ATTACK　UNITED SP\nフルオープンアタック　ー\n連携 ー　　連携 ー\n連携 ー　　連携 ー\n貫通(敵)　射程 4　ー　射程 ー\nSPコスト 2　威力 2900 / ー\n\n射線上の敵に貫通射撃でダメージを与え\nる。/ ー\n\nIMPACT AREA\n[アイコン:縦方向貫通範囲]\n\nillust S Kei\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nFQ05-017　P"
+  },
+  "ocr_raw_file": "FORSQUAD_SEASON_05_FQ05-017_ガンダムヘビーアームズ改(EW)_ocr_raw.json",
+  "ocr_timestamp": "2026-02-24T18:28:04.857181",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

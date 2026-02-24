@@ -1,0 +1,83 @@
+{
+  "card_number": "FQ04-010",
+  "card_name": "クロスボーン・ガンダムX-1改",
+  "series": "FORSQUAD SEASON:04",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ04-010.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ04-010_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "FQ04-010",
+    "type": "MS",
+    "card_label": {
+      "class": "機動",
+      "cost_label": "コスト5"
+    },
+    "name": "クロスボーン・ガンダムX-1改",
+    "model": "XM-X1 Kai CROSSBONE GUNDAM X-1 KAI",
+    "cost": 5,
+    "category": "機動",
+    "affiliation": "宇宙海賊クロスボーン・バンガード",
+    "pilot": "キンケドゥ・ナウ",
+    "stats": {
+      "height": "15.9m",
+      "weight": "9.5t",
+      "mobility": 290,
+      "ranged_attack": 400,
+      "melee_attack": 110,
+      "hp": 350
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "A",
+      "water": "B"
+    },
+    "weapon": {
+      "main": {
+        "name": "ザンバスター",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "スクリュー・ウェッブ",
+        "range": 2,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "逆襲",
+      "activation": "任意発動",
+      "target": "単体(敵)",
+      "range": 3,
+      "cost": 4,
+      "description": "ロックオン中の敵に単体攻撃でダメージを与える。自身の残りHPが少ない程、ダメージが上昇する。"
+    },
+    "link_ability": [
+      {
+        "name": "クロスボーン・ガンダム",
+        "condition": "デッキに2枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "的確な一撃",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][遠距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ザンバスター撃射",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3300,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "R",
+    "illustrator": "Moyasi",
+    "raw": "MS\n\n機動　コスト5\n\nXM-X1 Kai CROSSBONE GUNDAM X-1 KAI\n\nクロスボーン・ガンダムX-1改\n\n頭頂高　15.9m\n本体重量　9.5t\n所属　宇宙海賊クロスボーン・バンガード\nパイロット　キンケドゥ・ナウ\n\n地上 A　宇宙 S　砂漠 A　水中 B\n\n機動力 290\n遠距離攻撃 400\n近距離攻撃 110\nHP 350\n\nWEAPON\nMAIN ザンバスター　射程 3　遠距離\nSUB スクリュー・ウェッブ　射程 2　近距離\n\nLINK ABILITY\nクロスボーン・ガンダム　デッキに2枚以上\n[機動力]小アップ\n\nMS ABILITY\n逆襲\n任意発動　単体(敵)　射程 3　コスト 4\nロックオン中の敵に単体攻撃でダメージを与える。自身の残りHPが少ない程、ダメージが上昇する。\n\n的確な一撃　デッキに4枚以上\n[機動力][遠距離攻撃力]小アップ\n\nSPECIAL ATTACK　UNITED SP\nザンバスター撃射　ー\n連携　ー　連携　ー\n連携　ー　連携　ー\n単体(敵)　射程 3　ー　射程 ー\nSPコスト 2　威力　3300 / ー\n\n敵単体に射撃攻撃でダメージを与える。\n/ ー\n\nIMPACT AREA\n[アイコン:中央やや下に黄緑の円形マーカー]\n\nillust Moyasi\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nFQ04-010　R"
+  },
+  "ocr_raw_file": "FORSQUAD_SEASON_04_FQ04-010_クロスボーン・ガンダムX-1改_ocr_raw.json",
+  "ocr_timestamp": "2026-02-24T18:19:51.784750",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

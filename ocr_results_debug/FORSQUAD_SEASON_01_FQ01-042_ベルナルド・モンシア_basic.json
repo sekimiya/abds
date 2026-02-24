@@ -1,0 +1,63 @@
+{
+  "card_number": "FQ01-042",
+  "card_name": "ベルナルド・モンシア",
+  "series": "FORSQUAD SEASON:01",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ01-042.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ01-042_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "FQ01-042",
+    "type": "PL",
+    "card_label": {
+      "class": "殲滅",
+      "cost_label": "コスト2"
+    },
+    "name": "ベルナルド・モンシア",
+    "english_name": "BERNARD MONSHA",
+    "cost": 2,
+    "category": "殲滅",
+    "affiliation": "地球連邦軍",
+    "physical": {
+      "height": null,
+      "age": 28
+    },
+    "units": [
+      "ジム・カスタム"
+    ],
+    "stats": {
+      "mobility": 200,
+      "ranged_attack": 190,
+      "melee_attack": 20,
+      "hp": 330
+    },
+    "pilot_skill": {
+      "name": "先手必勝の構え",
+      "trigger": "敵ユニットを撃破時",
+      "effect": "SQゲージ大アップ。SQUAD RUSH中、自身の[機動力][遠距離攻撃力]をアップする。",
+      "has_sq_skill": true,
+      "sq_skill_details": {
+        "sq_gauge_effect": "SQゲージ大アップ",
+        "sq_max_effect": null,
+        "squad_rush_effect": "自身の[機動力][遠距離攻撃力]をアップする。"
+      }
+    },
+    "link_ability": [
+      {
+        "name": "駆け抜ける嵐",
+        "condition": "デッキに3枚以上",
+        "effect": "SQゲージが表示される。SQゲージを溜めるとSQUAD RUSHが発動できる。[遠距離攻撃力][近距離攻撃力]小アップ"
+      },
+      {
+        "name": "的確な一撃",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][遠距離攻撃力]小アップ"
+      }
+    ],
+    "rarity": "M",
+    "illustrator": null,
+    "raw": "PL\n\n殲滅 コスト2\n\nベルナルド・モンシア\nBERNARD MONSHA\n\n機動戦士ガンダム0083\nSTARDUST MEMORY\n[アイコン:地球連邦] [アイコン:宇宙/地上]\n\n身長 ー\n年齢 28歳\n所属 地球連邦軍\n搭乗機体 ジム・カスタム\n\nSQ PL SKILL\n\n先手必勝の構え\n\n敵ユニットを撃破時\n\nSQゲージ大アップ。\n\nSQUAD RUSH中\n自身の[機動力][遠距離攻撃力]をアップする。\n\nSQ LINK ABILITY\n\n駆け抜ける嵐 デッキに3枚以上\n\nSQゲージが表示される。\nSQゲージを溜めるとSQUAD RUSHが発動できる。\n\n[遠距離攻撃力][近距離攻撃力]小アップ\n\n的確な一撃 デッキに4枚以上\n\n[機動力][遠距離攻撃力]小アップ\n\n機動力 200\n遠距離攻撃 190\n近距離攻撃 20\nHP 330\n\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n\n機動戦士ガンダム\nARSENAL BASE®\n\nFQ01-042 M"
+  },
+  "ocr_raw_file": "FORSQUAD_SEASON_01_FQ01-042_ベルナルド・モンシア_ocr_raw.json",
+  "ocr_timestamp": "2026-02-24T01:34:45.070917",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli"
+}

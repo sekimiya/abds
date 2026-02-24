@@ -1,0 +1,89 @@
+{
+  "card_number": "FQ01-016",
+  "card_name": "デスティニーガンダム(ハイネ・ヴェステンフルス専用機)",
+  "series": "FORSQUAD SEASON:01",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ01-016.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ01-016_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "FQ01-016",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト4"
+    },
+    "name": "デスティニーガンダム（ハイネ・ヴェステンフルス専用機）",
+    "model": "ZGMF-X42S-REVOLUTION HEINE'S DESTINY GUNDAM",
+    "cost": 4,
+    "category": "遠距離",
+    "affiliation": "ザフト",
+    "pilot": "ハイネ・ヴェステンフルス",
+    "stats": {
+      "height": "18.08m",
+      "weight": "79.44t",
+      "mobility": 250,
+      "ranged_attack": 330,
+      "melee_attack": 130,
+      "hp": 300
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "B",
+      "water": "A"
+    },
+    "weapon": {
+      "main": {
+        "name": "高エネルギービームライフル",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "アロンダイトビームソード",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "転化[支援]",
+      "activation": "任意発動",
+      "target": "範囲(味方)",
+      "range": null,
+      "cost": 4,
+      "description": "一定時間、自身を中心とした範囲内の味方ユニットを強化する。使用回数に応じて、強化効果が変わる。[1回:遠／近攻撃力アップ][2回:遠／近攻撃力アップ][3回以上:遠／近攻撃力アップ&回復]"
+    },
+    "link_ability": [
+      {
+        "name": "SEED DESTINY",
+        "condition": "デッキに3枚以上",
+        "effect": "[HP]小アップ"
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "高エネルギー長射程ビーム砲撃射",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3200,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "united_sp": {
+        "partner1": null,
+        "partner2": null,
+        "range": null,
+        "power": null,
+        "description": null
+      }
+    },
+    "rarity": "R",
+    "illustrator": "BIRU YAMAGUCHI",
+    "raw": "MS\n\n遠距離　コスト4\n\nZGMF-X42S-REVOLUTION HEINE'S DESTINY GUNDAM\nデスティニーガンダム（ハイネ・ヴェステンフルス専用機）\n\n頭頂高　18.08m\n本体重量　79.44t\n所属　ザフト\nパイロット　ハイネ・ヴェステンフルス\n\n地上 A　宇宙 S　砂漠 B　水中 A\n機動力 250\n遠距離攻撃 330\n近距離攻撃 130\nHP 300\n\nWEAPON\nMAIN 高エネルギービームライフル　射程 3　遠距離\nSUB アロンダイトビームソード　射程 1　近距離\n\nLINK ABILITY\nSEED DESTINY　デッキに3枚以上\n[HP]小アップ\n\nMS ABILITY\n\n転化[支援]\n\n任意発動　範囲(味方)　射程 —　コスト 4\n\n一定時間、自身を中心とした範囲内の味方ユニットを強化する。使用回数に応じて、強化効果が変わる。[1回:遠／近攻撃力アップ][2回:遠／近攻撃力アップ][3回以上:遠／近攻撃力アップ&回復]\n\n多彩な戦術\nデッキに4枚以上\n\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nSPECIAL ATTACK　　UNITED SP\n\n高エネルギー長射程ビーム砲撃射　—\n連携 —　連携 —\n連携 —　連携 —\n単体(敵)　射程 3　　射程 —\nSPコスト 2　威力 3200 / —\n\n敵単体に射撃攻撃でダメージを与える。\n/ —\n\nIMPACT AREA\n[アイコン:中央に黄色い円形の着弾範囲表示]\n\nillust BIRU YAMAGUCHI\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n\n機動戦士ガンダム\nARSENAL BASE®\n\nFQ01-016　R"
+  },
+  "ocr_raw_file": "FORSQUAD_SEASON_01_FQ01-016_デスティニーガンダム(ハイネ・ヴェステンフルス専用機)_ocr_raw.json",
+  "ocr_timestamp": "2026-02-24T01:23:42.372834",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli"
+}
