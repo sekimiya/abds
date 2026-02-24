@@ -1200,6 +1200,14 @@ def debug_summary():
     return jsonify({'success': True, 'cards': cards})
 
 @app.route('/')
+def home():
+    return render_template('home.html')
+
+@app.route('/readme')
+def readme():
+    return render_template('readme.html')
+
+@app.route('/sim')
 def index():
     return render_template('index.html')
 
@@ -1250,13 +1258,6 @@ def mobile_portrait():
 def index2():
     return render_template('index2.html')
 
-@app.route('/photo')
-def photo():
-    return render_template('photo.html')
-
-@app.route('/illustrator')
-def illustrator():
-    return render_template('illustrator.html')
 
 @app.route('/fetch_cards')
 def fetch_cards():
@@ -1489,17 +1490,6 @@ def search():
 def mobile():
     return render_template('mobile.html')
 
-@app.route('/summary')
-def summary():
-    return render_template('summary.html')
-
-@app.route('/summary2')
-def summary2():
-    return render_template('summary2.html')
-
-@app.route('/summary3')
-def summary3():
-    return render_template('summary3.html')
 
 @app.route('/series_list')
 def series_list():
@@ -1646,7 +1636,7 @@ def api_create_deck():
     deck_name = data.get('deck_name', '').strip()
     cards = data.get('cards', [])
     comment = data.get('comment', '').strip()
-    if not deck_name or not cards:
+    if not deck_name or not cards or not any(c for c in cards if c):
         return jsonify({'success': False, 'error': 'デッキ名とカード構成は必須です'}), 400
     deck_id = str(uuid.uuid4())[:8]
     deck_entry = {
@@ -1654,6 +1644,8 @@ def api_create_deck():
         'deck_name': deck_name,
         'comment': comment,
         'cards': cards,
+        'tactics_main': data.get('tactics_main'),
+        'tactics_sub': data.get('tactics_sub'),
         'timestamp': data.get('timestamp') or time.strftime('%Y-%m-%dT%H:%M:%S')
     }
     with decks_lock:
@@ -2556,4 +2548,6 @@ def _run_ocr_execution(series, stage, force, limit):
 
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=5001)
+    port = int(os.environ.get('PORT', 5001))
+    debug = os.environ.get('FLASK_DEBUG', '0') == '1'
+    app.run(debug=debug, host='0.0.0.0', port=port)

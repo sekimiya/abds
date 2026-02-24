@@ -145,23 +145,35 @@ select,input{font-family:inherit}
 .rec-btn:hover{background:linear-gradient(135deg,#e53935,#c62828);box-shadow:0 0 10px rgba(244,67,54,0.4)}
 .rec-btn.capturing{opacity:0.6;pointer-events:none}
 
-/* Header menu (collapsible) */
-.header-menu-wrap{position:relative;margin-left:auto;flex-shrink:0}
+/* Header menu (right slide panel) */
+.header-menu-wrap{margin-left:auto;flex-shrink:0}
 .header-menu-toggle{
   background:#222;border:1px solid #555;border-radius:6px;
   color:#ccc;padding:0.3rem 0.6rem;font-size:1rem;cursor:pointer;
   transition:all 0.15s;line-height:1;
 }
 .header-menu-toggle:hover{background:#333;border-color:#68efbd;color:#68efbd}
-.header-menu-panel{
-  display:none;position:absolute;right:0;top:calc(100% + 4px);
-  background:#1a1a1a;border:1px solid #444;border-radius:8px;
-  padding:0.6rem;min-width:220px;z-index:200;
-  box-shadow:0 8px 24px rgba(0,0,0,0.6);
-  flex-direction:column;gap:0.4rem;
+.header-menu-overlay{
+  display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:299;
 }
-.header-menu-panel.open{display:flex}
+.header-menu-overlay.open{display:block}
+.header-menu-panel{
+  position:fixed;right:0;top:0;bottom:0;width:280px;max-width:85vw;
+  background:#1a1a1a;border-left:2px solid #68efbd;
+  padding:1rem 0.8rem;z-index:300;
+  box-shadow:-4px 0 24px rgba(0,0,0,0.6);
+  display:flex;flex-direction:column;gap:0.5rem;
+  transform:translateX(100%);transition:transform 0.25s ease;
+  overflow-y:auto;
+}
+.header-menu-panel.open{transform:translateX(0)}
 .header-menu-panel .deck-name-input{width:100%}
+.header-menu-close{
+  align-self:flex-end;background:transparent;border:none;
+  color:#888;font-size:1.4rem;cursor:pointer;padding:0 0.2rem;
+  transition:color 0.15s;line-height:1;
+}
+.header-menu-close:hover{color:#68efbd}
 .header-menu-row{display:flex;gap:0.3rem}
 .header-menu-row .header-btn{flex:1}
 .header-menu-divider{height:1px;background:#333;margin:0.2rem 0}
@@ -931,12 +943,17 @@ select,input{font-family:inherit}
 
   <div class="header-menu-wrap">
     <button class="header-menu-toggle" id="headerMenuToggle" onclick="toggleHeaderMenu()" title="メニュー">&#9776;</button>
+    <div class="header-menu-overlay" id="headerMenuOverlay" onclick="closeHeaderMenu()"></div>
     <div class="header-menu-panel" id="headerMenuPanel">
+      <button class="header-menu-close" onclick="closeHeaderMenu()" title="閉じる">&times;</button>
       <input type="text" class="deck-name-input" id="deckNameInput" placeholder="デッキ名">
       <div class="header-menu-row">
         <button class="header-btn primary" onclick="DeckManager.save()" title="Ctrl+S">保存</button>
         <button class="header-btn" onclick="DeckManager.showLoadModal()">読込</button>
         <button class="header-btn" onclick="DeckManager.copyCode()" title="コード共有">共有</button>
+      </div>
+      <div class="header-menu-row">
+        <button class="header-btn" onclick="DeckManager.postToServer()">投稿</button>
       </div>
       <div class="header-menu-row">
         <button class="header-btn" id="undoBtn" onclick="UndoManager.undo()" title="Ctrl+Z" disabled>&#8592; 戻す</button>
@@ -1351,7 +1368,8 @@ const Toast = {
     const container = document.getElementById('toastContainer');
     const el = document.createElement('div');
     el.className = `toast ${type}`;
-    el.textContent = msg;
+    if (msg.includes('<')) el.innerHTML = msg;
+    else el.textContent = msg;
     container.appendChild(el);
     setTimeout(() => {
       el.classList.add('fadeout');
@@ -1796,7 +1814,9 @@ const DeckManager = {
 
   parseCode(code) {
     try {
-      return decodeURIComponent(escape(atob(code))).split(',');
+      // Defensive: decode URI-encoded chars in hash (some browsers encode = as %3D)
+      const clean = decodeURIComponent(code);
+      return decodeURIComponent(escape(atob(clean))).split(',');
     } catch { return null; }
   },
 
@@ -1820,7 +1840,8 @@ const DeckManager = {
     const code = document.getElementById('deckCodeImport').value.trim();
     if (!code) { Toast.show('コードを入力してください', 'error'); return; }
     const numbers = this.parseCode(code);
-    if (!numbers || (numbers.length !== 10 && numbers.length !== 12)) { Toast.show('無効なデッキコードです', 'error'); return; }
+    if (!numbers || numbers.length < 1) { Toast.show('無効なデッキコードです', 'error'); return; }
+    while (numbers.length < 10) numbers.push('');
     await this._applyNumbers(numbers);
     document.getElementById('deckCodeImport').value = '';
     Toast.show('デッキをインポートしました', 'success');
@@ -1833,6 +1854,9 @@ const DeckManager = {
     if (numbers.length >= 12) {
       AppState.tacticsMain = numbers[10] || null;
       AppState.tacticsSub = numbers[11] || null;
+    } else {
+      AppState.tacticsMain = null;
+      AppState.tacticsSub = null;
     }
     const validNumbers = deckNumbers.filter(n => n);
     if (validNumbers.length > 0) {
@@ -1877,7 +1901,9 @@ const DeckManager = {
     if (location.hash && location.hash.length > 1) {
       const code = location.hash.substring(1);
       const numbers = this.parseCode(code);
-      if (numbers && (numbers.length === 10 || numbers.length === 12)) {
+      if (numbers && numbers.length >= 1) {
+        // Pad to 10 if fewer
+        while (numbers.length < 10) numbers.push('');
         await this._applyNumbers(numbers);
         Toast.show('URLからデッキを復元しました', 'info');
         return;
@@ -1944,19 +1970,29 @@ const DeckManager = {
   },
 
   async postToServer() {
-    const name = document.getElementById('deckNameInput').value.trim() || '無名デッキ';
-    const cards = AppState.deck.map((num, idx) => ({
-      number: num, ocr: AppState.deckOcr[idx]
-    }));
+    const name = document.getElementById('deckNameInput').value.trim();
+    if (!name) { Toast.show('デッキ名を入力してください', 'error'); return; }
+    if (!AppState.deck.some(n => n)) { Toast.show('デッキにカードがありません', 'error'); return; }
+    const cards = AppState.deck.map(n => n || '');
     try {
-      const res = await fetch('/post_deck', {
+      const res = await fetch('/api/decks', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ deck_name: name, comment: '', cards, tactics_main: AppState.tacticsMain, tactics_sub: AppState.tacticsSub, timestamp: new Date().toISOString() })
+        body: JSON.stringify({
+          deck_name: name,
+          comment: '',
+          cards,
+          tactics_main: AppState.tacticsMain || null,
+          tactics_sub: AppState.tacticsSub || null,
+          timestamp: new Date().toISOString()
+        })
       });
       const data = await res.json();
-      if (data.success) Toast.show('デッキを投稿しました', 'success');
-      else Toast.show(data.error || '投稿に失敗', 'error');
+      if (data.success) {
+        Toast.show('デッキを投稿しました — <a href="/decks" style="color:#68efbd;text-decoration:underline">一覧を見る</a>', 'success', 5000);
+      } else {
+        Toast.show(data.error || '投稿に失敗', 'error');
+      }
     } catch { Toast.show('サーバーエラー', 'error'); }
   }
 };
@@ -1972,6 +2008,9 @@ const ImageCache = {
   _db: null,
   _memoryOnly: false, // true when IndexedDB is unavailable
   _blobUrls: {},      // key -> blob URL (in-memory map for fast sync access)
+  _knownKeys: new Set(), // keys known to exist in IndexedDB
+  _pendingKeys: new Set(), // keys queued for lazy loading
+  _pendingTimer: null,
   _downloading: false,
 
   // --- IndexedDB helpers (no-op when _memoryOnly) ---
@@ -2049,19 +2088,31 @@ const ImageCache = {
         console.log('ImageCache: persistent storage', granted ? 'granted' : 'denied');
       } catch (_) {}
     }
-    // Try IndexedDB
+    // Try IndexedDB — single-transaction cursor for fast bulk read
     try {
-      await this._openDB();
-      const keys = await this._getAllKeys();
+      const db = await this._openDB();
       let loaded = 0;
-      for (const key of keys) {
-        try {
-          const blob = await this._get(key);
-          if (blob) { this._blobUrls[key] = URL.createObjectURL(blob); loaded++; }
-        } catch (_) { /* skip corrupted entry */ }
-      }
+      await new Promise((resolve, reject) => {
+        const tx = db.transaction(this.STORE_NAME, 'readonly');
+        const req = tx.objectStore(this.STORE_NAME).openCursor();
+        req.onsuccess = (e) => {
+          const cursor = e.target.result;
+          if (cursor) {
+            this._knownKeys.add(cursor.key);
+            try {
+              if (cursor.value) {
+                this._blobUrls[cursor.key] = URL.createObjectURL(cursor.value);
+                loaded++;
+              }
+            } catch (_) { /* skip corrupted entry */ }
+            cursor.continue();
+          }
+        };
+        tx.oncomplete = () => resolve();
+        tx.onerror = (e) => reject(e.target.error);
+      });
       this._updateCount(loaded);
-      console.log('ImageCache: IndexedDB OK,', loaded, '/', keys.length, 'cached');
+      console.log('ImageCache: IndexedDB OK,', loaded, '/', this._knownKeys.size, 'cached');
     } catch (e) {
       console.warn('ImageCache: IndexedDB unavailable, using memory-only mode.', e.message || e);
       this._db = null;
@@ -2074,10 +2125,17 @@ const ImageCache = {
   },
 
   // --- Resolve: sync lookup, returns blob URL or null ---
+  // If key exists in IndexedDB but blob URL not ready, schedules lazy load
   resolve(cardNumber, side = 'front') {
     if (!cardNumber) return null;
     const key = this._urlToKey(cardNumber, side);
-    return this._blobUrls[key] || null;
+    if (this._blobUrls[key]) return this._blobUrls[key];
+    // Schedule lazy load if key exists in DB but not yet as blob URL
+    if (this._knownKeys.has(key) && !this._pendingKeys.has(key)) {
+      this._pendingKeys.add(key);
+      this._scheduleLazyLoad();
+    }
+    return null;
   },
 
   _updateCount(count) {
@@ -2088,6 +2146,37 @@ const ImageCache = {
   _refreshStats() {
     const count = Object.keys(this._blobUrls).length;
     this._updateCount(count);
+  },
+
+  // --- Lazy loading: recover entries that failed during init ---
+  _scheduleLazyLoad() {
+    if (this._pendingTimer) return;
+    this._pendingTimer = setTimeout(() => this._runLazyLoad(), 50);
+  },
+  async _runLazyLoad() {
+    this._pendingTimer = null;
+    const keys = [...this._pendingKeys];
+    this._pendingKeys.clear();
+    if (!keys.length) return;
+    let loaded = 0;
+    for (const key of keys) {
+      try {
+        const blob = await this._get(key);
+        if (blob) {
+          this._blobUrls[key] = URL.createObjectURL(blob);
+          loaded++;
+        } else {
+          this._knownKeys.delete(key);
+        }
+      } catch (_) {
+        this._knownKeys.delete(key);
+      }
+    }
+    if (loaded > 0) {
+      this._refreshStats();
+      UIRenderer.renderAll();
+      SearchPanel.applyFilters();
+    }
   },
 
   // --- Modal ---
@@ -2116,6 +2205,8 @@ const ImageCache = {
   async clear() {
     Object.values(this._blobUrls).forEach(url => URL.revokeObjectURL(url));
     this._blobUrls = {};
+    this._knownKeys.clear();
+    this._pendingKeys.clear();
     await this._clearStore();
     this._updateCount(0);
     Toast.show('キャッシュをクリアしました', 'success', 2000);
@@ -3917,14 +4008,12 @@ function openSidebar() { /* no-op, use openCardPicker */ }
 // Header menu toggle
 function toggleHeaderMenu() {
   document.getElementById('headerMenuPanel').classList.toggle('open');
+  document.getElementById('headerMenuOverlay').classList.toggle('open');
 }
-document.addEventListener('click', (e) => {
-  const wrap = document.getElementById('headerMenuPanel');
-  if (!wrap) return;
-  if (!e.target.closest('.header-menu-wrap')) {
-    wrap.classList.remove('open');
-  }
-});
+function closeHeaderMenu() {
+  document.getElementById('headerMenuPanel').classList.remove('open');
+  document.getElementById('headerMenuOverlay').classList.remove('open');
+}
 
 // Terrain setting
 function setActiveTerrain(terrain) {
@@ -4166,7 +4255,8 @@ window.addEventListener('hashchange', async () => {
   if (location.hash && location.hash.length > 1) {
     const code = location.hash.substring(1);
     const numbers = DeckManager.parseCode(code);
-    if (numbers && (numbers.length === 10 || numbers.length === 12)) {
+    if (numbers && numbers.length >= 1) {
+      while (numbers.length < 10) numbers.push('');
       await DeckManager._applyNumbers(numbers);
     }
   }

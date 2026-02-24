@@ -1,90 +1,414 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <title>デッキ投稿一覧</title>
-    <style>
-        body { background: #181818; color: #fff; font-family: sans-serif; }
-        .header { background: #4caf50; color: #222; text-align: center; padding: 1rem; font-size: 2rem; font-weight: bold; letter-spacing: 0.05em; }
-        .deck-list { max-width: 1100px; margin: 2em auto; }
-        .deck-entry { background: #222; border-radius: 12px; box-shadow: 0 0 12px #000; margin-bottom: 2em; padding: 1.5em; }
-        .deck-title { color: #4caf50; font-size: 1.3em; font-weight: bold; margin-bottom: 0.3em; cursor:pointer; text-decoration:underline; }
-        .deck-title:hover { color:#ffe082; }
-        .deck-meta { color: #ffe082; font-size: 0.95em; margin-bottom: 0.7em; }
-        .deck-comment { color: #b2e5ff; margin-bottom: 1em; }
-        .deck-cards { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 0.5em; }
-        .deck-card-thumb { background: #111; border-radius: 6px; border: 1px solid #444; width: 60px; height: 90px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-        .deck-card-thumb img { width: 100%; height: auto; display: block; }
-        .back-link { display: block; text-align: center; margin: 2em 0 1em 0; color: #ffe082; font-size: 1.1em; text-decoration: underline; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>デッキ一覧 - ABDS</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:14px}
+body{background:#0f0f0f;color:#e0e0e0;font-family:'Segoe UI','Hiragino Sans',sans-serif;min-height:100vh}
+a{color:#68efbd;text-decoration:none}
+button{cursor:pointer;font-family:inherit}
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:#1a1a1a}
+::-webkit-scrollbar-thumb{background:#444;border-radius:3px}
+
+/* ===== HEADER ===== */
+.app-header{
+  display:flex;align-items:center;justify-content:space-between;
+  background:linear-gradient(135deg,#1e2924,#1e2924);
+  border-bottom:2px solid #68efbd;
+  padding:0 1.2rem;min-height:52px;
+}
+.header-left{display:flex;align-items:center;gap:0.8rem}
+.logo{
+  color:#68efbd;font-weight:bold;font-size:0.85rem;white-space:nowrap;
+  font-style:italic;letter-spacing:1px;
+}
+.header-title{color:#fff;font-size:1.1rem;font-weight:bold}
+.header-btn{
+  background:#222;border:1px solid #555;border-radius:6px;
+  color:#ccc;padding:0.3rem 0.6rem;font-size:0.8rem;
+  transition:all 0.15s;white-space:nowrap;text-decoration:none;
+  display:inline-flex;align-items:center;gap:4px;
+}
+.header-btn:hover{background:#333;border-color:#68efbd;color:#68efbd}
+
+/* ===== CONTENT ===== */
+.content{max-width:1000px;margin:0 auto;padding:1.5rem 1rem 3rem}
+
+/* ===== DECK CARD ===== */
+.deck-entry{
+  background:#1a1a1a;border:1px solid #333;border-radius:8px;
+  padding:1.2rem;margin-bottom:1.2rem;
+  transition:all 0.2s ease;
+}
+.deck-entry:hover{border-color:#68efbd;box-shadow:0 2px 12px rgba(104,239,189,0.1)}
+
+.deck-header{display:flex;align-items:flex-start;justify-content:space-between;gap:0.8rem;margin-bottom:0.5rem}
+.deck-title{
+  color:#68efbd;font-size:1.15rem;font-weight:bold;cursor:pointer;
+  transition:color 0.15s;
+}
+.deck-title:hover{color:#a0ffd8}
+.deck-actions{display:flex;gap:0.4rem;flex-shrink:0}
+
+.btn-action{
+  background:transparent;border:1px solid #555;border-radius:4px;
+  color:#888;padding:0.2rem 0.5rem;font-size:0.75rem;
+  transition:all 0.15s;
+}
+.btn-action:hover{border-color:#68efbd;color:#68efbd;background:rgba(104,239,189,0.1)}
+.btn-action.copied{border-color:#68efbd;color:#68efbd}
+.btn-delete{
+  background:transparent;border:1px solid #555;border-radius:4px;
+  color:#888;padding:0.2rem 0.5rem;font-size:0.75rem;
+  transition:all 0.15s;
+}
+.btn-delete:hover{border-color:#ff5252;color:#ff5252;background:rgba(255,82,82,0.1)}
+
+.deck-meta{color:#888;font-size:0.8rem;margin-bottom:0.5rem}
+.deck-comment{color:#aaa;font-size:0.85rem;margin-bottom:0.8rem;line-height:1.5}
+
+.deck-cards{display:flex;flex-wrap:wrap;gap:6px}
+.deck-card-thumb{
+  background:#111;border-radius:4px;border:1px solid #333;
+  width:52px;aspect-ratio:63/88;
+  display:flex;align-items:center;justify-content:center;overflow:hidden;
+  font-size:0.55rem;color:#555;
+}
+.deck-card-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+
+.deck-tactics{margin-top:0.6rem;display:flex;gap:0.6rem;align-items:center;flex-wrap:wrap}
+.deck-tactics-label{color:#888;font-size:0.75rem}
+.deck-tactics-card{
+  background:#1e2924;border:1px solid #3a5a4a;border-radius:4px;
+  color:#68efbd;font-size:0.75rem;padding:0.15rem 0.5rem;
+  display:inline-flex;align-items:center;gap:4px;
+}
+.tactics-thumb{width:20px;height:20px;border-radius:2px;object-fit:cover}
+
+.toast-container{position:fixed;top:60px;right:1rem;z-index:200;display:flex;flex-direction:column;gap:0.4rem}
+.toast{
+  background:#1a1a1a;border:1px solid #68efbd;border-radius:6px;
+  color:#e0e0e0;padding:0.5rem 1rem;font-size:0.85rem;
+  animation:toastIn 0.3s ease;
+}
+.toast.fadeout{opacity:0;transition:opacity 0.3s}
+@keyframes toastIn{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:none}}
+
+/* ===== STATES ===== */
+.empty-state,.error-state,.loading-state{
+  text-align:center;padding:4rem 1rem;
+}
+.empty-state{color:#666}
+.empty-state .icon{font-size:3rem;margin-bottom:0.8rem;opacity:0.3}
+.empty-state p{font-size:0.95rem}
+.empty-state .sub{color:#555;font-size:0.8rem;margin-top:0.4rem}
+
+.error-state{color:#ff5252}
+.error-state .icon{font-size:3rem;margin-bottom:0.8rem}
+.error-state p{font-size:0.95rem}
+
+.loading-state{color:#888}
+.loading-state .spinner{
+  display:inline-block;width:24px;height:24px;
+  border:2px solid #333;border-top-color:#68efbd;border-radius:50%;
+  animation:spin 0.8s linear infinite;margin-bottom:0.8rem;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ===== CONFIRM DIALOG ===== */
+.overlay{
+  display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);
+  z-index:100;align-items:center;justify-content:center;
+}
+.overlay.active{display:flex}
+.dialog{
+  background:#1a1a1a;border:1px solid #444;border-radius:8px;
+  padding:1.5rem;max-width:360px;width:90%;text-align:center;
+}
+.dialog p{margin-bottom:1rem;font-size:0.95rem}
+.dialog-btns{display:flex;gap:0.6rem;justify-content:center}
+.dialog-btn{
+  padding:0.4rem 1.2rem;border-radius:6px;font-size:0.85rem;
+  border:1px solid #555;background:#222;color:#ccc;
+  transition:all 0.15s;
+}
+.dialog-btn:hover{background:#333;border-color:#68efbd;color:#68efbd}
+.dialog-btn.danger{border-color:#ff5252;color:#ff5252}
+.dialog-btn.danger:hover{background:rgba(255,82,82,0.15)}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:600px){
+  .content{padding:1rem 0.6rem 2rem}
+  .deck-entry{padding:0.8rem}
+  .deck-card-thumb{width:42px}
+  .deck-title{font-size:1rem}
+}
+</style>
 </head>
 <body>
-    <div class="header">デッキ投稿一覧</div>
-    <div class="deck-list" id="deckList"></div>
-    <a href="/" class="back-link">← メインページに戻る</a>
-    <script>
-    let allCards = [];
-    async function fetchAllCards() {
-        const res = await fetch('/fetch_cards');
-        const data = await res.json();
-        if (data.success) allCards = data.images;
+
+<div class="app-header">
+  <div class="header-left">
+    <span class="logo">ABDS</span>
+    <span class="header-title">デッキ一覧</span>
+  </div>
+  <a href="/" class="header-btn">← ホーム</a>
+</div>
+
+<div class="toast-container" id="toastContainer"></div>
+
+<div class="content">
+  <div id="deckList">
+    <div class="loading-state">
+      <div class="spinner"></div>
+      <p>読み込み中...</p>
+    </div>
+  </div>
+</div>
+
+<!-- Delete confirm dialog -->
+<div class="overlay" id="deleteDialog">
+  <div class="dialog">
+    <p id="deleteMsg">このデッキを削除しますか？</p>
+    <div class="dialog-btns">
+      <button class="dialog-btn" onclick="closeDeleteDialog()">キャンセル</button>
+      <button class="dialog-btn danger" id="deleteConfirmBtn">削除</button>
+    </div>
+  </div>
+</div>
+
+<script>
+let pendingDeleteId = null;
+
+function showToast(msg, duration = 2500) {
+  const container = document.getElementById('toastContainer');
+  const el = document.createElement('div');
+  el.className = 'toast';
+  el.textContent = msg;
+  container.appendChild(el);
+  setTimeout(() => { el.classList.add('fadeout'); setTimeout(() => el.remove(), 300); }, duration);
+}
+
+async function fetchDecks() {
+  try {
+    const res = await fetch('/api/decks');
+    const data = await res.json();
+    if (!data.success) throw new Error(data.error || 'API error');
+    return data.decks || [];
+  } catch (e) {
+    document.getElementById('deckList').innerHTML =
+      '<div class="error-state"><div class="icon">!</div><p>デッキ一覧の取得に失敗しました</p></div>';
+    return null;
+  }
+}
+
+async function fetchCardImages(numbers) {
+  if (!numbers.length) return {};
+  try {
+    const res = await fetch('/api/cards/batch', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({numbers})
+    });
+    const data = await res.json();
+    return data.success ? data.cards : {};
+  } catch { return {}; }
+}
+
+function getImageUrl(cardData) {
+  if (!cardData) return '';
+  if (cardData.front && cardData.front.image_url) return cardData.front.image_url;
+  if (cardData.image_url) return cardData.image_url;
+  if (cardData.url) return cardData.url;
+  return '';
+}
+
+function escapeHtml(str) {
+  const d = document.createElement('div');
+  d.textContent = str;
+  return d.innerHTML;
+}
+
+function generateDeckCode(deck) {
+  const cards = (deck.cards || []).map(c => typeof c === 'string' ? c : (c.number || ''));
+  // Pad to 10 slots
+  while (cards.length < 10) cards.push('');
+  if (deck.tactics_main || deck.tactics_sub) {
+    cards.push(deck.tactics_main || '');
+    cards.push(deck.tactics_sub || '');
+  }
+  return btoa(unescape(encodeURIComponent(cards.join(','))));
+}
+
+function getDeckV2Url(deck) {
+  return location.origin + '/v2#' + generateDeckCode(deck);
+}
+
+async function copyShareUrl(deck, btn) {
+  const url = getDeckV2Url(deck);
+  try {
+    await navigator.clipboard.writeText(url);
+    btn.textContent = 'Copied!';
+    btn.classList.add('copied');
+    showToast('共有URLをコピーしました');
+    setTimeout(() => { btn.textContent = '共有URL'; btn.classList.remove('copied'); }, 2000);
+  } catch {
+    showToast('コピーに失敗しました');
+  }
+}
+
+async function fetchTacticsMap() {
+  try {
+    const res = await fetch('/api/tactics_cards');
+    const data = await res.json();
+    if (!data.success) return {};
+    const map = {};
+    (data.data.main || []).forEach(c => { map[c.id] = c; });
+    (data.data.sub || []).forEach(c => { map[c.id] = c; });
+    return map;
+  } catch { return {}; }
+}
+
+async function renderDecks() {
+  const decks = await fetchDecks();
+  if (decks === null) return;
+
+  if (decks.length === 0) {
+    document.getElementById('deckList').innerHTML =
+      '<div class="empty-state"><div class="icon">&#x1F0CF;</div><p>まだ投稿されたデッキはありません</p><div class="sub">v2 シミュレーターでデッキを作成・投稿できます</div></div>';
+    return;
+  }
+
+  // Collect all unique card numbers for batch fetch
+  const allNumbers = new Set();
+  decks.forEach(d => {
+    (d.cards || []).forEach(c => {
+      const num = typeof c === 'string' ? c : (c.number || '');
+      if (num) allNumbers.add(num);
+    });
+  });
+
+  // Fetch card images and tactics data in parallel
+  const [cardData, tacticsMap] = await Promise.all([
+    fetchCardImages([...allNumbers]),
+    fetchTacticsMap()
+  ]);
+
+  // Render newest first
+  const sorted = decks.slice().reverse();
+  let html = '';
+  sorted.forEach((deck, idx) => {
+    const name = escapeHtml(deck.deck_name || '無名デッキ');
+    const ts = deck.timestamp ? new Date(deck.timestamp).toLocaleString('ja-JP') : '';
+    const comment = deck.comment ? escapeHtml(deck.comment).replace(/\n/g, '<br>') : '';
+    const deckId = deck.id || '';
+
+    html += `<div class="deck-entry" data-id="${deckId}">`;
+    html += `<div class="deck-header">`;
+    html += `<a class="deck-title" href="${escapeHtml(getDeckV2Url(deck))}">${name}</a>`;
+    html += `<div class="deck-actions">`;
+    html += `<button class="btn-action btn-share" data-idx="${idx}">共有URL</button>`;
+    if (deckId) {
+      html += `<button class="btn-delete" data-id="${deckId}" data-name="${name}">削除</button>`;
     }
-    async function fetchDecks() {
-        await fetchAllCards();
-        const res = await fetch('/decks');
-        const data = await res.json();
-        if (!data.success) {
-            document.getElementById('deckList').innerHTML = '<p style="color:#ff5252;">デッキ一覧の取得に失敗しました</p>';
-            return;
-        }
-        const decks = data.decks || [];
-        if (decks.length === 0) {
-            document.getElementById('deckList').innerHTML = '<p style="color:#888;">まだ投稿されたデッキはありません</p>';
-            return;
-        }
-        let html = '';
-        decks.slice().reverse().forEach((deck, idx) => {
-            html += `<div class="deck-entry">
-                <div class="deck-title" data-index="${idx}">${deck.deck_name || ''}</div>
-                <div class="deck-meta">${deck.timestamp ? new Date(deck.timestamp).toLocaleString('ja-JP') : ''}</div>
-                <div class="deck-comment">${deck.comment ? deck.comment.replace(/\n/g, '<br>') : ''}</div>
-                <div class="deck-cards">`;
-            (deck.cards || []).forEach(card => {
-                let num = card.number || '';
-                let imgUrl = '';
-                // 1. ocr情報から
-                if (card.ocr && card.ocr.front && card.ocr.front.image_url) {
-                    imgUrl = card.ocr.front.image_url;
-                } else if (card.ocr && card.ocr.url) {
-                    imgUrl = card.ocr.url;
-                }
-                // 2. allCardsから
-                if (!imgUrl && allCards.length > 0) {
-                    const found = allCards.find(c => c.number == num);
-                    if (found && found.front && found.front.image_url) imgUrl = found.front.image_url;
-                    else if (found && found.url) imgUrl = found.url;
-                }
-                html += `<div class="deck-card-thumb">`;
-                if (imgUrl) {
-                    html += `<img src="${imgUrl}" alt="${num}">`;
-                } else {
-                    html += `<span style='color:#888;font-size:0.9em;'>${num}</span>`;
-                }
-                html += `</div>`;
-            });
-            html += `</div></div>`;
-        });
-        document.getElementById('deckList').innerHTML = html;
-        // タイトルクリックでデッキインポート
-        document.querySelectorAll('.deck-title').forEach((el, idx) => {
-            el.onclick = function() {
-                const deck = decks.slice().reverse()[idx];
-                localStorage.setItem('gundamDecks_import', JSON.stringify(deck));
-                window.location.href = '/';
-            };
-        });
+    html += `</div></div>`;
+    if (ts) html += `<div class="deck-meta">${ts}</div>`;
+    if (comment) html += `<div class="deck-comment">${comment}</div>`;
+
+    html += `<div class="deck-cards">`;
+    (deck.cards || []).forEach(c => {
+      const num = typeof c === 'string' ? c : (c.number || '');
+      const imgUrl = getImageUrl(cardData[num]);
+      html += `<div class="deck-card-thumb">`;
+      if (imgUrl) {
+        html += `<img src="${imgUrl}" alt="${escapeHtml(num)}" loading="lazy">`;
+      } else {
+        html += escapeHtml(num);
+      }
+      html += `</div>`;
+    });
+    html += `</div>`;
+
+    // Tactics display
+    if (deck.tactics_main || deck.tactics_sub) {
+      html += `<div class="deck-tactics">`;
+      html += `<span class="deck-tactics-label">作戦:</span>`;
+      if (deck.tactics_main) {
+        const t = tacticsMap[deck.tactics_main];
+        const tName = t ? t.name : deck.tactics_main;
+        const tImg = t ? t.thumbnail_url : '';
+        html += `<span class="deck-tactics-card">${tImg ? `<img src="${tImg}" class="tactics-thumb">` : ''}${escapeHtml(tName)}</span>`;
+      }
+      if (deck.tactics_sub) {
+        const t = tacticsMap[deck.tactics_sub];
+        const tName = t ? t.name : deck.tactics_sub;
+        const tImg = t ? t.thumbnail_url : '';
+        html += `<span class="deck-tactics-card">${tImg ? `<img src="${tImg}" class="tactics-thumb">` : ''}${escapeHtml(tName)}</span>`;
+      }
+      html += `</div>`;
     }
-    fetchDecks();
-    </script>
+
+    html += `</div>`;
+  });
+
+  document.getElementById('deckList').innerHTML = html;
+
+  // Share URL buttons
+  document.querySelectorAll('.btn-share').forEach(el => {
+    el.addEventListener('click', e => {
+      e.stopPropagation();
+      const deck = sorted[parseInt(el.dataset.idx)];
+      copyShareUrl(deck, el);
+    });
+  });
+
+  // Delete buttons
+  document.querySelectorAll('.btn-delete').forEach(el => {
+    el.addEventListener('click', e => {
+      e.stopPropagation();
+      openDeleteDialog(el.dataset.id, el.dataset.name);
+    });
+  });
+}
+
+function openDeleteDialog(id, name) {
+  pendingDeleteId = id;
+  document.getElementById('deleteMsg').textContent = `「${name}」を削除しますか？`;
+  document.getElementById('deleteDialog').classList.add('active');
+}
+
+function closeDeleteDialog() {
+  pendingDeleteId = null;
+  document.getElementById('deleteDialog').classList.remove('active');
+}
+
+document.getElementById('deleteConfirmBtn').addEventListener('click', async () => {
+  if (!pendingDeleteId) return;
+  const id = pendingDeleteId;
+  closeDeleteDialog();
+  try {
+    const res = await fetch(`/api/decks/${id}`, {method: 'DELETE'});
+    const data = await res.json();
+    if (data.success) {
+      renderDecks();
+    } else {
+      alert('削除に失敗しました: ' + (data.error || ''));
+    }
+  } catch {
+    alert('削除中にエラーが発生しました');
+  }
+});
+
+// Close dialog on overlay click
+document.getElementById('deleteDialog').addEventListener('click', e => {
+  if (e.target === e.currentTarget) closeDeleteDialog();
+});
+
+renderDecks();
+</script>
 </body>
-</html> 
+</html>
