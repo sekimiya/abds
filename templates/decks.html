@@ -60,13 +60,20 @@ button{cursor:pointer;font-family:inherit}
   transition:all 0.15s;
 }
 .btn-action:hover{border-color:#68efbd;color:#68efbd;background:rgba(104,239,189,0.1)}
+.btn-action.btn-open{border-color:#68efbd;color:#68efbd;text-decoration:none}
+.btn-action.btn-open:hover{background:rgba(104,239,189,0.15)}
+.btn-action.btn-copy-deck{border-color:#ffe082;color:#ffe082;text-decoration:none}
+.btn-action.btn-copy-deck:hover{background:rgba(255,224,130,0.15)}
 .btn-action.copied{border-color:#68efbd;color:#68efbd}
-.btn-delete{
+.btn-like{
   background:transparent;border:1px solid #555;border-radius:4px;
   color:#888;padding:0.2rem 0.5rem;font-size:0.75rem;
-  transition:all 0.15s;
+  transition:all 0.15s;display:inline-flex;align-items:center;gap:3px;
 }
-.btn-delete:hover{border-color:#ff5252;color:#ff5252;background:rgba(255,82,82,0.1)}
+.btn-like:hover{border-color:#ff6b9d;color:#ff6b9d;background:rgba(255,107,157,0.1)}
+.btn-like.liked{border-color:#ff6b9d;color:#ff6b9d}
+.btn-like .like-heart{font-size:0.85rem}
+.btn-like .like-count{font-size:0.75rem;min-width:8px}
 
 .deck-meta{color:#888;font-size:0.8rem;margin-bottom:0.5rem}
 .deck-comment{color:#aaa;font-size:0.85rem;margin-bottom:0.8rem;line-height:1.5}
@@ -79,6 +86,41 @@ button{cursor:pointer;font-family:inherit}
   font-size:0.55rem;color:#555;
 }
 .deck-card-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+
+/* ===== COMMENTS ===== */
+.deck-comments{margin-top:0.8rem;border-top:1px solid #2a2a2a;padding-top:0.6rem}
+.comments-toggle{
+  background:none;border:none;color:#888;font-size:0.75rem;
+  padding:0;cursor:pointer;transition:color 0.15s;
+}
+.comments-toggle:hover{color:#68efbd}
+.comments-list{margin-top:0.5rem;display:flex;flex-direction:column;gap:0.4rem}
+.comment-item{
+  background:#111;border:1px solid #2a2a2a;border-radius:4px;
+  padding:0.4rem 0.6rem;font-size:0.8rem;
+}
+.comment-header{display:flex;align-items:center;gap:0.5rem;margin-bottom:0.2rem}
+.comment-name{color:#68efbd;font-weight:bold;font-size:0.75rem}
+.comment-time{color:#555;font-size:0.65rem}
+.comment-text{color:#ccc;line-height:1.5;word-break:break-word}
+.comment-form{display:flex;gap:0.4rem;margin-top:0.5rem;align-items:flex-start}
+.comment-name-input{
+  background:#111;border:1px solid #333;border-radius:4px;color:#ccc;
+  padding:0.3rem 0.5rem;font-size:0.75rem;width:80px;flex-shrink:0;
+}
+.comment-text-input{
+  background:#111;border:1px solid #333;border-radius:4px;color:#ccc;
+  padding:0.3rem 0.5rem;font-size:0.75rem;flex:1;min-height:32px;
+  resize:vertical;font-family:inherit;
+}
+.comment-name-input:focus,.comment-text-input:focus{border-color:#68efbd;outline:none}
+.comment-submit{
+  background:#1e2924;border:1px solid #3a5a4a;border-radius:4px;
+  color:#68efbd;padding:0.3rem 0.6rem;font-size:0.75rem;
+  white-space:nowrap;transition:all 0.15s;flex-shrink:0;
+}
+.comment-submit:hover{background:#2a4a35;border-color:#68efbd}
+.comment-submit:disabled{opacity:0.4;cursor:default}
 
 .deck-tactics{margin-top:0.6rem;display:flex;gap:0.6rem;align-items:center;flex-wrap:wrap}
 .deck-tactics-label{color:#888;font-size:0.75rem}
@@ -170,19 +212,35 @@ button{cursor:pointer;font-family:inherit}
   </div>
 </div>
 
-<!-- Delete confirm dialog -->
-<div class="overlay" id="deleteDialog">
-  <div class="dialog">
-    <p id="deleteMsg">このデッキを削除しますか？</p>
-    <div class="dialog-btns">
-      <button class="dialog-btn" onclick="closeDeleteDialog()">キャンセル</button>
-      <button class="dialog-btn danger" id="deleteConfirmBtn">削除</button>
-    </div>
-  </div>
-</div>
 
 <script>
-let pendingDeleteId = null;
+// --- イイネ管理 (localStorage) ---
+function getLikedSet() {
+  try { return new Set(JSON.parse(localStorage.getItem('gab_liked_decks') || '[]')); }
+  catch { return new Set(); }
+}
+function isLiked(deckId) { return getLikedSet().has(deckId); }
+function setLiked(deckId) {
+  const s = getLikedSet(); s.add(deckId);
+  localStorage.setItem('gab_liked_decks', JSON.stringify([...s]));
+}
+
+async function likeDeck(deckId, btn) {
+  if (isLiked(deckId)) { showToast('すでにイイネ済みです'); return; }
+  try {
+    const res = await fetch(`/api/decks/${deckId}/like`, { method: 'POST' });
+    const data = await res.json();
+    if (data.success) {
+      setLiked(deckId);
+      btn.classList.add('liked');
+      btn.querySelector('.like-heart').innerHTML = '&#9829;';
+      btn.querySelector('.like-count').textContent = data.likes;
+      showToast('イイネしました');
+    } else {
+      showToast('エラーが発生しました');
+    }
+  } catch { showToast('通信エラー'); }
+}
 
 function showToast(msg, duration = 2500) {
   const container = document.getElementById('toastContainer');
@@ -311,9 +369,13 @@ async function renderDecks() {
     html += `<div class="deck-header">`;
     html += `<a class="deck-title" href="${escapeHtml(getDeckV2Url(deck))}">${name}</a>`;
     html += `<div class="deck-actions">`;
+    html += `<a class="btn-action btn-open" href="${escapeHtml(getDeckV2Url(deck))}">表示</a>`;
+    html += `<a class="btn-action btn-copy-deck" href="${escapeHtml(getDeckV2Url(deck) + '&copy')}">デッキコピー</a>`;
     html += `<button class="btn-action btn-share" data-idx="${idx}">共有URL</button>`;
     if (deckId) {
-      html += `<button class="btn-delete" data-id="${deckId}" data-name="${name}">削除</button>`;
+      const likes = deck.likes || 0;
+      const liked = isLiked(deckId);
+      html += `<button class="btn-like${liked ? ' liked' : ''}" data-id="${deckId}"><span class="like-heart">${liked ? '&#9829;' : '&#9825;'}</span><span class="like-count">${likes || ''}</span></button>`;
     }
     html += `</div></div>`;
     if (ts) html += `<div class="deck-meta">${ts}</div>`;
@@ -352,6 +414,25 @@ async function renderDecks() {
       html += `</div>`;
     }
 
+    // Comments section
+    if (deckId) {
+      const comments = deck.comments || [];
+      html += `<div class="deck-comments" data-deck-id="${deckId}">`;
+      html += `<button class="comments-toggle" data-deck-id="${deckId}">コメント (${comments.length})</button>`;
+      html += `<div class="comments-body" id="comments-${deckId}" style="display:none">`;
+      html += `<div class="comments-list" id="clist-${deckId}">`;
+      comments.forEach(c => {
+        const cTime = c.timestamp ? new Date(c.timestamp).toLocaleString('ja-JP') : '';
+        html += `<div class="comment-item"><div class="comment-header"><span class="comment-name">${escapeHtml(c.name || 'アースノイド')}</span><span class="comment-time">${cTime}</span></div><div class="comment-text">${escapeHtml(c.text).replace(/\n/g, '<br>')}</div></div>`;
+      });
+      html += `</div>`;
+      html += `<div class="comment-form">`;
+      html += `<input class="comment-name-input" id="cname-${deckId}" placeholder="名前" maxlength="20">`;
+      html += `<textarea class="comment-text-input" id="ctext-${deckId}" placeholder="コメントを入力..." maxlength="500" rows="1"></textarea>`;
+      html += `<button class="comment-submit" data-deck-id="${deckId}">送信</button>`;
+      html += `</div></div></div>`;
+    }
+
     html += `</div>`;
   });
 
@@ -366,47 +447,64 @@ async function renderDecks() {
     });
   });
 
-  // Delete buttons
-  document.querySelectorAll('.btn-delete').forEach(el => {
+  // Like buttons
+  document.querySelectorAll('.btn-like').forEach(el => {
     el.addEventListener('click', e => {
       e.stopPropagation();
-      openDeleteDialog(el.dataset.id, el.dataset.name);
+      likeDeck(el.dataset.id, el);
+    });
+  });
+
+
+  // Comment toggles
+  document.querySelectorAll('.comments-toggle').forEach(el => {
+    el.addEventListener('click', () => {
+      const body = document.getElementById('comments-' + el.dataset.deckId);
+      if (body.style.display === 'none') {
+        body.style.display = '';
+      } else {
+        body.style.display = 'none';
+      }
+    });
+  });
+
+  // Comment submit buttons
+  document.querySelectorAll('.comment-submit').forEach(el => {
+    el.addEventListener('click', async () => {
+      const deckId = el.dataset.deckId;
+      const nameInput = document.getElementById('cname-' + deckId);
+      const textInput = document.getElementById('ctext-' + deckId);
+      const text = textInput.value.trim();
+      if (!text) { showToast('コメントを入力してください'); return; }
+      el.disabled = true;
+      try {
+        const res = await fetch(`/api/decks/${deckId}/comments`, {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({ name: nameInput.value.trim(), text })
+        });
+        const data = await res.json();
+        if (data.success) {
+          const c = data.comment;
+          const cTime = c.timestamp ? new Date(c.timestamp).toLocaleString('ja-JP') : '';
+          const list = document.getElementById('clist-' + deckId);
+          list.insertAdjacentHTML('beforeend',
+            `<div class="comment-item"><div class="comment-header"><span class="comment-name">${escapeHtml(c.name || 'アースノイド')}</span><span class="comment-time">${cTime}</span></div><div class="comment-text">${escapeHtml(c.text).replace(/\n/g, '<br>')}</div></div>`
+          );
+          textInput.value = '';
+          // Update toggle count
+          const toggle = document.querySelector(`.comments-toggle[data-deck-id="${deckId}"]`);
+          const count = list.querySelectorAll('.comment-item').length;
+          toggle.textContent = `コメント (${count})`;
+          showToast('コメントを投稿しました');
+        } else {
+          showToast(data.error || 'エラーが発生しました');
+        }
+      } catch { showToast('通信エラー'); }
+      el.disabled = false;
     });
   });
 }
-
-function openDeleteDialog(id, name) {
-  pendingDeleteId = id;
-  document.getElementById('deleteMsg').textContent = `「${name}」を削除しますか？`;
-  document.getElementById('deleteDialog').classList.add('active');
-}
-
-function closeDeleteDialog() {
-  pendingDeleteId = null;
-  document.getElementById('deleteDialog').classList.remove('active');
-}
-
-document.getElementById('deleteConfirmBtn').addEventListener('click', async () => {
-  if (!pendingDeleteId) return;
-  const id = pendingDeleteId;
-  closeDeleteDialog();
-  try {
-    const res = await fetch(`/api/decks/${id}`, {method: 'DELETE'});
-    const data = await res.json();
-    if (data.success) {
-      renderDecks();
-    } else {
-      alert('削除に失敗しました: ' + (data.error || ''));
-    }
-  } catch {
-    alert('削除中にエラーが発生しました');
-  }
-});
-
-// Close dialog on overlay click
-document.getElementById('deleteDialog').addEventListener('click', e => {
-  if (e.target === e.currentTarget) closeDeleteDialog();
-});
 
 renderDecks();
 </script>

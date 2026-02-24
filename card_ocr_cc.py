@@ -60,7 +60,7 @@ IMAGES_DIR = Path("card_images_temp")
 PROGRESS_FILE = Path("ocr_cc_progress.json")
 
 DEFAULT_DELAY = 1.0          # claude CLI 呼び出し間隔（秒）
-DEFAULT_WORKERS = 3          # 並列ワーカー数
+DEFAULT_WORKERS = 2          # 並列ワーカー数
 MAX_RETRIES = 2              # リトライ回数
 SUBPROCESS_TIMEOUT = 300     # claude CLI のタイムアウト（秒）
 MIN_IMAGE_SIZE = 1000        # ダミー画像判定用の最小バイト数

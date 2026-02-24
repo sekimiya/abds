@@ -1899,13 +1899,22 @@ const DeckManager = {
   async _autoLoad() {
     // Hash import
     if (location.hash && location.hash.length > 1) {
-      const code = location.hash.substring(1);
+      const raw = location.hash.substring(1);
+      const isCopy = raw.endsWith('&copy');
+      const code = isCopy ? raw.slice(0, -5) : raw;
       const numbers = this.parseCode(code);
       if (numbers && numbers.length >= 1) {
         // Pad to 10 if fewer
         while (numbers.length < 10) numbers.push('');
         await this._applyNumbers(numbers);
-        Toast.show('URLからデッキを復元しました', 'info');
+        if (isCopy) {
+          document.getElementById('deckNameInput').value = '';
+          // Remove &copy from hash so reload won't re-trigger
+          history.replaceState(null, '', '/v2#' + code);
+          Toast.show('デッキをコピーしました — 編集して保存できます', 'success');
+        } else {
+          Toast.show('URLからデッキを復元しました', 'info');
+        }
         return;
       }
     }

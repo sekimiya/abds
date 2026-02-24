@@ -28,6 +28,7 @@ from card_ocr_cc import (
     get_existing_ocr_numbers,
 )
 import card_ocr_cc
+import db
 
 # 後方互換: 旧名でもアクセス可能にする
 _safe_int = safe_int
@@ -36,8 +37,6 @@ app = Flask(__name__)
 
 
 
-decks_file = 'decks.json'
-decks_lock = threading.Lock()
 
 # --- サーバーサイドカードインデックスキャッシュ ---
 _card_index_cache = None
@@ -1429,38 +1428,23 @@ def post_deck():
     cards = data.get('cards', [])
     if not deck_name or not cards:
         return jsonify({'success': False, 'error': 'デッキ名とカード構成は必須です'}), 400
-    deck_entry = {
+    deck_data = {
         'deck_name': deck_name,
         'comment': comment,
         'cards': cards,
         'tactics_main': data.get('tactics_main'),
         'tactics_sub': data.get('tactics_sub'),
-        'timestamp': data.get('timestamp')
+        'timestamp': data.get('timestamp'),
     }
-    with decks_lock:
-        if os.path.exists(decks_file):
-            with open(decks_file, 'r', encoding='utf-8') as f:
-                try:
-                    decks = json.load(f)
-                except Exception:
-                    decks = []
-        else:
-            decks = []
-        decks.append(deck_entry)
-        with open(decks_file, 'w', encoding='utf-8') as f:
-            json.dump(decks, f, ensure_ascii=False, indent=2)
+    entry, err = db.create_deck(deck_data)
+    if err:
+        return jsonify({'success': False, 'error': err}), 500
     return jsonify({'success': True, 'message': 'デッキを投稿しました'})
 
 # --- デッキ一覧API ---
 @app.route('/decks', methods=['GET'])
 def get_decks():
-    if not os.path.exists(decks_file):
-        return jsonify({'success': True, 'decks': []})
-    with open(decks_file, 'r', encoding='utf-8') as f:
-        try:
-            decks = json.load(f)
-        except Exception:
-            decks = []
+    decks = db.list_decks()
     return jsonify({'success': True, 'decks': decks})
 
 @app.route('/decks.html')
@@ -1601,14 +1585,7 @@ def api_cards_search():
 @app.route('/api/decks', methods=['GET'])
 def api_list_decks():
     """デッキ一覧を返す"""
-    if not os.path.exists(decks_file):
-        return jsonify({'success': True, 'decks': []})
-    with decks_lock:
-        with open(decks_file, 'r', encoding='utf-8') as f:
-            try:
-                decks = json.load(f)
-            except Exception:
-                decks = []
+    decks = db.list_decks()
     return jsonify({'success': True, 'decks': decks})
 
 
@@ -1623,29 +1600,18 @@ def api_create_deck():
     comment = data.get('comment', '').strip()
     if not deck_name or not cards or not any(c for c in cards if c):
         return jsonify({'success': False, 'error': 'デッキ名とカード構成は必須です'}), 400
-    deck_id = str(uuid.uuid4())[:8]
-    deck_entry = {
-        'id': deck_id,
+    deck_data = {
         'deck_name': deck_name,
         'comment': comment,
         'cards': cards,
         'tactics_main': data.get('tactics_main'),
         'tactics_sub': data.get('tactics_sub'),
-        'timestamp': data.get('timestamp') or time.strftime('%Y-%m-%dT%H:%M:%S')
+        'timestamp': data.get('timestamp') or time.strftime('%Y-%m-%dT%H:%M:%S'),
     }
-    with decks_lock:
-        if os.path.exists(decks_file):
-            with open(decks_file, 'r', encoding='utf-8') as f:
-                try:
-                    decks = json.load(f)
-                except Exception:
-                    decks = []
-        else:
-            decks = []
-        decks.append(deck_entry)
-        with open(decks_file, 'w', encoding='utf-8') as f:
-            json.dump(decks, f, ensure_ascii=False, indent=2)
-    return jsonify({'success': True, 'id': deck_id, 'message': 'デッキを保存しました'})
+    entry, err = db.create_deck(deck_data)
+    if err:
+        return jsonify({'success': False, 'error': err}), 500
+    return jsonify({'success': True, 'id': entry['id'], 'message': 'デッキを保存しました'})
 
 
 @app.route('/api/decks/<deck_id>', methods=['PUT'])
@@ -1654,51 +1620,55 @@ def api_update_deck(deck_id):
     data = request.get_json()
     if not data:
         return jsonify({'success': False, 'error': 'No data received'}), 400
-    with decks_lock:
-        if not os.path.exists(decks_file):
-            return jsonify({'success': False, 'error': 'Deck not found'}), 404
-        with open(decks_file, 'r', encoding='utf-8') as f:
-            try:
-                decks = json.load(f)
-            except Exception:
-                return jsonify({'success': False, 'error': 'Failed to read decks'}), 500
-        found = False
-        for deck in decks:
-            if deck.get('id') == deck_id:
-                if 'deck_name' in data:
-                    deck['deck_name'] = data['deck_name']
-                if 'cards' in data:
-                    deck['cards'] = data['cards']
-                if 'comment' in data:
-                    deck['comment'] = data['comment']
-                deck['timestamp'] = time.strftime('%Y-%m-%dT%H:%M:%S')
-                found = True
-                break
-        if not found:
-            return jsonify({'success': False, 'error': 'Deck not found'}), 404
-        with open(decks_file, 'w', encoding='utf-8') as f:
-            json.dump(decks, f, ensure_ascii=False, indent=2)
+    ok, err = db.update_deck(deck_id, data)
+    if not ok:
+        return jsonify({'success': False, 'error': err}), 404
     return jsonify({'success': True, 'message': 'デッキを更新しました'})
 
 
 @app.route('/api/decks/<deck_id>', methods=['DELETE'])
 def api_delete_deck(deck_id):
     """デッキを削除"""
-    with decks_lock:
-        if not os.path.exists(decks_file):
-            return jsonify({'success': False, 'error': 'Deck not found'}), 404
-        with open(decks_file, 'r', encoding='utf-8') as f:
-            try:
-                decks = json.load(f)
-            except Exception:
-                return jsonify({'success': False, 'error': 'Failed to read decks'}), 500
-        original_len = len(decks)
-        decks = [d for d in decks if d.get('id') != deck_id]
-        if len(decks) == original_len:
-            return jsonify({'success': False, 'error': 'Deck not found'}), 404
-        with open(decks_file, 'w', encoding='utf-8') as f:
-            json.dump(decks, f, ensure_ascii=False, indent=2)
+    ok, err = db.delete_deck(deck_id)
+    if not ok:
+        return jsonify({'success': False, 'error': err}), 404
     return jsonify({'success': True, 'message': 'デッキを削除しました'})
+
+
+@app.route('/api/decks/<deck_id>/like', methods=['POST'])
+def api_like_deck(deck_id):
+    """デッキにイイネを追加"""
+    likes, err = db.like_deck(deck_id)
+    if err:
+        return jsonify({'success': False, 'error': err}), 404
+    return jsonify({'success': True, 'likes': likes})
+
+
+@app.route('/api/decks/<deck_id>/comments', methods=['GET'])
+def api_get_comments(deck_id):
+    """デッキのコメント一覧を取得"""
+    comments, err = db.get_comments(deck_id)
+    if err:
+        return jsonify({'success': False, 'error': err}), 404
+    return jsonify({'success': True, 'comments': comments})
+
+
+@app.route('/api/decks/<deck_id>/comments', methods=['POST'])
+def api_post_comment(deck_id):
+    """デッキにコメントを投稿"""
+    data = request.get_json()
+    if not data:
+        return jsonify({'success': False, 'error': 'No data'}), 400
+    text = (data.get('text') or '').strip()
+    name = (data.get('name') or '').strip() or 'アースノイド'
+    if not text:
+        return jsonify({'success': False, 'error': 'コメントを入力してください'}), 400
+    if len(text) > 500:
+        return jsonify({'success': False, 'error': 'コメントは500文字以内にしてください'}), 400
+    comment, err = db.post_comment(deck_id, name, text)
+    if err:
+        return jsonify({'success': False, 'error': err}), 404
+    return jsonify({'success': True, 'comment': comment})
 
 
 @app.route('/api/cache/clear', methods=['POST'])
