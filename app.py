@@ -3,12 +3,17 @@ from bs4 import BeautifulSoup
 import os
 import re
 import json
+import secrets
 import threading
 import hashlib
 import time
 import uuid
 import logging
+import functools
 from concurrent.futures import ThreadPoolExecutor, as_completed
+
+from dotenv import load_dotenv
+load_dotenv()
 
 from fetch_series_ids import fetch_all_series_ids
 from fetch_cards import fetch_cards_for_series, save_card_data
@@ -34,6 +39,60 @@ import db
 _safe_int = safe_int
 
 app = Flask(__name__)
+
+# --- セキュリティ設定 ---
+app.secret_key = os.environ.get('SECRET_KEY') or secrets.token_hex(32)
+
+# 管理者トークン（.envのADMIN_TOKENから読み取り、未設定なら自動生成）
+ADMIN_TOKEN = os.environ.get('ADMIN_TOKEN', '').strip()
+if not ADMIN_TOKEN:
+    ADMIN_TOKEN = secrets.token_hex(24)
+    print(f"[SECURITY] ADMIN_TOKEN が未設定のため自動生成しました: {ADMIN_TOKEN}")
+    print(f"[SECURITY] 永続化するには .env に ADMIN_TOKEN={ADMIN_TOKEN} を追加してください")
+
+
+def require_admin(f):
+    """管理エンドポイント用の認証デコレータ。
+    Authorization: Bearer <token> ヘッダまたは ?token=<token> クエリで認証する。
+    """
+    @functools.wraps(f)
+    def decorated(*args, **kwargs):
+        token = None
+        auth_header = request.headers.get('Authorization', '')
+        if auth_header.startswith('Bearer '):
+            token = auth_header[7:].strip()
+        if not token:
+            token = request.args.get('token', '').strip()
+        if not token or not secrets.compare_digest(token, ADMIN_TOKEN):
+            return jsonify({'success': False, 'error': '認証が必要です'}), 401
+        return f(*args, **kwargs)
+    return decorated
+
+
+# --- セキュリティヘッダ ---
+@app.after_request
+def set_security_headers(response):
+    response.headers['X-Content-Type-Options'] = 'nosniff'
+    response.headers['X-Frame-Options'] = 'SAMEORIGIN'
+    response.headers['X-XSS-Protection'] = '1; mode=block'
+    response.headers['Referrer-Policy'] = 'strict-origin-when-cross-origin'
+    return response
+
+
+# --- レートリミット ---
+try:
+    from flask_limiter import Limiter
+    from flask_limiter.util import get_remote_address
+    limiter = Limiter(
+        get_remote_address,
+        app=app,
+        default_limits=["200 per minute"],
+        storage_uri="memory://",
+    )
+except ImportError:
+    limiter = None
+    print("[WARNING] flask-limiter が未インストールです。レートリミットは無効です。")
+    print("[WARNING] pip install flask-limiter でインストールしてください。")
 
 
 
@@ -1224,8 +1283,21 @@ _PLACEHOLDER_SVG = (
     'font-family="sans-serif">No Image</text></svg>'
 )
 
+def _is_safe_filename(filename):
+    """パストラバーサル攻撃を防ぐためのファイル名検証"""
+    if '..' in filename or filename.startswith('/') or filename.startswith('\\'):
+        return False
+    # 正規化して元のパスと一致するか確認
+    normalized = os.path.normpath(filename)
+    if normalized.startswith('..') or os.path.isabs(normalized):
+        return False
+    return True
+
+
 @app.route('/card_images/<path:filename>')
 def serve_card_image(filename):
+    if not _is_safe_filename(filename):
+        return Response(_PLACEHOLDER_SVG, content_type='image/svg+xml'), 400
     filepath = os.path.join('card_images', filename)
     if os.path.isfile(filepath):
         return send_from_directory('card_images', filename)
@@ -1234,7 +1306,16 @@ def serve_card_image(filename):
 
 @app.route('/v2')
 def index_v2():
+    # モバイルUA検出 → /m へリダイレクト（?noredirect=1 で回避可能）
+    if request.args.get('noredirect') != '1':
+        ua = (request.headers.get('User-Agent') or '').lower()
+        if any(k in ua for k in ('iphone', 'android', 'mobile', 'ipod')):
+            return redirect('/m' + ('#' + request.args.get('hash', '') if request.args.get('hash') else ''))
     return render_template('index_v2.html')
+
+@app.route('/m')
+def mobile_v2():
+    return render_template('mobile_v2_portrait.html')
 
 @app.route('/mobile/landscape')
 def mobile_landscape():
@@ -1426,6 +1507,8 @@ def fetch_cards():
 
 @app.route('/ocr_results/<path:filename>')
 def serve_ocr_results(filename):
+    if not _is_safe_filename(filename):
+        return jsonify({'error': 'Invalid filename'}), 400
     return send_from_directory('ocr_results', filename)
 
 # --- デッキ投稿API ---
@@ -1698,6 +1781,7 @@ def api_post_comment(deck_id):
 
 
 @app.route('/api/cache/clear', methods=['POST'])
+@require_admin
 def api_clear_cache():
     """カードインデックスキャッシュをクリアして再構築する"""
     global _card_index_cache, _card_detail_cache, _link_index_cache, _ocr_file_map_cache, _tactics_cards_cache
@@ -1717,11 +1801,13 @@ def api_clear_cache():
 # ====================================================
 
 @app.route('/admin')
+@require_admin
 def admin():
     return render_template('admin.html')
 
 
 @app.route('/api/admin/stats')
+@require_admin
 def api_admin_stats():
     """カードデータの統計情報を返す"""
     all_cards_dir = 'all_cards_list'
@@ -1873,6 +1959,7 @@ def _run_collection():
 
 
 @app.route('/api/admin/collect', methods=['POST'])
+@require_admin
 def api_admin_collect():
     """全カードデータ収集をバックグラウンドで開始"""
     with _collect_lock:
@@ -1885,6 +1972,7 @@ def api_admin_collect():
 
 
 @app.route('/api/admin/collect/status')
+@require_admin
 def api_admin_collect_status():
     """収集タスクの進捗を返す"""
     with _collect_lock:
@@ -1903,6 +1991,7 @@ def api_admin_collect_status():
 
 
 @app.route('/api/admin/cards')
+@require_admin
 def api_admin_cards():
     """収集済みカードの一覧（ページネーション付き）"""
     idx = get_card_index()
@@ -2009,6 +2098,7 @@ def _get_ocr_file_map():
 
 
 @app.route('/ocr-admin')
+@require_admin
 def ocr_admin():
     return redirect('/admin')
 
@@ -2034,6 +2124,7 @@ def _get_failed_numbers():
 
 
 @app.route('/api/ocr-admin/stats')
+@require_admin
 def api_ocr_admin_stats():
     """OCR処理の全体統計を返す"""
     ocr_map = _get_ocr_file_map()
@@ -2121,6 +2212,7 @@ def api_ocr_admin_stats():
 
 
 @app.route('/api/ocr-admin/cards')
+@require_admin
 def api_ocr_admin_cards():
     """OCRステータス付きカード一覧（ページネーション対応）"""
     ocr_map = _get_ocr_file_map()
@@ -2191,6 +2283,7 @@ def api_ocr_admin_cards():
 
 
 @app.route('/api/ocr-admin/card/<number>')
+@require_admin
 def api_ocr_admin_card_detail(number):
     """単一カードの全OCRデータ（raw_text + structured）を返す"""
     ocr_dir = 'ocr_results_debug'
@@ -2237,11 +2330,13 @@ def api_ocr_admin_card_detail(number):
 # ====================================================
 
 @app.route('/ocr-run')
+@require_admin
 def ocr_run():
     return render_template('ocr_run.html')
 
 
 @app.route('/api/ocr-run/series-stats')
+@require_admin
 def api_ocr_run_series_stats():
     """シリーズ別OCRカバレッジ統計を返す"""
     idx = get_card_index()
@@ -2297,8 +2392,9 @@ def api_ocr_run_series_stats():
 
 
 @app.route('/api/ocr-run/start', methods=['POST'])
+@require_admin
 def api_ocr_run_start():
-    """OCR実行を開始する"""
+    """OCR実行を開始する（課金発生のため特に保護）"""
     with _ocr_run_lock:
         if _ocr_run_status["running"]:
             return jsonify({'success': False, 'error': 'OCRタスクが既に実行中です'}), 409
@@ -2324,6 +2420,7 @@ def api_ocr_run_start():
 
 
 @app.route('/api/ocr-run/status')
+@require_admin
 def api_ocr_run_status():
     """OCR実行の進捗を返す"""
     with _ocr_run_lock:
@@ -2349,6 +2446,7 @@ def api_ocr_run_status():
 
 
 @app.route('/api/ocr-run/stop', methods=['POST'])
+@require_admin
 def api_ocr_run_stop():
     """OCR実行の停止をリクエスト"""
     with _ocr_run_lock:
