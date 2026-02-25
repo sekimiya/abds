@@ -542,6 +542,11 @@ def _build_card_index():
         seen_numbers.add(card_number)
 
         ocr_data = ocr_results.get(card_number, {})
+        # イラスト違い (_p1, _p2 等) はベース番号のOCRデータをフォールバック参照
+        if not ocr_data:
+            _base_num = re.sub(r'_p\d+$', '', card_number)
+            if _base_num != card_number:
+                ocr_data = ocr_results.get(_base_num, {})
 
         # 画像URL解決
         front_image_url = ''
@@ -1328,7 +1333,12 @@ def fetch_cards():
             
         card_number = card.get('number', '') if card else ''
         ocr_data = ocr_results.get(card_number, {})
-        
+        # イラスト違い (_p1, _p2 等) はベース番号のOCRデータをフォールバック参照
+        if not ocr_data:
+            _base_num2 = re.sub(r'_p\d+$', '', card_number)
+            if _base_num2 != card_number:
+                ocr_data = ocr_results.get(_base_num2, {})
+
         # 表面画像URL生成
         front_image_url = ''
         # 1. カードデータのfront.image_urlを優先

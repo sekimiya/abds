@@ -749,6 +749,9 @@ select,input{font-family:inherit}
 .cat-btn[data-cat="殲滅"]{border-color:rgba(255,138,128,0.6);color:#ff8a80}
 .cat-btn[data-cat="制圧"]{border-color:rgba(130,177,255,0.6);color:#82b1ff}
 .cat-btn[data-cat="防衛"]{border-color:rgba(165,214,167,0.6);color:#a5d6a7}
+.cat-btn[data-cat="機動"]{border-color:rgba(255,213,79,0.6);color:#ffd54f}
+.cat-btn[data-cat="近距離"]{border-color:rgba(255,138,128,0.6);color:#ff8a80}
+.cat-btn[data-cat="遠距離"]{border-color:rgba(130,177,255,0.6);color:#82b1ff}
 .cat-btn.active{background:#1e2924;border-color:#68efbd;color:#68efbd}
 
 /* Series filter (toggle buttons) */
@@ -977,8 +980,8 @@ select,input{font-family:inherit}
 }
 .modal-overlay.open{display:flex}
 .modal-content{
-  background:#1a1a1a;border-radius:16px;padding:1.5rem;
-  max-width:700px;width:90vw;max-height:90vh;overflow-y:auto;
+  background:#1a1a1a;border-radius:16px;padding:1.5rem 2rem;
+  max-width:1100px;width:94vw;max-height:92vh;overflow-y:auto;
   box-shadow:0 0 24px rgba(0,0,0,0.8);position:relative;
 }
 .modal-close{
@@ -986,8 +989,9 @@ select,input{font-family:inherit}
   color:#888;font-size:1.5rem;cursor:pointer;
 }
 .modal-close:hover{color:#fff}
-.modal-card-header{display:flex;gap:1rem;margin-bottom:1rem}
-.modal-card-image{width:200px;height:auto;border-radius:8px;flex-shrink:0}
+.modal-card-header{display:flex;gap:1.2rem;margin-bottom:1rem;align-items:stretch}
+.modal-card-images{display:flex;gap:0.6rem;flex-shrink:0}
+.modal-card-image{width:auto;height:100%;border-radius:8px;object-fit:contain}
 .modal-card-info{flex:1}
 .modal-card-number{color:#68efbd;font-weight:bold;font-size:1.05rem}
 .modal-card-name{font-size:1.2rem;font-weight:bold;margin-top:0.2rem}
@@ -1156,11 +1160,24 @@ select,input{font-family:inherit}
     <!-- LEFT PANE: FILTERS -->
     <div class="sidebar-left">
 
-      <!-- 基本フィルタ -->
-      <div class="filter-group" id="filterGroupBasic">
-        <div class="filter-group-title" onclick="toggleFilterGroup('filterGroupBasic')">基本</div>
+      <!-- ========== 表示シリーズ ========== -->
+      <div class="filter-group" id="filterGroupSeries">
+        <div class="filter-group-title" onclick="toggleFilterGroup('filterGroupSeries')" style="color:#68efbd">表示シリーズ</div>
         <div class="filter-group-body">
-          <div class="rarity-filter" id="rarityFilter">
+          <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.4rem">
+            <label class="ocr-toggle" style="margin:0"><input type="checkbox" id="filterAllSeries" onchange="SearchPanel.toggleAllSeries()"><span class="ocr-toggle-text" style="font-size:0.8rem;font-weight:bold">すべて</span></label>
+            <label class="ocr-toggle bm-switch" style="margin:0;border:2px solid #ffe082;border-radius:6px;padding:0.2rem 0.5rem;background:rgba(255,224,130,0.08);display:inline-flex"><input type="checkbox" id="filterBookmarkCards" onchange="SearchPanel.applyFilters()" style="accent-color:#ffe082"><span class="ocr-toggle-text" style="color:#ffe082;font-weight:bold;font-size:0.75rem">&#9733; BM</span></label>
+          </div>
+          <div class="series-filter" id="seriesFilter"></div>
+        </div>
+      </div>
+
+      <!-- ========== フィルタリング条件 ========== -->
+      <div class="filter-group" id="filterGroupBasic">
+        <div class="filter-group-title" onclick="toggleFilterGroup('filterGroupBasic')">カテゴリ・レアリティ</div>
+        <div class="filter-group-body">
+          <div class="category-filter" id="categoryFilter"></div>
+          <div class="rarity-filter" id="rarityFilter" style="margin-top:0.3rem">
             <span class="rarity-label">レアリティ:</span>
             <button class="rarity-btn" data-rarity="M" onclick="SearchPanel.toggleRarity('M')">M</button>
             <button class="rarity-btn" data-rarity="C" onclick="SearchPanel.toggleRarity('C')">C</button>
@@ -1170,19 +1187,10 @@ select,input{font-family:inherit}
             <button class="rarity-btn" data-rarity="P" onclick="SearchPanel.toggleRarity('P')">P</button>
             <button class="rarity-btn" data-rarity="LE" onclick="SearchPanel.toggleRarity('LE')">LE</button>
           </div>
-          <div class="category-filter" id="categoryFilter"></div>
-          <div class="series-filter" id="seriesFilter"></div>
-          <div style="margin-top:0.4rem">
-            <label class="ocr-toggle bm-switch" style="margin:0;border:2px solid #ffe082;border-radius:6px;padding:0.25rem 0.6rem;background:rgba(255,224,130,0.08);display:inline-flex"><input type="checkbox" id="filterBookmarkCards" onchange="SearchPanel.applyFilters()" style="accent-color:#ffe082"><span class="ocr-toggle-text" style="color:#ffe082;font-weight:bold">&#9733; ブックマーク</span></label>
-          </div>
-          <select class="filter-select" id="filterIllustrator" onchange="SearchPanel.applyFilters()" style="width:100%;margin-top:0.3rem">
-            <option value="">イラストレーター</option>
-          </select>
         </div>
       </div>
 
-      <!-- コスト・ステータス -->
-      <div class="filter-group" id="filterGroupStats">
+      <div class="filter-group collapsed" id="filterGroupStats">
         <div class="filter-group-title" onclick="toggleFilterGroup('filterGroupStats')">コスト・ステータス</div>
         <div class="filter-group-body">
           <div class="range-filter">
@@ -1216,7 +1224,6 @@ select,input{font-family:inherit}
         </div>
       </div>
 
-      <!-- 地形・属性 -->
       <div class="filter-group collapsed" id="filterGroupTerrain">
         <div class="filter-group-title" onclick="toggleFilterGroup('filterGroupTerrain')">地形・属性</div>
         <div class="filter-group-body">
@@ -1241,13 +1248,12 @@ select,input{font-family:inherit}
         </div>
       </div>
 
-      <!-- EB -->
-      <div class="filter-group collapsed" id="filterGroupEb">
-        <div class="filter-group-title" onclick="toggleFilterGroup('filterGroupEb')" style="color:#ff9800">EB</div>
+      <!-- EB (MS) -->
+      <div class="filter-group collapsed" data-for="MS" id="filterGroupEbMs">
+        <div class="filter-group-title" onclick="toggleFilterGroup('filterGroupEbMs')" style="color:#ff9800">EB (MS)</div>
         <div class="filter-group-body">
           <div class="toggle-filter" id="ebCategoryBtns">
-            <button class="tbtn" data-key="eb_sp" data-for="MS" onclick="SearchPanel.toggle('ebCat',this)">EB SP</button>
-            <button class="tbtn" data-key="eb_skill" data-for="PL" onclick="SearchPanel.toggle('ebCat',this)">EBスキル</button>
+            <button class="tbtn" data-key="eb_sp" onclick="SearchPanel.toggle('ebCat',this)">EB SP</button>
             <button class="tbtn" data-key="eb_link" onclick="SearchPanel.toggle('ebCat',this)">EBリンク</button>
           </div>
           <div class="toggle-filter" id="ebLevelBtns">
@@ -1256,7 +1262,7 @@ select,input{font-family:inherit}
             <button class="tbtn" data-key="2" onclick="SearchPanel.toggle('ebLv',this)">2</button>
             <button class="tbtn" data-key="3" onclick="SearchPanel.toggle('ebLv',this)">3</button>
           </div>
-          <div class="toggle-filter" data-for="MS" id="ebspEffectBtns">
+          <div class="toggle-filter" id="ebspEffectBtns">
             <span class="toggle-filter-label">EBSP効果</span>
             <button class="tbtn" data-key="変身" onclick="SearchPanel.toggle('ebspEff',this)">変身</button>
             <button class="tbtn" data-key="スタン" onclick="SearchPanel.toggle('ebspEff',this)">スタン</button>
@@ -1268,31 +1274,38 @@ select,input{font-family:inherit}
             <button class="tbtn" data-key="HP回復" onclick="SearchPanel.toggle('ebspEff',this)">HP回復</button>
             <button class="tbtn" data-key="防衛無視" onclick="SearchPanel.toggle('ebspEff',this)">防衛無視</button>
           </div>
-          <div class="toggle-filter" data-for="PL" id="ebCondBtns">
+          <label class="ocr-toggle" style="margin-left:0" id="filterEbLabel"><input type="checkbox" id="filterEb" onchange="SearchPanel.applyFilters()"><span class="ocr-toggle-text" style="color:#ff9800">EBSP詳細表示</span></label>
+        </div>
+      </div>
+
+      <!-- EB (PL) -->
+      <div class="filter-group collapsed" data-for="PL" id="filterGroupEbPl">
+        <div class="filter-group-title" onclick="toggleFilterGroup('filterGroupEbPl')" style="color:#ff9800">EB (PL)</div>
+        <div class="filter-group-body">
+          <div class="toggle-filter" id="ebCategoryBtnsPl">
+            <button class="tbtn" data-key="eb_skill" onclick="SearchPanel.toggle('ebCat',this)">EBスキル</button>
+            <button class="tbtn" data-key="eb_link" onclick="SearchPanel.toggle('ebCat',this)">EBリンク</button>
+          </div>
+          <div class="toggle-filter" id="ebCondBtns">
             <span class="toggle-filter-label">EB発動条件</span>
             <button class="tbtn" data-key="上昇時" onclick="SearchPanel.toggle('ebCond',this)">Lv上昇時</button>
             <button class="tbtn" data-key="上昇毎" onclick="SearchPanel.toggle('ebCond',this)">上昇毎</button>
             <button class="tbtn" data-key="以上" onclick="SearchPanel.toggle('ebCond',this)">Lv以上</button>
             <button class="tbtn" data-key="Lv到達時" onclick="SearchPanel.toggle('ebCond',this)">Lv到達時</button>
           </div>
-          <div style="display:flex;flex-wrap:wrap;gap:0.3rem">
-            <label class="ocr-toggle" style="margin-left:0" data-for="MS" id="filterEbLabel"><input type="checkbox" id="filterEb" onchange="SearchPanel.applyFilters()"><span class="ocr-toggle-text" style="color:#ff9800">EBSP詳細表示</span></label>
-            <label class="ocr-toggle" style="margin-left:0" data-for="PL" id="filterEbSkillLabel"><input type="checkbox" id="filterEbSkill" onchange="SearchPanel.applyFilters()"><span class="ocr-toggle-text" style="color:#ff9800">EBスキル表示</span></label>
-          </div>
+          <label class="ocr-toggle" style="margin-left:0" id="filterEbSkillLabel"><input type="checkbox" id="filterEbSkill" onchange="SearchPanel.applyFilters()"><span class="ocr-toggle-text" style="color:#ff9800">EBスキル表示</span></label>
         </div>
       </div>
 
-      <!-- SQ -->
-      <div class="filter-group collapsed" id="filterGroupSq">
-        <div class="filter-group-title" onclick="toggleFilterGroup('filterGroupSq')" style="color:#ff69b4">SQ</div>
+      <!-- SQ (MS) -->
+      <div class="filter-group collapsed" data-for="MS" id="filterGroupSqMs">
+        <div class="filter-group-title" onclick="toggleFilterGroup('filterGroupSqMs')" style="color:#ff69b4">SQ (MS)</div>
         <div class="filter-group-body">
           <div class="toggle-filter" id="sqCategoryBtns">
-            <button class="tbtn" data-key="sqsp" data-for="MS" onclick="SearchPanel.toggle('sqCat',this)">SQSP</button>
-            <button class="tbtn" data-key="sq_skill" data-for="PL" onclick="SearchPanel.toggle('sqCat',this)">SQスキル</button>
+            <button class="tbtn" data-key="sqsp" onclick="SearchPanel.toggle('sqCat',this)">SQSP</button>
             <button class="tbtn" data-key="sq_link" onclick="SearchPanel.toggle('sqCat',this)">SQリンク</button>
-            <button class="tbtn" data-key="sq_rush" data-for="PL" onclick="SearchPanel.toggle('sqCat',this)">SQラッシュ</button>
           </div>
-          <div class="toggle-filter" data-for="MS" id="sqspEffectBtns">
+          <div class="toggle-filter" id="sqspEffectBtns">
             <span class="toggle-filter-label">SQSP効果</span>
             <button class="tbtn" data-key="変身" onclick="SearchPanel.toggle('sqspEff',this)">変身</button>
             <button class="tbtn" data-key="スタン" onclick="SearchPanel.toggle('sqspEff',this)">スタン</button>
@@ -1305,13 +1318,26 @@ select,input{font-family:inherit}
             <button class="tbtn" data-key="防衛無視" onclick="SearchPanel.toggle('sqspEff',this)">防衛無視</button>
             <button class="tbtn" data-key="支援攻撃" onclick="SearchPanel.toggle('sqspEff',this)">支援攻撃</button>
           </div>
-          <div class="toggle-filter" data-for="PL" id="sqGaugeBtns">
+          <label class="ocr-toggle" style="margin-left:0" id="filterSqspLabel"><input type="checkbox" id="filterSqsp" onchange="SearchPanel.applyFilters()"><span class="ocr-toggle-text" style="color:#ff69b4">SQSP詳細表示</span></label>
+        </div>
+      </div>
+
+      <!-- SQ (PL) -->
+      <div class="filter-group collapsed" data-for="PL" id="filterGroupSqPl">
+        <div class="filter-group-title" onclick="toggleFilterGroup('filterGroupSqPl')" style="color:#ff69b4">SQ (PL)</div>
+        <div class="filter-group-body">
+          <div class="toggle-filter" id="sqCategoryBtnsPl">
+            <button class="tbtn" data-key="sq_skill" onclick="SearchPanel.toggle('sqCat',this)">SQスキル</button>
+            <button class="tbtn" data-key="sq_link" onclick="SearchPanel.toggle('sqCat',this)">SQリンク</button>
+            <button class="tbtn" data-key="sq_rush" onclick="SearchPanel.toggle('sqCat',this)">SQラッシュ</button>
+          </div>
+          <div class="toggle-filter" id="sqGaugeBtns">
             <span class="toggle-filter-label">SQゲージ</span>
             <button class="tbtn" data-key="大" onclick="SearchPanel.toggle('sqGauge',this)">大</button>
             <button class="tbtn" data-key="中" onclick="SearchPanel.toggle('sqGauge',this)">中</button>
             <button class="tbtn" data-key="小" onclick="SearchPanel.toggle('sqGauge',this)">小</button>
           </div>
-          <div class="toggle-filter" data-for="PL" id="sqTriggerBtns">
+          <div class="toggle-filter" id="sqTriggerBtns">
             <span class="toggle-filter-label">SQ発動条件</span>
             <button class="tbtn" data-key="ロックオン時" onclick="SearchPanel.toggle('sqTrig',this)">ロックオン</button>
             <button class="tbtn" data-key="戦艦/拠点ロックオン時" onclick="SearchPanel.toggle('sqTrig',this)">戦艦/拠点</button>
@@ -1320,7 +1346,7 @@ select,input{font-family:inherit}
             <button class="tbtn" data-key="MSアビリティ発動時" onclick="SearchPanel.toggle('sqTrig',this)">MSアビリティ</button>
             <button class="tbtn" data-key="出撃時" onclick="SearchPanel.toggle('sqTrig',this)">出撃</button>
           </div>
-          <div class="toggle-filter" data-for="PL" id="sqEffectBtns">
+          <div class="toggle-filter" id="sqEffectBtns">
             <span class="toggle-filter-label">SQスキル効果</span>
             <button class="tbtn" data-key="機動力UP" onclick="SearchPanel.toggle('sqEff',this)">機動力</button>
             <button class="tbtn" data-key="遠距離攻撃力UP" onclick="SearchPanel.toggle('sqEff',this)">遠距離</button>
@@ -1330,14 +1356,10 @@ select,input{font-family:inherit}
             <button class="tbtn" data-key="弱体無効" onclick="SearchPanel.toggle('sqEff',this)">弱体無効</button>
             <button class="tbtn" data-key="全味方バフ" onclick="SearchPanel.toggle('sqEff',this)">全味方</button>
           </div>
-          <div style="display:flex;flex-wrap:wrap;gap:0.3rem">
-            <label class="ocr-toggle" style="margin-left:0" data-for="MS" id="filterSqspLabel"><input type="checkbox" id="filterSqsp" onchange="SearchPanel.applyFilters()"><span class="ocr-toggle-text" style="color:#ff69b4">SQSP詳細表示</span></label>
-            <label class="ocr-toggle" style="margin-left:0" data-for="PL" id="filterSqSkillLabel"><input type="checkbox" id="filterSqSkill" onchange="SearchPanel.applyFilters()"><span class="ocr-toggle-text" style="color:#ff69b4">SQスキル表示</span></label>
-          </div>
+          <label class="ocr-toggle" style="margin-left:0" id="filterSqSkillLabel"><input type="checkbox" id="filterSqSkill" onchange="SearchPanel.applyFilters()"><span class="ocr-toggle-text" style="color:#ff69b4">SQスキル表示</span></label>
         </div>
       </div>
 
-      <!-- SP -->
       <div class="filter-group collapsed" data-for="MS" id="filterGroupSp">
         <div class="filter-group-title" onclick="toggleFilterGroup('filterGroupSp')" style="color:#4fc3f7">SP</div>
         <div class="filter-group-body">
@@ -1357,7 +1379,6 @@ select,input{font-family:inherit}
         </div>
       </div>
 
-      <!-- PLスキル -->
       <div class="filter-group collapsed" data-for="PL" id="filterGroupPlSkill">
         <div class="filter-group-title" onclick="toggleFilterGroup('filterGroupPlSkill')">PLスキル</div>
         <div class="filter-group-body">
@@ -1380,6 +1401,15 @@ select,input{font-family:inherit}
             <button class="tbtn" data-key="HP条件" onclick="SearchPanel.toggle('skEff',this)">HP条件</button>
             <button class="tbtn" data-key="弱体無効" onclick="SearchPanel.toggle('skEff',this)">弱体無効</button>
           </div>
+        </div>
+      </div>
+
+      <div class="filter-group collapsed" id="filterGroupMisc">
+        <div class="filter-group-title" onclick="toggleFilterGroup('filterGroupMisc')">その他</div>
+        <div class="filter-group-body">
+          <select class="filter-select" id="filterIllustrator" onchange="SearchPanel.applyFilters()" style="width:100%">
+            <option value="">イラストレーター</option>
+          </select>
         </div>
       </div>
 
@@ -3665,7 +3695,7 @@ const CardBookmark = {
 const SearchPanel = {
   _lockedType: null,
   _currentRarity: new Set(),
-  _currentCategory: '',
+  _currentCategory: new Set(),
   _selectedSeries: new Set(),
   _filteredCards: [],
   _page: 0,
@@ -3719,8 +3749,7 @@ const SearchPanel = {
       searchInput: document.getElementById('searchInput').value,
       searchTextInput: document.getElementById('searchTextInput').value,
       rarity: [...this._currentRarity],
-      category: this._currentCategory,
-      series: [...this._selectedSeries],
+      category: [...this._currentCategory],
       illustrator: document.getElementById('filterIllustrator').value,
       costMin: document.getElementById('filterCostMin').value,
       costMax: document.getElementById('filterCostMax').value,
@@ -3754,15 +3783,11 @@ const SearchPanel = {
         b.classList.toggle('active', this._currentRarity.has(b.dataset.rarity));
       });
       // Category
-      this._currentCategory = s.category || '';
+      this._currentCategory = new Set(s.category || []);
       document.querySelectorAll('.cat-btn').forEach(b => {
-        b.classList.toggle('active', b.dataset.cat === this._currentCategory);
+        b.classList.toggle('active', this._currentCategory.has(b.dataset.cat));
       });
-      // Series
-      this._selectedSeries = new Set(s.series || []);
-      document.querySelectorAll('.series-btn').forEach(b => {
-        b.classList.toggle('active', this._selectedSeries.has(b.dataset.series));
-      });
+      // Series — 復元しない（毎回シリーズ選択から始める）
       // Selects
       document.getElementById('filterIllustrator').value = s.illustrator || '';
       document.getElementById('filterSkillName').value = s.skillName || '';
@@ -3816,6 +3841,7 @@ const SearchPanel = {
   // _lockedType に応じてフィルタ要素の表示/非表示を切り替え
   _updateFilterVisibility() {
     const t = this._lockedType; // 'MS', 'PL', or null
+    this._updateCategoryButtons();
     const containerGroupMap = {
       'ebCategoryBtns': 'ebCat', 'ebLevelBtns': 'ebLv', 'ebCondBtns': 'ebCond', 'ebspEffectBtns': 'ebspEff',
       'sqCategoryBtns': 'sqCat', 'sqGaugeBtns': 'sqGauge', 'sqTriggerBtns': 'sqTrig',
@@ -3859,9 +3885,23 @@ const SearchPanel = {
     } else {
       this._selectedSeries.add(series);
     }
+    // 個別シリーズを選択したら「すべて」をOFF
+    if (this._selectedSeries.size > 0) {
+      document.getElementById('filterAllSeries').checked = false;
+    }
     document.querySelectorAll('.series-btn').forEach(b => {
       b.classList.toggle('active', this._selectedSeries.has(b.dataset.series));
     });
+    this.applyFilters();
+  },
+
+  toggleAllSeries() {
+    const checked = document.getElementById('filterAllSeries').checked;
+    if (checked) {
+      // 「すべて」ON → 個別シリーズ選択をクリア
+      this._selectedSeries.clear();
+      document.querySelectorAll('.series-btn').forEach(b => b.classList.remove('active'));
+    }
     this.applyFilters();
   },
 
@@ -3891,25 +3931,36 @@ const SearchPanel = {
   },
 
   setCategory(cat) {
-    if (this._currentCategory === cat) {
-      this._currentCategory = '';
+    if (this._currentCategory.has(cat)) {
+      this._currentCategory.delete(cat);
     } else {
-      this._currentCategory = cat;
+      this._currentCategory.add(cat);
     }
     document.querySelectorAll('.cat-btn').forEach(b => {
-      b.classList.toggle('active', b.dataset.cat === this._currentCategory);
+      b.classList.toggle('active', this._currentCategory.has(b.dataset.cat));
     });
     this.applyFilters();
   },
 
   _updateCategoryButtons() {
     const container = document.getElementById('categoryFilter');
-    const msCategories = ['機動', '近距離', '遠距離', '装甲', '汎用'];
+    const t = this._lockedType;
+    const msCategories = ['機動', '近距離', '遠距離'];
     const plCategories = ['殲滅', '制圧', '防衛'];
-    const allCats = [...msCategories, ...plCategories];
+    let cats;
+    if (t === 'MS') cats = msCategories;
+    else if (t === 'PL') cats = plCategories;
+    else cats = [...msCategories, ...plCategories];
 
-    container.innerHTML = allCats.map(c =>
-      `<button class="cat-btn${this._currentCategory === c ? ' active' : ''}" data-cat="${c}" onclick="SearchPanel.setCategory('${c}')">${c}</button>`
+    // タイプ切替時に不適切なカテゴリ選択をクリア
+    if (t) {
+      for (const c of [...this._currentCategory]) {
+        if (!cats.includes(c)) this._currentCategory.delete(c);
+      }
+    }
+
+    container.innerHTML = cats.map(c =>
+      `<button class="cat-btn${this._currentCategory.has(c) ? ' active' : ''}" data-cat="${c}" onclick="SearchPanel.setCategory('${c}')">${c}</button>`
     ).join('');
   },
 
@@ -3925,7 +3976,23 @@ const SearchPanel = {
       names.map(n => `<option value="${n}"${n === current ? ' selected' : ''}>${n}</option>`).join('');
   },
 
+  _hasActiveFilter() {
+    // シリーズ選択 or 全シリーズON が必須
+    const hasSeries = this._selectedSeries.size > 0 || document.getElementById('filterAllSeries').checked;
+    if (!hasSeries) return false;
+    return true;
+  },
+
   applyFilters() {
+    // フィルター未指定時は何も表示しない
+    if (!this._hasActiveFilter()) {
+      this._filteredCards = [];
+      this._page = 0;
+      this._renderGrid();
+      this._saveFilters();
+      return;
+    }
+
     let cards = AppState.cardIndex;
 
     // Type filter (スロット指定時のみタイプ絞込)
@@ -3933,15 +4000,15 @@ const SearchPanel = {
       cards = cards.filter(c => c.type === this._lockedType);
     }
     // Category
-    if (this._currentCategory) {
-      cards = cards.filter(c => c.category === this._currentCategory);
+    if (this._currentCategory.size > 0) {
+      cards = cards.filter(c => this._currentCategory.has(c.category));
     }
     // Rarity (multi-select)
     if (this._currentRarity.size > 0) {
       cards = cards.filter(c => this._currentRarity.has(c.rarity));
     }
-    // Series (multi-select)
-    if (this._selectedSeries.size > 0) {
+    // Series (multi-select) — 「すべて」ONの場合はスキップ
+    if (this._selectedSeries.size > 0 && !document.getElementById('filterAllSeries').checked) {
       cards = cards.filter(c => this._selectedSeries.has(c.series));
     }
     // Illustrator
@@ -4088,6 +4155,7 @@ const SearchPanel = {
     // Series toggle
     this._selectedSeries.clear();
     document.querySelectorAll('.series-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('filterAllSeries').checked = false;
     // Cost slider
     document.getElementById('filterCostMin').value = 0;
     document.getElementById('filterCostMax').value = 13;
@@ -4118,7 +4186,7 @@ const SearchPanel = {
     Object.values(this._t).forEach(s => s.clear());
     document.querySelectorAll('.tbtn').forEach(b => b.className = 'tbtn');
     this._currentRarity = new Set();
-    this._currentCategory = '';
+    this._currentCategory = new Set();
     document.querySelectorAll('.rarity-btn').forEach(b => b.classList.remove('active'));
     document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
     localStorage.removeItem('abds_search_filters');
@@ -4135,6 +4203,11 @@ const SearchPanel = {
     const showEbSkill = document.getElementById('filterEbSkill').checked;
 
     grid.innerHTML = '';
+    if (cards.length === 0 && !this._hasActiveFilter()) {
+      grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;color:#666;padding:2rem;font-size:0.9rem">シリーズを選択してください</div>';
+      document.getElementById('pageInfo').textContent = '-';
+      return;
+    }
     cards.forEach(card => {
       const el = document.createElement('div');
       const isEb = card.has_eb || card.has_eb_skill || card.has_eb_link;
@@ -4452,12 +4525,16 @@ async function showCardModal(number) {
   if (!detail) { Toast.show('カード情報を取得できません', 'error'); return; }
   const ocr = detail.ocr_data || {};
   const frontUrl = resolveImageUrl(null, number, 'front');
+  const backUrl = resolveImageUrl(null, number, 'back');
   const name = detail.name || number;
   const cardIdx = AppState.cardIndex.find(c => c.number === number);
   const rarity = cardIdx?.rarity || null;
 
   let html = `<div class="modal-card-header">
-    <img class="modal-card-image" src="${frontUrl}" alt="${escapeHtml(name)}">
+    <div class="modal-card-images">
+      <img class="modal-card-image" src="${frontUrl}" alt="${escapeHtml(name)}">
+      <img class="modal-card-image" src="${backUrl}" alt="${escapeHtml(name)} 裏面">
+    </div>
     <div class="modal-card-info">
       <div class="modal-card-number">${escapeHtml(number)}${rarity ? ` <span class="rarity-tag rarity-${escapeHtml(rarity)}">${escapeHtml(rarity)}</span>` : ''}</div>
       <div class="modal-card-name">${escapeHtml(name)}</div>
