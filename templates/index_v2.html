@@ -2358,7 +2358,11 @@ const ImageCache = {
             this._knownKeys.add(cursor.key);
             try {
               if (cursor.value) {
-                this._blobUrls[cursor.key] = URL.createObjectURL(cursor.value);
+                if (cursor.value instanceof Blob) {
+                  this._blobUrls[cursor.key] = URL.createObjectURL(cursor.value);
+                } else if (typeof cursor.value === 'string') {
+                  this._blobUrls[cursor.key] = cursor.value; // Stage2で保存されたURL
+                }
                 loaded++;
               }
             } catch (_) { /* skip corrupted entry */ }
@@ -2418,9 +2422,13 @@ const ImageCache = {
     let loaded = 0;
     for (const key of keys) {
       try {
-        const blob = await this._get(key);
-        if (blob) {
-          this._blobUrls[key] = URL.createObjectURL(blob);
+        const val = await this._get(key);
+        if (val) {
+          if (val instanceof Blob) {
+            this._blobUrls[key] = URL.createObjectURL(val);
+          } else if (typeof val === 'string') {
+            this._blobUrls[key] = val;
+          }
           loaded++;
         } else {
           this._knownKeys.delete(key);
@@ -2520,7 +2528,9 @@ const ImageCache = {
               img.onerror = reject;
               img.src = url;
             });
-            this._blobUrls[key] = url; // ブラウザキャッシュから配信される
+            await this._put(key, url); // URL文字列をIndexedDBに保存
+            this._knownKeys.add(key);
+            this._blobUrls[key] = url;
           } catch (e2) { failed++; }
         }
         done++;
