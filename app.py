@@ -1,5 +1,4 @@
 from flask import Flask, render_template, request, jsonify, send_from_directory, redirect, Response
-from bs4 import BeautifulSoup
 import os
 import re
 import json
@@ -1331,10 +1330,6 @@ def index_v2():
 @app.route('/m')
 def mobile_v2():
     return render_template('mobile_v2_portrait.html')
-
-@app.route('/mobile/landscape')
-def mobile_landscape():
-    return render_template('mobile_v2_landscape.html')
 
 @app.route('/mobile/portrait')
 def mobile_portrait():
