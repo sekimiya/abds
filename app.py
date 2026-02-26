@@ -39,6 +39,7 @@ import db
 _safe_int = safe_int
 
 app = Flask(__name__)
+app.config['TEMPLATES_AUTO_RELOAD'] = True
 
 # --- セキュリティ設定 ---
 app.secret_key = os.environ.get('SECRET_KEY') or secrets.token_hex(32)

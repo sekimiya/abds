@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls:*)",
+      "Bash(wc:*)",
+      "Bash(python:*)",
+      "Bash(cd:*)",
+      "Bash(cd /c/Users/sekimiya/workspace/abds && source .venv/Scripts/activate && pip install -r requirements.txt 2>&1)",
+      "Bash(cd /c/Users/sekimiya/workspace/abds && source .venv/Scripts/activate && python -m pip install --upgrade pip 2>&1)",
+      "Bash(true:*)",
+      "Bash(python3:*)",
+      "Bash(head:*)",
+      "Bash(node:*)",
+      "WebSearch",
+      "Bash(grep python:*)",
+      "Bash(taskkill:*)",
+      "Bash(/c/Users/sekimiya/AppData/Local/Programs/Python/Python310/python.exe:*)",
+      "Bash(claude:*)",
+      "Bash(PYTHONIOENCODING=utf-8 /c/Users/sekimiya/anaconda3/python.exe:*)",
+      "Bash(sed:*)"
+    ]
+  }
+}

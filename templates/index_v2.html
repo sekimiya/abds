@@ -243,26 +243,53 @@ select,input{font-family:inherit}
 .header-menu-row .header-btn{flex:1}
 .header-menu-divider{height:1px;background:#333;margin:0.2rem 0}
 .header-menu-label{color:#888;font-size:0.75rem}
-.header-btn.terrain-sel.active{background:#1e2924;border-color:#68efbd;color:#68efbd}
-.cache-info-row{display:flex;align-items:center;gap:0.4rem;font-size:0.75rem;color:#aaa}
-.cache-info-row .cache-count{flex:1}
+/* --- Right menu: cache section (warning red theme) --- */
+.cache-menu-section{
+  background:linear-gradient(135deg,rgba(255,60,60,0.08),rgba(255,100,60,0.04));
+  border:1px solid rgba(255,80,80,0.3);border-radius:10px;
+  padding:0.7rem 0.8rem;display:flex;flex-direction:column;gap:0.5rem;
+}
+.cache-menu-header{display:flex;align-items:center;gap:0.4rem}
+.cache-menu-icon{font-size:1.1rem;color:#ff6b6b;filter:drop-shadow(0 0 4px rgba(255,107,107,0.4))}
+.cache-menu-title{
+  font-size:0.85rem;font-weight:700;letter-spacing:0.5px;
+  color:#ff8a80;text-transform:uppercase;
+}
+.cache-menu-count{
+  font-family:'Courier New',monospace;font-size:1rem;font-weight:bold;
+  color:#ffab91;letter-spacing:0.3px;
+}
+.cache-menu-btn{
+  padding:0.55rem 0;border-radius:8px;font-size:0.9rem;font-weight:bold;
+  cursor:pointer;transition:all 0.2s;text-align:center;
+  background:linear-gradient(135deg,#3a1a1a,#2a1010);
+  border:1px solid #ff5252;color:#ff8a80;
+}
+.cache-menu-btn:hover{
+  background:linear-gradient(135deg,#4a2020,#3a1515);
+  border-color:#ff6b6b;color:#ffab91;
+  box-shadow:0 0 12px rgba(255,82,82,0.3);
+}
+/* --- Cache modal (red/warning theme) --- */
 .cache-modal-body{text-align:center}
-.cache-modal-body h3{color:#ffe082;margin:0 0 1rem}
+.cache-modal-body h3{
+  color:#ff8a80;margin:0 0 1rem;font-size:1.2rem;letter-spacing:1px;
+}
 .cache-modal-stats{display:flex;justify-content:center;gap:1.5rem;margin:1rem 0;font-size:0.9rem;color:#ccc}
 .cache-modal-stats span{display:flex;flex-direction:column;align-items:center;gap:0.2rem}
-.cache-modal-stats .stat-value{font-size:1.4rem;font-weight:bold;color:#68efbd}
+.cache-modal-stats .stat-value{font-size:1.4rem;font-weight:bold;color:#ff8a80}
 .cache-modal-progress{width:100%;height:10px;background:#222;border-radius:5px;overflow:hidden;margin:1rem 0}
-.cache-modal-progress-bar{height:100%;width:0%;background:linear-gradient(90deg,#68efbd,#4ecdc4);border-radius:5px;transition:width 0.3s ease}
+.cache-modal-progress-bar{height:100%;width:0%;background:linear-gradient(90deg,#ff5252,#ff8a65);border-radius:5px;transition:width 0.3s ease}
 .cache-modal-pct{font-size:1.1rem;color:#fff;margin:0.5rem 0;font-weight:bold}
 .cache-modal-detail{font-size:0.75rem;color:#888;margin:0.3rem 0}
-.cache-modal-warn{background:#2a2000;border:1px solid #554400;border-radius:8px;padding:0.7rem;margin:1rem 0;font-size:0.8rem;color:#ffcc00;text-align:left}
+.cache-modal-warn{background:#2a1010;border:1px solid #ff5252;border-radius:8px;padding:0.7rem;margin:1rem 0;font-size:0.8rem;color:#ff8a80;text-align:left}
 .cache-modal-btns{display:flex;gap:0.5rem;justify-content:center;margin-top:1.2rem}
-.cache-modal-btns button{padding:0.5rem 1.2rem;border-radius:8px;border:1px solid #333;background:#222;color:#ccc;cursor:pointer;font-size:0.85rem}
+.cache-modal-btns button{padding:0.5rem 1.2rem;border-radius:8px;border:1px solid #444;background:#222;color:#ccc;cursor:pointer;font-size:0.85rem}
 .cache-modal-btns button:hover{background:#333}
-.cache-modal-btns button.primary{background:#1e3a2f;border-color:#68efbd;color:#68efbd}
-.cache-modal-btns button.primary:hover{background:#2a4f3f}
-.cache-modal-btns button.danger{border-color:#ff6b6b;color:#ff6b6b}
-.cache-modal-btns button.danger:hover{background:#3a1a1a}
+.cache-modal-btns button.primary{background:linear-gradient(135deg,#3a1a1a,#2a1010);border-color:#ff5252;color:#ff8a80}
+.cache-modal-btns button.primary:hover{background:#4a2020;box-shadow:0 0 10px rgba(255,82,82,0.25)}
+.cache-modal-btns button.danger{border-color:#ff1744;color:#ff1744}
+.cache-modal-btns button.danger:hover{background:#3a0a0a;box-shadow:0 0 10px rgba(255,23,68,0.3)}
 .cache-modal-btns button:disabled{opacity:0.4;cursor:not-allowed}
 /* Terrain badge highlight for active terrain */
 .terrain-badge.terrain-active{
@@ -1101,18 +1128,13 @@ select,input{font-family:inherit}
         <button class="rec-btn" id="recBtn" onclick="captureFullPage()" title="ページ全体を画像として保存"><span id="recBtnLabel">REC</span></button>
       </div>
       <div class="header-menu-divider"></div>
-      <span class="header-menu-label">地形設定</span>
-      <div class="header-menu-row">
-        <button class="header-btn terrain-sel" data-terrain="ground" onclick="setActiveTerrain('ground')">地上</button>
-        <button class="header-btn terrain-sel" data-terrain="space" onclick="setActiveTerrain('space')">宇宙</button>
-        <button class="header-btn terrain-sel" data-terrain="desert" onclick="setActiveTerrain('desert')">砂漠</button>
-        <button class="header-btn terrain-sel" data-terrain="water" onclick="setActiveTerrain('water')">水中</button>
-      </div>
-      <div class="header-menu-divider"></div>
-      <span class="header-menu-label">画像キャッシュ</span>
-      <div class="cache-info-row" id="cacheInfoRow">
-        <span class="cache-count" id="cacheCount">キャッシュ: 0枚</span>
-        <button class="header-btn" onclick="ImageCache.openModal()">管理</button>
+      <div class="cache-menu-section">
+        <div class="cache-menu-header">
+          <span class="cache-menu-icon">&#9888;</span>
+          <span class="cache-menu-title">画像キャッシュ</span>
+        </div>
+        <div class="cache-menu-count" id="cacheCount">キャッシュ: 0枚</div>
+        <button class="cache-menu-btn" onclick="ImageCache.openModal()">キャッシュ管理</button>
       </div>
     </div>
   </div>
@@ -1446,10 +1468,10 @@ select,input{font-family:inherit}
 
 <!-- Cache Management Modal -->
 <div class="modal-overlay" id="cacheModal">
-  <div class="modal-content" style="max-width:420px">
+  <div class="modal-content" style="max-width:420px;border-color:#ff5252">
     <button class="modal-close" onclick="ImageCache.closeModal()">&times;</button>
     <div class="cache-modal-body">
-      <h3>キャッシュ管理</h3>
+      <h3>&#9888; キャッシュ管理</h3>
       <div class="cache-modal-stats">
         <span><span class="stat-value" id="cmCacheCount">0</span>キャッシュ枚数</span>
         <span><span class="stat-value" id="cmTotalCount">0</span>全カード数(表裏)</span>
@@ -2400,7 +2422,7 @@ const ImageCache = {
   },
 
   _updateCount(count) {
-    const suffix = this._memoryOnly ? ' (メモリ)' : '';
+    const suffix = this._memoryOnly ? ' (ストレージ不可)' : '';
     document.getElementById('cacheCount').textContent = `キャッシュ: ${count}枚${suffix}`;
     document.getElementById('cmCacheCount').textContent = count;
   },
@@ -2455,7 +2477,10 @@ const ImageCache = {
     document.getElementById('cmPct').style.display = 'none';
     const detail = document.getElementById('cmDetail');
     if (this._memoryOnly) {
-      detail.textContent = '※ ブラウザストレージが使用不可のため、メモリモードで動作中（リロードでキャッシュは消えます）';
+      detail.textContent = '※ ブラウザストレージが使用不可のためキャッシュ作成できません。プライベートブラウズを解除するか、別のブラウザをお試しください';
+      document.getElementById('cmDlBtn').disabled = true;
+    } else if (!AppState.cardIndex || !AppState.cardIndex.length) {
+      detail.textContent = '※ カードデータが未読み込みです。「キャッシュ作成」を押すと自動で読み込みを試みます';
     } else {
       detail.textContent = '';
     }
@@ -2480,6 +2505,11 @@ const ImageCache = {
   },
   async startDownload() {
     if (this._downloading) return;
+    // IndexedDB が使えない場合はダウンロードを拒否（リロードの度に公式サイトへ再取得が走るのを防ぐ）
+    if (this._memoryOnly) {
+      Toast.show('ブラウザストレージが使用不可のためキャッシュ作成できません', 'error');
+      return;
+    }
     this._downloading = true;
     document.getElementById('cmDlBtn').disabled = true;
     document.getElementById('cmClearBtn').disabled = true;
@@ -2489,6 +2519,16 @@ const ImageCache = {
     document.getElementById('cmProgressBar').style.width = '0%';
     document.getElementById('cmPct').textContent = '0%';
     document.getElementById('cmDetail').textContent = 'キャッシュ作成中...';
+
+    // cardIndex が未読み込みの場合、再取得を試みる
+    if (!AppState.cardIndex || !AppState.cardIndex.length) {
+      document.getElementById('cmDetail').textContent = 'カードデータを読み込み中...';
+      try {
+        await CardService.fetchIndex();
+      } catch (e) {
+        console.error('startDownload: fetchIndex failed', e);
+      }
+    }
 
     const items = [];
     (AppState.cardIndex || []).forEach(c => {
@@ -2500,7 +2540,13 @@ const ImageCache = {
       items.push({ key: num, url: frontUrl });
       items.push({ key: `${num}_b`, url: backUrl });
     });
-    if (!items.length) { Toast.show('カードデータがありません', 'error'); this._downloading = false; return; }
+    if (!items.length) {
+      Toast.show('カードデータがありません。ページを再読み込みしてください', 'error');
+      this._downloading = false;
+      document.getElementById('cmDlBtn').disabled = false;
+      document.getElementById('cmClearBtn').disabled = false;
+      return;
+    }
 
     const toFetch = items.filter(it => !this._blobUrls[it.key]);
     let done = items.length - toFetch.length, failed = 0;
@@ -2612,7 +2658,9 @@ const UIRenderer = {
 
     // Attach click handlers to slots
     document.querySelectorAll('.card-slot').forEach(slot => {
-      slot.addEventListener('click', () => {
+      slot.addEventListener('click', (e) => {
+        // カード画像・×ボタン・詳細ボタンのタップではピッカーを開かない
+        if (e.target.closest('.card-slot-img, .card-slot-clear, .card-slot-detail')) return;
         const idx = parseInt(slot.dataset.slot);
         this.setActiveSlot(idx);
         const type = slot.dataset.type;
@@ -2726,11 +2774,9 @@ const UIRenderer = {
     const card = AppState.cardIndex.find(c => c.number === cardNumber);
     const detail = AppState.cardDetails[cardNumber];
     const frontUrl = resolveImageUrl(null, cardNumber, 'front');
-    const backUrl = resolveImageUrl(null, cardNumber, 'back');
 
     const hlClass = highlight ? ` ${highlight}` : '';
     slotEl.className = 'card-slot has-card' + (AppState.activeSlot === slotIdx ? ' active' : '') + hlClass;
-    let isFront = true;
     const badgeHtml = highlight === 'sqsp' ? '<div class="sqsp-badge">SQSP</div>'
                     : highlight === 'sq' ? '<div class="sq-badge">SQ</div>'
                     : highlight === 'eb' ? '<div class="eb-badge">EB</div>' : '';
@@ -2740,17 +2786,11 @@ const UIRenderer = {
       <button class="card-slot-clear" onclick="event.stopPropagation();DeckManager.clearCard(${slotIdx})">&times;</button>
       ${badgeHtml}
       <img class="card-slot-img" src="${frontUrl}" alt="${cardNumber}"
+           onclick="event.stopPropagation();showCardModal('${cardNumber}')"
            onerror="this.onerror=null;this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22160%22 height=%22240%22><rect fill=%22%23222%22 width=%22160%22 height=%22240%22/><text x=%2280%22 y=%22120%22 fill=%22%23666%22 text-anchor=%22middle%22>No Image</text></svg>'">
       <button class="card-slot-detail" onclick="event.stopPropagation();showCardModal('${cardNumber}')">詳細</button>
       ${cardName ? `<div class="card-slot-name">${escapeHtml(cardName)}</div>` : ''}
     `;
-
-    const img = slotEl.querySelector('.card-slot-img');
-    img.addEventListener('click', (e) => {
-      e.stopPropagation();
-      isFront = !isFront;
-      img.src = isFront ? frontUrl : backUrl;
-    });
   },
 
   _renderUnitStats(u, msOcr, plOcr) {
@@ -4712,11 +4752,26 @@ document.addEventListener('DOMContentLoaded', async () => {
   Shortcuts.init();
   UndoManager.snapshot();
 
-  // Load cached images from IndexedDB before rendering
-  await ImageCache.init();
+  // ImageCache.init() と CardService.fetchIndex() を並列実行
+  // iOS Safari で IndexedDB がハングする場合でも cardIndex の読み込みをブロックしない
+  const imageCacheReady = ImageCache.init()
+    .catch(e => console.warn('ImageCache init failed:', e));
 
+  let cardIndexOk = false;
   try {
-    await CardService.fetchIndex();
+    // fetchIndex は ImageCache と独立して実行
+    const [indexResult] = await Promise.all([
+      CardService.fetchIndex(),
+      // ImageCache に 5秒のタイムアウトを設定（ハング対策）
+      Promise.race([
+        imageCacheReady,
+        new Promise(resolve => setTimeout(() => {
+          console.warn('ImageCache: init timeout (5s), continuing without cache');
+          resolve();
+        }, 5000)),
+      ]),
+    ]);
+    cardIndexOk = true;
     SearchPanel.applyFilters();
     Toast.show(`${AppState.cardIndex.length} 枚のカードを読み込みました`, 'success', 2000);
   } catch (e) {
@@ -4796,6 +4851,13 @@ async function captureFullPage() {
   btn.classList.add('capturing');
   document.getElementById('recBtnLabel').textContent = '撮影中…';
 
+  // 撮影前に「表示を整理」を自動実行（未整理の場合のみ）
+  const wasAligned = UIRenderer._isAligned;
+  if (!wasAligned) {
+    UIRenderer.alignDisplay();
+    await new Promise(r => setTimeout(r, 100));
+  }
+
   try {
     // --- Step 1: Convert external images to data URLs via proxy ---
     const allImages = document.querySelectorAll('img');
@@ -4821,50 +4883,77 @@ async function captureFullPage() {
     const mainArea = document.getElementById('mainArea');
     const unitColumns = document.querySelectorAll('.unit-column');
 
+    const DESKTOP_W = 1200;
+    const appHeader = document.querySelector('.app-header');
+    const headerBtns = document.querySelectorAll('.header-btn');
+
     const orig = {
       bodyOverflow: body.style.overflow,
       bodyHeight: body.style.height,
+      bodyMinWidth: body.style.minWidth,
+      bodyWidth: body.style.width,
       appBodyOverflow: appBody.style.overflow,
       appBodyFlex: appBody.style.flex,
       appBodyHeight: appBody.style.height,
+      appBodyMinWidth: appBody.style.minWidth,
       mainAreaOverflowY: mainArea.style.overflowY,
       mainAreaOverflowX: mainArea.style.overflowX,
       mainAreaHeight: mainArea.style.height,
-      columns: []
+      mainAreaMinWidth: mainArea.style.minWidth,
+      headerPadding: appHeader ? appHeader.style.padding : '',
+      headerGap: appHeader ? appHeader.style.gap : '',
+      columns: [],
+      headerBtns: []
     };
     unitColumns.forEach(col => {
       orig.columns.push({
         overflowY: col.style.overflowY,
         overflowX: col.style.overflowX,
-        height: col.style.height
+        height: col.style.height,
+        minWidth: col.style.minWidth
       });
     });
+    headerBtns.forEach(btn => {
+      orig.headerBtns.push({ padding: btn.style.padding, fontSize: btn.style.fontSize });
+    });
 
+    // Force desktop-width layout (mobile でもデスクトップ版をキャプチャ)
+    // body.style.width だけではメディアクエリのビューポート判定は変わらないため、
+    // メディアクエリで変更される全プロパティをインラインで上書きする
+    body.style.minWidth = DESKTOP_W + 'px';
+    body.style.width = DESKTOP_W + 'px';
     body.style.overflow = 'visible';
     body.style.height = 'auto';
     appBody.style.overflow = 'visible';
     appBody.style.flex = 'none';
     appBody.style.height = 'auto';
+    appBody.style.minWidth = DESKTOP_W + 'px';
     mainArea.style.overflowY = 'visible';
     mainArea.style.overflowX = 'visible';
     mainArea.style.height = 'auto';
+    mainArea.style.minWidth = DESKTOP_W + 'px';
+    // メディアクエリ @media(max-width:768px) の上書き
+    if (appHeader) { appHeader.style.padding = '0 0.8rem'; appHeader.style.gap = '0.5rem'; }
+    headerBtns.forEach(btn => { btn.style.padding = '0.3rem 0.6rem'; btn.style.fontSize = '0.8rem'; });
     unitColumns.forEach(col => {
       col.style.overflowY = 'visible';
       col.style.overflowX = 'visible';
       col.style.height = 'auto';
+      col.style.minWidth = '200px'; // desktop default (mobile: 180px/160px)
     });
 
-    await new Promise(r => setTimeout(r, 100));
+    await new Promise(r => setTimeout(r, 200));
 
     // --- Step 3: Capture full page ---
+    const captureW = Math.max(body.scrollWidth, DESKTOP_W);
     const rawCanvas = await html2canvas(body, {
       backgroundColor: '#0f0f0f',
       scale: 2,
       useCORS: true,
       logging: false,
-      width: body.scrollWidth,
+      width: captureW,
       height: body.scrollHeight,
-      windowWidth: body.scrollWidth,
+      windowWidth: captureW,
       windowHeight: body.scrollHeight,
       scrollX: 0,
       scrollY: 0
@@ -4898,16 +4987,23 @@ async function captureFullPage() {
     // --- Step 5: Restore layout ---
     body.style.overflow = orig.bodyOverflow;
     body.style.height = orig.bodyHeight;
+    body.style.minWidth = orig.bodyMinWidth;
+    body.style.width = orig.bodyWidth;
     appBody.style.overflow = orig.appBodyOverflow;
     appBody.style.flex = orig.appBodyFlex;
     appBody.style.height = orig.appBodyHeight;
+    appBody.style.minWidth = orig.appBodyMinWidth;
     mainArea.style.overflowY = orig.mainAreaOverflowY;
     mainArea.style.overflowX = orig.mainAreaOverflowX;
     mainArea.style.height = orig.mainAreaHeight;
+    mainArea.style.minWidth = orig.mainAreaMinWidth;
+    if (appHeader) { appHeader.style.padding = orig.headerPadding; appHeader.style.gap = orig.headerGap; }
+    headerBtns.forEach((btn, i) => { btn.style.padding = orig.headerBtns[i].padding; btn.style.fontSize = orig.headerBtns[i].fontSize; });
     unitColumns.forEach((col, i) => {
       col.style.overflowY = orig.columns[i].overflowY;
       col.style.overflowX = orig.columns[i].overflowX;
       col.style.height = orig.columns[i].height;
+      col.style.minWidth = orig.columns[i].minWidth;
     });
 
     // --- Step 6: Restore original image sources ---
@@ -4928,6 +5024,10 @@ async function captureFullPage() {
     console.error('Capture failed:', e);
     Toast.show('画像の保存に失敗しました');
   } finally {
+    // 撮影のために自動整理した場合は元に戻す
+    if (!wasAligned && UIRenderer._isAligned) {
+      UIRenderer.alignDisplay();
+    }
     btn.classList.remove('capturing');
     document.getElementById('recBtnLabel').textContent = 'REC';
   }

@@ -370,6 +370,34 @@ a:hover { text-decoration: underline; }
 </div>
 
 <script>
+// --- Admin Token Management ---
+(function() {
+  const params = new URLSearchParams(window.location.search);
+  const urlToken = params.get('token');
+  if (urlToken) {
+    sessionStorage.setItem('admin_token', urlToken);
+    params.delete('token');
+    const clean = params.toString();
+    const newUrl = window.location.pathname + (clean ? '?' + clean : '');
+    window.history.replaceState({}, '', newUrl);
+  }
+})();
+
+function getAdminToken() {
+  return sessionStorage.getItem('admin_token') || '';
+}
+
+function adminHeaders(extra) {
+  const h = { 'Authorization': 'Bearer ' + getAdminToken() };
+  return Object.assign(h, extra || {});
+}
+
+function adminFetch(url, options) {
+  options = options || {};
+  options.headers = adminHeaders(options.headers);
+  return fetch(url, options);
+}
+
 let pollInterval = null;
 let seriesData = [];
 
@@ -391,7 +419,7 @@ function formatTime(seconds) {
 // --- Load Series Stats ---
 async function loadSeriesStats() {
   try {
-    const res = await fetch('/api/ocr-run/series-stats');
+    const res = await adminFetch('/api/ocr-run/series-stats');
     const data = await res.json();
     if (!data.success) return;
 
@@ -471,7 +499,7 @@ async function startOcr() {
   startBtn.disabled = true;
 
   try {
-    const res = await fetch('/api/ocr-run/start', {
+    const res = await adminFetch('/api/ocr-run/start', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ series, stage, force, limit }),
@@ -496,7 +524,7 @@ async function startOcr() {
 // --- Stop OCR ---
 async function stopOcr() {
   try {
-    const res = await fetch('/api/ocr-run/stop', { method: 'POST' });
+    const res = await adminFetch('/api/ocr-run/stop', { method: 'POST' });
     const data = await res.json();
     if (data.success) {
       document.getElementById('stopBtn').disabled = true;
@@ -516,7 +544,7 @@ function startPolling() {
 
 async function pollStatus() {
   try {
-    const res = await fetch('/api/ocr-run/status');
+    const res = await adminFetch('/api/ocr-run/status');
     const data = await res.json();
     if (!data.success) return;
 
@@ -579,7 +607,7 @@ async function pollStatus() {
 // --- Check if already running on page load ---
 async function checkRunning() {
   try {
-    const res = await fetch('/api/ocr-run/status');
+    const res = await adminFetch('/api/ocr-run/status');
     const data = await res.json();
     if (data.success && data.running) {
       document.getElementById('startBtn').disabled = true;

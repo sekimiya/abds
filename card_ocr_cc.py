@@ -59,9 +59,9 @@ OCR_RESULTS_DIR = Path("ocr_results_debug")
 IMAGES_DIR = Path("card_images_temp")
 PROGRESS_FILE = Path("ocr_cc_progress.json")
 
-DEFAULT_DELAY = 1.0          # claude CLI 呼び出し間隔（秒）
+DEFAULT_DELAY = 2.0          # claude CLI 呼び出し間隔（秒）
 DEFAULT_WORKERS = 2          # 並列ワーカー数
-MAX_RETRIES = 2              # リトライ回数
+MAX_RETRIES = 3              # リトライ回数
 SUBPROCESS_TIMEOUT = 300     # claude CLI のタイムアウト（秒）
 MIN_IMAGE_SIZE = 1000        # ダミー画像判定用の最小バイト数
 
@@ -466,29 +466,42 @@ def _run_claude_cli(
 ) -> Optional[str]:
     """
     claude CLI のパイプモード (-p) を呼び出す共通関数。
+    プロンプトは stdin 経由で渡す（Windows コマンドライン長・エンコーディング問題を回避）。
     戻り値: レスポンステキスト、失敗時は None
     """
+    # プロンプトは stdin 経由で渡す（-p フラグのみ、値なし）
     cmd = [
         "claude",
-        "-p", prompt,
+        "-p",
         "--output-format", "json",
-        "--allowedTools", allowed_tools,
-        "--no-session-persistence",
     ]
+    if allowed_tools:
+        cmd.extend(["--allowedTools", allowed_tools])
+    cmd.append("--no-session-persistence")
 
     if model:
         cmd.extend(["--model", model])
 
     env = {k: v for k, v in os.environ.items() if k != "CLAUDECODE"}
 
+    logger.debug(f"  CLI cmd: {' '.join(cmd[:6])}... (prompt {len(prompt)} chars)")
+
     try:
         result = subprocess.run(
             cmd,
+            input=prompt,
             capture_output=True,
             text=True,
             timeout=SUBPROCESS_TIMEOUT,
             cwd=str(Path.cwd()),
             env=env,
+            encoding="utf-8",
+        )
+
+        logger.debug(
+            f"  CLI exit={result.returncode}, "
+            f"stdout={len(result.stdout or '')}B, "
+            f"stderr={len(result.stderr or '')}B"
         )
 
         if result.returncode != 0:
@@ -497,15 +510,20 @@ def _run_claude_cli(
                 logger.error(f"  stderr: {result.stderr[:500]}")
             return None
 
-        stdout = result.stdout.strip()
-        if not stdout:
+        if not result.stdout:
             logger.error("  claude CLI: 空のレスポンス")
+            logger.error(f"  returncode={result.returncode}, stderr={result.stderr[:500] if result.stderr else '(なし)'}")
             return None
+        stdout = result.stdout.strip()
 
         try:
             cli_output = json.loads(stdout)
             if isinstance(cli_output, dict) and "result" in cli_output:
-                return cli_output["result"]
+                text = cli_output["result"]
+                if text is None:
+                    logger.error("  claude CLI: result フィールドが null")
+                    return None
+                return text
             return stdout
         except json.JSONDecodeError:
             return stdout

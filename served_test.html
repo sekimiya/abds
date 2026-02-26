@@ -1782,9 +1782,7 @@ const UIRenderer = {
           timer = setTimeout(() => {
             longPressed = true;
             UIRenderer.selectUnit(u);
-            const number = AppState.deck[slotIdx];
-            if (number) { showCardModal(number); }
-            else { openCardPicker(slotIdx, type); }
+            openCardPicker(slotIdx, type);
           }, LONG_PRESS_MS);
         }, { passive: true });
         el.addEventListener('touchend', (e) => {
@@ -1863,11 +1861,11 @@ const UIRenderer = {
       return;
     }
 
-    const isBack = el.dataset.showBack === '1';
-    const imgUrl = isBack ? resolveImageUrl(null, number, 'back') : resolveImageUrl(null, number, 'front');
+    el.dataset.showBack = '0';
+    const frontUrl = resolveImageUrl(null, number, 'front');
     let img = el.querySelector('img');
     if (!img) { img = document.createElement('img'); el.insertBefore(img, el.firstChild); }
-    img.src = imgUrl;
+    img.src = frontUrl;
     img.alt = number;
     img.onerror = function() { this.onerror = null; this.src = PLACEHOLDER_SVG; };
 
@@ -2634,10 +2632,8 @@ function openCardPicker(slotIdx, type) {
   SearchPanel._updateFilterVisibility();
   SearchPanel.applyFilters();
   document.getElementById('pickerOverlay').classList.add('open');
-  document.getElementById('filterSheet').classList.add('open');
 }
 function closeCardPicker() {
-  document.getElementById('filterSheet').classList.remove('open');
   document.getElementById('pickerOverlay').classList.remove('open');
   AppState.activeSlot = null;
   SearchPanel._lockedType = null;
