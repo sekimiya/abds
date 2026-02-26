@@ -1,0 +1,83 @@
+{
+  "card_number": "UT02-010",
+  "card_name": "フルアーマー・ユニコーンガンダム",
+  "series": "UNITRIBE SEASON:02",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT02-010.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT02-010_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "UT02-010",
+    "type": "MS",
+    "card_label": {
+      "class": "機動",
+      "cost_label": "コスト8"
+    },
+    "name": "フルアーマー・ユニコーンガンダム",
+    "model": "RX-0 FULL ARMOR UNICORN GUNDAM",
+    "cost": 8,
+    "category": "機動",
+    "affiliation": "ビスト財団",
+    "pilot": "バナージ・リンクス",
+    "stats": {
+      "height": "21.7m",
+      "weight": "45.1t",
+      "mobility": 280,
+      "ranged_attack": 600,
+      "melee_attack": 380,
+      "hp": 590
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "C",
+      "water": "B"
+    },
+    "weapon": {
+      "main": {
+        "name": "ビーム・ガトリングガン",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ビーム・サーベル",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "圧倒",
+      "activation": "任意発動",
+      "target": "単体(敵)",
+      "range": 3,
+      "cost": 3,
+      "description": "ロックオン中の敵が弱体化状態の時に発動可能となり、敵に単体攻撃でダメージを与え、その攻撃は必ずクリティカルになる。"
+    },
+    "link_ability": [
+      {
+        "name": "ガンダムUC",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "的確な一撃",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][遠距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ビーム・ガトリングガン斉射(変身)",
+      "target": "範囲(敵)",
+      "range": 3,
+      "sp_cost": 4,
+      "power": 4300,
+      "description": "デストロイモードに変身、扇状の範囲攻撃を行い、自身のHPを大回復する。能力が大きく上昇し、自身が撤退するまで効果は持続する。",
+      "united_sp": null
+    },
+    "rarity": "U",
+    "illustrator": "Chifuyu Yukishiro",
+    "raw": "機動 コスト8 MS\n\nRX-0 FULL ARMOR UNICORN GUNDAM\nフルアーマー・ユニコーンガンダム\n\n全高 21.7m\n本体重量 45.1t\n所属 ビスト財団\nパイロット バナージ・リンクス\n\n地上 A 宇宙 S 砂漠 C 水中 B\n\n機動力 280\n遠距離攻撃 600\n近距離攻撃 380\nHP 590\n\nWEAPON\nMAIN ビーム・ガトリングガン 射程 3 遠距離\nSUB ビーム・サーベル 射程 1 近距離\n\nLINK ABILITY\nガンダมUC デッキに3枚以上\n[機動力]小アップ\n\nMS ABILITY\n圧倒\n任意発動 単体(敵) 射程 3 コスト 3\nロックオン中の敵が弱体化状態の時に発動可能となり、敵に単体攻撃でダメージを与え、その攻撃は必ずクリティカルになる。\n\n的確な一撃 デッキに4枚以上\n[機動力][遠距離攻撃力]小アップ\n\nSPECIAL ATTACK UNITED SP\nビーム・ガトリングガン斉射(変身) ー\n連携 ー 連携 ー\n連携 ー 連携 ー\n範囲(敵) 射程 3 ー 射程 ー\nSPコスト 4 威力 4300 / ー\nデストロイモードに変身、扇状の範囲攻撃を行い、自身のHPを大回復する。能力が大きく上昇し、自身が撤退するまで効果は持続する。/ー\n\nIMPACT AREA\n[アイコン:扇状範囲・前方広域]\n\nillust Chifuyu Yukishiro\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nUT02-010 U"
+  },
+  "ocr_raw_file": "UNITRIBE_SEASON_02_UT02-010_フルアーマー・ユニコーンガンダム_ocr_raw.json",
+  "ocr_timestamp": "2026-02-26T17:39:59.360481",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

@@ -1,0 +1,83 @@
+{
+  "card_number": "UT02-011",
+  "card_name": "フルアーマー・ユニコーンガンダム(ユニコーンモード)",
+  "series": "UNITRIBE SEASON:02",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT02-011.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT02-011_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "UT02-011",
+    "type": "MS",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト2"
+    },
+    "name": "フルアーマー・ユニコーンガンダム(ユニコーンモード)",
+    "model": "RX-0 FULL ARMOR UNICORN GUNDAM",
+    "cost": 2,
+    "category": "近距離",
+    "affiliation": "ビスト財団",
+    "pilot": "バナージ・リンクス",
+    "stats": {
+      "height": "19.7m",
+      "weight": "45.1t",
+      "mobility": 190,
+      "ranged_attack": 30,
+      "melee_attack": 220,
+      "hp": 260
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "C",
+      "water": "B"
+    },
+    "weapon": {
+      "main": {
+        "name": "ビーム・サーベル",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "ビーム・ガトリングガン",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "強撃",
+      "activation": "任意発動",
+      "target": "単体(敵)",
+      "range": 1,
+      "cost": 3,
+      "description": "ロックオン中の敵に単体攻撃でダメージを与える。"
+    },
+    "link_ability": [
+      {
+        "name": "ガンダムUC",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "肉薄する戦い",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ビーム・サーベル強撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3200,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "R",
+    "illustrator": "kenko",
+    "raw": "近距離 コスト2 MS\n\nRX-0 FULL ARMOR UNICORN GUNDAM\nフルアーマー・ユニコーンガンダム(ユニコーンモード)\n\n全高 19.7m\n本体重量 45.1t\n所属 ビスト財団\nパイロット バナージ・リンクス\n\n地上 A 宇宙 S 砂漠 C 水中 B\n\n機動力 190\n遠距離攻撃 30\n近距離攻撃 220\nHP 260\n\nWEAPON\nMAIN ビーム・サーベル 射程 1 近距離\nSUB ビーム・ガトリングガン 射程 3 遠距離\n\nLINK ABILITY\nガンダมUC デッキに3枚以上\n[機動力]小アップ\n\n肉薄する戦い デッキに4枚以上\n[機動力][近距離攻撃力]小アップ\n\nMS ABILITY\n強撃\n任意発動 単体(敵) 射程 1 コスト 3\n\nロックオン中の敵に単体攻撃でダメージ\nを与える。\n\nSPECIAL ATTACK\nビーム・サーベル強撃\n\n連携 ー 連携 ー\n連携 ー 連携 ー\n単体(敵) 射程 2 ー 射程 ー\nSPコスト 2 威力 3200 / ー\n\n敵単体に格闘攻撃でダメージを与える。\n/ ー\n\nUNITED SP\nー\n\nIMPACT AREA\n[アイコン:緑丸 中央やや左]\n[アイコン:緑丸 中央やや右下]\n[アイコン:三角 下中央]\n\nillust kenko\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\nUT02-011 R"
+  },
+  "ocr_raw_file": "UNITRIBE_SEASON_02_UT02-011_フルアーマー・ユニコーンガンダム(ユニコーンモード)_ocr_raw.json",
+  "ocr_timestamp": "2026-02-26T17:34:42.474578",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

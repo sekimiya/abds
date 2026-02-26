@@ -10,7 +10,6 @@ import json
 import threading
 import time
 import logging
-from concurrent.futures import ThreadPoolExecutor, as_completed
 
 from dotenv import load_dotenv
 load_dotenv()
@@ -365,74 +364,60 @@ def _run_ocr_execution(series, stage, force, limit):
                 _ocr_run_status["log"].append("処理対象カードがありません。")
             return
 
-        OCR_PARALLEL_WORKERS = 1  # 並列実行はCLIのレート制限に当たるため1に
+        done_count = 0
+        fatal = False
+        for card in targets:
+            # 停止チェック
+            with _ocr_run_lock:
+                if _ocr_run_status["stop_requested"]:
+                    _ocr_run_status["log"].append("停止リクエストにより処理を中断しました。")
+                    break
 
-        def _ocr_worker(card):
             card_number = card["card_number"]
             card_name = card["card_name"]
             try:
                 ok = ocr_process_card(card, model=None, force=force, stage=stage)
+                error_msg = None
+                is_fatal = False
             except SystemExit:
-                return card_number, card_name, False, "claude CLIが見つかりません (SystemExit)", True
+                ok = False
+                error_msg = "claude CLIが見つかりません (SystemExit)"
+                is_fatal = True
             except Exception as e:
-                return card_number, card_name, False, str(e), False
-            return card_number, card_name, ok, None, False
+                ok = False
+                error_msg = str(e)
+                is_fatal = False
 
-        with _ocr_run_lock:
-            _ocr_run_status["log"].append(f"並列数: {OCR_PARALLEL_WORKERS}")
+            done_count += 1
+            with _ocr_run_lock:
+                _ocr_run_status["processed_count"] = done_count
+                _ocr_run_status["current_card"] = card_number
+                _ocr_run_status["current_card_name"] = card_name
+                if ok:
+                    _ocr_run_status["success_count"] += 1
+                else:
+                    _ocr_run_status["failed_count"] += 1
+                    if error_msg:
+                        _ocr_run_status["errors"].append(f"{card_number}: {error_msg}")
 
-        done_count = 0
-        fatal = False
-        with ThreadPoolExecutor(max_workers=OCR_PARALLEL_WORKERS) as executor:
-            futures = {}
-            for card in targets:
+                elapsed = time.time() - start_time
+                _ocr_run_status["elapsed_seconds"] = int(elapsed)
+                if done_count > 0 and done_count < total:
+                    eta = elapsed / done_count * (total - done_count)
+                    _ocr_run_status["eta_seconds"] = int(eta)
+                else:
+                    _ocr_run_status["eta_seconds"] = 0
+
+                status_str = "OK" if ok else "FAIL"
+                _ocr_run_status["log"].append(
+                    f"[{done_count}/{total}] {card_number} {card_name} {status_str}"
+                )
+
+            if is_fatal:
                 with _ocr_run_lock:
-                    if _ocr_run_status["stop_requested"]:
-                        break
-                futures[executor.submit(_ocr_worker, card)] = card
-
-            for future in as_completed(futures):
-                card_number, card_name, ok, error_msg, is_fatal = future.result()
-
-                done_count += 1
-                with _ocr_run_lock:
-                    _ocr_run_status["processed_count"] = done_count
-                    _ocr_run_status["current_card"] = card_number
-                    _ocr_run_status["current_card_name"] = card_name
-                    if ok:
-                        _ocr_run_status["success_count"] += 1
-                    else:
-                        _ocr_run_status["failed_count"] += 1
-                        if error_msg:
-                            _ocr_run_status["errors"].append(f"{card_number}: {error_msg}")
-
-                    elapsed = time.time() - start_time
-                    _ocr_run_status["elapsed_seconds"] = int(elapsed)
-                    if done_count > 0 and done_count < total:
-                        eta = elapsed / done_count * (total - done_count)
-                        _ocr_run_status["eta_seconds"] = int(eta)
-                    else:
-                        _ocr_run_status["eta_seconds"] = 0
-
-                    status_str = "OK" if ok else "FAIL"
-                    _ocr_run_status["log"].append(
-                        f"[{done_count}/{total}] {card_number} {card_name} {status_str}"
-                    )
-
-                if is_fatal:
-                    with _ocr_run_lock:
-                        _ocr_run_status["log"].append("致命的エラー: claude CLIが見つかりません。処理を中断します。")
-                    fatal = True
-                    break
-
-                with _ocr_run_lock:
-                    if _ocr_run_status["stop_requested"]:
-                        _ocr_run_status["log"].append("停止リクエストにより処理を中断しました。")
-                        break
-
-            if fatal or _ocr_run_status.get("stop_requested"):
-                for f in futures:
-                    f.cancel()
+                    _ocr_run_status["log"].append("致命的エラー: claude CLIが見つかりません。処理を中断します。")
+                fatal = True
+                break
 
         with _ocr_run_lock:
             _ocr_run_status["log"].append("キャッシュをクリア中...")

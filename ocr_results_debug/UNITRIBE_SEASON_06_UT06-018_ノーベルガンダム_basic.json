@@ -1,0 +1,83 @@
+{
+  "card_number": "UT06-018",
+  "card_name": "ノーベルガンダム",
+  "series": "UNITRIBE SEASON:06",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT06-018.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT06-018_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "UT06-018",
+    "type": "MS",
+    "card_label": {
+      "class": "機動",
+      "cost_label": "コスト5"
+    },
+    "name": "ノーベルガンダム",
+    "model": "GF13-050NSW NOBELL GUNDAM",
+    "cost": 5,
+    "category": "機動",
+    "affiliation": "ネオスウェーデン",
+    "pilot": "アレンビー・ビアズリー",
+    "stats": {
+      "height": "16.2m",
+      "weight": "7.0t",
+      "mobility": 210,
+      "ranged_attack": 100,
+      "melee_attack": 360,
+      "hp": 530
+    },
+    "terrain_compatibility": {
+      "ground": "S",
+      "space": "C",
+      "desert": "B",
+      "water": "B"
+    },
+    "weapon": {
+      "main": {
+        "name": "ビームリボン",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "ビームフープ",
+        "range": 2,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "装転[範囲]",
+      "activation": "任意発動",
+      "target": "自分",
+      "range": null,
+      "cost": 4,
+      "description": "通常攻撃が自身を中心とした範囲攻撃に変化する。この効果は自身が撤退するまで解除できない。"
+    },
+    "link_ability": [
+      {
+        "name": "Gガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[近距離攻撃力]小アップ"
+      },
+      {
+        "name": "肉薄する戦い",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "バーサーカー連撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 3,
+      "power": 4400,
+      "description": "敵単体に格闘攻撃でダメージを与え、自身に小ダメージ。",
+      "united_sp": null
+    },
+    "rarity": "M",
+    "illustrator": "SOEZY",
+    "raw": "機動　コスト5　MS\n\nGF13-050NSW NOBELL GUNDAM\nノーベルガンダム\n\n頭頂高　16.2m\n本体重量　7.0t\n所属　ネオスウェーデン\nパイロット　アレンビー・ビアズリー\n\n地上 S　宇宙 C　砂漠 B　水中 B\n\n機動力 210\n遠距離攻撃力 100\n近距離攻撃力 360\nHP 530\n\nWEAPON\nMAIN ビームリボン　射程 1　近距離\nSUB ビームフープ　射程 2　遠距離\n\nLINK ABILITY\nGガンダム　デッキに3枚以上\n[近距離攻撃力]小アップ\n\n肉薄する戦い　デッキに4枚以上\n[機動力][近距離攻撃力]小アップ\n\nMS ABILITY\n装転[範囲]\n任意発動　自分　射程 ー　コスト 4\n通常攻撃が自身を中心とした範囲攻撃に変化する。この効果は自身が撤退するまで解除できない。\n\nSPECIAL ATTACK　　UNITED SP\nバーサーカー連撃　ー\n連携 ー　連携 ー\n連携 ー　連携 ー\n単体(敵)　射程 2　ー　射程 ー\nSPコスト 3　威力 4400 / ー\n\n敵単体に格闘攻撃でダメージを与え、自身に小ダメージ。/ ー\n\nIMPACT AREA\n[アイコン:緑丸 中央やや左]\n[アイコン:黄三角 中央下]\n\nillust SOEZY\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\n\nUT06-018　M"
+  },
+  "ocr_raw_file": "UNITRIBE_SEASON_06_UT06-018_ノーベルガンダム_ocr_raw.json",
+  "ocr_timestamp": "2026-02-26T17:38:11.771521",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

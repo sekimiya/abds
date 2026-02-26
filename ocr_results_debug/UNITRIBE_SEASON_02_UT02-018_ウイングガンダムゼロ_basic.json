@@ -1,0 +1,91 @@
+{
+  "card_number": "UT02-018",
+  "card_name": "ウイングガンダムゼロ",
+  "series": "UNITRIBE SEASON:02",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT02-018.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT02-018_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "UT02-018",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト7"
+    },
+    "name": "ウイングガンダムゼロ",
+    "model": "XXXG-00W0 WING GUNDAM ZERO",
+    "cost": 7,
+    "category": "遠距離",
+    "affiliation": "ー",
+    "pilot": "ヒイロ・ユイ, ゼクス・マーキス",
+    "stats": {
+      "height": "16.7m",
+      "weight": "8.0t",
+      "mobility": 310,
+      "ranged_attack": 580,
+      "melee_attack": 280,
+      "hp": 530
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "C",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "ツインバスターライフル",
+        "range": 4,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ビームサーベル",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "奇襲",
+      "activation": "任意発動",
+      "target": "範囲(敵)",
+      "range": null,
+      "cost": 6,
+      "description": "指定した位置に範囲攻撃を行い、その地点に移動する。"
+    },
+    "link_ability": [
+      {
+        "name": "ガンダムW",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "システムが見せる未来",
+        "condition": "デッキに2枚以上",
+        "effect": "[HP][SP威力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ツインバスターライフル掃射",
+      "target": "範囲(敵)",
+      "range": 4,
+      "sp_cost": 2,
+      "power": 3200,
+      "description": "自身を中心とした中範囲に射撃攻撃でダメージを与える。",
+      "united_sp": {
+        "name": "死神とゼロの共闘",
+        "partner1": "ガンダムデスサイズヘル",
+        "partner2": null,
+        "target": "範囲(敵)",
+        "range": 4,
+        "power": 5000,
+        "description": "対象の敵を中心として格闘と範囲射撃でダメージを与える。出撃時1度のみ使用可能。"
+      }
+    },
+    "rarity": "U",
+    "illustrator": "Eske Yoshinob",
+    "raw": "MS\n\n遠距離　コスト7\n\nXXXG-00W0 WING GUNDAM ZERO\nウイングガンダムゼロ\n\n全高　16.7m\n本体重量　8.0t\n所属　ー\nパイロット　ヒイロ・ユイ, ゼクス・マーキス\n\n[アイコン:地上A] [アイコン:宇宙S] [アイコン:砂漠C] [アイコン:水中C]\n\n機動力 310\n遠距離攻撃 580\n近距離攻撃 280\nHP 530\n\nWEAPON\nMAIN ツインバスターライフル　射程 4　遠距離\nSUB ビームサーベル　射程 1　近距離\n\nLINK ABILITY\nガンダムW　デッキに3枚以上\n[機動力]小アップ\n\nMS ABILITY\n奇襲\n任意発動　範囲(敵)　射程 ー　コスト 6\n指定した位置に範囲攻撃を行い、その地点に移動する。\n\nシステムが見せる未来　デッキに2枚以上\n[HP][SP威力]小アップ\n\nSPECIAL ATTACK　　　　UNITED SP\nツインバスターライフル掃射　　死神とゼロの共闘\n連携 ガンダムデスサイズヘル　連携 ー\n連携 ー　　　　　　　　　　　連携 ー\n範囲(敵)　射程 4　　　　　　範囲(敵)　射程 4\nSPコスト 2　威力 3200 / 5000\n\n自身を中心とした中範囲に射撃攻撃でダメージを与える。／対象の敵を中心として格闘と範囲射撃でダメージを与える。出撃時1度のみ使用可能。\n\nIMPACT AREA\n[図: 自機中心の中範囲円形エリア（黄緑）/ 敵中心の範囲エリア（青）]\n\nillust Eske Yoshinob\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nUT02-018　U"
+  },
+  "ocr_raw_file": "UNITRIBE_SEASON_02_UT02-018_ウイングガンダムゼロ_ocr_raw.json",
+  "ocr_timestamp": "2026-02-26T17:42:39.383046",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

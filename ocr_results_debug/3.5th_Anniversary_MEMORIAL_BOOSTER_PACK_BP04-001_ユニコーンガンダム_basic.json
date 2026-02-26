@@ -1,0 +1,83 @@
+{
+  "card_number": "BP04-001",
+  "card_name": "ユニコーンガンダム",
+  "series": "3.5th Anniversary MEMORIAL BOOSTER PACK",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP04-001.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP04-001_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "BP04-001",
+    "type": "MS",
+    "card_label": {
+      "class": "機動",
+      "cost_label": "コスト2"
+    },
+    "name": "ユニコーンガンダム",
+    "model": "RX-0 UNICORN GUNDAM",
+    "cost": 2,
+    "category": "機動",
+    "affiliation": "ビスト財団",
+    "pilot": "バナージ・リンクス",
+    "stats": {
+      "height": "21.7m",
+      "weight": "23.7t",
+      "mobility": 240,
+      "ranged_attack": 220,
+      "melee_attack": 80,
+      "hp": 290
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "C",
+      "water": "B"
+    },
+    "weapon": {
+      "main": {
+        "name": "ビーム・マグナム",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ビーム・サーベル",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "補給[弱体化解除]",
+      "activation": "任意発動",
+      "target": "範囲(味方)",
+      "range": null,
+      "cost": 5,
+      "description": "自身を中心とした大範囲の味方ユニットのHPを中回復し、弱体化状態を無効化する。"
+    },
+    "link_ability": [
+      {
+        "name": "ガンダムUC",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "的確な一撃",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][遠距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ビーム・マグナム貫通射撃(変身)",
+      "target": "貫通(敵)",
+      "range": 3,
+      "sp_cost": 3,
+      "power": 3300,
+      "description": "デストロイモードに変身、射線上の敵にダメージを与える。変身後は能力が上昇。自身が撤退するまで効果は持続する。",
+      "united_sp": null
+    },
+    "rarity": "R",
+    "illustrator": "Naochika Morishita",
+    "raw": "機動 コスト2\n\nMS\n\nRX-0 UNICORN GUNDAM\nユニコーンガンダム\n\n頭頂高 21.7m\n本体重量 23.7t\n所属 ビスト財団\nパイロット バナージ・リンクス\n\n地上 A 宇宙 S 砂漠 C 水中 B\n\n機動力 240\n遠距離攻撃 220\n近距離攻撃 80\nHP 290\n\nWEAPON\n\nMAIN ビーム・マグナム 射程 3 遠距離\nSUB ビーム・サーベル 射程 1 近距離\n\nLINK ABILITY\n\nガンダムUC デッキに3枚以上\n[機動力]小アップ\n\n的確な一撃 デッキに4枚以上\n[機動力][遠距離攻撃力]小アップ\n\nMS ABILITY\n\n補給[弱体化解除]\n任意発動 範囲(味方) 射程 ー コスト 5\n\n自身を中心とした大範囲の味方ユニットのHPを中回復し、弱体化状態を無効化する。\n\nSPECIAL ATTACK UNITED SP\n\nビーム・マグナム貫通射撃(変身)\n連携 ー 連携 ー\n連携 ー 連携 ー\n貫通(敵) 射程 3 射程 ー\nSPコスト 3 威力 3300 / ー\n\nデストロイモードに変身、射線上の敵にダメージを与える。変身後は能力が上昇。自身が撤退するまで効果は持続する。\n/ ー\n\nIMPACT AREA\n\nillust Naochika Morishita\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n\n機動戦士ガンダム\nARSENAL BASE®\n\nBP04-001 R"
+  },
+  "ocr_raw_file": "3.5th_Anniversary_MEMORIAL_BOOSTER_PACK_BP04-001_ユニコーンガンダム_ocr_raw.json",
+  "ocr_timestamp": "2026-02-26T18:38:25.974268",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

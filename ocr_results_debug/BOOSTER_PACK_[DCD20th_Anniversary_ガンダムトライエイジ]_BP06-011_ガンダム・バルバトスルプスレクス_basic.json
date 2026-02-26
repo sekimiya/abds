@@ -1,0 +1,83 @@
+{
+  "card_number": "BP06-011",
+  "card_name": "ガンダム・バルバトスルプスレクス",
+  "series": "BOOSTER PACK [DCD20th Anniversary ガンダムトライエイジ]",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP06-011.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP06-011_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "BP06-011",
+    "type": "MS",
+    "card_label": {
+      "class": "機動",
+      "cost_label": "コスト5"
+    },
+    "name": "ガンダム・バルバトスルプスレクス",
+    "model": "ASW-G-08 GUNDAM BARBATOS LUPUS REX",
+    "cost": 5,
+    "category": "機動",
+    "affiliation": "鉄華団",
+    "pilot": "三日月・オーガス",
+    "stats": {
+      "height": "19.0m",
+      "weight": "32.1t",
+      "mobility": 250,
+      "ranged_attack": 50,
+      "melee_attack": 450,
+      "hp": 400
+    },
+    "terrain_compatibility": {
+      "ground": "S",
+      "space": "A",
+      "desert": "S",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "超大型メイス",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "200mm砲",
+        "range": 2,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "瞬撃",
+      "activation": "任意発動",
+      "target": "範囲(敵)",
+      "range": 5,
+      "cost": 4,
+      "description": "射程範囲内の指定した位置に小範囲攻撃を行い、範囲内の敵にダメージを与える。"
+    },
+    "link_ability": [
+      {
+        "name": "トライエイジ",
+        "condition": "デッキに2枚以上",
+        "effect": "[HP]小アップ"
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "テイルブレード連撃",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3300,
+      "description": "敵単体に格闘攻撃でダメージを与える。この攻撃で敵ユニットを撃破した場合、敵ユニットの修理時間を延長させる。戦術技威力は地形適性に応じて変化する。",
+      "united_sp": null
+    },
+    "rarity": "R",
+    "illustrator": "studio A-CAT",
+    "raw": "MS\n\n機動　コスト5\n\nASW-G-08 GUNDAM BARBATOS LUPUS REX\n\nガンダム・バルバトスルプスレクス\n\n頭頂高　19.0m\n本体重量　32.1t\n所属　鉄華団\nパイロット　三日月・オーガス\n\n地上 S　宇宙 A　砂漠 S　水中 C\n\n機動力 250\n遠距離攻撃 50\n近距離攻撃 450\nHP 400\n\nWEAPON\nMAIN　超大型メイス　射程 1　近距離\nSUB　200mm砲　射程 2　遠距離\n\nLINK ABILITY\nトライエイジ　デッキに2枚以上\n[HP]小アップ\n\nMS ABILITY\n瞬撃\n[任意発動]　範囲(敵)　射程 5　コスト 4\n\n射程範囲内の指定した位置に小範囲攻撃を行い、範囲内の敵にダメージを与える。\n\n多彩な戦術　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nSPECIAL ATTACK　UNITED SP\nテイルブレード連撃　ー\n連携 ー　連携 ー\n連携 ー　連携 ー\n単体(敵)　射程 3　ー　射程 ー\nSPコスト 2　威力 3300 / ー\n\n敵単体に格闘攻撃でダメージを与える。この攻撃で敵ユニットを撃破した場合、敵ユニットの修理時間を延長させる。戦術技威力は地形適性に応じて変化する。\n/ ー\n\nIMPACT AREA\n[アイコン:×マーク中央、●下方、▲最下部]\n\nillust studio A-CAT\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\n\nBP06-011　R"
+  },
+  "ocr_raw_file": "BOOSTER_PACK_[DCD20th_Anniversary_ガンダムトライエイジ]_BP06-011_ガンダム・バルバトスルプスレクス_ocr_raw.json",
+  "ocr_timestamp": "2026-02-26T17:50:55.383002",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

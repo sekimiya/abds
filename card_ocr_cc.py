@@ -40,7 +40,6 @@ import time
 import argparse
 import subprocess
 import logging
-from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime
 from pathlib import Path
 from typing import Dict, List, Optional
@@ -60,7 +59,6 @@ IMAGES_DIR = Path("card_images_temp")
 PROGRESS_FILE = Path("ocr_cc_progress.json")
 
 DEFAULT_DELAY = 2.0          # claude CLI 呼び出し間隔（秒）
-DEFAULT_WORKERS = 2          # 並列ワーカー数
 MAX_RETRIES = 3              # リトライ回数
 SUBPROCESS_TIMEOUT = 300     # claude CLI のタイムアウト（秒）
 MIN_IMAGE_SIZE = 1000        # ダミー画像判定用の最小バイト数
@@ -890,7 +888,6 @@ def restructure_all(
     limit: int = 0,
     delay: float = DEFAULT_DELAY,
     force: bool = True,
-    workers: int = DEFAULT_WORKERS,
 ):
     """既存の _ocr_raw.json をすべて読み込み、Stage 2 を再実行する"""
     existing_raw = get_existing_raw_numbers()
@@ -913,51 +910,41 @@ def restructure_all(
         return
 
     total = len(targets)
-    import threading
-    _counter_lock = threading.Lock()
-    counters = {"success": 0, "fail": 0, "done": 0}
+    success_count = 0
+    fail_count = 0
     start_time = time.time()
 
     print(f"\n{'='*60}")
-    print(f" 再構造化開始: {total} 件 (RAW → 構造化JSON) | workers={workers}")
+    print(f" 再構造化開始: {total} 件 (RAW → 構造化JSON)")
     print(f"{'='*60}\n")
 
-    def _restructure_one(card):
+    for i, card in enumerate(targets, 1):
         num = card["card_number"]
         raw_text = load_raw_text(card)
         if not raw_text:
             logger.error(f"  RAWテキスト読み込み失敗: {num}")
-            return False
+            fail_count += 1
+            continue
 
         ok = stage2_structure(card, raw_text, model=model, force=force)
+        if ok:
+            success_count += 1
+        else:
+            fail_count += 1
 
-        with _counter_lock:
-            counters["done"] += 1
-            done = counters["done"]
         elapsed = time.time() - start_time
-        eta = elapsed / done * (total - done) if done else 0
+        eta = elapsed / i * (total - i) if i else 0
         eta_str = time.strftime("%H:%M:%S", time.gmtime(eta))
-        logger.info(f"[{done}/{total}] {num} {card['card_name']}  {'OK' if ok else 'FAIL'}  (ETA: {eta_str})")
+        logger.info(f"[{i}/{total}] {num} {card['card_name']}  {'OK' if ok else 'FAIL'}  (ETA: {eta_str})")
 
         if delay > 0:
             time.sleep(delay)
-        return ok
-
-    with ThreadPoolExecutor(max_workers=workers) as executor:
-        futures = {executor.submit(_restructure_one, card): card for card in targets}
-        for future in as_completed(futures):
-            ok = future.result()
-            with _counter_lock:
-                if ok:
-                    counters["success"] += 1
-                else:
-                    counters["fail"] += 1
 
     total_time = time.time() - start_time
     print(f"\n{'='*60}")
     print(f" 再構造化完了")
     print(f"{'='*60}")
-    print(f"成功: {counters['success']}  失敗: {counters['fail']}  合計: {total}")
+    print(f"成功: {success_count}  失敗: {fail_count}  合計: {total}")
     print(f"所要時間: {time.strftime('%H:%M:%S', time.gmtime(total_time))}")
     print()
 
@@ -1062,8 +1049,6 @@ def main():
                         help="実行ステージ: raw=Stage1のみ, structure=Stage2のみ, both=両方 [default: both]")
     parser.add_argument("--restructure", action="store_true",
                         help="既存RAWデータから構造化を再実行（データ構造変更時に使用）")
-    parser.add_argument("--workers", type=int, default=DEFAULT_WORKERS,
-                        help=f"並列ワーカー数 [default: {DEFAULT_WORKERS}]")
     args = parser.parse_args()
 
     global logger
@@ -1087,7 +1072,6 @@ def main():
             limit=args.limit,
             delay=args.delay,
             force=True,  # restructure は常に上書き
-            workers=args.workers,
         )
         return
 
@@ -1170,62 +1154,50 @@ def main():
 
     model = args.model if args.model else None
 
-    import threading
-    _progress_lock = threading.Lock()
-
     stage_label = {"raw": "Stage1(RAW)", "structure": "Stage2(構造化)", "both": "Stage1+2(RAW→構造化)"}
-    workers = args.workers
     print(f"\n{'='*60}")
     print(f" OCR開始: {total} 件 | {stage_label[args.stage]}")
-    print(f" delay={args.delay}秒 | model={model or 'default'} | workers={workers}")
+    print(f" delay={args.delay}秒 | model={model or 'default'}")
     print(f"{'='*60}\n")
 
     start_time = time.time()
     done_count = 0
 
-    def _process_one(card):
-        nonlocal success_count, fail_count, skip_count, done_count
+    for card in targets:
         num = card["card_number"]
 
-        with _progress_lock:
-            if num in processed_set and not args.force:
-                logger.debug(f"進捗ファイルで処理済み: {num}")
-                skip_count += 1
-                return
+        if num in processed_set and not args.force:
+            logger.debug(f"進捗ファイルで処理済み: {num}")
+            skip_count += 1
+            continue
 
-        ok = process_card(card, model=model, force=args.force, stage=args.stage)
+        try:
+            ok = process_card(card, model=model, force=args.force, stage=args.stage)
+        except Exception as e:
+            logger.error(f"処理エラー: {num} - {e}")
+            ok = False
 
-        with _progress_lock:
-            done_count += 1
-            current_done = done_count
-            if ok:
-                success_count += 1
-                processed_set.add(num)
-                failed_set.discard(num)
-            else:
-                fail_count += 1
-                failed_set.add(num)
+        done_count += 1
+        if ok:
+            success_count += 1
+            processed_set.add(num)
+            failed_set.discard(num)
+        else:
+            fail_count += 1
+            failed_set.add(num)
 
-            elapsed = time.time() - start_time
-            eta = elapsed / current_done * (total - current_done) if current_done else 0
-            eta_str = time.strftime("%H:%M:%S", time.gmtime(eta))
-            logger.info(f"[{current_done}/{total}] {num} {card['card_name']}  {'OK' if ok else 'FAIL'}  (ETA: {eta_str})")
+        elapsed = time.time() - start_time
+        eta = elapsed / done_count * (total - done_count) if done_count else 0
+        eta_str = time.strftime("%H:%M:%S", time.gmtime(eta))
+        logger.info(f"[{done_count}/{total}] {num} {card['card_name']}  {'OK' if ok else 'FAIL'}  (ETA: {eta_str})")
 
-            if current_done % 10 == 0 or current_done == total:
-                progress["processed"] = sorted(processed_set)
-                progress["failed"] = sorted(failed_set)
-                save_progress(progress)
+        if done_count % 10 == 0 or done_count == total:
+            progress["processed"] = sorted(processed_set)
+            progress["failed"] = sorted(failed_set)
+            save_progress(progress)
 
         if args.delay > 0:
             time.sleep(args.delay)
-
-    with ThreadPoolExecutor(max_workers=workers) as executor:
-        futures = [executor.submit(_process_one, card) for card in targets]
-        for future in as_completed(futures):
-            try:
-                future.result()
-            except Exception as e:
-                logger.error(f"ワーカーエラー: {e}")
 
     # 最終保存
     progress["processed"] = sorted(processed_set)

@@ -1,0 +1,83 @@
+{
+  "card_number": "UT06-014",
+  "card_name": "ベルガ・ギロス(ザビーネ・シャル専用機)",
+  "series": "UNITRIBE SEASON:06",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT06-014.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT06-014_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "UT06-014",
+    "type": "MS",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト4"
+    },
+    "name": "ベルガ・ギロス(ザビーネ・シャル専用機)",
+    "model": "XM-05 BERGA-GIROS",
+    "cost": 4,
+    "category": "近距離",
+    "affiliation": "クロスボーン・バンガード",
+    "pilot": "ザビーネ・シャル",
+    "stats": {
+      "height": "15.7m",
+      "weight": "9.1t",
+      "mobility": 160,
+      "ranged_attack": 30,
+      "melee_attack": 100,
+      "hp": 410
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "A",
+      "desert": "C",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "ショット・ランサー",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "ショット・ランサー(射撃)",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "誘導",
+      "activation": "任意発動",
+      "target": "特殊(敵)",
+      "range": null,
+      "cost": 4,
+      "description": "25秒間、自身をロックオン距離内に捉えている敵ユニットのターゲットを自身に集める。"
+    },
+    "link_ability": [
+      {
+        "name": "機動戦士ガンダムF91",
+        "condition": "デッキに2枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ショット・ランサー激突",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3200,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "C",
+    "illustrator": "J.YUZURU(willow_works)",
+    "raw": "近距離　コスト4　　MS\n\nXM-05 BERGA-GIROS\nベルガ・ギロス(ザビーネ・シャル専用機)\n\n頭頂高　15.7m\n本体重量　9.1t\n所属　クロスボーン・バンガード\nパイロット　ザビーネ・シャル\n\n地上 A　宇宙 A　砂漠 C　水中 C\n\n機動力 160\n遠距離攻撃 30\n近距離攻撃 100\nHP 410\n\nWEAPON\n\nMAIN ショット・ランサー　射程 1　近距離\nSUB ショット・ランサー(射撃)　射程 3　遠距離\n\nLINK ABILITY\n\n機動戦士ガンダムF91　デッキに2枚以上\n[機動力]小アップ\n\nMS ABILITY\n\n誘導\n任意発動　特殊(敵)　射程 ー　コスト 4\n\n25秒間、自身をロックオン距離内に捉えている敵ユニットのターゲットを自身に集める。\n\n戦況を変える力　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nSPECIAL ATTACK　　UNITED SP\n\nショット・ランサー激突　ー\n連携 ー　　連携 ー\n連携 ー　　連携 ー\n単体(敵)　射程 2　　射程 ー\n\nSPコスト 2　威力 3200 / ー\n\n敵単体に格闘攻撃でダメージを与える。\n/ ー\n\nIMPACT AREA\n[アイコン:緑丸 中央やや左]\n[アイコン:黄三角 中央下]\n\nillust J.YUZURU(willow_works)\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n\n機動戦士ガンダム ARSENAL BASE\n\nUT06-014　C"
+  },
+  "ocr_raw_file": "UNITRIBE_SEASON_06_UT06-014_ベルガ・ギロス(ザビーネ・シャル専用機)_ocr_raw.json",
+  "ocr_timestamp": "2026-02-26T17:37:01.204320",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

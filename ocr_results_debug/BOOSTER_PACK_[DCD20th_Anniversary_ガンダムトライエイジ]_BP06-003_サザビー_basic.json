@@ -1,0 +1,83 @@
+{
+  "card_number": "BP06-003",
+  "card_name": "サザビー",
+  "series": "BOOSTER PACK [DCD20th Anniversary ガンダムトライエイジ]",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP06-003.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP06-003_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "BP06-003",
+    "type": "MS",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト6"
+    },
+    "name": "サザビー",
+    "model": "MSN-04 SAZABI",
+    "cost": 6,
+    "category": "近距離",
+    "affiliation": "新生ネオ・ジオン",
+    "pilot": "シャア・アズナブル",
+    "stats": {
+      "height": "25.0m",
+      "weight": "30.5t",
+      "mobility": 240,
+      "ranged_attack": 90,
+      "melee_attack": 500,
+      "hp": 570
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "C",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "ビーム・トマホーク",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "拡散メガ粒子砲",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "特攻",
+      "activation": "出撃時発動",
+      "target": "自分",
+      "range": null,
+      "cost": null,
+      "description": "自身の[遠／近攻撃力]をアップし[怯み無効]となるが、[回避／ガード不可][修理時間延長]となる。効果は撤退するまで持続。"
+    },
+    "link_ability": [
+      {
+        "name": "トライエッジ",
+        "condition": "デッキに2枚以上",
+        "effect": "[HP]小アップ"
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ファンネル斉射",
+      "target": "貫通(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3200,
+      "description": "射線上の敵に貫通射撃でダメージを与える。戦術技威力は地形適性に応じて変化する。",
+      "united_sp": null
+    },
+    "rarity": "P",
+    "illustrator": "Robographer",
+    "raw": "MS\n\n近距離　コスト6\n\nMSN-04 SAZABI\nサザビー\n\n機動戦士ガンダム 逆襲のシャア\n\n頭頂高　25.0m\n本体重量　30.5t\n所属　新生ネオ・ジオン\nパイロット　シャア・アズナブル\n\n地上 A　宇宙 S　砂漠 C　水中 C\n\n機動力 240\n遠距離攻撃 90\n近距離攻撃 500\nHP 570\n\nWEAPON\nMAIN ビーム・トマホーク　射程 1　近距離\nSUB 拡散メガ粒子砲　射程 3　遠距離\n\nLINK ABILITY\n\nトライエッジ　デッキに2枚以上\n[HP]小アップ\n\n多彩な戦術　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nMS ABILITY\n\n特攻\n出撃時発動　自分　射程 ー　コスト ー\n\n自身の[遠／近攻撃力]をアップし[怯み無効]となるが、[回避／ガード不可][修理時間延長]となる。効果は撤退するまで持続。\n\nSPECIAL ATTACK　UNITED SP\nファンネル斉射　ー\n連携 ー　連携 ー\n連携 ー　連携 ー\n貫通(敵)　射程 3　ー　射程 ー\nSPコスト 2　威力 3200 / ー\n\n射線上の敵に貫通射撃でダメージを与える。戦術技威力は地形適性に応じて変化する。/ ー\n\nIMPACT AREA\n\nillust Robographer\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n\n機動戦士ガンダム ARSENAL BASE\n\nBP06-003　P"
+  },
+  "ocr_raw_file": "BOOSTER_PACK_[DCD20th_Anniversary_ガンダムトライエイジ]_BP06-003_サザビー_ocr_raw.json",
+  "ocr_timestamp": "2026-02-26T17:43:56.861655",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

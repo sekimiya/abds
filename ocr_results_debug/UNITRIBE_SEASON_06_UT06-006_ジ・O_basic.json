@@ -1,0 +1,83 @@
+{
+  "card_number": "UT06-006",
+  "card_name": "ジ・O",
+  "series": "UNITRIBE SEASON:06",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT06-006.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT06-006_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "UT06-006",
+    "type": "MS",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト6"
+    },
+    "name": "ジ・O",
+    "model": "PMX-003 THE-O",
+    "cost": 6,
+    "category": "近距離",
+    "affiliation": "ティターンズ",
+    "pilot": "パプテマス・シロッコ",
+    "stats": {
+      "height": "28.4m",
+      "weight": "57.3t",
+      "mobility": 190,
+      "ranged_attack": 40,
+      "melee_attack": 440,
+      "hp": 480
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "C",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "ビーム・ソード",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "ビーム・ライフル",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "烈撃",
+      "activation": "任意発動",
+      "target": "単体(敵)",
+      "range": 2,
+      "cost": 4,
+      "description": "ロックオン中の敵ユニットに単体攻撃を行い、残りHPを半分にする。"
+    },
+    "link_ability": [
+      {
+        "name": "機動戦士Zガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力]小アップ"
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ビーム・ソード強撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3400,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "R",
+    "illustrator": "Kumagoro",
+    "raw": "MS\n\n近距離 コスト6\n\nPMX-003 THE-O\nジ・O\n\n頭頂高 28.4m\n本体重量 57.3t\n所属 ティターンズ\nパイロット パプテマス・シロッコ\n\n地上 A 宇宙 S 砂漠 C 水中 C\n\n機動力 190\n遠距離攻撃 40\n近距離攻撃 440\nHP 480\n\nWEAPON\nMAIN ビーム・ソード 射程 1 近距離\nSUB ビーム・ライフル 射程 3 遠距離\n\nLINK ABILITY\n機動戦士Zガンダム デッキに3枚以上\n[遠距離攻撃力]小アップ\n\n多彩な戦術 デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nMS ABILITY\n烈撃\n任意発動 単体(敵) 射程 2 コスト 4\nロックオン中の敵ユニットに単体攻撃を行い、残りHPを半分にする。\n\nSPECIAL ATTACK\nビーム・ソード強撃\n連携 ー 連携 ー\n連携 ー 連携 ー\n単体(敵) 射程 2 ー\nSPコスト 2 威力 3400 / ー\n敵単体に格闘攻撃でダメージを与える。\n/ ー\n\nUNITED SP\n\nIMPACT AREA\n[アイコン:中央やや下に円形範囲]\n\nillust Kumagoro\n©創通・サンライズ\n\n機動戦士ガンダム ARSENAL BASE\nUT06-006 R"
+  },
+  "ocr_raw_file": "UNITRIBE_SEASON_06_UT06-006_ジ・O_ocr_raw.json",
+  "ocr_timestamp": "2026-02-26T17:34:49.927285",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

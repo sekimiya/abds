@@ -1,0 +1,83 @@
+{
+  "card_number": "UT03-011",
+  "card_name": "クィン・マンサ",
+  "series": "UNITRIBE SEASON:03",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT03-011.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT03-011_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "UT03-011",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト8"
+    },
+    "name": "クィン・マンサ",
+    "model": "NZ-000 QUIN-MANTHA",
+    "cost": 8,
+    "category": "遠距離",
+    "affiliation": "ネオ・ジオン",
+    "pilot": "プルツー",
+    "stats": {
+      "height": "39.2m",
+      "weight": "143.2t",
+      "mobility": 200,
+      "ranged_attack": 630,
+      "melee_attack": 370,
+      "hp": 650
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "C",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "腕部メガ粒子砲",
+        "range": 4,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ビーム・サーベル",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "威圧",
+      "activation": "任意発動",
+      "target": "範囲(敵)",
+      "range": null,
+      "cost": 4,
+      "description": "自身を中心とした範囲内の敵ユニットをスタンさせ、一定時間被ダメージを少しアップする。"
+    },
+    "link_ability": [
+      {
+        "name": "機動戦士ガンダムZZ",
+        "condition": "デッキに3枚以上",
+        "effect": "[HP]小アップ"
+      },
+      {
+        "name": "撃ち倒す遠距離戦",
+        "condition": "デッキに遠距離が2枚以上",
+        "effect": "[遠距離攻撃力]中アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "胸部メガ粒子砲撃射",
+      "target": "貫通(敵)",
+      "range": 4,
+      "sp_cost": 2,
+      "power": 3300,
+      "description": "射線上の敵に貫通射撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "U",
+    "illustrator": "toriyufu",
+    "raw": "MS\n\n遠距離　コスト8\n\nNZ-000 QUIN-MANTHA\nクィン・マンサ\n\n[ロゴ:機動戦士ガンダムZZ]\n\n頭頂高　39.2m\n本体重量　143.2t\n所属　ネオ・ジオン\nパイロット　プルツー\n\n地上 A　宇宙 S　砂漠 C　水中 C\n\n機動力 200\n遠距離攻撃 630\n近距離攻撃 370\nHP 650\n\nWEAPON\nMAIN　腕部メガ粒子砲　射程 4　遠距離\nSUB　ビーム・サーベル　射程 1　近距離\n\nLINK ABILITY\n機動戦士ガンダムZZ　デッキに3枚以上\n[HP]小アップ\n\nMS ABILITY\n威圧\n任意発動　範囲(敵)　射程 ー　コスト 4\n自身を中心とした範囲内の敵ユニットをスタンさせ、一定時間被ダメージを少しアップする。\n\n撃ち倒す遠距離戦　デッキに遠距離が2枚以上\n[遠距離攻撃力]中アップ\n\nSPECIAL ATTACK　　UNITED SP\n胸部メガ粒子砲撃射　ーーー\n連携 ー　　連携 ー\n連携 ー　　連携 ー\n貫通(敵)　射程 4　ー　射程 ー\nSPコスト 2　威力　3300 / ー\n射線上の敵に貫通射撃でダメージを与える。/ ー\n\nIMPACT AREA\n[アイコン:貫通射線・前方直線]\n\nillust toriyufu\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nUT03-011　U"
+  },
+  "ocr_raw_file": "UNITRIBE_SEASON_03_UT03-011_クィン・マンサ_ocr_raw.json",
+  "ocr_timestamp": "2026-02-26T17:14:59.181665",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

@@ -1,0 +1,83 @@
+{
+  "card_number": "UT03-020",
+  "card_name": "ガンダムエピオン",
+  "series": "UNITRIBE SEASON:03",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT03-020.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT03-020_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "UT03-020",
+    "type": "MS",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト2"
+    },
+    "name": "ガンダムエピオン",
+    "model": "OZ-13MS GUNDAM EPYON",
+    "cost": 2,
+    "category": "近距離",
+    "affiliation": "ホワイトファング",
+    "pilot": "ミリアルド・ピースクラフト, ヒイロ・ユイ",
+    "stats": {
+      "height": "17.4m",
+      "weight": "8.5t",
+      "mobility": 170,
+      "ranged_attack": 50,
+      "melee_attack": 180,
+      "hp": 200
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "C",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "ビームソード",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "ヒートロッド",
+        "range": 2,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "威圧",
+      "activation": "任意発動",
+      "target": "範囲(敵)",
+      "range": null,
+      "cost": 4,
+      "description": "自身を中心とした範囲内の敵ユニットをスタンさせ、一定時間被ダメージを少しアップする。"
+    },
+    "link_ability": [
+      {
+        "name": "ガンダムW",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "その名はガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ビームソード強撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3100,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "C",
+    "illustrator": "S Kei",
+    "raw": "MS\n\n近距離　コスト2\n\nOZ-13MS GUNDAM EPYON\nガンダムエピオン\n\n頭頂高　17.4m\n本体重量　8.5t\n所属　ホワイトファング\nパイロット　ミリアルド・ピースクラフト, ヒイロ・ユイ\n\n地上 A　宇宙 S　砂漠 C　水中 C\n\n機動力 170\n遠距離攻撃 50\n近距離攻撃 180\nHP 200\n\nWEAPON\nMAIN ビームソード　射程 1　近距離\nSUB ヒートロッド　射程 2　遠距離\n\nLINK ABILITY\nガンダムW　デッキに3枚以上\n[機動力]小アップ\n\nその名はガンダム　デッキに3枚以上\n[機動力]小アップ\n\nMS ABILITY\n威圧\n任意発動　範囲(敵)　射程 ー　コスト 4\n自身を中心とした範囲内の敵ユニットをスタンさせ、一定時間被ダメージを少しアップする。\n\nSPECIAL ATTACK　　UNITED SP\nビームソード強撃　　ー\n連携 ー　連携 ー\n連携 ー　連携 ー\n単体(敵)　射程 2　ー　射程 ー\nSPコスト 2　威力 3100 / ー\n敵単体に格闘攻撃でダメージを与える。\n/ ー\n\nIMPACT AREA\n[アイコン:円形範囲・中央]\n\nillust S Kei\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n[アイコン:新機動戦記ガンダムW ロゴ]\n機動戦士ガンダム ARSENAL BASE®\nUT03-020　C"
+  },
+  "ocr_raw_file": "UNITRIBE_SEASON_03_UT03-020_ガンダムエピオン_ocr_raw.json",
+  "ocr_timestamp": "2026-02-26T17:18:06.864817",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

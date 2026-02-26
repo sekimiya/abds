@@ -1,0 +1,83 @@
+{
+  "card_number": "UT06-033",
+  "card_name": "ガンダム・バエル",
+  "series": "UNITRIBE SEASON:06",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT06-033.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT06-033_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "UT06-033",
+    "type": "MS",
+    "card_label": {
+      "class": "機動",
+      "cost_label": "コスト3"
+    },
+    "name": "ガンダム・バエル",
+    "model": "ASW-G-01 GUNDAM BAEL",
+    "cost": 3,
+    "category": "機動",
+    "affiliation": "ギャラルホルン",
+    "pilot": "マクギリス・ファリド",
+    "stats": {
+      "height": "18.0m",
+      "weight": "30.0t",
+      "mobility": 210,
+      "ranged_attack": 250,
+      "melee_attack": 100,
+      "hp": 240
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "A",
+      "water": "B"
+    },
+    "weapon": {
+      "main": {
+        "name": "電磁砲",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "バエル・ソード",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "再縮",
+      "activation": "任意発動",
+      "target": "範囲(味方)",
+      "range": null,
+      "cost": 2,
+      "description": "自身を中心とした大範囲内にいる、自身を除く味方ユニットのMSアビリティのクールタイムを、一定時間短縮する。"
+    },
+    "link_ability": [
+      {
+        "name": "鉄血のオルフェンズ",
+        "condition": "デッキに3枚以上",
+        "effect": "[近距離攻撃力]小アップ"
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "電磁砲撃射",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3200,
+      "description": "敵単体に射撃攻撃でダメージを与え、一定時間スタンさせる。",
+      "united_sp": null
+    },
+    "rarity": "R",
+    "illustrator": "kenko",
+    "raw": "機動 コスト3\nASW-G-01 GUNDAM BAEL\nガンダム・バエル\n\nMS\n\n鉄血のオルフェンズ\n\n頭頂高 18.0m\n本体重量 30.0t\n所属 ギャラルホルン\nパイロット マクギリス・ファリド\n\n地上 A 宇宙 S 砂漠 A 水中 B\n\n機動力 210\n遠距離攻撃 250\n近距離攻撃 100\nHP 240\n\nWEAPON\nMAIN 電磁砲 射程 3 遠距離\nSUB バエル・ソード 射程 1 近距離\n\nLINK ABILITY\n鉄血のオルフェンズ デッキに3枚以上\n[近距離攻撃力]小アップ\n\nMS ABILITY\n再縮\n任意発動 範囲(味方) 射程 ー コスト 2\n自身を中心とした大範囲内にいる、自身を除く味方ユニットのMSアビリティのクールタイムを、一定時間短縮する。\n\n戦況を変える力 デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nSPECIAL ATTACK\n電磁砲撃射\n連携 ー\n連携 ー\n連携 ー\n連携 ー\n単体(敵) 射程 3 ー 射程 ー\nSPコスト 2 威力 3200 / ー\n敵単体に射撃攻撃でダメージを与え、一定時間スタンさせる。/ ー\n\nUNITED SP\nー\n\nIMPACT AREA\n[アイコン:円形範囲・前方単体]\n\nillust kenko\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nUT06-033 R"
+  },
+  "ocr_raw_file": "UNITRIBE_SEASON_06_UT06-033_ガンダム・バエル_ocr_raw.json",
+  "ocr_timestamp": "2026-02-26T17:43:46.841786",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}
