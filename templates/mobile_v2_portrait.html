@@ -1240,6 +1240,36 @@ const ImageCache = {
     }
     return null;
   },
+
+  // --- toDataUrl: async, returns data URL from IndexedDB blob (for screenshot) ---
+  async toDataUrl(cardNumber, side = 'front') {
+    if (!cardNumber) return null;
+    const key = this._urlToKey(cardNumber, side);
+    // First try in-memory blob URL → fetch → data URL
+    if (this._blobUrls[key]) {
+      try {
+        const resp = await fetch(this._blobUrls[key]);
+        const blob = await resp.blob();
+        return await new Promise(resolve => {
+          const reader = new FileReader();
+          reader.onloadend = () => resolve(reader.result);
+          reader.readAsDataURL(blob);
+        });
+      } catch (_) { /* fall through to IndexedDB */ }
+    }
+    // Fall back to reading directly from IndexedDB
+    try {
+      const val = await this._get(key);
+      if (!val) return null;
+      const blob = val instanceof Blob ? val : new Blob([val]);
+      return await new Promise(resolve => {
+        const reader = new FileReader();
+        reader.onloadend = () => resolve(reader.result);
+        reader.readAsDataURL(blob);
+      });
+    } catch (_) { return null; }
+  },
+
   _updateCount(count) {
     const suffix = this._memoryOnly ? ' (ストレージ不可)' : '';
     const el = document.getElementById('cacheCount');
@@ -1324,8 +1354,10 @@ const ImageCache = {
     (AppState.cardIndex || []).forEach(c => {
       const num = c.number;
       if (!num) return;
-      const frontUrl = c.front_url || `http://www.gundam-ab.com/images/cardlist/card/${num}.jpg?v8`;
-      const backUrl = c.back_url || `http://www.gundam-ab.com/images/cardlist/card/${num}_b.jpg?v8`;
+      const rawFrontUrl = c.front_url || `http://www.gundam-ab.com/images/cardlist/card/${num}.jpg?v8`;
+      const rawBackUrl = c.back_url || `http://www.gundam-ab.com/images/cardlist/card/${num}_b.jpg?v8`;
+      const frontUrl = `/api/image_proxy?url=${encodeURIComponent(rawFrontUrl)}`;
+      const backUrl = `/api/image_proxy?url=${encodeURIComponent(rawBackUrl)}`;
       items.push({ key: num, url: frontUrl });
       items.push({ key: `${num}_b`, url: backUrl });
     });
@@ -2673,6 +2705,39 @@ async function captureFullPage() {
   btn.classList.add('capturing');
   document.getElementById('recBtnLabel').textContent = '撮影中…';
   try {
+    // --- Step 1: Convert card images (blob URLs) to data URLs for html2canvas ---
+    const origSrcs = new Map();
+    const thumbImgs = document.querySelectorAll('.overview-thumb img');
+    const imgTasks = [];
+    for (const img of thumbImgs) {
+      const cardNumber = img.alt;
+      if (!cardNumber || img.src.startsWith('data:')) continue;
+      const side = img.closest('.overview-thumb')?.dataset?.showBack === '1' ? 'back' : 'front';
+      imgTasks.push((async () => {
+        const dataUrl = await ImageCache.toDataUrl(cardNumber, side);
+        if (dataUrl) {
+          origSrcs.set(img, img.src);
+          img.src = dataUrl;
+        }
+      })());
+    }
+    // Also convert detail area images
+    const detailImgs = document.querySelectorAll('#detailArea img');
+    for (const img of detailImgs) {
+      const cardNumber = img.alt;
+      if (!cardNumber || img.src.startsWith('data:')) continue;
+      imgTasks.push((async () => {
+        const dataUrl = await ImageCache.toDataUrl(cardNumber, 'front');
+        if (dataUrl) {
+          origSrcs.set(img, img.src);
+          img.src = dataUrl;
+        }
+      })());
+    }
+    await Promise.all(imgTasks);
+    await new Promise(r => setTimeout(r, 50));
+
+    // --- Step 2: Flatten layout for capture ---
     const body = document.body;
     const detailArea = document.getElementById('detailArea');
     const origBodyOF = body.style.overflow;
@@ -2686,12 +2751,23 @@ async function captureFullPage() {
     detailArea.style.height = 'auto';
     detailArea.style.flex = 'none';
     await new Promise(r => setTimeout(r, 100));
+
+    // --- Step 3: Capture ---
     const canvas = await html2canvas(body, { backgroundColor: '#0f0f0f', scale: 2, useCORS: true, logging: false, width: body.scrollWidth, height: body.scrollHeight });
+
+    // --- Step 4: Restore layout ---
     body.style.overflow = origBodyOF;
     body.style.height = origBodyH;
     detailArea.style.overflow = origDetailOF;
     detailArea.style.height = origDetailH;
     detailArea.style.flex = origDetailFlex;
+
+    // --- Step 5: Restore original image sources ---
+    for (const [img, src] of origSrcs) {
+      img.src = src;
+    }
+
+    // --- Step 6: Download ---
     canvas.toBlob(blob => {
       if (!blob) { Toast.show('撮影に失敗しました', 'error'); return; }
       const url = URL.createObjectURL(blob);

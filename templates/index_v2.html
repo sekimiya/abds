@@ -2421,6 +2421,35 @@ const ImageCache = {
     return null;
   },
 
+  // --- toDataUrl: async, returns data URL from IndexedDB blob (for screenshot) ---
+  async toDataUrl(cardNumber, side = 'front') {
+    if (!cardNumber) return null;
+    const key = this._urlToKey(cardNumber, side);
+    // First try in-memory blob URL → fetch → data URL
+    if (this._blobUrls[key]) {
+      try {
+        const resp = await fetch(this._blobUrls[key]);
+        const blob = await resp.blob();
+        return await new Promise(resolve => {
+          const reader = new FileReader();
+          reader.onloadend = () => resolve(reader.result);
+          reader.readAsDataURL(blob);
+        });
+      } catch (_) { /* fall through to IndexedDB */ }
+    }
+    // Fall back to reading directly from IndexedDB
+    try {
+      const val = await this._get(key);
+      if (!val) return null;
+      const blob = val instanceof Blob ? val : new Blob([val]);
+      return await new Promise(resolve => {
+        const reader = new FileReader();
+        reader.onloadend = () => resolve(reader.result);
+        reader.readAsDataURL(blob);
+      });
+    } catch (_) { return null; }
+  },
+
   _updateCount(count) {
     const suffix = this._memoryOnly ? ' (ストレージ不可)' : '';
     document.getElementById('cacheCount').textContent = `キャッシュ: ${count}枚${suffix}`;
@@ -2535,8 +2564,10 @@ const ImageCache = {
       const num = c.number;
       if (!num) return;
       // Use actual URLs from card data (includes version parameter) with fallback
-      const frontUrl = c.front_url || `http://www.gundam-ab.com/images/cardlist/card/${num}.jpg?v8`;
-      const backUrl = c.back_url || `http://www.gundam-ab.com/images/cardlist/card/${num}_b.jpg?v8`;
+      const rawFrontUrl = c.front_url || `http://www.gundam-ab.com/images/cardlist/card/${num}.jpg?v8`;
+      const rawBackUrl = c.back_url || `http://www.gundam-ab.com/images/cardlist/card/${num}_b.jpg?v8`;
+      const frontUrl = `/api/image_proxy?url=${encodeURIComponent(rawFrontUrl)}`;
+      const backUrl = `/api/image_proxy?url=${encodeURIComponent(rawBackUrl)}`;
       items.push({ key: num, url: frontUrl });
       items.push({ key: `${num}_b`, url: backUrl });
     });
@@ -4859,13 +4890,31 @@ async function captureFullPage() {
   }
 
   try {
-    // --- Step 1: Convert external images to data URLs via proxy ---
-    const allImages = document.querySelectorAll('img');
+    // --- Step 1: Convert images to data URLs for html2canvas ---
     const origSrcs = new Map();
-    const tasks = [];
+
+    // Step 1a: Card slot images — use ImageCache.toDataUrl() for reliable conversion
+    const cardImgs = document.querySelectorAll('.card-slot-img');
+    const cardTasks = [];
+    for (const img of cardImgs) {
+      const cardNumber = img.alt;
+      if (!cardNumber || img.src.startsWith('data:')) continue;
+      cardTasks.push((async () => {
+        const dataUrl = await ImageCache.toDataUrl(cardNumber, 'front');
+        if (dataUrl) {
+          origSrcs.set(img, img.src);
+          img.src = dataUrl;
+        }
+      })());
+    }
+    await Promise.all(cardTasks);
+
+    // Step 1b: Other images (header logo, etc.) — use generic conversion
+    const allImages = document.querySelectorAll('img:not(.card-slot-img)');
+    const otherTasks = [];
     for (const img of allImages) {
-      if (!img.offsetParent && !img.closest('.app-header') && !img.closest('.link-bar')) continue; // skip hidden
-      tasks.push((async () => {
+      if (!img.offsetParent && !img.closest('.app-header') && !img.closest('.link-bar')) continue;
+      otherTasks.push((async () => {
         const dataUrl = await imgToDataUrl(img);
         if (dataUrl) {
           origSrcs.set(img, img.src);
@@ -4873,7 +4922,8 @@ async function captureFullPage() {
         }
       })());
     }
-    await Promise.all(tasks);
+    await Promise.all(otherTasks);
+
     // Wait for re-rendered images
     await new Promise(r => setTimeout(r, 50));
 

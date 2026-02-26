@@ -10,7 +10,6 @@ import time
 import uuid
 import logging
 import functools
-from concurrent.futures import ThreadPoolExecutor, as_completed
 
 from dotenv import load_dotenv
 load_dotenv()
@@ -1295,6 +1294,21 @@ def _is_safe_filename(filename):
     return True
 
 
+@app.route('/api/image_proxy')
+def api_image_proxy():
+    url = request.args.get('url', '')
+    # 許可するドメインを制限（公式サイトのみ）
+    if not url.startswith('http://www.gundam-ab.com/') and not url.startswith('https://www.gundam-ab.com/'):
+        return Response('Forbidden', status=403)
+    try:
+        import requests as req
+        resp = req.get(url, timeout=10)
+        resp.raise_for_status()
+        return Response(resp.content, content_type=resp.headers.get('Content-Type', 'image/jpeg'))
+    except Exception:
+        return Response(_PLACEHOLDER_SVG, content_type='image/svg+xml'), 502
+
+
 @app.route('/card_images/<path:filename>')
 def serve_card_image(filename):
     if not _is_safe_filename(filename):
@@ -2526,78 +2540,60 @@ def _run_ocr_execution(series, stage, force, limit):
                 _ocr_run_status["log"].append("処理対象カードがありません。")
             return
 
-        OCR_PARALLEL_WORKERS = 10
+        done_count = 0
+        fatal = False
+        for card in targets:
+            # 停止チェック
+            with _ocr_run_lock:
+                if _ocr_run_status["stop_requested"]:
+                    _ocr_run_status["log"].append("停止リクエストにより処理を中断しました。")
+                    break
 
-        def _ocr_worker(card):
-            """1枚のカードを処理するワーカー関数"""
             card_number = card["card_number"]
             card_name = card["card_name"]
             try:
                 ok = ocr_process_card(card, model=None, force=force, stage=stage)
+                error_msg = None
+                is_fatal = False
             except SystemExit:
-                return card_number, card_name, False, "claude CLIが見つかりません (SystemExit)", True
+                ok = False
+                error_msg = "claude CLIが見つかりません (SystemExit)"
+                is_fatal = True
             except Exception as e:
-                return card_number, card_name, False, str(e), False
-            return card_number, card_name, ok, None, False
+                ok = False
+                error_msg = str(e)
+                is_fatal = False
 
-        with _ocr_run_lock:
-            _ocr_run_status["log"].append(f"並列数: {OCR_PARALLEL_WORKERS}")
+            done_count += 1
+            with _ocr_run_lock:
+                _ocr_run_status["processed_count"] = done_count
+                _ocr_run_status["current_card"] = card_number
+                _ocr_run_status["current_card_name"] = card_name
+                if ok:
+                    _ocr_run_status["success_count"] += 1
+                else:
+                    _ocr_run_status["failed_count"] += 1
+                    if error_msg:
+                        _ocr_run_status["errors"].append(f"{card_number}: {error_msg}")
 
-        done_count = 0
-        fatal = False
-        with ThreadPoolExecutor(max_workers=OCR_PARALLEL_WORKERS) as executor:
-            futures = {}
-            for card in targets:
-                # 停止チェック（submit前）
+                elapsed = time.time() - start_time
+                _ocr_run_status["elapsed_seconds"] = int(elapsed)
+                if done_count > 0 and done_count < total:
+                    eta = elapsed / done_count * (total - done_count)
+                    _ocr_run_status["eta_seconds"] = int(eta)
+                else:
+                    _ocr_run_status["eta_seconds"] = 0
+
+                status_str = "OK" if ok else "FAIL"
+                _ocr_run_status["log"].append(
+                    f"[{done_count}/{total}] {card_number} {card_name} {status_str}"
+                )
+
+            if is_fatal:
                 with _ocr_run_lock:
-                    if _ocr_run_status["stop_requested"]:
-                        break
-                futures[executor.submit(_ocr_worker, card)] = card
-
-            for future in as_completed(futures):
-                card_number, card_name, ok, error_msg, is_fatal = future.result()
-
-                done_count += 1
-                with _ocr_run_lock:
-                    _ocr_run_status["processed_count"] = done_count
-                    _ocr_run_status["current_card"] = card_number
-                    _ocr_run_status["current_card_name"] = card_name
-                    if ok:
-                        _ocr_run_status["success_count"] += 1
-                    else:
-                        _ocr_run_status["failed_count"] += 1
-                        if error_msg:
-                            _ocr_run_status["errors"].append(f"{card_number}: {error_msg}")
-
-                    elapsed = time.time() - start_time
-                    _ocr_run_status["elapsed_seconds"] = int(elapsed)
-                    if done_count > 0 and done_count < total:
-                        eta = elapsed / done_count * (total - done_count)
-                        _ocr_run_status["eta_seconds"] = int(eta)
-                    else:
-                        _ocr_run_status["eta_seconds"] = 0
-
-                    status_str = "OK" if ok else "FAIL"
-                    _ocr_run_status["log"].append(
-                        f"[{done_count}/{total}] {card_number} {card_name} {status_str}"
-                    )
-
-                if is_fatal:
-                    with _ocr_run_lock:
-                        _ocr_run_status["log"].append("致命的エラー: claude CLIが見つかりません。処理を中断します。")
-                    fatal = True
-                    break
-
-                # 停止チェック（完了時）
-                with _ocr_run_lock:
-                    if _ocr_run_status["stop_requested"]:
-                        _ocr_run_status["log"].append("停止リクエストにより処理を中断しました。")
-                        break
-
-            # 停止/致命的エラー時は未完了のfutureをキャンセル
-            if fatal or _ocr_run_status.get("stop_requested"):
-                for f in futures:
-                    f.cancel()
+                    _ocr_run_status["log"].append("致命的エラー: claude CLIが見つかりません。処理を中断します。")
+                fatal = True
+                break
 
         # キャッシュクリア
         with _ocr_run_lock:
