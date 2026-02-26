@@ -65,7 +65,7 @@ def _build_card_index():
         number = card.get('number', '')
         if not number:
             continue
-        series_match = re.match(r'([A-Z]{2}\d{2})', number)
+        series_match = re.match(r'([A-Z]{2,3}\d{2})', number)
         series = series_match.group(1) if series_match else ''
         front_url = card.get('front', {}).get('image_url', '')
         back_url = card.get('back', {}).get('image_url', '')
@@ -474,7 +474,7 @@ def api_admin_stats():
             if not fn.endswith('.json'):
                 continue
             card_count += 1
-            m = re.match(r'([A-Z]{2}\d{2})', fn)
+            m = re.match(r'([A-Z]{2,3}\d{2})', fn)
             if m:
                 series_set.add(m.group(1))
             try:
@@ -504,7 +504,7 @@ def api_admin_stats():
         for fn in os.listdir(all_cards_dir):
             if not fn.endswith('.json'):
                 continue
-            m = re.match(r'([A-Z]{2}\d{2})', fn)
+            m = re.match(r'([A-Z]{2,3}\d{2})', fn)
             if m:
                 s = m.group(1)
                 series_counts[s] = series_counts.get(s, 0) + 1
@@ -639,7 +639,7 @@ def api_ocr_admin_stats():
             if not fn.endswith('.json'):
                 continue
             total_cards += 1
-            m = re.match(r'([A-Z]{2}\d{2})', fn)
+            m = re.match(r'([A-Z]{2,3}\d{2})', fn)
             if m:
                 s = m.group(1)
                 series_total[s] = series_total.get(s, 0) + 1
@@ -665,7 +665,7 @@ def api_ocr_admin_stats():
 
     series_ocr = {}
     for number, info in ocr_map.items():
-        m = re.match(r'([A-Z]{2}\d{2})', number)
+        m = re.match(r'([A-Z]{2,3}\d{2})', number)
         if m:
             s = m.group(1)
             if info['basic']:
@@ -833,14 +833,14 @@ def api_ocr_run_series_stats():
 
     series_raw = {}
     for num in existing_raw:
-        m = re.match(r'([A-Z]{2}\d{2})', num)
+        m = re.match(r'([A-Z]{2,3}\d{2})', num)
         if m:
             s = m.group(1)
             series_raw[s] = series_raw.get(s, 0) + 1
 
     series_basic = {}
     for num in existing_basic:
-        m = re.match(r'([A-Z]{2}\d{2})', num)
+        m = re.match(r'([A-Z]{2,3}\d{2})', num)
         if m:
             s = m.group(1)
             series_basic[s] = series_basic.get(s, 0) + 1

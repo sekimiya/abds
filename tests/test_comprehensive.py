@@ -230,7 +230,7 @@ class TestCardIndexIntegrity:
 
     def test_series_format_when_present(self, card_index):
         """シリーズコードが存在する場合、XX99形式または日本語シリーズ名"""
-        pattern = re.compile(r'^[A-Z]{2}\d{2}$')
+        pattern = re.compile(r'^[A-Z]{2,3}\d{2}$')
         for card in card_index:
             if card.get('series') and not card['series'].startswith('SEASON'):
                 # XX99形式か、日本語を含むシリーズ名のどちらか
