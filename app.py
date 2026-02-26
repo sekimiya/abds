@@ -226,7 +226,7 @@ def _build_card_index():
                 # _basic.json: ocr_data を持つメインデータ
                 # Claude Code CLI で生成されたデータのみ取り込む
                 if 'ocr_data' in loaded and isinstance(loaded['ocr_data'], dict):
-                    if loaded.get('ocr_engine') != 'claude_code_cli':
+                    if not (loaded.get('ocr_engine') or '').startswith('claude_code_cli'):
                         # 非CLIデータはスキップ（信頼性に問題あり）
                         continue
                     _cli_trusted_numbers.add(number)
