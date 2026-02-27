@@ -1389,6 +1389,21 @@ select,input{font-family:inherit}
         </div>
       </div>
 
+      <!-- リンクアビリティ名 -->
+      <div class="filter-group collapsed" id="filterGroupLinkName">
+        <div class="filter-group-title" onclick="toggleFilterGroup('filterGroupLinkName')" style="color:#4fc3f7">リンクアビリティ名</div>
+        <div class="filter-group-body">
+          <div style="position:relative">
+            <input type="text" id="linkNameSearchInput" placeholder="リンク名で検索..." autocomplete="off"
+              style="width:100%;padding:0.3rem 1.8rem 0.3rem 0.3rem;background:#222;color:#fff;border:1px solid #555;border-radius:4px;margin-bottom:0.3rem"
+              onfocus="SearchPanel.filterLinkNames(this.value)" oninput="SearchPanel.filterLinkNames(this.value)">
+            <span style="position:absolute;right:6px;top:5px;color:#888;font-size:0.7rem;pointer-events:none">&#9660;</span>
+            <div id="linkNameSuggestions" style="display:none;position:absolute;left:0;right:0;top:100%;z-index:100;background:#1a1a1a;border:1px solid #555;border-radius:4px;max-height:200px;overflow-y:auto"></div>
+          </div>
+          <div id="linkNameSelected" style="display:flex;flex-wrap:wrap;gap:4px;margin-top:2px"></div>
+        </div>
+      </div>
+
       <div class="filter-group collapsed" data-for="MS" id="filterGroupSp">
         <div class="filter-group-title" onclick="toggleFilterGroup('filterGroupSp')" style="color:#4fc3f7">SP</div>
         <div class="filter-group-body">
@@ -3587,8 +3602,8 @@ const SearchPanel = {
   _page: 0,
   _perPage: 60,
   // Toggle filter Sets
-  _t: { ebCat:new Set(), ebLv:new Set(), ebCond:new Set(), ebspEff:new Set(), sqCat:new Set(), sqGauge:new Set(), sqTrig:new Set(), sqEff:new Set(), sqspEff:new Set(), spEff:new Set(), skEff:new Set() },
-  _tStyle: { ebCat:'eb', ebLv:'eb', ebCond:'eb', ebspEff:'eb', sqCat:'sq', sqGauge:'sq', sqTrig:'sq', sqEff:'sq', sqspEff:'sq', spEff:'sp', skEff:'pl' },
+  _t: { ebCat:new Set(), ebLv:new Set(), ebCond:new Set(), ebspEff:new Set(), sqCat:new Set(), sqGauge:new Set(), sqTrig:new Set(), sqEff:new Set(), sqspEff:new Set(), spEff:new Set(), skEff:new Set(), linkName:new Set() },
+  _tStyle: { ebCat:'eb', ebLv:'eb', ebCond:'eb', ebspEff:'eb', sqCat:'sq', sqGauge:'sq', sqTrig:'sq', sqEff:'sq', sqspEff:'sq', spEff:'sp', skEff:'pl', linkName:'sq' },
 
   init() {
     this._updateCategoryButtons();
@@ -3624,10 +3639,67 @@ const SearchPanel = {
       const label = document.getElementById(stat.toLowerCase() + 'Value');
       slider.addEventListener('input', () => { label.textContent = slider.value; this.applyFilters(); });
     });
+    // リンクアビリティ名ドロップダウンを閉じる
+    const linkInput = document.getElementById('linkNameSearchInput');
+    if (linkInput) linkInput.addEventListener('blur', () => SearchPanel._closeLinkDropdown());
     // PLスキル名プルダウンを初期化
     this._populateSkillNames();
     // localStorageから検索条件を復元
     this._restoreFilters();
+  },
+
+  // リンクアビリティ名フィルター: 逆引きマップ構築
+  _buildLinkMap() {
+    const map = {};
+    for (const [name, info] of Object.entries(AppState.linkIndex || {})) {
+      for (const num of (info.ms_cards || [])) { (map[num] = map[num] || new Set()).add(name); }
+      for (const num of (info.pl_cards || [])) { (map[num] = map[num] || new Set()).add(name); }
+    }
+    AppState.cardLinkNames = map;
+  },
+
+  // リンクアビリティ名ドロップダウン表示
+  filterLinkNames(query) {
+    const container = document.getElementById('linkNameSuggestions');
+    if (!container) return;
+    const names = Object.keys(AppState.linkIndex || {}).sort();
+    const q = query.toLowerCase();
+    const filtered = q ? names.filter(n => n.toLowerCase().includes(q)) : names;
+    if (filtered.length === 0) {
+      container.style.display = 'none';
+      return;
+    }
+    container.innerHTML = filtered.map(name => {
+      const escaped = name.replace(/'/g, "\\'");
+      const sel = this._t.linkName.has(name);
+      return `<div onmousedown="event.preventDefault();SearchPanel.toggleLinkName('${escaped}')" style="padding:4px 8px;cursor:pointer;font-size:0.8rem;color:${sel ? '#4fc3f7' : '#ccc'};background:${sel ? '#1a3a4a' : 'transparent'};border-bottom:1px solid #2a2a2a;white-space:nowrap;overflow:hidden;text-overflow:ellipsis" onmouseover="this.style.background='${sel ? '#1a4a5a' : '#2a2a2a'}'" onmouseout="this.style.background='${sel ? '#1a3a4a' : 'transparent'}'">${sel ? '\u2713 ' : ''}${name}</div>`;
+    }).join('');
+    container.style.display = 'block';
+  },
+
+  // ドロップダウンを閉じる
+  _closeLinkDropdown() {
+    const c = document.getElementById('linkNameSuggestions');
+    if (c) c.style.display = 'none';
+  },
+
+  // リンクアビリティ名の選択/解除
+  toggleLinkName(name) {
+    const s = this._t.linkName;
+    if (s.has(name)) { s.delete(name); } else { s.add(name); }
+    this._renderSelectedLinkNames();
+    this.filterLinkNames(document.getElementById('linkNameSearchInput').value);
+    this.applyFilters();
+  },
+
+  // 選択済みリンクアビリティ名タグの描画
+  _renderSelectedLinkNames() {
+    const container = document.getElementById('linkNameSelected');
+    if (!container) return;
+    container.innerHTML = [...this._t.linkName].map(name => {
+      const escaped = name.replace(/'/g, "\\'");
+      return `<span style="background:#1a5276;color:#4fc3f7;padding:2px 8px;border-radius:12px;font-size:0.75rem;display:inline-flex;align-items:center;gap:4px">${name}<span style="cursor:pointer;font-weight:bold" onclick="SearchPanel.toggleLinkName('${escaped}')">\u00d7</span></span>`;
+    }).join('');
   },
 
   _saveFilters() {
@@ -3720,6 +3792,7 @@ const SearchPanel = {
           }
         });
       }
+      this._renderSelectedLinkNames();
       this.applyFilters();
     } catch(e) { /* ignore corrupt data */ }
   },
@@ -3995,6 +4068,14 @@ const SearchPanel = {
     if (spEff.size > 0) {
       cards = cards.filter(c => c.sp_effect_tags && c.sp_effect_tags.some(t => spEff.has(t)));
     }
+    // リンクアビリティ名フィルター（OR: 選択した名前のいずれかを持つカード）
+    const linkNames = this._t.linkName;
+    if (linkNames.size > 0) {
+      cards = cards.filter(c => {
+        const names = AppState.cardLinkNames?.[c.number];
+        return names && [...linkNames].some(n => names.has(n));
+      });
+    }
     // PLスキル名 filter
     const skillName = document.getElementById('filterSkillName').value;
     if (skillName) {
@@ -4071,6 +4152,12 @@ const SearchPanel = {
     // Toggle filters clear
     Object.values(this._t).forEach(s => s.clear());
     document.querySelectorAll('.tbtn').forEach(b => b.className = 'tbtn');
+    // リンクアビリティ名フィルタークリア
+    this._renderSelectedLinkNames();
+    const linkSearchInput = document.getElementById('linkNameSearchInput');
+    if (linkSearchInput) { linkSearchInput.value = ''; }
+    const linkSuggestions = document.getElementById('linkNameSuggestions');
+    if (linkSuggestions) { linkSuggestions.innerHTML = ''; }
     this._currentRarity = new Set();
     this._currentCategory = new Set();
     document.querySelectorAll('.rarity-btn').forEach(b => b.classList.remove('active'));
@@ -4633,6 +4720,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const linkRes = await fetch('./data/link_index.json');
     const linkData = await linkRes.json();
     AppState.linkIndex = linkData;
+    SearchPanel._buildLinkMap();
     const names = Object.keys(linkData).sort();
     const sel1 = document.getElementById('linkSelect1');
     const sel2 = document.getElementById('linkSelect2');
