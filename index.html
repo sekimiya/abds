@@ -2594,7 +2594,7 @@ const UIRenderer = {
 
     const card = AppState.cardIndex.find(c => c.number === cardNumber);
     const detail = AppState.cardDetails[cardNumber];
-    const frontUrl = ImageCache.resolve(cardNumber, 'front') || ImageCache._imgUrl(cardNumber, 'front');
+    const frontUrl = resolveImageUrl(null, cardNumber, 'front');
 
     const hlClass = highlight ? ` ${highlight}` : '';
     slotEl.className = 'card-slot has-card' + (AppState.activeSlot === slotIdx ? ' active' : '') + hlClass;
@@ -2714,7 +2714,7 @@ const UIRenderer = {
     // OCRデータが空（フィールドがない）場合
     const hasOcrFields = msOcr.ms_ability || msOcr.weapon || msOcr.special_attack || msOcr.terrain_compatibility || msOcr.model;
     if (!hasOcrFields) {
-      const backUrl = ImageCache._imgUrl(msNumber, 'back');
+      const backUrl = resolveImageUrl(null, msNumber, 'back');
       el.innerHTML = `<div class="unit-ms-detail"><div class="ms-detail-title">MS詳細</div><div class="no-ocr-msg">OCRデータなし<br><span class="no-ocr-hint">裏面画像でカード情報を確認できます</span></div><img class="no-ocr-back-img" src="${backUrl}" alt="裏面" onerror="this.style.display='none'"></div>`;
       return;
     }
@@ -2894,7 +2894,7 @@ const UIRenderer = {
     // OCRデータが空（フィールドがない）場合
     const hasOcrFields = plOcr.pl_skill || plOcr.pilot_skill || plOcr.category;
     if (!hasOcrFields) {
-      const backUrl = ImageCache._imgUrl(plNumber, 'back');
+      const backUrl = resolveImageUrl(null, plNumber, 'back');
       el.innerHTML = `<div class="unit-ms-detail"><div class="ms-detail-title pl-color">PL詳細</div><div class="no-ocr-msg">OCRデータなし<br><span class="no-ocr-hint">裏面画像でカード情報を確認できます</span></div><img class="no-ocr-back-img" src="${backUrl}" alt="裏面" onerror="this.style.display='none'"></div>`;
       return;
     }
@@ -4410,8 +4410,8 @@ async function showCardModal(number) {
   const detail = await CardService.fetchDetail(number);
   if (!detail) { Toast.show('カード情報を取得できません', 'error'); return; }
   const ocr = detail.ocr_data || {};
-  const frontUrl = ImageCache._imgUrl(number, 'front');
-  const backUrl = ImageCache._imgUrl(number, 'back');
+  const frontUrl = resolveImageUrl(null, number, 'front');
+  const backUrl = resolveImageUrl(null, number, 'back');
   const name = detail.name || number;
   const cardIdx = AppState.cardIndex.find(c => c.number === number);
   const rarity = cardIdx?.rarity || null;
