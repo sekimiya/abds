@@ -2533,8 +2533,8 @@ const ImageCache = {
         const { key, url } = queue.shift();
         try {
           const res = await fetch(url, { mode: 'no-cors' });
+          if (res.type !== 'opaque' && !res.ok) throw new Error(res.status);
           const blob = await res.blob();
-          if (blob.size < 100) throw new Error('too small');
           await this._put(key, blob);
           this._blobUrls[key] = URL.createObjectURL(blob);
         } catch (e) {
