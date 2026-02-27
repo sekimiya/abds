@@ -2615,7 +2615,7 @@ const ImageCache = {
           } catch (e2) { failed++; }
         }
         done++;
-        if (done % 5 === 0 || done === total) this._onProgress(done, total, failed);
+        this._onProgress(done, total, failed);
       }
     };
     await Promise.all(Array.from({ length: Math.min(this.CONCURRENCY, toFetch.length || 1) }, () => worker()));
