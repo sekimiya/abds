@@ -2239,210 +2239,79 @@ const DeckManager = {
 };
 
 // ================================================================
-// ImageCache - IndexedDB with in-memory fallback (PWA version)
+// ImageCache — SW Cache API ベース (PWA version)
+// 画像は <img> タグで公式URLを直接指定し、Service Worker がキャッシュする。
+// IndexedDB は使わない（opaque blob の iOS 制限を回避）。
 // ================================================================
 const PLACEHOLDER_SVG = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='280'%3E%3Crect fill='%231a1a1a' width='200' height='280'/%3E%3Ctext fill='%23555' font-size='12' x='100' y='140' text-anchor='middle'%3Eno image%3C/text%3E%3C/svg%3E";
+const IMG_BASE = 'https://www.gundam-ab.com/images/cardlist/card/';
 const ImageCache = {
-  DB_NAME: 'abds-img-v1',
-  STORE_NAME: 'images',
-  CONCURRENCY: 6,
-  _db: null,
-  _memoryOnly: false,
-  _blobUrls: {},
-  _knownKeys: new Set(),
-  _pendingKeys: new Set(),
-  _pendingTimer: null,
+  CONCURRENCY: 8,
+  _cachedKeys: new Set(),
   _downloading: false,
 
-  // --- IndexedDB helpers ---
-  _openDB() {
-    return new Promise((resolve, reject) => {
-      if (this._memoryOnly) { reject(new Error('memory-only mode')); return; }
-      if (this._db) { resolve(this._db); return; }
-      const req = indexedDB.open(this.DB_NAME, 1);
-      req.onupgradeneeded = e => { e.target.result.createObjectStore(this.STORE_NAME); };
-      req.onsuccess = e => { this._db = e.target.result; resolve(this._db); };
-      req.onerror = e => reject(e.target.error);
-    });
-  },
-  async _put(key, blob) {
-    if (this._memoryOnly) return;
-    try {
-      const db = await this._openDB();
-      return new Promise((resolve, reject) => {
-        const tx = db.transaction(this.STORE_NAME, 'readwrite');
-        tx.objectStore(this.STORE_NAME).put(blob, key);
-        tx.oncomplete = () => resolve();
-        tx.onerror = e => reject(e.target.error);
-      });
-    } catch (e) { /* IndexedDB write failed, blob URL still in memory */ }
-  },
-  async _get(key) {
-    if (this._memoryOnly) return null;
-    const db = await this._openDB();
-    return new Promise((resolve, reject) => {
-      const tx = db.transaction(this.STORE_NAME, 'readonly');
-      const req = tx.objectStore(this.STORE_NAME).get(key);
-      req.onsuccess = () => resolve(req.result || null);
-      req.onerror = e => reject(e.target.error);
-    });
-  },
-  async _getAllKeys() {
-    if (this._memoryOnly) return Object.keys(this._blobUrls);
-    const db = await this._openDB();
-    return new Promise((resolve, reject) => {
-      const tx = db.transaction(this.STORE_NAME, 'readonly');
-      const req = tx.objectStore(this.STORE_NAME).getAllKeys();
-      req.onsuccess = () => resolve(req.result || []);
-      req.onerror = e => reject(e.target.error);
-    });
-  },
-  async _clearStore() {
-    if (this._memoryOnly) return;
-    try {
-      const db = await this._openDB();
-      return new Promise((resolve, reject) => {
-        const tx = db.transaction(this.STORE_NAME, 'readwrite');
-        tx.objectStore(this.STORE_NAME).clear();
-        tx.oncomplete = () => resolve();
-        tx.onerror = e => reject(e.target.error);
-      });
-    } catch (e) { /* ignore */ }
+  _imgUrl(cardNumber, side) {
+    return side === 'back'
+      ? `${IMG_BASE}${cardNumber}_b.jpg`
+      : `${IMG_BASE}${cardNumber}.jpg`;
   },
 
-  // --- Key helpers ---
-  _urlToKey(cardNumber, side) {
-    return side === 'back' ? `${cardNumber}_b` : cardNumber;
-  },
-
-  // --- Init: load all blobs into memory as blob URLs ---
+  // --- Init: SW Cache にあるキーを列挙 ---
   async init() {
-    // Request persistent storage
     if (navigator.storage && navigator.storage.persist) {
-      try {
-        const granted = await navigator.storage.persist();
-        console.log('ImageCache: persistent storage', granted ? 'granted' : 'denied');
-      } catch (_) {}
+      try { await navigator.storage.persist(); } catch (_) {}
     }
-    // Try IndexedDB
     try {
-      const db = await this._openDB();
-      let loaded = 0;
-      await new Promise((resolve, reject) => {
-        const tx = db.transaction(this.STORE_NAME, 'readonly');
-        const req = tx.objectStore(this.STORE_NAME).openCursor();
-        req.onsuccess = (e) => {
-          const cursor = e.target.result;
-          if (cursor) {
-            this._knownKeys.add(cursor.key);
-            try {
-              if (cursor.value) {
-                if (cursor.value instanceof Blob) {
-                  this._blobUrls[cursor.key] = URL.createObjectURL(cursor.value);
-                } else if (typeof cursor.value === 'string') {
-                  this._blobUrls[cursor.key] = cursor.value;
-                }
-                loaded++;
-              }
-            } catch (_) { /* skip corrupted entry */ }
-            cursor.continue();
-          }
-        };
-        tx.oncomplete = () => resolve();
-        tx.onerror = (e) => reject(e.target.error);
+      const cache = await caches.open('card-images-v1');
+      const keys = await cache.keys();
+      keys.forEach(req => {
+        const url = new URL(req.url);
+        const m = url.pathname.match(/\/([A-Z0-9_\-]+(?:_b)?)\.jpg/);
+        if (m) this._cachedKeys.add(m[1]);
       });
-      this._updateCount(loaded);
-      console.log('ImageCache: IndexedDB OK,', loaded, '/', this._knownKeys.size, 'cached');
+      this._updateCount(this._cachedKeys.size);
+      console.log('ImageCache: SW cache has', this._cachedKeys.size, 'images');
     } catch (e) {
-      console.warn('ImageCache: IndexedDB unavailable, using memory-only mode.', e.message || e);
-      this._db = null;
-      this._memoryOnly = true;
-      try { indexedDB.deleteDatabase(this.DB_NAME); } catch (_) {}
+      console.warn('ImageCache: cache check failed', e);
     }
   },
 
-  // --- Resolve: sync lookup ---
+  // --- Resolve: 公式URLを返す（SWがキャッシュ済みならオフラインでも表示可） ---
   resolve(cardNumber, side = 'front') {
     if (!cardNumber) return null;
-    const key = this._urlToKey(cardNumber, side);
-    if (this._blobUrls[key]) return this._blobUrls[key];
-    if (this._knownKeys.has(key) && !this._pendingKeys.has(key)) {
-      this._pendingKeys.add(key);
-      this._scheduleLazyLoad();
+    const key = side === 'back' ? `${cardNumber}_b` : cardNumber;
+    if (this._cachedKeys.has(key)) {
+      return this._imgUrl(cardNumber, side);
     }
     return null;
   },
 
-  // --- toDataUrl ---
+  // --- toDataUrl: canvas 経由で data URL 変換 ---
   async toDataUrl(cardNumber, side = 'front') {
     if (!cardNumber) return null;
-    const key = this._urlToKey(cardNumber, side);
-    if (this._blobUrls[key]) {
-      try {
-        const resp = await fetch(this._blobUrls[key]);
-        const blob = await resp.blob();
-        return await new Promise(resolve => {
-          const reader = new FileReader();
-          reader.onloadend = () => resolve(reader.result);
-          reader.readAsDataURL(blob);
-        });
-      } catch (_) { /* fall through */ }
-    }
-    try {
-      const val = await this._get(key);
-      if (!val) return null;
-      const blob = val instanceof Blob ? val : new Blob([val]);
-      return await new Promise(resolve => {
-        const reader = new FileReader();
-        reader.onloadend = () => resolve(reader.result);
-        reader.readAsDataURL(blob);
-      });
-    } catch (_) { return null; }
+    const url = this._imgUrl(cardNumber, side);
+    return new Promise(resolve => {
+      const img = new Image();
+      img.crossOrigin = 'anonymous';
+      img.onload = () => {
+        try {
+          const c = document.createElement('canvas');
+          c.width = img.naturalWidth; c.height = img.naturalHeight;
+          c.getContext('2d').drawImage(img, 0, 0);
+          resolve(c.toDataURL('image/jpeg', 0.9));
+        } catch (_) { resolve(null); }
+      };
+      img.onerror = () => resolve(null);
+      img.src = url;
+    });
   },
 
   _updateCount(count) {
-    const suffix = this._memoryOnly ? ' (ストレージ不可)' : '';
-    document.getElementById('cacheCount').textContent = `キャッシュ: ${count}枚${suffix}`;
+    document.getElementById('cacheCount').textContent = `キャッシュ: ${count}枚`;
     document.getElementById('cmCacheCount').textContent = count;
   },
   _refreshStats() {
-    const count = Object.keys(this._blobUrls).length;
-    this._updateCount(count);
-  },
-
-  // --- Lazy loading ---
-  _scheduleLazyLoad() {
-    if (this._pendingTimer) return;
-    this._pendingTimer = setTimeout(() => this._runLazyLoad(), 50);
-  },
-  async _runLazyLoad() {
-    this._pendingTimer = null;
-    const keys = [...this._pendingKeys];
-    this._pendingKeys.clear();
-    if (!keys.length) return;
-    let loaded = 0;
-    for (const key of keys) {
-      try {
-        const val = await this._get(key);
-        if (val) {
-          if (val instanceof Blob) {
-            this._blobUrls[key] = URL.createObjectURL(val);
-          } else if (typeof val === 'string') {
-            this._blobUrls[key] = val;
-          }
-          loaded++;
-        } else {
-          this._knownKeys.delete(key);
-        }
-      } catch (_) {
-        this._knownKeys.delete(key);
-      }
-    }
-    if (loaded > 0) {
-      this._refreshStats();
-      UIRenderer.renderAll();
-      SearchPanel.applyFilters();
-    }
+    this._updateCount(this._cachedKeys.size);
   },
 
   // --- Modal ---
@@ -2454,15 +2323,7 @@ const ImageCache = {
     document.getElementById('cmClearBtn').disabled = false;
     document.getElementById('cmProgress').style.display = 'none';
     document.getElementById('cmPct').style.display = 'none';
-    const detail = document.getElementById('cmDetail');
-    if (this._memoryOnly) {
-      detail.textContent = '※ ブラウザストレージが使用不可のためキャッシュ作成できません。プライベートブラウズを解除するか、別のブラウザをお試しください';
-      document.getElementById('cmDlBtn').disabled = true;
-    } else if (!AppState.cardIndex || !AppState.cardIndex.length) {
-      detail.textContent = '※ カードデータが未読み込みです。「キャッシュ作成」を押すと自動で読み込みを試みます';
-    } else {
-      detail.textContent = '';
-    }
+    document.getElementById('cmDetail').textContent = '';
     this._refreshStats();
     document.getElementById('cacheModal').classList.add('open');
   },
@@ -2470,24 +2331,19 @@ const ImageCache = {
     document.getElementById('cacheModal').classList.remove('open');
   },
 
-  // --- Actions ---
+  // --- Clear: SW Cache を削除 ---
   async clear() {
-    Object.values(this._blobUrls).forEach(url => URL.revokeObjectURL(url));
-    this._blobUrls = {};
-    this._knownKeys.clear();
-    this._pendingKeys.clear();
-    await this._clearStore();
+    try { await caches.delete('card-images-v1'); } catch (_) {}
+    this._cachedKeys.clear();
     this._updateCount(0);
     Toast.show('キャッシュをクリアしました', 'success', 2000);
     UIRenderer.renderAll();
     SearchPanel.applyFilters();
   },
+
+  // --- Download: <img> プリロードで SW キャッシュをトリガー ---
   async startDownload() {
     if (this._downloading) return;
-    if (this._memoryOnly) {
-      Toast.show('ブラウザストレージが使用不可のためキャッシュ作成できません', 'error');
-      return;
-    }
     this._downloading = true;
     document.getElementById('cmDlBtn').disabled = true;
     document.getElementById('cmClearBtn').disabled = true;
@@ -2500,51 +2356,57 @@ const ImageCache = {
 
     if (!AppState.cardIndex || !AppState.cardIndex.length) {
       document.getElementById('cmDetail').textContent = 'カードデータを読み込み中...';
-      try {
-        await CardService.fetchIndex();
-      } catch (e) {
-        console.error('startDownload: fetchIndex failed', e);
-      }
+      try { await CardService.fetchIndex(); } catch (_) {}
     }
 
     const items = [];
     (AppState.cardIndex || []).forEach(c => {
       const num = c.number;
       if (!num) return;
-      items.push({ key: num, url: `https://www.gundam-ab.com/images/cardlist/card/${num}.jpg` });
-      items.push({ key: `${num}_b`, url: `https://www.gundam-ab.com/images/cardlist/card/${num}_b.jpg` });
+      items.push({ key: num, url: this._imgUrl(num, 'front') });
+      items.push({ key: `${num}_b`, url: this._imgUrl(num, 'back') });
     });
     if (!items.length) {
-      Toast.show('カードデータがありません。ページを再読み込みしてください', 'error');
+      Toast.show('カードデータがありません', 'error');
       this._downloading = false;
       document.getElementById('cmDlBtn').disabled = false;
       document.getElementById('cmClearBtn').disabled = false;
       return;
     }
 
-    const toFetch = items.filter(it => !this._blobUrls[it.key]);
+    // 既にキャッシュ済みのものはスキップ
+    const toFetch = items.filter(it => !this._cachedKeys.has(it.key));
     let done = items.length - toFetch.length, failed = 0;
     const total = items.length;
     if (done > 0) this._onProgress(done, total, failed);
 
+    // <img> プリロードで SW の fetch イベントを発火させてキャッシュ
     const queue = [...toFetch];
-    const worker = async () => {
-      while (queue.length) {
+    const worker = () => new Promise(resolve => {
+      const next = () => {
+        if (!queue.length) { resolve(); return; }
         const { key, url } = queue.shift();
-        try {
-          const res = await fetch(url, { mode: 'no-cors' });
-          if (res.type !== 'opaque' && !res.ok) throw new Error(res.status);
-          const blob = await res.blob();
-          await this._put(key, blob);
-          this._blobUrls[key] = URL.createObjectURL(blob);
-        } catch (e) {
+        const img = new Image();
+        img.onload = () => {
+          this._cachedKeys.add(key);
+          done++;
+          this._onProgress(done, total, failed);
+          next();
+        };
+        img.onerror = () => {
           failed++;
-        }
-        done++;
-        this._onProgress(done, total, failed);
-      }
-    };
-    await Promise.all(Array.from({ length: Math.min(this.CONCURRENCY, toFetch.length || 1) }, () => worker()));
+          done++;
+          this._onProgress(done, total, failed);
+          next();
+        };
+        img.src = url;
+      };
+      next();
+    });
+    await Promise.all(Array.from(
+      { length: Math.min(this.CONCURRENCY, toFetch.length || 1) },
+      () => worker()
+    ));
 
     this._downloading = false;
     this._refreshStats();
@@ -2570,11 +2432,11 @@ const ImageCache = {
 
 // ================================================================
 // Image URL resolver (PWA version)
+// 公式URLを直接返す。SWがキャッシュ済みならオフラインでも表示される。
 // ================================================================
 function resolveImageUrl(originalUrl, cardNumber, side = 'front') {
-  const cached = ImageCache.resolve(cardNumber, side);
-  if (cached) return cached;
-  return PLACEHOLDER_SVG;
+  if (!cardNumber) return PLACEHOLDER_SVG;
+  return ImageCache._imgUrl(cardNumber, side);
 }
 
 // ================================================================
