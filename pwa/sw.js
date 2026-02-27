@@ -7,6 +7,7 @@ const IMAGE_CACHE = 'card-images-v1';
 const APP_SHELL_FILES = [
   './',
   './index.html',
+  './mobile.html',
   './manifest.json',
   './icons/icon-192.png',
   './icons/icon-512.png',
@@ -96,7 +97,7 @@ self.addEventListener('fetch', (event) => {
           if (response.ok) {
             cache.put(event.request, response.clone());
             // Notify clients if app shell was updated
-            if (cached && event.request.url.includes('index.html')) {
+            if (cached && (event.request.url.includes('index.html') || event.request.url.includes('mobile.html'))) {
               self.clients.matchAll().then(clients => {
                 clients.forEach(client => {
                   client.postMessage({ type: 'UPDATE_AVAILABLE' });
