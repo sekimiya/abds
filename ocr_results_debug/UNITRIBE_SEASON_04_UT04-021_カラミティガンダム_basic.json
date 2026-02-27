@@ -1,0 +1,91 @@
+{
+  "card_number": "UT04-021",
+  "card_name": "カラミティガンダム",
+  "series": "UNITRIBE SEASON:04",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT04-021.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT04-021_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "UT04-021",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト4"
+    },
+    "name": "カラミティガンダム",
+    "model": "GAT-X131 CALAMITY GUNDAM",
+    "cost": 4,
+    "category": "遠距離",
+    "affiliation": "地球連合軍",
+    "pilot": "オルガ・サブナック",
+    "stats": {
+      "height": "18.26m",
+      "weight": "81.48t",
+      "mobility": 100,
+      "ranged_attack": 300,
+      "melee_attack": 50,
+      "hp": 300
+    },
+    "terrain_compatibility": {
+      "ground": "S",
+      "space": "A",
+      "desert": "C",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "シュラーク",
+        "range": 4,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "トーデスブロック",
+        "range": 2,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "装転[貫通改]",
+      "activation": "任意発動",
+      "target": "自分",
+      "range": null,
+      "cost": 5,
+      "description": "通常攻撃がチャージを伴う強力な貫通射撃のメイン攻撃のみになる。この効果は自身が撤退するまで解除できない。"
+    },
+    "link_ability": [
+      {
+        "name": "ガンダムSEED",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "一斉射撃",
+      "target": "貫通(敵)",
+      "range": 4,
+      "sp_cost": 3,
+      "power": 3200,
+      "description": "射線上の敵に貫通射撃でダメージを与える。",
+      "united_sp": {
+        "name": "悪の3兵器",
+        "partner1": "フォビドゥンガンダム",
+        "partner2": "レイダーガンダム",
+        "target": "単体(敵)",
+        "range": 4,
+        "power": 4700,
+        "description": "敵単体に射撃攻撃でダメージを与える。出撃時1度のみ使用可能。"
+      }
+    },
+    "rarity": "C",
+    "illustrator": "Kouki Tajima",
+    "raw": "遠距離　コスト4　MS\n\nGAT-X131 CALAMITY GUNDAM\nカラミティガンダム\n\n頭頂高　18.26m\n本体重量　81.48t\n所属　地球連合軍\nパイロット　オルガ・サブナック\n\n地上 S　宇宙 A　砂漠 C　水中 C\n\n機動力 100\n遠距離攻撃 300\n近距離攻撃 50\nHP 300\n\nWEAPON\nMAIN シュラーク　射程 4　遠距離\nSUB トーデスブロック　射程 2　近距離\n\nLINK ABILITY\nガンダムSEED　デッキに3枚以上\n[機動力]小アップ\n\nMS ABILITY\n装転[貫通改]\n任意発動　自分　射程 —　コスト 5\n通常攻撃がチャージを伴う強力な貫通射撃のメイン攻撃のみになる。この効果は自身が撤退するまで解除できない。\n\n戦況を変える力　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nSPECIAL ATTACK　　UNITED SP\n一斉射撃　　悪の3兵器\n連携 フォビドゥンガンダム　連携 レイダーガンダム\n連携 —　連携 —\n貫通(敵)　射程 4　単体(敵)　射程 4\nSPコスト 3　威力 3200 / 4700\n射線上の敵に貫通射撃でダメージを与える。／敵単体に射撃攻撃でダメージを与える。出撃時1度のみ使用可能。\n\nIMPACT AREA\n[アイコン:貫通射撃エリア（前方直線）]\n\nillust Kouki Tajima\n©創通・サンライズ\n機動戦士ガンダム ARSENAL BASE\nBANDAI MADE IN JAPAN\nUT04-021　C"
+  },
+  "ocr_raw_file": "UNITRIBE_SEASON_04_UT04-021_カラミティガンダム_ocr_raw.json",
+  "ocr_timestamp": "2026-02-28T08:28:31.524259",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

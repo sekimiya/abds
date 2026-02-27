@@ -1,0 +1,83 @@
+{
+  "card_number": "UT04-026",
+  "card_name": "ガンダムアストレイ ゴールドフレーム天",
+  "series": "UNITRIBE SEASON:04",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT04-026.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT04-026_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "UT04-026",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト5"
+    },
+    "name": "ガンダムアストレイ ゴールドフレーム天",
+    "model": "MBF-P01-Re GUNDAM ASTRAY GOLD FRAME AMATSU",
+    "cost": 5,
+    "category": "遠距離",
+    "affiliation": "オーブ",
+    "pilot": "ロンド・ギナ・サハク",
+    "stats": {
+      "height": "17.99m",
+      "weight": "73.2t",
+      "mobility": 170,
+      "ranged_attack": 320,
+      "melee_attack": 30,
+      "hp": 330
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "B",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "トリケロス改(ビームライフル)",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "トリケロス改(ビームサーベル)",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "解撃",
+      "activation": "任意発動",
+      "target": "単体(敵)",
+      "range": 3,
+      "cost": 3,
+      "description": "自身が弱体化状態の時に発動可能となり、自身の弱体化状態を無効化し、ロックオン中の敵に単体攻撃でダメージを与える。"
+    },
+    "link_ability": [
+      {
+        "name": "SEED ASTRAY",
+        "condition": "デッキに2枚以上",
+        "effect": "[近距離攻撃力]小アップ"
+      },
+      {
+        "name": "的確な一撃",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][遠距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "トリケロス改(ビームライフル)撃射",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3200,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "C",
+    "illustrator": "ToMo",
+    "raw": "遠距離　コスト5　MS\n\nMBF-P01-Re GUNDAM ASTRAY GOLD FRAME AMATSU\nガンダムアストレイ ゴールドフレーム天\n\n頭頂高　17.99m\n本体重量　73.2t\n所属　オーブ\nパイロット　ロンド・ギナ・サハク\n\n[アイコン:地上A]　[アイコン:宇宙S]　[アイコン:砂漠B]　[アイコン:水中C]\n機動力　170\n遠距離攻撃　320\n近距離攻撃　30\nHP　330\n\nWEAPON\nMAIN　トリケロス改(ビームライフル)　射程3　遠距離\nSUB　トリケロス改(ビームサーベル)　射程1　近距離\n\nLINK ABILITY\nSEED ASTRAY　デッキに2枚以上\n[近距離攻撃力]小アップ\n\n的確な一撃　デッキに4枚以上\n[機動力][遠距離攻撃力]小アップ\n\nMS ABILITY\n解撃\n任意発動　単体(敵)　射程3　コスト3\n自身が弱体化状態の時に発動可能となり、自身の弱体化状態を無効化し、ロックオン中の敵に単体攻撃でダメージを与える。\n\nSPECIAL ATTACK　　UNITED SP\nトリケロス改(ビームライフル)撃射\n連携　ー　　連携　ー\n連携　ー　　連携　ー\n単体(敵)　射程3　　射程ー\nSPコスト2　威力　3200 / ー\n敵単体に射撃攻撃でダメージを与える。\n/ー\n\nIMPACT AREA\n[アイコン:中央やや下に円形範囲]\n\nillust　ToMo\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nUT04-026　C"
+  },
+  "ocr_raw_file": "UNITRIBE_SEASON_04_UT04-026_ガンダムアストレイ_ゴールドフレーム天_ocr_raw.json",
+  "ocr_timestamp": "2026-02-28T08:31:46.100670",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

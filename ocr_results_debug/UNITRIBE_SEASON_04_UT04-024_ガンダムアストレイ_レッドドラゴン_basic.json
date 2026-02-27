@@ -1,0 +1,83 @@
+{
+  "card_number": "UT04-024",
+  "card_name": "ガンダムアストレイ レッドドラゴン",
+  "series": "UNITRIBE SEASON:04",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT04-024.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT04-024_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "UT04-024",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト5"
+    },
+    "name": "ガンダムアストレイレッドドラゴン",
+    "model": "MBF-P02 GUNDAM ASTRAY RED DRAGON",
+    "cost": 5,
+    "category": "遠距離",
+    "affiliation": "ジャンク屋組合",
+    "pilot": "ロウ・ギュール",
+    "stats": {
+      "height": null,
+      "weight": null,
+      "mobility": 160,
+      "ranged_attack": 310,
+      "melee_attack": 100,
+      "hp": 280
+    },
+    "terrain_compatibility": {
+      "ground": "S",
+      "space": "A",
+      "desert": "B",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "カレトヴルッフ Gモード",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "カレトヴルッフ Sモード",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "縛射",
+      "activation": "任意発動",
+      "target": "単体(敵)",
+      "range": 3,
+      "cost": 3,
+      "description": "ロックオン中の敵ユニットに単体攻撃を行いダメージを与え、一定時間スタンさせる。"
+    },
+    "link_ability": [
+      {
+        "name": "SEED ASTRAY",
+        "condition": "デッキに2枚以上",
+        "effect": "[近距離攻撃力]小アップ"
+      },
+      {
+        "name": "撃ち倒す遠距離戦",
+        "condition": "デッキに遠距離が2枚以上",
+        "effect": "[遠距離攻撃力]中アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "カレトヴルッフ Gモード最大出力",
+      "target": "貫通(敵)",
+      "range": 4,
+      "sp_cost": 2,
+      "power": 2800,
+      "description": "射線上の敵に貫通射撃攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "C",
+    "illustrator": "amasaki",
+    "raw": "MS\n\n遠距離　コスト5\nMBF-P02 GUNDAM ASTRAY RED DRAGON\nガンダムアストレイレッドドラゴン\n\n頭頂高　ー\n本体重量　ー\n所属　ジャンク屋組合\nパイロット　ロウ・ギュール\n\n地上 S　宇宙 A　砂漠 B　水中 C\n\n機動力 160\n遠距離攻撃 310\n近距離攻撃 100\nHP 280\n\nWEAPON\nMAIN　カレトヴルッフ Gモード　射程 3　遠距離\nSUB　カレトヴルッフ Sモード　射程 1　近距離\n\nLINK ABILITY\nSEED ASTRAY　デッキに2枚以上\n[近距離攻撃力]小アップ\n\n撃ち倒す遠距離戦　デッキに遠距離が2枚以上\n[遠距離攻撃力]中アップ\n\nMS ABILITY\n縛射\n任意発動　単体(敵)　射程 3　コスト 3\nロックオン中の敵ユニットに単体攻撃を行いダメージを与え、一定時間スタンさせる。\n\nSPECIAL ATTACK　　UNITED SP\nカレトヴルッフ Gモード最大出力\n連携 ー　　連携 ー\n連携 ー　　連携 ー\n貫通(敵)　射程 4　ー　射程 ー\nSPコスト 2　威力 2800 / ー\n\n射線上の敵に貫通射撃攻撃でダメージを与える。/ ー\n\nIMPACT AREA\n[アイコン:縦一直線貫通]\n\nillust amasaki\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\nUT04-024　C"
+  },
+  "ocr_raw_file": "UNITRIBE_SEASON_04_UT04-024_ガンダムアストレイ_レッドドラゴン_ocr_raw.json",
+  "ocr_timestamp": "2026-02-28T08:30:30.753276",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

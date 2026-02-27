@@ -1,0 +1,83 @@
+{
+  "card_number": "UT04-017",
+  "card_name": "マスターガンダム＆風雲再起",
+  "series": "UNITRIBE SEASON:04",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT04-017.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT04-017_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "UT04-017",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト5"
+    },
+    "name": "マスターガンダム＆風雲再起",
+    "model": "GF13-001NHII MASTER GUNDAM & FUUNSAIKI",
+    "cost": 5,
+    "category": "遠距離",
+    "affiliation": "ネオホンコン",
+    "pilot": "マスター・アジア＆風雲再起",
+    "stats": {
+      "height": "16.7m/ー",
+      "weight": "7.2t/ー",
+      "mobility": 180,
+      "ranged_attack": 250,
+      "melee_attack": 70,
+      "hp": 400
+    },
+    "terrain_compatibility": {
+      "ground": "S",
+      "space": "A",
+      "desert": "S",
+      "water": "B"
+    },
+    "weapon": {
+      "main": {
+        "name": "ダークネスショット",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "格闘",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "奮起",
+      "activation": "出撃時発動",
+      "target": "自分",
+      "range": null,
+      "cost": null,
+      "description": "自身のHPが1以上で一定割合以下になると、一定時間、撃破されなくなり[遠／近攻撃力]を中アップする。出撃時1度のみ発動。"
+    },
+    "link_ability": [
+      {
+        "name": "Gガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[近距離攻撃力]小アップ"
+      },
+      {
+        "name": "撃ち倒す遠距離戦",
+        "condition": "デッキに遠距離が2枚以上",
+        "effect": "[遠距離攻撃力]中アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ダークネスショット撃射",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3300,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "R",
+    "illustrator": "robomisutya",
+    "raw": "遠距離　コスト5\n\nGF13-001NHII MASTER GUNDAM & FUUNSAIKI\nマスターガンダム＆風雲再起\n\nMS\n\n頭頂高　16.7m/ー\n本体重量　7.2t/ー\n所属　ネオホンコン\nパイロット　マスター・アジア＆風雲再起\n\n[アイコン:地上S] [アイコン:宇宙A] [アイコン:砂漠S] [アイコン:水中B]\n\n機動力　180\n遠距離攻撃　250\n近距離攻撃　70\nHP　400\n\nWEAPON\nMAIN　ダークネスショット　射程　3　遠距離\nSUB　格闘　射程　1　近距離\n\nLINK ABILITY\nGガンダム　デッキに3枚以上\n[近距離攻撃力]小アップ\n\nMS ABILITY\n奮起\n出撃時発動　自分　射程　ー　コスト　ー\n\n自身のHPが1以上で一定割合以下になると、一定時間、撃破されなくなり[遠／近攻撃力]を中アップする。出撃時1度のみ発動。\n\n撃ち倒す遠距離戦　デッキに遠距離が2枚以上\n[遠距離攻撃力]中アップ\n\nSPECIAL ATTACK　　UNITED SP\nダークネスショット撃射　ー\n連携　ー　連携　ー\n連携　ー　連携　ー\n単体(敵)　射程　3　射程　ー\nSPコスト　2　威力　3300 / ー\n\n敵単体に射撃攻撃でダメージを与える。\n/ー\n\nIMPACT AREA\n[グリッド表示]\n\nillust　robomisutya\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nUT04-017　R"
+  },
+  "ocr_raw_file": "UNITRIBE_SEASON_04_UT04-017_マスターガンダム＆風雲再起_ocr_raw.json",
+  "ocr_timestamp": "2026-02-28T08:24:34.196544",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

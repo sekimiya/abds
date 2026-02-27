@@ -1,0 +1,83 @@
+{
+  "card_number": "UT04-011",
+  "card_name": "ディザート・ザク (UC ver.)",
+  "series": "UNITRIBE SEASON:04",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT04-011.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT04-011_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "UT04-011",
+    "type": "MS",
+    "card_label": {
+      "class": "機動",
+      "cost_label": "コスト6"
+    },
+    "name": "ディザート・ザク(UC ver.)",
+    "model": "MS-06D DESERT ZAKU [UC ver.]",
+    "cost": 6,
+    "category": "機動",
+    "affiliation": "ジオン公国軍",
+    "pilot": null,
+    "stats": {
+      "height": "18.5m",
+      "weight": "44.7t",
+      "mobility": 260,
+      "ranged_attack": 60,
+      "melee_attack": 340,
+      "hp": 440
+    },
+    "terrain_compatibility": {
+      "ground": "S",
+      "space": "C",
+      "desert": "S",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "格闘",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "ロケット・ランチャー",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "陣略[妨害／機動]",
+      "activation": "任意発動",
+      "target": "範囲(敵)",
+      "range": null,
+      "cost": 4,
+      "description": "一定時間、範囲内に入った敵ユニットの[機動力]をダウンするエリアを設置する。※上限3箇所まで。"
+    },
+    "link_ability": [
+      {
+        "name": "ガンダムUC",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "練磨の機体",
+        "condition": "デッキに2枚以上",
+        "effect": "[HP]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "タックル突撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3400,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "R",
+    "illustrator": "yuuiguchi",
+    "raw": "MS\n\n機動 コスト6\n\nMS-06D DESERT ZAKU [UC ver.]\nディザート・ザク(UC ver.)\n\n[ロゴ:機動戦士ガンダムUC]\n\n頭頂高 18.5m\n本体重量 44.7t\n所属 ジオン公国軍\nパイロット ー\n\n地上 S 宇宙 C 砂漠 S 水中 C\n\n機動力 260\n遠距離攻撃 60\n近距離攻撃 340\nHP 440\n\nWEAPON\nMAIN 格闘 射程 1 近距離\nSUB ロケット・ランチャー 射程 3 遠距離\n\nLINK ABILITY\nガンダムUC デッキに3枚以上\n[機動力]小アップ\n\n練磨の機体 デッキに2枚以上\n[HP]小アップ\n\nMS ABILITY\n陣略[妨害／機動]\n任意発動 範囲(敵) 射程 ー コスト 4\n一定時間、範囲内に入った敵ユニットの[機動力]をダウンするエリアを設置する。※上限3箇所まで。\n\nSPECIAL ATTACK　　UNITED SP\nタックル突撃　　　ー\n連携 ー　　　　　 連携 ー\n連携 ー　　　　　 連携 ー\n単体(敵) 射程 2　 ー 射程 ー\nSPコスト 2 威力 3400 / ー\n敵単体に格闘攻撃でダメージを与える。\n/ ー\n\nIMPACT AREA\n[アイコン:円形エリア・中央×マーク]\n\nillust yuuiguchi\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nUT04-011 R"
+  },
+  "ocr_raw_file": "UNITRIBE_SEASON_04_UT04-011_ディザート・ザク_(UC_ver.)_ocr_raw.json",
+  "ocr_timestamp": "2026-02-28T08:19:37.093181",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}
