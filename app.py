@@ -1391,11 +1391,13 @@ def api_image_proxy():
 @app.route('/card_images/<path:filename>')
 def serve_card_image(filename):
     if not _is_safe_filename(filename):
-        return Response(_PLACEHOLDER_SVG, content_type='image/svg+xml'), 400
+        return jsonify({'error': 'invalid filename'}), 400
     filepath = os.path.join('card_images', filename)
     if os.path.isfile(filepath):
-        return send_from_directory('card_images', filename)
-    return Response(_PLACEHOLDER_SVG, content_type='image/svg+xml')
+        resp = send_from_directory('card_images', filename)
+        resp.headers['Cache-Control'] = 'public, max-age=86400'
+        return resp
+    return jsonify({'error': 'not found'}), 404
 
 
 @app.route('/v2')
@@ -2746,6 +2748,226 @@ def _run_ocr_execution(series, stage, force, limit):
             _ocr_run_status["elapsed_seconds"] = int(time.time() - start_time)
             _ocr_run_status["current_card"] = ""
             _ocr_run_status["current_card_name"] = ""
+
+
+# ====================================================
+# サーバーサイド画像キャッシュ管理
+# ====================================================
+
+from download_card_images import download_image as _dl_image, CARD_IMAGES_DIR, MIN_IMAGE_SIZE, DEFAULT_DELAY
+
+_img_cache_status = {
+    "running": False,
+    "stop_requested": False,
+    "processed_count": 0,
+    "downloaded_count": 0,
+    "cached_count": 0,
+    "failed_count": 0,
+    "total_target": 0,
+    "current_card": "",
+    "log": [],
+    "started_at": None,
+    "finished_at": None,
+    "elapsed_seconds": 0,
+    "eta_seconds": 0,
+}
+_img_cache_lock = threading.Lock()
+
+
+def _count_cached_images():
+    """card_images/ 内の有効な画像ファイル数を返す"""
+    count = 0
+    try:
+        with os.scandir(str(CARD_IMAGES_DIR)) as entries:
+            for entry in entries:
+                if entry.is_file() and entry.name.endswith('.jpg') and entry.stat().st_size > MIN_IMAGE_SIZE:
+                    count += 1
+    except OSError:
+        pass
+    return count
+
+
+@app.route('/api/admin/image-cache/stats')
+@require_admin
+def api_image_cache_stats():
+    """サーバーキャッシュ済み画像枚数と全カード数を返す"""
+    cached = _count_cached_images()
+    cards = ocr_load_unique_cards()
+    total_images = sum(1 + (1 if c.get('back_url') else 0) for c in cards)
+    return jsonify({
+        'success': True,
+        'cached_images': cached,
+        'total_images': total_images,
+        'total_cards': len(cards),
+    })
+
+
+@app.route('/api/admin/image-cache/start', methods=['POST'])
+@require_admin
+def api_image_cache_start():
+    """バックグラウンドで画像DLを開始する"""
+    with _img_cache_lock:
+        if _img_cache_status["running"]:
+            return jsonify({'success': False, 'error': '画像DLタスクが既に実行中です'}), 409
+
+    data = request.get_json() or {}
+    series = data.get('series', '').strip()
+
+    t = threading.Thread(
+        target=_run_image_cache_download,
+        args=(series,),
+        daemon=True,
+    )
+    t.start()
+    msg = f'{series} の画像DLを開始しました' if series else '全画像DLを開始しました'
+    return jsonify({'success': True, 'message': msg})
+
+
+@app.route('/api/admin/image-cache/status')
+@require_admin
+def api_image_cache_status():
+    """画像DLの進捗を返す"""
+    with _img_cache_lock:
+        return jsonify({
+            'success': True,
+            'running': _img_cache_status["running"],
+            'stop_requested': _img_cache_status["stop_requested"],
+            'processed_count': _img_cache_status["processed_count"],
+            'downloaded_count': _img_cache_status["downloaded_count"],
+            'cached_count': _img_cache_status["cached_count"],
+            'failed_count': _img_cache_status["failed_count"],
+            'total_target': _img_cache_status["total_target"],
+            'current_card': _img_cache_status["current_card"],
+            'log': list(_img_cache_status["log"][-100:]),
+            'started_at': _img_cache_status["started_at"],
+            'finished_at': _img_cache_status["finished_at"],
+            'elapsed_seconds': _img_cache_status["elapsed_seconds"],
+            'eta_seconds': _img_cache_status["eta_seconds"],
+        })
+
+
+@app.route('/api/admin/image-cache/stop', methods=['POST'])
+@require_admin
+def api_image_cache_stop():
+    """画像DLの停止をリクエスト"""
+    with _img_cache_lock:
+        if not _img_cache_status["running"]:
+            return jsonify({'success': False, 'error': '実行中のタスクがありません'}), 400
+        _img_cache_status["stop_requested"] = True
+        _img_cache_status["log"].append("停止リクエストを受信しました。")
+    return jsonify({'success': True, 'message': '停止をリクエストしました'})
+
+
+def _run_image_cache_download(series_filter):
+    """バックグラウンドで画像をダウンロードするワーカー"""
+    logger = logging.getLogger('image_cache_dl')
+
+    CARD_IMAGES_DIR.mkdir(parents=True, exist_ok=True)
+
+    with _img_cache_lock:
+        _img_cache_status["running"] = True
+        _img_cache_status["stop_requested"] = False
+        _img_cache_status["processed_count"] = 0
+        _img_cache_status["downloaded_count"] = 0
+        _img_cache_status["cached_count"] = 0
+        _img_cache_status["failed_count"] = 0
+        _img_cache_status["total_target"] = 0
+        _img_cache_status["current_card"] = ""
+        _img_cache_status["log"] = []
+        _img_cache_status["started_at"] = time.strftime('%Y-%m-%dT%H:%M:%S')
+        _img_cache_status["finished_at"] = None
+        _img_cache_status["elapsed_seconds"] = 0
+        _img_cache_status["eta_seconds"] = 0
+
+    start_time = time.time()
+
+    try:
+        with _img_cache_lock:
+            _img_cache_status["log"].append("カード一覧を読み込み中...")
+
+        cards = ocr_load_unique_cards()
+        if series_filter:
+            cards = [c for c in cards if c["card_number"].startswith(series_filter)]
+            with _img_cache_lock:
+                _img_cache_status["log"].append(f"シリーズ {series_filter} に絞り込み: {len(cards)}枚")
+
+        # 全DL対象をリスト化 (表+裏)
+        items = []
+        for card in cards:
+            num = card["card_number"]
+            front_url = card.get("front_url")
+            back_url = card.get("back_url")
+            if front_url:
+                items.append((num, front_url, CARD_IMAGES_DIR / f"{num}.jpg"))
+            if back_url:
+                items.append((num, back_url, CARD_IMAGES_DIR / f"{num}_b.jpg"))
+
+        total = len(items)
+        with _img_cache_lock:
+            _img_cache_status["total_target"] = total
+            _img_cache_status["log"].append(f"DL対象: {total} 枚 (カード: {len(cards)})")
+
+        if total == 0:
+            with _img_cache_lock:
+                _img_cache_status["log"].append("対象画像がありません。")
+            return
+
+        done = 0
+        downloaded = 0
+        cached = 0
+        failed = 0
+
+        for num, url, filepath in items:
+            with _img_cache_lock:
+                if _img_cache_status["stop_requested"]:
+                    _img_cache_status["log"].append("停止リクエストにより処理を中断しました。")
+                    break
+
+            result = _dl_image(url, filepath, logger)
+            done += 1
+            if result == "downloaded":
+                downloaded += 1
+                time.sleep(DEFAULT_DELAY)
+            elif result == "cached":
+                cached += 1
+            else:
+                failed += 1
+
+            with _img_cache_lock:
+                _img_cache_status["processed_count"] = done
+                _img_cache_status["downloaded_count"] = downloaded
+                _img_cache_status["cached_count"] = cached
+                _img_cache_status["failed_count"] = failed
+                _img_cache_status["current_card"] = num
+
+                elapsed = time.time() - start_time
+                _img_cache_status["elapsed_seconds"] = int(elapsed)
+                if done > 0 and done < total:
+                    _img_cache_status["eta_seconds"] = int(elapsed / done * (total - done))
+                else:
+                    _img_cache_status["eta_seconds"] = 0
+
+            # 50枚ごとにログ
+            if done % 50 == 0:
+                with _img_cache_lock:
+                    _img_cache_status["log"].append(
+                        f"[{done}/{total}] DL:{downloaded} キャッシュ済:{cached} 失敗:{failed}"
+                    )
+
+        with _img_cache_lock:
+            _img_cache_status["log"].append(
+                f"完了: 合計{done}件 — DL:{downloaded}, キャッシュ済:{cached}, 失敗:{failed}"
+            )
+
+    except Exception as e:
+        with _img_cache_lock:
+            _img_cache_status["log"].append(f"エラー: {str(e)}")
+    finally:
+        with _img_cache_lock:
+            _img_cache_status["running"] = False
+            _img_cache_status["finished_at"] = time.strftime('%Y-%m-%dT%H:%M:%S')
+            _img_cache_status["elapsed_seconds"] = int(time.time() - start_time)
+            _img_cache_status["current_card"] = ""
 
 
 # ====================================================

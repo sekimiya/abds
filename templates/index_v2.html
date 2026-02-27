@@ -1487,7 +1487,7 @@ select,input{font-family:inherit}
       <div class="cache-modal-detail" id="cmDetail"></div>
       <div class="cache-modal-detail" id="cmCardDataStatus" style="font-size:0.85em;color:#aaa"></div>
       <div class="cache-modal-warn" id="cmWarn">
-        ⚠ 公式サイトからカード画像を取得し、ブラウザにキャッシュします。通信量が大きくなる場合があります。
+        サーバーにキャッシュ済みの画像を取得します。
       </div>
       <div class="cache-modal-btns">
         <button class="primary" id="cmDlBtn" onclick="ImageCache.startDownload()">キャッシュ作成</button>
@@ -2590,13 +2590,8 @@ const ImageCache = {
     (AppState.cardIndex || []).forEach(c => {
       const num = c.number;
       if (!num) return;
-      // Use actual URLs from card data (includes version parameter) with fallback
-      const rawFrontUrl = c.front_url || `http://www.gundam-ab.com/images/cardlist/card/${num}.jpg?v8`;
-      const rawBackUrl = c.back_url || `http://www.gundam-ab.com/images/cardlist/card/${num}_b.jpg?v8`;
-      const frontUrl = `/api/image_proxy?url=${encodeURIComponent(rawFrontUrl)}`;
-      const backUrl = `/api/image_proxy?url=${encodeURIComponent(rawBackUrl)}`;
-      items.push({ key: num, url: frontUrl });
-      items.push({ key: `${num}_b`, url: backUrl });
+      items.push({ key: num, url: `/card_images/${num}.jpg` });
+      items.push({ key: `${num}_b`, url: `/card_images/${num}_b.jpg` });
     });
     if (!items.length) {
       Toast.show('カードデータがありません。ページを再読み込みしてください', 'error');
@@ -2616,26 +2611,15 @@ const ImageCache = {
       while (queue.length) {
         const { key, url } = queue.shift();
         try {
-          // Stage 1: 直接 fetch (CORS 許可時 → blob → IndexedDB)
           const res = await fetch(url);
+          if (res.status === 404) { done++; this._onProgress(done, total, failed); continue; }
           if (!res.ok) throw new Error(res.status);
           const blob = await res.blob();
           if (!blob.type.startsWith('image/') || blob.size < 100) throw new Error('invalid');
           await this._put(key, blob);
           this._blobUrls[key] = URL.createObjectURL(blob);
         } catch (e) {
-          // Stage 2: CORS ブロック → <img> プリロード (ブラウザキャッシュ)
-          try {
-            await new Promise((resolve, reject) => {
-              const img = new Image();
-              img.onload = resolve;
-              img.onerror = reject;
-              img.src = url;
-            });
-            await this._put(key, url); // URL文字列をIndexedDBに保存
-            this._knownKeys.add(key);
-            this._blobUrls[key] = url;
-          } catch (e2) { failed++; }
+          failed++;
         }
         done++;
         this._onProgress(done, total, failed);

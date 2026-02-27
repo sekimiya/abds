@@ -463,6 +463,32 @@ a:hover { text-decoration: underline; }
     </div>
   </div>
 
+  <!-- Image Cache Management -->
+  <div class="section">
+    <div class="section-title">画像キャッシュ管理</div>
+    <div class="stats-panel" style="margin-bottom:16px;">
+      <div class="stat-card">
+        <div class="stat-value" id="imgCachedCount">-</div>
+        <div class="stat-label">サーバーキャッシュ</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value" id="imgTotalCount">-</div>
+        <div class="stat-label">全カード(表裏)</div>
+      </div>
+    </div>
+    <div style="display:flex;gap:8px;align-items:center;">
+      <button class="collect-btn" id="imgDlBtn" onclick="startImageDl()">画像DL開始</button>
+      <button class="stop-btn-sm" id="imgStopBtn" onclick="stopImageDl()" style="display:none;padding:10px 16px;font-size:0.9rem;">停止</button>
+    </div>
+    <div class="progress-area" id="imgProgressArea">
+      <div class="progress-bar-outer">
+        <div class="progress-bar-inner" id="imgProgressBar" style="width:0%">0%</div>
+      </div>
+      <div class="progress-text" id="imgProgressText"></div>
+      <div class="log-area" id="imgLogArea"></div>
+    </div>
+  </div>
+
   <!-- Series Coverage Table -->
   <div class="section">
     <div class="section-title">シリーズ別カバレッジ</div>
@@ -1008,11 +1034,124 @@ async function checkOcrRunning() {
   } catch (e) {}
 }
 
+// --- Image Cache Management ---
+let imgPolling = null;
+
+async function loadImageCacheStats() {
+  try {
+    const res = await adminFetch('/api/admin/image-cache/stats');
+    const data = await res.json();
+    if (data.success) {
+      document.getElementById('imgCachedCount').textContent = data.cached_images.toLocaleString();
+      document.getElementById('imgTotalCount').textContent = data.total_images.toLocaleString();
+    }
+  } catch (e) {
+    console.error('Image cache stats error:', e);
+  }
+}
+
+async function startImageDl() {
+  const btn = document.getElementById('imgDlBtn');
+  btn.disabled = true;
+  try {
+    const res = await adminFetch('/api/admin/image-cache/start', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({})
+    });
+    const data = await res.json();
+    if (!data.success) {
+      alert(data.error || '画像DLの開始に失敗しました');
+      btn.disabled = false;
+      return;
+    }
+    document.getElementById('imgProgressArea').classList.add('active');
+    document.getElementById('imgStopBtn').style.display = '';
+    imgPolling = setInterval(pollImageDlStatus, 2000);
+    pollImageDlStatus();
+  } catch (e) {
+    alert('エラー: ' + e.message);
+    btn.disabled = false;
+  }
+}
+
+async function pollImageDlStatus() {
+  try {
+    const res = await adminFetch('/api/admin/image-cache/status');
+    const data = await res.json();
+    if (!data.success) return;
+
+    const total = data.total_target || 0;
+    const processed = data.processed_count || 0;
+    const pct = total > 0 ? Math.round((processed / total) * 100) : 0;
+
+    const bar = document.getElementById('imgProgressBar');
+    bar.style.width = pct + '%';
+    bar.textContent = pct + '%';
+
+    const parts = [];
+    if (data.current_card) parts.push(data.current_card);
+    parts.push(`${processed}/${total}`);
+    parts.push(`DL:${data.downloaded_count || 0}`);
+    parts.push(`済:${data.cached_count || 0}`);
+    if (data.failed_count) parts.push(`失敗:${data.failed_count}`);
+    if (data.eta_seconds != null && data.eta_seconds > 0) {
+      const mins = Math.floor(data.eta_seconds / 60);
+      const secs = Math.floor(data.eta_seconds % 60);
+      parts.push(`ETA:${mins}:${String(secs).padStart(2, '0')}`);
+    }
+    document.getElementById('imgProgressText').textContent = parts.join(' | ');
+
+    if (data.log && data.log.length > 0) {
+      const logArea = document.getElementById('imgLogArea');
+      logArea.innerHTML = data.log.map(line => {
+        const cls = (line.includes('エラー') || line.includes('失敗')) ? 'log-error' : '';
+        return `<div class="log-line ${cls}">${escapeHtml(line)}</div>`;
+      }).join('');
+      logArea.scrollTop = logArea.scrollHeight;
+    }
+
+    if (!data.running && imgPolling) {
+      clearInterval(imgPolling);
+      imgPolling = null;
+      document.getElementById('imgDlBtn').disabled = false;
+      document.getElementById('imgStopBtn').style.display = 'none';
+      loadImageCacheStats();
+    }
+  } catch (e) {
+    console.error('Image DL poll error:', e);
+  }
+}
+
+async function stopImageDl() {
+  try {
+    await adminFetch('/api/admin/image-cache/stop', { method: 'POST' });
+  } catch (e) {
+    console.error('Image DL stop error:', e);
+  }
+}
+
+async function checkImageDlRunning() {
+  try {
+    const res = await adminFetch('/api/admin/image-cache/status');
+    const data = await res.json();
+    if (data.success && data.running) {
+      document.getElementById('imgDlBtn').disabled = true;
+      document.getElementById('imgProgressArea').classList.add('active');
+      document.getElementById('imgStopBtn').style.display = '';
+      imgPolling = setInterval(pollImageDlStatus, 2000);
+      pollImageDlStatus();
+    }
+  } catch (e) {}
+}
+
 // Init
 loadStats();
 loadCards(1);
 checkRunning();
 checkOcrRunning();
+loadImageCacheStats();
+checkImageDlRunning();
 </script>
 </body>
 </html>
