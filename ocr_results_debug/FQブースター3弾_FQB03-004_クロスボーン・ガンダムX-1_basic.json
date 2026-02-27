@@ -1,0 +1,83 @@
+{
+  "card_number": "FQB03-004",
+  "card_name": "クロスボーン・ガンダムX-1",
+  "series": "FQブースター3弾",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQB03-004.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQB03-004_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "FQB03-004",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト4"
+    },
+    "name": "クロスボーン・ガンダムX-1",
+    "model": "XM-X1 CROSSBONE GUNDAM X-1",
+    "cost": 4,
+    "category": "遠距離",
+    "affiliation": "宇宙海賊クロスボーン・バンガード",
+    "pilot": "キンケドゥ・ナウ",
+    "stats": {
+      "height": "15.9m",
+      "weight": "9.5t",
+      "mobility": 180,
+      "ranged_attack": 240,
+      "melee_attack": 50,
+      "hp": 480
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "B",
+      "water": "B"
+    },
+    "weapon": {
+      "main": {
+        "name": "ザンバスター",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ビーム・ザンバー",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "奮起",
+      "activation": "出撃時発動",
+      "target": "自分",
+      "range": null,
+      "cost": null,
+      "description": "自身のHPが1以上で一定割合以下になると、一定時間、撃破されなくなり[遠／近攻撃力]を中アップする。出撃時1度のみ発動。"
+    },
+    "link_ability": [
+      {
+        "name": "クロスボーン・ガンダム",
+        "condition": "デッキに2枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "的確な一撃",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][遠距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ザンバスター撃射",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3300,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "M",
+    "illustrator": "J.YUZURU(willow_works)",
+    "raw": "MS\n\n遠距離　コスト4\n\nXM-X1 CROSSBONE GUNDAM X-1\nクロスボーン・ガンダムX-1\n\n頭頂高　15.9m\n本体重量　9.5t\n所属　宇宙海賊クロスボーン・バンガード\nパイロット　キンケドゥ・ナウ\n\n地上 A　宇宙 S　砂漠 B　水中 B\n\n機動力　180\n遠距離攻撃　240\n近距離攻撃　50\nHP　480\n\nWEAPON\nMAIN　ザンバスター　射程 3　遠距離\nSUB　ビーム・ザンバー　射程 1　近距離\n\nLINK ABILITY\nクロスボーン・ガンダム　デッキに2枚以上\n[機動力]小アップ\n\n的確な一撃　デッキに4枚以上\n[機動力][遠距離攻撃力]小アップ\n\nMS ABILITY\n奮起\n出撃時発動　自分　射程 ー　コスト ー\n\n自身のHPが1以上で一定割合以下になると、一定時間、撃破されなくなり[遠／近攻撃力]を中アップする。出撃時1度のみ発動。\n\nIMPACT AREA\n[アイコン:三角形（中央下寄り）]\n\nSPECIAL ATTACK　　UNITED SP\nザンバスター撃射\n連携 ー　連携 ー\n連携 ー　連携 ー\n単体(敵)　射程 3　ー　射程 ー\nSPコスト 2　威力　3300 / ー\n\n敵単体に射撃攻撃でダメージを与える。\n/ ー\n\nillust　J.YUZURU(willow_works)\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nFQB03-004　M"
+  },
+  "ocr_raw_file": "FQブースター3弾_FQB03-004_クロスボーン・ガンダムX-1_ocr_raw.json",
+  "ocr_timestamp": "2026-02-28T02:07:27.631304",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

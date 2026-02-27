@@ -1,0 +1,83 @@
+{
+  "card_number": "UT05-033",
+  "card_name": "ディランザ(グエル専用機)",
+  "series": "UNITRIBE SEASON:05",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT05-033.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT05-033_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "UT05-033",
+    "type": "MS",
+    "card_label": {
+      "class": "機動",
+      "cost_label": "コスト6"
+    },
+    "name": "ディランザ（グエル専用機）",
+    "model": "MD-0032G GUEL'S DILANZA",
+    "cost": 6,
+    "category": "機動",
+    "affiliation": "ジェターク・ヘビー・マシーナリー",
+    "pilot": "グエル・ジェターク",
+    "stats": {
+      "height": "18.2m",
+      "weight": "89.4t",
+      "mobility": 270,
+      "ranged_attack": 340,
+      "melee_attack": 170,
+      "hp": 320
+    },
+    "terrain_compatibility": {
+      "ground": "S",
+      "space": "A",
+      "desert": "A",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "ビームライフル",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ビームパルチザン",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "解撃",
+      "activation": "任意発動",
+      "target": "単体(敵)",
+      "range": 3,
+      "cost": 3,
+      "description": "自身が弱体化状態の時に発動可能となり、自身の弱体化状態を無効化し、ロックオン中の敵に単体攻撃でダメージを与える。"
+    },
+    "link_ability": [
+      {
+        "name": "水星の魔女",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ビームライフル撃射",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3300,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "R",
+    "illustrator": "amasaki",
+    "raw": "機動 コスト6 MS\n\n水星の魔女\n\nMD-0032G GUEL'S DILANZA\nディランザ（グエル専用機）\n\n頭頂高 18.2m\n本体重量 89.4t\n\n地上 S 宇宙 A 砂漠 A 水中 C\n\n所属 ジェターク・ヘビー・マシーナリー\nパイロット グエル・ジェターク\n\n機動力 270\n遠距離攻撃 340\n近距離攻撃 170\nHP 320\n\nWEAPON\nMAIN ビームライフル 射程 3 遠距離\nSUB ビームパルチザン 射程 1 近距離\n\nLINK ABILITY\n水星の魔女 デッキに3枚以上\n[機動力]小アップ\n\nMS ABILITY\n解撃\n任意発動 単体(敵) 射程 3 コスト 3\n自身が弱体化状態の時に発動可能となり、自身の弱体化状態を無効化し、ロックオン中の敵に単体攻撃でダメージを与える。\n\n多彩な戦術 デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nSPECIAL ATTACK　　UNITED SP\nビームライフル撃射　　ー\n連携 ー　　連携 ー\n連携 ー　　連携 ー\n単体(敵)　射程 3　ー　射程\nSPコスト 2　威力 3300 / ー\n\n敵単体に射撃攻撃でダメージを与える。\n/ ー\n\nIMPACT AREA\n[アイコン:着弾点 中央やや下]\n\nillust amasaki\n©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nUT05-033 R"
+  },
+  "ocr_raw_file": "UNITRIBE_SEASON_05_UT05-033_ディランザ(グエル専用機)_ocr_raw.json",
+  "ocr_timestamp": "2026-02-26T19:36:47.789000",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

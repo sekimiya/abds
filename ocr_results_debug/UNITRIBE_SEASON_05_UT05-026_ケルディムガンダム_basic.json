@@ -1,0 +1,89 @@
+{
+  "card_number": "UT05-026",
+  "card_name": "ケルディムガンダム",
+  "series": "UNITRIBE SEASON:05",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT05-026.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT05-026_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "UT05-026",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト6"
+    },
+    "name": "ケルディムガンダム",
+    "model": "GN-006 CHERUDIM GUNDAM",
+    "cost": 6,
+    "category": "遠距離",
+    "affiliation": "ソレスタルビーイング",
+    "pilot": "ロックオン・ストラトス",
+    "stats": {
+      "height": "18.0m",
+      "weight": "58.9t",
+      "mobility": 220,
+      "ranged_attack": 300,
+      "melee_attack": 140,
+      "hp": 340
+    },
+    "terrain_compatibility": {
+      "ground": "S",
+      "space": "A",
+      "desert": "C",
+      "water": "B"
+    },
+    "weapon": {
+      "main": {
+        "name": "GNスナイパーライフルII",
+        "range": 4,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "GNピストルII",
+        "range": 2,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "増援[防衛]",
+      "activation": "任意発動",
+      "target": "特殊(自分)",
+      "range": null,
+      "cost": 4,
+      "description": "自身の周囲に防衛タイプの味方ユニットを呼び出す。※上限3ユニットまで。"
+    },
+    "link_ability": [
+      {
+        "name": "ガンダム00",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "的確な一撃",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][遠距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "トランザム一斉射",
+      "target": "範囲(敵)",
+      "range": 4,
+      "sp_cost": 2,
+      "power": 2700,
+      "description": "ロックオン中の敵を中心に扇状の範囲攻撃を行い、範囲内の敵にダメージを与える。",
+      "united_sp": {
+        "partner1": null,
+        "partner2": null,
+        "range": null,
+        "power": null,
+        "description": null
+      }
+    },
+    "rarity": "C",
+    "illustrator": "kenko",
+    "raw": "MS\n\n遠距離　コスト6\n\nGN-006 CHERUDIM GUNDAM\nケルディムガンダム\n\n頭頂高　18.0m\n本体重量　58.9t\n所属　ソレスタルビーイング\nパイロット　ロックオン・ストラトス\n\n地上 S　宇宙 A　砂漠 C　水中 B\n\n機動力 220\n遠距離攻撃 300\n近距離攻撃 140\nHP 340\n\nWEAPON\nMAIN　GNスナイパーライフルII　射程 4　遠距離\nSUB　GNピストルII　射程 2　近距離\n\nLINK ABILITY\nガンダム00　デッキに3枚以上\n[機動力]小アップ\n\nMS ABILITY\n増援[防衛]\n任意発動　特殊(自分)　射程 ー　コスト 4\n自身の周囲に防衛タイプの味方ユニットを呼び出す。※上限3ユニットまで。\n\n的確な一撃　デッキに4枚以上\n[機動力][遠距離攻撃力]小アップ\n\nSPECIAL ATTACK　UNITED SP\nトランザム一斉射　ー\n連携 ー　　連携 ー\n連携 ー　　連携 ー\n範囲(敵)　射程 4　ー　射程 ー\nSPコスト 2　威力 2700 / ー\nロックオン中の敵を中心に扇状の範囲攻撃を行い、範囲内の敵にダメージを与える。/ ー\n\nIMPACT AREA\n[アイコン:扇状の範囲攻撃エリア表示]\n\nillust kenko\n©創通・サンライズ\n機動戦士ガンダム\nARSENAL BASE®\n\nUT05-026　C"
+  },
+  "ocr_raw_file": "UNITRIBE_SEASON_05_UT05-026_ケルディムガンダム_ocr_raw.json",
+  "ocr_timestamp": "2026-02-26T19:30:50.363222",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

@@ -1,0 +1,83 @@
+{
+  "card_number": "UT05-037",
+  "card_name": "ガンダム・シュバルゼッテ",
+  "series": "UNITRIBE SEASON:05",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT05-037.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT05-037_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "UT05-037",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト2"
+    },
+    "name": "ガンダム・シュバルゼッテ",
+    "model": "MDX-0003 GUNDAM SCHWARZETTE",
+    "cost": 2,
+    "category": "遠距離",
+    "affiliation": "ジェターク・ヘビー・マシーナリー",
+    "pilot": "ラウダ・ニール",
+    "stats": {
+      "height": "18.7m",
+      "weight": "73.3t",
+      "mobility": 170,
+      "ranged_attack": 250,
+      "melee_attack": 80,
+      "hp": 200
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "C",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "ガーディアン・シース(射撃)",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ガーディアン・シース",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "精密射撃",
+      "activation": "任意発動",
+      "target": "単体(敵)",
+      "range": 3,
+      "cost": 3,
+      "description": "ロックオン中の敵に単体攻撃でダメージを与える。"
+    },
+    "link_ability": [
+      {
+        "name": "水星の魔女",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ガーディアン・シース撃射",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3100,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "R",
+    "illustrator": "kenko",
+    "raw": "MS\n\n遠距離　コスト2\n\nMDX-0003 GUNDAM SCHWARZETTE\nガンダム・シュバルゼッテ\n\n水星の魔女\n\n頭頂高　18.7m\n本体重量　73.3t\n所属　ジェターク・ヘビー・マシーナリー\nパイロット　ラウダ・ニール\n\n地上 A　宇宙 S　砂漠 C　水中 C\n\n機動力 170\n遠距離攻撃 250\n近距離攻撃 80\nHP 200\n\nWEAPON\nMAIN　ガーディアン・シース(射撃)　射程 3　遠距離\nSUB　ガーディアン・シース　射程 1　近距離\n\nLINK ABILITY\n水星の魔女　デッキに3枚以上\n[機動力]小アップ\n\n多彩な戦術　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nMS ABILITY\n精密射撃\n任意発動　単体(敵)　射程 3　コスト 3\nロックオン中の敵に単体攻撃でダメージを与える。\n\nSPECIAL ATTACK　　UNITED SP\nガーディアン・シース撃射　ー\n連携　ー　　連携　ー\n連携　ー　　連携　ー\n単体(敵)　射程 3　ー　射程　ー\nSPコスト 2　威力　3100　/　ー\n敵単体に射撃攻撃でダメージを与える。\n/　ー\n\nIMPACT AREA\n[アイコン:着弾点 中央やや下]\n\nillust　kenko\n©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nUT05-037　R"
+  },
+  "ocr_raw_file": "UNITRIBE_SEASON_05_UT05-037_ガンダム・シュバルゼッテ_ocr_raw.json",
+  "ocr_timestamp": "2026-02-26T19:39:39.837824",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

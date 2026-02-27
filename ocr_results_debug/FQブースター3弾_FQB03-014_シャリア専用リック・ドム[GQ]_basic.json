@@ -1,0 +1,89 @@
+{
+  "card_number": "FQB03-014",
+  "card_name": "シャリア専用リック・ドム[GQ]",
+  "series": "FQブースター3弾",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQB03-014.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQB03-014_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "FQB03-014",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト5"
+    },
+    "name": "シャリア専用リック・ドム[GQ]",
+    "model": "Challia's Rick Dom [GQ]",
+    "cost": 5,
+    "category": "遠距離",
+    "affiliation": "ジオン公国軍",
+    "pilot": null,
+    "stats": {
+      "height": null,
+      "weight": null,
+      "mobility": 240,
+      "ranged_attack": 520,
+      "melee_attack": 90,
+      "hp": 550
+    },
+    "terrain_compatibility": {
+      "ground": "B",
+      "space": "S",
+      "desert": "C",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "ジャイアント・バズ",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ヒート・サーベル",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "威圧",
+      "activation": "任意発動",
+      "target": "範囲(敵)",
+      "range": null,
+      "cost": 4,
+      "description": "自身を中心とした範囲内の敵ユニットをスタンさせ、一定時間被ダメージを少しアップする。"
+    },
+    "link_ability": [
+      {
+        "name": "GQuuuuuuX",
+        "condition": "デッキに3枚以上",
+        "effect": "[HP]小アップ"
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ジャイアント・バズ撃射",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3500,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "united_sp": {
+        "partner1": "赤いガンダム(0079)",
+        "partner2": null,
+        "range": 4,
+        "power": 5100,
+        "description": "対象の敵を中心として範囲射撃でダメージを与え、攻撃に参加したユニットはMSアビリティのクールタイムを、一定時間短縮する。出撃時1度のみ使用可能。"
+      }
+    },
+    "rarity": "P",
+    "illustrator": "YAMAGUCHI JUN",
+    "raw": "MS\n\n遠距離　コスト5\n\nChallia's Rick Dom [GQ]\nシャリア専用リック・ドム[GQ]\n\nGQuuuuuX\n\n頭頂高　—\n本体重量　—\n所属　ジオン公国軍\nパイロット　—\n\n[アイコン:地上B] [アイコン:宇宙S] [アイコン:砂漠C] [アイコン:水中C]\n\n機動力 240\n遠距離攻撃 520\n近距離攻撃 90\nHP 550\n\nWEAPON\nMAIN ジャイアント・バズ　射程 3　遠距離\nSUB ヒート・サーベル　射程 1　近距離\n\nLINK ABILITY\nGQuuuuuuX　デッキに3枚以上\n[HP]小アップ\n\n戦況を変える力　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nMS ABILITY\n威圧\n任意発動　範囲(敵)　射程 —　コスト 4\n自身を中心とした範囲内の敵ユニットをスタンさせ、一定時間被ダメージを少しアップする。\n\nSPECIAL ATTACK　　UNITED SP\nジャイアント・バズ撃射　リック・ドム&赤いガンダム連携\n連携 赤いガンダム(0079)　連携 —\n連携 —　連携 —\n単体(敵)　射程 3　範囲(敵)　射程 4\nSPコスト 2　威力 3500 / 5100\n敵単体に射撃攻撃でダメージを与える。／対象の敵を中心として範囲射撃でダメージを与え、攻撃に参加したユニットはMSアビリティのクールタイムを、一定時間短縮する。出撃時1度のみ使用可能。\n\nIMPACT AREA\n[アイコン:×マーク 上方]\n[アイコン:●マーク 中央下方]\n[アイコン:▲マーク 最下部]\n\nillust YAMAGUCHI JUN\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\nFQB03-014　P"
+  },
+  "ocr_raw_file": "FQブースター3弾_FQB03-014_シャリア専用リック・ドム[GQ]_ocr_raw.json",
+  "ocr_timestamp": "2026-02-28T02:14:24.972025",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

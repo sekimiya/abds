@@ -1,0 +1,83 @@
+{
+  "card_number": "UT05-001",
+  "card_name": "ヅダ",
+  "series": "UNITRIBE SEASON:05",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT05-001.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT05-001_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "UT05-001",
+    "type": "MS",
+    "card_label": {
+      "class": "機動",
+      "cost_label": "コスト4"
+    },
+    "name": "ヅダ",
+    "model": "EMS-10 ZUDAH",
+    "cost": 4,
+    "category": "機動",
+    "affiliation": "ジオン公国軍",
+    "pilot": "ジャン・リュック・デュバル",
+    "stats": {
+      "height": "17.3m",
+      "weight": "61.0t",
+      "mobility": 210,
+      "ranged_attack": 60,
+      "melee_attack": 260,
+      "hp": 220
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "C",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "白兵戦用ピック",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "ザク・マシンガン",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "鼓舞[近距離][弱体化解除]",
+      "activation": "任意発動",
+      "target": "範囲(味方)",
+      "range": null,
+      "cost": 6,
+      "description": "自身を中心とした大範囲内の味方ユニットの弱体化状態を無効化し、30秒間、[近距離攻撃力]を中アップする。"
+    },
+    "link_ability": [
+      {
+        "name": "MS IGLOO",
+        "condition": "デッキに2枚以上",
+        "effect": "[近距離攻撃力]小アップ"
+      },
+      {
+        "name": "固めた装甲",
+        "condition": "デッキに2枚以上",
+        "effect": "[HP]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "白兵戦用ピック強撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3200,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "C",
+    "illustrator": "Kazue Saitou",
+    "raw": "MS\n\n機動 コスト4\n\nEMS-10 ZUDAH\nヅダ\n\n機動戦士ガンダム MS IGLOO 一年戦争秘録\n\n頭頂高 17.3m\n本体重量 61.0t\n所属 ジオン公国軍\nパイロット ジャン・リュック・デュバル\n\n地上 A 宇宙 S 砂漠 C 水中 C\n\n機動力 210\n遠距離攻撃 60\n近距離攻撃 260\nHP 220\n\nWEAPON\nMAIN 白兵戦用ピック 射程 1 近距離\nSUB ザク・マシンガン 射程 3 遠距離\n\nLINK ABILITY\nMS IGLOO デッキに2枚以上\n[近距離攻撃力]小アップ\n\n固めた装甲 デッキに2枚以上\n[HP]小アップ\n\nMS ABILITY\n鼓舞[近距離][弱体化解除]\n任意発動 範囲(味方) 射程 ー コスト 6\n自身を中心とした大範囲内の味方ユニットの弱体化状態を無効化し、30秒間、[近距離攻撃力]を中アップする。\n\nSPECIAL ATTACK\n白兵戦用ピック強撃\n連携 ー\n連携 ー\n単体(敵) 射程 2\nSPコスト 2 威力 3200\n\n敵単体に格闘攻撃でダメージを与える。\n\nUNITED SP\n連携 ー\n連携 ー\nー 射程 ー\nー\n\n/ ー\n\nIMPACT AREA\n[アイコン:前方楕円範囲]\n\nillust Kazue Saitou\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nUT05-001 C"
+  },
+  "ocr_raw_file": "UNITRIBE_SEASON_05_UT05-001_ヅダ_ocr_raw.json",
+  "ocr_timestamp": "2026-02-26T19:12:58.569886",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}
