@@ -1601,6 +1601,11 @@ const DeckManager = {
         TacticsPicker.renderButtons();
       } catch {}
     }
+    // デフォルトデッキ（初回アクセス時）
+    await this._applyNumbers([
+      'VE01-023','VE01-020','VE01-017','VE01-008','VE01-009',
+      'VE01-057','VE01-054','VE01-051','VE01-043','VE01-044'
+    ]);
   },
   showLoadModal() {
     const decks = JSON.parse(localStorage.getItem('gab_decks') || '{}');
