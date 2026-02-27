@@ -24,6 +24,7 @@ from card_ocr_cc import (
     get_existing_ocr_numbers,
 )
 import card_ocr_cc
+import ocr_test
 
 app = Flask(__name__)
 
@@ -940,9 +941,466 @@ def serve_ocr_results(filename):
     return send_from_directory('ocr_results', filename)
 
 
+# --- OCR バリデーション＆補正 ---
+
+_validate_cards_cache = None
+_validate_cards_cache_lock = threading.Lock()
+_card_number_re = re.compile(r'([A-Z]{2,4}\d{1,2}-\d{2,4})')
+
+
+def _validate_fingerprint():
+    ocr_dir = ocr_test.RESULTS_DIR
+    count = 0
+    mtime_sum = 0.0
+    try:
+        for fn in os.listdir(ocr_dir):
+            if fn.endswith('_basic.json'):
+                count += 1
+                mtime_sum += os.path.getmtime(os.path.join(ocr_dir, fn))
+    except OSError:
+        pass
+    return (count, mtime_sum)
+
+
+def _get_validate_cards(series_filter=None):
+    global _validate_cards_cache
+    fp = _validate_fingerprint()
+    if _validate_cards_cache is None or _validate_cards_cache['fingerprint'] != fp:
+        with _validate_cards_cache_lock:
+            fp = _validate_fingerprint()
+            if _validate_cards_cache is None or _validate_cards_cache['fingerprint'] != fp:
+                cards = ocr_test.load_basic_files(ocr_test.RESULTS_DIR, series_filter=None)
+                _validate_cards_cache = {'cards': cards, 'fingerprint': fp}
+    cards = _validate_cards_cache['cards']
+    if series_filter:
+        return [
+            item for item in cards
+            if (m := _card_number_re.search(item[0])) and m.group(1).startswith(series_filter)
+        ]
+    return cards
+
+
+def _invalidate_validate_cache():
+    global _validate_cards_cache
+    _validate_cards_cache = None
+
+
+@app.route('/ocr-validate')
+def ocr_validate():
+    return render_template('ocr_validate.html')
+
+
+@app.route('/api/ocr-validate/report')
+def api_ocr_validate_report():
+    checks_param = request.args.get('checks', '')
+    series = request.args.get('series', '').strip() or None
+    if checks_param:
+        check_keys = [c.strip() for c in checks_param.split(',') if c.strip()]
+    else:
+        check_keys = list(ocr_test.CHECK_FUNCTIONS.keys())
+    valid_keys = set(ocr_test.CHECK_FUNCTIONS.keys())
+    invalid = [k for k in check_keys if k not in valid_keys]
+    if invalid:
+        return jsonify({'success': False, 'error': f'不明なチェック名: {", ".join(invalid)}', 'valid': sorted(valid_keys)}), 400
+    cards = _get_validate_cards(series_filter=series)
+    if not cards:
+        return jsonify({'success': True, 'total_cards': 0, 'checks': {}, 'summary': {'warnings': 0, 'errors': 0}})
+    total_warnings = 0
+    total_errors = 0
+    checks_result = {}
+    for key in check_keys:
+        title, func = ocr_test.CHECK_FUNCTIONS[key]
+        raw_results = func(cards)
+        enriched = []
+        for r in raw_results:
+            item = dict(r)
+            if item['level'] == 'WARNING' and item.get('detail', '').startswith('類似候補:'):
+                detail = item['detail']
+                m = re.search(r'類似候補:\s*"(.+?)"', detail)
+                if m:
+                    suggested_value = m.group(1)
+                    msg = item['message']
+                    m2 = re.search(r'"(.+?)"', msg)
+                    if m2:
+                        wrong_name = m2.group(1)
+                        if key == 'link_names':
+                            cat = 'link_ability_names'
+                        elif key == 'pilot_skills':
+                            cat = 'pilot_skill_names'
+                        elif key == 'ms_abilities':
+                            cat = 'ms_ability_names'
+                        else:
+                            cat = None
+                        if cat:
+                            item['suggestion'] = {'category': cat, 'key': wrong_name, 'value': suggested_value}
+            if item['level'] == 'WARNING':
+                total_warnings += 1
+            elif item['level'] == 'ERROR':
+                total_errors += 1
+            enriched.append(item)
+        checks_result[key] = {'title': title, 'results': enriched}
+    return jsonify({
+        'success': True,
+        'total_cards': len(cards),
+        'checks': checks_result,
+        'summary': {'warnings': total_warnings, 'errors': total_errors},
+    })
+
+
+@app.route('/api/ocr-validate/corrections')
+def api_ocr_validate_corrections_get():
+    corrections = ocr_test.load_corrections()
+    entry_count = sum(len(v) for v in corrections.values())
+    return jsonify({'success': True, 'corrections': corrections, 'entry_count': entry_count})
+
+
+@app.route('/api/ocr-validate/corrections', methods=['POST'])
+def api_ocr_validate_corrections_post():
+    data = request.get_json(force=True)
+    action = data.get('action')
+    category = data.get('category')
+    key = data.get('key')
+    valid_categories = {'link_ability_names', 'pilot_skill_names', 'ms_ability_names', 'link_effects'}
+    if category not in valid_categories:
+        return jsonify({'success': False, 'error': f'不正なカテゴリ: {category}'}), 400
+    corrections = ocr_test.load_corrections()
+    if action == 'add':
+        value = data.get('value')
+        if not key or not value:
+            return jsonify({'success': False, 'error': 'key と value は必須です'}), 400
+        corrections[category][key] = value
+    elif action == 'remove':
+        if not key:
+            return jsonify({'success': False, 'error': 'key は必須です'}), 400
+        corrections[category].pop(key, None)
+    else:
+        return jsonify({'success': False, 'error': f'不正なアクション: {action}'}), 400
+    with open(ocr_test.CORRECTIONS_FILE, 'w', encoding='utf-8') as f:
+        json.dump(corrections, f, ensure_ascii=False, indent=2)
+    entry_count = sum(len(v) for v in corrections.values())
+    return jsonify({'success': True, 'corrections': corrections, 'entry_count': entry_count})
+
+
+@app.route('/api/ocr-validate/auto-correct')
+def api_ocr_validate_auto_correct_get():
+    """公式マスターデータとOCRデータを照合し、自動補正候補を生成する（dry_run的）。"""
+    series = request.args.get('series', '').strip() or None
+    force_refresh = request.args.get('force_refresh', '0') == '1'
+    max_distance = request.args.get('max_distance', 2, type=int)
+
+    try:
+        master_data = ocr_test.fetch_official_master_data(force_refresh=force_refresh)
+    except Exception as e:
+        return jsonify({'success': False, 'error': f'マスターデータ取得失敗: {str(e)}'}), 500
+
+    # マスターデータでABILITY_DATAを更新
+    ocr_test.update_ability_data_from_master(master_data)
+
+    cards = _get_validate_cards(series_filter=series)
+    if not cards:
+        return jsonify({
+            'success': True,
+            'candidates': [],
+            'master_stats': {
+                'ms_abilities': len(master_data.get('ms_abilities', [])),
+                'link_names': len(master_data.get('link_names', [])),
+            },
+        })
+
+    candidates = ocr_test.auto_generate_corrections(cards, master_data=master_data, max_distance=max_distance)
+
+    return jsonify({
+        'success': True,
+        'candidates': candidates,
+        'master_stats': {
+            'ms_abilities': len(master_data.get('ms_abilities', [])),
+            'link_names': len(master_data.get('link_names', [])),
+            'fetched_at': master_data.get('fetched_at', ''),
+        },
+    })
+
+
+@app.route('/api/ocr-validate/auto-correct', methods=['POST'])
+def api_ocr_validate_auto_correct_post():
+    """承認された自動補正候補を辞書に追加する。"""
+    data = request.get_json(force=True)
+    items = data.get('items', [])
+    if not items:
+        return jsonify({'success': False, 'error': '追加する候補がありません'}), 400
+
+    valid_categories = {'link_ability_names', 'pilot_skill_names', 'ms_ability_names', 'link_effects'}
+    corrections = ocr_test.load_corrections()
+    added = 0
+
+    for item in items:
+        category = item.get('category', '')
+        key = item.get('key', '')
+        value = item.get('value', '')
+        if category not in valid_categories or not key or not value:
+            continue
+        if key not in corrections[category]:
+            corrections[category][key] = value
+            added += 1
+
+    with open(ocr_test.CORRECTIONS_FILE, 'w', encoding='utf-8') as f:
+        json.dump(corrections, f, ensure_ascii=False, indent=2)
+
+    entry_count = sum(len(v) for v in corrections.values())
+    return jsonify({
+        'success': True,
+        'added': added,
+        'corrections': corrections,
+        'entry_count': entry_count,
+    })
+
+
+@app.route('/api/ocr-validate/master-check')
+def api_ocr_validate_master_check():
+    """OCR結果を公式マスターデータと照合し、不一致をグルーピングして返す。"""
+    series = request.args.get('series', '').strip() or None
+
+    master_file = ocr_test.MASTER_DATA_FILE
+    if not os.path.exists(master_file):
+        return jsonify({'success': False, 'error': 'マスターデータが未取得です。先に「マスター更新」を実行してください。'}), 400
+
+    try:
+        with open(master_file, 'r', encoding='utf-8') as f:
+            master_data = json.load(f)
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)}), 500
+
+    cards = _get_validate_cards(series_filter=series)
+    if not cards:
+        return jsonify({'success': True, 'groups': [], 'total_cards': 0, 'total_mismatches': 0,
+                        'ms_ability_mismatches': 0, 'link_ability_mismatches': 0})
+
+    mismatches = ocr_test.check_against_master(cards, master_data)
+
+    # ユニーク値+カテゴリでグルーピング
+    groups_map = {}
+    for m in mismatches:
+        key = (m['category'], m['ocr_value'])
+        if key not in groups_map:
+            groups_map[key] = {
+                'category': m['category'],
+                'ocr_value': m['ocr_value'],
+                'closest_match': m['closest_match'],
+                'distance': m['distance'],
+                'count': 0,
+                'cards': [],
+            }
+        groups_map[key]['count'] += 1
+        groups_map[key]['cards'].append(m['card_id'])
+
+    # 件数の多い順にソート
+    groups = sorted(groups_map.values(), key=lambda g: -g['count'])
+
+    return jsonify({
+        'success': True,
+        'groups': groups,
+        'total_cards': len(cards),
+        'total_mismatches': len(mismatches),
+        'unique_mismatches': len(groups),
+        'ms_ability_mismatches': sum(1 for m in mismatches if m['category'] == 'ms_ability'),
+        'link_ability_mismatches': sum(1 for m in mismatches if m['category'] == 'link_ability'),
+    })
+
+
+@app.route('/api/ocr-validate/master-data/status')
+def api_ocr_validate_master_data_status():
+    """公式マスターデータの存在・内容を返す。"""
+    master_file = ocr_test.MASTER_DATA_FILE
+    if not os.path.exists(master_file):
+        return jsonify({
+            'success': True,
+            'exists': False,
+            'fetched_at': None,
+            'ms_abilities_count': 0,
+            'link_names_count': 0,
+            'ability_data_count': len(ocr_test.ABILITY_DATA),
+        })
+    try:
+        with open(master_file, 'r', encoding='utf-8') as f:
+            data = json.load(f)
+        ms_abilities = data.get('ms_abilities', [])
+        link_names = data.get('link_names', [])
+        return jsonify({
+            'success': True,
+            'exists': True,
+            'fetched_at': data.get('fetched_at'),
+            'ms_abilities_count': len(ms_abilities),
+            'link_names_count': len(link_names),
+            'ability_data_count': len(ocr_test.ABILITY_DATA),
+            'ms_abilities': ms_abilities,
+            'link_names': link_names,
+        })
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)}), 500
+
+
+@app.route('/api/ocr-validate/master-data/fetch', methods=['POST'])
+def api_ocr_validate_master_data_fetch():
+    """公式サイトからマスターデータを再取得する。"""
+    ability_data_before = len(ocr_test.ABILITY_DATA)
+    try:
+        master_data = ocr_test.fetch_official_master_data(force_refresh=True)
+        ocr_test.update_ability_data_from_master(master_data)
+        ability_data_after = len(ocr_test.ABILITY_DATA)
+        return jsonify({
+            'success': True,
+            'fetched_at': master_data.get('fetched_at'),
+            'ms_abilities_count': len(master_data.get('ms_abilities', [])),
+            'link_names_count': len(master_data.get('link_names', [])),
+            'ability_data_before': ability_data_before,
+            'ability_data_after': ability_data_after,
+        })
+    except Exception as e:
+        return jsonify({'success': False, 'error': f'マスターデータ取得失敗: {str(e)}'}), 500
+
+
+@app.route('/api/ocr-validate/fix/preview', methods=['POST'])
+def api_ocr_validate_fix_preview():
+    """構造化された変更候補を返す。"""
+    data = request.get_json(force=True) if request.is_json else {}
+    series = data.get('series', '').strip() or None
+
+    corrections = ocr_test.load_corrections()
+    entry_count = sum(len(v) for v in corrections.values())
+    if entry_count == 0:
+        return jsonify({'success': True, 'items': [], 'total_items': 0, 'total_files': 0, 'message': '補正辞書が空です'})
+
+    cards = ocr_test.load_basic_files(ocr_test.RESULTS_DIR, series_filter=series)
+    if not cards:
+        return jsonify({'success': True, 'items': [], 'total_items': 0, 'total_files': 0, 'message': '対象ファイルなし'})
+
+    items = ocr_test.generate_correction_preview(cards, corrections)
+
+    # file_path はフロントに送らない
+    safe_items = []
+    for item in items:
+        safe_items.append({
+            'id': item['id'],
+            'file': item['file'],
+            'field': item['field'],
+            'source': item['source'],
+            'old_value': item['old_value'],
+            'new_value': item['new_value'],
+            'context': item['context'],
+        })
+
+    file_set = set(item['file'] for item in items)
+
+    return jsonify({
+        'success': True,
+        'items': safe_items,
+        'total_items': len(items),
+        'total_files': len(file_set),
+    })
+
+
+@app.route('/api/ocr-validate/fix/apply', methods=['POST'])
+def api_ocr_validate_fix_apply():
+    """ユーザーの決定に基づき選択的にファイルを修正する。"""
+    data = request.get_json(force=True)
+    series = data.get('series', '').strip() or None
+    user_items = data.get('items', [])
+
+    if not user_items:
+        return jsonify({'success': False, 'error': '適用するアイテムがありません'}), 400
+
+    # 内部でpreview再生成→IDでマッチ（セキュリティ: file_pathはフロントに送らない）
+    corrections = ocr_test.load_corrections()
+    cards = ocr_test.load_basic_files(ocr_test.RESULTS_DIR, series_filter=series)
+    if not cards:
+        return jsonify({'success': False, 'error': '対象ファイルなし'}), 400
+
+    preview_items = ocr_test.generate_correction_preview(cards, corrections)
+    preview_by_id = {item['id']: item for item in preview_items}
+
+    # ユーザーの決定を処理
+    to_apply = []
+    skipped = 0
+    edited = 0
+
+    for user_item in user_items:
+        item_id = user_item.get('id')
+        action = user_item.get('action', 'skip')
+
+        if action == 'skip':
+            skipped += 1
+            continue
+
+        preview = preview_by_id.get(item_id)
+        if preview is None:
+            continue
+
+        if action == 'edit':
+            new_value = user_item.get('new_value')
+            if new_value is None:
+                skipped += 1
+                continue
+            apply_item = dict(preview)
+            apply_item['new_value'] = new_value
+            to_apply.append(apply_item)
+            edited += 1
+        elif action == 'accept':
+            to_apply.append(preview)
+
+    if not to_apply:
+        return jsonify({
+            'success': True,
+            'applied': 0,
+            'skipped': skipped,
+            'edited': edited,
+            'files_modified': 0,
+            'errors': [],
+        })
+
+    result = ocr_test.apply_selective_corrections(to_apply)
+    _invalidate_validate_cache()
+
+    return jsonify({
+        'success': True,
+        'applied': result['applied'],
+        'skipped': skipped,
+        'edited': edited,
+        'files_modified': result['files_modified'],
+        'errors': result['errors'],
+    })
+
+
+@app.route('/api/ocr-validate/fix', methods=['POST'])
+def api_ocr_validate_fix():
+    data = request.get_json(force=True)
+    dry_run = data.get('dry_run', True)
+    series = data.get('series', '').strip() or None
+    corrections = ocr_test.load_corrections()
+    entry_count = sum(len(v) for v in corrections.values())
+    if entry_count == 0:
+        return jsonify({'success': True, 'dry_run': dry_run, 'changes': [], 'total_files': 0, 'total_changes': 0, 'message': '補正辞書が空です'})
+    cards = ocr_test.load_basic_files(ocr_test.RESULTS_DIR, series_filter=series)
+    if not cards:
+        return jsonify({'success': True, 'dry_run': dry_run, 'changes': [], 'total_files': 0, 'total_changes': 0, 'message': '対象ファイルなし'})
+    all_changes = ocr_test.apply_corrections(cards, corrections, dry_run=dry_run)
+    if not dry_run:
+        _invalidate_validate_cache()
+    changes_list = []
+    for basename, fpath, file_changes in all_changes:
+        changes_list.append({'file': basename, 'changes': file_changes})
+    total_change_count = sum(len(c) for _, _, c in all_changes)
+    return jsonify({
+        'success': True,
+        'dry_run': dry_run,
+        'changes': changes_list,
+        'total_files': len(all_changes),
+        'total_changes': total_change_count,
+    })
+
+
 if __name__ == '__main__':
     port = int(os.environ.get('OCR_PORT', 5002))
     debug = os.environ.get('FLASK_DEBUG', '0') == '1'
     print(f"[OCR Admin] http://localhost:{port}/admin")
     print(f"[OCR Admin] http://localhost:{port}/ocr-run")
+    print(f"[OCR Admin] http://localhost:{port}/ocr-validate")
     app.run(debug=debug, host='0.0.0.0', port=port)

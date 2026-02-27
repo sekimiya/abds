@@ -1,0 +1,83 @@
+{
+  "card_number": "UTB02-006",
+  "card_name": "ハンブラビ",
+  "series": "UTブースター2弾",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UTB02-006.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UTB02-006_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "UTB02-006",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト3"
+    },
+    "name": "ハンブラビ",
+    "model": "RX-139 HAMBRABI",
+    "cost": 3,
+    "category": "遠距離",
+    "affiliation": "ティターンズ",
+    "pilot": "ヤザン・ゲーブル、ダンケル・クーパー、ラムサス・ハサ、サラ・ザビアロフ",
+    "stats": {
+      "height": "19.9m",
+      "weight": "34.6t",
+      "mobility": 170,
+      "ranged_attack": 230,
+      "melee_attack": 100,
+      "hp": 300
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "C",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "背部ビーム・ライフル",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "海ヘビ",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "精密射撃",
+      "activation": "任意発動",
+      "target": "単体(敵)",
+      "range": 3,
+      "cost": 3,
+      "description": "ロックオン中の敵に単体攻撃でダメージを与える。"
+    },
+    "link_ability": [
+      {
+        "name": "機動戦士Zガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力]小アップ"
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "背部ビーム・ライフル撃射",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3200,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "R",
+    "illustrator": "hiropon",
+    "raw": "MS\n\n遠距離　コスト3\n\nRX-139 HAMBRABI\nハンブラビ\n\n全高　19.9m\n本体重量　34.6t\n所属　ティターンズ\nパイロット　ヤザン・ゲーブル、ダンケル・クーパー、ラムサス・ハサ、サラ・ザビアロフ\n\n地上 A　宇宙 S　砂漠 C　水中 C\n\n機動力 170\n遠距離攻撃 230\n近距離攻撃 100\nHP 300\n\nWEAPON\nMAIN　背部ビーム・ライフル　射程 3　遠距離\nSUB　海ヘビ　射程 1　近距離\n\nLINK ABILITY\n機動戦士Zガンダム　デッキに3枚以上\n[遠距離攻撃力]小アップ\n\nMS ABILITY\n精密射撃\n任意発動　単体(敵)　射程 3　コスト 3\nロックオン中の敵に単体攻撃でダメージを与える。\n\n多彩な戦術　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nSPECIAL ATTACK　UNITED SP\n背部ビーム・ライフル撃射　ー\n連携 ー　　連携 ー\n連携 ー　　連携 ー\n単体(敵)　射程 3　ー　射程 ー\nSPコスト 2　威力 3200 / ー\n敵単体に射撃攻撃でダメージを与える。\n/ ー\n\nIMPACT AREA\n[アイコン:中央やや下に黄緑の円形マーカー]\n\nillust　hiropon\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\nUTB02-006　R"
+  },
+  "ocr_raw_file": "UTブースター2弾_UTB02-006_ハンブラビ_ocr_raw.json",
+  "ocr_timestamp": "2026-02-28T04:30:23.859751",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

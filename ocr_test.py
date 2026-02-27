@@ -21,6 +21,9 @@ import os
 import sys
 from collections import Counter
 
+import requests
+from bs4 import BeautifulSoup
+
 # ====================================================================
 # 定数（logic/ から直接インポートせず、ここで参照用に定義）
 # parse_link_condition は logic/utils.py を再利用したいが、
@@ -29,6 +32,8 @@ from collections import Counter
 
 RESULTS_DIR = 'ocr_results_debug'
 CORRECTIONS_FILE = 'ocr_corrections.json'
+MASTER_DATA_FILE = 'official_master_data.json'
+OFFICIAL_CARDLIST_URL = 'https://www.gundam-ab.com/cardlist/?series=529001'
 
 # OCRで頻出する文字混同の正規化マップ
 # 外国語文字 → 正しい日本語文字
@@ -77,7 +82,7 @@ VALID_TYPES = {'MS', 'PL'}
 
 
 # ====================================================================
-# Levenshtein 距離（自前実装）
+# 文字正規化
 # ====================================================================
 
 def normalize_chars(text):
@@ -87,10 +92,14 @@ def normalize_chars(text):
     return ''.join(CHAR_NORMALIZE_MAP.get(c, c) for c in text)
 
 
-def levenshtein(s1, s2):
-    """2文字列間のLevenshtein編集距離を返す。"""
+# ====================================================================
+# Levenshtein距離
+# ====================================================================
+
+def levenshtein_distance(s1, s2):
+    """2つの文字列のLevenshtein編集距離を計算する。"""
     if len(s1) < len(s2):
-        return levenshtein(s2, s1)
+        return levenshtein_distance(s2, s1)
     if len(s2) == 0:
         return len(s1)
 
@@ -98,14 +107,272 @@ def levenshtein(s1, s2):
     for i, c1 in enumerate(s1):
         curr_row = [i + 1]
         for j, c2 in enumerate(s2):
-            cost = 0 if c1 == c2 else 1
-            curr_row.append(min(
-                curr_row[j] + 1,        # 挿入
-                prev_row[j + 1] + 1,    # 削除
-                prev_row[j] + cost,     # 置換
-            ))
+            insertions = prev_row[j + 1] + 1
+            deletions = curr_row[j] + 1
+            substitutions = prev_row[j] + (0 if c1 == c2 else 1)
+            curr_row.append(min(insertions, deletions, substitutions))
         prev_row = curr_row
+
     return prev_row[-1]
+
+
+def find_closest_match(name, candidates, max_distance=2):
+    """候補セットの中から最も近い文字列を見つける。
+
+    Returns:
+        (best_match, distance) or (None, None) if no match within threshold
+    """
+    best = None
+    best_dist = max_distance + 1
+    for candidate in candidates:
+        dist = levenshtein_distance(name, candidate)
+        if dist < best_dist:
+            best_dist = dist
+            best = candidate
+        if dist == 0:
+            break
+    if best_dist <= max_distance:
+        return (best, best_dist)
+    return (None, None)
+
+
+# ====================================================================
+# 公式サイトマスターデータ取得
+# ====================================================================
+
+def fetch_official_master_data(force_refresh=False):
+    """公式サイトからMSアビリティ名・リンクアビリティ名のマスターデータを取得する。
+
+    キャッシュファイル (official_master_data.json) が存在する場合はそれを返す。
+    force_refresh=True の場合は再取得する。
+
+    Returns:
+        dict: {'ms_abilities': [...], 'link_names': [...]}
+    """
+    if not force_refresh and os.path.exists(MASTER_DATA_FILE):
+        with open(MASTER_DATA_FILE, 'r', encoding='utf-8') as f:
+            return json.load(f)
+
+    r = requests.get(OFFICIAL_CARDLIST_URL, timeout=30)
+    r.raise_for_status()
+    soup = BeautifulSoup(r.content, 'html.parser')
+
+    # MSアビリティ名のselect要素
+    ms_abilities = []
+    sel_ms = soup.find('select', id='msAbilityName')
+    if sel_ms:
+        for opt in sel_ms.find_all('option'):
+            v = opt.get('value', '').strip()
+            if v:
+                ms_abilities.append(v)
+
+    # リンクアビリティ名のselect要素
+    link_names = []
+    sel_link = soup.find('select', id='linkAbilityName')
+    if sel_link:
+        for opt in sel_link.find_all('option'):
+            v = opt.get('value', '').strip()
+            if v:
+                link_names.append(v)
+
+    data = {
+        'ms_abilities': ms_abilities,
+        'link_names': link_names,
+        'fetched_at': __import__('datetime').datetime.now().isoformat(),
+    }
+
+    with open(MASTER_DATA_FILE, 'w', encoding='utf-8') as f:
+        json.dump(data, f, ensure_ascii=False, indent=2)
+
+    return data
+
+
+def update_ability_data_from_master(master_data):
+    """公式マスターデータでABILITY_DATAセットを更新する。"""
+    global ABILITY_DATA
+    for full_name in master_data.get('ms_abilities', []):
+        base = extract_ability_base_name(full_name)
+        if base:
+            ABILITY_DATA.add(base)
+
+
+# ====================================================================
+# マスター照合（OCR結果 vs 公式マスターデータ）
+# ====================================================================
+
+def check_against_master(cards, master_data):
+    """OCR結果を公式マスターデータと照合し、不一致アイテムを返す。
+
+    Returns:
+        list of dict: 各アイテムは
+            {file, card_id, category, ocr_value, closest_match, distance, field}
+        category: 'ms_ability' or 'link_ability'
+    """
+    official_ms_abilities = set(master_data.get('ms_abilities', []))
+    official_link_names = set(master_data.get('link_names', []))
+
+    mismatches = []
+
+    for basename, fpath, ocr in cards:
+        card_id = ocr.get('card_id', basename.replace('_basic.json', ''))
+
+        # --- リンクアビリティ名の照合 ---
+        link_list = get_link_abilities(ocr)
+        for i, link in enumerate(link_list):
+            name = link.get('name', '')
+            if not name:
+                continue
+            if name in official_link_names:
+                continue
+            # 不一致 → 最近傍を探す
+            match, dist = find_closest_match(name, official_link_names, max_distance=3)
+            mismatches.append({
+                'file': basename,
+                'card_id': card_id,
+                'category': 'link_ability',
+                'ocr_value': name,
+                'closest_match': match,
+                'distance': dist,
+                'field': f'link_ability[{i}].name',
+            })
+
+        # --- MSアビリティ名の照合 ---
+        if ocr.get('type') == 'MS':
+            ms_ability = ocr.get('ms_ability')
+            if ms_ability:
+                name = ms_ability.get('name', '')
+                if name and name not in official_ms_abilities:
+                    match, dist = find_closest_match(name, official_ms_abilities, max_distance=3)
+                    mismatches.append({
+                        'file': basename,
+                        'card_id': card_id,
+                        'category': 'ms_ability',
+                        'ocr_value': name,
+                        'closest_match': match,
+                        'distance': dist,
+                        'field': 'ms_ability.name',
+                    })
+
+    return mismatches
+
+
+# ====================================================================
+# 自動補正候補生成
+# ====================================================================
+
+def auto_generate_corrections(cards, master_data=None, max_distance=2):
+    """OCRデータを公式マスターデータと照合し、自動補正候補を生成する。
+
+    Returns:
+        list of dict: 各候補は
+            {'category', 'ocr_value', 'suggested', 'distance', 'method', 'files'}
+    """
+    if master_data is None:
+        master_data = fetch_official_master_data()
+
+    official_ms_abilities = set(master_data.get('ms_abilities', []))
+    official_link_names = set(master_data.get('link_names', []))
+
+    # 既存の補正辞書をロード（既に登録済みのものはスキップ）
+    corrections = load_corrections()
+    existing_ms = set(corrections.get('ms_ability_names', {}).keys())
+    existing_link = set(corrections.get('link_ability_names', {}).keys())
+    existing_pilot = set(corrections.get('pilot_skill_names', {}).keys())
+
+    candidates = []
+
+    # --- MSアビリティ補正 ---
+    ms_ability_names = {}  # name -> [files]
+    for basename, fpath, ocr in cards:
+        if ocr.get('type') != 'MS':
+            continue
+        ms_ability = ocr.get('ms_ability')
+        if not ms_ability:
+            continue
+        name = ms_ability.get('name', '')
+        if not name:
+            continue
+        ms_ability_names.setdefault(name, []).append(basename)
+
+    for name, files in ms_ability_names.items():
+        if name in existing_ms:
+            continue
+        if name in official_ms_abilities:
+            continue
+        match, dist = find_closest_match(name, official_ms_abilities, max_distance)
+        if match:
+            candidates.append({
+                'category': 'ms_ability_names',
+                'ocr_value': name,
+                'suggested': match,
+                'distance': dist,
+                'method': 'levenshtein_vs_official',
+                'count': len(files),
+                'files': files[:3],
+            })
+
+    # --- リンクアビリティ名補正 ---
+    link_name_files = {}  # name -> [files]
+    for basename, fpath, ocr in cards:
+        for link in get_link_abilities(ocr):
+            name = link.get('name', '')
+            if not name:
+                continue
+            link_name_files.setdefault(name, []).append(basename)
+
+    for name, files in link_name_files.items():
+        if name in existing_link:
+            continue
+        if name in official_link_names:
+            continue
+        # 出現1回のみ or 公式に似ているものを候補にする
+        match, dist = find_closest_match(name, official_link_names, max_distance)
+        if match:
+            candidates.append({
+                'category': 'link_ability_names',
+                'ocr_value': name,
+                'suggested': match,
+                'distance': dist,
+                'method': 'levenshtein_vs_official',
+                'count': len(files),
+                'files': files[:3],
+            })
+
+    # --- パイロットスキル名補正（頻度ベース） ---
+    pilot_skill_names = {}  # name -> [files]
+    for basename, fpath, ocr in cards:
+        if ocr.get('type') != 'PL':
+            continue
+        ps = ocr.get('pilot_skill') or ocr.get('pl_skill')
+        if not ps:
+            continue
+        name = ps.get('name', '')
+        if not name:
+            continue
+        pilot_skill_names.setdefault(name, []).append(basename)
+
+    # 多数派の名前をマスターとして使い、出現1回の名前を補正候補にする
+    frequent_pilot_skills = {n for n, files in pilot_skill_names.items() if len(files) >= 2}
+    rare_pilot_skills = {n: files for n, files in pilot_skill_names.items() if len(files) == 1}
+
+    for name, files in rare_pilot_skills.items():
+        if name in existing_pilot:
+            continue
+        if not frequent_pilot_skills:
+            continue
+        match, dist = find_closest_match(name, frequent_pilot_skills, max_distance)
+        if match:
+            candidates.append({
+                'category': 'pilot_skill_names',
+                'ocr_value': name,
+                'suggested': match,
+                'distance': dist,
+                'method': 'frequency_levenshtein',
+                'count': len(files),
+                'files': files[:3],
+            })
+
+    return candidates
 
 
 # ====================================================================
@@ -192,11 +459,11 @@ def parse_link_condition(condition):
 
 
 # ====================================================================
-# 1-A: リンクアビリティ名の頻度分析
+# 1-A: リンクアビリティ名の頻度分析（出現1回 = OCRエラー候補）
 # ====================================================================
 
 def check_link_names(cards):
-    """リンクアビリティ名の頻度分析。1回のみ出現で類似候補がある場合にWARNING。"""
+    """リンクアビリティ名の頻度分析。1回のみ出現の名前をOCRエラーの可能性として報告。"""
     warnings = []
 
     # 全リンク名を収集（名前→出現ファイルリスト）
@@ -208,37 +475,15 @@ def check_link_names(cards):
                 continue
             name_files.setdefault(name, []).append(basename)
 
-    name_counts = {k: len(v) for k, v in name_files.items()}
-
-    # 出現1回のものを抽出
+    # 出現1回のものを抽出（OCRエラーの可能性が高い）
     rare_names = {n: files for n, files in name_files.items() if len(files) == 1}
 
     for rare_name, files in sorted(rare_names.items()):
-        # 多数派（2回以上）の中から類似候補を探す
-        candidates = []
-        for common_name, count in name_counts.items():
-            if count < 2:
-                continue
-            dist = levenshtein(rare_name, common_name)
-            if dist <= 2:
-                candidates.append((common_name, count, dist))
-
-        candidates.sort(key=lambda x: (x[2], -x[1]))
-
-        if candidates:
-            best = candidates[0]
-            warnings.append({
-                'level': 'WARNING',
-                'message': f'1回のみ出現: "{rare_name}" ({files[0]})',
-                'detail': f'類似候補: "{best[0]}" (出現: {best[1]}回, 編集距離: {best[2]})',
-            })
-        else:
-            # 類似候補なしでも1回のみは注意
-            warnings.append({
-                'level': 'INFO',
-                'message': f'1回のみ出現: "{rare_name}" ({files[0]})',
-                'detail': '類似候補なし',
-            })
+        warnings.append({
+            'level': 'WARNING',
+            'message': f'1回のみ出現: "{rare_name}" ({files[0]})',
+            'detail': 'OCRエラーの可能性あり（出現1回のみ）',
+        })
 
     return warnings
 
@@ -344,6 +589,19 @@ def check_ms_abilities(cards):
     """MSアビリティ名がABILITY_DATAに存在するか検証。"""
     warnings = []
 
+    # 全MSアビリティ名を収集（頻度分析用）
+    name_files = {}
+    for basename, fpath, ocr in cards:
+        if ocr.get('type') != 'MS':
+            continue
+        ms_ability = ocr.get('ms_ability')
+        if not ms_ability:
+            continue
+        name = ms_ability.get('name', '')
+        if not name:
+            continue
+        name_files.setdefault(name, []).append(basename)
+
     for basename, fpath, ocr in cards:
         if ocr.get('type') != 'MS':
             continue
@@ -360,38 +618,34 @@ def check_ms_abilities(cards):
         if base_name in ABILITY_DATA:
             continue
 
-        # 最近似候補を検索
-        candidates = []
-        for known in sorted(ABILITY_DATA):
-            dist = levenshtein(base_name, known)
-            if dist <= 3:
-                candidates.append((known, dist))
+        count = len(name_files.get(name, []))
+        warnings.append({
+            'level': 'WARNING',
+            'message': f'未知のアビリティ名: "{name}" ({basename})',
+            'detail': f'ABILITY_DATAに未登録（出現: {count}回）',
+        })
 
-        candidates.sort(key=lambda x: x[1])
-
-        if candidates:
-            detail_parts = [f'"{c[0]}" (編集距離: {c[1]})' for c in candidates[:3]]
+    # 出現1回のみのアビリティ名を追加報告
+    rare_names = {n: files for n, files in name_files.items() if len(files) == 1}
+    for rare_name, files in sorted(rare_names.items()):
+        base_name = extract_ability_base_name(rare_name)
+        if base_name in ABILITY_DATA:
+            # 既知アビリティだが出現1回のみ → OCRエラーの可能性
             warnings.append({
-                'level': 'WARNING',
-                'message': f'未知のアビリティ名: "{name}" ({basename})',
-                'detail': f'類似候補: {", ".join(detail_parts)}',
-            })
-        else:
-            warnings.append({
-                'level': 'WARNING',
-                'message': f'未知のアビリティ名: "{name}" ({basename})',
-                'detail': '類似候補なし',
+                'level': 'INFO',
+                'message': f'1回のみ出現: "{rare_name}" ({files[0]})',
+                'detail': 'OCRエラーの可能性あり（出現1回のみ）',
             })
 
     return warnings
 
 
 # ====================================================================
-# 1-E: パイロットスキル名の頻度分析
+# 1-E: パイロットスキル名の頻度分析（出現1回 = OCRエラー候補）
 # ====================================================================
 
 def check_pilot_skills(cards):
-    """PLカードのパイロットスキル名を頻度分析。"""
+    """PLカードのパイロットスキル名を頻度分析。1回のみ出現の名前をOCRエラーの可能性として報告。"""
     warnings = []
 
     # 全パイロットスキル名を収集
@@ -407,29 +661,15 @@ def check_pilot_skills(cards):
             continue
         name_files.setdefault(name, []).append(basename)
 
-    name_counts = {k: len(v) for k, v in name_files.items()}
-
-    # 出現1回のものを抽出
+    # 出現1回のものを抽出（OCRエラーの可能性が高い）
     rare_names = {n: files for n, files in name_files.items() if len(files) == 1}
 
     for rare_name, files in sorted(rare_names.items()):
-        candidates = []
-        for common_name, count in name_counts.items():
-            if count < 2:
-                continue
-            dist = levenshtein(rare_name, common_name)
-            if dist <= 2:
-                candidates.append((common_name, count, dist))
-
-        candidates.sort(key=lambda x: (x[2], -x[1]))
-
-        if candidates:
-            best = candidates[0]
-            warnings.append({
-                'level': 'WARNING',
-                'message': f'1回のみ出現: "{rare_name}" ({files[0]})',
-                'detail': f'類似候補: "{best[0]}" (出現: {best[1]}回, 編集距離: {best[2]})',
-            })
+        warnings.append({
+            'level': 'WARNING',
+            'message': f'1回のみ出現: "{rare_name}" ({files[0]})',
+            'detail': 'OCRエラーの可能性あり（出現1回のみ）',
+        })
 
     return warnings
 
@@ -648,6 +888,273 @@ def apply_corrections(cards, corrections, dry_run=False):
                     json.dump(raw, f, ensure_ascii=False, indent=2)
 
     return all_changes
+
+
+# ====================================================================
+# フィールドパス解決ヘルパー
+# ====================================================================
+
+def _resolve_field(ocr_data, field):
+    """フィールドパス文字列からオブジェクト参照を解決する。
+
+    例:
+        'link_ability[0].name' → (ocr_data['link_ability'][0], 'name')
+        'ms_ability.name'      → (ocr_data['ms_ability'], 'name')
+        'pilot_skill.name'     → (ocr_data['pilot_skill'], 'name')
+
+    link_ability / link_abilities エイリアス対応。
+    pilot_skill / pl_skill エイリアス対応。
+
+    Returns:
+        (parent_obj, key) or (None, None) if resolution fails
+    """
+    # トップレベルフィールドを抽出
+    parts = field.split('.', 1)
+    top = parts[0]
+    rest = parts[1] if len(parts) > 1 else None
+
+    # 配列インデックスを解析: link_ability[0] → ('link_ability', 0)
+    idx_match = re.match(r'^(.+?)\[(\d+)\]$', top)
+    if idx_match:
+        top_name = idx_match.group(1)
+        idx = int(idx_match.group(2))
+    else:
+        top_name = top
+        idx = None
+
+    # エイリアス対応
+    obj = ocr_data.get(top_name)
+    if obj is None:
+        if top_name in ('link_ability', 'link_abilities'):
+            obj = ocr_data.get('link_abilities') or ocr_data.get('link_ability')
+        elif top_name in ('pilot_skill', 'pl_skill'):
+            obj = ocr_data.get('pilot_skill') or ocr_data.get('pl_skill')
+
+    if obj is None:
+        return (None, None)
+
+    # 配列インデックスの解決
+    if idx is not None:
+        if not isinstance(obj, list) or idx >= len(obj):
+            return (None, None)
+        obj = obj[idx]
+
+    # ネストされたキーの解決
+    if rest is None:
+        return (None, None)  # 末端キーがない
+
+    sub_parts = rest.split('.')
+    for sub in sub_parts[:-1]:
+        if isinstance(obj, dict):
+            obj = obj.get(sub)
+        else:
+            return (None, None)
+        if obj is None:
+            return (None, None)
+
+    final_key = sub_parts[-1]
+    if not isinstance(obj, dict):
+        return (None, None)
+
+    return (obj, final_key)
+
+
+# ====================================================================
+# 構造化変更プレビュー生成
+# ====================================================================
+
+def generate_correction_preview(cards, corrections):
+    """補正辞書＋文字正規化に基づく変更候補を構造化リストとして返す。
+
+    apply_corrections() と同じロジックだが、ファイルを変更せず
+    構造化された変更候補リストを返す。
+
+    Returns:
+        list of dict: 各候補は
+            {id, file, file_path, field, source, old_value, new_value, context}
+    """
+    link_name_map = corrections.get('link_ability_names', {})
+    pilot_skill_map = corrections.get('pilot_skill_names', {})
+    ms_ability_map = corrections.get('ms_ability_names', {})
+    link_effect_map = corrections.get('link_effects', {})
+
+    items = []
+    item_id = 0
+
+    for basename, fpath, ocr in cards:
+        # リンクアビリティの補正
+        link_list = get_link_abilities(ocr)
+        for i, link in enumerate(link_list):
+            name = link.get('name', '')
+
+            # 1) 文字正規化
+            norm = _apply_char_normalize(name)
+            if norm:
+                items.append({
+                    'id': item_id,
+                    'file': basename,
+                    'file_path': fpath,
+                    'field': f'link_ability[{i}].name',
+                    'source': 'char_normalize',
+                    'old_value': norm[0],
+                    'new_value': norm[1],
+                    'context': f'文字正規化',
+                })
+                item_id += 1
+                name = norm[1]
+
+            # 2) 辞書補正
+            if name in link_name_map:
+                items.append({
+                    'id': item_id,
+                    'file': basename,
+                    'file_path': fpath,
+                    'field': f'link_ability[{i}].name',
+                    'source': 'dictionary',
+                    'old_value': name,
+                    'new_value': link_name_map[name],
+                    'context': f'辞書: link_ability_names',
+                })
+                item_id += 1
+
+            # リンク効果の辞書補正
+            effect = link.get('effect', '')
+            if effect in link_effect_map:
+                items.append({
+                    'id': item_id,
+                    'file': basename,
+                    'file_path': fpath,
+                    'field': f'link_ability[{i}].effect',
+                    'source': 'dictionary',
+                    'old_value': effect,
+                    'new_value': link_effect_map[effect],
+                    'context': f'辞書: link_effects',
+                })
+                item_id += 1
+
+        # MSアビリティ名の補正
+        if ocr.get('type') == 'MS':
+            ms_ability = ocr.get('ms_ability')
+            if ms_ability:
+                name = ms_ability.get('name', '')
+                norm = _apply_char_normalize(name)
+                if norm:
+                    items.append({
+                        'id': item_id,
+                        'file': basename,
+                        'file_path': fpath,
+                        'field': 'ms_ability.name',
+                        'source': 'char_normalize',
+                        'old_value': norm[0],
+                        'new_value': norm[1],
+                        'context': f'文字正規化',
+                    })
+                    item_id += 1
+                    name = norm[1]
+                if name in ms_ability_map:
+                    items.append({
+                        'id': item_id,
+                        'file': basename,
+                        'file_path': fpath,
+                        'field': 'ms_ability.name',
+                        'source': 'dictionary',
+                        'old_value': name,
+                        'new_value': ms_ability_map[name],
+                        'context': f'辞書: ms_ability_names',
+                    })
+                    item_id += 1
+
+        # パイロットスキル名の補正
+        if ocr.get('type') == 'PL':
+            ps = ocr.get('pilot_skill') or ocr.get('pl_skill')
+            if ps:
+                name = ps.get('name', '')
+                # pilot_skill or pl_skill のキー名を特定
+                ps_field = 'pilot_skill' if ocr.get('pilot_skill') else 'pl_skill'
+                norm = _apply_char_normalize(name)
+                if norm:
+                    items.append({
+                        'id': item_id,
+                        'file': basename,
+                        'file_path': fpath,
+                        'field': f'{ps_field}.name',
+                        'source': 'char_normalize',
+                        'old_value': norm[0],
+                        'new_value': norm[1],
+                        'context': f'文字正規化',
+                    })
+                    item_id += 1
+                    name = norm[1]
+                if name in pilot_skill_map:
+                    items.append({
+                        'id': item_id,
+                        'file': basename,
+                        'file_path': fpath,
+                        'field': f'{ps_field}.name',
+                        'source': 'dictionary',
+                        'old_value': name,
+                        'new_value': pilot_skill_map[name],
+                        'context': f'辞書: pilot_skill_names',
+                    })
+                    item_id += 1
+
+    return items
+
+
+# ====================================================================
+# 選択的修正適用
+# ====================================================================
+
+def apply_selective_corrections(change_items):
+    """ユーザーが承認した変更アイテムのみをファイルに適用する。
+
+    change_items: list of dict — generate_correction_preview() で生成されたアイテムに
+                  new_value が（ユーザー編集済みの場合は上書きされて）入っている
+
+    Returns:
+        dict: {'applied': int, 'files_modified': int, 'errors': [str]}
+    """
+    # file_path でグループ化
+    by_file = {}
+    for item in change_items:
+        fpath = item['file_path']
+        by_file.setdefault(fpath, []).append(item)
+
+    applied = 0
+    files_modified = 0
+    errors = []
+
+    for fpath, items in by_file.items():
+        try:
+            with open(fpath, 'r', encoding='utf-8') as f:
+                raw = json.load(f)
+
+            ocr_data = raw.get('ocr_data')
+            if not ocr_data:
+                errors.append(f'{fpath}: ocr_data が見つかりません')
+                continue
+
+            file_changed = False
+            for item in items:
+                parent, key = _resolve_field(ocr_data, item['field'])
+                if parent is None:
+                    errors.append(f'{item["file"]}: フィールド "{item["field"]}" の解決に失敗')
+                    continue
+
+                parent[key] = item['new_value']
+                applied += 1
+                file_changed = True
+
+            if file_changed:
+                raw['ocr_data'] = ocr_data
+                with open(fpath, 'w', encoding='utf-8') as f:
+                    json.dump(raw, f, ensure_ascii=False, indent=2)
+                files_modified += 1
+
+        except Exception as e:
+            errors.append(f'{fpath}: {str(e)}')
+
+    return {'applied': applied, 'files_modified': files_modified, 'errors': errors}
 
 
 # ====================================================================

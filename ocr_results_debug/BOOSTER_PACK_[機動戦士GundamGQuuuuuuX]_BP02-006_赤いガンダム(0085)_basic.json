@@ -1,0 +1,83 @@
+{
+  "card_number": "BP02-006",
+  "card_name": "赤いガンダム(0085)",
+  "series": "BOOSTER PACK [機動戦士GundamGQuuuuuuX]",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP02-006.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP02-006_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "BP02-006",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト5"
+    },
+    "name": "赤いガンダム(0085)",
+    "model": "Red Gundam(0085)",
+    "cost": 5,
+    "category": "遠距離",
+    "affiliation": null,
+    "pilot": "シュウジ・イトウ",
+    "stats": {
+      "height": null,
+      "weight": null,
+      "mobility": 260,
+      "ranged_attack": 370,
+      "melee_attack": 150,
+      "hp": 420
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "C",
+      "water": "A"
+    },
+    "weapon": {
+      "main": {
+        "name": "ビット",
+        "range": 4,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ガンダム・ハンマー",
+        "range": 2,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "集中砲火",
+      "activation": "任意発動",
+      "target": "範囲(味方)",
+      "range": null,
+      "cost": 4,
+      "description": "20秒間、ロックオンしている敵に周囲の味方ターゲットを集め、[遠／近距離攻撃力]を中アップ。攻撃対象が変わると効果は終了する。"
+    },
+    "link_ability": [
+      {
+        "name": "GQuuuuuuX",
+        "condition": "デッキに3枚以上",
+        "effect": "[HP]小アップ"
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ビット撃射",
+      "target": "単体(敵)",
+      "range": 4,
+      "sp_cost": 2,
+      "power": 3300,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "M",
+    "illustrator": "YAMAGUCHI JUN",
+    "raw": "遠距離 コスト5\n\nMS\n\nRed Gundam(0085)\n赤いガンダム(0085)\n\nGQuuuuuX\n\n頭頂高 ー\n本体重量 ー\n所属 ー\nパイロット シュウジ・イトウ\n\n地上 A 宇宙 S 砂漠 C 水中 A\n\n機動力 260\n遠距離攻撃 370\n近距離攻撃 150\nHP 420\n\nWEAPON\nMAIN ビット 射程 4 遠距離\nSUB ガンダム・ハンマー 射程 2 近距離\n\nLINK ABILITY\nGQuuuuuuX デッキに3枚以上\n[HP]小アップ\n\nMS ABILITY\n集中砲火\n任意発動 範囲(味方) 射程 ー コスト 4\n20秒間、ロックオンしている敵に周囲の味方ターゲットを集め、[遠／近距離攻撃力]を中アップ。攻撃対象が変わると効果は終了する。\n\n戦況を変える力 デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nSPECIAL ATTACK    UNITED SP\nビット撃射         ー\n連携 ー           連携 ー\n連携 ー           連携 ー\n単体(敵)  射程 4   ー  射程 ー\nSPコスト 2  威力 3300 / ー\n敵単体に射撃攻撃でダメージを与える。\n/ ー\n\nIMPACT AREA\n[アイコン:黄色円形エリア・中央やや前方]\n\nillust YAMAGUCHI JUN\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nBP02-006 M"
+  },
+  "ocr_raw_file": "BOOSTER_PACK_[機動戦士GundamGQuuuuuuX]_BP02-006_赤いガンダム(0085)_ocr_raw.json",
+  "ocr_timestamp": "2026-02-28T04:46:08.992967",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

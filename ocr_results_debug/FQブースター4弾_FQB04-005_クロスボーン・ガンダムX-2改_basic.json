@@ -1,0 +1,83 @@
+{
+  "card_number": "FQB04-005",
+  "card_name": "クロスボーン・ガンダムX-2改",
+  "series": "FQブースター4弾",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQB04-005.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQB04-005_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "FQB04-005",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト5"
+    },
+    "name": "クロスボーン・ガンダムX-2改",
+    "model": "XM-X2ex CROSSBONE GUNDAM X-2 KAI",
+    "cost": 5,
+    "category": "遠距離",
+    "affiliation": "木星帝国",
+    "pilot": "ザビーネ・シャル",
+    "stats": {
+      "height": "15.9m",
+      "weight": "9.5t",
+      "mobility": 250,
+      "ranged_attack": 520,
+      "melee_attack": 110,
+      "hp": 520
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "A",
+      "water": "B"
+    },
+    "weapon": {
+      "main": {
+        "name": "バスターランチャー",
+        "range": 4,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ショット・ランサー",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "解撃",
+      "activation": "任意発動",
+      "target": "単体(敵)",
+      "range": 4,
+      "cost": 3,
+      "description": "自身が弱体化状態の時に発動可能となり、自身の弱体化状態を無効化し、ロックオン中の敵に単体攻撃でダメージを与える。"
+    },
+    "link_ability": [
+      {
+        "name": "クロスボーン・ガンダム",
+        "condition": "デッキに2枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "的確な一撃",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][遠距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "バスターランチャー撃射",
+      "target": "単体(敵)",
+      "range": 4,
+      "sp_cost": 2,
+      "power": 3400,
+      "description": "敵単体に射撃攻撃でダメージを与え、一定時間スタンさせる。",
+      "united_sp": null
+    },
+    "rarity": "P",
+    "illustrator": "Eske Yoshinob",
+    "raw": "遠距離 コスト5 MS\n\nXM-X2ex CROSSBONE GUNDAM X-2 KAI\n\nクロスボーン・ガンダムX-2改\n\n頭頂高 15.9m\n本体重量 9.5t\n所属 木星帝国\nパイロット ザビーネ・シャル\n\n地上 A 宇宙 S 砂漠 A 水中 B\n\n機動力 250\n遠距離攻撃 520\n近距離攻撃 110\nHP 520\n\nWEAPON\nMAIN バスターランチャー 射程 4 遠距離\nSUB ショット・ランサー 射程 1 近距離\n\nLINK ABILITY\nクロスボーン・ガンダム デッキに2枚以上\n[機動力]小アップ\n\n的確な一撃 デッキに4枚以上\n[機動力][遠距離攻撃力]小アップ\n\nMS ABILITY\n解撃\n任意発動 単体(敵) 射程 4 コスト 3\n自身が弱体化状態の時に発動可能となり、自身の弱体化状態を無効化し、ロックオン中の敵に単体攻撃でダメージを与える。\n\nSPECIAL ATTACK UNITED SP\nバスターランチャー撃射\n連携 ー 連携 ー\n連携 ー 連携 ー\n単体(敵) 射程 4 射程 ー\nSPコスト 2 威力 3400 / ー\n\n敵単体に射撃攻撃でダメージを与え、一定時間スタンさせる。/ ー\n\nIMPACT AREA\n[アイコン:射撃範囲図]\n\nillust Eske Yoshinob\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\nFQB04-005 P"
+  },
+  "ocr_raw_file": "FQブースター4弾_FQB04-005_クロスボーン・ガンダムX-2改_ocr_raw.json",
+  "ocr_timestamp": "2026-02-28T04:11:28.918124",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

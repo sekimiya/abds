@@ -1,0 +1,83 @@
+{
+  "card_number": "FQB05-001",
+  "card_name": "ジオング",
+  "series": "FQブースター5弾",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQB05-001.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQB05-001_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "FQB05-001",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト8"
+    },
+    "name": "ジオング",
+    "model": "MSN-02 ZEONG",
+    "cost": 8,
+    "category": "遠距離",
+    "affiliation": "ジオン公国軍",
+    "pilot": "シャア・アズナブル",
+    "stats": {
+      "height": "17.3m",
+      "weight": "151.2t",
+      "mobility": 350,
+      "ranged_attack": 730,
+      "melee_attack": 100,
+      "hp": 670
+    },
+    "terrain_compatibility": {
+      "ground": "B",
+      "space": "S",
+      "desert": "B",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "頭部有線誘導5連装メガ粒子砲",
+        "range": 4,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "頭部メガ粒子砲",
+        "range": 2,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "装転[広角]",
+      "activation": "任意発動",
+      "target": "自分",
+      "range": null,
+      "cost": 4,
+      "description": "通常攻撃が敵を中心とした扇状の範囲攻撃に変化し、メイン攻撃のみになる。この効果は自身が撤退するまで解除できない。"
+    },
+    "link_ability": [
+      {
+        "name": "機動戦士ガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "赤い彗星",
+        "condition": "デッキに2枚以上",
+        "effect": "[遠距離攻撃力][HP]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "頭部有線誘導5連装メガ粒子砲オールレンジ",
+      "target": "単体(敵)",
+      "range": 4,
+      "sp_cost": 2,
+      "power": 3600,
+      "description": "敵単体に射撃攻撃でダメージを与え、一定時間、自身の[遠距離攻撃力]をアップする。",
+      "united_sp": null
+    },
+    "rarity": "U",
+    "illustrator": "haru",
+    "raw": "MS\n\n遠距離　コスト8\n\nMSN-02 ZEONG\nジオング\n\n頭頂高　17.3m\n本体重量　151.2t\n所属　ジオン公国軍\nパイロット　シャア・アズナブル\n\n地上 B　宇宙 S　砂漠 B　水中 C\n\n機動力 350\n遠距離攻撃 730\n近距離攻撃 100\nHP 670\n\nWEAPON\nMAIN　頭部有線誘導5連装メガ粒子砲　射程 4　遠距離\nSUB　頭部メガ粒子砲　射程 2　近距離\n\nLINK ABILITY\n機動戦士ガンダム　デッキに3枚以上\n[機動力]小アップ\n\n赤い彗星　デッキに2枚以上\n[遠距離攻撃力][HP]小アップ\n\nMS ABILITY\n装転[広角]\n任意発動　自分　射程 ー　コスト 4\n通常攻撃が敵を中心とした扇状の範囲攻撃に変化し、メイン攻撃のみになる。この効果は自身が撤退するまで解除できない。\n\nSPECIAL ATTACK　　UNITED SP\n頭部有線誘導5連装メガ粒子砲オールレンジ　ー\n連携 ー　連携 ー\n連携 ー　連携 ー\n単体(敵)　射程 4　射程 ー\nSPコスト 2　威力 3600 / ー\n\n敵単体に射撃攻撃でダメージを与え、一定時間、自身の[遠距離攻撃力]をアップする。/ ー\n\nIMPACT AREA\n[アイコン:緑丸 中央左]\n[アイコン:黄三角 下部中央]\n\nillust haru\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nFQB05-001　U"
+  },
+  "ocr_raw_file": "FQブースター5弾_FQB05-001_ジオング_ocr_raw.json",
+  "ocr_timestamp": "2026-02-28T04:59:30.119043",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

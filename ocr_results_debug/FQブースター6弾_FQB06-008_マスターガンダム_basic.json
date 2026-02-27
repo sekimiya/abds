@@ -1,0 +1,83 @@
+{
+  "card_number": "FQB06-008",
+  "card_name": "マスターガンダム",
+  "series": "FQブースター6弾",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQB06-008.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQB06-008_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "FQB06-008",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト4"
+    },
+    "name": "マスターガンダム",
+    "model": "GF13-001NHII MASTER GUNDAM",
+    "cost": 4,
+    "category": "遠距離",
+    "affiliation": "ネオホンコン",
+    "pilot": "マスター・アジア",
+    "stats": {
+      "height": "16.7m",
+      "weight": "7.2t",
+      "mobility": 220,
+      "ranged_attack": 330,
+      "melee_attack": 100,
+      "hp": 350
+    },
+    "terrain_compatibility": {
+      "ground": "S",
+      "space": "C",
+      "desert": "B",
+      "water": "B"
+    },
+    "weapon": {
+      "main": {
+        "name": "ダークネスショット",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "格闘",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "妨撃[機動]",
+      "activation": "任意発動",
+      "target": "単体(敵)",
+      "range": 3,
+      "cost": 3,
+      "description": "ロックオン中の敵に単体攻撃でダメージを与え、20秒間、[機動力]を中ダウンする。"
+    },
+    "link_ability": [
+      {
+        "name": "Gガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      },
+      {
+        "name": "的確な一撃",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][遠距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ダークネスショット撃射",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3200,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "R",
+    "illustrator": "ilshima060123",
+    "raw": "MS\n\n遠距離　コスト4\n\nGF13-001NHII MASTER GUNDAM\nマスターガンダム\n\n[アイコン:機動武闘伝Gガンダム]\n\n頭頂高　16.7m\n本体重量　7.2t\n所属　ネオホンコン\nパイロット　マスター・アジア\n\n地上 S　宇宙 C　砂漠 B　水中 B\n\n機動力 220\n遠距離攻撃 330\n近距離攻撃 100\nHP 350\n\nWEAPON\nMAIN ダークネスショット　射程 3　遠距離\nSUB 格闘　射程 1　近距離\n\nLINK ABILITY\nGガンダム　デッキに3枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\n的確な一撃　デッキに4枚以上\n[機動力][遠距離攻撃力]小アップ\n\nMS ABILITY\n妨撃[機動]\n任意発動　単体(敵)　射程 3　コスト 3\nロックオン中の敵に単体攻撃でダメージを与え、20秒間、[機動力]を中ダウンする。\n\nSPECIAL ATTACK　　UNITED SP\nダークネスショット撃射　ー\n連携 ー　　連携 ー\n連携 ー　　連携 ー\n単体(敵)　射程 3　ー　射程 ー\nSPコスト 2　威力 3200 / ー\n\n敵単体に射撃攻撃でダメージを与える。\n/ー\n\nIMPACT AREA\n[アイコン:着弾エリア図 中央やや前方に小円]\n\nillust ilshima060123\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nFQB06-008　R"
+  },
+  "ocr_raw_file": "FQブースター6弾_FQB06-008_マスターガンダム_ocr_raw.json",
+  "ocr_timestamp": "2026-02-28T06:52:03.598033",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

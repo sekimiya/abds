@@ -1,0 +1,83 @@
+{
+  "card_number": "FQB04-001",
+  "card_name": "Zガンダム(バイオセンサー)",
+  "series": "FQブースター4弾",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQB04-001.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQB04-001_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "FQB04-001",
+    "type": "MS",
+    "card_label": {
+      "class": "機動",
+      "cost_label": "コスト5"
+    },
+    "name": "Zガンダム(バイオセンサー)",
+    "model": "MSZ-006 Z GUNDAM[BIOSENSOR]",
+    "cost": 5,
+    "category": "機動",
+    "affiliation": "エゥーゴ",
+    "pilot": "カミーユ・ビダン",
+    "stats": {
+      "height": "19.85m",
+      "weight": "28.7t",
+      "mobility": 280,
+      "ranged_attack": 70,
+      "melee_attack": 400,
+      "hp": 450
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "C",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "ハイパー・ビーム・サーベル",
+        "range": 2,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "ハイパー・メガ・ランチャー",
+        "range": 4,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "障壁",
+      "activation": "任意発動",
+      "target": "自分",
+      "range": null,
+      "cost": 3,
+      "description": "自身の周りにバリアを展開する。展開したバリアは自身へのダメージを一定値防ぎ、バリア展開中は弱体効果を受けない状態となる。"
+    },
+    "link_ability": [
+      {
+        "name": "機動戦士Zガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ハイパー・ビーム・サーベル貫通強撃",
+      "target": "貫通(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3100,
+      "description": "射線上の敵に貫通格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "M",
+    "illustrator": "kenko",
+    "raw": "MS\n\n機動 コスト5\nMSZ-006 Z GUNDAM[BIOSENSOR]\nZガンダム(バイオセンサー)\n\n頭頂高 19.85m\n本体重量 28.7t\n所属 エゥーゴ\nパイロット カミーユ・ビダン\n\n地上 A 宇宙 S 砂漠 C 水中 C\n\n機動力 280\n遠距離攻撃 70\n近距離攻撃 400\nHP 450\n\nWEAPON\nMAIN ハイパー・ビーム・サーベル 射程 2 近距離\nSUB ハイパー・メガ・ランチャー 射程 4 近距離\n\nMS ABILITY\n障壁\n任意発動 自分 射程 ー コスト 3\n\n自身の周りにバリアを展開する。展開したバリアは自身へのダメージを一定値防ぎ、バリア展開中は弱体効果を受けない状態となる。\n\nSPECIAL ATTACK          UNITED SP\nハイパー・ビーム・サーベル貫通強撃          ー\n連携 ー          連携 ー\n連携 ー          連携 ー\n貫通(敵) 射程 3          射程 ー\n\nSPコスト 2 威力 3100 / ー\n\n射線上の敵に貫通格闘攻撃でダメージを与える。/ ー\n\nLINK ABILITY\n機動戦士Zガンダム デッキに3枚以上\n[遠距離攻撃力] [近距離攻撃力] 小アップ\n\n多彩な戦術 デッキに4枚以上\n[遠距離攻撃力] [近距離攻撃力] 小アップ\n\nIMPACT AREA\n[アイコン:前方縦長の貫通エリア]\n\nillust kenko\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nFQB04-001 M"
+  },
+  "ocr_raw_file": "FQブースター4弾_FQB04-001_Zガンダム(バイオセンサー)_ocr_raw.json",
+  "ocr_timestamp": "2026-02-28T04:08:37.120143",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

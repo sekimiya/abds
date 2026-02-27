@@ -1,0 +1,83 @@
+{
+  "card_number": "FQB05-003",
+  "card_name": "グフ",
+  "series": "FQブースター5弾",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQB05-003.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQB05-003_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "FQB05-003",
+    "type": "MS",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト4"
+    },
+    "name": "グフ",
+    "model": "MS-07B GOUF",
+    "cost": 4,
+    "category": "近距離",
+    "affiliation": "ジオン公国軍",
+    "pilot": "ランバ・ラル",
+    "stats": {
+      "height": "18.2m",
+      "weight": "58.5t",
+      "mobility": 220,
+      "ranged_attack": 100,
+      "melee_attack": 350,
+      "hp": 380
+    },
+    "terrain_compatibility": {
+      "ground": "S",
+      "space": "C",
+      "desert": "A",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "ヒート・サーベル",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "フィンガー・バルカン",
+        "range": 2,
+        "type": "速距離"
+      }
+    },
+    "ms_ability": {
+      "name": "増援[防衛]",
+      "activation": "任意発動",
+      "target": "特殊(自分)",
+      "range": null,
+      "cost": 4,
+      "description": "自身の周囲に防衛タイプの味方ユニットを呼び出す。※上限3ユニットまで。"
+    },
+    "link_ability": [
+      {
+        "name": "機動戦士ガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ヒート・サーベル強撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3400,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "M",
+    "illustrator": "Moyasi",
+    "raw": "MS\n\n近距離　コスト4\n\nMS-07B GOUF\nグフ\n\n頭頂高　18.2m\n本体重量　58.5t\n所属　ジオン公国軍\nパイロット　ランバ・ラル\n\n地上 S　宇宙 C　砂漠 A　水中 C\n\n機動力 220\n遠距離攻撃 100\n近距離攻撃 350\nHP 380\n\nWEAPON\nMAIN ヒート・サーベル　射程 1　近距離\nSUB フィンガー・バルカン　射程 2　速距離\n\nLINK ABILITY\n機動戦士ガンダム　デッキに3枚以上\n[機動力]小アップ\n\n多彩な戦術　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nMS ABILITY\n増援[防衛]\n任意発動　特殊(自分)　射程 ー　コスト 4\n自身の周囲に防衛タイプの味方ユニットを呼び出す。※上限3ユニットまで。\n\nIMPACT AREA\n[アイコン:中央に緑丸、下部に黄三角]\n\nSPECIAL ATTACK　　UNITED SP\nヒート・サーベル強撃　ー\n連携 ー　　連携 ー\n連携 ー　　連携 ー\n単体(敵)　射程 2　ー　射程 ー\nSPコスト 2　威力 3400 / ー\n敵単体に格闘攻撃でダメージを与える。\n/ ー\n\nillust Moyasi\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nFQB05-003　M"
+  },
+  "ocr_raw_file": "FQブースター5弾_FQB05-003_グフ_ocr_raw.json",
+  "ocr_timestamp": "2026-02-28T05:00:40.496484",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

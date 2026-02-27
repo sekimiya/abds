@@ -1,0 +1,83 @@
+{
+  "card_number": "FQB05-002",
+  "card_name": "ジオング",
+  "series": "FQブースター5弾",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQB05-002.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQB05-002_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "FQB05-002",
+    "type": "MS",
+    "card_label": {
+      "class": "機動",
+      "cost_label": "コスト5"
+    },
+    "name": "ジオング",
+    "model": "MSN-02 ZEONG",
+    "cost": 5,
+    "category": "機動",
+    "affiliation": "ジオン公国軍",
+    "pilot": "シャア・アズナブル",
+    "stats": {
+      "height": "17.3m",
+      "weight": "151.2t",
+      "mobility": 270,
+      "ranged_attack": 400,
+      "melee_attack": 50,
+      "hp": 430
+    },
+    "terrain_compatibility": {
+      "ground": "B",
+      "space": "S",
+      "desert": "B",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "腕部有線誘導5連装メガ粒子砲",
+        "range": 4,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "頭部メガ粒子砲",
+        "range": 2,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "鼓舞[遠距離][弱体化解除]",
+      "activation": "任意発動",
+      "target": "範囲(味方)",
+      "range": null,
+      "cost": 6,
+      "description": "自身を中心とした大範囲内の味方ユニットの弱体化状態を無効化し、30秒間、[遠距離攻撃力]を中アップする。"
+    },
+    "link_ability": [
+      {
+        "name": "機動戦士ガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "的確な一撃",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][遠距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "腕部有線誘導5連装メガ粒子砲撃射",
+      "target": "単体(敵)",
+      "range": 4,
+      "sp_cost": 2,
+      "power": 3200,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "R",
+    "illustrator": "Ryohei Miyazaki",
+    "raw": "MS\n\n機動　コスト5\n\nMSN-02 ZEONG\nジオング\n\n頭頂高　17.3m\n本体重量　151.2t\n所属　ジオン公国軍\nパイロット　シャア・アズナブル\n\n地上 B　宇宙 S　砂漠 B　水中 C\n機動力 270\n遠距離攻撃 400\n近距離攻撃 50\nHP 430\n\nWEAPON\nMAIN　腕部有線誘導5連装メガ粒子砲　射程 4　遠距離\nSUB　頭部メガ粒子砲　射程 2　近距離\n\nLINK ABILITY\n機動戦士ガンダム　デッキに3枚以上\n[機動力]小アップ\n\n的確な一撃　デッキに4枚以上\n[機動力][遠距離攻撃力]小アップ\n\nMS ABILITY\n鼓舞[遠距離][弱体化解除]\n任意発動　範囲(味方)　射程 ー　コスト 6\n自身を中心とした大範囲内の味方ユニットの弱体化状態を無効化し、30秒間、[遠距離攻撃力]を中アップする。\n\nSPECIAL ATTACK　　UNITED SP\n腕部有線誘導5連装メガ粒子砲撃射\n連携 ー　　　　　連携 ー\n連携 ー　　　　　連携 ー\n単体(敵)　射程 4　ー　射程 ー\nSPコスト 2　威力 3200 / ー\n敵単体に射撃攻撃でダメージを与える。\n/ー\n\nIMPACT AREA\n[アイコン:前方中距離円形範囲]\n\nillust Ryohei Miyazaki\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\nFQB05-002　R"
+  },
+  "ocr_raw_file": "FQブースター5弾_FQB05-002_ジオング_ocr_raw.json",
+  "ocr_timestamp": "2026-02-28T05:00:09.585621",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

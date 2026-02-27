@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, jsonify, send_from_directory, redirect, Response
+from flask import Flask, render_template, request, jsonify, send_from_directory, redirect, Response, g
 import os
 import re
 import json
@@ -38,6 +38,7 @@ from card_ocr_cc import (
 import card_ocr_cc
 import ocr_test
 import db
+import metrics
 
 # 後方互換: 旧名でもアクセス可能にする
 _safe_int = safe_int
@@ -125,6 +126,27 @@ def set_security_headers(response):
     response.headers['X-Frame-Options'] = 'SAMEORIGIN'
     response.headers['X-XSS-Protection'] = '1; mode=block'
     response.headers['Referrer-Policy'] = 'strict-origin-when-cross-origin'
+    return response
+
+
+# --- アクセスメトリクス ---
+metrics.init_db()
+
+@app.before_request
+def _metrics_before():
+    g._metrics_start = time.time()
+
+@app.after_request
+def _metrics_after(response):
+    elapsed = (time.time() - getattr(g, '_metrics_start', time.time())) * 1000
+    try:
+        metrics.record_request(
+            request.method, request.path,
+            response.status_code, elapsed,
+            request.remote_addr
+        )
+    except Exception:
+        pass
     return response
 
 
@@ -1945,6 +1967,24 @@ def api_clear_cache():
 @require_admin
 def admin():
     return render_template('admin.html')
+
+
+@app.route('/api/admin/metrics/summary')
+@require_admin
+def api_admin_metrics_summary():
+    """メトリクス集計データ"""
+    hours = request.args.get('hours', 24, type=int)
+    hours = min(max(hours, 1), 720)  # 1h〜30d
+    return jsonify(success=True, **metrics.get_summary(hours))
+
+
+@app.route('/api/admin/metrics/recent')
+@require_admin
+def api_admin_metrics_recent():
+    """直近リクエスト一覧"""
+    limit = request.args.get('limit', 100, type=int)
+    limit = min(max(limit, 1), 500)
+    return jsonify(success=True, requests=metrics.get_recent(limit))
 
 
 @app.route('/api/admin/stats')

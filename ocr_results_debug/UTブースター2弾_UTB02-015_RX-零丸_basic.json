@@ -1,0 +1,83 @@
+{
+  "card_number": "UTB02-015",
+  "card_name": "RX-零丸",
+  "series": "UTブースター2弾",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UTB02-015.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UTB02-015_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "UTB02-015",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト4"
+    },
+    "name": "RX-零丸",
+    "model": "RX-零 RX-ZEROMARU",
+    "cost": 4,
+    "category": "遠距離",
+    "affiliation": "ビルドダイバーズ",
+    "pilot": "アヤメ",
+    "stats": {
+      "height": "14.4m",
+      "weight": "25.8t",
+      "mobility": 170,
+      "ranged_attack": 300,
+      "melee_attack": 120,
+      "hp": 310
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "A",
+      "desert": "B",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "種子島雷威銃",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "忍者刀",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "縛射",
+      "activation": "任意発動",
+      "target": "単体(敵)",
+      "range": 3,
+      "cost": 3,
+      "description": "ロックオン中の敵ユニットに単体攻撃を行いダメージを与え、一定時間スタンさせる。"
+    },
+    "link_ability": [
+      {
+        "name": "ビルドダイバーズ",
+        "condition": "デッキに3枚以上",
+        "effect": "[HP]小アップ"
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "種子島雷威銃撃射",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3200,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "R",
+    "illustrator": "Tonbi Aburaya",
+    "raw": "MS\n\n遠距離　コスト4\n\nRX-零 RX-ZEROMARU\nRX-零丸\n\n全高　14.4m\n本体重量　25.8t\n所属　ビルドダイバーズ\nパイロット　アヤメ\n\n地上 A　宇宙 A　砂漠 B　水中 C\n機動力 170\n遠距離攻撃 300\n近距離攻撃 120\nHP 310\n\nWEAPON\nMAIN　種子島雷威銃　射程 3　遠距離\nSUB　忍者刀　射程 1　近距離\n\nLINK ABILITY\nビルドダイバーズ　デッキに3枚以上\n[HP]小アップ\n\n多彩な戦術　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nMS ABILITY\n縛射\n任意発動　単体(敵)　射程 3　コスト 3\nロックオン中の敵ユニットに単体攻撃を行いダメージを与え、一定時間スタンさせる。\n\nSPECIAL ATTACK　UNITED SP\n種子島雷威銃撃射　ー\n連携 ー　連携 ー\n連携 ー　連携 ー\n単体(敵)　射程 3　ー　射程 ー\nSPコスト 2　威力 3200 / ー\n敵単体に射撃攻撃でダメージを与える。\n/ ー\n\nIMPACT AREA\n[アイコン:着弾点 中央やや左]\n\nillust Tonbi Aburaya\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nUTB02-015　R"
+  },
+  "ocr_raw_file": "UTブースター2弾_UTB02-015_RX-零丸_ocr_raw.json",
+  "ocr_timestamp": "2026-02-28T04:40:44.909411",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

@@ -1,0 +1,89 @@
+{
+  "card_number": "UTB02-002",
+  "card_name": "ガンダムEz8",
+  "series": "UTブースター2弾",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UTB02-002.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UTB02-002_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "UTB02-002",
+    "type": "MS",
+    "card_label": {
+      "class": "機動",
+      "cost_label": "コスト3"
+    },
+    "name": "ガンダムEz8",
+    "model": "RX-79[G]Ez-8 GUNDAM Ez8",
+    "cost": 3,
+    "category": "機動",
+    "affiliation": "地球連邦軍",
+    "pilot": "シロー・アマダ",
+    "stats": {
+      "height": "18.0m",
+      "weight": "51.5t",
+      "mobility": 220,
+      "ranged_attack": 120,
+      "melee_attack": 200,
+      "hp": 260
+    },
+    "terrain_compatibility": {
+      "ground": "S",
+      "space": "C",
+      "desert": "A",
+      "water": "B"
+    },
+    "weapon": {
+      "main": {
+        "name": "ビーム・サーベル",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "ビーム・ライフル",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "断砕",
+      "activation": "任意発動",
+      "target": "単体(敵)",
+      "range": 2,
+      "cost": 3,
+      "description": "ロックオン中の敵ユニットに単体攻撃でダメージを与え、強化状態を無効化する。"
+    },
+    "link_ability": [
+      {
+        "name": "第08MS小隊",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力]小アップ"
+      },
+      {
+        "name": "間合いを詰めた接近戦",
+        "condition": "デッキに2枚以上",
+        "effect": "[近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ビーム・サーベル強撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3300,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": {
+        "partner1": "陸戦型ガンダム(ジム頭)",
+        "partner2": "陸戦型ガンダム",
+        "range": 2,
+        "power": 4400,
+        "description": "対象の敵を中心として範囲射撃でダメージを与える。出撃時1度のみ使用可能。"
+      }
+    },
+    "rarity": "R",
+    "illustrator": "sakusaku sakurai",
+    "raw": "MS\n\n機動　コスト3\n\nRX-79[G]Ez-8 GUNDAM Ez8\nガンダムEz8\n\n全高　18.0m\n本体重量　51.5t\n所属　地球連邦軍\nパイロット　シロー・アマダ\n\n地上 S　宇宙 C　砂漠 A　水中 B\n\n機動力 220\n遠距離攻撃 120\n近距離攻撃 200\nHP 260\n\nWEAPON\nMAIN ビーム・サーベル　射程 1　近距離\nSUB ビーム・ライフル　射程 3　遠距離\n\nLINK ABILITY\n第08MS小隊　デッキに3枚以上\n[遠距離攻撃力]小アップ\n\n間合いを詰めた接近戦　デッキに2枚以上\n[近距離攻撃力]小アップ\n\nMS ABILITY\n断砕\n任意発動　単体(敵)　射程 2　コスト 3\n\nロックオン中の敵ユニットに単体攻撃で\nダメージを与え、強化状態を無効化する。\n\nSPECIAL ATTACK　　UNITED SP\nビーム・サーベル強撃　第08MS小隊\n連携 陸戦型ガンダム(ジム頭)　連携 陸戦型ガンダム\n連携 ー　　　　　　　　　　　連携 ー\n単体(敵)　射程 2　範囲(敵) 射程 2\nSPコスト 2　威力 3300 / 4400\n\n敵単体に格闘攻撃でダメージを与える。\n／対象の敵を中心として範囲射撃でダ\nメージを与える。出撃時1度のみ使用可\n能。\n\nIMPACT AREA\n[アイコン:円形範囲・中央やや上に着弾点]\n\nillust sakusaku sakurai\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n\nUTB02-002　R"
+  },
+  "ocr_raw_file": "UTブースター2弾_UTB02-002_ガンダムEz8_ocr_raw.json",
+  "ocr_timestamp": "2026-02-28T04:26:41.560673",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

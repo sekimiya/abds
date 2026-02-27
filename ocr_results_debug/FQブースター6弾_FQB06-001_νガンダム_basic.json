@@ -1,0 +1,83 @@
+{
+  "card_number": "FQB06-001",
+  "card_name": "νガンダム",
+  "series": "FQブースター6弾",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQB06-001.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQB06-001_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "FQB06-001",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト6"
+    },
+    "name": "νガンダム",
+    "model": "RX-93 νGUNDAM",
+    "cost": 6,
+    "category": "遠距離",
+    "affiliation": "地球連邦軍",
+    "pilot": "アムロ・レイ",
+    "stats": {
+      "height": "22.0m",
+      "weight": "27.9t",
+      "mobility": 280,
+      "ranged_attack": 590,
+      "melee_attack": 70,
+      "hp": 460
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "C",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "ビーム・ライフル",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ビーム・サーベル",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "追撃",
+      "activation": "出撃時発動",
+      "target": "自分",
+      "range": null,
+      "cost": null,
+      "description": "ロックオン中の敵を通常攻撃後、追撃ゲージ(弾薬数)を消費して追撃を行い、ダメージを与える。／追撃ゲージが0の時に任意発動可能となり、コスト4使用することで、追撃ゲージを再装填する。"
+    },
+    "link_ability": [
+      {
+        "name": "逆襲のシャア",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      },
+      {
+        "name": "BEYOND THE TIME",
+        "condition": "デッキに2枚以上",
+        "effect": "[機動力][HP]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "フィン・ファンネル斉射",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3500,
+      "description": "敵単体に射撃攻撃でダメージを与え、自身のHPを回復する。",
+      "united_sp": null
+    },
+    "rarity": "P",
+    "illustrator": "Moyasi",
+    "raw": "MS\n\n遠距離　コスト6\n\nRX-93 νGUNDAM\nνガンダム\n\n[ロゴ:機動戦士GUNDAM 逆襲のシャア]\n\n頭頂高　22.0m\n本体重量　27.9t\n所属　地球連邦軍\nパイロット　アムロ・レイ\n\n地上 A　宇宙 S　砂漠 C　水中 C\n\n[アイコン:地上A]\n\n機動力 280\n遠距離攻撃 590\n近距離攻撃 70\nHP 460\n\nWEAPON\nMAIN ビーム・ライフル　射程 3　遠距離\nSUB ビーム・サーベル　射程 1　近距離\n\nMS ABILITY\n追撃\n出撃時発動　自分　射程 ー　コスト ー\nロックオン中の敵を通常攻撃後、追撃ゲージ(弾薬数)を消費して追撃を行い、ダメージを与える。／追撃ゲージが0の時に任意発動可能となり、コスト4使用することで、追撃ゲージを再装填する。\n\nLINK ABILITY\n逆襲のシャア　デッキに3枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nBEYOND THE TIME　デッキに2枚以上\n[機動力][HP]小アップ\n\nSPECIAL ATTACK　　UNITED SP\nフィン・ファンネル斉射　ー\n連携 ー　　連携 ー\n連携 ー　　連携 ー\n単体(敵)　射程 3　ー　射程 ー\nSPコスト 2　威力 3500 / ー\n敵単体に射撃攻撃でダメージを与え、自身のHPを回復する。／ー\n\nIMPACT AREA\n[図:3×3グリッド 中段右に○、下段中央に△]\n\nillust Moyasi\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nFQB06-001　P"
+  },
+  "ocr_raw_file": "FQブースター6弾_FQB06-001_νガンダム_ocr_raw.json",
+  "ocr_timestamp": "2026-02-28T05:16:32.104504",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

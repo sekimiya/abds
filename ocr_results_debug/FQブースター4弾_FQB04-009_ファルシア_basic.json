@@ -1,0 +1,83 @@
+{
+  "card_number": "FQB04-009",
+  "card_name": "ファルシア",
+  "series": "FQブースター4弾",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQB04-009.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQB04-009_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "FQB04-009",
+    "type": "MS",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト4"
+    },
+    "name": "ファルシア",
+    "model": "xvb-xd FARSIA",
+    "cost": 4,
+    "category": "近距離",
+    "affiliation": "ヴェイガン",
+    "pilot": "ユリン・ルシェル",
+    "stats": {
+      "height": "16.2m",
+      "weight": "29.9t",
+      "mobility": 220,
+      "ranged_attack": 50,
+      "melee_attack": 300,
+      "hp": 380
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "A",
+      "desert": "C",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "ファルシアソード",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "ビームバルカン",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "奮起",
+      "activation": "出撃時発動",
+      "target": "自分",
+      "range": null,
+      "cost": null,
+      "description": "自身のHPが1以上で一定割合以下になると、一定時間、撃破されなくなり[遠／近攻撃力]を中アップする。出撃時1度のみ発動。"
+    },
+    "link_ability": [
+      {
+        "name": "ガンダムAGE",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ファルシアソード強撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3400,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "M",
+    "illustrator": "sakusaku sakurai",
+    "raw": "MS\n\n近距離　コスト4\n\nガンダムAGE\n\nxvb-xd FARSIA\nファルシア\n\n頭頂高　16.2m\n本体重量　29.9t\n所属　ヴェイガン\nパイロット　ユリン・ルシェル\n\n地上 A　宇宙 A　砂漠 C　水中 C\n\n機動力 220\n遠距離攻撃 50\n近距離攻撃 300\nHP 380\n\nWEAPON\nMAIN　ファルシアソード　射程 1　近距離\nSUB　ビームバルカン　射程 3　遠距離\n\nLINK ABILITY\nガンダムAGE　デッキに3枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\n戦況を変える力　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nMS ABILITY\n奮起\n出撃時発動　自分　射程 ー　コスト ー\n自身のHPが1以上で一定割合以下になると、一定時間、撃破されなくなり[遠／近攻撃力]を中アップする。出撃時1度のみ発動。\n\nSPECIAL ATTACK　　UNITED SP\nファルシアソード強撃　ー\n連携 ー　　連携 ー\n連携 ー　　連携 ー\n単体(敵)　射程 2　　射程 ー\nSPコスト 2　威力 3400 / ー\n敵単体に格闘攻撃でダメージを与える。\n/ ー\n\nIMPACT AREA\n[アイコン:緑丸 中央]\n[アイコン:黄三角 下]\n\nillust sakusaku sakurai\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nFQB04-009　M"
+  },
+  "ocr_raw_file": "FQブースター4弾_FQB04-009_ファルシア_ocr_raw.json",
+  "ocr_timestamp": "2026-02-28T04:14:04.813321",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

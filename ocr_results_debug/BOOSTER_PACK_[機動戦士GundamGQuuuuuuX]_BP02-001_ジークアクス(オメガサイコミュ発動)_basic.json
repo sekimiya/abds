@@ -1,0 +1,91 @@
+{
+  "card_number": "BP02-001",
+  "card_name": "ジークアクス(オメガサイコミュ発動)",
+  "series": "BOOSTER PACK [機動戦士GundamGQuuuuuuX]",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP02-001.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP02-001_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "BP02-001",
+    "type": "MS",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト8"
+    },
+    "name": "ジークアクス(オメガサイコミュ発動)",
+    "model": "GQuuuuuuX (Omega Psycommu)",
+    "cost": 8,
+    "category": "近距離",
+    "affiliation": "ポメラニアンズ",
+    "pilot": "アマテ・ユズリハ(マチュ)",
+    "stats": {
+      "height": "18.0m",
+      "weight": "42.4t",
+      "mobility": 380,
+      "ranged_attack": 0,
+      "melee_attack": 630,
+      "hp": 660
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "C",
+      "water": "A"
+    },
+    "weapon": {
+      "main": {
+        "name": "トメノスケ・ヒート・ホーク",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "シールド",
+        "range": null,
+        "type": null
+      }
+    },
+    "ms_ability": {
+      "name": "撃滅",
+      "activation": "任意発動",
+      "target": "単体(敵)",
+      "range": 2,
+      "cost": 4,
+      "description": "ロックオン中の敵に単体攻撃でダメージを与える。この攻撃で敵ユニットを撃破した場合、敵ユニットの修理時間を延長させる。"
+    },
+    "link_ability": [
+      {
+        "name": "GQuuuuuuX",
+        "condition": "デッキに3枚以上",
+        "effect": "[HP]小アップ"
+      },
+      {
+        "name": "肉薄する戦い",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "トメノスケ・ヒート・ホーク強襲",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3800,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": {
+        "name": "ジークアクス&赤いガンダム連携",
+        "partner1": "赤いガンダム(0085)",
+        "partner2": null,
+        "target": "単体(敵)",
+        "range": 2,
+        "power": 6800,
+        "description": "敵単体に格闘攻撃でダメージを与える。出撃時1度のみ使用可能。"
+      }
+    },
+    "rarity": "U",
+    "illustrator": "Moyasi",
+    "raw": "近距離　コスト8　MS\n\nGQuuuuuuX (Omega Psycommu)\nジークアクス(オメガサイコミュ発動)\n\n頭頂高　18.0m\n本体重量　42.4t\n所属　ポメラニアンズ\nパイロット　アマテ・ユズリハ(マチュ)\n\n地上 A　宇宙 S　砂漠 C　水中 A\n\n機動力 380\n遠距離攻撃 0\n近距離攻撃 630\nHP 660\n\nWEAPON\nMAIN トメノスケ・ヒート・ホーク　射程 1　近距離\nSUB シールド　射程 ー\n\nLINK ABILITY\nGQuuuuuuX　デッキに3枚以上\n[HP]小アップ\n\nMS ABILITY\n撃滅\n任意発動　単体(敵)　射程 2　コスト 4\nロックオン中の敵に単体攻撃でダメージを与える。この攻撃で敵ユニットを撃破した場合、敵ユニットの修理時間を延長させる。\n\n肉薄する戦い　デッキに4枚以上\n[機動力][近距離攻撃力]小アップ\n\nSPECIAL ATTACK　　　　　UNITED SP\nトメノスケ・ヒート・ホーク強襲　ジークアクス&赤いガンダム連携\n連携 赤いガンダム(0085)　連携 ー\n連携 ー　　　　　　　　　連携 ー\n単体(敵)　射程 2　　　　単体(敵)　射程 2\nSPコスト 2　威力 3800 / 6800\n\n敵単体に格闘攻撃でダメージを与える。／敵単体に格闘攻撃でダメージを与える。出撃時1度のみ使用可能。\n\nIMPACT AREA\n[アイコン:射程2マス前方]\n\nillust Moyasi\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\nBP02-001　U"
+  },
+  "ocr_raw_file": "BOOSTER_PACK_[機動戦士GundamGQuuuuuuX]_BP02-001_ジークアクス(オメガサイコミュ発動)_ocr_raw.json",
+  "ocr_timestamp": "2026-02-28T04:40:16.613185",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

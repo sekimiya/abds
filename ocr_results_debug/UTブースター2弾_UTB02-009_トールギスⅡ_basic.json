@@ -1,0 +1,83 @@
+{
+  "card_number": "UTB02-009",
+  "card_name": "トールギスⅡ",
+  "series": "UTブースター2弾",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UTB02-009.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UTB02-009_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "UTB02-009",
+    "type": "MS",
+    "card_label": {
+      "class": "機動",
+      "cost_label": "コスト3"
+    },
+    "name": "トールギスⅡ",
+    "model": "OZ-00MS2 TALLGEESEⅡ",
+    "cost": 3,
+    "category": "機動",
+    "affiliation": "OZ",
+    "pilot": "トレーズ・クシュリナーダ",
+    "stats": {
+      "height": "17.4m",
+      "weight": "8.8t",
+      "mobility": 280,
+      "ranged_attack": 90,
+      "melee_attack": 320,
+      "hp": 360
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "C",
+      "water": "A"
+    },
+    "weapon": {
+      "main": {
+        "name": "ビームサーベル",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "ドーバーガン",
+        "range": 4,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "威圧",
+      "activation": "任意発動",
+      "target": "範囲(敵)",
+      "range": null,
+      "cost": 4,
+      "description": "自身を中心とした範囲内の敵ユニットをスタンさせ、一定時間被ダメージを少しアップする。"
+    },
+    "link_ability": [
+      {
+        "name": "ガンダムW",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "肉薄する戦い",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ビームサーベル強襲",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3500,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "P",
+    "illustrator": "deraken",
+    "raw": "機動 コスト3 MS\n\nOZ-00MS2 TALLGEESEⅡ\nトールギスⅡ\n\n全高 17.4m\n本体重量 8.8t\n所属 OZ\nパイロット トレーズ・クシュリナーダ\n\n地上 A 宇宙 S 砂漠 C 水中 A\n機動力 280\n遠距離攻撃 90\n近距離攻撃 320\nHP 360\n\nWEAPON\nMAIN ビームサーベル 射程 1 近距離\nSUB ドーバーガン 射程 4 遠距離\n\nLINK ABILITY\nガンダムW デッキに3枚以上\n[機動力]小アップ\n\n肉薄する戦い デッキに4枚以上\n[機動力][近距離攻撃力]小アップ\n\nMS ABILITY\n威圧\n任意発動 範囲(敵) 射程 ー コスト 4\n自身を中心とした範囲内の敵ユニットをスタンさせ、一定時間被ダメージを少しアップする。\n\nSPECIAL ATTACK\nビームサーベル強襲\n連携 ー 連携 ー\n連携 ー 連携 ー\n単体(敵) 射程 2\nSPコスト 2 威力 3500 / ー\n敵単体に格闘攻撃でダメージを与える。\n/ ー\n\nUNITED SP\nー\n連携 ー\n連携 ー\nー 射程 ー\n\nIMPACT AREA\n[アイコン:円形範囲・中央]\n\nillust deraken\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\nUTB02-009 P"
+  },
+  "ocr_raw_file": "UTブースター2弾_UTB02-009_トールギスⅡ_ocr_raw.json",
+  "ocr_timestamp": "2026-02-28T04:32:21.796684",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

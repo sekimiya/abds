@@ -398,6 +398,116 @@ a:hover { text-decoration: underline; }
 
 .loading { color: #aaa; text-align: center; padding: 40px; }
 
+/* Metrics Dashboard */
+.metrics-period-btns {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+.metrics-period-btns button {
+  background: #444;
+  color: #ccc;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.metrics-period-btns button.active {
+  background: #66f2c5;
+  color: #1a1a1a;
+  font-weight: bold;
+}
+.metrics-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 10px;
+  margin-bottom: 16px;
+}
+.metrics-stats .stat-card { margin-bottom: 0; }
+.hourly-chart {
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 100px;
+  padding: 8px 0;
+  border-bottom: 1px solid #444;
+  margin-bottom: 12px;
+}
+.hourly-bar {
+  flex: 1;
+  background: #66f2c5;
+  border-radius: 2px 2px 0 0;
+  min-width: 4px;
+  position: relative;
+  transition: height 0.3s;
+  cursor: default;
+}
+.hourly-bar:hover { opacity: 0.8; }
+.hourly-bar .bar-tooltip {
+  display: none;
+  position: absolute;
+  bottom: calc(100% + 4px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: #111;
+  color: #fff;
+  padding: 3px 7px;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  white-space: nowrap;
+  z-index: 10;
+}
+.hourly-bar:hover .bar-tooltip { display: block; }
+.hourly-labels {
+  display: flex;
+  gap: 2px;
+  font-size: 0.6rem;
+  color: #666;
+  margin-bottom: 16px;
+}
+.hourly-labels span { flex: 1; text-align: center; }
+.metrics-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+}
+.metrics-table th {
+  background: #333;
+  color: #66f2c5;
+  padding: 6px 10px;
+  text-align: left;
+  position: sticky;
+  top: 0;
+}
+.metrics-table td {
+  padding: 5px 10px;
+  border-bottom: 1px solid #333;
+}
+.metrics-table tr:hover { background: #333; }
+.metrics-table .num { text-align: right; font-variant-numeric: tabular-nums; }
+.metrics-sub {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.metrics-sub-section { min-width: 0; }
+.metrics-sub-section .sub-title {
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: #66f2c5;
+  margin-bottom: 10px;
+}
+.metrics-table-wrap {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+@media (max-width: 800px) {
+  .metrics-sub { grid-template-columns: 1fr; }
+}
+
 @media (max-width: 600px) {
   .modal-images { grid-template-columns: 1fr; }
   .card-controls { flex-direction: column; }
@@ -445,6 +555,57 @@ a:hover { text-decoration: underline; }
     <div class="stat-card">
       <div class="stat-value" id="statCoverage">-</div>
       <div class="stat-label">カバレッジ</div>
+    </div>
+  </div>
+
+  <!-- Metrics Dashboard -->
+  <div class="section" id="metricsSection">
+    <div class="section-title">アクセスメトリクス</div>
+    <div class="metrics-period-btns" id="metricsPeriodBtns">
+      <button onclick="loadMetrics(1)">1h</button>
+      <button onclick="loadMetrics(6)">6h</button>
+      <button class="active" onclick="loadMetrics(24)">24h</button>
+      <button onclick="loadMetrics(168)">7d</button>
+    </div>
+    <div class="metrics-stats" id="metricsStats">
+      <div class="stat-card">
+        <div class="stat-value" id="mTotal">-</div>
+        <div class="stat-label">総リクエスト</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value" id="mUniqueIps">-</div>
+        <div class="stat-label">ユニークIP</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value" id="mAvgMs">-</div>
+        <div class="stat-label">平均レスポンス</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value" id="mErrorRate">-</div>
+        <div class="stat-label">エラー率</div>
+      </div>
+    </div>
+    <div class="hourly-chart" id="hourlyChart"></div>
+    <div class="hourly-labels" id="hourlyLabels"></div>
+    <div class="metrics-sub">
+      <div class="metrics-sub-section">
+        <div class="sub-title">パス別アクセス数 TOP20</div>
+        <div class="metrics-table-wrap">
+          <table class="metrics-table">
+            <thead><tr><th>パス</th><th class="num">回数</th><th class="num">平均ms</th></tr></thead>
+            <tbody id="metricsPathBody"><tr><td colspan="3">読み込み中...</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+      <div class="metrics-sub-section">
+        <div class="sub-title">直近リクエスト</div>
+        <div class="metrics-table-wrap">
+          <table class="metrics-table">
+            <thead><tr><th>時刻</th><th>メソッド</th><th>パス</th><th class="num">ステータス</th><th class="num">ms</th></tr></thead>
+            <tbody id="metricsRecentBody"><tr><td colspan="5">読み込み中...</td></tr></tbody>
+          </table>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -1145,6 +1306,96 @@ async function checkImageDlRunning() {
   } catch (e) {}
 }
 
+// --- Metrics Dashboard ---
+let metricsHours = 24;
+
+async function loadMetrics(hours) {
+  metricsHours = hours || 24;
+  // Update active button
+  document.querySelectorAll('#metricsPeriodBtns button').forEach(btn => {
+    btn.classList.toggle('active', btn.textContent.trim() ===
+      ({1:'1h',6:'6h',24:'24h',168:'7d'}[metricsHours] || ''));
+  });
+
+  try {
+    const res = await adminFetch('/api/admin/metrics/summary?hours=' + metricsHours);
+    const data = await res.json();
+    if (!data.success) return;
+
+    document.getElementById('mTotal').textContent = data.total_requests.toLocaleString();
+    document.getElementById('mUniqueIps').textContent = data.unique_ips.toLocaleString();
+    document.getElementById('mAvgMs').textContent = data.avg_response_ms + 'ms';
+    const errRate = data.total_requests > 0
+      ? ((data.error_count / data.total_requests) * 100).toFixed(1) + '%'
+      : '0%';
+    document.getElementById('mErrorRate').textContent = errRate;
+
+    // Hourly chart
+    const chart = document.getElementById('hourlyChart');
+    const labels = document.getElementById('hourlyLabels');
+    const hourly = data.hourly || [];
+    if (hourly.length === 0) {
+      chart.innerHTML = '<span style="color:#666;font-size:0.8rem;margin:auto">データなし</span>';
+      labels.innerHTML = '';
+    } else {
+      const maxCount = Math.max(...hourly.map(h => h.count), 1);
+      chart.innerHTML = hourly.map(h => {
+        const pct = Math.max((h.count / maxCount) * 100, 2);
+        const lbl = h.hour.length >= 13 ? h.hour.substring(11, 13) + ':00' : h.hour;
+        return '<div class="hourly-bar" style="height:' + pct + '%">' +
+          '<span class="bar-tooltip">' + escapeHtml(lbl) + ' — ' + h.count + '件</span></div>';
+      }).join('');
+      // Show a few labels
+      const step = Math.max(1, Math.floor(hourly.length / 8));
+      labels.innerHTML = hourly.map((h, i) => {
+        const lbl = (i % step === 0 && h.hour.length >= 13) ? h.hour.substring(11, 13) + 'h' : '';
+        return '<span>' + lbl + '</span>';
+      }).join('');
+    }
+
+    // Path table
+    const pathBody = document.getElementById('metricsPathBody');
+    const paths = data.top_paths || [];
+    if (paths.length === 0) {
+      pathBody.innerHTML = '<tr><td colspan="3" class="no-data">データなし</td></tr>';
+    } else {
+      pathBody.innerHTML = paths.map(p =>
+        '<tr><td>' + escapeHtml(p.path) + '</td><td class="num">' +
+        p.count.toLocaleString() + '</td><td class="num">' + p.avg_ms + '</td></tr>'
+      ).join('');
+    }
+
+    // Load recent requests
+    loadRecentRequests();
+  } catch (e) {
+    console.error('Metrics load error:', e);
+  }
+}
+
+async function loadRecentRequests() {
+  try {
+    const res = await adminFetch('/api/admin/metrics/recent?limit=50');
+    const data = await res.json();
+    if (!data.success) return;
+
+    const body = document.getElementById('metricsRecentBody');
+    const reqs = data.requests || [];
+    if (reqs.length === 0) {
+      body.innerHTML = '<tr><td colspan="5" class="no-data">データなし</td></tr>';
+      return;
+    }
+    body.innerHTML = reqs.map(r => {
+      const ts = r.timestamp.length >= 19 ? r.timestamp.substring(11, 19) : r.timestamp;
+      const scClass = r.status_code >= 400 ? ' style="color:#ff6b6b"' : '';
+      return '<tr><td>' + escapeHtml(ts) + '</td><td>' + escapeHtml(r.method) +
+        '</td><td>' + escapeHtml(r.path) + '</td><td class="num"' + scClass + '>' +
+        r.status_code + '</td><td class="num">' + r.response_time_ms + '</td></tr>';
+    }).join('');
+  } catch (e) {
+    console.error('Recent requests load error:', e);
+  }
+}
+
 // Init
 loadStats();
 loadCards(1);
@@ -1152,6 +1403,7 @@ checkRunning();
 checkOcrRunning();
 loadImageCacheStats();
 checkImageDlRunning();
+loadMetrics(24);
 </script>
 </body>
 </html>

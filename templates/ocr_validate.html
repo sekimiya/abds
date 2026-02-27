@@ -311,6 +311,237 @@ a:hover { text-decoration: underline; }
   font-family: monospace;
 }
 
+/* Auto-correct table */
+.ac-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 12px;
+}
+.ac-table th {
+  background: #333;
+  color: #66f2c5;
+  padding: 8px 12px;
+  text-align: left;
+  font-size: 0.8rem;
+  position: sticky;
+  top: 0;
+}
+.ac-table td {
+  padding: 6px 12px;
+  border-bottom: 1px solid #333;
+  font-size: 0.83rem;
+  vertical-align: middle;
+}
+.ac-table tr:hover { background: #333; }
+.ac-table input[type="checkbox"] { width: 16px; height: 16px; accent-color: #66f2c5; }
+.ac-category {
+  display: inline-block;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-weight: bold;
+}
+.ac-category.ms { background: #2d5a88; color: #8ec8f0; }
+.ac-category.link { background: #2d7a5a; color: #8ef0c8; }
+.ac-category.pilot { background: #7a5a2d; color: #f0c88e; }
+.ac-distance { font-family: monospace; color: #ffc107; }
+.ac-arrow { color: #66f2c5; font-weight: bold; }
+
+/* Correction Review Table */
+.cr-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 12px;
+}
+.cr-table th {
+  background: #333;
+  color: #66f2c5;
+  padding: 8px 10px;
+  text-align: left;
+  font-size: 0.8rem;
+  position: sticky;
+  top: 0;
+}
+.cr-table td {
+  padding: 6px 10px;
+  border-bottom: 1px solid #333;
+  font-size: 0.83rem;
+  vertical-align: middle;
+}
+.cr-table tr:hover { background: #333; }
+.cr-table tr.skipped { opacity: 0.4; }
+.cr-old { color: #ff6b6b; }
+.cr-new { color: #66f2c5; font-weight: bold; }
+.cr-source {
+  display: inline-block;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-weight: bold;
+}
+.cr-source.dictionary { background: #2d5a88; color: #8ec8f0; }
+.cr-source.char_normalize { background: #7a5a2d; color: #f0c88e; }
+.cr-action-select {
+  background: #333;
+  color: #fff;
+  border: 1px solid #555;
+  border-radius: 4px;
+  padding: 4px 6px;
+  font-size: 0.8rem;
+}
+.cr-action-select:focus { outline: none; border-color: #66f2c5; }
+.cr-edit-input {
+  background: #333;
+  color: #66f2c5;
+  border: 1px solid #66f2c5;
+  border-radius: 4px;
+  padding: 4px 8px;
+  font-size: 0.83rem;
+  width: 100%;
+}
+.cr-summary {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  font-size: 0.85rem;
+  margin-bottom: 12px;
+  padding: 8px 12px;
+  background: #333;
+  border-radius: 8px;
+}
+.cr-summary .count { font-weight: bold; }
+.cr-summary .accept { color: #66f2c5; }
+.cr-summary .skip { color: #aaa; }
+.cr-summary .edit { color: #ffc107; }
+
+/* Master data panel */
+.master-panel {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+.master-stat {
+  background: #333;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  color: #ccc;
+}
+.master-stat .val { color: #66f2c5; font-weight: bold; }
+
+/* Master data tag list */
+.md-list-area {
+  margin-top: 16px;
+}
+.md-list-area details {
+  margin-bottom: 8px;
+}
+.md-list-area summary {
+  color: #66f2c5;
+  font-size: 0.85rem;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 6px 0;
+}
+.md-list-area summary:hover { text-decoration: underline; }
+.md-tag-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 10px 0;
+  max-height: 260px;
+  overflow-y: auto;
+}
+.md-tag {
+  display: inline-block;
+  background: #333;
+  border: 1px solid #555;
+  border-radius: 6px;
+  padding: 3px 10px;
+  font-size: 0.78rem;
+  color: #ddd;
+  white-space: nowrap;
+}
+.md-tag.ms { border-color: #2d5a88; color: #8ec8f0; }
+.md-tag.link { border-color: #2d7a5a; color: #8ef0c8; }
+.md-tag.sq { border-color: #6a3d8a; color: #c8a0f0; }
+
+/* Master check NG items */
+.mc-item {
+  background: #222;
+  border: 1px solid #444;
+  border-left: 4px solid #ff6b6b;
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin-bottom: 10px;
+  transition: border-color 0.2s;
+}
+.mc-item:hover { border-color: #ff6b6b; }
+.mc-item.has-suggest { border-left-color: #ffc107; }
+.mc-item-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.mc-ocr-val {
+  color: #ff6b6b;
+  font-weight: bold;
+  font-size: 1rem;
+}
+.mc-arrow { color: #66f2c5; font-weight: bold; font-size: 1.1em; }
+.mc-suggest {
+  color: #66f2c5;
+  font-weight: bold;
+  font-size: 1rem;
+}
+.mc-no-suggest { color: #666; font-size: 0.85rem; font-style: italic; }
+.mc-dist {
+  font-family: monospace;
+  font-size: 0.75rem;
+  background: #333;
+  color: #ffc107;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+.mc-count {
+  font-size: 0.8rem;
+  color: #aaa;
+  margin-left: auto;
+}
+.mc-count strong { color: #ff6b6b; }
+.mc-cat {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-weight: bold;
+}
+.mc-cat.ms { background: #2d5a88; color: #8ec8f0; }
+.mc-cat.link { background: #2d7a5a; color: #8ef0c8; }
+.mc-cards {
+  margin-top: 6px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+.mc-card-tag {
+  background: #333;
+  color: #999;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.72rem;
+  font-family: monospace;
+}
+.mc-item-actions {
+  margin-top: 8px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
 .no-data { color: #666; font-size: 0.85rem; padding: 12px; text-align: center; }
 .loading { color: #aaa; text-align: center; padding: 40px; }
 
@@ -353,9 +584,26 @@ a:hover { text-decoration: underline; }
     </div>
   </div>
 
-  <!-- C. Controls -->
+  <!-- B2. Master Data Panel -->
   <div class="section">
-    <div class="section-title">レポート設定</div>
+    <div class="section-title">公式マスターデータ管理</div>
+    <div class="master-panel" id="masterDataPanel">
+      <div class="master-stat">MSアビリティ(公式): <span class="val" id="mdMsCount">-</span>種</div>
+      <div class="master-stat">リンク名(公式): <span class="val" id="mdLinkCount">-</span>種</div>
+      <div class="master-stat">ABILITY_DATA: <span class="val" id="mdAbilityCount">-</span></div>
+      <div class="master-stat">最終取得: <span class="val" id="mdFetchedAt">-</span></div>
+    </div>
+    <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;">
+      <button class="action-btn" id="masterFetchBtn" onclick="fetchMasterData()">マスター更新（公式サイトから再取得）</button>
+      <span id="masterFetchSpinner" style="display:none;"><span class="spinner"></span>取得中...</span>
+      <span id="masterFetchMsg" style="font-size:0.8rem;color:#aaa;"></span>
+    </div>
+    <div class="md-list-area" id="mdListArea"></div>
+  </div>
+
+  <!-- C. Master Check -->
+  <div class="section">
+    <div class="section-title">マスターとの比較</div>
     <div class="control-row">
       <div class="control-group">
         <label>シリーズフィルタ</label>
@@ -363,29 +611,49 @@ a:hover { text-decoration: underline; }
           <option value="">全シリーズ</option>
         </select>
       </div>
+      <button class="action-btn" id="masterCheckBtn" onclick="runMasterCheck()">
+        <span style="font-size:1.1em;">&#9654;</span> マスターとの比較を実行
+      </button>
+      <span id="masterCheckSpinner" style="display:none;"><span class="spinner"></span>照合中...</span>
     </div>
-    <div class="control-group" style="margin-bottom:12px;">
-      <label>チェック種別</label>
-      <div class="checkbox-group" id="checksGroup">
-        <label><input type="checkbox" value="link_names" checked> リンク名</label>
-        <label><input type="checkbox" value="link_effects" checked> リンク効果</label>
-        <label><input type="checkbox" value="link_conditions" checked> リンク条件</label>
-        <label><input type="checkbox" value="ms_abilities" checked> MSアビリティ</label>
-        <label><input type="checkbox" value="pilot_skills" checked> パイロットスキル</label>
-        <label><input type="checkbox" value="structure" checked> 構造整合性</label>
+
+    <!-- 照合結果 -->
+    <div id="masterCheckArea" style="display:none;">
+
+      <!-- サマリカード -->
+      <div class="stats-panel" style="margin-top:16px;margin-bottom:16px;">
+        <div class="stat-card">
+          <div class="stat-value" id="mcTotal">-</div>
+          <div class="stat-label">検査カード数</div>
+        </div>
+        <div class="stat-card error">
+          <div class="stat-value" id="mcMismatches">-</div>
+          <div class="stat-label">NG（不一致）</div>
+        </div>
+        <div class="stat-card warn">
+          <div class="stat-value" id="mcUnique">-</div>
+          <div class="stat-label">ユニーク不一致</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value" id="mcOkRate">-</div>
+          <div class="stat-label">OK率</div>
+        </div>
       </div>
+
+      <!-- フィルタタブ -->
+      <div class="tab-bar" style="margin-bottom:12px;">
+        <button class="tab-btn active" onclick="filterMasterCheck('all')" data-mc-tab="all">全て</button>
+        <button class="tab-btn" onclick="filterMasterCheck('ms_ability')" data-mc-tab="ms_ability">MSアビリティ <span id="mcMsBadge" class="badge badge-warning" style="margin-left:4px;"></span></button>
+        <button class="tab-btn" onclick="filterMasterCheck('link_ability')" data-mc-tab="link_ability">リンク名 <span id="mcLinkBadge" class="badge badge-warning" style="margin-left:4px;"></span></button>
+      </div>
+
+      <!-- 結果リスト -->
+      <div id="masterCheckResults"></div>
     </div>
-    <button class="action-btn" id="reportBtn" onclick="runReport()">レポート実行</button>
-    <span id="reportSpinner" style="display:none;margin-left:12px;"><span class="spinner"></span>検査中...</span>
   </div>
 
-  <!-- D. Report Results -->
-  <div class="section" id="reportSection" style="display:none;">
-    <div class="section-title">レポート結果</div>
-    <div id="reportResults"></div>
-  </div>
-
-  <!-- E. Corrections Dictionary -->
+  <!-- F. Corrections Dictionary -->
+  <!-- (was E. before auto-correct section was added) -->
   <div class="section">
     <div class="section-title">補正辞書</div>
     <div class="tab-bar" id="dictTabBar">
@@ -410,15 +678,56 @@ a:hover { text-decoration: underline; }
     </div>
   </div>
 
-  <!-- F. Fix Application -->
+  <!-- F. Fix Application (Individual Review) -->
   <div class="section">
-    <div class="section-title">修正適用</div>
-    <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;">
-      <button class="action-btn secondary" id="dryRunBtn" onclick="runFix(true)">ドライラン</button>
-      <button class="action-btn danger" id="fixBtn" onclick="runFix(false)">修正適用</button>
-      <span id="fixSpinner" style="display:none;"><span class="spinner"></span>処理中...</span>
+    <div class="section-title">修正適用（個別レビュー）</div>
+
+    <!-- Step 1: Preview -->
+    <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:16px;">
+      <button class="action-btn" id="fixPreviewBtn" onclick="runFixPreview()">修正プレビュー</button>
+      <span id="fixPreviewSpinner" style="display:none;"><span class="spinner"></span>生成中...</span>
     </div>
-    <div id="fixResults" style="margin-top:16px;"></div>
+
+    <!-- Step 2: Review Table -->
+    <div id="fixReviewArea" style="display:none;">
+      <div class="cr-summary" id="fixSummary"></div>
+      <div style="display:flex;gap:8px;margin-bottom:12px;">
+        <button class="action-btn secondary" onclick="bulkAction('accept')" style="padding:6px 14px;font-size:0.8rem;">全て承認</button>
+        <button class="action-btn secondary" onclick="bulkAction('skip')" style="padding:6px 14px;font-size:0.8rem;">全てスキップ</button>
+      </div>
+      <div style="max-height:500px;overflow-y:auto;">
+        <table class="cr-table">
+          <thead><tr>
+            <th style="width:90px;">操作</th>
+            <th>ファイル</th>
+            <th>フィールド</th>
+            <th>現在値</th>
+            <th style="width:30px;"></th>
+            <th>修正値</th>
+            <th>種別</th>
+          </tr></thead>
+          <tbody id="fixReviewBody"></tbody>
+        </table>
+      </div>
+
+      <!-- Step 3: Apply -->
+      <div style="display:flex;gap:12px;align-items:center;margin-top:16px;">
+        <button class="action-btn danger" id="fixApplyBtn" onclick="runFixApply()">選択した修正を適用</button>
+        <span id="fixApplySpinner" style="display:none;"><span class="spinner"></span>適用中...</span>
+      </div>
+      <div id="fixApplyResults" style="margin-top:12px;"></div>
+    </div>
+
+    <!-- Legacy: Bulk fix (hidden, still functional) -->
+    <details style="margin-top:16px;">
+      <summary style="color:#aaa;font-size:0.8rem;cursor:pointer;">一括適用（従来方式）</summary>
+      <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:8px;">
+        <button class="action-btn secondary" id="dryRunBtn" onclick="runFix(true)">ドライラン</button>
+        <button class="action-btn danger" id="fixBtn" onclick="runFix(false)">修正適用</button>
+        <span id="fixSpinner" style="display:none;"><span class="spinner"></span>処理中...</span>
+      </div>
+      <div id="fixResults" style="margin-top:16px;"></div>
+    </details>
   </div>
 
 </div>
@@ -480,44 +789,53 @@ async function loadSeriesList() {
   }
 }
 
-// --- Report ---
-async function runReport() {
-  const btn = document.getElementById('reportBtn');
-  const spinner = document.getElementById('reportSpinner');
+// --- Master Check ---
+let masterCheckGroups = [];
+let masterCheckFilter = 'all';
+
+async function runMasterCheck() {
+  const btn = document.getElementById('masterCheckBtn');
+  const spinner = document.getElementById('masterCheckSpinner');
   btn.disabled = true;
   spinner.style.display = 'inline';
 
   const series = document.getElementById('seriesFilter').value;
-  const checkBoxes = document.querySelectorAll('#checksGroup input[type="checkbox"]:checked');
-  const checks = Array.from(checkBoxes).map(cb => cb.value);
-
-  if (checks.length === 0) {
-    alert('チェック種別を1つ以上選択してください');
-    btn.disabled = false;
-    spinner.style.display = 'none';
-    return;
-  }
-
   const params = new URLSearchParams();
-  params.set('checks', checks.join(','));
   if (series) params.set('series', series);
 
   try {
-    const res = await adminFetch('/api/ocr-validate/report?' + params.toString());
+    const res = await adminFetch('/api/ocr-validate/master-check?' + params.toString());
     const data = await res.json();
     if (!data.success) {
-      alert(data.error || 'レポート取得に失敗しました');
+      alert(data.error || '照合に失敗しました');
       return;
     }
 
-    // Update stats
-    document.getElementById('statCards').textContent = data.total_cards.toLocaleString();
-    document.getElementById('statWarnings').textContent = data.summary.warnings.toLocaleString();
-    document.getElementById('statErrors').textContent = data.summary.errors.toLocaleString();
+    masterCheckGroups = data.groups;
 
-    // Render results
-    renderReport(data.checks);
-    document.getElementById('reportSection').style.display = '';
+    // Stats
+    const okCount = data.total_cards - data.total_mismatches;
+    const okRate = data.total_cards > 0 ? ((okCount / data.total_cards) * 100).toFixed(1) : '100';
+
+    document.getElementById('statCards').textContent = data.total_cards.toLocaleString();
+    document.getElementById('statWarnings').textContent = data.total_mismatches.toLocaleString();
+    document.getElementById('statErrors').textContent = '0';
+
+    document.getElementById('mcTotal').textContent = data.total_cards.toLocaleString();
+    document.getElementById('mcMismatches').textContent = data.total_mismatches.toLocaleString();
+    document.getElementById('mcUnique').textContent = data.unique_mismatches.toLocaleString();
+    document.getElementById('mcOkRate').textContent = okRate + '%';
+
+    document.getElementById('mcMsBadge').textContent = data.ms_ability_mismatches;
+    document.getElementById('mcLinkBadge').textContent = data.link_ability_mismatches;
+
+    document.getElementById('masterCheckArea').style.display = '';
+
+    masterCheckFilter = 'all';
+    document.querySelectorAll('[data-mc-tab]').forEach(b => {
+      b.classList.toggle('active', b.dataset.mcTab === 'all');
+    });
+    renderMasterCheck(data.groups);
   } catch (e) {
     alert('エラー: ' + e.message);
   } finally {
@@ -526,52 +844,84 @@ async function runReport() {
   }
 }
 
-function renderReport(checks) {
-  const container = document.getElementById('reportResults');
-  let html = '';
+function filterMasterCheck(category) {
+  masterCheckFilter = category;
+  document.querySelectorAll('[data-mc-tab]').forEach(b => {
+    b.classList.toggle('active', b.dataset.mcTab === category);
+  });
+  const filtered = category === 'all'
+    ? masterCheckGroups
+    : masterCheckGroups.filter(g => g.category === category);
+  renderMasterCheck(filtered);
+}
 
-  for (const [key, section] of Object.entries(checks)) {
-    html += `<div class="result-section">`;
-    html += `<div class="result-section-title">${escapeHtml(section.title)}</div>`;
+function renderMasterCheck(groups) {
+  const container = document.getElementById('masterCheckResults');
 
-    if (section.results.length === 0) {
-      html += `<div class="result-item"><span class="badge badge-ok">OK</span><span class="result-msg">問題なし</span></div>`;
-    } else {
-      for (const r of section.results) {
-        const badgeClass = r.level === 'ERROR' ? 'badge-error'
-          : r.level === 'WARNING' ? 'badge-warning'
-          : r.level === 'OK' ? 'badge-ok'
-          : 'badge-info';
-
-        let actionsHtml = '';
-        if (r.suggestion) {
-          const s = r.suggestion;
-          actionsHtml = `<button class="dict-btn" onclick='addSuggestion(${JSON.stringify(s)})'>辞書に追加</button>`;
-        }
-
-        html += `<div class="result-item">
-          <span class="badge ${badgeClass}">${escapeHtml(r.level)}</span>
-          <div class="result-msg">
-            ${escapeHtml(r.message)}
-            ${r.detail ? `<div class="result-detail">${escapeHtml(r.detail)}</div>` : ''}
-          </div>
-          <div class="result-actions">${actionsHtml}</div>
-        </div>`;
-      }
-    }
-    html += '</div>';
+  if (groups.length === 0) {
+    container.innerHTML = '<div class="no-data" style="color:#66f2c5;font-size:1rem;padding:24px;">&#10003; 全てマスターと一致しています</div>';
+    return;
   }
 
+  let html = `<div style="max-height:600px;overflow-y:auto;">`;
+
+  for (const g of groups) {
+    const catClass = g.category === 'ms_ability' ? 'ms' : 'link';
+    const catLabel = g.category === 'ms_ability' ? 'MSアビリティ' : 'リンク名';
+    const hasSuggest = g.closest_match !== null;
+    const itemClass = hasSuggest ? 'mc-item has-suggest' : 'mc-item';
+
+    const dictCategory = g.category === 'ms_ability' ? 'ms_ability_names' : 'link_ability_names';
+
+    html += `<div class="${itemClass}">`;
+    html += `<div class="mc-item-header">`;
+    html += `<span class="mc-cat ${catClass}">${catLabel}</span>`;
+    html += `<span class="mc-ocr-val">${escapeHtml(g.ocr_value)}</span>`;
+
+    if (hasSuggest) {
+      html += `<span class="mc-arrow">&rarr;</span>`;
+      html += `<span class="mc-suggest">${escapeHtml(g.closest_match)}</span>`;
+      html += `<span class="mc-dist">距離 ${g.distance}</span>`;
+    } else {
+      html += `<span class="mc-no-suggest">候補なし</span>`;
+    }
+
+    html += `<span class="mc-count"><strong>${g.count}</strong>件</span>`;
+    html += `</div>`;
+
+    // 該当カード一覧
+    html += `<div class="mc-cards">`;
+    const showCards = g.cards.slice(0, 10);
+    showCards.forEach(c => {
+      html += `<span class="mc-card-tag">${escapeHtml(c)}</span>`;
+    });
+    if (g.cards.length > 10) {
+      html += `<span class="mc-card-tag">...他${g.cards.length - 10}件</span>`;
+    }
+    html += `</div>`;
+
+    // アクション
+    if (hasSuggest) {
+      const suggestion = JSON.stringify({category: dictCategory, key: g.ocr_value, value: g.closest_match});
+      html += `<div class="mc-item-actions">`;
+      html += `<button class="dict-btn" onclick='addToDictFromCheck(${suggestion.replace(/'/g, "\\'")})'>辞書に追加</button>`;
+      html += `</div>`;
+    }
+
+    html += `</div>`;
+  }
+
+  html += '</div>';
   container.innerHTML = html;
 }
 
-// --- Suggestion → dict add ---
-async function addSuggestion(suggestion) {
+async function addToDictFromCheck(suggestion) {
+  const s = typeof suggestion === 'string' ? JSON.parse(suggestion) : suggestion;
   try {
     const res = await adminFetch('/api/ocr-validate/corrections', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ action: 'add', category: suggestion.category, key: suggestion.key, value: suggestion.value }),
+      body: JSON.stringify({ action: 'add', category: s.category, key: s.key, value: s.value }),
     });
     const data = await res.json();
     if (!data.success) {
@@ -581,6 +931,10 @@ async function addSuggestion(suggestion) {
     correctionsCache = data.corrections;
     document.getElementById('statDict').textContent = data.entry_count.toLocaleString();
     renderDictTab();
+    // ボタンを「追加済」に変更
+    event.target.textContent = '追加済';
+    event.target.disabled = true;
+    event.target.style.opacity = '0.5';
   } catch (e) {
     alert('エラー: ' + e.message);
   }
@@ -684,7 +1038,318 @@ async function addDictEntry() {
   }
 }
 
-// --- Fix ---
+// --- Master Data ---
+async function loadMasterDataStatus() {
+  try {
+    const res = await adminFetch('/api/ocr-validate/master-data/status');
+    const data = await res.json();
+    if (!data.success) return;
+    document.getElementById('mdMsCount').textContent = data.ms_abilities_count;
+    document.getElementById('mdLinkCount').textContent = data.link_names_count;
+    document.getElementById('mdAbilityCount').textContent = data.ability_data_count;
+    if (data.fetched_at) {
+      document.getElementById('mdFetchedAt').textContent = data.fetched_at.split('T')[0];
+    } else {
+      document.getElementById('mdFetchedAt').textContent = '未取得';
+    }
+    renderMasterDataLists(data);
+  } catch (e) {
+    console.error('Master data status error:', e);
+  }
+}
+
+function renderMasterDataLists(data) {
+  const area = document.getElementById('mdListArea');
+  if (!data.exists) {
+    area.innerHTML = '<div class="no-data">マスターデータ未取得。「公式データ取得/更新」を押してください。</div>';
+    return;
+  }
+
+  const msAbilities = data.ms_abilities || [];
+  const linkNames = data.link_names || [];
+
+  // リンク名を分類: SQ系, AB/EB系, 通常
+  const linkNormal = [];
+  const linkSQ = [];
+  const linkSpecial = [];
+  linkNames.forEach(n => {
+    if (n.startsWith('[SQ]')) linkSQ.push(n);
+    else if (n.startsWith('[AB]') || n.startsWith('[EB]')) linkSpecial.push(n);
+    else linkNormal.push(n);
+  });
+
+  let html = '';
+
+  // MSアビリティ一覧
+  html += `<details>`;
+  html += `<summary>MSアビリティ一覧 (${msAbilities.length}種)</summary>`;
+  html += `<div class="md-tag-wrap">`;
+  msAbilities.forEach(name => {
+    html += `<span class="md-tag ms">${escapeHtml(name)}</span>`;
+  });
+  html += `</div></details>`;
+
+  // リンクアビリティ名一覧
+  html += `<details>`;
+  html += `<summary>リンクアビリティ名一覧 (${linkNames.length}種)</summary>`;
+
+  if (linkNormal.length > 0) {
+    html += `<div style="font-size:0.75rem;color:#aaa;margin-top:6px;">作品・特性系 (${linkNormal.length})</div>`;
+    html += `<div class="md-tag-wrap">`;
+    linkNormal.forEach(name => {
+      html += `<span class="md-tag link">${escapeHtml(name)}</span>`;
+    });
+    html += `</div>`;
+  }
+  if (linkSQ.length > 0) {
+    html += `<div style="font-size:0.75rem;color:#aaa;margin-top:6px;">SQ系 (${linkSQ.length})</div>`;
+    html += `<div class="md-tag-wrap">`;
+    linkSQ.forEach(name => {
+      html += `<span class="md-tag sq">${escapeHtml(name)}</span>`;
+    });
+    html += `</div>`;
+  }
+  if (linkSpecial.length > 0) {
+    html += `<div style="font-size:0.75rem;color:#aaa;margin-top:6px;">AB/EB系 (${linkSpecial.length})</div>`;
+    html += `<div class="md-tag-wrap">`;
+    linkSpecial.forEach(name => {
+      html += `<span class="md-tag sq">${escapeHtml(name)}</span>`;
+    });
+    html += `</div>`;
+  }
+
+  html += `</details>`;
+
+  area.innerHTML = html;
+}
+
+async function fetchMasterData() {
+  const btn = document.getElementById('masterFetchBtn');
+  const spinner = document.getElementById('masterFetchSpinner');
+  const msg = document.getElementById('masterFetchMsg');
+  btn.disabled = true;
+  spinner.style.display = 'inline';
+  msg.textContent = '';
+
+  try {
+    const res = await adminFetch('/api/ocr-validate/master-data/fetch', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: '{}',
+    });
+    const data = await res.json();
+    if (!data.success) {
+      msg.textContent = data.error || '取得に失敗しました';
+      msg.style.color = '#ff6b6b';
+      return;
+    }
+    document.getElementById('mdMsCount').textContent = data.ms_abilities_count;
+    document.getElementById('mdLinkCount').textContent = data.link_names_count;
+    document.getElementById('mdAbilityCount').textContent = data.ability_data_after;
+    if (data.fetched_at) {
+      document.getElementById('mdFetchedAt').textContent = data.fetched_at.split('T')[0];
+    }
+    const diff = data.ability_data_after - data.ability_data_before;
+    msg.textContent = `更新完了 (ABILITY_DATA: ${diff > 0 ? '+' + diff : diff}件)`;
+    msg.style.color = '#66f2c5';
+  } catch (e) {
+    msg.textContent = 'エラー: ' + e.message;
+    msg.style.color = '#ff6b6b';
+  } finally {
+    btn.disabled = false;
+    spinner.style.display = 'none';
+  }
+}
+
+// --- Fix Preview & Apply ---
+let fixPreviewItems = [];
+
+function updateFixSummary() {
+  const summary = document.getElementById('fixSummary');
+  let accept = 0, skip = 0, edit = 0;
+  fixPreviewItems.forEach((item, i) => {
+    const sel = document.querySelector(`#fixAction_${i}`);
+    if (!sel) return;
+    const action = sel.value;
+    if (action === 'accept') accept++;
+    else if (action === 'skip') skip++;
+    else if (action === 'edit') edit++;
+  });
+  summary.innerHTML = `<span>承認: <span class="count accept">${accept}件</span></span>` +
+    `<span>スキップ: <span class="count skip">${skip}件</span></span>` +
+    `<span>手動: <span class="count edit">${edit}件</span></span>` +
+    `<span style="color:#aaa;">合計: ${fixPreviewItems.length}件</span>`;
+}
+
+function onFixActionChange(idx) {
+  const sel = document.getElementById(`fixAction_${idx}`);
+  const row = document.getElementById(`fixRow_${idx}`);
+  const newValCell = document.getElementById(`fixNewVal_${idx}`);
+  const item = fixPreviewItems[idx];
+
+  if (sel.value === 'skip') {
+    row.classList.add('skipped');
+    newValCell.innerHTML = `<span class="cr-new">${escapeHtml(item.new_value)}</span>`;
+  } else if (sel.value === 'edit') {
+    row.classList.remove('skipped');
+    newValCell.innerHTML = `<input type="text" class="cr-edit-input" id="fixEditVal_${idx}" value="${escapeHtml(item.new_value)}">`;
+  } else {
+    row.classList.remove('skipped');
+    newValCell.innerHTML = `<span class="cr-new">${escapeHtml(item.new_value)}</span>`;
+  }
+  updateFixSummary();
+}
+
+function bulkAction(action) {
+  fixPreviewItems.forEach((item, i) => {
+    const sel = document.getElementById(`fixAction_${i}`);
+    if (sel) {
+      sel.value = action;
+      onFixActionChange(i);
+    }
+  });
+}
+
+async function runFixPreview() {
+  const btn = document.getElementById('fixPreviewBtn');
+  const spinner = document.getElementById('fixPreviewSpinner');
+  btn.disabled = true;
+  spinner.style.display = 'inline';
+
+  const series = document.getElementById('seriesFilter').value;
+
+  try {
+    const res = await adminFetch('/api/ocr-validate/fix/preview', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ series: series || '' }),
+    });
+    const data = await res.json();
+    if (!data.success) {
+      alert(data.error || 'プレビュー生成に失敗しました');
+      return;
+    }
+
+    fixPreviewItems = data.items;
+
+    if (data.items.length === 0) {
+      document.getElementById('fixReviewArea').style.display = 'none';
+      alert(data.message || '補正対象なし');
+      return;
+    }
+
+    renderFixReview(data.items);
+    document.getElementById('fixReviewArea').style.display = '';
+    document.getElementById('fixApplyResults').innerHTML = '';
+  } catch (e) {
+    alert('エラー: ' + e.message);
+  } finally {
+    btn.disabled = false;
+    spinner.style.display = 'none';
+  }
+}
+
+function renderFixReview(items) {
+  const tbody = document.getElementById('fixReviewBody');
+  let html = '';
+
+  items.forEach((item, i) => {
+    const sourceClass = item.source === 'dictionary' ? 'dictionary' : 'char_normalize';
+    const sourceLabel = item.source === 'dictionary' ? '辞書' : '文字正規化';
+    // Extract short filename (e.g. BP04-001 from BP04-001_basic.json)
+    const shortFile = item.file.replace(/_basic\.json$/, '');
+
+    html += `<tr id="fixRow_${i}">
+      <td>
+        <select class="cr-action-select" id="fixAction_${i}" onchange="onFixActionChange(${i})">
+          <option value="accept">&#10003; 承認</option>
+          <option value="skip">&#10007; スキップ</option>
+          <option value="edit">&#9998; 手動</option>
+        </select>
+      </td>
+      <td>${escapeHtml(shortFile)}</td>
+      <td style="font-family:monospace;font-size:0.78rem;">${escapeHtml(item.field)}</td>
+      <td class="cr-old">${escapeHtml(item.old_value)}</td>
+      <td style="color:#66f2c5;font-weight:bold;">&rarr;</td>
+      <td id="fixNewVal_${i}"><span class="cr-new">${escapeHtml(item.new_value)}</span></td>
+      <td><span class="cr-source ${sourceClass}">${sourceLabel}</span></td>
+    </tr>`;
+  });
+
+  tbody.innerHTML = html;
+  updateFixSummary();
+}
+
+async function runFixApply() {
+  if (fixPreviewItems.length === 0) {
+    alert('先に修正プレビューを実行してください');
+    return;
+  }
+
+  // Collect user decisions
+  const userItems = [];
+  let acceptCount = 0;
+  fixPreviewItems.forEach((item, i) => {
+    const sel = document.getElementById(`fixAction_${i}`);
+    if (!sel) return;
+    const action = sel.value;
+    const entry = { id: item.id, action: action };
+    if (action === 'edit') {
+      const input = document.getElementById(`fixEditVal_${i}`);
+      entry.new_value = input ? input.value : item.new_value;
+    }
+    if (action === 'accept') acceptCount++;
+    userItems.push(entry);
+  });
+
+  const applyCount = userItems.filter(i => i.action === 'accept' || i.action === 'edit').length;
+  if (applyCount === 0) {
+    alert('承認または手動修正のアイテムがありません');
+    return;
+  }
+
+  if (!confirm(`${applyCount}件の修正をファイルに適用します。よろしいですか？`)) return;
+
+  const btn = document.getElementById('fixApplyBtn');
+  const spinner = document.getElementById('fixApplySpinner');
+  btn.disabled = true;
+  spinner.style.display = 'inline';
+
+  const series = document.getElementById('seriesFilter').value;
+
+  try {
+    const res = await adminFetch('/api/ocr-validate/fix/apply', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ series: series || '', items: userItems }),
+    });
+    const data = await res.json();
+    if (!data.success) {
+      alert(data.error || '適用に失敗しました');
+      return;
+    }
+
+    let html = `<div style="font-size:0.9rem;color:#66f2c5;font-weight:bold;">適用完了</div>`;
+    html += `<div style="font-size:0.85rem;margin-top:4px;">適用: ${data.applied}件 / スキップ: ${data.skipped}件 / 手動: ${data.edited}件 / ファイル: ${data.files_modified}件</div>`;
+
+    if (data.errors && data.errors.length > 0) {
+      html += `<div style="margin-top:8px;color:#ff6b6b;font-size:0.8rem;">`;
+      data.errors.forEach(err => { html += `<div>${escapeHtml(err)}</div>`; });
+      html += `</div>`;
+    }
+
+    html += `<div style="margin-top:8px;font-size:0.8rem;color:#ffc107;">_basic.json を修正しました。_sp.json / _sq_analysis.json も更新するには OCR 再実行（構造化のみ）を行ってください。</div>`;
+
+    document.getElementById('fixApplyResults').innerHTML = html;
+  } catch (e) {
+    alert('エラー: ' + e.message);
+  } finally {
+    btn.disabled = false;
+    spinner.style.display = 'none';
+  }
+}
+
+// --- Fix (Legacy Bulk) ---
 async function runFix(dryRun) {
   if (!dryRun) {
     if (!confirm('補正辞書の内容でOCRデータファイルを修正します。よろしいですか？')) return;
@@ -749,6 +1414,7 @@ function renderFixResults(data, dryRun) {
 // --- Init ---
 loadSeriesList();
 loadCorrections();
+loadMasterDataStatus();
 </script>
 </body>
 </html>
