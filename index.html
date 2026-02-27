@@ -2286,24 +2286,30 @@ const ImageCache = {
     return null;
   },
 
-  // --- toDataUrl: canvas 経由で data URL 変換 ---
+  // --- toDataUrl: CORSプロキシ経由でdata URL変換（REC用） ---
   async toDataUrl(cardNumber, side = 'front') {
     if (!cardNumber) return null;
     const url = this._imgUrl(cardNumber, side);
-    return new Promise(resolve => {
-      const img = new Image();
-      img.crossOrigin = 'anonymous';
-      img.onload = () => {
-        try {
-          const c = document.createElement('canvas');
-          c.width = img.naturalWidth; c.height = img.naturalHeight;
-          c.getContext('2d').drawImage(img, 0, 0);
-          resolve(c.toDataURL('image/jpeg', 0.9));
-        } catch (_) { resolve(null); }
-      };
-      img.onerror = () => resolve(null);
-      img.src = url;
-    });
+    // CORSプロキシ経由で取得（プロキシがCORSヘッダーを付与するので読み取り可能）
+    const proxies = [
+      u => `https://corsproxy.io/?${encodeURIComponent(u)}`,
+      u => `https://api.allorigins.win/raw?url=${encodeURIComponent(u)}`,
+    ];
+    for (const mkUrl of proxies) {
+      try {
+        const res = await fetch(mkUrl(url), { signal: AbortSignal.timeout(8000) });
+        if (!res.ok) continue;
+        const blob = await res.blob();
+        if (blob.size < 100) continue;
+        return await new Promise(resolve => {
+          const reader = new FileReader();
+          reader.onload = () => resolve(reader.result);
+          reader.onerror = () => resolve(null);
+          reader.readAsDataURL(blob);
+        });
+      } catch { continue; }
+    }
+    return null;
   },
 
   _updateCount(count) {
