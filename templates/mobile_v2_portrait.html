@@ -1124,7 +1124,7 @@ const PLACEHOLDER_SVG = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000
 const ImageCache = {
   DB_NAME: 'gab-img-v3',
   STORE_NAME: 'images',
-  CONCURRENCY: 4,
+  CONCURRENCY: 100,
   _db: null,
   _memoryOnly: false,
   _blobUrls: {},

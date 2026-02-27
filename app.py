@@ -42,29 +42,61 @@ app.config['TEMPLATES_AUTO_RELOAD'] = True
 # --- セキュリティ設定 ---
 app.secret_key = os.environ.get('SECRET_KEY') or secrets.token_hex(32)
 
-# 管理者トークン（.envのADMIN_TOKENから読み取り、未設定なら自動生成）
+# 管理者認証設定（Basic認証 or トークン認証）
+ADMIN_USER = os.environ.get('ADMIN_USER', '').strip()
+ADMIN_PASS = os.environ.get('ADMIN_PASS', '').strip()
 ADMIN_TOKEN = os.environ.get('ADMIN_TOKEN', '').strip()
 if not ADMIN_TOKEN:
     ADMIN_TOKEN = secrets.token_hex(24)
-    print(f"[SECURITY] ADMIN_TOKEN が未設定のため自動生成しました: {ADMIN_TOKEN}")
-    print(f"[SECURITY] 永続化するには .env に ADMIN_TOKEN={ADMIN_TOKEN} を追加してください")
+if ADMIN_USER and ADMIN_PASS:
+    print(f"[SECURITY] Basic認証が有効です (user: {ADMIN_USER})")
+else:
+    print(f"[SECURITY] ADMIN_TOKEN: {ADMIN_TOKEN}")
+    print(f"[SECURITY] Basic認証を使うには .env に ADMIN_USER / ADMIN_PASS を設定してください")
+
+
+def _check_basic_auth(auth_header):
+    """Basic認証ヘッダを検証する。成功ならTrue。"""
+    if not auth_header.startswith('Basic ') or not ADMIN_USER:
+        return False
+    import base64
+    try:
+        decoded = base64.b64decode(auth_header[6:]).decode('utf-8')
+        user, pw = decoded.split(':', 1)
+        return secrets.compare_digest(user, ADMIN_USER) and secrets.compare_digest(pw, ADMIN_PASS)
+    except Exception:
+        return False
 
 
 def require_admin(f):
     """管理エンドポイント用の認証デコレータ。
-    Authorization: Bearer <token> ヘッダまたは ?token=<token> クエリで認証する。
+    セッションCookie、Basic認証、Bearer トークン、?token= クエリのいずれかで認証する。
     """
     @functools.wraps(f)
     def decorated(*args, **kwargs):
-        token = None
+        from flask import session
+        # 0. セッションCookie（Basic認証成功後に発行）
+        if session.get('admin_authenticated'):
+            return f(*args, **kwargs)
         auth_header = request.headers.get('Authorization', '')
+        # 1. Basic認証 → 成功したらセッションに記録
+        if _check_basic_auth(auth_header):
+            session['admin_authenticated'] = True
+            return f(*args, **kwargs)
+        # 2. Bearerトークン
+        token = None
         if auth_header.startswith('Bearer '):
             token = auth_header[7:].strip()
+        # 3. クエリパラメータ
         if not token:
             token = request.args.get('token', '').strip()
-        if not token or not secrets.compare_digest(token, ADMIN_TOKEN):
-            return jsonify({'success': False, 'error': '認証が必要です'}), 401
-        return f(*args, **kwargs)
+        if token and secrets.compare_digest(token, ADMIN_TOKEN):
+            session['admin_authenticated'] = True
+            return f(*args, **kwargs)
+        # Basic認証が設定されている場合は401 + WWW-Authenticate を返す
+        if ADMIN_USER and ADMIN_PASS:
+            return Response('認証が必要です', 401, {'WWW-Authenticate': 'Basic realm="Admin"'})
+        return jsonify({'success': False, 'error': '認証が必要です'}), 401
     return decorated
 
 
