@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OCRデータ検証 - Arsenal Base</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: #1a1a1a;
+  color: #fff;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  min-height: 100vh;
+}
+a { color: #66f2c5; text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.header {
+  background: #66f2c5;
+  color: #1a1a1a;
+  padding: 12px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+.header a { color: #1a1a1a; }
+.header-links { display: flex; gap: 8px; }
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Stats Panel */
+.stats-panel {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+  margin-bottom: 24px;
+}
+.stat-card {
+  background: #2a2a2a;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  border: 1px solid #444;
+}
+.stat-card .stat-value {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #66f2c5;
+}
+.stat-card .stat-label {
+  font-size: 0.85rem;
+  color: #aaa;
+  margin-top: 4px;
+}
+.stat-card.warn .stat-value { color: #ffc107; }
+.stat-card.error .stat-value { color: #ff6b6b; }
+
+/* Section */
+.section {
+  background: #2a2a2a;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 24px;
+  border: 1px solid #444;
+}
+.section-title {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #66f2c5;
+  margin-bottom: 16px;
+}
+
+/* Controls */
+.control-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  margin-bottom: 16px;
+}
+.control-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.control-group label {
+  color: #66f2c5;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+.control-group select {
+  background: #333;
+  color: #fff;
+  border: 1px solid #555;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 0.9rem;
+}
+.control-group select:focus {
+  outline: none;
+  border-color: #66f2c5;
+}
+
+.checkbox-group {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 12px;
+}
+.checkbox-group label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+.checkbox-group input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: #66f2c5;
+}
+
+.action-btn {
+  background: #66f2c5;
+  color: #1a1a1a;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.action-btn:hover { opacity: 0.85; }
+.action-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.action-btn.danger {
+  background: #ff6b6b;
+  color: #fff;
+}
+
+.action-btn.secondary {
+  background: #555;
+  color: #fff;
+}
+
+/* Spinner */
+.spinner {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  border: 3px solid #555;
+  border-top-color: #66f2c5;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  vertical-align: middle;
+  margin-right: 8px;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Badges */
+.badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.badge-warning { background: #ffc107; color: #1a1a1a; }
+.badge-error { background: #ff6b6b; color: #fff; }
+.badge-ok { background: #66f2c5; color: #1a1a1a; }
+.badge-info { background: #555; color: #ccc; }
+
+/* Result Items */
+.result-section {
+  margin-bottom: 20px;
+}
+.result-section-title {
+  font-size: 0.95rem;
+  font-weight: bold;
+  color: #66f2c5;
+  margin-bottom: 8px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid #444;
+}
+.result-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 8px 0;
+  border-bottom: 1px solid #333;
+  font-size: 0.85rem;
+}
+.result-item:last-child { border-bottom: none; }
+.result-msg { flex: 1; }
+.result-detail { color: #aaa; font-size: 0.8rem; margin-top: 2px; }
+.result-actions { flex-shrink: 0; }
+
+.dict-btn {
+  background: #66f2c5;
+  color: #1a1a1a;
+  border: none;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.dict-btn:hover { opacity: 0.85; }
+.dict-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+.dict-btn.remove {
+  background: #ff6b6b;
+  color: #fff;
+}
+
+/* Tab */
+.tab-bar {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 12px;
+  border-bottom: 2px solid #444;
+  padding-bottom: 0;
+}
+.tab-btn {
+  background: transparent;
+  color: #aaa;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: bold;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  transition: color 0.2s, border-color 0.2s;
+}
+.tab-btn:hover { color: #fff; }
+.tab-btn.active {
+  color: #66f2c5;
+  border-bottom-color: #66f2c5;
+}
+.tab-content { display: none; }
+.tab-content.active { display: block; }
+
+/* Dictionary Table */
+.dict-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.dict-table th {
+  background: #333;
+  color: #66f2c5;
+  padding: 8px 12px;
+  text-align: left;
+  font-size: 0.85rem;
+}
+.dict-table td {
+  padding: 6px 12px;
+  border-bottom: 1px solid #333;
+  font-size: 0.85rem;
+  vertical-align: middle;
+}
+.dict-table tr:hover { background: #333; }
+
+/* Manual Add Form */
+.add-form {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid #444;
+}
+.add-form select,
+.add-form input {
+  background: #333;
+  color: #fff;
+  border: 1px solid #555;
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 0.85rem;
+}
+.add-form select:focus,
+.add-form input:focus {
+  outline: none;
+  border-color: #66f2c5;
+}
+
+/* Fix Changes */
+.change-file {
+  font-weight: bold;
+  color: #66f2c5;
+  margin-top: 12px;
+  margin-bottom: 4px;
+  font-size: 0.85rem;
+}
+.change-item {
+  font-size: 0.8rem;
+  color: #ccc;
+  padding: 2px 0 2px 16px;
+  font-family: monospace;
+}
+
+.no-data { color: #666; font-size: 0.85rem; padding: 12px; text-align: center; }
+.loading { color: #aaa; text-align: center; padding: 40px; }
+
+@media (max-width: 600px) {
+  .control-row { flex-direction: column; }
+  .stats-panel { grid-template-columns: repeat(2, 1fr); }
+  .checkbox-group { flex-direction: column; }
+}
+</style>
+</head>
+<body>
+<div class="header">
+  <span>OCRデータ検証</span>
+  <div class="header-links">
+    <a href="/">&larr; トップ</a>
+    <a href="/admin">管理画面</a>
+    <a href="/ocr-run">OCR実行</a>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- B. Stats Panel -->
+  <div class="stats-panel">
+    <div class="stat-card">
+      <div class="stat-value" id="statCards">-</div>
+      <div class="stat-label">検査済みカード</div>
+    </div>
+    <div class="stat-card warn">
+      <div class="stat-value" id="statWarnings">-</div>
+      <div class="stat-label">Warnings</div>
+    </div>
+    <div class="stat-card error">
+      <div class="stat-value" id="statErrors">-</div>
+      <div class="stat-label">Errors</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value" id="statDict">-</div>
+      <div class="stat-label">辞書エントリ</div>
+    </div>
+  </div>
+
+  <!-- C. Controls -->
+  <div class="section">
+    <div class="section-title">レポート設定</div>
+    <div class="control-row">
+      <div class="control-group">
+        <label>シリーズフィルタ</label>
+        <select id="seriesFilter">
+          <option value="">全シリーズ</option>
+        </select>
+      </div>
+    </div>
+    <div class="control-group" style="margin-bottom:12px;">
+      <label>チェック種別</label>
+      <div class="checkbox-group" id="checksGroup">
+        <label><input type="checkbox" value="link_names" checked> リンク名</label>
+        <label><input type="checkbox" value="link_effects" checked> リンク効果</label>
+        <label><input type="checkbox" value="link_conditions" checked> リンク条件</label>
+        <label><input type="checkbox" value="ms_abilities" checked> MSアビリティ</label>
+        <label><input type="checkbox" value="pilot_skills" checked> パイロットスキル</label>
+        <label><input type="checkbox" value="structure" checked> 構造整合性</label>
+      </div>
+    </div>
+    <button class="action-btn" id="reportBtn" onclick="runReport()">レポート実行</button>
+    <span id="reportSpinner" style="display:none;margin-left:12px;"><span class="spinner"></span>検査中...</span>
+  </div>
+
+  <!-- D. Report Results -->
+  <div class="section" id="reportSection" style="display:none;">
+    <div class="section-title">レポート結果</div>
+    <div id="reportResults"></div>
+  </div>
+
+  <!-- E. Corrections Dictionary -->
+  <div class="section">
+    <div class="section-title">補正辞書</div>
+    <div class="tab-bar" id="dictTabBar">
+      <button class="tab-btn active" onclick="switchDictTab('link_ability_names')" data-tab="link_ability_names">リンク名</button>
+      <button class="tab-btn" onclick="switchDictTab('pilot_skill_names')" data-tab="pilot_skill_names">パイロットスキル</button>
+      <button class="tab-btn" onclick="switchDictTab('ms_ability_names')" data-tab="ms_ability_names">MSアビリティ</button>
+      <button class="tab-btn" onclick="switchDictTab('link_effects')" data-tab="link_effects">リンク効果</button>
+    </div>
+    <div id="dictContent"></div>
+
+    <!-- Manual Add -->
+    <div class="add-form">
+      <select id="addCategory">
+        <option value="link_ability_names">リンク名</option>
+        <option value="pilot_skill_names">パイロットスキル</option>
+        <option value="ms_ability_names">MSアビリティ</option>
+        <option value="link_effects">リンク効果</option>
+      </select>
+      <input type="text" id="addKey" placeholder="誤読テキスト" style="width:200px;">
+      <input type="text" id="addValue" placeholder="正しいテキスト" style="width:200px;">
+      <button class="action-btn" onclick="addDictEntry()" style="padding:6px 16px;font-size:0.85rem;">追加</button>
+    </div>
+  </div>
+
+  <!-- F. Fix Application -->
+  <div class="section">
+    <div class="section-title">修正適用</div>
+    <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;">
+      <button class="action-btn secondary" id="dryRunBtn" onclick="runFix(true)">ドライラン</button>
+      <button class="action-btn danger" id="fixBtn" onclick="runFix(false)">修正適用</button>
+      <span id="fixSpinner" style="display:none;"><span class="spinner"></span>処理中...</span>
+    </div>
+    <div id="fixResults" style="margin-top:16px;"></div>
+  </div>
+
+</div>
+
+<script>
+// --- Admin Token Management ---
+(function() {
+  const params = new URLSearchParams(window.location.search);
+  const urlToken = params.get('token');
+  if (urlToken) {
+    sessionStorage.setItem('admin_token', urlToken);
+    params.delete('token');
+    const clean = params.toString();
+    const newUrl = window.location.pathname + (clean ? '?' + clean : '');
+    window.history.replaceState({}, '', newUrl);
+  }
+})();
+
+function getAdminToken() {
+  return sessionStorage.getItem('admin_token') || '';
+}
+
+function adminHeaders(extra) {
+  const h = { 'Authorization': 'Bearer ' + getAdminToken() };
+  return Object.assign(h, extra || {});
+}
+
+function adminFetch(url, options) {
+  options = options || {};
+  options.headers = adminHeaders(options.headers);
+  return fetch(url, options);
+}
+
+function escapeHtml(str) {
+  if (!str) return '';
+  const d = document.createElement('div');
+  d.textContent = str;
+  return d.innerHTML;
+}
+
+let currentDictTab = 'link_ability_names';
+let correctionsCache = null;
+
+// --- Series dropdown population ---
+async function loadSeriesList() {
+  try {
+    const res = await adminFetch('/api/ocr-run/series-stats');
+    const data = await res.json();
+    if (!data.success) return;
+    const sel = document.getElementById('seriesFilter');
+    data.series.forEach(s => {
+      const opt = document.createElement('option');
+      opt.value = s.series;
+      opt.textContent = s.series;
+      sel.appendChild(opt);
+    });
+  } catch (e) {
+    console.error('Series list load error:', e);
+  }
+}
+
+// --- Report ---
+async function runReport() {
+  const btn = document.getElementById('reportBtn');
+  const spinner = document.getElementById('reportSpinner');
+  btn.disabled = true;
+  spinner.style.display = 'inline';
+
+  const series = document.getElementById('seriesFilter').value;
+  const checkBoxes = document.querySelectorAll('#checksGroup input[type="checkbox"]:checked');
+  const checks = Array.from(checkBoxes).map(cb => cb.value);
+
+  if (checks.length === 0) {
+    alert('チェック種別を1つ以上選択してください');
+    btn.disabled = false;
+    spinner.style.display = 'none';
+    return;
+  }
+
+  const params = new URLSearchParams();
+  params.set('checks', checks.join(','));
+  if (series) params.set('series', series);
+
+  try {
+    const res = await adminFetch('/api/ocr-validate/report?' + params.toString());
+    const data = await res.json();
+    if (!data.success) {
+      alert(data.error || 'レポート取得に失敗しました');
+      return;
+    }
+
+    // Update stats
+    document.getElementById('statCards').textContent = data.total_cards.toLocaleString();
+    document.getElementById('statWarnings').textContent = data.summary.warnings.toLocaleString();
+    document.getElementById('statErrors').textContent = data.summary.errors.toLocaleString();
+
+    // Render results
+    renderReport(data.checks);
+    document.getElementById('reportSection').style.display = '';
+  } catch (e) {
+    alert('エラー: ' + e.message);
+  } finally {
+    btn.disabled = false;
+    spinner.style.display = 'none';
+  }
+}
+
+function renderReport(checks) {
+  const container = document.getElementById('reportResults');
+  let html = '';
+
+  for (const [key, section] of Object.entries(checks)) {
+    html += `<div class="result-section">`;
+    html += `<div class="result-section-title">${escapeHtml(section.title)}</div>`;
+
+    if (section.results.length === 0) {
+      html += `<div class="result-item"><span class="badge badge-ok">OK</span><span class="result-msg">問題なし</span></div>`;
+    } else {
+      for (const r of section.results) {
+        const badgeClass = r.level === 'ERROR' ? 'badge-error'
+          : r.level === 'WARNING' ? 'badge-warning'
+          : r.level === 'OK' ? 'badge-ok'
+          : 'badge-info';
+
+        let actionsHtml = '';
+        if (r.suggestion) {
+          const s = r.suggestion;
+          actionsHtml = `<button class="dict-btn" onclick='addSuggestion(${JSON.stringify(s)})'>辞書に追加</button>`;
+        }
+
+        html += `<div class="result-item">
+          <span class="badge ${badgeClass}">${escapeHtml(r.level)}</span>
+          <div class="result-msg">
+            ${escapeHtml(r.message)}
+            ${r.detail ? `<div class="result-detail">${escapeHtml(r.detail)}</div>` : ''}
+          </div>
+          <div class="result-actions">${actionsHtml}</div>
+        </div>`;
+      }
+    }
+    html += '</div>';
+  }
+
+  container.innerHTML = html;
+}
+
+// --- Suggestion → dict add ---
+async function addSuggestion(suggestion) {
+  try {
+    const res = await adminFetch('/api/ocr-validate/corrections', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ action: 'add', category: suggestion.category, key: suggestion.key, value: suggestion.value }),
+    });
+    const data = await res.json();
+    if (!data.success) {
+      alert(data.error || '追加に失敗しました');
+      return;
+    }
+    correctionsCache = data.corrections;
+    document.getElementById('statDict').textContent = data.entry_count.toLocaleString();
+    renderDictTab();
+  } catch (e) {
+    alert('エラー: ' + e.message);
+  }
+}
+
+// --- Corrections Dictionary ---
+async function loadCorrections() {
+  try {
+    const res = await adminFetch('/api/ocr-validate/corrections');
+    const data = await res.json();
+    if (!data.success) return;
+    correctionsCache = data.corrections;
+    document.getElementById('statDict').textContent = data.entry_count.toLocaleString();
+    renderDictTab();
+  } catch (e) {
+    console.error('Corrections load error:', e);
+  }
+}
+
+function switchDictTab(tab) {
+  currentDictTab = tab;
+  document.querySelectorAll('#dictTabBar .tab-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.tab === tab);
+  });
+  renderDictTab();
+}
+
+function renderDictTab() {
+  const container = document.getElementById('dictContent');
+  if (!correctionsCache) {
+    container.innerHTML = '<div class="no-data">読み込み中...</div>';
+    return;
+  }
+  const entries = correctionsCache[currentDictTab] || {};
+  const keys = Object.keys(entries);
+
+  if (keys.length === 0) {
+    container.innerHTML = '<div class="no-data">エントリなし</div>';
+    return;
+  }
+
+  let html = '<table class="dict-table"><thead><tr><th>誤読</th><th>正解</th><th></th></tr></thead><tbody>';
+  for (const k of keys) {
+    html += `<tr>
+      <td>${escapeHtml(k)}</td>
+      <td>${escapeHtml(entries[k])}</td>
+      <td><button class="dict-btn remove" onclick="removeDictEntry('${currentDictTab}', ${JSON.stringify(k)})">削除</button></td>
+    </tr>`;
+  }
+  html += '</tbody></table>';
+  container.innerHTML = html;
+}
+
+async function removeDictEntry(category, key) {
+  try {
+    const res = await adminFetch('/api/ocr-validate/corrections', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ action: 'remove', category: category, key: key }),
+    });
+    const data = await res.json();
+    if (!data.success) {
+      alert(data.error || '削除に失敗しました');
+      return;
+    }
+    correctionsCache = data.corrections;
+    document.getElementById('statDict').textContent = data.entry_count.toLocaleString();
+    renderDictTab();
+  } catch (e) {
+    alert('エラー: ' + e.message);
+  }
+}
+
+async function addDictEntry() {
+  const category = document.getElementById('addCategory').value;
+  const key = document.getElementById('addKey').value.trim();
+  const value = document.getElementById('addValue').value.trim();
+  if (!key || !value) {
+    alert('誤読テキストと正しいテキストを入力してください');
+    return;
+  }
+  try {
+    const res = await adminFetch('/api/ocr-validate/corrections', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ action: 'add', category: category, key: key, value: value }),
+    });
+    const data = await res.json();
+    if (!data.success) {
+      alert(data.error || '追加に失敗しました');
+      return;
+    }
+    correctionsCache = data.corrections;
+    document.getElementById('statDict').textContent = data.entry_count.toLocaleString();
+    document.getElementById('addKey').value = '';
+    document.getElementById('addValue').value = '';
+    // Switch to the tab of added category
+    switchDictTab(category);
+  } catch (e) {
+    alert('エラー: ' + e.message);
+  }
+}
+
+// --- Fix ---
+async function runFix(dryRun) {
+  if (!dryRun) {
+    if (!confirm('補正辞書の内容でOCRデータファイルを修正します。よろしいですか？')) return;
+  }
+
+  const dryRunBtn = document.getElementById('dryRunBtn');
+  const fixBtn = document.getElementById('fixBtn');
+  const spinner = document.getElementById('fixSpinner');
+  dryRunBtn.disabled = true;
+  fixBtn.disabled = true;
+  spinner.style.display = 'inline';
+
+  const series = document.getElementById('seriesFilter').value;
+
+  try {
+    const res = await adminFetch('/api/ocr-validate/fix', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ dry_run: dryRun, series: series || '' }),
+    });
+    const data = await res.json();
+    if (!data.success) {
+      alert(data.error || '修正に失敗しました');
+      return;
+    }
+
+    renderFixResults(data, dryRun);
+  } catch (e) {
+    alert('エラー: ' + e.message);
+  } finally {
+    dryRunBtn.disabled = false;
+    fixBtn.disabled = false;
+    spinner.style.display = 'none';
+  }
+}
+
+function renderFixResults(data, dryRun) {
+  const container = document.getElementById('fixResults');
+  const mode = dryRun ? 'ドライラン' : '修正適用';
+
+  if (data.changes.length === 0) {
+    container.innerHTML = `<div class="no-data">${escapeHtml(data.message || '補正対象なし')}</div>`;
+    return;
+  }
+
+  let html = `<div style="margin-bottom:12px;font-size:0.9rem;color:#66f2c5;font-weight:bold;">${escapeHtml(mode)}: ${data.total_files}ファイル / ${data.total_changes}件の変更</div>`;
+
+  for (const item of data.changes) {
+    html += `<div class="change-file">${escapeHtml(item.file)}</div>`;
+    for (const change of item.changes) {
+      html += `<div class="change-item">${escapeHtml(change)}</div>`;
+    }
+  }
+
+  if (!dryRun) {
+    html += `<div style="margin-top:12px;font-size:0.8rem;color:#ffc107;">_basic.json を修正しました。_sp.json / _sq_analysis.json も更新するには OCR 再実行（構造化のみ）を行ってください。</div>`;
+  }
+
+  container.innerHTML = html;
+}
+
+// --- Init ---
+loadSeriesList();
+loadCorrections();
+</script>
+</body>
+</html>

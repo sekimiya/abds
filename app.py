@@ -13,6 +13,11 @@ import functools
 from dotenv import load_dotenv
 load_dotenv()
 
+try:
+    from flask_compress import Compress
+except ImportError:
+    Compress = None
+
 from fetch_series_ids import fetch_all_series_ids
 from fetch_cards import fetch_cards_for_series, save_card_data
 
@@ -31,13 +36,26 @@ from card_ocr_cc import (
     get_existing_ocr_numbers,
 )
 import card_ocr_cc
+import ocr_test
 import db
 
 # 後方互換: 旧名でもアクセス可能にする
 _safe_int = safe_int
 
 app = Flask(__name__)
-app.config['TEMPLATES_AUTO_RELOAD'] = True
+
+# --- 本番/開発モード判定 ---
+_is_production = os.environ.get('RENDER') or os.environ.get('FLASK_ENV') == 'production'
+app.config['TEMPLATES_AUTO_RELOAD'] = not _is_production
+
+# --- gzip圧縮 ---
+if Compress:
+    app.config['COMPRESS_MIMETYPES'] = [
+        'text/html', 'text/css', 'text/xml', 'text/plain',
+        'application/json', 'application/javascript',
+    ]
+    app.config['COMPRESS_MIN_SIZE'] = 500  # 500B以上を圧縮
+    Compress(app)
 
 # --- セキュリティ設定 ---
 app.secret_key = os.environ.get('SECRET_KEY') or secrets.token_hex(32)
@@ -134,6 +152,14 @@ _card_detail_cache = {}
 _link_index_cache = None
 _tactics_cards_cache = None
 _card_cache_lock = threading.Lock()
+
+# --- 事前シリアライズ済みレスポンスキャッシュ ---
+_serialized_card_index = None   # JSON bytes
+_serialized_link_index = None   # JSON bytes
+_serialized_all_details = None  # JSON bytes
+_card_index_etag = None         # ETag文字列
+_link_index_etag = None         # ETag文字列
+_all_details_etag = None        # ETag文字列
 
 # --- バックグラウンド収集タスクの状態管理 ---
 _collect_status = {
@@ -1064,7 +1090,29 @@ def _build_card_index():
                     entry['ms_cards'].append(card_number)
     _link_index_cache = link_map
 
+    # --- 事前シリアライズ: リクエスト毎のjsonify()を回避 ---
+    _pre_serialize_responses(index_list, link_map)
+
     return index_list
+
+
+def _pre_serialize_responses(index_list, link_map):
+    """card_index / link_index / all_details のJSONレスポンスを事前シリアライズしてキャッシュする"""
+    global _serialized_card_index, _serialized_link_index, _serialized_all_details
+    global _card_index_etag, _link_index_etag, _all_details_etag
+
+    idx_json = json.dumps({'success': True, 'cards': index_list}, ensure_ascii=False, separators=(',', ':'))
+    _serialized_card_index = idx_json.encode('utf-8')
+    _card_index_etag = hashlib.md5(_serialized_card_index).hexdigest()
+
+    link_json = json.dumps({'success': True, 'links': link_map}, ensure_ascii=False, separators=(',', ':'))
+    _serialized_link_index = link_json.encode('utf-8')
+    _link_index_etag = hashlib.md5(_serialized_link_index).hexdigest()
+
+    # all_details (クライアントキャッシュ用 — サイズ大のため遅延シリアライズも可)
+    det_json = json.dumps({'success': True, 'cards': _card_detail_cache}, ensure_ascii=False, separators=(',', ':'))
+    _serialized_all_details = det_json.encode('utf-8')
+    _all_details_etag = hashlib.md5(_serialized_all_details).hexdigest()
 
 
 def get_card_index():
@@ -1610,33 +1658,59 @@ def series_list():
 # 新規API: カードインデックス・詳細・検索・デッキCRUD
 # ====================================================
 
+def _make_cached_response(serialized_bytes, etag):
+    """事前シリアライズ済みJSONからETag対応レスポンスを生成"""
+    # ブラウザキャッシュが有効なら304を返す
+    if_none_match = request.headers.get('If-None-Match', '')
+    if if_none_match and if_none_match == etag:
+        return Response(status=304)
+    resp = Response(serialized_bytes, mimetype='application/json')
+    resp.headers['ETag'] = etag
+    resp.headers['Cache-Control'] = 'public, max-age=60, stale-while-revalidate=300'
+    return resp
+
+
 @app.route('/api/card_index')
 def api_card_index():
-    """軽量カードインデックスを返す（番号,名前,コスト,タイプ,カテゴリ,シリーズ,画像URL,基本ステータス）"""
+    """軽量カードインデックスを返す（事前シリアライズ済み + ETag対応）"""
+    get_card_index()  # キャッシュ構築を確実に
+    if _serialized_card_index and _card_index_etag:
+        return _make_cached_response(_serialized_card_index, _card_index_etag)
     idx = get_card_index()
     return jsonify({'success': True, 'cards': idx})
 
 
 @app.route('/api/link_index')
 def api_link_index():
-    """リンクアビリティ索引を返す（リンク名→条件,効果,必要枚数,MS/PLカード番号リスト）"""
+    """リンクアビリティ索引を返す（事前シリアライズ済み + ETag対応）"""
+    get_card_index()  # キャッシュ構築を確実に
+    if _serialized_link_index and _link_index_etag:
+        return _make_cached_response(_serialized_link_index, _link_index_etag)
     global _link_index_cache
     if _link_index_cache is None:
         get_card_index()
     return jsonify({'success': True, 'links': _link_index_cache or {}})
 
 
+_tactics_serialized = None
+_tactics_etag = None
+
 @app.route('/api/tactics_cards')
 def api_tactics_cards():
-    """作戦カードマスタデータを返す"""
-    global _tactics_cards_cache
+    """作戦カードマスタデータを返す（ETag対応）"""
+    global _tactics_cards_cache, _tactics_serialized, _tactics_etag
     if _tactics_cards_cache is None:
         tactics_file = os.path.join(os.path.dirname(__file__), 'tactics_cards.json')
         try:
             with open(tactics_file, 'r', encoding='utf-8') as f:
                 _tactics_cards_cache = json.load(f)
+            t_json = json.dumps({'success': True, 'data': _tactics_cards_cache}, ensure_ascii=False, separators=(',', ':'))
+            _tactics_serialized = t_json.encode('utf-8')
+            _tactics_etag = hashlib.md5(_tactics_serialized).hexdigest()
         except Exception as e:
             return jsonify({'success': False, 'error': str(e)}), 500
+    if _tactics_serialized and _tactics_etag:
+        return _make_cached_response(_tactics_serialized, _tactics_etag)
     return jsonify({'success': True, 'data': _tactics_cards_cache})
 
 
@@ -1664,6 +1738,18 @@ def api_cards_batch():
         if detail:
             result[num] = detail
     return jsonify({'success': True, 'cards': result})
+
+
+@app.route('/api/cards/all_details')
+def api_cards_all_details():
+    """全カードの詳細データを一括返却（キャッシュ用 + ETag対応）"""
+    get_card_index()  # キャッシュ構築を確実に
+    if _serialized_all_details and _all_details_etag:
+        return _make_cached_response(_serialized_all_details, _all_details_etag)
+    global _card_detail_cache
+    if not _card_detail_cache:
+        get_card_index()
+    return jsonify({'success': True, 'cards': _card_detail_cache})
 
 
 @app.route('/api/cards/search')
@@ -1827,11 +1913,22 @@ def api_post_comment(deck_id):
 def api_clear_cache():
     """カードインデックスキャッシュをクリアして再構築する"""
     global _card_index_cache, _card_detail_cache, _link_index_cache, _ocr_file_map_cache, _tactics_cards_cache
+    global _serialized_card_index, _serialized_link_index, _serialized_all_details
+    global _card_index_etag, _link_index_etag, _all_details_etag
+    global _tactics_serialized, _tactics_etag
     with _card_cache_lock:
         _card_index_cache = None
         _card_detail_cache = {}
         _link_index_cache = None
         _tactics_cards_cache = None
+        _serialized_card_index = None
+        _serialized_link_index = None
+        _serialized_all_details = None
+        _card_index_etag = None
+        _link_index_etag = None
+        _all_details_etag = None
+        _tactics_serialized = None
+        _tactics_etag = None
     with _ocr_file_map_lock:
         _ocr_file_map_cache = None
     get_card_index()
@@ -2632,6 +2729,7 @@ def _run_ocr_execution(series, stage, force, limit):
             _link_index_cache = None
         with _ocr_file_map_lock:
             _ocr_file_map_cache = None
+        _invalidate_validate_cache()
 
         with _ocr_run_lock:
             _ocr_run_status["log"].append("処理完了。")
@@ -2648,6 +2746,240 @@ def _run_ocr_execution(series, stage, force, limit):
             _ocr_run_status["elapsed_seconds"] = int(time.time() - start_time)
             _ocr_run_status["current_card"] = ""
             _ocr_run_status["current_card_name"] = ""
+
+
+# ====================================================
+# OCR バリデーション＆補正画面
+# ====================================================
+
+# --- バリデーション用カードデータキャッシュ ---
+_validate_cards_cache = None
+_validate_cards_cache_lock = threading.Lock()
+_card_number_re = re.compile(r'([A-Z]{2,4}\d{1,2}-\d{2,4})')
+
+
+def _validate_fingerprint():
+    """_basic.json ファイルの個数と更新時刻合計からフィンガープリントを計算。
+    os.scandir を使いファイル内容を読まずに高速判定する。"""
+    ocr_dir = ocr_test.RESULTS_DIR
+    count = 0
+    mtime_sum = 0.0
+    try:
+        with os.scandir(ocr_dir) as entries:
+            for entry in entries:
+                if entry.name.endswith('_basic.json') and entry.is_file(follow_symlinks=False):
+                    count += 1
+                    mtime_sum += entry.stat().st_mtime
+    except OSError:
+        pass
+    return (count, mtime_sum)
+
+
+def _get_validate_cards(series_filter=None):
+    """キャッシュされたカードデータを返す。
+    ファイル追加/変更/削除を検知した場合のみ再読み込みする。"""
+    global _validate_cards_cache
+    fp = _validate_fingerprint()
+
+    if _validate_cards_cache is None or _validate_cards_cache['fingerprint'] != fp:
+        with _validate_cards_cache_lock:
+            # Double-check after lock acquisition
+            fp = _validate_fingerprint()
+            if _validate_cards_cache is None or _validate_cards_cache['fingerprint'] != fp:
+                cards = ocr_test.load_basic_files(ocr_test.RESULTS_DIR, series_filter=None)
+                _validate_cards_cache = {'cards': cards, 'fingerprint': fp}
+
+    cards = _validate_cards_cache['cards']
+
+    if series_filter:
+        return [
+            item for item in cards
+            if (m := _card_number_re.search(item[0])) and m.group(1).startswith(series_filter)
+        ]
+    return cards
+
+
+def _invalidate_validate_cache():
+    global _validate_cards_cache
+    _validate_cards_cache = None
+
+
+@app.route('/ocr-validate')
+@require_admin
+def ocr_validate():
+    return render_template('ocr_validate.html')
+
+
+@app.route('/api/ocr-validate/report')
+@require_admin
+def api_ocr_validate_report():
+    """バリデーションレポートを JSON で返す。"""
+    checks_param = request.args.get('checks', '')
+    series = request.args.get('series', '').strip() or None
+
+    if checks_param:
+        check_keys = [c.strip() for c in checks_param.split(',') if c.strip()]
+    else:
+        check_keys = list(ocr_test.CHECK_FUNCTIONS.keys())
+
+    # 不明なチェック名を弾く
+    valid_keys = set(ocr_test.CHECK_FUNCTIONS.keys())
+    invalid = [k for k in check_keys if k not in valid_keys]
+    if invalid:
+        return jsonify({'success': False, 'error': f'不明なチェック名: {", ".join(invalid)}', 'valid': sorted(valid_keys)}), 400
+
+    cards = _get_validate_cards(series_filter=series)
+    if not cards:
+        return jsonify({'success': True, 'total_cards': 0, 'checks': {}, 'summary': {'warnings': 0, 'errors': 0}})
+
+    total_warnings = 0
+    total_errors = 0
+    checks_result = {}
+
+    for key in check_keys:
+        title, func = ocr_test.CHECK_FUNCTIONS[key]
+        raw_results = func(cards)
+
+        # suggestion を付加: WARNING で「類似候補」が含まれる場合
+        enriched = []
+        for r in raw_results:
+            item = dict(r)
+            if item['level'] == 'WARNING' and item.get('detail', '').startswith('類似候補:'):
+                detail = item['detail']
+                # 類似候補: "正解名" (出現: N回, 編集距離: M) のパターンから抽出
+                m = re.search(r'類似候補:\s*"(.+?)"', detail)
+                if m:
+                    suggested_value = m.group(1)
+                    # メッセージから誤読名を抽出
+                    msg = item['message']
+                    m2 = re.search(r'"(.+?)"', msg)
+                    if m2:
+                        wrong_name = m2.group(1)
+                        # カテゴリを推定
+                        if key == 'link_names':
+                            cat = 'link_ability_names'
+                        elif key == 'pilot_skills':
+                            cat = 'pilot_skill_names'
+                        elif key == 'ms_abilities':
+                            cat = 'ms_ability_names'
+                        else:
+                            cat = None
+                        if cat:
+                            item['suggestion'] = {'category': cat, 'key': wrong_name, 'value': suggested_value}
+
+            if item['level'] == 'WARNING':
+                total_warnings += 1
+            elif item['level'] == 'ERROR':
+                total_errors += 1
+            enriched.append(item)
+
+        checks_result[key] = {'title': title, 'results': enriched}
+
+    return jsonify({
+        'success': True,
+        'total_cards': len(cards),
+        'checks': checks_result,
+        'summary': {'warnings': total_warnings, 'errors': total_errors},
+    })
+
+
+@app.route('/api/ocr-validate/corrections')
+@require_admin
+def api_ocr_validate_corrections_get():
+    """補正辞書の内容を返す。"""
+    corrections = ocr_test.load_corrections()
+    entry_count = sum(len(v) for v in corrections.values())
+    return jsonify({'success': True, 'corrections': corrections, 'entry_count': entry_count})
+
+
+@app.route('/api/ocr-validate/corrections', methods=['POST'])
+@require_admin
+def api_ocr_validate_corrections_post():
+    """補正辞書にエントリを追加/削除する。"""
+    data = request.get_json(force=True)
+    action = data.get('action')
+    category = data.get('category')
+    key = data.get('key')
+
+    valid_categories = {'link_ability_names', 'pilot_skill_names', 'ms_ability_names', 'link_effects'}
+    if category not in valid_categories:
+        return jsonify({'success': False, 'error': f'不正なカテゴリ: {category}'}), 400
+
+    corrections = ocr_test.load_corrections()
+
+    if action == 'add':
+        value = data.get('value')
+        if not key or not value:
+            return jsonify({'success': False, 'error': 'key と value は必須です'}), 400
+        corrections[category][key] = value
+    elif action == 'remove':
+        if not key:
+            return jsonify({'success': False, 'error': 'key は必須です'}), 400
+        corrections[category].pop(key, None)
+    else:
+        return jsonify({'success': False, 'error': f'不正なアクション: {action}'}), 400
+
+    # 書き込み
+    with open(ocr_test.CORRECTIONS_FILE, 'w', encoding='utf-8') as f:
+        json.dump(corrections, f, ensure_ascii=False, indent=2)
+
+    entry_count = sum(len(v) for v in corrections.values())
+    return jsonify({'success': True, 'corrections': corrections, 'entry_count': entry_count})
+
+
+@app.route('/api/ocr-validate/fix', methods=['POST'])
+@require_admin
+def api_ocr_validate_fix():
+    """補正辞書に基づく自動修正を適用する。"""
+    data = request.get_json(force=True)
+    dry_run = data.get('dry_run', True)
+    series = data.get('series', '').strip() or None
+
+    corrections = ocr_test.load_corrections()
+    entry_count = sum(len(v) for v in corrections.values())
+    if entry_count == 0:
+        return jsonify({'success': True, 'dry_run': dry_run, 'changes': [], 'total_files': 0, 'total_changes': 0, 'message': '補正辞書が空です'})
+
+    cards = ocr_test.load_basic_files(ocr_test.RESULTS_DIR, series_filter=series)
+    if not cards:
+        return jsonify({'success': True, 'dry_run': dry_run, 'changes': [], 'total_files': 0, 'total_changes': 0, 'message': '対象ファイルなし'})
+
+    all_changes = ocr_test.apply_corrections(cards, corrections, dry_run=dry_run)
+
+    # 実適用時はファイルが書き換わるのでキャッシュを無効化
+    if not dry_run:
+        _invalidate_validate_cache()
+
+    changes_list = []
+    for basename, fpath, file_changes in all_changes:
+        changes_list.append({'file': basename, 'changes': file_changes})
+
+    total_change_count = sum(len(c) for _, _, c in all_changes)
+
+    return jsonify({
+        'success': True,
+        'dry_run': dry_run,
+        'changes': changes_list,
+        'total_files': len(all_changes),
+        'total_changes': total_change_count,
+    })
+
+
+# --- 起動時キャッシュ事前構築 ---
+# gunicorn --preload やローカル実行時に、最初のリクエスト前にインデックスを構築する
+def _warmup_cache():
+    """起動時にカードインデックスを構築して初回リクエストのブロックを回避する"""
+    import time as _t
+    _start = _t.time()
+    try:
+        get_card_index()
+        elapsed = _t.time() - _start
+        count = len(_card_index_cache) if _card_index_cache else 0
+        print(f"[WARMUP] カードインデックス構築完了: {count}枚 ({elapsed:.1f}秒)")
+    except Exception as e:
+        print(f"[WARMUP] キャッシュ構築エラー（リクエスト時にリトライします）: {e}")
+
+_warmup_cache()
 
 
 if __name__ == '__main__':

@@ -1,0 +1,90 @@
+{
+  "card_number": "BP03-011",
+  "card_name": "ライジングフリーダムガンダム",
+  "series": "BOOSTER PACK [機動戦士ガンダムSEEDシリーズVol.2]",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP03-011.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP03-011_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "BP03-011",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト5"
+    },
+    "name": "ライジングフリーダムガンダム",
+    "model": "STTS-909 RISING FREEDOM GUNDAM",
+    "cost": 5,
+    "category": "遠距離",
+    "affiliation": "コンパス",
+    "pilot": "キラ・ヤマト",
+    "stats": {
+      "height": "17.80m",
+      "weight": "67.90t",
+      "mobility": 250,
+      "ranged_attack": 530,
+      "melee_attack": 110,
+      "hp": 510
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "A",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "高エネルギービームライフル",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ヴェルシーナ ビームサーベル",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "砕撃[広角]",
+      "activation": "任意発動",
+      "target": "範囲(敵)",
+      "range": 4,
+      "cost": 4,
+      "description": "ロックオン中の敵を中心に扇状の範囲攻撃を行い、メイン武装を使用不能にさせる。出撃時1度のみ使用可能。"
+    },
+    "link_ability": [
+      {
+        "name": "SEED FREEDOM",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ハイマットフルバースト",
+      "target": "範囲(敵)",
+      "range": 4,
+      "sp_cost": 2,
+      "power": 3000,
+      "description": "ロックオン中の敵を中心に扇状の範囲攻撃を行い、範囲内の敵にダメージを与える。出撃時1度のみ使用可能。",
+      "united_sp": {
+        "partner1": "イモータルジャスティスガンダム",
+        "partner2": null,
+        "target": "単体(敵)",
+        "range": 4,
+        "power": 6700,
+        "description": "敵単体に格闘攻撃でダメージを与える。"
+      }
+    },
+    "rarity": "P",
+    "illustrator": "ZB",
+    "raw": "遠距離　コスト5　MS\n\nSTTS-909 RISING FREEDOM GUNDAM\nライジングフリーダムガンダム\n\n頭頂高　17.80m\n本体重量　67.90t\n所属　コンパス\nパイロット　キラ・ヤマト\n\n地上 A　宇宙 S　砂漠 A　水中 C\n機動力 250\n遠距離攻撃 530\n近距離攻撃 110\nHP 510\n\nWEAPON\nMAIN 高エネルギービームライフル　射程 3　遠距離\nSUB ヴェルシーナ ビームサーベル　射程 1　近距離\n\nLINK ABILITY\nSEED FREEDOM　デッキに3枚以上\n[機動力]小アップ\n\nMS ABILITY\n砕撃[広角]\n任意発動　範囲(敵)　射程 4　コスト 4\nロックオン中の敵を中心に扇状の範囲攻撃を行い、メイン武装を使用不能にさせる。出撃時1度のみ使用可能。\n\n戦況を変える力　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nSPECIAL ATTACK　　UNITED SP\nハイマットフルバースト　コンビネーション・アサルト\n連携 イモータルジャスティスガンダム　連携 ー\n連携 ー　連携 ー\n範囲(敵)　射程 4　単体(敵)　射程 4\nSPコスト 2　威力 3000 / 6700\nロックオン中の敵を中心に扇状の範囲攻撃を行い、範囲内の敵にダメージを与える。／敵単体に格闘攻撃でダメージを与える。出撃時1度のみ使用可能。\n\nIMPACT AREA\n[アイコン:扇状範囲エリア表示]\n\nillust ZB\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム\nARSENAL BASE\n\nBP03-011　P"
+  },
+  "ocr_raw_file": "BOOSTER_PACK_[機動戦士ガンダムSEEDシリーズVol.2]_BP03-011_ライジングフリーダムガンダム_ocr_raw.json",
+  "ocr_timestamp": "2026-02-28T02:58:27.129238",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

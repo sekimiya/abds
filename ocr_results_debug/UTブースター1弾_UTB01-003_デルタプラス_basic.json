@@ -1,0 +1,83 @@
+{
+  "card_number": "UTB01-003",
+  "card_name": "デルタプラス",
+  "series": "UTブースター1弾",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UTB01-003.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UTB01-003_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "UTB01-003",
+    "type": "MS",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト4"
+    },
+    "name": "デルタプラス",
+    "model": "MSN-001A1 DELTA PLUS",
+    "cost": 4,
+    "category": "近距離",
+    "affiliation": "地球連邦軍",
+    "pilot": "リディ・マーセナス",
+    "stats": {
+      "height": "19.6m",
+      "weight": "27.2t",
+      "mobility": 150,
+      "ranged_attack": 120,
+      "melee_attack": 400,
+      "hp": 380
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "A",
+      "desert": "C",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "ビーム・サーベル",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "ビーム・ライフル",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "奇襲",
+      "activation": "任意発動",
+      "target": "範囲(敵)",
+      "range": null,
+      "cost": 6,
+      "description": "指定した位置に範囲攻撃を行い、その地点に移動する。"
+    },
+    "link_ability": [
+      {
+        "name": "ガンダムUC",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ビーム・ライフル撃射",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3400,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "P",
+    "illustrator": "Moyasi",
+    "raw": "MS\n\n近距離 コスト4\n\nMSN-001A1 DELTA PLUS\nデルタプラス\n\n[ロゴ:機動戦士ガンダムUC]\n\n全高 19.6m\n本体重量 27.2t\n所属 地球連邦軍\nパイロット リディ・マーセナス\n\n[アイコン:地上A] [アイコン:宇宙A] [アイコン:砂漠C] [アイコン:水中C]\n\n機動力 150\n遠距離攻撃 120\n近距離攻撃 400\nHP 380\n\nWEAPON\nMAIN ビーム・サーベル 射程 1 近距離\nSUB ビーム・ライフル 射程 3 遠距離\n\nLINK ABILITY\nガンダムUC デッキに3枚以上\n[機動力]小アップ\n\nMS ABILITY\n奇襲\n任意発動 範囲(敵) 射程 ー コスト 6\n指定した位置に範囲攻撃を行い、その地点に移動する。\n\n戦況を変える力 デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nSPECIAL ATTACK          UNITED SP\nビーム・ライフル撃射     ー\n連携 ー                  連携 ー\n連携 ー                  連携 ー\n単体(敵) 射程 3          ー 射程 ー\nSPコスト 2  威力 3400 / ー\n敵単体に射撃攻撃でダメージを与える。\n/ ー\n\nIMPACT AREA\n[グリッド: 中央×マーク、中央下に○マーク]\n\nillust Moyasi\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nUTB01-003 P"
+  },
+  "ocr_raw_file": "UTブースター1弾_UTB01-003_デルタプラス_ocr_raw.json",
+  "ocr_timestamp": "2026-02-28T02:26:20.544606",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

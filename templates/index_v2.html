@@ -1020,9 +1020,9 @@ select,input{font-family:inherit}
   color:#888;font-size:1.5rem;cursor:pointer;
 }
 .modal-close:hover{color:#fff}
-.modal-card-header{display:flex;gap:1.2rem;margin-bottom:1rem;align-items:stretch}
-.modal-card-images{display:flex;gap:0.6rem;flex-shrink:0}
-.modal-card-image{width:auto;height:100%;border-radius:8px;object-fit:contain}
+.modal-card-header{display:flex;gap:1.2rem;margin-bottom:1rem;align-items:flex-start}
+.modal-card-images{display:flex;gap:0.6rem;flex-shrink:0;max-width:50%;max-height:60vh}
+.modal-card-image{max-width:calc(50% - 0.3rem);max-height:60vh;border-radius:8px;object-fit:contain}
 .modal-card-info{flex:1}
 .modal-card-number{color:#68efbd;font-weight:bold;font-size:1.05rem}
 .modal-card-name{font-size:1.2rem;font-weight:bold;margin-top:0.2rem}
@@ -1485,6 +1485,7 @@ select,input{font-family:inherit}
       </div>
       <div class="cache-modal-pct" id="cmPct" style="display:none"></div>
       <div class="cache-modal-detail" id="cmDetail"></div>
+      <div class="cache-modal-detail" id="cmCardDataStatus" style="font-size:0.85em;color:#aaa"></div>
       <div class="cache-modal-warn" id="cmWarn">
         ⚠ 公式サイトからカード画像を取得し、ブラウザにキャッシュします。通信量が大きくなる場合があります。
       </div>
@@ -2295,6 +2296,7 @@ const ImageCache = {
   _pendingKeys: new Set(), // keys queued for lazy loading
   _pendingTimer: null,
   _downloading: false,
+  _hasCardData: false, // true when __card_data__ is loaded from IndexedDB
 
   // --- IndexedDB helpers (no-op when _memoryOnly) ---
   _openDB() {
@@ -2381,6 +2383,19 @@ const ImageCache = {
         req.onsuccess = (e) => {
           const cursor = e.target.result;
           if (cursor) {
+            if (cursor.key === '__card_data__') {
+              // カード詳細データ（JSON文字列）をAppStateに復元
+              try {
+                const parsed = typeof cursor.value === 'string' ? JSON.parse(cursor.value) : cursor.value;
+                if (parsed && typeof parsed === 'object') {
+                  Object.assign(AppState.cardDetails, parsed);
+                  this._hasCardData = true;
+                  console.log('ImageCache: card data loaded from cache,', Object.keys(parsed).length, 'cards');
+                }
+              } catch (_) { /* skip corrupted card data */ }
+              cursor.continue();
+              return;
+            }
             this._knownKeys.add(cursor.key);
             try {
               if (cursor.value) {
@@ -2462,6 +2477,12 @@ const ImageCache = {
   _refreshStats() {
     const count = Object.keys(this._blobUrls).length;
     this._updateCount(count);
+    const cdEl = document.getElementById('cmCardDataStatus');
+    if (cdEl) {
+      cdEl.textContent = this._hasCardData
+        ? `カードデータ: ${Object.keys(AppState.cardDetails).length}件キャッシュ済`
+        : 'カードデータ: なし';
+    }
   },
 
   // --- Lazy loading: recover entries that failed during init ---
@@ -2530,6 +2551,8 @@ const ImageCache = {
     this._blobUrls = {};
     this._knownKeys.clear();
     this._pendingKeys.clear();
+    this._hasCardData = false;
+    AppState.cardDetails = {};
     await this._clearStore();
     this._updateCount(0);
     Toast.show('キャッシュをクリアしました', 'success', 2000);
@@ -2619,6 +2642,21 @@ const ImageCache = {
       }
     };
     await Promise.all(Array.from({ length: Math.min(this.CONCURRENCY, toFetch.length || 1) }, () => worker()));
+
+    // カード詳細データを一括取得してIndexedDBに保存
+    document.getElementById('cmDetail').textContent = 'カードデータ保存中...';
+    try {
+      const cdRes = await fetch('/api/cards/all_details');
+      const cdData = await cdRes.json();
+      if (cdData.success && cdData.cards) {
+        await this._put('__card_data__', JSON.stringify(cdData.cards));
+        Object.assign(AppState.cardDetails, cdData.cards);
+        this._hasCardData = true;
+        console.log('ImageCache: card data saved,', Object.keys(cdData.cards).length, 'cards');
+      }
+    } catch (e) {
+      console.warn('ImageCache: failed to save card data', e);
+    }
 
     this._downloading = false;
     this._refreshStats();

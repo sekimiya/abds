@@ -1,0 +1,83 @@
+{
+  "card_number": "FQB01-006",
+  "card_name": "ゴールドスモー",
+  "series": "FQブースター1弾",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQB01-006.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQB01-006_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "FQB01-006",
+    "type": "MS",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト4"
+    },
+    "name": "ゴールドスモー",
+    "model": "MRC-F20 GOLD SUMO",
+    "cost": 4,
+    "category": "近距離",
+    "affiliation": "ディアナ親衛隊",
+    "pilot": "ハリー・オード",
+    "stats": {
+      "height": "20.3m",
+      "weight": "34.2t",
+      "mobility": 230,
+      "ranged_attack": 90,
+      "melee_attack": 360,
+      "hp": 320
+    },
+    "terrain_compatibility": {
+      "ground": "S",
+      "space": "A",
+      "desert": "C",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "ヒートファン",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "ハンドビームガン",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "再縮",
+      "activation": "任意発動",
+      "target": "範囲(味方)",
+      "range": null,
+      "cost": 2,
+      "description": "自身を中心とした大範囲内にいる、自身を除く味方ユニットのMSアビリティのクールタイムを、一定時間短縮する。"
+    },
+    "link_ability": [
+      {
+        "name": "∀ガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[HP]小アップ"
+      },
+      {
+        "name": "肉薄する戦い",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ヒートファン強撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3300,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "R",
+    "illustrator": "Kazue Saitou",
+    "raw": "MS\n\n近距離　コスト4\n\nMRC-F20 GOLD SUMO\nゴールドスモー\n\n頭頂高　20.3m\n本体重量　34.2t\n所属　ディアナ親衛隊\nパイロット　ハリー・オード\n\n地上 S　宇宙 A　砂漠 C　水中 C\n\n機動力 230\n遠距離攻撃 90\n近距離攻撃 360\nHP 320\n\nWEAPON\n\nMAIN ヒートファン　射程 1　近距離\nSUB ハンドビームガン　射程 3　遠距離\n\nLINK ABILITY\n\n∀ガンダム　デッキに3枚以上\n[HP]小アップ\n\n肉薄する戦い　デッキに4枚以上\n[機動力][近距離攻撃力]小アップ\n\nMS ABILITY\n\n再縮\n任意発動　範囲(味方)　射程 ー　コスト 2\n\n自身を中心とした大範囲内にいる、自身を除く味方ユニットのMSアビリティのクールタイムを、一定時間短縮する。\n\nSPECIAL ATTACK　　UNITED SP\n\nヒートファン強撃　　ー\n連携 ー　　連携 ー\n連携 ー　　連携 ー\n単体(敵)　射程 2　　ー　射程 ー\nSPコスト 2　威力　3300 / ー\n\n敵単体に格闘攻撃でダメージを与える。\n/ ー\n\nIMPACT AREA\n\n[アイコン:黄色円 中央やや下]\n\nillust Kazue Saitou\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n\nFQB01-006　R"
+  },
+  "ocr_raw_file": "FQブースター1弾_FQB01-006_ゴールドスモー_ocr_raw.json",
+  "ocr_timestamp": "2026-02-28T03:18:09.832875",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}
