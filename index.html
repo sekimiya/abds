@@ -2234,16 +2234,23 @@ const DeckManager = {
       Toast.show('短縮URLをコピーしました', 'success');
     });
   },
-  async tweetDeck() {
+  tweetDeck() {
     if (!AppState.deck.some(n => n)) { Toast.show('デッキにカードがありません', 'error'); return; }
     closeHeaderMenu();
     const code = this.generateCode();
     const base = location.origin + location.pathname.replace(/[^/]*$/, '') + 'index.html';
-    const sc = await ShortUrl.create(code);
-    const url = sc ? base + '#s:' + sc : base + '#' + code;
     const name = document.getElementById('deckNameInput')?.value.trim() || 'マイデッキ';
     const text = name + ' のデッキレシピ #アーセナルベース #ABDS';
-    window.open('https://x.com/intent/tweet?text=' + encodeURIComponent(text) + '&url=' + encodeURIComponent(url), '_blank');
+    const fallbackUrl = base + '#' + code;
+    const win = window.open('about:blank', '_blank');
+    ShortUrl.create(code).then(sc => {
+      const url = sc ? base + '#s:' + sc : fallbackUrl;
+      const tweetUrl = 'https://x.com/intent/tweet?text=' + encodeURIComponent(text) + '&url=' + encodeURIComponent(url);
+      if (win) { win.location.href = tweetUrl; } else { location.href = tweetUrl; }
+    }).catch(() => {
+      const tweetUrl = 'https://x.com/intent/tweet?text=' + encodeURIComponent(text) + '&url=' + encodeURIComponent(fallbackUrl);
+      if (win) { win.location.href = tweetUrl; } else { location.href = tweetUrl; }
+    });
   },
 
   async importCode() {
