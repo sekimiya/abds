@@ -642,6 +642,12 @@ select,input{font-family:inherit}
         <label class="ocr-toggle"><input type="checkbox" id="filterOcr" onchange="SearchPanel.applyFilters()"><span class="ocr-toggle-text">OCRあり</span></label>
       </div>
     </div>
+    <div class="filter-group collapsed" id="filterGroupLink">
+      <div class="filter-group-title" onclick="toggleFilterGroup('filterGroupLink')">リンクアビリティ</div>
+      <div class="filter-group-body">
+        <div class="filter-row"><select class="filter-select" id="filterLinkName" onchange="SearchPanel.applyFilters()" style="flex:1"><option value="">リンク名を選択</option></select></div>
+      </div>
+    </div>
     <div class="filter-group collapsed" id="filterGroupEb">
       <div class="filter-group-title" onclick="toggleFilterGroup('filterGroupEb')" style="color:#ff9800">EB</div>
       <div class="filter-group-body">
@@ -2476,6 +2482,7 @@ const SearchPanel = {
       eb: document.getElementById('filterEb').checked,
       sqSkill: document.getElementById('filterSqSkill').checked,
       ebSkill: document.getElementById('filterEbSkill').checked,
+      linkName: document.getElementById('filterLinkName').value,
       skillName: document.getElementById('filterSkillName').value,
       toggles: Object.fromEntries(Object.entries(this._t).map(([k,v]) => [k, [...v]])),
     };
@@ -2494,6 +2501,7 @@ const SearchPanel = {
       document.querySelectorAll('.rarity-btn').forEach(b => b.classList.toggle('active', this._currentRarity.has(b.dataset.rarity)));
       this._currentCategory = new Set(s.category || []);
       document.querySelectorAll('.cat-btn').forEach(b => b.classList.toggle('active', this._currentCategory.has(b.dataset.cat)));
+      const flnk = document.getElementById('filterLinkName'); if (flnk) flnk.value = s.linkName || '';
       document.getElementById('filterSkillName').value = s.skillName || '';
       document.getElementById('filterCostMin').value = s.costMin ?? 0;
       document.getElementById('filterCostMax').value = s.costMax ?? 13;
@@ -2583,6 +2591,13 @@ const SearchPanel = {
     if (t) { for (const c of [...this._currentCategory]) { if (!cats.includes(c)) this._currentCategory.delete(c); } }
     container.innerHTML = cats.map(c => `<button class="cat-btn${this._currentCategory.has(c) ? ' active' : ''}" data-cat="${c}" onclick="SearchPanel.setCategory('${c}')">${c}</button>`).join('');
   },
+  _populateLinkNames() {
+    const sel = document.getElementById('filterLinkName');
+    if (!sel || !AppState.linkIndex) return;
+    const current = sel.value;
+    const names = Object.keys(AppState.linkIndex).sort();
+    sel.innerHTML = '<option value="">リンク名を選択</option>' + names.map(n => { const info = AppState.linkIndex[n]; return `<option value="${n}"${n === current ? ' selected' : ''}>${n} (${info.required}枚)</option>`; }).join('');
+  },
   _populateSkillNames() {
     const sel = document.getElementById('filterSkillName');
     if (!sel) return;
@@ -2617,6 +2632,8 @@ const SearchPanel = {
     const terrainRank = document.getElementById('filterTerrainRank').value;
     if (terrainType && terrainRank) { const ro = ['S','A','B','C','D']; const mi = ro.indexOf(terrainRank); cards = cards.filter(c => { const r = c.terrain?.[terrainType]; return r && ro.indexOf(r) <= mi; }); }
     if (document.getElementById('filterOcr').checked) cards = cards.filter(c => c.has_ocr);
+    const linkName = document.getElementById('filterLinkName').value;
+    if (linkName && AppState.linkIndex[linkName]) { const li = AppState.linkIndex[linkName]; const linkCards = new Set([...(li.ms_cards||[]), ...(li.pl_cards||[])]); cards = cards.filter(c => linkCards.has(c.number)); }
     const ebCat = this._t.ebCat;
     if (ebCat.size > 0) cards = cards.filter(c => (ebCat.has('eb_sp') && c.has_eb) || (ebCat.has('eb_skill') && c.has_eb_skill) || (ebCat.has('eb_link') && c.has_eb_link));
     const ebLv = this._t.ebLv;
@@ -2665,6 +2682,7 @@ const SearchPanel = {
     document.getElementById('filterSqSkill').checked = false;
     document.getElementById('filterEbSkill').checked = false;
     document.getElementById('filterSkillName').value = '';
+    const flnk = document.getElementById('filterLinkName'); if (flnk) flnk.value = '';
     document.getElementById('searchInput').value = '';
     const sti = document.getElementById('searchTextInput'); if (sti) sti.value = '';
     const bm = document.getElementById('filterBookmarkCards'); if (bm) bm.checked = false;
@@ -2875,6 +2893,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   } catch (e) { console.warn('SQ link set build failed:', e); }
 
   await DeckManager._autoLoad();
+  SearchPanel._populateLinkNames();
   SearchPanel._populateSkillNames();
 
   // ImageCacheがタイムアウトで未完了だった場合、完了後にUI再描画
