@@ -649,6 +649,18 @@ def _build_card_index():
                             if 'ECHOES BEAT' in eff or 'EBLv' in eff:
                                 la_item['is_eb_link'] = True
 
+                # AB LINK ABILITY 検出
+                _ab_link_names = {'不思議な音', '閃光', '俺たちのトライエイジ'}
+                if isinstance(la_list, list):
+                    for la_item in la_list:
+                        if isinstance(la_item, dict):
+                            la_name = la_item.get('name', '').strip()
+                            bare_name = la_name.replace('[AB]', '')
+                            if bare_name in _ab_link_names:
+                                la_item['is_ab_link'] = True
+                                if not la_name.startswith('[AB]'):
+                                    la_item['name'] = f'[AB]{la_name}'
+
                 # タイムスタンプ収集（各ファイル種別のタイムスタンプから最新を取得）
                 for ts_key in ['ocr_timestamp', 'sp_ocr_timestamp', 'sq_analysis_timestamp']:
                     ts = loaded.get(ts_key)
@@ -846,6 +858,7 @@ def _build_card_index():
             'has_eb': False,
             'has_eb_skill': False,
             'has_eb_link': False,
+            'has_ab_link': False,
             'eb_level': None,
             'eb_trigger_level': None,
             'eb_trigger_cond': '',
@@ -1050,6 +1063,12 @@ def _build_card_index():
             for _la_item in _la_all:
                 if isinstance(_la_item, dict) and _la_item.get('is_eb_link'):
                     index_entry['has_eb_link'] = True
+                    break
+        # AB リンクアビリティ
+        if isinstance(_la_all, list):
+            for _la_item in _la_all:
+                if isinstance(_la_item, dict) and _la_item.get('is_ab_link'):
+                    index_entry['has_ab_link'] = True
                     break
         # SQ リンクアビリティ（効果にSQ関連キーワードを含むリンクアビリティ）
         if isinstance(_la_all, list):
