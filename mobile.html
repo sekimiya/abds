@@ -662,7 +662,8 @@ select,input{font-family:inherit}
     <div class="filter-group collapsed" id="filterGroupLink">
       <div class="filter-group-title" onclick="toggleFilterGroup('filterGroupLink')">リンクアビリティ</div>
       <div class="filter-group-body">
-        <div class="filter-row"><select class="filter-select" id="filterLinkName" onchange="SearchPanel.applyFilters()" style="flex:1"><option value="">リンク名を選択</option></select></div>
+        <div class="filter-row"><select class="filter-select" id="filterLinkName" onchange="SearchPanel.applyFilters()" style="flex:1"><option value="">リンク1を選択</option></select></div>
+        <div class="filter-row"><select class="filter-select" id="filterLinkName2" onchange="SearchPanel.applyFilters()" style="flex:1"><option value="">リンク2を選択 (AND)</option></select></div>
       </div>
     </div>
     <div class="filter-group collapsed" id="filterGroupEb">
@@ -2520,6 +2521,7 @@ const SearchPanel = {
       sqSkill: document.getElementById('filterSqSkill').checked,
       ebSkill: document.getElementById('filterEbSkill').checked,
       linkName: document.getElementById('filterLinkName').value,
+      linkName2: document.getElementById('filterLinkName2').value,
       skillName: document.getElementById('filterSkillName').value,
       toggles: Object.fromEntries(Object.entries(this._t).map(([k,v]) => [k, [...v]])),
     };
@@ -2539,6 +2541,7 @@ const SearchPanel = {
       this._currentCategory = new Set(s.category || []);
       document.querySelectorAll('.cat-btn').forEach(b => b.classList.toggle('active', this._currentCategory.has(b.dataset.cat)));
       const flnk = document.getElementById('filterLinkName'); if (flnk) flnk.value = s.linkName || '';
+      const flnk2 = document.getElementById('filterLinkName2'); if (flnk2) flnk2.value = s.linkName2 || '';
       document.getElementById('filterSkillName').value = s.skillName || '';
       document.getElementById('filterCostMin').value = s.costMin ?? 0;
       document.getElementById('filterCostMax').value = s.costMax ?? 13;
@@ -2629,11 +2632,13 @@ const SearchPanel = {
     container.innerHTML = cats.map(c => `<button class="cat-btn${this._currentCategory.has(c) ? ' active' : ''}" data-cat="${c}" onclick="SearchPanel.setCategory('${c}')">${c}</button>`).join('');
   },
   _populateLinkNames() {
-    const sel = document.getElementById('filterLinkName');
-    if (!sel || !AppState.linkIndex) return;
-    const current = sel.value;
+    if (!AppState.linkIndex) return;
     const names = Object.keys(AppState.linkIndex).sort();
-    sel.innerHTML = '<option value="">リンク名を選択</option>' + names.map(n => { const info = AppState.linkIndex[n]; return `<option value="${n}"${n === current ? ' selected' : ''}>${n} (${info.required}枚)</option>`; }).join('');
+    const opts = names.map(n => { const info = AppState.linkIndex[n]; return `<option value="${n}">${n} (${info.required}枚)</option>`; }).join('');
+    const sel1 = document.getElementById('filterLinkName');
+    const sel2 = document.getElementById('filterLinkName2');
+    if (sel1) { const c = sel1.value; sel1.innerHTML = '<option value="">リンク1を選択</option>' + opts; sel1.value = c; }
+    if (sel2) { const c = sel2.value; sel2.innerHTML = '<option value="">リンク2を選択 (AND)</option>' + opts; sel2.value = c; }
   },
   _populateSkillNames() {
     const sel = document.getElementById('filterSkillName');
@@ -2670,7 +2675,9 @@ const SearchPanel = {
     if (terrainType && terrainRank) { const ro = ['S','A','B','C','D']; const mi = ro.indexOf(terrainRank); cards = cards.filter(c => { const r = c.terrain?.[terrainType]; return r && ro.indexOf(r) <= mi; }); }
     if (document.getElementById('filterOcr').checked) cards = cards.filter(c => c.has_ocr);
     const linkName = document.getElementById('filterLinkName').value;
-    if (linkName && AppState.linkIndex[linkName]) { const li = AppState.linkIndex[linkName]; const linkCards = new Set([...(li.ms_cards||[]), ...(li.pl_cards||[])]); cards = cards.filter(c => linkCards.has(c.number)); }
+    if (linkName && AppState.linkIndex[linkName]) { const li = AppState.linkIndex[linkName]; const lc = new Set([...(li.ms_cards||[]), ...(li.pl_cards||[])]); cards = cards.filter(c => lc.has(c.number)); }
+    const linkName2 = document.getElementById('filterLinkName2').value;
+    if (linkName2 && AppState.linkIndex[linkName2]) { const li = AppState.linkIndex[linkName2]; const lc = new Set([...(li.ms_cards||[]), ...(li.pl_cards||[])]); cards = cards.filter(c => lc.has(c.number)); }
     const ebCat = this._t.ebCat;
     if (ebCat.size > 0) cards = cards.filter(c => (ebCat.has('eb_sp') && c.has_eb) || (ebCat.has('eb_skill') && c.has_eb_skill) || (ebCat.has('eb_link') && c.has_eb_link));
     const ebLv = this._t.ebLv;
@@ -2722,6 +2729,7 @@ const SearchPanel = {
     document.getElementById('filterEbSkill').checked = false;
     document.getElementById('filterSkillName').value = '';
     const flnk = document.getElementById('filterLinkName'); if (flnk) flnk.value = '';
+    const flnk2 = document.getElementById('filterLinkName2'); if (flnk2) flnk2.value = '';
     document.getElementById('searchInput').value = '';
     const sti = document.getElementById('searchTextInput'); if (sti) sti.value = '';
     const bm = document.getElementById('filterBookmarkCards'); if (bm) bm.checked = false;
