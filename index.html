@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<script>if(/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)&&!(location.hash&&location.hash.includes('&rec'))){location.replace('./mobile.html'+location.hash);}</script>
+<script>if(/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)&&!(location.hash&&location.hash.includes('&rec'))&&!location.search.includes('force')){location.replace('./mobile.html'+location.hash);}</script>
 <title>ABD Simulator v2</title>
 <link rel="manifest" href="./manifest.json">
 <meta name="theme-color" content="#0f0f0f">
@@ -1146,7 +1146,7 @@ select,input{font-family:inherit}
         <button class="cache-menu-btn" onclick="ImageCache.openModal()">キャッシュ管理</button>
       </div>
       <div class="header-menu-row" style="margin-top:auto;border-top:1px solid #333;padding-top:0.5rem">
-        <a href="./mobile.html" class="header-btn" style="flex:1;text-align:center;text-decoration:none" onclick="this.href='./mobile.html'+location.hash">&#128241; モバイル版</a>
+        <a href="./mobile.html?force" class="header-btn" style="flex:1;text-align:center;text-decoration:none" onclick="this.href='./mobile.html?force'+location.hash">&#128241; モバイル版</a>
       </div>
     </div>
   </div>

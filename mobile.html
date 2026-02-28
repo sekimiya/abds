@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<script>if(!/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)){location.replace('./index.html'+location.hash);}</script>
+<script>if(!/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)&&!location.search.includes('force')){location.replace('./index.html'+location.hash);}</script>
 <title>ABD Simulator - Mobile Portrait</title>
 <link rel="manifest" href="./manifest.json">
 <meta name="theme-color" content="#0f0f0f">
@@ -880,7 +880,7 @@ select,input{font-family:inherit}
     <button class="menu-btn" onclick="ImageCache.openModal();toggleMenu()" style="flex:0;padding:4px 10px">管理</button>
   </div>
   <div class="menu-links">
-    <a href="./index.html" onclick="this.href='./index.html'+location.hash">デスクトップ版</a>
+    <a href="./index.html?force" onclick="this.href='./index.html?force'+location.hash">デスクトップ版</a>
   </div>
 </div>
 
