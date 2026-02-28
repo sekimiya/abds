@@ -2689,13 +2689,7 @@ const SearchPanel = {
     const names = [...new Set(AppState.cardIndex.filter(c => c.type === 'PL' && c.skill_name).map(c => c.skill_name))].sort();
     sel.innerHTML = '<option value="">PLスキル名</option>' + names.map(n => `<option value="${n}"${n === current ? ' selected' : ''}>${n}</option>`).join('');
   },
-  _hasActiveFilter() {
-    const el = document.getElementById('filterAllSeries');
-    if (this._selectedSeries.size > 0 || (el && el.checked)) return true;
-    if (document.getElementById('filterLinkName').value) return true;
-    if (document.getElementById('filterLinkName2').value) return true;
-    return false;
-  },
+  _hasActiveFilter() { return this._hasAnyFilter(); },
   _hasAnyFilter() {
     if (this._selectedSeries.size > 0) return true;
     if (this._currentRarity.size > 0) return true;
