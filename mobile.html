@@ -1867,12 +1867,17 @@ const DeckManager = {
     this._loadByName(name);
     toggleMenu();
   },
+  _getAnonName() {
+    let id = localStorage.getItem('gab_anon_id');
+    if (!id) { id = String(Math.floor(10000 + Math.random() * 90000)); localStorage.setItem('gab_anon_id', id); }
+    return Math.random() < 0.5 ? 'ナチュラル' + id : 'アースノイド' + id;
+  },
   postToServer() {
     if (AppState.deck.filter(n => n).length < 10) { Toast.show('カードを10枚揃えてください', 'error'); return; }
     toggleMenu();
-    const nameInput = document.getElementById('deckNameInput');
     const postName = document.getElementById('postDeckName');
-    if (nameInput && nameInput.value.trim() && postName) postName.value = nameInput.value.trim();
+    const postAuthor = document.getElementById('postAuthor');
+    if (postAuthor) postAuthor.value = localStorage.getItem('gab_author_name') || this._getAnonName();
     document.getElementById('deckPostModal').classList.add('open');
   },
   async _doPost() {
