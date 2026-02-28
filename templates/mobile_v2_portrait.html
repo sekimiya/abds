@@ -2853,19 +2853,26 @@ async function captureFullPage() {
       img.src = src;
     }
 
-    // --- Step 6: Download ---
-    canvas.toBlob(blob => {
-      if (!blob) { Toast.show('撮影に失敗しました', 'error'); return; }
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url; a.download = `deck_${Date.now()}.png`;
-      document.body.appendChild(a); a.click(); a.remove();
-      URL.revokeObjectURL(url);
-      Toast.show('スクリーンショットを保存しました', 'success');
-    }, 'image/png');
+    // --- Step 6: Open in new tab ---
+    const dataUrl = canvas.toDataURL('image/png');
+    const w = window.open('');
+    if (w) {
+      w.document.write('<html><head><title>ABDS Deck Screenshot</title><style>body{margin:0;background:#111;display:flex;justify-content:center;align-items:start;min-height:100vh}img{max-width:100%;height:auto}</style></head><body><img src="' + dataUrl + '"></body></html>');
+      w.document.close();
+    } else {
+      canvas.toBlob(blob => {
+        if (!blob) return;
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url; a.download = 'deck.png';
+        document.body.appendChild(a); a.click(); a.remove();
+        URL.revokeObjectURL(url);
+      }, 'image/png');
+    }
+    Toast.show('画像を新しいタブで開きました', 'success');
   } catch (e) {
     console.error('Capture failed:', e);
-    Toast.show('撮影に失敗しました', 'error');
+    Toast.show('画像の表示に失敗しました', 'error');
   } finally {
     btn.classList.remove('capturing');
     document.getElementById('recBtnLabel').textContent = 'REC';

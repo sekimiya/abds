@@ -5224,18 +5224,24 @@ async function captureFullPage() {
       img.src = src;
     }
 
-    // --- Step 7: Download ---
-    const link = document.createElement('a');
-    const deckName = AppState._lastDeckName || 'deck';
-    const ts = new Date().toISOString().replace(/[:.]/g, '-').slice(0, 19);
-    link.download = `${deckName}_${ts}.png`;
-    link.href = canvas.toDataURL('image/png');
-    link.click();
+    // --- Step 7: Open in new tab ---
+    const dataUrl = canvas.toDataURL('image/png');
+    const w = window.open('');
+    if (w) {
+      w.document.write('<html><head><title>ABDS Deck Screenshot</title><style>body{margin:0;background:#111;display:flex;justify-content:center;align-items:start;min-height:100vh}img{max-width:100%;height:auto}</style></head><body><img src="' + dataUrl + '"></body></html>');
+      w.document.close();
+    } else {
+      // ポップアップブロック時はフォールバックでDL
+      const link = document.createElement('a');
+      link.download = 'deck.png';
+      link.href = dataUrl;
+      link.click();
+    }
 
-    Toast.show('画像を保存しました');
+    Toast.show('画像を新しいタブで開きました');
   } catch (e) {
     console.error('Capture failed:', e);
-    Toast.show('画像の保存に失敗しました');
+    Toast.show('画像の表示に失敗しました');
   } finally {
     // 撮影のために自動整理した場合は元に戻す
     if (!wasAligned && UIRenderer._isAligned) {
