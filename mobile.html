@@ -73,15 +73,20 @@ select,input{font-family:inherit}
 
 /* ===== TACTICS ROW (28px) ===== */
 .tactics-row{
-  display:flex;align-items:center;height:28px;flex-shrink:0;
+  display:flex;align-items:center;height:44px;flex-shrink:0;
   background:#111;border-bottom:1px solid #2a2a2a;padding:0 8px;gap:6px;overflow:hidden;
 }
-.tactics-item{
-  display:flex;align-items:center;gap:3px;font-size:0.7rem;color:var(--gold);
-  white-space:nowrap;overflow:hidden;cursor:pointer;min-width:0;flex:1;
+.tactics-thumb{
+  position:relative;width:32px;height:38px;flex-shrink:0;cursor:pointer;
+  border:1px solid #444;border-radius:3px;background:var(--bg-card);
+  display:flex;align-items:center;justify-content:center;overflow:hidden;
 }
-.tactics-label{color:#998a40;font-size:0.6rem;font-weight:bold;flex-shrink:0}
-.tactics-name{overflow:hidden;text-overflow:ellipsis}
+.tactics-thumb.has-card{border-color:var(--gold)}
+.tactics-thumb-label{
+  position:absolute;top:0;left:0;background:rgba(0,0,0,0.7);color:var(--gold);
+  font-size:0.5rem;font-weight:bold;padding:0 3px;border-radius:0 0 3px 0;z-index:1;line-height:1.4;
+}
+.tactics-thumb-img{width:100%;height:100%;object-fit:cover}
 .tactics-clear{color:#888;font-size:0.8rem;flex-shrink:0;background:none;border:none;padding:0 2px;line-height:1}
 .terrain-dropdown-wrap{flex-shrink:0;display:flex;align-items:center}
 .terrain-dropdown{
@@ -529,13 +534,15 @@ select,input{font-family:inherit}
   <button class="hamburger-btn" id="hamburgerBtn" onclick="toggleMenu()">&#9776;</button>
 </header>
 
-<!-- TACTICS ROW -->
+<!-- TACTICS & TERRAIN ROW -->
 <div class="tactics-row">
-  <div class="tactics-item" id="tacticsBtnMain" onclick="TacticsPicker.open('main')">
-    <span class="tactics-label">M:</span><span class="tactics-name">未選択</span>
+  <div class="tactics-thumb" id="tacticsBtnMain" onclick="TacticsPicker.open('main')">
+    <span class="tactics-thumb-label">M</span>
+    <img class="tactics-thumb-img" id="tacticsImgMain" src="" alt="メイン作戦" style="display:none">
   </div>
-  <div class="tactics-item" id="tacticsBtnSub" onclick="TacticsPicker.open('sub')">
-    <span class="tactics-label">S:</span><span class="tactics-name">未選択</span>
+  <div class="tactics-thumb" id="tacticsBtnSub" onclick="TacticsPicker.open('sub')">
+    <span class="tactics-thumb-label">S</span>
+    <img class="tactics-thumb-img" id="tacticsImgSub" src="" alt="サブ作戦" style="display:none">
   </div>
   <div class="terrain-dropdown-wrap">
     <select class="terrain-dropdown" id="terrainSelect" onchange="setActiveTerrain(this.value||null)">
@@ -1509,18 +1516,21 @@ const TacticsPicker = {
   close() { document.getElementById('tacticsPickerModal').classList.remove('open'); },
   renderButtons() {
     ['main', 'sub'].forEach(type => {
-      const btnId = type === 'main' ? 'tacticsBtnMain' : 'tacticsBtnSub';
-      const btn = document.getElementById(btnId);
-      if (!btn) return;
-      const label = type === 'main' ? 'M' : 'S';
+      const btn = document.getElementById(type === 'main' ? 'tacticsBtnMain' : 'tacticsBtnSub');
+      const img = document.getElementById(type === 'main' ? 'tacticsImgMain' : 'tacticsImgSub');
+      if (!btn || !img) return;
       const id = type === 'main' ? AppState.tacticsMain : AppState.tacticsSub;
       const cards = type === 'main' ? AppState.tacticsCards.main : AppState.tacticsCards.sub;
       const card = id ? cards.find(c => c.id === id) : null;
-      if (!card) {
-        btn.innerHTML = `<span class="tactics-label">${label}:</span><span class="tactics-name">未選択</span>`;
-        return;
+      if (card) {
+        img.src = card.thumbnail_url;
+        img.style.display = '';
+        btn.classList.add('has-card');
+      } else {
+        img.src = '';
+        img.style.display = 'none';
+        btn.classList.remove('has-card');
       }
-      btn.innerHTML = `<span class="tactics-label">${label}:</span><span class="tactics-name">${escapeHtml(card.name)}</span><button class="tactics-clear" onclick="event.stopPropagation();TacticsPicker.clear('${type}')">&times;</button>`;
     });
   }
 };
