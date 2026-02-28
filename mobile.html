@@ -367,21 +367,17 @@ select,input{font-family:inherit}
 
 /* ===== FILTER BOTTOM SHEET ===== */
 .filter-sheet{
-  position:fixed;bottom:0;left:0;right:0;height:40px;
+  position:fixed;bottom:0;left:0;right:0;height:36px;
   background:var(--bg2);border-top:2px solid var(--accent);border-radius:12px 12px 0 0;
   z-index:210;transition:height 0.3s ease;overflow:hidden;
   display:flex;flex-direction:column;
 }
 .filter-sheet.open{height:60vh}
-.filter-sheet-handle{
-  width:40px;height:4px;background:#555;border-radius:2px;margin:6px auto 2px;flex-shrink:0;
-  cursor:pointer;
+.filter-sheet-toggle{
+  display:flex;align-items:center;justify-content:center;gap:6px;
+  padding:8px 12px;flex-shrink:0;cursor:pointer;user-select:none;
+  background:none;border:none;width:100%;color:var(--accent);font-weight:bold;font-size:0.85rem;
 }
-.filter-sheet-header{
-  display:flex;align-items:center;padding:2px 12px;flex-shrink:0;gap:6px;cursor:pointer;
-}
-.filter-sheet-title{color:var(--accent);font-weight:bold;font-size:0.85rem;flex:1}
-.filter-sheet-close{background:none;border:none;color:#888;font-size:1.2rem;padding:4px}
 .filter-sheet-body{
   flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:8px 12px;
 }
@@ -597,7 +593,6 @@ select,input{font-family:inherit}
     <button class="picker-close" onclick="closeCardPicker()">&times;</button>
   </div>
   <div class="picker-toolbar">
-    <button class="picker-filter-btn" id="filterToggleBtn" onclick="toggleFilterSheet()">絞込</button>
     <span class="page-info" id="pageInfo" style="color:#888;font-size:0.8rem">-</span>
   </div>
   <div class="picker-grid" id="thumbGrid"></div>
@@ -605,10 +600,7 @@ select,input{font-family:inherit}
 
 <!-- FILTER BOTTOM SHEET -->
 <div class="filter-sheet" id="filterSheet">
-  <div class="filter-sheet-handle" onclick="toggleFilterSheet()"></div>
-  <div class="filter-sheet-header" onclick="toggleFilterSheet()">
-    <span class="filter-sheet-title">フィルター ▲</span>
-  </div>
+  <button class="filter-sheet-toggle" id="filterSheetToggle" onclick="toggleFilterSheet()">▲ フィルター</button>
   <div class="filter-sheet-body">
     <div style="margin-bottom:8px">
       <input type="text" class="picker-search-input" id="searchInput" placeholder="名前・番号で検索..." autocomplete="off" style="width:100%;box-sizing:border-box">
@@ -2863,8 +2855,8 @@ function toggleMenu() {
 function toggleFilterSheet() {
   const sheet = document.getElementById('filterSheet');
   sheet.classList.toggle('open');
-  const title = sheet.querySelector('.filter-sheet-title');
-  if (title) title.textContent = sheet.classList.contains('open') ? 'フィルター ▼' : 'フィルター ▲';
+  const btn = document.getElementById('filterSheetToggle');
+  if (btn) btn.textContent = sheet.classList.contains('open') ? '▼ フィルター' : '▲ フィルター';
 }
 function toggleFilterGroup(id) {
   document.getElementById(id).classList.toggle('collapsed');
