@@ -131,6 +131,8 @@ button{cursor:pointer;font-family:inherit}
 .btn-action.btn-open:hover{background:rgba(104,239,189,0.15)}
 .btn-action.btn-copy-deck{border-color:#ffe082;color:#ffe082;text-decoration:none}
 .btn-action.btn-copy-deck:hover{background:rgba(255,224,130,0.15)}
+.btn-action.btn-tweet{border-color:#1d9bf0;color:#1d9bf0;text-decoration:none}
+.btn-action.btn-tweet:hover{background:rgba(29,155,240,0.15)}
 .btn-action.copied{border-color:#68efbd;color:#68efbd}
 .btn-like{
   background:transparent;border:1px solid #555;border-radius:4px;
@@ -1096,6 +1098,10 @@ function renderDeckList(decks, cardData, tacticsMap) {
     html += `<a class="btn-action btn-open" href="${escapeHtml(getDeckV2Url(deck))}">シミュレータで表示</a>`;
     html += `<button class="btn-action btn-copy-deck" data-idx="${idx}">デッキコピー</button>`;
     html += `<button class="btn-action btn-share" data-idx="${idx}">共有URL</button>`;
+    const tweetUrl = getDeckV2Url(deck);
+    const tweetText = `${name} のデッキレシピ #アーセナルベース #ABDS`;
+    const tweetHref = `https://x.com/intent/tweet?text=${encodeURIComponent(tweetText)}&url=${encodeURIComponent(tweetUrl)}`;
+    html += `<a class="btn-action btn-tweet" href="${escapeHtml(tweetHref)}" target="_blank" rel="noopener">Xに投稿</a>`;
     if (deckId) {
       const likes = deck.likes || 0;
       const liked = isLiked(deckId);
