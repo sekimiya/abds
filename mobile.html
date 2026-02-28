@@ -316,16 +316,16 @@ select,input{font-family:inherit}
 }
 .picker-tab.active{background:#1e2924;border-color:var(--accent);color:var(--accent)}
 .picker-close{background:none;border:none;color:#888;font-size:1.3rem;padding:4px 8px;margin-left:auto}
-.picker-search{
-  display:flex;align-items:center;gap:6px;padding:6px 8px;flex-shrink:0;height:44px;
+.picker-toolbar{
+  display:flex;align-items:center;gap:8px;padding:4px 8px;flex-shrink:0;border-bottom:1px solid #2a2a2a;
 }
 .picker-search-input{
-  flex:1;padding:6px 10px;background:var(--bg-card);border:1px solid #333;
+  padding:6px 10px;background:var(--bg-card);border:1px solid #333;
   border-radius:6px;color:#fff;font-size:0.85rem;min-height:32px;
 }
 .picker-search-input:focus{border-color:var(--accent);outline:none}
 .picker-filter-btn{
-  padding:6px 10px;background:#222;border:1px solid #555;border-radius:6px;
+  padding:6px 14px;background:#222;border:1px solid #555;border-radius:6px;
   color:#ccc;font-size:0.8rem;white-space:nowrap;min-height:32px;
 }
 .picker-filter-btn.has-filter{border-color:var(--accent);color:var(--accent)}
@@ -595,14 +595,11 @@ select,input{font-family:inherit}
     </div>
     <button class="picker-close" onclick="closeCardPicker()">&times;</button>
   </div>
-  <div class="picker-search">
-    <input type="text" class="picker-search-input" id="searchInput" placeholder="名前・番号で検索..." autocomplete="off">
+  <div class="picker-toolbar">
     <button class="picker-filter-btn" id="filterToggleBtn" onclick="toggleFilterSheet()">絞込</button>
+    <span class="page-info" id="pageInfo" style="color:#888;font-size:0.8rem">-</span>
   </div>
   <div class="picker-grid" id="thumbGrid"></div>
-  <div class="picker-pagination" style="justify-content:center">
-    <span class="page-info" id="pageInfo">-</span>
-  </div>
 </div>
 
 <!-- FILTER BOTTOM SHEET -->
@@ -613,7 +610,10 @@ select,input{font-family:inherit}
     <button class="filter-sheet-close" onclick="toggleFilterSheet()">&times;</button>
   </div>
   <div class="filter-sheet-body">
-    <div class="filter-group" id="filterGroupBasic">
+    <div style="margin-bottom:8px">
+      <input type="text" class="picker-search-input" id="searchInput" placeholder="名前・番号で検索..." autocomplete="off" style="width:100%;box-sizing:border-box">
+    </div>
+    <div class="filter-group collapsed" id="filterGroupBasic">
       <div class="filter-group-title" onclick="toggleFilterGroup('filterGroupBasic')">基本</div>
       <div class="filter-group-body">
         <div class="rarity-filter" id="rarityFilter">
@@ -1864,7 +1864,10 @@ const DeckManager = {
     const decks = JSON.parse(localStorage.getItem('gab_decks') || '{}');
     const entries = Object.values(decks).sort((a, b) => (b.timestamp || '').localeCompare(a.timestamp || ''));
     sel.innerHTML = '<option value="">-- デッキを選択 --</option>' +
-      entries.map(d => `<option value="${escapeHtml(d.name)}">${escapeHtml(d.name)}</option>`).join('');
+      entries.map(d => {
+        const prefix = d.bookmarkedId ? '\u2605 ' : '';
+        return `<option value="${escapeHtml(d.name)}">${prefix}${escapeHtml(d.name)}</option>`;
+      }).join('');
   },
   loadFromSelect() {
     const sel = document.getElementById('deckLoadSelect');
