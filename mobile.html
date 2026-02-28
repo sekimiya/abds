@@ -83,6 +83,15 @@ select,input{font-family:inherit}
 .tactics-label{color:#998a40;font-size:0.6rem;font-weight:bold;flex-shrink:0}
 .tactics-name{overflow:hidden;text-overflow:ellipsis}
 .tactics-clear{color:#888;font-size:0.8rem;flex-shrink:0;background:none;border:none;padding:0 2px;line-height:1}
+.terrain-dropdown-wrap{flex-shrink:0;display:flex;align-items:center}
+.terrain-dropdown{
+  appearance:none;-webkit-appearance:none;
+  background:#1a1a1a url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='5'%3E%3Cpath d='M0 0l4 5 4-5z' fill='%23888'/%3E%3C/svg%3E") no-repeat right 6px center;
+  border:1px solid #444;border-radius:4px;color:var(--accent);
+  font-size:0.65rem;padding:3px 18px 3px 6px;height:22px;line-height:1;cursor:pointer;
+}
+.terrain-dropdown:focus{outline:none;border-color:var(--accent)}
+.terrain-dropdown option{background:#1a1a1a;color:#ccc}
 
 /* ===== LINK BAR (28px) ===== */
 .link-bar{
@@ -528,6 +537,15 @@ select,input{font-family:inherit}
   <div class="tactics-item" id="tacticsBtnSub" onclick="TacticsPicker.open('sub')">
     <span class="tactics-label">S:</span><span class="tactics-name">未選択</span>
   </div>
+  <div class="terrain-dropdown-wrap">
+    <select class="terrain-dropdown" id="terrainSelect" onchange="setActiveTerrain(this.value||null)">
+      <option value="">地形:なし</option>
+      <option value="ground">地上</option>
+      <option value="space">宇宙</option>
+      <option value="desert">砂漠</option>
+      <option value="water">水中</option>
+    </select>
+  </div>
 </div>
 
 <!-- LINK BAR -->
@@ -875,14 +893,6 @@ select,input{font-family:inherit}
   </div>
   <div class="menu-row">
     <button class="rec-btn" id="recBtn" onclick="captureFullPage()" style="width:100%"><span id="recBtnLabel">REC</span></button>
-  </div>
-  <div class="menu-divider"></div>
-  <span class="menu-label">地形設定</span>
-  <div class="menu-row">
-    <button class="menu-btn terrain-sel" data-terrain="ground" onclick="setActiveTerrain('ground')">地上</button>
-    <button class="menu-btn terrain-sel" data-terrain="space" onclick="setActiveTerrain('space')">宇宙</button>
-    <button class="menu-btn terrain-sel" data-terrain="desert" onclick="setActiveTerrain('desert')">砂漠</button>
-    <button class="menu-btn terrain-sel" data-terrain="water" onclick="setActiveTerrain('water')">水中</button>
   </div>
   <div class="cache-menu-section">
     <div class="cache-menu-header">
@@ -2727,9 +2737,9 @@ function closeCardPicker() {
   SearchPanel._updateFilterVisibility();
 }
 function setActiveTerrain(terrain) {
-  if (AppState.activeTerrain === terrain) AppState.activeTerrain = null;
-  else AppState.activeTerrain = terrain;
-  document.querySelectorAll('.terrain-sel').forEach(b => b.classList.toggle('active', b.dataset.terrain === AppState.activeTerrain));
+  AppState.activeTerrain = terrain || null;
+  const sel = document.getElementById('terrainSelect');
+  if (sel) sel.value = AppState.activeTerrain || '';
   UIRenderer.renderAll();
 }
 function closeDeckLoadModal() { document.getElementById('deckLoadModal').classList.remove('open'); }
