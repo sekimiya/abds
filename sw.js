@@ -1,5 +1,5 @@
 // ABDS PWA Service Worker
-const CACHE_VERSION = 'abds-v2';
+const CACHE_VERSION = 'abds-v3';
 const APP_SHELL_CACHE = `app-shell-${CACHE_VERSION}`;
 const DATA_CACHE = `data-${CACHE_VERSION}`;
 const IMAGE_CACHE = 'card-images-v1';
@@ -31,14 +31,13 @@ self.addEventListener('install', (event) => {
   );
 });
 
-// Activate: clean up old caches
+// Activate: clean up ALL old caches (except image cache)
 self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches.keys().then(keys =>
       Promise.all(
         keys
-          .filter(k => k.startsWith('app-shell-') && k !== APP_SHELL_CACHE)
-          .concat(keys.filter(k => k.startsWith('data-') && k !== DATA_CACHE))
+          .filter(k => k !== APP_SHELL_CACHE && k !== DATA_CACHE && k !== IMAGE_CACHE)
           .map(k => caches.delete(k))
       )
     ).then(() => self.clients.claim())
@@ -70,46 +69,17 @@ self.addEventListener('fetch', (event) => {
   // Only handle same-origin requests below
   if (url.origin !== self.location.origin) return;
 
-  // Data JSON files — Stale-While-Revalidate
-  if (url.pathname.includes('/data/') && url.pathname.endsWith('.json')) {
-    event.respondWith(
-      caches.open(DATA_CACHE).then(cache =>
-        cache.match(event.request).then(cached => {
-          const fetchPromise = fetch(event.request).then(response => {
-            if (response.ok) {
-              cache.put(event.request, response.clone());
-            }
-            return response;
-          }).catch(() => cached);
-
-          return cached || fetchPromise;
-        })
-      )
-    );
-    return;
-  }
-
-  // App shell — Cache First + background update
+  // All same-origin requests — Network First, cache fallback
   event.respondWith(
-    caches.open(APP_SHELL_CACHE).then(cache =>
-      cache.match(event.request).then(cached => {
-        const fetchPromise = fetch(event.request).then(response => {
-          if (response.ok) {
-            cache.put(event.request, response.clone());
-            // Notify clients if app shell was updated
-            if (cached && (event.request.url.includes('index.html') || event.request.url.includes('mobile.html'))) {
-              self.clients.matchAll().then(clients => {
-                clients.forEach(client => {
-                  client.postMessage({ type: 'UPDATE_AVAILABLE' });
-                });
-              });
-            }
-          }
-          return response;
-        }).catch(() => cached);
-
-        return cached || fetchPromise;
-      })
+    fetch(event.request).then(response => {
+      if (response.ok) {
+        const cacheName = (url.pathname.includes('/data/') && url.pathname.endsWith('.json'))
+          ? DATA_CACHE : APP_SHELL_CACHE;
+        caches.open(cacheName).then(cache => cache.put(event.request, response.clone()));
+      }
+      return response;
+    }).catch(() =>
+      caches.match(event.request).then(cached => cached || new Response('Offline', { status: 503 }))
     )
   );
 });
