@@ -1140,8 +1140,13 @@ select,input{font-family:inherit}
       <button class="header-menu-close" onclick="closeHeaderMenu()" title="閉じる">&times;</button>
       <div class="header-menu-row">
         <button class="header-btn primary" onclick="DeckManager.save()" title="Ctrl+S">保存</button>
-        <button class="header-btn" onclick="DeckManager.showLoadModal()">読込</button>
         <button class="header-btn" onclick="DeckManager.copyCode()" title="コード共有">共有</button>
+      </div>
+      <div class="header-menu-row" style="gap:0.3rem">
+        <select id="deckLoadSelect" class="filter-select" style="flex:1;padding:0.4rem;font-size:0.85rem">
+          <option value="">-- デッキを選択 --</option>
+        </select>
+        <button class="header-btn primary" onclick="DeckManager.loadFromSelect()" style="white-space:nowrap">読込</button>
       </div>
       <div class="header-menu-row">
         <button class="header-btn" onclick="DeckManager.tweetDeck()" style="border-color:#1DA1F2;color:#1DA1F2;flex:1">Twitterに投稿</button>
@@ -2295,6 +2300,7 @@ const DeckManager = {
       timestamp: new Date().toISOString()
     };
     localStorage.setItem('gab_decks', JSON.stringify(decks));
+    this.populateLoadSelect();
     Toast.show(`デッキ「${trimmed}」を保存しました`, 'success');
   },
 
@@ -2413,7 +2419,25 @@ const DeckManager = {
     delete decks[name];
     localStorage.setItem('gab_decks', JSON.stringify(decks));
     this.showLoadModal();
+    this.populateLoadSelect();
     Toast.show(`デッキ「${name}」を削除しました`, 'info');
+  },
+
+  populateLoadSelect() {
+    const sel = document.getElementById('deckLoadSelect');
+    if (!sel) return;
+    const decks = JSON.parse(localStorage.getItem('gab_decks') || '{}');
+    const entries = Object.values(decks).sort((a, b) => (b.timestamp || '').localeCompare(a.timestamp || ''));
+    sel.innerHTML = '<option value="">-- デッキを選択 --</option>' +
+      entries.map(d => `<option value="${escapeHtml(d.name)}">${escapeHtml(d.name)}</option>`).join('');
+  },
+
+  loadFromSelect() {
+    const sel = document.getElementById('deckLoadSelect');
+    const name = sel ? sel.value : '';
+    if (!name) { Toast.show('デッキを選択してください', 'error'); return; }
+    this._loadByName(name);
+    closeHeaderMenu();
   },
 
   postToServer() {
@@ -4594,8 +4618,10 @@ function openSidebar() { /* no-op, use openCardPicker */ }
 
 // Header menu toggle
 function toggleHeaderMenu() {
-  document.getElementById('headerMenuPanel').classList.toggle('open');
+  const panel = document.getElementById('headerMenuPanel');
+  panel.classList.toggle('open');
   document.getElementById('headerMenuOverlay').classList.toggle('open');
+  if (panel.classList.contains('open')) DeckManager.populateLoadSelect();
 }
 function closeHeaderMenu() {
   document.getElementById('headerMenuPanel').classList.remove('open');

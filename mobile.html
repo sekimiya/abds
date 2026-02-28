@@ -919,8 +919,13 @@ select,input{font-family:inherit}
   <input type="text" class="deck-name-input" id="deckNameInput" placeholder="デッキ名">
   <div class="menu-row">
     <button class="menu-btn primary" onclick="DeckManager.save()">保存</button>
-    <button class="menu-btn" onclick="DeckManager.showLoadModal();toggleMenu()">読込</button>
     <button class="menu-btn" onclick="DeckManager.copyCode()">共有</button>
+  </div>
+  <div class="menu-row" style="gap:4px">
+    <select id="deckLoadSelect" class="filter-select" style="flex:1;padding:6px;font-size:0.85rem">
+      <option value="">-- デッキを選択 --</option>
+    </select>
+    <button class="menu-btn primary" onclick="DeckManager.loadFromSelect()" style="white-space:nowrap;flex:0;padding:6px 12px">読込</button>
   </div>
   <div class="menu-row">
     <button class="menu-btn" onclick="DeckManager.tweetDeck()" style="border-color:#1DA1F2;color:#1DA1F2;width:100%">Twitterに投稿</button>
@@ -1761,6 +1766,7 @@ const DeckManager = {
     const decks = JSON.parse(localStorage.getItem('gab_decks') || '{}');
     decks[trimmed] = { name: trimmed, cards: [...AppState.deck], tacticsMain: AppState.tacticsMain, tacticsSub: AppState.tacticsSub, timestamp: new Date().toISOString() };
     localStorage.setItem('gab_decks', JSON.stringify(decks));
+    this.populateLoadSelect();
     Toast.show(`デッキ「${trimmed}」を保存しました`, 'success');
   },
   _autoSave() {
@@ -1849,7 +1855,23 @@ const DeckManager = {
     delete decks[name];
     localStorage.setItem('gab_decks', JSON.stringify(decks));
     this.showLoadModal();
+    this.populateLoadSelect();
     Toast.show(`デッキ「${name}」を削除しました`, 'info');
+  },
+  populateLoadSelect() {
+    const sel = document.getElementById('deckLoadSelect');
+    if (!sel) return;
+    const decks = JSON.parse(localStorage.getItem('gab_decks') || '{}');
+    const entries = Object.values(decks).sort((a, b) => (b.timestamp || '').localeCompare(a.timestamp || ''));
+    sel.innerHTML = '<option value="">-- デッキを選択 --</option>' +
+      entries.map(d => `<option value="${escapeHtml(d.name)}">${escapeHtml(d.name)}</option>`).join('');
+  },
+  loadFromSelect() {
+    const sel = document.getElementById('deckLoadSelect');
+    const name = sel ? sel.value : '';
+    if (!name) { Toast.show('デッキを選択してください', 'error'); return; }
+    this._loadByName(name);
+    toggleMenu();
   },
   postToServer() {
     if (!AppState.deck.some(n => n)) { Toast.show('デッキにカードがありません', 'error'); return; }
@@ -2470,7 +2492,8 @@ const SearchPanel = {
   _selectedSeries: new Set(),
   _filteredCards: [],
   _page: 0,
-  _perPage: 99999,
+  _perPage: 60,
+  _rendered: 0,
   _t: { ebCat:new Set(), ebLv:new Set(), ebCond:new Set(), ebspEff:new Set(), sqCat:new Set(), sqGauge:new Set(), sqTrig:new Set(), sqEff:new Set(), sqspEff:new Set(), abCat:new Set(), spEff:new Set(), skEff:new Set() },
   _tStyle: { ebCat:'eb', ebLv:'eb', ebCond:'eb', ebspEff:'eb', sqCat:'sq', sqGauge:'sq', sqTrig:'sq', sqEff:'sq', sqspEff:'sq', abCat:'ab', spEff:'sp', skEff:'pl' },
 
@@ -2499,6 +2522,13 @@ const SearchPanel = {
     });
     this._populateSkillNames();
     this._restoreFilters();
+    // 無限スクロール: グリッド末尾付近で追加読み込み
+    const grid = document.getElementById('thumbGrid');
+    grid.addEventListener('scroll', () => {
+      if (grid.scrollTop + grid.clientHeight >= grid.scrollHeight - 200) {
+        this._loadMore();
+      }
+    });
   },
 
   _saveFilters() {
@@ -2649,7 +2679,10 @@ const SearchPanel = {
   },
   _hasActiveFilter() {
     const el = document.getElementById('filterAllSeries');
-    return this._selectedSeries.size > 0 || (el && el.checked);
+    if (this._selectedSeries.size > 0 || (el && el.checked)) return true;
+    if (document.getElementById('filterLinkName').value) return true;
+    if (document.getElementById('filterLinkName2').value) return true;
+    return false;
   },
   applyFilters() {
     if (!this._hasActiveFilter()) { this._filteredCards = []; this._page = 0; this._renderGrid(); this._saveFilters(); return; }
@@ -2744,15 +2777,23 @@ const SearchPanel = {
   _renderGrid() {
     const grid = document.getElementById('thumbGrid');
     const cards = this._filteredCards;
-    const start = this._page * this._perPage;
-    const pageCards = cards.slice(start, start + this._perPage);
     grid.innerHTML = '';
+    grid.scrollTop = 0;
+    this._rendered = 0;
     if (cards.length === 0 && !this._hasActiveFilter()) {
       grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;color:#666;padding:2rem;font-size:0.9rem">シリーズを選択してください</div>';
       document.getElementById('pageInfo').textContent = '-';
       return;
     }
-    pageCards.forEach(card => {
+    this._appendCards(this._perPage);
+    document.getElementById('pageInfo').textContent = cards.length > 0 ? `${cards.length}件` : '0件';
+  },
+  _appendCards(count) {
+    const grid = document.getElementById('thumbGrid');
+    const cards = this._filteredCards;
+    const end = Math.min(this._rendered + count, cards.length);
+    for (let i = this._rendered; i < end; i++) {
+      const card = cards[i];
       const el = document.createElement('div');
       const isEb = card.has_eb || card.has_eb_skill || card.has_eb_link;
       const isSq = card.has_sqsp || card.has_sq_skill || card.has_sq_link || !!card.sq_rush_effect;
@@ -2773,8 +2814,12 @@ const SearchPanel = {
         </div>`;
       el.addEventListener('click', () => this._selectCard(card));
       grid.appendChild(el);
-    });
-    document.getElementById('pageInfo').textContent = cards.length > 0 ? `${cards.length}件` : '0件';
+    }
+    this._rendered = end;
+  },
+  _loadMore() {
+    if (this._rendered >= this._filteredCards.length) return;
+    this._appendCards(this._perPage);
   },
   _toggleBm(btn, number) {
     const on = CardBookmark.toggle(number);
@@ -2808,7 +2853,9 @@ const SearchPanel = {
 // ================================================================
 function toggleMenu() {
   document.getElementById('menuOverlay').classList.toggle('open');
-  document.getElementById('menuPanel').classList.toggle('open');
+  const panel = document.getElementById('menuPanel');
+  panel.classList.toggle('open');
+  if (panel.classList.contains('open')) DeckManager.populateLoadSelect();
 }
 function toggleFilterSheet() {
   document.getElementById('filterSheet').classList.toggle('open');
