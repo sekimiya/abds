@@ -58,6 +58,15 @@ select,input{font-family:inherit}
 }
 .eb-badge-h.active{display:inline-block}
 @keyframes eb-glow{from{box-shadow:0 0 4px rgba(255,152,0,0.4)}to{box-shadow:0 0 10px rgba(255,152,0,0.8)}}
+.hdr-active-links{
+  display:flex;align-items:center;gap:3px;overflow:hidden;flex-shrink:1;min-width:0;
+}
+.hdr-link-name{
+  font-size:0.55rem;font-weight:bold;white-space:nowrap;padding:1px 4px;border-radius:3px;
+  overflow:hidden;text-overflow:ellipsis;
+}
+.hdr-link-name.sq{color:#ff8cc8;background:rgba(255,105,180,0.15);border:1px solid rgba(255,105,180,0.3)}
+.hdr-link-name.eb{color:#ffb74d;background:rgba(255,152,0,0.15);border:1px solid rgba(255,152,0,0.3)}
 .hdr-spacer{flex:1}
 .rec-btn{
   background:linear-gradient(135deg,#d32f2f,#b71c1c);border:1px solid #f44336;border-radius:4px;
@@ -554,6 +563,7 @@ select,input{font-family:inherit}
   <span class="hdr-sep"></span>
   <span class="sq-badge-h" id="sqStatus">SQ</span>
   <span class="eb-badge-h" id="ebStatus">EB</span>
+  <span class="hdr-active-links" id="hdrActiveLinks"></span>
   <span class="hdr-spacer"></span>
   <button class="hamburger-btn" id="hamburgerBtn" onclick="toggleMenu()">&#9776;</button>
 </header>
@@ -2429,6 +2439,17 @@ const UIRenderer = {
         const isActive = info.count >= info.required;
         return `<div class="link-chip${isActive ? ' active' : ''}"><span class="link-chip-name">${escapeHtml(name)}</span><span class="link-chip-count">${info.count}/${info.required}</span></div>`;
       }).join('');
+    }
+    // Header: show active SQ/EB link names
+    const hdrLinks = document.getElementById('hdrActiveLinks');
+    if (hdrLinks) {
+      const activeSpecial = special.filter(([, info]) => info.count >= info.required);
+      if (activeSpecial.length === 0) { hdrLinks.innerHTML = ''; } else {
+        hdrLinks.innerHTML = activeSpecial.map(([name, info]) => {
+          const type = info.is_sq_link ? 'sq' : 'eb';
+          return `<span class="hdr-link-name ${type}">${escapeHtml(name)}</span>`;
+        }).join('');
+      }
     }
   }
 };
