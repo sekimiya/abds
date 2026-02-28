@@ -1252,11 +1252,19 @@ function renderDeckList(decks, cardData, tacticsMap) {
       const deck = sorted[parseInt(el.dataset.idx)];
       const name = deck.deck_name || 'デッキ';
       const code = generateDeckCode(deck);
+      const fallbackUrl = getDeckV2Url(deck);
+      // 先にウィンドウを開いてポップアップブロック回避
+      const w = window.open('about:blank', '_blank');
       const base = location.origin + location.pathname.replace(/[^/]*$/, '') + 'mobile.html';
       const sc = await ShortUrl.create(code);
-      const url = sc ? base + '#s:' + sc : getDeckV2Url(deck);
+      const url = sc ? base + '#s:' + sc : fallbackUrl;
       const text = `${name} のデッキレシピ #アーセナルベース #ABDS`;
-      window.open('https://x.com/intent/tweet?text=' + encodeURIComponent(text) + '&url=' + encodeURIComponent(url), '_blank');
+      const tweetUrl = 'https://x.com/intent/tweet?text=' + encodeURIComponent(text) + '&url=' + encodeURIComponent(url);
+      if (w) {
+        w.location.href = tweetUrl;
+      } else {
+        location.href = tweetUrl;
+      }
     });
   });
 
