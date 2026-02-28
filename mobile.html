@@ -295,7 +295,7 @@ select,input{font-family:inherit}
 .picker-filter-btn.has-filter{border-color:var(--accent);color:var(--accent)}
 .picker-grid{
   flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:6px;
-  display:grid;grid-template-columns:repeat(3,1fr);gap:6px;align-content:start;
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(90px,90px));gap:6px;align-content:start;justify-content:center;
 }
 .thumb-card{
   cursor:pointer;border:2px solid transparent;border-radius:4px;
@@ -558,10 +558,8 @@ select,input{font-family:inherit}
     <button class="picker-filter-btn" id="filterToggleBtn" onclick="toggleFilterSheet()">絞込</button>
   </div>
   <div class="picker-grid" id="thumbGrid"></div>
-  <div class="picker-pagination">
-    <button class="page-btn" id="prevBtn" onclick="SearchPanel.prevPage()" disabled>PREV</button>
+  <div class="picker-pagination" style="justify-content:center">
     <span class="page-info" id="pageInfo">-</span>
-    <button class="page-btn" id="nextBtn" onclick="SearchPanel.nextPage()">NEXT</button>
   </div>
 </div>
 
@@ -2381,7 +2379,7 @@ const SearchPanel = {
   _selectedSeries: new Set(),
   _filteredCards: [],
   _page: 0,
-  _perPage: 40,
+  _perPage: 99999,
   _t: { ebCat:new Set(), ebLv:new Set(), ebCond:new Set(), ebspEff:new Set(), sqCat:new Set(), sqGauge:new Set(), sqTrig:new Set(), sqEff:new Set(), sqspEff:new Set(), spEff:new Set(), skEff:new Set() },
   _tStyle: { ebCat:'eb', ebLv:'eb', ebCond:'eb', ebspEff:'eb', sqCat:'sq', sqGauge:'sq', sqTrig:'sq', sqEff:'sq', sqspEff:'sq', spEff:'sp', skEff:'pl' },
 
@@ -2665,10 +2663,7 @@ const SearchPanel = {
       el.addEventListener('click', () => this._selectCard(card));
       grid.appendChild(el);
     });
-    const maxPage = Math.max(0, Math.ceil(cards.length / this._perPage) - 1);
-    document.getElementById('pageInfo').textContent = cards.length > 0 ? `${start+1}-${Math.min(start+this._perPage, cards.length)} / ${cards.length}件` : '0件';
-    document.getElementById('prevBtn').disabled = this._page <= 0;
-    document.getElementById('nextBtn').disabled = this._page >= maxPage;
+    document.getElementById('pageInfo').textContent = cards.length > 0 ? `${cards.length}件` : '0件';
   },
   _toggleBm(btn, number) {
     const on = CardBookmark.toggle(number);
@@ -2677,8 +2672,6 @@ const SearchPanel = {
     const bmEl = document.getElementById('filterBookmarkCards');
     if (bmEl && bmEl.checked) this.applyFilters();
   },
-  nextPage() { const maxPage = Math.ceil(this._filteredCards.length / this._perPage) - 1; if (this._page < maxPage) { this._page++; this._renderGrid(); document.getElementById('thumbGrid').scrollTop = 0; } },
-  prevPage() { if (this._page > 0) { this._page--; this._renderGrid(); document.getElementById('thumbGrid').scrollTop = 0; } },
   _selectCard(card) {
     const slot = AppState.activeSlot;
     if (slot === null) {
