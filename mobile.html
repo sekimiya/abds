@@ -80,10 +80,11 @@ select,input{font-family:inherit}
   padding:2px 8px;font-size:1.1rem;line-height:1;min-height:28px;flex-shrink:0;
 }
 
-/* ===== TACTICS ROW (28px) ===== */
+/* ===== TACTICS ROW ===== */
 .tactics-row{
-  display:flex;align-items:center;height:44px;flex-shrink:0;
-  background:#111;border-bottom:1px solid #2a2a2a;padding:0 8px;gap:6px;overflow:hidden;
+  display:flex;align-items:center;flex-shrink:0;
+  background:#111;border-bottom:1px solid #2a2a2a;padding:4px 8px;gap:6px;
+  flex-wrap:wrap;min-height:44px;
 }
 .tactics-thumb{
   position:relative;width:32px;height:38px;flex-shrink:0;cursor:pointer;
@@ -107,13 +108,12 @@ select,input{font-family:inherit}
 .terrain-dropdown:focus{outline:none;border-color:var(--accent)}
 .terrain-dropdown option{background:#1a1a1a;color:#ccc}
 
-/* ===== LINK BAR (通常リンク) ===== */
-.link-bar{
-  display:flex;align-items:center;height:28px;flex-shrink:0;
-  background:#111;border-bottom:1px solid #2a2a2a;padding:0 6px;gap:4px;
-  overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;
+/* ===== LINK CHIPS (tactics-row内) ===== */
+.link-chips{
+  display:flex;align-items:center;gap:3px;
+  flex:1;min-width:0;flex-wrap:wrap;
 }
-.link-bar:empty{display:none}
+.link-chips:empty{display:none}
 .link-chip{
   display:inline-flex;align-items:center;gap:3px;
   padding:2px 8px;border-radius:10px;font-size:0.65rem;
@@ -542,10 +542,7 @@ select,input{font-family:inherit}
   <button class="hamburger-btn" id="hamburgerBtn" onclick="toggleMenu()">&#9776;</button>
 </header>
 
-<!-- LINK BAR (通常リンク) -->
-<div class="link-bar" id="linkBar"></div>
-
-<!-- TACTICS & TERRAIN ROW -->
+<!-- TACTICS & LINK ROW -->
 <div class="tactics-row">
   <div class="tactics-thumb" id="tacticsBtnMain" onclick="TacticsPicker.open('main')">
     <span class="tactics-thumb-label">M</span>
@@ -564,6 +561,7 @@ select,input{font-family:inherit}
       <option value="water">水中</option>
     </select>
   </div>
+  <div class="link-chips" id="linkBar"></div>
 </div>
 
 <!-- OVERVIEW STRIP -->
