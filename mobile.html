@@ -2547,6 +2547,9 @@ const SearchPanel = {
       linkName2: document.getElementById('filterLinkName2').value,
       skillName: document.getElementById('filterSkillName').value,
       toggles: Object.fromEntries(Object.entries(this._t).map(([k,v]) => [k, [...v]])),
+      series: [...this._selectedSeries],
+      allSeries: (document.getElementById('filterAllSeries') || {}).checked || false,
+      bookmark: (document.getElementById('filterBookmarkCards') || {}).checked || false,
     };
     localStorage.setItem('abds_search_filters', JSON.stringify(state));
   },
@@ -2595,6 +2598,12 @@ const SearchPanel = {
           if (group && this._t[group].has(btn.dataset.key)) btn.classList.add('active-' + this._tStyle[group]);
         });
       }
+      if (s.series && s.series.length > 0) {
+        this._selectedSeries = new Set(s.series);
+        document.querySelectorAll('.series-btn').forEach(b => b.classList.toggle('active', this._selectedSeries.has(b.dataset.series)));
+      }
+      const fas = document.getElementById('filterAllSeries'); if (fas) fas.checked = !!s.allSeries;
+      const bm = document.getElementById('filterBookmarkCards'); if (bm) bm.checked = !!s.bookmark;
       this.applyFilters();
     } catch(e) {}
   },
@@ -2606,11 +2615,7 @@ const SearchPanel = {
     document.querySelectorAll('#filterSheet [data-for]').forEach(el => {
       const hidden = t && el.dataset.for !== t;
       el.style.display = hidden ? 'none' : '';
-      if (hidden) {
-        if (el.classList.contains('tbtn')) { const group = containerGroupMap[el.closest('.toggle-filter')?.id]; if (group) { this._t[group].delete(el.dataset.key); el.classList.remove('active-eb','active-sq','active-ab','active-pl'); } }
-        el.querySelectorAll('.tbtn').forEach(btn => { const group = containerGroupMap[btn.closest('.toggle-filter')?.id]; if (group) { this._t[group].delete(btn.dataset.key); btn.classList.remove('active-eb','active-sq','active-ab','active-pl'); } });
-        el.querySelectorAll('input[type="checkbox"]').forEach(cb => { cb.checked = false; });
-      }
+      /* フィルタ値は明示的にクリアされるまで保持する（非表示にするだけ） */
     });
   },
 
