@@ -2659,91 +2659,12 @@ async function showCardModal(number) {
 }
 
 // Screenshot capture
-async function captureFullPage() {
-  const btn = document.getElementById('recBtn');
-  if (btn.classList.contains('capturing')) return;
-  btn.classList.add('capturing');
-  document.getElementById('recBtnLabel').textContent = '撮影中…';
-  try {
-    // --- Step 1: Convert card images (blob URLs) to data URLs for html2canvas ---
-    const origSrcs = new Map();
-    const thumbImgs = document.querySelectorAll('.overview-thumb img');
-    const imgTasks = [];
-    for (const img of thumbImgs) {
-      const cardNumber = img.alt;
-      if (!cardNumber || img.src.startsWith('data:')) continue;
-      const side = img.closest('.overview-thumb')?.dataset?.showBack === '1' ? 'back' : 'front';
-      imgTasks.push((async () => {
-        const dataUrl = await ImageCache.toDataUrl(cardNumber, side);
-        if (dataUrl) {
-          origSrcs.set(img, img.src);
-          img.src = dataUrl;
-        }
-      })());
-    }
-    // Also convert detail area images
-    const detailImgs = document.querySelectorAll('#detailArea img');
-    for (const img of detailImgs) {
-      const cardNumber = img.alt;
-      if (!cardNumber || img.src.startsWith('data:')) continue;
-      imgTasks.push((async () => {
-        const dataUrl = await ImageCache.toDataUrl(cardNumber, 'front');
-        if (dataUrl) {
-          origSrcs.set(img, img.src);
-          img.src = dataUrl;
-        }
-      })());
-    }
-    await Promise.all(imgTasks);
-    await new Promise(r => setTimeout(r, 50));
-
-    // --- Step 2: Flatten layout for capture ---
-    const body = document.body;
-    const detailArea = document.getElementById('detailArea');
-    const origBodyOF = body.style.overflow;
-    const origBodyH = body.style.height;
-    const origDetailOF = detailArea.style.overflow;
-    const origDetailH = detailArea.style.height;
-    const origDetailFlex = detailArea.style.flex;
-    body.style.overflow = 'visible';
-    body.style.height = 'auto';
-    detailArea.style.overflow = 'visible';
-    detailArea.style.height = 'auto';
-    detailArea.style.flex = 'none';
-    await new Promise(r => setTimeout(r, 100));
-
-    // --- Step 3: Capture ---
-    const canvas = await html2canvas(body, { backgroundColor: '#0f0f0f', scale: 2, useCORS: true, logging: false, width: body.scrollWidth, height: body.scrollHeight });
-
-    // --- Step 4: Restore layout ---
-    body.style.overflow = origBodyOF;
-    body.style.height = origBodyH;
-    detailArea.style.overflow = origDetailOF;
-    detailArea.style.height = origDetailH;
-    detailArea.style.flex = origDetailFlex;
-
-    // --- Step 5: Restore original image sources ---
-    for (const [img, src] of origSrcs) {
-      img.src = src;
-    }
-
-    // --- Step 6: Download ---
-    canvas.toBlob(blob => {
-      if (!blob) { Toast.show('撮影に失敗しました', 'error'); return; }
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url; a.download = `deck_${Date.now()}.png`;
-      document.body.appendChild(a); a.click(); a.remove();
-      URL.revokeObjectURL(url);
-      Toast.show('スクリーンショットを保存しました', 'success');
-    }, 'image/png');
-  } catch (e) {
-    console.error('Capture failed:', e);
-    Toast.show('撮影に失敗しました', 'error');
-  } finally {
-    btn.classList.remove('capturing');
-    document.getElementById('recBtnLabel').textContent = 'REC';
-  }
+function captureFullPage() {
+  // デスクトップ版でスクリーンショットを撮影する
+  const code = DeckManager.generateCode();
+  if (!code || !AppState.deck.some(n => n)) { Toast.show('デッキにカードがありません', 'error'); return; }
+  Toast.show('デスクトップ版で撮影します…', 'info');
+  location.href = './index.html#' + code + '&rec';
 }
 
 // ================================================================
