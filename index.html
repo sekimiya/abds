@@ -2731,7 +2731,7 @@ const UIRenderer = {
 
   _renderUnitStats(u, msOcr, plOcr) {
     const container = document.getElementById(`unit-stats-${u}`);
-    const maxVal = 660;
+    const maxVal = 1000;
 
     const getStats = (ocr) => ({
       mobility: safeInt(ocr?.stats?.mobility),

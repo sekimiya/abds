@@ -2025,7 +2025,7 @@ const UIRenderer = {
   },
 
   _renderStats(msOcr, plOcr) {
-    const maxVal = 660;
+    const maxVal = 1000;
     const getStats = (ocr) => ({ mobility: safeInt(ocr?.stats?.mobility), ranged: safeInt(ocr?.stats?.ranged_attack), melee: safeInt(ocr?.stats?.melee_attack), hp: safeInt(ocr?.stats?.hp) });
     const ms = getStats(msOcr), pl = getStats(plOcr);
     const msBuffs = getLinkBuffs(msOcr), plBuffs = getLinkBuffs(plOcr);
