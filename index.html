@@ -1121,10 +1121,7 @@ select,input{font-family:inherit}
         <button class="header-btn" onclick="DeckManager.showLoadModal()">読込</button>
         <button class="header-btn" onclick="DeckManager.copyCode()" title="コード共有">共有</button>
       </div>
-      <div class="header-menu-row">
-        <button class="header-btn" onclick="DeckManager.postToServer()">デッキ投稿</button>
-        <a class="header-btn" href="./decks.html" style="text-decoration:none">デッキ一覧</a>
-      </div>
+      <a class="header-btn primary" href="./decks.html" style="text-decoration:none;display:block;text-align:center;font-size:1.05rem;padding:10px 0;width:100%;box-sizing:border-box">デッキ投稿サイトにアクセス</a>
       <div class="header-menu-row">
         <button class="header-btn" id="undoBtn" onclick="UndoManager.undo()" title="Ctrl+Z" disabled>&#8592; 戻す</button>
         <button class="header-btn" id="redoBtn" onclick="UndoManager.redo()" title="Ctrl+Shift+Z" disabled>やり直す &#8594;</button>
