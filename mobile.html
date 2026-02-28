@@ -330,7 +330,7 @@ select,input{font-family:inherit}
 }
 .picker-filter-btn.has-filter{border-color:var(--accent);color:var(--accent)}
 .picker-grid{
-  flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:6px;
+  flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:6px;padding-bottom:48px;
   display:grid;grid-template-columns:repeat(auto-fill,minmax(90px,90px));gap:6px;align-content:start;justify-content:center;
 }
 .thumb-card{
@@ -367,17 +367,18 @@ select,input{font-family:inherit}
 
 /* ===== FILTER BOTTOM SHEET ===== */
 .filter-sheet{
-  position:fixed;bottom:0;left:0;right:0;height:0;
+  position:fixed;bottom:0;left:0;right:0;height:40px;
   background:var(--bg2);border-top:2px solid var(--accent);border-radius:12px 12px 0 0;
   z-index:210;transition:height 0.3s ease;overflow:hidden;
   display:flex;flex-direction:column;
 }
 .filter-sheet.open{height:60vh}
 .filter-sheet-handle{
-  width:40px;height:4px;background:#555;border-radius:2px;margin:8px auto 4px;flex-shrink:0;
+  width:40px;height:4px;background:#555;border-radius:2px;margin:6px auto 2px;flex-shrink:0;
+  cursor:pointer;
 }
 .filter-sheet-header{
-  display:flex;align-items:center;padding:4px 12px;flex-shrink:0;gap:6px;
+  display:flex;align-items:center;padding:2px 12px;flex-shrink:0;gap:6px;cursor:pointer;
 }
 .filter-sheet-title{color:var(--accent);font-weight:bold;font-size:0.85rem;flex:1}
 .filter-sheet-close{background:none;border:none;color:#888;font-size:1.2rem;padding:4px}
@@ -604,10 +605,9 @@ select,input{font-family:inherit}
 
 <!-- FILTER BOTTOM SHEET -->
 <div class="filter-sheet" id="filterSheet">
-  <div class="filter-sheet-handle"></div>
-  <div class="filter-sheet-header">
-    <span class="filter-sheet-title">フィルター</span>
-    <button class="filter-sheet-close" onclick="toggleFilterSheet()">&times;</button>
+  <div class="filter-sheet-handle" onclick="toggleFilterSheet()"></div>
+  <div class="filter-sheet-header" onclick="toggleFilterSheet()">
+    <span class="filter-sheet-title">フィルター ▲</span>
   </div>
   <div class="filter-sheet-body">
     <div style="margin-bottom:8px">
@@ -2861,7 +2861,10 @@ function toggleMenu() {
   if (panel.classList.contains('open')) DeckManager.populateLoadSelect();
 }
 function toggleFilterSheet() {
-  document.getElementById('filterSheet').classList.toggle('open');
+  const sheet = document.getElementById('filterSheet');
+  sheet.classList.toggle('open');
+  const title = sheet.querySelector('.filter-sheet-title');
+  if (title) title.textContent = sheet.classList.contains('open') ? 'フィルター ▼' : 'フィルター ▲';
 }
 function toggleFilterGroup(id) {
   document.getElementById(id).classList.toggle('collapsed');
