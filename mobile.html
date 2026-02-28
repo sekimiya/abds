@@ -2658,8 +2658,6 @@ const SearchPanel = {
     if (cards.length === 0 && !this._hasActiveFilter()) {
       grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;color:#666;padding:2rem;font-size:0.9rem">シリーズを選択してください</div>';
       document.getElementById('pageInfo').textContent = '-';
-      document.getElementById('prevBtn').disabled = true;
-      document.getElementById('nextBtn').disabled = true;
       return;
     }
     pageCards.forEach(card => {
