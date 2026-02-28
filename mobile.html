@@ -1854,11 +1854,11 @@ const DeckManager = {
     const sel = document.getElementById('deckLoadSelect');
     if (!sel) return;
     const decks = JSON.parse(localStorage.getItem('gab_decks') || '{}');
-    const entries = Object.values(decks).sort((a, b) => (b.timestamp || '').localeCompare(a.timestamp || ''));
+    const entries = Object.entries(decks).sort((a, b) => String(b[1].timestamp || '').localeCompare(String(a[1].timestamp || '')));
     sel.innerHTML = '<option value="">-- デッキを選択 --</option>' +
-      entries.map(d => {
+      entries.map(([key, d]) => {
         const prefix = d.bookmarkedId ? '\u2605 ' : '';
-        return `<option value="${escapeHtml(d.name)}">${prefix}${escapeHtml(d.name)}</option>`;
+        return `<option value="${escapeHtml(key)}">${prefix}${escapeHtml(d.name || key)}</option>`;
       }).join('');
   },
   loadFromSelect() {
