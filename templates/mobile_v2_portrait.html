@@ -872,6 +872,77 @@ select,input{font-family:inherit}
 <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 <script>
 // ================================================================
+// Supabase Configuration
+// ================================================================
+const SUPABASE_URL = 'https://hwavpmbdtxuffrlumlrf.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh3YXZwbWJkdHh1ZmZybHVtbHJmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE5NTQyOTIsImV4cCI6MjA4NzUzMDI5Mn0.Y9Q_zIhzSMdxjxI9pXpAzpOWyfbojkrJ-ueqiGaHNK0';
+const SB_HEADERS = {
+  'apikey': SUPABASE_ANON_KEY,
+  'Authorization': 'Bearer ' + SUPABASE_ANON_KEY,
+  'Content-Type': 'application/json'
+};
+async function sha256(text) {
+  const data = new TextEncoder().encode(text);
+  const hash = await crypto.subtle.digest('SHA-256', data);
+  return [...new Uint8Array(hash)].map(b => b.toString(16).padStart(2, '0')).join('');
+}
+
+// ================================================================
+// ShortUrl - Supabase短縮URL管理
+// ================================================================
+const ShortUrl = {
+  PREFIX: 's:',
+  isShort(hash) { return hash.startsWith(this.PREFIX); },
+  code(hash) { return hash.substring(this.PREFIX.length); },
+
+  async create(deckCode) {
+    try {
+      const codeHash = await sha256(deckCode);
+      const check = await fetch(SUPABASE_URL + '/rest/v1/short_links?code_hash=eq.' + codeHash + '&select=id', {
+        headers: SB_HEADERS
+      });
+      if (check.ok) {
+        const rows = await check.json();
+        if (rows.length > 0) return rows[0].id;
+      }
+      const id = codeHash.substring(0, 8);
+      const res = await fetch(SUPABASE_URL + '/rest/v1/short_links', {
+        method: 'POST',
+        headers: { ...SB_HEADERS, 'Prefer': 'return=representation' },
+        body: JSON.stringify({ id, deck_code: deckCode, code_hash: codeHash })
+      });
+      if (res.ok) return id;
+      if (res.status === 409) {
+        const id2 = codeHash.substring(4, 12);
+        const res2 = await fetch(SUPABASE_URL + '/rest/v1/short_links', {
+          method: 'POST',
+          headers: { ...SB_HEADERS, 'Prefer': 'return=representation' },
+          body: JSON.stringify({ id: id2, deck_code: deckCode, code_hash: codeHash })
+        });
+        if (res2.ok) return id2;
+      }
+      return null;
+    } catch { return null; }
+  },
+
+  async resolve(shortCode) {
+    try {
+      const ctrl = new AbortController();
+      const timer = setTimeout(() => ctrl.abort(), 5000);
+      const res = await fetch(SUPABASE_URL + '/rest/v1/short_links?id=eq.' + shortCode + '&select=deck_code', {
+        headers: SB_HEADERS,
+        signal: ctrl.signal
+      });
+      clearTimeout(timer);
+      if (!res.ok) return null;
+      const rows = await res.json();
+      if (rows.length === 0) return null;
+      return DeckManager.parseCode(rows[0].deck_code);
+    } catch { return null; }
+  }
+};
+
+// ================================================================
 // AppState - グローバル状態管理
 // ================================================================
 const AppState = {
@@ -1627,10 +1698,13 @@ const DeckManager = {
     if (hasCards) { location.hash = this.generateCode(); }
     else { history.replaceState(null, '', location.pathname); }
   },
-  copyCode() {
+  async copyCode() {
     const code = this.generateCode();
-    navigator.clipboard.writeText(location.origin + '/m#' + code).then(() => {
-      Toast.show('デッキURLをコピーしました', 'success');
+    const base = location.origin + '/v2';
+    const sc = await ShortUrl.create(code);
+    const url = sc ? base + '#s:' + sc : base + '#' + code;
+    navigator.clipboard.writeText(url).then(() => {
+      Toast.show('短縮URLをコピーしました', 'success');
     });
   },
   async importCode() {
@@ -1676,6 +1750,18 @@ const DeckManager = {
   async _autoLoad() {
     if (location.hash && location.hash.length > 1) {
       const raw = location.hash.substring(1);
+      // 短縮URL対応
+      if (ShortUrl.isShort(raw)) {
+        const numbers = await ShortUrl.resolve(ShortUrl.code(raw));
+        if (numbers && numbers.length >= 1) {
+          while (numbers.length < 10) numbers.push('');
+          await this._applyNumbers(numbers);
+          Toast.show('URLからデッキを復元しました', 'info');
+        } else {
+          Toast.show('短縮URLの読み込みに失敗しました', 'error');
+        }
+        return;
+      }
       const isCopy = raw.endsWith('&copy');
       const code = isCopy ? raw.slice(0, -5) : raw;
       const numbers = this.parseCode(code);
@@ -2794,7 +2880,10 @@ document.addEventListener('DOMContentLoaded', async () => {
   SearchPanel.init();
   UndoManager.snapshot();
 
-  const imageCacheReady = ImageCache.init().catch(e => console.warn('ImageCache init failed:', e));
+  let imageCacheInitDone = false;
+  const imageCacheReady = ImageCache.init()
+    .then(() => { imageCacheInitDone = true; })
+    .catch(e => { imageCacheInitDone = true; console.warn('ImageCache init failed:', e); });
   try {
     const [indexResult] = await Promise.all([
       CardService.fetchIndex(),
@@ -2829,12 +2918,30 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   await DeckManager._autoLoad();
   SearchPanel._populateSkillNames();
+
+  // ImageCacheがタイムアウトで未完了だった場合、完了後にUI再描画
+  if (!imageCacheInitDone) {
+    imageCacheReady.then(() => {
+      if (ImageCache._knownKeys && ImageCache._knownKeys.size > 0) {
+        UIRenderer.renderAll();
+        SearchPanel.applyFilters();
+      }
+    });
+  }
 });
 
 window.addEventListener('hashchange', async () => {
   if (location.hash && location.hash.length > 1) {
-    const code = location.hash.substring(1);
-    const numbers = DeckManager.parseCode(code);
+    const raw = location.hash.substring(1);
+    if (ShortUrl.isShort(raw)) {
+      const numbers = await ShortUrl.resolve(ShortUrl.code(raw));
+      if (numbers && numbers.length >= 1) {
+        while (numbers.length < 10) numbers.push('');
+        await DeckManager._applyNumbers(numbers);
+      }
+      return;
+    }
+    const numbers = DeckManager.parseCode(raw);
     if (numbers && numbers.length >= 1) {
       while (numbers.length < 10) numbers.push('');
       await DeckManager._applyNumbers(numbers);
