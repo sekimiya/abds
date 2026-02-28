@@ -370,7 +370,7 @@ select,input{font-family:inherit}
   position:fixed;bottom:0;left:0;right:0;height:36px;
   background:var(--bg2);border-top:2px solid var(--accent);border-radius:12px 12px 0 0;
   z-index:210;transition:height 0.3s ease;overflow:hidden;
-  display:flex;flex-direction:column;
+  display:none;flex-direction:column;
 }
 .filter-sheet.open{height:60vh}
 .filter-sheet-toggle{
@@ -2871,10 +2871,14 @@ function openCardPicker(slotIdx, type) {
   SearchPanel._updateFilterVisibility();
   SearchPanel.applyFilters();
   document.getElementById('pickerOverlay').classList.add('open');
-  document.getElementById('filterSheet').classList.add('open');
+  document.getElementById('filterSheet').style.display = 'flex';
+  document.getElementById('filterSheet').classList.remove('open');
+  const btn = document.getElementById('filterSheetToggle');
+  if (btn) btn.textContent = '▲ フィルター';
 }
 function closeCardPicker() {
   document.getElementById('filterSheet').classList.remove('open');
+  document.getElementById('filterSheet').style.display = 'none';
   document.getElementById('pickerOverlay').classList.remove('open');
   AppState.activeSlot = null;
   SearchPanel._lockedType = null;
