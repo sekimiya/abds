@@ -1098,14 +1098,15 @@ function renderDeckList(decks, cardData, tacticsMap) {
 
     html += `<div class="deck-entry${deckBgCls}" data-id="${deckId}">`;
 
-    // Active Links at top (with SQ/EB icons)
-    if (activeLinks.length > 0) {
+    // SQ/EB Links at top (with icons)
+    const sqEbLinks = activeLinks.filter(l => l.type === 'sq' || l.type === 'eb');
+    const normalLinks = activeLinks.filter(l => l.type === 'normal');
+    if (sqEbLinks.length > 0) {
       html += '<div class="deck-links">';
-      activeLinks.forEach(lk => {
+      sqEbLinks.forEach(lk => {
         const typeCls = `link-${lk.type}`;
-        const badgeLabel = lk.type === 'sq' ? 'SQ' : (lk.type === 'eb' ? 'EB' : '');
-        const badgeHtml = badgeLabel ? `<span class="link-badge">${badgeLabel}</span>` : '';
-        html += `<span class="link-chip ${typeCls}">${badgeHtml}<span class="link-name">${escapeHtml(lk.name)}</span></span>`;
+        const badgeLabel = lk.type === 'sq' ? 'SQ' : 'EB';
+        html += `<span class="link-chip ${typeCls}"><span class="link-badge">${badgeLabel}</span><span class="link-name">${escapeHtml(lk.name)}</span></span>`;
       });
       html += '</div>';
     }
@@ -1142,6 +1143,14 @@ function renderDeckList(decks, cardData, tacticsMap) {
         const tImg = t ? t.thumbnail_url : '';
         html += `<span class="deck-tactics-card">${tImg ? `<img src="${tImg}" class="tactics-thumb">` : ''}${escapeHtml(tName)}</span>`;
       }
+      html += '</div>';
+    }
+    if (normalLinks.length > 0) {
+      html += '<div class="deck-links">';
+      html += '<span style="color:#888;font-size:0.7rem">LINK:</span>';
+      normalLinks.forEach(lk => {
+        html += `<span class="link-chip link-normal"><span class="link-name">${escapeHtml(lk.name)}</span></span>`;
+      });
       html += '</div>';
     }
 
