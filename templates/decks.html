@@ -131,6 +131,8 @@ button{cursor:pointer;font-family:inherit}
 .btn-action.btn-open:hover{background:rgba(104,239,189,0.15)}
 .btn-action.btn-copy-deck{border-color:#ffe082;color:#ffe082;text-decoration:none}
 .btn-action.btn-copy-deck:hover{background:rgba(255,224,130,0.15)}
+.btn-action.btn-tweet{border-color:#1d9bf0;color:#1d9bf0;text-decoration:none}
+.btn-action.btn-tweet:hover{background:rgba(29,155,240,0.15)}
 .btn-action.copied{border-color:#68efbd;color:#68efbd}
 .btn-like{
   background:transparent;border:1px solid #555;border-radius:4px;
@@ -729,6 +731,31 @@ function getDeckV2Url(deck) {
   return location.origin + '/v2#' + generateDeckCode(deck);
 }
 
+function copyDeckToLocal(deck, btn) {
+  const name = deck.deck_name || 'コピーデッキ';
+  const cards = Array.isArray(deck.cards) ? deck.cards.slice(0, 10) : [];
+  while (cards.length < 10) cards.push('');
+  const entry = {
+    cards,
+    tacticsMain: deck.tactics_main || null,
+    tacticsSub: deck.tactics_sub || null,
+    timestamp: Date.now()
+  };
+  const decks = JSON.parse(localStorage.getItem('gab_decks') || '{}');
+  let saveName = name;
+  if (decks[saveName]) saveName = name + '_copy';
+  let i = 2;
+  while (decks[saveName]) { saveName = name + '_copy' + i; i++; }
+  decks[saveName] = entry;
+  localStorage.setItem('gab_decks', JSON.stringify(decks));
+  const orig = btn.textContent;
+  btn.textContent = 'コピー完了!';
+  btn.style.borderColor = '#68efbd';
+  btn.style.color = '#68efbd';
+  showToast(`「${saveName}」をデッキ一覧に保存しました`);
+  setTimeout(() => { btn.textContent = orig; btn.style.borderColor = ''; btn.style.color = ''; }, 2000);
+}
+
 async function copyShareUrl(deck, btn) {
   const url = getDeckV2Url(deck);
   try {
@@ -1034,9 +1061,13 @@ function renderDeckList(decks, cardData, tacticsMap) {
     html += `<div class="deck-header">`;
     html += `<a class="deck-title" href="${escapeHtml(getDeckV2Url(deck))}">${name}</a>`;
     html += `<div class="deck-actions">`;
-    html += `<a class="btn-action btn-open" href="${escapeHtml(getDeckV2Url(deck))}">表示</a>`;
-    html += `<a class="btn-action btn-copy-deck" href="${escapeHtml(getDeckV2Url(deck) + '&copy')}">デッキコピー</a>`;
+    html += `<a class="btn-action btn-open" href="${escapeHtml(getDeckV2Url(deck))}">シミュレータで表示</a>`;
+    html += `<button class="btn-action btn-copy-deck" data-idx="${idx}">デッキコピー</button>`;
     html += `<button class="btn-action btn-share" data-idx="${idx}">共有URL</button>`;
+    const tweetUrl = getDeckV2Url(deck);
+    const tweetText = `${name} のデッキレシピ #アーセナルベース #ABDS`;
+    const tweetHref = `https://x.com/intent/tweet?text=${encodeURIComponent(tweetText)}&url=${encodeURIComponent(tweetUrl)}`;
+    html += `<a class="btn-action btn-tweet" href="${escapeHtml(tweetHref)}" target="_blank" rel="noopener">Xに投稿</a>`;
     if (deckId) {
       const likes = deck.likes || 0;
       const liked = isLiked(deckId);
@@ -1128,6 +1159,15 @@ function renderDeckList(decks, cardData, tacticsMap) {
       e.stopPropagation();
       const deck = sorted[parseInt(el.dataset.idx)];
       copyShareUrl(deck, el);
+    });
+  });
+
+  // Copy deck to local storage
+  document.querySelectorAll('.btn-copy-deck').forEach(el => {
+    el.addEventListener('click', e => {
+      e.stopPropagation();
+      const deck = sorted[parseInt(el.dataset.idx)];
+      copyDeckToLocal(deck, el);
     });
   });
 
