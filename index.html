@@ -1122,6 +1122,9 @@ select,input{font-family:inherit}
         <button class="header-btn" onclick="DeckManager.showLoadModal()">読込</button>
         <button class="header-btn" onclick="DeckManager.copyCode()" title="コード共有">共有</button>
       </div>
+      <div class="header-menu-row">
+        <button class="header-btn" onclick="DeckManager.tweetDeck()" style="border-color:#1d9bf0;color:#1d9bf0;flex:1">Xに投稿</button>
+      </div>
       <a class="header-btn primary" href="./decks.html" style="text-decoration:none;display:block;text-align:center;font-size:1.05rem;padding:10px 0;width:100%;box-sizing:border-box">デッキ投稿サイトにアクセス</a>
       <div class="header-menu-row">
         <button class="header-btn" id="undoBtn" onclick="UndoManager.undo()" title="Ctrl+Z" disabled>&#8592; 戻す</button>
@@ -2138,6 +2141,15 @@ const DeckManager = {
     navigator.clipboard.writeText(base + '#' + code).then(() => {
       Toast.show('デッキURLをコピーしました', 'success');
     });
+  },
+  tweetDeck() {
+    if (!AppState.deck.some(n => n)) { Toast.show('デッキにカードがありません', 'error'); return; }
+    closeHeaderMenu();
+    const code = this.generateCode();
+    const url = location.origin + location.pathname.replace(/[^/]*$/, '') + 'index.html#' + code;
+    const name = document.getElementById('deckNameInput')?.value.trim() || 'マイデッキ';
+    const text = name + ' のデッキレシピ #アーセナルベース #ABDS';
+    window.open('https://x.com/intent/tweet?text=' + encodeURIComponent(text) + '&url=' + encodeURIComponent(url), '_blank');
   },
 
   async importCode() {
