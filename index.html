@@ -2283,6 +2283,7 @@ const DeckManager = {
   },
 
   save() {
+    if (AppState.deck.filter(n => n).length < 10) { Toast.show('カードを10枚揃えてください', 'error'); return; }
     const name = prompt('デッキ名を入力してください:', AppState._lastDeckName || '');
     if (!name || !name.trim()) { Toast.show('デッキ名を入力してください', 'error'); return; }
     const trimmed = name.trim();
@@ -2440,7 +2441,7 @@ const DeckManager = {
   },
 
   postToServer() {
-    if (!AppState.deck.some(n => n)) { Toast.show('デッキにカードがありません', 'error'); return; }
+    if (AppState.deck.filter(n => n).length < 10) { Toast.show('カードを10枚揃えてください', 'error'); return; }
     closeHeaderMenu();
     document.getElementById('postDeckName').value = '';
     document.getElementById('postAuthor').value = localStorage.getItem('gab_author_name') || '';
