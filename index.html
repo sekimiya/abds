@@ -4153,13 +4153,13 @@ const SearchPanel = {
     if (this._lockedType) {
       cards = cards.filter(c => c.type === this._lockedType);
     }
-    // Category
+    // Category（カテゴリ未設定カードはフィルタをパス）
     if (this._currentCategory.size > 0) {
-      cards = cards.filter(c => this._currentCategory.has(c.category));
+      cards = cards.filter(c => !c.category || this._currentCategory.has(c.category));
     }
-    // Rarity (multi-select)
+    // Rarity (multi-select)（レアリティ未設定カードはフィルタをパス）
     if (this._currentRarity.size > 0) {
-      cards = cards.filter(c => this._currentRarity.has(c.rarity));
+      cards = cards.filter(c => !c.rarity || this._currentRarity.has(c.rarity));
     }
     // Series (multi-select) — 「すべて」ONの場合はスキップ
     if (this._selectedSeries.size > 0 && !document.getElementById('filterAllSeries').checked) {
@@ -4174,7 +4174,7 @@ const SearchPanel = {
     const costMin = parseInt(document.getElementById('filterCostMin').value);
     const costMax = parseInt(document.getElementById('filterCostMax').value);
     if (costMin > 0 || costMax < 13) {
-      cards = cards.filter(c => c.cost !== null && c.cost >= costMin && c.cost <= costMax);
+      cards = cards.filter(c => c.cost === null || (c.cost >= costMin && c.cost <= costMax));
     }
     // Stat filters (sliders)
     const mobMin = parseInt(document.getElementById('filterMobility').value);
