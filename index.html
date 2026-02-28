@@ -249,6 +249,7 @@ select,input{font-family:inherit}
 .header-menu-label{color:#888;font-size:0.75rem}
 /* --- Right menu: cache section (warning red theme) --- */
 .cache-menu-section{
+  margin-top:auto;
   background:linear-gradient(135deg,rgba(255,60,60,0.08),rgba(255,100,60,0.04));
   border:1px solid rgba(255,80,80,0.3);border-radius:10px;
   padding:0.7rem 0.8rem;display:flex;flex-direction:column;gap:0.5rem;
@@ -1145,7 +1146,7 @@ select,input{font-family:inherit}
         <div class="cache-menu-count" id="cacheCount">キャッシュ: 0枚</div>
         <button class="cache-menu-btn" onclick="ImageCache.openModal()">キャッシュ管理</button>
       </div>
-      <div class="header-menu-row" style="margin-top:auto;border-top:1px solid #333;padding-top:0.5rem">
+      <div class="header-menu-row" style="border-top:1px solid #333;padding-top:0.5rem">
         <a href="./mobile.html?force" class="header-btn" style="flex:1;text-align:center;text-decoration:none;border-color:#68efbd;color:#68efbd" onclick="this.href='./mobile.html?force'+location.hash">モバイル版</a>
       </div>
     </div>
