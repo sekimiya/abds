@@ -562,8 +562,9 @@ select,input{font-family:inherit}
   <span class="hdr-class b" id="badgeBouei">防0</span>
   <span class="hdr-sep"></span>
   <span class="sq-badge-h" id="sqStatus">SQ</span>
+  <span class="hdr-active-links" id="hdrSqLinks"></span>
   <span class="eb-badge-h" id="ebStatus">EB</span>
-  <span class="hdr-active-links" id="hdrActiveLinks"></span>
+  <span class="hdr-active-links" id="hdrEbLinks"></span>
   <span class="hdr-spacer"></span>
   <button class="hamburger-btn" id="hamburgerBtn" onclick="toggleMenu()">&#9776;</button>
 </header>
@@ -2440,16 +2441,16 @@ const UIRenderer = {
         return `<div class="link-chip${isActive ? ' active' : ''}"><span class="link-chip-name">${escapeHtml(name)}</span><span class="link-chip-count">${info.count}/${info.required}</span></div>`;
       }).join('');
     }
-    // Header: show active SQ/EB link names
-    const hdrLinks = document.getElementById('hdrActiveLinks');
-    if (hdrLinks) {
-      const activeSpecial = special.filter(([, info]) => info.count >= info.required);
-      if (activeSpecial.length === 0) { hdrLinks.innerHTML = ''; } else {
-        hdrLinks.innerHTML = activeSpecial.map(([name, info]) => {
-          const type = info.is_sq_link ? 'sq' : 'eb';
-          return `<span class="hdr-link-name ${type}">${escapeHtml(name)}</span>`;
-        }).join('');
-      }
+    // Header: show active SQ/EB link names next to their badges
+    const hdrSq = document.getElementById('hdrSqLinks');
+    const hdrEb = document.getElementById('hdrEbLinks');
+    if (hdrSq) {
+      const activeSq = special.filter(([, info]) => info.is_sq_link && info.count >= info.required);
+      hdrSq.innerHTML = activeSq.map(([name]) => `<span class="hdr-link-name sq">${escapeHtml(name)}</span>`).join('');
+    }
+    if (hdrEb) {
+      const activeEb = special.filter(([, info]) => info.is_eb_link && info.count >= info.required);
+      hdrEb.innerHTML = activeEb.map(([name]) => `<span class="hdr-link-name eb">${escapeHtml(name)}</span>`).join('');
     }
   }
 };
