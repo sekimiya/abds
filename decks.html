@@ -648,16 +648,33 @@ function getBookmarkSet() {
 function isBookmarked(deckId) { return getBookmarkSet().has(deckId); }
 function toggleBookmark(deckId, btn) {
   const s = getBookmarkSet();
+  const gabDecks = JSON.parse(localStorage.getItem('gab_decks') || '{}');
   if (s.has(deckId)) {
     s.delete(deckId);
     btn.classList.remove('bookmarked');
     btn.querySelector('.bm-icon').innerHTML = '&#9734;';
     showToast('ブックマークを解除しました');
+    for (const key of Object.keys(gabDecks)) {
+      if (gabDecks[key].bookmarkedId === deckId) { delete gabDecks[key]; break; }
+    }
+    localStorage.setItem('gab_decks', JSON.stringify(gabDecks));
   } else {
     s.add(deckId);
     btn.classList.add('bookmarked');
     btn.querySelector('.bm-icon').innerHTML = '&#9733;';
     showToast('ブックマークしました');
+    const deck = _cachedDecks ? _cachedDecks.find(d => d.id === deckId) : null;
+    if (deck) {
+      const cards = (deck.cards || []).map(c => typeof c === 'string' ? c : (c.number || ''));
+      while (cards.length < 10) cards.push('');
+      let saveName = deck.deck_name || 'ブックマーク';
+      if (gabDecks[saveName] && gabDecks[saveName].bookmarkedId !== deckId) {
+        let i = 2; const base = saveName;
+        while (gabDecks[saveName]) { saveName = base + ' (' + i + ')'; i++; }
+      }
+      gabDecks[saveName] = { name: saveName, cards, tacticsMain: deck.tactics_main || null, tacticsSub: deck.tactics_sub || null, timestamp: new Date().toISOString(), bookmarkedId: deckId };
+      localStorage.setItem('gab_decks', JSON.stringify(gabDecks));
+    }
   }
   localStorage.setItem('gab_bookmarked_decks', JSON.stringify([...s]));
   updateBadgeCounts();
