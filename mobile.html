@@ -123,6 +123,10 @@ select,input{font-family:inherit}
 .link-chip-name{font-weight:bold}
 .link-chip-count{font-size:0.6rem;padding:0 4px;border-radius:6px;background:#333;color:#aaa}
 .link-chip.active .link-chip-count{background:rgba(104,239,189,0.2);color:var(--accent)}
+.link-chip.sq{border-color:rgba(255,105,180,0.3);color:#ff8cc8}
+.link-chip.sq .link-chip-count{color:#ff8cc8}
+.link-chip.eb{border-color:rgba(255,152,0,0.3);color:#ffb74d}
+.link-chip.eb .link-chip-count{color:#ffb74d}
 
 /* ===== OVERVIEW STRIP (~130px) ===== */
 .overview-strip{
@@ -2385,31 +2389,28 @@ const UIRenderer = {
       });
     }
     const entries = Object.entries(linkMap).sort((a, b) => { const aA = a[1].count >= a[1].required ? 1 : 0; const bA = b[1].count >= b[1].required ? 1 : 0; if (bA !== aA) return bA - aA; return a[0].localeCompare(b[0]); });
-    const special = entries.filter(([, info]) => info.is_eb_link || info.is_sq_link);
+    const activeSpecial = entries.filter(([, info]) => (info.is_eb_link || info.is_sq_link) && info.count >= info.required);
+    const inactiveSpecial = entries.filter(([, info]) => (info.is_eb_link || info.is_sq_link) && info.count < info.required);
     const normal = entries.filter(([, info]) => !info.is_eb_link && !info.is_sq_link);
-    // Render normal link bar
-    if (normal.length === 0) { bar.innerHTML = ''; } else {
-      bar.innerHTML = normal.map(([name, info]) => {
+    // Render normal link bar + inactive SQ/EB
+    const allNormal = [...normal, ...inactiveSpecial];
+    if (allNormal.length === 0) { bar.innerHTML = ''; } else {
+      bar.innerHTML = allNormal.map(([name, info]) => {
         const isActive = info.count >= info.required;
-        return `<div class="link-chip${isActive ? ' active' : ''}"><span class="link-chip-name">${escapeHtml(name)}</span><span class="link-chip-count">${info.count}/${info.required}</span></div>`;
+        const tag = info.is_sq_link ? ' sq' : info.is_eb_link ? ' eb' : '';
+        return `<div class="link-chip${isActive ? ' active' : ''}${tag}"><span class="link-chip-name">${escapeHtml(name)}</span><span class="link-chip-count">${info.count}/${info.required}</span></div>`;
       }).join('');
     }
-    // Header: show all SQ/EB link names (active = bold, inactive = dim)
+    // Header: show only ACTIVE SQ/EB link names
     const hdrSq = document.getElementById('hdrSqLinks');
     const hdrEb = document.getElementById('hdrEbLinks');
     if (hdrSq) {
-      const sqLinks = special.filter(([, info]) => info.is_sq_link);
-      hdrSq.innerHTML = sqLinks.map(([name, info]) => {
-        const active = info.count >= info.required;
-        return `<span class="hdr-link-name sq${active ? '' : ' inactive'}">${escapeHtml(name)}</span>`;
-      }).join('');
+      const sqLinks = activeSpecial.filter(([, info]) => info.is_sq_link);
+      hdrSq.innerHTML = sqLinks.map(([name]) => `<span class="hdr-link-name sq">${escapeHtml(name)}</span>`).join('');
     }
     if (hdrEb) {
-      const ebLinks = special.filter(([, info]) => info.is_eb_link);
-      hdrEb.innerHTML = ebLinks.map(([name, info]) => {
-        const active = info.count >= info.required;
-        return `<span class="hdr-link-name eb${active ? '' : ' inactive'}">${escapeHtml(name)}</span>`;
-      }).join('');
+      const ebLinks = activeSpecial.filter(([, info]) => info.is_eb_link);
+      hdrEb.innerHTML = ebLinks.map(([name]) => `<span class="hdr-link-name eb">${escapeHtml(name)}</span>`).join('');
     }
   }
 };
