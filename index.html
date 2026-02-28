@@ -4176,15 +4176,17 @@ const SearchPanel = {
     if (costMin > 0 || costMax < 13) {
       cards = cards.filter(c => c.cost === null || (c.cost >= costMin && c.cost <= costMax));
     }
+    // 詳細データ未設定カード判定（プロモーション等: cost===nullなら詳細フィルタをパス）
+    const _noDetail = c => c.cost === null;
     // Stat filters (sliders)
     const mobMin = parseInt(document.getElementById('filterMobility').value);
     const rangedMin = parseInt(document.getElementById('filterRanged').value);
     const meleeMin = parseInt(document.getElementById('filterMelee').value);
     const hpMin = parseInt(document.getElementById('filterHp').value);
-    if (mobMin > 0) cards = cards.filter(c => c.mobility >= mobMin);
-    if (rangedMin > 0) cards = cards.filter(c => c.ranged >= rangedMin);
-    if (meleeMin > 0) cards = cards.filter(c => c.melee >= meleeMin);
-    if (hpMin > 0) cards = cards.filter(c => c.hp >= hpMin);
+    if (mobMin > 0) cards = cards.filter(c => _noDetail(c) || c.mobility >= mobMin);
+    if (rangedMin > 0) cards = cards.filter(c => _noDetail(c) || c.ranged >= rangedMin);
+    if (meleeMin > 0) cards = cards.filter(c => _noDetail(c) || c.melee >= meleeMin);
+    if (hpMin > 0) cards = cards.filter(c => _noDetail(c) || c.hp >= hpMin);
     // Terrain filter
     const terrainType = document.getElementById('filterTerrainType').value;
     const terrainRank = document.getElementById('filterTerrainRank').value;
@@ -4192,6 +4194,7 @@ const SearchPanel = {
       const rankOrder = ['S','A','B','C','D'];
       const minIdx = rankOrder.indexOf(terrainRank);
       cards = cards.filter(c => {
+        if (_noDetail(c)) return true;
         const r = c.terrain?.[terrainType];
         if (!r) return false;
         return rankOrder.indexOf(r) <= minIdx;
@@ -4204,7 +4207,7 @@ const SearchPanel = {
     // EB関連カード絞込（トグル複数選択: OR）
     const ebCat = this._t.ebCat;
     if (ebCat.size > 0) {
-      cards = cards.filter(c =>
+      cards = cards.filter(c => _noDetail(c) ||
         (ebCat.has('eb_sp') && c.has_eb) ||
         (ebCat.has('eb_skill') && c.has_eb_skill) ||
         (ebCat.has('eb_link') && c.has_eb_link)
@@ -4214,6 +4217,7 @@ const SearchPanel = {
     const ebLv = this._t.ebLv;
     if (ebLv.size > 0) {
       cards = cards.filter(c => {
+        if (_noDetail(c)) return true;
         const lvls = [...ebLv].map(Number);
         return lvls.includes(c.eb_level) || lvls.includes(c.eb_trigger_level);
       });
@@ -4221,12 +4225,12 @@ const SearchPanel = {
     // EB発動条件（トグル複数選択: OR）
     const ebCond = this._t.ebCond;
     if (ebCond.size > 0) {
-      cards = cards.filter(c => ebCond.has(c.eb_trigger_cond));
+      cards = cards.filter(c => _noDetail(c) || ebCond.has(c.eb_trigger_cond));
     }
     // SQ関連カード絞込（トグル複数選択: OR）
     const sqCat = this._t.sqCat;
     if (sqCat.size > 0) {
-      cards = cards.filter(c =>
+      cards = cards.filter(c => _noDetail(c) ||
         (sqCat.has('sqsp') && c.has_sqsp) ||
         (sqCat.has('sq_skill') && c.has_sq_skill) ||
         (sqCat.has('sq_link') && c.has_sq_link) ||
@@ -4236,49 +4240,49 @@ const SearchPanel = {
     // SQゲージ増加率（トグル複数選択: OR）
     const sqGauge = this._t.sqGauge;
     if (sqGauge.size > 0) {
-      cards = cards.filter(c => sqGauge.has(c.sq_gauge_rate));
+      cards = cards.filter(c => _noDetail(c) || sqGauge.has(c.sq_gauge_rate));
     }
     // SQ発動条件（トグル複数選択: OR）
     const sqTrig = this._t.sqTrig;
     if (sqTrig.size > 0) {
-      cards = cards.filter(c => sqTrig.has(c.sq_trigger));
+      cards = cards.filter(c => _noDetail(c) || sqTrig.has(c.sq_trigger));
     }
     // SQスキル効果（トグル複数選択: OR）
     const sqEff = this._t.sqEff;
     if (sqEff.size > 0) {
-      cards = cards.filter(c => c.sq_skill_effect_tags && c.sq_skill_effect_tags.some(t => sqEff.has(t)));
+      cards = cards.filter(c => _noDetail(c) || (c.sq_skill_effect_tags && c.sq_skill_effect_tags.some(t => sqEff.has(t))));
     }
     // SQSP効果（トグル複数選択: OR）
     const sqspEff = this._t.sqspEff;
     if (sqspEff.size > 0) {
-      cards = cards.filter(c => c.sqsp_effect_tags && c.sqsp_effect_tags.some(t => sqspEff.has(t)));
+      cards = cards.filter(c => _noDetail(c) || (c.sqsp_effect_tags && c.sqsp_effect_tags.some(t => sqspEff.has(t))));
     }
     // AB関連カード絞込
     const abCat = this._t.abCat;
     if (abCat.size > 0) {
-      cards = cards.filter(c =>
+      cards = cards.filter(c => _noDetail(c) ||
         (abCat.has('ab_link') && c.has_ab_link)
       );
     }
     // EBSP効果（トグル複数選択: OR）
     const ebspEff = this._t.ebspEff;
     if (ebspEff.size > 0) {
-      cards = cards.filter(c => c.ebsp_effect_tags && c.ebsp_effect_tags.some(t => ebspEff.has(t)));
+      cards = cards.filter(c => _noDetail(c) || (c.ebsp_effect_tags && c.ebsp_effect_tags.some(t => ebspEff.has(t))));
     }
     // SP効果（トグル複数選択: OR）
     const spEff = this._t.spEff;
     if (spEff.size > 0) {
-      cards = cards.filter(c => c.sp_effect_tags && c.sp_effect_tags.some(t => spEff.has(t)));
+      cards = cards.filter(c => _noDetail(c) || (c.sp_effect_tags && c.sp_effect_tags.some(t => spEff.has(t))));
     }
     // PLスキル名 filter
     const skillName = document.getElementById('filterSkillName').value;
     if (skillName) {
-      cards = cards.filter(c => c.skill_name === skillName);
+      cards = cards.filter(c => _noDetail(c) || c.skill_name === skillName);
     }
     // スキル効果（トグル複数選択: OR）
     const skEff = this._t.skEff;
     if (skEff.size > 0) {
-      cards = cards.filter(c => c.skill_effect_tags && c.skill_effect_tags.some(t => skEff.has(t)));
+      cards = cards.filter(c => _noDetail(c) || (c.skill_effect_tags && c.skill_effect_tags.some(t => skEff.has(t))));
     }
     // Name/number search
     const q = document.getElementById('searchInput').value.trim().toLowerCase();
