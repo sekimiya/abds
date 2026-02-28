@@ -98,7 +98,34 @@ select,input{font-family:inherit}
 .terrain-dropdown:focus{outline:none;border-color:var(--accent)}
 .terrain-dropdown option{background:#1a1a1a;color:#ccc}
 
-/* ===== LINK BAR (28px) ===== */
+/* ===== SPECIAL LINK BAR (SQ/EB, 最上段) ===== */
+.special-link-bar{
+  display:flex;align-items:center;height:28px;flex-shrink:0;
+  background:#111;border-bottom:1px solid #2a2a2a;padding:0 6px;gap:4px;
+  overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;
+}
+.special-link-bar:empty{display:none}
+.sp-link-chip{
+  display:inline-flex;align-items:center;gap:4px;
+  padding:2px 8px;border-radius:10px;font-size:0.65rem;
+  white-space:nowrap;flex-shrink:0;
+}
+.sp-link-badge{
+  font-size:0.55rem;font-weight:bold;padding:1px 5px;border-radius:3px;
+  color:#fff;letter-spacing:0.3px;
+}
+.sp-link-chip.sq .sp-link-badge{background:linear-gradient(135deg,#ff69b4,#e91e8c)}
+.sp-link-chip.eb .sp-link-badge{background:linear-gradient(135deg,#ff9800,#e65100)}
+.sp-link-chip.sq{background:#2a1a24;border:1px solid #553050;color:#ff8cc8}
+.sp-link-chip.sq.active{background:linear-gradient(135deg,#3a1a2a,#2a1020);border-color:#ff69b4;color:#ff69b4;box-shadow:0 0 6px rgba(255,105,180,0.3)}
+.sp-link-chip.eb{background:#2a2218;border:1px solid #554420;color:#997744}
+.sp-link-chip.eb.active{background:linear-gradient(135deg,#3a2a0a,#2a1f00);border-color:#ffb74d;color:#ffb74d;box-shadow:0 0 6px rgba(255,152,0,0.3)}
+.sp-link-name{font-weight:bold}
+.sp-link-count{font-size:0.6rem;padding:0 4px;border-radius:6px;background:#333;color:#aaa}
+.sp-link-chip.sq.active .sp-link-count{background:rgba(255,105,180,0.15);color:#ff69b4}
+.sp-link-chip.eb.active .sp-link-count{background:rgba(255,152,0,0.15);color:#ffb74d}
+
+/* ===== LINK BAR (通常リンク) ===== */
 .link-bar{
   display:flex;align-items:center;height:28px;flex-shrink:0;
   background:#111;border-bottom:1px solid #2a2a2a;padding:0 6px;gap:4px;
@@ -112,12 +139,9 @@ select,input{font-family:inherit}
   white-space:nowrap;flex-shrink:0;
 }
 .link-chip.active{background:linear-gradient(135deg,#1e2924,#1e2924);border-color:var(--accent);color:var(--accent)}
-.link-chip.eb-link{border-color:#554420;color:#997744}
-.link-chip.eb-link.active{background:linear-gradient(135deg,#3a2a0a,#2a1f00);border-color:#ffb74d;color:#ffb74d}
 .link-chip-name{font-weight:bold}
 .link-chip-count{font-size:0.6rem;padding:0 4px;border-radius:6px;background:#333;color:#aaa}
 .link-chip.active .link-chip-count{background:rgba(104,239,189,0.2);color:var(--accent)}
-.link-chip.eb-link.active .link-chip-count{background:rgba(255,152,0,0.15);color:#ffb74d}
 
 /* ===== OVERVIEW STRIP (~130px) ===== */
 .overview-strip{
@@ -534,7 +558,10 @@ select,input{font-family:inherit}
   <button class="hamburger-btn" id="hamburgerBtn" onclick="toggleMenu()">&#9776;</button>
 </header>
 
-<!-- LINK BAR (最上段) -->
+<!-- SPECIAL LINK BAR (SQ/EB, 最上段) -->
+<div class="special-link-bar" id="specialLinkBar"></div>
+
+<!-- LINK BAR (通常リンク) -->
 <div class="link-bar" id="linkBar"></div>
 
 <!-- TACTICS & TERRAIN ROW -->
@@ -999,6 +1026,7 @@ const AppState = {
   isLoading: false,
   seriesList: [],
   linkIndex: {},
+  _sqLinkNames: new Set(),
   tacticsMain: null,
   tacticsSub: null,
   tacticsCards: { main: [], sub: [] },
@@ -2365,6 +2393,7 @@ const UIRenderer = {
 
   _updateLinkBar() {
     const bar = document.getElementById('linkBar');
+    const spBar = document.getElementById('specialLinkBar');
     if (!bar) return;
     const linkMap = {};
     for (let i = 0; i < 10; i++) {
@@ -2373,18 +2402,34 @@ const UIRenderer = {
       if (!Array.isArray(links)) continue;
       links.forEach(link => {
         if (!link.name) return;
-        if (!linkMap[link.name]) { const cm = (link.condition||'').match(/(\d+)枚以上/); linkMap[link.name] = { effect: link.effect || '', required: cm ? parseInt(cm[1]) : 2, count: 0, is_eb_link: false }; }
+        if (!linkMap[link.name]) { const cm = (link.condition||'').match(/(\d+)枚以上/); linkMap[link.name] = { effect: link.effect || '', required: cm ? parseInt(cm[1]) : 2, count: 0, is_eb_link: false, is_sq_link: false }; }
         if (link.is_eb_link) linkMap[link.name].is_eb_link = true;
+        if (AppState._sqLinkNames.has(link.name)) linkMap[link.name].is_sq_link = true;
         linkMap[link.name].count++;
       });
     }
     const entries = Object.entries(linkMap).sort((a, b) => { const aA = a[1].count >= a[1].required ? 1 : 0; const bA = b[1].count >= b[1].required ? 1 : 0; if (bA !== aA) return bA - aA; return a[0].localeCompare(b[0]); });
-    if (entries.length === 0) { bar.innerHTML = ''; return; }
-    bar.innerHTML = entries.map(([name, info]) => {
-      const isActive = info.count >= info.required;
-      const ebCls = info.is_eb_link ? ' eb-link' : '';
-      return `<div class="link-chip${isActive ? ' active' : ''}${ebCls}"><span class="link-chip-name">${escapeHtml(name)}</span><span class="link-chip-count">${info.count}/${info.required}</span></div>`;
-    }).join('');
+    // Split into special (SQ/EB) and normal
+    const special = entries.filter(([, info]) => info.is_eb_link || info.is_sq_link);
+    const normal = entries.filter(([, info]) => !info.is_eb_link && !info.is_sq_link);
+    // Render special link bar
+    if (spBar) {
+      if (special.length === 0) { spBar.innerHTML = ''; } else {
+        spBar.innerHTML = special.map(([name, info]) => {
+          const isActive = info.count >= info.required;
+          const type = info.is_sq_link ? 'sq' : 'eb';
+          const badge = type === 'sq' ? 'SQ' : 'EB';
+          return `<div class="sp-link-chip ${type}${isActive ? ' active' : ''}"><span class="sp-link-badge">${badge}</span><span class="sp-link-name">${escapeHtml(name)}</span><span class="sp-link-count">${info.count}/${info.required}</span></div>`;
+        }).join('');
+      }
+    }
+    // Render normal link bar
+    if (normal.length === 0) { bar.innerHTML = ''; } else {
+      bar.innerHTML = normal.map(([name, info]) => {
+        const isActive = info.count >= info.required;
+        return `<div class="link-chip${isActive ? ' active' : ''}"><span class="link-chip-name">${escapeHtml(name)}</span><span class="link-chip-count">${info.count}/${info.required}</span></div>`;
+      }).join('');
+    }
   }
 };
 </script>
@@ -2829,6 +2874,18 @@ document.addEventListener('DOMContentLoaded', async () => {
   } catch (e) {
     console.error('リンク索引の取得に失敗:', e);
   }
+
+  // Build SQ link name set from card_index has_sq_link + card_details link_abilities
+  try {
+    const sqSet = new Set();
+    AppState.cardIndex.forEach(c => {
+      if (!c.has_sq_link) return;
+      const d = AppState.cardDetails[c.number];
+      const links = d && d.ocr_data ? (d.ocr_data.link_abilities || d.ocr_data.link_ability || []) : [];
+      links.forEach(l => { if (l.name) sqSet.add(l.name); });
+    });
+    AppState._sqLinkNames = sqSet;
+  } catch (e) { console.warn('SQ link set build failed:', e); }
 
   await DeckManager._autoLoad();
   SearchPanel._populateSkillNames();
