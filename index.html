@@ -2304,7 +2304,11 @@ const DeckManager = {
         if (isRec) {
           // REC mode: auto-capture then return to mobile
           history.replaceState(null, '', location.pathname + '#' + code);
-          setTimeout(() => captureFullPage(), 500);
+          const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+          setTimeout(async () => {
+            await captureFullPage();
+            if (isMobile) location.replace('./mobile.html?force#' + code);
+          }, 500);
           return;
         } else if (isCopy) {
           AppState._lastDeckName = '';
@@ -5002,6 +5006,13 @@ async function captureFullPage() {
       orig.headerBtns.push({ padding: btn.style.padding, fontSize: btn.style.fontSize });
     });
 
+    // サイドバー（検索パネル）を撮影中は非表示にする
+    const sidebar = document.getElementById('sidebar');
+    const sidebarOverlay = document.getElementById('sidebarOverlay');
+    const sidebarWasOpen = sidebar && sidebar.classList.contains('open');
+    if (sidebar) sidebar.style.display = 'none';
+    if (sidebarOverlay) sidebarOverlay.style.display = 'none';
+
     // Force desktop-width layout (mobile でもデスクトップ版をキャプチャ)
     // body.style.width だけではメディアクエリのビューポート判定は変わらないため、
     // メディアクエリで変更される全プロパティをインラインで上書きする
@@ -5090,6 +5101,10 @@ async function captureFullPage() {
       col.style.height = orig.columns[i].height;
       col.style.minWidth = orig.columns[i].minWidth;
     });
+
+    // サイドバーの表示を復元
+    if (sidebar) sidebar.style.display = '';
+    if (sidebarOverlay) sidebarOverlay.style.display = '';
 
     // --- Step 6: Restore original image sources ---
     for (const [img, src] of origSrcs) {
