@@ -517,7 +517,6 @@ select,input{font-family:inherit}
   <span class="sq-badge-h" id="sqStatus">SQ</span>
   <span class="eb-badge-h" id="ebStatus">EB</span>
   <span class="hdr-spacer"></span>
-  <button class="rec-btn" id="recBtn" onclick="captureFullPage()"><span id="recBtnLabel">REC</span></button>
   <button class="hamburger-btn" id="hamburgerBtn" onclick="toggleMenu()">&#9776;</button>
 </header>
 
@@ -875,6 +874,9 @@ select,input{font-family:inherit}
   <div class="menu-row">
     <button class="menu-btn" id="undoBtn" onclick="UndoManager.undo()" disabled>← 戻す</button>
     <button class="menu-btn" id="redoBtn" onclick="UndoManager.redo()" disabled>やり直す →</button>
+  </div>
+  <div class="menu-row">
+    <button class="rec-btn" id="recBtn" onclick="captureFullPage()" style="width:100%"><span id="recBtnLabel">REC</span></button>
   </div>
   <div class="menu-divider"></div>
   <span class="menu-label">地形設定</span>
