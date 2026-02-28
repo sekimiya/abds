@@ -849,6 +849,12 @@ select,input{font-family:inherit}
     <button class="menu-btn" id="undoBtn" onclick="UndoManager.undo()" disabled>← 戻す</button>
     <button class="menu-btn" id="redoBtn" onclick="UndoManager.redo()" disabled>やり直す →</button>
   </div>
+  <div class="menu-row">
+    <button class="rec-btn" id="recBtn" onclick="captureFullPage()" style="width:100%"><span id="recBtnLabel">REC</span></button>
+  </div>
+  <div class="menu-row">
+    <button class="menu-btn" onclick="DeckManager.clearAll();toggleMenu()" style="width:100%;border-color:#ff6b6b;color:#ff6b6b">セットカードをすべてクリア</button>
+  </div>
   <div class="menu-divider"></div>
   <span class="menu-label">地形設定</span>
   <div class="menu-row">
@@ -1547,6 +1553,19 @@ const DeckManager = {
     navigator.clipboard.writeText(location.origin + '/m#' + code).then(() => {
       Toast.show('デッキURLをコピーしました', 'success');
     });
+  },
+  async tweetDeck() {
+    if (!AppState.deck.some(n => n)) { Toast.show('デッキにカードがありません', 'error'); return; }
+    toggleMenu();
+    const code = this.generateCode();
+    const base = location.origin + location.pathname.replace(/[^/]*$/, '') + 'index.html';
+    const name = document.getElementById('deckNameInput')?.value.trim() || 'マイデッキ';
+    const text = name + ' のデッキレシピ #アーセナルベース #ABDS';
+    const win = window.open('about:blank', '_blank');
+    const sc = await ShortUrl.create(code);
+    const url = sc ? base + '#s:' + sc : base + '#' + code;
+    const tweetUrl = 'https://x.com/intent/tweet?text=' + encodeURIComponent(text) + '&url=' + encodeURIComponent(url);
+    if (win) { win.location.href = tweetUrl; } else { location.href = tweetUrl; }
   },
   async importCode() {
     const code = document.getElementById('deckCodeImport').value.trim();
