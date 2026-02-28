@@ -1122,6 +1122,10 @@ select,input{font-family:inherit}
         <button class="header-btn" onclick="DeckManager.copyCode()" title="コード共有">共有</button>
       </div>
       <div class="header-menu-row">
+        <button class="header-btn" onclick="DeckManager.postToServer()">デッキ投稿</button>
+        <a class="header-btn" href="./decks.html" style="text-decoration:none">デッキ一覧</a>
+      </div>
+      <div class="header-menu-row">
         <button class="header-btn" id="undoBtn" onclick="UndoManager.undo()" title="Ctrl+Z" disabled>&#8592; 戻す</button>
         <button class="header-btn" id="redoBtn" onclick="UndoManager.redo()" title="Ctrl+Shift+Z" disabled>やり直す &#8594;</button>
       </div>
@@ -1540,7 +1544,49 @@ select,input{font-family:inherit}
   </div>
 </div>
 
+<!-- ===== DECK POST MODAL ===== -->
+<div class="modal-overlay" id="deckPostModal">
+  <div class="modal-content" style="max-width:420px">
+    <button class="modal-close" onclick="document.getElementById('deckPostModal').classList.remove('open')">&times;</button>
+    <h3 style="color:#68efbd;margin-bottom:1rem">デッキ投稿</h3>
+    <div style="margin-bottom:0.6rem">
+      <div style="color:#888;font-size:0.8rem;margin-bottom:0.3rem">デッキ名:</div>
+      <input type="text" class="search-input" id="postDeckName" placeholder="デッキ名を入力" maxlength="50" style="width:100%">
+    </div>
+    <div style="margin-bottom:0.6rem">
+      <div style="color:#888;font-size:0.8rem;margin-bottom:0.3rem">投稿者名（任意）:</div>
+      <input type="text" class="search-input" id="postAuthor" placeholder="アースノイド" maxlength="30" style="width:100%">
+    </div>
+    <div style="margin-bottom:0.6rem">
+      <div style="color:#888;font-size:0.8rem;margin-bottom:0.3rem">投稿者コメント（任意）:</div>
+      <textarea class="search-input" id="postComment" placeholder="デッキの説明やコメント" rows="3" style="width:100%;resize:vertical;font-family:inherit"></textarea>
+    </div>
+    <div style="margin-bottom:0.8rem">
+      <div style="color:#888;font-size:0.8rem;margin-bottom:0.3rem">削除パスワード（任意）:</div>
+      <input type="password" class="search-input" id="postDeletePassword" placeholder="設定すると後から削除可能" style="width:100%">
+      <div style="color:#555;font-size:0.7rem;margin-top:0.2rem">※ 忘れると削除できなくなります</div>
+    </div>
+    <button class="header-btn primary" style="width:100%" onclick="DeckManager._doPost()">投稿する</button>
+  </div>
+</div>
+
 <script>
+// ================================================================
+// Supabase Configuration (for deck posting)
+// ================================================================
+const SUPABASE_URL = 'https://hwavpmbdtxuffrlumlrf.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh3YXZwbWJkdHh1ZmZybHVtbHJmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE5NTQyOTIsImV4cCI6MjA4NzUzMDI5Mn0.Y9Q_zIhzSMdxjxI9pXpAzpOWyfbojkrJ-ueqiGaHNK0';
+const SB_HEADERS = {
+  'apikey': SUPABASE_ANON_KEY,
+  'Authorization': 'Bearer ' + SUPABASE_ANON_KEY,
+  'Content-Type': 'application/json'
+};
+async function sha256(text) {
+  const data = new TextEncoder().encode(text);
+  const hash = await crypto.subtle.digest('SHA-256', data);
+  return [...new Uint8Array(hash)].map(b => b.toString(16).padStart(2, '0')).join('');
+}
+
 // ================================================================
 // AppState - グローバル状態管理
 // ================================================================
@@ -2090,7 +2136,8 @@ const DeckManager = {
 
   copyCode() {
     const code = this.generateCode();
-    navigator.clipboard.writeText(location.origin + '/v2#' + code).then(() => {
+    const base = location.origin + location.pathname.replace(/[^/]*$/, '') + 'index.html';
+    navigator.clipboard.writeText(base + '#' + code).then(() => {
       Toast.show('デッキURLをコピーしました', 'success');
     });
   },
@@ -2171,7 +2218,7 @@ const DeckManager = {
         if (isCopy) {
           AppState._lastDeckName = '';
           // Remove &copy from hash so reload won't re-trigger
-          history.replaceState(null, '', '/v2#' + code);
+          history.replaceState(null, '', location.pathname + '#' + code);
           Toast.show('デッキをコピーしました — 編集して保存できます', 'success');
         } else {
           Toast.show('URLからデッキを復元しました', 'info');
@@ -2244,6 +2291,56 @@ const DeckManager = {
     Toast.show(`デッキ「${name}」を削除しました`, 'info');
   },
 
+  postToServer() {
+    if (!AppState.deck.some(n => n)) { Toast.show('デッキにカードがありません', 'error'); return; }
+    closeHeaderMenu();
+    document.getElementById('postDeckName').value = '';
+    document.getElementById('postAuthor').value = localStorage.getItem('gab_author_name') || '';
+    document.getElementById('postComment').value = '';
+    document.getElementById('postDeletePassword').value = '';
+    document.getElementById('deckPostModal').classList.add('open');
+    document.getElementById('postDeckName').focus();
+  },
+
+  async _doPost() {
+    const name = document.getElementById('postDeckName').value.trim();
+    if (!name) { Toast.show('デッキ名を入力してください', 'error'); return; }
+    const author = document.getElementById('postAuthor').value.trim();
+    const comment = document.getElementById('postComment').value.trim();
+    const deletePassword = document.getElementById('postDeletePassword').value;
+    const cards = AppState.deck.map(n => n || '');
+    if (author) localStorage.setItem('gab_author_name', author);
+    try {
+      const deckId = crypto.randomUUID ? crypto.randomUUID().slice(0, 8) : Math.random().toString(36).slice(2, 10);
+      const now = new Date().toISOString();
+      const payload = {
+        id: deckId,
+        deck_name: name,
+        author: author || null,
+        comment: comment || null,
+        cards: cards,
+        tactics_main: AppState.tacticsMain || null,
+        tactics_sub: AppState.tacticsSub || null,
+        timestamp: now,
+        created_at: now,
+        likes: 0,
+        delete_password_hash: deletePassword ? await sha256(deletePassword) : null
+      };
+      const res = await fetch(SUPABASE_URL + '/rest/v1/decks', {
+        method: 'POST',
+        headers: { ...SB_HEADERS, 'Prefer': 'return=representation' },
+        body: JSON.stringify(payload)
+      });
+      if (res.ok) {
+        document.getElementById('deckPostModal').classList.remove('open');
+        Toast.show('デッキを投稿しました', 'success', 5000);
+      } else {
+        const err = await res.text();
+        console.error('Deck post error:', err);
+        Toast.show('投稿に失敗しました', 'error');
+      }
+    } catch { Toast.show('通信エラー', 'error'); }
+  }
 };
 
 // ================================================================
