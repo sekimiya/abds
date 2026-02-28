@@ -378,6 +378,9 @@ select,input{font-family:inherit}
   padding:8px 12px;flex-shrink:0;cursor:pointer;user-select:none;
   background:none;border:none;width:100%;color:var(--accent);font-weight:bold;font-size:0.85rem;
 }
+.filter-sheet-toggle.has-filter{
+  color:#fff;background:var(--accent);border-radius:8px 8px 0 0;
+}
 .filter-sheet-body{
   flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:8px 12px;
 }
@@ -2682,8 +2685,37 @@ const SearchPanel = {
     if (document.getElementById('filterLinkName2').value) return true;
     return false;
   },
+  _hasAnyFilter() {
+    if (this._selectedSeries.size > 0) return true;
+    if (this._currentRarity.size > 0) return true;
+    if (this._currentCategory.size > 0) return true;
+    if (parseInt(document.getElementById('filterCostMin').value) > 0 || parseInt(document.getElementById('filterCostMax').value) < 13) return true;
+    if (parseInt(document.getElementById('filterMobility').value) > 0) return true;
+    if (parseInt(document.getElementById('filterRanged').value) > 0) return true;
+    if (parseInt(document.getElementById('filterMelee').value) > 0) return true;
+    if (parseInt(document.getElementById('filterHp').value) > 0) return true;
+    if (document.getElementById('filterTerrainType').value) return true;
+    if (document.getElementById('filterOcr').checked) return true;
+    if (document.getElementById('filterLinkName').value) return true;
+    if ((document.getElementById('filterLinkName2') || {}).value) return true;
+    if ((document.getElementById('filterSkillName') || {}).value) return true;
+    if (document.getElementById('searchInput').value.trim()) return true;
+    const sti = document.getElementById('searchTextInput'); if (sti && sti.value.trim()) return true;
+    const bm = document.getElementById('filterBookmarkCards'); if (bm && bm.checked) return true;
+    for (const s of Object.values(this._t)) { if (s.size > 0) return true; }
+    return false;
+  },
+  _updateFilterBadge() {
+    const btn = document.getElementById('filterSheetToggle');
+    if (!btn) return;
+    const active = this._hasAnyFilter();
+    btn.classList.toggle('has-filter', active);
+    const sheet = document.getElementById('filterSheet');
+    const arrow = sheet && sheet.classList.contains('open') ? '▼' : '▲';
+    btn.textContent = active ? `${arrow} フィルター ●` : `${arrow} フィルター`;
+  },
   applyFilters() {
-    if (!this._hasActiveFilter()) { this._filteredCards = []; this._page = 0; this._renderGrid(); this._saveFilters(); return; }
+    if (!this._hasActiveFilter()) { this._filteredCards = []; this._page = 0; this._renderGrid(); this._saveFilters(); this._updateFilterBadge(); return; }
     let cards = AppState.cardIndex;
     if (this._lockedType) cards = cards.filter(c => c.type === this._lockedType);
     if (this._currentCategory.size > 0) cards = cards.filter(c => this._currentCategory.has(c.category));
@@ -2738,6 +2770,7 @@ const SearchPanel = {
     this._page = 0;
     this._renderGrid();
     this._saveFilters();
+    this._updateFilterBadge();
   },
   clearFilters() {
     this._selectedSeries.clear();
@@ -2858,8 +2891,7 @@ function toggleMenu() {
 function toggleFilterSheet() {
   const sheet = document.getElementById('filterSheet');
   sheet.classList.toggle('open');
-  const btn = document.getElementById('filterSheetToggle');
-  if (btn) btn.textContent = sheet.classList.contains('open') ? '▼ フィルター' : '▲ フィルター';
+  SearchPanel._updateFilterBadge();
 }
 function toggleFilterGroup(id) {
   document.getElementById(id).classList.toggle('collapsed');
@@ -2878,8 +2910,7 @@ function openCardPicker(slotIdx, type) {
   document.getElementById('pickerOverlay').classList.add('open');
   document.getElementById('filterSheet').style.display = 'flex';
   document.getElementById('filterSheet').classList.remove('open');
-  const btn = document.getElementById('filterSheetToggle');
-  if (btn) btn.textContent = '▲ フィルター';
+  SearchPanel._updateFilterBadge();
 }
 function closeCardPicker() {
   document.getElementById('filterSheet').classList.remove('open');
