@@ -915,9 +915,10 @@ select,input{font-family:inherit}
     <button class="menu-btn" onclick="DeckManager.copyCode()">デッキ共有</button>
   </div>
   <div class="menu-row" style="gap:4px">
-    <select id="deckLoadSelect" class="filter-select" style="flex:1;padding:6px;font-size:0.85rem" onchange="if(this.value){DeckManager.loadFromSelect();toggleMenu()}">
+    <select id="deckLoadSelect" class="filter-select" style="flex:1;padding:6px;font-size:0.85rem">
       <option value="">-- デッキを選択 --</option>
     </select>
+    <button class="menu-btn primary" onclick="DeckManager.loadFromSelect()" style="white-space:nowrap;flex:0;padding:6px 12px">デッキを表示</button>
   </div>
   <div class="menu-row">
     <button class="menu-btn" onclick="DeckManager.tweetDeck()" style="border-color:#1DA1F2;color:#1DA1F2;width:100%">Twitterに投稿</button>
