@@ -455,6 +455,58 @@ def download_image(url: str, card_number: str) -> Optional[Path]:
 
 
 # ---------------------------------------------------------------------------
+# マスターデータ辞書（Stage2 プロンプト注入用）
+# ---------------------------------------------------------------------------
+def load_master_names() -> dict:
+    """official_master_data.json からリンク名・MSアビリティ名のリストを読み込む"""
+    master_path = Path(__file__).parent / "official_master_data.json"
+    if not master_path.exists():
+        return {"link_names": [], "ms_abilities": []}
+    with open(master_path, "r", encoding="utf-8") as f:
+        data = json.load(f)
+    return {
+        "link_names": data.get("link_names", []),
+        "ms_abilities": data.get("ms_abilities", []),
+    }
+
+
+def build_master_dict_section() -> str:
+    """プロンプトに追加するマスター辞書テキストを生成"""
+    master = load_master_names()
+    if not master["link_names"] and not master["ms_abilities"]:
+        return ""
+
+    sections = []
+    sections.append("## 公式マスター辞書（名前の正規化に使用）")
+    sections.append("")
+    sections.append("以下は公式データベースに登録されている正式名称のリストです。")
+    sections.append("link_ability.name および ms_ability.name は、**必ずこのリストの中から最も近いものを選んで**ください。")
+    sections.append("OCR生テキストの表記が多少異なっていても（括弧の種類違い、類似漢字の誤読、プレフィックス欠落等）、正式名称に修正してください。")
+    sections.append("")
+
+    if master["link_names"]:
+        sections.append("### リンクアビリティ名（正式名称一覧）")
+        for name in master["link_names"]:
+            sections.append(f"- {name}")
+        sections.append("")
+
+    if master["ms_abilities"]:
+        sections.append("### MSアビリティ名（正式名称一覧）")
+        for name in master["ms_abilities"]:
+            sections.append(f"- {name}")
+        sections.append("")
+
+    sections.append("### 正規化ルール")
+    sections.append("- [SQ]/[AB]/[EB]プレフィックスが生テキストで欠落している場合、上記リストに該当するプレフィックス付き名称があればそちらを採用する")
+    sections.append("- 【】（隅付き括弧）は[]（角括弧）に統一する")
+    sections.append("- 半角スラッシュ(/)は全角スラッシュ(／)に統一する")
+    sections.append("- リストに完全一致する名称がない場合のみ、OCR生テキストの値をそのまま使用する")
+    sections.append("")
+
+    return "\n".join(sections)
+
+
+# ---------------------------------------------------------------------------
 # Claude Code CLI call (共通)
 # ---------------------------------------------------------------------------
 def _run_claude_cli(
@@ -657,13 +709,15 @@ def stage2_structure(
         return True
 
     # Claude CLI でテキストを構造化 (画像不要 → allowed_tools を空に)
+    master_section = build_master_dict_section()
     prompt = (
         f"以下はカード番号 {card_number} の裏面OCR生テキストです。\n"
         f"このテキストを解析して構造化JSONを生成してください。\n\n"
         f"--- 生テキスト開始 ---\n"
         f"{raw_text}\n"
         f"--- 生テキスト終了 ---\n\n"
-        f"{STRUCTURE_PROMPT}"
+        f"{STRUCTURE_PROMPT}\n\n"
+        f"{master_section}"
     )
 
     response = _call_with_retry(prompt, model=model, allowed_tools="")
@@ -754,11 +808,13 @@ def _process_card_combined(
         return False
 
     # 統合プロンプトで1回だけCLI呼び出し
+    master_section = build_master_dict_section()
     prompt = (
         f"以下の画像ファイルを読み取ってください。\n"
         f"画像ファイルパス: {image_path.resolve()}\n\n"
         f"カード番号: {card_number}\n\n"
-        f"{COMBINED_PROMPT}"
+        f"{COMBINED_PROMPT}\n\n"
+        f"{master_section}"
     )
 
     response = _call_with_retry(prompt, model=model, allowed_tools="Read")
