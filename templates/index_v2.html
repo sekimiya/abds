@@ -1174,10 +1174,15 @@ select,input{font-family:inherit}
   <!-- TOP BAR -->
   <div class="sidebar-topbar">
     <span id="pickerTitle" style="color:#68efbd;font-weight:bold;font-size:0.9rem">カード選択</span>
-    <div class="sidebar-tabs" id="sidebarTabs" style="display:none">
+    <div class="sidebar-tabs" id="sidebarTabs">
       <div class="sidebar-tab active" data-type="MS" onclick="SearchPanel.setType('MS')">MS</div>
       <div class="sidebar-tab" data-type="PL" onclick="SearchPanel.setType('PL')">PL</div>
+      <div class="sidebar-tab" data-type="" onclick="SearchPanel.setType('')">未解析</div>
     </div>
+    <label class="ocr-toggle" style="margin:0" title="検索条件をタイプ別に保持">
+      <input type="checkbox" id="filterRetainToggle" onchange="SearchPanel.onRetainToggle()" checked>
+      <span class="ocr-toggle-text" style="font-size:0.7rem">条件保持</span>
+    </label>
     <div style="flex:1"></div>
     <button onclick="closeCardPicker()" style="background:none;border:none;color:#888;font-size:1.2rem;cursor:pointer;padding:0 4px">&times;</button>
   </div>
@@ -3849,11 +3854,13 @@ const SearchPanel = {
     });
     // PLスキル名プルダウンを初期化
     this._populateSkillNames();
-    // localStorageから検索条件を復元
-    this._restoreFilters();
+    // 条件保持トグルの状態を復元
+    this._restoreRetainToggle();
   },
 
   _saveFilters() {
+    if (!this._lockedType) return;  // 未解析・null時は保存しない
+    if (!this._isRetainEnabled()) return;  // トグルOFF時は保存しない
     const state = {
       searchInput: document.getElementById('searchInput').value,
       searchTextInput: document.getElementById('searchTextInput').value,
@@ -3876,11 +3883,13 @@ const SearchPanel = {
       skillName: document.getElementById('filterSkillName').value,
       toggles: Object.fromEntries(Object.entries(this._t).map(([k,v]) => [k, [...v]])),
     };
-    localStorage.setItem('abds_search_filters', JSON.stringify(state));
+    localStorage.setItem('abds_search_filters_' + this._lockedType, JSON.stringify(state));
   },
 
   _restoreFilters() {
-    const raw = localStorage.getItem('abds_search_filters');
+    if (!this._lockedType) return;
+    if (!this._isRetainEnabled()) return;
+    const raw = localStorage.getItem('abds_search_filters_' + this._lockedType);
     if (!raw) return;
     try {
       const s = JSON.parse(raw);
@@ -3943,13 +3952,28 @@ const SearchPanel = {
           }
         });
       }
-      this.applyFilters();
     } catch(e) { /* ignore corrupt data */ }
+  },
+
+  // 条件保持トグル
+  _isRetainEnabled() {
+    const el = document.getElementById('filterRetainToggle');
+    return el ? el.checked : true;
+  },
+  _restoreRetainToggle() {
+    const saved = localStorage.getItem('abds_search_retain');
+    const el = document.getElementById('filterRetainToggle');
+    if (el) el.checked = saved === null ? true : saved === '1';
+  },
+  onRetainToggle() {
+    const enabled = this._isRetainEnabled();
+    localStorage.setItem('abds_search_retain', enabled ? '1' : '0');
+    if (enabled) this._saveFilters();
   },
 
   // _lockedType に応じてフィルタ要素の表示/非表示を切り替え
   _updateFilterVisibility() {
-    const t = this._lockedType; // 'MS', 'PL', or null
+    const t = this._lockedType; // 'MS', 'PL', '', or null
     this._updateCategoryButtons();
     const containerGroupMap = {
       'ebCategoryBtns': 'ebCat', 'ebLevelBtns': 'ebLv', 'ebCondBtns': 'ebCond', 'ebspEffectBtns': 'ebspEff',
@@ -3958,8 +3982,9 @@ const SearchPanel = {
       'spEffectBtns': 'spEff', 'skillEffectBtns': 'skEff'
     };
     // data-for 属性を持つ全要素の表示制御
+    // 未解析タブ（t === ''）ではMS/PL専用フィルタを全て非表示
     document.querySelectorAll('#sidebar [data-for]').forEach(el => {
-      const hidden = t && el.dataset.for !== t;
+      const hidden = (t !== null) && (t === '' || el.dataset.for !== t);
       el.style.display = hidden ? 'none' : '';
       // 非表示になったコンテナ内のトグル選択をクリア
       if (hidden) {
@@ -4015,7 +4040,14 @@ const SearchPanel = {
   },
 
   setType(type) {
-    // setTypeはopenCardPickerからの呼び出し互換用（タブ廃止後はapplyFiltersで_lockedTypeを使用）
+    this._lockedType = type;
+    // タブUIの active 切り替え
+    document.querySelectorAll('.sidebar-tab').forEach(t => {
+      t.classList.toggle('active', t.dataset.type === type);
+    });
+    this._updateFilterVisibility();
+    this._clearFiltersUI();
+    this._restoreFilters();
     this.applyFilters();
   },
 
@@ -4105,8 +4137,13 @@ const SearchPanel = {
     let cards = AppState.cardIndex;
 
     // Type filter (スロット指定時のみタイプ絞込)
-    if (this._lockedType) {
-      cards = cards.filter(c => c.type === this._lockedType);
+    if (this._lockedType !== null) {
+      if (this._lockedType === '') {
+        // 未解析: type が空のカードのみ
+        cards = cards.filter(c => !c.type);
+      } else {
+        cards = cards.filter(c => c.type === this._lockedType);
+      }
     }
     // Category
     if (this._currentCategory.size > 0) {
@@ -4260,7 +4297,7 @@ const SearchPanel = {
     this._saveFilters();
   },
 
-  clearFilters() {
+  _clearFiltersUI() {
     // Series toggle
     this._selectedSeries.clear();
     document.querySelectorAll('.series-btn').forEach(b => b.classList.remove('active'));
@@ -4298,6 +4335,15 @@ const SearchPanel = {
     this._currentCategory = new Set();
     document.querySelectorAll('.rarity-btn').forEach(b => b.classList.remove('active'));
     document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+  },
+
+  clearFilters() {
+    this._clearFiltersUI();
+    // 型別キーを削除
+    if (this._lockedType) {
+      localStorage.removeItem('abds_search_filters_' + this._lockedType);
+    }
+    // 旧キーも削除
     localStorage.removeItem('abds_search_filters');
     this.applyFilters();
   },
@@ -4408,18 +4454,19 @@ const SearchPanel = {
     const slot = AppState.activeSlot;
     if (slot === null) {
       // Auto-assign to first empty slot of matching type
-      const type = card.type;
-      const range = type === 'MS' ? [0,1,2,3,4] : [5,6,7,8,9];
+      // 未分類カードは現在のタブタイプを使用
+      const type = card.type || this._lockedType || 'MS';
+      const range = type === 'MS' ? [0,1,2,3,4] : type === 'PL' ? [5,6,7,8,9] : [0,1,2,3,4,5,6,7,8,9];
       const emptySlot = range.find(i => !AppState.deck[i]);
       if (emptySlot !== undefined) {
         DeckManager.setCard(emptySlot, card.number);
       } else {
-        Toast.show(`${type}の空きスロットがありません`, 'info');
+        Toast.show('空きスロットがありません', 'info');
       }
       closeCardPicker();
       return;
     }
-    // Check type compatibility
+    // Check type compatibility（未分類カードはタイプチェックをスキップ）
     const slotType = slot < 5 ? 'MS' : 'PL';
     if (card.type && card.type !== slotType) {
       Toast.show(`${slotType}スロットに${card.type}カードはセット不可`, 'error');
@@ -4558,7 +4605,13 @@ function openCardPicker(slotIdx, type) {
   document.getElementById('pickerTitle').textContent = label;
   // スロットタイプでフィルタ
   SearchPanel._lockedType = type;
+  // タブUI更新
+  document.querySelectorAll('.sidebar-tab').forEach(t => {
+    t.classList.toggle('active', t.dataset.type === type);
+  });
   SearchPanel._updateFilterVisibility();
+  SearchPanel._clearFiltersUI();
+  SearchPanel._restoreFilters();
   SearchPanel.applyFilters();
   document.getElementById('sidebar').classList.add('open');
   document.getElementById('sidebarOverlay').classList.add('active');

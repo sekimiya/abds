@@ -707,7 +707,7 @@ def _build_card_index():
             back_image_url = f"http://www.gundam-ab.com/images/cardlist/card/{card_number}_b.jpg?v8"
 
         # タイプとカテゴリを決定
-        card_type = ocr_data.get('type') or card.get('category', 'MS')
+        card_type = ocr_data.get('type') or card.get('category', '')
         category = ocr_data.get('category') or card.get('category', '')
 
         # PLの戦闘スタイル補正
@@ -1083,7 +1083,7 @@ def _build_card_index():
     link_map = {}
     for card_number, detail in detail_map.items():
         ocr = detail.get('ocr_data', {})
-        card_type = ocr.get('type') or detail.get('category', 'MS')
+        card_type = ocr.get('type') or detail.get('category', '')
         links = get_link_abilities(ocr)
         for link in links:
             if not isinstance(link, dict):
