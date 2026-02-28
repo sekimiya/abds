@@ -153,6 +153,19 @@ select,input{font-family:inherit}
 }
 .link-chip.eb-link.active .link-chip-count{background:rgba(255,152,0,0.15);color:#ffb74d}
 .link-chip.eb-link.active .link-chip-effect{color:#ffcc80}
+/* AB Link Ability — 緑系 */
+.link-chip.ab-link{
+  border-color:#2e5940;color:#66bb6a;
+}
+.link-chip.ab-link .link-chip-count{color:#66bb6a}
+.link-chip.ab-link .link-chip-effect{color:#558b5e}
+.link-chip.ab-link.active{
+  background:linear-gradient(135deg,#0a2a15,#0a3a1a);
+  border-color:#66bb6a;color:#66bb6a;
+  box-shadow:0 0 8px rgba(102,187,106,0.4);
+}
+.link-chip.ab-link.active .link-chip-count{background:rgba(102,187,106,0.15);color:#81c784}
+.link-chip.ab-link.active .link-chip-effect{color:#a5d6a7}
 
 .header-btn{
   background:#222;border:1px solid #555;border-radius:6px;
@@ -773,6 +786,7 @@ select,input{font-family:inherit}
 }
 .tbtn.active-eb{background:#3a2200;border-color:#ff9800;color:#ff9800}
 .tbtn.active-sq{background:#2a0020;border-color:#ff69b4;color:#ff69b4}
+.tbtn.active-ab{background:#0a2a15;border-color:#66bb6a;color:#66bb6a}
 .tbtn.active-pl{background:#1e2924;border-color:#68efbd;color:#68efbd}
 .tbtn.active-sp{background:#1a2a3a;border-color:#4fc3f7;color:#4fc3f7}
 
@@ -949,6 +963,12 @@ select,input{font-family:inherit}
 .thumb-eb-badge{
   position:absolute;bottom:2px;right:2px;
   background:rgba(255,152,0,0.9);color:#fff;
+  font-size:0.55rem;font-weight:bold;padding:0 3px;border-radius:2px;
+  line-height:1.4;
+}
+.thumb-ab-badge{
+  position:absolute;bottom:12px;left:2px;
+  background:rgba(102,187,106,0.9);color:#fff;
   font-size:0.55rem;font-weight:bold;padding:0 3px;border-radius:2px;
   line-height:1.4;
 }
@@ -1392,6 +1412,16 @@ select,input{font-family:inherit}
             <button class="tbtn" data-key="全味方バフ" onclick="SearchPanel.toggle('sqEff',this)">全味方</button>
           </div>
           <label class="ocr-toggle" style="margin-left:0" id="filterSqSkillLabel"><input type="checkbox" id="filterSqSkill" onchange="SearchPanel.applyFilters()"><span class="ocr-toggle-text" style="color:#ff69b4">SQスキル表示</span></label>
+        </div>
+      </div>
+
+      <!-- AB -->
+      <div class="filter-group collapsed" id="filterGroupAb">
+        <div class="filter-group-title" onclick="toggleFilterGroup('filterGroupAb')" style="color:#66bb6a">AB</div>
+        <div class="filter-group-body">
+          <div class="toggle-filter" id="abCategoryBtns">
+            <button class="tbtn" data-key="ab_link" onclick="SearchPanel.toggle('abCat',this)">ABリンク</button>
+          </div>
         </div>
       </div>
 
@@ -3502,7 +3532,7 @@ const UIRenderer = {
   _updateLinkBar() {
     const bar = document.getElementById('linkBar');
     // デッキ全カードからリンクアビリティを収集
-    const linkMap = {}; // name → {effect, condition, required, count, slots:[], is_eb_link}
+    const linkMap = {}; // name → {effect, condition, required, count, slots:[], is_eb_link, is_ab_link}
     for (let i = 0; i < 10; i++) {
       const ocr = AppState.deckOcr[i];
       if (!ocr) continue;
@@ -3519,9 +3549,11 @@ const UIRenderer = {
             count: 0,
             slots: [],
             is_eb_link: false,
+            is_ab_link: false,
           };
         }
         if (link.is_eb_link) linkMap[link.name].is_eb_link = true;
+        if (link.is_ab_link) linkMap[link.name].is_ab_link = true;
         linkMap[link.name].count++;
         linkMap[link.name].slots.push(i);
       });
@@ -3538,8 +3570,8 @@ const UIRenderer = {
 
     bar.innerHTML = entries.map(([name, info]) => {
       const isActive = info.count >= info.required;
-      const ebCls = info.is_eb_link ? ' eb-link' : '';
-      return `<div class="link-chip${isActive ? ' active' : ''}${ebCls}">
+      const typeCls = info.is_eb_link ? ' eb-link' : info.is_ab_link ? ' ab-link' : '';
+      return `<div class="link-chip${isActive ? ' active' : ''}${typeCls}">
         <span class="link-chip-name">${escapeHtml(name)}</span>
         <span class="link-chip-count">${info.count}/${info.required}</span>
         <span class="link-chip-effect">${escapeHtml(info.effect)}</span>
@@ -3779,8 +3811,8 @@ const SearchPanel = {
   _page: 0,
   _perPage: 60,
   // Toggle filter Sets
-  _t: { ebCat:new Set(), ebLv:new Set(), ebCond:new Set(), ebspEff:new Set(), sqCat:new Set(), sqGauge:new Set(), sqTrig:new Set(), sqEff:new Set(), sqspEff:new Set(), spEff:new Set(), skEff:new Set() },
-  _tStyle: { ebCat:'eb', ebLv:'eb', ebCond:'eb', ebspEff:'eb', sqCat:'sq', sqGauge:'sq', sqTrig:'sq', sqEff:'sq', sqspEff:'sq', spEff:'sp', skEff:'pl' },
+  _t: { ebCat:new Set(), ebLv:new Set(), ebCond:new Set(), ebspEff:new Set(), sqCat:new Set(), sqGauge:new Set(), sqTrig:new Set(), sqEff:new Set(), sqspEff:new Set(), abCat:new Set(), spEff:new Set(), skEff:new Set() },
+  _tStyle: { ebCat:'eb', ebLv:'eb', ebCond:'eb', ebspEff:'eb', sqCat:'sq', sqGauge:'sq', sqTrig:'sq', sqEff:'sq', sqspEff:'sq', abCat:'ab', spEff:'sp', skEff:'pl' },
 
   init() {
     this._updateCategoryButtons();
@@ -3904,7 +3936,8 @@ const SearchPanel = {
           const groupMap = {
             'ebCategoryBtns':'ebCat','ebLevelBtns':'ebLv','ebCondBtns':'ebCond','ebspEffectBtns':'ebspEff',
             'sqCategoryBtns':'sqCat','sqGaugeBtns':'sqGauge','sqTriggerBtns':'sqTrig',
-            'sqEffectBtns':'sqEff','sqspEffectBtns':'sqspEff','spEffectBtns':'spEff','skillEffectBtns':'skEff'
+            'sqEffectBtns':'sqEff','sqspEffectBtns':'sqspEff','abCategoryBtns':'abCat',
+            'spEffectBtns':'spEff','skillEffectBtns':'skEff'
           };
           const group = groupMap[groupId];
           if (group && this._t[group].has(btn.dataset.key)) {
@@ -3923,7 +3956,7 @@ const SearchPanel = {
     const containerGroupMap = {
       'ebCategoryBtns': 'ebCat', 'ebLevelBtns': 'ebLv', 'ebCondBtns': 'ebCond', 'ebspEffectBtns': 'ebspEff',
       'sqCategoryBtns': 'sqCat', 'sqGaugeBtns': 'sqGauge', 'sqTriggerBtns': 'sqTrig',
-      'sqEffectBtns': 'sqEff', 'sqspEffectBtns': 'sqspEff',
+      'sqEffectBtns': 'sqEff', 'sqspEffectBtns': 'sqspEff', 'abCategoryBtns': 'abCat',
       'spEffectBtns': 'spEff', 'skillEffectBtns': 'skEff'
     };
     // data-for 属性を持つ全要素の表示制御
@@ -3937,7 +3970,7 @@ const SearchPanel = {
           const group = containerGroupMap[el.closest('.toggle-filter')?.id];
           if (group) {
             this._t[group].delete(el.dataset.key);
-            el.classList.remove('active-eb', 'active-sq', 'active-pl');
+            el.classList.remove('active-eb', 'active-sq', 'active-ab', 'active-pl');
           }
         }
         // コンテナ（ebCondBtns等）内の全ボタン
@@ -3945,7 +3978,7 @@ const SearchPanel = {
           const group = containerGroupMap[btn.closest('.toggle-filter')?.id];
           if (group) {
             this._t[group].delete(btn.dataset.key);
-            btn.classList.remove('active-eb', 'active-sq', 'active-pl');
+            btn.classList.remove('active-eb', 'active-sq', 'active-ab', 'active-pl');
           }
         });
         // PLスキル名ドロップダウンのリセット
@@ -4177,6 +4210,13 @@ const SearchPanel = {
     if (sqspEff.size > 0) {
       cards = cards.filter(c => c.sqsp_effect_tags && c.sqsp_effect_tags.some(t => sqspEff.has(t)));
     }
+    // AB関連カード絞込
+    const abCat = this._t.abCat;
+    if (abCat.size > 0) {
+      cards = cards.filter(c =>
+        (abCat.has('ab_link') && c.has_ab_link)
+      );
+    }
     // EBSP効果（トグル複数選択: OR）
     const ebspEff = this._t.ebspEff;
     if (ebspEff.size > 0) {
@@ -4322,6 +4362,7 @@ const SearchPanel = {
           ${card.has_ocr ? '<div class="thumb-ocr-badge">OCR</div>' : ''}
           ${card.sq_rush_effect || card.sqsp_text ? '<div class="thumb-sq-badge">SQ</div>' : ''}
           ${card.has_eb || card.has_eb_skill || card.has_eb_link ? '<div class="thumb-eb-badge">EB</div>' : ''}
+          ${card.has_ab_link ? '<div class="thumb-ab-badge">AB</div>' : ''}
           ${overlayHtml}
           <div class="thumb-detail-btn" onclick="event.stopPropagation();showCardModal('${card.number}')">詳細</div>
           <button class="thumb-bm-btn${CardBookmark.has(card.number) ? ' bm-on' : ''}" onclick="event.stopPropagation();SearchPanel._toggleBm(this,'${card.number}')" title="ブックマーク">${CardBookmark.has(card.number) ? '&#9733;' : '&#9734;'}</button>

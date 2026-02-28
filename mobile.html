@@ -60,6 +60,13 @@ select,input{font-family:inherit}
 }
 .eb-badge-h.active{display:inline-block}
 @keyframes eb-glow{from{box-shadow:0 0 4px rgba(255,152,0,0.4)}to{box-shadow:0 0 10px rgba(255,152,0,0.8)}}
+.ab-badge-h{
+  display:none;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:bold;white-space:nowrap;
+  background:linear-gradient(135deg,#66bb6a,#2e7d32);color:#fff;
+  animation:ab-glow 1.5s ease-in-out infinite alternate;
+}
+.ab-badge-h.active{display:inline-block}
+@keyframes ab-glow{from{box-shadow:0 0 4px rgba(102,187,106,0.4)}to{box-shadow:0 0 10px rgba(102,187,106,0.8)}}
 .hdr-active-links{
   display:flex;align-items:center;gap:3px;overflow:hidden;flex-shrink:1;min-width:0;
 }
@@ -71,6 +78,8 @@ select,input{font-family:inherit}
 .hdr-link-name.sq.inactive{color:#664455;background:rgba(255,105,180,0.05);border:1px solid rgba(255,105,180,0.1);font-weight:normal}
 .hdr-link-name.eb{color:#ffb74d;background:rgba(255,152,0,0.15);border:1px solid rgba(255,152,0,0.3)}
 .hdr-link-name.eb.inactive{color:#665530;background:rgba(255,152,0,0.05);border:1px solid rgba(255,152,0,0.1);font-weight:normal}
+.hdr-link-name.ab{color:#81c784;background:rgba(102,187,106,0.15);border:1px solid rgba(102,187,106,0.3)}
+.hdr-link-name.ab.inactive{color:#3a5d3c;background:rgba(102,187,106,0.05);border:1px solid rgba(102,187,106,0.1);font-weight:normal}
 .hdr-spacer{flex:1}
 .rec-btn{
   background:linear-gradient(135deg,#d32f2f,#b71c1c);border:1px solid #f44336;border-radius:4px;
@@ -129,6 +138,8 @@ select,input{font-family:inherit}
 .link-chip.sq .link-chip-count{color:#ff8cc8}
 .link-chip.eb{border-color:rgba(255,152,0,0.3);color:#ffb74d}
 .link-chip.eb .link-chip-count{color:#ffb74d}
+.link-chip.ab{border-color:rgba(102,187,106,0.3);color:#66bb6a}
+.link-chip.ab .link-chip-count{color:#66bb6a}
 
 /* ===== OVERVIEW STRIP (~130px) ===== */
 .overview-strip{
@@ -340,6 +351,7 @@ select,input{font-family:inherit}
 .thumb-ocr-badge{position:absolute;bottom:20px;right:1px;background:rgba(104,239,189,0.85);color:#000;font-size:0.4rem;font-weight:bold;padding:0 2px;border-radius:2px;line-height:1.3}
 .thumb-sq-badge{position:absolute;bottom:20px;left:1px;background:rgba(255,105,180,0.9);color:#fff;font-size:0.4rem;font-weight:bold;padding:0 2px;border-radius:2px;line-height:1.3}
 .thumb-eb-badge{position:absolute;bottom:20px;right:1px;background:rgba(255,152,0,0.9);color:#fff;font-size:0.4rem;font-weight:bold;padding:0 2px;border-radius:2px;line-height:1.3}
+.thumb-ab-badge{position:absolute;bottom:28px;left:1px;background:rgba(102,187,106,0.9);color:#fff;font-size:0.4rem;font-weight:bold;padding:0 2px;border-radius:2px;line-height:1.3}
 .thumb-card-info{position:absolute;bottom:0;left:0;right:0;padding:2px 3px;background:rgba(0,0,0,0.75);display:flex;flex-direction:column;gap:0px}
 .thumb-card-number{color:var(--accent);font-size:0.5rem;white-space:nowrap;overflow:hidden}
 .thumb-card-name{color:#ddd;font-size:0.55rem;font-weight:bold;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -401,6 +413,7 @@ select,input{font-family:inherit}
 .tbtn{padding:4px 6px;background:#222;border:1px solid #444;border-radius:3px;color:#888;font-size:0.65rem;white-space:nowrap;min-height:28px}
 .tbtn.active-eb{background:#3a2200;border-color:var(--eb-orange);color:var(--eb-orange)}
 .tbtn.active-sq{background:#2a0020;border-color:var(--sq-pink);color:var(--sq-pink)}
+.tbtn.active-ab{background:#0a2a15;border-color:#66bb6a;color:#66bb6a}
 .tbtn.active-pl{background:#1e2924;border-color:var(--accent);color:var(--accent)}
 .tbtn.active-sp{background:#1a2a3a;border-color:#4fc3f7;color:#4fc3f7}
 .filter-row{display:flex;gap:4px;align-items:center}
@@ -543,6 +556,8 @@ select,input{font-family:inherit}
   <span class="hdr-active-links" id="hdrSqLinks"></span>
   <span class="eb-badge-h" id="ebStatus" style="margin-left:-2px">EB</span>
   <span class="hdr-active-links" id="hdrEbLinks"></span>
+  <span class="ab-badge-h" id="abStatus" style="margin-left:-2px;display:none">AB</span>
+  <span class="hdr-active-links" id="hdrAbLinks"></span>
   <span class="hdr-spacer"></span>
   <button class="hamburger-btn" id="hamburgerBtn" onclick="toggleMenu()">&#9776;</button>
 </header>
@@ -739,6 +754,14 @@ select,input{font-family:inherit}
         <div style="display:flex;flex-wrap:wrap;gap:4px">
           <label class="ocr-toggle" data-for="MS" id="filterSqspLabel"><input type="checkbox" id="filterSqsp" onchange="SearchPanel.applyFilters()"><span class="ocr-toggle-text" style="color:#ff69b4">SQSP表示</span></label>
           <label class="ocr-toggle" data-for="PL" id="filterSqSkillLabel"><input type="checkbox" id="filterSqSkill" onchange="SearchPanel.applyFilters()"><span class="ocr-toggle-text" style="color:#ff69b4">SQスキル表示</span></label>
+        </div>
+      </div>
+    </div>
+    <div class="filter-group collapsed" id="filterGroupAb">
+      <div class="filter-group-title" onclick="toggleFilterGroup('filterGroupAb')" style="color:#66bb6a">AB</div>
+      <div class="filter-group-body">
+        <div class="toggle-filter" id="abCategoryBtns">
+          <button class="tbtn" data-key="ab_link" onclick="SearchPanel.toggle('abCat',this)">ABリンク</button>
         </div>
       </div>
     </div>
@@ -2390,22 +2413,24 @@ const UIRenderer = {
       if (!Array.isArray(links)) continue;
       links.forEach(link => {
         if (!link.name) return;
-        if (!linkMap[link.name]) { const cm = (link.condition||'').match(/(\d+)枚以上/); linkMap[link.name] = { effect: link.effect || '', required: cm ? parseInt(cm[1]) : 2, count: 0, is_eb_link: false, is_sq_link: false }; }
+        if (!linkMap[link.name]) { const cm = (link.condition||'').match(/(\d+)枚以上/); linkMap[link.name] = { effect: link.effect || '', required: cm ? parseInt(cm[1]) : 2, count: 0, is_eb_link: false, is_sq_link: false, is_ab_link: false }; }
         if (link.is_eb_link) linkMap[link.name].is_eb_link = true;
+        if (link.is_ab_link) linkMap[link.name].is_ab_link = true;
         if (AppState._sqLinkNames.has(link.name)) linkMap[link.name].is_sq_link = true;
         linkMap[link.name].count++;
       });
     }
     const entries = Object.entries(linkMap).sort((a, b) => { const aA = a[1].count >= a[1].required ? 1 : 0; const bA = b[1].count >= b[1].required ? 1 : 0; if (bA !== aA) return bA - aA; return a[0].localeCompare(b[0]); });
-    const activeSpecial = entries.filter(([, info]) => (info.is_eb_link || info.is_sq_link) && info.count >= info.required);
-    const inactiveSpecial = entries.filter(([, info]) => (info.is_eb_link || info.is_sq_link) && info.count < info.required);
-    const normal = entries.filter(([, info]) => !info.is_eb_link && !info.is_sq_link);
+    const isSpecial = info => info.is_eb_link || info.is_sq_link || info.is_ab_link;
+    const activeSpecial = entries.filter(([, info]) => isSpecial(info) && info.count >= info.required);
+    const inactiveSpecial = entries.filter(([, info]) => isSpecial(info) && info.count < info.required);
+    const normal = entries.filter(([, info]) => !isSpecial(info));
     // Render normal link bar + inactive SQ/EB
     const allNormal = [...normal, ...inactiveSpecial];
     if (allNormal.length === 0) { bar.innerHTML = ''; } else {
       bar.innerHTML = allNormal.map(([name, info]) => {
         const isActive = info.count >= info.required;
-        const tag = info.is_sq_link ? ' sq' : info.is_eb_link ? ' eb' : '';
+        const tag = info.is_sq_link ? ' sq' : info.is_eb_link ? ' eb' : info.is_ab_link ? ' ab' : '';
         return `<div class="link-chip${isActive ? ' active' : ''}${tag}"><span class="link-chip-name">${escapeHtml(name)}</span><span class="link-chip-count">${info.count}/${info.required}</span></div>`;
       }).join('');
     }
@@ -2419,6 +2444,13 @@ const UIRenderer = {
     if (hdrEb) {
       const ebLinks = activeSpecial.filter(([, info]) => info.is_eb_link);
       hdrEb.innerHTML = ebLinks.map(([name]) => `<span class="hdr-link-name eb">${escapeHtml(name)}</span>`).join('');
+    }
+    const hdrAb = document.getElementById('hdrAbLinks');
+    const abStatusEl = document.getElementById('abStatus');
+    if (hdrAb) {
+      const abLinks = activeSpecial.filter(([, info]) => info.is_ab_link);
+      hdrAb.innerHTML = abLinks.map(([name]) => `<span class="hdr-link-name ab">${escapeHtml(name)}</span>`).join('');
+      if (abStatusEl) { abStatusEl.classList.toggle('active', abLinks.length > 0); abStatusEl.style.display = abLinks.length > 0 ? '' : 'none'; }
     }
   }
 };
@@ -2435,8 +2467,8 @@ const SearchPanel = {
   _filteredCards: [],
   _page: 0,
   _perPage: 99999,
-  _t: { ebCat:new Set(), ebLv:new Set(), ebCond:new Set(), ebspEff:new Set(), sqCat:new Set(), sqGauge:new Set(), sqTrig:new Set(), sqEff:new Set(), sqspEff:new Set(), spEff:new Set(), skEff:new Set() },
-  _tStyle: { ebCat:'eb', ebLv:'eb', ebCond:'eb', ebspEff:'eb', sqCat:'sq', sqGauge:'sq', sqTrig:'sq', sqEff:'sq', sqspEff:'sq', spEff:'sp', skEff:'pl' },
+  _t: { ebCat:new Set(), ebLv:new Set(), ebCond:new Set(), ebspEff:new Set(), sqCat:new Set(), sqGauge:new Set(), sqTrig:new Set(), sqEff:new Set(), sqspEff:new Set(), abCat:new Set(), spEff:new Set(), skEff:new Set() },
+  _tStyle: { ebCat:'eb', ebLv:'eb', ebCond:'eb', ebspEff:'eb', sqCat:'sq', sqGauge:'sq', sqTrig:'sq', sqEff:'sq', sqspEff:'sq', abCat:'ab', spEff:'sp', skEff:'pl' },
 
   init() {
     this._updateCategoryButtons();
@@ -2529,7 +2561,7 @@ const SearchPanel = {
         document.querySelectorAll('.tbtn').forEach(btn => {
           const container = btn.closest('.toggle-filter');
           if (!container) return;
-          const groupMap = { 'ebCategoryBtns':'ebCat','ebLevelBtns':'ebLv','ebCondBtns':'ebCond','ebspEffectBtns':'ebspEff','sqCategoryBtns':'sqCat','sqGaugeBtns':'sqGauge','sqTriggerBtns':'sqTrig','sqEffectBtns':'sqEff','sqspEffectBtns':'sqspEff','spEffectBtns':'spEff','skillEffectBtns':'skEff' };
+          const groupMap = { 'ebCategoryBtns':'ebCat','ebLevelBtns':'ebLv','ebCondBtns':'ebCond','ebspEffectBtns':'ebspEff','sqCategoryBtns':'sqCat','sqGaugeBtns':'sqGauge','sqTriggerBtns':'sqTrig','sqEffectBtns':'sqEff','sqspEffectBtns':'sqspEff','abCategoryBtns':'abCat','spEffectBtns':'spEff','skillEffectBtns':'skEff' };
           const group = groupMap[container.id];
           if (group && this._t[group].has(btn.dataset.key)) btn.classList.add('active-' + this._tStyle[group]);
         });
@@ -2541,13 +2573,13 @@ const SearchPanel = {
   _updateFilterVisibility() {
     const t = this._lockedType;
     this._updateCategoryButtons();
-    const containerGroupMap = { 'ebCategoryBtns':'ebCat','ebLevelBtns':'ebLv','ebCondBtns':'ebCond','ebspEffectBtns':'ebspEff','sqCategoryBtns':'sqCat','sqGaugeBtns':'sqGauge','sqTriggerBtns':'sqTrig','sqEffectBtns':'sqEff','sqspEffectBtns':'sqspEff','spEffectBtns':'spEff','skillEffectBtns':'skEff' };
+    const containerGroupMap = { 'ebCategoryBtns':'ebCat','ebLevelBtns':'ebLv','ebCondBtns':'ebCond','ebspEffectBtns':'ebspEff','sqCategoryBtns':'sqCat','sqGaugeBtns':'sqGauge','sqTriggerBtns':'sqTrig','sqEffectBtns':'sqEff','sqspEffectBtns':'sqspEff','abCategoryBtns':'abCat','spEffectBtns':'spEff','skillEffectBtns':'skEff' };
     document.querySelectorAll('#filterSheet [data-for]').forEach(el => {
       const hidden = t && el.dataset.for !== t;
       el.style.display = hidden ? 'none' : '';
       if (hidden) {
-        if (el.classList.contains('tbtn')) { const group = containerGroupMap[el.closest('.toggle-filter')?.id]; if (group) { this._t[group].delete(el.dataset.key); el.classList.remove('active-eb','active-sq','active-pl'); } }
-        el.querySelectorAll('.tbtn').forEach(btn => { const group = containerGroupMap[btn.closest('.toggle-filter')?.id]; if (group) { this._t[group].delete(btn.dataset.key); btn.classList.remove('active-eb','active-sq','active-pl'); } });
+        if (el.classList.contains('tbtn')) { const group = containerGroupMap[el.closest('.toggle-filter')?.id]; if (group) { this._t[group].delete(el.dataset.key); el.classList.remove('active-eb','active-sq','active-ab','active-pl'); } }
+        el.querySelectorAll('.tbtn').forEach(btn => { const group = containerGroupMap[btn.closest('.toggle-filter')?.id]; if (group) { this._t[group].delete(btn.dataset.key); btn.classList.remove('active-eb','active-sq','active-ab','active-pl'); } });
         el.querySelectorAll('input[type="checkbox"]').forEach(cb => { cb.checked = false; });
       }
     });
@@ -2648,6 +2680,8 @@ const SearchPanel = {
     if (this._t.sqEff.size > 0) cards = cards.filter(c => c.sq_skill_effect_tags && c.sq_skill_effect_tags.some(t => this._t.sqEff.has(t)));
     if (this._t.sqspEff.size > 0) cards = cards.filter(c => c.sqsp_effect_tags && c.sqsp_effect_tags.some(t => this._t.sqspEff.has(t)));
     if (this._t.ebspEff.size > 0) cards = cards.filter(c => c.ebsp_effect_tags && c.ebsp_effect_tags.some(t => this._t.ebspEff.has(t)));
+    const abCat = this._t.abCat;
+    if (abCat.size > 0) cards = cards.filter(c => (abCat.has('ab_link') && c.has_ab_link));
     if (this._t.spEff.size > 0) cards = cards.filter(c => c.sp_effect_tags && c.sp_effect_tags.some(t => this._t.spEff.has(t)));
     const skillName = document.getElementById('filterSkillName').value;
     if (skillName) cards = cards.filter(c => c.skill_name === skillName);
@@ -2720,6 +2754,7 @@ const SearchPanel = {
           ${card.has_ocr ? '<div class="thumb-ocr-badge">OCR</div>' : ''}
           ${isSq ? '<div class="thumb-sq-badge">SQ</div>' : ''}
           ${isEb ? '<div class="thumb-eb-badge">EB</div>' : ''}
+          ${card.has_ab_link ? '<div class="thumb-ab-badge">AB</div>' : ''}
           <div class="thumb-card-info">
             <div class="thumb-card-number">${card.number}</div>
             <div class="thumb-card-name">${escapeHtml(card.name || '')}</div>
