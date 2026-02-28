@@ -62,11 +62,13 @@ select,input{font-family:inherit}
   display:flex;align-items:center;gap:3px;overflow:hidden;flex-shrink:1;min-width:0;
 }
 .hdr-link-name{
-  font-size:0.55rem;font-weight:bold;white-space:nowrap;padding:1px 4px;border-radius:3px;
+  font-size:0.7rem;font-weight:bold;white-space:nowrap;padding:1px 5px;border-radius:3px;
   overflow:hidden;text-overflow:ellipsis;
 }
 .hdr-link-name.sq{color:#ff8cc8;background:rgba(255,105,180,0.15);border:1px solid rgba(255,105,180,0.3)}
+.hdr-link-name.sq.inactive{color:#664455;background:rgba(255,105,180,0.05);border:1px solid rgba(255,105,180,0.1);font-weight:normal;font-size:0.6rem}
 .hdr-link-name.eb{color:#ffb74d;background:rgba(255,152,0,0.15);border:1px solid rgba(255,152,0,0.3)}
+.hdr-link-name.eb.inactive{color:#665530;background:rgba(255,152,0,0.05);border:1px solid rgba(255,152,0,0.1);font-weight:normal;font-size:0.6rem}
 .hdr-spacer{flex:1}
 .rec-btn{
   background:linear-gradient(135deg,#d32f2f,#b71c1c);border:1px solid #f44336;border-radius:4px;
@@ -2392,16 +2394,22 @@ const UIRenderer = {
         return `<div class="link-chip${isActive ? ' active' : ''}"><span class="link-chip-name">${escapeHtml(name)}</span><span class="link-chip-count">${info.count}/${info.required}</span></div>`;
       }).join('');
     }
-    // Header: show active SQ/EB link names next to their badges
+    // Header: show all SQ/EB link names (active = bold, inactive = dim)
     const hdrSq = document.getElementById('hdrSqLinks');
     const hdrEb = document.getElementById('hdrEbLinks');
     if (hdrSq) {
-      const activeSq = special.filter(([, info]) => info.is_sq_link && info.count >= info.required);
-      hdrSq.innerHTML = activeSq.map(([name]) => `<span class="hdr-link-name sq">${escapeHtml(name)}</span>`).join('');
+      const sqLinks = special.filter(([, info]) => info.is_sq_link);
+      hdrSq.innerHTML = sqLinks.map(([name, info]) => {
+        const active = info.count >= info.required;
+        return `<span class="hdr-link-name sq${active ? '' : ' inactive'}">${escapeHtml(name)}</span>`;
+      }).join('');
     }
     if (hdrEb) {
-      const activeEb = special.filter(([, info]) => info.is_eb_link && info.count >= info.required);
-      hdrEb.innerHTML = activeEb.map(([name]) => `<span class="hdr-link-name eb">${escapeHtml(name)}</span>`).join('');
+      const ebLinks = special.filter(([, info]) => info.is_eb_link);
+      hdrEb.innerHTML = ebLinks.map(([name, info]) => {
+        const active = info.count >= info.required;
+        return `<span class="hdr-link-name eb${active ? '' : ' inactive'}">${escapeHtml(name)}</span>`;
+      }).join('');
     }
   }
 };
