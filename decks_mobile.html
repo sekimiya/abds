@@ -173,15 +173,6 @@ select,input{font-family:inherit}
 }
 .dp-cost-val .cost-label{color:#aa8a42;font-size:0.35rem}
 .dp-cost-val .cost-num{font-size:0.45rem;line-height:1}
-.dp-terrain{
-  padding:0 0.1rem;border-radius:2px;font-size:0.35rem;font-weight:bold;
-  background:#1a1a1a;border:1px solid #333;
-}
-.dp-terrain.rank-S{color:#ff8a80;border-color:#c62828}
-.dp-terrain.rank-A{color:#82b1ff;border-color:#1565c0}
-.dp-terrain.rank-B{color:#a5d6a7;border-color:#2e7d32}
-.dp-terrain.rank-C{color:#ffcc80;border-color:#e65100}
-.dp-terrain.rank-none{color:#444;border-color:#222}
 
 .dp-card-img-wrap{
   position:relative;background:#0f0f0f;border:1px solid #2a2a2a;border-radius:3px;
@@ -220,15 +211,14 @@ select,input{font-family:inherit}
 }
 .tactics-thumb{width:16px;height:16px;border-radius:2px;object-fit:cover}
 
-.deck-links{margin-top:0.3rem;display:flex;gap:0.3rem;align-items:center;flex-wrap:wrap}
-.deck-links-label{color:#888;font-size:0.7rem;flex-shrink:0}
+.deck-links{display:flex;gap:4px;align-items:center;flex-wrap:wrap;margin-bottom:0.3rem}
 .link-chip{
-  display:inline-flex;align-items:center;gap:2px;
+  display:inline-flex;align-items:center;gap:3px;
   background:#222;border:1px solid #555;border-radius:4px;
-  padding:0.1rem 0.4rem;font-size:0.6rem;color:#aaa;
+  padding:0.15rem 0.5rem;font-size:0.7rem;color:#aaa;
 }
 .link-chip .link-badge{
-  font-size:0.45rem;font-weight:bold;padding:0.05rem 0.15rem;
+  font-size:0.5rem;font-weight:bold;padding:0.05rem 0.2rem;
   border-radius:2px;color:#fff;letter-spacing:0.3px;
 }
 .link-chip .link-name{color:#aaa}
@@ -983,13 +973,6 @@ function renderDeckPreview(deck, cardData) {
     const unitCost = msCost + plCost;
     html += '<div class="dp-cost-row">';
     html += `<span class="dp-cost-val"><span class="cost-label">C</span><span class="cost-num">${unitCost || '-'}</span></span>`;
-    const tc = msOcr?.terrain_compatibility || null;
-    const tList = [{k:'ground',l:'地'},{k:'space',l:'宇'},{k:'desert',l:'砂'},{k:'water',l:'水'}];
-    tList.forEach(t => {
-      const rank = tc ? (tc[t.k] || null) : null;
-      const cls = rank ? `rank-${rank}` : 'rank-none';
-      html += `<span class="dp-terrain ${cls}">${t.l}:${rank || '-'}</span>`;
-    });
     html += '</div>';
 
     // MS card image
@@ -1115,6 +1098,18 @@ function renderDeckList(decks, cardData, tacticsMap) {
 
     html += `<div class="deck-entry${deckBgCls}" data-id="${deckId}">`;
 
+    // Active Links at top (with SQ/EB icons)
+    if (activeLinks.length > 0) {
+      html += '<div class="deck-links">';
+      activeLinks.forEach(lk => {
+        const typeCls = `link-${lk.type}`;
+        const badgeLabel = lk.type === 'sq' ? 'SQ' : (lk.type === 'eb' ? 'EB' : '');
+        const badgeHtml = badgeLabel ? `<span class="link-badge">${badgeLabel}</span>` : '';
+        html += `<span class="link-chip ${typeCls}">${badgeHtml}<span class="link-name">${escapeHtml(lk.name)}</span></span>`;
+      });
+      html += '</div>';
+    }
+
     // Header: deck name (tap to open in simulator)
     html += `<div class="deck-header">`;
     html += `<a class="deck-title" href="${escapeHtml(getDeckV2Url(deck))}">${name}</a>`;
@@ -1131,36 +1126,23 @@ function renderDeckList(decks, cardData, tacticsMap) {
     }
     if (comment) html += `<div class="deck-comment">${comment}</div>`;
 
-    // Tactics + Active Links
-    if (deck.tactics_main || deck.tactics_sub || activeLinks.length > 0) {
-      if (deck.tactics_main || deck.tactics_sub) {
-        html += '<div class="deck-tactics">';
-        html += '<span class="deck-tactics-label">作戦:</span>';
-        if (deck.tactics_main) {
-          const t = tacticsMap[deck.tactics_main];
-          const tName = t ? t.name : deck.tactics_main;
-          const tImg = t ? t.thumbnail_url : '';
-          html += `<span class="deck-tactics-card">${tImg ? `<img src="${tImg}" class="tactics-thumb">` : ''}${escapeHtml(tName)}</span>`;
-        }
-        if (deck.tactics_sub) {
-          const t = tacticsMap[deck.tactics_sub];
-          const tName = t ? t.name : deck.tactics_sub;
-          const tImg = t ? t.thumbnail_url : '';
-          html += `<span class="deck-tactics-card">${tImg ? `<img src="${tImg}" class="tactics-thumb">` : ''}${escapeHtml(tName)}</span>`;
-        }
-        html += '</div>';
+    // Tactics
+    if (deck.tactics_main || deck.tactics_sub) {
+      html += '<div class="deck-tactics">';
+      html += '<span class="deck-tactics-label">作戦:</span>';
+      if (deck.tactics_main) {
+        const t = tacticsMap[deck.tactics_main];
+        const tName = t ? t.name : deck.tactics_main;
+        const tImg = t ? t.thumbnail_url : '';
+        html += `<span class="deck-tactics-card">${tImg ? `<img src="${tImg}" class="tactics-thumb">` : ''}${escapeHtml(tName)}</span>`;
       }
-      if (activeLinks.length > 0) {
-        html += '<div class="deck-links">';
-        html += '<span class="deck-links-label">LINK:</span>';
-        activeLinks.forEach(lk => {
-          const typeCls = `link-${lk.type}`;
-          const badgeLabel = lk.type === 'sq' ? 'SQ' : (lk.type === 'eb' ? 'EB' : '');
-          const badgeHtml = badgeLabel ? `<span class="link-badge">${badgeLabel}</span>` : '';
-          html += `<span class="link-chip ${typeCls}">${badgeHtml}<span class="link-name">${escapeHtml(lk.name)}</span></span>`;
-        });
-        html += '</div>';
+      if (deck.tactics_sub) {
+        const t = tacticsMap[deck.tactics_sub];
+        const tName = t ? t.name : deck.tactics_sub;
+        const tImg = t ? t.thumbnail_url : '';
+        html += `<span class="deck-tactics-card">${tImg ? `<img src="${tImg}" class="tactics-thumb">` : ''}${escapeHtml(tName)}</span>`;
       }
+      html += '</div>';
     }
 
     // Preview
