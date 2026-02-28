@@ -820,6 +820,31 @@ select,input{font-family:inherit}
   </div>
 </div>
 
+<!-- ===== DECK POST MODAL ===== -->
+<div class="modal-overlay" id="deckPostModal">
+  <div class="modal-content" style="max-width:400px">
+    <button class="modal-close" onclick="document.getElementById('deckPostModal').classList.remove('open')">&times;</button>
+    <h3 style="color:var(--accent);margin-bottom:0.8rem;font-size:1rem">デッキ投稿</h3>
+    <div style="margin-bottom:8px">
+      <label style="font-size:0.75rem;color:#888">デッキ名 *</label>
+      <input type="text" class="search-input" id="postDeckName" placeholder="デッキ名を入力" style="width:100%;box-sizing:border-box">
+    </div>
+    <div style="margin-bottom:8px">
+      <label style="font-size:0.75rem;color:#888">投稿者名</label>
+      <input type="text" class="search-input" id="postAuthor" placeholder="匿名" style="width:100%;box-sizing:border-box">
+    </div>
+    <div style="margin-bottom:8px">
+      <label style="font-size:0.75rem;color:#888">コメント</label>
+      <textarea class="search-input" id="postComment" placeholder="デッキの説明など" rows="3" style="width:100%;box-sizing:border-box;resize:vertical"></textarea>
+    </div>
+    <div style="margin-bottom:12px">
+      <label style="font-size:0.75rem;color:#888">削除パスワード（任意）</label>
+      <input type="password" class="search-input" id="postDeletePassword" placeholder="後から削除する場合" style="width:100%;box-sizing:border-box">
+    </div>
+    <button class="menu-btn primary" style="width:100%" onclick="DeckManager._doPost()">投稿する</button>
+  </div>
+</div>
+
 <!-- HAMBURGER MENU -->
 <div class="menu-overlay" id="menuOverlay" onclick="toggleMenu()"></div>
 <div class="menu-panel" id="menuPanel">
@@ -830,6 +855,10 @@ select,input{font-family:inherit}
     <button class="menu-btn primary" onclick="DeckManager.save()">保存</button>
     <button class="menu-btn" onclick="DeckManager.showLoadModal();toggleMenu()">読込</button>
     <button class="menu-btn" onclick="DeckManager.copyCode()">共有</button>
+  </div>
+  <div class="menu-row">
+    <button class="menu-btn" onclick="DeckManager.postToServer()">デッキ投稿</button>
+    <a class="menu-btn" href="./decks.html" style="text-decoration:none;text-align:center">デッキ一覧</a>
   </div>
   <div class="menu-row">
     <button class="menu-btn" id="undoBtn" onclick="UndoManager.undo()" disabled>← 戻す</button>
@@ -856,6 +885,22 @@ select,input{font-family:inherit}
 
 <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 <script>
+// ================================================================
+// Supabase設定
+// ================================================================
+const SUPABASE_URL = 'https://hwavpmbdtxuffrlumlrf.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh3YXZwbWJkdHh1ZmZybHVtbHJmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE5NTQyOTIsImV4cCI6MjA4NzUzMDI5Mn0.Y9Q_zIhzSMdxjxI9pXpAzpOWyfbojkrJ-ueqiGaHNK0';
+const SB_HEADERS = {
+  'apikey': SUPABASE_ANON_KEY,
+  'Authorization': 'Bearer ' + SUPABASE_ANON_KEY,
+  'Content-Type': 'application/json'
+};
+async function sha256(text) {
+  const data = new TextEncoder().encode(text);
+  const hash = await crypto.subtle.digest('SHA-256', data);
+  return [...new Uint8Array(hash)].map(b => b.toString(16).padStart(2, '0')).join('');
+}
+
 // ================================================================
 // AppState - グローバル状態管理
 // ================================================================
@@ -1530,7 +1575,8 @@ const DeckManager = {
   },
   copyCode() {
     const code = this.generateCode();
-    navigator.clipboard.writeText(location.origin + '/m#' + code).then(() => {
+    const base = location.origin + location.pathname.replace(/[^/]*$/, '') + 'mobile.html';
+    navigator.clipboard.writeText(base + '#' + code).then(() => {
       Toast.show('デッキURLをコピーしました', 'success');
     });
   },
@@ -1585,7 +1631,7 @@ const DeckManager = {
         await this._applyNumbers(numbers);
         if (isCopy) {
           AppState._lastDeckName = '';
-          history.replaceState(null, '', '/m#' + code);
+          history.replaceState(null, '', location.pathname + '#' + code);
           Toast.show('デッキをコピーしました', 'success');
         } else { Toast.show('URLからデッキを復元しました', 'info'); }
         return;
@@ -1646,6 +1692,44 @@ const DeckManager = {
     localStorage.setItem('gab_decks', JSON.stringify(decks));
     this.showLoadModal();
     Toast.show(`デッキ「${name}」を削除しました`, 'info');
+  },
+  postToServer() {
+    if (!AppState.deck.some(n => n)) { Toast.show('デッキにカードがありません', 'error'); return; }
+    toggleMenu();
+    const nameInput = document.getElementById('deckNameInput');
+    const postName = document.getElementById('postDeckName');
+    if (nameInput && nameInput.value.trim() && postName) postName.value = nameInput.value.trim();
+    document.getElementById('deckPostModal').classList.add('open');
+  },
+  async _doPost() {
+    const deckName = document.getElementById('postDeckName').value.trim();
+    if (!deckName) { Toast.show('デッキ名を入力してください', 'error'); return; }
+    const author = document.getElementById('postAuthor').value.trim() || '匿名';
+    const comment = document.getElementById('postComment').value.trim();
+    const password = document.getElementById('postDeletePassword').value;
+    const cards = AppState.deck.map(n => n || '');
+    if (AppState.tacticsMain || AppState.tacticsSub) { cards.push(AppState.tacticsMain || ''); cards.push(AppState.tacticsSub || ''); }
+    const id = crypto.randomUUID().slice(0, 8);
+    const now = new Date().toISOString();
+    const payload = {
+      id, deck_name: deckName, comment, cards,
+      author, tactics_main: AppState.tacticsMain || null, tactics_sub: AppState.tacticsSub || null,
+      created_at: now, timestamp: now, likes: 0
+    };
+    if (password) payload.delete_password_hash = await sha256(password);
+    try {
+      const res = await fetch(SUPABASE_URL + '/rest/v1/decks', {
+        method: 'POST',
+        headers: { ...SB_HEADERS, 'Prefer': 'return=representation' },
+        body: JSON.stringify(payload)
+      });
+      if (!res.ok) { const e = await res.text(); throw new Error(e); }
+      document.getElementById('deckPostModal').classList.remove('open');
+      Toast.show('デッキを投稿しました！', 'success');
+    } catch (err) {
+      console.error('Deck post error:', err);
+      Toast.show('投稿に失敗しました: ' + err.message, 'error');
+    }
   },
 };
 </script>
