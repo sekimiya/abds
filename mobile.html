@@ -423,10 +423,21 @@ select,input{font-family:inherit}
 .deck-name-input:focus{border-color:var(--accent);outline:none}
 .terrain-sel{min-height:36px}
 .terrain-sel.active{background:#1e2924;border-color:var(--accent);color:var(--accent)}
-.cache-info-row{display:flex;align-items:center;gap:6px;font-size:0.7rem;color:#aaa}
-.cache-info-row .cache-count{flex:1}
-.menu-links{margin-top:auto;padding-top:8px;border-top:1px solid #333;display:flex;flex-direction:column;gap:6px}
-.menu-links a{color:var(--accent);font-size:0.8rem}
+.cache-menu-section{
+  margin-top:auto;
+  background:linear-gradient(135deg,rgba(255,60,60,0.08),rgba(255,100,60,0.04));
+  border:1px solid rgba(255,80,80,0.3);border-radius:10px;
+  padding:0.6rem 0.7rem;display:flex;flex-direction:column;gap:0.4rem;
+}
+.cache-menu-header{display:flex;align-items:center;gap:0.4rem}
+.cache-menu-icon{font-size:1rem;color:#ff6b6b;filter:drop-shadow(0 0 4px rgba(255,107,107,0.4))}
+.cache-menu-title{font-size:0.8rem;font-weight:700;color:#ff8a80}
+.cache-menu-count{font-size:0.75rem;color:#ffab91}
+.cache-menu-btn{
+  background:rgba(255,80,80,0.12);border:1px solid rgba(255,80,80,0.4);border-radius:6px;
+  color:#ff8a80;padding:0.3rem 0.6rem;font-size:0.75rem;cursor:pointer;transition:all 0.15s;
+}
+.cache-menu-btn:hover{background:rgba(255,80,80,0.25);border-color:#ff6b6b;color:#fff}
 
 /* ===== TOAST ===== */
 .toast-container{position:fixed;top:40px;right:8px;z-index:10000;display:flex;flex-direction:column;gap:6px}
@@ -873,13 +884,15 @@ select,input{font-family:inherit}
     <button class="menu-btn terrain-sel" data-terrain="desert" onclick="setActiveTerrain('desert')">砂漠</button>
     <button class="menu-btn terrain-sel" data-terrain="water" onclick="setActiveTerrain('water')">水中</button>
   </div>
-  <div class="menu-divider"></div>
-  <span class="menu-label">画像キャッシュ</span>
-  <div class="cache-info-row" id="cacheInfoRow">
-    <span class="cache-count" id="cacheCount">キャッシュ: 0枚</span>
-    <button class="menu-btn" onclick="ImageCache.openModal();toggleMenu()" style="flex:0;padding:4px 10px">管理</button>
+  <div class="cache-menu-section">
+    <div class="cache-menu-header">
+      <span class="cache-menu-icon">&#9888;</span>
+      <span class="cache-menu-title">画像キャッシュ</span>
+    </div>
+    <div class="cache-menu-count" id="cacheCount">キャッシュ: 0枚</div>
+    <button class="cache-menu-btn" onclick="ImageCache.openModal();toggleMenu()">キャッシュ管理</button>
   </div>
-  <div style="margin-top:auto;border-top:1px solid #333;padding-top:8px">
+  <div style="border-top:1px solid #333;padding-top:8px">
     <a href="./index.html?force" class="menu-btn" style="text-decoration:none;display:block;text-align:center;border-color:#68efbd;color:#68efbd" onclick="this.href='./index.html?force'+location.hash">デスクトップ版</a>
   </div>
 </div>
