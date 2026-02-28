@@ -1119,6 +1119,9 @@ select,input{font-family:inherit}
         <button class="header-btn" onclick="DeckManager.copyCode()" title="コード共有">共有</button>
       </div>
       <div class="header-menu-row">
+        <button class="header-btn" onclick="DeckManager.tweetDeck()" style="border-color:#1d9bf0;color:#1d9bf0;flex:1">Xに投稿</button>
+      </div>
+      <div class="header-menu-row">
         <button class="header-btn" onclick="DeckManager.postToServer()">デッキ投稿</button>
       </div>
       <div class="header-menu-row">
@@ -2093,6 +2096,15 @@ const DeckManager = {
       Toast.show('デッキURLをコピーしました', 'success');
     });
   },
+  tweetDeck() {
+    if (!AppState.deck.some(n => n)) { Toast.show('デッキにカードがありません', 'error'); return; }
+    closeHeaderMenu();
+    const code = this.generateCode();
+    const url = location.origin + '/v2#' + code;
+    const name = document.getElementById('deckNameInput')?.value.trim() || 'マイデッキ';
+    const text = name + ' のデッキレシピ #アーセナルベース #ABDS';
+    window.open('https://x.com/intent/tweet?text=' + encodeURIComponent(text) + '&url=' + encodeURIComponent(url), '_blank');
+  },
 
   async importCode() {
     const code = document.getElementById('deckCodeImport').value.trim();
@@ -2858,7 +2870,7 @@ const UIRenderer = {
 
   _renderUnitStats(u, msOcr, plOcr) {
     const container = document.getElementById(`unit-stats-${u}`);
-    const maxVal = 660;
+    const maxVal = 1000;
 
     const getStats = (ocr) => ({
       mobility: safeInt(ocr?.stats?.mobility),
