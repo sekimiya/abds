@@ -246,6 +246,8 @@ select,input{font-family:inherit}
 .btn-action.btn-copy-deck:hover{background:rgba(255,224,130,0.15)}
 .btn-action.btn-share{border-color:var(--accent);color:var(--accent)}
 .btn-action.btn-share:hover{background:rgba(104,239,189,0.15)}
+.btn-action.btn-tweet{border-color:#1DA1F2;color:#1DA1F2}
+.btn-action.btn-tweet:hover{background:rgba(29,161,242,0.15)}
 .btn-action.copied{border-color:var(--accent);color:var(--accent)}
 .btn-like{
   background:transparent;border:1px solid #555;border-radius:4px;
@@ -286,21 +288,22 @@ select,input{font-family:inherit}
 .comment-name{color:var(--accent);font-weight:bold;font-size:0.7rem}
 .comment-time{color:#555;font-size:0.6rem}
 .comment-text{color:#ccc;line-height:1.4;word-break:break-word;font-size:0.75rem}
-.comment-form{display:flex;gap:4px;margin-top:0.4rem;align-items:flex-start}
+.comment-form{display:flex;flex-direction:column;gap:6px;margin-top:0.4rem}
+.comment-form-row{display:flex;gap:6px;align-items:center}
 .comment-name-input{
   background:#111;border:1px solid #333;border-radius:4px;color:#ccc;
-  padding:0.3rem 0.4rem;font-size:0.7rem;width:70px;flex-shrink:0;min-height:36px;
+  padding:0.4rem 0.5rem;font-size:0.8rem;flex:1;min-height:44px;
 }
 .comment-text-input{
   background:#111;border:1px solid #333;border-radius:4px;color:#ccc;
-  padding:0.3rem 0.4rem;font-size:0.7rem;flex:1;min-height:36px;
+  padding:0.4rem 0.5rem;font-size:0.8rem;width:100%;min-height:60px;
   resize:vertical;font-family:inherit;
 }
 .comment-name-input:focus,.comment-text-input:focus{border-color:var(--accent);outline:none}
 .comment-submit{
   background:#1e2924;border:1px solid #3a5a4a;border-radius:4px;
-  color:var(--accent);padding:0.3rem 0.5rem;font-size:0.7rem;
-  white-space:nowrap;transition:all 0.15s;flex-shrink:0;min-height:36px;
+  color:var(--accent);padding:0.4rem 0.8rem;font-size:0.8rem;
+  white-space:nowrap;transition:all 0.15s;flex-shrink:0;min-height:44px;
 }
 .comment-submit:hover{background:#2a4a35;border-color:var(--accent)}
 .comment-submit:disabled{opacity:0.4;cursor:default}
@@ -809,19 +812,38 @@ function copyDeckToLocal(deck, btn) {
   setTimeout(() => { btn.textContent = orig; btn.style.borderColor = ''; btn.style.color = ''; }, 2000);
 }
 
+function fallbackCopy(text) {
+  const ta = document.createElement('textarea');
+  ta.value = text;
+  ta.style.cssText = 'position:fixed;left:-9999px;top:-9999px;opacity:0';
+  document.body.appendChild(ta);
+  ta.focus();
+  ta.select();
+  let ok = false;
+  try { ok = document.execCommand('copy'); } catch {}
+  document.body.removeChild(ta);
+  return ok;
+}
+
 async function copyShareUrl(deck, btn) {
   const code = generateDeckCode(deck);
   const base = location.origin + location.pathname.replace(/[^/]*$/, '') + 'mobile.html';
   const sc = await ShortUrl.create(code);
   const url = sc ? base + '#s:' + sc : getDeckV2Url(deck);
+  let copied = false;
   try {
     await navigator.clipboard.writeText(url);
+    copied = true;
+  } catch {
+    copied = fallbackCopy(url);
+  }
+  if (copied) {
     btn.textContent = 'Copied!';
     btn.classList.add('copied');
     showToast('短縮URLをコピーしました');
     setTimeout(() => { btn.textContent = '共有URL'; btn.classList.remove('copied'); }, 2000);
-  } catch {
-    showToast('コピーに失敗しました');
+  } else {
+    prompt('URLをコピーしてください:', url);
   }
 }
 
@@ -1157,10 +1179,11 @@ function renderDeckList(decks, cardData, tacticsMap) {
     // Preview
     html += renderDeckPreview(deck, cardData);
 
-    // Action buttons (1 row, no Tweet button)
+    // Action buttons
     html += '<div class="deck-action-row">';
     html += `<button class="btn-action btn-copy-deck" data-idx="${idx}">コピー</button>`;
     html += `<button class="btn-action btn-share" data-idx="${idx}">共有URL</button>`;
+    html += `<button class="btn-action btn-tweet" data-idx="${idx}">Twitterに投稿</button>`;
     if (deckId) {
       const likes = deck.likes || 0;
       const liked = isLiked(deckId);
@@ -1190,10 +1213,11 @@ function renderDeckList(decks, cardData, tacticsMap) {
       html += '</div>';
       html += `<div id="reply-indicator-${deckId}" style="display:none"></div>`;
       html += '<div class="comment-form">';
+      html += `<textarea class="comment-text-input" id="ctext-${deckId}" placeholder="コメント..." maxlength="500" rows="2"></textarea>`;
+      html += '<div class="comment-form-row">';
       html += `<input class="comment-name-input" id="cname-${deckId}" placeholder="${getDefaultName()}" maxlength="20">`;
-      html += `<textarea class="comment-text-input" id="ctext-${deckId}" placeholder="コメント..." maxlength="500" rows="1"></textarea>`;
       html += `<button class="comment-submit" data-deck-id="${deckId}">送信</button>`;
-      html += '</div></div></div>';
+      html += '</div></div></div></div>';
     }
 
     html += '</div>'; // .deck-entry
@@ -1218,6 +1242,21 @@ function renderDeckList(decks, cardData, tacticsMap) {
       e.stopPropagation();
       const deck = sorted[parseInt(el.dataset.idx)];
       copyDeckToLocal(deck, el);
+    });
+  });
+
+  // Tweet buttons
+  document.querySelectorAll('.btn-tweet').forEach(el => {
+    el.addEventListener('click', async e => {
+      e.stopPropagation();
+      const deck = sorted[parseInt(el.dataset.idx)];
+      const name = deck.deck_name || 'デッキ';
+      const code = generateDeckCode(deck);
+      const base = location.origin + location.pathname.replace(/[^/]*$/, '') + 'mobile.html';
+      const sc = await ShortUrl.create(code);
+      const url = sc ? base + '#s:' + sc : getDeckV2Url(deck);
+      const text = `${name} のデッキレシピ #アーセナルベース #ABDS`;
+      window.open('https://x.com/intent/tweet?text=' + encodeURIComponent(text) + '&url=' + encodeURIComponent(url), '_blank');
     });
   });
 
