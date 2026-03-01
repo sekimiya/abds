@@ -218,51 +218,53 @@ select,input{font-family:inherit}
 .detail-header-v2{
   background:linear-gradient(135deg,#1a1a2e 0%,#16213e 50%,#0f3460 100%);
   border:1px solid rgba(130,177,255,0.2);border-radius:8px;
-  padding:10px;margin-bottom:8px;position:relative;overflow:hidden;
+  padding:6px 8px;margin-bottom:6px;position:relative;overflow:hidden;
 }
 .detail-header-v2::before{
   content:'';position:absolute;top:0;left:0;right:0;height:1px;
   background:linear-gradient(90deg,transparent,rgba(130,177,255,0.5),transparent);
 }
-.detail-header-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.detail-header-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:5px}
 .unit-total-cost{
-  display:flex;align-items:baseline;gap:4px;
+  display:flex;align-items:baseline;gap:3px;
   background:linear-gradient(135deg,rgba(255,224,130,0.15),rgba(255,224,130,0.05));
-  border:1px solid rgba(255,224,130,0.3);border-radius:6px;padding:4px 10px;
+  border:1px solid rgba(255,224,130,0.3);border-radius:4px;padding:2px 8px;
 }
-.unit-total-cost .cost-label{font-size:0.65rem;color:rgba(255,224,130,0.7);font-weight:bold;letter-spacing:1px}
-.unit-total-cost .cost-value{font-size:1.3rem;font-weight:900;color:var(--gold);
-  text-shadow:0 0 8px rgba(255,224,130,0.4);font-variant-numeric:tabular-nums}
+.unit-total-cost .cost-label{font-size:0.55rem;color:rgba(255,224,130,0.7);font-weight:bold;letter-spacing:1px}
+.unit-total-cost .cost-value{font-size:1rem;font-weight:900;color:var(--gold);
+  text-shadow:0 0 6px rgba(255,224,130,0.4);font-variant-numeric:tabular-nums}
 .unit-cat-badge{
-  font-size:0.7rem;font-weight:bold;padding:3px 10px;border-radius:4px;
-  letter-spacing:1px;text-transform:uppercase;
+  font-size:0.6rem;font-weight:bold;padding:2px 8px;border-radius:3px;
+  letter-spacing:1px;
 }
 .unit-cat-badge.殲滅{background:rgba(139,26,26,0.6);color:var(--senmetsu);border:1px solid rgba(255,138,128,0.3)}
 .unit-cat-badge.制圧{background:rgba(26,74,139,0.6);color:var(--seiatsu);border:1px solid rgba(130,177,255,0.3)}
 .unit-cat-badge.防衛{background:rgba(26,107,26,0.6);color:var(--bouei);border:1px solid rgba(165,214,167,0.3)}
 .unit-card-line{
-  display:flex;align-items:center;gap:6px;padding:5px 8px;
-  border-radius:5px;margin-top:4px;position:relative;
+  display:flex;align-items:center;gap:4px;padding:3px 6px;
+  border-radius:4px;margin-top:3px;position:relative;
   background:rgba(255,255,255,0.03);border-left:3px solid #444;
 }
+.unit-card-line .card-cost{
+  font-size:0.6rem;font-weight:bold;flex-shrink:0;
+  font-variant-numeric:tabular-nums;min-width:28px;
+  background:rgba(255,224,130,0.1);border:1px solid rgba(255,224,130,0.2);
+  border-radius:3px;padding:1px 4px;color:var(--gold);text-align:center;
+}
 .unit-card-line .card-rarity{
-  font-size:0.6rem;font-weight:bold;padding:1px 5px;border-radius:3px;
-  min-width:22px;text-align:center;flex-shrink:0;
+  font-size:0.55rem;font-weight:bold;padding:1px 4px;border-radius:2px;
+  min-width:18px;text-align:center;flex-shrink:0;
 }
 .unit-card-line .card-type-icon{
-  font-size:0.55rem;font-weight:bold;padding:1px 4px;border-radius:2px;
+  font-size:0.5rem;font-weight:bold;padding:1px 3px;border-radius:2px;
   color:#fff;flex-shrink:0;letter-spacing:0.5px;
 }
 .unit-card-line .card-type-icon.sq{background:rgba(255,105,180,0.8)}
 .unit-card-line .card-type-icon.eb{background:rgba(255,152,0,0.8)}
 .unit-card-line .card-type-icon.ab{background:rgba(179,136,255,0.8)}
 .unit-card-line .card-name{
-  flex:1;font-weight:bold;font-size:0.9rem;text-align:center;
+  flex:1;font-weight:bold;font-size:0.75rem;text-align:center;
   white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
-}
-.unit-card-line .card-cost{
-  font-size:0.75rem;font-weight:bold;color:rgba(255,224,130,0.8);flex-shrink:0;
-  font-variant-numeric:tabular-nums;
 }
 .unit-card-line.ms-line{border-left-color:var(--ms-blue)}
 .unit-card-line.ms-line .card-name{color:var(--ms-blue)}
@@ -2269,13 +2271,13 @@ const UIRenderer = {
     if (msNumber) {
       const msHighlight = msType ? ` ${msType}-highlight` : '';
       html += `<div class="unit-card-line ms-line${msHighlight}">`;
+      html += `<span class="card-cost">${msCost}</span>`;
       if (msRarity) {
         const rc = msRarity.replace(/[^A-Za-z]/g, '');
         html += `<span class="card-rarity rarity-tag rarity-${rc}">${escapeHtml(msRarity)}</span>`;
       }
       if (msType) html += `<span class="card-type-icon ${msType}">${msType.toUpperCase()}</span>`;
       html += `<span class="card-name">${escapeHtml(msName)}</span>`;
-      html += `<span class="card-cost">C:${msCost}</span>`;
       html += '</div>';
     }
 
@@ -2283,13 +2285,13 @@ const UIRenderer = {
     if (plNumber) {
       const plHighlight = plType ? ` ${plType}-highlight` : '';
       html += `<div class="unit-card-line pl-line${plHighlight}">`;
+      html += `<span class="card-cost">${plCost}</span>`;
       if (plRarity) {
         const rc = plRarity.replace(/[^A-Za-z]/g, '');
         html += `<span class="card-rarity rarity-tag rarity-${rc}">${escapeHtml(plRarity)}</span>`;
       }
       if (plType) html += `<span class="card-type-icon ${plType}">${plType.toUpperCase()}</span>`;
       html += `<span class="card-name">${escapeHtml(plName)}</span>`;
-      html += `<span class="card-cost">C:${plCost}</span>`;
       html += '</div>';
     }
 
