@@ -340,6 +340,11 @@ select,input{font-family:inherit}
 .thumb-card:active{border-color:var(--accent)}
 .thumb-card.card-eb{border-color:rgba(255,152,0,0.5)}
 .thumb-card.card-sq{border-color:rgba(255,105,180,0.5)}
+.thumb-card.card-ab{border-color:rgba(179,136,255,0.5)}
+.thumb-card.card-eb.card-sq{border-image:linear-gradient(135deg,rgba(255,152,0,0.7),rgba(255,105,180,0.7)) 1}
+.thumb-card.card-eb.card-ab{border-image:linear-gradient(135deg,rgba(255,152,0,0.7),rgba(179,136,255,0.7)) 1}
+.thumb-card.card-sq.card-ab{border-image:linear-gradient(135deg,rgba(255,105,180,0.7),rgba(179,136,255,0.7)) 1}
+.thumb-card.card-eb.card-sq.card-ab{border-image:linear-gradient(135deg,rgba(255,152,0,0.7),rgba(255,105,180,0.7),rgba(179,136,255,0.7)) 1}
 .thumb-card-img-wrap{position:relative;width:100%;aspect-ratio:63/88;overflow:hidden;background:var(--bg-card)}
 .thumb-card-img-wrap img{width:100%;height:100%;display:block;object-fit:contain}
 .thumb-card-badges{position:absolute;top:1px;right:1px;display:flex;flex-direction:column;gap:1px;align-items:flex-end}
@@ -764,7 +769,7 @@ select,input{font-family:inherit}
       </div>
     </div>
     <div class="filter-group collapsed" id="filterGroupAb">
-      <div class="filter-group-title" onclick="toggleFilterGroup('filterGroupAb')" style="color:#66bb6a">AB</div>
+      <div class="filter-group-title" onclick="toggleFilterGroup('filterGroupAb')" style="color:#b388ff">AB</div>
       <div class="filter-group-body">
         <div class="toggle-filter" id="abCategoryBtns">
           <button class="tbtn" data-key="ab_link" onclick="SearchPanel.toggle('abCat',this)">ABリンク</button>
@@ -2845,7 +2850,8 @@ const SearchPanel = {
       const el = document.createElement('div');
       const isEb = card.has_eb || card.has_eb_skill || card.has_eb_link;
       const isSq = card.has_sqsp || card.has_sq_skill || card.has_sq_link || !!card.sq_rush_effect;
-      el.className = 'thumb-card' + (isEb ? ' card-eb' : '') + (isSq ? ' card-sq' : '');
+      const isAb = card.has_ab_link;
+      el.className = 'thumb-card' + (isEb ? ' card-eb' : '') + (isSq ? ' card-sq' : '') + (isAb ? ' card-ab' : '');
       const rarityHtml = card.rarity ? `<span class="thumb-card-rarity r-${escapeHtml(card.rarity)}">${escapeHtml(card.rarity)}</span>` : '';
       el.innerHTML = `
         <div class="thumb-card-img-wrap">
