@@ -118,7 +118,7 @@ def _build_ocr_file_map():
     ocr_dir = 'ocr_results_debug'
     file_map = {}
     if os.path.exists(ocr_dir):
-        number_pattern = re.compile(r'([A-Z0-9]+-\d{2,4})')
+        number_pattern = re.compile(r'([A-Z0-9\-]{2,}-\d{2,4}(?:_p\d+)?)')
         for fn in os.listdir(ocr_dir):
             if not fn.endswith('.json'):
                 continue

@@ -242,7 +242,7 @@ def load_unique_cards() -> List[Dict]:
             front_url = front_data.get("url")
             back_url = back_data.get("url")
         else:
-            match = re.match(r"([A-Z0-9]+-\d+)", json_file.stem)
+            match = re.match(r"([A-Za-z0-9_]+-\d+(?:_p\d+)?)", json_file.stem)
             if match:
                 card_number = match.group(1)
 
@@ -273,7 +273,7 @@ def get_existing_ocr_numbers() -> set:
         return existing
     for f in OCR_RESULTS_DIR.iterdir():
         if f.name.endswith("_basic.json"):
-            match = re.search(r"([A-Z0-9]+-[A-Z]?\d+)", f.name)
+            match = re.search(r"([A-Z0-9]+-[A-Z]?\d+(?:_p\d+)?)", f.name)
             if match:
                 existing.add(match.group(1))
     return existing
