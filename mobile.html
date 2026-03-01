@@ -1177,17 +1177,18 @@ function getLinkBuffs(ocr) {
     melee: { small: 0, medium: 0 },
     hp: { small: 0, medium: 0 }
   };
-  if (!ocr || !Array.isArray(ocr.link_abilities)) return buffs;
-  ocr.link_abilities.forEach(link => {
+  const links = ocr?.link_abilities || ocr?.link_ability || [];
+  if (!Array.isArray(links)) return buffs;
+  links.forEach(link => {
     const eff = link.effect || '';
     const condMatch = (link.condition || '').match(/(\d+)枚以上/);
-    if (!condMatch) return;
-    const required = parseInt(condMatch[1]);
+    const required = condMatch ? parseInt(condMatch[1]) : 2;
     let count = 0;
     for (let i = 0; i < 10; i++) {
       const d = AppState.deckOcr[i];
-      if (!d || !Array.isArray(d.link_abilities)) continue;
-      if (d.link_abilities.some(l => l.name === link.name)) count++;
+      if (!d) continue;
+      const dLinks = d.link_abilities || d.link_ability || [];
+      if (Array.isArray(dLinks) && dLinks.some(l => l.name === link.name)) count++;
     }
     if (count < required) return;
     if (eff.match(/機動力.*小アップ/)) buffs.mobility.small++;
@@ -2085,7 +2086,7 @@ const UIRenderer = {
     img.alt = number;
     img.onerror = function() { this.onerror = null; this.src = PLACEHOLDER_SVG; };
 
-    // Determine card type flags + badge (priority: SQ > EB > AB)
+    // Determine card type flags + badge (priority: EB > SQ > AB, consistent with glow)
     const badge = el.querySelector('.ov-badge');
     badge.textContent = '';
     badge.className = 'ov-badge';
@@ -2096,17 +2097,17 @@ const UIRenderer = {
       isSqCard = ocr?.special_attack?.sp_type === 'SQUAD SP' || !!(indexEntry?.has_sq_link);
       isEbCard = !!(ocr?.echoes_beat?.has_eb) || !!(indexEntry?.has_eb_link);
       isAbCard = !!(indexEntry?.has_ab_link);
-      if (isSqCard) { badge.textContent = 'SQ'; badge.className = 'ov-badge sq-b'; }
-      else if (ocr?.echoes_beat?.has_eb) { badge.textContent = 'EBSP'; badge.className = 'ov-badge eb-b'; }
+      if (ocr?.echoes_beat?.has_eb) { badge.textContent = 'EBSP'; badge.className = 'ov-badge eb-b'; }
       else if (isEbCard) { badge.textContent = 'EB'; badge.className = 'ov-badge eb-b'; }
+      else if (isSqCard) { badge.textContent = 'SQ'; badge.className = 'ov-badge sq-b'; }
       else if (isAbCard) { badge.textContent = 'AB'; badge.className = 'ov-badge ab-b'; }
     } else {
       const plSkill = ocr?.pilot_skill || ocr?.pl_skill;
       isSqCard = !!(plSkill?.has_sq_skill) || !!(indexEntry?.has_sq_link);
       isEbCard = !!(plSkill?.is_eb_skill) || !!(indexEntry?.has_eb_link);
       isAbCard = !!(indexEntry?.has_ab_link);
-      if (isSqCard) { badge.textContent = 'SQ'; badge.className = 'ov-badge sq-b'; }
-      else if (isEbCard) { badge.textContent = 'EB'; badge.className = 'ov-badge eb-b'; }
+      if (isEbCard) { badge.textContent = 'EB'; badge.className = 'ov-badge eb-b'; }
+      else if (isSqCard) { badge.textContent = 'SQ'; badge.className = 'ov-badge sq-b'; }
       else if (isAbCard) { badge.textContent = 'AB'; badge.className = 'ov-badge ab-b'; }
     }
 
@@ -2278,7 +2279,9 @@ const UIRenderer = {
       let terrainLabel = '';
       if (terrainBuff > 0) terrainLabel = ` <span class="stat-terrain-text positive">(+${terrainBuff})</span>`;
       else if (terrainBuff < 0) terrainLabel = ` <span class="stat-terrain-text negative">(${terrainBuff})</span>`;
-      html += `<div class="stat-row"><span class="stat-label">${labels[s]}</span><div class="stat-track"><div class="stat-bar-base" style="width:${basePct}%"></div><div class="stat-bar-buff" style="width:${linkBuffPct}%"></div>${terrainBarHtml}</div><span class="stat-value">${ms[s]}+${pl[s]}=${total}${linkBuff > 0 ? ' <span class="stat-buff-text">(+' + linkBuff + ')</span>' : ''}${terrainLabel}</span></div>`;
+      const baseLabel = `${ms[s]}+${pl[s]}=${base}`;
+      const buffLabel = linkBuff > 0 ? ` <span class="stat-buff-text">+${linkBuff}</span>` : '';
+      html += `<div class="stat-row"><span class="stat-label">${labels[s]}</span><div class="stat-track"><div class="stat-bar-base" style="width:${basePct}%"></div><div class="stat-bar-buff" style="width:${linkBuffPct}%"></div>${terrainBarHtml}</div><span class="stat-value">${baseLabel}${buffLabel}${terrainLabel}${(linkBuff > 0 || terrainBuff !== 0) ? ` → ${total}` : ''}</span></div>`;
     });
     html += '</div>';
     return html;
@@ -2431,7 +2434,7 @@ const UIRenderer = {
       const idx = this._getIndexEntry(cardNumber);
       if (ocr) totalCost += safeInt(ocr.cost);
       else if (idx) totalCost += safeInt(idx.cost);
-      if (!cardNumber) continue;
+      if (!cardNumber || i >= 5) continue; // category count: MS slots (0-4) only
       let cat = idx?.category;
       if (!cat || classCounts[cat] === undefined) cat = ocr?.card_label?.class;
       if (!cat || classCounts[cat] === undefined) cat = ocr?.category;
@@ -2501,7 +2504,7 @@ const UIRenderer = {
     if (allNormal.length === 0) { bar.innerHTML = ''; } else {
       bar.innerHTML = allNormal.map(([name, info]) => {
         const isActive = info.count >= info.required;
-        const tag = info.is_sq_link ? ' sq' : info.is_eb_link ? ' eb' : info.is_ab_link ? ' ab' : '';
+        const tag = info.is_eb_link ? ' eb' : info.is_sq_link ? ' sq' : info.is_ab_link ? ' ab' : '';
         return `<div class="link-chip${isActive ? ' active' : ''}${tag}"><span class="link-chip-name">${escapeHtml(name)}</span><span class="link-chip-count">${info.count}/${info.required}</span></div>`;
       }).join('');
     }
@@ -2825,7 +2828,7 @@ const SearchPanel = {
     const qt = sti ? sti.value.trim().toLowerCase() : '';
     if (qt) { const terms = qt.split(/\s+/); cards = cards.filter(c => { const txt = c.search_text || ''; return terms.every(t => txt.includes(t)); }); }
     const bmEl = document.getElementById('filterBookmarkCards');
-    if (bmEl && bmEl.checked) { const bmSet = CardBookmark.getAll(); const inResult = new Set(cards.map(c => c.number)); const bmCards = AppState.cardIndex.filter(c => bmSet.has(c.number) && !inResult.has(c.number)); cards = cards.concat(bmCards); }
+    if (bmEl && bmEl.checked) { const bmSet = CardBookmark.getAll(); cards = cards.filter(c => bmSet.has(c.number)); }
     this._filteredCards = cards;
     this._page = 0;
     this._renderGrid();
@@ -3074,16 +3077,21 @@ document.addEventListener('DOMContentLoaded', async () => {
     console.error('リンク索引の取得に失敗:', e);
   }
 
-  // Build SQ link name set from card_index has_sq_link + card_details link_abilities
+  // Build SQ link name set: collect links ONLY found on SQ-flagged cards, exclude links also on non-SQ cards
   try {
-    const sqSet = new Set();
+    const sqOnly = new Set();
+    const nonSq = new Set();
     AppState.cardIndex.forEach(c => {
-      if (!c.has_sq_link) return;
       const d = AppState.cardDetails[c.number];
       const links = d && d.ocr_data ? (d.ocr_data.link_abilities || d.ocr_data.link_ability || []) : [];
-      links.forEach(l => { if (l.name) sqSet.add(l.name); });
+      links.forEach(l => {
+        if (!l.name) return;
+        if (c.has_sq_link) sqOnly.add(l.name);
+        else nonSq.add(l.name);
+      });
     });
-    AppState._sqLinkNames = sqSet;
+    nonSq.forEach(n => sqOnly.delete(n));
+    AppState._sqLinkNames = sqOnly;
   } catch (e) { console.warn('SQ link set build failed:', e); }
 
   await DeckManager._autoLoad();
