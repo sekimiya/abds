@@ -1145,6 +1145,7 @@ select,input{font-family:inherit}
       <div class="header-menu-row">
         <button class="header-btn primary" onclick="DeckManager.save()" title="Ctrl+S">デッキ保存</button>
         <button class="header-btn" onclick="DeckManager.copyCode()" title="コード共有">デッキ共有</button>
+        <button class="header-btn" onclick="DeckManager.clearAll();closeHeaderMenu()" style="color:#f44336;border-color:#f44336">クリア</button>
       </div>
       <div class="header-menu-row" style="gap:0.3rem">
         <select id="deckLoadSelect" class="filter-select" style="flex:1;padding:0.4rem;font-size:0.85rem">
