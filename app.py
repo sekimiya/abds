@@ -184,6 +184,34 @@ _link_index_etag = None         # ETag文字列
 _all_details_etag = None        # ETag文字列
 
 # --- バックグラウンド収集タスクの状態管理 ---
+_COLLECT_HISTORY_FILE = 'collect_history.json'
+
+def _load_collect_history():
+    """前回のカード収集結果をファイルから復元"""
+    if os.path.exists(_COLLECT_HISTORY_FILE):
+        try:
+            with open(_COLLECT_HISTORY_FILE, 'r', encoding='utf-8') as f:
+                return json.load(f)
+        except Exception:
+            pass
+    return None
+
+def _save_collect_history(status):
+    """カード収集結果をファイルに永続化"""
+    history = {
+        'collected_cards': status['collected_cards'],
+        'total_series': status['total_series'],
+        'started_at': status['started_at'],
+        'finished_at': status['finished_at'],
+        'error_count': len(status['errors']),
+    }
+    try:
+        with open(_COLLECT_HISTORY_FILE, 'w', encoding='utf-8') as f:
+            json.dump(history, f, ensure_ascii=False, indent=2)
+    except Exception:
+        pass
+
+_prev_collect = _load_collect_history()
 _collect_status = {
     "running": False,
     "current_series": "",
@@ -192,8 +220,8 @@ _collect_status = {
     "collected_cards": 0,
     "errors": [],
     "log": [],
-    "started_at": None,
-    "finished_at": None,
+    "started_at": _prev_collect.get('started_at') if _prev_collect else None,
+    "finished_at": _prev_collect.get('finished_at') if _prev_collect else None,
 }
 _collect_lock = threading.Lock()
 
@@ -2165,6 +2193,7 @@ def _run_collection():
         with _collect_lock:
             _collect_status["running"] = False
             _collect_status["finished_at"] = time.strftime('%Y-%m-%dT%H:%M:%S')
+            _save_collect_history(_collect_status)
 
 
 @app.route('/api/admin/collect', methods=['POST'])
