@@ -1041,6 +1041,23 @@ select,input{font-family:inherit}
   </div>
 </div>
 
+<!-- ===== TEXT REPORT MODAL ===== -->
+<div class="modal-overlay" id="textReportModal">
+  <div class="modal-content" style="max-width:400px">
+    <button class="modal-close" onclick="document.getElementById('textReportModal').classList.remove('open')">&times;</button>
+    <h3 style="color:var(--accent);margin-bottom:0.8rem;font-size:1rem">カードテキスト修正依頼</h3>
+    <div style="margin-bottom:8px">
+      <label style="font-size:0.75rem;color:#888">カード番号</label>
+      <input type="text" class="search-input" id="reportCardNumber" readonly style="width:100%;box-sizing:border-box;opacity:0.7">
+    </div>
+    <div style="margin-bottom:12px">
+      <label style="font-size:0.75rem;color:#888">修正内容 *</label>
+      <textarea class="search-input" id="reportText" placeholder="誤りのあるテキストと正しいテキストを記入してください" rows="5" style="width:100%;box-sizing:border-box;resize:vertical"></textarea>
+    </div>
+    <button class="menu-btn primary" style="width:100%" onclick="submitTextReport()">送信する</button>
+  </div>
+</div>
+
 <!-- HAMBURGER MENU -->
 <div class="menu-overlay" id="menuOverlay" onclick="toggleMenu()"></div>
 <div class="menu-panel" id="menuPanel">
@@ -2281,8 +2298,8 @@ const UIRenderer = {
     // Unit name header v2
     const msName = msCard?.name || (msNumber || '');
     const plName = plCard?.name || (plNumber || '');
-    const msCat = msOcr?.category || msCard?.category || '';
-    const catClass = msCat === '殲滅' ? '殲滅' : msCat === '制圧' ? '制圧' : msCat === '防衛' ? '防衛' : '';
+    const plCat = plOcr?.category || plCard?.category || '';
+    const catClass = plCat === '殲滅' ? '殲滅' : plCat === '制圧' ? '制圧' : plCat === '防衛' ? '防衛' : '';
     const msCost = safeInt(msOcr?.cost || msCard?.cost);
     const plCost = safeInt(plOcr?.cost || plCard?.cost);
     const msRarity = msCard?.rarity || msOcr?.rarity || '';
@@ -2574,7 +2591,7 @@ const UIRenderer = {
       const condMatch = (link.condition || '').match(/(\d+)枚以上/);
       const required = condMatch ? parseInt(condMatch[1]) : 2;
       const isActive = count >= required;
-      const linkType = link.is_eb_link ? 'eb' : link.is_sq_link ? 'sq' : link.is_ab_link ? 'ab' : '';
+      const linkType = link.is_eb_link ? 'eb' : AppState._sqLinkNames.has(link.name) ? 'sq' : link.is_ab_link ? 'ab' : '';
       const activeClass = isActive ? 'link-active' : 'link-inactive';
       const dupeCount = unitLinkCount[link.name] || 1;
       html += `<div class="link-item ${activeClass}${linkType ? ' link-type-' + linkType : ''}">`;
@@ -2597,11 +2614,16 @@ const UIRenderer = {
       const idx = this._getIndexEntry(cardNumber);
       if (ocr) totalCost += safeInt(ocr.cost);
       else if (idx) totalCost += safeInt(idx.cost);
-      if (!cardNumber || i >= 5) continue; // category count: MS slots (0-4) only
-      let cat = idx?.category;
-      if (!cat || classCounts[cat] === undefined) cat = ocr?.card_label?.class;
-      if (!cat || classCounts[cat] === undefined) cat = ocr?.category;
-      if (!cat || classCounts[cat] === undefined) { const raw = ocr?.raw || ''; for (const kw of ['殲滅', '制圧', '防衛']) { if (raw.includes(kw)) { cat = kw; break; } } }
+    }
+    // 殲滅/制圧/防衛 はPLカード(スロット5-9)のcategoryで判定
+    for (let u = 0; u < 5; u++) {
+      const plNumber = AppState.deck[u + 5];
+      if (!plNumber) continue;
+      const plIdx = this._getIndexEntry(plNumber);
+      const plOcr = AppState.deckOcr[u + 5];
+      let cat = plIdx?.category;
+      if (!cat || classCounts[cat] === undefined) cat = plOcr?.card_label?.class;
+      if (!cat || classCounts[cat] === undefined) cat = plOcr?.category;
       if (cat && classCounts[cat] !== undefined) classCounts[cat]++;
     }
     const costEl = document.getElementById('headerTotalCost');
@@ -3163,6 +3185,30 @@ function setTerrainSwitch(btn) {
 function closeDeckLoadModal() { document.getElementById('deckLoadModal').classList.remove('open'); }
 function closeCardModal() { document.getElementById('cardDetailModal').classList.remove('open'); }
 
+function openTextReportModal(cardNumber) {
+  document.getElementById('reportCardNumber').value = cardNumber;
+  document.getElementById('reportText').value = '';
+  document.getElementById('textReportModal').classList.add('open');
+}
+
+async function submitTextReport() {
+  const cardNumber = document.getElementById('reportCardNumber').value;
+  const reportText = document.getElementById('reportText').value.trim();
+  if (!reportText) { Toast.show('修正内容を入力してください', 'error'); return; }
+  try {
+    const res = await fetch(SUPABASE_URL + '/rest/v1/card_text_reports', {
+      method: 'POST',
+      headers: { ...SB_HEADERS, 'Prefer': 'return=minimal' },
+      body: JSON.stringify({ card_number: cardNumber, report_text: reportText })
+    });
+    if (!res.ok) throw new Error(res.statusText);
+    Toast.show('送信しました', 'success');
+    document.getElementById('textReportModal').classList.remove('open');
+  } catch (err) {
+    Toast.show('送信失敗: ' + err.message, 'error');
+  }
+}
+
 async function showCardModal(number) {
   const detail = await CardService.fetchDetail(number);
   if (!detail) { Toast.show('カード情報を取得できません', 'error'); return; }
@@ -3174,6 +3220,7 @@ async function showCardModal(number) {
   const backUrl = resolveImageUrl(null, number, 'back');
   let html = `<div class="modal-card-header"><div class="modal-card-images"><img class="modal-card-image" src="${frontUrl}" alt="${escapeHtml(name)} 表"><img class="modal-card-image" src="${backUrl}" alt="${escapeHtml(name)} 裏"></div><div class="modal-card-info"><div class="modal-card-number">${escapeHtml(number)}${rarity ? ` <span class="rarity-tag rarity-${escapeHtml(rarity)}">${escapeHtml(rarity)}</span>` : ''}</div><div class="modal-card-name">${escapeHtml(name)}</div><div style="color:#888;font-size:0.8rem">${escapeHtml(ocr.type||'')} | ${escapeHtml(ocr.category||'')} | C:${ocr.cost||'-'}</div></div></div>`;
   if (ocr.stats) { html += `<div class="modal-param-group"><div class="modal-param-title">ステータス</div><div class="modal-param-row"><div class="modal-param-item"><span class="modal-param-label">機動:</span>${ocr.stats.mobility||'-'}</div><div class="modal-param-item"><span class="modal-param-label">遠距:</span>${ocr.stats.ranged_attack||'-'}</div><div class="modal-param-item"><span class="modal-param-label">近距:</span>${ocr.stats.melee_attack||'-'}</div><div class="modal-param-item"><span class="modal-param-label">HP:</span>${ocr.stats.hp||'-'}</div></div></div>`; }
+  html += `<div style="margin-top:12px;text-align:center"><button class="menu-btn" style="font-size:0.75rem;padding:4px 12px" onclick="openTextReportModal('${escapeHtml(number)}')">カードテキスト修正依頼</button></div>`;
   document.getElementById('cardDetailBody').innerHTML = html;
   document.getElementById('cardDetailModal').classList.add('open');
 }
@@ -3243,6 +3290,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   // Build SQ link name set: collect links ONLY found on SQ-flagged cards, exclude links also on non-SQ cards
   try {
+    await CardService._ensureDetails();
     const sqOnly = new Set();
     const nonSq = new Set();
     AppState.cardIndex.forEach(c => {
