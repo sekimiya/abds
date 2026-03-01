@@ -370,25 +370,30 @@ select,input{font-family:inherit}
 .link-badge{display:inline-block;padding:1px 6px;border-radius:3px;font-size:0.6rem;font-weight:bold;margin-left:4px}
 .link-badge.on{background:rgba(104,239,189,0.2);color:var(--accent);border:1px solid rgba(104,239,189,0.3);text-shadow:0 0 4px rgba(104,239,189,0.3)}
 .link-badge.off{background:#222;color:#555;border:1px solid #333}
+.link-type-badge{font-size:0.5rem;font-weight:bold;padding:1px 4px;border-radius:2px;color:#fff;flex-shrink:0;letter-spacing:0.5px}
+.link-type-badge.eb{background:rgba(255,152,0,0.8)}
+.link-type-badge.sq{background:rgba(255,105,180,0.8)}
+.link-type-badge.ab{background:rgba(179,136,255,0.8)}
 .link-effect{color:#666;font-size:0.7rem;margin-top:1px}
-.link-item.link-active .link-effect{color:#aaa}
+.link-item.link-active .link-effect{color:var(--accent)}
 .link-dupe{font-size:0.55rem;font-weight:bold;color:#fff;background:rgba(255,255,255,0.15);
   padding:0 4px;border-radius:2px;margin-left:2px}
 .link-item.link-active .link-dupe{background:rgba(104,239,189,0.25);color:var(--accent)}
-.link-count{font-size:0.6rem;color:#555;margin-left:2px}
-.link-item.link-active .link-count{color:var(--accent)}
 .link-item.link-type-eb.link-active{border-left-color:var(--eb-orange);background:rgba(255,152,0,0.06)}
 .link-item.link-type-eb.link-active .link-name{color:var(--eb-orange)}
+.link-item.link-type-eb.link-active .link-effect{color:var(--eb-orange)}
 .link-item.link-type-eb.link-active .link-badge.on{background:rgba(255,152,0,0.2);color:var(--eb-orange);border-color:rgba(255,152,0,0.3);text-shadow:0 0 4px rgba(255,152,0,0.3)}
-.link-item.link-type-eb.link-active .link-count{color:var(--eb-orange)}
+.link-item.link-type-eb.link-active .link-dupe{background:rgba(255,152,0,0.25);color:var(--eb-orange)}
 .link-item.link-type-sq.link-active{border-left-color:var(--sq-pink);background:rgba(255,105,180,0.06)}
 .link-item.link-type-sq.link-active .link-name{color:var(--sq-pink)}
+.link-item.link-type-sq.link-active .link-effect{color:var(--sq-pink)}
 .link-item.link-type-sq.link-active .link-badge.on{background:rgba(255,105,180,0.2);color:var(--sq-pink);border-color:rgba(255,105,180,0.3);text-shadow:0 0 4px rgba(255,105,180,0.3)}
-.link-item.link-type-sq.link-active .link-count{color:var(--sq-pink)}
+.link-item.link-type-sq.link-active .link-dupe{background:rgba(255,105,180,0.25);color:var(--sq-pink)}
 .link-item.link-type-ab.link-active{border-left-color:#b388ff;background:rgba(179,136,255,0.06)}
 .link-item.link-type-ab.link-active .link-name{color:#b388ff}
+.link-item.link-type-ab.link-active .link-effect{color:#b388ff}
 .link-item.link-type-ab.link-active .link-badge.on{background:rgba(179,136,255,0.2);color:#b388ff;border-color:rgba(179,136,255,0.3);text-shadow:0 0 4px rgba(179,136,255,0.3)}
-.link-item.link-type-ab.link-active .link-count{color:#b388ff}
+.link-item.link-type-ab.link-active .link-dupe{background:rgba(179,136,255,0.25);color:#b388ff}
 /* No OCR fallback */
 .no-ocr-msg{color:#888;font-size:0.85rem;text-align:center;padding:8px 0}
 .no-ocr-hint{color:#666;font-size:0.75rem}
@@ -2566,6 +2571,7 @@ const UIRenderer = {
       const activeClass = isActive ? 'link-active' : 'link-inactive';
       const dupeCount = unitLinkCount[link.name] || 1;
       html += `<div class="link-item ${activeClass}${linkType ? ' link-type-' + linkType : ''}">`;
+      if (linkType) html += `<span class="link-type-badge ${linkType}">${linkType.toUpperCase()}</span>`;
       html += `<span class="link-name">${escapeHtml(link.name)}</span>`;
       if (dupeCount >= 2) html += `<span class="link-dupe">x${dupeCount}</span>`;
       html += `<span class="link-badge ${isActive ? 'on' : 'off'}">${isActive ? '発動' : '未発動'}</span>`;
