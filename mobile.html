@@ -266,6 +266,12 @@ select,input{font-family:inherit}
   flex:1;font-weight:bold;font-size:0.75rem;text-align:center;
   white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
 }
+.unit-card-line .card-detail-btn{
+  flex-shrink:0;font-size:0.55rem;font-weight:bold;padding:1px 6px;
+  border-radius:3px;color:#aaa;background:rgba(255,255,255,0.08);
+  border:1px solid rgba(255,255,255,0.15);cursor:pointer;
+}
+.unit-card-line .card-detail-btn:active{background:rgba(255,255,255,0.2)}
 .unit-card-line.ms-line{border-left-color:var(--ms-blue)}
 .unit-card-line.ms-line .card-name{color:var(--ms-blue)}
 .unit-card-line.pl-line{border-left-color:var(--pl-gold)}
@@ -2278,6 +2284,7 @@ const UIRenderer = {
       }
       if (msType) html += `<span class="card-type-icon ${msType}">${msType.toUpperCase()}</span>`;
       html += `<span class="card-name">${escapeHtml(msName)}</span>`;
+      html += `<span class="card-detail-btn" onclick="event.stopPropagation();showCardModal('${escapeHtml(msNumber)}')">詳細</span>`;
       html += '</div>';
     }
 
@@ -2292,6 +2299,7 @@ const UIRenderer = {
       }
       if (plType) html += `<span class="card-type-icon ${plType}">${plType.toUpperCase()}</span>`;
       html += `<span class="card-name">${escapeHtml(plName)}</span>`;
+      html += `<span class="card-detail-btn" onclick="event.stopPropagation();showCardModal('${escapeHtml(plNumber)}')">詳細</span>`;
       html += '</div>';
     }
 
