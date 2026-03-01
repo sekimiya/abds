@@ -329,8 +329,11 @@ select,input{font-family:inherit}
   color:#ccc;font-size:0.8rem;white-space:nowrap;min-height:32px;
 }
 .picker-filter-btn.has-filter{border-color:var(--accent);color:var(--accent)}
+.picker-scroll{
+  flex:1 1 0;min-height:0;overflow-y:scroll;-webkit-overflow-scrolling:touch;
+}
 .picker-grid{
-  flex:1;min-height:0;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:6px;padding-bottom:48px;
+  padding:6px;padding-bottom:48px;
   display:grid;grid-template-columns:repeat(4,1fr);gap:6px;align-content:start;
 }
 .thumb-card{
@@ -607,7 +610,9 @@ select,input{font-family:inherit}
   <div class="picker-toolbar">
     <span class="page-info" id="pageInfo" style="color:#888;font-size:0.8rem">-</span>
   </div>
-  <div class="picker-grid" id="thumbGrid"></div>
+  <div class="picker-scroll" id="pickerScroll">
+    <div class="picker-grid" id="thumbGrid"></div>
+  </div>
 </div>
 
 <!-- FILTER BOTTOM SHEET -->
@@ -2543,10 +2548,10 @@ const SearchPanel = {
     });
     this._populateSkillNames();
     this._restoreFilters();
-    // 無限スクロール: グリッド末尾付近で追加読み込み
-    const grid = document.getElementById('thumbGrid');
-    grid.addEventListener('scroll', () => {
-      if (grid.scrollTop + grid.clientHeight >= grid.scrollHeight - 200) {
+    // 無限スクロール: スクロールラッパー末尾付近で追加読み込み
+    const scrollWrap = document.getElementById('pickerScroll');
+    scrollWrap.addEventListener('scroll', () => {
+      if (scrollWrap.scrollTop + scrollWrap.clientHeight >= scrollWrap.scrollHeight - 200) {
         this._loadMore();
       }
     });
@@ -2831,7 +2836,8 @@ const SearchPanel = {
     const grid = document.getElementById('thumbGrid');
     const cards = this._filteredCards;
     grid.innerHTML = '';
-    grid.scrollTop = 0;
+    const scrollWrap = document.getElementById('pickerScroll');
+    if (scrollWrap) scrollWrap.scrollTop = 0;
     this._rendered = 0;
     if (cards.length === 0 && !this._hasActiveFilter()) {
       grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;color:#666;padding:2rem;font-size:0.9rem">シリーズを選択してください</div>';
