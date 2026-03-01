@@ -2568,7 +2568,6 @@ const UIRenderer = {
       html += `<div class="link-item ${activeClass}${linkType ? ' link-type-' + linkType : ''}">`;
       html += `<span class="link-name">${escapeHtml(link.name)}</span>`;
       if (dupeCount >= 2) html += `<span class="link-dupe">x${dupeCount}</span>`;
-      html += `<span class="link-count">${count}/${required}</span>`;
       html += `<span class="link-badge ${isActive ? 'on' : 'off'}">${isActive ? '発動' : '未発動'}</span>`;
       html += `<div class="link-effect">${escapeHtml(link.effect || '')}</div></div>`;
     });
