@@ -2248,7 +2248,7 @@ const UIRenderer = {
     let oldTags = el.querySelector('.ov-link-tags');
     if (oldTags) oldTags.remove();
     if (linkResults.length > 0) {
-      const sorted = [...linkResults].sort((a, b) => (b.isActive ? 1 : 0) - (a.isActive ? 1 : 0));
+      const sorted = [...linkResults].sort((a, b) => (b.ltype ? 1 : 0) - (a.ltype ? 1 : 0) || (b.isActive ? 1 : 0) - (a.isActive ? 1 : 0));
       const tagsDiv = document.createElement('div');
       tagsDiv.className = 'ov-link-tags';
       for (const lr of sorted.slice(0, 2)) {
