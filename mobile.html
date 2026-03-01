@@ -372,6 +372,9 @@ select,input{font-family:inherit}
 .link-badge.off{background:#222;color:#555;border:1px solid #333}
 .link-effect{color:#666;font-size:0.7rem;margin-top:1px}
 .link-item.link-active .link-effect{color:#aaa}
+.link-dupe{font-size:0.55rem;font-weight:bold;color:#fff;background:rgba(255,255,255,0.15);
+  padding:0 4px;border-radius:2px;margin-left:2px}
+.link-item.link-active .link-dupe{background:rgba(104,239,189,0.25);color:var(--accent)}
 .link-count{font-size:0.6rem;color:#555;margin-left:2px}
 .link-item.link-active .link-count{color:var(--accent)}
 .link-item.link-type-eb.link-active{border-left-color:var(--eb-orange);background:rgba(255,152,0,0.06)}
@@ -2540,11 +2543,16 @@ const UIRenderer = {
 
   _renderLinksForUnit(u, msOcr, plOcr) {
     const allUnitLinks = [];
+    const unitLinkCount = {}; // ユニット内でMS・PL両方に同じリンクがあるかカウント
     [msOcr, plOcr].forEach(ocr => {
       if (!ocr) return;
       const links = ocr.link_abilities || ocr.link_ability || [];
       if (!Array.isArray(links)) return;
-      links.forEach(link => { if (link.name && !allUnitLinks.find(l => l.name === link.name)) allUnitLinks.push(link); });
+      links.forEach(link => {
+        if (!link.name) return;
+        unitLinkCount[link.name] = (unitLinkCount[link.name] || 0) + 1;
+        if (!allUnitLinks.find(l => l.name === link.name)) allUnitLinks.push(link);
+      });
     });
     if (allUnitLinks.length === 0) return '';
     let html = '<div class="detail-section"><div class="detail-section-title link">リンクアビリティ</div>';
@@ -2556,8 +2564,10 @@ const UIRenderer = {
       const isActive = count >= required;
       const linkType = link.is_eb_link ? 'eb' : link.is_sq_link ? 'sq' : link.is_ab_link ? 'ab' : '';
       const activeClass = isActive ? 'link-active' : 'link-inactive';
+      const dupeCount = unitLinkCount[link.name] || 1;
       html += `<div class="link-item ${activeClass}${linkType ? ' link-type-' + linkType : ''}">`;
       html += `<span class="link-name">${escapeHtml(link.name)}</span>`;
+      if (dupeCount >= 2) html += `<span class="link-dupe">x${dupeCount}</span>`;
       html += `<span class="link-count">${count}/${required}</span>`;
       html += `<span class="link-badge ${isActive ? 'on' : 'off'}">${isActive ? '発動' : '未発動'}</span>`;
       html += `<div class="link-effect">${escapeHtml(link.effect || '')}</div></div>`;
