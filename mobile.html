@@ -2189,18 +2189,18 @@ const UIRenderer = {
       isSqCard = ocr?.special_attack?.sp_type === 'SQUAD SP' || !!(indexEntry?.has_sq_link);
       isEbCard = !!(ocr?.echoes_beat?.has_eb) || !!(indexEntry?.has_eb_link);
       isAbCard = !!(indexEntry?.has_ab_link);
-      if (ocr?.echoes_beat?.has_eb) { badge.textContent = 'EBSP'; badge.className = 'ov-badge eb-b'; }
+      if (isAbCard) { badge.textContent = 'AB'; badge.className = 'ov-badge ab-b'; }
+      else if (ocr?.echoes_beat?.has_eb) { badge.textContent = 'EBSP'; badge.className = 'ov-badge eb-b'; }
       else if (isEbCard) { badge.textContent = 'EB'; badge.className = 'ov-badge eb-b'; }
       else if (isSqCard) { badge.textContent = 'SQ'; badge.className = 'ov-badge sq-b'; }
-      else if (isAbCard) { badge.textContent = 'AB'; badge.className = 'ov-badge ab-b'; }
     } else {
       const plSkill = ocr?.pilot_skill || ocr?.pl_skill;
       isSqCard = !!(plSkill?.has_sq_skill) || !!(indexEntry?.has_sq_link);
       isEbCard = !!(plSkill?.is_eb_skill) || !!(indexEntry?.has_eb_link);
       isAbCard = !!(indexEntry?.has_ab_link);
-      if (isEbCard) { badge.textContent = 'EB'; badge.className = 'ov-badge eb-b'; }
+      if (isAbCard) { badge.textContent = 'AB'; badge.className = 'ov-badge ab-b'; }
+      else if (isEbCard) { badge.textContent = 'EB'; badge.className = 'ov-badge eb-b'; }
       else if (isSqCard) { badge.textContent = 'SQ'; badge.className = 'ov-badge sq-b'; }
-      else if (isAbCard) { badge.textContent = 'AB'; badge.className = 'ov-badge ab-b'; }
     }
 
     // Count active links per type (single pass, reused for glow + tags)
