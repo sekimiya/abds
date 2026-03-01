@@ -401,7 +401,10 @@ select,input{font-family:inherit}
 .cat-btn.active{background:#1e2924;border-color:var(--accent);color:var(--accent)}
 .series-filter{display:flex;gap:3px;flex-wrap:wrap}
 .series-btn{padding:4px 6px;background:#222;border:1px solid #444;border-radius:3px;color:#888;font-size:0.65rem;min-height:28px}
-.series-btn.active{background:#1e2924;border-color:var(--accent);color:var(--accent)}
+.series-btn.has-sq{border-color:rgba(255,105,180,0.6)}
+.series-btn.has-eb{border-color:rgba(255,152,0,0.6)}
+.series-btn.has-sq.has-eb{border-image:linear-gradient(135deg,rgba(255,152,0,0.7),rgba(255,105,180,0.7)) 1}
+.series-btn.active{background:#1e2924;border-color:var(--accent);color:var(--accent);border-image:none}
 .range-filter{display:flex;align-items:center;gap:4px}
 .range-label{color:#888;font-size:0.7rem;flex-shrink:0;min-width:36px;text-align:right}
 .range-value{color:var(--accent);font-size:0.7rem;min-width:32px;text-align:center;flex-shrink:0}
