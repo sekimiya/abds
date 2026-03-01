@@ -1782,8 +1782,10 @@ const UndoManager = {
   },
 
   _updateButtons() {
-    document.getElementById('undoBtn').disabled = this._pos <= 0;
-    document.getElementById('redoBtn').disabled = this._pos >= this._stack.length - 1;
+    const undoBtn = document.getElementById('undoBtn');
+    const redoBtn = document.getElementById('redoBtn');
+    if (undoBtn) undoBtn.disabled = this._pos <= 0;
+    if (redoBtn) redoBtn.disabled = this._pos >= this._stack.length - 1;
   }
 };
 
@@ -5211,10 +5213,10 @@ async function captureFullPage() {
 
     // --- Step 7: Open in new tab ---
     const dataUrl = canvas.toDataURL('image/png');
-    const w = window.open('');
-    if (w) {
-      w.document.write('<html><head><title>ABDS Deck Screenshot</title><style>body{margin:0;background:#111;display:flex;justify-content:center;align-items:start;min-height:100vh}img{max-width:100%;height:auto}</style></head><body><img src="' + dataUrl + '"></body></html>');
-      w.document.close();
+    const win = window.open('');
+    if (win) {
+      win.document.write('<html><head><title>ABDS Deck Screenshot</title><style>body{margin:0;background:#111;display:flex;justify-content:center;align-items:start;min-height:100vh}img{max-width:100%;height:auto}</style></head><body><img src="' + dataUrl + '"></body></html>');
+      win.document.close();
     } else {
       // ポップアップブロック時はフォールバックでDL
       const link = document.createElement('a');
