@@ -213,6 +213,67 @@ select,input{font-family:inherit}
 .detail-unit-cat.殲滅{background:#8b1a1a;color:var(--senmetsu)}
 .detail-unit-cat.制圧{background:#1a4a8b;color:var(--seiatsu)}
 .detail-unit-cat.防衛{background:#1a6b1a;color:var(--bouei)}
+
+/* ===== UNIT DETAIL HEADER V2 ===== */
+.detail-header-v2{
+  background:linear-gradient(135deg,#1a1a2e 0%,#16213e 50%,#0f3460 100%);
+  border:1px solid rgba(130,177,255,0.2);border-radius:8px;
+  padding:10px;margin-bottom:8px;position:relative;overflow:hidden;
+}
+.detail-header-v2::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(130,177,255,0.5),transparent);
+}
+.detail-header-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.unit-total-cost{
+  display:flex;align-items:baseline;gap:4px;
+  background:linear-gradient(135deg,rgba(255,224,130,0.15),rgba(255,224,130,0.05));
+  border:1px solid rgba(255,224,130,0.3);border-radius:6px;padding:4px 10px;
+}
+.unit-total-cost .cost-label{font-size:0.65rem;color:rgba(255,224,130,0.7);font-weight:bold;letter-spacing:1px}
+.unit-total-cost .cost-value{font-size:1.3rem;font-weight:900;color:var(--gold);
+  text-shadow:0 0 8px rgba(255,224,130,0.4);font-variant-numeric:tabular-nums}
+.unit-cat-badge{
+  font-size:0.7rem;font-weight:bold;padding:3px 10px;border-radius:4px;
+  letter-spacing:1px;text-transform:uppercase;
+}
+.unit-cat-badge.殲滅{background:rgba(139,26,26,0.6);color:var(--senmetsu);border:1px solid rgba(255,138,128,0.3)}
+.unit-cat-badge.制圧{background:rgba(26,74,139,0.6);color:var(--seiatsu);border:1px solid rgba(130,177,255,0.3)}
+.unit-cat-badge.防衛{background:rgba(26,107,26,0.6);color:var(--bouei);border:1px solid rgba(165,214,167,0.3)}
+.unit-card-line{
+  display:flex;align-items:center;gap:6px;padding:5px 8px;
+  border-radius:5px;margin-top:4px;position:relative;
+  background:rgba(255,255,255,0.03);border-left:3px solid #444;
+}
+.unit-card-line .card-rarity{
+  font-size:0.6rem;font-weight:bold;padding:1px 5px;border-radius:3px;
+  min-width:22px;text-align:center;flex-shrink:0;
+}
+.unit-card-line .card-type-icon{
+  font-size:0.55rem;font-weight:bold;padding:1px 4px;border-radius:2px;
+  color:#fff;flex-shrink:0;letter-spacing:0.5px;
+}
+.unit-card-line .card-type-icon.sq{background:rgba(255,105,180,0.8)}
+.unit-card-line .card-type-icon.eb{background:rgba(255,152,0,0.8)}
+.unit-card-line .card-type-icon.ab{background:rgba(179,136,255,0.8)}
+.unit-card-line .card-name{
+  flex:1;font-weight:bold;font-size:0.9rem;text-align:center;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.unit-card-line .card-cost{
+  font-size:0.75rem;font-weight:bold;color:rgba(255,224,130,0.8);flex-shrink:0;
+  font-variant-numeric:tabular-nums;
+}
+.unit-card-line.ms-line{border-left-color:var(--ms-blue)}
+.unit-card-line.ms-line .card-name{color:var(--ms-blue)}
+.unit-card-line.pl-line{border-left-color:var(--pl-gold)}
+.unit-card-line.pl-line .card-name{color:var(--pl-gold)}
+.unit-card-line.sq-highlight{border-left-color:var(--sq-pink);background:rgba(255,105,180,0.06)}
+.unit-card-line.eb-highlight{border-left-color:var(--eb-orange);background:rgba(255,152,0,0.06)}
+.unit-card-line.ab-highlight{border-left-color:#b388ff;background:rgba(179,136,255,0.06)}
+.unit-card-line.sq-highlight .card-name{color:var(--sq-pink)}
+.unit-card-line.eb-highlight .card-name{color:var(--eb-orange)}
+.unit-card-line.ab-highlight .card-name{color:#b388ff}
 .detail-terrain-row{display:flex;gap:3px;margin-bottom:6px;flex-wrap:wrap}
 .terrain-badge{
   padding:2px 6px;border-radius:3px;font-size:0.7rem;font-weight:bold;
@@ -2165,19 +2226,73 @@ const UIRenderer = {
     }
 
     let html = '';
-    // Unit name header
+    // Unit name header v2
     const msName = msCard?.name || (msNumber || '');
     const plName = plCard?.name || (plNumber || '');
     const msCat = msOcr?.category || msCard?.category || '';
     const catClass = msCat === '殲滅' ? '殲滅' : msCat === '制圧' ? '制圧' : msCat === '防衛' ? '防衛' : '';
-
-    html += '<div class="detail-unit-header">';
-    if (msName) html += `<span class="detail-unit-name">${escapeHtml(msName)}</span>`;
-    if (plName) html += `<span class="detail-unit-name" style="color:var(--pl-gold)">${escapeHtml(plName)}</span>`;
     const msCost = safeInt(msOcr?.cost || msCard?.cost);
     const plCost = safeInt(plOcr?.cost || plCard?.cost);
-    html += `<span class="detail-unit-cost">C:${msCost + plCost}</span>`;
-    if (catClass) html += `<span class="detail-unit-cat ${catClass}">${catClass}</span>`;
+    const msRarity = msCard?.rarity || msOcr?.rarity || '';
+    const plRarity = plCard?.rarity || plOcr?.rarity || '';
+
+    // Detect SQ/EB/AB for each card
+    const msIndex = this._getIndexEntry(msNumber);
+    const plIndex = this._getIndexEntry(plNumber);
+    let msType = '';
+    if (msNumber) {
+      const isMsEb = !!(msOcr?.echoes_beat?.has_eb) || !!(msIndex?.has_eb_link);
+      const isMsSq = msOcr?.special_attack?.sp_type === 'SQUAD SP' || !!(msIndex?.has_sq_link);
+      const isMsAb = !!(msIndex?.has_ab_link);
+      if (isMsEb) msType = 'eb';
+      else if (isMsSq) msType = 'sq';
+      else if (isMsAb) msType = 'ab';
+    }
+    let plType = '';
+    if (plNumber) {
+      const plSkill = plOcr?.pilot_skill || plOcr?.pl_skill;
+      const isPlEb = !!(plSkill?.is_eb_skill) || !!(plIndex?.has_eb_link);
+      const isPlSq = !!(plSkill?.has_sq_skill) || !!(plIndex?.has_sq_link);
+      const isPlAb = !!(plIndex?.has_ab_link);
+      if (isPlEb) plType = 'eb';
+      else if (isPlSq) plType = 'sq';
+      else if (isPlAb) plType = 'ab';
+    }
+
+    html += '<div class="detail-header-v2">';
+    html += '<div class="detail-header-top">';
+    html += `<div class="unit-total-cost"><span class="cost-label">COST</span><span class="cost-value">${msCost + plCost}</span></div>`;
+    if (catClass) html += `<span class="unit-cat-badge ${catClass}">${catClass}</span>`;
+    html += '</div>';
+
+    // MS line
+    if (msNumber) {
+      const msHighlight = msType ? ` ${msType}-highlight` : '';
+      html += `<div class="unit-card-line ms-line${msHighlight}">`;
+      if (msRarity) {
+        const rc = msRarity.replace(/[^A-Za-z]/g, '');
+        html += `<span class="card-rarity rarity-tag rarity-${rc}">${escapeHtml(msRarity)}</span>`;
+      }
+      if (msType) html += `<span class="card-type-icon ${msType}">${msType.toUpperCase()}</span>`;
+      html += `<span class="card-name">${escapeHtml(msName)}</span>`;
+      html += `<span class="card-cost">C:${msCost}</span>`;
+      html += '</div>';
+    }
+
+    // PL line
+    if (plNumber) {
+      const plHighlight = plType ? ` ${plType}-highlight` : '';
+      html += `<div class="unit-card-line pl-line${plHighlight}">`;
+      if (plRarity) {
+        const rc = plRarity.replace(/[^A-Za-z]/g, '');
+        html += `<span class="card-rarity rarity-tag rarity-${rc}">${escapeHtml(plRarity)}</span>`;
+      }
+      if (plType) html += `<span class="card-type-icon ${plType}">${plType.toUpperCase()}</span>`;
+      html += `<span class="card-name">${escapeHtml(plName)}</span>`;
+      html += `<span class="card-cost">C:${plCost}</span>`;
+      html += '</div>';
+    }
+
     html += '</div>';
 
     // Terrain row
