@@ -4181,7 +4181,7 @@ const SearchPanel = {
       return;
     }
 
-    let cards = AppState.cardIndex;
+    let cards = AppState.cardIndex.filter(c => c.has_ocr);
 
     // Type filter (スロット指定時のみタイプ絞込、ABフィルター時は解除)
     if (this._lockedType && this._t.abCat.size === 0) {

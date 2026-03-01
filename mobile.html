@@ -2934,7 +2934,7 @@ const SearchPanel = {
   },
   applyFilters() {
     if (!this._hasActiveFilter()) { this._filteredCards = []; this._page = 0; this._renderGrid(); this._saveFilters(); this._updateFilterBadge(); return; }
-    let cards = AppState.cardIndex;
+    let cards = AppState.cardIndex.filter(c => c.has_ocr);
     if (this._lockedType && this._t.abCat.size === 0) cards = cards.filter(c => c.type === this._lockedType);
     if (this._currentCategory.size > 0) cards = cards.filter(c => !c.category || this._currentCategory.has(c.category));
     if (this._currentRarity.size > 0) cards = cards.filter(c => !c.rarity || this._currentRarity.has(c.rarity));
