@@ -404,7 +404,8 @@ def load_unique_cards() -> List[Dict]:
 
 
 def get_existing_numbers(suffix: str) -> set:
-    """ocr_results_debug/ の指定サフィックスのファイルからカード番号セットを返す"""
+    """ocr_results_debug/ の指定サフィックスのファイルからカード番号セットを返す。
+    イラスト違い(_p1等)はベース番号のOCRがあれば処理済みとみなす。"""
     existing = set()
     if not OCR_RESULTS_DIR.exists():
         return existing
@@ -413,6 +414,15 @@ def get_existing_numbers(suffix: str) -> set:
             match = re.search(r"([A-Z0-9]+-[A-Z]?\d+(?:_p\d+)?)", f.name)
             if match:
                 existing.add(match.group(1))
+    # _pバリアントはベース番号のOCRがあれば処理済みとみなす
+    if existing and ALL_CARDS_DIR.exists():
+        for json_file in ALL_CARDS_DIR.glob("*_p[0-9]*.json"):
+            m = re.search(r"([A-Z0-9]+-[A-Z]?\d+_p\d+)", json_file.name)
+            if m:
+                p_num = m.group(1)
+                base_num = re.sub(r'_p\d+$', '', p_num)
+                if base_num in existing:
+                    existing.add(p_num)
     return existing
 
 

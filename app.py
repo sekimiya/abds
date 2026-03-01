@@ -2047,7 +2047,16 @@ def api_admin_stats():
                 m = re.search(r'([A-Z0-9\-]{2,}-\d{2,4}(?:_p\d+)?)', fn)
                 if m:
                     ocr_numbers.add(m.group(1))
-        ocr_count = len(ocr_numbers)
+    # _pバリアントはベース番号のOCRがあれば処理済みとみなす
+    if os.path.exists(all_cards_dir):
+        for fn in os.listdir(all_cards_dir):
+            m = re.search(r'([A-Z0-9\-]{2,}-\d{2,4}_p\d+)', fn)
+            if m:
+                p_num = m.group(1)
+                base_num = re.sub(r'_p\d+$', '', p_num)
+                if base_num in ocr_numbers:
+                    ocr_numbers.add(p_num)
+    ocr_count = len(ocr_numbers)
 
     # シリーズ別カード数
     series_counts = {}
@@ -2224,6 +2233,16 @@ def api_admin_cards():
                 m = re.search(r'([A-Z0-9\-]{2,}-\d{2,4}(?:_p\d+)?)', fn)
                 if m:
                     ocr_numbers.add(m.group(1))
+    # _pバリアントはベース番号のOCRがあれば処理済みとみなす
+    all_cards_dir = 'all_cards_list'
+    if os.path.exists(all_cards_dir):
+        for fn in os.listdir(all_cards_dir):
+            m = re.search(r'([A-Z0-9\-]{2,}-\d{2,4}_p\d+)', fn)
+            if m:
+                p_num = m.group(1)
+                base_num = re.sub(r'_p\d+$', '', p_num)
+                if base_num in ocr_numbers:
+                    ocr_numbers.add(p_num)
 
     cards_out = []
     for c in page_items:
