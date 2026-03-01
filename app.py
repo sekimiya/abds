@@ -291,7 +291,7 @@ def _build_card_index():
                 continue
             try:
                 base = filename.replace('.json', '')
-                number_match = re.search(r'([A-Z0-9\-]{2,}-\d{2,4})', base)
+                number_match = re.search(r'([A-Z0-9\-]{2,}-\d{2,4}(?:_p\d+)?)', base)
                 if not number_match:
                     continue
                 number = number_match.group(1)
@@ -1500,7 +1500,7 @@ def fetch_cards():
                     base = filename.replace('.json', '')
 
                     # カード番号を抽出（ファイル名に含まれる想定: FQ01-001 など）
-                    number_match = re.search(r'([A-Z0-9\-]{2,}-\d{2,4})', base)
+                    number_match = re.search(r'([A-Z0-9\-]{2,}-\d{2,4}(?:_p\d+)?)', base)
                     if not number_match:
                         continue
                     number = number_match.group(1)
@@ -2044,7 +2044,7 @@ def api_admin_stats():
     if os.path.exists(ocr_dir):
         for fn in os.listdir(ocr_dir):
             if fn.endswith('.json'):
-                m = re.search(r'([A-Z0-9\-]{2,}-\d{2,4})', fn)
+                m = re.search(r'([A-Z0-9\-]{2,}-\d{2,4}(?:_p\d+)?)', fn)
                 if m:
                     ocr_numbers.add(m.group(1))
         ocr_count = len(ocr_numbers)
@@ -2221,7 +2221,7 @@ def api_admin_cards():
     if os.path.exists(ocr_dir):
         for fn in os.listdir(ocr_dir):
             if fn.endswith('.json'):
-                m = re.search(r'([A-Z0-9\-]{2,}-\d{2,4})', fn)
+                m = re.search(r'([A-Z0-9\-]{2,}-\d{2,4}(?:_p\d+)?)', fn)
                 if m:
                     ocr_numbers.add(m.group(1))
 
@@ -2265,7 +2265,7 @@ def _build_ocr_file_map():
     ocr_dir = 'ocr_results_debug'
     file_map = {}
     if os.path.exists(ocr_dir):
-        number_pattern = re.compile(r'([A-Z0-9]+-\d{2,4})')
+        number_pattern = re.compile(r'([A-Z0-9]+-\d{2,4}(?:_p\d+)?)')
         for fn in os.listdir(ocr_dir):
             if not fn.endswith('.json'):
                 continue

@@ -34,7 +34,7 @@ def fetch_cards_for_series(series_url, series_id, series_label):
             # srcからカード番号を抽出
             # 例: /images/cardlist/card/AB01-001.jpg?v8 -> AB01-001
             # 例: /images/cardlist/card/AB01-001_b.jpg?v8 -> AB01-001
-            card_number_match = re.search(r'/([A-Z0-9\-]+)(?:_b)?\.(jpg|jpeg|png|gif)', src)
+            card_number_match = re.search(r'/([A-Za-z0-9\-]+)(?:_b)?\.(jpg|jpeg|png|gif)', src)
             if not card_number_match:
                 continue
                 
