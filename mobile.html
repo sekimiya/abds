@@ -154,17 +154,18 @@ select,input{font-family:inherit}
 .overview-thumb img{width:100%;height:100%;object-fit:cover;display:block}
 .overview-thumb.empty{display:flex;align-items:center;justify-content:center;border-style:dashed}
 .overview-thumb.empty::after{content:'+';color:#444;font-size:1.2rem}
-.overview-thumb.selected{border-color:var(--accent);border-style:solid;box-shadow:0 0 6px rgba(104,239,189,0.4)}
-.overview-thumb.sqsp{border-color:var(--sq-pink)}
-.overview-thumb.sq{border-color:var(--sq-pink)}
-.overview-thumb.eb{border-color:var(--eb-orange)}
-.overview-thumb.link-active{border-color:var(--accent)}
+.overview-thumb.selected{border-color:var(--accent);border-style:solid;box-shadow:0 0 4px rgba(104,239,189,0.3)}
+.overview-thumb.ov-eb,.overview-thumb.ov-eb.selected{border-color:var(--eb-orange);box-shadow:0 0 8px rgba(255,152,0,0.5)}
+.overview-thumb.ov-sq,.overview-thumb.ov-sq.selected{border-color:var(--sq-pink);box-shadow:0 0 8px rgba(255,105,180,0.5)}
+.overview-thumb.ov-ab,.overview-thumb.ov-ab.selected{border-color:#b388ff;box-shadow:0 0 8px rgba(179,136,255,0.5)}
+.overview-thumb.ov-link,.overview-thumb.ov-link.selected{border-color:#a5f5d6;box-shadow:0 0 8px rgba(104,239,189,0.6)}
 .overview-thumb .ov-badge{
   position:absolute;top:1px;left:1px;font-size:0.45rem;font-weight:bold;
   padding:0 3px;border-radius:2px;color:#fff;line-height:1.3;
 }
 .overview-thumb .ov-badge.sq-b{background:rgba(255,105,180,0.9)}
 .overview-thumb .ov-badge.eb-b{background:rgba(255,152,0,0.9)}
+.overview-thumb .ov-badge.ab-b{background:rgba(179,136,255,0.9)}
 .overview-thumb .ov-badge.link-b{background:rgba(104,239,189,0.9);color:#000}
 .overview-thumb .ov-link-tags{
   position:absolute;bottom:0;left:0;right:0;
@@ -364,7 +365,7 @@ select,input{font-family:inherit}
 .thumb-card-rarity.r-PR{color:#f48fb1}.thumb-card-rarity.r-LR{color:#ffcc80}.thumb-card-rarity.r-LE{color:#ff8a80}.thumb-card-rarity.r-CP{color:#80deea}
 .thumb-detail-btn{position:absolute;top:2px;right:2px;background:rgba(0,0,0,0.8);color:#68efbd;font-size:0.5rem;font-weight:bold;padding:2px 4px;border-radius:3px;border:1px solid rgba(104,239,189,0.4);z-index:3;cursor:pointer;line-height:1.2}
 .thumb-detail-btn:active{background:rgba(104,239,189,0.25);color:#fff}
-.thumb-ocr-badge{position:absolute;bottom:20px;right:1px;background:rgba(104,239,189,0.85);color:#000;font-size:0.4rem;font-weight:bold;padding:0 2px;border-radius:2px;line-height:1.3}
+.thumb-ocr-badge{position:absolute;bottom:28px;right:1px;background:rgba(104,239,189,0.85);color:#000;font-size:0.4rem;font-weight:bold;padding:0 2px;border-radius:2px;line-height:1.3}
 .thumb-sq-badge{position:absolute;bottom:20px;left:1px;background:rgba(255,105,180,0.9);color:#fff;font-size:0.4rem;font-weight:bold;padding:0 2px;border-radius:2px;line-height:1.3}
 .thumb-eb-badge{position:absolute;bottom:20px;right:1px;background:rgba(255,152,0,0.9);color:#fff;font-size:0.4rem;font-weight:bold;padding:0 2px;border-radius:2px;line-height:1.3}
 .thumb-ab-badge{position:absolute;bottom:28px;left:1px;background:rgba(179,136,255,0.9);color:#fff;font-size:0.4rem;font-weight:bold;padding:0 2px;border-radius:2px;line-height:1.3}
@@ -406,11 +407,11 @@ select,input{font-family:inherit}
   padding:6px 8px;background:var(--bg-card);color:#888;font-size:0.7rem;cursor:pointer;user-select:none;
 }
 .filter-group-title::after{content:'▼';font-size:0.5rem;transition:transform 0.2s}
-.filter-group-title.has-active::before{content:'●';font-size:0.45rem;color:#68efbd;margin-right:4px}
-#filterGroupEb>.filter-group-title.has-active::before{color:#ff9800}
-#filterGroupSq>.filter-group-title.has-active::before{color:#ff69b4}
-#filterGroupAb>.filter-group-title.has-active::before{color:#b388ff}
-#filterGroupSp>.filter-group-title.has-active::before{color:#4fc3f7}
+.filter-group-title.has-active{color:#68efbd;border:1px solid #68efbd;box-shadow:0 0 6px rgba(104,239,189,0.4);border-radius:4px}
+#filterGroupEb>.filter-group-title.has-active{color:#ff9800;border-color:#ff9800;box-shadow:0 0 6px rgba(255,152,0,0.4)}
+#filterGroupSq>.filter-group-title.has-active{color:#ff69b4;border-color:#ff69b4;box-shadow:0 0 6px rgba(255,105,180,0.4)}
+#filterGroupAb>.filter-group-title.has-active{color:#b388ff;border-color:#b388ff;box-shadow:0 0 6px rgba(179,136,255,0.4)}
+#filterGroupSp>.filter-group-title.has-active{color:#4fc3f7;border-color:#4fc3f7;box-shadow:0 0 6px rgba(79,195,247,0.4)}
 .filter-group.collapsed .filter-group-title::after{transform:rotate(-90deg)}
 .filter-group-body{padding:6px 8px;display:flex;flex-direction:column;gap:6px}
 .filter-group.collapsed .filter-group-body{display:none}
@@ -2084,43 +2085,38 @@ const UIRenderer = {
     img.alt = number;
     img.onerror = function() { this.onerror = null; this.src = PLACEHOLDER_SVG; };
 
-    // Highlight classes
-    let hlClass = '';
+    // Determine card type flags + badge (priority: SQ > EB > AB)
     const badge = el.querySelector('.ov-badge');
     badge.textContent = '';
     badge.className = 'ov-badge';
+    let isEbCard = false, isSqCard = false, isAbCard = false;
+    const indexEntry = this._getIndexEntry(number);
 
     if (type === 'ms') {
-      const hasSqSp = ocr?.special_attack?.sp_type === 'SQUAD SP';
-      const hasEb = !!(ocr?.echoes_beat?.has_eb);
-      if (hasSqSp) { hlClass = 'sqsp'; badge.textContent = 'SQ'; badge.className = 'ov-badge sq-b'; }
-      else if (hasEb) { hlClass = 'eb'; badge.textContent = 'EB'; badge.className = 'ov-badge eb-b'; }
+      isSqCard = ocr?.special_attack?.sp_type === 'SQUAD SP' || !!(indexEntry?.has_sq_link);
+      isEbCard = !!(ocr?.echoes_beat?.has_eb) || !!(indexEntry?.has_eb_link);
+      isAbCard = !!(indexEntry?.has_ab_link);
+      if (isSqCard) { badge.textContent = 'SQ'; badge.className = 'ov-badge sq-b'; }
+      else if (ocr?.echoes_beat?.has_eb) { badge.textContent = 'EBSP'; badge.className = 'ov-badge eb-b'; }
+      else if (isEbCard) { badge.textContent = 'EB'; badge.className = 'ov-badge eb-b'; }
+      else if (isAbCard) { badge.textContent = 'AB'; badge.className = 'ov-badge ab-b'; }
     } else {
       const plSkill = ocr?.pilot_skill || ocr?.pl_skill;
-      const hasSqSkill = !!(plSkill?.has_sq_skill);
-      const hasEbSkill = !!(plSkill?.is_eb_skill);
-      if (hasSqSkill) { hlClass = 'sq'; badge.textContent = 'SQ'; badge.className = 'ov-badge sq-b'; }
-      else if (hasEbSkill) { hlClass = 'eb'; badge.textContent = 'EB'; badge.className = 'ov-badge eb-b'; }
+      isSqCard = !!(plSkill?.has_sq_skill) || !!(indexEntry?.has_sq_link);
+      isEbCard = !!(plSkill?.is_eb_skill) || !!(indexEntry?.has_eb_link);
+      isAbCard = !!(indexEntry?.has_ab_link);
+      if (isSqCard) { badge.textContent = 'SQ'; badge.className = 'ov-badge sq-b'; }
+      else if (isEbCard) { badge.textContent = 'EB'; badge.className = 'ov-badge eb-b'; }
+      else if (isAbCard) { badge.textContent = 'AB'; badge.className = 'ov-badge ab-b'; }
     }
 
-    // Check link active
-    const linkActive = this._isSlotLinkActive(slotIdx);
-
-    el.className = 'overview-thumb has-card'
-      + (hlClass ? ' ' + hlClass : '')
-      + (linkActive ? ' link-active' : '')
-      + (u === AppState.selectedUnit ? ' selected' : '');
-    if (linkActive && !badge.textContent) { badge.textContent = 'LNK'; badge.className = 'ov-badge link-b'; }
-
-    // Link tags overlay
-    let oldTags = el.querySelector('.ov-link-tags');
-    if (oldTags) oldTags.remove();
+    // Count active links per type (single pass, reused for glow + tags)
     const cardLinks = ocr?.link_abilities || ocr?.link_ability || [];
-    if (Array.isArray(cardLinks) && cardLinks.length > 0) {
-      const tagsDiv = document.createElement('div');
-      tagsDiv.className = 'ov-link-tags';
-      cardLinks.forEach(link => {
-        if (!link.name) return;
+    let activeEb = 0, activeSq = 0, activeAb = 0, activeNormal = 0;
+    const linkResults = []; // {link, isActive, ltype}
+    if (Array.isArray(cardLinks)) {
+      for (const link of cardLinks) {
+        if (!link.name) continue;
         const condMatch = (link.condition || '').match(/(\d+)枚以上/);
         const required = condMatch ? parseInt(condMatch[1]) : 2;
         let count = 0;
@@ -2131,35 +2127,44 @@ const UIRenderer = {
           if (Array.isArray(dLinks) && dLinks.some(l => l.name === link.name)) count++;
         }
         const isActive = count >= required;
+        const ltype = link.is_eb_link ? 'link-eb' : AppState._sqLinkNames.has(link.name) ? 'link-sq' : link.is_ab_link ? 'link-ab' : '';
+        linkResults.push({ link, isActive, ltype });
+        if (isActive) {
+          if (ltype === 'link-eb') activeEb++;
+          else if (ltype === 'link-sq') activeSq++;
+          else if (ltype === 'link-ab') activeAb++;
+          else activeNormal++;
+        }
+      }
+    }
+    const totalActive = activeEb + activeSq + activeAb + activeNormal;
+
+    // Determine border glow: type-specific link must be active
+    let glowClass = '';
+    if (activeEb > 0) glowClass = 'ov-eb';
+    else if (activeSq > 0) glowClass = 'ov-sq';
+    else if (activeAb > 0) glowClass = 'ov-ab';
+    else if (totalActive >= 2) glowClass = 'ov-link';
+
+    el.className = 'overview-thumb has-card'
+      + (glowClass ? ' ' + glowClass : '')
+      + (u === AppState.selectedUnit ? ' selected' : '');
+    if (totalActive > 0 && !badge.textContent) { badge.textContent = 'LNK'; badge.className = 'ov-badge link-b'; }
+
+    // Link tags overlay (reuse linkResults)
+    let oldTags = el.querySelector('.ov-link-tags');
+    if (oldTags) oldTags.remove();
+    if (linkResults.length > 0) {
+      const tagsDiv = document.createElement('div');
+      tagsDiv.className = 'ov-link-tags';
+      for (const lr of linkResults) {
         const tag = document.createElement('div');
-        const ltype = link.is_eb_link ? ' link-eb' : AppState._sqLinkNames.has(link.name) ? ' link-sq' : link.is_ab_link ? ' link-ab' : '';
-        tag.className = 'ov-link-tag ' + (isActive ? 'link-on' : 'link-off') + ltype;
-        tag.textContent = link.name;
+        tag.className = 'ov-link-tag ' + (lr.isActive ? 'link-on' : 'link-off') + (lr.ltype ? ' ' + lr.ltype : '');
+        tag.textContent = lr.link.name;
         tagsDiv.appendChild(tag);
-      });
+      }
       el.appendChild(tagsDiv);
     }
-  },
-
-  _isSlotLinkActive(slotIdx) {
-    const ocr = AppState.deckOcr[slotIdx];
-    if (!ocr) return false;
-    const links = ocr.link_abilities || ocr.link_ability || [];
-    if (!Array.isArray(links)) return false;
-    for (const link of links) {
-      if (!link.name) continue;
-      const condMatch = (link.condition || '').match(/(\d+)枚以上/);
-      const required = condMatch ? parseInt(condMatch[1]) : 2;
-      let count = 0;
-      for (let i = 0; i < 10; i++) {
-        const d = AppState.deckOcr[i];
-        if (!d) continue;
-        const dLinks = d.link_abilities || d.link_ability || [];
-        if (Array.isArray(dLinks) && dLinks.some(l => l.name === link.name)) count++;
-      }
-      if (count >= required) return true;
-    }
-    return false;
   },
 
   _renderDetailForUnit(u) {
@@ -2453,7 +2458,7 @@ const UIRenderer = {
 
     // EB判定
     const ebLinkCounts = {};
-    for (let i = 0; i < 10; i++) { const ocr = AppState.deckOcr[i]; if (!ocr) continue; const links = ocr.link_abilities || ocr.link_ability || []; if (!Array.isArray(links)) continue; links.forEach(l => { if (l?.is_eb_link && l.name) { if (!ebLinkCounts[l.name]) { const cm = (l.condition||'').match(/(\d+)枚以上/); ebLinkCounts[l.name] = { count: 0, required: cm ? parseInt(cm[1]) : 3 }; } ebLinkCounts[l.name].count++; } }); }
+    for (let i = 0; i < 10; i++) { const ocr = AppState.deckOcr[i]; if (!ocr) continue; const links = ocr.link_abilities || ocr.link_ability || []; if (!Array.isArray(links)) continue; links.forEach(l => { if (l?.is_eb_link && l.name) { if (!ebLinkCounts[l.name]) { const cm = (l.condition||'').match(/(\d+)枚以上/); ebLinkCounts[l.name] = { count: 0, required: cm ? parseInt(cm[1]) : 2 }; } ebLinkCounts[l.name].count++; } }); }
     const activeEbLinks = {};
     for (const [name, info] of Object.entries(ebLinkCounts)) { if (info.count >= info.required) activeEbLinks[name] = true; }
     let ebActive = false;
@@ -2893,8 +2898,8 @@ const SearchPanel = {
           <div class="thumb-card-badges">${card.cost !== null ? `<span class="thumb-card-cost">C${card.cost}</span>` : ''}${rarityHtml}</div>
           ${card.has_ocr ? '<div class="thumb-ocr-badge">OCR</div>' : ''}
           ${isSq ? '<div class="thumb-sq-badge">SQ</div>' : ''}
-          ${isEb ? '<div class="thumb-eb-badge">EB</div>' : ''}
-          ${card.has_ab_link ? '<div class="thumb-ab-badge">AB</div>' : ''}
+          ${isEb ? `<div class="thumb-eb-badge">${card.has_eb ? 'EBSP' : 'EB'}</div>` : ''}
+          ${isAb ? '<div class="thumb-ab-badge">AB</div>' : ''}
           <div class="thumb-detail-btn" onclick="event.stopPropagation();showCardModal('${card.number}')">詳細</div>
           <div class="thumb-card-info">
             <div class="thumb-card-number">${card.number}</div>
