@@ -236,7 +236,7 @@ select,input{font-family:inherit}
 .stat-bar-buff{height:100%;background:#e91e63;transition:width 0.3s}
 .stat-bar-terrain-pos{height:100%;background:var(--accent);transition:width 0.3s}
 .stat-bar-terrain-neg{height:100%;transition:width 0.3s;background:repeating-linear-gradient(135deg,rgba(244,67,54,0.6),rgba(244,67,54,0.6) 2px,rgba(244,67,54,0.3) 2px,rgba(244,67,54,0.3) 4px)}
-.stat-value{color:#ccc;font-size:0.7rem;min-width:80px;text-align:left;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.stat-value{color:#ccc;font-size:0.7rem;width:100px;flex-shrink:0;text-align:left;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-variant-numeric:tabular-nums;font-family:'Menlo','Consolas','Courier New',monospace}
 .stat-buff-text{color:#e91e63;font-size:0.6rem}
 .stat-terrain-text{font-size:0.6rem}
 .stat-terrain-text.positive{color:var(--accent)}
@@ -2260,9 +2260,10 @@ const UIRenderer = {
       let terrainLabel = '';
       if (terrainBuff > 0) terrainLabel = ` <span class="stat-terrain-text positive">(+${terrainBuff})</span>`;
       else if (terrainBuff < 0) terrainLabel = ` <span class="stat-terrain-text negative">(${terrainBuff})</span>`;
-      const baseLabel = `${ms[s]}+${pl[s]}=${base}`;
-      const buffLabel = linkBuff > 0 ? ` <span class="stat-buff-text">+${linkBuff}</span>` : '';
-      html += `<div class="stat-row"><span class="stat-label">${labels[s]}</span><div class="stat-track"><div class="stat-bar-base" style="width:${basePct}%"></div><div class="stat-bar-buff" style="width:${linkBuffPct}%"></div>${terrainBarHtml}</div><span class="stat-value">${baseLabel}${buffLabel}${terrainLabel}${(linkBuff > 0 || terrainBuff !== 0) ? ` → ${total}` : ''}</span></div>`;
+      const pad = (n) => String(n).padStart(3, '\u2007');
+      const baseLabel = `${pad(ms[s])}+${pad(pl[s])}=${pad(base)}`;
+      const buffLabel = linkBuff > 0 ? ` <span class="stat-buff-text">+${pad(linkBuff)}</span>` : '';
+      html += `<div class="stat-row"><span class="stat-label">${labels[s]}</span><div class="stat-track"><div class="stat-bar-base" style="width:${basePct}%"></div><div class="stat-bar-buff" style="width:${linkBuffPct}%"></div>${terrainBarHtml}</div><span class="stat-value">${baseLabel}${buffLabel}${terrainLabel}${(linkBuff > 0 || terrainBuff !== 0) ? ` → ${pad(total)}` : ''}</span></div>`;
     });
     html += '</div>';
     return html;
