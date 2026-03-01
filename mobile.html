@@ -2114,19 +2114,6 @@ const UIRenderer = {
     const number = AppState.deck[slotIdx];
     if (!number) {
       openCardPicker(slotIdx, type);
-      return;
-    }
-    // Toggle front/back
-    const el = document.getElementById(`ov-${type.toLowerCase()}-${u}`);
-    const img = el?.querySelector('img');
-    if (!img) return;
-    const isBack = el.dataset.showBack === '1';
-    if (isBack) {
-      img.src = resolveImageUrl(null, number, 'front');
-      el.dataset.showBack = '0';
-    } else {
-      img.src = resolveImageUrl(null, number, 'back');
-      el.dataset.showBack = '1';
     }
   },
 
@@ -2165,14 +2152,12 @@ const UIRenderer = {
       el.querySelector('img')?.remove();
       el.querySelector('.ov-badge').textContent = '';
       el.querySelector('.ov-badge').className = 'ov-badge';
-      el.dataset.showBack = '0';
       let oldTags = el.querySelector('.ov-link-tags');
       if (oldTags) oldTags.remove();
       return;
     }
 
-    const isBack = el.dataset.showBack === '1';
-    const imgUrl = isBack ? resolveImageUrl(null, number, 'back') : resolveImageUrl(null, number, 'front');
+    const imgUrl = resolveImageUrl(null, number, 'front');
     let img = el.querySelector('img');
     if (!img) { img = document.createElement('img'); el.insertBefore(img, el.firstChild); }
     img.src = imgUrl;
