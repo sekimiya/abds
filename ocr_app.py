@@ -136,6 +136,23 @@ def _build_ocr_file_map():
                 file_map[number]['sp'] = True
             elif fn.endswith('_sq_analysis.json'):
                 file_map[number]['sq'] = True
+    # _pバリアントはベース番号のOCRがあれば処理済みとみなす
+    all_cards_dir = 'all_cards_list'
+    if file_map and os.path.exists(all_cards_dir):
+        import glob as _glob
+        for json_path in _glob.glob(os.path.join(all_cards_dir, '*_p[0-9]*.json')):
+            fn = os.path.basename(json_path)
+            m = re.search(r'([A-Z0-9\-]+-[A-Z]?\d+_p\d+)', fn)
+            if m:
+                p_num = m.group(1)
+                base_num = re.sub(r'_p\d+$', '', p_num)
+                if base_num in file_map and file_map[base_num].get('basic') and p_num not in file_map:
+                    file_map[p_num] = {
+                        'raw': file_map[base_num]['raw'],
+                        'basic': True,
+                        'sp': file_map[base_num]['sp'],
+                        'sq': file_map[base_num]['sq'],
+                    }
     _ocr_file_map_cache = file_map
     return file_map
 
