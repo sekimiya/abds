@@ -518,16 +518,17 @@ select,input{font-family:inherit}
 .modal-overlay.open{display:flex}
 .modal-content{background:var(--bg-card);border-radius:12px;padding:16px;width:92vw;max-height:85vh;overflow-y:auto;-webkit-overflow-scrolling:touch;box-shadow:0 0 24px rgba(0,0,0,0.8);position:relative}
 .modal-close{position:absolute;top:6px;right:10px;background:none;border:none;color:#888;font-size:1.5rem;padding:4px}
-.modal-card-header{display:flex;gap:10px;margin-bottom:10px}
-.modal-card-image{width:120px;height:auto;border-radius:6px;flex-shrink:0}
-.modal-card-info{flex:1;min-width:0}
+.modal-card-header{display:flex;flex-direction:column;gap:10px;margin-bottom:10px}
+.modal-card-images{display:flex;gap:8px;justify-content:center}
+.modal-card-image{width:45%;max-width:160px;height:auto;border-radius:6px;flex-shrink:0}
+.modal-card-info{min-width:0}
 .modal-card-number{color:var(--accent);font-weight:bold;font-size:1rem}
 .modal-card-name{font-size:1.1rem;font-weight:bold;margin-top:2px}
 .modal-param-group{background:#222;border-radius:6px;padding:8px;margin-top:6px}
-.modal-param-title{color:#4caf50;font-weight:bold;font-size:0.8rem;margin-bottom:4px}
+.modal-param-title{color:#66ff99;font-weight:bold;font-size:0.8rem;margin-bottom:4px}
 .modal-param-row{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:2px}
 .modal-param-item{background:#333;border-radius:3px;padding:2px 6px;font-size:0.8rem}
-.modal-param-label{color:#4caf50;margin-right:2px}
+.modal-param-label{color:#66ff99;margin-right:2px}
 .rarity-tag{display:inline-block;padding:0 4px;border-radius:2px;font-size:0.6rem;font-weight:bold;margin-left:4px;vertical-align:middle}
 .rarity-tag.rarity-M{background:#5e3a1a;color:#ffcc80}
 .rarity-tag.rarity-C{background:#1a3a1a;color:#a5d6a7}
@@ -2987,7 +2988,8 @@ async function showCardModal(number) {
   const name = detail.name || number;
   const cardIdx = AppState.cardIndex.find(c => c.number === number);
   const rarity = cardIdx?.rarity || null;
-  let html = `<div class="modal-card-header"><img class="modal-card-image" src="${frontUrl}" alt="${escapeHtml(name)}"><div class="modal-card-info"><div class="modal-card-number">${escapeHtml(number)}${rarity ? ` <span class="rarity-tag rarity-${escapeHtml(rarity)}">${escapeHtml(rarity)}</span>` : ''}</div><div class="modal-card-name">${escapeHtml(name)}</div><div style="color:#888;font-size:0.8rem">${escapeHtml(ocr.type||'')} | ${escapeHtml(ocr.category||'')} | C:${ocr.cost||'-'}</div></div></div>`;
+  const backUrl = resolveImageUrl(null, number, 'back');
+  let html = `<div class="modal-card-header"><div class="modal-card-images"><img class="modal-card-image" src="${frontUrl}" alt="${escapeHtml(name)} 表"><img class="modal-card-image" src="${backUrl}" alt="${escapeHtml(name)} 裏"></div><div class="modal-card-info"><div class="modal-card-number">${escapeHtml(number)}${rarity ? ` <span class="rarity-tag rarity-${escapeHtml(rarity)}">${escapeHtml(rarity)}</span>` : ''}</div><div class="modal-card-name">${escapeHtml(name)}</div><div style="color:#888;font-size:0.8rem">${escapeHtml(ocr.type||'')} | ${escapeHtml(ocr.category||'')} | C:${ocr.cost||'-'}</div></div></div>`;
   if (ocr.stats) { html += `<div class="modal-param-group"><div class="modal-param-title">ステータス</div><div class="modal-param-row"><div class="modal-param-item"><span class="modal-param-label">機動:</span>${ocr.stats.mobility||'-'}</div><div class="modal-param-item"><span class="modal-param-label">遠距:</span>${ocr.stats.ranged_attack||'-'}</div><div class="modal-param-item"><span class="modal-param-label">近距:</span>${ocr.stats.melee_attack||'-'}</div><div class="modal-param-item"><span class="modal-param-label">HP:</span>${ocr.stats.hp||'-'}</div></div></div>`; }
   document.getElementById('cardDetailBody').innerHTML = html;
   document.getElementById('cardDetailModal').classList.add('open');
