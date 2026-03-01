@@ -360,13 +360,32 @@ select,input{font-family:inherit}
 .pl-sq-label.rush{background:#f48fb1}
 .pl-sq-text{color:#bbb;font-size:0.8rem;line-height:1.4}
 /* Link items in detail */
-.link-item{padding:4px 0;border-bottom:1px solid var(--bg-card)}
+.link-item{padding:5px 6px;border-bottom:1px solid rgba(255,255,255,0.05);border-radius:4px;margin-bottom:2px;
+  border-left:3px solid #333;transition:background 0.2s}
 .link-item:last-child{border-bottom:none}
-.link-name{font-weight:bold;color:#ccc;font-size:0.85rem}
-.link-badge{display:inline-block;padding:0 4px;border-radius:2px;font-size:0.7rem;font-weight:bold;margin-left:4px}
-.link-badge.on{background:#1b5e20;color:var(--bouei)}
-.link-badge.off{background:#333;color:#666}
-.link-effect{color:#888;font-size:0.75rem}
+.link-item.link-active{border-left-color:var(--accent);background:rgba(104,239,189,0.06)}
+.link-item.link-inactive{opacity:0.6}
+.link-name{font-weight:bold;color:#888;font-size:0.8rem}
+.link-item.link-active .link-name{color:var(--accent)}
+.link-badge{display:inline-block;padding:1px 6px;border-radius:3px;font-size:0.6rem;font-weight:bold;margin-left:4px}
+.link-badge.on{background:rgba(104,239,189,0.2);color:var(--accent);border:1px solid rgba(104,239,189,0.3);text-shadow:0 0 4px rgba(104,239,189,0.3)}
+.link-badge.off{background:#222;color:#555;border:1px solid #333}
+.link-effect{color:#666;font-size:0.7rem;margin-top:1px}
+.link-item.link-active .link-effect{color:#aaa}
+.link-count{font-size:0.6rem;color:#555;margin-left:2px}
+.link-item.link-active .link-count{color:var(--accent)}
+.link-item.link-type-eb.link-active{border-left-color:var(--eb-orange);background:rgba(255,152,0,0.06)}
+.link-item.link-type-eb.link-active .link-name{color:var(--eb-orange)}
+.link-item.link-type-eb.link-active .link-badge.on{background:rgba(255,152,0,0.2);color:var(--eb-orange);border-color:rgba(255,152,0,0.3);text-shadow:0 0 4px rgba(255,152,0,0.3)}
+.link-item.link-type-eb.link-active .link-count{color:var(--eb-orange)}
+.link-item.link-type-sq.link-active{border-left-color:var(--sq-pink);background:rgba(255,105,180,0.06)}
+.link-item.link-type-sq.link-active .link-name{color:var(--sq-pink)}
+.link-item.link-type-sq.link-active .link-badge.on{background:rgba(255,105,180,0.2);color:var(--sq-pink);border-color:rgba(255,105,180,0.3);text-shadow:0 0 4px rgba(255,105,180,0.3)}
+.link-item.link-type-sq.link-active .link-count{color:var(--sq-pink)}
+.link-item.link-type-ab.link-active{border-left-color:#b388ff;background:rgba(179,136,255,0.06)}
+.link-item.link-type-ab.link-active .link-name{color:#b388ff}
+.link-item.link-type-ab.link-active .link-badge.on{background:rgba(179,136,255,0.2);color:#b388ff;border-color:rgba(179,136,255,0.3);text-shadow:0 0 4px rgba(179,136,255,0.3)}
+.link-item.link-type-ab.link-active .link-count{color:#b388ff}
 /* No OCR fallback */
 .no-ocr-msg{color:#888;font-size:0.85rem;text-align:center;padding:8px 0}
 .no-ocr-hint{color:#666;font-size:0.75rem}
@@ -2525,7 +2544,13 @@ const UIRenderer = {
       const condMatch = (link.condition || '').match(/(\d+)枚以上/);
       const required = condMatch ? parseInt(condMatch[1]) : 2;
       const isActive = count >= required;
-      html += `<div class="link-item"><span class="link-name">${escapeHtml(link.name)}</span><span class="link-badge ${isActive ? 'on' : 'off'}">${isActive ? '発動' : count + '/' + required}</span><div class="link-effect">${escapeHtml(link.effect || '')}</div></div>`;
+      const linkType = link.is_eb_link ? 'eb' : link.is_sq_link ? 'sq' : link.is_ab_link ? 'ab' : '';
+      const activeClass = isActive ? 'link-active' : 'link-inactive';
+      html += `<div class="link-item ${activeClass}${linkType ? ' link-type-' + linkType : ''}">`;
+      html += `<span class="link-name">${escapeHtml(link.name)}</span>`;
+      html += `<span class="link-count">${count}/${required}</span>`;
+      html += `<span class="link-badge ${isActive ? 'on' : 'off'}">${isActive ? '発動' : '未発動'}</span>`;
+      html += `<div class="link-effect">${escapeHtml(link.effect || '')}</div></div>`;
     });
     html += '</div>';
     return html;
@@ -2885,7 +2910,7 @@ const SearchPanel = {
   applyFilters() {
     if (!this._hasActiveFilter()) { this._filteredCards = []; this._page = 0; this._renderGrid(); this._saveFilters(); this._updateFilterBadge(); return; }
     let cards = AppState.cardIndex;
-    if (this._lockedType) cards = cards.filter(c => c.type === this._lockedType);
+    if (this._lockedType && this._t.abCat.size === 0) cards = cards.filter(c => c.type === this._lockedType);
     if (this._currentCategory.size > 0) cards = cards.filter(c => !c.category || this._currentCategory.has(c.category));
     if (this._currentRarity.size > 0) cards = cards.filter(c => !c.rarity || this._currentRarity.has(c.rarity));
     const allSeriesEl = document.getElementById('filterAllSeries');

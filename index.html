@@ -4158,8 +4158,8 @@ const SearchPanel = {
 
     let cards = AppState.cardIndex;
 
-    // Type filter (スロット指定時のみタイプ絞込)
-    if (this._lockedType) {
+    // Type filter (スロット指定時のみタイプ絞込、ABフィルター時は解除)
+    if (this._lockedType && this._t.abCat.size === 0) {
       cards = cards.filter(c => c.type === this._lockedType);
     }
     // Category（カテゴリ未設定カードはフィルタをパス）
