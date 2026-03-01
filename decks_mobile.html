@@ -799,9 +799,9 @@ function generateDeckCode(deck) {
   return btoa(unescape(encodeURIComponent(cards.join(','))));
 }
 
-// Mobile: link to mobile.html#code
+// Mobile: link to index.html?d=code (query paramでモバイル自動リダイレクト)
 function getDeckV2Url(deck) {
-  return location.origin + location.pathname.replace(/[^/]*$/, '') + 'mobile.html#' + generateDeckCode(deck);
+  return location.origin + location.pathname.replace(/[^/]*$/, '') + 'index.html?d=' + generateDeckCode(deck);
 }
 
 function copyDeckToLocal(deck, btn) {

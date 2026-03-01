@@ -831,7 +831,7 @@ function generateDeckCode(deck) {
 }
 
 function getDeckV2Url(deck) {
-  return location.origin + location.pathname.replace(/[^/]*$/, '') + 'index.html#' + generateDeckCode(deck);
+  return location.origin + location.pathname.replace(/[^/]*$/, '') + 'index.html?d=' + generateDeckCode(deck);
 }
 
 function copyDeckToLocal(deck, btn) {

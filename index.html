@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<script>if(/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)&&!(location.hash&&location.hash.includes('&rec'))&&!location.search.includes('force')){location.replace('./mobile.html'+location.hash);}</script>
+<script>if(/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)&&!(location.hash&&location.hash.includes('&rec'))&&!location.search.includes('force')){location.replace('./mobile.html'+location.search+location.hash);}</script>
 <title>ABD Simulator v2</title>
 <link rel="manifest" href="./manifest.json">
 <meta name="theme-color" content="#0f0f0f">
@@ -2241,9 +2241,9 @@ const DeckManager = {
     const code = this.generateCode();
     const base = location.origin + location.pathname.replace(/[^/]*$/, '') + 'index.html';
     const sc = await ShortUrl.create(code);
-    const url = sc ? base + '#s:' + sc : base + '#' + code;
+    const url = sc ? base + '?d=s:' + sc : base + '?d=' + code;
     navigator.clipboard.writeText(url).then(() => {
-      Toast.show('短縮URLをコピーしました', 'success');
+      Toast.show('共有URLをコピーしました', 'success');
     });
   },
   tweetDeck() {
@@ -2253,10 +2253,10 @@ const DeckManager = {
     const base = location.origin + location.pathname.replace(/[^/]*$/, '') + 'index.html';
     const name = document.getElementById('deckNameInput')?.value.trim() || 'マイデッキ';
     const text = name + ' のデッキレシピ #アーセナルベース #ABDS';
-    const fallbackUrl = base + '#' + code;
+    const fallbackUrl = base + '?d=' + code;
     const win = window.open('about:blank', '_blank');
     ShortUrl.create(code).then(sc => {
-      const url = sc ? base + '#s:' + sc : fallbackUrl;
+      const url = sc ? base + '?d=s:' + sc : fallbackUrl;
       const tweetUrl = 'https://x.com/intent/tweet?text=' + encodeURIComponent(text) + '&url=' + encodeURIComponent(url);
       if (win) { win.location.href = tweetUrl; } else { location.href = tweetUrl; }
     }).catch(() => {
@@ -2330,6 +2330,31 @@ const DeckManager = {
   },
 
   async _autoLoad() {
+    // クエリパラメータ ?d= からデッキコードを読み込み（Twitter等でハッシュが消える対策）
+    const urlParams = new URLSearchParams(location.search);
+    const dParam = urlParams.get('d');
+    if (dParam) {
+      if (ShortUrl.isShort(dParam)) {
+        const numbers = await ShortUrl.resolve(ShortUrl.code(dParam));
+        if (numbers && numbers.length >= 1) {
+          while (numbers.length < 10) numbers.push('');
+          await this._applyNumbers(numbers);
+          history.replaceState(null, '', location.pathname + '#' + dParam);
+          Toast.show('URLからデッキを復元しました', 'info');
+        } else {
+          Toast.show('短縮URLの読み込みに失敗しました', 'error');
+        }
+        return;
+      }
+      const numbers = this.parseCode(dParam);
+      if (numbers && numbers.length >= 1) {
+        while (numbers.length < 10) numbers.push('');
+        await this._applyNumbers(numbers);
+        history.replaceState(null, '', location.pathname + '#' + dParam);
+        Toast.show('URLからデッキを復元しました', 'info');
+        return;
+      }
+    }
     // Hash import
     if (location.hash && location.hash.length > 1) {
       const raw = location.hash.substring(1);
