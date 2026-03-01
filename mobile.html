@@ -2244,13 +2244,14 @@ const UIRenderer = {
       + (u === AppState.selectedUnit ? ' selected' : '');
     if (totalActive > 0 && !badge.textContent) { badge.textContent = 'LNK'; badge.className = 'ov-badge link-b'; }
 
-    // Link tags overlay (reuse linkResults)
+    // Link tags overlay (reuse linkResults, max 2, active first)
     let oldTags = el.querySelector('.ov-link-tags');
     if (oldTags) oldTags.remove();
     if (linkResults.length > 0) {
+      const sorted = [...linkResults].sort((a, b) => (b.isActive ? 1 : 0) - (a.isActive ? 1 : 0));
       const tagsDiv = document.createElement('div');
       tagsDiv.className = 'ov-link-tags';
-      for (const lr of linkResults) {
+      for (const lr of sorted.slice(0, 2)) {
         const tag = document.createElement('div');
         tag.className = 'ov-link-tag ' + (lr.isActive ? 'link-on' : 'link-off') + (lr.ltype ? ' ' + lr.ltype : '');
         tag.textContent = lr.link.name;
