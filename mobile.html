@@ -1985,32 +1985,11 @@ const UIRenderer = {
   },
 
   _attachThumbHandlers() {
-    const LONG_PRESS_MS = 400;
     for (let u = 0; u < 5; u++) {
-      [['ms', 'MS', u], ['pl', 'PL', u + 5]].forEach(([prefix, type, slotIdx]) => {
+      [['ms', 'MS', u], ['pl', 'PL', u + 5]].forEach(([prefix, type]) => {
         const el = document.getElementById(`ov-${prefix}-${u}`);
         if (!el) return;
-        let timer = null;
-        let longPressed = false;
-        el.addEventListener('touchstart', (e) => {
-          longPressed = false;
-          timer = setTimeout(() => {
-            longPressed = true;
-            UIRenderer.selectUnit(u);
-            const number = AppState.deck[slotIdx];
-            if (number) { showCardModal(number); }
-            else { openCardPicker(slotIdx, type); }
-          }, LONG_PRESS_MS);
-        }, { passive: true });
-        el.addEventListener('touchend', (e) => {
-          clearTimeout(timer);
-          if (!longPressed) UIRenderer._onThumbClick(u, type);
-        });
-        el.addEventListener('touchmove', () => { clearTimeout(timer); }, { passive: true });
-        el.addEventListener('click', (e) => {
-          if (e.pointerType === 'touch') return;
-          UIRenderer._onThumbClick(u, type);
-        });
+        el.addEventListener('click', () => { UIRenderer._onThumbClick(u, type); });
       });
     }
   },
