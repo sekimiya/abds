@@ -29,6 +29,18 @@ import ocr_test
 app = Flask(__name__)
 
 
+def _card_series(card_number):
+    """カード番号からシリーズコードを返す（PRは100枚ごとに分割）"""
+    if card_number.startswith('PR-'):
+        m = re.search(r'PR-(\d+)', card_number)
+        if m:
+            pr_num = int(m.group(1))
+            g = (pr_num - 1) // 100
+            return f'PR-{g*100+1:03d}~{(g+1)*100}'
+    m = re.match(r'([A-Z]{2,3}\d{0,2})', card_number)
+    return m.group(1) if m else ''
+
+
 # ====================================================
 # カードインデックスキャッシュ（app.py と同じロジック）
 # ====================================================
@@ -66,8 +78,7 @@ def _build_card_index():
         number = card.get('number', '')
         if not number:
             continue
-        series_match = re.match(r'([A-Z]{2,3}\d{0,2})', number)
-        series = series_match.group(1) if series_match else ''
+        series = _card_series(number)
         front_url = card.get('front', {}).get('image_url', '')
         back_url = card.get('back', {}).get('image_url', '')
         name = card.get('name', '')
@@ -352,7 +363,7 @@ def _run_ocr_execution(series, stage, force, limit):
             _ocr_run_status["log"].append(f"カード一覧を読み込み中... (シリーズ: {series})")
 
         all_cards = ocr_load_unique_cards()
-        targets = [c for c in all_cards if c["card_number"].upper().startswith(series.upper())]
+        targets = [c for c in all_cards if _card_series(c["card_number"]) == series]
 
         if not force:
             existing_raw = get_existing_raw_numbers()
@@ -492,9 +503,8 @@ def api_admin_stats():
             if not fn.endswith('.json'):
                 continue
             card_count += 1
-            m = re.match(r'([A-Z]{2,3}\d{0,2})', fn)
-            if m:
-                series_set.add(m.group(1))
+            card_num = fn.replace('.json', '')
+            series_set.add(_card_series(card_num))
             try:
                 with open(os.path.join(all_cards_dir, fn), 'r', encoding='utf-8') as f:
                     data = json.load(f)
@@ -870,16 +880,14 @@ def api_ocr_run_series_stats():
 
     series_raw = {}
     for num in existing_raw:
-        m = re.match(r'([A-Z]{2,3}\d{0,2})', num)
-        if m:
-            s = m.group(1)
+        s = _card_series(num)
+        if s:
             series_raw[s] = series_raw.get(s, 0) + 1
 
     series_basic = {}
     for num in existing_basic:
-        m = re.match(r'([A-Z]{2,3}\d{0,2})', num)
-        if m:
-            s = m.group(1)
+        s = _card_series(num)
+        if s:
             series_basic[s] = series_basic.get(s, 0) + 1
 
     series_list = []
