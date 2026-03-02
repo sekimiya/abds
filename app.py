@@ -765,6 +765,14 @@ def _build_card_index():
         if series_match:
             series = series_match.group(1)
 
+        # PR カードは100枚ごとにシリーズ分割
+        if card_number.startswith('PR-'):
+            pr_num_match = re.search(r'PR-(\d+)', card_number)
+            if pr_num_match:
+                pr_num = int(pr_num_match.group(1))
+                g = (pr_num - 1) // 100
+                series = f'PR-{g*100+1:03d}~{(g+1)*100}'
+
         # ステータス抽出（logic.extract_stats でOCRキー揺れを吸収）
         normalized_stats = extract_stats(ocr_data)
 
@@ -1659,7 +1667,15 @@ def fetch_cards():
             series_match = re.match(r'([A-Z]{2,3}\d{0,2})', card_number)
             if series_match:
                 card_info['series'] = series_match.group(1)
-        
+
+        # PR カードは100枚ごとにシリーズ分割
+        if card_number and card_number.startswith('PR-'):
+            pr_num_match = re.search(r'PR-(\d+)', card_number)
+            if pr_num_match:
+                pr_num = int(pr_num_match.group(1))
+                g = (pr_num - 1) // 100
+                card_info['series'] = f'PR-{g*100+1:03d}~{(g+1)*100}'
+
         result_cards.append(card_info)
     
     print(f"結果カード数: {len(result_cards)}")
