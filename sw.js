@@ -1,5 +1,5 @@
 // ABDS PWA Service Worker
-const CACHE_VERSION = 'abds-v24';
+const CACHE_VERSION = 'abds-v25';
 const APP_SHELL_CACHE = `app-shell-${CACHE_VERSION}`;
 const DATA_CACHE = `data-${CACHE_VERSION}`;
 const IMAGE_CACHE = 'card-images-v1';
@@ -77,18 +77,23 @@ self.addEventListener('fetch', (event) => {
   // Only handle same-origin requests below
   if (url.origin !== self.location.origin) return;
 
+  // Data JSON: strip query params for cache key
+  const isData = url.pathname.includes('/data/') && url.pathname.endsWith('.json');
+  const cacheUrl = isData ? url.origin + url.pathname : event.request.url;
+
   // All same-origin requests — Network First, cache fallback
   event.respondWith(
     fetch(event.request).then(response => {
       if (response.ok) {
-        const cacheName = (url.pathname.includes('/data/') && url.pathname.endsWith('.json'))
-          ? DATA_CACHE : APP_SHELL_CACHE;
-        caches.open(cacheName).then(cache => cache.put(event.request, response.clone()));
+        const cacheName = isData ? DATA_CACHE : APP_SHELL_CACHE;
+        const cacheReq = isData ? new Request(cacheUrl) : event.request;
+        caches.open(cacheName).then(cache => cache.put(cacheReq, response.clone()));
       }
       return response;
-    }).catch(() =>
-      caches.match(event.request).then(cached => cached || new Response('Offline', { status: 503 }))
-    )
+    }).catch(() => {
+      const cacheReq = isData ? new Request(cacheUrl) : event.request;
+      return caches.match(cacheReq).then(cached => cached || new Response('Offline', { status: 503 }));
+    })
   );
 });
 

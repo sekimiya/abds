@@ -1804,7 +1804,7 @@ const CardService = {
   _detailsIDB: null,   // IDB database handle for card details
 
   async fetchIndex() {
-    const res = await fetch('./data/card_index.json');
+    const res = await fetch('./data/card_index.json?_t=' + Date.now());
     const cards = await res.json();
     AppState.cardIndex = cards;
     UIRenderer.invalidateIndexMap();
@@ -1850,7 +1850,7 @@ const CardService = {
       }
     } catch (_) {}
     // Fetch from static JSON
-    const res = await fetch('./data/card_details.json');
+    const res = await fetch('./data/card_details.json?_t=' + Date.now());
     const data = await res.json();
     this._allDetails = data;
     Object.assign(AppState.cardDetails, data);
@@ -1880,7 +1880,7 @@ const CardService = {
 
   async fetchTacticsCards() {
     try {
-      const res = await fetch('./data/tactics_cards.json');
+      const res = await fetch('./data/tactics_cards.json?_t=' + Date.now());
       const data = await res.json();
       AppState.tacticsCards = data;
     } catch (e) {
@@ -4992,7 +4992,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   // Link index
   try {
-    const linkRes = await fetch('./data/link_index.json');
+    const linkRes = await fetch('./data/link_index.json?_t=' + Date.now());
     const linkData = await linkRes.json();
     AppState.linkIndex = linkData;
     const names = Object.keys(linkData).sort();
