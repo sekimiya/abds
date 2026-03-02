@@ -1,5 +1,5 @@
 // ABDS PWA Service Worker
-const CACHE_VERSION = 'abds-v23';
+const CACHE_VERSION = 'abds-v24';
 const APP_SHELL_CACHE = `app-shell-${CACHE_VERSION}`;
 const DATA_CACHE = `data-${CACHE_VERSION}`;
 const IMAGE_CACHE = 'card-images-v1';
@@ -28,7 +28,13 @@ self.addEventListener('install', (event) => {
   event.waitUntil(
     Promise.all([
       caches.open(APP_SHELL_CACHE).then(cache => cache.addAll(APP_SHELL_FILES)),
-      caches.open(DATA_CACHE).then(cache => cache.addAll(DATA_FILES)),
+      caches.open(DATA_CACHE).then(cache =>
+        Promise.all(DATA_FILES.map(url =>
+          fetch(url).then(res => {
+            if (res.ok) return cache.put(url, res);
+          }).catch(() => {})
+        ))
+      ),
     ]).then(() => self.skipWaiting())
   );
 });
