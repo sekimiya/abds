@@ -4,15 +4,21 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script>
-// One-time cache purge: force SW update and clear stale caches
+// One-time cache purge: only runs if old SW caches exist
 (function(){
-  var KEY='abds_cache_v27';
+  var KEY='abds_cache_v28';
   if(!localStorage.getItem(KEY)){
-    if('caches' in window) caches.keys().then(function(k){k.forEach(function(n){caches.delete(n)})});
-    if('serviceWorker' in navigator) navigator.serviceWorker.getRegistrations().then(function(r){r.forEach(function(w){w.unregister()})});
-    if(window.indexedDB){try{indexedDB.deleteDatabase('abds-pwa-v1')}catch(e){}}
     localStorage.setItem(KEY,'1');
-    location.reload();
+    if('caches' in window){
+      caches.keys().then(function(k){
+        if(k.length>0){
+          k.forEach(function(n){caches.delete(n)});
+          if('serviceWorker' in navigator) navigator.serviceWorker.getRegistrations().then(function(r){r.forEach(function(w){w.unregister()})});
+          if(window.indexedDB){try{indexedDB.deleteDatabase('abds-pwa-v1')}catch(e){}}
+          location.reload();
+        }
+      });
+    }
   }
 })();
 </script>
@@ -4996,8 +5002,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     SearchPanel.applyFilters();
     Toast.show(`${AppState.cardIndex.length} 枚のカードを読み込みました`, 'success', 2000);
   } catch (e) {
-    Toast.show('カードデータの取得に失敗しました', 'error');
-    console.error(e);
+    Toast.show('カードデータの取得に失敗: ' + (e.message || e), 'error', 10000);
+    console.error('fetchIndex failed:', e);
     return;
   }
 
