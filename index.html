@@ -4168,11 +4168,26 @@ const SearchPanel = {
       names.map(n => `<option value="${n}"${n === current ? ' selected' : ''}>${n}</option>`).join('');
   },
 
-  _hasActiveFilter() {
-    // シリーズ選択 or 全シリーズON が必須
-    const hasSeries = this._selectedSeries.size > 0 || document.getElementById('filterAllSeries').checked;
-    if (!hasSeries) return false;
-    return true;
+  _hasActiveFilter() { return this._hasAnyFilter(); },
+  _hasAnyFilter() {
+    if (this._selectedSeries.size > 0) return true;
+    const fas = document.getElementById('filterAllSeries'); if (fas && fas.checked) return true;
+    if (this._currentRarity.size > 0) return true;
+    if (this._currentCategory.size > 0) return true;
+    if (parseInt(document.getElementById('filterCostMin').value) > 0 || parseInt(document.getElementById('filterCostMax').value) < 13) return true;
+    if (parseInt(document.getElementById('filterMobility').value) > 0) return true;
+    if (parseInt(document.getElementById('filterRanged').value) > 0) return true;
+    if (parseInt(document.getElementById('filterMelee').value) > 0) return true;
+    if (parseInt(document.getElementById('filterHp').value) > 0) return true;
+    if (document.getElementById('filterTerrainType').value) return true;
+    if (document.getElementById('filterOcr').checked) return true;
+    if (document.getElementById('filterLinkName').value) return true;
+    if ((document.getElementById('filterLinkName2') || {}).value) return true;
+    if ((document.getElementById('filterSkillName') || {}).value) return true;
+    if (document.getElementById('searchInput').value.trim()) return true;
+    const bm = document.getElementById('filterBookmarkCards'); if (bm && bm.checked) return true;
+    for (const s of Object.values(this._t)) { if (s.size > 0) return true; }
+    return false;
   },
 
   applyFilters() {
