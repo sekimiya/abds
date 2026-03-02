@@ -228,6 +228,9 @@ select,input{font-family:inherit}
 .link-chip.link-eb{border-color:#ff9800;background:#2a2218}
 .link-chip.link-eb .link-name{color:#ffb74d}
 .link-chip.link-eb .link-badge{background:linear-gradient(135deg,#ff9800,#e65100)}
+.link-chip.link-ab{border-color:#b388ff;background:#1e1a2e}
+.link-chip.link-ab .link-name{color:#ce93d8}
+.link-chip.link-ab .link-badge{background:linear-gradient(135deg,#b388ff,#7c4dff)}
 .link-chip.link-normal{border-color:#555;background:#222}
 .link-chip.link-normal .link-name{color:#aaa}
 
@@ -246,6 +249,8 @@ select,input{font-family:inherit}
 .btn-action.btn-copy-deck:hover{background:rgba(255,224,130,0.15)}
 .btn-action.btn-share{border-color:var(--accent);color:var(--accent)}
 .btn-action.btn-share:hover{background:rgba(104,239,189,0.15)}
+.btn-action.btn-open-sim{background:var(--accent);border-color:var(--accent);color:#1a1a2e;font-weight:700}
+.btn-action.btn-open-sim:hover{background:#5dd4a8;border-color:#5dd4a8}
 .btn-action.btn-tweet{border-color:#1DA1F2;color:#1DA1F2}
 .btn-action.btn-tweet:hover{background:rgba(29,161,242,0.15)}
 .btn-action.copied{border-color:var(--accent);color:var(--accent)}
@@ -822,7 +827,7 @@ function copyDeckToLocal(deck, btn) {
   decks[saveName] = entry;
   localStorage.setItem('gab_decks', JSON.stringify(decks));
   const orig = btn.textContent;
-  btn.textContent = 'コピー完了!';
+  btn.textContent = '保存完了!';
   btn.style.borderColor = '#68efbd';
   btn.style.color = '#68efbd';
   showToast(`「${saveName}」をデッキ一覧に保存しました`);
@@ -947,11 +952,12 @@ function computeActiveLinks(deck, cardData) {
     links.forEach(link => {
       if (!link.name) return;
       if (!linkMap[link.name]) {
-        linkMap[link.name] = { link, count: 0, sqCount: 0, ebCount: 0 };
+        linkMap[link.name] = { link, count: 0, sqCount: 0, ebCount: 0, abCount: 0 };
       }
       linkMap[link.name].count++;
       if (isSq) linkMap[link.name].sqCount++;
-      if (isEb) linkMap[link.name].ebCount++;
+      if (isEb || link.is_eb_link) linkMap[link.name].ebCount++;
+      if (link.is_ab_link) linkMap[link.name].abCount++;
     });
   }
 
@@ -960,7 +966,7 @@ function computeActiveLinks(deck, cardData) {
     const condMatch = (entry.link.condition || '').match(/(\d+)枚以上/);
     const required = condMatch ? parseInt(condMatch[1]) : 2;
     if (entry.count >= required) {
-      const type = entry.sqCount > 0 ? 'sq' : (entry.ebCount > 0 ? 'eb' : 'normal');
+      const type = entry.abCount > 0 ? 'ab' : (entry.sqCount > 0 ? 'sq' : (entry.ebCount > 0 ? 'eb' : 'normal'));
       active.push({ name: entry.link.name, effect: entry.link.effect || '', type, count: entry.count, required });
     }
   });
@@ -1133,18 +1139,19 @@ function renderDeckList(decks, cardData, tacticsMap) {
     const activeLinks = computeActiveLinks(deck, cardData);
     const hasSqLink = activeLinks.some(l => l.type === 'sq');
     const hasEbLink = activeLinks.some(l => l.type === 'eb');
+    const hasAbLink = activeLinks.some(l => l.type === 'ab');
     const deckBgCls = hasSqLink ? ' deck-entry-sq' : (hasEbLink ? ' deck-entry-eb' : '');
 
     html += `<div class="deck-entry${deckBgCls}" data-id="${deckId}">`;
 
-    // SQ/EB Links at top (with icons)
-    const sqEbLinks = activeLinks.filter(l => l.type === 'sq' || l.type === 'eb');
+    // SQ/EB/AB Links at top (with icons)
+    const specialLinks = activeLinks.filter(l => l.type === 'sq' || l.type === 'eb' || l.type === 'ab');
     const normalLinks = activeLinks.filter(l => l.type === 'normal');
-    if (sqEbLinks.length > 0) {
+    if (specialLinks.length > 0) {
       html += '<div class="deck-links">';
-      sqEbLinks.forEach(lk => {
+      specialLinks.forEach(lk => {
         const typeCls = `link-${lk.type}`;
-        const badgeLabel = lk.type === 'sq' ? 'SQ' : 'EB';
+        const badgeLabel = lk.type === 'sq' ? 'SQ' : lk.type === 'eb' ? 'EB' : 'AB';
         html += `<span class="link-chip ${typeCls}"><span class="link-badge">${badgeLabel}</span><span class="link-name">${escapeHtml(lk.name)}</span></span>`;
       });
       html += '</div>';
@@ -1184,11 +1191,17 @@ function renderDeckList(decks, cardData, tacticsMap) {
       }
       html += '</div>';
     }
-    if (normalLinks.length > 0) {
+    if (activeLinks.length > 0) {
       html += '<div class="deck-links">';
       html += '<span style="color:#888;font-size:0.7rem">LINK:</span>';
-      normalLinks.forEach(lk => {
-        html += `<span class="link-chip link-normal"><span class="link-name">${escapeHtml(lk.name)}</span></span>`;
+      activeLinks.forEach(lk => {
+        if (lk.type !== 'normal') {
+          const typeCls = `link-${lk.type}`;
+          const badgeLabel = lk.type === 'sq' ? 'SQ' : lk.type === 'eb' ? 'EB' : 'AB';
+          html += `<span class="link-chip ${typeCls}"><span class="link-badge">${badgeLabel}</span><span class="link-name">${escapeHtml(lk.name)}</span></span>`;
+        } else {
+          html += `<span class="link-chip link-normal"><span class="link-name">${escapeHtml(lk.name)}</span></span>`;
+        }
       });
       html += '</div>';
     }
@@ -1198,7 +1211,8 @@ function renderDeckList(decks, cardData, tacticsMap) {
 
     // Action buttons
     html += '<div class="deck-action-row">';
-    html += `<button class="btn-action btn-copy-deck" data-idx="${idx}">コピー</button>`;
+    html += `<button class="btn-action btn-open-sim" data-idx="${idx}">デッキシミュで表示</button>`;
+    html += `<button class="btn-action btn-copy-deck" data-idx="${idx}">デッキを保存</button>`;
     html += `<button class="btn-action btn-share" data-idx="${idx}">共有URL</button>`;
     html += `<button class="btn-action btn-tweet" data-idx="${idx}">Twitterに投稿</button>`;
     if (deckId) {
@@ -1250,6 +1264,16 @@ function renderDeckList(decks, cardData, tacticsMap) {
       e.stopPropagation();
       const deck = sorted[parseInt(el.dataset.idx)];
       copyShareUrl(deck, el);
+    });
+  });
+
+  // Open in simulator
+  document.querySelectorAll('.btn-open-sim').forEach(el => {
+    el.addEventListener('click', e => {
+      e.stopPropagation();
+      const deck = sorted[parseInt(el.dataset.idx)];
+      const code = generateDeckCode(deck);
+      window.location.href = 'mobile.html?d=' + encodeURIComponent(code);
     });
   });
 

@@ -2570,7 +2570,7 @@ const ImageCache = {
       const keys = await cache.keys();
       keys.forEach(req => {
         const url = new URL(req.url);
-        const m = url.pathname.match(/\/([A-Z0-9_\-]+(?:_b)?)\.jpg/);
+        const m = url.pathname.match(/\/([A-Za-z0-9_\-]+(?:_b)?)\.jpg/);
         if (m) this._cachedKeys.add(m[1]);
       });
       this._updateCount(this._cachedKeys.size);
