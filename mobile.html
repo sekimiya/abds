@@ -473,6 +473,8 @@ select,input{font-family:inherit}
 .thumb-card-info{position:absolute;bottom:0;left:0;right:0;padding:2px 3px;background:rgba(0,0,0,0.75);display:flex;flex-direction:column;gap:0px}
 .thumb-card-number{color:var(--accent);font-size:0.5rem;white-space:nowrap;overflow:hidden}
 .thumb-card-name{color:#ddd;font-size:0.55rem;font-weight:bold;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.thumb-card.no-ocr{opacity:0.45;pointer-events:none}
+.thumb-no-ocr-badge{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,0.8);color:#f44336;font-size:0.65rem;font-weight:bold;padding:2px 6px;border-radius:3px;border:1px solid #f44336;white-space:nowrap}
 .thumb-card-sub{color:#888;font-size:0.45rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .picker-pagination{
   display:flex;justify-content:space-between;align-items:center;
@@ -3099,13 +3101,14 @@ const SearchPanel = {
       const isEb = card.has_eb || card.has_eb_skill || card.has_eb_link;
       const isSq = card.has_sqsp || card.has_sq_skill || card.has_sq_link || !!card.sq_rush_effect;
       const isAb = card.has_ab_link;
-      el.className = 'thumb-card' + (isEb ? ' card-eb' : '') + (isSq ? ' card-sq' : '') + (isAb ? ' card-ab' : '');
+      const noOcr = !card.has_ocr;
+      el.className = 'thumb-card' + (isEb ? ' card-eb' : '') + (isSq ? ' card-sq' : '') + (isAb ? ' card-ab' : '') + (noOcr ? ' no-ocr' : '');
       const rarityHtml = card.rarity ? `<span class="thumb-card-rarity r-${escapeHtml(card.rarity)}">${escapeHtml(card.rarity)}</span>` : '';
       el.innerHTML = `
         <div class="thumb-card-img-wrap">
           <img src="${resolveImageUrl(null, card.number, 'front')}" alt="${card.name}" loading="lazy" onerror="this.onerror=null;this.src=PLACEHOLDER_SVG">
           <div class="thumb-card-badges">${card.cost !== null ? `<span class="thumb-card-cost">C${card.cost}</span>` : ''}${rarityHtml}</div>
-          ${card.has_ocr ? '<div class="thumb-ocr-badge">OCR</div>' : ''}
+          ${noOcr ? '<div class="thumb-no-ocr-badge">未OCR</div>' : ''}
           ${isSq ? '<div class="thumb-sq-badge">SQ</div>' : ''}
           ${isEb ? `<div class="thumb-eb-badge">${card.has_eb ? 'EBSP' : 'EB'}</div>` : ''}
           ${isAb ? '<div class="thumb-ab-badge">AB</div>' : ''}
@@ -3115,7 +3118,7 @@ const SearchPanel = {
             <div class="thumb-card-name">${escapeHtml(card.name || '')}</div>
           </div>
         </div>`;
-      el.addEventListener('click', () => this._selectCard(card));
+      if (!noOcr) el.addEventListener('click', () => this._selectCard(card));
       grid.appendChild(el);
     }
     this._rendered = end;
