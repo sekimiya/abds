@@ -1842,12 +1842,13 @@ const CardService = {
         req.onsuccess = () => res(req.result || null);
         req.onerror = e => rej(e.target.error);
       });
-      if (val) {
+      if (val && Object.keys(val).length >= AppState.cardIndex.length) {
         this._allDetails = val;
         Object.assign(AppState.cardDetails, val);
         console.log('CardService: details loaded from IDB,', Object.keys(val).length);
         return;
       }
+      if (val) console.warn('CardService: IDB stale (IDB:', Object.keys(val).length, 'index:', AppState.cardIndex.length, '), refetching');
     } catch (_) {}
     // Fetch from static JSON
     const res = await fetch('./data/card_details.json', { cache: 'no-store' });
