@@ -1284,6 +1284,36 @@ function safeInt(val, def = 0) {
   const n = parseInt(val, 10);
   return isNaN(n) ? def : n;
 }
+// リンク発動条件のカウント: カテゴリ条件(「機動が2枚以上」等)はカテゴリで数える
+const _LINK_CATEGORIES = ['機動', '制圧', '殲滅', '近距離', '遠距離', '防衛'];
+function _parseLinkCondition(condition) {
+  const numMatch = (condition || '').match(/(\d+)枚以上/);
+  const required = numMatch ? parseInt(numMatch[1]) : 2;
+  let category = null;
+  for (const cat of _LINK_CATEGORIES) {
+    if ((condition || '').includes(cat)) { category = cat; break; }
+  }
+  return { required, category };
+}
+function _countLinkInDeck(linkName, category) {
+  if (category) {
+    let count = 0;
+    for (let i = 0; i < 5; i++) {
+      const num = AppState.deck[i];
+      if (!num) continue;
+      const card = AppState.cardIndex.find(c => c.number === num);
+      if (card && card.category === category) count++;
+    }
+    return count;
+  }
+  let count = 0;
+  for (let i = 0; i < 10; i++) {
+    const d = AppState.deckOcr[i]; if (!d) continue;
+    const dLinks = d.link_abilities || d.link_ability || [];
+    if (Array.isArray(dLinks) && dLinks.some(l => l.name === linkName)) count++;
+  }
+  return count;
+}
 function escapeHtml(str) {
   if (!str) return '';
   const div = document.createElement('div');
@@ -1301,15 +1331,8 @@ function getLinkBuffs(ocr) {
   if (!Array.isArray(links)) return buffs;
   links.forEach(link => {
     const eff = link.effect || '';
-    const condMatch = (link.condition || '').match(/(\d+)枚以上/);
-    const required = condMatch ? parseInt(condMatch[1]) : 2;
-    let count = 0;
-    for (let i = 0; i < 10; i++) {
-      const d = AppState.deckOcr[i];
-      if (!d) continue;
-      const dLinks = d.link_abilities || d.link_ability || [];
-      if (Array.isArray(dLinks) && dLinks.some(l => l.name === link.name)) count++;
-    }
+    const { required, category } = _parseLinkCondition(link.condition);
+    const count = _countLinkInDeck(link.name, category);
     if (count < required) return;
     if (eff.match(/機動力.*小アップ/)) buffs.mobility.small++;
     if (eff.match(/遠距離攻撃力.*小アップ/)) buffs.ranged.small++;
@@ -2227,15 +2250,8 @@ const UIRenderer = {
     if (Array.isArray(cardLinks)) {
       for (const link of cardLinks) {
         if (!link.name) continue;
-        const condMatch = (link.condition || '').match(/(\d+)枚以上/);
-        const required = condMatch ? parseInt(condMatch[1]) : 2;
-        let count = 0;
-        for (let i = 0; i < 10; i++) {
-          const d = AppState.deckOcr[i];
-          if (!d) continue;
-          const dLinks = d.link_abilities || d.link_ability || [];
-          if (Array.isArray(dLinks) && dLinks.some(l => l.name === link.name)) count++;
-        }
+        const { required, category } = _parseLinkCondition(link.condition);
+        const count = _countLinkInDeck(link.name, category);
         const isActive = count >= required;
         const ltype = link.is_eb_link ? 'link-eb' : AppState._sqLinkNames.has(link.name) ? 'link-sq' : link.is_ab_link ? 'link-ab' : '';
         linkResults.push({ link, isActive, ltype });
@@ -2586,10 +2602,8 @@ const UIRenderer = {
     if (allUnitLinks.length === 0) return '';
     let html = '<div class="detail-section"><div class="detail-section-title link">リンクアビリティ</div>';
     allUnitLinks.forEach(link => {
-      let count = 0;
-      for (let i = 0; i < 10; i++) { const d = AppState.deckOcr[i]; if (!d) continue; const dLinks = d.link_abilities || d.link_ability || []; if (Array.isArray(dLinks) && dLinks.some(l => l.name === link.name)) count++; }
-      const condMatch = (link.condition || '').match(/(\d+)枚以上/);
-      const required = condMatch ? parseInt(condMatch[1]) : 2;
+      const { required, category } = _parseLinkCondition(link.condition);
+      const count = _countLinkInDeck(link.name, category);
       const isActive = count >= required;
       const linkType = link.is_eb_link ? 'eb' : AppState._sqLinkNames.has(link.name) ? 'sq' : link.is_ab_link ? 'ab' : '';
       const activeClass = isActive ? 'link-active' : 'link-inactive';
@@ -2672,12 +2686,19 @@ const UIRenderer = {
       if (!Array.isArray(links)) continue;
       links.forEach(link => {
         if (!link.name) return;
-        if (!linkMap[link.name]) { const cm = (link.condition||'').match(/(\d+)枚以上/); linkMap[link.name] = { effect: link.effect || '', required: cm ? parseInt(cm[1]) : 2, count: 0, is_eb_link: false, is_sq_link: false, is_ab_link: false }; }
+        if (!linkMap[link.name]) {
+          const { required, category } = _parseLinkCondition(link.condition);
+          linkMap[link.name] = { effect: link.effect || '', required, category, count: 0, is_eb_link: false, is_sq_link: false, is_ab_link: false };
+        }
         if (link.is_eb_link) linkMap[link.name].is_eb_link = true;
         if (link.is_ab_link) linkMap[link.name].is_ab_link = true;
         if (AppState._sqLinkNames.has(link.name)) linkMap[link.name].is_sq_link = true;
         linkMap[link.name].count++;
       });
+    }
+    // カテゴリ条件のリンクはカテゴリ枚数で上書き
+    for (const [name, info] of Object.entries(linkMap)) {
+      if (info.category) info.count = _countLinkInDeck(name, info.category);
     }
     const entries = Object.entries(linkMap).sort((a, b) => { const aA = a[1].count >= a[1].required ? 1 : 0; const bA = b[1].count >= b[1].required ? 1 : 0; if (bA !== aA) return bA - aA; return a[0].localeCompare(b[0]); });
     const isSpecial = info => info.is_eb_link || info.is_sq_link || info.is_ab_link;
