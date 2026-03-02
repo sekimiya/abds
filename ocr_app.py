@@ -686,9 +686,9 @@ def api_ocr_admin_stats():
             if not fn.endswith('.json'):
                 continue
             total_cards += 1
-            m = re.match(r'([A-Z]{2,3}\d{0,2})', fn)
-            if m:
-                s = m.group(1)
+            card_num = fn.replace('.json', '')
+            s = _card_series(card_num)
+            if s:
                 series_total[s] = series_total.get(s, 0) + 1
             try:
                 with open(os.path.join(all_cards_dir, fn), 'r', encoding='utf-8') as f:
@@ -712,17 +712,14 @@ def api_ocr_admin_stats():
 
     series_ocr = {}
     for number, info in ocr_map.items():
-        m = re.match(r'([A-Z]{2,3}\d{0,2})', number)
-        if m:
-            s = m.group(1)
-            if info['basic']:
-                series_ocr[s] = series_ocr.get(s, 0) + 1
+        s = _card_series(number)
+        if s and info['basic']:
+            series_ocr[s] = series_ocr.get(s, 0) + 1
 
     series_failed = {}
     for num in (failed_numbers & all_card_numbers):
-        m = re.match(r'([A-Z]{2,}\d{2})', num)
-        if m:
-            s = m.group(1)
+        s = _card_series(num)
+        if s:
             series_failed[s] = series_failed.get(s, 0) + 1
 
     series_coverage = []
@@ -732,7 +729,7 @@ def api_ocr_admin_stats():
         series_coverage.append({
             'series': s,
             'total': t,
-            'raw': sum(1 for num, info in ocr_map.items() if re.match(r'^' + re.escape(s), num) and (info['raw'] or info['basic'])),
+            'raw': sum(1 for num, info in ocr_map.items() if _card_series(num) == s and (info['raw'] or info['basic'])),
             'basic': o,
             'failed': series_failed.get(s, 0),
             'coverage': round(o / t * 100, 1) if t > 0 else 0,
