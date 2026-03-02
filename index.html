@@ -840,6 +840,11 @@ select,input{font-family:inherit}
   width:14px;height:14px;background:#68efbd;border-radius:50%;cursor:pointer;border:none;
 }
 .stat-slider-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.3rem}
+@media(pointer:coarse){
+  .stat-slider-grid{grid-template-columns:1fr}
+  .range-filter input[type="range"]{height:10px;min-width:60px}
+  .range-filter input[type="range"]::-webkit-slider-thumb{width:22px;height:22px}
+}
 .search-input{
   width:100%;padding:0.35rem 0.5rem;background:#1a1a1a;
   border:1px solid #333;border-radius:6px;color:#fff;font-size:0.85rem;
