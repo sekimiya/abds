@@ -4201,7 +4201,7 @@ const SearchPanel = {
     if (parseInt(document.getElementById('filterHp').value) > 0) return true;
     if (document.getElementById('filterTerrainType').value) return true;
     if (document.getElementById('filterOcr').checked) return true;
-    if (document.getElementById('filterLinkName').value) return true;
+    if ((document.getElementById('filterLinkName') || {}).value) return true;
     if ((document.getElementById('filterLinkName2') || {}).value) return true;
     if ((document.getElementById('filterSkillName') || {}).value) return true;
     if (document.getElementById('searchInput').value.trim()) return true;
