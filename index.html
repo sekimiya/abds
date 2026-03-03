@@ -475,8 +475,9 @@ select,input{font-family:inherit}
 }
 .card-slot.has-card:hover .card-slot-detail{display:block}
 .card-slot-detail:hover{background:rgba(104,239,189,0.3);color:#fff}
-.slot-empty-icon{font-size:1.5rem;color:#444;margin-bottom:0.2rem}
-.slot-empty-text{font-size:0.72rem;color:#444}
+.slot-empty-icon{font-size:2.5rem;color:#555;margin-bottom:0.1rem}
+.slot-empty-text{font-size:0.9rem;color:#555;font-weight:bold}
+.card-slot:not(.has-card){min-height:120px}
 .card-slot-name{display:none}
 /* Card slot link ability tags */
 .slot-link-tags{
@@ -834,7 +835,7 @@ select,input{font-family:inherit}
 .filter-group-title{
   display:flex;align-items:center;justify-content:space-between;
   padding:0.3rem 0.5rem;background:#1a1a1a;
-  color:#888;font-size:0.75rem;cursor:pointer;user-select:none;
+  color:#888;font-size:1.2rem;cursor:pointer;user-select:none;
 }
 .filter-group-title::after{content:'▼';font-size:0.55rem;transition:transform 0.2s}
 .filter-group.collapsed .filter-group-title::after{transform:rotate(-90deg)}
@@ -844,25 +845,25 @@ select,input{font-family:inherit}
 .sidebar-tab{
   text-align:center;padding:0.35rem 0.7rem;
   background:#1a1a1a;border:1px solid #333;border-radius:4px;
-  color:#888;font-size:0.85rem;cursor:pointer;transition:all 0.15s;
+  color:#888;font-size:1.4rem;cursor:pointer;transition:all 0.15s;
 }
 .sidebar-tab.active{background:#1e2924;border-color:#68efbd;color:#68efbd}
 
 /* Rarity filter */
 .rarity-filter{display:flex;gap:3px;flex-wrap:wrap;align-items:center}
-.rarity-label{color:#888;font-size:0.75rem;flex-shrink:0}
+.rarity-label{color:#888;font-size:1.1rem;flex-shrink:0}
 .rarity-btn{
   padding:0.2rem 0.45rem;background:#222;border:1px solid #444;
-  border-radius:3px;color:#888;font-size:0.75rem;cursor:pointer;transition:all 0.15s;
+  border-radius:3px;color:#888;font-size:1.1rem;cursor:pointer;transition:all 0.15s;
 }
 .rarity-btn.active{background:#4a1a1a;border-color:#ff8a80;color:#ff8a80}
 
 /* Toggle filter buttons */
 .toggle-filter{display:flex;gap:3px;flex-wrap:wrap;margin-bottom:0.2rem}
-.toggle-filter-label{color:#666;font-size:0.7rem;flex-basis:100%;margin-bottom:-1px}
+.toggle-filter-label{color:#666;font-size:1.05rem;flex-basis:100%;margin-bottom:-1px}
 .tbtn{
   padding:0.15rem 0.35rem;background:#222;border:1px solid #444;
-  border-radius:3px;color:#888;font-size:0.7rem;cursor:pointer;transition:all 0.15s;white-space:nowrap;
+  border-radius:3px;color:#888;font-size:1.05rem;cursor:pointer;transition:all 0.15s;white-space:nowrap;
 }
 .tbtn.active-eb{background:#3a2200;border-color:#ff9800;color:#ff9800}
 .tbtn.active-sq{background:#2a0020;border-color:#ff69b4;color:#ff69b4}
@@ -874,7 +875,7 @@ select,input{font-family:inherit}
 .category-filter{display:flex;gap:3px;flex-wrap:wrap}
 .cat-btn{
   padding:0.2rem 0.4rem;background:#222;border:1px solid #444;
-  border-radius:3px;color:#888;font-size:0.75rem;cursor:pointer;transition:all 0.15s;
+  border-radius:3px;color:#888;font-size:1.1rem;cursor:pointer;transition:all 0.15s;
 }
 .cat-btn[data-cat="殲滅"]{border-color:rgba(255,138,128,0.6);color:#ff8a80}
 .cat-btn[data-cat="制圧"]{border-color:rgba(130,177,255,0.6);color:#82b1ff}
@@ -1292,13 +1293,13 @@ select,input{font-family:inherit}
 <aside class="sidebar" id="sidebar">
   <!-- TOP BAR -->
   <div class="sidebar-topbar">
-    <span id="pickerTitle" style="color:#68efbd;font-weight:bold;font-size:0.9rem">カード選択</span>
+    <span id="pickerTitle" style="color:#68efbd;font-weight:bold;font-size:1.6rem">カード選択</span>
     <div class="sidebar-tabs" id="sidebarTabs" style="display:none">
       <div class="sidebar-tab active" data-type="MS" onclick="SearchPanel.setType('MS')">MS</div>
       <div class="sidebar-tab" data-type="PL" onclick="SearchPanel.setType('PL')">PL</div>
     </div>
     <div style="flex:1"></div>
-    <button onclick="closeCardPicker()" style="background:none;border:none;color:#888;font-size:1.2rem;cursor:pointer;padding:0 4px">&times;</button>
+    <button onclick="closeCardPicker()" style="background:none;border:none;color:#888;font-size:2rem;cursor:pointer;padding:0 4px">&times;</button>
   </div>
 
   <div class="sidebar-body">
@@ -2925,14 +2926,14 @@ const UIRenderer = {
         <div class="card-slot" id="ms-slot-${u}" data-slot="${u}" data-type="MS">
           <div class="card-slot-label">MS ${u+1}</div>
           <button class="card-slot-clear" onclick="event.stopPropagation();DeckManager.clearCard(${u})">&times;</button>
-          <div class="slot-empty-icon">+</div>
-          <div class="slot-empty-text">MSカードを選択</div>
+          <div class="slot-empty-icon">MS</div>
+          <div class="slot-empty-text">+</div>
         </div>
         <div class="card-slot" id="pl-slot-${u}" data-slot="${u+5}" data-type="PL">
           <div class="card-slot-label">PL ${u+1}</div>
           <button class="card-slot-clear" onclick="event.stopPropagation();DeckManager.clearCard(${u+5})">&times;</button>
-          <div class="slot-empty-icon">+</div>
-          <div class="slot-empty-text">PLカードを選択</div>
+          <div class="slot-empty-icon">PL</div>
+          <div class="slot-empty-text">+</div>
         </div>
         <div class="unit-sub-info" id="unit-sub-info-${u}"></div>
         <div class="unit-stats" id="unit-stats-${u}"></div>
@@ -3057,8 +3058,8 @@ const UIRenderer = {
       slotEl.innerHTML = `
         <div class="card-slot-label">${type} ${unitIdx+1}</div>
         <button class="card-slot-clear" onclick="event.stopPropagation();DeckManager.clearCard(${slotIdx})">&times;</button>
-        <div class="slot-empty-icon">+</div>
-        <div class="slot-empty-text">${type}カードを選択</div>
+        <div class="slot-empty-icon">${type}</div>
+        <div class="slot-empty-text">+</div>
       `;
       return;
     }
