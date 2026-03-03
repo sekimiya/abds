@@ -1,0 +1,3505 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<script>
+(function(){
+  var KEY='abds_cache_v31';
+  if(!localStorage.getItem(KEY)){
+    localStorage.setItem(KEY,'1');
+    if('caches' in window){
+      caches.keys().then(function(k){
+        if(k.length>0){
+          k.forEach(function(n){caches.delete(n)});
+          if('serviceWorker' in navigator) navigator.serviceWorker.getRegistrations().then(function(r){r.forEach(function(w){w.unregister()})});
+          if(window.indexedDB){try{indexedDB.deleteDatabase('abds-pwa-v1')}catch(e){}}
+          location.reload();
+        }
+      });
+    }
+  }
+})();
+</script>
+<script>if(!/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)&&!location.search.includes('force')){location.replace('./index.html'+location.hash);}</script>
+<title>ABD Simulator - Mobile Portrait</title>
+<link rel="manifest" href="./manifest.json">
+<meta name="theme-color" content="#0f0f0f">
+<link rel="apple-touch-icon" href="./icons/icon-192.png">
+<style>
+/* ===== RESET & BASE ===== */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:14px;height:100%;-webkit-text-size-adjust:100%;touch-action:manipulation}
+body{background:var(--bg);color:#e0e0e0;font-family:'Segoe UI','Hiragino Sans',sans-serif;height:100%;overflow:hidden;display:flex;flex-direction:column;
+  padding-top:env(safe-area-inset-top);padding-bottom:env(safe-area-inset-bottom);
+  padding-left:env(safe-area-inset-left);padding-right:env(safe-area-inset-right)}
+a{color:var(--accent);text-decoration:none}
+button{cursor:pointer;font-family:inherit;-webkit-tap-highlight-color:transparent}
+select,input{font-family:inherit}
+::-webkit-scrollbar{width:3px;height:3px}
+::-webkit-scrollbar-track{background:var(--bg-card)}
+::-webkit-scrollbar-thumb{background:#444;border-radius:2px}
+
+/* ===== CSS VARIABLES ===== */
+:root{
+  --bg:#0f0f0f;--bg2:#151515;--bg-card:#1a1a1a;
+  --accent:#68efbd;--gold:#ffe082;
+  --ms-blue:#82b1ff;--pl-gold:#ffe082;
+  --sq-pink:#ff69b4;--eb-orange:#ff9800;
+  --senmetsu:#ff8a80;--seiatsu:#82b1ff;--bouei:#a5d6a7;
+}
+
+/* ===== HEADER (36px) ===== */
+.app-header{
+  display:flex;align-items:center;
+  background:linear-gradient(135deg,#1e2924,#1e2924);
+  border-bottom:2px solid var(--accent);
+  padding:0 8px;height:36px;flex-shrink:0;gap:4px;overflow:hidden;
+}
+.hdr-cost{display:flex;align-items:baseline;gap:1px;white-space:nowrap}
+.hdr-cost-label{font-size:0.45rem;color:#8a7a5a;font-weight:600;text-transform:uppercase;letter-spacing:0.5px}
+.hdr-cost-val{font-size:1rem;font-weight:bold;color:var(--gold);line-height:1}
+.hdr-sep{width:1px;height:20px;background:#333;flex-shrink:0}
+.hdr-class{font-size:0.65rem;font-weight:bold;white-space:nowrap;padding:1px 4px;border-radius:3px}
+.hdr-class.s{background:#8b1a1a;color:var(--senmetsu)}
+.hdr-class.c{background:#1a4a8b;color:var(--seiatsu)}
+.hdr-class.b{background:#1a6b1a;color:var(--bouei)}
+.sq-badge-h{
+  display:none;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:bold;white-space:nowrap;
+  background:linear-gradient(135deg,var(--sq-pink),#e91e8c);color:#fff;
+  animation:sq-glow 1.5s ease-in-out infinite alternate;
+}
+.sq-badge-h.active{display:inline-block}
+@keyframes sq-glow{from{box-shadow:0 0 4px rgba(255,105,180,0.4)}to{box-shadow:0 0 10px rgba(255,105,180,0.8)}}
+.eb-badge-h{
+  display:none;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:bold;white-space:nowrap;
+  background:linear-gradient(135deg,var(--eb-orange),#e65100);color:#fff;
+  animation:eb-glow 1.5s ease-in-out infinite alternate;
+}
+.eb-badge-h.active{display:inline-block}
+@keyframes eb-glow{from{box-shadow:0 0 4px rgba(255,152,0,0.4)}to{box-shadow:0 0 10px rgba(255,152,0,0.8)}}
+.ab-badge-h{
+  display:none;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:bold;white-space:nowrap;
+  background:linear-gradient(135deg,#b388ff,#7c4dff);color:#fff;
+  animation:ab-glow 1.5s ease-in-out infinite alternate;
+}
+.ab-badge-h.active{display:inline-block}
+@keyframes ab-glow{from{box-shadow:0 0 4px rgba(179,136,255,0.4)}to{box-shadow:0 0 10px rgba(179,136,255,0.8)}}
+.hdr-active-links{
+  display:flex;align-items:center;gap:3px;overflow:hidden;flex-shrink:1;min-width:0;
+}
+.hdr-link-name{
+  font-size:0.7rem;font-weight:bold;white-space:nowrap;padding:1px 5px;border-radius:3px;
+  overflow:hidden;text-overflow:ellipsis;
+}
+.hdr-link-name.sq{color:#ff8cc8;background:rgba(255,105,180,0.15);border:1px solid rgba(255,105,180,0.3)}
+.hdr-link-name.sq.inactive{color:#664455;background:rgba(255,105,180,0.05);border:1px solid rgba(255,105,180,0.1);font-weight:normal}
+.hdr-link-name.eb{color:#ffb74d;background:rgba(255,152,0,0.15);border:1px solid rgba(255,152,0,0.3)}
+.hdr-link-name.eb.inactive{color:#665530;background:rgba(255,152,0,0.05);border:1px solid rgba(255,152,0,0.1);font-weight:normal}
+.hdr-link-name.ab{color:#b388ff;background:rgba(179,136,255,0.15);border:1px solid rgba(179,136,255,0.3)}
+.hdr-link-name.ab.inactive{color:#5a4580;background:rgba(179,136,255,0.05);border:1px solid rgba(179,136,255,0.1);font-weight:normal}
+.hdr-spacer{flex:1}
+.rec-btn{
+  background:linear-gradient(135deg,#d32f2f,#b71c1c);border:1px solid #f44336;border-radius:4px;
+  color:#fff;padding:2px 8px;font-size:0.7rem;font-weight:bold;white-space:nowrap;
+  display:flex;align-items:center;gap:3px;flex-shrink:0;min-height:28px;
+}
+.rec-btn::before{content:'';display:inline-block;width:6px;height:6px;background:#ff1744;border-radius:50%;box-shadow:0 0 4px rgba(255,23,68,0.8)}
+.rec-btn.capturing{opacity:0.5;pointer-events:none}
+.hamburger-btn{
+  background:#222;border:1px solid #555;border-radius:4px;color:#ccc;
+  padding:2px 8px;font-size:1.1rem;line-height:1;min-height:28px;flex-shrink:0;
+}
+
+/* ===== TACTICS ROW ===== */
+.tactics-row{
+  display:flex;align-items:center;flex-shrink:0;
+  background:#111;border-bottom:1px solid #2a2a2a;padding:4px 8px;gap:6px;
+  flex-wrap:wrap;min-height:44px;
+}
+.tactics-thumb{
+  position:relative;width:55px;height:55px;flex-shrink:0;cursor:pointer;
+  border:1px solid #444;border-radius:3px;background:var(--bg-card);
+  display:flex;align-items:center;justify-content:center;overflow:hidden;
+}
+.tactics-thumb.has-card{border-color:var(--gold)}
+.tactics-thumb-label{
+  position:absolute;top:0;left:0;background:rgba(0,0,0,0.7);color:var(--gold);
+  font-size:0.5rem;font-weight:bold;padding:0 3px;border-radius:0 0 3px 0;z-index:1;line-height:1.4;
+}
+.tactics-thumb-img{width:100%;height:100%;object-fit:cover}
+.tactics-clear{color:#888;font-size:0.8rem;flex-shrink:0;background:none;border:none;padding:0 2px;line-height:1}
+.terrain-switches{display:flex;gap:4px;flex-wrap:wrap}
+.terrain-sw{
+  flex:1;min-width:0;padding:6px 4px;background:#222;border:1px solid #555;border-radius:6px;
+  color:#ccc;font-size:0.75rem;text-align:center;min-height:36px;transition:all 0.15s;
+}
+.terrain-sw.active{background:#1e2924;border-color:var(--accent);color:var(--accent)}
+
+/* ===== LINK CHIPS (tactics-row内) ===== */
+.link-chips{
+  display:flex;align-items:center;gap:3px;
+  flex:1;min-width:0;flex-wrap:wrap;
+}
+.link-chips:empty{display:none}
+.link-chip{
+  display:inline-flex;align-items:center;gap:3px;
+  padding:2px 8px;border-radius:10px;font-size:0.65rem;
+  background:var(--bg-card);border:1px solid #333;color:#777;
+  white-space:nowrap;flex-shrink:0;
+}
+.link-chip.active{background:linear-gradient(135deg,#1e2924,#1e2924);border-color:var(--accent);color:var(--accent)}
+.link-chip-name{font-weight:bold}
+.link-chip-count{font-size:0.6rem;padding:0 4px;border-radius:6px;background:#333;color:#aaa}
+.link-chip.active .link-chip-count{background:rgba(104,239,189,0.2);color:var(--accent)}
+.link-chip.sq{border-color:rgba(255,105,180,0.3);color:#ff8cc8}
+.link-chip.sq .link-chip-count{color:#ff8cc8}
+.link-chip.sq.active{background:linear-gradient(135deg,#2e1e24,#2e1e24);border-color:var(--sq-pink);color:var(--sq-pink)}
+.link-chip.sq.active .link-chip-count{background:rgba(255,105,180,0.2);color:var(--sq-pink)}
+.link-chip.eb{border-color:rgba(255,152,0,0.3);color:#ffb74d}
+.link-chip.eb .link-chip-count{color:#ffb74d}
+.link-chip.eb.active{background:linear-gradient(135deg,#2e241e,#2e241e);border-color:var(--eb-orange);color:var(--eb-orange)}
+.link-chip.eb.active .link-chip-count{background:rgba(255,152,0,0.2);color:var(--eb-orange)}
+.link-chip.ab{border-color:rgba(179,136,255,0.3);color:#b388ff}
+.link-chip.ab .link-chip-count{color:#b388ff}
+.link-chip.ab.active{background:linear-gradient(135deg,#1e1e2e,#1e1e2e);border-color:#b388ff;color:#b388ff}
+.link-chip.ab.active .link-chip-count{background:rgba(179,136,255,0.2);color:#b388ff}
+
+/* ===== OVERVIEW STRIP (~130px) ===== */
+.overview-strip{
+  flex-shrink:0;background:var(--bg2);border-bottom:1px solid #2a2a2a;
+  padding:4px 4px 0;
+}
+.overview-cats{display:flex;gap:3px;margin-bottom:1px}
+.ov-cat{flex:1;text-align:center;font-size:0.6rem;font-weight:bold;border-radius:2px;padding:1px 0}
+.ov-cat.cat-s{background:#8b1a1a;color:#ff8a80}
+.ov-cat.cat-c{background:#1a4a8b;color:#82b1ff}
+.ov-cat.cat-b{background:#1a6b1a;color:#a5d6a7}
+.overview-thumbs{display:flex;gap:3px;margin-bottom:2px}
+.overview-thumb{
+  flex:1;min-width:0;aspect-ratio:63/88;background:var(--bg-card);border:2px solid #333;
+  border-radius:4px;overflow:hidden;cursor:pointer;position:relative;
+}
+.overview-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.overview-thumb.empty{display:flex;align-items:center;justify-content:center;border-style:dashed}
+.overview-thumb.empty::after{content:'+';color:#444;font-size:1.2rem}
+.overview-thumb.selected{border-color:var(--accent);border-style:solid;box-shadow:0 0 4px rgba(104,239,189,0.3)}
+.overview-thumb.ov-eb,.overview-thumb.ov-eb.selected{border-color:var(--eb-orange);box-shadow:0 0 8px rgba(255,152,0,0.5)}
+.overview-thumb.ov-sq,.overview-thumb.ov-sq.selected{border-color:var(--sq-pink);box-shadow:0 0 8px rgba(255,105,180,0.5)}
+.overview-thumb.ov-ab,.overview-thumb.ov-ab.selected{border-color:#b388ff;box-shadow:0 0 8px rgba(179,136,255,0.5)}
+.overview-thumb.ov-link,.overview-thumb.ov-link.selected{border-color:#a5f5d6;box-shadow:0 0 8px rgba(104,239,189,0.6)}
+.overview-thumb .ov-badge{
+  position:absolute;top:20px;left:1px;font-size:0.45rem;font-weight:bold;
+  padding:0 3px;border-radius:2px;color:#fff;line-height:1.3;
+}
+.overview-thumb .ov-badge.sq-b{background:rgba(255,105,180,0.9)}
+.overview-thumb .ov-badge.eb-b{background:rgba(255,152,0,0.9)}
+.overview-thumb .ov-badge.ab-b{background:rgba(179,136,255,0.9)}
+.overview-thumb .ov-badge.link-b{background:rgba(104,239,189,0.9);color:#000}
+.overview-thumb .ov-link-tags{
+  position:absolute;bottom:0;left:0;right:0;
+  display:flex;flex-direction:column;gap:1px;
+  padding:2px;pointer-events:none;z-index:3;
+}
+.overview-thumb .ov-link-tag{
+  font-size:0.5rem;font-weight:bold;padding:1px 2px;border-radius:2px;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  line-height:1.3;text-align:center;
+}
+.ov-link-tag.link-on{background:rgba(104,239,189,0.9);color:#0a0a0a}
+.ov-link-tag.link-off{background:rgba(60,60,60,0.8);color:#666}
+.ov-link-tag.link-eb.link-on{background:rgba(255,152,0,0.9);color:#fff}
+.ov-link-tag.link-eb.link-off{background:rgba(60,40,0,0.8);color:rgba(255,152,0,0.5)}
+.ov-link-tag.link-sq.link-on{background:rgba(255,105,180,0.9);color:#fff}
+.ov-link-tag.link-sq.link-off{background:rgba(60,0,40,0.8);color:rgba(255,105,180,0.5)}
+.ov-link-tag.link-ab.link-on{background:rgba(179,136,255,0.9);color:#fff}
+.ov-link-tag.link-ab.link-off{background:rgba(40,20,60,0.8);color:rgba(179,136,255,0.5)}
+.overview-thumb .ov-clear{
+  position:absolute;top:0;right:1px;background:rgba(0,0,0,0.6);border:none;
+  color:#aaa;font-size:0.7rem;width:16px;height:16px;border-radius:50%;
+  display:none;align-items:center;justify-content:center;padding:0;
+}
+.overview-thumb.has-card .ov-clear{display:flex}
+.unit-tabs{display:flex;gap:2px;padding:0 2px 4px}
+.unit-tab{
+  flex:1;text-align:center;padding:3px 0;border-radius:3px;
+  font-size:0.7rem;font-weight:bold;color:#666;background:#222;
+  border:1px solid #333;cursor:pointer;min-height:24px;
+}
+.unit-tab.active{background:#1e2924;border-color:var(--accent);color:var(--accent)}
+
+/* ===== DETAIL AREA ===== */
+.detail-area{
+  flex:1;overflow-y:auto;overflow-x:hidden;
+  -webkit-overflow-scrolling:touch;padding:8px;min-height:0;
+}
+.detail-unit-header{
+  display:flex;align-items:center;gap:6px;margin-bottom:6px;flex-wrap:wrap;
+}
+.detail-unit-name{font-weight:bold;font-size:1rem;color:var(--ms-blue)}
+.detail-unit-cost{color:var(--gold);font-weight:bold;font-size:0.9rem}
+.detail-unit-cat{font-size:0.75rem;font-weight:bold;padding:1px 6px;border-radius:3px}
+.detail-unit-cat.殲滅{background:#8b1a1a;color:var(--senmetsu)}
+.detail-unit-cat.制圧{background:#1a4a8b;color:var(--seiatsu)}
+.detail-unit-cat.防衛{background:#1a6b1a;color:var(--bouei)}
+
+/* ===== UNIT DETAIL HEADER V2 ===== */
+.detail-header-v2{
+  background:linear-gradient(135deg,#1a1a2e 0%,#16213e 50%,#0f3460 100%);
+  border:1px solid rgba(130,177,255,0.2);border-radius:8px;
+  padding:6px 8px;margin-bottom:6px;position:relative;overflow:hidden;
+}
+.detail-header-v2::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(130,177,255,0.5),transparent);
+}
+.detail-header-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:5px}
+.unit-total-cost{
+  display:flex;align-items:baseline;gap:3px;
+  background:linear-gradient(135deg,rgba(255,224,130,0.15),rgba(255,224,130,0.05));
+  border:1px solid rgba(255,224,130,0.3);border-radius:4px;padding:2px 8px;
+}
+.unit-total-cost .cost-label{font-size:0.55rem;color:rgba(255,224,130,0.7);font-weight:bold;letter-spacing:1px}
+.unit-total-cost .cost-value{font-size:1rem;font-weight:900;color:var(--gold);
+  text-shadow:0 0 6px rgba(255,224,130,0.4);font-variant-numeric:tabular-nums}
+.unit-cat-badge{
+  font-size:0.6rem;font-weight:bold;padding:2px 8px;border-radius:3px;
+  letter-spacing:1px;
+}
+.unit-cat-badge.殲滅{background:rgba(139,26,26,0.6);color:var(--senmetsu);border:1px solid rgba(255,138,128,0.3)}
+.unit-cat-badge.制圧{background:rgba(26,74,139,0.6);color:var(--seiatsu);border:1px solid rgba(130,177,255,0.3)}
+.unit-cat-badge.防衛{background:rgba(26,107,26,0.6);color:var(--bouei);border:1px solid rgba(165,214,167,0.3)}
+.unit-card-line{
+  display:flex;align-items:center;gap:4px;padding:3px 6px;
+  border-radius:4px;margin-top:3px;position:relative;
+  background:rgba(255,255,255,0.03);border-left:3px solid #444;
+}
+.unit-card-line .card-cost{
+  font-size:0.6rem;font-weight:bold;flex-shrink:0;
+  font-variant-numeric:tabular-nums;min-width:28px;
+  background:rgba(255,224,130,0.1);border:1px solid rgba(255,224,130,0.2);
+  border-radius:3px;padding:1px 4px;color:var(--gold);text-align:center;
+}
+.unit-card-line .card-rarity{
+  font-size:0.55rem;font-weight:bold;padding:1px 4px;border-radius:2px;
+  min-width:18px;text-align:center;flex-shrink:0;
+}
+.unit-card-line .card-type-icon{
+  font-size:0.5rem;font-weight:bold;padding:1px 3px;border-radius:2px;
+  color:#fff;flex-shrink:0;letter-spacing:0.5px;
+}
+.unit-card-line .card-type-icon.sq{background:rgba(255,105,180,0.8)}
+.unit-card-line .card-type-icon.eb{background:rgba(255,152,0,0.8)}
+.unit-card-line .card-type-icon.ab{background:rgba(179,136,255,0.8)}
+.unit-card-line .card-name{
+  flex:1;font-weight:bold;font-size:0.75rem;text-align:center;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.unit-card-line .card-detail-btn{
+  flex-shrink:0;font-size:0.55rem;font-weight:bold;padding:1px 6px;
+  border-radius:3px;color:#aaa;background:rgba(255,255,255,0.08);
+  border:1px solid rgba(255,255,255,0.15);cursor:pointer;
+}
+.unit-card-line .card-detail-btn:active{background:rgba(255,255,255,0.2)}
+.unit-card-line.ms-line{border-left-color:var(--ms-blue)}
+.unit-card-line.ms-line .card-name{color:var(--ms-blue)}
+.unit-card-line.pl-line{border-left-color:var(--pl-gold)}
+.unit-card-line.pl-line .card-name{color:var(--pl-gold)}
+.unit-card-line.sq-highlight{border-left-color:var(--sq-pink);background:rgba(255,105,180,0.06)}
+.unit-card-line.eb-highlight{border-left-color:var(--eb-orange);background:rgba(255,152,0,0.06)}
+.unit-card-line.ab-highlight{border-left-color:#b388ff;background:rgba(179,136,255,0.06)}
+.unit-card-line.sq-highlight .card-name{color:var(--sq-pink)}
+.unit-card-line.eb-highlight .card-name{color:var(--eb-orange)}
+.unit-card-line.ab-highlight .card-name{color:#b388ff}
+.detail-terrain-row{display:flex;gap:3px;margin-bottom:6px;flex-wrap:wrap}
+.terrain-badge{
+  padding:2px 6px;border-radius:3px;font-size:0.7rem;font-weight:bold;
+  background:var(--bg-card);border:1px solid #333;
+}
+.terrain-badge.rank-S{color:#ff8a80;border-color:#c62828}
+.terrain-badge.rank-A{color:var(--seiatsu);border-color:#1565c0}
+.terrain-badge.rank-B{color:var(--bouei);border-color:#2e7d32}
+.terrain-badge.rank-C{color:#ffcc80;border-color:#e65100}
+.terrain-badge.rank-D{color:#ff8a80;border-color:#5a2a2a}
+.terrain-badge.rank-none{color:#444;border-color:#222}
+.terrain-badge.terrain-active{background:#1e2924;border-color:var(--accent);color:var(--accent);box-shadow:0 0 4px rgba(104,239,189,0.4)}
+
+/* Stat bars (full width) */
+.stat-section{margin-bottom:8px}
+.stat-section-title{font-size:0.75rem;font-weight:bold;color:#666;margin-bottom:4px;border-bottom:1px solid #222;padding-bottom:2px}
+.stat-row{display:flex;align-items:center;gap:4px;margin-bottom:4px}
+.stat-label{color:#888;font-size:0.75rem;width:28px;text-align:right;flex-shrink:0}
+.stat-track{flex:1;height:20px;background:#222;border-radius:3px;overflow:hidden;position:relative;display:flex}
+.stat-bar-base{height:100%;background:#2196f3;transition:width 0.3s}
+.stat-bar-buff{height:100%;background:#e91e63;transition:width 0.3s}
+.stat-bar-terrain-pos{height:100%;background:var(--accent);transition:width 0.3s}
+.stat-bar-terrain-neg{height:100%;transition:width 0.3s;background:repeating-linear-gradient(135deg,rgba(244,67,54,0.6),rgba(244,67,54,0.6) 2px,rgba(244,67,54,0.3) 2px,rgba(244,67,54,0.3) 4px)}
+.stat-value{position:absolute;top:0;left:0;right:0;bottom:0;display:flex;align-items:center;padding:0 6px;color:#fff;font-size:0.65rem;white-space:nowrap;font-variant-numeric:tabular-nums;font-family:'Menlo','Consolas','Courier New',monospace;text-shadow:0 0 3px rgba(0,0,0,0.8),0 0 6px rgba(0,0,0,0.5);pointer-events:none}
+.stat-buff-text{color:#ffb3c6}
+.stat-terrain-text.positive{color:#a0ffd0}
+.stat-terrain-text.negative{color:#ff8a80}
+
+/* Detail sections */
+.detail-section{
+  background:var(--bg2);border-radius:6px;padding:8px 10px;margin-bottom:8px;
+}
+.detail-section-title{font-weight:bold;font-size:0.8rem;margin-bottom:4px;border-bottom:1px solid #2a2a2a;padding-bottom:3px}
+.detail-section-title.ms{color:var(--ms-blue)}
+.detail-section-title.pl{color:var(--pl-gold)}
+.detail-section-title.weapon{color:var(--senmetsu)}
+.detail-section-title.sp{color:#ffb2b2}
+.detail-section-title.eb{color:#ffb74d}
+.detail-section-title.terrain{color:var(--bouei)}
+.detail-section-title.link{color:var(--accent)}
+.detail-section-title.info{color:#888}
+.detail-ability-name{font-weight:bold;color:#b2e5ff;font-size:0.9rem;margin-bottom:3px}
+.detail-ability-name.pl{color:var(--pl-gold)}
+.detail-ability-name.sp{color:#ffb2b2}
+.detail-ability-name.eb{color:#ffb74d}
+.detail-tags{display:flex;gap:3px;flex-wrap:wrap;margin:3px 0}
+.detail-tag{
+  padding:2px 6px;border-radius:3px;font-size:0.7rem;font-weight:bold;
+  background:#1a3a4a;color:var(--ms-blue);border:1px solid #2a5a6a;
+}
+.detail-tag.sp{background:#3a1a1a;color:#ffb2b2;border-color:#5a2a2a}
+.detail-tag.pl{background:#3a3a1a;color:var(--pl-gold);border-color:#5a5a2a}
+.detail-tag.eb{background:#3d2800;color:#ffb74d;border-color:var(--eb-orange)}
+.detail-tag.cat-殲滅{background:#3a1a1a;color:var(--senmetsu);border-color:#5a2a2a}
+.detail-tag.cat-制圧{background:#1a2a4a;color:var(--seiatsu);border-color:#2a3a6a}
+.detail-tag.cat-防衛{background:#1a3a1a;color:var(--bouei);border-color:#2a5a2a}
+.detail-desc{color:#bbb;font-size:0.8rem;line-height:1.5;margin-top:3px}
+.detail-power{color:var(--gold);font-weight:bold;font-size:0.85rem;margin-top:2px}
+.detail-impact{color:#888;font-size:0.75rem;margin-top:2px}
+.weapon-row{display:flex;gap:4px;align-items:center;margin-bottom:3px}
+.weapon-slot{
+  font-size:0.7rem;font-weight:bold;color:#1a1a1a;background:var(--senmetsu);
+  padding:1px 6px;border-radius:2px;flex-shrink:0;
+}
+.weapon-slot.sub{background:var(--seiatsu)}
+.weapon-name{color:#ccc;font-weight:bold;font-size:0.85rem}
+.weapon-info{color:#888;font-size:0.75rem;flex-shrink:0}
+.sq-inline-badge{font-size:0.65rem;background:#4a1a4a;color:#f48fb1;padding:1px 4px;border-radius:3px;vertical-align:middle;margin-left:3px}
+.eb-inline-badge{font-size:0.65rem;background:#3d2800;color:#ffb74d;padding:1px 4px;border-radius:3px;vertical-align:middle;margin-left:3px}
+.pl-sq-details{margin-top:6px;padding:6px 8px;background:var(--bg-card);border-radius:4px;border-left:2px solid var(--pl-gold)}
+.pl-sq-row{display:flex;gap:4px;margin-bottom:3px;align-items:baseline}
+.pl-sq-label{
+  font-size:0.7rem;font-weight:bold;color:#1a1a1a;background:var(--pl-gold);
+  padding:1px 6px;border-radius:2px;flex-shrink:0;
+}
+.pl-sq-label.rush{background:#f48fb1}
+.pl-sq-text{color:#bbb;font-size:0.8rem;line-height:1.4}
+/* Link items in detail */
+.link-item{padding:5px 6px;border-bottom:1px solid rgba(255,255,255,0.05);border-radius:4px;margin-bottom:2px;
+  border-left:3px solid #333;transition:background 0.2s}
+.link-item:last-child{border-bottom:none}
+.link-item.link-active{border-left-color:var(--accent);background:rgba(104,239,189,0.06)}
+.link-item.link-inactive{opacity:0.6}
+.link-name{font-weight:bold;color:#888;font-size:0.8rem}
+.link-item.link-active .link-name{color:var(--accent)}
+.link-badge{display:inline-block;padding:1px 6px;border-radius:3px;font-size:0.6rem;font-weight:bold;margin-left:4px}
+.link-badge.on{background:rgba(104,239,189,0.2);color:var(--accent);border:1px solid rgba(104,239,189,0.3);text-shadow:0 0 4px rgba(104,239,189,0.3)}
+.link-badge.off{background:#222;color:#555;border:1px solid #333}
+.link-type-badge{font-size:0.5rem;font-weight:bold;padding:1px 4px;border-radius:2px;color:#fff;flex-shrink:0;letter-spacing:0.5px}
+.link-type-badge.eb{background:rgba(255,152,0,0.8)}
+.link-type-badge.sq{background:rgba(255,105,180,0.8)}
+.link-type-badge.ab{background:rgba(179,136,255,0.8)}
+.link-effect{color:#666;font-size:0.7rem;margin-top:1px}
+.link-item.link-active .link-effect{color:var(--accent)}
+.link-dupe{font-size:0.55rem;font-weight:bold;color:#fff;background:rgba(255,255,255,0.15);
+  padding:0 4px;border-radius:2px;margin-left:2px}
+.link-item.link-active .link-dupe{background:rgba(104,239,189,0.25);color:var(--accent)}
+.link-item.link-type-eb.link-active{border-left-color:var(--eb-orange);background:rgba(255,152,0,0.06)}
+.link-item.link-type-eb.link-active .link-name{color:var(--eb-orange)}
+.link-item.link-type-eb.link-active .link-effect{color:var(--eb-orange)}
+.link-item.link-type-eb.link-active .link-badge.on{background:rgba(255,152,0,0.2);color:var(--eb-orange);border-color:rgba(255,152,0,0.3);text-shadow:0 0 4px rgba(255,152,0,0.3)}
+.link-item.link-type-eb.link-active .link-dupe{background:rgba(255,152,0,0.25);color:var(--eb-orange)}
+.link-item.link-type-sq.link-active{border-left-color:var(--sq-pink);background:rgba(255,105,180,0.06)}
+.link-item.link-type-sq.link-active .link-name{color:var(--sq-pink)}
+.link-item.link-type-sq.link-active .link-effect{color:var(--sq-pink)}
+.link-item.link-type-sq.link-active .link-badge.on{background:rgba(255,105,180,0.2);color:var(--sq-pink);border-color:rgba(255,105,180,0.3);text-shadow:0 0 4px rgba(255,105,180,0.3)}
+.link-item.link-type-sq.link-active .link-dupe{background:rgba(255,105,180,0.25);color:var(--sq-pink)}
+.link-item.link-type-ab.link-active{border-left-color:#b388ff;background:rgba(179,136,255,0.06)}
+.link-item.link-type-ab.link-active .link-name{color:#b388ff}
+.link-item.link-type-ab.link-active .link-effect{color:#b388ff}
+.link-item.link-type-ab.link-active .link-badge.on{background:rgba(179,136,255,0.2);color:#b388ff;border-color:rgba(179,136,255,0.3);text-shadow:0 0 4px rgba(179,136,255,0.3)}
+.link-item.link-type-ab.link-active .link-dupe{background:rgba(179,136,255,0.25);color:#b388ff}
+/* No OCR fallback */
+.no-ocr-msg{color:#888;font-size:0.85rem;text-align:center;padding:8px 0}
+.no-ocr-hint{color:#666;font-size:0.75rem}
+.no-ocr-back-img{width:100%;border-radius:4px;margin-top:6px;opacity:0.9}
+/* Empty state */
+.detail-empty{text-align:center;color:#555;padding:40px 0;font-size:0.9rem}
+
+/* ===== CARD PICKER (fullscreen overlay) ===== */
+.picker-overlay{
+  position:fixed;inset:0;background:var(--bg2);z-index:200;
+  display:none;flex-direction:column;
+}
+.picker-overlay.open{display:flex}
+.picker-topbar{
+  display:flex;align-items:center;gap:6px;padding:6px 8px;
+  border-bottom:1px solid #333;flex-shrink:0;height:44px;
+}
+.picker-tabs{display:flex;gap:2px}
+.picker-tab{
+  padding:4px 12px;background:var(--bg-card);border:1px solid #333;border-radius:4px;
+  color:#888;font-size:0.8rem;font-weight:bold;cursor:pointer;
+}
+.picker-tab.active{background:#1e2924;border-color:var(--accent);color:var(--accent)}
+.picker-close{background:none;border:none;color:#888;font-size:1.3rem;padding:4px 8px;margin-left:auto}
+.picker-toolbar{
+  display:flex;align-items:center;gap:8px;padding:4px 8px;flex-shrink:0;border-bottom:1px solid #2a2a2a;
+}
+.picker-search-input{
+  padding:6px 10px;background:var(--bg-card);border:1px solid #333;
+  border-radius:6px;color:#fff;font-size:0.85rem;min-height:32px;
+}
+.picker-search-input:focus{border-color:var(--accent);outline:none}
+.picker-filter-btn{
+  padding:6px 14px;background:#222;border:1px solid #555;border-radius:6px;
+  color:#ccc;font-size:0.8rem;white-space:nowrap;min-height:32px;
+}
+.picker-filter-btn.has-filter{border-color:var(--accent);color:var(--accent)}
+.picker-scroll{
+  flex:1 1 0;min-height:0;overflow-y:scroll;-webkit-overflow-scrolling:touch;
+}
+.picker-grid{
+  padding:6px;padding-bottom:48px;
+  display:grid;grid-template-columns:repeat(4,1fr);gap:6px;align-content:start;
+}
+.thumb-card{
+  cursor:pointer;border:2px solid transparent;border-radius:4px;
+  overflow:hidden;background:var(--bg-card);display:flex;flex-direction:column;
+}
+.thumb-card:active{border-color:var(--accent)}
+.thumb-card.card-eb{border-color:rgba(255,152,0,0.5)}
+.thumb-card.card-sq{border-color:rgba(255,105,180,0.5)}
+.thumb-card.card-ab{border-color:rgba(179,136,255,0.5)}
+.thumb-card.card-eb.card-sq{border-image:linear-gradient(135deg,rgba(255,152,0,0.7),rgba(255,105,180,0.7)) 1}
+.thumb-card.card-eb.card-ab{border-image:linear-gradient(135deg,rgba(255,152,0,0.7),rgba(179,136,255,0.7)) 1}
+.thumb-card.card-sq.card-ab{border-image:linear-gradient(135deg,rgba(255,105,180,0.7),rgba(179,136,255,0.7)) 1}
+.thumb-card.card-eb.card-sq.card-ab{border-image:linear-gradient(135deg,rgba(255,152,0,0.7),rgba(255,105,180,0.7),rgba(179,136,255,0.7)) 1}
+.thumb-card-img-wrap{position:relative;width:100%;padding-top:139.68%;overflow:hidden;background:var(--bg-card)}
+.thumb-card-img-wrap img{position:absolute;top:0;left:0;width:100%;height:100%;display:block;object-fit:contain}
+.thumb-card-badges{position:absolute;top:1px;right:1px;display:flex;flex-direction:column;gap:1px;align-items:flex-end}
+.thumb-card-cost{background:rgba(0,0,0,0.75);color:var(--gold);font-size:0.5rem;font-weight:bold;padding:0 2px;border-radius:2px;line-height:1.4}
+.thumb-card-rarity{background:rgba(0,0,0,0.75);font-size:0.5rem;font-weight:bold;padding:0 2px;border-radius:2px;line-height:1.4}
+.thumb-card-rarity.r-M{color:#82b1ff}.thumb-card-rarity.r-C{color:#aaa}.thumb-card-rarity.r-R{color:#ffe082}
+.thumb-card-rarity.r-SR{color:#ff8a80}.thumb-card-rarity.r-U{color:#ce93d8}.thumb-card-rarity.r-P{color:#68efbd}
+.thumb-card-rarity.r-PR{color:#f48fb1}.thumb-card-rarity.r-LR{color:#ffcc80}.thumb-card-rarity.r-LE{color:#ff8a80}.thumb-card-rarity.r-CP{color:#80deea}
+.thumb-detail-btn{position:absolute;top:2px;right:2px;background:rgba(0,0,0,0.8);color:#68efbd;font-size:0.5rem;font-weight:bold;padding:2px 4px;border-radius:3px;border:1px solid rgba(104,239,189,0.4);z-index:3;cursor:pointer;line-height:1.2}
+.thumb-detail-btn:active{background:rgba(104,239,189,0.25);color:#fff}
+.thumb-ocr-badge{position:absolute;bottom:28px;right:1px;background:rgba(104,239,189,0.85);color:#000;font-size:0.4rem;font-weight:bold;padding:0 2px;border-radius:2px;line-height:1.3}
+.thumb-sq-badge{position:absolute;bottom:20px;left:1px;background:rgba(255,105,180,0.9);color:#fff;font-size:0.4rem;font-weight:bold;padding:0 2px;border-radius:2px;line-height:1.3}
+.thumb-eb-badge{position:absolute;bottom:20px;right:1px;background:rgba(255,152,0,0.9);color:#fff;font-size:0.4rem;font-weight:bold;padding:0 2px;border-radius:2px;line-height:1.3}
+.thumb-ab-badge{position:absolute;bottom:28px;left:1px;background:rgba(179,136,255,0.9);color:#fff;font-size:0.4rem;font-weight:bold;padding:0 2px;border-radius:2px;line-height:1.3}
+.thumb-card-info{position:absolute;bottom:0;left:0;right:0;padding:2px 3px;background:rgba(0,0,0,0.75);display:flex;flex-direction:column;gap:0px}
+.thumb-card-number{color:var(--accent);font-size:0.5rem;white-space:nowrap;overflow:hidden}
+.thumb-card-name{color:#ddd;font-size:0.55rem;font-weight:bold;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.thumb-card.no-ocr{opacity:0.45;pointer-events:none}
+.thumb-no-ocr-badge{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,0.8);color:#f44336;font-size:0.65rem;font-weight:bold;padding:2px 6px;border-radius:3px;border:1px solid #f44336;white-space:nowrap}
+.thumb-reocr-badge{position:absolute;top:4px;right:4px;background:rgba(239,83,80,0.9);color:#fff;font-size:0.55rem;font-weight:bold;padding:1px 4px;border-radius:3px;white-space:nowrap;z-index:2}
+.thumb-card-sub{color:#888;font-size:0.45rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.picker-pagination{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:6px 8px;border-top:1px solid #333;flex-shrink:0;height:40px;
+  padding-bottom:calc(6px + env(safe-area-inset-bottom));
+}
+.page-btn{padding:4px 12px;background:#222;border:1px solid #444;border-radius:4px;color:#ccc;font-size:0.75rem;min-height:28px}
+.page-btn:disabled{opacity:0.3}
+.page-info{color:#888;font-size:0.7rem}
+
+/* ===== FILTER BOTTOM SHEET ===== */
+.filter-sheet{
+  position:fixed;bottom:0;left:0;right:0;height:36px;
+  background:var(--bg2);border-top:2px solid var(--accent);border-radius:12px 12px 0 0;
+  z-index:210;transition:height 0.3s ease;overflow:hidden;
+  display:none;flex-direction:column;
+}
+.filter-sheet.open{height:60vh}
+.filter-sheet-toggle{
+  display:flex;align-items:center;justify-content:center;gap:6px;
+  padding:8px 12px;flex-shrink:0;cursor:pointer;user-select:none;
+  background:none;border:none;width:100%;color:var(--accent);font-weight:bold;font-size:0.85rem;
+}
+.filter-sheet-toggle.has-filter{
+  color:#fff;background:var(--accent);border-radius:8px 8px 0 0;
+}
+.filter-sheet-body{
+  flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:8px 12px;
+}
+.filter-group{border:1px solid #2a2a2a;border-radius:4px;overflow:hidden;margin-bottom:6px}
+.filter-group-title{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:6px 8px;background:var(--bg-card);color:#888;font-size:0.7rem;cursor:pointer;user-select:none;
+}
+.filter-group-title::after{content:'▼';font-size:0.5rem;transition:transform 0.2s}
+.filter-group-title.has-active{color:#68efbd;border:1px solid #68efbd;box-shadow:0 0 6px rgba(104,239,189,0.4);border-radius:4px}
+#filterGroupEb>.filter-group-title.has-active{color:#ff9800;border-color:#ff9800;box-shadow:0 0 6px rgba(255,152,0,0.4)}
+#filterGroupSq>.filter-group-title.has-active{color:#ff69b4;border-color:#ff69b4;box-shadow:0 0 6px rgba(255,105,180,0.4)}
+#filterGroupAb>.filter-group-title.has-active{color:#b388ff;border-color:#b388ff;box-shadow:0 0 6px rgba(179,136,255,0.4)}
+#filterGroupSp>.filter-group-title.has-active{color:#4fc3f7;border-color:#4fc3f7;box-shadow:0 0 6px rgba(79,195,247,0.4)}
+.filter-group.collapsed .filter-group-title::after{transform:rotate(-90deg)}
+.filter-group-body{padding:6px 8px;display:flex;flex-direction:column;gap:6px}
+.filter-group.collapsed .filter-group-body{display:none}
+.rarity-filter{display:flex;gap:3px;flex-wrap:wrap}
+.rarity-btn{padding:4px 8px;background:#222;border:1px solid #444;border-radius:3px;color:#888;font-size:0.7rem;min-height:28px}
+.rarity-btn.active{background:#4a1a1a;border-color:var(--senmetsu);color:var(--senmetsu)}
+.category-filter{display:flex;gap:3px;flex-wrap:wrap}
+.cat-btn{padding:4px 8px;background:#222;border:1px solid #444;border-radius:3px;color:#888;font-size:0.7rem;min-height:28px}
+.cat-btn.active{background:#1e2924;border-color:var(--accent);color:var(--accent)}
+.series-filter{display:flex;gap:3px;flex-wrap:wrap}
+.series-btn{padding:4px 6px;background:#222;border:1px solid #444;border-radius:3px;color:#888;font-size:0.65rem;min-height:28px}
+.series-btn.has-sq{border-color:rgba(255,105,180,0.6)}
+.series-btn.has-eb{border-color:rgba(255,152,0,0.6)}
+.series-btn.has-sq.has-eb{border-image:linear-gradient(135deg,rgba(255,152,0,0.7),rgba(255,105,180,0.7)) 1}
+.series-btn.active{background:#1e2924;border-color:var(--accent);color:var(--accent);border-image:none}
+.range-filter{display:flex;align-items:center;gap:4px}
+.range-label{color:#888;font-size:0.7rem;flex-shrink:0;min-width:36px;text-align:right}
+.range-value{color:var(--accent);font-size:0.7rem;min-width:32px;text-align:center;flex-shrink:0}
+.range-filter input[type="range"]{flex:1;-webkit-appearance:none;height:6px;background:#333;border-radius:3px;outline:none;min-width:40px}
+.range-filter input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;background:var(--accent);border-radius:50%;cursor:pointer}
+.stat-slider-grid{display:grid;grid-template-columns:1fr 1fr;gap:4px}
+.toggle-filter{display:flex;gap:3px;flex-wrap:wrap}
+.toggle-filter-label{color:#666;font-size:0.6rem;flex-basis:100%;margin-bottom:-2px}
+.tbtn{padding:4px 6px;background:#222;border:1px solid #444;border-radius:3px;color:#888;font-size:0.65rem;white-space:nowrap;min-height:28px}
+.tbtn.active-eb{background:#3a2200;border-color:var(--eb-orange);color:var(--eb-orange)}
+.tbtn.active-sq{background:#2a0020;border-color:var(--sq-pink);color:var(--sq-pink)}
+.tbtn.active-ab{background:#1a0a2e;border-color:#b388ff;color:#b388ff}
+.tbtn.active-pl{background:#1e2924;border-color:var(--accent);color:var(--accent)}
+.tbtn.active-sp{background:#1a2a3a;border-color:#4fc3f7;color:#4fc3f7}
+.filter-row{display:flex;gap:4px;align-items:center}
+.filter-select{flex:1;padding:6px;background:var(--bg-card);border:1px solid #333;border-radius:4px;color:#ccc;font-size:0.8rem;min-height:32px}
+.filter-select-sm{width:auto;min-width:50px;flex:0 1 auto;padding:4px;font-size:0.75rem;min-height:28px}
+.search-input{width:100%;padding:6px 8px;background:var(--bg-card);border:1px solid #333;border-radius:6px;color:#fff;font-size:0.85rem;min-height:32px}
+.search-input:focus{border-color:var(--accent);outline:none}
+.filter-sheet-actions{display:flex;gap:6px;padding:8px 12px;flex-shrink:0;border-top:1px solid #333;padding-bottom:calc(8px + env(safe-area-inset-bottom))}
+.filter-action-btn{flex:1;padding:8px;border-radius:6px;font-size:0.85rem;font-weight:bold;border:1px solid #333;min-height:40px}
+.filter-action-btn.primary{background:#1e2924;border-color:var(--accent);color:var(--accent)}
+.filter-action-btn.clear{background:#222;color:#555}
+.filter-action-btn.clear.active{background:#c62828;border-color:#e53935;color:#fff}
+.ocr-toggle{display:flex;align-items:center;gap:3px;cursor:pointer}
+.ocr-toggle input{accent-color:var(--accent);width:16px;height:16px}
+.ocr-toggle-text{color:#888;font-size:0.7rem;white-space:nowrap}
+
+/* ===== HAMBURGER MENU ===== */
+.menu-overlay{
+  position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:300;display:none;
+}
+.menu-overlay.open{display:block}
+.menu-panel{
+  position:fixed;top:0;right:-280px;width:280px;height:100%;
+  background:var(--bg2);border-left:2px solid var(--accent);
+  z-index:301;transition:right 0.3s ease;overflow-y:auto;
+  -webkit-overflow-scrolling:touch;
+  padding:12px;padding-top:calc(12px + env(safe-area-inset-top));
+  display:flex;flex-direction:column;gap:8px;
+}
+.menu-panel.open{right:0}
+.menu-title{color:var(--accent);font-weight:bold;font-size:0.9rem;margin-bottom:4px}
+.menu-close{position:absolute;top:12px;right:12px;background:none;border:none;color:#888;font-size:1.3rem}
+.menu-row{display:flex;gap:4px}
+.menu-btn{
+  flex:1;padding:8px 6px;background:#222;border:1px solid #555;border-radius:6px;
+  color:#ccc;font-size:0.8rem;text-align:center;min-height:40px;
+}
+.menu-btn.primary{background:#1e2924;border-color:var(--accent);color:var(--accent)}
+.menu-btn:disabled{opacity:0.4}
+.menu-label{color:#888;font-size:0.7rem;margin-top:4px}
+.menu-divider{height:1px;background:#333;margin:4px 0}
+.deck-name-input{
+  width:100%;background:var(--bg-card);border:1px solid #444;border-radius:6px;
+  color:#fff;padding:8px;font-size:0.85rem;min-height:36px;
+}
+.deck-name-input:focus{border-color:var(--accent);outline:none}
+.terrain-sel{min-height:36px}
+.terrain-sel.active{background:#1e2924;border-color:var(--accent);color:var(--accent)}
+.cache-menu-section{
+  margin-top:auto;
+  background:linear-gradient(135deg,rgba(255,60,60,0.08),rgba(255,100,60,0.04));
+  border:1px solid rgba(255,80,80,0.3);border-radius:10px;
+  padding:0.6rem 0.7rem;display:flex;flex-direction:column;gap:0.4rem;
+}
+.cache-menu-header{display:flex;align-items:center;gap:0.4rem}
+.cache-menu-icon{font-size:1rem;color:#ff6b6b;filter:drop-shadow(0 0 4px rgba(255,107,107,0.4))}
+.cache-menu-title{font-size:0.8rem;font-weight:700;color:#ff8a80}
+.cache-menu-count{font-size:0.75rem;color:#ffab91}
+.cache-menu-btn{
+  background:rgba(255,80,80,0.12);border:1px solid rgba(255,80,80,0.4);border-radius:6px;
+  color:#ff8a80;padding:0.3rem 0.6rem;font-size:0.75rem;cursor:pointer;transition:all 0.15s;
+}
+.cache-menu-btn:hover{background:rgba(255,80,80,0.25);border-color:#ff6b6b;color:#fff}
+
+/* ===== TOAST ===== */
+.toast-container{position:fixed;top:40px;right:8px;z-index:10000;display:flex;flex-direction:column;gap:6px}
+.toast{padding:8px 12px;border-radius:8px;font-size:0.8rem;box-shadow:0 4px 12px rgba(0,0,0,0.5);animation:toastIn 0.3s ease-out;max-width:280px}
+.toast.success{background:#1b5e20;color:#a5d6a7;border-left:4px solid #4caf50}
+.toast.error{background:#5e1b1b;color:#ef9a9a;border-left:4px solid #f44336}
+.toast.info{background:#1a3a5e;color:#90caf9;border-left:4px solid #2196f3}
+.toast.fadeout{animation:toastOut 0.3s ease-in forwards}
+@keyframes toastIn{from{opacity:0;transform:translateX(60px)}to{opacity:1;transform:translateX(0)}}
+@keyframes toastOut{from{opacity:1}to{opacity:0;transform:translateY(-20px)}}
+
+/* ===== MODALS ===== */
+.modal-overlay{display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.85);z-index:400;align-items:center;justify-content:center}
+.modal-overlay.open{display:flex}
+.modal-content{background:var(--bg-card);border-radius:12px;padding:16px;width:92vw;max-height:85vh;overflow-y:auto;-webkit-overflow-scrolling:touch;box-shadow:0 0 24px rgba(0,0,0,0.8);position:relative}
+.modal-close{position:absolute;top:6px;right:10px;background:none;border:none;color:#888;font-size:1.5rem;padding:4px}
+.modal-card-header{display:flex;flex-direction:column;gap:10px;margin-bottom:10px}
+.modal-card-images{display:flex;gap:8px;justify-content:center}
+.modal-card-image{width:45%;max-width:160px;height:auto;border-radius:6px;flex-shrink:0}
+.modal-card-info{min-width:0}
+.modal-card-number{color:var(--accent);font-weight:bold;font-size:1rem}
+.modal-card-name{font-size:1.1rem;font-weight:bold;margin-top:2px}
+.modal-param-group{background:#222;border-radius:6px;padding:8px;margin-top:6px}
+.modal-param-title{color:#66ff99;font-weight:bold;font-size:0.8rem;margin-bottom:4px}
+.modal-param-row{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:2px}
+.modal-param-item{background:#333;border-radius:3px;padding:2px 6px;font-size:0.8rem}
+.modal-param-label{color:#66ff99;margin-right:2px}
+.rarity-tag{display:inline-block;padding:0 4px;border-radius:2px;font-size:0.6rem;font-weight:bold;margin-left:4px;vertical-align:middle}
+.rarity-tag.rarity-M{background:#5e3a1a;color:#ffcc80}
+.rarity-tag.rarity-C{background:#1a3a1a;color:#a5d6a7}
+.rarity-tag.rarity-R{background:#1a1a5e;color:#90caf9}
+.rarity-tag.rarity-SR{background:#5e1a5e;color:#ce93d8}
+.rarity-tag.rarity-U{background:#5e5e1a;color:#fff59d}
+.rarity-tag.rarity-P{background:#1a5e5e;color:#80deea}
+.rarity-tag.rarity-PR{background:#4a1a4a;color:#f48fb1}
+.rarity-tag.rarity-LR{background:#5e4a1a;color:#ffe082}
+.rarity-tag.rarity-LE{background:#4a1a1a;color:#ff8a80}
+.rarity-tag.rarity-CP{background:#3a3a3a;color:#bdbdbd}
+/* Tactics picker in modal */
+.tactics-picker-grid{display:grid;grid-template-columns:1fr;gap:8px;padding:4px 0}
+.tactics-picker-card{background:#222;border:2px solid #333;border-radius:8px;padding:8px;cursor:pointer;display:flex;gap:8px;align-items:flex-start}
+.tactics-picker-card.selected{border-color:var(--pl-gold);background:#332d10}
+.tactics-picker-card img{width:60px;height:auto;border-radius:4px;flex-shrink:0}
+.tactics-picker-card .tp-info{flex:1;min-width:0}
+.tactics-picker-card .tp-name{font-weight:bold;font-size:0.85rem;color:var(--pl-gold);margin-bottom:3px}
+.tactics-picker-card .tp-effect{font-size:0.7rem;color:#aaa;line-height:1.4}
+.tactics-picker-card .tp-condition{font-size:0.65rem;color:#e91e63;margin-top:2px}
+/* Deck load items */
+.deck-load-item{display:flex;justify-content:space-between;align-items:center;padding:8px;margin-bottom:4px;background:#222;border-radius:6px;border:1px solid #333}
+/* Cache modal */
+.cache-modal-body{text-align:center}
+.cache-modal-body h3{color:var(--pl-gold);margin:0 0 10px}
+.cache-modal-stats{display:flex;justify-content:center;gap:16px;margin:8px 0;font-size:0.8rem;color:#ccc}
+.cache-modal-stats span{display:flex;flex-direction:column;align-items:center;gap:2px}
+.cache-modal-stats .stat-value{font-size:1.2rem;font-weight:bold;color:var(--accent)}
+.cache-modal-progress{width:100%;height:8px;background:#222;border-radius:4px;overflow:hidden;margin:8px 0}
+.cache-modal-progress-bar{height:100%;width:0%;background:linear-gradient(90deg,var(--accent),#4ecdc4);border-radius:4px;transition:width 0.3s ease}
+.cache-modal-pct{font-size:1rem;color:#fff;margin:4px 0;font-weight:bold}
+.cache-modal-detail{font-size:0.7rem;color:#888;margin:2px 0}
+.cache-modal-warn{background:#2a2000;border:1px solid #554400;border-radius:6px;padding:8px;margin:8px 0;font-size:0.75rem;color:#ffcc00;text-align:left}
+.cache-modal-btns{display:flex;gap:6px;justify-content:center;margin-top:10px}
+.cache-modal-btns button{padding:8px 16px;border-radius:6px;border:1px solid #333;background:#222;color:#ccc;font-size:0.8rem;min-height:36px}
+.cache-modal-btns button.primary{background:#1e3a2f;border-color:var(--accent);color:var(--accent)}
+.cache-modal-btns button.danger{border-color:#ff6b6b;color:#ff6b6b}
+.cache-modal-btns button:disabled{opacity:0.4}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="app-header">
+  <span class="hdr-cost" id="headerTotalCost"><span class="hdr-cost-label">TOTAL</span><span class="hdr-cost-val">0</span></span>
+  <span class="hdr-sep"></span>
+  <span class="hdr-class s" id="badgeSenmetsu">殲0</span>
+  <span class="hdr-class c" id="badgeSeiatsu">制0</span>
+  <span class="hdr-class b" id="badgeBouei">防0</span>
+  <span class="hdr-sep"></span>
+  <span class="sq-badge-h" id="sqStatus">SQ</span>
+  <span class="hdr-active-links" id="hdrSqLinks"></span>
+  <span class="eb-badge-h" id="ebStatus" style="margin-left:-2px">EB</span>
+  <span class="hdr-active-links" id="hdrEbLinks"></span>
+  <span class="ab-badge-h" id="abStatus" style="margin-left:-2px;display:none">AB</span>
+  <span class="hdr-active-links" id="hdrAbLinks"></span>
+  <span class="hdr-spacer"></span>
+  <button class="hamburger-btn" id="hamburgerBtn" onclick="toggleMenu()">&#9776;</button>
+</header>
+
+<!-- TACTICS & LINK ROW -->
+<div class="tactics-row">
+  <div class="tactics-thumb" id="tacticsBtnMain" onclick="TacticsPicker.open('main')">
+    <span class="tactics-thumb-label">M</span>
+    <img class="tactics-thumb-img" id="tacticsImgMain" src="" alt="メイン作戦" style="display:none">
+  </div>
+  <div class="tactics-thumb" id="tacticsBtnSub" onclick="TacticsPicker.open('sub')">
+    <span class="tactics-thumb-label">S</span>
+    <img class="tactics-thumb-img" id="tacticsImgSub" src="" alt="サブ作戦" style="display:none">
+  </div>
+  <div class="link-chips" id="linkBar"></div>
+</div>
+
+<!-- OVERVIEW STRIP -->
+<div class="overview-strip" id="overviewStrip">
+  <div class="overview-cats" id="catRow"></div>
+  <div class="overview-thumbs" id="msRow"></div>
+  <div class="overview-thumbs" id="plRow"></div>
+  <div class="unit-tabs" id="unitTabs"></div>
+</div>
+
+<!-- DETAIL AREA -->
+<div class="detail-area" id="detailArea"></div>
+
+<!-- CARD PICKER -->
+<div class="picker-overlay" id="pickerOverlay">
+  <div class="picker-topbar">
+    <span id="pickerTitle" style="color:var(--accent);font-weight:bold;font-size:0.85rem">カード選択</span>
+    <div class="picker-tabs" id="pickerTabs" style="display:none">
+      <div class="picker-tab active" data-type="MS" onclick="SearchPanel.setType('MS')">MS</div>
+      <div class="picker-tab" data-type="PL" onclick="SearchPanel.setType('PL')">PL</div>
+    </div>
+    <button class="picker-close" onclick="closeCardPicker()">&times;</button>
+  </div>
+  <div class="picker-toolbar">
+    <span class="page-info" id="pageInfo" style="color:#888;font-size:0.8rem">-</span>
+  </div>
+  <div class="picker-scroll" id="pickerScroll">
+    <div class="picker-grid" id="thumbGrid"></div>
+  </div>
+</div>
+
+<!-- FILTER BOTTOM SHEET -->
+<div class="filter-sheet" id="filterSheet">
+  <button class="filter-sheet-toggle" id="filterSheetToggle" onclick="toggleFilterSheet()">▲ フィルター</button>
+  <div class="filter-sheet-body">
+    <div style="margin-bottom:8px">
+      <input type="text" class="picker-search-input" id="searchInput" placeholder="名前・番号で検索..." autocomplete="off" style="width:100%;box-sizing:border-box">
+    </div>
+    <div class="filter-group collapsed" id="filterGroupBasic">
+      <div class="filter-group-title" onclick="toggleFilterGroup('filterGroupBasic')">検索対象のシリーズを指定</div>
+      <div class="filter-group-body">
+        <div class="rarity-filter" id="rarityFilter">
+          <button class="rarity-btn" data-rarity="C" onclick="SearchPanel.toggleRarity('C')">C</button>
+          <button class="rarity-btn" data-rarity="R" onclick="SearchPanel.toggleRarity('R')">R</button>
+          <button class="rarity-btn" data-rarity="M" onclick="SearchPanel.toggleRarity('M')">M</button>
+          <button class="rarity-btn" data-rarity="A" onclick="SearchPanel.toggleRarity('A')">A</button>
+          <button class="rarity-btn" data-rarity="LX" onclick="SearchPanel.toggleRarity('LX')">LX</button>
+          <button class="rarity-btn" data-rarity="UT" onclick="SearchPanel.toggleRarity('UT')">UT</button>
+          <button class="rarity-btn" data-rarity="FQ" onclick="SearchPanel.toggleRarity('FQ')">FQ</button>
+          <button class="rarity-btn" data-rarity="P" onclick="SearchPanel.toggleRarity('P')">P</button>
+          <button class="rarity-btn" data-rarity="U" onclick="SearchPanel.toggleRarity('U')">U</button>
+          <button class="rarity-btn" data-rarity="SEC" onclick="SearchPanel.toggleRarity('SEC')">SEC</button>
+          <button class="rarity-btn" data-rarity="PR" onclick="SearchPanel.toggleRarity('PR')">PR</button>
+          <button class="rarity-btn" data-rarity="SN" onclick="SearchPanel.toggleRarity('SN')">SN</button>
+          <button class="rarity-btn" data-rarity="LE" onclick="SearchPanel.toggleRarity('LE')">LE</button>
+        </div>
+        <div class="category-filter" id="categoryFilter"></div>
+        <label class="ocr-toggle"><input type="checkbox" id="filterAllSeries" checked onchange="SearchPanel.toggleAllSeries()"><span class="ocr-toggle-text">全シリーズ</span></label>
+        <div class="series-filter" id="seriesFilter"></div>
+        <label class="ocr-toggle"><input type="checkbox" id="filterBookmarkCards" onchange="SearchPanel.applyFilters()"><span class="ocr-toggle-text">&#9733; ブックマーク</span></label>
+        <label class="ocr-toggle" style="border:2px solid #ef5350;border-radius:6px;padding:0.2rem 0.5rem;background:rgba(239,83,80,0.08)"><input type="checkbox" id="filterNeedsReocr" onchange="SearchPanel.applyFilters()" style="accent-color:#ef5350"><span class="ocr-toggle-text" style="color:#ef5350;font-weight:bold">要再OCR</span></label>
+      </div>
+    </div>
+    <div class="filter-group collapsed" id="filterGroupStats">
+      <div class="filter-group-title" onclick="toggleFilterGroup('filterGroupStats')">コスト・ステータス</div>
+      <div class="filter-group-body">
+        <div class="range-filter">
+          <span class="range-label">コスト</span>
+          <input type="range" id="filterCostMin" min="0" max="13" value="0">
+          <input type="range" id="filterCostMax" min="0" max="13" value="13">
+          <span class="range-value" id="costRangeValue">0-13</span>
+        </div>
+        <div class="stat-slider-grid">
+          <div class="range-filter"><span class="range-label">機動≥</span><input type="range" id="filterMobility" min="0" max="700" value="0" step="10"><span class="range-value" id="mobilityValue">0</span></div>
+          <div class="range-filter"><span class="range-label">遠距≥</span><input type="range" id="filterRanged" min="0" max="700" value="0" step="10"><span class="range-value" id="rangedValue">0</span></div>
+          <div class="range-filter"><span class="range-label">近距≥</span><input type="range" id="filterMelee" min="0" max="700" value="0" step="10"><span class="range-value" id="meleeValue">0</span></div>
+          <div class="range-filter"><span class="range-label">HP≥</span><input type="range" id="filterHp" min="0" max="700" value="0" step="10"><span class="range-value" id="hpValue">0</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="filter-group collapsed" id="filterGroupTerrain">
+      <div class="filter-group-title" onclick="toggleFilterGroup('filterGroupTerrain')">地形・属性</div>
+      <div class="filter-group-body">
+        <div class="filter-row">
+          <span style="color:#888;font-size:0.7rem;flex-shrink:0">地形:</span>
+          <select class="filter-select filter-select-sm" id="filterTerrainType"><option value="">-</option><option value="ground">地上</option><option value="space">宇宙</option><option value="desert">砂漠</option><option value="water">水中</option></select>
+          <select class="filter-select filter-select-sm" id="filterTerrainRank" disabled><option value="">ランク</option><option value="S">S以上</option><option value="A">A以上</option><option value="B">B以上</option><option value="C">C以上</option></select>
+        </div>
+        <label class="ocr-toggle"><input type="checkbox" id="filterOcr" onchange="SearchPanel.applyFilters()"><span class="ocr-toggle-text">OCRあり</span></label>
+      </div>
+    </div>
+    <div class="filter-group collapsed" id="filterGroupLink">
+      <div class="filter-group-title" onclick="toggleFilterGroup('filterGroupLink')">リンクアビリティ</div>
+      <div class="filter-group-body">
+        <div class="filter-row"><select class="filter-select" id="filterLinkName" onchange="SearchPanel.applyFilters()" style="flex:1"><option value="">リンク1を選択</option></select></div>
+        <div class="filter-row"><select class="filter-select" id="filterLinkName2" onchange="SearchPanel.applyFilters()" style="flex:1"><option value="">リンク2を選択 (AND)</option></select></div>
+      </div>
+    </div>
+    <div class="filter-group collapsed" id="filterGroupEb">
+      <div class="filter-group-title" onclick="toggleFilterGroup('filterGroupEb')" style="color:#ff9800">EB</div>
+      <div class="filter-group-body">
+        <div class="toggle-filter" id="ebCategoryBtns">
+          <button class="tbtn" data-key="eb_sp" data-for="MS" onclick="SearchPanel.toggle('ebCat',this)">EB SP</button>
+          <button class="tbtn" data-key="eb_skill" data-for="PL" onclick="SearchPanel.toggle('ebCat',this)">EBスキル</button>
+          <button class="tbtn" data-key="eb_link" onclick="SearchPanel.toggle('ebCat',this)">EBリンク</button>
+        </div>
+        <div class="toggle-filter" id="ebLevelBtns">
+          <span class="toggle-filter-label">EB Lv.</span>
+          <button class="tbtn" data-key="1" onclick="SearchPanel.toggle('ebLv',this)">1</button>
+          <button class="tbtn" data-key="2" onclick="SearchPanel.toggle('ebLv',this)">2</button>
+          <button class="tbtn" data-key="3" onclick="SearchPanel.toggle('ebLv',this)">3</button>
+        </div>
+        <div class="toggle-filter" data-for="MS" id="ebspEffectBtns">
+          <span class="toggle-filter-label">EBSP効果</span>
+          <button class="tbtn" data-key="変身" onclick="SearchPanel.toggle('ebspEff',this)">変身</button>
+          <button class="tbtn" data-key="スタン" onclick="SearchPanel.toggle('ebspEff',this)">スタン</button>
+          <button class="tbtn" data-key="撃破" onclick="SearchPanel.toggle('ebspEff',this)">撃破</button>
+          <button class="tbtn" data-key="貫通" onclick="SearchPanel.toggle('ebspEff',this)">貫通</button>
+          <button class="tbtn" data-key="範囲" onclick="SearchPanel.toggle('ebspEff',this)">範囲</button>
+          <button class="tbtn" data-key="デバフ" onclick="SearchPanel.toggle('ebspEff',this)">デバフ</button>
+          <button class="tbtn" data-key="バフ" onclick="SearchPanel.toggle('ebspEff',this)">バフ</button>
+          <button class="tbtn" data-key="HP回復" onclick="SearchPanel.toggle('ebspEff',this)">HP回復</button>
+          <button class="tbtn" data-key="防衛無視" onclick="SearchPanel.toggle('ebspEff',this)">防衛無視</button>
+        </div>
+        <div class="toggle-filter" data-for="PL" id="ebCondBtns">
+          <span class="toggle-filter-label">EB発動条件</span>
+          <button class="tbtn" data-key="上昇時" onclick="SearchPanel.toggle('ebCond',this)">Lv上昇時</button>
+          <button class="tbtn" data-key="上昇毎" onclick="SearchPanel.toggle('ebCond',this)">上昇毎</button>
+          <button class="tbtn" data-key="以上" onclick="SearchPanel.toggle('ebCond',this)">Lv以上</button>
+          <button class="tbtn" data-key="Lv到達時" onclick="SearchPanel.toggle('ebCond',this)">Lv到達時</button>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:4px">
+          <label class="ocr-toggle" data-for="MS" id="filterEbLabel"><input type="checkbox" id="filterEb" onchange="SearchPanel.applyFilters()"><span class="ocr-toggle-text" style="color:#ff9800">EB表示</span></label>
+          <label class="ocr-toggle" data-for="PL" id="filterEbSkillLabel"><input type="checkbox" id="filterEbSkill" onchange="SearchPanel.applyFilters()"><span class="ocr-toggle-text" style="color:#ff9800">EBスキル表示</span></label>
+        </div>
+      </div>
+    </div>
+    <div class="filter-group collapsed" id="filterGroupSq">
+      <div class="filter-group-title" onclick="toggleFilterGroup('filterGroupSq')" style="color:#ff69b4">SQ</div>
+      <div class="filter-group-body">
+        <div class="toggle-filter" id="sqCategoryBtns">
+          <button class="tbtn" data-key="sqsp" data-for="MS" onclick="SearchPanel.toggle('sqCat',this)">SQSP</button>
+          <button class="tbtn" data-key="sq_skill" data-for="PL" onclick="SearchPanel.toggle('sqCat',this)">SQスキル</button>
+          <button class="tbtn" data-key="sq_link" onclick="SearchPanel.toggle('sqCat',this)">SQリンク</button>
+          <button class="tbtn" data-key="sq_rush" data-for="PL" onclick="SearchPanel.toggle('sqCat',this)">SQラッシュ</button>
+        </div>
+        <div class="toggle-filter" data-for="MS" id="sqspEffectBtns">
+          <span class="toggle-filter-label">SQSP効果</span>
+          <button class="tbtn" data-key="変身" onclick="SearchPanel.toggle('sqspEff',this)">変身</button>
+          <button class="tbtn" data-key="スタン" onclick="SearchPanel.toggle('sqspEff',this)">スタン</button>
+          <button class="tbtn" data-key="撃破" onclick="SearchPanel.toggle('sqspEff',this)">撃破</button>
+          <button class="tbtn" data-key="貫通" onclick="SearchPanel.toggle('sqspEff',this)">貫通</button>
+          <button class="tbtn" data-key="範囲" onclick="SearchPanel.toggle('sqspEff',this)">範囲</button>
+          <button class="tbtn" data-key="デバフ" onclick="SearchPanel.toggle('sqspEff',this)">デバフ</button>
+          <button class="tbtn" data-key="バフ" onclick="SearchPanel.toggle('sqspEff',this)">バフ</button>
+          <button class="tbtn" data-key="HP回復" onclick="SearchPanel.toggle('sqspEff',this)">HP回復</button>
+          <button class="tbtn" data-key="防衛無視" onclick="SearchPanel.toggle('sqspEff',this)">防衛無視</button>
+          <button class="tbtn" data-key="支援攻撃" onclick="SearchPanel.toggle('sqspEff',this)">支援攻撃</button>
+        </div>
+        <div class="toggle-filter" data-for="PL" id="sqGaugeBtns">
+          <span class="toggle-filter-label">SQゲージ</span>
+          <button class="tbtn" data-key="大" onclick="SearchPanel.toggle('sqGauge',this)">大</button>
+          <button class="tbtn" data-key="中" onclick="SearchPanel.toggle('sqGauge',this)">中</button>
+          <button class="tbtn" data-key="小" onclick="SearchPanel.toggle('sqGauge',this)">小</button>
+        </div>
+        <div class="toggle-filter" data-for="PL" id="sqTriggerBtns">
+          <span class="toggle-filter-label">SQ発動条件</span>
+          <button class="tbtn" data-key="ロックオン時" onclick="SearchPanel.toggle('sqTrig',this)">ロックオン</button>
+          <button class="tbtn" data-key="戦艦/拠点ロックオン時" onclick="SearchPanel.toggle('sqTrig',this)">戦艦/拠点</button>
+          <button class="tbtn" data-key="撃破時" onclick="SearchPanel.toggle('sqTrig',this)">撃破</button>
+          <button class="tbtn" data-key="SQゲージ最大時" onclick="SearchPanel.toggle('sqTrig',this)">ゲージ最大</button>
+          <button class="tbtn" data-key="MSアビリティ発動時" onclick="SearchPanel.toggle('sqTrig',this)">MSアビリティ</button>
+          <button class="tbtn" data-key="出撃時" onclick="SearchPanel.toggle('sqTrig',this)">出撃</button>
+        </div>
+        <div class="toggle-filter" data-for="PL" id="sqEffectBtns">
+          <span class="toggle-filter-label">SQスキル効果</span>
+          <button class="tbtn" data-key="機動力UP" onclick="SearchPanel.toggle('sqEff',this)">機動力</button>
+          <button class="tbtn" data-key="遠距離攻撃力UP" onclick="SearchPanel.toggle('sqEff',this)">遠距離</button>
+          <button class="tbtn" data-key="近距離攻撃力UP" onclick="SearchPanel.toggle('sqEff',this)">近距離</button>
+          <button class="tbtn" data-key="SP威力UP" onclick="SearchPanel.toggle('sqEff',this)">SP威力</button>
+          <button class="tbtn" data-key="ダメージ軽減" onclick="SearchPanel.toggle('sqEff',this)">ダメ軽減</button>
+          <button class="tbtn" data-key="弱体無効" onclick="SearchPanel.toggle('sqEff',this)">弱体無効</button>
+          <button class="tbtn" data-key="全味方バフ" onclick="SearchPanel.toggle('sqEff',this)">全味方</button>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:4px">
+          <label class="ocr-toggle" data-for="MS" id="filterSqspLabel"><input type="checkbox" id="filterSqsp" onchange="SearchPanel.applyFilters()"><span class="ocr-toggle-text" style="color:#ff69b4">SQSP表示</span></label>
+          <label class="ocr-toggle" data-for="PL" id="filterSqSkillLabel"><input type="checkbox" id="filterSqSkill" onchange="SearchPanel.applyFilters()"><span class="ocr-toggle-text" style="color:#ff69b4">SQスキル表示</span></label>
+        </div>
+      </div>
+    </div>
+    <div class="filter-group collapsed" id="filterGroupAb">
+      <div class="filter-group-title" onclick="toggleFilterGroup('filterGroupAb')" style="color:#b388ff">AB</div>
+      <div class="filter-group-body">
+        <div class="toggle-filter" id="abCategoryBtns">
+          <button class="tbtn" data-key="ab_link" onclick="SearchPanel.toggle('abCat',this)">ABリンク</button>
+        </div>
+      </div>
+    </div>
+    <div class="filter-group collapsed" data-for="MS" id="filterGroupSp">
+      <div class="filter-group-title" onclick="toggleFilterGroup('filterGroupSp')" style="color:#4fc3f7">SP</div>
+      <div class="filter-group-body">
+        <div class="toggle-filter" id="spEffectBtns">
+          <span class="toggle-filter-label">SP効果</span>
+          <button class="tbtn" data-key="変身" onclick="SearchPanel.toggle('spEff',this)">変身</button>
+          <button class="tbtn" data-key="スタン" onclick="SearchPanel.toggle('spEff',this)">スタン</button>
+          <button class="tbtn" data-key="撃破" onclick="SearchPanel.toggle('spEff',this)">撃破</button>
+          <button class="tbtn" data-key="貫通" onclick="SearchPanel.toggle('spEff',this)">貫通</button>
+          <button class="tbtn" data-key="範囲" onclick="SearchPanel.toggle('spEff',this)">範囲</button>
+          <button class="tbtn" data-key="デバフ" onclick="SearchPanel.toggle('spEff',this)">デバフ</button>
+          <button class="tbtn" data-key="バフ" onclick="SearchPanel.toggle('spEff',this)">バフ</button>
+          <button class="tbtn" data-key="HP回復" onclick="SearchPanel.toggle('spEff',this)">HP回復</button>
+          <button class="tbtn" data-key="防衛無視" onclick="SearchPanel.toggle('spEff',this)">防衛無視</button>
+          <button class="tbtn" data-key="必中" onclick="SearchPanel.toggle('spEff',this)">必中</button>
+        </div>
+      </div>
+    </div>
+    <div class="filter-group collapsed" data-for="PL" id="filterGroupPlSkill">
+      <div class="filter-group-title" onclick="toggleFilterGroup('filterGroupPlSkill')">PLスキル</div>
+      <div class="filter-group-body">
+        <div class="filter-row"><select class="filter-select" id="filterSkillName" onchange="SearchPanel.applyFilters()" style="flex:1"><option value="">PLスキル名</option></select></div>
+        <div class="toggle-filter" id="skillEffectBtns">
+          <span class="toggle-filter-label">スキル効果</span>
+          <button class="tbtn" data-key="機動力UP" onclick="SearchPanel.toggle('skEff',this)">機動力</button>
+          <button class="tbtn" data-key="遠距離攻撃力UP" onclick="SearchPanel.toggle('skEff',this)">遠距離</button>
+          <button class="tbtn" data-key="近距離攻撃力UP" onclick="SearchPanel.toggle('skEff',this)">近距離</button>
+          <button class="tbtn" data-key="SP威力UP" onclick="SearchPanel.toggle('skEff',this)">SP威力</button>
+          <button class="tbtn" data-key="ダメージ軽減" onclick="SearchPanel.toggle('skEff',this)">ダメ軽減</button>
+          <button class="tbtn" data-key="敵デバフ" onclick="SearchPanel.toggle('skEff',this)">敵デバフ</button>
+          <button class="tbtn" data-key="対戦艦/拠点" onclick="SearchPanel.toggle('skEff',this)">対戦艦/拠点</button>
+          <button class="tbtn" data-key="SQゲージ増加" onclick="SearchPanel.toggle('skEff',this)">SQゲージ</button>
+          <button class="tbtn" data-key="全味方バフ" onclick="SearchPanel.toggle('skEff',this)">全味方</button>
+          <button class="tbtn" data-key="HP条件" onclick="SearchPanel.toggle('skEff',this)">HP条件</button>
+          <button class="tbtn" data-key="弱体無効" onclick="SearchPanel.toggle('skEff',this)">弱体無効</button>
+        </div>
+      </div>
+    </div>
+    <div class="filter-group collapsed" id="filterGroupSearch">
+      <div class="filter-group-title" onclick="toggleFilterGroup('filterGroupSearch')">テキスト検索</div>
+      <div class="filter-group-body">
+        <input type="text" class="search-input" id="searchTextInput" placeholder="カードテキスト検索..." autocomplete="off">
+      </div>
+    </div>
+  </div>
+  <div class="filter-sheet-actions">
+    <button class="filter-action-btn clear" id="filterClearBtn" onclick="SearchPanel.clearFilters()">フィルタクリア</button>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast-container" id="toastContainer"></div>
+
+<!-- TACTICS PICKER MODAL -->
+<div class="modal-overlay" id="tacticsPickerModal">
+  <div class="modal-content" style="max-width:400px">
+    <button class="modal-close" onclick="TacticsPicker.close()">&times;</button>
+    <h3 id="tacticsPickerTitle" style="color:var(--pl-gold);margin-bottom:8px;font-size:1rem">作戦カードを選択</h3>
+    <div id="tacticsPickerBody"></div>
+  </div>
+</div>
+
+<!-- CACHE MODAL -->
+<div class="modal-overlay" id="cacheModal">
+  <div class="modal-content" style="max-width:360px">
+    <button class="modal-close" onclick="ImageCache.closeModal()">&times;</button>
+    <div class="cache-modal-body">
+      <h3>キャッシュ管理</h3>
+      <div class="cache-modal-stats">
+        <span><span class="stat-value" id="cmCacheCount">0</span>キャッシュ枚数</span>
+        <span><span class="stat-value" id="cmTotalCount">0</span>全カード数(表裏)</span>
+      </div>
+      <div class="cache-modal-progress" id="cmProgress" style="display:none"><div class="cache-modal-progress-bar" id="cmProgressBar"></div></div>
+      <div class="cache-modal-pct" id="cmPct" style="display:none"></div>
+      <div class="cache-modal-detail" id="cmDetail"></div>
+      <div class="cache-modal-warn" id="cmWarn">公式サイトからカード画像を取得しキャッシュします。通信量が大きくなる場合があります。</div>
+      <div class="cache-modal-btns">
+        <button class="primary" id="cmDlBtn" onclick="ImageCache.startDownload()">キャッシュ作成</button>
+        <button class="danger" id="cmClearBtn" onclick="ImageCache.clear()">全クリア</button>
+        <button onclick="ImageCache.closeModal()">閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CARD DETAIL MODAL -->
+<div class="modal-overlay" id="cardDetailModal">
+  <div class="modal-content" id="cardDetailContent">
+    <button class="modal-close" onclick="closeCardModal()">&times;</button>
+    <div id="cardDetailBody"></div>
+  </div>
+</div>
+
+<!-- DECK LOAD MODAL -->
+<div class="modal-overlay" id="deckLoadModal">
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeDeckLoadModal()">&times;</button>
+    <h3 style="color:var(--accent);margin-bottom:8px;font-size:1rem">デッキ読み込み</h3>
+    <div id="deckLoadList"></div>
+    <div style="margin-top:10px;border-top:1px solid #333;padding-top:8px">
+      <div style="color:#888;font-size:0.75rem;margin-bottom:4px">デッキコードでインポート:</div>
+      <div style="display:flex;gap:4px">
+        <input type="text" class="search-input" id="deckCodeImport" placeholder="コードを貼り付け" style="flex:1">
+        <button class="menu-btn" onclick="DeckManager.importCode()" style="flex:0;padding:6px 12px">Import</button>
+      </div>
+    </div>
+    <div style="margin-top:8px;display:flex;gap:4px;flex-wrap:wrap">
+      <button class="menu-btn" style="flex:1" onclick="DeckManager.clearAll();closeDeckLoadModal()">デッキクリア</button>
+      <button class="menu-btn" style="flex:1" onclick="DeckManager.randomDeck();closeDeckLoadModal()">ランダム生成</button>
+    </div>
+    <div style="margin-top:8px">
+      <div style="color:#888;font-size:0.75rem;margin-bottom:4px">リンク指定生成:</div>
+      <select class="filter-select" id="linkSelect1" style="width:100%;margin-bottom:4px"><option value="">-- リンク1を選択 --</option></select>
+      <select class="filter-select" id="linkSelect2" style="width:100%;margin-bottom:4px"><option value="">-- リンク2 (任意) --</option></select>
+      <button class="menu-btn primary" style="width:100%" onclick="DeckManager.linkRandomDeck();closeDeckLoadModal()">リンク指定ランダム生成</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== DECK POST MODAL ===== -->
+<div class="modal-overlay" id="deckPostModal">
+  <div class="modal-content" style="max-width:400px">
+    <button class="modal-close" onclick="document.getElementById('deckPostModal').classList.remove('open')">&times;</button>
+    <h3 style="color:var(--accent);margin-bottom:0.8rem;font-size:1rem">デッキ投稿</h3>
+    <div style="margin-bottom:8px">
+      <label style="font-size:0.75rem;color:#888">デッキ名 *</label>
+      <input type="text" class="search-input" id="postDeckName" placeholder="デッキ名を入力" style="width:100%;box-sizing:border-box">
+    </div>
+    <div style="margin-bottom:8px">
+      <label style="font-size:0.75rem;color:#888">投稿者名</label>
+      <input type="text" class="search-input" id="postAuthor" placeholder="匿名" style="width:100%;box-sizing:border-box">
+    </div>
+    <div style="margin-bottom:8px">
+      <label style="font-size:0.75rem;color:#888">コメント</label>
+      <textarea class="search-input" id="postComment" placeholder="デッキの説明など" rows="3" style="width:100%;box-sizing:border-box;resize:vertical"></textarea>
+    </div>
+    <div style="margin-bottom:12px">
+      <label style="font-size:0.75rem;color:#888">削除パスワード（任意）</label>
+      <input type="password" class="search-input" id="postDeletePassword" placeholder="後から削除する場合" style="width:100%;box-sizing:border-box">
+    </div>
+    <button class="menu-btn primary" style="width:100%" onclick="DeckManager._doPost()">投稿する</button>
+  </div>
+</div>
+
+<!-- ===== TEXT REPORT MODAL ===== -->
+<div class="modal-overlay" id="textReportModal">
+  <div class="modal-content" style="max-width:400px">
+    <button class="modal-close" onclick="document.getElementById('textReportModal').classList.remove('open')">&times;</button>
+    <h3 style="color:var(--accent);margin-bottom:0.8rem;font-size:1rem">カードテキスト修正依頼</h3>
+    <div style="margin-bottom:8px">
+      <label style="font-size:0.75rem;color:#888">カード番号</label>
+      <input type="text" class="search-input" id="reportCardNumber" readonly style="width:100%;box-sizing:border-box;opacity:0.7">
+    </div>
+    <div style="margin-bottom:12px">
+      <label style="font-size:0.75rem;color:#888">修正内容 *</label>
+      <textarea class="search-input" id="reportText" placeholder="誤りのあるテキストと正しいテキストを記入してください" rows="5" style="width:100%;box-sizing:border-box;resize:vertical"></textarea>
+    </div>
+    <button class="menu-btn primary" style="width:100%" onclick="submitTextReport()">送信する</button>
+  </div>
+</div>
+
+<!-- HAMBURGER MENU -->
+<div class="menu-overlay" id="menuOverlay" onclick="toggleMenu()"></div>
+<div class="menu-panel" id="menuPanel">
+  <button class="menu-close" onclick="toggleMenu()">&times;</button>
+  <div class="menu-title">ABD Simulator</div>
+  <div class="menu-row">
+    <button class="menu-btn primary" onclick="DeckManager.save()">デッキ保存</button>
+    <button class="menu-btn" onclick="DeckManager.copyCode()">デッキ共有</button>
+    <button class="menu-btn" onclick="DeckManager.clearAll();toggleMenu()" style="color:#f44336;border-color:#f44336">クリア</button>
+  </div>
+  <div class="menu-row" style="gap:4px">
+    <select id="deckLoadSelect" class="filter-select" style="flex:1;padding:6px;font-size:0.85rem">
+      <option value="">-- デッキを選択 --</option>
+    </select>
+    <button class="menu-btn primary" onclick="DeckManager.loadFromSelect()" style="white-space:nowrap;flex:0;padding:6px 12px">デッキを表示</button>
+  </div>
+  <div class="menu-row">
+    <button class="menu-btn" onclick="DeckManager.tweetDeck()" style="border-color:#1DA1F2;color:#1DA1F2;width:100%">Twitterに投稿</button>
+  </div>
+  <div class="menu-row">
+    <button class="menu-btn primary" onclick="DeckManager.postToServer()" style="width:100%">デッキを投稿</button>
+  </div>
+  <a class="menu-btn primary" href="./decks_mobile.html" style="text-decoration:none;display:block;text-align:center;font-size:1.05rem;padding:10px 0;width:100%;box-sizing:border-box">デッキ投稿サイトにアクセス</a>
+  <div class="menu-row" style="gap:4px">
+    <button class="menu-btn" onclick="DeckManager.sortByCategory();toggleMenu()" title="殲滅→制圧→防衛の順に並び替え" style="flex:1">並び順を整理</button>
+    <button class="rec-btn" id="recBtn" onclick="captureFullPage()" style="flex:0;padding:6px 16px"><span id="recBtnLabel">REC</span></button>
+  </div>
+  <div class="menu-label">地形適性</div>
+  <div class="terrain-switches" id="terrainSwitches">
+    <button class="terrain-sw active" data-val="" onclick="setTerrainSwitch(this)">なし</button>
+    <button class="terrain-sw" data-val="ground" onclick="setTerrainSwitch(this)">地上</button>
+    <button class="terrain-sw" data-val="space" onclick="setTerrainSwitch(this)">宇宙</button>
+    <button class="terrain-sw" data-val="desert" onclick="setTerrainSwitch(this)">砂漠</button>
+    <button class="terrain-sw" data-val="water" onclick="setTerrainSwitch(this)">水中</button>
+  </div>
+  <div class="cache-menu-section">
+    <div class="cache-menu-header">
+      <span class="cache-menu-icon">&#9888;</span>
+      <span class="cache-menu-title">画像キャッシュ</span>
+    </div>
+    <div class="cache-menu-count" id="cacheCount">キャッシュ: 0枚</div>
+    <button class="cache-menu-btn" onclick="ImageCache.openModal();toggleMenu()">キャッシュ管理</button>
+  </div>
+  <div style="border-top:1px solid #333;padding-top:8px">
+    <button class="menu-btn" onclick="clearDataCacheAndReload()" style="width:100%;color:#ff9800;border-color:#ff9800;margin-bottom:6px">データ更新（キャッシュクリア）</button>
+    <a href="./index.html?force" class="menu-btn" style="text-decoration:none;display:block;text-align:center;border-color:#68efbd;color:#68efbd" onclick="this.href='./index.html?force'+location.hash">デスクトップ版</a>
+  </div>
+</div>
+
+<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+<script>
+// ================================================================
+// Supabase設定
+// ================================================================
+const SUPABASE_URL = 'https://hwavpmbdtxuffrlumlrf.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh3YXZwbWJkdHh1ZmZybHVtbHJmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE5NTQyOTIsImV4cCI6MjA4NzUzMDI5Mn0.Y9Q_zIhzSMdxjxI9pXpAzpOWyfbojkrJ-ueqiGaHNK0';
+const SB_HEADERS = {
+  'apikey': SUPABASE_ANON_KEY,
+  'Authorization': 'Bearer ' + SUPABASE_ANON_KEY,
+  'Content-Type': 'application/json'
+};
+async function sha256(text) {
+  const data = new TextEncoder().encode(text);
+  const hash = await crypto.subtle.digest('SHA-256', data);
+  return [...new Uint8Array(hash)].map(b => b.toString(16).padStart(2, '0')).join('');
+}
+
+// ================================================================
+// ShortUrl - Supabase短縮URL管理
+// ================================================================
+const ShortUrl = {
+  PREFIX: 's:',
+  isShort(hash) { return hash.startsWith(this.PREFIX); },
+  code(hash) { return hash.substring(this.PREFIX.length); },
+
+  async create(deckCode) {
+    try {
+      const codeHash = await sha256(deckCode);
+      const check = await fetch(SUPABASE_URL + '/rest/v1/short_links?code_hash=eq.' + codeHash + '&select=id', {
+        headers: SB_HEADERS
+      });
+      if (check.ok) {
+        const rows = await check.json();
+        if (rows.length > 0) return rows[0].id;
+      }
+      const id = codeHash.substring(0, 8);
+      const res = await fetch(SUPABASE_URL + '/rest/v1/short_links', {
+        method: 'POST',
+        headers: { ...SB_HEADERS, 'Prefer': 'return=representation' },
+        body: JSON.stringify({ id, deck_code: deckCode, code_hash: codeHash })
+      });
+      if (res.ok) return id;
+      if (res.status === 409) {
+        const id2 = codeHash.substring(4, 12);
+        const res2 = await fetch(SUPABASE_URL + '/rest/v1/short_links', {
+          method: 'POST',
+          headers: { ...SB_HEADERS, 'Prefer': 'return=representation' },
+          body: JSON.stringify({ id: id2, deck_code: deckCode, code_hash: codeHash })
+        });
+        if (res2.ok) return id2;
+      }
+      return null;
+    } catch { return null; }
+  },
+
+  async resolve(shortCode) {
+    try {
+      const ctrl = new AbortController();
+      const timer = setTimeout(() => ctrl.abort(), 5000);
+      const res = await fetch(SUPABASE_URL + '/rest/v1/short_links?id=eq.' + shortCode + '&select=deck_code', {
+        headers: SB_HEADERS,
+        signal: ctrl.signal
+      });
+      clearTimeout(timer);
+      if (!res.ok) return null;
+      const rows = await res.json();
+      if (rows.length === 0) return null;
+      return DeckManager.parseCode(rows[0].deck_code);
+    } catch { return null; }
+  }
+};
+
+// ================================================================
+// AppState - グローバル状態管理
+// ================================================================
+const AppState = {
+  cardIndex: [],
+  cardDetails: {},
+  deck: Array(10).fill(null),
+  deckOcr: Array(10).fill(null),
+  activeSlot: null,
+  isLoading: false,
+  seriesList: [],
+  linkIndex: {},
+  _sqLinkNames: new Set(),
+  tacticsMain: null,
+  tacticsSub: null,
+  tacticsCards: { main: [], sub: [] },
+  activeTerrain: null,
+  imageSource: 'cache',
+  _lastDeckName: '',
+  selectedUnit: 0,
+};
+
+// ================================================================
+// Toast
+// ================================================================
+const Toast = {
+  show(msg, type='info', duration=2500) {
+    const container = document.getElementById('toastContainer');
+    const el = document.createElement('div');
+    el.className = `toast ${type}`;
+    if (msg.includes('<')) el.innerHTML = msg;
+    else el.textContent = msg;
+    container.appendChild(el);
+    setTimeout(() => {
+      el.classList.add('fadeout');
+      setTimeout(() => el.remove(), 300);
+    }, duration);
+  }
+};
+
+// ================================================================
+// UndoManager
+// ================================================================
+const UndoManager = {
+  _stack: [],
+  _pos: -1,
+  snapshot() {
+    const state = JSON.stringify({deck: AppState.deck, tm: AppState.tacticsMain, ts: AppState.tacticsSub});
+    if (this._pos >= 0 && this._stack[this._pos] === state) return;
+    this._stack = this._stack.slice(0, this._pos + 1);
+    this._stack.push(state);
+    this._pos = this._stack.length - 1;
+    if (this._stack.length > 50) { this._stack.shift(); this._pos--; }
+    this._updateButtons();
+  },
+  undo() {
+    if (this._pos <= 0) return;
+    this._pos--;
+    this._apply();
+  },
+  redo() {
+    if (this._pos >= this._stack.length - 1) return;
+    this._pos++;
+    this._apply();
+  },
+  _apply() {
+    const raw = JSON.parse(this._stack[this._pos]);
+    if (Array.isArray(raw)) {
+      AppState.deck = raw;
+    } else {
+      AppState.deck = raw.deck;
+      AppState.tacticsMain = raw.tm || null;
+      AppState.tacticsSub = raw.ts || null;
+    }
+    const numbers = AppState.deck.filter(n => n);
+    if (numbers.length > 0) {
+      CardService.batchDetails(numbers).then(() => {
+        for (let i = 0; i < 10; i++) {
+          AppState.deckOcr[i] = AppState.deck[i] ? (AppState.cardDetails[AppState.deck[i]]?.ocr_data || null) : null;
+        }
+        UIRenderer.renderAll();
+        TacticsPicker.renderButtons();
+      });
+    } else {
+      AppState.deckOcr = Array(10).fill(null);
+      UIRenderer.renderAll();
+      TacticsPicker.renderButtons();
+    }
+    this._updateButtons();
+  },
+  _updateButtons() {
+    const u = document.getElementById('undoBtn');
+    const r = document.getElementById('redoBtn');
+    if (u) u.disabled = this._pos <= 0;
+    if (r) r.disabled = this._pos >= this._stack.length - 1;
+  }
+};
+
+// ================================================================
+// Utility Functions
+// ================================================================
+function safeInt(val, def = 0) {
+  if (val === null || val === undefined) return def;
+  const n = parseInt(val, 10);
+  return isNaN(n) ? def : n;
+}
+// リンク発動条件のカウント: カテゴリ条件(「機動が2枚以上」等)はカテゴリで数える
+const _LINK_CATEGORIES = ['機動', '制圧', '殲滅', '近距離', '遠距離', '防衛'];
+function _parseLinkCondition(condition) {
+  const numMatch = (condition || '').match(/(\d+)枚以上/);
+  const required = numMatch ? parseInt(numMatch[1]) : 2;
+  let category = null;
+  for (const cat of _LINK_CATEGORIES) {
+    if ((condition || '').includes(cat)) { category = cat; break; }
+  }
+  return { required, category };
+}
+function _countLinkInDeck(linkName, category) {
+  if (category) {
+    let count = 0;
+    for (let i = 0; i < 5; i++) {
+      const num = AppState.deck[i];
+      if (!num) continue;
+      const card = AppState.cardIndex.find(c => c.number === num);
+      if (card && card.category === category) count++;
+    }
+    return count;
+  }
+  let count = 0;
+  for (let i = 0; i < 10; i++) {
+    const d = AppState.deckOcr[i]; if (!d) continue;
+    const dLinks = d.link_abilities || d.link_ability || [];
+    if (Array.isArray(dLinks) && dLinks.some(l => l.name === linkName)) count++;
+  }
+  return count;
+}
+function escapeHtml(str) {
+  if (!str) return '';
+  const div = document.createElement('div');
+  div.textContent = str;
+  return div.innerHTML;
+}
+function getLinkBuffs(ocr) {
+  const buffs = {
+    mobility: { small: 0, medium: 0 },
+    ranged: { small: 0, medium: 0 },
+    melee: { small: 0, medium: 0 },
+    hp: { small: 0, medium: 0 }
+  };
+  const links = ocr?.link_abilities || ocr?.link_ability || [];
+  if (!Array.isArray(links)) return buffs;
+  links.forEach(link => {
+    const eff = link.effect || '';
+    const { required, category } = _parseLinkCondition(link.condition);
+    const count = _countLinkInDeck(link.name, category);
+    if (count < required) return;
+    if (eff.match(/機動力.*小アップ/)) buffs.mobility.small++;
+    if (eff.match(/遠距離攻撃力.*小アップ/)) buffs.ranged.small++;
+    if (eff.match(/近距離攻撃力.*小アップ/)) buffs.melee.small++;
+    if (eff.match(/HP.*小アップ/)) buffs.hp.small++;
+    if (eff.match(/機動力.*中アップ/)) buffs.mobility.medium++;
+    if (eff.match(/遠距離攻撃力.*中アップ/)) buffs.ranged.medium++;
+    if (eff.match(/近距離攻撃力.*中アップ/)) buffs.melee.medium++;
+    if (eff.match(/HP.*中アップ/)) buffs.hp.medium++;
+  });
+  return buffs;
+}
+
+// ================================================================
+// CardService - 静的JSON (PWA version)
+// ================================================================
+const CardService = {
+  _allDetails: null,
+  _detailsIDB: null,
+
+  async fetchIndex() {
+    const res = await fetch('./data/card_index.json', { cache: 'no-store' });
+    const cards = await res.json();
+    // PR-xxx カードの rarity 補完
+    cards.forEach(c => { if (!c.rarity && c.number && c.number.startsWith('PR-')) c.rarity = 'PR'; });
+    AppState.cardIndex = cards;
+    UIRenderer.invalidateIndexMap();
+    const seriesSet = new Set();
+    cards.forEach(c => { if (c.series) seriesSet.add(c.series); });
+    AppState.seriesList = [...seriesSet].sort();
+    this._populateSeriesFilter();
+    const illustratorSet = new Set();
+    cards.forEach(c => { if (c.illustrator) illustratorSet.add(c.illustrator); });
+    AppState.illustratorList = [...illustratorSet].sort();
+    return { success: true, cards };
+  },
+
+  _openDetailsIDB() {
+    return new Promise((resolve, reject) => {
+      if (this._detailsIDB) { resolve(this._detailsIDB); return; }
+      const req = indexedDB.open('abds-pwa-v1', 1);
+      req.onupgradeneeded = e => e.target.result.createObjectStore('details');
+      req.onsuccess = e => { this._detailsIDB = e.target.result; resolve(this._detailsIDB); };
+      req.onerror = e => reject(e.target.error);
+    });
+  },
+
+  async _ensureDetails() {
+    if (this._allDetails) return;
+    try {
+      const db = await this._openDetailsIDB();
+      const val = await new Promise((res, rej) => {
+        const tx = db.transaction('details', 'readonly');
+        const req = tx.objectStore('details').get('all');
+        req.onsuccess = () => res(req.result || null);
+        req.onerror = e => rej(e.target.error);
+      });
+      if (val && Object.keys(val).length >= AppState.cardIndex.length) {
+        this._allDetails = val;
+        Object.assign(AppState.cardDetails, val);
+        console.log('CardService: details loaded from IDB,', Object.keys(val).length);
+        return;
+      }
+      if (val) console.warn('CardService: IDB stale (IDB:', Object.keys(val).length, 'index:', AppState.cardIndex.length, '), refetching');
+    } catch (_) {}
+    const res = await fetch('./data/card_details.json', { cache: 'no-store' });
+    const data = await res.json();
+    this._allDetails = data;
+    Object.assign(AppState.cardDetails, data);
+    console.log('CardService: details loaded from JSON,', Object.keys(data).length);
+    this._saveDetailsToIDB(data);
+  },
+
+  _saveDetailsToIDB(data) {
+    this._openDetailsIDB().then(db => {
+      const tx = db.transaction('details', 'readwrite');
+      tx.objectStore('details').put(data, 'all');
+    }).catch(_ => {});
+  },
+
+  async fetchDetail(number) {
+    if (AppState.cardDetails[number]) return AppState.cardDetails[number];
+    await this._ensureDetails();
+    return AppState.cardDetails[number] || null;
+  },
+
+  async batchDetails(numbers) {
+    const needed = numbers.filter(n => !AppState.cardDetails[n]);
+    if (needed.length === 0) return;
+    await this._ensureDetails();
+  },
+
+  async fetchTacticsCards() {
+    try {
+      const res = await fetch('./data/tactics_cards.json', { cache: 'no-store' });
+      const data = await res.json();
+      AppState.tacticsCards = data;
+    } catch (e) {
+      console.error('作戦カードデータの取得に失敗:', e);
+    }
+  },
+
+  _populateSeriesFilter() {
+    const container = document.getElementById('seriesFilter');
+    if (!container) return;
+    container.innerHTML = '';
+    const sqSeries = new Set();
+    const ebSeries = new Set();
+    AppState.cardIndex.forEach(c => {
+      if (!c.series) return;
+      if (c.has_sqsp || c.has_sq_skill || c.has_sq_link || c.sq_rush_effect) sqSeries.add(c.series);
+      if (c.has_eb || c.has_eb_skill || c.has_eb_link) ebSeries.add(c.series);
+    });
+    AppState.seriesList.forEach(s => {
+      const btn = document.createElement('button');
+      btn.className = 'series-btn'
+        + (sqSeries.has(s) ? ' has-sq' : '')
+        + (ebSeries.has(s) ? ' has-eb' : '');
+      btn.dataset.series = s;
+      btn.textContent = s;
+      btn.addEventListener('click', () => SearchPanel.toggleSeries(s));
+      container.appendChild(btn);
+    });
+  }
+};
+
+// ================================================================
+// CardBookmark
+// ================================================================
+const CardBookmark = {
+  _KEY: 'gab_card_bookmarks',
+  _set: null,
+  _load() {
+    if (!this._set) {
+      try { this._set = new Set(JSON.parse(localStorage.getItem(this._KEY) || '[]')); }
+      catch { this._set = new Set(); }
+    }
+    return this._set;
+  },
+  _save() { localStorage.setItem(this._KEY, JSON.stringify([...this._load()])); },
+  has(number) { return this._load().has(number); },
+  toggle(number) {
+    const s = this._load();
+    if (s.has(number)) { s.delete(number); } else { s.add(number); }
+    this._save();
+    return s.has(number);
+  },
+  getAll() { return this._load(); }
+};
+</script>
+<script>
+// ================================================================
+// ImageCache — SW Cache API ベース (PWA version)
+// 画像は <img> タグで公式URLを直接指定し、Service Worker がキャッシュする。
+// IndexedDB は使わない（opaque blob の iOS 制限を回避）。
+// ================================================================
+const PLACEHOLDER_SVG = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='280'%3E%3Crect fill='%231a1a1a' width='200' height='280'/%3E%3Ctext fill='%23555' font-size='12' x='100' y='140' text-anchor='middle'%3Eno image%3C/text%3E%3C/svg%3E";
+const IMG_BASE = 'https://www.gundam-ab.com/images/cardlist/card/';
+const ImageCache = {
+  CONCURRENCY: 8,
+  _cachedKeys: new Set(),
+  _downloading: false,
+
+  _imgUrl(cardNumber, side) {
+    return side === 'back'
+      ? `${IMG_BASE}${cardNumber}_b.jpg`
+      : `${IMG_BASE}${cardNumber}.jpg`;
+  },
+
+  async init() {
+    if (navigator.storage && navigator.storage.persist) {
+      try { await navigator.storage.persist(); } catch (_) {}
+    }
+    try {
+      const cache = await caches.open('card-images-v1');
+      const keys = await cache.keys();
+      keys.forEach(req => {
+        const url = new URL(req.url);
+        const m = url.pathname.match(/\/([A-Za-z0-9_\-]+(?:_b)?)\.jpg/);
+        if (m) this._cachedKeys.add(m[1]);
+      });
+      this._updateCount(this._cachedKeys.size);
+      console.log('ImageCache: SW cache has', this._cachedKeys.size, 'images');
+    } catch (e) {
+      console.warn('ImageCache: cache check failed', e);
+    }
+  },
+
+  resolve(cardNumber, side = 'front') {
+    if (!cardNumber) return null;
+    const key = side === 'back' ? `${cardNumber}_b` : cardNumber;
+    if (this._cachedKeys.has(key)) {
+      return this._imgUrl(cardNumber, side);
+    }
+    return null;
+  },
+
+  async toDataUrl(cardNumber, side = 'front') {
+    if (!cardNumber) return null;
+    const url = this._imgUrl(cardNumber, side);
+    const proxies = [
+      u => `https://corsproxy.io/?${encodeURIComponent(u)}`,
+      u => `https://api.allorigins.win/raw?url=${encodeURIComponent(u)}`,
+    ];
+    for (const mkUrl of proxies) {
+      try {
+        const res = await fetch(mkUrl(url), { signal: AbortSignal.timeout(8000) });
+        if (!res.ok) continue;
+        const blob = await res.blob();
+        if (blob.size < 100) continue;
+        return await new Promise(resolve => {
+          const reader = new FileReader();
+          reader.onload = () => resolve(reader.result);
+          reader.onerror = () => resolve(null);
+          reader.readAsDataURL(blob);
+        });
+      } catch { continue; }
+    }
+    return null;
+  },
+
+  _updateCount(count) {
+    const el = document.getElementById('cacheCount');
+    if (el) el.textContent = `キャッシュ: ${count}枚`;
+    const cm = document.getElementById('cmCacheCount');
+    if (cm) cm.textContent = count;
+  },
+  _refreshStats() {
+    this._updateCount(this._cachedKeys.size);
+  },
+
+  openModal() {
+    const total = (AppState.cardIndex || []).filter(c => c.number).length * 2;
+    document.getElementById('cmTotalCount').textContent = total;
+    document.getElementById('cmWarn').style.display = '';
+    document.getElementById('cmDlBtn').disabled = false;
+    document.getElementById('cmClearBtn').disabled = false;
+    document.getElementById('cmProgress').style.display = 'none';
+    document.getElementById('cmPct').style.display = 'none';
+    document.getElementById('cmDetail').textContent = '';
+    this._refreshStats();
+    document.getElementById('cacheModal').classList.add('open');
+  },
+  closeModal() { document.getElementById('cacheModal').classList.remove('open'); },
+
+  async clear() {
+    try { await caches.delete('card-images-v1'); } catch (_) {}
+    this._cachedKeys.clear();
+    this._updateCount(0);
+    Toast.show('キャッシュをクリアしました', 'success', 2000);
+    UIRenderer.renderAll();
+    SearchPanel.applyFilters();
+  },
+
+  async startDownload() {
+    if (this._downloading) return;
+    this._downloading = true;
+    document.getElementById('cmDlBtn').disabled = true;
+    document.getElementById('cmClearBtn').disabled = true;
+    document.getElementById('cmWarn').style.display = 'none';
+    document.getElementById('cmProgress').style.display = '';
+    document.getElementById('cmPct').style.display = '';
+    document.getElementById('cmProgressBar').style.width = '0%';
+    document.getElementById('cmPct').textContent = '0%';
+    document.getElementById('cmDetail').textContent = 'キャッシュ作成中...';
+
+    if (!AppState.cardIndex || !AppState.cardIndex.length) {
+      document.getElementById('cmDetail').textContent = 'カードデータを読み込み中...';
+      try { await CardService.fetchIndex(); } catch (_) {}
+    }
+
+    const items = [];
+    (AppState.cardIndex || []).forEach(c => {
+      const num = c.number;
+      if (!num) return;
+      items.push({ key: num, url: this._imgUrl(num, 'front') });
+      items.push({ key: `${num}_b`, url: this._imgUrl(num, 'back') });
+    });
+    if (!items.length) {
+      Toast.show('カードデータがありません', 'error');
+      this._downloading = false;
+      document.getElementById('cmDlBtn').disabled = false;
+      document.getElementById('cmClearBtn').disabled = false;
+      return;
+    }
+
+    const toFetch = items.filter(it => !this._cachedKeys.has(it.key));
+    let done = items.length - toFetch.length, failed = 0;
+    const total = items.length;
+    if (done > 0) this._onProgress(done, total, failed);
+
+    const queue = [...toFetch];
+    const worker = () => new Promise(resolve => {
+      const next = () => {
+        if (!queue.length) { resolve(); return; }
+        const { key, url } = queue.shift();
+        const img = new Image();
+        img.onload = () => {
+          this._cachedKeys.add(key);
+          done++;
+          this._onProgress(done, total, failed);
+          next();
+        };
+        img.onerror = () => {
+          failed++;
+          done++;
+          this._onProgress(done, total, failed);
+          next();
+        };
+        img.src = url;
+      };
+      next();
+    });
+    await Promise.all(Array.from(
+      { length: Math.min(this.CONCURRENCY, toFetch.length || 1) },
+      () => worker()
+    ));
+
+    this._downloading = false;
+    this._refreshStats();
+    document.getElementById('cmProgressBar').style.width = '100%';
+    document.getElementById('cmPct').textContent = '完了';
+    document.getElementById('cmDetail').textContent =
+      `${done - failed}枚完了` + (failed ? `  (失敗: ${failed})` : '');
+    document.getElementById('cmDlBtn').disabled = false;
+    document.getElementById('cmClearBtn').disabled = false;
+    Toast.show(`キャッシュ完了: ${done - failed}枚` + (failed ? ` (失敗${failed})` : ''), failed ? 'info' : 'success', 4000);
+    UIRenderer.renderAll();
+    SearchPanel.applyFilters();
+  },
+  _onProgress(current, total, failed) {
+    const pct = Math.round((current / total) * 100);
+    document.getElementById('cmProgressBar').style.width = pct + '%';
+    document.getElementById('cmPct').textContent = pct + '%';
+    document.getElementById('cmDetail').textContent =
+      `${current} / ${total}` + (failed ? `  (失敗: ${failed})` : '');
+    const el = document.getElementById('cacheCount');
+    if (el) el.textContent = '作成中...';
+  }
+};
+
+function resolveImageUrl(originalUrl, cardNumber, side = 'front') {
+  if (!cardNumber) return PLACEHOLDER_SVG;
+  return ImageCache.resolve(cardNumber, side) || PLACEHOLDER_SVG;
+}
+</script>
+<script>
+// ================================================================
+// TacticsPicker — 作戦カード選択
+// ================================================================
+const TacticsPicker = {
+  _currentType: null,
+  open(type) {
+    this._currentType = type;
+    const cards = type === 'main' ? AppState.tacticsCards.main : AppState.tacticsCards.sub;
+    const title = type === 'main' ? 'メイン作戦カードを選択' : 'サブ作戦カードを選択';
+    const currentId = type === 'main' ? AppState.tacticsMain : AppState.tacticsSub;
+    document.getElementById('tacticsPickerTitle').textContent = title;
+    const body = document.getElementById('tacticsPickerBody');
+    if (!cards || cards.length === 0) {
+      body.innerHTML = '<p style="color:#888">作戦カードデータを読み込み中...</p>';
+      document.getElementById('tacticsPickerModal').classList.add('open');
+      return;
+    }
+    body.innerHTML = `<div class="tactics-picker-grid">${cards.map(card => `
+      <div class="tactics-picker-card${card.id === currentId ? ' selected' : ''}" onclick="TacticsPicker._select('${card.id}')">
+        <img src="${card.thumbnail_url}" alt="${card.name}" onerror="this.onerror=null;this.style.display='none'">
+        <div class="tp-info">
+          <div class="tp-name">${card.name}</div>
+          <div class="tp-effect">${card.effect}</div>
+          ${card.condition ? `<div class="tp-condition">${card.condition}</div>` : ''}
+        </div>
+      </div>
+    `).join('')}</div>`;
+    document.getElementById('tacticsPickerModal').classList.add('open');
+  },
+  _select(id) {
+    const type = this._currentType;
+    UndoManager.snapshot();
+    if (type === 'main') AppState.tacticsMain = id;
+    else AppState.tacticsSub = id;
+    this.renderButtons();
+    UndoManager.snapshot();
+    DeckManager._autoSave();
+    DeckManager._updateHash();
+    this.close();
+    const cards = type === 'main' ? AppState.tacticsCards.main : AppState.tacticsCards.sub;
+    const card = cards.find(c => c.id === id);
+    Toast.show(`作戦カード「${card?.name || id}」を選択`, 'success');
+  },
+  clear(type) {
+    UndoManager.snapshot();
+    if (type === 'main') AppState.tacticsMain = null;
+    else AppState.tacticsSub = null;
+    this.renderButtons();
+    UndoManager.snapshot();
+    DeckManager._autoSave();
+    DeckManager._updateHash();
+  },
+  close() { document.getElementById('tacticsPickerModal').classList.remove('open'); },
+  renderButtons() {
+    ['main', 'sub'].forEach(type => {
+      const btn = document.getElementById(type === 'main' ? 'tacticsBtnMain' : 'tacticsBtnSub');
+      const img = document.getElementById(type === 'main' ? 'tacticsImgMain' : 'tacticsImgSub');
+      if (!btn || !img) return;
+      const id = type === 'main' ? AppState.tacticsMain : AppState.tacticsSub;
+      const cards = type === 'main' ? AppState.tacticsCards.main : AppState.tacticsCards.sub;
+      const card = id ? cards.find(c => c.id === id) : null;
+      if (card) {
+        img.src = card.thumbnail_url;
+        img.style.display = '';
+        btn.classList.add('has-card');
+      } else {
+        img.src = '';
+        img.style.display = 'none';
+        btn.classList.remove('has-card');
+      }
+    });
+  }
+};
+</script>
+<script>
+// ================================================================
+// DeckManager
+// ================================================================
+const DeckManager = {
+  async setCard(slotIndex, cardNumber) {
+    UndoManager.snapshot();
+    AppState.deck[slotIndex] = cardNumber;
+    UIRenderer._updateHeader();
+    const detail = await CardService.fetchDetail(cardNumber);
+    if (detail) {
+      AppState.deckOcr[slotIndex] = detail.ocr_data || null;
+    }
+    UIRenderer.renderAll();
+    UndoManager.snapshot();
+    this._autoSave();
+    this._updateHash();
+  },
+  clearCard(slotIndex) {
+    UndoManager.snapshot();
+    AppState.deck[slotIndex] = null;
+    AppState.deckOcr[slotIndex] = null;
+    UIRenderer._updateHeader();
+    UIRenderer.renderAll();
+    UndoManager.snapshot();
+    this._autoSave();
+    this._updateHash();
+  },
+  clearAll() {
+    UndoManager.snapshot();
+    AppState.deck = Array(10).fill(null);
+    AppState.deckOcr = Array(10).fill(null);
+    AppState.tacticsMain = null;
+    AppState.tacticsSub = null;
+    UIRenderer.renderAll();
+    TacticsPicker.renderButtons();
+    UndoManager.snapshot();
+    this._autoSave();
+    this._updateHash();
+    Toast.show('デッキをクリアしました', 'info');
+  },
+  async randomDeck() {
+    UndoManager.snapshot();
+    const msCards = AppState.cardIndex.filter(c => c.type === 'MS');
+    const plCards = AppState.cardIndex.filter(c => c.type === 'PL');
+    const pickRandom = (arr, n) => {
+      const a = [...arr];
+      for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; }
+      return a.slice(0, n);
+    };
+    const numbers = [...pickRandom(msCards, 5), ...pickRandom(plCards, 5)].map(c => c.number);
+    AppState.deck = numbers;
+    await CardService.batchDetails(numbers);
+    for (let i = 0; i < 10; i++) { AppState.deckOcr[i] = AppState.cardDetails[numbers[i]]?.ocr_data || null; }
+    UIRenderer.renderAll();
+    UndoManager.snapshot();
+    this._autoSave();
+    this._updateHash();
+    Toast.show('ランダムデッキを生成しました', 'success');
+  },
+  async linkRandomDeck() {
+    const linkName1 = document.getElementById('linkSelect1').value;
+    const linkName2 = document.getElementById('linkSelect2').value;
+    if (!linkName1) { Toast.show('リンク1を選択してください', 'error'); return; }
+    if (linkName2 && linkName2 === linkName1) { Toast.show('異なるリンクを選択してください', 'error'); return; }
+    const li = AppState.linkIndex;
+    const link1 = li[linkName1];
+    if (!link1) { Toast.show('リンク情報が見つかりません', 'error'); return; }
+    const link2 = linkName2 ? li[linkName2] : null;
+    const r1 = link1.required;
+    const r2 = link2 ? link2.required : 0;
+    const ms1 = new Set(link1.ms_cards);
+    const pl1 = new Set(link1.pl_cards);
+    const ms2 = link2 ? new Set(link2.ms_cards) : new Set();
+    const pl2 = link2 ? new Set(link2.pl_cards) : new Set();
+    const msBoth = link2 ? [...ms1].filter(c => ms2.has(c)) : [];
+    const plBoth = link2 ? [...pl1].filter(c => pl2.has(c)) : [];
+    const msOnly1 = [...ms1].filter(c => !ms2.has(c));
+    const plOnly1 = [...pl1].filter(c => !pl2.has(c));
+    const msOnly2 = link2 ? [...ms2].filter(c => !ms1.has(c)) : [];
+    const plOnly2 = link2 ? [...pl2].filter(c => !pl1.has(c)) : [];
+    const shuffle = (arr) => { const a = [...arr]; for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+    const msSelected = [], plSelected = [];
+    let need1 = r1, need2 = r2;
+    const usedCards = new Set();
+    if (link2) {
+      for (const c of shuffle(msBoth)) { if (msSelected.length >= 5 || (need1 <= 0 && need2 <= 0)) break; msSelected.push(c); usedCards.add(c); need1--; need2--; }
+      for (const c of shuffle(plBoth)) { if (plSelected.length >= 5 || (need1 <= 0 && need2 <= 0)) break; plSelected.push(c); usedCards.add(c); need1--; need2--; }
+    }
+    if (need1 > 0) { for (const c of shuffle(msOnly1)) { if (need1 <= 0) break; if (usedCards.has(c) || msSelected.length >= 5) continue; msSelected.push(c); usedCards.add(c); need1--; } }
+    if (need1 > 0) { for (const c of shuffle(plOnly1)) { if (need1 <= 0) break; if (usedCards.has(c) || plSelected.length >= 5) continue; plSelected.push(c); usedCards.add(c); need1--; } }
+    if (need2 > 0) { for (const c of shuffle(msOnly2)) { if (need2 <= 0) break; if (usedCards.has(c) || msSelected.length >= 5) continue; msSelected.push(c); usedCards.add(c); need2--; } }
+    if (need2 > 0) { for (const c of shuffle(plOnly2)) { if (need2 <= 0) break; if (usedCards.has(c) || plSelected.length >= 5) continue; plSelected.push(c); usedCards.add(c); need2--; } }
+    if (need1 > 0) { Toast.show(`「${linkName1}」の条件を満たすカードが不足`, 'error'); return; }
+    if (need2 > 0) { Toast.show(`「${linkName2}」の条件を満たすカードが不足`, 'error'); return; }
+    const allMs = AppState.cardIndex.filter(c => c.type === 'MS');
+    const allPl = AppState.cardIndex.filter(c => c.type === 'PL');
+    while (msSelected.length < 5) { const pool = shuffle(allMs.map(c => c.number).filter(n => !usedCards.has(n))); if (pool.length === 0) break; msSelected.push(pool[0]); usedCards.add(pool[0]); }
+    while (plSelected.length < 5) { const pool = shuffle(allPl.map(c => c.number).filter(n => !usedCards.has(n))); if (pool.length === 0) break; plSelected.push(pool[0]); usedCards.add(pool[0]); }
+    UndoManager.snapshot();
+    const numbers = [...msSelected.slice(0, 5), ...plSelected.slice(0, 5)];
+    while (numbers.length < 10) numbers.push(null);
+    AppState.deck = numbers;
+    const validNumbers = numbers.filter(n => n);
+    if (validNumbers.length > 0) await CardService.batchDetails(validNumbers);
+    for (let i = 0; i < 10; i++) { AppState.deckOcr[i] = AppState.deck[i] ? (AppState.cardDetails[AppState.deck[i]]?.ocr_data || null) : null; }
+    UIRenderer.renderAll();
+    UndoManager.snapshot();
+    this._autoSave();
+    this._updateHash();
+    const msg = link2 ? `「${linkName1}」+「${linkName2}」指定デッキを生成` : `「${linkName1}」指定デッキを生成`;
+    Toast.show(msg, 'success');
+  },
+  generateCode() {
+    const numbers = AppState.deck.map(n => n || '');
+    if (AppState.tacticsMain || AppState.tacticsSub) { numbers.push(AppState.tacticsMain || ''); numbers.push(AppState.tacticsSub || ''); }
+    return btoa(unescape(encodeURIComponent(numbers.join(','))));
+  },
+  parseCode(code) {
+    try { const clean = decodeURIComponent(code); return decodeURIComponent(escape(atob(clean))).split(','); }
+    catch { return null; }
+  },
+  _updateHash() {
+    const hasCards = AppState.deck.some(n => n) || AppState.tacticsMain || AppState.tacticsSub;
+    if (hasCards) { location.hash = this.generateCode(); }
+    else { history.replaceState(null, '', location.pathname); }
+  },
+  async copyCode() {
+    const code = this.generateCode();
+    const base = location.origin + location.pathname.replace(/[^/]*$/, '') + 'index.html';
+    const sc = await ShortUrl.create(code);
+    const url = sc ? base + '?d=s:' + sc : base + '?d=' + code;
+    navigator.clipboard.writeText(url).then(() => {
+      Toast.show('共有URLをコピーしました', 'success');
+    });
+  },
+  tweetDeck() {
+    if (!AppState.deck.some(n => n)) { Toast.show('デッキにカードがありません', 'error'); return; }
+    toggleMenu();
+    const code = this.generateCode();
+    const base = location.origin + location.pathname.replace(/[^/]*$/, '') + 'index.html';
+    const name = document.getElementById('deckNameInput')?.value.trim() || 'マイデッキ';
+    const text = name + ' のデッキレシピ #アーセナルベース #ABDS';
+    // awaitの前にwindow.openしないとスマホでポップアップブロックされる
+    const fallbackUrl = base + '?d=' + code;
+    const win = window.open('about:blank', '_blank');
+    ShortUrl.create(code).then(sc => {
+      const url = sc ? base + '?d=s:' + sc : fallbackUrl;
+      const tweetUrl = 'https://x.com/intent/tweet?text=' + encodeURIComponent(text) + '&url=' + encodeURIComponent(url);
+      if (win) { win.location.href = tweetUrl; } else { location.href = tweetUrl; }
+    }).catch(() => {
+      const tweetUrl = 'https://x.com/intent/tweet?text=' + encodeURIComponent(text) + '&url=' + encodeURIComponent(fallbackUrl);
+      if (win) { win.location.href = tweetUrl; } else { location.href = tweetUrl; }
+    });
+  },
+  async importCode() {
+    const code = document.getElementById('deckCodeImport').value.trim();
+    if (!code) { Toast.show('コードを入力してください', 'error'); return; }
+    const numbers = this.parseCode(code);
+    if (!numbers || numbers.length < 1) { Toast.show('無効なデッキコードです', 'error'); return; }
+    while (numbers.length < 10) numbers.push('');
+    await this._applyNumbers(numbers);
+    document.getElementById('deckCodeImport').value = '';
+    Toast.show('デッキをインポートしました', 'success');
+  },
+  async _applyNumbers(numbers) {
+    UndoManager.snapshot();
+    const deckNumbers = numbers.slice(0, 10);
+    AppState.deck = deckNumbers.map(n => n || null);
+    if (numbers.length >= 12) { AppState.tacticsMain = numbers[10] || null; AppState.tacticsSub = numbers[11] || null; }
+    else { AppState.tacticsMain = null; AppState.tacticsSub = null; }
+    const validNumbers = deckNumbers.filter(n => n);
+    if (validNumbers.length > 0) await CardService.batchDetails(validNumbers);
+    for (let i = 0; i < 10; i++) { AppState.deckOcr[i] = AppState.deck[i] ? (AppState.cardDetails[AppState.deck[i]]?.ocr_data || null) : null; }
+    UIRenderer.renderAll();
+    TacticsPicker.renderButtons();
+    UndoManager.snapshot();
+    this._autoSave();
+    this._updateHash();
+  },
+  save() {
+    if (AppState.deck.filter(n => n).length < 10) { Toast.show('カードを10枚揃えてください', 'error'); return; }
+    const nameInput = document.getElementById('deckNameInput');
+    const name = (nameInput ? nameInput.value.trim() : '') || prompt('デッキ名を入力してください:', AppState._lastDeckName || '');
+    if (!name || !name.trim()) { Toast.show('デッキ名を入力してください', 'error'); return; }
+    const trimmed = name.trim();
+    AppState._lastDeckName = trimmed;
+    if (nameInput) nameInput.value = trimmed;
+    const decks = JSON.parse(localStorage.getItem('gab_decks') || '{}');
+    decks[trimmed] = { name: trimmed, cards: [...AppState.deck], tacticsMain: AppState.tacticsMain, tacticsSub: AppState.tacticsSub, timestamp: new Date().toISOString() };
+    localStorage.setItem('gab_decks', JSON.stringify(decks));
+    this.populateLoadSelect();
+    Toast.show(`デッキ「${trimmed}」を保存しました`, 'success');
+  },
+  _autoSave() {
+    localStorage.setItem('gab_autosave', JSON.stringify({ cards: [...AppState.deck], tacticsMain: AppState.tacticsMain, tacticsSub: AppState.tacticsSub, timestamp: new Date().toISOString() }));
+  },
+  async _autoLoad() {
+    // クエリパラメータ ?d= からデッキコードを読み込み（Twitter等でハッシュが消える対策）
+    const urlParams = new URLSearchParams(location.search);
+    const dParam = urlParams.get('d');
+    if (dParam) {
+      if (ShortUrl.isShort(dParam)) {
+        const numbers = await ShortUrl.resolve(ShortUrl.code(dParam));
+        if (numbers && numbers.length >= 1) {
+          while (numbers.length < 10) numbers.push('');
+          await this._applyNumbers(numbers);
+          history.replaceState(null, '', location.pathname + '#' + dParam);
+          Toast.show('URLからデッキを復元しました', 'info');
+        } else {
+          Toast.show('短縮URLの読み込みに失敗しました', 'error');
+        }
+        return;
+      }
+      const numbers = this.parseCode(dParam);
+      if (numbers && numbers.length >= 1) {
+        while (numbers.length < 10) numbers.push('');
+        await this._applyNumbers(numbers);
+        history.replaceState(null, '', location.pathname + '#' + dParam);
+        Toast.show('URLからデッキを復元しました', 'info');
+        return;
+      }
+    }
+    if (location.hash && location.hash.length > 1) {
+      const raw = location.hash.substring(1);
+      // 短縮URL対応
+      if (ShortUrl.isShort(raw)) {
+        const numbers = await ShortUrl.resolve(ShortUrl.code(raw));
+        if (numbers && numbers.length >= 1) {
+          while (numbers.length < 10) numbers.push('');
+          await this._applyNumbers(numbers);
+          Toast.show('URLからデッキを復元しました', 'info');
+        } else {
+          Toast.show('短縮URLの読み込みに失敗しました', 'error');
+        }
+        return;
+      }
+      const isCopy = raw.endsWith('&copy');
+      const code = isCopy ? raw.slice(0, -5) : raw;
+      const numbers = this.parseCode(code);
+      if (numbers && numbers.length >= 1) {
+        while (numbers.length < 10) numbers.push('');
+        await this._applyNumbers(numbers);
+        if (isCopy) {
+          AppState._lastDeckName = '';
+          history.replaceState(null, '', location.pathname + '#' + code);
+          Toast.show('デッキをコピーしました', 'success');
+        } else { Toast.show('URLからデッキを復元しました', 'info'); }
+        return;
+      }
+    }
+    const saved = localStorage.getItem('gab_autosave');
+    if (saved) {
+      try {
+        const data = JSON.parse(saved);
+        if (data.tacticsMain) AppState.tacticsMain = data.tacticsMain;
+        if (data.tacticsSub) AppState.tacticsSub = data.tacticsSub;
+        if (data.cards && data.cards.some(n => n)) { await this._applyNumbers(data.cards); return; }
+        TacticsPicker.renderButtons();
+      } catch {}
+    }
+    // デフォルトデッキ（初回アクセス時）
+    await this._applyNumbers([
+      'VE01-023','VE01-020','VE01-017','VE01-008','VE01-009',
+      'VE01-057','VE01-054','VE01-051','VE01-043','VE01-044'
+    ]);
+  },
+  showLoadModal() {
+    const decks = JSON.parse(localStorage.getItem('gab_decks') || '{}');
+    const list = document.getElementById('deckLoadList');
+    const entries = Object.values(decks).sort((a, b) => (b.timestamp || '').localeCompare(a.timestamp || ''));
+    if (entries.length === 0) { list.innerHTML = '<p style="color:#888">保存済みデッキがありません</p>'; }
+    else {
+      list.innerHTML = entries.map(d => `
+        <div class="deck-load-item">
+          <div>
+            <div style="font-weight:bold;color:#68efbd">${escapeHtml(d.name)}</div>
+            <div style="font-size:0.75rem;color:#888">${d.timestamp ? new Date(d.timestamp).toLocaleString('ja-JP') : ''}</div>
+          </div>
+          <div style="display:flex;gap:0.3rem">
+            <button class="menu-btn" onclick="DeckManager._loadByName('${escapeHtml(d.name)}')">適用</button>
+            <button class="menu-btn" style="color:#f44336;border-color:#f44336" onclick="DeckManager._deleteByName('${escapeHtml(d.name)}')">削除</button>
+          </div>
+        </div>
+      `).join('');
+    }
+    document.getElementById('deckLoadModal').classList.add('open');
+  },
+  async _loadByName(name) {
+    const decks = JSON.parse(localStorage.getItem('gab_decks') || '{}');
+    const deck = decks[name]; if (!deck) return;
+    AppState.tacticsMain = deck.tacticsMain || null;
+    AppState.tacticsSub = deck.tacticsSub || null;
+    await this._applyNumbers(deck.cards);
+    AppState._lastDeckName = name;
+    const nameInput = document.getElementById('deckNameInput');
+    if (nameInput) nameInput.value = name;
+    closeDeckLoadModal();
+    Toast.show(`デッキ「${name}」を適用しました`, 'success');
+  },
+  _deleteByName(name) {
+    const decks = JSON.parse(localStorage.getItem('gab_decks') || '{}');
+    delete decks[name];
+    localStorage.setItem('gab_decks', JSON.stringify(decks));
+    this.showLoadModal();
+    this.populateLoadSelect();
+    Toast.show(`デッキ「${name}」を削除しました`, 'info');
+  },
+  populateLoadSelect() {
+    const sel = document.getElementById('deckLoadSelect');
+    if (!sel) return;
+    const decks = JSON.parse(localStorage.getItem('gab_decks') || '{}');
+    const entries = Object.entries(decks).sort((a, b) => String(b[1].timestamp || '').localeCompare(String(a[1].timestamp || '')));
+    sel.innerHTML = '<option value="">-- デッキを選択 --</option>' +
+      entries.map(([key, d]) => {
+        const prefix = d.bookmarkedId ? '\u2605 ' : '';
+        return `<option value="${escapeHtml(key)}">${prefix}${escapeHtml(d.name || key)}</option>`;
+      }).join('');
+  },
+  loadFromSelect() {
+    const sel = document.getElementById('deckLoadSelect');
+    const name = sel ? sel.value : '';
+    if (!name) { Toast.show('デッキを選択してください', 'error'); return; }
+    this._loadByName(name);
+    toggleMenu();
+  },
+  _getAnonName() {
+    let id = localStorage.getItem('gab_anon_id');
+    if (!id) { id = String(Math.floor(10000 + Math.random() * 90000)); localStorage.setItem('gab_anon_id', id); }
+    return Math.random() < 0.5 ? 'ナチュラル' + id : 'アースノイド' + id;
+  },
+  postToServer() {
+    if (AppState.deck.filter(n => n).length < 10) { Toast.show('カードを10枚揃えてください', 'error'); return; }
+    toggleMenu();
+    const postName = document.getElementById('postDeckName');
+    const postAuthor = document.getElementById('postAuthor');
+    if (postAuthor) postAuthor.value = localStorage.getItem('gab_author_name') || this._getAnonName();
+    document.getElementById('deckPostModal').classList.add('open');
+  },
+  async _doPost() {
+    const deckName = document.getElementById('postDeckName').value.trim();
+    if (!deckName) { Toast.show('デッキ名を入力してください', 'error'); return; }
+    const author = document.getElementById('postAuthor').value.trim() || '匿名';
+    const comment = document.getElementById('postComment').value.trim();
+    const password = document.getElementById('postDeletePassword').value;
+    const cards = AppState.deck.map(n => n || '');
+    if (AppState.tacticsMain || AppState.tacticsSub) { cards.push(AppState.tacticsMain || ''); cards.push(AppState.tacticsSub || ''); }
+    const id = crypto.randomUUID().slice(0, 8);
+    const now = new Date().toISOString();
+    const payload = {
+      id, deck_name: deckName, comment, cards,
+      author, tactics_main: AppState.tacticsMain || null, tactics_sub: AppState.tacticsSub || null,
+      created_at: now, timestamp: now, likes: 0
+    };
+    if (password) payload.delete_password_hash = await sha256(password);
+    try {
+      const res = await fetch(SUPABASE_URL + '/rest/v1/decks', {
+        method: 'POST',
+        headers: { ...SB_HEADERS, 'Prefer': 'return=representation' },
+        body: JSON.stringify(payload)
+      });
+      if (!res.ok) { const e = await res.text(); throw new Error(e); }
+      document.getElementById('deckPostModal').classList.remove('open');
+      Toast.show('デッキを投稿しました！', 'success');
+    } catch (err) {
+      console.error('Deck post error:', err);
+      Toast.show('投稿に失敗しました: ' + err.message, 'error');
+    }
+  },
+
+  _getUnitCategory(unitIdx) {
+    const plSlot = unitIdx + 5;
+    const cardNumber = AppState.deck[plSlot];
+    if (!cardNumber) return null;
+    const idx = UIRenderer._getIndexEntry(cardNumber);
+    const ocr = AppState.deckOcr[plSlot];
+    const valid = ['殲滅', '制圧', '防衛'];
+    let cat = idx?.category;
+    if (!cat || !valid.includes(cat)) cat = ocr?.card_label?.class;
+    if (!cat || !valid.includes(cat)) cat = ocr?.category;
+    if (!cat || !valid.includes(cat)) {
+      const raw = ocr?.raw || '';
+      for (const kw of valid) {
+        if (raw.includes(kw)) { cat = kw; break; }
+      }
+    }
+    return (cat && valid.includes(cat)) ? cat : null;
+  },
+
+  sortByCategory() {
+    const priority = { '殲滅': 0, '制圧': 1, '防衛': 2 };
+    const units = [];
+    for (let u = 0; u < 5; u++) {
+      const cat = this._getUnitCategory(u);
+      const empty = !AppState.deck[u] && !AppState.deck[u + 5];
+      units.push({
+        ms: AppState.deck[u],
+        pl: AppState.deck[u + 5],
+        msOcr: AppState.deckOcr[u],
+        plOcr: AppState.deckOcr[u + 5],
+        sort: empty ? 4 : (priority[cat] ?? 3)
+      });
+    }
+    units.sort((a, b) => a.sort - b.sort);
+    UndoManager.snapshot();
+    for (let u = 0; u < 5; u++) {
+      AppState.deck[u] = units[u].ms;
+      AppState.deck[u + 5] = units[u].pl;
+      AppState.deckOcr[u] = units[u].msOcr;
+      AppState.deckOcr[u + 5] = units[u].plOcr;
+    }
+    UIRenderer.renderAll();
+    UndoManager.snapshot();
+    this._autoSave();
+    this._updateHash();
+    Toast.show('並び順を整理しました', 'success');
+  },
+};
+</script>
+<script>
+// ================================================================
+// UIRenderer — モバイル用
+// ================================================================
+const UIRenderer = {
+  _indexMap: null,
+  _getIndexEntry(number) {
+    if (!number) return null;
+    if (!this._indexMap) { this._indexMap = {}; (AppState.cardIndex || []).forEach(c => { this._indexMap[c.number] = c; }); }
+    return this._indexMap[number] || null;
+  },
+  invalidateIndexMap() { this._indexMap = null; },
+
+  init() {
+    // Generate overview strip thumbnails
+    const catRow = document.getElementById('catRow');
+    const msRow = document.getElementById('msRow');
+    const plRow = document.getElementById('plRow');
+    const tabs = document.getElementById('unitTabs');
+    catRow.innerHTML = '';
+    msRow.innerHTML = '';
+    plRow.innerHTML = '';
+    tabs.innerHTML = '';
+    for (let u = 0; u < 5; u++) {
+      catRow.innerHTML += `<div class="ov-cat" id="ov-cat-${u}"></div>`;
+      msRow.innerHTML += `<div class="overview-thumb empty" id="ov-ms-${u}"><span class="ov-badge" id="ov-ms-badge-${u}"></span><button class="ov-clear" onclick="event.stopPropagation();DeckManager.clearCard(${u})">&times;</button></div>`;
+      plRow.innerHTML += `<div class="overview-thumb empty" id="ov-pl-${u}"><span class="ov-badge" id="ov-pl-badge-${u}"></span><button class="ov-clear" onclick="event.stopPropagation();DeckManager.clearCard(${u+5})">&times;</button></div>`;
+      tabs.innerHTML += `<div class="unit-tab${u === 0 ? ' active' : ''}" onclick="UIRenderer.selectUnit(${u})">${u + 1}</div>`;
+    }
+    // Attach tap (front/back toggle) + long-press (open picker) handlers
+    this._attachThumbHandlers();
+  },
+
+  _attachThumbHandlers() {
+    for (let u = 0; u < 5; u++) {
+      [['ms', 'MS', u], ['pl', 'PL', u + 5]].forEach(([prefix, type]) => {
+        const el = document.getElementById(`ov-${prefix}-${u}`);
+        if (!el) return;
+        el.addEventListener('click', () => { UIRenderer._onThumbClick(u, type); });
+      });
+    }
+  },
+
+  _onThumbClick(u, type) {
+    this.selectUnit(u);
+    const slotIdx = type === 'MS' ? u : u + 5;
+    const number = AppState.deck[slotIdx];
+    if (!number) {
+      openCardPicker(slotIdx, type);
+    }
+  },
+
+  selectUnit(u) {
+    AppState.selectedUnit = u;
+    document.querySelectorAll('.unit-tab').forEach((tab, i) => tab.classList.toggle('active', i === u));
+    document.querySelectorAll('.overview-thumb').forEach(t => t.classList.remove('selected'));
+    const msThumb = document.getElementById(`ov-ms-${u}`);
+    const plThumb = document.getElementById(`ov-pl-${u}`);
+    if (msThumb) msThumb.classList.add('selected');
+    if (plThumb) plThumb.classList.add('selected');
+    this._renderDetailForUnit(u);
+  },
+
+  renderAll() {
+    this._updateOverview();
+    this._updateHeader();
+    this._updateLinkBar();
+    this._renderDetailForUnit(AppState.selectedUnit);
+  },
+
+  _updateOverview() {
+    for (let u = 0; u < 5; u++) {
+      this._updateThumb(u, 'ms', u);
+      this._updateThumb(u, 'pl', u + 5);
+      // カテゴリ行更新
+      const catEl = document.getElementById(`ov-cat-${u}`);
+      if (catEl) {
+        const plNumber = AppState.deck[u + 5];
+        const plIdx = this._getIndexEntry(plNumber);
+        const plOcr = AppState.deckOcr[u + 5];
+        let cat = plIdx?.category;
+        if (!cat) cat = plOcr?.card_label?.class;
+        if (!cat) cat = plOcr?.category;
+        if (cat === '殲滅' || cat === '制圧' || cat === '防衛') {
+          const cls = cat === '殲滅' ? 'cat-s' : cat === '制圧' ? 'cat-c' : 'cat-b';
+          catEl.textContent = cat;
+          catEl.className = `ov-cat ${cls}`;
+        } else {
+          catEl.textContent = '';
+          catEl.className = 'ov-cat';
+        }
+      }
+    }
+  },
+
+  _updateThumb(u, type, slotIdx) {
+    const el = document.getElementById(`ov-${type}-${u}`);
+    const number = AppState.deck[slotIdx];
+    const ocr = AppState.deckOcr[slotIdx];
+
+    if (!number) {
+      el.className = 'overview-thumb empty' + (u === AppState.selectedUnit ? ' selected' : '');
+      el.querySelector('img')?.remove();
+      el.querySelector('.ov-badge').textContent = '';
+      el.querySelector('.ov-badge').className = 'ov-badge';
+      let oldTags = el.querySelector('.ov-link-tags');
+      if (oldTags) oldTags.remove();
+      return;
+    }
+
+    const imgUrl = resolveImageUrl(null, number, 'front');
+    let img = el.querySelector('img');
+    if (!img) { img = document.createElement('img'); el.insertBefore(img, el.firstChild); }
+    img.src = imgUrl;
+    img.alt = number;
+    img.onerror = function() { this.onerror = null; this.src = PLACEHOLDER_SVG; };
+
+    // Determine card type flags + badge (priority: EB > SQ > AB, consistent with glow)
+    const badge = el.querySelector('.ov-badge');
+    badge.textContent = '';
+    badge.className = 'ov-badge';
+    let isEbCard = false, isSqCard = false, isAbCard = false;
+    const indexEntry = this._getIndexEntry(number);
+
+    if (type === 'ms') {
+      isSqCard = ocr?.special_attack?.sp_type === 'SQUAD SP' || !!(indexEntry?.has_sq_link);
+      isEbCard = !!(ocr?.echoes_beat?.has_eb) || !!(indexEntry?.has_eb_link);
+      isAbCard = !!(indexEntry?.has_ab_link);
+      if (isAbCard) { badge.textContent = 'AB'; badge.className = 'ov-badge ab-b'; }
+      else if (ocr?.echoes_beat?.has_eb) { badge.textContent = 'EBSP'; badge.className = 'ov-badge eb-b'; }
+      else if (isEbCard) { badge.textContent = 'EB'; badge.className = 'ov-badge eb-b'; }
+      else if (isSqCard) { badge.textContent = 'SQ'; badge.className = 'ov-badge sq-b'; }
+    } else {
+      const plSkill = ocr?.pilot_skill || ocr?.pl_skill;
+      isSqCard = !!(plSkill?.has_sq_skill) || !!(indexEntry?.has_sq_link);
+      isEbCard = !!(plSkill?.is_eb_skill) || !!(indexEntry?.has_eb_link);
+      isAbCard = !!(indexEntry?.has_ab_link);
+      if (isAbCard) { badge.textContent = 'AB'; badge.className = 'ov-badge ab-b'; }
+      else if (isEbCard) { badge.textContent = 'EB'; badge.className = 'ov-badge eb-b'; }
+      else if (isSqCard) { badge.textContent = 'SQ'; badge.className = 'ov-badge sq-b'; }
+    }
+
+    // Count active links per type (single pass, reused for glow + tags)
+    const cardLinks = ocr?.link_abilities || ocr?.link_ability || [];
+    let activeEb = 0, activeSq = 0, activeAb = 0, activeNormal = 0;
+    const linkResults = []; // {link, isActive, ltype}
+    if (Array.isArray(cardLinks)) {
+      for (const link of cardLinks) {
+        if (!link.name) continue;
+        const { required, category } = _parseLinkCondition(link.condition);
+        const count = _countLinkInDeck(link.name, category);
+        const isActive = count >= required;
+        const ltype = link.is_eb_link ? 'link-eb' : AppState._sqLinkNames.has(link.name) ? 'link-sq' : link.is_ab_link ? 'link-ab' : '';
+        linkResults.push({ link, isActive, ltype });
+        if (isActive) {
+          if (ltype === 'link-eb') activeEb++;
+          else if (ltype === 'link-sq') activeSq++;
+          else if (ltype === 'link-ab') activeAb++;
+          else activeNormal++;
+        }
+      }
+    }
+    const totalActive = activeEb + activeSq + activeAb + activeNormal;
+
+    // Determine border glow: type-specific link must be active
+    let glowClass = '';
+    if (activeEb > 0) glowClass = 'ov-eb';
+    else if (activeSq > 0) glowClass = 'ov-sq';
+    else if (activeAb > 0) glowClass = 'ov-ab';
+    else if (totalActive >= 2) glowClass = 'ov-link';
+
+    el.className = 'overview-thumb has-card'
+      + (glowClass ? ' ' + glowClass : '')
+      + (u === AppState.selectedUnit ? ' selected' : '');
+    if (totalActive > 0 && !badge.textContent) { badge.textContent = 'LNK'; badge.className = 'ov-badge link-b'; }
+
+    // Link tags overlay (reuse linkResults, max 2, active first)
+    let oldTags = el.querySelector('.ov-link-tags');
+    if (oldTags) oldTags.remove();
+    if (linkResults.length > 0) {
+      const sorted = [...linkResults].sort((a, b) => (b.ltype ? 1 : 0) - (a.ltype ? 1 : 0) || (b.isActive ? 1 : 0) - (a.isActive ? 1 : 0));
+      const tagsDiv = document.createElement('div');
+      tagsDiv.className = 'ov-link-tags';
+      for (const lr of sorted.slice(0, 2)) {
+        const tag = document.createElement('div');
+        tag.className = 'ov-link-tag ' + (lr.isActive ? 'link-on' : 'link-off') + (lr.ltype ? ' ' + lr.ltype : '');
+        tag.textContent = lr.link.name;
+        tagsDiv.appendChild(tag);
+      }
+      el.appendChild(tagsDiv);
+    }
+  },
+
+  _renderDetailForUnit(u) {
+    const area = document.getElementById('detailArea');
+    const msIdx = u;
+    const plIdx = u + 5;
+    const msNumber = AppState.deck[msIdx];
+    const plNumber = AppState.deck[plIdx];
+    const msOcr = AppState.deckOcr[msIdx];
+    const plOcr = AppState.deckOcr[plIdx];
+    const msCard = this._getIndexEntry(msNumber);
+    const plCard = this._getIndexEntry(plNumber);
+
+    if (!msNumber && !plNumber) {
+      area.innerHTML = '<div class="detail-empty">ユニット ' + (u + 1) + '<br>カードをタップして選択</div>';
+      return;
+    }
+
+    let html = '';
+    // Unit name header v2
+    const msName = msCard?.name || (msNumber || '');
+    const plName = plCard?.name || (plNumber || '');
+    const plCat = plOcr?.category || plCard?.category || '';
+    const catClass = plCat === '殲滅' ? '殲滅' : plCat === '制圧' ? '制圧' : plCat === '防衛' ? '防衛' : '';
+    const msCost = safeInt(msOcr?.cost || msCard?.cost);
+    const plCost = safeInt(plOcr?.cost || plCard?.cost);
+    const msRarity = msCard?.rarity || msOcr?.rarity || '';
+    const plRarity = plCard?.rarity || plOcr?.rarity || '';
+
+    // Detect SQ/EB/AB for each card
+    const msIndex = this._getIndexEntry(msNumber);
+    const plIndex = this._getIndexEntry(plNumber);
+    let msType = '';
+    if (msNumber) {
+      const isMsEb = !!(msOcr?.echoes_beat?.has_eb) || !!(msIndex?.has_eb_link);
+      const isMsSq = msOcr?.special_attack?.sp_type === 'SQUAD SP' || !!(msIndex?.has_sq_link);
+      const isMsAb = !!(msIndex?.has_ab_link);
+      if (isMsEb) msType = 'eb';
+      else if (isMsSq) msType = 'sq';
+      else if (isMsAb) msType = 'ab';
+    }
+    let plType = '';
+    if (plNumber) {
+      const plSkill = plOcr?.pilot_skill || plOcr?.pl_skill;
+      const isPlEb = !!(plSkill?.is_eb_skill) || !!(plIndex?.has_eb_link);
+      const isPlSq = !!(plSkill?.has_sq_skill) || !!(plIndex?.has_sq_link);
+      const isPlAb = !!(plIndex?.has_ab_link);
+      if (isPlEb) plType = 'eb';
+      else if (isPlSq) plType = 'sq';
+      else if (isPlAb) plType = 'ab';
+    }
+
+    html += '<div class="detail-header-v2">';
+    html += '<div class="detail-header-top">';
+    html += `<div class="unit-total-cost"><span class="cost-label">Total cost</span><span class="cost-value">${msCost + plCost}</span></div>`;
+    if (catClass) html += `<span class="unit-cat-badge ${catClass}">${catClass}</span>`;
+    html += '</div>';
+
+    // MS line
+    if (msNumber) {
+      const msHighlight = msType ? ` ${msType}-highlight` : '';
+      html += `<div class="unit-card-line ms-line${msHighlight}">`;
+      html += `<span class="card-cost">${msCost}</span>`;
+      if (msRarity) {
+        const rc = msRarity.replace(/[^A-Za-z]/g, '');
+        html += `<span class="card-rarity rarity-tag rarity-${rc}">${escapeHtml(msRarity)}</span>`;
+      }
+      if (msType) html += `<span class="card-type-icon ${msType}">${msType.toUpperCase()}</span>`;
+      html += `<span class="card-name">${escapeHtml(msName)}</span>`;
+      html += `<span class="card-detail-btn" onclick="event.stopPropagation();showCardModal('${escapeHtml(msNumber)}')">詳細</span>`;
+      html += '</div>';
+    }
+
+    // PL line
+    if (plNumber) {
+      const plHighlight = plType ? ` ${plType}-highlight` : '';
+      html += `<div class="unit-card-line pl-line${plHighlight}">`;
+      html += `<span class="card-cost">${plCost}</span>`;
+      if (plRarity) {
+        const rc = plRarity.replace(/[^A-Za-z]/g, '');
+        html += `<span class="card-rarity rarity-tag rarity-${rc}">${escapeHtml(plRarity)}</span>`;
+      }
+      if (plType) html += `<span class="card-type-icon ${plType}">${plType.toUpperCase()}</span>`;
+      html += `<span class="card-name">${escapeHtml(plName)}</span>`;
+      html += `<span class="card-detail-btn" onclick="event.stopPropagation();showCardModal('${escapeHtml(plNumber)}')">詳細</span>`;
+      html += '</div>';
+    }
+
+    html += '</div>';
+
+    // Terrain row
+    const tc = msOcr?.terrain_compatibility || msCard?.terrain || null;
+    if (tc) {
+      html += '<div class="detail-terrain-row">';
+      [{k:'ground',l:'地上'},{k:'space',l:'宇宙'},{k:'desert',l:'砂漠'},{k:'water',l:'水中'}].forEach(t => {
+        const rank = tc[t.k] || '-';
+        const active = AppState.activeTerrain === t.k ? ' terrain-active' : '';
+        html += `<span class="terrain-badge rank-${rank}${active}">${t.l}:${rank}</span>`;
+      });
+      html += '</div>';
+    }
+
+    // Stats
+    html += this._renderStats(msOcr, plOcr);
+
+    // MS detail sections
+    if (msOcr && msNumber) {
+      const hasOcrFields = msOcr.ms_ability || msOcr.weapon || msOcr.special_attack || msOcr.terrain_compatibility || msOcr.model;
+      if (!hasOcrFields) {
+        const backUrl = resolveImageUrl(null, msNumber, 'back');
+        html += `<div class="detail-section"><div class="detail-section-title ms">MS詳細</div><div class="no-ocr-msg">OCRデータなし</div><img class="no-ocr-back-img" src="${backUrl}" alt="裏面" onerror="this.style.display='none'"></div>`;
+      } else {
+        html += this._renderMsAbility(msOcr);
+        html += this._renderWeapon(msOcr);
+        html += this._renderSP(msOcr);
+        html += this._renderEB(msOcr);
+      }
+    }
+
+    // PL detail sections
+    if (plOcr && plNumber) {
+      const hasOcrFields = plOcr.pl_skill || plOcr.pilot_skill || plOcr.category;
+      if (!hasOcrFields) {
+        const backUrl = resolveImageUrl(null, plNumber, 'back');
+        html += `<div class="detail-section"><div class="detail-section-title pl">PL詳細</div><div class="no-ocr-msg">OCRデータなし</div><img class="no-ocr-back-img" src="${backUrl}" alt="裏面" onerror="this.style.display='none'"></div>`;
+      } else {
+        html += this._renderPlSkill(plOcr);
+      }
+    }
+
+    // Links
+    html += this._renderLinksForUnit(u, msOcr, plOcr);
+
+    // Info
+    html += '<div class="detail-section"><div class="detail-section-title info">情報</div>';
+    if (msNumber) html += `<div style="font-size:0.75rem;color:#888">MS: ${escapeHtml(msNumber)}${msOcr?.model ? ' / ' + escapeHtml(msOcr.model) : ''}${msOcr?.pilot ? ' / ' + escapeHtml(msOcr.pilot) : ''}</div>`;
+    if (plNumber) html += `<div style="font-size:0.75rem;color:#888">PL: ${escapeHtml(plNumber)}</div>`;
+    html += '</div>';
+
+    area.innerHTML = html;
+  },
+
+  _renderStats(msOcr, plOcr) {
+    const maxVal = 1000;
+    const getStats = (ocr) => ({ mobility: safeInt(ocr?.stats?.mobility), ranged: safeInt(ocr?.stats?.ranged_attack), melee: safeInt(ocr?.stats?.melee_attack), hp: safeInt(ocr?.stats?.hp) });
+    const ms = getStats(msOcr), pl = getStats(plOcr);
+    const msBuffs = getLinkBuffs(msOcr), plBuffs = getLinkBuffs(plOcr);
+    const applyBuff = (val, sm, med) => Math.round(val * Math.pow(1.1, sm) * Math.pow(1.2, med));
+    const terrainMult = this._getTerrainMultiplier(msOcr);
+    const stats = ['mobility', 'ranged', 'melee', 'hp'];
+    const labels = { mobility: '機動', ranged: '遠距', melee: '近距', hp: 'HP' };
+    let html = '<div class="stat-section">';
+    stats.forEach(s => {
+      const base = ms[s] + pl[s];
+      const msB = applyBuff(ms[s], msBuffs[s].small, msBuffs[s].medium);
+      const plB = applyBuff(pl[s], plBuffs[s].small, plBuffs[s].medium);
+      const buffedTotal = msB + plB;
+      let total = buffedTotal;
+      let terrainBuff = 0;
+      if (s !== 'hp' && terrainMult !== 1.0) { terrainBuff = Math.round(ms[s] * (terrainMult - 1)); total += terrainBuff; }
+      const linkBuff = buffedTotal - base;
+      const basePct = Math.min((base / maxVal) * 100, 100);
+      const linkBuffPct = Math.min((linkBuff / maxVal) * 100, 100 - basePct);
+      let terrainBarHtml = '';
+      if (terrainBuff > 0) { const tW = Math.min((terrainBuff / maxVal) * 100, 100 - basePct - linkBuffPct); terrainBarHtml = `<div class="stat-bar-terrain-pos" style="width:${tW}%"></div>`; }
+      else if (terrainBuff < 0) { const tP = (Math.max(total, 0) / maxVal) * 100; const lP = (Math.abs(terrainBuff) / maxVal) * 100; terrainBarHtml = `<div class="stat-bar-terrain-neg" style="position:absolute;right:0;width:${Math.min(lP, 100 - tP)}%;left:${tP}%"></div>`; }
+      let terrainLabel = '';
+      if (terrainBuff > 0) terrainLabel = ` <span class="stat-terrain-text positive">(+${terrainBuff})</span>`;
+      else if (terrainBuff < 0) terrainLabel = ` <span class="stat-terrain-text negative">(${terrainBuff})</span>`;
+      const pad = (n) => String(n).padStart(3, '\u2007');
+      const baseLabel = `${pad(ms[s])}+${pad(pl[s])}=${pad(base)}`;
+      const buffLabel = linkBuff > 0 ? ` <span class="stat-buff-text">+${pad(linkBuff)}</span>` : '';
+      html += `<div class="stat-row"><span class="stat-label">${labels[s]}</span><div class="stat-track"><div class="stat-bar-base" style="width:${basePct}%"></div><div class="stat-bar-buff" style="width:${linkBuffPct}%"></div>${terrainBarHtml}<span class="stat-value">${baseLabel}${buffLabel}${terrainLabel}${(linkBuff > 0 || terrainBuff !== 0) ? ` → ${pad(total)}` : ''}</span></div></div>`;
+    });
+    html += '</div>';
+    return html;
+  },
+
+  _getTerrainMultiplier(msOcr) {
+    if (!AppState.activeTerrain) return 1.0;
+    const tc = msOcr?.terrain_compatibility;
+    if (!tc) return 1.0;
+    const rank = tc[AppState.activeTerrain];
+    if (!rank) return 1.0;
+    const bonus = { S: 0.10, A: 0.05, B: 0, C: -0.05, D: -0.10 };
+    return 1.0 + (bonus[rank] || 0);
+  },
+
+  _renderMsAbility(msOcr) {
+    const rawAbility = msOcr.ms_ability;
+    const abilities = rawAbility ? (Array.isArray(rawAbility) ? rawAbility : [rawAbility]) : [];
+    if (abilities.length === 0) return '';
+    let html = '<div class="detail-section"><div class="detail-section-title ms">MSアビリティ</div>';
+    abilities.forEach(a => {
+      html += `<div class="detail-ability-name">${escapeHtml(a.name || '')}</div>`;
+      const tags = [];
+      if (a.type || a.activation) tags.push(a.type || a.activation);
+      if (a.target) tags.push(a.target);
+      if (a.range !== undefined && a.range !== null) tags.push(`射程${a.range}`);
+      if (a.cost !== undefined && a.cost !== null) tags.push(`コスト${a.cost}`);
+      if (a.condition) tags.push(a.condition);
+      if (tags.length > 0) html += '<div class="detail-tags">' + tags.map(t => `<span class="detail-tag">${escapeHtml(t)}</span>`).join('') + '</div>';
+      if (a.description) html += `<div class="detail-desc">${escapeHtml(a.description)}</div>`;
+    });
+    html += '</div>';
+    return html;
+  },
+
+  _renderWeapon(msOcr) {
+    const w = msOcr.weapon;
+    if (!w || (!w.main && !w.sub)) return '';
+    let html = '<div class="detail-section"><div class="detail-section-title weapon">武装</div>';
+    if (w.main) html += `<div class="weapon-row"><span class="weapon-slot">MAIN</span><span class="weapon-name">${escapeHtml(w.main.name || '')}</span><span class="weapon-info">射程${w.main.range || '-'} ${escapeHtml(w.main.type || '')}</span></div>`;
+    if (w.sub) html += `<div class="weapon-row"><span class="weapon-slot sub">SUB</span><span class="weapon-name">${escapeHtml(w.sub.name || '')}</span><span class="weapon-info">射程${w.sub.range || '-'} ${escapeHtml(w.sub.type || '')}</span></div>`;
+    html += '</div>';
+    return html;
+  },
+
+  _renderSP(msOcr) {
+    const sp = msOcr.special_attack;
+    if (!sp) return '';
+    const isSqSp = sp.sp_type === 'SQUAD SP';
+    let html = `<div class="detail-section"><div class="detail-section-title sp">SPアタック${isSqSp ? ' <span class="sq-inline-badge">SQSP</span>' : ''}</div>`;
+    html += `<div class="detail-ability-name sp">${escapeHtml(sp.name || '')}</div>`;
+    const tags = [];
+    if (sp.target) tags.push(sp.target);
+    if (sp.range !== undefined && sp.range !== null) tags.push(`射程${sp.range}`);
+    if (sp.sp_cost !== undefined && sp.sp_cost !== null) tags.push(`SP${sp.sp_cost}`);
+    if (sp.sp_type) tags.push(sp.sp_type);
+    if (sp.attack_type) tags.push(sp.attack_type);
+    if (tags.length) html += '<div class="detail-tags">' + tags.map(t => `<span class="detail-tag sp">${escapeHtml(t)}</span>`).join('') + '</div>';
+    if (sp.power) {
+      let powerText = '';
+      if (typeof sp.power === 'object') {
+        const pp = [];
+        if (sp.power.normal) pp.push(`通常:${sp.power.normal}`);
+        if (sp.power.squad) { const sqVal = Array.isArray(sp.power.squad) ? sp.power.squad.filter(v=>v).join('/') : sp.power.squad; pp.push(`部隊:${sqVal}`); }
+        if (sp.power.united) { const uVal = Array.isArray(sp.power.united) ? sp.power.united.filter(v=>v).join('/') : sp.power.united; if (uVal) pp.push(`UNITED:${uVal}`); }
+        powerText = pp.join(' / ');
+      } else { powerText = `威力:${sp.power}`; }
+      if (powerText) html += `<div class="detail-power">${escapeHtml(powerText)}</div>`;
+    }
+    const ia = msOcr.impact_area;
+    if (ia) { let t = ia.type === 'single' ? '単体' : ia.type === 'circular' ? '円形' : (ia.type||''); if (ia.radius) t += ` R${ia.radius}`; html += `<div class="detail-impact">着弾: ${escapeHtml(t)}</div>`; }
+    if (sp.description) html += `<div class="detail-desc">${escapeHtml(sp.description)}</div>`;
+    html += '</div>';
+    return html;
+  },
+
+  _renderEB(msOcr) {
+    const eb = msOcr.echoes_beat;
+    if (!eb || !eb.has_eb) return '';
+    const ebTypeLabel = eb.eb_type === 'sp' ? 'ECHOES BEAT SP' : 'ECHOES BEAT';
+    let html = `<div class="detail-section"><div class="detail-section-title eb">${ebTypeLabel}</div>`;
+    if (eb.eb_sp_name) html += `<div class="detail-ability-name eb">${escapeHtml(eb.eb_sp_name)}</div>`;
+    const tags = [];
+    if (eb.eb_level) tags.push(`Lv.${eb.eb_level}`);
+    if (eb.eb_target) tags.push(eb.eb_target);
+    if (eb.eb_range !== undefined && eb.eb_range !== null) tags.push(`射程${eb.eb_range}`);
+    if (tags.length) html += '<div class="detail-tags">' + tags.map(t => `<span class="detail-tag eb">${escapeHtml(t)}</span>`).join('') + '</div>';
+    if (eb.eb_power) html += `<div class="detail-power" style="color:#ffb74d">威力:${eb.eb_power}</div>`;
+    if (eb.eb_description) html += `<div class="detail-desc">${escapeHtml(eb.eb_description)}</div>`;
+    html += '</div>';
+    return html;
+  },
+
+  _renderPlSkill(plOcr) {
+    const s = plOcr.pl_skill || plOcr.pilot_skill;
+    if (!s) return '';
+    const hasSq = s.has_sq_skill;
+    const isEb = s.is_eb_skill;
+    let html = `<div class="detail-section"><div class="detail-section-title pl">PLスキル${hasSq ? ' <span class="sq-inline-badge">SQ</span>' : ''}${isEb ? ' <span class="eb-inline-badge">EB</span>' : ''}</div>`;
+    html += `<div class="detail-ability-name pl">${escapeHtml(s.name || '')}${isEb && s.eb_trigger_level ? ` <span style="color:#ffb74d;font-size:0.7rem">(EBLv.${s.eb_trigger_level})</span>` : ''}</div>`;
+    const tags = [];
+    if (s.trigger) tags.push(s.trigger);
+    if (s.category) tags.push(s.category);
+    if (tags.length) html += '<div class="detail-tags">' + tags.map(t => `<span class="detail-tag pl">${escapeHtml(t)}</span>`).join('') + '</div>';
+    const desc = s.effect || s.description || '';
+    if (desc) html += `<div class="detail-desc">${escapeHtml(desc)}</div>`;
+    const sqd = s.sq_skill_details;
+    if (sqd) {
+      html += '<div class="pl-sq-details">';
+      if (sqd.trigger) html += `<div class="pl-sq-row"><span class="pl-sq-label">発動</span><span class="pl-sq-text">${escapeHtml(sqd.trigger)}</span></div>`;
+      if (sqd.effect) html += `<div class="pl-sq-row"><span class="pl-sq-label">効果</span><span class="pl-sq-text">${escapeHtml(sqd.effect)}</span></div>`;
+      const rushEff = sqd.sq_rush_effect || sqd.squad_rush_effect;
+      if (rushEff) html += `<div class="pl-sq-row"><span class="pl-sq-label rush">RUSH</span><span class="pl-sq-text">${escapeHtml(rushEff)}</span></div>`;
+      if (sqd.sq_gauge_effect) html += `<div class="pl-sq-row"><span class="pl-sq-label">ゲージ</span><span class="pl-sq-text">${escapeHtml(sqd.sq_gauge_effect)}</span></div>`;
+      if (sqd.sq_max_effect) html += `<div class="pl-sq-row"><span class="pl-sq-label">最大時</span><span class="pl-sq-text">${escapeHtml(sqd.sq_max_effect)}</span></div>`;
+      html += '</div>';
+    }
+    html += '</div>';
+    return html;
+  },
+
+  _renderLinksForUnit(u, msOcr, plOcr) {
+    const allUnitLinks = [];
+    const unitLinkCount = {}; // ユニット内でMS・PL両方に同じリンクがあるかカウント
+    [msOcr, plOcr].forEach(ocr => {
+      if (!ocr) return;
+      const links = ocr.link_abilities || ocr.link_ability || [];
+      if (!Array.isArray(links)) return;
+      links.forEach(link => {
+        if (!link.name) return;
+        unitLinkCount[link.name] = (unitLinkCount[link.name] || 0) + 1;
+        if (!allUnitLinks.find(l => l.name === link.name)) allUnitLinks.push(link);
+      });
+    });
+    if (allUnitLinks.length === 0) return '';
+    let html = '<div class="detail-section"><div class="detail-section-title link">リンクアビリティ</div>';
+    allUnitLinks.forEach(link => {
+      const { required, category } = _parseLinkCondition(link.condition);
+      const count = _countLinkInDeck(link.name, category);
+      const isActive = count >= required;
+      const linkType = link.is_eb_link ? 'eb' : AppState._sqLinkNames.has(link.name) ? 'sq' : link.is_ab_link ? 'ab' : '';
+      const activeClass = isActive ? 'link-active' : 'link-inactive';
+      const dupeCount = unitLinkCount[link.name] || 1;
+      html += `<div class="link-item ${activeClass}${linkType ? ' link-type-' + linkType : ''}">`;
+      if (linkType) html += `<span class="link-type-badge ${linkType}">${linkType.toUpperCase()}</span>`;
+      html += `<span class="link-name">${escapeHtml(link.name)}</span>`;
+      if (dupeCount >= 2) html += `<span class="link-dupe">x${dupeCount}</span>`;
+      html += `<span class="link-badge ${isActive ? 'on' : 'off'}">${isActive ? '発動' : '未発動'}</span>`;
+      html += `<div class="link-effect">${escapeHtml(link.effect || '')}</div></div>`;
+    });
+    html += '</div>';
+    return html;
+  },
+
+  _updateHeader() {
+    let totalCost = 0;
+    const classCounts = { '殲滅': 0, '制圧': 0, '防衛': 0 };
+    for (let i = 0; i < 10; i++) {
+      const ocr = AppState.deckOcr[i];
+      const cardNumber = AppState.deck[i];
+      const idx = this._getIndexEntry(cardNumber);
+      if (ocr) totalCost += safeInt(ocr.cost);
+      else if (idx) totalCost += safeInt(idx.cost);
+    }
+    // 殲滅/制圧/防衛 はPLカード(スロット5-9)のcategoryで判定
+    for (let u = 0; u < 5; u++) {
+      const plNumber = AppState.deck[u + 5];
+      if (!plNumber) continue;
+      const plIdx = this._getIndexEntry(plNumber);
+      const plOcr = AppState.deckOcr[u + 5];
+      let cat = plIdx?.category;
+      if (!cat || classCounts[cat] === undefined) cat = plOcr?.card_label?.class;
+      if (!cat || classCounts[cat] === undefined) cat = plOcr?.category;
+      if (cat && classCounts[cat] !== undefined) classCounts[cat]++;
+    }
+    const costEl = document.getElementById('headerTotalCost');
+    if (costEl) { const v = costEl.querySelector('.hdr-cost-val'); if (v) v.textContent = totalCost; else costEl.textContent = `C:${totalCost}`; }
+    const se = document.getElementById('badgeSenmetsu'); if (se) se.textContent = `殲${classCounts['殲滅']}`;
+    const sa = document.getElementById('badgeSeiatsu'); if (sa) sa.textContent = `制${classCounts['制圧']}`;
+    const bo = document.getElementById('badgeBouei'); if (bo) bo.textContent = `防${classCounts['防衛']}`;
+
+    // SQ判定
+    let sqActive = false;
+    for (let u = 0; u < 5; u++) {
+      const msOcr = AppState.deckOcr[u];
+      const plOcr = AppState.deckOcr[u + 5];
+      const hasSqSp = msOcr?.special_attack?.sp_type === 'SQUAD SP';
+      const plSkill = plOcr?.pilot_skill || plOcr?.pl_skill;
+      if (hasSqSp && plSkill?.has_sq_skill) { sqActive = true; break; }
+    }
+    const sqEl = document.getElementById('sqStatus');
+    if (sqEl) sqEl.classList.toggle('active', sqActive);
+
+    // EB判定
+    const ebLinkCounts = {};
+    for (let i = 0; i < 10; i++) { const ocr = AppState.deckOcr[i]; if (!ocr) continue; const links = ocr.link_abilities || ocr.link_ability || []; if (!Array.isArray(links)) continue; links.forEach(l => { if (l?.is_eb_link && l.name) { if (!ebLinkCounts[l.name]) { const cm = (l.condition||'').match(/(\d+)枚以上/); ebLinkCounts[l.name] = { count: 0, required: cm ? parseInt(cm[1]) : 2 }; } ebLinkCounts[l.name].count++; } }); }
+    const activeEbLinks = {};
+    for (const [name, info] of Object.entries(ebLinkCounts)) { if (info.count >= info.required) activeEbLinks[name] = true; }
+    let ebActive = false;
+    for (let u = 0; u < 5; u++) {
+      const msOcr = AppState.deckOcr[u]; const plOcr = AppState.deckOcr[u + 5];
+      if (!msOcr?.echoes_beat?.has_eb) continue;
+      const plLinks = plOcr?.link_abilities || plOcr?.link_ability || [];
+      if (Array.isArray(plLinks) && plLinks.find(l => l?.is_eb_link && l.name && activeEbLinks[l.name])) { ebActive = true; break; }
+    }
+    const ebEl = document.getElementById('ebStatus');
+    if (ebEl) ebEl.classList.toggle('active', ebActive);
+
+    this._updateLinkBar();
+  },
+
+  _updateLinkBar() {
+    const bar = document.getElementById('linkBar');
+    if (!bar) return;
+    const linkMap = {};
+    for (let i = 0; i < 10; i++) {
+      const ocr = AppState.deckOcr[i]; if (!ocr) continue;
+      const links = ocr.link_abilities || ocr.link_ability || [];
+      if (!Array.isArray(links)) continue;
+      links.forEach(link => {
+        if (!link.name) return;
+        if (!linkMap[link.name]) {
+          const { required, category } = _parseLinkCondition(link.condition);
+          linkMap[link.name] = { effect: link.effect || '', required, category, count: 0, is_eb_link: false, is_sq_link: false, is_ab_link: false };
+        }
+        if (link.is_eb_link) linkMap[link.name].is_eb_link = true;
+        if (link.is_ab_link) linkMap[link.name].is_ab_link = true;
+        if (AppState._sqLinkNames.has(link.name)) linkMap[link.name].is_sq_link = true;
+        linkMap[link.name].count++;
+      });
+    }
+    // カテゴリ条件のリンクはカテゴリ枚数で上書き
+    for (const [name, info] of Object.entries(linkMap)) {
+      if (info.category) info.count = _countLinkInDeck(name, info.category);
+    }
+    const entries = Object.entries(linkMap).sort((a, b) => { const aA = a[1].count >= a[1].required ? 1 : 0; const bA = b[1].count >= b[1].required ? 1 : 0; if (bA !== aA) return bA - aA; return a[0].localeCompare(b[0]); });
+    const isSpecial = info => info.is_eb_link || info.is_sq_link || info.is_ab_link;
+    const activeSpecial = entries.filter(([, info]) => isSpecial(info) && info.count >= info.required);
+    const inactiveSpecial = entries.filter(([, info]) => isSpecial(info) && info.count < info.required);
+    const normal = entries.filter(([, info]) => !isSpecial(info));
+    // Render normal link bar + inactive SQ/EB
+    const allNormal = [...normal, ...inactiveSpecial];
+    if (allNormal.length === 0) { bar.innerHTML = ''; } else {
+      bar.innerHTML = allNormal.map(([name, info]) => {
+        const isActive = info.count >= info.required;
+        const tag = info.is_eb_link ? ' eb' : info.is_sq_link ? ' sq' : info.is_ab_link ? ' ab' : '';
+        return `<div class="link-chip${isActive ? ' active' : ''}${tag}"><span class="link-chip-name">${escapeHtml(name)}</span><span class="link-chip-count">${info.count}/${info.required}</span></div>`;
+      }).join('');
+    }
+    // Header: show only ACTIVE SQ/EB link names
+    const hdrSq = document.getElementById('hdrSqLinks');
+    const hdrEb = document.getElementById('hdrEbLinks');
+    if (hdrSq) {
+      const sqLinks = activeSpecial.filter(([, info]) => info.is_sq_link);
+      hdrSq.innerHTML = sqLinks.map(([name]) => `<span class="hdr-link-name sq">${escapeHtml(name)}</span>`).join('');
+    }
+    if (hdrEb) {
+      const ebLinks = activeSpecial.filter(([, info]) => info.is_eb_link);
+      hdrEb.innerHTML = ebLinks.map(([name]) => `<span class="hdr-link-name eb">${escapeHtml(name)}</span>`).join('');
+    }
+    const hdrAb = document.getElementById('hdrAbLinks');
+    const abStatusEl = document.getElementById('abStatus');
+    if (hdrAb) {
+      const abLinks = activeSpecial.filter(([, info]) => info.is_ab_link);
+      hdrAb.innerHTML = abLinks.map(([name]) => `<span class="hdr-link-name ab">${escapeHtml(name)}</span>`).join('');
+      if (abStatusEl) { abStatusEl.classList.toggle('active', abLinks.length > 0); abStatusEl.style.display = abLinks.length > 0 ? '' : 'none'; }
+    }
+  }
+};
+</script>
+<script>
+// ================================================================
+// SearchPanel — モバイル用
+// ================================================================
+const SearchPanel = {
+  _lockedType: null,
+  _currentRarity: new Set(),
+  _currentCategory: new Set(),
+  _selectedSeries: new Set(),
+  _filteredCards: [],
+  _page: 0,
+  _perPage: 60,
+  _rendered: 0,
+  _t: { ebCat:new Set(), ebLv:new Set(), ebCond:new Set(), ebspEff:new Set(), sqCat:new Set(), sqGauge:new Set(), sqTrig:new Set(), sqEff:new Set(), sqspEff:new Set(), abCat:new Set(), spEff:new Set(), skEff:new Set() },
+  _tStyle: { ebCat:'eb', ebLv:'eb', ebCond:'eb', ebspEff:'eb', sqCat:'sq', sqGauge:'sq', sqTrig:'sq', sqEff:'sq', sqspEff:'sq', abCat:'ab', spEff:'sp', skEff:'pl' },
+
+  init() {
+    this._updateCategoryButtons();
+    document.getElementById('searchInput').addEventListener('keydown', (e) => { if (e.key === 'Enter') this.applyFilters(); });
+    const sti = document.getElementById('searchTextInput');
+    if (sti) sti.addEventListener('keydown', (e) => { if (e.key === 'Enter') this.applyFilters(); });
+    document.getElementById('filterTerrainType').addEventListener('change', () => {
+      const hasType = !!document.getElementById('filterTerrainType').value;
+      document.getElementById('filterTerrainRank').disabled = !hasType;
+      if (!hasType) document.getElementById('filterTerrainRank').value = '';
+      this.applyFilters();
+    });
+    document.getElementById('filterTerrainRank').addEventListener('change', () => this.applyFilters());
+    const costMin = document.getElementById('filterCostMin');
+    const costMax = document.getElementById('filterCostMax');
+    const costLabel = document.getElementById('costRangeValue');
+    const updateCostLabel = () => { let mn = parseInt(costMin.value), mx = parseInt(costMax.value); if (mn > mx) { costMax.value = mn; mx = mn; } costLabel.textContent = mn + '〜' + mx; };
+    costMin.addEventListener('input', () => { updateCostLabel(); this.applyFilters(); });
+    costMax.addEventListener('input', () => { updateCostLabel(); this.applyFilters(); });
+    ['Mobility','Ranged','Melee','Hp'].forEach(stat => {
+      const slider = document.getElementById('filter' + stat);
+      const label = document.getElementById(stat.toLowerCase() + 'Value');
+      if (slider && label) slider.addEventListener('input', () => { label.textContent = slider.value; this.applyFilters(); });
+    });
+    this._populateSkillNames();
+    this._restoreFilters();
+    // 無限スクロール: スクロールラッパー末尾付近で追加読み込み
+    const scrollWrap = document.getElementById('pickerScroll');
+    scrollWrap.addEventListener('scroll', () => {
+      if (scrollWrap.scrollTop + scrollWrap.clientHeight >= scrollWrap.scrollHeight - 200) {
+        this._loadMore();
+      }
+    });
+  },
+
+  _saveFilters() {
+    const state = {
+      searchInput: document.getElementById('searchInput').value,
+      searchTextInput: (document.getElementById('searchTextInput') || {}).value || '',
+      rarity: [...this._currentRarity],
+      category: [...this._currentCategory],
+      costMin: document.getElementById('filterCostMin').value,
+      costMax: document.getElementById('filterCostMax').value,
+      mobility: document.getElementById('filterMobility').value,
+      ranged: document.getElementById('filterRanged').value,
+      melee: document.getElementById('filterMelee').value,
+      hp: document.getElementById('filterHp').value,
+      terrainType: document.getElementById('filterTerrainType').value,
+      terrainRank: document.getElementById('filterTerrainRank').value,
+      ocr: document.getElementById('filterOcr').checked,
+      sqsp: document.getElementById('filterSqsp').checked,
+      eb: document.getElementById('filterEb').checked,
+      sqSkill: document.getElementById('filterSqSkill').checked,
+      ebSkill: document.getElementById('filterEbSkill').checked,
+      linkName: document.getElementById('filterLinkName').value,
+      linkName2: document.getElementById('filterLinkName2').value,
+      skillName: document.getElementById('filterSkillName').value,
+      toggles: Object.fromEntries(Object.entries(this._t).map(([k,v]) => [k, [...v]])),
+      series: [...this._selectedSeries],
+      allSeries: (document.getElementById('filterAllSeries') || {}).checked || false,
+      bookmark: (document.getElementById('filterBookmarkCards') || {}).checked || false,
+    };
+    localStorage.setItem('abds_search_filters', JSON.stringify(state));
+  },
+
+  _restoreFilters() {
+    const raw = localStorage.getItem('abds_search_filters');
+    if (!raw) return;
+    try {
+      const s = JSON.parse(raw);
+      document.getElementById('searchInput').value = s.searchInput || '';
+      const sti = document.getElementById('searchTextInput');
+      if (sti) sti.value = s.searchTextInput || '';
+      this._currentRarity = new Set(s.rarity || []);
+      document.querySelectorAll('.rarity-btn').forEach(b => b.classList.toggle('active', this._currentRarity.has(b.dataset.rarity)));
+      this._currentCategory = new Set(s.category || []);
+      document.querySelectorAll('.cat-btn').forEach(b => b.classList.toggle('active', this._currentCategory.has(b.dataset.cat)));
+      const flnk = document.getElementById('filterLinkName'); if (flnk) flnk.value = s.linkName || '';
+      const flnk2 = document.getElementById('filterLinkName2'); if (flnk2) flnk2.value = s.linkName2 || '';
+      document.getElementById('filterSkillName').value = s.skillName || '';
+      document.getElementById('filterCostMin').value = s.costMin ?? 0;
+      document.getElementById('filterCostMax').value = s.costMax ?? 13;
+      document.getElementById('costRangeValue').textContent = (s.costMin ?? 0) + '〜' + (s.costMax ?? 13);
+      document.getElementById('filterMobility').value = s.mobility ?? 0;
+      document.getElementById('filterRanged').value = s.ranged ?? 0;
+      document.getElementById('filterMelee').value = s.melee ?? 0;
+      document.getElementById('filterHp').value = s.hp ?? 0;
+      document.getElementById('mobilityValue').textContent = s.mobility ?? '0';
+      document.getElementById('rangedValue').textContent = s.ranged ?? '0';
+      document.getElementById('meleeValue').textContent = s.melee ?? '0';
+      document.getElementById('hpValue').textContent = s.hp ?? '0';
+      document.getElementById('filterTerrainType').value = s.terrainType || '';
+      document.getElementById('filterTerrainRank').value = s.terrainRank || '';
+      document.getElementById('filterTerrainRank').disabled = !s.terrainType;
+      document.getElementById('filterOcr').checked = !!s.ocr;
+      document.getElementById('filterSqsp').checked = !!s.sqsp;
+      document.getElementById('filterEb').checked = !!s.eb;
+      document.getElementById('filterSqSkill').checked = !!s.sqSkill;
+      document.getElementById('filterEbSkill').checked = !!s.ebSkill;
+      if (s.toggles) {
+        Object.entries(s.toggles).forEach(([group, keys]) => { this._t[group] = new Set(keys); });
+        document.querySelectorAll('.tbtn').forEach(btn => {
+          const container = btn.closest('.toggle-filter');
+          if (!container) return;
+          const groupMap = { 'ebCategoryBtns':'ebCat','ebLevelBtns':'ebLv','ebCondBtns':'ebCond','ebspEffectBtns':'ebspEff','sqCategoryBtns':'sqCat','sqGaugeBtns':'sqGauge','sqTriggerBtns':'sqTrig','sqEffectBtns':'sqEff','sqspEffectBtns':'sqspEff','abCategoryBtns':'abCat','spEffectBtns':'spEff','skillEffectBtns':'skEff' };
+          const group = groupMap[container.id];
+          if (group && this._t[group].has(btn.dataset.key)) btn.classList.add('active-' + this._tStyle[group]);
+        });
+      }
+      if (s.series && s.series.length > 0) {
+        this._selectedSeries = new Set(s.series);
+        document.querySelectorAll('.series-btn').forEach(b => b.classList.toggle('active', this._selectedSeries.has(b.dataset.series)));
+      }
+      const fas = document.getElementById('filterAllSeries'); if (fas) fas.checked = this._selectedSeries.size === 0;
+      const bm = document.getElementById('filterBookmarkCards'); if (bm) bm.checked = !!s.bookmark;
+      this.applyFilters();
+    } catch(e) {}
+  },
+
+  _updateFilterVisibility() {
+    const t = this._lockedType;
+    this._updateCategoryButtons();
+    const containerGroupMap = { 'ebCategoryBtns':'ebCat','ebLevelBtns':'ebLv','ebCondBtns':'ebCond','ebspEffectBtns':'ebspEff','sqCategoryBtns':'sqCat','sqGaugeBtns':'sqGauge','sqTriggerBtns':'sqTrig','sqEffectBtns':'sqEff','sqspEffectBtns':'sqspEff','abCategoryBtns':'abCat','spEffectBtns':'spEff','skillEffectBtns':'skEff' };
+    document.querySelectorAll('#filterSheet [data-for]').forEach(el => {
+      const hidden = t && el.dataset.for !== t;
+      el.style.display = hidden ? 'none' : '';
+      /* フィルタ値は明示的にクリアされるまで保持する（非表示にするだけ） */
+    });
+  },
+
+  toggleSeries(series) {
+    if (this._selectedSeries.has(series)) this._selectedSeries.delete(series);
+    else this._selectedSeries.add(series);
+    { const el = document.getElementById('filterAllSeries'); if (el) el.checked = this._selectedSeries.size === 0; }
+    document.querySelectorAll('.series-btn').forEach(b => b.classList.toggle('active', this._selectedSeries.has(b.dataset.series)));
+    this.applyFilters();
+  },
+  toggleAllSeries() {
+    const el = document.getElementById('filterAllSeries');
+    if (el && el.checked) { this._selectedSeries.clear(); document.querySelectorAll('.series-btn').forEach(b => b.classList.remove('active')); }
+    this.applyFilters();
+  },
+  setType(type) { this.applyFilters(); },
+  toggle(group, btn) {
+    const s = this._t[group]; const key = btn.dataset.key;
+    if (s.has(key)) s.delete(key); else s.add(key);
+    btn.classList.toggle('active-' + this._tStyle[group], s.has(key));
+    this.applyFilters();
+  },
+  toggleRarity(rarity) {
+    if (this._currentRarity.has(rarity)) this._currentRarity.delete(rarity);
+    else this._currentRarity.add(rarity);
+    document.querySelectorAll('.rarity-btn').forEach(b => b.classList.toggle('active', this._currentRarity.has(b.dataset.rarity)));
+    this.applyFilters();
+  },
+  setCategory(cat) {
+    if (this._currentCategory.has(cat)) this._currentCategory.delete(cat);
+    else this._currentCategory.add(cat);
+    document.querySelectorAll('.cat-btn').forEach(b => b.classList.toggle('active', this._currentCategory.has(b.dataset.cat)));
+    this.applyFilters();
+  },
+  _updateCategoryButtons() {
+    const container = document.getElementById('categoryFilter');
+    if (!container) return;
+    const t = this._lockedType;
+    const msC = ['機動','近距離','遠距離'], plC = ['殲滅','制圧','防衛'];
+    let cats; if (t === 'MS') cats = msC; else if (t === 'PL') cats = plC; else cats = [...msC, ...plC];
+    if (t) { for (const c of [...this._currentCategory]) { if (!cats.includes(c)) this._currentCategory.delete(c); } }
+    container.innerHTML = cats.map(c => `<button class="cat-btn${this._currentCategory.has(c) ? ' active' : ''}" data-cat="${c}" onclick="SearchPanel.setCategory('${c}')">${c}</button>`).join('');
+  },
+  _populateLinkNames() {
+    if (!AppState.linkIndex) return;
+    const names = Object.keys(AppState.linkIndex).sort();
+    const opts = names.map(n => { const info = AppState.linkIndex[n]; return `<option value="${n}">${n} (${info.required}枚)</option>`; }).join('');
+    const sel1 = document.getElementById('filterLinkName');
+    const sel2 = document.getElementById('filterLinkName2');
+    if (sel1) { const c = sel1.value; sel1.innerHTML = '<option value="">リンク1を選択</option>' + opts; sel1.value = c; }
+    if (sel2) { const c = sel2.value; sel2.innerHTML = '<option value="">リンク2を選択 (AND)</option>' + opts; sel2.value = c; }
+  },
+  _populateSkillNames() {
+    const sel = document.getElementById('filterSkillName');
+    if (!sel) return;
+    const current = sel.value;
+    const names = [...new Set(AppState.cardIndex.filter(c => c.type === 'PL' && c.skill_name).map(c => c.skill_name))].sort();
+    sel.innerHTML = '<option value="">PLスキル名</option>' + names.map(n => `<option value="${n}"${n === current ? ' selected' : ''}>${n}</option>`).join('');
+  },
+  _hasActiveFilter() { return this._hasAnyFilter(); },
+  _hasAnyFilter() {
+    if (this._selectedSeries.size > 0) return true;
+    const fas = document.getElementById('filterAllSeries'); if (fas && fas.checked) return true;
+    if (this._currentRarity.size > 0) return true;
+    if (this._currentCategory.size > 0) return true;
+    if (parseInt(document.getElementById('filterCostMin').value) > 0 || parseInt(document.getElementById('filterCostMax').value) < 13) return true;
+    if (parseInt(document.getElementById('filterMobility').value) > 0) return true;
+    if (parseInt(document.getElementById('filterRanged').value) > 0) return true;
+    if (parseInt(document.getElementById('filterMelee').value) > 0) return true;
+    if (parseInt(document.getElementById('filterHp').value) > 0) return true;
+    if (document.getElementById('filterTerrainType').value) return true;
+    if (document.getElementById('filterOcr').checked) return true;
+    if (document.getElementById('filterLinkName').value) return true;
+    if ((document.getElementById('filterLinkName2') || {}).value) return true;
+    if ((document.getElementById('filterSkillName') || {}).value) return true;
+    if (document.getElementById('searchInput').value.trim()) return true;
+    const sti = document.getElementById('searchTextInput'); if (sti && sti.value.trim()) return true;
+    const bm = document.getElementById('filterBookmarkCards'); if (bm && bm.checked) return true;
+    const reocr = document.getElementById('filterNeedsReocr'); if (reocr && reocr.checked) return true;
+    for (const s of Object.values(this._t)) { if (s.size > 0) return true; }
+    return false;
+  },
+  _updateFilterBadge() {
+    const btn = document.getElementById('filterSheetToggle');
+    if (!btn) return;
+    const active = this._hasAnyFilter();
+    btn.classList.toggle('has-filter', active);
+    const sheet = document.getElementById('filterSheet');
+    const arrow = sheet && sheet.classList.contains('open') ? '▼' : '▲';
+    btn.textContent = active ? `${arrow} フィルター ●` : `${arrow} フィルター`;
+    const clr = document.getElementById('filterClearBtn');
+    if (clr) clr.classList.toggle('active', active);
+    this._updateGroupIndicators();
+  },
+  _updateGroupIndicators() {
+    const g = (id, active) => { const t = document.querySelector('#' + id + ' > .filter-group-title'); if (t) t.classList.toggle('has-active', active); };
+    g('filterGroupBasic', this._selectedSeries.size > 0 || this._currentRarity.size > 0 || this._currentCategory.size > 0 || (document.getElementById('filterBookmarkCards') || {}).checked);
+    g('filterGroupStats', parseInt(document.getElementById('filterCostMin').value) > 0 || parseInt(document.getElementById('filterCostMax').value) < 13 || parseInt(document.getElementById('filterMobility').value) > 0 || parseInt(document.getElementById('filterRanged').value) > 0 || parseInt(document.getElementById('filterMelee').value) > 0 || parseInt(document.getElementById('filterHp').value) > 0);
+    g('filterGroupTerrain', !!(document.getElementById('filterTerrainType').value) || (document.getElementById('filterOcr') || {}).checked);
+    g('filterGroupLink', !!(document.getElementById('filterLinkName').value) || !!((document.getElementById('filterLinkName2') || {}).value));
+    g('filterGroupEb', this._t.ebCat.size > 0 || this._t.ebLv.size > 0 || this._t.ebspEff.size > 0 || this._t.ebCond.size > 0 || (document.getElementById('filterEb') || {}).checked || (document.getElementById('filterEbSkill') || {}).checked);
+    g('filterGroupSq', this._t.sqCat.size > 0 || this._t.sqspEff.size > 0 || this._t.sqGauge.size > 0 || this._t.sqTrig.size > 0 || this._t.sqEff.size > 0 || (document.getElementById('filterSqsp') || {}).checked || (document.getElementById('filterSqSkill') || {}).checked);
+    g('filterGroupAb', this._t.abCat.size > 0);
+    g('filterGroupSp', this._t.spEff.size > 0);
+    g('filterGroupPlSkill', !!(document.getElementById('filterSkillName') || {}).value || this._t.skEff.size > 0);
+    g('filterGroupSearch', !!((document.getElementById('searchTextInput') || {}).value || '').trim());
+  },
+  applyFilters() {
+    if (!this._hasActiveFilter()) { this._filteredCards = []; this._page = 0; this._renderGrid(); this._saveFilters(); this._updateFilterBadge(); return; }
+    // PRレアリティ選択時は未OCRカードも含める
+    let cards = this._currentRarity.size > 0
+      ? AppState.cardIndex.filter(c => c.has_ocr || this._currentRarity.has(c.rarity))
+      : AppState.cardIndex.filter(c => c.has_ocr);
+    if (this._lockedType && this._t.abCat.size === 0) cards = cards.filter(c => c.type === this._lockedType);
+    if (this._currentCategory.size > 0) cards = cards.filter(c => !c.category || this._currentCategory.has(c.category));
+    if (this._currentRarity.size > 0) cards = cards.filter(c => !c.rarity || this._currentRarity.has(c.rarity));
+    const allSeriesEl = document.getElementById('filterAllSeries');
+    if (this._selectedSeries.size > 0 && !(allSeriesEl && allSeriesEl.checked)) cards = cards.filter(c => this._selectedSeries.has(c.series));
+    const costMin = parseInt(document.getElementById('filterCostMin').value);
+    const costMax = parseInt(document.getElementById('filterCostMax').value);
+    if (costMin > 0 || costMax < 13) cards = cards.filter(c => c.cost === null || (c.cost >= costMin && c.cost <= costMax));
+    const _noDetail = c => c.cost === null;
+    const mobMin = parseInt(document.getElementById('filterMobility').value);
+    const rangedMin = parseInt(document.getElementById('filterRanged').value);
+    const meleeMin = parseInt(document.getElementById('filterMelee').value);
+    const hpMin = parseInt(document.getElementById('filterHp').value);
+    if (mobMin > 0) cards = cards.filter(c => _noDetail(c) || c.mobility >= mobMin);
+    if (rangedMin > 0) cards = cards.filter(c => _noDetail(c) || c.ranged >= rangedMin);
+    if (meleeMin > 0) cards = cards.filter(c => _noDetail(c) || c.melee >= meleeMin);
+    if (hpMin > 0) cards = cards.filter(c => _noDetail(c) || c.hp >= hpMin);
+    const terrainType = document.getElementById('filterTerrainType').value;
+    const terrainRank = document.getElementById('filterTerrainRank').value;
+    if (terrainType && terrainRank) { const ro = ['S','A','B','C','D']; const mi = ro.indexOf(terrainRank); cards = cards.filter(c => { if (_noDetail(c)) return true; const r = c.terrain?.[terrainType]; return r && ro.indexOf(r) <= mi; }); }
+    if (document.getElementById('filterOcr').checked) cards = cards.filter(c => c.has_ocr);
+    const linkName = document.getElementById('filterLinkName').value;
+    if (linkName && AppState.linkIndex[linkName]) { const li = AppState.linkIndex[linkName]; const lc = new Set([...(li.ms_cards||[]), ...(li.pl_cards||[])]); cards = cards.filter(c => lc.has(c.number)); }
+    const linkName2 = document.getElementById('filterLinkName2').value;
+    if (linkName2 && AppState.linkIndex[linkName2]) { const li = AppState.linkIndex[linkName2]; const lc = new Set([...(li.ms_cards||[]), ...(li.pl_cards||[])]); cards = cards.filter(c => lc.has(c.number)); }
+    const ebCat = this._t.ebCat;
+    if (ebCat.size > 0) cards = cards.filter(c => _noDetail(c) || (ebCat.has('eb_sp') && c.has_eb) || (ebCat.has('eb_skill') && c.has_eb_skill) || (ebCat.has('eb_link') && c.has_eb_link));
+    const ebLv = this._t.ebLv;
+    if (ebLv.size > 0) cards = cards.filter(c => { if (_noDetail(c)) return true; const lvls = [...ebLv].map(Number); return lvls.includes(c.eb_level) || lvls.includes(c.eb_trigger_level); });
+    if (this._t.ebCond.size > 0) cards = cards.filter(c => _noDetail(c) || this._t.ebCond.has(c.eb_trigger_cond));
+    const sqCat = this._t.sqCat;
+    if (sqCat.size > 0) cards = cards.filter(c => _noDetail(c) || (sqCat.has('sqsp') && c.has_sqsp) || (sqCat.has('sq_skill') && c.has_sq_skill) || (sqCat.has('sq_link') && c.has_sq_link) || (sqCat.has('sq_rush') && c.sq_rush_effect));
+    if (this._t.sqGauge.size > 0) cards = cards.filter(c => _noDetail(c) || this._t.sqGauge.has(c.sq_gauge_rate));
+    if (this._t.sqTrig.size > 0) cards = cards.filter(c => _noDetail(c) || this._t.sqTrig.has(c.sq_trigger));
+    if (this._t.sqEff.size > 0) cards = cards.filter(c => _noDetail(c) || (c.sq_skill_effect_tags && c.sq_skill_effect_tags.some(t => this._t.sqEff.has(t))));
+    if (this._t.sqspEff.size > 0) cards = cards.filter(c => _noDetail(c) || (c.sqsp_effect_tags && c.sqsp_effect_tags.some(t => this._t.sqspEff.has(t))));
+    if (this._t.ebspEff.size > 0) cards = cards.filter(c => _noDetail(c) || (c.ebsp_effect_tags && c.ebsp_effect_tags.some(t => this._t.ebspEff.has(t))));
+    const abCat = this._t.abCat;
+    if (abCat.size > 0) cards = cards.filter(c => _noDetail(c) || (abCat.has('ab_link') && c.has_ab_link));
+    if (this._t.spEff.size > 0) cards = cards.filter(c => _noDetail(c) || (c.sp_effect_tags && c.sp_effect_tags.some(t => this._t.spEff.has(t))));
+    const skillName = document.getElementById('filterSkillName').value;
+    if (skillName) cards = cards.filter(c => _noDetail(c) || c.skill_name === skillName);
+    if (this._t.skEff.size > 0) cards = cards.filter(c => _noDetail(c) || (c.skill_effect_tags && c.skill_effect_tags.some(t => this._t.skEff.has(t))));
+    const q = document.getElementById('searchInput').value.trim().toLowerCase();
+    if (q) cards = cards.filter(c => (c.number||'').toLowerCase().includes(q) || (c.name||'').toLowerCase().includes(q));
+    const sti = document.getElementById('searchTextInput');
+    const qt = sti ? sti.value.trim().toLowerCase() : '';
+    if (qt) { const terms = qt.split(/\s+/); cards = cards.filter(c => { const txt = c.search_text || ''; return terms.every(t => txt.includes(t)); }); }
+    const bmEl = document.getElementById('filterBookmarkCards');
+    if (bmEl && bmEl.checked) { const bmSet = CardBookmark.getAll(); cards = cards.filter(c => bmSet.has(c.number)); }
+    // 要再OCR OR merge: needs_reocr cards are added to results (union)
+    const reocrEl = document.getElementById('filterNeedsReocr');
+    if (reocrEl && reocrEl.checked) { const inResult = new Set(cards.map(c => c.number)); const reocrCards = AppState.cardIndex.filter(c => c.needs_reocr && !inResult.has(c.number)); cards = cards.concat(reocrCards); }
+    this._filteredCards = cards;
+    this._page = 0;
+    this._renderGrid();
+    this._saveFilters();
+    this._updateFilterBadge();
+  },
+  clearFilters() {
+    this._selectedSeries.clear();
+    document.querySelectorAll('.series-btn').forEach(b => b.classList.remove('active'));
+    const fas = document.getElementById('filterAllSeries'); if (fas) fas.checked = true;
+    document.getElementById('filterCostMin').value = 0;
+    document.getElementById('filterCostMax').value = 13;
+    document.getElementById('costRangeValue').textContent = '0〜13';
+    document.getElementById('filterMobility').value = 0; document.getElementById('filterRanged').value = 0;
+    document.getElementById('filterMelee').value = 0; document.getElementById('filterHp').value = 0;
+    document.getElementById('mobilityValue').textContent = '0'; document.getElementById('rangedValue').textContent = '0';
+    document.getElementById('meleeValue').textContent = '0'; document.getElementById('hpValue').textContent = '0';
+    document.getElementById('filterTerrainType').value = '';
+    document.getElementById('filterTerrainRank').value = '';
+    document.getElementById('filterTerrainRank').disabled = true;
+    document.getElementById('filterOcr').checked = false;
+    document.getElementById('filterSqsp').checked = false;
+    document.getElementById('filterEb').checked = false;
+    document.getElementById('filterSqSkill').checked = false;
+    document.getElementById('filterEbSkill').checked = false;
+    document.getElementById('filterSkillName').value = '';
+    const flnk = document.getElementById('filterLinkName'); if (flnk) flnk.value = '';
+    const flnk2 = document.getElementById('filterLinkName2'); if (flnk2) flnk2.value = '';
+    document.getElementById('searchInput').value = '';
+    const sti = document.getElementById('searchTextInput'); if (sti) sti.value = '';
+    const bm = document.getElementById('filterBookmarkCards'); if (bm) bm.checked = false;
+    Object.values(this._t).forEach(s => s.clear());
+    document.querySelectorAll('.tbtn').forEach(b => b.className = 'tbtn');
+    this._currentRarity = new Set(); this._currentCategory = new Set();
+    document.querySelectorAll('.rarity-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+    localStorage.removeItem('abds_search_filters');
+    this.applyFilters();
+  },
+  _renderGrid() {
+    const grid = document.getElementById('thumbGrid');
+    const cards = this._filteredCards;
+    grid.innerHTML = '';
+    const scrollWrap = document.getElementById('pickerScroll');
+    if (scrollWrap) scrollWrap.scrollTop = 0;
+    this._rendered = 0;
+    if (cards.length === 0 && !this._hasActiveFilter()) {
+      grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;color:#666;padding:2rem;font-size:0.9rem">シリーズを選択してください</div>';
+      document.getElementById('pageInfo').textContent = '-';
+      return;
+    }
+    this._appendCards(this._perPage);
+    document.getElementById('pageInfo').textContent = cards.length > 0 ? `${cards.length}件` : '0件';
+  },
+  _appendCards(count) {
+    const grid = document.getElementById('thumbGrid');
+    const cards = this._filteredCards;
+    const end = Math.min(this._rendered + count, cards.length);
+    for (let i = this._rendered; i < end; i++) {
+      const card = cards[i];
+      const el = document.createElement('div');
+      const isEb = card.has_eb || card.has_eb_skill || card.has_eb_link;
+      const isSq = card.has_sqsp || card.has_sq_skill || card.has_sq_link || !!card.sq_rush_effect;
+      const isAb = card.has_ab_link;
+      const noOcr = !card.has_ocr;
+      el.className = 'thumb-card' + (isEb ? ' card-eb' : '') + (isSq ? ' card-sq' : '') + (isAb ? ' card-ab' : '') + (noOcr ? ' no-ocr' : '');
+      const rarityHtml = card.rarity ? `<span class="thumb-card-rarity r-${escapeHtml(card.rarity)}">${escapeHtml(card.rarity)}</span>` : '';
+      el.innerHTML = `
+        <div class="thumb-card-img-wrap">
+          <img src="${resolveImageUrl(null, card.number, 'front')}" alt="${card.name}" loading="lazy" onerror="this.onerror=null;this.src=PLACEHOLDER_SVG">
+          <div class="thumb-card-badges">${card.cost !== null ? `<span class="thumb-card-cost">C${card.cost}</span>` : ''}${rarityHtml}</div>
+          ${noOcr ? '<div class="thumb-no-ocr-badge">未OCR</div>' : ''}
+          ${card.needs_reocr ? '<div class="thumb-reocr-badge">要再OCR</div>' : ''}
+          ${isSq ? '<div class="thumb-sq-badge">SQ</div>' : ''}
+          ${isEb ? `<div class="thumb-eb-badge">${card.has_eb ? 'EBSP' : 'EB'}</div>` : ''}
+          ${isAb ? '<div class="thumb-ab-badge">AB</div>' : ''}
+          <div class="thumb-detail-btn" onclick="event.stopPropagation();showCardModal('${card.number}')">詳細</div>
+          <div class="thumb-card-info">
+            <div class="thumb-card-number">${card.number}</div>
+            <div class="thumb-card-name">${escapeHtml(card.name || '')}</div>
+          </div>
+        </div>`;
+      if (!noOcr) el.addEventListener('click', () => this._selectCard(card));
+      grid.appendChild(el);
+    }
+    this._rendered = end;
+  },
+  _loadMore() {
+    if (this._rendered >= this._filteredCards.length) return;
+    this._appendCards(this._perPage);
+  },
+  _toggleBm(btn, number) {
+    const on = CardBookmark.toggle(number);
+    btn.innerHTML = on ? '&#9733;' : '&#9734;';
+    btn.classList.toggle('bm-on', on);
+    const bmEl = document.getElementById('filterBookmarkCards');
+    if (bmEl && bmEl.checked) this.applyFilters();
+  },
+  _selectCard(card) {
+    const slot = AppState.activeSlot;
+    if (slot === null) {
+      const type = card.type;
+      const range = type === 'MS' ? [0,1,2,3,4] : [5,6,7,8,9];
+      const emptySlot = range.find(i => !AppState.deck[i]);
+      if (emptySlot !== undefined) DeckManager.setCard(emptySlot, card.number);
+      else Toast.show(`${type}の空きスロットがありません`, 'info');
+      closeCardPicker();
+      return;
+    }
+    const slotType = slot < 5 ? 'MS' : 'PL';
+    if (card.type && card.type !== slotType) { Toast.show(`${slotType}スロットに${card.type}カードはセット不可`, 'error'); return; }
+    DeckManager.setCard(slot, card.number);
+    closeCardPicker();
+    AppState.activeSlot = null;
+  }
+};
+</script>
+<script>
+// ================================================================
+// Mobile-specific functions
+// ================================================================
+function toggleMenu() {
+  document.getElementById('menuOverlay').classList.toggle('open');
+  const panel = document.getElementById('menuPanel');
+  panel.classList.toggle('open');
+  if (panel.classList.contains('open')) DeckManager.populateLoadSelect();
+}
+async function clearDataCacheAndReload() {
+  if (!confirm('カードデータのキャッシュをクリアして最新データを取得します。よろしいですか？')) return;
+  try {
+    const keys = await caches.keys();
+    for (const k of keys) { if (k === 'card-images-v1') continue; await caches.delete(k); }
+    if (window.indexedDB) { try { indexedDB.deleteDatabase('abds-pwa-v1'); } catch (_) {} }
+    if ('serviceWorker' in navigator) {
+      const regs = await navigator.serviceWorker.getRegistrations();
+      for (const r of regs) { try { await r.update(); } catch (_) {} }
+    }
+  } catch (e) { console.warn('Cache clear error:', e); }
+  location.reload();
+}
+function toggleFilterSheet() {
+  const sheet = document.getElementById('filterSheet');
+  sheet.classList.toggle('open');
+  SearchPanel._updateFilterBadge();
+}
+function toggleFilterGroup(id) {
+  document.getElementById(id).classList.toggle('collapsed');
+}
+function openCardPicker(slotIdx, type) {
+  AppState.activeSlot = slotIdx;
+  const unitIdx = slotIdx < 5 ? slotIdx : slotIdx - 5;
+  document.getElementById('pickerTitle').textContent = `${type} ${unitIdx + 1} を選択`;
+  // Show/hide tabs
+  const tabs = document.getElementById('pickerTabs');
+  tabs.style.display = 'flex';
+  tabs.querySelectorAll('.picker-tab').forEach(t => t.classList.toggle('active', t.dataset.type === type));
+  SearchPanel._lockedType = type;
+  SearchPanel._updateFilterVisibility();
+  SearchPanel.applyFilters();
+  document.getElementById('pickerOverlay').classList.add('open');
+  document.getElementById('filterSheet').style.display = 'flex';
+  document.getElementById('filterSheet').classList.remove('open');
+  SearchPanel._updateFilterBadge();
+}
+function closeCardPicker() {
+  document.getElementById('filterSheet').classList.remove('open');
+  document.getElementById('filterSheet').style.display = 'none';
+  document.getElementById('pickerOverlay').classList.remove('open');
+  AppState.activeSlot = null;
+  SearchPanel._lockedType = null;
+  SearchPanel._updateFilterVisibility();
+}
+function setActiveTerrain(terrain) {
+  AppState.activeTerrain = terrain || null;
+  // Update switch buttons in menu
+  document.querySelectorAll('.terrain-sw').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.val === (terrain || ''));
+  });
+  UIRenderer.renderAll();
+}
+function setTerrainSwitch(btn) {
+  setActiveTerrain(btn.dataset.val || null);
+}
+function closeDeckLoadModal() { document.getElementById('deckLoadModal').classList.remove('open'); }
+function closeCardModal() { document.getElementById('cardDetailModal').classList.remove('open'); }
+
+function openTextReportModal(cardNumber) {
+  document.getElementById('reportCardNumber').value = cardNumber;
+  document.getElementById('reportText').value = '';
+  document.getElementById('textReportModal').classList.add('open');
+}
+
+async function submitTextReport() {
+  const cardNumber = document.getElementById('reportCardNumber').value;
+  const reportText = document.getElementById('reportText').value.trim();
+  if (!reportText) { Toast.show('修正内容を入力してください', 'error'); return; }
+  try {
+    const res = await fetch(SUPABASE_URL + '/rest/v1/card_text_reports', {
+      method: 'POST',
+      headers: { ...SB_HEADERS, 'Prefer': 'return=minimal' },
+      body: JSON.stringify({ card_number: cardNumber, report_text: reportText })
+    });
+    if (!res.ok) throw new Error(res.statusText);
+    Toast.show('送信しました', 'success');
+    document.getElementById('textReportModal').classList.remove('open');
+  } catch (err) {
+    Toast.show('送信失敗: ' + err.message, 'error');
+  }
+}
+
+async function showCardModal(number) {
+  const detail = await CardService.fetchDetail(number);
+  if (!detail) { Toast.show('カード情報を取得できません', 'error'); return; }
+  const ocr = detail.ocr_data || {};
+  const frontUrl = resolveImageUrl(null, number, 'front');
+  const name = detail.name || number;
+  const cardIdx = AppState.cardIndex.find(c => c.number === number);
+  const rarity = cardIdx?.rarity || null;
+  const backUrl = resolveImageUrl(null, number, 'back');
+  let html = `<div class="modal-card-header"><div class="modal-card-images"><img class="modal-card-image" src="${frontUrl}" alt="${escapeHtml(name)} 表"><img class="modal-card-image" src="${backUrl}" alt="${escapeHtml(name)} 裏"></div><div class="modal-card-info"><div class="modal-card-number">${escapeHtml(number)}${rarity ? ` <span class="rarity-tag rarity-${escapeHtml(rarity)}">${escapeHtml(rarity)}</span>` : ''}</div><div class="modal-card-name">${escapeHtml(name)}</div><div style="color:#888;font-size:0.8rem">${escapeHtml(ocr.type||'')} | ${escapeHtml(ocr.category||'')} | C:${ocr.cost||'-'}</div></div></div>`;
+  if (ocr.stats) { html += `<div class="modal-param-group"><div class="modal-param-title">ステータス</div><div class="modal-param-row"><div class="modal-param-item"><span class="modal-param-label">機動:</span>${ocr.stats.mobility||'-'}</div><div class="modal-param-item"><span class="modal-param-label">遠距:</span>${ocr.stats.ranged_attack||'-'}</div><div class="modal-param-item"><span class="modal-param-label">近距:</span>${ocr.stats.melee_attack||'-'}</div><div class="modal-param-item"><span class="modal-param-label">HP:</span>${ocr.stats.hp||'-'}</div></div></div>`; }
+  html += `<div style="margin-top:12px;text-align:center"><button class="menu-btn" style="font-size:0.75rem;padding:4px 12px" onclick="openTextReportModal('${escapeHtml(number)}')">カードテキスト修正依頼</button></div>`;
+  document.getElementById('cardDetailBody').innerHTML = html;
+  document.getElementById('cardDetailModal').classList.add('open');
+}
+
+// Screenshot capture
+function captureFullPage() {
+  // デスクトップ版でスクリーンショットを撮影する
+  const code = DeckManager.generateCode();
+  if (!code || !AppState.deck.some(n => n)) { Toast.show('デッキにカードがありません', 'error'); return; }
+  Toast.show('デスクトップ版で撮影します…', 'info');
+  location.href = './index.html#' + code + '&rec';
+}
+
+// ================================================================
+// INIT
+// ================================================================
+document.addEventListener('DOMContentLoaded', async () => {
+  UIRenderer.init();
+  SearchPanel.init();
+  UndoManager.snapshot();
+
+  // ImageCache.init() と CardService.fetchIndex() を並列実行
+  let imageCacheInitDone = false;
+  const imageCacheReady = ImageCache.init()
+    .then(() => { imageCacheInitDone = true; })
+    .catch(e => { imageCacheInitDone = true; console.warn('ImageCache init failed:', e); });
+
+  try {
+    const [indexResult] = await Promise.all([
+      CardService.fetchIndex(),
+      Promise.race([
+        imageCacheReady,
+        new Promise(resolve => setTimeout(() => {
+          console.warn('ImageCache: init timeout (5s), continuing without cache');
+          resolve();
+        }, 5000)),
+      ]),
+    ]);
+    SearchPanel.applyFilters();
+    Toast.show(`${AppState.cardIndex.length} 枚のカードを読み込みました`, 'success', 2000);
+  } catch (e) {
+    Toast.show('カードデータの取得に失敗しました', 'error');
+    console.error(e);
+    return;
+  }
+
+  // 作戦カードデータを取得
+  await CardService.fetchTacticsCards();
+
+  // Link index
+  try {
+    const linkRes = await fetch('./data/link_index.json', { cache: 'no-store' });
+    const linkData = await linkRes.json();
+    AppState.linkIndex = linkData;
+    const names = Object.keys(linkData).sort();
+    const sel1 = document.getElementById('linkSelect1');
+    const sel2 = document.getElementById('linkSelect2');
+    names.forEach(name => {
+      const info = linkData[name];
+      const label = `${name} (${info.required}枚)`;
+      if (sel1) { const opt = document.createElement('option'); opt.value = name; opt.textContent = label; sel1.appendChild(opt); }
+      if (sel2) { const opt = document.createElement('option'); opt.value = name; opt.textContent = label; sel2.appendChild(opt); }
+    });
+  } catch (e) {
+    console.error('リンク索引の取得に失敗:', e);
+  }
+
+  // Build SQ link name set: collect links ONLY found on SQ-flagged cards, exclude links also on non-SQ cards
+  try {
+    await CardService._ensureDetails();
+    const sqOnly = new Set();
+    const nonSq = new Set();
+    AppState.cardIndex.forEach(c => {
+      const d = AppState.cardDetails[c.number];
+      const links = d && d.ocr_data ? (d.ocr_data.link_abilities || d.ocr_data.link_ability || []) : [];
+      links.forEach(l => {
+        if (!l.name) return;
+        if (c.has_sq_link) sqOnly.add(l.name);
+        else nonSq.add(l.name);
+      });
+    });
+    nonSq.forEach(n => sqOnly.delete(n));
+    AppState._sqLinkNames = sqOnly;
+  } catch (e) { console.warn('SQ link set build failed:', e); }
+
+  await DeckManager._autoLoad();
+  SearchPanel._populateLinkNames();
+  SearchPanel._populateSkillNames();
+
+  // ImageCacheがタイムアウトで未完了だった場合、完了後にUI再描画
+  if (!imageCacheInitDone) {
+    imageCacheReady.then(() => {
+      if (ImageCache._cachedKeys.size > 0) {
+        UIRenderer.renderAll();
+        SearchPanel.applyFilters();
+      }
+    });
+  }
+
+  // Background preload card details for offline use
+  CardService._ensureDetails().catch(_ => {});
+});
+
+window.addEventListener('hashchange', async () => {
+  if (location.hash && location.hash.length > 1) {
+    const raw = location.hash.substring(1);
+    if (ShortUrl.isShort(raw)) {
+      const numbers = await ShortUrl.resolve(ShortUrl.code(raw));
+      if (numbers && numbers.length >= 1) {
+        while (numbers.length < 10) numbers.push('');
+        await DeckManager._applyNumbers(numbers);
+      }
+      return;
+    }
+    const numbers = DeckManager.parseCode(raw);
+    if (numbers && numbers.length >= 1) {
+      while (numbers.length < 10) numbers.push('');
+      await DeckManager._applyNumbers(numbers);
+    }
+  }
+});
+
+// Register Service Worker
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('./sw.js').then(reg => {
+    console.log('SW registered:', reg.scope);
+    navigator.serviceWorker.addEventListener('message', (event) => {
+      if (event.data && event.data.type === 'UPDATE_AVAILABLE') {
+        Toast.show('新しいバージョンが利用可能です。ページを再読み込みしてください。', 'info', 8000);
+      }
+    });
+  }).catch(e => console.warn('SW registration failed:', e));
+}
+</script>
+</body>
+</html>
