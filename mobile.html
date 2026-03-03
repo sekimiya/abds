@@ -3094,7 +3094,7 @@ const SearchPanel = {
     const costMin = parseInt(document.getElementById('filterCostMin').value);
     const costMax = parseInt(document.getElementById('filterCostMax').value);
     if (costMin > 0 || costMax < 13) cards = cards.filter(c => c.cost === null || (c.cost >= costMin && c.cost <= costMax));
-    const _noDetail = c => c.cost === null;
+    const _noDetail = c => c.has_ocr && c.cost === null;
     const mobMin = parseInt(document.getElementById('filterMobility').value);
     const rangedMin = parseInt(document.getElementById('filterRanged').value);
     const meleeMin = parseInt(document.getElementById('filterMelee').value);
