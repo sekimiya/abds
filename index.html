@@ -962,6 +962,7 @@ select,input{font-family:inherit}
 }
 .thumb-card.no-ocr{opacity:0.45;pointer-events:none}
 .thumb-no-ocr-badge{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,0.8);color:#f44336;font-size:0.65rem;font-weight:bold;padding:2px 6px;border-radius:3px;border:1px solid #f44336;white-space:nowrap}
+.thumb-reocr-badge{position:absolute;top:4px;right:4px;background:rgba(239,83,80,0.9);color:#fff;font-size:0.55rem;font-weight:bold;padding:1px 4px;border-radius:3px;white-space:nowrap;z-index:2}
 .thumb-card-name{
   color:#ddd;font-size:0.68rem;font-weight:bold;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
 }
@@ -1264,6 +1265,7 @@ select,input{font-family:inherit}
           <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.4rem">
             <label class="ocr-toggle" style="margin:0"><input type="checkbox" id="filterAllSeries" checked onchange="SearchPanel.toggleAllSeries()"><span class="ocr-toggle-text" style="font-size:0.8rem;font-weight:bold">すべて</span></label>
             <label class="ocr-toggle bm-switch" style="margin:0;border:2px solid #ffe082;border-radius:6px;padding:0.2rem 0.5rem;background:rgba(255,224,130,0.08);display:inline-flex"><input type="checkbox" id="filterBookmarkCards" onchange="SearchPanel.applyFilters()" style="accent-color:#ffe082"><span class="ocr-toggle-text" style="color:#ffe082;font-weight:bold;font-size:0.75rem">&#9733; BM</span></label>
+            <label class="ocr-toggle" style="margin:0;border:2px solid #ef5350;border-radius:6px;padding:0.2rem 0.5rem;background:rgba(239,83,80,0.08);display:inline-flex"><input type="checkbox" id="filterNeedsReocr" onchange="SearchPanel.applyFilters()" style="accent-color:#ef5350"><span class="ocr-toggle-text" style="color:#ef5350;font-weight:bold;font-size:0.75rem">要再OCR</span></label>
           </div>
           <div class="series-filter" id="seriesFilter"></div>
         </div>
@@ -4268,6 +4270,8 @@ const SearchPanel = {
     if (document.getElementById('searchTextInput').value.trim()) return true;
     // ブックマーク表示はシリーズなしで動作
     const bm = document.getElementById('filterBookmarkCards'); if (bm && bm.checked) return true;
+    // 要再OCR表示はシリーズなしで動作
+    const reocr = document.getElementById('filterNeedsReocr'); if (reocr && reocr.checked) return true;
     return false;
   },
 
@@ -4447,6 +4451,13 @@ const SearchPanel = {
       cards = cards.concat(bmCards);
     }
 
+    // 要再OCR OR merge: needs_reocr cards are added to results (union)
+    if (document.getElementById('filterNeedsReocr').checked) {
+      const inResult = new Set(cards.map(c => c.number));
+      const reocrCards = AppState.cardIndex.filter(c => c.needs_reocr && !inResult.has(c.number));
+      cards = cards.concat(reocrCards);
+    }
+
     this._filteredCards = cards;
     this._page = 0;
     this._renderGrid();
@@ -4546,6 +4557,7 @@ const SearchPanel = {
             ${rarityHtml}
           </div>
           ${noOcr ? '<div class="thumb-no-ocr-badge">未OCR</div>' : ''}
+          ${card.needs_reocr ? '<div class="thumb-reocr-badge">要再OCR</div>' : ''}
           ${card.sq_rush_effect || card.sqsp_text ? '<div class="thumb-sq-badge">SQ</div>' : ''}
           ${card.has_eb || card.has_eb_skill || card.has_eb_link ? '<div class="thumb-eb-badge">EB</div>' : ''}
           ${card.has_ab_link ? '<div class="thumb-ab-badge">AB</div>' : ''}
