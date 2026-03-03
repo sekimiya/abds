@@ -740,15 +740,15 @@ select,input{font-family:inherit}
 
 /* ===== TACTICS CARD (in header) ===== */
 .tactics-btn{
-  display:inline-flex;align-items:center;gap:4px;
-  padding:2px 8px;background:#222;border:1px solid #4a3a00;
-  border-radius:6px;color:#ffe082;font-size:0.8rem;cursor:pointer;
-  transition:all 0.15s;max-width:280px;
+  display:inline-flex;align-items:center;gap:0;
+  padding:2px;background:#222;border:1px solid #4a3a00;
+  border-radius:6px;color:#ffe082;font-size:0;cursor:pointer;
+  transition:all 0.15s;
 }
 .tactics-btn:hover{background:#2a2510;border-color:#ffe082}
 .tactics-btn.has-card{border-color:#ffe082;background:#2a2510}
-.tactics-btn .tactics-btn-label{color:#998a40;font-size:0.75rem;font-weight:bold;flex-shrink:0}
-.tactics-btn .tactics-btn-name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.tactics-btn .tactics-btn-label{display:none}
+.tactics-btn .tactics-btn-name{display:none}
 .tactics-btn .tactics-btn-clear{
   color:#888;font-size:0.9rem;margin-left:2px;flex-shrink:0;
   border:none;background:none;cursor:pointer;padding:0 2px;line-height:1;
