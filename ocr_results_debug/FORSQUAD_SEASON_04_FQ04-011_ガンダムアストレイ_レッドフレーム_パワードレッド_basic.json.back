@@ -1,0 +1,83 @@
+{
+  "card_number": "FQ04-011",
+  "card_name": "ガンダムアストレイ レッドフレーム パワードレッド",
+  "series": "FORSQUAD SEASON:04",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ04-011.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ04-011_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "FQ04-011",
+    "type": "MS",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト2"
+    },
+    "name": "ガンダムアストレイ レッドフレーム パワードレッド",
+    "model": "MBF-P02 GUNDAM ASTRAY RED FRAME POWERED RED",
+    "cost": 2,
+    "category": "近距離",
+    "affiliation": "ジャンク屋組合",
+    "pilot": "ロウ・ギュール",
+    "stats": {
+      "height": null,
+      "weight": null,
+      "mobility": 190,
+      "ranged_attack": 100,
+      "melee_attack": 200,
+      "hp": 260
+    },
+    "terrain_compatibility": {
+      "ground": "S",
+      "space": "A",
+      "desert": "B",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "ガーベラ・ストレート",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "イーゲルシュテルン",
+        "range": 2,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "鼓舞【攻撃】",
+      "activation": "任意発動",
+      "target": "範囲(味方)",
+      "range": null,
+      "cost": 5,
+      "description": "30秒間、自身を中心とした大範囲内の味方ユニットの[遠距離攻撃力][近距離攻撃力]を小アップする。"
+    },
+    "link_ability": [
+      {
+        "name": "SEED ASTRAY",
+        "condition": "デッキに2枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      },
+      {
+        "name": "肉薄する戦い",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "赤い一撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3100,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "C",
+    "illustrator": "S Kei",
+    "raw": "近距離 コスト2 MS\n\nMBF-P02 GUNDAM ASTRAY RED FRAME POWERED RED\nガンダムアストレイ レッドフレーム パワードレッド\n\n頭頂高 ー\n本体重量 ー\n\n地上 S 宇宙 A 砂漠 B 水中 C\n\n所属 ジャンク屋組合\nパイロット ロウ・ギュール\n\n機動力 190\n遠距離攻撃 100\n近距離攻撃 200\nHP 260\n\nWEAPON\nMAIN ガーベラ・ストレート 射程 1 近距離\nSUB イーゲルシュテルン 射程 2 遠距離\n\nLINK ABILITY\nSEED ASTRAY デッキに2枚以上\n[遠距離攻撃力] [近距離攻撃力] 小アップ\n\n肉薄する戦い デッキに4枚以上\n[機動力] [近距離攻撃力] 小アップ\n\nMS ABILITY\n鼓舞【攻撃】\n任意発動 範囲(味方) 射程 ー コスト 5\n30秒間、自身を中心とした大範囲内の味方ユニットの[遠距離攻撃力][近距離攻撃力]を小アップする。\n\nSPECIAL ATTACK\n赤い一撃\n連携 ー\n連携 ー\n単体(敵) 射程 2\nSPコスト 2 威力 3100\n\n敵単体に格闘攻撃でダメージを与える。\n\nUNITED SP\nー\n連携 ー\n連携 ー\nー 射程 ー\n/ ー\n\n/ ー\n\nIMPACT AREA\n[アイコン:黄色円 中央やや下寄り]\n\nillust S Kei\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nFQ04-011 C"
+  },
+  "ocr_raw_file": "FORSQUAD_SEASON_04_FQ04-011_ガンダムアストレイ_レッドフレーム_パワードレッド_ocr_raw.json",
+  "ocr_timestamp": "2026-02-24T18:20:34.315611",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

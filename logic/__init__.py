@@ -142,3 +142,9 @@ from .pilot_skill import (
     classify_skill_effect,
     get_skill_info,
 )
+
+# card_index_builder
+from .card_index_builder import (
+    build_card_index,
+    classify_sp_effects,
+)

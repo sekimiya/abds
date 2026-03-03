@@ -43,7 +43,7 @@
       }
     },
     "ms_ability": {
-      "name": "増援【防衛】",
+      "name": "増援[防衛]",
       "type": "任意発動",
       "range": 1,
       "cost": 4,
@@ -71,5 +71,14 @@
   },
   "ocr_timestamp": "2025-06-28T01:34:43.008370",
   "ocr_type": "basic",
-  "ocr_engine": "claude_code_cli"
+  "ocr_engine": "claude_code_cli",
+  "_fix_history": [
+    {
+      "timestamp": "2026-03-03T23:49:16",
+      "changes": [
+        "ms_ability.name: \"増援【防衛】\" → \"増援[防衛]\""
+      ]
+    }
+  ],
+  "_fixed": true
 }

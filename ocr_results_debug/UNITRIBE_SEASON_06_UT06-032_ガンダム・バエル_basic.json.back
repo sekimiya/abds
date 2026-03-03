@@ -1,0 +1,89 @@
+{
+  "card_number": "UT06-032",
+  "card_name": "ガンダム・バエル",
+  "series": "UNITRIBE SEASON:06",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT06-032.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT06-032_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "UT06-032",
+    "type": "MS",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト6"
+    },
+    "name": "ガンダム・バエル",
+    "model": "ASW-G-01 GUNDAM BAEL",
+    "cost": 6,
+    "category": "近距離",
+    "affiliation": "ギャラルホルン",
+    "pilot": "マクギリス・ファリド",
+    "stats": {
+      "height": "18.0m",
+      "weight": "30.0t",
+      "mobility": 300,
+      "ranged_attack": 150,
+      "melee_attack": 550,
+      "hp": 600
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "A",
+      "water": "B"
+    },
+    "weapon": {
+      "main": {
+        "name": "バエル・ソード",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "電磁砲",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "大号令",
+      "activation": "任意発動",
+      "target": "範囲(味方)",
+      "range": null,
+      "cost": 4,
+      "description": "一定時間、ロックオンしている敵に周囲の味方ターゲットを集め、[遠／近攻撃力]をアップ。攻撃対象が変わると効果は終了する。"
+    },
+    "link_ability": [
+      {
+        "name": "鉄血のオルフェンズ",
+        "condition": "デッキに3枚以上",
+        "effect": "[近距離攻撃力]小アップ"
+      },
+      {
+        "name": "肉迫する戦い",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "バエル・ソード連撃",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3600,
+      "description": "敵単体に格闘攻撃でダメージを与え、一定時間、出撃中の全味方ユニットの[遠距離攻撃力][近距離攻撃力]をアップする。",
+      "united_sp": {
+        "partner1": null,
+        "partner2": null,
+        "range": null,
+        "power": null,
+        "description": null
+      }
+    },
+    "rarity": "U",
+    "illustrator": "Eske Yoshinob",
+    "raw": "MS\n\n近距離 コスト6\nASW-G-01 GUNDAM BAEL\nガンダム・バエル\n\n頭頂高 18.0m\n本体重量 30.0t\n所属 ギャラルホルン\nパイロット マクギリス・ファリド\n\n地上 A 宇宙 S 砂漠 A 水中 B\n\n機動力 300\n遠距離攻撃 150\n近距離攻撃 550\nHP 600\n\nWEAPON\nMAIN バエル・ソード 射程 1 近距離\nSUB 電磁砲 射程 3 遠距離\n\nLINK ABILITY\n鉄血のオルフェンズ デッキに3枚以上\n[近距離攻撃力]小アップ\n\nMS ABILITY\n大号令\n任意発動 範囲(味方) 射程 ー コスト 4\n\n一定時間、ロックオンしている敵に周囲の味方ターゲットを集め、[遠／近攻撃力]をアップ。攻撃対象が変わると効果は終了する。\n\n肉薄る戦い デッキに4枚以上\n[機動力][近距離攻撃力]小アップ\n\nSPECIAL ATTACK\nバエル・ソード連撃\n単体(敵) 射程 3 SPコスト 2 威力 3600 / ー\n\nUNITED SP\n連携 ー 連携 ー\n連携 ー 連携 ー\n射程 ー\n\n敵単体に格闘攻撃でダメージを与え、一定時間、出撃中の全味方ユニットの[遠距離攻撃力][近距離攻撃力]をアップする。\n/ ー\n\nIMPACT AREA\n[アイコン:前方三角形の範囲]\n\nillust Eske Yoshinob\nUT06-032 U"
+  },
+  "ocr_raw_file": "UNITRIBE_SEASON_06_UT06-032_ガンダム・バエル_ocr_raw.json",
+  "ocr_timestamp": "2026-02-26T17:43:03.231016",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

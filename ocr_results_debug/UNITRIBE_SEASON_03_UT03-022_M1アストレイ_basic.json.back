@@ -1,0 +1,83 @@
+{
+  "card_number": "UT03-022",
+  "card_name": "M1アストレイ",
+  "series": "UNITRIBE SEASON:03",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT03-022.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT03-022_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "UT03-022",
+    "type": "MS",
+    "card_label": {
+      "class": "機動",
+      "cost_label": "コスト1"
+    },
+    "name": "M1アストレイ",
+    "model": "MBF-M1 M1 ASTRAY",
+    "cost": 1,
+    "category": "機動",
+    "affiliation": "オーブ",
+    "pilot": "アサギ・コードウェル、マユラ・ラバッツ、ジュリ・ウー・ニェン",
+    "stats": {
+      "height": "17.53m",
+      "weight": "53.5t",
+      "mobility": 200,
+      "ranged_attack": 220,
+      "melee_attack": 80,
+      "hp": 250
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "A",
+      "desert": "C",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "71式ビームライフル",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "70式ビームサーベル",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "増援[殲滅/破甲]",
+      "activation": "任意発動",
+      "target": "特殊(自分)",
+      "range": null,
+      "cost": 5,
+      "description": "自身の周囲に殲滅タイプの味方ユニットを呼び出す。このユニットの攻撃は一定時間、被ダメージを一定値アップさせる。※上限3ユニットまで。"
+    },
+    "link_ability": [
+      {
+        "name": "ガンダムSEED",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "機動で制する射撃戦",
+        "condition": "デッキに2枚以上",
+        "effect": "[遠距離攻撃力]中アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "71式ビームライフル撃射",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3200,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "M",
+    "illustrator": "Kumagoro",
+    "raw": "機動 コスト1\n\nMS\n\nMBF-M1 M1 ASTRAY\nM1アストレイ\n\n[アイコン:ガンダムSEED]\n\n頭頂高 17.53m\n本体重量 53.5t\n所属 オーブ\nパイロット アサギ・コードウェル、マユラ・ラバッツ、ジュリ・ウー・ニェン\n\n地上 A 宇宙 A 砂漠 C 水中 C\n\n機動力 200\n遠距離攻撃 220\n近距離攻撃 80\nHP 250\n\nWEAPON\nMAIN 71式ビームライフル 射程 3 遠距離\nSUB 70式ビームサーベル 射程 1 近距離\n\nLINK ABILITY\nガンダムSEED デッキに3枚以上\n[機動力]小アップ\n\n機動で制する射撃戦 デッキに2枚以上\n[遠距離攻撃力]中アップ\n\nMS ABILITY\n増援[殲滅/破甲]\n任意発動 特殊(自分) 射程 ー コスト 5\n自身の周囲に殲滅タイプの味方ユニットを呼び出す。このユニットの攻撃は一定時間、被ダメージを一定値アップさせる。※上限3ユニットまで。\n\nSPECIAL ATTACK　　UNITED SP\n71式ビームライフル撃射　ー\n連携 ー　連携 ー　射程 ー\n連携 ー　連携 ー\n単体(敵) 射程 3　ー　射程 ー\nSPコスト 2　威力 3200 / ー\n\n敵単体に射撃攻撃でダメージを与える。\n/ ー\n\nIMPACT AREA\n[アイコン:グリッド 中央に緑丸、下段中央に黄三角]\n\nillust Kumagoro\n©創通・サンライズ\n機動戦士ガンダム\nBANDAI MADE IN JAPAN\nARSENAL BASE\nUT03-022 M"
+  },
+  "ocr_raw_file": "UNITRIBE_SEASON_03_UT03-022_M1アストレイ_ocr_raw.json",
+  "ocr_timestamp": "2026-02-26T17:20:48.793893",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

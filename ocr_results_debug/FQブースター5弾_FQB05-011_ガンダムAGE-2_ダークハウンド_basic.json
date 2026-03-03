@@ -58,7 +58,7 @@
         "effect": "[遠距離攻撃力] [近距離攻撃力] 小アップ"
       },
       {
-        "name": "戦況を変えろ",
+        "name": "戦況を変える力",
         "condition": "デッキに4枚以上",
         "effect": "[遠距離攻撃力] [近距離攻撃力] 小アップ"
       }
@@ -79,5 +79,14 @@
   "ocr_raw_file": "FQブースター5弾_FQB05-011_ガンダムAGE-2_ダークハウンド_ocr_raw.json",
   "ocr_timestamp": "2026-02-28T05:06:15.640583",
   "ocr_type": "basic",
-  "ocr_engine": "claude_code_cli_combined"
+  "ocr_engine": "claude_code_cli_combined",
+  "_fix_history": [
+    {
+      "timestamp": "2026-03-03T23:47:41",
+      "changes": [
+        "link_ability.name: \"戦況を変えろ\" → \"戦況を変える力\""
+      ]
+    }
+  ],
+  "_fixed": true
 }

@@ -44,7 +44,7 @@
       }
     },
     "ms_ability": {
-      "name": "装填[貫通改]",
+      "name": "装転[貫通改]",
       "activation": "任意発動",
       "target": "自分",
       "range": null,
@@ -79,5 +79,14 @@
   "ocr_raw_file": "FQブースター2弾_FQB02-007_カラミティガンダム_ocr_raw.json",
   "ocr_timestamp": "2026-02-28T01:49:15.398413",
   "ocr_type": "basic",
-  "ocr_engine": "claude_code_cli_combined"
+  "ocr_engine": "claude_code_cli_combined",
+  "_fix_history": [
+    {
+      "timestamp": "2026-03-03T23:47:36",
+      "changes": [
+        "ms_ability.name: \"装填[貫通改]\" → \"装転[貫通改]\""
+      ]
+    }
+  ],
+  "_fixed": true
 }

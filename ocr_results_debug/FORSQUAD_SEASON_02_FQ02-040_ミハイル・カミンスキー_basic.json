@@ -40,7 +40,7 @@
         "effect": "[HP]小アップ"
       },
       {
-        "name": "多彩な技術",
+        "name": "多彩な戦術",
         "condition": "デッキに4枚以上",
         "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
       }
@@ -50,5 +50,14 @@
   },
   "ocr_timestamp": "2025-06-28T02:02:28.690192",
   "ocr_type": "basic",
-  "ocr_engine": "claude_code_cli"
+  "ocr_engine": "claude_code_cli",
+  "_fix_history": [
+    {
+      "timestamp": "2026-03-03T23:47:14",
+      "changes": [
+        "link_ability.name: \"多彩な技術\" → \"多彩な戦術\""
+      ]
+    }
+  ],
+  "_fixed": true
 }

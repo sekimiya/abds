@@ -44,7 +44,7 @@
       }
     },
     "ms_ability": {
-      "name": "陣略[妨害/機動]",
+      "name": "陣略[妨害／機動]",
       "activation": "任意発動",
       "target": "範囲(敵)",
       "range": null,
@@ -79,5 +79,14 @@
   "ocr_raw_file": "UNITRIBE_SEASON_03_UT03-030_ガンダムアストレイ_ゴールドフレーム天_ocr_raw.json",
   "ocr_timestamp": "2026-02-26T17:22:55.792772",
   "ocr_type": "basic",
-  "ocr_engine": "claude_code_cli_combined"
+  "ocr_engine": "claude_code_cli_combined",
+  "_fix_history": [
+    {
+      "timestamp": "2026-03-03T23:45:41",
+      "changes": [
+        "ms_ability.name: \"陣略[妨害/機動]\" → \"陣略[妨害／機動]\""
+      ]
+    }
+  ],
+  "_fixed": true
 }

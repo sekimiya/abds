@@ -1644,6 +1644,106 @@ def api_ocr_validate_fix_apply():
     })
 
 
+@app.route('/api/ocr-validate/direct-fix', methods=['POST'])
+def api_ocr_validate_direct_fix():
+    """OCRファイルを直接修正する（バックアップ付き）。
+
+    リクエスト形式:
+    { "fixes": [
+        {"category": "ms_ability_names", "key": "断砕【広角】", "value": "断砕[広角]"}
+    ]}
+    """
+    data = request.get_json(force=True)
+    fixes = data.get('fixes', [])
+    series = data.get('series', '').strip() or None
+    if not fixes:
+        return jsonify({'success': False, 'error': '修正対象がありません'}), 400
+
+    # 修正マップを構築
+    fix_map = {}  # category -> {key: value}
+    for fix in fixes:
+        cat = fix.get('category', '')
+        key = fix.get('key', '')
+        val = fix.get('value', '')
+        if cat and key and val:
+            fix_map.setdefault(cat, {})[key] = val
+
+    cards = ocr_test.load_basic_files(ocr_test.RESULTS_DIR, series_filter=series)
+    if not cards:
+        return jsonify({'success': False, 'error': '対象ファイルなし'}), 400
+
+    applied_count = 0
+    modified_files = []
+
+    for basename, fpath, ocr in cards:
+        changes = []
+
+        # MSアビリティ名の修正
+        ms_map = fix_map.get('ms_ability_names', {})
+        if ms_map and ocr.get('type') == 'MS':
+            ms_ab = ocr.get('ms_ability')
+            if ms_ab and ms_ab.get('name', '') in ms_map:
+                old = ms_ab['name']
+                new = ms_map[old]
+                ms_ab['name'] = new
+                changes.append(f'ms_ability.name: "{old}" → "{new}"')
+
+        # リンクアビリティ名の修正
+        link_map = fix_map.get('link_ability_names', {})
+        if link_map:
+            for link in ocr_test.get_link_abilities(ocr):
+                name = link.get('name', '')
+                if name in link_map:
+                    old = name
+                    new = link_map[old]
+                    link['name'] = new
+                    changes.append(f'link_ability.name: "{old}" → "{new}"')
+
+        # パイロットスキル名の修正
+        ps_map = fix_map.get('pilot_skill_names', {})
+        if ps_map and ocr.get('type') == 'PL':
+            ps = ocr.get('pilot_skill') or ocr.get('pl_skill')
+            if ps and ps.get('name', '') in ps_map:
+                old = ps['name']
+                new = ps_map[old]
+                ps['name'] = new
+                changes.append(f'pilot_skill.name: "{old}" → "{new}"')
+
+        if changes:
+            # バックアップ作成
+            back_path = fpath + '.back'
+            if not os.path.exists(back_path):
+                import shutil
+                shutil.copy2(fpath, back_path)
+
+            # ファイルに書き戻し（修正フラグ付き）
+            with open(fpath, 'r', encoding='utf-8') as f:
+                raw = json.load(f)
+            raw['ocr_data'] = ocr
+            if '_fix_history' not in raw:
+                raw['_fix_history'] = []
+            raw['_fix_history'].append({
+                'timestamp': time.strftime('%Y-%m-%dT%H:%M:%S'),
+                'changes': changes,
+            })
+            raw['_fixed'] = True
+            with open(fpath, 'w', encoding='utf-8') as f:
+                json.dump(raw, f, ensure_ascii=False, indent=2)
+
+            applied_count += len(changes)
+            modified_files.append({'file': basename, 'changes': changes})
+
+    if modified_files:
+        _invalidate_validate_cache()
+
+    return jsonify({
+        'success': True,
+        'applied': applied_count,
+        'files_modified': len(modified_files),
+        'details': modified_files,
+    })
+
+
 @app.route('/api/ocr-validate/fix', methods=['POST'])
 def api_ocr_validate_fix():
     data = request.get_json(force=True)
@@ -1672,10 +1772,521 @@ def api_ocr_validate_fix():
     })
 
 
+# ============================================================
+# OCR品質チェック
+# ============================================================
+
+_CARD_DETAILS_PATH = os.path.join('data', 'card_details.json')
+
+# 標準 ms_ability フィールド名
+_MS_ABILITY_STANDARD_FIELDS = {'name', 'activation', 'target', 'range', 'cost', 'description', 'type'}
+
+# 公式カテゴリ → カードタイプ対応表（マスターデータ基準）
+_MS_CATEGORIES = {'近距離', '遠距離', '機動'}
+_PL_CATEGORIES = {'殲滅', '制圧', '防衛'}
+
+
+def _load_card_details():
+    """data/card_details.json をロードして dict を返す"""
+    if not os.path.exists(_CARD_DETAILS_PATH):
+        return {}
+    with open(_CARD_DETAILS_PATH, 'r', encoding='utf-8') as f:
+        return json.load(f)
+
+
+def _save_card_details(data):
+    """data/card_details.json を書き出す"""
+    with open(_CARD_DETAILS_PATH, 'w', encoding='utf-8') as f:
+        json.dump(data, f, ensure_ascii=False, indent=2)
+
+
+def _load_official_master():
+    """official_master_data.json をロードする（なければ空dict）"""
+    master_file = getattr(ocr_test, 'MASTER_DATA_FILE', 'official_master_data.json')
+    if os.path.exists(master_file):
+        with open(master_file, 'r', encoding='utf-8') as f:
+            return json.load(f)
+    return {}
+
+
+def run_quality_checks():
+    """card_details.json を走査し品質問題を検出する。
+
+    公式サイトから収集したデータ（トップレベルの name, category, series 等）を
+    マスター（正）とし、OCRデータ（ocr_data 内）を検証対象として比較する。
+    """
+    all_cards = _load_card_details()
+
+    # 公式マスターデータ（MSアビリティ名・リンク名の正式一覧）
+    master = _load_official_master()
+    official_ms_abilities = set(master.get('ms_abilities', []))
+    official_link_names = set(master.get('link_names', []))
+    problem_cards = []
+    by_severity = {'CRITICAL': 0, 'HIGH': 0, 'MEDIUM': 0, 'LOW': 0}
+    rule_counts = {}  # rule_id -> count
+
+    for number, card in all_cards.items():
+        ocr = card.get('ocr_data')
+        if not ocr:
+            continue  # OCR未実行カードはスキップ
+
+        # --- マスター（公式）データ ---
+        official_name = card.get('name', '')
+        official_category = card.get('category', '')  # 近距離/遠距離/機動/殲滅/制圧/防衛
+
+        # 公式カテゴリからカードタイプを判定（マスター基準）
+        if official_category in _MS_CATEGORIES:
+            master_type = 'MS'
+        elif official_category in _PL_CATEGORIES:
+            master_type = 'PL'
+        else:
+            # 公式カテゴリが不明な場合のみ OCR type にフォールバック
+            master_type = ocr.get('type', '')
+
+        # --- OCR データ ---
+        ocr_type = ocr.get('type', '')
+        ocr_category = ocr.get('category', '')
+        ocr_class = (ocr.get('card_label') or {}).get('class', '')
+        ms_ab = ocr.get('ms_ability')
+
+        issues = []
+
+        # ============================================================
+        # CRITICAL
+        # ============================================================
+
+        # Rule 1: 全ステータスゼロ
+        stats = ocr.get('stats') or {}
+        numeric_stats = [v for k, v in stats.items()
+                         if k in ('mobility', 'ranged_attack', 'melee_attack', 'hp')
+                         and isinstance(v, (int, float))]
+        if numeric_stats and all(v == 0 for v in numeric_stats):
+            issues.append({'rule_id': 1, 'severity': 'CRITICAL',
+                           'message': '全ステータスがゼロ'})
+
+        # Rule 2: リンクアビリティ数 != 2
+        la = ocr.get('link_ability') or ocr.get('link_abilities') or []
+        if not isinstance(la, list):
+            la = []
+        if len(la) != 2:
+            issues.append({'rule_id': 2, 'severity': 'CRITICAL',
+                           'message': f'リンクアビリティ数が{len(la)}（期待値: 2）'})
+
+        # Rule 3: MS で ms_ability 欠落（公式カテゴリ基準でMS判定）
+        if master_type == 'MS' and not ms_ab:
+            issues.append({'rule_id': 3, 'severity': 'CRITICAL',
+                           'message': f'MS: ms_ability欠落（公式: {official_category}）'})
+
+        # Rule 4: ms_ability 内の非標準フィールド名
+        if isinstance(ms_ab, dict):
+            non_std = set(ms_ab.keys()) - _MS_ABILITY_STANDARD_FIELDS
+            if non_std:
+                issues.append({'rule_id': 4, 'severity': 'CRITICAL',
+                               'message': f'ms_ability非標準フィールド: {", ".join(sorted(non_std))}'})
+
+        # ============================================================
+        # HIGH — 公式データとOCRの不一致
+        # ============================================================
+
+        # Rule 5: OCR type が公式カテゴリと矛盾
+        #   例: 公式=殲滅(PL) なのに OCR type=MS
+        if official_category:
+            if official_category in _MS_CATEGORIES and ocr_type and ocr_type != 'MS':
+                issues.append({'rule_id': 5, 'severity': 'HIGH',
+                               'message': f'OCR type "{ocr_type}" != 公式カテゴリ "{official_category}" (MS)',
+                               'fix': {'field': 'type', 'current': ocr_type, 'correct': 'MS'}})
+            elif official_category in _PL_CATEGORIES and ocr_type and ocr_type != 'PL':
+                issues.append({'rule_id': 5, 'severity': 'HIGH',
+                               'message': f'OCR type "{ocr_type}" != 公式カテゴリ "{official_category}" (PL)',
+                               'fix': {'field': 'type', 'current': ocr_type, 'correct': 'PL'}})
+
+        # Rule 6: 公式 category vs OCR category / card_label.class 不一致
+        if official_category:
+            if ocr_category and ocr_category != official_category:
+                issues.append({'rule_id': 6, 'severity': 'HIGH',
+                               'message': f'OCR category "{ocr_category}" != 公式 "{official_category}"',
+                               'fix': {'field': 'category', 'current': ocr_category, 'correct': official_category}})
+            if ocr_class and ocr_class != official_category:
+                issues.append({'rule_id': 6, 'severity': 'HIGH',
+                               'message': f'OCR card_label.class "{ocr_class}" != 公式 "{official_category}"',
+                               'fix': {'field': 'card_label.class', 'current': ocr_class, 'correct': official_category}})
+
+        # Rule 7: レアリティ欠落
+        if not ocr.get('rarity'):
+            issues.append({'rule_id': 7, 'severity': 'HIGH',
+                           'message': 'レアリティ欠落'})
+
+        # Rule 8: MS で weapon 欠落（公式カテゴリ基準）
+        if master_type == 'MS':
+            weapon = ocr.get('weapon')
+            if not weapon or not isinstance(weapon, dict):
+                issues.append({'rule_id': 8, 'severity': 'HIGH',
+                               'message': f'MS: weapon欠落（公式: {official_category}）'})
+
+        # Rule 9: ms_ability の name/description が null
+        if isinstance(ms_ab, dict):
+            if not ms_ab.get('name'):
+                issues.append({'rule_id': 9, 'severity': 'HIGH',
+                               'message': 'ms_ability nameがnull'})
+            if not ms_ab.get('description'):
+                issues.append({'rule_id': 9, 'severity': 'HIGH',
+                               'message': 'ms_ability descriptionがnull'})
+
+        # ============================================================
+        # MEDIUM
+        # ============================================================
+
+        # Rule 10: リンクアビリティ重複
+        if len(la) >= 2:
+            la_names = [x.get('name') for x in la if isinstance(x, dict) and x.get('name')]
+            if len(la_names) != len(set(la_names)):
+                issues.append({'rule_id': 10, 'severity': 'MEDIUM',
+                               'message': 'リンクアビリティ名が重複'})
+
+        # Rule 11: SP攻撃 sp_cost 欠落
+        sp = ocr.get('special_attack')
+        if isinstance(sp, dict):
+            if sp.get('sp_cost') is None and sp.get('power') is not None:
+                issues.append({'rule_id': 11, 'severity': 'MEDIUM',
+                               'message': 'SP攻撃: sp_cost欠落'})
+
+        # Rule 12: PL で physical 欠落（公式カテゴリ基準）
+        if master_type == 'PL' and not ocr.get('physical'):
+            issues.append({'rule_id': 12, 'severity': 'MEDIUM',
+                           'message': f'PL: physical欠落（公式: {official_category}）'})
+
+        # Rule 13: PL で units 欠落（公式カテゴリ基準）
+        if master_type == 'PL' and not ocr.get('units'):
+            issues.append({'rule_id': 13, 'severity': 'MEDIUM',
+                           'message': f'PL: units欠落（公式: {official_category}）'})
+
+        # Rule 14: ms_ability cost が null
+        if isinstance(ms_ab, dict) and ms_ab.get('name'):
+            if ms_ab.get('cost') is None:
+                issues.append({'rule_id': 14, 'severity': 'MEDIUM',
+                               'message': 'ms_ability costがnull'})
+
+        # Rule 15: 公式名 vs OCR名 不一致（半角/全角括弧の正規化後も不一致）
+        if official_name and ocr.get('name'):
+            # 括弧を正規化して比較
+            def _normalize_brackets(s):
+                return s.replace('（', '(').replace('）', ')').replace('　', ' ')
+            if _normalize_brackets(official_name) != _normalize_brackets(ocr['name']):
+                issues.append({'rule_id': 15, 'severity': 'MEDIUM',
+                               'message': f'名前不一致: 公式 "{official_name}" / OCR "{ocr["name"]}"',
+                               'fix': {'field': 'name', 'current': ocr['name'], 'correct': official_name}})
+
+        # Rule 19: MSアビリティ名がマスターと不一致
+        if official_ms_abilities and isinstance(ms_ab, dict) and ms_ab.get('name'):
+            ab_name = ms_ab['name']
+            if ab_name not in official_ms_abilities:
+                match, dist = ocr_test.find_closest_match(ab_name, official_ms_abilities, max_distance=3)
+                msg = f'MSアビリティ名 "{ab_name}" がマスターに未登録'
+                fix_data = None
+                if match:
+                    msg += f'（候補: "{match}" 距離{dist}）'
+                    fix_data = {'field': 'ms_ability.name', 'current': ab_name, 'correct': match}
+                iss = {'rule_id': 19, 'severity': 'MEDIUM', 'message': msg}
+                if fix_data:
+                    iss['fix'] = fix_data
+                issues.append(iss)
+
+        # Rule 20: リンクアビリティ名がマスターと不一致
+        if official_link_names:
+            for li, link in enumerate(la):
+                if not isinstance(link, dict):
+                    continue
+                link_name = link.get('name', '')
+                if not link_name or link_name in official_link_names:
+                    continue
+                match, dist = ocr_test.find_closest_match(link_name, official_link_names, max_distance=3)
+                msg = f'リンク名 "{link_name}" がマスターに未登録'
+                fix_data = None
+                if match:
+                    msg += f'（候補: "{match}" 距離{dist}）'
+                    fix_data = {'field': f'link_ability[{li}].name', 'current': link_name, 'correct': match}
+                iss = {'rule_id': 20, 'severity': 'MEDIUM', 'message': msg}
+                if fix_data:
+                    iss['fix'] = fix_data
+                issues.append(iss)
+
+        # ============================================================
+        # LOW
+        # ============================================================
+
+        # Rule 16: 所属(affiliation)欠落
+        if not ocr.get('affiliation'):
+            issues.append({'rule_id': 16, 'severity': 'LOW',
+                           'message': '所属(affiliation)欠落'})
+
+        # Rule 17: MS でパイロット欠落（公式カテゴリ基準）
+        if master_type == 'MS' and not ocr.get('pilot'):
+            issues.append({'rule_id': 17, 'severity': 'LOW',
+                           'message': f'MS: パイロット欠落（公式: {official_category}）'})
+
+        # Rule 18: search_text に [?]
+        search_text = ocr.get('search_text', '')
+        if '[?]' in str(search_text):
+            issues.append({'rule_id': 18, 'severity': 'LOW',
+                           'message': 'search_textに[?]が含まれる'})
+
+        if issues:
+            front_url = (card.get('front') or {}).get('image_url', '')
+            back_url = (card.get('back') or {}).get('image_url', '')
+            problem_cards.append({
+                'number': number,
+                'name': official_name or ocr.get('name', ''),
+                'type': master_type,
+                'series': card.get('series', ''),
+                'front_url': front_url,
+                'back_url': back_url,
+                'official': {
+                    'name': official_name,
+                    'category': official_category,
+                },
+                'ocr_data': ocr,
+                'issues': issues,
+            })
+            for iss in issues:
+                by_severity[iss['severity']] = by_severity.get(iss['severity'], 0) + 1
+                rid = iss['rule_id']
+                rule_counts[rid] = rule_counts.get(rid, 0) + 1
+
+    # ルール定義テーブル
+    rule_defs = {
+        1:  ('全ステータスゼロ', 'CRITICAL'),
+        2:  ('リンクアビリティ数!=2', 'CRITICAL'),
+        3:  ('MS: ms_ability欠落', 'CRITICAL'),
+        4:  ('ms_ability非標準フィールド', 'CRITICAL'),
+        5:  ('OCR type/公式カテゴリ矛盾', 'HIGH'),
+        6:  ('公式category vs OCR不一致', 'HIGH'),
+        7:  ('レアリティ欠落', 'HIGH'),
+        8:  ('MS: weapon欠落', 'HIGH'),
+        9:  ('ms_ability name/desc null', 'HIGH'),
+        10: ('リンクアビリティ重複', 'MEDIUM'),
+        11: ('SP攻撃 sp_cost欠落', 'MEDIUM'),
+        12: ('PL: physical欠落', 'MEDIUM'),
+        13: ('PL: units欠落', 'MEDIUM'),
+        14: ('ms_ability cost null', 'MEDIUM'),
+        15: ('公式名 vs OCR名不一致', 'MEDIUM'),
+        19: ('MSアビリティ名マスター不一致', 'MEDIUM'),
+        20: ('リンク名マスター不一致', 'MEDIUM'),
+        16: ('affiliation欠落', 'LOW'),
+        17: ('MS: パイロット欠落', 'LOW'),
+        18: ('search_textに[?]', 'LOW'),
+    }
+
+    by_rule = []
+    for rid in sorted(rule_defs.keys()):
+        name, sev = rule_defs[rid]
+        by_rule.append({
+            'id': rid,
+            'name': name,
+            'severity': sev,
+            'count': rule_counts.get(rid, 0),
+        })
+
+    # 深刻度順にソート
+    sev_order = {'CRITICAL': 0, 'HIGH': 1, 'MEDIUM': 2, 'LOW': 3}
+    problem_cards.sort(key=lambda c: min(sev_order.get(i['severity'], 99) for i in c['issues']))
+
+    total_with_ocr = sum(1 for v in all_cards.values() if v.get('ocr_data'))
+    return {
+        'success': True,
+        'summary': {
+            'total_checked': total_with_ocr,
+            'problem_count': len(problem_cards),
+            'by_severity': by_severity,
+            'by_rule': by_rule,
+        },
+        'cards': problem_cards,
+    }
+
+
+@app.route('/ocr-quality')
+def ocr_quality():
+    return render_template('ocr_quality.html')
+
+
+@app.route('/api/ocr-quality/report')
+def api_ocr_quality_report():
+    """品質チェック結果を JSON で返す"""
+    result = run_quality_checks()
+    return jsonify(result)
+
+
+@app.route('/api/ocr-quality/reocr', methods=['POST'])
+def api_ocr_quality_reocr():
+    """指定カードの再OCRを実行する"""
+    data = request.get_json(force=True)
+    numbers = data.get('numbers', [])
+    if not numbers:
+        return jsonify({'success': False, 'error': 'カード番号を指定してください'}), 400
+
+    all_source_cards = ocr_load_unique_cards()
+    source_map = {c['card_number']: c for c in all_source_cards}
+
+    results = []
+    for num in numbers:
+        card = source_map.get(num)
+        if not card:
+            results.append({'number': num, 'ok': False, 'error': 'カード未発見'})
+            continue
+        try:
+            ok = ocr_process_card(card, model=None, force=True, stage='both')
+            results.append({'number': num, 'ok': ok, 'error': None if ok else 'OCR処理失敗'})
+        except Exception as e:
+            results.append({'number': num, 'ok': False, 'error': str(e)})
+
+    success_count = sum(1 for r in results if r['ok'])
+    return jsonify({
+        'success': True,
+        'results': results,
+        'total': len(numbers),
+        'success_count': success_count,
+        'failed_count': len(numbers) - success_count,
+    })
+
+
+@app.route('/api/ocr-quality/update-field', methods=['POST'])
+def api_ocr_quality_update_field():
+    """OCRデータの特定フィールドを手動編集する"""
+    data = request.get_json(force=True)
+    number = data.get('number', '').strip()
+    ocr_json_str = data.get('ocr_data')
+
+    if not number:
+        return jsonify({'success': False, 'error': 'カード番号を指定してください'}), 400
+    if ocr_json_str is None:
+        return jsonify({'success': False, 'error': 'ocr_dataを指定してください'}), 400
+
+    # JSON文字列の場合パース、dict ならそのまま
+    if isinstance(ocr_json_str, str):
+        try:
+            new_ocr = json.loads(ocr_json_str)
+        except json.JSONDecodeError as e:
+            return jsonify({'success': False, 'error': f'JSON解析エラー: {e}'}), 400
+    elif isinstance(ocr_json_str, dict):
+        new_ocr = ocr_json_str
+    else:
+        return jsonify({'success': False, 'error': 'ocr_dataはJSONオブジェクトである必要があります'}), 400
+
+    all_cards = _load_card_details()
+    if number not in all_cards:
+        return jsonify({'success': False, 'error': f'カード {number} が見つかりません'}), 404
+
+    all_cards[number]['ocr_data'] = new_ocr
+    _save_card_details(all_cards)
+
+    return jsonify({'success': True, 'message': f'{number} のOCRデータを更新しました'})
+
+
+def _resolve_field_path(obj, field_path):
+    """ドット記法 + 配列インデックスでフィールドを解決する。
+
+    例: 'card_label.class' → obj['card_label'], 'class'
+        'link_ability[0].name' → obj['link_ability'][0], 'name'
+    返却: (parent_obj, final_key) or (None, None)
+    """
+    # 配列インデックスを展開: 'link_ability[0].name' → ['link_ability', '[0]', 'name']
+    import re as _re
+    tokens = _re.split(r'\.', field_path)
+    expanded = []
+    for tok in tokens:
+        m = _re.match(r'^(.+?)(\[\d+\])$', tok)
+        if m:
+            expanded.append(m.group(1))
+            expanded.append(m.group(2))
+        else:
+            expanded.append(tok)
+
+    target = obj
+    for part in expanded[:-1]:
+        if part.startswith('[') and part.endswith(']'):
+            idx = int(part[1:-1])
+            if isinstance(target, list) and 0 <= idx < len(target):
+                target = target[idx]
+            else:
+                return None, None
+        elif isinstance(target, dict) and part in target:
+            target = target[part]
+        else:
+            return None, None
+
+    final = expanded[-1]
+    if final.startswith('[') and final.endswith(']'):
+        idx = int(final[1:-1])
+        return target, idx
+    return target, final
+
+
+@app.route('/api/ocr-quality/apply-fix', methods=['POST'])
+def api_ocr_quality_apply_fix():
+    """公式データに基づく修正を一括適用する（バックアップ＋修正フラグ付き）。
+
+    リクエスト形式:
+    { "fixes": [
+        {"number": "AB01-001", "field": "category", "correct": "近距離"},
+        {"number": "AB01-001", "field": "link_ability[0].name", "correct": "..."},
+        ...
+    ]}
+    """
+    data = request.get_json(force=True)
+    fixes = data.get('fixes', [])
+    if not fixes:
+        return jsonify({'success': False, 'error': '修正対象がありません'}), 400
+
+    all_cards = _load_card_details()
+
+    # バックアップ作成（初回のみ）
+    back_path = _CARD_DETAILS_PATH + '.back'
+    if not os.path.exists(back_path):
+        import shutil
+        shutil.copy2(_CARD_DETAILS_PATH, back_path)
+
+    applied = 0
+    errors = []
+    fix_log = []
+
+    for fix in fixes:
+        num = fix.get('number', '')
+        field = fix.get('field', '')
+        correct = fix.get('correct')
+
+        if num not in all_cards:
+            errors.append(f'{num}: カード未発見')
+            continue
+        ocr = all_cards[num].get('ocr_data')
+        if not ocr:
+            errors.append(f'{num}: OCRデータなし')
+            continue
+
+        parent, key = _resolve_field_path(ocr, field)
+        if parent is None:
+            errors.append(f'{num}: フィールド {field} にアクセスできません')
+            continue
+
+        old_val = parent[key] if isinstance(parent, (dict, list)) else None
+        parent[key] = correct
+        applied += 1
+        fix_log.append({'number': num, 'field': field, 'old': old_val, 'new': correct})
+
+    if applied > 0:
+        _save_card_details(all_cards)
+
+    return jsonify({
+        'success': True,
+        'applied': applied,
+        'errors': errors,
+        'fix_log': fix_log,
+    })
+
+
 if __name__ == '__main__':
     port = int(os.environ.get('OCR_PORT', 5002))
     debug = os.environ.get('FLASK_DEBUG', '0') == '1'
     print(f"[OCR Admin] http://localhost:{port}/admin")
     print(f"[OCR Admin] http://localhost:{port}/ocr-run")
     print(f"[OCR Admin] http://localhost:{port}/ocr-validate")
+    print(f"[OCR Admin] http://localhost:{port}/ocr-quality")
     app.run(debug=debug, host='0.0.0.0', port=port)

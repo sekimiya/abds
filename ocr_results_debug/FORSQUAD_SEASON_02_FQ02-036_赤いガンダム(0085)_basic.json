@@ -43,7 +43,7 @@
       }
     },
     "ms_ability": {
-      "name": "デコイ【ユニット】",
+      "name": "デコイ[ユニット]",
       "type": "任意発動",
       "range": 1,
       "cost": 2,
@@ -71,5 +71,14 @@
   },
   "ocr_timestamp": "2025-06-28T01:58:48.404973",
   "ocr_type": "basic",
-  "ocr_engine": "claude_code_cli"
+  "ocr_engine": "claude_code_cli",
+  "_fix_history": [
+    {
+      "timestamp": "2026-03-03T23:45:45",
+      "changes": [
+        "ms_ability.name: \"デコイ【ユニット】\" → \"デコイ[ユニット]\""
+      ]
+    }
+  ],
+  "_fixed": true
 }

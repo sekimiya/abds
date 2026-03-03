@@ -1,0 +1,75 @@
+{
+  "card_number": "FQ02-029",
+  "card_name": "ガンダム・グシオンリベイクフルシティ",
+  "series": "FORSQUAD SEASON:02",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-029.jpg?v9",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-029_b.jpg?v9",
+  "ocr_data": {
+    "card_id": "FQ02-029",
+    "type": "MS",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト3"
+    },
+    "name": "ガンダム・グシオンリベイクフルシティ",
+    "model": "ASW-G-11 GUNDAM GUSION REBAKE FULL CITY",
+    "cost": 3,
+    "category": "近距離",
+    "pilot": "昭弘・アルトランド",
+    "stats": {
+      "height": "18.2m",
+      "weight": "36.5t",
+      "mobility": 250,
+      "ranged_attack": 50,
+      "melee_attack": 330,
+      "hp": 420
+    },
+    "terrain_compatibility": {
+      "ground": "S",
+      "space": "A",
+      "desert": "S",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "グシオンリベイクハルバード",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "ロングレンジライフル",
+        "range": 4,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "補給【弱体化解除】",
+      "type": "任意発動",
+      "range": 1,
+      "cost": 5,
+      "description": "自身を中心とした大範囲の味方ユニットのHPを中回復し、弱体化状態を無効化にする。"
+    },
+    "link_ability": [
+      {
+        "name": "鉄血のオルフェンズ",
+        "condition": "デッキに3枚以上",
+        "effect": "【遠距離攻撃力】【近距離攻撃力】小アップ"
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "【遠距離攻撃力】【近距離攻撃力】小アップ"
+      }
+    ],
+    "impact_area": {
+      "type": "circular",
+      "radius": 3,
+      "centered": true
+    },
+    "illustrator": "SOEZY",
+    "raw": "近距離 コスト3\nASW-G-11 GUNDAM GUSION REBAKE FULL CITY\nガンダム・グシオンリベイクフルシティ\n頭頂高 18.2m\n本体重量 36.5t\n所属 鉄華団\nパイロット 昭弘・アルトランド\n地上 S 宇宙 A 砂漠 S 水中 C\n機動力 250\n遠距離攻撃 50\n近距離攻撃 330\nHP 420\nWEAPON\nMAIN グシオンリベイクハルバード 射程 1 近距離\nSUB ロングレンジライフル 射程 4 遠距離\nMS ABILITY\n補給【弱体化解除】\n任意発動 範囲 (味方) 射程 1 コスト 5\n自身を中心とした大範囲の味方ユニットのHPを中回復し、弱体化状態を無効化にする。\nLINK ABILITY\n鉄血のオルフェンズ デッキに3枚以上\n【遠距離攻撃力】【近距離攻撃力】小アップ\n戦況を変える力 デッキに4枚以上\n【遠距離攻撃力】【近距離攻撃力】小アップ\nIMPACT AREA\nSPECIAL ATTACK\nジザシールド強襲\n連携\n連携\n連携\n単体 (敵) 射程 2\nコスト 7 威力 3400 / -\n敵単体に格闘攻撃でダメージを与える。/ -\nillust SOEZY\n©創通・サンライズ\nBANDAI MADE IN JAPAN"
+  },
+  "ocr_timestamp": "2025-06-28T02:16:43.338832",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli"
+}

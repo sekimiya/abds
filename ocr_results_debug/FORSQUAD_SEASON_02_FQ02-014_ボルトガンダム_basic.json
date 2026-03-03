@@ -43,7 +43,7 @@
       }
     },
     "ms_ability": {
-      "name": "鼓舞【近距離】[弱体化解除]",
+      "name": "鼓舞[近距離][弱体化解除]",
       "type": "任意発動",
       "range": 0,
       "cost": 6,
@@ -71,5 +71,14 @@
   },
   "ocr_timestamp": "2025-06-28T01:56:48.817485",
   "ocr_type": "basic",
-  "ocr_engine": "claude_code_cli"
+  "ocr_engine": "claude_code_cli",
+  "_fix_history": [
+    {
+      "timestamp": "2026-03-03T23:46:52",
+      "changes": [
+        "ms_ability.name: \"鼓舞【近距離】[弱体化解除]\" → \"鼓舞[近距離][弱体化解除]\""
+      ]
+    }
+  ],
+  "_fixed": true
 }

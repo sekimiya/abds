@@ -62,6 +62,7 @@ DEFAULT_DELAY = 2.0          # claude CLI 呼び出し間隔（秒）
 MAX_RETRIES = 3              # リトライ回数
 SUBPROCESS_TIMEOUT = 300     # claude CLI のタイムアウト（秒）
 MIN_IMAGE_SIZE = 1000        # ダミー画像判定用の最小バイト数
+DEFAULT_OCR_MODEL = "sonnet" # OCR用デフォルトモデル（opus は遅すぎるため sonnet を使用）
 
 # ---------------------------------------------------------------------------
 # Logging
@@ -169,97 +170,47 @@ SQ関連スキル (has_sq_skill: true): sq_skill_details = { "sq_gauge_effect", 
 # ---------------------------------------------------------------------------
 # Combined Prompt — 1回の呼び出しで画像→生テキスト＋構造化JSONを同時生成
 # ---------------------------------------------------------------------------
-COMBINED_PROMPT = r"""あなたはカードゲーム「ガンダム アーセナルベース」のカード画像を読み取るOCRエキスパートです。
+COMBINED_PROMPT = r"""カード裏面画像を読み取り、以下の2つを出力してください。
 
-この画像はカードの **裏面** です。
-以下の2つを **1回のレスポンス** で出力してください。
-
-━━━━━━━━━━━━━━━━━━━━━━━━
-PART A: 生テキスト書き起こし
-━━━━━━━━━━━━━━━━━━━━━━━━
-画像に表示されている **すべてのテキスト** を忠実に書き起こす。
-
-ルール:
-1. カード上のテキストを上から下へ、左から右へ読み取る
-2. セクションの区切りは空行で表現する
-3. 数値・記号・英語・日本語をすべてそのまま書き起こす
-4. 読み取れない文字は [?] と記す
-5. アイコンや図形は [アイコン:内容] の形式で記述（例: [アイコン:地上A]）
-6. セクション名（WEAPON, MS ABILITY, LINK ABILITY, SPECIAL ATTACK, IMPACT AREA, PL SKILL, UNITED SP 等）は見出しとして記録
-7. カード右上の「MS」または「PL」の種別を最初に記録
-8. カード右下のカード番号・レアリティ・イラストレーター情報も記録
-9. テキスト以外の説明や解釈は一切加えない
-
-出力形式:
+PART A: 画像上の全テキストを忠実に書き起こす。
 ===RAW_START===
-（ここに生テキスト）
+（生テキスト）
 ===RAW_END===
 
-━━━━━━━━━━━━━━━━━━━━━━━━
-PART B: 構造化JSON
-━━━━━━━━━━━━━━━━━━━━━━━━
-PART Aで書き起こしたテキストを元に、以下のJSON形式で構造化する。
+PART B: 構造化JSON（```json```で囲む）
 
-## MSカードの場合
+MSカード:
 ```json
-{
-  "card_id": "AB01-001", "type": "MS",
-  "card_label": { "class": "近距離", "cost_label": "コスト4" },
-  "name": "ガンダム", "model": "RX-78-2 GUNDAM", "cost": 4, "category": "近距離",
-  "affiliation": "地球連邦軍", "pilot": "アムロ・レイ",
-  "stats": { "height": "18.0m", "weight": "43.4t", "mobility": 200, "ranged_attack": 110, "melee_attack": 370, "hp": 380 },
-  "terrain_compatibility": { "ground": "A", "space": "A", "desert": "C", "water": null },
-  "weapon": {
-    "main": { "name": "ビーム・サーベル", "range": 1, "type": "近距離" },
-    "sub": { "name": "ビーム・ライフル", "range": 3, "type": "遠距離" }
-  },
-  "ms_ability": { "name": "連撃", "activation": "任意発動", "target": "単体(敵)", "range": 2, "cost": 3, "description": "ロックオン中の敵に単体攻撃でダメージを与える。" },
-  "link_ability": [ { "name": "機動戦士ガンダム", "condition": "デッキに3枚以上", "effect": "[機動力]小アップ" } ],
-  "special_attack": { "name": "ビーム・サーベル強撃", "target": "単体(敵)", "range": 2, "sp_cost": 2, "power": 3400, "description": "敵単体に格闘攻撃でダメージを与える。", "united_sp": null },
-  "rarity": "M", "illustrator": "toriyufu",
-  "raw": ""
-}
+{"card_id":"","type":"MS","card_label":{"class":"近距離/遠距離/機動","cost_label":"コストN"},
+"name":"","model":"","cost":0,"category":"","affiliation":"","pilot":"",
+"stats":{"height":"","weight":"","mobility":0,"ranged_attack":0,"melee_attack":0,"hp":0},
+"terrain_compatibility":{"ground":"","space":"","desert":"","water":""},
+"weapon":{"main":{"name":"","range":0,"type":""},"sub":{"name":"","range":0,"type":""}},
+"ms_ability":{"name":"","activation":"","target":"","range":0,"cost":0,"description":""},
+"link_ability":[{"name":"","condition":"","effect":""}],
+"special_attack":{"name":"","target":"","range":0,"sp_cost":0,"power":0,"description":"","united_sp":null},
+"rarity":"","illustrator":"","raw":""}
 ```
-UNITED SP がある場合（FQ/UT系）: special_attack.united_sp = { "partner1", "partner2", "range", "power", "description" }。連携相手が「ー」なら null。
-ECHOES BEAT がある場合: special_attack に以下のフィールドを追加（キー名は必ずこの通りにすること）:
-- "eb_level": EBレベル（整数。例: 2）
-- "eb_power": EB時の威力（整数。通常威力とEB威力が「3200 / 3800」のように併記される場合、後者がeb_power）
-- "eb_description": EB発動時の効果説明（通常説明と「／」で区切られている場合、「／」以降がEB説明）
-- "eb_target": EB時の対象（例: "単体(敵)"。通常と同じ場合も記載）
-- "eb_range": EB時の射程（整数。通常と同じ場合も記載）
-- "sp_type": "ECHOES BEAT SP"（ECHOES BEAT SPの場合のみ。通常のECHOES BEATにはこのフィールドを付けない）
-※ echoes_beat_lv, power_eb 等の別名は使わないこと。必ず上記のキー名を使用する。
 
-## PLカードの場合
+PLカード:
 ```json
-{
-  "card_id": "AB01-051", "type": "PL",
-  "card_label": { "class": "制圧", "cost_label": "コスト4" },
-  "name": "アムロ・レイ", "english_name": "AMURO RAY", "cost": 4, "category": "制圧",
-  "affiliation": "地球連邦軍",
-  "physical": { "height": "168cm", "age": 15 },
-  "units": ["ガンダム"],
-  "stats": { "mobility": 150, "ranged_attack": 200, "melee_attack": 240, "hp": 160 },
-  "pilot_skill": { "name": "決定的な一撃", "trigger": "敵戦艦／拠点をロックオン時", "effect": "敵戦艦／拠点へのダメージを中アップする。", "has_sq_skill": false, "sq_skill_details": null },
-  "link_ability": [ { "name": "機動戦士ガンダム", "condition": "デッキに3枚以上", "effect": "[機動力]小アップ" } ],
-  "rarity": "M", "illustrator": null,
-  "raw": ""
-}
+{"card_id":"","type":"PL","card_label":{"class":"殲滅/制圧/防衛","cost_label":"コストN"},
+"name":"","cost":0,"category":"","affiliation":"",
+"stats":{"mobility":0,"ranged_attack":0,"melee_attack":0,"hp":0},
+"pilot_skill":{"name":"","trigger":"","effect":"","has_sq_skill":false,"sq_skill_details":null},
+"link_ability":[{"name":"","condition":"","effect":""}],
+"rarity":"","illustrator":"","raw":""}
 ```
-SQ関連スキル (has_sq_skill: true): sq_skill_details = { "sq_gauge_effect", "sq_max_effect", "squad_rush_effect" }。SQ/SQUAD/ゲージ がスキルテキストにあれば true。
 
-## ルール
-- 読み取れないフィールドは null（空文字列ではなく）
-- 数値は数値型（cost, range, power, stats等）
-- card_label.class: MSは「近距離/遠距離/機動」、PLは「殲滅/制圧/防衛」
-- category は card_label.class と同じ値
-- raw は空文字列 "" を設定（コード側で後から生テキストを挿入する）
-- rarity はカード番号の右に記載（M, R, C, P, U, SR, PR, LR, LE, CP 等。1〜2文字）
-- ms_ability は1カードにつき1つ（オブジェクト）。link_ability は1カードにつき通常2つ（配列）。生テキスト上のセクション見出し位置ではなく内容形式で分類すること。ms_ability は発動条件（任意発動等）・対象・射程・コストを持つ戦闘アビリティ。link_ability はデッキ条件とバフ効果を持つ。セクション内に混在している場合も内容に基づいて正しいフィールドに振り分けること
-- 出力は ```json ``` で囲む
+ルール:
+- 読めないフィールドはnull。数値は数値型。rawは空文字列""
+- ms_abilityは1つ(obj)、link_abilityは配列。内容形式で分類（発動条件+射程+コスト→ms_ability、デッキ条件+バフ→link_ability）
+- SQUAD SP: sp_type:"SQUAD SP"を追加。powerは通常威力(整数)、squad_sp:{name,target,range,power(整数),description}を別途追加
+- UNITED SP: united_sp:{partner1,partner2,range,power,description}。「ー」ならnull
+- ECHOES BEAT: special_attackにeb_level(整数),eb_power(整数),eb_description,eb_target,eb_rangeを追加。ECHOES BEAT SPの場合のみsp_type:"ECHOES BEAT SP"
+- SQスキル: SQ/SQUAD/ゲージがスキルテキストにあればhas_sq_skill:true、sq_skill_details:{trigger,sq_gauge_effect,sq_rush_effect,sq_max_effect}
 
-━━━━━━━━━━━━━━━━━━━━━━━━
-出力順序: 必ず PART A（===RAW_START=== 〜 ===RAW_END===）を先に出力し、その後に PART B（```json 〜 ```）を出力してください。
+出力順序: PART A → PART B
 """
 
 # ---------------------------------------------------------------------------
@@ -539,8 +490,8 @@ def _run_claude_cli(
         cmd.extend(["--allowedTools", allowed_tools])
     cmd.append("--no-session-persistence")
 
-    if model:
-        cmd.extend(["--model", model])
+    effective_model = model or DEFAULT_OCR_MODEL
+    cmd.extend(["--model", effective_model])
 
     env = {k: v for k, v in os.environ.items() if k != "CLAUDECODE"}
 

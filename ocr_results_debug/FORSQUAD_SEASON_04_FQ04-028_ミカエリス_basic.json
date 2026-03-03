@@ -44,7 +44,7 @@
       }
     },
     "ms_ability": {
-      "name": "妨撃【機動】",
+      "name": "妨撃[機動]",
       "activation": "任意発動",
       "target": "単体(敵)",
       "range": 3,
@@ -79,5 +79,14 @@
   "ocr_raw_file": "FORSQUAD_SEASON_04_FQ04-028_ミカエリス_ocr_raw.json",
   "ocr_timestamp": "2026-02-24T18:21:15.042700",
   "ocr_type": "basic",
-  "ocr_engine": "claude_code_cli_combined"
+  "ocr_engine": "claude_code_cli_combined",
+  "_fix_history": [
+    {
+      "timestamp": "2026-03-03T23:49:30",
+      "changes": [
+        "ms_ability.name: \"妨撃【機動】\" → \"妨撃[機動]\""
+      ]
+    }
+  ],
+  "_fixed": true
 }

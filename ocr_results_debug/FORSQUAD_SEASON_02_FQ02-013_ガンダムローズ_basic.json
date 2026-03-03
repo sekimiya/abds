@@ -43,7 +43,7 @@
       }
     },
     "ms_ability": {
-      "name": "練撃",
+      "name": "砲撃",
       "type": "任意発動",
       "range": 1,
       "cost": 3,
@@ -71,5 +71,14 @@
   },
   "ocr_timestamp": "2025-06-28T01:50:56.874874",
   "ocr_type": "basic",
-  "ocr_engine": "claude_code_cli"
+  "ocr_engine": "claude_code_cli",
+  "_fix_history": [
+    {
+      "timestamp": "2026-03-03T23:46:27",
+      "changes": [
+        "ms_ability.name: \"練撃\" → \"砲撃\""
+      ]
+    }
+  ],
+  "_fixed": true
 }

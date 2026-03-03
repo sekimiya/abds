@@ -44,7 +44,7 @@
       }
     },
     "ms_ability": {
-      "name": "増援[殲滅/破甲]",
+      "name": "増援[殲滅／破甲]",
       "activation": "任意発動",
       "target": "特殊(自分)",
       "range": null,
@@ -79,5 +79,14 @@
   "ocr_raw_file": "UNITRIBE_SEASON_06_UT06-004_百式_ocr_raw.json",
   "ocr_timestamp": "2026-02-26T17:32:54.169296",
   "ocr_type": "basic",
-  "ocr_engine": "claude_code_cli_combined"
+  "ocr_engine": "claude_code_cli_combined",
+  "_fix_history": [
+    {
+      "timestamp": "2026-03-03T23:48:42",
+      "changes": [
+        "ms_ability.name: \"増援[殲滅/破甲]\" → \"増援[殲滅／破甲]\""
+      ]
+    }
+  ],
+  "_fixed": true
 }

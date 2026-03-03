@@ -44,7 +44,7 @@
       }
     },
     "ms_ability": {
-      "name": "装束[貫通改]",
+      "name": "装転[貫通改]",
       "activation": "任意発動",
       "target": "自分",
       "range": null,
@@ -79,5 +79,14 @@
   "ocr_raw_file": "FORSQUAD_SEASON_01_FQ01-021_ゲルググメナース(ルナマリア・ホーク専用機)_ocr_raw.json",
   "ocr_timestamp": "2026-02-24T01:27:27.898294",
   "ocr_type": "basic",
-  "ocr_engine": "claude_code_cli"
+  "ocr_engine": "claude_code_cli",
+  "_fix_history": [
+    {
+      "timestamp": "2026-03-03T23:46:08",
+      "changes": [
+        "ms_ability.name: \"装束[貫通改]\" → \"装転[貫通改]\""
+      ]
+    }
+  ],
+  "_fixed": true
 }

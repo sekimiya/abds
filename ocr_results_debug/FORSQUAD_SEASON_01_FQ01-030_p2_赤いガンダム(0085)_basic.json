@@ -44,7 +44,7 @@
       }
     },
     "ms_ability": {
-      "name": "蒼起",
+      "name": "奮起",
       "activation": "出撃時発動",
       "target": "自分",
       "range": null,
@@ -79,5 +79,14 @@
   "ocr_raw_file": "FORSQUAD_SEASON_01_FQ01-030_p2_赤いガンダム(0085)_ocr_raw.json",
   "ocr_timestamp": "2026-02-24T13:47:39.746114",
   "ocr_type": "basic",
-  "ocr_engine": "claude_code_cli_combined"
+  "ocr_engine": "claude_code_cli_combined",
+  "_fix_history": [
+    {
+      "timestamp": "2026-03-03T23:46:45",
+      "changes": [
+        "ms_ability.name: \"蒼起\" → \"奮起\""
+      ]
+    }
+  ],
+  "_fixed": true
 }

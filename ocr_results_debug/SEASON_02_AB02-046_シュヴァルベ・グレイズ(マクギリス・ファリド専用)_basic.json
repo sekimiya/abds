@@ -44,7 +44,7 @@
       }
     },
     "ms_ability": {
-      "name": "強化【近距離】",
+      "name": "強化[近距離]",
       "activation": "任意発動",
       "target": "自分",
       "range": null,
@@ -74,5 +74,14 @@
   "ocr_raw_file": "SEASON_02_AB02-046_シュヴァルベ・グレイズ(マクギリス・ファリド専用)_ocr_raw.json",
   "ocr_timestamp": "2026-02-23T15:10:28.725679",
   "ocr_type": "basic",
-  "ocr_engine": "claude_code_cli"
+  "ocr_engine": "claude_code_cli",
+  "_fix_history": [
+    {
+      "timestamp": "2026-03-03T23:47:53",
+      "changes": [
+        "ms_ability.name: \"強化【近距離】\" → \"強化[近距離]\""
+      ]
+    }
+  ],
+  "_fixed": true
 }

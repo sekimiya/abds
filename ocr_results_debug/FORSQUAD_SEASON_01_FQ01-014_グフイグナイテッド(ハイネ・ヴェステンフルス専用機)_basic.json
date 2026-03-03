@@ -44,7 +44,7 @@
       }
     },
     "ms_ability": {
-      "name": "増援[殲滅/砲撃]",
+      "name": "増援[殲滅／砲撃]",
       "activation": "任意発動",
       "target": "特殊(自分)",
       "range": null,
@@ -58,7 +58,7 @@
         "effect": "[HP]小アップ"
       },
       {
-        "name": "緋紫",
+        "name": "緋蝶",
         "condition": "デッキに2枚以上",
         "effect": "[機動力][近距離攻撃力]小アップ"
       }
@@ -79,5 +79,20 @@
   "ocr_raw_file": "FORSQUAD_SEASON_01_FQ01-014_グフイグナイテッド(ハイネ・ヴェステンフルス専用機)_ocr_raw.json",
   "ocr_timestamp": "2026-02-24T01:22:35.922497",
   "ocr_type": "basic",
-  "ocr_engine": "claude_code_cli"
+  "ocr_engine": "claude_code_cli",
+  "_fix_history": [
+    {
+      "timestamp": "2026-03-03T23:46:18",
+      "changes": [
+        "ms_ability.name: \"増援[殲滅/砲撃]\" → \"増援[殲滅／砲撃]\""
+      ]
+    },
+    {
+      "timestamp": "2026-03-03T23:46:38",
+      "changes": [
+        "link_ability.name: \"緋紫\" → \"緋蝶\""
+      ]
+    }
+  ],
+  "_fixed": true
 }

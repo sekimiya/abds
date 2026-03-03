@@ -44,7 +44,7 @@
       }
     },
     "ms_ability": {
-      "name": "鼓舞【機動】",
+      "name": "鼓舞[機動]",
       "activation": "任意発動",
       "target": "範囲(味方)",
       "range": null,
@@ -74,5 +74,14 @@
   "ocr_raw_file": "SEASON_03_AB03-026_百式_ocr_raw.json",
   "ocr_timestamp": "2026-02-23T15:14:28.823697",
   "ocr_type": "basic",
-  "ocr_engine": "claude_code_cli"
+  "ocr_engine": "claude_code_cli",
+  "_fix_history": [
+    {
+      "timestamp": "2026-03-03T23:49:34",
+      "changes": [
+        "ms_ability.name: \"鼓舞【機動】\" → \"鼓舞[機動]\""
+      ]
+    }
+  ],
+  "_fixed": true
 }

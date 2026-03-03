@@ -58,7 +58,7 @@
         "effect": "[近距離攻撃力]小アップ"
       },
       {
-        "name": "肉迫する戦い",
+        "name": "肉薄する戦い",
         "condition": "デッキに4枚以上",
         "effect": "[機動力][近距離攻撃力]小アップ"
       }
@@ -85,5 +85,14 @@
   "ocr_raw_file": "UNITRIBE_SEASON_06_UT06-032_ガンダム・バエル_ocr_raw.json",
   "ocr_timestamp": "2026-02-26T17:43:03.231016",
   "ocr_type": "basic",
-  "ocr_engine": "claude_code_cli_combined"
+  "ocr_engine": "claude_code_cli_combined",
+  "_fix_history": [
+    {
+      "timestamp": "2026-03-03T23:48:08",
+      "changes": [
+        "link_ability.name: \"肉迫する戦い\" → \"肉薄する戦い\""
+      ]
+    }
+  ],
+  "_fixed": true
 }

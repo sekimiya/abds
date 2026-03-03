@@ -559,6 +559,7 @@ a:hover { text-decoration: underline; }
     <a href="/">&larr; トップ</a>
     <a href="/admin">管理画面</a>
     <a href="/ocr-run">OCR実行</a>
+    <a href="/ocr-quality">品質チェック</a>
   </div>
 </div>
 
@@ -902,9 +903,9 @@ function renderMasterCheck(groups) {
 
     // アクション
     if (hasSuggest) {
-      const suggestion = JSON.stringify({category: dictCategory, key: g.ocr_value, value: g.closest_match});
+      const fixData = JSON.stringify({category: dictCategory, key: g.ocr_value, value: g.closest_match});
       html += `<div class="mc-item-actions">`;
-      html += `<button class="dict-btn" onclick='addToDictFromCheck(${suggestion.replace(/'/g, "\\'")})'>辞書に追加</button>`;
+      html += `<button class="dict-btn" onclick='applyDirectFix(this, ${fixData.replace(/'/g, "&#39;")})' style="background:#4caf50;">修正を実行</button>`;
       html += `</div>`;
     }
 
@@ -915,28 +916,33 @@ function renderMasterCheck(groups) {
   container.innerHTML = html;
 }
 
-async function addToDictFromCheck(suggestion) {
-  const s = typeof suggestion === 'string' ? JSON.parse(suggestion) : suggestion;
+async function applyDirectFix(btn, fixData) {
+  const s = typeof fixData === 'string' ? JSON.parse(fixData) : fixData;
+  if (!confirm(`"${s.key}" → "${s.value}" に修正しますか？\n（元ファイルは .back にバックアップされます）`)) return;
+
+  btn.disabled = true;
+  btn.textContent = '修正中...';
+
   try {
-    const res = await adminFetch('/api/ocr-validate/corrections', {
+    const res = await adminFetch('/api/ocr-validate/direct-fix', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ action: 'add', category: s.category, key: s.key, value: s.value }),
+      body: JSON.stringify({ fixes: [{ category: s.category, key: s.key, value: s.value }] }),
     });
     const data = await res.json();
     if (!data.success) {
-      alert(data.error || '追加に失敗しました');
+      alert(data.error || '修正に失敗しました');
+      btn.disabled = false;
+      btn.textContent = '修正を実行';
       return;
     }
-    correctionsCache = data.corrections;
-    document.getElementById('statDict').textContent = data.entry_count.toLocaleString();
-    renderDictTab();
-    // ボタンを「追加済」に変更
-    event.target.textContent = '追加済';
-    event.target.disabled = true;
-    event.target.style.opacity = '0.5';
+    btn.textContent = `修正完了 (${data.files_modified}件)`;
+    btn.style.opacity = '0.5';
+    btn.style.background = '#888';
   } catch (e) {
     alert('エラー: ' + e.message);
+    btn.disabled = false;
+    btn.textContent = '修正を実行';
   }
 }
 

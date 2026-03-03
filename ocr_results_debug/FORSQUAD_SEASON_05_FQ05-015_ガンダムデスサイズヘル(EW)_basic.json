@@ -44,7 +44,7 @@
       }
     },
     "ms_ability": {
-      "name": "誘導［防御］",
+      "name": "誘導[防御]",
       "activation": "任意発動",
       "target": "特殊(敵)",
       "range": null,
@@ -79,5 +79,14 @@
   "ocr_raw_file": "FORSQUAD_SEASON_05_FQ05-015_ガンダムデスサイズヘル(EW)_ocr_raw.json",
   "ocr_timestamp": "2026-02-24T18:27:58.694992",
   "ocr_type": "basic",
-  "ocr_engine": "claude_code_cli_combined"
+  "ocr_engine": "claude_code_cli_combined",
+  "_fix_history": [
+    {
+      "timestamp": "2026-03-03T23:47:26",
+      "changes": [
+        "ms_ability.name: \"誘導［防御］\" → \"誘導[防御]\""
+      ]
+    }
+  ],
+  "_fixed": true
 }

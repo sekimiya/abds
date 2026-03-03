@@ -58,7 +58,7 @@
         "effect": "[遠距離攻撃力]小アップ"
       },
       {
-        "name": "追撃の近距離戦",
+        "name": "迫撃の近距離戦",
         "condition": "デッキに近距離が2枚以上",
         "effect": "[近距離攻撃力]中アップ"
       }
@@ -87,5 +87,14 @@
   "ocr_raw_file": "UNITRIBE_SEASON_06_UT06-008_キュベレイ_ocr_raw.json",
   "ocr_timestamp": "2026-02-26T17:35:02.740723",
   "ocr_type": "basic",
-  "ocr_engine": "claude_code_cli_combined"
+  "ocr_engine": "claude_code_cli_combined",
+  "_fix_history": [
+    {
+      "timestamp": "2026-03-03T23:46:00",
+      "changes": [
+        "link_ability.name: \"追撃の近距離戦\" → \"迫撃の近距離戦\""
+      ]
+    }
+  ],
+  "_fixed": true
 }

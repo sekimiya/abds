@@ -44,7 +44,7 @@
       }
     },
     "ms_ability": {
-      "name": "デコイ【ユニット】",
+      "name": "デコイ[ユニット]",
       "activation": "任意発動",
       "target": "特殊(自分)",
       "range": null,
@@ -58,7 +58,7 @@
         "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
       },
       {
-        "name": "状況を変える力",
+        "name": "戦況を変える力",
         "condition": "デッキに4枚以上",
         "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
       }
@@ -79,5 +79,14 @@
   "ocr_raw_file": "FQブースター6弾_FQB06-002_νガンダム_ocr_raw.json",
   "ocr_timestamp": "2026-02-28T05:17:12.158995",
   "ocr_type": "basic",
-  "ocr_engine": "claude_code_cli_combined"
+  "ocr_engine": "claude_code_cli_combined",
+  "_fix_history": [
+    {
+      "timestamp": "2026-03-03T23:45:45",
+      "changes": [
+        "ms_ability.name: \"デコイ【ユニット】\" → \"デコイ[ユニット]\""
+      ]
+    }
+  ],
+  "_fixed": true
 }

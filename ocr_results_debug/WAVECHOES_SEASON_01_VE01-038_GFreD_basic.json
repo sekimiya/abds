@@ -44,7 +44,7 @@
       }
     },
     "ms_ability": {
-      "name": "補給［弱体化解除］",
+      "name": "補給[弱体化解除]",
       "activation": "任意発動",
       "target": "範囲(味方)",
       "range": null,
@@ -81,5 +81,14 @@
   "ocr_raw_file": "WAVECHOES_SEASON_01_VE01-038_GFreD_ocr_raw.json",
   "ocr_timestamp": "2026-02-23T13:17:48.462560",
   "ocr_type": "basic",
-  "ocr_engine": "claude_code_cli"
+  "ocr_engine": "claude_code_cli",
+  "_fix_history": [
+    {
+      "timestamp": "2026-03-03T23:48:18",
+      "changes": [
+        "ms_ability.name: \"補給［弱体化解除］\" → \"補給[弱体化解除]\""
+      ]
+    }
+  ],
+  "_fixed": true
 }

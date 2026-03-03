@@ -44,7 +44,7 @@
       }
     },
     "ms_ability": {
-      "name": "妨撃",
+      "name": "砲撃",
       "activation": "任意発動",
       "target": "単体(敵)",
       "range": 1,
@@ -79,5 +79,14 @@
   "ocr_raw_file": "SEASON_01_AB01-020_シナンジュ_ocr_raw.json",
   "ocr_timestamp": "2026-02-23T12:11:44.427691",
   "ocr_type": "basic",
-  "ocr_engine": "claude_code_cli"
+  "ocr_engine": "claude_code_cli",
+  "_fix_history": [
+    {
+      "timestamp": "2026-03-03T23:46:35",
+      "changes": [
+        "ms_ability.name: \"妨撃\" → \"砲撃\""
+      ]
+    }
+  ],
+  "_fixed": true
 }

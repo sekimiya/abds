@@ -44,7 +44,7 @@
       }
     },
     "ms_ability": {
-      "name": "妨撃【近接】",
+      "name": "妨撃[近接]",
       "activation": "任意発動",
       "target": "単体(敵)",
       "range": 1,
@@ -79,5 +79,14 @@
   "ocr_raw_file": "UNITRIBE_SEASON_03_UT03-032_ガンダムX魔王_ocr_raw.json",
   "ocr_timestamp": "2026-02-26T17:23:34.913496",
   "ocr_type": "basic",
-  "ocr_engine": "claude_code_cli_combined"
+  "ocr_engine": "claude_code_cli_combined",
+  "_fix_history": [
+    {
+      "timestamp": "2026-03-03T23:48:04",
+      "changes": [
+        "ms_ability.name: \"妨撃【近接】\" → \"妨撃[近接]\""
+      ]
+    }
+  ],
+  "_fixed": true
 }
