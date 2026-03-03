@@ -1107,8 +1107,9 @@ select,input{font-family:inherit}
     <button class="menu-btn primary" onclick="DeckManager.postToServer()" style="width:100%">デッキを投稿</button>
   </div>
   <a class="menu-btn primary" href="./decks_mobile.html" style="text-decoration:none;display:block;text-align:center;font-size:1.05rem;padding:10px 0;width:100%;box-sizing:border-box">デッキ投稿サイトにアクセス</a>
-  <div class="menu-row">
-    <button class="rec-btn" id="recBtn" onclick="captureFullPage()" style="width:100%"><span id="recBtnLabel">REC</span></button>
+  <div class="menu-row" style="gap:4px">
+    <button class="menu-btn" onclick="DeckManager.sortByCategory();toggleMenu()" title="殲滅→制圧→防衛の順に並び替え" style="flex:1">並び順を整理</button>
+    <button class="rec-btn" id="recBtn" onclick="captureFullPage()" style="flex:0;padding:6px 16px"><span id="recBtnLabel">REC</span></button>
   </div>
   <div class="menu-label">地形適性</div>
   <div class="terrain-switches" id="terrainSwitches">
@@ -1382,6 +1383,8 @@ const CardService = {
   async fetchIndex() {
     const res = await fetch('./data/card_index.json', { cache: 'no-store' });
     const cards = await res.json();
+    // PR-xxx カードの rarity 補完
+    cards.forEach(c => { if (!c.rarity && c.number && c.number.startsWith('PR-')) c.rarity = 'PR'; });
     AppState.cardIndex = cards;
     UIRenderer.invalidateIndexMap();
     const seriesSet = new Set();
@@ -2146,6 +2149,54 @@ const DeckManager = {
       console.error('Deck post error:', err);
       Toast.show('投稿に失敗しました: ' + err.message, 'error');
     }
+  },
+
+  _getUnitCategory(unitIdx) {
+    const plSlot = unitIdx + 5;
+    const cardNumber = AppState.deck[plSlot];
+    if (!cardNumber) return null;
+    const idx = UIRenderer._getIndexEntry(cardNumber);
+    const ocr = AppState.deckOcr[plSlot];
+    const valid = ['殲滅', '制圧', '防衛'];
+    let cat = idx?.category;
+    if (!cat || !valid.includes(cat)) cat = ocr?.card_label?.class;
+    if (!cat || !valid.includes(cat)) cat = ocr?.category;
+    if (!cat || !valid.includes(cat)) {
+      const raw = ocr?.raw || '';
+      for (const kw of valid) {
+        if (raw.includes(kw)) { cat = kw; break; }
+      }
+    }
+    return (cat && valid.includes(cat)) ? cat : null;
+  },
+
+  sortByCategory() {
+    const priority = { '殲滅': 0, '制圧': 1, '防衛': 2 };
+    const units = [];
+    for (let u = 0; u < 5; u++) {
+      const cat = this._getUnitCategory(u);
+      const empty = !AppState.deck[u] && !AppState.deck[u + 5];
+      units.push({
+        ms: AppState.deck[u],
+        pl: AppState.deck[u + 5],
+        msOcr: AppState.deckOcr[u],
+        plOcr: AppState.deckOcr[u + 5],
+        sort: empty ? 4 : (priority[cat] ?? 3)
+      });
+    }
+    units.sort((a, b) => a.sort - b.sort);
+    UndoManager.snapshot();
+    for (let u = 0; u < 5; u++) {
+      AppState.deck[u] = units[u].ms;
+      AppState.deck[u + 5] = units[u].pl;
+      AppState.deckOcr[u] = units[u].msOcr;
+      AppState.deckOcr[u + 5] = units[u].plOcr;
+    }
+    UIRenderer.renderAll();
+    UndoManager.snapshot();
+    this._autoSave();
+    this._updateHash();
+    Toast.show('並び順を整理しました', 'success');
   },
 };
 </script>
@@ -3033,7 +3084,10 @@ const SearchPanel = {
   },
   applyFilters() {
     if (!this._hasActiveFilter()) { this._filteredCards = []; this._page = 0; this._renderGrid(); this._saveFilters(); this._updateFilterBadge(); return; }
-    let cards = AppState.cardIndex.filter(c => c.has_ocr);
+    // PRレアリティ選択時は未OCRカードも含める
+    let cards = this._currentRarity.size > 0
+      ? AppState.cardIndex.filter(c => c.has_ocr || this._currentRarity.has(c.rarity))
+      : AppState.cardIndex.filter(c => c.has_ocr);
     if (this._lockedType && this._t.abCat.size === 0) cards = cards.filter(c => c.type === this._lockedType);
     if (this._currentCategory.size > 0) cards = cards.filter(c => !c.category || this._currentCategory.has(c.category));
     if (this._currentRarity.size > 0) cards = cards.filter(c => !c.rarity || this._currentRarity.has(c.rarity));
