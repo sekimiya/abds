@@ -2467,32 +2467,34 @@ const UIRenderer = {
     html += '</div>';
 
     // MS line
-    if (msNumber) {
+    {
       const msHighlight = msType ? ` ${msType}-highlight` : '';
-      html += `<div class="unit-card-line ms-line${msHighlight}">`;
-      html += `<span class="card-cost">${msCost}</span>`;
+      html += `<div class="unit-card-line ms-line${msHighlight}"${!msNumber ? ' style="opacity:0.3"' : ''}>`;
+      html += `<span class="card-cost">${msNumber ? msCost : '-'}</span>`;
       if (msRarity) {
         const rc = msRarity.replace(/[^A-Za-z]/g, '');
         html += `<span class="card-rarity rarity-tag rarity-${rc}">${escapeHtml(msRarity)}</span>`;
+      } else {
+        html += '<span class="card-rarity rarity-tag" style="opacity:0.5">--</span>';
       }
-      if (msType) html += `<span class="card-type-icon ${msType}">${msType.toUpperCase()}</span>`;
-      html += `<span class="card-name">${escapeHtml(msName)}</span>`;
-      html += `<span class="card-detail-btn" onclick="event.stopPropagation();showCardModal('${escapeHtml(msNumber)}')">詳細</span>`;
+      html += `<span class="card-name">${msNumber ? escapeHtml(msName) : 'MS 未選択'}</span>`;
+      if (msNumber) html += `<span class="card-detail-btn" onclick="event.stopPropagation();showCardModal('${escapeHtml(msNumber)}')">詳細</span>`;
       html += '</div>';
     }
 
     // PL line
-    if (plNumber) {
+    {
       const plHighlight = plType ? ` ${plType}-highlight` : '';
-      html += `<div class="unit-card-line pl-line${plHighlight}">`;
-      html += `<span class="card-cost">${plCost}</span>`;
+      html += `<div class="unit-card-line pl-line${plHighlight}"${!plNumber ? ' style="opacity:0.3"' : ''}>`;
+      html += `<span class="card-cost">${plNumber ? plCost : '-'}</span>`;
       if (plRarity) {
         const rc = plRarity.replace(/[^A-Za-z]/g, '');
         html += `<span class="card-rarity rarity-tag rarity-${rc}">${escapeHtml(plRarity)}</span>`;
+      } else {
+        html += '<span class="card-rarity rarity-tag" style="opacity:0.5">--</span>';
       }
-      if (plType) html += `<span class="card-type-icon ${plType}">${plType.toUpperCase()}</span>`;
-      html += `<span class="card-name">${escapeHtml(plName)}</span>`;
-      html += `<span class="card-detail-btn" onclick="event.stopPropagation();showCardModal('${escapeHtml(plNumber)}')">詳細</span>`;
+      html += `<span class="card-name">${plNumber ? escapeHtml(plName) : 'PL 未選択'}</span>`;
+      if (plNumber) html += `<span class="card-detail-btn" onclick="event.stopPropagation();showCardModal('${escapeHtml(plNumber)}')">詳細</span>`;
       html += '</div>';
     }
 

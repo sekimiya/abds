@@ -3015,9 +3015,9 @@ const UIRenderer = {
     const plRarityName = plCard?.rarity || '';
     const namesCls = (hasSqSp || hasSqSkill) ? 'names-sq' : (hasEb || hasEbSkill) ? 'names-eb' : '';
     namesEl.className = 'unit-card-names' + (namesCls ? ' ' + namesCls : '');
-    const msRarityHtml = msRarityName ? `<span class="rarity-tag rarity-${escapeHtml(msRarityName)}">${escapeHtml(msRarityName)}</span> ` : '';
-    const plRarityHtml = plRarityName ? `<span class="rarity-tag rarity-${escapeHtml(plRarityName)}">${escapeHtml(plRarityName)}</span> ` : '';
-    namesEl.innerHTML = `<div class="card-name-row">${msRarityHtml}<span class="ms-name">${msName ? escapeHtml(msName) : '&nbsp;'}</span></div><div class="card-name-row">${plRarityHtml}<span class="pl-name">${plName ? escapeHtml(plName) : '&nbsp;'}</span></div>`;
+    const msRarityHtml = msRarityName ? `<span class="rarity-tag rarity-${escapeHtml(msRarityName)}">${escapeHtml(msRarityName)}</span> ` : '<span class="rarity-tag" style="opacity:0.25">--</span> ';
+    const plRarityHtml = plRarityName ? `<span class="rarity-tag rarity-${escapeHtml(plRarityName)}">${escapeHtml(plRarityName)}</span> ` : '<span class="rarity-tag" style="opacity:0.25">--</span> ';
+    namesEl.innerHTML = `<div class="card-name-row">${msRarityHtml}<span class="ms-name">${msName ? escapeHtml(msName) : '<span style="opacity:0.3">MS 未選択</span>'}</span></div><div class="card-name-row">${plRarityHtml}<span class="pl-name">${plName ? escapeHtml(plName) : '<span style="opacity:0.3">PL 未選択</span>'}</span></div>`;
 
     // Sub info (model, pilot)
     this._renderSubInfo(u, msOcr, plOcr, msCard, plCard);
