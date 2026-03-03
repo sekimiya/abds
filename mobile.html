@@ -220,13 +220,6 @@ select,input{font-family:inherit}
   display:none;align-items:center;justify-content:center;padding:0;
 }
 .overview-thumb.has-card .ov-clear{display:flex}
-.overview-thumb .ov-detail{
-  position:absolute;bottom:0;right:0;background:rgba(0,0,0,0.75);color:#68efbd;
-  font-size:0.45rem;font-weight:bold;padding:2px 4px;border-radius:3px 0 0 0;
-  border:none;cursor:pointer;z-index:4;line-height:1.2;display:none;
-}
-.overview-thumb.has-card .ov-detail{display:block}
-.overview-thumb .ov-detail:active{background:rgba(104,239,189,0.3);color:#fff}
 .unit-tabs{display:flex;gap:2px;padding:0 2px 4px}
 .unit-tab{
   flex:1;text-align:center;padding:3px 0;border-radius:3px;
@@ -654,6 +647,10 @@ select,input{font-family:inherit}
 .modal-card-header{display:flex;flex-direction:column;gap:10px;margin-bottom:10px}
 .modal-card-images{display:flex;gap:8px;justify-content:center}
 .modal-card-image{width:45%;max-width:160px;height:auto;border-radius:6px;flex-shrink:0}
+#cardDetailModal .modal-content{background:transparent;box-shadow:none;display:flex;align-items:center;justify-content:center;padding:0;overflow:visible;width:auto;max-height:none}
+#cardDetailModal .card-viewer-img{max-width:85vw;max-height:80vh;border-radius:8px;object-fit:contain;cursor:pointer}
+#cardDetailModal .card-viewer-hint{color:#888;font-size:0.75rem;text-align:center;margin-top:8px}
+#cardDetailModal .modal-close{position:fixed;top:12px;right:12px;z-index:410;color:#fff;font-size:2rem;background:rgba(0,0,0,0.5);border-radius:50%;width:36px;height:36px;display:flex;align-items:center;justify-content:center}
 .modal-card-info{min-width:0}
 .modal-card-number{color:var(--accent);font-weight:bold;font-size:1rem}
 .modal-card-name{font-size:1.1rem;font-weight:bold;margin-top:2px}
@@ -1016,8 +1013,8 @@ select,input{font-family:inherit}
 </div>
 
 <!-- CARD DETAIL MODAL -->
-<div class="modal-overlay" id="cardDetailModal">
-  <div class="modal-content" id="cardDetailContent">
+<div class="modal-overlay" id="cardDetailModal" onclick="closeCardModal()">
+  <div class="modal-content" id="cardDetailContent" onclick="event.stopPropagation()">
     <button class="modal-close" onclick="closeCardModal()">&times;</button>
     <div id="cardDetailBody"></div>
   </div>
@@ -2249,8 +2246,8 @@ const UIRenderer = {
     tabs.innerHTML = '';
     for (let u = 0; u < 5; u++) {
       catRow.innerHTML += `<div class="ov-cat" id="ov-cat-${u}"></div>`;
-      msRow.innerHTML += `<div class="overview-thumb empty" id="ov-ms-${u}"><span class="ov-badge" id="ov-ms-badge-${u}"></span><button class="ov-clear" onclick="event.stopPropagation();DeckManager.clearCard(${u})">&times;</button><button class="ov-detail" data-slot="${u}" onclick="event.stopPropagation();showCardModal(AppState.deck[${u}])">詳細</button></div>`;
-      plRow.innerHTML += `<div class="overview-thumb empty" id="ov-pl-${u}"><span class="ov-badge" id="ov-pl-badge-${u}"></span><button class="ov-clear" onclick="event.stopPropagation();DeckManager.clearCard(${u+5})">&times;</button><button class="ov-detail" data-slot="${u+5}" onclick="event.stopPropagation();showCardModal(AppState.deck[${u+5}])">詳細</button></div>`;
+      msRow.innerHTML += `<div class="overview-thumb empty" id="ov-ms-${u}"><span class="ov-badge" id="ov-ms-badge-${u}"></span><button class="ov-clear" onclick="event.stopPropagation();DeckManager.clearCard(${u})">&times;</button></div>`;
+      plRow.innerHTML += `<div class="overview-thumb empty" id="ov-pl-${u}"><span class="ov-badge" id="ov-pl-badge-${u}"></span><button class="ov-clear" onclick="event.stopPropagation();DeckManager.clearCard(${u+5})">&times;</button></div>`;
       tabs.innerHTML += `<div class="unit-tab${u === 0 ? ' active' : ''}" onclick="UIRenderer.selectUnit(${u})">${u + 1}</div>`;
     }
     // Attach tap (front/back toggle) + long-press (open picker) handlers
@@ -3373,19 +3370,19 @@ async function submitTextReport() {
   }
 }
 
-async function showCardModal(number) {
-  const detail = await CardService.fetchDetail(number);
-  if (!detail) { Toast.show('カード情報を取得できません', 'error'); return; }
-  const ocr = detail.ocr_data || {};
+function showCardModal(number) {
   const frontUrl = resolveImageUrl(null, number, 'front');
-  const name = detail.name || number;
-  const cardIdx = AppState.cardIndex.find(c => c.number === number);
-  const rarity = cardIdx?.rarity || null;
   const backUrl = resolveImageUrl(null, number, 'back');
-  let html = `<div class="modal-card-header"><div class="modal-card-images"><img class="modal-card-image" src="${frontUrl}" alt="${escapeHtml(name)} 表"><img class="modal-card-image" src="${backUrl}" alt="${escapeHtml(name)} 裏"></div><div class="modal-card-info"><div class="modal-card-number">${escapeHtml(number)}${rarity ? ` <span class="rarity-tag rarity-${escapeHtml(rarity)}">${escapeHtml(rarity)}</span>` : ''}</div><div class="modal-card-name">${escapeHtml(name)}</div><div style="color:#888;font-size:0.8rem">${escapeHtml(ocr.type||'')} | ${escapeHtml(ocr.category||'')} | C:${ocr.cost||'-'}</div></div></div>`;
-  if (ocr.stats) { html += `<div class="modal-param-group"><div class="modal-param-title">ステータス</div><div class="modal-param-row"><div class="modal-param-item"><span class="modal-param-label">機動:</span>${ocr.stats.mobility||'-'}</div><div class="modal-param-item"><span class="modal-param-label">遠距:</span>${ocr.stats.ranged_attack||'-'}</div><div class="modal-param-item"><span class="modal-param-label">近距:</span>${ocr.stats.melee_attack||'-'}</div><div class="modal-param-item"><span class="modal-param-label">HP:</span>${ocr.stats.hp||'-'}</div></div></div>`; }
-  html += `<div style="margin-top:12px;text-align:center"><button class="menu-btn" style="font-size:0.75rem;padding:4px 12px" onclick="openTextReportModal('${escapeHtml(number)}')">カードテキスト修正依頼</button></div>`;
-  document.getElementById('cardDetailBody').innerHTML = html;
+  let showingFront = true;
+  const body = document.getElementById('cardDetailBody');
+  body.innerHTML = `<img class="card-viewer-img" id="cardViewerImg" src="${frontUrl}" alt="${escapeHtml(number)}" onerror="this.onerror=null;this.src=PLACEHOLDER_SVG"><div class="card-viewer-hint">タップで裏面を表示</div>`;
+  const img = document.getElementById('cardViewerImg');
+  img.addEventListener('click', function(e) {
+    e.stopPropagation();
+    showingFront = !showingFront;
+    img.src = showingFront ? frontUrl : backUrl;
+    body.querySelector('.card-viewer-hint').textContent = showingFront ? 'タップで裏面を表示' : 'タップで表面を表示';
+  });
   document.getElementById('cardDetailModal').classList.add('open');
 }
 
