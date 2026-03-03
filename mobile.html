@@ -220,6 +220,13 @@ select,input{font-family:inherit}
   display:none;align-items:center;justify-content:center;padding:0;
 }
 .overview-thumb.has-card .ov-clear{display:flex}
+.overview-thumb .ov-detail{
+  position:absolute;bottom:0;right:0;background:rgba(0,0,0,0.75);color:#68efbd;
+  font-size:0.45rem;font-weight:bold;padding:2px 4px;border-radius:3px 0 0 0;
+  border:none;cursor:pointer;z-index:4;line-height:1.2;display:none;
+}
+.overview-thumb.has-card .ov-detail{display:block}
+.overview-thumb .ov-detail:active{background:rgba(104,239,189,0.3);color:#fff}
 .unit-tabs{display:flex;gap:2px;padding:0 2px 4px}
 .unit-tab{
   flex:1;text-align:center;padding:3px 0;border-radius:3px;
@@ -2242,8 +2249,8 @@ const UIRenderer = {
     tabs.innerHTML = '';
     for (let u = 0; u < 5; u++) {
       catRow.innerHTML += `<div class="ov-cat" id="ov-cat-${u}"></div>`;
-      msRow.innerHTML += `<div class="overview-thumb empty" id="ov-ms-${u}"><span class="ov-badge" id="ov-ms-badge-${u}"></span><button class="ov-clear" onclick="event.stopPropagation();DeckManager.clearCard(${u})">&times;</button></div>`;
-      plRow.innerHTML += `<div class="overview-thumb empty" id="ov-pl-${u}"><span class="ov-badge" id="ov-pl-badge-${u}"></span><button class="ov-clear" onclick="event.stopPropagation();DeckManager.clearCard(${u+5})">&times;</button></div>`;
+      msRow.innerHTML += `<div class="overview-thumb empty" id="ov-ms-${u}"><span class="ov-badge" id="ov-ms-badge-${u}"></span><button class="ov-clear" onclick="event.stopPropagation();DeckManager.clearCard(${u})">&times;</button><button class="ov-detail" data-slot="${u}" onclick="event.stopPropagation();showCardModal(AppState.deck[${u}])">詳細</button></div>`;
+      plRow.innerHTML += `<div class="overview-thumb empty" id="ov-pl-${u}"><span class="ov-badge" id="ov-pl-badge-${u}"></span><button class="ov-clear" onclick="event.stopPropagation();DeckManager.clearCard(${u+5})">&times;</button><button class="ov-detail" data-slot="${u+5}" onclick="event.stopPropagation();showCardModal(AppState.deck[${u+5}])">詳細</button></div>`;
       tabs.innerHTML += `<div class="unit-tab${u === 0 ? ' active' : ''}" onclick="UIRenderer.selectUnit(${u})">${u + 1}</div>`;
     }
     // Attach tap (front/back toggle) + long-press (open picker) handlers
