@@ -960,7 +960,7 @@ select,input{font-family:inherit}
 .thumb-card-number .thumb-no-ocr{
   color:#666;font-size:0.58rem;font-style:italic;flex-shrink:0;
 }
-.thumb-card.no-ocr{opacity:0.45;pointer-events:none}
+.thumb-card.no-ocr{opacity:0.65}
 .thumb-no-ocr-badge{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,0.8);color:#f44336;font-size:0.65rem;font-weight:bold;padding:2px 6px;border-radius:3px;border:1px solid #f44336;white-space:nowrap}
 .thumb-card-name{
   color:#ddd;font-size:0.68rem;font-weight:bold;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
@@ -4562,7 +4562,7 @@ const SearchPanel = {
           ${card.eb_trigger_level ? `<div class="thumb-card-eb-lv">EBLv.${card.eb_trigger_level}発動</div>` : ''}
         </div>
       `;
-      if (!noOcr) el.addEventListener('click', () => this._selectCard(card));
+      el.addEventListener('click', () => this._selectCard(card));
       grid.appendChild(el);
     });
 

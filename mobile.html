@@ -496,7 +496,7 @@ select,input{font-family:inherit}
 .thumb-card-info{position:absolute;bottom:0;left:0;right:0;padding:2px 3px;background:rgba(0,0,0,0.75);display:flex;flex-direction:column;gap:0px}
 .thumb-card-number{color:var(--accent);font-size:0.5rem;white-space:nowrap;overflow:hidden}
 .thumb-card-name{color:#ddd;font-size:0.55rem;font-weight:bold;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.thumb-card.no-ocr{opacity:0.45;pointer-events:none}
+.thumb-card.no-ocr{opacity:0.65}
 .thumb-no-ocr-badge{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,0.8);color:#f44336;font-size:0.65rem;font-weight:bold;padding:2px 6px;border-radius:3px;border:1px solid #f44336;white-space:nowrap}
 .thumb-card-sub{color:#888;font-size:0.45rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .picker-pagination{
@@ -3217,7 +3217,7 @@ const SearchPanel = {
             <div class="thumb-card-name">${escapeHtml(card.name || '')}</div>
           </div>
         </div>`;
-      if (!noOcr) el.addEventListener('click', () => this._selectCard(card));
+      el.addEventListener('click', () => this._selectCard(card));
       grid.appendChild(el);
     }
     this._rendered = end;
