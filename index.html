@@ -4310,8 +4310,8 @@ const SearchPanel = {
     if (costMin > 0 || costMax < 13) {
       cards = cards.filter(c => c.cost === null || (c.cost >= costMin && c.cost <= costMax));
     }
-    // 詳細データ未設定カード判定（プロモーション等: cost===nullなら詳細フィルタをパス）
-    const _noDetail = c => c.cost === null;
+    // 詳細データ未設定カード判定（OCR済みでcost未設定の特殊カードのみバイパス）
+    const _noDetail = c => c.has_ocr && c.cost === null;
     // Stat filters (sliders)
     const mobMin = parseInt(document.getElementById('filterMobility').value);
     const rangedMin = parseInt(document.getElementById('filterRanged').value);
