@@ -1,0 +1,78 @@
+{
+  "card_number": "TEST-010",
+  "card_name": "ギラ・ズール(量産機)",
+  "series": "ロケーションテスト",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/TEST-010.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/TEST-010_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "TEST-010",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト2"
+    },
+    "name": "ギラ・ズール（量産機）",
+    "model": "AMS-129 GEARA ZULU",
+    "cost": 2,
+    "category": "遠距離",
+    "affiliation": "ネオ・ジオン残党軍『袖付き』",
+    "pilot": null,
+    "stats": {
+      "height": "20.0m",
+      "weight": "21.8t",
+      "mobility": 90,
+      "ranged_attack": 190,
+      "melee_attack": 90,
+      "hp": 160
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "A",
+      "desert": "C",
+      "water": null
+    },
+    "weapon": {
+      "main": {
+        "name": "ビーム・マシンガン",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ビーム・ホーク",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "補給",
+      "activation": "任意発動",
+      "target": "範囲(味方)",
+      "range": null,
+      "cost": 4,
+      "description": "自身を中心とした大範囲の味方ユニットのHPを中回復する。"
+    },
+    "link_ability": [
+      {
+        "name": "ガンダムUC",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ビーム・マシンガン斉射",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 2700,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "C",
+    "illustrator": "Takumi Kousaka",
+    "raw": "MS\n\n遠距離　コスト2\n\nAMS-129 GEARA ZULU\nギラ・ズール（量産機）\n\n全高　20.0m\n本体重量　21.8t\n所属　ネオ・ジオン残党軍『袖付き』\nパイロット　ー\n\n地上　A　宇宙　A　砂漠　C\n\n機動力　90\n遠距離攻撃　190\n近距離攻撃　90\nHP　160\n\nWEAPON\nMAIN　ビーム・マシンガン　射程 3　遠距離\nSUB　ビーム・ホーク　射程 1　近距離\n\nLINK ABILITY\nガンダムUC　デッキに3枚以上\n[機動力]小アップ\n\nMS ABILITY\n補給\n任意発動　範囲(味方)　射程 ー　コスト 4\n自身を中心とした大範囲の味方ユニットのHPを中回復する。\n\nIMPACT AREA\n[アイコン:円形範囲・自機中心]\n\nSPECIAL ATTACK\nビーム・マシンガン斉射\n単体(敵)　射程 3\nSPコスト 2　威力 2700\n敵単体に射撃攻撃でダメージを与える。\n\nillust Takumi Kousaka\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n\nTEST-010　C"
+  },
+  "ocr_raw_file": "ロケーションテスト_TEST-010_ギラ・ズール(量産機)_ocr_raw.json",
+  "ocr_timestamp": "2026-03-02T05:05:09.042677",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

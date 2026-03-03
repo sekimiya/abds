@@ -1,0 +1,83 @@
+{
+  "card_number": "AB04-034",
+  "card_name": "ガンダムデルタカイ",
+  "series": "SEASON:04",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB04-034.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB04-034_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "AB04-034",
+    "type": "MS",
+    "card_label": {
+      "class": "機動",
+      "cost_label": "コスト3"
+    },
+    "name": "ガンダムデルタカイ",
+    "model": "MSN-001X GUNDAM DELTA KAI",
+    "cost": 3,
+    "category": "機動",
+    "affiliation": "地球連邦軍",
+    "pilot": "ブレイア・リュード",
+    "stats": {
+      "height": "19.6m",
+      "weight": "28.0t",
+      "mobility": 240,
+      "ranged_attack": 200,
+      "melee_attack": 160,
+      "hp": 150
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "A",
+      "desert": "C",
+      "water": null
+    },
+    "weapon": {
+      "main": {
+        "name": "ロング・メガ・バスター",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ビーム・サーベル",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "鼓舞[遠距離]",
+      "activation": "任意発動",
+      "target": "範囲(味方)",
+      "range": null,
+      "cost": 4,
+      "description": "30秒間、自身を中心とした大範囲内の味方ユニットの[遠距離攻撃力]を小アップする。"
+    },
+    "link_ability": [
+      {
+        "name": "アクロス・ザ・スカイ",
+        "condition": "デッキに2枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "オールレンジ兵器",
+        "condition": "デッキに2枚以上",
+        "effect": "[遠距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "プロト・フィン・ファンネル斉射",
+      "target": "単体(敵)",
+      "range": 4,
+      "sp_cost": 2,
+      "power": 3100,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "R",
+    "illustrator": "Painted MIKE",
+    "raw": "MS\n\n機動 コスト3\n\nMSN-001X GUNDAM DELTA KAI\nガンダムデルタカイ\n\n全高 19.6m\n本体重量 28.0t\n所属 地球連邦軍\nパイロット ブレイア・リュード\n\n地上 A 宇宙 A 砂漠 C\n\n機動力 240\n遠距離攻撃 200\n近距離攻撃 160\nHP 150\n\n機動戦士ガンダムU.C.0094\nアクロス・ザ・スカイ\n[アイコン:地上A]\n\nWEAPON\nMAIN ロング・メガ・バスター 射程 3 遠距離\nSUB ビーム・サーベル 射程 1 近距離\n\nLINK ABILITY\nアクロス・ザ・スカイ デッキに2枚以上\n[機動力]小アップ\n\nオールレンジ兵器 デッキに2枚以上\n[遠距離攻撃力]小アップ\n\nMS ABILITY\n鼓舞[遠距離]\n任意発動 範囲(味方) 射程ー コスト 4\n30秒間、自身を中心とした大範囲内の味方ユニットの[遠距離攻撃力]を小アップする。\n\nSPECIAL ATTACK\nプロト・フィン・ファンネル斉射\n単体(敵) 射程 4\nSPコスト 2 威力 3100\n敵単体に射撃攻撃でダメージを与える。\n\nIMPACT AREA\n[アイコン:大円形範囲・中央下寄り]\n\nillust Painted MIKE\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nAB04-034 R"
+  },
+  "ocr_raw_file": "SEASON_04_AB04-034_ガンダムデルタカイ_ocr_raw.json",
+  "ocr_timestamp": "2026-03-02T05:49:05.007728",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

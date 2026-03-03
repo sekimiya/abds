@@ -1,0 +1,78 @@
+{
+  "card_number": "LX01-035",
+  "card_name": "デュエルガンダム",
+  "series": "LINXTAGE SEASON:01",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX01-035.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX01-035_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "LX01-035",
+    "type": "MS",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト5"
+    },
+    "name": "デュエルガンダム",
+    "model": "GAT-X102 DUEL GUNDAM",
+    "cost": 5,
+    "category": "近距離",
+    "affiliation": "ザフト",
+    "pilot": "イザーク・ジュール",
+    "stats": {
+      "height": "17.5m",
+      "weight": "61.9t",
+      "mobility": 160,
+      "ranged_attack": 0,
+      "melee_attack": 260,
+      "hp": 220
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "A",
+      "desert": "C",
+      "water": null
+    },
+    "weapon": {
+      "main": {
+        "name": "ビームサーベル二刀流",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": null,
+        "range": null,
+        "type": null
+      }
+    },
+    "ms_ability": {
+      "name": "強撃",
+      "activation": "任意発動",
+      "target": "単体(敵)",
+      "range": 1,
+      "cost": 3,
+      "description": "ロックオン中の敵に単体攻撃でダメージを与える。"
+    },
+    "link_ability": [
+      {
+        "name": "ガンダムSEED",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ビームサーベル二刀流強撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3300,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "C",
+    "illustrator": "Kouki Tajima",
+    "raw": "MS\n\n近距離　コスト5\nGAT-X102 DUEL GUNDAM\nデュエルガンダム\n\n全高　17.5m\n本体重量　61.9t\n所属　ザフト\nパイロット　イザーク・ジュール\n\n地上　A　宇宙　A　砂漠　C\n\n機動力　160\n遠距離攻撃　0\n近距離攻撃　260\nHP　220\n\nWEAPON\nMAIN　ビームサーベル二刀流　射程　1　近距離\nSUB　ー　射程　ー\n\nLINK ABILITY\nガンダムSEED　デッキに3枚以上\n[機動力]小アップ\n\nMS ABILITY\n強撃\n任意発動　単体(敵)　射程　1　コスト　3\nロックオン中の敵に単体攻撃でダメージを与える。\n\nSPECIAL ATTACK\nビームサーベル二刀流強撃\n単体(敵)　射程　2\nSPコスト　2　威力　3300\n敵単体に格闘攻撃でダメージを与える。\n\nIMPACT AREA\n[アイコン:緑丸] 中央\n[アイコン:緑丸] 中央下\n[アイコン:三角] 下端中央\n\nillust　Kouki Tajima\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nLX01-035　C"
+  },
+  "ocr_raw_file": "LINXTAGE_SEASON_01_LX01-035_デュエルガンダム_ocr_raw.json",
+  "ocr_timestamp": "2026-03-02T07:20:39.485557",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

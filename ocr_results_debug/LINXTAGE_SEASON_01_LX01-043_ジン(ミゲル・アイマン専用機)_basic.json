@@ -1,0 +1,83 @@
+{
+  "card_number": "LX01-043",
+  "card_name": "ジン(ミゲル・アイマン専用機)",
+  "series": "LINXTAGE SEASON:01",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX01-043.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX01-043_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "LX01-043",
+    "type": "MS",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト3"
+    },
+    "name": "ジン（ミゲル・アイマン専用機）",
+    "model": "ZGMF-1017 MIGUEL'S GINN",
+    "cost": 3,
+    "category": "近距離",
+    "affiliation": "ザフト",
+    "pilot": "ミゲル・アイマン",
+    "stats": {
+      "height": "21.43m",
+      "weight": "78.5t",
+      "mobility": 190,
+      "ranged_attack": 90,
+      "melee_attack": 140,
+      "hp": 230
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "A",
+      "desert": "B",
+      "water": null
+    },
+    "weapon": {
+      "main": {
+        "name": "重斬刀",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "76mm重突撃機銃",
+        "range": 2,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "妨害[遠距離]",
+      "activation": "出撃時発動",
+      "target": "範囲(敵)",
+      "range": null,
+      "cost": null,
+      "description": "20秒間、自身を中心とした大範囲内の敵ユニットの[遠距離攻撃力]を小ダウンする。"
+    },
+    "link_ability": [
+      {
+        "name": "ガンダムSEED",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "専用機の実力",
+        "condition": "デッキに2枚以上",
+        "effect": "[近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "重斬刀強撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3300,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "R",
+    "illustrator": "gomibako",
+    "raw": "近距離　コスト3\n\nMS\n\nZGMF-1017 MIGUEL'S GINN\nジン（ミゲル・アイマン専用機）\n\n全高　21.43m\n本体重量　78.5t\n所属　ザフト\nパイロット　ミゲル・アイマン\n\n地上　A　宇宙　A　砂漠　B\n機動力 190\n遠距離攻撃 90\n近距離攻撃 140\nHP 230\n\nWEAPON\nMAIN 重斬刀　射程 1　近距離\nSUB 76mm重突撃機銃　射程 2　近距離\n\nLINK ABILITY\nガンダムSEED　デッキに3枚以上\n[機動力]小アップ\n\n専用機の実力　デッキに2枚以上\n[近距離攻撃力]小アップ\n\nMS ABILITY\n妨害[遠距離]\n出撃時発動　範囲(敵)　射程 ー　コスト ー\n20秒間、自身を中心とした大範囲内の敵ユニットの[遠距離攻撃力]を小ダウンする。\n\nSPECIAL ATTACK\n重斬刀強撃\n単体(敵)　射程 2\nSPコスト 2　威力 3300\n敵単体に格闘攻撃でダメージを与える。\n\nIMPACT AREA\n[アイコン:円形範囲・中央やや下に三角]\n\nillust gomibako\n©創通・サンライズ\n機動戦士ガンダム ARSENAL BASE\nBANDAI MADE IN JAPAN\n\nLX01-043　R"
+  },
+  "ocr_raw_file": "LINXTAGE_SEASON_01_LX01-043_ジン(ミゲル・アイマン専用機)_ocr_raw.json",
+  "ocr_timestamp": "2026-03-02T07:25:03.693209",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

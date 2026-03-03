@@ -1,0 +1,83 @@
+{
+  "card_number": "AB04-052",
+  "card_name": "グラハム専用ユニオンフラッグカスタム",
+  "series": "SEASON:04",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB04-052.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB04-052_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "AB04-052",
+    "type": "MS",
+    "card_label": {
+      "class": "機動",
+      "cost_label": "コスト5"
+    },
+    "name": "グラハム専用ユニオンフラッグカスタム",
+    "model": "SVMS-01E GRAHAM'S UNION FLAG CUSTOM",
+    "cost": 5,
+    "category": "機動",
+    "affiliation": "ユニオン",
+    "pilot": "グラハム・エーカー",
+    "stats": {
+      "height": "17.9m",
+      "weight": "66.6t",
+      "mobility": 330,
+      "ranged_attack": 240,
+      "melee_attack": 340,
+      "hp": 390
+    },
+    "terrain_compatibility": {
+      "ground": "S",
+      "space": "B",
+      "desert": "C",
+      "water": null
+    },
+    "weapon": {
+      "main": {
+        "name": "プラズマソード",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "試作リニアライフル",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "集中砲火",
+      "activation": "任意発動",
+      "target": "範囲(味方)",
+      "range": null,
+      "cost": 4,
+      "description": "20秒間、ロックオンしている敵に周囲の味方ターゲットを集め、[遠／近攻撃力]を中アップ。攻撃対象が変わると効果は終了する。"
+    },
+    "link_ability": [
+      {
+        "name": "ガンダム00",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "専用機の実力",
+        "condition": "デッキに2枚以上",
+        "effect": "[近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "プラズマソード強撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3600,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "P",
+    "illustrator": "KURI (studio toujyou)",
+    "raw": "MS\n\n機動 コスト5\nSVMS-01E GRAHAM'S UNION FLAG CUSTOM\nグラハム専用ユニオンフラッグカスタム\n\n全高 17.9m\n本体重量 66.6t\n所属 ユニオン\nパイロット グラハム・エーカー\n\n[アイコン:地上S] [アイコン:宇宙B] [アイコン:砂漠C]\n\n機動力 330\n遠距離攻撃 240\n近距離攻撃 340\nHP 390\n\nWEAPON\nMAIN プラズマソード 射程 1 近距離\nSUB 試作リニアライフル 射程 3 遠距離\n\nLINK ABILITY\nガンダム00 デッキに3枚以上\n[機動力]小アップ\n\n専用機の実力 デッキに2枚以上\n[近距離攻撃力]小アップ\n\nMS ABILITY\n集中砲火\n任意発動 範囲(味方) 射程 ー コスト 4\n20秒間、ロックオンしている敵に周囲の味方ターゲットを集め、[遠／近攻撃力]を中アップ。攻撃対象が変わると効果は終了する。\n\nSPECIAL ATTACK\nプラズマソード強撃\n単体(敵) 射程 2\nSPコスト 2 威力 3600\n敵単体に格闘攻撃でダメージを与える。\n\nIMPACT AREA\n[アイコン:円形範囲・中央やや下に三角マーカー]\n\nillust KURI (studio toujyou)\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nAB04-052 P"
+  },
+  "ocr_raw_file": "SEASON_04_AB04-052_グラハム専用ユニオンフラッグカスタム_ocr_raw.json",
+  "ocr_timestamp": "2026-03-02T06:00:58.528750",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

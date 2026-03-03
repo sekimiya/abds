@@ -1,0 +1,83 @@
+{
+  "card_number": "PR-382",
+  "card_name": "ガンダム（最終決戦仕様）",
+  "series": "プロモーション",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-382.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-382_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "PR-382",
+    "type": "MS",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト6"
+    },
+    "name": "ガンダム（最終決戦仕様）",
+    "model": "RX-78-2 GUNDAM",
+    "cost": 6,
+    "category": "MS",
+    "affiliation": "地球連邦軍",
+    "pilot": "アムロ・レイ",
+    "stats": {
+      "height": "18.0m",
+      "weight": "43.4t",
+      "mobility": 280,
+      "ranged_attack": 130,
+      "melee_attack": 460,
+      "hp": 480
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "A",
+      "desert": "C",
+      "water": "A"
+    },
+    "weapon": {
+      "main": {
+        "name": "ビーム・サーベル",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "ハイパー・バズーカ(2T)",
+        "range": 4,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "決闘",
+      "activation": "任意発動",
+      "target": "単体(敵)",
+      "range": 2,
+      "cost": 4,
+      "description": "敵ユニットのターゲットを自身に変更し、ロックオン中の敵ユニットに単体攻撃を行う。効果中は対象の味方、敵ユニットをロックオンすることが出来ない。"
+    },
+    "link_ability": [
+      {
+        "name": "機動戦士ガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ビーム・サーベル強撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3500,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "PR",
+    "illustrator": "Moyasi",
+    "raw": "近距離 コスト6\nRX-78-2 GUNDAM\nガンダム（最終決戦仕様）\n頭頂高 18.0m\n本体重量 43.4t\n所属 地球連邦軍\nパイロット アムロ・レイ\n地上 A 宇宙 A 砂漠 C 水中 A\n機動力 280\n遠距離攻撃 130\n近距離攻撃 460\nHP 480\n\nWEAPON\nMAIN ビーム・サーベル 射程 1 近距離\nSUB ハイパー・バズーカ(2T) 射程 4 遠距離\n\nMS ABILITY\n決闘\n任意発動 単体(敵) 射程 2 コスト 4\n敵ユニットのターゲットを自身に変更し、ロックオン中の敵ユニットに単体攻撃を行う。効果中は対象の味方、敵ユニットをロックオンすることが出来ない。\n\nLINK ABILITY\n機動戦士ガンダム デッキに3枚以上\n[機動力]小アップ\n\n多彩な戦術 デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nSPECIAL ATTACK UNITED SP\nビーム・サーベル強撃 ー\n連携 ー 連携 ー\n連携 ー 連携 ー\n単体(敵) 射程 2 ー 射程 ー\nSPコスト 2 威力 3500 / ー\n敵単体に格闘攻撃でダメージを与える。\n/ー\n\nillust Moyasi\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN ARSENAL BASE®\nNOT FOR SALE PR-382 PR"
+  },
+  "ocr_raw_file": "プロモーション_PR-382_ガンダム（最終決戦仕様）_ocr_raw.json",
+  "ocr_timestamp": "2026-03-03T19:22:32.621948",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

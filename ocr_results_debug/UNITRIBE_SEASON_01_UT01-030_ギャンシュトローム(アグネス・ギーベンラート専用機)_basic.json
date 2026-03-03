@@ -1,0 +1,83 @@
+{
+  "card_number": "UT01-030",
+  "card_name": "ギャンシュトローム(アグネス・ギーベンラート専用機)",
+  "series": "UNITRIBE SEASON:01",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT01-030.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT01-030_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "UT01-030",
+    "type": "MS",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト6"
+    },
+    "name": "ギャンシュトローム（アグネス・ギーベンラート専用機）",
+    "model": "ZGMF-2027/A GYAN STROM[AGNES GIEBENRATH CUSTOM]",
+    "cost": 6,
+    "category": "近距離",
+    "affiliation": "コンパス",
+    "pilot": "アグネス・ギーベンラート",
+    "stats": {
+      "height": "20.00m",
+      "weight": "74.56t",
+      "mobility": 240,
+      "ranged_attack": 90,
+      "melee_attack": 430,
+      "hp": 440
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "C",
+      "desert": "C",
+      "water": "A"
+    },
+    "weapon": {
+      "main": {
+        "name": "ファルクスG7 ビームアックス",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "トリデンティ3銃身回転ビーム機銃",
+        "range": 2,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "奮起",
+      "activation": "出撃時発動",
+      "target": "自分",
+      "range": null,
+      "cost": null,
+      "description": "自身のHPが1以上で一定割合以下になると、一定時間、撃破されなくなり[遠／近攻撃力]を中アップする。出撃時1度のみ発動。"
+    },
+    "link_ability": [
+      {
+        "name": "SEED FREEDOM",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ファルクスG7 ビームアックス強撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3500,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "M",
+    "illustrator": "kenko",
+    "raw": "MS\n\n近距離　コスト6\n\nZGMF-2027/A GYAN STROM[AGNES GIEBENRATH CUSTOM]\n\nギャンシュトローム（アグネス・ギーベンラート専用機）\n\n全高　20.00m\n本体重量　74.56t\n所属　コンパス\nパイロット　アグネス・ギーベンラート\n\n地上 A　宇宙 C　砂漠 C　水中 A\n\n機動力　240\n遠距離攻撃　90\n近距離攻撃　430\nHP　440\n\nWEAPON\nMAIN　ファルクスG7 ビームアックス　射程 1　近距離\nSUB　トリデンティ3銃身回転ビーム機銃　射程 2　遠距離\n\nLINK ABILITY\nSEED FREEDOM　デッキに3枚以上\n[機動力]小アップ\n\nMS ABILITY\n奮起\n出撃時発動　自分　射程 ー　コスト ー\n\n自身のHPが1以上で一定割合以下になると、一定時間、撃破されなくなり[遠／近攻撃力]を中アップする。出撃時1度のみ発動。\n\n多彩な戦術　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nSPECIAL ATTACK　　UNITED SP\nファルクスG7 ビームアックス強撃　ー\n連携 ー　　連携 ー\n連携 ー　　連携 ー\n単体(敵)　射程 2　ー　射程 ー\nSPコスト 2　威力 3500 / ー\n\n敵単体に格闘攻撃でダメージを与える。\n/ ー\n\nIMPACT AREA\n[アイコン:緑丸 中央やや下]\n[アイコン:黄三角 下部中央]\n\nillust kenko\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nUT01-030　M"
+  },
+  "ocr_raw_file": "UNITRIBE_SEASON_01_UT01-030_ギャンシュトローム(アグネス・ギーベンラート専用機)_ocr_raw.json",
+  "ocr_timestamp": "2026-03-02T03:20:01.592850",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

@@ -1,0 +1,83 @@
+{
+  "card_number": "UT01-018",
+  "card_name": "ガンダムF91",
+  "series": "UNITRIBE SEASON:01",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT01-018.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT01-018_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "UT01-018",
+    "type": "MS",
+    "card_label": {
+      "class": "機動",
+      "cost_label": "コスト6"
+    },
+    "name": "ガンダムF91",
+    "model": "F91 GUNDAM F91",
+    "cost": 6,
+    "category": "機動",
+    "affiliation": "地球連邦軍",
+    "pilot": "シーブック・アノー",
+    "stats": {
+      "height": "15.2m",
+      "weight": "7.8t",
+      "mobility": 340,
+      "ranged_attack": 570,
+      "melee_attack": 250,
+      "hp": 440
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "C",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "ビーム・ライフル",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ビーム・サーベル",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "M.E.P.E.",
+      "activation": "任意発動",
+      "target": "自分",
+      "range": null,
+      "cost": 5,
+      "description": "一定時間、回避時に回避攻撃が発生し、自身の[遠／近攻撃力][SP威力]をアップ。機動力が高い程、回避の発生率が上昇する。"
+    },
+    "link_ability": [
+      {
+        "name": "機動戦士ガンダムF91",
+        "condition": "デッキに2枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "的確な一撃",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][遠距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "V.S.B.R.撃射",
+      "target": "貫通(敵)",
+      "range": 4,
+      "sp_cost": 2,
+      "power": 3700,
+      "description": "射線上の敵に貫通射撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "U",
+    "illustrator": "unaginogoro",
+    "raw": "MS\n\n機動　コスト6\n\nF91 GUNDAM F91\nガンダムF91\n\n全高　15.2m\n本体重量　7.8t\n所属　地球連邦軍\nパイロット　シーブック・アノー\n\n地上 A　宇宙 S　砂漠 C　水中 C\n\n機動力 340\n遠距離攻撃 570\n近距離攻撃 250\nHP 440\n\nWEAPON\nMAIN　ビーム・ライフル　射程 3　遠距離\nSUB　ビーム・サーベル　射程 1　近距離\n\nLINK ABILITY\n機動戦士ガンダムF91　デッキに2枚以上\n[機動力]小アップ\n\n的確な一撃　デッキに4枚以上\n[機動力][遠距離攻撃力]小アップ\n\nMS ABILITY\nM.E.P.E.\n任意発動　自分　射程 ー　コスト 5\n一定時間、回避時に回避攻撃が発生し、自身の[遠／近攻撃力][SP威力]をアップ。機動力が高い程、回避の発生率が上昇する。\n\nSPECIAL ATTACK　　UNITED SP\nV.S.B.R.撃射\n連携 ー　　連携 ー\n連携 ー　　連携 ー\n貫通(敵)　射程 4　→　射程 ー\nSPコスト 2　威力 3700　/ ー\n射線上の敵に貫通射撃でダメージを与える。/ ー\n\nIMPACT AREA\n[アイコン:貫通射程4・自機位置から前方直線]\n\nillust unaginogoro\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nUT01-018　U"
+  },
+  "ocr_raw_file": "UNITRIBE_SEASON_01_UT01-018_ガンダムF91_ocr_raw.json",
+  "ocr_timestamp": "2026-03-02T03:06:11.814615",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

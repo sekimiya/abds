@@ -1,0 +1,78 @@
+{
+  "card_number": "LX01-013",
+  "card_name": "キュベレイ",
+  "series": "LINXTAGE SEASON:01",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX01-013.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX01-013_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "LX01-013",
+    "type": "MS",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト3"
+    },
+    "name": "キュベレイ",
+    "model": "AMX-004 QUBELEY",
+    "cost": 3,
+    "category": "近距離",
+    "affiliation": "ネオ・ジオン",
+    "pilot": "ハマーン・カーン",
+    "stats": {
+      "height": "18.9m",
+      "weight": "35.2t",
+      "mobility": 160,
+      "ranged_attack": 110,
+      "melee_attack": 200,
+      "hp": 180
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "C",
+      "water": null
+    },
+    "weapon": {
+      "main": {
+        "name": "ビーム・サーベル",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "ビーム・ガン",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "妨撃[近接]",
+      "activation": "任意発動",
+      "target": "単体(敵)",
+      "range": 1,
+      "cost": 4,
+      "description": "ロックオン中の敵ユニットに単体攻撃でダメージを与え、20秒間、[機動力][近距離攻撃力]を小ダウンする。"
+    },
+    "link_ability": [
+      {
+        "name": "機動戦士ガンダムZZ",
+        "condition": "デッキに3枚以上",
+        "effect": "[HP]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ビーム・サーベル強撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3200,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "C",
+    "illustrator": "gomibako",
+    "raw": "MS\n\n近距離 コスト3\n\nAMX-004 QUBELEY\nキュベレイ\n\n全高 18.9m\n本体重量 35.2t\n所属 ネオ・ジオン\nパイロット ハマーン・カーン\n\n地上 A 宇宙 S 砂漠 C\n機動力 160\n遠距離攻撃 110\n近距離攻撃 200\nHP 180\n\nWEAPON\nMAIN ビーム・サーベル 射程 1 近距離\nSUB ビーム・ガン 射程 3 遠距離\n\nLINK ABILITY\n機動戦士ガンダムZZ デッキに3枚以上\n[HP]小アップ\n\nMS ABILITY\n妨撃[近接]\n任意発動 単体(敵) 射程 1 コスト 4\nロックオン中の敵ユニットに単体攻撃で\nダメージを与え、20秒間、[機動力][近距\n離攻撃力]を小ダウンする。\n\nー\n\nSPECIAL ATTACK\nビーム・サーベル強撃\n単体(敵) 射程 2\nSPコスト 2 威力 3200\n敵単体に格闘攻撃でダメージを与える。\n\nIMPACT AREA\n[アイコン:3x6グリッド 中央列に緑丸3つ、下段中央に三角]\n\nillust gomibako\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\nLX01-013 C"
+  },
+  "ocr_raw_file": "LINXTAGE_SEASON_01_LX01-013_キュベレイ_ocr_raw.json",
+  "ocr_timestamp": "2026-03-02T07:07:45.624877",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

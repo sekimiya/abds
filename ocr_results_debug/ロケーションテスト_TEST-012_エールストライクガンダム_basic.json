@@ -1,0 +1,71 @@
+{
+  "card_number": "TEST-012",
+  "card_name": "エールストライクガンダム",
+  "series": "ロケーションテスト",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/TEST-012.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/TEST-012_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "TEST-012",
+    "type": "MS",
+    "card_label": {
+      "class": "機動",
+      "cost_label": "コスト4"
+    },
+    "name": "エールストライクガンダム",
+    "model": "GAT-X105+AQM/E-X01 AILE STRIKE GUNDAM",
+    "cost": 4,
+    "category": "機動",
+    "affiliation": "地球連合軍",
+    "pilot": "キラ・ヤマト",
+    "stats": {
+      "height": "17.72m",
+      "weight": "85.1t",
+      "mobility": 290,
+      "ranged_attack": 160,
+      "melee_attack": 200,
+      "hp": 210
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "C",
+      "water": null
+    },
+    "weapon": {
+      "main": {
+        "name": "ビームサーベル",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "高エネルギービームライフル",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": null,
+    "link_ability": [
+      {
+        "name": "ガンダムSEED",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ビームサーベル強撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3000,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "R",
+    "illustrator": "hiropon",
+    "raw": "MS\n\n機動　コスト4\nGAT-X105+AQM/E-X01 AILE STRIKE GUNDAM\nエールストライクガンダム\n\n全高　17.72m\n本体重量　85.1t\n所属　地球連合軍\nパイロット　キラ・ヤマト\n\n地上　A　宇宙　S　砂漠　C\n\n機動力　290\n遠距離攻撃　160\n近距離攻撃　200\nHP　210\n\nWEAPON\nMAIN　ビームサーベル　射程　1　近距離\nSUB　高エネルギービームライフル　射程　3　遠距離\n\nLINK ABILITY\nガンダムSEED　デッキに3枚以上\n[機動力]小アップ\n\nMS ABILITY\n―\n―　―　射程　―　コスト　―\n\nSPECIAL ATTACK\nビームサーベル強撃\n単体(敵)　射程　2\nSPコスト　2　威力　3000\n敵単体に格闘攻撃でダメージを与える。\n\nIMPACT AREA\n[アイコン:グリッド中央に緑丸]\n\nillust　hiropon\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nTEST-012　R"
+  },
+  "ocr_raw_file": "ロケーションテスト_TEST-012_エールストライクガンダム_ocr_raw.json",
+  "ocr_timestamp": "2026-03-02T05:06:29.163339",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

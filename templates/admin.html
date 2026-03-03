@@ -704,11 +704,16 @@ a:hover { text-decoration: underline; }
           <option value="none">未処理</option>
           <option value="failed">OCR失敗</option>
           <option value="image_no_ocr">画像あり未OCR</option>
+          <option value="needs_reocr">要再OCR</option>
         </select>
       </div>
       <div>
         <label>検索:</label>
         <input type="text" id="searchInput" placeholder="番号・名前で検索" oninput="debounceSearch()">
+      </div>
+      <div>
+        <button onclick="showReocrList()" style="background:transparent;color:#ef5350;border:2px solid #ef5350;padding:4px 12px;border-radius:4px;cursor:pointer;font-size:0.85rem">要再OCR一覧</button>
+        <button id="btnStartReocr" onclick="startReocr()" style="background:#ef5350;color:#fff;border:none;padding:4px 12px;border-radius:4px;cursor:pointer;font-size:0.85rem">要再OCR実行</button>
       </div>
     </div>
     <div id="cardTableWrap">
@@ -722,10 +727,11 @@ a:hover { text-decoration: underline; }
             <th>RAW</th>
             <th>構造化</th>
             <th>失敗</th>
+            <th>要再OCR</th>
           </tr>
         </thead>
         <tbody id="cardTableBody">
-          <tr><td colspan="7" class="loading">読み込み中...</td></tr>
+          <tr><td colspan="8" class="loading">読み込み中...</td></tr>
         </tbody>
       </table>
     </div>
@@ -737,7 +743,10 @@ a:hover { text-decoration: underline; }
 <div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
   <div class="modal" onclick="event.stopPropagation()">
     <button class="modal-close" onclick="closeModal()">&times;</button>
-    <div class="modal-title" id="modalTitle"></div>
+    <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+      <div class="modal-title" id="modalTitle" style="margin:0"></div>
+      <button id="btnReocrSingle" style="display:none;background:#ef5350;color:#fff;border:none;padding:3px 10px;border-radius:4px;cursor:pointer;font-size:0.8rem;white-space:nowrap" onclick="reocrSingleCard()">再OCR実行</button>
+    </div>
     <div class="modal-images" id="modalImages"></div>
     <div id="modalTabSection"></div>
   </div>
@@ -937,7 +946,7 @@ async function loadCards(page) {
     // Render table
     const tbody = document.getElementById('cardTableBody');
     if (data.cards.length === 0) {
-      tbody.innerHTML = '<tr><td colspan="7" class="loading">カードが見つかりません</td></tr>';
+      tbody.innerHTML = '<tr><td colspan="8" class="loading">カードが見つかりません</td></tr>';
     } else {
       tbody.innerHTML = data.cards.map(c => `
         <tr onclick="showDetail('${escapeHtml(c.number)}')">
@@ -948,6 +957,7 @@ async function loadCards(page) {
           <td class="${c.has_raw ? 'ocr-yes' : 'ocr-no'}">${c.has_raw ? '\u2713' : '\u2717'}</td>
           <td class="${c.has_basic ? 'ocr-yes' : 'ocr-no'}">${c.has_basic ? '\u2713' : '\u2717'}</td>
           <td class="${c.is_failed ? 'ocr-fail' : 'ocr-no'}">${c.is_failed ? '\u2716' : ''}</td>
+          <td class="${c.needs_reocr ? 'ocr-fail' : ''}">${c.needs_reocr ? '要再OCR' : ''}</td>
         </tr>
       `).join('');
     }
@@ -989,6 +999,35 @@ function debounceSearch() {
   searchTimer = setTimeout(() => loadCards(1), 300);
 }
 
+function showReocrList() {
+  document.getElementById('seriesFilter').value = '';
+  document.getElementById('statusFilter').value = 'needs_reocr';
+  document.getElementById('searchInput').value = '';
+  loadCards(1);
+}
+
+async function startReocr() {
+  const btn = document.getElementById('btnStartReocr');
+  if (!confirm('要再OCRカードのOCR再実行を開始しますか？')) return;
+  btn.disabled = true;
+  btn.textContent = '実行中...';
+  try {
+    const res = await adminFetch('/api/ocr-run/start-reocr', { method: 'POST', headers: {'Content-Type': 'application/json'}, body: '{}' });
+    const data = await res.json();
+    if (data.success) {
+      alert(data.message + '\n\nOCR実行管理ページで進捗を確認できます。');
+      window.open('/ocr-run', '_blank');
+    } else {
+      alert('エラー: ' + (data.error || '不明なエラー'));
+    }
+  } catch (e) {
+    alert('通信エラー: ' + e.message);
+  } finally {
+    btn.disabled = false;
+    btn.textContent = '要再OCR実行';
+  }
+}
+
 // --- Detail Modal ---
 async function showDetail(number) {
   const overlay = document.getElementById('modalOverlay');
@@ -1006,6 +1045,13 @@ async function showDetail(number) {
     }
     const card = data.card;
     document.getElementById('modalTitle').textContent = `${card.number} - ${card.name}`;
+
+    // 再OCRボタン表示（常に表示、カード番号を保持）
+    const reocrBtn = document.getElementById('btnReocrSingle');
+    reocrBtn.style.display = 'inline-block';
+    reocrBtn.dataset.number = card.number;
+    reocrBtn.disabled = false;
+    reocrBtn.textContent = '再OCR実行';
 
     // Images
     document.getElementById('modalImages').innerHTML = `
@@ -1052,6 +1098,34 @@ function switchTab(tabId) {
   document.querySelectorAll('.tab-content').forEach(el => {
     el.classList.toggle('active', el.id === 'tabContent_' + tabId);
   });
+}
+
+async function reocrSingleCard() {
+  const btn = document.getElementById('btnReocrSingle');
+  const number = btn.dataset.number;
+  if (!number) return;
+  btn.disabled = true;
+  btn.textContent = '実行中...';
+  try {
+    const res = await adminFetch('/api/ocr-run/start-single', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({ number: number })
+    });
+    const data = await res.json();
+    if (data.success) {
+      alert(data.message);
+      window.open('/ocr-run', '_blank');
+    } else {
+      alert('エラー: ' + (data.error || '不明なエラー'));
+      btn.disabled = false;
+      btn.textContent = '再OCR実行';
+    }
+  } catch (e) {
+    alert('通信エラー: ' + e.message);
+    btn.disabled = false;
+    btn.textContent = '再OCR実行';
+  }
 }
 
 function closeModal(event) {

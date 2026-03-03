@@ -1,0 +1,83 @@
+{
+  "card_number": "AB04-065",
+  "card_name": "デミトレーナー",
+  "series": "SEASON:04",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB04-065.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB04-065_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "AB04-065",
+    "type": "MS",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト5"
+    },
+    "name": "デミトレーナー",
+    "model": "MSJ-121 DEMI TRAINER",
+    "cost": 5,
+    "category": "近距離",
+    "affiliation": "アスティカシア高等専門学園",
+    "pilot": null,
+    "stats": {
+      "height": "16.2m",
+      "weight": "59.3t",
+      "mobility": 220,
+      "ranged_attack": 70,
+      "melee_attack": 280,
+      "hp": 230
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "A",
+      "desert": "C",
+      "water": null
+    },
+    "weapon": {
+      "main": {
+        "name": "コンバットナイフ",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "デダラス(ガトリングバレル)",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "妨害[機動]",
+      "activation": "出撃時発動",
+      "target": "範囲(敵)",
+      "range": null,
+      "cost": null,
+      "description": "20秒間、自身を中心とした大範囲内の敵ユニットの[機動力]を小ダウンする。"
+    },
+    "link_ability": [
+      {
+        "name": "水星の魔女",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "量産機の戦い方",
+        "condition": "デッキに2枚以上",
+        "effect": "[機動力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "コンバットナイフ強撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3400,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "R",
+    "illustrator": "gomibako",
+    "raw": "MS\n\n近距離 コスト5\n\nMSJ-121 DEMI TRAINER\nデミトレーナー\n\n水星の魔女\n\n頭頂高 16.2m\n本体重量 59.3t\n所属 アスティカシア高等専門学園\nパイロット ー\n\n地上 A 宇宙 A 砂漠 C\n\n機動力 220\n遠距離攻撃 70\n近距離攻撃 280\nHP 230\n\nWEAPON\nMAIN コンバットナイフ 射程 1 近距離\nSUB デダラス(ガトリングバレル) 射程 3 遠距離\n\nLINK ABILITY\n水星の魔女 デッキに3枚以上\n[機動力]小アップ\n\n量産機の戦い方 デッキに2枚以上\n[機動力]小アップ\n\nMS ABILITY\n妨害[機動]\n出撃時発動 範囲(敵) 射程 ー コスト ー\n\n20秒間、自身を中心とした大範囲内の敵ユニットの[機動力]を小ダウンする。\n\nSPECIAL ATTACK\nコンバットナイフ強撃\n単体(敵) 射程 2\nSPコスト 2 威力 3400\n\n敵単体に格闘攻撃でダメージを与える。\n\nIMPACT AREA\n[アイコン:円形範囲・中央やや上に緑点、下部に三角マーカー]\n\nillust gomibako\n©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\nAB04-065 R"
+  },
+  "ocr_raw_file": "SEASON_04_AB04-065_デミトレーナー_ocr_raw.json",
+  "ocr_timestamp": "2026-03-02T06:10:03.421719",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

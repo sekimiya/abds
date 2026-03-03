@@ -1,0 +1,83 @@
+{
+  "card_number": "UT01-027",
+  "card_name": "イモータルジャスティスガンダム",
+  "series": "UNITRIBE SEASON:01",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT01-027.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT01-027_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "UT01-027",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト4"
+    },
+    "name": "イモータルジャスティスガンダム",
+    "model": "STTS-808 IMMORTAL JUSTICE GUNDAM",
+    "cost": 4,
+    "category": "遠距離",
+    "affiliation": "コンパス",
+    "pilot": "シン・アスカ",
+    "stats": {
+      "height": "18.50m",
+      "weight": "71.62t",
+      "mobility": 160,
+      "ranged_attack": 290,
+      "melee_attack": 150,
+      "hp": 300
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "A",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "高エネルギービームライフル",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ヴィーゼルナーゲル ビームブーメラン",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "鼓舞[遠距離][弱体化解除]",
+      "activation": "任意発動",
+      "target": "範囲(味方)",
+      "range": null,
+      "cost": 6,
+      "description": "自身を中心とした大範囲内の味方ユニットの弱体状態を無効化し、30秒間、[遠距離攻撃力]を中アップする。"
+    },
+    "link_ability": [
+      {
+        "name": "SEED FREEDOM",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "高エネルギービームライフル撃射",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3200,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "R",
+    "illustrator": "S Kei",
+    "raw": "MS\n\n遠距離　コスト4\n\nSTTS-808 IMMORTAL JUSTICE GUNDAM\nイモータルジャスティスガンダム\n\n全高　18.50m\n本体重量　71.62t\n所属　コンパス\nパイロット　シン・アスカ\n\n地上 A　宇宙 S　砂漠 A　水中 C\n\n機動力 160\n遠距離攻撃 290\n近距離攻撃 150\nHP 300\n\nWEAPON\nMAIN　高エネルギービームライフル　射程 3　遠距離\nSUB　ヴィーゼルナーゲル ビームブーメラン　射程 1　近距離\n\nLINK ABILITY\nSEED FREEDOM　デッキに3枚以上\n[機動力]小アップ\n\n多彩な戦術　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nMS ABILITY\n鼓舞[遠距離][弱体化解除]\n任意発動　範囲(味方)　射程 ー　コスト 6\n自身を中心とした大範囲内の味方ユニットの弱体状態を無効化し、30秒間、[遠距離攻撃力]を中アップする。\n\nSPECIAL ATTACK　　UNITED SP\n高エネルギービームライフル撃射　ーーーーー\n連携 ー　　連携 ー\n連携 ー　　連携 ー\n単体(敵)　射程 3　ー　射程 ー\nSPコスト 2　威力 3200 / ー\n敵単体に射撃攻撃でダメージを与える。\n/ ー\n\nIMPACT AREA\n[アイコン:円形範囲・中央やや前方]\n\nillust　S Kei\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\nUT01-027　R"
+  },
+  "ocr_raw_file": "UNITRIBE_SEASON_01_UT01-027_イモータルジャスティスガンダム_ocr_raw.json",
+  "ocr_timestamp": "2026-03-02T03:15:38.248984",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

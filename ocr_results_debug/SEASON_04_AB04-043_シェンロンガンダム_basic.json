@@ -1,0 +1,83 @@
+{
+  "card_number": "AB04-043",
+  "card_name": "シェンロンガンダム",
+  "series": "SEASON:04",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB04-043.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB04-043_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "AB04-043",
+    "type": "MS",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト3"
+    },
+    "name": "シェンロンガンダム",
+    "model": "XXXG-01S SHENLONG GUNDAM",
+    "cost": 3,
+    "category": "近距離",
+    "affiliation": "ー",
+    "pilot": "張 五飛",
+    "stats": {
+      "height": "16.4m",
+      "weight": "7.4t",
+      "mobility": 200,
+      "ranged_attack": 50,
+      "melee_attack": 220,
+      "hp": 180
+    },
+    "terrain_compatibility": {
+      "ground": "S",
+      "space": "B",
+      "desert": "C",
+      "water": null
+    },
+    "weapon": {
+      "main": {
+        "name": "ビームグレイブ",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "ドラゴンハングファイヤー",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "妨害[攻撃]",
+      "activation": "出撃時発動",
+      "target": "範囲(敵)",
+      "range": null,
+      "cost": null,
+      "description": "20秒間、自身を中心とした大範囲内の敵ユニットの[遠距離攻撃力][近距離攻撃力]を小ダウンする。"
+    },
+    "link_ability": [
+      {
+        "name": "ガンダムW",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "間合いを詰めた接近戦",
+        "condition": "デッキに2枚以上",
+        "effect": "[近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ビームグレイブ強撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3200,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "R",
+    "illustrator": "Masked",
+    "raw": "MS\n\n近距離　コスト3\n\nXXXG-01S SHENLONG GUNDAM\nシェンロンガンダム\n\n全高　16.4m\n本体重量　7.4t\n所属　ー\nパイロット　張 五飛\n\n地上　S　宇宙　B　砂漠　C\n\n機動力　200\n遠距離攻撃　50\n近距離攻撃　220\nHP　180\n\nWEAPON\nMAIN ビームグレイブ　射程 1　近距離\nSUB ドラゴンハングファイヤー　射程 3　遠距離\n\nLINK ABILITY\nガンダムW　デッキに3枚以上\n[機動力]小アップ\n\n間合いを詰めた接近戦　デッキに2枚以上\n[近距離攻撃力]小アップ\n\nMS ABILITY\n妨害[攻撃]\n出撃時発動　範囲(敵)　射程ー　コストー\n20秒間、自身を中心とした大範囲内の敵ユニットの[遠距離攻撃力][近距離攻撃力]を小ダウンする。\n\nSPECIAL ATTACK\nビームグレイブ強撃\n単体(敵)　射程 2\nSPコスト 2　威力 3200\n敵単体に格闘攻撃でダメージを与える。\n\nIMPACT AREA\n[アイコン:自機中心・前方円形範囲]\n\nillust Masked\n©創通・サンライズ\nBANDAI MADE IN JAPAN\nAB04-043　R"
+  },
+  "ocr_raw_file": "SEASON_04_AB04-043_シェンロンガンダム_ocr_raw.json",
+  "ocr_timestamp": "2026-03-02T05:55:06.633430",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

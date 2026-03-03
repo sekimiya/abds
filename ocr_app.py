@@ -177,6 +177,66 @@ def _get_ocr_file_map():
     return _ocr_file_map_cache
 
 
+_needs_reocr_cache = None
+_needs_reocr_lock = threading.Lock()
+
+_PL_VALID_CATS = {'殲滅', '制圧', '防衛'}
+_MS_VALID_CATS = {'機動', '近距離', '遠距離'}
+
+
+def _build_needs_reocr_set():
+    """OCR済みカードのうちデータ品質に問題があるカード番号のセットを構築"""
+    global _needs_reocr_cache
+    ocr_dir = 'ocr_results_debug'
+    result = set()
+    if not os.path.exists(ocr_dir):
+        _needs_reocr_cache = result
+        return result
+    number_pattern = re.compile(r'([A-Z0-9\-]{2,}-\d{2,4})(?:_p\d+)?')
+    for fn in os.listdir(ocr_dir):
+        if not fn.endswith('_basic.json'):
+            continue
+        m = number_pattern.search(fn)
+        if not m:
+            continue
+        card_number = m.group(1)
+        try:
+            fpath = os.path.join(ocr_dir, fn)
+            with open(fpath, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+            ocr = data.get('ocr_data', {})
+            if not ocr:
+                continue
+            ctype = ocr.get('type', '')
+            category = ocr.get('category', '')
+            cost = ocr.get('cost')
+            terrain = ocr.get('terrain_compatibility') or {}
+            needs = False
+            if ctype == 'PL' and category not in _PL_VALID_CATS:
+                needs = True
+            if ctype == 'MS' and category not in _MS_VALID_CATS:
+                needs = True
+            if cost is None:
+                needs = True
+            if ctype == 'MS' and terrain and all(v == '' or v is None for v in terrain.values()):
+                needs = True
+            if needs:
+                result.add(card_number)
+        except Exception:
+            continue
+    _needs_reocr_cache = result
+    return result
+
+
+def _get_needs_reocr_set():
+    global _needs_reocr_cache
+    if _needs_reocr_cache is None:
+        with _needs_reocr_lock:
+            if _needs_reocr_cache is None:
+                _build_needs_reocr_set()
+    return _needs_reocr_cache
+
+
 def _get_failed_numbers():
     progress_file = 'ocr_cc_progress.json'
     if not os.path.exists(progress_file):
@@ -457,6 +517,8 @@ def _run_ocr_execution(series, stage, force, limit):
             _link_index_cache = None
         with _ocr_file_map_lock:
             _ocr_file_map_cache = None
+        with _needs_reocr_lock:
+            _needs_reocr_cache = None
 
         with _ocr_run_lock:
             _ocr_run_status["log"].append("処理完了。")
@@ -659,6 +721,8 @@ def api_clear_cache():
         _link_index_cache = None
     with _ocr_file_map_lock:
         _ocr_file_map_cache = None
+    with _needs_reocr_lock:
+        _needs_reocr_cache = None
     get_card_index()
     return jsonify({'success': True, 'message': 'キャッシュを再構築しました'})
 
@@ -752,6 +816,7 @@ def api_ocr_admin_cards():
     ocr_map = _get_ocr_file_map()
     idx = get_card_index()
     failed_numbers = _get_failed_numbers()
+    reocr_numbers = _get_needs_reocr_set()
 
     series_filter = request.args.get('series', '').strip()
     status_filter = request.args.get('status', '').strip()
@@ -782,6 +847,8 @@ def api_ocr_admin_cards():
             results = [c for c in results if c['number'] in failed_numbers]
         elif status_filter == 'image_no_ocr':
             results = [c for c in results if c.get('has_back_image') and c['number'] not in ocr_map]
+        elif status_filter == 'needs_reocr':
+            results = [c for c in results if c['number'] in reocr_numbers]
 
     total = len(results)
     total_pages = max(1, (total + per_page - 1) // per_page)
@@ -801,6 +868,7 @@ def api_ocr_admin_cards():
             'has_raw': info.get('raw', False) or info.get('basic', False),
             'has_basic': info.get('basic', False),
             'is_failed': c['number'] in failed_numbers,
+            'needs_reocr': c['number'] in reocr_numbers,
         })
 
     all_series = sorted(set(c['series'] for c in idx if c['series']))
@@ -939,6 +1007,172 @@ def api_ocr_run_start():
     )
     t.start()
     return jsonify({'success': True, 'message': f'{series} のOCR実行を開始しました'})
+
+
+@app.route('/api/ocr-run/start-single', methods=['POST'])
+def api_ocr_run_start_single():
+    with _ocr_run_lock:
+        if _ocr_run_status["running"]:
+            return jsonify({'success': False, 'error': 'OCRタスクが既に実行中です'}), 409
+
+    data = request.get_json() or {}
+    number = data.get('number', '').strip()
+    if not number:
+        return jsonify({'success': False, 'error': 'カード番号を指定してください'}), 400
+
+    t = threading.Thread(
+        target=_run_reocr_execution,
+        args=({number},),
+        daemon=True,
+    )
+    t.start()
+    return jsonify({'success': True, 'message': f'{number} のOCR再実行を開始しました'})
+
+
+@app.route('/api/ocr-run/start-reocr', methods=['POST'])
+def api_ocr_run_start_reocr():
+    with _ocr_run_lock:
+        if _ocr_run_status["running"]:
+            return jsonify({'success': False, 'error': 'OCRタスクが既に実行中です'}), 409
+
+    reocr_numbers = _get_needs_reocr_set()
+    if not reocr_numbers:
+        return jsonify({'success': False, 'error': '要再OCRカードがありません'}), 400
+
+    t = threading.Thread(
+        target=_run_reocr_execution,
+        args=(reocr_numbers,),
+        daemon=True,
+    )
+    t.start()
+    return jsonify({'success': True, 'message': f'要再OCR {len(reocr_numbers)}件 のOCR実行を開始しました'})
+
+
+def _run_reocr_execution(reocr_numbers):
+    """要再OCRカードを対象にOCR再実行する"""
+    global _ocr_file_map_cache, _card_index_cache, _card_detail_cache, _link_index_cache, _needs_reocr_cache
+
+    log_handler = OcrRunLogHandler()
+    log_handler.setFormatter(logging.Formatter("%(asctime)s [%(levelname)s] %(message)s", datefmt="%H:%M:%S"))
+    card_ocr_cc.logger.addHandler(log_handler)
+
+    with _ocr_run_lock:
+        _ocr_run_status["running"] = True
+        _ocr_run_status["stop_requested"] = False
+        _ocr_run_status["series"] = "要再OCR"
+        _ocr_run_status["stage"] = "both"
+        _ocr_run_status["current_card"] = ""
+        _ocr_run_status["current_card_name"] = ""
+        _ocr_run_status["processed_count"] = 0
+        _ocr_run_status["success_count"] = 0
+        _ocr_run_status["failed_count"] = 0
+        _ocr_run_status["total_target"] = 0
+        _ocr_run_status["log"] = []
+        _ocr_run_status["errors"] = []
+        _ocr_run_status["started_at"] = time.strftime('%Y-%m-%dT%H:%M:%S')
+        _ocr_run_status["finished_at"] = None
+        _ocr_run_status["elapsed_seconds"] = 0
+        _ocr_run_status["eta_seconds"] = 0
+
+    start_time = time.time()
+
+    try:
+        with _ocr_run_lock:
+            _ocr_run_status["log"].append(f"要再OCRカードを読み込み中... ({len(reocr_numbers)}件)")
+
+        all_cards = ocr_load_unique_cards()
+        targets = [c for c in all_cards if c["card_number"] in reocr_numbers and c.get("back_url")]
+
+        total = len(targets)
+        with _ocr_run_lock:
+            _ocr_run_status["total_target"] = total
+            _ocr_run_status["log"].append(f"処理対象: {total} 件 (force=True, stage=both)")
+
+        if total == 0:
+            with _ocr_run_lock:
+                _ocr_run_status["log"].append("処理対象カードがありません。")
+            return
+
+        done_count = 0
+        fatal = False
+        for card in targets:
+            with _ocr_run_lock:
+                if _ocr_run_status["stop_requested"]:
+                    _ocr_run_status["log"].append("停止リクエストにより処理を中断しました。")
+                    break
+
+            card_number = card["card_number"]
+            card_name = card["card_name"]
+            try:
+                ok = ocr_process_card(card, model=None, force=True, stage='both')
+                error_msg = None
+                is_fatal = False
+            except SystemExit:
+                ok = False
+                error_msg = "claude CLIが見つかりません (SystemExit)"
+                is_fatal = True
+            except Exception as e:
+                ok = False
+                error_msg = str(e)
+                is_fatal = False
+
+            done_count += 1
+            with _ocr_run_lock:
+                _ocr_run_status["processed_count"] = done_count
+                _ocr_run_status["current_card"] = card_number
+                _ocr_run_status["current_card_name"] = card_name
+                if ok:
+                    _ocr_run_status["success_count"] += 1
+                else:
+                    _ocr_run_status["failed_count"] += 1
+                    if error_msg:
+                        _ocr_run_status["errors"].append(f"{card_number}: {error_msg}")
+
+                elapsed = time.time() - start_time
+                _ocr_run_status["elapsed_seconds"] = int(elapsed)
+                if done_count > 0 and done_count < total:
+                    eta = elapsed / done_count * (total - done_count)
+                    _ocr_run_status["eta_seconds"] = int(eta)
+                else:
+                    _ocr_run_status["eta_seconds"] = 0
+
+                status_str = "OK" if ok else "FAIL"
+                _ocr_run_status["log"].append(
+                    f"[{done_count}/{total}] {card_number} {card_name} {status_str}"
+                )
+
+            if is_fatal:
+                with _ocr_run_lock:
+                    _ocr_run_status["log"].append("致命的エラー: claude CLIが見つかりません。処理を中断します。")
+                fatal = True
+                break
+
+        with _ocr_run_lock:
+            _ocr_run_status["log"].append("キャッシュをクリア中...")
+
+        with _card_cache_lock:
+            _card_index_cache = None
+            _card_detail_cache = {}
+            _link_index_cache = None
+        with _ocr_file_map_lock:
+            _ocr_file_map_cache = None
+        with _needs_reocr_lock:
+            _needs_reocr_cache = None
+
+        with _ocr_run_lock:
+            _ocr_run_status["log"].append("処理完了。")
+
+    except Exception as e:
+        with _ocr_run_lock:
+            _ocr_run_status["errors"].append(f"予期しないエラー: {str(e)}")
+            _ocr_run_status["log"].append(f"致命的エラー: {str(e)}")
+    finally:
+        card_ocr_cc.logger.removeHandler(log_handler)
+        with _ocr_run_lock:
+            _ocr_run_status["running"] = False
+            _ocr_run_status["finished_at"] = time.strftime('%Y-%m-%dT%H:%M:%S')
+            elapsed = time.time() - start_time
+            _ocr_run_status["elapsed_seconds"] = int(elapsed)
 
 
 @app.route('/api/ocr-run/status')

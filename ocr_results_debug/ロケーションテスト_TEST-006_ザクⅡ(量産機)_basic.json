@@ -1,0 +1,72 @@
+{
+  "card_number": "TEST-006",
+  "card_name": "ザクⅡ(量産機)",
+  "series": "ロケーションテスト",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/TEST-006.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/TEST-006_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "TEST-006",
+    "type": "MS",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト2"
+    },
+    "name": "ザクⅡ（量産機）",
+    "model": "MS-06F ZAKUⅡ",
+    "cost": 2,
+    "category": "近距離",
+    "affiliation": "ジオン公国軍",
+    "pilot": null,
+    "stats": {
+      "height": "17.5m",
+      "weight": "56.2t",
+      "mobility": 130,
+      "ranged_attack": 60,
+      "melee_attack": 260,
+      "hp": 240
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "A",
+      "desert": "C",
+      "water": null
+    },
+    "weapon": {
+      "main": {
+        "name": "ヒート・ホーク",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "ザク・マシンガン",
+        "range": 2,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "爆撃",
+      "activation": "任意発動",
+      "target": "範囲(敵)",
+      "range": 3,
+      "cost": 3,
+      "description": "ロックオン中の敵を中心に小範囲攻撃を行い、範囲内の敵にダメージを与える。"
+    },
+    "link_ability": [],
+    "special_attack": {
+      "name": "ヒート・ホーク強撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 2800,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "C",
+    "illustrator": "STYLE ZERO",
+    "raw": "MS\n\n近距離　コスト2\n\nMS-06F ZAKUⅡ\nザクⅡ（量産機）\n\n全高　17.5m\n本体重量　56.2t\n所属　ジオン公国軍\nパイロット　ー\n\n地上　A　宇宙　A　砂漠　C\n\n機動力　130\n遠距離攻撃　60\n近距離攻撃　260\nHP　240\n\nWEAPON\nMAIN　ヒート・ホーク　射程　1　近距離\nSUB　ザク・マシンガン　射程　2　遠距離\n\nLINK ABILITY\nー\nー\n\nMS ABILITY\n爆撃\n任意発動　範囲(敵)　射程　3　コスト　3\nロックオン中の敵を中心に小範囲攻撃を行い、範囲内の敵にダメージを与える。\n\nIMPACT AREA\n[アイコン:十字型範囲マーカー（中心＋上下左右1マス）]\n\nSPECIAL ATTACK\nヒート・ホーク強撃\n単体(敵)　射程　2\nSPコスト　2　威力　2800\n敵単体に格闘攻撃でダメージを与える。\n\nillust STYLE ZERO\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム\nARSENAL BASE\nTEST-006　C"
+  },
+  "ocr_raw_file": "ロケーションテスト_TEST-006_ザクⅡ(量産機)_ocr_raw.json",
+  "ocr_timestamp": "2026-03-02T05:02:20.309215",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

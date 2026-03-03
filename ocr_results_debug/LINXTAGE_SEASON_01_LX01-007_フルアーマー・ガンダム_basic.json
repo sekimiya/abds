@@ -1,0 +1,83 @@
+{
+  "card_number": "LX01-007",
+  "card_name": "フルアーマー・ガンダム",
+  "series": "LINXTAGE SEASON:01",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX01-007.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX01-007_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "LX01-007",
+    "type": "MS",
+    "card_label": {
+      "class": "機動",
+      "cost_label": "コスト4"
+    },
+    "name": "フルアーマー・ガンダム",
+    "model": "FA-78 FULL ARMOR GUNDAM",
+    "cost": 4,
+    "category": "機動",
+    "affiliation": "地球連邦軍",
+    "pilot": "イオ・フレミング",
+    "stats": {
+      "height": null,
+      "weight": null,
+      "mobility": 180,
+      "ranged_attack": 120,
+      "melee_attack": 180,
+      "hp": 270
+    },
+    "terrain_compatibility": {
+      "ground": "C",
+      "space": "S",
+      "desert": "C",
+      "water": null
+    },
+    "weapon": {
+      "main": {
+        "name": "ビーム・サーベル",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "2連装ビーム・ライフル",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "妨害[機動]",
+      "activation": "出撃時発動",
+      "target": "範囲(敵)",
+      "range": null,
+      "cost": null,
+      "description": "20秒間、自身を中心とした大範囲内の敵ユニットの[機動力]を小ダウンする。"
+    },
+    "link_ability": [
+      {
+        "name": "サンダーボルト",
+        "condition": "デッキに2枚以上",
+        "effect": "[遠距離攻撃力]小アップ"
+      },
+      {
+        "name": "その名はガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ビーム・サーベル強撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3300,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "R",
+    "illustrator": "sakusaku sakurai",
+    "raw": "MS\n\n機動　コスト4\nFA-78 FULL ARMOR GUNDAM\nフルアーマー・ガンダム\n\nMOBILE SUIT GUNDAM THUNDERBOLT\n\n全高　―\n本体重量　―\n所属　地球連邦軍\nパイロット　イオ・フレミング\n\n地上 C　宇宙 S　砂漠 C\n[アイコン:地上C] [アイコン:宇宙S] [アイコン:砂漠C]\n\n機動力 180\n遠距離攻撃 120\n近距離攻撃 180\nHP 270\n\nWEAPON\nMAIN ビーム・サーベル　射程 1　近距離\nSUB 2連装ビーム・ライフル　射程 3　遠距離\n\nLINK ABILITY\nサンダーボルト　デッキに2枚以上\n[遠距離攻撃力]小アップ\n\nその名はガンダム　デッキに3枚以上\n[機動力]小アップ\n\nMS ABILITY\n妨害[機動]\n出撃時発動　範囲(敵)　射程 ―　コスト ―\n20秒間、自身を中心とした大範囲内の敵ユニットの[機動力]を小ダウンする。\n\nSPECIAL ATTACK\nビーム・サーベル強撃\n単体(敵)　射程 2\nSPコスト 2　威力 3300\n敵単体に格闘攻撃でダメージを与える。\n\nIMPACT AREA\n[アイコン:円形エリア中央やや上に緑点、中央下に三角マーク]\n\nillust sakusaku sakurai\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nLX01-007　R"
+  },
+  "ocr_raw_file": "LINXTAGE_SEASON_01_LX01-007_フルアーマー・ガンダム_ocr_raw.json",
+  "ocr_timestamp": "2026-03-02T07:04:19.530851",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

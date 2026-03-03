@@ -1,0 +1,76 @@
+{
+  "card_number": "LX01-034",
+  "card_name": "イージスガンダム",
+  "series": "LINXTAGE SEASON:01",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX01-034.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX01-034_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "LX01-034",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト6"
+    },
+    "name": "イージスガンダム",
+    "model": "GAT-X303 AEGIS GUNDAM",
+    "cost": 6,
+    "category": "遠距離",
+    "affiliation": "ザフト",
+    "pilot": "アスラン・ザラ",
+    "stats": {
+      "height": "18.86m",
+      "weight": "79.6t",
+      "mobility": 150,
+      "ranged_attack": 300,
+      "melee_attack": 220,
+      "hp": 320
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "A",
+      "desert": "C",
+      "water": null
+    },
+    "weapon": {
+      "main": {
+        "name": "高エネルギービームライフル",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ビームサーベル",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": null,
+    "link_ability": [
+      {
+        "name": "ガンダムSEED",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "距離をとった射撃戦",
+        "condition": "デッキに2枚以上",
+        "effect": "[遠距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "高エネルギービームライフル撃射",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3200,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "C",
+    "illustrator": "Painted MIKE",
+    "raw": "MS\n\n遠距離　コスト6\n\nGAT-X303 AEGIS GUNDAM\nイージスガンダム\n\n全高　18.86m\n本体重量　79.6t\n所属　ザフト\nパイロット　アスラン・ザラ\n\n[アイコン:地上A]　[アイコン:宇宙A]　[アイコン:砂漠C]\n\n機動力　150\n遠距離攻撃　300\n近距離攻撃　220\nHP　320\n\nWEAPON\nMAIN　高エネルギービームライフル　射程　3　遠距離\nSUB　ビームサーベル　射程　1　近距離\n\nLINK ABILITY\nガンダムSEED　デッキに3枚以上\n[機動力]小アップ\n\n距離をとった射撃戦　デッキに2枚以上\n[遠距離攻撃力]小アップ\n\nMS ABILITY\nー\nー　射程　ー　コスト　ー\n\nSPECIAL ATTACK\n高エネルギービームライフル撃射\n単体(敵)　射程　3\nSPコスト　2　威力　3200\n敵単体に射撃攻撃でダメージを与える。\n\nIMPACT AREA\n[アイコン:グリッド中央下に緑丸、下端に三角マーカー]\n\nillust　Painted MIKE\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nLX01-034　C"
+  },
+  "ocr_raw_file": "LINXTAGE_SEASON_01_LX01-034_イージスガンダム_ocr_raw.json",
+  "ocr_timestamp": "2026-03-02T07:19:56.049843",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}
