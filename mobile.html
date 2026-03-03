@@ -170,6 +170,11 @@ select,input{font-family:inherit}
   flex-shrink:0;background:var(--bg2);border-bottom:1px solid #2a2a2a;
   padding:4px 4px 0;
 }
+.overview-cats{display:flex;gap:3px;margin-bottom:1px}
+.ov-cat{flex:1;text-align:center;font-size:0.6rem;font-weight:bold;border-radius:2px;padding:1px 0}
+.ov-cat.cat-s{background:#8b1a1a;color:#ff8a80}
+.ov-cat.cat-c{background:#1a4a8b;color:#82b1ff}
+.ov-cat.cat-b{background:#1a6b1a;color:#a5d6a7}
 .overview-thumbs{display:flex;gap:3px;margin-bottom:2px}
 .overview-thumb{
   flex:1;min-width:0;aspect-ratio:63/88;background:var(--bg-card);border:2px solid #333;
@@ -725,6 +730,7 @@ select,input{font-family:inherit}
 
 <!-- OVERVIEW STRIP -->
 <div class="overview-strip" id="overviewStrip">
+  <div class="overview-cats" id="catRow"></div>
   <div class="overview-thumbs" id="msRow"></div>
   <div class="overview-thumbs" id="plRow"></div>
   <div class="unit-tabs" id="unitTabs"></div>
@@ -2158,13 +2164,16 @@ const UIRenderer = {
 
   init() {
     // Generate overview strip thumbnails
+    const catRow = document.getElementById('catRow');
     const msRow = document.getElementById('msRow');
     const plRow = document.getElementById('plRow');
     const tabs = document.getElementById('unitTabs');
+    catRow.innerHTML = '';
     msRow.innerHTML = '';
     plRow.innerHTML = '';
     tabs.innerHTML = '';
     for (let u = 0; u < 5; u++) {
+      catRow.innerHTML += `<div class="ov-cat" id="ov-cat-${u}"></div>`;
       msRow.innerHTML += `<div class="overview-thumb empty" id="ov-ms-${u}"><span class="ov-badge" id="ov-ms-badge-${u}"></span><button class="ov-clear" onclick="event.stopPropagation();DeckManager.clearCard(${u})">&times;</button></div>`;
       plRow.innerHTML += `<div class="overview-thumb empty" id="ov-pl-${u}"><span class="ov-badge" id="ov-pl-badge-${u}"></span><button class="ov-clear" onclick="event.stopPropagation();DeckManager.clearCard(${u+5})">&times;</button></div>`;
       tabs.innerHTML += `<div class="unit-tab${u === 0 ? ' active' : ''}" onclick="UIRenderer.selectUnit(${u})">${u + 1}</div>`;
@@ -2214,6 +2223,24 @@ const UIRenderer = {
     for (let u = 0; u < 5; u++) {
       this._updateThumb(u, 'ms', u);
       this._updateThumb(u, 'pl', u + 5);
+      // カテゴリ行更新
+      const catEl = document.getElementById(`ov-cat-${u}`);
+      if (catEl) {
+        const plNumber = AppState.deck[u + 5];
+        const plIdx = this._getIndexEntry(plNumber);
+        const plOcr = AppState.deckOcr[u + 5];
+        let cat = plIdx?.category;
+        if (!cat) cat = plOcr?.card_label?.class;
+        if (!cat) cat = plOcr?.category;
+        if (cat === '殲滅' || cat === '制圧' || cat === '防衛') {
+          const cls = cat === '殲滅' ? 'cat-s' : cat === '制圧' ? 'cat-c' : 'cat-b';
+          catEl.textContent = cat;
+          catEl.className = `ov-cat ${cls}`;
+        } else {
+          catEl.textContent = '';
+          catEl.className = 'ov-cat';
+        }
+      }
     }
   },
 

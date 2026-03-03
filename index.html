@@ -642,6 +642,12 @@ select,input{font-family:inherit}
 .terrain-badge.rank-C{color:#ffcc80;border-color:#e65100}
 .terrain-badge.rank-none{color:#444;border-color:#222}
 
+/* Unit category badge */
+.unit-cat{padding:0.1rem 0.4rem;border-radius:3px;font-size:0.7rem;font-weight:bold;border:1px solid #333;background:#1a1a1a}
+.unit-cat.cat-s{background:#8b1a1a;color:#ff8a80;border-color:#c62828}
+.unit-cat.cat-c{background:#1a4a8b;color:#82b1ff;border-color:#1565c0}
+.unit-cat.cat-b{background:#1a6b1a;color:#a5d6a7;border-color:#2e7d32}
+
 /* Ability detail tags */
 .ability-tags{display:flex;gap:3px;flex-wrap:wrap;margin:0.15rem 0}
 .ability-tag{
@@ -2901,6 +2907,15 @@ const UIRenderer = {
       const active = AppState.activeTerrain === t.k ? ' terrain-active' : '';
       costHtml += `<span class="terrain-badge ${cls}${active}">${t.l}:${rank || '-'}</span>`;
     });
+    // カテゴリバッジ（PLカードから検出）
+    const plIndex = AppState.cardIndex.find(c => c.number === plNumber);
+    let unitCat = plIndex?.category;
+    if (!unitCat) unitCat = plOcr?.card_label?.class;
+    if (!unitCat) unitCat = plOcr?.category;
+    if (unitCat === '殲滅' || unitCat === '制圧' || unitCat === '防衛') {
+      const catCls = unitCat === '殲滅' ? 'cat-s' : unitCat === '制圧' ? 'cat-c' : 'cat-b';
+      costHtml += `<span class="unit-cat ${catCls}">${unitCat}</span>`;
+    }
     document.getElementById(`unit-cost-${u}`).innerHTML = costHtml;
 
     // Stats
