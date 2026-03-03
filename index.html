@@ -1865,6 +1865,13 @@ const CardService = {
   // Ensure _allDetails is populated (IDB cache → network)
   async _ensureDetails() {
     if (this._allDetails) return;
+    // サーバーのバージョンを取得
+    let serverVersion = null;
+    try {
+      const vRes = await fetch('./data/version.json', { cache: 'no-store' });
+      const vData = await vRes.json();
+      serverVersion = vData.version || null;
+    } catch (_) {}
     // Try IDB first
     try {
       const db = await this._openDetailsIDB();
@@ -1874,13 +1881,21 @@ const CardService = {
         req.onsuccess = () => res(req.result || null);
         req.onerror = e => rej(e.target.error);
       });
-      if (val && Object.keys(val).length >= AppState.cardIndex.length) {
+      const idbVersion = await new Promise((res) => {
+        const tx = db.transaction('details', 'readonly');
+        const req = tx.objectStore('details').get('_version');
+        req.onsuccess = () => res(req.result || null);
+        req.onerror = () => res(null);
+      });
+      const countOk = val && Object.keys(val).length >= AppState.cardIndex.length;
+      const versionOk = serverVersion && idbVersion === serverVersion;
+      if (countOk && versionOk) {
         this._allDetails = val;
         Object.assign(AppState.cardDetails, val);
-        console.log('CardService: details loaded from IDB,', Object.keys(val).length);
+        console.log('CardService: details loaded from IDB, v=' + idbVersion + ',', Object.keys(val).length);
         return;
       }
-      if (val) console.warn('CardService: IDB stale (IDB:', Object.keys(val).length, 'index:', AppState.cardIndex.length, '), refetching');
+      if (val) console.warn('CardService: IDB stale (IDB:', Object.keys(val).length, 'v=' + idbVersion, ', server: v=' + serverVersion + '), refetching');
     } catch (_) {}
     // Fetch from static JSON
     const res = await fetch('./data/card_details.json', { cache: 'no-store' });
@@ -1889,13 +1904,15 @@ const CardService = {
     Object.assign(AppState.cardDetails, data);
     console.log('CardService: details loaded from JSON,', Object.keys(data).length);
     // Save to IDB in background
-    this._saveDetailsToIDB(data);
+    this._saveDetailsToIDB(data, serverVersion);
   },
 
-  _saveDetailsToIDB(data) {
+  _saveDetailsToIDB(data, version) {
     this._openDetailsIDB().then(db => {
       const tx = db.transaction('details', 'readwrite');
-      tx.objectStore('details').put(data, 'all');
+      const store = tx.objectStore('details');
+      store.put(data, 'all');
+      if (version) store.put(version, '_version');
     }).catch(_ => {});
   },
 
