@@ -758,14 +758,11 @@ select,input{font-family:inherit}
 }
 .tactics-btn:hover{background:#2a2510;border-color:#ffe082}
 .tactics-btn.has-card{border-color:#ffe082;background:#2a2510}
-.tactics-btn .tactics-btn-label{display:none}
-.tactics-btn .tactics-btn-name{display:none}
-.tactics-btn .tactics-btn-clear{
-  color:#888;font-size:0.9rem;margin-left:2px;flex-shrink:0;
-  border:none;background:none;cursor:pointer;padding:0 2px;line-height:1;
+.tactics-placeholder{
+  width:75px;height:112px;display:flex;align-items:center;justify-content:center;
+  color:#998a40;font-size:1rem;font-weight:bold;
 }
-.tactics-btn .tactics-btn-clear:hover{color:#f44336}
-.tactics-btn img{width:auto;height:160px;border-radius:0;flex-shrink:0;display:block}
+.tactics-btn img{width:auto;height:112px;border-radius:0;flex-shrink:0;display:block}
 
 /* Tactics Picker Modal */
 .tactics-picker-grid{
@@ -1244,10 +1241,10 @@ select,input{font-family:inherit}
 <div class="link-tactics-row">
   <div class="tactics-inline" id="tacticsBar">
     <button class="tactics-btn" id="tacticsBtnMain" onclick="TacticsPicker.open('main')">
-      <span class="tactics-btn-label">メイン</span>
+      <div class="tactics-placeholder">メイン</div>
     </button>
     <button class="tactics-btn" id="tacticsBtnSub" onclick="TacticsPicker.open('sub')">
-      <span class="tactics-btn-label">サブ</span>
+      <div class="tactics-placeholder">サブ</div>
     </button>
   </div>
   <div class="link-bar" id="linkBar"></div>
@@ -2029,7 +2026,8 @@ const TacticsPicker = {
       return;
     }
 
-    body.innerHTML = `<div class="tactics-picker-grid">${cards.map(card => `
+    const clearBtn = currentId ? `<div class="tactics-picker-card" onclick="TacticsPicker._select(null)" style="justify-content:center;color:#f44336;font-weight:bold;font-size:1.1rem;border-color:#f44336">選択解除</div>` : '';
+    body.innerHTML = `<div class="tactics-picker-grid">${clearBtn}${cards.map(card => `
       <div class="tactics-picker-card${card.id === currentId ? ' selected' : ''}" onclick="TacticsPicker._select('${card.id}')">
         <img src="${card.thumbnail_url}" alt="${card.name}"
              onerror="this.onerror=null;this.style.display='none'">
@@ -2054,9 +2052,13 @@ const TacticsPicker = {
     DeckManager._autoSave();
     DeckManager._updateHash();
     this.close();
-    const cards = type === 'main' ? AppState.tacticsCards.main : AppState.tacticsCards.sub;
-    const card = cards.find(c => c.id === id);
-    Toast.show(`作戦カード「${card?.name || id}」を選択`, 'success');
+    if (id) {
+      const cards = type === 'main' ? AppState.tacticsCards.main : AppState.tacticsCards.sub;
+      const card = cards.find(c => c.id === id);
+      Toast.show(`作戦カード「${card?.name || id}」を選択`, 'success');
+    } else {
+      Toast.show('作戦カードを解除しました', 'success');
+    }
   },
 
   clear(type) {
@@ -2085,14 +2087,13 @@ const TacticsPicker = {
 
       if (!card) {
         btn.className = 'tactics-btn';
-        btn.innerHTML = `<span class="tactics-btn-label">${label}</span>`;
+        btn.innerHTML = `<div class="tactics-placeholder">${label}</div>`;
         return;
       }
 
       btn.className = 'tactics-btn has-card';
       btn.innerHTML = `
         <img src="${card.thumbnail_url}" alt="${card.name}" onerror="this.style.display='none'">
-        <button class="tactics-btn-clear" onclick="event.stopPropagation();TacticsPicker.clear('${type}')" title="解除">&times;</button>
       `;
     });
   }
