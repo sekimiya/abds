@@ -1128,6 +1128,7 @@ select,input{font-family:inherit}
     <button class="cache-menu-btn" onclick="ImageCache.openModal();toggleMenu()">キャッシュ管理</button>
   </div>
   <div style="border-top:1px solid #333;padding-top:8px">
+    <button class="menu-btn" onclick="clearDataCacheAndReload()" style="width:100%;color:#ff9800;border-color:#ff9800;margin-bottom:6px">データ更新（キャッシュクリア）</button>
     <a href="./index.html?force" class="menu-btn" style="text-decoration:none;display:block;text-align:center;border-color:#68efbd;color:#68efbd" onclick="this.href='./index.html?force'+location.hash">デスクトップ版</a>
   </div>
 </div>
@@ -3263,6 +3264,19 @@ function toggleMenu() {
   const panel = document.getElementById('menuPanel');
   panel.classList.toggle('open');
   if (panel.classList.contains('open')) DeckManager.populateLoadSelect();
+}
+async function clearDataCacheAndReload() {
+  if (!confirm('カードデータのキャッシュをクリアして最新データを取得します。よろしいですか？')) return;
+  try {
+    const keys = await caches.keys();
+    for (const k of keys) { if (k !== 'card-images-v1') await caches.delete(k); }
+    if (window.indexedDB) { try { indexedDB.deleteDatabase('abds-pwa-v1'); } catch (_) {} }
+    if ('serviceWorker' in navigator) {
+      const regs = await navigator.serviceWorker.getRegistrations();
+      for (const r of regs) await r.unregister();
+    }
+  } catch (e) { console.warn('Cache clear error:', e); }
+  location.reload();
 }
 function toggleFilterSheet() {
   const sheet = document.getElementById('filterSheet');

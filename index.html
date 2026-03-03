@@ -1204,6 +1204,10 @@ select,input{font-family:inherit}
         <div class="cache-menu-count" id="cacheCount">キャッシュ: 0枚</div>
         <button class="cache-menu-btn" onclick="ImageCache.openModal()">キャッシュ管理</button>
       </div>
+      <div class="header-menu-divider"></div>
+      <div class="header-menu-row">
+        <button class="header-btn" onclick="clearDataCacheAndReload()" style="flex:1;color:#ff9800;border-color:#ff9800">データ更新（キャッシュクリア）</button>
+      </div>
       <div class="header-menu-row" style="border-top:1px solid #333;padding-top:0.5rem">
         <a href="./mobile.html?force" class="header-btn" style="flex:1;text-align:center;text-decoration:none;border-color:#68efbd;color:#68efbd" onclick="this.href='./mobile.html?force'+location.hash">モバイル版</a>
       </div>
@@ -4807,6 +4811,27 @@ function toggleHeaderMenu() {
 function closeHeaderMenu() {
   document.getElementById('headerMenuPanel').classList.remove('open');
   document.getElementById('headerMenuOverlay').classList.remove('open');
+}
+
+async function clearDataCacheAndReload() {
+  if (!confirm('カードデータのキャッシュをクリアして最新データを取得します。よろしいですか？')) return;
+  try {
+    // SW data cache を削除
+    const keys = await caches.keys();
+    for (const k of keys) {
+      if (k !== 'card-images-v1') await caches.delete(k);
+    }
+    // IndexedDB (card details cache) を削除
+    if (window.indexedDB) {
+      try { indexedDB.deleteDatabase('abds-pwa-v1'); } catch (_) {}
+    }
+    // SW を更新
+    if ('serviceWorker' in navigator) {
+      const regs = await navigator.serviceWorker.getRegistrations();
+      for (const r of regs) await r.unregister();
+    }
+  } catch (e) { console.warn('Cache clear error:', e); }
+  location.reload();
 }
 
 // Terrain setting
