@@ -65,7 +65,7 @@ select,input{font-family:inherit}
   border-bottom-color:#ff69b4;
 }
 .logo{
-  color:#68efbd;font-weight:bold;font-size:0.85rem;white-space:nowrap;
+  color:#68efbd;font-weight:bold;font-size:1.5rem;white-space:nowrap;
   font-style:italic;letter-spacing:1px;opacity:0.5;
   background:linear-gradient(135deg,#68efbd,#68efbd);
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;
@@ -158,6 +158,9 @@ select,input{font-family:inherit}
   flex:1;min-height:0;
 }
 .link-bar:empty{display:none}
+.link-chip.compact{padding:2px 8px;font-size:0.85rem;opacity:0.6}
+.link-chip.compact .link-chip-name{font-size:0.85rem}
+.link-chip.compact .link-chip-count{font-size:0.75rem}
 .tactics-inline{
   display:flex;gap:6px;flex-shrink:0;
 }
@@ -3813,9 +3816,23 @@ const UIRenderer = {
     const abActive = entries.some(([, info]) => info.is_ab_link && info.count >= info.required);
     document.querySelector('.app-header').classList.toggle('theme-ab', abActive);
 
-    bar.innerHTML = entries.map(([name, info]) => {
+    // 発動中は全表示、未発動はcount少ない順に省略
+    const active = entries.filter(([,i]) => i.count >= i.required);
+    const inactive = entries.filter(([,i]) => i.count < i.required)
+      .sort((a,b) => a[1].count - b[1].count);
+    const MAX_FULL = 6; // 全表示の最大数
+    const fullCount = Math.max(0, MAX_FULL - active.length);
+
+    bar.innerHTML = [...active, ...inactive].map(([name, info], idx) => {
       const isActive = info.count >= info.required;
       const typeCls = info.is_eb_link ? ' eb-link' : info.is_ab_link ? ' ab-link' : '';
+      const isCompact = !isActive && (idx - active.length) >= fullCount;
+      if (isCompact) {
+        return `<div class="link-chip compact${typeCls}" title="${escapeHtml(info.effect)}">
+          <span class="link-chip-name">${escapeHtml(name)}</span>
+          <span class="link-chip-count">${info.count}/${info.required}</span>
+        </div>`;
+      }
       return `<div class="link-chip${isActive ? ' active' : ''}${typeCls}">
         <span class="link-chip-name">${escapeHtml(name)}</span>
         <span class="link-chip-count">${info.count}/${info.required}</span>
