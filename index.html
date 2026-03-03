@@ -741,9 +741,9 @@ select,input{font-family:inherit}
 /* ===== TACTICS CARD (in header) ===== */
 .tactics-btn{
   display:inline-flex;align-items:center;gap:0;
-  padding:2px;background:#222;border:1px solid #4a3a00;
-  border-radius:6px;color:#ffe082;font-size:0;cursor:pointer;
-  transition:all 0.15s;
+  padding:0;background:#222;border:1px solid #4a3a00;
+  border-radius:4px;color:#ffe082;font-size:0;cursor:pointer;
+  transition:all 0.15s;overflow:hidden;
 }
 .tactics-btn:hover{background:#2a2510;border-color:#ffe082}
 .tactics-btn.has-card{border-color:#ffe082;background:#2a2510}
@@ -754,7 +754,7 @@ select,input{font-family:inherit}
   border:none;background:none;cursor:pointer;padding:0 2px;line-height:1;
 }
 .tactics-btn .tactics-btn-clear:hover{color:#f44336}
-.tactics-btn img{width:auto;height:28px;border-radius:3px;flex-shrink:0}
+.tactics-btn img{width:auto;height:36px;border-radius:0;flex-shrink:0;display:block}
 
 /* Tactics Picker Modal */
 .tactics-picker-grid{
