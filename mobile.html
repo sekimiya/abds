@@ -1410,28 +1410,52 @@ const CardService = {
 
   async _ensureDetails() {
     if (this._allDetails) return;
+    let idbVal = null;
     try {
       const db = await this._openDetailsIDB();
-      const val = await new Promise((res, rej) => {
+      idbVal = await new Promise((res, rej) => {
         const tx = db.transaction('details', 'readonly');
         const req = tx.objectStore('details').get('all');
         req.onsuccess = () => res(req.result || null);
         req.onerror = e => rej(e.target.error);
       });
-      if (val && Object.keys(val).length >= AppState.cardIndex.length) {
-        this._allDetails = val;
-        Object.assign(AppState.cardDetails, val);
-        console.log('CardService: details loaded from IDB,', Object.keys(val).length);
+      if (idbVal && Object.keys(idbVal).length > 0) {
+        this._allDetails = idbVal;
+        Object.assign(AppState.cardDetails, idbVal);
+        console.log('CardService: details loaded from IDB,', Object.keys(idbVal).length);
+        if (Object.keys(idbVal).length < AppState.cardIndex.length) {
+          console.warn('CardService: IDB stale, updating in background');
+          this._refreshDetailsInBackground();
+        }
         return;
       }
-      if (val) console.warn('CardService: IDB stale (IDB:', Object.keys(val).length, 'index:', AppState.cardIndex.length, '), refetching');
     } catch (_) {}
-    const res = await fetch('./data/card_details.json', { cache: 'no-store' });
-    const data = await res.json();
-    this._allDetails = data;
-    Object.assign(AppState.cardDetails, data);
-    console.log('CardService: details loaded from JSON,', Object.keys(data).length);
-    this._saveDetailsToIDB(data);
+    try {
+      const res = await fetch('./data/card_details.json', { cache: 'no-store' });
+      const data = await res.json();
+      this._allDetails = data;
+      Object.assign(AppState.cardDetails, data);
+      console.log('CardService: details loaded from JSON,', Object.keys(data).length);
+      this._saveDetailsToIDB(data);
+    } catch (e) {
+      console.error('CardService: JSON fetch failed:', e);
+      if (idbVal) {
+        this._allDetails = idbVal;
+        Object.assign(AppState.cardDetails, idbVal);
+        console.warn('CardService: falling back to IDB data');
+      }
+    }
+  },
+
+  async _refreshDetailsInBackground() {
+    try {
+      const res = await fetch('./data/card_details.json', { cache: 'no-store' });
+      const data = await res.json();
+      this._allDetails = data;
+      Object.assign(AppState.cardDetails, data);
+      this._saveDetailsToIDB(data);
+      console.log('CardService: details updated from JSON,', Object.keys(data).length);
+    } catch (_) {}
   },
 
   _saveDetailsToIDB(data) {
