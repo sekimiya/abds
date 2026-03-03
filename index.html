@@ -46,6 +46,23 @@ select,input{font-family:inherit}
   border-bottom:2px solid #68efbd;
   padding:0 0.8rem;min-height:52px;flex-shrink:0;
   gap:0.5rem;overflow-x:visible;flex-wrap:wrap;
+  transition:background 0.4s,border-color 0.4s;
+}
+.app-header.theme-sq{
+  background:linear-gradient(135deg,#2a1a2a,#331a2a);
+  border-bottom-color:#ff69b4;
+}
+.app-header.theme-eb{
+  background:linear-gradient(135deg,#2a2010,#33250a);
+  border-bottom-color:#ff9800;
+}
+.app-header.theme-ab{
+  background:linear-gradient(135deg,#1a1a2a,#22183a);
+  border-bottom-color:#b388ff;
+}
+.app-header.theme-sq.theme-eb{
+  background:linear-gradient(135deg,#2a1a2a,#33250a);
+  border-bottom-color:#ff69b4;
 }
 .logo{
   color:#68efbd;font-weight:bold;font-size:0.85rem;white-space:nowrap;
@@ -59,7 +76,7 @@ select,input{font-family:inherit}
 .header-value{color:#ffe082;font-weight:bold;font-size:1.2rem;min-width:28px;text-align:center}
 .total-cost-box{
   display:flex;flex-direction:column;align-items:center;justify-content:center;
-  width:75px;height:112px;flex-shrink:0;
+  width:112px;height:112px;flex-shrink:0;
   background:linear-gradient(135deg,rgba(255,224,130,0.08),rgba(255,183,77,0.04));
   border:1px solid rgba(255,224,130,0.2);border-radius:8px;
   position:relative;overflow:hidden;
@@ -260,7 +277,7 @@ select,input{font-family:inherit}
 .header-menu-wrap{margin-left:auto;flex-shrink:0}
 .header-menu-toggle{
   background:#222;border:1px solid #555;border-radius:6px;
-  color:#ccc;padding:0.3rem 0.6rem;font-size:1rem;cursor:pointer;
+  color:#ccc;padding:0.5rem 0.8rem;font-size:1.8rem;cursor:pointer;
   transition:all 0.15s;line-height:1;
 }
 .header-menu-toggle:hover{background:#333;border-color:#68efbd;color:#68efbd}
@@ -433,7 +450,7 @@ select,input{font-family:inherit}
   font-size:0.6rem;font-weight:bold;padding:1px 5px;border-radius:3px;
   letter-spacing:0.5px;box-shadow:0 1px 3px rgba(0,0,0,0.4);
 }
-.card-slot-label{color:#555;font-size:0.72rem;font-weight:bold;margin-bottom:0.2rem}
+.card-slot-label{display:none}
 .card-slot-img{
   width:100%;height:auto;border-radius:4px;
   cursor:pointer;transition:transform 0.15s;
@@ -753,7 +770,7 @@ select,input{font-family:inherit}
 /* ===== TACTICS CARD (in header) ===== */
 .tactics-btn{
   display:inline-flex;align-items:center;justify-content:center;
-  width:75px;height:112px;
+  width:112px;height:112px;
   padding:0;background:#222;border:1px solid #4a3a00;
   border-radius:4px;color:#ffe082;font-size:0;cursor:pointer;
   transition:all 0.15s;overflow:hidden;flex-shrink:0;
@@ -3738,6 +3755,11 @@ const UIRenderer = {
       ? `EB発動：${ebLinkNames.join('、')}`
       : 'EB発動';
 
+    // ヘッダーテーマ更新
+    const header = document.querySelector('.app-header');
+    header.classList.toggle('theme-sq', sqActive);
+    header.classList.toggle('theme-eb', ebActive);
+
     // リンクアビリティバー更新
     this._updateLinkBar();
   },
@@ -3785,6 +3807,10 @@ const UIRenderer = {
     });
 
     if (entries.length === 0) { bar.innerHTML = ''; this._applyLinkHighlights({}, {}, linkMap); return; }
+
+    // AB発動判定
+    const abActive = entries.some(([, info]) => info.is_ab_link && info.count >= info.required);
+    document.querySelector('.app-header').classList.toggle('theme-ab', abActive);
 
     bar.innerHTML = entries.map(([name, info]) => {
       const isActive = info.count >= info.required;
