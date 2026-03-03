@@ -554,13 +554,13 @@ select,input{font-family:inherit}
 /* Status bars */
 .unit-stats{margin-bottom:0.3rem}
 .stat-row{display:flex;align-items:center;gap:0.3rem;margin-bottom:3px}
-.stat-label{color:#888;font-size:0.75rem;width:24px;text-align:right;flex-shrink:0}
-.stat-track{flex:1;height:20px;background:#222;border-radius:2px;overflow:hidden;position:relative;display:flex}
+.stat-label{color:#888;font-size:0.85rem;width:28px;text-align:right;flex-shrink:0}
+.stat-track{flex:1;height:26px;background:#222;border-radius:2px;overflow:hidden;position:relative;display:flex}
 .stat-bar-base{height:100%;background:#2196f3;transition:width 0.3s}
 .stat-bar-buff{height:100%;background:#e91e63;transition:width 0.3s}
 .stat-bar-terrain-pos{height:100%;background:#68efbd;transition:width 0.3s}
 .stat-bar-terrain-neg{height:100%;transition:width 0.3s;background:repeating-linear-gradient(135deg,rgba(244,67,54,0.6),rgba(244,67,54,0.6) 2px,rgba(244,67,54,0.3) 2px,rgba(244,67,54,0.3) 4px)}
-.stat-value{position:absolute;top:0;left:0;right:0;bottom:0;display:flex;align-items:center;padding:0 6px;color:#fff;font-size:0.65rem;white-space:nowrap;font-variant-numeric:tabular-nums;font-family:'Menlo','Consolas','Courier New',monospace;text-shadow:0 0 3px rgba(0,0,0,0.8),0 0 6px rgba(0,0,0,0.5);pointer-events:none}
+.stat-value{position:absolute;top:0;left:0;right:0;bottom:0;display:flex;align-items:center;padding:0 6px;color:#fff;font-size:0.8rem;white-space:nowrap;font-variant-numeric:tabular-nums;font-family:'Menlo','Consolas','Courier New',monospace;text-shadow:0 0 3px rgba(0,0,0,0.8),0 0 6px rgba(0,0,0,0.5);pointer-events:none}
 .stat-buff-text{color:#ffb3c6}
 .stat-terrain-text.positive{color:#a0ffd0}
 .stat-terrain-text.negative{color:#ff8a80}
@@ -643,7 +643,7 @@ select,input{font-family:inherit}
 .terrain-badge.rank-none{color:#444;border-color:#222}
 
 /* Unit category badge */
-.unit-cat{padding:0.1rem 0.4rem;border-radius:3px;font-size:0.7rem;font-weight:bold;border:1px solid #333;background:#1a1a1a}
+.unit-cat{padding:0.15rem 0.5rem;border-radius:3px;font-size:0.8rem;font-weight:bold;border:1px solid #333;background:#1a1a1a;color:#666}
 .unit-cat.cat-s{background:#8b1a1a;color:#ff8a80;border-color:#c62828}
 .unit-cat.cat-c{background:#1a4a8b;color:#82b1ff;border-color:#1565c0}
 .unit-cat.cat-b{background:#1a6b1a;color:#a5d6a7;border-color:#2e7d32}
@@ -2972,25 +2972,17 @@ const UIRenderer = {
     const msCost = safeInt(msOcr?.cost);
     const plCost = safeInt(plOcr?.cost);
     const unitCost = msCost + plCost;
-    let costHtml = `<span class="unit-cost-value"><span class="cost-label">TCOST</span><span class="cost-num">${unitCost || '-'}</span></span>`;
-    // 地形適性（MSのOCRデータ or cardIndexのterrain）— 常に表示してレイアウト固定
-    const tc = msOcr?.terrain_compatibility || msCard?.terrain || null;
-    const tList = [{k:'ground',l:'地'},{k:'space',l:'宇'},{k:'desert',l:'砂'},{k:'water',l:'水'}];
-    tList.forEach(t => {
-      const rank = tc ? (tc[t.k] || null) : null;
-      const cls = rank ? `rank-${rank}` : 'rank-none';
-      const active = AppState.activeTerrain === t.k ? ' terrain-active' : '';
-      costHtml += `<span class="terrain-badge ${cls}${active}">${t.l}:${rank || '-'}</span>`;
-    });
-    // カテゴリバッジ（PLカードから検出）
+    // カテゴリ検出（PLカードから）
     const plIndex = AppState.cardIndex.find(c => c.number === plNumber);
     let unitCat = plIndex?.category;
     if (!unitCat) unitCat = plOcr?.card_label?.class;
     if (!unitCat) unitCat = plOcr?.category;
+    let catHtml = '';
     if (unitCat === '殲滅' || unitCat === '制圧' || unitCat === '防衛') {
       const catCls = unitCat === '殲滅' ? 'cat-s' : unitCat === '制圧' ? 'cat-c' : 'cat-b';
-      costHtml += `<span class="unit-cat ${catCls}">${unitCat}</span>`;
+      catHtml = `<span class="unit-cat ${catCls}">${unitCat}</span>`;
     }
+    let costHtml = `${catHtml}<span class="unit-cost-value"><span class="cost-label">TCOST</span><span class="cost-num">${unitCost || '-'}</span></span>`;
     document.getElementById(`unit-cost-${u}`).innerHTML = costHtml;
 
     // Stats
