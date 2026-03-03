@@ -1235,11 +1235,9 @@ function renderDeckList(decks, cardData, tacticsMap) {
       html += `<div class="comments-body" id="comments-${deckId}" style="display:none">`;
       html += `<div class="comments-list" id="clist-${deckId}">`;
       comments.forEach(c => {
-        const cTime = c.timestamp || c.created_at ? new Date(c.timestamp || c.created_at).toLocaleString('ja-JP') : '';
+        const cTime = c.created_at ? new Date(c.created_at).toLocaleString('ja-JP') : '';
         const cName = escapeHtml(c.name || 'アースノイド');
-        const replyTag = c.reply_to ? `<span class="comment-reply-tag">@${escapeHtml(c.reply_to)}</span>` : '';
-        const replyCls = c.reply_to ? ' is-reply' : '';
-        html += `<div class="comment-item${replyCls}" data-comment-id="${c.id}" data-comment-name="${cName}"><div class="comment-header"><span class="comment-name">${cName}</span><span class="comment-time">${cTime}</span><button class="comment-reply-btn" data-deck-id="${deckId}" data-reply-name="${cName}">返信</button></div><div class="comment-text">${replyTag}${escapeHtml(c.text).replace(/\n/g, '<br>')}</div></div>`;
+        html += `<div class="comment-item" data-comment-id="${c.id}" data-comment-name="${cName}"><div class="comment-header"><span class="comment-name">${cName}</span><span class="comment-time">${cTime}</span><button class="comment-reply-btn" data-deck-id="${deckId}" data-reply-name="${cName}">返信</button></div><div class="comment-text">${escapeHtml(c.text).replace(/\n/g, '<br>')}</div></div>`;
       });
       html += '</div>';
       html += `<div id="reply-indicator-${deckId}" style="display:none"></div>`;
@@ -1372,9 +1370,7 @@ function renderDeckList(decks, cardData, tacticsMap) {
           id: commentId,
           deck_id: deckId,
           name: commentName,
-          text: text,
-          reply_to: replyTo,
-          timestamp: now,
+          text: replyTo ? `@${replyTo} ${text}` : text,
           created_at: now
         };
         const res = await fetch(SUPABASE_URL + '/rest/v1/comments', {
@@ -1385,13 +1381,12 @@ function renderDeckList(decks, cardData, tacticsMap) {
         if (res.ok) {
           const arr = await res.json();
           const c = arr[0] || payload;
-          const cTime = (c.timestamp || c.created_at) ? new Date(c.timestamp || c.created_at).toLocaleString('ja-JP') : '';
+          const cTime = c.created_at ? new Date(c.created_at).toLocaleString('ja-JP') : '';
           const cName = escapeHtml(c.name || 'アースノイド');
-          const replyTag = c.reply_to ? `<span class="comment-reply-tag">@${escapeHtml(c.reply_to)}</span>` : '';
-          const replyCls = c.reply_to ? ' is-reply' : '';
+          const replyCls = replyTo ? ' is-reply' : '';
           const list = document.getElementById('clist-' + deckId);
           list.insertAdjacentHTML('beforeend',
-            `<div class="comment-item${replyCls}" data-comment-name="${cName}"><div class="comment-header"><span class="comment-name">${cName}</span><span class="comment-time">${cTime}</span><button class="comment-reply-btn" data-deck-id="${deckId}" data-reply-name="${cName}">返信</button></div><div class="comment-text">${replyTag}${escapeHtml(c.text).replace(/\n/g, '<br>')}</div></div>`
+            `<div class="comment-item${replyCls}" data-comment-name="${cName}"><div class="comment-header"><span class="comment-name">${cName}</span><span class="comment-time">${cTime}</span><button class="comment-reply-btn" data-deck-id="${deckId}" data-reply-name="${cName}">返信</button></div><div class="comment-text">${escapeHtml(c.text).replace(/\n/g, '<br>')}</div></div>`
           );
           list.querySelector('.comment-item:last-child .comment-reply-btn')?.addEventListener('click', function() {
             setReplyTo(this.dataset.deckId, this.dataset.replyName);
