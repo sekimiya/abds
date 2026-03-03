@@ -195,7 +195,14 @@ select,input{font-family:inherit}
 .overview-thumb .ov-badge.sq-b{background:rgba(255,105,180,0.9)}
 .overview-thumb .ov-badge.eb-b{background:rgba(255,152,0,0.9)}
 .overview-thumb .ov-badge.ab-b{background:rgba(179,136,255,0.9)}
-.overview-thumb .ov-badge.link-b{background:rgba(104,239,189,0.9);color:#000}
+.overview-thumb .ov-card-label{
+  position:absolute;top:0;left:0;right:0;
+  font-size:0.5rem;font-weight:bold;padding:1px 2px;
+  background:rgba(0,0,0,0.75);color:#ccc;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  line-height:1.3;text-align:center;z-index:2;display:none;
+}
+.overview-thumb.has-card .ov-card-label{display:block}
 .overview-thumb .ov-link-tags{
   position:absolute;bottom:0;left:0;right:0;
   display:flex;flex-direction:column;gap:1px;
@@ -2246,8 +2253,8 @@ const UIRenderer = {
     tabs.innerHTML = '';
     for (let u = 0; u < 5; u++) {
       catRow.innerHTML += `<div class="ov-cat" id="ov-cat-${u}"></div>`;
-      msRow.innerHTML += `<div class="overview-thumb empty" id="ov-ms-${u}"><span class="ov-badge" id="ov-ms-badge-${u}"></span><button class="ov-clear" onclick="event.stopPropagation();DeckManager.clearCard(${u})">&times;</button></div>`;
-      plRow.innerHTML += `<div class="overview-thumb empty" id="ov-pl-${u}"><span class="ov-badge" id="ov-pl-badge-${u}"></span><button class="ov-clear" onclick="event.stopPropagation();DeckManager.clearCard(${u+5})">&times;</button></div>`;
+      msRow.innerHTML += `<div class="overview-thumb empty" id="ov-ms-${u}"><div class="ov-card-label" id="ov-ms-label-${u}"></div><span class="ov-badge" id="ov-ms-badge-${u}"></span><button class="ov-clear" onclick="event.stopPropagation();DeckManager.clearCard(${u})">&times;</button></div>`;
+      plRow.innerHTML += `<div class="overview-thumb empty" id="ov-pl-${u}"><div class="ov-card-label" id="ov-pl-label-${u}"></div><span class="ov-badge" id="ov-pl-badge-${u}"></span><button class="ov-clear" onclick="event.stopPropagation();DeckManager.clearCard(${u+5})">&times;</button></div>`;
       tabs.innerHTML += `<div class="unit-tab${u === 0 ? ' active' : ''}" onclick="UIRenderer.selectUnit(${u})">${u + 1}</div>`;
     }
     // Attach tap (front/back toggle) + long-press (open picker) handlers
@@ -2324,6 +2331,7 @@ const UIRenderer = {
     if (!number) {
       el.className = 'overview-thumb empty' + (u === AppState.selectedUnit ? ' selected' : '');
       el.querySelector('img')?.remove();
+      el.querySelector('.ov-card-label').textContent = '';
       el.querySelector('.ov-badge').textContent = '';
       el.querySelector('.ov-badge').className = 'ov-badge';
       let oldTags = el.querySelector('.ov-link-tags');
@@ -2344,6 +2352,11 @@ const UIRenderer = {
     badge.className = 'ov-badge';
     let isEbCard = false, isSqCard = false, isAbCard = false;
     const indexEntry = this._getIndexEntry(number);
+
+    // Card name + number label
+    const label = el.querySelector('.ov-card-label');
+    const cardName = indexEntry?.name || ocr?.name || '';
+    label.textContent = cardName ? `${cardName} ${number}` : number;
 
     if (type === 'ms') {
       isSqCard = ocr?.special_attack?.sp_type === 'SQUAD SP' || !!(indexEntry?.has_sq_link);
@@ -2395,7 +2408,7 @@ const UIRenderer = {
     el.className = 'overview-thumb has-card'
       + (glowClass ? ' ' + glowClass : '')
       + (u === AppState.selectedUnit ? ' selected' : '');
-    if (totalActive > 0 && !badge.textContent) { badge.textContent = 'LNK'; badge.className = 'ov-badge link-b'; }
+
 
     // Link tags overlay (reuse linkResults, max 2, active first)
     let oldTags = el.querySelector('.ov-link-tags');
