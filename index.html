@@ -128,13 +128,21 @@ select,input{font-family:inherit}
   from{box-shadow:0 0 6px rgba(255,152,0,0.4)}
   to{box-shadow:0 0 14px rgba(255,152,0,0.8)}
 }
-/* Link Ability Bar */
-.link-bar{
-  display:flex;flex-wrap:wrap;gap:6px;
+/* Link Ability Bar + Tactics Row */
+.link-tactics-row{
+  display:flex;align-items:center;gap:8px;
   background:#111;border-bottom:1px solid #2a2a2a;
   padding:6px 10px;min-height:0;flex-shrink:0;
 }
+.link-tactics-row:has(.link-bar:empty) .tactics-inline:empty{display:none}
+.link-bar{
+  display:flex;flex-wrap:wrap;gap:6px;
+  flex:1;min-height:0;
+}
 .link-bar:empty{display:none}
+.tactics-inline{
+  display:flex;gap:6px;flex-shrink:0;
+}
 .link-chip{
   display:inline-flex;align-items:center;gap:6px;
   padding:4px 12px;border-radius:14px;font-size:0.9rem;
@@ -1163,17 +1171,6 @@ select,input{font-family:inherit}
   </div>
   <div class="header-sep"></div>
 
-  <div class="header-group" id="tacticsBar">
-    <button class="tactics-btn" id="tacticsBtnMain" onclick="TacticsPicker.open('main')">
-      <span class="tactics-btn-label">メイン</span>
-      <span class="tactics-btn-name">未選択</span>
-    </button>
-    <button class="tactics-btn" id="tacticsBtnSub" onclick="TacticsPicker.open('sub')">
-      <span class="tactics-btn-label">サブ</span>
-      <span class="tactics-btn-name">未選択</span>
-    </button>
-  </div>
-
   <div class="terrain-picker" id="terrainPicker">
     <button class="terrain-picker-btn" id="terrainPickerBtn" onclick="toggleTerrainPicker()">
       <span class="terrain-picker-label" id="terrainPickerLabel">TERRAIN</span>
@@ -1237,8 +1234,20 @@ select,input{font-family:inherit}
   </div>
 </header>
 
-<!-- ===== LINK ABILITY BAR ===== -->
-<div class="link-bar" id="linkBar"></div>
+<!-- ===== LINK ABILITY BAR + TACTICS ===== -->
+<div class="link-tactics-row">
+  <div class="link-bar" id="linkBar"></div>
+  <div class="tactics-inline" id="tacticsBar">
+    <button class="tactics-btn" id="tacticsBtnMain" onclick="TacticsPicker.open('main')">
+      <span class="tactics-btn-label">メイン</span>
+      <span class="tactics-btn-name">未選択</span>
+    </button>
+    <button class="tactics-btn" id="tacticsBtnSub" onclick="TacticsPicker.open('sub')">
+      <span class="tactics-btn-label">サブ</span>
+      <span class="tactics-btn-name">未選択</span>
+    </button>
+  </div>
+</div>
 
 <!-- Tactics Picker Modal -->
 <div class="modal-overlay" id="tacticsPickerModal">
