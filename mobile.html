@@ -496,9 +496,8 @@ select,input{font-family:inherit}
 .thumb-card-info{position:absolute;bottom:0;left:0;right:0;padding:2px 3px;background:rgba(0,0,0,0.75);display:flex;flex-direction:column;gap:0px}
 .thumb-card-number{color:var(--accent);font-size:0.5rem;white-space:nowrap;overflow:hidden}
 .thumb-card-name{color:#ddd;font-size:0.55rem;font-weight:bold;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.thumb-card.no-ocr{opacity:0.45;pointer-events:none}
+.thumb-card.no-ocr{opacity:0.65}
 .thumb-no-ocr-badge{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,0.8);color:#f44336;font-size:0.65rem;font-weight:bold;padding:2px 6px;border-radius:3px;border:1px solid #f44336;white-space:nowrap}
-.thumb-reocr-badge{position:absolute;top:4px;right:4px;background:rgba(239,83,80,0.9);color:#fff;font-size:0.55rem;font-weight:bold;padding:1px 4px;border-radius:3px;white-space:nowrap;z-index:2}
 .thumb-card-sub{color:#888;font-size:0.45rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .picker-pagination{
   display:flex;justify-content:space-between;align-items:center;
@@ -787,7 +786,6 @@ select,input{font-family:inherit}
         <label class="ocr-toggle"><input type="checkbox" id="filterAllSeries" checked onchange="SearchPanel.toggleAllSeries()"><span class="ocr-toggle-text">全シリーズ</span></label>
         <div class="series-filter" id="seriesFilter"></div>
         <label class="ocr-toggle"><input type="checkbox" id="filterBookmarkCards" onchange="SearchPanel.applyFilters()"><span class="ocr-toggle-text">&#9733; ブックマーク</span></label>
-        <label class="ocr-toggle" style="border:2px solid #ef5350;border-radius:6px;padding:0.2rem 0.5rem;background:rgba(239,83,80,0.08)"><input type="checkbox" id="filterNeedsReocr" onchange="SearchPanel.applyFilters()" style="accent-color:#ef5350"><span class="ocr-toggle-text" style="color:#ef5350;font-weight:bold">要再OCR</span></label>
       </div>
     </div>
     <div class="filter-group collapsed" id="filterGroupStats">
@@ -3057,7 +3055,6 @@ const SearchPanel = {
     if (document.getElementById('searchInput').value.trim()) return true;
     const sti = document.getElementById('searchTextInput'); if (sti && sti.value.trim()) return true;
     const bm = document.getElementById('filterBookmarkCards'); if (bm && bm.checked) return true;
-    const reocr = document.getElementById('filterNeedsReocr'); if (reocr && reocr.checked) return true;
     for (const s of Object.values(this._t)) { if (s.size > 0) return true; }
     return false;
   },
@@ -3088,10 +3085,7 @@ const SearchPanel = {
   },
   applyFilters() {
     if (!this._hasActiveFilter()) { this._filteredCards = []; this._page = 0; this._renderGrid(); this._saveFilters(); this._updateFilterBadge(); return; }
-    // PRレアリティ選択時は未OCRカードも含める
-    let cards = this._currentRarity.size > 0
-      ? AppState.cardIndex.filter(c => c.has_ocr || this._currentRarity.has(c.rarity))
-      : AppState.cardIndex.filter(c => c.has_ocr);
+    let cards = [...AppState.cardIndex];
     if (this._lockedType && this._t.abCat.size === 0) cards = cards.filter(c => c.type === this._lockedType);
     if (this._currentCategory.size > 0) cards = cards.filter(c => !c.category || this._currentCategory.has(c.category));
     if (this._currentRarity.size > 0) cards = cards.filter(c => !c.rarity || this._currentRarity.has(c.rarity));
@@ -3142,9 +3136,6 @@ const SearchPanel = {
     if (qt) { const terms = qt.split(/\s+/); cards = cards.filter(c => { const txt = c.search_text || ''; return terms.every(t => txt.includes(t)); }); }
     const bmEl = document.getElementById('filterBookmarkCards');
     if (bmEl && bmEl.checked) { const bmSet = CardBookmark.getAll(); cards = cards.filter(c => bmSet.has(c.number)); }
-    // 要再OCR OR merge: needs_reocr cards are added to results (union)
-    const reocrEl = document.getElementById('filterNeedsReocr');
-    if (reocrEl && reocrEl.checked) { const inResult = new Set(cards.map(c => c.number)); const reocrCards = AppState.cardIndex.filter(c => c.needs_reocr && !inResult.has(c.number)); cards = cards.concat(reocrCards); }
     this._filteredCards = cards;
     this._page = 0;
     this._renderGrid();
@@ -3217,7 +3208,6 @@ const SearchPanel = {
           <img src="${resolveImageUrl(null, card.number, 'front')}" alt="${card.name}" loading="lazy" onerror="this.onerror=null;this.src=PLACEHOLDER_SVG">
           <div class="thumb-card-badges">${card.cost !== null ? `<span class="thumb-card-cost">C${card.cost}</span>` : ''}${rarityHtml}</div>
           ${noOcr ? '<div class="thumb-no-ocr-badge">未OCR</div>' : ''}
-          ${card.needs_reocr ? '<div class="thumb-reocr-badge">要再OCR</div>' : ''}
           ${isSq ? '<div class="thumb-sq-badge">SQ</div>' : ''}
           ${isEb ? `<div class="thumb-eb-badge">${card.has_eb ? 'EBSP' : 'EB'}</div>` : ''}
           ${isAb ? '<div class="thumb-ab-badge">AB</div>' : ''}
@@ -3227,7 +3217,7 @@ const SearchPanel = {
             <div class="thumb-card-name">${escapeHtml(card.name || '')}</div>
           </div>
         </div>`;
-      if (!noOcr) el.addEventListener('click', () => this._selectCard(card));
+      el.addEventListener('click', () => this._selectCard(card));
       grid.appendChild(el);
     }
     this._rendered = end;
