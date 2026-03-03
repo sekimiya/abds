@@ -3269,11 +3269,11 @@ async function clearDataCacheAndReload() {
   if (!confirm('カードデータのキャッシュをクリアして最新データを取得します。よろしいですか？')) return;
   try {
     const keys = await caches.keys();
-    for (const k of keys) { if (k !== 'card-images-v1') await caches.delete(k); }
+    for (const k of keys) { if (k === 'card-images-v1') continue; await caches.delete(k); }
     if (window.indexedDB) { try { indexedDB.deleteDatabase('abds-pwa-v1'); } catch (_) {} }
     if ('serviceWorker' in navigator) {
       const regs = await navigator.serviceWorker.getRegistrations();
-      for (const r of regs) await r.unregister();
+      for (const r of regs) { try { await r.update(); } catch (_) {} }
     }
   } catch (e) { console.warn('Cache clear error:', e); }
   location.reload();

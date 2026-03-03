@@ -4816,19 +4816,20 @@ function closeHeaderMenu() {
 async function clearDataCacheAndReload() {
   if (!confirm('カードデータのキャッシュをクリアして最新データを取得します。よろしいですか？')) return;
   try {
-    // SW data cache を削除
+    // SW data cache + app shell cache を削除（画像キャッシュは保持）
     const keys = await caches.keys();
     for (const k of keys) {
-      if (k !== 'card-images-v1') await caches.delete(k);
+      if (k === 'card-images-v1') continue;
+      await caches.delete(k);
     }
     // IndexedDB (card details cache) を削除
     if (window.indexedDB) {
       try { indexedDB.deleteDatabase('abds-pwa-v1'); } catch (_) {}
     }
-    // SW を更新
+    // SW を再取得（unregisterせずupdateで最新SWを反映）
     if ('serviceWorker' in navigator) {
       const regs = await navigator.serviceWorker.getRegistrations();
-      for (const r of regs) await r.unregister();
+      for (const r of regs) { try { await r.update(); } catch (_) {} }
     }
   } catch (e) { console.warn('Cache clear error:', e); }
   location.reload();
