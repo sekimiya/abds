@@ -287,6 +287,17 @@ select,input{font-family:inherit}
 .header-menu-row .header-btn{flex:1}
 .header-menu-divider{height:1px;background:#333;margin:0.2rem 0}
 .header-menu-label{color:#888;font-size:0.75rem}
+.terrain-switch-row{display:flex;gap:4px;margin-top:4px}
+.terrain-sel{
+  flex:1;padding:6px 0;border:1px solid #333;border-radius:4px;
+  background:#1a1a1a;color:#888;font-size:0.8rem;font-weight:bold;
+  cursor:pointer;transition:all 0.15s;text-align:center;
+}
+.terrain-sel:hover{border-color:#68efbd;color:#aaa}
+.terrain-sel.active[data-terrain="ground"]{background:#1a2a1a;color:#a5d6a7;border-color:#66bb6a}
+.terrain-sel.active[data-terrain="space"]{background:#1a1a2a;color:#9fa8da;border-color:#5c6bc0}
+.terrain-sel.active[data-terrain="desert"]{background:#2a2a1a;color:#ffe082;border-color:#ff8f00}
+.terrain-sel.active[data-terrain="water"]{background:#1a2a2a;color:#81d4fa;border-color:#29b6f6}
 /* --- Right menu: cache section (warning red theme) --- */
 .cache-menu-section{
   margin-top:auto;
@@ -754,7 +765,7 @@ select,input{font-family:inherit}
   border:none;background:none;cursor:pointer;padding:0 2px;line-height:1;
 }
 .tactics-btn .tactics-btn-clear:hover{color:#f44336}
-.tactics-btn img{width:auto;height:47px;border-radius:0;flex-shrink:0;display:block}
+.tactics-btn img{width:auto;height:61px;border-radius:0;flex-shrink:0;display:block}
 
 /* Tactics Picker Modal */
 .tactics-picker-grid{
@@ -1171,19 +1182,6 @@ select,input{font-family:inherit}
   </div>
   <div class="header-sep"></div>
 
-  <div class="terrain-picker" id="terrainPicker">
-    <button class="terrain-picker-btn" id="terrainPickerBtn" onclick="toggleTerrainPicker()">
-      <span class="terrain-picker-label" id="terrainPickerLabel">TERRAIN</span>
-      <span class="terrain-picker-arrow">&#9662;</span>
-    </button>
-    <div class="terrain-picker-menu" id="terrainPickerMenu">
-      <div class="terrain-picker-item" data-terrain="" onclick="pickTerrain('')">-- なし --</div>
-      <div class="terrain-picker-item" data-terrain="ground" onclick="pickTerrain('ground')">地上</div>
-      <div class="terrain-picker-item" data-terrain="space" onclick="pickTerrain('space')">宇宙</div>
-      <div class="terrain-picker-item" data-terrain="desert" onclick="pickTerrain('desert')">砂漠</div>
-      <div class="terrain-picker-item" data-terrain="water" onclick="pickTerrain('water')">水中</div>
-    </div>
-  </div>
 
   <span class="logo">ABD Simulator</span>
 
@@ -1222,6 +1220,14 @@ select,input{font-family:inherit}
         </div>
         <div class="cache-menu-count" id="cacheCount">キャッシュ: 0枚</div>
         <button class="cache-menu-btn" onclick="ImageCache.openModal()">キャッシュ管理</button>
+      </div>
+      <div class="header-menu-divider"></div>
+      <div class="header-menu-label">地形設定</div>
+      <div class="terrain-switch-row" id="terrainSwitchRow">
+        <button class="terrain-sel" data-terrain="ground" onclick="setActiveTerrain('ground')">地上</button>
+        <button class="terrain-sel" data-terrain="space" onclick="setActiveTerrain('space')">宇宙</button>
+        <button class="terrain-sel" data-terrain="desert" onclick="setActiveTerrain('desert')">砂漠</button>
+        <button class="terrain-sel" data-terrain="water" onclick="setActiveTerrain('water')">水中</button>
       </div>
       <div class="header-menu-divider"></div>
       <div class="header-menu-row">
@@ -4881,41 +4887,13 @@ const TERRAIN_META = {
   water:  {label: '水中'},
 };
 
-function toggleTerrainPicker() {
-  document.getElementById('terrainPicker').classList.toggle('open');
-}
-
-function pickTerrain(terrain) {
-  setActiveTerrain(terrain || null, true);
-  document.getElementById('terrainPicker').classList.remove('open');
-}
-
-// Close picker on outside click
-document.addEventListener('click', e => {
-  const picker = document.getElementById('terrainPicker');
-  if (picker && !picker.contains(e.target)) picker.classList.remove('open');
-});
-
-function setActiveTerrain(terrain, force) {
-  if (!force && AppState.activeTerrain === terrain) {
+function setActiveTerrain(terrain) {
+  if (AppState.activeTerrain === terrain) {
     AppState.activeTerrain = null;
   } else {
     AppState.activeTerrain = terrain;
   }
-  // Sync picker button appearance
-  const btn = document.getElementById('terrainPickerBtn');
-  const labelEl = document.getElementById('terrainPickerLabel');
-  btn.className = 'terrain-picker-btn' + (AppState.activeTerrain ? ` active t-${AppState.activeTerrain}` : '');
-  if (AppState.activeTerrain && TERRAIN_META[AppState.activeTerrain]) {
-    labelEl.textContent = TERRAIN_META[AppState.activeTerrain].label;
-  } else {
-    labelEl.textContent = 'TERRAIN';
-  }
-  // Sync picker menu active state
-  document.querySelectorAll('.terrain-picker-item').forEach(el => {
-    el.classList.toggle('active', el.dataset.terrain === (AppState.activeTerrain || ''));
-  });
-  // Sync menu buttons
+  // Sync switch buttons
   document.querySelectorAll('.terrain-sel').forEach(b => {
     b.classList.toggle('active', b.dataset.terrain === AppState.activeTerrain);
   });
