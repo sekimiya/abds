@@ -740,8 +740,8 @@ select,input{font-family:inherit}
 
 /* ===== TACTICS CARD (in header) ===== */
 .tactics-btn{
-  display:inline-flex;align-items:center;gap:6px;
-  padding:4px 12px;background:#222;border:1px solid #4a3a00;
+  display:inline-flex;align-items:center;gap:4px;
+  padding:2px 8px;background:#222;border:1px solid #4a3a00;
   border-radius:6px;color:#ffe082;font-size:0.8rem;cursor:pointer;
   transition:all 0.15s;max-width:280px;
 }
@@ -754,7 +754,7 @@ select,input{font-family:inherit}
   border:none;background:none;cursor:pointer;padding:0 2px;line-height:1;
 }
 .tactics-btn .tactics-btn-clear:hover{color:#f44336}
-.tactics-btn img{width:40px;height:auto;border-radius:3px;flex-shrink:0}
+.tactics-btn img{width:auto;height:28px;border-radius:3px;flex-shrink:0}
 
 /* Tactics Picker Modal */
 .tactics-picker-grid{
@@ -1236,7 +1236,6 @@ select,input{font-family:inherit}
 
 <!-- ===== LINK ABILITY BAR + TACTICS ===== -->
 <div class="link-tactics-row">
-  <div class="link-bar" id="linkBar"></div>
   <div class="tactics-inline" id="tacticsBar">
     <button class="tactics-btn" id="tacticsBtnMain" onclick="TacticsPicker.open('main')">
       <span class="tactics-btn-label">メイン</span>
@@ -1247,6 +1246,7 @@ select,input{font-family:inherit}
       <span class="tactics-btn-name">未選択</span>
     </button>
   </div>
+  <div class="link-bar" id="linkBar"></div>
 </div>
 
 <!-- Tactics Picker Modal -->
