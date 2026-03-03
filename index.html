@@ -58,10 +58,11 @@ select,input{font-family:inherit}
 .header-label{color:#888;font-size:0.75rem;white-space:nowrap}
 .header-value{color:#ffe082;font-weight:bold;font-size:1.2rem;min-width:28px;text-align:center}
 .total-cost-box{
-  display:flex;align-items:center;gap:0.5rem;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  width:75px;height:112px;flex-shrink:0;
   background:linear-gradient(135deg,rgba(255,224,130,0.08),rgba(255,183,77,0.04));
   border:1px solid rgba(255,224,130,0.2);border-radius:8px;
-  padding:0.3rem 0.8rem;position:relative;overflow:hidden;
+  position:relative;overflow:hidden;
 }
 .total-cost-box::before{
   content:'';position:absolute;inset:0;
@@ -69,12 +70,12 @@ select,input{font-family:inherit}
   pointer-events:none;
 }
 .total-cost-label{
-  color:#999;font-size:0.65rem;text-transform:uppercase;letter-spacing:1.5px;
-  font-weight:600;white-space:nowrap;
+  color:#999;font-size:0.8rem;text-transform:uppercase;letter-spacing:1.5px;
+  font-weight:600;white-space:nowrap;text-align:center;line-height:1.2;
 }
 .total-cost-value{
-  font-family:'Courier New',monospace;font-size:1.5rem;font-weight:900;
-  min-width:32px;text-align:right;letter-spacing:-0.5px;
+  font-family:'Courier New',monospace;font-size:2.8rem;font-weight:900;
+  min-width:32px;text-align:center;letter-spacing:-0.5px;
   background:linear-gradient(180deg,#ffe082,#ffb74d);
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;
   filter:drop-shadow(0 0 6px rgba(255,183,77,0.3));
@@ -751,18 +752,18 @@ select,input{font-family:inherit}
 
 /* ===== TACTICS CARD (in header) ===== */
 .tactics-btn{
-  display:inline-flex;align-items:center;gap:0;
+  display:inline-flex;align-items:center;justify-content:center;
+  width:75px;height:112px;
   padding:0;background:#222;border:1px solid #4a3a00;
   border-radius:4px;color:#ffe082;font-size:0;cursor:pointer;
-  transition:all 0.15s;overflow:hidden;
+  transition:all 0.15s;overflow:hidden;flex-shrink:0;
 }
 .tactics-btn:hover{background:#2a2510;border-color:#ffe082}
 .tactics-btn.has-card{border-color:#ffe082;background:#2a2510}
 .tactics-placeholder{
-  width:75px;height:112px;display:flex;align-items:center;justify-content:center;
   color:#998a40;font-size:1rem;font-weight:bold;
 }
-.tactics-btn img{width:auto;height:112px;border-radius:0;flex-shrink:0;display:block}
+.tactics-btn img{width:100%;height:100%;object-fit:cover;border-radius:0;display:block}
 
 /* Tactics Picker Modal */
 .tactics-picker-grid{
@@ -1160,12 +1161,6 @@ select,input{font-family:inherit}
 
 <!-- ===== HEADER ===== -->
 <header class="app-header">
-  <div class="total-cost-box">
-    <span class="total-cost-label">Total<br>Cost</span>
-    <span class="total-cost-value" id="headerTotalCost">0</span>
-  </div>
-  <div class="header-sep"></div>
-
   <div class="header-group" id="classBadges">
     <span class="class-badge senmetsu" id="badgeSenmetsu">殲滅 0</span>
     <span class="class-badge seiatsu" id="badgeSeiatsu">制圧 0</span>
@@ -1237,8 +1232,12 @@ select,input{font-family:inherit}
   </div>
 </header>
 
-<!-- ===== LINK ABILITY BAR + TACTICS ===== -->
+<!-- ===== TOTAL COST + TACTICS + LINK BAR ===== -->
 <div class="link-tactics-row">
+  <div class="total-cost-box">
+    <span class="total-cost-label">Total<br>Cost</span>
+    <span class="total-cost-value" id="headerTotalCost">0</span>
+  </div>
   <div class="tactics-inline" id="tacticsBar">
     <button class="tactics-btn" id="tacticsBtnMain" onclick="TacticsPicker.open('main')">
       <div class="tactics-placeholder">メイン</div>
