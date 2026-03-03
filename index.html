@@ -1239,11 +1239,9 @@ select,input{font-family:inherit}
   <div class="tactics-inline" id="tacticsBar">
     <button class="tactics-btn" id="tacticsBtnMain" onclick="TacticsPicker.open('main')">
       <span class="tactics-btn-label">メイン</span>
-      <span class="tactics-btn-name">未選択</span>
     </button>
     <button class="tactics-btn" id="tacticsBtnSub" onclick="TacticsPicker.open('sub')">
       <span class="tactics-btn-label">サブ</span>
-      <span class="tactics-btn-name">未選択</span>
     </button>
   </div>
   <div class="link-bar" id="linkBar"></div>
@@ -2081,15 +2079,13 @@ const TacticsPicker = {
 
       if (!card) {
         btn.className = 'tactics-btn';
-        btn.innerHTML = `<span class="tactics-btn-label">${label}</span><span class="tactics-btn-name">未選択</span>`;
+        btn.innerHTML = `<span class="tactics-btn-label">${label}</span>`;
         return;
       }
 
       btn.className = 'tactics-btn has-card';
       btn.innerHTML = `
         <img src="${card.thumbnail_url}" alt="${card.name}" onerror="this.style.display='none'">
-        <span class="tactics-btn-label">${label}</span>
-        <span class="tactics-btn-name">${card.name}</span>
         <button class="tactics-btn-clear" onclick="event.stopPropagation();TacticsPicker.clear('${type}')" title="解除">&times;</button>
       `;
     });
