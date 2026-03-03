@@ -1,5 +1,5 @@
 // ABDS PWA Service Worker
-const CACHE_VERSION = 'abds-v32';
+const CACHE_VERSION = 'abds-v31';
 const APP_SHELL_CACHE = `app-shell-${CACHE_VERSION}`;
 const DATA_CACHE = `data-${CACHE_VERSION}`;
 const IMAGE_CACHE = 'card-images-v1';
@@ -87,8 +87,7 @@ self.addEventListener('fetch', (event) => {
       if (response.ok) {
         const cacheName = isData ? DATA_CACHE : APP_SHELL_CACHE;
         const cacheReq = isData ? new Request(cacheUrl) : event.request;
-        const clone = response.clone();
-        caches.open(cacheName).then(cache => cache.put(cacheReq, clone));
+        caches.open(cacheName).then(cache => cache.put(cacheReq, response.clone()));
       }
       return response;
     }).catch(() => {

@@ -496,7 +496,7 @@ select,input{font-family:inherit}
 .thumb-card-info{position:absolute;bottom:0;left:0;right:0;padding:2px 3px;background:rgba(0,0,0,0.75);display:flex;flex-direction:column;gap:0px}
 .thumb-card-number{color:var(--accent);font-size:0.5rem;white-space:nowrap;overflow:hidden}
 .thumb-card-name{color:#ddd;font-size:0.55rem;font-weight:bold;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.thumb-card.no-ocr{opacity:0.65}
+.thumb-card.no-ocr{opacity:0.45;pointer-events:none}
 .thumb-no-ocr-badge{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,0.8);color:#f44336;font-size:0.65rem;font-weight:bold;padding:2px 6px;border-radius:3px;border:1px solid #f44336;white-space:nowrap}
 .thumb-card-sub{color:#888;font-size:0.45rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .picker-pagination{
@@ -1410,52 +1410,28 @@ const CardService = {
 
   async _ensureDetails() {
     if (this._allDetails) return;
-    let idbVal = null;
     try {
       const db = await this._openDetailsIDB();
-      idbVal = await new Promise((res, rej) => {
+      const val = await new Promise((res, rej) => {
         const tx = db.transaction('details', 'readonly');
         const req = tx.objectStore('details').get('all');
         req.onsuccess = () => res(req.result || null);
         req.onerror = e => rej(e.target.error);
       });
-      if (idbVal && Object.keys(idbVal).length > 0) {
-        this._allDetails = idbVal;
-        Object.assign(AppState.cardDetails, idbVal);
-        console.log('CardService: details loaded from IDB,', Object.keys(idbVal).length);
-        if (Object.keys(idbVal).length < AppState.cardIndex.length) {
-          console.warn('CardService: IDB stale, updating in background');
-          this._refreshDetailsInBackground();
-        }
+      if (val && Object.keys(val).length >= AppState.cardIndex.length) {
+        this._allDetails = val;
+        Object.assign(AppState.cardDetails, val);
+        console.log('CardService: details loaded from IDB,', Object.keys(val).length);
         return;
       }
+      if (val) console.warn('CardService: IDB stale (IDB:', Object.keys(val).length, 'index:', AppState.cardIndex.length, '), refetching');
     } catch (_) {}
-    try {
-      const res = await fetch('./data/card_details.json', { cache: 'no-store' });
-      const data = await res.json();
-      this._allDetails = data;
-      Object.assign(AppState.cardDetails, data);
-      console.log('CardService: details loaded from JSON,', Object.keys(data).length);
-      this._saveDetailsToIDB(data);
-    } catch (e) {
-      console.error('CardService: JSON fetch failed:', e);
-      if (idbVal) {
-        this._allDetails = idbVal;
-        Object.assign(AppState.cardDetails, idbVal);
-        console.warn('CardService: falling back to IDB data');
-      }
-    }
-  },
-
-  async _refreshDetailsInBackground() {
-    try {
-      const res = await fetch('./data/card_details.json', { cache: 'no-store' });
-      const data = await res.json();
-      this._allDetails = data;
-      Object.assign(AppState.cardDetails, data);
-      this._saveDetailsToIDB(data);
-      console.log('CardService: details updated from JSON,', Object.keys(data).length);
-    } catch (_) {}
+    const res = await fetch('./data/card_details.json', { cache: 'no-store' });
+    const data = await res.json();
+    this._allDetails = data;
+    Object.assign(AppState.cardDetails, data);
+    console.log('CardService: details loaded from JSON,', Object.keys(data).length);
+    this._saveDetailsToIDB(data);
   },
 
   _saveDetailsToIDB(data) {
@@ -3109,7 +3085,10 @@ const SearchPanel = {
   },
   applyFilters() {
     if (!this._hasActiveFilter()) { this._filteredCards = []; this._page = 0; this._renderGrid(); this._saveFilters(); this._updateFilterBadge(); return; }
-    let cards = [...AppState.cardIndex];
+    // PRレアリティ選択時は未OCRカードも含める
+    let cards = this._currentRarity.size > 0
+      ? AppState.cardIndex.filter(c => c.has_ocr || this._currentRarity.has(c.rarity))
+      : AppState.cardIndex.filter(c => c.has_ocr);
     if (this._lockedType && this._t.abCat.size === 0) cards = cards.filter(c => c.type === this._lockedType);
     if (this._currentCategory.size > 0) cards = cards.filter(c => !c.category || this._currentCategory.has(c.category));
     if (this._currentRarity.size > 0) cards = cards.filter(c => !c.rarity || this._currentRarity.has(c.rarity));
@@ -3118,7 +3097,7 @@ const SearchPanel = {
     const costMin = parseInt(document.getElementById('filterCostMin').value);
     const costMax = parseInt(document.getElementById('filterCostMax').value);
     if (costMin > 0 || costMax < 13) cards = cards.filter(c => c.cost === null || (c.cost >= costMin && c.cost <= costMax));
-    const _noDetail = c => c.has_ocr && c.cost === null;
+    const _noDetail = c => c.cost === null;
     const mobMin = parseInt(document.getElementById('filterMobility').value);
     const rangedMin = parseInt(document.getElementById('filterRanged').value);
     const meleeMin = parseInt(document.getElementById('filterMelee').value);
@@ -3241,7 +3220,7 @@ const SearchPanel = {
             <div class="thumb-card-name">${escapeHtml(card.name || '')}</div>
           </div>
         </div>`;
-      el.addEventListener('click', () => this._selectCard(card));
+      if (!noOcr) el.addEventListener('click', () => this._selectCard(card));
       grid.appendChild(el);
     }
     this._rendered = end;

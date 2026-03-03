@@ -960,7 +960,7 @@ select,input{font-family:inherit}
 .thumb-card-number .thumb-no-ocr{
   color:#666;font-size:0.58rem;font-style:italic;flex-shrink:0;
 }
-.thumb-card.no-ocr{opacity:0.65}
+.thumb-card.no-ocr{opacity:0.45;pointer-events:none}
 .thumb-no-ocr-badge{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,0.8);color:#f44336;font-size:0.65rem;font-weight:bold;padding:2px 6px;border-radius:3px;border:1px solid #f44336;white-space:nowrap}
 .thumb-card-name{
   color:#ddd;font-size:0.68rem;font-weight:bold;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
@@ -1866,55 +1866,30 @@ const CardService = {
   async _ensureDetails() {
     if (this._allDetails) return;
     // Try IDB first
-    let idbVal = null;
     try {
       const db = await this._openDetailsIDB();
-      idbVal = await new Promise((res, rej) => {
+      const val = await new Promise((res, rej) => {
         const tx = db.transaction('details', 'readonly');
         const req = tx.objectStore('details').get('all');
         req.onsuccess = () => res(req.result || null);
         req.onerror = e => rej(e.target.error);
       });
-      if (idbVal && Object.keys(idbVal).length > 0) {
-        this._allDetails = idbVal;
-        Object.assign(AppState.cardDetails, idbVal);
-        console.log('CardService: details loaded from IDB,', Object.keys(idbVal).length);
-        // IDBが古い場合はバックグラウンドで更新
-        if (Object.keys(idbVal).length < AppState.cardIndex.length) {
-          console.warn('CardService: IDB stale, updating in background');
-          this._refreshDetailsInBackground();
-        }
+      if (val && Object.keys(val).length >= AppState.cardIndex.length) {
+        this._allDetails = val;
+        Object.assign(AppState.cardDetails, val);
+        console.log('CardService: details loaded from IDB,', Object.keys(val).length);
         return;
       }
+      if (val) console.warn('CardService: IDB stale (IDB:', Object.keys(val).length, 'index:', AppState.cardIndex.length, '), refetching');
     } catch (_) {}
     // Fetch from static JSON
-    try {
-      const res = await fetch('./data/card_details.json', { cache: 'no-store' });
-      const data = await res.json();
-      this._allDetails = data;
-      Object.assign(AppState.cardDetails, data);
-      console.log('CardService: details loaded from JSON,', Object.keys(data).length);
-      this._saveDetailsToIDB(data);
-    } catch (e) {
-      console.error('CardService: JSON fetch failed:', e);
-      // IDBデータがあればそれを使用（フォールバック）
-      if (idbVal) {
-        this._allDetails = idbVal;
-        Object.assign(AppState.cardDetails, idbVal);
-        console.warn('CardService: falling back to IDB data');
-      }
-    }
-  },
-
-  async _refreshDetailsInBackground() {
-    try {
-      const res = await fetch('./data/card_details.json', { cache: 'no-store' });
-      const data = await res.json();
-      this._allDetails = data;
-      Object.assign(AppState.cardDetails, data);
-      this._saveDetailsToIDB(data);
-      console.log('CardService: details updated from JSON,', Object.keys(data).length);
-    } catch (_) {}
+    const res = await fetch('./data/card_details.json', { cache: 'no-store' });
+    const data = await res.json();
+    this._allDetails = data;
+    Object.assign(AppState.cardDetails, data);
+    console.log('CardService: details loaded from JSON,', Object.keys(data).length);
+    // Save to IDB in background
+    this._saveDetailsToIDB(data);
   },
 
   _saveDetailsToIDB(data) {
@@ -4306,7 +4281,10 @@ const SearchPanel = {
       return;
     }
 
-    let cards = [...AppState.cardIndex];
+    // PRレアリティ選択時は未OCRカードも含める
+    let cards = this._currentRarity.size > 0
+      ? AppState.cardIndex.filter(c => c.has_ocr || this._currentRarity.has(c.rarity))
+      : AppState.cardIndex.filter(c => c.has_ocr);
 
     // Type filter (スロット指定時のみタイプ絞込、ABフィルター時は解除)
     if (this._lockedType && this._t.abCat.size === 0) {
@@ -4335,8 +4313,8 @@ const SearchPanel = {
     if (costMin > 0 || costMax < 13) {
       cards = cards.filter(c => c.cost === null || (c.cost >= costMin && c.cost <= costMax));
     }
-    // 詳細データ未設定カード判定（OCR済みでcost未設定の特殊カードのみバイパス）
-    const _noDetail = c => c.has_ocr && c.cost === null;
+    // 詳細データ未設定カード判定（プロモーション等: cost===nullなら詳細フィルタをパス）
+    const _noDetail = c => c.cost === null;
     // Stat filters (sliders)
     const mobMin = parseInt(document.getElementById('filterMobility').value);
     const rangedMin = parseInt(document.getElementById('filterRanged').value);
@@ -4587,7 +4565,7 @@ const SearchPanel = {
           ${card.eb_trigger_level ? `<div class="thumb-card-eb-lv">EBLv.${card.eb_trigger_level}発動</div>` : ''}
         </div>
       `;
-      el.addEventListener('click', () => this._selectCard(card));
+      if (!noOcr) el.addEventListener('click', () => this._selectCard(card));
       grid.appendChild(el);
     });
 
