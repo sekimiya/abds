@@ -504,6 +504,7 @@ select,input{font-family:inherit}
 .unit-card-names{
   font-size:1.5rem;margin-bottom:0.3rem;
   flex-shrink:0;line-height:1.3;
+  min-height:calc(1.5rem * 1.3 * 2);
 }
 .unit-card-names .card-name-row{
   display:flex;align-items:center;gap:0.3rem;
@@ -689,6 +690,7 @@ select,input{font-family:inherit}
   font-weight:bold;border-radius:4px;
   padding:0.25rem 0.4rem;margin-bottom:0.2rem;flex-shrink:0;
   border:1px solid #333;background:linear-gradient(135deg,#1a1a1a,#222);
+  min-height:1.8rem;
 }
 .unit-cat-label{flex:1;text-align:center;font-size:1.7rem;letter-spacing:0.1em}
 .unit-cat-cost{
@@ -3015,9 +3017,7 @@ const UIRenderer = {
     namesEl.className = 'unit-card-names' + (namesCls ? ' ' + namesCls : '');
     const msRarityHtml = msRarityName ? `<span class="rarity-tag rarity-${escapeHtml(msRarityName)}">${escapeHtml(msRarityName)}</span> ` : '';
     const plRarityHtml = plRarityName ? `<span class="rarity-tag rarity-${escapeHtml(plRarityName)}">${escapeHtml(plRarityName)}</span> ` : '';
-    namesEl.innerHTML = msName || plName
-      ? `<div class="card-name-row">${msRarityHtml}<span class="ms-name">${escapeHtml(msName)}</span></div><div class="card-name-row">${plRarityHtml}<span class="pl-name">${escapeHtml(plName)}</span></div>`
-      : '&nbsp;';
+    namesEl.innerHTML = `<div class="card-name-row">${msRarityHtml}<span class="ms-name">${msName ? escapeHtml(msName) : '&nbsp;'}</span></div><div class="card-name-row">${plRarityHtml}<span class="pl-name">${plName ? escapeHtml(plName) : '&nbsp;'}</span></div>`;
 
     // Sub info (model, pilot)
     this._renderSubInfo(u, msOcr, plOcr, msCard, plCard);
