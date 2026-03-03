@@ -171,7 +171,9 @@ select,input{font-family:inherit}
   padding:4px 4px 0;
 }
 .overview-cats{display:flex;gap:3px;margin-bottom:1px}
-.ov-cat{flex:1;text-align:center;font-size:0.6rem;font-weight:bold;border-radius:2px;padding:1px 0}
+.ov-cat{flex:1;display:flex;align-items:center;font-size:0.6rem;font-weight:bold;border-radius:2px;padding:1px 2px;gap:2px}
+.ov-cat .ov-cat-cost{font-size:0.55rem;color:var(--gold);font-weight:900}
+.ov-cat .ov-cat-label{flex:1;text-align:center}
 .ov-cat.cat-s{background:#8b1a1a;color:#ff8a80}
 .ov-cat.cat-c{background:#1a4a8b;color:#82b1ff}
 .ov-cat.cat-b{background:#1a6b1a;color:#a5d6a7}
@@ -2311,18 +2313,24 @@ const UIRenderer = {
       // カテゴリ行更新
       const catEl = document.getElementById(`ov-cat-${u}`);
       if (catEl) {
+        const msNumber = AppState.deck[u];
         const plNumber = AppState.deck[u + 5];
+        const msIdx = this._getIndexEntry(msNumber);
         const plIdx = this._getIndexEntry(plNumber);
+        const msOcr = AppState.deckOcr[u];
         const plOcr = AppState.deckOcr[u + 5];
         let cat = plIdx?.category;
         if (!cat) cat = plOcr?.card_label?.class;
         if (!cat) cat = plOcr?.category;
+        const totalCost = safeInt(msOcr?.cost || msIdx?.cost) + safeInt(plOcr?.cost || plIdx?.cost);
         if (cat === '殲滅' || cat === '制圧' || cat === '防衛') {
           const cls = cat === '殲滅' ? 'cat-s' : cat === '制圧' ? 'cat-c' : 'cat-b';
-          catEl.textContent = cat;
+          const costHtml = (msNumber || plNumber) ? `<span class="ov-cat-cost">${totalCost}</span>` : '';
+          catEl.innerHTML = costHtml + `<span class="ov-cat-label">${cat}</span>`;
           catEl.className = `ov-cat ${cls}`;
         } else {
-          catEl.textContent = '';
+          const costHtml = (msNumber || plNumber) ? `<span class="ov-cat-cost">${totalCost}</span>` : '';
+          catEl.innerHTML = costHtml;
           catEl.className = 'ov-cat';
         }
       }
