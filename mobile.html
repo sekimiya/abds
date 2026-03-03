@@ -224,12 +224,18 @@ select,input{font-family:inherit}
 .ov-link-tag.link-sq.link-off{background:rgba(60,0,40,0.8);color:rgba(255,105,180,0.5)}
 .ov-link-tag.link-ab.link-on{background:rgba(179,136,255,0.9);color:#fff}
 .ov-link-tag.link-ab.link-off{background:rgba(40,20,60,0.8);color:rgba(179,136,255,0.5)}
-.overview-thumb .ov-clear{
-  position:absolute;top:0;right:1px;background:rgba(0,0,0,0.6);border:none;
-  color:#aaa;font-size:0.7rem;width:16px;height:16px;border-radius:50%;
-  display:none;align-items:center;justify-content:center;padding:0;
+.thumb-card-empty{
+  position:relative;cursor:pointer;border-radius:6px;overflow:hidden;
+  background:var(--accent);display:flex;align-items:center;justify-content:center;
 }
-.overview-thumb.has-card .ov-clear{display:flex}
+.thumb-card-empty .thumb-card-img-wrap{
+  width:100%;padding-top:139.68%;position:relative;
+}
+.thumb-card-empty .empty-x{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  font-size:2.5rem;color:rgba(255,255,255,0.5);font-weight:bold;line-height:1;
+  pointer-events:none;
+}
 .unit-tabs{display:flex;gap:2px;padding:0 2px 4px}
 .unit-tab{
   flex:1;text-align:center;padding:3px 0;border-radius:3px;
@@ -2256,8 +2262,8 @@ const UIRenderer = {
     tabs.innerHTML = '';
     for (let u = 0; u < 5; u++) {
       catRow.innerHTML += `<div class="ov-cat" id="ov-cat-${u}"></div>`;
-      msRow.innerHTML += `<div class="ov-thumb-col"><div class="ov-card-name" id="ov-ms-name-${u}"></div><div class="overview-thumb empty" id="ov-ms-${u}"><span class="ov-badge" id="ov-ms-badge-${u}"></span><button class="ov-clear" onclick="event.stopPropagation();DeckManager.clearCard(${u})">&times;</button></div></div>`;
-      plRow.innerHTML += `<div class="ov-thumb-col"><div class="ov-card-name" id="ov-pl-name-${u}"></div><div class="overview-thumb empty" id="ov-pl-${u}"><span class="ov-badge" id="ov-pl-badge-${u}"></span><button class="ov-clear" onclick="event.stopPropagation();DeckManager.clearCard(${u+5})">&times;</button></div></div>`;
+      msRow.innerHTML += `<div class="ov-thumb-col"><div class="ov-card-name" id="ov-ms-name-${u}"></div><div class="overview-thumb empty" id="ov-ms-${u}"><span class="ov-badge" id="ov-ms-badge-${u}"></span></div></div>`;
+      plRow.innerHTML += `<div class="ov-thumb-col"><div class="ov-card-name" id="ov-pl-name-${u}"></div><div class="overview-thumb empty" id="ov-pl-${u}"><span class="ov-badge" id="ov-pl-badge-${u}"></span></div></div>`;
       tabs.innerHTML += `<div class="unit-tab${u === 0 ? ' active' : ''}" onclick="UIRenderer.selectUnit(${u})">${u + 1}</div>`;
     }
     // Attach tap (front/back toggle) + long-press (open picker) handlers
@@ -2277,10 +2283,7 @@ const UIRenderer = {
   _onThumbClick(u, type) {
     this.selectUnit(u);
     const slotIdx = type === 'MS' ? u : u + 5;
-    const number = AppState.deck[slotIdx];
-    if (!number) {
-      openCardPicker(slotIdx, type);
-    }
+    openCardPicker(slotIdx, type);
   },
 
   selectUnit(u) {
@@ -3227,8 +3230,18 @@ const SearchPanel = {
     const scrollWrap = document.getElementById('pickerScroll');
     if (scrollWrap) scrollWrap.scrollTop = 0;
     this._rendered = 0;
+    if (AppState.activeSlot !== null) {
+      const emptyEl = document.createElement('div');
+      emptyEl.className = 'thumb-card-empty';
+      emptyEl.innerHTML = '<div class="thumb-card-img-wrap"><span class="empty-x">&times;</span></div>';
+      emptyEl.addEventListener('click', () => { DeckManager.clearCard(AppState.activeSlot); closeCardPicker(); });
+      grid.appendChild(emptyEl);
+    }
     if (cards.length === 0 && !this._hasActiveFilter()) {
-      grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;color:#666;padding:2rem;font-size:0.9rem">シリーズを選択してください</div>';
+      const msg = document.createElement('div');
+      msg.style.cssText = 'grid-column:1/-1;text-align:center;color:#666;padding:2rem;font-size:0.9rem';
+      msg.textContent = 'シリーズを選択してください';
+      grid.appendChild(msg);
       document.getElementById('pageInfo').textContent = '-';
       return;
     }
