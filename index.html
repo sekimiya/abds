@@ -448,9 +448,9 @@ select,input{font-family:inherit}
   padding:2px;pointer-events:none;z-index:1;
 }
 .slot-link-tag{
-  font-size:0.75rem;font-weight:bold;padding:2px 4px;border-radius:3px;
+  font-size:1.4rem;font-weight:bold;padding:3px 4px;border-radius:3px;
   white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
-  line-height:1.4;text-align:center;
+  line-height:1.3;text-align:center;
 }
 .slot-link-tag.link-on{
   background:rgba(104,239,189,0.85);color:#0a0a0a;
@@ -642,11 +642,16 @@ select,input{font-family:inherit}
 .terrain-badge.rank-C{color:#ffcc80;border-color:#e65100}
 .terrain-badge.rank-none{color:#444;border-color:#222}
 
-/* Unit category badge */
-.unit-cat{padding:0.15rem 0.5rem;border-radius:3px;font-size:0.8rem;font-weight:bold;border:1px solid #333;background:#1a1a1a;color:#666}
-.unit-cat.cat-s{background:#8b1a1a;color:#ff8a80;border-color:#c62828}
-.unit-cat.cat-c{background:#1a4a8b;color:#82b1ff;border-color:#1565c0}
-.unit-cat.cat-b{background:#1a6b1a;color:#a5d6a7;border-color:#2e7d32}
+/* Unit category row (full width) */
+.unit-cat-row{
+  text-align:center;font-size:1.7rem;font-weight:bold;border-radius:4px;
+  padding:0.2rem 0;margin-bottom:0.2rem;flex-shrink:0;
+  min-height:0;
+}
+.unit-cat-row:empty{display:none}
+.unit-cat-row.cat-s{background:#8b1a1a;color:#ff8a80;border:1px solid #c62828}
+.unit-cat-row.cat-c{background:#1a4a8b;color:#82b1ff;border:1px solid #1565c0}
+.unit-cat-row.cat-b{background:#1a6b1a;color:#a5d6a7;border:1px solid #2e7d32}
 
 /* Ability detail tags */
 .ability-tags{display:flex;gap:3px;flex-wrap:wrap;margin:0.15rem 0}
@@ -2871,6 +2876,7 @@ const UIRenderer = {
       col.id = `unit-col-${u}`;
       col.innerHTML = `
         <div class="unit-card-names" id="unit-names-${u}"></div>
+        <div class="unit-cat-row" id="unit-cat-${u}"></div>
         <div class="unit-cost-badge" id="unit-cost-${u}">C: -</div>
         <div class="card-slot" id="ms-slot-${u}" data-slot="${u}" data-type="MS">
           <div class="card-slot-label">MS ${u+1}</div>
@@ -2968,22 +2974,26 @@ const UIRenderer = {
     // Sub info (model, pilot)
     this._renderSubInfo(u, msOcr, plOcr, msCard, plCard);
 
-    // Unit cost + rarity
-    const msCost = safeInt(msOcr?.cost);
-    const plCost = safeInt(plOcr?.cost);
-    const unitCost = msCost + plCost;
-    // カテゴリ検出（PLカードから）
+    // カテゴリ行（PLカードから検出、カード幅いっぱい）
     const plIndex = AppState.cardIndex.find(c => c.number === plNumber);
     let unitCat = plIndex?.category;
     if (!unitCat) unitCat = plOcr?.card_label?.class;
     if (!unitCat) unitCat = plOcr?.category;
-    let catHtml = '';
+    const catRowEl = document.getElementById(`unit-cat-${u}`);
     if (unitCat === '殲滅' || unitCat === '制圧' || unitCat === '防衛') {
       const catCls = unitCat === '殲滅' ? 'cat-s' : unitCat === '制圧' ? 'cat-c' : 'cat-b';
-      catHtml = `<span class="unit-cat ${catCls}">${unitCat}</span>`;
+      catRowEl.className = `unit-cat-row ${catCls}`;
+      catRowEl.textContent = unitCat;
+    } else {
+      catRowEl.className = 'unit-cat-row';
+      catRowEl.textContent = '';
     }
-    let costHtml = `${catHtml}<span class="unit-cost-value"><span class="cost-label">TCOST</span><span class="cost-num">${unitCost || '-'}</span></span>`;
-    document.getElementById(`unit-cost-${u}`).innerHTML = costHtml;
+
+    // Unit cost
+    const msCost = safeInt(msOcr?.cost);
+    const plCost = safeInt(plOcr?.cost);
+    const unitCost = msCost + plCost;
+    document.getElementById(`unit-cost-${u}`).innerHTML = `<span class="unit-cost-value"><span class="cost-label">TCOST</span><span class="cost-num">${unitCost || '-'}</span></span>`;
 
     // Stats
     this._renderUnitStats(u, msOcr, plOcr);
@@ -3828,7 +3838,7 @@ const UIRenderer = {
     // Remove previous alignment
     document.querySelectorAll('.align-placeholder').forEach(el => el.remove());
     document.querySelectorAll('[data-section]').forEach(el => { el.style.minHeight = ''; });
-    ['unit-cost', 'unit-names', 'unit-sub-info', 'unit-stats'].forEach(prefix => {
+    ['unit-cat', 'unit-cost', 'unit-names', 'unit-sub-info', 'unit-stats'].forEach(prefix => {
       for (let u = 0; u < 5; u++) {
         const el = document.getElementById(`${prefix}-${u}`);
         if (el) el.style.minHeight = '';
@@ -3863,7 +3873,7 @@ const UIRenderer = {
     };
 
     // 1. Equalize top-level elements
-    ['unit-cost', 'unit-names', 'unit-sub-info', 'unit-stats'].forEach(prefix => {
+    ['unit-cat', 'unit-cost', 'unit-names', 'unit-sub-info', 'unit-stats'].forEach(prefix => {
       const els = [];
       for (let u = 0; u < 5; u++) {
         const el = document.getElementById(`${prefix}-${u}`);
