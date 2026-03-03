@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <script>
 (function(){
-  var KEY='abds_cache_v28';
+  var KEY='abds_cache_v31';
   if(!localStorage.getItem(KEY)){
     localStorage.setItem(KEY,'1');
     if('caches' in window){
@@ -777,7 +777,7 @@ select,input{font-family:inherit}
           <button class="rarity-btn" data-rarity="LE" onclick="SearchPanel.toggleRarity('LE')">LE</button>
         </div>
         <div class="category-filter" id="categoryFilter"></div>
-        <label class="ocr-toggle"><input type="checkbox" id="filterAllSeries" onchange="SearchPanel.toggleAllSeries()"><span class="ocr-toggle-text">全シリーズ</span></label>
+        <label class="ocr-toggle"><input type="checkbox" id="filterAllSeries" checked onchange="SearchPanel.toggleAllSeries()"><span class="ocr-toggle-text">全シリーズ</span></label>
         <div class="series-filter" id="seriesFilter"></div>
         <label class="ocr-toggle"><input type="checkbox" id="filterBookmarkCards" onchange="SearchPanel.applyFilters()"><span class="ocr-toggle-text">&#9733; ブックマーク</span></label>
       </div>
@@ -2884,7 +2884,7 @@ const SearchPanel = {
         this._selectedSeries = new Set(s.series);
         document.querySelectorAll('.series-btn').forEach(b => b.classList.toggle('active', this._selectedSeries.has(b.dataset.series)));
       }
-      const fas = document.getElementById('filterAllSeries'); if (fas) fas.checked = !!s.allSeries;
+      const fas = document.getElementById('filterAllSeries'); if (fas) fas.checked = this._selectedSeries.size === 0;
       const bm = document.getElementById('filterBookmarkCards'); if (bm) bm.checked = !!s.bookmark;
       this.applyFilters();
     } catch(e) {}
@@ -2904,7 +2904,7 @@ const SearchPanel = {
   toggleSeries(series) {
     if (this._selectedSeries.has(series)) this._selectedSeries.delete(series);
     else this._selectedSeries.add(series);
-    if (this._selectedSeries.size > 0) { const el = document.getElementById('filterAllSeries'); if (el) el.checked = false; }
+    { const el = document.getElementById('filterAllSeries'); if (el) el.checked = this._selectedSeries.size === 0; }
     document.querySelectorAll('.series-btn').forEach(b => b.classList.toggle('active', this._selectedSeries.has(b.dataset.series)));
     this.applyFilters();
   },
@@ -2960,6 +2960,7 @@ const SearchPanel = {
   _hasActiveFilter() { return this._hasAnyFilter(); },
   _hasAnyFilter() {
     if (this._selectedSeries.size > 0) return true;
+    const fas = document.getElementById('filterAllSeries'); if (fas && fas.checked) return true;
     if (this._currentRarity.size > 0) return true;
     if (this._currentCategory.size > 0) return true;
     if (parseInt(document.getElementById('filterCostMin').value) > 0 || parseInt(document.getElementById('filterCostMax').value) < 13) return true;
@@ -3065,7 +3066,7 @@ const SearchPanel = {
   clearFilters() {
     this._selectedSeries.clear();
     document.querySelectorAll('.series-btn').forEach(b => b.classList.remove('active'));
-    const fas = document.getElementById('filterAllSeries'); if (fas) fas.checked = false;
+    const fas = document.getElementById('filterAllSeries'); if (fas) fas.checked = true;
     document.getElementById('filterCostMin').value = 0;
     document.getElementById('filterCostMax').value = 13;
     document.getElementById('costRangeValue').textContent = '0〜13';

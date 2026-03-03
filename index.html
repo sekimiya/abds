@@ -6,7 +6,7 @@
 <script>
 // One-time cache purge: only runs if old SW caches exist
 (function(){
-  var KEY='abds_cache_v28';
+  var KEY='abds_cache_v31';
   if(!localStorage.getItem(KEY)){
     localStorage.setItem(KEY,'1');
     if('caches' in window){
@@ -1251,7 +1251,7 @@ select,input{font-family:inherit}
         <div class="filter-group-title" onclick="toggleFilterGroup('filterGroupSeries')" style="color:#68efbd">表示シリーズ</div>
         <div class="filter-group-body">
           <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.4rem">
-            <label class="ocr-toggle" style="margin:0"><input type="checkbox" id="filterAllSeries" onchange="SearchPanel.toggleAllSeries()"><span class="ocr-toggle-text" style="font-size:0.8rem;font-weight:bold">すべて</span></label>
+            <label class="ocr-toggle" style="margin:0"><input type="checkbox" id="filterAllSeries" checked onchange="SearchPanel.toggleAllSeries()"><span class="ocr-toggle-text" style="font-size:0.8rem;font-weight:bold">すべて</span></label>
             <label class="ocr-toggle bm-switch" style="margin:0;border:2px solid #ffe082;border-radius:6px;padding:0.2rem 0.5rem;background:rgba(255,224,130,0.08);display:inline-flex"><input type="checkbox" id="filterBookmarkCards" onchange="SearchPanel.applyFilters()" style="accent-color:#ffe082"><span class="ocr-toggle-text" style="color:#ffe082;font-weight:bold;font-size:0.75rem">&#9733; BM</span></label>
           </div>
           <div class="series-filter" id="seriesFilter"></div>
@@ -4097,10 +4097,8 @@ const SearchPanel = {
     } else {
       this._selectedSeries.add(series);
     }
-    // 個別シリーズを選択したら「すべて」をOFF
-    if (this._selectedSeries.size > 0) {
-      document.getElementById('filterAllSeries').checked = false;
-    }
+    // 個別シリーズ選択時は「すべて」OFF、全解除時は「すべて」ON
+    document.getElementById('filterAllSeries').checked = this._selectedSeries.size === 0;
     document.querySelectorAll('.series-btn').forEach(b => {
       b.classList.toggle('active', this._selectedSeries.has(b.dataset.series));
     });
@@ -4188,25 +4186,15 @@ const SearchPanel = {
       names.map(n => `<option value="${n}"${n === current ? ' selected' : ''}>${n}</option>`).join('');
   },
 
-  _hasActiveFilter() { return this._hasAnyFilter(); },
-  _hasAnyFilter() {
-    if (this._selectedSeries.size > 0) return true;
-    const fas = document.getElementById('filterAllSeries'); if (fas && fas.checked) return true;
-    if (this._currentRarity.size > 0) return true;
-    if (this._currentCategory.size > 0) return true;
-    if (parseInt(document.getElementById('filterCostMin').value) > 0 || parseInt(document.getElementById('filterCostMax').value) < 13) return true;
-    if (parseInt(document.getElementById('filterMobility').value) > 0) return true;
-    if (parseInt(document.getElementById('filterRanged').value) > 0) return true;
-    if (parseInt(document.getElementById('filterMelee').value) > 0) return true;
-    if (parseInt(document.getElementById('filterHp').value) > 0) return true;
-    if (document.getElementById('filterTerrainType').value) return true;
-    if (document.getElementById('filterOcr').checked) return true;
-    if ((document.getElementById('filterLinkName') || {}).value) return true;
-    if ((document.getElementById('filterLinkName2') || {}).value) return true;
-    if ((document.getElementById('filterSkillName') || {}).value) return true;
+  _hasActiveFilter() {
+    // シリーズ選択 or 全シリーズON が必須（基本ゲート）
+    if (this._selectedSeries.size > 0 || document.getElementById('filterAllSeries').checked) return true;
+    // カード名/番号検索はシリーズなしでも動作
     if (document.getElementById('searchInput').value.trim()) return true;
+    // テキスト検索もシリーズなしで動作
+    if (document.getElementById('searchTextInput').value.trim()) return true;
+    // ブックマーク表示はシリーズなしで動作
     const bm = document.getElementById('filterBookmarkCards'); if (bm && bm.checked) return true;
-    for (const s of Object.values(this._t)) { if (s.size > 0) return true; }
     return false;
   },
 
@@ -4393,7 +4381,7 @@ const SearchPanel = {
     // Series toggle
     this._selectedSeries.clear();
     document.querySelectorAll('.series-btn').forEach(b => b.classList.remove('active'));
-    document.getElementById('filterAllSeries').checked = false;
+    document.getElementById('filterAllSeries').checked = true;
     // Cost slider
     document.getElementById('filterCostMin').value = 0;
     document.getElementById('filterCostMax').value = 13;
