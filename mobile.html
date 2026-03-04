@@ -74,6 +74,7 @@ body.light .filter-group-title{background:#e8e8e8;color:#666}
 body.light .filter-sheet-actions{border-top-color:#ccc}
 body.light .search-input{background:#f0f0f0;border-color:#bbb;color:#1a1a1a}
 body.light .rarity-btn{background:#e8e8e8;border-color:#bbb;color:#666}
+body.light #filterAltArt.active{background:#f0e0ff;border-color:#a060d0;color:#7030a0}
 body.light .cat-btn{background:#e8e8e8;border-color:#bbb;color:#666}
 body.light .series-btn{background:#e8e8e8;border-color:#bbb;color:#666}
 body.light .tbtn{background:#e8e8e8;border-color:#bbb;color:#666}
@@ -667,6 +668,7 @@ body.light .bm-toggle-btn.active{background:#d0e8dc;border-color:var(--accent);c
 .rarity-filter{display:flex;gap:3px;flex-wrap:wrap}
 .rarity-btn{padding:4px 8px;background:#222;border:1px solid #444;border-radius:3px;color:#888;font-size:0.7rem;min-height:28px}
 .rarity-btn.active{background:#4a1a1a;border-color:var(--senmetsu);color:var(--senmetsu)}
+#filterAltArt.active{background:#3a1a4a;border-color:#e0a0ff;color:#e0a0ff}
 .category-filter{display:flex;gap:3px;flex-wrap:wrap}
 .cat-btn{padding:4px 8px;background:#222;border:1px solid #444;border-radius:3px;color:#888;font-size:0.7rem;min-height:28px}
 .cat-btn.active{background:#1e2924;border-color:var(--accent);color:var(--accent)}
@@ -914,6 +916,7 @@ body.light .bm-toggle-btn.active{background:#d0e8dc;border-color:var(--accent);c
           <button class="rarity-btn" data-rarity="PR" onclick="SearchPanel.toggleRarity('PR')">PR</button>
           <button class="rarity-btn" data-rarity="SN" onclick="SearchPanel.toggleRarity('SN')">SN</button>
           <button class="rarity-btn" data-rarity="LE" onclick="SearchPanel.toggleRarity('LE')">LE</button>
+          <button class="rarity-btn" id="filterAltArt" onclick="SearchPanel.toggleAltArt()" style="margin-left:4px;border-color:#e0a0ff;color:#e0a0ff">イラスト違い</button>
         </div>
         <div class="category-filter" id="categoryFilter"></div>
         <label class="ocr-toggle"><input type="checkbox" id="filterAllSeries" checked onchange="SearchPanel.toggleAllSeries()"><span class="ocr-toggle-text">全シリーズ</span></label>
@@ -3160,6 +3163,7 @@ const SearchPanel = {
       series: [...this._selectedSeries],
       allSeries: (document.getElementById('filterAllSeries') || {}).checked || false,
       bookmark: (document.getElementById('filterBookmarkCards') || {}).checked || false,
+      altArt: this._altArt || false,
     };
     const key = 'abds_search_filters' + (this._lockedType ? '_' + this._lockedType : '');
     localStorage.setItem(key, JSON.stringify(state));
@@ -3217,6 +3221,8 @@ const SearchPanel = {
       }
       const fas = document.getElementById('filterAllSeries'); if (fas) fas.checked = this._selectedSeries.size === 0;
       const bm = document.getElementById('filterBookmarkCards'); if (bm) bm.checked = !!s.bookmark;
+      this._altArt = !!s.altArt;
+      document.getElementById('filterAltArt').classList.toggle('active', this._altArt);
       this.applyFilters();
     } catch(e) {}
   },
@@ -3264,6 +3270,12 @@ const SearchPanel = {
     const s = this._t[group]; const key = btn.dataset.key;
     if (s.has(key)) s.delete(key); else s.add(key);
     btn.classList.toggle('active-' + this._tStyle[group], s.has(key));
+    this.applyFilters();
+  },
+  _altArt: false,
+  toggleAltArt() {
+    this._altArt = !this._altArt;
+    document.getElementById('filterAltArt').classList.toggle('active', this._altArt);
     this.applyFilters();
   },
   toggleRarity(rarity) {
@@ -3330,6 +3342,7 @@ const SearchPanel = {
     if (document.getElementById('searchInput').value.trim()) return true;
     const sti = document.getElementById('searchTextInput'); if (sti && sti.value.trim()) return true;
     const bm = document.getElementById('filterBookmarkCards'); if (bm && bm.checked) return true;
+    if (this._altArt) return true;
     for (const s of Object.values(this._t)) { if (s.size > 0) return true; }
     return false;
   },
@@ -3368,6 +3381,7 @@ const SearchPanel = {
     if (this._lockedType && this._t.abCat.size === 0) cards = cards.filter(c => c.type === this._lockedType);
     if (this._currentCategory.size > 0) cards = cards.filter(c => this._currentCategory.has(c.category));
     if (this._currentRarity.size > 0) cards = cards.filter(c => this._currentRarity.has(c.rarity));
+    if (this._altArt) cards = cards.filter(c => c.number.includes('_'));
     const allSeriesEl = document.getElementById('filterAllSeries');
     if (this._selectedSeries.size > 0 && !(allSeriesEl && allSeriesEl.checked)) cards = cards.filter(c => this._selectedSeries.has(c.series));
     const costMin = parseInt(document.getElementById('filterCostMin').value);
@@ -3453,6 +3467,7 @@ const SearchPanel = {
     Object.values(this._t).forEach(s => s.clear());
     document.querySelectorAll('.tbtn').forEach(b => b.className = 'tbtn');
     this._currentRarity = new Set(); this._currentCategory = new Set();
+    this._altArt = false; document.getElementById('filterAltArt').classList.remove('active');
     document.querySelectorAll('.rarity-btn').forEach(b => b.classList.remove('active'));
     document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
   },
@@ -3522,7 +3537,7 @@ const SearchPanel = {
         tagsDiv.className = 'thumb-link-tags';
         for (const link of cLinks.slice(0, 2)) {
           if (!link.name) continue;
-          const isActive = (() => { const { required, category } = _parseLinkCondition(link.condition); return _countLinkInDeckVirtual(link.name, category, card) >= required; })();
+          const isActive = this._viewerMode || (() => { const { required, category } = _parseLinkCondition(link.condition); return _countLinkInDeckVirtual(link.name, category, card) >= required; })();
           const ltype = link.is_eb_link ? 'link-eb' : AppState._sqLinkNames.has(link.name) ? 'link-sq' : link.is_ab_link ? 'link-ab' : '';
           const tag = document.createElement('div');
           tag.className = 'thumb-link-tag ov-link-tag ' + (isActive ? 'link-on' : 'link-off') + (ltype ? ' ' + ltype : '');
