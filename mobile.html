@@ -2938,6 +2938,7 @@ function _normalizeSearch(s) {
 }
 const SearchPanel = {
   _lockedType: null,
+  _bookmarkMode: false,
   _currentRarity: new Set(),
   _currentCategory: new Set(),
   _selectedSeries: new Set(),
@@ -3338,9 +3339,7 @@ const SearchPanel = {
         tagsDiv.className = 'thumb-link-tags';
         for (const link of cLinks.slice(0, 2)) {
           if (!link.name) continue;
-          const { required, category } = _parseLinkCondition(link.condition);
-          const count = _countLinkInDeck(link.name, category);
-          const isActive = count >= required;
+          const isActive = this._bookmarkMode ? true : (() => { const { required, category } = _parseLinkCondition(link.condition); return _countLinkInDeck(link.name, category) >= required; })();
           const ltype = link.is_eb_link ? 'link-eb' : AppState._sqLinkNames.has(link.name) ? 'link-sq' : link.is_ab_link ? 'link-ab' : '';
           const tag = document.createElement('div');
           tag.className = 'thumb-link-tag ov-link-tag ' + (isActive ? 'link-on' : 'link-off') + (ltype ? ' ' + ltype : '');
@@ -3431,6 +3430,7 @@ function toggleFilterGroup(id) {
   document.getElementById(id).classList.toggle('collapsed');
 }
 function openCardPicker(slotIdx, type) {
+  SearchPanel._bookmarkMode = false;
   AppState.activeSlot = slotIdx;
   const unitIdx = slotIdx < 5 ? slotIdx : slotIdx - 5;
   document.getElementById('pickerTitle').textContent = `${type} ${unitIdx + 1} を選択`;
@@ -3447,6 +3447,7 @@ function openCardPicker(slotIdx, type) {
   SearchPanel._updateFilterBadge();
 }
 function closeCardPicker() {
+  SearchPanel._bookmarkMode = false;
   document.getElementById('filterSheet').classList.remove('open');
   document.getElementById('filterSheet').style.display = 'none';
   document.getElementById('pickerOverlay').classList.remove('open');
@@ -3456,13 +3457,13 @@ function closeCardPicker() {
 }
 function openBookmarkViewer() {
   AppState.activeSlot = null;
+  SearchPanel._bookmarkMode = true;
   document.getElementById('pickerTitle').textContent = '★ ブックマークカード';
   const tabs = document.getElementById('pickerTabs');
   tabs.style.display = 'none';
   SearchPanel._lockedType = null;
   SearchPanel.clearFilters();
   const bm = document.getElementById('filterBookmarkCards'); if (bm) bm.checked = true;
-  SearchPanel._updateFilterVisibility();
   document.getElementById('pickerOverlay').classList.add('open');
   document.getElementById('filterSheet').style.display = 'none';
   SearchPanel.applyFilters();
