@@ -4147,11 +4147,13 @@ const SearchPanel = {
       skillName: document.getElementById('filterSkillName').value,
       toggles: Object.fromEntries(Object.entries(this._t).map(([k,v]) => [k, [...v]])),
     };
-    localStorage.setItem('abds_search_filters', JSON.stringify(state));
+    const key = 'abds_search_filters' + (this._lockedType ? '_' + this._lockedType : '');
+    localStorage.setItem(key, JSON.stringify(state));
   },
 
   _restoreFilters() {
-    const raw = localStorage.getItem('abds_search_filters');
+    const key = 'abds_search_filters' + (this._lockedType ? '_' + this._lockedType : '');
+    const raw = localStorage.getItem(key);
     if (!raw) return;
     try {
       const s = JSON.parse(raw);
@@ -4872,10 +4874,10 @@ function openCardPicker(slotIdx, type) {
   const unitIdx = slotIdx < 5 ? slotIdx : slotIdx - 5;
   const label = `${type} ${unitIdx + 1} を選択`;
   document.getElementById('pickerTitle').textContent = label;
-  // スロットタイプでフィルタ
+  // スロットタイプでフィルタ（MS/PL別にフィルタ状態を復元）
   SearchPanel._lockedType = type;
+  SearchPanel._restoreFilters();
   SearchPanel._updateFilterVisibility();
-  SearchPanel.applyFilters();
   document.getElementById('sidebar').classList.add('open');
   document.getElementById('sidebarOverlay').classList.add('active');
   const input = document.getElementById('searchInput');

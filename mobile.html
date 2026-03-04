@@ -2972,11 +2972,13 @@ const SearchPanel = {
       allSeries: (document.getElementById('filterAllSeries') || {}).checked || false,
       bookmark: (document.getElementById('filterBookmarkCards') || {}).checked || false,
     };
-    localStorage.setItem('abds_search_filters', JSON.stringify(state));
+    const key = 'abds_search_filters' + (this._lockedType ? '_' + this._lockedType : '');
+    localStorage.setItem(key, JSON.stringify(state));
   },
 
   _restoreFilters() {
-    const raw = localStorage.getItem('abds_search_filters');
+    const key = 'abds_search_filters' + (this._lockedType ? '_' + this._lockedType : '');
+    const raw = localStorage.getItem(key);
     if (!raw) return;
     try {
       const s = JSON.parse(raw);
@@ -3365,8 +3367,8 @@ function openCardPicker(slotIdx, type) {
   tabs.style.display = 'flex';
   tabs.querySelectorAll('.picker-tab').forEach(t => t.classList.toggle('active', t.dataset.type === type));
   SearchPanel._lockedType = type;
+  SearchPanel._restoreFilters();
   SearchPanel._updateFilterVisibility();
-  SearchPanel.applyFilters();
   document.getElementById('pickerOverlay').classList.add('open');
   document.getElementById('filterSheet').style.display = 'flex';
   document.getElementById('filterSheet').classList.remove('open');
