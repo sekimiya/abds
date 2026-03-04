@@ -1024,6 +1024,7 @@ select,input{font-family:inherit}
       <div class="cache-modal-progress" id="cmProgress" style="display:none"><div class="cache-modal-progress-bar" id="cmProgressBar"></div></div>
       <div class="cache-modal-pct" id="cmPct" style="display:none"></div>
       <div class="cache-modal-detail" id="cmDetail"></div>
+      <div class="cache-modal-storage" id="cmStorage" style="font-size:0.7rem;color:#aaa;margin:6px 0;padding:6px;background:#1a1a1a;border-radius:4px;display:none"></div>
       <div class="cache-modal-warn" id="cmWarn">公式サイトからカード画像を取得しキャッシュします。通信量が大きくなる場合があります。</div>
       <div class="cache-modal-btns">
         <button class="primary" id="cmDlBtn" onclick="ImageCache.startDownload()">キャッシュ作成</button>
@@ -1634,7 +1635,7 @@ const ImageCache = {
     this._updateCount(this._cachedKeys.size);
   },
 
-  openModal() {
+  async openModal() {
     const total = (AppState.cardIndex || []).filter(c => c.number).length * 2;
     document.getElementById('cmTotalCount').textContent = total;
     document.getElementById('cmWarn').style.display = '';
@@ -1644,7 +1645,36 @@ const ImageCache = {
     document.getElementById('cmPct').style.display = 'none';
     document.getElementById('cmDetail').textContent = '';
     this._refreshStats();
+    // ストレージ情報を表示
+    const storageEl = document.getElementById('cmStorage');
+    if (navigator.storage && navigator.storage.estimate) {
+      try {
+        const est = await navigator.storage.estimate();
+        const usedMB = (est.usage / 1024 / 1024).toFixed(1);
+        const quotaMB = (est.quota / 1024 / 1024).toFixed(0);
+        const persisted = navigator.storage.persisted ? await navigator.storage.persisted() : false;
+        const persistLabel = persisted
+          ? '<span style="color:#68efbd">永続化済み</span>'
+          : '<span style="color:#ff8a80">未永続化（端末の空き容量不足時にブラウザが自動削除する可能性があります）</span>';
+        storageEl.innerHTML = `使用量: ${usedMB}MB / ${quotaMB}MB｜${persistLabel}`;
+        if (!persisted) {
+          storageEl.innerHTML += '<br><button onclick="ImageCache._requestPersist()" style="margin-top:4px;font-size:0.7rem;padding:2px 8px;border-radius:3px;background:#333;color:#68efbd;border:1px solid #68efbd;cursor:pointer">永続化をリクエスト</button>';
+        }
+        storageEl.style.display = '';
+      } catch (_) { storageEl.style.display = 'none'; }
+    }
     document.getElementById('cacheModal').classList.add('open');
+  },
+  async _requestPersist() {
+    if (navigator.storage && navigator.storage.persist) {
+      const granted = await navigator.storage.persist();
+      if (granted) {
+        Toast.show('ストレージが永続化されました', 'success', 2000);
+      } else {
+        Toast.show('永続化が許可されませんでした。端末の空き容量を増やしてお試しください', 'error', 4000);
+      }
+      this.openModal();
+    }
   },
   closeModal() { document.getElementById('cacheModal').classList.remove('open'); },
 
