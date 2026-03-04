@@ -49,6 +49,97 @@ select,input{font-family:inherit}
   --senmetsu:#ff8a80;--seiatsu:#82b1ff;--bouei:#a5d6a7;
 }
 
+/* ===== LIGHT MODE ===== */
+body.light{
+  --bg:#f5f5f5;--bg2:#ffffff;--bg-card:#e8e8e8;
+  color:#1a1a1a;
+}
+body.light .app-header{background:linear-gradient(135deg,#d0e8dc,#d0e8dc)}
+body.light .tactics-row{background:#e0e0e0;border-bottom-color:#ccc}
+body.light .hamburger-btn{background:#e0e0e0;border-color:#aaa;color:#333}
+body.light .menu-overlay{background:rgba(0,0,0,0.3)}
+body.light .menu-panel{background:#fff;border-left-color:var(--accent)}
+body.light .menu-btn{background:#e8e8e8;border-color:#bbb;color:#333}
+body.light .menu-btn.primary{background:#d0e8dc;border-color:var(--accent);color:#1a6b4a}
+body.light .menu-close{color:#666}
+body.light .menu-title{color:#1a6b4a}
+body.light .menu-label{color:#666}
+body.light .menu-divider{background:#ccc}
+body.light .deck-name-input{background:#f0f0f0;border-color:#bbb;color:#1a1a1a}
+body.light .filter-sheet{background:#fff}
+body.light .filter-select{background:#f0f0f0;border-color:#bbb;color:#333}
+body.light .filter-group{border-color:#ccc}
+body.light .filter-group-title{background:#e8e8e8;color:#666}
+body.light .filter-sheet-actions{border-top-color:#ccc}
+body.light .search-input{background:#f0f0f0;border-color:#bbb;color:#1a1a1a}
+body.light .rarity-btn{background:#e8e8e8;border-color:#bbb;color:#666}
+body.light .cat-btn{background:#e8e8e8;border-color:#bbb;color:#666}
+body.light .series-btn{background:#e8e8e8;border-color:#bbb;color:#666}
+body.light .tbtn{background:#e8e8e8;border-color:#bbb;color:#666}
+body.light .page-btn{background:#e8e8e8;border-color:#bbb;color:#333}
+body.light .page-info{color:#666}
+body.light .picker-overlay{background:#f5f5f5}
+body.light .picker-topbar{border-bottom-color:#ccc}
+body.light .picker-tab{background:#e8e8e8;border-color:#bbb;color:#666}
+body.light .picker-tab.active{background:#d0e8dc;border-color:var(--accent);color:#1a6b4a}
+body.light .picker-close{color:#666}
+body.light .picker-toolbar{border-bottom-color:#ccc}
+body.light .picker-filter-btn{background:#e8e8e8;border-color:#bbb;color:#333}
+body.light .picker-search-input{background:#f0f0f0;border-color:#bbb;color:#1a1a1a}
+body.light .picker-pagination{border-top-color:#ccc}
+body.light .modal-overlay{background:rgba(0,0,0,0.5)}
+body.light .modal-content{background:#fff;box-shadow:0 0 24px rgba(0,0,0,0.2)}
+body.light .modal-close{color:#666}
+body.light .modal-param-group{background:#f0f0f0}
+body.light .modal-param-item{background:#e0e0e0}
+body.light .detail-section{background:#fff}
+body.light .detail-section-title{border-bottom-color:#ccc}
+body.light .detail-desc{color:#444}
+body.light .detail-impact{color:#666}
+body.light .detail-tag{background:#d0e8f0;border-color:#a0c0d0}
+body.light .detail-tag.sp{background:#f0d0d0;border-color:#d0a0a0}
+body.light .detail-tag.pl{background:#f0f0d0;border-color:#d0d0a0}
+body.light .detail-tag.eb{background:#f0e0d0;border-color:#d0b090}
+body.light .detail-tag.cat-殲滅{background:#f0d0d0;border-color:#d0a0a0}
+body.light .detail-tag.cat-制圧{background:#d0d0f0;border-color:#a0a0d0}
+body.light .detail-tag.cat-防衛{background:#d0f0d0;border-color:#a0d0a0}
+body.light .weapon-name{color:#333}
+body.light .link-badge.off{background:#e0e0e0;color:#999;border-color:#ccc}
+body.light .link-name{color:#666}
+body.light .link-effect{color:#888}
+body.light .link-item{border-bottom-color:rgba(0,0,0,0.08)}
+body.light .overview-thumb{border-color:#bbb}
+body.light .overview-thumb.empty::after{color:#aaa}
+body.light .ov-card-name{color:#444;text-shadow:none}
+body.light .unit-card-line{background:rgba(0,0,0,0.03);border-left-color:#bbb}
+body.light .unit-card-line .card-name{text-shadow:none}
+body.light .unit-card-line .card-detail-btn{color:#666;background:rgba(0,0,0,0.06);border-color:rgba(0,0,0,0.12)}
+body.light .stat-section-title{color:#888;border-bottom-color:#ccc}
+body.light .stat-label{color:#666}
+body.light .terrain-badge{background:#e8e8e8;border-color:#bbb}
+body.light .terrain-badge.rank-none{color:#aaa;border-color:#ccc}
+body.light .deck-load-item{background:#f0f0f0;border-color:#ccc}
+body.light .tactics-picker-card{background:#f0f0f0;border-color:#ccc}
+body.light .tactics-picker-card .tp-effect{color:#555}
+body.light .cache-menu-section{background:linear-gradient(135deg,rgba(255,60,60,0.05),rgba(255,100,60,0.03))}
+body.light .cache-modal-btns button{background:#f0f0f0;border-color:#bbb;color:#333}
+body.light .cache-modal-progress{background:#e0e0e0}
+body.light .toast{box-shadow:0 4px 12px rgba(0,0,0,0.15)}
+body.light .toast.error{background:#fde8e8;color:#c62828;border-left-color:#f44336}
+body.light .toast.info{background:#e3f2fd;color:#1565c0;border-left-color:#2196f3}
+body.light .terrain-sw{background:#e8e8e8;border-color:#bbb;color:#666}
+body.light ::-webkit-scrollbar-track{background:#e8e8e8}
+body.light ::-webkit-scrollbar-thumb{background:#bbb}
+
+/* ===== BOOKMARK OVERLAY TOGGLES ===== */
+.bm-toggle-bar{display:flex;gap:4px;padding:4px 8px;flex-shrink:0}
+.bm-toggle-btn{padding:4px 8px;background:#222;border:1px solid #555;border-radius:4px;color:#ccc;font-size:0.7rem;cursor:pointer}
+.bm-toggle-btn.active{background:#1e2924;border-color:var(--accent);color:var(--accent)}
+body.light .bm-toggle-btn{background:#e8e8e8;border-color:#bbb;color:#333}
+body.light .bm-toggle-btn.active{background:#d0e8dc;border-color:var(--accent);color:#1a6b4a}
+.hide-link-overlay .thumb-link-tags{display:none!important}
+.hide-text-overlay .thumb-card-info{display:none!important}
+
 /* ===== HEADER (36px) ===== */
 .app-header{
   display:flex;align-items:center;
@@ -730,6 +821,7 @@ select,input{font-family:inherit}
 </style>
 </head>
 <body>
+<script>if(localStorage.getItem('abds_lightMode')==='1'){document.body.classList.add('light')}</script>
 
 <!-- HEADER -->
 <header class="app-header">
@@ -782,6 +874,10 @@ select,input{font-family:inherit}
       <div class="picker-tab" data-type="PL" onclick="SearchPanel.setType('PL')">PL</div>
     </div>
     <button class="picker-close" onclick="closeCardPicker()">&times;</button>
+  </div>
+  <div class="bm-toggle-bar" id="bmToggleBar" style="display:none">
+    <button class="bm-toggle-btn active" id="bmToggleLink" onclick="toggleBmOverlay('link')">リンク表示</button>
+    <button class="bm-toggle-btn active" id="bmToggleText" onclick="toggleBmOverlay('text')">テキスト表示</button>
   </div>
   <div class="picker-toolbar">
     <span class="page-info" id="pageInfo" style="color:#888;font-size:0.8rem">-</span>
@@ -1164,6 +1260,7 @@ select,input{font-family:inherit}
     <button class="cache-menu-btn" onclick="ImageCache.openModal();toggleMenu()">キャッシュ管理</button>
   </div>
   <div style="border-top:1px solid #333;padding-top:8px">
+    <button class="menu-btn" id="lightModeBtn" onclick="toggleLightMode();toggleMenu()" style="width:100%;margin-bottom:6px">☀ ライトモードに切替</button>
     <button class="menu-btn" onclick="clearDataCacheAndReload()" style="width:100%;color:#ff9800;border-color:#ff9800;margin-bottom:6px">データ更新（キャッシュクリア）</button>
     <a href="./index.html" class="menu-btn" style="text-decoration:none;display:block;text-align:center;border-color:#68efbd;color:#68efbd" onclick="localStorage.setItem('abds_viewMode','desktop');this.href='./index.html'+location.hash">デスクトップ版</a>
   </div>
@@ -1376,6 +1473,33 @@ function _countLinkInDeck(linkName, category) {
     const dLinks = d.link_abilities || d.link_ability || [];
     if (Array.isArray(dLinks) && dLinks.some(l => l.name === linkName)) count++;
   }
+  return count;
+}
+function _countLinkInDeckVirtual(linkName, category, virtualCard) {
+  const vNum = virtualCard.number;
+  const inDeck = AppState.deck.includes(vNum);
+  if (category) {
+    let count = 0;
+    for (let i = 0; i < 5; i++) {
+      const num = AppState.deck[i];
+      if (!num) continue;
+      if (inDeck && num === vNum) continue;
+      const card = AppState.cardIndex.find(c => c.number === num);
+      if (card && card.category === category) count++;
+    }
+    if (!inDeck && virtualCard.category === category) count++;
+    return count;
+  }
+  let count = 0;
+  for (let i = 0; i < 10; i++) {
+    const d = AppState.deckOcr[i]; if (!d) continue;
+    if (inDeck && AppState.deck[i] === vNum) continue;
+    const dLinks = d.link_abilities || d.link_ability || [];
+    if (Array.isArray(dLinks) && dLinks.some(l => l.name === linkName)) count++;
+  }
+  const vDet = AppState.cardDetails[vNum];
+  const vLinks = vDet?.ocr_data?.link_abilities || vDet?.ocr_data?.link_ability || [];
+  if (!inDeck && Array.isArray(vLinks) && vLinks.some(l => l.name === linkName)) count++;
   return count;
 }
 function escapeHtml(str) {
@@ -3339,7 +3463,7 @@ const SearchPanel = {
         tagsDiv.className = 'thumb-link-tags';
         for (const link of cLinks.slice(0, 2)) {
           if (!link.name) continue;
-          const isActive = this._bookmarkMode ? true : (() => { const { required, category } = _parseLinkCondition(link.condition); return _countLinkInDeck(link.name, category) >= required; })();
+          const isActive = (() => { const { required, category } = _parseLinkCondition(link.condition); return _countLinkInDeckVirtual(link.name, category, card) >= required; })();
           const ltype = link.is_eb_link ? 'link-eb' : AppState._sqLinkNames.has(link.name) ? 'link-sq' : link.is_ab_link ? 'link-ab' : '';
           const tag = document.createElement('div');
           tag.className = 'thumb-link-tag ov-link-tag ' + (isActive ? 'link-on' : 'link-off') + (ltype ? ' ' + ltype : '');
@@ -3402,6 +3526,13 @@ const SearchPanel = {
 // ================================================================
 // Mobile-specific functions
 // ================================================================
+function toggleLightMode() {
+  const isLight = document.body.classList.toggle('light');
+  localStorage.setItem('abds_lightMode', isLight ? '1' : '0');
+  document.getElementById('lightModeBtn').textContent = isLight ? '🌙 ダークモードに切替' : '☀ ライトモードに切替';
+}
+(function(){if(document.body.classList.contains('light')){var b=document.getElementById('lightModeBtn');if(b)b.textContent='🌙 ダークモードに切替';}})();
+
 function toggleMenu() {
   document.getElementById('menuOverlay').classList.toggle('open');
   const panel = document.getElementById('menuPanel');
@@ -3431,6 +3562,8 @@ function toggleFilterGroup(id) {
 }
 function openCardPicker(slotIdx, type) {
   SearchPanel._bookmarkMode = false;
+  document.getElementById('bmToggleBar').style.display = 'none';
+  document.getElementById('pickerOverlay').classList.remove('hide-link-overlay', 'hide-text-overlay');
   AppState.activeSlot = slotIdx;
   const unitIdx = slotIdx < 5 ? slotIdx : slotIdx - 5;
   document.getElementById('pickerTitle').textContent = `${type} ${unitIdx + 1} を選択`;
@@ -3448,12 +3581,24 @@ function openCardPicker(slotIdx, type) {
 }
 function closeCardPicker() {
   SearchPanel._bookmarkMode = false;
+  document.getElementById('bmToggleBar').style.display = 'none';
+  document.getElementById('pickerOverlay').classList.remove('hide-link-overlay', 'hide-text-overlay');
   document.getElementById('filterSheet').classList.remove('open');
   document.getElementById('filterSheet').style.display = 'none';
   document.getElementById('pickerOverlay').classList.remove('open');
   AppState.activeSlot = null;
   SearchPanel._lockedType = null;
   SearchPanel._updateFilterVisibility();
+}
+function toggleBmOverlay(type) {
+  const grid = document.getElementById('pickerOverlay');
+  if (type === 'link') {
+    grid.classList.toggle('hide-link-overlay');
+    document.getElementById('bmToggleLink').classList.toggle('active');
+  } else {
+    grid.classList.toggle('hide-text-overlay');
+    document.getElementById('bmToggleText').classList.toggle('active');
+  }
 }
 function openBookmarkViewer() {
   AppState.activeSlot = null;
@@ -3464,7 +3609,12 @@ function openBookmarkViewer() {
   SearchPanel._lockedType = null;
   SearchPanel.clearFilters();
   const bm = document.getElementById('filterBookmarkCards'); if (bm) bm.checked = true;
-  document.getElementById('pickerOverlay').classList.add('open');
+  document.getElementById('bmToggleBar').style.display = 'flex';
+  const ov = document.getElementById('pickerOverlay');
+  ov.classList.remove('hide-link-overlay', 'hide-text-overlay');
+  document.getElementById('bmToggleLink').classList.add('active');
+  document.getElementById('bmToggleText').classList.add('active');
+  ov.classList.add('open');
   document.getElementById('filterSheet').style.display = 'none';
   SearchPanel.applyFilters();
 }
