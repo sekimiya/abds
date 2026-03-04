@@ -1100,6 +1100,12 @@ body.light .bm-toggle-btn.active{background:#d0e8dc;border-color:var(--accent);c
         <input type="text" class="search-input" id="searchTextInput" placeholder="カードテキスト検索..." autocomplete="off">
       </div>
     </div>
+    <div class="filter-group collapsed" id="filterGroupIllustrator">
+      <div class="filter-group-title" onclick="toggleFilterGroup('filterGroupIllustrator')">イラストレーター</div>
+      <div class="filter-group-body">
+        <div class="filter-row"><select class="filter-select" id="filterIllustrator" onchange="SearchPanel.applyFilters()" style="flex:1"><option value="">イラストレーターを選択</option></select></div>
+      </div>
+    </div>
   </div>
   <div class="filter-sheet-actions">
     <button class="filter-action-btn clear" id="filterClearBtn" onclick="SearchPanel.clearFilters()">フィルタクリア</button>
@@ -3101,6 +3107,7 @@ const SearchPanel = {
       if (slider && label) slider.addEventListener('input', () => { label.textContent = slider.value; this.applyFilters(); });
     });
     this._populateSkillNames();
+    this._populateIllustrators();
     this._restoreFilters();
     // 無限スクロール: スクロールラッパー末尾付近で追加読み込み
     const scrollWrap = document.getElementById('pickerScroll');
@@ -3133,6 +3140,7 @@ const SearchPanel = {
       linkName: document.getElementById('filterLinkName').value,
       linkName2: document.getElementById('filterLinkName2').value,
       skillName: document.getElementById('filterSkillName').value,
+      illustrator: document.getElementById('filterIllustrator').value,
       toggles: Object.fromEntries(Object.entries(this._t).map(([k,v]) => [k, [...v]])),
       series: [...this._selectedSeries],
       allSeries: (document.getElementById('filterAllSeries') || {}).checked || false,
@@ -3158,6 +3166,7 @@ const SearchPanel = {
       const flnk = document.getElementById('filterLinkName'); if (flnk) flnk.value = s.linkName || '';
       const flnk2 = document.getElementById('filterLinkName2'); if (flnk2) flnk2.value = s.linkName2 || '';
       document.getElementById('filterSkillName').value = s.skillName || '';
+      document.getElementById('filterIllustrator').value = s.illustrator || '';
       document.getElementById('filterCostMin').value = s.costMin ?? 0;
       document.getElementById('filterCostMax').value = s.costMax ?? 13;
       document.getElementById('costRangeValue').textContent = (s.costMin ?? 0) + '〜' + (s.costMax ?? 13);
@@ -3264,6 +3273,13 @@ const SearchPanel = {
     const names = [...new Set(AppState.cardIndex.filter(c => c.type === 'PL' && c.skill_name).map(c => c.skill_name))].sort();
     sel.innerHTML = '<option value="">PLスキル名</option>' + names.map(n => `<option value="${n}"${n === current ? ' selected' : ''}>${n}</option>`).join('');
   },
+  _populateIllustrators() {
+    const sel = document.getElementById('filterIllustrator');
+    if (!sel) return;
+    const current = sel.value;
+    const names = [...new Set(AppState.cardIndex.filter(c => c.illustrator && c.illustrator !== '不明').map(c => c.illustrator))].sort();
+    sel.innerHTML = '<option value="">イラストレーターを選択</option>' + names.map(n => `<option value="${n}"${n === current ? ' selected' : ''}>${escapeHtml(n)}</option>`).join('');
+  },
   _hasActiveFilter() { return this._hasAnyFilter(); },
   _hasAnyFilter() {
     if (this._selectedSeries.size > 0) return true;
@@ -3280,6 +3296,7 @@ const SearchPanel = {
     if (document.getElementById('filterLinkName').value) return true;
     if ((document.getElementById('filterLinkName2') || {}).value) return true;
     if ((document.getElementById('filterSkillName') || {}).value) return true;
+    if (document.getElementById('filterIllustrator').value) return true;
     if (document.getElementById('searchInput').value.trim()) return true;
     const sti = document.getElementById('searchTextInput'); if (sti && sti.value.trim()) return true;
     const bm = document.getElementById('filterBookmarkCards'); if (bm && bm.checked) return true;
@@ -3310,6 +3327,7 @@ const SearchPanel = {
     g('filterGroupSp', this._t.spEff.size > 0);
     g('filterGroupPlSkill', !!(document.getElementById('filterSkillName') || {}).value || this._t.skEff.size > 0);
     g('filterGroupSearch', !!((document.getElementById('searchTextInput') || {}).value || '').trim());
+    g('filterGroupIllustrator', !!document.getElementById('filterIllustrator').value);
   },
   applyFilters() {
     if (!this._hasActiveFilter()) { this._filteredCards = []; this._page = 0; this._renderGrid(); this._saveFilters(); this._updateFilterBadge(); return; }
@@ -3365,6 +3383,8 @@ const SearchPanel = {
     const sti = document.getElementById('searchTextInput');
     const qtRaw = sti ? sti.value.trim() : '';
     if (qtRaw) { const terms = qtRaw.split(/\s+/).map(t => _normalizeSearch(t)); cards = cards.filter(c => { const txt = _normalizeSearch(c.search_text || ''); return terms.every(t => txt.includes(t)); }); }
+    const illustrator = document.getElementById('filterIllustrator').value;
+    if (illustrator) cards = cards.filter(c => c.illustrator === illustrator);
     const bmEl = document.getElementById('filterBookmarkCards');
     if (bmEl && bmEl.checked) { const bmSet = CardBookmark.getAll(); cards = cards.filter(c => bmSet.has(c.number)); }
     this._filteredCards = cards;
@@ -3393,6 +3413,7 @@ const SearchPanel = {
     document.getElementById('filterSqSkill').checked = false;
     document.getElementById('filterEbSkill').checked = false;
     document.getElementById('filterSkillName').value = '';
+    document.getElementById('filterIllustrator').value = '';
     const flnk = document.getElementById('filterLinkName'); if (flnk) flnk.value = '';
     const flnk2 = document.getElementById('filterLinkName2'); if (flnk2) flnk2.value = '';
     document.getElementById('searchInput').value = '';
