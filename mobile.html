@@ -2554,29 +2554,23 @@ const UIRenderer = {
     // Stats
     html += this._renderStats(msOcr, plOcr);
 
-    // MS detail sections
-    if (msOcr && msNumber) {
-      const hasOcrFields = msOcr.ms_ability || msOcr.weapon || msOcr.special_attack || msOcr.terrain_compatibility || msOcr.model;
-      if (!hasOcrFields) {
-        const backUrl = resolveImageUrl(null, msNumber, 'back');
-        html += `<div class="detail-section"><div class="detail-section-title ms">MS詳細</div><div class="no-ocr-msg">OCRデータなし</div><img class="no-ocr-back-img" src="${backUrl}" alt="裏面" onerror="this.style.display='none'"></div>`;
-      } else {
-        html += this._renderMsAbility(msOcr);
-        html += this._renderWeapon(msOcr);
-        html += this._renderSP(msOcr);
-        html += this._renderEB(msOcr);
-      }
+    // MS/PL detail sections: MSアビリティ → PLスキル → 武器 → SP → EB
+    const msHasOcr = msOcr && msNumber && (msOcr.ms_ability || msOcr.weapon || msOcr.special_attack || msOcr.terrain_compatibility || msOcr.model);
+    const plHasOcr = plOcr && plNumber && (plOcr.pl_skill || plOcr.pilot_skill || plOcr.category);
+    if (msOcr && msNumber && !msHasOcr) {
+      const backUrl = resolveImageUrl(null, msNumber, 'back');
+      html += `<div class="detail-section"><div class="detail-section-title ms">MS詳細</div><div class="no-ocr-msg">OCRデータなし</div><img class="no-ocr-back-img" src="${backUrl}" alt="裏面" onerror="this.style.display='none'"></div>`;
     }
-
-    // PL detail sections
-    if (plOcr && plNumber) {
-      const hasOcrFields = plOcr.pl_skill || plOcr.pilot_skill || plOcr.category;
-      if (!hasOcrFields) {
-        const backUrl = resolveImageUrl(null, plNumber, 'back');
-        html += `<div class="detail-section"><div class="detail-section-title pl">PL詳細</div><div class="no-ocr-msg">OCRデータなし</div><img class="no-ocr-back-img" src="${backUrl}" alt="裏面" onerror="this.style.display='none'"></div>`;
-      } else {
-        html += this._renderPlSkill(plOcr);
-      }
+    if (plOcr && plNumber && !plHasOcr) {
+      const backUrl = resolveImageUrl(null, plNumber, 'back');
+      html += `<div class="detail-section"><div class="detail-section-title pl">PL詳細</div><div class="no-ocr-msg">OCRデータなし</div><img class="no-ocr-back-img" src="${backUrl}" alt="裏面" onerror="this.style.display='none'"></div>`;
+    }
+    if (msHasOcr) html += this._renderMsAbility(msOcr);
+    if (plHasOcr) html += this._renderPlSkill(plOcr);
+    if (msHasOcr) {
+      html += this._renderWeapon(msOcr);
+      html += this._renderSP(msOcr);
+      html += this._renderEB(msOcr);
     }
 
     // Links
