@@ -33,6 +33,7 @@ html{font-size:14px;height:100%;-webkit-text-size-adjust:100%;touch-action:manip
 body{background:var(--bg);color:#e0e0e0;font-family:'Segoe UI','Hiragino Sans',sans-serif;height:100%;overflow:hidden;display:flex;flex-direction:column;
   padding-top:env(safe-area-inset-top);padding-bottom:env(safe-area-inset-bottom);
   padding-left:env(safe-area-inset-left);padding-right:env(safe-area-inset-right)}
+img{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;pointer-events:auto}
 a{color:var(--accent);text-decoration:none}
 button{cursor:pointer;font-family:inherit;-webkit-tap-highlight-color:transparent}
 select,input{font-family:inherit}
@@ -822,6 +823,7 @@ body.light .bm-toggle-btn.active{background:#d0e8dc;border-color:var(--accent);c
 </head>
 <body>
 <script>if(localStorage.getItem('abds_lightMode')==='1'){document.body.classList.add('light')}</script>
+<script>document.addEventListener('contextmenu',function(e){if(e.target.tagName==='IMG')e.preventDefault()});</script>
 
 <!-- HEADER -->
 <header class="app-header">
