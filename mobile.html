@@ -3780,6 +3780,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   await DeckManager._autoLoad();
   SearchPanel._populateLinkNames();
   SearchPanel._populateSkillNames();
+  SearchPanel._populateIllustrators();
 
   // ImageCacheがタイムアウトで未完了だった場合、完了後にUI再描画
   if (!imageCacheInitDone) {
