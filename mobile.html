@@ -1574,9 +1574,9 @@ const ImageCache = {
   },
 
   async init() {
-    if (navigator.storage && navigator.storage.persist) {
-      try { await navigator.storage.persist(); } catch (_) {}
-    }
+    // if (navigator.storage && navigator.storage.persist) {
+    //   try { await navigator.storage.persist(); } catch (_) {}
+    // }
     try {
       const cache = await caches.open('card-images-v1');
       const keys = await cache.keys();
@@ -1657,25 +1657,25 @@ const ImageCache = {
           ? '<span style="color:#68efbd">永続化済み</span>'
           : '<span style="color:#ff8a80">未永続化（端末の空き容量不足時にブラウザが自動削除する可能性があります）</span>';
         storageEl.innerHTML = `使用量: ${usedMB}MB / ${quotaMB}MB｜${persistLabel}`;
-        if (!persisted) {
-          storageEl.innerHTML += '<br><button onclick="ImageCache._requestPersist()" style="margin-top:4px;font-size:0.7rem;padding:2px 8px;border-radius:3px;background:#333;color:#68efbd;border:1px solid #68efbd;cursor:pointer">永続化をリクエスト</button>';
-        }
+        // if (!persisted) {
+        //   storageEl.innerHTML += '<br><button onclick="ImageCache._requestPersist()" style="margin-top:4px;font-size:0.7rem;padding:2px 8px;border-radius:3px;background:#333;color:#68efbd;border:1px solid #68efbd;cursor:pointer">永続化をリクエスト</button>';
+        // }
         storageEl.style.display = '';
       } catch (_) { storageEl.style.display = 'none'; }
     }
     document.getElementById('cacheModal').classList.add('open');
   },
-  async _requestPersist() {
-    if (navigator.storage && navigator.storage.persist) {
-      const granted = await navigator.storage.persist();
-      if (granted) {
-        Toast.show('ストレージが永続化されました', 'success', 2000);
-      } else {
-        Toast.show('永続化が許可されませんでした。端末の空き容量を増やしてお試しください', 'error', 4000);
-      }
-      this.openModal();
-    }
-  },
+  // async _requestPersist() {
+  //   if (navigator.storage && navigator.storage.persist) {
+  //     const granted = await navigator.storage.persist();
+  //     if (granted) {
+  //       Toast.show('ストレージが永続化されました', 'success', 2000);
+  //     } else {
+  //       Toast.show('永続化が許可されませんでした。端末の空き容量を増やしてお試しください', 'error', 4000);
+  //     }
+  //     this.openModal();
+  //   }
+  // },
   closeModal() { document.getElementById('cacheModal').classList.remove('open'); },
 
   async clear() {

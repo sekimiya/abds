@@ -2726,9 +2726,9 @@ const ImageCache = {
 
   // --- Init: SW Cache にあるキーを列挙 ---
   async init() {
-    if (navigator.storage && navigator.storage.persist) {
-      try { await navigator.storage.persist(); } catch (_) {}
-    }
+    // if (navigator.storage && navigator.storage.persist) {
+    //   try { await navigator.storage.persist(); } catch (_) {}
+    // }
     try {
       const cache = await caches.open('card-images-v1');
       const keys = await cache.keys();
