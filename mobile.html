@@ -3244,7 +3244,17 @@ const SearchPanel = {
     if (el && el.checked) { this._selectedSeries.clear(); document.querySelectorAll('.series-btn').forEach(b => b.classList.remove('active')); }
     this.applyFilters();
   },
-  setType(type) { this.applyFilters(); },
+  setType(type) {
+    if (this._viewerMode) {
+      const tabs = document.getElementById('pickerTabs');
+      const wasActive = this._lockedType === type;
+      tabs.querySelectorAll('.picker-tab').forEach(t => t.classList.remove('active'));
+      if (wasActive) { this._lockedType = null; }
+      else { this._lockedType = type; tabs.querySelector(`[data-type="${type}"]`).classList.add('active'); }
+      this._updateFilterVisibility();
+    }
+    this.applyFilters();
+  },
   toggle(group, btn) {
     const s = this._t[group]; const key = btn.dataset.key;
     if (s.has(key)) s.delete(key); else s.add(key);
