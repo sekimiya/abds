@@ -180,9 +180,11 @@ select,input{font-family:inherit}
 .overview-thumbs{display:flex;gap:3px;margin-bottom:2px}
 .ov-thumb-col{flex:1;min-width:0;display:flex;flex-direction:column}
 .ov-card-name{
-  font-size:0.56rem;color:#999;text-align:center;line-height:1.3;
+  font-size:0.56rem;color:#bbb;text-align:center;line-height:1.3;
   white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
-  min-height:0.55rem;padding:0 1px;
+  min-height:0.55rem;padding:1px 2px;
+  font-weight:600;letter-spacing:0.3px;
+  text-shadow:0 1px 3px rgba(0,0,0,0.6);
 }
 .overview-thumb{
   width:100%;aspect-ratio:63/88;background:var(--bg-card);border:2px solid #333;
@@ -310,8 +312,10 @@ select,input{font-family:inherit}
 .unit-card-line .card-type-icon.eb{background:rgba(255,152,0,0.8)}
 .unit-card-line .card-type-icon.ab{background:rgba(179,136,255,0.8)}
 .unit-card-line .card-name{
-  flex:1;font-weight:bold;font-size:0.75rem;text-align:center;
+  flex:1;font-weight:700;font-size:0.78rem;text-align:center;
   white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  letter-spacing:0.5px;
+  text-shadow:0 0 8px rgba(255,255,255,0.08);
 }
 .unit-card-line .card-detail-btn{
   flex-shrink:0;font-size:0.55rem;font-weight:bold;padding:1px 6px;
@@ -320,15 +324,15 @@ select,input{font-family:inherit}
 }
 .unit-card-line .card-detail-btn:active{background:rgba(255,255,255,0.2)}
 .unit-card-line.ms-line{border-left-color:var(--ms-blue)}
-.unit-card-line.ms-line .card-name{color:var(--ms-blue)}
+.unit-card-line.ms-line .card-name{color:var(--ms-blue);text-shadow:0 0 10px rgba(130,177,255,0.2)}
 .unit-card-line.pl-line{border-left-color:var(--pl-gold)}
-.unit-card-line.pl-line .card-name{color:var(--pl-gold)}
+.unit-card-line.pl-line .card-name{color:var(--pl-gold);text-shadow:0 0 10px rgba(255,224,130,0.2)}
 .unit-card-line.sq-highlight{border-left-color:var(--sq-pink);background:rgba(255,105,180,0.06)}
 .unit-card-line.eb-highlight{border-left-color:var(--eb-orange);background:rgba(255,152,0,0.06)}
 .unit-card-line.ab-highlight{border-left-color:#b388ff;background:rgba(179,136,255,0.06)}
-.unit-card-line.sq-highlight .card-name{color:var(--sq-pink)}
-.unit-card-line.eb-highlight .card-name{color:var(--eb-orange)}
-.unit-card-line.ab-highlight .card-name{color:#b388ff}
+.unit-card-line.sq-highlight .card-name{color:var(--sq-pink);text-shadow:0 0 10px rgba(255,105,180,0.25)}
+.unit-card-line.eb-highlight .card-name{color:var(--eb-orange);text-shadow:0 0 10px rgba(255,152,0,0.25)}
+.unit-card-line.ab-highlight .card-name{color:#b388ff;text-shadow:0 0 10px rgba(179,136,255,0.25)}
 .detail-terrain-row{display:flex;gap:3px;margin-bottom:6px;flex-wrap:wrap}
 .terrain-badge{
   padding:2px 6px;border-radius:3px;font-size:0.7rem;font-weight:bold;
@@ -511,9 +515,9 @@ select,input{font-family:inherit}
 .thumb-sq-badge{position:absolute;bottom:20px;left:1px;background:rgba(255,105,180,0.9);color:#fff;font-size:0.4rem;font-weight:bold;padding:0 2px;border-radius:2px;line-height:1.3}
 .thumb-eb-badge{position:absolute;bottom:20px;right:1px;background:rgba(255,152,0,0.9);color:#fff;font-size:0.4rem;font-weight:bold;padding:0 2px;border-radius:2px;line-height:1.3}
 .thumb-ab-badge{position:absolute;bottom:28px;left:1px;background:rgba(179,136,255,0.9);color:#fff;font-size:0.4rem;font-weight:bold;padding:0 2px;border-radius:2px;line-height:1.3}
-.thumb-card-info{position:absolute;bottom:0;left:0;right:0;padding:2px 3px;background:rgba(0,0,0,0.75);display:flex;flex-direction:column;gap:0px}
+.thumb-card-info{position:absolute;bottom:0;left:0;right:0;padding:2px 3px;background:linear-gradient(transparent,rgba(0,0,0,0.85));display:flex;flex-direction:column;gap:0px}
 .thumb-card-number{color:var(--accent);font-size:0.5rem;white-space:nowrap;overflow:hidden}
-.thumb-card-name{color:#ddd;font-size:0.55rem;font-weight:bold;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.thumb-card-name{color:#eee;font-size:0.55rem;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;letter-spacing:0.3px;text-shadow:0 1px 2px rgba(0,0,0,0.8)}
 .thumb-card.no-ocr{opacity:0.45;pointer-events:none}
 .thumb-no-ocr-badge{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,0.8);color:#f44336;font-size:0.65rem;font-weight:bold;padding:2px 6px;border-radius:3px;border:1px solid #f44336;white-space:nowrap}
 .thumb-card-sub{color:#888;font-size:0.45rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -671,7 +675,7 @@ select,input{font-family:inherit}
 #cardDetailModal .modal-close{position:fixed;top:12px;right:12px;z-index:410;color:#fff;font-size:2rem;background:rgba(0,0,0,0.5);border-radius:50%;width:36px;height:36px;display:flex;align-items:center;justify-content:center}
 .modal-card-info{min-width:0}
 .modal-card-number{color:var(--accent);font-weight:bold;font-size:1rem}
-.modal-card-name{font-size:1.1rem;font-weight:bold;margin-top:2px}
+.modal-card-name{font-size:1.1rem;font-weight:700;margin-top:2px;letter-spacing:0.5px}
 .modal-param-group{background:#222;border-radius:6px;padding:8px;margin-top:6px}
 .modal-param-title{color:#66ff99;font-weight:bold;font-size:0.8rem;margin-bottom:4px}
 .modal-param-row{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:2px}
