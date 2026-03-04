@@ -2568,9 +2568,9 @@ const UIRenderer = {
     if (msHasOcr) html += this._renderMsAbility(msOcr);
     if (plHasOcr) html += this._renderPlSkill(plOcr);
     if (msHasOcr) {
-      html += this._renderWeapon(msOcr);
       html += this._renderSP(msOcr);
       html += this._renderEB(msOcr);
+      html += this._renderWeapon(msOcr);
     }
 
     // Links
