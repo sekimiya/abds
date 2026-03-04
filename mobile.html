@@ -21,7 +21,7 @@
   }
 })();
 </script>
-<script>if(!/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)&&!location.search.includes('force')){location.replace('./index.html'+location.hash);}</script>
+<script>(function(){var v=localStorage.getItem('abds_viewMode');if(v==='mobile')return;if(v==='desktop'){location.replace('./index.html'+location.hash);return;}if(!/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)&&!location.search.includes('force')){location.replace('./index.html'+location.hash);}})();</script>
 <title>ABD Simulator - Mobile Portrait</title>
 <link rel="manifest" href="./manifest.json">
 <meta name="theme-color" content="#0f0f0f">
@@ -1151,7 +1151,7 @@ select,input{font-family:inherit}
   </div>
   <div style="border-top:1px solid #333;padding-top:8px">
     <button class="menu-btn" onclick="clearDataCacheAndReload()" style="width:100%;color:#ff9800;border-color:#ff9800;margin-bottom:6px">データ更新（キャッシュクリア）</button>
-    <a href="./index.html?force" class="menu-btn" style="text-decoration:none;display:block;text-align:center;border-color:#68efbd;color:#68efbd" onclick="this.href='./index.html?force'+location.hash">デスクトップ版</a>
+    <a href="./index.html" class="menu-btn" style="text-decoration:none;display:block;text-align:center;border-color:#68efbd;color:#68efbd" onclick="localStorage.setItem('abds_viewMode','desktop');this.href='./index.html'+location.hash">デスクトップ版</a>
   </div>
 </div>
 
@@ -2892,6 +2892,13 @@ const UIRenderer = {
 // ================================================================
 // SearchPanel — モバイル用
 // ================================================================
+function _normalizeSearch(s) {
+  return s.toLowerCase()
+    .replace(/[Ⅰⅰ]/g,'1').replace(/[Ⅱⅱ]/g,'2').replace(/[Ⅲⅲ]/g,'3').replace(/[Ⅳⅳ]/g,'4').replace(/[Ⅴⅴ]/g,'5').replace(/[Ⅵⅵ]/g,'6').replace(/[Ⅶⅶ]/g,'7').replace(/[Ⅷⅷ]/g,'8').replace(/[Ⅸⅸ]/g,'9').replace(/[Ⅹⅹ]/g,'10')
+    .replace(/壱/g,'1').replace(/弐/g,'2').replace(/参/g,'3').replace(/四/g,'4').replace(/五/g,'5').replace(/六/g,'6').replace(/七/g,'7').replace(/八/g,'8').replace(/九/g,'9').replace(/十/g,'10')
+    .replace(/[①]/g,'1').replace(/[②]/g,'2').replace(/[③]/g,'3').replace(/[④]/g,'4').replace(/[⑤]/g,'5').replace(/[⑥]/g,'6').replace(/[⑦]/g,'7').replace(/[⑧]/g,'8').replace(/[⑨]/g,'9')
+    .replace(/[・･\u30FB\u00B7\s　\-\u2010-\u2015\u2212]/g,'');
+}
 const SearchPanel = {
   _lockedType: null,
   _currentRarity: new Set(),
@@ -3185,11 +3192,11 @@ const SearchPanel = {
     const skillName = document.getElementById('filterSkillName').value;
     if (skillName) cards = cards.filter(c => _noDetail(c) || c.skill_name === skillName);
     if (this._t.skEff.size > 0) cards = cards.filter(c => _noDetail(c) || (c.skill_effect_tags && c.skill_effect_tags.some(t => this._t.skEff.has(t))));
-    const q = document.getElementById('searchInput').value.trim().toLowerCase();
-    if (q) cards = cards.filter(c => (c.number||'').toLowerCase().includes(q) || (c.name||'').toLowerCase().includes(q));
+    const qRaw = document.getElementById('searchInput').value.trim();
+    if (qRaw) { const qN = _normalizeSearch(qRaw); cards = cards.filter(c => _normalizeSearch(c.number||'').includes(qN) || _normalizeSearch(c.name||'').includes(qN)); }
     const sti = document.getElementById('searchTextInput');
-    const qt = sti ? sti.value.trim().toLowerCase() : '';
-    if (qt) { const terms = qt.split(/\s+/); cards = cards.filter(c => { const txt = c.search_text || ''; return terms.every(t => txt.includes(t)); }); }
+    const qtRaw = sti ? sti.value.trim() : '';
+    if (qtRaw) { const terms = qtRaw.split(/\s+/).map(t => _normalizeSearch(t)); cards = cards.filter(c => { const txt = _normalizeSearch(c.search_text || ''); return terms.every(t => txt.includes(t)); }); }
     const bmEl = document.getElementById('filterBookmarkCards');
     if (bmEl && bmEl.checked) { const bmSet = CardBookmark.getAll(); cards = cards.filter(c => bmSet.has(c.number)); }
     this._filteredCards = cards;

@@ -22,7 +22,7 @@
   }
 })();
 </script>
-<script>if(/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)&&!(location.hash&&location.hash.includes('&rec'))&&!location.search.includes('force')){location.replace('./mobile.html'+location.search+location.hash);}</script>
+<script>(function(){var v=localStorage.getItem('abds_viewMode');if(v==='desktop')return;if(v==='mobile'){location.replace('./mobile.html'+location.search+location.hash);return;}if(/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)&&!(location.hash&&location.hash.includes('&rec'))&&!location.search.includes('force')){location.replace('./mobile.html'+location.search+location.hash);}})();</script>
 <title>ABD Simulator v2</title>
 <link rel="manifest" href="./manifest.json">
 <meta name="theme-color" content="#0f0f0f">
@@ -1249,7 +1249,7 @@ select,input{font-family:inherit}
         <button class="header-btn" onclick="clearDataCacheAndReload()" style="flex:1;color:#ff9800;border-color:#ff9800">データ更新（キャッシュクリア）</button>
       </div>
       <div class="header-menu-row" style="border-top:1px solid #333;padding-top:0.5rem">
-        <a href="./mobile.html?force" class="header-btn" style="flex:1;text-align:center;text-decoration:none;border-color:#68efbd;color:#68efbd" onclick="this.href='./mobile.html?force'+location.hash">モバイル版</a>
+        <a href="./mobile.html" class="header-btn" style="flex:1;text-align:center;text-decoration:none;border-color:#68efbd;color:#68efbd" onclick="localStorage.setItem('abds_viewMode','mobile');this.href='./mobile.html'+location.hash">モバイル版</a>
       </div>
     </div>
   </div>
@@ -4064,6 +4064,14 @@ const CardBookmark = {
 // ================================================================
 // SearchPanel - 右サイドバー検索
 // ================================================================
+// Fuzzy search normalizer: normalize numerals, remove separators
+function _normalizeSearch(s) {
+  return s.toLowerCase()
+    .replace(/[Ⅰⅰ]/g,'1').replace(/[Ⅱⅱ]/g,'2').replace(/[Ⅲⅲ]/g,'3').replace(/[Ⅳⅳ]/g,'4').replace(/[Ⅴⅴ]/g,'5').replace(/[Ⅵⅵ]/g,'6').replace(/[Ⅶⅶ]/g,'7').replace(/[Ⅷⅷ]/g,'8').replace(/[Ⅸⅸ]/g,'9').replace(/[Ⅹⅹ]/g,'10')
+    .replace(/壱/g,'1').replace(/弐/g,'2').replace(/参/g,'3').replace(/四/g,'4').replace(/五/g,'5').replace(/六/g,'6').replace(/七/g,'7').replace(/八/g,'8').replace(/九/g,'9').replace(/十/g,'10')
+    .replace(/[①]/g,'1').replace(/[②]/g,'2').replace(/[③]/g,'3').replace(/[④]/g,'4').replace(/[⑤]/g,'5').replace(/[⑥]/g,'6').replace(/[⑦]/g,'7').replace(/[⑧]/g,'8').replace(/[⑨]/g,'9')
+    .replace(/[・･\u30FB\u00B7\s　\-\u2010-\u2015\u2212]/g,'');
+}
 const SearchPanel = {
   _lockedType: null,
   _currentRarity: new Set(),
@@ -4509,20 +4517,21 @@ const SearchPanel = {
     if (skEff.size > 0) {
       cards = cards.filter(c => _noDetail(c) || (c.skill_effect_tags && c.skill_effect_tags.some(t => skEff.has(t))));
     }
-    // Name/number search
-    const q = document.getElementById('searchInput').value.trim().toLowerCase();
-    if (q) {
+    // Name/number search (fuzzy: numerals, separators normalized)
+    const qRaw = document.getElementById('searchInput').value.trim();
+    if (qRaw) {
+      const qN = _normalizeSearch(qRaw);
       cards = cards.filter(c =>
-        (c.number || '').toLowerCase().includes(q) ||
-        (c.name || '').toLowerCase().includes(q)
+        _normalizeSearch(c.number || '').includes(qN) ||
+        _normalizeSearch(c.name || '').includes(qN)
       );
     }
     // Full text search (skills, abilities, weapons, descriptions)
-    const qt = document.getElementById('searchTextInput').value.trim().toLowerCase();
-    if (qt) {
-      const terms = qt.split(/\s+/);
+    const qtRaw = document.getElementById('searchTextInput').value.trim();
+    if (qtRaw) {
+      const terms = qtRaw.split(/\s+/).map(t => _normalizeSearch(t));
       cards = cards.filter(c => {
-        const txt = c.search_text || '';
+        const txt = _normalizeSearch(c.search_text || '');
         return terms.every(t => txt.includes(t));
       });
     }
