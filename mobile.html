@@ -3464,10 +3464,8 @@ function openBookmarkViewer() {
   const bm = document.getElementById('filterBookmarkCards'); if (bm) bm.checked = true;
   SearchPanel._updateFilterVisibility();
   document.getElementById('pickerOverlay').classList.add('open');
-  document.getElementById('filterSheet').style.display = 'flex';
-  document.getElementById('filterSheet').classList.remove('open');
+  document.getElementById('filterSheet').style.display = 'none';
   SearchPanel.applyFilters();
-  SearchPanel._updateFilterBadge();
 }
 function setActiveTerrain(terrain) {
   AppState.activeTerrain = terrain || null;
