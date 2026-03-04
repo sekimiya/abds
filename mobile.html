@@ -3246,12 +3246,17 @@ const SearchPanel = {
   },
   setType(type) {
     if (this._viewerMode) {
+      if (this._lockedType === type) return;
+      this._saveFilters();
+      this._viewerLastType = type;
       const tabs = document.getElementById('pickerTabs');
-      const wasActive = this._lockedType === type;
       tabs.querySelectorAll('.picker-tab').forEach(t => t.classList.remove('active'));
-      if (wasActive) { this._lockedType = null; }
-      else { this._lockedType = type; tabs.querySelector(`[data-type="${type}"]`).classList.add('active'); }
+      this._lockedType = type;
+      tabs.querySelector(`[data-type="${type}"]`).classList.add('active');
+      this._clearFiltersUI();
+      this._restoreFilters();
       this._updateFilterVisibility();
+      return;
     }
     this.applyFilters();
   },
@@ -3419,7 +3424,7 @@ const SearchPanel = {
     this._saveFilters();
     this._updateFilterBadge();
   },
-  clearFilters() {
+  _clearFiltersUI() {
     this._selectedSeries.clear();
     document.querySelectorAll('.series-btn').forEach(b => b.classList.remove('active'));
     const fas = document.getElementById('filterAllSeries'); if (fas) fas.checked = true;
@@ -3450,7 +3455,11 @@ const SearchPanel = {
     this._currentRarity = new Set(); this._currentCategory = new Set();
     document.querySelectorAll('.rarity-btn').forEach(b => b.classList.remove('active'));
     document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+  },
+  clearFilters() {
+    this._clearFiltersUI();
     localStorage.removeItem('abds_search_filters');
+    if (this._viewerMode && this._lockedType) localStorage.removeItem('abds_search_filters_' + this._lockedType);
     this.applyFilters();
   },
   _renderGrid() {
@@ -3619,8 +3628,10 @@ function openCardViewer() {
   document.getElementById('pickerTitle').textContent = 'カード検索';
   const tabs = document.getElementById('pickerTabs');
   tabs.style.display = 'flex';
-  tabs.querySelectorAll('.picker-tab').forEach(t => t.classList.remove('active'));
-  SearchPanel._lockedType = null;
+  const lastType = SearchPanel._viewerLastType || 'MS';
+  tabs.querySelectorAll('.picker-tab').forEach(t => t.classList.toggle('active', t.dataset.type === lastType));
+  SearchPanel._lockedType = lastType;
+  SearchPanel._clearFiltersUI();
   SearchPanel._restoreFilters();
   SearchPanel._updateFilterVisibility();
   document.getElementById('pickerOverlay').classList.add('open');
