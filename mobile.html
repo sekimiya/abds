@@ -3349,9 +3349,10 @@ const SearchPanel = {
         }
         if (tagsDiv.children.length > 0) el.querySelector('.thumb-card-img-wrap').appendChild(tagsDiv);
       }
-      // 長押しでブックマーク、タップでカード選択
+      // 長押しでブックマーク、タップでカード選択（コンテキストメニュー抑制）
       let _lpTimer = null, _lpFired = false;
-      el.addEventListener('touchstart', () => {
+      el.addEventListener('contextmenu', (e) => e.preventDefault());
+      el.addEventListener('touchstart', (e) => {
         _lpFired = false;
         _lpTimer = setTimeout(() => {
           _lpFired = true; _lpTimer = null;
@@ -3459,7 +3460,7 @@ function openBookmarkViewer() {
   const tabs = document.getElementById('pickerTabs');
   tabs.style.display = 'none';
   SearchPanel._lockedType = null;
-  SearchPanel._resetFilters();
+  SearchPanel.clearFilters();
   const bm = document.getElementById('filterBookmarkCards'); if (bm) bm.checked = true;
   SearchPanel._updateFilterVisibility();
   document.getElementById('pickerOverlay').classList.add('open');
