@@ -172,7 +172,13 @@ select,input{font-family:inherit}
 }
 .overview-cats{display:flex;gap:3px;margin-bottom:1px}
 .ov-cat{flex:1;display:flex;align-items:center;font-size:0.6rem;font-weight:bold;border-radius:2px;padding:1px 2px;gap:2px}
-.ov-cat .ov-cat-cost{font-size:0.55rem;color:var(--gold);font-weight:900}
+.ov-cat .ov-cat-cost{
+  font-size:0.6rem;color:var(--gold);font-weight:900;
+  min-width:1.2em;text-align:center;
+  background:rgba(0,0,0,0.3);border-radius:3px;padding:0 3px;
+  text-shadow:0 0 4px rgba(255,224,130,0.5);
+  font-variant-numeric:tabular-nums;
+}
 .ov-cat .ov-cat-label{flex:1;text-align:center}
 .ov-cat.cat-s{background:#8b1a1a;color:#ff8a80}
 .ov-cat.cat-c{background:#1a4a8b;color:#82b1ff}
@@ -811,7 +817,7 @@ select,input{font-family:inherit}
         <div class="category-filter" id="categoryFilter"></div>
         <label class="ocr-toggle"><input type="checkbox" id="filterAllSeries" checked onchange="SearchPanel.toggleAllSeries()"><span class="ocr-toggle-text">全シリーズ</span></label>
         <div class="series-filter" id="seriesFilter"></div>
-        <label class="ocr-toggle"><input type="checkbox" id="filterBookmarkCards" onchange="SearchPanel.applyFilters()"><span class="ocr-toggle-text">&#9733; ブックマーク</span></label>
+        <label class="ocr-toggle"><input type="checkbox" id="filterBookmarkCards" onchange="SearchPanel.applyFilters()"><span class="ocr-toggle-text">&#9733; ブックマーク <span style="font-size:0.6rem;color:#888;font-weight:normal">（カード長押しで登録）</span></span></label>
       </div>
     </div>
     <div class="filter-group collapsed" id="filterGroupStats">
@@ -3321,7 +3327,21 @@ const SearchPanel = {
             <div class="thumb-card-name">${escapeHtml(card.name || '')}</div>
           </div>
         </div>`;
-      if (!noOcr) el.addEventListener('click', () => this._selectCard(card));
+      // 長押しでブックマーク、タップでカード選択
+      let _lpTimer = null, _lpFired = false;
+      el.addEventListener('touchstart', () => {
+        _lpFired = false;
+        _lpTimer = setTimeout(() => {
+          _lpFired = true; _lpTimer = null;
+          const on = CardBookmark.toggle(card.number);
+          Toast.show(on ? `${card.name} をブックマーク登録` : `${card.name} のブックマークを解除`, on ? 'success' : 'info', 1500);
+          const bmEl = document.getElementById('filterBookmarkCards');
+          if (bmEl && bmEl.checked) this.applyFilters();
+        }, 500);
+      }, { passive: true });
+      el.addEventListener('touchend', () => { if (_lpTimer) clearTimeout(_lpTimer); });
+      el.addEventListener('touchmove', () => { if (_lpTimer) { clearTimeout(_lpTimer); _lpTimer = null; } });
+      if (!noOcr) el.addEventListener('click', (e) => { if (_lpFired) { _lpFired = false; e.preventDefault(); return; } this._selectCard(card); });
       grid.appendChild(el);
     }
     this._rendered = end;
