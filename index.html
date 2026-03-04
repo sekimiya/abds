@@ -4090,9 +4090,11 @@ const SearchPanel = {
     document.getElementById('searchInput').addEventListener('keydown', (e) => {
       if (e.key === 'Enter') this.applyFilters();
     });
+    document.getElementById('searchInput').addEventListener('blur', () => this.applyFilters());
     document.getElementById('searchTextInput').addEventListener('keydown', (e) => {
       if (e.key === 'Enter') this.applyFilters();
     });
+    document.getElementById('searchTextInput').addEventListener('blur', () => this.applyFilters());
     // Terrain type enables rank select
     document.getElementById('filterTerrainType').addEventListener('change', () => {
       const hasType = !!document.getElementById('filterTerrainType').value;

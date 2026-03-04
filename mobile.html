@@ -2914,8 +2914,9 @@ const SearchPanel = {
   init() {
     this._updateCategoryButtons();
     document.getElementById('searchInput').addEventListener('keydown', (e) => { if (e.key === 'Enter') this.applyFilters(); });
+    document.getElementById('searchInput').addEventListener('blur', () => this.applyFilters());
     const sti = document.getElementById('searchTextInput');
-    if (sti) sti.addEventListener('keydown', (e) => { if (e.key === 'Enter') this.applyFilters(); });
+    if (sti) { sti.addEventListener('keydown', (e) => { if (e.key === 'Enter') this.applyFilters(); }); sti.addEventListener('blur', () => this.applyFilters()); }
     document.getElementById('filterTerrainType').addEventListener('change', () => {
       const hasType = !!document.getElementById('filterTerrainType').value;
       document.getElementById('filterTerrainRank').disabled = !hasType;
