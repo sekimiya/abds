@@ -4816,8 +4816,11 @@ const SearchPanel = {
             if (card.has_eb && card.eb_text) {
               const dm = card.eb_text.match(/EBLv\.を(\d+)下げ/);
               const um = card.eb_text.match(/EBLv\.が(\d+)に上昇/);
-              if (dm) ebLabel += '<span class="eb-lv-down">↓' + dm[1] + '</span>';
-              if (um) ebLabel += '<span class="eb-lv-up">↑' + um[1] + '</span>';
+              if (dm || um) {
+                ebLabel += '<br>';
+                if (dm) ebLabel += '<span class="eb-lv-down">↓' + dm[1] + '</span>';
+                if (um) ebLabel += '<span class="eb-lv-up">↑' + um[1] + '</span>';
+              }
             }
             return '<div class="thumb-eb-badge">' + ebLabel + '</div>';
           })()}
