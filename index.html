@@ -937,6 +937,27 @@ select,input{font-family:inherit}
   border:1px solid #333;border-radius:6px;color:#fff;font-size:0.85rem;
 }
 .search-input:focus{border-color:#68efbd;outline:none}
+.link-search-wrap{position:relative}
+.link-search-clear{
+  position:absolute;right:6px;top:50%;transform:translateY(-50%);
+  background:none;border:none;color:#f44336;font-size:1.2rem;cursor:pointer;
+  padding:0 4px;line-height:1;z-index:2;
+}
+.link-search-wrap .search-input.has-value{
+  padding-right:24px;background:#1a2e24;border-color:#68efbd;
+}
+.link-suggest{
+  position:absolute;left:0;right:0;top:100%;z-index:10;
+  background:#1a1a1a;border:1px solid #3a5a4a;border-top:none;border-radius:0 0 6px 6px;
+  max-height:200px;overflow-y:auto;display:none;
+}
+.link-suggest.open{display:block}
+.link-suggest-item{
+  padding:6px 10px;cursor:pointer;border-bottom:1px solid #222;
+}
+.link-suggest-item:hover,.link-suggest-item:active{background:#1e2924}
+.link-suggest-item .lsi-name{color:#68efbd;font-size:0.85rem;font-weight:bold}
+.link-suggest-item .lsi-effect{color:#888;font-size:0.7rem;margin-top:1px}
 .search-btn{
   padding:0.4rem 0.8rem;background:#1e2924;border:1px solid #68efbd;
   border-radius:6px;color:#68efbd;font-size:0.8rem;font-weight:bold;
@@ -1586,7 +1607,11 @@ select,input{font-family:inherit}
         <div class="filter-group-body">
           <input type="text" class="search-input" id="searchInput" placeholder="名前・番号で検索..." autocomplete="off">
           <input type="text" class="search-input" id="searchTextInput" placeholder="カードテキスト検索..." autocomplete="off">
-          <input type="text" class="search-input" id="linkSearchInput" placeholder="リンクアビリティ検索..." autocomplete="off" style="border-color:#3a5a4a;color:#68efbd">
+          <div class="link-search-wrap">
+            <input type="text" class="search-input" id="linkSearchInput" placeholder="リンクアビリティ検索..." autocomplete="off" style="border-color:#3a5a4a;color:#68efbd">
+            <button class="link-search-clear" id="linkSearchClear" onclick="LinkSearch.clear()" style="display:none">&times;</button>
+            <div class="link-suggest" id="linkSuggest"></div>
+          </div>
         </div>
       </div>
 
@@ -2121,6 +2146,77 @@ const TacticsPicker = {
         ? `<img src="${imgUrl}" alt="${card.name}">`
         : `<div class="tactics-placeholder">${card.name}</div>`;
     });
+  }
+};
+
+// ================================================================
+// LinkSearch — リンクアビリティ サジェスト→確定→カードフィルタ
+// ================================================================
+const LinkSearch = {
+  _selected: null, // 確定済みリンク名
+  _init() {
+    const input = document.getElementById('linkSearchInput');
+    const suggest = document.getElementById('linkSuggest');
+    input.addEventListener('input', () => {
+      if (this._selected) { this._selected = null; this._updateInputStyle(); }
+      this._showSuggest(input.value);
+    });
+    input.addEventListener('focus', () => { if (!this._selected) this._showSuggest(input.value); });
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.link-search-wrap')) suggest.classList.remove('open');
+    });
+  },
+  _showSuggest(query) {
+    const suggest = document.getElementById('linkSuggest');
+    const q = query.trim().toLowerCase();
+    if (!q) { suggest.classList.remove('open'); return; }
+    const li = AppState.linkIndex;
+    if (!li || Object.keys(li).length === 0) { suggest.classList.remove('open'); return; }
+    const entries = Object.entries(li)
+      .filter(([name, info]) => name.toLowerCase().includes(q) || (info.effect || '').toLowerCase().includes(q))
+      .sort((a, b) => a[0].localeCompare(b[0], 'ja'))
+      .slice(0, 20);
+    if (entries.length === 0) { suggest.classList.remove('open'); return; }
+    suggest.innerHTML = entries.map(([name, info]) =>
+      `<div class="link-suggest-item" onmousedown="LinkSearch.select('${name.replace(/'/g, "\\'")}')">
+        <div class="lsi-name">${name} <span style="color:#555;font-weight:normal">(${info.required}枚)</span></div>
+        <div class="lsi-effect">${info.effect || ''}</div>
+      </div>`
+    ).join('');
+    suggest.classList.add('open');
+  },
+  select(name) {
+    this._selected = name;
+    const input = document.getElementById('linkSearchInput');
+    input.value = name;
+    document.getElementById('linkSuggest').classList.remove('open');
+    this._updateInputStyle();
+    SearchPanel.applyFilters();
+  },
+  clear() {
+    this._selected = null;
+    const input = document.getElementById('linkSearchInput');
+    input.value = '';
+    this._updateInputStyle();
+    document.getElementById('linkSuggest').classList.remove('open');
+    SearchPanel.applyFilters();
+  },
+  _updateInputStyle() {
+    const input = document.getElementById('linkSearchInput');
+    const clearBtn = document.getElementById('linkSearchClear');
+    if (this._selected) {
+      input.classList.add('has-value');
+      clearBtn.style.display = '';
+    } else {
+      input.classList.remove('has-value');
+      clearBtn.style.display = 'none';
+    }
+  },
+  getSelectedCards() {
+    if (!this._selected) return null;
+    const info = AppState.linkIndex[this._selected];
+    if (!info) return null;
+    return new Set([...(info.ms_cards || []), ...(info.pl_cards || [])]);
   }
 };
 
@@ -4115,10 +4211,7 @@ const SearchPanel = {
       if (e.key === 'Enter') this.applyFilters();
     });
     document.getElementById('searchTextInput').addEventListener('blur', () => this.applyFilters());
-    document.getElementById('linkSearchInput').addEventListener('keydown', (e) => {
-      if (e.key === 'Enter') this.applyFilters();
-    });
-    document.getElementById('linkSearchInput').addEventListener('blur', () => this.applyFilters());
+    LinkSearch._init();
     // Terrain type enables rank select
     document.getElementById('filterTerrainType').addEventListener('change', () => {
       const hasType = !!document.getElementById('filterTerrainType').value;
@@ -4154,7 +4247,7 @@ const SearchPanel = {
     const state = {
       searchInput: document.getElementById('searchInput').value,
       searchTextInput: document.getElementById('searchTextInput').value,
-      linkSearchInput: document.getElementById('linkSearchInput').value,
+      linkSelected: LinkSearch._selected || '',
       rarity: [...this._currentRarity],
       category: [...this._currentCategory],
       illustrator: document.getElementById('filterIllustrator').value,
@@ -4186,7 +4279,7 @@ const SearchPanel = {
       const s = JSON.parse(raw);
       document.getElementById('searchInput').value = s.searchInput || '';
       document.getElementById('searchTextInput').value = s.searchTextInput || '';
-      document.getElementById('linkSearchInput').value = s.linkSearchInput || '';
+      if (s.linkSelected) LinkSearch.select(s.linkSelected);
       // Rarity
       this._currentRarity = new Set(s.rarity || []);
       document.querySelectorAll('.rarity-btn').forEach(b => {
@@ -4393,7 +4486,7 @@ const SearchPanel = {
     // テキスト検索もシリーズなしで動作
     if (document.getElementById('searchTextInput').value.trim()) return true;
     // リンクアビリティ検索もシリーズなしで動作
-    if (document.getElementById('linkSearchInput').value.trim()) return true;
+    if (LinkSearch._selected) return true;
     // ブックマーク表示はシリーズなしで動作
     const bm = document.getElementById('filterBookmarkCards'); if (bm && bm.checked) return true;
     return false;
@@ -4567,18 +4660,10 @@ const SearchPanel = {
         return terms.every(t => txt.includes(t));
       });
     }
-    // Link ability search — リンク名・効果でマッチするリンクの所属カードに絞込
-    const linkQ = (document.getElementById('linkSearchInput').value || '').trim().toLowerCase();
-    if (linkQ) {
-      const li = AppState.linkIndex;
-      const linkCardSet = new Set();
-      Object.entries(li).forEach(([name, info]) => {
-        if (name.toLowerCase().includes(linkQ) || (info.effect || '').toLowerCase().includes(linkQ)) {
-          (info.ms_cards || []).forEach(n => linkCardSet.add(n));
-          (info.pl_cards || []).forEach(n => linkCardSet.add(n));
-        }
-      });
-      cards = cards.filter(c => linkCardSet.has(c.number));
+    // Link ability search — 確定済みリンクの所属カードに絞込
+    const linkCards = LinkSearch.getSelectedCards();
+    if (linkCards) {
+      cards = cards.filter(c => linkCards.has(c.number));
     }
 
     // Bookmark OR merge: bookmarked cards are added to results (union)
@@ -4626,7 +4711,7 @@ const SearchPanel = {
     document.getElementById('filterIllustrator').value = '';
     document.getElementById('searchInput').value = '';
     document.getElementById('searchTextInput').value = '';
-    document.getElementById('linkSearchInput').value = '';
+    LinkSearch.clear();
     // Toggle filters clear
     Object.values(this._t).forEach(s => s.clear());
     document.querySelectorAll('.tbtn').forEach(b => b.className = 'tbtn');

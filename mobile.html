@@ -576,6 +576,25 @@ body.light .bm-toggle-btn.active{background:#d0e8dc;border-color:var(--accent);c
   padding:6px 10px;background:var(--bg-card);border:1px solid #333;
   border-radius:6px;color:#fff;font-size:0.85rem;min-height:32px;
 }
+.link-search-wrap{position:relative}
+.link-search-clear{
+  position:absolute;right:6px;top:50%;transform:translateY(-50%);
+  background:none;border:none;color:#f44336;font-size:1.2rem;cursor:pointer;
+  padding:0 4px;line-height:1;z-index:2;
+}
+.link-search-wrap .picker-search-input.has-value{
+  padding-right:24px;background:#1a2e24;border-color:#68efbd;
+}
+.link-suggest{
+  position:absolute;left:0;right:0;top:100%;z-index:10;
+  background:#1a1a1a;border:1px solid #3a5a4a;border-top:none;border-radius:0 0 6px 6px;
+  max-height:180px;overflow-y:auto;display:none;
+}
+.link-suggest.open{display:block}
+.link-suggest-item{padding:6px 10px;cursor:pointer;border-bottom:1px solid #222}
+.link-suggest-item:active{background:#1e2924}
+.link-suggest-item .lsi-name{color:#68efbd;font-size:0.85rem;font-weight:bold}
+.link-suggest-item .lsi-effect{color:#888;font-size:0.7rem;margin-top:1px}
 .picker-search-input:focus{border-color:var(--accent);outline:none}
 .picker-filter-btn{
   padding:6px 14px;background:#222;border:1px solid #555;border-radius:6px;
@@ -898,8 +917,11 @@ body.light .bm-toggle-btn.active{background:#d0e8dc;border-color:var(--accent);c
   <div class="filter-sheet-body">
     <div style="margin-bottom:8px">
       <input type="text" class="picker-search-input" id="searchInput" placeholder="名前・番号で検索..." autocomplete="off" style="width:100%;box-sizing:border-box">
-      <input type="text" class="picker-search-input" id="linkSearchInput" placeholder="リンクアビリティ検索..." autocomplete="off" style="width:100%;box-sizing:border-box;margin-top:4px;border-color:#3a5a4a;color:#68efbd">
-      <div id="linkSearchResults" style="max-height:180px;overflow-y:auto"></div>
+      <div class="link-search-wrap" style="margin-top:4px">
+        <input type="text" class="picker-search-input" id="linkSearchInput" placeholder="リンクアビリティ検索..." autocomplete="off" style="width:100%;box-sizing:border-box;border-color:#3a5a4a;color:#68efbd">
+        <button class="link-search-clear" id="linkSearchClear" onclick="LinkSearch.clear()" style="display:none">&times;</button>
+        <div class="link-suggest" id="linkSuggest"></div>
+      </div>
     </div>
     <div class="filter-group collapsed" id="filterGroupBasic">
       <div class="filter-group-title" onclick="toggleFilterGroup('filterGroupBasic')">検索対象のシリーズを指定</div>
@@ -2037,6 +2059,70 @@ const TacticsPicker = {
 </script>
 <script>
 // ================================================================
+// LinkSearch — リンクアビリティ サジェスト→確定→カードフィルタ
+// ================================================================
+const LinkSearch = {
+  _selected: null,
+  _init() {
+    const input = document.getElementById('linkSearchInput');
+    const suggest = document.getElementById('linkSuggest');
+    input.addEventListener('input', () => {
+      if (this._selected) { this._selected = null; this._updateInputStyle(); }
+      this._showSuggest(input.value);
+    });
+    input.addEventListener('focus', () => { if (!this._selected) this._showSuggest(input.value); });
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.link-search-wrap')) suggest.classList.remove('open');
+    });
+  },
+  _showSuggest(query) {
+    const suggest = document.getElementById('linkSuggest');
+    const q = query.trim().toLowerCase();
+    if (!q) { suggest.classList.remove('open'); return; }
+    const li = AppState.linkIndex;
+    if (!li || Object.keys(li).length === 0) { suggest.classList.remove('open'); return; }
+    const entries = Object.entries(li)
+      .filter(([name, info]) => name.toLowerCase().includes(q) || (info.effect || '').toLowerCase().includes(q))
+      .sort((a, b) => a[0].localeCompare(b[0], 'ja'))
+      .slice(0, 20);
+    if (entries.length === 0) { suggest.classList.remove('open'); return; }
+    suggest.innerHTML = entries.map(([name, info]) =>
+      `<div class="link-suggest-item" onmousedown="LinkSearch.select('${name.replace(/'/g, "\\'")}')">
+        <div class="lsi-name">${name} <span style="color:#555;font-weight:normal">(${info.required}枚)</span></div>
+        <div class="lsi-effect">${info.effect || ''}</div>
+      </div>`
+    ).join('');
+    suggest.classList.add('open');
+  },
+  select(name) {
+    this._selected = name;
+    document.getElementById('linkSearchInput').value = name;
+    document.getElementById('linkSuggest').classList.remove('open');
+    this._updateInputStyle();
+    SearchPanel.applyFilters();
+  },
+  clear() {
+    this._selected = null;
+    document.getElementById('linkSearchInput').value = '';
+    this._updateInputStyle();
+    document.getElementById('linkSuggest').classList.remove('open');
+    SearchPanel.applyFilters();
+  },
+  _updateInputStyle() {
+    const input = document.getElementById('linkSearchInput');
+    const clearBtn = document.getElementById('linkSearchClear');
+    if (this._selected) { input.classList.add('has-value'); clearBtn.style.display = ''; }
+    else { input.classList.remove('has-value'); clearBtn.style.display = 'none'; }
+  },
+  getSelectedCards() {
+    if (!this._selected) return null;
+    const info = AppState.linkIndex[this._selected];
+    if (!info) return null;
+    return new Set([...(info.ms_cards || []), ...(info.pl_cards || [])]);
+  }
+};
+
+// ================================================================
 // DeckManager
 // ================================================================
 const DeckManager = {
@@ -3127,8 +3213,7 @@ const SearchPanel = {
     document.getElementById('searchInput').addEventListener('blur', () => this.applyFilters());
     const sti = document.getElementById('searchTextInput');
     if (sti) { sti.addEventListener('keydown', (e) => { if (e.key === 'Enter') this.applyFilters(); }); sti.addEventListener('blur', () => this.applyFilters()); }
-    const lsi = document.getElementById('linkSearchInput');
-    if (lsi) { lsi.addEventListener('keydown', (e) => { if (e.key === 'Enter') this.applyFilters(); }); lsi.addEventListener('blur', () => this.applyFilters()); }
+    LinkSearch._init();
     document.getElementById('filterTerrainType').addEventListener('change', () => {
       const hasType = !!document.getElementById('filterTerrainType').value;
       document.getElementById('filterTerrainRank').disabled = !hasType;
@@ -3163,7 +3248,7 @@ const SearchPanel = {
     const state = {
       searchInput: document.getElementById('searchInput').value,
       searchTextInput: (document.getElementById('searchTextInput') || {}).value || '',
-      linkSearchInput: (document.getElementById('linkSearchInput') || {}).value || '',
+      linkSelected: LinkSearch._selected || '',
       rarity: [...this._currentRarity],
       category: [...this._currentCategory],
       costMin: document.getElementById('filterCostMin').value,
@@ -3202,8 +3287,7 @@ const SearchPanel = {
       document.getElementById('searchInput').value = s.searchInput || '';
       const sti = document.getElementById('searchTextInput');
       if (sti) sti.value = s.searchTextInput || '';
-      const lsi = document.getElementById('linkSearchInput');
-      if (lsi) lsi.value = s.linkSearchInput || '';
+      if (s.linkSelected) LinkSearch.select(s.linkSelected);
       this._currentRarity = new Set(s.rarity || []);
       document.querySelectorAll('.rarity-btn').forEach(b => b.classList.toggle('active', this._currentRarity.has(b.dataset.rarity)));
       this._currentCategory = new Set(s.category || []);
@@ -3367,7 +3451,7 @@ const SearchPanel = {
     if (document.getElementById('filterIllustrator').value) return true;
     if (document.getElementById('searchInput').value.trim()) return true;
     const sti = document.getElementById('searchTextInput'); if (sti && sti.value.trim()) return true;
-    if ((document.getElementById('linkSearchInput') || {}).value?.trim()) return true;
+    if (LinkSearch._selected) return true;
     const bm = document.getElementById('filterBookmarkCards'); if (bm && bm.checked) return true;
     if (this._altArt) return true;
     for (const s of Object.values(this._t)) { if (s.size > 0) return true; }
@@ -3455,8 +3539,8 @@ const SearchPanel = {
     const sti = document.getElementById('searchTextInput');
     const qtRaw = sti ? sti.value.trim() : '';
     if (qtRaw) { const terms = qtRaw.split(/\s+/).map(t => _normalizeSearch(t)); cards = cards.filter(c => { const txt = _normalizeSearch(c.search_text || ''); return terms.every(t => txt.includes(t)); }); }
-    const linkQ = (document.getElementById('linkSearchInput').value || '').trim().toLowerCase();
-    if (linkQ) { const li = AppState.linkIndex; const linkCardSet = new Set(); Object.entries(li).forEach(([name, info]) => { if (name.toLowerCase().includes(linkQ) || (info.effect || '').toLowerCase().includes(linkQ)) { (info.ms_cards || []).forEach(n => linkCardSet.add(n)); (info.pl_cards || []).forEach(n => linkCardSet.add(n)); } }); cards = cards.filter(c => linkCardSet.has(c.number)); }
+    const linkCards = LinkSearch.getSelectedCards();
+    if (linkCards) cards = cards.filter(c => linkCards.has(c.number));
     const illustrator = document.getElementById('filterIllustrator').value;
     if (illustrator) cards = cards.filter(c => c.illustrator === illustrator);
     const bmEl = document.getElementById('filterBookmarkCards');
@@ -3492,7 +3576,7 @@ const SearchPanel = {
     const flnk2 = document.getElementById('filterLinkName2'); if (flnk2) flnk2.value = '';
     document.getElementById('searchInput').value = '';
     const sti = document.getElementById('searchTextInput'); if (sti) sti.value = '';
-    const lsi = document.getElementById('linkSearchInput'); if (lsi) lsi.value = '';
+    LinkSearch.clear();
     const bm = document.getElementById('filterBookmarkCards'); if (bm) bm.checked = false;
     Object.values(this._t).forEach(s => s.clear());
     document.querySelectorAll('.tbtn').forEach(b => b.className = 'tbtn');
