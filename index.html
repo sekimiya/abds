@@ -837,6 +837,8 @@ select,input{font-family:inherit}
 .sidebar-right .sidebar-pagination{flex-shrink:0;padding:0.3rem}
 /* Filter group (collapsible) */
 .filter-group{border:1px solid #2a2a2a;border-radius:4px;overflow:hidden}
+#filterGroupSearch{overflow:visible}
+#filterAltArt.active{background:#3a1a4a;border-color:#e0a0ff;color:#e0a0ff}
 .filter-group-title{
   display:flex;align-items:center;justify-content:space-between;
   padding:0.3rem 0.5rem;background:#1a1a1a;
@@ -1332,6 +1334,20 @@ select,input{font-family:inherit}
     <!-- LEFT PANE: FILTERS -->
     <div class="sidebar-left">
 
+      <!-- テキスト検索 -->
+      <div class="filter-group" id="filterGroupSearch">
+        <div class="filter-group-title" onclick="toggleFilterGroup('filterGroupSearch')">テキスト検索</div>
+        <div class="filter-group-body">
+          <input type="text" class="search-input" id="searchInput" placeholder="名前・番号で検索..." autocomplete="off">
+          <input type="text" class="search-input" id="searchTextInput" placeholder="カードテキスト検索..." autocomplete="off">
+          <div class="link-search-wrap">
+            <input type="text" class="search-input" id="linkSearchInput" placeholder="リンクアビリティ検索..." autocomplete="off" style="border-color:#3a5a4a;color:#68efbd">
+            <button class="link-search-clear" id="linkSearchClear" onclick="LinkSearch.clear()" style="display:none">&times;</button>
+            <div class="link-suggest" id="linkSuggest"></div>
+          </div>
+        </div>
+      </div>
+
       <!-- ========== 表示シリーズ ========== -->
       <div class="filter-group" id="filterGroupSeries">
         <div class="filter-group-title" onclick="toggleFilterGroup('filterGroupSeries')" style="color:#68efbd">表示シリーズ</div>
@@ -1364,6 +1380,7 @@ select,input{font-family:inherit}
             <button class="rarity-btn" data-rarity="PR" onclick="SearchPanel.toggleRarity('PR')">PR</button>
             <button class="rarity-btn" data-rarity="SN" onclick="SearchPanel.toggleRarity('SN')">SN</button>
             <button class="rarity-btn" data-rarity="LE" onclick="SearchPanel.toggleRarity('LE')">LE</button>
+            <button class="rarity-btn" id="filterAltArt" onclick="SearchPanel.toggleAltArt()" style="margin-left:4px;border-color:#e0a0ff;color:#e0a0ff">イラスト違い</button>
           </div>
         </div>
       </div>
@@ -1598,20 +1615,6 @@ select,input{font-family:inherit}
           <select class="filter-select" id="filterIllustrator" onchange="SearchPanel.applyFilters()" style="width:100%">
             <option value="">イラストレーター</option>
           </select>
-        </div>
-      </div>
-
-      <!-- テキスト検索 -->
-      <div class="filter-group" id="filterGroupSearch">
-        <div class="filter-group-title" onclick="toggleFilterGroup('filterGroupSearch')">テキスト検索</div>
-        <div class="filter-group-body">
-          <input type="text" class="search-input" id="searchInput" placeholder="名前・番号で検索..." autocomplete="off">
-          <input type="text" class="search-input" id="searchTextInput" placeholder="カードテキスト検索..." autocomplete="off">
-          <div class="link-search-wrap">
-            <input type="text" class="search-input" id="linkSearchInput" placeholder="リンクアビリティ検索..." autocomplete="off" style="border-color:#3a5a4a;color:#68efbd">
-            <button class="link-search-clear" id="linkSearchClear" onclick="LinkSearch.clear()" style="display:none">&times;</button>
-            <div class="link-suggest" id="linkSuggest"></div>
-          </div>
         </div>
       </div>
 
@@ -4193,6 +4196,7 @@ const SearchPanel = {
   _currentRarity: new Set(),
   _currentCategory: new Set(),
   _selectedSeries: new Set(),
+  _altArt: false,
   _filteredCards: [],
   _page: 0,
   _perPage: 60,
@@ -4250,6 +4254,7 @@ const SearchPanel = {
       linkSelected: LinkSearch._selected || '',
       rarity: [...this._currentRarity],
       category: [...this._currentCategory],
+      altArt: this._altArt,
       illustrator: document.getElementById('filterIllustrator').value,
       costMin: document.getElementById('filterCostMin').value,
       costMax: document.getElementById('filterCostMax').value,
@@ -4280,6 +4285,9 @@ const SearchPanel = {
       document.getElementById('searchInput').value = s.searchInput || '';
       document.getElementById('searchTextInput').value = s.searchTextInput || '';
       if (s.linkSelected) LinkSearch.select(s.linkSelected);
+      // AltArt
+      this._altArt = !!s.altArt;
+      document.getElementById('filterAltArt').classList.toggle('active', this._altArt);
       // Rarity
       this._currentRarity = new Set(s.rarity || []);
       document.querySelectorAll('.rarity-btn').forEach(b => {
@@ -4432,6 +4440,12 @@ const SearchPanel = {
     this.applyFilters();
   },
 
+  toggleAltArt() {
+    this._altArt = !this._altArt;
+    document.getElementById('filterAltArt').classList.toggle('active', this._altArt);
+    this.applyFilters();
+  },
+
   setCategory(cat) {
     if (this._currentCategory.has(cat)) {
       this._currentCategory.delete(cat);
@@ -4487,6 +4501,8 @@ const SearchPanel = {
     if (document.getElementById('searchTextInput').value.trim()) return true;
     // リンクアビリティ検索もシリーズなしで動作
     if (LinkSearch._selected) return true;
+    // イラスト違いはシリーズなしで動作
+    if (this._altArt) return true;
     // ブックマーク表示はシリーズなしで動作
     const bm = document.getElementById('filterBookmarkCards'); if (bm && bm.checked) return true;
     return false;
@@ -4665,6 +4681,10 @@ const SearchPanel = {
     if (linkCards) {
       cards = cards.filter(c => linkCards.has(c.number));
     }
+    // イラスト違いフィルタ
+    if (this._altArt) {
+      cards = cards.filter(c => c.number.includes('_'));
+    }
 
     // Bookmark OR merge: bookmarked cards are added to results (union)
     if (document.getElementById('filterBookmarkCards').checked) {
@@ -4717,6 +4737,8 @@ const SearchPanel = {
     document.querySelectorAll('.tbtn').forEach(b => b.className = 'tbtn');
     this._currentRarity = new Set();
     this._currentCategory = new Set();
+    this._altArt = false;
+    document.getElementById('filterAltArt').classList.remove('active');
     document.querySelectorAll('.rarity-btn').forEach(b => b.classList.remove('active'));
     document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
     localStorage.removeItem('abds_search_filters');
