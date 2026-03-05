@@ -161,6 +161,21 @@ select,input{font-family:inherit}
 .link-chip.compact{padding:2px 8px;font-size:0.85rem;opacity:0.6}
 .link-chip.compact .link-chip-name{font-size:0.85rem}
 .link-chip.compact .link-chip-count{font-size:0.75rem}
+.link-search-btn{
+  background:#1a2e24;border:1px solid #3a5a4a;border-radius:4px;
+  color:#68efbd;font-size:1rem;cursor:pointer;padding:4px 8px;
+  flex-shrink:0;transition:all 0.15s;
+}
+.link-search-btn:hover{background:#2a4a3a;border-color:#68efbd}
+.link-search-result{
+  background:#1a2e24;border:1px solid #3a5a4a;border-radius:6px;
+  padding:0.6rem;margin-bottom:0.5rem;cursor:pointer;transition:all 0.15s;
+}
+.link-search-result:hover{border-color:#68efbd;background:#224a38}
+.link-search-result .ls-name{color:#68efbd;font-weight:bold;font-size:0.95rem}
+.link-search-result .ls-effect{color:#aaa;font-size:0.8rem;margin-top:0.2rem}
+.link-search-result .ls-condition{color:#888;font-size:0.75rem;margin-top:0.15rem}
+.link-search-result .ls-cards{color:#555;font-size:0.7rem;margin-top:0.3rem;word-break:break-all}
 .tactics-inline{
   display:flex;gap:6px;flex-shrink:0;
 }
@@ -1270,6 +1285,17 @@ select,input{font-family:inherit}
     </button>
   </div>
   <div class="link-bar" id="linkBar"></div>
+  <button class="link-search-btn" onclick="LinkSearch.open()" title="リンクアビリティ検索">&#128269;</button>
+</div>
+
+<!-- Link Search Modal -->
+<div class="modal-overlay" id="linkSearchModal">
+  <div class="modal-content" style="max-width:700px">
+    <button class="modal-close" onclick="LinkSearch.close()">&times;</button>
+    <h3 style="color:#68efbd;margin-bottom:0.8rem">リンクアビリティ検索</h3>
+    <input type="text" id="linkSearchInput" class="search-input" placeholder="リンク名・効果で検索..." autocomplete="off" style="width:100%;margin-bottom:0.8rem;box-sizing:border-box">
+    <div id="linkSearchResults" style="max-height:60vh;overflow-y:auto"></div>
+  </div>
 </div>
 
 <!-- Tactics Picker Modal -->
@@ -2049,17 +2075,18 @@ const TacticsPicker = {
     }
 
     const clearBtn = currentId ? `<div class="tactics-picker-card" onclick="TacticsPicker._select(null)" style="justify-content:center;color:#f44336;font-weight:bold;font-size:1.1rem;border-color:#f44336">選択解除</div>` : '';
-    body.innerHTML = `<div class="tactics-picker-grid">${clearBtn}${cards.map(card => `
+    body.innerHTML = `<div class="tactics-picker-grid">${clearBtn}${cards.map(card => {
+      const imgUrl = ImageCache.resolveTacticsUrl(card.thumbnail_url);
+      return `
       <div class="tactics-picker-card${card.id === currentId ? ' selected' : ''}" onclick="TacticsPicker._select('${card.id}')">
-        <img src="${card.thumbnail_url}" alt="${card.name}"
-             onerror="this.onerror=null;this.style.display='none'">
+        ${imgUrl ? `<img src="${imgUrl}" alt="${card.name}">` : ''}
         <div class="tp-info">
           <div class="tp-name">${card.name}</div>
           <div class="tp-effect">${card.effect}</div>
           ${card.condition ? `<div class="tp-condition">${card.condition}</div>` : ''}
         </div>
-      </div>
-    `).join('')}</div>`;
+      </div>`;
+    }).join('')}</div>`;
 
     document.getElementById('tacticsPickerModal').classList.add('open');
   },
@@ -2113,13 +2140,69 @@ const TacticsPicker = {
         return;
       }
 
+      const imgUrl = ImageCache.resolveTacticsUrl(card.thumbnail_url);
       btn.className = 'tactics-btn has-card';
-      btn.innerHTML = `
-        <img src="${card.thumbnail_url}" alt="${card.name}" onerror="this.style.display='none'">
-      `;
+      btn.innerHTML = imgUrl
+        ? `<img src="${imgUrl}" alt="${card.name}">`
+        : `<div class="tactics-placeholder">${card.name}</div>`;
     });
   }
 };
+
+// ================================================================
+// LinkSearch — リンクアビリティ検索
+// ================================================================
+const LinkSearch = {
+  open() {
+    const modal = document.getElementById('linkSearchModal');
+    const input = document.getElementById('linkSearchInput');
+    modal.classList.add('open');
+    input.value = '';
+    input.focus();
+    this._render('');
+  },
+  close() {
+    document.getElementById('linkSearchModal').classList.remove('open');
+  },
+  _render(query) {
+    const container = document.getElementById('linkSearchResults');
+    const li = AppState.linkIndex;
+    if (!li || Object.keys(li).length === 0) {
+      container.innerHTML = '<p style="color:#888">リンクデータを読み込み中...</p>';
+      return;
+    }
+    const q = query.trim().toLowerCase();
+    const entries = Object.entries(li)
+      .filter(([name, info]) => {
+        if (!q) return true;
+        return name.toLowerCase().includes(q) || (info.effect || '').toLowerCase().includes(q);
+      })
+      .sort((a, b) => a[0].localeCompare(b[0], 'ja'));
+
+    if (entries.length === 0) {
+      container.innerHTML = '<p style="color:#888">該当なし</p>';
+      return;
+    }
+    container.innerHTML = entries.map(([name, info]) => {
+      const cards = [...(info.ms_cards || []), ...(info.pl_cards || [])];
+      return `<div class="link-search-result" onclick="LinkSearch._copy('${name.replace(/'/g, "\\'")}')">
+        <div class="ls-name">${name}</div>
+        <div class="ls-effect">${info.effect || ''}</div>
+        <div class="ls-condition">${info.condition || ''} (必要: ${info.required}枚)</div>
+        <div class="ls-cards">${cards.join(', ')}</div>
+      </div>`;
+    }).join('');
+  },
+  _copy(name) {
+    navigator.clipboard.writeText(name).then(() => {
+      Toast.show(`「${name}」をコピーしました`, 'success', 1500);
+    }).catch(() => {});
+  }
+};
+document.addEventListener('DOMContentLoaded', () => {
+  const input = document.getElementById('linkSearchInput');
+  if (input) input.addEventListener('input', () => LinkSearch._render(input.value));
+});
 
 // ================================================================
 // DeckManager
@@ -2734,7 +2817,7 @@ const ImageCache = {
       const keys = await cache.keys();
       keys.forEach(req => {
         const url = new URL(req.url);
-        const m = url.pathname.match(/\/([A-Za-z0-9_\-]+(?:_b)?)\.jpg/);
+        const m = url.pathname.match(/\/([A-Za-z0-9_\-]+(?:_b)?)\.(jpg|png)/);
         if (m) this._cachedKeys.add(m[1]);
       });
       this._updateCount(this._cachedKeys.size);
@@ -2751,6 +2834,14 @@ const ImageCache = {
     if (this._cachedKeys.has(key)) {
       return this._imgUrl(cardNumber, side);
     }
+    return null;
+  },
+
+  // --- resolveTacticsUrl: 作戦カード画像もキャッシュ済みのみ表示 ---
+  resolveTacticsUrl(url) {
+    if (!url) return null;
+    const m = url.match(/\/([A-Za-z0-9_\-]+)\.(jpg|png)$/);
+    if (m && this._cachedKeys.has(m[1])) return url;
     return null;
   },
 
@@ -2839,6 +2930,15 @@ const ImageCache = {
       if (!num) return;
       items.push({ key: num, url: this._imgUrl(num, 'front') });
       items.push({ key: `${num}_b`, url: this._imgUrl(num, 'back') });
+    });
+    // 作戦カード画像も追加
+    ['main', 'sub'].forEach(type => {
+      (AppState.tacticsCards[type] || []).forEach(c => {
+        if (c.thumbnail_url) {
+          const m = c.thumbnail_url.match(/\/([A-Za-z0-9_\-]+)\.(jpg|png)$/);
+          if (m) items.push({ key: m[1], url: c.thumbnail_url });
+        }
+      });
     });
     if (!items.length) {
       Toast.show('カードデータがありません', 'error');

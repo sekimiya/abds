@@ -235,6 +235,21 @@ body.light .bm-toggle-btn.active{background:#d0e8dc;border-color:var(--accent);c
   flex:1;min-width:0;flex-wrap:wrap;
 }
 .link-chips:empty{display:none}
+.link-search-btn{
+  background:#1a2e24;border:1px solid #3a5a4a;border-radius:4px;
+  color:#68efbd;font-size:0.9rem;cursor:pointer;padding:3px 6px;
+  flex-shrink:0;
+}
+.link-search-btn:hover{background:#2a4a3a;border-color:#68efbd}
+.link-search-result{
+  background:#1a2e24;border:1px solid #3a5a4a;border-radius:6px;
+  padding:0.5rem;margin-bottom:0.4rem;cursor:pointer;
+}
+.link-search-result:active{border-color:#68efbd;background:#224a38}
+.link-search-result .ls-name{color:#68efbd;font-weight:bold;font-size:0.9rem}
+.link-search-result .ls-effect{color:#aaa;font-size:0.75rem;margin-top:0.15rem}
+.link-search-result .ls-condition{color:#888;font-size:0.7rem;margin-top:0.1rem}
+.link-search-result .ls-cards{color:#555;font-size:0.65rem;margin-top:0.2rem;word-break:break-all}
 .link-chip{
   display:inline-flex;align-items:center;gap:3px;
   padding:2px 8px;border-radius:10px;font-size:0.65rem;
@@ -857,6 +872,7 @@ body.light .bm-toggle-btn.active{background:#d0e8dc;border-color:var(--accent);c
     <img class="tactics-thumb-img" id="tacticsImgSub" src="" alt="サブ作戦" style="display:none">
   </div>
   <div class="link-chips" id="linkBar"></div>
+  <button class="link-search-btn" onclick="LinkSearch.open()" title="リンク検索">&#128269;</button>
 </div>
 
 <!-- OVERVIEW STRIP -->
@@ -1131,6 +1147,16 @@ body.light .bm-toggle-btn.active{background:#d0e8dc;border-color:var(--accent);c
 
 <!-- TOAST -->
 <div class="toast-container" id="toastContainer"></div>
+
+<!-- LINK SEARCH MODAL -->
+<div class="modal-overlay" id="linkSearchModal">
+  <div class="modal-content" style="max-width:400px">
+    <button class="modal-close" onclick="LinkSearch.close()">&times;</button>
+    <h3 style="color:#68efbd;margin-bottom:0.6rem;font-size:1rem">リンクアビリティ検索</h3>
+    <input type="text" id="linkSearchInput" class="search-input" placeholder="リンク名・効果で検索..." autocomplete="off" style="width:100%;margin-bottom:0.6rem;box-sizing:border-box">
+    <div id="linkSearchResults" style="max-height:55vh;overflow-y:auto"></div>
+  </div>
+</div>
 
 <!-- TACTICS PICKER MODAL -->
 <div class="modal-overlay" id="tacticsPickerModal">
@@ -1742,7 +1768,7 @@ const ImageCache = {
       const keys = await cache.keys();
       keys.forEach(req => {
         const url = new URL(req.url);
-        const m = url.pathname.match(/\/([A-Za-z0-9_\-]+(?:_b)?)\.jpg/);
+        const m = url.pathname.match(/\/([A-Za-z0-9_\-]+(?:_b)?)\.(jpg|png)/);
         if (m) this._cachedKeys.add(m[1]);
       });
       this._updateCount(this._cachedKeys.size);
@@ -1758,6 +1784,13 @@ const ImageCache = {
     if (this._cachedKeys.has(key)) {
       return this._imgUrl(cardNumber, side);
     }
+    return null;
+  },
+
+  resolveTacticsUrl(url) {
+    if (!url) return null;
+    const m = url.match(/\/([A-Za-z0-9_\-]+)\.(jpg|png)$/);
+    if (m && this._cachedKeys.has(m[1])) return url;
     return null;
   },
 
@@ -1871,6 +1904,14 @@ const ImageCache = {
       items.push({ key: num, url: this._imgUrl(num, 'front') });
       items.push({ key: `${num}_b`, url: this._imgUrl(num, 'back') });
     });
+    ['main', 'sub'].forEach(type => {
+      (AppState.tacticsCards[type] || []).forEach(c => {
+        if (c.thumbnail_url) {
+          const m = c.thumbnail_url.match(/\/([A-Za-z0-9_\-]+)\.(jpg|png)$/);
+          if (m) items.push({ key: m[1], url: c.thumbnail_url });
+        }
+      });
+    });
     if (!items.length) {
       Toast.show('カードデータがありません', 'error');
       this._downloading = false;
@@ -1957,16 +1998,18 @@ const TacticsPicker = {
       document.getElementById('tacticsPickerModal').classList.add('open');
       return;
     }
-    body.innerHTML = `<div class="tactics-picker-grid">${cards.map(card => `
+    body.innerHTML = `<div class="tactics-picker-grid">${cards.map(card => {
+      const imgUrl = ImageCache.resolveTacticsUrl(card.thumbnail_url);
+      return `
       <div class="tactics-picker-card${card.id === currentId ? ' selected' : ''}" onclick="TacticsPicker._select('${card.id}')">
-        <img src="${card.thumbnail_url}" alt="${card.name}" onerror="this.onerror=null;this.style.display='none'">
+        ${imgUrl ? `<img src="${imgUrl}" alt="${card.name}">` : ''}
         <div class="tp-info">
           <div class="tp-name">${card.name}</div>
           <div class="tp-effect">${card.effect}</div>
           ${card.condition ? `<div class="tp-condition">${card.condition}</div>` : ''}
         </div>
-      </div>
-    `).join('')}</div>`;
+      </div>`;
+    }).join('')}</div>`;
     document.getElementById('tacticsPickerModal').classList.add('open');
   },
   _select(id) {
@@ -2001,8 +2044,9 @@ const TacticsPicker = {
       const id = type === 'main' ? AppState.tacticsMain : AppState.tacticsSub;
       const cards = type === 'main' ? AppState.tacticsCards.main : AppState.tacticsCards.sub;
       const card = id ? cards.find(c => c.id === id) : null;
-      if (card) {
-        img.src = card.thumbnail_url;
+      const imgUrl = card ? ImageCache.resolveTacticsUrl(card.thumbnail_url) : null;
+      if (card && imgUrl) {
+        img.src = imgUrl;
         img.style.display = '';
         btn.classList.add('has-card');
       } else {
@@ -2013,6 +2057,57 @@ const TacticsPicker = {
     });
   }
 };
+
+// ================================================================
+// LinkSearch — リンクアビリティ検索
+// ================================================================
+const LinkSearch = {
+  open() {
+    const modal = document.getElementById('linkSearchModal');
+    const input = document.getElementById('linkSearchInput');
+    modal.classList.add('open');
+    input.value = '';
+    input.focus();
+    this._render('');
+  },
+  close() {
+    document.getElementById('linkSearchModal').classList.remove('open');
+  },
+  _render(query) {
+    const container = document.getElementById('linkSearchResults');
+    const li = AppState.linkIndex;
+    if (!li || Object.keys(li).length === 0) {
+      container.innerHTML = '<p style="color:#888">リンクデータを読み込み中...</p>';
+      return;
+    }
+    const q = query.trim().toLowerCase();
+    const entries = Object.entries(li)
+      .filter(([name, info]) => {
+        if (!q) return true;
+        return name.toLowerCase().includes(q) || (info.effect || '').toLowerCase().includes(q);
+      })
+      .sort((a, b) => a[0].localeCompare(b[0], 'ja'));
+    if (entries.length === 0) {
+      container.innerHTML = '<p style="color:#888">該当なし</p>';
+      return;
+    }
+    container.innerHTML = entries.map(([name, info]) => {
+      const cards = [...(info.ms_cards || []), ...(info.pl_cards || [])];
+      return `<div class="link-search-result" onclick="LinkSearch._copy('${name.replace(/'/g, "\\'")}')">
+        <div class="ls-name">${name}</div>
+        <div class="ls-effect">${info.effect || ''}</div>
+        <div class="ls-condition">${info.condition || ''} (必要: ${info.required}枚)</div>
+        <div class="ls-cards">${cards.join(', ')}</div>
+      </div>`;
+    }).join('');
+  },
+  _copy(name) {
+    navigator.clipboard.writeText(name).then(() => {
+      Toast.show(`「${name}」をコピー`, 'success', 1500);
+    }).catch(() => {});
+  }
+};
+document.getElementById('linkSearchInput')?.addEventListener('input', function() { LinkSearch._render(this.value); });
 </script>
 <script>
 // ================================================================
