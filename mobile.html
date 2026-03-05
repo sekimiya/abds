@@ -638,7 +638,8 @@ body.light .bm-toggle-btn.active{background:#d0e8dc;border-color:var(--accent);c
 .thumb-ab-badge{position:absolute;bottom:28px;left:1px;background:rgba(179,136,255,0.9);color:#fff;font-size:0.4rem;font-weight:bold;padding:0 2px;border-radius:2px;line-height:1.3}
 .thumb-card-info{position:absolute;bottom:0;left:0;right:0;padding:2px 3px;background:linear-gradient(transparent,rgba(0,0,0,0.85));display:flex;flex-direction:column;gap:0px}
 .thumb-card-number{color:var(--accent);font-size:0.5rem;white-space:nowrap;overflow:hidden}
-.thumb-card-name{color:#eee;font-size:0.55rem;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;letter-spacing:0.3px;text-shadow:0 1px 2px rgba(0,0,0,0.8)}
+.thumb-card-name{color:#eee;font-size:0.55rem;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;letter-spacing:0.3px;text-shadow:0 1px 2px rgba(0,0,0,0.8);display:flex;align-items:center;gap:2px}
+.thumb-card-name .thumb-inline-rarity{font-size:0.45rem;font-weight:bold;padding:0 2px;border-radius:2px;background:rgba(0,0,0,0.5);flex-shrink:0;line-height:1.3}
 .thumb-card.no-ocr{opacity:0.45;pointer-events:none}
 .thumb-no-ocr-badge{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,0.8);color:#f44336;font-size:0.65rem;font-weight:bold;padding:2px 6px;border-radius:3px;border:1px solid #f44336;white-space:nowrap}
 .thumb-card-sub{color:#888;font-size:0.45rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -3652,7 +3653,7 @@ const SearchPanel = {
           <div class="thumb-detail-btn" onclick="event.stopPropagation();showCardModal('${card.number}')">詳細</div>
           <div class="thumb-card-info">
             <div class="thumb-card-number">${card.number}</div>
-            <div class="thumb-card-name">${escapeHtml(card.name || '')}</div>
+            <div class="thumb-card-name"><span style="overflow:hidden;text-overflow:ellipsis">${escapeHtml(card.name || '')}</span>${card.rarity ? `<span class="thumb-inline-rarity" style="color:${({'M':'#82b1ff','C':'#aaa','R':'#ffe082','SR':'#ff8a80','U':'#ce93d8','P':'#68efbd','PR':'#f48fb1','LR':'#ffcc80','LE':'#ff8a80','CP':'#80deea'})[card.rarity]||'#888'}">${escapeHtml(card.rarity)}</span>` : ''}</div>
           </div>
         </div>`;
       // リンクアビリティタグをオーバーレイ
