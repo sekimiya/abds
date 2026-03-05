@@ -1084,8 +1084,10 @@ select,input{font-family:inherit}
   position:absolute;bottom:2px;right:2px;
   background:rgba(255,152,0,0.9);color:#fff;
   font-size:0.55rem;font-weight:bold;padding:0 3px;border-radius:2px;
-  line-height:1.4;
+  line-height:1.4;white-space:nowrap;
 }
+.thumb-eb-badge .eb-lv-down{color:#fff}
+.thumb-eb-badge .eb-lv-up{color:#a5d6a7}
 .thumb-ab-badge{
   position:absolute;bottom:12px;left:2px;
   background:rgba(179,136,255,0.9);color:#fff;
@@ -4808,7 +4810,17 @@ const SearchPanel = {
           </div>
           ${noOcr ? '<div class="thumb-no-ocr-badge">未OCR</div>' : ''}
           ${card.sq_rush_effect || card.sqsp_text ? '<div class="thumb-sq-badge">SQ</div>' : ''}
-          ${card.has_eb || card.has_eb_skill || card.has_eb_link ? '<div class="thumb-eb-badge">EB</div>' : ''}
+          ${(()=>{
+            if (!card.has_eb && !card.has_eb_skill && !card.has_eb_link) return '';
+            let ebLabel = card.eb_type === 'sp' ? 'EBSP' : 'EB';
+            if (card.has_eb && card.eb_text) {
+              const dm = card.eb_text.match(/EBLv\.を(\d+)下げ/);
+              const um = card.eb_text.match(/EBLv\.が(\d+)に上昇/);
+              if (dm) ebLabel += '<span class="eb-lv-down">↓' + dm[1] + '</span>';
+              if (um) ebLabel += '<span class="eb-lv-up">↑' + um[1] + '</span>';
+            }
+            return '<div class="thumb-eb-badge">' + ebLabel + '</div>';
+          })()}
           ${card.has_ab_link ? '<div class="thumb-ab-badge">AB</div>' : ''}
           ${overlayHtml}
           <div class="thumb-detail-btn" onclick="event.stopPropagation();showCardModal('${card.number}')">詳細</div>
