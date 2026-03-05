@@ -4828,7 +4828,7 @@ const SearchPanel = {
     }
   },
 
-  _selectCard(card) {
+  async _selectCard(card) {
     const slot = AppState.activeSlot;
     if (slot === null) {
       // Auto-assign to first empty slot of matching type
@@ -4836,7 +4836,7 @@ const SearchPanel = {
       const range = type === 'MS' ? [0,1,2,3,4] : [5,6,7,8,9];
       const emptySlot = range.find(i => !AppState.deck[i]);
       if (emptySlot !== undefined) {
-        DeckManager.setCard(emptySlot, card.number);
+        await DeckManager.setCard(emptySlot, card.number);
       } else {
         Toast.show(`${type}の空きスロットがありません`, 'info');
       }
@@ -4849,7 +4849,7 @@ const SearchPanel = {
       Toast.show(`${slotType}スロットに${card.type}カードはセット不可`, 'error');
       return;
     }
-    DeckManager.setCard(slot, card.number);
+    await DeckManager.setCard(slot, card.number);
     closeCardPicker();
     UIRenderer.setActiveSlot(null);
   }
