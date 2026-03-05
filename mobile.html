@@ -235,12 +235,6 @@ body.light .bm-toggle-btn.active{background:#d0e8dc;border-color:var(--accent);c
   flex:1;min-width:0;flex-wrap:wrap;
 }
 .link-chips:empty{display:none}
-.link-search-btn{
-  background:#1a2e24;border:1px solid #3a5a4a;border-radius:4px;
-  color:#68efbd;font-size:0.9rem;cursor:pointer;padding:3px 6px;
-  flex-shrink:0;
-}
-.link-search-btn:hover{background:#2a4a3a;border-color:#68efbd}
 .link-search-result{
   background:#1a2e24;border:1px solid #3a5a4a;border-radius:6px;
   padding:0.5rem;margin-bottom:0.4rem;cursor:pointer;
@@ -872,7 +866,6 @@ body.light .bm-toggle-btn.active{background:#d0e8dc;border-color:var(--accent);c
     <img class="tactics-thumb-img" id="tacticsImgSub" src="" alt="サブ作戦" style="display:none">
   </div>
   <div class="link-chips" id="linkBar"></div>
-  <button class="link-search-btn" onclick="LinkSearch.open()" title="リンク検索">&#128269;</button>
 </div>
 
 <!-- OVERVIEW STRIP -->
@@ -914,6 +907,8 @@ body.light .bm-toggle-btn.active{background:#d0e8dc;border-color:var(--accent);c
   <div class="filter-sheet-body">
     <div style="margin-bottom:8px">
       <input type="text" class="picker-search-input" id="searchInput" placeholder="名前・番号で検索..." autocomplete="off" style="width:100%;box-sizing:border-box">
+      <input type="text" class="picker-search-input" id="linkSearchInput" placeholder="リンクアビリティ検索..." autocomplete="off" style="width:100%;box-sizing:border-box;margin-top:4px;border-color:#3a5a4a;color:#68efbd">
+      <div id="linkSearchResults" style="max-height:180px;overflow-y:auto"></div>
     </div>
     <div class="filter-group collapsed" id="filterGroupBasic">
       <div class="filter-group-title" onclick="toggleFilterGroup('filterGroupBasic')">検索対象のシリーズを指定</div>
@@ -1147,16 +1142,6 @@ body.light .bm-toggle-btn.active{background:#d0e8dc;border-color:var(--accent);c
 
 <!-- TOAST -->
 <div class="toast-container" id="toastContainer"></div>
-
-<!-- LINK SEARCH MODAL -->
-<div class="modal-overlay" id="linkSearchModal">
-  <div class="modal-content" style="max-width:400px">
-    <button class="modal-close" onclick="LinkSearch.close()">&times;</button>
-    <h3 style="color:#68efbd;margin-bottom:0.6rem;font-size:1rem">リンクアビリティ検索</h3>
-    <input type="text" id="linkSearchInput" class="search-input" placeholder="リンク名・効果で検索..." autocomplete="off" style="width:100%;margin-bottom:0.6rem;box-sizing:border-box">
-    <div id="linkSearchResults" style="max-height:55vh;overflow-y:auto"></div>
-  </div>
-</div>
 
 <!-- TACTICS PICKER MODAL -->
 <div class="modal-overlay" id="tacticsPickerModal">
@@ -2059,33 +2044,20 @@ const TacticsPicker = {
 };
 
 // ================================================================
-// LinkSearch — リンクアビリティ検索
+// LinkSearch — リンクアビリティ検索（フィルタ内）
 // ================================================================
 const LinkSearch = {
-  open() {
-    const modal = document.getElementById('linkSearchModal');
-    const input = document.getElementById('linkSearchInput');
-    modal.classList.add('open');
-    input.value = '';
-    input.focus();
-    this._render('');
-  },
-  close() {
-    document.getElementById('linkSearchModal').classList.remove('open');
-  },
   _render(query) {
     const container = document.getElementById('linkSearchResults');
     const li = AppState.linkIndex;
+    const q = query.trim().toLowerCase();
+    if (!q) { container.innerHTML = ''; return; }
     if (!li || Object.keys(li).length === 0) {
       container.innerHTML = '<p style="color:#888">リンクデータを読み込み中...</p>';
       return;
     }
-    const q = query.trim().toLowerCase();
     const entries = Object.entries(li)
-      .filter(([name, info]) => {
-        if (!q) return true;
-        return name.toLowerCase().includes(q) || (info.effect || '').toLowerCase().includes(q);
-      })
+      .filter(([name, info]) => name.toLowerCase().includes(q) || (info.effect || '').toLowerCase().includes(q))
       .sort((a, b) => a[0].localeCompare(b[0], 'ja'));
     if (entries.length === 0) {
       container.innerHTML = '<p style="color:#888">該当なし</p>';
@@ -2093,18 +2065,13 @@ const LinkSearch = {
     }
     container.innerHTML = entries.map(([name, info]) => {
       const cards = [...(info.ms_cards || []), ...(info.pl_cards || [])];
-      return `<div class="link-search-result" onclick="LinkSearch._copy('${name.replace(/'/g, "\\'")}')">
+      return `<div class="link-search-result">
         <div class="ls-name">${name}</div>
         <div class="ls-effect">${info.effect || ''}</div>
         <div class="ls-condition">${info.condition || ''} (必要: ${info.required}枚)</div>
         <div class="ls-cards">${cards.join(', ')}</div>
       </div>`;
     }).join('');
-  },
-  _copy(name) {
-    navigator.clipboard.writeText(name).then(() => {
-      Toast.show(`「${name}」をコピー`, 'success', 1500);
-    }).catch(() => {});
   }
 };
 document.getElementById('linkSearchInput')?.addEventListener('input', function() { LinkSearch._render(this.value); });

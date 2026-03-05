@@ -161,12 +161,6 @@ select,input{font-family:inherit}
 .link-chip.compact{padding:2px 8px;font-size:0.85rem;opacity:0.6}
 .link-chip.compact .link-chip-name{font-size:0.85rem}
 .link-chip.compact .link-chip-count{font-size:0.75rem}
-.link-search-btn{
-  background:#1a2e24;border:1px solid #3a5a4a;border-radius:4px;
-  color:#68efbd;font-size:1rem;cursor:pointer;padding:4px 8px;
-  flex-shrink:0;transition:all 0.15s;
-}
-.link-search-btn:hover{background:#2a4a3a;border-color:#68efbd}
 .link-search-result{
   background:#1a2e24;border:1px solid #3a5a4a;border-radius:6px;
   padding:0.6rem;margin-bottom:0.5rem;cursor:pointer;transition:all 0.15s;
@@ -1285,17 +1279,6 @@ select,input{font-family:inherit}
     </button>
   </div>
   <div class="link-bar" id="linkBar"></div>
-  <button class="link-search-btn" onclick="LinkSearch.open()" title="リンクアビリティ検索">&#128269;</button>
-</div>
-
-<!-- Link Search Modal -->
-<div class="modal-overlay" id="linkSearchModal">
-  <div class="modal-content" style="max-width:700px">
-    <button class="modal-close" onclick="LinkSearch.close()">&times;</button>
-    <h3 style="color:#68efbd;margin-bottom:0.8rem">リンクアビリティ検索</h3>
-    <input type="text" id="linkSearchInput" class="search-input" placeholder="リンク名・効果で検索..." autocomplete="off" style="width:100%;margin-bottom:0.8rem;box-sizing:border-box">
-    <div id="linkSearchResults" style="max-height:60vh;overflow-y:auto"></div>
-  </div>
 </div>
 
 <!-- Tactics Picker Modal -->
@@ -1612,6 +1595,8 @@ select,input{font-family:inherit}
         <div class="filter-group-body">
           <input type="text" class="search-input" id="searchInput" placeholder="名前・番号で検索..." autocomplete="off">
           <input type="text" class="search-input" id="searchTextInput" placeholder="カードテキスト検索..." autocomplete="off">
+          <input type="text" class="search-input" id="linkSearchInput" placeholder="リンクアビリティ検索..." autocomplete="off" style="border-color:#3a5a4a;color:#68efbd">
+          <div id="linkSearchResults" style="max-height:200px;overflow-y:auto"></div>
         </div>
       </div>
 
@@ -2150,53 +2135,34 @@ const TacticsPicker = {
 };
 
 // ================================================================
-// LinkSearch — リンクアビリティ検索
+// LinkSearch — リンクアビリティ検索（サイドバー内）
 // ================================================================
 const LinkSearch = {
-  open() {
-    const modal = document.getElementById('linkSearchModal');
-    const input = document.getElementById('linkSearchInput');
-    modal.classList.add('open');
-    input.value = '';
-    input.focus();
-    this._render('');
-  },
-  close() {
-    document.getElementById('linkSearchModal').classList.remove('open');
-  },
   _render(query) {
     const container = document.getElementById('linkSearchResults');
     const li = AppState.linkIndex;
+    const q = query.trim().toLowerCase();
+    if (!q) { container.innerHTML = ''; return; }
     if (!li || Object.keys(li).length === 0) {
       container.innerHTML = '<p style="color:#888">リンクデータを読み込み中...</p>';
       return;
     }
-    const q = query.trim().toLowerCase();
     const entries = Object.entries(li)
-      .filter(([name, info]) => {
-        if (!q) return true;
-        return name.toLowerCase().includes(q) || (info.effect || '').toLowerCase().includes(q);
-      })
+      .filter(([name, info]) => name.toLowerCase().includes(q) || (info.effect || '').toLowerCase().includes(q))
       .sort((a, b) => a[0].localeCompare(b[0], 'ja'));
-
     if (entries.length === 0) {
       container.innerHTML = '<p style="color:#888">該当なし</p>';
       return;
     }
     container.innerHTML = entries.map(([name, info]) => {
       const cards = [...(info.ms_cards || []), ...(info.pl_cards || [])];
-      return `<div class="link-search-result" onclick="LinkSearch._copy('${name.replace(/'/g, "\\'")}')">
+      return `<div class="link-search-result">
         <div class="ls-name">${name}</div>
         <div class="ls-effect">${info.effect || ''}</div>
         <div class="ls-condition">${info.condition || ''} (必要: ${info.required}枚)</div>
         <div class="ls-cards">${cards.join(', ')}</div>
       </div>`;
     }).join('');
-  },
-  _copy(name) {
-    navigator.clipboard.writeText(name).then(() => {
-      Toast.show(`「${name}」をコピーしました`, 'success', 1500);
-    }).catch(() => {});
   }
 };
 document.addEventListener('DOMContentLoaded', () => {
