@@ -235,15 +235,6 @@ body.light .bm-toggle-btn.active{background:#d0e8dc;border-color:var(--accent);c
   flex:1;min-width:0;flex-wrap:wrap;
 }
 .link-chips:empty{display:none}
-.link-search-result{
-  background:#1a2e24;border:1px solid #3a5a4a;border-radius:6px;
-  padding:0.5rem;margin-bottom:0.4rem;cursor:pointer;
-}
-.link-search-result:active{border-color:#68efbd;background:#224a38}
-.link-search-result .ls-name{color:#68efbd;font-weight:bold;font-size:0.9rem}
-.link-search-result .ls-effect{color:#aaa;font-size:0.75rem;margin-top:0.15rem}
-.link-search-result .ls-condition{color:#888;font-size:0.7rem;margin-top:0.1rem}
-.link-search-result .ls-cards{color:#555;font-size:0.65rem;margin-top:0.2rem;word-break:break-all}
 .link-chip{
   display:inline-flex;align-items:center;gap:3px;
   padding:2px 8px;border-radius:10px;font-size:0.65rem;
@@ -2043,38 +2034,6 @@ const TacticsPicker = {
   }
 };
 
-// ================================================================
-// LinkSearch — リンクアビリティ検索（フィルタ内）
-// ================================================================
-const LinkSearch = {
-  _render(query) {
-    const container = document.getElementById('linkSearchResults');
-    const li = AppState.linkIndex;
-    const q = query.trim().toLowerCase();
-    if (!q) { container.innerHTML = ''; return; }
-    if (!li || Object.keys(li).length === 0) {
-      container.innerHTML = '<p style="color:#888">リンクデータを読み込み中...</p>';
-      return;
-    }
-    const entries = Object.entries(li)
-      .filter(([name, info]) => name.toLowerCase().includes(q) || (info.effect || '').toLowerCase().includes(q))
-      .sort((a, b) => a[0].localeCompare(b[0], 'ja'));
-    if (entries.length === 0) {
-      container.innerHTML = '<p style="color:#888">該当なし</p>';
-      return;
-    }
-    container.innerHTML = entries.map(([name, info]) => {
-      const cards = [...(info.ms_cards || []), ...(info.pl_cards || [])];
-      return `<div class="link-search-result">
-        <div class="ls-name">${name}</div>
-        <div class="ls-effect">${info.effect || ''}</div>
-        <div class="ls-condition">${info.condition || ''} (必要: ${info.required}枚)</div>
-        <div class="ls-cards">${cards.join(', ')}</div>
-      </div>`;
-    }).join('');
-  }
-};
-document.getElementById('linkSearchInput')?.addEventListener('input', function() { LinkSearch._render(this.value); });
 </script>
 <script>
 // ================================================================
@@ -3168,6 +3127,8 @@ const SearchPanel = {
     document.getElementById('searchInput').addEventListener('blur', () => this.applyFilters());
     const sti = document.getElementById('searchTextInput');
     if (sti) { sti.addEventListener('keydown', (e) => { if (e.key === 'Enter') this.applyFilters(); }); sti.addEventListener('blur', () => this.applyFilters()); }
+    const lsi = document.getElementById('linkSearchInput');
+    if (lsi) { lsi.addEventListener('keydown', (e) => { if (e.key === 'Enter') this.applyFilters(); }); lsi.addEventListener('blur', () => this.applyFilters()); }
     document.getElementById('filterTerrainType').addEventListener('change', () => {
       const hasType = !!document.getElementById('filterTerrainType').value;
       document.getElementById('filterTerrainRank').disabled = !hasType;
@@ -3202,6 +3163,7 @@ const SearchPanel = {
     const state = {
       searchInput: document.getElementById('searchInput').value,
       searchTextInput: (document.getElementById('searchTextInput') || {}).value || '',
+      linkSearchInput: (document.getElementById('linkSearchInput') || {}).value || '',
       rarity: [...this._currentRarity],
       category: [...this._currentCategory],
       costMin: document.getElementById('filterCostMin').value,
@@ -3240,6 +3202,8 @@ const SearchPanel = {
       document.getElementById('searchInput').value = s.searchInput || '';
       const sti = document.getElementById('searchTextInput');
       if (sti) sti.value = s.searchTextInput || '';
+      const lsi = document.getElementById('linkSearchInput');
+      if (lsi) lsi.value = s.linkSearchInput || '';
       this._currentRarity = new Set(s.rarity || []);
       document.querySelectorAll('.rarity-btn').forEach(b => b.classList.toggle('active', this._currentRarity.has(b.dataset.rarity)));
       this._currentCategory = new Set(s.category || []);
@@ -3403,6 +3367,7 @@ const SearchPanel = {
     if (document.getElementById('filterIllustrator').value) return true;
     if (document.getElementById('searchInput').value.trim()) return true;
     const sti = document.getElementById('searchTextInput'); if (sti && sti.value.trim()) return true;
+    if ((document.getElementById('linkSearchInput') || {}).value?.trim()) return true;
     const bm = document.getElementById('filterBookmarkCards'); if (bm && bm.checked) return true;
     if (this._altArt) return true;
     for (const s of Object.values(this._t)) { if (s.size > 0) return true; }
@@ -3490,6 +3455,8 @@ const SearchPanel = {
     const sti = document.getElementById('searchTextInput');
     const qtRaw = sti ? sti.value.trim() : '';
     if (qtRaw) { const terms = qtRaw.split(/\s+/).map(t => _normalizeSearch(t)); cards = cards.filter(c => { const txt = _normalizeSearch(c.search_text || ''); return terms.every(t => txt.includes(t)); }); }
+    const linkQ = (document.getElementById('linkSearchInput').value || '').trim().toLowerCase();
+    if (linkQ) { const li = AppState.linkIndex; const linkCardSet = new Set(); Object.entries(li).forEach(([name, info]) => { if (name.toLowerCase().includes(linkQ) || (info.effect || '').toLowerCase().includes(linkQ)) { (info.ms_cards || []).forEach(n => linkCardSet.add(n)); (info.pl_cards || []).forEach(n => linkCardSet.add(n)); } }); cards = cards.filter(c => linkCardSet.has(c.number)); }
     const illustrator = document.getElementById('filterIllustrator').value;
     if (illustrator) cards = cards.filter(c => c.illustrator === illustrator);
     const bmEl = document.getElementById('filterBookmarkCards');
@@ -3525,6 +3492,7 @@ const SearchPanel = {
     const flnk2 = document.getElementById('filterLinkName2'); if (flnk2) flnk2.value = '';
     document.getElementById('searchInput').value = '';
     const sti = document.getElementById('searchTextInput'); if (sti) sti.value = '';
+    const lsi = document.getElementById('linkSearchInput'); if (lsi) lsi.value = '';
     const bm = document.getElementById('filterBookmarkCards'); if (bm) bm.checked = false;
     Object.values(this._t).forEach(s => s.clear());
     document.querySelectorAll('.tbtn').forEach(b => b.className = 'tbtn');
