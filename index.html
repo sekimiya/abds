@@ -2227,19 +2227,30 @@ const LinkSearch = {
 // DeckManager
 // ================================================================
 const DeckManager = {
-  async setCard(slotIndex, cardNumber) {
+  setCard(slotIndex, cardNumber) {
     UndoManager.snapshot();
     AppState.deck[slotIndex] = cardNumber;
-    // カード変更直後にヘッダー（コスト・殲滅/制圧/防衛）を即時反映（cardIndex ベース）
     UIRenderer._updateHeader();
-    const detail = await CardService.fetchDetail(cardNumber);
-    if (detail) {
-      AppState.deckOcr[slotIndex] = detail.ocr_data || null;
+    // 詳細データが既にあれば即座に反映、なければバックグラウンドで取得後に再描画
+    const cached = AppState.cardDetails[cardNumber];
+    if (cached) {
+      AppState.deckOcr[slotIndex] = cached.ocr_data || null;
+      UIRenderer.renderAll();
+      UndoManager.snapshot();
+      this._autoSave();
+      this._updateHash();
+    } else {
+      UIRenderer.renderAll();
+      this._autoSave();
+      this._updateHash();
+      CardService.fetchDetail(cardNumber).then(detail => {
+        if (detail) {
+          AppState.deckOcr[slotIndex] = detail.ocr_data || null;
+          UIRenderer.renderAll();
+          UndoManager.snapshot();
+        }
+      });
     }
-    UIRenderer.renderAll();
-    UndoManager.snapshot();
-    this._autoSave();
-    this._updateHash();
   },
 
   clearCard(slotIndex) {
@@ -4850,28 +4861,26 @@ const SearchPanel = {
     }
   },
 
-  async _selectCard(card) {
+  _selectCard(card) {
     const slot = AppState.activeSlot;
     if (slot === null) {
-      // Auto-assign to first empty slot of matching type
       const type = card.type;
       const range = type === 'MS' ? [0,1,2,3,4] : [5,6,7,8,9];
       const emptySlot = range.find(i => !AppState.deck[i]);
       if (emptySlot !== undefined) {
-        await DeckManager.setCard(emptySlot, card.number);
+        DeckManager.setCard(emptySlot, card.number);
       } else {
         Toast.show(`${type}の空きスロットがありません`, 'info');
       }
       closeCardPicker();
       return;
     }
-    // Check type compatibility
     const slotType = slot < 5 ? 'MS' : 'PL';
     if (card.type && card.type !== slotType) {
       Toast.show(`${slotType}スロットに${card.type}カードはセット不可`, 'error');
       return;
     }
-    await DeckManager.setCard(slot, card.number);
+    DeckManager.setCard(slot, card.number);
     closeCardPicker();
     UIRenderer.setActiveSlot(null);
   }
