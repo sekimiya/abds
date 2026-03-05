@@ -1094,6 +1094,17 @@ select,input{font-family:inherit}
   font-size:0.55rem;font-weight:bold;padding:0 3px;border-radius:2px;
   line-height:1.4;
 }
+.thumb-sp-tags{position:absolute;top:2px;left:2px;display:flex;flex-wrap:wrap;gap:1px;max-width:60%;z-index:2}
+.thumb-sp-tag{font-size:0.5rem;font-weight:bold;padding:0 3px;border-radius:2px;line-height:1.4;color:#fff}
+.thumb-sp-tag.sp-t-貫通{background:rgba(66,165,245,0.9)}
+.thumb-sp-tag.sp-t-範囲{background:rgba(255,112,67,0.9)}
+.thumb-sp-tag.sp-t-スタン{background:rgba(255,235,59,0.9);color:#333}
+.thumb-sp-tag.sp-t-バフ{background:rgba(102,187,106,0.9)}
+.thumb-sp-tag.sp-t-デバフ{background:rgba(171,71,188,0.9)}
+.thumb-sp-tag.sp-t-HP回復{background:rgba(76,175,80,0.9)}
+.thumb-sp-tag.sp-t-変身{background:rgba(38,198,218,0.9)}
+.thumb-sp-tag.sp-t-撃破{background:rgba(244,67,54,0.9)}
+.thumb-sp-tag.sp-t-防衛無視{background:rgba(244,67,54,0.9)}
 .thumb-card-sq{
   font-size:0.6rem;color:#ff69b4;line-height:1.3;
 }
@@ -4825,6 +4836,7 @@ const SearchPanel = {
             return '<div class="thumb-eb-badge">' + ebLabel + '</div>';
           })()}
           ${card.has_ab_link ? '<div class="thumb-ab-badge">AB</div>' : ''}
+          ${card.sp_effect_tags && card.sp_effect_tags.length ? '<div class="thumb-sp-tags">' + card.sp_effect_tags.map(t => '<span class="thumb-sp-tag sp-t-' + t + '">' + escapeHtml(t) + '</span>').join('') + '</div>' : ''}
           ${overlayHtml}
           <div class="thumb-detail-btn" onclick="event.stopPropagation();showCardModal('${card.number}')">詳細</div>
           <button class="thumb-bm-btn${CardBookmark.has(card.number) ? ' bm-on' : ''}" onclick="event.stopPropagation();SearchPanel._toggleBm(this,'${card.number}')" title="ブックマーク">${CardBookmark.has(card.number) ? '&#9733;' : '&#9734;'}</button>
