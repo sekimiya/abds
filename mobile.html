@@ -284,7 +284,9 @@ body.light .bm-toggle-btn.active{background:#d0e8dc;border-color:var(--accent);c
   min-height:0.55rem;padding:1px 2px;
   font-weight:600;letter-spacing:0.3px;
   text-shadow:0 1px 3px rgba(0,0,0,0.6);
+  display:flex;align-items:center;justify-content:center;gap:2px;
 }
+.ov-inline-rarity{font-size:0.45rem;font-weight:bold;flex-shrink:0;opacity:0.85}
 .overview-thumb{
   width:100%;aspect-ratio:63/88;background:var(--bg-card);border:2px solid #333;
   border-radius:4px;overflow:hidden;cursor:pointer;position:relative;
@@ -2671,8 +2673,16 @@ const UIRenderer = {
     let isEbCard = false, isSqCard = false, isAbCard = false;
     const indexEntry = this._getIndexEntry(number);
 
-    // Card name (outside, above thumb)
-    document.getElementById(`ov-${type}-name-${u}`).textContent = indexEntry?.name || ocr?.name || '';
+    // Card name (outside, above thumb) + rarity badge
+    const nameEl = document.getElementById(`ov-${type}-name-${u}`);
+    const cardName = indexEntry?.name || ocr?.name || '';
+    const cardRarity = indexEntry?.rarity || ocr?.rarity || '';
+    if (cardRarity) {
+      const rc = ({'M':'#82b1ff','C':'#aaa','R':'#ffe082','SR':'#ff8a80','U':'#ce93d8','P':'#68efbd','PR':'#f48fb1','LR':'#ffcc80','LE':'#ff8a80','CP':'#80deea'})[cardRarity] || '#888';
+      nameEl.innerHTML = `<span style="overflow:hidden;text-overflow:ellipsis">${escapeHtml(cardName)}</span><span class="ov-inline-rarity" style="color:${rc}">${escapeHtml(cardRarity)}</span>`;
+    } else {
+      nameEl.textContent = cardName;
+    }
 
     if (type === 'ms') {
       isSqCard = ocr?.special_attack?.sp_type === 'SQUAD SP' || !!(indexEntry?.has_sq_link);
