@@ -1849,31 +1849,26 @@ const AppState = {
 // ================================================================
 const ParamCorrections = {
   work: {},
-  card: {},
+  ms: {},
+  pl: {},
   load() {
-    try { this.work = JSON.parse(localStorage.getItem('abds_workCorrections') || '{}'); } catch(e) { this.work = {}; }
-    try { this.card = JSON.parse(localStorage.getItem('abds_cardCorrections') || '{}'); } catch(e) { this.card = {}; }
+    try { this.work = JSON.parse(localStorage.getItem('abds_corrWork') || '{}'); } catch(e) { this.work = {}; }
+    try { this.ms = JSON.parse(localStorage.getItem('abds_corrMs') || '{}'); } catch(e) { this.ms = {}; }
+    try { this.pl = JSON.parse(localStorage.getItem('abds_corrPl') || '{}'); } catch(e) { this.pl = {}; }
   },
-  getWorkNames(ocr) {
-    const links = ocr?.link_abilities || ocr?.link_ability || [];
-    const names = [];
+  getCorrectionLevel(msOcr, plOcr) {
+    let level = 0;
+    const links = msOcr?.link_abilities || msOcr?.link_ability || [];
     for (const la of links) {
-      if (la?.name && this.work[la.name]) names.push(la.name);
+      if (la?.name && this.work[la.name]) { level += this.work[la.name]; break; }
     }
-    return names;
+    const msName = msOcr?.name;
+    if (msName && this.ms[msName]) level += this.ms[msName];
+    const plName = plOcr?.name;
+    if (plName && this.pl[plName]) level += this.pl[plName];
+    return level;
   },
-  getCorrection(cardNumber, msOcr) {
-    const corr = { mobility: 0, melee: 0, ranged: 0, hp: 0 };
-    const cc = this.card[cardNumber];
-    if (cc) { for (const p of ['mobility','melee','ranged','hp']) corr[p] += (cc[p] || 0); }
-    const workNames = this.getWorkNames(msOcr);
-    for (const wn of workNames) {
-      const wc = this.work[wn];
-      if (wc) { for (const p of ['mobility','melee','ranged','hp']) corr[p] += (wc[p] || 0); }
-    }
-    return corr;
-  },
-  hasAny() { return Object.keys(this.work).length > 0 || Object.keys(this.card).length > 0; }
+  hasAny() { return Object.keys(this.work).length > 0 || Object.keys(this.ms).length > 0 || Object.keys(this.pl).length > 0; }
 };
 ParamCorrections.load();
 
@@ -3221,7 +3216,7 @@ const UIRenderer = {
     }
 
     // Stats
-    this._renderUnitStats(u, msOcr, plOcr, msNumber);
+    this._renderUnitStats(u, msOcr, plOcr);
 
     // MS Detail info
     this._renderMsDetail(u, msOcr, msNumber);
@@ -3268,7 +3263,7 @@ const UIRenderer = {
     `;
   },
 
-  _renderUnitStats(u, msOcr, plOcr, msNumber) {
+  _renderUnitStats(u, msOcr, plOcr) {
     const container = document.getElementById(`unit-stats-${u}`);
     const maxVal = 1000;
 
@@ -3288,8 +3283,8 @@ const UIRenderer = {
     const unitBuffs = getUnitLinkBuffs(msOcr, plOcr);
     const applyBuff = (val, sm, med) => Math.round(val * Math.pow(1.1, sm) * Math.pow(1.2, med));
 
-    // Step 3: パラメータ補正
-    const corr = msNumber ? ParamCorrections.getCorrection(msNumber, msOcr) : { mobility:0, melee:0, ranged:0, hp:0 };
+    // Step 3: パラメータ補正レベル
+    const corrLv = ParamCorrections.getCorrectionLevel(msOcr, plOcr);
 
     const stats = ['mobility', 'ranged', 'melee', 'hp'];
     const labels = { mobility: '機動', ranged: '遠距', melee: '近距', hp: 'HP' };
@@ -3310,8 +3305,9 @@ const UIRenderer = {
       const baseAfterTerrain = msBase + pl[s];
       let total = applyBuff(baseAfterTerrain, unitBuffs[s].small, unitBuffs[s].medium);
 
-      const corrVal = corr[s] || 0;
-      total += corrVal;
+      // Apply correction level as percentage buff to base stat
+      let corrBuff = 0;
+      if (corrLv > 0) { corrBuff = Math.round(base * corrLv * 0.01); total += corrBuff; }
 
       const linkBuff = applyBuff(baseAfterTerrain, unitBuffs[s].small, unitBuffs[s].medium) - baseAfterTerrain;
       const basePct = Math.min((base / maxVal) * 100, 100);
@@ -3323,7 +3319,6 @@ const UIRenderer = {
         const tWidth = Math.min((terrainBuff / maxVal) * 100, 100 - basePct - linkBuffPct);
         terrainBarHtml = `<div class="stat-bar-terrain-pos" style="width:${tWidth}%"></div>`;
       } else if (terrainBuff < 0) {
-        // flexレイアウトのため、position:absoluteで負の領域を重ねる
         const totalPct = (Math.max(total, 0) / maxVal) * 100;
         const lossPct = (Math.abs(terrainBuff) / maxVal) * 100;
         terrainBarHtml = `<div class="stat-bar-terrain-neg" style="position:absolute;right:0;width:${Math.min(lossPct, 100 - totalPct)}%;left:${totalPct}%"></div>`;
@@ -3335,8 +3330,7 @@ const UIRenderer = {
       else if (terrainBuff < 0) terrainLabel = ` <span class="stat-terrain-text negative">(地形${terrainBuff})</span>`;
 
       let corrLabel = '';
-      if (corrVal > 0) corrLabel = ` <span style="color:#ce93d8">(+${corrVal})</span>`;
-      else if (corrVal < 0) corrLabel = ` <span style="color:#ce93d8">(${corrVal})</span>`;
+      if (corrBuff > 0) corrLabel = ` <span style="color:#ce93d8">Lv+${corrBuff}</span>`;
 
       const pad = (n) => String(n).padStart(3, '\u2007');
       const baseLabel = `${pad(ms[s])}+${pad(pl[s])}=${pad(base)}`;
@@ -3348,7 +3342,7 @@ const UIRenderer = {
             <div class="stat-bar-base" style="width:${basePct}%"></div>
             <div class="stat-bar-buff" style="width:${linkBuffPct}%"></div>
             ${terrainBarHtml}
-            <span class="stat-value">${baseLabel}${buffLabel}${terrainLabel}${corrLabel}${(linkBuff > 0 || terrainBuff !== 0 || corrVal !== 0) ? ` → ${pad(total)}` : ''}</span>
+            <span class="stat-value">${baseLabel}${buffLabel}${terrainLabel}${corrLabel}${(linkBuff > 0 || terrainBuff !== 0 || corrBuff > 0) ? ` → ${pad(total)}` : ''}</span>
           </div>
         </div>
       `;
