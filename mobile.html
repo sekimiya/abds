@@ -2454,9 +2454,12 @@ const DeckManager = {
     if (saved) {
       try {
         const data = JSON.parse(saved);
-        if (data.tacticsMain) AppState.tacticsMain = data.tacticsMain;
-        if (data.tacticsSub) AppState.tacticsSub = data.tacticsSub;
-        if (data.cards && data.cards.some(n => n)) { await this._applyNumbers(data.cards); return; }
+        if (data.cards && data.cards.some(n => n)) {
+          const numbers = [...data.cards];
+          while (numbers.length < 10) numbers.push('');
+          if (data.tacticsMain || data.tacticsSub) { numbers[10] = data.tacticsMain || ''; numbers[11] = data.tacticsSub || ''; }
+          await this._applyNumbers(numbers); return;
+        }
         TacticsPicker.renderButtons();
       } catch {}
     }
@@ -2490,9 +2493,11 @@ const DeckManager = {
   async _loadByName(name) {
     const decks = JSON.parse(localStorage.getItem('gab_decks') || '{}');
     const deck = decks[name]; if (!deck) return;
-    AppState.tacticsMain = deck.tacticsMain || null;
-    AppState.tacticsSub = deck.tacticsSub || null;
-    await this._applyNumbers(deck.cards);
+    // Build full array including tactics cards so _applyNumbers restores them
+    const numbers = [...(deck.cards || [])];
+    while (numbers.length < 10) numbers.push('');
+    if (deck.tacticsMain || deck.tacticsSub) { numbers[10] = deck.tacticsMain || ''; numbers[11] = deck.tacticsSub || ''; }
+    await this._applyNumbers(numbers);
     AppState._lastDeckName = name;
     const nameInput = document.getElementById('deckNameInput');
     if (nameInput) nameInput.value = name;
