@@ -1284,6 +1284,9 @@ select,input{font-family:inherit}
       <div class="header-menu-row">
         <button class="header-btn" onclick="clearDataCacheAndReload()" style="flex:1;color:#ff9800;border-color:#ff9800">データ更新（キャッシュクリア）</button>
       </div>
+      <div class="header-menu-row">
+        <a href="./corrections.html" class="header-btn" style="flex:1;text-align:center;text-decoration:none;border-color:#ff9800;color:#ff9800">&#9881; パラメータ補正設定</a>
+      </div>
       <div class="header-menu-row" style="border-top:1px solid #333;padding-top:0.5rem">
         <a href="./mobile.html" class="header-btn" style="flex:1;text-align:center;text-decoration:none;border-color:#68efbd;color:#68efbd" onclick="localStorage.setItem('abds_viewMode','mobile');this.href='./mobile.html'+location.hash">モバイル版</a>
       </div>
@@ -1840,6 +1843,39 @@ const AppState = {
   imageSource: 'cache',
   _lastDeckName: '',
 };
+
+// ================================================================
+// Parameter Corrections
+// ================================================================
+const ParamCorrections = {
+  work: {},
+  card: {},
+  load() {
+    try { this.work = JSON.parse(localStorage.getItem('abds_workCorrections') || '{}'); } catch(e) { this.work = {}; }
+    try { this.card = JSON.parse(localStorage.getItem('abds_cardCorrections') || '{}'); } catch(e) { this.card = {}; }
+  },
+  getWorkNames(ocr) {
+    const links = ocr?.link_abilities || ocr?.link_ability || [];
+    const names = [];
+    for (const la of links) {
+      if (la?.name && this.work[la.name]) names.push(la.name);
+    }
+    return names;
+  },
+  getCorrection(cardNumber, msOcr) {
+    const corr = { mobility: 0, melee: 0, ranged: 0, hp: 0 };
+    const cc = this.card[cardNumber];
+    if (cc) { for (const p of ['mobility','melee','ranged','hp']) corr[p] += (cc[p] || 0); }
+    const workNames = this.getWorkNames(msOcr);
+    for (const wn of workNames) {
+      const wc = this.work[wn];
+      if (wc) { for (const p of ['mobility','melee','ranged','hp']) corr[p] += (wc[p] || 0); }
+    }
+    return corr;
+  },
+  hasAny() { return Object.keys(this.work).length > 0 || Object.keys(this.card).length > 0; }
+};
+ParamCorrections.load();
 
 // ================================================================
 // Toast
@@ -3185,7 +3221,7 @@ const UIRenderer = {
     }
 
     // Stats
-    this._renderUnitStats(u, msOcr, plOcr);
+    this._renderUnitStats(u, msOcr, plOcr, msNumber);
 
     // MS Detail info
     this._renderMsDetail(u, msOcr, msNumber);
@@ -3232,7 +3268,7 @@ const UIRenderer = {
     `;
   },
 
-  _renderUnitStats(u, msOcr, plOcr) {
+  _renderUnitStats(u, msOcr, plOcr, msNumber) {
     const container = document.getElementById(`unit-stats-${u}`);
     const maxVal = 1000;
 
@@ -3252,6 +3288,9 @@ const UIRenderer = {
     const unitBuffs = getUnitLinkBuffs(msOcr, plOcr);
     const applyBuff = (val, sm, med) => Math.round(val * Math.pow(1.1, sm) * Math.pow(1.2, med));
 
+    // Step 3: パラメータ補正
+    const corr = msNumber ? ParamCorrections.getCorrection(msNumber, msOcr) : { mobility:0, melee:0, ranged:0, hp:0 };
+
     const stats = ['mobility', 'ranged', 'melee', 'hp'];
     const labels = { mobility: '機動', ranged: '遠距', melee: '近距', hp: 'HP' };
 
@@ -3269,9 +3308,12 @@ const UIRenderer = {
       const base = ms[s] + pl[s]; // 表示用の素ステ合計（地形補正前）
       // 地形補正後のMS + PL の合計にユニット統合バフを適用
       const baseAfterTerrain = msBase + pl[s];
-      const total = applyBuff(baseAfterTerrain, unitBuffs[s].small, unitBuffs[s].medium);
+      let total = applyBuff(baseAfterTerrain, unitBuffs[s].small, unitBuffs[s].medium);
 
-      const linkBuff = total - baseAfterTerrain;
+      const corrVal = corr[s] || 0;
+      total += corrVal;
+
+      const linkBuff = applyBuff(baseAfterTerrain, unitBuffs[s].small, unitBuffs[s].medium) - baseAfterTerrain;
       const basePct = Math.min((base / maxVal) * 100, 100);
       const linkBuffPct = Math.min((linkBuff / maxVal) * 100, 100 - basePct);
 
@@ -3292,6 +3334,10 @@ const UIRenderer = {
       if (terrainBuff > 0) terrainLabel = ` <span class="stat-terrain-text positive">(地形+${terrainBuff})</span>`;
       else if (terrainBuff < 0) terrainLabel = ` <span class="stat-terrain-text negative">(地形${terrainBuff})</span>`;
 
+      let corrLabel = '';
+      if (corrVal > 0) corrLabel = ` <span style="color:#ce93d8">(+${corrVal})</span>`;
+      else if (corrVal < 0) corrLabel = ` <span style="color:#ce93d8">(${corrVal})</span>`;
+
       const pad = (n) => String(n).padStart(3, '\u2007');
       const baseLabel = `${pad(ms[s])}+${pad(pl[s])}=${pad(base)}`;
       const buffLabel = linkBuff > 0 ? ` <span class="stat-buff-text">+${pad(linkBuff)}</span>` : '';
@@ -3302,7 +3348,7 @@ const UIRenderer = {
             <div class="stat-bar-base" style="width:${basePct}%"></div>
             <div class="stat-bar-buff" style="width:${linkBuffPct}%"></div>
             ${terrainBarHtml}
-            <span class="stat-value">${baseLabel}${buffLabel}${terrainLabel}${(linkBuff > 0 || terrainBuff !== 0) ? ` → ${pad(total)}` : ''}</span>
+            <span class="stat-value">${baseLabel}${buffLabel}${terrainLabel}${corrLabel}${(linkBuff > 0 || terrainBuff !== 0 || corrVal !== 0) ? ` → ${pad(total)}` : ''}</span>
           </div>
         </div>
       `;

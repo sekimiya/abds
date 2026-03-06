@@ -1,5 +1,5 @@
 // ABDS PWA Service Worker
-const CACHE_VERSION = 'abds-v42';
+const CACHE_VERSION = 'abds-v43';
 const APP_SHELL_CACHE = `app-shell-${CACHE_VERSION}`;
 const DATA_CACHE = `data-${CACHE_VERSION}`;
 const IMAGE_CACHE = 'card-images-v1';
@@ -10,6 +10,7 @@ const APP_SHELL_FILES = [
   './mobile.html',
   './decks.html',
   './decks_mobile.html',
+  './corrections.html',
   './manifest.json',
   './icons/icon-192.png',
   './icons/icon-512.png',
