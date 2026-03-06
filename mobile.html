@@ -129,6 +129,9 @@ body.light .cache-modal-progress{background:#e0e0e0}
 body.light .toast{box-shadow:0 4px 12px rgba(0,0,0,0.15)}
 body.light .toast.error{background:#fde8e8;color:#c62828;border-left-color:#f44336}
 body.light .toast.info{background:#e3f2fd;color:#1565c0;border-left-color:#2196f3}
+body.light .badge-sw{background:#e8e8e8;border-color:#bbb}
+body.light .badge-sw.active{background:#e0f0ff}
+body.light .badge-sw:not(.active){opacity:0.35}
 body.light .terrain-sw{background:#e8e8e8;border-color:#bbb;color:#666}
 body.light ::-webkit-scrollbar-track{background:#e8e8e8}
 body.light ::-webkit-scrollbar-thumb{background:#bbb}
@@ -222,6 +225,13 @@ body.light .bm-toggle-btn.active{background:#d0e8dc;border-color:var(--accent);c
 }
 .tactics-thumb-img{width:100%;height:100%;object-fit:cover}
 .tactics-clear{color:#888;font-size:0.8rem;flex-shrink:0;background:none;border:none;padding:0 2px;line-height:1}
+.badge-switches{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:6px}
+.badge-sw{
+  flex:1;min-width:0;padding:5px 3px;background:#222;border:1px solid #555;border-radius:6px;
+  font-size:0.68rem;text-align:center;transition:all 0.15s;cursor:pointer;
+}
+.badge-sw.active{background:#1a1a2e}
+.badge-sw:not(.active){opacity:0.4;border-color:#333!important;color:#666!important}
 .terrain-switches{display:flex;gap:4px;flex-wrap:wrap}
 .terrain-sw{
   flex:1;min-width:0;padding:6px 4px;background:#222;border:1px solid #555;border-radius:6px;
@@ -1320,6 +1330,14 @@ body.light .bm-toggle-btn.active{background:#d0e8dc;border-color:var(--accent);c
   <div class="menu-row" style="gap:4px">
     <button class="menu-btn" onclick="DeckManager.sortByCategory();toggleMenu()" title="殲滅→制圧→防衛の順に並び替え" style="flex:1">並び順を整理</button>
     <button class="rec-btn" id="recBtn" onclick="captureFullPage()" style="flex:0;padding:6px 16px"><span id="recBtnLabel">REC</span></button>
+  </div>
+  <div class="menu-label">バッジ表示</div>
+  <div class="badge-switches" id="badgeSwitches">
+    <button class="badge-sw active" data-badge="sp-tags" onclick="toggleBadgeSw(this)" style="color:#42a5f5;border-color:#42a5f5">SP効果</button>
+    <button class="badge-sw active" data-badge="eb-badge" onclick="toggleBadgeSw(this)" style="color:#ff9800;border-color:#ff9800">EB</button>
+    <button class="badge-sw active" data-badge="sq-badge" onclick="toggleBadgeSw(this)" style="color:#ff69b4;border-color:#ff69b4">SQ</button>
+    <button class="badge-sw active" data-badge="ab-badge" onclick="toggleBadgeSw(this)" style="color:#b388ff;border-color:#b388ff">AB</button>
+    <button class="badge-sw active" data-badge="rarity" onclick="toggleBadgeSw(this)" style="color:#ffe082;border-color:#ffe082">レアリティ</button>
   </div>
   <div class="menu-label">地形適性</div>
   <div class="terrain-switches" id="terrainSwitches">
@@ -3793,6 +3811,43 @@ function toggleMenu() {
   panel.classList.toggle('open');
   if (panel.classList.contains('open')) DeckManager.populateLoadSelect();
 }
+
+// Badge visibility toggles
+const _badgeState = JSON.parse(localStorage.getItem('abds_badgeState') || '{}');
+function _initBadges() {
+  document.querySelectorAll('.badge-sw').forEach(btn => {
+    const key = btn.dataset.badge;
+    if (_badgeState[key] === false) btn.classList.remove('active');
+    _applyBadgeVisibility(key, btn.classList.contains('active'));
+  });
+}
+function toggleBadgeSw(btn) {
+  btn.classList.toggle('active');
+  const key = btn.dataset.badge;
+  const on = btn.classList.contains('active');
+  _badgeState[key] = on;
+  localStorage.setItem('abds_badgeState', JSON.stringify(_badgeState));
+  _applyBadgeVisibility(key, on);
+}
+function _applyBadgeVisibility(key, on) {
+  const map = {
+    'sp-tags': '.ov-sp-tags,.thumb-sp-tags',
+    'eb-badge': '.ov-badge.eb-b,.thumb-eb-badge',
+    'sq-badge': '.ov-badge.sq-b,.thumb-sq-badge',
+    'ab-badge': '.ov-badge.ab-b,.thumb-ab-badge',
+    'rarity': '.ov-inline-rarity,.thumb-inline-rarity,.thumb-card-rarity'
+  };
+  const sel = map[key];
+  if (!sel) return;
+  let style = document.getElementById('badge-vis-style');
+  if (!style) { style = document.createElement('style'); style.id = 'badge-vis-style'; document.head.appendChild(style); }
+  // Rebuild all rules
+  let css = '';
+  for (const [k, s] of Object.entries(map)) {
+    if (_badgeState[k] === false) css += s + '{display:none!important}\n';
+  }
+  style.textContent = css;
+}
 async function clearDataCacheAndReload() {
   if (!confirm('カードデータのキャッシュをクリアして最新データを取得します。よろしいですか？')) return;
   try {
@@ -3964,6 +4019,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   UIRenderer.init();
   SearchPanel.init();
   UndoManager.snapshot();
+  _initBadges();
 
   // ImageCache.init() と CardService.fetchIndex() を並列実行
   let imageCacheInitDone = false;
