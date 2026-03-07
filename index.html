@@ -64,6 +64,13 @@ select,input{font-family:inherit}
   background:linear-gradient(135deg,#2a1a2a,#33250a);
   border-bottom-color:#ff69b4;
 }
+.full-link-badge{
+  display:none;padding:0.15rem 0.5rem;border-radius:4px;font-size:0.8rem;font-weight:bold;white-space:nowrap;
+  background:linear-gradient(135deg,#68efbd,#38c98d);color:#0a1f14;letter-spacing:1px;
+  animation:fl-glow 1.5s ease-in-out infinite alternate;
+}
+.full-link-badge.active{display:inline-block}
+@keyframes fl-glow{from{box-shadow:0 0 4px rgba(104,239,189,0.4)}to{box-shadow:0 0 12px rgba(104,239,189,0.8)}}
 .logo{
   color:#68efbd;font-weight:bold;font-size:1.5rem;white-space:nowrap;
   font-style:italic;letter-spacing:1px;opacity:0.5;
@@ -1255,6 +1262,7 @@ select,input{font-family:inherit}
   <div class="header-group">
     <span class="sq-status" id="sqStatus">SQ発動承認</span>
     <span class="eb-status" id="ebStatus">EB発動</span>
+    <span class="full-link-badge" id="fullLinkBadge">FULL LINK</span>
   </div>
   <div class="header-sep"></div>
 
@@ -4087,7 +4095,12 @@ const UIRenderer = {
       return a[0].localeCompare(b[0]);
     });
 
-    if (entries.length === 0) { bar.innerHTML = ''; this._applyLinkHighlights({}, {}, linkMap); return; }
+    if (entries.length === 0) {
+      bar.innerHTML = '';
+      document.getElementById('fullLinkBadge').classList.remove('active');
+      this._applyLinkHighlights({}, {}, linkMap);
+      return;
+    }
 
     // AB発動判定
     const abActive = entries.some(([, info]) => info.is_ab_link && info.count >= info.required);
@@ -4129,6 +4142,10 @@ const UIRenderer = {
         });
       }
     });
+    // FULL LINK判定
+    const isFullLink = entries.length > 0 && inactive.length === 0;
+    document.getElementById('fullLinkBadge').classList.toggle('active', isFullLink);
+
     this._applyLinkHighlights(slotActiveCounts, slotActiveNames, linkMap);
   },
 

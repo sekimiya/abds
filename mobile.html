@@ -181,6 +181,13 @@ body.light .bm-toggle-btn.active{background:#d0e8dc;border-color:var(--accent);c
 }
 .ab-badge-h.active{display:inline-block}
 @keyframes ab-glow{from{box-shadow:0 0 4px rgba(179,136,255,0.4)}to{box-shadow:0 0 10px rgba(179,136,255,0.8)}}
+.fl-badge-h{
+  display:none;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:bold;white-space:nowrap;
+  background:linear-gradient(135deg,#68efbd,#38c98d);color:#0a1f14;letter-spacing:0.5px;
+  animation:fl-glow 1.5s ease-in-out infinite alternate;
+}
+.fl-badge-h.active{display:inline-block}
+@keyframes fl-glow{from{box-shadow:0 0 4px rgba(104,239,189,0.4)}to{box-shadow:0 0 12px rgba(104,239,189,0.8)}}
 .hdr-active-links{
   display:flex;align-items:center;gap:3px;overflow:hidden;flex-shrink:1;min-width:0;
 }
@@ -925,6 +932,7 @@ body.light .bm-toggle-btn.active{background:#d0e8dc;border-color:var(--accent);c
   <span class="hdr-active-links" id="hdrEbLinks"></span>
   <span class="ab-badge-h" id="abStatus" style="margin-left:-2px;display:none">AB</span>
   <span class="hdr-active-links" id="hdrAbLinks"></span>
+  <span class="fl-badge-h" id="fullLinkBadge">FULL LINK</span>
   <span class="hdr-spacer"></span>
   <button class="hamburger-btn" id="hamburgerBtn" onclick="toggleMenu()">&#9776;</button>
 </header>
@@ -3422,6 +3430,10 @@ const UIRenderer = {
       hdrAb.innerHTML = abLinks.map(([name]) => `<span class="hdr-link-name ab">${escapeHtml(name)}</span>`).join('');
       if (abStatusEl) { abStatusEl.classList.toggle('active', abLinks.length > 0); abStatusEl.style.display = abLinks.length > 0 ? '' : 'none'; }
     }
+    // FULL LINK判定
+    const allActive = entries.length > 0 && entries.every(([, info]) => info.count >= info.required);
+    const flBadge = document.getElementById('fullLinkBadge');
+    if (flBadge) flBadge.classList.toggle('active', allActive);
   }
 };
 </script>
