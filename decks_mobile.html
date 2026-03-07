@@ -1180,14 +1180,12 @@ function renderDeckList(decks, cardData, tacticsMap) {
       if (deck.tactics_main) {
         const t = tacticsMap[deck.tactics_main];
         const tName = t ? t.name : deck.tactics_main;
-        const tImg = t ? t.thumbnail_url : '';
-        html += `<span class="deck-tactics-card">${tImg ? `<img src="${tImg}" class="tactics-thumb">` : ''}${escapeHtml(tName)}</span>`;
+        html += `<span class="deck-tactics-card">${escapeHtml(tName)}</span>`;
       }
       if (deck.tactics_sub) {
         const t = tacticsMap[deck.tactics_sub];
         const tName = t ? t.name : deck.tactics_sub;
-        const tImg = t ? t.thumbnail_url : '';
-        html += `<span class="deck-tactics-card">${tImg ? `<img src="${tImg}" class="tactics-thumb">` : ''}${escapeHtml(tName)}</span>`;
+        html += `<span class="deck-tactics-card">${escapeHtml(tName)}</span>`;
       }
       html += '</div>';
     }

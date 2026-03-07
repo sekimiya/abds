@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>ABD Simulator - パラメータ補正設定</title>
+<link rel="manifest" href="./manifest.json">
+<meta name="theme-color" content="#0f0f0f">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:14px;-webkit-text-size-adjust:100%}
+body{background:#0f0f0f;color:#e0e0e0;font-family:'Segoe UI','Hiragino Sans',sans-serif;min-height:100vh;
+  padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}
+body.light{background:#f5f5f5;color:#1a1a1a}
+body.light .page-header{background:linear-gradient(135deg,#d0e8dc,#d0e8dc)}
+body.light .section-card{background:#fff;border-color:#ddd}
+body.light .corr-row{border-bottom-color:#eee}
+body.light .corr-row:hover{background:#f0f0f0}
+body.light .corr-select{background:#f5f5f5;border-color:#ccc;color:#333}
+body.light .tab-btn{background:#e8e8e8;color:#333;border-color:#ccc}
+body.light .tab-btn.active{background:#68efbd;color:#000}
+body.light .search-input{background:#fff;border-color:#ccc;color:#333}
+body.light .back-btn{color:#333;border-color:#aaa}
+body.light .action-bar{background:#fff;border-top-color:#ddd}
+body.light .info-banner{background:#e8f5e9;border-color:#c8e6c9;color:#2e7d32}
+body.light .preset-btn{background:#f0f0f0;border-color:#ccc;color:#333}
+body.light .tab-bar{background:#f5f5f5;border-bottom-color:#ddd}
+a{color:#68efbd;text-decoration:none}
+button{cursor:pointer;font-family:inherit;-webkit-tap-highlight-color:transparent}
+
+.page-header{
+  background:linear-gradient(135deg,#1a2a20,#0f1f18);
+  padding:12px 16px;display:flex;align-items:center;gap:12px;
+  border-bottom:1px solid #333;position:sticky;top:0;z-index:10;
+}
+.back-btn{
+  background:none;border:1px solid #555;color:#e0e0e0;border-radius:6px;
+  padding:6px 12px;font-size:0.9rem;white-space:nowrap;
+}
+.page-title{font-size:1.1rem;font-weight:700;color:#68efbd;flex:1}
+
+.tab-bar{
+  display:flex;gap:0;padding:8px 12px;position:sticky;top:47px;z-index:9;
+  background:#0f0f0f;border-bottom:1px solid #222;
+}
+.tab-btn{
+  flex:1;padding:8px 0;text-align:center;font-size:0.8rem;font-weight:600;
+  border:1px solid #444;background:#1a1a1a;color:#aaa;cursor:pointer;
+  transition:all 0.2s;
+}
+.tab-btn:first-child{border-radius:6px 0 0 6px}
+.tab-btn:last-child{border-radius:0 6px 6px 0}
+.tab-btn.active{background:#68efbd;color:#000;border-color:#68efbd}
+
+.tab-content{display:none;padding:8px 12px 80px}
+.tab-content.active{display:block}
+
+.info-banner{
+  margin:4px 0 8px;padding:10px 12px;border-radius:6px;
+  background:#1a2a20;border:1px solid #2a4a35;font-size:0.8rem;line-height:1.5;color:#a5d6a7;
+}
+
+.search-bar{padding:6px 0}
+.search-input{
+  width:100%;padding:8px 12px;border-radius:6px;border:1px solid #444;
+  background:#1a1a1a;color:#e0e0e0;font-size:0.9rem;outline:none;
+}
+.search-input:focus{border-color:#68efbd}
+.search-input::placeholder{color:#666}
+
+.preset-row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px}
+.preset-btn{
+  padding:4px 10px;border-radius:4px;font-size:0.75rem;
+  border:1px solid #444;background:#222;color:#ccc;cursor:pointer;
+}
+.preset-btn:hover{border-color:#68efbd;color:#68efbd}
+
+.corr-summary{font-size:0.75rem;color:#888;padding:2px 0 6px;text-align:right}
+
+.corr-row{
+  display:flex;align-items:center;padding:7px 8px;gap:8px;
+  border-bottom:1px solid #2a2a2a;font-size:0.85rem;
+}
+.corr-row:last-child{border-bottom:none}
+.corr-row:hover{background:#1e1e1e}
+.corr-name{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.corr-count{color:#666;font-size:0.7rem;min-width:28px;text-align:right}
+
+.corr-select{
+  width:62px;padding:4px 2px;text-align:center;border-radius:4px;
+  border:1px solid #444;background:#222;color:#e0e0e0;font-size:0.82rem;
+  appearance:auto;cursor:pointer;
+}
+.corr-select:focus{border-color:#68efbd;outline:none}
+.corr-select.has-value{color:#a5d6a7;border-color:#4caf50;font-weight:600}
+
+.action-bar{
+  position:fixed;bottom:0;left:0;right:0;
+  background:#1a1a1a;border-top:1px solid #333;
+  padding:8px 12px env(safe-area-inset-bottom);
+  display:flex;gap:8px;z-index:20;
+}
+.action-btn{
+  flex:1;padding:10px;border-radius:6px;font-size:0.9rem;font-weight:600;
+  border:none;cursor:pointer;
+}
+.action-btn.primary{background:#68efbd;color:#000}
+.action-btn.secondary{background:none;border:1px solid #555;color:#e0e0e0}
+body.light .action-btn.secondary{border-color:#aaa;color:#333}
+
+.list-container{border:1px solid #333;border-radius:8px;overflow:hidden;background:#1a1a1a}
+body.light .list-container{border-color:#ddd;background:#fff}
+.load-more-btn{
+  display:block;width:100%;padding:10px;text-align:center;
+  background:none;border:none;border-top:1px solid #333;color:#68efbd;
+  font-size:0.85rem;cursor:pointer;
+}
+.load-more-btn:hover{background:#222}
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <button class="back-btn" onclick="goBack()">戻る</button>
+  <div class="page-title">パラメータ補正設定</div>
+</div>
+
+<div class="tab-bar">
+  <div class="tab-btn active" data-tab="work" onclick="switchTab(this)">作品補正</div>
+  <div class="tab-btn" data-tab="ms" onclick="switchTab(this)">機体Lv</div>
+  <div class="tab-btn" data-tab="pl" onclick="switchTab(this)">PLレベル</div>
+</div>
+
+<!-- ===== WORK CORRECTION TAB ===== -->
+<div class="tab-content active" id="tab-work">
+  <div class="info-banner">
+    作品ごとの補正レベル（0〜30）を設定します。<br>
+    該当作品のリンクアビリティを持つ全カードに適用されます。
+  </div>
+  <div class="preset-row">
+    <button class="preset-btn" onclick="resetAll('work')">全リセット</button>
+  </div>
+  <div class="corr-summary" id="workSummary">設定あり: 0作品</div>
+  <div class="list-container" id="workList"></div>
+</div>
+
+<!-- ===== MS LEVEL TAB ===== -->
+<div class="tab-content" id="tab-ms">
+  <div class="info-banner">
+    機体名ごとのレベル（0〜30）を設定します。<br>
+    同名の全MSカードに適用されます。
+  </div>
+  <div class="search-bar">
+    <input class="search-input" id="msSearch" placeholder="機体名で検索..." oninput="filterList('ms')">
+  </div>
+  <div class="preset-row">
+    <button class="preset-btn" onclick="resetAll('ms')">全リセット</button>
+  </div>
+  <div class="corr-summary" id="msSummary">設定あり: 0機体</div>
+  <div class="list-container" id="msList"></div>
+</div>
+
+<!-- ===== PL LEVEL TAB ===== -->
+<div class="tab-content" id="tab-pl">
+  <div class="info-banner">
+    パイロット名ごとのレベル（0〜30）を設定します。<br>
+    同名の全PLカードに適用されます。
+  </div>
+  <div class="search-bar">
+    <input class="search-input" id="plSearch" placeholder="パイロット名で検索..." oninput="filterList('pl')">
+  </div>
+  <div class="preset-row">
+    <button class="preset-btn" onclick="resetAll('pl')">全リセット</button>
+  </div>
+  <div class="corr-summary" id="plSummary">設定あり: 0パイロット</div>
+  <div class="list-container" id="plList"></div>
+</div>
+
+<!-- ===== ACTION BAR ===== -->
+<div class="action-bar">
+  <button class="action-btn secondary" onclick="goBack()">キャンセル</button>
+  <button class="action-btn primary" onclick="saveAndGoBack()">保存して戻る</button>
+</div>
+
+<script>
+// ================================================================
+// Constants & State
+// ================================================================
+const STORAGE_KEYS = {
+  work: 'abds_corrWork',
+  ms: 'abds_corrMs',
+  pl: 'abds_corrPl'
+};
+
+// Known anime/series work names (filtered from link abilities)
+const WORK_NAMES = [
+  '機動戦士ガンダム','機動戦士Zガンダム','機動戦士ガンダムZZ','逆襲のシャア','逆襲のシャア(SIDE-F)',
+  '閃光のハサウェイ','機動戦士ガンダムF91','機動戦士Vガンダム','クロスボーン・ガンダム',
+  'Gガンダム','ガンダムW','Endless Waltz','機動新世紀ガンダムX','∀ガンダム',
+  'ガンダムSEED','SEED DESTINY','SEED ASTRAY','SEED FREEDOM','ガンダム00',
+  'ガンダムAGE','ガンダムUC','機動戦士ガンダムNT','鉄血のオルフェンズ',
+  'ビルドファイターズ','ビルドダイバーズ','Re:RISE','ビルドメタバース','トライエイジ',
+  '水星の魔女','GQuuuuuuX','Gのレコンギスタ',
+  '第08MS小隊','ポケットの中の戦争','ガンダム0083','サンダーボルト',
+  'MS IGLOO','STARGAZER','THE BLUE DESTINY','ククルス・ドアンの島',
+  '機動戦士ガンダム外伝','U.C. ENGAGE','アクロス・ザ・スカイ',
+];
+
+let state = { work: {}, ms: {}, pl: {} };   // { name: level(0-30) }
+let masterData = { ms: [], pl: [] };         // [{ name, count }]
+let filterText = { ms: '', pl: '' };
+let pages = { ms: 0, pl: 0 };
+const PAGE_SIZE = 50;
+
+// ================================================================
+// Init
+// ================================================================
+async function init() {
+  if (localStorage.getItem('abds_lightMode') === '1') document.body.classList.add('light');
+
+  // Load saved state
+  for (const key of ['work', 'ms', 'pl']) {
+    try { state[key] = JSON.parse(localStorage.getItem(STORAGE_KEYS[key]) || '{}'); } catch(e) { state[key] = {}; }
+  }
+
+  // Load card data for MS/PL names
+  try {
+    const [indexRes, detailsRes] = await Promise.all([
+      fetch('./data/card_index.json'), fetch('./data/card_details.json')
+    ]);
+    const cardIndex = await indexRes.json();
+    const cardDetails = await detailsRes.json();
+
+    const msMap = {}, plMap = {};
+    for (const c of cardIndex) {
+      if (!c.has_ocr) continue;
+      const d = cardDetails[c.number];
+      const ocr = d?.ocr_data;
+      if (!ocr) continue;
+      const name = ocr.name || c.name;
+      if (!name) continue;
+      if (c.type === 'MS') {
+        if (!msMap[name]) msMap[name] = 0;
+        msMap[name]++;
+      } else if (c.type === 'PL') {
+        if (!plMap[name]) plMap[name] = 0;
+        plMap[name]++;
+      }
+    }
+    masterData.ms = Object.entries(msMap).map(([name, count]) => ({ name, count })).sort((a,b) => b.count - a.count);
+    masterData.pl = Object.entries(plMap).map(([name, count]) => ({ name, count })).sort((a,b) => b.count - a.count);
+  } catch(e) {
+    console.error('Failed to load card data:', e);
+  }
+
+  renderWorkList();
+  renderList('ms');
+  renderList('pl');
+}
+
+// ================================================================
+// Tab
+// ================================================================
+function switchTab(btn) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+}
+
+// ================================================================
+// Dropdown builder
+// ================================================================
+function makeSelect(key, name, currentVal) {
+  const cls = currentVal > 0 ? ' has-value' : '';
+  let html = `<select class="corr-select${cls}" data-key="${key}" data-name="${escHtml(name)}" onchange="onSelect(this)">`;
+  for (let i = 0; i <= 30; i++) {
+    html += `<option value="${i}"${i === currentVal ? ' selected' : ''}>${i}</option>`;
+  }
+  html += '</select>';
+  return html;
+}
+
+function onSelect(sel) {
+  const key = sel.dataset.key;
+  const name = sel.dataset.name;
+  const val = parseInt(sel.value) || 0;
+  if (val > 0) {
+    state[key][name] = val;
+    sel.classList.add('has-value');
+  } else {
+    delete state[key][name];
+    sel.classList.remove('has-value');
+  }
+  updateSummary(key);
+}
+
+// ================================================================
+// Work List
+// ================================================================
+function renderWorkList() {
+  const container = document.getElementById('workList');
+  let html = '';
+  for (const name of WORK_NAMES) {
+    const val = state.work[name] || 0;
+    html += `<div class="corr-row">
+      <div class="corr-name">${escHtml(name)}</div>
+      ${makeSelect('work', name, val)}
+    </div>`;
+  }
+  container.innerHTML = html;
+  updateSummary('work');
+}
+
+// ================================================================
+// MS / PL List
+// ================================================================
+function renderList(key) {
+  const container = document.getElementById(key + 'List');
+  const data = masterData[key];
+  const ft = filterText[key];
+  const filtered = ft ? data.filter(d => d.name.toLowerCase().includes(ft)) : data;
+  const page = filtered.slice(0, (pages[key] + 1) * PAGE_SIZE);
+
+  let html = '';
+  for (const item of page) {
+    const val = state[key][item.name] || 0;
+    html += `<div class="corr-row">
+      <div class="corr-name">${escHtml(item.name)}</div>
+      <div class="corr-count">${item.count}枚</div>
+      ${makeSelect(key, item.name, val)}
+    </div>`;
+  }
+  if (page.length < filtered.length) {
+    html += `<button class="load-more-btn" onclick="pages['${key}']++;renderList('${key}')">
+      さらに表示 (残り${filtered.length - page.length}件)
+    </button>`;
+  }
+  container.innerHTML = html;
+  updateSummary(key);
+}
+
+function filterList(key) {
+  filterText[key] = document.getElementById(key + 'Search').value.toLowerCase().trim();
+  pages[key] = 0;
+  renderList(key);
+}
+
+// ================================================================
+// Summary & Reset
+// ================================================================
+function updateSummary(key) {
+  const count = Object.keys(state[key]).length;
+  const labels = { work: '作品', ms: '機体', pl: 'パイロット' };
+  document.getElementById(key + 'Summary').textContent = `設定あり: ${count}${labels[key]}`;
+}
+
+function resetAll(key) {
+  state[key] = {};
+  if (key === 'work') renderWorkList();
+  else renderList(key);
+}
+
+// ================================================================
+// Save & Nav
+// ================================================================
+function save() {
+  for (const key of ['work', 'ms', 'pl']) {
+    localStorage.setItem(STORAGE_KEYS[key], JSON.stringify(state[key]));
+  }
+}
+
+function saveAndGoBack() { save(); goBack(); }
+
+function goBack() {
+  save();
+  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) ||
+                   localStorage.getItem('abds_viewMode') === 'mobile';
+  window.location.href = isMobile ? './mobile.html' : './index.html';
+}
+
+function escHtml(s) {
+  const d = document.createElement('div');
+  d.textContent = s;
+  return d.innerHTML;
+}
+
+init();
+</script>
+</body>
+</html>

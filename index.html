@@ -22,7 +22,7 @@
   }
 })();
 </script>
-<script>if(/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)&&!(location.hash&&location.hash.includes('&rec'))&&!location.search.includes('force')){location.replace('./mobile.html'+location.search+location.hash);}</script>
+<script>(function(){var v=localStorage.getItem('abds_viewMode');if(v==='desktop')return;if(v==='mobile'){location.replace('./mobile.html'+location.search+location.hash);return;}if(/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)&&!(location.hash&&location.hash.includes('&rec'))&&!location.search.includes('force')){location.replace('./mobile.html'+location.search+location.hash);}})();</script>
 <title>ABD Simulator v2</title>
 <link rel="manifest" href="./manifest.json">
 <meta name="theme-color" content="#0f0f0f">
@@ -837,6 +837,8 @@ select,input{font-family:inherit}
 .sidebar-right .sidebar-pagination{flex-shrink:0;padding:0.3rem}
 /* Filter group (collapsible) */
 .filter-group{border:1px solid #2a2a2a;border-radius:4px;overflow:hidden}
+#filterGroupSearch{overflow:visible}
+#filterAltArt.active{background:#3a1a4a;border-color:#e0a0ff;color:#e0a0ff}
 .filter-group-title{
   display:flex;align-items:center;justify-content:space-between;
   padding:0.3rem 0.5rem;background:#1a1a1a;
@@ -937,6 +939,27 @@ select,input{font-family:inherit}
   border:1px solid #333;border-radius:6px;color:#fff;font-size:0.85rem;
 }
 .search-input:focus{border-color:#68efbd;outline:none}
+.link-search-wrap{position:relative}
+.link-search-clear{
+  position:absolute;right:6px;top:50%;transform:translateY(-50%);
+  background:none;border:none;color:#f44336;font-size:1.2rem;cursor:pointer;
+  padding:0 4px;line-height:1;z-index:2;
+}
+.link-search-wrap .search-input.has-value{
+  padding-right:24px;background:#1a2e24;border-color:#68efbd;
+}
+.link-suggest{
+  position:absolute;left:0;right:0;top:100%;z-index:10;
+  background:#1a1a1a;border:1px solid #3a5a4a;border-top:none;border-radius:0 0 6px 6px;
+  max-height:200px;overflow-y:auto;display:none;
+}
+.link-suggest.open{display:block}
+.link-suggest-item{
+  padding:6px 10px;cursor:pointer;border-bottom:1px solid #222;
+}
+.link-suggest-item:hover,.link-suggest-item:active{background:#1e2924}
+.link-suggest-item .lsi-name{color:#68efbd;font-size:0.85rem;font-weight:bold}
+.link-suggest-item .lsi-effect{color:#888;font-size:0.7rem;margin-top:1px}
 .search-btn{
   padding:0.4rem 0.8rem;background:#1e2924;border:1px solid #68efbd;
   border-radius:6px;color:#68efbd;font-size:0.8rem;font-weight:bold;
@@ -1058,17 +1081,30 @@ select,input{font-family:inherit}
   line-height:1.4;
 }
 .thumb-eb-badge{
-  position:absolute;bottom:2px;right:2px;
+  position:absolute;bottom:12px;right:2px;
   background:rgba(255,152,0,0.9);color:#fff;
   font-size:0.55rem;font-weight:bold;padding:0 3px;border-radius:2px;
-  line-height:1.4;
+  line-height:1.4;white-space:nowrap;
 }
+.thumb-eb-badge .eb-lv-down{color:#fff}
+.thumb-eb-badge .eb-lv-up{color:#a5d6a7}
 .thumb-ab-badge{
   position:absolute;bottom:12px;left:2px;
   background:rgba(179,136,255,0.9);color:#fff;
   font-size:0.55rem;font-weight:bold;padding:0 3px;border-radius:2px;
   line-height:1.4;
 }
+.thumb-sp-tags{position:absolute;top:2px;left:2px;display:flex;flex-wrap:wrap;gap:1px;max-width:60%;z-index:2}
+.thumb-sp-tag{font-size:0.5rem;font-weight:bold;padding:0 3px;border-radius:2px;line-height:1.4;color:#fff}
+.thumb-sp-tag.sp-t-貫通{background:rgba(66,165,245,0.9)}
+.thumb-sp-tag.sp-t-範囲{background:rgba(255,112,67,0.9)}
+.thumb-sp-tag.sp-t-スタン{background:rgba(255,235,59,0.9);color:#333}
+.thumb-sp-tag.sp-t-バフ{background:rgba(102,187,106,0.9)}
+.thumb-sp-tag.sp-t-デバフ{background:rgba(171,71,188,0.9)}
+.thumb-sp-tag.sp-t-HP回復{background:rgba(76,175,80,0.9)}
+.thumb-sp-tag.sp-t-変身{background:rgba(38,198,218,0.9)}
+.thumb-sp-tag.sp-t-撃破{background:rgba(244,67,54,0.9)}
+.thumb-sp-tag.sp-t-防衛無視{background:rgba(244,67,54,0.9)}
 .thumb-card-sq{
   font-size:0.6rem;color:#ff69b4;line-height:1.3;
 }
@@ -1230,7 +1266,7 @@ select,input{font-family:inherit}
       <div class="header-menu-divider"></div>
       <div class="cache-menu-section">
         <div class="cache-menu-header">
-          <span class="cache-menu-icon">&#9888;</span>
+          <span class="cache-menu-icon"></span>
           <span class="cache-menu-title">画像キャッシュ</span>
         </div>
         <div class="cache-menu-count" id="cacheCount">キャッシュ: 0枚</div>
@@ -1246,10 +1282,13 @@ select,input{font-family:inherit}
       </div>
       <div class="header-menu-divider"></div>
       <div class="header-menu-row">
-        <button class="header-btn" onclick="clearDataCacheAndReload()" style="flex:1;color:#ff9800;border-color:#ff9800">データ更新（キャッシュクリア）</button>
+        <button class="header-btn" onclick="clearDataCacheAndReload()" style="flex:1;color:#ff9800;border-color:#ff9800">データ更新</button>
+      </div>
+      <div class="header-menu-row">
+        <a href="./corrections.html" class="header-btn" style="flex:1;text-align:center;text-decoration:none;border-color:#ff9800;color:#ff9800">&#9881; パラメータ補正設定</a>
       </div>
       <div class="header-menu-row" style="border-top:1px solid #333;padding-top:0.5rem">
-        <a href="./mobile.html?force" class="header-btn" style="flex:1;text-align:center;text-decoration:none;border-color:#68efbd;color:#68efbd" onclick="this.href='./mobile.html?force'+location.hash">モバイル版</a>
+        <a href="./mobile.html" class="header-btn" style="flex:1;text-align:center;text-decoration:none;border-color:#68efbd;color:#68efbd" onclick="localStorage.setItem('abds_viewMode','mobile');this.href='./mobile.html'+location.hash">モバイル版</a>
       </div>
     </div>
   </div>
@@ -1311,6 +1350,20 @@ select,input{font-family:inherit}
     <!-- LEFT PANE: FILTERS -->
     <div class="sidebar-left">
 
+      <!-- テキスト検索 -->
+      <div class="filter-group" id="filterGroupSearch">
+        <div class="filter-group-title" onclick="toggleFilterGroup('filterGroupSearch')">テキスト検索</div>
+        <div class="filter-group-body">
+          <input type="text" class="search-input" id="searchInput" placeholder="名前・番号で検索..." autocomplete="off">
+          <input type="text" class="search-input" id="searchTextInput" placeholder="カードテキスト検索..." autocomplete="off">
+          <div class="link-search-wrap">
+            <input type="text" class="search-input" id="linkSearchInput" placeholder="リンクアビリティ検索..." autocomplete="off" style="border-color:#3a5a4a;color:#68efbd">
+            <button class="link-search-clear" id="linkSearchClear" onclick="LinkSearch.clear()" style="display:none">&times;</button>
+            <div class="link-suggest" id="linkSuggest"></div>
+          </div>
+        </div>
+      </div>
+
       <!-- ========== 表示シリーズ ========== -->
       <div class="filter-group" id="filterGroupSeries">
         <div class="filter-group-title" onclick="toggleFilterGroup('filterGroupSeries')" style="color:#68efbd">表示シリーズ</div>
@@ -1339,10 +1392,11 @@ select,input{font-family:inherit}
             <button class="rarity-btn" data-rarity="FQ" onclick="SearchPanel.toggleRarity('FQ')">FQ</button>
             <button class="rarity-btn" data-rarity="P" onclick="SearchPanel.toggleRarity('P')">P</button>
             <button class="rarity-btn" data-rarity="U" onclick="SearchPanel.toggleRarity('U')">U</button>
-            <button class="rarity-btn" data-rarity="SEC" onclick="SearchPanel.toggleRarity('SEC')">SEC</button>
+            <button class="rarity-btn" data-rarity="SP-SEC" onclick="SearchPanel.toggleRarity('SP-SEC')">SP-SEC</button>
             <button class="rarity-btn" data-rarity="PR" onclick="SearchPanel.toggleRarity('PR')">PR</button>
             <button class="rarity-btn" data-rarity="SN" onclick="SearchPanel.toggleRarity('SN')">SN</button>
             <button class="rarity-btn" data-rarity="LE" onclick="SearchPanel.toggleRarity('LE')">LE</button>
+            <button class="rarity-btn" id="filterAltArt" onclick="SearchPanel.toggleAltArt()" style="margin-left:4px;border-color:#e0a0ff;color:#e0a0ff">イラスト違い</button>
           </div>
         </div>
       </div>
@@ -1580,15 +1634,6 @@ select,input{font-family:inherit}
         </div>
       </div>
 
-      <!-- テキスト検索 -->
-      <div class="filter-group" id="filterGroupSearch">
-        <div class="filter-group-title" onclick="toggleFilterGroup('filterGroupSearch')">テキスト検索</div>
-        <div class="filter-group-body">
-          <input type="text" class="search-input" id="searchInput" placeholder="名前・番号で検索..." autocomplete="off">
-          <input type="text" class="search-input" id="searchTextInput" placeholder="カードテキスト検索..." autocomplete="off">
-        </div>
-      </div>
-
       <!-- SEARCH / CLEAR buttons -->
       <div class="sidebar-left-actions">
         <button class="search-btn" onclick="SearchPanel.applyFilters()" style="flex:1">SEARCH</button>
@@ -1616,7 +1661,7 @@ select,input{font-family:inherit}
   <div class="modal-content" style="max-width:420px;border-color:#ff5252">
     <button class="modal-close" onclick="ImageCache.closeModal()">&times;</button>
     <div class="cache-modal-body">
-      <h3>&#9888; キャッシュ管理</h3>
+      <h3>キャッシュ管理</h3>
       <div class="cache-modal-stats">
         <span><span class="stat-value" id="cmCacheCount">0</span>キャッシュ枚数</span>
         <span><span class="stat-value" id="cmTotalCount">0</span>全カード数(表裏)</span>
@@ -1627,7 +1672,7 @@ select,input{font-family:inherit}
       <div class="cache-modal-pct" id="cmPct" style="display:none"></div>
       <div class="cache-modal-detail" id="cmDetail"></div>
       <div class="cache-modal-warn" id="cmWarn">
-        ⚠ 公式サイトからカード画像を取得し、ブラウザにキャッシュします。通信量が大きくなる場合があります。Wi-Fi環境での使用を推奨します。
+        公式サイトからカード画像を取得し、ブラウザにキャッシュします。通信量が大きくなる場合があります。Wi-Fi環境での使用を推奨します。<br>※キャッシュでの画像表示は管理者が明示的に停止を行う場合があります。権利者からの求めに対して即時停止する可能性があります。
       </div>
       <div class="cache-modal-btns">
         <button class="primary" id="cmDlBtn" onclick="ImageCache.startDownload()">キャッシュ作成</button>
@@ -1798,6 +1843,34 @@ const AppState = {
   imageSource: 'cache',
   _lastDeckName: '',
 };
+
+// ================================================================
+// Parameter Corrections
+// ================================================================
+const ParamCorrections = {
+  work: {},
+  ms: {},
+  pl: {},
+  load() {
+    try { this.work = JSON.parse(localStorage.getItem('abds_corrWork') || '{}'); } catch(e) { this.work = {}; }
+    try { this.ms = JSON.parse(localStorage.getItem('abds_corrMs') || '{}'); } catch(e) { this.ms = {}; }
+    try { this.pl = JSON.parse(localStorage.getItem('abds_corrPl') || '{}'); } catch(e) { this.pl = {}; }
+  },
+  getCorrectionLevel(msOcr, plOcr) {
+    let level = 0;
+    const links = msOcr?.link_abilities || msOcr?.link_ability || [];
+    for (const la of links) {
+      if (la?.name && this.work[la.name]) { level += this.work[la.name]; break; }
+    }
+    const msName = msOcr?.name;
+    if (msName && this.ms[msName]) level += this.ms[msName];
+    const plName = plOcr?.name;
+    if (plName && this.pl[plName]) level += this.pl[plName];
+    return level;
+  },
+  hasAny() { return Object.keys(this.work).length > 0 || Object.keys(this.ms).length > 0 || Object.keys(this.pl).length > 0; }
+};
+ParamCorrections.load();
 
 // ================================================================
 // Toast
@@ -2049,17 +2122,18 @@ const TacticsPicker = {
     }
 
     const clearBtn = currentId ? `<div class="tactics-picker-card" onclick="TacticsPicker._select(null)" style="justify-content:center;color:#f44336;font-weight:bold;font-size:1.1rem;border-color:#f44336">選択解除</div>` : '';
-    body.innerHTML = `<div class="tactics-picker-grid">${clearBtn}${cards.map(card => `
+    body.innerHTML = `<div class="tactics-picker-grid">${clearBtn}${cards.map(card => {
+      const imgUrl = ImageCache.resolveTacticsUrl(card.thumbnail_url);
+      return `
       <div class="tactics-picker-card${card.id === currentId ? ' selected' : ''}" onclick="TacticsPicker._select('${card.id}')">
-        <img src="${card.thumbnail_url}" alt="${card.name}"
-             onerror="this.onerror=null;this.style.display='none'">
+        ${imgUrl ? `<img src="${imgUrl}" alt="${card.name}">` : ''}
         <div class="tp-info">
           <div class="tp-name">${card.name}</div>
           <div class="tp-effect">${card.effect}</div>
           ${card.condition ? `<div class="tp-condition">${card.condition}</div>` : ''}
         </div>
-      </div>
-    `).join('')}</div>`;
+      </div>`;
+    }).join('')}</div>`;
 
     document.getElementById('tacticsPickerModal').classList.add('open');
   },
@@ -2113,11 +2187,83 @@ const TacticsPicker = {
         return;
       }
 
+      const imgUrl = ImageCache.resolveTacticsUrl(card.thumbnail_url);
       btn.className = 'tactics-btn has-card';
-      btn.innerHTML = `
-        <img src="${card.thumbnail_url}" alt="${card.name}" onerror="this.style.display='none'">
-      `;
+      btn.innerHTML = imgUrl
+        ? `<img src="${imgUrl}" alt="${card.name}">`
+        : `<div class="tactics-placeholder">${card.name}</div>`;
     });
+  }
+};
+
+// ================================================================
+// LinkSearch — リンクアビリティ サジェスト→確定→カードフィルタ
+// ================================================================
+const LinkSearch = {
+  _selected: null, // 確定済みリンク名
+  _init() {
+    const input = document.getElementById('linkSearchInput');
+    const suggest = document.getElementById('linkSuggest');
+    input.addEventListener('input', () => {
+      if (this._selected) { this._selected = null; this._updateInputStyle(); }
+      this._showSuggest(input.value);
+    });
+    input.addEventListener('focus', () => { if (!this._selected) this._showSuggest(input.value); });
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.link-search-wrap')) suggest.classList.remove('open');
+    });
+  },
+  _showSuggest(query) {
+    const suggest = document.getElementById('linkSuggest');
+    const q = query.trim().toLowerCase();
+    if (!q) { suggest.classList.remove('open'); return; }
+    const li = AppState.linkIndex;
+    if (!li || Object.keys(li).length === 0) { suggest.classList.remove('open'); return; }
+    const entries = Object.entries(li)
+      .filter(([name, info]) => name.toLowerCase().includes(q) || (info.effect || '').toLowerCase().includes(q))
+      .sort((a, b) => a[0].localeCompare(b[0], 'ja'))
+      .slice(0, 20);
+    if (entries.length === 0) { suggest.classList.remove('open'); return; }
+    suggest.innerHTML = entries.map(([name, info]) =>
+      `<div class="link-suggest-item" onmousedown="LinkSearch.select('${name.replace(/'/g, "\\'")}')">
+        <div class="lsi-name">${name} <span style="color:#555;font-weight:normal">(${info.required}枚)</span></div>
+        <div class="lsi-effect">${info.effect || ''}</div>
+      </div>`
+    ).join('');
+    suggest.classList.add('open');
+  },
+  select(name) {
+    this._selected = name;
+    const input = document.getElementById('linkSearchInput');
+    input.value = name;
+    document.getElementById('linkSuggest').classList.remove('open');
+    this._updateInputStyle();
+    SearchPanel.applyFilters();
+  },
+  clear() {
+    this._selected = null;
+    const input = document.getElementById('linkSearchInput');
+    input.value = '';
+    this._updateInputStyle();
+    document.getElementById('linkSuggest').classList.remove('open');
+    SearchPanel.applyFilters();
+  },
+  _updateInputStyle() {
+    const input = document.getElementById('linkSearchInput');
+    const clearBtn = document.getElementById('linkSearchClear');
+    if (this._selected) {
+      input.classList.add('has-value');
+      clearBtn.style.display = '';
+    } else {
+      input.classList.remove('has-value');
+      clearBtn.style.display = 'none';
+    }
+  },
+  getSelectedCards() {
+    if (!this._selected) return null;
+    const info = AppState.linkIndex[this._selected];
+    if (!info) return null;
+    return new Set([...(info.ms_cards || []), ...(info.pl_cards || [])]);
   }
 };
 
@@ -2125,19 +2271,30 @@ const TacticsPicker = {
 // DeckManager
 // ================================================================
 const DeckManager = {
-  async setCard(slotIndex, cardNumber) {
+  setCard(slotIndex, cardNumber) {
     UndoManager.snapshot();
     AppState.deck[slotIndex] = cardNumber;
-    // カード変更直後にヘッダー（コスト・殲滅/制圧/防衛）を即時反映（cardIndex ベース）
     UIRenderer._updateHeader();
-    const detail = await CardService.fetchDetail(cardNumber);
-    if (detail) {
-      AppState.deckOcr[slotIndex] = detail.ocr_data || null;
+    // 詳細データが既にあれば即座に反映、なければバックグラウンドで取得後に再描画
+    const cached = AppState.cardDetails[cardNumber];
+    if (cached) {
+      AppState.deckOcr[slotIndex] = cached.ocr_data || null;
+      UIRenderer.renderAll();
+      UndoManager.snapshot();
+      this._autoSave();
+      this._updateHash();
+    } else {
+      UIRenderer.renderAll();
+      this._autoSave();
+      this._updateHash();
+      CardService.fetchDetail(cardNumber).then(detail => {
+        if (detail) {
+          AppState.deckOcr[slotIndex] = detail.ocr_data || null;
+          UIRenderer.renderAll();
+          UndoManager.snapshot();
+        }
+      });
     }
-    UIRenderer.renderAll();
-    UndoManager.snapshot();
-    this._autoSave();
-    this._updateHash();
   },
 
   clearCard(slotIndex) {
@@ -2516,10 +2673,11 @@ const DeckManager = {
     if (saved) {
       try {
         const data = JSON.parse(saved);
-        if (data.tacticsMain) AppState.tacticsMain = data.tacticsMain;
-        if (data.tacticsSub) AppState.tacticsSub = data.tacticsSub;
         if (data.cards && data.cards.some(n => n)) {
-          await this._applyNumbers(data.cards);
+          const numbers = [...data.cards];
+          while (numbers.length < 10) numbers.push('');
+          if (data.tacticsMain || data.tacticsSub) { numbers[10] = data.tacticsMain || ''; numbers[11] = data.tacticsSub || ''; }
+          await this._applyNumbers(numbers);
           return;
         }
         TacticsPicker.renderButtons();
@@ -2560,9 +2718,10 @@ const DeckManager = {
     const decks = JSON.parse(localStorage.getItem('gab_decks') || '{}');
     const deck = decks[name];
     if (!deck) return;
-    AppState.tacticsMain = deck.tacticsMain || null;
-    AppState.tacticsSub = deck.tacticsSub || null;
-    await this._applyNumbers(deck.cards);
+    const numbers = [...(deck.cards || [])];
+    while (numbers.length < 10) numbers.push('');
+    if (deck.tacticsMain || deck.tacticsSub) { numbers[10] = deck.tacticsMain || ''; numbers[11] = deck.tacticsSub || ''; }
+    await this._applyNumbers(numbers);
     AppState._lastDeckName = name;
     closeDeckLoadModal();
     Toast.show(`デッキ「${name}」を適用しました`, 'success');
@@ -2711,12 +2870,16 @@ const DeckManager = {
 // 画像は <img> タグで公式URLを直接指定し、Service Worker がキャッシュする。
 // IndexedDB は使わない（opaque blob の iOS 制限を回避）。
 // ================================================================
-const PLACEHOLDER_SVG = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='280'%3E%3Crect fill='%231a1a1a' width='200' height='280'/%3E%3Ctext fill='%23555' font-size='12' x='100' y='140' text-anchor='middle'%3Eno image%3C/text%3E%3C/svg%3E";
+let PLACEHOLDER_SVG = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='280'%3E%3Crect fill='%231a1a1a' width='200' height='280'/%3E%3Ctext fill='%23555' font-size='12' x='100' y='140' text-anchor='middle'%3Eno image%3C/text%3E%3C/svg%3E";
+const DISABLED_PLACEHOLDER_PROD = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='280'%3E%3Crect fill='%231a1a1a' width='200' height='280'/%3E%3Ctext fill='%23ff5252' font-size='18' font-weight='bold' x='100' y='130' text-anchor='middle'%3E%E7%94%BB%E5%83%8F%E8%A1%A8%E7%A4%BA%E5%81%9C%E6%AD%A2%E4%B8%AD%3C/text%3E%3Ctext fill='%23ff8a80' font-size='13' x='100' y='158' text-anchor='middle'%3E%E6%A8%A9%E5%88%A9%E8%80%85%E3%81%AE%E8%A6%81%E8%AB%8B%E3%81%AB%E3%82%88%E3%82%8A%E5%81%9C%E6%AD%A2%3C/text%3E%3C/svg%3E";
+const DISABLED_PLACEHOLDER_TEST = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='280'%3E%3Crect fill='%231a1a1a' width='200' height='280'/%3E%3Ctext fill='%23ff9800' font-size='18' font-weight='bold' x='100' y='130' text-anchor='middle'%3E%E7%94%BB%E5%83%8F%E8%A1%A8%E7%A4%BA%E5%81%9C%E6%AD%A2%E4%B8%AD%3C/text%3E%3Ctext fill='%23ffb74d' font-size='13' x='100' y='158' text-anchor='middle'%3E%E3%82%AD%E3%83%AB%E3%82%B9%E3%82%A4%E3%83%83%E3%83%81%E3%83%86%E3%82%B9%E3%83%88%E4%B8%AD%3C/text%3E%3C/svg%3E";
 const IMG_BASE = 'https://www.gundam-ab.com/images/cardlist/card/';
 const ImageCache = {
   CONCURRENCY: 8,
   _cachedKeys: new Set(),
   _downloading: false,
+  _cacheLost: false,
+  _disabled: false,
 
   _imgUrl(cardNumber, side) {
     return side === 'back'
@@ -2726,31 +2889,111 @@ const ImageCache = {
 
   // --- Init: SW Cache にあるキーを列挙 ---
   async init() {
-    if (navigator.storage && navigator.storage.persist) {
-      try { await navigator.storage.persist(); } catch (_) {}
-    }
     try {
+      // リモートキルスイッチ: version.json の imageDisabled フラグを確認
+      try {
+        const vRes = await fetch('./data/version.json', { cache: 'no-store' });
+        if (vRes.ok) {
+          const vData = await vRes.json();
+          if (vData.imageDisabled) {
+            this._disabled = true;
+            this._disabledMode = vData.imageDisabled === 'test' ? 'test' : 'prod';
+            this._cachedKeys.clear();
+            this._updateCount(0);
+            PLACEHOLDER_SVG = this._disabledMode === 'test' ? DISABLED_PLACEHOLDER_TEST : DISABLED_PLACEHOLDER_PROD;
+            if (this._disabledMode === 'prod') {
+              try { await caches.delete('card-images-v1'); } catch (_) {}
+              localStorage.removeItem('abds_cacheCreated');
+            }
+            console.warn('ImageCache: disabled by remote kill switch (mode:', this._disabledMode + ')');
+            this._showDisabledAlert();
+            return;
+          }
+        }
+      } catch (e) { /* version.json取得失敗時はキャッシュ有効のまま */ }
+
       const cache = await caches.open('card-images-v1');
       const keys = await cache.keys();
       keys.forEach(req => {
         const url = new URL(req.url);
-        const m = url.pathname.match(/\/([A-Za-z0-9_\-]+(?:_b)?)\.jpg/);
+        const m = url.pathname.match(/\/([A-Za-z0-9_\-]+(?:_b)?)\.(jpg|png)/);
         if (m) this._cachedKeys.add(m[1]);
       });
       this._updateCount(this._cachedKeys.size);
       console.log('ImageCache: SW cache has', this._cachedKeys.size, 'images');
+
+      // キャッシュ消失検出
+      const wasCreated = localStorage.getItem('abds_cacheCreated');
+      if (wasCreated && this._cachedKeys.size === 0) {
+        this._cacheLost = true;
+        localStorage.removeItem('abds_cacheCreated');
+        this._showCacheLostAlert();
+      }
     } catch (e) {
       console.warn('ImageCache: cache check failed', e);
     }
   },
 
+  _showCacheLostAlert() {
+    const overlay = document.createElement('div');
+    overlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px';
+    const box = document.createElement('div');
+    box.style.cssText = 'background:#1a1a1a;border:1px solid #f44336;border-radius:12px;padding:24px;max-width:360px;width:100%;text-align:center;color:#e0e0e0;font-size:0.9rem;line-height:1.6';
+    if (document.body.classList.contains('light')) {
+      box.style.background = '#fff';
+      box.style.color = '#333';
+    }
+    box.innerHTML = `
+      <div style="margin-bottom:12px"></div>
+      <div style="font-weight:bold;color:#ff8a80;margin-bottom:8px;font-size:1rem">キャッシュが削除されています</div>
+      <div style="margin-bottom:16px">今後はカード画像が表示されません。<br>表示する場合は再度キャッシュを作成してください。</div>
+      <button style="padding:8px 24px;border-radius:6px;border:none;background:#68efbd;color:#000;font-weight:bold;font-size:0.9rem;cursor:pointer" onclick="this.closest('div[style*=fixed]').remove()">OK</button>
+    `;
+    overlay.appendChild(box);
+    document.body.appendChild(overlay);
+  },
+
+  _showDisabledAlert() {
+    const isTest = this._disabledMode === 'test';
+    const borderColor = isTest ? '#ff9800' : '#f44336';
+    const titleColor = isTest ? '#ffb74d' : '#ff8a80';
+    const title = isTest ? 'キルスイッチテスト中' : '画像キャッシュ機能が停止されています';
+    const message = isTest
+      ? 'キルスイッチのテスト中です。画像表示が一時的に無効化されています。'
+      : '権利者の要請により画像キャッシュ機能が停止されています。<br>カード画像は表示されません。';
+    const overlay = document.createElement('div');
+    overlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px';
+    const box = document.createElement('div');
+    box.style.cssText = `background:#1a1a1a;border:1px solid ${borderColor};border-radius:12px;padding:24px;max-width:360px;width:100%;text-align:center;color:#e0e0e0;font-size:0.9rem;line-height:1.6`;
+    if (document.body.classList.contains('light')) {
+      box.style.background = '#fff';
+      box.style.color = '#333';
+    }
+    box.innerHTML = `
+      <div style="margin-bottom:12px"></div>
+      <div style="font-weight:bold;color:${titleColor};margin-bottom:8px;font-size:1rem">${title}</div>
+      <div style="margin-bottom:16px">${message}</div>
+      <button style="padding:8px 24px;border-radius:6px;border:none;background:#68efbd;color:#000;font-weight:bold;font-size:0.9rem;cursor:pointer" onclick="this.closest('div[style*=fixed]').remove()">OK</button>
+    `;
+    overlay.appendChild(box);
+    document.body.appendChild(overlay);
+  },
+
   // --- Resolve: 公式URLを返す（SWがキャッシュ済みならオフラインでも表示可） ---
   resolve(cardNumber, side = 'front') {
-    if (!cardNumber) return null;
+    if (!cardNumber || this._disabled) return null;
     const key = side === 'back' ? `${cardNumber}_b` : cardNumber;
     if (this._cachedKeys.has(key)) {
       return this._imgUrl(cardNumber, side);
     }
+    return null;
+  },
+
+  // --- resolveTacticsUrl: 作戦カード画像もキャッシュ済みのみ表示 ---
+  resolveTacticsUrl(url) {
+    if (!url || this._disabled) return null;
+    const m = url.match(/\/([A-Za-z0-9_\-]+)\.(jpg|png)$/);
+    if (m && this._cachedKeys.has(m[1])) return url;
     return null;
   },
 
@@ -2793,8 +3036,11 @@ const ImageCache = {
     const total = (AppState.cardIndex || []).filter(c => c.number).length * 2;
     document.getElementById('cmTotalCount').textContent = total;
     document.getElementById('cmWarn').style.display = '';
-    document.getElementById('cmDlBtn').disabled = false;
+    document.getElementById('cmDlBtn').disabled = this._disabled;
     document.getElementById('cmClearBtn').disabled = false;
+    if (this._disabled) {
+      document.getElementById('cmDetail').textContent = this._disabledMode === 'test' ? 'キルスイッチテスト中 - キャッシュ作成は無効です' : '権利者の要請により画像キャッシュ機能が停止されています';
+    }
     document.getElementById('cmProgress').style.display = 'none';
     document.getElementById('cmPct').style.display = 'none';
     document.getElementById('cmDetail').textContent = '';
@@ -2809,6 +3055,8 @@ const ImageCache = {
   async clear() {
     try { await caches.delete('card-images-v1'); } catch (_) {}
     this._cachedKeys.clear();
+    this._cacheLost = false;
+    localStorage.removeItem('abds_cacheCreated');
     this._updateCount(0);
     Toast.show('キャッシュをクリアしました', 'success', 2000);
     UIRenderer.renderAll();
@@ -2817,6 +3065,13 @@ const ImageCache = {
 
   // --- Download: <img> プリロードで SW キャッシュをトリガー ---
   async startDownload() {
+    if (this._disabled) {
+      const msg = this._disabledMode === 'test'
+        ? 'キルスイッチテスト中のためキャッシュ作成はできません'
+        : '権利者の要請により画像キャッシュ機能が停止されています';
+      alert(msg);
+      return;
+    }
     if (this._downloading) return;
     this._downloading = true;
     document.getElementById('cmDlBtn').disabled = true;
@@ -2840,6 +3095,15 @@ const ImageCache = {
       items.push({ key: num, url: this._imgUrl(num, 'front') });
       items.push({ key: `${num}_b`, url: this._imgUrl(num, 'back') });
     });
+    // 作戦カード画像も追加
+    ['main', 'sub'].forEach(type => {
+      (AppState.tacticsCards[type] || []).forEach(c => {
+        if (c.thumbnail_url) {
+          const m = c.thumbnail_url.match(/\/([A-Za-z0-9_\-]+)\.(jpg|png)$/);
+          if (m) items.push({ key: m[1], url: c.thumbnail_url });
+        }
+      });
+    });
     if (!items.length) {
       Toast.show('カードデータがありません', 'error');
       this._downloading = false;
@@ -2854,36 +3118,39 @@ const ImageCache = {
     const total = items.length;
     if (done > 0) this._onProgress(done, total, failed);
 
-    // <img> プリロードで SW の fetch イベントを発火させてキャッシュ
+    // SW経由で画像をfetch→キャッシュ格納（SWのfetchハンドラはcache-onlyなのでメッセージAPIで依頼）
+    const sw = navigator.serviceWorker?.controller;
     const queue = [...toFetch];
-    const worker = () => new Promise(resolve => {
-      const next = () => {
-        if (!queue.length) { resolve(); return; }
-        const { key, url } = queue.shift();
-        const img = new Image();
-        img.onload = () => {
-          this._cachedKeys.add(key);
-          done++;
-          this._onProgress(done, total, failed);
-          next();
-        };
-        img.onerror = () => {
-          failed++;
-          done++;
-          this._onProgress(done, total, failed);
-          next();
-        };
-        img.src = url;
+    const cacheOneImage = (key, url) => new Promise(resolve => {
+      if (!sw) { resolve(false); return; }
+      const handler = (e) => {
+        if (e.data && (e.data.type === 'CACHE_IMAGE_OK' || e.data.type === 'CACHE_IMAGE_FAIL') && e.data.url === url) {
+          navigator.serviceWorker.removeEventListener('message', handler);
+          resolve(e.data.type === 'CACHE_IMAGE_OK');
+        }
       };
-      next();
+      navigator.serviceWorker.addEventListener('message', handler);
+      sw.postMessage({ type: 'CACHE_IMAGE', url });
     });
+    const worker = async () => {
+      while (queue.length) {
+        const { key, url } = queue.shift();
+        const ok = await cacheOneImage(key, url);
+        if (ok) this._cachedKeys.add(key);
+        else failed++;
+        done++;
+        this._onProgress(done, total, failed);
+      }
+    };
     await Promise.all(Array.from(
       { length: Math.min(this.CONCURRENCY, toFetch.length || 1) },
       () => worker()
     ));
 
     this._downloading = false;
+    this._cacheLost = false;
     this._refreshStats();
+    if (this._cachedKeys.size > 0) localStorage.setItem('abds_cacheCreated', '1');
     document.getElementById('cmProgressBar').style.width = '100%';
     document.getElementById('cmPct').textContent = '完了';
     document.getElementById('cmDetail').textContent =
@@ -3091,75 +3358,36 @@ const UIRenderer = {
 
   _renderUnitStats(u, msOcr, plOcr) {
     const container = document.getElementById(`unit-stats-${u}`);
-    const maxVal = 1000;
-
-    const getStats = (ocr) => ({
-      mobility: safeInt(ocr?.stats?.mobility),
-      ranged: safeInt(ocr?.stats?.ranged_attack),
-      melee: safeInt(ocr?.stats?.melee_attack),
-      hp: safeInt(ocr?.stats?.hp)
-    });
-    const ms = getStats(msOcr);
-    const pl = getStats(plOcr);
-
-    // Step 1: 地形適性補正（最初に適用、MSの素ステのみ対象、HP除外）
-    const terrainMult = this._getTerrainMultiplier(msOcr);
-
-    // Step 2: リンクバフ（MS・PLのリンクをユニット単位で統合）
-    const unitBuffs = getUnitLinkBuffs(msOcr, plOcr);
-    const applyBuff = (val, sm, med) => Math.round(val * Math.pow(1.1, sm) * Math.pow(1.2, med));
-
-    const stats = ['mobility', 'ranged', 'melee', 'hp'];
-    const labels = { mobility: '機動', ranged: '遠距', melee: '近距', hp: 'HP' };
-
+    const result = calcUnitStats(msOcr, plOcr, this._getTerrainMultiplier(msOcr));
     let html = '';
-    stats.forEach(s => {
-      // 地形適性をMSの素ステに最初に適用
-      let msBase = ms[s];
-      let terrainBuff = 0;
-      if (s !== 'hp' && terrainMult !== 1.0) {
-        const msAfterTerrain = Math.round(msBase * terrainMult);
-        terrainBuff = msAfterTerrain - msBase;
-        msBase = msAfterTerrain;
-      }
-
-      const base = ms[s] + pl[s]; // 表示用の素ステ合計（地形補正前）
-      // 地形補正後のMS + PL の合計にユニット統合バフを適用
-      const baseAfterTerrain = msBase + pl[s];
-      const total = applyBuff(baseAfterTerrain, unitBuffs[s].small, unitBuffs[s].medium);
-
-      const linkBuff = total - baseAfterTerrain;
-      const basePct = Math.min((base / maxVal) * 100, 100);
-      const linkBuffPct = Math.min((linkBuff / maxVal) * 100, 100 - basePct);
-
-      // 地形バー: 正なら緑で延伸、負なら赤ストライプで減少域を示す
+    result.forEach(r => {
+      const basePct = Math.min((r.base / 1000) * 100, 100);
+      const linkBuffPct = Math.min((r.linkBuff / 1000) * 100, 100 - basePct);
       let terrainBarHtml = '';
-      if (terrainBuff > 0) {
-        const tWidth = Math.min((terrainBuff / maxVal) * 100, 100 - basePct - linkBuffPct);
+      if (r.terrainBuff > 0) {
+        const tWidth = Math.min((r.terrainBuff / 1000) * 100, 100 - basePct - linkBuffPct);
         terrainBarHtml = `<div class="stat-bar-terrain-pos" style="width:${tWidth}%"></div>`;
-      } else if (terrainBuff < 0) {
-        // flexレイアウトのため、position:absoluteで負の領域を重ねる
-        const totalPct = (Math.max(total, 0) / maxVal) * 100;
-        const lossPct = (Math.abs(terrainBuff) / maxVal) * 100;
+      } else if (r.terrainBuff < 0) {
+        const totalPct = (Math.max(r.total, 0) / 1000) * 100;
+        const lossPct = (Math.abs(r.terrainBuff) / 1000) * 100;
         terrainBarHtml = `<div class="stat-bar-terrain-neg" style="position:absolute;right:0;width:${Math.min(lossPct, 100 - totalPct)}%;left:${totalPct}%"></div>`;
       }
-
-      // テキストラベル
       let terrainLabel = '';
-      if (terrainBuff > 0) terrainLabel = ` <span class="stat-terrain-text positive">(地形+${terrainBuff})</span>`;
-      else if (terrainBuff < 0) terrainLabel = ` <span class="stat-terrain-text negative">(地形${terrainBuff})</span>`;
-
+      if (r.terrainBuff > 0) terrainLabel = ` <span class="stat-terrain-text positive">(地形+${r.terrainBuff})</span>`;
+      else if (r.terrainBuff < 0) terrainLabel = ` <span class="stat-terrain-text negative">(地形${r.terrainBuff})</span>`;
+      let corrLabel = '';
+      if (r.corrBuff > 0) corrLabel = ` <span style="color:#ce93d8">Lv+${r.corrBuff}</span>`;
       const pad = (n) => String(n).padStart(3, '\u2007');
-      const baseLabel = `${pad(ms[s])}+${pad(pl[s])}=${pad(base)}`;
-      const buffLabel = linkBuff > 0 ? ` <span class="stat-buff-text">+${pad(linkBuff)}</span>` : '';
+      const baseLabel = `${pad(r.msVal)}+${pad(r.plVal)}=${pad(r.base)}`;
+      const buffLabel = r.linkBuff > 0 ? ` <span class="stat-buff-text">+${pad(r.linkBuff)}</span>` : '';
       html += `
         <div class="stat-row">
-          <span class="stat-label">${labels[s]}</span>
+          <span class="stat-label">${r.label}</span>
           <div class="stat-track">
             <div class="stat-bar-base" style="width:${basePct}%"></div>
             <div class="stat-bar-buff" style="width:${linkBuffPct}%"></div>
             ${terrainBarHtml}
-            <span class="stat-value">${baseLabel}${buffLabel}${terrainLabel}${(linkBuff > 0 || terrainBuff !== 0) ? ` → ${pad(total)}` : ''}</span>
+            <span class="stat-value">${baseLabel}${buffLabel}${terrainLabel}${corrLabel}${(r.linkBuff > 0 || r.terrainBuff !== 0 || r.corrBuff > 0) ? ` → ${pad(r.total)}` : ''}</span>
           </div>
         </div>
       `;
@@ -4064,11 +4292,20 @@ const CardBookmark = {
 // ================================================================
 // SearchPanel - 右サイドバー検索
 // ================================================================
+// Fuzzy search normalizer: normalize numerals, remove separators
+function _normalizeSearch(s) {
+  return s.toLowerCase()
+    .replace(/[Ⅰⅰ]/g,'1').replace(/[Ⅱⅱ]/g,'2').replace(/[Ⅲⅲ]/g,'3').replace(/[Ⅳⅳ]/g,'4').replace(/[Ⅴⅴ]/g,'5').replace(/[Ⅵⅵ]/g,'6').replace(/[Ⅶⅶ]/g,'7').replace(/[Ⅷⅷ]/g,'8').replace(/[Ⅸⅸ]/g,'9').replace(/[Ⅹⅹ]/g,'10')
+    .replace(/壱/g,'1').replace(/弐/g,'2').replace(/参/g,'3').replace(/四/g,'4').replace(/五/g,'5').replace(/六/g,'6').replace(/七/g,'7').replace(/八/g,'8').replace(/九/g,'9').replace(/十/g,'10')
+    .replace(/[①]/g,'1').replace(/[②]/g,'2').replace(/[③]/g,'3').replace(/[④]/g,'4').replace(/[⑤]/g,'5').replace(/[⑥]/g,'6').replace(/[⑦]/g,'7').replace(/[⑧]/g,'8').replace(/[⑨]/g,'9')
+    .replace(/[・･\u30FB\u00B7\s　\-\u2010-\u2015\u2212]/g,'');
+}
 const SearchPanel = {
   _lockedType: null,
   _currentRarity: new Set(),
   _currentCategory: new Set(),
   _selectedSeries: new Set(),
+  _altArt: false,
   _filteredCards: [],
   _page: 0,
   _perPage: 60,
@@ -4082,9 +4319,12 @@ const SearchPanel = {
     document.getElementById('searchInput').addEventListener('keydown', (e) => {
       if (e.key === 'Enter') this.applyFilters();
     });
+    document.getElementById('searchInput').addEventListener('blur', () => this.applyFilters());
     document.getElementById('searchTextInput').addEventListener('keydown', (e) => {
       if (e.key === 'Enter') this.applyFilters();
     });
+    document.getElementById('searchTextInput').addEventListener('blur', () => this.applyFilters());
+    LinkSearch._init();
     // Terrain type enables rank select
     document.getElementById('filterTerrainType').addEventListener('change', () => {
       const hasType = !!document.getElementById('filterTerrainType').value;
@@ -4120,8 +4360,10 @@ const SearchPanel = {
     const state = {
       searchInput: document.getElementById('searchInput').value,
       searchTextInput: document.getElementById('searchTextInput').value,
+      linkSelected: LinkSearch._selected || '',
       rarity: [...this._currentRarity],
       category: [...this._currentCategory],
+      altArt: this._altArt,
       illustrator: document.getElementById('filterIllustrator').value,
       costMin: document.getElementById('filterCostMin').value,
       costMax: document.getElementById('filterCostMax').value,
@@ -4139,16 +4381,22 @@ const SearchPanel = {
       skillName: document.getElementById('filterSkillName').value,
       toggles: Object.fromEntries(Object.entries(this._t).map(([k,v]) => [k, [...v]])),
     };
-    localStorage.setItem('abds_search_filters', JSON.stringify(state));
+    const key = 'abds_search_filters' + (this._lockedType ? '_' + this._lockedType : '');
+    localStorage.setItem(key, JSON.stringify(state));
   },
 
   _restoreFilters() {
-    const raw = localStorage.getItem('abds_search_filters');
+    const key = 'abds_search_filters' + (this._lockedType ? '_' + this._lockedType : '');
+    const raw = localStorage.getItem(key);
     if (!raw) return;
     try {
       const s = JSON.parse(raw);
       document.getElementById('searchInput').value = s.searchInput || '';
       document.getElementById('searchTextInput').value = s.searchTextInput || '';
+      if (s.linkSelected) LinkSearch.select(s.linkSelected);
+      // AltArt
+      this._altArt = !!s.altArt;
+      document.getElementById('filterAltArt').classList.toggle('active', this._altArt);
       // Rarity
       this._currentRarity = new Set(s.rarity || []);
       document.querySelectorAll('.rarity-btn').forEach(b => {
@@ -4301,6 +4549,12 @@ const SearchPanel = {
     this.applyFilters();
   },
 
+  toggleAltArt() {
+    this._altArt = !this._altArt;
+    document.getElementById('filterAltArt').classList.toggle('active', this._altArt);
+    this.applyFilters();
+  },
+
   setCategory(cat) {
     if (this._currentCategory.has(cat)) {
       this._currentCategory.delete(cat);
@@ -4354,6 +4608,10 @@ const SearchPanel = {
     if (document.getElementById('searchInput').value.trim()) return true;
     // テキスト検索もシリーズなしで動作
     if (document.getElementById('searchTextInput').value.trim()) return true;
+    // リンクアビリティ検索もシリーズなしで動作
+    if (LinkSearch._selected) return true;
+    // イラスト違いはシリーズなしで動作
+    if (this._altArt) return true;
     // ブックマーク表示はシリーズなしで動作
     const bm = document.getElementById('filterBookmarkCards'); if (bm && bm.checked) return true;
     return false;
@@ -4509,22 +4767,32 @@ const SearchPanel = {
     if (skEff.size > 0) {
       cards = cards.filter(c => _noDetail(c) || (c.skill_effect_tags && c.skill_effect_tags.some(t => skEff.has(t))));
     }
-    // Name/number search
-    const q = document.getElementById('searchInput').value.trim().toLowerCase();
-    if (q) {
+    // Name/number search (fuzzy: numerals, separators normalized)
+    const qRaw = document.getElementById('searchInput').value.trim();
+    if (qRaw) {
+      const qN = _normalizeSearch(qRaw);
       cards = cards.filter(c =>
-        (c.number || '').toLowerCase().includes(q) ||
-        (c.name || '').toLowerCase().includes(q)
+        _normalizeSearch(c.number || '').includes(qN) ||
+        _normalizeSearch(c.name || '').includes(qN)
       );
     }
     // Full text search (skills, abilities, weapons, descriptions)
-    const qt = document.getElementById('searchTextInput').value.trim().toLowerCase();
-    if (qt) {
-      const terms = qt.split(/\s+/);
+    const qtRaw = document.getElementById('searchTextInput').value.trim();
+    if (qtRaw) {
+      const terms = qtRaw.split(/\s+/).map(t => _normalizeSearch(t));
       cards = cards.filter(c => {
-        const txt = c.search_text || '';
+        const txt = _normalizeSearch(c.search_text || '');
         return terms.every(t => txt.includes(t));
       });
+    }
+    // Link ability search — 確定済みリンクの所属カードに絞込
+    const linkCards = LinkSearch.getSelectedCards();
+    if (linkCards) {
+      cards = cards.filter(c => linkCards.has(c.number));
+    }
+    // イラスト違いフィルタ
+    if (this._altArt) {
+      cards = cards.filter(c => c.number.includes('_'));
     }
 
     // Bookmark OR merge: bookmarked cards are added to results (union)
@@ -4572,11 +4840,14 @@ const SearchPanel = {
     document.getElementById('filterIllustrator').value = '';
     document.getElementById('searchInput').value = '';
     document.getElementById('searchTextInput').value = '';
+    LinkSearch.clear();
     // Toggle filters clear
     Object.values(this._t).forEach(s => s.clear());
     document.querySelectorAll('.tbtn').forEach(b => b.className = 'tbtn');
     this._currentRarity = new Set();
     this._currentCategory = new Set();
+    this._altArt = false;
+    document.getElementById('filterAltArt').classList.remove('active');
     document.querySelectorAll('.rarity-btn').forEach(b => b.classList.remove('active'));
     document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
     localStorage.removeItem('abds_search_filters');
@@ -4635,8 +4906,22 @@ const SearchPanel = {
           </div>
           ${noOcr ? '<div class="thumb-no-ocr-badge">未OCR</div>' : ''}
           ${card.sq_rush_effect || card.sqsp_text ? '<div class="thumb-sq-badge">SQ</div>' : ''}
-          ${card.has_eb || card.has_eb_skill || card.has_eb_link ? '<div class="thumb-eb-badge">EB</div>' : ''}
+          ${(()=>{
+            if (!card.has_eb && !card.has_eb_skill && !card.has_eb_link) return '';
+            let ebLabel = card.eb_type === 'sp' ? 'EBSP' : 'EB';
+            if (card.has_eb && card.eb_text) {
+              const dm = card.eb_text.match(/EBLv\.を(\d+)下げ/);
+              const um = card.eb_text.match(/EBLv\.が(\d+)に上昇/);
+              if (dm || um) {
+                ebLabel += '<br>';
+                if (dm) ebLabel += '<span class="eb-lv-down">↓' + dm[1] + '</span>';
+                if (um) ebLabel += '<span class="eb-lv-up">↑' + um[1] + '</span>';
+              }
+            }
+            return '<div class="thumb-eb-badge">' + ebLabel + '</div>';
+          })()}
           ${card.has_ab_link ? '<div class="thumb-ab-badge">AB</div>' : ''}
+          ${card.sp_effect_tags && card.sp_effect_tags.length ? '<div class="thumb-sp-tags">' + card.sp_effect_tags.map(t => '<span class="thumb-sp-tag sp-t-' + t + '">' + escapeHtml(t) + '</span>').join('') + '</div>' : ''}
           ${overlayHtml}
           <div class="thumb-detail-btn" onclick="event.stopPropagation();showCardModal('${card.number}')">詳細</div>
           <button class="thumb-bm-btn${CardBookmark.has(card.number) ? ' bm-on' : ''}" onclick="event.stopPropagation();SearchPanel._toggleBm(this,'${card.number}')" title="ブックマーク">${CardBookmark.has(card.number) ? '&#9733;' : '&#9734;'}</button>
@@ -4691,7 +4976,6 @@ const SearchPanel = {
   _selectCard(card) {
     const slot = AppState.activeSlot;
     if (slot === null) {
-      // Auto-assign to first empty slot of matching type
       const type = card.type;
       const range = type === 'MS' ? [0,1,2,3,4] : [5,6,7,8,9];
       const emptySlot = range.find(i => !AppState.deck[i]);
@@ -4703,7 +4987,6 @@ const SearchPanel = {
       closeCardPicker();
       return;
     }
-    // Check type compatibility
     const slotType = slot < 5 ? 'MS' : 'PL';
     if (card.type && card.type !== slotType) {
       Toast.show(`${slotType}スロットに${card.type}カードはセット不可`, 'error');
@@ -4823,9 +5106,10 @@ function getLinkBuffs(ocr) {
     melee: { small: 0, medium: 0 },
     hp: { small: 0, medium: 0 }
   };
-  if (!ocr || !Array.isArray(ocr.link_abilities)) return buffs;
+  const links = ocr?.link_abilities || ocr?.link_ability || [];
+  if (!Array.isArray(links)) return buffs;
 
-  ocr.link_abilities.forEach(link => {
+  links.forEach(link => {
     const eff = link.effect || '';
     const { required, category } = _parseLinkCondition(link.condition);
     if (!required) return;
@@ -4844,18 +5128,30 @@ function getLinkBuffs(ocr) {
   return buffs;
 }
 
-// ユニット（MS+PL）の合算リンクバフ: 同名リンクが両方にあれば×1.1×1.1になる
-function getUnitLinkBuffs(msOcr, plOcr) {
-  const ms = getLinkBuffs(msOcr);
-  const pl = getLinkBuffs(plOcr);
-  const merged = {};
-  for (const s of ['mobility', 'ranged', 'melee', 'hp']) {
-    merged[s] = {
-      small: ms[s].small + pl[s].small,
-      medium: ms[s].medium + pl[s].medium
-    };
-  }
-  return merged;
+// 共通ステータス計算（mobile/desktop共通ロジック）
+// MS・PLそれぞれにリンクバフ適用後に合算
+function calcUnitStats(msOcr, plOcr, terrainMult) {
+  const si = (v) => parseInt(v) || 0;
+  const getStats = (ocr) => ({ mobility: si(ocr?.stats?.mobility), ranged: si(ocr?.stats?.ranged_attack), melee: si(ocr?.stats?.melee_attack), hp: si(ocr?.stats?.hp) });
+  const ms = getStats(msOcr), pl = getStats(plOcr);
+  const msBuffs = getLinkBuffs(msOcr), plBuffs = getLinkBuffs(plOcr);
+  const applyBuff = (val, sm, med) => Math.round(val * Math.pow(1.1, sm) * Math.pow(1.2, med));
+  const corrLv = ParamCorrections.getCorrectionLevel(msOcr, plOcr);
+  const keys = ['mobility', 'ranged', 'melee', 'hp'];
+  const labels = { mobility: '機動', ranged: '遠距', melee: '近距', hp: 'HP' };
+  return keys.map(s => {
+    const base = ms[s] + pl[s];
+    const msB = applyBuff(ms[s], msBuffs[s].small, msBuffs[s].medium);
+    const plB = applyBuff(pl[s], plBuffs[s].small, plBuffs[s].medium);
+    const buffedTotal = msB + plB;
+    let total = buffedTotal;
+    let terrainBuff = 0;
+    if (s !== 'hp' && terrainMult !== 1.0) { terrainBuff = Math.round(ms[s] * (terrainMult - 1)); total += terrainBuff; }
+    let corrBuff = 0;
+    if (corrLv > 0) { corrBuff = Math.round(base * corrLv * 0.01); total += corrBuff; }
+    const linkBuff = buffedTotal - base;
+    return { key: s, label: labels[s], msVal: ms[s], plVal: pl[s], base, linkBuff, terrainBuff, corrBuff, total };
+  });
 }
 
 // ===== Sidebar Toggle =====
@@ -4863,10 +5159,10 @@ function openCardPicker(slotIdx, type) {
   const unitIdx = slotIdx < 5 ? slotIdx : slotIdx - 5;
   const label = `${type} ${unitIdx + 1} を選択`;
   document.getElementById('pickerTitle').textContent = label;
-  // スロットタイプでフィルタ
+  // スロットタイプでフィルタ（MS/PL別にフィルタ状態を復元）
   SearchPanel._lockedType = type;
+  SearchPanel._restoreFilters();
   SearchPanel._updateFilterVisibility();
-  SearchPanel.applyFilters();
   document.getElementById('sidebar').classList.add('open');
   document.getElementById('sidebarOverlay').classList.add('active');
   const input = document.getElementById('searchInput');
@@ -4902,7 +5198,7 @@ function closeHeaderMenu() {
 }
 
 async function clearDataCacheAndReload() {
-  if (!confirm('カードデータのキャッシュをクリアして最新データを取得します。よろしいですか？')) return;
+  if (!confirm('アプリロジックを更新します。画像キャッシュには影響はありません。')) return;
   try {
     // SW data cache + app shell cache を削除（画像キャッシュは保持）
     const keys = await caches.keys();
