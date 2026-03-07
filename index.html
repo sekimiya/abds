@@ -2901,6 +2901,10 @@ const ImageCache = {
             this._cachedKeys.clear();
             this._updateCount(0);
             PLACEHOLDER_SVG = this._disabledMode === 'test' ? DISABLED_PLACEHOLDER_TEST : DISABLED_PLACEHOLDER_PROD;
+            if (this._disabledMode === 'prod') {
+              try { await caches.delete('card-images-v1'); } catch (_) {}
+              localStorage.removeItem('abds_cacheCreated');
+            }
             console.warn('ImageCache: disabled by remote kill switch (mode:', this._disabledMode + ')');
             this._showDisabledAlert();
             return;
@@ -3061,7 +3065,14 @@ const ImageCache = {
 
   // --- Download: <img> プリロードで SW キャッシュをトリガー ---
   async startDownload() {
-    if (this._downloading || this._disabled) return;
+    if (this._disabled) {
+      const msg = this._disabledMode === 'test'
+        ? 'キルスイッチテスト中のためキャッシュ作成はできません'
+        : '権利者の要請により画像キャッシュ機能が停止されています';
+      alert(msg);
+      return;
+    }
+    if (this._downloading) return;
     this._downloading = true;
     document.getElementById('cmDlBtn').disabled = true;
     document.getElementById('cmClearBtn').disabled = true;
