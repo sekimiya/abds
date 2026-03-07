@@ -844,6 +844,13 @@ select,input{font-family:inherit}
   padding:0.3rem 0.5rem;background:#1a1a1a;
   color:#888;font-size:1.2rem;cursor:pointer;user-select:none;
 }
+.filter-group.filter-active > .filter-group-title{color:#68efbd !important;background:#1a2e24;border:1px solid #68efbd;box-shadow:0 0 6px rgba(104,239,189,0.3);border-radius:4px}
+#filterGroupEbMs.filter-active > .filter-group-title,
+#filterGroupEbPl.filter-active > .filter-group-title{color:#ff9800 !important;background:#2e241a;border-color:#ff9800;box-shadow:0 0 6px rgba(255,152,0,0.3)}
+#filterGroupSqMs.filter-active > .filter-group-title,
+#filterGroupSqPl.filter-active > .filter-group-title{color:#ff69b4 !important;background:#2e1a24;border-color:#ff69b4;box-shadow:0 0 6px rgba(255,105,180,0.3)}
+#filterGroupAb.filter-active > .filter-group-title{color:#b388ff !important;background:#241a2e;border-color:#b388ff;box-shadow:0 0 6px rgba(179,136,255,0.3)}
+#filterGroupSp.filter-active > .filter-group-title{color:#4fc3f7 !important;background:#1a242e;border-color:#4fc3f7;box-shadow:0 0 6px rgba(79,195,247,0.3)}
 .filter-group-title::after{content:'▼';font-size:0.55rem;transition:transform 0.2s}
 .filter-group.collapsed .filter-group-title::after{transform:rotate(-90deg)}
 .filter-group-body{padding:0.4rem 0.5rem;display:flex;flex-direction:column;gap:0.35rem}
@@ -4807,6 +4814,28 @@ const SearchPanel = {
     this._page = 0;
     this._renderGrid();
     this._saveFilters();
+    this._updateFilterHighlight();
+  },
+
+  _updateFilterHighlight() {
+    const active = {
+      filterGroupSearch: !!(document.getElementById('searchInput').value.trim() || document.getElementById('searchTextInput').value.trim() || LinkSearch._selected),
+      filterGroupBasic: this._currentCategory.size > 0 || this._currentRarity.size > 0 || this._altArt,
+      filterGroupStats: parseInt(document.getElementById('filterCostMin').value) > 0 || parseInt(document.getElementById('filterCostMax').value) < 13 || parseInt(document.getElementById('filterMobility').value) > 0 || parseInt(document.getElementById('filterRanged').value) > 0 || parseInt(document.getElementById('filterMelee').value) > 0 || parseInt(document.getElementById('filterHp').value) > 0,
+      filterGroupTerrain: !!document.getElementById('filterTerrainType').value || document.getElementById('filterOcr').checked,
+      filterGroupEbMs: this._t.ebCat.has('eb_sp') || this._t.ebCat.has('eb_link') || this._t.ebLv.size > 0 || this._t.ebspEff.size > 0,
+      filterGroupEbPl: this._t.ebCat.has('eb_skill') || this._t.ebCond.size > 0,
+      filterGroupSqMs: this._t.sqCat.has('sqsp') || this._t.sqCat.has('sq_link') || this._t.sqspEff.size > 0,
+      filterGroupSqPl: this._t.sqCat.has('sq_skill') || this._t.sqGauge.size > 0 || this._t.sqTrig.size > 0 || this._t.sqEff.size > 0,
+      filterGroupAb: this._t.abCat.size > 0,
+      filterGroupSp: this._t.spEff.size > 0,
+      filterGroupPlSkill: !!document.getElementById('filterSkillName').value || this._t.skEff.size > 0,
+      filterGroupMisc: !!document.getElementById('filterIllustrator').value,
+    };
+    Object.entries(active).forEach(([id, on]) => {
+      const el = document.getElementById(id);
+      if (el) el.classList.toggle('filter-active', on);
+    });
   },
 
   clearFilters() {
