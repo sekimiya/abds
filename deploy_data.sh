@@ -65,6 +65,35 @@ with open(f'{pages}/data/tactics_cards.json', 'w', encoding='utf-8') as f:
     json.dump(tactics, f, ensure_ascii=False, separators=(',', ':'))
 print(f'  tactics_cards: {sum(len(v) for v in tactics.values())} cards')
 "
+# version.json を更新（IDBキャッシュの再取得トリガー）
+py -c "
+import json, hashlib
+from datetime import datetime
+
+pages = '$PAGES_DIR'
+with open(f'{pages}/data/card_index.json', encoding='utf-8') as f:
+    raw = f.read()
+    idx = json.loads(raw)
+cards = idx if isinstance(idx, list) else idx.get('cards', [])
+with open(f'{pages}/data/card_details.json', encoding='utf-8') as f:
+    det = json.load(f)
+with open(f'{pages}/data/link_index.json', encoding='utf-8') as f:
+    links = json.load(f)
+
+now = datetime.now()
+version = {
+    'version': now.strftime('%Y%m%d-%H%M%S'),
+    'card_count': len(cards),
+    'detail_count': len(det),
+    'link_count': len(links),
+    'index_hash': hashlib.md5(raw.encode()).hexdigest()[:12],
+    'built_at': now.isoformat(timespec='seconds'),
+}
+with open(f'{pages}/data/version.json', 'w', encoding='utf-8') as f:
+    json.dump(version, f, ensure_ascii=False, indent=2)
+print(f'  version.json: {version[\"version\"]}')
+"
+
 OCR_COUNT=$(py -c "
 import json
 with open('$PAGES_DIR/data/card_index.json', encoding='utf-8') as f:
