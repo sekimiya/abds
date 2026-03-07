@@ -839,6 +839,11 @@ body.light .bm-toggle-btn.active{background:#d0e8dc;border-color:var(--accent);c
 #cardDetailModal .card-viewer-img{max-width:85vw;max-height:80vh;border-radius:8px;object-fit:contain;cursor:pointer}
 #cardDetailModal .card-viewer-hint{color:#888;font-size:0.75rem;text-align:center;margin-top:8px}
 #cardDetailModal .modal-close{position:fixed;top:12px;right:12px;z-index:410;color:#fff;font-size:2rem;background:rgba(0,0,0,0.5);border-radius:50%;width:36px;height:36px;display:flex;align-items:center;justify-content:center}
+#cardDetailModal .card-nav{position:fixed;top:50%;transform:translateY(-50%);z-index:410;color:#fff;font-size:2rem;background:rgba(0,0,0,0.5);border:none;border-radius:50%;width:40px;height:40px;display:flex;align-items:center;justify-content:center;cursor:pointer}
+#cardDetailModal .card-nav:active{background:rgba(255,255,255,0.3)}
+#cardDetailModal .card-nav.prev{left:8px}
+#cardDetailModal .card-nav.next{right:8px}
+#cardDetailModal .card-nav:disabled{opacity:0.2;pointer-events:none}
 .modal-card-info{min-width:0}
 .modal-card-number{color:var(--accent);font-weight:bold;font-size:1rem}
 .modal-card-name{font-size:1.1rem;font-weight:700;margin-top:2px;letter-spacing:0.5px}
@@ -1268,6 +1273,8 @@ body.light .bm-toggle-btn.active{background:#d0e8dc;border-color:var(--accent);c
 <div class="modal-overlay" id="cardDetailModal" onclick="closeCardModal()">
   <div class="modal-content" id="cardDetailContent" onclick="event.stopPropagation()">
     <button class="modal-close" onclick="closeCardModal()">&times;</button>
+    <button class="card-nav prev" id="cardNavPrev" onclick="event.stopPropagation();navigateCard(-1)">&#8249;</button>
+    <button class="card-nav next" id="cardNavNext" onclick="event.stopPropagation();navigateCard(1)">&#8250;</button>
     <div id="cardDetailBody"></div>
   </div>
 </div>
@@ -4145,7 +4152,22 @@ function setTerrainSwitch(btn) {
   setActiveTerrain(btn.dataset.val || null);
 }
 function closeDeckLoadModal() { document.getElementById('deckLoadModal').classList.remove('open'); }
-function closeCardModal() { document.getElementById('cardDetailModal').classList.remove('open'); }
+function closeCardModal() { document.getElementById('cardDetailModal').classList.remove('open'); _cardModalCurrent = null; }
+
+// Swipe navigation for card detail modal
+(function() {
+  let sx = 0, sy = 0;
+  const el = document.getElementById('cardDetailModal');
+  el.addEventListener('touchstart', e => { sx = e.touches[0].clientX; sy = e.touches[0].clientY; }, { passive: true });
+  el.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - sx;
+    const dy = e.changedTouches[0].clientY - sy;
+    if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy) * 1.5) {
+      if (dx < 0) navigateCard(1);
+      else navigateCard(-1);
+    }
+  }, { passive: true });
+})();
 
 function openTextReportModal(cardNumber) {
   document.getElementById('reportCardNumber').value = cardNumber;
@@ -4171,7 +4193,16 @@ async function submitTextReport() {
   }
 }
 
+let _cardModalCurrent = null;
+
 function showCardModal(number) {
+  _cardModalCurrent = number;
+  _renderCardModal(number);
+  _updateCardNav();
+  document.getElementById('cardDetailModal').classList.add('open');
+}
+
+function _renderCardModal(number) {
   const frontUrl = resolveImageUrl(null, number, 'front');
   const backUrl = resolveImageUrl(null, number, 'back');
   let showingFront = false;
@@ -4184,7 +4215,23 @@ function showCardModal(number) {
     img.src = showingFront ? frontUrl : backUrl;
     body.querySelector('.card-viewer-hint').textContent = showingFront ? 'タップで裏面を表示' : 'タップで表面を表示';
   });
-  document.getElementById('cardDetailModal').classList.add('open');
+}
+
+function _updateCardNav() {
+  const list = SearchPanel._filteredCards || [];
+  const idx = list.findIndex(c => c.number === _cardModalCurrent);
+  document.getElementById('cardNavPrev').disabled = idx <= 0;
+  document.getElementById('cardNavNext').disabled = idx < 0 || idx >= list.length - 1;
+}
+
+function navigateCard(dir) {
+  const list = SearchPanel._filteredCards || [];
+  const idx = list.findIndex(c => c.number === _cardModalCurrent);
+  const next = idx + dir;
+  if (next < 0 || next >= list.length) return;
+  _cardModalCurrent = list[next].number;
+  _renderCardModal(_cardModalCurrent);
+  _updateCardNav();
 }
 
 // Screenshot capture
