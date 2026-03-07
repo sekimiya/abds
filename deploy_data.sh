@@ -57,13 +57,15 @@ with open(f'{pages}/data/link_index.json', 'w', encoding='utf-8') as f:
     json.dump(links, f, ensure_ascii=False, separators=(',', ':'))
 print(f'  link_index: {len(links)} links')
 
-# tactics_cards: API { success, main: [...], sub: [...] } → フロント { main: [...], sub: [...] }
+# tactics_cards: API { success, data: { main: [...], sub: [...] } } → フロント { main: [...], sub: [...] }
 with urllib.request.urlopen(f'{api}/api/tactics_cards') as r:
     data = json.loads(r.read())
-tactics = {k: v for k, v in data.items() if k != 'success'}
+tactics = data.get('data', {k: v for k, v in data.items() if k != 'success'})
 with open(f'{pages}/data/tactics_cards.json', 'w', encoding='utf-8') as f:
     json.dump(tactics, f, ensure_ascii=False, separators=(',', ':'))
-print(f'  tactics_cards: {sum(len(v) for v in tactics.values())} cards')
+main_count = len(tactics.get('main', []))
+sub_count = len(tactics.get('sub', []))
+print(f'  tactics_cards: main={main_count}, sub={sub_count}')
 "
 # version.json を更新（IDBキャッシュの再取得トリガー）
 py -c "
