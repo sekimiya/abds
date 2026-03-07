@@ -295,6 +295,10 @@ a:hover { text-decoration: underline; }
       <div class="stat-label">未処理</div>
     </div>
     <div class="stat-card">
+      <div class="stat-value" id="statNoOcr">-</div>
+      <div class="stat-label">OCR未実施</div>
+    </div>
+    <div class="stat-card">
       <div class="stat-value" id="statCoverage">-</div>
       <div class="stat-label">カバレッジ</div>
     </div>
@@ -353,8 +357,9 @@ a:hover { text-decoration: underline; }
         </div>
       </div>
     </div>
-    <div style="display:flex;gap:12px;align-items:center;">
+    <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;">
       <button class="action-btn" id="startBtn" onclick="startOcr()">実行開始</button>
+      <button class="action-btn" id="startNoOcrBtn" onclick="startNoOcr()" style="background:#ff9800;">OCR未実施を一括実行 (<span id="noOcrBtnCount">0</span>件)</button>
       <button class="stop-btn" id="stopBtn" onclick="stopOcr()" disabled>停止</button>
       <span id="stopNote" style="display:none;font-size:0.8rem;color:#ffc107;">現在のカード処理完了後に停止します</span>
     </div>
@@ -434,6 +439,10 @@ async function loadSeriesStats() {
     document.getElementById('statBasic').textContent = data.total_basic.toLocaleString();
     const remaining = data.total_cards - data.total_basic;
     document.getElementById('statRemaining').textContent = remaining.toLocaleString();
+    const noOcr = data.total_no_ocr || 0;
+    document.getElementById('statNoOcr').textContent = noOcr.toLocaleString();
+    document.getElementById('noOcrBtnCount').textContent = noOcr.toLocaleString();
+    document.getElementById('startNoOcrBtn').disabled = noOcr === 0;
     const coverage = data.total_cards > 0 ? (data.total_basic / data.total_cards * 100).toFixed(1) : '0.0';
     document.getElementById('statCoverage').textContent = coverage + '%';
 
@@ -523,6 +532,40 @@ async function startOcr() {
   }
 }
 
+// --- Start No-OCR bulk ---
+async function startNoOcr() {
+  if (!confirm('OCR未実施カードをまとめてOCR実行しますか？')) return;
+
+  const startBtn = document.getElementById('startBtn');
+  const startNoOcrBtn = document.getElementById('startNoOcrBtn');
+  const stopBtn = document.getElementById('stopBtn');
+  startBtn.disabled = true;
+  startNoOcrBtn.disabled = true;
+
+  try {
+    const res = await adminFetch('/api/ocr-run/start-no-ocr', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+    });
+    const data = await res.json();
+    if (!data.success) {
+      alert(data.error || 'OCR実行の開始に失敗しました');
+      startBtn.disabled = false;
+      startNoOcrBtn.disabled = false;
+      return;
+    }
+
+    stopBtn.disabled = false;
+    document.getElementById('progressArea').classList.add('active');
+    document.getElementById('stopNote').style.display = 'none';
+    startPolling();
+  } catch (e) {
+    alert('エラー: ' + e.message);
+    startBtn.disabled = false;
+    startNoOcrBtn.disabled = false;
+  }
+}
+
 // --- Stop OCR ---
 async function stopOcr() {
   try {
@@ -596,6 +639,7 @@ async function pollStatus() {
       clearInterval(pollInterval);
       pollInterval = null;
       document.getElementById('startBtn').disabled = false;
+      document.getElementById('startNoOcrBtn').disabled = false;
       document.getElementById('stopBtn').disabled = true;
       document.getElementById('stopNote').style.display = 'none';
       // Refresh series stats

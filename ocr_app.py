@@ -237,6 +237,18 @@ def _get_needs_reocr_set():
     return _needs_reocr_cache
 
 
+def _get_no_ocr_numbers():
+    """OCR未実施（basic結果なし）のカード番号セットを返す"""
+    ocr_map = _get_ocr_file_map()
+    idx = get_card_index()
+    result = set()
+    for c in idx:
+        num = c['number']
+        if num not in ocr_map or not ocr_map[num].get('basic'):
+            result.add(num)
+    return result
+
+
 def _get_failed_numbers():
     progress_file = 'ocr_cc_progress.json'
     if not os.path.exists(progress_file):
@@ -973,12 +985,15 @@ def api_ocr_run_series_stats():
     total_cards = sum(v for v in series_total.values())
     total_raw = len(existing_raw)
     total_basic = len(existing_basic)
+    no_ocr_numbers = _get_no_ocr_numbers()
+    total_no_ocr = len(no_ocr_numbers)
 
     return jsonify({
         'success': True,
         'total_cards': total_cards,
         'total_raw': total_raw,
         'total_basic': total_basic,
+        'total_no_ocr': total_no_ocr,
         'series': series_list,
     })
 
@@ -1048,8 +1063,28 @@ def api_ocr_run_start_reocr():
     return jsonify({'success': True, 'message': f'要再OCR {len(reocr_numbers)}件 のOCR実行を開始しました'})
 
 
-def _run_reocr_execution(reocr_numbers):
-    """要再OCRカードを対象にOCR再実行する"""
+@app.route('/api/ocr-run/start-no-ocr', methods=['POST'])
+def api_ocr_run_start_no_ocr():
+    with _ocr_run_lock:
+        if _ocr_run_status["running"]:
+            return jsonify({'success': False, 'error': 'OCRタスクが既に実行中です'}), 409
+
+    no_ocr_numbers = _get_no_ocr_numbers()
+    if not no_ocr_numbers:
+        return jsonify({'success': False, 'error': 'OCR未実施カードがありません'}), 400
+
+    t = threading.Thread(
+        target=_run_reocr_execution,
+        args=(no_ocr_numbers,),
+        kwargs={'label': 'OCR未実施'},
+        daemon=True,
+    )
+    t.start()
+    return jsonify({'success': True, 'message': f'OCR未実施 {len(no_ocr_numbers)}件 のOCR実行を開始しました'})
+
+
+def _run_reocr_execution(reocr_numbers, label='要再OCR'):
+    """指定カード番号セットを対象にOCR再実行する"""
     global _ocr_file_map_cache, _card_index_cache, _card_detail_cache, _link_index_cache, _needs_reocr_cache
 
     log_handler = OcrRunLogHandler()
@@ -1059,7 +1094,7 @@ def _run_reocr_execution(reocr_numbers):
     with _ocr_run_lock:
         _ocr_run_status["running"] = True
         _ocr_run_status["stop_requested"] = False
-        _ocr_run_status["series"] = "要再OCR"
+        _ocr_run_status["series"] = label
         _ocr_run_status["stage"] = "both"
         _ocr_run_status["current_card"] = ""
         _ocr_run_status["current_card_name"] = ""
@@ -1078,7 +1113,7 @@ def _run_reocr_execution(reocr_numbers):
 
     try:
         with _ocr_run_lock:
-            _ocr_run_status["log"].append(f"要再OCRカードを読み込み中... ({len(reocr_numbers)}件)")
+            _ocr_run_status["log"].append(f"{label}カードを読み込み中... ({len(reocr_numbers)}件)")
 
         all_cards = ocr_load_unique_cards()
         targets = [c for c in all_cards if c["card_number"] in reocr_numbers and c.get("back_url")]
