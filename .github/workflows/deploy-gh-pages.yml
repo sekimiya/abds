@@ -1,0 +1,64 @@
+name: Deploy data to gh-pages
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'all_cards_list/**'
+      - 'ocr_results_debug/**'
+      - 'logic/**'
+      - 'scripts/build_gh_pages.py'
+      - 'tactics_cards.json'
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 1
+
+      - name: Checkout gh-pages data
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+          path: gh-pages
+          fetch-depth: 1
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Build static JSON
+        run: |
+          python scripts/build_gh_pages.py \
+            --output-dir gh-pages/data \
+            --pages-dir gh-pages/data
+
+      - name: Deploy to gh-pages
+        run: |
+          cd gh-pages
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/
+          if git diff --cached --quiet; then
+            echo "No changes to deploy"
+          else
+            TOTAL=$(python -c "
+          import json
+          with open('data/card_index.json') as f: cards=json.load(f)
+          total=len(cards)
+          ocr=sum(1 for c in cards if c.get('has_ocr'))
+          print(f'{ocr}/{total}')
+          ")
+            git commit -m "data: OCR静的JSON更新 (has_ocr: $TOTAL) [auto]"
+            git push origin gh-pages
+            echo "Deployed: has_ocr=$TOTAL"
+          fi
