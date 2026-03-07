@@ -878,6 +878,33 @@ body.light .bm-toggle-btn.active{background:#d0e8dc;border-color:var(--accent);c
 .cache-modal-btns button.primary{background:#1e3a2f;border-color:var(--accent);color:var(--accent)}
 .cache-modal-btns button.danger{border-color:#ff6b6b;color:#ff6b6b}
 .cache-modal-btns button:disabled{opacity:0.4}
+
+/* Main content wrapper */
+.main-content{display:flex;flex-direction:column;flex:1;min-height:0;overflow:hidden}
+
+/* ===== LANDSCAPE LAYOUT ===== */
+@media (orientation:landscape) and (max-height:500px) {
+  .app-header{padding:2px 6px;min-height:24px}
+  .tactics-row{padding:2px 4px;gap:2px}
+  .tactics-thumb{width:24px;height:24px;border-radius:3px}
+  .tactics-thumb-label{font-size:0.55rem}
+  .link-chips{gap:2px}
+  .link-chip{font-size:0.5rem;padding:1px 3px}
+
+  .main-content{flex-direction:row}
+
+  .overview-strip{
+    width:40%;flex-shrink:0;border-bottom:none;border-right:1px solid #2a2a2a;
+    overflow-y:auto;padding:4px;display:flex;flex-direction:column;
+  }
+  .overview-cats{gap:2px;margin-bottom:2px}
+  .overview-thumbs{gap:2px;margin-bottom:2px}
+  .ov-card-name{font-size:0.5rem}
+  .unit-tabs{padding:2px 0}
+  .unit-tab{padding:3px 0;font-size:0.65rem}
+
+  .detail-area{width:60%;flex:1;overflow-y:auto;padding:6px}
+}
 </style>
 </head>
 <body>
@@ -915,16 +942,19 @@ body.light .bm-toggle-btn.active{background:#d0e8dc;border-color:var(--accent);c
   <div class="link-chips" id="linkBar"></div>
 </div>
 
-<!-- OVERVIEW STRIP -->
-<div class="overview-strip" id="overviewStrip">
-  <div class="overview-cats" id="catRow"></div>
-  <div class="overview-thumbs" id="msRow"></div>
-  <div class="overview-thumbs" id="plRow"></div>
-  <div class="unit-tabs" id="unitTabs"></div>
-</div>
+<!-- MAIN CONTENT (landscape: side-by-side) -->
+<div class="main-content" id="mainContent">
+  <!-- OVERVIEW STRIP -->
+  <div class="overview-strip" id="overviewStrip">
+    <div class="overview-cats" id="catRow"></div>
+    <div class="overview-thumbs" id="msRow"></div>
+    <div class="overview-thumbs" id="plRow"></div>
+    <div class="unit-tabs" id="unitTabs"></div>
+  </div>
 
-<!-- DETAIL AREA -->
-<div class="detail-area" id="detailArea"></div>
+  <!-- DETAIL AREA -->
+  <div class="detail-area" id="detailArea"></div>
+</div>
 
 <!-- CARD PICKER -->
 <div class="picker-overlay" id="pickerOverlay">
