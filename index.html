@@ -1672,7 +1672,7 @@ select,input{font-family:inherit}
       <div class="cache-modal-pct" id="cmPct" style="display:none"></div>
       <div class="cache-modal-detail" id="cmDetail"></div>
       <div class="cache-modal-warn" id="cmWarn">
-        ⚠ 公式サイトからカード画像を取得し、ブラウザにキャッシュします。通信量が大きくなる場合があります。Wi-Fi環境での使用を推奨します。
+        ⚠ 公式サイトからカード画像を取得し、ブラウザにキャッシュします。通信量が大きくなる場合があります。Wi-Fi環境での使用を推奨します。<br>※キャッシュでの画像表示は管理者が明示的に停止を行う場合があります。
       </div>
       <div class="cache-modal-btns">
         <button class="primary" id="cmDlBtn" onclick="ImageCache.startDownload()">キャッシュ作成</button>
@@ -2877,6 +2877,7 @@ const ImageCache = {
   _cachedKeys: new Set(),
   _downloading: false,
   _cacheLost: false,
+  _disabled: false,
 
   _imgUrl(cardNumber, side) {
     return side === 'back'
@@ -2887,6 +2888,22 @@ const ImageCache = {
   // --- Init: SW Cache にあるキーを列挙 ---
   async init() {
     try {
+      // リモートキルスイッチ: version.json の imageDisabled フラグを確認
+      try {
+        const vRes = await fetch('./data/version.json', { cache: 'no-store' });
+        if (vRes.ok) {
+          const vData = await vRes.json();
+          if (vData.imageDisabled) {
+            this._disabled = true;
+            this._cachedKeys.clear();
+            this._updateCount(0);
+            console.warn('ImageCache: disabled by remote kill switch');
+            this._showDisabledAlert();
+            return;
+          }
+        }
+      } catch (e) { /* version.json取得失敗時はキャッシュ有効のまま */ }
+
       const cache = await caches.open('card-images-v1');
       const keys = await cache.keys();
       keys.forEach(req => {
@@ -2928,9 +2945,28 @@ const ImageCache = {
     document.body.appendChild(overlay);
   },
 
+  _showDisabledAlert() {
+    const overlay = document.createElement('div');
+    overlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px';
+    const box = document.createElement('div');
+    box.style.cssText = 'background:#1a1a1a;border:1px solid #ff9800;border-radius:12px;padding:24px;max-width:360px;width:100%;text-align:center;color:#e0e0e0;font-size:0.9rem;line-height:1.6';
+    if (document.body.classList.contains('light')) {
+      box.style.background = '#fff';
+      box.style.color = '#333';
+    }
+    box.innerHTML = `
+      <div style="font-size:1.5rem;margin-bottom:12px">&#9888;</div>
+      <div style="font-weight:bold;color:#ffb74d;margin-bottom:8px;font-size:1rem">画像キャッシュ機能が無効化されています</div>
+      <div style="margin-bottom:16px">管理者により画像キャッシュ機能が一時的に停止されています。<br>カード画像は表示されません。</div>
+      <button style="padding:8px 24px;border-radius:6px;border:none;background:#68efbd;color:#000;font-weight:bold;font-size:0.9rem;cursor:pointer" onclick="this.closest('div[style*=fixed]').remove()">OK</button>
+    `;
+    overlay.appendChild(box);
+    document.body.appendChild(overlay);
+  },
+
   // --- Resolve: 公式URLを返す（SWがキャッシュ済みならオフラインでも表示可） ---
   resolve(cardNumber, side = 'front') {
-    if (!cardNumber) return null;
+    if (!cardNumber || this._disabled) return null;
     const key = side === 'back' ? `${cardNumber}_b` : cardNumber;
     if (this._cachedKeys.has(key)) {
       return this._imgUrl(cardNumber, side);
@@ -2940,7 +2976,7 @@ const ImageCache = {
 
   // --- resolveTacticsUrl: 作戦カード画像もキャッシュ済みのみ表示 ---
   resolveTacticsUrl(url) {
-    if (!url) return null;
+    if (!url || this._disabled) return null;
     const m = url.match(/\/([A-Za-z0-9_\-]+)\.(jpg|png)$/);
     if (m && this._cachedKeys.has(m[1])) return url;
     return null;
@@ -2985,8 +3021,11 @@ const ImageCache = {
     const total = (AppState.cardIndex || []).filter(c => c.number).length * 2;
     document.getElementById('cmTotalCount').textContent = total;
     document.getElementById('cmWarn').style.display = '';
-    document.getElementById('cmDlBtn').disabled = false;
+    document.getElementById('cmDlBtn').disabled = this._disabled;
     document.getElementById('cmClearBtn').disabled = false;
+    if (this._disabled) {
+      document.getElementById('cmDetail').textContent = '管理者により画像キャッシュ機能が停止されています';
+    }
     document.getElementById('cmProgress').style.display = 'none';
     document.getElementById('cmPct').style.display = 'none';
     document.getElementById('cmDetail').textContent = '';
@@ -3011,7 +3050,7 @@ const ImageCache = {
 
   // --- Download: <img> プリロードで SW キャッシュをトリガー ---
   async startDownload() {
-    if (this._downloading) return;
+    if (this._downloading || this._disabled) return;
     this._downloading = true;
     document.getElementById('cmDlBtn').disabled = true;
     document.getElementById('cmClearBtn').disabled = true;
