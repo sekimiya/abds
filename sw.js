@@ -1,5 +1,5 @@
 // ABDS PWA Service Worker
-const CACHE_VERSION = 'abds-v46';
+const CACHE_VERSION = 'abds-v47';
 const APP_SHELL_CACHE = `app-shell-${CACHE_VERSION}`;
 const DATA_CACHE = `data-${CACHE_VERSION}`;
 const IMAGE_CACHE = 'card-images-v1';
@@ -57,18 +57,15 @@ self.addEventListener('activate', (event) => {
 self.addEventListener('fetch', (event) => {
   const url = new URL(event.request.url);
 
-  // Card images from official site — Cache First (opaque, on-demand)
+  // Card images from official site — Cache Only (公式サイトへのアクセスを防止)
+  // キャッシュにない場合は空レスポンスを返し、ネットワークアクセスしない
   if (url.hostname === 'www.gundam-ab.com' && url.pathname.startsWith('/images/')) {
     event.respondWith(
       caches.open(IMAGE_CACHE).then(cache =>
         cache.match(event.request).then(cached => {
           if (cached) return cached;
-          return fetch(event.request, { mode: 'no-cors' }).then(response => {
-            if (response.status === 0 || response.ok) {
-              cache.put(event.request, response.clone());
-            }
-            return response;
-          }).catch(() => new Response('', { status: 404 }));
+          // キャッシュミス: 公式サイトにアクセスせず空レスポンスを返す
+          return new Response('', { status: 404, statusText: 'Not Cached' });
         })
       )
     );

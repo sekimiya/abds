@@ -2876,6 +2876,7 @@ const ImageCache = {
   CONCURRENCY: 8,
   _cachedKeys: new Set(),
   _downloading: false,
+  _cacheLost: false,
 
   _imgUrl(cardNumber, side) {
     return side === 'back'
@@ -2885,9 +2886,6 @@ const ImageCache = {
 
   // --- Init: SW Cache にあるキーを列挙 ---
   async init() {
-    // if (navigator.storage && navigator.storage.persist) {
-    //   try { await navigator.storage.persist(); } catch (_) {}
-    // }
     try {
       const cache = await caches.open('card-images-v1');
       const keys = await cache.keys();
@@ -2898,9 +2896,36 @@ const ImageCache = {
       });
       this._updateCount(this._cachedKeys.size);
       console.log('ImageCache: SW cache has', this._cachedKeys.size, 'images');
+
+      // キャッシュ消失検出
+      const wasCreated = localStorage.getItem('abds_cacheCreated');
+      if (wasCreated && this._cachedKeys.size === 0) {
+        this._cacheLost = true;
+        localStorage.removeItem('abds_cacheCreated');
+        this._showCacheLostAlert();
+      }
     } catch (e) {
       console.warn('ImageCache: cache check failed', e);
     }
+  },
+
+  _showCacheLostAlert() {
+    const overlay = document.createElement('div');
+    overlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px';
+    const box = document.createElement('div');
+    box.style.cssText = 'background:#1a1a1a;border:1px solid #f44336;border-radius:12px;padding:24px;max-width:360px;width:100%;text-align:center;color:#e0e0e0;font-size:0.9rem;line-height:1.6';
+    if (document.body.classList.contains('light')) {
+      box.style.background = '#fff';
+      box.style.color = '#333';
+    }
+    box.innerHTML = `
+      <div style="font-size:1.5rem;margin-bottom:12px">&#9888;</div>
+      <div style="font-weight:bold;color:#ff8a80;margin-bottom:8px;font-size:1rem">キャッシュが削除されています</div>
+      <div style="margin-bottom:16px">今後はカード画像が表示されません。<br>表示する場合は再度キャッシュを作成してください。</div>
+      <button style="padding:8px 24px;border-radius:6px;border:none;background:#68efbd;color:#000;font-weight:bold;font-size:0.9rem;cursor:pointer" onclick="this.closest('div[style*=fixed]').remove()">OK</button>
+    `;
+    overlay.appendChild(box);
+    document.body.appendChild(overlay);
   },
 
   // --- Resolve: 公式URLを返す（SWがキャッシュ済みならオフラインでも表示可） ---
@@ -2976,6 +3001,8 @@ const ImageCache = {
   async clear() {
     try { await caches.delete('card-images-v1'); } catch (_) {}
     this._cachedKeys.clear();
+    this._cacheLost = false;
+    localStorage.removeItem('abds_cacheCreated');
     this._updateCount(0);
     Toast.show('キャッシュをクリアしました', 'success', 2000);
     UIRenderer.renderAll();
@@ -3030,36 +3057,32 @@ const ImageCache = {
     const total = items.length;
     if (done > 0) this._onProgress(done, total, failed);
 
-    // <img> プリロードで SW の fetch イベントを発火させてキャッシュ
+    // fetch + cache.put で直接キャッシュに書き込む（SWのcache-onlyポリシーをバイパス）
+    const imgCache = await caches.open('card-images-v1');
     const queue = [...toFetch];
-    const worker = () => new Promise(resolve => {
-      const next = () => {
-        if (!queue.length) { resolve(); return; }
+    const worker = async () => {
+      while (queue.length) {
         const { key, url } = queue.shift();
-        const img = new Image();
-        img.onload = () => {
-          this._cachedKeys.add(key);
-          done++;
-          this._onProgress(done, total, failed);
-          next();
-        };
-        img.onerror = () => {
-          failed++;
-          done++;
-          this._onProgress(done, total, failed);
-          next();
-        };
-        img.src = url;
-      };
-      next();
-    });
+        try {
+          const res = await fetch(url, { mode: 'no-cors' });
+          if (res.status === 0 || res.ok) {
+            await imgCache.put(new Request(url), res);
+            this._cachedKeys.add(key);
+          } else { failed++; }
+        } catch { failed++; }
+        done++;
+        this._onProgress(done, total, failed);
+      }
+    };
     await Promise.all(Array.from(
       { length: Math.min(this.CONCURRENCY, toFetch.length || 1) },
       () => worker()
     ));
 
     this._downloading = false;
+    this._cacheLost = false;
     this._refreshStats();
+    if (this._cachedKeys.size > 0) localStorage.setItem('abds_cacheCreated', '1');
     document.getElementById('cmProgressBar').style.width = '100%';
     document.getElementById('cmPct').textContent = '完了';
     document.getElementById('cmDetail').textContent =
