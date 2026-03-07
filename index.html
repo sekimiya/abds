@@ -3267,84 +3267,36 @@ const UIRenderer = {
 
   _renderUnitStats(u, msOcr, plOcr) {
     const container = document.getElementById(`unit-stats-${u}`);
-    const maxVal = 1000;
-
-    const getStats = (ocr) => ({
-      mobility: safeInt(ocr?.stats?.mobility),
-      ranged: safeInt(ocr?.stats?.ranged_attack),
-      melee: safeInt(ocr?.stats?.melee_attack),
-      hp: safeInt(ocr?.stats?.hp)
-    });
-    const ms = getStats(msOcr);
-    const pl = getStats(plOcr);
-
-    // Step 1: 地形適性補正（最初に適用、MSの素ステのみ対象、HP除外）
-    const terrainMult = this._getTerrainMultiplier(msOcr);
-
-    // Step 2: リンクバフ（MS・PLのリンクをユニット単位で統合）
-    const unitBuffs = getUnitLinkBuffs(msOcr, plOcr);
-    const applyBuff = (val, sm, med) => Math.round(val * Math.pow(1.1, sm) * Math.pow(1.2, med));
-
-    // Step 3: パラメータ補正レベル
-    const corrLv = ParamCorrections.getCorrectionLevel(msOcr, plOcr);
-
-    const stats = ['mobility', 'ranged', 'melee', 'hp'];
-    const labels = { mobility: '機動', ranged: '遠距', melee: '近距', hp: 'HP' };
-
+    const result = calcUnitStats(msOcr, plOcr, this._getTerrainMultiplier(msOcr));
     let html = '';
-    stats.forEach(s => {
-      // 地形適性をMSの素ステに最初に適用
-      let msBase = ms[s];
-      let terrainBuff = 0;
-      if (s !== 'hp' && terrainMult !== 1.0) {
-        const msAfterTerrain = Math.round(msBase * terrainMult);
-        terrainBuff = msAfterTerrain - msBase;
-        msBase = msAfterTerrain;
-      }
-
-      const base = ms[s] + pl[s]; // 表示用の素ステ合計（地形補正前）
-      // 地形補正後のMS + PL の合計にユニット統合バフを適用
-      const baseAfterTerrain = msBase + pl[s];
-      let total = applyBuff(baseAfterTerrain, unitBuffs[s].small, unitBuffs[s].medium);
-
-      // Apply correction level as percentage buff to base stat
-      let corrBuff = 0;
-      if (corrLv > 0) { corrBuff = Math.round(base * corrLv * 0.01); total += corrBuff; }
-
-      const linkBuff = applyBuff(baseAfterTerrain, unitBuffs[s].small, unitBuffs[s].medium) - baseAfterTerrain;
-      const basePct = Math.min((base / maxVal) * 100, 100);
-      const linkBuffPct = Math.min((linkBuff / maxVal) * 100, 100 - basePct);
-
-      // 地形バー: 正なら緑で延伸、負なら赤ストライプで減少域を示す
+    result.forEach(r => {
+      const basePct = Math.min((r.base / 1000) * 100, 100);
+      const linkBuffPct = Math.min((r.linkBuff / 1000) * 100, 100 - basePct);
       let terrainBarHtml = '';
-      if (terrainBuff > 0) {
-        const tWidth = Math.min((terrainBuff / maxVal) * 100, 100 - basePct - linkBuffPct);
+      if (r.terrainBuff > 0) {
+        const tWidth = Math.min((r.terrainBuff / 1000) * 100, 100 - basePct - linkBuffPct);
         terrainBarHtml = `<div class="stat-bar-terrain-pos" style="width:${tWidth}%"></div>`;
-      } else if (terrainBuff < 0) {
-        const totalPct = (Math.max(total, 0) / maxVal) * 100;
-        const lossPct = (Math.abs(terrainBuff) / maxVal) * 100;
+      } else if (r.terrainBuff < 0) {
+        const totalPct = (Math.max(r.total, 0) / 1000) * 100;
+        const lossPct = (Math.abs(r.terrainBuff) / 1000) * 100;
         terrainBarHtml = `<div class="stat-bar-terrain-neg" style="position:absolute;right:0;width:${Math.min(lossPct, 100 - totalPct)}%;left:${totalPct}%"></div>`;
       }
-
-      // テキストラベル
       let terrainLabel = '';
-      if (terrainBuff > 0) terrainLabel = ` <span class="stat-terrain-text positive">(地形+${terrainBuff})</span>`;
-      else if (terrainBuff < 0) terrainLabel = ` <span class="stat-terrain-text negative">(地形${terrainBuff})</span>`;
-
+      if (r.terrainBuff > 0) terrainLabel = ` <span class="stat-terrain-text positive">(地形+${r.terrainBuff})</span>`;
+      else if (r.terrainBuff < 0) terrainLabel = ` <span class="stat-terrain-text negative">(地形${r.terrainBuff})</span>`;
       let corrLabel = '';
-      if (corrBuff > 0) corrLabel = ` <span style="color:#ce93d8">Lv+${corrBuff}</span>`;
-
+      if (r.corrBuff > 0) corrLabel = ` <span style="color:#ce93d8">Lv+${r.corrBuff}</span>`;
       const pad = (n) => String(n).padStart(3, '\u2007');
-      const baseLabel = `${pad(ms[s])}+${pad(pl[s])}=${pad(base)}`;
-      const buffLabel = linkBuff > 0 ? ` <span class="stat-buff-text">+${pad(linkBuff)}</span>` : '';
+      const baseLabel = `${pad(r.msVal)}+${pad(r.plVal)}=${pad(r.base)}`;
+      const buffLabel = r.linkBuff > 0 ? ` <span class="stat-buff-text">+${pad(r.linkBuff)}</span>` : '';
       html += `
         <div class="stat-row">
-          <span class="stat-label">${labels[s]}</span>
+          <span class="stat-label">${r.label}</span>
           <div class="stat-track">
             <div class="stat-bar-base" style="width:${basePct}%"></div>
             <div class="stat-bar-buff" style="width:${linkBuffPct}%"></div>
             ${terrainBarHtml}
-            <span class="stat-value">${baseLabel}${buffLabel}${terrainLabel}${corrLabel}${(linkBuff > 0 || terrainBuff !== 0 || corrBuff > 0) ? ` → ${pad(total)}` : ''}</span>
+            <span class="stat-value">${baseLabel}${buffLabel}${terrainLabel}${corrLabel}${(r.linkBuff > 0 || r.terrainBuff !== 0 || r.corrBuff > 0) ? ` → ${pad(r.total)}` : ''}</span>
           </div>
         </div>
       `;
@@ -5063,9 +5015,10 @@ function getLinkBuffs(ocr) {
     melee: { small: 0, medium: 0 },
     hp: { small: 0, medium: 0 }
   };
-  if (!ocr || !Array.isArray(ocr.link_abilities)) return buffs;
+  const links = ocr?.link_abilities || ocr?.link_ability || [];
+  if (!Array.isArray(links)) return buffs;
 
-  ocr.link_abilities.forEach(link => {
+  links.forEach(link => {
     const eff = link.effect || '';
     const { required, category } = _parseLinkCondition(link.condition);
     if (!required) return;
@@ -5084,18 +5037,30 @@ function getLinkBuffs(ocr) {
   return buffs;
 }
 
-// ユニット（MS+PL）の合算リンクバフ: 同名リンクが両方にあれば×1.1×1.1になる
-function getUnitLinkBuffs(msOcr, plOcr) {
-  const ms = getLinkBuffs(msOcr);
-  const pl = getLinkBuffs(plOcr);
-  const merged = {};
-  for (const s of ['mobility', 'ranged', 'melee', 'hp']) {
-    merged[s] = {
-      small: ms[s].small + pl[s].small,
-      medium: ms[s].medium + pl[s].medium
-    };
-  }
-  return merged;
+// 共通ステータス計算（mobile/desktop共通ロジック）
+// MS・PLそれぞれにリンクバフ適用後に合算
+function calcUnitStats(msOcr, plOcr, terrainMult) {
+  const si = (v) => parseInt(v) || 0;
+  const getStats = (ocr) => ({ mobility: si(ocr?.stats?.mobility), ranged: si(ocr?.stats?.ranged_attack), melee: si(ocr?.stats?.melee_attack), hp: si(ocr?.stats?.hp) });
+  const ms = getStats(msOcr), pl = getStats(plOcr);
+  const msBuffs = getLinkBuffs(msOcr), plBuffs = getLinkBuffs(plOcr);
+  const applyBuff = (val, sm, med) => Math.round(val * Math.pow(1.1, sm) * Math.pow(1.2, med));
+  const corrLv = ParamCorrections.getCorrectionLevel(msOcr, plOcr);
+  const keys = ['mobility', 'ranged', 'melee', 'hp'];
+  const labels = { mobility: '機動', ranged: '遠距', melee: '近距', hp: 'HP' };
+  return keys.map(s => {
+    const base = ms[s] + pl[s];
+    const msB = applyBuff(ms[s], msBuffs[s].small, msBuffs[s].medium);
+    const plB = applyBuff(pl[s], plBuffs[s].small, plBuffs[s].medium);
+    const buffedTotal = msB + plB;
+    let total = buffedTotal;
+    let terrainBuff = 0;
+    if (s !== 'hp' && terrainMult !== 1.0) { terrainBuff = Math.round(ms[s] * (terrainMult - 1)); total += terrainBuff; }
+    let corrBuff = 0;
+    if (corrLv > 0) { corrBuff = Math.round(base * corrLv * 0.01); total += corrBuff; }
+    const linkBuff = buffedTotal - base;
+    return { key: s, label: labels[s], msVal: ms[s], plVal: pl[s], base, linkBuff, terrainBuff, corrBuff, total };
+  });
 }
 
 // ===== Sidebar Toggle =====
