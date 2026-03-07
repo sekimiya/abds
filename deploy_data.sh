@@ -32,22 +32,50 @@ api = '$API_BASE'
 pages = '$PAGES_DIR'
 
 # card_index: API { success, cards: [...] } → フロント [...]
+# 既存データにある _p カード（イラスト違い、別プログラムで生成）を保持してマージ
 with urllib.request.urlopen(f'{api}/api/card_index') as r:
     data = json.loads(r.read())
-cards = data.get('cards', data)
+api_cards = data.get('cards', data)
+api_map = {c['number']: c for c in api_cards}
+
+# 既存の card_index.json から _p カードを読み込み
+try:
+    with open(f'{pages}/data/card_index.json', encoding='utf-8') as f:
+        existing = json.load(f)
+    if isinstance(existing, dict):
+        existing = existing.get('cards', [])
+    existing_p = [c for c in existing if '_p' in c.get('number', '') and c['number'] not in api_map]
+except Exception:
+    existing_p = []
+
+# マージ: APIデータ + 既存の _p カード
+cards = api_cards + existing_p
+cards.sort(key=lambda c: c['number'])
 with open(f'{pages}/data/card_index.json', 'w', encoding='utf-8') as f:
     json.dump(cards, f, ensure_ascii=False, separators=(',', ':'))
 total = len(cards)
 has_ocr = sum(1 for c in cards if c.get('has_ocr'))
-print(f'  card_index: {total} cards, has_ocr: {has_ocr}/{total}')
+p_count = len(existing_p)
+print(f'  card_index: {total} cards (API: {len(api_cards)} + _p preserved: {p_count}), has_ocr: {has_ocr}/{total}')
 
 # card_details: API { success, cards: { num: {...} } } → フロント { num: {...} }
+# 同様に _p カードを保持してマージ
 with urllib.request.urlopen(f'{api}/api/cards/all_details') as r:
     data = json.loads(r.read())
-details = data.get('cards', data)
+api_details = data.get('cards', data)
+
+try:
+    with open(f'{pages}/data/card_details.json', encoding='utf-8') as f:
+        existing_det = json.load(f)
+    existing_p_det = {k: v for k, v in existing_det.items() if '_p' in k and k not in api_details}
+except Exception:
+    existing_p_det = {}
+
+# マージ: APIデータ + 既存の _p カード
+details = {**api_details, **existing_p_det}
 with open(f'{pages}/data/card_details.json', 'w', encoding='utf-8') as f:
     json.dump(details, f, ensure_ascii=False, separators=(',', ':'))
-print(f'  card_details: {len(details)} cards')
+print(f'  card_details: {len(details)} cards (API: {len(api_details)} + _p preserved: {len(existing_p_det)})')
 
 # link_index: API { success, links: {...} } → フロント {...}
 with urllib.request.urlopen(f'{api}/api/link_index') as r:
