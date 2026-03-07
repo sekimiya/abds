@@ -3084,7 +3084,7 @@ const UIRenderer = {
         html += '<span class="card-rarity rarity-tag" style="opacity:0.5">--</span>';
       }
       html += `<span class="card-name">${msNumber ? escapeHtml(msName) : 'MS 未選択'}</span>`;
-      if (msNumber) html += `<span class="card-detail-btn" onclick="event.stopPropagation();showCardModal('${escapeHtml(msNumber)}')">詳細</span>`;
+      if (msNumber) html += `<span class="card-detail-btn" onclick="event.stopPropagation();showCardModal('${escapeHtml(msNumber)}','deck')">詳細</span>`;
       html += '</div>';
     }
 
@@ -3100,7 +3100,7 @@ const UIRenderer = {
         html += '<span class="card-rarity rarity-tag" style="opacity:0.5">--</span>';
       }
       html += `<span class="card-name">${plNumber ? escapeHtml(plName) : 'PL 未選択'}</span>`;
-      if (plNumber) html += `<span class="card-detail-btn" onclick="event.stopPropagation();showCardModal('${escapeHtml(plNumber)}')">詳細</span>`;
+      if (plNumber) html += `<span class="card-detail-btn" onclick="event.stopPropagation();showCardModal('${escapeHtml(plNumber)}','deck')">詳細</span>`;
       html += '</div>';
     }
 
@@ -4194,9 +4194,18 @@ async function submitTextReport() {
 }
 
 let _cardModalCurrent = null;
+let _cardModalSource = 'search';
 
-function showCardModal(number) {
+function _getCardNavList() {
+  if (_cardModalSource === 'deck') {
+    return AppState.deck.filter(n => n).map(n => ({ number: n }));
+  }
+  return SearchPanel._filteredCards || [];
+}
+
+function showCardModal(number, source) {
   _cardModalCurrent = number;
+  _cardModalSource = source || 'search';
   _renderCardModal(number);
   _updateCardNav();
   document.getElementById('cardDetailModal').classList.add('open');
@@ -4218,14 +4227,14 @@ function _renderCardModal(number) {
 }
 
 function _updateCardNav() {
-  const list = SearchPanel._filteredCards || [];
+  const list = _getCardNavList();
   const idx = list.findIndex(c => c.number === _cardModalCurrent);
   document.getElementById('cardNavPrev').disabled = idx <= 0;
   document.getElementById('cardNavNext').disabled = idx < 0 || idx >= list.length - 1;
 }
 
 function navigateCard(dir) {
-  const list = SearchPanel._filteredCards || [];
+  const list = _getCardNavList();
   const idx = list.findIndex(c => c.number === _cardModalCurrent);
   const next = idx + dir;
   if (next < 0 || next >= list.length) return;
