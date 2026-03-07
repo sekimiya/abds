@@ -431,6 +431,20 @@ select,input{font-family:inherit}
 }
 .sqsp-badge,.sq-badge{background:linear-gradient(135deg,#ff69b4,#e91e8c)}
 .eb-badge{background:linear-gradient(135deg,#ff9800,#e65100)}
+.slot-ab-badge{position:absolute;top:44px;left:4px;z-index:2;font-size:0.7rem;font-weight:bold;padding:0.1rem 0.4rem;border-radius:4px;color:#fff;background:rgba(179,136,255,0.9);box-shadow:0 1px 3px rgba(0,0,0,0.4)}
+.slot-rarity-badge{position:absolute;top:4px;left:4px;z-index:2;font-size:0.6rem;font-weight:bold;padding:0.05rem 0.3rem;border-radius:3px;background:rgba(0,0,0,0.6);border:1px solid rgba(255,255,255,0.2)}
+.slot-sp-tags{position:absolute;top:4px;right:4px;display:flex;flex-wrap:wrap;gap:1px;justify-content:flex-end;max-width:60%;z-index:2}
+.slot-sp-tag{font-size:0.5rem;font-weight:bold;padding:0 3px;border-radius:2px;line-height:1.4;color:#fff}
+.slot-sp-tag.sp-t-貫通{background:rgba(66,165,245,0.9)}
+.slot-sp-tag.sp-t-範囲{background:rgba(255,112,67,0.9)}
+.slot-sp-tag.sp-t-スタン{background:rgba(255,235,59,0.9);color:#333}
+.slot-sp-tag.sp-t-バフ{background:rgba(102,187,106,0.9)}
+.slot-sp-tag.sp-t-デバフ{background:rgba(171,71,188,0.9)}
+.slot-sp-tag.sp-t-HP回復{background:rgba(76,175,80,0.9)}
+.slot-sp-tag.sp-t-変身{background:rgba(38,198,218,0.9)}
+.slot-sp-tag.sp-t-撃破{background:rgba(244,67,54,0.9)}
+.slot-sp-tag.sp-t-防衛無視{background:rgba(244,67,54,0.9)}
+.slot-sp-tag.sp-t-支援攻撃{background:rgba(255,183,77,0.9)}
 .card-slot.sq{border-color:#ff69b4;border-width:3px;box-shadow:0 0 8px rgba(255,105,180,0.5)}
 .card-slot.sq:hover{border-color:#ff8cc8}
 /* ECHOES BEAT orange theme */
@@ -3369,12 +3383,20 @@ const UIRenderer = {
     slotEl.className = 'card-slot has-card' + (AppState.activeSlot === slotIdx ? ' active' : '') + hlClass;
     const badgeHtml = highlight === 'sqsp' ? '<div class="sqsp-badge">SQSP</div>'
                     : highlight === 'sq' ? '<div class="sq-badge">SQ</div>'
-                    : highlight === 'eb' ? '<div class="eb-badge">EB</div>' : '';
+                    : highlight === 'eb' ? '<div class="eb-badge">EB</div>'
+                    : (card?.has_ab_link ? '<div class="slot-ab-badge ab-b">AB</div>' : '');
+    const cardRarity = card?.rarity || '';
+    const rarityColor = ({'M':'#82b1ff','C':'#aaa','R':'#ffe082','SR':'#ff8a80','U':'#ce93d8','P':'#68efbd','PR':'#f48fb1','LR':'#ffcc80','LE':'#ff8a80','CP':'#80deea'})[cardRarity] || '#888';
+    const rarityBadge = cardRarity ? `<div class="slot-rarity-badge rarity" style="color:${rarityColor};border-color:${rarityColor}">${escapeHtml(cardRarity)}</div>` : '';
+    const spTags = card?.sp_effect_tags || [];
+    const spTagsHtml = spTags.length ? '<div class="slot-sp-tags sp-tags">' + spTags.map(t => `<span class="slot-sp-tag sp-t-${t}">${escapeHtml(t)}</span>`).join('') + '</div>' : '';
     const cardName = card?.name || '';
     slotEl.innerHTML = `
       <div class="card-slot-label">${type} ${unitIdx+1}</div>
       <button class="card-slot-clear" onclick="event.stopPropagation();DeckManager.clearCard(${slotIdx})">&times;</button>
       ${badgeHtml}
+      ${rarityBadge}
+      ${spTagsHtml}
       <img class="card-slot-img" src="${frontUrl}" alt="${cardNumber}"
            onclick="event.stopPropagation();showCardModal('${cardNumber}')"
            onerror="this.onerror=null;this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22160%22 height=%22240%22><rect fill=%22%23222%22 width=%22160%22 height=%22240%22/><text x=%2280%22 y=%22120%22 fill=%22%23666%22 text-anchor=%22middle%22>No Image</text></svg>'">
@@ -5280,11 +5302,11 @@ function toggleBadgeSw(btn) {
 }
 function _applyBadgeVisibility(key, on) {
   const map = {
-    'sp-tags': '.thumb-sp-tags',
-    'eb-badge': '.thumb-eb-badge',
-    'sq-badge': '.thumb-sq-badge',
-    'ab-badge': '.thumb-ab-badge',
-    'rarity': '.thumb-inline-rarity,.thumb-card-rarity'
+    'sp-tags': '.thumb-sp-tags,.slot-sp-tags',
+    'eb-badge': '.thumb-eb-badge,.eb-badge',
+    'sq-badge': '.thumb-sq-badge,.sqsp-badge,.sq-badge',
+    'ab-badge': '.thumb-ab-badge,.slot-ab-badge',
+    'rarity': '.thumb-inline-rarity,.thumb-card-rarity,.slot-rarity-badge'
   };
   const sel = map[key];
   if (!sel) return;
