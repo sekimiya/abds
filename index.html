@@ -3057,19 +3057,26 @@ const ImageCache = {
     const total = items.length;
     if (done > 0) this._onProgress(done, total, failed);
 
-    // fetch + cache.put で直接キャッシュに書き込む（SWのcache-onlyポリシーをバイパス）
-    const imgCache = await caches.open('card-images-v1');
+    // SW経由で画像をfetch→キャッシュ格納（SWのfetchハンドラはcache-onlyなのでメッセージAPIで依頼）
+    const sw = navigator.serviceWorker?.controller;
     const queue = [...toFetch];
+    const cacheOneImage = (key, url) => new Promise(resolve => {
+      if (!sw) { resolve(false); return; }
+      const handler = (e) => {
+        if (e.data && (e.data.type === 'CACHE_IMAGE_OK' || e.data.type === 'CACHE_IMAGE_FAIL') && e.data.url === url) {
+          navigator.serviceWorker.removeEventListener('message', handler);
+          resolve(e.data.type === 'CACHE_IMAGE_OK');
+        }
+      };
+      navigator.serviceWorker.addEventListener('message', handler);
+      sw.postMessage({ type: 'CACHE_IMAGE', url });
+    });
     const worker = async () => {
       while (queue.length) {
         const { key, url } = queue.shift();
-        try {
-          const res = await fetch(url, { mode: 'no-cors' });
-          if (res.status === 0 || res.ok) {
-            await imgCache.put(new Request(url), res);
-            this._cachedKeys.add(key);
-          } else { failed++; }
-        } catch { failed++; }
+        const ok = await cacheOneImage(key, url);
+        if (ok) this._cachedKeys.add(key);
+        else failed++;
         done++;
         this._onProgress(done, total, failed);
       }

@@ -1,5 +1,5 @@
 // ABDS PWA Service Worker
-const CACHE_VERSION = 'abds-v47';
+const CACHE_VERSION = 'abds-v48';
 const APP_SHELL_CACHE = `app-shell-${CACHE_VERSION}`;
 const DATA_CACHE = `data-${CACHE_VERSION}`;
 const IMAGE_CACHE = 'card-images-v1';
@@ -96,7 +96,7 @@ self.addEventListener('fetch', (event) => {
   );
 });
 
-// Message handler for version check
+// Message handler
 self.addEventListener('message', (event) => {
   if (event.data && event.data.type === 'CHECK_UPDATE') {
     fetch('./data/version.json', { cache: 'no-store' })
@@ -105,5 +105,23 @@ self.addEventListener('message', (event) => {
         event.source.postMessage({ type: 'VERSION_INFO', data });
       })
       .catch(() => {});
+  }
+
+  // CACHE_IMAGE: クライアントから依頼された画像をfetchしてキャッシュに格納
+  // SWのfetchハンドラはcache-onlyなので、ダウンロード時はこのメッセージ経由で行う
+  if (event.data && event.data.type === 'CACHE_IMAGE') {
+    const { url } = event.data;
+    caches.open(IMAGE_CACHE).then(cache =>
+      fetch(url, { mode: 'no-cors' }).then(res => {
+        if (res.status === 0 || res.ok) {
+          cache.put(new Request(url), res);
+          event.source.postMessage({ type: 'CACHE_IMAGE_OK', url });
+        } else {
+          event.source.postMessage({ type: 'CACHE_IMAGE_FAIL', url });
+        }
+      }).catch(() => {
+        event.source.postMessage({ type: 'CACHE_IMAGE_FAIL', url });
+      })
+    );
   }
 });
