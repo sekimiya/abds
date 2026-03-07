@@ -1282,7 +1282,7 @@ select,input{font-family:inherit}
       </div>
       <div class="header-menu-divider"></div>
       <div class="header-menu-row">
-        <button class="header-btn" onclick="clearDataCacheAndReload()" style="flex:1;color:#ff9800;border-color:#ff9800">データ更新（キャッシュクリア）</button>
+        <button class="header-btn" onclick="clearDataCacheAndReload()" style="flex:1;color:#ff9800;border-color:#ff9800">データ更新</button>
       </div>
       <div class="header-menu-row">
         <a href="./corrections.html" class="header-btn" style="flex:1;text-align:center;text-decoration:none;border-color:#ff9800;color:#ff9800">&#9881; パラメータ補正設定</a>
@@ -5176,7 +5176,7 @@ function closeHeaderMenu() {
 }
 
 async function clearDataCacheAndReload() {
-  if (!confirm('カードデータのキャッシュをクリアして最新データを取得します。よろしいですか？')) return;
+  if (!confirm('アプリロジックを更新します。画像キャッシュには影響はありません。')) return;
   try {
     // SW data cache + app shell cache を削除（画像キャッシュは保持）
     const keys = await caches.keys();
