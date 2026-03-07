@@ -374,6 +374,21 @@ a:hover { text-decoration: underline; }
       <div class="log-area" id="logArea"></div>
     </div>
   </div>
+
+  <!-- Deploy Section -->
+  <div class="section">
+    <div class="section-title">デプロイ (GitHub Pages)</div>
+    <p style="font-size:0.85rem;color:#aaa;margin-bottom:12px;">
+      OCR結果を git commit &amp; push → GitHub Actions が自動で gh-pages を更新します
+    </p>
+    <div style="display:flex;gap:12px;align-items:center;">
+      <button class="action-btn" id="deployBtn" onclick="startDeploy()" style="background:#4CAF50;">デプロイ実行</button>
+      <span id="deployStatus" style="font-size:0.85rem;color:#aaa;"></span>
+    </div>
+    <div class="progress-area" id="deployArea">
+      <div class="log-area" id="deployLog" style="max-height:200px;"></div>
+    </div>
+  </div>
 </div>
 
 <script>
@@ -667,9 +682,87 @@ async function checkRunning() {
   } catch (e) {}
 }
 
+// --- Deploy ---
+let deployPollInterval = null;
+
+async function startDeploy() {
+  if (!confirm('OCR結果を commit & push しますか？\nGitHub Actions が gh-pages を自動更新します。')) return;
+
+  const btn = document.getElementById('deployBtn');
+  btn.disabled = true;
+  document.getElementById('deployStatus').textContent = '実行中...';
+  document.getElementById('deployArea').classList.add('active');
+  document.getElementById('deployLog').innerHTML = '';
+
+  try {
+    const res = await adminFetch('/api/deploy/start', { method: 'POST', headers: { 'Content-Type': 'application/json' } });
+    const data = await res.json();
+    if (!data.success) {
+      alert(data.error || 'デプロイ開始に失敗');
+      btn.disabled = false;
+      document.getElementById('deployStatus').textContent = '';
+      return;
+    }
+    deployPollInterval = setInterval(pollDeploy, 1500);
+    pollDeploy();
+  } catch (e) {
+    alert('エラー: ' + e.message);
+    btn.disabled = false;
+    document.getElementById('deployStatus').textContent = '';
+  }
+}
+
+async function pollDeploy() {
+  try {
+    const res = await adminFetch('/api/deploy/status');
+    const data = await res.json();
+    if (!data.success) return;
+
+    const logArea = document.getElementById('deployLog');
+    logArea.innerHTML = data.log.map(line => {
+      let cls = '';
+      if (line.includes('[ERR]') || line.includes('失敗')) cls = 'log-error';
+      else if (line.startsWith('$')) cls = '';
+      return `<div class="log-line ${cls}">${escapeHtml(line)}</div>`;
+    }).join('');
+    logArea.scrollTop = logArea.scrollHeight;
+
+    if (!data.running) {
+      clearInterval(deployPollInterval);
+      deployPollInterval = null;
+      document.getElementById('deployBtn').disabled = false;
+      if (data.deploy_success) {
+        document.getElementById('deployStatus').textContent = '完了';
+        document.getElementById('deployStatus').style.color = '#4CAF50';
+      } else {
+        document.getElementById('deployStatus').textContent = '失敗';
+        document.getElementById('deployStatus').style.color = '#ff6b6b';
+      }
+    }
+  } catch (e) {
+    console.error('Deploy poll error:', e);
+  }
+}
+
+// Check deploy status on load
+async function checkDeploy() {
+  try {
+    const res = await adminFetch('/api/deploy/status');
+    const data = await res.json();
+    if (data.success && data.running) {
+      document.getElementById('deployBtn').disabled = true;
+      document.getElementById('deployStatus').textContent = '実行中...';
+      document.getElementById('deployArea').classList.add('active');
+      deployPollInterval = setInterval(pollDeploy, 1500);
+      pollDeploy();
+    }
+  } catch (e) {}
+}
+
 // Init
 loadSeriesStats();
 checkRunning();
+checkDeploy();
 </script>
 </body>
 </html>

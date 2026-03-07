@@ -1244,6 +1244,133 @@ def api_ocr_run_stop():
     return jsonify({'success': True, 'message': '停止をリクエストしました'})
 
 
+# ====================================================
+# デプロイ（git commit & push → GitHub Actions が gh-pages 更新）
+# ====================================================
+_deploy_status = {
+    "running": False,
+    "log": [],
+    "success": None,
+    "started_at": None,
+    "finished_at": None,
+}
+_deploy_lock = threading.Lock()
+
+
+@app.route('/api/deploy/start', methods=['POST'])
+def api_deploy_start():
+    with _deploy_lock:
+        if _deploy_status["running"]:
+            return jsonify({'success': False, 'error': 'デプロイが既に実行中です'}), 409
+
+    with _ocr_run_lock:
+        if _ocr_run_status["running"]:
+            return jsonify({'success': False, 'error': 'OCRタスク実行中はデプロイできません'}), 409
+
+    t = threading.Thread(target=_run_deploy, daemon=True)
+    t.start()
+    return jsonify({'success': True, 'message': 'デプロイを開始しました'})
+
+
+@app.route('/api/deploy/status')
+def api_deploy_status():
+    with _deploy_lock:
+        return jsonify({
+            'success': True,
+            'running': _deploy_status["running"],
+            'log': list(_deploy_status["log"]),
+            'deploy_success': _deploy_status["success"],
+            'started_at': _deploy_status["started_at"],
+            'finished_at': _deploy_status["finished_at"],
+        })
+
+
+def _run_deploy():
+    import subprocess
+
+    with _deploy_lock:
+        _deploy_status["running"] = True
+        _deploy_status["log"] = []
+        _deploy_status["success"] = None
+        _deploy_status["started_at"] = time.strftime('%Y-%m-%dT%H:%M:%S')
+        _deploy_status["finished_at"] = None
+
+    def log(msg):
+        with _deploy_lock:
+            _deploy_status["log"].append(msg)
+
+    def run_cmd(cmd, cwd=None):
+        log(f"$ {cmd}")
+        result = subprocess.run(
+            cmd, shell=True, cwd=cwd,
+            capture_output=True, text=True, timeout=120,
+        )
+        if result.stdout.strip():
+            for line in result.stdout.strip().split('\n'):
+                log(f"  {line}")
+        if result.returncode != 0 and result.stderr.strip():
+            for line in result.stderr.strip().split('\n'):
+                log(f"  [ERR] {line}")
+        return result
+
+    project_root = os.path.dirname(os.path.abspath(__file__))
+
+    try:
+        # 1. 変更チェック
+        log("=== 変更チェック ===")
+        r = run_cmd("git status --porcelain all_cards_list/ ocr_results_debug/", cwd=project_root)
+        changed_files = [l for l in r.stdout.strip().split('\n') if l.strip()]
+        if not changed_files:
+            log("変更なし — デプロイ不要")
+            with _deploy_lock:
+                _deploy_status["success"] = True
+            return
+
+        log(f"変更ファイル数: {len(changed_files)}")
+
+        # 2. git add & commit
+        log("=== コミット ===")
+        run_cmd("git add all_cards_list/ ocr_results_debug/", cwd=project_root)
+
+        # 変更統計を取得
+        r = run_cmd("git diff --cached --stat | tail -1", cwd=project_root)
+        stat_summary = r.stdout.strip() or f"{len(changed_files)} files changed"
+
+        commit_msg = f"data: OCR結果更新 ({stat_summary})"
+        r = run_cmd(f'git commit -m "{commit_msg}"', cwd=project_root)
+        if r.returncode != 0:
+            log("コミット失敗（変更なし？）")
+            with _deploy_lock:
+                _deploy_status["success"] = True
+            return
+
+        # 3. git push
+        log("=== Push ===")
+        r = run_cmd("git push origin main", cwd=project_root)
+        if r.returncode != 0:
+            log("Push失敗!")
+            with _deploy_lock:
+                _deploy_status["success"] = False
+            return
+
+        log("Push完了 — GitHub Actions が gh-pages を自動更新します")
+        with _deploy_lock:
+            _deploy_status["success"] = True
+
+    except subprocess.TimeoutExpired:
+        log("タイムアウト!")
+        with _deploy_lock:
+            _deploy_status["success"] = False
+    except Exception as e:
+        log(f"エラー: {str(e)}")
+        with _deploy_lock:
+            _deploy_status["success"] = False
+    finally:
+        with _deploy_lock:
+            _deploy_status["running"] = False
+            _deploy_status["finished_at"] = time.strftime('%Y-%m-%dT%H:%M:%S')
+
+
 @app.route('/ocr_results/<path:filename>')
 def serve_ocr_results(filename):
     if not _is_safe_filename(filename):
