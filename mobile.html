@@ -1349,7 +1349,7 @@ body.light .bm-toggle-btn.active{background:#d0e8dc;border-color:var(--accent);c
   </div>
   <div class="cache-menu-section">
     <div class="cache-menu-header">
-      <span class="cache-menu-icon">&#9888;</span>
+      <span class="cache-menu-icon"></span>
       <span class="cache-menu-title">画像キャッシュ</span>
     </div>
     <div class="cache-menu-count" id="cacheCount">キャッシュ: 0枚</div>
@@ -1916,7 +1916,7 @@ const ImageCache = {
       box.style.color = '#333';
     }
     box.innerHTML = `
-      <div style="font-size:1.5rem;margin-bottom:12px">&#9888;</div>
+      <div style="margin-bottom:12px"></div>
       <div style="font-weight:bold;color:#ff8a80;margin-bottom:8px;font-size:1rem">キャッシュが削除されています</div>
       <div style="margin-bottom:16px">今後はカード画像が表示されません。<br>表示する場合は再度キャッシュを作成してください。</div>
       <button style="padding:8px 24px;border-radius:6px;border:none;background:#68efbd;color:#000;font-weight:bold;font-size:0.9rem;cursor:pointer" onclick="this.closest('div[style*=fixed]').remove()">OK</button>
@@ -1942,7 +1942,7 @@ const ImageCache = {
       box.style.color = '#333';
     }
     box.innerHTML = `
-      <div style="font-size:1.5rem;margin-bottom:12px">&#9888;</div>
+      <div style="margin-bottom:12px"></div>
       <div style="font-weight:bold;color:${titleColor};margin-bottom:8px;font-size:1rem">${title}</div>
       <div style="margin-bottom:16px">${message}</div>
       <button style="padding:8px 24px;border-radius:6px;border:none;background:#68efbd;color:#000;font-weight:bold;font-size:0.9rem;cursor:pointer" onclick="this.closest('div[style*=fixed]').remove()">OK</button>
