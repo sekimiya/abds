@@ -1,0 +1,83 @@
+{
+  "card_number": "AR04-003",
+  "card_name": "ガンダム・ルブリス",
+  "series": "アーセナルレア4弾[前半]",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AR04-003.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AR04-003_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "AR04-003",
+    "type": "MS",
+    "card_label": {
+      "class": "機動",
+      "cost_label": "コスト5"
+    },
+    "name": "ガンダム・ルブリス",
+    "model": "XGF-02 GUNDAM LFRITH",
+    "cost": 5,
+    "category": "MS",
+    "affiliation": "オックス・アース・コーポレーション",
+    "pilot": "エルノラ・サマヤ",
+    "stats": {
+      "height": "18.0m",
+      "weight": "43.9t",
+      "mobility": 330,
+      "ranged_attack": 320,
+      "melee_attack": 340,
+      "hp": 310
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "A",
+      "desert": "C",
+      "water": null
+    },
+    "weapon": {
+      "main": {
+        "name": "ビームブレイド",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "レシーバーガン",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "連撃",
+      "activation": "任意発動",
+      "target": "単体(敵)",
+      "range": 2,
+      "cost": 3,
+      "description": "ロックオン中の敵に単体攻撃でダメージを与える。"
+    },
+    "link_ability": [
+      {
+        "name": "水星の魔女",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "その名はガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ビームブレイド強撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3600,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "A",
+    "illustrator": "Gas1",
+    "raw": "機動　コスト5　MS\nXGF-02 GUNDAM LFRITH\nガンダム・ルブリス\n水星の魔女\n\n頭頂高　18.0m\n本体重量　43.9t　　地上 A　宇宙 A　砂漠 C\n所属　オックス・アース・コーポレーション　　機動力 330\nパイロット　エルノラ・サマヤ　　遠距離攻撃 320\n　　　　　　　　　　　　　　　近距離攻撃 340\n　　　　　　　　　　　　　　　HP 310\n\nWEAPON\nMAIN　ビームブレイド　射程 1　近距離\nSUB　レシーバーガン　射程 3　遠距離\n\nMS ABILITY\n連撃\n任意発動　単体(敵)　射程 2　コスト 3\nロックオン中の敵に単体攻撃でダメージを与える。\n\nLINK ABILITY\n水星の魔女　デッキに3枚以上\n[機動力]小アップ\n\nその名はガンダム　デッキに3枚以上\n[機動力]小アップ\n\nIMPACT AREA\n（マップあり）\n\nSPECIAL ATTACK\nビームブレイド強撃\n単体(敵)　射程 2\nSPコスト 2　威力 3600\n敵単体に格闘攻撃でダメージを与える。\n\nillust　Gas1\n©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\nARSENAL BASE\nAR04-003　A"
+  },
+  "ocr_raw_file": "アーセナルレア4弾[前半]_AR04-003_ガンダム・ルブリス_ocr_raw.json",
+  "ocr_timestamp": "2026-03-07T15:31:45.611541",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

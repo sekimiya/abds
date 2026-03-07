@@ -1,0 +1,83 @@
+{
+  "card_number": "LX04-046",
+  "card_name": "ガンダムアストレイ ブルーフレーム",
+  "series": "LINXTAGE SEASON:04",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX04-046.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX04-046_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "LX04-046",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト1"
+    },
+    "name": "ガンダムアストレイブルーフレーム",
+    "model": "MBF-P03 GUNDAM ASTRAY BLUE FRAME",
+    "cost": 1,
+    "category": "MS",
+    "affiliation": "サーペントテール",
+    "pilot": "叢雲劾",
+    "stats": {
+      "height": "17.53m",
+      "weight": "49.8t",
+      "mobility": 120,
+      "ranged_attack": 150,
+      "melee_attack": 100,
+      "hp": 180
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "C",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "500mm無反動砲",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ビームサーベル",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "連射",
+      "activation": "任意発動",
+      "target": "単体（敵）",
+      "range": 3,
+      "cost": 3,
+      "description": "ロックオン中の敵に単体攻撃でダメージを与える。"
+    },
+    "link_ability": [
+      {
+        "name": "SEED ASTRAY",
+        "condition": "デッキに2枚以上",
+        "effect": "[近距離攻撃力]小アップ"
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "500mm無反動砲撃射",
+      "target": "単体（敵）",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3000,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "C",
+    "illustrator": "hiropon",
+    "raw": "遠距離 コスト1\nMBF-P03 GUNDAM ASTRAY BLUE FRAME\nガンダムアストレイブルーフレーム\n全高　17.53m\n本体重量　49.8t　　地上 A　宇宙 S　砂漠 C　水中 C\n所属　サーペントテール\nパイロット　叢雲劾\n機動力 120\n遠距離攻撃 150\n近距離攻撃 100\nHP 180\n\nWEAPON\nMAIN 500mm無反動砲　射程 3　遠距離\nSUB ビームサーベル　射程 1　近距離\n\nMS ABILITY\n連射\n任意発動　単体（敵）　射程 3　コスト 3\nロックオン中の敵に単体攻撃でダメージを与える。\n\nLINK ABILITY\nSEED ASTRAY　デッキに2枚以上\n[近距離攻撃力]小アップ\n\n多彩な戦術　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nIMPACT AREA\n\nSPECIAL ATTACK\n500mm無反動砲撃射\n単体（敵）　射程 3\nSPコスト 2　威力 3000\n敵単体に射撃攻撃でダメージを与える。\n\nillust. hiropon\n©創通・サンライズ\nBANDAI MADE IN JAPAN　機動戦士ガンダム ARSENAL BASE©\nLX04-046　C"
+  },
+  "ocr_raw_file": "LINXTAGE_SEASON_04_LX04-046_ガンダムアストレイ_ブルーフレーム_ocr_raw.json",
+  "ocr_timestamp": "2026-03-07T19:07:11.644642",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

@@ -1,0 +1,78 @@
+{
+  "card_number": "PR-008",
+  "card_name": "アースリィガンダム",
+  "series": "プロモーション",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-008.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-008_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "PR-008",
+    "type": "MS",
+    "card_label": {
+      "class": "機動",
+      "cost_label": "コスト6"
+    },
+    "name": "アースリィガンダム",
+    "model": "PFF-X7/E3 EARTHREE GUNDAM",
+    "cost": 6,
+    "category": "Re:RISE",
+    "affiliation": "BUILD DiVERS",
+    "pilot": "ヒロト",
+    "stats": {
+      "height": "18.7m",
+      "weight": "45.4t",
+      "mobility": 330,
+      "ranged_attack": 360,
+      "melee_attack": 310,
+      "hp": 320
+    },
+    "terrain_compatibility": {
+      "ground": "S",
+      "space": "A",
+      "desert": "C",
+      "water": null
+    },
+    "weapon": {
+      "main": {
+        "name": "ビームライフル",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ビームサーベル",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "貫通",
+      "activation": "任意発動",
+      "target": "貫通(敵)",
+      "range": 3,
+      "cost": 3,
+      "description": "ロックオン中の敵に一定時間チャージ後、貫通射撃を行い、射線上の敵にダメージを与える。"
+    },
+    "link_ability": [
+      {
+        "name": "Re:RISE",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ビームライフル精密射撃",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3400,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "PR",
+    "illustrator": "Tonamikanji",
+    "raw": "機動　コスト6　MS\nPFF-X7/E3 EARTHREE GUNDAM\nアースリィガンダム\n\n全高　18.7m\n本体重量　45.4t\n所属　BUILD DiVERS\nパイロット　ヒロト\n\n地上 S　宇宙 A　砂漠 C\n機動力 330\n遠距離攻撃 360\n近距離攻撃 310\nHP 320\n\nWEAPON\nMAIN ビームライフル　射程 3　遠距離\nSUB ビームサーベル　射程 1　近距離\n\nMS ABILITY\n貫通\n任意発動　貫通(敵)　射程 3　コスト 3\nロックオン中の敵に一定時間チャージ後、貫通射撃を行い、射線上の敵にダメージを与える。\n\nLINK ABILITY\nRe:RISE　デッキに3枚以上\n[遠距離攻撃力]小アップ\n\nSPECIAL ATTACK\nビームライフル精密射撃\n単体(敵)　射程 3\nSPコスト 2　威力 3400\n敵単体に射撃攻撃でダメージを与える。\n\nillust Tonamikanji\n©創通・サンライズ\nBANDAI MADE IN JAPAN\nNOT FOR SALE　PR-008　PR"
+  },
+  "ocr_raw_file": "プロモーション_PR-008_アースリィガンダム_ocr_raw.json",
+  "ocr_timestamp": "2026-03-07T12:15:47.326434",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

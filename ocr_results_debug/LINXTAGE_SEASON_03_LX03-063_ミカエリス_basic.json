@@ -1,0 +1,83 @@
+{
+  "card_number": "LX03-063",
+  "card_name": "ミカエリス",
+  "series": "LINXTAGE SEASON:03",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX03-063.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX03-063_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "LX03-063",
+    "type": "MS",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト6"
+    },
+    "name": "ミカエリス",
+    "model": "CFK-029 MICHAELIS",
+    "cost": 6,
+    "category": "MS",
+    "affiliation": "グラスレー・ディフェンス・システムズ",
+    "pilot": "シャディク・ゼネリ",
+    "stats": {
+      "height": "20.3m",
+      "weight": "68.8t",
+      "mobility": 240,
+      "ranged_attack": 150,
+      "melee_attack": 250,
+      "hp": 260
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "A",
+      "desert": "C",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "ビームサーベル",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "大型ビームガン",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "撃滅",
+      "activation": "任意発動",
+      "target": "単体(敵)",
+      "range": 2,
+      "cost": 4,
+      "description": "ロックオン中の敵に単体攻撃でダメージを与える。この攻撃で敵ユニットを撃破した場合、敵ユニットの修理時間を延長させる。"
+    },
+    "link_ability": [
+      {
+        "name": "水星の魔女",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "間合いを詰めた接近戦",
+        "condition": "デッキに2枚以上",
+        "effect": "[近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ビームサーベル強撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3300,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "C",
+    "illustrator": "haru",
+    "raw": "近距離 コスト6 MS\nCFK-029 MICHAELIS\nミカエリス\n\n頭頂高 20.3m\n本体重量 68.8t\n所属 グラスレー・ディフェンス・システムズ\nパイロット シャディク・ゼネリ\n\n地上 A　宇宙 A　砂漠 C　水中 C\n機動力 240\n遠距離攻撃 150\n近距離攻撃 250\nHP 260\n\nWEAPON\nMAIN ビームサーベル　射程 1　近距離\nSUB 大型ビームガン　射程 3　遠距離\n\nMS ABILITY\n撃滅\n任意発動　単体(敵)　射程 2　コスト 4\nロックオン中の敵に単体攻撃でダメージを与える。この攻撃で敵ユニットを撃破した場合、敵ユニットの修理時間を延長させる。\n\nLINK ABILITY\n水星の魔女　デッキに3枚以上\n[機動力]小アップ\n\n間合いを詰めた接近戦　デッキに2枚以上\n[近距離攻撃力]小アップ\n\nSPECIAL ATTACK\nビームサーベル強撃\n単体(敵)　射程 2\nSPコスト 2　威力 3300\n敵単体に格闘攻撃でダメージを与える。\n\nillustharu\n©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\nLX03-063 C"
+  },
+  "ocr_raw_file": "LINXTAGE_SEASON_03_LX03-063_ミカエリス_ocr_raw.json",
+  "ocr_timestamp": "2026-03-07T17:38:31.575491",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

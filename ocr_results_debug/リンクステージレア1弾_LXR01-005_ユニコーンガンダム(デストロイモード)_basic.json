@@ -1,0 +1,83 @@
+{
+  "card_number": "LXR01-005",
+  "card_name": "ユニコーンガンダム(デストロイモード)",
+  "series": "リンクステージレア1弾",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LXR01-005.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LXR01-005_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "LXR01-005",
+    "type": "MS",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト6"
+    },
+    "name": "ユニコーンガンダム(デストロイモード)",
+    "model": "RX-0 UNICORN GUNDAM",
+    "cost": 6,
+    "category": "ガンダムUC",
+    "affiliation": "ビスト財団",
+    "pilot": "バナージ・リンクス",
+    "stats": {
+      "height": "21.7m",
+      "weight": "23.7t",
+      "mobility": 200,
+      "ranged_attack": 150,
+      "melee_attack": 350,
+      "hp": 450
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "C",
+      "water": null
+    },
+    "weapon": {
+      "main": {
+        "name": "ビーム・トンファー",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "ビーム・マグナム",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "鉄壁",
+      "activation": "出撃時発動",
+      "target": "自分",
+      "range": null,
+      "cost": null,
+      "description": "自身の受けるダメージを少し軽減する。自身が撤退するまで効果は持続する。"
+    },
+    "link_ability": [
+      {
+        "name": "ガンダムUC",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ビーム・トンファー強撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3500,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "LX",
+    "illustrator": "Eske Yoshinob",
+    "raw": "近距離 コスト6\nRX-0 UNICORN GUNDAM\nユニコーンガンダム(デストロイモード)\n\n全高　21.7m\n本体重量　23.7t\n所属　ビスト財団\nパイロット　バナージ・リンクス\n\n地上 A　宇宙 S　砂漠 C\n機動力 200\n遠距離攻撃 150\n近距離攻撃 350\nHP 450\n\nWEAPON\nMAIN　ビーム・トンファー　射程 1　近距離\nSUB　ビーム・マグナム　射程 3　遠距離\n\nMS ABILITY\n鉄壁\n出撃時発動　自分　射程 ー　コスト ー\n自身の受けるダメージを少し軽減する。\n自身が撤退するまで効果は持続する。\n\nLINK ABILITY\nガンダムUC　デッキに3枚以上\n[機動力]小アップ\n\n戦況を変える力　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nIMPACT AREA\n\nSPECIAL ATTACK\nビーム・トンファー強撃\n単体(敵)　射程 2\nSPコスト 2　威力 3500\n敵単体に格闘攻撃でダメージを与える。\n\nillust　Eske Yoshinob\n©創通・サンライズ\nBANDAI MADE IN JAPAN\nLXR01-005 LX"
+  },
+  "ocr_raw_file": "リンクステージレア1弾_LXR01-005_ユニコーンガンダム(デストロイモード)_ocr_raw.json",
+  "ocr_timestamp": "2026-03-07T14:53:28.614633",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

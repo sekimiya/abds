@@ -1,0 +1,83 @@
+{
+  "card_number": "PR-022",
+  "card_name": "ガンダムヴァーチェ",
+  "series": "プロモーション",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-022.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-022_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "PR-022",
+    "type": "MS",
+    "card_label": {
+      "class": "機動",
+      "cost_label": "コスト5"
+    },
+    "name": "ガンダムヴァーチェ",
+    "model": "GN-005 GUNDAM VIRTUE",
+    "cost": 5,
+    "category": "ガンダム00",
+    "affiliation": "ソレスタルビーイング",
+    "pilot": "ティエリア・アーデ",
+    "stats": {
+      "height": "18.4m",
+      "weight": "66.7t",
+      "mobility": 320,
+      "ranged_attack": 320,
+      "melee_attack": 240,
+      "hp": 250
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "C",
+      "water": null
+    },
+    "weapon": {
+      "main": {
+        "name": "GNバズーカ",
+        "range": 4,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "GNビームサーベル",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "鼓舞[防御]",
+      "activation": "任意発動",
+      "target": "範囲(味方)",
+      "range": null,
+      "cost": 4,
+      "description": "20秒間、自身を中心とした大範囲内の味方ユニットのダメージを少し軽減する。"
+    },
+    "link_ability": [
+      {
+        "name": "ガンダム00",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "その名はガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "GNバズーカ撃射",
+      "target": "単体(敵)",
+      "range": 4,
+      "sp_cost": 2,
+      "power": 3300,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "PR",
+    "illustrator": "Eske Yoshinob",
+    "raw": "機動　コスト5　MS\nGN-005 GUNDAM VIRTUE\nガンダムヴァーチェ\n全高　18.4m\n本体重量　66.7t\n所属　ソレスタルビーイング\nパイロット　ティエリア・アーデ\n地上 A　宇宙 S　砂漠 C\n機動力 320\n遠距離攻撃 320\n近距離攻撃 240\nHP 250\n\nWEAPON\nMAIN　GNバズーカ　射程 4　遠距離\nSUB　GNビームサーベル　射程 1　近距離\n\nMS ABILITY\n鼓舞[防御]\n任意発動　範囲(味方)　射程 ー　コスト 4\n20秒間、自身を中心とした大範囲内の味方ユニットのダメージを少し軽減する。\n\nLINK ABILITY\nガンダム00　デッキに3枚以上\n[機動力]小アップ\n\nその名はガンダム　デッキに3枚以上\n[機動力]小アップ\n\nSPECIAL ATTACK\nGNバズーカ撃射\n単体(敵)　射程 4\nSPコスト 2　威力 3300\n敵単体に射撃攻撃でダメージを与える。\n\nillust　Eske Yoshinob\n©創通・サンライズ\nBANDAI MADE IN JAPAN\nNOT FOR SALE\nPR-022　PR"
+  },
+  "ocr_raw_file": "プロモーション_PR-022_ガンダムヴァーチェ_ocr_raw.json",
+  "ocr_timestamp": "2026-03-07T12:24:22.608372",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

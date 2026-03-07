@@ -1,0 +1,83 @@
+{
+  "card_number": "LX03-058",
+  "card_name": "ガンダム・エアリアル(改修型)",
+  "series": "LINXTAGE SEASON:03",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX03-058.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX03-058_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "LX03-058",
+    "type": "MS",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト3"
+    },
+    "name": "ガンダム・エアリアル(改修型)",
+    "model": "XVX-016RN GUNDAM AERIAL REBUILD",
+    "cost": 3,
+    "category": "MS",
+    "affiliation": "シン・セー開発公社",
+    "pilot": "スレッタ・マーキュリー",
+    "stats": {
+      "height": "18.2m",
+      "weight": "53.2t",
+      "mobility": 160,
+      "ranged_attack": 100,
+      "melee_attack": 190,
+      "hp": 200
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "C",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "ビームサーベル",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "ビームライフル",
+        "range": 4,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "強化[近接]",
+      "activation": "任意発動",
+      "target": "自分",
+      "range": null,
+      "cost": 4,
+      "description": "30秒間、自身の[機動力][近距離攻撃力]を中アップする。"
+    },
+    "link_ability": [
+      {
+        "name": "水星の魔女",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "間合いを詰めた接近戦",
+        "condition": "デッキに2枚以上",
+        "effect": "[近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ビームサーベル強撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3200,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "C",
+    "illustrator": "Hiroshi Ayaragi",
+    "raw": "近距離 コスト3 MS\nXVX-016RN GUNDAM AERIAL REBUILD\nガンダム・エアリアル(改修型)\n\n頭頂高 18.2m\n本体重量 53.2t\n所属 シン・セー開発公社\nパイロット スレッタ・マーキュリー\n\n地上 A　宇宙 S　砂漠 C　水中 C\n機動力 160\n遠距離攻撃 100\n近距離攻撃 190\nHP 200\n\nWEAPON\nMAIN ビームサーベル 射程 1 近距離\nSUB ビームライフル 射程 4 遠距離\n\nMS ABILITY\n強化[近接]\n任意発動　自分　射程 ー　コスト 4\n30秒間、自身の[機動力][近距離攻撃力]を中アップする。\n\nLINK ABILITY\n水星の魔女　デッキに3枚以上\n[機動力]小アップ\n\n間合いを詰めた接近戦　デッキに2枚以上\n[近距離攻撃力]小アップ\n\nSPECIAL ATTACK\nビームサーベル強撃\n単体(敵)　射程 2\nSPコスト 2　威力 3200\n敵単体に格闘攻撃でダメージを与える。\n\nillust. Hiroshi Ayaragi\n©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\nLX03-058 C"
+  },
+  "ocr_raw_file": "LINXTAGE_SEASON_03_LX03-058_ガンダム・エアリアル(改修型)_ocr_raw.json",
+  "ocr_timestamp": "2026-03-07T17:35:02.929238",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

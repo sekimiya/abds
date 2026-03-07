@@ -1,0 +1,83 @@
+{
+  "card_number": "LX04-034",
+  "card_name": "ガンダムデスサイズ",
+  "series": "LINXTAGE SEASON:04",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX04-034.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX04-034_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "LX04-034",
+    "type": "MS",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト6"
+    },
+    "name": "ガンダムデスサイズ",
+    "model": "XXXG-01D GUNDAM DEATHSCYTHE",
+    "cost": 6,
+    "category": "MS",
+    "affiliation": null,
+    "pilot": "デュオ・マックスウェル",
+    "stats": {
+      "height": "16.3m",
+      "weight": "7.2t",
+      "mobility": 200,
+      "ranged_attack": 150,
+      "melee_attack": 220,
+      "hp": 230
+    },
+    "terrain_compatibility": {
+      "ground": "S",
+      "space": "B",
+      "desert": "C",
+      "water": "A"
+    },
+    "weapon": {
+      "main": {
+        "name": "ビームサイズ",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "マシンキャノン",
+        "range": 2,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "隠密",
+      "activation": "出撃時発動",
+      "target": "自分",
+      "range": null,
+      "cost": null,
+      "description": "20秒間、敵側の表示から消えてロックオンされなくなる。効果時間が切れるか、何らかの攻撃が当たると効果が解除される。"
+    },
+    "link_ability": [
+      {
+        "name": "ガンダムW",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "間合いを詰めた接近戦",
+        "condition": "デッキに2枚以上",
+        "effect": "[近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ビームサイズ強撃",
+      "target": "単体（敵）",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3300,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "C",
+    "illustrator": "akamiho",
+    "raw": "近距離　コスト6　MS\nXXXG-01D GUNDAM DEATHSCYTHE\nガンダムデスサイズ\n\n全高　16.3m\n本体重量　7.2t\n所属　—\nパイロット　デュオ・マックスウェル\n\n地上 S　宇宙 B　砂漠 C　水中 A\n機動力　200\n遠距離攻撃　150\n近距離攻撃　220\nHP　230\n\nWEAPON\nMAIN　ビームサイズ　射程 1　近距離\nSUB　マシンキャノン　射程 2　遠距離\n\nMS ABILITY\n隠密\n出撃時発動　自分　射程 —　コスト —\n20秒間、敵側の表示から消えてロックオンされなくなる。効果時間が切れるか、何らかの攻撃が当たると効果が解除される。\n\nLINK ABILITY\nガンダムW　デッキに3枚以上\n[機動力]小アップ\n\n間合いを詰めた接近戦　デッキに2枚以上\n[近距離攻撃力]小アップ\n\nSPECIAL ATTACK\nビームサイズ強撃\n単体（敵）　射程 2\nSPコスト 2　威力 3300\n敵単体に格闘攻撃でダメージを与える。\n\nIMPACT AREA\n\nillust. akamiho\n©創通・サンライズ\nBANDAI MADE IN JAPAN\nLX04-034　C"
+  },
+  "ocr_raw_file": "LINXTAGE_SEASON_04_LX04-034_ガンダムデスサイズ_ocr_raw.json",
+  "ocr_timestamp": "2026-03-07T18:58:32.165141",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

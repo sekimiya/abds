@@ -1,0 +1,83 @@
+{
+  "card_number": "LXR04-001",
+  "card_name": "イフリート改",
+  "series": "リンクステージレア4弾",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LXR04-001.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LXR04-001_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "LXR04-001",
+    "type": "MS",
+    "card_label": {
+      "class": "機動",
+      "cost_label": "コスト5"
+    },
+    "name": "イフリート改",
+    "model": "MS-08TX[EXAM] EFREET CUSTOM",
+    "cost": 5,
+    "category": "MS",
+    "affiliation": "ジオン公国軍",
+    "pilot": "ニムバス・シュターゼン",
+    "stats": {
+      "height": "17.2m",
+      "weight": "50.4t",
+      "mobility": 270,
+      "ranged_attack": 60,
+      "melee_attack": 430,
+      "hp": 440
+    },
+    "terrain_compatibility": {
+      "ground": "S",
+      "space": "C",
+      "desert": "S",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "ヒート・サーベルニ刀流",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "腕部2連装グレネード・ランチャー",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "奮起",
+      "activation": "出撃時発動",
+      "target": "自分",
+      "range": null,
+      "cost": null,
+      "description": "自身のHPが1以上で一定割合以下になると、一定時間、撃破されなくなり[遠／近攻撃力]を中アップする。出撃時1度のみ発動。"
+    },
+    "link_ability": [
+      {
+        "name": "THE BLUE DESTINY",
+        "condition": "デッキに2枚以上",
+        "effect": "[近距離攻撃力]小アップ"
+      },
+      {
+        "name": "高速機動の接近戦",
+        "condition": "デッキに機動が2枚以上",
+        "effect": "[近距離攻撃力]中アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ヒート・サーベルニ刀流連撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3700,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "LX",
+    "illustrator": "haru",
+    "raw": "機動 コスト5\nMS-08TX[EXAM] EFREET CUSTOM\nイフリート改\n\n全高 17.2m\n本体重量 50.4t\n所属 ジオン公国軍\nパイロット ニムバス・シュターゼン\n\n地上 S 宇宙 C 砂漠 S 水中 C\n機動力 270\n遠距離攻撃 60\n近距離攻撃 430\nHP 440\n\nWEAPON\nMAIN ヒート・サーベルニ刀流 射程 1 近距離\nSUB 腕部2連装グレネード・ランチャー 射程 3 遠距離\n\nMS ABILITY\n奮起\n出撃時発動 自分 射程 ー コスト ー\n自身のHPが1以上で一定割合以下になると、一定時間、撃破されなくなり[遠／近攻撃力]を中アップする。出撃時1度のみ発動。\n\nLINK ABILITY\nTHE BLUE DESTINY デッキに2枚以上\n[近距離攻撃力]小アップ\n\n高速機動の接近戦 デッキに機動が2枚以上\n[近距離攻撃力]中アップ\n\nIMPACT AREA\n\nSPECIAL ATTACK\nヒート・サーベルニ刀流連撃\n単体(敵) 射程 2 SPコスト 2 威力 3700\n敵単体に格闘攻撃でダメージを与える。\n\nillust. haru\n©創通・サンライズ\nBANDAI MADE IN JAPAN\nLXR04-001 LX"
+  },
+  "ocr_raw_file": "リンクステージレア4弾_LXR04-001_イフリート改_ocr_raw.json",
+  "ocr_timestamp": "2026-03-07T13:50:10.464455",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

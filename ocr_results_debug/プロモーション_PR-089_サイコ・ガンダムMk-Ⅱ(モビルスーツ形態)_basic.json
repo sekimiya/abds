@@ -1,0 +1,83 @@
+{
+  "card_number": "PR-089",
+  "card_name": "サイコ・ガンダムMk-Ⅱ(モビルスーツ形態)",
+  "series": "プロモーション",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-089.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-089_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "PR-089",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト7"
+    },
+    "name": "サイコ・ガンダムMk-Ⅱ（モビルスーツ形態）",
+    "model": "MRX-010 PSYCHO GUNDAM Mk-Ⅱ",
+    "cost": 7,
+    "category": "機動戦士Zガンダム",
+    "affiliation": "ネオ・ジオン",
+    "pilot": "プルツー",
+    "stats": {
+      "height": "39.98m",
+      "weight": "283.9t",
+      "mobility": 170,
+      "ranged_attack": 400,
+      "melee_attack": 360,
+      "hp": 420
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "A",
+      "desert": "C",
+      "water": "B"
+    },
+    "weapon": {
+      "main": {
+        "name": "有線サイコミュ式5連装ビーム砲",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "有線サイコミュ式ビーム・ソード",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "鉄壁",
+      "activation": "出撃時発動",
+      "target": "自分",
+      "range": null,
+      "cost": null,
+      "description": "自身の受けるダメージを少し軽減する。自身が撤退するまで効果は持続する。"
+    },
+    "link_ability": [
+      {
+        "name": "機動戦士ガンダムZZ",
+        "condition": "デッキに3枚以上",
+        "effect": "[HP]小アップ"
+      },
+      {
+        "name": "固めた装甲",
+        "condition": "デッキに2枚以上",
+        "effect": "[HP]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "有線サイコミュ式5連装ビーム砲撃射",
+      "target": "単体（敵）",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3500,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "PR",
+    "illustrator": "Robographer",
+    "raw": "遠距離 コスト7\nMRX-010 PSYCHO GUNDAM Mk-Ⅱ\nサイコ・ガンダムMk-Ⅱ（モビルスーツ形態）\n\n全高　39.98m\n本体重量　283.9t\n所属　ネオ・ジオン\nパイロット　プルツー\n\n地上 A　宇宙 A　砂漠 C　水中 B\n機動力 170\n遠距離攻撃 400\n近距離攻撃 360\nHP 420\n\nWEAPON\nMAIN　有線サイコミュ式5連装ビーム砲　射程 3　遠距離\nSUB　有線サイコミュ式ビーム・ソード　射程 1　近距離\n\nMS ABILITY\n鉄壁\n出撃時発動　自分　射程 ー　コスト ー\n自身の受けるダメージを少し軽減する。\n自身が撤退するまで効果は持続する。\n\nLINK ABILITY\n機動戦士ガンダムZZ　デッキに3枚以上\n[HP]小アップ\n\n固めた装甲　デッキに2枚以上\n[HP]小アップ\n\nIMPACT AREA\n\nSPECIAL ATTACK\n有線サイコミュ式5連装ビーム砲撃射\n単体（敵）　射程 3\nSPコスト 2　威力 3500\n敵単体に射撃攻撃でダメージを与える。\n\nillust　Robographer\n©創通・サンライズ\nBANDAI MADE IN JAPAN\nNOT FOR SALE\nPR-089　PR"
+  },
+  "ocr_raw_file": "プロモーション_PR-089_サイコ・ガンダムMk-Ⅱ(モビルスーツ形態)_ocr_raw.json",
+  "ocr_timestamp": "2026-03-07T13:01:44.580071",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

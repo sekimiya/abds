@@ -1,0 +1,83 @@
+{
+  "card_number": "LX02-067",
+  "card_name": "ガンダム・ルブリス・ソーン",
+  "series": "LINXTAGE SEASON:02",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX02-067.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX02-067_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "LX02-067",
+    "type": "MS",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト5"
+    },
+    "name": "ガンダム・ルブリス・ソーン",
+    "model": "EDM-GA-02 GUNDAM LFRITH THORN",
+    "cost": 5,
+    "category": "水星の魔女",
+    "affiliation": "フォルドの夜明け",
+    "pilot": "ノレア・デュノク",
+    "stats": {
+      "height": "14.4m",
+      "weight": "41.2t",
+      "mobility": 190,
+      "ranged_attack": 50,
+      "melee_attack": 230,
+      "hp": 230
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "A",
+      "desert": "C",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "ビームサーベルユニット",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "ビームディフューズガン",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "特攻",
+      "activation": "出撃時発動",
+      "target": "自分",
+      "range": null,
+      "cost": null,
+      "description": "自身の[遠／近攻撃力]をアップし[怯み無効]となるが、[回避／ガード不可][修理時間延長]となる。効果は撤退するまで持続。"
+    },
+    "link_ability": [
+      {
+        "name": "水星の魔女",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "間合いを詰めた接近戦",
+        "condition": "デッキに2枚以上",
+        "effect": "[近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ビームサーベルユニット強撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3300,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "C",
+    "illustrator": "ZB",
+    "raw": "近距離 コスト5 MS\nEDM-GA-02 GUNDAM LFRITH THORN\nガンダム・ルブリス・ソーン\n\n頭頂高　14.4m\n本体重量　41.2t\n所属　フォルドの夜明け\nパイロット　ノレア・デュノク\n\n地上 A　宇宙 A　砂漠 C　水中 C\n機動力 190\n遠距離攻撃 50\n近距離攻撃 230\nHP 230\n\nWEAPON\nMAIN ビームサーベルユニット　射程 1　近距離\nSUB ビームディフューズガン　射程 3　遠距離\n\nMS ABILITY\n特攻\n出撃時発動　自分　射程 ー　コスト ー\n\n自身の[遠／近攻撃力]をアップし[怯み無効]となるが、[回避／ガード不可][修理時間延長]となる。効果は撤退するまで持続。\n\nLINK ABILITY\n水星の魔女　デッキに3枚以上\n[機動力]小アップ\n\n間合いを詰めた接近戦　デッキに2枚以上\n[近距離攻撃力]小アップ\n\nSPECIAL ATTACK\nビームサーベルユニット強撃\n単体(敵)　射程 2\nSPコスト 2　威力 3300\n\n敵単体に格闘攻撃でダメージを与える。\n\nIMPACT AREA（グリッド図）\n\nillust ZB\n©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\nLX02-067　C"
+  },
+  "ocr_raw_file": "LINXTAGE_SEASON_02_LX02-067_ガンダム・ルブリス・ソーン_ocr_raw.json",
+  "ocr_timestamp": "2026-03-07T16:24:15.322745",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

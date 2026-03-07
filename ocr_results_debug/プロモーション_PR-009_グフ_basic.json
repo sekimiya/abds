@@ -1,0 +1,83 @@
+{
+  "card_number": "PR-009",
+  "card_name": "グフ",
+  "series": "プロモーション",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-009.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-009_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "PR-009",
+    "type": "MS",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト5"
+    },
+    "name": "グフ",
+    "model": "MS-07B GOUF",
+    "cost": 5,
+    "category": "機動戦士ガンダム",
+    "affiliation": "ジオン公国軍",
+    "pilot": "ランバ・ラル",
+    "stats": {
+      "height": "18.2m",
+      "weight": "58.5t",
+      "mobility": 240,
+      "ranged_attack": 160,
+      "melee_attack": 340,
+      "hp": 430
+    },
+    "terrain_compatibility": {
+      "ground": "S",
+      "space": "C",
+      "desert": "A",
+      "water": null
+    },
+    "weapon": {
+      "main": {
+        "name": "ヒート・サーベル",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "フィンガー・バルカン",
+        "range": 2,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "増援[殲滅]",
+      "activation": "任意発動",
+      "target": "特殊(自分)",
+      "range": null,
+      "cost": 3,
+      "description": "自身の周囲に殲滅タイプの味方ユニットを呼び出す。"
+    },
+    "link_ability": [
+      {
+        "name": "機動戦士ガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "陸戦特化の戦い",
+        "condition": "デッキに2枚以上",
+        "effect": "[機動力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ヒート・サーベル強撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 3,
+      "power": 3900,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "PR",
+    "illustrator": "kenko",
+    "raw": "近距離　コスト5\nMS-07B GOUF\nグフ\n\n全高　18.2m\n本体重量　58.5t\n所属　ジオン公国軍\nパイロット　ランバ・ラル\n\n地上 S　宇宙 C　砂漠 A\n機動力　240\n遠距離攻撃　160\n近距離攻撃　340\nHP　430\n\nWEAPON\nMAIN　ヒート・サーベル　射程 1　近距離\nSUB　フィンガー・バルカン　射程 2　遠距離\n\nMS ABILITY\n増援[殲滅]\n任意発動　特殊(自分)　射程ー　コスト 3\n自身の周囲に殲滅タイプの味方ユニットを呼び出す。\n\nLINK ABILITY\n機動戦士ガンダム　デッキに3枚以上\n[機動力]小アップ\n\n陸戦特化の戦い　デッキに2枚以上\n[機動力]小アップ\n\nSPECIAL ATTACK\nヒート・サーベル強撃\n単体(敵)　射程 2\nSPコスト 3　威力 3900\n敵単体に格闘攻撃でダメージを与える。\n\nillust. kenko\n©創通・サンライズ\nBANDAI MADE IN JAPAN\nNOT FOR SALE\nPR-009 PR"
+  },
+  "ocr_raw_file": "プロモーション_PR-009_グフ_ocr_raw.json",
+  "ocr_timestamp": "2026-03-07T12:16:28.930289",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

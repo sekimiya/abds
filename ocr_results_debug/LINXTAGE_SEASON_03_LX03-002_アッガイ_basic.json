@@ -1,0 +1,83 @@
+{
+  "card_number": "LX03-002",
+  "card_name": "アッガイ",
+  "series": "LINXTAGE SEASON:03",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX03-002.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX03-002_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "LX03-002",
+    "type": "MS",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト5"
+    },
+    "name": "アッガイ",
+    "model": "MSM-04 ACGUY",
+    "cost": 5,
+    "category": "機動戦士ガンダム",
+    "affiliation": "ジオン公国軍",
+    "pilot": "アカハナ",
+    "stats": {
+      "height": "19.2m",
+      "weight": "91.6t",
+      "mobility": 170,
+      "ranged_attack": 130,
+      "melee_attack": 280,
+      "hp": 220
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "C",
+      "desert": "C",
+      "water": "S"
+    },
+    "weapon": {
+      "main": {
+        "name": "アイアン・ネイル",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "メガ粒子砲",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "鼓舞[近接]",
+      "activation": "任意発動",
+      "target": "範囲(味方)",
+      "range": null,
+      "cost": 5,
+      "description": "30秒間、自身を中心とした大範囲内の味方ユニットの[機動力][近距離攻撃力]を小アップする。"
+    },
+    "link_ability": [
+      {
+        "name": "機動戦士ガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "水面下の闘争",
+        "condition": "デッキに2枚以上",
+        "effect": "[近距離攻撃力][HP]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "アイアン・ネイル強襲",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3300,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "C",
+    "illustrator": "Kumagoro",
+    "raw": "近距離 コスト5\nMSM-04 ACGUY\nアッガイ\n\n全高　19.2m\n本体重量　91.6t\n所属　ジオン公国軍\nパイロット　アカハナ\n\n地上 A　宇宙 C　砂漠 C　水中 S\n機動力 170\n遠距離攻撃 130\n近距離攻撃 280\nHP 220\n\nWEAPON\nMAIN　アイアン・ネイル　射程 1　近距離\nSUB　メガ粒子砲　射程 3　遠距離\n\nMS ABILITY\n鼓舞[近接]\n任意発動　範囲(味方)　射程 ―　コスト 5\n30秒間、自身を中心とした大範囲内の味方ユニットの[機動力][近距離攻撃力]を小アップする。\n\nLINK ABILITY\n機動戦士ガンダム　デッキに3枚以上\n[機動力]小アップ\n\n水面下の闘争　デッキに2枚以上\n[近距離攻撃力][HP]小アップ\n\nSPECIAL ATTACK\nアイアン・ネイル強襲\n単体(敵)　射程 2\nSPコスト 2　威力 3300\n敵単体に格闘攻撃でダメージを与える。\n\nIMPACT AREA\n\nillust. Kumagoro\n©創通・サンライズ\nBANDAI MADE IN JAPAN\nARSENAL BASE®\nLX03-002　C"
+  },
+  "ocr_raw_file": "LINXTAGE_SEASON_03_LX03-002_アッガイ_ocr_raw.json",
+  "ocr_timestamp": "2026-03-07T16:53:37.560506",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

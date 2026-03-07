@@ -1,0 +1,83 @@
+{
+  "card_number": "LX03-050",
+  "card_name": "ガンダム・キマリストルーパー",
+  "series": "LINXTAGE SEASON:03",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX03-050.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX03-050_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "LX03-050",
+    "type": "MS",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト5"
+    },
+    "name": "ガンダム・キマリストルーパー",
+    "model": "ASW-G-66 GUNDAM KIMARIS TROOPER",
+    "cost": 5,
+    "category": "MS",
+    "affiliation": "ギャラルホルン",
+    "pilot": "ガエリオ・ボードウィン",
+    "stats": {
+      "height": "19.1m",
+      "weight": "32.7t",
+      "mobility": 160,
+      "ranged_attack": 120,
+      "melee_attack": 280,
+      "hp": 240
+    },
+    "terrain_compatibility": {
+      "ground": "S",
+      "space": "A",
+      "desert": "A",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "デストロイヤー・ランス",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "デストロイヤー・ランス(射撃)",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "強襲",
+      "activation": "任意発動",
+      "target": "単体(敵)",
+      "range": 4,
+      "cost": 4,
+      "description": "一定範囲内のロックオン可能な残りHPの割合が最も高い敵ユニットにターゲットを切り替え、単体攻撃でダメージを与える。"
+    },
+    "link_ability": [
+      {
+        "name": "鉄血のオルフェンズ",
+        "condition": "デッキに3枚以上",
+        "effect": "[近距離攻撃力]小アップ"
+      },
+      {
+        "name": "迫撃の近距離戦",
+        "condition": "デッキに近距離が2枚以上",
+        "effect": "[近距離攻撃力]中アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "デストロイヤー・ランス強撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3300,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "C",
+    "illustrator": "Masked",
+    "raw": "近距離 コスト5\nASW-G-66 GUNDAM KIMARIS TROOPER\nガンダム・キマリストルーパー\n\n全高　19.1m\n本体重量　32.7t　　地上 S　宇宙 A　砂漠 A　水中 C\n所属　ギャラルホルン　　　　　　機動力 160\nパイロット　ガエリオ・ボードウィン　　遠距離攻撃 120\n　　　　　　　　　　　　　　　　　近距離攻撃 280\n　　　　　　　　　　　　　　　　　HP 240\n\nWEAPON\nMAIN　デストロイヤー・ランス　射程 1　近距離\nSUB　デストロイヤー・ランス(射撃)　射程 3　遠距離\n\nMS ABILITY\n強襲\n任意発動　単体(敵)　射程 4　コスト 4\n一定範囲内のロックオン可能な残りHPの割合が最も高い敵ユニットにターゲットを切り替え、単体攻撃でダメージを与える。\n\nLINK ABILITY\n鉄血のオルフェンズ　デッキに3枚以上\n[近距離攻撃力]小アップ\n\n迫撃の近距離戦　デッキに近距離が2枚以上\n[近距離攻撃力]中アップ\n\nIMPACT AREA\n（グリッド図）\n\nSPECIAL ATTACK\nデストロイヤー・ランス強撃\n単体(敵)　射程 2\nSPコスト 2　威力 3300\n敵単体に格闘攻撃でダメージを与える。\n\nillust　Masked\n©創通・サンライズ\nBANDAI MADE IN JAPAN\nLX03-050　C"
+  },
+  "ocr_raw_file": "LINXTAGE_SEASON_03_LX03-050_ガンダム・キマリストルーパー_ocr_raw.json",
+  "ocr_timestamp": "2026-03-07T17:28:56.040299",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

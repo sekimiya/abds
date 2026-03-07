@@ -1,0 +1,83 @@
+{
+  "card_number": "PR-028",
+  "card_name": "エンゲージゼロ・追加ブースター装備型",
+  "series": "プロモーション",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-028.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-028_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "PR-028",
+    "type": "MS",
+    "card_label": {
+      "class": "機動",
+      "cost_label": "コスト4"
+    },
+    "name": "エンゲージゼロ・追加ブースター装備型",
+    "model": "RX-78MS00Z-B ENGAGE ZERO",
+    "cost": 4,
+    "category": "U.C. ENGAGE",
+    "affiliation": "アナハイム・エレクトロニクス",
+    "pilot": "ペッシェ・モンターニュ",
+    "stats": {
+      "height": "18.0m",
+      "weight": null,
+      "mobility": 290,
+      "ranged_attack": 230,
+      "melee_attack": 280,
+      "hp": 270
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "A",
+      "desert": "C",
+      "water": null
+    },
+    "weapon": {
+      "main": {
+        "name": "ビーム・サーベル",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "ビーム・ライフル",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "連撃",
+      "activation": "任意発動",
+      "target": "単体（敵）",
+      "range": 2,
+      "cost": 3,
+      "description": "ロックオン中の敵に単体攻撃でダメージを与える。"
+    },
+    "link_ability": [
+      {
+        "name": "U.C. ENGAGE",
+        "condition": "デッキに2枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "その名はガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ビーム・サーベル強撃",
+      "target": "単体（敵）",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3400,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "PR",
+    "illustrator": "toriyufu",
+    "raw": "機動　コスト4　MS\nRX-78MS00Z-B ENGAGE ZERO\nエンゲージゼロ・追加ブースター装備型\n\n全高　18.0m\n本体重量　—　　　　　　地上 A　宇宙 A　砂漠 C\n所属　アナハイム・エレクトロニクス　　　　　機動力 290\nパイロット　ペッシェ・モンターニュ　　　　遠距離攻撃 230\n　　　　　　　　　　　　　　　　　　　　近距離攻撃 280\n　　　　　　　　　　　　　　　　　　　　HP 270\n\nWEAPON\nMAIN　ビーム・サーベル　射程 1　近距離\nSUB　ビーム・ライフル　射程 3　遠距離\n\nMS ABILITY\n連撃\n任意発動　単体（敵）　射程 2　コスト 3\nロックオン中の敵に単体攻撃でダメージを与える。\n\nLINK ABILITY\nU.C. ENGAGE　デッキに2枚以上\n[機動力]小アップ\n\nその名はガンダム　デッキに3枚以上\n[機動力]小アップ\n\nSPECIAL ATTACK\nビーム・サーベル強撃\n単体（敵）　射程 2\nSPコスト 2　威力 3400\n敵単体に格闘攻撃でダメージを与える。\n\nillust_toriyufu\n©創通・サンライズ\nBANDAI MADE IN JAPAN\nNOT FOR SALE\nPR-028　PR"
+  },
+  "ocr_raw_file": "プロモーション_PR-028_エンゲージゼロ・追加ブースター装備型_ocr_raw.json",
+  "ocr_timestamp": "2026-03-07T12:27:13.790327",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

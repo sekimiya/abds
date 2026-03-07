@@ -1,0 +1,83 @@
+{
+  "card_number": "LX04-043",
+  "card_name": "ガナーザクウォーリア(ルナマリア・ホーク専用機)",
+  "series": "LINXTAGE SEASON:04",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX04-043.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX04-043_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "LX04-043",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト3"
+    },
+    "name": "ガナーザクウォーリア (ルナマリア・ホーク専用機)",
+    "model": "ZGMF-1000/A1 LUNAMARIA'S GUNNER ZAKU WARRIOR",
+    "cost": 3,
+    "category": "SEED DESTINY",
+    "affiliation": "ザフト",
+    "pilot": "ルナマリア・ホーク",
+    "stats": {
+      "height": "20.50m",
+      "weight": "91.11t",
+      "mobility": 110,
+      "ranged_attack": 370,
+      "melee_attack": 170,
+      "hp": 300
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "A",
+      "desert": "C",
+      "water": "A"
+    },
+    "weapon": {
+      "main": {
+        "name": "オルトロス高エネルギー長射程ビーム砲",
+        "range": 4,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ビームトマホーク",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "貫通",
+      "activation": "任意発動",
+      "target": "貫通(敵)",
+      "range": 4,
+      "cost": 3,
+      "description": "ロックオン中の敵に一定時間チャージ後、貫通射撃を行い、射線上の敵にダメージを与える。"
+    },
+    "link_ability": [
+      {
+        "name": "SEED DESTINY",
+        "condition": "デッキに3枚以上",
+        "effect": "[HP]小アップ"
+      },
+      {
+        "name": "的確な一撃",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][遠距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "オルトロス高エネルギー長射程ビーム砲撃射",
+      "target": "単体(敵)",
+      "range": 4,
+      "sp_cost": 2,
+      "power": 3200,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "M",
+    "illustrator": "Kouki Tajima",
+    "raw": "遠距離 コスト3 MS\nZGMF-1000/A1 LUNAMARIA'S GUNNER ZAKU WARRIOR\nガナーザクウォーリア (ルナマリア・ホーク専用機)\n\n全高　20.50m\n本体重量　91.11t　　　地上 A　宇宙 A　砂漠 C　水中 A\n所属　ザフト　　　　　機動力 110\nパイロット　ルナマリア・ホーク　遠距離攻撃 370\n　　　　　　　　　　　近距離攻撃 170\n　　　　　　　　　　　HP 300\n\nWEAPON\nMAIN　オルトロス高エネルギー長射程ビーム砲　射程 4　遠距離\nSUB　ビームトマホーク　射程 1　近距離\n\nMS ABILITY\n貫通\n任意発動　貫通(敵)　射程 4　コスト 3\nロックオン中の敵に一定時間チャージ後、貫通射撃を行い、射線上の敵にダメージを与える。\n\nLINK ABILITY\nSEED DESTINY　デッキに3枚以上\n[HP]小アップ\n\n的確な一撃　デッキに4枚以上\n[機動力][遠距離攻撃力]小アップ\n\nSPECIAL ATTACK\nオルトロス高エネルギー長射程ビーム砲撃射\n単体(敵)　射程 4\nSPコスト 2　威力 3200\n敵単体に射撃攻撃でダメージを与える。\n\nillust. Kouki Tajima\n©創通・サンライズ\nBANDAI MADE IN JAPAN\nLX04-043　M"
+  },
+  "ocr_raw_file": "LINXTAGE_SEASON_04_LX04-043_ガナーザクウォーリア(ルナマリア・ホーク専用機)_ocr_raw.json",
+  "ocr_timestamp": "2026-03-07T19:05:20.298707",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

@@ -1,0 +1,83 @@
+{
+  "card_number": "PR-040",
+  "card_name": "ビルドストライクガンダム",
+  "series": "プロモーション",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-040.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-040_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "PR-040",
+    "type": "MS",
+    "card_label": {
+      "class": "機動",
+      "cost_label": "コスト5"
+    },
+    "name": "ビルドストライクガンダム",
+    "model": "GAT-X105B BUILD STRIKE GUNDAM",
+    "cost": 5,
+    "category": null,
+    "affiliation": null,
+    "pilot": "レイジ、イオリ・セイ",
+    "stats": {
+      "height": "17.7m",
+      "weight": null,
+      "mobility": 360,
+      "ranged_attack": 240,
+      "melee_attack": 400,
+      "hp": 350
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "A",
+      "desert": "C",
+      "water": null
+    },
+    "weapon": {
+      "main": {
+        "name": "ビームサーベル",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "頭部バルカン砲",
+        "range": 2,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "集中砲火",
+      "activation": "任意発動",
+      "target": "範囲(味方)",
+      "range": null,
+      "cost": 4,
+      "description": "20秒間、ロックオンしている敵に周囲の味方ターゲットを集め、[遠／近攻撃力]を中アップ。攻撃対象が変わると効果は終了する。"
+    },
+    "link_ability": [
+      {
+        "name": "ビルドファイターズ",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "その名はガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ビームサーベル二刀流強撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3500,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "PR",
+    "illustrator": "Naochika Morishita",
+    "raw": "機動　コスト5　MS\nGAT-X105B BUILD STRIKE GUNDAM\nビルドストライクガンダム\n\n全高　17.7m\n本体重量　—\n所属　—\nパイロット　レイジ、イオリ・セイ\n\n地上 A　宇宙 A　砂漠 C\n機動力 360\n遠距離攻撃 240\n近距離攻撃 400\nHP 350\n\nWEAPON\nMAIN　ビームサーベル　射程 1　近距離\nSUB　頭部バルカン砲　射程 2　遠距離\n\nMS ABILITY\n集中砲火\n任意発動　範囲(味方)　射程—　コスト 4\n20秒間、ロックオンしている敵に周囲の味方ターゲットを集め、[遠／近攻撃力]を中アップ。攻撃対象が変わると効果は終了する。\n\nLINK ABILITY\nビルドファイターズ　デッキに3枚以上\n[機動力]小アップ\n\nその名はガンダム　デッキに3枚以上\n[機動力]小アップ\n\nSPECIAL ATTACK\nビームサーベル二刀流強撃\n単体(敵)　射程 2\nSPコスト 2　威力 3500\n敵単体に格闘攻撃でダメージを与える。\n\nillust　Naochika Morishita\n©創通・サンライズ\nBANDAI MADE IN JAPAN\nPR-040　PR\nNOT FOR SALE"
+  },
+  "ocr_raw_file": "プロモーション_PR-040_ビルドストライクガンダム_ocr_raw.json",
+  "ocr_timestamp": "2026-03-07T12:34:28.770098",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

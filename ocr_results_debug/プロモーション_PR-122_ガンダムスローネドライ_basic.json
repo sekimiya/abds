@@ -1,0 +1,83 @@
+{
+  "card_number": "PR-122",
+  "card_name": "ガンダムスローネドライ",
+  "series": "プロモーション",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-122.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-122_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "PR-122",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト5"
+    },
+    "name": "ガンダムスローネドライ",
+    "model": "GNW-003 GUNDAM THRONE DREI",
+    "cost": 5,
+    "category": "MS",
+    "affiliation": "ソレスタルビーイング",
+    "pilot": "ネーナ・トリニティ",
+    "stats": {
+      "height": "19.4m",
+      "weight": "67.7t",
+      "mobility": 240,
+      "ranged_attack": 360,
+      "melee_attack": 50,
+      "hp": 400
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "A",
+      "desert": "C",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "GNハンドガン",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "GNビームサーベル",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "奮起",
+      "activation": "出撃時発動",
+      "target": "自分",
+      "range": null,
+      "cost": null,
+      "description": "自身のHPが1以上で一定割合以下になると、一定時間、撃破されなくなり[遠／近攻撃力]を中アップする。出撃時1度のみ発動。"
+    },
+    "link_ability": [
+      {
+        "name": "ガンダム00",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "距離をとった射撃戦",
+        "condition": "デッキに2枚以上",
+        "effect": "[遠距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "GNハンドガン射撃",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3400,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "PR",
+    "illustrator": "Kumagoro",
+    "raw": "遠距離 コスト5\nGNW-003 GUNDAM THRONE DREI\nガンダムスローネドライ\n\n全高 19.4m\n本体重量 67.7t\n所属 ソレスタルビーイング\nパイロット ネーナ・トリニティ\n\n地上 A 宇宙 A 砂漠 C 水中 C\n機動力 240\n遠距離攻撃 360\n近距離攻撃 50\nHP 400\n\nWEAPON\nMAIN GNハンドガン 射程 3 遠距離\nSUB GNビームサーベル 射程 1 近距離\n\nMS ABILITY\n奮起\n出撃時発動 自分 射程 ー コスト ー\n自身のHPが1以上で一定割合以下になると、一定時間、撃破されなくなり[遠／近攻撃力]を中アップする。出撃時1度のみ発動。\n\nLINK ABILITY\nガンダム00 デッキに3枚以上\n[機動力]小アップ\n\n距離をとった射撃戦 デッキに2枚以上\n[遠距離攻撃力]小アップ\n\nSPECIAL ATTACK\nGNハンドガン射撃\n単体(敵) 射程 3\nSPコスト 2 威力 3400\n敵単体に射撃攻撃でダメージを与える。\n\nillust Kumagoro\n©創通・サンライズ\nBANDAI MADE IN JAPAN\nNOT FOR SALE\nPR-122 PR"
+  },
+  "ocr_raw_file": "プロモーション_PR-122_ガンダムスローネドライ_ocr_raw.json",
+  "ocr_timestamp": "2026-03-07T11:21:00.931356",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

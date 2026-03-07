@@ -1,0 +1,83 @@
+{
+  "card_number": "LX04-017",
+  "card_name": "ガンダム試作2号機",
+  "series": "LINXTAGE SEASON:04",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX04-017.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX04-017_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "LX04-017",
+    "type": "MS",
+    "card_label": {
+      "class": "機動",
+      "cost_label": "コスト4"
+    },
+    "name": "ガンダム試作2号機",
+    "model": "RX-78GP02A GUNDAM GP02A",
+    "cost": 4,
+    "category": "MS",
+    "affiliation": "ジオン公国軍",
+    "pilot": "アナベル・ガトー",
+    "stats": {
+      "height": "18.5m",
+      "weight": "54.5t",
+      "mobility": 170,
+      "ranged_attack": 50,
+      "melee_attack": 220,
+      "hp": 310
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "A",
+      "desert": "C",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "ビーム・サーベル",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "頭部バルカン",
+        "range": 2,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "デコイ[ユニット]",
+      "activation": "任意発動",
+      "target": "特殊(自分)",
+      "range": null,
+      "cost": 2,
+      "description": "自身の周囲にユニット扱いでロックオンされるデコイを3体配置する。※上限6体まで。効果の対象やユニット数には含まれない。"
+    },
+    "link_ability": [
+      {
+        "name": "ガンダム0083",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "高速機動の接近戦",
+        "condition": "デッキに機動が2枚以上",
+        "effect": "[近距離攻撃力]中アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ビーム・サーベル強撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3200,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "C",
+    "illustrator": "Tatsumi Takuan",
+    "raw": "機動 コスト4\nRX-78GP02A GUNDAM GP02A\nガンダム試作2号機\n\n全高 18.5m\n本体重量 54.5t\n所属 ジオン公国軍\nパイロット アナベル・ガトー\n\n地上 A　宇宙 A　砂漠 C　水中 C\n機動力 170\n遠距離攻撃 50\n近距離攻撃 220\nHP 310\n\nWEAPON\nMAIN ビーム・サーベル　射程 1　近距離\nSUB 頭部バルカン　射程 2　遠距離\n\nMS ABILITY\nデコイ[ユニット]\n任意発動　特殊(自分)　射程 ー　コスト 2\n自身の周囲にユニット扱いでロックオンされるデコイを3体配置する。※上限6体まで。効果の対象やユニット数には含まれない。\n\nLINK ABILITY\nガンダム0083　デッキに3枚以上\n[機動力]小アップ\n\n高速機動の接近戦　デッキに機動が2枚以上\n[近距離攻撃力]中アップ\n\nSPECIAL ATTACK\nビーム・サーベル強撃\n単体(敵)　射程 2\nSPコスト 2　威力 3200\n敵単体に格闘攻撃でダメージを与える。\n\nIMPACT AREA\n（グリッド図: 射程2の範囲、三角マーカー付き）\n\nillust Tatsumi Takuan\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\nLX04-017　C"
+  },
+  "ocr_raw_file": "LINXTAGE_SEASON_04_LX04-017_ガンダム試作2号機_ocr_raw.json",
+  "ocr_timestamp": "2026-03-07T18:22:32.947546",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

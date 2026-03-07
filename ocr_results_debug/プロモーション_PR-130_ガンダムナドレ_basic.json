@@ -1,0 +1,83 @@
+{
+  "card_number": "PR-130",
+  "card_name": "ガンダムナドレ",
+  "series": "プロモーション",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-130.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-130_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "PR-130",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト3"
+    },
+    "name": "ガンダムナドレ",
+    "model": "GN-004 GUNDAM NADLEEH",
+    "cost": 3,
+    "category": "ガンダム00",
+    "affiliation": "ソレスタルビーイング",
+    "pilot": "ティエリア・アーデ",
+    "stats": {
+      "height": "18.1m",
+      "weight": "54.0t",
+      "mobility": 190,
+      "ranged_attack": 320,
+      "melee_attack": 250,
+      "hp": 290
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "C",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "GNキャノン",
+        "range": 4,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "GNビームサーベル",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "トランザム[近接／遠距離]",
+      "activation": "任意発動",
+      "target": "自分",
+      "range": null,
+      "cost": 4,
+      "description": "20秒間、自身の[機動力][遠距離攻撃力][近距離攻撃力]を大アップする。"
+    },
+    "link_ability": [
+      {
+        "name": "ガンダム00",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "トランザムの真価",
+        "condition": "デッキに2枚以上",
+        "effect": "[遠／近攻撃力]小アップ、専用作戦カードが使用可能"
+      }
+    ],
+    "special_attack": {
+      "name": "GNキャノン貫通射撃",
+      "target": "貫通(敵)",
+      "range": 4,
+      "sp_cost": 2,
+      "power": 3300,
+      "description": "射線上の敵に貫通射撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "PR",
+    "illustrator": "haru",
+    "raw": "遠距離 コスト3 MS\nGN-004 GUNDAM NADLEEH\nガンダムナドレ\n\n全高 18.1m\n本体重量 54.0t\n所属 ソレスタルビーイング\nパイロット ティエリア・アーデ\n\n地上 A 宇宙 S 砂漠 C 水中 C\n機動力 190\n遠距離攻撃 320\n近距離攻撃 250\nHP 290\n\nWEAPON\nMAIN GNキャノン 射程 4 遠距離\nSUB GNビームサーベル 射程 1 近距離\n\nMS ABILITY\nトランザム[近接／遠距離]\n任意発動 自分 射程 ー コスト 4\n20秒間、自身の[機動力][遠距離攻撃力][近距離攻撃力]を大アップする。\n\nLINK ABILITY\nガンダム00 デッキに3枚以上\n[機動力]小アップ\n\nトランザムの真価 デッキに2枚以上\n[遠／近攻撃力]小アップ、専用作戦カードが使用可能\n\nSPECIAL ATTACK\nGNキャノン貫通射撃\n貫通(敵) 射程 4\nSPコスト 2 威力 3300\n射線上の敵に貫通射撃でダメージを与える。\n\nillust. haru\n©創通・サンライズ\nBANDAI MADE IN JAPAN\nNOT FOR SALE\nPR-130 PR"
+  },
+  "ocr_raw_file": "プロモーション_PR-130_ガンダムナドレ_ocr_raw.json",
+  "ocr_timestamp": "2026-03-07T11:26:16.262722",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

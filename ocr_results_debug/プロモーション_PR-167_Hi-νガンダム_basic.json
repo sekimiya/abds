@@ -1,0 +1,83 @@
+{
+  "card_number": "PR-167",
+  "card_name": "Hi-νガンダム",
+  "series": "プロモーション",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-167.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-167_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "PR-167",
+    "type": "MS",
+    "card_label": {
+      "class": "機動",
+      "cost_label": "コスト4"
+    },
+    "name": "Hi-νガンダム",
+    "model": "RX-93-ν2 Hi-νGUNDAM",
+    "cost": 4,
+    "category": "逆襲のシャア",
+    "affiliation": "地球連邦軍",
+    "pilot": "アムロ・レイ",
+    "stats": {
+      "height": "20.0m",
+      "weight": "27.9t",
+      "mobility": 300,
+      "ranged_attack": 250,
+      "melee_attack": 130,
+      "hp": 270
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "C",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "ビーム・ライフル",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ビーム・サーベル",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "奮起",
+      "activation": "出撃時発動",
+      "target": "自分",
+      "range": null,
+      "cost": null,
+      "description": "自身のHPが1以上で一定割合以下になると、一定時間、撃破されなくなり[遠／近攻撃力]を中アップする。出撃時1度のみ発動。"
+    },
+    "link_ability": [
+      {
+        "name": "逆襲のシャア",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力]小アップ"
+      },
+      {
+        "name": "的確な一撃",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][遠距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ハイパー・メガ・バズーカ・ランチャー照射",
+      "target": "貫通(敵)",
+      "range": 4,
+      "sp_cost": 2,
+      "power": 2900,
+      "description": "射線上の敵に貫通射撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "PR",
+    "illustrator": "Kotaro Ando (STUDIO GS)",
+    "raw": "機動　コスト4　MS\nRX-93-ν2 Hi-νGUNDAM\nHi-νガンダム\n\n機動戦士ガンダム 逆襲のシャア\nベルトーチカ・チルドレン\n\n全高　20.0m\n本体重量　27.9t\n所属　地球連邦軍\nパイロット　アムロ・レイ\n\n地上 A　宇宙 S　砂漠 C　水中 C\n機動力　300\n遠距離攻撃　250\n近距離攻撃　130\nHP　270\n\nWEAPON\nMAIN　ビーム・ライフル　射程 3　遠距離\nSUB　ビーム・サーベル　射程 1　近距離\n\nMS ABILITY\n奮起\n出撃時発動　自分　射程ー　コストー\n自身のHPが1以上で一定割合以下になると、一定時間、撃破されなくなり[遠／近攻撃力]を中アップする。出撃時1度のみ発動。\n\nLINK ABILITY\n逆襲のシャア　デッキに3枚以上\n[遠距離攻撃力]小アップ\n\n的確な一撃　デッキに4枚以上\n[機動力][遠距離攻撃力]小アップ\n\nSPECIAL ATTACK\nハイパー・メガ・バズーカ・ランチャー照射\n貫通(敵)　射程 4\nSPコスト 2　威力 2900\n射線上の敵に貫通射撃でダメージを与える。\n\nillust. Kotaro Ando (STUDIO GS)\n©創通・サンライズ\nBANDAI MADE IN JAPAN\nNOT FOR SALE\nPR-167　PR"
+  },
+  "ocr_raw_file": "プロモーション_PR-167_Hi-νガンダム_ocr_raw.json",
+  "ocr_timestamp": "2026-03-07T11:46:56.669070",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

@@ -1,0 +1,83 @@
+{
+  "card_number": "PR-063",
+  "card_name": "エールストライクガンダム",
+  "series": "プロモーション",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-063.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-063_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "PR-063",
+    "type": "MS",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト2"
+    },
+    "name": "エールストライクガンダム",
+    "model": "GAT-X105+AQM/E-X01 AILE STRIKE GUNDAM",
+    "cost": 2,
+    "category": null,
+    "affiliation": "地球連合軍",
+    "pilot": "キラ・ヤマト",
+    "stats": {
+      "height": "17.72m",
+      "weight": "85.1t",
+      "mobility": 220,
+      "ranged_attack": 40,
+      "melee_attack": 270,
+      "hp": 320
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "C",
+      "water": null
+    },
+    "weapon": {
+      "main": {
+        "name": "ビームサーベル",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "高エネルギービームライフル",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "支援砲撃",
+      "activation": "任意発動",
+      "target": "範囲(敵)",
+      "range": null,
+      "cost": 5,
+      "description": "指定した位置に中範囲の支援砲撃を要請し、範囲内の敵にダメージを与える。"
+    },
+    "link_ability": [
+      {
+        "name": "ガンダムSEED",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "間合いを詰めた接近戦",
+        "condition": "デッキに2枚以上",
+        "effect": "[近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ビームサーベル強撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3300,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "PR",
+    "illustrator": "Naochika Morishita",
+    "raw": "近距離　コスト2　MS\n\nGAT-X105+AQM/E-X01 AILE STRIKE GUNDAM\nエールストライクガンダム\n\n全高　17.72m\n本体重量　85.1t\n所属　地球連合軍\nパイロット　キラ・ヤマト\n\n地上　A　宇宙　S　砂漠　C\n\n機動力　220\n遠距離攻撃　40\n近距離攻撃　270\nHP　320\n\nWEAPON\nMAIN　ビームサーベル　射程1　近距離\nSUB　高エネルギービームライフル　射程3　遠距離\n\nMS ABILITY\n支援砲撃\n任意発動　範囲(敵)　射程ー　コスト5\n指定した位置に中範囲の支援砲撃を要請し、範囲内の敵にダメージを与える。\n\nLINK ABILITY\nガンダムSEED　デッキに3枚以上\n[機動力]小アップ\n\n間合いを詰めた接近戦　デッキに2枚以上\n[近距離攻撃力]小アップ\n\nSPECIAL ATTACK\nビームサーベル強撃\n単体(敵)　射程2\nSPコスト2　威力　3300\n敵単体に格闘攻撃でダメージを与える。\n\nillust. Naochika Morishita\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\nNOT FOR SALE\nPR-063　PR"
+  },
+  "ocr_raw_file": "プロモーション_PR-063_エールストライクガンダム_ocr_raw.json",
+  "ocr_timestamp": "2026-03-07T12:47:20.639871",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

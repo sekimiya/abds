@@ -1,0 +1,83 @@
+{
+  "card_number": "LX02-022",
+  "card_name": "クシャトリヤ",
+  "series": "LINXTAGE SEASON:02",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX02-022.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX02-022_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "LX02-022",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト3"
+    },
+    "name": "クシャトリヤ",
+    "model": "NZ-666 KSHATRIYA",
+    "cost": 3,
+    "category": "ガンダムUC",
+    "affiliation": "ネオ・ジオン残党軍『袖付き』",
+    "pilot": "マリーダ・クルス",
+    "stats": {
+      "height": "22.3m",
+      "weight": "29.7t",
+      "mobility": 230,
+      "ranged_attack": 370,
+      "melee_attack": 120,
+      "hp": 330
+    },
+    "terrain_compatibility": {
+      "ground": "B",
+      "space": "S",
+      "desert": "C",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "胸部メガ粒子砲",
+        "range": 4,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ビーム・ガン",
+        "range": 2,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "オールレンジ",
+      "activation": "任意発動",
+      "target": "範囲(敵)",
+      "range": 4,
+      "cost": 4,
+      "description": "30秒間、自身の周囲の敵ユニットに継続的にダメージを与える。"
+    },
+    "link_ability": [
+      {
+        "name": "ガンダムUC",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ファンネル斉射",
+      "target": "単体(敵)",
+      "range": 4,
+      "sp_cost": 2,
+      "power": 3300,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "P",
+    "illustrator": "Eske Yoshinob",
+    "raw": "遠距離 コスト3 MS\nNZ-666 KSHATRIYA\nクシャトリヤ\n\n全高 22.3m\n本体重量 29.7t\n所属 ネオ・ジオン残党軍『袖付き』\nパイロット マリーダ・クルス\n\n地上 B　宇宙 S　砂漠 C　水中 C\n\n機動力 230\n遠距離攻撃 370\n近距離攻撃 120\nHP 330\n\nWEAPON\nMAIN 胸部メガ粒子砲　射程 4　遠距離\nSUB ビーム・ガン　射程 2　近距離\n\nMS ABILITY\nオールレンジ\n任意発動　範囲(敵)　射程 4　コスト 4\n30秒間、自身の周囲の敵ユニットに継続的にダメージを与える。\n\nLINK ABILITY\nガンダムUC　デッキに3枚以上\n[機動力]小アップ\n\n戦況を変える力　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nSPECIAL ATTACK\nファンネル斉射\n単体(敵)　射程 4\nSPコスト 2　威力 3300\n敵単体に射撃攻撃でダメージを与える。\n\nillust Eske Yoshinob\n©創通・サンライズ\nBANDAI MADE IN JAPAN\nLX02-022 P"
+  },
+  "ocr_raw_file": "LINXTAGE_SEASON_02_LX02-022_クシャトリヤ_ocr_raw.json",
+  "ocr_timestamp": "2026-03-07T15:52:54.980237",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

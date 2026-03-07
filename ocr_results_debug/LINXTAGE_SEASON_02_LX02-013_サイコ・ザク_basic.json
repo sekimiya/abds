@@ -1,0 +1,83 @@
+{
+  "card_number": "LX02-013",
+  "card_name": "サイコ・ザク",
+  "series": "LINXTAGE SEASON:02",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX02-013.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX02-013_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "LX02-013",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト5"
+    },
+    "name": "サイコ・ザク",
+    "model": "MS-06R PSYCHO ZAKU",
+    "cost": 5,
+    "category": "MOBILE SUIT GUNDAM THUNDERBOLT",
+    "affiliation": "ジオン公国軍",
+    "pilot": "ダリル・ローレンツ",
+    "stats": {
+      "height": null,
+      "weight": null,
+      "mobility": 240,
+      "ranged_attack": 270,
+      "melee_attack": 140,
+      "hp": 250
+    },
+    "terrain_compatibility": {
+      "ground": "C",
+      "space": "S",
+      "desert": "C",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "ビーム・バズーカ",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ヒート・ホーク",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "砕撃",
+      "activation": "任意発動",
+      "target": "単体(敵)",
+      "range": 3,
+      "cost": 3,
+      "description": "ロックオン中の敵に単体攻撃でダメージを与え、メイン武装を使用不能にさせる。出撃時1度のみ使用可能。"
+    },
+    "link_ability": [
+      {
+        "name": "サンダーボルト",
+        "condition": "デッキに2枚以上",
+        "effect": "[遠距離攻撃力]小アップ"
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ビーム・バズーカ射撃",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3300,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "R",
+    "illustrator": "gomibako",
+    "raw": "遠距離 コスト5\nMS-06R PSYCHO ZAKU\nサイコ・ザク\nMOBILE SUIT GUNDAM THUNDERBOLT\n\n全高　―\n本体重量　―\n所属　ジオン公国軍\nパイロット　ダリル・ローレンツ\n\n地上 C　宇宙 S　砂漠 C　水中 C\n機動力 240\n遠距離攻撃 270\n近距離攻撃 140\nHP 250\n\nWEAPON\nMAIN　ビーム・バズーカ　射程 3　遠距離\nSUB　ヒート・ホーク　射程 1　近距離\n\nMS ABILITY\n砕撃\n任意発動　単体(敵)　射程 3　コスト 3\nロックオン中の敵に単体攻撃でダメージを与え、メイン武装を使用不能にさせる。\n出撃時1度のみ使用可能。\n\nLINK ABILITY\nサンダーボルト　デッキに2枚以上\n[遠距離攻撃力]小アップ\n\n戦況を変える力　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nIMPACT AREA\n\nSPECIAL ATTACK\nビーム・バズーカ射撃\n単体(敵)　射程 3\nSPコスト 2　威力 3300\n敵単体に射撃攻撃でダメージを与える。\n\nillust　gomibako\n©創通・サンライズ\nBANDAI MADE IN JAPAN\nLX02-013　R"
+  },
+  "ocr_raw_file": "LINXTAGE_SEASON_02_LX02-013_サイコ・ザク_ocr_raw.json",
+  "ocr_timestamp": "2026-03-07T15:47:08.272211",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

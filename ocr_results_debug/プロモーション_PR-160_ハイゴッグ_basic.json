@@ -1,0 +1,83 @@
+{
+  "card_number": "PR-160",
+  "card_name": "ハイゴッグ",
+  "series": "プロモーション",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-160.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-160_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "PR-160",
+    "type": "MS",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト2"
+    },
+    "name": "ハイゴッグ",
+    "model": "MSM-03C HY-GOGG",
+    "cost": 2,
+    "category": "MS",
+    "affiliation": "ジオン公国軍",
+    "pilot": "ミハイル・カミンスキー、アンディ・ストロース",
+    "stats": {
+      "height": "15.4m",
+      "weight": "54.5t",
+      "mobility": 220,
+      "ranged_attack": 130,
+      "melee_attack": 270,
+      "hp": 330
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "C",
+      "desert": "C",
+      "water": "S"
+    },
+    "weapon": {
+      "main": {
+        "name": "バイス・クロー",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "ビーム・カノン",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "増援[殲滅]",
+      "activation": "任意発動",
+      "target": "特殊(自分)",
+      "range": null,
+      "cost": 3,
+      "description": "自身の周囲に殲滅タイプの味方ユニットを呼び出す。※上限3ユニットまで。"
+    },
+    "link_ability": [
+      {
+        "name": "ポケットの中の戦争",
+        "condition": "デッキに3枚以上",
+        "effect": "[HP]小アップ"
+      },
+      {
+        "name": "水面下の闘争",
+        "condition": "デッキに2枚以上",
+        "effect": "[近距離攻撃力][HP]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "バイス・クロー強撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3400,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "PR",
+    "illustrator": "Kai Hajime",
+    "raw": "近距離 コスト2\nMSM-03C HY-GOGG\nハイゴッグ\nポケットの中の戦争\n\n全高　15.4m\n本体重量　54.5t\n所属　ジオン公国軍\nパイロット　ミハイル・カミンスキー、アンディ・ストロース\n\n地上 A　宇宙 C　砂漠 C　水中 S\n機動力 220\n遠距離攻撃 130\n近距離攻撃 270\nHP 330\n\nWEAPON\nMAIN バイス・クロー　射程 1　近距離\nSUB ビーム・カノン　射程 3　遠距離\n\nMS ABILITY\n増援[殲滅]\n任意発動　特殊(自分)　射程 ー　コスト 3\n自身の周囲に殲滅タイプの味方ユニットを呼び出す。※上限3ユニットまで。\n\nLINK ABILITY\nポケットの中の戦争　デッキに3枚以上\n[HP]小アップ\n\n水面下の闘争　デッキに2枚以上\n[近距離攻撃力][HP]小アップ\n\nSPECIAL ATTACK\nバイス・クロー強撃\n単体(敵)　射程 2\nSPコスト 2　威力 3400\n敵単体に格闘攻撃でダメージを与える。\n\nIMPACT AREA\n\nillust. Kai Hajime\n©創通・サンライズ\nBANDAI MADE IN JAPAN\nNOT FOR SALE\nPR-160 PR"
+  },
+  "ocr_raw_file": "プロモーション_PR-160_ハイゴッグ_ocr_raw.json",
+  "ocr_timestamp": "2026-03-07T11:42:57.579397",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

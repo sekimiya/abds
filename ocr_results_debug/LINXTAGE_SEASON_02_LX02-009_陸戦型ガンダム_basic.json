@@ -1,0 +1,83 @@
+{
+  "card_number": "LX02-009",
+  "card_name": "陸戦型ガンダム",
+  "series": "LINXTAGE SEASON:02",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX02-009.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX02-009_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "LX02-009",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト4"
+    },
+    "name": "陸戦型ガンダム",
+    "model": "RX-79[G] GUNDAM GROUND TYPE",
+    "cost": 4,
+    "category": "MS",
+    "affiliation": "地球連邦軍",
+    "pilot": "シロー・アマダ、カレン・ジョシュク、デリー・サンダースJr.",
+    "stats": {
+      "height": "18.0m",
+      "weight": "52.8t",
+      "mobility": 160,
+      "ranged_attack": 350,
+      "melee_attack": 90,
+      "hp": 200
+    },
+    "terrain_compatibility": {
+      "ground": "S",
+      "space": "C",
+      "desert": "A",
+      "water": "B"
+    },
+    "weapon": {
+      "main": {
+        "name": "180mmキャノン",
+        "range": 4,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ビーム・サーベル",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "集中砲火",
+      "activation": "任意発動",
+      "target": "範囲(味方)",
+      "range": null,
+      "cost": 4,
+      "description": "20秒間、ロックオンしている敵に周囲の味方ターゲットを集め、[遠／近攻撃力]を中アップ。攻撃対象が変わると効果は終了する。"
+    },
+    "link_ability": [
+      {
+        "name": "第08MS小隊",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力]小アップ"
+      },
+      {
+        "name": "距離をとった射撃戦",
+        "condition": "デッキに2枚以上",
+        "effect": "[遠距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "180mmキャノン砲撃",
+      "target": "単体(敵)",
+      "range": 4,
+      "sp_cost": 2,
+      "power": 3100,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "R",
+    "illustrator": "kenko",
+    "raw": "遠距離 コスト4\nRX-79[G] GUNDAM GROUND TYPE\n陸戦型ガンダム\n全高 18.0m\n本体重量 52.8t\n所属 地球連邦軍\nパイロット シロー・アマダ、カレン・ジョシュク、デリー・サンダースJr.\n\n地上 S 宇宙 C 砂漠 A 水中 B\n機動力 160\n遠距離攻撃 350\n近距離攻撃 90\nHP 200\n\nWEAPON\nMAIN 180mmキャノン 射程 4 遠距離\nSUB ビーム・サーベル 射程 1 近距離\n\nMS ABILITY\n集中砲火\n任意発動 範囲(味方) 射程 ー コスト 4\n20秒間、ロックオンしている敵に周囲の味方ターゲットを集め、[遠／近攻撃力]を中アップ。攻撃対象が変わると効果は終了する。\n\nLINK ABILITY\n第08MS小隊 デッキに3枚以上\n[遠距離攻撃力]小アップ\n\n距離をとった射撃戦 デッキに2枚以上\n[遠距離攻撃力]小アップ\n\nSPECIAL ATTACK\n180mmキャノン砲撃\n単体(敵) 射程 4\nSPコスト 2 威力 3100\n敵単体に射撃攻撃でダメージを与える。\n\nIMPACT AREA\n\nillust. kenko\n©創通・サンライズ\nBANDAI MADE IN JAPAN\nLX02-009 R"
+  },
+  "ocr_raw_file": "LINXTAGE_SEASON_02_LX02-009_陸戦型ガンダム_ocr_raw.json",
+  "ocr_timestamp": "2026-03-07T15:44:40.307877",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

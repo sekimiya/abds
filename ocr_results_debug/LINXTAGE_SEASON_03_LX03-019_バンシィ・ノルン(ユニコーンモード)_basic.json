@@ -1,0 +1,83 @@
+{
+  "card_number": "LX03-019",
+  "card_name": "バンシィ・ノルン(ユニコーンモード)",
+  "series": "LINXTAGE SEASON:03",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX03-019.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX03-019_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "LX03-019",
+    "type": "MS",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト7"
+    },
+    "name": "バンシィ・ノルン（ユニコーンモード）",
+    "model": "RX-0[N] UNICORN GUNDAM 02 BANSHEE NORN",
+    "cost": 7,
+    "category": "ガンダムUC",
+    "affiliation": "地球連邦軍",
+    "pilot": "リディ・マーセナス",
+    "stats": {
+      "height": "19.7m",
+      "weight": "27.3t",
+      "mobility": 210,
+      "ranged_attack": 200,
+      "melee_attack": 300,
+      "hp": 290
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "A",
+      "desert": "C",
+      "water": "B"
+    },
+    "weapon": {
+      "main": {
+        "name": "ビーム・サーベル",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "頭部バルカン砲",
+        "range": 2,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "強化[近距離]",
+      "activation": "任意発動",
+      "target": "自分",
+      "range": null,
+      "cost": 3,
+      "description": "30秒間、自身の[近距離攻撃力]を小アップする。"
+    },
+    "link_ability": [
+      {
+        "name": "ガンダムUC",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "練磨の機体",
+        "condition": "デッキに2枚以上",
+        "effect": "[HP]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ビーム・サーベル強撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3400,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "C",
+    "illustrator": "Tatsumi Takuan",
+    "raw": "近距離　コスト7　MS\nRX-0[N] UNICORN GUNDAM 02 BANSHEE NORN\nバンシィ・ノルン（ユニコーンモード）\n\n全高　19.7m\n本体重量　27.3t\n所属　地球連邦軍\nパイロット　リディ・マーセナス\n\n地上 A　宇宙 A　砂漠 C　水中 B\n機動力　210\n遠距離攻撃　200\n近距離攻撃　300\nHP　290\n\nWEAPON\nMAIN ビーム・サーベル　射程 1　近距離\nSUB 頭部バルカン砲　射程 2　遠距離\n\nMS ABILITY\n強化[近距離]\n任意発動　自分　射程 ー　コスト 3\n30秒間、自身の[近距離攻撃力]を小アップする。\n\nLINK ABILITY\nガンダムUC　デッキに3枚以上\n[機動力]小アップ\n\n練磨の機体　デッキに2枚以上\n[HP]小アップ\n\nIMPACT AREA\n\nSPECIAL ATTACK\nビーム・サーベル強撃\n単体(敵)　射程 2\nSPコスト 2　威力 3400\n敵単体に格闘攻撃でダメージを与える。\n\nillust Tatsumi Takuan\n©創通・サンライズ\nBANDAI MADE IN JAPAN\nLX03-019　C"
+  },
+  "ocr_raw_file": "LINXTAGE_SEASON_03_LX03-019_バンシィ・ノルン(ユニコーンモード)_ocr_raw.json",
+  "ocr_timestamp": "2026-03-07T17:05:58.918074",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

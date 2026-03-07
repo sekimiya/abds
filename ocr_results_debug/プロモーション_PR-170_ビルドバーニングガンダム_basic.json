@@ -1,0 +1,83 @@
+{
+  "card_number": "PR-170",
+  "card_name": "ビルドバーニングガンダム",
+  "series": "プロモーション",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-170.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-170_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "PR-170",
+    "type": "MS",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト4"
+    },
+    "name": "ビルドバーニングガンダム",
+    "model": "BG-011B BUILD BURNING GUNDAM",
+    "cost": 4,
+    "category": "ビルドファイターズ トライ",
+    "affiliation": "トライ・ファイターズ",
+    "pilot": "カミキ・セカイ",
+    "stats": {
+      "height": "18.0m",
+      "weight": "78.3t",
+      "mobility": 200,
+      "ranged_attack": 50,
+      "melee_attack": 400,
+      "hp": 400
+    },
+    "terrain_compatibility": {
+      "ground": "S",
+      "space": "B",
+      "desert": "A",
+      "water": "B"
+    },
+    "weapon": {
+      "main": {
+        "name": "次元覇王流聖拳突き",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "次元覇王流聖槍蹴り",
+        "range": 2,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "撃滅",
+      "activation": "任意発動",
+      "target": "単体（敵）",
+      "range": 2,
+      "cost": 4,
+      "description": "ロックオン中の敵に単体攻撃でダメージを与える。この攻撃で敵ユニットを撃破した場合、敵ユニットの修理時間を延長させる。"
+    },
+    "link_ability": [
+      {
+        "name": "トライ",
+        "condition": "デッキに3枚以上",
+        "effect": "[HP]小アップ"
+      },
+      {
+        "name": "間合いを詰めた接近戦",
+        "condition": "デッキに2枚以上",
+        "effect": "[近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "鳳凰覇王拳",
+      "target": "単体（敵）",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3700,
+      "description": "敵単体に射撃攻撃でダメージを与え、自身に小ダメージ。",
+      "united_sp": null
+    },
+    "rarity": "PR",
+    "illustrator": "Akinori Takaba (STUDIO GS)",
+    "raw": "近距離　コスト4　MS\nBG-011B BUILD BURNING GUNDAM\nビルドバーニングガンダム\n\n全高　18.0m\n本体重量　78.3t\n所属　トライ・ファイターズ\nパイロット　カミキ・セカイ\n\n地上 S　宇宙 B　砂漠 A　水中 B\n機動力　200\n遠距離攻撃　50\n近距離攻撃　400\nHP　400\n\nWEAPON\nMAIN　次元覇王流聖拳突き　射程 1　近距離\nSUB　次元覇王流聖槍蹴り　射程 2　遠距離\n\nMS ABILITY\n撃滅\n任意発動　単体（敵）　射程 2　コスト 4\nロックオン中の敵に単体攻撃でダメージを与える。この攻撃で敵ユニットを撃破した場合、敵ユニットの修理時間を延長させる。\n\nLINK ABILITY\nトライ　デッキに3枚以上\n[HP]小アップ\n\n間合いを詰めた接近戦　デッキに2枚以上\n[近距離攻撃力]小アップ\n\nSPECIAL ATTACK\n鳳凰覇王拳\n単体（敵）　射程 3\nSPコスト 2　威力 3700\n敵単体に射撃攻撃でダメージを与え、自身に小ダメージ。\n\nillust　Akinori Takaba (STUDIO GS)\n©創通・サンライズ\nBANDAI MADE IN JAPAN\nNOT FOR SALE\nPR-170　PR"
+  },
+  "ocr_raw_file": "プロモーション_PR-170_ビルドバーニングガンダム_ocr_raw.json",
+  "ocr_timestamp": "2026-03-07T11:49:32.780334",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

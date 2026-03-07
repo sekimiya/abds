@@ -1,0 +1,83 @@
+{
+  "card_number": "PR-070",
+  "card_name": "キュベレイMk-Ⅱ(エルピー・プル専用機)",
+  "series": "プロモーション",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-070.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-070_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "PR-070",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト5"
+    },
+    "name": "キュベレイMk-Ⅱ（エルピー・プル専用機）",
+    "model": "AMX-004-2 PLE'S QUBELEY Mk-II",
+    "cost": 5,
+    "category": "機動戦士ガンダムZZ",
+    "affiliation": "ネオ・ジオン",
+    "pilot": "エルピー・プル",
+    "stats": {
+      "height": "18.4m",
+      "weight": "35.2t",
+      "mobility": 210,
+      "ranged_attack": 380,
+      "melee_attack": 140,
+      "hp": 420
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "C",
+      "water": null
+    },
+    "weapon": {
+      "main": {
+        "name": "ビーム・ガン",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ビーム・サーベル",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "オールレンジ",
+      "activation": "任意発動",
+      "target": "範囲(敵)",
+      "range": 4,
+      "cost": 4,
+      "description": "30秒間、自身の周囲の敵ユニットに継続的にダメージを与える。"
+    },
+    "link_ability": [
+      {
+        "name": "機動戦士ガンダムZZ",
+        "condition": "デッキに3枚以上",
+        "effect": "[HP]小アップ"
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ファンネル斉射",
+      "target": "範囲(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3000,
+      "description": "ロックオン中の敵を中心に扇状の範囲攻撃を行い、範囲内の敵にダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "PR",
+    "illustrator": "Kouki Tajima",
+    "raw": "遠距離 コスト5\nAMX-004-2 PLE'S QUBELEY Mk-II\nキュベレイMk-Ⅱ（エルピー・プル専用機）\n\n全高　18.4m\n本体重量　35.2t\n所属　ネオ・ジオン\nパイロット　エルピー・プル\n\n地上 A　宇宙 S　砂漠 C\n機動力 210\n遠距離攻撃 380\n近距離攻撃 140\nHP 420\n\nWEAPON\nMAIN ビーム・ガン　射程 3　遠距離\nSUB ビーム・サーベル　射程 1　近距離\n\nLINK ABILITY\n機動戦士ガンダムZZ　デッキに3枚以上\n[HP]小アップ\n\n戦況を変える力　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nMS ABILITY\nオールレンジ\n任意発動　範囲(敵)　射程 4　コスト 4\n30秒間、自身の周囲の敵ユニットに継続的にダメージを与える。\n\nSPECIAL ATTACK\nファンネル斉射\n範囲(敵)　射程 3\nSPコスト 2　威力 3000\nロックオン中の敵を中心に扇状の範囲攻撃を行い、範囲内の敵にダメージを与える。\n\nillust. Kouki Tajima\n©創通・サンライズ\nBANDAI MADE IN JAPAN\nNOT FOR SALE\nPR-070 PR"
+  },
+  "ocr_raw_file": "プロモーション_PR-070_キュベレイMk-Ⅱ(エルピー・プル専用機)_ocr_raw.json",
+  "ocr_timestamp": "2026-03-07T12:52:19.280465",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

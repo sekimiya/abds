@@ -1,0 +1,83 @@
+{
+  "card_number": "LX04-031",
+  "card_name": "バンシィ(デストロイモード)",
+  "series": "LINXTAGE SEASON:04",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX04-031.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX04-031_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "LX04-031",
+    "type": "MS",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト4"
+    },
+    "name": "バンシイ(デストロイモード)",
+    "model": "RX-0 UNICORN GUNDAM 02 BANSHEE",
+    "cost": 4,
+    "category": "MS",
+    "affiliation": "地球連邦軍",
+    "pilot": "プルトゥエルブ",
+    "stats": {
+      "height": "21.7m",
+      "weight": "24.0t",
+      "mobility": 190,
+      "ranged_attack": 150,
+      "melee_attack": 280,
+      "hp": 430
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "A",
+      "desert": "C",
+      "water": "B"
+    },
+    "weapon": {
+      "main": {
+        "name": "アームド・アーマー VN",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "アームド・アーマー BS",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "鼓舞[近距離][弱体化解除]",
+      "activation": "任意発動",
+      "target": "範囲（味方）",
+      "range": null,
+      "cost": 6,
+      "description": "自身を中心とした大範囲内の味方ユニットの弱体化状態を無効化し、30秒間、[近距離攻撃力]を中アップする。"
+    },
+    "link_ability": [
+      {
+        "name": "ガンダムUC",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "アームド・アーマー VN強襲",
+      "target": "単体（敵）",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3400,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "M",
+    "illustrator": "haru",
+    "raw": "近距離 コスト4 MS\nRX-0 UNICORN GUNDAM 02 BANSHEE\nバンシイ（デストロイモード）\n\n全高 21.7m\n本体重量 24.0t 地上 A 宇宙 A 砂漠 C 水中 B\n所属 地球連邦軍 機動力 190\nパイロット プルトゥエルブ 遠距離攻撃 150\n近距離攻撃 280\nHP 430\n\nWEAPON\nMAIN アームド・アーマー VN 射程 1 近距離\nSUB アームド・アーマー BS 射程 3 遠距離\n\nMS ABILITY\n鼓舞[近距離][弱体化解除]\n任意発動 範囲（味方） 射程ー コスト6\n自身を中心とした大範囲内の味方ユニットの弱体化状態を無効化し、30秒間、[近距離攻撃力]を中アップする。\n\nLINK ABILITY\nガンダムUC デッキに3枚以上\n[機動力]小アップ\n\n多彩な戦術 デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nIMPACT AREA\n\nSPECIAL ATTACK\nアームド・アーマー VN強襲\n単体（敵） 射程 2\nSPコスト 2 威力 3400\n敵単体に格闘攻撃でダメージを与える。\n\nillust. haru\n©創通・サンライズ\nBANDAI MADE IN JAPAN LX04-031 M"
+  },
+  "ocr_raw_file": "LINXTAGE_SEASON_04_LX04-031_バンシィ(デストロイモード)_ocr_raw.json",
+  "ocr_timestamp": "2026-03-07T18:56:19.870522",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

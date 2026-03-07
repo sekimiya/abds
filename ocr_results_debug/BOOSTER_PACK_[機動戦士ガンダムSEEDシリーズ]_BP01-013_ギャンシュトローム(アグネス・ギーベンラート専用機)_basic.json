@@ -1,0 +1,83 @@
+{
+  "card_number": "BP01-013",
+  "card_name": "ギャンシュトローム(アグネス・ギーベンラート専用機)",
+  "series": "BOOSTER PACK [機動戦士ガンダムSEEDシリーズ]",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP01-013.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP01-013_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "BP01-013",
+    "type": "MS",
+    "card_label": {
+      "class": "機動",
+      "cost_label": "コスト4"
+    },
+    "name": "ギャンシュトローム（アグネス・ギーベンラート専用機）",
+    "model": "ZGMF-2027/A GYAN STROM[AGNES GIEBENRATH CUSTOM]",
+    "cost": 4,
+    "category": "ガンダムSEED FREEDOM",
+    "affiliation": "コンパス",
+    "pilot": "アグネス・ギーベンラート",
+    "stats": {
+      "height": "20.00m",
+      "weight": "74.56t",
+      "mobility": 280,
+      "ranged_attack": 90,
+      "melee_attack": 340,
+      "hp": 340
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "C",
+      "desert": "C",
+      "water": "A"
+    },
+    "weapon": {
+      "main": {
+        "name": "ファルクスG7 ビームアックス",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "トリデンティ3航身回転ビーム機銃",
+        "range": 2,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "縛撃",
+      "activation": "任意発動",
+      "target": "単体（敵）",
+      "range": 1,
+      "cost": 3,
+      "description": "ロックオン中の敵ユニットに単体攻撃を行いダメージを与え、一定時間スタンさせる。"
+    },
+    "link_ability": [
+      {
+        "name": "SEED FREEDOM",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ファルクスG7 ビームアックス強撃",
+      "target": "単体（敵）",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3400,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "M",
+    "illustrator": "deraken",
+    "raw": "機動 コスト4 MS\nZGMF-2027/A GYAN STROM[AGNES GIEBENRATH CUSTOM]\nギャンシュトローム（アグネス・ギーベンラート専用機）\n全高 20.00m\n本体重量 74.56t\n所属 コンパス\nパイロット アグネス・ギーベンラート\n地上 A 宇宙 C 砂漠 C 水中 A\n機動力 280\n遠距離攻撃 90\n近距離攻撃 340\nHP 340\n\nWEAPON\nMAIN ファルクスG7 ビームアックス 射程 1 近距離\nSUB トリデンティ3航身回転ビーム機銃 射程 2 遠距離\n\nMS ABILITY\n縛撃\n任意発動 単体（敵） 射程 1 コスト 3\nロックオン中の敵ユニットに単体攻撃を行いダメージを与え、一定時間スタンさせる。\n\nLINK ABILITY\nSEED FREEDOM デッキに3枚以上\n[機動力]小アップ\n\n多彩な戦術 デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nIMPACT AREA\n\nSPECIAL ATTACK\nファルクスG7 ビームアックス強撃\n単体（敵） 射程 2\nSPコスト 2 威力 3400\n敵単体に格闘攻撃でダメージを与える。\n\nillust deraken\n©創通・サンライズ\nBANDAI MADE IN JAPAN\nBP01-013 M"
+  },
+  "ocr_raw_file": "BOOSTER_PACK_[機動戦士ガンダムSEEDシリーズ]_BP01-013_ギャンシュトローム(アグネス・ギーベンラート専用機)_ocr_raw.json",
+  "ocr_timestamp": "2026-03-04T00:01:35.613656",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

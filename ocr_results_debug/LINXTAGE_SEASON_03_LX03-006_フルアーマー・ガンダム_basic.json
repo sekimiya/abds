@@ -1,0 +1,83 @@
+{
+  "card_number": "LX03-006",
+  "card_name": "フルアーマー・ガンダム",
+  "series": "LINXTAGE SEASON:03",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX03-006.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX03-006_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "LX03-006",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト5"
+    },
+    "name": "フルアーマー・ガンダム",
+    "model": "FA-78 FULL ARMOR GUNDAM",
+    "cost": 5,
+    "category": "MS",
+    "affiliation": "地球連邦軍",
+    "pilot": "イオ・フレミング",
+    "stats": {
+      "height": null,
+      "weight": null,
+      "mobility": 250,
+      "ranged_attack": 420,
+      "melee_attack": 70,
+      "hp": 410
+    },
+    "terrain_compatibility": {
+      "ground": "C",
+      "space": "S",
+      "desert": "C",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "2連装ビーム・ライフル",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ビーム・サーベル",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "撃滅",
+      "activation": "任意発動",
+      "target": "単体(敵)",
+      "range": 3,
+      "cost": 4,
+      "description": "ロックオン中の敵に単体攻撃でダメージを与える。この攻撃で敵ユニットを撃破した場合、敵ユニットの修理時間を延長させる。"
+    },
+    "link_ability": [
+      {
+        "name": "サンダーボルト",
+        "condition": "デッキに2枚以上",
+        "effect": "[遠距離攻撃力]小アップ"
+      },
+      {
+        "name": "練磨の機体",
+        "condition": "デッキに2枚以上",
+        "effect": "[HP]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "大型ビーム砲撃射",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3400,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "M",
+    "illustrator": "PLANETA_Mochizuki",
+    "raw": "遠距離 コスト5\nFA-78 FULL ARMOR GUNDAM\nフルアーマー・ガンダム\n\n全高 —\n本体重量 —\n所属 地球連邦軍\nパイロット イオ・フレミング\n\n地上 C　宇宙 S　砂漠 C　水中 C\n機動力 250\n遠距離攻撃 420\n近距離攻撃 70\nHP 410\n\nWEAPON\nMAIN 2連装ビーム・ライフル　射程 3　遠距離\nSUB ビーム・サーベル　射程 1　近距離\n\nMS ABILITY\n撃滅\n任意発動　単体(敵)　射程 3　コスト 4\nロックオン中の敵に単体攻撃でダメージを与える。この攻撃で敵ユニットを撃破した場合、敵ユニットの修理時間を延長させる。\n\nSPECIAL ATTACK\n大型ビーム砲撃射\n単体(敵)　射程 3\nSPコスト 2　威力 3400\n敵単体に射撃攻撃でダメージを与える。\n\nLINK ABILITY\nサンダーボルト　デッキに2枚以上\n[遠距離攻撃力]小アップ\n\n練磨の機体　デッキに2枚以上\n[HP]小アップ\n\nIMPACT AREA\n（マップ図）\n\nillust_PLANETA_Mochizuki\n©創通・サンライズ\nBANDAI MADE IN JAPAN\nLX03-006　M"
+  },
+  "ocr_raw_file": "LINXTAGE_SEASON_03_LX03-006_フルアーマー・ガンダム_ocr_raw.json",
+  "ocr_timestamp": "2026-03-07T16:56:21.769053",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

@@ -1,0 +1,83 @@
+{
+  "card_number": "LXR01-001",
+  "card_name": "ドアン専用ザク",
+  "series": "リンクステージレア1弾",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LXR01-001.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LXR01-001_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "LXR01-001",
+    "type": "MS",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト4"
+    },
+    "name": "ドアン専用ザク",
+    "model": "MS-06F CUCURUZ DOAN'S ZAKU",
+    "cost": 4,
+    "category": "機動戦士ガンダム",
+    "affiliation": null,
+    "pilot": "ククルス・ドアン",
+    "stats": {
+      "height": null,
+      "weight": null,
+      "mobility": 270,
+      "ranged_attack": 0,
+      "melee_attack": 270,
+      "hp": 300
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "A",
+      "desert": "C",
+      "water": null
+    },
+    "weapon": {
+      "main": {
+        "name": "ヒート・ホーク",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": null,
+        "range": null,
+        "type": null
+      }
+    },
+    "ms_ability": {
+      "name": "集中砲火",
+      "activation": "任意発動",
+      "target": "範囲（味方）",
+      "range": null,
+      "cost": 4,
+      "description": "20秒間、ロックオンしている敵に周囲の味方ターゲットを集め、[遠／近攻撃力]を中アップ。攻撃対象が変わると効果は終了する。"
+    },
+    "link_ability": [
+      {
+        "name": "ククルス・ドアンの島",
+        "condition": "デッキに2枚以上",
+        "effect": "[近距離攻撃力]小アップ"
+      },
+      {
+        "name": "間合いを詰めた接近戦",
+        "condition": "デッキに2枚以上",
+        "effect": "[近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ヒート・ホーク強撃",
+      "target": "単体（敵）",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3400,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "LX",
+    "illustrator": "ToMo",
+    "raw": "近距離 コスト4 MS\nMS-06F CUCURUZ DOAN'S ZAKU\nドアン専用ザク\n\n全高　　―\n本体重量　―\n所属　　―\nパイロット　ククルス・ドアン\n\n地上 A　宇宙 A　砂漠 C\n機動力 270\n遠距離攻撃 0\n近距離攻撃 270\nHP 300\n\nWEAPON\nMAIN　ヒート・ホーク　射程 1　近距離\nSUB　―　射程 ―　―\n\nMS ABILITY\n集中砲火\n任意発動　範囲（味方）　射程 ―　コスト 4\n20秒間、ロックオンしている敵に周囲の味方ターゲットを集め、[遠／近攻撃力]を中アップ。攻撃対象が変わると効果は終了する。\n\nLINK ABILITY\nククルス・ドアンの島　デッキに2枚以上\n[近距離攻撃力]小アップ\n\n間合いを詰めた接近戦　デッキに2枚以上\n[近距離攻撃力]小アップ\n\nIMPACT AREA\n\nSPECIAL ATTACK\nヒート・ホーク強撃\n単体（敵）　射程 2\nSPコスト 2　威力 3400\n敵単体に格闘攻撃でダメージを与える。\n\nillust. ToMo\n©創通・サンライズ\nBANDAI MADE IN JAPAN\nARSENAL BASE\nLXR01-001 LX"
+  },
+  "ocr_raw_file": "リンクステージレア1弾_LXR01-001_ドアン専用ザク_ocr_raw.json",
+  "ocr_timestamp": "2026-03-07T14:51:05.246863",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}
