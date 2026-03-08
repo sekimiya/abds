@@ -3787,19 +3787,19 @@ const SearchPanel = {
     const linkName2 = document.getElementById('filterLinkName2').value;
     if (linkName2 && AppState.linkIndex[linkName2]) { const li = AppState.linkIndex[linkName2]; const lc = new Set([...(li.ms_cards||[]), ...(li.pl_cards||[])]); cards = cards.filter(c => lc.has(c.number)); }
     const ebCat = this._t.ebCat;
-    if (ebCat.size > 0) cards = cards.filter(c => _noDetail(c) || (ebCat.has('eb_sp') && c.has_eb) || (ebCat.has('eb_skill') && c.has_eb_skill) || (ebCat.has('eb_link') && c.has_eb_link));
+    if (ebCat.size > 0) cards = cards.filter(c => (ebCat.has('eb_sp') && c.has_eb) || (ebCat.has('eb_skill') && c.has_eb_skill) || (ebCat.has('eb_link') && c.has_eb_link));
     const ebLv = this._t.ebLv;
     if (ebLv.size > 0) cards = cards.filter(c => { if (_noDetail(c)) return true; const lvls = [...ebLv].map(Number); return lvls.includes(c.eb_level) || lvls.includes(c.eb_trigger_level); });
     if (this._t.ebCond.size > 0) cards = cards.filter(c => _noDetail(c) || this._t.ebCond.has(c.eb_trigger_cond));
     const sqCat = this._t.sqCat;
-    if (sqCat.size > 0) cards = cards.filter(c => _noDetail(c) || (sqCat.has('sqsp') && c.has_sqsp) || (sqCat.has('sq_skill') && c.has_sq_skill) || (sqCat.has('sq_link') && c.has_sq_link) || (sqCat.has('sq_rush') && c.sq_rush_effect));
+    if (sqCat.size > 0) cards = cards.filter(c => (sqCat.has('sqsp') && c.has_sqsp) || (sqCat.has('sq_skill') && c.has_sq_skill) || (sqCat.has('sq_link') && c.has_sq_link) || (sqCat.has('sq_rush') && c.sq_rush_effect));
     if (this._t.sqGauge.size > 0) cards = cards.filter(c => _noDetail(c) || this._t.sqGauge.has(c.sq_gauge_rate));
     if (this._t.sqTrig.size > 0) cards = cards.filter(c => _noDetail(c) || this._t.sqTrig.has(c.sq_trigger));
     if (this._t.sqEff.size > 0) cards = cards.filter(c => _noDetail(c) || (c.sq_skill_effect_tags && c.sq_skill_effect_tags.some(t => this._t.sqEff.has(t))));
     if (this._t.sqspEff.size > 0) cards = cards.filter(c => _noDetail(c) || (c.sqsp_effect_tags && c.sqsp_effect_tags.some(t => this._t.sqspEff.has(t))));
     if (this._t.ebspEff.size > 0) cards = cards.filter(c => _noDetail(c) || (c.ebsp_effect_tags && c.ebsp_effect_tags.some(t => this._t.ebspEff.has(t))));
     const abCat = this._t.abCat;
-    if (abCat.size > 0) cards = cards.filter(c => _noDetail(c) || (abCat.has('ab_link') && c.has_ab_link));
+    if (abCat.size > 0) cards = cards.filter(c => (abCat.has('ab_link') && c.has_ab_link));
     if (this._t.spEff.size > 0) cards = cards.filter(c => _noDetail(c) || (c.sp_effect_tags && c.sp_effect_tags.some(t => this._t.spEff.has(t))));
     const skillName = document.getElementById('filterSkillName').value;
     if (skillName) cards = cards.filter(c => _noDetail(c) || c.skill_name === skillName);
