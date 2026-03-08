@@ -1929,8 +1929,7 @@ const Toast = {
     const container = document.getElementById('toastContainer');
     const el = document.createElement('div');
     el.className = `toast ${type}`;
-    if (msg.includes('<')) el.innerHTML = msg;
-    else el.textContent = msg;
+    el.textContent = msg;
     container.appendChild(el);
     setTimeout(() => {
       el.classList.add('fadeout');
@@ -2754,8 +2753,8 @@ const DeckManager = {
             <div style="font-size:0.75rem;color:#888">${d.timestamp ? new Date(d.timestamp).toLocaleString('ja-JP') : ''}</div>
           </div>
           <div style="display:flex;gap:0.3rem">
-            <button class="header-btn" onclick="DeckManager._loadByName('${escapeHtml(d.name)}')">適用</button>
-            <button class="header-btn" style="color:#f44336;border-color:#f44336" onclick="DeckManager._deleteByName('${escapeHtml(d.name)}')">削除</button>
+            <button class="header-btn" onclick="DeckManager._loadByName('${escapeJsForAttr(d.name)}')">適用</button>
+            <button class="header-btn" style="color:#f44336;border-color:#f44336" onclick="DeckManager._deleteByName('${escapeJsForAttr(d.name)}')">削除</button>
           </div>
         </div>
       `).join('');
@@ -3406,9 +3405,9 @@ const UIRenderer = {
       ${rarityBadge}
       ${spTagsHtml}
       <img class="card-slot-img" src="${frontUrl}" alt="${cardNumber}"
-           onclick="event.stopPropagation();showCardModal('${cardNumber}')"
+           onclick="event.stopPropagation();showCardModal('${escapeJsForAttr(cardNumber)}')"
            onerror="this.onerror=null;this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22160%22 height=%22240%22><rect fill=%22%23222%22 width=%22160%22 height=%22240%22/><text x=%2280%22 y=%22120%22 fill=%22%23666%22 text-anchor=%22middle%22>No Image</text></svg>'">
-      <button class="card-slot-detail" onclick="event.stopPropagation();showCardModal('${cardNumber}')">詳細</button>
+      <button class="card-slot-detail" onclick="event.stopPropagation();showCardModal('${escapeJsForAttr(cardNumber)}')">詳細</button>
       ${cardName ? `<div class="card-slot-name">${escapeHtml(cardName)}</div>` : ''}
     `;
   },
@@ -5011,8 +5010,8 @@ const SearchPanel = {
           ${card.has_ab_link ? '<div class="thumb-ab-badge">AB</div>' : ''}
           ${card.sp_effect_tags && card.sp_effect_tags.length ? '<div class="thumb-sp-tags">' + card.sp_effect_tags.map(t => '<span class="thumb-sp-tag sp-t-' + t + '">' + escapeHtml(t) + '</span>').join('') + '</div>' : ''}
           ${overlayHtml}
-          <div class="thumb-detail-btn" onclick="event.stopPropagation();showCardModal('${card.number}')">詳細</div>
-          <button class="thumb-bm-btn${CardBookmark.has(card.number) ? ' bm-on' : ''}" onclick="event.stopPropagation();SearchPanel._toggleBm(this,'${card.number}')" title="ブックマーク">${CardBookmark.has(card.number) ? '&#9733;' : '&#9734;'}</button>
+          <div class="thumb-detail-btn" onclick="event.stopPropagation();showCardModal('${escapeJsForAttr(card.number)}')">詳細</div>
+          <button class="thumb-bm-btn${CardBookmark.has(card.number) ? ' bm-on' : ''}" onclick="event.stopPropagation();SearchPanel._toggleBm(this,'${escapeJsForAttr(card.number)}')" title="ブックマーク">${CardBookmark.has(card.number) ? '&#9733;' : '&#9734;'}</button>
         </div>
         <div class="thumb-card-info">
           <div class="thumb-card-number">
@@ -5180,6 +5179,17 @@ function escapeHtml(str) {
   const div = document.createElement('div');
   div.textContent = str;
   return div.innerHTML;
+}
+/** onclick 等の JS 文字列用エスケープ（' \ 改行等） */
+function escapeJsForAttr(str) {
+  if (!str) return '';
+  return String(str)
+    .replace(/\\/g, '\\\\')
+    .replace(/'/g, "\\'")
+    .replace(/\r/g, '\\r')
+    .replace(/\n/g, '\\n')
+    .replace(/\u2028/g, '\\u2028')
+    .replace(/\u2029/g, '\\u2029');
 }
 
 function isInputFocused() {

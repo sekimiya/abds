@@ -1543,8 +1543,7 @@ const Toast = {
     const container = document.getElementById('toastContainer');
     const el = document.createElement('div');
     el.className = `toast ${type}`;
-    if (msg.includes('<')) el.innerHTML = msg;
-    else el.textContent = msg;
+    el.textContent = msg;
     container.appendChild(el);
     setTimeout(() => {
       el.classList.add('fadeout');
@@ -1681,6 +1680,17 @@ function escapeHtml(str) {
   const div = document.createElement('div');
   div.textContent = str;
   return div.innerHTML;
+}
+/** onclick 等の JS 文字列用エスケープ（' \ 改行等） */
+function escapeJsForAttr(str) {
+  if (!str) return '';
+  return String(str)
+    .replace(/\\/g, '\\\\')
+    .replace(/'/g, "\\'")
+    .replace(/\r/g, '\\r')
+    .replace(/\n/g, '\\n')
+    .replace(/\u2028/g, '\\u2028')
+    .replace(/\u2029/g, '\\u2029');
 }
 // 共通ステータス計算（mobile/desktop共通ロジック）
 // MS・PLそれぞれにリンクバフ適用後に合算
@@ -2644,8 +2654,8 @@ const DeckManager = {
             <div style="font-size:0.75rem;color:#888">${d.timestamp ? new Date(d.timestamp).toLocaleString('ja-JP') : ''}</div>
           </div>
           <div style="display:flex;gap:0.3rem">
-            <button class="menu-btn" onclick="DeckManager._loadByName('${escapeHtml(d.name)}')">適用</button>
-            <button class="menu-btn" style="color:#f44336;border-color:#f44336" onclick="DeckManager._deleteByName('${escapeHtml(d.name)}')">削除</button>
+            <button class="menu-btn" onclick="DeckManager._loadByName('${escapeJsForAttr(d.name)}')">適用</button>
+            <button class="menu-btn" style="color:#f44336;border-color:#f44336" onclick="DeckManager._deleteByName('${escapeJsForAttr(d.name)}')">削除</button>
           </div>
         </div>
       `).join('');
@@ -3084,7 +3094,7 @@ const UIRenderer = {
         html += '<span class="card-rarity rarity-tag" style="opacity:0.5">--</span>';
       }
       html += `<span class="card-name">${msNumber ? escapeHtml(msName) : 'MS 未選択'}</span>`;
-      if (msNumber) html += `<span class="card-detail-btn" onclick="event.stopPropagation();showCardModal('${escapeHtml(msNumber)}','deck')">詳細</span>`;
+      if (msNumber) html += `<span class="card-detail-btn" onclick="event.stopPropagation();showCardModal('${escapeJsForAttr(msNumber)}','deck')">詳細</span>`;
       html += '</div>';
     }
 
@@ -3100,7 +3110,7 @@ const UIRenderer = {
         html += '<span class="card-rarity rarity-tag" style="opacity:0.5">--</span>';
       }
       html += `<span class="card-name">${plNumber ? escapeHtml(plName) : 'PL 未選択'}</span>`;
-      if (plNumber) html += `<span class="card-detail-btn" onclick="event.stopPropagation();showCardModal('${escapeHtml(plNumber)}','deck')">詳細</span>`;
+      if (plNumber) html += `<span class="card-detail-btn" onclick="event.stopPropagation();showCardModal('${escapeJsForAttr(plNumber)}','deck')">詳細</span>`;
       html += '</div>';
     }
 
@@ -3912,7 +3922,7 @@ const SearchPanel = {
           })()}
           ${isAb ? '<div class="thumb-ab-badge">AB</div>' : ''}
           ${card.sp_effect_tags && card.sp_effect_tags.length ? '<div class="thumb-sp-tags">' + card.sp_effect_tags.map(t => '<span class="thumb-sp-tag sp-t-' + t + '">' + escapeHtml(t) + '</span>').join('') + '</div>' : ''}
-          <div class="thumb-detail-btn" onclick="event.stopPropagation();showCardModal('${card.number}')">詳細</div>
+          <div class="thumb-detail-btn" onclick="event.stopPropagation();showCardModal('${escapeJsForAttr(card.number)}')">詳細</div>
           <div class="thumb-card-info">
             <div class="thumb-card-number">${card.number}</div>
             <div class="thumb-card-name"><span style="overflow:hidden;text-overflow:ellipsis">${escapeHtml(card.name || '')}</span>${card.rarity ? `<span class="thumb-inline-rarity" style="color:${({'M':'#82b1ff','C':'#aaa','R':'#ffe082','SR':'#ff8a80','U':'#ce93d8','P':'#68efbd','PR':'#f48fb1','LR':'#ffcc80','LE':'#ff8a80','CP':'#80deea'})[card.rarity]||'#888'}">${escapeHtml(card.rarity)}</span>` : ''}</div>
