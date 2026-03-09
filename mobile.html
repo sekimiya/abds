@@ -596,9 +596,12 @@ body.light .bm-toggle-btn.active{background:#d0e8dc;border-color:var(--accent);c
 .ss-link{font-size:0.4rem;color:#aaa;line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .ss-link-active{color:#68efbd;font-weight:bold}
 .ss-text{font-size:0.4rem;color:#bbb;line-height:1.3;overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical}
-.ss-weapon-row{display:flex;gap:2px;font-size:0.4rem;white-space:nowrap;overflow:hidden}
-.ss-weapon-slot{color:#42a5f5;font-weight:bold;flex-shrink:0}
-.ss-weapon-slot.sub{color:#ffb74d}
+.ss-weapon-row{display:flex;align-items:center;gap:3px;font-size:0.4rem;white-space:nowrap;overflow:hidden;width:100%}
+.ss-weapon-slot{font-weight:900;font-size:0.35rem;flex-shrink:0;padding:1px 3px;border-radius:2px;line-height:1.2}
+.ss-weapon-slot.main{background:rgba(66,165,245,0.15);color:#42a5f5;border:1px solid rgba(66,165,245,0.3)}
+.ss-weapon-slot.sub{background:rgba(255,183,77,0.15);color:#ffb74d;border:1px solid rgba(255,183,77,0.3)}
+.ss-weapon-name{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;color:#ccc;font-size:0.38rem}
+.ss-weapon-range{flex-shrink:0;font-weight:bold;font-size:0.38rem;color:#888;padding:0 2px}
 .ss-ms-name{color:#64b5f6;font-size:0.4rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;width:100%}
 .ss-pl-name{color:#ef9a9a;font-size:0.4rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;width:100%}
 /* Skill block styling */
@@ -4574,24 +4577,19 @@ function openScreenshotMode() {
     html += `<div class="ss-cell ss-section-start ss-cell-center" style="font-weight:900;color:var(--gold);font-size:0.55rem">${u.msCost+u.plCost}</div>`;
   });
 
-  // 武装名 (MAIN/SUB 各1行、overflow省略)
+  // 武装 (名前+射程を1行ずつ)
   html += label('ARMS');
   units.forEach(u => {
     let w = '';
-    if (u.weapon?.main) w += `<div style="display:flex;gap:2px;align-items:baseline;overflow:hidden"><span style="color:#42a5f5;font-weight:bold;font-size:0.35rem;flex-shrink:0">M</span><span style="color:#90caf9;font-size:0.38rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${h(u.weapon.main.name||'')}</span></div>`;
-    if (u.weapon?.sub) w += `<div style="display:flex;gap:2px;align-items:baseline;overflow:hidden"><span style="color:#ffb74d;font-weight:bold;font-size:0.35rem;flex-shrink:0">S</span><span style="color:#ffcc80;font-size:0.38rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${h(u.weapon.sub.name||'')}</span></div>`;
+    if (u.weapon?.main) {
+      const mr = u.weapon.main.range != null ? u.weapon.main.range : '-';
+      w += `<div class="ss-weapon-row"><span class="ss-weapon-slot main">M</span><span class="ss-weapon-name">${h(u.weapon.main.name||'')}</span><span class="ss-weapon-range">${mr}</span></div>`;
+    }
+    if (u.weapon?.sub) {
+      const sr = u.weapon.sub.range != null ? u.weapon.sub.range : '-';
+      w += `<div class="ss-weapon-row"><span class="ss-weapon-slot sub">S</span><span class="ss-weapon-name">${h(u.weapon.sub.name||'')}</span><span class="ss-weapon-range">${sr}</span></div>`;
+    }
     html += cell(w || '-', 'ss-cell-col');
-  });
-
-  // 射程
-  html += label('射程');
-  units.forEach(u => {
-    let r = '';
-    const mr = u.weapon?.main?.range != null ? u.weapon.main.range : '-';
-    const sr = u.weapon?.sub?.range != null ? u.weapon.sub.range : '-';
-    r += `<div style="font-size:0.38rem"><span style="color:#42a5f5;font-weight:bold;font-size:0.35rem">M</span> <span style="color:#ccc">${mr}</span></div>`;
-    r += `<div style="font-size:0.38rem"><span style="color:#ffb74d;font-weight:bold;font-size:0.35rem">S</span> <span style="color:#ccc">${sr}</span></div>`;
-    html += cell(r, 'ss-cell-col');
   });
 
   // 地形適性 (色なし、アクティブのみハイライト)
