@@ -248,19 +248,20 @@ body.light .bm-toggle-btn.active{background:#d0e8dc;border-color:var(--accent);c
 
 /* ===== LINK CHIPS (tactics-row内) ===== */
 .link-chips{
-  display:flex;align-items:center;gap:3px;
+  display:flex;align-items:center;gap:2px;
   flex:1;min-width:0;flex-wrap:wrap;
+  max-height:48px;overflow:hidden;
 }
 .link-chips:empty{display:none}
 .link-chip{
-  display:inline-flex;align-items:center;gap:3px;
-  padding:2px 8px;border-radius:10px;font-size:0.65rem;
+  display:inline-flex;align-items:center;gap:2px;
+  padding:1px 5px;border-radius:8px;font-size:0.5rem;
   background:var(--bg-card);border:1px solid #333;color:#777;
   white-space:nowrap;flex-shrink:0;
 }
 .link-chip.active{background:linear-gradient(135deg,#1e2924,#1e2924);border-color:var(--accent);color:var(--accent)}
 .link-chip-name{font-weight:bold}
-.link-chip-count{font-size:0.6rem;padding:0 4px;border-radius:6px;background:#333;color:#aaa}
+.link-chip-count{font-size:0.45rem;padding:0 3px;border-radius:6px;background:#333;color:#aaa}
 .link-chip.active .link-chip-count{background:rgba(104,239,189,0.2);color:var(--accent)}
 .link-chip.sq{border-color:rgba(255,105,180,0.3);color:#ff8cc8}
 .link-chip.sq .link-chip-count{color:#ff8cc8}
