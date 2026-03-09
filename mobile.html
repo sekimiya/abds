@@ -352,8 +352,8 @@ body.light .bm-toggle-btn.active{background:#d0e8dc;border-color:var(--accent);c
 .ov-link-tag.link-on{background:rgba(104,239,189,0.9);color:#0a0a0a}
 .ov-link-tag.link-off{background:rgba(60,60,60,0.8);color:#666}
 .ov-link-tag.link-eb.link-on{background:rgba(255,152,0,0.9);color:#fff}
-.ov-buff-tags{display:flex;gap:1px;flex-wrap:wrap;align-self:flex-start}
-.ov-buff-tag{font-size:0.4rem;font-weight:900;padding:0 2px;border-radius:2px;line-height:1.4;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,0.8)}
+.ov-buff-tags{display:flex;gap:2px;flex-wrap:wrap;align-self:flex-start}
+.ov-buff-tag{font-size:0.5rem;font-weight:900;padding:1px 3px;border-radius:2px;line-height:1.3;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,0.8)}
 .ov-buff-tag.ov-buff-機{background:rgba(66,165,245,0.85)}
 .ov-buff-tag.ov-buff-遠{background:rgba(239,83,80,0.85)}
 .ov-buff-tag.ov-buff-近{background:rgba(171,71,188,0.85)}
@@ -3172,26 +3172,25 @@ const UIRenderer = {
         tagsDiv.appendChild(tag);
       }
     }
-    // Buff stat badges — insert before number badge in tagsDiv
+    // Buff stat badges per card — insert before number badge in tagsDiv
     if (Array.isArray(cardLinks) && cardLinks.length > 0) {
-      const buffCounts = { '機': 0, '遠': 0, '近': 0, 'HP': 0 };
+      const buffSet = new Set();
       for (const link of cardLinks) {
         const eff = link.effect || '';
         const { required, category } = _parseLinkCondition(link.condition);
         if (_countLinkInDeck(link.name, category) < required) continue;
-        if (eff.match(/機動力.*(小|中)アップ/)) buffCounts['機']++;
-        if (eff.match(/遠距離攻撃力.*(小|中)アップ/)) buffCounts['遠']++;
-        if (eff.match(/近距離攻撃力.*(小|中)アップ/)) buffCounts['近']++;
-        if (eff.match(/HP.*(小|中)アップ/)) buffCounts['HP']++;
+        if (eff.match(/機動力.*(小|中)アップ/)) buffSet.add('機');
+        if (eff.match(/遠距離攻撃力.*(小|中)アップ/)) buffSet.add('遠');
+        if (eff.match(/近距離攻撃力.*(小|中)アップ/)) buffSet.add('近');
+        if (eff.match(/HP.*(小|中)アップ/)) buffSet.add('HP');
       }
-      const entries = Object.entries(buffCounts).filter(([,v]) => v > 0);
-      if (entries.length > 0) {
+      if (buffSet.size > 0) {
         const buffsDiv = document.createElement('div');
         buffsDiv.className = 'ov-buff-tags';
-        for (const [label, count] of entries) {
+        for (const label of buffSet) {
           const b = document.createElement('span');
           b.className = 'ov-buff-tag ov-buff-' + label;
-          b.textContent = count > 1 ? `${label}x${count}` : label;
+          b.textContent = label;
           buffsDiv.appendChild(b);
         }
         tagsDiv.insertBefore(buffsDiv, numTag);
