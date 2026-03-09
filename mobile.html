@@ -4593,10 +4593,9 @@ function openScreenshotMode() {
   });
 
   // ステータス4行 (色分けラベル)
-  const statColors = {mobility:'#42a5f5',ranged:'#ef5350',melee:'#ab47bc',hp:'#66bb6a'};
   const statLabels = [{key:'mobility',l:'機'},{key:'ranged',l:'遠'},{key:'melee',l:'近'},{key:'hp',l:'HP'}];
   statLabels.forEach((sl, i) => {
-    html += `<div class="ss-label" style="color:${statColors[sl.key]};font-weight:900">${sl.l}</div>`;
+    html += `<div class="ss-label" style="font-weight:900">${sl.l}</div>`;
     units.forEach(u => {
       const s = u.stats[i];
       if (!s || (!s.msVal && !s.plVal)) { html += `<div class="ss-cell">-</div>`; return; }
