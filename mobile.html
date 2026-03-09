@@ -3268,12 +3268,14 @@ const UIRenderer = {
       else if (r.terrainBuff < 0) { const tP = (Math.max(r.total, 0) / 1000) * 100; const lP = (Math.abs(r.terrainBuff) / 1000) * 100; terrainBarHtml = `<div class="sg-bar-terrain-neg" style="position:absolute;right:0;width:${Math.min(lP, 100 - tP)}%;left:${tP}%"></div>`; }
       const hasBuff = r.linkBuff > 0 || r.terrainBuff !== 0 || r.corrBuff > 0;
       const totalClass = hasBuff ? ' buffed' : '';
-      const corrText = (r.corrBuff > 0 || r.linkBuff > 0 || r.terrainBuff !== 0) ? `+${r.corrBuff + r.linkBuff + r.terrainBuff}` : '';
+      const corrVal = r.corrBuff + r.linkBuff + r.terrainBuff;
+      const corrText = corrVal !== 0 ? `+${corrVal}` : '+0';
+      const corrVis = corrVal !== 0 ? '' : ' style="visibility:hidden"';
       html += `<div class="sg-cell sg-label" data-stat="${r.key}">${r.label}</div>` +
         `<div class="sg-cell sg-bar">` +
           `<div class="sg-bar-base" style="width:${basePct}%"></div><div class="sg-bar-buff" style="width:${linkBuffPct}%"></div>${terrainBarHtml}` +
           `<div class="sg-bar-vals">` +
-            `<span class="sg-bar-formula"><span class="sg-bar-ms">${r.msVal || 0}</span><span class="sg-bar-op">+</span><span class="sg-bar-pl">${r.plVal || 0}</span>${corrText ? `<span class="sg-bar-op">+</span><span class="sg-bar-corr">${corrText}</span>` : ''}</span>` +
+            `<span class="sg-bar-formula"><span class="sg-bar-ms">${r.msVal || 0}</span><span class="sg-bar-op">+</span><span class="sg-bar-pl">${r.plVal || 0}</span><span class="sg-bar-op"${corrVis}>+</span><span class="sg-bar-corr"${corrVis}>${corrText}</span></span>` +
             `<span class="sg-bar-result"><span class="sg-bar-eq">=</span><span class="sg-bar-total${totalClass}">${r.total}</span></span>` +
           `</div>` +
         `</div>`;
