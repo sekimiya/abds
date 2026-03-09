@@ -3174,23 +3174,24 @@ const UIRenderer = {
     }
     // Buff stat badges per card — insert before number badge in tagsDiv
     if (Array.isArray(cardLinks) && cardLinks.length > 0) {
-      const buffSet = new Set();
+      const buffCounts = { '機': 0, '遠': 0, '近': 0, 'HP': 0 };
       for (const link of cardLinks) {
         const eff = link.effect || '';
         const { required, category } = _parseLinkCondition(link.condition);
         if (_countLinkInDeck(link.name, category) < required) continue;
-        if (eff.match(/機動力.*(小|中)アップ/)) buffSet.add('機');
-        if (eff.match(/遠距離攻撃力.*(小|中)アップ/)) buffSet.add('遠');
-        if (eff.match(/近距離攻撃力.*(小|中)アップ/)) buffSet.add('近');
-        if (eff.match(/HP.*(小|中)アップ/)) buffSet.add('HP');
+        if (eff.match(/機動力.*(小|中)アップ/)) buffCounts['機']++;
+        if (eff.match(/遠距離攻撃力.*(小|中)アップ/)) buffCounts['遠']++;
+        if (eff.match(/近距離攻撃力.*(小|中)アップ/)) buffCounts['近']++;
+        if (eff.match(/HP.*(小|中)アップ/)) buffCounts['HP']++;
       }
-      if (buffSet.size > 0) {
+      const entries = Object.entries(buffCounts).filter(([,v]) => v > 0);
+      if (entries.length > 0) {
         const buffsDiv = document.createElement('div');
         buffsDiv.className = 'ov-buff-tags';
-        for (const label of buffSet) {
+        for (const [label, count] of entries) {
           const b = document.createElement('span');
           b.className = 'ov-buff-tag ov-buff-' + label;
-          b.textContent = label;
+          b.textContent = count > 1 ? `${label}x${count}` : label;
           buffsDiv.appendChild(b);
         }
         tagsDiv.insertBefore(buffsDiv, numTag);
