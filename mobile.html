@@ -538,11 +538,11 @@ body.light .bm-toggle-btn.active{background:#d0e8dc;border-color:var(--accent);c
 #ssOverlay{display:none;position:fixed;inset:0;z-index:500;background:#0a0a0a;flex-direction:column;overflow:hidden}
 #ssOverlay.open{display:flex}
 .ss-header{display:flex;align-items:center;flex-wrap:wrap;padding:4px 8px;gap:4px 8px;background:linear-gradient(135deg,#1e2924,#0d1a14);border-bottom:2px solid var(--accent);flex-shrink:0}
-.ss-header-title{font-size:0.75rem;font-weight:bold;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.ss-header-cost{font-size:0.75rem;color:var(--accent);font-weight:900;flex-shrink:0}
+.ss-header-cost{font-size:1rem;color:var(--gold);font-weight:900;flex-shrink:0;text-shadow:0 0 8px rgba(255,224,130,0.4);letter-spacing:0.5px}
 .ss-header-cats{display:flex;gap:3px;font-size:0.55rem;flex-shrink:0}
-.ss-header-tactics{display:flex;gap:3px;font-size:0.5rem;flex-shrink:0}
-.ss-tac-badge{padding:1px 4px;border-radius:3px;font-weight:bold;white-space:nowrap;background:rgba(255,224,130,0.15);color:var(--gold);border:1px solid rgba(255,224,130,0.3)}
+.ss-header-tactics{display:flex;gap:4px;font-size:0.5rem;flex-shrink:0;align-items:center}
+.ss-tac-badge{display:flex;align-items:center;gap:3px;padding:1px 4px;border-radius:3px;font-weight:bold;white-space:nowrap;background:rgba(255,224,130,0.15);color:var(--gold);border:1px solid rgba(255,224,130,0.3)}
+.ss-tac-img{height:24px;width:auto;border-radius:2px;flex-shrink:0}
 .ss-close{background:none;border:none;color:#888;font-size:1.2rem;cursor:pointer;padding:2px 6px;flex-shrink:0;margin-left:auto}
 .ss-body{flex:1;overflow:hidden;display:flex;flex-direction:column}
 .ss-table{display:grid;grid-template-columns:28px repeat(5,1fr);font-size:0.5rem;width:100%;line-height:1.3}
@@ -1478,10 +1478,9 @@ body.light .ss-text{color:#555}
 <!-- Screenshot mode overlay -->
 <div id="ssOverlay">
   <div class="ss-header">
-    <div class="ss-header-title" id="ssTitle">デッキ一覧</div>
+    <div class="ss-header-cost" id="ssCost"></div>
     <div class="ss-header-cats" id="ssCats"></div>
     <div class="ss-header-tactics" id="ssTactics"></div>
-    <div class="ss-header-cost" id="ssCost"></div>
     <button class="ss-close" onclick="closeScreenshotMode()">&times;</button>
   </div>
   <div class="ss-body"><div class="ss-table" id="ssTable"></div></div>
@@ -4473,17 +4472,22 @@ function openScreenshotMode() {
   }
 
   // Header
-  document.getElementById('ssCost').textContent = `Total: ${totalCost}`;
+  document.getElementById('ssCost').textContent = totalCost;
   document.getElementById('ssCats').innerHTML = Object.entries(catCounts).filter(([,v]) => v > 0)
     .map(([k,v]) => `<span class="ss-cat-badge ${catMap[k]}">${k}${v}</span>`).join('');
-  document.getElementById('ssTitle').textContent = AppState._lastDeckName || 'デッキ一覧';
   const tacHtml = [];
   const mainCards = AppState.tacticsCards.main || [];
   const subCards = AppState.tacticsCards.sub || [];
   const mainCard = AppState.tacticsMain ? mainCards.find(c => c.id === AppState.tacticsMain) : null;
   const subCard = AppState.tacticsSub ? subCards.find(c => c.id === AppState.tacticsSub) : null;
-  if (mainCard) tacHtml.push(`<span class="ss-tac-badge">M:${escapeHtml(mainCard.name)}</span>`);
-  if (subCard) tacHtml.push(`<span class="ss-tac-badge">S:${escapeHtml(subCard.name)}</span>`);
+  if (mainCard) {
+    const mImg = ImageCache.resolveTacticsUrl(mainCard.thumbnail_url);
+    tacHtml.push(`<span class="ss-tac-badge">${mImg ? `<img class="ss-tac-img" src="${mImg}">` : ''}M:${escapeHtml(mainCard.name)}</span>`);
+  }
+  if (subCard) {
+    const sImg = ImageCache.resolveTacticsUrl(subCard.thumbnail_url);
+    tacHtml.push(`<span class="ss-tac-badge">${sImg ? `<img class="ss-tac-img" src="${sImg}">` : ''}S:${escapeHtml(subCard.name)}</span>`);
+  }
   document.getElementById('ssTactics').innerHTML = tacHtml.join('');
 
   const h = escapeHtml;
