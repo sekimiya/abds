@@ -476,16 +476,17 @@ body.light .bm-toggle-btn.active{background:#d0e8dc;border-color:var(--accent);c
 .terrain-badge.terrain-active{background:#1e2924;border-color:var(--accent);color:var(--accent);box-shadow:0 0 4px rgba(104,239,189,0.4)}
 
 /* Stat grid table */
-.stat-grid{display:grid;grid-template-columns:26px 1fr 30px 30px 30px 12px 34px;gap:0;margin-bottom:8px;font-size:0.65rem;font-variant-numeric:tabular-nums;font-family:'Menlo','Consolas','Courier New',monospace;border:1px solid #2a2a2a;border-radius:6px;overflow:hidden;background:#111}
+.stat-grid{display:grid;grid-template-columns:26px 1fr 30px 12px 34px;gap:0;margin-bottom:8px;font-size:0.65rem;font-variant-numeric:tabular-nums;font-family:'Menlo','Consolas','Courier New',monospace;border:1px solid #2a2a2a;border-radius:6px;overflow:hidden;background:#111}
 .sg-cell{padding:3px 4px;border-bottom:1px solid #1e1e1e;display:flex;align-items:center}
 .sg-label{color:#888;justify-content:flex-end;text-align:right;font-weight:bold;background:#0d0d0d}
-.sg-bar{position:relative;overflow:hidden;background:#1a1a1a;border-radius:0}
+.sg-bar{position:relative;overflow:hidden;background:#1a1a1a;border-radius:0;min-height:18px}
 .sg-bar-base{height:100%;background:#2196f3;position:absolute;top:0;left:0;transition:width 0.3s}
 .sg-bar-buff{height:100%;background:#e91e63;position:absolute;top:0;transition:width 0.3s}
 .sg-bar-terrain-pos{height:100%;background:var(--accent);position:absolute;top:0;transition:width 0.3s}
 .sg-bar-terrain-neg{height:100%;position:absolute;top:0;background:repeating-linear-gradient(135deg,rgba(244,67,54,0.6),rgba(244,67,54,0.6) 2px,rgba(244,67,54,0.3) 2px,rgba(244,67,54,0.3) 4px)}
-.sg-ms{color:#64b5f6;justify-content:flex-end}
-.sg-pl{color:#ef9a9a;justify-content:flex-end}
+.sg-bar-vals{position:relative;z-index:1;display:flex;justify-content:flex-start;gap:2px;padding:0 4px;font-size:0.6rem;white-space:nowrap}
+.sg-bar-ms{color:#90caf9;text-shadow:0 0 3px rgba(0,0,0,0.8)}
+.sg-bar-pl{color:#ef9a9a;text-shadow:0 0 3px rgba(0,0,0,0.8)}
 .sg-arrow{color:#444;justify-content:center}
 .sg-arrow.active{color:#aaa}
 .sg-total{color:#fff;font-weight:bold;justify-content:flex-end}
@@ -3239,9 +3240,7 @@ const UIRenderer = {
       `</div>`;
     // Header row
     html += `<div class="sg-cell sg-header sg-label"></div>` +
-      `<div class="sg-cell sg-header sg-bar"></div>` +
-      `<div class="sg-cell sg-header sg-ms">MS</div>` +
-      `<div class="sg-cell sg-header sg-pl">PL</div>` +
+      `<div class="sg-cell sg-header sg-bar"><span style="margin-left:4px">MS</span><span style="margin-left:6px">PL</span></div>` +
       `<div class="sg-cell sg-header sg-total">合計</div>` +
       `<div class="sg-cell sg-header sg-arrow"></div>` +
       `<div class="sg-cell sg-header sg-total">最終</div>`;
@@ -3256,9 +3255,7 @@ const UIRenderer = {
       const arrowActive = hasBuff ? ' active' : '';
       const totalClass = hasBuff ? ' buffed' : '';
       html += `<div class="sg-cell sg-label">${r.label}</div>` +
-        `<div class="sg-cell sg-bar"><div class="sg-bar-base" style="width:${basePct}%"></div><div class="sg-bar-buff" style="width:${linkBuffPct}%"></div>${terrainBarHtml}</div>` +
-        `<div class="sg-cell sg-ms">${r.msVal || '-'}</div>` +
-        `<div class="sg-cell sg-pl">${r.plVal || '-'}</div>` +
+        `<div class="sg-cell sg-bar"><div class="sg-bar-base" style="width:${basePct}%"></div><div class="sg-bar-buff" style="width:${linkBuffPct}%"></div>${terrainBarHtml}<div class="sg-bar-vals"><span class="sg-bar-ms">${r.msVal || '-'}</span><span class="sg-bar-pl">${r.plVal || '-'}</span></div></div>` +
         `<div class="sg-cell sg-total">${r.base || '-'}</div>` +
         `<div class="sg-cell sg-arrow${arrowActive}">&rarr;</div>` +
         `<div class="sg-cell sg-total${totalClass}">${r.total}</div>`;
