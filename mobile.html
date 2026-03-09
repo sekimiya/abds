@@ -403,7 +403,6 @@ body.light .bm-toggle-btn.active{background:#d0e8dc;border-color:var(--accent);c
   content:'';position:absolute;top:0;left:0;right:0;height:1px;
   background:linear-gradient(90deg,transparent,rgba(130,177,255,0.5),transparent);
 }
-.detail-header-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:5px}
 .unit-total-cost{
   display:flex;align-items:baseline;gap:3px;
   background:linear-gradient(135deg,rgba(255,224,130,0.15),rgba(255,224,130,0.05));
@@ -497,6 +496,10 @@ body.light .bm-toggle-btn.active{background:#d0e8dc;border-color:var(--accent);c
 .stat-arrow.active{color:#aaa}
 .stat-total{color:#fff;font-weight:bold;min-width:30px;text-align:right}
 .stat-total.buffed{color:#ffb74d}
+.stat-cost-cat{display:flex;align-items:center;justify-content:space-between;margin-bottom:4px}
+.stat-cost-cat .unit-total-cost{display:flex;align-items:baseline;gap:4px}
+.stat-cost-cat .cost-label{font-size:0.55rem;color:rgba(255,224,130,0.7);font-weight:bold;letter-spacing:1px}
+.stat-cost-cat .cost-value{font-size:1rem;font-weight:900;color:var(--gold)}
 .stat-header{margin-bottom:2px;border-bottom:1px solid #333;padding-bottom:2px}
 .stat-header .stat-nums{font-size:0.55rem;font-weight:bold;color:#666}
 
@@ -3143,10 +3146,6 @@ const UIRenderer = {
     }
 
     html += '<div class="detail-header-v2">';
-    html += '<div class="detail-header-top">';
-    html += `<div class="unit-total-cost"><span class="cost-label">Total cost</span><span class="cost-value">${msCost + plCost}</span></div>`;
-    if (catClass) html += `<span class="unit-cat-badge ${catClass}">${catClass}</span>`;
-    html += '</div>';
 
     // MS line
     {
@@ -3183,7 +3182,7 @@ const UIRenderer = {
     html += '</div>';
 
     // Stats
-    html += this._renderStats(msOcr, plOcr);
+    html += this._renderStats(msOcr, plOcr, msCost + plCost, catClass);
 
     // MS/PL detail sections: MSアビリティ → PLスキル → SP → EB → 武器 → 地形適性
     const msHasOcr = msOcr && msNumber && (msOcr.ms_ability || msOcr.weapon || msOcr.special_attack || msOcr.terrain_compatibility || msOcr.model);
@@ -3228,9 +3227,13 @@ const UIRenderer = {
     area.innerHTML = html;
   },
 
-  _renderStats(msOcr, plOcr) {
+  _renderStats(msOcr, plOcr, totalCost, catClass) {
     const result = calcUnitStats(msOcr, plOcr, this._getTerrainMultiplier(msOcr));
     let html = '<div class="stat-section">';
+    html += `<div class="stat-cost-cat">` +
+      `<span class="unit-total-cost"><span class="cost-label">COST</span><span class="cost-value">${totalCost || 0}</span></span>` +
+      (catClass ? `<span class="unit-cat-badge ${catClass}">${catClass}</span>` : '') +
+      `</div>`;
     html += `<div class="stat-row stat-header">` +
       `<span class="stat-label"></span>` +
       `<div class="stat-track" style="visibility:hidden"></div>` +
