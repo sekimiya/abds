@@ -147,16 +147,16 @@ body.light .bm-toggle-btn.active{background:#d0e8dc;border-color:var(--accent);c
 
 /* ===== HEADER (36px) ===== */
 .app-header{
-  display:flex;align-items:center;
+  display:flex;align-items:center;flex-wrap:wrap;
   background:linear-gradient(135deg,#1e2924,#1e2924);
   border-bottom:2px solid var(--accent);
-  padding:0 8px;height:36px;flex-shrink:0;gap:4px;overflow:hidden;
+  padding:2px 8px;min-height:28px;flex-shrink:0;gap:2px 4px;overflow:hidden;
 }
 .hdr-cost{display:flex;align-items:baseline;gap:1px;white-space:nowrap}
 .hdr-cost-label{font-size:0.45rem;color:#8a7a5a;font-weight:600;text-transform:uppercase;letter-spacing:0.5px}
 .hdr-cost-val{font-size:1rem;font-weight:bold;color:var(--gold);line-height:1}
 .hdr-sep{width:1px;height:20px;background:#333;flex-shrink:0}
-.hdr-class{font-size:0.65rem;font-weight:bold;white-space:nowrap;padding:1px 4px;border-radius:3px}
+.hdr-class{font-size:0.6rem;font-weight:bold;white-space:nowrap;padding:1px 3px;border-radius:3px}
 .hdr-class.s{background:#8b1a1a;color:var(--senmetsu)}
 .hdr-class.c{background:#1a4a8b;color:var(--seiatsu)}
 .hdr-class.b{background:#1a6b1a;color:var(--bouei)}
@@ -192,8 +192,8 @@ body.light .bm-toggle-btn.active{background:#d0e8dc;border-color:var(--accent);c
   display:flex;align-items:center;gap:3px;overflow:hidden;flex-shrink:1;min-width:0;
 }
 .hdr-link-name{
-  font-size:0.7rem;font-weight:bold;white-space:nowrap;padding:1px 5px;border-radius:3px;
-  overflow:hidden;text-overflow:ellipsis;
+  font-size:0.55rem;font-weight:bold;white-space:nowrap;padding:1px 3px;border-radius:3px;
+  overflow:hidden;text-overflow:ellipsis;max-width:80px;
 }
 .hdr-link-name.sq{color:#ff8cc8;background:rgba(255,105,180,0.15);border:1px solid rgba(255,105,180,0.3)}
 .hdr-link-name.sq.inactive{color:#664455;background:rgba(255,105,180,0.05);border:1px solid rgba(255,105,180,0.1);font-weight:normal}
@@ -488,14 +488,15 @@ body.light .bm-toggle-btn.active{background:#d0e8dc;border-color:var(--accent);c
 .sg-bar-buff{height:100%;background:#e91e63;position:absolute;top:0;transition:width 0.3s}
 .sg-bar-terrain-pos{height:100%;background:var(--accent);position:absolute;top:0;transition:width 0.3s}
 .sg-bar-terrain-neg{height:100%;position:absolute;top:0;background:repeating-linear-gradient(135deg,rgba(244,67,54,0.6),rgba(244,67,54,0.6) 2px,rgba(244,67,54,0.3) 2px,rgba(244,67,54,0.3) 4px)}
-.sg-bar-vals{position:relative;z-index:1;display:flex;justify-content:space-between;align-items:center;padding:0 4px;font-size:0.6rem;white-space:nowrap;height:100%}
+.sg-bar-vals{position:relative;z-index:1;display:flex;justify-content:space-between;align-items:center;padding:0 4px;font-size:0.7rem;white-space:nowrap;height:100%}
 .sg-bar-formula{display:flex;align-items:center;gap:1px}
-.sg-bar-ms{color:#90caf9;text-shadow:0 0 3px rgba(0,0,0,0.8)}
-.sg-bar-pl{color:#ef9a9a;text-shadow:0 0 3px rgba(0,0,0,0.8)}
-.sg-bar-corr{color:#ce93d8;text-shadow:0 0 3px rgba(0,0,0,0.8)}
-.sg-bar-op{color:#666;text-shadow:0 0 3px rgba(0,0,0,0.8);font-size:0.55rem}
-.sg-bar-eq{color:#999;text-shadow:0 0 3px rgba(0,0,0,0.8);font-weight:bold}
-.sg-bar-total{color:#fff;font-weight:bold;text-shadow:0 1px 4px rgba(0,0,0,0.9)}
+.sg-bar-ms{color:#90caf9;text-shadow:0 1px 3px rgba(0,0,0,0.9)}
+.sg-bar-pl{color:#ef9a9a;text-shadow:0 1px 3px rgba(0,0,0,0.9)}
+.sg-bar-corr{color:#ce93d8;text-shadow:0 1px 3px rgba(0,0,0,0.9)}
+.sg-bar-op{color:#666;text-shadow:0 1px 3px rgba(0,0,0,0.9);font-size:0.6rem}
+.sg-bar-result{display:flex;align-items:center;gap:2px;min-width:50px;justify-content:flex-end}
+.sg-bar-eq{color:#999;text-shadow:0 1px 3px rgba(0,0,0,0.9);font-weight:bold}
+.sg-bar-total{color:#fff;font-weight:bold;text-shadow:0 1px 4px rgba(0,0,0,0.9);min-width:28px;text-align:right;display:inline-block}
 .sg-bar-total.buffed{color:#ffb74d}
 .sg-header{font-size:0.5rem;color:#666;font-weight:bold;border-bottom:1px solid #333;background:#0d0d0d}
 /* Cost+Cat row spans right columns */
@@ -534,6 +535,19 @@ body.light .bm-toggle-btn.active{background:#d0e8dc;border-color:var(--accent);c
 .ss-cell-center{justify-content:center}
 .ss-cell-col{flex-direction:column;align-items:stretch}
 .ss-cell img.ss-card-img{width:100%;height:auto;border-radius:1px;display:block}
+.ss-card-wrap{position:relative;width:100%;overflow:hidden}
+.ss-card-wrap .ss-ov-badge{position:absolute;top:1px;left:1px;font-size:0.35rem;font-weight:bold;padding:0 2px;border-radius:2px;color:#fff;line-height:1.3;z-index:2}
+.ss-card-wrap .ss-ov-badge.sq-b{background:rgba(255,105,180,0.9)}
+.ss-card-wrap .ss-ov-badge.eb-b{background:rgba(255,152,0,0.9)}
+.ss-card-wrap .ss-ov-badge.ab-b{background:rgba(179,136,255,0.9)}
+.ss-card-wrap .ss-ov-sp-tags{position:absolute;top:1px;right:1px;display:flex;flex-wrap:wrap;gap:1px;justify-content:flex-end;max-width:70%;z-index:2}
+.ss-card-wrap .ss-ov-sp-tag{font-size:0.3rem;font-weight:bold;padding:0 1px;border-radius:1px;line-height:1.2;color:#fff}
+.ss-card-wrap .ss-ov-links{position:absolute;bottom:0;left:0;right:0;display:flex;flex-direction:column;gap:1px;padding:1px;z-index:2}
+.ss-card-wrap .ss-ov-link{font-size:0.3rem;font-weight:bold;padding:0 2px;border-radius:1px;line-height:1.2;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ss-card-wrap .ss-ov-link.on{background:rgba(104,239,189,0.9);color:#0a0a0a}
+.ss-card-wrap .ss-ov-link.off{background:rgba(60,60,60,0.8);color:#666}
+.ss-card-wrap .ss-ov-link.on.link-eb{background:rgba(255,152,0,0.9);color:#fff}
+.ss-card-wrap .ss-ov-link.on.link-sq{background:rgba(255,105,180,0.9);color:#fff}
 .ss-cat-badge{padding:0 3px;border-radius:2px;font-weight:bold;font-size:0.5rem;white-space:nowrap}
 .ss-cat-badge.senmetsu{background:#3a1a1a;color:#ff5252}
 .ss-cat-badge.seiatsu{background:#1a2a3a;color:#42a5f5}
@@ -3260,7 +3274,7 @@ const UIRenderer = {
           `<div class="sg-bar-base" style="width:${basePct}%"></div><div class="sg-bar-buff" style="width:${linkBuffPct}%"></div>${terrainBarHtml}` +
           `<div class="sg-bar-vals">` +
             `<span class="sg-bar-formula"><span class="sg-bar-ms">${r.msVal || 0}</span><span class="sg-bar-op">+</span><span class="sg-bar-pl">${r.plVal || 0}</span>${corrText ? `<span class="sg-bar-op">+</span><span class="sg-bar-corr">${corrText}</span>` : ''}</span>` +
-            `<span><span class="sg-bar-eq">=</span> <span class="sg-bar-total${totalClass}">${r.total}</span></span>` +
+            `<span class="sg-bar-result"><span class="sg-bar-eq">=</span><span class="sg-bar-total${totalClass}">${r.total}</span></span>` +
           `</div>` +
         `</div>`;
     });
@@ -4404,18 +4418,57 @@ function openScreenshotMode() {
   const label = (text) => `<div class="ss-label">${text}</div>`;
   let html = '';
 
+  const ssCardWrap = (num, idx, ocr, type) => {
+    if (!num) return '';
+    const img = resolveImageUrl(null, num, 'front');
+    if (!img) return '';
+    let ov = '';
+    // Badge (EB/SQ/AB)
+    const links = ocr?.link_abilities || ocr?.link_ability || [];
+    const hasEbLink = idx?.has_eb_link;
+    const hasAbLink = idx?.has_ab_link;
+    const hasSqLink = idx?.has_sq_link;
+    if (type === 'ms') {
+      const hasEb = ocr?.echoes_beat?.has_eb;
+      const isSq = ocr?.special_attack?.sp_type === 'SQUAD SP' || hasSqLink;
+      if (hasAbLink) ov += '<div class="ss-ov-badge ab-b">AB</div>';
+      else if (hasEb) { const ebt = idx?.eb_type === 'sp' ? 'EBSP' : 'EB'; ov += `<div class="ss-ov-badge eb-b">${ebt}</div>`; }
+      else if (hasEbLink) ov += '<div class="ss-ov-badge eb-b">EB</div>';
+      else if (isSq) ov += '<div class="ss-ov-badge sq-b">SQ</div>';
+    } else {
+      const plSkill = ocr?.pilot_skill || ocr?.pl_skill;
+      if (hasAbLink) ov += '<div class="ss-ov-badge ab-b">AB</div>';
+      else if (plSkill?.is_eb_skill || hasEbLink) ov += '<div class="ss-ov-badge eb-b">EB</div>';
+      else if (plSkill?.has_sq_skill || hasSqLink) ov += '<div class="ss-ov-badge sq-b">SQ</div>';
+    }
+    // SP effect tags
+    const spTags = idx?.sp_effect_tags || [];
+    if (spTags.length) ov += '<div class="ss-ov-sp-tags">' + spTags.map(t => `<span class="ss-ov-sp-tag sp-t-${t}">${h(t)}</span>`).join('') + '</div>';
+    // Link tags
+    if (Array.isArray(links) && links.length > 0) {
+      ov += '<div class="ss-ov-links">';
+      for (const link of links.slice(0, 2)) {
+        if (!link.name) continue;
+        const { required, category } = _parseLinkCondition(link.condition);
+        const isActive = _countLinkInDeck(link.name, category) >= required;
+        const ltype = link.is_eb_link ? ' link-eb' : AppState._sqLinkNames.has(link.name) ? ' link-sq' : link.is_ab_link ? ' link-ab' : '';
+        ov += `<div class="ss-ov-link ${isActive ? 'on' : 'off'}${ltype}">${h(link.name)}</div>`;
+      }
+      ov += '</div>';
+    }
+    return `<div class="ss-card-wrap"><img class="ss-card-img" src="${img}">${ov}</div>`;
+  };
+
   // MS画像
   html += label('MS');
   units.forEach(u => {
-    const img = u.msNum ? resolveImageUrl(null, u.msNum, 'front') : '';
-    html += cell(img ? `<img class="ss-card-img" src="${img}">` : '', 'ss-cell-center');
+    html += cell(ssCardWrap(u.msNum, u.msIdx, u.msOcr, 'ms'), 'ss-cell-center');
   });
 
   // PL画像
   html += label('PL');
   units.forEach(u => {
-    const img = u.plNum ? resolveImageUrl(null, u.plNum, 'front') : '';
-    html += cell(img ? `<img class="ss-card-img" src="${img}">` : '', 'ss-cell-center');
+    html += cell(ssCardWrap(u.plNum, u.plIdx, u.plOcr, 'pl'), 'ss-cell-center');
   });
 
   // MS/PLレベル + コスト + カテゴリ
