@@ -475,33 +475,43 @@ body.light .bm-toggle-btn.active{background:#d0e8dc;border-color:var(--accent);c
 .terrain-badge.rank-none{color:#444;border-color:#222}
 .terrain-badge.terrain-active{background:#1e2924;border-color:var(--accent);color:var(--accent);box-shadow:0 0 4px rgba(104,239,189,0.4)}
 
-/* Stat bars */
-.stat-section{margin-bottom:8px}
-.stat-section-title{font-size:0.75rem;font-weight:bold;color:#666;margin-bottom:4px;border-bottom:1px solid #222;padding-bottom:2px}
-.stat-row{display:flex;align-items:center;gap:3px;margin-bottom:3px}
-.stat-label{color:#888;font-size:0.7rem;width:22px;text-align:right;flex-shrink:0}
-.stat-track{width:42%;height:14px;background:#222;border-radius:3px;overflow:hidden;position:relative;display:flex;flex-shrink:0}
-.stat-bar-base{height:100%;background:#2196f3;transition:width 0.3s}
-.stat-bar-buff{height:100%;background:#e91e63;transition:width 0.3s}
-.stat-bar-terrain-pos{height:100%;background:var(--accent);transition:width 0.3s}
-.stat-bar-terrain-neg{height:100%;transition:width 0.3s;background:repeating-linear-gradient(135deg,rgba(244,67,54,0.6),rgba(244,67,54,0.6) 2px,rgba(244,67,54,0.3) 2px,rgba(244,67,54,0.3) 4px)}
-.stat-nums{display:flex;align-items:center;flex-shrink:0;font-size:0.65rem;font-variant-numeric:tabular-nums;font-family:'Menlo','Consolas','Courier New',monospace;gap:0;margin-left:auto}
-.stat-ms{color:#64b5f6;min-width:26px;text-align:right}
-.stat-pl{color:#ef9a9a;min-width:26px;text-align:right}
-.stat-base{color:#ccc;min-width:30px;text-align:right;font-weight:bold}
-.stat-sep{color:#555;width:8px;text-align:center}
-.stat-corr{min-width:28px;text-align:right;color:#444}
-.stat-corr.active{color:#ce93d8}
-.stat-arrow{color:#444;width:12px;text-align:center}
-.stat-arrow.active{color:#aaa}
-.stat-total{color:#fff;font-weight:bold;min-width:30px;text-align:right}
-.stat-total.buffed{color:#ffb74d}
-.stat-cost-cat{display:flex;align-items:center;justify-content:space-between;margin-bottom:4px}
-.stat-cost-cat .unit-total-cost{display:flex;align-items:baseline;gap:4px}
-.stat-cost-cat .cost-label{font-size:0.55rem;color:rgba(255,224,130,0.7);font-weight:bold;letter-spacing:1px}
-.stat-cost-cat .cost-value{font-size:1rem;font-weight:900;color:var(--gold)}
-.stat-header{margin-bottom:2px;border-bottom:1px solid #333;padding-bottom:2px}
-.stat-header .stat-nums{font-size:0.55rem;font-weight:bold;color:#666}
+/* Stat grid table */
+.stat-grid{display:grid;grid-template-columns:26px 1fr 30px 30px 30px 12px 34px;gap:0;margin-bottom:8px;font-size:0.65rem;font-variant-numeric:tabular-nums;font-family:'Menlo','Consolas','Courier New',monospace;border:1px solid #2a2a2a;border-radius:6px;overflow:hidden;background:#111}
+.sg-cell{padding:3px 4px;border-bottom:1px solid #1e1e1e;display:flex;align-items:center}
+.sg-label{color:#888;justify-content:flex-end;text-align:right;font-weight:bold;background:#0d0d0d}
+.sg-bar{position:relative;overflow:hidden;background:#1a1a1a;border-radius:0}
+.sg-bar-base{height:100%;background:#2196f3;position:absolute;top:0;left:0;transition:width 0.3s}
+.sg-bar-buff{height:100%;background:#e91e63;position:absolute;top:0;transition:width 0.3s}
+.sg-bar-terrain-pos{height:100%;background:var(--accent);position:absolute;top:0;transition:width 0.3s}
+.sg-bar-terrain-neg{height:100%;position:absolute;top:0;background:repeating-linear-gradient(135deg,rgba(244,67,54,0.6),rgba(244,67,54,0.6) 2px,rgba(244,67,54,0.3) 2px,rgba(244,67,54,0.3) 4px)}
+.sg-ms{color:#64b5f6;justify-content:flex-end}
+.sg-pl{color:#ef9a9a;justify-content:flex-end}
+.sg-arrow{color:#444;justify-content:center}
+.sg-arrow.active{color:#aaa}
+.sg-total{color:#fff;font-weight:bold;justify-content:flex-end}
+.sg-total.buffed{color:#ffb74d}
+.sg-header{font-size:0.5rem;color:#666;font-weight:bold;border-bottom:1px solid #333;background:#0d0d0d}
+.sg-header.sg-bar{background:#0d0d0d}
+/* Cost+Cat row spans right columns */
+.sg-cost-row{grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;padding:4px 6px;border-bottom:1px solid #333;background:#0d0d0d}
+.sg-cost-label{font-size:0.5rem;color:rgba(255,224,130,0.6);font-weight:bold;letter-spacing:1px;font-family:sans-serif}
+.sg-cost-value{font-size:1.1rem;font-weight:900;color:var(--gold);text-shadow:0 0 6px rgba(255,224,130,0.3)}
+.sg-cost-left{display:flex;align-items:baseline;gap:4px}
+/* Weapon+Terrain footer */
+.sg-footer{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr 1fr 1fr 1fr 1fr;gap:0;border-top:1px solid #333}
+.sg-ft-cell{padding:2px 3px;text-align:center;font-size:0.6rem;border-right:1px solid #1e1e1e;font-family:sans-serif}
+.sg-ft-cell:last-child{border-right:none}
+.sg-ft-header{color:#888;font-weight:bold;background:#0d0d0d;font-size:0.55rem}
+.sg-ft-weapon{color:#42a5f5;font-weight:bold;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.sg-ft-weapon.sub{color:#ffb74d}
+.sg-ft-terrain{font-weight:bold}
+.sg-ft-terrain.rank-S{color:#ff8a80}
+.sg-ft-terrain.rank-A{color:#42a5f5}
+.sg-ft-terrain.rank-B{color:#66bb6a}
+.sg-ft-terrain.rank-C{color:#ffcc80}
+.sg-ft-terrain.rank-D{color:#ff8a80}
+.sg-ft-terrain.rank-none{color:#444}
+.sg-ft-terrain.terrain-active{background:#1e2924;color:var(--accent)}
 
 /* Screenshot mode */
 #ssOverlay{display:none;position:fixed;inset:0;z-index:500;background:#0a0a0a;flex-direction:column;overflow:hidden}
@@ -3185,10 +3195,12 @@ const UIRenderer = {
 
     html += '</div>';
 
-    // Stats
-    html += this._renderStats(msOcr, plOcr, msCost + plCost, catClass);
+    // Stats (unified grid with cost/cat + stats + weapon + terrain)
+    const tc = msOcr?.terrain_compatibility || msCard?.terrain || null;
+    const weapon = msOcr?.weapon || null;
+    html += this._renderStats(msOcr, plOcr, msCost + plCost, catClass, weapon, tc);
 
-    // MS/PL detail sections: MSアビリティ → PLスキル → SP → EB → 武器 → 地形適性
+    // MS/PL detail sections: MSアビリティ → PLスキル → SP → EB
     const msHasOcr = msOcr && msNumber && (msOcr.ms_ability || msOcr.weapon || msOcr.special_attack || msOcr.terrain_compatibility || msOcr.model);
     const plHasOcr = plOcr && plNumber && (plOcr.pl_skill || plOcr.pilot_skill || plOcr.category);
     if (msOcr && msNumber && !msHasOcr) {
@@ -3204,19 +3216,6 @@ const UIRenderer = {
     if (msHasOcr) {
       html += this._renderSP(msOcr);
       html += this._renderEB(msOcr);
-      html += this._renderWeapon(msOcr);
-    }
-
-    // Terrain row (武器の下)
-    const tc = msOcr?.terrain_compatibility || msCard?.terrain || null;
-    if (tc) {
-      html += '<div class="detail-terrain-row">';
-      [{k:'ground',l:'地上'},{k:'space',l:'宇宙'},{k:'desert',l:'砂漠'},{k:'water',l:'水中'}].forEach(t => {
-        const rank = tc[t.k] || '-';
-        const active = AppState.activeTerrain === t.k ? ' terrain-active' : '';
-        html += `<span class="terrain-badge rank-${rank}${active}">${t.l}:${rank}</span>`;
-      });
-      html += '</div>';
     }
 
     // Links
@@ -3231,48 +3230,66 @@ const UIRenderer = {
     area.innerHTML = html;
   },
 
-  _renderStats(msOcr, plOcr, totalCost, catClass) {
+  _renderStats(msOcr, plOcr, totalCost, catClass, weapon, tc) {
     const result = calcUnitStats(msOcr, plOcr, this._getTerrainMultiplier(msOcr));
-    let html = '<div class="stat-section">';
-    html += `<div class="stat-cost-cat">` +
-      `<span class="unit-total-cost"><span class="cost-label">COST</span><span class="cost-value">${totalCost || 0}</span></span>` +
+    let html = '<div class="stat-grid">';
+    // Cost + Category row
+    html += `<div class="sg-cost-row"><div class="sg-cost-left"><span class="sg-cost-label">COST</span><span class="sg-cost-value">${totalCost || 0}</span></div>` +
       (catClass ? `<span class="unit-cat-badge ${catClass}">${catClass}</span>` : '') +
       `</div>`;
-    html += `<div class="stat-row stat-header">` +
-      `<span class="stat-label"></span>` +
-      `<div class="stat-track" style="visibility:hidden"></div>` +
-      `<div class="stat-nums">` +
-        `<span class="stat-ms">MS</span>` +
-        `<span class="stat-pl">PL</span>` +
-        `<span class="stat-base">合計</span>` +
-        `<span class="stat-corr">補正</span>` +
-        `<span class="stat-arrow"></span>` +
-        `<span class="stat-total">最終</span>` +
-      `</div></div>`;
+    // Header row
+    html += `<div class="sg-cell sg-header sg-label"></div>` +
+      `<div class="sg-cell sg-header sg-bar"></div>` +
+      `<div class="sg-cell sg-header sg-ms">MS</div>` +
+      `<div class="sg-cell sg-header sg-pl">PL</div>` +
+      `<div class="sg-cell sg-header sg-total">合計</div>` +
+      `<div class="sg-cell sg-header sg-arrow"></div>` +
+      `<div class="sg-cell sg-header sg-total">最終</div>`;
+    // Stat rows
     result.forEach(r => {
       const basePct = Math.min((r.base / 1000) * 100, 100);
       const linkBuffPct = Math.min((r.linkBuff / 1000) * 100, 100 - basePct);
       let terrainBarHtml = '';
-      if (r.terrainBuff > 0) { const tW = Math.min((r.terrainBuff / 1000) * 100, 100 - basePct - linkBuffPct); terrainBarHtml = `<div class="stat-bar-terrain-pos" style="width:${tW}%"></div>`; }
-      else if (r.terrainBuff < 0) { const tP = (Math.max(r.total, 0) / 1000) * 100; const lP = (Math.abs(r.terrainBuff) / 1000) * 100; terrainBarHtml = `<div class="stat-bar-terrain-neg" style="position:absolute;right:0;width:${Math.min(lP, 100 - tP)}%;left:${tP}%"></div>`; }
+      if (r.terrainBuff > 0) { const tW = Math.min((r.terrainBuff / 1000) * 100, 100 - basePct - linkBuffPct); terrainBarHtml = `<div class="sg-bar-terrain-pos" style="width:${tW}%"></div>`; }
+      else if (r.terrainBuff < 0) { const tP = (Math.max(r.total, 0) / 1000) * 100; const lP = (Math.abs(r.terrainBuff) / 1000) * 100; terrainBarHtml = `<div class="sg-bar-terrain-neg" style="position:absolute;right:0;width:${Math.min(lP, 100 - tP)}%;left:${tP}%"></div>`; }
       const hasBuff = r.linkBuff > 0 || r.terrainBuff !== 0 || r.corrBuff > 0;
-      const corrText = r.corrBuff > 0 ? `+${r.corrBuff}` : '-';
-      const corrActive = r.corrBuff > 0 ? ' active' : '';
       const arrowActive = hasBuff ? ' active' : '';
       const totalClass = hasBuff ? ' buffed' : '';
-      html += `<div class="stat-row">` +
-        `<span class="stat-label">${r.label}</span>` +
-        `<div class="stat-track"><div class="stat-bar-base" style="width:${basePct}%"></div><div class="stat-bar-buff" style="width:${linkBuffPct}%"></div>${terrainBarHtml}</div>` +
-        `<div class="stat-nums">` +
-          `<span class="stat-ms">${r.msVal || '-'}</span>` +
-          `<span class="stat-pl">${r.plVal || '-'}</span>` +
-          `<span class="stat-base">${r.base || '-'}</span>` +
-          `<span class="stat-corr${corrActive}">${corrText}</span>` +
-          `<span class="stat-arrow${arrowActive}">&rarr;</span>` +
-          `<span class="stat-total${totalClass}">${r.total}</span>` +
-        `</div>` +
-      `</div>`;
+      html += `<div class="sg-cell sg-label">${r.label}</div>` +
+        `<div class="sg-cell sg-bar"><div class="sg-bar-base" style="width:${basePct}%"></div><div class="sg-bar-buff" style="width:${linkBuffPct}%"></div>${terrainBarHtml}</div>` +
+        `<div class="sg-cell sg-ms">${r.msVal || '-'}</div>` +
+        `<div class="sg-cell sg-pl">${r.plVal || '-'}</div>` +
+        `<div class="sg-cell sg-total">${r.base || '-'}</div>` +
+        `<div class="sg-cell sg-arrow${arrowActive}">&rarr;</div>` +
+        `<div class="sg-cell sg-total${totalClass}">${r.total}</div>`;
     });
+    // Footer: weapon + terrain
+    const w = weapon;
+    const hasFooter = (w && (w.main || w.sub)) || tc;
+    if (hasFooter) {
+      html += `<div class="sg-footer">`;
+      // Header row
+      html += `<div class="sg-ft-cell sg-ft-header">MAIN</div>` +
+        `<div class="sg-ft-cell sg-ft-header">SUB</div>` +
+        `<div class="sg-ft-cell sg-ft-header">地上</div>` +
+        `<div class="sg-ft-cell sg-ft-header">宇宙</div>` +
+        `<div class="sg-ft-cell sg-ft-header">砂漠</div>` +
+        `<div class="sg-ft-cell sg-ft-header">水中</div>`;
+      // Value row
+      const mainName = w?.main ? escapeHtml(w.main.name || '-') : '-';
+      const subName = w?.sub ? escapeHtml(w.sub.name || '-') : '-';
+      html += `<div class="sg-ft-cell sg-ft-weapon" title="${w?.main ? escapeHtml(w.main.name + ' 射程' + (w.main.range||'-') + ' ' + (w.main.type||'')) : ''}">${mainName}</div>`;
+      html += `<div class="sg-ft-cell sg-ft-weapon sub" title="${w?.sub ? escapeHtml(w.sub.name + ' 射程' + (w.sub.range||'-') + ' ' + (w.sub.type||'')) : ''}">${subName}</div>`;
+      const terrainKeys = ['ground', 'space', 'desert', 'underwater'];
+      const activeTerrain = AppState.activeTerrain;
+      terrainKeys.forEach(k => {
+        const rank = tc?.[k] || '-';
+        const cls = rank !== '-' ? ` rank-${rank}` : ' rank-none';
+        const active = activeTerrain === k ? ' terrain-active' : '';
+        html += `<div class="sg-ft-cell sg-ft-terrain${cls}${active}">${rank}</div>`;
+      });
+      html += `</div>`;
+    }
     html += '</div>';
     return html;
   },
@@ -4386,20 +4403,19 @@ function openScreenshotMode() {
   const label = (text) => `<div class="ss-label">${text}</div>`;
   let html = '';
 
-  // 画像
-  html += label('');
+  // MS画像
+  html += label('MS');
   units.forEach(u => {
     const img = u.msNum ? resolveImageUrl(null, u.msNum, 'front') : '';
     html += cell(img ? `<img class="ss-card-img" src="${img}">` : '', 'ss-cell-center');
   });
 
-  // MS番号+名前
-  html += label('MS');
-  units.forEach(u => html += cell(u.msNum ? `<div class="ss-ms-name">${h(u.msIdx?.name || u.msNum)}</div>` : ''));
-
-  // PL番号+名前
+  // PL画像
   html += label('PL');
-  units.forEach(u => html += cell(u.plNum ? `<div class="ss-pl-name">${h(u.plIdx?.name || u.plNum)}</div>` : ''));
+  units.forEach(u => {
+    const img = u.plNum ? resolveImageUrl(null, u.plNum, 'front') : '';
+    html += cell(img ? `<img class="ss-card-img" src="${img}">` : '', 'ss-cell-center');
+  });
 
   // MS/PLレベル + コスト + カテゴリ
   html += label('コスト');
