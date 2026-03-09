@@ -570,16 +570,18 @@ body.light .bm-toggle-btn.active{background:#d0e8dc;border-color:var(--accent);c
 .ss-cat-badge.senmetsu{background:#3a1a1a;color:#ff5252}
 .ss-cat-badge.seiatsu{background:#1a2a3a;color:#42a5f5}
 .ss-cat-badge.bouei{background:#1a3a1a;color:#66bb6a}
-.ss-stat-row{display:flex;justify-content:space-between;width:100%;font-variant-numeric:tabular-nums;gap:1px}
-.ss-stat-v{flex:1;text-align:right;font-size:0.4rem;min-width:0}
+.ss-stat-row{display:flex;width:100%;font-variant-numeric:tabular-nums;gap:0}
+.ss-stat-v{flex:1;text-align:right;font-size:0.4rem;min-width:0;padding:1px 2px;border-left:1px solid #2a2a2a}
+.ss-stat-v:first-child{border-left:none}
 .ss-stat-v.ms{color:#90caf9}
 .ss-stat-v.pl{color:#ef9a9a}
 .ss-stat-v.link{color:#68efbd}
 .ss-stat-v.terr{color:#ce93d8}
-.ss-stat-v.total{color:#fff;font-weight:bold}
+.ss-stat-v.total{color:#fff;font-weight:bold;background:rgba(255,255,255,0.03)}
 .ss-stat-v.total.buffed{color:#ffb74d}
-.ss-stat-hdr{display:flex;justify-content:space-between;width:100%;gap:1px;font-size:0.35rem;color:#555;font-weight:bold;padding:0 2px}
-.ss-stat-hdr span{flex:1;text-align:right;min-width:0}
+.ss-stat-hdr{display:flex;width:100%;gap:0;font-size:0.35rem;color:#555;font-weight:bold}
+.ss-stat-hdr span{flex:1;text-align:right;min-width:0;padding:1px 2px;border-left:1px solid #2a2a2a}
+.ss-stat-hdr span:first-child{border-left:none}
 .ss-terrain{display:flex;gap:1px;flex-wrap:nowrap}
 .ss-terrain-badge{padding:0 2px;border-radius:1px;border:1px solid #333;font-size:0.4rem;white-space:nowrap}
 .ss-terrain-badge.rank-S{color:#ff8a80;border-color:#c62828}
@@ -4586,9 +4588,9 @@ function openScreenshotMode() {
   });
 
   // ステータス ヘッダー行
-  html += `<div class="ss-label ss-section-start" style="color:#42a5f5;font-weight:900;font-size:0.5rem"></div>`;
-  units.forEach((u, ui) => {
-    html += `<div class="ss-cell ss-section-start" style="padding:1px 3px"><div class="ss-stat-hdr"><span style="color:#90caf9">MS</span><span style="color:#ef9a9a">PL</span><span style="color:#68efbd">Link</span><span style="color:#ce93d8">地形</span><span style="color:#fff">計</span></div></div>`;
+  html += `<div class="ss-label ss-section-start" style="font-size:0.35rem;color:#555;border-bottom:1px solid #333">STAT</div>`;
+  units.forEach(() => {
+    html += `<div class="ss-cell ss-section-start" style="padding:1px 2px;border-bottom:1px solid #333"><div class="ss-stat-hdr"><span style="color:#90caf9">MS</span><span style="color:#ef9a9a">PL</span><span style="color:#68efbd">Link</span><span style="color:#ce93d8">地形</span><span style="color:#fff">計</span></div></div>`;
   });
 
   // ステータス4行 (色分けラベル)
