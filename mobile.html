@@ -510,28 +510,29 @@ body.light .bm-toggle-btn.active{background:#d0e8dc;border-color:var(--accent);c
 .sg-cost-label{font-size:0.5rem;color:rgba(255,224,130,0.6);font-weight:bold;letter-spacing:1px;font-family:sans-serif}
 .sg-cost-value{font-size:1.1rem;font-weight:900;color:var(--gold);text-shadow:0 0 6px rgba(255,224,130,0.3)}
 .sg-cost-left{display:flex;align-items:baseline;gap:4px}
-/* Unit info strip (cat/cost + weapon + terrain) */
-.sg-info-strip{display:flex;align-items:center;gap:4px;padding:4px 6px;margin-bottom:8px;font-size:0.65rem;font-family:sans-serif;background:#111;border:1px solid #2a2a2a;border-radius:6px;flex-wrap:wrap}
-.sg-info-item{font-weight:bold;white-space:nowrap}
-.sg-info-sep{width:1px;height:14px;background:#333;flex-shrink:0}
-.sg-ft-cat{padding:1px 6px;border-radius:3px;color:#888}
-.sg-ft-cat-s{color:var(--senmetsu);background:rgba(139,26,26,0.4)}
-.sg-ft-cat-c{color:var(--seiatsu);background:rgba(26,74,139,0.4)}
-.sg-ft-cat-b{color:var(--bouei);background:rgba(26,107,26,0.4)}
-.sg-ft-cost{font-weight:900;color:var(--gold);font-size:0.8rem}
-.sg-info-weapon{color:#42a5f5;display:flex;align-items:center;gap:2px}
+/* Unit info sections (3 separate mini-cards) */
+.sg-info-row{display:flex;gap:6px;margin-bottom:8px;font-family:sans-serif}
+.sg-info-box{flex:1;display:flex;align-items:center;justify-content:center;gap:4px;padding:5px 6px;background:#111;border:1px solid #222;border-radius:6px;min-width:0}
+.sg-info-box.box-cat{flex:0 0 auto;gap:6px}
+.sg-ft-cat{padding:2px 8px;border-radius:4px;font-size:0.65rem;font-weight:900;color:#888;letter-spacing:0.5px}
+.sg-ft-cat-s{color:var(--senmetsu);background:rgba(139,26,26,0.35);border:1px solid rgba(139,26,26,0.5)}
+.sg-ft-cat-c{color:var(--seiatsu);background:rgba(26,74,139,0.35);border:1px solid rgba(26,74,139,0.5)}
+.sg-ft-cat-b{color:var(--bouei);background:rgba(26,107,26,0.35);border:1px solid rgba(26,107,26,0.5)}
+.sg-ft-cost{font-weight:900;color:var(--gold);font-size:0.85rem;text-shadow:0 0 6px rgba(255,224,130,0.2)}
+.sg-info-box.box-weapon{gap:8px}
+.sg-info-weapon{display:flex;align-items:center;gap:3px;font-size:0.7rem;font-weight:bold;color:#42a5f5}
 .sg-info-weapon.sub{color:#ffb74d}
-.sg-info-wlabel{font-size:0.5rem;color:#888;font-weight:bold}
-.sg-info-wlabel.sub{color:#888}
-.sg-info-terrain{display:flex;align-items:center;gap:1px;font-weight:bold}
-.sg-info-tlabel{font-size:0.5rem;color:#666}
+.sg-info-wlabel{font-size:0.5rem;color:#666;font-weight:bold}
+.sg-info-box.box-terrain{gap:3px}
+.sg-info-terrain{display:flex;align-items:center;gap:1px;font-weight:bold;font-size:0.7rem}
+.sg-info-tlabel{font-size:0.5rem;color:#555}
 .sg-info-terrain.rank-S{color:#ff8a80}
 .sg-info-terrain.rank-A{color:#42a5f5}
 .sg-info-terrain.rank-B{color:#66bb6a}
 .sg-info-terrain.rank-C{color:#ffcc80}
 .sg-info-terrain.rank-D{color:#ff8a80}
 .sg-info-terrain.rank-none{color:#444}
-.sg-info-terrain.terrain-active{background:#1e2924;color:var(--accent);padding:1px 3px;border-radius:3px}
+.sg-info-terrain.terrain-active{background:#1e2924;color:var(--accent);padding:1px 4px;border-radius:3px}
 
 /* Screenshot mode */
 #ssOverlay{display:none;position:fixed;inset:0;z-index:500;background:#0a0a0a;flex-direction:column;overflow:hidden}
@@ -3325,30 +3326,31 @@ const UIRenderer = {
         `</div>`;
     });
     html += '</div>';
-    // Unit info strip (separate from stat grid)
+    // Unit info: 3 separate mini-cards
     const w = weapon;
-    html += '<div class="sg-info-strip">';
-    // Cat + Cost
+    html += '<div class="sg-info-row">';
+    // Box 1: Category + Cost
     const catCls = catClass === '殲滅' ? ' sg-ft-cat-s' : catClass === '制圧' ? ' sg-ft-cat-c' : catClass === '防衛' ? ' sg-ft-cat-b' : '';
-    html += `<span class="sg-info-item sg-ft-cat${catCls}">${catClass || '-'}</span>`;
-    html += `<span class="sg-info-item sg-ft-cost">${totalCost || 0}</span>`;
-    html += '<span class="sg-info-sep"></span>';
-    // Weapon
+    html += `<div class="sg-info-box box-cat"><span class="sg-ft-cat${catCls}">${catClass || '-'}</span><span class="sg-ft-cost">${totalCost || 0}</span></div>`;
+    // Box 2: Weapon (MAIN / SUB range)
     const mainRange = w?.main?.range != null ? w.main.range : '-';
     const subRange = w?.sub?.range != null ? w.sub.range : '-';
-    html += `<span class="sg-info-item sg-info-weapon" title="${w?.main ? escapeHtml(w.main.name + ' ' + (w.main.type||'')) : ''}"><span class="sg-info-wlabel">M</span>${w?.main ? mainRange : '-'}</span>`;
-    html += `<span class="sg-info-item sg-info-weapon sub" title="${w?.sub ? escapeHtml(w.sub.name + ' ' + (w.sub.type||'')) : ''}"><span class="sg-info-wlabel sub">S</span>${w?.sub ? subRange : '-'}</span>`;
-    html += '<span class="sg-info-sep"></span>';
-    // Terrain
+    html += `<div class="sg-info-box box-weapon">`;
+    html += `<span class="sg-info-weapon" title="${w?.main ? escapeHtml(w.main.name + ' ' + (w.main.type||'')) : ''}"><span class="sg-info-wlabel">M</span>${w?.main ? mainRange : '-'}</span>`;
+    html += `<span class="sg-info-weapon sub" title="${w?.sub ? escapeHtml(w.sub.name + ' ' + (w.sub.type||'')) : ''}"><span class="sg-info-wlabel">S</span>${w?.sub ? subRange : '-'}</span>`;
+    html += `</div>`;
+    // Box 3: Terrain compatibility
     const terrainKeys = ['ground', 'space', 'desert', 'water'];
     const terrainLabels = { ground: '地', space: '宇', desert: '砂', water: '水' };
     const activeTerrain = AppState.activeTerrain;
+    html += `<div class="sg-info-box box-terrain">`;
     terrainKeys.forEach(k => {
       const rank = tc?.[k] || '-';
       const cls = rank !== '-' ? ` rank-${rank}` : ' rank-none';
       const active = activeTerrain === k ? ' terrain-active' : '';
-      html += `<span class="sg-info-item sg-info-terrain${cls}${active}"><span class="sg-info-tlabel">${terrainLabels[k]}</span>${rank}</span>`;
+      html += `<span class="sg-info-terrain${cls}${active}"><span class="sg-info-tlabel">${terrainLabels[k]}</span>${rank}</span>`;
     });
+    html += `</div>`;
     html += '</div>';
     return html;
   },
