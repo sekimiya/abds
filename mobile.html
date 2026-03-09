@@ -3291,10 +3291,10 @@ const UIRenderer = {
         `<div class="sg-ft-cell sg-ft-header">砂漠</div>` +
         `<div class="sg-ft-cell sg-ft-header">水中</div>`;
       // Value row
-      const mainText = w?.main ? `${escapeHtml(w.main.name || '-')} ${w.main.range ? '射程'+w.main.range : ''}` : '-';
-      const subText = w?.sub ? `${escapeHtml(w.sub.name || '-')} ${w.sub.range ? '射程'+w.sub.range : ''}` : '-';
-      html += `<div class="sg-ft-cell sg-ft-weapon" title="${w?.main ? escapeHtml(w.main.name + ' ' + (w.main.type||'')) : ''}">${mainText}</div>`;
-      html += `<div class="sg-ft-cell sg-ft-weapon sub" title="${w?.sub ? escapeHtml(w.sub.name + ' ' + (w.sub.type||'')) : ''}">${subText}</div>`;
+      const mainRange = w?.main?.range != null ? w.main.range : '-';
+      const subRange = w?.sub?.range != null ? w.sub.range : '-';
+      html += `<div class="sg-ft-cell sg-ft-weapon" title="${w?.main ? escapeHtml(w.main.name + ' ' + (w.main.type||'')) : ''}">${w?.main ? mainRange : '-'}</div>`;
+      html += `<div class="sg-ft-cell sg-ft-weapon sub" title="${w?.sub ? escapeHtml(w.sub.name + ' ' + (w.sub.type||'')) : ''}">${w?.sub ? subRange : '-'}</div>`;
       const terrainKeys = ['ground', 'space', 'desert', 'water'];
       const activeTerrain = AppState.activeTerrain;
       terrainKeys.forEach(k => {
