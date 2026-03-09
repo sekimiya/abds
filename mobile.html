@@ -497,6 +497,8 @@ body.light .bm-toggle-btn.active{background:#d0e8dc;border-color:var(--accent);c
 .stat-arrow.active{color:#aaa}
 .stat-total{color:#fff;font-weight:bold;min-width:30px;text-align:right}
 .stat-total.buffed{color:#ffb74d}
+.stat-header{margin-bottom:2px;border-bottom:1px solid #333;padding-bottom:2px}
+.stat-header .stat-nums{font-size:0.55rem;font-weight:bold;color:#666}
 
 /* Detail sections */
 .detail-section{
@@ -3172,6 +3174,17 @@ const UIRenderer = {
   _renderStats(msOcr, plOcr) {
     const result = calcUnitStats(msOcr, plOcr, this._getTerrainMultiplier(msOcr));
     let html = '<div class="stat-section">';
+    html += `<div class="stat-row stat-header">` +
+      `<span class="stat-label"></span>` +
+      `<div class="stat-track" style="visibility:hidden"></div>` +
+      `<div class="stat-nums">` +
+        `<span class="stat-ms">MS</span>` +
+        `<span class="stat-pl">PL</span>` +
+        `<span class="stat-base">合計</span>` +
+        `<span class="stat-corr">補正</span>` +
+        `<span class="stat-arrow"></span>` +
+        `<span class="stat-total">最終</span>` +
+      `</div></div>`;
     result.forEach(r => {
       const basePct = Math.min((r.base / 1000) * 100, 100);
       const linkBuffPct = Math.min((r.linkBuff / 1000) * 100, 100 - basePct);
