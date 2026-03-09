@@ -549,6 +549,11 @@ body.light .bm-toggle-btn.active{background:#d0e8dc;border-color:var(--accent);c
 .ss-header-cost{font-size:1rem;color:var(--gold);font-weight:900;flex-shrink:0;text-shadow:0 0 8px rgba(255,224,130,0.4);letter-spacing:0.5px}
 .ss-header-cats{display:flex;gap:3px;font-size:0.55rem;flex-shrink:0}
 .ss-header-tactics{display:flex;gap:4px;font-size:0.5rem;flex-shrink:0;align-items:center}
+.ss-header-links{display:flex;gap:3px;flex-wrap:wrap;flex-shrink:1;min-width:0}
+.ss-hdr-link{font-size:0.5rem;font-weight:bold;padding:1px 5px;border-radius:3px;white-space:nowrap}
+.ss-hdr-link.eb{background:rgba(255,152,0,0.25);color:#ffb74d;border:1px solid rgba(255,152,0,0.5)}
+.ss-hdr-link.sq{background:rgba(255,105,180,0.25);color:#ff8cc8;border:1px solid rgba(255,105,180,0.5)}
+.ss-hdr-link.ab{background:rgba(179,136,255,0.25);color:#b388ff;border:1px solid rgba(179,136,255,0.5)}
 .ss-tac-badge{display:flex;align-items:center;gap:3px;padding:1px 4px;border-radius:3px;font-weight:bold;white-space:nowrap;background:rgba(255,224,130,0.15);color:var(--gold);border:1px solid rgba(255,224,130,0.3)}
 .ss-tac-img{height:24px;width:auto;border-radius:2px;flex-shrink:0}
 .ss-close{background:none;border:none;color:#888;font-size:1.2rem;cursor:pointer;padding:2px 6px;flex-shrink:0;margin-left:auto}
@@ -1497,6 +1502,7 @@ body.light .ss-text{color:#555}
     <div class="ss-header-cost" id="ssCost"></div>
     <div class="ss-header-cats" id="ssCats"></div>
     <div class="ss-header-tactics" id="ssTactics"></div>
+    <div class="ss-header-links" id="ssLinks"></div>
     <button class="ss-close" onclick="closeScreenshotMode()">&times;</button>
   </div>
   <div class="ss-body"><div class="ss-table" id="ssTable"></div></div>
@@ -4537,6 +4543,25 @@ function openScreenshotMode() {
     tacHtml.push(`<span class="ss-tac-badge">${sImg ? `<img class="ss-tac-img" src="${sImg}">` : ''}S:${escapeHtml(subCard.name)}</span>`);
   }
   document.getElementById('ssTactics').innerHTML = tacHtml.join('');
+
+  // Active EB/SQ/AB links in header
+  const ssLinkMap = {};
+  for (let i = 0; i < 10; i++) {
+    const ocr = AppState.deckOcr[i]; if (!ocr) continue;
+    const links = ocr.link_abilities || ocr.link_ability || [];
+    if (!Array.isArray(links)) continue;
+    for (const link of links) {
+      if (!link.name || ssLinkMap[link.name]) continue;
+      const ltype = link.is_eb_link ? 'eb' : AppState._sqLinkNames.has(link.name) ? 'sq' : link.is_ab_link ? 'ab' : '';
+      if (!ltype) continue;
+      const { required, category } = _parseLinkCondition(link.condition);
+      if (_countLinkInDeck(link.name, category) >= required) {
+        ssLinkMap[link.name] = ltype;
+      }
+    }
+  }
+  document.getElementById('ssLinks').innerHTML = Object.entries(ssLinkMap)
+    .map(([name, type]) => `<span class="ss-hdr-link ${type}">${escapeHtml(name)}</span>`).join('');
 
   const h = escapeHtml;
   const cell = (content, cls) => `<div class="ss-cell${cls ? ' ' + cls : ''}">${content || '-'}</div>`;
