@@ -5643,6 +5643,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     imageCacheReady.then(() => {
       if (ImageCache._cachedKeys.size > 0) {
         UIRenderer.renderAll();
+        TacticsPicker.renderButtons();
         SearchPanel.applyFilters();
       }
     });
