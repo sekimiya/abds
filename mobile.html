@@ -476,9 +476,13 @@ body.light .bm-toggle-btn.active{background:#d0e8dc;border-color:var(--accent);c
 .terrain-badge.terrain-active{background:#1e2924;border-color:var(--accent);color:var(--accent);box-shadow:0 0 4px rgba(104,239,189,0.4)}
 
 /* Stat grid table */
-.stat-grid{display:grid;grid-template-columns:26px 1fr;gap:0;margin-bottom:8px;font-size:0.65rem;font-variant-numeric:tabular-nums;font-family:'Menlo','Consolas','Courier New',monospace;border:1px solid #2a2a2a;border-radius:6px;overflow:hidden;background:#111}
-.sg-cell{padding:3px 4px;border-bottom:1px solid #1e1e1e;display:flex;align-items:center}
-.sg-label{color:#888;justify-content:flex-end;text-align:right;font-weight:bold;background:#0d0d0d}
+.stat-grid{display:grid;grid-template-columns:20px 1fr;gap:0;margin-bottom:8px;font-size:0.65rem;font-variant-numeric:tabular-nums;font-family:'Menlo','Consolas','Courier New',monospace;border:1px solid #2a2a2a;border-radius:6px;overflow:hidden;background:#111}
+.sg-cell{padding:3px 2px;border-bottom:1px solid #1e1e1e;display:flex;align-items:center}
+.sg-label{justify-content:center;text-align:center;font-weight:900;font-size:0.7rem;background:#0d0d0d;font-family:sans-serif}
+.sg-label[data-stat="mobility"]{color:#42a5f5}
+.sg-label[data-stat="ranged"]{color:#ef5350}
+.sg-label[data-stat="melee"]{color:#ab47bc}
+.sg-label[data-stat="hp"]{color:#66bb6a}
 .sg-bar{position:relative;overflow:hidden;background:#1a1a1a;border-radius:0;height:20px}
 .sg-bar-base{height:100%;background:#2196f3;position:absolute;top:0;left:0;transition:width 0.3s}
 .sg-bar-buff{height:100%;background:#e91e63;position:absolute;top:0;transition:width 0.3s}
@@ -1788,7 +1792,7 @@ function calcUnitStats(msOcr, plOcr, terrainMult) {
   const applyBuff = (val, sm, med) => Math.round(val * Math.pow(1.1, sm) * Math.pow(1.2, med));
   const corrLv = ParamCorrections.getCorrectionLevel(msOcr, plOcr);
   const keys = ['mobility', 'ranged', 'melee', 'hp'];
-  const labels = { mobility: '機動', ranged: '遠距', melee: '近距', hp: 'HP' };
+  const labels = { mobility: '機', ranged: '遠', melee: '近', hp: 'HP' };
   return keys.map(s => {
     const base = ms[s] + pl[s];
     const msB = applyBuff(ms[s], msBuffs[s].small, msBuffs[s].medium);
@@ -3241,9 +3245,6 @@ const UIRenderer = {
   _renderStats(msOcr, plOcr, totalCost, catClass, weapon, tc) {
     const result = calcUnitStats(msOcr, plOcr, this._getTerrainMultiplier(msOcr));
     let html = '<div class="stat-grid">';
-    // Header row
-    html += `<div class="sg-cell sg-header sg-label"></div>` +
-      `<div class="sg-cell sg-header sg-bar" style="justify-content:space-between;padding:0 4px"><span>MS + PL + 補正</span><span>= 最終</span></div>`;
     // Stat rows
     result.forEach(r => {
       const basePct = Math.min((r.base / 1000) * 100, 100);
@@ -3254,7 +3255,7 @@ const UIRenderer = {
       const hasBuff = r.linkBuff > 0 || r.terrainBuff !== 0 || r.corrBuff > 0;
       const totalClass = hasBuff ? ' buffed' : '';
       const corrText = (r.corrBuff > 0 || r.linkBuff > 0 || r.terrainBuff !== 0) ? `+${r.corrBuff + r.linkBuff + r.terrainBuff}` : '';
-      html += `<div class="sg-cell sg-label">${r.label}</div>` +
+      html += `<div class="sg-cell sg-label" data-stat="${r.key}">${r.label}</div>` +
         `<div class="sg-cell sg-bar">` +
           `<div class="sg-bar-base" style="width:${basePct}%"></div><div class="sg-bar-buff" style="width:${linkBuffPct}%"></div>${terrainBarHtml}` +
           `<div class="sg-bar-vals">` +
