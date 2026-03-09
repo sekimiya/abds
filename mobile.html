@@ -251,6 +251,12 @@ body.light .bm-toggle-btn.active{background:#d0e8dc;border-color:var(--accent);c
   display:flex;align-items:center;gap:2px;
   flex:1;min-width:0;flex-wrap:wrap;
   max-height:48px;overflow:hidden;
+  position:relative;
+}
+.link-chips-more{
+  font-size:0.45rem;font-weight:bold;color:#888;
+  padding:1px 4px;border-radius:8px;background:#222;border:1px solid #444;
+  white-space:nowrap;flex-shrink:0;cursor:default;
 }
 .link-chips:empty{display:none}
 .link-chip{
@@ -3640,6 +3646,24 @@ const UIRenderer = {
         const tag = info.is_eb_link ? ' eb' : info.is_sq_link ? ' sq' : info.is_ab_link ? ' ab' : '';
         return `<div class="link-chip${isActive ? ' active' : ''}${tag}"><span class="link-chip-name">${escapeHtml(name)}</span><span class="link-chip-count">${info.count}/${info.required}</span></div>`;
       }).join('');
+      // Overflow detection: show "+N" badge for hidden chips
+      requestAnimationFrame(() => {
+        const oldMore = bar.querySelector('.link-chips-more');
+        if (oldMore) oldMore.remove();
+        if (bar.scrollHeight > bar.clientHeight) {
+          const chips = bar.querySelectorAll('.link-chip');
+          let hidden = 0;
+          for (const chip of chips) {
+            if (chip.offsetTop + chip.offsetHeight > bar.clientHeight) hidden++;
+          }
+          if (hidden > 0) {
+            const more = document.createElement('span');
+            more.className = 'link-chips-more';
+            more.textContent = `+${hidden}`;
+            bar.appendChild(more);
+          }
+        }
+      });
     }
     // Header: show only ACTIVE SQ/EB link names
     const hdrSq = document.getElementById('hdrSqLinks');
