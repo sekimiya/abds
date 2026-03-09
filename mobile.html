@@ -609,6 +609,9 @@ body.light .bm-toggle-btn.active{background:#d0e8dc;border-color:var(--accent);c
 .ss-skill-tag{padding:0 3px;background:rgba(255,255,255,0.05);border-radius:2px;white-space:nowrap}
 .ss-skill-power{font-size:0.38rem;color:#ef9a9a;line-height:1.3}
 .ss-skill-sep{border:0;border-top:1px solid #2a2a2a;margin:2px 0}
+.ss-cell.ss-theme-eb{background:rgba(255,152,0,0.08)}
+.ss-cell.ss-theme-sq{background:rgba(255,105,180,0.08)}
+.ss-cell.ss-theme-ab{background:rgba(179,136,255,0.08)}
 body.light #ssOverlay{background:#f5f5f5}
 body.light .ss-header{background:linear-gradient(135deg,#e8f5e9,#c8e6c9);border-color:#4caf50}
 body.light .ss-header-title{color:#333}
@@ -4652,6 +4655,10 @@ function openScreenshotMode() {
   html += label('PL<br>Skill');
   units.forEach(u => {
     if (!u.plSkill) { html += cell(''); return; }
+    const isPlEb = !!(u.plSkill.is_eb_skill) || !!(u.plIdx?.has_eb_link);
+    const isPlSq = !!(u.plSkill.has_sq_skill) || !!(u.plIdx?.has_sq_link);
+    const isPlAb = !!(u.plIdx?.has_ab_link);
+    const theme = isPlEb ? ' ss-theme-eb' : isPlSq ? ' ss-theme-sq' : isPlAb ? ' ss-theme-ab' : '';
     let s = `<div class="ss-skill-block">`;
     s += `<div class="ss-skill-name">${h(u.plSkill.name||'')}`;
     if (u.plSkill.has_sq_skill) s += `<span class="ss-skill-badge sq">SQ</span>`;
@@ -4667,13 +4674,17 @@ function openScreenshotMode() {
       if (rush) s += `<div class="ss-skill-effect" style="color:#ff69b4;border-left:2px solid #ff69b4;padding-left:3px">RUSH: ${h(rush)}</div>`;
     }
     s += `</div>`;
-    html += cell(s, 'ss-cell-col');
+    html += cell(s, 'ss-cell-col' + theme);
   });
 
   // SPアタック
   html += label('SP');
   units.forEach(u => {
     if (!u.sp) { html += cell(''); return; }
+    const isMsEb = !!(u.eb?.has_eb) || !!(u.msIdx?.has_eb_link);
+    const isMsSq = u.sp.sp_type === 'SQUAD SP' || !!(u.msIdx?.has_sq_link);
+    const isMsAb = !!(u.msIdx?.has_ab_link);
+    const spTheme = isMsEb ? ' ss-theme-eb' : isMsSq ? ' ss-theme-sq' : isMsAb ? ' ss-theme-ab' : '';
     let s = `<div class="ss-skill-block">`;
     s += `<div class="ss-skill-name" style="color:#42a5f5">${h(u.sp.name||'')}</div>`;
     const tags = [];
@@ -4695,7 +4706,7 @@ function openScreenshotMode() {
     }
     if (u.sp.description) s += `<div class="ss-skill-effect">${h(u.sp.description)}</div>`;
     s += `</div>`;
-    html += cell(s, 'ss-cell-col');
+    html += cell(s, 'ss-cell-col' + spTheme);
   });
 
   // EB
@@ -4710,7 +4721,7 @@ function openScreenshotMode() {
     if (tags.length) s += `<div class="ss-skill-tags">${tags.map(t=>`<span class="ss-skill-tag">${h(t)}</span>`).join('')}</div>`;
     if (u.eb.eb_description) s += `<div class="ss-skill-effect">${h(u.eb.eb_description)}</div>`;
     s += `</div>`;
-    html += cell(s, 'ss-cell-col');
+    html += cell(s, 'ss-cell-col ss-theme-eb');
   });
 
   document.getElementById('ssTable').innerHTML = html;
