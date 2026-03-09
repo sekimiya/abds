@@ -3054,7 +3054,8 @@ const UIRenderer = {
       document.getElementById(`ov-${type}-name-${u}`).textContent = '';
       el.querySelector('.ov-badge').textContent = '';
       el.querySelector('.ov-badge').className = 'ov-badge';
-      document.getElementById(`ov-${type}-sp-${u}`).innerHTML = '';
+      const spEl = document.getElementById(`ov-${type}-sp-${u}`);
+      if (spEl) spEl.innerHTML = '';
       let oldTags = el.querySelector('.ov-link-tags');
       if (oldTags) oldTags.remove();
       return;
