@@ -476,7 +476,7 @@ body.light .bm-toggle-btn.active{background:#d0e8dc;border-color:var(--accent);c
 .terrain-badge.terrain-active{background:#1e2924;border-color:var(--accent);color:var(--accent);box-shadow:0 0 4px rgba(104,239,189,0.4)}
 
 /* Stat grid table */
-.stat-grid{display:grid;grid-template-columns:26px 1fr 30px 12px 34px;gap:0;margin-bottom:8px;font-size:0.65rem;font-variant-numeric:tabular-nums;font-family:'Menlo','Consolas','Courier New',monospace;border:1px solid #2a2a2a;border-radius:6px;overflow:hidden;background:#111}
+.stat-grid{display:grid;grid-template-columns:26px 1fr;gap:0;margin-bottom:8px;font-size:0.65rem;font-variant-numeric:tabular-nums;font-family:'Menlo','Consolas','Courier New',monospace;border:1px solid #2a2a2a;border-radius:6px;overflow:hidden;background:#111}
 .sg-cell{padding:3px 4px;border-bottom:1px solid #1e1e1e;display:flex;align-items:center}
 .sg-label{color:#888;justify-content:flex-end;text-align:right;font-weight:bold;background:#0d0d0d}
 .sg-bar{position:relative;overflow:hidden;background:#1a1a1a;border-radius:0;min-height:18px}
@@ -484,15 +484,16 @@ body.light .bm-toggle-btn.active{background:#d0e8dc;border-color:var(--accent);c
 .sg-bar-buff{height:100%;background:#e91e63;position:absolute;top:0;transition:width 0.3s}
 .sg-bar-terrain-pos{height:100%;background:var(--accent);position:absolute;top:0;transition:width 0.3s}
 .sg-bar-terrain-neg{height:100%;position:absolute;top:0;background:repeating-linear-gradient(135deg,rgba(244,67,54,0.6),rgba(244,67,54,0.6) 2px,rgba(244,67,54,0.3) 2px,rgba(244,67,54,0.3) 4px)}
-.sg-bar-vals{position:relative;z-index:1;display:flex;justify-content:flex-start;gap:2px;padding:0 4px;font-size:0.6rem;white-space:nowrap}
+.sg-bar-vals{position:relative;z-index:1;display:flex;justify-content:space-between;align-items:center;padding:0 4px;font-size:0.6rem;white-space:nowrap;height:100%}
+.sg-bar-formula{display:flex;align-items:center;gap:1px}
 .sg-bar-ms{color:#90caf9;text-shadow:0 0 3px rgba(0,0,0,0.8)}
 .sg-bar-pl{color:#ef9a9a;text-shadow:0 0 3px rgba(0,0,0,0.8)}
-.sg-arrow{color:#444;justify-content:center}
-.sg-arrow.active{color:#aaa}
-.sg-total{color:#fff;font-weight:bold;justify-content:flex-end}
-.sg-total.buffed{color:#ffb74d}
+.sg-bar-corr{color:#ce93d8;text-shadow:0 0 3px rgba(0,0,0,0.8)}
+.sg-bar-op{color:#666;text-shadow:0 0 3px rgba(0,0,0,0.8);font-size:0.55rem}
+.sg-bar-eq{color:#999;text-shadow:0 0 3px rgba(0,0,0,0.8);font-weight:bold}
+.sg-bar-total{color:#fff;font-weight:bold;text-shadow:0 1px 4px rgba(0,0,0,0.9)}
+.sg-bar-total.buffed{color:#ffb74d}
 .sg-header{font-size:0.5rem;color:#666;font-weight:bold;border-bottom:1px solid #333;background:#0d0d0d}
-.sg-header.sg-bar{background:#0d0d0d}
 /* Cost+Cat row spans right columns */
 .sg-cost-row{grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;padding:4px 6px;border-bottom:1px solid #333;background:#0d0d0d}
 .sg-cost-label{font-size:0.5rem;color:rgba(255,224,130,0.6);font-weight:bold;letter-spacing:1px;font-family:sans-serif}
@@ -3240,10 +3241,7 @@ const UIRenderer = {
       `</div>`;
     // Header row
     html += `<div class="sg-cell sg-header sg-label"></div>` +
-      `<div class="sg-cell sg-header sg-bar"><span style="margin-left:4px">MS</span><span style="margin-left:6px">PL</span></div>` +
-      `<div class="sg-cell sg-header sg-total">合計</div>` +
-      `<div class="sg-cell sg-header sg-arrow"></div>` +
-      `<div class="sg-cell sg-header sg-total">最終</div>`;
+      `<div class="sg-cell sg-header sg-bar" style="justify-content:space-between;padding:0 4px"><span>MS + PL + 補正</span><span>= 最終</span></div>`;
     // Stat rows
     result.forEach(r => {
       const basePct = Math.min((r.base / 1000) * 100, 100);
@@ -3252,13 +3250,16 @@ const UIRenderer = {
       if (r.terrainBuff > 0) { const tW = Math.min((r.terrainBuff / 1000) * 100, 100 - basePct - linkBuffPct); terrainBarHtml = `<div class="sg-bar-terrain-pos" style="width:${tW}%"></div>`; }
       else if (r.terrainBuff < 0) { const tP = (Math.max(r.total, 0) / 1000) * 100; const lP = (Math.abs(r.terrainBuff) / 1000) * 100; terrainBarHtml = `<div class="sg-bar-terrain-neg" style="position:absolute;right:0;width:${Math.min(lP, 100 - tP)}%;left:${tP}%"></div>`; }
       const hasBuff = r.linkBuff > 0 || r.terrainBuff !== 0 || r.corrBuff > 0;
-      const arrowActive = hasBuff ? ' active' : '';
       const totalClass = hasBuff ? ' buffed' : '';
+      const corrText = (r.corrBuff > 0 || r.linkBuff > 0 || r.terrainBuff !== 0) ? `+${r.corrBuff + r.linkBuff + r.terrainBuff}` : '';
       html += `<div class="sg-cell sg-label">${r.label}</div>` +
-        `<div class="sg-cell sg-bar"><div class="sg-bar-base" style="width:${basePct}%"></div><div class="sg-bar-buff" style="width:${linkBuffPct}%"></div>${terrainBarHtml}<div class="sg-bar-vals"><span class="sg-bar-ms">${r.msVal || '-'}</span><span class="sg-bar-pl">${r.plVal || '-'}</span></div></div>` +
-        `<div class="sg-cell sg-total">${r.base || '-'}</div>` +
-        `<div class="sg-cell sg-arrow${arrowActive}">&rarr;</div>` +
-        `<div class="sg-cell sg-total${totalClass}">${r.total}</div>`;
+        `<div class="sg-cell sg-bar">` +
+          `<div class="sg-bar-base" style="width:${basePct}%"></div><div class="sg-bar-buff" style="width:${linkBuffPct}%"></div>${terrainBarHtml}` +
+          `<div class="sg-bar-vals">` +
+            `<span class="sg-bar-formula"><span class="sg-bar-ms">${r.msVal || 0}</span><span class="sg-bar-op">+</span><span class="sg-bar-pl">${r.plVal || 0}</span>${corrText ? `<span class="sg-bar-op">+</span><span class="sg-bar-corr">${corrText}</span>` : ''}</span>` +
+            `<span><span class="sg-bar-eq">=</span> <span class="sg-bar-total${totalClass}">${r.total}</span></span>` +
+          `</div>` +
+        `</div>`;
     });
     // Footer: weapon + terrain
     const w = weapon;
@@ -3273,11 +3274,11 @@ const UIRenderer = {
         `<div class="sg-ft-cell sg-ft-header">砂漠</div>` +
         `<div class="sg-ft-cell sg-ft-header">水中</div>`;
       // Value row
-      const mainName = w?.main ? escapeHtml(w.main.name || '-') : '-';
-      const subName = w?.sub ? escapeHtml(w.sub.name || '-') : '-';
-      html += `<div class="sg-ft-cell sg-ft-weapon" title="${w?.main ? escapeHtml(w.main.name + ' 射程' + (w.main.range||'-') + ' ' + (w.main.type||'')) : ''}">${mainName}</div>`;
-      html += `<div class="sg-ft-cell sg-ft-weapon sub" title="${w?.sub ? escapeHtml(w.sub.name + ' 射程' + (w.sub.range||'-') + ' ' + (w.sub.type||'')) : ''}">${subName}</div>`;
-      const terrainKeys = ['ground', 'space', 'desert', 'underwater'];
+      const mainText = w?.main ? `${escapeHtml(w.main.name || '-')} ${w.main.range ? '射程'+w.main.range : ''}` : '-';
+      const subText = w?.sub ? `${escapeHtml(w.sub.name || '-')} ${w.sub.range ? '射程'+w.sub.range : ''}` : '-';
+      html += `<div class="sg-ft-cell sg-ft-weapon" title="${w?.main ? escapeHtml(w.main.name + ' ' + (w.main.type||'')) : ''}">${mainText}</div>`;
+      html += `<div class="sg-ft-cell sg-ft-weapon sub" title="${w?.sub ? escapeHtml(w.sub.name + ' ' + (w.sub.type||'')) : ''}">${subText}</div>`;
+      const terrainKeys = ['ground', 'space', 'desert', 'water'];
       const activeTerrain = AppState.activeTerrain;
       terrainKeys.forEach(k => {
         const rank = tc?.[k] || '-';
