@@ -476,20 +476,24 @@ body.light .bm-toggle-btn.active{background:#d0e8dc;border-color:var(--accent);c
 .terrain-badge.rank-none{color:#444;border-color:#222}
 .terrain-badge.terrain-active{background:#1e2924;border-color:var(--accent);color:var(--accent);box-shadow:0 0 4px rgba(104,239,189,0.4)}
 
-/* Stat bars (full width) */
+/* Stat bars */
 .stat-section{margin-bottom:8px}
 .stat-section-title{font-size:0.75rem;font-weight:bold;color:#666;margin-bottom:4px;border-bottom:1px solid #222;padding-bottom:2px}
 .stat-row{display:flex;align-items:center;gap:4px;margin-bottom:4px}
-.stat-label{color:#888;font-size:0.75rem;width:28px;text-align:right;flex-shrink:0}
-.stat-track{flex:1;height:20px;background:#222;border-radius:3px;overflow:hidden;position:relative;display:flex}
+.stat-label{color:#888;font-size:0.75rem;width:24px;text-align:right;flex-shrink:0}
+.stat-track{flex:1;height:16px;background:#222;border-radius:3px;overflow:hidden;position:relative;display:flex;max-width:40%}
 .stat-bar-base{height:100%;background:#2196f3;transition:width 0.3s}
 .stat-bar-buff{height:100%;background:#e91e63;transition:width 0.3s}
 .stat-bar-terrain-pos{height:100%;background:var(--accent);transition:width 0.3s}
 .stat-bar-terrain-neg{height:100%;transition:width 0.3s;background:repeating-linear-gradient(135deg,rgba(244,67,54,0.6),rgba(244,67,54,0.6) 2px,rgba(244,67,54,0.3) 2px,rgba(244,67,54,0.3) 4px)}
-.stat-value{position:absolute;top:0;left:0;right:0;bottom:0;display:flex;align-items:center;padding:0 6px;color:#fff;font-size:0.65rem;white-space:nowrap;font-variant-numeric:tabular-nums;font-family:'Menlo','Consolas','Courier New',monospace;text-shadow:0 0 3px rgba(0,0,0,0.8),0 0 6px rgba(0,0,0,0.5);pointer-events:none}
-.stat-buff-text{color:#ffb3c6}
-.stat-terrain-text.positive{color:#a0ffd0}
-.stat-terrain-text.negative{color:#ff8a80}
+.stat-nums{display:flex;align-items:center;flex-shrink:0;font-size:0.7rem;font-variant-numeric:tabular-nums;font-family:'Menlo','Consolas','Courier New',monospace;gap:2px;margin-left:auto}
+.stat-base{color:#90caf9;min-width:28px;text-align:right}
+.stat-corr{min-width:36px;text-align:right;color:#555}
+.stat-corr.active{color:#ce93d8}
+.stat-arrow{color:#555;width:12px;text-align:center}
+.stat-arrow.active{color:#aaa}
+.stat-total{color:#fff;font-weight:bold;min-width:28px;text-align:right}
+.stat-total.buffed{color:#ffb74d}
 
 /* Detail sections */
 .detail-section{
@@ -3164,22 +3168,29 @@ const UIRenderer = {
 
   _renderStats(msOcr, plOcr) {
     const result = calcUnitStats(msOcr, plOcr, this._getTerrainMultiplier(msOcr));
-    const pad = (n) => String(n).padStart(3, '\u2007');
     let html = '<div class="stat-section">';
     result.forEach(r => {
+      const totalPct = Math.min((r.total / 1000) * 100, 100);
       const basePct = Math.min((r.base / 1000) * 100, 100);
       const linkBuffPct = Math.min((r.linkBuff / 1000) * 100, 100 - basePct);
       let terrainBarHtml = '';
       if (r.terrainBuff > 0) { const tW = Math.min((r.terrainBuff / 1000) * 100, 100 - basePct - linkBuffPct); terrainBarHtml = `<div class="stat-bar-terrain-pos" style="width:${tW}%"></div>`; }
       else if (r.terrainBuff < 0) { const tP = (Math.max(r.total, 0) / 1000) * 100; const lP = (Math.abs(r.terrainBuff) / 1000) * 100; terrainBarHtml = `<div class="stat-bar-terrain-neg" style="position:absolute;right:0;width:${Math.min(lP, 100 - tP)}%;left:${tP}%"></div>`; }
-      let terrainLabel = '';
-      if (r.terrainBuff > 0) terrainLabel = ` <span class="stat-terrain-text positive">(+${r.terrainBuff})</span>`;
-      else if (r.terrainBuff < 0) terrainLabel = ` <span class="stat-terrain-text negative">(${r.terrainBuff})</span>`;
-      let corrLabel = '';
-      if (r.corrBuff > 0) corrLabel = ` <span style="color:#ce93d8">Lv+${r.corrBuff}</span>`;
-      const baseLabel = `${pad(r.msVal)}+${pad(r.plVal)}=${pad(r.base)}`;
-      const buffLabel = r.linkBuff > 0 ? ` <span class="stat-buff-text">+${pad(r.linkBuff)}</span>` : '';
-      html += `<div class="stat-row"><span class="stat-label">${r.label}</span><div class="stat-track"><div class="stat-bar-base" style="width:${basePct}%"></div><div class="stat-bar-buff" style="width:${linkBuffPct}%"></div>${terrainBarHtml}<span class="stat-value">${baseLabel}${buffLabel}${terrainLabel}${corrLabel}${(r.linkBuff > 0 || r.terrainBuff !== 0 || r.corrBuff > 0) ? ` → ${pad(r.total)}` : ''}</span></div></div>`;
+      const hasBuff = r.linkBuff > 0 || r.terrainBuff !== 0 || r.corrBuff > 0;
+      const corrText = r.corrBuff > 0 ? `+${r.corrBuff}` : '-';
+      const corrActive = r.corrBuff > 0 ? ' active' : '';
+      const arrowActive = hasBuff ? ' active' : '';
+      const totalClass = hasBuff ? ' buffed' : '';
+      html += `<div class="stat-row">` +
+        `<span class="stat-label">${r.label}</span>` +
+        `<div class="stat-track"><div class="stat-bar-base" style="width:${basePct}%"></div><div class="stat-bar-buff" style="width:${linkBuffPct}%"></div>${terrainBarHtml}</div>` +
+        `<div class="stat-nums">` +
+          `<span class="stat-base">${r.base}</span>` +
+          `<span class="stat-corr${corrActive}">${corrText}</span>` +
+          `<span class="stat-arrow${arrowActive}">&rarr;</span>` +
+          `<span class="stat-total${totalClass}">${r.total}</span>` +
+        `</div>` +
+      `</div>`;
     });
     html += '</div>';
     return html;
