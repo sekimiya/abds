@@ -3125,22 +3125,10 @@ const UIRenderer = {
 
     html += '</div>';
 
-    // Terrain row
-    const tc = msOcr?.terrain_compatibility || msCard?.terrain || null;
-    if (tc) {
-      html += '<div class="detail-terrain-row">';
-      [{k:'ground',l:'地上'},{k:'space',l:'宇宙'},{k:'desert',l:'砂漠'},{k:'water',l:'水中'}].forEach(t => {
-        const rank = tc[t.k] || '-';
-        const active = AppState.activeTerrain === t.k ? ' terrain-active' : '';
-        html += `<span class="terrain-badge rank-${rank}${active}">${t.l}:${rank}</span>`;
-      });
-      html += '</div>';
-    }
-
     // Stats
     html += this._renderStats(msOcr, plOcr);
 
-    // MS/PL detail sections: MSアビリティ → PLスキル → 武器 → SP → EB
+    // MS/PL detail sections: MSアビリティ → PLスキル → SP → EB → 武器 → 地形適性
     const msHasOcr = msOcr && msNumber && (msOcr.ms_ability || msOcr.weapon || msOcr.special_attack || msOcr.terrain_compatibility || msOcr.model);
     const plHasOcr = plOcr && plNumber && (plOcr.pl_skill || plOcr.pilot_skill || plOcr.category);
     if (msOcr && msNumber && !msHasOcr) {
@@ -3157,6 +3145,18 @@ const UIRenderer = {
       html += this._renderSP(msOcr);
       html += this._renderEB(msOcr);
       html += this._renderWeapon(msOcr);
+    }
+
+    // Terrain row (武器の下)
+    const tc = msOcr?.terrain_compatibility || msCard?.terrain || null;
+    if (tc) {
+      html += '<div class="detail-terrain-row">';
+      [{k:'ground',l:'地上'},{k:'space',l:'宇宙'},{k:'desert',l:'砂漠'},{k:'water',l:'水中'}].forEach(t => {
+        const rank = tc[t.k] || '-';
+        const active = AppState.activeTerrain === t.k ? ' terrain-active' : '';
+        html += `<span class="terrain-badge rank-${rank}${active}">${t.l}:${rank}</span>`;
+      });
+      html += '</div>';
     }
 
     // Links
