@@ -940,7 +940,8 @@ body.light .ss-text{color:#555}
 .tactics-picker-card.selected{border-color:var(--pl-gold);background:#332d10}
 .tactics-picker-card img{width:60px;height:auto;border-radius:4px;flex-shrink:0}
 .tactics-picker-card .tp-info{flex:1;min-width:0}
-.tactics-picker-card .tp-name{font-weight:bold;font-size:0.85rem;color:var(--pl-gold);margin-bottom:3px}
+.tactics-picker-card .tp-name{font-weight:bold;font-size:0.85rem;color:var(--pl-gold);margin-bottom:3px;text-align:center;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.tactics-picker-card .tp-name.tp-name-left{text-align:left}
 .tactics-picker-card .tp-effect{font-size:0.7rem;color:#aaa;line-height:1.4}
 .tactics-picker-card .tp-condition{font-size:0.65rem;color:#e91e63;margin-top:2px}
 /* Deck load items */
@@ -2344,6 +2345,11 @@ const TacticsPicker = {
       </div>`;
     }).join('')}</div>`;
     document.getElementById('tacticsPickerModal').classList.add('open');
+    requestAnimationFrame(() => {
+      body.querySelectorAll('.tp-name').forEach(el => {
+        if (el.scrollWidth > el.clientWidth) el.classList.add('tp-name-left');
+      });
+    });
   },
   _select(id) {
     const type = this._currentType;
@@ -3235,10 +3241,6 @@ const UIRenderer = {
   _renderStats(msOcr, plOcr, totalCost, catClass, weapon, tc) {
     const result = calcUnitStats(msOcr, plOcr, this._getTerrainMultiplier(msOcr));
     let html = '<div class="stat-grid">';
-    // Cost + Category row
-    html += `<div class="sg-cost-row"><div class="sg-cost-left"><span class="sg-cost-label">COST</span><span class="sg-cost-value">${totalCost || 0}</span></div>` +
-      (catClass ? `<span class="unit-cat-badge ${catClass}">${catClass}</span>` : '') +
-      `</div>`;
     // Header row
     html += `<div class="sg-cell sg-header sg-label"></div>` +
       `<div class="sg-cell sg-header sg-bar" style="justify-content:space-between;padding:0 4px"><span>MS + PL + 補正</span><span>= 最終</span></div>`;
@@ -4482,7 +4484,17 @@ function openScreenshotMode() {
   units.forEach(u => {
     const abilities = u.msAbility ? (Array.isArray(u.msAbility) ? u.msAbility : [u.msAbility]) : [];
     if (abilities.length === 0) { html += cell(''); return; }
-    html += cell(abilities.map(a => `<div class="ss-text" style="font-weight:bold">${h(a.name||'')}</div>`).join(''), 'ss-cell-col');
+    html += cell(abilities.map(a => {
+      let s = `<div class="ss-text" style="font-weight:bold">${h(a.name||'')}</div>`;
+      const tags = [];
+      if (a.type || a.activation) tags.push(a.type || a.activation);
+      if (a.target) tags.push(a.target);
+      if (a.range !== undefined && a.range !== null) tags.push('射程'+a.range);
+      if (a.cost !== undefined && a.cost !== null) tags.push('コスト'+a.cost);
+      if (tags.length) s += `<div class="ss-text" style="color:#888">${tags.map(t=>h(t)).join(' ')}</div>`;
+      if (a.description) s += `<div class="ss-text" style="color:#aaa">${h(a.description)}</div>`;
+      return s;
+    }).join('<hr style="border:0;border-top:1px solid #333;margin:1px 0">'), 'ss-cell-col');
   });
 
   // PLスキル
@@ -4491,6 +4503,7 @@ function openScreenshotMode() {
     if (!u.plSkill) { html += cell(''); return; }
     let s = `<div class="ss-text" style="font-weight:bold">${h(u.plSkill.name||'')}</div>`;
     if (u.plSkill.trigger) s += `<div class="ss-text" style="color:#888">${h(u.plSkill.trigger)}</div>`;
+    if (u.plSkill.description) s += `<div class="ss-text" style="color:#aaa">${h(u.plSkill.description)}</div>`;
     html += cell(s, 'ss-cell-col');
   });
 
@@ -4503,7 +4516,20 @@ function openScreenshotMode() {
     if (u.sp.sp_cost) tags.push(`SP:${u.sp.sp_cost}`);
     if (u.sp.range !== undefined && u.sp.range !== null) tags.push(`射程${u.sp.range}`);
     if (u.sp.attack_type) tags.push(u.sp.attack_type);
+    if (u.sp.sp_type) tags.push(u.sp.sp_type);
     if (tags.length) s += `<div class="ss-text" style="color:#888">${tags.join(' ')}</div>`;
+    if (u.sp.power) {
+      let pw = '';
+      if (typeof u.sp.power === 'object') {
+        const pp = [];
+        if (u.sp.power.normal) pp.push('通常:'+u.sp.power.normal);
+        if (u.sp.power.squad) { const sv = Array.isArray(u.sp.power.squad) ? u.sp.power.squad.filter(v=>v).join('/') : u.sp.power.squad; pp.push('部隊:'+sv); }
+        if (u.sp.power.united) { const uv = Array.isArray(u.sp.power.united) ? u.sp.power.united.filter(v=>v).join('/') : u.sp.power.united; if(uv) pp.push('UNITED:'+uv); }
+        pw = pp.join(' / ');
+      } else { pw = '威力:'+u.sp.power; }
+      if (pw) s += `<div class="ss-text" style="color:#ef9a9a">${h(pw)}</div>`;
+    }
+    if (u.sp.description) s += `<div class="ss-text" style="color:#aaa">${h(u.sp.description)}</div>`;
     html += cell(s, 'ss-cell-col');
   });
 
@@ -4512,7 +4538,11 @@ function openScreenshotMode() {
   units.forEach(u => {
     if (!u.eb || !u.eb.has_eb) { html += cell(''); return; }
     let s = `<div class="ss-text" style="font-weight:bold;color:#ff9800">${h(u.eb.eb_sp_name||'EB')}</div>`;
-    if (u.eb.eb_level) s += `<div class="ss-text" style="color:#888">Lv.${u.eb.eb_level}</div>`;
+    const tags = [];
+    if (u.eb.eb_level) tags.push('Lv.'+u.eb.eb_level);
+    if (u.eb.eb_target) tags.push(u.eb.eb_target);
+    if (tags.length) s += `<div class="ss-text" style="color:#888">${tags.join(' ')}</div>`;
+    if (u.eb.eb_description) s += `<div class="ss-text" style="color:#aaa">${h(u.eb.eb_description)}</div>`;
     html += cell(s, 'ss-cell-col');
   });
 
