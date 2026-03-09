@@ -352,7 +352,7 @@ body.light .bm-toggle-btn.active{background:#d0e8dc;border-color:var(--accent);c
 .ov-link-tag.link-on{background:rgba(104,239,189,0.9);color:#0a0a0a}
 .ov-link-tag.link-off{background:rgba(60,60,60,0.8);color:#666}
 .ov-link-tag.link-eb.link-on{background:rgba(255,152,0,0.9);color:#fff}
-.ov-buff-tags{position:absolute;bottom:1px;right:1px;display:flex;gap:1px;z-index:3;flex-wrap:wrap;justify-content:flex-end;max-width:60%}
+.ov-buff-tags{display:flex;gap:1px;flex-wrap:wrap;align-self:flex-start}
 .ov-buff-tag{font-size:0.4rem;font-weight:900;padding:0 2px;border-radius:2px;line-height:1.4;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,0.8)}
 .ov-buff-tag.ov-buff-機{background:rgba(66,165,245,0.85)}
 .ov-buff-tag.ov-buff-遠{background:rgba(239,83,80,0.85)}
@@ -510,41 +510,45 @@ body.light .bm-toggle-btn.active{background:#d0e8dc;border-color:var(--accent);c
 .sg-cost-label{font-size:0.5rem;color:rgba(255,224,130,0.6);font-weight:bold;letter-spacing:1px;font-family:sans-serif}
 .sg-cost-value{font-size:1.1rem;font-weight:900;color:var(--gold);text-shadow:0 0 6px rgba(255,224,130,0.3)}
 .sg-cost-left{display:flex;align-items:baseline;gap:4px}
-/* Weapon+Terrain footer */
-.sg-footer{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;gap:0;border-top:1px solid #333}
-.sg-ft-cell{padding:2px 3px;text-align:center;font-size:0.6rem;border-right:1px solid #1e1e1e;font-family:sans-serif}
-.sg-ft-cell:last-child{border-right:none}
-.sg-ft-header{color:#888;font-weight:bold;background:#0d0d0d;font-size:0.55rem}
-.sg-ft-weapon{color:#42a5f5;font-weight:bold;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.sg-ft-weapon.sub{color:#ffb74d}
-.sg-ft-cat{font-weight:bold;color:#888}
-.sg-ft-cat-s{color:var(--senmetsu);background:rgba(139,26,26,0.3)}
-.sg-ft-cat-c{color:var(--seiatsu);background:rgba(26,74,139,0.3)}
-.sg-ft-cat-b{color:var(--bouei);background:rgba(26,107,26,0.3)}
-.sg-ft-cost{font-weight:900;color:var(--gold)}
-.sg-ft-terrain{font-weight:bold}
-.sg-ft-terrain.rank-S{color:#ff8a80}
-.sg-ft-terrain.rank-A{color:#42a5f5}
-.sg-ft-terrain.rank-B{color:#66bb6a}
-.sg-ft-terrain.rank-C{color:#ffcc80}
-.sg-ft-terrain.rank-D{color:#ff8a80}
-.sg-ft-terrain.rank-none{color:#444}
-.sg-ft-terrain.terrain-active{background:#1e2924;color:var(--accent)}
+/* Unit info strip (cat/cost + weapon + terrain) */
+.sg-info-strip{display:flex;align-items:center;gap:4px;padding:4px 6px;margin-bottom:8px;font-size:0.65rem;font-family:sans-serif;background:#111;border:1px solid #2a2a2a;border-radius:6px;flex-wrap:wrap}
+.sg-info-item{font-weight:bold;white-space:nowrap}
+.sg-info-sep{width:1px;height:14px;background:#333;flex-shrink:0}
+.sg-ft-cat{padding:1px 6px;border-radius:3px;color:#888}
+.sg-ft-cat-s{color:var(--senmetsu);background:rgba(139,26,26,0.4)}
+.sg-ft-cat-c{color:var(--seiatsu);background:rgba(26,74,139,0.4)}
+.sg-ft-cat-b{color:var(--bouei);background:rgba(26,107,26,0.4)}
+.sg-ft-cost{font-weight:900;color:var(--gold);font-size:0.8rem}
+.sg-info-weapon{color:#42a5f5;display:flex;align-items:center;gap:2px}
+.sg-info-weapon.sub{color:#ffb74d}
+.sg-info-wlabel{font-size:0.5rem;color:#888;font-weight:bold}
+.sg-info-wlabel.sub{color:#888}
+.sg-info-terrain{display:flex;align-items:center;gap:1px;font-weight:bold}
+.sg-info-tlabel{font-size:0.5rem;color:#666}
+.sg-info-terrain.rank-S{color:#ff8a80}
+.sg-info-terrain.rank-A{color:#42a5f5}
+.sg-info-terrain.rank-B{color:#66bb6a}
+.sg-info-terrain.rank-C{color:#ffcc80}
+.sg-info-terrain.rank-D{color:#ff8a80}
+.sg-info-terrain.rank-none{color:#444}
+.sg-info-terrain.terrain-active{background:#1e2924;color:var(--accent);padding:1px 3px;border-radius:3px}
 
 /* Screenshot mode */
 #ssOverlay{display:none;position:fixed;inset:0;z-index:500;background:#0a0a0a;flex-direction:column;overflow:hidden}
 #ssOverlay.open{display:flex}
-.ss-header{display:flex;align-items:center;padding:4px 8px;gap:6px;border-bottom:1px solid #333;flex-shrink:0}
-.ss-header-title{font-size:0.7rem;font-weight:bold;color:#fff;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.ss-header-cost{font-size:0.7rem;color:#68efbd;font-weight:bold;flex-shrink:0}
+.ss-header{display:flex;align-items:center;flex-wrap:wrap;padding:4px 8px;gap:4px 8px;background:linear-gradient(135deg,#1e2924,#0d1a14);border-bottom:2px solid var(--accent);flex-shrink:0}
+.ss-header-title{font-size:0.75rem;font-weight:bold;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ss-header-cost{font-size:0.75rem;color:var(--accent);font-weight:900;flex-shrink:0}
 .ss-header-cats{display:flex;gap:3px;font-size:0.55rem;flex-shrink:0}
 .ss-header-tactics{display:flex;gap:3px;font-size:0.5rem;flex-shrink:0}
 .ss-tac-badge{padding:1px 4px;border-radius:3px;font-weight:bold;white-space:nowrap;background:rgba(255,224,130,0.15);color:var(--gold);border:1px solid rgba(255,224,130,0.3)}
-.ss-close{background:none;border:none;color:#888;font-size:1.2rem;cursor:pointer;padding:2px 6px;flex-shrink:0}
+.ss-close{background:none;border:none;color:#888;font-size:1.2rem;cursor:pointer;padding:2px 6px;flex-shrink:0;margin-left:auto}
 .ss-body{flex:1;overflow:hidden;display:flex;flex-direction:column}
-.ss-table{display:grid;grid-template-columns:32px repeat(5,1fr);font-size:0.5rem;width:100%;line-height:1.2}
-.ss-label{background:#111;color:#666;padding:1px 2px;border-bottom:1px solid #1a1a1a;display:flex;align-items:center;justify-content:center;text-align:center;font-weight:bold;font-size:0.45rem;word-break:keep-all}
-.ss-cell{padding:1px 2px;border-bottom:1px solid #1a1a1a;border-left:1px solid #1a1a1a;color:#ccc;display:flex;align-items:center;overflow:hidden;word-break:break-all}
+.ss-table{display:grid;grid-template-columns:28px repeat(5,1fr);font-size:0.5rem;width:100%;line-height:1.3}
+.ss-label{background:#0d0d0d;color:#666;padding:2px 2px;border-bottom:1px solid #1a1a1a;display:flex;align-items:center;justify-content:center;text-align:center;font-weight:bold;font-size:0.45rem;word-break:keep-all}
+.ss-label.ss-section-start{border-top:2px solid #333}
+.ss-cell{padding:2px 3px;border-bottom:1px solid #1a1a1a;border-left:1px solid #1a1a1a;color:#ccc;display:flex;align-items:center;overflow:hidden;word-break:break-all}
+.ss-cell.ss-section-start{border-top:2px solid #333}
 .ss-cell-center{justify-content:center}
 .ss-cell-col{flex-direction:column;align-items:stretch}
 .ss-cell img.ss-card-img{width:100%;height:auto;border-radius:1px;display:block}
@@ -565,9 +569,9 @@ body.light .bm-toggle-btn.active{background:#d0e8dc;border-color:var(--accent);c
 .ss-cat-badge.senmetsu{background:#3a1a1a;color:#ff5252}
 .ss-cat-badge.seiatsu{background:#1a2a3a;color:#42a5f5}
 .ss-cat-badge.bouei{background:#1a3a1a;color:#66bb6a}
-.ss-stat-row{display:flex;justify-content:space-between;width:100%;font-variant-numeric:tabular-nums}
-.ss-stat-ms{color:#64b5f6;flex:1;text-align:right}
-.ss-stat-pl{color:#ef9a9a;flex:1;text-align:right}
+.ss-stat-row{display:flex;justify-content:space-between;width:100%;font-variant-numeric:tabular-nums;gap:2px}
+.ss-stat-ms{color:#90caf9;flex:1;text-align:right;font-size:0.45rem}
+.ss-stat-pl{color:#ef9a9a;flex:1;text-align:right;font-size:0.45rem}
 .ss-stat-total{color:#fff;font-weight:bold;flex:1;text-align:right}
 .ss-stat-total.buffed{color:#ffb74d}
 .ss-terrain{display:flex;gap:1px;flex-wrap:nowrap}
@@ -577,16 +581,16 @@ body.light .bm-toggle-btn.active{background:#d0e8dc;border-color:var(--accent);c
 .ss-terrain-badge.rank-B{color:#66bb6a;border-color:#2e7d32}
 .ss-terrain-badge.rank-C{color:#ffcc80;border-color:#e65100}
 .ss-terrain-badge.rank-D{color:#ff8a80;border-color:#5a2a2a}
-.ss-link{font-size:0.4rem;color:#aaa;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.ss-link-active{color:#68efbd}
-.ss-text{font-size:0.4rem;color:#bbb;line-height:1.2;overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.ss-link{font-size:0.4rem;color:#aaa;line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ss-link-active{color:#68efbd;font-weight:bold}
+.ss-text{font-size:0.4rem;color:#bbb;line-height:1.3;overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical}
 .ss-weapon-row{display:flex;gap:2px;font-size:0.4rem;white-space:nowrap;overflow:hidden}
 .ss-weapon-slot{color:#42a5f5;font-weight:bold;flex-shrink:0}
 .ss-weapon-slot.sub{color:#ffb74d}
 .ss-ms-name{color:#64b5f6;font-size:0.4rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;width:100%}
 .ss-pl-name{color:#ef9a9a;font-size:0.4rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;width:100%}
 body.light #ssOverlay{background:#f5f5f5}
-body.light .ss-header{border-color:#ccc}
+body.light .ss-header{background:linear-gradient(135deg,#e8f5e9,#c8e6c9);border-color:#4caf50}
 body.light .ss-header-title{color:#333}
 body.light .ss-label{background:#e8e8e8;color:#666;border-color:#ddd}
 body.light .ss-cell{border-color:#ddd;color:#333}
@@ -3146,11 +3150,7 @@ const UIRenderer = {
         tagsDiv.appendChild(tag);
       }
     }
-    el.appendChild(tagsDiv);
-
-    // Buff stat badges
-    let oldBuffs = el.querySelector('.ov-buff-tags');
-    if (oldBuffs) oldBuffs.remove();
+    // Buff stat badges — insert before number badge in tagsDiv
     if (Array.isArray(cardLinks) && cardLinks.length > 0) {
       const buffCounts = { '機': 0, '遠': 0, '近': 0, 'HP': 0 };
       for (const link of cardLinks) {
@@ -3172,9 +3172,10 @@ const UIRenderer = {
           b.textContent = count > 1 ? `${label}x${count}` : label;
           buffsDiv.appendChild(b);
         }
-        el.appendChild(buffsDiv);
+        tagsDiv.insertBefore(buffsDiv, numTag);
       }
     }
+    el.appendChild(tagsDiv);
   },
 
   _renderDetailForUnit(u) {
@@ -3323,36 +3324,31 @@ const UIRenderer = {
           `</div>` +
         `</div>`;
     });
-    // Footer: weapon + terrain
+    html += '</div>';
+    // Unit info strip (separate from stat grid)
     const w = weapon;
-    html += `<div class="sg-footer">`;
-    // Header row
-    html += `<div class="sg-ft-cell sg-ft-header">CAT</div>` +
-      `<div class="sg-ft-cell sg-ft-header">COST</div>` +
-      `<div class="sg-ft-cell sg-ft-header">MAIN</div>` +
-      `<div class="sg-ft-cell sg-ft-header">SUB</div>` +
-      `<div class="sg-ft-cell sg-ft-header">地上</div>` +
-      `<div class="sg-ft-cell sg-ft-header">宇宙</div>` +
-      `<div class="sg-ft-cell sg-ft-header">砂漠</div>` +
-      `<div class="sg-ft-cell sg-ft-header">水中</div>`;
-    // Value row
-    const catLabel = catClass || '-';
+    html += '<div class="sg-info-strip">';
+    // Cat + Cost
     const catCls = catClass === '殲滅' ? ' sg-ft-cat-s' : catClass === '制圧' ? ' sg-ft-cat-c' : catClass === '防衛' ? ' sg-ft-cat-b' : '';
-    html += `<div class="sg-ft-cell sg-ft-cat${catCls}">${catLabel}</div>`;
-    html += `<div class="sg-ft-cell sg-ft-cost">${totalCost || 0}</div>`;
+    html += `<span class="sg-info-item sg-ft-cat${catCls}">${catClass || '-'}</span>`;
+    html += `<span class="sg-info-item sg-ft-cost">${totalCost || 0}</span>`;
+    html += '<span class="sg-info-sep"></span>';
+    // Weapon
     const mainRange = w?.main?.range != null ? w.main.range : '-';
     const subRange = w?.sub?.range != null ? w.sub.range : '-';
-    html += `<div class="sg-ft-cell sg-ft-weapon" title="${w?.main ? escapeHtml(w.main.name + ' ' + (w.main.type||'')) : ''}">${w?.main ? mainRange : '-'}</div>`;
-    html += `<div class="sg-ft-cell sg-ft-weapon sub" title="${w?.sub ? escapeHtml(w.sub.name + ' ' + (w.sub.type||'')) : ''}">${w?.sub ? subRange : '-'}</div>`;
+    html += `<span class="sg-info-item sg-info-weapon" title="${w?.main ? escapeHtml(w.main.name + ' ' + (w.main.type||'')) : ''}"><span class="sg-info-wlabel">M</span>${w?.main ? mainRange : '-'}</span>`;
+    html += `<span class="sg-info-item sg-info-weapon sub" title="${w?.sub ? escapeHtml(w.sub.name + ' ' + (w.sub.type||'')) : ''}"><span class="sg-info-wlabel sub">S</span>${w?.sub ? subRange : '-'}</span>`;
+    html += '<span class="sg-info-sep"></span>';
+    // Terrain
     const terrainKeys = ['ground', 'space', 'desert', 'water'];
+    const terrainLabels = { ground: '地', space: '宇', desert: '砂', water: '水' };
     const activeTerrain = AppState.activeTerrain;
     terrainKeys.forEach(k => {
       const rank = tc?.[k] || '-';
       const cls = rank !== '-' ? ` rank-${rank}` : ' rank-none';
       const active = activeTerrain === k ? ' terrain-active' : '';
-      html += `<div class="sg-ft-cell sg-ft-terrain${cls}${active}">${rank}</div>`;
+      html += `<span class="sg-info-item sg-info-terrain${cls}${active}"><span class="sg-info-tlabel">${terrainLabels[k]}</span>${rank}</span>`;
     });
-    html += `</div>`;
     html += '</div>';
     return html;
   },
@@ -4527,74 +4523,52 @@ function openScreenshotMode() {
     html += cell(ssCardWrap(u.plNum, u.plIdx, u.plOcr, 'pl'), 'ss-cell-center');
   });
 
-  // MS/PLレベル + コスト + カテゴリ
-  html += label('コスト');
+  // コスト + カテゴリ + 武装 + 地形 (1段にまとめる)
+  html += label('INFO');
   units.forEach(u => {
-    const ms = u.msNum ? `MS:${u.msCost}` : '';
-    const pl = u.plNum ? `PL:${u.plCost}` : '';
-    const catBadge = u.cat ? ` <span class="ss-cat-badge ${catMap[u.cat] || ''}">${h(u.cat)}</span>` : '';
-    html += cell(`<span style="font-weight:bold">${u.msCost+u.plCost}</span> <span style="color:#888;font-size:0.4rem">${ms} ${pl}</span>${catBadge}`);
+    const catBadge = u.cat ? `<span class="ss-cat-badge ${catMap[u.cat] || ''}">${h(u.cat)}</span>` : '';
+    const cost = `<span style="font-weight:900;color:var(--gold)">${u.msCost+u.plCost}</span>`;
+    let weapon = '';
+    if (u.weapon?.main) weapon += `<span style="color:#42a5f5">M:${h(u.weapon.main.name||'')}${u.weapon.main.range ? ' '+u.weapon.main.range : ''}</span>`;
+    if (u.weapon?.sub) weapon += ` <span style="color:#ffb74d">S:${h(u.weapon.sub.name||'')}${u.weapon.sub.range ? ' '+u.weapon.sub.range : ''}</span>`;
+    let terrain = '';
+    if (u.tc) terrain = [{k:'ground',l:'地'},{k:'space',l:'宇'},{k:'desert',l:'砂'},{k:'water',l:'水'}]
+      .map(t => `<span class="ss-terrain-badge rank-${u.tc[t.k]||'-'}">${t.l}${u.tc[t.k]||'-'}</span>`).join('');
+    html += cell(`<div style="display:flex;flex-direction:column;gap:1px;width:100%">${catBadge} ${cost}<div style="font-size:0.35rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${weapon}</div><div class="ss-terrain">${terrain}</div></div>`, 'ss-cell-col');
   });
 
-  // ステータス4行
-  ['機動', '遠距', '近距', 'HP'].forEach((sl, i) => {
-    html += label(sl);
+  // ステータス4行 (色分けラベル)
+  const statColors = {mobility:'#42a5f5',ranged:'#ef5350',melee:'#ab47bc',hp:'#66bb6a'};
+  const statLabels = [{key:'mobility',l:'機'},{key:'ranged',l:'遠'},{key:'melee',l:'近'},{key:'hp',l:'HP'}];
+  statLabels.forEach((sl, i) => {
+    const cls = i === 0 ? ' ss-section-start' : '';
+    html += `<div class="ss-label${cls}" style="color:${statColors[sl.key]};font-weight:900">${sl.l}</div>`;
     units.forEach(u => {
       const s = u.stats[i];
-      if (!s || (!s.msVal && !s.plVal)) { html += cell(''); return; }
+      if (!s || (!s.msVal && !s.plVal)) { html += `<div class="ss-cell${cls}">-</div>`; return; }
       const buffed = (s.linkBuff > 0 || s.terrainBuff !== 0 || s.corrBuff > 0) ? ' buffed' : '';
-      html += cell(`<div class="ss-stat-row"><span class="ss-stat-ms">${s.msVal}</span><span class="ss-stat-pl">${s.plVal}</span><span class="ss-stat-total${buffed}">${s.total}</span></div>`);
+      html += `<div class="ss-cell${cls}"><div class="ss-stat-row"><span class="ss-stat-ms">${s.msVal}</span><span class="ss-stat-pl">${s.plVal}</span><span class="ss-stat-total${buffed}">${s.total}</span></div></div>`;
     });
   });
 
-  // 地形適性
-  html += label('地形');
+  // リンク (MS+PL統合)
+  html += `<div class="ss-label ss-section-start">Link</div>`;
   units.forEach(u => {
-    if (!u.tc) { html += cell(''); return; }
-    html += cell(`<div class="ss-terrain">${[{k:'ground',l:'地'},{k:'space',l:'宇'},{k:'desert',l:'砂'},{k:'water',l:'水'}]
-      .map(t => `<span class="ss-terrain-badge rank-${u.tc[t.k]||'-'}">${t.l}${u.tc[t.k]||'-'}</span>`).join('')}</div>`);
-  });
-
-  // 武装
-  html += label('武装');
-  units.forEach(u => {
-    if (!u.weapon || (!u.weapon.main && !u.weapon.sub)) { html += cell(''); return; }
-    let w = '';
-    if (u.weapon.main) w += `<div class="ss-weapon-row"><span class="ss-weapon-slot">M</span>${h(u.weapon.main.name||'')} ${u.weapon.main.range ? '射程'+u.weapon.main.range : ''}</div>`;
-    if (u.weapon.sub) w += `<div class="ss-weapon-row"><span class="ss-weapon-slot sub">S</span>${h(u.weapon.sub.name||'')} ${u.weapon.sub.range ? '射程'+u.weapon.sub.range : ''}</div>`;
-    html += cell(w, 'ss-cell-col');
-  });
-
-  // リンク(MS)
-  html += label('Link<br>MS');
-  units.forEach(u => {
-    if (u.msLinks.length === 0) { html += cell(''); return; }
-    html += cell(u.msLinks.map(l => {
+    const allLinks = [...u.msLinks, ...u.plLinks];
+    if (allLinks.length === 0) { html += `<div class="ss-cell ss-section-start">-</div>`; return; }
+    html += `<div class="ss-cell ss-cell-col ss-section-start">${allLinks.map(l => {
       const { required, category } = _parseLinkCondition(l.condition);
       const active = _countLinkInDeck(l.name, category) >= required ? ' ss-link-active' : '';
-      const eff = l.effect ? l.effect.replace(/[のをがはにへと]/g, '').substring(0, 12) : '';
-      return `<div class="ss-link${active}">${h(l.name)} ${required} ${eff}</div>`;
-    }).join(''), 'ss-cell-col');
-  });
-
-  // リンク(PL)
-  html += label('Link<br>PL');
-  units.forEach(u => {
-    if (u.plLinks.length === 0) { html += cell(''); return; }
-    html += cell(u.plLinks.map(l => {
-      const { required, category } = _parseLinkCondition(l.condition);
-      const active = _countLinkInDeck(l.name, category) >= required ? ' ss-link-active' : '';
-      const eff = l.effect ? l.effect.replace(/[のをがはにへと]/g, '').substring(0, 12) : '';
-      return `<div class="ss-link${active}">${h(l.name)} ${required} ${eff}</div>`;
-    }).join(''), 'ss-cell-col');
+      return `<div class="ss-link${active}">${h(l.name)} ${required}</div>`;
+    }).join('')}</div>`;
   });
 
   // MSアビリティ
-  html += label('MS<br>Abi');
+  html += `<div class="ss-label ss-section-start">MS<br>Abi</div>`;
   units.forEach(u => {
     const abilities = u.msAbility ? (Array.isArray(u.msAbility) ? u.msAbility : [u.msAbility]) : [];
-    if (abilities.length === 0) { html += cell(''); return; }
-    html += cell(abilities.map(a => {
+    if (abilities.length === 0) { html += `<div class="ss-cell ss-section-start">-</div>`; return; }
+    html += `<div class="ss-cell ss-cell-col ss-section-start">${abilities.map(a => {
       let s = `<div class="ss-text" style="font-weight:bold">${h(a.name||'')}</div>`;
       const tags = [];
       if (a.type || a.activation) tags.push(a.type || a.activation);
@@ -4604,16 +4578,26 @@ function openScreenshotMode() {
       if (tags.length) s += `<div class="ss-text" style="color:#888">${tags.map(t=>h(t)).join(' ')}</div>`;
       if (a.description) s += `<div class="ss-text" style="color:#aaa">${h(a.description)}</div>`;
       return s;
-    }).join('<hr style="border:0;border-top:1px solid #333;margin:1px 0">'), 'ss-cell-col');
+    }).join('<hr style="border:0;border-top:1px solid #333;margin:1px 0">')}</div>`;
   });
 
   // PLスキル
   html += label('PL<br>Skill');
   units.forEach(u => {
     if (!u.plSkill) { html += cell(''); return; }
-    let s = `<div class="ss-text" style="font-weight:bold">${h(u.plSkill.name||'')}</div>`;
+    let s = `<div class="ss-text" style="font-weight:bold">${h(u.plSkill.name||'')}`;
+    if (u.plSkill.has_sq_skill) s += ' <span style="color:#ff69b4;font-size:0.35rem">SQ</span>';
+    if (u.plSkill.is_eb_skill) s += ' <span style="color:#ff9800;font-size:0.35rem">EB</span>';
+    s += '</div>';
     if (u.plSkill.trigger) s += `<div class="ss-text" style="color:#888">${h(u.plSkill.trigger)}</div>`;
-    if (u.plSkill.description) s += `<div class="ss-text" style="color:#aaa">${h(u.plSkill.description)}</div>`;
+    const plDesc = u.plSkill.effect || u.plSkill.description || '';
+    if (plDesc) s += `<div class="ss-text" style="color:#aaa">${h(plDesc)}</div>`;
+    const sqd = u.plSkill.sq_skill_details;
+    if (sqd) {
+      if (sqd.effect) s += `<div class="ss-text" style="color:#ff8cc8">SQ: ${h(sqd.effect)}</div>`;
+      const rush = sqd.sq_rush_effect || sqd.squad_rush_effect;
+      if (rush) s += `<div class="ss-text" style="color:#ff69b4">RUSH: ${h(rush)}</div>`;
+    }
     html += cell(s, 'ss-cell-col');
   });
 
