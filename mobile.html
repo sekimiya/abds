@@ -479,20 +479,23 @@ body.light .bm-toggle-btn.active{background:#d0e8dc;border-color:var(--accent);c
 /* Stat bars */
 .stat-section{margin-bottom:8px}
 .stat-section-title{font-size:0.75rem;font-weight:bold;color:#666;margin-bottom:4px;border-bottom:1px solid #222;padding-bottom:2px}
-.stat-row{display:flex;align-items:center;gap:4px;margin-bottom:4px}
-.stat-label{color:#888;font-size:0.75rem;width:24px;text-align:right;flex-shrink:0}
-.stat-track{flex:1;height:16px;background:#222;border-radius:3px;overflow:hidden;position:relative;display:flex;max-width:40%}
+.stat-row{display:flex;align-items:center;gap:3px;margin-bottom:3px}
+.stat-label{color:#888;font-size:0.7rem;width:22px;text-align:right;flex-shrink:0}
+.stat-track{width:28%;height:14px;background:#222;border-radius:3px;overflow:hidden;position:relative;display:flex;flex-shrink:0}
 .stat-bar-base{height:100%;background:#2196f3;transition:width 0.3s}
 .stat-bar-buff{height:100%;background:#e91e63;transition:width 0.3s}
 .stat-bar-terrain-pos{height:100%;background:var(--accent);transition:width 0.3s}
 .stat-bar-terrain-neg{height:100%;transition:width 0.3s;background:repeating-linear-gradient(135deg,rgba(244,67,54,0.6),rgba(244,67,54,0.6) 2px,rgba(244,67,54,0.3) 2px,rgba(244,67,54,0.3) 4px)}
-.stat-nums{display:flex;align-items:center;flex-shrink:0;font-size:0.7rem;font-variant-numeric:tabular-nums;font-family:'Menlo','Consolas','Courier New',monospace;gap:2px;margin-left:auto}
-.stat-base{color:#90caf9;min-width:28px;text-align:right}
-.stat-corr{min-width:36px;text-align:right;color:#555}
+.stat-nums{display:flex;align-items:center;flex-shrink:0;font-size:0.65rem;font-variant-numeric:tabular-nums;font-family:'Menlo','Consolas','Courier New',monospace;gap:0;margin-left:auto}
+.stat-ms{color:#64b5f6;min-width:26px;text-align:right}
+.stat-pl{color:#ef9a9a;min-width:26px;text-align:right}
+.stat-base{color:#ccc;min-width:30px;text-align:right;font-weight:bold}
+.stat-sep{color:#555;width:8px;text-align:center}
+.stat-corr{min-width:28px;text-align:right;color:#444}
 .stat-corr.active{color:#ce93d8}
-.stat-arrow{color:#555;width:12px;text-align:center}
+.stat-arrow{color:#444;width:12px;text-align:center}
 .stat-arrow.active{color:#aaa}
-.stat-total{color:#fff;font-weight:bold;min-width:28px;text-align:right}
+.stat-total{color:#fff;font-weight:bold;min-width:30px;text-align:right}
 .stat-total.buffed{color:#ffb74d}
 
 /* Detail sections */
@@ -3170,7 +3173,6 @@ const UIRenderer = {
     const result = calcUnitStats(msOcr, plOcr, this._getTerrainMultiplier(msOcr));
     let html = '<div class="stat-section">';
     result.forEach(r => {
-      const totalPct = Math.min((r.total / 1000) * 100, 100);
       const basePct = Math.min((r.base / 1000) * 100, 100);
       const linkBuffPct = Math.min((r.linkBuff / 1000) * 100, 100 - basePct);
       let terrainBarHtml = '';
@@ -3185,7 +3187,9 @@ const UIRenderer = {
         `<span class="stat-label">${r.label}</span>` +
         `<div class="stat-track"><div class="stat-bar-base" style="width:${basePct}%"></div><div class="stat-bar-buff" style="width:${linkBuffPct}%"></div>${terrainBarHtml}</div>` +
         `<div class="stat-nums">` +
-          `<span class="stat-base">${r.base}</span>` +
+          `<span class="stat-ms">${r.msVal || '-'}</span>` +
+          `<span class="stat-pl">${r.plVal || '-'}</span>` +
+          `<span class="stat-base">${r.base || '-'}</span>` +
           `<span class="stat-corr${corrActive}">${corrText}</span>` +
           `<span class="stat-arrow${arrowActive}">&rarr;</span>` +
           `<span class="stat-total${totalClass}">${r.total}</span>` +
