@@ -1868,7 +1868,8 @@ function calcUnitStats(msOcr, plOcr, terrainMult) {
   const getStats = (ocr) => ({ mobility: si(ocr?.stats?.mobility), ranged: si(ocr?.stats?.ranged_attack), melee: si(ocr?.stats?.melee_attack), hp: si(ocr?.stats?.hp) });
   const ms = getStats(msOcr), pl = getStats(plOcr);
   const msBuffs = getLinkBuffs(msOcr), plBuffs = getLinkBuffs(plOcr);
-  const applyBuff = (val, sm, med) => Math.round(val * Math.pow(1.1, sm) * Math.pow(1.2, med));
+  // リンクアビリティ補正: 小アップ+10%, 中アップ+20%, 加算方式, 上限30%/ステータス
+  const applyBuff = (val, sm, med) => { const pct = Math.min(sm * 10 + med * 20, 30); return Math.round(val * (1 + pct / 100)); };
   const corrLv = ParamCorrections.getCorrectionLevel(msOcr, plOcr);
   const keys = ['mobility', 'ranged', 'melee', 'hp'];
   const labels = { mobility: '機', ranged: '遠', melee: '近', hp: 'HP' };
