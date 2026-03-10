@@ -1570,7 +1570,9 @@ body.light .ss-text{color:#555}
   <div style="border-top:1px solid #333;padding-top:8px">
     <button class="menu-btn" id="lightModeBtn" onclick="toggleLightMode();toggleMenu()" style="width:100%;margin-bottom:6px">☀ ライトモードに切替</button>
     <button class="menu-btn" onclick="clearDataCacheAndReload()" style="width:100%;color:#ff9800;border-color:#ff9800;margin-bottom:6px">データ更新</button>
+    <!-- パラメータ補正設定（暫定実装・バグ修正中のため一時非表示）
     <a href="./corrections.html" class="menu-btn" style="text-decoration:none;display:block;text-align:center;border-color:#ff9800;color:#ff9800;margin-bottom:6px" onclick="toggleMenu()">&#9881; パラメータ補正設定</a>
+    -->
     <a href="./index.html" class="menu-btn" style="text-decoration:none;display:block;text-align:center;border-color:#68efbd;color:#68efbd" onclick="localStorage.setItem('abds_viewMode','desktop');this.href='./index.html'+location.hash">デスクトップ版</a>
   </div>
 </div>
