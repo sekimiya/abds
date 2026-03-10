@@ -5473,7 +5473,8 @@ function calcUnitStats(msOcr, plOcr, terrainMult) {
   const msSeries = _getCardSeries(msOcr);
   const plSeries = _getCardSeries(plOcr);
   const seriesLv = ParamCorrections.work[msSeries] || 0;
-  const plLv = ParamCorrections.work[plSeries] || 0;
+  const plName = plOcr?.name || '';
+  const plLv = ParamCorrections.pl[plName] || 0;
   const keys = ['mobility', 'ranged', 'melee', 'hp'];
   const labels = { mobility: '機動', ranged: '遠距', melee: '近距', hp: 'HP' };
   return keys.map(s => {
