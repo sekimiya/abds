@@ -2757,6 +2757,7 @@ const DeckManager = {
           </div>
           <div style="display:flex;gap:0.3rem">
             <button class="header-btn" onclick="DeckManager._loadByName('${escapeJsForAttr(d.name)}')">適用</button>
+            <button class="header-btn" onclick="DeckManager._renameByName('${escapeJsForAttr(d.name)}')">名変</button>
             <button class="header-btn" style="color:#f44336;border-color:#f44336" onclick="DeckManager._deleteByName('${escapeJsForAttr(d.name)}')">削除</button>
           </div>
         </div>
@@ -2785,6 +2786,23 @@ const DeckManager = {
     this.showLoadModal();
     this.populateLoadSelect();
     Toast.show(`デッキ「${name}」を削除しました`, 'info');
+  },
+  _renameByName(oldName) {
+    const newName = prompt('新しいデッキ名を入力:', oldName);
+    if (!newName || !newName.trim() || newName.trim() === oldName) return;
+    const trimmed = newName.trim();
+    const decks = JSON.parse(localStorage.getItem('gab_decks') || '{}');
+    if (!decks[oldName]) return;
+    if (decks[trimmed]) { Toast.show(`「${trimmed}」は既に存在します`, 'error'); return; }
+    decks[trimmed] = { ...decks[oldName], name: trimmed };
+    delete decks[oldName];
+    localStorage.setItem('gab_decks', JSON.stringify(decks));
+    if (AppState._lastDeckName === oldName) {
+      AppState._lastDeckName = trimmed;
+    }
+    this.showLoadModal();
+    this.populateLoadSelect();
+    Toast.show(`「${oldName}」→「${trimmed}」にリネームしました`, 'success');
   },
 
   populateLoadSelect() {
