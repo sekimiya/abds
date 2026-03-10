@@ -1283,7 +1283,9 @@ select,input{font-family:inherit}
         <select id="deckLoadSelect" class="filter-select" style="flex:1;padding:0.4rem;font-size:0.85rem">
           <option value="">-- デッキを選択 --</option>
         </select>
-        <button class="header-btn primary" onclick="DeckManager.loadFromSelect()" style="white-space:nowrap">デッキを表示</button>
+        <button class="header-btn primary" onclick="DeckManager.loadFromSelect()" style="white-space:nowrap">適用</button>
+        <button class="header-btn" onclick="DeckManager.renameFromSelect()" style="white-space:nowrap">名変</button>
+        <button class="header-btn" onclick="DeckManager.deleteFromSelect()" style="white-space:nowrap;color:#f44336;border-color:#f44336">削除</button>
       </div>
       <div class="header-menu-row">
         <button class="header-btn" onclick="DeckManager.tweetDeck()" style="border-color:#1DA1F2;color:#1DA1F2;flex:1">Twitterに投稿</button>
@@ -2821,6 +2823,19 @@ const DeckManager = {
     if (!name) { Toast.show('デッキを選択してください', 'error'); return; }
     this._loadByName(name);
     closeHeaderMenu();
+  },
+  renameFromSelect() {
+    const sel = document.getElementById('deckLoadSelect');
+    const name = sel ? sel.value : '';
+    if (!name) { Toast.show('デッキを選択してください', 'error'); return; }
+    this._renameByName(name);
+  },
+  deleteFromSelect() {
+    const sel = document.getElementById('deckLoadSelect');
+    const name = sel ? sel.value : '';
+    if (!name) { Toast.show('デッキを選択してください', 'error'); return; }
+    if (!confirm(`デッキ「${name}」を削除しますか？`)) return;
+    this._deleteByName(name);
   },
 
   _getAnonName() {
