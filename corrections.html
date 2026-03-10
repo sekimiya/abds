@@ -134,8 +134,8 @@ body.light .list-container{border-color:#ddd;background:#fff}
 <!-- ===== WORK CORRECTION TAB ===== -->
 <div class="tab-content active" id="tab-work">
   <div class="info-banner">
-    作品ごとの補正レベル（0〜30）を設定します。<br>
-    該当作品のリンクアビリティを持つ全カードに適用されます。
+    作品ごとのレベル（0〜30）を設定します。<br>
+    MSとPLの両方に、作品別のLvボーナスが自動適用されます。
   </div>
   <div class="preset-row">
     <button class="preset-btn" onclick="resetAll('work')">全リセット</button>
@@ -192,19 +192,61 @@ const STORAGE_KEYS = {
   pl: 'abds_corrPl'
 };
 
-// Known anime/series work names (filtered from link abilities)
-const WORK_NAMES = [
-  '機動戦士ガンダム','機動戦士Zガンダム','機動戦士ガンダムZZ','逆襲のシャア','逆襲のシャア(SIDE-F)',
-  '閃光のハサウェイ','機動戦士ガンダムF91','機動戦士Vガンダム','クロスボーン・ガンダム',
-  'Gガンダム','ガンダムW','Endless Waltz','機動新世紀ガンダムX','∀ガンダム',
-  'ガンダムSEED','SEED DESTINY','SEED ASTRAY','SEED FREEDOM','ガンダム00',
-  'ガンダムAGE','ガンダムUC','機動戦士ガンダムNT','鉄血のオルフェンズ',
-  'ビルドファイターズ','ビルドダイバーズ','Re:RISE','ビルドメタバース','トライエイジ',
-  '水星の魔女','GQuuuuuuX','Gのレコンギスタ',
-  '第08MS小隊','ポケットの中の戦争','ガンダム0083','サンダーボルト',
-  'MS IGLOO','STARGAZER','THE BLUE DESTINY','ククルス・ドアンの島',
-  '機動戦士ガンダム外伝','U.C. ENGAGE','アクロス・ザ・スカイ',
+// 全作品一覧（SERIES_LV_TYPEの正規名に対応）+ MSボーナス型/PLボーナス型
+const WORK_LIST = [
+  {name:'機動戦士ガンダム',ms:'バランス型',pl:'バランス型'},
+  {name:'MSV',ms:'バランス型',pl:'HP型'},
+  {name:'MS IGLOO',ms:'HP型',pl:'遠距離型'},
+  {name:'第08MS小隊',ms:'HP型',pl:'バランス型'},
+  {name:'ポケットの中の戦争',ms:'近距離型',pl:'近距離型'},
+  {name:'ククルス・ドアンの島',ms:'近距離型',pl:'バランス型'},
+  {name:'THE BLUE DESTINY',ms:'近距離型',pl:'HP型'},
+  {name:'サンダーボルト',ms:'HP型',pl:'遠距離型'},
+  {name:'ミッシングリンク',ms:'HP型',pl:'近距離型'},
+  {name:'U.C. ENGAGE',ms:'バランス型',pl:'バランス型'},
+  {name:'ガンダム0083',ms:'バランス型',pl:'近距離型'},
+  {name:'Zガンダム',ms:'遠距離型',pl:'バランス型'},
+  {name:'ADVANCE OF Z',ms:'バランス型',pl:'バランス型'},
+  {name:'ガンダムZZ',ms:'HP型',pl:'バランス型'},
+  {name:'逆襲のシャア',ms:'遠距離型',pl:'バランス型'},
+  {name:'逆襲のシャア ベルチル',ms:'遠距離型',pl:'バランス型'},
+  {name:'GUNDAM SIDE-F',ms:'遠距離型',pl:'HP型'},
+  {name:'閃光のハサウェイ',ms:'遠距離型',pl:'近距離型'},
+  {name:'ガンダムUC',ms:'バランス型',pl:'遠距離型'},
+  {name:'ガンダムNT',ms:'バランス型',pl:'近距離型'},
+  {name:'アクロス・ザ・スカイ',ms:'遠距離型',pl:'バランス型'},
+  {name:'復讐のレクイエム',ms:'近距離型',pl:'バランス型'},
+  {name:'ガンダムF91',ms:'バランス型',pl:'近距離型'},
+  {name:'クロスボーン・ガンダム',ms:'HP型',pl:'HP型'},
+  {name:'Vガンダム',ms:'HP型',pl:'バランス型'},
+  {name:'Gガンダム',ms:'近距離型',pl:'HP型'},
+  {name:'ガンダムW',ms:'HP型',pl:'バランス型'},
+  {name:'Endless Waltz',ms:'バランス型',pl:'バランス型'},
+  {name:'ガンダムX',ms:'遠距離型',pl:'バランス型'},
+  {name:'∀ガンダム',ms:'HP型',pl:'近距離型'},
+  {name:'ガンダムSEED',ms:'遠距離型',pl:'バランス型'},
+  {name:'SEED DESTINY',ms:'遠距離型',pl:'HP型'},
+  {name:'SEED FREEDOM',ms:'バランス型',pl:'バランス型'},
+  {name:'STARGAZER',ms:'遠距離型',pl:'遠距離型'},
+  {name:'SEED ASTRAY',ms:'近距離型',pl:'バランス型'},
+  {name:'ガンダム00',ms:'バランス型',pl:'バランス型'},
+  {name:'ガンダムAGE',ms:'バランス型',pl:'バランス型'},
+  {name:'ビルドファイターズ',ms:'HP型',pl:'バランス型'},
+  {name:'ビルドファイターズトライ',ms:'HP型',pl:'バランス型'},
+  {name:'鉄血のオルフェンズ',ms:'近距離型',pl:'バランス型'},
+  {name:'ウルズハント',ms:'近距離型',pl:'HP型'},
+  {name:'ビルドダイバーズ',ms:'HP型',pl:'HP型'},
+  {name:'Re:RISE',ms:'HP型',pl:'遠距離型'},
+  {name:'水星の魔女',ms:'バランス型',pl:'遠距離型'},
+  {name:'GQuuuuuuX',ms:'バランス型',pl:'遠距離型'},
+  {name:'ビルドメタバース',ms:'バランス型',pl:'バランス型'},
+  {name:'エクバ2OB',ms:'近距離型',pl:'バランス型'},
+  {name:'Gのレコンギスタ',ms:'バランス型',pl:'バランス型'},
+  {name:'ジージェネ',ms:'バランス型',pl:'遠距離型'},
+  {name:'トライエイジ',ms:'バランス型',pl:'バランス型'},
+  {name:'MOMOIRO CLOVER Z',ms:'バランス型',pl:'HP型'},
 ];
+const WORK_NAMES = WORK_LIST.map(w => w.name);
 
 let state = { work: {}, ms: {}, pl: {} };   // { name: level(0-30) }
 let masterData = { ms: [], pl: [] };         // [{ name, count }]
@@ -300,12 +342,22 @@ function onSelect(sel) {
 // ================================================================
 function renderWorkList() {
   const container = document.getElementById('workList');
+  const typeLabel = (t) => {
+    if (t === 'バランス型') return '<span style="color:#aaa;font-size:0.65rem">バラ</span>';
+    if (t === '遠距離型') return '<span style="color:#4fc3f7;font-size:0.65rem">遠距</span>';
+    if (t === '近距離型') return '<span style="color:#ef5350;font-size:0.65rem">近距</span>';
+    if (t === 'HP型') return '<span style="color:#66bb6a;font-size:0.65rem">HP</span>';
+    return '';
+  };
   let html = '';
-  for (const name of WORK_NAMES) {
-    const val = state.work[name] || 0;
+  for (const w of WORK_LIST) {
+    const val = state.work[w.name] || 0;
     html += `<div class="corr-row">
-      <div class="corr-name">${escHtml(name)}</div>
-      ${makeSelect('work', name, val)}
+      <div class="corr-name">${escHtml(w.name)}</div>
+      <div style="font-size:0.6rem;min-width:60px;text-align:center;line-height:1.3">
+        MS:${typeLabel(w.ms)}<br>PL:${typeLabel(w.pl)}
+      </div>
+      ${makeSelect('work', w.name, val)}
     </div>`;
   }
   container.innerHTML = html;

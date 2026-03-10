@@ -1559,13 +1559,6 @@ body.light .ss-text{color:#555}
     <button class="terrain-sw" data-val="desert" onclick="setTerrainSwitch(this)">砂漠</button>
     <button class="terrain-sw" data-val="water" onclick="setTerrainSwitch(this)">水中</button>
   </div>
-  <div class="menu-label">レベル補正</div>
-  <div style="display:flex;gap:8px;align-items:center">
-    <label style="font-size:0.7rem;color:#aaa;white-space:nowrap">作品Lv</label>
-    <select id="seriesLvSelect" onchange="setSeriesLv(this.value)" style="flex:1;background:#1a1a1a;color:#e0e0e0;border:1px solid #444;border-radius:4px;padding:3px 4px;font-size:0.75rem"></select>
-    <label style="font-size:0.7rem;color:#aaa;white-space:nowrap">PLLv</label>
-    <select id="plLvSelect" onchange="setPlLv(this.value)" style="flex:1;background:#1a1a1a;color:#e0e0e0;border:1px solid #444;border-radius:4px;padding:3px 4px;font-size:0.75rem"></select>
-  </div>
   <div class="cache-menu-section">
     <div class="cache-menu-header">
       <span class="cache-menu-icon"></span>
@@ -1674,8 +1667,6 @@ const AppState = {
   tacticsSub: null,
   tacticsCards: { main: [], sub: [] },
   activeTerrain: null,
-  seriesLv: parseInt(localStorage.getItem('abds_seriesLv')) || 0,
-  plLv: parseInt(localStorage.getItem('abds_plLv')) || 0,
   imageSource: 'cache',
   _lastDeckName: '',
   selectedUnit: 0,
@@ -1947,7 +1938,13 @@ const SERIES_LV_TYPE = {
   '水星の魔女': {ms:'バランス型',pl:'遠距離型'},'GQuuuuuuX': {ms:'バランス型',pl:'遠距離型'},
   'ビルドメタバース': {ms:'バランス型',pl:'バランス型'},'トライエイジ': {ms:'バランス型',pl:'バランス型'},
   'ジージェネ': {ms:'バランス型',pl:'遠距離型'},'クロスボーン・ガンダム': {ms:'HP型',pl:'HP型'},
-  'Gのレコンギスタ': {ms:'バランス型',pl:'バランス型'}
+  'Gのレコンギスタ': {ms:'バランス型',pl:'バランス型'},
+  // SERIES_CANONICAL正規名用の追加エイリアス
+  'ミッシングリンク': {ms:'HP型',pl:'近距離型'},'Zガンダム': {ms:'遠距離型',pl:'バランス型'},
+  'ガンダムZZ': {ms:'HP型',pl:'バランス型'},'逆襲のシャア ベルチル': {ms:'遠距離型',pl:'バランス型'},
+  'ガンダムF91': {ms:'バランス型',pl:'近距離型'},'ガンダムX': {ms:'遠距離型',pl:'バランス型'},
+  'Vガンダム': {ms:'HP型',pl:'バランス型'},'ビルドファイターズトライ': {ms:'HP型',pl:'バランス型'},
+  'エクバ2OB': {ms:'近距離型',pl:'バランス型'}
 };
 // カード名→作品マッピング（リンクアビリティで作品特定できないカード用、90件）
 const CARD_NAME_SERIES = {
@@ -1998,22 +1995,74 @@ const CARD_NAME_SERIES = {
   '刹那・F・セイエイ＆沙慈・クロスロード':'機動戦士ガンダム00','張 五飛':'新機動戦記ガンダムW Endless Waltz',
   '昭弘・アルトランド':'機動戦士ガンダム 鉄血のオルフェンズ',
 };
+// SERIES_LV_TYPEの全キー → corrections.htmlで使う正規名へのマッピング
+const SERIES_CANONICAL = {
+  '機動戦士ガンダム':'機動戦士ガンダム','MSV':'MSV',
+  '機動戦士ガンダム MS IGLOO':'MS IGLOO','MS IGLOO':'MS IGLOO',
+  '機動戦士ガンダム 第08MS小隊':'第08MS小隊','第08MS小隊':'第08MS小隊',
+  '機動戦士ガンダム0080 ポケットの中の戦争':'ポケットの中の戦争','ポケットの中の戦争':'ポケットの中の戦争',
+  '機動戦士ガンダム ククルス・ドアンの島':'ククルス・ドアンの島','ククルス・ドアンの島':'ククルス・ドアンの島',
+  '機動戦士ガンダム外伝 THE BLUE DESTINY':'THE BLUE DESTINY','THE BLUE DESTINY':'THE BLUE DESTINY','機動戦士ガンダム外伝':'THE BLUE DESTINY',
+  '機動戦士ガンダム サンダーボルト':'サンダーボルト','サンダーボルト':'サンダーボルト',
+  '機動戦士ガンダム外伝 ミッシングリンク':'ミッシングリンク',
+  '機動戦士ガンダム U.C.ENGAGE':'U.C. ENGAGE','U.C. ENGAGE':'U.C. ENGAGE',
+  '機動戦士ガンダム0083 STARDUST MEMORY':'ガンダム0083','ガンダム0083':'ガンダム0083',
+  '機動戦士Zガンダム':'Zガンダム','機動戦士Zガンダム':'Zガンダム',
+  'ADVANCE OF Ζ':'ADVANCE OF Z','ADVANCE OF Z':'ADVANCE OF Z',
+  '機動戦士ガンダムΖΖ':'ガンダムZZ','機動戦士ガンダムZZ':'ガンダムZZ',
+  '機動戦士ガンダム 逆襲のシャア':'逆襲のシャア','逆襲のシャア':'逆襲のシャア',
+  '機動戦士ガンダム 逆襲のシャア ベルトーチカ・チルドレン':'逆襲のシャア ベルチル',
+  'GUNDAM SIDE-F':'GUNDAM SIDE-F','逆襲のシャア(SIDE-F)':'GUNDAM SIDE-F',
+  '機動戦士ガンダム 閃光のハサウェイ':'閃光のハサウェイ','閃光のハサウェイ':'閃光のハサウェイ',
+  '機動戦士ガンダムUC':'ガンダムUC','ガンダムUC':'ガンダムUC',
+  '機動戦士ガンダムNT':'ガンダムNT','ガンダムNT':'ガンダムNT',
+  '機動戦士ガンダム U.C.0094 アクロス・ザ・スカイ':'アクロス・ザ・スカイ','アクロス・ザ・スカイ':'アクロス・ザ・スカイ',
+  '機動戦士ガンダム 復讐のレクイエム':'復讐のレクイエム','復讐のレクイエム':'復讐のレクイエム',
+  '機動戦士ガンダムF91':'ガンダムF91',
+  '機動武闘伝Gガンダム':'Gガンダム','Gガンダム':'Gガンダム',
+  '新機動戦記ガンダムW':'ガンダムW','ガンダムW':'ガンダムW',
+  '新機動戦記ガンダムW Endless Waltz':'Endless Waltz','Endless Waltz':'Endless Waltz',
+  '機動新世紀ガンダムX':'ガンダムX','ガンダムX':'ガンダムX',
+  '機動戦士ガンダムSEED':'ガンダムSEED','ガンダムSEED':'ガンダムSEED',
+  '機動戦士ガンダムSEED DESTINY':'SEED DESTINY','SEED DESTINY':'SEED DESTINY',
+  '機動戦士ガンダムSEED FREEDOM':'SEED FREEDOM','SEED FREEDOM':'SEED FREEDOM',
+  '機動戦士ガンダムSEED C.E.73 STARGAZER':'STARGAZER','STARGAZER':'STARGAZER',
+  '機動戦士ガンダムSEED ASTRAY':'SEED ASTRAY','SEED ASTRAY':'SEED ASTRAY',
+  '機動戦士Vガンダム':'Vガンダム','Vガンダム':'Vガンダム',
+  '∀ガンダム':'∀ガンダム',
+  'Gのレコンギスタ':'Gのレコンギスタ',
+  '機動戦士クロスボーン・ガンダム':'クロスボーン・ガンダム','クロスボーン・ガンダム':'クロスボーン・ガンダム',
+  '機動戦士ガンダム00':'ガンダム00','ガンダム00':'ガンダム00',
+  '機動戦士ガンダムAGE':'ガンダムAGE','ガンダムAGE':'ガンダムAGE',
+  'ガンダムビルドファイターズ':'ビルドファイターズ','ビルドファイターズ':'ビルドファイターズ',
+  'ガンダムビルドファイターズトライ':'ビルドファイターズトライ','トライ':'ビルドファイターズトライ',
+  '機動戦士ガンダム 鉄血のオルフェンズ':'鉄血のオルフェンズ','鉄血のオルフェンズ':'鉄血のオルフェンズ',
+  '機動戦士ガンダム 鉄血のオルフェンズ ウルズハント':'ウルズハント','ウルズハント':'ウルズハント',
+  'ガンダムビルドダイバーズ':'ビルドダイバーズ','ビルドダイバーズ':'ビルドダイバーズ',
+  'ガンダムビルドダイバーズRe:RISE':'Re:RISE','Re:RISE':'Re:RISE',
+  '機動戦士ガンダム 水星の魔女':'水星の魔女','水星の魔女':'水星の魔女',
+  '機動戦士ガンダム エクストリームバーサス2 オーバーブースト':'エクバ2OB',
+  'ガンダムビルドメタバース':'ビルドメタバース','ビルドメタバース':'ビルドメタバース',
+  '機動戦士Gundam GQuuuuuuX':'GQuuuuuuX','GQuuuuuuX':'GQuuuuuuX',
+  'MOMOIRO CLOVER Z':'MOMOIRO CLOVER Z',
+  'GUNDAM GGENERATION':'ジージェネ','ジージェネ':'ジージェネ',
+  'ガンダムトライエイジ':'トライエイジ','トライエイジ':'トライエイジ',
+};
 function _getCardSeries(ocr) {
   const links = ocr?.link_abilities || ocr?.link_ability || [];
   if (!Array.isArray(links)) return '';
   for (const la of links) {
     const name = la?.name || '';
-    if (SERIES_LV_TYPE[name]) return name;
+    if (SERIES_LV_TYPE[name]) return SERIES_CANONICAL[name] || name;
   }
-  // フォールバック: カード名で作品を特定
   const cardName = ocr?.name || '';
   const seriesFromName = CARD_NAME_SERIES[cardName];
-  if (seriesFromName && SERIES_LV_TYPE[seriesFromName]) return seriesFromName;
+  if (seriesFromName && SERIES_LV_TYPE[seriesFromName]) return SERIES_CANONICAL[seriesFromName] || seriesFromName;
   return '';
 }
 function getLvBonus(series, msOrPl, stat, lv) {
   if (!lv || lv < 1) return 0;
-  const typeMap = SERIES_LV_TYPE[series];
+  const typeMap = SERIES_LV_TYPE[series] || SERIES_LV_TYPE[SERIES_CANONICAL[series]] || null;
   const typeName = typeMap ? typeMap[msOrPl] : 'バランス型';
   const table = LV_BONUS_TABLE[typeName];
   if (!table || !table[stat]) return 0;
@@ -2027,27 +2076,22 @@ function calcUnitStats(msOcr, plOcr, terrainMult) {
   const getStats = (ocr) => ({ mobility: si(ocr?.stats?.mobility), ranged: si(ocr?.stats?.ranged_attack), melee: si(ocr?.stats?.melee_attack), hp: si(ocr?.stats?.hp) });
   const ms = getStats(msOcr), pl = getStats(plOcr);
   const msBuffs = getLinkBuffs(msOcr), plBuffs = getLinkBuffs(plOcr);
-  const seriesLv = AppState.seriesLv || 0;
-  const plLv = AppState.plLv || 0;
   const msSeries = _getCardSeries(msOcr);
   const plSeries = _getCardSeries(plOcr);
+  const seriesLv = ParamCorrections.work[msSeries] || 0;
+  const plLv = ParamCorrections.work[plSeries] || 0;
   const keys = ['mobility', 'ranged', 'melee', 'hp'];
   const labels = { mobility: '機', ranged: '遠', melee: '近', hp: 'HP' };
   return keys.map(s => {
     const base = ms[s] + pl[s];
-    // 1) MS表記値 × 地形適正 (HPは地形補正なし)
     const msWithTerrain = (s !== 'hp') ? ms[s] * terrainMult : ms[s];
-    // 2) Lvボーナス (タイプ別固定値テーブル)
     const msLvBonus = getLvBonus(msSeries, 'ms', s, seriesLv);
     const plLvBonus = getLvBonus(plSeries, 'pl', s, plLv);
-    // 3) リンクバフ適用前の合計
     const preLink = msWithTerrain + msLvBonus + pl[s] + plLvBonus;
-    // 4) リンクアビリティ補正: 小アップ×1.1, 中アップ×1.2, MS+PL合算して乗算
     const sm = msBuffs[s].small + plBuffs[s].small;
     const med = msBuffs[s].medium + plBuffs[s].medium;
     const linkMult = Math.pow(1.1, sm) * Math.pow(1.2, med);
     const total = Math.floor(preLink * linkMult);
-    // 表示用の内訳
     const terrainBuff = (s !== 'hp') ? Math.round(ms[s] * (terrainMult - 1)) : 0;
     const corrBuff = msLvBonus + plLvBonus;
     const linkBuff = total - Math.floor(preLink);
@@ -4576,26 +4620,6 @@ function setActiveTerrain(terrain) {
 function setTerrainSwitch(btn) {
   setActiveTerrain(btn.dataset.val || null);
 }
-function setSeriesLv(v) {
-  AppState.seriesLv = parseInt(v) || 0;
-  localStorage.setItem('abds_seriesLv', AppState.seriesLv);
-  UIRenderer.renderAll();
-}
-function setPlLv(v) {
-  AppState.plLv = parseInt(v) || 0;
-  localStorage.setItem('abds_plLv', AppState.plLv);
-  UIRenderer.renderAll();
-}
-function initLvSelects() {
-  const sSel = document.getElementById('seriesLvSelect');
-  const pSel = document.getElementById('plLvSelect');
-  for (let i = 0; i <= 50; i++) {
-    sSel.appendChild(new Option(i === 0 ? 'なし' : String(i), i));
-    pSel.appendChild(new Option(i === 0 ? 'なし' : String(i), i));
-  }
-  sSel.value = AppState.seriesLv;
-  pSel.value = AppState.plLv;
-}
 function closeDeckLoadModal() { document.getElementById('deckLoadModal').classList.remove('open'); }
 function closeCardModal() { document.getElementById('cardDetailModal').classList.remove('open'); _cardModalCurrent = null; }
 
@@ -5016,7 +5040,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   SearchPanel.init();
   UndoManager.snapshot();
   _initBadges();
-  initLvSelects();
 
   // ImageCache.init() と CardService.fetchIndex() を並列実行
   let imageCacheInitDone = false;
