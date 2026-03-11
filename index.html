@@ -1901,11 +1901,9 @@ const AppState = {
 // ================================================================
 const ParamCorrections = {
   work: {},
-  ms: {},
   pl: {},
   load() {
     try { this.work = JSON.parse(localStorage.getItem('abds_corrWork') || '{}'); } catch(e) { this.work = {}; }
-    try { this.ms = JSON.parse(localStorage.getItem('abds_corrMs') || '{}'); } catch(e) { this.ms = {}; }
     try { this.pl = JSON.parse(localStorage.getItem('abds_corrPl') || '{}'); } catch(e) { this.pl = {}; }
   },
   getCorrectionLevel(msOcr, plOcr) {
@@ -1914,13 +1912,11 @@ const ParamCorrections = {
     for (const la of links) {
       if (la?.name && this.work[la.name]) { level += this.work[la.name]; break; }
     }
-    const msName = msOcr?.name;
-    if (msName && this.ms[msName]) level += this.ms[msName];
     const plName = plOcr?.name;
     if (plName && this.pl[plName]) level += this.pl[plName];
     return level;
   },
-  hasAny() { return Object.keys(this.work).length > 0 || Object.keys(this.ms).length > 0 || Object.keys(this.pl).length > 0; }
+  hasAny() { return Object.keys(this.work).length > 0 || Object.keys(this.pl).length > 0; }
 };
 ParamCorrections.load();
 

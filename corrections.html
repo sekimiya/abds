@@ -127,7 +127,6 @@ body.light .list-container{border-color:#ddd;background:#fff}
 
 <div class="tab-bar">
   <div class="tab-btn active" data-tab="work" onclick="switchTab(this)">作品補正</div>
-  <div class="tab-btn" data-tab="ms" onclick="switchTab(this)">機体Lv</div>
   <div class="tab-btn" data-tab="pl" onclick="switchTab(this)">PLレベル</div>
 </div>
 
@@ -142,22 +141,6 @@ body.light .list-container{border-color:#ddd;background:#fff}
   </div>
   <div class="corr-summary" id="workSummary">設定あり: 0作品</div>
   <div class="list-container" id="workList"></div>
-</div>
-
-<!-- ===== MS LEVEL TAB ===== -->
-<div class="tab-content" id="tab-ms">
-  <div class="info-banner">
-    機体名ごとのレベル（0〜30）を設定します。<br>
-    同名の全MSカードに適用されます。
-  </div>
-  <div class="search-bar">
-    <input class="search-input" id="msSearch" placeholder="機体名で検索..." oninput="filterList('ms')">
-  </div>
-  <div class="preset-row">
-    <button class="preset-btn" onclick="resetAll('ms')">全リセット</button>
-  </div>
-  <div class="corr-summary" id="msSummary">設定あり: 0機体</div>
-  <div class="list-container" id="msList"></div>
 </div>
 
 <!-- ===== PL LEVEL TAB ===== -->
@@ -188,7 +171,6 @@ body.light .list-container{border-color:#ddd;background:#fff}
 // ================================================================
 const STORAGE_KEYS = {
   work: 'abds_corrWork',
-  ms: 'abds_corrMs',
   pl: 'abds_corrPl'
 };
 
@@ -248,10 +230,10 @@ const WORK_LIST = [
 ];
 const WORK_NAMES = WORK_LIST.map(w => w.name);
 
-let state = { work: {}, ms: {}, pl: {} };   // { name: level(0-30) }
-let masterData = { ms: [], pl: [] };         // [{ name, count }]
-let filterText = { ms: '', pl: '' };
-let pages = { ms: 0, pl: 0 };
+let state = { work: {}, pl: {} };   // { name: level(0-30) }
+let masterData = { pl: [] };         // [{ name, count }]
+let filterText = { pl: '' };
+let pages = { pl: 0 };
 const PAGE_SIZE = 50;
 
 // ================================================================
@@ -261,7 +243,7 @@ async function init() {
   if (localStorage.getItem('abds_lightMode') === '1') document.body.classList.add('light');
 
   // Load saved state
-  for (const key of ['work', 'ms', 'pl']) {
+  for (const key of ['work', 'pl']) {
     try { state[key] = JSON.parse(localStorage.getItem(STORAGE_KEYS[key]) || '{}'); } catch(e) { state[key] = {}; }
   }
 
@@ -273,7 +255,7 @@ async function init() {
     const cardIndex = await indexRes.json();
     const cardDetails = await detailsRes.json();
 
-    const msMap = {}, plMap = {};
+    const plMap = {};
     for (const c of cardIndex) {
       if (!c.has_ocr) continue;
       const d = cardDetails[c.number];
@@ -281,22 +263,17 @@ async function init() {
       if (!ocr) continue;
       const name = ocr.name || c.name;
       if (!name) continue;
-      if (c.type === 'MS') {
-        if (!msMap[name]) msMap[name] = 0;
-        msMap[name]++;
-      } else if (c.type === 'PL') {
+      if (c.type === 'PL') {
         if (!plMap[name]) plMap[name] = 0;
         plMap[name]++;
       }
     }
-    masterData.ms = Object.entries(msMap).map(([name, count]) => ({ name, count })).sort((a,b) => b.count - a.count);
     masterData.pl = Object.entries(plMap).map(([name, count]) => ({ name, count })).sort((a,b) => b.count - a.count);
   } catch(e) {
     console.error('Failed to load card data:', e);
   }
 
   renderWorkList();
-  renderList('ms');
   renderList('pl');
 }
 
@@ -403,7 +380,7 @@ function filterList(key) {
 // ================================================================
 function updateSummary(key) {
   const count = Object.keys(state[key]).length;
-  const labels = { work: '作品', ms: '機体', pl: 'パイロット' };
+  const labels = { work: '作品', pl: 'パイロット' };
   document.getElementById(key + 'Summary').textContent = `設定あり: ${count}${labels[key]}`;
 }
 
@@ -417,7 +394,7 @@ function resetAll(key) {
 // Save & Nav
 // ================================================================
 function save() {
-  for (const key of ['work', 'ms', 'pl']) {
+  for (const key of ['work', 'pl']) {
     localStorage.setItem(STORAGE_KEYS[key], JSON.stringify(state[key]));
   }
 }

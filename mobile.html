@@ -1672,34 +1672,26 @@ const AppState = {
 };
 
 // ================================================================
-// Parameter Corrections (作品補正 / 機体Lv / PLレベル)
+// Parameter Corrections (作品補正 / PLレベル)
 // ================================================================
 const ParamCorrections = {
   work: {},  // { workName: level(0-30) }
-  ms: {},    // { msName: level(0-30) }
   pl: {},    // { plName: level(0-30) }
   load() {
     try { this.work = JSON.parse(localStorage.getItem('abds_corrWork') || '{}'); } catch(e) { this.work = {}; }
-    try { this.ms = JSON.parse(localStorage.getItem('abds_corrMs') || '{}'); } catch(e) { this.ms = {}; }
     try { this.pl = JSON.parse(localStorage.getItem('abds_corrPl') || '{}'); } catch(e) { this.pl = {}; }
   },
-  // Get total correction level for a unit (work + ms + pl)
   getCorrectionLevel(msOcr, plOcr) {
     let level = 0;
-    // Work correction: check link abilities for matching work names
     const links = msOcr?.link_abilities || msOcr?.link_ability || [];
     for (const la of links) {
       if (la?.name && this.work[la.name]) { level += this.work[la.name]; break; }
     }
-    // MS name level
-    const msName = msOcr?.name;
-    if (msName && this.ms[msName]) level += this.ms[msName];
-    // PL name level
     const plName = plOcr?.name;
     if (plName && this.pl[plName]) level += this.pl[plName];
     return level;
   },
-  hasAny() { return Object.keys(this.work).length > 0 || Object.keys(this.ms).length > 0 || Object.keys(this.pl).length > 0; }
+  hasAny() { return Object.keys(this.work).length > 0 || Object.keys(this.pl).length > 0; }
 };
 ParamCorrections.load();
 
