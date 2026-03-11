@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>ABD Simulator - 使い方ガイド</title>
+<link rel="manifest" href="./manifest.json">
+<meta name="theme-color" content="#0f0f0f">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:14px;-webkit-text-size-adjust:100%}
+body{background:#0f0f0f;color:#e0e0e0;font-family:'Segoe UI','Hiragino Sans',sans-serif;min-height:100vh;
+  padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}
+body.light{background:#f5f5f5;color:#1a1a1a}
+body.light .page-header{background:linear-gradient(135deg,#d0e8dc,#d0e8dc)}
+body.light .section-card{background:#fff;border-color:#ddd}
+body.light .back-btn{color:#333;border-color:#aaa}
+body.light .section-title{color:#2e7d32}
+body.light .sub-title{color:#388e3c}
+body.light .step-num{background:#e8f5e9;color:#2e7d32;border-color:#c8e6c9}
+body.light .tip-box{background:#e8f5e9;border-color:#c8e6c9;color:#2e7d32}
+body.light .warn-box{background:#fff8e1;border-color:#ffe082;color:#f57f17}
+body.light .key{background:#e0e0e0;border-color:#bbb;color:#333}
+body.light .toc-link{color:#2e7d32}
+body.light .toc-box{background:#fff;border-color:#ddd}
+body.light .divider{border-color:#ddd}
+a{color:#68efbd;text-decoration:none}
+button{cursor:pointer;font-family:inherit;-webkit-tap-highlight-color:transparent}
+
+.page-header{
+  background:linear-gradient(135deg,#1a2a20,#0f1f18);
+  padding:12px 16px;display:flex;align-items:center;gap:12px;
+  border-bottom:1px solid #333;position:sticky;top:0;z-index:10;
+}
+.back-btn{
+  background:none;border:1px solid #555;color:#e0e0e0;border-radius:6px;
+  padding:6px 12px;font-size:0.9rem;white-space:nowrap;
+}
+.page-title{font-size:1.1rem;font-weight:700;color:#68efbd;flex:1}
+
+.guide-body{padding:12px 16px 40px;max-width:720px;margin:0 auto}
+
+.toc-box{
+  margin:0 0 20px;padding:14px 16px;border-radius:8px;
+  background:#1a1a1a;border:1px solid #333;
+}
+.toc-title{font-size:0.9rem;font-weight:700;color:#68efbd;margin-bottom:8px}
+.toc-list{list-style:none;padding:0}
+.toc-list li{padding:4px 0}
+.toc-link{color:#68efbd;font-size:0.85rem}
+.toc-link:hover{text-decoration:underline}
+
+.section-card{
+  margin:0 0 16px;padding:14px 16px;border-radius:8px;
+  background:#1a1a1a;border:1px solid #333;
+}
+.section-title{
+  font-size:1rem;font-weight:700;color:#68efbd;
+  margin:0 0 10px;padding-bottom:6px;border-bottom:1px solid #333;
+}
+.sub-title{font-size:0.9rem;font-weight:600;color:#4caf50;margin:12px 0 6px}
+.desc{font-size:0.85rem;line-height:1.7;margin:4px 0 8px}
+
+.step-row{display:flex;gap:10px;align-items:flex-start;margin:8px 0}
+.step-num{
+  flex-shrink:0;width:24px;height:24px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:0.75rem;font-weight:700;
+  background:#1e3a28;color:#68efbd;border:1px solid #2a5a3a;
+}
+.step-text{font-size:0.85rem;line-height:1.6;flex:1}
+
+.tip-box{
+  margin:8px 0;padding:10px 12px;border-radius:6px;
+  background:#1a2a20;border:1px solid #2a4a35;font-size:0.8rem;line-height:1.5;color:#a5d6a7;
+}
+.tip-box::before{content:'TIP: ';font-weight:700}
+
+.warn-box{
+  margin:8px 0;padding:10px 12px;border-radius:6px;
+  background:#2a2210;border:1px solid #4a3a15;font-size:0.8rem;line-height:1.5;color:#ffe082;
+}
+.warn-box::before{content:'NOTE: ';font-weight:700}
+
+.key{
+  display:inline-block;padding:1px 6px;border-radius:3px;
+  background:#2a2a2a;border:1px solid #444;color:#e0e0e0;
+  font-size:0.75rem;font-family:monospace;
+}
+
+.feature-grid{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0}
+.feature-tag{
+  padding:3px 8px;border-radius:4px;font-size:0.75rem;
+  background:#222;border:1px solid #444;color:#ccc;
+}
+
+.divider{border:none;border-top:1px solid #333;margin:20px 0}
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <button class="back-btn" onclick="goBack()">戻る</button>
+  <div class="page-title">使い方ガイド</div>
+</div>
+
+<div class="guide-body">
+
+<!-- TOC -->
+<div class="toc-box">
+  <div class="toc-title">目次</div>
+  <ul class="toc-list">
+    <li><a class="toc-link" href="#about">ABD Simulator とは</a></li>
+    <li><a class="toc-link" href="#deck">デッキを組む</a></li>
+    <li><a class="toc-link" href="#card-picker">カードを探す</a></li>
+    <li><a class="toc-link" href="#status">ステータスの見方</a></li>
+    <li><a class="toc-link" href="#link">リンクアビリティ</a></li>
+    <li><a class="toc-link" href="#terrain">地形適性</a></li>
+    <li><a class="toc-link" href="#corrections">作品Lv / PLレベル設定</a></li>
+    <li><a class="toc-link" href="#save-share">デッキの保存と共有</a></li>
+    <li><a class="toc-link" href="#cache">画像キャッシュ</a></li>
+    <li><a class="toc-link" href="#other">その他の機能</a></li>
+  </ul>
+</div>
+
+<!-- About -->
+<div class="section-card" id="about">
+  <div class="section-title">ABD Simulator とは</div>
+  <p class="desc">
+    「ARSENAL BASE deckbuilding simulator」は、アーケードカードゲーム
+    <strong>ガンダムアーセナルベース</strong>のデッキ構築シミュレーターです。<br>
+    MS（モビルスーツ）5枚 + PL（パイロット）5枚 + 作戦カード（メイン/サブ）でデッキを組み、
+    ステータスやリンクアビリティの発動状況をリアルタイムで確認できます。
+  </p>
+  <div class="tip-box">モバイル/デスクトップ両対応。PWAとしてホーム画面に追加すればアプリのように使えます。</div>
+</div>
+
+<!-- Deck Building -->
+<div class="section-card" id="deck">
+  <div class="section-title">デッキを組む</div>
+  <p class="desc">画面のカード枠をタップして、カードを配置していきます。</p>
+
+  <div class="sub-title">基本の流れ</div>
+  <div class="step-row">
+    <div class="step-num">1</div>
+    <div class="step-text">画面上部のMS枠またはPL枠をタップしてスロットを選択</div>
+  </div>
+  <div class="step-row">
+    <div class="step-num">2</div>
+    <div class="step-text">下部のカードピッカーから配置したいカードをタップ</div>
+  </div>
+  <div class="step-row">
+    <div class="step-num">3</div>
+    <div class="step-text">ステータスとリンクが自動計算されます</div>
+  </div>
+
+  <div class="sub-title">作戦カード</div>
+  <p class="desc">
+    画面上部の <span class="key">M</span>（メイン）/ <span class="key">S</span>（サブ）枠をタップすると作戦カードを選択できます。
+  </p>
+
+  <div class="sub-title">カードの入れ替え・削除</div>
+  <p class="desc">
+    配置済みのスロットをタップして別のカードを選べば入れ替え。
+    スロットを長押しすると削除できます。
+  </p>
+
+  <div class="sub-title">並び順を整理</div>
+  <p class="desc">
+    メニュー内の「並び順を整理」をタップすると、MSカードがカテゴリ順（殲滅 → 制圧 → 防衛）に自動整列されます。
+  </p>
+</div>
+
+<!-- Card Picker -->
+<div class="section-card" id="card-picker">
+  <div class="section-title">カードを探す</div>
+  <p class="desc">カードピッカーでは複数の条件を組み合わせてカードを絞り込めます。</p>
+
+  <div class="sub-title">検索・フィルター</div>
+  <div class="feature-grid">
+    <span class="feature-tag">カード番号</span>
+    <span class="feature-tag">カード名</span>
+    <span class="feature-tag">レアリティ</span>
+    <span class="feature-tag">作品シリーズ</span>
+    <span class="feature-tag">リンクアビリティ</span>
+    <span class="feature-tag">コスト範囲</span>
+    <span class="feature-tag">ステータス範囲</span>
+    <span class="feature-tag">地形適性</span>
+    <span class="feature-tag">カテゴリ</span>
+  </div>
+
+  <div class="sub-title">カード検索（メニュー内）</div>
+  <p class="desc">
+    メニューの「カード検索」を使うと、デッキ編集とは独立してカードを閲覧できます。
+    カード情報の確認やブックマーク登録に便利です。
+  </p>
+
+  <div class="sub-title">ブックマーク</div>
+  <p class="desc">
+    カードを長押しするとブックマークに登録できます。
+    メニューの「ブックマークカード」から一覧表示が可能です。
+  </p>
+</div>
+
+<!-- Status -->
+<div class="section-card" id="status">
+  <div class="section-title">ステータスの見方</div>
+  <p class="desc">各ユニット（MS + PL）のステータスは以下の計算で求められます。</p>
+
+  <div class="sub-title">計算式</div>
+  <p class="desc" style="font-family:monospace;font-size:0.8rem;line-height:2">
+    MS値 x 地形補正<br>
+    + MS Lvボーナス（作品Lv設定に基づく）<br>
+    + PL値<br>
+    + PL Lvボーナス（PLレベル設定に基づく）<br>
+    x リンクバフ倍率<br>
+    = 最終値（端数切り捨て）
+  </p>
+
+  <div class="sub-title">表示ステータス</div>
+  <div class="feature-grid">
+    <span class="feature-tag">機動力</span>
+    <span class="feature-tag">遠距離攻撃</span>
+    <span class="feature-tag">近距離攻撃</span>
+    <span class="feature-tag">HP</span>
+  </div>
+
+  <div class="tip-box">カード枠の下にユニットごとの合計ステータスが表示されます。タップで詳細を確認できます。</div>
+</div>
+
+<!-- Link -->
+<div class="section-card" id="link">
+  <div class="section-title">リンクアビリティ</div>
+  <p class="desc">
+    デッキ内のカード構成が条件を満たすと、リンクアビリティが発動しステータスにバフがかかります。
+  </p>
+
+  <div class="sub-title">バフ倍率</div>
+  <p class="desc">
+    <span class="key">小アップ</span> +10%&emsp;
+    <span class="key">中アップ</span> +20%
+  </p>
+  <p class="desc">
+    複数のリンクが発動した場合、倍率は乗算で適用されます。
+  </p>
+
+  <div class="sub-title">条件の確認</div>
+  <p class="desc">
+    画面上部のリンクバッジで発動状況を確認できます。
+    条件を満たしたリンクは緑、未達成はグレーで表示されます。
+    全リンク達成時は「FULL LINK」バッジが表示されます。
+  </p>
+</div>
+
+<!-- Terrain -->
+<div class="section-card" id="terrain">
+  <div class="section-title">地形適性</div>
+  <p class="desc">メニュー内の「地形適性」で地形を選択すると、MSの地形ランクに応じた補正がステータスに反映されます。</p>
+
+  <div class="sub-title">地形の種類</div>
+  <div class="feature-grid">
+    <span class="feature-tag">なし（補正なし）</span>
+    <span class="feature-tag">地上</span>
+    <span class="feature-tag">宇宙</span>
+    <span class="feature-tag">砂漠</span>
+    <span class="feature-tag">水中</span>
+  </div>
+
+  <div class="sub-title">適性ランクと補正</div>
+  <p class="desc">
+    MSカードの各地形に対する適性ランク（S/A/B/C/D）に応じて、ステータスに倍率補正がかかります。
+    ランクが高いほど有利な補正になります。
+  </p>
+</div>
+
+<!-- Corrections -->
+<div class="section-card" id="corrections">
+  <div class="section-title">作品Lv / PLレベル設定</div>
+  <p class="desc">
+    メニューの「作品Lv設定」から、作品ごと・パイロットごとのレベルを設定できます。
+    設定したレベルに応じてLvボーナスがステータスに加算されます。
+  </p>
+
+  <div class="sub-title">作品補正</div>
+  <p class="desc">
+    作品（シリーズ）単位で Lv 0〜30 を設定します。
+    作品ごとにMS側・PL側それぞれのボーナス型（バランス型/遠距離型/近距離型/HP型）が決まっており、
+    型に応じたステータスにボーナスが加算されます。
+  </p>
+
+  <div class="sub-title">PLレベル</div>
+  <p class="desc">
+    パイロット名単位で Lv 0〜30 を設定します。
+    同名の全PLカードに適用されます。
+  </p>
+
+  <div class="tip-box">ゲーム内のレベルに合わせて設定すると、より正確なステータスをシミュレーションできます。</div>
+</div>
+
+<!-- Save & Share -->
+<div class="section-card" id="save-share">
+  <div class="section-title">デッキの保存と共有</div>
+
+  <div class="sub-title">デッキ保存</div>
+  <p class="desc">
+    メニューを開き、デッキ名を入力して「保存」をタップ。
+    保存したデッキはセレクトボックスからいつでも呼び出せます。
+  </p>
+
+  <div class="sub-title">デッキ共有</div>
+  <p class="desc">
+    「共有」ボタンでデッキコードを含むURLがクリップボードにコピーされます。
+    受け取った側はURLを開くだけでデッキが復元されます。
+  </p>
+
+  <div class="sub-title">Twitter投稿</div>
+  <p class="desc">
+    メニューの「Twitter投稿」で、デッキURLと一緒にツイートを作成できます。
+  </p>
+
+  <div class="sub-title">デッキ管理</div>
+  <div class="feature-grid">
+    <span class="feature-tag">適用（ロード）</span>
+    <span class="feature-tag">名変（リネーム）</span>
+    <span class="feature-tag">削除</span>
+    <span class="feature-tag">クリア（全リセット）</span>
+  </div>
+</div>
+
+<!-- Cache -->
+<div class="section-card" id="cache">
+  <div class="section-title">画像キャッシュ</div>
+  <p class="desc">
+    カード画像をキャッシュすることで、オフラインでもカード画像を表示できます。
+  </p>
+
+  <div class="sub-title">キャッシュの作成</div>
+  <div class="step-row">
+    <div class="step-num">1</div>
+    <div class="step-text">メニューの「キャッシュ管理」をタップ</div>
+  </div>
+  <div class="step-row">
+    <div class="step-num">2</div>
+    <div class="step-text">「すべてダウンロード」でカード画像を一括キャッシュ</div>
+  </div>
+  <div class="step-row">
+    <div class="step-num">3</div>
+    <div class="step-text">完了後はオフラインでも画像が表示されます</div>
+  </div>
+
+  <div class="warn-box">キャッシュにはストレージ容量を使用します。不要になったら「キャッシュをクリア」で解放できます。</div>
+</div>
+
+<!-- Other -->
+<div class="section-card" id="other">
+  <div class="section-title">その他の機能</div>
+
+  <div class="sub-title">スクリーンショット</div>
+  <p class="desc">
+    メニューの「REC」またはスクショモードで、デッキのスクリーンショットを撮影できます。
+    スクショモードでは見やすい専用レイアウトに切り替わります。
+  </p>
+
+  <div class="sub-title">バッジ表示設定</div>
+  <p class="desc">メニューから各種バッジ（SP効果、EB、SQ、AB、レアリティ）の表示/非表示を切り替えられます。</p>
+
+  <div class="sub-title">ライトモード</div>
+  <p class="desc">メニューの切替ボタンで、ダークモードとライトモードを切り替えられます。</p>
+
+  <div class="sub-title">データ更新</div>
+  <p class="desc">メニューの「データ更新」で、カードデータを最新版に更新できます。新弾追加時などに使用してください。</p>
+
+  <div class="sub-title">デスクトップ版 / モバイル版 切替</div>
+  <p class="desc">メニューからもう一方のビューに切り替えられます。</p>
+</div>
+
+</div><!-- .guide-body -->
+
+<script>
+if (localStorage.getItem('abds_lightMode') === '1') document.body.classList.add('light');
+
+function goBack() {
+  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) ||
+                   localStorage.getItem('abds_viewMode') === 'mobile';
+  window.location.href = isMobile ? './mobile.html' : './index.html';
+}
+</script>
+</body>
+</html>
