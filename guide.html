@@ -451,16 +451,25 @@ button{cursor:pointer;font-family:inherit;-webkit-tap-highlight-color:transparen
   </p>
 </div>
 
+<!-- App Link -->
+<div class="section-card" style="text-align:center;padding:20px 16px">
+  <p class="desc" style="margin-bottom:14px">以上の内容に同意いただける場合のみ、下記からアプリをご利用ください。</p>
+  <a href="./mobile.html" id="appLink" style="display:inline-block;padding:12px 32px;background:#68efbd;color:#000;font-weight:700;font-size:1rem;border-radius:8px;text-decoration:none">アプリを開く</a>
+</div>
+
 </div><!-- .guide-body -->
 
 <script>
 if (localStorage.getItem('abds_lightMode') === '1') document.body.classList.add('light');
 
-function goBack() {
-  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) ||
+const _isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) ||
                    localStorage.getItem('abds_viewMode') === 'mobile';
-  window.location.href = isMobile ? './mobile.html' : './index.html';
-}
+const _appUrl = _isMobile ? './mobile.html' : './index.html';
+
+function goBack() { window.location.href = _appUrl; }
+
+const appLink = document.getElementById('appLink');
+if (appLink) appLink.href = _appUrl;
 </script>
 </body>
 </html>
