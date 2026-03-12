@@ -3837,14 +3837,15 @@ const UIRenderer = {
     const se = document.getElementById('badgeSenmetsu'); if (se) se.textContent = `殲${classCounts['殲滅']}`;
     const sa = document.getElementById('badgeSeiatsu'); if (sa) sa.textContent = `制${classCounts['制圧']}`;
     const bo = document.getElementById('badgeBouei'); if (bo) bo.textContent = `防${classCounts['防衛']}`;
-    // カード重複チェック
+    // カード重複チェック（パラレル・柄違いは同一カードとみなす）
     const seen = new Set();
     let hasDupe = false;
     for (let i = 0; i < 10; i++) {
       const cn = AppState.deck[i];
       if (!cn) continue;
-      if (seen.has(cn)) { hasDupe = true; break; }
-      seen.add(cn);
+      const base = cn.split('_')[0];
+      if (seen.has(base)) { hasDupe = true; break; }
+      seen.add(base);
     }
     const dupeEl = document.getElementById('dupeBadge');
     if (dupeEl) dupeEl.classList.toggle('active', hasDupe);

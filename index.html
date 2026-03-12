@@ -4023,14 +4023,15 @@ const UIRenderer = {
     document.getElementById('badgeSenmetsu').textContent = `殲滅 ${classCounts['殲滅']}`;
     document.getElementById('badgeSeiatsu').textContent = `制圧 ${classCounts['制圧']}`;
     document.getElementById('badgeBouei').textContent = `防衛 ${classCounts['防衛']}`;
-    // カード重複チェック
+    // カード重複チェック（パラレル・柄違いは同一カードとみなす）
     const seen = new Set();
     let hasDupe = false;
     for (let i = 0; i < 10; i++) {
       const cn = AppState.deck[i];
       if (!cn) continue;
-      if (seen.has(cn)) { hasDupe = true; break; }
-      seen.add(cn);
+      const base = cn.split('_')[0];
+      if (seen.has(base)) { hasDupe = true; break; }
+      seen.add(base);
     }
     const dupeEl = document.getElementById('dupeBadge');
     if (dupeEl) dupeEl.classList.toggle('active', hasDupe);
