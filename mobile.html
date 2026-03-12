@@ -22,6 +22,7 @@
 })();
 </script>
 <script>(function(){var v=localStorage.getItem('abds_viewMode');if(v==='mobile')return;if(v==='desktop'){location.replace('./index.html'+location.hash);return;}if(!/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)&&!location.search.includes('force')){location.replace('./index.html'+location.hash);}})();</script>
+<script>(function(){if(!localStorage.getItem('abds_guideAccepted')){location.replace('./guide.html'+(location.hash?'?deck='+encodeURIComponent(location.hash):''));}})();</script>
 <title>ABD Simulator - Mobile Portrait</title>
 <link rel="manifest" href="./manifest.json">
 <meta name="theme-color" content="#0f0f0f">

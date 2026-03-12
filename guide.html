@@ -539,7 +539,7 @@ button{cursor:pointer;font-family:inherit;-webkit-tap-highlight-color:transparen
 <!-- App Link -->
 <div class="section-card" style="text-align:center;padding:20px 16px">
   <p class="desc" style="margin-bottom:14px">以上の内容に同意いただける場合のみ、下記からアプリをご利用ください。</p>
-  <a href="./mobile.html" id="appLink" style="display:inline-block;padding:12px 32px;background:#68efbd;color:#000;font-weight:700;font-size:1rem;border-radius:8px;text-decoration:none">アプリを開く</a>
+  <a href="./mobile.html" id="appLink" onclick="localStorage.setItem('abds_guideAccepted','1')" style="display:inline-block;padding:12px 32px;background:#68efbd;color:#000;font-weight:700;font-size:1rem;border-radius:8px;text-decoration:none">アプリを開く</a>
 </div>
 
 </div><!-- .guide-body -->
@@ -551,10 +551,13 @@ const _isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) ||
                    localStorage.getItem('abds_viewMode') === 'mobile';
 const _appUrl = _isMobile ? './mobile.html' : './index.html';
 
-function goBack() { window.location.href = _appUrl; }
+// Restore deck hash from redirect query parameter
+const _params = new URLSearchParams(location.search);
+const _deckHash = _params.get('deck') || '';
+const _appHref = _appUrl + (_deckHash ? _deckHash : '');
 
 const appLink = document.getElementById('appLink');
-if (appLink) appLink.href = _appUrl;
+if (appLink) appLink.href = _appHref;
 </script>
 </body>
 </html>
