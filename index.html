@@ -3480,10 +3480,9 @@ const UIRenderer = {
     });
     // Debug: show detected series and applied levels
     const dbg = result[0]?._debug;
-    if (dbg && (dbg.msLv > 0 || dbg.plLv > 0)) {
+    if (dbg && dbg.msLv > 0) {
       html += `<div style="font-size:0.65rem;color:#ff9800;padding:1px 4px;line-height:1.3">`;
-      if (dbg.msLv > 0) html += `MS:${dbg.msSeries || '?'} Lv${dbg.msLv} `;
-      if (dbg.plLv > 0) html += `PL:${dbg.plSeries || '?'} Lv${dbg.plLv}`;
+      html += `MS:${dbg.msSeries || '?'} Lv${dbg.msLv}`;
       html += `</div>`;
     }
     container.innerHTML = html;
