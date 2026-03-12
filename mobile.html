@@ -191,6 +191,11 @@ body.light .bm-toggle-btn.active{background:#d0e8dc;border-color:var(--accent);c
   animation:fl-glow 1.5s ease-in-out infinite alternate;
 }
 .fl-badge-h.active{display:inline-block}
+.dupe-badge-h{
+  display:none;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:bold;white-space:nowrap;
+  background:#ef5350;color:#fff;letter-spacing:0.5px;
+}
+.dupe-badge-h.active{display:inline-block}
 @keyframes fl-glow{from{box-shadow:0 0 4px rgba(104,239,189,0.4)}to{box-shadow:0 0 12px rgba(104,239,189,0.8)}}
 .hdr-active-links{
   display:flex;align-items:center;gap:3px;overflow:hidden;flex-shrink:1;min-width:0;
@@ -1090,6 +1095,7 @@ body.light .ss-text{color:#555}
   <span class="hdr-active-links" id="hdrEbLinks"></span>
   <span class="ab-badge-h" id="abStatus" style="margin-left:-2px;display:none">AB</span>
   <span class="hdr-active-links" id="hdrAbLinks"></span>
+  <span class="dupe-badge-h" id="dupeBadge">カード重複</span>
   <span class="fl-badge-h" id="fullLinkBadge">FULL LINK</span>
   <span class="hdr-spacer"></span>
   <button class="hamburger-btn" id="hamburgerBtn" onclick="toggleMenu()">&#9776;</button>
@@ -3831,6 +3837,17 @@ const UIRenderer = {
     const se = document.getElementById('badgeSenmetsu'); if (se) se.textContent = `殲${classCounts['殲滅']}`;
     const sa = document.getElementById('badgeSeiatsu'); if (sa) sa.textContent = `制${classCounts['制圧']}`;
     const bo = document.getElementById('badgeBouei'); if (bo) bo.textContent = `防${classCounts['防衛']}`;
+    // カード重複チェック
+    const seen = new Set();
+    let hasDupe = false;
+    for (let i = 0; i < 10; i++) {
+      const cn = AppState.deck[i];
+      if (!cn) continue;
+      if (seen.has(cn)) { hasDupe = true; break; }
+      seen.add(cn);
+    }
+    const dupeEl = document.getElementById('dupeBadge');
+    if (dupeEl) dupeEl.classList.toggle('active', hasDupe);
 
     // SQ判定
     let sqActive = false;

@@ -74,6 +74,11 @@ select,input{font-family:inherit}
   animation:fl-glow 1.5s ease-in-out infinite alternate;
 }
 .full-link-badge.active{display:inline-block}
+.dupe-badge{
+  display:none;padding:0.15rem 0.5rem;border-radius:4px;font-size:0.8rem;font-weight:bold;white-space:nowrap;
+  background:#ef5350;color:#fff;letter-spacing:0.5px;
+}
+.dupe-badge.active{display:inline-block}
 @keyframes fl-glow{from{box-shadow:0 0 4px rgba(104,239,189,0.4)}to{box-shadow:0 0 12px rgba(104,239,189,0.8)}}
 .logo{
   color:#68efbd;font-weight:bold;font-size:1.5rem;white-space:nowrap;
@@ -1266,6 +1271,7 @@ select,input{font-family:inherit}
   <div class="header-group">
     <span class="sq-status" id="sqStatus">SQ発動承認</span>
     <span class="eb-status" id="ebStatus">EB発動</span>
+    <span class="dupe-badge" id="dupeBadge">カード重複</span>
     <span class="full-link-badge" id="fullLinkBadge">FULL LINK</span>
   </div>
   <div class="header-sep"></div>
@@ -4017,6 +4023,17 @@ const UIRenderer = {
     document.getElementById('badgeSenmetsu').textContent = `殲滅 ${classCounts['殲滅']}`;
     document.getElementById('badgeSeiatsu').textContent = `制圧 ${classCounts['制圧']}`;
     document.getElementById('badgeBouei').textContent = `防衛 ${classCounts['防衛']}`;
+    // カード重複チェック
+    const seen = new Set();
+    let hasDupe = false;
+    for (let i = 0; i < 10; i++) {
+      const cn = AppState.deck[i];
+      if (!cn) continue;
+      if (seen.has(cn)) { hasDupe = true; break; }
+      seen.add(cn);
+    }
+    const dupeEl = document.getElementById('dupeBadge');
+    if (dupeEl) dupeEl.classList.toggle('active', hasDupe);
 
     // SQ発動判定: いずれかのユニットでMSがSQSP持ち かつ PLがSQスキル持ち
     let sqActive = false;
