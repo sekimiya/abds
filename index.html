@@ -1684,6 +1684,20 @@ select,input{font-family:inherit}
             <button class="tbtn" data-key="HP条件" onclick="SearchPanel.toggle('skEff',this)">HP条件</button>
             <button class="tbtn" data-key="弱体無効" onclick="SearchPanel.toggle('skEff',this)">弱体無効</button>
           </div>
+          <div class="toggle-filter" id="skillTimingBtns">
+            <span class="toggle-filter-label">発動タイミング</span>
+            <button class="tbtn" data-key="出撃時" onclick="SearchPanel.toggle('skTim',this)">出撃時</button>
+            <button class="tbtn" data-key="ロックオン時" onclick="SearchPanel.toggle('skTim',this)">ロックオン</button>
+            <button class="tbtn" data-key="MSアビリティ" onclick="SearchPanel.toggle('skTim',this)">MSアビリティ</button>
+            <button class="tbtn" data-key="HP条件時" onclick="SearchPanel.toggle('skTim',this)">HP条件</button>
+            <button class="tbtn" data-key="撃破時" onclick="SearchPanel.toggle('skTim',this)">撃破時</button>
+            <button class="tbtn" data-key="一定時間経過毎" onclick="SearchPanel.toggle('skTim',this)">一定時間毎</button>
+            <button class="tbtn" data-key="撤退時" onclick="SearchPanel.toggle('skTim',this)">撤退時</button>
+            <button class="tbtn" data-key="EBLv" onclick="SearchPanel.toggle('skTim',this)">EB上昇</button>
+            <button class="tbtn" data-key="戦術技発動時" onclick="SearchPanel.toggle('skTim',this)">戦術技</button>
+            <button class="tbtn" data-key="防衛拠点変更" onclick="SearchPanel.toggle('skTim',this)">防衛拠点</button>
+            <button class="tbtn" data-key="SQゲージ" onclick="SearchPanel.toggle('skTim',this)">SQゲージ</button>
+          </div>
         </div>
       </div>
 
@@ -4434,8 +4448,8 @@ const SearchPanel = {
   _page: 0,
   _perPage: 60,
   // Toggle filter Sets
-  _t: { ebCat:new Set(), ebLv:new Set(), ebCond:new Set(), ebspEff:new Set(), sqCat:new Set(), sqGauge:new Set(), sqTrig:new Set(), sqEff:new Set(), sqspEff:new Set(), abCat:new Set(), spEff:new Set(), skEff:new Set() },
-  _tStyle: { ebCat:'eb', ebLv:'eb', ebCond:'eb', ebspEff:'eb', sqCat:'sq', sqGauge:'sq', sqTrig:'sq', sqEff:'sq', sqspEff:'sq', abCat:'ab', spEff:'sp', skEff:'pl' },
+  _t: { ebCat:new Set(), ebLv:new Set(), ebCond:new Set(), ebspEff:new Set(), sqCat:new Set(), sqGauge:new Set(), sqTrig:new Set(), sqEff:new Set(), sqspEff:new Set(), abCat:new Set(), spEff:new Set(), skEff:new Set(), skTim:new Set() },
+  _tStyle: { ebCat:'eb', ebLv:'eb', ebCond:'eb', ebspEff:'eb', sqCat:'sq', sqGauge:'sq', sqTrig:'sq', sqEff:'sq', sqspEff:'sq', abCat:'ab', spEff:'sp', skEff:'pl', skTim:'pl' },
 
   init() {
     this._updateCategoryButtons();
@@ -4474,8 +4488,9 @@ const SearchPanel = {
       const label = document.getElementById(stat.toLowerCase() + 'Value');
       slider.addEventListener('input', () => { label.textContent = slider.value; this.applyFilters(); });
     });
-    // PLスキル名プルダウンを初期化
+    // PLスキル名・イラストレータープルダウンを初期化
     this._populateSkillNames();
+    this._populateIllustrators();
     // localStorageから検索条件を復元
     this._restoreFilters();
   },
@@ -4571,7 +4586,7 @@ const SearchPanel = {
             'ebCategoryBtns':'ebCat','ebLevelBtns':'ebLv','ebCondBtns':'ebCond','ebspEffectBtns':'ebspEff',
             'sqCategoryBtns':'sqCat','sqGaugeBtns':'sqGauge','sqTriggerBtns':'sqTrig',
             'sqEffectBtns':'sqEff','sqspEffectBtns':'sqspEff','abCategoryBtns':'abCat',
-            'spEffectBtns':'spEff','skillEffectBtns':'skEff'
+            'spEffectBtns':'spEff','skillEffectBtns':'skEff','skillTimingBtns':'skTim'
           };
           const group = groupMap[groupId];
           if (group && this._t[group].has(btn.dataset.key)) {
@@ -4591,7 +4606,7 @@ const SearchPanel = {
       'ebCategoryBtns': 'ebCat', 'ebLevelBtns': 'ebLv', 'ebCondBtns': 'ebCond', 'ebspEffectBtns': 'ebspEff',
       'sqCategoryBtns': 'sqCat', 'sqGaugeBtns': 'sqGauge', 'sqTriggerBtns': 'sqTrig',
       'sqEffectBtns': 'sqEff', 'sqspEffectBtns': 'sqspEff', 'abCategoryBtns': 'abCat',
-      'spEffectBtns': 'spEff', 'skillEffectBtns': 'skEff'
+      'spEffectBtns': 'spEff', 'skillEffectBtns': 'skEff', 'skillTimingBtns': 'skTim'
     };
     // data-for 属性を持つ全要素の表示制御
     document.querySelectorAll('#sidebar [data-for]').forEach(el => {
@@ -4723,6 +4738,13 @@ const SearchPanel = {
     )].sort();
     sel.innerHTML = '<option value="">PLスキル名</option>' +
       names.map(n => `<option value="${n}"${n === current ? ' selected' : ''}>${n}</option>`).join('');
+  },
+  _populateIllustrators() {
+    const sel = document.getElementById('filterIllustrator');
+    if (!sel) return;
+    const current = sel.value;
+    const names = [...new Set(AppState.cardIndex.filter(c => c.illustrator && c.illustrator !== '不明').map(c => c.illustrator))].sort();
+    sel.innerHTML = '<option value="">イラストレーターを選択</option>' + names.map(n => `<option value="${n}"${n === current ? ' selected' : ''}>${escapeHtml(n)}</option>`).join('');
   },
 
   _hasActiveFilter() {
@@ -4891,6 +4913,10 @@ const SearchPanel = {
     if (skEff.size > 0) {
       cards = cards.filter(c => _noDetail(c) || (c.skill_effect_tags && c.skill_effect_tags.some(t => skEff.has(t))));
     }
+    // PLスキル発動タイミング
+    if (this._t.skTim.size > 0) {
+      cards = cards.filter(c => { const tr = c.skill_trigger || ''; return [...this._t.skTim].some(k => tr.includes(k)); });
+    }
     // Name/number search (fuzzy: numerals, separators normalized)
     const qRaw = document.getElementById('searchInput').value.trim();
     if (qRaw) {
@@ -4914,6 +4940,9 @@ const SearchPanel = {
     if (linkCards) {
       cards = cards.filter(c => linkCards.has(c.number));
     }
+    // イラストレーターフィルタ
+    const illustrator = document.getElementById('filterIllustrator').value;
+    if (illustrator) cards = cards.filter(c => c.illustrator === illustrator);
     // イラスト違いフィルタ
     if (this._altArt) {
       cards = cards.filter(c => c.number.includes('_'));
@@ -4946,7 +4975,7 @@ const SearchPanel = {
       filterGroupSqPl: this._t.sqCat.has('sq_skill') || this._t.sqGauge.size > 0 || this._t.sqTrig.size > 0 || this._t.sqEff.size > 0,
       filterGroupAb: this._t.abCat.size > 0,
       filterGroupSp: this._t.spEff.size > 0,
-      filterGroupPlSkill: !!document.getElementById('filterSkillName').value || this._t.skEff.size > 0,
+      filterGroupPlSkill: !!document.getElementById('filterSkillName').value || this._t.skEff.size > 0 || this._t.skTim.size > 0,
       filterGroupMisc: !!document.getElementById('filterIllustrator').value,
     };
     Object.entries(active).forEach(([id, on]) => {
