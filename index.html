@@ -162,6 +162,31 @@ select,input{font-family:inherit}
   from{box-shadow:0 0 6px rgba(255,152,0,0.4)}
   to{box-shadow:0 0 14px rgba(255,152,0,0.8)}
 }
+.ab-status{
+  display:none;padding:0.2rem 0.6rem;border-radius:4px;
+  font-size:1.1rem;font-weight:bold;white-space:nowrap;
+  background:linear-gradient(135deg,#b388ff,#7c4dff);color:#fff;
+  box-shadow:0 0 8px rgba(179,136,255,0.5);
+  animation:ab-glow 1.5s ease-in-out infinite alternate;
+}
+.ab-status.active{display:inline-block}
+@keyframes ab-glow{
+  from{box-shadow:0 0 6px rgba(179,136,255,0.4)}
+  to{box-shadow:0 0 14px rgba(179,136,255,0.8)}
+}
+.hdr-active-links{
+  display:inline-flex;align-items:center;gap:4px;overflow:hidden;flex-shrink:1;min-width:0;
+}
+.hdr-link-name{
+  font-size:0.8rem;font-weight:bold;white-space:nowrap;padding:2px 6px;border-radius:4px;
+  overflow:hidden;text-overflow:ellipsis;max-width:140px;
+}
+.hdr-link-name.sq{color:#ff8cc8;background:rgba(255,105,180,0.15);border:1px solid rgba(255,105,180,0.3)}
+.hdr-link-name.sq.inactive{color:#664455;background:rgba(255,105,180,0.05);border:1px solid rgba(255,105,180,0.1);font-weight:normal}
+.hdr-link-name.eb{color:#ffb74d;background:rgba(255,152,0,0.15);border:1px solid rgba(255,152,0,0.3)}
+.hdr-link-name.eb.inactive{color:#665530;background:rgba(255,152,0,0.05);border:1px solid rgba(255,152,0,0.1);font-weight:normal}
+.hdr-link-name.ab{color:#b388ff;background:rgba(179,136,255,0.15);border:1px solid rgba(179,136,255,0.3)}
+.hdr-link-name.ab.inactive{color:#5a4580;background:rgba(179,136,255,0.05);border:1px solid rgba(179,136,255,0.1);font-weight:normal}
 /* Link Ability Bar + Tactics Row */
 .link-tactics-row{
   display:flex;align-items:center;gap:8px;
@@ -1269,8 +1294,12 @@ select,input{font-family:inherit}
   <div class="header-sep"></div>
 
   <div class="header-group">
-    <span class="sq-status" id="sqStatus">SQ発動承認</span>
-    <span class="eb-status" id="ebStatus">EB発動</span>
+    <span class="sq-status" id="sqStatus">SQ</span>
+    <span class="hdr-active-links" id="hdrSqLinks"></span>
+    <span class="eb-status" id="ebStatus">EB</span>
+    <span class="hdr-active-links" id="hdrEbLinks"></span>
+    <span class="ab-status" id="abStatus">AB</span>
+    <span class="hdr-active-links" id="hdrAbLinks"></span>
     <span class="dupe-badge" id="dupeBadge">カード重複</span>
     <span class="full-link-badge" id="fullLinkBadge">FULL LINK</span>
   </div>
@@ -4067,9 +4096,13 @@ const UIRenderer = {
     }
     const sqEl = document.getElementById('sqStatus');
     sqEl.classList.toggle('active', sqActive);
-    sqEl.textContent = sqActive && sqNames.length
-      ? `SQ発動承認：${sqNames.join('、')}`
-      : 'SQ発動承認';
+    sqEl.textContent = 'SQ';
+    const hdrSqEl = document.getElementById('hdrSqLinks');
+    if (hdrSqEl) {
+      hdrSqEl.innerHTML = sqActive && sqNames.length
+        ? sqNames.map(n => `<span class="hdr-link-name sq">${escapeHtml(n)}</span>`).join('')
+        : '';
+    }
 
     // EB発動判定: EBリンクの枚数条件を満たし、かつMSがEB持ちのユニットが存在する
     // まずデッキ全体のEBリンク枚数をカウント
@@ -4112,9 +4145,13 @@ const UIRenderer = {
     }
     const ebEl = document.getElementById('ebStatus');
     ebEl.classList.toggle('active', ebActive);
-    ebEl.textContent = ebActive && ebLinkNames.length
-      ? `EB発動：${ebLinkNames.join('、')}`
-      : 'EB発動';
+    ebEl.textContent = 'EB';
+    const hdrEbEl = document.getElementById('hdrEbLinks');
+    if (hdrEbEl) {
+      hdrEbEl.innerHTML = ebActive && ebLinkNames.length
+        ? ebLinkNames.map(n => `<span class="hdr-link-name eb">${escapeHtml(n)}</span>`).join('')
+        : '';
+    }
 
     // ヘッダーテーマ更新
     const header = document.querySelector('.app-header');
@@ -4170,13 +4207,24 @@ const UIRenderer = {
     if (entries.length === 0) {
       bar.innerHTML = '';
       document.getElementById('fullLinkBadge').classList.remove('active');
+      const abS = document.getElementById('abStatus'); if (abS) { abS.classList.remove('active'); abS.style.display = 'none'; }
+      const hdrAb = document.getElementById('hdrAbLinks'); if (hdrAb) hdrAb.innerHTML = '';
       this._applyLinkHighlights({}, {}, linkMap);
       return;
     }
 
     // AB発動判定
-    const abActive = entries.some(([, info]) => info.is_ab_link && info.count >= info.required);
+    const activeAbLinks = entries.filter(([, info]) => info.is_ab_link && info.count >= info.required);
+    const abActive = activeAbLinks.length > 0;
     document.querySelector('.app-header').classList.toggle('theme-ab', abActive);
+    const abStatusEl = document.getElementById('abStatus');
+    if (abStatusEl) { abStatusEl.classList.toggle('active', abActive); abStatusEl.style.display = abActive ? '' : 'none'; }
+    const hdrAbEl = document.getElementById('hdrAbLinks');
+    if (hdrAbEl) {
+      hdrAbEl.innerHTML = abActive
+        ? activeAbLinks.map(([name]) => `<span class="hdr-link-name ab">${escapeHtml(name)}</span>`).join('')
+        : '';
+    }
 
     // 発動中は全表示、未発動はcount少ない順に省略
     const active = entries.filter(([,i]) => i.count >= i.required);
