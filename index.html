@@ -34,7 +34,7 @@
 <style>
 /* ===== RESET & BASE ===== */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{font-size:14px;height:100%}
+html{font-size:calc(14px * var(--font-scale, 1));height:100%}
 body{background:#0f0f0f;color:#e0e0e0;font-family:'Segoe UI','Hiragino Sans',sans-serif;height:100%;overflow:hidden;display:flex;flex-direction:column}
 a{color:#68efbd;text-decoration:none}
 button{cursor:pointer;font-family:inherit}
@@ -1393,6 +1393,14 @@ select,input{font-family:inherit}
       </div>
       <div class="header-menu-row">
         <a href="./guide.html" class="header-btn" style="flex:1;text-align:center;text-decoration:none;border-color:#888;color:#ccc">&#9776; 使い方ガイド</a>
+      </div>
+      <div class="header-menu-divider"></div>
+      <div class="header-menu-label">フォントサイズ</div>
+      <div style="display:flex;align-items:center;gap:8px;padding:0.3rem 0">
+        <button class="header-btn" style="width:32px;padding:0.2rem 0;font-size:0.9rem" onclick="adjustFontScale(-0.05)">A-</button>
+        <span id="fontScaleLabel" style="color:#ffe082;font-size:0.8rem;min-width:40px;text-align:center">100%</span>
+        <button class="header-btn" style="width:32px;padding:0.2rem 0;font-size:0.9rem" onclick="adjustFontScale(0.05)">A+</button>
+        <button class="header-btn" style="padding:0.2rem 0.4rem;font-size:0.7rem;color:#888;border-color:#555" onclick="resetFontScale()">Reset</button>
       </div>
       <div class="header-menu-row" style="border-top:1px solid #333;padding-top:0.5rem">
         <a href="./mobile.html" class="header-btn" style="flex:1;text-align:center;text-decoration:none;border-color:#68efbd;color:#68efbd" onclick="localStorage.setItem('abds_viewMode','mobile');this.href='./mobile.html'+location.hash">モバイル版</a>
@@ -5761,6 +5769,27 @@ function closeHeaderMenu() {
   document.getElementById('headerMenuOverlay').classList.remove('open');
 }
 
+// ===== フォントサイズ調整 =====
+function applyFontScale(scale) {
+  document.documentElement.style.setProperty('--font-scale', scale);
+  const label = document.getElementById('fontScaleLabel');
+  if (label) label.textContent = Math.round(scale * 100) + '%';
+}
+function adjustFontScale(delta) {
+  const cur = parseFloat(localStorage.getItem('abds_fontScale') || '1');
+  const next = Math.max(0.5, Math.min(1.5, Math.round((cur + delta) * 100) / 100));
+  localStorage.setItem('abds_fontScale', next);
+  applyFontScale(next);
+}
+function resetFontScale() {
+  localStorage.removeItem('abds_fontScale');
+  applyFontScale(1);
+}
+(function() {
+  const s = parseFloat(localStorage.getItem('abds_fontScale') || '1');
+  if (s !== 1) applyFontScale(s);
+})();
+
 async function clearDataCacheAndReload() {
   if (!confirm('アプリロジックを更新します。画像キャッシュには影響はありません。')) return;
   try {
@@ -5983,6 +6012,11 @@ function closeDeckLoadModal() {
 // INIT
 // ================================================================
 document.addEventListener('DOMContentLoaded', async () => {
+  // フォントスケールのラベル初期化
+  const _fs = parseFloat(localStorage.getItem('abds_fontScale') || '1');
+  const _fsl = document.getElementById('fontScaleLabel');
+  if (_fsl) _fsl.textContent = Math.round(_fs * 100) + '%';
+
   UIRenderer.init();
   SearchPanel.init();
   Shortcuts.init();

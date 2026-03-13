@@ -33,7 +33,7 @@
 <style>
 /* ===== RESET & BASE ===== */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{font-size:14px;height:100%;-webkit-text-size-adjust:100%;touch-action:manipulation}
+html{font-size:calc(14px * var(--font-scale, 1));height:100%;-webkit-text-size-adjust:100%;touch-action:manipulation}
 body{background:var(--bg);color:#e0e0e0;font-family:'Segoe UI','Hiragino Sans',sans-serif;height:100%;overflow:hidden;display:flex;flex-direction:column;
   padding-top:env(safe-area-inset-top);padding-bottom:env(safe-area-inset-bottom);
   padding-left:env(safe-area-inset-left);padding-right:env(safe-area-inset-right)}
@@ -1584,6 +1584,15 @@ body.light .ss-text{color:#555}
     <a href="./corrections.html" class="menu-btn" style="text-decoration:none;display:block;text-align:center;border-color:#ff9800;color:#ff9800;margin-bottom:6px" onclick="toggleMenu()">&#9881; 作品Lv設定</a>
     <a href="./guide.html" class="menu-btn" style="text-decoration:none;display:block;text-align:center;border-color:#888;color:#ccc;margin-bottom:6px" onclick="toggleMenu()">&#9776; 使い方ガイド</a>
     <a href="./index.html" class="menu-btn" style="text-decoration:none;display:block;text-align:center;border-color:#68efbd;color:#68efbd" onclick="localStorage.setItem('abds_viewMode','desktop');this.href='./index.html'+location.hash">デスクトップ版</a>
+  </div>
+  <div style="border-top:1px solid #333;padding-top:8px;margin-top:8px">
+    <div style="color:#888;font-size:0.75rem;margin-bottom:4px">フォントサイズ</div>
+    <div style="display:flex;align-items:center;gap:8px">
+      <button class="menu-btn" style="width:36px;padding:4px 0;font-size:0.9rem" onclick="adjustFontScale(-0.05)">A-</button>
+      <span id="fontScaleLabel" style="color:#ffe082;font-size:0.8rem;min-width:40px;text-align:center">100%</span>
+      <button class="menu-btn" style="width:36px;padding:4px 0;font-size:0.9rem" onclick="adjustFontScale(0.05)">A+</button>
+      <button class="menu-btn" style="padding:4px 8px;font-size:0.7rem;color:#888;border-color:#555" onclick="resetFontScale()">Reset</button>
+    </div>
   </div>
 </div>
 
@@ -4588,6 +4597,27 @@ function _applyBadgeVisibility(key, on) {
   }
   style.textContent = css;
 }
+// ===== フォントサイズ調整 =====
+function applyFontScale(scale) {
+  document.documentElement.style.setProperty('--font-scale', scale);
+  const label = document.getElementById('fontScaleLabel');
+  if (label) label.textContent = Math.round(scale * 100) + '%';
+}
+function adjustFontScale(delta) {
+  const cur = parseFloat(localStorage.getItem('abds_fontScale') || '1');
+  const next = Math.max(0.5, Math.min(1.5, Math.round((cur + delta) * 100) / 100));
+  localStorage.setItem('abds_fontScale', next);
+  applyFontScale(next);
+}
+function resetFontScale() {
+  localStorage.removeItem('abds_fontScale');
+  applyFontScale(1);
+}
+(function() {
+  const s = parseFloat(localStorage.getItem('abds_fontScale') || '1');
+  if (s !== 1) applyFontScale(s);
+})();
+
 async function clearDataCacheAndReload() {
   if (!confirm('アプリロジックを更新します。画像キャッシュには影響はありません。')) return;
   try {
@@ -5116,6 +5146,11 @@ function captureFullPage() {
 // INIT
 // ================================================================
 document.addEventListener('DOMContentLoaded', async () => {
+  // フォントスケールのラベル初期化
+  const _fs = parseFloat(localStorage.getItem('abds_fontScale') || '1');
+  const _fsl = document.getElementById('fontScaleLabel');
+  if (_fsl) _fsl.textContent = Math.round(_fs * 100) + '%';
+
   UIRenderer.init();
   SearchPanel.init();
   UndoManager.snapshot();
