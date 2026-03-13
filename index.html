@@ -538,10 +538,9 @@ select,input{font-family:inherit}
 .card-slot:not(.has-card){min-height:120px}
 .card-slot-name{display:none}
 .card-slot-number{
-  position:absolute;top:24px;right:2px;z-index:2;
   font-size:0.55rem;font-weight:bold;color:#ccc;
   background:rgba(0,0,0,0.7);padding:1px 4px;border-radius:3px;
-  pointer-events:none;white-space:nowrap;
+  pointer-events:none;white-space:nowrap;text-align:center;
 }
 /* Card slot link ability tags */
 .slot-link-tags{
@@ -3509,7 +3508,6 @@ const UIRenderer = {
            onerror="this.onerror=null;this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22160%22 height=%22240%22><rect fill=%22%23222%22 width=%22160%22 height=%22240%22/><text x=%2280%22 y=%22120%22 fill=%22%23666%22 text-anchor=%22middle%22>No Image</text></svg>'">
       <button class="card-slot-detail" onclick="event.stopPropagation();showCardModal('${escapeJsForAttr(cardNumber)}')">詳細</button>
       ${cardName ? `<div class="card-slot-name">${escapeHtml(cardName)}</div>` : ''}
-      <div class="card-slot-number">${escapeHtml(cardNumber)}</div>
     `;
   },
 
@@ -4306,22 +4304,26 @@ const UIRenderer = {
 
       // カードが持つリンクアビリティをタグ表示
       const ocr = AppState.deckOcr[i];
-      if (!ocr) continue;
-      const cardLinks = ocr.link_abilities || ocr.link_ability || [];
-      if (!Array.isArray(cardLinks) || cardLinks.length === 0) continue;
-
       const tagsDiv = document.createElement('div');
       tagsDiv.className = 'slot-link-tags';
-      cardLinks.forEach(link => {
-        if (!link.name) return;
-        const info = linkMap && linkMap[link.name];
-        const isActive = info && info.count >= info.required;
-        const tag = document.createElement('div');
-        tag.className = 'slot-link-tag ' + (isActive ? 'link-on' : 'link-off');
-        const effectText = isActive && link.effect ? ` ${link.effect}` : '';
-        tag.textContent = link.name + effectText;
-        tagsDiv.appendChild(tag);
-      });
+      // カードナンバーをリンクタグの上に表示
+      const numDiv = document.createElement('div');
+      numDiv.className = 'card-slot-number';
+      numDiv.textContent = AppState.deck[i] || '';
+      tagsDiv.appendChild(numDiv);
+      const cardLinks = ocr ? (ocr.link_abilities || ocr.link_ability || []) : [];
+      if (Array.isArray(cardLinks)) {
+        cardLinks.forEach(link => {
+          if (!link.name) return;
+          const info = linkMap && linkMap[link.name];
+          const isActive = info && info.count >= info.required;
+          const tag = document.createElement('div');
+          tag.className = 'slot-link-tag ' + (isActive ? 'link-on' : 'link-off');
+          const effectText = isActive && link.effect ? ` ${link.effect}` : '';
+          tag.textContent = link.name + effectText;
+          tagsDiv.appendChild(tag);
+        });
+      }
       slotEl.appendChild(tagsDiv);
     }
   },
