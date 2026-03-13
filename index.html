@@ -3477,7 +3477,7 @@ const UIRenderer = {
                     : (card?.has_ab_link ? '<div class="slot-ab-badge ab-b">AB</div>' : '');
     const cardRarity = card?.rarity || '';
     const rarityColor = ({'M':'#82b1ff','C':'#aaa','R':'#ffe082','SR':'#ff8a80','U':'#ce93d8','P':'#68efbd','PR':'#f48fb1','LR':'#ffcc80','LE':'#ff8a80','CP':'#80deea'})[cardRarity] || '#888';
-    const rarityBadge = cardRarity ? `<div class="slot-rarity-badge rarity" style="color:${rarityColor};border-color:${rarityColor}">${escapeHtml(cardRarity)}</div>` : '';
+    const rarityBadge = '';
     const spTags = card?.sp_effect_tags || [];
     const spTagsHtml = spTags.length ? '<div class="slot-sp-tags sp-tags">' + spTags.map(t => `<span class="slot-sp-tag sp-t-${t}">${escapeHtml(t)}</span>`).join('') + '</div>' : '';
     const cardName = card?.name || '';
