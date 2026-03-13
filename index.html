@@ -648,19 +648,30 @@ select,input{font-family:inherit}
 .ms-detail-tag.pl-cat-制圧{background:#1a2a4a;color:#82b1ff;border-color:#2a3a6a}
 .ms-detail-tag.pl-cat-防衛{background:#1a3a1a;color:#a5d6a7;border-color:#2a5a2a}
 
-/* Status bars */
+/* Status bars (grid style - same as mobile) */
 .unit-stats{margin-bottom:0.3rem}
-.stat-row{display:flex;align-items:center;gap:0.3rem;margin-bottom:3px}
-.stat-label{color:#888;font-size:0.72rem;width:56px;text-align:right;flex-shrink:0}
-.stat-track{flex:1;height:18px;background:#222;border-radius:2px;overflow:hidden;position:relative;display:flex}
-.stat-bar-base{height:100%;background:#2196f3;transition:width 0.3s}
-.stat-bar-buff{height:100%;background:#e91e63;transition:width 0.3s}
-.stat-bar-terrain-pos{height:100%;background:#68efbd;transition:width 0.3s}
-.stat-bar-terrain-neg{height:100%;transition:width 0.3s;background:repeating-linear-gradient(135deg,rgba(244,67,54,0.6),rgba(244,67,54,0.6) 2px,rgba(244,67,54,0.3) 2px,rgba(244,67,54,0.3) 4px)}
-.stat-value{position:absolute;top:0;left:0;right:0;bottom:0;display:flex;align-items:center;padding:0 6px;color:#fff;font-size:0.72rem;white-space:nowrap;font-variant-numeric:tabular-nums;font-family:'Menlo','Consolas','Courier New',monospace;text-shadow:0 0 3px rgba(0,0,0,0.8),0 0 6px rgba(0,0,0,0.5);pointer-events:none}
-.stat-buff-text{color:#ffb3c6}
-.stat-terrain-text.positive{color:#a0ffd0}
-.stat-terrain-text.negative{color:#ff8a80}
+.stat-grid{display:grid;grid-template-columns:24px 1fr;gap:0;font-size:0.7rem;font-variant-numeric:tabular-nums;font-family:'Menlo','Consolas','Courier New',monospace;border:1px solid #2a2a2a;border-radius:6px;overflow:hidden;background:#111}
+.sg-cell{padding:3px 2px;border-bottom:1px solid #1e1e1e;display:flex;align-items:center}
+.sg-label{justify-content:center;text-align:center;font-weight:900;font-size:0.72rem;background:#0d0d0d;font-family:sans-serif}
+.sg-label[data-stat="mobility"]{color:#42a5f5}
+.sg-label[data-stat="ranged"]{color:#ef5350}
+.sg-label[data-stat="melee"]{color:#ab47bc}
+.sg-label[data-stat="hp"]{color:#66bb6a}
+.sg-bar{position:relative;overflow:hidden;background:#1a1a1a;border-radius:0;height:22px}
+.sg-bar-base{height:100%;background:#2196f3;position:absolute;top:0;left:0;transition:width 0.3s}
+.sg-bar-buff{height:100%;background:#e91e63;position:absolute;top:0;transition:width 0.3s}
+.sg-bar-terrain-pos{height:100%;background:#68efbd;position:absolute;top:0;transition:width 0.3s}
+.sg-bar-terrain-neg{height:100%;position:absolute;top:0;background:repeating-linear-gradient(135deg,rgba(244,67,54,0.6),rgba(244,67,54,0.6) 2px,rgba(244,67,54,0.3) 2px,rgba(244,67,54,0.3) 4px)}
+.sg-bar-vals{position:relative;z-index:1;display:flex;justify-content:space-between;align-items:center;padding:0 6px;font-size:0.72rem;white-space:nowrap;height:100%;background:linear-gradient(90deg,rgba(0,0,0,0.55) 0%,rgba(0,0,0,0.25) 50%,rgba(0,0,0,0.55) 100%)}
+.sg-bar-formula{display:flex;align-items:center;gap:0}
+.sg-bar-ms{color:#90caf9;text-shadow:0 1px 3px rgba(0,0,0,0.9);min-width:28px;text-align:right;display:inline-block}
+.sg-bar-pl{color:#ef9a9a;text-shadow:0 1px 3px rgba(0,0,0,0.9);min-width:28px;text-align:right;display:inline-block}
+.sg-bar-corr{color:#ce93d8;text-shadow:0 1px 3px rgba(0,0,0,0.9);min-width:32px;text-align:right;display:inline-block}
+.sg-bar-op{color:#666;text-shadow:0 1px 3px rgba(0,0,0,0.9);font-size:0.6rem;width:10px;text-align:center;display:inline-block}
+.sg-bar-result{display:flex;align-items:center;gap:0}
+.sg-bar-eq{color:#999;text-shadow:0 1px 3px rgba(0,0,0,0.9);font-weight:bold;width:12px;text-align:center;display:inline-block}
+.sg-bar-total{color:#fff;font-weight:bold;text-shadow:0 1px 4px rgba(0,0,0,0.9);min-width:32px;text-align:right;display:inline-block}
+.sg-bar-total.buffed{color:#ffb74d}
 
 /* Ability / Skill sections */
 .unit-ability-section{
@@ -3498,38 +3509,33 @@ const UIRenderer = {
   _renderUnitStats(u, msOcr, plOcr) {
     const container = document.getElementById(`unit-stats-${u}`);
     const result = calcUnitStats(msOcr, plOcr, this._getTerrainMultiplier(msOcr));
-    let html = '';
+    const barMax = 1400;
+    let html = '<div class="stat-grid">';
     result.forEach(r => {
-      const basePct = Math.min((r.base / 1000) * 100, 100);
-      const linkBuffPct = Math.min((r.linkBuff / 1000) * 100, 100 - basePct);
+      const basePct = Math.min((r.base / barMax) * 100, 100);
+      const linkBuffPct = Math.min((r.linkBuff / barMax) * 100, 100 - basePct);
       let terrainBarHtml = '';
       if (r.terrainBuff > 0) {
-        const tWidth = Math.min((r.terrainBuff / 1000) * 100, 100 - basePct - linkBuffPct);
-        terrainBarHtml = `<div class="stat-bar-terrain-pos" style="width:${tWidth}%"></div>`;
+        const tW = Math.min((r.terrainBuff / barMax) * 100, 100 - basePct - linkBuffPct);
+        terrainBarHtml = `<div class="sg-bar-terrain-pos" style="left:${basePct + linkBuffPct}%;width:${tW}%"></div>`;
       } else if (r.terrainBuff < 0) {
-        const totalPct = (Math.max(r.total, 0) / 1000) * 100;
-        const lossPct = (Math.abs(r.terrainBuff) / 1000) * 100;
-        terrainBarHtml = `<div class="stat-bar-terrain-neg" style="position:absolute;right:0;width:${Math.min(lossPct, 100 - totalPct)}%;left:${totalPct}%"></div>`;
+        const tP = (Math.max(r.total, 0) / barMax) * 100;
+        const lP = (Math.abs(r.terrainBuff) / barMax) * 100;
+        terrainBarHtml = `<div class="sg-bar-terrain-neg" style="position:absolute;right:0;width:${Math.min(lP, 100 - tP)}%;left:${tP}%"></div>`;
       }
-      let terrainLabel = '';
-      if (r.terrainBuff > 0) terrainLabel = ` <span class="stat-terrain-text positive">(地形+${r.terrainBuff})</span>`;
-      else if (r.terrainBuff < 0) terrainLabel = ` <span class="stat-terrain-text negative">(地形${r.terrainBuff})</span>`;
-      let corrLabel = '';
-      if (r.corrBuff > 0) corrLabel = ` <span style="color:#ce93d8">Lv+${r.corrBuff}</span>`;
-      const pad = (n) => String(n).padStart(3, '\u2007');
-      const baseLabel = `${pad(r.msVal)}+${pad(r.plVal)}=${pad(r.base)}`;
-      const buffLabel = r.linkBuff > 0 ? ` <span class="stat-buff-text">+${pad(r.linkBuff)}</span>` : '';
-      html += `
-        <div class="stat-row">
-          <span class="stat-label">${r.label}</span>
-          <div class="stat-track">
-            <div class="stat-bar-base" style="width:${basePct}%"></div>
-            <div class="stat-bar-buff" style="width:${linkBuffPct}%"></div>
-            ${terrainBarHtml}
-            <span class="stat-value">${baseLabel}${buffLabel}${terrainLabel}${corrLabel}${(r.linkBuff > 0 || r.terrainBuff !== 0 || r.corrBuff > 0) ? ` → ${pad(r.total)}` : ''}</span>
-          </div>
-        </div>
-      `;
+      const hasBuff = r.linkBuff > 0 || r.terrainBuff !== 0 || r.corrBuff > 0;
+      const totalClass = hasBuff ? ' buffed' : '';
+      const corrVal = r.corrBuff + r.linkBuff + r.terrainBuff;
+      const corrText = corrVal !== 0 ? `+${corrVal}` : '+0';
+      const corrVis = corrVal !== 0 ? '' : ' style="visibility:hidden"';
+      html += `<div class="sg-cell sg-label" data-stat="${r.key}">${r.label}</div>` +
+        `<div class="sg-cell sg-bar">` +
+          `<div class="sg-bar-base" style="width:${basePct}%"></div><div class="sg-bar-buff" style="left:${basePct}%;width:${linkBuffPct}%"></div>${terrainBarHtml}` +
+          `<div class="sg-bar-vals">` +
+            `<span class="sg-bar-formula"><span class="sg-bar-ms">${r.msVal || 0}</span><span class="sg-bar-op">+</span><span class="sg-bar-pl">${r.plVal || 0}</span><span class="sg-bar-op"${corrVis}>+</span><span class="sg-bar-corr"${corrVis}>${corrText}</span></span>` +
+            `<span class="sg-bar-result"><span class="sg-bar-eq">=</span><span class="sg-bar-total${totalClass}">${r.total}</span></span>` +
+          `</div>` +
+        `</div>`;
     });
     // Debug: show detected series and applied levels
     const dbg = result[0]?._debug;
@@ -3538,6 +3544,7 @@ const UIRenderer = {
       html += `MS:${dbg.msSeries || '?'} Lv${dbg.msLv}`;
       html += `</div>`;
     }
+    html += '</div>';
     container.innerHTML = html;
   },
 
