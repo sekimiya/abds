@@ -2048,7 +2048,7 @@ const UndoManager = {
     if (numbers.length > 0) {
       CardService.batchDetails(numbers).then(() => {
         for (let i = 0; i < 10; i++) {
-          AppState.deckOcr[i] = AppState.deck[i] ? (AppState.cardDetails[AppState.deck[i]]?.ocr_data || null) : null;
+          AppState.deckOcr[i] = AppState.deck[i] ? (CardService.getDetail(AppState.deck[i])?.ocr_data || null) : null;
         }
         UIRenderer.renderAll();
         if (typeof TacticsPicker !== 'undefined') { TacticsPicker.renderButtons(); }
@@ -2081,6 +2081,21 @@ const CardService = {
     const cards = await res.json();
     // PR-xxx カードの rarity 補完
     cards.forEach(c => { if (!c.rarity && c.number && c.number.startsWith('PR-')) c.rarity = 'PR'; });
+    // パラレルカード(_p1,_p2等)のパラメータをベースカードから動的補完
+    const baseMap = {};
+    cards.forEach(c => { if (c.number && !/_p\d+$/.test(c.number)) baseMap[c.number] = c; });
+    const inheritFields = ['cost','mobility','ranged','melee','hp','terrain','pilot','model','illustrator',
+      'skill_name','skill_effect_tags','sp_effect_tags','sqsp_effect_tags','ebsp_effect_tags',
+      'sq_rush_effect','sqsp_text','sq_skill_text','has_sqsp','has_sq_skill','has_sq_link',
+      'sq_trigger','sq_gauge_rate','sq_skill_effect_tags',
+      'eb_text','eb_skill_text','has_eb','has_eb_skill','has_eb_link','has_ab_link',
+      'eb_level','eb_trigger_level','eb_trigger_cond','eb_type'];
+    cards.forEach(c => {
+      if (!c.number || !/_p\d+$/.test(c.number)) return;
+      const base = baseMap[c.number.replace(/_p\d+$/, '')];
+      if (!base) return;
+      inheritFields.forEach(f => { if (base[f] !== undefined && (c[f] == null || c[f] === 0 || c[f] === '')) c[f] = base[f]; });
+    });
     AppState.cardIndex = cards;
     UIRenderer.invalidateIndexMap();
     const seriesSet = new Set();
@@ -2159,10 +2174,27 @@ const CardService = {
     }).catch(_ => {});
   },
 
+  // パラレルカードのベースカード番号を返す
+  _baseNumber(number) {
+    return number && /_p\d+$/.test(number) ? number.replace(/_p\d+$/, '') : null;
+  },
+
+  // cardDetails同期参照（パラレル→ベースフォールバック付き）
+  getDetail(number) {
+    if (!number) return null;
+    const d = AppState.cardDetails[number];
+    if (d) return d;
+    const base = this._baseNumber(number);
+    return base ? (AppState.cardDetails[base] || null) : null;
+  },
+
   async fetchDetail(number) {
     if (AppState.cardDetails[number]) return AppState.cardDetails[number];
     await this._ensureDetails();
-    return AppState.cardDetails[number] || null;
+    if (AppState.cardDetails[number]) return AppState.cardDetails[number];
+    // パラレルカード → ベースカードにフォールバック
+    const base = this._baseNumber(number);
+    return base ? (AppState.cardDetails[base] || null) : null;
   },
 
   async batchDetails(numbers) {
@@ -2392,7 +2424,7 @@ const DeckManager = {
     AppState.deck[slotIndex] = cardNumber;
     UIRenderer._updateHeader();
     // 詳細データが既にあれば即座に反映、なければバックグラウンドで取得後に再描画
-    const cached = AppState.cardDetails[cardNumber];
+    const cached = CardService.getDetail(cardNumber);
     if (cached) {
       AppState.deckOcr[slotIndex] = cached.ocr_data || null;
       UIRenderer.renderAll();
@@ -2457,7 +2489,7 @@ const DeckManager = {
     AppState.deck = numbers;
     await CardService.batchDetails(numbers);
     for (let i = 0; i < 10; i++) {
-      AppState.deckOcr[i] = AppState.cardDetails[numbers[i]]?.ocr_data || null;
+      AppState.deckOcr[i] = CardService.getDetail(numbers[i])?.ocr_data || null;
     }
     UIRenderer.renderAll();
     UndoManager.snapshot();
@@ -2587,7 +2619,7 @@ const DeckManager = {
     const validNumbers = numbers.filter(n => n);
     if (validNumbers.length > 0) await CardService.batchDetails(validNumbers);
     for (let i = 0; i < 10; i++) {
-      AppState.deckOcr[i] = AppState.deck[i] ? (AppState.cardDetails[AppState.deck[i]]?.ocr_data || null) : null;
+      AppState.deckOcr[i] = AppState.deck[i] ? (CardService.getDetail(AppState.deck[i])?.ocr_data || null) : null;
     }
     UIRenderer.renderAll();
     UndoManager.snapshot();
@@ -2678,7 +2710,7 @@ const DeckManager = {
       await CardService.batchDetails(validNumbers);
     }
     for (let i = 0; i < 10; i++) {
-      AppState.deckOcr[i] = AppState.deck[i] ? (AppState.cardDetails[AppState.deck[i]]?.ocr_data || null) : null;
+      AppState.deckOcr[i] = AppState.deck[i] ? (CardService.getDetail(AppState.deck[i])?.ocr_data || null) : null;
     }
     UIRenderer.renderAll();
     TacticsPicker.renderButtons();
@@ -3482,7 +3514,7 @@ const UIRenderer = {
     }
 
     const card = AppState.cardIndex.find(c => c.number === cardNumber);
-    const detail = AppState.cardDetails[cardNumber];
+    const detail = CardService.getDetail(cardNumber);
     const frontUrl = resolveImageUrl(null, cardNumber, 'front');
 
     const hlClass = highlight ? ` ${highlight}` : '';
