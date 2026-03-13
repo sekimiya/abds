@@ -474,7 +474,7 @@ select,input{font-family:inherit}
 .eb-badge{background:linear-gradient(135deg,#ff9800,#e65100)}
 .slot-ab-badge{position:absolute;top:44px;left:4px;z-index:2;font-size:0.7rem;font-weight:bold;padding:0.1rem 0.4rem;border-radius:4px;color:#fff;background:rgba(179,136,255,0.9);box-shadow:0 1px 3px rgba(0,0,0,0.4)}
 .slot-rarity-badge{position:absolute;top:4px;left:4px;z-index:2;font-size:0.6rem;font-weight:bold;padding:0.05rem 0.3rem;border-radius:3px;background:rgba(0,0,0,0.6);border:1px solid rgba(255,255,255,0.2)}
-.slot-sp-tags{position:absolute;bottom:20px;left:2px;display:flex;flex-wrap:wrap;gap:2px;max-width:80%;z-index:2}
+.slot-sp-tags{display:flex;flex-wrap:wrap;gap:2px;max-width:100%}
 .slot-sp-tag{font-size:0.65rem;font-weight:bold;padding:1px 5px;border-radius:3px;line-height:1.4;color:#fff}
 .slot-sp-tag.sp-t-貫通{background:rgba(66,165,245,0.9)}
 .slot-sp-tag.sp-t-範囲{background:rgba(255,112,67,0.9)}
@@ -3502,7 +3502,6 @@ const UIRenderer = {
       <button class="card-slot-clear" onclick="event.stopPropagation();DeckManager.clearCard(${slotIdx})">&times;</button>
       ${badgeHtml}
       ${rarityBadge}
-      ${spTagsHtml}
       <img class="card-slot-img" src="${frontUrl}" alt="${cardNumber}"
            onclick="event.stopPropagation();showCardModal('${escapeJsForAttr(cardNumber)}')"
            onerror="this.onerror=null;this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22160%22 height=%22240%22><rect fill=%22%23222%22 width=%22160%22 height=%22240%22/><text x=%2280%22 y=%22120%22 fill=%22%23666%22 text-anchor=%22middle%22>No Image</text></svg>'">
@@ -4306,6 +4305,19 @@ const UIRenderer = {
       const ocr = AppState.deckOcr[i];
       const tagsDiv = document.createElement('div');
       tagsDiv.className = 'slot-link-tags';
+      // SP効果タグをカードナンバーの上に表示
+      const spEffects = ocr?.sp_effect_tags || [];
+      if (spEffects.length) {
+        const spDiv = document.createElement('div');
+        spDiv.className = 'slot-sp-tags sp-tags';
+        spEffects.forEach(t => {
+          const span = document.createElement('span');
+          span.className = 'slot-sp-tag sp-t-' + t;
+          span.textContent = t;
+          spDiv.appendChild(span);
+        });
+        tagsDiv.appendChild(spDiv);
+      }
       // カードナンバーをリンクタグの上に表示
       const numDiv = document.createElement('div');
       numDiv.className = 'card-slot-number';
