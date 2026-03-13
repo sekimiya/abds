@@ -6016,16 +6016,24 @@ async function showCardModal(number) {
   document.getElementById('cardDetailModal').classList.add('open');
 }
 
+var _analysisNumber = null;
 function toggleCardAnalysis(number) {
   const area = document.getElementById('cardAnalysisArea');
   if (!area) return;
-  if (area.innerHTML) { area.innerHTML = ''; return; }
-
+  if (area.innerHTML && _analysisNumber === number) { area.innerHTML = ''; _analysisNumber = null; return; }
+  _analysisNumber = number;
+  renderCardAnalysis(number, 0, 0);
+}
+function renderCardAnalysis(number, costLow, costHigh) {
+  const area = document.getElementById('cardAnalysisArea');
+  if (!area) return;
   const card = AppState.cardIndex.find(c => c.number === number);
   if (!card || !card.cost) return;
 
-  const sameCost = AppState.cardIndex.filter(c =>
-    c.cost === card.cost && c.type === card.type && !/_p\d+$/.test(c.number)
+  const minCost = Math.max(1, card.cost - costLow);
+  const maxCost = Math.min(13, card.cost + costHigh);
+  const pool = AppState.cardIndex.filter(c =>
+    c.cost >= minCost && c.cost <= maxCost && c.type === card.type && !/_p\d+$/.test(c.number)
   );
   const total = c => (c.mobility||0) + (c.ranged||0) + (c.melee||0) + (c.hp||0);
   const cp = c => total(c) / (c.cost||1);
@@ -6039,28 +6047,41 @@ function toggleCardAnalysis(number) {
     { key: 'hp',       label: 'HP',      val: c => c.hp||0,       color: '#a5d6a7' },
   ];
 
+  const costLabel = minCost === maxCost ? `コスト${minCost}` : `コスト${minCost}〜${maxCost}`;
   let h = `<div style="margin-top:0.6rem;padding:0.6rem;background:#111;border-radius:8px;border:1px solid #333">
-    <div style="font-size:0.8rem;color:#68efbd;font-weight:600;margin-bottom:0.5rem">
-      同コスト${card.cost} / ${card.type} ${sameCost.length}枚中の順位
-    </div>`;
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:0.5rem;flex-wrap:wrap">
+      <div style="font-size:0.8rem;color:#68efbd;font-weight:600">${costLabel} / ${card.type} ${pool.length}枚中の順位</div>
+    </div>
+    <div style="display:flex;align-items:center;gap:6px;margin-bottom:0.5rem;flex-wrap:wrap">
+      <span style="font-size:0.7rem;color:#888">検索範囲:</span>`;
+  const ranges = [
+    { lo: 0, hi: 0, label: '同コストのみ' },
+    { lo: 1, hi: 1, label: '\u00b11' },
+    { lo: 2, hi: 2, label: '\u00b12' },
+    { lo: 3, hi: 3, label: '\u00b13' },
+    { lo: 0, hi: 13, label: '全コスト' },
+  ];
+  ranges.forEach(r => {
+    const active = r.lo === costLow && r.hi === costHigh;
+    h += `<button onclick="renderCardAnalysis('${escapeJsForAttr(number)}',${r.lo},${r.hi})" style="padding:2px 8px;border-radius:4px;font-size:0.7rem;border:1px solid ${active ? '#68efbd' : '#444'};background:${active ? '#68efbd' : '#222'};color:${active ? '#000' : '#ccc'};cursor:pointer;font-weight:${active ? '700' : '400'}">${r.label}</button>`;
+  });
+  h += '</div>';
 
   metrics.forEach(m => {
     const myVal = m.val(card);
-    const sorted = sameCost.map(c => m.val(c)).sort((a,b) => b - a);
+    const sorted = pool.map(c => m.val(c)).sort((a,b) => b - a);
     const rank = sorted.indexOf(myVal) + 1;
     const maxVal = sorted[0] || 1;
     const pct = Math.round((myVal / maxVal) * 100);
-    const topPct = Math.round((rank / sameCost.length) * 100);
+    const topPct = Math.round((rank / pool.length) * 100);
     h += `<div style="display:flex;align-items:center;gap:8px;margin-bottom:4px">
       <div style="width:48px;font-size:0.75rem;color:${m.color};font-weight:600;text-align:right">${m.label}</div>
       <div style="flex:1;height:16px;background:#222;border-radius:3px;overflow:hidden;position:relative">
         <div style="width:${pct}%;height:100%;background:${m.color};opacity:0.4;border-radius:3px"></div>
-        <div style="position:absolute;top:0;left:4px;font-size:0.65rem;line-height:16px;color:#fff;font-weight:600">
-          ${myVal}${m.key === 'cp' ? '' : ''}
-        </div>
+        <div style="position:absolute;top:0;left:4px;font-size:0.65rem;line-height:16px;color:#fff;font-weight:600">${myVal}</div>
       </div>
       <div style="min-width:64px;font-size:0.75rem;font-weight:700;color:${rank <= 3 ? '#68efbd' : rank <= 10 ? '#ffe082' : '#ccc'}">
-        ${rank}位 / ${sameCost.length}
+        ${rank}位 / ${pool.length}
       </div>
       <div style="min-width:36px;font-size:0.65rem;color:#888">上位${topPct}%</div>
     </div>`;
