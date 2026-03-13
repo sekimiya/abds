@@ -4940,9 +4940,6 @@ const SearchPanel = {
     if (linkCards) {
       cards = cards.filter(c => linkCards.has(c.number));
     }
-    // イラストレーターフィルタ
-    const illustrator = document.getElementById('filterIllustrator').value;
-    if (illustrator) cards = cards.filter(c => c.illustrator === illustrator);
     // イラスト違いフィルタ
     if (this._altArt) {
       cards = cards.filter(c => c.number.includes('_'));
