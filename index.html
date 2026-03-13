@@ -474,8 +474,8 @@ select,input{font-family:inherit}
 .eb-badge{background:linear-gradient(135deg,#ff9800,#e65100)}
 .slot-ab-badge{position:absolute;top:44px;left:4px;z-index:2;font-size:0.7rem;font-weight:bold;padding:0.1rem 0.4rem;border-radius:4px;color:#fff;background:rgba(179,136,255,0.9);box-shadow:0 1px 3px rgba(0,0,0,0.4)}
 .slot-rarity-badge{position:absolute;top:4px;left:4px;z-index:2;font-size:0.6rem;font-weight:bold;padding:0.05rem 0.3rem;border-radius:3px;background:rgba(0,0,0,0.6);border:1px solid rgba(255,255,255,0.2)}
-.slot-sp-tags{position:absolute;top:4px;right:4px;display:flex;flex-wrap:wrap;gap:1px;justify-content:flex-end;max-width:60%;z-index:2}
-.slot-sp-tag{font-size:0.5rem;font-weight:bold;padding:0 3px;border-radius:2px;line-height:1.4;color:#fff}
+.slot-sp-tags{position:absolute;bottom:20px;left:2px;display:flex;flex-wrap:wrap;gap:2px;max-width:80%;z-index:2}
+.slot-sp-tag{font-size:0.65rem;font-weight:bold;padding:1px 5px;border-radius:3px;line-height:1.4;color:#fff}
 .slot-sp-tag.sp-t-貫通{background:rgba(66,165,245,0.9)}
 .slot-sp-tag.sp-t-範囲{background:rgba(255,112,67,0.9)}
 .slot-sp-tag.sp-t-スタン{background:rgba(255,235,59,0.9);color:#333}
@@ -537,6 +537,12 @@ select,input{font-family:inherit}
 .slot-empty-text{font-size:0.9rem;color:#555;font-weight:bold}
 .card-slot:not(.has-card){min-height:120px}
 .card-slot-name{display:none}
+.card-slot-number{
+  position:absolute;bottom:2px;left:2px;z-index:2;
+  font-size:0.6rem;font-weight:bold;color:#ccc;
+  background:rgba(0,0,0,0.7);padding:1px 4px;border-radius:3px;
+  pointer-events:none;white-space:nowrap;
+}
 /* Card slot link ability tags */
 .slot-link-tags{
   position:absolute;bottom:0;left:0;right:0;
@@ -3503,6 +3509,7 @@ const UIRenderer = {
            onerror="this.onerror=null;this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22160%22 height=%22240%22><rect fill=%22%23222%22 width=%22160%22 height=%22240%22/><text x=%2280%22 y=%22120%22 fill=%22%23666%22 text-anchor=%22middle%22>No Image</text></svg>'">
       <button class="card-slot-detail" onclick="event.stopPropagation();showCardModal('${escapeJsForAttr(cardNumber)}')">詳細</button>
       ${cardName ? `<div class="card-slot-name">${escapeHtml(cardName)}</div>` : ''}
+      <div class="card-slot-number">${escapeHtml(cardNumber)}</div>
     `;
   },
 
