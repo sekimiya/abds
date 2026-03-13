@@ -1402,6 +1402,7 @@ select,input{font-family:inherit}
         <button class="header-btn" style="width:32px;padding:0.2rem 0;font-size:0.9rem" onclick="adjustFontScale(0.05)">A+</button>
         <button class="header-btn" style="padding:0.2rem 0.4rem;font-size:0.7rem;color:#888;border-color:#555" onclick="resetFontScale()">Reset</button>
       </div>
+      <div id="fontScaleWarn" style="display:none;color:#ff9800;font-size:0.65rem;line-height:1.4;padding:2px 0">※ 100%以外はレイアウトが崩れる可能性があります（未検証）</div>
       <div class="header-menu-row" style="border-top:1px solid #333;padding-top:0.5rem">
         <a href="./mobile.html" class="header-btn" style="flex:1;text-align:center;text-decoration:none;border-color:#68efbd;color:#68efbd" onclick="localStorage.setItem('abds_viewMode','mobile');this.href='./mobile.html'+location.hash">モバイル版</a>
       </div>
@@ -5774,6 +5775,8 @@ function applyFontScale(scale) {
   document.documentElement.style.setProperty('--font-scale', scale);
   const label = document.getElementById('fontScaleLabel');
   if (label) label.textContent = Math.round(scale * 100) + '%';
+  const warn = document.getElementById('fontScaleWarn');
+  if (warn) warn.style.display = Math.round(scale * 100) === 100 ? 'none' : 'block';
 }
 function adjustFontScale(delta) {
   const cur = parseFloat(localStorage.getItem('abds_fontScale') || '1');
@@ -6012,10 +6015,12 @@ function closeDeckLoadModal() {
 // INIT
 // ================================================================
 document.addEventListener('DOMContentLoaded', async () => {
-  // フォントスケールのラベル初期化
+  // フォントスケールのラベル・警告初期化
   const _fs = parseFloat(localStorage.getItem('abds_fontScale') || '1');
   const _fsl = document.getElementById('fontScaleLabel');
   if (_fsl) _fsl.textContent = Math.round(_fs * 100) + '%';
+  const _fsw = document.getElementById('fontScaleWarn');
+  if (_fsw) _fsw.style.display = Math.round(_fs * 100) === 100 ? 'none' : 'block';
 
   UIRenderer.init();
   SearchPanel.init();

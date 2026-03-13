@@ -1593,6 +1593,7 @@ body.light .ss-text{color:#555}
       <button class="menu-btn" style="width:36px;padding:4px 0;font-size:0.9rem" onclick="adjustFontScale(0.05)">A+</button>
       <button class="menu-btn" style="padding:4px 8px;font-size:0.7rem;color:#888;border-color:#555" onclick="resetFontScale()">Reset</button>
     </div>
+    <div id="fontScaleWarn" style="display:none;color:#ff9800;font-size:0.65rem;line-height:1.4;padding:2px 0">※ 100%以外はレイアウトが崩れる可能性があります（未検証）</div>
   </div>
 </div>
 
@@ -4602,6 +4603,8 @@ function applyFontScale(scale) {
   document.documentElement.style.setProperty('--font-scale', scale);
   const label = document.getElementById('fontScaleLabel');
   if (label) label.textContent = Math.round(scale * 100) + '%';
+  const warn = document.getElementById('fontScaleWarn');
+  if (warn) warn.style.display = Math.round(scale * 100) === 100 ? 'none' : 'block';
 }
 function adjustFontScale(delta) {
   const cur = parseFloat(localStorage.getItem('abds_fontScale') || '1');
@@ -5146,10 +5149,12 @@ function captureFullPage() {
 // INIT
 // ================================================================
 document.addEventListener('DOMContentLoaded', async () => {
-  // フォントスケールのラベル初期化
+  // フォントスケールのラベル・警告初期化
   const _fs = parseFloat(localStorage.getItem('abds_fontScale') || '1');
   const _fsl = document.getElementById('fontScaleLabel');
   if (_fsl) _fsl.textContent = Math.round(_fs * 100) + '%';
+  const _fsw = document.getElementById('fontScaleWarn');
+  if (_fsw) _fsw.style.display = Math.round(_fs * 100) === 100 ? 'none' : 'block';
 
   UIRenderer.init();
   SearchPanel.init();
