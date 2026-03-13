@@ -4880,7 +4880,7 @@ const SearchPanel = {
     const costMin = parseInt(document.getElementById('filterCostMin').value);
     const costMax = parseInt(document.getElementById('filterCostMax').value);
     if (costMin > 0 || costMax < 13) {
-      cards = cards.filter(c => c.cost === null || (c.cost >= costMin && c.cost <= costMax));
+      cards = cards.filter(c => c.cost != null && c.cost >= costMin && c.cost <= costMax);
     }
     // 詳細データ未設定カード判定（プロモーション等: cost===nullなら詳細フィルタをパス）
     const _noDetail = c => c.cost === null;
