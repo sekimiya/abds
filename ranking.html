@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RQ4NVY6XD8"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-RQ4NVY6XD8');</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>ABD Simulator - カードランキング</title>
+<link rel="manifest" href="./manifest.json">
+<meta name="theme-color" content="#0f0f0f">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:14px;-webkit-text-size-adjust:100%}
+body{background:#0f0f0f;color:#e0e0e0;font-family:'Segoe UI','Hiragino Sans',sans-serif;min-height:100vh;
+  padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}
+a{color:#68efbd;text-decoration:none}
+button{cursor:pointer;font-family:inherit;-webkit-tap-highlight-color:transparent}
+
+/* Light mode */
+body.light{background:#f5f5f5;color:#1a1a1a}
+body.light .page-header{background:linear-gradient(135deg,#d0e8dc,#d0e8dc)}
+body.light .back-btn{color:#333;border-color:#aaa}
+body.light .filter-bar{background:#f5f5f5;border-bottom-color:#ddd}
+body.light .tab-btn{background:#e8e8e8;color:#333;border-color:#ccc}
+body.light .tab-btn.active{background:#68efbd;color:#000}
+body.light .filter-select{background:#fff;border-color:#ccc;color:#333}
+body.light .sort-btn{background:#e8e8e8;color:#333;border-color:#ccc}
+body.light .sort-btn.active{background:#68efbd;color:#000;border-color:#68efbd}
+body.light .rank-row{background:#fff;border-color:#ddd}
+body.light .rank-row:hover{background:#f0f8f4}
+body.light .card-number{color:#888}
+body.light .stat-label{color:#888}
+body.light .count-info{color:#888}
+body.light .rank-table th{background:#e8e8e8;color:#333;border-color:#ddd}
+body.light .rank-table td{border-color:#eee}
+
+.page-header{
+  background:linear-gradient(135deg,#1a2a20,#0f1f18);
+  padding:12px 16px;display:flex;align-items:center;gap:12px;
+  border-bottom:1px solid #333;position:sticky;top:0;z-index:20;
+}
+.back-btn{
+  background:none;border:1px solid #555;color:#e0e0e0;border-radius:6px;
+  padding:6px 12px;font-size:0.9rem;white-space:nowrap;
+}
+.page-title{font-size:1.1rem;font-weight:700;color:#68efbd;flex:1}
+
+.filter-bar{
+  position:sticky;top:47px;z-index:15;background:#0f0f0f;
+  border-bottom:1px solid #222;padding:8px 12px;
+  display:flex;flex-direction:column;gap:6px;
+}
+.filter-row{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.tab-btn{
+  flex:0 0 auto;padding:6px 16px;text-align:center;font-size:0.8rem;font-weight:600;
+  border:1px solid #444;background:#1a1a1a;color:#aaa;cursor:pointer;transition:all 0.2s;
+}
+.tab-btn:first-child{border-radius:6px 0 0 6px}
+.tab-btn:last-child{border-radius:0 6px 6px 0}
+.tab-btn.active{background:#68efbd;color:#000;border-color:#68efbd}
+
+.filter-select{
+  padding:6px 10px;border-radius:6px;border:1px solid #444;
+  background:#1a1a1a;color:#e0e0e0;font-size:0.8rem;outline:none;
+  font-family:inherit;
+}
+.filter-select:focus{border-color:#68efbd}
+
+.sort-row{display:flex;gap:4px;flex-wrap:wrap}
+.sort-btn{
+  padding:4px 10px;border-radius:4px;font-size:0.75rem;
+  border:1px solid #444;background:#222;color:#ccc;cursor:pointer;transition:all 0.2s;
+}
+.sort-btn.active{background:#68efbd;color:#000;border-color:#68efbd}
+
+.count-info{padding:6px 12px;font-size:0.8rem;color:#888}
+
+/* Desktop table */
+.rank-table{width:100%;border-collapse:collapse;font-size:0.85rem}
+.rank-table th{
+  background:#1a2a20;color:#68efbd;padding:8px 6px;text-align:left;
+  border-bottom:1px solid #333;font-weight:600;font-size:0.75rem;
+  position:sticky;top:0;z-index:1;white-space:nowrap;
+}
+.rank-table td{padding:6px;border-bottom:1px solid #1f1f1f;vertical-align:middle}
+.rank-table tr:hover{background:#1a2a20}
+.rank-num{font-weight:700;color:#68efbd;font-size:0.9rem;width:36px;text-align:center}
+.card-name{font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:180px}
+.card-number{font-size:0.7rem;color:#666}
+.rarity-badge{
+  display:inline-block;padding:1px 5px;border-radius:3px;font-size:0.65rem;
+  font-weight:700;line-height:1.4;
+}
+.cat-badge{font-size:0.75rem;color:#aaa}
+.cp-val{font-weight:700;color:#68efbd;font-size:0.9rem}
+.total-val{font-weight:600;color:#e0e0e0}
+.stat-mob{color:#82b1ff}
+.stat-rng{color:#ff8a80}
+.stat-mel{color:#ffe082}
+.stat-hp{color:#a5d6a7}
+.cp-bar-wrap{width:60px;height:6px;background:#222;border-radius:3px;overflow:hidden;display:inline-block;vertical-align:middle;margin-left:4px}
+.cp-bar{height:100%;background:#68efbd;border-radius:3px;transition:width 0.3s}
+
+/* Mobile card layout */
+.rank-cards{display:flex;flex-direction:column;gap:6px;padding:0 10px 20px}
+.rank-card{
+  background:#1a1a1a;border-radius:8px;border:1px solid #2a2a2a;
+  padding:10px 12px;display:flex;flex-direction:column;gap:4px;
+}
+body.light .rank-card{background:#fff;border-color:#ddd}
+.rank-card-top{display:flex;align-items:center;gap:8px}
+.rank-card-num{font-weight:700;color:#68efbd;font-size:1rem;min-width:28px}
+.rank-card-info{flex:1;min-width:0}
+.rank-card-name{font-weight:600;font-size:0.9rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rank-card-meta{font-size:0.7rem;color:#888;display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.rank-card-right{text-align:right}
+.rank-card-cp{font-size:1.1rem;font-weight:700;color:#68efbd}
+.rank-card-cp-label{font-size:0.6rem;color:#888}
+.rank-card-stats{display:flex;gap:8px;font-size:0.75rem;align-items:center;flex-wrap:wrap}
+.rank-card-stats span{display:flex;gap:2px;align-items:center}
+.stat-label{color:#888;font-size:0.65rem}
+.rank-card-bar{width:100%;height:4px;background:#222;border-radius:2px;overflow:hidden}
+body.light .rank-card-bar{background:#e8e8e8}
+.rank-card-bar-fill{height:100%;background:#68efbd;border-radius:2px;transition:width 0.3s}
+
+.content-area{padding:0 0 20px;overflow-y:auto}
+.desktop-wrap{padding:0 12px 20px;overflow-x:auto}
+
+.loading{text-align:center;padding:40px;color:#888;font-size:0.9rem}
+
+@media(max-width:767px){
+  .desktop-view{display:none!important}
+  .mobile-view{display:block!important}
+}
+@media(min-width:768px){
+  .desktop-view{display:block!important}
+  .mobile-view{display:none!important}
+}
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <button class="back-btn" id="backBtn">戻る</button>
+  <div class="page-title">カードランキング</div>
+</div>
+
+<div class="filter-bar">
+  <div class="filter-row">
+    <button class="tab-btn active" data-type="MS">MS</button><button class="tab-btn" data-type="PL">PL</button>
+    <select class="filter-select" id="costFilter">
+      <option value="0">全コスト</option>
+    </select>
+    <select class="filter-select" id="catFilter">
+      <option value="">全カテゴリ</option>
+    </select>
+  </div>
+  <div class="sort-row" id="sortRow">
+    <button class="sort-btn active" data-sort="cp">コスパ</button>
+    <button class="sort-btn" data-sort="total">総合</button>
+    <button class="sort-btn" data-sort="mobility">機動力</button>
+    <button class="sort-btn" data-sort="ranged">射撃</button>
+    <button class="sort-btn" data-sort="melee">格闘</button>
+    <button class="sort-btn" data-sort="hp">HP</button>
+  </div>
+</div>
+
+<div class="count-info" id="countInfo"></div>
+
+<div class="content-area">
+  <div class="desktop-view desktop-wrap">
+    <table class="rank-table">
+      <thead>
+        <tr>
+          <th>#</th><th>カード</th><th>レア</th><th>カテゴリ</th><th>コスト</th>
+          <th>総合</th><th>コスパ</th><th>機動</th><th>射撃</th><th>格闘</th><th>HP</th><th></th>
+        </tr>
+      </thead>
+      <tbody id="tableBody"></tbody>
+    </table>
+  </div>
+  <div class="mobile-view">
+    <div class="rank-cards" id="cardList"></div>
+  </div>
+</div>
+
+<div class="loading" id="loadingEl">データ読込中...</div>
+
+<script>
+(function(){
+  // Light mode
+  if(localStorage.getItem('abds_lightMode')==='true') document.body.classList.add('light');
+
+  // Back button
+  document.getElementById('backBtn').addEventListener('click',function(){
+    var isMobile = window.innerWidth < 768;
+    location.href = isMobile ? './mobile.html' : './index.html';
+  });
+
+  var RARITY_COLORS = {
+    M:'#82b1ff',C:'#aaa',R:'#ffe082',SR:'#ff8a80',U:'#ce93d8',
+    P:'#68efbd',PR:'#f48fb1',LR:'#ffcc80',LE:'#ff8a80',CP:'#80deea',
+    LX:'#82b1ff',A:'#aaa','SP-SEC':'#ffd700'
+  };
+
+  var MS_CATS = ['機動','近距離','遠距離'];
+  var PL_CATS = ['制圧','殲滅','防衛'];
+
+  var allCards = [];
+  var currentType = 'MS';
+  var currentCost = 0;
+  var currentCat = '';
+  var currentSort = 'cp';
+
+  var costFilter = document.getElementById('costFilter');
+  var catFilter = document.getElementById('catFilter');
+  var tableBody = document.getElementById('tableBody');
+  var cardList = document.getElementById('cardList');
+  var countInfo = document.getElementById('countInfo');
+  var loadingEl = document.getElementById('loadingEl');
+
+  // Init cost options
+  for(var i=1;i<=13;i++){
+    var o = document.createElement('option');
+    o.value = i; o.textContent = 'コスト'+i;
+    costFilter.appendChild(o);
+  }
+
+  function updateCatOptions(){
+    var cats = currentType === 'MS' ? MS_CATS : PL_CATS;
+    catFilter.innerHTML = '<option value="">全カテゴリ</option>';
+    cats.forEach(function(c){
+      var o = document.createElement('option');
+      o.value = c; o.textContent = c;
+      catFilter.appendChild(o);
+    });
+  }
+  updateCatOptions();
+
+  // Tab buttons
+  document.querySelectorAll('.tab-btn[data-type]').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      document.querySelectorAll('.tab-btn[data-type]').forEach(function(b){b.classList.remove('active')});
+      btn.classList.add('active');
+      currentType = btn.dataset.type;
+      currentCat = '';
+      updateCatOptions();
+      render();
+    });
+  });
+
+  costFilter.addEventListener('change',function(){
+    currentCost = parseInt(this.value);
+    render();
+  });
+  catFilter.addEventListener('change',function(){
+    currentCat = this.value;
+    render();
+  });
+
+  // Sort buttons
+  document.getElementById('sortRow').addEventListener('click',function(e){
+    var btn = e.target.closest('.sort-btn');
+    if(!btn) return;
+    document.querySelectorAll('.sort-btn').forEach(function(b){b.classList.remove('active')});
+    btn.classList.add('active');
+    currentSort = btn.dataset.sort;
+    render();
+  });
+
+  function getTotal(c){
+    return (c.mobility||0)+(c.ranged||0)+(c.melee||0)+(c.hp||0);
+  }
+  function getCP(c){
+    var cost = c.cost||1;
+    return getTotal(c)/cost;
+  }
+  function getSortVal(c){
+    switch(currentSort){
+      case 'cp': return getCP(c);
+      case 'total': return getTotal(c);
+      case 'mobility': return c.mobility||0;
+      case 'ranged': return c.ranged||0;
+      case 'melee': return c.melee||0;
+      case 'hp': return c.hp||0;
+    }
+    return 0;
+  }
+
+  function rarityBadge(r){
+    var color = RARITY_COLORS[r]||'#aaa';
+    return '<span class="rarity-badge" style="background:'+color+';color:#000">'+((r||'?'))+'</span>';
+  }
+
+  function render(){
+    var filtered = allCards.filter(function(c){
+      if(c.type !== currentType) return false;
+      if(/_p\d+$/.test(c.number)) return false;
+      if(!c.cost) return false;
+      if(currentCost && c.cost !== currentCost) return false;
+      if(currentCat && c.category !== currentCat) return false;
+      return true;
+    });
+
+    filtered.sort(function(a,b){ return getSortVal(b)-getSortVal(a); });
+
+    var maxCP = filtered.length ? getSortVal(filtered[0]) : 1;
+    if(maxCP <= 0) maxCP = 1;
+
+    countInfo.textContent = filtered.length + '枚中';
+
+    // Desktop table
+    var html = '';
+    filtered.forEach(function(c,i){
+      var total = getTotal(c);
+      var cp = getCP(c);
+      var sv = getSortVal(c);
+      var pct = Math.round((sv/maxCP)*100);
+      html += '<tr>'
+        +'<td class="rank-num">'+(i+1)+'</td>'
+        +'<td><div class="card-name">'+c.name+'</div><div class="card-number">'+c.number+'</div></td>'
+        +'<td>'+rarityBadge(c.rarity)+'</td>'
+        +'<td class="cat-badge">'+((c.category||'-'))+'</td>'
+        +'<td>'+c.cost+'</td>'
+        +'<td class="total-val">'+total+'</td>'
+        +'<td class="cp-val">'+cp.toFixed(1)+'</td>'
+        +'<td class="stat-mob">'+(c.mobility||0)+'</td>'
+        +'<td class="stat-rng">'+(c.ranged||0)+'</td>'
+        +'<td class="stat-mel">'+(c.melee||0)+'</td>'
+        +'<td class="stat-hp">'+(c.hp||0)+'</td>'
+        +'<td><div class="cp-bar-wrap"><div class="cp-bar" style="width:'+pct+'%"></div></div></td>'
+        +'</tr>';
+    });
+    tableBody.innerHTML = html;
+
+    // Mobile cards
+    var mhtml = '';
+    filtered.forEach(function(c,i){
+      var total = getTotal(c);
+      var cp = getCP(c);
+      var sv = getSortVal(c);
+      var pct = Math.round((sv/maxCP)*100);
+      mhtml += '<div class="rank-card">'
+        +'<div class="rank-card-top">'
+          +'<div class="rank-card-num">#'+(i+1)+'</div>'
+          +'<div class="rank-card-info">'
+            +'<div class="rank-card-name">'+c.name+'</div>'
+            +'<div class="rank-card-meta">'
+              +'<span class="card-number">'+c.number+'</span> '
+              +rarityBadge(c.rarity)+' '
+              +'<span class="cat-badge">'+((c.category||'-'))+'</span> '
+              +'<span>コスト'+c.cost+'</span>'
+            +'</div>'
+          +'</div>'
+          +'<div class="rank-card-right">'
+            +'<div class="rank-card-cp">'+cp.toFixed(1)+'</div>'
+            +'<div class="rank-card-cp-label">CP (総合'+total+')</div>'
+          +'</div>'
+        +'</div>'
+        +'<div class="rank-card-stats">'
+          +'<span><span class="stat-label">機動</span><span class="stat-mob">'+(c.mobility||0)+'</span></span>'
+          +'<span><span class="stat-label">射撃</span><span class="stat-rng">'+(c.ranged||0)+'</span></span>'
+          +'<span><span class="stat-label">格闘</span><span class="stat-mel">'+(c.melee||0)+'</span></span>'
+          +'<span><span class="stat-label">HP</span><span class="stat-hp">'+(c.hp||0)+'</span></span>'
+        +'</div>'
+        +'<div class="rank-card-bar"><div class="rank-card-bar-fill" style="width:'+pct+'%"></div></div>'
+        +'</div>';
+    });
+    cardList.innerHTML = mhtml;
+  }
+
+  // Load data
+  fetch('./data/card_index.json')
+    .then(function(r){ return r.json(); })
+    .then(function(cards){
+      // Inherit parallel card data
+      var baseMap = {};
+      cards.forEach(function(c){
+        if(c.number && !/_p\d+$/.test(c.number)) baseMap[c.number] = c;
+      });
+      var inheritFields = ['cost','mobility','ranged','melee','hp','terrain'];
+      cards.forEach(function(c){
+        if(!c.number || !/_p\d+$/.test(c.number)) return;
+        var base = baseMap[c.number.replace(/_p\d+$/,'')];
+        if(!base) return;
+        inheritFields.forEach(function(f){
+          if(base[f] !== undefined && (c[f] == null || c[f] === 0 || c[f] === '')) c[f] = base[f];
+        });
+      });
+
+      allCards = cards;
+      loadingEl.style.display = 'none';
+      render();
+    })
+    .catch(function(err){
+      loadingEl.textContent = 'データの読込に失敗しました';
+      console.error(err);
+    });
+})();
+</script>
+</body>
+</html>
