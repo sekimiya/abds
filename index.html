@@ -6001,8 +6001,73 @@ async function showCardModal(number) {
     </div>`;
   }
 
+  // カード解析ボタン
+  if (cardIdx && cardIdx.cost) {
+    html += `<div style="margin-top:0.8rem;text-align:center">
+      <button onclick="toggleCardAnalysis('${escapeJsForAttr(number)}')" id="analysisBtn"
+        style="background:#1a2a20;color:#68efbd;border:1px solid #68efbd;border-radius:6px;padding:8px 20px;font-size:0.85rem;font-weight:600;cursor:pointer">
+        カード解析
+      </button>
+    </div>
+    <div id="cardAnalysisArea"></div>`;
+  }
+
   document.getElementById('cardDetailBody').innerHTML = html;
   document.getElementById('cardDetailModal').classList.add('open');
+}
+
+function toggleCardAnalysis(number) {
+  const area = document.getElementById('cardAnalysisArea');
+  if (!area) return;
+  if (area.innerHTML) { area.innerHTML = ''; return; }
+
+  const card = AppState.cardIndex.find(c => c.number === number);
+  if (!card || !card.cost) return;
+
+  const sameCost = AppState.cardIndex.filter(c =>
+    c.cost === card.cost && c.type === card.type && !/_p\d+$/.test(c.number)
+  );
+  const total = c => (c.mobility||0) + (c.ranged||0) + (c.melee||0) + (c.hp||0);
+  const cp = c => total(c) / (c.cost||1);
+
+  const metrics = [
+    { key: 'cp',       label: 'コスパ',  val: c => cp(c),         color: '#68efbd' },
+    { key: 'total',    label: '総合',    val: c => total(c),      color: '#e0e0e0' },
+    { key: 'mobility', label: '機動力',  val: c => c.mobility||0, color: '#82b1ff' },
+    { key: 'ranged',   label: '射撃',    val: c => c.ranged||0,   color: '#ff8a80' },
+    { key: 'melee',    label: '格闘',    val: c => c.melee||0,    color: '#ffe082' },
+    { key: 'hp',       label: 'HP',      val: c => c.hp||0,       color: '#a5d6a7' },
+  ];
+
+  let h = `<div style="margin-top:0.6rem;padding:0.6rem;background:#111;border-radius:8px;border:1px solid #333">
+    <div style="font-size:0.8rem;color:#68efbd;font-weight:600;margin-bottom:0.5rem">
+      同コスト${card.cost} / ${card.type} ${sameCost.length}枚中の順位
+    </div>`;
+
+  metrics.forEach(m => {
+    const myVal = m.val(card);
+    const sorted = sameCost.map(c => m.val(c)).sort((a,b) => b - a);
+    const rank = sorted.indexOf(myVal) + 1;
+    const maxVal = sorted[0] || 1;
+    const pct = Math.round((myVal / maxVal) * 100);
+    const topPct = Math.round((rank / sameCost.length) * 100);
+    h += `<div style="display:flex;align-items:center;gap:8px;margin-bottom:4px">
+      <div style="width:48px;font-size:0.75rem;color:${m.color};font-weight:600;text-align:right">${m.label}</div>
+      <div style="flex:1;height:16px;background:#222;border-radius:3px;overflow:hidden;position:relative">
+        <div style="width:${pct}%;height:100%;background:${m.color};opacity:0.4;border-radius:3px"></div>
+        <div style="position:absolute;top:0;left:4px;font-size:0.65rem;line-height:16px;color:#fff;font-weight:600">
+          ${myVal}${m.key === 'cp' ? '' : ''}
+        </div>
+      </div>
+      <div style="min-width:64px;font-size:0.75rem;font-weight:700;color:${rank <= 3 ? '#68efbd' : rank <= 10 ? '#ffe082' : '#ccc'}">
+        ${rank}位 / ${sameCost.length}
+      </div>
+      <div style="min-width:36px;font-size:0.65rem;color:#888">上位${topPct}%</div>
+    </div>`;
+  });
+
+  h += '</div>';
+  area.innerHTML = h;
 }
 
 function closeCardModal() {
