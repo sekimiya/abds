@@ -4318,7 +4318,8 @@ const UIRenderer = {
         const isActive = info && info.count >= info.required;
         const tag = document.createElement('div');
         tag.className = 'slot-link-tag ' + (isActive ? 'link-on' : 'link-off');
-        tag.textContent = link.name;
+        const effectText = isActive && link.effect ? ` ${link.effect}` : '';
+        tag.textContent = link.name + effectText;
         tagsDiv.appendChild(tag);
       });
       slotEl.appendChild(tagsDiv);
