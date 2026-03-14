@@ -86,6 +86,7 @@ body.light .rank-table td{border-color:#eee}
 .rank-table td{padding:6px;border-bottom:1px solid #1f1f1f;vertical-align:middle}
 .rank-table tr:hover{background:#1a2a20}
 .rank-num{font-weight:700;color:#68efbd;font-size:0.9rem;width:36px;text-align:center}
+.rank-thumb{width:36px;height:50px;object-fit:cover;border-radius:3px;vertical-align:middle;background:#222}
 .card-name{font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:180px}
 .card-number{font-size:0.7rem;color:#666}
 .rarity-badge{
@@ -111,6 +112,7 @@ body.light .rank-table td{border-color:#eee}
 body.light .rank-card{background:#fff;border-color:#ddd}
 .rank-card-top{display:flex;align-items:center;gap:8px}
 .rank-card-num{font-weight:700;color:#68efbd;font-size:1rem;min-width:28px}
+.rank-card-thumb{width:40px;height:56px;object-fit:cover;border-radius:4px;background:#222;flex-shrink:0}
 .rank-card-info{flex:1;min-width:0}
 .rank-card-name{font-weight:600;font-size:0.9rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .rank-card-meta{font-size:0.7rem;color:#888;display:flex;gap:6px;align-items:center;flex-wrap:wrap}
@@ -173,7 +175,7 @@ body.light .rank-card-bar{background:#e8e8e8}
     <table class="rank-table">
       <thead>
         <tr>
-          <th>#</th><th>カード</th><th>レア</th><th>カテゴリ</th><th>コスト</th>
+          <th>#</th><th></th><th>カード</th><th>レア</th><th>カテゴリ</th><th>コスト</th>
           <th>総合</th><th>コスパ</th><th>機動</th><th>射撃</th><th>格闘</th><th>HP</th><th></th>
         </tr>
       </thead>
@@ -197,6 +199,8 @@ body.light .rank-card-bar{background:#e8e8e8}
     var isMobile = window.innerWidth < 768;
     location.href = isMobile ? './mobile.html' : './index.html';
   });
+
+  var PLACEHOLDER = 'data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2236%22 height=%2250%22><rect fill=%22%23222%22 width=%2236%22 height=%2250%22/></svg>';
 
   var RARITY_COLORS = {
     M:'#82b1ff',C:'#aaa',R:'#ffe082',SR:'#ff8a80',U:'#ce93d8',
@@ -317,8 +321,10 @@ body.light .rank-card-bar{background:#e8e8e8}
       var cp = getCP(c);
       var sv = getSortVal(c);
       var pct = Math.round((sv/maxCP)*100);
+      var imgUrl = c.front_url || PLACEHOLDER;
       html += '<tr>'
         +'<td class="rank-num">'+(i+1)+'</td>'
+        +'<td><img class="rank-thumb" src="'+imgUrl+'" loading="lazy" onerror="this.src=PLACEHOLDER"></td>'
         +'<td><div class="card-name">'+c.name+'</div><div class="card-number">'+c.number+'</div></td>'
         +'<td>'+rarityBadge(c.rarity)+'</td>'
         +'<td class="cat-badge">'+((c.category||'-'))+'</td>'
@@ -341,9 +347,11 @@ body.light .rank-card-bar{background:#e8e8e8}
       var cp = getCP(c);
       var sv = getSortVal(c);
       var pct = Math.round((sv/maxCP)*100);
+      var mImgUrl = c.front_url || PLACEHOLDER;
       mhtml += '<div class="rank-card">'
         +'<div class="rank-card-top">'
           +'<div class="rank-card-num">#'+(i+1)+'</div>'
+          +'<img class="rank-card-thumb" src="'+mImgUrl+'" loading="lazy" onerror="this.src=PLACEHOLDER">'
           +'<div class="rank-card-info">'
             +'<div class="rank-card-name">'+c.name+'</div>'
             +'<div class="rank-card-meta">'
