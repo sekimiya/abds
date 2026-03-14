@@ -689,7 +689,21 @@ body.light .ss-text{color:#555}
 .weapon-name{color:#ccc;font-weight:bold;font-size:0.85rem}
 .weapon-info{color:#888;font-size:0.75rem;flex-shrink:0}
 .sq-inline-badge{font-size:0.65rem;background:#4a1a4a;color:#f48fb1;padding:1px 4px;border-radius:3px;vertical-align:middle;margin-left:3px}
+.usp-inline-badge{font-size:0.65rem;background:#1a237e;color:#82b1ff;padding:1px 4px;border-radius:3px;vertical-align:middle;margin-left:3px}
 .eb-inline-badge{font-size:0.65rem;background:#3d2800;color:#ffb74d;padding:1px 4px;border-radius:3px;vertical-align:middle;margin-left:3px}
+.uncertain-badge{display:inline-block;font-size:0.6rem;color:#ff9800;border:1px solid #ff9800;border-radius:3px;padding:0 3px;margin-left:4px;opacity:0.8}
+.detail-subsection{margin-top:8px;padding:8px;background:rgba(255,255,255,0.03);border-radius:6px;border-left:2px solid #555}
+.detail-subsection.usp{border-left-color:#82b1ff}
+.detail-subsection.sqsp{border-left-color:#a5d6a7}
+.detail-subsection-title{font-size:0.75rem;font-weight:bold;color:#aaa;margin-bottom:4px}
+.detail-subsection.usp .detail-subsection-title{color:#82b1ff}
+.detail-subsection.sqsp .detail-subsection-title{color:#a5d6a7}
+.detail-partners{font-size:0.8rem;color:#90caf9;margin:2px 0}
+.detail-condition{font-size:0.8rem;color:#ffcc80;margin:2px 0}
+.detail-tag.usp{background:#1a237e;color:#82b1ff;border-color:#3949ab}
+.detail-tag.sqsp{background:#1b3d1b;color:#a5d6a7;border-color:#388e3c}
+.detail-ability-name.usp{color:#82b1ff;font-size:0.85rem}
+.detail-ability-name.sqsp{color:#a5d6a7;font-size:0.85rem}
 .pl-sq-details{margin-top:6px;padding:6px 8px;background:var(--bg-card);border-radius:4px;border-left:2px solid var(--pl-gold)}
 .pl-sq-row{display:flex;gap:4px;margin-bottom:3px;align-items:baseline}
 .pl-sq-label{
@@ -3401,10 +3415,10 @@ const UIRenderer = {
 
     if (type === 'ms') {
       isSqCard = ocr?.special_attack?.sp_type === 'SQUAD SP' || !!(indexEntry?.has_sq_link);
-      isEbCard = !!(ocr?.echoes_beat?.has_eb) || !!(indexEntry?.has_eb_link);
+      isEbCard = !!(ocr?.special_attack?.echoes_beat) || !!(indexEntry?.has_eb_link);
       isAbCard = !!(indexEntry?.has_ab_link);
       if (isAbCard) { badge.textContent = 'AB'; badge.className = 'ov-badge ab-b'; }
-      else if (ocr?.echoes_beat?.has_eb) {
+      else if (ocr?.special_attack?.echoes_beat) {
         let ebHtml = indexEntry?.eb_type === 'sp' ? 'EBSP' : 'EB';
         const ebText = indexEntry?.eb_text || '';
         const dm = ebText.match(/EBLv\.を(\d+)下げ/);
@@ -3554,7 +3568,7 @@ const UIRenderer = {
     const plIndex = this._getIndexEntry(plNumber);
     let msType = '';
     if (msNumber) {
-      const isMsEb = !!(msOcr?.echoes_beat?.has_eb) || !!(msIndex?.has_eb_link);
+      const isMsEb = !!(msOcr?.special_attack?.echoes_beat) || !!(msIndex?.has_eb_link);
       const isMsSq = msOcr?.special_attack?.sp_type === 'SQUAD SP' || !!(msIndex?.has_sq_link);
       const isMsAb = !!(msIndex?.has_ab_link);
       if (isMsEb) msType = 'eb';
@@ -3748,8 +3762,10 @@ const UIRenderer = {
   _renderSP(msOcr) {
     const sp = msOcr.special_attack;
     if (!sp) return '';
-    const isSqSp = sp.sp_type === 'SQUAD SP';
-    let html = `<div class="detail-section"><div class="detail-section-title sp">SPアタック${isSqSp ? ' <span class="sq-inline-badge">SQSP</span>' : ''}</div>`;
+    const spTypeBadges = [];
+    if (sp.sp_type === 'SQUAD SP') spTypeBadges.push('<span class="sq-inline-badge">SQSP</span>');
+    if (sp.united_sp) spTypeBadges.push('<span class="usp-inline-badge">USP</span>');
+    let html = `<div class="detail-section"><div class="detail-section-title sp">SPアタック${spTypeBadges.length ? ' ' + spTypeBadges.join(' ') : ''}</div>`;
     html += `<div class="detail-ability-name sp">${escapeHtml(sp.name || '')}</div>`;
     const tags = [];
     if (sp.target) tags.push(sp.target);
@@ -3758,37 +3774,58 @@ const UIRenderer = {
     if (sp.sp_type) tags.push(sp.sp_type);
     if (sp.attack_type) tags.push(sp.attack_type);
     if (tags.length) html += '<div class="detail-tags">' + tags.map(t => `<span class="detail-tag sp">${escapeHtml(t)}</span>`).join('') + '</div>';
-    if (sp.power) {
-      let powerText = '';
-      if (typeof sp.power === 'object') {
-        const pp = [];
-        if (sp.power.normal) pp.push(`通常:${sp.power.normal}`);
-        if (sp.power.squad) { const sqVal = Array.isArray(sp.power.squad) ? sp.power.squad.filter(v=>v).join('/') : sp.power.squad; pp.push(`部隊:${sqVal}`); }
-        if (sp.power.united) { const uVal = Array.isArray(sp.power.united) ? sp.power.united.filter(v=>v).join('/') : sp.power.united; if (uVal) pp.push(`UNITED:${uVal}`); }
-        powerText = pp.join(' / ');
-      } else { powerText = `威力:${sp.power}`; }
-      if (powerText) html += `<div class="detail-power">${escapeHtml(powerText)}</div>`;
-    }
+    if (sp.power) html += `<div class="detail-power">威力:${sp.power}</div>`;
     const ia = msOcr.impact_area;
     if (ia) { let t = ia.type === 'single' ? '単体' : ia.type === 'circular' ? '円形' : (ia.type||''); if (ia.radius) t += ` R${ia.radius}`; html += `<div class="detail-impact">着弾: ${escapeHtml(t)}</div>`; }
     if (sp.description) html += `<div class="detail-desc">${escapeHtml(sp.description)}</div>`;
+    // UNITED SP
+    if (sp.united_sp) {
+      const u = sp.united_sp;
+      html += '<div class="detail-subsection usp">';
+      html += `<div class="detail-subsection-title">UNITED SP${u._uncertain ? ' <span class="uncertain-badge">?</span>' : ''}</div>`;
+      if (u.name) html += `<div class="detail-ability-name usp">${escapeHtml(u.name)}</div>`;
+      if (u.partners && u.partners.length) html += `<div class="detail-partners">パートナー: ${u.partners.map(p => escapeHtml(p)).join(', ')}</div>`;
+      if (u.condition) html += `<div class="detail-condition">${escapeHtml(u.condition)}</div>`;
+      const uTags = [];
+      if (u.target) uTags.push(u.target);
+      if (u.range !== undefined && u.range !== null) uTags.push(`射程${u.range}`);
+      if (uTags.length) html += '<div class="detail-tags">' + uTags.map(t => `<span class="detail-tag usp">${escapeHtml(t)}</span>`).join('') + '</div>';
+      if (u.power) html += `<div class="detail-power" style="color:#82b1ff">UNITED威力:${u.power}</div>`;
+      if (u.description) html += `<div class="detail-desc">${escapeHtml(u.description)}</div>`;
+      html += '</div>';
+    }
+    // SQUAD SP
+    if (sp.squad_sp) {
+      const sq = sp.squad_sp;
+      html += '<div class="detail-subsection sqsp">';
+      html += `<div class="detail-subsection-title">SQUAD SP${sq._uncertain ? ' <span class="uncertain-badge">?</span>' : ''}</div>`;
+      if (sq.name) html += `<div class="detail-ability-name sqsp">${escapeHtml(sq.name)}</div>`;
+      if (sq.condition) html += `<div class="detail-condition">${escapeHtml(sq.condition)}</div>`;
+      const sqTags = [];
+      if (sq.target) sqTags.push(sq.target);
+      if (sq.range !== undefined && sq.range !== null) sqTags.push(`射程${sq.range}`);
+      if (sqTags.length) html += '<div class="detail-tags">' + sqTags.map(t => `<span class="detail-tag sqsp">${escapeHtml(t)}</span>`).join('') + '</div>';
+      if (sq.power) html += `<div class="detail-power" style="color:#a5d6a7">部隊威力:${sq.power}</div>`;
+      if (sq.description) html += `<div class="detail-desc">${escapeHtml(sq.description)}</div>`;
+      html += '</div>';
+    }
     html += '</div>';
     return html;
   },
 
   _renderEB(msOcr) {
-    const eb = msOcr.echoes_beat;
-    if (!eb || !eb.has_eb) return '';
-    const ebTypeLabel = eb.eb_type === 'sp' ? 'ECHOES BEAT SP' : 'ECHOES BEAT';
-    let html = `<div class="detail-section"><div class="detail-section-title eb">${ebTypeLabel}</div>`;
-    if (eb.eb_sp_name) html += `<div class="detail-ability-name eb">${escapeHtml(eb.eb_sp_name)}</div>`;
+    const eb = msOcr.special_attack?.echoes_beat;
+    if (!eb) return '';
+    const ebTypeLabel = msOcr.special_attack?.sp_type === 'ECHOES BEAT SP' ? 'ECHOES BEAT SP' : 'ECHOES BEAT';
+    let html = `<div class="detail-section"><div class="detail-section-title eb">${ebTypeLabel}${eb._uncertain ? ' <span class="uncertain-badge">?</span>' : ''}</div>`;
+    if (eb.name) html += `<div class="detail-ability-name eb">${escapeHtml(eb.name)}</div>`;
     const tags = [];
-    if (eb.eb_level) tags.push(`Lv.${eb.eb_level}`);
-    if (eb.eb_target) tags.push(eb.eb_target);
-    if (eb.eb_range !== undefined && eb.eb_range !== null) tags.push(`射程${eb.eb_range}`);
+    if (eb.level) tags.push(`Lv.${eb.level}`);
+    if (eb.target) tags.push(eb.target);
+    if (eb.range !== undefined && eb.range !== null) tags.push(`射程${eb.range}`);
     if (tags.length) html += '<div class="detail-tags">' + tags.map(t => `<span class="detail-tag eb">${escapeHtml(t)}</span>`).join('') + '</div>';
-    if (eb.eb_power) html += `<div class="detail-power" style="color:#ffb74d">威力:${eb.eb_power}</div>`;
-    if (eb.eb_description) html += `<div class="detail-desc">${escapeHtml(eb.eb_description)}</div>`;
+    if (eb.power) html += `<div class="detail-power" style="color:#ffb74d">威力:${eb.power}</div>`;
+    if (eb.description) html += `<div class="detail-desc">${escapeHtml(eb.description)}</div>`;
     html += '</div>';
     return html;
   },
@@ -3913,7 +3950,7 @@ const UIRenderer = {
     let ebActive = false;
     for (let u = 0; u < 5; u++) {
       const msOcr = AppState.deckOcr[u]; const plOcr = AppState.deckOcr[u + 5];
-      if (!msOcr?.echoes_beat?.has_eb) continue;
+      if (!msOcr?.special_attack?.echoes_beat) continue;
       const plLinks = plOcr?.link_abilities || plOcr?.link_ability || [];
       if (Array.isArray(plLinks) && plLinks.find(l => l?.is_eb_link && l.name && activeEbLinks[l.name])) { ebActive = true; break; }
     }
@@ -4927,7 +4964,7 @@ function openScreenshotMode() {
     const plLinks = Array.isArray(plOcr?.link_abilities || plOcr?.link_ability) ? (plOcr?.link_abilities || plOcr?.link_ability) : [];
     const sp = msOcr?.special_attack;
     const plSkill = plOcr?.pl_skill || plOcr?.pilot_skill;
-    const eb = msOcr?.echoes_beat;
+    const eb = msOcr?.special_attack?.echoes_beat;
     const weapon = msOcr?.weapon;
     const msAbility = msOcr?.ms_ability;
     units.push({ msNum, plNum, msOcr, plOcr, msIdx, plIdx, msCost, plCost, cat, stats, tc, msLinks, plLinks, sp, plSkill, eb, weapon, msAbility });
@@ -4987,7 +5024,7 @@ function openScreenshotMode() {
     const hasAbLink = idx?.has_ab_link;
     const hasSqLink = idx?.has_sq_link;
     if (type === 'ms') {
-      const hasEb = ocr?.echoes_beat?.has_eb;
+      const hasEb = !!ocr?.special_attack?.echoes_beat;
       const isSq = ocr?.special_attack?.sp_type === 'SQUAD SP' || hasSqLink;
       if (hasAbLink) ov += '<div class="ss-ov-badge ab-b">AB</div>';
       else if (hasEb) { const ebt = idx?.eb_type === 'sp' ? 'EBSP' : 'EB'; ov += `<div class="ss-ov-badge eb-b">${ebt}</div>`; }
@@ -5195,14 +5232,14 @@ function openScreenshotMode() {
   // EB
   html += label('EB');
   units.forEach(u => {
-    if (!u.eb || !u.eb.has_eb) { html += cell(''); return; }
+    if (!u.eb) { html += cell(''); return; }
     let s = `<div class="ss-skill-block">`;
-    s += `<div class="ss-skill-name" style="color:#ff9800">${h(u.eb.eb_sp_name||'EB')}</div>`;
+    s += `<div class="ss-skill-name" style="color:#ff9800">${h(u.eb.name||'EB')}</div>`;
     const tags = [];
-    if (u.eb.eb_level) tags.push('Lv.'+u.eb.eb_level);
-    if (u.eb.eb_target) tags.push(u.eb.eb_target);
+    if (u.eb.level) tags.push('Lv.'+u.eb.level);
+    if (u.eb.target) tags.push(u.eb.target);
     if (tags.length) s += `<div class="ss-skill-tags">${tags.map(t=>`<span class="ss-skill-tag">${h(t)}</span>`).join('')}</div>`;
-    if (u.eb.eb_description) s += `<div class="ss-skill-effect">${h(u.eb.eb_description)}</div>`;
+    if (u.eb.description) s += `<div class="ss-skill-effect">${h(u.eb.description)}</div>`;
     s += `</div>`;
     html += cell(s, 'ss-cell-col ss-theme-eb');
   });
