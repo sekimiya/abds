@@ -5377,18 +5377,38 @@ const SearchPanel = {
         DeckManager.setCard(emptySlot, card.number);
       } else {
         Toast.show(`${type}の空きスロットがありません`, 'info');
+        closeCardPicker();
+        return;
       }
-      closeCardPicker();
-      return;
+    } else {
+      const slotType = slot < 5 ? 'MS' : 'PL';
+      if (card.type && card.type !== slotType) {
+        Toast.show(`${slotType}スロットに${card.type}カードはセット不可`, 'error');
+        return;
+      }
+      DeckManager.setCard(slot, card.number);
     }
-    const slotType = slot < 5 ? 'MS' : 'PL';
-    if (card.type && card.type !== slotType) {
-      Toast.show(`${slotType}スロットに${card.type}カードはセット不可`, 'error');
-      return;
+    // 次の空きスロットに自動で進む
+    const currentType = card.type;
+    const range = currentType === 'MS' ? [0,1,2,3,4] : [5,6,7,8,9];
+    const nextEmpty = range.find(i => !AppState.deck[i]);
+    if (nextEmpty !== undefined) {
+      UIRenderer.setActiveSlot(nextEmpty);
+      this._lockedType = currentType;
+      this.applyFilters();
+    } else {
+      // 同タイプが埋まったら反対側の空きを探す
+      const otherRange = currentType === 'MS' ? [5,6,7,8,9] : [0,1,2,3,4];
+      const otherEmpty = otherRange.find(i => !AppState.deck[i]);
+      if (otherEmpty !== undefined) {
+        UIRenderer.setActiveSlot(otherEmpty);
+        this._lockedType = otherEmpty < 5 ? 'MS' : 'PL';
+        this.applyFilters();
+      } else {
+        closeCardPicker();
+        UIRenderer.setActiveSlot(null);
+      }
     }
-    DeckManager.setCard(slot, card.number);
-    closeCardPicker();
-    UIRenderer.setActiveSlot(null);
   }
 };
 
