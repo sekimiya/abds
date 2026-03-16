@@ -1377,7 +1377,7 @@ select,input{font-family:inherit}
       <div class="header-menu-row" style="gap:0.3rem">
         <button class="header-btn" id="alignBtn" onclick="UIRenderer.alignDisplay()" title="カラム表示を揃える" style="flex:1">表示を整理</button>
         <button class="header-btn" onclick="DeckManager.sortByCategory()" title="殲滅→制圧→防衛の順に並び替え" style="flex:1">並び順を整理</button>
-        <button class="header-btn" id="hCardsBtn" onclick="UIRenderer.toggleHCards()" title="MS/PLカードの横並び表示" style="flex:1">カード横並び</button>
+        <button class="header-btn" id="hCardsBtn" onclick="UIRenderer.toggleHCards()" title="MS/PLカードの並び方向を切替" style="flex:1">カード縦並び</button>
       </div>
       <div class="header-menu-divider"></div>
       <div class="header-menu-label">バッジ表示</div>
@@ -4545,22 +4545,26 @@ const UIRenderer = {
   },
 
   // ========== カード横並び ==========
-  _isHCards: false,
+  _isHCards: true,
 
   toggleHCards() {
     this._isHCards = !this._isHCards;
     const cols = document.querySelectorAll('.unit-column');
     cols.forEach(col => col.classList.toggle('h-cards', this._isHCards));
-    document.getElementById('hCardsBtn')?.classList.toggle('primary', this._isHCards);
+    const btn = document.getElementById('hCardsBtn');
+    if (btn) { btn.classList.toggle('primary', !this._isHCards); btn.textContent = this._isHCards ? 'カード縦並び' : 'カード横並び'; }
     localStorage.setItem('abds_hcards', this._isHCards ? '1' : '0');
   },
 
   restoreHCards() {
-    if (localStorage.getItem('abds_hcards') === '1') {
-      this._isHCards = true;
-      document.querySelectorAll('.unit-column').forEach(col => col.classList.add('h-cards'));
-      document.getElementById('hCardsBtn')?.classList.add('primary');
+    if (localStorage.getItem('abds_hcards') === '0') {
+      this._isHCards = false;
     }
+    if (this._isHCards) {
+      document.querySelectorAll('.unit-column').forEach(col => col.classList.add('h-cards'));
+    }
+    const btn = document.getElementById('hCardsBtn');
+    if (btn) { btn.classList.toggle('primary', !this._isHCards); btn.textContent = this._isHCards ? 'カード縦並び' : 'カード横並び'; }
   },
 
   _alignSections(containerPrefix, sectionTypes) {
