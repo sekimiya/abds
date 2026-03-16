@@ -689,24 +689,26 @@ body.light .ss-text{color:#555}
 .weapon-name{color:#ccc;font-weight:bold;font-size:0.85rem}
 .weapon-info{color:#888;font-size:0.75rem;flex-shrink:0}
 .sq-inline-badge{font-size:0.65rem;background:#4a1a4a;color:#f48fb1;padding:1px 4px;border-radius:3px;vertical-align:middle;margin-left:3px}
-.usp-inline-badge{font-size:0.65rem;background:#1a237e;color:#82b1ff;padding:1px 4px;border-radius:3px;vertical-align:middle;margin-left:3px}
-.detail-section-title.usp{color:#82b1ff}
+.usp-inline-badge{font-size:0.65rem;background:#3d3000;color:#ffe082;padding:1px 4px;border-radius:3px;vertical-align:middle;margin-left:3px}
+.detail-section-title.usp{color:#ffe082}
 .detail-section-title.sqsp{color:#a5d6a7}
-.detail-power.usp-power{color:#82b1ff}
+.detail-power.usp-power{color:#ffe082}
 .detail-power.sqsp-power{color:#a5d6a7}
 .eb-inline-badge{font-size:0.65rem;background:#3d2800;color:#ffb74d;padding:1px 4px;border-radius:3px;vertical-align:middle;margin-left:3px}
 .uncertain-badge{display:inline-block;font-size:0.6rem;color:#ff9800;border:1px solid #ff9800;border-radius:3px;padding:0 3px;margin-left:4px;opacity:0.8}
 .detail-subsection{margin-top:8px;padding:8px;background:rgba(255,255,255,0.03);border-radius:6px;border-left:2px solid #555}
-.detail-subsection.usp{border-left-color:#82b1ff}
+.detail-subsection.usp{border-left-color:#ffe082}
 .detail-subsection.sqsp{border-left-color:#a5d6a7}
+.detail-subsection.eb{border-left-color:#ffb74d}
 .detail-subsection-title{font-size:0.75rem;font-weight:bold;color:#aaa;margin-bottom:4px}
-.detail-subsection.usp .detail-subsection-title{color:#82b1ff}
+.detail-subsection.usp .detail-subsection-title{color:#ffe082}
 .detail-subsection.sqsp .detail-subsection-title{color:#a5d6a7}
+.detail-subsection.eb .detail-subsection-title{color:#ffb74d}
 .detail-partners{font-size:0.8rem;color:#90caf9;margin:2px 0}
 .detail-condition{font-size:0.8rem;color:#ffcc80;margin:2px 0}
-.detail-tag.usp{background:#1a237e;color:#82b1ff;border-color:#3949ab}
+.detail-tag.usp{background:#3d3000;color:#ffe082;border-color:#f9a825}
 .detail-tag.sqsp{background:#1b3d1b;color:#a5d6a7;border-color:#388e3c}
-.detail-ability-name.usp{color:#82b1ff;font-size:0.85rem}
+.detail-ability-name.usp{color:#ffe082;font-size:0.85rem}
 .detail-ability-name.sqsp{color:#a5d6a7;font-size:0.85rem}
 .pl-sq-details{margin-top:6px;padding:6px 8px;background:var(--bg-card);border-radius:4px;border-left:2px solid var(--pl-gold)}
 .pl-sq-row{display:flex;gap:4px;margin-bottom:3px;align-items:baseline}
@@ -3645,10 +3647,7 @@ const UIRenderer = {
     if (msHasOcr) html += this._renderMsAbility(msOcr);
     if (plHasOcr) html += this._renderPlSkill(plOcr);
     if (msHasOcr) {
-      html += this._renderSP(msOcr);
-      html += this._renderUSP(msOcr);
-      html += this._renderSQSP(msOcr);
-      html += this._renderEB(msOcr);
+      html += this._renderSPSection(msOcr);
     }
 
     // Links
@@ -3765,7 +3764,7 @@ const UIRenderer = {
     return html;
   },
 
-  _renderSP(msOcr) {
+  _renderSPSection(msOcr) {
     const sp = msOcr.special_attack;
     if (!sp) return '';
     let html = `<div class="detail-section"><div class="detail-section-title sp">SPアタック</div>`;
@@ -3774,63 +3773,60 @@ const UIRenderer = {
     if (sp.target) tags.push(sp.target);
     if (sp.range !== undefined && sp.range !== null) tags.push(`射程${sp.range}`);
     if (sp.sp_cost !== undefined && sp.sp_cost !== null) tags.push(`SP${sp.sp_cost}`);
-    if (sp.sp_type && sp.sp_type !== 'normal') tags.push(sp.sp_type);
     if (sp.attack_type) tags.push(sp.attack_type);
     if (tags.length) html += '<div class="detail-tags">' + tags.map(t => `<span class="detail-tag sp">${escapeHtml(t)}</span>`).join('') + '</div>';
     if (sp.power) html += `<div class="detail-power">威力:${sp.power}</div>`;
     const ia = msOcr.impact_area;
     if (ia) { let t = ia.type === 'single' ? '単体' : ia.type === 'circular' ? '円形' : (ia.type||''); if (ia.radius) t += ` R${ia.radius}`; html += `<div class="detail-impact">着弾: ${escapeHtml(t)}</div>`; }
     if (sp.description) html += `<div class="detail-desc">${escapeHtml(sp.description)}</div>`;
-    html += '</div>';
-    return html;
-  },
 
-  _renderUSP(msOcr) {
-    const u = msOcr.special_attack?.united_sp;
-    if (!u) return '';
-    let html = `<div class="detail-section"><div class="detail-section-title usp">UNITED SP${u._uncertain ? ' <span class="uncertain-badge">?</span>' : ''}</div>`;
-    if (u.name) html += `<div class="detail-ability-name usp">${escapeHtml(u.name)}</div>`;
-    if (u.partners && u.partners.length) html += `<div class="detail-partners">パートナー: ${u.partners.map(p => escapeHtml(p)).join(', ')}</div>`;
-    if (u.condition) html += `<div class="detail-condition">${escapeHtml(u.condition)}</div>`;
-    const tags = [];
-    if (u.target) tags.push(u.target);
-    if (u.range !== undefined && u.range !== null) tags.push(`射程${u.range}`);
-    if (tags.length) html += '<div class="detail-tags">' + tags.map(t => `<span class="detail-tag usp">${escapeHtml(t)}</span>`).join('') + '</div>';
-    if (u.power) html += `<div class="detail-power usp-power">UNITED威力:${u.power}</div>`;
-    if (u.description) html += `<div class="detail-desc">${escapeHtml(u.description)}</div>`;
-    html += '</div>';
-    return html;
-  },
+    // ECHOES BEAT sub-section
+    const eb = sp.echoes_beat;
+    if (eb) {
+      const ebLabel = sp.sp_type === 'ECHOES BEAT SP' ? 'ECHOES BEAT SP' : 'ECHOES BEAT';
+      html += `<div class="detail-subsection eb"><div class="detail-subsection-title">${ebLabel}${eb._uncertain ? ' <span class="uncertain-badge">?</span>' : ''}</div>`;
+      if (eb.name) html += `<div class="detail-ability-name" style="color:#ffb74d;font-size:0.85rem">${escapeHtml(eb.name)}</div>`;
+      const ebTags = [];
+      if (eb.level) ebTags.push(`Lv.${eb.level}`);
+      if (eb.target) ebTags.push(eb.target);
+      if (eb.range !== undefined && eb.range !== null) ebTags.push(`射程${eb.range}`);
+      if (ebTags.length) html += '<div class="detail-tags">' + ebTags.map(t => `<span class="detail-tag eb">${escapeHtml(t)}</span>`).join('') + '</div>';
+      if (eb.power) html += `<div class="detail-power" style="color:#ffb74d">威力:${eb.power}</div>`;
+      if (eb.description) html += `<div class="detail-desc">${escapeHtml(eb.description)}</div>`;
+      html += '</div>';
+    }
 
-  _renderSQSP(msOcr) {
-    const sq = msOcr.special_attack?.squad_sp;
-    if (!sq) return '';
-    let html = `<div class="detail-section"><div class="detail-section-title sqsp">SQUAD SP${sq._uncertain ? ' <span class="uncertain-badge">?</span>' : ''}</div>`;
-    if (sq.name) html += `<div class="detail-ability-name sqsp">${escapeHtml(sq.name)}</div>`;
-    if (sq.condition) html += `<div class="detail-condition">${escapeHtml(sq.condition)}</div>`;
-    const tags = [];
-    if (sq.target) tags.push(sq.target);
-    if (sq.range !== undefined && sq.range !== null) tags.push(`射程${sq.range}`);
-    if (tags.length) html += '<div class="detail-tags">' + tags.map(t => `<span class="detail-tag sqsp">${escapeHtml(t)}</span>`).join('') + '</div>';
-    if (sq.power) html += `<div class="detail-power sqsp-power">部隊威力:${sq.power}</div>`;
-    if (sq.description) html += `<div class="detail-desc">${escapeHtml(sq.description)}</div>`;
-    html += '</div>';
-    return html;
-  },
+    // SQUAD SP sub-section
+    const sq = sp.squad_sp;
+    if (sq) {
+      html += `<div class="detail-subsection sqsp"><div class="detail-subsection-title">SQUAD SP${sq._uncertain ? ' <span class="uncertain-badge">?</span>' : ''}</div>`;
+      if (sq.name) html += `<div class="detail-ability-name sqsp">${escapeHtml(sq.name)}</div>`;
+      if (sq.condition) html += `<div class="detail-condition">${escapeHtml(sq.condition)}</div>`;
+      const sqTags = [];
+      if (sq.target) sqTags.push(sq.target);
+      if (sq.range !== undefined && sq.range !== null) sqTags.push(`射程${sq.range}`);
+      if (sqTags.length) html += '<div class="detail-tags">' + sqTags.map(t => `<span class="detail-tag sqsp">${escapeHtml(t)}</span>`).join('') + '</div>';
+      if (sq.power) html += `<div class="detail-power sqsp-power">部隊威力:${sq.power}</div>`;
+      if (sq.description) html += `<div class="detail-desc">${escapeHtml(sq.description)}</div>`;
+      html += '</div>';
+    }
 
-  _renderEB(msOcr) {
-    const eb = msOcr.special_attack?.echoes_beat;
-    if (!eb) return '';
-    const ebTypeLabel = msOcr.special_attack?.sp_type === 'ECHOES BEAT SP' ? 'ECHOES BEAT SP' : 'ECHOES BEAT';
-    let html = `<div class="detail-section"><div class="detail-section-title eb">${ebTypeLabel}${eb._uncertain ? ' <span class="uncertain-badge">?</span>' : ''}</div>`;
-    if (eb.name) html += `<div class="detail-ability-name eb">${escapeHtml(eb.name)}</div>`;
-    const tags = [];
-    if (eb.level) tags.push(`Lv.${eb.level}`);
-    if (eb.target) tags.push(eb.target);
-    if (eb.range !== undefined && eb.range !== null) tags.push(`射程${eb.range}`);
-    if (tags.length) html += '<div class="detail-tags">' + tags.map(t => `<span class="detail-tag eb">${escapeHtml(t)}</span>`).join('') + '</div>';
-    if (eb.power) html += `<div class="detail-power" style="color:#ffb74d">威力:${eb.power}</div>`;
-    if (eb.description) html += `<div class="detail-desc">${escapeHtml(eb.description)}</div>`;
+    // UNITED SP sub-section
+    const u = sp.united_sp;
+    if (u) {
+      html += `<div class="detail-subsection usp"><div class="detail-subsection-title">UNITED SP${u._uncertain ? ' <span class="uncertain-badge">?</span>' : ''}</div>`;
+      if (u.name) html += `<div class="detail-ability-name usp">${escapeHtml(u.name)}</div>`;
+      if (u.partners && u.partners.length) html += `<div class="detail-partners">パートナー: ${u.partners.map(p => escapeHtml(p)).join(', ')}</div>`;
+      if (u.condition) html += `<div class="detail-condition">${escapeHtml(u.condition)}</div>`;
+      const uTags = [];
+      if (u.target) uTags.push(u.target);
+      if (u.range !== undefined && u.range !== null) uTags.push(`射程${u.range}`);
+      if (uTags.length) html += '<div class="detail-tags">' + uTags.map(t => `<span class="detail-tag usp">${escapeHtml(t)}</span>`).join('') + '</div>';
+      if (u.power) html += `<div class="detail-power usp-power">UNITED威力:${u.power}</div>`;
+      if (u.description) html += `<div class="detail-desc">${escapeHtml(u.description)}</div>`;
+      html += '</div>';
+    }
+
     html += '</div>';
     return html;
   },

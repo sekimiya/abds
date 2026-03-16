@@ -432,6 +432,9 @@ select,input{font-family:inherit}
   overflow-y:auto;overflow-x:hidden;
 }
 .unit-column:last-child{border-right:none}
+.unit-cards-row{display:flex;flex-direction:column;gap:0}
+.unit-column.h-cards .unit-cards-row{flex-direction:row;gap:0.2rem}
+.unit-column.h-cards .unit-cards-row .card-slot{flex:1;min-width:0}
 .unit-scroll-spacer{flex-shrink:0;height:0;padding-bottom:calc(88 / 63 * 100%);}
 
 /* Unit column sections */
@@ -639,10 +642,10 @@ select,input{font-family:inherit}
 }
 .uncertain-badge{display:inline-block;font-size:0.6rem;color:#ff9800;border:1px solid #ff9800;border-radius:3px;padding:0 3px;margin-left:4px;opacity:0.8}
 .detail-subsection{margin-top:0.4rem;padding:0.4rem;background:rgba(255,255,255,0.03);border-radius:4px;border-left:2px solid #555}
-.detail-subsection.usp{border-left-color:#82b1ff}
+.detail-subsection.usp{border-left-color:#ffe082}
 .detail-subsection.sqsp{border-left-color:#a5d6a7}
 .detail-subsection-title{font-size:0.7rem;font-weight:bold;color:#aaa;margin-bottom:3px}
-.detail-subsection.usp .detail-subsection-title{color:#82b1ff}
+.detail-subsection.usp .detail-subsection-title{color:#ffe082}
 .detail-subsection.sqsp .detail-subsection-title{color:#a5d6a7}
 .detail-partners{font-size:0.75rem;color:#90caf9;margin:2px 0}
 .detail-condition{font-size:0.75rem;color:#ffcc80;margin:2px 0}
@@ -824,9 +827,9 @@ select,input{font-family:inherit}
   background:#3a1a1a;color:#ff8a80;border:1px solid #6a2a2a;
 }
 .sp-tag.squad-sp{background:#1b3d1b;color:#a5d6a7;border-color:#388e3c}
-.sp-tag.united-sp{background:#1a237e;color:#82b1ff;border-color:#3949ab}
+.sp-tag.united-sp{background:#3d3000;color:#ffe082;border-color:#f9a825}
 .sp-tag.eb-sp{background:#3d2800;color:#ffb74d;border-color:#ff9800}
-.usp-section{border-top:1px solid #1a237e;margin-top:4px;padding-top:4px}
+.usp-section{border-top:1px solid #3d3000;margin-top:4px;padding-top:4px}
 .sqsp-section{border-top:1px solid #1b3d1b;margin-top:4px;padding-top:4px}
 .sp-desc{color:#999;font-size:0.68rem;line-height:1.3;
   display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;
@@ -855,6 +858,11 @@ select,input{font-family:inherit}
 .sp-title{color:#ffb2b2;font-weight:bold;font-size:0.72rem;margin-bottom:0.15rem}
 .sp-name{color:#ffb2b2;font-weight:bold}
 .sp-power{color:#888}
+.sp-subsection{margin-top:0.3rem;padding:0.25rem 0.35rem;background:rgba(255,255,255,0.02);border-radius:3px;border-left:2px solid #555}
+.sp-subsection.eb-sub{border-left-color:#ffb74d}
+.sp-subsection.sqsp-sub{border-left-color:#a5d6a7}
+.sp-subsection.usp-sub{border-left-color:#ffe082}
+.sp-sub-title{font-weight:bold;font-size:0.68rem;margin-bottom:0.1rem}
 
 /* ===== TACTICS CARD (in header) ===== */
 .tactics-btn{
@@ -1368,6 +1376,7 @@ select,input{font-family:inherit}
       <div class="header-menu-row" style="gap:0.3rem">
         <button class="header-btn" id="alignBtn" onclick="UIRenderer.alignDisplay()" title="カラム表示を揃える" style="flex:1">表示を整理</button>
         <button class="header-btn" onclick="DeckManager.sortByCategory()" title="殲滅→制圧→防衛の順に並び替え" style="flex:1">並び順を整理</button>
+        <button class="header-btn" id="hCardsBtn" onclick="UIRenderer.toggleHCards()" title="MS/PLカードの横並び表示" style="flex:1">カード横並び</button>
       </div>
       <div class="header-menu-divider"></div>
       <div class="header-menu-label">バッジ表示</div>
@@ -3398,17 +3407,19 @@ const UIRenderer = {
       col.innerHTML = `
         <div class="unit-card-names" id="unit-names-${u}"></div>
         <div class="unit-cat-row" id="unit-cat-${u}"></div>
-        <div class="card-slot" id="ms-slot-${u}" data-slot="${u}" data-type="MS">
-          <div class="card-slot-label">MS ${u+1}</div>
-          <button class="card-slot-clear" onclick="event.stopPropagation();DeckManager.clearCard(${u})">&times;</button>
-          <div class="slot-empty-icon">MS</div>
-          <div class="slot-empty-text">+</div>
-        </div>
-        <div class="card-slot" id="pl-slot-${u}" data-slot="${u+5}" data-type="PL">
-          <div class="card-slot-label">PL ${u+1}</div>
-          <button class="card-slot-clear" onclick="event.stopPropagation();DeckManager.clearCard(${u+5})">&times;</button>
-          <div class="slot-empty-icon">PL</div>
-          <div class="slot-empty-text">+</div>
+        <div class="unit-cards-row" id="unit-cards-row-${u}">
+          <div class="card-slot" id="ms-slot-${u}" data-slot="${u}" data-type="MS">
+            <div class="card-slot-label">MS ${u+1}</div>
+            <button class="card-slot-clear" onclick="event.stopPropagation();DeckManager.clearCard(${u})">&times;</button>
+            <div class="slot-empty-icon">MS</div>
+            <div class="slot-empty-text">+</div>
+          </div>
+          <div class="card-slot" id="pl-slot-${u}" data-slot="${u+5}" data-type="PL">
+            <div class="card-slot-label">PL ${u+1}</div>
+            <button class="card-slot-clear" onclick="event.stopPropagation();DeckManager.clearCard(${u+5})">&times;</button>
+            <div class="slot-empty-icon">PL</div>
+            <div class="slot-empty-text">+</div>
+          </div>
         </div>
         <div class="unit-sub-info" id="unit-sub-info-${u}"></div>
         <div class="unit-stats" id="unit-stats-${u}"></div>
@@ -3432,6 +3443,7 @@ const UIRenderer = {
         openCardPicker(idx, type);
       });
     });
+    this.restoreHCards();
   },
 
   setActiveSlot(index) {
@@ -3721,8 +3733,8 @@ const UIRenderer = {
     if (msOcr.special_attack?.united_sp) {
       const u = msOcr.special_attack.united_sp;
       html += '<div class="unit-ms-detail" data-section="united-sp">';
-      html += `<div class="ms-detail-title" style="color:#82b1ff">UNITED SP${u._uncertain ? ' <span class="uncertain-badge">?</span>' : ''}</div>`;
-      if (u.name) html += `<div class="ms-detail-ability-name" style="color:#82b1ff">${escapeHtml(u.name)}</div>`;
+      html += `<div class="ms-detail-title" style="color:#ffe082">UNITED SP${u._uncertain ? ' <span class="uncertain-badge">?</span>' : ''}</div>`;
+      if (u.name) html += `<div class="ms-detail-ability-name" style="color:#ffe082">${escapeHtml(u.name)}</div>`;
       if (u.partners && u.partners.length) html += `<div class="detail-partners">パートナー: ${u.partners.map(p => escapeHtml(p)).join(', ')}</div>`;
       if (u.condition) html += `<div class="detail-condition">${escapeHtml(u.condition)}</div>`;
       const uTags = [];
@@ -3730,10 +3742,10 @@ const UIRenderer = {
       if (u.range !== undefined && u.range !== null) uTags.push(`射程${u.range}`);
       if (uTags.length) {
         html += '<div class="ms-detail-tags">';
-        uTags.forEach(t => { html += `<span class="ms-detail-tag" style="background:#1a237e;color:#82b1ff;border-color:#3949ab">${escapeHtml(t)}</span>`; });
+        uTags.forEach(t => { html += `<span class="ms-detail-tag" style="background:#3d3000;color:#ffe082;border-color:#f9a825">${escapeHtml(t)}</span>`; });
         html += '</div>';
       }
-      if (u.power) html += `<div class="ms-detail-power" style="color:#82b1ff">UNITED威力:${u.power}</div>`;
+      if (u.power) html += `<div class="ms-detail-power" style="color:#ffe082">UNITED威力:${u.power}</div>`;
       if (u.description) html += `<div class="ms-detail-desc">${escapeHtml(u.description)}</div>`;
       html += '</div>';
     }
@@ -4016,7 +4028,7 @@ const UIRenderer = {
     if (sp.sp_cost !== undefined && sp.sp_cost !== null) tagsHtml += `<span class="sp-tag">SP${sp.sp_cost}</span>`;
     if (sp.squad_sp) tagsHtml += `<span class="sp-tag squad-sp">SQUAD SP</span>`;
     if (sp.united_sp) tagsHtml += `<span class="sp-tag united-sp">UNITED SP</span>`;
-    if (sp.sp_type === 'ECHOES BEAT SP') tagsHtml += `<span class="sp-tag eb-sp">ECHOES BEAT SP</span>`;
+    if (sp.echoes_beat) tagsHtml += `<span class="sp-tag eb-sp">${sp.sp_type === 'ECHOES BEAT SP' ? 'ECHOES BEAT SP' : 'EB'}</span>`;
     if (sp.attack_type) tagsHtml += `<span class="sp-tag">${escapeHtml(sp.attack_type)}</span>`;
     tagsHtml += '</div>';
 
@@ -4033,30 +4045,36 @@ const UIRenderer = {
     // Description
     const desc = sp.description || '';
 
-    el.innerHTML = `
+    let html = `
       <div class="unit-sp-section">
         <div class="sp-title">SPアタック</div>
         <div class="sp-name">${escapeHtml(name)}</div>
         ${tagsHtml}
         ${powerHtml ? `<div class="sp-power">${escapeHtml(powerHtml)} ${impactHtml}</div>` : (impactHtml ? `<div class="sp-power">${impactHtml}</div>` : '')}
-        ${desc ? `<div class="sp-desc">${escapeHtml(desc)}</div>` : ''}
-      </div>
-      ${sp.united_sp ? (() => { const u2 = sp.united_sp; return `
-      <div class="unit-sp-section usp-section">
-        <div class="sp-title" style="color:#82b1ff">UNITED SP${u2._uncertain ? ' <span class="uncertain-badge">?</span>' : ''}</div>
-        ${u2.name ? `<div class="sp-name" style="color:#82b1ff">${escapeHtml(u2.name)}</div>` : ''}
-        ${u2.partners && u2.partners.length ? `<div class="detail-partners">パートナー: ${u2.partners.map(p => escapeHtml(p)).join(', ')}</div>` : ''}
-        ${u2.condition ? `<div class="detail-condition">${escapeHtml(u2.condition)}</div>` : ''}
+        ${desc ? `<div class="sp-desc">${escapeHtml(desc)}</div>` : ''}`;
+
+    // ECHOES BEAT sub-section
+    if (sp.echoes_beat) {
+      const eb2 = sp.echoes_beat;
+      const ebLabel = sp.sp_type === 'ECHOES BEAT SP' ? 'ECHOES BEAT SP' : 'ECHOES BEAT';
+      html += `<div class="sp-subsection eb-sub">
+        <div class="sp-sub-title" style="color:#ffb74d">${ebLabel}${eb2._uncertain ? ' <span class="uncertain-badge">?</span>' : ''}</div>
+        ${eb2.name ? `<div class="sp-name" style="color:#ffb74d">${escapeHtml(eb2.name)}</div>` : ''}
         <div class="sp-tags">
-          ${u2.target ? `<span class="sp-tag" style="background:#1a237e;color:#82b1ff;border-color:#3949ab">${escapeHtml(u2.target)}</span>` : ''}
-          ${u2.range !== undefined && u2.range !== null ? `<span class="sp-tag" style="background:#1a237e;color:#82b1ff;border-color:#3949ab">射程${u2.range}</span>` : ''}
+          ${eb2.level ? `<span class="sp-tag" style="background:#3d2800;color:#ffb74d;border-color:#e65100">Lv.${eb2.level}</span>` : ''}
+          ${eb2.target ? `<span class="sp-tag" style="background:#3d2800;color:#ffb74d;border-color:#e65100">${escapeHtml(eb2.target)}</span>` : ''}
+          ${eb2.range !== undefined && eb2.range !== null ? `<span class="sp-tag" style="background:#3d2800;color:#ffb74d;border-color:#e65100">射程${eb2.range}</span>` : ''}
         </div>
-        ${u2.power ? `<div class="sp-power" style="color:#82b1ff">UNITED威力:${u2.power}</div>` : ''}
-        ${u2.description ? `<div class="sp-desc">${escapeHtml(u2.description)}</div>` : ''}
-      </div>`; })() : ''}
-      ${sp.squad_sp ? (() => { const sq2 = sp.squad_sp; return `
-      <div class="unit-sp-section sqsp-section">
-        <div class="sp-title" style="color:#a5d6a7">SQUAD SP${sq2._uncertain ? ' <span class="uncertain-badge">?</span>' : ''}</div>
+        ${eb2.power ? `<div class="sp-power" style="color:#ffb74d">威力:${eb2.power}</div>` : ''}
+        ${eb2.description ? `<div class="sp-desc">${escapeHtml(eb2.description)}</div>` : ''}
+      </div>`;
+    }
+
+    // SQUAD SP sub-section
+    if (sp.squad_sp) {
+      const sq2 = sp.squad_sp;
+      html += `<div class="sp-subsection sqsp-sub">
+        <div class="sp-sub-title" style="color:#a5d6a7">SQUAD SP${sq2._uncertain ? ' <span class="uncertain-badge">?</span>' : ''}</div>
         ${sq2.name ? `<div class="sp-name" style="color:#a5d6a7">${escapeHtml(sq2.name)}</div>` : ''}
         ${sq2.condition ? `<div class="detail-condition">${escapeHtml(sq2.condition)}</div>` : ''}
         <div class="sp-tags">
@@ -4065,8 +4083,28 @@ const UIRenderer = {
         </div>
         ${sq2.power ? `<div class="sp-power" style="color:#a5d6a7">部隊威力:${sq2.power}</div>` : ''}
         ${sq2.description ? `<div class="sp-desc">${escapeHtml(sq2.description)}</div>` : ''}
-      </div>`; })() : ''}
-    `;
+      </div>`;
+    }
+
+    // UNITED SP sub-section
+    if (sp.united_sp) {
+      const u2 = sp.united_sp;
+      html += `<div class="sp-subsection usp-sub">
+        <div class="sp-sub-title" style="color:#ffe082">UNITED SP${u2._uncertain ? ' <span class="uncertain-badge">?</span>' : ''}</div>
+        ${u2.name ? `<div class="sp-name" style="color:#ffe082">${escapeHtml(u2.name)}</div>` : ''}
+        ${u2.partners && u2.partners.length ? `<div class="detail-partners">パートナー: ${u2.partners.map(p => escapeHtml(p)).join(', ')}</div>` : ''}
+        ${u2.condition ? `<div class="detail-condition">${escapeHtml(u2.condition)}</div>` : ''}
+        <div class="sp-tags">
+          ${u2.target ? `<span class="sp-tag" style="background:#3d3000;color:#ffe082;border-color:#f9a825">${escapeHtml(u2.target)}</span>` : ''}
+          ${u2.range !== undefined && u2.range !== null ? `<span class="sp-tag" style="background:#3d3000;color:#ffe082;border-color:#f9a825">射程${u2.range}</span>` : ''}
+        </div>
+        ${u2.power ? `<div class="sp-power" style="color:#ffe082">UNITED威力:${u2.power}</div>` : ''}
+        ${u2.description ? `<div class="sp-desc">${escapeHtml(u2.description)}</div>` : ''}
+      </div>`;
+    }
+
+    html += `</div>`;
+    el.innerHTML = html;
   },
 
   _renderLinks(u, msOcr, plOcr) {
@@ -4507,6 +4545,25 @@ const UIRenderer = {
 
     this._isAligned = true;
     document.getElementById('alignBtn')?.classList.add('primary');
+  },
+
+  // ========== カード横並び ==========
+  _isHCards: false,
+
+  toggleHCards() {
+    this._isHCards = !this._isHCards;
+    const cols = document.querySelectorAll('.unit-column');
+    cols.forEach(col => col.classList.toggle('h-cards', this._isHCards));
+    document.getElementById('hCardsBtn')?.classList.toggle('primary', this._isHCards);
+    localStorage.setItem('abds_hcards', this._isHCards ? '1' : '0');
+  },
+
+  restoreHCards() {
+    if (localStorage.getItem('abds_hcards') === '1') {
+      this._isHCards = true;
+      document.querySelectorAll('.unit-column').forEach(col => col.classList.add('h-cards'));
+      document.getElementById('hCardsBtn')?.classList.add('primary');
+    }
   },
 
   _alignSections(containerPrefix, sectionTypes) {
@@ -6007,8 +6064,8 @@ async function showCardModal(number) {
     if (sp.united_sp) {
       const u = sp.united_sp;
       html += `<div class="modal-param-group">
-        <div class="modal-param-title" style="color:#82b1ff">UNITED SP${u._uncertain ? ' <span class="uncertain-badge">?</span>' : ''}</div>
-        ${u.name ? `<div style="font-size:0.9rem;color:#82b1ff">${escapeHtml(u.name)}</div>` : ''}
+        <div class="modal-param-title" style="color:#ffe082">UNITED SP${u._uncertain ? ' <span class="uncertain-badge">?</span>' : ''}</div>
+        ${u.name ? `<div style="font-size:0.9rem;color:#ffe082">${escapeHtml(u.name)}</div>` : ''}
         ${u.partners && u.partners.length ? `<div class="detail-partners">パートナー: ${u.partners.map(p => escapeHtml(p)).join(', ')}</div>` : ''}
         ${u.condition ? `<div class="detail-condition">${escapeHtml(u.condition)}</div>` : ''}
         <div class="modal-param-row" style="margin:0.2rem 0">
