@@ -3527,11 +3527,8 @@ const UIRenderer = {
     // Stats
     this._renderUnitStats(u, msOcr, plOcr);
 
-    // MS Detail info
-    this._renderMsDetail(u, msOcr, msNumber);
-
-    // PL Detail info
-    this._renderPlDetail(u, plOcr, plNumber);
+    // MS/PL Detail info
+    this._renderMsDetail(u, msOcr, msNumber, plOcr, plNumber);
 
     // Links
     this._renderLinks(u, msOcr, plOcr);
@@ -3639,15 +3636,18 @@ const UIRenderer = {
     el.innerHTML = parts.length > 0 ? parts.join(' / ') : '&nbsp;';
   },
 
-  _renderMsDetail(u, msOcr, msNumber) {
+  _renderMsDetail(u, msOcr, msNumber, plOcr, plNumber) {
     const el = document.getElementById(`unit-ms-detail-${u}`);
-    if (!msOcr || !msNumber) { el.innerHTML = ''; return; }
+    const plEl = document.getElementById(`unit-pl-detail-${u}`);
+    if (!msOcr || !msNumber) { el.innerHTML = ''; plEl.innerHTML = ''; this._renderPlInfoOnly(plEl, plOcr, plNumber); return; }
 
     // OCRデータが空（フィールドがない）場合
     const hasOcrFields = msOcr.ms_ability || msOcr.weapon || msOcr.special_attack || msOcr.terrain_compatibility || msOcr.model;
     if (!hasOcrFields) {
       const backUrl = resolveImageUrl(null, msNumber, 'back');
       el.innerHTML = `<div class="unit-ms-detail"><div class="ms-detail-title">MS詳細</div><div class="no-ocr-msg">OCRデータなし<br><span class="no-ocr-hint">裏面画像でカード情報を確認できます</span></div><img class="no-ocr-back-img" src="${backUrl}" alt="裏面" onerror="this.style.display='none'"></div>`;
+      plEl.innerHTML = '';
+      this._renderPlInfoOnly(plEl, plOcr, plNumber);
       return;
     }
 
@@ -3678,6 +3678,9 @@ const UIRenderer = {
       });
       html += '</div>';
     }
+
+    // --- PL Skill (MSアビリティの直後) ---
+    html += this._renderPlSkillHtml(plOcr);
 
     // --- Weapon ---
     const w = msOcr.weapon;
@@ -3840,65 +3843,58 @@ const UIRenderer = {
     html += '</div>';
 
     el.innerHTML = html;
+
+    // PL情報はunit-pl-detailに描画
+    this._renderPlInfoOnly(plEl, plOcr, plNumber);
   },
 
-  _renderPlDetail(u, plOcr, plNumber) {
-    const el = document.getElementById(`unit-pl-detail-${u}`);
-    if (!plOcr || !plNumber) { el.innerHTML = ''; return; }
+  _renderPlSkillHtml(plOcr) {
+    if (!plOcr) return '';
+    const s = plOcr.pl_skill || plOcr.pilot_skill;
+    if (!s) return '';
+    let html = '<div class="unit-ms-detail" data-section="pl-skill">';
+    const hasSq = s.has_sq_skill;
+    const isEb = s.is_eb_skill;
+    const ebTrigLv = s.eb_trigger_level;
+    html += `<div class="ms-detail-title pl-color">PLスキル${hasSq ? ' <span class="sq-inline-badge">SQ</span>' : ''}${isEb ? ' <span class="eb-inline-badge">EB</span>' : ''}</div>`;
+    html += `<div class="ms-detail-ability-name pl-color">${escapeHtml(s.name || '')}${isEb && ebTrigLv ? ` <span style="color:#ffb74d;font-size:0.7rem">(EBLv.${ebTrigLv}発動)</span>` : ''}</div>`;
+    const plSkTags = [];
+    if (s.trigger) plSkTags.push(s.trigger);
+    if (s.category) plSkTags.push(s.category);
+    if (plSkTags.length > 0) {
+      html += '<div class="ms-detail-tags">';
+      plSkTags.forEach(t => {
+        const ebStyle = isEb ? ' style="background:#3d2800;color:#ffb74d;border-color:#ff9800"' : '';
+        html += `<span class="ms-detail-tag pl-tag-color"${ebStyle}>${escapeHtml(t)}</span>`;
+      });
+      html += '</div>';
+    }
+    const desc = s.effect || s.description || '';
+    if (desc) html += `<div class="ms-detail-desc">${escapeHtml(desc)}</div>`;
+    const sqd = s.sq_skill_details;
+    if (sqd) {
+      html += '<div class="pl-sq-details">';
+      if (sqd.trigger) html += `<div class="pl-sq-row"><span class="pl-sq-label">発動</span><span class="pl-sq-text">${escapeHtml(sqd.trigger)}</span></div>`;
+      if (sqd.effect) html += `<div class="pl-sq-row"><span class="pl-sq-label">効果</span><span class="pl-sq-text">${escapeHtml(sqd.effect)}</span></div>`;
+      const rushEff = sqd.sq_rush_effect || sqd.squad_rush_effect;
+      if (rushEff) html += `<div class="pl-sq-row"><span class="pl-sq-label rush">RUSH</span><span class="pl-sq-text">${escapeHtml(rushEff)}</span></div>`;
+      if (sqd.sq_gauge_effect) html += `<div class="pl-sq-row"><span class="pl-sq-label">ゲージ</span><span class="pl-sq-text">${escapeHtml(sqd.sq_gauge_effect)}</span></div>`;
+      if (sqd.sq_max_effect) html += `<div class="pl-sq-row"><span class="pl-sq-label">最大時</span><span class="pl-sq-text">${escapeHtml(sqd.sq_max_effect)}</span></div>`;
+      html += '</div>';
+    }
+    html += '</div>';
+    return html;
+  },
 
-    // OCRデータが空（フィールドがない）場合
+  _renderPlInfoOnly(el, plOcr, plNumber) {
+    if (!plOcr || !plNumber) { el.innerHTML = ''; return; }
     const hasOcrFields = plOcr.pl_skill || plOcr.pilot_skill || plOcr.category;
     if (!hasOcrFields) {
       const backUrl = resolveImageUrl(null, plNumber, 'back');
       el.innerHTML = `<div class="unit-ms-detail"><div class="ms-detail-title pl-color">PL詳細</div><div class="no-ocr-msg">OCRデータなし<br><span class="no-ocr-hint">裏面画像でカード情報を確認できます</span></div><img class="no-ocr-back-img" src="${backUrl}" alt="裏面" onerror="this.style.display='none'"></div>`;
       return;
     }
-
     let html = '';
-
-    // --- PL Skill ---
-    const s = plOcr.pl_skill || plOcr.pilot_skill;
-    if (s) {
-      html += '<div class="unit-ms-detail" data-section="pl-skill">';
-      const hasSq = s.has_sq_skill;
-      const isEb = s.is_eb_skill;
-      const ebTrigLv = s.eb_trigger_level;
-      html += `<div class="ms-detail-title pl-color">PLスキル${hasSq ? ' <span class="sq-inline-badge">SQ</span>' : ''}${isEb ? ' <span class="eb-inline-badge">EB</span>' : ''}</div>`;
-      html += `<div class="ms-detail-ability-name pl-color">${escapeHtml(s.name || '')}${isEb && ebTrigLv ? ` <span style="color:#ffb74d;font-size:0.7rem">(EBLv.${ebTrigLv}発動)</span>` : ''}</div>`;
-
-      // Trigger / category tags
-      const plSkTags = [];
-      if (s.trigger) plSkTags.push(s.trigger);
-      if (s.category) plSkTags.push(s.category);
-      if (plSkTags.length > 0) {
-        html += '<div class="ms-detail-tags">';
-        plSkTags.forEach(t => {
-          const ebStyle = isEb ? ' style="background:#3d2800;color:#ffb74d;border-color:#ff9800"' : '';
-          html += `<span class="ms-detail-tag pl-tag-color"${ebStyle}>${escapeHtml(t)}</span>`;
-        });
-        html += '</div>';
-      }
-
-      const desc = s.effect || s.description || '';
-      if (desc) {
-        html += `<div class="ms-detail-desc">${escapeHtml(desc)}</div>`;
-      }
-
-      // SQ details
-      const sqd = s.sq_skill_details;
-      if (sqd) {
-        html += '<div class="pl-sq-details">';
-        if (sqd.trigger) html += `<div class="pl-sq-row"><span class="pl-sq-label">発動</span><span class="pl-sq-text">${escapeHtml(sqd.trigger)}</span></div>`;
-        if (sqd.effect) html += `<div class="pl-sq-row"><span class="pl-sq-label">効果</span><span class="pl-sq-text">${escapeHtml(sqd.effect)}</span></div>`;
-        const rushEff = sqd.sq_rush_effect || sqd.squad_rush_effect;
-        if (rushEff) html += `<div class="pl-sq-row"><span class="pl-sq-label rush">RUSH</span><span class="pl-sq-text">${escapeHtml(rushEff)}</span></div>`;
-        if (sqd.sq_gauge_effect) html += `<div class="pl-sq-row"><span class="pl-sq-label">ゲージ</span><span class="pl-sq-text">${escapeHtml(sqd.sq_gauge_effect)}</span></div>`;
-        if (sqd.sq_max_effect) html += `<div class="pl-sq-row"><span class="pl-sq-label">最大時</span><span class="pl-sq-text">${escapeHtml(sqd.sq_max_effect)}</span></div>`;
-        html += '</div>';
-      }
-      html += '</div>';
-    }
-
     // --- PL Basic Info ---
     html += '<div class="unit-ms-detail" data-section="pl-info">';
     html += '<div class="ms-detail-title info-color">パイロット情報</div>';
