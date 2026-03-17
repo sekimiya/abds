@@ -5275,13 +5275,10 @@ function openScreenshotMode() {
     const isMsAb = !!(u.msIdx?.has_ab_link);
     const spTheme = isMsEb ? ' ss-theme-eb' : isMsSq ? ' ss-theme-sq' : isMsAb ? ' ss-theme-ab' : '';
     let s = `<div class="ss-skill-block">`;
-    s += `<div class="ss-skill-name" style="color:#42a5f5">${h(u.sp.name||'')}</div>`;
-    const tags = [];
-    if (u.sp.sp_cost) tags.push(`SP:${u.sp.sp_cost}`);
-    if (u.sp.range !== undefined && u.sp.range !== null) tags.push(`射程${u.sp.range}`);
-    if (u.sp.attack_type) tags.push(u.sp.attack_type);
-    if (u.sp.sp_type) tags.push(u.sp.sp_type);
-    if (tags.length) s += `<div class="ss-skill-tags">${tags.map(t=>`<span class="ss-skill-tag">${h(t)}</span>`).join('')}</div>`;
+    s += `<div class="ss-skill-name" style="color:#42a5f5">${h(u.sp.name||'')}`;
+    if (u.sp.sp_cost) s += ` <span class="ss-skill-tag">SP${u.sp.sp_cost}</span>`;
+    if (u.sp.range !== undefined && u.sp.range !== null) s += ` <span class="ss-skill-tag">射${u.sp.range}</span>`;
+    s += `</div>`;
     if (u.sp.power) {
       let pw = '';
       if (typeof u.sp.power === 'object') {
