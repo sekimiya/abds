@@ -464,6 +464,9 @@ body.light .bm-toggle-btn.active{background:#d0e8dc;border-color:var(--accent);c
 .unit-card-line .card-type-icon.sq{background:rgba(255,105,180,0.8)}
 .unit-card-line .card-type-icon.eb{background:rgba(255,152,0,0.8)}
 .unit-card-line .card-type-icon.ab{background:rgba(179,136,255,0.8)}
+.unit-card-line .card-number-label{
+  font-size:0.5rem;color:#888;flex-shrink:0;white-space:nowrap;
+}
 .unit-card-line .card-name{
   flex:1;font-weight:700;font-size:0.78rem;text-align:center;
   white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
@@ -3605,6 +3608,7 @@ const UIRenderer = {
       } else {
         html += '<span class="card-rarity rarity-tag" style="opacity:0.5">--</span>';
       }
+      if (msNumber) html += `<span class="card-number-label">${escapeHtml(msNumber)}</span>`;
       html += `<span class="card-name">${msNumber ? escapeHtml(msName) : 'MS 未選択'}</span>`;
       if (msNumber) html += `<span class="card-detail-btn" onclick="event.stopPropagation();showCardModal('${escapeJsForAttr(msNumber)}','deck')">詳細</span>`;
       html += '</div>';
@@ -3621,6 +3625,7 @@ const UIRenderer = {
       } else {
         html += '<span class="card-rarity rarity-tag" style="opacity:0.5">--</span>';
       }
+      if (plNumber) html += `<span class="card-number-label">${escapeHtml(plNumber)}</span>`;
       html += `<span class="card-name">${plNumber ? escapeHtml(plName) : 'PL 未選択'}</span>`;
       if (plNumber) html += `<span class="card-detail-btn" onclick="event.stopPropagation();showCardModal('${escapeJsForAttr(plNumber)}','deck')">詳細</span>`;
       html += '</div>';
