@@ -131,6 +131,23 @@ body.light .rank-card-bar{background:#e8e8e8}
 
 .loading{text-align:center;padding:40px;color:#888;font-size:0.9rem}
 
+/* Card detail modal */
+.card-modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.75);z-index:100;align-items:center;justify-content:center;padding:16px}
+.card-modal-overlay.open{display:flex}
+.card-modal{background:#1a1a1a;border:1px solid #333;border-radius:12px;max-width:420px;width:100%;max-height:85vh;overflow-y:auto;padding:16px;position:relative}
+body.light .card-modal{background:#fff;border-color:#ddd;color:#333}
+.card-modal-close{position:absolute;top:8px;right:12px;background:none;border:none;color:#888;font-size:1.5rem;cursor:pointer}
+.card-modal-img{width:100%;max-width:200px;display:block;margin:0 auto 12px;border-radius:6px}
+.card-modal-name{font-size:1rem;font-weight:700;text-align:center;margin-bottom:4px}
+.card-modal-meta{font-size:0.8rem;color:#888;text-align:center;margin-bottom:10px}
+.card-modal-section{margin-bottom:10px;padding:8px;background:rgba(255,255,255,0.03);border-radius:6px}
+body.light .card-modal-section{background:#f8f8f8}
+.card-modal-section-title{font-size:0.75rem;font-weight:700;color:#68efbd;margin-bottom:4px}
+.card-modal-row{font-size:0.8rem;color:#ccc;line-height:1.5}
+body.light .card-modal-row{color:#444}
+.card-modal-tag{display:inline-block;padding:1px 6px;border-radius:3px;font-size:0.7rem;font-weight:600;background:#222;border:1px solid #444;color:#aaa;margin:1px 2px}
+body.light .card-modal-tag{background:#e8e8e8;border-color:#ccc;color:#555}
+
 @media(max-width:767px){
   .desktop-view{display:none!important}
   .mobile-view{display:block!important}
@@ -189,6 +206,13 @@ body.light .rank-card-bar{background:#e8e8e8}
 </div>
 
 <div class="loading" id="loadingEl">データ読込中...</div>
+
+<div class="card-modal-overlay" id="cardModalOverlay" onclick="if(event.target===this)closeCardDetail()">
+  <div class="card-modal" id="cardModal">
+    <button class="card-modal-close" onclick="closeCardDetail()">&times;</button>
+    <div id="cardModalBody"></div>
+  </div>
+</div>
 
 <script>
 (function(){
@@ -343,7 +367,7 @@ body.light .rank-card-bar{background:#e8e8e8}
       var sv = getSortVal(c);
       var pct = Math.round((sv/maxCP)*100);
       var imgUrl = resolveImg(c.number);
-      html += '<tr>'
+      html += '<tr onclick="showCardDetail(\''+c.number.replace(/'/g,"\\'")+'\')" style="cursor:pointer">'
         +'<td class="rank-num">'+(i+1)+'</td>'
         +'<td><img class="rank-thumb" src="'+imgUrl+'" loading="lazy" onerror="this.src=PLACEHOLDER"></td>'
         +'<td><div class="card-name">'+c.name+'</div><div class="card-number">'+c.number+'</div></td>'
@@ -369,7 +393,7 @@ body.light .rank-card-bar{background:#e8e8e8}
       var sv = getSortVal(c);
       var pct = Math.round((sv/maxCP)*100);
       var mImgUrl = resolveImg(c.number);
-      mhtml += '<div class="rank-card">'
+      mhtml += '<div class="rank-card" onclick="showCardDetail(\''+c.number.replace(/'/g,"\\'")+'\')" style="cursor:pointer">'
         +'<div class="rank-card-top">'
           +'<div class="rank-card-num">#'+(i+1)+'</div>'
           +'<img class="rank-card-thumb" src="'+mImgUrl+'" loading="lazy" onerror="this.src=PLACEHOLDER">'
@@ -428,6 +452,164 @@ body.light .rank-card-bar{background:#e8e8e8}
       console.error(err);
     });
 })();
+
+var detailCache = {};
+function showCardDetail(number) {
+  var overlay = document.getElementById('cardModalOverlay');
+  var body = document.getElementById('cardModalBody');
+  body.innerHTML = '<div style="text-align:center;padding:20px;color:#888">読み込み中...</div>';
+  overlay.classList.add('open');
+
+  if (detailCache[number]) {
+    renderDetail(number, detailCache[number]);
+    return;
+  }
+  fetch('./data/card_details.json')
+    .then(function(r){ return r.json(); })
+    .then(function(data){
+      detailCache = data;
+      renderDetail(number, data[number]);
+    })
+    .catch(function(){
+      body.innerHTML = '<div style="text-align:center;padding:20px;color:#f44336">詳細データの取得に失敗</div>';
+    });
+}
+
+function closeCardDetail() {
+  document.getElementById('cardModalOverlay').classList.remove('open');
+}
+
+function esc(s) { var d=document.createElement('div'); d.textContent=s; return d.innerHTML; }
+
+function renderDetail(number, card) {
+  var body = document.getElementById('cardModalBody');
+  if (!card) { body.innerHTML = '<div style="text-align:center;padding:20px;color:#888">詳細データなし</div>'; return; }
+  var ocr = card.ocr_data || {};
+  var imgUrl = resolveImg(number);
+  var h = '';
+  h += '<img class="card-modal-img" src="'+imgUrl+'" onerror="this.style.display=\'none\'">';
+  h += '<div class="card-modal-name">'+esc(ocr.name||card.name||number)+'</div>';
+  var meta = [];
+  if (number) meta.push(number);
+  if (ocr.rarity) meta.push(ocr.rarity);
+  if (ocr.category) meta.push(ocr.category);
+  if (ocr.cost!=null) meta.push('コスト'+ocr.cost);
+  if (ocr.model) meta.push(esc(ocr.model));
+  if (ocr.pilot) meta.push(esc(ocr.pilot));
+  h += '<div class="card-modal-meta">'+meta.join(' / ')+'</div>';
+
+  // Stats
+  if (ocr.stats) {
+    var s = ocr.stats;
+    h += '<div class="card-modal-section"><div class="card-modal-section-title">ステータス</div>';
+    h += '<div class="card-modal-row" style="display:flex;gap:12px;flex-wrap:wrap">';
+    if (s.mobility!=null) h += '<span><span class="stat-label">機動</span> <span class="stat-mob">'+s.mobility+'</span></span>';
+    if (s.ranged_attack!=null) h += '<span><span class="stat-label">遠攻</span> <span class="stat-rng">'+s.ranged_attack+'</span></span>';
+    if (s.melee_attack!=null) h += '<span><span class="stat-label">近攻</span> <span class="stat-mel">'+s.melee_attack+'</span></span>';
+    if (s.hp!=null) h += '<span><span class="stat-label">HP</span> <span class="stat-hp">'+s.hp+'</span></span>';
+    h += '</div></div>';
+  }
+
+  // MS Ability
+  var ab = ocr.ms_ability;
+  if (ab) {
+    var abs = Array.isArray(ab) ? ab : [ab];
+    h += '<div class="card-modal-section"><div class="card-modal-section-title">MSアビリティ</div>';
+    abs.forEach(function(a){
+      h += '<div class="card-modal-row"><strong>'+esc(a.name||'')+'</strong></div>';
+      var tags = [];
+      if(a.type||a.activation) tags.push(a.type||a.activation);
+      if(a.target) tags.push(a.target);
+      if(a.range!=null) tags.push('射程'+a.range);
+      if(tags.length) h += '<div>'+tags.map(function(t){return '<span class="card-modal-tag">'+esc(t)+'</span>';}).join('')+'</div>';
+      if(a.description) h += '<div class="card-modal-row" style="font-size:0.75rem">'+esc(a.description)+'</div>';
+    });
+    h += '</div>';
+  }
+
+  // PL Skill
+  var ps = ocr.pl_skill || ocr.pilot_skill;
+  if (ps) {
+    h += '<div class="card-modal-section"><div class="card-modal-section-title" style="color:#ffe082">PLスキル</div>';
+    h += '<div class="card-modal-row"><strong>'+esc(ps.name||'')+'</strong></div>';
+    var ptags = [];
+    if(ps.trigger) ptags.push(ps.trigger);
+    if(ps.category) ptags.push(ps.category);
+    if(ptags.length) h += '<div>'+ptags.map(function(t){return '<span class="card-modal-tag">'+esc(t)+'</span>';}).join('')+'</div>';
+    var pdesc = ps.effect||ps.description||'';
+    if(pdesc) h += '<div class="card-modal-row" style="font-size:0.75rem">'+esc(pdesc)+'</div>';
+    h += '</div>';
+  }
+
+  // SP
+  var sp = ocr.special_attack;
+  if (sp) {
+    h += '<div class="card-modal-section"><div class="card-modal-section-title" style="color:#ffb2b2">SPアタック</div>';
+    h += '<div class="card-modal-row"><strong>'+esc(sp.name||'')+'</strong></div>';
+    var stags = [];
+    if(sp.target) stags.push(sp.target);
+    if(sp.range!=null) stags.push('射程'+sp.range);
+    if(sp.sp_cost!=null) stags.push('SP'+sp.sp_cost);
+    if(stags.length) h += '<div>'+stags.map(function(t){return '<span class="card-modal-tag">'+esc(t)+'</span>';}).join('')+'</div>';
+    if(sp.power) h += '<div class="card-modal-row">威力: '+sp.power+'</div>';
+    if(sp.description) h += '<div class="card-modal-row" style="font-size:0.75rem">'+esc(sp.description)+'</div>';
+
+    // USP
+    if (sp.united_sp) {
+      var u = sp.united_sp;
+      h += '<div style="margin-top:6px;padding-left:8px;border-left:2px solid #ffe082">';
+      h += '<div style="font-size:0.75rem;font-weight:700;color:#ffe082">UNITED SP</div>';
+      if(u.name) h += '<div class="card-modal-row"><strong>'+esc(u.name)+'</strong></div>';
+      if(u.partners&&u.partners.length) h += '<div class="card-modal-row" style="color:#90caf9;font-size:0.75rem">パートナー: '+u.partners.map(esc).join(', ')+'</div>';
+      if(u.power) h += '<div class="card-modal-row">威力: '+u.power+'</div>';
+      if(u.description) h += '<div class="card-modal-row" style="font-size:0.75rem">'+esc(u.description)+'</div>';
+      h += '</div>';
+    }
+    // SQSP
+    if (sp.squad_sp) {
+      var sq = sp.squad_sp;
+      h += '<div style="margin-top:6px;padding-left:8px;border-left:2px solid #a5d6a7">';
+      h += '<div style="font-size:0.75rem;font-weight:700;color:#a5d6a7">SQUAD SP</div>';
+      if(sq.name) h += '<div class="card-modal-row"><strong>'+esc(sq.name)+'</strong></div>';
+      if(sq.power) h += '<div class="card-modal-row">威力: '+sq.power+'</div>';
+      if(sq.description) h += '<div class="card-modal-row" style="font-size:0.75rem">'+esc(sq.description)+'</div>';
+      h += '</div>';
+    }
+    // EB
+    if (sp.echoes_beat) {
+      var eb = sp.echoes_beat;
+      h += '<div style="margin-top:6px;padding-left:8px;border-left:2px solid #ffb74d">';
+      h += '<div style="font-size:0.75rem;font-weight:700;color:#ffb74d">ECHOES BEAT'+(eb.level?' Lv.'+eb.level:'')+'</div>';
+      if(eb.name) h += '<div class="card-modal-row"><strong>'+esc(eb.name)+'</strong></div>';
+      if(eb.power) h += '<div class="card-modal-row">威力: '+eb.power+'</div>';
+      if(eb.description) h += '<div class="card-modal-row" style="font-size:0.75rem">'+esc(eb.description)+'</div>';
+      h += '</div>';
+    }
+    h += '</div>';
+  }
+
+  // Weapon
+  var w = ocr.weapon;
+  if (w && (w.main||w.sub)) {
+    h += '<div class="card-modal-section"><div class="card-modal-section-title" style="color:#ff8a80">武装</div>';
+    if(w.main) h += '<div class="card-modal-row">MAIN: '+esc(w.main.name||'')+' 射程'+(w.main.range||'-')+' '+esc(w.main.type||'')+'</div>';
+    if(w.sub) h += '<div class="card-modal-row">SUB: '+esc(w.sub.name||'')+' 射程'+(w.sub.range||'-')+' '+esc(w.sub.type||'')+'</div>';
+    h += '</div>';
+  }
+
+  // Links
+  var links = ocr.link_abilities || ocr.link_ability || [];
+  if (Array.isArray(links) && links.length) {
+    h += '<div class="card-modal-section"><div class="card-modal-section-title" style="color:#68efbd">リンクアビリティ</div>';
+    links.forEach(function(l){
+      h += '<div class="card-modal-row"><strong>'+esc(l.name||'')+'</strong> <span style="color:#888;font-size:0.7rem">'+esc(l.condition||'')+'</span></div>';
+      if(l.effect) h += '<div class="card-modal-row" style="font-size:0.75rem">'+esc(l.effect)+'</div>';
+    });
+    h += '</div>';
+  }
+
+  body.innerHTML = h;
+}
 </script>
 </body>
 </html>
