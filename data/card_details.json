@@ -53863,22 +53863,22 @@
         "description": "ロックオン中の敵に攻撃を行う。使用回数に応じて、攻撃範囲が変わる。[1回:単体][2回:敵を中心に扇状][3回以上:自身を中心とした範囲]"
       },
       "special_attack": {
-        "name": "MDE262S プラウドディフェンダー 収束重核子ビーム砲ディスラプター",
+        "name": "MDE262S プラウドディフェンダー",
         "sp_type": "SQUAD SP",
-        "target": "範囲(敵)/貫通(敵)",
+        "target": "範囲(敵)",
         "range": 4,
         "sp_cost": 2,
         "power": 2800,
         "description": "自身を中心とした中範囲に射撃攻撃でダメージを与え、一定時間スタンさせる。",
-        "attack_type": "貫通（敵）",
+        "attack_type": null,
         "united_sp": null,
         "squad_sp": {
-          "name": null,
+          "name": "収束重核子ビーム砲ディスラプター",
           "condition": "SQUAD RUSH 発動中に1度だけ、SQUAD SPを使用できる。",
-          "target": null,
-          "range": null,
+          "target": "貫通(敵)",
+          "range": 4,
           "power": 4500,
-          "description": null,
+          "description": "自身を中心とした中範囲に射撃攻撃でダメージを与え、一定時間スタンさせる。",
           "_uncertain": true
         },
         "echoes_beat": null
