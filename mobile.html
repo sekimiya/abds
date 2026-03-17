@@ -574,9 +574,6 @@ body.light .bm-toggle-btn.active{background:#d0e8dc;border-color:var(--accent);c
 .ss-tac-badge{display:flex;align-items:center;gap:2px;padding:0 3px;border-radius:3px;font-weight:bold;white-space:nowrap;background:rgba(255,224,130,0.15);color:var(--gold);border:1px solid rgba(255,224,130,0.3);font-size:0.45rem}
 .ss-tac-img{height:16px;width:auto;border-radius:2px;flex-shrink:0}
 .ss-close{background:none;border:none;color:#888;font-size:1.2rem;cursor:pointer;padding:2px 6px;flex-shrink:0;margin-left:auto}
-.ss-mode-toggle{position:fixed;bottom:12px;right:12px;z-index:510;display:flex;gap:0;border-radius:6px;overflow:hidden;border:1px solid #444}
-.ss-mode-btn{padding:6px 12px;font-size:0.7rem;font-weight:bold;border:none;background:#222;color:#888;cursor:pointer}
-.ss-mode-btn.active{background:#68efbd;color:#000}
 .ss-body{flex:1;overflow:hidden;display:flex;flex-direction:column}
 .ss-h-cards{display:flex;gap:2px;align-items:flex-start}
 .ss-row-mspl{display:none}
@@ -1575,10 +1572,6 @@ body.light .ss-text{color:#555}
   </div>
   <div class="ss-body">
     <div class="ss-table" id="ssTable"></div>
-  </div>
-  <div class="ss-mode-toggle">
-    <button class="ss-mode-btn" id="ssModeBtnV" onclick="setSsMode('v')">縦</button>
-    <button class="ss-mode-btn active" id="ssModeBtnH" onclick="setSsMode('h')">横</button>
   </div>
 </div>
 
@@ -5321,12 +5314,7 @@ function openScreenshotMode() {
 }
 
 function setSsMode(mode) {
-  const table = document.getElementById('ssTable');
-  const btnV = document.getElementById('ssModeBtnV');
-  const btnH = document.getElementById('ssModeBtnH');
-  table.classList.toggle('ss-h-mode', mode === 'h');
-  btnV.classList.toggle('active', mode === 'v');
-  btnH.classList.toggle('active', mode === 'h');
+  document.getElementById('ssTable').classList.toggle('ss-h-mode', mode === 'h');
 }
 
 function closeScreenshotMode() {
