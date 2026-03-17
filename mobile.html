@@ -2115,7 +2115,7 @@ function calcUnitStats(msOcr, plOcr, terrainMult) {
   const plName = plOcr?.name || '';
   const plLv = ParamCorrections.pl[plName] || 0;
   const keys = ['mobility', 'ranged', 'melee', 'hp'];
-  const labels = { mobility: '機', ranged: '遠', melee: '近', hp: 'H' };
+  const labels = { mobility: '機動', ranged: '遠攻', melee: '近攻', hp: 'HP' };
   const _debug = { msSeries, plSeries: plName, msLv: seriesLv, plLv };
   return keys.map(s => {
     const base = ms[s] + pl[s];
