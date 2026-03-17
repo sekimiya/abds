@@ -5174,33 +5174,37 @@ function openScreenshotMode() {
     html += cell(`<div class="ss-terrain">${terrain}</div>`, 'ss-cell-center');
   });
 
-  // ステータス4行 (バー表示)
+  // ステータス2行 (2段バー表示: 機動+遠攻 / 近攻+HP)
   const ssBarMax = 1400;
   const statLabels = [{key:'mobility',l:'機'},{key:'ranged',l:'遠'},{key:'melee',l:'近'},{key:'hp',l:'HP'}];
-  statLabels.forEach((sl, i) => {
-    const cls = i === 0 ? ' ss-section-start' : '';
-    html += `<div class="ss-label${cls}" style="font-weight:900">${sl.l}</div>`;
+  const statPairs = [[0,1],[2,3]]; // 機動+遠攻, 近攻+HP
+  const statColors = {0:'#42a5f5',1:'#ef5350',2:'#ab47bc',3:'#66bb6a'};
+
+  const renderStatBar = (s, si) => {
+    if (!s || (!s.msVal && !s.plVal)) return `<div class="ss-stat-bar"><div class="ss-bar-vals"><span class="ss-bv">-</span></div></div>`;
+    const basePct = Math.min((s.base / ssBarMax) * 100, 100);
+    const linkBuffPct = Math.min(((s.linkBuff || 0) / ssBarMax) * 100, 100 - basePct);
+    let terrainHtml = '';
+    if (s.terrainBuff > 0) {
+      const tW = Math.min((s.terrainBuff / ssBarMax) * 100, 100 - basePct - linkBuffPct);
+      terrainHtml = `<div class="ss-bar-terrain-pos" style="left:${basePct + linkBuffPct}%;width:${tW}%"></div>`;
+    }
+    const totalBuff = (s.linkBuff || 0) + (s.terrainBuff || 0);
+    const buffed = totalBuff !== 0 ? ' buffed' : '';
+    return `<div class="ss-stat-bar">` +
+      `<div class="ss-bar-base" style="width:${basePct}%"></div>` +
+      `<div class="ss-bar-buff" style="left:${basePct}%;width:${linkBuffPct}%"></div>${terrainHtml}` +
+      `<div class="ss-bar-vals">` +
+        `<span class="ss-bv" style="color:${statColors[si]}">${statLabels[si].l}</span>` +
+        `<span class="ss-bv"><span class="ss-bv-total${buffed}">${s.total}</span></span>` +
+      `</div></div>`;
+  };
+
+  statPairs.forEach((pair, pi) => {
+    const cls = pi === 0 ? ' ss-section-start' : '';
+    html += `<div class="ss-label${cls}" style="font-weight:900">${statLabels[pair[0]].l}<br>${statLabels[pair[1]].l}</div>`;
     units.forEach(u => {
-      const s = u.stats[i];
-      if (!s || (!s.msVal && !s.plVal)) { html += `<div class="ss-cell${cls}">-</div>`; return; }
-      const basePct = Math.min((s.base / ssBarMax) * 100, 100);
-      const linkBuffPct = Math.min(((s.linkBuff || 0) / ssBarMax) * 100, 100 - basePct);
-      let terrainHtml = '';
-      if (s.terrainBuff > 0) {
-        const tW = Math.min((s.terrainBuff / ssBarMax) * 100, 100 - basePct - linkBuffPct);
-        terrainHtml = `<div class="ss-bar-terrain-pos" style="left:${basePct + linkBuffPct}%;width:${tW}%"></div>`;
-      }
-      const totalBuff = (s.linkBuff || 0) + (s.terrainBuff || 0);
-      const buffed = totalBuff !== 0 ? ' buffed' : '';
-      const corrVis = totalBuff !== 0 ? '' : ' style="visibility:hidden"';
-      const corrText = totalBuff > 0 ? '+' + totalBuff : '' + totalBuff;
-      html += `<div class="ss-cell${cls}"><div class="ss-stat-bar">` +
-        `<div class="ss-bar-base" style="width:${basePct}%"></div>` +
-        `<div class="ss-bar-buff" style="left:${basePct}%;width:${linkBuffPct}%"></div>${terrainHtml}` +
-        `<div class="ss-bar-vals">` +
-          `<span class="ss-bv"><span class="ss-bv-ms">${s.msVal}</span><span class="ss-bv-op">+</span><span class="ss-bv-pl">${s.plVal}</span><span class="ss-bv-op"${corrVis}>+</span><span class="ss-bv-buff"${corrVis}>${corrText}</span></span>` +
-          `<span class="ss-bv"><span class="ss-bv-eq">=</span><span class="ss-bv-total${buffed}">${s.total}</span></span>` +
-        `</div></div></div>`;
+      html += `<div class="ss-cell ss-cell-col${cls}">${renderStatBar(u.stats[pair[0]], pair[0])}${renderStatBar(u.stats[pair[1]], pair[1])}</div>`;
     });
   });
 
