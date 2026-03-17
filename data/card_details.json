@@ -46118,7 +46118,7 @@
         "description": "自身の周りにバリアを展開する。展開したバリアは自身へのダメージを一定値防ぎ、バリア展開中は弱体効果を受けない状態となる。"
       },
       "special_attack": {
-        "name": "アクータラクルタ&対艦刀アロンダイト/ミタケヨリ派連装 収束重核子ビーム砲ディスラプター",
+        "name": "アクータラクルタ&対艦刀アロンダイト/ミタケヨリ派連装",
         "sp_type": "SQUAD SP",
         "target": "単体(敵)",
         "range": 2,
@@ -46127,12 +46127,12 @@
         "description": "敵単体に格闘攻撃でダメージを与え、一定時間、出撃中の全味方殲滅タイプユニットの[機動力][近距離攻撃力]をアップする。",
         "united_sp": null,
         "squad_sp": {
-          "name": null,
-          "condition": null,
+          "name": "収束重核子ビーム砲ディスラプター",
+          "condition": "SQUAD RUSH発動中に1度だけ、SQUAD SPを使用できる。",
           "target": "貫通(敵)",
           "range": 4,
           "power": 4500,
-          "description": null,
+          "description": "射線上の敵に貫通射撃でダメージを与え、対象がユニットの場合は撃破する。拠点、戦艦は防衛効果を無視してダメージを与える。",
           "_uncertain": true
         },
         "echoes_beat": null
@@ -77250,7 +77250,7 @@
         "squad_sp": {
           "name": "ラストシューティング",
           "condition": null,
-          "target": null,
+          "target": "特殊",
           "range": 4,
           "power": "WIN",
           "description": "搭乗しているPLが「アムロ・レイ」の場合、使用可能。自身が撤退するまで、撃破効果を受けない。結束戦術技使用後から一定時間撤退しなかった場合に発動し、自軍はバトルに勝利する。",
@@ -84982,15 +84982,7 @@
           "power": 5500,
           "description": "対象の敵を中心として射程よりも広い範囲で、射線上の敵に貫通格闘攻撃でダメージを与える。"
         },
-        "squad_sp": {
-          "name": null,
-          "condition": "SQUAD RUSH発動中に1度だけ、SQUAD SPを使用できる。",
-          "target": null,
-          "range": null,
-          "power": null,
-          "description": null,
-          "_uncertain": true
-        },
+        "squad_sp": null,
         "echoes_beat": null
       },
       "rarity": "R",
@@ -239650,7 +239642,7 @@
         "squad_sp": {
           "name": "ラストシューティング",
           "condition": null,
-          "target": null,
+          "target": "特殊",
           "range": 4,
           "power": "WIN",
           "description": "搭乗しているPLが「アムロ・レイ」の場合、使用可能。自身が撤退するまで、撃破効果を受けない。結束戦術技使用後から一定時間撤退しなかった場合に発動し、自軍はバトルに勝利する。",
