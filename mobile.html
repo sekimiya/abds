@@ -583,7 +583,7 @@ body.light .bm-toggle-btn.active{background:#d0e8dc;border-color:var(--accent);c
 .ss-table.ss-h-mode .ss-row-ms{display:none}
 .ss-table.ss-h-mode .ss-row-pl{display:none}
 .ss-table.ss-h-mode .ss-row-mspl{display:flex}
-.ss-table.ss-h-mode .ss-ov-links{display:none}
+.ss-table.ss-h-mode .ss-row-link{display:none}
 .ss-table{display:grid;grid-template-columns:28px repeat(5,1fr);font-size:0.5rem;width:100%;line-height:1.3}
 .ss-label{background:#0d0d0d;color:#666;padding:2px 2px;border-bottom:1px solid #1a1a1a;display:flex;align-items:center;justify-content:center;text-align:center;font-weight:bold;font-size:0.45rem;word-break:keep-all}
 .ss-label.ss-section-start{border-top:2px solid #333}
@@ -5209,11 +5209,11 @@ function openScreenshotMode() {
   });
 
   // リンク (MS+PL統合)
-  html += `<div class="ss-label ss-section-start">Link</div>`;
+  html += `<div class="ss-label ss-section-start ss-row-link">Link</div>`;
   units.forEach(u => {
     const allLinks = [...u.msLinks, ...u.plLinks];
-    if (allLinks.length === 0) { html += `<div class="ss-cell ss-section-start">-</div>`; return; }
-    html += `<div class="ss-cell ss-cell-col ss-section-start">${allLinks.map(l => {
+    if (allLinks.length === 0) { html += `<div class="ss-cell ss-section-start ss-row-link">-</div>`; return; }
+    html += `<div class="ss-cell ss-cell-col ss-section-start ss-row-link">${allLinks.map(l => {
       const { required, category } = _parseLinkCondition(l.condition);
       const active = _countLinkInDeck(l.name, category) >= required ? ' ss-link-active' : '';
       return `<div class="ss-link${active}">${h(l.name)} ${required}</div>`;
