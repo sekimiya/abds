@@ -1604,7 +1604,8 @@ body.light .ss-text{color:#555}
     <button class="menu-btn" onclick="DeckManager.sortByCategory();toggleMenu()" title="殲滅→制圧→防衛の順に並び替え" style="flex:1">並び順を整理</button>
   </div>
   <div class="menu-row">
-    <button class="menu-btn" onclick="openScreenshotMode();toggleMenu()" style="width:100%">スクショモード</button>
+    <button class="menu-btn" onclick="openScreenshotMode();toggleMenu()" style="flex:1">スクショ縦</button>
+    <button class="menu-btn" onclick="openScreenshotMode();setSsMode('h');toggleMenu()" style="flex:1">スクショ横</button>
   </div>
   <div class="menu-label">バッジ表示</div>
   <div class="badge-switches" id="badgeSwitches">
