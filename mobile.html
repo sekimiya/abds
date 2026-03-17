@@ -578,7 +578,8 @@ body.light .bm-toggle-btn.active{background:#d0e8dc;border-color:var(--accent);c
 .ss-mode-btn{padding:6px 12px;font-size:0.7rem;font-weight:bold;border:none;background:#222;color:#888;cursor:pointer}
 .ss-mode-btn.active{background:#68efbd;color:#000}
 .ss-body{flex:1;overflow:hidden;display:flex;flex-direction:column}
-.ss-table-h{display:grid;grid-template-columns:60px repeat(var(--ss-cols,10),auto);font-size:0.45rem;width:100%;line-height:1.3;overflow:auto}
+.ss-table-h{display:grid;grid-template-columns:28px repeat(var(--ss-cols,10),auto);font-size:0.45rem;width:100%;line-height:1.3;overflow:auto}
+.ss-h-cards{display:flex;gap:2px;align-items:flex-start}
 .ss-table{display:grid;grid-template-columns:28px repeat(5,1fr);font-size:0.5rem;width:100%;line-height:1.3}
 .ss-label{background:#0d0d0d;color:#666;padding:2px 2px;border-bottom:1px solid #1a1a1a;display:flex;align-items:center;justify-content:center;text-align:center;font-weight:bold;font-size:0.45rem;word-break:keep-all}
 .ss-label.ss-section-start{border-top:2px solid #333}
@@ -5311,7 +5312,7 @@ function openScreenshotMode() {
   document.getElementById('ssTable').innerHTML = html;
 
   // 横画面テーブル生成
-  const hLabels = ['CAT','MS','PL','COST','ARMS','地形','機','遠','近','HP','Link','MS Abi','PL Skill','SP','EB'];
+  const hLabels = ['CAT','MS/PL','COST','ARMS','地形','機','遠','近','HP','Link','MS Abi','PL Skill','SP','EB'];
   const colCount = hLabels.length;
   const hCell = (content, cls) => `<div class="ss-cell${cls ? ' ' + cls : ''}">${content || '-'}</div>`;
   const hLabel = (text) => `<div class="ss-label">${text}</div>`;
@@ -5326,10 +5327,8 @@ function openScreenshotMode() {
     // CAT
     const catBdg = u.cat ? `<span class="ss-cat-badge ${catMap[u.cat]||''}">${h(u.cat)}</span>` : '-';
     hHtml += hCell(catBdg, 'ss-cell-center');
-    // MS
-    hHtml += hCell(ssCardWrap(u.msNum, u.msIdx, u.msOcr, 'ms'), 'ss-cell-center');
-    // PL
-    hHtml += hCell(ssCardWrap(u.plNum, u.plIdx, u.plOcr, 'pl'), 'ss-cell-center');
+    // MS/PL横並び
+    hHtml += hCell(`<div class="ss-h-cards">${ssCardWrap(u.msNum, u.msIdx, u.msOcr, 'ms')}${ssCardWrap(u.plNum, u.plIdx, u.plOcr, 'pl')}</div>`, 'ss-cell-center');
     // COST
     hHtml += hCell(`<span style="font-weight:900;color:var(--gold)">${u.msCost+u.plCost}</span>`, 'ss-cell-center');
     // ARMS
