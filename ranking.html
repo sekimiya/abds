@@ -165,6 +165,7 @@ body.light .rank-card-bar{background:#e8e8e8}
     <button class="sort-btn" data-sort="ranged">射撃</button>
     <button class="sort-btn" data-sort="melee">格闘</button>
     <button class="sort-btn" data-sort="hp">HP</button>
+    <button class="sort-btn" data-sort="rmdiff">射格差</button>
   </div>
 </div>
 
@@ -201,6 +202,25 @@ body.light .rank-card-bar{background:#e8e8e8}
   });
 
   var PLACEHOLDER = 'data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2236%22 height=%2250%22><rect fill=%22%23222%22 width=%2236%22 height=%2250%22/></svg>';
+  var IMG_BASE = 'https://www.gundam-ab.com/images/cardlist/card/';
+  var cachedKeys = new Set();
+
+  // SWキャッシュからキー一覧を取得
+  function initCache(){
+    return caches.open('card-images-v1').then(function(cache){
+      return cache.keys();
+    }).then(function(keys){
+      keys.forEach(function(req){
+        var m = new URL(req.url).pathname.match(/\/([A-Za-z0-9_\-]+(?:_b)?)\.(jpg|png)/);
+        if(m) cachedKeys.add(m[1]);
+      });
+    }).catch(function(){});
+  }
+
+  function resolveImg(number){
+    if(cachedKeys.has(number)) return IMG_BASE + number + '.jpg';
+    return PLACEHOLDER;
+  }
 
   var RARITY_COLORS = {
     M:'#82b1ff',C:'#aaa',R:'#ffe082',SR:'#ff8a80',U:'#ce93d8',
@@ -288,6 +308,7 @@ body.light .rank-card-bar{background:#e8e8e8}
       case 'ranged': return c.ranged||0;
       case 'melee': return c.melee||0;
       case 'hp': return c.hp||0;
+      case 'rmdiff': return Math.abs((c.ranged||0)-(c.melee||0));
     }
     return 0;
   }
@@ -321,7 +342,7 @@ body.light .rank-card-bar{background:#e8e8e8}
       var cp = getCP(c);
       var sv = getSortVal(c);
       var pct = Math.round((sv/maxCP)*100);
-      var imgUrl = c.front_url || PLACEHOLDER;
+      var imgUrl = resolveImg(c.number);
       html += '<tr>'
         +'<td class="rank-num">'+(i+1)+'</td>'
         +'<td><img class="rank-thumb" src="'+imgUrl+'" loading="lazy" onerror="this.src=PLACEHOLDER"></td>'
@@ -347,7 +368,7 @@ body.light .rank-card-bar{background:#e8e8e8}
       var cp = getCP(c);
       var sv = getSortVal(c);
       var pct = Math.round((sv/maxCP)*100);
-      var mImgUrl = c.front_url || PLACEHOLDER;
+      var mImgUrl = resolveImg(c.number);
       mhtml += '<div class="rank-card">'
         +'<div class="rank-card-top">'
           +'<div class="rank-card-num">#'+(i+1)+'</div>'
@@ -378,9 +399,10 @@ body.light .rank-card-bar{background:#e8e8e8}
     cardList.innerHTML = mhtml;
   }
 
-  // Load data
-  fetch('./data/card_index.json')
-    .then(function(r){ return r.json(); })
+  // Load data (キャッシュ初期化後)
+  initCache().then(function(){
+    return fetch('./data/card_index.json');
+  }).then(function(r){ return r.json(); })
     .then(function(cards){
       // Inherit parallel card data
       var baseMap = {};
