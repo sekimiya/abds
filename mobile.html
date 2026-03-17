@@ -578,8 +578,11 @@ body.light .bm-toggle-btn.active{background:#d0e8dc;border-color:var(--accent);c
 .ss-mode-btn{padding:6px 12px;font-size:0.7rem;font-weight:bold;border:none;background:#222;color:#888;cursor:pointer}
 .ss-mode-btn.active{background:#68efbd;color:#000}
 .ss-body{flex:1;overflow:hidden;display:flex;flex-direction:column}
-.ss-table-h{display:grid;grid-template-columns:28px repeat(var(--ss-cols,10),auto);font-size:0.45rem;width:100%;line-height:1.3;overflow:auto}
 .ss-h-cards{display:flex;gap:2px;align-items:flex-start}
+.ss-row-mspl{display:none}
+.ss-table.ss-h-mode .ss-row-ms{display:none}
+.ss-table.ss-h-mode .ss-row-pl{display:none}
+.ss-table.ss-h-mode .ss-row-mspl{display:flex}
 .ss-table{display:grid;grid-template-columns:28px repeat(5,1fr);font-size:0.5rem;width:100%;line-height:1.3}
 .ss-label{background:#0d0d0d;color:#666;padding:2px 2px;border-bottom:1px solid #1a1a1a;display:flex;align-items:center;justify-content:center;text-align:center;font-weight:bold;font-size:0.45rem;word-break:keep-all}
 .ss-label.ss-section-start{border-top:2px solid #333}
@@ -1566,7 +1569,6 @@ body.light .ss-text{color:#555}
   </div>
   <div class="ss-body">
     <div class="ss-table" id="ssTable"></div>
-    <div class="ss-table-h" id="ssTableH" style="display:none"></div>
   </div>
   <div class="ss-mode-toggle">
     <button class="ss-mode-btn" id="ssModeBtnV" onclick="setSsMode('v')">縦</button>
@@ -5128,15 +5130,21 @@ function openScreenshotMode() {
   });
 
   // MS画像
-  html += label('MS');
+  html += `<div class="ss-label ss-row-ms">MS</div>`;
   units.forEach(u => {
-    html += cell(ssCardWrap(u.msNum, u.msIdx, u.msOcr, 'ms'), 'ss-cell-center');
+    html += `<div class="ss-cell ss-cell-center ss-row-ms">${ssCardWrap(u.msNum, u.msIdx, u.msOcr, 'ms')}</div>`;
   });
 
   // PL画像
-  html += label('PL');
+  html += `<div class="ss-label ss-row-pl">PL</div>`;
   units.forEach(u => {
-    html += cell(ssCardWrap(u.plNum, u.plIdx, u.plOcr, 'pl'), 'ss-cell-center');
+    html += `<div class="ss-cell ss-cell-center ss-row-pl">${ssCardWrap(u.plNum, u.plIdx, u.plOcr, 'pl')}</div>`;
+  });
+
+  // MS+PL横並び（横モード用、デフォルト非表示）
+  html += `<div class="ss-label ss-row-mspl">MS<br>PL</div>`;
+  units.forEach(u => {
+    html += `<div class="ss-cell ss-cell-center ss-row-mspl"><div class="ss-h-cards">${ssCardWrap(u.msNum, u.msIdx, u.msOcr, 'ms')}${ssCardWrap(u.plNum, u.plIdx, u.plOcr, 'pl')}</div></div>`;
   });
 
   // コスト
@@ -5312,109 +5320,18 @@ function openScreenshotMode() {
 
   document.getElementById('ssTable').innerHTML = html;
 
-  // 横画面テーブル生成
-  const hLabels = ['CAT','MS/PL','COST','ARMS','地形','機','遠','近','HP','Link','MS Abi','PL Skill','SP','EB'];
-  const colCount = hLabels.length;
-  const hCell = (content, cls) => `<div class="ss-cell${cls ? ' ' + cls : ''}">${content || '-'}</div>`;
-  const hLabel = (text) => `<div class="ss-label">${text}</div>`;
-  let hHtml = '';
-  // Header row
-  hHtml += '<div class="ss-label" style="background:#0d0d0d"></div>';
-  hLabels.forEach(l => { hHtml += `<div class="ss-label">${l}</div>`; });
-  // Unit rows
-  units.forEach((u, ui) => {
-    const msName = u.msIdx?.name || u.msOcr?.name || '';
-    hHtml += `<div class="ss-label" style="font-size:0.5rem;color:#ccc">U${ui+1}</div>`;
-    // CAT
-    const catBdg = u.cat ? `<span class="ss-cat-badge ${catMap[u.cat]||''}">${h(u.cat)}</span>` : '-';
-    hHtml += hCell(catBdg, 'ss-cell-center');
-    // MS/PL横並び
-    hHtml += hCell(`<div class="ss-h-cards">${ssCardWrap(u.msNum, u.msIdx, u.msOcr, 'ms')}${ssCardWrap(u.plNum, u.plIdx, u.plOcr, 'pl')}</div>`, 'ss-cell-center');
-    // COST
-    hHtml += hCell(`<span style="font-weight:900;color:var(--gold)">${u.msCost+u.plCost}</span>`, 'ss-cell-center');
-    // ARMS
-    let wHtml = '';
-    if (u.weapon?.main) wHtml += `<div class="ss-weapon-row"><span class="ss-weapon-slot main">M</span>${h(u.weapon.main.name||'')} ${u.weapon.main.range||'-'}</div>`;
-    if (u.weapon?.sub) wHtml += `<div class="ss-weapon-row"><span class="ss-weapon-slot sub">S</span>${h(u.weapon.sub.name||'')} ${u.weapon.sub.range||'-'}</div>`;
-    hHtml += hCell(wHtml || '-', 'ss-cell-col');
-    // 地形
-    if (u.tc) {
-      const tr = [{k:'ground',l:'地'},{k:'space',l:'宇'},{k:'desert',l:'砂'},{k:'water',l:'水'}]
-        .map(t => `<span class="ss-terrain-badge${activeTerrain===t.k?' terrain-active':''}">${t.l}${u.tc[t.k]||'-'}</span>`).join('');
-      hHtml += hCell(`<div class="ss-terrain">${tr}</div>`, 'ss-cell-center');
-    } else { hHtml += hCell('-', 'ss-cell-center'); }
-    // Stats (4 cells)
-    [0,1,2,3].forEach(si => {
-      const s = u.stats[si];
-      if (!s || (!s.msVal && !s.plVal)) { hHtml += hCell('-'); return; }
-      const totalBuff = (s.linkBuff||0) + (s.terrainBuff||0);
-      const buffed = totalBuff !== 0 ? ' buffed' : '';
-      hHtml += hCell(`<span class="ss-bv-total${buffed}">${s.total}</span>`, 'ss-cell-center');
-    });
-    // Link
-    const allLinks = [...u.msLinks, ...u.plLinks];
-    if (allLinks.length) {
-      hHtml += hCell(allLinks.map(l => {
-        const { required, category } = _parseLinkCondition(l.condition);
-        const ac = _countLinkInDeck(l.name, category) >= required ? ' ss-link-active' : '';
-        return `<div class="ss-link${ac}">${h(l.name)}</div>`;
-      }).join(''), 'ss-cell-col');
-    } else { hHtml += hCell('-'); }
-    // MS Abi
-    const abilities = u.msAbility ? (Array.isArray(u.msAbility) ? u.msAbility : [u.msAbility]) : [];
-    if (abilities.length) {
-      hHtml += hCell(abilities.map(a => `<div class="ss-skill-name">${h(a.name||'')}</div>`).join(''), 'ss-cell-col');
-    } else { hHtml += hCell('-'); }
-    // PL Skill
-    if (u.plSkill) {
-      let ps = `<div class="ss-skill-name">${h(u.plSkill.name||'')}`;
-      if (u.plSkill.has_sq_skill) ps += `<span class="ss-skill-badge sq">SQ</span>`;
-      if (u.plSkill.is_eb_skill) ps += `<span class="ss-skill-badge eb">EB</span>`;
-      ps += '</div>';
-      hHtml += hCell(ps, 'ss-cell-col');
-    } else { hHtml += hCell('-'); }
-    // SP
-    if (u.sp) {
-      let sp = `<div class="ss-skill-name" style="color:#42a5f5">${h(u.sp.name||'')}</div>`;
-      if (u.sp.power) sp += `<div style="font-size:0.4rem;color:#888">威力:${typeof u.sp.power === 'object' ? JSON.stringify(u.sp.power) : u.sp.power}</div>`;
-      hHtml += hCell(sp, 'ss-cell-col');
-    } else { hHtml += hCell('-'); }
-    // EB
-    if (u.eb) {
-      let eb = `<div class="ss-skill-name" style="color:#ff9800">${h(u.eb.name||'EB')}</div>`;
-      if (u.eb.level) eb += `<span class="ss-skill-tag">Lv.${u.eb.level}</span>`;
-      hHtml += hCell(eb, 'ss-cell-col ss-theme-eb');
-    } else { hHtml += hCell('-'); }
-  });
-  const hTable = document.getElementById('ssTableH');
-  hTable.style.setProperty('--ss-cols', colCount);
-  hTable.innerHTML = hHtml;
-
   // デフォルトは縦画面
   setSsMode('v');
   document.getElementById('ssOverlay').classList.add('open');
 }
 
 function setSsMode(mode) {
-  const v = document.getElementById('ssTable');
-  const h = document.getElementById('ssTableH');
+  const table = document.getElementById('ssTable');
   const btnV = document.getElementById('ssModeBtnV');
   const btnH = document.getElementById('ssModeBtnH');
-  if (mode === 'h') {
-    v.style.display = 'none';
-    h.style.display = 'grid';
-    btnV.classList.remove('active');
-    btnH.classList.add('active');
-    document.querySelector('.ss-body').style.overflowX = 'auto';
-    document.querySelector('.ss-body').style.overflowY = 'auto';
-  } else {
-    v.style.display = 'grid';
-    h.style.display = 'none';
-    btnV.classList.add('active');
-    btnH.classList.remove('active');
-    document.querySelector('.ss-body').style.overflowX = '';
-    document.querySelector('.ss-body').style.overflowY = '';
-  }
+  table.classList.toggle('ss-h-mode', mode === 'h');
+  btnV.classList.toggle('active', mode === 'v');
+  btnH.classList.toggle('active', mode === 'h');
 }
 
 function closeScreenshotMode() {
