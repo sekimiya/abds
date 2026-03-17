@@ -5123,11 +5123,12 @@ function openScreenshotMode() {
     return `<div class="ss-card-wrap"><img class="ss-card-img" src="${img}">${ov}</div>`;
   };
 
-  // カテゴリ (最上段)
-  html += label('CAT');
+  // カテゴリ+コスト (1行に統合)
+  html += label('CT');
   units.forEach(u => {
-    const catBadge = u.cat ? `<span class="ss-cat-badge ${catMap[u.cat] || ''}">${h(u.cat)}</span>` : '-';
-    html += cell(`<div style="text-align:center">${catBadge}</div>`, 'ss-cell-center');
+    const catBadge = u.cat ? `<span class="ss-cat-badge ${catMap[u.cat] || ''}">${h(u.cat)}</span>` : '';
+    const cost = `<span style="font-weight:900;color:var(--gold);font-size:0.55rem">${u.msCost+u.plCost}</span>`;
+    html += cell(`<div style="text-align:center;display:flex;align-items:center;justify-content:center;gap:3px">${catBadge}${cost}</div>`, 'ss-cell-center');
   });
 
   // MS画像
@@ -5146,12 +5147,6 @@ function openScreenshotMode() {
   html += `<div class="ss-label ss-row-mspl">MS<br>PL</div>`;
   units.forEach(u => {
     html += `<div class="ss-cell ss-cell-center ss-row-mspl"><div class="ss-h-cards">${ssCardWrap(u.msNum, u.msIdx, u.msOcr, 'ms')}${ssCardWrap(u.plNum, u.plIdx, u.plOcr, 'pl')}</div></div>`;
-  });
-
-  // コスト
-  html += `<div class="ss-label ss-section-start">COST</div>`;
-  units.forEach(u => {
-    html += `<div class="ss-cell ss-section-start ss-cell-center" style="font-weight:900;color:var(--gold);font-size:0.55rem">${u.msCost+u.plCost}</div>`;
   });
 
   // 武装 (名前+射程を1行ずつ)
