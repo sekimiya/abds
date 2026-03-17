@@ -137,7 +137,8 @@ body.light .rank-card-bar{background:#e8e8e8}
 .card-modal{background:#1a1a1a;border:1px solid #333;border-radius:12px;max-width:420px;width:100%;max-height:85vh;overflow-y:auto;padding:16px;position:relative}
 body.light .card-modal{background:#fff;border-color:#ddd;color:#333}
 .card-modal-close{position:absolute;top:8px;right:12px;background:none;border:none;color:#888;font-size:1.5rem;cursor:pointer}
-.card-modal-img{width:100%;max-width:200px;display:block;margin:0 auto 12px;border-radius:6px}
+.card-modal-imgs{display:flex;gap:8px;justify-content:center;margin-bottom:12px}
+.card-modal-img{flex:1;max-width:180px;border-radius:6px;object-fit:contain}
 .card-modal-name{font-size:1rem;font-weight:700;text-align:center;margin-bottom:4px}
 .card-modal-meta{font-size:0.8rem;color:#888;text-align:center;margin-bottom:10px}
 .card-modal-section{margin-bottom:10px;padding:8px;background:rgba(255,255,255,0.03);border-radius:6px}
@@ -233,6 +234,11 @@ function initCache(){
 function resolveImg(number){
   if(cachedKeys.has(number)) return IMG_BASE + number + '.jpg';
   return PLACEHOLDER;
+}
+function resolveImgBack(number){
+  var key = number + '_b';
+  if(cachedKeys.has(key)) return IMG_BASE + key + '.jpg';
+  return null;
 }
 
 (function(){
@@ -485,8 +491,12 @@ function renderDetail(number, card) {
   if (!card) { body.innerHTML = '<div style="text-align:center;padding:20px;color:#888">詳細データなし</div>'; return; }
   var ocr = card.ocr_data || {};
   var imgUrl = resolveImg(number);
+  var backUrl = resolveImgBack(number);
   var h = '';
+  h += '<div class="card-modal-imgs">';
   h += '<img class="card-modal-img" src="'+imgUrl+'" onerror="this.style.display=\'none\'">';
+  if (backUrl) h += '<img class="card-modal-img" src="'+backUrl+'" onerror="this.style.display=\'none\'">';
+  h += '</div>';
   h += '<div class="card-modal-name">'+esc(ocr.name||card.name||number)+'</div>';
   var meta = [];
   if (number) meta.push(number);
