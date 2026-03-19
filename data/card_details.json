@@ -267157,7 +267157,17 @@
         "eb_power": 3800,
         "eb_target": "単体(敵)",
         "eb_range": 3,
-        "eb_description": "EBLv.を1下げる。敵単体に射撃攻撃でダメージを与え、EBLv.が3に上昇する。一定時間、自身の受けるダメージを軽減する。出撃時1度のみ使用可能。"
+        "eb_description": "EBLv.を1下げる。敵単体に射撃攻撃でダメージを与え、EBLv.が3に上昇する。一定時間、自身の受けるダメージを軽減する。出撃時1度のみ使用可能。",
+        "sp_type": "normal",
+        "echoes_beat": {
+          "level": 1,
+          "name": "ハイパー・バズーカ撃射 Lv.1",
+          "target": "単体(敵)",
+          "range": 3,
+          "power": 3800,
+          "description": "EBLv.を1下げる。敵単体に射撃攻撃でダメージを与え、一定時間、自身の受けるダメージを軽減する。EBLv.が3に上昇する。出撃時1度のみ使用可能。",
+          "_uncertain": false
+        }
       },
       "rarity": "P",
       "illustrator": "Moyasi",
@@ -267437,7 +267447,7 @@
   },
   "VEB01-004": {
     "number": "VEB01-004",
-    "name": "ゲルググ（シャア・アズナブル専用機）",
+    "name": "ゲルググ(シャア・アズナブル専用機)",
     "url": "https://www.gundam-ab.com/images/cardlist/card/VEB01-004.jpg?v250630",
     "category": "機動戦士ガンダム",
     "series": "VEB01",
@@ -267454,7 +267464,7 @@
         "class": "近距離",
         "cost_label": "コスト5"
       },
-      "name": "ゲルググ（シャア・アズナブル専用機）",
+      "name": "ゲルググ(シャア・アズナブル専用機)",
       "model": "YMS-14 CHAR'S GELGOOG",
       "cost": 5,
       "category": "近距離",
@@ -267489,7 +267499,7 @@
       "ms_ability": {
         "name": "瞬撃",
         "activation": "任意発動",
-        "target": "範囲（敵）",
+        "target": "範囲(敵)",
         "range": 5,
         "cost": 4,
         "description": "射程範囲内の指定した位置に小範囲攻撃を行い、範囲内の敵にダメージを与える。"
@@ -267508,7 +267518,7 @@
       ],
       "special_attack": {
         "name": "ビーム・ナギナタ強襲",
-        "target": "単体（敵）",
+        "target": "単体(敵)",
         "range": 2,
         "sp_cost": 2,
         "power": 3600,
@@ -267517,7 +267527,7 @@
           "partner1": "エルメス",
           "partner2": null,
           "name": "彗星と亡霊",
-          "target": "貫通（敵）",
+          "target": "貫通(敵)",
           "range": 3,
           "power": 4100,
           "description": "対象の敵を中心として射程よりも広い範囲で、射線上の敵に貫通射撃でダメージを与え、一定時間スタンさせる。攻撃に参加したユニットはHPが最大値を超えて回復し、一定時間、[遠／近攻撃力]をアップする。出撃時1度のみ使用可能。"
@@ -267525,12 +267535,12 @@
       },
       "rarity": "P",
       "illustrator": "Moyasi",
-      "raw": "近距離 コスト5\nYMS-14 CHAR'S GELGOOG\nゲルググ（シャア・アズナブル専用機）\n\n頭頂高 19.2m\n本体重量 42.1t\n所属 ジオン公国軍\nパイロット シャア・アズナブル\n\n地上 A  宇宙 S  砂漠 C  水中 C\n機動力 240\n遠距離攻撃 80\n近距離攻撃 580\nHP 500\n\nWEAPON\nMAIN ビーム・ナギナタ  射程 1  近距離\nSUB  ビーム・ライフル  射程 3  遠距離\n\nMS ABILITY\n瞬撃\n任意発動  範囲（敵）  射程 5  コスト 4\n射程範囲内の指定した位置に小範囲攻撃を行い、範囲内の敵にダメージを与える。\n\nLINK ABILITY\n機動戦士ガンダム  デッキに3枚以上\n[機動力]小アップ\n\n戦況を変える力  デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nIMPACT AREA\n\nSPECIAL ATTACK  UNITED SP\nビーム・ナギナタ強襲  彗星と亡霊\n連携 エルメス  連携 ー\n連携 ー       連携 ー\n単体（敵）  射程 2  貫通（敵）  射程 3\nSPコスト 2  威力 3600 / 4100\n\n敵単体に格闘攻撃でダメージを与え、自身のHPを回復する。\n／対象の敵を中心として射程よりも広い範囲で、射線上の敵に貫通射撃でダメージを与え、一定時間スタンさせる。攻撃に参加したユニットはHPが最大値を超えて回復し、一定時間、[遠／近攻撃力]をアップする。出撃時1度のみ使用可能。\n\nillust Moyasi\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN  ARSENAL BASE  VEB01-004  P"
+      "raw": "近距離 コスト5\nYMS-14 CHAR'S GELGOOG\nゲルググ(シャア・アズナブル専用機)\n\n頭頂高 19.2m\n本体重量 42.1t\n所属 ジオン公国軍\nパイロット シャア・アズナブル\n\n地上 A  宇宙 S  砂漠 C  水中 C\n機動力 240\n遠距離攻撃 80\n近距離攻撃 580\nHP 500\n\nWEAPON\nMAIN ビーム・ナギナタ  射程 1  近距離\nSUB  ビーム・ライフル  射程 3  遠距離\n\nMS ABILITY\n瞬撃\n任意発動  範囲(敵)  射程 5  コスト 4\n射程範囲内の指定した位置に小範囲攻撃を行い、範囲内の敵にダメージを与える。\n\nLINK ABILITY\n機動戦士ガンダム  デッキに3枚以上\n[機動力]小アップ\n\n戦況を変える力  デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nIMPACT AREA\n\nSPECIAL ATTACK  UNITED SP\nビーム・ナギナタ強襲  彗星と亡霊\n連携 エルメス  連携 ー\n連携 ー       連携 ー\n単体(敵)  射程 2  貫通(敵)  射程 3\nSPコスト 2  威力 3600 / 4100\n\n敵単体に格闘攻撃でダメージを与え、自身のHPを回復する。\n／対象の敵を中心として射程よりも広い範囲で、射線上の敵に貫通射撃でダメージを与え、一定時間スタンさせる。攻撃に参加したユニットはHPが最大値を超えて回復し、一定時間、[遠／近攻撃力]をアップする。出撃時1度のみ使用可能。\n\nillust Moyasi\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN  ARSENAL BASE  VEB01-004  P"
     }
   },
   "VEB01-004_p1": {
     "number": "VEB01-004_p1",
-    "name": "ゲルググ（シャア・アズナブル専用機）",
+    "name": "ゲルググ(シャア・アズナブル専用機)",
     "url": "https://www.gundam-ab.com/images/cardlist/card/VEB01-004_p1.jpg?v250630",
     "category": "機動戦士ガンダム",
     "series": "VEB01",
@@ -267547,7 +267557,7 @@
         "class": "近距離",
         "cost_label": "コスト5"
       },
-      "name": "ゲルググ（シャア・アズナブル専用機）",
+      "name": "ゲルググ(シャア・アズナブル専用機)",
       "model": "YMS-14 CHAR'S GELGOOG",
       "cost": 5,
       "category": "近距離",
@@ -267582,7 +267592,7 @@
       "ms_ability": {
         "name": "瞬撃",
         "activation": "任意発動",
-        "target": "範囲（敵）",
+        "target": "範囲(敵)",
         "range": 5,
         "cost": 4,
         "description": "射程範囲内の指定した位置に小範囲攻撃を行い、範囲内の敵にダメージを与える。"
@@ -267601,7 +267611,7 @@
       ],
       "special_attack": {
         "name": "ビーム・ナギナタ強襲",
-        "target": "単体（敵）",
+        "target": "単体(敵)",
         "range": 2,
         "sp_cost": 2,
         "power": 3600,
@@ -267610,7 +267620,7 @@
           "partner1": "エルメス",
           "partner2": null,
           "name": "彗星と亡霊",
-          "target": "貫通（敵）",
+          "target": "貫通(敵)",
           "range": 3,
           "power": 4100,
           "description": "対象の敵を中心として射程よりも広い範囲で、射線上の敵に貫通射撃でダメージを与え、一定時間スタンさせる。攻撃に参加したユニットはHPが最大値を超えて回復し、一定時間、[遠／近攻撃力]をアップする。出撃時1度のみ使用可能。"
@@ -267618,12 +267628,12 @@
       },
       "rarity": "PARALLEL",
       "illustrator": "moho",
-      "raw": "近距離 コスト5\nYMS-14 CHAR'S GELGOOG\nゲルググ（シャア・アズナブル専用機）\n\n頭頂高 19.2m\n本体重量 42.1t\n所属 ジオン公国軍\nパイロット シャア・アズナブル\n\n地上 A　宇宙 S　砂漠 C　水中 C\n機動力 240\n遠距離攻撃 80\n近距離攻撃 580\nHP 500\n\nWEAPON\nMAIN ビーム・ナギナタ　射程 1　近距離\nSUB ビーム・ライフル　射程 3　遠距離\n\nMS ABILITY\n瞬撃\n任意発動　範囲（敵）　射程 5　コスト 4\n射程範囲内の指定した位置に小範囲攻撃を行い、範囲内の敵にダメージを与える。\n\nLINK ABILITY\n機動戦士ガンダム　デッキに3枚以上\n[機動力]小アップ\n\n戦況を変える力　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nIMPACT AREA\n\nSPECIAL ATTACK　UNITED SP\nビーム・ナギナタ強襲　彗星と亡霊\n連携 エルメス　連携 ー\n連携 ー　連携 ー\n単体（敵）　射程 2　貫通（敵）　射程 3\nSPコスト 2　威力 3600 / 4100\n敵単体に格闘攻撃でダメージを与え、自身のHPを回復する。／対象の敵を中心として射程よりも広い範囲で、射線上の敵に貫通射撃でダメージを与え、一定時間スタンさせる。攻撃に参加したユニットはHPが最大値を超えて回復し、一定時間、[遠／近攻撃力]をアップする。出撃時1度のみ使用可能。\n\nillust. moho\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n\nPARALLEL\nVEB01-004 P"
+      "raw": "近距離 コスト5\nYMS-14 CHAR'S GELGOOG\nゲルググ(シャア・アズナブル専用機)\n\n頭頂高 19.2m\n本体重量 42.1t\n所属 ジオン公国軍\nパイロット シャア・アズナブル\n\n地上 A　宇宙 S　砂漠 C　水中 C\n機動力 240\n遠距離攻撃 80\n近距離攻撃 580\nHP 500\n\nWEAPON\nMAIN ビーム・ナギナタ　射程 1　近距離\nSUB ビーム・ライフル　射程 3　遠距離\n\nMS ABILITY\n瞬撃\n任意発動　範囲(敵)　射程 5　コスト 4\n射程範囲内の指定した位置に小範囲攻撃を行い、範囲内の敵にダメージを与える。\n\nLINK ABILITY\n機動戦士ガンダム　デッキに3枚以上\n[機動力]小アップ\n\n戦況を変える力　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nIMPACT AREA\n\nSPECIAL ATTACK　UNITED SP\nビーム・ナギナタ強襲　彗星と亡霊\n連携 エルメス　連携 ー\n連携 ー　連携 ー\n単体(敵)　射程 2　貫通(敵)　射程 3\nSPコスト 2　威力 3600 / 4100\n敵単体に格闘攻撃でダメージを与え、自身のHPを回復する。／対象の敵を中心として射程よりも広い範囲で、射線上の敵に貫通射撃でダメージを与え、一定時間スタンさせる。攻撃に参加したユニットはHPが最大値を超えて回復し、一定時間、[遠／近攻撃力]をアップする。出撃時1度のみ使用可能。\n\nillust. moho\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n\nPARALLEL\nVEB01-004 P"
     }
   },
   "VEB01-004_p2": {
     "number": "VEB01-004_p2",
-    "name": "ゲルググ（シャア・アズナブル専用機）",
+    "name": "ゲルググ(シャア・アズナブル専用機)",
     "url": "https://www.gundam-ab.com/images/cardlist/card/VEB01-004_p2.jpg?v250630",
     "category": "機動戦士ガンダム",
     "series": "VEB01",
@@ -267640,7 +267650,7 @@
         "class": "近距離",
         "cost_label": "コスト5"
       },
-      "name": "ゲルググ（シャア・アズナブル専用機）",
+      "name": "ゲルググ(シャア・アズナブル専用機)",
       "model": "YMS-14 CHAR'S GELGOOG",
       "cost": 5,
       "category": "近距離",
@@ -267718,12 +267728,12 @@
       },
       "rarity": "VE",
       "illustrator": "Moyasi",
-      "raw": "近距離 コスト5\nYMS-14 CHAR'S GELGOOG\nゲルググ（シャア・アズナブル専用機）\n頭頂高 19.2m\n本体重量 42.1t\n所属 ジオン公国軍\nパイロット シャア・アズナブル\n地上 A 宇宙 S 砂漠 C 水中 C\n機動力 240\n遠距離攻撃 80\n近距離攻撃 580\nHP 500\n\nWEAPON\nMAIN ビーム・ナギナタ 射程1 近距離\nSUB ビーム・ライフル 射程3 遠距離\n\nMS ABILITY\n瞬撃\n任意発動 範囲(敵) 射程5 コスト4\n射程範囲内の指定した位置に小範囲攻撃を行い、範囲内の敵にダメージを与える。\n\nLINK ABILITY\n機動戦士ガンダム デッキに3枚以上\n[機動力]小アップ\n戦況を変える力 デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nSPECIAL ATTACK          UNITED SP\nビーム・ナギナタ強襲     彗星と亡霊\n連携 エルメス            連携 ー\n連携 ー                  連携 ー\n単体(敵) 射程2    貫通(敵) 射程3\nSPコスト2    威力 3600 / 4100\n敵単体に格闘攻撃でダメージを与え、自身のHPを回復する。/対象の敵を中心として射程よりも広い範囲で、射線上の敵に貫通射撃でダメージを与え、一定時間スタンさせる。攻撃に参加したユニットはHPが最大値を超えて回復し、一定時間、[遠／近攻撃力]をアップする。出撃時1度のみ使用可能。\n\nillust Moyasi\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\nVEB01-004 VE"
+      "raw": "近距離 コスト5\nYMS-14 CHAR'S GELGOOG\nゲルググ(シャア・アズナブル専用機)\n頭頂高 19.2m\n本体重量 42.1t\n所属 ジオン公国軍\nパイロット シャア・アズナブル\n地上 A 宇宙 S 砂漠 C 水中 C\n機動力 240\n遠距離攻撃 80\n近距離攻撃 580\nHP 500\n\nWEAPON\nMAIN ビーム・ナギナタ 射程1 近距離\nSUB ビーム・ライフル 射程3 遠距離\n\nMS ABILITY\n瞬撃\n任意発動 範囲(敵) 射程5 コスト4\n射程範囲内の指定した位置に小範囲攻撃を行い、範囲内の敵にダメージを与える。\n\nLINK ABILITY\n機動戦士ガンダム デッキに3枚以上\n[機動力]小アップ\n戦況を変える力 デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nSPECIAL ATTACK          UNITED SP\nビーム・ナギナタ強襲     彗星と亡霊\n連携 エルメス            連携 ー\n連携 ー                  連携 ー\n単体(敵) 射程2    貫通(敵) 射程3\nSPコスト2    威力 3600 / 4100\n敵単体に格闘攻撃でダメージを与え、自身のHPを回復する。/対象の敵を中心として射程よりも広い範囲で、射線上の敵に貫通射撃でダメージを与え、一定時間スタンさせる。攻撃に参加したユニットはHPが最大値を超えて回復し、一定時間、[遠／近攻撃力]をアップする。出撃時1度のみ使用可能。\n\nillust Moyasi\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\nVEB01-004 VE"
     }
   },
   "VEB01-005": {
     "number": "VEB01-005",
-    "name": "ゲルググ（シャア・アズナブル専用機）",
+    "name": "ゲルググ(シャア・アズナブル専用機)",
     "url": "https://www.gundam-ab.com/images/cardlist/card/VEB01-005.jpg?v250630",
     "category": "機動戦士ガンダム",
     "series": "VEB01",
@@ -267740,7 +267750,7 @@
         "class": "遠距離",
         "cost_label": "コスト3"
       },
-      "name": "ゲルググ（シャア・アズナブル専用機）",
+      "name": "ゲルググ(シャア・アズナブル専用機)",
       "model": "YMS-14 CHAR'S GELGOOG",
       "cost": 3,
       "category": "遠距離",
@@ -267818,12 +267828,12 @@
       },
       "rarity": "R",
       "illustrator": "Kazue Saitou",
-      "raw": "遠距離　コスト3　MS\nYMS-14 CHAR'S GELGOOG\nゲルググ（シャア・アズナブル専用機）\n\n頭頂高　19.2m\n本体重量　42.1t\n所属　ジオン公国軍\nパイロット　シャア・アズナブル\n\n地上 A　宇宙 S　砂漠 C　水中 C\n機動力　190\n遠距離攻撃　270\n近距離攻撃　90\nHP　350\n\nWEAPON\nMAIN　ビーム・ライフル　射程 3　遠距離\nSUB　ビーム・ナギナタ　射程 1　近距離\n\nMS ABILITY\n砕撃\n任意発動　単体(敵)　射程 3　コスト 3\nロックオン中の敵に単体攻撃でダメージを与え、メイン武装を使用不能にさせる。出撃時1度のみ使用可能。\n\nLINK ABILITY\n機動戦士ガンダム　デッキに3枚以上\n[機動力]小アップ\n\n戦況を変える力　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nSPECIAL ATTACK　　UNITED SP\nビーム・ライフル撃射　　彗星と亡霊\n連携 エルメス　　連携 ー\n連携 ー　　連携 ー\n単体(敵)　射程 3　　貫通(敵)　射程 3\nSPコスト 2　威力 3200 / 3800\n敵単体に射撃攻撃でダメージを与える。\n／対象の敵を中心として射程よりも広い範囲で、射線上の敵に貫通射撃でダメージを与える。出撃時1度のみ使用可能。\n\nillust Kazue Saitou\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\nVEB01-005　R"
+      "raw": "遠距離　コスト3　MS\nYMS-14 CHAR'S GELGOOG\nゲルググ(シャア・アズナブル専用機)\n\n頭頂高　19.2m\n本体重量　42.1t\n所属　ジオン公国軍\nパイロット　シャア・アズナブル\n\n地上 A　宇宙 S　砂漠 C　水中 C\n機動力　190\n遠距離攻撃　270\n近距離攻撃　90\nHP　350\n\nWEAPON\nMAIN　ビーム・ライフル　射程 3　遠距離\nSUB　ビーム・ナギナタ　射程 1　近距離\n\nMS ABILITY\n砕撃\n任意発動　単体(敵)　射程 3　コスト 3\nロックオン中の敵に単体攻撃でダメージを与え、メイン武装を使用不能にさせる。出撃時1度のみ使用可能。\n\nLINK ABILITY\n機動戦士ガンダム　デッキに3枚以上\n[機動力]小アップ\n\n戦況を変える力　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nSPECIAL ATTACK　　UNITED SP\nビーム・ライフル撃射　　彗星と亡霊\n連携 エルメス　　連携 ー\n連携 ー　　連携 ー\n単体(敵)　射程 3　　貫通(敵)　射程 3\nSPコスト 2　威力 3200 / 3800\n敵単体に射撃攻撃でダメージを与える。\n／対象の敵を中心として射程よりも広い範囲で、射線上の敵に貫通射撃でダメージを与える。出撃時1度のみ使用可能。\n\nillust Kazue Saitou\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\nVEB01-005　R"
     }
   },
   "VEB01-006": {
     "number": "VEB01-006",
-    "name": "ゲルググ（量産機）",
+    "name": "ゲルググ(量産機)",
     "url": "https://www.gundam-ab.com/images/cardlist/card/VEB01-006.jpg?v250630",
     "category": "機動戦士ガンダム",
     "series": "VEB01",
@@ -267840,7 +267850,7 @@
         "class": "遠距離",
         "cost_label": "コスト4"
       },
-      "name": "ゲルググ（量産機）",
+      "name": "ゲルググ(量産機)",
       "model": "MS-14A GELGOOG",
       "cost": 4,
       "category": "遠距離",
@@ -267908,12 +267918,12 @@
       },
       "rarity": "M",
       "illustrator": "Kouki Tajima",
-      "raw": "遠距離 コスト4\nMS-14A GELGOOG\nゲルググ（量産機）\n\n頭頂高 19.2m\n本体重量 42.1t\n所属 ジオン公国軍\nパイロット ー\n\n地上 A 宇宙 S 砂漠 C 水中 C\n機動力 250\n遠距離攻撃 350\n近距離攻撃 50\nHP 400\n\nWEAPON\nMAIN ビーム・ライフル 射程 3 遠距離\nSUB ビーム・ナギナタ 射程 1 近距離\n\nMS ABILITY\n転化[支援]\n任意発動 範囲(味方) 射程 ー コスト 4\n\n一定時間、自身を中心とした範囲内の味方ユニットを強化する。使用回数に応じて、強化効果が変わる。[1回: 遠／近攻撃力アップ] [2回: 遠／近攻撃力アップ] [3回以上: 遠／近攻撃力アップ＆回復]\n\nLINK ABILITY\n機動戦士ガンダム デッキに3枚以上\n[機動力]小アップ\n\n戦況を変える力 デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nSPECIAL ATTACK ECHOES BEAT\nビーム・ライフル撃射 ビーム・ライフル撃射 Lv.2\nECHOES BEAT Lv.を下げることで、Lv.戦術技が発動する。\n\n単体(敵) 射程 3 単体(敵) 射程 3\nSPコスト 2 威力 3300 / 3900\n\n敵単体に射撃攻撃でダメージを与える。\n／ EBLv.を2下げる。敵単体に射撃攻撃でダメージを与え、出撃中の全味方ユニットの弱体化状態を無効化する。出撃時1度のみ使用可能。\n\nillust. Kouki Tajima\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\nVEB01-006 M"
+      "raw": "遠距離 コスト4\nMS-14A GELGOOG\nゲルググ(量産機)\n\n頭頂高 19.2m\n本体重量 42.1t\n所属 ジオン公国軍\nパイロット ー\n\n地上 A 宇宙 S 砂漠 C 水中 C\n機動力 250\n遠距離攻撃 350\n近距離攻撃 50\nHP 400\n\nWEAPON\nMAIN ビーム・ライフル 射程 3 遠距離\nSUB ビーム・ナギナタ 射程 1 近距離\n\nMS ABILITY\n転化[支援]\n任意発動 範囲(味方) 射程 ー コスト 4\n\n一定時間、自身を中心とした範囲内の味方ユニットを強化する。使用回数に応じて、強化効果が変わる。[1回: 遠／近攻撃力アップ] [2回: 遠／近攻撃力アップ] [3回以上: 遠／近攻撃力アップ＆回復]\n\nLINK ABILITY\n機動戦士ガンダム デッキに3枚以上\n[機動力]小アップ\n\n戦況を変える力 デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nSPECIAL ATTACK ECHOES BEAT\nビーム・ライフル撃射 ビーム・ライフル撃射 Lv.2\nECHOES BEAT Lv.を下げることで、Lv.戦術技が発動する。\n\n単体(敵) 射程 3 単体(敵) 射程 3\nSPコスト 2 威力 3300 / 3900\n\n敵単体に射撃攻撃でダメージを与える。\n／ EBLv.を2下げる。敵単体に射撃攻撃でダメージを与え、出撃中の全味方ユニットの弱体化状態を無効化する。出撃時1度のみ使用可能。\n\nillust. Kouki Tajima\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\nVEB01-006 M"
     }
   },
   "VEB01-007": {
     "number": "VEB01-007",
-    "name": "ゲルググ（量産機）",
+    "name": "ゲルググ(量産機)",
     "url": "https://www.gundam-ab.com/images/cardlist/card/VEB01-007.jpg?v250630",
     "category": "機動戦士ガンダム",
     "series": "VEB01",
@@ -267930,7 +267940,7 @@
         "class": "近距離",
         "cost_label": "コスト2"
       },
-      "name": "ゲルググ（量産機）",
+      "name": "ゲルググ(量産機)",
       "model": "MS-14A GELGOOG",
       "cost": 2,
       "category": "近距離",
@@ -267998,7 +268008,7 @@
       },
       "rarity": "R",
       "illustrator": "Ryohei Miyazaki",
-      "raw": "近距離 コスト2\nMS-14A GELGOOG\nゲルググ（量産機）\n\n頭頂高 19.2m\n本体重量 42.1t\n所属 ジオン公国軍\nパイロット ー\n\n地上 A 宇宙 S 砂漠 C 水中 C\n\n機動力 210\n遠距離攻撃 70\n近距離攻撃 240\nHP 280\n\nWEAPON\nMAIN ビーム・ナギナタ 射程1 近距離\nSUB ビーム・ライフル 射程3 遠距離\n\nMS ABILITY\n増援[防衛]\n任意発動 特殊(自分) 射程ー コスト4\n自身の周囲に防衛タイプの味方ユニットを呼び出す。※上限3ユニットまで。\n\nLINK ABILITY\n機動戦士ガンダム デッキに3枚以上\n[機動力]小アップ\n\n戦況を変える力 デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nSPECIAL ATTACK | ECHOES BEAT\nビーム・ナギナタ強撃 | ー\nー\n\n単体(敵) 射程2 | ー 射程ー\nSPコスト2 威力 3200 / ー\n敵単体に格闘攻撃でダメージを与える。\n/ー\n\nillust Ryohei Miyazaki\nVEB01-007 R"
+      "raw": "近距離 コスト2\nMS-14A GELGOOG\nゲルググ(量産機)\n\n頭頂高 19.2m\n本体重量 42.1t\n所属 ジオン公国軍\nパイロット ー\n\n地上 A 宇宙 S 砂漠 C 水中 C\n\n機動力 210\n遠距離攻撃 70\n近距離攻撃 240\nHP 280\n\nWEAPON\nMAIN ビーム・ナギナタ 射程1 近距離\nSUB ビーム・ライフル 射程3 遠距離\n\nMS ABILITY\n増援[防衛]\n任意発動 特殊(自分) 射程ー コスト4\n自身の周囲に防衛タイプの味方ユニットを呼び出す。※上限3ユニットまで。\n\nLINK ABILITY\n機動戦士ガンダム デッキに3枚以上\n[機動力]小アップ\n\n戦況を変える力 デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nSPECIAL ATTACK | ECHOES BEAT\nビーム・ナギナタ強撃 | ー\nー\n\n単体(敵) 射程2 | ー 射程ー\nSPコスト2 威力 3200 / ー\n敵単体に格闘攻撃でダメージを与える。\n/ー\n\nillust Ryohei Miyazaki\nVEB01-007 R"
     }
   },
   "VEB01-008": {
@@ -268087,7 +268097,16 @@
         "eb_target": "貫通(敵)",
         "eb_range": 4,
         "eb_trigger": "ECHOES BEAT Lv.を下げることで、共鳴戦術が発動する。",
-        "eb_name": "光る宇宙 Lv.3"
+        "eb_name": "光る宇宙 Lv.3",
+        "echoes_beat": {
+          "level": 3,
+          "name": "光る宇宙 Lv.3",
+          "target": "貫通(敵)",
+          "range": 4,
+          "power": 4900,
+          "description": "EBLv.を3下げる。ロックオン中の敵に貫通射撃でダメージを与え、メイン武装を使用不能にし、自身の[機動力][遠距離攻撃力]をアップする。この効果は解除できない。出撃時1度のみ使用可能。",
+          "_uncertain": false
+        }
       },
       "rarity": "U",
       "illustrator": "Chifuyu Yukishiro",
@@ -268178,7 +268197,16 @@
         "eb_power": 4900,
         "eb_description": "EBLv.を3下げる。ロックオン中の敵に貫通射撃でダメージを与え、メイン武装を使用不能にし、自身の[機動力][遠距離攻撃力]をアップする。この効果は解除できない。出撃時1度のみ使用可能。",
         "eb_target": "貫通(敵)",
-        "eb_range": 4
+        "eb_range": 4,
+        "echoes_beat": {
+          "level": 3,
+          "name": "光る宇宙 Lv.3",
+          "target": "貫通(敵)",
+          "range": 4,
+          "power": 4900,
+          "description": "EBLv.を3下げる。ロックオン中の敵に貫通射撃でダメージを与え、メイン武装を使用不能にし、自身の[機動力][遠距離攻撃力]をアップする。この効果は解除できない。出撃時1度のみ使用可能。",
+          "_uncertain": false
+        }
       },
       "rarity": "SN",
       "illustrator": "Chifuyu Yukishiro",
@@ -268262,14 +268290,23 @@
         "range": 4,
         "sp_cost": 2,
         "power": 3200,
-        "description": "敵単体に射撃攻撃でダメージを与える。／EBLv.を3下げる。射線上の敵に貫通射撃でダメージを与える。出撃時1度のみ使用可能。",
+        "description": "敵単体に射撃攻撃でダメージを与える。",
         "united_sp": null,
         "sp_type": "ECHOES BEAT SP",
         "eb_level": 3,
         "eb_power": 4700,
         "eb_description": "ECHOES BEAT Lv.を下げることで、共鳴戦術技が発動する。",
         "eb_target": "貫通(敵)",
-        "eb_range": 4
+        "eb_range": 4,
+        "echoes_beat": {
+          "level": 3,
+          "name": "光る宇宙 Lv.3",
+          "target": "貫通(敵)",
+          "range": 4,
+          "power": 4700,
+          "description": "EBLv.を3下げる。射線上の敵に貫通射撃でダメージを与える。出撃時1度のみ使用可能。",
+          "_uncertain": false
+        }
       },
       "rarity": "R",
       "illustrator": "Shiratori U",
@@ -268773,7 +268810,7 @@
           "type": "近距離"
         },
         "sub": {
-          "name": "サムライソードニ刀流（衝撃波）",
+          "name": "サムライソードニ刀流(衝撃波)",
           "range": 3,
           "type": "遠距離"
         }
@@ -268781,7 +268818,7 @@
       "ms_ability": {
         "name": "粒子発動",
         "activation": "任意発動",
-        "target": "単体（敵）",
+        "target": "単体(敵)",
         "range": 2,
         "cost": 4,
         "description": "ロックオン中の敵ユニットに単体攻撃でダメージを与え、一定時間、敵ユニットの[遠／近攻撃力][SP威力]をダウンし、自身の受けるダメージを軽減する。"
@@ -268800,7 +268837,7 @@
       ],
       "special_attack": {
         "name": "粒子発動[出力全開]",
-        "target": "単体（敵）",
+        "target": "単体(敵)",
         "range": 2,
         "sp_cost": 2,
         "power": 3600,
@@ -268810,12 +268847,12 @@
         "eb_level": 1,
         "eb_power": 3900,
         "eb_description": "前機体に艦体攻撃でダメージを与え、EBLv.が3に上昇する。一定時間、自身の[近距離攻撃力]をアップし、受けるダメージを軽減させ、敵ユニットの被ダメージを上昇させる。出撃時1度のみ使用可能。",
-        "eb_target": "単体（敵）",
+        "eb_target": "単体(敵)",
         "eb_range": 2
       },
       "rarity": "VE",
       "illustrator": "PaintedMIKE",
-      "raw": "近距離　コスト6　MS\n\n侍ノ弐 SENGOKU ASTRAY GUNDAM\n戦国アストレイ頑駄無\n\n頑頑高　―\n本体重量　―\n所属\nパイロット　ニルス・ニールセン\n\n地上　S　宇宙　A　砂漠　B　水中　B\n機動力　300\n遠距離攻撃　30\n近距離攻撃　620\nHP　600\n\nWEAPON\nMAIN　サムライソードニ刀流　射程 1　近距離\nSUB　サムライソードニ刀流（衝撃波）　射程 3　遠距離\n\nMS ABILITY\n粒子発動　任意発動　単体（敵）　射程 2　コスト 4\n\nロックオン中の敵ユニットに単体攻撃でダメージを与え、一定時間、敵ユニットの[遠／近攻撃力][SP威力]をダウンし、自身の受けるダメージを軽減する。\n\nSPECIAL ATTACK　ECHOES BEAT\n粒子発動[出力全開]　粒子発動[出力全開] Lv.1\nECHOES BEAT Lv.を下げることで、Lv.戦技が発動する。\n\n単体（敵）　射程 2　単体（敵）　射程 2\nSPコスト 2　威力 3600 / 3900\n\n艦体は艦体攻撃でダメージを与え、一定時間、自身の[近距離攻撃力]をアップし、受けるダメージを軽減させ、敵ユニットの被ダメージを上昇させる。/ EBLv.を下げる。前機体に艦体攻撃でダメージを与え、EBLv.が3に上昇する。一定時間、自身の[近距離攻撃力]をアップし、受けるダメージを軽減させ、敵ユニットの被ダメージを上昇させる。出撃時1度のみ使用可能。\n\nLINK ABILITY\nビルドファイターズ　デッキに3枚以上\n[機動力]小アップ\n\n多彩な戦術　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nIMPACT AREA\n\nillust. PaintedMIKE\n\n機動戦士ガンダム ARSENAL BASE\nBANDAI MADE IN JAPAN\n\nVEB01-013　VE"
+      "raw": "近距離　コスト6　MS\n\n侍ノ弐 SENGOKU ASTRAY GUNDAM\n戦国アストレイ頑駄無\n\n頑頑高　―\n本体重量　―\n所属\nパイロット　ニルス・ニールセン\n\n地上　S　宇宙　A　砂漠　B　水中　B\n機動力　300\n遠距離攻撃　30\n近距離攻撃　620\nHP　600\n\nWEAPON\nMAIN　サムライソードニ刀流　射程 1　近距離\nSUB　サムライソードニ刀流(衝撃波)　射程 3　遠距離\n\nMS ABILITY\n粒子発動　任意発動　単体(敵)　射程 2　コスト 4\n\nロックオン中の敵ユニットに単体攻撃でダメージを与え、一定時間、敵ユニットの[遠／近攻撃力][SP威力]をダウンし、自身の受けるダメージを軽減する。\n\nSPECIAL ATTACK　ECHOES BEAT\n粒子発動[出力全開]　粒子発動[出力全開] Lv.1\nECHOES BEAT Lv.を下げることで、Lv.戦技が発動する。\n\n単体(敵)　射程 2　単体(敵)　射程 2\nSPコスト 2　威力 3600 / 3900\n\n艦体は艦体攻撃でダメージを与え、一定時間、自身の[近距離攻撃力]をアップし、受けるダメージを軽減させ、敵ユニットの被ダメージを上昇させる。/ EBLv.を下げる。前機体に艦体攻撃でダメージを与え、EBLv.が3に上昇する。一定時間、自身の[近距離攻撃力]をアップし、受けるダメージを軽減させ、敵ユニットの被ダメージを上昇させる。出撃時1度のみ使用可能。\n\nLINK ABILITY\nビルドファイターズ　デッキに3枚以上\n[機動力]小アップ\n\n多彩な戦術　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nIMPACT AREA\n\nillust. PaintedMIKE\n\n機動戦士ガンダム ARSENAL BASE\nBANDAI MADE IN JAPAN\n\nVEB01-013　VE"
     }
   },
   "VEB01-014": {
@@ -268954,7 +268991,7 @@
           "type": "近距離"
         },
         "sub": {
-          "name": "GNソードII（ライフルモード）",
+          "name": "GNソードII(ライフルモード)",
           "range": 3,
           "type": "遠距離"
         }
@@ -268962,7 +268999,7 @@
       "ms_ability": {
         "name": "威圧",
         "activation": "任意発動",
-        "target": "範囲（敵）",
+        "target": "範囲(敵)",
         "range": null,
         "cost": 4,
         "description": "自身を中心とした範囲内の敵ユニットをスタンさせ、一定時間被ダメージを少しアップする。"
@@ -268981,7 +269018,7 @@
       ],
       "special_attack": {
         "name": "GNソードII強撃",
-        "target": "単体（敵）",
+        "target": "単体(敵)",
         "range": 2,
         "sp_cost": 2,
         "power": 3200,
@@ -268995,7 +269032,7 @@
       },
       "rarity": "R",
       "illustrator": "Ultimateinudog",
-      "raw": "近距離 コスト1\nGN-0000DVR GUNDAM 00 DIVER\nガンダムダブルオーダイバー\n\n頭頂高 18.3m\n本体重量 55.5t\n所属 ビルドダイバーズ\nパイロット リク\n\n地上 S 宇宙 A 砂漠 A 水中 B\n機動力 200\n遠距離攻撃 50\n近距離攻撃 210\nHP 250\n\nWEAPON\nMAIN GNソードII 射程 1 近距離\nSUB GNソードII（ライフルモード） 射程 3 遠距離\n\nMS ABILITY\n威圧\n任意発動 範囲（敵） 射程 ー コスト 4\n自身を中心とした範囲内の敵ユニットをスタンさせ、一定時間被ダメージを少しアップする。\n\nLINK ABILITY\nビルドダイバーズ デッキに3枚以上\n[HP]小アップ\n\n多彩な戦術 デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nIMPACT AREA\n\nSPECIAL ATTACK　ECHOES BEAT\nGNソードII強撃　ー\nー\n\n単体（敵） 射程 2 　ー　射程 ー\nSPコスト 2 威力 3200 / ー\n敵単体に格闘攻撃でダメージを与える。\n／ー\n\nillust Ultimateinudog\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN　機動戦士ガンダム ARSENAL BASE®\nVEB01-015 R"
+      "raw": "近距離 コスト1\nGN-0000DVR GUNDAM 00 DIVER\nガンダムダブルオーダイバー\n\n頭頂高 18.3m\n本体重量 55.5t\n所属 ビルドダイバーズ\nパイロット リク\n\n地上 S 宇宙 A 砂漠 A 水中 B\n機動力 200\n遠距離攻撃 50\n近距離攻撃 210\nHP 250\n\nWEAPON\nMAIN GNソードII 射程 1 近距離\nSUB GNソードII(ライフルモード) 射程 3 遠距離\n\nMS ABILITY\n威圧\n任意発動 範囲(敵) 射程 ー コスト 4\n自身を中心とした範囲内の敵ユニットをスタンさせ、一定時間被ダメージを少しアップする。\n\nLINK ABILITY\nビルドダイバーズ デッキに3枚以上\n[HP]小アップ\n\n多彩な戦術 デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nIMPACT AREA\n\nSPECIAL ATTACK　ECHOES BEAT\nGNソードII強撃　ー\nー\n\n単体(敵) 射程 2 　ー　射程 ー\nSPコスト 2 威力 3200 / ー\n敵単体に格闘攻撃でダメージを与える。\n／ー\n\nillust Ultimateinudog\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN　機動戦士ガンダム ARSENAL BASE®\nVEB01-015 R"
     }
   },
   "VEB01-016": {
@@ -269103,7 +269140,7 @@
       ],
       "rarity": "R",
       "illustrator": null,
-      "raw": "制圧 コスト3\n\nアムロ・レイ\nAMURO RAY\n\n身長 168cm\n年齢 15歳\n所属 地球連邦軍\n搭乗機体 ガンダム(最終決戦仕様)、ガンダム\nEBLv.1（最上昇\n\nEB PL SKILL\n火花散る電撃作戦\nEBLv.1に上昇時\n\n30秒間、自身の[機動力][近距離攻撃力]をアップする。\n\nEB LINK ABILITY\n宇宙に響く鼓動 デッキに3枚以上\nECHOES BEAT Lv.が表示される。\n味方ユニットが戦術技を発動するとEBLv.が上がる。\n[HP][SP威力]小アップ\n\n戦況を変える力 デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\n機動力 200\n遠距離攻撃 50\n近距離攻撃 230\nHP 240\n\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nVEB01-017 R"
+      "raw": "制圧 コスト3\n\nアムロ・レイ\nAMURO RAY\n\n身長 168cm\n年齢 15歳\n所属 地球連邦軍\n搭乗機体 ガンダム(最終決戦仕様)、ガンダム\nEBLv.1(最上昇\n\nEB PL SKILL\n火花散る電撃作戦\nEBLv.1に上昇時\n\n30秒間、自身の[機動力][近距離攻撃力]をアップする。\n\nEB LINK ABILITY\n宇宙に響く鼓動 デッキに3枚以上\nECHOES BEAT Lv.が表示される。\n味方ユニットが戦術技を発動するとEBLv.が上がる。\n[HP][SP威力]小アップ\n\n戦況を変える力 デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\n機動力 200\n遠距離攻撃 50\n近距離攻撃 230\nHP 240\n\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nVEB01-017 R"
     }
   },
   "VEB01-018": {
