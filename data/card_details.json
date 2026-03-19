@@ -269069,13 +269069,16 @@
         "trigger": "EBLv.1時",
         "effect": "自身のSPゲージ回復速度がアップする。このPLスキルの効果は重複しない。",
         "has_sq_skill": false,
-        "sq_skill_details": null
+        "sq_skill_details": null,
+        "is_eb_skill": true,
+        "eb_trigger_level": 1
       },
       "link_ability": [
         {
           "name": "[EB]宇宙に響く鼓動",
           "condition": "デッキに3枚以上",
-          "effect": "ECHOES BEAT Lv.が表示される。味方ユニットが戦術技を発動するとEBLv.が上がる。[HP][SP威力]小アップ"
+          "effect": "ECHOES BEAT Lv.が表示される。味方ユニットが戦術技を発動するとEBLv.が上がる。[HP][SP威力]小アップ",
+          "is_eb_link": true
         },
         {
           "name": "戦況を変える力",
@@ -269124,13 +269127,16 @@
         "has_sq_skill": false,
         "sq_skill_details": null,
         "eb_skill": true,
-        "eb_trigger": "EBLv.1に上昇時"
+        "eb_trigger": "EBLv.1に上昇時",
+        "is_eb_skill": true,
+        "eb_trigger_level": 1
       },
       "link_ability": [
         {
           "name": "[EB]宇宙に響く鼓動",
           "condition": "デッキに3枚以上",
-          "effect": "ECHOES BEAT Lv.が表示される。味方ユニットが戦術技を発動するとEBLv.が上がる。[HP][SP威力]小アップ"
+          "effect": "ECHOES BEAT Lv.が表示される。味方ユニットが戦術技を発動するとEBLv.が上がる。[HP][SP威力]小アップ",
+          "is_eb_link": true
         },
         {
           "name": "戦況を変える力",
@@ -269179,13 +269185,16 @@
         "has_sq_skill": false,
         "sq_skill_details": null,
         "eb_skill": true,
-        "eb_trigger": "EBLv.1に上昇時"
+        "eb_trigger": "EBLv.1に上昇時",
+        "is_eb_skill": true,
+        "eb_trigger_level": 1
       },
       "link_ability": [
         {
           "name": "[EB]宇宙に響く鼓動",
           "condition": "デッキに3枚以上",
-          "effect": "ECHOES BEAT Lv.が表示される。味方ユニットが戦術技を発動するとEBLv.が上がる。[HP][SP威力]小アップ"
+          "effect": "ECHOES BEAT Lv.が表示される。味方ユニットが戦術技を発動するとEBLv.が上がる。[HP][SP威力]小アップ",
+          "is_eb_link": true
         },
         {
           "name": "戦況を変える力",
@@ -269232,13 +269241,16 @@
         "trigger": "EBLv.1に上昇時",
         "effect": "30秒間、自身の[近距離攻撃力]をアップし、受けるダメージを軽減する。",
         "has_sq_skill": false,
-        "sq_skill_details": null
+        "sq_skill_details": null,
+        "is_eb_skill": true,
+        "eb_trigger_level": 1
       },
       "link_ability": [
         {
           "name": "[EB]宇宙に響く鼓動",
           "condition": "デッキに3枚以上",
-          "effect": "ECHOES BEAT Lv.が表示される。味方ユニットが戦術技を発動するとEBLv.が上がる。[HP][SP威力]小アップ"
+          "effect": "ECHOES BEAT Lv.が表示される。味方ユニットが戦術技を発動するとEBLv.が上がる。[HP][SP威力]小アップ",
+          "is_eb_link": true
         },
         {
           "name": "戦況を変える力",
@@ -269285,13 +269297,16 @@
         "trigger": "EBLv.2に上昇時",
         "effect": "30秒間、自身の[遠距離攻撃力]をアップし、受けるダメージを軽減する。",
         "has_sq_skill": false,
-        "sq_skill_details": null
+        "sq_skill_details": null,
+        "is_eb_skill": true,
+        "eb_trigger_level": 2
       },
       "link_ability": [
         {
           "name": "[EB]宇宙に響く鼓動",
           "condition": "デッキに3枚以上",
-          "effect": "ECHOES BEAT Lv.が表示される。味方ユニットが戦術技を発動するとEBLv.が上がる。[HP][SP威力]小アップ"
+          "effect": "ECHOES BEAT Lv.が表示される。味方ユニットが戦術技を発動するとEBLv.が上がる。[HP][SP威力]小アップ",
+          "is_eb_link": true
         },
         {
           "name": "戦況を変える力",
@@ -269338,13 +269353,15 @@
         "trigger": "EBLv.が上昇時",
         "effect": "EBLv.が上昇するたびに自身の[機動力][遠距離攻撃力]をアップする。最大3回まで発動。",
         "has_sq_skill": false,
-        "sq_skill_details": null
+        "sq_skill_details": null,
+        "is_eb_skill": true
       },
       "link_ability": [
         {
           "name": "[EB]宇宙に響く鼓動",
           "condition": "デッキに3枚以上",
-          "effect": "ECHOES BEAT Lv.が表示される。味方ユニットが戦術技を発動するとEBLv.が上がる。[HP][SP威力]小アップ"
+          "effect": "ECHOES BEAT Lv.が表示される。味方ユニットが戦術技を発動するとEBLv.が上がる。[HP][SP威力]小アップ",
+          "is_eb_link": true
         },
         {
           "name": "戦況を変える力",
@@ -269391,13 +269408,15 @@
         "trigger": "EBLv.が上昇時",
         "effect": "EBLv.が上昇するたびに自身の[機動力][遠距離攻撃力]をアップする。最大3回まで発動。",
         "has_sq_skill": false,
-        "sq_skill_details": null
+        "sq_skill_details": null,
+        "is_eb_skill": true
       },
       "link_ability": [
         {
           "name": "[EB]宇宙に響く鼓動",
           "condition": "デッキに3枚以上",
-          "effect": "ECHOES BEAT Lv.が表示される。味方ユニットが戦術技を発動するとEBLv.が上がる。[HP][SP威力]小アップ"
+          "effect": "ECHOES BEAT Lv.が表示される。味方ユニットが戦術技を発動するとEBLv.が上がる。[HP][SP威力]小アップ",
+          "is_eb_link": true
         },
         {
           "name": "戦況を変える力",
@@ -269444,13 +269463,16 @@
         "trigger": "EBLv.2に上昇時",
         "effect": "30秒間、自身の[機動力][遠距離攻撃力]をアップする。",
         "has_sq_skill": false,
-        "sq_skill_details": null
+        "sq_skill_details": null,
+        "is_eb_skill": true,
+        "eb_trigger_level": 2
       },
       "link_ability": [
         {
           "name": "[EB]宇宙に響く鼓動",
           "condition": "デッキに3枚以上",
-          "effect": "ECHOES BEAT Lv.が表示される。味方ユニットが戦術技を発動するとEBLv.が上がる。[HP][SP威力]小アップ"
+          "effect": "ECHOES BEAT Lv.が表示される。味方ユニットが戦術技を発動するとEBLv.が上がる。[HP][SP威力]小アップ",
+          "is_eb_link": true
         },
         {
           "name": "戦況を変える力",
@@ -269550,13 +269572,16 @@
         "trigger": "EBLv.2以上",
         "effect": "自身のSPゲージ回復速度がアップする。このPLスキルの効果は重複しない。",
         "has_sq_skill": false,
-        "sq_skill_details": null
+        "sq_skill_details": null,
+        "is_eb_skill": true,
+        "eb_trigger_level": 2
       },
       "link_ability": [
         {
           "name": "[EB]傍流する覚醒の共振",
           "condition": "デッキに3枚以上",
-          "effect": "ECHOES BEAT Lv.が表示される。味方ユニットが戦術技を発動するとEBLv.が上がる。[遠距離攻撃力][近距離攻撃力]アップ"
+          "effect": "ECHOES BEAT Lv.が表示される。味方ユニットが戦術技を発動するとEBLv.が上がる。[遠距離攻撃力][近距離攻撃力]アップ",
+          "is_eb_link": true
         },
         {
           "name": "多彩な戦術",
@@ -269603,13 +269628,16 @@
         "trigger": "EBLv.2以上",
         "effect": "自身のSPゲージ回復速度がアップする。このPLスキルの効果は重複しない。",
         "has_sq_skill": false,
-        "sq_skill_details": null
+        "sq_skill_details": null,
+        "is_eb_skill": true,
+        "eb_trigger_level": 2
       },
       "link_ability": [
         {
           "name": "[EB]傍流する覚醒の共振",
           "condition": "デッキに3枚以上",
-          "effect": "ECHOES BEAT Lv.が表示される。味方ユニットが戦術技を発動するとEBLv.が上がる。[遠距離攻撃力][近距離攻撃力]アップ"
+          "effect": "ECHOES BEAT Lv.が表示される。味方ユニットが戦術技を発動するとEBLv.が上がる。[遠距離攻撃力][近距離攻撃力]アップ",
+          "is_eb_link": true
         },
         {
           "name": "多彩な戦術",
@@ -269656,13 +269684,16 @@
         "trigger": "EBLv.1に上昇時",
         "effect": "30秒間、自身の[遠距離攻撃力]をアップし、受けるダメージを軽減する。",
         "has_sq_skill": false,
-        "sq_skill_details": null
+        "sq_skill_details": null,
+        "is_eb_skill": true,
+        "eb_trigger_level": 1
       },
       "link_ability": [
         {
           "name": "[EB]傍流する覚醒の共振",
           "condition": "デッキに3枚以上",
-          "effect": "ECHOES BEAT Lv.が表示される。味方ユニットが戦術技を発動するとEBLv.が上がる。[遠距離攻撃力][近距離攻撃力]アップ"
+          "effect": "ECHOES BEAT Lv.が表示される。味方ユニットが戦術技を発動するとEBLv.が上がる。[遠距離攻撃力][近距離攻撃力]アップ",
+          "is_eb_link": true
         },
         {
           "name": "多彩な戦術",
