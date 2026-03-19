@@ -4713,6 +4713,45 @@ async function clearDataCacheAndReload() {
       for (const r of regs) { try { await r.update(); } catch (_) {} }
     }
   } catch (e) { console.warn('Cache clear error:', e); }
+  // キャッシュが有効な場合、未取得画像をチェックしてダウンロード
+  if (!ImageCache._disabled && ImageCache._cachedKeys.size > 0) {
+    try {
+      const res = await fetch('./data/card_index.json', { cache: 'no-store' });
+      const cards = await res.json();
+      const missing = [];
+      for (const c of cards) {
+        if (!c.number) continue;
+        if (!ImageCache._cachedKeys.has(c.number)) missing.push({ key: c.number, url: ImageCache._imgUrl(c.number, 'front') });
+        if (!ImageCache._cachedKeys.has(c.number + '_b')) missing.push({ key: c.number + '_b', url: ImageCache._imgUrl(c.number, 'back') });
+      }
+      if (missing.length > 0) {
+        Toast.show(`新規カード画像 ${missing.length}枚をキャッシュ中...`, 'info', 3000);
+        const sw = navigator.serviceWorker?.controller;
+        if (sw) {
+          const cacheOne = (key, url) => new Promise(resolve => {
+            const handler = (e) => {
+              if (e.data && (e.data.type === 'CACHE_IMAGE_OK' || e.data.type === 'CACHE_IMAGE_FAIL') && e.data.url === url) {
+                navigator.serviceWorker.removeEventListener('message', handler);
+                resolve(e.data.type === 'CACHE_IMAGE_OK');
+              }
+            };
+            navigator.serviceWorker.addEventListener('message', handler);
+            sw.postMessage({ type: 'CACHE_IMAGE', url });
+          });
+          const queue = [...missing];
+          let ok = 0;
+          const worker = async () => {
+            while (queue.length) {
+              const { key, url } = queue.shift();
+              if (await cacheOne(key, url)) { ImageCache._cachedKeys.add(key); ok++; }
+            }
+          };
+          await Promise.all(Array.from({ length: Math.min(8, missing.length) }, () => worker()));
+          if (ok > 0) Toast.show(`${ok}枚の新規画像をキャッシュしました`, 'success', 3000);
+        }
+      }
+    } catch (e) { console.warn('Image cache update error:', e); }
+  }
   location.reload();
 }
 function toggleFilterSheet() {

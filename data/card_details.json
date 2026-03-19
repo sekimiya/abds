@@ -267524,14 +267524,16 @@
         "power": 3600,
         "description": "敵単体に格闘攻撃でダメージを与え、自身のHPを回復する。",
         "united_sp": {
-          "partner1": "エルメス",
-          "partner2": null,
           "name": "彗星と亡霊",
           "target": "貫通(敵)",
           "range": 3,
           "power": 4100,
-          "description": "対象の敵を中心として射程よりも広い範囲で、射線上の敵に貫通射撃でダメージを与え、一定時間スタンさせる。攻撃に参加したユニットはHPが最大値を超えて回復し、一定時間、[遠／近攻撃力]をアップする。出撃時1度のみ使用可能。"
-        }
+          "description": "対象の敵を中心として射程よりも広い範囲で、射線上の敵に貫通射撃でダメージを与え、一定時間スタンさせる。攻撃に参加したユニットはHPが最大値を超えて回復し、一定時間、[遠／近攻撃力]をアップする。出撃時1度のみ使用可能。",
+          "partners": [
+            "エルメス"
+          ]
+        },
+        "sp_type": "UNITED SP"
       },
       "rarity": "P",
       "illustrator": "Moyasi",
@@ -267617,14 +267619,16 @@
         "power": 3600,
         "description": "敵単体に格闘攻撃でダメージを与え、自身のHPを回復する。",
         "united_sp": {
-          "partner1": "エルメス",
-          "partner2": null,
           "name": "彗星と亡霊",
           "target": "貫通(敵)",
           "range": 3,
           "power": 4100,
-          "description": "対象の敵を中心として射程よりも広い範囲で、射線上の敵に貫通射撃でダメージを与え、一定時間スタンさせる。攻撃に参加したユニットはHPが最大値を超えて回復し、一定時間、[遠／近攻撃力]をアップする。出撃時1度のみ使用可能。"
-        }
+          "description": "対象の敵を中心として射程よりも広い範囲で、射線上の敵に貫通射撃でダメージを与え、一定時間スタンさせる。攻撃に参加したユニットはHPが最大値を超えて回復し、一定時間、[遠／近攻撃力]をアップする。出撃時1度のみ使用可能。",
+          "partners": [
+            "エルメス"
+          ]
+        },
+        "sp_type": "UNITED SP"
       },
       "rarity": "PARALLEL",
       "illustrator": "moho",
@@ -267708,7 +267712,7 @@
         "range": 2,
         "sp_cost": 2,
         "power": 3600,
-        "sp_type": "SQUAD SP",
+        "sp_type": "UNITED SP",
         "description": "敵単体に格闘攻撃でダメージを与え、自身のHPを回復する。",
         "squad_sp": {
           "name": "ビーム・ナギナタ強襲",
@@ -267719,11 +267723,12 @@
         },
         "united_sp": {
           "name": "彗星と亡霊",
-          "partner1": null,
-          "partner2": null,
           "range": null,
           "power": null,
-          "description": null
+          "description": null,
+          "partners": [
+            "エルメス"
+          ]
         }
       },
       "rarity": "VE",
@@ -267808,22 +267813,18 @@
         "range": 3,
         "sp_cost": 2,
         "power": 3200,
-        "sp_type": "SQUAD SP",
+        "sp_type": "UNITED SP",
         "description": "敵単体に射撃攻撃でダメージを与える。出撃時1度のみ使用可能。",
-        "squad_sp": {
-          "name": "ビーム・ライフル撃射",
-          "target": "単体(敵)",
-          "range": 3,
-          "power": 3800,
-          "description": "敵単体に射撃攻撃でダメージを与える。出撃時1度のみ使用可能。"
-        },
+        "squad_sp": null,
         "united_sp": {
           "name": "彗星と亡霊",
-          "partner1": null,
-          "partner2": null,
           "range": 3,
           "power": 3800,
-          "description": "対象の敵を中心として射程よりも広い範囲で、射線上の敵に貫通射撃でダメージを与える。出撃時1度のみ使用可能。"
+          "description": "対象の敵を中心として射程よりも広い範囲で、射線上の敵に貫通射撃でダメージを与える。出撃時1度のみ使用可能。",
+          "partners": [
+            "エルメス"
+          ],
+          "target": "貫通(敵)"
         }
       },
       "rarity": "R",
