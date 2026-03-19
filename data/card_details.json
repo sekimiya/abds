@@ -267253,12 +267253,21 @@
         "power": 3500,
         "description": "敵単体に射撃攻撃でダメージを与え、一定時間、自身の受けるダメージを軽減する。",
         "united_sp": null,
-        "sp_type": "ECHOES BEAT SP",
+        "sp_type": "normal",
         "eb_level": 1,
         "eb_power": 3800,
         "eb_description": "EBLv.を1下げる。敵単体に射撃攻撃でダメージを与え、EBLv.が3に上昇する。一定時間、自身の受けるダメージを軽減する。出撃時1度のみ使用可能。",
         "eb_target": "単体(敵)",
-        "eb_range": 3
+        "eb_range": 3,
+        "echoes_beat": {
+          "level": 1,
+          "name": "ハイパー・バズーカ撃射 Lv.1",
+          "target": "単体(敵)",
+          "range": 3,
+          "power": 3800,
+          "description": "EBLv.を1下げる。敵単体に射撃攻撃でダメージを与え、一定時間、自身の受けるダメージを軽減する。EBLv.が3に上昇する。出撃時1度のみ使用可能。",
+          "_uncertain": false
+        }
       },
       "rarity": "VE",
       "illustrator": "Moyasi",
@@ -267438,7 +267447,17 @@
         "eb_power": 3800,
         "eb_description": "EBLv.を2下げる。敵単体に射撃攻撃でダメージを与え、一定時間、出撃中の全味方ユニットの[遠距離攻撃力][近距離攻撃力]をアップする。出撃時1度のみ使用可能。",
         "eb_target": "単体(敵)",
-        "eb_range": 3
+        "eb_range": 3,
+        "sp_type": "normal",
+        "echoes_beat": {
+          "level": 2,
+          "name": "ビーム・スプレーガン撃射 Lv.2",
+          "target": "単体(敵)",
+          "range": 3,
+          "power": 3800,
+          "description": "EBLv.を2下げる。敵単体に射撃攻撃でダメージを与え、一定時間、出撃中の全味方ユニットの[遠距離攻撃力][近距離攻撃力]をアップする。出撃時1度のみ使用可能。",
+          "_uncertain": false
+        }
       },
       "rarity": "M",
       "illustrator": "Kumagoro",
@@ -267915,7 +267934,17 @@
         "eb_power": 3900,
         "eb_description": "EBLv.を2下げる。敵単体に射撃攻撃でダメージを与え、出撃中の全味方ユニットの弱体化状態を無効化する。出撃時1度のみ使用可能。",
         "eb_target": "単体(敵)",
-        "eb_range": 3
+        "eb_range": 3,
+        "sp_type": "normal",
+        "echoes_beat": {
+          "level": 2,
+          "name": "ビーム・ライフル撃射 Lv.2",
+          "target": "単体(敵)",
+          "range": 3,
+          "power": 3900,
+          "description": "EBLv.を2下げる。敵単体に射撃攻撃でダメージを与え、出撃中の全味方ユニットの弱体化状態を無効化する。出撃時1度のみ使用可能。",
+          "_uncertain": false
+        }
       },
       "rarity": "M",
       "illustrator": "Kouki Tajima",
@@ -268487,7 +268516,17 @@
         "eb_power": 3700,
         "eb_description": "EBLv.を1下げる。敵単体に格闘攻撃でダメージを与え、EBLv.が3に上昇する。一定時間、自身の[近距離攻撃力]をアップする。出撃時1度のみ使用可能。",
         "eb_target": "単体(敵)",
-        "eb_range": 2
+        "eb_range": 2,
+        "sp_type": "normal",
+        "echoes_beat": {
+          "level": 1,
+          "name": "エクスカリバー レーザー対艦刀強撃 Lv.1",
+          "target": "単体(敵)",
+          "range": 2,
+          "power": 3700,
+          "description": "EBLv.を1下げる。敵単体に格闘攻撃でダメージを与え、EBLv.が3に上昇する。一定時間、自身の[近距離攻撃力]をアップする。出撃時1度のみ使用可能。",
+          "_uncertain": false
+        }
       },
       "rarity": "M",
       "illustrator": "ilshima060123",
