@@ -2159,6 +2159,10 @@ function calcUnitStats(msOcr, plOcr, terrainMult) {
   const _debug = { msSeries, plSeries: plName, msLv: seriesLv, plLv };
   return keys.map(s => {
     const base = ms[s] + pl[s];
+    // MS+PL両方0のパラメータには補正をかけない
+    if (ms[s] === 0 && pl[s] === 0) {
+      return { key: s, label: labels[s], msVal: 0, plVal: 0, base: 0, linkBuff: 0, terrainBuff: 0, corrBuff: 0, total: 0, _debug };
+    }
     const msWithTerrain = (s !== 'hp') ? ms[s] * terrainMult : ms[s];
     const msLvBonus = getLvBonus(msSeries, 'ms', s, seriesLv);
     const plLvBonus = getLvBonus(plSeries, 'pl', s, plLv);
