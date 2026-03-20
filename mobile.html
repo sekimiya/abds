@@ -261,6 +261,10 @@ body.light .bm-toggle-btn.active{background:#d0e8dc;border-color:var(--accent);c
   flex:1;min-width:0;flex-wrap:wrap;
   max-height:52px;overflow:hidden;
   position:relative;
+  cursor:pointer;transition:max-height 0.3s ease;
+}
+.link-chips.expanded{
+  max-height:none;overflow:visible;
 }
 .link-chips-more{
   font-size:0.45rem;font-weight:bold;color:#888;
@@ -1169,7 +1173,7 @@ body.light .ss-text{color:#555}
     <span class="tactics-thumb-label">S</span>
     <img class="tactics-thumb-img" id="tacticsImgSub" src="" alt="サブ作戦" style="display:none">
   </div>
-  <div class="link-chips" id="linkBar"></div>
+  <div class="link-chips" id="linkBar" onclick="this.classList.toggle('expanded')"></div>
 </div>
 
 <!-- MAIN CONTENT (landscape: side-by-side) -->
