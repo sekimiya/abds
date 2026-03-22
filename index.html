@@ -4831,40 +4831,9 @@ const SearchPanel = {
   _updateFilterVisibility() {
     const t = this._lockedType; // 'MS', 'PL', or null
     this._updateCategoryButtons();
-    const containerGroupMap = {
-      'ebCategoryBtns': 'ebCat', 'ebCategoryBtnsPl': 'ebCat', 'ebLevelBtns': 'ebLv', 'spEbLevelBtns': 'ebLv', 'ebCondBtns': 'ebCond', 'ebspEffectBtns': 'ebspEff',
-      'sqCategoryBtns': 'sqCat', 'sqCategoryBtnsPl': 'sqCat', 'sqGaugeBtns': 'sqGauge', 'sqTriggerBtns': 'sqTrig',
-      'sqEffectBtns': 'sqEff', 'sqspEffectBtns': 'sqspEff', 'abCategoryBtns': 'abCat',
-      'spEffectBtns': 'spEff', 'skillEffectBtns': 'skEff', 'skillTimingBtns': 'skTim'
-    };
-    // data-for 属性を持つ全要素の表示制御
+    // data-for 属性を持つ全要素の表示/非表示のみ（値はapplyFiltersのタイプガードでスキップ）
     document.querySelectorAll('#sidebar [data-for]').forEach(el => {
-      const hidden = t && el.dataset.for !== t;
-      el.style.display = hidden ? 'none' : '';
-      // 非表示になったコンテナ内のトグル選択をクリア
-      if (hidden) {
-        // 個別ボタン（ebCategoryBtns内のeb_sp等）
-        if (el.classList.contains('tbtn')) {
-          const group = containerGroupMap[el.closest('.toggle-filter')?.id];
-          if (group) {
-            this._t[group].delete(el.dataset.key);
-            el.classList.remove('active-eb', 'active-sq', 'active-ab', 'active-pl');
-          }
-        }
-        // コンテナ（ebCondBtns等）内の全ボタン
-        el.querySelectorAll('.tbtn').forEach(btn => {
-          const group = containerGroupMap[btn.closest('.toggle-filter')?.id];
-          if (group) {
-            this._t[group].delete(btn.dataset.key);
-            btn.classList.remove('active-eb', 'active-sq', 'active-ab', 'active-pl');
-          }
-        });
-        // PLスキル名ドロップダウンのリセット
-        const sel = el.querySelector('#filterSkillName');
-        if (sel) sel.value = '';
-        // チェックボックスのリセット
-        el.querySelectorAll('input[type="checkbox"]').forEach(cb => { cb.checked = false; });
-      }
+      el.style.display = (t && el.dataset.for !== t) ? 'none' : '';
     });
   },
 
@@ -5078,6 +5047,7 @@ const SearchPanel = {
     if (document.getElementById('filterOcr').checked) {
       cards = cards.filter(c => c.has_ocr);
     }
+    const _isMS = this._lockedType === 'MS', _isPL = this._lockedType === 'PL';
     // EB関連カード絞込（トグル複数選択: OR）
     const ebCat = this._t.ebCat;
     if (ebCat.size > 0) {
@@ -5096,10 +5066,9 @@ const SearchPanel = {
         return lvls.includes(c.eb_level) || lvls.includes(c.eb_trigger_level);
       });
     }
-    // EB発動条件（トグル複数選択: OR）
-    const ebCond = this._t.ebCond;
-    if (ebCond.size > 0) {
-      cards = cards.filter(c => _noDetail(c) || ebCond.has(c.eb_trigger_cond));
+    // EB発動条件（PL専用）
+    if (_isPL && this._t.ebCond.size > 0) {
+      cards = cards.filter(c => _noDetail(c) || this._t.ebCond.has(c.eb_trigger_cond));
     }
     // SQ関連カード絞込（トグル複数選択: OR）
     const sqCat = this._t.sqCat;
@@ -5111,25 +5080,21 @@ const SearchPanel = {
         (sqCat.has('sq_rush') && c.sq_rush_effect)
       );
     }
-    // SQゲージ増加率（トグル複数選択: OR）
-    const sqGauge = this._t.sqGauge;
-    if (sqGauge.size > 0) {
-      cards = cards.filter(c => _noDetail(c) || sqGauge.has(c.sq_gauge_rate));
+    // SQゲージ増加率（PL専用）
+    if (_isPL && this._t.sqGauge.size > 0) {
+      cards = cards.filter(c => _noDetail(c) || this._t.sqGauge.has(c.sq_gauge_rate));
     }
-    // SQ発動条件（トグル複数選択: OR）
-    const sqTrig = this._t.sqTrig;
-    if (sqTrig.size > 0) {
-      cards = cards.filter(c => _noDetail(c) || sqTrig.has(c.sq_trigger));
+    // SQ発動条件（PL専用）
+    if (_isPL && this._t.sqTrig.size > 0) {
+      cards = cards.filter(c => _noDetail(c) || this._t.sqTrig.has(c.sq_trigger));
     }
-    // SQスキル効果（トグル複数選択: OR）
-    const sqEff = this._t.sqEff;
-    if (sqEff.size > 0) {
-      cards = cards.filter(c => _noDetail(c) || (c.sq_skill_effect_tags && c.sq_skill_effect_tags.some(t => sqEff.has(t))));
+    // SQスキル効果（PL専用）
+    if (_isPL && this._t.sqEff.size > 0) {
+      cards = cards.filter(c => _noDetail(c) || (c.sq_skill_effect_tags && c.sq_skill_effect_tags.some(t => this._t.sqEff.has(t))));
     }
-    // SQSP効果（トグル複数選択: OR）
-    const sqspEff = this._t.sqspEff;
-    if (sqspEff.size > 0) {
-      cards = cards.filter(c => _noDetail(c) || (c.sqsp_effect_tags && c.sqsp_effect_tags.some(t => sqspEff.has(t))));
+    // SQSP効果（MS専用）
+    if (_isMS && this._t.sqspEff.size > 0) {
+      cards = cards.filter(c => _noDetail(c) || (c.sqsp_effect_tags && c.sqsp_effect_tags.some(t => this._t.sqspEff.has(t))));
     }
     // AB関連カード絞込
     const abCat = this._t.abCat;
@@ -5138,28 +5103,26 @@ const SearchPanel = {
         (abCat.has('ab_link') && c.has_ab_link)
       );
     }
-    // EBSP効果（トグル複数選択: OR）
-    const ebspEff = this._t.ebspEff;
-    if (ebspEff.size > 0) {
+    // EBSP効果（MS専用）
+    if (_isMS && this._t.ebspEff.size > 0) {
+      const ebspEff = this._t.ebspEff;
       cards = cards.filter(c => _noDetail(c) || (c.ebsp_effect_tags && c.ebsp_effect_tags.some(t => ebspEff.has(t))) || (ebspEff.has('EBLv上昇') && c.eb_text && /EBLv\.が\d+に上昇/.test(c.eb_text)));
     }
-    // SP効果（トグル複数選択: OR）
-    const spEff = this._t.spEff;
-    if (spEff.size > 0) {
-      cards = cards.filter(c => _noDetail(c) || (c.sp_effect_tags && c.sp_effect_tags.some(t => spEff.has(t))));
+    // SP効果（MS専用）
+    if (_isMS && this._t.spEff.size > 0) {
+      cards = cards.filter(c => _noDetail(c) || (c.sp_effect_tags && c.sp_effect_tags.some(t => this._t.spEff.has(t))));
     }
-    // PLスキル名 filter
-    const skillName = document.getElementById('filterSkillName').value;
+    // PLスキル名（PL専用）
+    const skillName = _isPL ? document.getElementById('filterSkillName').value : '';
     if (skillName) {
       cards = cards.filter(c => _noDetail(c) || c.skill_name === skillName);
     }
-    // スキル効果（トグル複数選択: OR）
-    const skEff = this._t.skEff;
-    if (skEff.size > 0) {
-      cards = cards.filter(c => _noDetail(c) || (c.skill_effect_tags && c.skill_effect_tags.some(t => skEff.has(t))));
+    // スキル効果（PL専用）
+    if (_isPL && this._t.skEff.size > 0) {
+      cards = cards.filter(c => _noDetail(c) || (c.skill_effect_tags && c.skill_effect_tags.some(t => this._t.skEff.has(t))));
     }
-    // PLスキル発動タイミング
-    if (this._t.skTim.size > 0) {
+    // PLスキル発動タイミング（PL専用）
+    if (_isPL && this._t.skTim.size > 0) {
       cards = cards.filter(c => { const tr = c.skill_trigger || ''; return [...this._t.skTim].some(k => tr.includes(k)); });
     }
     // Name/number search (fuzzy: numerals, separators normalized)
