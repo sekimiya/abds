@@ -994,14 +994,15 @@ body.light .ss-text{color:#555}
 }
 .menu-overlay.open{display:block}
 .menu-panel{
-  position:fixed;top:0;right:-280px;width:280px;height:100%;
+  position:fixed;top:0;right:0;width:280px;height:100%;
   background:var(--bg2);border-left:2px solid var(--accent);
-  z-index:301;transition:right 0.3s ease;overflow-y:auto;
+  z-index:301;transition:transform 0.3s ease;overflow-y:auto;
   -webkit-overflow-scrolling:touch;
   padding:12px;padding-top:calc(12px + env(safe-area-inset-top));
   display:flex;flex-direction:column;gap:8px;
+  transform:translateX(100%);will-change:transform;
 }
-.menu-panel.open{right:0}
+.menu-panel.open{transform:translateX(0)}
 .menu-title{color:var(--accent);font-weight:bold;font-size:0.9rem;margin-bottom:4px}
 .menu-close{position:absolute;top:12px;right:12px;background:none;border:none;color:#888;font-size:1.3rem}
 .menu-row{display:flex;gap:4px}
