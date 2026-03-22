@@ -1294,9 +1294,9 @@ body.light .ss-text{color:#555}
         </div>
         <div class="toggle-filter" id="ebLevelBtns">
           <span class="toggle-filter-label">EB Lv.</span>
-          <button class="tbtn" data-key="1" onclick="SearchPanel.toggle('ebLv',this)">1</button>
-          <button class="tbtn" data-key="2" onclick="SearchPanel.toggle('ebLv',this)">2</button>
-          <button class="tbtn" data-key="3" onclick="SearchPanel.toggle('ebLv',this)">3</button>
+          <button class="tbtn" data-key="1" onclick="SearchPanel.toggleLinked('ebLv',this)">1</button>
+          <button class="tbtn" data-key="2" onclick="SearchPanel.toggleLinked('ebLv',this)">2</button>
+          <button class="tbtn" data-key="3" onclick="SearchPanel.toggleLinked('ebLv',this)">3</button>
         </div>
         <div class="toggle-filter" data-for="MS" id="ebspEffectBtns">
           <span class="toggle-filter-label">EBSP効果</span>
@@ -1399,6 +1399,12 @@ body.light .ss-text{color:#555}
           <button class="tbtn" data-key="HP回復" onclick="SearchPanel.toggle('spEff',this)">HP回復</button>
           <button class="tbtn" data-key="防衛無視" onclick="SearchPanel.toggle('spEff',this)">防衛無視</button>
           <button class="tbtn" data-key="必中" onclick="SearchPanel.toggle('spEff',this)">必中</button>
+        </div>
+        <div class="toggle-filter" id="spEbLevelBtns">
+          <span class="toggle-filter-label" style="color:#ff9800">EB Lv.</span>
+          <button class="tbtn" data-key="1" onclick="SearchPanel.toggleLinked('ebLv',this)">1</button>
+          <button class="tbtn" data-key="2" onclick="SearchPanel.toggleLinked('ebLv',this)">2</button>
+          <button class="tbtn" data-key="3" onclick="SearchPanel.toggleLinked('ebLv',this)">3</button>
         </div>
       </div>
     </div>
@@ -4229,7 +4235,7 @@ const SearchPanel = {
         document.querySelectorAll('.tbtn').forEach(btn => {
           const container = btn.closest('.toggle-filter');
           if (!container) return;
-          const groupMap = { 'ebCategoryBtns':'ebCat','ebLevelBtns':'ebLv','ebCondBtns':'ebCond','ebspEffectBtns':'ebspEff','sqCategoryBtns':'sqCat','sqGaugeBtns':'sqGauge','sqTriggerBtns':'sqTrig','sqEffectBtns':'sqEff','sqspEffectBtns':'sqspEff','abCategoryBtns':'abCat','spEffectBtns':'spEff','skillEffectBtns':'skEff','skillTimingBtns':'skTim' };
+          const groupMap = { 'ebCategoryBtns':'ebCat','ebLevelBtns':'ebLv','spEbLevelBtns':'ebLv','ebCondBtns':'ebCond','ebspEffectBtns':'ebspEff','sqCategoryBtns':'sqCat','sqGaugeBtns':'sqGauge','sqTriggerBtns':'sqTrig','sqEffectBtns':'sqEff','sqspEffectBtns':'sqspEff','abCategoryBtns':'abCat','spEffectBtns':'spEff','skillEffectBtns':'skEff','skillTimingBtns':'skTim' };
           const group = groupMap[container.id];
           if (group && this._t[group].has(btn.dataset.key)) btn.classList.add('active-' + this._tStyle[group]);
         });
@@ -4249,7 +4255,7 @@ const SearchPanel = {
   _updateFilterVisibility() {
     const t = this._lockedType;
     this._updateCategoryButtons();
-    const containerGroupMap = { 'ebCategoryBtns':'ebCat','ebLevelBtns':'ebLv','ebCondBtns':'ebCond','ebspEffectBtns':'ebspEff','sqCategoryBtns':'sqCat','sqGaugeBtns':'sqGauge','sqTriggerBtns':'sqTrig','sqEffectBtns':'sqEff','sqspEffectBtns':'sqspEff','abCategoryBtns':'abCat','spEffectBtns':'spEff','skillEffectBtns':'skEff','skillTimingBtns':'skTim' };
+    const containerGroupMap = { 'ebCategoryBtns':'ebCat','ebLevelBtns':'ebLv','spEbLevelBtns':'ebLv','ebCondBtns':'ebCond','ebspEffectBtns':'ebspEff','sqCategoryBtns':'sqCat','sqGaugeBtns':'sqGauge','sqTriggerBtns':'sqTrig','sqEffectBtns':'sqEff','sqspEffectBtns':'sqspEff','abCategoryBtns':'abCat','spEffectBtns':'spEff','skillEffectBtns':'skEff','skillTimingBtns':'skTim' };
     document.querySelectorAll('#filterSheet [data-for]').forEach(el => {
       const hidden = t && el.dataset.for !== t;
       el.style.display = hidden ? 'none' : '';
@@ -4270,20 +4276,16 @@ const SearchPanel = {
     this.applyFilters();
   },
   setType(type) {
-    if (this._viewerMode) {
-      if (this._lockedType === type) return;
-      this._saveFilters();
-      this._viewerLastType = type;
-      const tabs = document.getElementById('pickerTabs');
-      tabs.querySelectorAll('.picker-tab').forEach(t => t.classList.remove('active'));
-      this._lockedType = type;
-      tabs.querySelector(`[data-type="${type}"]`).classList.add('active');
-      this._clearFiltersUI();
-      this._restoreFilters();
-      this._updateFilterVisibility();
-      return;
-    }
-    this.applyFilters();
+    if (this._lockedType === type) return;
+    this._saveFilters();
+    if (this._viewerMode) this._viewerLastType = type;
+    const tabs = document.getElementById('pickerTabs');
+    tabs.querySelectorAll('.picker-tab').forEach(t => t.classList.remove('active'));
+    this._lockedType = type;
+    tabs.querySelector(`[data-type="${type}"]`).classList.add('active');
+    this._clearFiltersUI();
+    this._restoreFilters();
+    this._updateFilterVisibility();
   },
   toggle(group, btn) {
     const s = this._t[group]; const key = btn.dataset.key;
@@ -4291,6 +4293,14 @@ const SearchPanel = {
     btn.classList.toggle('active-' + this._tStyle[group], s.has(key));
     this.applyFilters();
   },
+  toggleLinked(group, btn) {
+    this.toggle(group, btn);
+    const style = this._tStyle[group]; const active = this._t[group].has(btn.dataset.key);
+    document.querySelectorAll('#filterSheet .tbtn[data-key="' + btn.dataset.key + '"]').forEach(b => {
+      if (b !== btn) { const cid = b.closest('.toggle-filter')?.id; if (cid && this._linkedGroupMap[cid] === group) b.classList.toggle('active-' + style, active); }
+    });
+  },
+  _linkedGroupMap: { 'ebLevelBtns':'ebLv', 'spEbLevelBtns':'ebLv' },
   _altArt: false,
   toggleAltArt() {
     this._altArt = !this._altArt;
@@ -4387,7 +4397,7 @@ const SearchPanel = {
     g('filterGroupEb', this._t.ebCat.size > 0 || this._t.ebLv.size > 0 || this._t.ebspEff.size > 0 || this._t.ebCond.size > 0 || (document.getElementById('filterEb') || {}).checked || (document.getElementById('filterEbSkill') || {}).checked);
     g('filterGroupSq', this._t.sqCat.size > 0 || this._t.sqspEff.size > 0 || this._t.sqGauge.size > 0 || this._t.sqTrig.size > 0 || this._t.sqEff.size > 0 || (document.getElementById('filterSqsp') || {}).checked || (document.getElementById('filterSqSkill') || {}).checked);
     g('filterGroupAb', this._t.abCat.size > 0);
-    g('filterGroupSp', this._t.spEff.size > 0);
+    g('filterGroupSp', this._t.spEff.size > 0 || this._t.ebLv.size > 0);
     g('filterGroupPlSkill', !!(document.getElementById('filterSkillName') || {}).value || this._t.skEff.size > 0 || this._t.skTim.size > 0);
     g('filterGroupSearch', !!((document.getElementById('searchTextInput') || {}).value || '').trim());
     g('filterGroupIllustrator', !!document.getElementById('filterIllustrator').value);
@@ -4497,7 +4507,7 @@ const SearchPanel = {
   clearFilters() {
     this._clearFiltersUI();
     localStorage.removeItem('abds_search_filters');
-    if (this._viewerMode && this._lockedType) localStorage.removeItem('abds_search_filters_' + this._lockedType);
+    if (this._lockedType) localStorage.removeItem('abds_search_filters_' + this._lockedType);
     this.applyFilters();
   },
   _renderGrid() {
@@ -4798,11 +4808,11 @@ function openCardPicker(slotIdx, type) {
   AppState.activeSlot = slotIdx;
   const unitIdx = slotIdx < 5 ? slotIdx : slotIdx - 5;
   document.getElementById('pickerTitle').textContent = `${type} ${unitIdx + 1} を選択`;
-  // Show/hide tabs
   const tabs = document.getElementById('pickerTabs');
   tabs.style.display = 'flex';
   tabs.querySelectorAll('.picker-tab').forEach(t => t.classList.toggle('active', t.dataset.type === type));
   SearchPanel._lockedType = type;
+  SearchPanel._clearFiltersUI();
   SearchPanel._restoreFilters();
   SearchPanel._updateFilterVisibility();
   document.getElementById('pickerOverlay').classList.add('open');
@@ -4811,6 +4821,7 @@ function openCardPicker(slotIdx, type) {
   SearchPanel._updateFilterBadge();
 }
 function closeCardPicker() {
+  SearchPanel._saveFilters();
   SearchPanel._bookmarkMode = false;
   SearchPanel._viewerMode = false;
   document.getElementById('bmToggleBar').style.display = 'none';
@@ -4835,19 +4846,25 @@ function toggleBmOverlay(type) {
 function openBookmarkViewer() {
   AppState.activeSlot = null;
   SearchPanel._bookmarkMode = true;
+  SearchPanel._viewerMode = true;
   document.getElementById('pickerTitle').textContent = '★ ブックマークカード';
   const tabs = document.getElementById('pickerTabs');
-  tabs.style.display = 'none';
-  SearchPanel._lockedType = null;
-  SearchPanel.clearFilters();
+  tabs.style.display = 'flex';
+  const lastType = SearchPanel._viewerLastType || 'MS';
+  tabs.querySelectorAll('.picker-tab').forEach(t => t.classList.toggle('active', t.dataset.type === lastType));
+  SearchPanel._lockedType = lastType;
+  SearchPanel._clearFiltersUI();
   const bm = document.getElementById('filterBookmarkCards'); if (bm) bm.checked = true;
+  SearchPanel._updateFilterVisibility();
   document.getElementById('bmToggleBar').style.display = 'flex';
   const ov = document.getElementById('pickerOverlay');
   ov.classList.remove('hide-link-overlay', 'hide-text-overlay');
   document.getElementById('bmToggleLink').classList.add('active');
   document.getElementById('bmToggleText').classList.add('active');
   ov.classList.add('open');
-  document.getElementById('filterSheet').style.display = 'none';
+  document.getElementById('filterSheet').style.display = 'flex';
+  document.getElementById('filterSheet').classList.remove('open');
+  SearchPanel._updateFilterBadge();
   SearchPanel.applyFilters();
 }
 function setActiveTerrain(terrain) {

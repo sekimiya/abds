@@ -1610,9 +1610,9 @@ select,input{font-family:inherit}
           </div>
           <div class="toggle-filter" id="ebLevelBtns">
             <span class="toggle-filter-label">EB Lv.</span>
-            <button class="tbtn" data-key="1" onclick="SearchPanel.toggle('ebLv',this)">1</button>
-            <button class="tbtn" data-key="2" onclick="SearchPanel.toggle('ebLv',this)">2</button>
-            <button class="tbtn" data-key="3" onclick="SearchPanel.toggle('ebLv',this)">3</button>
+            <button class="tbtn" data-key="1" onclick="SearchPanel.toggleLinked('ebLv',this)">1</button>
+            <button class="tbtn" data-key="2" onclick="SearchPanel.toggleLinked('ebLv',this)">2</button>
+            <button class="tbtn" data-key="3" onclick="SearchPanel.toggleLinked('ebLv',this)">3</button>
           </div>
           <div class="toggle-filter" id="ebspEffectBtns">
             <span class="toggle-filter-label">EBSP効果</span>
@@ -1737,6 +1737,12 @@ select,input{font-family:inherit}
             <button class="tbtn" data-key="HP回復" onclick="SearchPanel.toggle('spEff',this)">HP回復</button>
             <button class="tbtn" data-key="防衛無視" onclick="SearchPanel.toggle('spEff',this)">防衛無視</button>
             <button class="tbtn" data-key="必中" onclick="SearchPanel.toggle('spEff',this)">必中</button>
+          </div>
+          <div class="toggle-filter" id="spEbLevelBtns">
+            <span class="toggle-filter-label" style="color:#ff9800">EB Lv.</span>
+            <button class="tbtn" data-key="1" onclick="SearchPanel.toggleLinked('ebLv',this)">1</button>
+            <button class="tbtn" data-key="2" onclick="SearchPanel.toggleLinked('ebLv',this)">2</button>
+            <button class="tbtn" data-key="3" onclick="SearchPanel.toggleLinked('ebLv',this)">3</button>
           </div>
         </div>
       </div>
@@ -4805,8 +4811,8 @@ const SearchPanel = {
           if (!container) return;
           const groupId = container.id;
           const groupMap = {
-            'ebCategoryBtns':'ebCat','ebLevelBtns':'ebLv','ebCondBtns':'ebCond','ebspEffectBtns':'ebspEff',
-            'sqCategoryBtns':'sqCat','sqGaugeBtns':'sqGauge','sqTriggerBtns':'sqTrig',
+            'ebCategoryBtns':'ebCat','ebCategoryBtnsPl':'ebCat','ebLevelBtns':'ebLv','spEbLevelBtns':'ebLv','ebCondBtns':'ebCond','ebspEffectBtns':'ebspEff',
+            'sqCategoryBtns':'sqCat','sqCategoryBtnsPl':'sqCat','sqGaugeBtns':'sqGauge','sqTriggerBtns':'sqTrig',
             'sqEffectBtns':'sqEff','sqspEffectBtns':'sqspEff','abCategoryBtns':'abCat',
             'spEffectBtns':'spEff','skillEffectBtns':'skEff','skillTimingBtns':'skTim'
           };
@@ -4825,8 +4831,8 @@ const SearchPanel = {
     const t = this._lockedType; // 'MS', 'PL', or null
     this._updateCategoryButtons();
     const containerGroupMap = {
-      'ebCategoryBtns': 'ebCat', 'ebLevelBtns': 'ebLv', 'ebCondBtns': 'ebCond', 'ebspEffectBtns': 'ebspEff',
-      'sqCategoryBtns': 'sqCat', 'sqGaugeBtns': 'sqGauge', 'sqTriggerBtns': 'sqTrig',
+      'ebCategoryBtns': 'ebCat', 'ebCategoryBtnsPl': 'ebCat', 'ebLevelBtns': 'ebLv', 'spEbLevelBtns': 'ebLv', 'ebCondBtns': 'ebCond', 'ebspEffectBtns': 'ebspEff',
+      'sqCategoryBtns': 'sqCat', 'sqCategoryBtnsPl': 'sqCat', 'sqGaugeBtns': 'sqGauge', 'sqTriggerBtns': 'sqTrig',
       'sqEffectBtns': 'sqEff', 'sqspEffectBtns': 'sqspEff', 'abCategoryBtns': 'abCat',
       'spEffectBtns': 'spEff', 'skillEffectBtns': 'skEff', 'skillTimingBtns': 'skTim'
     };
@@ -4886,8 +4892,15 @@ const SearchPanel = {
   },
 
   setType(type) {
-    // setTypeはopenCardPickerからの呼び出し互換用（タブ廃止後はapplyFiltersで_lockedTypeを使用）
-    this.applyFilters();
+    if (this._lockedType === type) return;
+    this._saveFilters();
+    const tabs = document.getElementById('sidebarTabs');
+    tabs.querySelectorAll('.sidebar-tab').forEach(t => t.classList.remove('active'));
+    this._lockedType = type;
+    tabs.querySelector(`[data-type="${type}"]`).classList.add('active');
+    this._clearFiltersForSwitch();
+    this._restoreFilters();
+    this._updateFilterVisibility();
   },
 
   toggle(group, btn) {
@@ -4897,6 +4910,14 @@ const SearchPanel = {
     btn.classList.toggle('active-' + this._tStyle[group], s.has(key));
     this.applyFilters();
   },
+  toggleLinked(group, btn) {
+    this.toggle(group, btn);
+    const style = this._tStyle[group]; const active = this._t[group].has(btn.dataset.key);
+    document.querySelectorAll('#sidebar .tbtn[data-key="' + btn.dataset.key + '"]').forEach(b => {
+      if (b !== btn) { const cid = b.closest('.toggle-filter')?.id; if (cid && this._linkedGroupMap[cid] === group) b.classList.toggle('active-' + style, active); }
+    });
+  },
+  _linkedGroupMap: { 'ebLevelBtns':'ebLv', 'spEbLevelBtns':'ebLv' },
 
   toggleRarity(rarity) {
     if (this._currentRarity.has(rarity)) {
@@ -5193,7 +5214,7 @@ const SearchPanel = {
       filterGroupSqMs: this._t.sqCat.has('sqsp') || this._t.sqCat.has('sq_link') || this._t.sqspEff.size > 0,
       filterGroupSqPl: this._t.sqCat.has('sq_skill') || this._t.sqGauge.size > 0 || this._t.sqTrig.size > 0 || this._t.sqEff.size > 0,
       filterGroupAb: this._t.abCat.size > 0,
-      filterGroupSp: this._t.spEff.size > 0,
+      filterGroupSp: this._t.spEff.size > 0 || this._t.ebLv.size > 0,
       filterGroupPlSkill: !!document.getElementById('filterSkillName').value || this._t.skEff.size > 0 || this._t.skTim.size > 0,
       filterGroupMisc: !!document.getElementById('filterIllustrator').value,
     };
@@ -5201,6 +5222,36 @@ const SearchPanel = {
       const el = document.getElementById(id);
       if (el) el.classList.toggle('filter-active', on);
     });
+  },
+
+  _clearFiltersForSwitch() {
+    this._selectedSeries.clear();
+    document.querySelectorAll('.series-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('filterAllSeries').checked = true;
+    document.getElementById('filterCostMin').value = 0;
+    document.getElementById('filterCostMax').value = 13;
+    document.getElementById('costRangeValue').textContent = '0〜13';
+    document.getElementById('filterMobility').value = 0; document.getElementById('filterRanged').value = 0;
+    document.getElementById('filterMelee').value = 0; document.getElementById('filterHp').value = 0;
+    document.getElementById('mobilityValue').textContent = '0'; document.getElementById('rangedValue').textContent = '0';
+    document.getElementById('meleeValue').textContent = '0'; document.getElementById('hpValue').textContent = '0';
+    document.getElementById('filterTerrainType').value = '';
+    document.getElementById('filterTerrainRank').value = ''; document.getElementById('filterTerrainRank').disabled = true;
+    document.getElementById('filterOcr').checked = false;
+    document.getElementById('filterSqsp').checked = false; document.getElementById('filterEb').checked = false;
+    document.getElementById('filterSqSkill').checked = false; document.getElementById('filterEbSkill').checked = false;
+    document.getElementById('filterSkillName').value = '';
+    document.getElementById('filterIllustrator').value = '';
+    document.getElementById('searchInput').value = '';
+    document.getElementById('searchTextInput').value = '';
+    LinkSearch.clear();
+    const bm = document.getElementById('filterBookmarkCards'); if (bm) bm.checked = false;
+    Object.values(this._t).forEach(s => s.clear());
+    document.querySelectorAll('.tbtn').forEach(b => b.className = 'tbtn');
+    this._currentRarity = new Set(); this._currentCategory = new Set();
+    this._altArt = false; document.getElementById('filterAltArt').classList.remove('active');
+    document.querySelectorAll('.rarity-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
   },
 
   clearFilters() {
@@ -5245,6 +5296,7 @@ const SearchPanel = {
     document.querySelectorAll('.rarity-btn').forEach(b => b.classList.remove('active'));
     document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
     localStorage.removeItem('abds_search_filters');
+    if (this._lockedType) localStorage.removeItem('abds_search_filters_' + this._lockedType);
     this.applyFilters();
   },
 
@@ -5392,18 +5444,29 @@ const SearchPanel = {
     const currentType = card.type;
     const range = currentType === 'MS' ? [0,1,2,3,4] : [5,6,7,8,9];
     const nextEmpty = range.find(i => !AppState.deck[i]);
+    const _syncTab = (t) => {
+      if (this._lockedType !== t) {
+        this._saveFilters();
+        this._lockedType = t;
+        const tabs = document.getElementById('sidebarTabs');
+        tabs.querySelectorAll('.sidebar-tab').forEach(tb => tb.classList.toggle('active', tb.dataset.type === t));
+        this._clearFiltersForSwitch();
+        this._restoreFilters();
+        this._updateFilterVisibility();
+        return;
+      }
+      this.applyFilters();
+    };
     if (nextEmpty !== undefined) {
       UIRenderer.setActiveSlot(nextEmpty);
-      this._lockedType = currentType;
-      this.applyFilters();
+      _syncTab(currentType);
     } else {
       // 同タイプが埋まったら反対側の空きを探す
       const otherRange = currentType === 'MS' ? [5,6,7,8,9] : [0,1,2,3,4];
       const otherEmpty = otherRange.find(i => !AppState.deck[i]);
       if (otherEmpty !== undefined) {
         UIRenderer.setActiveSlot(otherEmpty);
-        this._lockedType = otherEmpty < 5 ? 'MS' : 'PL';
-        this.applyFilters();
+        _syncTab(otherEmpty < 5 ? 'MS' : 'PL');
       } else {
         closeCardPicker();
         UIRenderer.setActiveSlot(null);
@@ -5796,8 +5859,11 @@ function openCardPicker(slotIdx, type) {
   const unitIdx = slotIdx < 5 ? slotIdx : slotIdx - 5;
   const label = `${type} ${unitIdx + 1} を選択`;
   document.getElementById('pickerTitle').textContent = label;
-  // スロットタイプでフィルタ（MS/PL別にフィルタ状態を復元）
+  const tabs = document.getElementById('sidebarTabs');
+  tabs.style.display = 'flex';
+  tabs.querySelectorAll('.sidebar-tab').forEach(t => t.classList.toggle('active', t.dataset.type === type));
   SearchPanel._lockedType = type;
+  SearchPanel._clearFiltersForSwitch();
   SearchPanel._restoreFilters();
   SearchPanel._updateFilterVisibility();
   document.getElementById('sidebar').classList.add('open');
@@ -5811,8 +5877,10 @@ function toggleFilterGroup(id) {
 }
 
 function closeCardPicker() {
+  SearchPanel._saveFilters();
   document.getElementById('sidebar').classList.remove('open');
   document.getElementById('sidebarOverlay').classList.remove('active');
+  document.getElementById('sidebarTabs').style.display = 'none';
   UIRenderer.setActiveSlot(null);
   SearchPanel._lockedType = null;
   SearchPanel._updateFilterVisibility();
@@ -5826,8 +5894,12 @@ function openSidebar() { /* no-op, use openCardPicker */ }
 function openBookmarkViewer() {
   AppState.activeSlot = null;
   UIRenderer.setActiveSlot(null);
-  SearchPanel._lockedType = null;
   document.getElementById('pickerTitle').textContent = '★ ブックマークカード';
+  const tabs = document.getElementById('sidebarTabs');
+  tabs.style.display = 'flex';
+  const lastType = SearchPanel._lockedType || 'MS';
+  tabs.querySelectorAll('.sidebar-tab').forEach(t => t.classList.toggle('active', t.dataset.type === lastType));
+  SearchPanel._lockedType = lastType;
   SearchPanel.clearFilters();
   const bm = document.getElementById('filterBookmarkCards'); if (bm) bm.checked = true;
   SearchPanel.applyFilters();
@@ -5838,11 +5910,15 @@ function openBookmarkViewer() {
 function openCardViewer() {
   AppState.activeSlot = null;
   UIRenderer.setActiveSlot(null);
-  SearchPanel._lockedType = null;
   document.getElementById('pickerTitle').textContent = 'カード検索';
+  const tabs = document.getElementById('sidebarTabs');
+  tabs.style.display = 'flex';
+  const lastType = SearchPanel._lockedType || 'MS';
+  tabs.querySelectorAll('.sidebar-tab').forEach(t => t.classList.toggle('active', t.dataset.type === lastType));
+  SearchPanel._lockedType = lastType;
+  SearchPanel._clearFiltersForSwitch();
   SearchPanel._restoreFilters();
   SearchPanel._updateFilterVisibility();
-  SearchPanel.applyFilters();
   document.getElementById('sidebar').classList.add('open');
   document.getElementById('sidebarOverlay').classList.add('active');
   const input = document.getElementById('searchInput');
