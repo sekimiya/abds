@@ -1625,6 +1625,7 @@ select,input{font-family:inherit}
             <button class="tbtn" data-key="バフ" onclick="SearchPanel.toggle('ebspEff',this)">バフ</button>
             <button class="tbtn" data-key="HP回復" onclick="SearchPanel.toggle('ebspEff',this)">HP回復</button>
             <button class="tbtn" data-key="防衛無視" onclick="SearchPanel.toggle('ebspEff',this)">防衛無視</button>
+            <button class="tbtn" data-key="EBLv上昇" onclick="SearchPanel.toggle('ebspEff',this)">EBLv上昇</button>
           </div>
           <label class="ocr-toggle" style="margin-left:0" id="filterEbLabel"><input type="checkbox" id="filterEb" onchange="SearchPanel.applyFilters()"><span class="ocr-toggle-text" style="color:#ff9800">EBSP詳細表示</span></label>
         </div>
@@ -4901,6 +4902,7 @@ const SearchPanel = {
     this._clearFiltersForSwitch();
     this._restoreFilters();
     this._updateFilterVisibility();
+    this.applyFilters();
   },
 
   toggle(group, btn) {
@@ -5139,7 +5141,7 @@ const SearchPanel = {
     // EBSP効果（トグル複数選択: OR）
     const ebspEff = this._t.ebspEff;
     if (ebspEff.size > 0) {
-      cards = cards.filter(c => _noDetail(c) || (c.ebsp_effect_tags && c.ebsp_effect_tags.some(t => ebspEff.has(t))));
+      cards = cards.filter(c => _noDetail(c) || (c.ebsp_effect_tags && c.ebsp_effect_tags.some(t => ebspEff.has(t))) || (ebspEff.has('EBLv上昇') && c.eb_text && /EBLv\.が\d+に上昇/.test(c.eb_text)));
     }
     // SP効果（トグル複数選択: OR）
     const spEff = this._t.spEff;

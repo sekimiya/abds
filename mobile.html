@@ -1309,6 +1309,7 @@ body.light .ss-text{color:#555}
           <button class="tbtn" data-key="バフ" onclick="SearchPanel.toggle('ebspEff',this)">バフ</button>
           <button class="tbtn" data-key="HP回復" onclick="SearchPanel.toggle('ebspEff',this)">HP回復</button>
           <button class="tbtn" data-key="防衛無視" onclick="SearchPanel.toggle('ebspEff',this)">防衛無視</button>
+          <button class="tbtn" data-key="EBLv上昇" onclick="SearchPanel.toggle('ebspEff',this)">EBLv上昇</button>
         </div>
         <div class="toggle-filter" data-for="PL" id="ebCondBtns">
           <span class="toggle-filter-label">EB発動条件</span>
@@ -4286,6 +4287,7 @@ const SearchPanel = {
     this._clearFiltersUI();
     this._restoreFilters();
     this._updateFilterVisibility();
+    this.applyFilters();
   },
   toggle(group, btn) {
     const s = this._t[group]; const key = btn.dataset.key;
@@ -4445,7 +4447,7 @@ const SearchPanel = {
     if (this._t.sqTrig.size > 0) cards = cards.filter(c => this._t.sqTrig.has(c.sq_trigger));
     if (this._t.sqEff.size > 0) cards = cards.filter(c => c.sq_skill_effect_tags && c.sq_skill_effect_tags.some(t => this._t.sqEff.has(t)));
     if (this._t.sqspEff.size > 0) cards = cards.filter(c => c.sqsp_effect_tags && c.sqsp_effect_tags.some(t => this._t.sqspEff.has(t)));
-    if (this._t.ebspEff.size > 0) cards = cards.filter(c => c.ebsp_effect_tags && c.ebsp_effect_tags.some(t => this._t.ebspEff.has(t)));
+    if (this._t.ebspEff.size > 0) cards = cards.filter(c => (c.ebsp_effect_tags && c.ebsp_effect_tags.some(t => this._t.ebspEff.has(t))) || (this._t.ebspEff.has('EBLv上昇') && c.eb_text && /EBLv\.が\d+に上昇/.test(c.eb_text)));
     const abCat = this._t.abCat;
     if (abCat.size > 0) cards = cards.filter(c => (abCat.has('ab_link') && c.has_ab_link));
     if (this._t.spEff.size > 0) cards = cards.filter(c => c.sp_effect_tags && c.sp_effect_tags.some(t => this._t.spEff.has(t)));
