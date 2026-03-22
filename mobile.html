@@ -4261,7 +4261,18 @@ const SearchPanel = {
     document.querySelectorAll('#filterSheet [data-for]').forEach(el => {
       const hidden = t && el.dataset.for !== t;
       el.style.display = hidden ? 'none' : '';
-      /* フィルタ値は明示的にクリアされるまで保持する（非表示にするだけ） */
+      if (hidden) {
+        if (el.classList.contains('tbtn')) {
+          const group = containerGroupMap[el.closest('.toggle-filter')?.id];
+          if (group) { this._t[group].delete(el.dataset.key); el.classList.remove('active-eb','active-sq','active-ab','active-sp','active-pl'); }
+        }
+        el.querySelectorAll('.tbtn').forEach(btn => {
+          const group = containerGroupMap[btn.closest('.toggle-filter')?.id];
+          if (group) { this._t[group].delete(btn.dataset.key); btn.classList.remove('active-eb','active-sq','active-ab','active-sp','active-pl'); }
+        });
+        const sel = el.querySelector('#filterSkillName'); if (sel) sel.value = '';
+        el.querySelectorAll('input[type="checkbox"]').forEach(cb => { cb.checked = false; });
+      }
     });
   },
 
