@@ -4403,6 +4403,7 @@ const SearchPanel = {
     g('filterGroupIllustrator', !!document.getElementById('filterIllustrator').value);
   },
   applyFilters() {
+    if (this._suppressApply) return;
     if (!this._hasActiveFilter()) { this._filteredCards = []; this._page = 0; this._renderGrid(); this._saveFilters(); this._updateFilterBadge(); return; }
     // PRレアリティ選択時は未OCRカードも含める
     let cards = this._currentRarity.size > 0
@@ -4471,8 +4472,13 @@ const SearchPanel = {
     this._saveFilters();
     this._updateFilterBadge();
   },
+  _suppressApply: false,
   _clearFiltersUI() {
+    this._suppressApply = true;
     this._selectedSeries.clear();
+    Object.values(this._t).forEach(s => s.clear());
+    this._currentRarity = new Set(); this._currentCategory = new Set();
+    this._altArt = false;
     document.querySelectorAll('.series-btn').forEach(b => b.classList.remove('active'));
     const fas = document.getElementById('filterAllSeries'); if (fas) fas.checked = true;
     document.getElementById('filterCostMin').value = 0;
@@ -4498,12 +4504,11 @@ const SearchPanel = {
     const sti = document.getElementById('searchTextInput'); if (sti) sti.value = '';
     LinkSearch.clear();
     const bm = document.getElementById('filterBookmarkCards'); if (bm) bm.checked = false;
-    Object.values(this._t).forEach(s => s.clear());
     document.querySelectorAll('.tbtn').forEach(b => b.className = 'tbtn');
-    this._currentRarity = new Set(); this._currentCategory = new Set();
-    this._altArt = false; document.getElementById('filterAltArt').classList.remove('active');
+    document.getElementById('filterAltArt').classList.remove('active');
     document.querySelectorAll('.rarity-btn').forEach(b => b.classList.remove('active'));
     document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+    this._suppressApply = false;
   },
   clearFilters() {
     this._clearFiltersUI();

@@ -4978,6 +4978,7 @@ const SearchPanel = {
   },
 
   applyFilters() {
+    if (this._suppressApply) return;
     // フィルター未指定時は何も表示しない
     if (!this._hasActiveFilter()) {
       this._filteredCards = [];
@@ -5189,8 +5190,13 @@ const SearchPanel = {
     });
   },
 
+  _suppressApply: false,
   _clearFiltersForSwitch() {
+    this._suppressApply = true;
     this._selectedSeries.clear();
+    Object.values(this._t).forEach(s => s.clear());
+    this._currentRarity = new Set(); this._currentCategory = new Set();
+    this._altArt = false;
     document.querySelectorAll('.series-btn').forEach(b => b.classList.remove('active'));
     document.getElementById('filterAllSeries').checked = true;
     document.getElementById('filterCostMin').value = 0;
@@ -5211,24 +5217,25 @@ const SearchPanel = {
     document.getElementById('searchTextInput').value = '';
     LinkSearch.clear();
     const bm = document.getElementById('filterBookmarkCards'); if (bm) bm.checked = false;
-    Object.values(this._t).forEach(s => s.clear());
     document.querySelectorAll('.tbtn').forEach(b => b.className = 'tbtn');
-    this._currentRarity = new Set(); this._currentCategory = new Set();
-    this._altArt = false; document.getElementById('filterAltArt').classList.remove('active');
+    document.getElementById('filterAltArt').classList.remove('active');
     document.querySelectorAll('.rarity-btn').forEach(b => b.classList.remove('active'));
     document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+    this._suppressApply = false;
   },
 
   clearFilters() {
-    // Series toggle
+    this._suppressApply = true;
     this._selectedSeries.clear();
+    Object.values(this._t).forEach(s => s.clear());
+    this._currentRarity = new Set();
+    this._currentCategory = new Set();
+    this._altArt = false;
     document.querySelectorAll('.series-btn').forEach(b => b.classList.remove('active'));
     document.getElementById('filterAllSeries').checked = true;
-    // Cost slider
     document.getElementById('filterCostMin').value = 0;
     document.getElementById('filterCostMax').value = 13;
     document.getElementById('costRangeValue').textContent = '0〜13';
-    // Stat sliders
     document.getElementById('filterMobility').value = 0;
     document.getElementById('filterRanged').value = 0;
     document.getElementById('filterMelee').value = 0;
@@ -5237,7 +5244,6 @@ const SearchPanel = {
     document.getElementById('rangedValue').textContent = '0';
     document.getElementById('meleeValue').textContent = '0';
     document.getElementById('hpValue').textContent = '0';
-    // Other filters
     document.getElementById('filterTerrainType').value = '';
     document.getElementById('filterTerrainRank').value = '';
     document.getElementById('filterTerrainRank').disabled = true;
@@ -5251,15 +5257,11 @@ const SearchPanel = {
     document.getElementById('searchInput').value = '';
     document.getElementById('searchTextInput').value = '';
     LinkSearch.clear();
-    // Toggle filters clear
-    Object.values(this._t).forEach(s => s.clear());
     document.querySelectorAll('.tbtn').forEach(b => b.className = 'tbtn');
-    this._currentRarity = new Set();
-    this._currentCategory = new Set();
-    this._altArt = false;
     document.getElementById('filterAltArt').classList.remove('active');
     document.querySelectorAll('.rarity-btn').forEach(b => b.classList.remove('active'));
     document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+    this._suppressApply = false;
     localStorage.removeItem('abds_search_filters');
     if (this._lockedType) localStorage.removeItem('abds_search_filters_' + this._lockedType);
     this.applyFilters();
