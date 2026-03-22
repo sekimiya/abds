@@ -996,7 +996,8 @@ body.light .ss-text{color:#555}
 .menu-panel{
   position:fixed;top:0;right:0;width:280px;height:100%;
   background:var(--bg2);border-left:2px solid var(--accent);
-  z-index:301;transition:transform 0.3s ease;overflow-y:auto;
+  z-index:301;transition:transform 0.3s ease;
+  overflow-x:hidden;overflow-y:auto;overscroll-behavior:contain;
   -webkit-overflow-scrolling:touch;
   padding:12px;padding-top:calc(12px + env(safe-area-inset-top));
   display:flex;flex-direction:column;gap:8px;
