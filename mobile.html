@@ -826,6 +826,11 @@ body.light .ss-text{color:#555}
   border-radius:6px;color:#fff;font-size:0.85rem;min-height:32px;
 }
 .link-search-wrap{position:relative}
+.link-search-badges{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:3px}
+.link-search-badges:empty{display:none}
+.link-search-badge{display:inline-flex;align-items:center;gap:3px;padding:2px 6px;border-radius:4px;font-size:0.7rem;font-weight:bold;background:#1e2924;border:1px solid #68efbd;color:#68efbd;white-space:nowrap}
+.link-search-badge .link-badge-x{cursor:pointer;color:#888;font-size:0.8rem;margin-left:2px}
+.link-search-badge .link-badge-x:active{color:#fff}
 .link-search-clear{
   position:absolute;right:6px;top:50%;transform:translateY(-50%);
   background:none;border:none;color:#f44336;font-size:1.2rem;cursor:pointer;
@@ -1222,8 +1227,8 @@ body.light .ss-text{color:#555}
     <div style="margin-bottom:8px">
       <input type="text" class="picker-search-input" id="searchInput" placeholder="名前・番号で検索..." autocomplete="off" style="width:100%;box-sizing:border-box">
       <div class="link-search-wrap" style="margin-top:4px">
-        <input type="text" class="picker-search-input" id="linkSearchInput" placeholder="リンクアビリティ検索..." autocomplete="off" style="width:100%;box-sizing:border-box;border-color:#3a5a4a;color:#68efbd">
-        <button class="link-search-clear" id="linkSearchClear" onclick="LinkSearch.clear()" style="display:none">&times;</button>
+        <div class="link-search-badges" id="linkBadges"></div>
+        <input type="text" class="picker-search-input" id="linkSearchInput" placeholder="リンクアビリティ検索 (2つまで)..." autocomplete="off" style="width:100%;box-sizing:border-box;border-color:#3a5a4a;color:#68efbd">
         <div class="link-suggest" id="linkSuggest"></div>
       </div>
     </div>
@@ -2830,15 +2835,13 @@ const TacticsPicker = {
 // LinkSearch — リンクアビリティ サジェスト→確定→カードフィルタ
 // ================================================================
 const LinkSearch = {
-  _selected: null,
+  _selected: [],
+  _maxLinks: 2,
   _init() {
     const input = document.getElementById('linkSearchInput');
     const suggest = document.getElementById('linkSuggest');
-    input.addEventListener('input', () => {
-      if (this._selected) { this._selected = null; this._updateInputStyle(); }
-      this._showSuggest(input.value);
-    });
-    input.addEventListener('focus', () => { if (!this._selected) this._showSuggest(input.value); });
+    input.addEventListener('input', () => { this._showSuggest(input.value); });
+    input.addEventListener('focus', () => { this._showSuggest(input.value); });
     document.addEventListener('click', (e) => {
       if (!e.target.closest('.link-search-wrap')) suggest.classList.remove('open');
     });
@@ -2847,10 +2850,11 @@ const LinkSearch = {
     const suggest = document.getElementById('linkSuggest');
     const q = query.trim().toLowerCase();
     if (!q) { suggest.classList.remove('open'); return; }
+    if (this._selected.length >= this._maxLinks) { suggest.classList.remove('open'); return; }
     const li = AppState.linkIndex;
     if (!li || Object.keys(li).length === 0) { suggest.classList.remove('open'); return; }
     const entries = Object.entries(li)
-      .filter(([name, info]) => name.toLowerCase().includes(q) || (info.effect || '').toLowerCase().includes(q))
+      .filter(([name, info]) => !this._selected.includes(name) && (name.toLowerCase().includes(q) || (info.effect || '').toLowerCase().includes(q)))
       .sort((a, b) => a[0].localeCompare(b[0], 'ja'))
       .slice(0, 20);
     if (entries.length === 0) { suggest.classList.remove('open'); return; }
@@ -2863,30 +2867,45 @@ const LinkSearch = {
     suggest.classList.add('open');
   },
   select(name) {
-    this._selected = name;
-    document.getElementById('linkSearchInput').value = name;
+    if (this._selected.length >= this._maxLinks || this._selected.includes(name)) return;
+    this._selected.push(name);
+    document.getElementById('linkSearchInput').value = '';
     document.getElementById('linkSuggest').classList.remove('open');
-    this._updateInputStyle();
+    this._renderBadges();
+    SearchPanel.applyFilters();
+  },
+  remove(name) {
+    this._selected = this._selected.filter(n => n !== name);
+    this._renderBadges();
     SearchPanel.applyFilters();
   },
   clear() {
-    this._selected = null;
+    this._selected = [];
     document.getElementById('linkSearchInput').value = '';
-    this._updateInputStyle();
     document.getElementById('linkSuggest').classList.remove('open');
+    this._renderBadges();
     SearchPanel.applyFilters();
   },
-  _updateInputStyle() {
+  _renderBadges() {
+    const container = document.getElementById('linkBadges');
     const input = document.getElementById('linkSearchInput');
-    const clearBtn = document.getElementById('linkSearchClear');
-    if (this._selected) { input.classList.add('has-value'); clearBtn.style.display = ''; }
-    else { input.classList.remove('has-value'); clearBtn.style.display = 'none'; }
+    container.innerHTML = this._selected.map(name =>
+      `<span class="link-search-badge">${escapeHtml(name)}<span class="link-badge-x" onclick="LinkSearch.remove('${name.replace(/'/g, "\\'")}')">&times;</span></span>`
+    ).join('');
+    input.placeholder = this._selected.length >= this._maxLinks ? 'リンク上限(2つ)' : 'リンクアビリティ検索...';
+    input.disabled = this._selected.length >= this._maxLinks;
   },
   getSelectedCards() {
-    if (!this._selected) return null;
-    const info = AppState.linkIndex[this._selected];
-    if (!info) return null;
-    return new Set([...(info.ms_cards || []), ...(info.pl_cards || [])]);
+    if (this._selected.length === 0) return null;
+    let result = null;
+    for (const name of this._selected) {
+      const info = AppState.linkIndex[name];
+      if (!info) continue;
+      const cards = new Set([...(info.ms_cards || []), ...(info.pl_cards || [])]);
+      if (result === null) result = cards;
+      else result = new Set([...result].filter(c => cards.has(c)));
+    }
+    return result;
   }
 };
 
@@ -4176,7 +4195,7 @@ const SearchPanel = {
     const state = {
       searchInput: document.getElementById('searchInput').value,
       searchTextInput: (document.getElementById('searchTextInput') || {}).value || '',
-      linkSelected: LinkSearch._selected || '',
+      linkSelected: LinkSearch._selected || [],
       rarity: [...this._currentRarity],
       category: [...this._currentCategory],
       costMin: document.getElementById('filterCostMin').value,
@@ -4215,7 +4234,10 @@ const SearchPanel = {
       document.getElementById('searchInput').value = s.searchInput || '';
       const sti = document.getElementById('searchTextInput');
       if (sti) sti.value = s.searchTextInput || '';
-      if (s.linkSelected) LinkSearch.select(s.linkSelected);
+      if (s.linkSelected) {
+        const links = Array.isArray(s.linkSelected) ? s.linkSelected : (s.linkSelected ? [s.linkSelected] : []);
+        links.forEach(n => LinkSearch.select(n));
+      }
       this._currentRarity = new Set(s.rarity || []);
       document.querySelectorAll('.rarity-btn').forEach(b => b.classList.toggle('active', this._currentRarity.has(b.dataset.rarity)));
       this._currentCategory = new Set(s.category || []);
