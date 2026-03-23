@@ -20197,14 +20197,7 @@
           "type": "遠距離"
         }
       },
-      "ms_ability": {
-        "name": "間合いを詰めた接近戦",
-        "activation": "デッキに2枚以上",
-        "target": null,
-        "range": null,
-        "cost": null,
-        "description": "[近距離攻撃力]小アップ"
-      },
+      "ms_ability": {},
       "special_attack": {
         "name": "ビームサーベル強撃",
         "sp_type": "normal",
@@ -20226,6 +20219,11 @@
         "image_url": "https://www.gundam-ab.com/images/cardlist/card/AB03-046_b.jpg?v250630"
       },
       "link_abilities": [
+        {
+          "name": "間合いを詰めた接近戦",
+          "condition": "デッキに2枚以上",
+          "effect": "[近距離攻撃力]小アップ"
+        },
         {
           "name": "ガンダムSEED",
           "condition": "デッキに3枚以上",
