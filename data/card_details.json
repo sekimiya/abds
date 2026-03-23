@@ -20843,14 +20843,7 @@
           "type": "近距離"
         }
       },
-      "ms_ability": {
-        "name": "距離をとった射撃戦",
-        "activation": null,
-        "target": null,
-        "range": null,
-        "cost": null,
-        "description": "デッキに2枚以上\n[遠距離攻撃力]小アップ"
-      },
+      "ms_ability": {},
       "special_attack": {
         "name": "GNバズーカ撃射",
         "sp_type": "normal",
@@ -20872,6 +20865,11 @@
         "image_url": "https://www.gundam-ab.com/images/cardlist/card/AB03-053_b.jpg?v250630"
       },
       "link_abilities": [
+        {
+          "name": "距離をとった射撃戦",
+          "condition": "デッキに2枚以上",
+          "effect": "[遠距離攻撃力]小アップ"
+        },
         {
           "name": "ガンダム00",
           "condition": "デッキに3枚以上",
