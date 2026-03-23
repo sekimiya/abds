@@ -269950,5 +269950,198 @@
       "illustrator": null,
       "raw": "殲滅　コスト3　PL\n\nリク\nRIKU\n\n身長　—\n年齢　14歳\n所属　ビルドダイバーズ\n搭乗機体　ガンダムダブルオーダイバー\n\nPL SKILL\n軽快な進撃\nMSアビリティ発動時\n20秒間、自身の[機動力][近距離攻撃力]を小アップする。\n\nLINK ABILITY\nビルドダイバーズ　デッキに3枚以上\n[HP]小アップ\n\n圧倒する殲滅力　デッキに殲滅が3枚以上\n殲滅タイプに対してダメージ中アップ\n\n機動力　210\n遠距離攻撃　50\n近距離攻撃　250\nHP　210\n\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE ®\nVEB01-028　R"
     }
+  },
+  "FQB06-013_p4": {
+    "number": "FQB06-013_p4",
+    "name": "レグナント",
+    "url": "https://www.gundam-ab.com/images/cardlist/card/FQB06-013_p3.jpg?v8",
+    "category": "遠距離",
+    "series": "FQB06",
+    "front": {
+      "image_url": "https://www.gundam-ab.com/images/cardlist/card/FQB06-013_p4.jpg?v8"
+    },
+    "back": {
+      "image_url": "https://www.gundam-ab.com/images/cardlist/card/FQB06-013_b.jpg?v250630"
+    },
+    "ocr_data": {
+      "card_id": "FQB06-013_p4",
+      "type": "MS",
+      "card_label": {
+        "class": "遠距離",
+        "cost_label": "コスト10"
+      },
+      "name": "レグナント",
+      "model": "GNMA-0001V REGNANT",
+      "cost": 10,
+      "category": "遠距離",
+      "affiliation": "イノベイター",
+      "pilot": "ルイス・ハレヴィ",
+      "stats": {
+        "height": "32.3m",
+        "weight": "586.1t",
+        "mobility": 280,
+        "ranged_attack": 920,
+        "melee_attack": 70,
+        "hp": 880
+      },
+      "terrain_compatibility": {
+        "ground": "A",
+        "space": "S",
+        "desert": "C",
+        "water": "C"
+      },
+      "weapon": {
+        "main": {
+          "name": "GNマイクロミサイル",
+          "range": 4,
+          "type": "遠距離"
+        },
+        "sub": {
+          "name": "GNファング(格闘)",
+          "range": 1,
+          "type": "近距離"
+        }
+      },
+      "ms_ability": {
+        "name": "障壁",
+        "activation": "任意発動",
+        "target": "自分",
+        "range": null,
+        "cost": 3,
+        "description": "自身の周りにバリアを展開する。展開したバリアは自身へのダメージを一定値防ぎ、バリア展開中は弱体効果を受けない状態となる。"
+      },
+      "special_attack": {
+        "name": "大型ビーム砲撃射",
+        "sp_type": "normal",
+        "target": "貫通(敵)",
+        "range": 4,
+        "sp_cost": 2,
+        "power": 3800,
+        "description": "射線上の敵に貫通射撃でダメージを与え、以後通常攻撃がメイン武装のみになり、自身に小ダメージ。",
+        "united_sp": null,
+        "squad_sp": null,
+        "echoes_beat": null
+      },
+      "rarity": "U",
+      "illustrator": "haru",
+      "front": {
+        "image_url": "https://www.gundam-ab.com/images/cardlist/card/FQB06-013.jpg?v250630"
+      },
+      "back": {
+        "image_url": "https://www.gundam-ab.com/images/cardlist/card/FQB06-013_b.jpg?v250630"
+      },
+      "link_abilities": [
+        {
+          "name": "ガンダム00",
+          "condition": "デッキに3枚以上",
+          "effect": "[機動力]小アップ"
+        },
+        {
+          "name": "悲しき復讐者",
+          "condition": "デッキに2枚以上",
+          "effect": "[遠距離攻撃力][SP威力]小アップ"
+        }
+      ]
+    }
+  },
+  "VEB01-008_p2": {
+    "number": "VEB01-008_p2",
+    "name": "エルメス",
+    "url": "https://www.gundam-ab.com/images/cardlist/card/VEB01-008_p1.jpg?v250630",
+    "category": "機動戦士ガンダム",
+    "series": "VEB01",
+    "front": {
+      "image_url": "https://www.gundam-ab.com/images/cardlist/card/VEB01-008_p2.jpg?v250630"
+    },
+    "back": {
+      "image_url": "https://www.gundam-ab.com/images/cardlist/card/VEB01-008_p2_b.jpg?v250630"
+    },
+    "ocr_data": {
+      "card_id": "VEB01-008_p2",
+      "type": "MS",
+      "card_label": {
+        "class": "遠距離",
+        "cost_label": "コスト4"
+      },
+      "name": "エルメス",
+      "model": "MAN-08 ELMETH",
+      "cost": 4,
+      "category": "遠距離",
+      "affiliation": "ジオン公国軍",
+      "pilot": "ララァ・スン",
+      "stats": {
+        "height": "47.7m",
+        "weight": "163.7t",
+        "mobility": 250,
+        "ranged_attack": 400,
+        "melee_attack": 0,
+        "hp": 480
+      },
+      "terrain_compatibility": {
+        "ground": "C",
+        "space": "S",
+        "desert": "B",
+        "water": "B"
+      },
+      "weapon": {
+        "main": {
+          "name": "ビット",
+          "range": 4,
+          "type": "遠距離"
+        },
+        "sub": {
+          "name": null,
+          "range": null,
+          "type": null
+        }
+      },
+      "ms_ability": {
+        "name": "断砕[広角]",
+        "activation": "任意発動",
+        "target": "範囲(敵)",
+        "range": 4,
+        "cost": 4,
+        "description": "ロックオン中の敵を中心に扇状の範囲攻撃を行い、強化状態を無効化する。"
+      },
+      "link_ability": [
+        {
+          "name": "機動戦士ガンダム",
+          "condition": "デッキに3枚以上",
+          "effect": "[機動力] 小アップ"
+        },
+        {
+          "name": "戦況を変える力",
+          "condition": "デッキに4枚以上",
+          "effect": "[遠距離攻撃力][近距離攻撃力] 小アップ"
+        }
+      ],
+      "special_attack": {
+        "name": "ビット斉射",
+        "target": "単体(敵)",
+        "range": 4,
+        "sp_cost": 2,
+        "power": 3400,
+        "sp_type": "ECHOES BEAT SP",
+        "description": "敵単体に射撃攻撃でダメージを与え、一定時間、敵ユニットの[遠距離攻撃力][近距離攻撃力]をダウンする。",
+        "united_sp": null,
+        "eb_level": 3,
+        "eb_power": 4900,
+        "eb_description": "EBLv.を3下げる。ロックオン中の敵に貫通射撃でダメージを与え、メイン武装を使用不能にし、自身の[機動力][遠距離攻撃力]をアップする。この効果は解除できない。出撃時1度のみ使用可能。",
+        "eb_target": "貫通(敵)",
+        "eb_range": 4,
+        "echoes_beat": {
+          "level": 3,
+          "name": "光る宇宙 Lv.3",
+          "target": "貫通(敵)",
+          "range": 4,
+          "power": 4900,
+          "description": "EBLv.を3下げる。ロックオン中の敵に貫通射撃でダメージを与え、メイン武装を使用不能にし、自身の[機動力][遠距離攻撃力]をアップする。この効果は解除できない。出撃時1度のみ使用可能。",
+          "_uncertain": false
+        }
+      },
+      "rarity": "SN",
+      "illustrator": "Chifuyu Yukishiro",
+      "raw": "遠距離　コスト4\nMAN-08 ELMETH\nエルメス\n全高　47.7m\n本体重量　163.7t\n所属　ジオン公国軍\nパイロット　ララァ・スン\n地上 C　宇宙 S　砂漠 B　水中 B\n機動力 250\n遠距離攻撃 400\n近距離攻撃 0\nHP 480\n\nWEAPON\nMAIN ビット　射程 4　遠距離\nSUB ー　射程 ー　ー\n\nMS ABILITY\n断砕[広角]\n任意発動　範囲(敵)　射程 4　コスト 4\nロックオン中の敵を中心に扇状の範囲攻撃を行い、強化状態を無効化する。\n\nLINK ABILITY\n機動戦士ガンダム　デッキに3枚以上\n[機動力] 小アップ\n\n戦況を変える力　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力] 小アップ\n\nSPECIAL ATTACK　ECHOES BEAT SP\nビット斉射　光る宇宙 Lv.3\nECHOES BEAT Lv.を下げることで、共鳴戦術が発動する。\n単体(敵)　射程 4　貫通(敵)　射程 4\nSPコスト 2　威力 3400 / 4900\n敵単体に射撃攻撃でダメージを与え、一定時間、敵ユニットの[遠距離攻撃力][近距離攻撃力]をダウンする。/ EBLv.を3下げる。ロックオン中の敵に貫通射撃でダメージを与え、メイン武装を使用不能にし、自身の[機動力][遠距離攻撃力]をアップする。この効果は解除できない。出撃時1度のみ使用可能。\n\nillust. Chifuyu Yukishiro\n©創通・サンライズ　©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\nVEB01-008　SN"
+    }
   }
 }
