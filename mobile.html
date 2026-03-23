@@ -3775,13 +3775,6 @@ const UIRenderer = {
           `</div>` +
         `</div>`;
     });
-    // Debug: show detected series and applied levels
-    const dbg = result[0]?._debug;
-    if (dbg && dbg.msLv > 0) {
-      html += `<div style="font-size:0.6rem;color:#ff9800;padding:1px 4px;line-height:1.3">`;
-      html += `MS:${dbg.msSeries || '?'} Lv${dbg.msLv}`;
-      html += `</div>`;
-    }
     html += '</div>';
     // Unit info: 3 separate mini-cards
     const w = weapon;
