@@ -1618,13 +1618,15 @@ body.light .ss-text{color:#555}
     <button class="menu-btn" onclick="DeckManager.copyCode()">デッキ共有</button>
     <button class="menu-btn" onclick="DeckManager.clearAll();toggleMenu()" style="color:#f44336;border-color:#f44336">クリア</button>
   </div>
-  <div class="menu-row" style="gap:4px">
-    <select id="deckLoadSelect" class="filter-select" style="flex:1;padding:6px;font-size:0.85rem">
+  <div style="display:flex;flex-direction:column;gap:4px">
+    <select id="deckLoadSelect" class="filter-select" style="width:100%;padding:8px;font-size:0.85rem;box-sizing:border-box">
       <option value="">-- デッキを選択 --</option>
     </select>
-    <button class="menu-btn primary" onclick="DeckManager.loadFromSelect()" style="white-space:nowrap;flex:0;padding:6px 10px">適用</button>
-    <button class="menu-btn" onclick="DeckManager.renameFromSelect()" style="white-space:nowrap;flex:0;padding:6px 8px">名変</button>
-    <button class="menu-btn" onclick="DeckManager.deleteFromSelect()" style="white-space:nowrap;flex:0;padding:6px 8px;color:#f44336;border-color:#f44336">削除</button>
+    <div class="menu-row" style="gap:4px">
+      <button class="menu-btn primary" onclick="DeckManager.loadFromSelect()" style="flex:2">適用</button>
+      <button class="menu-btn" onclick="DeckManager.renameFromSelect()">名前変更</button>
+      <button class="menu-btn" onclick="DeckManager.deleteFromSelect()" style="color:#f44336;border-color:#f44336">削除</button>
+    </div>
   </div>
   <div class="menu-row">
     <button class="menu-btn" onclick="DeckManager.tweetDeck()" style="border-color:#1DA1F2;color:#1DA1F2;width:100%">Twitterに投稿</button>
