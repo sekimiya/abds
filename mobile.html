@@ -1387,6 +1387,14 @@ body.light .ss-text{color:#555}
         </div>
       </div>
     </div>
+    <div class="filter-group collapsed" data-for="MS" id="filterGroupAbility">
+      <div class="filter-group-title" onclick="toggleFilterGroup('filterGroupAbility')" style="color:#82b1ff">MSアビリティ</div>
+      <div class="filter-group-body">
+        <div class="toggle-filter" id="abilityBtns">
+          <span class="toggle-filter-label">アビリティ</span>
+        </div>
+      </div>
+    </div>
     <div class="filter-group collapsed" data-for="MS" id="filterGroupSp">
       <div class="filter-group-title" onclick="toggleFilterGroup('filterGroupSp')" style="color:#4fc3f7">SP</div>
       <div class="filter-group-body">
@@ -4122,7 +4130,7 @@ const SearchPanel = {
   _page: 0,
   _perPage: 60,
   _rendered: 0,
-  _t: { ebCat:new Set(), ebLv:new Set(), ebCond:new Set(), ebspEff:new Set(), sqCat:new Set(), sqGauge:new Set(), sqTrig:new Set(), sqEff:new Set(), sqspEff:new Set(), abCat:new Set(), spEff:new Set(), skEff:new Set(), skTim:new Set() },
+  _t: { msAbility:new Set(), ebCat:new Set(), ebLv:new Set(), ebCond:new Set(), ebspEff:new Set(), sqCat:new Set(), sqGauge:new Set(), sqTrig:new Set(), sqEff:new Set(), sqspEff:new Set(), abCat:new Set(), spEff:new Set(), skEff:new Set(), skTim:new Set() },
   _tStyle: { ebCat:'eb', ebLv:'eb', ebCond:'eb', ebspEff:'eb', sqCat:'sq', sqGauge:'sq', sqTrig:'sq', sqEff:'sq', sqspEff:'sq', abCat:'ab', spEff:'sp', skEff:'pl', skTim:'pl' },
 
   init() {
@@ -4151,6 +4159,7 @@ const SearchPanel = {
       if (slider && label) slider.addEventListener('input', () => { label.textContent = slider.value; this.applyFilters(); });
     });
     this._populateSkillNames();
+    this._populateAbilities();
     this._populateIllustrators();
     this._restoreFilters();
     // 無限スクロール: スクロールラッパー末尾付近で追加読み込み
@@ -4238,7 +4247,7 @@ const SearchPanel = {
         document.querySelectorAll('.tbtn').forEach(btn => {
           const container = btn.closest('.toggle-filter');
           if (!container) return;
-          const groupMap = { 'ebCategoryBtns':'ebCat','ebLevelBtns':'ebLv','spEbLevelBtns':'ebLv','ebCondBtns':'ebCond','ebspEffectBtns':'ebspEff','sqCategoryBtns':'sqCat','sqGaugeBtns':'sqGauge','sqTriggerBtns':'sqTrig','sqEffectBtns':'sqEff','sqspEffectBtns':'sqspEff','abCategoryBtns':'abCat','spEffectBtns':'spEff','skillEffectBtns':'skEff','skillTimingBtns':'skTim' };
+          const groupMap = { 'abilityBtns':'msAbility','ebCategoryBtns':'ebCat','ebLevelBtns':'ebLv','spEbLevelBtns':'ebLv','ebCondBtns':'ebCond','ebspEffectBtns':'ebspEff','sqCategoryBtns':'sqCat','sqGaugeBtns':'sqGauge','sqTriggerBtns':'sqTrig','sqEffectBtns':'sqEff','sqspEffectBtns':'sqspEff','abCategoryBtns':'abCat','spEffectBtns':'spEff','skillEffectBtns':'skEff','skillTimingBtns':'skTim' };
           const group = groupMap[container.id];
           if (group && this._t[group].has(btn.dataset.key)) btn.classList.add('active-' + this._tStyle[group]);
         });
@@ -4345,6 +4354,21 @@ const SearchPanel = {
     const names = [...new Set(AppState.cardIndex.filter(c => c.type === 'PL' && c.skill_name).map(c => c.skill_name))].sort();
     sel.innerHTML = '<option value="">PLスキル名</option>' + names.map(n => `<option value="${n}"${n === current ? ' selected' : ''}>${n}</option>`).join('');
   },
+  _populateAbilities() {
+    const container = document.getElementById('abilityBtns');
+    if (!container) return;
+    const existing = container.querySelector('.toggle-filter-label');
+    const names = new Set();
+    (AppState.cardIndex || []).forEach(c => {
+      if (c.type !== 'MS') return;
+      const an = c.ability_name;
+      if (!an) return;
+      (Array.isArray(an) ? an : [an]).forEach(n => names.add(n));
+    });
+    const sorted = [...names].sort();
+    container.innerHTML = '<span class="toggle-filter-label">アビリティ</span>' +
+      sorted.map(n => `<button class="tbtn" data-key="${escapeHtml(n)}" onclick="SearchPanel.toggle('msAbility',this)">${escapeHtml(n)}</button>`).join('');
+  },
   _populateIllustrators() {
     const sel = document.getElementById('filterIllustrator');
     if (!sel) return;
@@ -4398,6 +4422,7 @@ const SearchPanel = {
     g('filterGroupEb', this._t.ebCat.size > 0 || this._t.ebLv.size > 0 || this._t.ebspEff.size > 0 || this._t.ebCond.size > 0 || (document.getElementById('filterEb') || {}).checked || (document.getElementById('filterEbSkill') || {}).checked);
     g('filterGroupSq', this._t.sqCat.size > 0 || this._t.sqspEff.size > 0 || this._t.sqGauge.size > 0 || this._t.sqTrig.size > 0 || this._t.sqEff.size > 0 || (document.getElementById('filterSqsp') || {}).checked || (document.getElementById('filterSqSkill') || {}).checked);
     g('filterGroupAb', this._t.abCat.size > 0);
+    g('filterGroupAbility', this._t.msAbility.size > 0);
     g('filterGroupSp', this._t.spEff.size > 0 || this._t.ebLv.size > 0);
     g('filterGroupPlSkill', !!(document.getElementById('filterSkillName') || {}).value || this._t.skEff.size > 0 || this._t.skTim.size > 0);
     g('filterGroupSearch', !!((document.getElementById('searchTextInput') || {}).value || '').trim());
@@ -4451,6 +4476,12 @@ const SearchPanel = {
     if (_isMS && this._t.ebspEff.size > 0) cards = cards.filter(c => (c.ebsp_effect_tags && c.ebsp_effect_tags.some(t => this._t.ebspEff.has(t))) || (this._t.ebspEff.has('EBLv上昇') && c.eb_text && /EBLv\.が\d+に上昇/.test(c.eb_text)));
     const abCat = this._t.abCat;
     if (abCat.size > 0) cards = cards.filter(c => (abCat.has('ab_link') && c.has_ab_link));
+    if (_isMS && this._t.msAbility.size > 0) cards = cards.filter(c => {
+      const an = c.ability_name;
+      if (!an) return false;
+      const names = Array.isArray(an) ? an : [an];
+      return names.some(n => this._t.msAbility.has(n));
+    });
     if (_isMS && this._t.spEff.size > 0) cards = cards.filter(c => c.sp_effect_tags && c.sp_effect_tags.some(t => this._t.spEff.has(t)));
     const skillName = _isPL ? document.getElementById('filterSkillName').value : '';
     if (skillName) cards = cards.filter(c => c.skill_name === skillName);
@@ -5488,6 +5519,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   await DeckManager._autoLoad();
   SearchPanel._populateLinkNames();
   SearchPanel._populateSkillNames();
+  SearchPanel._populateAbilities();
   SearchPanel._populateIllustrators();
 
   // ImageCacheがタイムアウトで未完了だった場合、完了後にUI再描画
