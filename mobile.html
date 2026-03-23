@@ -974,6 +974,7 @@ body.light .ss-text{color:#555}
 .tbtn.active-ab{background:#1a0a2e;border-color:#b388ff;color:#b388ff}
 .tbtn.active-pl{background:#1e2924;border-color:var(--accent);color:var(--accent)}
 .tbtn.active-sp{background:#1a2a3a;border-color:#4fc3f7;color:#4fc3f7}
+.tbtn.active-ms{background:#1a2a3a;border-color:#82b1ff;color:#82b1ff}
 .filter-row{display:flex;gap:4px;align-items:center}
 .filter-select{flex:1;padding:6px;background:var(--bg-card);border:1px solid #333;border-radius:4px;color:#ccc;font-size:0.8rem;min-height:32px}
 .filter-select-sm{width:auto;min-width:50px;flex:0 1 auto;padding:4px;font-size:0.75rem;min-height:28px}
@@ -4131,7 +4132,7 @@ const SearchPanel = {
   _perPage: 60,
   _rendered: 0,
   _t: { msAbility:new Set(), ebCat:new Set(), ebLv:new Set(), ebCond:new Set(), ebspEff:new Set(), sqCat:new Set(), sqGauge:new Set(), sqTrig:new Set(), sqEff:new Set(), sqspEff:new Set(), abCat:new Set(), spEff:new Set(), skEff:new Set(), skTim:new Set() },
-  _tStyle: { ebCat:'eb', ebLv:'eb', ebCond:'eb', ebspEff:'eb', sqCat:'sq', sqGauge:'sq', sqTrig:'sq', sqEff:'sq', sqspEff:'sq', abCat:'ab', spEff:'sp', skEff:'pl', skTim:'pl' },
+  _tStyle: { msAbility:'ms', ebCat:'eb', ebLv:'eb', ebCond:'eb', ebspEff:'eb', sqCat:'sq', sqGauge:'sq', sqTrig:'sq', sqEff:'sq', sqspEff:'sq', abCat:'ab', spEff:'sp', skEff:'pl', skTim:'pl' },
 
   init() {
     this._updateCategoryButtons();
