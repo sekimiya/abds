@@ -1006,9 +1006,12 @@ body.light .ss-text{color:#555}
   overflow-x:hidden;overflow-y:auto;overscroll-behavior:contain;
   -webkit-overflow-scrolling:touch;
   padding:12px;padding-top:calc(12px + env(safe-area-inset-top));
-  display:flex;flex-direction:column;gap:8px;
+  padding-bottom:calc(12px + env(safe-area-inset-bottom));
+  display:block;
   transform:translateX(100%);will-change:transform;
 }
+.menu-panel>*{margin-bottom:8px}
+.menu-panel>*:last-child{margin-bottom:0}
 .menu-panel.open{transform:translateX(0)}
 .menu-title{color:var(--accent);font-weight:bold;font-size:0.9rem;margin-bottom:4px}
 .menu-close{position:absolute;top:12px;right:12px;background:none;border:none;color:#888;font-size:1.3rem}
