@@ -807,6 +807,11 @@ body.light .ss-text{color:#555}
   display:none;flex-direction:column;
 }
 .picker-overlay.open{display:flex}
+.picker-overlay.half-mode{
+  top:auto;height:55vh;
+  border-top:2px solid var(--accent);
+  border-radius:12px 12px 0 0;
+}
 .picker-topbar{
   display:flex;align-items:center;gap:6px;padding:6px 8px;
   border-bottom:1px solid #333;flex-shrink:0;height:44px;
@@ -927,6 +932,7 @@ body.light .ss-text{color:#555}
   display:none;flex-direction:column;
 }
 .filter-sheet.open{height:60vh}
+.filter-sheet.half-mode.open{height:50vh}
 .filter-sheet-toggle{
   display:flex;align-items:center;justify-content:center;gap:6px;
   padding:8px 12px;flex-shrink:0;cursor:pointer;user-select:none;
@@ -1646,6 +1652,10 @@ body.light .ss-text{color:#555}
   <div class="menu-row">
     <button class="menu-btn" onclick="openScreenshotMode();toggleMenu()" style="flex:1">スクショ縦</button>
     <button class="menu-btn" onclick="openScreenshotMode();setSsMode('h');toggleMenu()" style="flex:1">スクショ横</button>
+  </div>
+  <div class="menu-label">検索パネル</div>
+  <div class="badge-switches">
+    <button class="badge-sw" id="halfModeBtn" onclick="toggleHalfMode()" style="flex:1">ハーフ表示</button>
   </div>
   <div class="menu-label">バッジ表示</div>
   <div class="badge-switches" id="badgeSwitches">
@@ -4714,6 +4724,21 @@ function toggleLightMode() {
 }
 (function(){if(document.body.classList.contains('light')){var b=document.getElementById('lightModeBtn');if(b)b.textContent='🌙 ダークモードに切替';}})();
 
+function toggleHalfMode() {
+  const btn = document.getElementById('halfModeBtn');
+  const active = btn.classList.toggle('active');
+  localStorage.setItem('abds_halfMode', active ? '1' : '0');
+  document.getElementById('pickerOverlay').classList.toggle('half-mode', active);
+  document.getElementById('filterSheet').classList.toggle('half-mode', active);
+}
+(function(){
+  if (localStorage.getItem('abds_halfMode') === '1') {
+    const btn = document.getElementById('halfModeBtn');
+    if (btn) btn.classList.add('active');
+    document.getElementById('pickerOverlay').classList.add('half-mode');
+  }
+})();
+
 function toggleMenu() {
   document.getElementById('menuOverlay').classList.toggle('open');
   const panel = document.getElementById('menuPanel');
@@ -4876,8 +4901,10 @@ function openCardPicker(slotIdx, type) {
   SearchPanel._restoreFilters();
   SearchPanel._updateFilterVisibility();
   document.getElementById('pickerOverlay').classList.add('open');
-  document.getElementById('filterSheet').style.display = 'flex';
-  document.getElementById('filterSheet').classList.remove('open');
+  const fs = document.getElementById('filterSheet');
+  fs.style.display = 'flex';
+  fs.classList.remove('open');
+  fs.classList.toggle('half-mode', localStorage.getItem('abds_halfMode') === '1');
   SearchPanel._updateFilterBadge();
 }
 function closeCardPicker() {
@@ -4922,8 +4949,10 @@ function openBookmarkViewer() {
   document.getElementById('bmToggleLink').classList.add('active');
   document.getElementById('bmToggleText').classList.add('active');
   ov.classList.add('open');
-  document.getElementById('filterSheet').style.display = 'flex';
-  document.getElementById('filterSheet').classList.remove('open');
+  const fs2 = document.getElementById('filterSheet');
+  fs2.style.display = 'flex';
+  fs2.classList.remove('open');
+  fs2.classList.toggle('half-mode', localStorage.getItem('abds_halfMode') === '1');
   SearchPanel._updateFilterBadge();
   SearchPanel.applyFilters();
 }
