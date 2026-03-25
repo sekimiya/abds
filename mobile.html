@@ -4591,7 +4591,7 @@ const SearchPanel = {
       const emptyEl = document.createElement('div');
       emptyEl.className = 'thumb-card-empty';
       emptyEl.innerHTML = '<div class="thumb-card-img-wrap"><span class="empty-x">&times;</span></div>';
-      emptyEl.addEventListener('click', () => { DeckManager.clearCard(AppState.activeSlot); closeCardPicker(); });
+      emptyEl.addEventListener('click', () => { DeckManager.clearCard(AppState.activeSlot); if (!document.getElementById('pickerOverlay').classList.contains('half-mode')) closeCardPicker(); });
       grid.appendChild(emptyEl);
     }
     if (cards.length === 0 && !this._hasActiveFilter()) {
@@ -4695,6 +4695,7 @@ const SearchPanel = {
     if (bmEl && bmEl.checked) this.applyFilters();
   },
   _selectCard(card) {
+    const half = document.getElementById('pickerOverlay').classList.contains('half-mode');
     const slot = AppState.activeSlot;
     if (slot === null) {
       const type = card.type;
@@ -4702,14 +4703,25 @@ const SearchPanel = {
       const emptySlot = range.find(i => !AppState.deck[i]);
       if (emptySlot !== undefined) DeckManager.setCard(emptySlot, card.number);
       else Toast.show(`${type}の空きスロットがありません`, 'info');
-      closeCardPicker();
+      if (!half) closeCardPicker();
       return;
     }
     const slotType = slot < 5 ? 'MS' : 'PL';
     if (card.type && card.type !== slotType) { Toast.show(`${slotType}スロットに${card.type}カードはセット不可`, 'error'); return; }
     DeckManager.setCard(slot, card.number);
-    closeCardPicker();
-    AppState.activeSlot = null;
+    if (half) {
+      // ハーフモード: 同タイプの次の空きスロットに移動
+      const range = slotType === 'MS' ? [0,1,2,3,4] : [5,6,7,8,9];
+      const nextEmpty = range.find(i => i > slot && !AppState.deck[i]);
+      if (nextEmpty !== undefined) {
+        AppState.activeSlot = nextEmpty;
+        const unitIdx = nextEmpty < 5 ? nextEmpty : nextEmpty - 5;
+        document.getElementById('pickerTitle').textContent = `${slotType} ${unitIdx + 1} を選択`;
+      }
+    } else {
+      closeCardPicker();
+      AppState.activeSlot = null;
+    }
   }
 };
 </script>
