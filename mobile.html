@@ -1221,8 +1221,16 @@ body.light .ss-text{color:#555}
     <button class="bm-toggle-btn active" id="bmToggleLink" onclick="toggleBmOverlay('link')">リンク表示</button>
     <button class="bm-toggle-btn active" id="bmToggleText" onclick="toggleBmOverlay('text')">テキスト表示</button>
   </div>
-  <div class="picker-toolbar">
-    <span class="page-info" id="pageInfo" style="color:#888;font-size:0.8rem">-</span>
+  <div class="picker-toolbar" style="flex-direction:column;gap:4px;padding:6px 8px">
+    <input type="text" class="picker-search-input" id="searchInput" placeholder="名前・番号で検索..." autocomplete="off" style="width:100%;box-sizing:border-box">
+    <div style="display:flex;align-items:center;gap:6px">
+      <div class="link-search-wrap" style="flex:1;position:relative">
+        <div class="link-search-badges" id="linkBadges"></div>
+        <input type="text" class="picker-search-input" id="linkSearchInput" placeholder="リンクアビリティ検索..." autocomplete="off" style="width:100%;box-sizing:border-box;border-color:#3a5a4a;color:#68efbd">
+        <div class="link-suggest" id="linkSuggest"></div>
+      </div>
+      <span class="page-info" id="pageInfo" style="color:#888;font-size:0.75rem;white-space:nowrap">-</span>
+    </div>
   </div>
   <div class="picker-scroll" id="pickerScroll">
     <div class="picker-grid" id="thumbGrid"></div>
@@ -1233,14 +1241,6 @@ body.light .ss-text{color:#555}
 <div class="filter-sheet" id="filterSheet">
   <button class="filter-sheet-toggle" id="filterSheetToggle" onclick="toggleFilterSheet()">▲ フィルター</button>
   <div class="filter-sheet-body">
-    <div style="margin-bottom:8px">
-      <input type="text" class="picker-search-input" id="searchInput" placeholder="名前・番号で検索..." autocomplete="off" style="width:100%;box-sizing:border-box">
-      <div class="link-search-wrap" style="margin-top:4px">
-        <div class="link-search-badges" id="linkBadges"></div>
-        <input type="text" class="picker-search-input" id="linkSearchInput" placeholder="リンクアビリティ検索 (2つまで)..." autocomplete="off" style="width:100%;box-sizing:border-box;border-color:#3a5a4a;color:#68efbd">
-        <div class="link-suggest" id="linkSuggest"></div>
-      </div>
-    </div>
     <div class="filter-group collapsed" id="filterGroupBasic">
       <div class="filter-group-title" onclick="toggleFilterGroup('filterGroupBasic')">検索対象のシリーズを指定</div>
       <div class="filter-group-body">
