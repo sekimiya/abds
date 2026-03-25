@@ -4921,9 +4921,12 @@ function openCardViewer() {
   SearchPanel._clearFiltersUI();
   SearchPanel._restoreFilters();
   SearchPanel._updateFilterVisibility();
-  document.getElementById('pickerOverlay').classList.add('open');
-  document.getElementById('filterSheet').style.display = 'flex';
-  document.getElementById('filterSheet').classList.remove('open');
+  const ov = document.getElementById('pickerOverlay');
+  ov.classList.remove('half-mode');
+  ov.classList.add('open');
+  const fs = document.getElementById('filterSheet');
+  fs.style.display = 'flex';
+  fs.classList.remove('open', 'half-mode');
   SearchPanel._updateFilterBadge();
 }
 function openCardPicker(slotIdx, type) {
@@ -4941,11 +4944,14 @@ function openCardPicker(slotIdx, type) {
   SearchPanel._clearFiltersUI();
   SearchPanel._restoreFilters();
   SearchPanel._updateFilterVisibility();
-  document.getElementById('pickerOverlay').classList.add('open');
+  const isHalf = localStorage.getItem('abds_halfMode') === '1';
+  const ov2 = document.getElementById('pickerOverlay');
+  ov2.classList.toggle('half-mode', isHalf);
+  ov2.classList.add('open');
   const fs = document.getElementById('filterSheet');
   fs.style.display = 'flex';
   fs.classList.remove('open');
-  fs.classList.toggle('half-mode', localStorage.getItem('abds_halfMode') === '1');
+  fs.classList.toggle('half-mode', isHalf);
   SearchPanel._updateFilterBadge();
 }
 function closeCardPicker() {
@@ -5006,14 +5012,13 @@ function openBookmarkViewer() {
   SearchPanel._updateFilterVisibility();
   document.getElementById('bmToggleBar').style.display = 'flex';
   const ov = document.getElementById('pickerOverlay');
-  ov.classList.remove('hide-link-overlay', 'hide-text-overlay');
+  ov.classList.remove('hide-link-overlay', 'hide-text-overlay', 'half-mode');
   document.getElementById('bmToggleLink').classList.add('active');
   document.getElementById('bmToggleText').classList.add('active');
   ov.classList.add('open');
   const fs2 = document.getElementById('filterSheet');
   fs2.style.display = 'flex';
-  fs2.classList.remove('open');
-  fs2.classList.toggle('half-mode', localStorage.getItem('abds_halfMode') === '1');
+  fs2.classList.remove('open', 'half-mode');
   SearchPanel._updateFilterBadge();
   SearchPanel.applyFilters();
 }
