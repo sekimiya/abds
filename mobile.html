@@ -866,7 +866,7 @@ body.light .ss-text{color:#555}
 }
 .picker-grid{
   padding:6px;padding-bottom:48px;
-  display:grid;grid-template-columns:repeat(4,1fr);gap:6px;align-content:start;
+  display:grid;grid-template-columns:repeat(var(--picker-cols,4),1fr);gap:6px;align-content:start;
 }
 .thumb-card{
   cursor:pointer;border:2px solid transparent;border-radius:4px;
@@ -1658,6 +1658,12 @@ body.light .ss-text{color:#555}
   <div class="menu-label">検索パネル</div>
   <div class="badge-switches">
     <button class="badge-sw" id="halfModeBtn" onclick="toggleHalfMode()" style="flex:1">ハーフ表示</button>
+  </div>
+  <div class="badge-switches" id="pickerColSwitches">
+    <button class="badge-sw" data-cols="3" onclick="setPickerCols(3)">3列</button>
+    <button class="badge-sw active" data-cols="4" onclick="setPickerCols(4)">4列</button>
+    <button class="badge-sw" data-cols="5" onclick="setPickerCols(5)">5列</button>
+    <button class="badge-sw" data-cols="6" onclick="setPickerCols(6)">6列</button>
   </div>
   <div class="menu-label">バッジ表示</div>
   <div class="badge-switches" id="badgeSwitches">
@@ -4747,6 +4753,21 @@ function toggleLightMode() {
   document.getElementById('lightModeBtn').textContent = isLight ? '🌙 ダークモードに切替' : '☀ ライトモードに切替';
 }
 (function(){if(document.body.classList.contains('light')){var b=document.getElementById('lightModeBtn');if(b)b.textContent='🌙 ダークモードに切替';}})();
+
+function setPickerCols(n) {
+  document.getElementById('thumbGrid').style.setProperty('--picker-cols', n);
+  localStorage.setItem('abds_pickerCols', n);
+  document.querySelectorAll('#pickerColSwitches .badge-sw').forEach(b => b.classList.toggle('active', Number(b.dataset.cols) === n));
+}
+(function(){
+  const n = parseInt(localStorage.getItem('abds_pickerCols')) || 4;
+  document.getElementById('thumbGrid').style.setProperty('--picker-cols', n);
+  const btn = document.querySelector('#pickerColSwitches [data-cols="' + n + '"]');
+  if (btn) {
+    document.querySelectorAll('#pickerColSwitches .badge-sw').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  }
+})();
 
 function toggleHalfMode() {
   const btn = document.getElementById('halfModeBtn');
