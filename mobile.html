@@ -964,8 +964,11 @@ body.light .ss-text{color:#555}
 .rarity-btn.active{background:#4a1a1a;border-color:var(--senmetsu);color:var(--senmetsu)}
 #filterAltArt.active{background:#3a1a4a;border-color:#e0a0ff;color:#e0a0ff}
 .category-filter{display:flex;gap:3px;flex-wrap:wrap}
-.cat-btn{padding:4px 8px;background:#222;border:1px solid #444;border-radius:3px;color:#888;font-size:0.7rem;min-height:28px}
+.cat-btn{padding:4px 8px;background:#222;border:1px solid #444;border-radius:3px;color:#888;font-size:0.7rem;min-height:28px;flex:1}
 .cat-btn.active{background:#1e2924;border-color:var(--accent);color:var(--accent)}
+.cat-btn[data-cat="殲滅"].active{background:#3a1a1a;border-color:var(--senmetsu);color:var(--senmetsu)}
+.cat-btn[data-cat="制圧"].active{background:#1a2a3a;border-color:#82b1ff;color:#82b1ff}
+.cat-btn[data-cat="防衛"].active{background:#1a3a1a;border-color:#a5d6a7;color:#a5d6a7}
 .series-filter{display:flex;gap:3px;flex-wrap:wrap}
 .series-btn{padding:4px 6px;background:#222;border:1px solid #444;border-radius:3px;color:#888;font-size:0.65rem;min-height:28px}
 .series-btn.has-sq{border-color:rgba(255,105,180,0.6)}
@@ -1243,6 +1246,7 @@ body.light .ss-text{color:#555}
       </div>
       <input type="text" class="picker-search-input" id="searchInput" placeholder="名前・番号で検索..." autocomplete="off" style="width:100%;box-sizing:border-box">
       <input type="text" class="picker-search-input" id="searchTextInput" placeholder="テキスト検索（アビリティ・スキル等）..." autocomplete="off" style="width:100%;box-sizing:border-box;border-color:#3a4a5a;color:#82b1ff">
+      <div class="category-filter" id="categoryFilter"></div>
     </div>
     <div class="filter-group collapsed" id="filterGroupBasic">
       <div class="filter-group-title" onclick="toggleFilterGroup('filterGroupBasic')">検索対象のシリーズを指定</div>
@@ -1263,7 +1267,6 @@ body.light .ss-text{color:#555}
           <button class="rarity-btn" data-rarity="LE" onclick="SearchPanel.toggleRarity('LE')">LE</button>
           <button class="rarity-btn" id="filterAltArt" onclick="SearchPanel.toggleAltArt()" style="margin-left:4px;border-color:#e0a0ff;color:#e0a0ff">イラスト違い</button>
         </div>
-        <div class="category-filter" id="categoryFilter"></div>
         <label class="ocr-toggle"><input type="checkbox" id="filterAllSeries" checked onchange="SearchPanel.toggleAllSeries()"><span class="ocr-toggle-text">全シリーズ</span></label>
         <div class="series-filter" id="seriesFilter"></div>
         <label class="ocr-toggle"><input type="checkbox" id="filterBookmarkCards" onchange="SearchPanel.applyFilters()"><span class="ocr-toggle-text">&#9733; ブックマーク <span style="font-size:0.6rem;color:#888;font-weight:normal">（カード長押しで登録）</span></span></label>
