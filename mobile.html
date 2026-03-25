@@ -969,6 +969,8 @@ body.light .ss-text{color:#555}
 .cat-btn[data-cat="殲滅"].active{background:#3a1a1a;border-color:var(--senmetsu);color:var(--senmetsu)}
 .cat-btn[data-cat="制圧"].active{background:#1a2a3a;border-color:#82b1ff;color:#82b1ff}
 .cat-btn[data-cat="防衛"].active{background:#1a3a1a;border-color:#a5d6a7;color:#a5d6a7}
+.cat-stat-btn[data-stat="ranged"].active{background:#1a2a3a;border-color:#42a5f5;color:#42a5f5}
+.cat-stat-btn[data-stat="melee"].active{background:#3a1a2a;border-color:#ef5350;color:#ef5350}
 .series-filter{display:flex;gap:3px;flex-wrap:wrap}
 .series-btn{padding:4px 6px;background:#222;border:1px solid #444;border-radius:3px;color:#888;font-size:0.65rem;min-height:28px}
 .series-btn.has-sq{border-color:rgba(255,105,180,0.6)}
@@ -4160,6 +4162,7 @@ const SearchPanel = {
   _bookmarkMode: false,
   _currentRarity: new Set(),
   _currentCategory: new Set(),
+  _statFilter: null,
   _selectedSeries: new Set(),
   _filteredCards: [],
   _page: 0,
@@ -4213,6 +4216,7 @@ const SearchPanel = {
       linkSelected: LinkSearch._selected || [],
       rarity: [...this._currentRarity],
       category: [...this._currentCategory],
+      statFilter: this._statFilter,
       costMin: document.getElementById('filterCostMin').value,
       costMax: document.getElementById('filterCostMax').value,
       mobility: document.getElementById('filterMobility').value,
@@ -4256,7 +4260,9 @@ const SearchPanel = {
       this._currentRarity = new Set(s.rarity || []);
       document.querySelectorAll('.rarity-btn').forEach(b => b.classList.toggle('active', this._currentRarity.has(b.dataset.rarity)));
       this._currentCategory = new Set(s.category || []);
-      document.querySelectorAll('.cat-btn').forEach(b => b.classList.toggle('active', this._currentCategory.has(b.dataset.cat)));
+      this._statFilter = s.statFilter || null;
+      document.querySelectorAll('.cat-btn:not(.cat-stat-btn)').forEach(b => b.classList.toggle('active', this._currentCategory.has(b.dataset.cat)));
+      document.querySelectorAll('.cat-stat-btn').forEach(b => b.classList.toggle('active', b.dataset.stat === this._statFilter));
       const flnk = document.getElementById('filterLinkName'); if (flnk) flnk.value = s.linkName || '';
       const flnk2 = document.getElementById('filterLinkName2'); if (flnk2) flnk2.value = s.linkName2 || '';
       document.getElementById('filterSkillName').value = s.skillName || '';
@@ -4375,7 +4381,12 @@ const SearchPanel = {
   setCategory(cat) {
     if (this._currentCategory.has(cat)) this._currentCategory.delete(cat);
     else this._currentCategory.add(cat);
-    document.querySelectorAll('.cat-btn').forEach(b => b.classList.toggle('active', this._currentCategory.has(b.dataset.cat)));
+    document.querySelectorAll('.cat-btn:not(.cat-stat-btn)').forEach(b => b.classList.toggle('active', this._currentCategory.has(b.dataset.cat)));
+    this.applyFilters();
+  },
+  setStatFilter(stat) {
+    this._statFilter = this._statFilter === stat ? null : stat;
+    document.querySelectorAll('.cat-stat-btn').forEach(b => b.classList.toggle('active', b.dataset.stat === this._statFilter));
     this.applyFilters();
   },
   _updateCategoryButtons() {
@@ -4385,7 +4396,9 @@ const SearchPanel = {
     const msC = ['機動','近距離','遠距離'], plC = ['殲滅','制圧','防衛'];
     let cats; if (t === 'MS') cats = msC; else if (t === 'PL') cats = plC; else cats = [...msC, ...plC];
     if (t) { for (const c of [...this._currentCategory]) { if (!cats.includes(c)) this._currentCategory.delete(c); } }
-    container.innerHTML = cats.map(c => `<button class="cat-btn${this._currentCategory.has(c) ? ' active' : ''}" data-cat="${c}" onclick="SearchPanel.setCategory('${c}')">${c}</button>`).join('');
+    container.innerHTML = cats.map(c => `<button class="cat-btn${this._currentCategory.has(c) ? ' active' : ''}" data-cat="${c}" onclick="SearchPanel.setCategory('${c}')">${c}</button>`).join('')
+      + `<button class="cat-btn cat-stat-btn${this._statFilter === 'ranged' ? ' active' : ''}" data-stat="ranged" onclick="SearchPanel.setStatFilter('ranged')">遠距離型</button>`
+      + `<button class="cat-btn cat-stat-btn${this._statFilter === 'melee' ? ' active' : ''}" data-stat="melee" onclick="SearchPanel.setStatFilter('melee')">近距離型</button>`;
   },
   _populateLinkNames() {
     if (!AppState.linkIndex) return;
@@ -4431,6 +4444,7 @@ const SearchPanel = {
     const fas = document.getElementById('filterAllSeries'); if (fas && fas.checked) return true;
     if (this._currentRarity.size > 0) return true;
     if (this._currentCategory.size > 0) return true;
+    if (this._statFilter) return true;
     if (parseInt(document.getElementById('filterCostMin').value) > 0 || parseInt(document.getElementById('filterCostMax').value) < 13) return true;
     if (parseInt(document.getElementById('filterMobility').value) > 0) return true;
     if (parseInt(document.getElementById('filterRanged').value) > 0) return true;
@@ -4486,6 +4500,8 @@ const SearchPanel = {
       : AppState.cardIndex.filter(c => c.has_ocr);
     if (this._lockedType && this._t.abCat.size === 0) cards = cards.filter(c => c.type === this._lockedType);
     if (this._currentCategory.size > 0) cards = cards.filter(c => this._currentCategory.has(c.category));
+    if (this._statFilter === 'ranged') cards = cards.filter(c => (c.ranged || 0) > (c.melee || 0));
+    else if (this._statFilter === 'melee') cards = cards.filter(c => (c.melee || 0) > (c.ranged || 0));
     if (this._currentRarity.size > 0) cards = cards.filter(c => this._currentRarity.has(c.rarity));
     if (this._altArt) cards = cards.filter(c => c.number.includes('_'));
     const allSeriesEl = document.getElementById('filterAllSeries');
@@ -4559,6 +4575,7 @@ const SearchPanel = {
     this._selectedSeries.clear();
     Object.values(this._t).forEach(s => s.clear());
     this._currentRarity = new Set(); this._currentCategory = new Set();
+    this._statFilter = null;
     this._altArt = false;
     document.querySelectorAll('.series-btn').forEach(b => b.classList.remove('active'));
     const fas = document.getElementById('filterAllSeries'); if (fas) fas.checked = true;
