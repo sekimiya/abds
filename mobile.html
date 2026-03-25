@@ -4324,6 +4324,7 @@ const SearchPanel = {
     this._saveFilters();
     if (this._bookmarkMode) {
       this._bookmarkMode = false;
+      this._viewerMode = false;
       document.getElementById('bmToggleBar').style.display = 'none';
       document.getElementById('pickerOverlay').classList.remove('hide-link-overlay', 'hide-text-overlay');
       if (AppState.activeSlot !== null) {
@@ -4976,7 +4977,7 @@ function switchToBookmarkTab() {
   tabs.querySelector('[data-type="BM"]').classList.add('active');
   SearchPanel._saveFilters();
   SearchPanel._bookmarkMode = true;
-  SearchPanel._viewerMode = !AppState.activeSlot;
+  SearchPanel._viewerMode = AppState.activeSlot === null;
   document.getElementById('pickerTitle').textContent = AppState.activeSlot !== null ? 'BM から選択' : '★ ブックマーク';
   SearchPanel._clearFiltersUI();
   const bm = document.getElementById('filterBookmarkCards'); if (bm) bm.checked = true;
