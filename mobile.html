@@ -926,7 +926,7 @@ body.light .ss-text{color:#555}
 
 /* ===== FILTER BOTTOM SHEET ===== */
 .filter-sheet{
-  position:fixed;bottom:0;left:0;right:0;height:120px;
+  position:fixed;bottom:0;left:0;right:0;height:36px;
   background:var(--bg2);border-top:2px solid var(--accent);border-radius:12px 12px 0 0;
   z-index:210;transition:height 0.3s ease;overflow:hidden;
   display:none;flex-direction:column;
@@ -1231,16 +1231,16 @@ body.light .ss-text{color:#555}
 
 <!-- FILTER BOTTOM SHEET -->
 <div class="filter-sheet" id="filterSheet">
-  <div style="padding:6px 8px 0;display:flex;flex-direction:column;gap:4px;flex-shrink:0">
-    <input type="text" class="picker-search-input" id="searchInput" placeholder="名前・番号で検索..." autocomplete="off" style="width:100%;box-sizing:border-box">
-    <div class="link-search-wrap" style="position:relative">
-      <div class="link-search-badges" id="linkBadges"></div>
-      <input type="text" class="picker-search-input" id="linkSearchInput" placeholder="リンクアビリティ検索..." autocomplete="off" style="width:100%;box-sizing:border-box;border-color:#3a5a4a;color:#68efbd">
-      <div class="link-suggest" id="linkSuggest"></div>
-    </div>
-  </div>
   <button class="filter-sheet-toggle" id="filterSheetToggle" onclick="toggleFilterSheet()">▲ フィルター</button>
   <div class="filter-sheet-body">
+    <div style="margin-bottom:8px;display:flex;flex-direction:column;gap:4px">
+      <input type="text" class="picker-search-input" id="searchInput" placeholder="名前・番号で検索..." autocomplete="off" style="width:100%;box-sizing:border-box">
+      <div class="link-search-wrap" style="position:relative">
+        <div class="link-search-badges" id="linkBadges"></div>
+        <input type="text" class="picker-search-input" id="linkSearchInput" placeholder="リンクアビリティ検索..." autocomplete="off" style="width:100%;box-sizing:border-box;border-color:#3a5a4a;color:#68efbd">
+        <div class="link-suggest" id="linkSuggest"></div>
+      </div>
+    </div>
     <div class="filter-group collapsed" id="filterGroupBasic">
       <div class="filter-group-title" onclick="toggleFilterGroup('filterGroupBasic')">検索対象のシリーズを指定</div>
       <div class="filter-group-body">
