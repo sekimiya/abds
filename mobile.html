@@ -808,7 +808,7 @@ body.light .ss-text{color:#555}
 }
 .picker-overlay.open{display:flex}
 .picker-overlay.half-mode{
-  top:auto;height:55vh;
+  top:var(--half-top,45%);height:auto;bottom:0;
   border-top:2px solid var(--accent);
   border-radius:12px 12px 0 0;
 }
@@ -4946,6 +4946,10 @@ function openCardPicker(slotIdx, type) {
   SearchPanel._updateFilterVisibility();
   const isHalf = localStorage.getItem('abds_halfMode') === '1';
   const ov2 = document.getElementById('pickerOverlay');
+  if (isHalf) {
+    const strip = document.getElementById('overviewStrip');
+    if (strip) ov2.style.setProperty('--half-top', strip.getBoundingClientRect().bottom + 'px');
+  }
   ov2.classList.toggle('half-mode', isHalf);
   ov2.classList.add('open');
   const fs = document.getElementById('filterSheet');
