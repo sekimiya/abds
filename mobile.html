@@ -1242,6 +1242,7 @@ body.light .ss-text{color:#555}
         <div class="link-suggest" id="linkSuggest"></div>
       </div>
       <input type="text" class="picker-search-input" id="searchInput" placeholder="名前・番号で検索..." autocomplete="off" style="width:100%;box-sizing:border-box">
+      <input type="text" class="picker-search-input" id="searchTextInput" placeholder="テキスト検索（アビリティ・スキル等）..." autocomplete="off" style="width:100%;box-sizing:border-box;border-color:#3a4a5a;color:#82b1ff">
     </div>
     <div class="filter-group collapsed" id="filterGroupBasic">
       <div class="filter-group-title" onclick="toggleFilterGroup('filterGroupBasic')">検索対象のシリーズを指定</div>
@@ -1469,12 +1470,6 @@ body.light .ss-text{color:#555}
           <button class="tbtn" data-key="防衛拠点変更" onclick="SearchPanel.toggle('skTim',this)">防衛拠点</button>
           <button class="tbtn" data-key="SQゲージ" onclick="SearchPanel.toggle('skTim',this)">SQゲージ</button>
         </div>
-      </div>
-    </div>
-    <div class="filter-group collapsed" id="filterGroupSearch">
-      <div class="filter-group-title" onclick="toggleFilterGroup('filterGroupSearch')">テキスト検索</div>
-      <div class="filter-group-body">
-        <input type="text" class="search-input" id="searchTextInput" placeholder="カードテキスト検索..." autocomplete="off">
       </div>
     </div>
     <div class="filter-group collapsed" id="filterGroupIllustrator">
