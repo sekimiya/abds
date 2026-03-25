@@ -5123,7 +5123,8 @@ function openScreenshotMode() {
     const msCost = safeInt(msOcr?.cost || msIdx?.cost);
     const plCost = safeInt(plOcr?.cost || plIdx?.cost);
     totalCost += msCost + plCost;
-    const cat = plOcr?.category || plIdx?.category || msOcr?.category || msIdx?.category || '';
+    const validCats = ['殲滅', '制圧', '防衛'];
+    const cat = [plIdx?.category, plOcr?.category, msIdx?.category, msOcr?.category].find(c => c && validCats.includes(c)) || '';
     if (catCounts[cat] !== undefined) catCounts[cat]++;
     const stats = calcUnitStats(msOcr, plOcr, UIRenderer._getTerrainMultiplier(msOcr));
     const tc = msOcr?.terrain_compatibility || null;
