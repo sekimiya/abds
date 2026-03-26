@@ -1661,7 +1661,7 @@ body.light .ss-text{color:#555}
   </div>
   <div class="menu-label">検索パネル</div>
   <div class="badge-switches">
-    <button class="badge-sw" id="halfModeBtn" onclick="toggleHalfMode()" style="flex:1">ハーフ表示</button>
+    <button class="badge-sw" id="halfModeBtn" onclick="toggleHalfMode()" style="flex:1">全画面表示</button>
   </div>
   <div class="badge-switches" id="pickerColSwitches">
     <button class="badge-sw" data-cols="3" onclick="setPickerCols(3)">3列</button>
@@ -4849,15 +4849,18 @@ function setPickerCols(n) {
 
 function toggleHalfMode() {
   const btn = document.getElementById('halfModeBtn');
-  const active = btn.classList.toggle('active');
-  localStorage.setItem('abds_halfMode', active ? '1' : '0');
-  document.getElementById('pickerOverlay').classList.toggle('half-mode', active);
-  document.getElementById('filterSheet').classList.toggle('half-mode', active);
+  const fullscreen = btn.classList.toggle('active');
+  localStorage.setItem('abds_halfMode', fullscreen ? '0' : '1');
+  document.getElementById('pickerOverlay').classList.toggle('half-mode', !fullscreen);
+  document.getElementById('filterSheet').classList.toggle('half-mode', !fullscreen);
 }
 (function(){
-  if (localStorage.getItem('abds_halfMode') === '1') {
+  // デフォルトはハーフモードON（localStorageに値がない場合もON）
+  const isFullscreen = localStorage.getItem('abds_halfMode') === '0';
+  if (isFullscreen) {
     const btn = document.getElementById('halfModeBtn');
     if (btn) btn.classList.add('active');
+  } else {
     document.getElementById('pickerOverlay').classList.add('half-mode');
   }
 })();
@@ -5026,7 +5029,7 @@ function openCardPicker(slotIdx, type) {
   SearchPanel._clearFiltersUI();
   SearchPanel._restoreFilters();
   SearchPanel._updateFilterVisibility();
-  const isHalf = localStorage.getItem('abds_halfMode') === '1';
+  const isHalf = localStorage.getItem('abds_halfMode') !== '0';
   const ov2 = document.getElementById('pickerOverlay');
   if (isHalf) {
     const strip = document.getElementById('overviewStrip');
