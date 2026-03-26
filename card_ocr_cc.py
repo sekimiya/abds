@@ -62,7 +62,7 @@ DEFAULT_DELAY = 2.0          # claude CLI 呼び出し間隔（秒）
 MAX_RETRIES = 3              # リトライ回数
 SUBPROCESS_TIMEOUT = 300     # claude CLI のタイムアウト（秒）
 MIN_IMAGE_SIZE = 1000        # ダミー画像判定用の最小バイト数
-DEFAULT_OCR_MODEL = "sonnet" # OCR用デフォルトモデル（opus は遅すぎるため sonnet を使用）
+DEFAULT_OCR_MODEL = "opus" # OCR用モデル（sonnet 4.6 はVision精度低下のため opus を使用）
 
 # ---------------------------------------------------------------------------
 # Logging
@@ -148,13 +148,15 @@ ECHOES BEAT がある場合: special_attack に以下のフィールドを追加
   "physical": { "height": "168cm", "age": 15 },
   "units": ["ガンダム"],
   "stats": { "mobility": 150, "ranged_attack": 200, "melee_attack": 240, "hp": 160 },
-  "pilot_skill": { "name": "決定的な一撃", "trigger": "敵戦艦／拠点をロックオン時", "effect": "敵戦艦／拠点へのダメージを中アップする。", "has_sq_skill": false, "sq_skill_details": null },
-  "link_ability": [ { "name": "機動戦士ガンダム", "condition": "デッキに3枚以上", "effect": "[機動力]小アップ" } ],
+  "pilot_skill": { "name": "決定的な一撃", "trigger": "敵戦艦／拠点をロックオン時", "effect": "敵戦艦／拠点へのダメージを中アップする。", "has_sq_skill": false, "sq_skill_details": null, "is_eb_skill": false },
+  "link_ability": [ { "name": "機動戦士ガンダム", "condition": "デッキに3枚以上", "effect": "[機動力]小アップ", "is_eb_link": false } ],
   "rarity": "M", "illustrator": null,
   "raw": "（元の生テキストをそのまま記録）"
 }
 ```
 SQ関連スキル (has_sq_skill: true): sq_skill_details = { "sq_gauge_effect", "sq_max_effect", "squad_rush_effect" }。SQ/SQUAD/ゲージ がスキルテキストにあれば true。
+EB PL SKILL (is_eb_skill: true): カード上に「EB PL SKILL」と表記されている場合、またはtriggerに「EBLv.」を含む場合。
+EB LINK ABILITY (is_eb_link: true): カード上に「EB LINK ABILITY」と表記されている場合、またはeffectに「ECHOES BEAT」「EBLv.」を含む場合。
 
 ## ルール
 - 読み取れないフィールドは null（空文字列ではなく）
@@ -168,47 +170,205 @@ SQ関連スキル (has_sq_skill: true): sq_skill_details = { "sq_gauge_effect", 
 """
 
 # ---------------------------------------------------------------------------
-# Combined Prompt — 1回の呼び出しで画像→生テキスト＋構造化JSONを同時生成
+# OCR_PROMPT_DIRECT — card_ocr_claude.py 互換の詳細プロンプト（画像→構造化JSON直接出力）
 # ---------------------------------------------------------------------------
-COMBINED_PROMPT = r"""カード裏面画像を読み取り、以下の2つを出力してください。
+OCR_PROMPT_DIRECT = r"""カードゲーム「ガンダム アーセナルベース」のカード裏面画像です。
+以下の項目を画像から正確に読み取ってください。推測や解釈はせず、読めないものは null としてください。
 
-PART A: 画像上の全テキストを忠実に書き起こす。
+## 読み取り項目
+
+### 共通項目
+1. カード左上の分類テキストとコスト数値
+2. カード右上の種別（「MS」または「PL」）
+3. キャラクター名または機体名（日本語・英語両方）
+4. 右下の4つのステータス数値: 機動力、遠距離攻撃、近距離攻撃、HP
+5. リンクアビリティ: 名前、条件（「デッキにX枚以上」等）、効果テキスト（複数ある場合すべて）
+6. 「EB LINK ABILITY」と表記されているか、通常の「LINK ABILITY」か
+7. カード番号、レアリティ（番号の右の1〜2文字）
+8. イラストレーター名（illust.の後の名前）
+
+### MSカード追加項目
+9. 型式番号（英語表記、例: RX-78-2 GUNDAM）
+10. 全高、本体重量、所属、パイロット名
+11. 地形適性（地上/宇宙/砂漠/水中 の A/B/C/S）
+12. WEAPON: MAIN名・射程・タイプ、SUB名・射程・タイプ
+13. MS ABILITY: 名前、発動条件、対象、射程、コスト、効果テキスト
+14. SPECIAL ATTACK: 名前、対象、射程、SPコスト、威力、効果テキスト
+15. ECHOES BEAT がある場合: EB名、EBレベル、EB威力、EB対象、EB射程、EB効果テキスト、EB種別（normalまたはsp）
+16. UNITED SP がある場合: 連携相手1、連携相手2、射程、威力、効果テキスト
+
+### PLカード追加項目
+9. 身長、年齢（数値のみ）、所属、搭乗機体（複数の場合すべて）
+10. PL SKILL: スキル名（赤背景の小さいテキスト）、発動条件、効果テキスト
+11. 「EB PL SKILL」と表記されているか、通常の「PL SKILL」か
+12. スキルテキストに SQ/SQUAD/ゲージ の記述があるか
+
+## 出力形式
+読み取った結果を以下のJSON形式で出力してください。
+
+MSカードの場合:
+```json
+{
+  "card_id": "", "type": "MS",
+  "card_label": { "class": "近距離/遠距離/機動", "cost_label": "コストN" },
+  "name": "", "model": "", "cost": 0, "category": "",
+  "affiliation": "", "pilot": "",
+  "stats": { "height": "", "weight": "", "mobility": 0, "ranged_attack": 0, "melee_attack": 0, "hp": 0 },
+  "terrain_compatibility": { "ground": "", "space": "", "desert": "", "water": null },
+  "weapon": {
+    "main": { "name": "", "range": 0, "type": "" },
+    "sub": { "name": "", "range": 0, "type": "" }
+  },
+  "ms_ability": { "name": "", "activation": "", "target": "", "range": 0, "cost": 0, "description": "" },
+  "link_ability": [ { "name": "", "condition": "", "effect": "" } ],
+  "special_attack": { "name": "", "target": "", "range": 0, "sp_cost": 0, "power": 0, "description": "", "echoes_beat": null, "united_sp": null },
+  "rarity": "", "illustrator": "", "raw": ""
+}
+```
+
+echoes_beat がある場合の構造:
+```json
+"echoes_beat": { "eb_type": "normal/sp", "eb_name": "", "eb_level": 0, "eb_note": "", "eb_target": "", "eb_range": 0, "eb_power": 0, "eb_description": "" }
+```
+- eb_type: "normal"（ECHOES BEAT）または "sp"（ECHOES BEAT SP）
+- 威力が「3300 / 3600」のように2つある場合、前半がspecial_attack.power、後半がeb_power
+- 説明文が「/」区切りの場合、前半がspecial_attack.description、後半がeb_description
+- ECHOES BEAT表記がない場合は echoes_beat = null
+
+united_sp がある場合: { "partner1": "", "partner2": "", "range": 0, "power": 0, "description": "" }。「ー」なら null。
+
+PLカードの場合:
+```json
+{
+  "card_id": "", "type": "PL",
+  "card_label": { "class": "殲滅/制圧/防衛", "cost_label": "コストN" },
+  "name": "", "english_name": "", "cost": 0, "category": "",
+  "affiliation": "",
+  "physical": { "height": "", "age": null },
+  "units": [],
+  "stats": { "mobility": 0, "ranged_attack": 0, "melee_attack": 0, "hp": 0 },
+  "pilot_skill": { "name": "", "trigger": "", "effect": "", "has_sq_skill": false, "sq_skill_details": null, "is_eb_skill": false },
+  "link_ability": [ { "name": "", "condition": "", "effect": "", "is_eb_link": false } ],
+  "rarity": "", "illustrator": "", "raw": ""
+}
+```
+- is_eb_skill: 「EB PL SKILL」表記 or triggerに「EBLv.」含む場合 true
+- is_eb_link: 「EB LINK ABILITY」表記 or effectに「ECHOES BEAT」「EBLv.」含む場合 true
+- has_sq_skill: スキルテキストにSQ/SQUAD/ゲージ記述がある場合 true → sq_skill_details: { "sq_gauge_effect": "", "sq_max_effect": "", "squad_rush_effect": "" }
+
+## ルール
+- 読み取れないフィールドは null
+- 数値は数値型
+- category は card_label.class と同じ値（作品名ではない）
+- raw は空文字列 "" でよい
+- link_ability は通常2つ（配列で全て含める）
+- 出力は ```json ``` で囲み、JSON以外のテキストは出力しない
+"""
+
+# ---------------------------------------------------------------------------
+# Combined Prompt — (レガシー) 1回の呼び出しで画像→生テキスト＋構造化JSONを同時生成
+# ---------------------------------------------------------------------------
+COMBINED_PROMPT = r"""カードゲーム「ガンダム アーセナルベース」のカード裏面画像を読み取り、以下の2パートを出力してください。
+
+## PART A: 生テキスト抽出
+画像上の全テキストを上から下、左から右の順に忠実に書き起こす。
 ===RAW_START===
 （生テキスト）
 ===RAW_END===
 
-PART B: 構造化JSON（```json```で囲む）
+## PART B: 構造化JSON
+画像の全情報を正確に読み取り、以下のJSON形式で出力してください（```json```で囲む）。
 
-MSカード:
+### MSカードの場合
 ```json
-{"card_id":"","type":"MS","card_label":{"class":"近距離/遠距離/機動","cost_label":"コストN"},
-"name":"","model":"","cost":0,"category":"","affiliation":"","pilot":"",
-"stats":{"height":"","weight":"","mobility":0,"ranged_attack":0,"melee_attack":0,"hp":0},
-"terrain_compatibility":{"ground":"","space":"","desert":"","water":""},
-"weapon":{"main":{"name":"","range":0,"type":""},"sub":{"name":"","range":0,"type":""}},
-"ms_ability":{"name":"","activation":"","target":"","range":0,"cost":0,"description":""},
-"link_ability":[{"name":"","condition":"","effect":""}],
-"special_attack":{"name":"","target":"","range":0,"sp_cost":0,"power":0,"description":"","united_sp":null},
-"rarity":"","illustrator":"","raw":""}
+{
+  "card_id": "AB01-001", "type": "MS",
+  "card_label": { "class": "近距離", "cost_label": "コスト4" },
+  "name": "ガンダム", "model": "RX-78-2 GUNDAM", "cost": 4, "category": "近距離",
+  "affiliation": "地球連邦軍", "pilot": "アムロ・レイ",
+  "stats": { "height": "18.0m", "weight": "43.4t", "mobility": 200, "ranged_attack": 110, "melee_attack": 370, "hp": 380 },
+  "terrain_compatibility": { "ground": "A", "space": "A", "desert": "C", "water": null },
+  "weapon": {
+    "main": { "name": "ビーム・サーベル", "range": 1, "type": "近距離" },
+    "sub": { "name": "ビーム・ライフル", "range": 3, "type": "遠距離" }
+  },
+  "ms_ability": { "name": "連撃", "activation": "任意発動", "target": "単体(敵)", "range": 2, "cost": 3, "description": "ロックオン中の敵に単体攻撃でダメージを与える。" },
+  "link_ability": [ { "name": "機動戦士ガンダム", "condition": "デッキに3枚以上", "effect": "[機動力]小アップ" } ],
+  "special_attack": { "name": "ビーム・サーベル強撃", "target": "単体(敵)", "range": 2, "sp_cost": 2, "power": 3400, "description": "敵単体に格闘攻撃でダメージを与える。", "echoes_beat": null, "united_sp": null },
+  "rarity": "M", "illustrator": "toriyufu",
+  "raw": ""
+}
 ```
+UNITED SP がある場合（FQ/UT系）: special_attack.united_sp = { "partner1", "partner2", "range", "power", "description" }。連携相手が「ー」なら null。
+SQUAD SP がある場合: sp_type:"SQUAD SP"を追加。squad_sp:{name,target,range,power(整数),description}を別途追加。
 
-PLカード:
+#### ECHOES BEAT がある場合（VE系等）
+カード上に「ECHOES BEAT」または「ECHOES BEAT SP」の表記がある場合、通常SPとEBを明確に分離する。
+
+**description の分離ルール:**
+- カード上の説明文は「通常SP説明 / EB説明」の形式で「/」区切りで2つ並んでいる
+- `special_attack.description` には通常SPの説明文のみを格納する（"/"より前の部分）
+- EB側の説明文は `echoes_beat.eb_description` に格納する（"/"より後の部分）
+- 「ECHOES BEAT Lv.を下げることで、Lv.戦術技が発動する。」等のシステム説明文は `echoes_beat.eb_note` に格納し、description には含めない
+
+**power の分離ルール:**
+- 威力が「3300 / 3600」のように2つ表記されている場合、前半が通常SP威力、後半がEB威力
+- `special_attack.power` には通常SP威力（前半の数値）
+- `echoes_beat.eb_power` にはEB威力（後半の数値）
+- EB威力が「ー」なら null
+
+**echoes_beat 構造:**
 ```json
-{"card_id":"","type":"PL","card_label":{"class":"殲滅/制圧/防衛","cost_label":"コストN"},
-"name":"","cost":0,"category":"","affiliation":"",
-"stats":{"mobility":0,"ranged_attack":0,"melee_attack":0,"hp":0},
-"pilot_skill":{"name":"","trigger":"","effect":"","has_sq_skill":false,"sq_skill_details":null},
-"link_ability":[{"name":"","condition":"","effect":""}],
-"rarity":"","illustrator":"","raw":""}
+"echoes_beat": {
+  "eb_type": "normal",
+  "eb_name": "ファンネル・ミサイル斉射 Lv.1",
+  "eb_level": 1,
+  "eb_note": "ECHOES BEAT Lv.を下げることで、Lv.戦術技が発動する。",
+  "eb_target": "範囲(敵)",
+  "eb_range": 3,
+  "eb_power": 3600,
+  "eb_description": "EBLv.を1下げる。ロックオン中の敵を中心に扇状の範囲攻撃を行い、..."
+}
 ```
+- `eb_type`: "normal"（ECHOES BEAT）または "sp"（ECHOES BEAT SP）
+- `eb_level`: EB名に含まれる Lv.X の数値（1, 2, 3）
+- `eb_name`: EB側のSP名（例: "ファンネル・ミサイル斉射 Lv.1"）
+- `eb_note`: システム説明文（"ECHOES BEAT Lv.を下げることで..."）
+- `eb_target`, `eb_range`: EB側の対象・射程（通常SPと異なる場合がある）
+- `eb_power`: EB威力（数値）
+- `eb_description`: EB側の効果説明（"EBLv.をX下げる。..."で始まる文）
+- ECHOES BEAT表記がない、または「ー」のみの場合は echoes_beat = null
 
-ルール:
-- 読めないフィールドはnull。数値は数値型。rawは空文字列""
-- ms_abilityは1つ(obj)、link_abilityは配列。内容形式で分類（発動条件+射程+コスト→ms_ability、デッキ条件+バフ→link_ability）
-- SQUAD SP: sp_type:"SQUAD SP"を追加。powerは通常威力(整数)、squad_sp:{name,target,range,power(整数),description}を別途追加
-- UNITED SP: united_sp:{partner1,partner2,range,power,description}。「ー」ならnull
-- ECHOES BEAT: special_attackにeb_level(整数),eb_power(整数),eb_description,eb_target,eb_rangeを追加。ECHOES BEAT SPの場合のみsp_type:"ECHOES BEAT SP"
-- SQスキル: SQ/SQUAD/ゲージがスキルテキストにあればhas_sq_skill:true、sq_skill_details:{trigger,sq_gauge_effect,sq_rush_effect,sq_max_effect}
+### PLカードの場合
+```json
+{
+  "card_id": "AB01-051", "type": "PL",
+  "card_label": { "class": "制圧", "cost_label": "コスト4" },
+  "name": "アムロ・レイ", "english_name": "AMURO RAY", "cost": 4, "category": "制圧",
+  "affiliation": "地球連邦軍",
+  "physical": { "height": "168cm", "age": 15 },
+  "units": ["ガンダム"],
+  "stats": { "mobility": 150, "ranged_attack": 200, "melee_attack": 240, "hp": 160 },
+  "pilot_skill": { "name": "決定的な一撃", "trigger": "敵戦艦／拠点をロックオン時", "effect": "敵戦艦／拠点へのダメージを中アップする。", "has_sq_skill": false, "sq_skill_details": null, "is_eb_skill": false },
+  "link_ability": [ { "name": "機動戦士ガンダム", "condition": "デッキに3枚以上", "effect": "[機動力]小アップ", "is_eb_link": false } ],
+  "rarity": "M", "illustrator": null,
+  "raw": ""
+}
+```
+SQ関連スキル (has_sq_skill: true): sq_skill_details = { "sq_gauge_effect", "sq_max_effect", "squad_rush_effect" }。SQ/SQUAD/ゲージ がスキルテキストにあれば true。
+EB PL SKILL (is_eb_skill: true): カード上に「EB PL SKILL」と表記されている場合、またはtriggerに「EBLv.」を含む場合。
+EB LINK ABILITY (is_eb_link: true): カード上に「EB LINK ABILITY」と表記されている場合、またはeffectに「ECHOES BEAT」「EBLv.」を含む場合。
+
+### 共通ルール
+- 読み取れないフィールドは null（空文字列ではなく）
+- 数値は数値型（cost, range, power, stats等）
+- card_label.class: MSは「近距離/遠距離/機動」、PLは「殲滅/制圧/防衛」
+- category は card_label.class と同じ値（作品名ではない）
+- raw にはPART Aの生テキストをそのまま記録
+- rarity はカード番号の右に記載（M, R, C, P, U, SR, PR, LR, LE, CP 等。1〜2文字）
+- ms_ability は1カードにつき1つ（オブジェクト）。link_ability は1カードにつき通常2つ（配列）。内容形式で分類：発動条件+射程+コスト→ms_ability、デッキ条件+バフ→link_ability
+- link_abilityが複数ある場合はすべて配列に含める。EB LINKと通常LINKが混在する場合も個別にis_eb_linkを設定
+- 出力は ```json ``` で囲み、JSON以外のテキストは出力しない
 
 出力順序: PART A → PART B
 """
@@ -739,6 +899,120 @@ def stage2_structure(
 
 
 # ---------------------------------------------------------------------------
+# Card image preprocessing — 領域クロップ+拡大で OCR 精度を向上
+# ---------------------------------------------------------------------------
+PL_CROP_REGIONS = {
+    "header":  (0, 0, 300, 50),
+    "name":    (0, 50, 400, 115),
+    "profile": (0, 115, 350, 250),
+    "skill":   (0, 400, 430, 620),
+    "link":    (0, 620, 430, 800),
+    "stats":   (430, 680, 600, 800),
+    "footer":  (0, 830, 600, 875),
+}
+
+MS_CROP_REGIONS = {
+    "header_name":  (0, 0, 420, 100),       # 近距離/コスト + 型式番号 + 機体名
+    "specs_terrain": (0, 100, 600, 200),     # 全高/重量/所属 + 地形適性 + 機動力
+    "pilot_stats":  (0, 200, 600, 300),      # パイロット + 遠距離/近距離/HP
+    "weapon_link":  (0, 300, 600, 400),      # WEAPON + LINK ABILITY
+    "ability_link2": (0, 400, 600, 530),     # MS ABILITY + LINK 2
+    "sp_attack":    (0, 530, 430, 800),      # SPECIAL ATTACK / UNITED SP 全体
+    "footer":       (0, 830, 600, 875),      # illustrator + カード番号
+}
+
+CROP_SCALE = 3  # 3x拡大
+
+
+def _detect_card_type(image_path: Path) -> str:
+    """カード画像の右上領域から MS/PL を判定する。
+    MSカードは右上に 'MS' + 機体イラスト、PLカードは 'PL' + 作品ロゴがある。
+    ヘッダー左上の分類テキストで判定: 近距離/遠距離/機動 → MS、殲滅/制圧/防衛 → PL。
+    """
+    try:
+        from PIL import Image
+        img = Image.open(image_path)
+        # 右上の MS/PL マーク領域 (約 550-600, 0-30)
+        type_region = img.crop((540, 0, 600, 35))
+        # ピクセル平均色で判定: MS マークは青系、PL マークはピンク/紫系
+        # より確実に: 左上の分類テキスト領域をチェック
+        header_region = img.crop((0, 0, 200, 35))
+        pixels = list(header_region.getdata())
+        # 殲滅/制圧/防衛 の背景は赤系、近距離/遠距離/機動 の背景は青/緑系
+        avg_r = sum(p[0] for p in pixels) / len(pixels)
+        avg_g = sum(p[1] for p in pixels) / len(pixels)
+        avg_b = sum(p[2] for p in pixels) / len(pixels)
+        # PLカードのヘッダーは赤背景（殲滅=赤、制圧=青、防衛=緑）
+        # MSカードのヘッダーは青/緑背景（近距離=青、遠距離=緑、機動=黄）
+        # より確実: 右上に "MS" テキストがあるか "PL" テキストがあるか
+        # 簡易判定: 右上領域の色で判定
+        type_pixels = list(type_region.getdata())
+        type_avg_r = sum(p[0] for p in type_pixels) / len(type_pixels)
+        type_avg_b = sum(p[2] for p in type_pixels) / len(type_pixels)
+        # MS マークは濃い青/緑背景、PL マークは暗い背景にピンク文字
+        # 実際にはテキスト認識が必要だが、画像サイズ600x875のカードでは
+        # 右上 y=5付近に "MS" or "PL" の白文字がある
+        # 別のアプローチ: WEAPON セクションの有無で判定（y=300-350 左側にWEAPON表記）
+        weapon_region = img.crop((0, 300, 200, 350))
+        weapon_pixels = list(weapon_region.getdata())
+        # WEAPON見出しは明るい水色背景
+        weapon_brightness = sum(sum(p[:3]) for p in weapon_pixels) / len(weapon_pixels) / 3
+        if weapon_brightness > 80:  # WEAPONセクションが明るい = MSカード
+            return "MS"
+        return "PL"
+    except Exception as e:
+        logger.debug(f"  カードタイプ判定失敗、デフォルトPL: {e}")
+        return "PL"
+
+
+def _create_crop_composite(image_path: Path, card_type: str = "PL") -> Optional[Path]:
+    """カード画像を領域ごとにクロップ・拡大し、ラベル付きコンポジット画像を生成する"""
+    try:
+        from PIL import Image, ImageDraw, ImageFont
+    except ImportError:
+        logger.warning("  Pillow が必要です。pip install Pillow を実行してください。")
+        return None
+
+    try:
+        img = Image.open(image_path)
+    except Exception as e:
+        logger.error(f"  画像読み込み失敗: {image_path} - {e}")
+        return None
+
+    regions = PL_CROP_REGIONS if card_type == "PL" else MS_CROP_REGIONS
+
+    # 各領域をクロップ・拡大
+    crops = []
+    label_height = 30
+    for name, box in regions.items():
+        crop = img.crop(box)
+        crop = crop.resize((crop.width * CROP_SCALE, crop.height * CROP_SCALE), Image.LANCZOS)
+        crops.append((name, crop))
+
+    # コンポジット画像の幅・高さを計算
+    max_w = max(c.width for _, c in crops)
+    total_h = sum(c.height + label_height for _, c in crops) + 10
+    composite = Image.new("RGB", (max_w, total_h), (30, 30, 30))
+    draw = ImageDraw.Draw(composite)
+
+    y = 0
+    for name, crop in crops:
+        # ラベル描画
+        draw.rectangle([(0, y), (max_w, y + label_height)], fill=(80, 80, 80))
+        draw.text((10, y + 5), f"[{name.upper()}]", fill=(102, 242, 197))
+        y += label_height
+        # クロップ画像貼り付け
+        composite.paste(crop, (0, y))
+        y += crop.height
+
+    # 保存
+    composite_path = image_path.parent / f"{image_path.stem}_composite.jpg"
+    composite.save(composite_path, quality=95)
+    logger.debug(f"  コンポジット画像生成: {composite_path.name} ({max_w}x{total_h})")
+    return composite_path
+
+
+# ---------------------------------------------------------------------------
 # Combined processing
 # ---------------------------------------------------------------------------
 def _process_card_combined(
@@ -773,13 +1047,20 @@ def _process_card_combined(
     if not image_path:
         return False
 
-    # 統合プロンプトで1回だけCLI呼び出し
+    # カードタイプを推定（PLかMSか）— 画像右上の MS/PL マークで判定
+    card_type = _detect_card_type(image_path)
+
+    # コンポジット画像を生成（領域クロップ+3x拡大）
+    composite_path = _create_crop_composite(image_path, card_type)
+    ocr_image = composite_path if composite_path else image_path
+
+    # 構造化抽出プロンプトでOCR
     master_section = build_master_dict_section()
     prompt = (
-        f"以下の画像ファイルを読み取ってください。\n"
-        f"画像ファイルパス: {image_path.resolve()}\n\n"
+        f"画像ファイル {ocr_image.resolve()} を Read ツールで読み取ってください。\n"
+        f"この画像はカード裏面を領域ごとにクロップ・拡大したものです。各セクションは [HEADER], [NAME], [SKILL], [LINK], [STATS] 等のラベルで区切られています。\n\n"
         f"カード番号: {card_number}\n\n"
-        f"{COMBINED_PROMPT}\n\n"
+        f"{OCR_PROMPT_DIRECT}\n\n"
         f"{master_section}"
     )
 
@@ -788,16 +1069,19 @@ def _process_card_combined(
         logger.error(f"  [Combined] CLI呼び出し失敗: {card_number}")
         return False
 
-    # レスポンスをパース
-    raw_text, ocr_data = _parse_combined_response(response)
-    if raw_text is None or ocr_data is None:
-        logger.error(f"  [Combined] レスポンスパース失敗: {card_number}")
+    # JSONパース
+    try:
+        ocr_data = extract_json_from_text(response)
+    except (json.JSONDecodeError, IndexError) as e:
+        logger.error(f"  [Combined] JSONパース失敗: {card_number} - {e}")
         err_path = OCR_RESULTS_DIR / f"{prefix}_combined_error.txt"
         OCR_RESULTS_DIR.mkdir(exist_ok=True)
         with open(err_path, "w", encoding="utf-8") as f:
             f.write(response)
         logger.info(f"  生レスポンスを保存: {err_path}")
         return False
+
+    raw_text = ocr_data.get("raw", "")
 
     OCR_RESULTS_DIR.mkdir(exist_ok=True)
 

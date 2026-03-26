@@ -1063,6 +1063,29 @@ def api_ocr_run_start_reocr():
     return jsonify({'success': True, 'message': f'要再OCR {len(reocr_numbers)}件 のOCR実行を開始しました'})
 
 
+@app.route('/api/ocr-run/start-batch', methods=['POST'])
+def api_ocr_run_start_batch():
+    """指定カード番号リストを一括OCR実行"""
+    with _ocr_run_lock:
+        if _ocr_run_status["running"]:
+            return jsonify({'success': False, 'error': 'OCRタスクが既に実行中です'}), 409
+
+    data = request.get_json() or {}
+    numbers = data.get('numbers', [])
+    if not numbers:
+        return jsonify({'success': False, 'error': 'カード番号リストを指定してください'}), 400
+
+    number_set = set(numbers)
+    t = threading.Thread(
+        target=_run_reocr_execution,
+        args=(number_set,),
+        kwargs={'label': f'一括OCR ({len(number_set)}件)'},
+        daemon=True,
+    )
+    t.start()
+    return jsonify({'success': True, 'message': f'{len(number_set)}件のOCR実行を開始しました'})
+
+
 @app.route('/api/ocr-run/start-no-ocr', methods=['POST'])
 def api_ocr_run_start_no_ocr():
     with _ocr_run_lock:

@@ -1,0 +1,62 @@
+{
+  "card_number": "PR-432",
+  "card_name": "エルピー・プル",
+  "series": "プロモーション",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-432.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-432_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "PR-432",
+    "type": "PL",
+    "card_label": {
+      "class": "殲滅",
+      "cost_label": "コスト3"
+    },
+    "name": "エルピー・プル",
+    "english_name": "ELPEO PLE",
+    "cost": 3,
+    "category": "殲滅",
+    "affiliation": "ネオ・ジオン",
+    "physical": {
+      "height": "ー",
+      "age": 10
+    },
+    "units": [
+      "キュベレイMk-II[エルピー・プル専用機]"
+    ],
+    "stats": {
+      "mobility": 200,
+      "ranged_attack": 300,
+      "melee_attack": 20,
+      "hp": 300
+    },
+    "pilot_skill": {
+      "name": "天真爛漫な笑顔",
+      "trigger": "EBLv.が上昇時",
+      "effect": "EBLv.が上昇するたびに自身の[機動力][遠距離攻撃力]をアップする。最大3回まで発動。",
+      "has_sq_skill": false,
+      "sq_skill_details": null,
+      "is_eb_skill": true
+    },
+    "link_ability": [
+      {
+        "name": "[EB]宇宙に響く鼓動",
+        "condition": "デッキに3枚以上",
+        "effect": "ECHOES BEAT Lv.が表示される。味方ユニットが範囲技を発動するとEBLv.が上がる。[HP][SP威力]小アップ",
+        "is_eb_link": true
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false
+      }
+    ],
+    "rarity": "PR",
+    "illustrator": null,
+    "raw": ""
+  },
+  "ocr_raw_file": "プロモーション_PR-432_エルピー・プル_ocr_raw.json",
+  "ocr_timestamp": "2026-03-27T01:44:14.947310",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

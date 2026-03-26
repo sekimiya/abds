@@ -360,6 +360,7 @@ a:hover { text-decoration: underline; }
     <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;">
       <button class="action-btn" id="startBtn" onclick="startOcr()">実行開始</button>
       <button class="action-btn" id="startNoOcrBtn" onclick="startNoOcr()" style="background:#ff9800;">OCR未実施を一括実行 (<span id="noOcrBtnCount">0</span>件)</button>
+      <button class="action-btn" id="startNewPromoBtn" onclick="startNewPromo()" style="background:#e040fb;">新プロモOCR (PR-348_p1, PR-430~438)</button>
       <button class="stop-btn" id="stopBtn" onclick="stopOcr()" disabled>停止</button>
       <span id="stopNote" style="display:none;font-size:0.8rem;color:#ffc107;">現在のカード処理完了後に停止します</span>
     </div>
@@ -581,6 +582,45 @@ async function startNoOcr() {
   }
 }
 
+// --- Start New Promo batch ---
+async function startNewPromo() {
+  const numbers = [
+    'PR-348_p1', 'PR-430', 'PR-431', 'PR-432', 'PR-433',
+    'PR-434', 'PR-435', 'PR-436', 'PR-437', 'PR-438'
+  ];
+  if (!confirm('新プロモカード10枚をOCR実行しますか？\n' + numbers.join(', '))) return;
+
+  const startBtn = document.getElementById('startBtn');
+  const promoBtn = document.getElementById('startNewPromoBtn');
+  const stopBtn = document.getElementById('stopBtn');
+  startBtn.disabled = true;
+  promoBtn.disabled = true;
+
+  try {
+    const res = await adminFetch('/api/ocr-run/start-batch', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ numbers }),
+    });
+    const data = await res.json();
+    if (!data.success) {
+      alert(data.error || 'OCR実行の開始に失敗しました');
+      startBtn.disabled = false;
+      promoBtn.disabled = false;
+      return;
+    }
+
+    stopBtn.disabled = false;
+    document.getElementById('progressArea').classList.add('active');
+    document.getElementById('stopNote').style.display = 'none';
+    startPolling();
+  } catch (e) {
+    alert('エラー: ' + e.message);
+    startBtn.disabled = false;
+    promoBtn.disabled = false;
+  }
+}
+
 // --- Stop OCR ---
 async function stopOcr() {
   try {
@@ -655,6 +695,7 @@ async function pollStatus() {
       pollInterval = null;
       document.getElementById('startBtn').disabled = false;
       document.getElementById('startNoOcrBtn').disabled = false;
+      document.getElementById('startNewPromoBtn').disabled = false;
       document.getElementById('stopBtn').disabled = true;
       document.getElementById('stopNote').style.display = 'none';
       // Refresh series stats

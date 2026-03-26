@@ -1,0 +1,89 @@
+{
+  "card_number": "PR-437",
+  "card_name": "ニャアン",
+  "series": "プロモーション",
+  "sq_analysis_timestamp": "2026-03-27T01:47:13.897634",
+  "sq_analysis_type": "detailed",
+  "pilot_skill": {
+    "name": "速攻の射撃術",
+    "effect": "30秒間、自身の[機動力][遠距離攻撃力]をアップする。",
+    "has_sq_skill": false,
+    "sq_skill_details": {
+      "trigger": null,
+      "effect": "30秒間、自身の[機動力][遠距離攻撃力]をアップする。",
+      "sq_rush_effect": null,
+      "sq_gauge_effect": null,
+      "sq_max_effect": null,
+      "squad_rush_effect": null
+    }
+  },
+  "link_ability": [
+    {
+      "name": "[EB]宇宙に響く鼓動",
+      "condition": "デッキに3枚以上",
+      "effect": "ECHOES BEAT Lvが表示される。味方ユニットが戦闘技を発動するとEBLv.が上がる。[HP][SP威力]小アップ",
+      "is_eb_link": true
+    },
+    {
+      "name": "戦況を変える力",
+      "condition": "デッキに4枚以上",
+      "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+      "is_eb_link": false
+    }
+  ],
+  "full_ocr_data": {
+    "card_id": "PR-437",
+    "type": "PL",
+    "card_label": {
+      "class": "防衛",
+      "cost_label": "コスト1"
+    },
+    "name": "ニャアン",
+    "english_name": "NYAAN",
+    "cost": 1,
+    "category": "防衛",
+    "affiliation": null,
+    "physical": {
+      "height": null,
+      "age": null
+    },
+    "units": [],
+    "stats": {
+      "mobility": 180,
+      "ranged_attack": 220,
+      "melee_attack": 50,
+      "hp": 260
+    },
+    "pilot_skill": {
+      "name": "速攻の射撃術",
+      "effect": "30秒間、自身の[機動力][遠距離攻撃力]をアップする。",
+      "has_sq_skill": false,
+      "sq_skill_details": {
+        "trigger": null,
+        "effect": "30秒間、自身の[機動力][遠距離攻撃力]をアップする。",
+        "sq_rush_effect": null,
+        "sq_gauge_effect": null,
+        "sq_max_effect": null,
+        "squad_rush_effect": null
+      }
+    },
+    "link_ability": [
+      {
+        "name": "[EB]宇宙に響く鼓動",
+        "condition": "デッキに3枚以上",
+        "effect": "ECHOES BEAT Lvが表示される。味方ユニットが戦闘技を発動するとEBLv.が上がる。[HP][SP威力]小アップ",
+        "is_eb_link": true
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false
+      }
+    ],
+    "rarity": "PR",
+    "illustrator": null,
+    "raw": ""
+  },
+  "raw": ""
+}
