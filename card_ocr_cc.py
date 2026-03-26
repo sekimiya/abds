@@ -618,7 +618,7 @@ def build_master_dict_section() -> str:
         sections.append("")
 
     sections.append("### 正規化ルール")
-    sections.append("- [SQ]/[AB]/[EB]プレフィックスが生テキストで欠落している場合、上記リストに該当するプレフィックス付き名称があればそちらを採用する")
+    sections.append("- link_ability.name に [EB]/[SQ]/[AB] プレフィックスは付けない。EBリンクかどうかは is_eb_link フラグで判定する")
     sections.append("- 【】（隅付き括弧）は[]（角括弧）に統一する")
     sections.append("- 半角スラッシュ(/)は全角スラッシュ(／)に統一する")
     sections.append("- リストに完全一致する名称がない場合のみ、OCR生テキストの値をそのまま使用する")
