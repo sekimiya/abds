@@ -1218,6 +1218,7 @@ body.light .ss-text{color:#555}
   <div class="picker-topbar">
     <span id="pickerTitle" style="color:var(--accent);font-weight:bold;font-size:0.85rem">カード選択</span>
     <div class="picker-tabs" id="pickerTabs" style="display:none">
+      <div class="picker-tab" data-type="ALL" onclick="SearchPanel.setType('ALL')">ALL</div>
       <div class="picker-tab active" data-type="MS" onclick="SearchPanel.setType('MS')">MS</div>
       <div class="picker-tab" data-type="PL" onclick="SearchPanel.setType('PL')">PL</div>
       <div class="picker-tab" data-type="BM" onclick="switchToBookmarkTab()" style="color:#ffe082;border-color:#ffe082">&#9733;</div>
@@ -4249,6 +4250,38 @@ const SearchPanel = {
     localStorage.setItem(key, JSON.stringify(state));
   },
 
+  _restoreAllFilters() {
+    // MS/PL両方のフィルタ設定をマージして復元
+    const msRaw = localStorage.getItem('abds_search_filters_MS');
+    const plRaw = localStorage.getItem('abds_search_filters_PL');
+    const ms = msRaw ? JSON.parse(msRaw) : {};
+    const pl = plRaw ? JSON.parse(plRaw) : {};
+    // カテゴリはMS+PLの両方をマージ
+    this._currentCategory = new Set([...(ms.category || []), ...(pl.category || [])]);
+    this._currentRarity = new Set([...(ms.rarity || []), ...(pl.rarity || [])]);
+    this._statFilter = ms.statFilter || pl.statFilter || null;
+    this._quickSeries = ms.quickSeries || pl.quickSeries || '';
+    this._selectedSeries = new Set([...(ms.series || []), ...(pl.series || [])]);
+    // トグルフィルタをマージ
+    if (ms.toggles || pl.toggles) {
+      const mt = ms.toggles || {}, pt = pl.toggles || {};
+      Object.keys(this._t).forEach(k => { this._t[k] = new Set([...(mt[k] || []), ...(pt[k] || [])]); });
+    }
+    // UIに反映
+    document.querySelectorAll('.cat-btn:not(.cat-stat-btn)').forEach(b => b.classList.toggle('active', this._currentCategory.has(b.dataset.cat)));
+    document.querySelectorAll('.cat-stat-btn').forEach(b => b.classList.toggle('active', b.dataset.stat === this._statFilter));
+    document.querySelectorAll('.rarity-btn').forEach(b => b.classList.toggle('active', this._currentRarity.has(b.dataset.rarity)));
+    document.querySelectorAll('.series-btn').forEach(b => b.classList.toggle('active', this._selectedSeries.has(b.dataset.series)));
+    const qsSel = document.getElementById('filterSeriesQuick'); if (qsSel) qsSel.value = this._quickSeries;
+    const fas = document.getElementById('filterAllSeries'); if (fas) fas.checked = this._selectedSeries.size === 0;
+    document.querySelectorAll('.tbtn').forEach(btn => {
+      const container = btn.closest('.toggle-filter');
+      if (!container) return;
+      const groupMap = { 'abilityBtns':'msAbility','ebCategoryBtns':'ebCat','ebLevelBtns':'ebLv','spEbLevelBtns':'ebLv','ebCondBtns':'ebCond','ebspEffectBtns':'ebspEff','sqCategoryBtns':'sqCat','sqGaugeBtns':'sqGauge','sqTriggerBtns':'sqTrig','sqEffectBtns':'sqEff','sqspEffectBtns':'sqspEff','abCategoryBtns':'abCat','spEffectBtns':'spEff','skillEffectBtns':'skEff','skillTimingBtns':'skTim' };
+      const group = groupMap[container.id];
+      if (group && this._t[group].has(btn.dataset.key)) btn.classList.add('active-' + this._tStyle[group]);
+    });
+  },
   _restoreFilters() {
     const key = 'abds_search_filters' + (this._lockedType ? '_' + this._lockedType : '');
     const raw = localStorage.getItem(key);
@@ -4321,6 +4354,10 @@ const SearchPanel = {
     document.querySelectorAll('#filterSheet [data-for]').forEach(el => {
       el.style.display = (t && el.dataset.for !== t) ? 'none' : '';
     });
+    // ALL時はMS用・PL用フィルタにラベル表示
+    document.querySelectorAll('#filterSheet [data-for-label]').forEach(el => {
+      el.style.display = t ? 'none' : '';
+    });
   },
 
   toggleSeries(series) {
@@ -4336,7 +4373,8 @@ const SearchPanel = {
     this.applyFilters();
   },
   setType(type) {
-    if (this._lockedType === type && !this._bookmarkMode) return;
+    const resolvedType = type === 'ALL' ? null : type;
+    if (this._lockedType === resolvedType && !this._bookmarkMode) return;
     this._saveFilters();
     if (this._bookmarkMode) {
       this._bookmarkMode = false;
@@ -4352,10 +4390,14 @@ const SearchPanel = {
     if (this._viewerMode) this._viewerLastType = type;
     const tabs = document.getElementById('pickerTabs');
     tabs.querySelectorAll('.picker-tab').forEach(t => t.classList.remove('active'));
-    this._lockedType = type;
+    this._lockedType = resolvedType;
     tabs.querySelector(`[data-type="${type}"]`).classList.add('active');
     this._clearFiltersUI();
-    this._restoreFilters();
+    if (type === 'ALL') {
+      this._restoreAllFilters();
+    } else {
+      this._restoreFilters();
+    }
     this._updateFilterVisibility();
     this.applyFilters();
   },
