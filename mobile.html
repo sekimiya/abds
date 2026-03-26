@@ -1249,6 +1249,9 @@ body.light .ss-text{color:#555}
       <input type="text" class="picker-search-input" id="searchInput" placeholder="名前・番号で検索..." autocomplete="off" style="width:100%;box-sizing:border-box">
       <input type="text" class="picker-search-input" id="searchTextInput" placeholder="テキスト検索（アビリティ・スキル等）..." autocomplete="off" style="width:100%;box-sizing:border-box;border-color:#3a4a5a;color:#82b1ff">
       <div class="category-filter" id="categoryFilter"></div>
+      <select class="filter-select" id="filterSeriesQuick" onchange="SearchPanel.setQuickSeries(this.value)" style="width:100%;box-sizing:border-box;font-size:0.8rem;padding:5px 8px;background:var(--bg-card);border:1px solid #444;border-radius:6px;color:#ccc;min-height:32px">
+        <option value="">作品で絞り込み...</option>
+      </select>
     </div>
     <div class="filter-group collapsed" id="filterGroupBasic">
       <div class="filter-group-title" onclick="toggleFilterGroup('filterGroupBasic')">検索対象のシリーズを指定</div>
@@ -4163,6 +4166,7 @@ const SearchPanel = {
   _currentRarity: new Set(),
   _currentCategory: new Set(),
   _statFilter: null,
+  _quickSeries: '',
   _selectedSeries: new Set(),
   _filteredCards: [],
   _page: 0,
@@ -4217,6 +4221,7 @@ const SearchPanel = {
       rarity: [...this._currentRarity],
       category: [...this._currentCategory],
       statFilter: this._statFilter,
+      quickSeries: this._quickSeries,
       costMin: document.getElementById('filterCostMin').value,
       costMax: document.getElementById('filterCostMax').value,
       mobility: document.getElementById('filterMobility').value,
@@ -4261,8 +4266,10 @@ const SearchPanel = {
       document.querySelectorAll('.rarity-btn').forEach(b => b.classList.toggle('active', this._currentRarity.has(b.dataset.rarity)));
       this._currentCategory = new Set(s.category || []);
       this._statFilter = s.statFilter || null;
+      this._quickSeries = s.quickSeries || '';
       document.querySelectorAll('.cat-btn:not(.cat-stat-btn)').forEach(b => b.classList.toggle('active', this._currentCategory.has(b.dataset.cat)));
       document.querySelectorAll('.cat-stat-btn').forEach(b => b.classList.toggle('active', b.dataset.stat === this._statFilter));
+      const qsSel = document.getElementById('filterSeriesQuick'); if (qsSel) qsSel.value = this._quickSeries;
       const flnk = document.getElementById('filterLinkName'); if (flnk) flnk.value = s.linkName || '';
       const flnk2 = document.getElementById('filterLinkName2'); if (flnk2) flnk2.value = s.linkName2 || '';
       document.getElementById('filterSkillName').value = s.skillName || '';
@@ -4400,6 +4407,15 @@ const SearchPanel = {
       + `<button class="cat-btn cat-stat-btn${this._statFilter === 'ranged' ? ' active' : ''}" data-stat="ranged" onclick="SearchPanel.setStatFilter('ranged')">遠距離型</button>`
       + `<button class="cat-btn cat-stat-btn${this._statFilter === 'melee' ? ' active' : ''}" data-stat="melee" onclick="SearchPanel.setStatFilter('melee')">近距離型</button>`;
   },
+  _populateSeriesQuick() {
+    const sel = document.getElementById('filterSeriesQuick');
+    if (!sel || !AppState._gSeriesList) return;
+    sel.innerHTML = '<option value="">作品で絞り込み...</option>' + AppState._gSeriesList.map(s => `<option value="${s}">${s}</option>`).join('');
+  },
+  setQuickSeries(val) {
+    this._quickSeries = val || '';
+    this.applyFilters();
+  },
   _populateLinkNames() {
     if (!AppState.linkIndex) return;
     const names = Object.keys(AppState.linkIndex).sort();
@@ -4445,6 +4461,7 @@ const SearchPanel = {
     if (this._currentRarity.size > 0) return true;
     if (this._currentCategory.size > 0) return true;
     if (this._statFilter) return true;
+    if (this._quickSeries) return true;
     if (parseInt(document.getElementById('filterCostMin').value) > 0 || parseInt(document.getElementById('filterCostMax').value) < 13) return true;
     if (parseInt(document.getElementById('filterMobility').value) > 0) return true;
     if (parseInt(document.getElementById('filterRanged').value) > 0) return true;
@@ -4502,6 +4519,7 @@ const SearchPanel = {
     if (this._currentCategory.size > 0) cards = cards.filter(c => this._currentCategory.has(c.category));
     if (this._statFilter === 'ranged') cards = cards.filter(c => (c.ranged || 0) > (c.melee || 0));
     else if (this._statFilter === 'melee') cards = cards.filter(c => (c.melee || 0) > (c.ranged || 0));
+    if (this._quickSeries) cards = cards.filter(c => c._gSeries === this._quickSeries);
     if (this._currentRarity.size > 0) cards = cards.filter(c => this._currentRarity.has(c.rarity));
     if (this._altArt) cards = cards.filter(c => c.number.includes('_'));
     const allSeriesEl = document.getElementById('filterAllSeries');
@@ -4576,6 +4594,8 @@ const SearchPanel = {
     Object.values(this._t).forEach(s => s.clear());
     this._currentRarity = new Set(); this._currentCategory = new Set();
     this._statFilter = null;
+    this._quickSeries = '';
+    const qsSel = document.getElementById('filterSeriesQuick'); if (qsSel) qsSel.value = '';
     this._altArt = false;
     document.querySelectorAll('.series-btn').forEach(b => b.classList.remove('active'));
     const fas = document.getElementById('filterAllSeries'); if (fas) fas.checked = true;
@@ -5656,9 +5676,18 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
     nonSq.forEach(n => sqOnly.delete(n));
     AppState._sqLinkNames = sqOnly;
+    // カードに作品名を付与
+    const gSeriesSet = new Set();
+    AppState.cardIndex.forEach(c => {
+      const d = CardService.getDetail(c.number);
+      c._gSeries = d?.ocr_data ? _getCardSeries(d.ocr_data) : '';
+      if (c._gSeries) gSeriesSet.add(c._gSeries);
+    });
+    AppState._gSeriesList = [...gSeriesSet].sort();
   } catch (e) { console.warn('SQ link set build failed:', e); }
 
   await DeckManager._autoLoad();
+  SearchPanel._populateSeriesQuick();
   SearchPanel._populateLinkNames();
   SearchPanel._populateSkillNames();
   SearchPanel._populateAbilities();
