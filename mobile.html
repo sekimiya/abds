@@ -719,7 +719,15 @@ body.light .ss-text{color:#555}
 .detail-tag.cat-制圧{background:#1a2a4a;color:var(--seiatsu);border-color:#2a3a6a}
 .detail-tag.cat-防衛{background:#1a3a1a;color:var(--bouei);border-color:#2a5a2a}
 .detail-desc{color:#bbb;font-size:0.8rem;line-height:1.5;margin-top:3px}
-.detail-power{color:var(--gold);font-weight:bold;font-size:0.85rem;margin-top:2px}
+.detail-power{
+  display:inline-flex;align-items:center;gap:6px;
+  margin-top:4px;padding:4px 10px;border-radius:6px;
+  background:linear-gradient(135deg,#2a1a00 0%,#3d2800 100%);
+  border:1px solid #5a3a00;
+  font-weight:bold;font-size:0.9rem;
+}
+.detail-power .pw-label{color:#b89a5a;font-size:0.75rem;letter-spacing:0.05em}
+.detail-power .pw-value{color:#ffd54f;font-size:1.1rem;text-shadow:0 0 8px rgba(255,213,79,0.3)}
 .detail-impact{color:#888;font-size:0.75rem;margin-top:2px}
 .weapon-row{display:flex;gap:4px;align-items:center;margin-bottom:3px}
 .weapon-slot{
@@ -733,8 +741,15 @@ body.light .ss-text{color:#555}
 .usp-inline-badge{font-size:0.65rem;background:#3d3000;color:#ffe082;padding:1px 4px;border-radius:3px;vertical-align:middle;margin-left:3px}
 .detail-section-title.usp{color:#ffe082}
 .detail-section-title.sqsp{color:#f48fb1}
-.detail-power.usp-power{color:#ffe082}
-.detail-power.sqsp-power{color:#f48fb1}
+.detail-power.usp-power{background:linear-gradient(135deg,#2a2400 0%,#3d3000 100%);border-color:#5a4a00}
+.detail-power.usp-power .pw-label{color:#c9b060}
+.detail-power.usp-power .pw-value{color:#ffe082;text-shadow:0 0 8px rgba(255,224,130,0.3)}
+.detail-power.sqsp-power{background:linear-gradient(135deg,#2a0a2a 0%,#4a1a4a 100%);border-color:#6a2a6a}
+.detail-power.sqsp-power .pw-label{color:#c07ab0}
+.detail-power.sqsp-power .pw-value{color:#f48fb1;text-shadow:0 0 8px rgba(244,143,177,0.3)}
+.detail-power.eb-power{background:linear-gradient(135deg,#2a1500 0%,#3d2200 100%);border-color:#5a3500}
+.detail-power.eb-power .pw-label{color:#b88040}
+.detail-power.eb-power .pw-value{color:#ffb74d;text-shadow:0 0 8px rgba(255,183,77,0.3)}
 .eb-inline-badge{font-size:0.65rem;background:#3d2800;color:#ffb74d;padding:1px 4px;border-radius:3px;vertical-align:middle;margin-left:3px}
 .uncertain-badge{display:inline-block;font-size:0.6rem;color:#ff9800;border:1px solid #ff9800;border-radius:3px;padding:0 3px;margin-left:4px;opacity:0.8}
 .detail-subsection{margin-top:8px;padding:8px;background:rgba(255,255,255,0.03);border-radius:6px;border-left:2px solid #555}
@@ -3883,7 +3898,7 @@ const UIRenderer = {
     if (sp.sp_cost !== undefined && sp.sp_cost !== null) tags.push(`SP${sp.sp_cost}`);
     if (sp.attack_type) tags.push(sp.attack_type);
     if (tags.length) html += '<div class="detail-tags">' + tags.map(t => `<span class="detail-tag sp">${escapeHtml(t)}</span>`).join('') + '</div>';
-    if (sp.power) html += `<div class="detail-power">威力:${sp.power}</div>`;
+    if (sp.power) html += `<div class="detail-power"><span class="pw-label">POWER</span><span class="pw-value">${sp.power}</span></div>`;
     const ia = msOcr.impact_area;
     if (ia) { let t = ia.type === 'single' ? '単体' : ia.type === 'circular' ? '円形' : (ia.type||''); if (ia.radius) t += ` R${ia.radius}`; html += `<div class="detail-impact">着弾: ${escapeHtml(t)}</div>`; }
     if (sp.description) html += `<div class="detail-desc">${escapeHtml(sp.description)}</div>`;
@@ -3899,7 +3914,7 @@ const UIRenderer = {
       if (eb.target) ebTags.push(eb.target);
       if (eb.range !== undefined && eb.range !== null) ebTags.push(`射程${eb.range}`);
       if (ebTags.length) html += '<div class="detail-tags">' + ebTags.map(t => `<span class="detail-tag eb">${escapeHtml(t)}</span>`).join('') + '</div>';
-      if (eb.power) html += `<div class="detail-power" style="color:#ffb74d">威力:${eb.power}</div>`;
+      if (eb.power) html += `<div class="detail-power eb-power"><span class="pw-label">EB POWER</span><span class="pw-value">${eb.power}</span></div>`;
       if (eb.description) html += `<div class="detail-desc">${escapeHtml(eb.description)}</div>`;
       html += '</div>';
     }
@@ -3914,7 +3929,7 @@ const UIRenderer = {
       if (sq.target) sqTags.push(sq.target);
       if (sq.range !== undefined && sq.range !== null) sqTags.push(`射程${sq.range}`);
       if (sqTags.length) html += '<div class="detail-tags">' + sqTags.map(t => `<span class="detail-tag sqsp">${escapeHtml(t)}</span>`).join('') + '</div>';
-      if (sq.power) html += `<div class="detail-power sqsp-power">部隊威力:${sq.power}</div>`;
+      if (sq.power) html += `<div class="detail-power sqsp-power"><span class="pw-label">SQUAD POWER</span><span class="pw-value">${sq.power}</span></div>`;
       if (sq.description) html += `<div class="detail-desc">${escapeHtml(sq.description)}</div>`;
       html += '</div>';
     }
@@ -3930,7 +3945,7 @@ const UIRenderer = {
       if (u.target) uTags.push(u.target);
       if (u.range !== undefined && u.range !== null) uTags.push(`射程${u.range}`);
       if (uTags.length) html += '<div class="detail-tags">' + uTags.map(t => `<span class="detail-tag usp">${escapeHtml(t)}</span>`).join('') + '</div>';
-      if (u.power) html += `<div class="detail-power usp-power">UNITED威力:${u.power}</div>`;
+      if (u.power) html += `<div class="detail-power usp-power"><span class="pw-label">UNITED POWER</span><span class="pw-value">${u.power}</span></div>`;
       if (u.description) html += `<div class="detail-desc">${escapeHtml(u.description)}</div>`;
       html += '</div>';
     }
