@@ -463,6 +463,11 @@ def build_master_dict_section() -> str:
     sections.append("- 半角スラッシュ(/)は全角スラッシュ(／)に統一する")
     sections.append("- リストに完全一致する名称がない場合のみ、OCR生テキストの値をそのまま使用する")
     sections.append("")
+    sections.append("### 重要：マスター辞書に存在しないリンクアビリティ名はOCR誤認識の可能性が極めて高い")
+    sections.append("- link_ability.name は必ず上記マスターリストに存在する名前を使用すること")
+    sections.append("- マスターリストにない名前が出た場合、EB条件テキスト（例:「ECHOES BEAT lv.が前世代以上」）やセクション見出しをリンク名と誤認識している可能性がある")
+    sections.append("- EB LINK ABILITYセクションでは、小さい文字で書かれたリンク名（例:「宇宙に響く鼓動」）を正しく読み取り、EB条件テキストとリンク名を混同しないこと")
+    sections.append("")
 
     return "\n".join(sections)
 
