@@ -414,7 +414,7 @@ body.light .bm-toggle-btn.active{background:#d0e8dc;border-color:var(--accent);c
 .detail-unit-header{
   display:flex;align-items:center;gap:6px;margin-bottom:6px;flex-wrap:wrap;
 }
-.detail-unit-name{font-weight:bold;font-size:1rem;color:var(--ms-blue)}
+.detail-unit-name{font-weight:bold;font-size:1rem;color:#e0e0e0}
 .detail-unit-cost{color:var(--gold);font-weight:bold;font-size:0.9rem}
 .detail-unit-cat{font-size:0.75rem;font-weight:bold;padding:1px 6px;border-radius:3px}
 .detail-unit-cat.殲滅{background:#8b1a1a;color:var(--senmetsu)}
@@ -423,13 +423,13 @@ body.light .bm-toggle-btn.active{background:#d0e8dc;border-color:var(--accent);c
 
 /* ===== UNIT DETAIL HEADER V2 ===== */
 .detail-header-v2{
-  background:linear-gradient(135deg,#1a1a2e 0%,#16213e 50%,#0f3460 100%);
-  border:1px solid rgba(130,177,255,0.2);border-radius:8px;
+  background:linear-gradient(135deg,#0d1a14 0%,#0f1f18 50%,#12291e 100%);
+  border:1px solid rgba(104,239,189,0.15);border-radius:8px;
   padding:6px 8px;margin-bottom:6px;position:relative;overflow:hidden;
 }
 .detail-header-v2::before{
   content:'';position:absolute;top:0;left:0;right:0;height:1px;
-  background:linear-gradient(90deg,transparent,rgba(130,177,255,0.5),transparent);
+  background:linear-gradient(90deg,transparent,rgba(104,239,189,0.4),transparent);
 }
 .unit-total-cost{
   display:flex;align-items:baseline;gap:3px;
@@ -691,109 +691,111 @@ body.light .ss-stat-v.total{color:#333}
 body.light .ss-text{color:#555}
 
 /* Detail sections */
-/* ===== Card Detail — Unified Design System ===== */
+/* ===== Card Detail — Arsenal Base Green Theme ===== */
 .detail-section{
-  background:var(--bg2);border-radius:8px;padding:10px 12px;margin-bottom:8px;
-  border:1px solid rgba(255,255,255,0.04);
+  background:rgba(104,239,189,0.03);border-radius:8px;padding:10px 12px;margin-bottom:8px;
+  border:1px solid rgba(104,239,189,0.08);
 }
 .detail-section-title{
-  font-weight:bold;font-size:0.75rem;letter-spacing:0.08em;text-transform:uppercase;
+  font-weight:700;font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;
   margin-bottom:6px;padding-bottom:4px;
-  border-bottom:1px solid rgba(255,255,255,0.08);
+  border-bottom:1px solid rgba(104,239,189,0.1);
   display:flex;align-items:center;gap:6px;
+  color:var(--accent);
 }
 .detail-section-title::before{
   content:'';display:inline-block;width:3px;height:12px;border-radius:2px;flex-shrink:0;
+  background:var(--accent);
 }
-.detail-section-title.ms{color:var(--ms-blue)}.detail-section-title.ms::before{background:var(--ms-blue)}
-.detail-section-title.pl{color:var(--pl-gold)}.detail-section-title.pl::before{background:var(--pl-gold)}
-.detail-section-title.weapon{color:var(--senmetsu)}.detail-section-title.weapon::before{background:var(--senmetsu)}
-.detail-section-title.sp{color:#ff8a80}.detail-section-title.sp::before{background:#ff8a80}
+.detail-section-title.ms::before{background:var(--accent)}
+.detail-section-title.pl::before{background:var(--accent)}
+.detail-section-title.weapon{color:#e0e0e0}.detail-section-title.weapon::before{background:#e0e0e0}
+.detail-section-title.sp{color:#e0e0e0}.detail-section-title.sp::before{background:#e0e0e0}
 .detail-section-title.eb{color:#ffb74d}.detail-section-title.eb::before{background:#ffb74d}
-.detail-section-title.terrain{color:var(--bouei)}.detail-section-title.terrain::before{background:var(--bouei)}
-.detail-section-title.link{color:var(--accent)}.detail-section-title.link::before{background:var(--accent)}
+.detail-section-title.terrain::before{background:var(--accent)}
+.detail-section-title.link::before{background:var(--accent)}
 .detail-section-title.info{color:#888}.detail-section-title.info::before{background:#888}
 .detail-section-title.usp{color:#ffe082}.detail-section-title.usp::before{background:#ffe082}
 .detail-section-title.sqsp{color:#f48fb1}.detail-section-title.sqsp::before{background:#f48fb1}
 
-.detail-ability-name{font-weight:bold;color:#e0f0ff;font-size:0.95rem;margin-bottom:4px}
-.detail-ability-name.pl{color:var(--pl-gold)}
-.detail-ability-name.sp{color:#ffcdd2}
-.detail-ability-name.eb{color:#ffe0b2}
-.detail-ability-name.usp{color:#fff9c4;font-size:0.85rem}
-.detail-ability-name.sqsp{color:#f8bbd0;font-size:0.85rem}
+.detail-ability-name{font-weight:700;color:#e8e8e8;font-size:0.92rem;margin-bottom:4px}
+.detail-ability-name.pl{color:#e8e8e8}
+.detail-ability-name.sp{color:#e8e8e8}
+.detail-ability-name.eb{color:#ffb74d}
+.detail-ability-name.usp{color:#ffe082;font-size:0.85rem}
+.detail-ability-name.sqsp{color:#f48fb1;font-size:0.85rem}
 
 .detail-tags{display:flex;gap:4px;flex-wrap:wrap;margin:4px 0}
 .detail-tag{
   padding:3px 8px;border-radius:4px;font-size:0.7rem;font-weight:600;
-  background:rgba(255,255,255,0.06);color:#aaa;border:1px solid rgba(255,255,255,0.1);
+  background:rgba(104,239,189,0.06);color:var(--accent);border:1px solid rgba(104,239,189,0.15);
 }
-.detail-tag.sp{background:rgba(255,138,128,0.1);color:#ff8a80;border-color:rgba(255,138,128,0.25)}
-.detail-tag.pl{background:rgba(255,215,64,0.1);color:var(--pl-gold);border-color:rgba(255,215,64,0.25)}
+.detail-tag.sp{background:rgba(104,239,189,0.06);color:var(--accent);border-color:rgba(104,239,189,0.15)}
+.detail-tag.pl{background:rgba(104,239,189,0.06);color:var(--accent);border-color:rgba(104,239,189,0.15)}
 .detail-tag.eb{background:rgba(255,183,77,0.1);color:#ffb74d;border-color:rgba(255,183,77,0.25)}
 .detail-tag.usp{background:rgba(255,224,130,0.1);color:#ffe082;border-color:rgba(255,224,130,0.25)}
 .detail-tag.sqsp{background:rgba(244,143,177,0.1);color:#f48fb1;border-color:rgba(244,143,177,0.25)}
-.detail-tag.cat-殲滅{background:rgba(255,82,82,0.1);color:var(--senmetsu);border-color:rgba(255,82,82,0.2)}
-.detail-tag.cat-制圧{background:rgba(68,138,255,0.1);color:var(--seiatsu);border-color:rgba(68,138,255,0.2)}
-.detail-tag.cat-防衛{background:rgba(105,240,174,0.1);color:var(--bouei);border-color:rgba(105,240,174,0.2)}
+.detail-tag.cat-殲滅{background:rgba(255,82,82,0.08);color:var(--senmetsu);border-color:rgba(255,82,82,0.15)}
+.detail-tag.cat-制圧{background:rgba(68,138,255,0.08);color:var(--seiatsu);border-color:rgba(68,138,255,0.15)}
+.detail-tag.cat-防衛{background:rgba(105,240,174,0.08);color:var(--bouei);border-color:rgba(105,240,174,0.15)}
 
-.detail-desc{color:#b0b0b0;font-size:0.8rem;line-height:1.6;margin-top:4px;padding:4px 0}
+.detail-desc{color:#aaa;font-size:0.82rem;line-height:1.6;margin-top:4px;padding:4px 0}
 
 .detail-power{
   display:inline-flex;align-items:center;gap:8px;
   margin-top:6px;padding:5px 12px;border-radius:6px;
-  background:linear-gradient(135deg,rgba(255,213,79,0.08) 0%,rgba(255,183,77,0.04) 100%);
-  border:1px solid rgba(255,213,79,0.2);
+  background:linear-gradient(135deg,rgba(104,239,189,0.06) 0%,rgba(104,239,189,0.02) 100%);
+  border:1px solid rgba(104,239,189,0.15);
 }
-.detail-power .pw-label{color:rgba(255,213,79,0.6);font-size:0.65rem;font-weight:700;letter-spacing:0.1em}
-.detail-power .pw-value{color:#ffd54f;font-size:1.15rem;font-weight:800;font-variant-numeric:tabular-nums;text-shadow:0 0 12px rgba(255,213,79,0.25)}
-.detail-power.eb-power{background:linear-gradient(135deg,rgba(255,183,77,0.08) 0%,rgba(255,152,0,0.04) 100%);border-color:rgba(255,183,77,0.2)}
-.detail-power.eb-power .pw-label{color:rgba(255,183,77,0.6)}
-.detail-power.eb-power .pw-value{color:#ffb74d;text-shadow:0 0 12px rgba(255,183,77,0.25)}
-.detail-power.sqsp-power{background:linear-gradient(135deg,rgba(244,143,177,0.08) 0%,rgba(233,30,99,0.04) 100%);border-color:rgba(244,143,177,0.2)}
-.detail-power.sqsp-power .pw-label{color:rgba(244,143,177,0.6)}
-.detail-power.sqsp-power .pw-value{color:#f48fb1;text-shadow:0 0 12px rgba(244,143,177,0.25)}
-.detail-power.usp-power{background:linear-gradient(135deg,rgba(255,224,130,0.08) 0%,rgba(255,193,7,0.04) 100%);border-color:rgba(255,224,130,0.2)}
-.detail-power.usp-power .pw-label{color:rgba(255,224,130,0.6)}
-.detail-power.usp-power .pw-value{color:#ffe082;text-shadow:0 0 12px rgba(255,224,130,0.25)}
+.detail-power .pw-label{color:rgba(104,239,189,0.5);font-size:0.65rem;font-weight:700;letter-spacing:0.1em}
+.detail-power .pw-value{color:var(--accent);font-size:1.15rem;font-weight:800;font-variant-numeric:tabular-nums;text-shadow:0 0 10px rgba(104,239,189,0.2)}
+.detail-power.eb-power{background:linear-gradient(135deg,rgba(255,183,77,0.06) 0%,rgba(255,152,0,0.02) 100%);border-color:rgba(255,183,77,0.15)}
+.detail-power.eb-power .pw-label{color:rgba(255,183,77,0.5)}
+.detail-power.eb-power .pw-value{color:#ffb74d;text-shadow:0 0 10px rgba(255,183,77,0.2)}
+.detail-power.sqsp-power{background:linear-gradient(135deg,rgba(244,143,177,0.06) 0%,rgba(233,30,99,0.02) 100%);border-color:rgba(244,143,177,0.15)}
+.detail-power.sqsp-power .pw-label{color:rgba(244,143,177,0.5)}
+.detail-power.sqsp-power .pw-value{color:#f48fb1;text-shadow:0 0 10px rgba(244,143,177,0.2)}
+.detail-power.usp-power{background:linear-gradient(135deg,rgba(255,224,130,0.06) 0%,rgba(255,193,7,0.02) 100%);border-color:rgba(255,224,130,0.15)}
+.detail-power.usp-power .pw-label{color:rgba(255,224,130,0.5)}
+.detail-power.usp-power .pw-value{color:#ffe082;text-shadow:0 0 10px rgba(255,224,130,0.2)}
 
 .detail-impact{color:#666;font-size:0.75rem;margin-top:3px}
 
 .weapon-row{display:flex;gap:6px;align-items:center;margin-bottom:4px;padding:3px 0}
 .weapon-slot{
-  font-size:0.65rem;font-weight:700;color:#1a1a1a;background:var(--senmetsu);
+  font-size:0.65rem;font-weight:700;color:#0f0f0f;background:var(--accent);
   padding:2px 8px;border-radius:3px;flex-shrink:0;letter-spacing:0.05em;
 }
-.weapon-slot.sub{background:var(--seiatsu)}
-.weapon-name{color:#ddd;font-weight:bold;font-size:0.85rem}
+.weapon-slot.sub{background:rgba(104,239,189,0.6)}
+.weapon-name{color:#ddd;font-weight:600;font-size:0.85rem}
 .weapon-info{color:#777;font-size:0.75rem;flex-shrink:0}
 
-.sq-inline-badge{font-size:0.6rem;background:rgba(244,143,177,0.15);color:#f48fb1;padding:1px 5px;border-radius:3px;border:1px solid rgba(244,143,177,0.3);vertical-align:middle;margin-left:3px}
-.usp-inline-badge{font-size:0.6rem;background:rgba(255,224,130,0.15);color:#ffe082;padding:1px 5px;border-radius:3px;border:1px solid rgba(255,224,130,0.3);vertical-align:middle;margin-left:3px}
-.eb-inline-badge{font-size:0.6rem;background:rgba(255,183,77,0.15);color:#ffb74d;padding:1px 5px;border-radius:3px;border:1px solid rgba(255,183,77,0.3);vertical-align:middle;margin-left:3px}
+.sq-inline-badge{font-size:0.6rem;background:rgba(244,143,177,0.12);color:#f48fb1;padding:1px 5px;border-radius:3px;border:1px solid rgba(244,143,177,0.25);vertical-align:middle;margin-left:3px}
+.usp-inline-badge{font-size:0.6rem;background:rgba(255,224,130,0.12);color:#ffe082;padding:1px 5px;border-radius:3px;border:1px solid rgba(255,224,130,0.25);vertical-align:middle;margin-left:3px}
+.eb-inline-badge{font-size:0.6rem;background:rgba(255,183,77,0.12);color:#ffb74d;padding:1px 5px;border-radius:3px;border:1px solid rgba(255,183,77,0.25);vertical-align:middle;margin-left:3px}
 
-.uncertain-badge{display:inline-block;font-size:0.55rem;color:#ff9800;border:1px solid rgba(255,152,0,0.4);border-radius:3px;padding:0 4px;margin-left:4px;opacity:0.7}
+.uncertain-badge{display:inline-block;font-size:0.55rem;color:#ff9800;border:1px solid rgba(255,152,0,0.3);border-radius:3px;padding:0 4px;margin-left:4px;opacity:0.7}
 
-.detail-subsection{margin-top:8px;padding:8px 10px;background:rgba(255,255,255,0.02);border-radius:6px;border-left:3px solid #444}
-.detail-subsection.usp{border-left-color:rgba(255,224,130,0.6)}
-.detail-subsection.sqsp{border-left-color:rgba(244,143,177,0.6)}
-.detail-subsection.eb{border-left-color:rgba(255,183,77,0.6)}
-.detail-subsection-title{font-size:0.7rem;font-weight:700;color:#888;margin-bottom:4px;letter-spacing:0.05em}
+.detail-subsection{margin-top:8px;padding:8px 10px;background:rgba(255,255,255,0.015);border-radius:6px;border-left:3px solid rgba(104,239,189,0.2)}
+.detail-subsection.usp{border-left-color:rgba(255,224,130,0.5)}
+.detail-subsection.sqsp{border-left-color:rgba(244,143,177,0.5)}
+.detail-subsection.eb{border-left-color:rgba(255,183,77,0.5)}
+.detail-subsection-title{font-size:0.7rem;font-weight:700;color:var(--accent);margin-bottom:4px;letter-spacing:0.05em}
 .detail-subsection.usp .detail-subsection-title{color:#ffe082}
 .detail-subsection.sqsp .detail-subsection-title{color:#f48fb1}
 .detail-subsection.eb .detail-subsection-title{color:#ffb74d}
 
-.detail-partners{font-size:0.8rem;color:#90caf9;margin:3px 0}
-.detail-condition{font-size:0.8rem;color:#ffcc80;margin:3px 0}
+.detail-partners{font-size:0.82rem;color:#aaa;margin:3px 0}
+.detail-condition{font-size:0.82rem;color:#aaa;margin:3px 0}
 
-.pl-sq-details{margin-top:6px;padding:6px 10px;background:rgba(244,143,177,0.04);border-radius:6px;border-left:3px solid rgba(244,143,177,0.4)}
+.pl-sq-details{margin-top:6px;padding:6px 10px;background:rgba(244,143,177,0.03);border-radius:6px;border-left:3px solid rgba(244,143,177,0.35)}
 .pl-sq-row{display:flex;gap:6px;margin-bottom:4px;align-items:baseline}
 .pl-sq-label{
-  font-size:0.65rem;font-weight:700;color:#1a1a1a;background:var(--pl-gold);
+  font-size:0.65rem;font-weight:700;color:#0f0f0f;background:var(--accent);
   padding:2px 8px;border-radius:3px;flex-shrink:0;
 }
 .pl-sq-label.rush{background:#f48fb1}
-.pl-sq-text{color:#f48fb1;font-size:0.8rem;line-height:1.5}
+.pl-sq-text{color:#f48fb1;font-size:0.82rem;line-height:1.5}
 /* Link items in detail */
 .link-item{
   padding:6px 8px;margin-bottom:3px;border-radius:6px;
