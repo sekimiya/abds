@@ -415,7 +415,7 @@ body.light .bm-toggle-btn.active{background:#d0e8dc;border-color:var(--accent);c
   display:flex;align-items:center;gap:6px;margin-bottom:6px;flex-wrap:wrap;
 }
 .detail-unit-name{font-weight:bold;font-size:1rem;color:#e0e0e0}
-.detail-unit-cost{color:var(--gold);font-weight:bold;font-size:0.9rem}
+.detail-unit-cost{color:var(--accent);font-weight:bold;font-size:0.9rem}
 .detail-unit-cat{font-size:0.75rem;font-weight:bold;padding:1px 6px;border-radius:3px}
 .detail-unit-cat.殲滅{background:#8b1a1a;color:var(--senmetsu)}
 .detail-unit-cat.制圧{background:#1a4a8b;color:var(--seiatsu)}
@@ -433,12 +433,12 @@ body.light .bm-toggle-btn.active{background:#d0e8dc;border-color:var(--accent);c
 }
 .unit-total-cost{
   display:flex;align-items:baseline;gap:3px;
-  background:linear-gradient(135deg,rgba(255,224,130,0.15),rgba(255,224,130,0.05));
-  border:1px solid rgba(255,224,130,0.3);border-radius:4px;padding:2px 8px;
+  background:rgba(104,239,189,0.08);
+  border:1px solid rgba(104,239,189,0.2);border-radius:4px;padding:2px 8px;
 }
-.unit-total-cost .cost-label{font-size:0.55rem;color:rgba(255,224,130,0.7);font-weight:bold;letter-spacing:1px}
-.unit-total-cost .cost-value{font-size:1rem;font-weight:900;color:var(--gold);
-  text-shadow:0 0 6px rgba(255,224,130,0.4);font-variant-numeric:tabular-nums}
+.unit-total-cost .cost-label{font-size:0.55rem;color:rgba(104,239,189,0.6);font-weight:bold;letter-spacing:1px}
+.unit-total-cost .cost-value{font-size:1rem;font-weight:900;color:var(--accent);
+  font-variant-numeric:tabular-nums}
 .unit-cat-badge{
   font-size:0.6rem;font-weight:bold;padding:2px 8px;border-radius:3px;
   letter-spacing:1px;
@@ -454,8 +454,8 @@ body.light .bm-toggle-btn.active{background:#d0e8dc;border-color:var(--accent);c
 .unit-card-line .card-cost{
   font-size:0.6rem;font-weight:bold;flex-shrink:0;
   font-variant-numeric:tabular-nums;min-width:28px;
-  background:rgba(255,224,130,0.1);border:1px solid rgba(255,224,130,0.2);
-  border-radius:3px;padding:1px 4px;color:var(--gold);text-align:center;
+  background:rgba(104,239,189,0.08);border:1px solid rgba(104,239,189,0.15);
+  border-radius:3px;padding:1px 4px;color:var(--accent);text-align:center;
 }
 .unit-card-line .card-rarity{
   font-size:0.55rem;font-weight:bold;padding:1px 4px;border-radius:2px;
@@ -486,16 +486,16 @@ body.light .bm-toggle-btn.active{background:#d0e8dc;border-color:var(--accent);c
   border:1px solid rgba(255,255,255,0.15);cursor:pointer;
 }
 .unit-card-line .card-detail-btn:active{background:rgba(255,255,255,0.2)}
-.unit-card-line.ms-line{border-left-color:var(--ms-blue)}
-.unit-card-line.ms-line .card-name{color:var(--ms-blue);text-shadow:0 0 10px rgba(130,177,255,0.2)}
-.unit-card-line.pl-line{border-left-color:var(--pl-gold)}
-.unit-card-line.pl-line .card-name{color:var(--pl-gold);text-shadow:0 0 10px rgba(255,224,130,0.2)}
-.unit-card-line.sq-highlight{border-left-color:var(--sq-pink);background:rgba(255,105,180,0.06)}
-.unit-card-line.eb-highlight{border-left-color:var(--eb-orange);background:rgba(255,152,0,0.06)}
-.unit-card-line.ab-highlight{border-left-color:#b388ff;background:rgba(179,136,255,0.06)}
-.unit-card-line.sq-highlight .card-name{color:var(--sq-pink);text-shadow:0 0 10px rgba(255,105,180,0.25)}
-.unit-card-line.eb-highlight .card-name{color:var(--eb-orange);text-shadow:0 0 10px rgba(255,152,0,0.25)}
-.unit-card-line.ab-highlight .card-name{color:#b388ff;text-shadow:0 0 10px rgba(179,136,255,0.25)}
+.unit-card-line.ms-line{border-left-color:var(--accent)}
+.unit-card-line.ms-line .card-name{color:var(--accent)}
+.unit-card-line.pl-line{border-left-color:var(--accent)}
+.unit-card-line.pl-line .card-name{color:var(--accent)}
+.unit-card-line.sq-highlight{border-left-color:var(--sq-pink);background:rgba(255,105,180,0.04)}
+.unit-card-line.eb-highlight{border-left-color:var(--eb-orange);background:rgba(255,152,0,0.04)}
+.unit-card-line.ab-highlight{border-left-color:#b388ff;background:rgba(179,136,255,0.04)}
+.unit-card-line.sq-highlight .card-name{color:var(--sq-pink)}
+.unit-card-line.eb-highlight .card-name{color:var(--eb-orange)}
+.unit-card-line.ab-highlight .card-name{color:#b388ff}
 .detail-terrain-row{display:flex;gap:3px;margin-bottom:6px;flex-wrap:wrap}
 .terrain-badge{
   padding:2px 6px;border-radius:3px;font-size:0.7rem;font-weight:bold;
@@ -1141,16 +1141,17 @@ body.light .ss-text{color:#555}
 .modal-param-row{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:2px}
 .modal-param-item{background:#333;border-radius:3px;padding:2px 6px;font-size:0.8rem}
 .modal-param-label{color:#66ff99;margin-right:2px}
-.rarity-tag{display:inline-block;padding:0 4px;border-radius:2px;font-size:0.6rem;font-weight:bold;margin-left:4px;vertical-align:middle}
-.rarity-tag.rarity-M{background:#5e3a1a;color:#ffcc80}
-.rarity-tag.rarity-C{background:#1a3a1a;color:#a5d6a7}
-.rarity-tag.rarity-R{background:#1a1a5e;color:#90caf9}
-.rarity-tag.rarity-SR{background:#5e1a5e;color:#ce93d8}
-.rarity-tag.rarity-U{background:#5e5e1a;color:#fff59d}
-.rarity-tag.rarity-P{background:#1a5e5e;color:#80deea}
-.rarity-tag.rarity-PR{background:#4a1a4a;color:#f48fb1}
-.rarity-tag.rarity-LR{background:#5e4a1a;color:#ffe082}
-.rarity-tag.rarity-LE{background:#4a1a1a;color:#ff8a80}
+.rarity-tag{display:inline-block;padding:0 4px;border-radius:2px;font-size:0.6rem;font-weight:bold;margin-left:4px;vertical-align:middle;
+  background:rgba(104,239,189,0.1);color:var(--accent);border:1px solid rgba(104,239,189,0.2)}
+.rarity-tag.rarity-M{background:rgba(104,239,189,0.12);color:var(--accent);border-color:rgba(104,239,189,0.25)}
+.rarity-tag.rarity-C{background:rgba(104,239,189,0.08);color:rgba(104,239,189,0.7);border-color:rgba(104,239,189,0.15)}
+.rarity-tag.rarity-R{background:rgba(104,239,189,0.1);color:var(--accent);border-color:rgba(104,239,189,0.2)}
+.rarity-tag.rarity-SR{background:rgba(104,239,189,0.12);color:var(--accent);border-color:rgba(104,239,189,0.25)}
+.rarity-tag.rarity-U{background:rgba(104,239,189,0.1);color:var(--accent);border-color:rgba(104,239,189,0.2)}
+.rarity-tag.rarity-P{background:rgba(104,239,189,0.1);color:var(--accent);border-color:rgba(104,239,189,0.2)}
+.rarity-tag.rarity-PR{background:rgba(104,239,189,0.1);color:var(--accent);border-color:rgba(104,239,189,0.2)}
+.rarity-tag.rarity-LR{background:rgba(104,239,189,0.12);color:var(--accent);border-color:rgba(104,239,189,0.25)}
+.rarity-tag.rarity-LE{background:rgba(104,239,189,0.12);color:var(--accent);border-color:rgba(104,239,189,0.25)}
 .rarity-tag.rarity-CP{background:#3a3a3a;color:#bdbdbd}
 /* Tactics picker in modal */
 .tactics-picker-grid{display:grid;grid-template-columns:1fr;gap:8px;padding:4px 0}
