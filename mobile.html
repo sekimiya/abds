@@ -3930,8 +3930,8 @@ const UIRenderer = {
     if (sp.range !== undefined && sp.range !== null) tags.push(`射程${sp.range}`);
     if (sp.sp_cost !== undefined && sp.sp_cost !== null) tags.push(`SP${sp.sp_cost}`);
     if (sp.attack_type) tags.push(sp.attack_type);
+    if (sp.power) tags.push(`威力${sp.power}`);
     if (tags.length) html += '<div class="detail-tags">' + tags.map(t => `<span class="detail-tag sp">${escapeHtml(t)}</span>`).join('') + '</div>';
-    if (sp.power) html += `<div class="detail-power"><span class="pw-label">POWER</span><span class="pw-value">${sp.power}</span></div>`;
     const ia = msOcr.impact_area;
     if (ia) { let t = ia.type === 'single' ? '単体' : ia.type === 'circular' ? '円形' : (ia.type||''); if (ia.radius) t += ` R${ia.radius}`; html += `<div class="detail-impact">着弾: ${escapeHtml(t)}</div>`; }
     if (sp.description) html += `<div class="detail-desc">${escapeHtml(sp.description)}</div>`;
@@ -3946,8 +3946,8 @@ const UIRenderer = {
       if (eb.level) ebTags.push(`Lv.${eb.level}`);
       if (eb.target) ebTags.push(eb.target);
       if (eb.range !== undefined && eb.range !== null) ebTags.push(`射程${eb.range}`);
+      if (eb.power) ebTags.push(`威力${eb.power}`);
       if (ebTags.length) html += '<div class="detail-tags">' + ebTags.map(t => `<span class="detail-tag eb">${escapeHtml(t)}</span>`).join('') + '</div>';
-      if (eb.power) html += `<div class="detail-power eb-power"><span class="pw-label">EB POWER</span><span class="pw-value">${eb.power}</span></div>`;
       if (eb.description) html += `<div class="detail-desc">${escapeHtml(eb.description)}</div>`;
       html += '</div>';
     }
@@ -3961,8 +3961,8 @@ const UIRenderer = {
       const sqTags = [];
       if (sq.target) sqTags.push(sq.target);
       if (sq.range !== undefined && sq.range !== null) sqTags.push(`射程${sq.range}`);
+      if (sq.power) sqTags.push(`威力${sq.power}`);
       if (sqTags.length) html += '<div class="detail-tags">' + sqTags.map(t => `<span class="detail-tag sqsp">${escapeHtml(t)}</span>`).join('') + '</div>';
-      if (sq.power) html += `<div class="detail-power sqsp-power"><span class="pw-label">SQUAD POWER</span><span class="pw-value">${sq.power}</span></div>`;
       if (sq.description) html += `<div class="detail-desc">${escapeHtml(sq.description)}</div>`;
       html += '</div>';
     }
@@ -3977,8 +3977,8 @@ const UIRenderer = {
       const uTags = [];
       if (u.target) uTags.push(u.target);
       if (u.range !== undefined && u.range !== null) uTags.push(`射程${u.range}`);
+      if (u.power) uTags.push(`威力${u.power}`);
       if (uTags.length) html += '<div class="detail-tags">' + uTags.map(t => `<span class="detail-tag usp">${escapeHtml(t)}</span>`).join('') + '</div>';
-      if (u.power) html += `<div class="detail-power usp-power"><span class="pw-label">UNITED POWER</span><span class="pw-value">${u.power}</span></div>`;
       if (u.description) html += `<div class="detail-desc">${escapeHtml(u.description)}</div>`;
       html += '</div>';
     }
@@ -4770,7 +4770,9 @@ const SearchPanel = {
           ${isSq ? '<div class="thumb-sq-badge">SQ</div>' : ''}
           ${(()=>{
             if (!isEb) return '';
-            let ebLabel = card.eb_type === 'sp' ? 'EBSP' : (card.has_eb ? 'EB' : 'EB');
+            let ebLabel = card.eb_type === 'sp' ? 'EBSP' : 'EB';
+            let hasLvInfo = false;
+            // MS: EBSP のレベル上下
             if (card.has_eb && card.eb_text) {
               const dm = card.eb_text.match(/EBLv\.を(\d+)下げ/);
               const um = card.eb_text.match(/EBLv\.が(\d+)に上昇/);
@@ -4778,6 +4780,19 @@ const SearchPanel = {
                 ebLabel += '<br>';
                 if (dm) ebLabel += '<span class="eb-lv-down">↓' + dm[1] + '</span>';
                 if (um) ebLabel += '<span class="eb-lv-up">↑' + um[1] + '</span>';
+                hasLvInfo = true;
+              }
+            }
+            // PL: EB スキルのトリガーレベル
+            if (!hasLvInfo && card.has_eb_skill && card.eb_trigger_level) {
+              const cond = card.eb_trigger_cond || '';
+              ebLabel += '<br>';
+              if (cond === '上昇毎') {
+                ebLabel += '<span class="eb-lv-up">↑毎</span>';
+              } else if (cond === '以上') {
+                ebLabel += '<span class="eb-lv-up">≥' + card.eb_trigger_level + '</span>';
+              } else {
+                ebLabel += '<span class="eb-lv-up">↑' + card.eb_trigger_level + '</span>';
               }
             }
             return '<div class="thumb-eb-badge">' + ebLabel + '</div>';
@@ -5444,7 +5459,16 @@ function openScreenshotMode() {
     } else {
       const plSkill = ocr?.pilot_skill || ocr?.pl_skill;
       if (hasAbLink) ov += '<div class="ss-ov-badge ab-b">AB</div>';
-      else if (plSkill?.is_eb_skill || hasEbLink) ov += '<div class="ss-ov-badge eb-b">EB</div>';
+      else if (plSkill?.is_eb_skill || hasEbLink) {
+        let plEb = 'EB';
+        if (idx?.eb_trigger_level) {
+          const cond = idx?.eb_trigger_cond || '';
+          if (cond === '上昇毎') plEb += '<br><span class="eb-lv-up">↑毎</span>';
+          else if (cond === '以上') plEb += '<br><span class="eb-lv-up">≥' + idx.eb_trigger_level + '</span>';
+          else plEb += '<br><span class="eb-lv-up">↑' + idx.eb_trigger_level + '</span>';
+        }
+        ov += '<div class="ss-ov-badge eb-b">' + plEb + '</div>';
+      }
       else if (plSkill?.has_sq_skill || hasSqLink) ov += '<div class="ss-ov-badge sq-b">SQ</div>';
     }
     // SP effect tags
