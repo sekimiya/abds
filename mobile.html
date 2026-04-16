@@ -1570,8 +1570,13 @@ body.light .ss-text{color:#555}
       <div class="cache-modal-warn" id="cmWarn">公式サイトからカード画像を取得しキャッシュします。通信量が大きくなる場合があります。<br>※キャッシュでの画像表示は管理者が明示的に停止を行う場合があります。権利者からの求めに対して即時停止する可能性があります。</div>
       <div class="cache-modal-btns">
         <button class="primary" id="cmDlBtn" onclick="ImageCache.startDownload()">キャッシュ作成</button>
+        <button class="primary" id="cmImportBtn" onclick="document.getElementById('cmFolderInput').click()" style="background:#4caf50">画像インポート</button>
+        <input type="file" id="cmFolderInput" webkitdirectory multiple accept="image/*" style="display:none" onchange="ImageCache.importFromFolder(this.files)">
         <button class="danger" id="cmClearBtn" onclick="ImageCache.clear()">全クリア</button>
         <button onclick="ImageCache.closeModal()">閉じる</button>
+      </div>
+      <div style="font-size:10px;margin-top:6px;color:#aaa">
+        <a href="./download_images.html" target="_blank" style="color:#64b5f6">画像DL方法</a> でDLした画像フォルダを「画像インポート」で取り込めます。
       </div>
     </div>
   </div>
@@ -2814,6 +2819,50 @@ const ImageCache = {
       `${current} / ${total}` + (failed ? `  (失敗: ${failed})` : '');
     const el = document.getElementById('cacheCount');
     if (el) el.textContent = '作成中...';
+  },
+  async importFromFolder(files) {
+    if (!files || !files.length) return;
+    if (this._downloading) return;
+    this._downloading = true;
+    document.getElementById('cmImportBtn').disabled = true;
+    document.getElementById('cmDlBtn').disabled = true;
+    document.getElementById('cmClearBtn').disabled = true;
+    document.getElementById('cmProgress').style.display = '';
+    document.getElementById('cmPct').style.display = '';
+    document.getElementById('cmDetail').textContent = 'インポート中...';
+    const cache = await caches.open(IMAGE_CACHE);
+    let done = 0, imported = 0, skipped = 0;
+    const total = files.length;
+    for (const file of files) {
+      if (!file.type.startsWith('image/')) { skipped++; done++; continue; }
+      const m = file.name.match(/^([A-Za-z0-9\-]+(?:_p\d+)?)((?:_b)?)\.(jpg|jpeg|png)$/i);
+      if (!m) { skipped++; done++; this._onProgress(done, total, skipped); continue; }
+      const cardNum = m[1];
+      const side = m[2];
+      const url = `${IMG_BASE}${cardNum}${side}.jpg`;
+      try {
+        const buf = await file.arrayBuffer();
+        const response = new Response(buf, { headers: { 'Content-Type': file.type, 'Content-Length': buf.byteLength } });
+        await cache.put(new Request(url), response);
+        const key = side ? `${cardNum}_b` : cardNum;
+        this._cachedKeys.add(key);
+        imported++;
+      } catch (e) { console.warn('Import failed:', file.name, e); }
+      done++;
+      this._onProgress(done, total, total - done);
+    }
+    this._downloading = false;
+    this._refreshStats();
+    if (this._cachedKeys.size > 0) localStorage.setItem('abds_cacheCreated', '1');
+    document.getElementById('cmProgressBar').style.width = '100%';
+    document.getElementById('cmPct').textContent = '完了';
+    document.getElementById('cmDetail').textContent = `${imported}枚インポート` + (skipped ? ` (スキップ: ${skipped})` : '');
+    document.getElementById('cmImportBtn').disabled = false;
+    document.getElementById('cmDlBtn').disabled = false;
+    document.getElementById('cmClearBtn').disabled = false;
+    document.getElementById('cmFolderInput').value = '';
+    Toast.show(`${imported}枚の画像をインポートしました`, 'success', 4000);
+    renderCards();
   }
 };
 

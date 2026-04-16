@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ABDS - カード画像ダウンロード</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #121212; color: #e0e0e0; font-family: -apple-system, BlinkMacSystemFont, sans-serif; padding: 16px; line-height: 1.6; }
+h1 { font-size: 20px; margin-bottom: 16px; color: #fff; }
+h2 { font-size: 16px; margin: 24px 0 12px; color: #64b5f6; border-bottom: 1px solid #333; padding-bottom: 4px; }
+h3 { font-size: 14px; margin: 16px 0 8px; color: #81c784; }
+p, li { font-size: 14px; margin-bottom: 8px; }
+ul { padding-left: 20px; }
+code { background: #1e1e1e; padding: 2px 6px; border-radius: 3px; font-size: 13px; color: #ce93d8; }
+pre { background: #1e1e1e; padding: 12px; border-radius: 6px; overflow-x: auto; margin: 8px 0 16px; font-size: 12px; line-height: 1.5; color: #a5d6a7; }
+.warn { background: #2a1a00; border: 1px solid #ff9800; border-radius: 6px; padding: 12px; margin: 16px 0; font-size: 13px; color: #ffcc80; }
+.section { background: #1a1a1a; border-radius: 8px; padding: 16px; margin: 16px 0; }
+a { color: #64b5f6; }
+.btn { display: inline-block; background: #1976d2; color: #fff; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-size: 14px; margin: 8px 4px 8px 0; }
+.btn:active { background: #1565c0; }
+.back { display: inline-block; margin-bottom: 16px; color: #aaa; text-decoration: none; font-size: 14px; }
+#genStatus { margin-top: 8px; font-size: 13px; color: #aaa; }
+textarea { width: 100%; background: #1e1e1e; color: #a5d6a7; border: 1px solid #333; border-radius: 6px; padding: 10px; font-family: monospace; font-size: 11px; resize: vertical; }
+</style>
+</head>
+<body>
+<a href="./" class="back">&larr; アプリに戻る</a>
+<h1>カード画像ダウンロード</h1>
+
+<div class="warn">
+  カード画像の著作権はBANDAI/創通・サンライズ等の権利者に帰属します。<br>
+  画像の取得・使用はユーザーの自己責任で行ってください。第三者への再配布は禁止です。
+</div>
+
+<h2>手順</h2>
+<ol>
+  <li>下のいずれかの方法で画像をダウンロード</li>
+  <li>アプリの「キャッシュ管理」→「画像インポート」でフォルダを選択</li>
+  <li>完了</li>
+</ol>
+
+<h2>方法1: PC (Python)</h2>
+<div class="section">
+  <p>Python 3 が必要です。以下のスクリプトをコピーして実行してください。</p>
+  <a class="btn" href="#" onclick="generateScript(); return false;">DLスクリプトを生成</a>
+  <div id="genStatus"></div>
+  <textarea id="scriptArea" rows="20" readonly style="display:none"></textarea>
+  <p style="font-size:12px;color:#888;margin-top:4px">
+    生成されたスクリプトを <code>dl_cards.py</code> として保存し、<code>python dl_cards.py</code> で実行してください。<br>
+    <code>card_images/</code> フォルダに画像が保存されます。
+  </p>
+</div>
+
+<h2>方法2: PC (curl)</h2>
+<div class="section">
+  <p>curlが使える環境(Mac/Linux/WSL)向けのワンライナーです。</p>
+  <a class="btn" href="#" onclick="generateCurl(); return false;">curlスクリプトを生成</a>
+  <textarea id="curlArea" rows="10" readonly style="display:none"></textarea>
+  <p style="font-size:12px;color:#888;margin-top:4px">
+    生成されたスクリプトを <code>dl_cards.sh</code> として保存し、<code>bash dl_cards.sh</code> で実行してください。
+  </p>
+</div>
+
+<h2>方法3: iOS (ショートカットApp)</h2>
+<div class="section">
+  <p>iPhoneの標準「ショートカット」アプリを使う方法です。</p>
+  <h3>セットアップ</h3>
+  <ol>
+    <li>下の「ショートカット手順を表示」を押す</li>
+    <li>表示される手順に沿ってショートカットを作成</li>
+    <li>実行すると「ファイル」アプリの指定フォルダに画像が保存されます</li>
+    <li>アプリの「画像インポート」でそのフォルダを選択</li>
+  </ol>
+  <a class="btn" href="#" onclick="document.getElementById('shortcutGuide').style.display='block'; return false;">ショートカット手順を表示</a>
+  <div id="shortcutGuide" style="display:none;margin-top:12px">
+    <h3>ショートカット作成手順</h3>
+    <ol>
+      <li>「ショートカット」アプリを開く</li>
+      <li>右上の「+」で新規作成</li>
+      <li>「アクションを追加」→「Web」→「URLの内容を取得」を追加</li>
+      <li>以下のように設定:
+        <ul>
+          <li>URL: カード画像のURL (後述のリスト参照)</li>
+          <li>方法: GET</li>
+          <li>ヘッダ: <code>Referer</code> = <code>https://www.gundam-ab.com/cardlist/</code></li>
+          <li>ヘッダ: <code>User-Agent</code> = <code>Mozilla/5.0</code></li>
+        </ul>
+      </li>
+      <li>「ファイルを保存」アクションを追加 → 保存先を指定</li>
+      <li>「繰り返す」アクションで全カード分をループ</li>
+    </ol>
+    <div class="warn" style="font-size:12px">
+      全カード(約7000枚)をショートカットで処理するとかなり時間がかかります。<br>
+      シリーズごとに分割して実行することをおすすめします。
+    </div>
+    <p style="margin-top:12px">カード番号リスト:</p>
+    <a class="btn" href="./data/card_numbers.json" target="_blank">card_numbers.json</a>
+  </div>
+</div>
+
+<h2>方法4: Android (Termux)</h2>
+<div class="section">
+  <p>Google Playから <a href="https://play.google.com/store/apps/details?id=com.termux" target="_blank">Termux</a> をインストールしてください。</p>
+  <pre>pkg install curl
+mkdir -p ~/card_images
+# 表面
+curl -s https://YOUR_SITE/data/card_numbers.json | \
+  python3 -c "import json,sys;[print(n) for n in json.load(sys.stdin)]" | \
+  while read num; do
+    curl -s -A "Mozilla/5.0" \
+      -H "Referer: https://www.gundam-ab.com/cardlist/" \
+      -o ~/card_images/${num}.jpg \
+      "https://www.gundam-ab.com/images/cardlist/card/${num}.jpg"
+    curl -s -A "Mozilla/5.0" \
+      -H "Referer: https://www.gundam-ab.com/cardlist/" \
+      -o ~/card_images/${num}_b.jpg \
+      "https://www.gundam-ab.com/images/cardlist/card/${num}_b.jpg"
+  done</pre>
+  <p style="font-size:12px;color:#888">ダウンロード後、アプリの「画像インポート」でフォルダを選択してください。</p>
+</div>
+
+<script>
+async function loadCardNumbers() {
+  const res = await fetch('./data/card_numbers.json');
+  return await res.json();
+}
+
+async function generateScript() {
+  const status = document.getElementById('genStatus');
+  status.textContent = 'カード番号リスト読み込み中...';
+  const numbers = await loadCardNumbers();
+  const script = `#!/usr/bin/env python3
+"""ABDS カード画像ダウンロードスクリプト"""
+import os, time, urllib.request
+
+CARDS = ${JSON.stringify(numbers)}
+
+IMG_BASE = "https://www.gundam-ab.com/images/cardlist/card/"
+OUT_DIR = "card_images"
+HEADERS = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
+    "Referer": "https://www.gundam-ab.com/cardlist/"
+}
+
+os.makedirs(OUT_DIR, exist_ok=True)
+total = len(CARDS) * 2
+done = 0
+failed = 0
+
+for num in CARDS:
+    for suffix in ["", "_b"]:
+        fname = f"{num}{suffix}.jpg"
+        path = os.path.join(OUT_DIR, fname)
+        if os.path.exists(path) and os.path.getsize(path) > 1000:
+            done += 1
+            continue
+        url = f"{IMG_BASE}{num}{suffix}.jpg"
+        try:
+            req = urllib.request.Request(url, headers=HEADERS)
+            with urllib.request.urlopen(req, timeout=15) as resp:
+                data = resp.read()
+                if len(data) > 1000:
+                    with open(path, "wb") as f:
+                        f.write(data)
+                else:
+                    failed += 1
+        except Exception as e:
+            failed += 1
+        done += 1
+        if done % 100 == 0:
+            print(f"  {done}/{total} (fail:{failed})")
+            time.sleep(0.5)
+
+print(f"\\nDone: {done - failed}/{total} downloaded, {failed} failed")
+print(f"Images saved to: {OUT_DIR}/")
+`;
+  document.getElementById('scriptArea').value = script;
+  document.getElementById('scriptArea').style.display = '';
+  status.textContent = `${numbers.length}枚 x 2(表裏) = ${numbers.length * 2}枚分のスクリプトを生成しました。コピーして使用してください。`;
+}
+
+async function generateCurl() {
+  const numbers = await loadCardNumbers();
+  const script = `#!/bin/bash
+# ABDS card image downloader
+UA="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+REF="https://www.gundam-ab.com/cardlist/"
+BASE="https://www.gundam-ab.com/images/cardlist/card"
+DIR="card_images"
+mkdir -p "$DIR"
+CARDS=(${numbers.join(' ')})
+TOTAL=\${#CARDS[@]}
+echo "Downloading $TOTAL cards (x2 = $((TOTAL*2)) images)..."
+I=0
+for NUM in "\${CARDS[@]}"; do
+  for SUF in "" "_b"; do
+    F="$DIR/\${NUM}\${SUF}.jpg"
+    [ -f "$F" ] && [ \$(stat -f%z "$F" 2>/dev/null || stat -c%s "$F" 2>/dev/null) -gt 1000 ] && continue
+    curl -s -A "$UA" -H "Referer: $REF" -o "$F" "$BASE/\${NUM}\${SUF}.jpg"
+  done
+  I=$((I+1))
+  [ $((I%50)) -eq 0 ] && echo "  $I/$TOTAL" && sleep 0.5
+done
+echo "Done. Images in $DIR/"
+`;
+  document.getElementById('curlArea').value = script;
+  document.getElementById('curlArea').style.display = '';
+}
+</script>
+</body>
+</html>
