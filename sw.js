@@ -1,5 +1,5 @@
 // ABDS PWA Service Worker
-const CACHE_VERSION = 'abds-v91';
+const CACHE_VERSION = 'abds-v92';
 const APP_SHELL_CACHE = `app-shell-${CACHE_VERSION}`;
 const DATA_CACHE = `data-${CACHE_VERSION}`;
 const IMAGE_CACHE = 'card-images-v1';
@@ -41,7 +41,7 @@ self.addEventListener('install', (event) => {
   );
 });
 
-// Activate: clean up ALL old caches (except image cache)
+// Activate: clean up ALL old caches (except image cache) and notify clients
 self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches.keys().then(keys =>
@@ -51,6 +51,9 @@ self.addEventListener('activate', (event) => {
           .map(k => caches.delete(k))
       )
     ).then(() => self.clients.claim())
+     .then(() => self.clients.matchAll().then(clients =>
+       clients.forEach(c => c.postMessage({ type: 'UPDATE_AVAILABLE' }))
+     ))
   );
 });
 

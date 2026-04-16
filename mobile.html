@@ -5899,7 +5899,10 @@ if ('serviceWorker' in navigator) {
     console.log('SW registered:', reg.scope);
     navigator.serviceWorker.addEventListener('message', (event) => {
       if (event.data && event.data.type === 'UPDATE_AVAILABLE') {
-        Toast.show('新しいバージョンが利用可能です。ページを再読み込みしてください。', 'info', 8000);
+        const bar = document.createElement('div');
+        bar.style.cssText = 'position:fixed;top:0;left:0;right:0;background:#1976d2;color:#fff;padding:10px 16px;z-index:99999;display:flex;align-items:center;justify-content:space-between;font-size:14px;box-shadow:0 2px 8px rgba(0,0,0,0.3)';
+        bar.innerHTML = '<span>アプリが更新されました</span><button onclick="location.reload()" style="background:#fff;color:#1976d2;border:none;padding:6px 16px;border-radius:4px;font-weight:bold;cursor:pointer">更新</button>';
+        document.body.prepend(bar);
       }
     });
   }).catch(e => console.warn('SW registration failed:', e));
