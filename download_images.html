@@ -40,7 +40,22 @@ textarea { width: 100%; background: #1e1e1e; color: #a5d6a7; border: 1px solid #
   <li>完了</li>
 </ol>
 
-<h2>方法1: PC (Python)</h2>
+<h2 style="color:#ff9800">おすすめ: Google Colab (スマホ対応)</h2>
+<div class="section" style="border:1px solid #ff9800">
+  <p>Googleアカウントがあればスマホだけで完結します。PC不要。</p>
+  <ol>
+    <li>下のボタンからColabノートブックを開く</li>
+    <li>「ランタイム」→「すべてのセルを実行」</li>
+    <li>Googleドライブへのアクセスを許可</li>
+    <li>完了まで待つ (約15〜30分)</li>
+    <li>Googleドライブの <code>ABDS_CardImages/</code> に画像が保存される</li>
+    <li>アプリの「画像インポート」でフォルダを選択</li>
+  </ol>
+  <a class="btn" style="background:#ff9800" href="https://colab.research.google.com/github/sekimiya/abds/blob/gh-pages/colab_download_cards.ipynb" target="_blank">Google Colabで開く</a>
+  <p style="font-size:12px;color:#aaa;margin-top:8px">Googleドライブに約700MBの空き容量が必要です。途中で止めても再実行で続きからDLされます。</p>
+</div>
+
+<h2>方法2: PC (Python)</h2>
 <div class="section">
   <p>Python 3 が必要です。以下のスクリプトをコピーして実行してください。</p>
   <a class="btn" href="#" onclick="generateScript(); return false;">DLスクリプトを生成</a>
@@ -52,7 +67,7 @@ textarea { width: 100%; background: #1e1e1e; color: #a5d6a7; border: 1px solid #
   </p>
 </div>
 
-<h2>方法2: PC (curl)</h2>
+<h2>方法3: PC (curl)</h2>
 <div class="section">
   <p>curlが使える環境(Mac/Linux/WSL)向けのワンライナーです。</p>
   <a class="btn" href="#" onclick="generateCurl(); return false;">curlスクリプトを生成</a>
@@ -62,7 +77,7 @@ textarea { width: 100%; background: #1e1e1e; color: #a5d6a7; border: 1px solid #
   </p>
 </div>
 
-<h2>方法3: iOS (ショートカットApp)</h2>
+<h2>方法4: iOS (ショートカットApp)</h2>
 <div class="section">
   <p>iPhoneの標準「ショートカット」アプリを使う方法です。</p>
   <h3>セットアップ</h3>
@@ -99,7 +114,7 @@ textarea { width: 100%; background: #1e1e1e; color: #a5d6a7; border: 1px solid #
   </div>
 </div>
 
-<h2>方法4: Android (Termux)</h2>
+<h2>方法5: Android (Termux)</h2>
 <div class="section">
   <p>Google Playから <a href="https://play.google.com/store/apps/details?id=com.termux" target="_blank">Termux</a> をインストールしてください。</p>
   <pre>pkg install curl
