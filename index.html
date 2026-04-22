@@ -3541,7 +3541,7 @@ const UIRenderer = {
     // SQSP判定（MS）
     const hasSqSp = msOcr?.special_attack?.sp_type === 'SQUAD SP';
     // EB判定（MS）
-    const hasEb = !!(msOcr?.special_attack?.echoes_beat);
+    const hasEb = !!(msOcr?.special_attack?.echoes_beat) || !!(msIdx?.has_eb);
     // SQスキル判定（PL）
     const plSkill = plOcr?.pilot_skill || plOcr?.pl_skill;
     const hasSqSkill = !!(plSkill?.has_sq_skill);
@@ -3835,27 +3835,30 @@ const UIRenderer = {
 
     // --- ECHOES BEAT ---
     const eb = msOcr.special_attack?.echoes_beat;
-    if (eb) {
+    const ebUsp = !eb ? msOcr.special_attack?.united_sp : null;
+    const ebSrc = eb || (ebUsp && /EBLv\./.test(ebUsp.description || '') ? ebUsp : null);
+    if (ebSrc) {
       html += '<div class="unit-ms-detail" data-section="echoes-beat">';
-      const ebTypeLabel = msOcr.special_attack?.sp_type === 'ECHOES BEAT SP' ? 'ECHOES BEAT SP' : 'ECHOES BEAT';
-      html += `<div class="ms-detail-title" style="color:#ffb74d">${ebTypeLabel}${eb._uncertain ? ' <span class="uncertain-badge">?</span>' : ''}</div>`;
-      if (eb.name) {
-        html += `<div class="ms-detail-ability-name" style="color:#ffb74d">${escapeHtml(eb.name)}</div>`;
+      const ebTypeLabel = msOcr.special_attack?.sp_type === 'ECHOES BEAT SP'
+        || (msIdx?.eb_type === 'sp') ? 'ECHOES BEAT SP' : 'ECHOES BEAT';
+      html += `<div class="ms-detail-title" style="color:#ffb74d">${ebTypeLabel}${ebSrc._uncertain ? ' <span class="uncertain-badge">?</span>' : ''}</div>`;
+      if (ebSrc.name) {
+        html += `<div class="ms-detail-ability-name" style="color:#ffb74d">${escapeHtml(ebSrc.name)}</div>`;
       }
       const ebTags = [];
-      if (eb.level) ebTags.push(`Lv.${eb.level}`);
-      if (eb.target) ebTags.push(eb.target);
-      if (eb.range !== undefined && eb.range !== null) ebTags.push(`射程${eb.range}`);
+      if (ebSrc.level) ebTags.push(`Lv.${ebSrc.level}`);
+      if (ebSrc.target) ebTags.push(ebSrc.target);
+      if (ebSrc.range !== undefined && ebSrc.range !== null) ebTags.push(`射程${ebSrc.range}`);
       if (ebTags.length > 0) {
         html += '<div class="ms-detail-tags">';
         ebTags.forEach(t => { html += `<span class="ms-detail-tag" style="background:#3d2800;color:#ffb74d;border-color:#ff9800">${escapeHtml(t)}</span>`; });
         html += '</div>';
       }
-      if (eb.power) {
-        html += `<div class="ms-detail-power" style="color:#ffb74d">威力:${eb.power}</div>`;
+      if (ebSrc.power) {
+        html += `<div class="ms-detail-power" style="color:#ffb74d">威力:${ebSrc.power}</div>`;
       }
-      if (eb.description) {
-        html += `<div class="ms-detail-desc">${escapeHtml(eb.description)}</div>`;
+      if (ebSrc.description) {
+        html += `<div class="ms-detail-desc">${escapeHtml(ebSrc.description)}</div>`;
       }
       html += '</div>';
     }
@@ -4325,7 +4328,9 @@ const UIRenderer = {
     for (let u = 0; u < 5; u++) {
       const msOcr = AppState.deckOcr[u];
       const plOcr = AppState.deckOcr[u + 5];
-      const hasEb = !!(msOcr?.special_attack?.echoes_beat);
+      const msNum = AppState.deck[u];
+      const msIdxEntry = msNum ? AppState.cardIndex.find(c => c.number === msNum) : null;
+      const hasEb = !!(msOcr?.special_attack?.echoes_beat) || !!(msIdxEntry?.has_eb);
       if (!hasEb) continue;
       const plLinks = plOcr?.link_abilities || plOcr?.link_ability || [];
       if (!Array.isArray(plLinks)) continue;

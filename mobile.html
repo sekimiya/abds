@@ -3631,10 +3631,10 @@ const UIRenderer = {
 
     if (type === 'ms') {
       isSqCard = ocr?.special_attack?.sp_type === 'SQUAD SP' || !!(indexEntry?.has_sq_link);
-      isEbCard = !!(ocr?.special_attack?.echoes_beat) || !!(indexEntry?.has_eb_link);
+      isEbCard = !!(ocr?.special_attack?.echoes_beat) || !!(indexEntry?.has_eb) || !!(indexEntry?.has_eb_link);
       isAbCard = !!(indexEntry?.has_ab_link);
       if (isAbCard) { badge.textContent = 'AB'; badge.className = 'ov-badge ab-b'; }
-      else if (ocr?.special_attack?.echoes_beat) {
+      else if (isEbCard && indexEntry?.has_eb) {
         let ebHtml = indexEntry?.eb_type === 'sp' ? 'EBSP' : 'EB';
         const ebText = indexEntry?.eb_text || '';
         const dm = ebText.match(/EBLv\.を(\d+)下げ/);
@@ -3784,7 +3784,7 @@ const UIRenderer = {
     const plIndex = this._getIndexEntry(plNumber);
     let msType = '';
     if (msNumber) {
-      const isMsEb = !!(msOcr?.special_attack?.echoes_beat) || !!(msIndex?.has_eb_link);
+      const isMsEb = !!(msOcr?.special_attack?.echoes_beat) || !!(msIndex?.has_eb) || !!(msIndex?.has_eb_link);
       const isMsSq = msOcr?.special_attack?.sp_type === 'SQUAD SP' || !!(msIndex?.has_sq_link);
       const isMsAb = !!(msIndex?.has_ab_link);
       if (isMsEb) msType = 'eb';
@@ -4156,7 +4156,8 @@ const UIRenderer = {
     let ebActive = false;
     for (let u = 0; u < 5; u++) {
       const msOcr = AppState.deckOcr[u]; const plOcr = AppState.deckOcr[u + 5];
-      if (!msOcr?.special_attack?.echoes_beat) continue;
+      const msIdx4eb = AppState.deck[u] ? this._getIndexEntry(AppState.deck[u]) : null;
+      if (!msOcr?.special_attack?.echoes_beat && !msIdx4eb?.has_eb) continue;
       const plLinks = plOcr?.link_abilities || plOcr?.link_ability || [];
       if (Array.isArray(plLinks) && plLinks.find(l => l?.is_eb_link && l.name && activeEbLinks[l.name])) { ebActive = true; break; }
     }
@@ -5428,7 +5429,7 @@ function openScreenshotMode() {
     const plLinks = Array.isArray(plOcr?.link_abilities || plOcr?.link_ability) ? (plOcr?.link_abilities || plOcr?.link_ability) : [];
     const sp = msOcr?.special_attack;
     const plSkill = plOcr?.pl_skill || plOcr?.pilot_skill;
-    const eb = msOcr?.special_attack?.echoes_beat;
+    const eb = msOcr?.special_attack?.echoes_beat || (msOcr?.special_attack?.united_sp && /EBLv\./.test(msOcr.special_attack.united_sp.description || '') ? msOcr.special_attack.united_sp : null);
     const weapon = msOcr?.weapon;
     const msAbility = msOcr?.ms_ability;
     units.push({ msNum, plNum, msOcr, plOcr, msIdx, plIdx, msCost, plCost, cat, stats, tc, msLinks, plLinks, sp, plSkill, eb, weapon, msAbility });
@@ -5488,7 +5489,7 @@ function openScreenshotMode() {
     const hasAbLink = idx?.has_ab_link;
     const hasSqLink = idx?.has_sq_link;
     if (type === 'ms') {
-      const hasEb = !!ocr?.special_attack?.echoes_beat;
+      const hasEb = !!ocr?.special_attack?.echoes_beat || !!(idx?.has_eb);
       const isSq = ocr?.special_attack?.sp_type === 'SQUAD SP' || hasSqLink;
       if (hasAbLink) ov += '<div class="ss-ov-badge ab-b">AB</div>';
       else if (hasEb) {
