@@ -349,6 +349,16 @@ def build_card_index(all_cards_dir='all_cards_list', ocr_dir='ocr_results_debug'
                                 'eb_target': _usp.get('target', ''),
                                 'eb_range': _usp.get('range'),
                             }
+                            sa_data['echoes_beat'] = {
+                                'level': _lv,
+                                'name': _usp_name,
+                                'target': _usp.get('target'),
+                                'range': _usp.get('range'),
+                                'power': _usp.get('power'),
+                                'description': _usp_desc,
+                            }
+                            if _is_sp:
+                                sa_data['sp_type'] = 'ECHOES BEAT SP'
 
                 # _ocr_raw.json の raw テキストから EB 情報を補完
                 raw_ocr = loaded.get('raw_ocr_text', '')
