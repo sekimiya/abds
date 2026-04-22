@@ -360,6 +360,25 @@ def build_card_index(all_cards_dir='all_cards_list', ocr_dir='ocr_results_debug'
                             if _is_sp:
                                 sa_data['sp_type'] = 'ECHOES BEAT SP'
 
+                # sa_data['echoes_beat'] を UI が期待する {name, level, ...} 形式に正規化
+                _eb_prev = prev.get('echoes_beat')
+                if isinstance(sa_data, dict) and isinstance(_eb_prev, dict) and _eb_prev.get('has_eb'):
+                    _sa_eb = sa_data.get('echoes_beat')
+                    sa_data['echoes_beat'] = {
+                        'level': ((_sa_eb or {}).get('level') or (_sa_eb or {}).get('eb_level')
+                                  or _eb_prev.get('eb_level')),
+                        'name': ((_sa_eb or {}).get('name') or (_sa_eb or {}).get('eb_name')
+                                 or _eb_prev.get('eb_sp_name', '')),
+                        'target': ((_sa_eb or {}).get('target') or (_sa_eb or {}).get('eb_target')
+                                   or _eb_prev.get('eb_target')),
+                        'range': ((_sa_eb or {}).get('range') or (_sa_eb or {}).get('eb_range')
+                                  or _eb_prev.get('eb_range')),
+                        'power': ((_sa_eb or {}).get('power') or (_sa_eb or {}).get('eb_power')
+                                  or _eb_prev.get('eb_power')),
+                        'description': ((_sa_eb or {}).get('description') or (_sa_eb or {}).get('eb_description')
+                                        or _eb_prev.get('eb_description', '')),
+                    }
+
                 # _ocr_raw.json の raw テキストから EB 情報を補完
                 raw_ocr = loaded.get('raw_ocr_text', '')
                 if raw_ocr and 'ECHOES BEAT' in raw_ocr and not prev.get('echoes_beat'):
