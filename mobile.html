@@ -2611,11 +2611,7 @@ const ImageCache = {
 
   resolve(cardNumber, side = 'front') {
     if (!cardNumber || this._disabled) return null;
-    const key = side === 'back' ? `${cardNumber}_b` : cardNumber;
-    if (this._cachedKeys.has(key)) {
-      return this._imgUrl(cardNumber, side);
-    }
-    return null;
+    return this._imgUrl(cardNumber, side);
   },
 
   resolveTacticsUrl(url) {
