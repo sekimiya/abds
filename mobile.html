@@ -5894,16 +5894,56 @@ window.addEventListener('hashchange', async () => {
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('./sw.js').then(reg => {
     console.log('SW registered:', reg.scope);
-    navigator.serviceWorker.addEventListener('message', (event) => {
-      if (event.data && event.data.type === 'UPDATE_AVAILABLE') {
-        const bar = document.createElement('div');
-        bar.style.cssText = 'position:fixed;top:0;left:0;right:0;background:#1976d2;color:#fff;padding:10px 16px;z-index:99999;display:flex;align-items:center;justify-content:space-between;font-size:14px;box-shadow:0 2px 8px rgba(0,0,0,0.3)';
-        bar.innerHTML = '<span>アプリが更新されました</span><button onclick="location.reload()" style="background:#fff;color:#1976d2;border:none;padding:6px 16px;border-radius:4px;font-weight:bold;cursor:pointer">更新</button>';
-        document.body.prepend(bar);
-      }
-    });
   }).catch(e => console.warn('SW registration failed:', e));
 }
+
+// Update checker: version.json を定期チェックして更新通知を表示
+(function() {
+  const STORAGE_KEY = 'abds_appVersion';
+  const CHECK_INTERVAL = 5 * 60 * 1000;
+  let _updateBarShown = false;
+
+  function showUpdateBar(oldVer, newVer) {
+    if (_updateBarShown) return;
+    _updateBarShown = true;
+    const bar = document.createElement('div');
+    bar.style.cssText = 'position:fixed;top:0;left:0;right:0;background:#1976d2;color:#fff;padding:12px 16px;z-index:99999;display:flex;align-items:center;justify-content:space-between;font-size:14px;box-shadow:0 2px 8px rgba(0,0,0,0.3)';
+    bar.innerHTML = '<span>新しいデータが配信されました</span><button style="background:#fff;color:#1976d2;border:none;padding:6px 16px;border-radius:4px;font-weight:bold;cursor:pointer;white-space:nowrap">更新する</button>';
+    bar.querySelector('button').addEventListener('click', () => {
+      localStorage.setItem(STORAGE_KEY, newVer);
+      location.reload();
+    });
+    document.body.prepend(bar);
+  }
+
+  async function checkUpdate() {
+    try {
+      const res = await fetch('./data/version.json', { cache: 'no-store' });
+      if (!res.ok) return;
+      const data = await res.json();
+      const serverVer = data.version;
+      if (!serverVer) return;
+      const storedVer = localStorage.getItem(STORAGE_KEY);
+      if (!storedVer) {
+        localStorage.setItem(STORAGE_KEY, serverVer);
+        return;
+      }
+      if (storedVer !== serverVer) {
+        showUpdateBar(storedVer, serverVer);
+      }
+    } catch (_) {}
+  }
+
+  if (document.readyState === 'complete') {
+    setTimeout(checkUpdate, 3000);
+  } else {
+    window.addEventListener('load', () => setTimeout(checkUpdate, 3000));
+  }
+  setInterval(checkUpdate, CHECK_INTERVAL);
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) checkUpdate();
+  });
+})();
 </script>
 </body>
 </html>
