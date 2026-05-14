@@ -5847,7 +5847,7 @@ function getLvBonus(series, msOrPl, stat, lv) {
 // 公式: ROUNDDOWN((MS表記値*地形適正 + MS_Lvボーナス + PL表記値 + PL_Lvボーナス) × 1.1^小 × 1.2^中, 0)
 function calcUnitStats(msOcr, plOcr, terrainMult) {
   const si = (v) => parseInt(v) || 0;
-  const getStats = (ocr) => ({ mobility: si(ocr?.stats?.mobility), ranged: si(ocr?.stats?.ranged_attack), melee: si(ocr?.stats?.melee_attack), hp: si(ocr?.stats?.hp) });
+  const getStats = (ocr) => ({ mobility: si(ocr?.stats?.mobility), ranged: si(ocr?.stats?.ranged_attack || ocr?.stats?.ranged), melee: si(ocr?.stats?.melee_attack || ocr?.stats?.melee), hp: si(ocr?.stats?.hp) });
   const ms = getStats(msOcr), pl = getStats(plOcr);
   const msBuffs = getLinkBuffs(msOcr), plBuffs = getLinkBuffs(plOcr);
   const msSeries = _getCardSeries(msOcr);
@@ -6134,8 +6134,8 @@ async function showCardModal(number) {
       <div class="modal-param-title">ステータス</div>
       <div class="modal-param-row">
         <div class="modal-param-item"><span class="modal-param-label">機動力:</span>${ocr.stats.mobility || '-'}</div>
-        <div class="modal-param-item"><span class="modal-param-label">遠距離:</span>${ocr.stats.ranged_attack || '-'}</div>
-        <div class="modal-param-item"><span class="modal-param-label">近距離:</span>${ocr.stats.melee_attack || '-'}</div>
+        <div class="modal-param-item"><span class="modal-param-label">遠距離:</span>${ocr.stats.ranged_attack || ocr.stats.ranged || '-'}</div>
+        <div class="modal-param-item"><span class="modal-param-label">近距離:</span>${ocr.stats.melee_attack || ocr.stats.melee || '-'}</div>
         <div class="modal-param-item"><span class="modal-param-label">HP:</span>${ocr.stats.hp || '-'}</div>
       </div>
       ${ocr.stats.height || ocr.stats.weight ? `<div class="modal-param-row" style="margin-top:0.2rem">

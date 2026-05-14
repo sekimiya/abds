@@ -2254,7 +2254,7 @@ function getLvBonus(series, msOrPl, stat, lv) {
 // 公式: ROUNDDOWN((MS表記値*地形適正 + MS_Lvボーナス + PL表記値 + PL_Lvボーナス) × 1.1^小 × 1.2^中, 0)
 function calcUnitStats(msOcr, plOcr, terrainMult) {
   const si = (v) => parseInt(v) || 0;
-  const getStats = (ocr) => ({ mobility: si(ocr?.stats?.mobility), ranged: si(ocr?.stats?.ranged_attack), melee: si(ocr?.stats?.melee_attack), hp: si(ocr?.stats?.hp) });
+  const getStats = (ocr) => ({ mobility: si(ocr?.stats?.mobility), ranged: si(ocr?.stats?.ranged_attack || ocr?.stats?.ranged), melee: si(ocr?.stats?.melee_attack || ocr?.stats?.melee), hp: si(ocr?.stats?.hp) });
   const ms = getStats(msOcr), pl = getStats(plOcr);
   const msBuffs = getLinkBuffs(msOcr), plBuffs = getLinkBuffs(plOcr);
   const msSeries = _getCardSeries(msOcr);
