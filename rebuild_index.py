@@ -22,6 +22,7 @@ from datetime import datetime
 
 DATA_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'data')
 OCR_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'ocr_results_debug')
+OCR_DIR_FALLBACK = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'abds-ocr', 'ocr_results_debug')
 
 CARD_INDEX_PATH = os.path.join(DATA_DIR, 'card_index.json')
 CARD_DETAILS_PATH = os.path.join(DATA_DIR, 'card_details.json')
@@ -42,20 +43,28 @@ def save_json(path, data, dry_run=False):
 
 
 def load_ocr_results(series_filter=None):
-    """ocr_results_debug/ から全 _basic.json を読み込む"""
+    """ocr_results_debug/ から全 _basic.json を読み込む。
+    ローカルにないファイルは ../abds-ocr/ocr_results_debug/ からも読む。"""
     results = {}
-    for fname in sorted(os.listdir(OCR_DIR)):
-        if not fname.endswith('_basic.json'):
-            continue
-        fpath = os.path.join(OCR_DIR, fname)
-        with open(fpath, 'r', encoding='utf-8') as f:
-            data = json.load(f)
-        num = data.get('card_number', '')
-        if not num:
-            continue
-        if series_filter and not num.startswith(series_filter):
-            continue
-        results[num] = data
+    dirs = [OCR_DIR]
+    if os.path.isdir(OCR_DIR_FALLBACK):
+        dirs.append(OCR_DIR_FALLBACK)
+    for ocr_dir in dirs:
+        for fname in sorted(os.listdir(ocr_dir)):
+            if not fname.endswith('_basic.json'):
+                continue
+            fpath = os.path.join(ocr_dir, fname)
+            with open(fpath, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+            num = data.get('card_number', '')
+            if not num:
+                continue
+            if series_filter and not num.startswith(series_filter):
+                continue
+            if num not in results:
+                results[num] = data
+    if len(dirs) > 1:
+        print(f'OCRソース: ローカル + abds-ocr フォールバック')
     return results
 
 
@@ -112,8 +121,10 @@ def build_search_text(card_number, ocr_data):
         parts.append(ps.get('description', '') or ps.get('effect', '') or '')
 
     for la in get_links(ocr_data):
+        if not isinstance(la, dict):
+            continue
         parts.append(la.get('name', ''))
-        parts.append(la.get('effect', ''))
+        parts.append(la.get('effect', '') or '')
 
     raw = ocr_data.get('raw', '')
     parts.append(raw)
