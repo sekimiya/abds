@@ -154,7 +154,10 @@ def detect_eb_info(ocr_data):
     if card_type == 'MS':
         sp = ocr_data.get('special_attack', {}) or {}
         usp = sp.get('united_sp', {}) or {}
+        eb_sp = sp.get('echoes_beat', {}) or {}
         usp_name = usp.get('name', '') or ''
+        eb_name = eb_sp.get('name', '') or ''
+        sp_type = sp.get('sp_type', '') or ''
         if usp and 'Lv.' in usp_name:
             has_eb = True
             m = re.search(r'Lv\.(\d+)', usp_name)
@@ -166,6 +169,22 @@ def detect_eb_info(ocr_data):
             else:
                 eb_type = 'normal'
                 eb_text = f"ECHOES BEAT\nLv.{eb_level}\n威力:{usp.get('power','')}\n{usp.get('description','')}"
+        elif eb_sp and (eb_name or sp_type in ('ECHOES BEAT', 'ECHOES BEAT SP')):
+            has_eb = True
+            _eb_name = eb_name or eb_sp.get('eb_name', '') or ''
+            m = re.search(r'Lv\.(\d+)', _eb_name)
+            if not m:
+                eb_level = eb_sp.get('level') or eb_sp.get('eb_level')
+            else:
+                eb_level = int(m.group(1))
+            eb_power = eb_sp.get('power', '') or eb_sp.get('eb_power', '')
+            eb_desc = eb_sp.get('description', '') or eb_sp.get('eb_description', '')
+            if eb_level and eb_level >= 3:
+                eb_type = 'sp'
+                eb_text = f"ECHOES BEAT SP\nLv.{eb_level}\n威力:{eb_power}\n{eb_desc}"
+            else:
+                eb_type = 'normal'
+                eb_text = f"ECHOES BEAT\nLv.{eb_level}\n威力:{eb_power}\n{eb_desc}"
 
     # PL: EB skill detection
     has_eb_skill = False
