@@ -128,7 +128,9 @@ def detect_eb_info(ocr_data):
 
     has_eb_link = False
     for la in links:
-        desc = la.get('effect', '') + ' ' + str(la.get('is_eb_link', ''))
+        if not isinstance(la, dict):
+            continue
+        desc = (la.get('effect', '') or '') + ' ' + str(la.get('is_eb_link', ''))
         if la.get('is_eb_link') or 'ECHOES BEAT' in desc:
             has_eb_link = True
             break
