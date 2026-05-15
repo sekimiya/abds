@@ -23,6 +23,7 @@ from datetime import datetime
 DATA_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'data')
 OCR_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'ocr_results_debug')
 OCR_DIR_FALLBACK = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'abds-ocr', 'ocr_results_debug')
+ALL_CARDS_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'all_cards_list')
 
 CARD_INDEX_PATH = os.path.join(DATA_DIR, 'card_index.json')
 CARD_DETAILS_PATH = os.path.join(DATA_DIR, 'card_details.json')
@@ -66,6 +67,45 @@ def load_ocr_results(series_filter=None):
     if len(dirs) > 1:
         print(f'OCRソース: ローカル + abds-ocr フォールバック')
     return results
+
+
+def load_parallel_cards(ocr_results, card_details):
+    """all_cards_list/ からパラレルカード(_p1, _p2等)を読み込み、
+    ベースカードのOCRデータをコピーして画像URLのみ差し替える。"""
+    if not os.path.isdir(ALL_CARDS_DIR):
+        return {}
+    parallels = {}
+    for fname in sorted(os.listdir(ALL_CARDS_DIR)):
+        if not fname.endswith('.json') or '_p' not in fname:
+            continue
+        fpath = os.path.join(ALL_CARDS_DIR, fname)
+        with open(fpath, 'r', encoding='utf-8') as f:
+            data = json.load(f)
+        num = data.get('number') or data.get('card_number', '')
+        if not num or '_p' not in num:
+            continue
+        base_num = re.sub(r'_p\d+$', '', num)
+        base_ocr = ocr_results.get(base_num) or card_details.get(base_num, {})
+        if not base_ocr or not base_ocr.get('ocr_data', {}).get('name'):
+            continue
+        parallel_data = json.loads(json.dumps(base_ocr))
+        parallel_data['card_number'] = num
+        front_url = data.get('front_image_url') or (data.get('front', {}) or {}).get('image_url', '')
+        back_url = data.get('back_image_url') or (data.get('back', {}) or {}).get('image_url', '')
+        if front_url:
+            parallel_data['front_image_url'] = front_url
+            if 'front' not in parallel_data:
+                parallel_data['front'] = {}
+            if isinstance(parallel_data.get('front'), dict):
+                parallel_data['front']['image_url'] = front_url
+        if back_url:
+            parallel_data['back_image_url'] = back_url
+            if 'back' not in parallel_data:
+                parallel_data['back'] = {}
+            if isinstance(parallel_data.get('back'), dict):
+                parallel_data['back']['image_url'] = back_url
+        parallels[num] = parallel_data
+    return parallels
 
 
 def detect_series(card_number):
@@ -428,14 +468,15 @@ def main():
             new_details[num] = build_card_details_entry(num, data)
             added += 1
 
-        # Keep cards NOT in OCR results (manually added, _p1 variants, etc.)
+        # Keep cards NOT in OCR results (manually added, etc.)
+        # パラレルカード(_p)はload_parallel_cardsで再追加するのでスキップ
         kept = 0
         for entry in card_index:
-            if entry['number'] not in ocr_results:
+            if entry['number'] not in ocr_results and '_p' not in entry['number']:
                 new_index.append(entry)
                 kept += 1
         for num, data in card_details.items():
-            if num not in ocr_results:
+            if num not in ocr_results and '_p' not in num:
                 new_details[num] = data
                 kept += 1
 
@@ -457,10 +498,22 @@ def main():
             card_details[num] = build_card_details_entry(num, data)
             added += 1
 
+    # パラレルカード(_p1, _p2等)をall_cards_listから追加
+    existing_nums = {c['number'] for c in card_index}
+    parallels = load_parallel_cards(ocr_results, card_details)
+    parallel_added = 0
+    for num, data in sorted(parallels.items()):
+        if num not in existing_nums:
+            card_index.append(build_card_index_entry(num, data))
+            card_details[num] = build_card_details_entry(num, data)
+            parallel_added += 1
+    if parallel_added:
+        print(f'パラレルカード追加: {parallel_added}枚')
+
     # Sort card_index by number
     card_index.sort(key=lambda c: c['number'])
 
-    print(f'追加: {added}枚, 更新: {updated}枚')
+    print(f'追加: {added}枚 (+パラレル{parallel_added}枚), 更新: {updated}枚')
     print(f'card_index: {len(card_index)}枚')
     print(f'card_details: {len(card_details)}キー')
     print()
