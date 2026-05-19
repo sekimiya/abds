@@ -17,6 +17,19 @@ STAT_ALIASES = {
     'melee': 'melee_attack',
 }
 
+TOP_LEVEL_STAT_ALIASES = {
+    'long_range_attack': 'ranged_attack',
+    'short_range_attack': 'melee_attack',
+    'ranged_attack': 'ranged_attack',
+    'melee_attack': 'melee_attack',
+}
+
+NAME_ALIASES = ['ms_name_jp', 'ms_name', 'card_name_jp']
+
+TERRAIN_KEY_ALIASES = {
+    'underwater': 'water',
+}
+
 LINK_ALIASES = {
     'link_abilities': 'link_ability',
 }
@@ -38,11 +51,97 @@ def normalize_ocr_data(data):
     if not ocr or not isinstance(ocr, dict):
         return data, changes
 
+    if ocr.get('ms_name_jp'):
+        ocr['name'] = ocr['ms_name_jp']
+        changes.append('ms_name_jp -> name')
+    elif not ocr.get('name'):
+        for alias in NAME_ALIASES:
+            if ocr.get(alias):
+                ocr['name'] = ocr[alias]
+                changes.append(f'{alias} -> name')
+                break
+
     stats = ocr.get('stats')
-    if isinstance(stats, dict):
+    if not isinstance(stats, dict):
+        stats = {}
+        has_top_stats = False
+        for old, new in TOP_LEVEL_STAT_ALIASES.items():
+            if old in ocr:
+                stats[new] = ocr.pop(old)
+                has_top_stats = True
+                changes.append(f'{old} -> stats.{new}')
+        if 'mobility' in ocr and isinstance(ocr['mobility'], (int, float)):
+            stats['mobility'] = ocr.pop('mobility')
+            has_top_stats = True
+            changes.append('mobility -> stats.mobility')
+        if 'hp' in ocr and isinstance(ocr['hp'], (int, float)):
+            stats['hp'] = ocr.pop('hp')
+            has_top_stats = True
+            changes.append('hp -> stats.hp')
+        if has_top_stats:
+            ocr['stats'] = stats
+    else:
         for old, new in STAT_ALIASES.items():
             if _rename_key(stats, old, new):
                 changes.append(f'stats.{old} -> stats.{new}')
+        if 'mobility' in ocr and isinstance(ocr['mobility'], (int, float)) and 'mobility' not in stats:
+            stats['mobility'] = ocr.pop('mobility')
+            changes.append('mobility -> stats.mobility')
+
+    if 'terrain' in ocr and 'terrain_compatibility' not in ocr:
+        t = ocr.get('terrain')
+        if isinstance(t, dict):
+            for old_k, new_k in TERRAIN_KEY_ALIASES.items():
+                if old_k in t and new_k not in t:
+                    t[new_k] = t.pop(old_k)
+                    changes.append(f'terrain.{old_k} -> terrain.{new_k}')
+            ocr['terrain_compatibility'] = ocr.pop('terrain')
+            changes.append('terrain -> terrain_compatibility')
+
+    la = ocr.get('link_ability')
+    if isinstance(la, dict) and not isinstance(la, list):
+        ocr['link_ability'] = [la]
+        changes.append('link_ability: dict -> list')
+        la = ocr['link_ability']
+
+    eb_la = ocr.get('eb_link_ability')
+    if isinstance(eb_la, dict):
+        eb_la['is_eb_link'] = True
+        if not isinstance(la, list):
+            la = []
+        la.append(eb_la)
+        ocr['link_ability'] = la
+        del ocr['eb_link_ability']
+        changes.append('eb_link_ability -> link_ability (is_eb_link=true)')
+
+    sp = ocr.get('special_attack')
+    if isinstance(sp, dict):
+        top_eb = ocr.get('echoes_beat')
+        if isinstance(top_eb, dict) and 'echoes_beat' not in sp:
+            sp['echoes_beat'] = top_eb
+            if not sp.get('sp_type'):
+                sp['sp_type'] = 'ECHOES BEAT'
+            del ocr['echoes_beat']
+            changes.append('echoes_beat -> special_attack.echoes_beat')
+
+    sp_data = ocr.get('sp')
+    if isinstance(sp_data, dict) and isinstance(sp, dict):
+        if not sp.get('power') and sp_data.get('power'):
+            power = sp_data['power']
+            if isinstance(power, dict):
+                sp['power'] = power.get('base', 0)
+            else:
+                sp['power'] = power
+        if not sp.get('range') and sp_data.get('range'):
+            sp['range'] = sp_data['range']
+        if not sp.get('sp_cost') and sp_data.get('cost'):
+            sp['sp_cost'] = sp_data['cost']
+        if not sp.get('target') and sp_data.get('area'):
+            sp['target'] = sp_data['area']
+        if not sp.get('description'):
+            sp['description'] = sp_data.get('description', '')
+        changes.append('sp -> special_attack (merged)')
+        del ocr['sp']
 
     for old, new in LINK_ALIASES.items():
         if old in ocr and new in ocr:

@@ -1,80 +1,86 @@
 {
-  "card_number": "VEB01-014",
-  "card_name": "戦国アストレイ頑駄無",
-  "series": "VEB01",
-  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/VEB01-014.jpg?v250630",
-  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/VEB01-014_b.jpg?v250630",
-  "ocr_data": {
-    "card_id": "VEB01-014",
-    "rarity": "R",
-    "ms_name": "侍ノ弐 SENGOKU ASTRAY GUNDAM",
-    "ms_name_jp": "戦国アストレイ頑駄無",
-    "type": "MS",
-    "cost": 4,
-    "head_height": null,
-    "body_weight": null,
-    "affiliation": null,
-    "terrain": {
-      "ground": "S",
-      "space": "A",
-      "desert": "B",
-      "water": "B"
+    "card_number": "VEB01-014",
+    "card_name": "戦国アストレイ頑駄無",
+    "series": "VEB01",
+    "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/VEB01-014.jpg?v250630",
+    "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/VEB01-014_b.jpg?v250630",
+    "ocr_data": {
+        "card_id": "VEB01-014",
+        "rarity": "R",
+        "ms_name": "侍ノ弐 SENGOKU ASTRAY GUNDAM",
+        "ms_name_jp": "戦国アストレイ頑駄無",
+        "type": "MS",
+        "cost": 4,
+        "head_height": null,
+        "body_weight": null,
+        "affiliation": null,
+        "pilot": "ニルス・ニールセン",
+        "weapon": {
+            "main": {
+                "name": "サムライソード二刀流(衝撃波)",
+                "target": "単体(敵)",
+                "range": 3,
+                "power_gauge": 2
+            },
+            "sub": {
+                "name": "サムライソード二刀流",
+                "target": "単体(敵)",
+                "range": 1,
+                "power_gauge": 2
+            }
+        },
+        "link_ability": [
+            {
+                "name": "ビルドファイターズ",
+                "condition": "デッキに3枚以上",
+                "effect": "[機動力]小アップ",
+                "condition_2": "デッキに4枚以上",
+                "effect_2": "[遠距離攻撃力][近距離攻撃力]小アップ"
+            }
+        ],
+        "ms_ability": {
+            "name": "縛射",
+            "activation": "任意発動",
+            "target": "単体(敵)",
+            "range": 3,
+            "cost": 3,
+            "description": "ロックオン中の敵ユニットに単体攻撃を行いダメージを与え、一定時間スタンさせる。"
+        },
+        "special_attack": {
+            "name": "サムライソード二刀流(衝撃波)斬",
+            "target": "単体(敵)",
+            "range": 3,
+            "sp_cost": 2,
+            "power": 3200,
+            "description": "敵単体に射撃攻撃でダメージを与える。",
+            "echoes_beat": {
+                "name": null,
+                "target": null,
+                "range": null,
+                "sp_cost": null,
+                "power": null,
+                "description": null
+            },
+            "sp_type": "ECHOES BEAT"
+        },
+        "raw": "",
+        "category": "機動",
+        "name": "戦国アストレイ頑駄無",
+        "stats": {
+            "ranged_attack": 340,
+            "melee_attack": 100,
+            "mobility": 190,
+            "hp": 370
+        },
+        "terrain_compatibility": {
+            "ground": "S",
+            "space": "A",
+            "desert": "B",
+            "water": "B"
+        }
     },
-    "mobility": 190,
-    "long_range_attack": 340,
-    "short_range_attack": 100,
-    "hp": 370,
-    "pilot": "ニルス・ニールセン",
-    "weapon": {
-      "main": {
-        "name": "サムライソード二刀流(衝撃波)",
-        "target": "単体(敵)",
-        "range": 3,
-        "power_gauge": 2
-      },
-      "sub": {
-        "name": "サムライソード二刀流",
-        "target": "単体(敵)",
-        "range": 1,
-        "power_gauge": 2
-      }
-    },
-    "link_ability": {
-      "name": "ビルドファイターズ",
-      "condition": "デッキに3枚以上",
-      "effect": "[機動力]小アップ",
-      "condition_2": "デッキに4枚以上",
-      "effect_2": "[遠距離攻撃力][近距離攻撃力]小アップ"
-    },
-    "ms_ability": {
-      "name": "縛射",
-      "activation": "任意発動",
-      "target": "単体(敵)",
-      "range": 3,
-      "cost": 3,
-      "description": "ロックオン中の敵ユニットに単体攻撃を行いダメージを与え、一定時間スタンさせる。"
-    },
-    "special_attack": {
-      "name": "サムライソード二刀流(衝撃波)斬",
-      "target": "単体(敵)",
-      "range": 3,
-      "sp_cost": 2,
-      "power": 3200,
-      "description": "敵単体に射撃攻撃でダメージを与える。"
-    },
-    "echoes_beat": {
-      "name": null,
-      "target": null,
-      "range": null,
-      "sp_cost": null,
-      "power": null,
-      "description": null
-    },
-    "raw": "",
-    "category": "機動"
-  },
-  "ocr_raw_file": "VEB01_VEB01-014_戦国アストレイ頑駄無_ocr_raw.json",
-  "ocr_timestamp": "2026-03-30T02:22:32.930960",
-  "ocr_type": "basic",
-  "ocr_engine": "claude_code_cli_combined"
+    "ocr_raw_file": "VEB01_VEB01-014_戦国アストレイ頑駄無_ocr_raw.json",
+    "ocr_timestamp": "2026-03-30T02:22:32.930960",
+    "ocr_type": "basic",
+    "ocr_engine": "claude_code_cli_combined"
 }
