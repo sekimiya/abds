@@ -263,6 +263,62 @@ def detect_eb_info(ocr_data):
     }
 
 
+def extract_effect_tags(description, sp_data=None):
+    """SP/スキルのdescriptionからエフェクトタグを抽出"""
+    tags = []
+    desc = description or ''
+    sp = sp_data or {}
+    target = sp.get('target', '') or sp.get('range', '') or ''
+
+    if '貫通' in target or '貫通' in desc:
+        tags.append('貫通')
+    if '範囲' in target or '範囲' in desc or '広範囲' in desc:
+        tags.append('範囲')
+    if 'スタン' in desc or '行動不能' in desc:
+        tags.append('スタン')
+    if '変身' in desc or 'に変身' in desc:
+        tags.append('変身')
+    if '撃破' in desc or '撃墜' in desc:
+        tags.append('撃破')
+    if '防衛無視' in desc or '防衛を無視' in desc:
+        tags.append('防衛無視')
+    if '必中' in desc:
+        tags.append('必中')
+    if '支援攻撃' in desc:
+        tags.append('支援攻撃')
+    if 'HP' in desc and ('回復' in desc or 'リペア' in desc):
+        tags.append('HP回復')
+    if re.search(r'アップ|小アップ|中アップ|大アップ', desc) and not re.search(r'ダウン', desc):
+        tags.append('バフ')
+    if re.search(r'ダウン|小ダウン|中ダウン|大ダウン', desc):
+        tags.append('デバフ')
+
+    return list(dict.fromkeys(tags))
+
+
+def extract_skill_effect_tags(description):
+    """PLスキルのdescriptionからSQスキル用タグを抽出"""
+    tags = []
+    desc = description or ''
+
+    if '機動力' in desc and re.search(r'アップ|上昇', desc):
+        tags.append('機動力UP')
+    if '遠距離攻撃力' in desc and re.search(r'アップ|上昇', desc):
+        tags.append('遠距離攻撃力UP')
+    if '近距離攻撃力' in desc and re.search(r'アップ|上昇', desc):
+        tags.append('近距離攻撃力UP')
+    if 'SP' in desc and re.search(r'威力.*アップ|威力.*上昇', desc):
+        tags.append('SP威力UP')
+    if 'ダメージ' in desc and re.search(r'軽減|カット', desc):
+        tags.append('ダメージ軽減')
+    if '弱体' in desc and re.search(r'無効|解除', desc):
+        tags.append('弱体無効')
+    if re.search(r'全.*味方|出撃中の.*味方|全ユニット', desc) and re.search(r'アップ|上昇', desc):
+        tags.append('全味方バフ')
+
+    return list(dict.fromkeys(tags))
+
+
 def detect_sq_info(ocr_data):
     """SQUAD SP / SQリンク / SQスキル関連情報を検出"""
     card_type = ocr_data.get('type', '')
@@ -335,15 +391,51 @@ def build_card_index_entry(card_number, card_data):
     sq_info = detect_sq_info(ocr)
     ab_info = detect_ab_info(ocr)
 
-    # Skill / ability name
+    # Skill / ability name + effect tags
     skill_name = ''
     ability_name = ''
+    sp_effect_tags = []
+    sqsp_effect_tags = []
+    ebsp_effect_tags = []
+    sq_skill_effect_tags = []
+    skill_effect_tags = []
+    sq_rush_effect = ''
+
+    sp = ocr.get('special_attack', {}) or {}
+    sp_desc = sp.get('description', '') or ''
+    sp_type = sp.get('sp_type', '') or ''
+
     if card_type == 'PL':
         ps = ocr.get('pilot_skill', {}) or {}
         skill_name = ps.get('name', '')
+        ps_desc = ps.get('description', '') or ps.get('effect', '') or ''
+        if ps.get('has_sq_skill'):
+            sq_skill_effect_tags = extract_skill_effect_tags(ps_desc)
+        skill_effect_tags = extract_skill_effect_tags(ps_desc)
+        sq_rush = ocr.get('sq_rush', {}) or ocr.get('squad_rush', {}) or {}
+        if isinstance(sq_rush, dict) and sq_rush.get('effect'):
+            sq_rush_effect = sq_rush['effect']
+        elif isinstance(sq_rush, str) and sq_rush:
+            sq_rush_effect = sq_rush
     else:
         msa = ocr.get('ms_ability', {}) or {}
         ability_name = msa.get('name', '')
+        if sp_type == 'SQUAD SP':
+            sqsp_effect_tags = extract_effect_tags(sp_desc, sp)
+        elif sp_type in ('ECHOES BEAT', 'ECHOES BEAT SP'):
+            ebsp_effect_tags = extract_effect_tags(sp_desc, sp)
+            eb_sp = sp.get('echoes_beat', {}) or {}
+            if isinstance(eb_sp, dict):
+                eb_desc = eb_sp.get('description', '') or ''
+                if eb_desc:
+                    ebsp_effect_tags = extract_effect_tags(eb_desc, eb_sp)
+        elif sp_type == 'UNITED SP':
+            usp = sp.get('united_sp', {}) or {}
+            usp_desc = usp.get('description', '') or ''
+            if usp_desc:
+                sp_effect_tags = extract_effect_tags(usp_desc, usp)
+        if not sp_effect_tags and sp_desc:
+            sp_effect_tags = extract_effect_tags(sp_desc, sp)
 
     entry = {
         'number': card_number,
@@ -372,7 +464,7 @@ def build_card_index_entry(card_number, card_data):
         'pilot': ocr.get('pilot', '') or '' if card_type == 'MS' else '',
         'model': ocr.get('model', '') or '' if card_type == 'MS' else '',
         'illustrator': ocr.get('illustrator', '') or '',
-        'sq_rush_effect': '',
+        'sq_rush_effect': sq_rush_effect,
         'sqsp_text': sq_info['sqsp_text'],
         'sq_skill_text': sq_info['sq_skill_text'],
         'has_sqsp': sq_info['has_sqsp'],
@@ -380,9 +472,9 @@ def build_card_index_entry(card_number, card_data):
         'has_sq_link': sq_info['has_sq_link'],
         'sq_trigger': '',
         'sq_gauge_rate': '',
-        'sq_skill_effect_tags': [],
+        'sq_skill_effect_tags': sq_skill_effect_tags,
         'skill_name': skill_name,
-        'skill_effect_tags': [],
+        'skill_effect_tags': skill_effect_tags,
         'eb_text': eb_info['eb_text'],
         'eb_skill_text': eb_info['eb_skill_text'],
         'has_eb': eb_info['has_eb'],
@@ -393,9 +485,9 @@ def build_card_index_entry(card_number, card_data):
         'eb_trigger_level': eb_info['eb_trigger_level'],
         'eb_trigger_cond': eb_info['eb_trigger_cond'],
         'eb_type': eb_info['eb_type'],
-        'sp_effect_tags': [],
-        'sqsp_effect_tags': [],
-        'ebsp_effect_tags': [],
+        'sp_effect_tags': sp_effect_tags,
+        'sqsp_effect_tags': sqsp_effect_tags,
+        'ebsp_effect_tags': ebsp_effect_tags,
         'ability_name': ability_name,
     }
     return entry
