@@ -45,6 +45,27 @@ def save_json(path, data, dry_run=False):
         json.dump(data, f, ensure_ascii=False, separators=(',', ':'))
 
 
+def _merge_sp_data(data, sp_path):
+    """_sp.json からSP descriptionをマージ"""
+    try:
+        with open(sp_path, 'r', encoding='utf-8') as f:
+            sp_data = json.load(f)
+    except (json.JSONDecodeError, OSError):
+        return
+    ocr = data.get('ocr_data', {})
+    sp = ocr.get('special_attack')
+    if not isinstance(sp, dict):
+        return
+    descs = sp_data.get('descriptions', {})
+    if not sp.get('description') and descs.get('normal_description'):
+        sp['description'] = descs['normal_description']
+    if not sp.get('sq_description') and descs.get('squad_description'):
+        sp['sq_description'] = descs['squad_description']
+    sp_info = sp_data.get('sp_info', {})
+    if not sp.get('sp_type') and sp_info.get('squad_sp'):
+        sp['sp_type'] = 'SQUAD SP'
+
+
 def load_ocr_results(series_filter=None):
     """ocr_results_debug/ から全 _basic.json を読み込む。
     ローカルにないファイルは ../abds-ocr/ocr_results_debug/ からも読む。"""
@@ -66,6 +87,9 @@ def load_ocr_results(series_filter=None):
                 continue
             if num not in results:
                 data, _ = normalize_ocr_data(data)
+                sp_path = fpath.replace('_basic.json', '_sp.json')
+                if os.path.exists(sp_path):
+                    _merge_sp_data(data, sp_path)
                 results[num] = data
     if len(dirs) > 1:
         print(f'OCRソース: ローカル + abds-ocr フォールバック')
