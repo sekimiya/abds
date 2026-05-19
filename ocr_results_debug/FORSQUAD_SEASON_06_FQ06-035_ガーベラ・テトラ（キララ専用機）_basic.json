@@ -1,0 +1,83 @@
+{
+  "card_number": "FQ06-035",
+  "card_name": "ガーベラ・テトラ（キララ専用機）",
+  "series": "FORSQUAD SEASON:06",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ06-035.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ06-035_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "FQ06-035",
+    "type": "MS",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト2"
+    },
+    "name": "ガーベラ・テトラ（キララ専用機）",
+    "model": "KIRARA'S GERBERA TETRA",
+    "cost": 2,
+    "category": "近距離",
+    "affiliation": null,
+    "pilot": "キララ",
+    "stats": {
+      "height": null,
+      "weight": null,
+      "mobility": 200,
+      "ranged_attack": 60,
+      "melee_attack": 260,
+      "hp": 290
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "B",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "ビーム・サーベル",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "ビーム・マシンガン",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "補給[弱体化解除]",
+      "activation": "任意発動",
+      "target": "範囲(味方)",
+      "range": null,
+      "cost": 5,
+      "description": "自身を中心とした大範囲の味方ユニットのHPを中回復し、弱体化状態を無効化する。"
+    },
+    "link_ability": [
+      {
+        "name": "ビルドファイターズ",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ビーム・サーベル強撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3200,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "R",
+    "illustrator": "TSUBASA KOYAMA_Aidle Co.,Ltd.",
+    "raw": "近距離 コスト2 MS\n\nKIRARA'S GERBERA TETRA\nガーベラ・テトラ（キララ専用機）\n\n頭頂高 ー\n本体重量 ー\n所属 ー\nパイロット キララ\n\n地上 A 宇宙 S 砂漠 B 水中 C\n\n機動力 200\n遠距離攻撃 60\n近距離攻撃 260\nHP 290\n\nWEAPON\nMAIN ビーム・サーベル 射程 1 近距離\nSUB ビーム・マシンガン 射程 3 遠距離\n\nLINK ABILITY\nビルドファイターズ デッキに3枚以上\n[機動力]小アップ\n\n多彩な戦術 デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nMS ABILITY\n補給[弱体化解除]\n任意発動 範囲(味方) 射程 ー コスト 5\n自身を中心とした大範囲の味方ユニットのHPを中回復し、弱体化状態を無効化する。\n\nSPECIAL ATTACK\nビーム・サーベル強撃\n連携 ー\n連携 ー\n単体(敵) 射程 2\nSPコスト 2 威力 3200\n\nUNITED SP\nー\n連携 ー\n連携 ー\n射程 ー\n\n/ー\n\n敵単体に格闘攻撃でダメージを与える。\n/ー\n\nIMPACT AREA\n[アイコン:前方中央に丸い範囲]\n\nillust TSUBASA KOYAMA_Aidle Co.,Ltd.\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n\n機動戦士ガンダム ARSENAL BASE®\nFQ06-035 R"
+  },
+  "ocr_raw_file": "FORSQUAD_SEASON_06_FQ06-035_ガーベラ・テトラ（キララ専用機）_ocr_raw.json",
+  "ocr_timestamp": "2026-02-24T18:39:51.746443",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

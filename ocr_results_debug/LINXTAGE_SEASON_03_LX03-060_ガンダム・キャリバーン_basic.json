@@ -1,0 +1,83 @@
+{
+  "card_number": "LX03-060",
+  "card_name": "ガンダム・キャリバーン",
+  "series": "LINXTAGE SEASON:03",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX03-060.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX03-060_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "LX03-060",
+    "type": "MS",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト4"
+    },
+    "name": "ガンダム・キャリバーン",
+    "model": "X-EX01 GUNDAM CALIBARN",
+    "cost": 4,
+    "category": "水星の魔女",
+    "affiliation": null,
+    "pilot": "スレッタ・マーキュリー",
+    "stats": {
+      "height": "18.2m",
+      "weight": "44.7t",
+      "mobility": 180,
+      "ranged_attack": 50,
+      "melee_attack": 250,
+      "hp": 270
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "C",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "ビームサーベル",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "バリアブルロッドライフル",
+        "range": 4,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "妨害[遠距離]",
+      "activation": "出撃時発動",
+      "target": "範囲(敵)",
+      "range": null,
+      "cost": null,
+      "description": "20秒間、自身を中心とした大範囲内の敵ユニットの[遠距離攻撃力]を小ダウンする。"
+    },
+    "link_ability": [
+      {
+        "name": "水星の魔女",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ビームサーベル強撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3300,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "R",
+    "illustrator": "kenko",
+    "raw": "近距離 コスト4 MS\nX-EX01 GUNDAM CALIBARN\nガンダム・キャリバーン\n頭頂高 18.2m\n本体重量 44.7t\n所属 ー\nパイロット スレッタ・マーキュリー\n地上 A 宇宙 S 砂漠 C 水中 C\n機動力 180\n遠距離攻撃 50\n近距離攻撃 250\nHP 270\n\nWEAPON\nMAIN ビームサーベル 射程 1 近距離\nSUB バリアブルロッドライフル 射程 4 遠距離\n\nMS ABILITY\n妨害[遠距離]\n出撃時発動　範囲(敵)　射程 ー　コスト ー\n20秒間、自身を中心とした大範囲内の敵ユニットの[遠距離攻撃力]を小ダウンする。\n\nLINK ABILITY\n水星の魔女　デッキに3枚以上\n[機動力]小アップ\n\n戦況を変える力　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nSPECIAL ATTACK\nビームサーベル強撃\n単体(敵)　射程 2\nSPコスト 2　威力 3300\n敵単体に格闘攻撃でダメージを与える。\n\nillust. kenko\n©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\nLX03-060 R"
+  },
+  "ocr_raw_file": "LINXTAGE_SEASON_03_LX03-060_ガンダム・キャリバーン_ocr_raw.json",
+  "ocr_timestamp": "2026-03-07T17:36:13.412182",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

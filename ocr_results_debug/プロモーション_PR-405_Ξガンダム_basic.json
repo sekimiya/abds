@@ -1,0 +1,83 @@
+{
+  "card_number": "PR-405",
+  "card_name": "Ξガンダム",
+  "series": "プロモーション",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-405.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-405_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "PR-405",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト2"
+    },
+    "name": "Ξガンダム",
+    "model": "RX-105 XI GUNDAM",
+    "cost": 2,
+    "category": "遠距離",
+    "affiliation": "マフティー",
+    "pilot": "ハサウェイ・ノア",
+    "stats": {
+      "height": "26.0m",
+      "weight": "32.0t",
+      "mobility": 250,
+      "ranged_attack": 300,
+      "melee_attack": 80,
+      "hp": 320
+    },
+    "terrain_compatibility": {
+      "ground": "S",
+      "space": "A",
+      "desert": "B",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "ビーム・ライフル",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ビーム・サーベル",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "転化[支援]",
+      "activation": "任意発動",
+      "target": "範囲(味方)",
+      "range": null,
+      "cost": 4,
+      "description": "一定時間、自身を中心とした範囲内の味方ユニットを強化する。使用回数に応じて、強化効果が変わる。[1回:遠／近攻撃力アップ][2回:遠／近攻撃力大アップ][3回以上:遠／近攻撃力大アップ&回復]"
+    },
+    "link_ability": [
+      {
+        "name": "閃光のハサウェイ",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      },
+      {
+        "name": "撃ち倒す遠距離戦",
+        "condition": "デッキに遠距離が2枚以上",
+        "effect": "[遠距離攻撃力]中アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ビーム・ライフル斉射",
+      "target": "貫通(敵)",
+      "range": 4,
+      "sp_cost": 2,
+      "power": 2900,
+      "description": "射線上の敵に貫通射撃でダメージを与え、一定時間、自身の[機動力][遠距離攻撃力]をアップする。",
+      "united_sp": null
+    },
+    "rarity": "PR",
+    "illustrator": "Umegrafix",
+    "raw": "MS\n\n遠距離　コスト2\n\nRX-105 XI GUNDAM\nΞガンダム\n\n頭頂高　26.0m\n本体重量　32.0t\n所属　マフティー\nパイロット　ハサウェイ・ノア\n\n地上 S　宇宙 A　砂漠 B　水中 C\n機動力 250\n遠距離攻撃 300\n近距離攻撃 80\nHP 320\n\nWEAPON\nMAIN ビーム・ライフル　射程 3　遠距離\nSUB ビーム・サーベル　射程 1　近距離\n\nLINK ABILITY\n閃光のハサウェイ　デッキに3枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\n撃ち倒す遠距離戦　デッキに遠距離が2枚以上\n[遠距離攻撃力]中アップ\n\nMS ABILITY\n転化[支援]\n任意発動　範囲(味方)　射程 ー　コスト 4\n一定時間、自身を中心とした範囲内の味方ユニットを強化する。使用回数に応じて、強化効果が変わる。[1回:遠／近攻撃力アップ][2回:遠／近攻撃力大アップ][3回以上:遠／近攻撃力大アップ&回復]\n\nSPECIAL ATTACK　　UNITED SP\nビーム・ライフル斉射　ー\n連携 ー　　連携 ー\n連携 ー　　連携 ー\n貫通(敵)　射程 4　ー　射程 ー\nSPコスト 2　威力 2900 / ー\n\n射線上の敵に貫通射撃でダメージを与え、一定時間、自身の[機動力][遠距離攻撃力]をアップする。/ ー\n\nIMPACT AREA\n[アイコン:前方直線貫通型]\n\nillust Umegrafix\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n\n機動戦士ガンダム ARSENAL BASE\nPR-405　PR\nNOT FOR SALE"
+  },
+  "ocr_raw_file": "プロモーション_PR-405_Ξガンダム_ocr_raw.json",
+  "ocr_timestamp": "2026-03-03T09:06:32.970827",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

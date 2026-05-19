@@ -1,0 +1,64 @@
+{
+  "card_number": "VEB01-001",
+  "card_name": "ガンダム",
+  "series": "VEブースター1弾",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/VEB01-001.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/VEB01-001_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "VEB01-001",
+    "type": "MS",
+    "card_label": { "class": "遠距離", "cost_label": "コスト5" },
+    "name": "ガンダム",
+    "model": "RX-78-2 GUNDAM",
+    "cost": 5,
+    "category": "遠距離",
+    "affiliation": "地球連邦軍",
+    "pilot": "アムロ・レイ",
+    "stats": {
+      "height": "18.0m",
+      "weight": "43.4t",
+      "mobility": 250,
+      "ranged_attack": 580,
+      "melee_attack": 70,
+      "hp": 500
+    },
+    "terrain_compatibility": { "ground": "A", "space": "A", "desert": "C", "water": "A" },
+    "weapon": {
+      "main": { "name": "ビーム・ライフル", "range": 3, "type": "遠距離" },
+      "sub": { "name": "ビーム・サーベル", "range": 1, "type": "近距離" }
+    },
+    "ms_ability": {
+      "name": "転化[補給]",
+      "activation": "任意発動",
+      "target": "範囲(味方)",
+      "range": null,
+      "cost": 4,
+      "description": "自身のHPを回復する。使用回数に応じて、回復効果、範囲が変わる。[1回:自身を中心とした範囲/中回復][2回:自身を中心とした範囲/中回復][3回以上:自身を中心とした範囲/大回復]"
+    },
+    "link_ability": [
+      { "name": "機動戦士ガンダム", "condition": "デッキに3枚以上", "effect": "[機動力]小アップ" },
+      { "name": "戦況を変える力", "condition": "デッキに4枚以上", "effect": "[遠距離攻撃力][近距離攻撃力]小アップ" }
+    ],
+    "special_attack": {
+      "name": "ハイパー・バズーカ撃射",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3500,
+      "description": "敵単体に射撃攻撃でダメージを与え、一定時間、自身の受けるダメージを軽減する。/EBLv.を1下げる。敵単体に射撃攻撃でダメージを与え、EBLv.を3に上昇する。一定時間、自身の受けるダメージを軽減する。出撃時1度のみ使用可能。",
+      "united_sp": null,
+      "echoes_beat": {
+        "name": "ハイパー・バズーカ撃射 Lv.1",
+        "target": "単体(敵)",
+        "range": 3,
+        "power": 3800,
+        "description": "ECHOES BEAT Lv.を下げることで、Lv.戦術技が発動する。"
+      }
+    },
+    "rarity": "P",
+    "raw": "遠距離 コスト5\nMS\nRX-78-2 GUNDAM\nガンダム\n頭頂高 18.0m\n本体重量 43.4t\n地上 A 宇宙 A 砂漠 C 水中 A\n所属 地球連邦軍\n機動力 250\nパイロット アムロ・レイ\n遠距離攻撃 580\n近距離攻撃 70\nHP 500\nWEAPON\nMAIN ビーム・ライフル 射程3 遠距離\nSUB ビーム・サーベル 射程1 近距離\nMS ABILITY\n転化[補給]\n任意発動 範囲(味方) 射程ー コスト4\n自身のHPを回復する。使用回数に応じて、回復効果、範囲が変わる。[1回:自身を中心とした範囲/中回復][2回:自身を中心とした範囲/中回復][3回以上:自身を中心とした範囲/大回復]\nLINK ABILITY\n機動戦士ガンダム デッキに3枚以上\n[機動力]小アップ\n戦況を変える力 デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\nSPECIAL ATTACK\nハイパー・バズーカ撃射\nECHOES BEAT\nハイパー・バズーカ撃射 Lv.1\nECHOES BEAT Lv.を下げることで、Lv.戦術技が発動する。\n単体(敵) 射程3 単体(敵) 射程3\nSPコスト2 威力 3500/3800\n敵単体に射撃攻撃でダメージを与え、一定時間、自身の受けるダメージを軽減する。/EBLv.を1下げる。敵単体に射撃攻撃でダメージを与え、EBLv.を3に上昇する。一定時間、自身の受けるダメージを軽減する。出撃時1度のみ使用可能。\nVEB01-001 P"
+  },
+  "ocr_timestamp": "2026-04-16T11:50:00.000000",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_subagent"
+}

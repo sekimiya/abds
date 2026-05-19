@@ -1,0 +1,83 @@
+{
+  "card_number": "LX04-053",
+  "card_name": "グラハム専用ユニオンフラッグカスタムⅡ(GNフラッグ)",
+  "series": "LINXTAGE SEASON:04",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX04-053.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX04-053_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "LX04-053",
+    "type": "MS",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト5"
+    },
+    "name": "グラハム専用ユニオンフラッグカスタムII（GNフラッグ）",
+    "model": "SVMS-01X UNION FLAG CUSTOM II[GN FLAG]",
+    "cost": 5,
+    "category": "近距離",
+    "affiliation": "ユニオン",
+    "pilot": "グラハム・エーカー",
+    "stats": {
+      "height": "17.9m",
+      "weight": "74.2t",
+      "mobility": 120,
+      "ranged_attack": 0,
+      "melee_attack": 210,
+      "hp": 230
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "B",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "GNビームサーベル",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": null,
+        "range": null,
+        "type": null
+      }
+    },
+    "ms_ability": {
+      "name": "特攻",
+      "activation": "出撃時発動",
+      "target": "自分",
+      "range": null,
+      "cost": null,
+      "description": "自身の[遠／近攻撃力]をアップし[怯み無効]となるが、[回避／ガード不可][修理時間延長]となる。効果は撤退するまで持続。"
+    },
+    "link_ability": [
+      {
+        "name": "ガンダム00",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "迫撃の近距離戦",
+        "condition": "デッキに近距離が2枚以上",
+        "effect": "[近距離攻撃力]中アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "GNビームサーベル強撃",
+      "target": "単体（敵）",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3300,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "C",
+    "illustrator": "kenko",
+    "raw": "近距離 コスト5\nMS\nSVMS-01X UNION FLAG CUSTOM II[GN FLAG]\nグラハム専用ユニオンフラッグカスタムII（GNフラッグ）\n\n全高　17.9m\n本体重量　74.2t　　地上 A　宇宙 S　砂漠 B　水中 C\n所属　ユニオン　　　　　　　　機動力 120\nパイロット　グラハム・エーカー　遠距離攻撃 0\n　　　　　　　　　　　　　　　近距離攻撃 210\n　　　　　　　　　　　　　　　HP 230\n\nWEAPON\nMAIN　GNビームサーベル　射程 1　近距離\nSUB　ー　　　　　　　　　射程 ー　ー\n\nMS ABILITY\n特攻\n出撃時発動　自分　射程 ー　コスト ー\n自身の[遠／近攻撃力]をアップし[怯み無効]となるが、[回避／ガード不可][修理時間延長]となる。効果は撤退するまで持続。\n\nLINK ABILITY\nガンダム00　デッキに3枚以上\n[機動力]小アップ\n\n迫撃の近距離戦　デッキに近距離が2枚以上\n[近距離攻撃力]中アップ\n\nIMPACT AREA\n（グリッド図：射程2、単体敵）\n\nSPECIAL ATTACK\nGNビームサーベル強撃\n単体（敵）　射程 2\nSPコスト 2　威力 3300\n敵単体に格闘攻撃でダメージを与える。\n\nillust. kenko\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\nLX04-053　C"
+  },
+  "ocr_raw_file": "LINXTAGE_SEASON_04_LX04-053_グラハム専用ユニオンフラッグカスタムⅡ(GNフラッグ)_ocr_raw.json",
+  "ocr_timestamp": "2026-03-07T19:11:52.442670",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

@@ -1,0 +1,83 @@
+{
+  "card_number": "FQB06-010",
+  "card_name": "ガンダムX",
+  "series": "FQブースター6弾",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQB06-010.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQB06-010_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "FQB06-010",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト4"
+    },
+    "name": "ガンダムX",
+    "model": "GX-9900 GUNDAM X",
+    "cost": 4,
+    "category": "遠距離",
+    "affiliation": "フリーデン",
+    "pilot": "ガロード・ラン&ティファ・アディール",
+    "stats": {
+      "height": "17.1m",
+      "weight": "7.5t",
+      "mobility": 230,
+      "ranged_attack": 320,
+      "melee_attack": 120,
+      "hp": 330
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "A",
+      "desert": "B",
+      "water": "B"
+    },
+    "weapon": {
+      "main": {
+        "name": "シールドバスターライフル",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "大型ビームソード",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "砕撃",
+      "activation": "任意発動",
+      "target": "単体(敵)",
+      "range": 3,
+      "cost": 3,
+      "description": "ロックオン中の敵に単体攻撃でダメージを与え、メイン武装を使用不能にさせる。出撃時1度のみ使用可能。"
+    },
+    "link_ability": [
+      {
+        "name": "機動新世紀ガンダムX",
+        "condition": "デッキに2枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "シールドバスターライフル撃射",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3200,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "R",
+    "illustrator": "Misaki Yuzuruha",
+    "raw": "MS\n\n遠距離　コスト4\n\nGX-9900 GUNDAM X\nガンダムX\n\n頭頂高　17.1m\n本体重量　7.5t\n所属　フリーデン\nパイロット　ガロード・ラン&ティファ・アディール\n\n地上 A　宇宙 A　砂漠 B　水中 B\n\n機動力 230\n遠距離攻撃 320\n近距離攻撃 120\nHP 330\n\nWEAPON\nMAIN シールドバスターライフル　射程 3　遠距離\nSUB 大型ビームソード　射程 1　近距離\n\nLINK ABILITY\n機動新世紀ガンダムX　デッキに2枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\n戦況を変える力　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nMS ABILITY\n砕撃\n任意発動　単体(敵)　射程 3　コスト 3\nロックオン中の敵に単体攻撃でダメージを与え、メイン武装を使用不能にさせる。出撃時1度のみ使用可能。\n\nSPECIAL ATTACK　　UNITED SP\nシールドバスターライフル撃射　ー\n連携 ー　　連携 ー\n連携 ー　　連携 ー\n単体(敵)　射程 3　　射程 ー\nSPコスト 2　威力 3200 / ー\n敵単体に射撃攻撃でダメージを与える。\n/ ー\n\nIMPACT AREA\n[アイコン:着弾点 中央やや上]\n\nillust Misaki Yuzuruha\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nFQB06-010　R"
+  },
+  "ocr_raw_file": "FQブースター6弾_FQB06-010_ガンダムX_ocr_raw.json",
+  "ocr_timestamp": "2026-02-28T06:53:43.175932",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

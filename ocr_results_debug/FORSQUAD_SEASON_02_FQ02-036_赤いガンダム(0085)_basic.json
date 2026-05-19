@@ -1,0 +1,84 @@
+{
+  "card_number": "FQ02-036",
+  "card_name": "赤いガンダム(0085)",
+  "series": "FORSQUAD SEASON:02",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-036.jpg?v9",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-036_b.jpg?v9",
+  "ocr_data": {
+    "card_id": "FQ02-036",
+    "type": "MS",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト3"
+    },
+    "name": "赤いガンダム",
+    "model": "gMS-α Red Gundam (0085)",
+    "cost": 3,
+    "category": "近距離",
+    "pilot": "シュウジ・イトウ",
+    "stats": {
+      "height": "18.0m",
+      "weight": "-",
+      "mobility": 260,
+      "ranged_attack": 70,
+      "melee_attack": 300,
+      "hp": 320
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "C",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "ビーム・サーベル",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "ビット",
+        "range": 4,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "デコイ[ユニット]",
+      "type": "任意発動",
+      "range": 1,
+      "cost": 2,
+      "description": "自身の周囲にユニット扱いでロックオンされるデコイを3体配置する。※上限6体まで、効果の対象やユニット数には含まれない。"
+    },
+    "link_ability": [
+      {
+        "name": "GQuuuuuuX",
+        "condition": "デッキに3枚以上",
+        "effect": "[HP]小アップ"
+      },
+      {
+        "name": "肉薄する戦い",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][近距離攻撃力]小アップ"
+      }
+    ],
+    "impact_area": {
+      "type": "circular",
+      "radius": 1,
+      "centered": true
+    },
+    "illustrator": "ZB",
+    "raw": "近距離 コスト3 gMS-α Red Gundam (0085) 赤いガンダム (0085) 頭頂高 18.0m 本体重量 - 所属 - パイロット シュウジ・イトウ 地上 A 宇宙 S 砂漠 C 水中 C 機動力 260 遠距離攻撃 70 近距離攻撃 300 HP 320 WEAPON MAIN ビーム・サーベル 射程 1 近距離 SUB ビット 射程 4 遠距離 MS ABILITY デコイ【ユニット】 任意発動 特殊(自分) 射程 1 コスト 2 自身の周囲にユニット扱いでロックオンされるデコイを3体配置する。※上限6体まで、効果の対象やユニット数には含まれない。 LINK ABILITY GQuuuuuuX デッキに3枚以上 [HP]小アップ 肉薄する戦い デッキに4枚以上 [機動力][近距離攻撃力]小アップ IMPACT AREA SPECIAL ATTACK ビーム・サーベル強撃 連携 - 射程 2 連携 - 射程 2 UNITED SP 単体(敵) 射程 2 SPコスト 3400 / 成功 - 戦闘体に格闘攻撃でダメージを与える。 / - illust ZB BANDAI MADE IN JAPAN"
+  },
+  "ocr_timestamp": "2025-06-28T01:58:48.404973",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli",
+  "_fix_history": [
+    {
+      "timestamp": "2026-03-03T23:45:45",
+      "changes": [
+        "ms_ability.name: \"デコイ【ユニット】\" → \"デコイ[ユニット]\""
+      ]
+    }
+  ],
+  "_fixed": true
+}

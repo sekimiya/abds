@@ -1,0 +1,94 @@
+{
+  "card_number": "VE01-021",
+  "card_name": "デスティニーガンダムSpecⅡ",
+  "series": "WAVECHOES SEASON:01",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE01-021.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE01-021_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "VE01-021",
+    "type": "MS",
+    "card_label": {
+      "class": "機動",
+      "cost_label": "コスト4"
+    },
+    "name": "デスティニーガンダムSpecⅡ",
+    "model": "ZGMF-A42S2 DESTINY GUNDAM SPECⅡ",
+    "cost": 4,
+    "category": "機動",
+    "affiliation": "コンパス",
+    "pilot": "シン・アスカ",
+    "stats": {
+      "height": "18.08m",
+      "weight": "79.44t",
+      "mobility": 250,
+      "ranged_attack": 330,
+      "melee_attack": 80,
+      "hp": 340
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "B",
+      "water": "A"
+    },
+    "weapon": {
+      "main": {
+        "name": "高エネルギー長射程ビーム砲",
+        "range": 4,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "アロンダイトビームソード",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "縛射",
+      "activation": "任意発動",
+      "target": "単体(敵)",
+      "range": 4,
+      "cost": 3,
+      "description": "ロックオン中の敵ユニットに単体攻撃を行いダメージを与え、一定時間スタンさせる。"
+    },
+    "link_ability": [
+      {
+        "name": "SEED FREEDOM",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "高エネルギー長射程ビーム砲",
+      "target": "単体(敵)",
+      "range": 4,
+      "sp_cost": 2,
+      "power": 3100,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "echoes_beat": {
+        "eb_type": "sp",
+        "eb_name": "DUPE粒子分身連撃 Lv.3",
+        "eb_level": 3,
+        "eb_note": "ECHOES BEAT Lv.を下げることで、共鳴戦術技が発動する。",
+        "eb_target": "単体(敵)",
+        "eb_range": 4,
+        "eb_power": 4600,
+        "eb_description": "EBLv.を3下げる。敵単体に格闘攻撃でダメージを与える。出撃時1度のみ使用可能。"
+      },
+      "united_sp": null,
+      "sp_type": "ECHOES BEAT SP"
+    },
+    "rarity": "R",
+    "illustrator": "SOEZY",
+    "raw": ""
+  },
+  "ocr_raw_file": "WAVECHOES_SEASON_01_VE01-021_デスティニーガンダムSpecⅡ_ocr_raw.json",
+  "ocr_timestamp": "2026-03-28T07:21:38.485067",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

@@ -1,0 +1,83 @@
+{
+  "card_number": "LXR04-005",
+  "card_name": "フォースインパルスガンダム",
+  "series": "リンクステージレア4弾",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LXR04-005.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LXR04-005_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "LXR04-005",
+    "type": "MS",
+    "card_label": {
+      "class": "機動",
+      "cost_label": "コスト4"
+    },
+    "name": "フォースインパルスガンダム",
+    "model": "ZGMF-X56S/α FORCE IMPULSE GUNDAM",
+    "cost": 4,
+    "category": "SEED DESTINY",
+    "affiliation": "ザフト",
+    "pilot": "シン・アスカ",
+    "stats": {
+      "height": "18.41m",
+      "weight": "78.3t",
+      "mobility": 320,
+      "ranged_attack": 320,
+      "melee_attack": 170,
+      "hp": 390
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "C",
+      "water": "A"
+    },
+    "weapon": {
+      "main": {
+        "name": "高エネルギービームライフル",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ヴァジュラビームサーベル",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "迅舞",
+      "activation": "任意発動",
+      "target": "自分",
+      "range": null,
+      "cost": 4,
+      "description": "一定時間、回避時に回避攻撃が発生する。機動力が高い程、回避の発生率が上昇する。"
+    },
+    "link_ability": [
+      {
+        "name": "SEED DESTINY",
+        "condition": "デッキに3枚以上",
+        "effect": "[HP]小アップ"
+      },
+      {
+        "name": "戦いの運命",
+        "condition": "デッキに2枚以上",
+        "effect": "[機動力][HP]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "エクスカリバー突撃",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3500,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "LX",
+    "illustrator": "PLANETA_Yamashita",
+    "raw": "機動　コスト4　MS\nZGMF-X56S/α FORCE IMPULSE GUNDAM\nフォースインパルスガンダム\n\n全高　18.41m\n本体重量　78.3t\n所属　ザフト\nパイロット　シン・アスカ\n\n地上 A　宇宙 S　砂漠 C　水中 A\n機動力　320\n遠距離攻撃　320\n近距離攻撃　170\nHP　390\n\nWEAPON\nMAIN　高エネルギービームライフル　射程 3　遠距離\nSUB　ヴァジュラビームサーベル　射程 1　近距離\n\nMS ABILITY\n迅舞\n任意発動　自分　射程 ー　コスト 4\n一定時間、回避時に回避攻撃が発生する。機動力が高い程、回避の発生率が上昇する。\n\nLINK ABILITY\nSEED DESTINY　デッキに3枚以上\n[HP]小アップ\n\n戦いの運命　デッキに2枚以上\n[機動力][HP]小アップ\n\nSPECIAL ATTACK\nエクスカリバー突撃\n単体(敵)　射程 3\nSPコスト 2　威力 3500\n敵単体に格闘攻撃でダメージを与える。\n\nillust. PLANETA_Yamashita\n©創通・サンライズ\nBANDAI MADE IN JAPAN\nLXR04-005　LX"
+  },
+  "ocr_raw_file": "リンクステージレア4弾_LXR04-005_フォースインパルスガンダム_ocr_raw.json",
+  "ocr_timestamp": "2026-03-07T13:52:53.159010",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

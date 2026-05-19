@@ -1,0 +1,83 @@
+{
+  "card_number": "PR-210",
+  "card_name": "ペイルライダー",
+  "series": "プロモーション",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-210.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-210_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "PR-210",
+    "type": "MS",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト3"
+    },
+    "name": "ペイルライダー",
+    "model": "RX-80PR PALE RIDER",
+    "cost": 3,
+    "category": "MISSING LINK",
+    "affiliation": "地球連邦軍",
+    "pilot": "クロエ・クローチェ",
+    "stats": {
+      "height": "18.0m",
+      "weight": "43.7t",
+      "mobility": 200,
+      "ranged_attack": 110,
+      "melee_attack": 320,
+      "hp": 320
+    },
+    "terrain_compatibility": {
+      "ground": "S",
+      "space": "B",
+      "desert": "A",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "ビーム・サーベルニ刀流",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "頭部バルカン砲",
+        "range": 2,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "双甲",
+      "activation": "任意発動",
+      "target": "特殊(自分)",
+      "range": null,
+      "cost": 4,
+      "description": "指定した味方ユニットの範囲内に移動後、一定時間連携状態となり、自身と連携中の味方が受けるダメージを軽減する。"
+    },
+    "link_ability": [
+      {
+        "name": "機動戦士ガンダム外伝",
+        "condition": "デッキに2枚以上",
+        "effect": "[近距離攻撃力]小アップ"
+      },
+      {
+        "name": "肉薄する戦い",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ビーム・サーベルニ刀流強撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3400,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "PR",
+    "illustrator": "S Kei",
+    "raw": "近距離 コスト3\nRX-80PR PALE RIDER\nペイルライダー\n\n全高 18.0m\n本体重量 43.7t\n所属 地球連邦軍\nパイロット クロエ・クローチェ\n\n地上 S 宇宙 B 砂漠 A 水中 C\n機動力 200\n遠距離攻撃 110\n近距離攻撃 320\nHP 320\n\nWEAPON\nMAIN ビーム・サーベルニ刀流 射程 1 近距離\nSUB 頭部バルカン砲 射程 2 遠距離\n\nMS ABILITY\n双甲\n任意発動 特殊(自分) 射程 ー コスト 4\n指定した味方ユニットの範囲内に移動後、一定時間連携状態となり、自身と連携中の味方が受けるダメージを軽減する。\n\nLINK ABILITY\n機動戦士ガンダム外伝 デッキに2枚以上\n[近距離攻撃力]小アップ\n\n肉薄する戦い デッキに4枚以上\n[機動力][近距離攻撃力]小アップ\n\nSPECIAL ATTACK UNITED SP\nビーム・サーベルニ刀流強撃 ー\n連携 ー 連携 ー\n連携 ー 連携 ー\n単体(敵) 射程 2 ー 射程 ー\nSPコスト 2 威力 3400 / ー\n敵単体に格闘攻撃でダメージを与える。\n／ー\n\nillust. S Kei\n©創通・サンライズ\nBANDAI MADE IN JAPAN\nNOT FOR SALE\nPR-210 PR"
+  },
+  "ocr_raw_file": "プロモーション_PR-210_ペイルライダー_ocr_raw.json",
+  "ocr_timestamp": "2026-03-03T22:40:19.411920",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

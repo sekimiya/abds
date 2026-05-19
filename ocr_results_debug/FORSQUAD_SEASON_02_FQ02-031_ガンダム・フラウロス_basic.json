@@ -1,0 +1,84 @@
+{
+  "card_number": "FQ02-031",
+  "card_name": "ガンダム・フラウロス",
+  "series": "FORSQUAD SEASON:02",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-031.jpg?v9",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-031_b.jpg?v9",
+  "ocr_data": {
+    "card_id": "FQ02-031",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト5"
+    },
+    "name": "ガンダム・フラウロス",
+    "model": "ASW-G-64 GUNDAM FLAUROS",
+    "cost": 5,
+    "category": "遠距離",
+    "pilot": "ノルバ・シノ",
+    "stats": {
+      "height": "17.8m",
+      "weight": "29.9t",
+      "mobility": 270,
+      "ranged_attack": 560,
+      "melee_attack": 60,
+      "hp": 510
+    },
+    "terrain_compatibility": {
+      "ground": "S",
+      "space": "A",
+      "desert": "A",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "背部レールガン",
+        "range": 4,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "アサルトナイフ",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "連射",
+      "type": "任意発動",
+      "range": 4,
+      "cost": 3,
+      "description": "ロックオン中の敵ユニットに単体攻撃を行いダメージを与え、一定時間スタンさせる。"
+    },
+    "link_ability": [
+      {
+        "name": "鉄血のオルフェンズ",
+        "condition": "デッキに3枚以上",
+        "effect": "「遠距離攻撃力」「近距離攻撃力」小アップ"
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "「遠距離攻撃力」「近距離攻撃力」小アップ"
+      }
+    ],
+    "impact_area": {
+      "type": "circular",
+      "radius": 1,
+      "centered": true
+    },
+    "illustrator": "toriyufu",
+    "raw": "遠距離 コスト5\nASW-G-64 GUNDAM FLAUROS\nガンダム・フラウロス\n頭頂高 17.8m\n本体重量 29.9t\n所属 鉄華団\nパイロット ノルバ・シノ\n地上 S 宇宙 A 砂漠 A 水中 C\n機動力 270\n遠距離攻撃 560\n近距離攻撃 60\nHP 510\nWEAPON\nMAIN 背部レールガン\n射程 4 遠距離\nSUB アサルトナイフ\n射程 1 近距離\nMS ABILITY\n練射\n任意発動 単体(敵) 射程 4 コスト 3\nロックオン中の敵ユニットに単体攻撃を行いダメージを与え、一定時間スタンさせる。\nLINK ABILITY\n鉄血のオルフェンズ デッキに3枚以上\n「遠距離攻撃力」「近距離攻撃力」小アップ\n戦況を変える力 デッキに4枚以上\n「遠距離攻撃力」「近距離攻撃力」小アップ\nIMPACT AREA\nSPECIAL ATTACK\nUNITED SP\n背部レールガン練射\n通常\n通常\n通常\n貫通(敵) 射程 4\n消費コスト 2 威力 3100\n射線上の敵に貫通射撃でダメージを与える。/\nillust toriyufu\n©創通・サンライズ\nBANDAI MADE IN JAPAN\nFQ02-031"
+  },
+  "ocr_timestamp": "2025-06-28T01:50:22.254858",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli",
+  "_fix_history": [
+    {
+      "timestamp": "2026-03-03T23:46:31",
+      "changes": [
+        "ms_ability.name: \"練射\" → \"連射\""
+      ]
+    }
+  ],
+  "_fixed": true
+}

@@ -1,0 +1,83 @@
+{
+  "card_number": "AB03-062",
+  "card_name": "ガンダム・キマリス",
+  "series": "SEASON:03",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB03-062.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB03-062_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "AB03-062",
+    "type": "MS",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト5"
+    },
+    "name": "ガンダム・キマリス",
+    "model": "ASW-G-66 GUNDAM KIMARIS",
+    "cost": 5,
+    "category": "近距離",
+    "affiliation": "ギャラルホルン",
+    "pilot": "ガエリオ・ボードウィン",
+    "stats": {
+      "height": "19.3m",
+      "weight": "31.7t",
+      "mobility": 260,
+      "ranged_attack": 90,
+      "melee_attack": 320,
+      "hp": 230
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "C",
+      "water": null
+    },
+    "weapon": {
+      "main": {
+        "name": "グングニール",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "グングニール(120mm砲)",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "強化[近接]",
+      "activation": "任意発動",
+      "target": "自分",
+      "range": null,
+      "cost": 4,
+      "description": "30秒間、自身の[機動力][近距離攻撃力]を中アップする。"
+    },
+    "link_ability": [
+      {
+        "name": "鉄血のオルフェンズ",
+        "condition": "デッキに3枚以上",
+        "effect": "[近距離攻撃力]小アップ"
+      },
+      {
+        "name": "間合いを詰めた接近戦",
+        "condition": "デッキに2枚以上",
+        "effect": "[近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "グングニール強撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3100,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "R",
+    "illustrator": "gomibako",
+    "raw": "MS\n\n近距離 コスト5\nASW-G-66 GUNDAM KIMARIS\nガンダム・キマリス\n\n全高 19.3m\n本体重量 31.7t\n所属 ギャラルホルン\nパイロット ガエリオ・ボードウィン\n\n地上 A 宇宙 S 砂漠 C\n機動力 260\n遠距離攻撃 90\n近距離攻撃 320\nHP 230\n\n鉄血のオルフェンズ [アイコン:作品アイコン]\n\nWEAPON\nMAIN グングニール 射程 1 近距離\nSUB グングニール(120mm砲) 射程 3 遠距離\n\nLINK ABILITY\n鉄血のオルフェンズ デッキに3枚以上\n[近距離攻撃力]小アップ\n\n間合いを詰めた接近戦 デッキに2枚以上\n[近距離攻撃力]小アップ\n\nMS ABILITY\n強化[近接]\n任意発動 自分 射程 - コスト 4\n\n30秒間、自身の[機動力][近距離攻撃力]を中アップする。\n\nIMPACT AREA\n[アイコン:緑丸 中央]\n[アイコン:黄三角 右下]\n\nSPECIAL ATTACK\nグングニール強撃\n単体(敵) 射程 2\nSPコスト 2 威力 3100\n\n敵単体に格闘攻撃でダメージを与える。\n\nillust gomibako\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\nAB03-062 R"
+  },
+  "ocr_raw_file": "SEASON_03_AB03-062_ガンダム・キマリス_ocr_raw.json",
+  "ocr_timestamp": "2026-02-23T15:17:29.654107",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli"
+}

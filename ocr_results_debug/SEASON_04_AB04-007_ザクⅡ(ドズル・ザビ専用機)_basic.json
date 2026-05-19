@@ -1,0 +1,83 @@
+{
+  "card_number": "AB04-007",
+  "card_name": "ザクⅡ(ドズル・ザビ専用機)",
+  "series": "SEASON:04",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB04-007.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB04-007_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "AB04-007",
+    "type": "MS",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト7"
+    },
+    "name": "ザクⅡ（ドズル・ザビ専用機）",
+    "model": "MS-06F DOZLE'S ZAKUⅡ",
+    "cost": 7,
+    "category": "近距離",
+    "affiliation": "ジオン公国軍",
+    "pilot": "ドズル・ザビ",
+    "stats": {
+      "height": "17.5m",
+      "weight": "56.2t",
+      "mobility": 330,
+      "ranged_attack": 180,
+      "melee_attack": 340,
+      "hp": 350
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "A",
+      "desert": "C",
+      "water": null
+    },
+    "weapon": {
+      "main": {
+        "name": "大型ヒート・ホーク",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "ジャイアント・バズ",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "強撃",
+      "activation": "任意発動",
+      "target": "単体(敵)",
+      "range": 1,
+      "cost": 3,
+      "description": "ロックオン中の敵に単体攻撃でダメージを与える。"
+    },
+    "link_ability": [
+      {
+        "name": "MSV",
+        "condition": "デッキに2枚以上",
+        "effect": "[遠距離攻撃力]小アップ"
+      },
+      {
+        "name": "専用機の実力",
+        "condition": "デッキに2枚以上",
+        "effect": "[近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "大型ヒート・ホーク強撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3400,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "R",
+    "illustrator": "Yousuke Ishibashi",
+    "raw": "MS\n\n近距離 コスト7\n\nMS-06F DOZLE'S ZAKUⅡ\nザクⅡ（ドズル・ザビ専用機）\n\n全高 17.5m\n本体重量 56.2t\n所属 ジオン公国軍\nパイロット ドズル・ザビ\n\n地上 A 宇宙 A 砂漠 C\n[アイコン:ジオン紋章]\n機動力 330\n遠距離攻撃 180\n近距離攻撃 340\nHP 350\n\nWEAPON\n\nMAIN 大型ヒート・ホーク 射程 1 近距離\nSUB ジャイアント・バズ 射程 3 遠距離\n\nLINK ABILITY\n\nMSV デッキに2枚以上\n[遠距離攻撃力]小アップ\n\n専用機の実力 デッキに2枚以上\n[近距離攻撃力]小アップ\n\nMS ABILITY\n\n強撃\n任意発動 単体(敵) 射程 1 コスト 3\n\nロックオン中の敵に単体攻撃でダメージを与える。\n\nSPECIAL ATTACK\n\n大型ヒート・ホーク強撃\n単体(敵) 射程 2\nSPコスト 2 威力 3400\n\n敵単体に格闘攻撃でダメージを与える。\n\nIMPACT AREA\n\n[アイコン:3x5グリッド、中央に緑丸2個(2行目3列目、4行目3列目)、5行目3列目に下向き三角]\n\nMOBILE SUIT VARIATION\nMSV\n\nillust Yousuke Ishibashi\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム\nARSENAL BASE\n\nAB04-007 R"
+  },
+  "ocr_raw_file": "SEASON_04_AB04-007_ザクⅡ(ドズル・ザビ専用機)_ocr_raw.json",
+  "ocr_timestamp": "2026-02-23T15:20:12.542499",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli"
+}

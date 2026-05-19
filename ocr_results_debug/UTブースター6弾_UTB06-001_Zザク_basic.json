@@ -1,0 +1,83 @@
+{
+  "card_number": "UTB06-001",
+  "card_name": "Zザク",
+  "series": "UTブースター6弾",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UTB06-001.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UTB06-001_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "UTB06-001",
+    "type": "MS",
+    "card_label": {
+      "class": "機動",
+      "cost_label": "コスト3"
+    },
+    "name": "Zザク",
+    "model": "MSZ-006 Z ZAKU",
+    "cost": 3,
+    "category": "機動",
+    "affiliation": "エゥーゴ",
+    "pilot": "イーノ・アッバーブ",
+    "stats": {
+      "height": "19.85m",
+      "weight": "28.7t",
+      "mobility": 240,
+      "ranged_attack": 100,
+      "melee_attack": 240,
+      "hp": 370
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "C",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "ビーム・サーベル",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "ビーム・ライフル",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "再縮",
+      "activation": "任意発動",
+      "target": "範囲(味方)",
+      "range": null,
+      "cost": 2,
+      "description": "自身を中心とした大範囲内にいる、自身を除く味方ユニットのMSアビリティのクールタイムを、一定時間短縮する。"
+    },
+    "link_ability": [
+      {
+        "name": "機動戦士ガンダムZZ",
+        "condition": "デッキに3枚以上",
+        "effect": "[HP]小アップ"
+      },
+      {
+        "name": "固めた装甲",
+        "condition": "デッキに2枚以上",
+        "effect": "[HP]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ビーム・サーベル強撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3400,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "M",
+    "illustrator": "K2 Shoukai",
+    "raw": "MS\n\n機動　コスト3\n\nMSZ-006 Z ZAKU\nZザク\n\n頭頂高　19.85m\n本体重量　28.7t\n所属　エゥーゴ\nパイロット　イーノ・アッバーブ\n\n地上 A　宇宙 S　砂漠 C　水中 C\n\n機動力 240\n遠距離攻撃 100\n近距離攻撃 240\nHP 370\n\nWEAPON\nMAIN ビーム・サーベル　射程 1　近距離\nSUB ビーム・ライフル　射程 3　遠距離\n\nLINK ABILITY\n機動戦士ガンダムZZ　デッキに3枚以上\n[HP]小アップ\n\n固めた装甲　デッキに2枚以上\n[HP]小アップ\n\nMS ABILITY\n再縮\n任意発動　範囲(味方)　射程 ー　コスト 2\n自身を中心とした大範囲内にいる、自身を除く味方ユニットのMSアビリティのクールタイムを、一定時間短縮する。\n\nSPECIAL ATTACK　　UNITED SP\nビーム・サーベル強撃　ー\n連携 ー　連携 ー\n連携 ー　連携 ー\n単体(敵)　射程 2　ー　射程 ー\nSPコスト 2　威力 3400 / ー\n敵単体に格闘攻撃でダメージを与える。\n/ ー\n\nIMPACT AREA\n[アイコン:自機前方円形範囲]\n\nillust K2 Shoukai\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\nUTB06-001 M"
+  },
+  "ocr_raw_file": "UTブースター6弾_UTB06-001_Zザク_ocr_raw.json",
+  "ocr_timestamp": "2026-02-28T03:42:59.217263",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

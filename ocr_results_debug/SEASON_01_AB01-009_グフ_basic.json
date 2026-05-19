@@ -1,0 +1,78 @@
+{
+  "card_number": "AB01-009",
+  "card_name": "グフ",
+  "series": "SEASON:01",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB01-009.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB01-009_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "AB01-009",
+    "type": "MS",
+    "card_label": {
+      "class": "機動",
+      "cost_label": "コスト3"
+    },
+    "name": "グフ",
+    "model": "MS-07B GOUF",
+    "cost": 3,
+    "category": "機動",
+    "affiliation": "ジオン公国軍",
+    "pilot": "ランバ・ラル",
+    "stats": {
+      "height": "18.2m",
+      "weight": "58.5t",
+      "mobility": 210,
+      "ranged_attack": 190,
+      "melee_attack": 150,
+      "hp": 170
+    },
+    "terrain_compatibility": {
+      "ground": "S",
+      "space": "C",
+      "desert": "A",
+      "water": null
+    },
+    "weapon": {
+      "main": {
+        "name": "フィンガー・バルカン",
+        "range": 2,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ヒート・サーベル",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "補給",
+      "activation": "任意発動",
+      "target": "範囲(味方)",
+      "range": null,
+      "cost": 4,
+      "description": "自身を中心とした大範囲の味方ユニットのHPを中回復する。"
+    },
+    "link_ability": [
+      {
+        "name": "機動戦士ガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "フィンガー・バルカン撃射",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3200,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "R",
+    "illustrator": "Hayaken sarena",
+    "raw": "MS\n\n機動 コスト3\n\nMS-07B GOUF\nグフ\n\n全高 18.2m\n本体重量 58.5t\n所属 ジオン公国軍\nパイロット ランバ・ラル\n\n[アイコン:機動戦士ガンダム]\n\n地上 S 宇宙 C 砂漠 A\n機動力 210\n遠距離攻撃 190\n近距離攻撃 150\nHP 170\n\nWEAPON\n\nMAIN フィンガー・バルカン 射程 2 遠距離\nSUB ヒート・サーベル 射程 1 近距離\n\nLINK ABILITY\n\n機動戦士ガンダム デッキに3枚以上\n[機動力]小アップ\n\nMS ABILITY\n\n補給\n任意発動 範囲(味方) 射程 — コスト 4\n\n自身を中心とした大範囲の味方ユニットのHPを中回復する。\n\nSPECIAL ATTACK\n\nフィンガー・バルカン撃射\n単体(敵) 射程 3\nSPコスト 2 威力 3200\n\n敵単体に射撃攻撃でダメージを与える。\n\nIMPACT AREA\n\n[アイコン:円形範囲・中央やや上に小円、中央下部に大円と三角マーカー]\n\nillust Hayaken sarena\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nAB01-009 R"
+  },
+  "ocr_raw_file": "SEASON_01_AB01-009_グフ_ocr_raw.json",
+  "ocr_timestamp": "2026-02-23T12:02:53.394912",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli"
+}

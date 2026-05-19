@@ -1,0 +1,84 @@
+{
+  "card_number": "VE01-018",
+  "card_name": "ストライクフリーダムガンダム弐式",
+  "series": "WAVECHOES SEASON:01",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE01-018.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE01-018_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "VE01-018",
+    "type": "MS",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト5"
+    },
+    "name": "ストライクフリーダムガンダム弐式",
+    "model": "ZGMF/A-262B STRIKE FREEDOM GUNDAM TYPE\u2161",
+    "cost": 5,
+    "category": "近距離",
+    "affiliation": "コンパス",
+    "pilot": "キラ・ヤマト、アスラン・ザラ",
+    "stats": {
+      "height": "18.88m",
+      "weight": "82.09t",
+      "mobility": 260,
+      "ranged_attack": 90,
+      "melee_attack": 420,
+      "hp": 380
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "A",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "ビームサーベル アクータラクルタ",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "腰部超高出力ビーム砲×2＆スーパードラグーンモビルビット兵装システム",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "撃滅",
+      "activation": "任意発動",
+      "target": "単体(敵)",
+      "range": 2,
+      "cost": 4,
+      "description": "ロックオン中の敵に単体攻撃でダメージを与える。この攻撃で敵ユニットを撃破した場合、敵ユニットの修理時間を延長させる。"
+    },
+    "link_ability": [
+      {
+        "name": "SEED FREEDOM",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ビームサーベル アクータラクルタ斬撃",
+      "target": "単体(敵)",
+      "range": null,
+      "sp_cost": 2,
+      "power": 3400,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "echoes_beat": null,
+      "united_sp": null
+    },
+    "rarity": "R",
+    "illustrator": "SOEZ",
+    "raw": ""
+  },
+  "ocr_raw_file": "WAVECHOES_SEASON_01_VE01-018_ストライクフリーダムガンダム弐式_ocr_raw.json",
+  "ocr_timestamp": "2026-03-30T00:53:00.000000",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

@@ -1,0 +1,90 @@
+{
+  "card_number": "FQ04-007",
+  "card_name": "ユニコーンガンダム(覚醒)",
+  "series": "FORSQUAD SEASON:04",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ04-007.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ04-007_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "FQ04-007",
+    "type": "MS",
+    "card_label": {
+      "class": "機動",
+      "cost_label": "コスト2"
+    },
+    "name": "ユニコーンガンダム(覚醒)",
+    "model": "RX-0 UNICORN GUNDAM[AWAKENED]",
+    "cost": 2,
+    "category": "機動",
+    "affiliation": "ビスト財団",
+    "pilot": "バナージ・リンクス",
+    "stats": {
+      "height": "21.7m",
+      "weight": "23.7t",
+      "mobility": 180,
+      "ranged_attack": 210,
+      "melee_attack": 90,
+      "hp": 270
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "C",
+      "water": "B"
+    },
+    "weapon": {
+      "main": {
+        "name": "シールド・ガトリング",
+        "range": 4,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ビーム・トンファー",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "精密射撃",
+      "activation": "任意発動",
+      "target": "単体(敵)",
+      "range": 4,
+      "cost": 3,
+      "description": "ロックオン中の敵に単体攻撃でダメージを与える。"
+    },
+    "link_ability": [
+      {
+        "name": "ガンダムUC",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "的確な一撃",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][遠距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "シールド・ガトリング撃射",
+      "target": "単体(敵)",
+      "range": 4,
+      "sp_cost": 2,
+      "power": 2900,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "united_sp": {
+        "name": "ツイン・ビーム・マグナム",
+        "condition": "SQUAD RUSH発動中に1度だけ、SQUAD SPを使用できる。",
+        "target": "貫通(敵)",
+        "range": 4,
+        "power": 6300,
+        "description": "射線上の敵に貫通射撃でダメージを与える。"
+      }
+    },
+    "rarity": "C",
+    "illustrator": "sakusaku sakurai",
+    "raw": "MS\n\n機動　コスト2\n\nRX-0 UNICORN GUNDAM[AWAKENED]\nユニコーンガンダム(覚醒)\n\n頭頂高　21.7m\n本体重量　23.7t\n所属　ビスト財団\nパイロット　バナージ・リンクス\n\n地上 A　宇宙 S　砂漠 C　水中 B\n\n機動力 180\n遠距離攻撃 210\n近距離攻撃 90\nHP 270\n\nWEAPON\nMAIN シールド・ガトリング　射程 4　遠距離\nSUB ビーム・トンファー　射程 1　近距離\n\nLINK ABILITY\nガンダムUC　デッキに3枚以上\n[機動力]小アップ\n\nMS ABILITY\n精密射撃\n任意発動　単体(敵)　射程 4　コスト 3\nロックオン中の敵に単体攻撃でダメージを与える。\n\n的確な一撃　デッキに4枚以上\n[機動力][遠距離攻撃力]小アップ\n\nSPECIAL ATTACK ▶ SQUAD SP\nシールド・ガトリング撃射　ツイン・ビーム・マグナム\nSQUAD RUSH発動中に1度だけ、SQUAD SPを使用できる。\n単体(敵)　射程 4　貫通(敵)　射程 4\nSPコスト 2　威力 2900 / 6300\n\n敵単体に射撃攻撃でダメージを与える。／射線上の敵に貫通射撃でダメージを与える。\n\nIMPACT AREA\n[アイコン:前方中距離に縦長の長方形範囲]\n\nillust sakusaku sakurai\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nFQ04-007　C"
+  },
+  "ocr_raw_file": "FORSQUAD_SEASON_04_FQ04-007_ユニコーンガンダム(覚醒)_ocr_raw.json",
+  "ocr_timestamp": "2026-02-24T18:20:17.939822",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

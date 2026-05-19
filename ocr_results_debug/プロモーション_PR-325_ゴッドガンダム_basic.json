@@ -1,0 +1,83 @@
+{
+  "card_number": "PR-325",
+  "card_name": "ゴッドガンダム",
+  "series": "プロモーション",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-325.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-325_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "PR-325",
+    "type": "MS",
+    "card_label": {
+      "class": "機動",
+      "cost_label": "コスト3"
+    },
+    "name": "ゴッドガンダム",
+    "model": "GF13-017NJII BURNING GUNDAM",
+    "cost": 3,
+    "category": "Gガンダム",
+    "affiliation": "ネオジャパン",
+    "pilot": "ドモン・カッシュ",
+    "stats": {
+      "height": "16.6m",
+      "weight": "7.5t",
+      "mobility": 260,
+      "ranged_attack": 300,
+      "melee_attack": 70,
+      "hp": 320
+    },
+    "terrain_compatibility": {
+      "ground": "S",
+      "space": "A",
+      "desert": "A",
+      "water": "B"
+    },
+    "weapon": {
+      "main": {
+        "name": "爆熱ゴッドフィンガー(照射)",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "格闘",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "縛射",
+      "activation": "任意発動",
+      "target": "単体(敵)",
+      "range": 3,
+      "cost": 3,
+      "description": "ロックオン中の敵ユニットに単体攻撃を行いダメージを与え、一定時間スタンさせる。"
+    },
+    "link_ability": [
+      {
+        "name": "Gガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "爆熱ゴッドフィンガー撃射",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3300,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "PR",
+    "illustrator": "Hayaken-sarena",
+    "raw": "機動　コスト3　MS\nGF13-017NJII BURNING GUNDAM\nゴッドガンダム\n\n頭頂高　16.6m\n本体重量　7.5t　地上 S　宇宙 A　砂漠 A　水中 B\n所属　ネオジャパン　機動力 260\nパイロット　ドモン・カッシュ　遠距離攻撃 300\n近距離攻撃 70\nHP 320\n\nWEAPON\nMAIN　爆熱ゴッドフィンガー(照射)　射程 3　遠距離\nSUB　格闘　射程 1　近距離\n\nMS ABILITY\n縛射\n任意発動　単体(敵)　射程 3　コスト 3\nロックオン中の敵ユニットに単体攻撃を行いダメージを与え、一定時間スタンさせる。\n\nLINK ABILITY\nGガンダム　デッキに3枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\n多彩な戦術　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nIMPACT AREA\n\nSPECIAL ATTACK　UNITED SP\n爆熱ゴッドフィンガー撃射　ー\n連携 ー　連携 ー\n連携 ー　連携 ー\n単体(敵)　射程 3　ー　射程 ー\nSPコスト 2　威力 3300 / ー\n敵単体に射撃攻撃でダメージを与える。\n／ー\n\nillust. Hayaken-sarena\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n\nNOT FOR SALE\nPR-325　PR"
+  },
+  "ocr_raw_file": "プロモーション_PR-325_ゴッドガンダム_ocr_raw.json",
+  "ocr_timestamp": "2026-03-03T18:56:22.967799",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

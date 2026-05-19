@@ -1,0 +1,78 @@
+{
+  "card_number": "LX03-062",
+  "card_name": "ガンダム・ファラクト",
+  "series": "LINXTAGE SEASON:03",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX03-062.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX03-062_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "LX03-062",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト5"
+    },
+    "name": "ガンダム・ファラクト",
+    "model": "FP/A-77 GUNDAM PHARACT",
+    "cost": 5,
+    "category": "MS",
+    "affiliation": "ベイル・テクノロジーズ",
+    "pilot": "エラン・ケレス",
+    "stats": {
+      "height": "19.1m",
+      "weight": "57.1t",
+      "mobility": 120,
+      "ranged_attack": 250,
+      "melee_attack": 80,
+      "hp": 250
+    },
+    "terrain_compatibility": {
+      "ground": "B",
+      "space": "S",
+      "desert": "C",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "ビームアルケビュース",
+        "range": 4,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ビームサーベル",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "妨害[近距離]",
+      "activation": "出撃時発動",
+      "target": "範囲（敵）",
+      "range": null,
+      "cost": null,
+      "description": "20秒間、自身を中心とした大範囲内の敵ユニットの[近距離攻撃力]を小ダウンする。"
+    },
+    "link_ability": [
+      {
+        "name": "水星の魔女",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ビームアルケビュース撃射",
+      "target": "単体（敵）",
+      "range": 4,
+      "sp_cost": 2,
+      "power": 3100,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "C",
+    "illustrator": "Masked",
+    "raw": "遠距離　コスト5　MS\nFP/A-77 GUNDAM PHARACT\nガンダム・ファラクト\n水星の魔女\n\n頭頂高　19.1m\n本体重量　57.1t\n所属　ベイル・テクノロジーズ\nパイロット　エラン・ケレス\n\n地上 B　宇宙 S　砂漠 C　水中 C\n機動力　120\n遠距離攻撃　250\n近距離攻撃　80\nHP　250\n\nWEAPON\nMAIN　ビームアルケビュース　射程 4　遠距離\nSUB　ビームサーベル　射程 1　近距離\n\nMS ABILITY\n妨害[近距離]\n出撃時発動　範囲（敵）　射程 ー　コスト ー\n20秒間、自身を中心とした大範囲内の敵ユニットの[近距離攻撃力]を小ダウンする。\n\nLINK ABILITY\n水星の魔女　デッキに3枚以上\n[機動力]小アップ\n\nー　ー　ー\nー\n\nIMPACT AREA\n\nSPECIAL ATTACK\nビームアルケビュース撃射\n単体（敵）　射程 4\nSPコスト 2　威力 3100\n敵単体に射撃攻撃でダメージを与える。\n\nillust　Masked\n©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\nLX03-062　C"
+  },
+  "ocr_raw_file": "LINXTAGE_SEASON_03_LX03-062_ガンダム・ファラクト_ocr_raw.json",
+  "ocr_timestamp": "2026-03-07T17:38:01.694626",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

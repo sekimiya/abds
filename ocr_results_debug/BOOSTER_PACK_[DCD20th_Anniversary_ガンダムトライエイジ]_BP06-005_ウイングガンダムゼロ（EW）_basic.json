@@ -1,0 +1,83 @@
+{
+  "card_number": "BP06-005",
+  "card_name": "ウイングガンダムゼロ（EW）",
+  "series": "BOOSTER PACK [DCD20th Anniversary ガンダムトライエイジ]",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP06-005.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP06-005_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "BP06-005",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト6"
+    },
+    "name": "ウイングガンダムゼロ(EW)",
+    "model": "XXXG-00W0 WING GUNDAM ZERO[EW]",
+    "cost": 6,
+    "category": "遠距離",
+    "affiliation": "ー",
+    "pilot": "ヒイロ・ユイ",
+    "stats": {
+      "height": "16.7m",
+      "weight": "8.0t",
+      "mobility": 280,
+      "ranged_attack": 580,
+      "melee_attack": 130,
+      "hp": 560
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "C",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "ツインバスターライフル",
+        "range": 4,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ビームサーベル",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "練破[範囲]",
+      "activation": "任意発動",
+      "target": "範囲(敵)",
+      "range": 4,
+      "cost": 5,
+      "description": "1回目の発動でチャージ状態になり、2回目の発動で自身を中心とした範囲内の敵にダメージを与える。チャージ時間に応じて、ダメージ値が上昇する。"
+    },
+    "link_ability": [
+      {
+        "name": "トライエイジ",
+        "condition": "デッキに2枚以上",
+        "effect": "[HP]小アップ"
+      },
+      {
+        "name": "的確な一撃",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][遠距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ツインバスターライフル斉射",
+      "target": "範囲(敵)",
+      "range": 4,
+      "sp_cost": 2,
+      "power": 3400,
+      "description": "対象の敵を中心として範囲射撃でダメージを与え、自身に小ダメージ。",
+      "united_sp": null
+    },
+    "rarity": "P",
+    "illustrator": "Eske Yoshinob",
+    "raw": "MS\n\n遠距離　コスト6\n\nXXXG-00W0 WING GUNDAM ZERO[EW]\nウイングガンダムゼロ(EW)\n\n頭頂高　16.7m\n本体重量　8.0t\n所属　ー\nパイロット　ヒイロ・ユイ\n\n地上 A　宇宙 S　砂漠 C　水中 C\n\n機動力 280\n遠距離攻撃 580\n近距離攻撃 130\nHP 560\n\nWEAPON\nMAIN　ツインバスターライフル　射程 4　遠距離\nSUB　ビームサーベル　射程 1　近距離\n\nLINK ABILITY\nトライエイジ　デッキに2枚以上\n[HP]小アップ\n\n的確な一撃　デッキに4枚以上\n[機動力][遠距離攻撃力]小アップ\n\nMS ABILITY\n練破[範囲]\n任意発動　範囲(敵)　射程 4　コスト 5\n\n1回目の発動でチャージ状態になり、2回目の発動で自身を中心とした範囲内の敵にダメージを与える。チャージ時間に応じて、ダメージ値が上昇する。\n\nSPECIAL ATTACK　　UNITED SP\nツインバスターライフル斉射\n連携 ー　　連携 ー\n連携 ー　　連携 ー\n範囲(敵)　射程 4　ー　射程 ー\nSPコスト 2　威力 3400 / ー\n\n対象の敵を中心として範囲射撃でダメージを与え、自身に小ダメージ。/ ー\n\nIMPACT AREA\n[アイコン:×マーク中央]\n[アイコン:△マーク下部]\n\nillust Eske Yoshinob\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n\n機動戦士ガンダム ARSENAL BASE®\n\nBP06-005　P"
+  },
+  "ocr_raw_file": "BOOSTER_PACK_[DCD20th_Anniversary_ガンダムトライエイジ]_BP06-005_ウイングガンダムゼロ（EW）_ocr_raw.json",
+  "ocr_timestamp": "2026-02-26T17:44:54.746933",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

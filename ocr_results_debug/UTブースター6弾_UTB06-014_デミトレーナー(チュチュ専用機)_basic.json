@@ -1,0 +1,83 @@
+{
+  "card_number": "UTB06-014",
+  "card_name": "デミトレーナー(チュチュ専用機)",
+  "series": "UTブースター6弾",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UTB06-014.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UTB06-014_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "UTB06-014",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト4"
+    },
+    "name": "デミトレーナー（チュチュ専用機）",
+    "model": "MSJ-105CC CHUCHU'S DEMI TRAINER",
+    "cost": 4,
+    "category": "遠距離",
+    "affiliation": "地球寮",
+    "pilot": "チュアチュリー・パンランチ",
+    "stats": {
+      "height": "17.4m",
+      "weight": "63.5t",
+      "mobility": 230,
+      "ranged_attack": 400,
+      "melee_attack": 100,
+      "hp": 320
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "A",
+      "desert": "C",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "大型ビームライフル",
+        "range": 4,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "格闘",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "縛射",
+      "activation": "任意発動",
+      "target": "単体(敵)",
+      "range": 4,
+      "cost": 3,
+      "description": "ロックオン中の敵ユニットに単体攻撃を行いダメージを与え、一定時間スタンさせる。"
+    },
+    "link_ability": [
+      {
+        "name": "水星の魔女",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "的確な一撃",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][遠距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "大型ビームライフル撃射",
+      "target": "単体(敵)",
+      "range": 4,
+      "sp_cost": 2,
+      "power": 3200,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "M",
+    "illustrator": "Kumagoro",
+    "raw": "MS\n\n遠距離 コスト4\n\nMSJ-105CC CHUCHU'S DEMI TRAINER\nデミトレーナー（チュチュ専用機）\n\n水星の魔女\n\n頭頂高 17.4m\n本体重量 63.5t\n所属 地球寮\nパイロット チュアチュリー・パンランチ\n\n地上 A 宇宙 A 砂漠 C 水中 C\n\n機動力 230\n遠距離攻撃 400\n近距離攻撃 100\nHP 320\n\nWEAPON\nMAIN 大型ビームライフル 射程 4 遠距離\nSUB 格闘 射程 1 近距離\n\nLINK ABILITY\n水星の魔女 デッキに3枚以上\n[機動力]小アップ\n\n的確な一撃 デッキに4枚以上\n[機動力][遠距離攻撃力]小アップ\n\nMS ABILITY\n縛射\n任意発動 単体(敵) 射程 4 コスト 3\nロックオン中の敵ユニットに単体攻撃を行いダメージを与え、一定時間スタンさせる。\n\nIMPACT AREA\n[アイコン:着弾エリア グリッド中央やや下に黄緑マーカー]\n\nSPECIAL ATTACK\n大型ビームライフル撃射\n\nUNITED SP\nー\n\n連携 ー 連携 ー\n連携 ー 連携 ー\n単体(敵) 射程 4 ー 射程 ー\nSPコスト 2 威力 3200 / ー\n\n敵単体に射撃攻撃でダメージを与える。\n/ ー\n\nillust Kumagoro\n©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nUTB06-014 M"
+  },
+  "ocr_raw_file": "UTブースター6弾_UTB06-014_デミトレーナー(チュチュ専用機)_ocr_raw.json",
+  "ocr_timestamp": "2026-02-28T09:21:43.363468",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

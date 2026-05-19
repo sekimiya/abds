@@ -1,0 +1,83 @@
+{
+  "card_number": "LX03-045",
+  "card_name": "ウイニングガンダム",
+  "series": "LINXTAGE SEASON:03",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX03-045.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX03-045_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "LX03-045",
+    "type": "MS",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト4"
+    },
+    "name": "ウイニングガンダム",
+    "model": "SD-237 WINNING GUNDAM",
+    "cost": 4,
+    "category": "ガンダムビルドファイターズトライ",
+    "affiliation": "トライ・ファイターズ",
+    "pilot": "ホシノ・フミナ",
+    "stats": {
+      "height": null,
+      "weight": null,
+      "mobility": 190,
+      "ranged_attack": 70,
+      "melee_attack": 260,
+      "hp": 280
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "A",
+      "desert": "B",
+      "water": "B"
+    },
+    "weapon": {
+      "main": {
+        "name": "バズソー",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "ビームマシンガン",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "補給[弱体化解除]",
+      "activation": "任意発動",
+      "target": "範囲(味方)",
+      "range": null,
+      "cost": 5,
+      "description": "自身を中心とした大範囲の味方ユニットのHPを中回復し、弱体化状態を無効化する。"
+    },
+    "link_ability": [
+      {
+        "name": "トライ",
+        "condition": "デッキに3枚以上",
+        "effect": "[HP]小アップ"
+      },
+      {
+        "name": "迫撃の近距離戦",
+        "condition": "デッキに近距離が2枚以上",
+        "effect": "[近距離攻撃力]中アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "バズソー強撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3300,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "R",
+    "illustrator": "Tonbi Aburaya",
+    "raw": "近距離　コスト4　MS\nSD-237 WINNING GUNDAM\nウイニングガンダム\n\n全高　ー\n本体重量　ー\n所属　トライ・ファイターズ\nパイロット　ホシノ・フミナ\n\n地上 A　宇宙 A　砂漠 B　水中 B\n機動力 190\n遠距離攻撃 70\n近距離攻撃 260\nHP 280\n\nWEAPON\nMAIN バズソー　射程 1　近距離\nSUB ビームマシンガン　射程 3　遠距離\n\nMS ABILITY\n補給[弱体化解除]\n任意発動　範囲(味方)　射程 ー　コスト 5\n自身を中心とした大範囲の味方ユニットのHPを中回復し、弱体化状態を無効化する。\n\nLINK ABILITY\nトライ　デッキに3枚以上\n[HP]小アップ\n\n迫撃の近距離戦　デッキに近距離が2枚以上\n[近距離攻撃力]中アップ\n\nSPECIAL ATTACK\nバズソー強撃\n単体(敵)　射程 2\nSPコスト 2　威力 3300\n敵単体に格闘攻撃でダメージを与える。\n\nillust Tonbi Aburaya\n©創通・サンライズ\nBANDAI MADE IN JAPAN\nLX03-045　R"
+  },
+  "ocr_raw_file": "LINXTAGE_SEASON_03_LX03-045_ウイニングガンダム_ocr_raw.json",
+  "ocr_timestamp": "2026-03-07T17:26:03.701508",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

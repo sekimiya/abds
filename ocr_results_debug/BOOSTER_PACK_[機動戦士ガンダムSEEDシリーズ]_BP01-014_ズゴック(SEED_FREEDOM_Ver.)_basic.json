@@ -1,0 +1,83 @@
+{
+  "card_number": "BP01-014",
+  "card_name": "ズゴック(SEED FREEDOM Ver.)",
+  "series": "BOOSTER PACK [機動戦士ガンダムSEEDシリーズ]",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP01-014.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP01-014_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "BP01-014",
+    "type": "MS",
+    "card_label": {
+      "class": "機動",
+      "cost_label": "コスト3"
+    },
+    "name": "ズゴック（SEED FREEDOM Ver.）",
+    "model": "ZGMF-MM07 Z'GOK[SEED FREEDOM Ver.]",
+    "cost": 3,
+    "category": "MS",
+    "affiliation": "ターミナル",
+    "pilot": "アスラン・ザラ",
+    "stats": {
+      "height": null,
+      "weight": null,
+      "mobility": 200,
+      "ranged_attack": 30,
+      "melee_attack": 150,
+      "hp": 320
+    },
+    "terrain_compatibility": {
+      "ground": "B",
+      "space": "S",
+      "desert": "C",
+      "water": "S"
+    },
+    "weapon": {
+      "main": {
+        "name": "対装甲斬牙爪",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "重粒子力線砲",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "誘導",
+      "activation": "任意発動",
+      "target": "特殊（敵）",
+      "range": null,
+      "cost": 4,
+      "description": "25秒間、自身をロックオン距離内に捉えている敵ユニットのターゲットを自身に集める。"
+    },
+    "link_ability": [
+      {
+        "name": "SEED FREEDOM",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "対装甲斬牙爪強撃",
+      "target": "単体（敵）",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3300,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "R",
+    "illustrator": "Kumagoro",
+    "raw": "機動 コスト3 MS\nZGMF-MM07 Z'GOK[SEED FREEDOM Ver.]\nズゴック（SEED FREEDOM Ver.）\n\n全高　—\n本体重量　—　地上 B　宇宙 S　砂漠 C　水中 S\n所属　ターミナル\nパイロット　アスラン・ザラ\n\n機動力　200\n遠距離攻撃　30\n近距離攻撃　150\nHP　320\n\nWEAPON\nMAIN　対装甲斬牙爪　射程 1　近距離\nSUB　重粒子力線砲　射程 3　遠距離\n\nMS ABILITY\n誘導\n任意発動　特殊（敵）　射程 —　コスト 4\n\n25秒間、自身をロックオン距離内に捉えている敵ユニットのターゲットを自身に集める。\n\nLINK ABILITY\nSEED FREEDOM　デッキに3枚以上\n[機動力]小アップ\n\n多彩な戦術　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nSPECIAL ATTACK\n対装甲斬牙爪強撃\n単体（敵）　射程 2\nSPコスト 2　威力 3300\n敵単体に格闘攻撃でダメージを与える。\n\nIMPACT AREA\n\nillust. Kumagoro\n©創通・サンライズ\nBANDAI MADE IN JAPAN　機動戦士ガンダム ARSENAL BASE　BP01-014　R"
+  },
+  "ocr_raw_file": "BOOSTER_PACK_[機動戦士ガンダムSEEDシリーズ]_BP01-014_ズゴック(SEED_FREEDOM_Ver.)_ocr_raw.json",
+  "ocr_timestamp": "2026-03-04T00:02:06.605057",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

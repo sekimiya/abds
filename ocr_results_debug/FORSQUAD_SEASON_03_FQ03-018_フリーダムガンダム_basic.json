@@ -1,0 +1,92 @@
+{
+  "card_number": "FQ03-018",
+  "card_name": "フリーダムガンダム",
+  "series": "FORSQUAD SEASON:03",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ03-018.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ03-018_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "FQ03-018",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト2"
+    },
+    "name": "フリーダムガンダム",
+    "model": "ZGMF-X10A FREEDOM GUNDAM",
+    "cost": 2,
+    "category": "遠距離",
+    "affiliation": null,
+    "pilot": "キラ・ヤマト",
+    "stats": {
+      "height": "18.03m",
+      "weight": "71.5t",
+      "mobility": 190,
+      "ranged_attack": 220,
+      "melee_attack": 80,
+      "hp": 260
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "A",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "ルプス・ビームライフル",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ラケルタ・ビームサーベル",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "解撃",
+      "activation": "任意発動",
+      "target": "単体(敵)",
+      "range": 3,
+      "cost": 3,
+      "description": "自身が弱体化状態の時に発動可能となり、自身の弱体化状態を無効化し、ロックオン中の敵に単体攻撃でダメージを与える。"
+    },
+    "link_ability": [
+      {
+        "name": "ガンダムSEED",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ルプス・ビームライフル撃射",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3000,
+      "description": "敵単体に射撃攻撃でダメージを与える。／射線上の敵に貫通射撃でダメージを与える。出撃時1度のみ使用可能。",
+      "united_sp": {
+        "name": "コンビネーション・アサルト",
+        "partner1": "ジャスティスガンダム",
+        "partner2": null,
+        "partner3": null,
+        "partner4": null,
+        "range": 4,
+        "power": 4200,
+        "description": "敵単体に射撃攻撃でダメージを与える。／射線上の敵に貫通射撃でダメージを与える。出撃時1度のみ使用可能。"
+      }
+    },
+    "rarity": "C",
+    "illustrator": "S Kei",
+    "raw": "遠距離　コスト2　MS\n\nZGMF-X10A FREEDOM GUNDAM\nフリーダムガンダム\n\n[アイコン:ガンダムSEED]\n\n頭頂高　18.03m\n本体重量　71.5t\n所属　ー\nパイロット　キラ・ヤマト\n\n地上 A　宇宙 S　砂漠 A　水中 C\n\n機動力　190\n遠距離攻撃　220\n近距離攻撃　80\nHP　260\n\nWEAPON\nMAIN ルプス・ビームライフル　射程 3　遠距離\nSUB ラケルタ・ビームサーベル　射程 1　近距離\n\nLINK ABILITY\nガンダムSEED　デッキに3枚以上\n[機動力]小アップ\n\nMS ABILITY\n解撃\n任意発動　単体(敵)　射程 3　コスト 3\n自身が弱体化状態の時に発動可能となり、自身の弱体化状態を無効化し、ロックオン中の敵に単体攻撃でダメージを与える。\n\n戦況を変える力　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nSPECIAL ATTACK　　　　UNITED SP\nルプス・ビームライフル撃射　コンビネーション・アサルト\n連携 ジャスティスガンダム　連携 ー\n連携 ー　　　　　　　　　　連携 ー\n単体(敵)　射程 3　貫通(敵)　射程 4\nSPコスト 2　威力 3000 / 4200\n\n敵単体に射撃攻撃でダメージを与える。／射線上の敵に貫通射撃でダメージを与える。出撃時1度のみ使用可能。\n\nIMPACT AREA\n[アイコン:射程マップ 前方3マス直線+4マス貫通]\n\nillust S Kei\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nFQ03-018　C"
+  },
+  "ocr_raw_file": "FORSQUAD_SEASON_03_FQ03-018_フリーダムガンダム_ocr_raw.json",
+  "ocr_timestamp": "2026-02-24T15:31:00.476331",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

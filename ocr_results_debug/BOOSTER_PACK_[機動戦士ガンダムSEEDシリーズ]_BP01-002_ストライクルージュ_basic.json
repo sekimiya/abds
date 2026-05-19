@@ -1,0 +1,83 @@
+{
+  "card_number": "BP01-002",
+  "card_name": "ストライクルージュ",
+  "series": "BOOSTER PACK [機動戦士ガンダムSEEDシリーズ]",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP01-002.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP01-002_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "BP01-002",
+    "type": "MS",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト2"
+    },
+    "name": "ストライクルージュ",
+    "model": "MBF-02 STRIKE ROUGE",
+    "cost": 2,
+    "category": "MS",
+    "affiliation": "オーブ",
+    "pilot": "カガリ・ユラ・アスハ",
+    "stats": {
+      "height": "17.72m",
+      "weight": "85.1t",
+      "mobility": 150,
+      "ranged_attack": 40,
+      "melee_attack": 250,
+      "hp": 210
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "C",
+      "water": "B"
+    },
+    "weapon": {
+      "main": {
+        "name": "ビームサーベル",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "高エネルギービームライフル",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "支援砲撃",
+      "activation": "任意発動",
+      "target": "範囲（敵）",
+      "range": null,
+      "cost": 5,
+      "description": "指定した位置に中範囲の支援砲撃を要請し、範囲内の敵にダメージを与える。"
+    },
+    "link_ability": [
+      {
+        "name": "ガンダムSEED",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "間合いを詰めた接近戦",
+        "condition": "デッキに2枚以上",
+        "effect": "[近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ビームサーベル強撃",
+      "target": "単体（敵）",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3200,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "R",
+    "illustrator": "hiropon",
+    "raw": "近距離 コスト2\nMBF-02 STRIKE ROUGE\nストライクルージュ\n\n全高　17.72m\n本体重量　85.1t\n所属　オーブ\nパイロット　カガリ・ユラ・アスハ\n\n地上 A　宇宙 S　砂漠 C　水中 B\n機動力　150\n遠距離攻撃　40\n近距離攻撃　250\nHP　210\n\nWEAPON\nMAIN　ビームサーベル　射程 1　近距離\nSUB　高エネルギービームライフル　射程 3　遠距離\n\nMS ABILITY\n支援砲撃\n任意発動　範囲（敵）　射程 ―　コスト 5\n指定した位置に中範囲の支援砲撃を要請し、範囲内の敵にダメージを与える。\n\nLINK ABILITY\nガンダムSEED　デッキに3枚以上\n[機動力]小アップ\n\n間合いを詰めた接近戦　デッキに2枚以上\n[近距離攻撃力]小アップ\n\nSPECIAL ATTACK\nビームサーベル強撃\n単体（敵）　射程 2\nSPコスト 2　威力 3200\n敵単体に格闘攻撃でダメージを与える。\n\nillust_hiropon\n©創通・サンライズ\nBANDAI MADE IN JAPAN\nBP01-002　R"
+  },
+  "ocr_raw_file": "BOOSTER_PACK_[機動戦士ガンダムSEEDシリーズ]_BP01-002_ストライクルージュ_ocr_raw.json",
+  "ocr_timestamp": "2026-03-03T23:55:56.443068",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

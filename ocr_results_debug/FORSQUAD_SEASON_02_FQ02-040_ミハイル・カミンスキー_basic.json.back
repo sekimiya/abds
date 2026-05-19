@@ -1,0 +1,54 @@
+{
+  "card_number": "FQ02-040",
+  "card_name": "ミハイル・カミンスキー",
+  "series": "FORSQUAD SEASON:02",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-040.jpg?v9",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-040_b.jpg?v9",
+  "ocr_data": {
+    "card_id": "FQ02-040",
+    "type": "PL",
+    "stats": {
+      "mobility": 220,
+      "ranged_attack": 290,
+      "melee_attack": 70,
+      "hp": 270
+    },
+    "card_label": {
+      "class": "パイロット",
+      "cost_label": "コスト5"
+    },
+    "name": "ミハイル・カミンスキー",
+    "cost": 5,
+    "category": "殲滅",
+    "pilot_skill": {
+      "name": "瓦解する敵陣",
+      "effect": "敵ユニットを撃破時40秒間、自身の「遠距離攻撃力」を大アップし、受けるダメージを軽減する。",
+      "has_sq_skill": false,
+      "sq_skill_details": {
+        "trigger": "敵ユニットを撃破時",
+        "effect": "40秒間、自身の「遠距離攻撃力」を大アップし、受けるダメージを軽減する。",
+        "sq_rush_effect": null,
+        "sq_gauge_effect": null,
+        "sq_max_effect": null,
+        "squad_rush_effect": null
+      }
+    },
+    "link_ability": [
+      {
+        "name": "ポケットの中の戦争",
+        "condition": "デッキに3枚以上",
+        "effect": "[HP]小アップ"
+      },
+      {
+        "name": "多彩な技術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "illustrator": "不明",
+    "raw": "ミハイル・カミンスキー\nMikhail Kaminsky\n身長 -\n年齢 48歳\n所属 ジオン公国軍\n搭乗機体 ケンプファー、ハイゴッグ\nPL SKILL\n瓦解する敵陣\n敵ユニットを撃破時\n40秒間、自身の「遠距離攻撃力」を大アップし、受けるダメージを軽減する。\nLINK ABILITY\nポケットの中の戦争 デッキに3枚以上\n[HP]小アップ\n多彩な技術 デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n機動力 220\n遠距離攻撃 290\n近距離攻撃 70\nHP 270\nFQ02-040"
+  },
+  "ocr_timestamp": "2025-06-28T02:02:28.690192",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli"
+}

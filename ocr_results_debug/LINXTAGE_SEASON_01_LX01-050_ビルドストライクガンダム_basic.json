@@ -1,0 +1,83 @@
+{
+  "card_number": "LX01-050",
+  "card_name": "ビルドストライクガンダム",
+  "series": "LINXTAGE SEASON:01",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX01-050.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX01-050_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "LX01-050",
+    "type": "MS",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト6"
+    },
+    "name": "ビルドストライクガンダム",
+    "model": "GAT-X105B BUILD STRIKE GUNDAM",
+    "cost": 6,
+    "category": "近距離",
+    "affiliation": null,
+    "pilot": "レイジ、イオリ・セイ",
+    "stats": {
+      "height": "17.7m",
+      "weight": null,
+      "mobility": 150,
+      "ranged_attack": 200,
+      "melee_attack": 320,
+      "hp": 280
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "A",
+      "desert": "C",
+      "water": null
+    },
+    "weapon": {
+      "main": {
+        "name": "格闘",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "頭部バルカン砲",
+        "range": 2,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "縛撃",
+      "activation": "任意発動",
+      "target": "単体(敵)",
+      "range": 1,
+      "cost": 3,
+      "description": "ロックオン中の敵ユニットに単体攻撃を行いダメージを与え、一定時間スタンさせる。"
+    },
+    "link_ability": [
+      {
+        "name": "ビルドファイターズ",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "その名はガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "格闘強撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3400,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "R",
+    "illustrator": "PLANETA_Mochizuki",
+    "raw": "MS\n\n近距離　コスト6\nGAT-X105B BUILD STRIKE GUNDAM\nビルドストライクガンダム\n\n全高　17.7m\n本体重量　―\n所属　―\nパイロット　レイジ、イオリ・セイ\n\n地上　A　宇宙　A　砂漠　C\n\n機動力　150\n遠距離攻撃　200\n近距離攻撃　320\nHP　280\n\nWEAPON\nMAIN　格闘　射程 1　近距離\nSUB　頭部バルカン砲　射程 2　遠距離\n\nLINK ABILITY\nビルドファイターズ　デッキに3枚以上\n[機動力]小アップ\n\nその名はガンダム　デッキに3枚以上\n[機動力]小アップ\n\nMS ABILITY\n縛撃\n任意発動　単体(敵)　射程 1　コスト 3\nロックオン中の敵ユニットに単体攻撃を行いダメージを与え、一定時間スタンさせる。\n\nSPECIAL ATTACK\n格闘強撃\n単体(敵)　射程 2\nSPコスト 2　威力　3400\n敵単体に格闘攻撃でダメージを与える。\n\nIMPACT AREA\n[アイコン:中央やや上に緑丸]\n[アイコン:中央やや下に緑丸]\n[アイコン:下部中央に三角]\n\nillust PLANETA_Mochizuki\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nLX01-050　R"
+  },
+  "ocr_raw_file": "LINXTAGE_SEASON_01_LX01-050_ビルドストライクガンダム_ocr_raw.json",
+  "ocr_timestamp": "2026-03-02T07:29:49.960635",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

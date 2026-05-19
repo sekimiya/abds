@@ -1,0 +1,83 @@
+{
+  "card_number": "LX04-056",
+  "card_name": "ケンプファーアメイジング",
+  "series": "LINXTAGE SEASON:04",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX04-056.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX04-056_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "LX04-056",
+    "type": "MS",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト5"
+    },
+    "name": "ケンプファーアメイジング",
+    "model": "PPMS-18E KÄMPFER AMAZING",
+    "cost": 5,
+    "category": "ビルドファイターズ",
+    "affiliation": null,
+    "pilot": "メイジン・カワグチ",
+    "stats": {
+      "height": "17.7m",
+      "weight": "47.8t",
+      "mobility": 160,
+      "ranged_attack": 130,
+      "melee_attack": 250,
+      "hp": 260
+    },
+    "terrain_compatibility": {
+      "ground": "S",
+      "space": "A",
+      "desert": "B",
+      "water": "A"
+    },
+    "weapon": {
+      "main": {
+        "name": "ビームサーベル",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "アメイジングライフル",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "誘導",
+      "activation": "任意発動",
+      "target": "特殊(敵)",
+      "range": null,
+      "cost": 4,
+      "description": "25秒間、自身をロックオン距離内に捉えている敵ユニットのターゲットを自身に集める。"
+    },
+    "link_ability": [
+      {
+        "name": "ビルドファイターズ",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ビームサーベル強撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3400,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "R",
+    "illustrator": "Gas1",
+    "raw": "近距離　コスト5　MS\nPPMS-18E KÄMPFER AMAZING\nケンプファーアメイジング\n\n全高　17.7m\n本体重量　47.8t　　　　地上 S　宇宙 A　砂漠 B　水中 A\n所属　—　　　　　　　　　　　　　　機動力　160\nパイロット　メイジン・カワグチ　　　遠距離攻撃　130\n　　　　　　　　　　　　　　　　　近距離攻撃　250\n　　　　　　　　　　　　　　　　　HP　260\n\nWEAPON\nMAIN　ビームサーベル　射程 1　近距離\nSUB　アメイジングライフル　射程 3　遠距離\n\nMS ABILITY\n誘導\n任意発動　特殊(敵)　射程 —　コスト 4\n25秒間、自身をロックオン距離内に捉えている敵ユニットのターゲットを自身に集める。\n\nLINK ABILITY\nビルドファイターズ　デッキに3枚以上\n[機動力]小アップ\n\n多彩な戦術　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nSPECIAL ATTACK\nビームサーベル強撃\n単体(敵)　射程 2\nSPコスト 2　威力 3400\n敵単体に格闘攻撃でダメージを与える。\n\nillust　Gas1\n©創通・サンライズ\nBANDAI MADE IN JAPAN　　LX04-056　R"
+  },
+  "ocr_raw_file": "LINXTAGE_SEASON_04_LX04-056_ケンプファーアメイジング_ocr_raw.json",
+  "ocr_timestamp": "2026-03-07T19:14:08.081181",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

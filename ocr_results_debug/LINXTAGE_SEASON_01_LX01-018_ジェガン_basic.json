@@ -1,0 +1,83 @@
+{
+  "card_number": "LX01-018",
+  "card_name": "ジェガン",
+  "series": "LINXTAGE SEASON:01",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX01-018.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX01-018_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "LX01-018",
+    "type": "MS",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト4"
+    },
+    "name": "ジェガン",
+    "model": "RGM-89 JEGAN",
+    "cost": 4,
+    "category": "近距離",
+    "affiliation": "地球連邦軍",
+    "pilot": null,
+    "stats": {
+      "height": "19.0m",
+      "weight": "21.3t",
+      "mobility": 180,
+      "ranged_attack": 100,
+      "melee_attack": 190,
+      "hp": 250
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "A",
+      "desert": "C",
+      "water": null
+    },
+    "weapon": {
+      "main": {
+        "name": "ビーム・サーベル",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "ビーム・ライフル",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "補給",
+      "activation": "任意発動",
+      "target": "範囲(味方)",
+      "range": null,
+      "cost": 4,
+      "description": "自身を中心とした大範囲の味方ユニットのHPを中回復する。"
+    },
+    "link_ability": [
+      {
+        "name": "逆襲のシャア",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力]小アップ"
+      },
+      {
+        "name": "量産機の戦い方",
+        "condition": "デッキに2枚以上",
+        "effect": "[機動力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ビーム・サーベル強撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3300,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "R",
+    "illustrator": "Moyasi",
+    "raw": "MS\n\n近距離 コスト4\n\nRGM-89 JEGAN\nジェガン\n\n[アイコン:機動戦士ガンダム 逆襲のシャア]\n\n全高 19.0m\n本体重量 21.3t\n所属 地球連邦軍\nパイロット ー\n\n地上 A 宇宙 A 砂漠 C\n\n機動力 180\n遠距離攻撃 100\n近距離攻撃 190\nHP 250\n\nWEAPON\nMAIN ビーム・サーベル 射程 1 近距離\nSUB ビーム・ライフル 射程 3 遠距離\n\nLINK ABILITY\n逆襲のシャア デッキに3枚以上\n[遠距離攻撃力]小アップ\n\n量産機の戦い方 デッキに2枚以上\n[機動力]小アップ\n\nMS ABILITY\n補給\n任意発動 範囲(味方) 射程 ー コスト 4\n自身を中心とした大範囲の味方ユニットのHPを中回復する。\n\nIMPACT AREA\n[アイコン:大範囲円形]\n\nSPECIAL ATTACK\nビーム・サーベル強撃\n単体(敵) 射程 2\nSPコスト 2 威力 3300\n敵単体に格闘攻撃でダメージを与える。\n\nillust Moyasi\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nLX01-018 R"
+  },
+  "ocr_raw_file": "LINXTAGE_SEASON_01_LX01-018_ジェガン_ocr_raw.json",
+  "ocr_timestamp": "2026-03-02T07:10:48.815291",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

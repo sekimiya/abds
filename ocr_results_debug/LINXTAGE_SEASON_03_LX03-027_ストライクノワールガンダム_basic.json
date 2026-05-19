@@ -1,0 +1,83 @@
+{
+  "card_number": "LX03-027",
+  "card_name": "ストライクノワールガンダム",
+  "series": "LINXTAGE SEASON:03",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX03-027.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX03-027_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "LX03-027",
+    "type": "MS",
+    "card_label": {
+      "class": "機動",
+      "cost_label": "コスト6"
+    },
+    "name": "ストライクノワールガンダム",
+    "model": "GAT-X105E+AQM/E-X09S STRIKE NOIR GUNDAM",
+    "cost": 6,
+    "category": "STARGAZER",
+    "affiliation": "地球連合軍",
+    "pilot": "スウェン・カル・バヤン",
+    "stats": {
+      "height": "17.72m",
+      "weight": "90.51t",
+      "mobility": 190,
+      "ranged_attack": 290,
+      "melee_attack": 210,
+      "hp": 310
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "C",
+      "water": "B"
+    },
+    "weapon": {
+      "main": {
+        "name": "ビームライフルショーティー",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "フラガラッハ3ビームブレイド二刀流",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "支援砲撃",
+      "activation": "任意発動",
+      "target": "範囲(敵)",
+      "range": null,
+      "cost": 5,
+      "description": "指定した位置に中範囲の支援砲撃を要請し、範囲内の敵にダメージを与える。"
+    },
+    "link_ability": [
+      {
+        "name": "STARGAZER",
+        "condition": "デッキに2枚以上",
+        "effect": "[遠距離攻撃力]小アップ"
+      },
+      {
+        "name": "距離をとった射撃戦",
+        "condition": "デッキに2枚以上",
+        "effect": "[遠距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ビームライフルショーティー撃射",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3200,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "C",
+    "illustrator": "deraken",
+    "raw": "機動 コスト6 MS\n\nGAT-X105E+AQM/E-X09S STRIKE NOIR GUNDAM\nストライクノワールガンダム\n\n全高　17.72m\n本体重量　90.51t　　　　地上 A　宇宙 S　砂漠 C　水中 B\n所属　地球連合軍　　　　　　　　　　　　　　機動力 190\nパイロット　スウェン・カル・バヤン　　　　遠距離攻撃 290\n　　　　　　　　　　　　　　　　　　　　　近距離攻撃 210\n　　　　　　　　　　　　　　　　　　　　　HP 310\n\nWEAPON\nMAIN　ビームライフルショーティー　射程 3　遠距離\nSUB　フラガラッハ3ビームブレイド二刀流　射程 1　近距離\n\nMS ABILITY\n支援砲撃\n任意発動　範囲(敵)　射程 ー　コスト 5\n指定した位置に中範囲の支援砲撃を要請し、範囲内の敵にダメージを与える。\n\nLINK ABILITY\nSTARGAZER　デッキに2枚以上\n[遠距離攻撃力]小アップ\n\n距離をとった射撃戦　デッキに2枚以上\n[遠距離攻撃力]小アップ\n\nSPECIAL ATTACK\nビームライフルショーティー撃射\n単体(敵)　射程 3\nSPコスト 2　威力 3200\n敵単体に射撃攻撃でダメージを与える。\n\nillust deraken\n©創通・サンライズ\nBANDAI MADE IN JAPAN\nLX03-027　C"
+  },
+  "ocr_raw_file": "LINXTAGE_SEASON_03_LX03-027_ストライクノワールガンダム_ocr_raw.json",
+  "ocr_timestamp": "2026-03-07T17:11:50.237459",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

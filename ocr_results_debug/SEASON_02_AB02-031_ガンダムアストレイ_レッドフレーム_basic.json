@@ -1,0 +1,83 @@
+{
+  "card_number": "AB02-031",
+  "card_name": "ガンダムアストレイ レッドフレーム",
+  "series": "SEASON:02",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB02-031.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB02-031_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "AB02-031",
+    "type": "MS",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト3"
+    },
+    "name": "ガンダムアストレイレッドフレーム",
+    "model": "MBF-P02 GUNDAM ASTRAY RED FRAME",
+    "cost": 3,
+    "category": "近距離",
+    "affiliation": "ジャンク屋組合",
+    "pilot": "ロウ・ギュール",
+    "stats": {
+      "height": "17.53m",
+      "weight": "49.8t",
+      "mobility": 200,
+      "ranged_attack": 100,
+      "melee_attack": 360,
+      "hp": 350
+    },
+    "terrain_compatibility": {
+      "ground": "S",
+      "space": "A",
+      "desert": "C",
+      "water": null
+    },
+    "weapon": {
+      "main": {
+        "name": "ガーベラ・ストレート",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "ビームライフル",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "縛撃",
+      "activation": "任意発動",
+      "target": "単体(敵)",
+      "range": 1,
+      "cost": 3,
+      "description": "ロックオン中の敵ユニットに単体攻撃を行いダメージを与え、一定時間スタンさせる。"
+    },
+    "link_ability": [
+      {
+        "name": "SEED ASTRAY",
+        "condition": "デッキに2枚以上",
+        "effect": "[近距離攻撃力]小アップ"
+      },
+      {
+        "name": "赤のプライド",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ガーベラ・ストレート強撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3400,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "M",
+    "illustrator": "Tonamikanji",
+    "raw": "MS\n\n近距離 コスト3\nMBF-P02 GUNDAM ASTRAY RED FRAME\nガンダムアストレイレッドフレーム\n\n全高 17.53m\n本体重量 49.8t\n所属 ジャンク屋組合\nパイロット ロウ・ギュール\n\n地上 S 宇宙 A 砂漠 C\n機動力 200\n遠距離攻撃 100\n近距離攻撃 360\nHP 350\n\nWEAPON\n\nMAIN ガーベラ・ストレート 射程 1 近距離\nSUB ビームライフル 射程 3 遠距離\n\nLINK ABILITY\n\nSEED ASTRAY デッキに2枚以上\n[近距離攻撃力] 小アップ\n\n赤のプライド デッキに3枚以上\n[機動力] 小アップ\n\nMS ABILITY\n\n縛撃\n任意発動 単体(敵) 射程 1 コスト 3\nロックオン中の敵ユニットに単体攻撃を行いダメージを与え、一定時間スタンさせる。\n\nIMPACT AREA\n\n[アイコン:緑丸 中央やや上]\n[アイコン:緑丸 中央やや下]\n[アイコン:三角 下部中央]\n\nSPECIAL ATTACK\n\nガーベラ・ストレート強撃\n単体(敵) 射程 2\nSPコスト 2 威力 3400\n敵単体に格闘攻撃でダメージを与える。\n\nillust Tonamikanji\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム\nARSENAL BASE®\nAB02-031 M"
+  },
+  "ocr_raw_file": "SEASON_02_AB02-031_ガンダムアストレイ_レッドフレーム_ocr_raw.json",
+  "ocr_timestamp": "2026-02-23T15:09:14.159524",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli"
+}

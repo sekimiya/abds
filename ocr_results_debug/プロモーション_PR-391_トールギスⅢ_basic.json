@@ -1,0 +1,83 @@
+{
+  "card_number": "PR-391",
+  "card_name": "トールギスⅢ",
+  "series": "プロモーション",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-391.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-391_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "PR-391",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト2"
+    },
+    "name": "トールギスⅢ",
+    "model": "OZ-00MS2B TALLGEESE Ⅲ",
+    "cost": 2,
+    "category": null,
+    "affiliation": "プリベンター",
+    "pilot": "プリベンター・ウインド",
+    "stats": {
+      "height": "17.4m",
+      "weight": "8.2t",
+      "mobility": 230,
+      "ranged_attack": 250,
+      "melee_attack": 70,
+      "hp": 300
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "C",
+      "water": "A"
+    },
+    "weapon": {
+      "main": {
+        "name": "メガカノン",
+        "range": 4,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ヒートロッド",
+        "range": 2,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "補給[弱体化解除]",
+      "activation": "任意発動",
+      "target": "範囲(味方)",
+      "range": null,
+      "cost": 5,
+      "description": "自身を中心とした大範囲の味方ユニットのHPを中回復し、弱体化状態を無効化する。"
+    },
+    "link_ability": [
+      {
+        "name": "Endless Waltz",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      },
+      {
+        "name": "的確な一撃",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][遠距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "メガキャノン斉射",
+      "target": "貫通(敵)",
+      "range": 4,
+      "sp_cost": 2,
+      "power": 2800,
+      "description": "射程上の敵に貫通射撃でダメージを与え、一定時間スタンさせる。",
+      "united_sp": null
+    },
+    "rarity": "PR",
+    "illustrator": "funbolt",
+    "raw": "遠距離　コスト2\nOZ-00MS2B TALLGEESEⅢ\nトールギスⅢ\n\n頭頂高　17.4m\n本体重量　8.2t　　　　　　地上 A　宇宙 S　砂漠 C　水中 A\n所属　プリベンター　　　　　　　　　　　　　　機動力　230\nパイロット　プリベンター・ウインド　　　　　遠距離攻撃　250\n　　　　　　　　　　　　　　　　　　　　　　近距離攻撃　70\n　　　　　　　　　　　　　　　　　　　　　　HP　300\n\nWEAPON\nMAIN　メガカノン　射程 4　遠距離\nSUB　ヒートロッド　射程 2　近距離\n\nMS ABILITY\n補給[弱体化解除]\n任意発動　範囲(味方)　射程ー　コスト 5\n自身を中心とした大範囲の味方ユニットのHPを中回復し、弱体化状態を無効化する。\n\nLINK ABILITY\nEndless Waltz　デッキに3枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\n的確な一撃　デッキに4枚以上\n[機動力][遠距離攻撃力]小アップ\n\nSPECIAL ATTACK　　UNITED SP\nメガキャノン斉射　ー\n連携ー　連携ー\n連携ー　連携ー\n貫通(敵)　射程 4　ー　射程ー\nSPコスト 2　威力 2800 / ー\n射程上の敵に貫通射撃でダメージを与え、一定時間スタンさせる。/ー\n\nillust　funbolt\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\nNOT FOR SALE\nPR-391　PR"
+  },
+  "ocr_raw_file": "プロモーション_PR-391_トールギスⅢ_ocr_raw.json",
+  "ocr_timestamp": "2026-03-03T19:28:25.469358",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

@@ -1,0 +1,83 @@
+{
+  "card_number": "LX04-052",
+  "card_name": "ガンダムスローネドライ",
+  "series": "LINXTAGE SEASON:04",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX04-052.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX04-052_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "LX04-052",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト3"
+    },
+    "name": "ガンダムスローネドライ",
+    "model": "GNW-003 GUNDAM THRONE DREI",
+    "cost": 3,
+    "category": "MS",
+    "affiliation": "ソレスタルビーイング",
+    "pilot": "ネーナ・トリニティ",
+    "stats": {
+      "height": "19.4m",
+      "weight": "67.7t",
+      "mobility": 130,
+      "ranged_attack": 200,
+      "melee_attack": 90,
+      "hp": 180
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "A",
+      "desert": "C",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "GNハンドガン",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "GNビームサーベル",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "妨害[攻撃]",
+      "activation": "出撃時発動",
+      "target": "範囲(敵)",
+      "range": null,
+      "cost": null,
+      "description": "20秒間、自身を中心とした大範囲内の敵ユニットの[遠距離攻撃力][近距離攻撃力]を小ダウンする。"
+    },
+    "link_ability": [
+      {
+        "name": "ガンダム00",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "的確な一撃",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][遠距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "GNハンドガン撃射",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3100,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "C",
+    "illustrator": "kazumasa yasukuni",
+    "raw": "遠距離 コスト3 MS\nGNW-003 GUNDAM THRONE DREI\nガンダムスローネドライ\n\n全高 19.4m\n本体重量 67.7t　地上 A　宇宙 A　砂漠 C　水中 C\n所属 ソレスタルビーイング　機動力 130\nパイロット ネーナ・トリニティ　遠距離攻撃 200\n　　　　　　　　　　　　　　　近距離攻撃 90\n　　　　　　　　　　　　　　　HP 180\n\nWEAPON\nMAIN　GNハンドガン　射程 3　遠距離\nSUB　GNビームサーベル　射程 1　近距離\n\nMS ABILITY\n妨害[攻撃]\n出撃時発動　範囲(敵)　射程 ー　コスト ー\n\n20秒間、自身を中心とした大範囲内の敵ユニットの[遠距離攻撃力][近距離攻撃力]を小ダウンする。\n\nLINK ABILITY\nガンダム00　デッキに3枚以上\n[機動力]小アップ\n\n的確な一撃　デッキに4枚以上\n[機動力][遠距離攻撃力]小アップ\n\nSPECIAL ATTACK\nGNハンドガン撃射\n単体(敵)　射程 3\nSPコスト 2　威力 3100\n敵単体に射撃攻撃でダメージを与える。\n\nIMPACT AREA\n\nillust. kazumasa yasukuni\n©創通・サンライズ\nBANDAI MADE IN JAPAN　機動戦士ガンダム ARSENAL BASE©　LX04-052　C"
+  },
+  "ocr_raw_file": "LINXTAGE_SEASON_04_LX04-052_ガンダムスローネドライ_ocr_raw.json",
+  "ocr_timestamp": "2026-03-07T19:11:18.654368",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

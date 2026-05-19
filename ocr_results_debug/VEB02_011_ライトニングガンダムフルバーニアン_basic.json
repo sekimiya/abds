@@ -1,0 +1,82 @@
+{
+  "card_number": "VEB02-011",
+  "card_name": "ライトニングガンダムフルバーニアン",
+  "series": "VEブースター2弾",
+  "ocr_data": {
+    "card_number": "VEB02-011",
+    "type": "MS",
+    "name": "ライトニングガンダムフルバーニアン",
+    "english_name": "LGZ-91Fb LIGHTNING GUNDAM FULL-BURNERN",
+    "cost": 4,
+    "category": "機動",
+    "rarity": "P",
+    "pilot": "コウサカ・ユウマ",
+    "head_height": "-",
+    "weight": "-",
+    "affiliation": "トライ・ファイターズ",
+    "stats": {
+      "mobility": 260,
+      "ranged": 450,
+      "melee": 50,
+      "hp": 490
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "C",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "ハイビームライフル",
+        "range": 4,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ビームサーベル",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "断砕",
+      "timing": "任意発動",
+      "target": "単体(敵)",
+      "range": "射程4",
+      "cost": "コスト3",
+      "description": "ロックオン中の敵に単体攻撃でダメージを与え、強化状態を無効化する。"
+    },
+    "link_ability": [
+      {
+        "name": "トライ",
+        "condition": "デッキに3枚以上",
+        "effect": "[HP]小アップ"
+      },
+      {
+        "name": "プラフスキー粒子",
+        "condition": "デッキに2枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ハイビームライフル&ビームキャノン撃射",
+      "target": "貫通(敵)",
+      "range": 4,
+      "sp_cost": 2,
+      "power": 3000,
+      "description": "射線上の敵に貫通射撃でダメージを与え、一定時間、自身の[遠距離攻撃力]をアップし、受けるダメージを軽減する。",
+      "echoes_beat": {
+        "name": "ハイビームライフル&ビームキャノン撃射 Lv.1",
+        "target": "貫通(敵)",
+        "range": 4,
+        "power": 3300,
+        "description": "ECHOES BEAT Lv.を下げることで、Lv.戦術技が発動する。EBLv.を1下げる。射線上の敵に貫通射撃でダメージを与え、EBLv.が3に上昇する。一定時間、自身の[遠距離攻撃力]をアップし、受けるダメージを軽減する。出撃時1度のみ使用可能。",
+        "level": 1
+      },
+      "sp_type": "ECHOES BEAT"
+    },
+    "impact_area": "前方長方形範囲"
+  },
+  "ocr_engine": "claude_code_subagent",
+  "ocr_timestamp": "2026-05-15T00:00:00"
+}

@@ -1,0 +1,102 @@
+{
+  "card_number": "VE02-032",
+  "card_name": "ラファエルガンダム",
+  "series": "WAVECHOES SEASON:02",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE02-032.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE02-032_b.jpg?v250630",
+  "ocr_engine": "claude_code_subagent",
+  "ocr_type": "basic",
+  "ocr_timestamp": "2026-04-22T20:30:00.000000",
+  "ocr_data": {
+    "card_id": "VE02-032",
+    "type": "MS",
+    "name": "ラファエルガンダム",
+    "model": "CB-002 RAPHAEL GUNDAM",
+    "cost": 5,
+    "category": "遠距離",
+    "affiliation": "ソレスタルビーイング",
+    "pilot": "ティエリア・アーデ",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト5"
+    },
+    "stats": {
+      "height": "21.7m",
+      "weight": "102.3t",
+      "mobility": 260,
+      "ranged_attack": 520,
+      "melee_attack": 80,
+      "hp": 590
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "C",
+      "water": "B"
+    },
+    "weapon": {
+      "main": {
+        "name": "GNビームライフル&GNビッグキャノン",
+        "range": 4,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "GNクロー",
+        "range": 2,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "陣略[妨害/機動]",
+      "activation": "任意発動",
+      "target": "範囲(敵)",
+      "range": "—",
+      "cost": 4,
+      "description": "一定時間、範囲内に入った敵ユニットの[機動力]をダウンするエリアを設置する。※上限3箇所まで。"
+    },
+    "link_ability": [
+      {
+        "name": "[HP]小アップ",
+        "condition": "劇場版ガンダム00",
+        "effect": "デッキに3枚以上"
+      },
+      {
+        "name": "[機動力][遠距離攻撃力]小アップ",
+        "condition": "的確な一撃",
+        "effect": "デッキに4枚以上"
+      }
+    ],
+    "special_attack": {
+      "name": "GNビッグキャノン斉射",
+      "target": "貫通(敵)",
+      "range": 4,
+      "sp_cost": 2,
+      "power": "3200 / 3500",
+      "description": "一定時間トランザムを発動し、射線上の敵に貫通射撃でダメージを与える。",
+      "united_sp": null,
+      "echoes_beat": {
+        "name": "GNビッグキャノン斉射 Lv.1",
+        "level": 1,
+        "target": "貫通(敵)",
+        "range": 4,
+        "power": "3500",
+        "description": "EBLv.を1下げる。一定時間トランザムを発動し、射線上の敵に貫通射撃でダメージを与え、EBLv.が3に上昇する。出撃時1度のみ使用可能。"
+      },
+      "sp_type": "ECHOES BEAT"
+    },
+    "rarity": "U",
+    "raw": "遠距離 コスト5 MS CB-002 RAPHAEL GUNDAM ラファエルガンダム 頭頂高 21.7m 本体重量 102.3t 所属 ソレスタルビーイング パイロット ティエリア・アーデ 地上A 宇宙S 砂漠C 水中B 機動力 260 遠距離攻撃 520 近距離攻撃 80 HP 590 WEAPON MAIN GNビームライフル&GNビッグキャノン 射程4 遠距離 SUB GNクロー 射程2 近距離 MS ABILITY 陣略[妨害/機動] 任意発動 範囲(敵) 射程— コスト4 一定時間、範囲内に入った敵ユニットの[機動力]をダウンするエリアを設置する。※上限3箇所まで。 LINK ABILITY 劇場版ガンダム00 デッキに3枚以上 [HP]小アップ 的確な一撃 デッキに4枚以上 [機動力][遠距離攻撃力]小アップ SPECIAL ATTACK ECHOES BEAT GNビッグキャノン斉射 GNビッグキャノン斉射 Lv.1 ECHOES BEAT Lv.を下げることで、Lv.戦術技が発動する。 貫通(敵) 射程4 貫通(敵) 射程4 SPコスト2 威力 3200 / 3500 一定時間トランザムを発動し、射線上の敵に貫通射撃でダメージを与える。/ EBLv.を1下げる。一定時間トランザムを発動し、射線上の敵に貫通射撃でダメージを与え、EBLv.が3に上昇する。出撃時1度のみ使用可能。 VE02-032 U",
+    "link_abilities": [
+      {
+        "name": "劇場版ガンダム00",
+        "condition": "デッキに3枚以上",
+        "effect": "[HP]小アップ"
+      },
+      {
+        "name": "的確な一撃",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][遠距離攻撃力]小アップ"
+      }
+    ]
+  }
+}

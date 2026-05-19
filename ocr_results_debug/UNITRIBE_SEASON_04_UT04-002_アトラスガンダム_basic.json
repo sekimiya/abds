@@ -1,0 +1,83 @@
+{
+  "card_number": "UT04-002",
+  "card_name": "アトラスガンダム",
+  "series": "UNITRIBE SEASON:04",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT04-002.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT04-002_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "UT04-002",
+    "type": "MS",
+    "card_label": {
+      "class": "機動",
+      "cost_label": "コスト7"
+    },
+    "name": "アトラスガンダム",
+    "model": "RX-78AL ATLAS GUNDAM",
+    "cost": 7,
+    "category": "機動",
+    "affiliation": "地球連邦軍",
+    "pilot": "イオ・フレミング",
+    "stats": {
+      "height": null,
+      "weight": null,
+      "mobility": 210,
+      "ranged_attack": 30,
+      "melee_attack": 360,
+      "hp": 400
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "B",
+      "desert": "C",
+      "water": "S"
+    },
+    "weapon": {
+      "main": {
+        "name": "ビーム・サーベル",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "レールガン",
+        "range": 4,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "特攻",
+      "activation": "出撃時発動",
+      "target": "自分",
+      "range": null,
+      "cost": null,
+      "description": "自身の[遠／近攻撃力]をアップし[怯み無効]となるが、[回避／ガード不可][修理時間延長]となる。効果は撤退するまで持続。"
+    },
+    "link_ability": [
+      {
+        "name": "サンダーボルト",
+        "condition": "デッキに2枚以上",
+        "effect": "[遠距離攻撃力]小アップ"
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ビーム・サーベル強撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3400,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "C",
+    "illustrator": "hiropon",
+    "raw": "MS\n\n機動　コスト7\nRX-78AL ATLAS GUNDAM\nアトラスガンダム\n\nMOBILE SUIT GUNDAM THUNDERBOLT\n[アイコン:機動]\n\n頭頂高　ー\n本体重量　ー\n地上 A　宇宙 B　砂漠 C　水中 S\n所属　地球連邦軍\nパイロット　イオ・フレミング\n\n機動力 210\n遠距離攻撃 30\n近距離攻撃 360\nHP 400\n\nWEAPON\nMAIN ビーム・サーベル　射程 1　近距離\nSUB レールガン　射程 4　遠距離\n\nLINK ABILITY\nサンダーボルト　デッキに2枚以上\n[遠距離攻撃力]小アップ\n\n戦況を変える力　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nMS ABILITY\n特攻\n出撃時発動　自分　射程ー　コストー\n自身の[遠／近攻撃力]をアップし[怯み無効]となるが、[回避／ガード不可][修理時間延長]となる。効果は撤退するまで持続。\n\nSPECIAL ATTACK　　UNITED SP\nビーム・サーベル強撃　ー\n連携 ー　　連携 ー\n連携 ー　　連携 ー\n単体(敵)　射程 2　ー　射程 ー\nSPコスト 2　威力 3400 / ー\n敵単体に格闘攻撃でダメージを与える。\n/ ー\n\nIMPACT AREA\n[アイコン:緑丸 中央]\n[アイコン:黄三角 中央下]\n\nillust hiropon\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nUT04-002　C"
+  },
+  "ocr_raw_file": "UNITRIBE_SEASON_04_UT04-002_アトラスガンダム_ocr_raw.json",
+  "ocr_timestamp": "2026-02-28T08:12:07.680380",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

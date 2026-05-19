@@ -1,0 +1,89 @@
+{
+  "card_number": "FQ01-002",
+  "card_name": "ガンダム試作3号機",
+  "series": "FORSQUAD SEASON:01",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ01-002.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ01-002_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "FQ01-002",
+    "type": "MS",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト4"
+    },
+    "name": "ガンダム試作3号機",
+    "model": "RX-78GP03S GUNDAM GP03S",
+    "cost": 4,
+    "category": "近距離",
+    "affiliation": "地球連邦軍",
+    "pilot": "コウ・ウラキ",
+    "stats": {
+      "height": "18.0m",
+      "weight": "41.6t",
+      "mobility": 270,
+      "ranged_attack": 80,
+      "melee_attack": 300,
+      "hp": 350
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "C",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "ビーム・サーベル",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "フォールディング・バズーカ",
+        "range": 4,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "砕撃",
+      "activation": "任意発動",
+      "target": "単体(敵)",
+      "range": 1,
+      "cost": 3,
+      "description": "ロックオン中の敵に単体攻撃でダメージを与え、メイン武装を使用不能にさせる。出撃時1度のみ使用可能。"
+    },
+    "link_ability": [
+      {
+        "name": "ガンダム0083",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ビーム・サーベル強撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3300,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": {
+        "name": "GP03デンドロビウム・メガ・ビーム砲",
+        "target": "貫通(敵)",
+        "range": 4,
+        "power": 5600,
+        "description": "対象の敵を中心として射程よりも広い範囲で、射線上の敵に貫通射撃でダメージを与える。"
+      }
+    },
+    "rarity": "R",
+    "illustrator": "S Kei",
+    "raw": "MS\n\n近距離 コスト4\nRX-78GP03S GUNDAM GP03S\nガンダム試作3号機\n\n頭頂高 18.0m\n本体重量 41.6t\n所属 地球連邦軍\nパイロット コウ・ウラキ\n\n地上 A 宇宙 S 砂漠 C 水中 C\n機動力 270\n遠距離攻撃 80\n近距離攻撃 300\nHP 350\n\n[アイコン:SEASON] 機動戦士ガンダム0083 STARDUST MEMORY\n[アイコン:地上適性上昇]\n\nWEAPON\nMAIN ビーム・サーベル 射程1 近距離\nSUB フォールディング・バズーカ 射程4 遠距離\n\nLINK ABILITY\nガンダム0083 デッキに3枚以上\n[機動力]小アップ\n\nMS ABILITY\n砕撃\n任意発動 単体(敵) 射程1 コスト3\n\nロックオン中の敵に単体攻撃でダメージ\nを与え、メイン武装を使用不能にさせる。\n出撃時1度のみ使用可能。\n\n多彩な戦術 デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]\n小アップ\n\nSPECIAL ATTACK [アイコン:SQUAD SP]\nビーム・サーベル強撃 GP03デンドロビウム・メガ・ビーム砲\nSQUAD RUSH発動中に1度だけ、SQUAD\nSPを使用できる。\n単体(敵) 射程2 貫通(敵) 射程4\nSPコスト 2 威力 3300 / 5600\n\nIMPACT AREA\n[アイコン:射程2範囲に赤丸1個、射程4範囲に黄丸1個、中央に三角マーカー]\n\n敵単体に格闘攻撃でダメージを与える。\n／対象の敵を中心として射程よりも広い\n範囲で、射線上の敵に貫通射撃でダメー\nジを与える。\n\nillust S Kei\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nFQ01-002 R"
+  },
+  "ocr_raw_file": "FORSQUAD_SEASON_01_FQ01-002_ガンダム試作3号機_ocr_raw.json",
+  "ocr_timestamp": "2026-02-24T01:18:28.649501",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli"
+}

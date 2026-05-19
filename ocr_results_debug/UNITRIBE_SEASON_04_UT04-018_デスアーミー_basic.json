@@ -1,0 +1,92 @@
+{
+  "card_number": "UT04-018",
+  "card_name": "デスアーミー",
+  "series": "UNITRIBE SEASON:04",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT04-018.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT04-018_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "UT04-018",
+    "type": "MS",
+    "card_label": {
+      "class": "機動",
+      "cost_label": "コスト3"
+    },
+    "name": "デスアーミー",
+    "model": "JDG-009X (JDG-00X) DEATH ARMY",
+    "cost": 3,
+    "category": "機動",
+    "affiliation": null,
+    "pilot": null,
+    "stats": {
+      "height": null,
+      "weight": null,
+      "mobility": 270,
+      "ranged_attack": 50,
+      "melee_attack": 320,
+      "hp": 310
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "A",
+      "desert": "C",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "金棒型ビームライフル(格闘)",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "金棒型ビームライフル",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "増援[殲滅／破甲]",
+      "activation": "任意発動",
+      "target": "特殊(自分)",
+      "range": null,
+      "cost": 5,
+      "description": "自身の周囲に殲滅タイプの味方ユニットを呼び出す。このユニットの攻撃は一定時間、被ダメージを一定値アップさせる。※上限3ユニットまで。"
+    },
+    "link_ability": [
+      {
+        "name": "Gガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[近距離攻撃力]小アップ"
+      },
+      {
+        "name": "肉薄する戦い",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "金棒型ビームライフル(格闘)強撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3400,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "M",
+    "illustrator": "deraken",
+    "raw": "MS\n\n機動 コスト3\n\nJDG-009X (JDG-00X) DEATH ARMY\n\nデスアーミー\n\n頭頂高 ー\n本体重量 ー\n所属 ー\nパイロット ー\n\n地上 A 宇宙 A 砂漠 C 水中 C\n\n機動力 270\n遠距離攻撃 50\n近距離攻撃 320\nHP 310\n\nWEAPON\nMAIN 金棒型ビームライフル(格闘) 射程 1 近距離\nSUB 金棒型ビームライフル 射程 3 遠距離\n\nMS ABILITY\n増援[殲滅/破甲]\n任意発動 特殊(自分) 射程 ー コスト 5\n自身の周囲に殲滅タイプの味方ユニットを呼び出す。このユニットの攻撃は一定時間、被ダメージを一定値アップさせる。\n※上限3ユニットまで。\n\nLINK ABILITY\nGガンダム デッキに3枚以上\n[近距離攻撃力]小アップ\n\n肉薄する戦い デッキに4枚以上\n[機動力][近距離攻撃力]小アップ\n\nSPECIAL ATTACK          UNITED SP\n金棒型ビームライフル(格闘)強撃  ー\n連携 ー                 連携 ー\n連携 ー                 連携 ー\n単体(敵) 射程 2          射程 ー\nSPコスト 2 威力 3400 / ー\n敵単体に格闘攻撃でダメージを与える。\n/ー\n\nIMPACT AREA\n[アイコン:緑丸 中央やや下] [アイコン:黄三角 中央下]\n\nillust deraken\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\nUT04-018 M"
+  },
+  "ocr_raw_file": "UNITRIBE_SEASON_04_UT04-018_デスアーミー_ocr_raw.json",
+  "ocr_timestamp": "2026-02-28T08:25:26.000410",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined",
+  "_fix_history": [
+    {
+      "timestamp": "2026-03-03T23:48:42",
+      "changes": [
+        "ms_ability.name: \"増援[殲滅/破甲]\" → \"増援[殲滅／破甲]\""
+      ]
+    }
+  ],
+  "_fixed": true
+}

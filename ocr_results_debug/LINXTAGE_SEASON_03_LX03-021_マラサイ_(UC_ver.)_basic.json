@@ -1,0 +1,83 @@
+{
+  "card_number": "LX03-021",
+  "card_name": "マラサイ (UC ver.)",
+  "series": "LINXTAGE SEASON:03",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX03-021.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX03-021_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "LX03-021",
+    "type": "MS",
+    "card_label": {
+      "class": "機動",
+      "cost_label": "コスト4"
+    },
+    "name": "マラサイ（UC ver.）",
+    "model": "RMS-108 MARASAI [UC ver.]",
+    "cost": 4,
+    "category": "MS",
+    "affiliation": "ジオン公国軍",
+    "pilot": null,
+    "stats": {
+      "height": "20.5m",
+      "weight": "33.1t",
+      "mobility": 250,
+      "ranged_attack": 120,
+      "melee_attack": 220,
+      "hp": 210
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "A",
+      "desert": "C",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "フェダーイン・ライフル(ビーム刃)",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "フェダーイン・ライフル",
+        "range": 4,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "増援[殲滅／貫通]",
+      "activation": "任意発動",
+      "target": "特殊(自分)",
+      "range": null,
+      "cost": 4,
+      "description": "自身の周囲に貫通射撃を行う殲滅タイプの味方ユニットを呼び出す。このユニットは移動しない。※上限3ユニットまで。"
+    },
+    "link_ability": [
+      {
+        "name": "ガンダムUC",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "量産機の戦い方",
+        "condition": "デッキに2枚以上",
+        "effect": "[機動力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "フェダーイン・ライフル強撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3300,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "R",
+    "illustrator": "Kumagoro",
+    "raw": "機動　コスト4　MS\nRMS-108 MARASAI [UC ver.]\nマラサイ（UC ver.）\n\n全高　20.5m\n本体重量　33.1t　　地上 A　宇宙 A　砂漠 C　水中 C\n所属　ジオン公国軍　　　　　　　機動力 250\nパイロット　ー　　　　　　　　　遠距離攻撃 120\n　　　　　　　　　　　　　　　近距離攻撃 220\n　　　　　　　　　　　　　　　HP 210\n\nWEAPON\nMAIN　フェダーイン・ライフル(ビーム刃)　射程 1　近距離\nSUB　フェダーイン・ライフル　射程 4　遠距離\n\nMS ABILITY\n増援[殲滅／貫通]\n任意発動　特殊(自分)　射程 ー　コスト 4\n自身の周囲に貫通射撃を行う殲滅タイプの味方ユニットを呼び出す。このユニットは移動しない。※上限3ユニットまで。\n\nLINK ABILITY\nガンダムUC　デッキに3枚以上\n[機動力]小アップ\n\n量産機の戦い方　デッキに2枚以上\n[機動力]小アップ\n\nSPECIAL ATTACK\nフェダーイン・ライフル強撃\n単体(敵)　射程 2\nSPコスト 2　威力 3300\n敵単体に格闘攻撃でダメージを与える。\n\nIMPACT AREA（グリッド図）\n\nillust. Kumagoro\n©創通・サンライズ\nBANDAI MADE IN JAPAN　機動戦士ガンダム ARSENAL BASE®\nLX03-021　R"
+  },
+  "ocr_raw_file": "LINXTAGE_SEASON_03_LX03-021_マラサイ_(UC_ver.)_ocr_raw.json",
+  "ocr_timestamp": "2026-03-07T17:07:11.079229",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

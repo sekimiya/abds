@@ -1,0 +1,91 @@
+{
+  "card_number": "PR-208",
+  "card_name": "ウイングガンダムゼロ",
+  "series": "プロモーション",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-208.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-208_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "PR-208",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト5"
+    },
+    "name": "ウイングガンダムゼロ",
+    "model": "XXXG-00W0 WING GUNDAM ZERO",
+    "cost": 5,
+    "category": "ガンダムW",
+    "affiliation": null,
+    "pilot": "ヒイロ・ユイ、ゼクス・マーキス",
+    "stats": {
+      "height": "16.7m",
+      "weight": "8.0t",
+      "mobility": 210,
+      "ranged_attack": 430,
+      "melee_attack": 130,
+      "hp": 430
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "C",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "ツインバスターライフル",
+        "range": 4,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ビームサーベル",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "撃滅",
+      "activation": "任意発動",
+      "target": "単体(敵)",
+      "range": 4,
+      "cost": 4,
+      "description": "ロックオン中の敵に単体攻撃でダメージを与える。この攻撃で敵ユニットを撃破した場合、敵ユニットの修理時間を延長させる。"
+    },
+    "link_ability": [
+      {
+        "name": "ガンダムW",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "的確な一撃",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][遠距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ツインバスターライフル撃討",
+      "target": "単体(敵)",
+      "range": 4,
+      "sp_cost": 2,
+      "power": 3300,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "united_sp": {
+        "name": "死神とゼロの共闘",
+        "partner1": "ガンダムデスサイズヘル",
+        "partner2": null,
+        "target": "範囲(敵)",
+        "range": 4,
+        "power": 4000,
+        "description": "対象の敵を中心として格闘と範囲射撃でダメージを与える。出撃時1度のみ使用可能。"
+      }
+    },
+    "rarity": "PR",
+    "illustrator": "kazumasa yasukuni",
+    "raw": "遠距離　コスト5　MS\nXXXG-00W0 WING GUNDAM ZERO\nウイングガンダムゼロ\n\n全高　16.7m\n本体重量　8.0t\n所属　ー\nパイロット　ヒイロ・ユイ、ゼクス・マーキス\n\n地上 A　宇宙 S　砂漠 C　水中 C\n機動力 210\n遠距離攻撃 430\n近距離攻撃 130\nHP 430\n\nWEAPON\nMAIN　ツインバスターライフル　射程 4　遠距離\nSUB　ビームサーベル　射程 1　近距離\n\nMS ABILITY\n撃滅\n任意発動　単体(敵)　射程 4　コスト 4\nロックオン中の敵に単体攻撃でダメージを与える。この攻撃で敵ユニットを撃破した場合、敵ユニットの修理時間を延長させる。\n\nLINK ABILITY\nガンダムW　デッキに3枚以上\n[機動力]小アップ\n\n的確な一撃　デッキに4枚以上\n[機動力][遠距離攻撃力]小アップ\n\nSPECIAL ATTACK　　UNITED SP\nツインバスターライフル撃討　死神とゼロの共闘\n連携｜ガンダムデスサイズヘル　連携｜ー\n連携｜ー　連携｜ー\n単体(敵)　射程 4　　範囲(敵)　射程 4\nSPコスト 2　威力 3300 / 4000\n敵単体に射撃攻撃でダメージを与える。／対象の敵を中心として格闘と範囲射撃でダメージを与える。出撃時1度のみ使用可能。\n\nillust. kazumasa yasukuni\n©創通・サンライズ\nBANDAI MADE IN JAPAN\nNOT FOR SALE　PR-208　PR"
+  },
+  "ocr_raw_file": "プロモーション_PR-208_ウイングガンダムゼロ_ocr_raw.json",
+  "ocr_timestamp": "2026-03-03T22:39:17.843107",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

@@ -1,0 +1,83 @@
+{
+  "card_number": "LX01-031",
+  "card_name": "ジャスティスガンダム",
+  "series": "LINXTAGE SEASON:01",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX01-031.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX01-031_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "LX01-031",
+    "type": "MS",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト5"
+    },
+    "name": "ジャスティスガンダム",
+    "model": "ZGMF-X09A JUSTICE GUNDAM",
+    "cost": 5,
+    "category": "近距離",
+    "affiliation": null,
+    "pilot": "アスラン・ザラ",
+    "stats": {
+      "height": "18.56m",
+      "weight": "75.4t",
+      "mobility": 370,
+      "ranged_attack": 50,
+      "melee_attack": 400,
+      "hp": 530
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "A",
+      "water": null
+    },
+    "weapon": {
+      "main": {
+        "name": "アンビデクストラス・ハルバード",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "フォルティス・ビーム砲",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "縛撃",
+      "activation": "任意発動",
+      "target": "単体(敵)",
+      "range": 2,
+      "cost": 3,
+      "description": "ロックオン中の敵ユニットに単体攻撃を行いダメージを与え、一定時間スタンさせる。"
+    },
+    "link_ability": [
+      {
+        "name": "ガンダムSEED",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ファトゥム-00連携",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3700,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "U",
+    "illustrator": "PLANETA_Igarashi",
+    "raw": "近距離 コスト5\n\nMS\n\nZGMF-X09A JUSTICE GUNDAM\nジャスティスガンダム\n\n全高 18.56m\n本体重量 75.4t\n所属 ー\nパイロット アスラン・ザラ\n\n地上 A 宇宙 S 砂漠 A\n\n機動力 370\n遠距離攻撃 50\n近距離攻撃 400\nHP 530\n\nWEAPON\nMAIN アンビデクストラス・ハルバード 射程 1 近距離\nSUB フォルティス・ビーム砲 射程 3 遠距離\n\nLINK ABILITY\nガンダムSEED デッキに3枚以上\n[機動力]小アップ\n\n戦況を変える力 デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nMS ABILITY\n縛撃\n任意発動 単体(敵) 射程 2 コスト 3\nロックオン中の敵ユニットに単体攻撃を行いダメージを与え、一定時間スタンさせる。\n\nSPECIAL ATTACK\nファトゥム-00連携\n単体(敵) 射程 2\nSPコスト 2 威力 3700\n敵単体に格闘攻撃でダメージを与える。\n\nIMPACT AREA\n[アイコン:中央やや下に単体マーカー]\n\nillust PLANETA_Igarashi\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nLX01-031 U"
+  },
+  "ocr_raw_file": "LINXTAGE_SEASON_01_LX01-031_ジャスティスガンダム_ocr_raw.json",
+  "ocr_timestamp": "2026-03-02T07:18:11.409051",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

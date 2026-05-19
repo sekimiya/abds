@@ -1,0 +1,36 @@
+{
+  "card_number": "VEB02-029",
+  "card_name": "カミキ・ミライ",
+  "series": "VEブースター2弾",
+  "ocr_data": {
+    "card_number": "VEB02-029",
+    "type": "PL",
+    "name": "カミキ・ミライ",
+    "english_name": "MIRAI KAMIKI",
+    "cost": 4,
+    "category": "殲滅",
+    "rarity": "R",
+    "stats": {"mobility": 190, "ranged": 80, "melee": 290, "hp": 240},
+    "pilot_skill": {
+      "name": "燃え盛る闘気",
+      "activation": "EBLv.2に上昇時",
+      "description": "30秒間、自身の[近距離攻撃力]をアップし、受けるダメージを軽減する。"
+    },
+    "link_ability": [
+      {
+        "name": "新時代の高鳴り",
+        "condition": "デッキに3枚以上",
+        "effect": "ECHOES BEAT Lv.が表示される。味方ユニットが戦術技を発動するとEBLv.が上がる。[HP][SP威力]小アップ",
+        "is_eb_link": true
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false
+      }
+    ]
+  },
+  "ocr_engine": "claude_code_subagent",
+  "ocr_timestamp": "2026-05-15T00:00:00"
+}

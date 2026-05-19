@@ -1,0 +1,90 @@
+{
+  "card_number": "VE02-025",
+  "card_name": "インフィニットジャスティスガンダム弐式",
+  "series": "WAVECHOES SEASON:02",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE02-025.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE02-025_b.jpg?v250630",
+  "ocr_engine": "claude_code_subagent",
+  "ocr_type": "basic",
+  "ocr_timestamp": "2026-04-22T20:30:00.000000",
+  "ocr_data": {
+    "card_id": "VE02-025",
+    "type": "MS",
+    "name": "インフィニットジャスティスガンダム弐式",
+    "model": "ZGMF-X191M2 INFINITE JUSTICE GUNDAM TYPEII",
+    "cost": 5,
+    "category": "近距離",
+    "affiliation": "ターミナル",
+    "pilot": "アスラン・ザラ、カガリ・ユラ・アスハ",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト5"
+    },
+    "stats": {
+      "height": "19.64m",
+      "weight": "78.07t",
+      "mobility": 280,
+      "ranged_attack": 90,
+      "melee_attack": 370,
+      "hp": 360
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "A",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "アンビデクストラス・ハルバード",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "高エネルギービームライフル",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "縛撃",
+      "activation": "任意発動",
+      "target": "単体(敵)",
+      "range": 1,
+      "cost": 3,
+      "description": "ロックオン中の敵ユニットに単体攻撃を行いダメージを与え、一定時間スタンさせる。"
+    },
+    "link_ability": [
+      {
+        "name": "SEED FREEDOM",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "アンビデクストラス・ハルバード強撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": "3300",
+      "sp_type": "ECHOES BEAT SP",
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null,
+      "echoes_beat": {
+        "name": "スピッツェシュヴァート ビームボーン",
+        "level": 3,
+        "target": "単体(敵)",
+        "range": 2,
+        "power": "4800",
+        "description": "EBLv.を3下げる。敵単体に格闘攻撃でダメージを与える。出撃時1度のみ使用可能。"
+      }
+    },
+    "rarity": "C",
+    "raw": "近距離 コスト5 MS ZGMF-X191M2 INFINITE JUSTICE GUNDAM TYPEII インフィニットジャスティスガンダム弐式 頭頂高 19.64m 本体重量 78.07t 所属 ターミナル パイロット アスラン・ザラ、カガリ・ユラ・アスハ 地上 A 宇宙 S 砂漠 A 水中 C 機動力 280 遠距離攻撃 90 近距離攻撃 370 HP 360 WEAPON MAIN アンビデクストラス・ハルバード 射程 1 近距離 SUB 高エネルギービームライフル 射程 3 遠距離 MS ABILITY 縛撃 任意発動 単体(敵) 射程 1 コスト 3 ロックオン中の敵ユニットに単体攻撃を行いダメージを与え、一定時間スタンさせる。 LINK ABILITY SEED FREEDOM デッキに3枚以上 [機動力]小アップ 多彩な戦術 デッキに4枚以上 [遠距離攻撃力][近距離攻撃力]小アップ SPECIAL ATTACK ECHOES BEAT SP アンビデクストラス・ハルバード強撃 スピッツェシュヴァート ビームボーン Lv.3 ECHOES BEAT Lv.を下げることで、共鳴戦術技が発動する。 単体(敵) 射程 2 単体(敵) 射程 2 SPコスト 2 威力 3300 / 4800 敵単体に格闘攻撃でダメージを与える。 / EBLv.を3下げる。敵単体に格闘攻撃でダメージを与える。出撃時1度のみ使用可能。 illust gomibako VE02-025 C"
+  }
+}

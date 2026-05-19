@@ -1,0 +1,83 @@
+{
+  "card_number": "AB02-011",
+  "card_name": "グフ・カスタム",
+  "series": "SEASON:02",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB02-011.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB02-011_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "AB02-011",
+    "type": "MS",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト3"
+    },
+    "name": "グフ・カスタム",
+    "model": "MS-07B-3 GOUF CUSTOM",
+    "cost": 3,
+    "category": "近距離",
+    "affiliation": "ジオン公国軍",
+    "pilot": "ノリス・パッカード",
+    "stats": {
+      "height": "18.2m",
+      "weight": "58.5t",
+      "mobility": 200,
+      "ranged_attack": 130,
+      "melee_attack": 360,
+      "hp": 350
+    },
+    "terrain_compatibility": {
+      "ground": "S",
+      "space": "C",
+      "desert": "A",
+      "water": null
+    },
+    "weapon": {
+      "main": {
+        "name": "ヒート・サーベル",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "ガトリング・シールド",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "縛撃",
+      "activation": "任意発動",
+      "target": "単体(敵)",
+      "range": 2,
+      "cost": 3,
+      "description": "ロックオン中の敵ユニットに単体攻撃を行いダメージを与え、一定時間スタンさせる。"
+    },
+    "link_ability": [
+      {
+        "name": "第08MS小隊",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力]小アップ"
+      },
+      {
+        "name": "陸戦特化の戦い",
+        "condition": "デッキに2枚以上",
+        "effect": "[機動力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ヒート・サーベル激突",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3600,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "P",
+    "illustrator": "Tomotake Kinoshita",
+    "raw": "MS\n\n近距離 コスト3\n\nMS-07B-3 GOUF CUSTOM\nグフ・カスタム\n\n第08MS小隊\n\n全高 18.2m\n本体重量 58.5t\n所属 ジオン公国軍\nパイロット ノリス・パッカード\n\n地上 S 宇宙 C 砂漠 A\n機動力 200\n遠距離攻撃 130\n近距離攻撃 360\nHP 350\n\nWEAPON\nMAIN ヒート・サーベル 射程 1 近距離\nSUB ガトリング・シールド 射程 3 遠距離\n\nLINK ABILITY\n第08MS小隊 デッキに3枚以上\n[遠距離攻撃力]小アップ\n\n陸戦特化の戦い デッキに2枚以上\n[機動力]小アップ\n\nMS ABILITY\n縛撃\n任意発動 単体(敵) 射程 2 コスト 3\nロックオン中の敵ユニットに単体攻撃を\n行いダメージを与え、一定時間スタンさ\nせる。\n\nSPECIAL ATTACK\nヒート・サーベル激突\n単体(敵) 射程 2\nSPコスト 2 威力 3600\n敵単体に格闘攻撃でダメージを与える。\n\nIMPACT AREA\n[アイコン:中央やや下に黄緑の円形マーカー]\n\nillust Tomotake Kinoshita\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\n\nAB02-011 P"
+  },
+  "ocr_raw_file": "SEASON_02_AB02-011_グフ・カスタム_ocr_raw.json",
+  "ocr_timestamp": "2026-02-23T15:07:53.491243",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli"
+}

@@ -1,0 +1,90 @@
+{
+  "card_number": "VE02-037",
+  "card_name": "サイコ・ガンダム（GQ）",
+  "series": "WAVECHOES SEASON:02",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE02-037.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE02-037_b.jpg?v250630",
+  "ocr_engine": "claude_code_subagent",
+  "ocr_type": "basic",
+  "ocr_timestamp": "2026-04-22T20:30:00.000000",
+  "ocr_data": {
+    "card_id": "VE02-037",
+    "type": "MS",
+    "name": "サイコ・ガンダム（GQ）",
+    "model": "MRX-010 Psycho Gundam(GQ)",
+    "cost": 13,
+    "category": "遠距離",
+    "affiliation": "地球連邦軍",
+    "pilot": "ドゥー・ムラサメ",
+    "card_label": {
+      "class": "GQuuuuuX",
+      "cost_label": "コスト13"
+    },
+    "stats": {
+      "height": null,
+      "weight": null,
+      "mobility": 240,
+      "ranged_attack": 999,
+      "melee_attack": 0,
+      "hp": 999
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "A",
+      "desert": "C",
+      "water": "B"
+    },
+    "weapon": {
+      "main": {
+        "name": "メガ粒子砲",
+        "range": 4,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": null,
+        "range": null,
+        "type": null
+      }
+    },
+    "ms_ability": {
+      "name": "特攻",
+      "activation": "出撃時発動",
+      "target": "自分",
+      "range": null,
+      "cost": null,
+      "description": "自身の[遠／近攻撃力]をアップし[怯み無効]となるが、[回避／ガード不可][修理時間延長]となる。効果は撤退するまで持続。"
+    },
+    "link_ability": [
+      {
+        "name": "GQuuuuuuX",
+        "condition": "デッキに3枚以上",
+        "effect": "[HP]小アップ"
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "一斉掃射",
+      "target": "範囲（敵）",
+      "range": 4,
+      "sp_cost": 2,
+      "power": 4500,
+      "description": "外装装甲をパージし、自身を中心に半円状の範囲攻撃でダメージを与える。パージ後は能力が上昇。自身が撤退するまで効果は持続する。",
+      "united_sp": null,
+      "echoes_beat": {
+        "name": "一斉掃射 Lv.3",
+        "level": 3,
+        "target": "範囲（敵）",
+        "range": 4,
+        "power": 5400,
+        "description": "EBLv.を3下げる。外装装甲をパージし、自身を中心に半円状の範囲攻撃でダメージを与える。以後通常攻撃が貫通射撃に変化し、戦術技が使用不可となる。パージ後は能力が上昇。自身が撤退するまで効果は持続する。出撃時1度のみ使用可能。"
+      },
+      "sp_type": "ECHOES BEAT"
+    },
+    "rarity": "U",
+    "raw": "遠距離 コスト13 MS GQuuuuuX MRX-010 Psycho Gundam(GQ) サイコ・ガンダム（GQ） 頭頂高 — 本体重量 — 地上 A 宙 A 砂漠 C 水中 B 所属 地球連邦軍 機動力 240 パイロット ドゥー・ムラサメ 遠距離攻撃 999 近距離攻撃 0 HP 999 WEAPON LINK ABILITY MAIN メガ粒子砲 射程 4 遠距離 GQuuuuuuX デッキに3枚以上 SUB — 射程 — — [HP]小アップ MS ABILITY 戦況を変える力 デッキに4枚以上 特攻 [遠距離攻撃力][近距離攻撃力]小アップ 出撃時発動 自分 射程 — コスト — 自身の[遠／近攻撃力]をアップし[怯み無効]となるが、[回避／ガード不可][修理時間延長]となる。効果は撤退するまで持続。 IMPACT AREA SPECIAL ATTACK ECHOES BEAT 一斉掃射 一斉掃射 Lv.3 ECHOES BEAT Lv.を下げることで、Lv.戦術技が発動する。 範囲（敵） 射程 4 範囲（敵） 射程 4 SPコスト 2 威力 4500 / 5400 外装装甲をパージし、自身を中心に半円状の範囲攻撃でダメージを与える。パージ後は能力が上昇。自身が撤退するまで効果は持続する。／ EBLv.を3下げる。外装装甲をパージし、自身を中心に半円状の範囲攻撃でダメージを与える。以後通常攻撃が貫通射撃に変化し、戦術技が使用不可となる。パージ後は能力が上昇。自身が撤退するまで効果は持続する。出撃時1度のみ使用可能。 illust. yuuiguchi VE02-037 U"
+  }
+}

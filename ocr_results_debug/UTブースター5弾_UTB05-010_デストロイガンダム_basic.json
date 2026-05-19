@@ -1,0 +1,79 @@
+{
+  "card_number": "UTB05-010",
+  "card_name": "デストロイガンダム",
+  "series": "UTブースター5弾",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UTB05-010.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UTB05-010_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "UTB05-010",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト10"
+    },
+    "name": "デストロイガンダム",
+    "model": "GFAS-X1 DESTROY GUNDAM",
+    "cost": 10,
+    "category": "遠距離",
+    "affiliation": "地球連合軍",
+    "pilot": "ステラ・ルーシェ",
+    "stats": {
+      "height": "38.07m",
+      "weight": "404.93t",
+      "mobility": 240,
+      "ranged_attack": 850,
+      "melee_attack": 0,
+      "hp": 850
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "A",
+      "desert": "C",
+      "water": "B"
+    },
+    "weapon": {
+      "main": {
+        "name": "アウフプラール・ドライツェーン",
+        "range": 4,
+        "type": "遠距離"
+      },
+      "sub": null
+    },
+    "ms_ability": {
+      "name": "特攻",
+      "activation": "出撃時発動",
+      "target": "自分",
+      "range": null,
+      "cost": null,
+      "description": "自身の[遠／近攻撃力]をアップし[怯み無効]となるが、[回避／ガード不可][修理時間延長]となる。効果は撤退するまで持続。"
+    },
+    "link_ability": [
+      {
+        "name": "SEED DESTINY",
+        "condition": "デッキに3枚以上",
+        "effect": "[HP]小アップ"
+      },
+      {
+        "name": "漆黒の破壊者",
+        "condition": "デッキに2枚以上",
+        "effect": "[遠距離攻撃力][SP威力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "スーパースキュラ撃射",
+      "target": "貫通(敵)",
+      "range": 4,
+      "sp_cost": 3,
+      "power": 3900,
+      "description": "MS形態に変形、射線上の敵に貫通射撃でダメージを与える。変形後は能力が上昇。自身が撤退するまで効果は持続する。",
+      "united_sp": null
+    },
+    "rarity": "U",
+    "illustrator": "Chifuyu Yukishiro",
+    "raw": "MS\n\n遠距離 コスト10\n\nGFAS-X1 DESTROY GUNDAM\nデストロイガンダム\n\n頭頂高 38.07m\n本体重量 404.93t\n所属 地球連合軍\nパイロット ステラ・ルーシェ\n\n地上 A 宇宙 A 砂漠 C 水中 B\n\n機動力 240\n遠距離攻撃 850\n近距離攻撃 0\nHP 850\n\nWEAPON\nMAIN アウフプラール・ドライツェーン 射程 4 遠距離\nSUB ー 射程 ー\n\nLINK ABILITY\nSEED DESTINY デッキに3枚以上\n[HP]小アップ\n\nMS ABILITY\n特攻\n出撃時発動 自分 射程 ー コスト ー\n自身の[遠／近攻撃力]をアップし[怯み無効]となるが、[回避／ガード不可][修理時間延長]となる。効果は撤退するまで持続。\n\n漆黒の破壊者 デッキに2枚以上\n[遠距離攻撃力][SP威力]小アップ\n\nSPECIAL ATTACK　UNITED SP\nスーパースキュラ撃射\n連携 ー 連携 ー\n連携 ー 連携 ー\n貫通(敵) 射程 4 射程 ー\nSPコスト 3 威力 3900 / ー\nMS形態に変形、射線上の敵に貫通射撃でダメージを与える。変形後は能力が上昇。自身が撤退するまで効果は持続する。\n/ ー\n\nIMPACT AREA\n[アイコン:縦長長方形・貫通型]\n\nillust Chifuyu Yukishiro\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nUTB05-010 U"
+  },
+  "ocr_raw_file": "UTブースター5弾_UTB05-010_デストロイガンダム_ocr_raw.json",
+  "ocr_timestamp": "2026-03-02T04:13:18.054958",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

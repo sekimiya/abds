@@ -1,0 +1,83 @@
+{
+  "card_number": "LX02-003",
+  "card_name": "ガンタンク",
+  "series": "LINXTAGE SEASON:02",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX02-003.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX02-003_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "LX02-003",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト4"
+    },
+    "name": "ガンタンク",
+    "model": "RX-75 GUNTANK",
+    "cost": 4,
+    "category": "MS",
+    "affiliation": "地球連邦軍",
+    "pilot": "ハヤト・コバヤシ",
+    "stats": {
+      "height": "15.0m",
+      "weight": "56.0t",
+      "mobility": 140,
+      "ranged_attack": 300,
+      "melee_attack": 160,
+      "hp": 200
+    },
+    "terrain_compatibility": {
+      "ground": "S",
+      "space": "C",
+      "desert": "S",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "120mmキャノン砲",
+        "range": 4,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ポップ・ミサイル",
+        "range": 2,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "増援[殲滅／砲撃]",
+      "activation": "任意発動",
+      "target": "特殊(自分)",
+      "range": null,
+      "cost": 4,
+      "description": "自身の周囲に砲撃を行う殲滅タイプの味方ユニットを呼び出す。このユニットは移動しない。※上限3ユニットまで。"
+    },
+    "link_ability": [
+      {
+        "name": "機動戦士ガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "量産機の戦い方",
+        "condition": "デッキに2枚以上",
+        "effect": "[機動力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "120mmキャノン砲砲撃",
+      "target": "範囲(敵)",
+      "range": 4,
+      "sp_cost": 2,
+      "power": 2700,
+      "description": "対象の敵を中心として範囲射撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "R",
+    "illustrator": "hiropon",
+    "raw": "遠距離 コスト4\nRX-75 GUNTANK\nガンタンク\n全高 15.0m\n本体重量 56.0t\n所属 地球連邦軍\nパイロット ハヤト・コバヤシ\n地上 S 宇宙 C 砂漠 S 水中 C\n機動力 140\n遠距離攻撃 300\n近距離攻撃 160\nHP 200\n\nWEAPON\nMAIN 120mmキャノン砲 射程 4 遠距離\nSUB ポップ・ミサイル 射程 2 近距離\n\nMS ABILITY\n増援[殲滅／砲撃]\n任意発動 特殊(自分) 射程 ー コスト 4\n自身の周囲に砲撃を行う殲滅タイプの味方ユニットを呼び出す。このユニットは移動しない。※上限3ユニットまで。\n\nLINK ABILITY\n機動戦士ガンダム デッキに3枚以上\n[機動力]小アップ\n\n量産機の戦い方 デッキに2枚以上\n[機動力]小アップ\n\nIMPACT AREA\n\nSPECIAL ATTACK\n120mmキャノン砲砲撃\n範囲(敵) 射程 4\nSPコスト 2 威力 2700\n対象の敵を中心として範囲射撃でダメージを与える。\n\nillust hiropon\n©創通・サンライズ\nBANDAI MADE IN JAPAN\nLX02-003 R"
+  },
+  "ocr_raw_file": "LINXTAGE_SEASON_02_LX02-003_ガンタンク_ocr_raw.json",
+  "ocr_timestamp": "2026-03-07T15:41:30.955536",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

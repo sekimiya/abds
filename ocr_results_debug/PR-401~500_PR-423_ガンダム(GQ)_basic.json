@@ -1,0 +1,101 @@
+{
+  "card_number": "PR-423",
+  "card_name": "ガンダム(GQ)",
+  "series": "PR-401~500",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-423.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-423_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "PR-423",
+    "type": "MS",
+    "rarity": "PR",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト3"
+    },
+    "name": "ガンダム(GQ)",
+    "model": "RX-78-2 Gundam(GQ)",
+    "cost": 3,
+    "affiliation": null,
+    "pilot": null,
+    "stats": {
+      "height": null,
+      "weight": null,
+      "mobility": 220,
+      "ranged_attack": 0,
+      "melee_attack": 260,
+      "hp": 380
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "C",
+      "water": "A"
+    },
+    "weapon": {
+      "main": {
+        "name": "ビーム・サーベル",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "シールド",
+        "range": null,
+        "type": null
+      }
+    },
+    "ms_ability": {
+      "name": "補給[弱体化解除]",
+      "activation": "任意発動",
+      "target": "範囲(味方)",
+      "range": null,
+      "cost": 5,
+      "description": "自身を中心とした大範囲の味方ユニットのHPを中回復し、弱体化状態を無効化する。"
+    },
+    "link_abilities": [
+      {
+        "name": "GQuuuuuuX",
+        "condition": "デッキに3枚以上",
+        "effect": "[HP]小アップ",
+        "is_eb_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "special_attack": {
+      "name": "ビーム・サーベル強撃",
+      "sp_type": "ECHOES BEAT SP",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3400,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "attack_type": "格闘",
+      "united_sp": null,
+      "squad_sp": null,
+      "echoes_beat": {
+        "level": 1,
+        "name": "ビーム・サーベル強撃 Lv.1",
+        "target": "単体(敵)",
+        "range": 2,
+        "power": 3700,
+        "description": "EBLv.を1下げる。敵単体に格闘攻撃でダメージを与え、EBLv.が3に上昇する。出撃時1度のみ使用可能。"
+      }
+    },
+    "impact_area": {
+      "type": "circular",
+      "radius": null,
+      "centered": false
+    },
+    "raw": ""
+  },
+  "ocr_raw_file": "PR-401~500_PR-423_ガンダム(GQ)_ocr_raw.json",
+  "ocr_timestamp": "2026-03-30T02:09:19.743719",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

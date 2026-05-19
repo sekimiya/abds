@@ -1,0 +1,94 @@
+{
+  "card_number": "VE01-017",
+  "card_name": "ストライクフリーダムガンダム弐式",
+  "series": "WAVECHOES SEASON:01",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE01-017.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE01-017_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "VE01-017",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト6"
+    },
+    "name": "ストライクフリーダムガンダム弐式",
+    "model": "ZGMF/A-262B STRIKE FREEDOM GUNDAM TYPE\u2161",
+    "cost": 6,
+    "category": "遠距離",
+    "affiliation": "コンパス",
+    "pilot": "キラ・ヤマト、アスラン・ザラ",
+    "stats": {
+      "height": "18.88m",
+      "weight": "82.09t",
+      "mobility": 280,
+      "ranged_attack": 600,
+      "melee_attack": 80,
+      "hp": 640
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "A",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "高出力ビームレールガン&高エネルギービームライフル",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ビームサーベル アクータラクルタ",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "烈撃[広角]",
+      "activation": "任意発動",
+      "target": "範囲(敵)",
+      "range": 4,
+      "cost": 5,
+      "description": "ロックオン中の敵ユニットを中心に扇状の範囲攻撃を行い、残りHPを半分にする。"
+    },
+    "link_ability": [
+      {
+        "name": "SEED FREEDOM",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ドラグーン斉射",
+      "target": "範囲(敵)",
+      "range": 4,
+      "sp_cost": 2,
+      "power": 3100,
+      "sp_type": "ECHOES BEAT",
+      "description": "対象の敵を中心として範囲射撃でダメージを与え、自身のHPを回復する。",
+      "echoes_beat": {
+        "eb_type": "normal",
+        "eb_name": "ドラグーン斉射 Lv.1",
+        "eb_level": 1,
+        "eb_note": "ECHOES BEAT Lv.を下げることで、Lv.戦術技が発動する。",
+        "eb_target": "範囲(敵)",
+        "eb_range": 4,
+        "eb_power": 3400,
+        "eb_description": "EBLv.を1下げる。対象の敵を中心として範囲射撃でダメージを与え、自身のHPを回復させ、EBLv.が3に上昇する。出撃時1度のみ使用可能。"
+      },
+      "united_sp": null
+    },
+    "rarity": "U",
+    "illustrator": "TAKA-F",
+    "raw": ""
+  },
+  "ocr_raw_file": "WAVECHOES_SEASON_01_VE01-017_ストライクフリーダムガンダム弐式_ocr_raw.json",
+  "ocr_timestamp": "2026-03-30T00:53:00.000000",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

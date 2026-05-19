@@ -1,0 +1,83 @@
+{
+  "card_number": "UT05-013",
+  "card_name": "ゴトラタン",
+  "series": "UNITRIBE SEASON:05",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT05-013.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT05-013_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "UT05-013",
+    "type": "MS",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト5"
+    },
+    "name": "ゴトラタン",
+    "model": "ZMT-S33S GOTTRLATAN",
+    "cost": 5,
+    "category": "近距離",
+    "affiliation": "ザンスカール帝国",
+    "pilot": "カテジナ・ルース",
+    "stats": {
+      "height": "15.9m",
+      "weight": "11.1t",
+      "mobility": 200,
+      "ranged_attack": 140,
+      "melee_attack": 220,
+      "hp": 290
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "C",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "ビーム・トンファー",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "ビーム・ライフル",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "強撃",
+      "activation": "任意発動",
+      "target": "単体(敵)",
+      "range": 1,
+      "cost": 3,
+      "description": "ロックオン中の敵に単体攻撃でダメージを与える。"
+    },
+    "link_ability": [
+      {
+        "name": "機動戦士Vガンダム",
+        "condition": "デッキに2枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "間合いを詰めた接近戦",
+        "condition": "デッキに2枚以上",
+        "effect": "[近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ビーム・トンファー強撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3300,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "C",
+    "illustrator": "gomibako",
+    "raw": "近距離　コスト5\n\nMS\n\nZMT-S33S GOTTRLATAN\nゴトラタン\n\n頭頂高　15.9m\n本体重量　11.1t\n所属　ザンスカール帝国\nパイロット　カテジナ・ルース\n\n地上 A　宇宙 S　砂漠 C　水中 C\n\n機動力 200\n遠距離攻撃 140\n近距離攻撃 220\nHP 290\n\nWEAPON\nMAIN ビーム・トンファー　射程 1　近距離\nSUB ビーム・ライフル　射程 3　遠距離\n\nLINK ABILITY\n機動戦士Vガンダム　デッキに2枚以上\n[機動力]小アップ\n\nMS ABILITY\n強撃\n任意発動　単体(敵)　射程 1　コスト 3\n\nロックオン中の敵に単体攻撃でダメージを与える。\n\n間合いを詰めた接近戦　デッキに2枚以上\n[近距離攻撃力]小アップ\n\nSPECIAL ATTACK　UNITED SP\nビーム・トンファー強撃　ー\n連携 ー　連携 ー\n連携 ー　連携 ー\n単体(敵)　射程 2　ー　射程 ー\nSPコスト 2　威力 3300 / ー\n\n敵単体に格闘攻撃でダメージを与える。\n/ ー\n\nIMPACT AREA\n[アイコン:中段左に黄緑丸]\n[アイコン:中段右に黄緑丸]\n\nillust gomibako\n©創通・サンライズ\n機動戦士ガンダム ARSENAL BASE®\nBANDAI MADE IN JAPAN\n\nUT05-013　C"
+  },
+  "ocr_raw_file": "UNITRIBE_SEASON_05_UT05-013_ゴトラタン_ocr_raw.json",
+  "ocr_timestamp": "2026-02-26T19:20:32.722981",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

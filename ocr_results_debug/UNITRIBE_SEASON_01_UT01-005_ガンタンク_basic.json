@@ -1,0 +1,83 @@
+{
+  "card_number": "UT01-005",
+  "card_name": "ガンタンク",
+  "series": "UNITRIBE SEASON:01",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT01-005.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT01-005_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "UT01-005",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト3"
+    },
+    "name": "ガンタンク",
+    "model": "RX-75 GUNTANK",
+    "cost": 3,
+    "category": "遠距離",
+    "affiliation": "地球連邦軍",
+    "pilot": "ハヤト・コバヤシ",
+    "stats": {
+      "height": "15.0m",
+      "weight": "56.0t",
+      "mobility": 220,
+      "ranged_attack": 300,
+      "melee_attack": 100,
+      "hp": 330
+    },
+    "terrain_compatibility": {
+      "ground": "S",
+      "space": "C",
+      "desert": "S",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "120mmキャノン砲",
+        "range": 4,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ポップ・ミサイル",
+        "range": 2,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "砲撃",
+      "activation": "任意発動",
+      "target": "範囲(敵)",
+      "range": 5,
+      "cost": 4,
+      "description": "射程範囲内の指定した位置に小範囲の砲撃を行い、範囲内の敵にダメージを与える。"
+    },
+    "link_ability": [
+      {
+        "name": "機動戦士ガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "的確な一撃",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][遠距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "120mmキャノン砲砲撃",
+      "target": "範囲(敵)",
+      "range": 4,
+      "sp_cost": 2,
+      "power": 2800,
+      "description": "対象の敵を中心として範囲射撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "M",
+    "illustrator": "K2 Shoukai",
+    "raw": "MS\n\n遠距離　コスト3\n\nRX-75 GUNTANK\nガンタンク\n\n全高　15.0m\n本体重量　56.0t\n所属　地球連邦軍\nパイロット　ハヤト・コバヤシ\n\n地上 S　宇宙 C　砂漠 S　水中 C\n\n機動力 220\n遠距離攻撃 300\n近距離攻撃 100\nHP 330\n\nWEAPON\nMAIN 120mmキャノン砲　射程 4　遠距離\nSUB ポップ・ミサイル　射程 2　近距離\n\nLINK ABILITY\n機動戦士ガンダム　デッキに3枚以上\n[機動力]小アップ\n\n的確な一撃　デッキに4枚以上\n[機動力][遠距離攻撃力]小アップ\n\nMS ABILITY\n砲撃\n任意発動　範囲(敵)　射程 5　コスト 4\n射程範囲内の指定した位置に小範囲の砲撃を行い、範囲内の敵にダメージを与える。\n\nIMPACT AREA\n[アイコン:十字型範囲パターン]\n\nSPECIAL ATTACK　　UNITED SP\n120mmキャノン砲砲撃　ー\n連携 ー　連携 ー\n連携 ー　連携 ー\n範囲(敵)　射程 4　ー　射程\nSPコスト 2　威力 2800 / ー\n対象の敵を中心として範囲射撃でダメージを与える。/ ー\n\nillust K2 Shoukai\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nUT01-005　M"
+  },
+  "ocr_raw_file": "UNITRIBE_SEASON_01_UT01-005_ガンタンク_ocr_raw.json",
+  "ocr_timestamp": "2026-03-02T02:56:11.543817",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

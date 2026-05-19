@@ -1,0 +1,83 @@
+{
+  "card_number": "PR-388",
+  "card_name": "ガンダムヘビーアームズ改（EW）",
+  "series": "プロモーション",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-388.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-388_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "PR-388",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト6"
+    },
+    "name": "ガンダムヘビーアームズ改(EW)",
+    "model": "XXXG-01H2 GUNDAM HEAVYARMS CUSTOM[EW]",
+    "cost": 6,
+    "category": "",
+    "affiliation": "",
+    "pilot": "トロワ・バートン",
+    "stats": {
+      "height": "16.7m",
+      "weight": "8.2t",
+      "mobility": 220,
+      "ranged_attack": 510,
+      "melee_attack": 80,
+      "hp": 540
+    },
+    "terrain_compatibility": {
+      "ground": "S",
+      "space": "A",
+      "desert": "A",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "ダブルガトリングガン",
+        "range": 4,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ホーミングミサイル",
+        "range": 2,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "圧倒",
+      "activation": "任意発動",
+      "target": "単体(敵)",
+      "range": 4,
+      "cost": 3,
+      "description": "ロックオン中の敵が弱体化状態の時に発動可能となり、敵に単体攻撃でダメージを与え、その攻撃は必ずクリティカルになる。"
+    },
+    "link_ability": [
+      {
+        "name": "Endless Waltz",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      },
+      {
+        "name": "的確な一撃",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][遠距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "フルオープンアタック",
+      "target": "貫通(敵)",
+      "range": 4,
+      "sp_cost": 2,
+      "power": 3000,
+      "description": "射線上の敵に貫通射撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "PR",
+    "illustrator": "kyoryu kuramochi",
+    "raw": "遠距離 コスト6\nXXXG-01H2 GUNDAM HEAVYARMS CUSTOM[EW]\nガンダムヘビーアームズ改(EW)\n\n頭頂高 16.7m\n本体重量 8.2t\n所属 ー\nパイロット トロワ・バートン\n\n地上S 宇宙A 砂漠A 水中C\n機動力 220\n遠距離攻撃 510\n近距離攻撃 80\nHP 540\n\nWEAPON\nMAIN ダブルガトリングガン 射程4 遠距離\nSUB ホーミングミサイル 射程2 近距離\n\nMS ABILITY\n圧倒\n任意発動 単体(敵) 射程4 コスト3\nロックオン中の敵が弱体化状態の時に発動可能となり、敵に単体攻撃でダメージを与え、その攻撃は必ずクリティカルになる。\n\nLINK ABILITY\nEndless Waltz デッキに3枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n的確な一撃 デッキに4枚以上\n[機動力][遠距離攻撃力]小アップ\n\nSPECIAL ATTACK UNITED SP\nフルオープンアタック ー\n連携 ー 連携 ー\n連携 ー\n貫通(敵) 射程4 ー 射程ー\nSPコスト2 威力 3000 / ー\n射線上の敵に貫通射撃でダメージを与える。/ ー\n\nillust. kyoryu kuramochi\nNOT FOR SALE\nPR-388 PR"
+  },
+  "ocr_raw_file": "プロモーション_PR-388_ガンダムヘビーアームズ改（EW）_ocr_raw.json",
+  "ocr_timestamp": "2026-03-03T19:26:13.915600",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

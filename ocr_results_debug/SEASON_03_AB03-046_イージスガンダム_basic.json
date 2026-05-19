@@ -1,0 +1,78 @@
+{
+  "card_number": "AB03-046",
+  "card_name": "イージスガンダム",
+  "series": "SEASON:03",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB03-046.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB03-046_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "AB03-046",
+    "type": "MS",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト7"
+    },
+    "name": "イージスガンダム",
+    "model": "GAT-X303 AEGIS GUNDAM",
+    "cost": 7,
+    "category": "近距離",
+    "affiliation": "ザフト",
+    "pilot": "アスラン・ザラ",
+    "stats": {
+      "height": "18.86m",
+      "weight": "79.6t",
+      "mobility": 290,
+      "ranged_attack": 230,
+      "melee_attack": 390,
+      "hp": 340
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "A",
+      "desert": "C",
+      "water": null
+    },
+    "weapon": {
+      "main": {
+        "name": "ビームサーベル",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "高エネルギービームライフル",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "間合いを詰めた接近戦",
+      "activation": "デッキに2枚以上",
+      "target": null,
+      "range": null,
+      "cost": null,
+      "description": "[近距離攻撃力]小アップ"
+    },
+    "link_ability": [
+      {
+        "name": "ガンダムSEED",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ビームサーベル強撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3400,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "C",
+    "illustrator": "StudioVIGOR Co.,Ltd.",
+    "raw": "MS\n\n近距離 コスト7\n\nGAT-X303 AEGIS GUNDAM\nイージスガンダム\n\n全高 18.86m\n本体重量 79.6t\n所属 ザフト\nパイロット アスラン・ザラ\n\n地上 A 宇宙 A 砂漠 C\n機動力 290\n遠距離攻撃 230\n近距離攻撃 390\nHP 340\n\nWEAPON\nMAIN ビームサーベル 射程 1 近距離\nSUB 高エネルギービームライフル 射程 3 遠距離\n\nLINK ABILITY\nガンダムSEED デッキに3枚以上\n[機動力]小アップ\n\nMS ABILITY\n間合いを詰めた接近戦 デッキに2枚以上\n— — 射程 — コスト —\n[近距離攻撃力]小アップ\n\nSPECIAL ATTACK\nビームサーベル強撃\n単体(敵) 射程 2\nSPコスト 2 威力 3400\n敵単体に格闘攻撃でダメージを与える。\n\nIMPACT AREA\n[アイコン:中央に緑丸、下部に三角]\n\nillust StudioVIGOR Co.,Ltd.\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n\n[アイコン:機動戦士ガンダム ロゴ] ARSENAL BASE®\n\nAB03-046 C"
+  },
+  "ocr_raw_file": "SEASON_03_AB03-046_イージスガンダム_ocr_raw.json",
+  "ocr_timestamp": "2026-02-23T15:16:08.217171",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli"
+}

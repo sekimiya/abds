@@ -1,0 +1,83 @@
+{
+  "card_number": "AR01-001",
+  "card_name": "ガンダム",
+  "series": "アーセナルレア1弾[前半]",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AR01-001.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AR01-001_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "AR01-001",
+    "type": "MS",
+    "card_label": {
+      "class": "機動",
+      "cost_label": "コスト4"
+    },
+    "name": "ガンダム",
+    "model": "RX-78-2 GUNDAM",
+    "cost": 4,
+    "category": "機動戦士ガンダム",
+    "affiliation": "地球連邦軍",
+    "pilot": "アムロ・レイ",
+    "stats": {
+      "height": "18.0m",
+      "weight": "43.4t",
+      "mobility": 330,
+      "ranged_attack": 230,
+      "melee_attack": 280,
+      "hp": 230
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "A",
+      "desert": "C",
+      "water": null
+    },
+    "weapon": {
+      "main": {
+        "name": "ビーム・サーベル",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "ビーム・ライフル",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "強化[近接]",
+      "activation": "任意発動",
+      "target": "自分",
+      "range": null,
+      "cost": 4,
+      "description": "30秒間、自身の[機動力][近距離攻撃力]を中アップする。"
+    },
+    "link_ability": [
+      {
+        "name": "機動戦士ガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "その名はガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ビーム・サーベル強撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3400,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "A",
+    "illustrator": "Kunio Okawara",
+    "raw": "機動　コスト4\nRX-78-2 GUNDAM\nガンダム\n\n全高　18.0m\n本体重量　43.4t\n所属　地球連邦軍\nパイロット　アムロ・レイ\n\n地上 A　宇宙 A　砂漠 C\n機動力　330\n遠距離攻撃　230\n近距離攻撃　280\nHP　230\n\nWEAPON\nMAIN　ビーム・サーベル　射程1　近距離\nSUB　ビーム・ライフル　射程3　遠距離\n\nMS ABILITY\n強化[近接]\n任意発動　自分　射程ー　コスト4\n30秒間、自身の[機動力][近距離攻撃力]を中アップする。\n\nLINK ABILITY\n機動戦士ガンダム　デッキに3枚以上\n[機動力]小アップ\n\nその名はガンダム　デッキに3枚以上\n[機動力]小アップ\n\nSPECIAL ATTACK\nビーム・サーベル強撃\n単体(敵)　射程2\nSPコスト2　威力　3400\n敵単体に格闘攻撃でダメージを与える。\n\nillust　Kunio Okawara\n©創通・サンライズ\nBANDAI MADE IN JAPAN\nAR01-001　A"
+  },
+  "ocr_raw_file": "アーセナルレア1弾[前半]_AR01-001_ガンダム_ocr_raw.json",
+  "ocr_timestamp": "2026-03-07T14:11:45.107871",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

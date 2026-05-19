@@ -1,0 +1,83 @@
+{
+  "card_number": "BP02-002",
+  "card_name": "ジークアクス(オメガサイコミュ発動)",
+  "series": "BOOSTER PACK [機動戦士GundamGQuuuuuuX]",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP02-002.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP02-002_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "BP02-002",
+    "type": "MS",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト5"
+    },
+    "name": "ジークアクス(オメガサイコミュ発動)",
+    "model": "GQuuuuuuX (Omega Psycommu)",
+    "cost": 5,
+    "category": "近距離",
+    "affiliation": "ポメラニアンズ",
+    "pilot": "アマテ・ユズリハ(マチュ)",
+    "stats": {
+      "height": "18.0m",
+      "weight": "42.4t",
+      "mobility": 240,
+      "ranged_attack": 0,
+      "melee_attack": 430,
+      "hp": 410
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "C",
+      "water": "A"
+    },
+    "weapon": {
+      "main": {
+        "name": "トメノスケ・ヒート・ホーク",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "シールド",
+        "range": null,
+        "type": null
+      }
+    },
+    "ms_ability": {
+      "name": "砕撃",
+      "activation": "任意発動",
+      "target": "単体(敵)",
+      "range": 1,
+      "cost": 3,
+      "description": "ロックオン中の敵に単体攻撃でダメージを与え、メイン武装を使用不能にさせる。出撃時1度のみ使用可能。"
+    },
+    "link_ability": [
+      {
+        "name": "GQuuuuuuX",
+        "condition": "デッキに3枚以上",
+        "effect": "[HP]小アップ"
+      },
+      {
+        "name": "肉薄する戦い",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "トメノスケ・ヒート・ホーク強震",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3500,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "M",
+    "illustrator": "Naochika Morishita",
+    "raw": "MS\n\n近距離　コスト5\n\nGQuuuuuuX (Omega Psycommu)\nジークアクス(オメガサイコミュ発動)\n\n頭頂高　18.0m\n本体重量　42.4t\n所属　ポメラニアンズ\nパイロット　アマテ・ユズリハ(マチュ)\n\n地上 A　宇宙 S　砂漠 C　水中 A\n機動力 240\n遠距離攻撃 0\n近距離攻撃 430\nHP 410\n\nWEAPON\nMAIN　トメノスケ・ヒート・ホーク　射程 1　近距離\nSUB　シールド　射程 ー　ー\n\nLINK ABILITY\nGQuuuuuuX　デッキに3枚以上\n[HP]小アップ\n\nMS ABILITY\n砕撃\n任意発動　単体(敵)　射程 1　コスト 3\nロックオン中の敵に単体攻撃でダメージを与え、メイン武装を使用不能にさせる。出撃時1度のみ使用可能。\n\n肉薄する戦い　デッキに4枚以上\n[機動力][近距離 攻撃力]小アップ\n\nSPECIAL ATTACK　UNITED SP\nトメノスケ・ヒート・ホーク強震\n連携 ー　連携 ー\n連携 ー　連携 ー\n単体(敵)　射程 2　ー　射程 ー\nSPコスト 2　威力 3500 / ー\n敵単体に格闘攻撃でダメージを与える。\n/ ー\n\nIMPACT AREA\n[アイコン:3x5グリッド 中央列の下2マスが緑丸]\n\nillust　Naochika Morishita\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\nBP02-002　M"
+  },
+  "ocr_raw_file": "BOOSTER_PACK_[機動戦士GundamGQuuuuuuX]_BP02-002_ジークアクス(オメガサイコミュ発動)_ocr_raw.json",
+  "ocr_timestamp": "2026-02-28T04:41:13.280828",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

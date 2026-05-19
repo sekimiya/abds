@@ -1,0 +1,83 @@
+{
+  "card_number": "PR-387",
+  "card_name": "ガンダムデスサイズヘル（EW）",
+  "series": "プロモーション",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-387.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-387_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "PR-387",
+    "type": "MS",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト6"
+    },
+    "name": "ガンダムデスサイズヘル(EW)",
+    "model": "XXXG-01D2 GUNDAM DEATHSCYTHE HELL[EW]",
+    "cost": 6,
+    "category": "MS",
+    "affiliation": null,
+    "pilot": "デュオ・マックスウェル",
+    "stats": {
+      "height": "16.3m",
+      "weight": "7.4t",
+      "mobility": 300,
+      "ranged_attack": 130,
+      "melee_attack": 510,
+      "hp": 610
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "C",
+      "water": "A"
+    },
+    "weapon": {
+      "main": {
+        "name": "ビームシザース",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "頭部バルカン",
+        "range": 2,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "装転[範囲]",
+      "activation": "任意発動",
+      "target": "自分",
+      "range": null,
+      "cost": 4,
+      "description": "通常攻撃が自身を中心とした範囲攻撃に変化する。この効果は自身が撤退するまで解除できない。"
+    },
+    "link_ability": [
+      {
+        "name": "Endless Waltz",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      },
+      {
+        "name": "肉薄する戦い",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ビームシザース強襲",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3600,
+      "description": "敵単体に格闘攻撃でダメージを与え、一定時間敵側の表示から消えてロックオンされなくなる。",
+      "united_sp": null
+    },
+    "rarity": "PR",
+    "illustrator": "kyoryu kuramochi",
+    "raw": "近距離 コスト6\nXXXG-01D2 GUNDAM DEATHSCYTHE HELL[EW]\nガンダムデスサイズヘル(EW)\n\n頭頂高　16.3m\n本体重量　7.4t　　地上 A　宇宙 S　砂漠 C　水中 A\n所属　—\nパイロット　デュオ・マックスウェル　　機動力 300\n　　　　　　　　　　　　　　　　　　遠距離攻撃 130\n　　　　　　　　　　　　　　　　　　近距離攻撃 510\n　　　　　　　　　　　　　　　　　　HP 610\n\nWEAPON\nMAIN　ビームシザース　射程 1　近距離\nSUB　頭部バルカン　射程 2　遠距離\n\nMS ABILITY\n装転[範囲]\n任意発動　自分　射程 —　コスト 4\n通常攻撃が自身を中心とした範囲攻撃に変化する。この効果は自身が撤退するまで解除できない。\n\nLINK ABILITY\nEndless Waltz　デッキに3枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\n肉薄する戦い　デッキに4枚以上\n[機動力][近距離攻撃力]小アップ\n\nSPECIAL ATTACK　UNITED SP\nビームシザース強襲　—\n連携 —　連携 —\n連携 —　連携 —\n単体(敵)　射程 2　—　射程 —\nSPコスト 2　威力 3600 / —\n\n敵単体に格闘攻撃でダメージを与え、一定時間敵側の表示から消えてロックオンされなくなる。／—\n\nillust. kyoryu kuramochi\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\nNOT FOR SALE\nPR-387　PR"
+  },
+  "ocr_raw_file": "プロモーション_PR-387_ガンダムデスサイズヘル（EW）_ocr_raw.json",
+  "ocr_timestamp": "2026-03-03T19:24:44.881187",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

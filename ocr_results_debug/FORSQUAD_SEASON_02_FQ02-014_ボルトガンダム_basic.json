@@ -1,0 +1,84 @@
+{
+  "card_number": "FQ02-014",
+  "card_name": "ボルトガンダム",
+  "series": "FORSQUAD SEASON:02",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-014.jpg?v9",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-014_b.jpg?v9",
+  "ocr_data": {
+    "card_id": "FQ02-014",
+    "type": "MS",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト3"
+    },
+    "name": "ボルトガンダム",
+    "model": "GF13-013NR BOLT GUNDAM",
+    "cost": 3,
+    "category": "近距離",
+    "pilot": "アルゴ・ガルスキー",
+    "stats": {
+      "height": "17.3m",
+      "weight": "8.9t",
+      "mobility": 220,
+      "ranged_attack": 0,
+      "melee_attack": 310,
+      "hp": 420
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "B",
+      "desert": "A",
+      "water": "B"
+    },
+    "weapon": {
+      "main": {
+        "name": "グラビトンハンマー",
+        "range": 2,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "シールド",
+        "range": 0,
+        "type": "-"
+      }
+    },
+    "ms_ability": {
+      "name": "鼓舞[近距離][弱体化解除]",
+      "type": "任意発動",
+      "range": 0,
+      "cost": 6,
+      "description": "自身を中心とした大範囲内の味方ユニットの弱体化状態を無効化し、30秒間、[近距離攻撃力]を中アップする。"
+    },
+    "link_ability": [
+      {
+        "name": "Gガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      },
+      {
+        "name": "黄金のMF",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力][HP]小アップ"
+      }
+    ],
+    "impact_area": {
+      "type": "circular",
+      "radius": 2,
+      "centered": true
+    },
+    "illustrator": "K2 Shoukai",
+    "raw": "近距離 コスト3\nGF13-013NR BOLT GUNDAM\nボルトガンダム\n頭頂高 17.3m\n本体重量 8.9t\n所属 ネオロシア\nパイロット アルゴ・ガルスキー\n地上S 宇宙A 砂漠A 水中B\n機動力 220\n遠距離攻撃 0\n近距離攻撃 310\nHP 420\nWEAPON\nMAIN グラビトンハンマー\n射程2 近距離\nSUB シールド\n射程0 -\nMS ABILITY\n鼓舞【近距離】[弱体化解除]\n任意発動 範囲(味方) 射程0 コスト6\n自身を中心とした大範囲内の味方ユニットの弱体化状態を無効化し、30秒間、[近距離攻撃力]を中アップする。\nLINK ABILITY\nGガンダム デッキに3枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n黄金のMF デッキに3枚以上\n[機動力][HP]小アップ\nIMPACT AREA\nSPECIAL ATTACK\n爆烈ガイアクラッシャー\n連携\n範囲(散) 射程2\nUNITED SP\nSPコスト 2\n威力 3100\n自身を中心とした範囲に格闘攻撃でダメージを与える。/ー\nIllust K2 Shoukai\n©創通・サンライズ\nBANDAI MADE IN JAPAN"
+  },
+  "ocr_timestamp": "2025-06-28T01:56:48.817485",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli",
+  "_fix_history": [
+    {
+      "timestamp": "2026-03-03T23:46:52",
+      "changes": [
+        "ms_ability.name: \"鼓舞【近距離】[弱体化解除]\" → \"鼓舞[近距離][弱体化解除]\""
+      ]
+    }
+  ],
+  "_fixed": true
+}

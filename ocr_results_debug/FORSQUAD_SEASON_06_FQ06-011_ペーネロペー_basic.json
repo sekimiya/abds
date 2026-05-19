@@ -1,0 +1,83 @@
+{
+  "card_number": "FQ06-011",
+  "card_name": "ペーネロペー",
+  "series": "FORSQUAD SEASON:06",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ06-011.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ06-011_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "FQ06-011",
+    "type": "MS",
+    "card_label": {
+      "class": "機動",
+      "cost_label": "コスト3"
+    },
+    "name": "ペーネロペー",
+    "model": "RX-104FF PENELOPE",
+    "cost": 3,
+    "category": "機動",
+    "affiliation": "地球連邦軍",
+    "pilot": "レーン・エイム",
+    "stats": {
+      "height": "26.0m",
+      "weight": "36.4t",
+      "mobility": 230,
+      "ranged_attack": 70,
+      "melee_attack": 280,
+      "hp": 330
+    },
+    "terrain_compatibility": {
+      "ground": "S",
+      "space": "A",
+      "desert": "B",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "ビーム・サーベル",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "ビーム・ライフル",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "縛撃",
+      "activation": "任意発動",
+      "target": "単体(敵)",
+      "range": 1,
+      "cost": 3,
+      "description": "ロックオン中の敵ユニットに単体攻撃を行いダメージを与え、一定時間スタンさせる。"
+    },
+    "link_ability": [
+      {
+        "name": "閃光のハサウェイ",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ビーム・サーベル強撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3300,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "R",
+    "illustrator": "sakusaku sakurai",
+    "raw": "機動 コスト3\n\nMS\n\nRX-104FF PENELOPE\nペーネロペー\n\n閃光のハサウェイ\n\n頭頂高 26.0m\n本体重量 36.4t\n所属 地球連邦軍\nパイロット レーン・エイム\n\n地上 S 宇宙 A 砂漠 B 水中 C\n\n機動力 230\n遠距離攻撃 70\n近距離攻撃 280\nHP 330\n\nWEAPON\nMAIN ビーム・サーベル 射程 1 近距離\nSUB ビーム・ライフル 射程 3 遠距離\n\nLINK ABILITY\n閃光のハサウェイ デッキに3枚以上\n[遠距離攻撃力][近距離攻撃力]\n小アップ\n\n戦況を変える力 デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]\n小アップ\n\nMS ABILITY\n縛撃\n任意発動 単体(敵) 射程 1 コスト 3\nロックオン中の敵ユニットに単体攻撃を行いダメージを与え、一定時間スタンさせる。\n\nSPECIAL ATTACK\nビーム・サーベル強撃\n\nUNITED SP\nー\n\n連携 ー 連携 ー\n連携 ー 連携 ー\n\n単体(敵) 射程 2 射程 ー\nSPコスト 2 威力 3300 / ー\n\n敵単体に格闘攻撃でダメージを与える。\n/ ー\n\nIMPACT AREA\n[アイコン:緑丸 中央右]\n[アイコン:緑丸 中央下]\n[アイコン:三角 下中央]\n\nillustr sakusaku sakurai\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\n\nFQ06-011 R"
+  },
+  "ocr_raw_file": "FORSQUAD_SEASON_06_FQ06-011_ペーネロペー_ocr_raw.json",
+  "ocr_timestamp": "2026-02-24T18:38:15.947803",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

@@ -1,0 +1,83 @@
+{
+  "card_number": "UT04-035",
+  "card_name": "G-セルフ(宇宙用パック)",
+  "series": "UNITRIBE SEASON:04",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT04-035.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT04-035_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "UT04-035",
+    "type": "MS",
+    "card_label": {
+      "class": "機動",
+      "cost_label": "コスト5"
+    },
+    "name": "G-セルフ（宇宙用パック）",
+    "model": "YG-111 G-SELF[SPACE PACK]",
+    "cost": 5,
+    "category": "機動",
+    "affiliation": "メガファウナ",
+    "pilot": "ベルリ・ゼナム",
+    "stats": {
+      "height": "18.0m",
+      "weight": "31.1t",
+      "mobility": 300,
+      "ranged_attack": 500,
+      "melee_attack": 150,
+      "hp": 450
+    },
+    "terrain_compatibility": {
+      "ground": "B",
+      "space": "S",
+      "desert": "C",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "ビーム・ライフル",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ビーム・サーベル",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "解撃",
+      "activation": "任意発動",
+      "target": "単体(敵)",
+      "range": 3,
+      "cost": 3,
+      "description": "自身が弱体化状態の時に発動可能となり、自身の弱体化状態を無効化し、ロックオン中の敵に単体攻撃でダメージを与える。"
+    },
+    "link_ability": [
+      {
+        "name": "Gのレコンギスタ",
+        "condition": "デッキに2枚以上",
+        "effect": "[HP]小アップ"
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ビーム・ライフル強襲",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3500,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "P",
+    "illustrator": "toriyufu",
+    "raw": "MS\n\n機動　コスト5\n\nYG-111 G-SELF[SPACE PACK]\nG-セルフ（宇宙用パック）\n\nGのレコンギスタ\n\n頭頂高　18.0m\n本体重量　31.1t\n\n地上 B　宇宙 S　砂漠 C　水中 C\n\n所属　メガファウナ\nパイロット　ベルリ・ゼナム\n\n機動力 300\n遠距離攻撃 500\n近距離攻撃 150\nHP 450\n\nWEAPON\nMAIN ビーム・ライフル　射程 3　遠距離\nSUB ビーム・サーベル　射程 1　近距離\n\nLINK ABILITY\nGのレコンギスタ　デッキに2枚以上\n[HP]小アップ\n\nMS ABILITY\n解撃\n任意発動　単体(敵)　射程 3　コスト 3\n自身が弱体化状態の時に発動可能となり、自身の弱体化状態を無効化し、ロックオン中の敵に単体攻撃でダメージを与える。\n\n戦況を変える力　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nSPECIAL ATTACK　　UNITED SP\nビーム・ライフル強襲　ー\n連携 ー　　連携 ー\n連携 ー　　連携 ー\n単体(敵)　射程 3　　射程 ー\nSPコスト 2　威力 3500 / ー\n敵単体に射撃攻撃でダメージを与える。\n/ ー\n\nIMPACT AREA\n[アイコン:グリッド5x5、中央やや左下に円形マーカー]\n\nillust toriyufu\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nUT04-035　P"
+  },
+  "ocr_raw_file": "UNITRIBE_SEASON_04_UT04-035_G-セルフ(宇宙用パック)_ocr_raw.json",
+  "ocr_timestamp": "2026-02-28T08:37:26.939545",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

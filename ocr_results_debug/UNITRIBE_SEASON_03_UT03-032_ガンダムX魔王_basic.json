@@ -1,0 +1,92 @@
+{
+  "card_number": "UT03-032",
+  "card_name": "ガンダムX魔王",
+  "series": "UNITRIBE SEASON:03",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT03-032.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT03-032_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "UT03-032",
+    "type": "MS",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト5"
+    },
+    "name": "ガンダムX魔王",
+    "model": "GX-9999 GUNDAM X MAOH",
+    "cost": 5,
+    "category": "近距離",
+    "affiliation": null,
+    "pilot": "ヤサカ・マオ",
+    "stats": {
+      "height": "17.1m",
+      "weight": "7.6t",
+      "mobility": 150,
+      "ranged_attack": 100,
+      "melee_attack": 300,
+      "hp": 300
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "A",
+      "desert": "B",
+      "water": "B"
+    },
+    "weapon": {
+      "main": {
+        "name": "大型ビームソード",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "シールドバスターライフル",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "妨撃[近接]",
+      "activation": "任意発動",
+      "target": "単体(敵)",
+      "range": 1,
+      "cost": 4,
+      "description": "ロックオン中の敵ユニットに単体攻撃でダメージを与え、20秒間、[機動力][近距離攻撃力]を小ダウンする。"
+    },
+    "link_ability": [
+      {
+        "name": "ビルドファイターズ",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "大型ビームソード強撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3300,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "C",
+    "illustrator": "Ayato",
+    "raw": "近距離 コスト5\n\nMS\n\nGX-9999 GUNDAM X MAOH\nガンダムX魔王\n\n頭頂高 17.1m\n本体重量 7.6t\n所属 ー\nパイロット ヤサカ・マオ\n\n地上 A 宇宙 A 砂漠 B 水中 B\n\n機動力 150\n遠距離攻撃 100\n近距離攻撃 300\nHP 300\n\nWEAPON\nMAIN 大型ビームソード 射程 1 近距離\nSUB シールドバスターライフル 射程 3 遠距離\n\nMS ABILITY\n妨撃【近接】\n任意発動 単体(敵) 射程 1 コスト 4\nロックオン中の敵ユニットに単体攻撃でダメージを与え、20秒間、[機動力][近距離攻撃力]を小ダウンする。\n\nLINK ABILITY\nビルドファイターズ デッキに3枚以上\n[機動力]小アップ\n\n多彩な戦術 デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nSPECIAL ATTACK　　UNITED SP\n大型ビームソード強撃　ー\n連携 ー　　連携 ー\n連携 ー　　連携 ー\n単体(敵) 射程 2　ー 射程 ー\nSPコスト 2 威力 3300 / ー\n敵単体に格闘攻撃でダメージを与える。\n/ ー\n\nIMPACT AREA\n[アイコン:3x5グリッド 中央列の下2マスに緑丸・黄丸]\n\nillust Ayato\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\nUT03-032 C"
+  },
+  "ocr_raw_file": "UNITRIBE_SEASON_03_UT03-032_ガンダムX魔王_ocr_raw.json",
+  "ocr_timestamp": "2026-02-26T17:23:34.913496",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined",
+  "_fix_history": [
+    {
+      "timestamp": "2026-03-03T23:48:04",
+      "changes": [
+        "ms_ability.name: \"妨撃【近接】\" → \"妨撃[近接]\""
+      ]
+    }
+  ],
+  "_fixed": true
+}

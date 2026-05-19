@@ -1,0 +1,78 @@
+{
+  "card_number": "ST02-002",
+  "card_name": "ガンダム・グシオンリベイク",
+  "series": "STARTER DECK [機動戦士ガンダム 鉄血のオルフェンズ]",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/ST02-002.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/ST02-002_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "ST02-002",
+    "type": "MS",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト3"
+    },
+    "name": "ガンダム・グシオンリベイク",
+    "model": "ASW-G-11 GUNDAM GUSION REBAKE",
+    "cost": 3,
+    "category": "近距離",
+    "affiliation": "鉄華団",
+    "pilot": "昭弘・アルトランド",
+    "stats": {
+      "height": "18.0m",
+      "weight": "35.1t",
+      "mobility": 110,
+      "ranged_attack": 50,
+      "melee_attack": 260,
+      "hp": 210
+    },
+    "terrain_compatibility": {
+      "ground": "S",
+      "space": "A",
+      "desert": "A",
+      "water": null
+    },
+    "weapon": {
+      "main": {
+        "name": "グシオンリベイクハルバード",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "ロングレンジライフル",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "鼓舞[防御]",
+      "activation": "任意発動",
+      "target": "範囲(味方)",
+      "range": null,
+      "cost": 4,
+      "description": "20秒間、自身を中心とした大範囲内の味方ユニットのダメージを少し軽減する。"
+    },
+    "link_ability": [
+      {
+        "name": "鉄血のオルフェンズ",
+        "condition": "デッキに3枚以上",
+        "effect": "[近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ハルバード強撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3200,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "C",
+    "illustrator": "toriyufu",
+    "raw": "MS\n\n近距離　コスト3\nASW-G-11 GUNDAM GUSION REBAKE\nガンダム・グシオンリベイク\n\n全高　18.0m\n本体重量　35.1t\n所属　鉄華団\nパイロット　昭弘・アルトランド\n\n地上 S　宇宙 A　砂漠 A\n機動力 110\n遠距離攻撃 50\n近距離攻撃 260\nHP 210\n\nWEAPON\nMAIN グシオンリベイクハルバード　射程 1　近距離\nSUB ロングレンジライフル　射程 3　遠距離\n\nLINK ABILITY\n鉄血のオルフェンズ　デッキに3枚以上\n[近距離攻撃力]小アップ\n\nMS ABILITY\n鼓舞[防御]\n任意発動　範囲(味方)　射程 ー　コスト 4\n20秒間、自身を中心とした大範囲内の味方ユニットのダメージを少し軽減する。\n\nSPECIAL ATTACK\nハルバード強撃\n単体(敵)　射程 2\nSPコスト 2　威力 3200\n敵単体に格闘攻撃でダメージを与える。\n\nIMPACT AREA\n[アイコン:円形範囲・前方]\n\nillust toriyufu\n©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nST02-002 C"
+  },
+  "ocr_raw_file": "STARTER_DECK_[機動戦士ガンダム_鉄血のオルフェンズ]_ST02-002_ガンダム・グシオンリベイク_ocr_raw.json",
+  "ocr_timestamp": "2026-03-02T06:56:00.645935",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

@@ -1,0 +1,83 @@
+{
+  "card_number": "PR-053",
+  "card_name": "ガンダム・エアリアル",
+  "series": "プロモーション",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-053.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-053_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "PR-053",
+    "type": "MS",
+    "card_label": {
+      "class": "機動",
+      "cost_label": "コスト4"
+    },
+    "name": "ガンダム・エアリアル",
+    "model": "XVX-016 GUNDAM AERIAL",
+    "cost": 4,
+    "category": "水星の魔女",
+    "affiliation": "—",
+    "pilot": "スレッタ・マーキュリー",
+    "stats": {
+      "height": "18.0m",
+      "weight": "43.9t",
+      "mobility": 300,
+      "ranged_attack": 270,
+      "melee_attack": 150,
+      "hp": 230
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "A",
+      "desert": "C",
+      "water": null
+    },
+    "weapon": {
+      "main": {
+        "name": "ビームライフル",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ビームサーベル",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "妨害[機動]",
+      "activation": "出撃時発動",
+      "target": "範囲（敵）",
+      "range": null,
+      "cost": null,
+      "description": "20秒間、自身を中心とした大範囲内の敵ユニットの[機動力]を小ダウンする。"
+    },
+    "link_ability": [
+      {
+        "name": "水星の魔女",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "距離をとった射撃戦",
+        "condition": "デッキに2枚以上",
+        "effect": "[遠距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ビットステイヴ斉射",
+      "target": "単体（敵）",
+      "range": 4,
+      "sp_cost": 2,
+      "power": 3400,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "PR",
+    "illustrator": "SA/TSU/KI",
+    "raw": "機動　コスト4　MS\nXVX-016 GUNDAM AERIAL\nガンダム・エアリアル\n水星の魔女\n\n頭頂高　18.0m\n本体重量　43.9t\n所属　—\nパイロット　スレッタ・マーキュリー\n\n地上　A　宇宙　A　砂漠　C\n\n機動力　300\n遠距離攻撃　270\n近距離攻撃　150\nHP　230\n\nWEAPON\nMAIN　ビームライフル　射程 3　遠距離\nSUB　ビームサーベル　射程 1　近距離\n\nMS ABILITY\n妨害[機動]\n出撃時発動　範囲（敵）　射程 —　コスト —\n20秒間、自身を中心とした大範囲内の敵ユニットの[機動力]を小ダウンする。\n\nLINK ABILITY\n水星の魔女　デッキに3枚以上\n[機動力]小アップ\n\n距離をとった射撃戦　デッキに2枚以上\n[遠距離攻撃力]小アップ\n\nIMPACT AREA\n（グラフィック）\n\nSPECIAL ATTACK\nビットステイヴ斉射\n単体（敵）　射程 4\nSPコスト 2　威力 3400\n敵単体に射撃攻撃でダメージを与える。\n\nillust. SA/TSU/KI\n©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\nNOT FOR SALE\nPR-053　PR"
+  },
+  "ocr_raw_file": "プロモーション_PR-053_ガンダム・エアリアル_ocr_raw.json",
+  "ocr_timestamp": "2026-03-07T12:42:21.759484",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

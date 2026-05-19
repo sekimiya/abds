@@ -1,0 +1,90 @@
+{
+  "card_number": "UT05-019",
+  "card_name": "デスティニーガンダム",
+  "series": "UNITRIBE SEASON:05",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT05-019.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT05-019_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "UT05-019",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト4"
+    },
+    "name": "デスティニーガンダム",
+    "model": "ZGMF-X42S DESTINY GUNDAM",
+    "cost": 4,
+    "category": "遠距離",
+    "affiliation": "ザフト",
+    "pilot": "シン・アスカ",
+    "stats": {
+      "height": "18.08m",
+      "weight": "79.44t",
+      "mobility": 210,
+      "ranged_attack": 300,
+      "melee_attack": 80,
+      "hp": 310
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "B",
+      "water": "A"
+    },
+    "weapon": {
+      "main": {
+        "name": "高エネルギービームライフル",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "アロンダイトビームソード",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "圧倒",
+      "activation": "任意発動",
+      "target": "単体(敵)",
+      "range": 4,
+      "cost": 3,
+      "description": "ロックオン中の敵が弱体化状態の時に発動可能となり、敵に単体攻撃でダメージを与え、その攻撃は必ずクリティカルになる。"
+    },
+    "link_ability": [
+      {
+        "name": "SEED DESTINY",
+        "condition": "デッキに3枚以上",
+        "effect": "[HP]小アップ"
+      },
+      {
+        "name": "的確な一撃",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][遠距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "高エネルギー長射程ビーム砲射撃",
+      "target": "単体(敵)",
+      "range": 4,
+      "sp_cost": 2,
+      "power": 3100,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "united_sp": {
+        "name": "ザフトレッド・コンビネーション",
+        "partner1": "レジェンドガンダム",
+        "partner2": "ソードインパルスガンダム",
+        "range": 4,
+        "power": 4800,
+        "description": "敵単体に格闘攻撃でダメージを与える。出撃時1度のみ使用可能。"
+      }
+    },
+    "rarity": "R",
+    "illustrator": "deraken",
+    "raw": "MS\n\n遠距離　コスト4\nZGMF-X42S DESTINY GUNDAM\nデスティニーガンダム\n\n頭頂高　18.08m\n本体重量　79.44t\n地上 A　宇宙 S　砂漠 B　水中 A\n所属　ザフト\n機動力　210\nパイロット　シン・アスカ\n遠距離攻撃　300\n近距離攻撃　80\nHP　310\n\nWEAPON\nMAIN　高エネルギービームライフル　射程 3　遠距離\nSUB　アロンダイトビームソード　射程 1　近距離\n\nLINK ABILITY\nSEED DESTINY　デッキに3枚以上\n[HP]小アップ\n的確な一撃　デッキに4枚以上\n[機動力][遠距離攻撃力]小アップ\n\nMS ABILITY\n圧倒\n任意発動　単体(敵)　射程 4　コスト 3\nロックオン中の敵が弱体化状態の時に発動可能となり、敵に単体攻撃でダメージを与え、その攻撃は必ずクリティカルになる。\n\nIMPACT AREA\n[アイコン:着弾エリア中央やや下に黄緑マーカー2個]\n\nSPECIAL ATTACK　　　　UNITED SP\n高エネルギー長射程ビーム砲射撃　　ザフトレッド・コンビネーション\n連携　レジェンドガンダム　　連携　ソードインパルスガンダム\n連携　ー　　　　　　　　　　連携　ー\n単体(敵)　射程 4　　　　　　単体(敵)　射程 4\nSPコスト 2　威力 3100 / 4800\n敵単体に射撃攻撃でダメージを与える。／敵単体に格闘攻撃でダメージを与える。出撃時1度のみ使用可能。\n\nillust　deraken\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE ®\nUT05-019　R"
+  },
+  "ocr_raw_file": "UNITRIBE_SEASON_05_UT05-019_デスティニーガンダム_ocr_raw.json",
+  "ocr_timestamp": "2026-02-26T19:25:45.310147",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

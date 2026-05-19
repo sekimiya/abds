@@ -1,0 +1,88 @@
+{
+  "card_number": "VE02-012",
+  "card_name": "Ξガンダム",
+  "series": "WAVECHOES SEASON:02",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE02-012.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE02-012_b.jpg?v250630",
+  "ocr_engine": "claude_code_subagent",
+  "ocr_type": "basic",
+  "ocr_timestamp": "2026-04-22T20:30:00.000000",
+  "ocr_data": {
+    "card_id": "VE02-012",
+    "type": "MS",
+    "name": "Ξガンダム",
+    "model": "RX-105 XI GUNDAM",
+    "cost": 4,
+    "category": "機動",
+    "affiliation": "マフティー",
+    "pilot": "ハサウェイ・ノア",
+    "card_label": {
+      "class": "閃光のハサウェイ",
+      "cost_label": "コスト4"
+    },
+    "stats": {
+      "height": "26.0m",
+      "weight": "32.0t",
+      "mobility": 240,
+      "ranged_attack": 360,
+      "melee_attack": 70,
+      "hp": 280
+    },
+    "terrain_compatibility": {
+      "ground": "S",
+      "space": "A",
+      "desert": "B",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "ビーム・ライフル",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ビーム・サーベル",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "破閃",
+      "activation": "任意発動",
+      "target": "単体(敵)",
+      "range": 3,
+      "cost": 4,
+      "description": "ロックオン中の敵に単体攻撃でダメージを与える。この攻撃で敵ユニットにダメージを与えた場合、一定時間、被ダメージをアップする。"
+    },
+    "link_ability": [
+      {
+        "name": "閃光のハサウェイ",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ビーム・ライフル撃射",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": "3100",
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "echoes_beat": {
+        "name": "—",
+        "level": null,
+        "target": "—",
+        "range": "—",
+        "power": null,
+        "description": "—"
+      }
+    },
+    "rarity": "C",
+    "raw": "機動 コスト4 MS RX-105 XI GUNDAM Ξガンダム 頭頂高 26.0m 本体重量 32.0t 所属 マフティー パイロット ハサウェイ・ノア 地上 S 宇宙 A 砂漠 B 水中 C 機動力 240 遠距離攻撃 360 近距離攻撃 70 HP 280 WEAPON MAIN ビーム・ライフル 射程 3 遠距離 SUB ビーム・サーベル 射程 1 近距離 MS ABILITY 破閃 任意発動 単体(敵) 射程 3 コスト 4 ロックオン中の敵に単体攻撃でダメージを与える。この攻撃で敵ユニットにダメージを与えた場合、一定時間、被ダメージをアップする。 LINK ABILITY 閃光のハサウェイ デッキに3枚以上 [遠距離攻撃力][近距離攻撃力]小アップ 戦況を変える力 デッキに4枚以上 [遠距離攻撃力][近距離攻撃力]小アップ SPECIAL ATTACK ECHOES BEAT ビーム・ライフル撃射 — — 単体(敵) 射程 3 — 射程 — SPコスト 2 威力 3100 / — 敵単体に射撃攻撃でダメージを与える。 /— VE02-012 C"
+  }
+}

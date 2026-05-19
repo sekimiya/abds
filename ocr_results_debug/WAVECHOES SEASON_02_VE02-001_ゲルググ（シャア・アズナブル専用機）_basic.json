@@ -1,0 +1,89 @@
+{
+  "card_number": "VE02-001",
+  "card_name": "ゲルググ（シャア・アズナブル専用機）",
+  "series": "WAVECHOES SEASON:02",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE02-001.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE02-001_b.jpg?v250630",
+  "ocr_engine": "claude_code_subagent",
+  "ocr_type": "basic",
+  "ocr_timestamp": "2026-04-22T20:30:00.000000",
+  "ocr_data": {
+    "card_id": "VE02-001",
+    "type": "MS",
+    "name": "ゲルググ（シャア・アズナブル専用機）",
+    "model": "YMS-14 CHAR'S GELGOOG",
+    "cost": 4,
+    "category": "近距離",
+    "affiliation": "ジオン公国軍",
+    "pilot": "シャア・アズナブル",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト4"
+    },
+    "stats": {
+      "height": "19.2m",
+      "weight": "42.1t",
+      "mobility": 250,
+      "ranged_attack": 100,
+      "melee_attack": 340,
+      "hp": 270
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "C",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "ビーム・ナギナタ",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "ビーム・ライフル",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "双甲",
+      "activation": "任意発動",
+      "target": "特殊(自分)",
+      "range": null,
+      "cost": 4,
+      "description": "指定した味方ユニットの範囲内に移動後、一定時間連携状態となり、自身と連携中の味方が受けるダメージを軽減する。"
+    },
+    "link_ability": [
+      {
+        "name": "機動戦士ガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ビーム・ナギナタ強撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": "3200 / 3700",
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": {
+        "name": "彗星と亡霊",
+        "link_unit_1": "エルメス",
+        "link_unit_2": null,
+        "target": "貫通(敵)",
+        "range": 3,
+        "description": "対象の敵を中心として射程よりも広い範囲で、射線上の敵に貫通射撃でダメージを与える。出撃時1度のみ使用可能。"
+      },
+      "echoes_beat": null
+    },
+    "rarity": "C",
+    "raw": "近距離 コスト4 YMS-14 CHAR'S GELGOOG ゲルググ（シャア・アズナブル専用機）\n頭頂高 19.2m 本体重量 42.1t 所属 ジオン公国軍 パイロット シャア・アズナブル\n地上 A 宇宙 S 砂漠 C 水中 C 機動力 250 遠距離攻撃 100 近距離攻撃 340 HP 270\nWEAPON\nMAIN ビーム・ナギナタ 射程1 近距離\nSUB ビーム・ライフル 射程3 遠距離\nMS ABILITY\n双甲\n任意発動 特殊(自分) 射程－ コスト4\n指定した味方ユニットの範囲内に移動後、一定時間連携状態となり、自身と連携中の味方が受けるダメージを軽減する。\nLINK ABILITY\n機動戦士ガンダム デッキに3枚以上\n[機動力]小アップ\n戦況を変える力 デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\nSPECIAL ATTACK UNITED SP\nビーム・ナギナタ強撃 彗星と亡霊\n連携 エルメス 連携 －\n連携 － 連携 －\n単体(敵) 射程2 貫通(敵) 射程3\nSPコスト2 威力 3200 / 3700\n敵単体に格闘攻撃でダメージを与える。／対象の敵を中心として射程よりも広い範囲で、射線上の敵に貫通射撃でダメージを与える。出撃時1度のみ使用可能。\nVE02-001 C"
+  }
+}

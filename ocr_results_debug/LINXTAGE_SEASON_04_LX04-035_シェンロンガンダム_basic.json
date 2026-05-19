@@ -1,0 +1,83 @@
+{
+  "card_number": "LX04-035",
+  "card_name": "シェンロンガンダム",
+  "series": "LINXTAGE SEASON:04",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX04-035.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX04-035_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "LX04-035",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト4"
+    },
+    "name": "シェンロンガンダム",
+    "model": "XXXG-01S SHENLONG GUNDAM",
+    "cost": 4,
+    "category": "MS",
+    "affiliation": null,
+    "pilot": "張 五飛",
+    "stats": {
+      "height": "16.4m",
+      "weight": "7.4t",
+      "mobility": 130,
+      "ranged_attack": 230,
+      "melee_attack": 90,
+      "hp": 200
+    },
+    "terrain_compatibility": {
+      "ground": "S",
+      "space": "B",
+      "desert": "C",
+      "water": "B"
+    },
+    "weapon": {
+      "main": {
+        "name": "ドラゴンハングファイヤー",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ビームグレイブ",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "妨害[防御]",
+      "activation": "出撃時発動",
+      "target": "範囲(敵)",
+      "range": null,
+      "cost": null,
+      "description": "20秒間、自身を中心とした大範囲内の敵ユニットの被ダメージを少しアップする。"
+    },
+    "link_ability": [
+      {
+        "name": "ガンダムW",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "距離をとった射撃戦",
+        "condition": "デッキに2枚以上",
+        "effect": "[遠距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ドラゴンハングファイヤー撃射",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3100,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "C",
+    "illustrator": "S Kei",
+    "raw": "遠距離 コスト4\nXXXG-01S SHENLONG GUNDAM\nシェンロンガンダム\n\n全高　16.4m\n本体重量　7.4t\n所属　―\nパイロット　張 五飛\n\n地上 S　宇宙 B　砂漠 C　水中 B\n機動力 130\n遠距離攻撃 230\n近距離攻撃 90\nHP 200\n\nWEAPON\nMAIN ドラゴンハングファイヤー　射程 3　遠距離\nSUB ビームグレイブ　射程 1　近距離\n\nMS ABILITY\n妨害[防御]\n出撃時発動　範囲(敵)　射程 ―　コスト ―\n\n20秒間、自身を中心とした大範囲内の敵\nユニットの被ダメージを少しアップする。\n\nLINK ABILITY\nガンダムW　デッキに3枚以上\n[機動力]小アップ\n\n距離をとった射撃戦　デッキに2枚以上\n[遠距離攻撃力]小アップ\n\nSPECIAL ATTACK\nドラゴンハングファイヤー撃射\n単体(敵)　射程 3\nSPコスト 2　威力 3100\n敵単体に射撃攻撃でダメージを与える。\n\nillust. S Kei\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n\nLX04-035　C"
+  },
+  "ocr_raw_file": "LINXTAGE_SEASON_04_LX04-035_シェンロンガンダム_ocr_raw.json",
+  "ocr_timestamp": "2026-03-07T18:59:02.668793",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

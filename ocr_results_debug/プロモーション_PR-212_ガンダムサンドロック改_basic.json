@@ -1,0 +1,83 @@
+{
+  "card_number": "PR-212",
+  "card_name": "ガンダムサンドロック改",
+  "series": "プロモーション",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-212.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-212_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "PR-212",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト6"
+    },
+    "name": "ガンダムサンドロック改",
+    "model": "XXXG-01SR2",
+    "cost": 6,
+    "category": "ガンダムW",
+    "affiliation": null,
+    "pilot": "カトル・ラバーバ・ウィナー",
+    "stats": {
+      "height": "16.5m",
+      "weight": "7.5t",
+      "mobility": 270,
+      "ranged_attack": 550,
+      "melee_attack": 100,
+      "hp": 480
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "S",
+      "water": "B"
+    },
+    "weapon": {
+      "main": {
+        "name": "ビームマシンガン",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ヒートショーテル",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "奮起",
+      "activation": "出撃時発動",
+      "target": "自分",
+      "range": null,
+      "cost": null,
+      "description": "自身のHPが1以上で一定割合以下になると、一定時間、撃破されなくなり[遠／近攻撃力]を中アップする。出撃時1度のみ発動。"
+    },
+    "link_ability": [
+      {
+        "name": "ガンダムW",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "的確な一撃",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][遠距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ビームマシンガン撃射",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3500,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "PR",
+    "illustrator": "kenko",
+    "raw": "遠距離 コスト6\nXXXG-01SR2 GUNDAM SANDROCK CUSTOM\nガンダムサンドロック改\n\n全高 16.5m\n本体重量 7.5t　地上 A　宇宙 S　砂漠 S　水中 B\n所属 —\nパイロット カトル・ラバーバ・ウィナー\n\n機動力 270\n遠距離攻撃 550\n近距離攻撃 100\nHP 480\n\nWEAPON\nMAIN ビームマシンガン　射程 3　遠距離\nSUB ヒートショーテル　射程 1　近距離\n\nMS ABILITY\n奮起\n出撃時発動　自分　射程 —　コスト —\n自身のHPが1以上で一定割合以下になると、一定時間、撃破されなくなり[遠／近攻撃力]を中アップする。出撃時1度のみ発動。\n\nLINK ABILITY\nガンダムW　デッキに3枚以上\n[機動力]小アップ\n\n的確な一撃　デッキに4枚以上\n[機動力][遠距離攻撃力]小アップ\n\nSPECIAL ATTACK　UNITED SP\nビームマシンガン撃射　—\n連携 —　連携 —\n連携 —　連携 —\n単体(敵)　射程 3　—　射程 —\nSPコスト 2　威力 3500 / —\n敵単体に射撃攻撃でダメージを与える。\n/—\n\nIMPACT AREA\n\nillust. kenko\n©創通・サンライズ\nBANDAI MADE IN JAPAN\nNOT FOR SALE\nPR-212　PR"
+  },
+  "ocr_raw_file": "プロモーション_PR-212_ガンダムサンドロック改_ocr_raw.json",
+  "ocr_timestamp": "2026-03-03T22:41:48.473341",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

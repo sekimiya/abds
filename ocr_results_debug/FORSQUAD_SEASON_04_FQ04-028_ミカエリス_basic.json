@@ -1,0 +1,92 @@
+{
+  "card_number": "FQ04-028",
+  "card_name": "ミカエリス",
+  "series": "FORSQUAD SEASON:04",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ04-028.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ04-028_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "FQ04-028",
+    "type": "MS",
+    "card_label": {
+      "class": "機動",
+      "cost_label": "コスト6"
+    },
+    "name": "ミカエリス",
+    "model": "CFK-029 MICHAELIS",
+    "cost": 6,
+    "category": "機動",
+    "affiliation": "グラスレー・ディフェンス・システムズ",
+    "pilot": "シャディク・ゼネリ",
+    "stats": {
+      "height": "20.3m",
+      "weight": "68.8t",
+      "mobility": 350,
+      "ranged_attack": 420,
+      "melee_attack": 130,
+      "hp": 400
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "C",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "大型ビームガン",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ジャベリンブレイサー",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "妨撃[機動]",
+      "activation": "任意発動",
+      "target": "単体(敵)",
+      "range": 3,
+      "cost": 3,
+      "description": "ロックオン中の敵に単体攻撃でダメージを与え、20秒間、[機動力]を中ダウンする。"
+    },
+    "link_ability": [
+      {
+        "name": "水星の魔女",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "的確な一撃",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][遠距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "大型ビームガン精密射撃",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3300,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "R",
+    "illustrator": "gomibako",
+    "raw": "機動　コスト6　MS\n\nCFK-029 MICHAELIS\nミカエリス\n\n水星の魔女\n\n頭頂高　20.3m\n本体重量　68.8t\n所属　グラスレー・ディフェンス・システムズ\nパイロット　シャディク・ゼネリ\n\n地上 A　宇宙 S　砂漠 C　水中 C\n[アイコン:緑宝石]\n機動力 350\n遠距離攻撃 420\n近距離攻撃 130\nHP 400\n\nWEAPON\nMAIN 大型ビームガン　射程 3　遠距離\nSUB ジャベリンブレイサー　射程 1　近距離\n\nLINK ABILITY\n水星の魔女　デッキに3枚以上\n[機動力]小アップ\n\n的確な一撃　デッキに4枚以上\n[機動力][遠距離攻撃力]小アップ\n\nMS ABILITY\n妨撃【機動】\n任意発動　単体(敵)　射程 3　コスト 3\n\nロックオン中の敵に単体攻撃でダメージを与え、20秒間、[機動力]を中ダウンする。\n\nSPECIAL ATTACK　　UNITED SP\n大型ビームガン精密射撃　ー\n連携 ー　　連携 ー\n連携 ー　　連携 ー\n単体(敵)　射程 3　ー　射程 ー\nSPコスト 2　威力 3300 / ー\n\n敵単体に射撃攻撃でダメージを与える。\n/ ー\n\nIMPACT AREA\n[アイコン:着弾エリア中央]\n\nillust gomibako\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nFQ04-028　R"
+  },
+  "ocr_raw_file": "FORSQUAD_SEASON_04_FQ04-028_ミカエリス_ocr_raw.json",
+  "ocr_timestamp": "2026-02-24T18:21:15.042700",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined",
+  "_fix_history": [
+    {
+      "timestamp": "2026-03-03T23:49:30",
+      "changes": [
+        "ms_ability.name: \"妨撃【機動】\" → \"妨撃[機動]\""
+      ]
+    }
+  ],
+  "_fixed": true
+}

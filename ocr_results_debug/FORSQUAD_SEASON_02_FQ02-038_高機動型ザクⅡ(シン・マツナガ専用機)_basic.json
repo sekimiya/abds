@@ -1,0 +1,90 @@
+{
+  "card_number": "FQ02-038",
+  "card_name": "高機動型ザクⅡ(シン・マツナガ専用機)",
+  "series": "FORSQUAD SEASON:02",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-038.jpg?v9",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-038_b.jpg?v9",
+  "ocr_data": {
+    "card_id": "FQ02-038",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト5"
+    },
+    "name": "高機動型ザクII（シン・マツナガ専用機）",
+    "model": "MS-06R-1A ZAKUII HIGH MOBILITY TYPE",
+    "cost": 5,
+    "category": "遠距離",
+    "pilot": "シン・マツナガ",
+    "stats": {
+      "height": "18.0m",
+      "weight": "61.8t",
+      "mobility": 280,
+      "ranged_attack": 380,
+      "melee_attack": 120,
+      "hp": 320
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "C",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "320mm試作バズーカ",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ヒート・ホーク",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "陣略[妨害／機動]",
+      "type": "任意発動",
+      "range": 4,
+      "cost": 4,
+      "description": "一定時間、範囲内に入った敵ユニットの「機動力」をダウンするエリアを設置する。※上限3箇所まで。"
+    },
+    "link_ability": [
+      {
+        "name": "U.C. ENGAGE",
+        "condition": "デッキに2枚以上",
+        "effect": "「機動力」小アップ"
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "「遠距離攻撃力」「近距離攻撃力」小アップ"
+      }
+    ],
+    "impact_area": {
+      "type": "circular",
+      "radius": 3,
+      "centered": true
+    },
+    "illustrator": "Ayato",
+    "raw": "MS-06R-1A ZAKUII HIGH MOBILITY TYPE\n高機動型ザクII（シン・マツナガ専用機）\n頭頂高 18.0m\n本体重量 61.8t\n所属 ジオン公国軍\nパイロット シン・マツナガ\n地上A 宇宙S 砂漠C 水中C\n機動力 280\n遠距離攻撃 380\n近距離攻撃 120\nHP 320\nWEAPON\nMAIN 320mm試作バズーカ\n射程 3 遠距離\nSUB ヒート・ホーク\n射程 1 近距離\nMS ABILITY\n陣降【妨害／機動】\n任意発動 範囲（敵） 射程 4 コスト 4\n一定時間、範囲内に入った敵ユニットの「機動力」をダウンするエリアを設置する。\n※上限3箇所まで。\nSPECIAL ATTACK\n320mm試作バズーカ射撃\nSP 3200/\n敵単体に射撃攻撃でダメージを与える。\nLINK ABILITY\nU.C. ENGAGE\nデッキに2枚以上\n「機動力」小アップ\n多彩な機術\nデッキに4枚以上\n「遠距離攻撃力」「近距離攻撃力」小アップ\nIMPACT AREA\nIllust Ayato\n©創通・サンライズ\nBANDAI MADE IN JAPAN"
+  },
+  "ocr_timestamp": "2025-06-28T01:33:40.344589",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli",
+  "_fix_history": [
+    {
+      "timestamp": "2026-03-03T23:45:33",
+      "changes": [
+        "link_ability.name: \"多彩な機術\" → \"多彩な戦術\""
+      ]
+    },
+    {
+      "timestamp": "2026-03-03T23:47:09",
+      "changes": [
+        "ms_ability.name: \"陣降【妨害／機動】\" → \"陣略[妨害／機動]\""
+      ]
+    }
+  ],
+  "_fixed": true
+}

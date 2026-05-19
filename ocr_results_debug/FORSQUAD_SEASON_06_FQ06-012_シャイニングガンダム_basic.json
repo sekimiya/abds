@@ -1,0 +1,83 @@
+{
+  "card_number": "FQ06-012",
+  "card_name": "シャイニングガンダム",
+  "series": "FORSQUAD SEASON:06",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ06-012.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ06-012_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "FQ06-012",
+    "type": "MS",
+    "card_label": {
+      "class": "機動",
+      "cost_label": "コスト3"
+    },
+    "name": "シャイニングガンダム",
+    "model": "GF13-017NJ SHINING GUNDAM",
+    "cost": 3,
+    "category": "機動",
+    "affiliation": "ネオジャパン",
+    "pilot": "ドモン・カッシュ、レイン・ミカムラ",
+    "stats": {
+      "height": "16.2m",
+      "weight": "6.8t",
+      "mobility": 210,
+      "ranged_attack": 70,
+      "melee_attack": 260,
+      "hp": 210
+    },
+    "terrain_compatibility": {
+      "ground": "S",
+      "space": "C",
+      "desert": "B",
+      "water": "B"
+    },
+    "weapon": {
+      "main": {
+        "name": "ビームソード",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "シャイニングショット",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "奮起",
+      "activation": "出撃時発動",
+      "target": "自分",
+      "range": null,
+      "cost": null,
+      "description": "自身のHPが1以上で一定割合以下になると、一定時間、撃破されなくなり[遠／近攻撃力]を中アップする。出撃時1度のみ発動。"
+    },
+    "link_ability": [
+      {
+        "name": "Gガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      },
+      {
+        "name": "高速機動の接近戦",
+        "condition": "デッキに機動が2枚以上",
+        "effect": "[近距離攻撃力]中アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "シャイニングフィンガーソード",
+      "target": "貫通(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 2800,
+      "description": "射線上の敵に貫通格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "C",
+    "illustrator": "amasaki",
+    "raw": "MS\n\n機動　コスト3\nGF13-017NJ SHINING GUNDAM\nシャイニングガンダム\n\n頭頂高　16.2m\n本体重量　6.8t\n所属　ネオジャパン\nパイロット　ドモン・カッシュ、レイン・ミカムラ\n\n地上 S　宇宙 C　砂漠 B　水中 B\n\n機動力 210\n遠距離攻撃 70\n近距離攻撃 260\nHP 210\n\nWEAPON\nMAIN ビームソード　射程 1　近距離\nSUB シャイニングショット　射程 3　遠距離\n\nLINK ABILITY\nGガンダム　デッキに3枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\n高速機動の接近戦　デッキに機動が2枚以上\n[近距離攻撃力]中アップ\n\nMS ABILITY\n奮起\n出撃時発動　自分　射程 ー　コスト ー\n\n自身のHPが1以上で一定割合以下になると、一定時間、撃破されなくなり[遠／近攻撃力]を中アップする。出撃時1度のみ発動。\n\nSPECIAL ATTACK　　UNITED SP\nシャイニングフィンガーソード　ー\n連携 ー　　連携 ー\n連携 ー　　連携 ー\n貫通(敵)　射程 3　ー　射程 ー\nSPコスト 2　威力 2800 / ー\n\n射線上の敵に貫通格闘攻撃でダメージを与える。/ ー\n\nIMPACT AREA\n[アイコン:縦方向貫通射線グリッド]\n\nillust amasaki\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n機動武闘伝Gガンダム\nARSENAL BASE\nFQ06-012　C"
+  },
+  "ocr_raw_file": "FORSQUAD_SEASON_06_FQ06-012_シャイニングガンダム_ocr_raw.json",
+  "ocr_timestamp": "2026-02-24T18:38:38.523339",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

@@ -1,0 +1,90 @@
+{
+  "card_number": "VE02-036",
+  "card_name": "エグザベ専用ギャン（ハクジ装備）（GQ）",
+  "series": "WAVECHOES SEASON:02",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE02-036.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE02-036_b.jpg?v250630",
+  "ocr_engine": "claude_code_subagent",
+  "ocr_type": "basic",
+  "ocr_timestamp": "2026-04-22T20:30:00.000000",
+  "ocr_data": {
+    "card_id": "VE02-036",
+    "type": "MS",
+    "name": "エグザベ専用ギャン（ハクジ装備）（GQ）",
+    "model": "Xavier's GYAN HAKUJI-PACKS(GQ)",
+    "cost": 3,
+    "category": "機動",
+    "affiliation": "ジオン公国軍",
+    "pilot": "エグザベ・オリベ",
+    "card_label": {
+      "class": "GQuuuuuX",
+      "cost_label": "コスト3"
+    },
+    "stats": {
+      "height": null,
+      "weight": null,
+      "mobility": 220,
+      "ranged_attack": 60,
+      "melee_attack": 310,
+      "hp": 360
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "C",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "ハクジ",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "ミサイル・シールド",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "補給[弱体化解除]",
+      "activation": "任意発動",
+      "target": "範囲（味方）",
+      "range": null,
+      "cost": 5,
+      "description": "自身を中心とした大範囲の味方ユニットのHPを中回復し、弱体化状態を無効化する。"
+    },
+    "link_ability": [
+      {
+        "name": "GQuuuuuuX",
+        "condition": "デッキに3枚以上",
+        "effect": "[HP]小アップ"
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ハクジ強撃",
+      "target": "単体（敵）",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3400,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null,
+      "echoes_beat": {
+        "name": "ハクジ強撃 Lv.1",
+        "level": 1,
+        "target": "単体（敵）",
+        "range": 2,
+        "power": 5600,
+        "description": "EBLv.を1下げる。敵単体に格闘攻撃でダメージを与える。出撃時1度のみ使用可能。"
+      },
+      "sp_type": "ECHOES BEAT"
+    },
+    "rarity": "M",
+    "raw": "機動 コスト3 MS GQuuuuuX Xavier's GYAN HAKUJI-PACKS(GQ) エグザベ専用ギャン（ハクジ装備）（GQ） 頭頂高 — 本体重量 — 地上 A 宙 S 砂漠 C 水中 C 所属 ジオン公国軍 機動力 220 パイロット エグザベ・オリベ 遠距離攻撃 60 近距離攻撃 310 HP 360 WEAPON LINK ABILITY MAIN ハクジ 射程 1 近距離 GQuuuuuuX デッキに3枚以上 SUB ミサイル・シールド 射程 3 遠距離 [HP]小アップ MS ABILITY 戦況を変える力 デッキに4枚以上 補給[弱体化解除] [遠距離攻撃力][近距離攻撃力]小アップ 任意発動 範囲（味方） 射程 — コスト 5 自身を中心とした大範囲の味方ユニットのHPを中回復し、弱体化状態を無効化する。 IMPACT AREA SPECIAL ATTACK ECHOES BEAT ハクジ強撃 ハクジ強撃 Lv.1 ECHOES BEAT Lv.を下げることで、Lv.戦術技が発動する。 単体（敵） 射程 2 単体（敵） 射程 2 SPコスト 2 威力 3400 / 5600 敵単体に格闘攻撃でダメージを与える。／ EBLv.を1下げる。敵単体に格闘攻撃でダメージを与える。出撃時1度のみ使用可能。 illust. kenko VE02-036 M"
+  }
+}

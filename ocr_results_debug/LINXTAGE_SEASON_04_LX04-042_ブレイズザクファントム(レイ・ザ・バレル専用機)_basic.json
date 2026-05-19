@@ -1,0 +1,83 @@
+{
+  "card_number": "LX04-042",
+  "card_name": "ブレイズザクファントム(レイ・ザ・バレル専用機)",
+  "series": "LINXTAGE SEASON:04",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX04-042.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX04-042_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "LX04-042",
+    "type": "MS",
+    "card_label": {
+      "class": "機動",
+      "cost_label": "コスト6"
+    },
+    "name": "ブレイズザクファントム（レイ・ザ・バレル専用機）",
+    "model": "ZGMF-1001/M REY'S BLAZE ZAKU PHANTOM",
+    "cost": 6,
+    "category": "MS",
+    "affiliation": "ザフト",
+    "pilot": "レイ・ザ・バレル",
+    "stats": {
+      "height": "20.4m",
+      "weight": "91.2t",
+      "mobility": 260,
+      "ranged_attack": 150,
+      "melee_attack": 330,
+      "hp": 360
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "C",
+      "water": "A"
+    },
+    "weapon": {
+      "main": {
+        "name": "ビームトマホーク",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "ビーム突撃銃",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "支援砲撃",
+      "activation": "任意発動",
+      "target": "範囲(敵)",
+      "range": null,
+      "cost": 5,
+      "description": "指定した位置に中範囲の支援砲撃を要請し、範囲内の敵にダメージを与える。"
+    },
+    "link_ability": [
+      {
+        "name": "SEED DESTINY",
+        "condition": "デッキに3枚以上",
+        "effect": "[HP]小アップ"
+      },
+      {
+        "name": "専用機の実力",
+        "condition": "デッキに2枚以上",
+        "effect": "[近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ビームトマホーク強撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3400,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "R",
+    "illustrator": "BIRU YAMAGUCHI",
+    "raw": "機動　コスト6\nZGMF-1001/M REY'S BLAZE ZAKU PHANTOM\nブレイズザクファントム（レイ・ザ・バレル専用機）\n\n全高　20.4m\n本体重量　91.2t　　地上 A　宇宙 S　砂漠 C　水中 A\n所属　ザフト　　　　機動力 260\nパイロット　レイ・ザ・バレル　遠距離攻撃 150\n　　　　　　　　　　近距離攻撃 330\n　　　　　　　　　　HP 360\n\nWEAPON\nMAIN　ビームトマホーク　射程 1　近距離\nSUB　ビーム突撃銃　　　射程 3　遠距離\n\nMS ABILITY\n支援砲撃\n任意発動　範囲（敵）　射程 ー　コスト 5\n指定した位置に中範囲の支援砲撃を要請し、範囲内の敵にダメージを与える。\n\nLINK ABILITY\nSEED DESTINY　デッキに3枚以上\n[HP]小アップ\n\n専用機の実力　デッキに2枚以上\n[近距離攻撃力]小アップ\n\nSPECIAL ATTACK\nビームトマホーク強撃\n単体（敵）　射程 2\nSPコスト 2　威力 3400\n敵単体に格闘攻撃でダメージを与える。\n\nillust　BIRU YAMAGUCHI\n©創通・サンライズ\nBANDAI MADE IN JAPAN\nLX04-042　R"
+  },
+  "ocr_raw_file": "LINXTAGE_SEASON_04_LX04-042_ブレイズザクファントム(レイ・ザ・バレル専用機)_ocr_raw.json",
+  "ocr_timestamp": "2026-03-07T19:04:27.171823",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

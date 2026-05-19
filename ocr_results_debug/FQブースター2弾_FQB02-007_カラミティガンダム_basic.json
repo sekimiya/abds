@@ -1,0 +1,92 @@
+{
+  "card_number": "FQB02-007",
+  "card_name": "カラミティガンダム",
+  "series": "FQブースター2弾",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQB02-007.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQB02-007_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "FQB02-007",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト5"
+    },
+    "name": "カラミティガンダム",
+    "model": "GAT-X131 CALAMITY GUNDAM",
+    "cost": 5,
+    "category": "遠距離",
+    "affiliation": "地球連合軍",
+    "pilot": "オルガ・サブナック",
+    "stats": {
+      "height": "18.26m",
+      "weight": "81.48t",
+      "mobility": 190,
+      "ranged_attack": 470,
+      "melee_attack": 100,
+      "hp": 440
+    },
+    "terrain_compatibility": {
+      "ground": "S",
+      "space": "A",
+      "desert": "C",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "シュラーク",
+        "range": 4,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "トーデスブロック",
+        "range": 2,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "装転[貫通改]",
+      "activation": "任意発動",
+      "target": "自分",
+      "range": null,
+      "cost": 5,
+      "description": "通常攻撃がチャージを伴う強力な貫通射撃のメイン攻撃のみになる。この効果は自身が撤退するまで解除できない。"
+    },
+    "link_ability": [
+      {
+        "name": "ガンダムSEED",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "一斉射撃",
+      "target": "貫通(敵)",
+      "range": 4,
+      "sp_cost": 3,
+      "power": 3800,
+      "description": "射線上の敵に貫通射撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "M",
+    "illustrator": "Kumagoro",
+    "raw": "遠距離 コスト5 MS\n\nGAT-X131 CALAMITY GUNDAM\nカラミティガンダム\n\n頭頂高 18.26m\n本体重量 81.48t\n所属 地球連合軍\nパイロット オルガ・サブナック\n\n地上 S 宇宙 A 砂漠 C 水中 C\n\n機動力 190\n遠距離攻撃 470\n近距離攻撃 100\nHP 440\n\nWEAPON\nMAIN シュラーク 射程 4 遠距離\nSUB トーデスブロック 射程 2 近距離\n\nLINK ABILITY\nガンダムSEED デッキに3枚以上\n[機動力]小アップ\n\nMS ABILITY\n装填[貫通改]\n任意発動 自分 射程 ー コスト 5\n通常攻撃がチャージを伴う強力な貫通射撃のメイン攻撃のみになる。この効果は自身が撤退するまで解除できない。\n\n戦況を変える力 デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nSPECIAL ATTACK\n一斉射撃\n連携 ー 連携 ー\n連携 ー 連携 ー\n貫通(敵) 射程 4 ー 射程 ー\nSPコスト 3 威力 3800 / ー\n射線上の敵に貫通射撃でダメージを与える。/ ー\n\nUNITED SP\n\nIMPACT AREA\n[アイコン:自機位置から前方に縦長の長方形範囲]\n\nillust Kumagoro\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム\nARSENAL BASE®\nFQB02-007 M"
+  },
+  "ocr_raw_file": "FQブースター2弾_FQB02-007_カラミティガンダム_ocr_raw.json",
+  "ocr_timestamp": "2026-02-28T01:49:15.398413",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined",
+  "_fix_history": [
+    {
+      "timestamp": "2026-03-03T23:47:36",
+      "changes": [
+        "ms_ability.name: \"装填[貫通改]\" → \"装転[貫通改]\""
+      ]
+    }
+  ],
+  "_fixed": true
+}

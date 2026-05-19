@@ -1,0 +1,83 @@
+{
+  "card_number": "AB03-041",
+  "card_name": "ガンダムサンドロック",
+  "series": "SEASON:03",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB03-041.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB03-041_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "AB03-041",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト5"
+    },
+    "name": "ガンダムサンドロック",
+    "model": "XXXG-01SR GUNDAM SANDROCK",
+    "cost": 5,
+    "category": "遠距離",
+    "affiliation": null,
+    "pilot": "カトル・ラバーバ・ウィナー",
+    "stats": {
+      "height": "16.5m",
+      "weight": "7.5t",
+      "mobility": 250,
+      "ranged_attack": 310,
+      "melee_attack": 90,
+      "hp": 150
+    },
+    "terrain_compatibility": {
+      "ground": "S",
+      "space": "B",
+      "desert": "S",
+      "water": null
+    },
+    "weapon": {
+      "main": {
+        "name": "ヒートショーテル(投部)",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "バルカン",
+        "range": 2,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "集中砲火",
+      "activation": "任意発動",
+      "target": "範囲(味方)",
+      "range": null,
+      "cost": 4,
+      "description": "20秒間、ロックオンしている敵に周囲の味方ターゲットを集め、[遠／近攻撃力]を中アップ。攻撃対象が変わると効果は終了する。"
+    },
+    "link_ability": [
+      {
+        "name": "ガンダムW",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "その名はガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ヒートショーテル投撃",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3200,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "C",
+    "illustrator": "Eske Yoshinob",
+    "raw": "MS\n\n遠距離 コスト5\n\nXXXG-01SR GUNDAM SANDROCK\nガンダムサンドロック\n\n全高 16.5m\n本体重量 7.5t\n所属 ー\nパイロット カトル・ラバーバ・ウィナー\n\n地上 S 宇宙 B 砂漠 S\n機動力 250\n遠距離攻撃 310\n近距離攻撃 90\nHP 150\n\nWEAPON\n\nMAIN ヒートショーテル(投部) 射程 3 遠距離\nSUB バルカン 射程 2 近距離\n\nLINK ABILITY\n\nガンダムW デッキに3枚以上\n[機動力]小アップ\n\nその名はガンダム デッキに3枚以上\n[機動力]小アップ\n\nMS ABILITY\n\n集中砲火\n任意発動 範囲(味方) 射程 ー コスト 4\n\n20秒間、ロックオンしている敵に周囲の味方ターゲットを集め、[遠／近攻撃力]を中アップ。攻撃対象が変わると効果は終了する。\n\nSPECIAL ATTACK\n\nヒートショーテル投撃\n単体(敵) 射程 3\nSPコスト 2 威力 3200\n\n敵単体に射撃攻撃でダメージを与える。\n\nIMPACT AREA\n\n[アイコン:円形範囲 中央やや上に青丸、下部に大きな黄色円、右下に三角マーカー]\n\nillust Eske Yoshinob\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n[アイコン:機動戦士ガンダム ARSENAL BASE ロゴ]\n\nAB03-041 C"
+  },
+  "ocr_raw_file": "SEASON_03_AB03-041_ガンダムサンドロック_ocr_raw.json",
+  "ocr_timestamp": "2026-02-23T15:15:54.818704",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli"
+}

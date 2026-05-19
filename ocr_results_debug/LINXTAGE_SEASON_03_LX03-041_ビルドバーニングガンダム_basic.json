@@ -1,0 +1,83 @@
+{
+  "card_number": "LX03-041",
+  "card_name": "ビルドバーニングガンダム",
+  "series": "LINXTAGE SEASON:03",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX03-041.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX03-041_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "LX03-041",
+    "type": "MS",
+    "card_label": {
+      "class": "機動",
+      "cost_label": "コスト4"
+    },
+    "name": "ビルドバーニングガンダム",
+    "model": "BG-011B BUILD BURNING GUNDAM",
+    "cost": 4,
+    "category": "MS",
+    "affiliation": "トライ・ファイターズ",
+    "pilot": "カミキ・セカイ",
+    "stats": {
+      "height": "18.0m",
+      "weight": "78.3t",
+      "mobility": 190,
+      "ranged_attack": 250,
+      "melee_attack": 150,
+      "hp": 210
+    },
+    "terrain_compatibility": {
+      "ground": "S",
+      "space": "B",
+      "desert": "A",
+      "water": "B"
+    },
+    "weapon": {
+      "main": {
+        "name": "次元覇王流聖槍蹴り",
+        "range": 2,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "次元覇王流聖拳突き",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "鼓舞[遠隔]",
+      "activation": "任意発動",
+      "target": "範囲(味方)",
+      "range": null,
+      "cost": 5,
+      "description": "30秒間、自身を中心とした大範囲内の味方ユニットの[機動力][遠距離攻撃力]を中アップする。"
+    },
+    "link_ability": [
+      {
+        "name": "トライ",
+        "condition": "デッキに3枚以上",
+        "effect": "[HP]小アップ"
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "次元覇王流聖槍蹴り",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3200,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "R",
+    "illustrator": "Robographer",
+    "raw": "機動 コスト4 MS\nBG-011B BUILD BURNING GUNDAM\nビルドバーニングガンダム\n\n全高　18.0m\n本体重量　78.3t　　　地上 S 宇宙 B 砂漠 A 水中 B\n所属　トライ・ファイターズ\nパイロット　カミキ・セカイ\n\n機動力 190\n遠距離攻撃 250\n近距離攻撃 150\nHP 210\n\nWEAPON\nMAIN 次元覇王流聖槍蹴り　射程 2　遠距離\nSUB 次元覇王流聖拳突き　射程 1　近距離\n\nMS ABILITY\n鼓舞[遠隔]\n任意発動　範囲(味方)　射程 ー　コスト 5\n30秒間、自身を中心とした大範囲内の味方ユニットの[機動力][遠距離攻撃力]を中アップする。\n\nLINK ABILITY\nトライ　デッキに3枚以上\n[HP]小アップ\n\n多彩な戦術　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nSPECIAL ATTACK\n次元覇王流聖槍蹴り\n単体(敵)　射程 3\nSPコスト 2　威力 3200\n敵単体に格闘攻撃でダメージを与える。\n\nIMPACT AREA\n\nillust Robographer\n©創通・サンライズ\nBANDAI MADE IN JAPAN　ARSENAL BASE　LX03-041　R"
+  },
+  "ocr_raw_file": "LINXTAGE_SEASON_03_LX03-041_ビルドバーニングガンダム_ocr_raw.json",
+  "ocr_timestamp": "2026-03-07T17:22:06.962392",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

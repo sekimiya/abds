@@ -1,0 +1,83 @@
+{
+  "card_number": "FQB01-011",
+  "card_name": "赤いガンダム(0079)",
+  "series": "FQブースター1弾",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQB01-011.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQB01-011_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "FQB01-011",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト6"
+    },
+    "name": "赤いガンダム（0079）",
+    "model": "Red Gundam(0079)",
+    "cost": 6,
+    "category": "遠距離",
+    "affiliation": "ジオン公国軍",
+    "pilot": null,
+    "stats": {
+      "height": null,
+      "weight": null,
+      "mobility": 250,
+      "ranged_attack": 570,
+      "melee_attack": 230,
+      "hp": 500
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "C",
+      "water": "A"
+    },
+    "weapon": {
+      "main": {
+        "name": "ビット",
+        "range": 4,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ビーム・サーベル",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "烈撃",
+      "activation": "任意発動",
+      "target": "単体(敵)",
+      "range": 4,
+      "cost": 4,
+      "description": "ロックオン中の敵ユニットに単体攻撃を行い、残りHPを半分にする。"
+    },
+    "link_ability": [
+      {
+        "name": "GQuuuuuuX",
+        "condition": "デッキに3枚以上",
+        "effect": "[HP]小アップ"
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ビット撃射",
+      "target": "単体(敵)",
+      "range": 4,
+      "sp_cost": 2,
+      "power": 3400,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "P",
+    "illustrator": "Gas1",
+    "raw": "遠距離 コスト6\n\nMS\n\nRed Gundam(0079)\n赤いガンダム（0079）\n\nGQuuuuuuX\n\n頭頂高 ー\n本体重量 ー\n所属 ジオン公国軍\nパイロット ー\n\n地上 A 宇宙 S 砂漠 C 水中 A\n機動力 250\n遠距離攻撃 570\n近距離攻撃 230\nHP 500\n\nWEAPON\nMAIN ビット 射程 4 遠距離\nSUB ビーム・サーベル 射程 1 近距離\n\nLINK ABILITY\nGQuuuuuuX デッキに3枚以上\n[HP]小アップ\n\nMS ABILITY\n烈撃\n任意発動 単体(敵) 射程 4 コスト 4\nロックオン中の敵ユニットに単体攻撃を行い、残りHPを半分にする。\n\n戦況を変える力 デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nIMPACT AREA\n[アイコン:中央やや左寄り黄緑マーカー]\n\nSPECIAL ATTACK | UNITED SP\nビット撃射 | ー\n連携 ー | 連携 ー\n連携 ー | 連携 ー\n単体(敵) 射程 4 | ー 射程 ー\nSPコスト 2 威力 3400 / ー\n\n敵単体に射撃攻撃でダメージを与える。\n/ ー\n\nillust Gas1\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nFQB01-011 P"
+  },
+  "ocr_raw_file": "FQブースター1弾_FQB01-011_赤いガンダム(0079)_ocr_raw.json",
+  "ocr_timestamp": "2026-02-28T03:21:01.504359",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

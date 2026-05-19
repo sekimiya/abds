@@ -1,0 +1,92 @@
+{
+  "card_number": "FQB06-006",
+  "card_name": "ヤクト・ドーガ（クェス・パラヤ専用機）",
+  "series": "FQブースター6弾",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQB06-006.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQB06-006_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "FQB06-006",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト2"
+    },
+    "name": "ヤクト・ドーガ（クェス・パラヤ専用機）",
+    "model": "MSN-03 QUESS'S JAGD DOGA",
+    "cost": 2,
+    "category": "遠距離",
+    "affiliation": "新生ネオ・ジオン",
+    "pilot": "クェス・パラヤ",
+    "stats": {
+      "height": "21.0m",
+      "weight": "28.0t",
+      "mobility": 210,
+      "ranged_attack": 300,
+      "melee_attack": 40,
+      "hp": 300
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "A",
+      "desert": "C",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "メガ・ガトリングガン",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ビーム・サーベル",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "増援[殲滅／破甲]",
+      "activation": "任意発動",
+      "target": "特殊(自分)",
+      "range": null,
+      "cost": 5,
+      "description": "自身の周囲に殲滅タイプの味方ユニットを呼び出す。このユニットの攻撃は一定時間、被ダメージを一定値アップさせる。※上限3ユニットまで。"
+    },
+    "link_ability": [
+      {
+        "name": "逆襲のシャア",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力] [近距離攻撃力] 小アップ"
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力] [近距離攻撃力] 小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ファンネル斉射",
+      "target": "範囲(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 2800,
+      "description": "ロックオン中の敵を中心に扇状の範囲攻撃を行い、範囲内の敵にダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "M",
+    "illustrator": "yuuiguchi",
+    "raw": "遠距離　コスト2\n\nMS\n\nMSN-03 QUESS'S JAGD DOGA\nヤクト・ドーガ（クェス・パラヤ専用機）\n\n機動戦士GUNDAM 逆襲のシャア\n\n頭頂高　21.0m\n本体重量　28.0t\n所属　新生ネオ・ジオン\nパイロット　クェス・パラヤ\n\n地上 A　宇宙 A　砂漠 C　水中 C\n\n機動力 210\n遠距離攻撃 300\n近距離攻撃 40\nHP 300\n\nWEAPON\nMAIN　メガ・ガトリングガン　射程 3　遠距離\nSUB　ビーム・サーベル　射程 1　近距離\n\nLINK ABILITY\n逆襲のシャア　デッキに3枚以上\n[遠距離攻撃力] [近距離攻撃力] 小アップ\n\n多彩な戦術　デッキに4枚以上\n[遠距離攻撃力] [近距離攻撃力] 小アップ\n\nMS ABILITY\n増援[殲滅/破甲]\n任意発動　特殊(自分)　射程 ー　コスト 5\n自身の周囲に殲滅タイプの味方ユニットを呼び出す。このユニットの攻撃は一定時間、被ダメージを一定値アップさせる。※上限3ユニットまで。\n\nSPECIAL ATTACK　　UNITED SP\nファンネル斉射　　ー\n連携 ー　　連携 ー\n連携 ー　　連携 ー\n範囲(敵)　射程 3　ー　射程 ー\nSPコスト 2　威力 2800 / ー\n\nロックオン中の敵を中心に扇状の範囲攻撃を行い、範囲内の敵にダメージを与える。/ ー\n\nIMPACT AREA\n[アイコン:扇状範囲・前方]\n\nillust yuuiguchi\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\n\nFQB06-006　M"
+  },
+  "ocr_raw_file": "FQブースター6弾_FQB06-006_ヤクト・ドーガ（クェス・パラヤ専用機）_ocr_raw.json",
+  "ocr_timestamp": "2026-02-28T06:50:50.331977",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined",
+  "_fix_history": [
+    {
+      "timestamp": "2026-03-03T23:48:42",
+      "changes": [
+        "ms_ability.name: \"増援[殲滅/破甲]\" → \"増援[殲滅／破甲]\""
+      ]
+    }
+  ],
+  "_fixed": true
+}

@@ -1,0 +1,83 @@
+{
+  "card_number": "AB03-040",
+  "card_name": "ガンダムサンドロック",
+  "series": "SEASON:03",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB03-040.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB03-040_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "AB03-040",
+    "type": "MS",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト4"
+    },
+    "name": "ガンダムサンドロック",
+    "model": "XXXG-01SR GUNDAM SANDROCK",
+    "cost": 4,
+    "category": "近距離",
+    "affiliation": null,
+    "pilot": "カトル・ラバーバ・ウィナー",
+    "stats": {
+      "height": "16.5m",
+      "weight": "7.5t",
+      "mobility": 250,
+      "ranged_attack": 130,
+      "melee_attack": 400,
+      "hp": 370
+    },
+    "terrain_compatibility": {
+      "ground": "S",
+      "space": "B",
+      "desert": "S",
+      "water": null
+    },
+    "weapon": {
+      "main": {
+        "name": "ヒートショーテル",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "バルカン",
+        "range": 2,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "光射[SP]",
+      "activation": "任意発動",
+      "target": "範囲(敵)",
+      "range": null,
+      "cost": 3,
+      "description": "20秒間、自身を中心とした小範囲内の敵ユニットの[SP威力]を中ダウンする。"
+    },
+    "link_ability": [
+      {
+        "name": "ガンダムW",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "間合いを詰めた接近戦",
+        "condition": "デッキに2枚以上",
+        "effect": "[近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ヒートショーテル強撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3500,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "P",
+    "illustrator": "KURI (studio toujyou)",
+    "raw": "MS\n\n近距離 コスト4\n\nXXXG-01SR GUNDAM SANDROCK\nガンダムサンドロック\n\n全高 16.5m\n本体重量 7.5t\n地上 S 宇宙 B 砂漠 S\n所属 ―\n機動力 250\nパイロット カトル・ラバーバ・ウィナー\n遠距離攻撃 130\n近距離攻撃 400\nHP 370\n\nWEAPON\n\nMAIN ヒートショーテル 射程 1 近距離\nSUB バルカン 射程 2 遠距離\n\nLINK ABILITY\n\nガンダムW デッキに3枚以上\n[機動力]小アップ\n\n間合いを詰めた接近戦 デッキに2枚以上\n[近距離攻撃力]小アップ\n\nMS ABILITY\n\n光射[SP]\n任意発動 範囲(敵) 射程 ― コスト 3\n\n20秒間、自身を中心とした小範囲内の敵ユニットの[SP威力]を中ダウンする。\n\nSPECIAL ATTACK\n\nヒートショーテル強撃\n単体(敵) 射程 2\nSPコスト 2 威力 3500\n\n敵単体に格闘攻撃でダメージを与える。\n\nIMPACT AREA\n\n[アイコン:中央に緑丸]\n[アイコン:下段中央に黄色三角]\n\nillust KURI (studio toujyou)\n©創通・サンライズ\n機動戦士ガンダム\nARSENAL BASE®\nBANDAI MADE IN JAPAN\n\nAB03-040 P"
+  },
+  "ocr_raw_file": "SEASON_03_AB03-040_ガンダムサンドロック_ocr_raw.json",
+  "ocr_timestamp": "2026-02-23T15:15:48.871078",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli"
+}

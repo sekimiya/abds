@@ -1,0 +1,83 @@
+{
+  "card_number": "PR-342",
+  "card_name": "ガンダムエピオン",
+  "series": "プロモーション",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-342.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-342_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "PR-342",
+    "type": "MS",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト3"
+    },
+    "name": "ガンダムエピオン",
+    "model": "OZ-13MS GUNDAM EPYON",
+    "cost": 3,
+    "category": null,
+    "affiliation": "ホワイトファング",
+    "pilot": "ミリアルド・ピースクラフト、ヒイロ・ユイ",
+    "stats": {
+      "height": "17.4m",
+      "weight": "8.5t",
+      "mobility": 240,
+      "ranged_attack": 80,
+      "melee_attack": 350,
+      "hp": 330
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "C",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "ビームソード",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "ヒートロッド",
+        "range": 2,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "補給[弱体化解除]",
+      "activation": "任意発動",
+      "target": "範囲（味方）",
+      "range": null,
+      "cost": 5,
+      "description": "自身を中心とした大範囲の味方ユニットのHPを中回復し、弱体化状態を無効化する。"
+    },
+    "link_ability": [
+      {
+        "name": "ガンダムW",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "システムが見せる未来",
+        "condition": "デッキに2枚以上",
+        "effect": "[HP][SP威力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ビームソード最大出力",
+      "target": "貫通（敵）",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3000,
+      "description": "射程上の敵に貫通格闘攻撃でダメージを与える。戦術技威力は地形適性に応じて変化する。",
+      "united_sp": null
+    },
+    "rarity": "PR",
+    "illustrator": "haru",
+    "raw": "近距離 コスト3\nOZ-13MS GUNDAM EPYON\nガンダムエピオン\n\n頭頂高 17.4m\n本体重量 8.5t　　地上 A　宇宙 S　砂漠 C　水中 C\n所属 ホワイトファング　　機動力 240\nパイロット ミリアルド・ピースクラフト、ヒイロ・ユイ　遠距離攻撃 80\n　　　　　　　　　　　　　　　　　　　　　近距離攻撃 350\n　　　　　　　　　　　　　　　　　　　　　HP 330\n\nWEAPON\nMAIN ビームソード　射程 1　近距離\nSUB　ヒートロッド　射程 2　遠距離\n\nMS ABILITY\n補給[弱体化解除]\n任意発動　範囲（味方）　射程 ー　コスト 5\n自身を中心とした大範囲の味方ユニットのHPを中回復し、弱体化状態を無効化する。\n\nLINK ABILITY\nガンダムW　デッキに3枚以上\n[機動力]小アップ\n\nシステムが見せる未来　デッキに2枚以上\n[HP][SP威力]小アップ\n\nIMPACT AREA（グラフ表示）\n\nSPECIAL ATTACK　UNITED SP\nビームソード最大出力　ー\n連携 ー　　　連携 ー\n連携 ー　　　連携 ー\n貫通（敵）　射程 3　ー　射程 ー\nSPコスト 2　威力 3000 / ー\n\n射程上の敵に貫通格闘攻撃でダメージを与える。戦術技威力は地形適性に応じて変化する。／ー\n\nillust. haru\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\nPR-342　PR"
+  },
+  "ocr_raw_file": "プロモーション_PR-342_ガンダムエピオン_ocr_raw.json",
+  "ocr_timestamp": "2026-03-03T19:03:03.600524",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

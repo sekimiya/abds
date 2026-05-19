@@ -1,0 +1,83 @@
+{
+  "card_number": "AB03-035",
+  "card_name": "ウイングガンダム",
+  "series": "SEASON:03",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB03-035.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB03-035_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "AB03-035",
+    "type": "MS",
+    "card_label": {
+      "class": "機動",
+      "cost_label": "コスト4"
+    },
+    "name": "ウイングガンダム",
+    "model": "XXXG-01W WING GUNDAM",
+    "cost": 4,
+    "category": "機動",
+    "affiliation": null,
+    "pilot": "ヒイロ・ユイ",
+    "stats": {
+      "height": "16.3m",
+      "weight": "7.1t",
+      "mobility": 260,
+      "ranged_attack": 190,
+      "melee_attack": 200,
+      "hp": 150
+    },
+    "terrain_compatibility": {
+      "ground": "S",
+      "space": "A",
+      "desert": "C",
+      "water": null
+    },
+    "weapon": {
+      "main": {
+        "name": "ビームサーベル",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "マシンキャノン",
+        "range": 2,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "強化[近距離]",
+      "activation": "任意発動",
+      "target": "自分",
+      "range": null,
+      "cost": 3,
+      "description": "30秒間、自身の[近距離攻撃力]を小アップする。"
+    },
+    "link_ability": [
+      {
+        "name": "ガンダムW",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "その名はガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ビームサーベル強撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3300,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "R",
+    "illustrator": "PLANETA_Mochizuki",
+    "raw": "MS\n\n機動 コスト4\nXXXG-01W WING GUNDAM\nウイングガンダム\n\n全高 16.3m\n本体重量 7.1t\n所属 −\nパイロット ヒイロ・ユイ\n\n地上 S 宇宙 A 砂漠 C\n機動力 260\n遠距離攻撃 190\n近距離攻撃 200\nHP 150\n\nWEAPON\nMAIN ビームサーベル 射程 1 近距離\nSUB マシンキャノン 射程 2 遠距離\n\nLINK ABILITY\nガンダムW デッキに3枚以上\n[機動力]小アップ\n\nその名はガンダム デッキに3枚以上\n[機動力]小アップ\n\nMS ABILITY\n強化[近距離]\n任意発動 自分 射程 − コスト 3\n30秒間、自身の[近距離攻撃力]を小アップする。\n\nSPECIAL ATTACK\nビームサーベル強撃\n単体(敵) 射程 2\nSPコスト 2 威力 3300\n敵単体に格闘攻撃でダメージを与える。\n\nIMPACT AREA\n[アイコン:緑丸 中央やや上]\n[アイコン:黄三角 中央下]\n\nillust PLANETA_Mochizuki\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nAB03-035 R"
+  },
+  "ocr_raw_file": "SEASON_03_AB03-035_ウイングガンダム_ocr_raw.json",
+  "ocr_timestamp": "2026-02-23T15:15:09.261795",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli"
+}

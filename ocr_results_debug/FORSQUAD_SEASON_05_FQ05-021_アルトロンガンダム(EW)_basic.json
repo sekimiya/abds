@@ -1,0 +1,83 @@
+{
+  "card_number": "FQ05-021",
+  "card_name": "アルトロンガンダム(EW)",
+  "series": "FORSQUAD SEASON:05",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ05-021.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ05-021_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "FQ05-021",
+    "type": "MS",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト7"
+    },
+    "name": "アルトロンガンダム(EW)",
+    "model": "XXXG-01S2 ALTRON GUNDAM[EW]",
+    "cost": 7,
+    "category": "近距離",
+    "affiliation": "マリーメイア軍",
+    "pilot": "張 五飛",
+    "stats": {
+      "height": "16.4m",
+      "weight": "7.5t",
+      "mobility": 280,
+      "ranged_attack": 100,
+      "melee_attack": 680,
+      "hp": 640
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "C",
+      "water": "B"
+    },
+    "weapon": {
+      "main": {
+        "name": "ツインビームトライデント",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "ドラゴンハング",
+        "range": 2,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "瞬撃",
+      "activation": "任意発動",
+      "target": "範囲(敵)",
+      "range": 5,
+      "cost": 4,
+      "description": "射程範囲内の指定した位置に小範囲攻撃を行い、範囲内の敵にダメージを与える。"
+    },
+    "link_ability": [
+      {
+        "name": "Endless Waltz",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      },
+      {
+        "name": "肉薄する戦い",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ツインビームトライデント斬撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3800,
+      "description": "敵単体に格闘攻撃でダメージを与える。一定時間、自身の[機動力][近距離攻撃力]をアップし、敵ユニットの被ダメージを上昇させる。",
+      "united_sp": null
+    },
+    "rarity": "U",
+    "illustrator": "ToMo",
+    "raw": "MS\n\n近距離　コスト7\n\nXXXG-01S2 ALTRON GUNDAM[EW]\nアルトロンガンダム(EW)\n\n頭頂高　16.4m\n本体重量　7.5t\n所属　マリーメイア軍\nパイロット　張 五飛\n\n地上 A　宇宙 S　砂漠 C　水中 B\n\n機動力 280\n遠距離攻撃 100\n近距離攻撃 680\nHP 640\n\nWEAPON\nMAIN ツインビームトライデント　射程 1　近距離\nSUB ドラゴンハング　射程 2　遠距離\n\nLINK ABILITY\nEndless Waltz　デッキに3枚以上\n[遠距離攻撃力][近距離攻撃力]\n小アップ\n\n肉薄する戦い　デッキに4枚以上\n[機動力][近距離攻撃力]小アップ\n\nMS ABILITY\n瞬撃\n任意発動　範囲(敵)　射程 5　コスト 4\n\n射程範囲内の指定した位置に小範囲攻撃を行い、範囲内の敵にダメージを与える。\n\nIMPACT AREA\n[アイコン:×マーク中央、周囲に黄色円範囲、下方に緑丸と三角]\n\nSPECIAL ATTACK　UNITED SP\nツインビームトライデント斬撃　ー\n連携 ー　連携 ー\n連携 ー　連携 ー\n単体（敵）　射程 2　ー　射程 ー\nSPコスト 2　威力 3800 / ー\n\n敵単体に格闘攻撃でダメージを与える。一定時間、自身の[機動力][近距離攻撃力]をアップし、敵ユニットの被ダメージを上昇させる。/ ー\n\nillust ToMo\n©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nFQ05-021　U"
+  },
+  "ocr_raw_file": "FORSQUAD_SEASON_05_FQ05-021_アルトロンガンダム(EW)_ocr_raw.json",
+  "ocr_timestamp": "2026-02-24T18:28:17.003242",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

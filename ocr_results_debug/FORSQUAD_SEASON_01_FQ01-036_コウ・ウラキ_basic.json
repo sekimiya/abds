@@ -1,0 +1,65 @@
+{
+  "card_number": "FQ01-036",
+  "card_name": "コウ・ウラキ",
+  "series": "FORSQUAD SEASON:01",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ01-036.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ01-036_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "FQ01-036",
+    "type": "PL",
+    "card_label": {
+      "class": "殲滅",
+      "cost_label": "コスト4"
+    },
+    "name": "コウ・ウラキ",
+    "english_name": "KOU URAKI",
+    "cost": 4,
+    "category": "殲滅",
+    "affiliation": "地球連邦軍",
+    "physical": {
+      "height": null,
+      "age": 19
+    },
+    "units": [
+      "ガンダム試作3号機",
+      "ガンダム試作1号機フルバーニアン",
+      "ガンダム試作1号機"
+    ],
+    "stats": {
+      "mobility": 190,
+      "ranged_attack": 370,
+      "melee_attack": 80,
+      "hp": 310
+    },
+    "pilot_skill": {
+      "name": "貫く闘志",
+      "trigger": "SQゲージが最大時",
+      "effect": "自身の[遠距離攻撃力][SP威力]をアップする。SQUAD RUSH中 [遠距離攻撃力][SP威力]の効果値がさらに上昇する。",
+      "has_sq_skill": true,
+      "sq_skill_details": {
+        "sq_gauge_effect": null,
+        "sq_max_effect": "自身の[遠距離攻撃力][SP威力]をアップする。",
+        "squad_rush_effect": "[遠距離攻撃力][SP威力]の効果値がさらに上昇する。"
+      }
+    },
+    "link_ability": [
+      {
+        "name": "駆け抜ける嵐",
+        "condition": "デッキに3枚以上",
+        "effect": "SQゲージが表示される。SQゲージを溜めるとSQUAD RUSHが発動できる。[遠距離攻撃力][近距離攻撃力]小アップ"
+      },
+      {
+        "name": "的確な一撃",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][遠距離攻撃力]小アップ"
+      }
+    ],
+    "rarity": "P",
+    "illustrator": null,
+    "raw": "PL\n\n殲滅 コスト4\n\nコウ・ウラキ\nKOU URAKI\n\n機動戦士ガンダム0083\nSTARDUST MEMORY\n[アイコン:地球連邦軍]\n\n身長 —\n年齢 19歳\n所属 地球連邦軍\n搭乗機体 ガンダム試作3号機, ガンダム試作1号機フルバーニアン, ガンダム試作1号機\n\nSQ PL SKILL\n貫く闘志\nSQゲージが最大時\n自身の[遠距離攻撃力][SP威力]をアップする。\nSQUAD RUSH中\n[遠距離攻撃力][SP威力]の効果値がさらに上昇する。\n\nSQ LINK ABILITY\n駆け抜ける嵐 デッキに3枚以上\nSQゲージが表示される。\nSQゲージを溜めるとSQUAD RUSHが発動できる。\n[遠距離攻撃力][近距離攻撃力]小アップ\n\n的確な一撃 デッキに4枚以上\n[機動力][遠距離攻撃力]小アップ\n\n機動力 190\n遠距離攻撃 370\n近距離攻撃 80\nHP 310\n\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\n\nFQ01-036 P"
+  },
+  "ocr_raw_file": "FORSQUAD_SEASON_01_FQ01-036_コウ・ウラキ_ocr_raw.json",
+  "ocr_timestamp": "2026-02-24T01:32:39.861735",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli"
+}

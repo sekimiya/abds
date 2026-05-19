@@ -1,0 +1,83 @@
+{
+  "card_number": "LX04-054",
+  "card_name": "ファルシア",
+  "series": "LINXTAGE SEASON:04",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX04-054.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX04-054_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "LX04-054",
+    "type": "MS",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト4"
+    },
+    "name": "ファルシア",
+    "model": "xvb-xd FARSIA",
+    "cost": 4,
+    "category": "MS",
+    "affiliation": "ヴェイガン",
+    "pilot": "ユリン・ルシェル",
+    "stats": {
+      "height": "16.2m",
+      "weight": "29.9t",
+      "mobility": 190,
+      "ranged_attack": 120,
+      "melee_attack": 250,
+      "hp": 240
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "A",
+      "desert": "C",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "ファルシアソード",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "拡散ビーム砲",
+        "range": 2,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "強襲",
+      "activation": "任意発動",
+      "target": "単体（敵）",
+      "range": 4,
+      "cost": 4,
+      "description": "一定範囲内のロックオン可能な残りHPの割合が最も高い敵ユニットにターゲットを切り替え、単体攻撃でダメージを与える。"
+    },
+    "link_ability": [
+      {
+        "name": "ガンダムAGE",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力]小アップ"
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ファルシアソード強撃",
+      "target": "単体（敵）",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3300,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "R",
+    "illustrator": "Chifuyu Yukishiro",
+    "raw": "近距離 コスト4\nxvb-xd FARSIA\nファルシア\n\n全高 16.2m\n本体重量 29.9t\n所属 ヴェイガン\nパイロット ユリン・ルシェル\n\n地上 A　宇宙 A　砂漠 C　水中 C\n機動力 190\n遠距離攻撃 120\n近距離攻撃 250\nHP 240\n\nWEAPON\nMAIN ファルシアソード　射程 1　近距離\nSUB 拡散ビーム砲　射程 2　遠距離\n\nMS ABILITY\n強襲\n任意発動　単体（敵）　射程 4　コスト 4\n一定範囲内のロックオン可能な残りHPの割合が最も高い敵ユニットにターゲットを切り替え、単体攻撃でダメージを与える。\n\nLINK ABILITY\nガンダムAGE　デッキに3枚以上\n[遠距離攻撃力]小アップ\n\n戦況を変える力　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nIMPACT AREA\n（グリッド上の配置マーカー）\n\nSPECIAL ATTACK\nファルシアソード強撃\n単体（敵）　射程 2\nSPコスト 2　威力 3300\n敵単体に格闘攻撃でダメージを与える。\n\nillust. Chifuyu Yukishiro\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n\nLX04-054　R"
+  },
+  "ocr_raw_file": "LINXTAGE_SEASON_04_LX04-054_ファルシア_ocr_raw.json",
+  "ocr_timestamp": "2026-03-07T19:12:24.726141",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

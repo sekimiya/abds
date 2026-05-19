@@ -1,0 +1,83 @@
+{
+  "card_number": "LXR02-008",
+  "card_name": "ガンダム・ルブリス・ウル",
+  "series": "リンクステージレア2弾",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LXR02-008.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LXR02-008_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "LXR02-008",
+    "type": "MS",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト6"
+    },
+    "name": "ガンダム・ルブリス・ウル",
+    "model": "EDM-GA-01 GUNDAM LFRITH UR",
+    "cost": 6,
+    "category": "MS",
+    "affiliation": "フォルドの夜明け",
+    "pilot": "ソフィ・プロネ",
+    "stats": {
+      "height": "21.2m",
+      "weight": "75.9t",
+      "mobility": 200,
+      "ranged_attack": 120,
+      "melee_attack": 500,
+      "hp": 330
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "A",
+      "desert": "C",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "ビームサーベル",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "ビームガトリングガン",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "特攻",
+      "activation": "出撃時発動",
+      "target": "自分",
+      "range": null,
+      "cost": null,
+      "description": "自身の[遠／近攻撃力]をアップし[怯み無効]となるが、[回避／ガード不可][修理時間延長]となる。効果は撤退するまで持続。"
+    },
+    "link_ability": [
+      {
+        "name": "水星の魔女",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ビームガトリングガン連射",
+      "target": "単体（敵）",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3400,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "LX",
+    "illustrator": "StudioVIGOR Co.,Ltd.",
+    "raw": "近距離 コスト6\nEDM-GA-01 GUNDAM LFRITH UR\nガンダム・ルブリス・ウル\n\n頭頂高 21.2m\n本体重量 75.9t\n所属 フォルドの夜明け\nパイロット ソフィ・プロネ\n\n地上 A 宇宙 A 砂漠 C 水中 C\n機動力 200\n遠距離攻撃 120\n近距離攻撃 500\nHP 330\n\nWEAPON\nMAIN ビームサーベル 射程 1 近距離\nSUB ビームガトリングガン 射程 3 遠距離\n\nMS ABILITY\n特攻\n出撃時発動 自分 射程 ー コスト ー\n\n自身の[遠／近攻撃力]をアップし[怯み無効]となるが、[回避／ガード不可][修理時間延長]となる。効果は撤退するまで持続。\n\nLINK ABILITY\n水星の魔女 デッキに3枚以上\n[機動力]小アップ\n\n戦況を変える力 デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nIMPACT AREA\n\nSPECIAL ATTACK\nビームガトリングガン連射\n単体（敵） 射程 3\nSPコスト 2 威力 3400\n敵単体に射撃攻撃でダメージを与える。\n\nillust. StudioVIGOR Co.,Ltd.\n©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n\nLXR02-008 LX"
+  },
+  "ocr_raw_file": "リンクステージレア2弾_LXR02-008_ガンダム・ルブリス・ウル_ocr_raw.json",
+  "ocr_timestamp": "2026-03-07T14:46:45.439090",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

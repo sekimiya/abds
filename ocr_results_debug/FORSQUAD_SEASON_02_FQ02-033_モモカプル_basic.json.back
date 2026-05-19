@@ -1,0 +1,75 @@
+{
+  "card_number": "FQ02-033",
+  "card_name": "モモカプル",
+  "series": "FORSQUAD SEASON:02",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-033.jpg?v9",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-033_b.jpg?v9",
+  "ocr_data": {
+    "card_id": "FQ02-033",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト2"
+    },
+    "name": "モモカプル",
+    "model": "PEN-01M MOMOKAPOOL",
+    "cost": 2,
+    "category": "遠距離",
+    "pilot": "モモ",
+    "stats": {
+      "height": "12.8m",
+      "weight": "31.8t",
+      "mobility": 170,
+      "ranged_attack": 260,
+      "melee_attack": 70,
+      "hp": 250
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "B",
+      "desert": "B",
+      "water": "S"
+    },
+    "weapon": {
+      "main": {
+        "name": "手のビーム",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "手のツメ",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "強化[遠距離]",
+      "type": "任意発動",
+      "range": 1,
+      "cost": 3,
+      "description": "30秒間、自身の「遠距離攻撃力」を小アップする。"
+    },
+    "link_ability": [
+      {
+        "name": "ビルドダイバーズ",
+        "condition": "デッキに3枚以上",
+        "effect": "[HP]小アップ"
+      },
+      {
+        "name": "多彩な機術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "impact_area": {
+      "type": "circular",
+      "radius": 1,
+      "centered": true
+    },
+    "illustrator": "Robographer",
+    "raw": "遠距離 コスト2\nPEN-01M MOMOKAPOOL\nモモカプル\n頭頂高 12.8m\n本体重量 31.8t\n所属 ビルドダイバーズ\nパイロット モモ\n地上A 宇宙B 砂漠B 水中S\n機動力 170\n遠距離攻撃力 260\n近距離攻撃力 70\nHP 250\nWEAPON\nMAIN 手のビーム\n射程3 遠距離\nSUB 手のツメ\n射程1 近距離\nMS ABILITY\n強化[遠距離]\n任意発動 自分 射程1 コスト3\n30秒間、自身の「遠距離攻撃力」を小アップする。\nLINK ABILITY\nビルドダイバーズ デッキに3枚以上\n[HP]小アップ\n多彩な機術 デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\nIMPACT AREA\nSPECIAL ATTACK\nお股のビーム撃射\n連携\n連携\n連携\n単体(敵) 射程3\nSPコスト2\n威力3000/\n敵単体に射撃攻撃でダメージを与える。/\nillust Robographer\n©創通・サンライズ\nBANDAI MADE IN JAPAN"
+  },
+  "ocr_timestamp": "2025-06-28T01:45:19.252333",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli"
+}

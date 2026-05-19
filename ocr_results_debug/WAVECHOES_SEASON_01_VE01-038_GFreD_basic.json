@@ -1,0 +1,94 @@
+{
+  "card_number": "VE01-038",
+  "card_name": "GFreD",
+  "series": "WAVECHOES SEASON:01",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE01-038.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE01-038_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "VE01-038",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト3"
+    },
+    "name": "GFreD",
+    "model": "GFreD",
+    "cost": 3,
+    "category": "遠距離",
+    "affiliation": null,
+    "pilot": "ニャアン",
+    "stats": {
+      "height": null,
+      "weight": null,
+      "mobility": 230,
+      "ranged_attack": 300,
+      "melee_attack": 70,
+      "hp": 350
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "C",
+      "water": "A"
+    },
+    "weapon": {
+      "main": {
+        "name": "エスピット・ルナ／アルテミス",
+        "range": 4,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ビーム・サーベル",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "補給[弱体化解除]",
+      "activation": "任意発動",
+      "target": "範囲(味方)",
+      "range": null,
+      "cost": 5,
+      "description": "自身を中心とした大範囲の味方ユニットのHPを中回復し、弱体化状態を無効化する。"
+    },
+    "link_ability": [
+      {
+        "name": "GQuuuuuuX",
+        "condition": "デッキに3枚以上",
+        "effect": "[HP]小アップ"
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "エスピット・ルナ／アルテミス輝",
+      "target": "範囲(敵)",
+      "range": 4,
+      "sp_cost": 2,
+      "power": 3200,
+      "sp_type": "ECHOES BEAT",
+      "description": "敵範囲に射撃攻撃でダメージを与え、一定時間、自身の[遠距離攻撃力]をアップする。",
+      "echoes_beat": {
+        "eb_type": "normal",
+        "eb_name": "エスピット・ルナ／アルテミス輝 Lv.2",
+        "eb_level": 2,
+        "eb_note": "ECHOES BEAT Lv.を下げることで、Lv.戦術技が発動する。",
+        "eb_target": "範囲(敵)",
+        "eb_range": 4,
+        "eb_power": 3800,
+        "eb_description": "EBLv.を2下げ、敵範囲に射撃攻撃でダメージを与え、一定時間、自身の[遠距離攻撃力]をアップし、出撃中の全味方ユニットの受けるダメージを軽減する。"
+      },
+      "united_sp": null
+    },
+    "rarity": "M",
+    "illustrator": null,
+    "raw": ""
+  },
+  "ocr_raw_file": "WAVECHOES_SEASON_01_VE01-038_GFreD_ocr_raw.json",
+  "ocr_timestamp": "2026-03-27T12:00:00.000000",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

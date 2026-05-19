@@ -1,0 +1,78 @@
+{
+  "card_number": "AB01-013",
+  "card_name": "ペイルライダー",
+  "series": "SEASON:01",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB01-013.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB01-013_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "AB01-013",
+    "type": "MS",
+    "card_label": {
+      "class": "機動",
+      "cost_label": "コスト3"
+    },
+    "name": "ペイルライダー",
+    "model": "RX-80PR PALE RIDER",
+    "cost": 3,
+    "category": "機動",
+    "affiliation": "地球連邦軍",
+    "pilot": "クロエ・クローチェ",
+    "stats": {
+      "height": "18.0m",
+      "weight": "43.7t",
+      "mobility": 290,
+      "ranged_attack": 230,
+      "melee_attack": 300,
+      "hp": 220
+    },
+    "terrain_compatibility": {
+      "ground": "S",
+      "space": "B",
+      "desert": "A",
+      "water": null
+    },
+    "weapon": {
+      "main": {
+        "name": "ビーム・サーベル二刀流",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "頭部バルカン砲",
+        "range": 2,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "HADES",
+      "activation": "任意発動",
+      "target": "自分",
+      "range": null,
+      "cost": 4,
+      "description": "30秒間、自身の攻撃頻度を中アップする。"
+    },
+    "link_ability": [
+      {
+        "name": "機動戦士ガンダム外伝",
+        "condition": "デッキに2枚以上",
+        "effect": "[近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ビーム・サーベル二刀流強撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3500,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "M",
+    "illustrator": "Gas1",
+    "raw": "MS\n\n機動　コスト3\nRX-80PR PALE RIDER\nペイルライダー\n\n全高　18.0m\n本体重量　43.7t\n所属　地球連邦軍\nパイロット　クロエ・クローチェ\n\n地上 S　宇宙 B　砂漠 A\n機動力 290\n遠距離攻撃 230\n近距離攻撃 300\nHP 220\n\n[アイコン:MISSING LINK]\n\nWEAPON\nMAIN ビーム・サーベル二刀流　射程 1　近距離\nSUB 頭部バルカン砲　射程 2　遠距離\n\nLINK ABILITY\n機動戦士ガンダム外伝　デッキに2枚以上\n[近距離攻撃力] 小アップ\n\nMS ABILITY\nHADES\n任意発動　自分　射程 ー　コスト 4\n30秒間、自身の攻撃頻度を中アップする。\n\nIMPACT AREA\n[アイコン:緑丸 中央付近]\n[アイコン:黄三角 中央下付近]\n\nSPECIAL ATTACK\nビーム・サーベル二刀流強撃\n単体(敵)　射程 2\nSPコスト 2　威力 3500\n敵単体に格闘攻撃でダメージを与える。\n\nillust Gas1\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE™\nAB01-013　M"
+  },
+  "ocr_raw_file": "SEASON_01_AB01-013_ペイルライダー_ocr_raw.json",
+  "ocr_timestamp": "2026-02-23T12:05:28.347398",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli"
+}

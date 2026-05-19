@@ -1,0 +1,64 @@
+{
+  "card_number": "BP07-011",
+  "card_name": "インフィニットジャスティスガンダム弐式",
+  "series": "BOOSTER PACK [機動戦士ガンダムSEEDシリーズvol.3]",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP07-011.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP07-011_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "BP07-011",
+    "type": "MS",
+    "card_label": { "class": "近距離", "cost_label": "コスト4" },
+    "name": "インフィニットジャスティスガンダム弐式",
+    "model": "ZGMF-X191M2 INFINITE JUSTICE GUNDAM TYPEII",
+    "cost": 4,
+    "category": "近距離",
+    "affiliation": "ターミナル",
+    "pilot": "アスラン・ザラ、カガリ・ユラ・アスハ",
+    "stats": {
+      "height": "19.64m",
+      "weight": "78.07t",
+      "mobility": 230,
+      "ranged_attack": 50,
+      "melee_attack": 320,
+      "hp": 400
+    },
+    "terrain_compatibility": { "ground": "A", "space": "S", "desert": "A", "water": "C" },
+    "weapon": {
+      "main": { "name": "アンビテクストラス・ハルバード", "range": 1, "type": "近距離" },
+      "sub": { "name": "高エネルギービームライフル", "range": 3, "type": "遠距離" }
+    },
+    "ms_ability": {
+      "name": "撃滅",
+      "activation": "任意発動",
+      "target": "単体(敵)",
+      "range": 2,
+      "cost": 4,
+      "description": "ロックオン中の敵に単体攻撃でダメージを与える。この攻撃で敵ユニットを撃破した場合、敵ユニットの修理時間を延長させる。"
+    },
+    "link_ability": [
+      { "name": "SEED FREEDOM", "condition": "デッキに3枚以上", "effect": "[機動力]小アップ" },
+      { "name": "多彩な戦術", "condition": "デッキに4枚以上", "effect": "[遠距離攻撃力][近距離攻撃力]小アップ" }
+    ],
+    "special_attack": {
+      "name": "アンビテクストラス・ハルバード強撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3300,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": {
+        "name": "スピッツェシュヴァート ビームホーン",
+        "target": "単体(敵)",
+        "range": 2,
+        "power": 4800,
+        "description": "EBLv.を3下げる。敵単体に格闘攻撃でダメージを与える。出撃時1度のみ使用可能。",
+        "partners": ["ECHOES BEAT Lv.3"]
+      }
+    },
+    "rarity": "R",
+    "raw": "近距離 コスト4 MS\nZGMF-X191M2 INFINITE JUSTICE GUNDAM TYPEII\nインフィニットジャスティスガンダム弐式\n頭頂高 19.64m\n本体重量 78.07t\n所属 ターミナル\nパイロット アスラン・ザラ、カガリ・ユラ・アスハ\n地上 A 宇宙 S 砂漠 A 水中 C\n機動力 230\n遠距離攻撃 50\n近距離攻撃 320\nHP 400\nWEAPON\nMAIN アンビテクストラス・ハルバード 射程 1 近距離\nSUB 高エネルギービームライフル 射程 3 遠距離\nLINK ABILITY\nSEED FREEDOM デッキに3枚以上\n[機動力]小アップ\n多彩な戦術 デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\nMS ABILITY\n撃滅\n任意発動 単体(敵) 射程 2 コスト 4\nロックオン中の敵に単体攻撃でダメージを与える。この攻撃で敵ユニットを撃破した場合、敵ユニットの修理時間を延長させる。\nSPECIAL ATTACK ECHOES BEAT SP\nアンビテクストラス・ハルバード強撃 スピッツェシュヴァート ビームホーン Lv.3\nECHOES BEAT Lv.を下げることで、共鳴戦術技が発動する。\n単体(敵) 射程 2 単体(敵) 射程 2\nSPコスト 2 威力 3300 / 4800\n敵単体に格闘攻撃でダメージを与える。/ EBLv.を3下げる。敵単体に格闘攻撃でダメージを与える。出撃時1度のみ使用可能。\nBP07-011 R"
+  },
+  "ocr_timestamp": "2026-04-16T11:50:00.000000",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_subagent"
+}

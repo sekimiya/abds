@@ -1,0 +1,53 @@
+{
+  "card_number": "VEB01-020",
+  "card_name": "シャア・アズナブル",
+  "series": "VEB01",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/VEB01-020.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/VEB01-020_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "VEB01-020",
+    "type": "PL",
+    "card_label": {
+      "class": "防衛",
+      "cost_label": "コスト2"
+    },
+    "name": "シャア・アズナブル",
+    "cost": 2,
+    "category": "防衛",
+    "affiliation": "ジオン公国軍",
+    "stats": {
+      "mobility": 180,
+      "ranged_attack": 210,
+      "melee_attack": 40,
+      "hp": 260
+    },
+    "pilot_skill": {
+      "name": "一発必中の長距離戦",
+      "trigger": "EBLv.2に上昇時",
+      "effect": "30秒間、自身の[遠距離攻撃力]をアップし、受けるダメージを軽減する。",
+      "has_sq_skill": false,
+      "sq_skill_details": null,
+      "is_eb_skill": true,
+      "eb_trigger_level": 2
+    },
+    "link_ability": [
+      {
+        "name": "宇宙に響く鼓動",
+        "condition": "デッキに3枚以上",
+        "effect": "ECHOES BEAT Lv.が表示される。味方ユニットが戦術技を発動するとEBLv.が上がる。[HP][SP威力]小アップ",
+        "is_eb_link": true
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "rarity": "R",
+    "illustrator": null,
+    "raw": "防衛　コスト2\n\nシャア・アズナブル\nCHAR AZNABLE\n\n身長　175cm\n年齢　20歳\n所属　ジオン公国軍\n搭乗機体　ジョング、ゲルググ(シャア・アズナブル専用機)、ズゴック(シャア・アズナブル専用機)、ザクII(シャア・アズナブル専用機)\n\nEB　PL SKILL\n一発必中の長距離戦\nEBLv.2に上昇時\n\n30秒間、自身の[遠距離攻撃力]をアップし、受けるダメージを軽減する。\n\nEB　LINK ABILITY\n宇宙に響く鼓動　デッキに3枚以上\nECHOES BEAT Lv.が表示される。\n味方ユニットが戦術技を発動するとEBLv.が上がる。\n[HP][SP威力]小アップ\n\n戦況を変える力　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\n機動力　180\n遠距離攻撃　210\n近距離攻撃　40\nHP　260\n\nVEB01-020　R"
+  },
+  "ocr_timestamp": "2026-03-27T02:30:00",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli"
+}

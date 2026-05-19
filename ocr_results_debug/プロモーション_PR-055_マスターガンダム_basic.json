@@ -1,0 +1,83 @@
+{
+  "card_number": "PR-055",
+  "card_name": "マスターガンダム",
+  "series": "プロモーション",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-055.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-055_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "PR-055",
+    "type": "MS",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト3"
+    },
+    "name": "マスターガンダム",
+    "model": "GF13-001NHII MASTER GUNDAM",
+    "cost": 3,
+    "category": "MS",
+    "affiliation": "ネオホンコン",
+    "pilot": "マスター・アジア",
+    "stats": {
+      "height": "16.7m",
+      "weight": "7.2t",
+      "mobility": 200,
+      "ranged_attack": 40,
+      "melee_attack": 360,
+      "hp": 350
+    },
+    "terrain_compatibility": {
+      "ground": "S",
+      "space": "C",
+      "desert": "B",
+      "water": null
+    },
+    "weapon": {
+      "main": {
+        "name": "格闘",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "マスタークロス",
+        "range": 2,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "縛撃",
+      "activation": "任意発動",
+      "target": "単体(敵)",
+      "range": 2,
+      "cost": 3,
+      "description": "ロックオン中の敵ユニットに単体攻撃を行いダメージを与え、一定時間スタンさせる。"
+    },
+    "link_ability": [
+      {
+        "name": "Gガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[近距離攻撃力]小アップ"
+      },
+      {
+        "name": "漆黒の戦士",
+        "condition": "デッキに2枚以上",
+        "effect": "[機動力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "超級覇王電影弾",
+      "target": "貫通(敵)",
+      "range": 4,
+      "sp_cost": 3,
+      "power": 3200,
+      "description": "射線上の敵に貫通格闘攻撃でダメージを与え、一定時間スタンさせる。",
+      "united_sp": null
+    },
+    "rarity": "PR",
+    "illustrator": "Hayaken sarena",
+    "raw": "近距離 コスト3 MS\nGF13-001NHII MASTER GUNDAM\nマスターガンダム\n\n全高 16.7m\n本体重量 7.2t　　　　地上 S 宇宙 C 砂漠 B\n所属 ネオホンコン\nパイロット マスター・アジア\n\n機動力 200\n遠距離攻撃 40\n近距離攻撃 360\nHP 350\n\nWEAPON\nMAIN 格闘　射程 1　近距離\nSUB マスタークロス　射程 2　遠距離\n\nMS ABILITY\n縛撃\n任意発動　単体(敵)　射程 2　コスト 3\nロックオン中の敵ユニットに単体攻撃を行いダメージを与え、一定時間スタンさせる。\n\nLINK ABILITY\nGガンダム　デッキに3枚以上\n[近距離攻撃力]小アップ\n\n漆黒の戦士　デッキに2枚以上\n[機動力]小アップ\n\nSPECIAL ATTACK\n超級覇王電影弾\n貫通(敵)　射程 4\nSPコスト 3　威力 3200\n射線上の敵に貫通格闘攻撃でダメージを与え、一定時間スタンさせる。\n\nIMPACT AREA（グリッド図）\n\nillust. Hayaken sarena\n©創通・サンライズ\nBANDAI MADE IN JAPAN\nPR-055 PR"
+  },
+  "ocr_raw_file": "プロモーション_PR-055_マスターガンダム_ocr_raw.json",
+  "ocr_timestamp": "2026-03-07T12:43:15.452263",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

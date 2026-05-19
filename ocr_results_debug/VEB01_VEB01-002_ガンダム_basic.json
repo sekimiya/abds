@@ -1,0 +1,84 @@
+{
+  "card_number": "VEB01-002",
+  "card_name": "ガンダム",
+  "series": "VEB01",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/VEB01-002.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/VEB01-002_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "VEB01-002",
+    "type": "MS",
+    "card_label": {
+      "class": "機動",
+      "cost_label": "コスト3"
+    },
+    "name": "ガンダム",
+    "model": "RX-78-2 GUNDAM",
+    "cost": 3,
+    "category": "機動",
+    "affiliation": "地球連邦軍",
+    "pilot": "アムロ・レイ",
+    "stats": {
+      "height": "18.0m",
+      "weight": "43.4t",
+      "mobility": 210,
+      "ranged_attack": 70,
+      "melee_attack": 280,
+      "hp": 340
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "A",
+      "desert": "C",
+      "water": "A"
+    },
+    "weapon": {
+      "main": {
+        "name": "ビーム・サーベル",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "ビーム・ライフル",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "補給[弱体化解除]",
+      "activation": "任意発動",
+      "target": "範囲(味方)",
+      "range": null,
+      "cost": 5,
+      "description": "自身を中心とした大範囲の味方ユニットのHPを中回復し、弱体化状態を無効化する。"
+    },
+    "link_ability": [
+      {
+        "name": "機動戦士ガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ビーム・サーベル強襲",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3300,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "echoes_beat": null,
+      "united_sp": null
+    },
+    "rarity": "R",
+    "illustrator": null,
+    "raw": ""
+  },
+  "ocr_raw_file": "VEB01_VEB01-002_ガンダム_ocr_raw.json",
+  "ocr_timestamp": "2026-03-28T08:10:05.557604",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

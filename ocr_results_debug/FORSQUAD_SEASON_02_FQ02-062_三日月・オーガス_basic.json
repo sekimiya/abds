@@ -1,0 +1,56 @@
+{
+  "card_number": "FQ02-062",
+  "card_name": "三日月・オーガス",
+  "series": "FORSQUAD SEASON:02",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-062.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-062_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "FQ02-062",
+    "type": "PL",
+    "card_label": {
+      "class": "殲滅",
+      "cost_label": "コスト5"
+    },
+    "name": "三日月・オーガス",
+    "cost": 5,
+    "category": "鉄血のオルフェンズ",
+    "affiliation": "鉄華団",
+    "stats": {
+      "mobility": 250,
+      "ranged_attack": 50,
+      "melee_attack": 430,
+      "hp": 420
+    },
+    "pilot_skill": {
+      "name": "猛然たる衝動",
+      "trigger": "SQゲージが最大時",
+      "effect": "自身の[機動力][近距離攻撃力]をアップする。SQUAD RUSH中[機動力][近距離攻撃力]の効果値がさらに上昇する。",
+      "has_sq_skill": true,
+      "sq_skill_details": {
+        "trigger": "SQゲージが最大時",
+        "sq_gauge_effect": "自身の[機動力][近距離攻撃力]をアップする。",
+        "sq_rush_effect": "[機動力][近距離攻撃力]の効果値がさらに上昇する。",
+        "sq_max_effect": null
+      }
+    },
+    "link_ability": [
+      {
+        "name": "[SQ]彼等の居場所",
+        "condition": "デッキに3枚以上",
+        "effect": "SQゲージが表示される。SQゲージを溜めるとSQUAD RUSHが発動できる。[遠距離攻撃力][近距離攻撃力]大アップ"
+      },
+      {
+        "name": "狼の王",
+        "condition": "デッキに2枚以上",
+        "effect": "[近距離攻撃力][HP]小アップ"
+      }
+    ],
+    "rarity": "U",
+    "illustrator": null,
+    "raw": "殲滅　コスト5　PL\n三日月・オーガス\nMIKAZUKI AUGUS\n鉄血のオルフェンズ 機動戦士ガンダム\n\n身長　—\n年齢　—\n所属　鉄華団\n搭乗機体　ガンダム・バルバトスルプスレクス、ガンダム・バルバトスルプス\n\nSQ　PL SKILL\n猛然たる衝動\nSQゲージが最大時\n\n自身の[機動力][近距離攻撃力]をアップする。\nSQUAD RUSH中\n[機動力][近距離攻撃力]の効果値がさらに上昇する。\n\nSQ　LINK ABILITY\n彼等の居場所　デッキに3枚以上\nSQゲージが表示される。\nSQゲージを溜めるとSQUAD RUSHが発動できる。\n[遠距離攻撃力][近距離攻撃力]大アップ\n\n狼の王　デッキに2枚以上\n[近距離攻撃力][HP]小アップ\n\n機動力　250\n遠距離攻撃　50\n近距離攻撃　430\nHP　420\n\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE ®\nFQ02-062　U"
+  },
+  "ocr_raw_file": "FORSQUAD_SEASON_02_FQ02-062_三日月・オーガス_ocr_raw.json",
+  "ocr_timestamp": "2026-03-03T18:42:12.493743",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

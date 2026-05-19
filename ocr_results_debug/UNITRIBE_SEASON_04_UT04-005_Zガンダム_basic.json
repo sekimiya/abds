@@ -1,0 +1,92 @@
+{
+  "card_number": "UT04-005",
+  "card_name": "Zガンダム",
+  "series": "UNITRIBE SEASON:04",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT04-005.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT04-005_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "UT04-005",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト4"
+    },
+    "name": "Zガンダム",
+    "model": "MSZ-006 Z GUNDAM",
+    "cost": 4,
+    "category": "遠距離",
+    "affiliation": "エゥーゴ",
+    "pilot": "ジュドー・アーシタ、ルー・ルカ",
+    "stats": {
+      "height": "19.85m",
+      "weight": "28.7t",
+      "mobility": 170,
+      "ranged_attack": 240,
+      "melee_attack": 40,
+      "hp": 300
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "C",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "ビーム・ライフル",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ビーム・サーベル",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "デコイ[ユニット]",
+      "activation": "任意発動",
+      "target": "特殊(自分)",
+      "range": null,
+      "cost": 2,
+      "description": "自身の周囲にユニット扱いでロックオンされるデコイを3体配置する。※上限6体まで。効果の対象やユニット数には含まれない。"
+    },
+    "link_ability": [
+      {
+        "name": "機動戦士ガンダムZZ",
+        "condition": "デッキに3枚以上",
+        "effect": "[HP]小アップ"
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ビーム・ライフル撃射",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3100,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "C",
+    "illustrator": "ZB",
+    "raw": "MS\n\n遠距離　コスト4\n\nMSZ-006 Z GUNDAM\nZガンダム\n\n頭頂高　19.85m\n本体重量　28.7t\n所属　エゥーゴ\nパイロット　ジュドー・アーシタ、ルー・ルカ\n\n地上 A　宇宙 S　砂漠 C　水中 C\n\n機動力 170\n遠距離攻撃 240\n近距離攻撃 40\nHP 300\n\nWEAPON\nMAIN　ビーム・ライフル　射程 3　遠距離\nSUB　ビーム・サーベル　射程 1　近距離\n\nLINK ABILITY\n機動戦士ガンダムZZ　デッキに3枚以上\n[HP]小アップ\n\nMS ABILITY\nデコイ【ユニット】\n任意発動　特殊(自分)　射程 ー　コスト 2\n自身の周囲にユニット扱いでロックオンされるデコイを3体配置する。※上限6体まで。効果の対象やユニット数には含まれない。\n\n多彩な戦術　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nSPECIAL ATTACK　　UNITED SP\nビーム・ライフル撃射　　ー\n連携 ー　　連携 ー\n連携 ー　　連携 ー\n単体(敵)　射程 3　　ー　射程 ー\nSPコスト 2　威力 3100 / ー\n敵単体に射撃攻撃でダメージを与える。\n/ ー\n\nIMPACT AREA\n[アイコン:3x5グリッド、中央に緑丸、下段中央に黄三角]\n\nillust ZB\n©創通・サンライズ\n機動戦士ガンダム\nARSENAL BASE®\nBANDAI MADE IN JAPAN\nUT04-005　C"
+  },
+  "ocr_raw_file": "UNITRIBE_SEASON_04_UT04-005_Zガンダム_ocr_raw.json",
+  "ocr_timestamp": "2026-02-28T08:14:19.354852",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined",
+  "_fix_history": [
+    {
+      "timestamp": "2026-03-03T23:45:45",
+      "changes": [
+        "ms_ability.name: \"デコイ【ユニット】\" → \"デコイ[ユニット]\""
+      ]
+    }
+  ],
+  "_fixed": true
+}

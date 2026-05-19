@@ -1,0 +1,83 @@
+{
+  "card_number": "AR03-011",
+  "card_name": "ガンダムキュリオス",
+  "series": "アーセナルレア3弾[後半]",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AR03-011.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AR03-011_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "AR03-011",
+    "type": "MS",
+    "card_label": {
+      "class": "機動",
+      "cost_label": "コスト4"
+    },
+    "name": "ガンダムキュリオス",
+    "model": "GN-003 GUNDAM KYRIOS",
+    "cost": 4,
+    "category": "ガンダム00",
+    "affiliation": "ソレスタルビーイング",
+    "pilot": "アレルヤ・ハプティズム、ハレルヤ・ハプティズム",
+    "stats": {
+      "height": "18.9m",
+      "weight": "54.8t",
+      "mobility": 360,
+      "ranged_attack": 170,
+      "melee_attack": 280,
+      "hp": 340
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "A",
+      "desert": "B",
+      "water": null
+    },
+    "weapon": {
+      "main": {
+        "name": "GNビームサーベル",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "GNビームサブマシンガン",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "トランザム[近接]",
+      "activation": "任意発動",
+      "target": "自分",
+      "range": null,
+      "cost": 4,
+      "description": "20秒間、自身の[機動力]を大アップ、[近距離攻撃力]を中アップする。"
+    },
+    "link_ability": [
+      {
+        "name": "ガンダム00",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "トランザムシステム",
+        "condition": "デッキに2枚以上",
+        "effect": "専用作戦カードが使用可能"
+      }
+    ],
+    "special_attack": {
+      "name": "シールドニードル激突",
+      "target": "単体（敵）",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3400,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "A",
+    "illustrator": "Toshiaki Takayama",
+    "raw": "機動 コスト4 MS\nGN-003 GUNDAM KYRIOS\nガンダムキュリオス\n\n全高　18.9m\n本体重量　54.8t　　　　地上 A　宇宙 A　砂漠 B\n所属　ソレスタルビーイング　　　　　　　機動力 360\nパイロット　アレルヤ・ハプティズム、ハレルヤ・ハプティズム　　遠距離攻撃 170\n　　　　　　　　　　　　　　　　　　　近距離攻撃 280\n　　　　　　　　　　　　　　　　　　　HP 340\n\nWEAPON\nMAIN　GNビームサーベル　射程 1　近距離\nSUB　GNビームサブマシンガン　射程 3　遠距離\n\nMS ABILITY\nトランザム[近接]\n任意発動　自分　射程 ー　コスト 4\n\n20秒間、自身の[機動力]を大アップ、\n[近距離攻撃力]を中アップする。\n\nLINK ABILITY\nガンダム00　デッキに3枚以上\n[機動力]小アップ\n\nトランザムシステム　デッキに2枚以上\n専用作戦カードが使用可能\n\nSPECIAL ATTACK\nシールドニードル激突\n単体（敵）　射程 2\nSPコスト 2　威力 3400\n敵単体に格闘攻撃でダメージを与える。\n\nIMPACT AREA\n（グリッド図）\n\nillust　Toshiaki Takayama\n©創通・サンライズ\nBANDAI MADE IN JAPAN\nARSENAL BASE　AR03-011　A"
+  },
+  "ocr_raw_file": "アーセナルレア3弾[後半]_AR03-011_ガンダムキュリオス_ocr_raw.json",
+  "ocr_timestamp": "2026-03-07T15:21:27.202884",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

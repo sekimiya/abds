@@ -1,0 +1,83 @@
+{
+  "card_number": "AR03-010",
+  "card_name": "デュエルガンダム",
+  "series": "アーセナルレア3弾[後半]",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AR03-010.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AR03-010_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "AR03-010",
+    "type": "MS",
+    "card_label": {
+      "class": "機動",
+      "cost_label": "コスト4"
+    },
+    "name": "デュエルガンダム",
+    "model": "GAT-X102 DUEL GUNDAM",
+    "cost": 4,
+    "category": "ガンダムSEED",
+    "affiliation": "ザフト",
+    "pilot": "イザーク・ジュール",
+    "stats": {
+      "height": "17.5m",
+      "weight": "61.9t",
+      "mobility": 300,
+      "ranged_attack": 280,
+      "melee_attack": 220,
+      "hp": 250
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "A",
+      "desert": "C",
+      "water": null
+    },
+    "weapon": {
+      "main": {
+        "name": "高エネルギービームライフル",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ビームサーベル",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "誘導",
+      "activation": "任意発動",
+      "target": "特殊(敵)",
+      "range": null,
+      "cost": 4,
+      "description": "25秒間、自身をロックオン距離内に捉えている敵ユニットのターゲットを自身に集める。"
+    },
+    "link_ability": [
+      {
+        "name": "ガンダムSEED",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "奪われし機体",
+        "condition": "デッキに2枚以上",
+        "effect": "[遠距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ゲイボルグ撃射",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3300,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "A",
+    "illustrator": "Yuto Ogura(STUDIO GS)",
+    "raw": "機動　コスト4　MS\nGAT-X102 DUEL GUNDAM\nデュエルガンダム\n\n全高　17.5m\n本体重量　61.9t\n所属　ザフト\nパイロット　イザーク・ジュール\n\n地上 A　宇宙 A　砂漠 C\n機動力 300\n遠距離攻撃 280\n近距離攻撃 220\nHP 250\n\nWEAPON\nMAIN 高エネルギービームライフル　射程 3　遠距離\nSUB ビームサーベル　射程 1　近距離\n\nMS ABILITY\n誘導\n任意発動　特殊(敵)　射程 ー　コスト 4\n25秒間、自身をロックオン距離内に捉えている敵ユニットのターゲットを自身に集める。\n\nLINK ABILITY\nガンダムSEED　デッキに3枚以上\n[機動力]小アップ\n\n奪われし機体　デッキに2枚以上\n[遠距離攻撃力]小アップ\n\nSPECIAL ATTACK\nゲイボルグ撃射\n単体(敵)　射程 3\nSPコスト 2　威力 3300\n敵単体に射撃攻撃でダメージを与える。\n\nillust Yuto Ogura(STUDIO GS)\n©創通・サンライズ\nBANDAI MADE IN JAPAN\nARSENAL BASE\nAR03-010　A"
+  },
+  "ocr_raw_file": "アーセナルレア3弾[後半]_AR03-010_デュエルガンダム_ocr_raw.json",
+  "ocr_timestamp": "2026-03-07T15:20:55.846721",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

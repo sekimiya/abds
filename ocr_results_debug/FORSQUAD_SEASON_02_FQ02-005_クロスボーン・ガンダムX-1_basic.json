@@ -1,0 +1,75 @@
+{
+  "card_number": "FQ02-005",
+  "card_name": "クロスボーン・ガンダムX-1",
+  "series": "FORSQUAD SEASON:02",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-005.jpg?v9",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-005_b.jpg?v9",
+  "ocr_data": {
+    "card_id": "FQ02-005",
+    "type": "MS",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト2"
+    },
+    "name": "クロスボーン・ガンダムX-1",
+    "model": "XM-X1 CROSSBONE GUNDAM X-1",
+    "cost": 2,
+    "category": "近距離",
+    "pilot": "キングドゥ・ナウ",
+    "stats": {
+      "height": "15.9m",
+      "weight": "9.5t",
+      "mobility": 190,
+      "ranged_attack": 80,
+      "melee_attack": 250,
+      "hp": 230
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "S",
+      "water": "B"
+    },
+    "weapon": {
+      "main": {
+        "name": "ビーム・ザンバー",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "ザンバスター",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "断砕",
+      "type": "任意発動",
+      "range": 2,
+      "cost": 3,
+      "description": "ロックオン中の敵に単体攻撃でダメージを与え、強化状態を無効化する。"
+    },
+    "link_ability": [
+      {
+        "name": "クロスボーン・ガンダム",
+        "condition": "デッキに2枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "肉薄する戦い",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][近距離攻撃力]小アップ"
+      }
+    ],
+    "impact_area": {
+      "type": "circular",
+      "radius": 1,
+      "centered": true
+    },
+    "illustrator": "Kumagoro",
+    "raw": "近距離 コスト2 XM-X1 CROSSBONE GUNDAM X-1 クロスボーン・ガンダムX-1 頭頂高 15.9m 本体重量 9.5t 所属 宇宙海賊クロスボーン・バンガード パイロット キングドゥ・ナウ 地上A 宇宙S 砂漠S 水中B 機動力 190 遠距離攻撃 80 近距離攻撃 250 HP 230 WEAPON MAIN ビーム・ザンバー 射程 1 近距離 SUB ザンバスター 射程 3 遠距離 LINK ABILITY クロスボーン・ガンダム デッキに2枚以上 [機動力]小アップ 肉薄する戦い デッキに4枚以上 [機動力][近距離攻撃力]小アップ MS ABILITY 断砕 任意発動 単体(敵) 射程 2 コスト 3 ロックオン中の敵に単体攻撃でダメージを与え、強化状態を無効化する。 SPECIAL ATTACK UNITED SP ビーム・ザンバー強撃 連携 連携 連携 単体(敵) 射程 2 射程 3100 / 威力 敵単体に格闘攻撃でダメージを与える。 /ー illust Kumagoro @赤津豊ライター BANDAI MADE IN JAPAN FQ02-005"
+  },
+  "ocr_timestamp": "2025-06-28T01:40:08.702921",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli"
+}

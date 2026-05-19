@@ -1,0 +1,89 @@
+{
+  "card_number": "VE02-017",
+  "card_name": "ガンダムデスサイズヘル",
+  "series": "WAVECHOES SEASON:02",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE02-017.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE02-017_b.jpg?v250630",
+  "ocr_engine": "claude_code_subagent",
+  "ocr_type": "basic",
+  "ocr_timestamp": "2026-04-22T20:30:00.000000",
+  "ocr_data": {
+    "card_id": "VE02-017",
+    "type": "MS",
+    "name": "ガンダムデスサイズヘル",
+    "model": "XXXG-01D2 GUNDAM DEATHSCYTHE HELL",
+    "cost": 2,
+    "category": "遠距離",
+    "affiliation": "—",
+    "pilot": "デュオ・マックスウェル",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト2"
+    },
+    "stats": {
+      "height": "16.3m",
+      "weight": "7.4t",
+      "mobility": 170,
+      "ranged_attack": 200,
+      "melee_attack": 50,
+      "hp": 230
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "C",
+      "water": "A"
+    },
+    "weapon": {
+      "main": {
+        "name": "バスターシールド",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ツインビームサイズ",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "隠密",
+      "activation": "出撃時発動",
+      "target": "自分",
+      "range": null,
+      "cost": null,
+      "description": "20秒間、敵側の表示から消えてロックオンされなくなる。効果時間が切れるか、何らかの攻撃が当たると効果が解除される。"
+    },
+    "link_ability": [
+      {
+        "name": "ガンダムW",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "的確な一撃",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][遠距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "バスターシールド撃射",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3000,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "united_sp": {
+        "name": "死神とゼロの共闘",
+        "link": ["ウイングガンダムゼロ", "—", "—"],
+        "target": "範囲(敵)",
+        "range": 3,
+        "power": 3500,
+        "description": "対象の敵を中心として格闘と範囲射撃でダメージを与える。出撃時1度のみ使用可能。"
+      },
+      "echoes_beat": null
+    },
+    "rarity": "C",
+    "raw": "遠距離 コスト2 MS XXXG-01D2 GUNDAM DEATHSCYTHE HELL ガンダムデスサイズヘル 頭頂高 16.3m 本体重量 7.4t 所属 — パイロット デュオ・マックスウェル 地上A 宇宙S 砂漠C 水中A 機動力170 遠距離攻撃200 近距離攻撃50 HP230 WEAPON MAIN バスターシールド 射程3 遠距離 SUB ツインビームサイズ 射程1 近距離 MS ABILITY 隠密 出撃時発動 自分 射程— コスト— 20秒間、敵側の表示から消えてロックオンされなくなる。効果時間が切れるか、何らかの攻撃が当たると効果が解除される。 LINK ABILITY ガンダムW デッキに3枚以上 [機動力]小アップ 的確な一撃 デッキに4枚以上 [機動力][遠距離攻撃力]小アップ SPECIAL ATTACK UNITED SP バスターシールド撃射 死神とゼロの共闘 連携 ウイングガンダムゼロ 連携 — 連携 — 単体(敵) 射程3 範囲(敵) 射程3 SPコスト2 威力 3000 / 3500 敵単体に射撃攻撃でダメージを与える。／対象の敵を中心として格闘と範囲射撃でダメージを与える。出撃時1度のみ使用可能。 IMPACT AREA VE02-017 C illust gomibako 機動戦士ガンダム ARSENAL BASE BANDAI MADE IN JAPAN"
+  }
+}

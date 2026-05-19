@@ -1,0 +1,86 @@
+{
+  "card_number": "VE01-007",
+  "card_name": "ガンダムTR-1[ヘイズル改]高機動仕様（実戦配備カラー）",
+  "series": "WAVECHOES SEASON:01",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE01-007.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE01-007_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "VE01-007",
+    "type": "MS",
+    "card_label": {
+      "class": "機動",
+      "cost_label": "コスト3"
+    },
+    "name": "ガンダムTR-1[ヘイズル改]高機動仕様(実戦配備カラー)",
+    "model": "RX-121-1 GUNDAM TR-1 [HAZEL CUSTOM] HIGH MOBILITY TYPE (COMBAT DEPLOYMENT COLORS)",
+    "cost": 3,
+    "category": "機動",
+    "affiliation": "ティターンズ",
+    "pilot": null,
+    "stats": {
+      "height": "18.1m",
+      "weight": "41.5t",
+      "mobility": 240,
+      "ranged_attack": 320,
+      "melee_attack": 70,
+      "hp": 280
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "C",
+      "water": "B"
+    },
+    "weapon": {
+      "main": {
+        "name": "ビーム・ライフル",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ビーム・サーベル",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "精密射撃",
+      "activation": "任意発動",
+      "target": "単体(敵)",
+      "range": 3,
+      "cost": 3,
+      "description": "ロックオン中の敵に単体攻撃でダメージを与える。"
+    },
+    "link_ability": [
+      {
+        "name": "ADVANCE OF Z",
+        "condition": "デッキに2枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false
+      },
+      {
+        "name": "機動で制する射撃戦",
+        "condition": "デッキに機動が2枚以上",
+        "effect": "[遠距離攻撃力]中アップ",
+        "is_eb_link": false
+      }
+    ],
+    "special_attack": {
+      "name": "ビーム・ライフル撃射",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3200,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "echoes_beat": null,
+      "united_sp": null
+    },
+    "rarity": "R",
+    "illustrator": null,
+    "raw": ""
+  },
+  "ocr_raw_file": "WAVECHOES_SEASON_01_VE01-007_ガンダムTR-1[ヘイズル改]高機動仕様（実戦配備カラー）_ocr_raw.json",
+  "ocr_timestamp": "2026-03-27T00:00:00.000000",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

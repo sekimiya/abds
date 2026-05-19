@@ -1,0 +1,83 @@
+{
+  "card_number": "UT04-013",
+  "card_name": "V2ガンダム",
+  "series": "UNITRIBE SEASON:04",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT04-013.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT04-013_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "UT04-013",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト6"
+    },
+    "name": "V2ガンダム",
+    "model": "LM314V21 VICTORY TWO GUNDAM",
+    "cost": 6,
+    "category": "遠距離",
+    "affiliation": "リガ・ミリティア",
+    "pilot": "ウッソ・エヴィン",
+    "stats": {
+      "height": "15.5m",
+      "weight": "11.5t",
+      "mobility": 250,
+      "ranged_attack": 560,
+      "melee_attack": 250,
+      "hp": 540
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "B",
+      "water": "A"
+    },
+    "weapon": {
+      "main": {
+        "name": "MPR付きビーム・ライフル",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ビーム・サーベル",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "解撃",
+      "activation": "任意発動",
+      "target": "単体(敵)",
+      "range": 3,
+      "cost": 3,
+      "description": "自身が弱体化状態の時に発動可能となり、自身の弱体化状態を無効化し、ロックオン中の敵に単体攻撃でダメージを与える。"
+    },
+    "link_ability": [
+      {
+        "name": "機動戦士Vガンダム",
+        "condition": "デッキに2枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "的確な一撃",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][遠距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "光の翼",
+      "target": "貫通(敵)",
+      "range": 4,
+      "sp_cost": 3,
+      "power": 3700,
+      "description": "射線上の敵に貫通格闘でダメージを与え、一定時間受けるダメージを大きく軽減する。",
+      "united_sp": null
+    },
+    "rarity": "U",
+    "illustrator": "Eske Yoshinob",
+    "raw": "MS\n機動戦士Vガンダム\n\n遠距離 コスト6\n\nLM314V21 VICTORY TWO GUNDAM\nV2ガンダム\n\n頭頂高 15.5m\n本体重量 11.5t\n所属 リガ・ミリティア\nパイロット ウッソ・エヴィン\n\n[アイコン:地上A] [アイコン:宇宙S] [アイコン:砂漠B] [アイコン:水中A]\n\n機動力 250\n遠距離攻撃 560\n近距離攻撃 250\nHP 540\n\nWEAPON\nMAIN MPR付きビーム・ライフル 射程 3 遠距離\nSUB ビーム・サーベル 射程 1 近距離\n\nLINK ABILITY\n機動戦士Vガンダム デッキに2枚以上\n[機動力]小アップ\n\nMS ABILITY\n解撃\n任意発動 単体(敵) 射程 3 コスト 3\n自身が弱体化状態の時に発動可能となり、自身の弱体化状態を無効化し、ロックオン中の敵に単体攻撃でダメージを与える。\n\n的確な一撃 デッキに4枚以上\n[機動力][遠距離攻撃力]小アップ\n\nSPECIAL ATTACK　　UNITED SP\n光の翼　　　　　　ー\n連携 ー　　　　　 連携 ー\n連携 ー　　　　　 連携 ー\n貫通(敵) 射程 4　 ー 射程 ー\nSPコスト 3 威力 3700 / ー\n\n射線上の敵に貫通格闘でダメージを与え、一定時間受けるダメージを大きく軽減する。/ー\n\nIMPACT AREA\n[アイコン:縦4マス貫通]\n\nillust Eske Yoshinob\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nUT04-013 U"
+  },
+  "ocr_raw_file": "UNITRIBE_SEASON_04_UT04-013_V2ガンダム_ocr_raw.json",
+  "ocr_timestamp": "2026-02-28T08:20:58.145965",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

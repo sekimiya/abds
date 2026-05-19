@@ -1,0 +1,83 @@
+{
+  "card_number": "BP06-001",
+  "card_name": "ガンダム",
+  "series": "BOOSTER PACK [DCD20th Anniversary ガンダムトライエイジ]",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP06-001.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP06-001_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "BP06-001",
+    "type": "MS",
+    "card_label": {
+      "class": "機動",
+      "cost_label": "コスト7"
+    },
+    "name": "ガンダム",
+    "model": "RX-78-2 GUNDAM",
+    "cost": 7,
+    "category": "機動",
+    "affiliation": "地球連邦軍",
+    "pilot": "アムロ・レイ",
+    "stats": {
+      "height": "18.0m",
+      "weight": "43.4t",
+      "mobility": 260,
+      "ranged_attack": 110,
+      "melee_attack": 530,
+      "hp": 500
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "A",
+      "desert": "C",
+      "water": "A"
+    },
+    "weapon": {
+      "main": {
+        "name": "ビーム・サーベル",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "ビーム・ライフル",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "陣略[妨害／機動]",
+      "activation": "任意発動",
+      "target": "範囲(敵)",
+      "range": null,
+      "cost": 4,
+      "description": "一定時間、範囲内に入った敵ユニットの[機動力]をダウンするエリアを設置する。※上限3箇所まで。"
+    },
+    "link_ability": [
+      {
+        "name": "トライエイジ",
+        "condition": "デッキに2枚以上",
+        "effect": "[HP]小アップ"
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ビーム・サーベル強撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3500,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "R",
+    "illustrator": "Hiroyuki Yamamoto",
+    "raw": "MS\n\n機動 コスト7\n\nRX-78-2 GUNDAM\nガンダム\n\n頭頂高 18.0m\n本体重量 43.4t\n所属 地球連邦軍\nパイロット アムロ・レイ\n\n地上 A 宇宙 A 砂漠 C 水中 A\n\n機動力 260\n遠距離攻撃 110\n近距離攻撃 530\nHP 500\n\nWEAPON\nMAIN ビーム・サーベル 射程 1 近距離\nSUB ビーム・ライフル 射程 3 遠距離\n\nLINK ABILITY\nトライエイジ デッキに2枚以上\n[HP]小アップ\n\n多彩な戦術 デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nMS ABILITY\n陣略[妨害／機動]\n任意発動 範囲(敵) 射程 ー コスト 4\n一定時間、範囲内に入った敵ユニットの[機動力]をダウンするエリアを設置する。\n※上限3箇所まで。\n\nSPECIAL ATTACK　　UNITED SP\nビーム・サーベル強撃　ー\n連携 ー　連携 ー\n連携 ー　連携 ー\n単体(敵)　射程 2　ー　射程 ー\nSPコスト 2　威力 3500 / ー\n\n敵単体に格闘攻撃でダメージを与える。\n/ ー\n\nIMPACT AREA\n[アイコン:×印 中央やや左]\n\nillust Hiroyuki Yamamoto\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nBP06-001 R"
+  },
+  "ocr_raw_file": "BOOSTER_PACK_[DCD20th_Anniversary_ガンダムトライエイジ]_BP06-001_ガンダム_ocr_raw.json",
+  "ocr_timestamp": "2026-02-26T17:43:00.171664",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

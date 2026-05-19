@@ -1,0 +1,99 @@
+{
+  "card_number": "UT06-001",
+  "card_name": "ドム",
+  "series": "UNITRIBE SEASON:06",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT06-001.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT06-001_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "UT06-001",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト1"
+    },
+    "name": "ドム",
+    "model": "MS-09 DOM",
+    "cost": 1,
+    "category": "遠距離",
+    "affiliation": "ジオン公国軍",
+    "pilot": "ガイア、オルテガ、マッシュ",
+    "stats": {
+      "height": "18.6m",
+      "weight": "62.6t",
+      "mobility": 150,
+      "ranged_attack": 200,
+      "melee_attack": 50,
+      "hp": 200
+    },
+    "terrain_compatibility": {
+      "ground": "S",
+      "space": "C",
+      "desert": "A",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "ジャイアント・バズ",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ヒート・サーベル",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "増援[殲滅／破甲]",
+      "activation": "任意発動",
+      "target": "特殊(自分)",
+      "range": null,
+      "cost": 5,
+      "description": "自身の周囲に殲滅タイプの味方ユニットを呼び出す。このユニットの攻撃は一定時間、被ダメージを一定値アップさせる。※上限3ユニットまで。"
+    },
+    "link_ability": [
+      {
+        "name": "機動戦士ガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ジャイアント・バズ撃射",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3100,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "united_sp": {
+        "name": "ジェット・ストリーム・アタック",
+        "partner1": "ドム",
+        "partner2": null,
+        "range": 3,
+        "power": 4900,
+        "description": "敵単体に射撃と格闘攻撃でダメージを与える。出撃時1度のみ使用可能。"
+      }
+    },
+    "rarity": "R",
+    "illustrator": "hiropon",
+    "raw": "MS\n\n遠距離　コスト1\n\nMS-09 DOM\nドム\n\n頭頂高　18.6m\n本体重量　62.6t\n所属　ジオン公国軍\nパイロット　ガイア、オルテガ、マッシュ\n\n[アイコン:地上S] [アイコン:宇宙C] [アイコン:砂漠A] [アイコン:水中C]\n\n機動力　150\n遠距離攻撃　200\n近距離攻撃　50\nHP　200\n\nWEAPON\nMAIN　ジャイアント・バズ　射程 3　遠距離\nSUB　ヒート・サーベル　射程 1　近距離\n\nLINK ABILITY\n機動戦士ガンダム　デッキに3枚以上\n[機動力]小アップ\n\nMS ABILITY\n増援[殲滅/破甲]\n任意発動　特殊(自分)　射程 —　コスト 5\n自身の周囲に殲滅タイプの味方ユニットを呼び出す。このユニットの攻撃は一定時間、被ダメージを一定値アップさせる。※上限3ユニットまで。\n\n戦況を変える力　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nSPECIAL ATTACK　　　　UNITED SP\nジャイアント・バズ撃射　ジェット・ストリーム・アタック\n連携 ドム　　　　　　　連携 ドム\n連携 —　　　　　　　　連携 —\n単体(敵)　射程 3　　　単体(敵)　射程 3\nSPコスト 2　威力 3100 / 4900\n敵単体に射撃攻撃でダメージを与える。／敵単体に射撃と格闘攻撃でダメージを与える。出撃時1度のみ使用可能。\n\nIMPACT AREA\n[アイコン:射撃着弾エリア 中央やや上・左寄り]\n\nillust hiropon\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nUT06-001　R"
+  },
+  "ocr_raw_file": "UNITRIBE_SEASON_06_UT06-001_ドム_ocr_raw.json",
+  "ocr_timestamp": "2026-02-26T17:32:18.018144",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined",
+  "_fix_history": [
+    {
+      "timestamp": "2026-03-03T23:48:42",
+      "changes": [
+        "ms_ability.name: \"増援[殲滅/破甲]\" → \"増援[殲滅／破甲]\""
+      ]
+    }
+  ],
+  "_fixed": true
+}

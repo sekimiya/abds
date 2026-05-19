@@ -1,0 +1,80 @@
+{
+  "card_number": "VEB02-010",
+  "card_name": "トライバーニングガンダム",
+  "series": "VEブースター2弾",
+  "ocr_data": {
+    "card_number": "VEB02-010",
+    "type": "MS",
+    "name": "トライバーニングガンダム",
+    "english_name": "TBG-011B TRY BURNING GUNDAM",
+    "cost": 4,
+    "category": "遠距離",
+    "rarity": "R",
+    "pilot": "カミキ・セカイ",
+    "affiliation": "トライ・ファイターズ",
+    "series_name": "ガンダムビルドファイターズトライ",
+    "stats": {
+      "mobility": 250,
+      "ranged": 310,
+      "melee": 100,
+      "hp": 340
+    },
+    "terrain_compatibility": {
+      "ground": "S",
+      "space": "A",
+      "desert": "A",
+      "water": "B"
+    },
+    "weapon": {
+      "main": {
+        "name": "次元覇王流聖槍鑓り",
+        "range": 2,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "次元覇王流星蝶旋拳",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "陣略[妨害/機動]",
+      "timing": "任意発動",
+      "target": "範囲(敵)",
+      "range": "ー",
+      "cost": 4,
+      "description": "一定時間、範囲内に入った敵ユニットの[機動力]をダウンするエリアを設置する。※上限3箇所まで。"
+    },
+    "link_ability": [
+      {
+        "name": "トライ",
+        "condition": "デッキに3枚以上",
+        "effect": "[HP]小アップ"
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "次元覇王流波動裂風拳",
+      "sp_type": "ECHOES BEAT SP",
+      "target": "貫通(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 2900,
+      "description": "射線上の敵に貫通格闘攻撃でダメージを与える。",
+      "echoes_beat": {
+        "name": "チーム:トライ・ファイターズ Lv.3",
+        "target": "範囲(敵)",
+        "range": 4,
+        "power": 4400,
+        "description": "EBLv.を3下げる。対象の敵を中心として範囲攻撃でダメージを与える。出撃時1度のみ使用可能。",
+        "level": 3
+      }
+    }
+  },
+  "ocr_engine": "claude_code_subagent",
+  "ocr_timestamp": "2026-05-15T00:00:00"
+}

@@ -1,0 +1,90 @@
+{
+  "card_number": "VE02-020",
+  "card_name": "アルトロンガンダム",
+  "series": "WAVECHOES SEASON:02",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE02-020.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE02-020_b.jpg?v250630",
+  "ocr_engine": "claude_code_subagent",
+  "ocr_type": "basic",
+  "ocr_timestamp": "2026-04-22T20:30:00.000000",
+  "ocr_data": {
+    "card_id": "VE02-020",
+    "type": "MS",
+    "name": "アルトロンガンダム",
+    "model": "XXXG-01S2 ALTRON GUNDAM",
+    "cost": 3,
+    "category": "近距離",
+    "affiliation": "—",
+    "pilot": "張 五飛",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト3"
+    },
+    "stats": {
+      "height": "16.4m",
+      "weight": "7.5t",
+      "mobility": 240,
+      "ranged_attack": 30,
+      "melee_attack": 380,
+      "hp": 400
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "C",
+      "water": "B"
+    },
+    "weapon": {
+      "main": {
+        "name": "ツインビームトライデント",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "ドラゴンハングファイヤー",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "増援[防衛]",
+      "activation": "任意発動",
+      "target": "特殊(自分)",
+      "range": null,
+      "cost": 4,
+      "description": "自身の周囲に防衛タイプの味方ユニットを呼び出す。※上限3ユニットまで。"
+    },
+    "link_ability": [
+      {
+        "name": "ガンダムW",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "肉薄する戦い",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ツインビームトライデント激突",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3500,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null,
+      "echoes_beat": {
+        "name": "ツインビームトライデント激突 Lv.1",
+        "level": 1,
+        "target": "単体(敵)",
+        "range": 2,
+        "power": 3800,
+        "description": "EBLv.を1下げる。敵単体に格闘攻撃でダメージを与え、EBLv.が3に上昇する。出撃時1度のみ使用可能。",
+        "eb_activation_note": "ECHOES BEAT Lv.を下げることで、Lv.戦術技が発動する。"
+      }
+    },
+    "rarity": "P",
+    "raw": "近距離 コスト3 MS XXXG-01S2 ALTRON GUNDAM アルトロンガンダム 頭頂高 16.4m 本体重量 7.5t 所属 — パイロット 張 五飛 地上A 宇宙S 砂漠C 水中B 機動力240 遠距離攻撃30 近距離攻撃380 HP400 WEAPON MAIN ツインビームトライデント 射程1 近距離 SUB ドラゴンハングファイヤー 射程3 遠距離 MS ABILITY 増援[防衛] 任意発動 特殊(自分) 射程— コスト4 自身の周囲に防衛タイプの味方ユニットを呼び出す。※上限3ユニットまで。 LINK ABILITY ガンダムW デッキに3枚以上 [機動力]小アップ 肉薄する戦い デッキに4枚以上 [機動力][近距離攻撃力]小アップ SPECIAL ATTACK ECHOES BEAT ツインビームトライデント激突 ツインビームトライデント激突 Lv.1 ECHOES BEAT Lv.を下げることで、Lv.戦術技が発動する。 単体(敵) 射程2 単体(敵) 射程2 SPコスト2 威力 3500 / 3800 敵単体に格闘攻撃でダメージを与える。／EBLv.を1下げる。敵単体に格闘攻撃でダメージを与え、EBLv.が3に上昇する。出撃時1度のみ使用可能。 IMPACT AREA VE02-020 P illust ZB 機動戦士ガンダム ARSENAL BASE BANDAI MADE IN JAPAN"
+  }
+}

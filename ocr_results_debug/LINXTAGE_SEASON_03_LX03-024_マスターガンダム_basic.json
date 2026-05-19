@@ -1,0 +1,83 @@
+{
+  "card_number": "LX03-024",
+  "card_name": "マスターガンダム",
+  "series": "LINXTAGE SEASON:03",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX03-024.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX03-024_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "LX03-024",
+    "type": "MS",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト4"
+    },
+    "name": "マスターガンダム",
+    "model": "GF13-001NHII MASTER GUNDAM",
+    "cost": 4,
+    "category": "Gガンダム",
+    "affiliation": "ネオホンコン",
+    "pilot": "マスター・アジア",
+    "stats": {
+      "height": "16.7m",
+      "weight": "7.2t",
+      "mobility": 200,
+      "ranged_attack": 50,
+      "melee_attack": 400,
+      "hp": 350
+    },
+    "terrain_compatibility": {
+      "ground": "S",
+      "space": "C",
+      "desert": "B",
+      "water": "B"
+    },
+    "weapon": {
+      "main": {
+        "name": "格闘",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "マスタークロス",
+        "range": 2,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "特攻",
+      "activation": "出撃時発動",
+      "target": "自分",
+      "range": null,
+      "cost": null,
+      "description": "自身の[遠／近攻撃力]をアップし[怯み無効]となるが、[回避／ガード不可][修理時間延長]となる。効果は撤退するまで持続。"
+    },
+    "link_ability": [
+      {
+        "name": "Gガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[近距離攻撃力]小アップ"
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "格闘強撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3400,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "M",
+    "illustrator": "YAMAGUCHI JUN",
+    "raw": "近距離 コスト4 MS\nGF13-001NHII MASTER GUNDAM\nマスターガンダム\n\n全高　16.7m\n本体重量　7.2t　　　　　地上 S　宇宙 C　砂漠 B　水中 B\n所属　ネオホンコン　　　　　　　　　　機動力　200\nパイロット　マスター・アジア　　　　遠距離攻撃　50\n　　　　　　　　　　　　　　　　　近距離攻撃　400\n　　　　　　　　　　　　　　　　　HP　350\n\nWEAPON\nMAIN　格闘　　射程 1　近距離\nSUB　マスタークロス　射程 2　遠距離\n\nMS ABILITY\n特攻\n出撃時発動　自分　射程 ー　コスト ー\n自身の[遠／近攻撃力]をアップし[怯み無効]となるが、[回避／ガード不可][修理時間延長]となる。効果は撤退するまで持続。\n\nLINK ABILITY\nGガンダム　デッキに3枚以上\n[近距離攻撃力]小アップ\n\n戦況を変える力　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nIMPACT AREA\n（グリッド図：射程2に○、射程1に△）\n\nSPECIAL ATTACK\n格闘強撃\n単体(敵)　射程 2\nSPコスト 2　威力 3400\n敵単体に格闘攻撃でダメージを与える。\n\nillust. YAMAGUCHI JUN\n©創通・サンライズ\nBANDAI MADE IN JAPAN　ARSENAL BASE®　LX03-024　M"
+  },
+  "ocr_raw_file": "LINXTAGE_SEASON_03_LX03-024_マスターガンダム_ocr_raw.json",
+  "ocr_timestamp": "2026-03-07T17:09:16.553242",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

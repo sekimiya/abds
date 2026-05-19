@@ -1,0 +1,83 @@
+{
+  "card_number": "FQ06-008",
+  "card_name": "メッサーF01型",
+  "series": "FORSQUAD SEASON:06",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ06-008.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ06-008_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "FQ06-008",
+    "type": "MS",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト2"
+    },
+    "name": "メッサー F01型",
+    "model": "Me02R-F01 MESSER TYPE-F01",
+    "cost": 2,
+    "category": "近距離",
+    "affiliation": "マフティー",
+    "pilot": "ガウマン・ノビル",
+    "stats": {
+      "height": "23.0m",
+      "weight": "29.1t",
+      "mobility": 230,
+      "ranged_attack": 50,
+      "melee_attack": 320,
+      "hp": 350
+    },
+    "terrain_compatibility": {
+      "ground": "S",
+      "space": "B",
+      "desert": "C",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "ビーム・サーベル",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "ロング・ビーム・ライフル",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "補給[弱体化解除]",
+      "activation": "任意発動",
+      "target": "範囲(味方)",
+      "range": null,
+      "cost": 5,
+      "description": "自身を中心とした大範囲の味方ユニットのHPを中回復し、弱体化状態を無効化する。"
+    },
+    "link_ability": [
+      {
+        "name": "閃光のハサウェイ",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "バルカン掃射突撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3400,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "P",
+    "illustrator": "yuuiguchi",
+    "raw": "MS\n\n近距離　コスト2\n\nMe02R-F01 MESSER TYPE-F01\nメッサー F01型\n\n閃光のハサウェイ\n\n頭頂高 23.0m\n本体重量 29.1t\n所属 マフティー\nパイロット ガウマン・ノビル\n\n地上 S　宇宙 B　砂漠 C　水中 C\n\n機動力 230\n遠距離攻撃 50\n近距離攻撃 320\nHP 350\n\nWEAPON\nMAIN ビーム・サーベル　射程 1　近距離\nSUB ロング・ビーム・ライフル　射程 3　遠距離\n\nLINK ABILITY\n閃光のハサウェイ　デッキに3枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\n戦況を変える力　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nMS ABILITY\n補給[弱体化解除]\n任意発動　範囲(味方)　射程 ー　コスト 5\n自身を中心とした大範囲の味方ユニットのHPを中回復し、弱体化状態を無効化する。\n\nSPECIAL ATTACK　　UNITED SP\nバルカン掃射突撃　　ー\n連携 ー　　連携 ー\n連携 ー　　連携 ー\n単体(敵)　射程 2　　ー　射程 ー\nSPコスト 2　威力 3400 / ー\n敵単体に格闘攻撃でダメージを与える。\n/ ー\n\nIMPACT AREA\n[アイコン:円形範囲・中央やや下に三角マーカー]\n\nillust yuuiguchi\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nFQ06-008　P"
+  },
+  "ocr_raw_file": "FORSQUAD_SEASON_06_FQ06-008_メッサーF01型_ocr_raw.json",
+  "ocr_timestamp": "2026-02-24T18:38:32.998400",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

@@ -1,0 +1,84 @@
+{
+  "card_number": "FQ02-039",
+  "card_name": "高機動型ザクⅡ(ジョニー・ライデン専用機)",
+  "series": "FORSQUAD SEASON:02",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-039.jpg?v9",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-039_b.jpg?v9",
+  "ocr_data": {
+    "card_id": "FQ02-039",
+    "type": "MS",
+    "card_label": {
+      "class": "機動",
+      "cost_label": "コスト3"
+    },
+    "name": "高機動型ザクII（ジョニー・ライデン専用機）",
+    "model": "MS-06R-2 ZAKUII HIGH MOBILITY TYPE",
+    "cost": 3,
+    "category": "機動",
+    "pilot": "ジョニー・ライデン",
+    "stats": {
+      "height": "18.0m",
+      "weight": "58.2t",
+      "mobility": 240,
+      "ranged_attack": 250,
+      "melee_attack": 60,
+      "hp": 310
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "C",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "ジャイアント・バズ",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ヒート・ホーク",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "圧倒",
+      "type": "単体（敵）",
+      "range": 3,
+      "cost": 3,
+      "description": "ロックオン中の敵が弱体化状態の時に発動可能となり、敵に単体攻撃でダメージを与え、その攻撃は必ずクリティカルになる。"
+    },
+    "link_ability": [
+      {
+        "name": "U.C. ENGAGE",
+        "condition": "デッキに2枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "impact_area": {
+      "type": "circular",
+      "radius": 1,
+      "centered": true
+    },
+    "illustrator": "Kouki Tajima",
+    "raw": "機動 コスト3\nMS-06R-2 ZAKUII HIGH MOBILITY TYPE\n高機動型ザクII（ジョニー・ライデン専用機）\n頭頂高 18.0m\n本体重量 58.2t\n所属 ジオン公国軍\nパイロット ジョニー・ライデン\n地上 A 宇宙 S 砂漠 C 水中 C\n機動力 240\n遠距離攻撃 250\n近距離攻撃 60\nHP 310\nWEAPON\nMAIN ジャイアント・バズ\n射程 3 遠距離\nSUB ヒート・ホーク\n射程 1 近距離\nMS ABILITY\n圧倒\n任意発動 単体（敵） 射程 3 コスト 3\nロックオン中の敵が弱体化状態の時に発動可能となり、敵に単体攻撃でダメージを与え、その攻撃は必ずクリティカルになる。\nLINK ABILITY\nU.C. ENGAGE デッキに2枚以上\n[機動力]小アップ\n多彩な機術 デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\nIMPACT AREA\nillust Kouki Tajima\nBANDAI MADE IN JAPAN"
+  },
+  "ocr_timestamp": "2025-06-28T01:48:55.544125",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli",
+  "_fix_history": [
+    {
+      "timestamp": "2026-03-03T23:45:33",
+      "changes": [
+        "link_ability.name: \"多彩な機術\" → \"多彩な戦術\""
+      ]
+    }
+  ],
+  "_fixed": true
+}

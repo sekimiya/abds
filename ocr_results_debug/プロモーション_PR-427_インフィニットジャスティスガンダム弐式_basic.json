@@ -1,0 +1,88 @@
+{
+  "card_number": "PR-427",
+  "card_name": "インフィニットジャスティスガンダム弐式",
+  "series": "プロモーション",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-427.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-427_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "PR-427",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト6"
+    },
+    "name": "インフィニットジャスティスガンダム弐式",
+    "model": "ZGMF-X19IM2 INFINITE JUSTICE GUNDAM TYPE II",
+    "cost": 6,
+    "category": "遠距離",
+    "affiliation": "ターミナル",
+    "pilot": "アスラン・ザラ, カガリ・ユラ・アスハ",
+    "stats": {
+      "height": "19.64m",
+      "weight": "78.07t",
+      "mobility": 260,
+      "ranged_attack": 450,
+      "melee_attack": 130,
+      "hp": 510
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "A",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "高エネルギービームライフル",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "アンビデクストラス・ハルバード",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "圧倒",
+      "activation": "任意発動",
+      "target": "単体(敵)",
+      "range": 3,
+      "cost": 3,
+      "description": "ロックオン中の敵が弱体化状態の時に発動可能となり、敵に単体攻撃でダメージを与え、その攻撃は必ずクリティカルになる。"
+    },
+    "link_ability": [
+      {
+        "name": "SEED FREEDOM",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "高エネルギービームライフル撃射",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3400,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "united_sp": null,
+      "eb_level": null,
+      "eb_power": null,
+      "eb_description": null,
+      "eb_target": null,
+      "eb_range": null
+    },
+    "rarity": "PR",
+    "illustrator": "ZB",
+    "raw": "MS\n\n遠距離　コスト6\n\nZGMF-X19IM2 INFINITE JUSTICE GUNDAM TYPE II\nインフィニットジャスティスガンダム弐式\n\n頭頂高　19.64m\n本体重量　78.07t\n所属　ターミナル\nパイロット　アスラン・ザラ, カガリ・ユラ・アスハ\n\n地上 A　宇宙 S　砂漠 A　水中 C\n\n機動力 260\n遠距離攻撃 450\n近距離攻撃 130\nHP 510\n\nWEAPON\nMAIN　高エネルギービームライフル　射程 3　遠距離\nSUB　アンビデクストラス・ハルバード　射程 1　近距離\n\nLINK ABILITY\nSEED FREEDOM　デッキに3枚以上\n[機動力]小アップ\n\n多彩な戦術　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nMS ABILITY\n圧倒\n任意発動　単体(敵)　射程 3　コスト 3\nロックオン中の敵が弱体化状態の時に発動可能となり、敵に単体攻撃でダメージを与え、その攻撃は必ずクリティカルになる。\n\nSPECIAL ATTACK　ECHOES BEAT\n高エネルギービームライフル撃射　ー\nー\n単体(敵)　射程 3　ー　射程 ー\nSPコスト 2　威力 3400 / ー\n敵単体に射撃攻撃でダメージを与える。\n/ー\n\nIMPACT AREA\n[アイコン:中央やや下に円形範囲]\n\nillust ZB\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nNOT FOR SALE\nPR-427　PR"
+  },
+  "ocr_raw_file": "プロモーション_PR-427_インフィニットジャスティスガンダム弐式_ocr_raw.json",
+  "ocr_timestamp": "2026-03-03T09:23:30.702816",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

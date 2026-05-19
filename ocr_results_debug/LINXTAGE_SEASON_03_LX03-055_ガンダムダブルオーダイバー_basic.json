@@ -1,0 +1,83 @@
+{
+  "card_number": "LX03-055",
+  "card_name": "ガンダムダブルオーダイバー",
+  "series": "LINXTAGE SEASON:03",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX03-055.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX03-055_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "LX03-055",
+    "type": "MS",
+    "card_label": {
+      "class": "機動",
+      "cost_label": "コスト1"
+    },
+    "name": "ガンダムダブルオーダイバー",
+    "model": "GN-0000DVR GUNDAM 00 DIVER",
+    "cost": 1,
+    "category": null,
+    "affiliation": "ビルドダイバーズ",
+    "pilot": "リク",
+    "stats": {
+      "height": "18.3m",
+      "weight": "55.5t",
+      "mobility": 140,
+      "ranged_attack": 180,
+      "melee_attack": 30,
+      "hp": 200
+    },
+    "terrain_compatibility": {
+      "ground": "S",
+      "space": "A",
+      "desert": "A",
+      "water": "B"
+    },
+    "weapon": {
+      "main": {
+        "name": "GNソードII(ライフルモード)",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "GNソードII",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "鼓舞[遠距離][弱体化解除]",
+      "activation": "任意発動",
+      "target": "範囲(味方)",
+      "range": null,
+      "cost": 6,
+      "description": "自身を中心とした大範囲内の味方ユニットの弱体化状態を無効化し、30秒間、[遠距離攻撃力]を中アップする。"
+    },
+    "link_ability": [
+      {
+        "name": "ビルドダイバーズ",
+        "condition": "デッキに3枚以上",
+        "effect": "[HP]小アップ"
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "GNソードII撃射",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3100,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "R",
+    "illustrator": "PaintedMIKE",
+    "raw": "機動　コスト1\n\nGN-0000DVR GUNDAM 00 DIVER\nガンダムダブルオーダイバー\n\n全高　18.3m\n本体重量　55.5t\n所属　ビルドダイバーズ\nパイロット　リク\n\n地上 S　宇宙 A　砂漠 A　水中 B\n\n機動力　140\n遠距離攻撃　180\n近距離攻撃　30\nHP　200\n\nWEAPON\nMAIN　GNソードII(ライフルモード)　射程 3　遠距離\nSUB　GNソードII　射程 1　近距離\n\nMS ABILITY\n鼓舞[遠距離][弱体化解除]\n任意発動　範囲(味方)　射程 ー　コスト 6\n自身を中心とした大範囲内の味方ユニットの弱体化状態を無効化し、30秒間、[遠距離攻撃力]を中アップする。\n\nLINK ABILITY\nビルドダイバーズ　デッキに3枚以上\n[HP]小アップ\n\n多彩な戦術　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nSPECIAL ATTACK\nGNソードII撃射\n単体(敵)　射程 3\nSPコスト 2　威力 3100\n敵単体に射撃攻撃でダメージを与える。\n\nillust　PaintedMIKE\n©創通・サンライズ\nBANDAI MADE IN JAPAN\nLX03-055　R"
+  },
+  "ocr_raw_file": "LINXTAGE_SEASON_03_LX03-055_ガンダムダブルオーダイバー_ocr_raw.json",
+  "ocr_timestamp": "2026-03-07T17:32:46.315908",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

@@ -1,0 +1,40 @@
+{
+  "card_number": "VEB02-017",
+  "card_name": "カミーユ・ビダン",
+  "series": "VEブースター2弾",
+  "ocr_data": {
+    "card_number": "VEB02-017",
+    "type": "PL",
+    "name": "カミーユ・ビダン",
+    "english_name": "KAMILLE BIDAN",
+    "cost": 2,
+    "category": "殲滅",
+    "rarity": "P",
+    "height": "-",
+    "age": "17歳",
+    "affiliation": "エゥーゴ",
+    "boarding_machine": "Zガンダム、ガンダムMk-II",
+    "stats": {"mobility": 200, "ranged": 60, "melee": 230, "hp": 300},
+    "pilot_skill": {
+      "name": "閃光走る電撃作戦",
+      "activation": "EBLv.2に上昇時",
+      "description": "30秒間、自身の[機動力][近距離攻撃力]をアップする。",
+      "skill_type": "EB"
+    },
+    "link_ability": [
+      {
+        "name": "宇宙に響く鼓動",
+        "condition": "デッキに3枚以上",
+        "effect": "ECHOES BEAT Lv.が表示される。味方ユニットが戦術技を発動するとEBLv.が上がる。[HP][SP威力]小アップ",
+        "is_eb_link": true
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ]
+  },
+  "ocr_engine": "claude_code_subagent",
+  "ocr_timestamp": "2026-05-15T00:00:00"
+}

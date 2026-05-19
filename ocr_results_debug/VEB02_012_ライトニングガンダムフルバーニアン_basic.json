@@ -1,0 +1,55 @@
+{
+  "card_number": "VEB02-012",
+  "card_name": "ライトニングガンダムフルバーニアン",
+  "series": "VEブースター2弾",
+  "ocr_data": {
+    "card_number": "VEB02-012",
+    "type": "MS",
+    "name": "ライトニングガンダムフルバーニアン",
+    "english_name": "LGZ-91Fb LIGHTNING GUNDAM FULL-BURNERN",
+    "cost": 5,
+    "category": "近距離",
+    "rarity": "R",
+    "pilot": "コウサカ・ユウマ",
+    "head_height": "-",
+    "weight": "-",
+    "affiliation": "トライ・ファイターズ",
+    "stats": {"mobility": 260, "ranged": 110, "melee": 410, "hp": 370},
+    "terrain_compatibility": {"ground": "A", "space": "S", "desert": "C", "water": "C"},
+    "weapon": {
+      "main": {"name": "ビームサーベル", "range": 1, "type": "近距離"},
+      "sub": {"name": "ハイビームライフル", "range": 4, "type": "遠距離"}
+    },
+    "ms_ability": {
+      "name": "威圧",
+      "timing": "任意発動",
+      "target": "範囲(敵)",
+      "range": "射程-",
+      "cost": "コスト4",
+      "description": "自身を中心とした範囲内の敵ユニットをスタンさせ、一定時間被ダメージを少しアップする。"
+    },
+    "link_ability": [
+      {
+        "name": "トライ",
+        "condition": "デッキに3枚以上",
+        "effect": "[HP]小アップ"
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ビームサーベル強撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3400,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "echoes_beat": null
+    }
+  },
+  "ocr_engine": "claude_code_subagent",
+  "ocr_timestamp": "2026-05-15T00:00:00"
+}

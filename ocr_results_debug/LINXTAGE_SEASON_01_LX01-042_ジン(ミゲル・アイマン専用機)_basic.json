@@ -1,0 +1,83 @@
+{
+  "card_number": "LX01-042",
+  "card_name": "ジン(ミゲル・アイマン専用機)",
+  "series": "LINXTAGE SEASON:01",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX01-042.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX01-042_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "LX01-042",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト2"
+    },
+    "name": "ジン（ミゲル・アイマン専用機）",
+    "model": "ZGMF-1017 MIGUEL'S GINN",
+    "cost": 2,
+    "category": "遠距離",
+    "affiliation": "ザフト",
+    "pilot": "ミゲル・アイマン",
+    "stats": {
+      "height": "21.43m",
+      "weight": "78.5t",
+      "mobility": 260,
+      "ranged_attack": 280,
+      "melee_attack": 90,
+      "hp": 220
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "A",
+      "desert": "B",
+      "water": null
+    },
+    "weapon": {
+      "main": {
+        "name": "バルルス改・特火重粒子砲",
+        "range": 4,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "76mm重突撃機銃",
+        "range": 2,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "増援[殲滅／砲撃]",
+      "activation": "任意発動",
+      "target": "特殊(自分)",
+      "range": null,
+      "cost": 4,
+      "description": "自身の周囲に砲撃を行う殲滅タイプの味方ユニットを呼び出す。このユニットは移動しない。※上限3ユニットまで。"
+    },
+    "link_ability": [
+      {
+        "name": "ガンダムSEED",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "バルルス改・特火重粒子砲撃射",
+      "target": "単体(敵)",
+      "range": 4,
+      "sp_cost": 2,
+      "power": 3100,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "M",
+    "illustrator": "PLANETA_Igarashi",
+    "raw": "MS\n\n遠距離　コスト2\n\nZGMF-1017 MIGUEL'S GINN\n\nジン（ミゲル・アイマン専用機）\n\n全高　21.43m\n本体重量　78.5t\n所属　ザフト\nパイロット　ミゲル・アイマン\n\n地上　A　宇宙　A　砂漠　B\n機動力　260\n遠距離攻撃　280\n近距離攻撃　90\nHP　220\n\nWEAPON\nMAIN　バルルス改・特火重粒子砲　射程 4　遠距離\nSUB　76mm重突撃機銃　射程 2　近距離\n\nLINK ABILITY\nガンダムSEED　デッキに3枚以上\n[機動力]小アップ\n\n戦況を変える力　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]\n小アップ\n\nMS ABILITY\n増援[殲滅／砲撃]\n任意発動　特殊(自分)　射程 ー　コスト 4\n自身の周囲に砲撃を行う殲滅タイプの味方ユニットを呼び出す。このユニットは移動しない。※上限3ユニットまで。\n\nSPECIAL ATTACK\nバルルス改・特火重粒子砲撃射\n単体(敵)　射程 4\nSPコスト 2　威力　3100\n敵単体に射撃攻撃でダメージを与える。\n\n[アイコン:IMPACT AREA 4×4グリッド 中央下寄りに三角マーカー]\n\nillust PLANETA_Igarashi\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nLX01-042　M"
+  },
+  "ocr_raw_file": "LINXTAGE_SEASON_01_LX01-042_ジン(ミゲル・アイマン専用機)_ocr_raw.json",
+  "ocr_timestamp": "2026-03-02T07:24:32.983211",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

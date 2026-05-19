@@ -1,0 +1,83 @@
+{
+  "card_number": "UT01-029",
+  "card_name": "ゲルググメナース(ルナマリア・ホーク専用機)",
+  "series": "UNITRIBE SEASON:01",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT01-029.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT01-029_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "UT01-029",
+    "type": "MS",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト3"
+    },
+    "name": "ゲルググメナース(ルナマリア・ホーク専用機)",
+    "model": "ZGMF-2025/F GELGOOG MENACE[LUNAMARIA HAWKE CUSTOM]",
+    "cost": 3,
+    "category": "近距離",
+    "affiliation": "コンパス",
+    "pilot": "ルナマリア・ホーク",
+    "stats": {
+      "height": "19.50m",
+      "weight": "73.51t",
+      "mobility": 200,
+      "ranged_attack": 80,
+      "melee_attack": 230,
+      "hp": 190
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "C",
+      "desert": "A",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "マグヌスグラティウス 特斬槍",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "強化ビームライフル",
+        "range": 4,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "妨害[防御]",
+      "activation": "出撃時発動",
+      "target": "範囲(敵)",
+      "range": null,
+      "cost": null,
+      "description": "20秒間、自身を中心とした大範囲内の敵ユニットの被ダメージを少しアップする。"
+    },
+    "link_ability": [
+      {
+        "name": "SEED FREEDOM",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "マグヌスグラティウス 特斬槍強撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3300,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "R",
+    "illustrator": "Robographer",
+    "raw": "MS\n\n近距離　コスト3\n\nZGMF-2025/F GELGOOG MENACE[LUNAMARIA HAWKE CUSTOM]\nゲルググメナース(ルナマリア・ホーク専用機)\n\n全高　19.50m\n本体重量　73.51t\n所属　コンパス\nパイロット　ルナマリア・ホーク\n\n地上 A　宇宙 C　砂漠 A　水中 C\n\n機動力 200\n遠距離攻撃 80\n近距離攻撃 230\nHP 190\n\nWEAPON\nMAIN　マグヌスグラティウス 特斬槍　射程 1　近距離\nSUB　強化ビームライフル　射程 4　遠距離\n\nLINK ABILITY\nSEED FREEDOM　デッキに3枚以上\n[機動力]小アップ\n\n多彩な戦術　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nMS ABILITY\n妨害[防御]\n出撃時発動　範囲(敵)　射程ー　コストー\n20秒間、自身を中心とした大範囲内の敵ユニットの被ダメージを少しアップする。\n\nSPECIAL ATTACK　　UNITED SP\nマグヌスグラティウス 特斬槍強撃　ー\n連携 ー　連携 ー\n連携 ー　連携 ー\n単体(敵)　射程 2　ー　射程 ー\nSPコスト 2　威力 3300 / ー\n敵単体に格闘攻撃でダメージを与える。\n/ ー\n\nIMPACT AREA\n[アイコン:中央やや上に黄色円形範囲]\n\nillust Robographer\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nUT01-029　R"
+  },
+  "ocr_raw_file": "UNITRIBE_SEASON_01_UT01-029_ゲルググメナース(ルナマリア・ホーク専用機)_ocr_raw.json",
+  "ocr_timestamp": "2026-03-02T03:19:08.246406",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

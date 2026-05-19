@@ -1,0 +1,83 @@
+{
+  "card_number": "AB02-037",
+  "card_name": "ガンダムキュリオス",
+  "series": "SEASON:02",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB02-037.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB02-037_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "AB02-037",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト4"
+    },
+    "name": "ガンダムキュリオス",
+    "model": "GN-003 GUNDAM KYRIOS",
+    "cost": 4,
+    "category": "遠距離",
+    "affiliation": "ソレスタルビーイング",
+    "pilot": "アレルヤ・ハプティズム",
+    "stats": {
+      "height": "18.9m",
+      "weight": "54.8t",
+      "mobility": 110,
+      "ranged_attack": 180,
+      "melee_attack": 90,
+      "hp": 110
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "A",
+      "desert": "B",
+      "water": null
+    },
+    "weapon": {
+      "main": {
+        "name": "GNハンドミサイル",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "GNビームサーベル",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "トランザム[遠距離]",
+      "activation": "任意発動",
+      "target": "自分",
+      "range": null,
+      "cost": 4,
+      "description": "20秒間、自身の[機動力]を大アップ、[遠距離攻撃力]を中アップする。"
+    },
+    "link_ability": [
+      {
+        "name": "ガンダム00",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "トランザムシステム",
+        "condition": "デッキに2枚以上",
+        "effect": "専用作戦カードが使用可能"
+      }
+    ],
+    "special_attack": {
+      "name": "GNハンドミサイル斉射",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3100,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "C",
+    "illustrator": "PLANETA_Yamashita",
+    "raw": "MS\n\n遠距離 コスト4\nGN-003 GUNDAM KYRIOS\nガンダムキュリオス\n\n全高 18.9m\n本体重量 54.8t\n所属 ソレスタルビーイング\nパイロット アレルヤ・ハプティズム\n\n地上 A 宇宙 A 砂漠 B\n機動力 110\n遠距離攻撃 180\n近距離攻撃 90\nHP 110\n\nWEAPON\nMAIN GNハンドミサイル 射程 3 遠距離\nSUB GNビームサーベル 射程 1 近距離\n\nLINK ABILITY\nガンダム00 デッキに3枚以上\n[機動力]小アップ\n\nMS ABILITY\nトランザム[遠距離]\n任意発動 自分 射程 — コスト 4\n20秒間、自身の[機動力]を大アップ、\n[遠距離攻撃力]を中アップする。\n\nトランザムシステム デッキに2枚以上\n専用作戦カードが使用可能\n\nSPECIAL ATTACK\nGNハンドミサイル斉射\n単体(敵) 射程 3\nSPコスト 2 威力 3100\n敵単体に射撃攻撃でダメージを与える。\n\nIMPACT AREA\n[アイコン:黄緑丸 中央やや上]\n[アイコン:黄三角 中央下]\n\nillust PLANETA_Yamashita\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nAB02-037 C"
+  },
+  "ocr_raw_file": "SEASON_02_AB02-037_ガンダムキュリオス_ocr_raw.json",
+  "ocr_timestamp": "2026-02-23T15:09:40.782750",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli"
+}

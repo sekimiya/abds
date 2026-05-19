@@ -1,0 +1,83 @@
+{
+  "card_number": "UT05-036",
+  "card_name": "ガンダム・シュバルゼッテ",
+  "series": "UNITRIBE SEASON:05",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT05-036.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT05-036_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "UT05-036",
+    "type": "MS",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト6"
+    },
+    "name": "ガンダム・シュバルゼッテ",
+    "model": "MDX-0003 GUNDAM SCHWARZETTE",
+    "cost": 6,
+    "category": "近距離",
+    "affiliation": "ジェターク・ヘビー・マシーナリー",
+    "pilot": "ラウダ・ニール",
+    "stats": {
+      "height": "18.7m",
+      "weight": "73.3t",
+      "mobility": 200,
+      "ranged_attack": 90,
+      "melee_attack": 640,
+      "hp": 520
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "C",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "ガーディアン・シース",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "ガーディアン・シース(射撃)",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "特攻",
+      "activation": "出撃時発動",
+      "target": "自分",
+      "range": null,
+      "cost": null,
+      "description": "自身の[遠／近攻撃力]をアップし[怯み無効]となるが、[回避／ガード不可][修理時間延長]となる。効果は撤退するまで持続。"
+    },
+    "link_ability": [
+      {
+        "name": "水星の魔女",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "肉薄する戦い",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ビームブレイド突撃",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3600,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "U",
+    "illustrator": "ToMo",
+    "raw": "近距離 コスト6\n\nMS\n\nMDX-0003 GUNDAM SCHWARZETTE\nガンダム・シュバルゼッテ\n\n水星の魔女\n\n頭頂高 18.7m\n本体重量 73.3t\n所属 ジェターク・ヘビー・マシーナリー\nパイロット ラウダ・ニール\n\n地上 A 宇宙 S 砂漠 C 水中 C\n\n機動力 200\n遠距離攻撃 90\n近距離攻撃 640\nHP 520\n\nWEAPON\nMAIN ガーディアン・シース 射程 1 近距離\nSUB ガーディアン・シース(射撃) 射程 3 遠距離\n\nLINK ABILITY\n水星の魔女 デッキに3枚以上\n[機動力]小アップ\n\n肉薄する戦い デッキに4枚以上\n[機動力][近距離攻撃力]小アップ\n\nMS ABILITY\n特攻\n出撃時発動 自分 射程 ー コスト ー\n自身の[遠／近攻撃力]をアップし[怯み無効]となるが、[回避／ガード不可][修理時間延長]となる。効果は撤退するまで持続。\n\nSPECIAL ATTACK　　UNITED SP\nビームブレイド突撃　　ー\n連携 ー　　連携 ー\n連携 ー　　連携 ー\n単体(敵) 射程 3　　ー 射程 ー\nSPコスト 2 威力 3600 / ー\n敵単体に格闘攻撃でダメージを与える。\n/ ー\n\nIMPACT AREA\n[アイコン:緑丸 中央]\n[アイコン:黄三角 下中央（自機位置）]\n\nillust ToMo\n©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nUT05-036 U"
+  },
+  "ocr_raw_file": "UNITRIBE_SEASON_05_UT05-036_ガンダム・シュバルゼッテ_ocr_raw.json",
+  "ocr_timestamp": "2026-02-26T19:38:58.263329",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

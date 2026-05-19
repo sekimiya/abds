@@ -1,0 +1,83 @@
+{
+  "card_number": "AB02-027",
+  "card_name": "ガンダムデルタカイ",
+  "series": "SEASON:02",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB02-027.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB02-027_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "AB02-027",
+    "type": "MS",
+    "card_label": {
+      "class": "機動",
+      "cost_label": "コスト5"
+    },
+    "name": "ガンダムデルタカイ",
+    "model": "MSN-001X GUNDAM DELTA KAI",
+    "cost": 5,
+    "category": "機動",
+    "affiliation": "地球連邦軍",
+    "pilot": "ブレイア・リュード",
+    "stats": {
+      "height": "19.6m",
+      "weight": "28.0t",
+      "mobility": 260,
+      "ranged_attack": 120,
+      "melee_attack": 180,
+      "hp": 180
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "A",
+      "desert": "C",
+      "water": null
+    },
+    "weapon": {
+      "main": {
+        "name": "ビーム・サーベル",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "ロング・メガ・バスター",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "強化[近距離]",
+      "activation": "任意発動",
+      "target": "自分",
+      "range": null,
+      "cost": 3,
+      "description": "30秒間、自身の[近距離攻撃力]を小アップする。"
+    },
+    "link_ability": [
+      {
+        "name": "アクロス・ザ・スカイ",
+        "condition": "デッキに2枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "可変機ファイター",
+        "condition": "デッキに3枚以上",
+        "effect": "専用作戦カードが使用可能"
+      }
+    ],
+    "special_attack": {
+      "name": "ビーム・サーベル強撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3300,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "C",
+    "illustrator": "kazumasa yasukuni",
+    "raw": "MS\n\n機動　コスト5\n\nMSN-001X GUNDAM DELTA KAI\nガンダムデルタカイ\n\n全高　19.6m\n本体重量　28.0t\n所属　地球連邦軍\nパイロット　ブレイア・リュード\n\n地上 A　宇宙 A　砂漠 C\n機動力 260\n遠距離攻撃 120\n近距離攻撃 180\nHP 180\n\nWEAPON\nMAIN ビーム・サーベル　射程 1　近距離\nSUB ロング・メガ・バスター　射程 3　遠距離\n\nLINK ABILITY\nアクロス・ザ・スカイ　デッキに2枚以上\n[機動力]小アップ\n\n可変機ファイター　デッキに3枚以上\n専用作戦カードが使用可能\n\nMS ABILITY\n強化[近距離]\n任意発動　自分　射程 ─　コスト 3\n\n30秒間、自身の[近距離攻撃力]を小アップする。\n\nSPECIAL ATTACK\nビーム・サーベル強撃\n単体(敵)　射程 2\nSPコスト 2　威力 3300\n\n敵単体に格闘攻撃でダメージを与える。\n\nIMPACT AREA\n[アイコン:緑丸 中央やや上]\n[アイコン:黄三角 中央下]\n\nillust kazumasa yasukuni\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n\n機動戦士ガンダム U.C.0094 アクロス・ザ・スカイ [アイコン:↓]\n\n機動戦士ガンダム ARSENAL BASE®\n\nAB02-027　C"
+  },
+  "ocr_raw_file": "SEASON_02_AB02-027_ガンダムデルタカイ_ocr_raw.json",
+  "ocr_timestamp": "2026-02-23T15:08:55.429675",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli"
+}

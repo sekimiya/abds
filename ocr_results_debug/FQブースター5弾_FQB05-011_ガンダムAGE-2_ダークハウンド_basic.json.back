@@ -1,0 +1,83 @@
+{
+  "card_number": "FQB05-011",
+  "card_name": "ガンダムAGE-2 ダークハウンド",
+  "series": "FQブースター5弾",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQB05-011.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQB05-011_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "FQB05-011",
+    "type": "MS",
+    "card_label": {
+      "class": "機動",
+      "cost_label": "コスト3"
+    },
+    "name": "ガンダムAGE-2 ダークハウンド",
+    "model": "AGE-2DH GUNDAM AGE-2 DARK HOUND",
+    "cost": 3,
+    "category": "機動",
+    "affiliation": "宇宙海賊ビシディアン",
+    "pilot": "キャプテン・アッシュ",
+    "stats": {
+      "height": "18.6m",
+      "weight": "32.1t",
+      "mobility": 230,
+      "ranged_attack": 210,
+      "melee_attack": 30,
+      "hp": 330
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "B",
+      "water": "B"
+    },
+    "weapon": {
+      "main": {
+        "name": "ドッズガン",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ドッズランサー",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "誘導",
+      "activation": "任意発動",
+      "target": "特殊(敵)",
+      "range": null,
+      "cost": 4,
+      "description": "25秒間、自身をロックオン距離内に捉えている敵ユニットのターゲットを自身に集める。"
+    },
+    "link_ability": [
+      {
+        "name": "ガンダムAGE",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力] [近距離攻撃力] 小アップ"
+      },
+      {
+        "name": "戦況を変えろ",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力] [近距離攻撃力] 小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ドッズガン撃射",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3200,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "R",
+    "illustrator": "gomibako",
+    "raw": "MS\n\n機動 コスト3\n\nAGE-2DH GUNDAM AGE-2 DARK HOUND\nガンダムAGE-2 ダークハウンド\n\n頭頂高 18.6m\n本体重量 32.1t\n\n地上 A 宇宙 S 砂漠 B 水中 B\n\n所属 宇宙海賊ビシディアン\nパイロット キャプテン・アッシュ\n\n機動力 230\n遠距離攻撃 210\n近距離攻撃 30\nHP 330\n\nWEAPON\nMAIN ドッズガン 射程 3 遠距離\nSUB ドッズランサー 射程 1 近距離\n\nLINK ABILITY\nガンダムAGE デッキに3枚以上\n[遠距離攻撃力] [近距離攻撃力] 小アップ\n\n戦況を変えろ デッキに4枚以上\n[遠距離攻撃力] [近距離攻撃力] 小アップ\n\nMS ABILITY\n誘導\n任意発動 特殊(敵) 射程 ー コスト 4\n25秒間、自身をロックオン距離内に捉えている敵ユニットのターゲットを自身に集める。\n\nSPECIAL ATTACK        UNITED SP\nドッズガン撃射         ー\n連携 ー               連携 ー\n連携 ー               連携 ー\n単体(敵) 射程 3       射程 ー\nSPコスト 2 威力 3200 / ー\n敵単体に射撃攻撃でダメージを与える。\n/ ー\n\nIMPACT AREA\n[アイコン:黄丸 中央やや左]\n[アイコン:黄三角 中央下]\n\nillust gomibako\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nFQB05-011 R"
+  },
+  "ocr_raw_file": "FQブースター5弾_FQB05-011_ガンダムAGE-2_ダークハウンド_ocr_raw.json",
+  "ocr_timestamp": "2026-02-28T05:06:15.640583",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

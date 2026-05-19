@@ -1,0 +1,83 @@
+{
+  "card_number": "UT03-005",
+  "card_name": "アトラスガンダム",
+  "series": "UNITRIBE SEASON:03",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT03-005.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT03-005_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "UT03-005",
+    "type": "MS",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト1"
+    },
+    "name": "アトラスガンダム",
+    "model": "RX-78AL ATLAS GUNDAM",
+    "cost": 1,
+    "category": "近距離",
+    "affiliation": "地球連邦軍",
+    "pilot": "イオ・フレミング",
+    "stats": {
+      "height": null,
+      "weight": null,
+      "mobility": 170,
+      "ranged_attack": 40,
+      "melee_attack": 220,
+      "hp": 170
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "B",
+      "desert": "C",
+      "water": "S"
+    },
+    "weapon": {
+      "main": {
+        "name": "ビーム・サーベル",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "レールガン",
+        "range": 4,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "縛撃",
+      "activation": "任意発動",
+      "target": "単体(敵)",
+      "range": 1,
+      "cost": 3,
+      "description": "ロックオン中の敵ユニットに単体攻撃を行いダメージを与え、一定時間スタンさせる。"
+    },
+    "link_ability": [
+      {
+        "name": "サンダーボルト",
+        "condition": "デッキに2枚以上",
+        "effect": "[遠距離攻撃力]小アップ"
+      },
+      {
+        "name": "追撃の近距離戦",
+        "condition": "デッキに近距離が2枚以上",
+        "effect": "[近距離攻撃力]中アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ビーム・サーベル強撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3200,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "R",
+    "illustrator": "robomisutya",
+    "raw": "MS\n\n近距離 コスト1\n\nRX-78AL ATLAS GUNDAM\nアトラスガンダム\n\n[アイコン:MOBILE SUIT GUNDAM THUNDERBOLT]\n[アイコン:地上適性]\n\n頭頂高 ー\n本体重量 ー\n所属 地球連邦軍\nパイロット イオ・フレミング\n\n地上 A 宇宙 B 砂漠 C 水中 S\n機動力 170\n遠距離攻撃 40\n近距離攻撃 220\nHP 170\n\nWEAPON\nMAIN ビーム・サーベル 射程 1 近距離\nSUB レールガン 射程 4 遠距離\n\nLINK ABILITY\nサンダーボルト デッキに2枚以上\n[遠距離攻撃力]小アップ\n\n追撃の近距離戦 デッキに近距離が2枚以上\n[近距離攻撃力]中アップ\n\nMS ABILITY\n縛撃\n任意発動 単体(敵) 射程 1 コスト 3\nロックオン中の敵ユニットに単体攻撃を行いダメージを与え、一定時間スタンさせる。\n\nSPECIAL ATTACK　　UNITED SP\nビーム・サーベル強撃　ー\n連携 ー　連携 ー\n連携 ー　連携 ー\n単体(敵) 射程 2　ー 射程 ー\nSPコスト 2 威力 3200 / ー\n敵単体に格闘攻撃でダメージを与える。\n/ ー\n\nIMPACT AREA\n[グリッド5x5: 中央下に▲(自機), 中央左に●, 中央右下に●]\n\nillust robomisutya\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nUT03-005 R"
+  },
+  "ocr_raw_file": "UNITRIBE_SEASON_03_UT03-005_アトラスガンダム_ocr_raw.json",
+  "ocr_timestamp": "2026-02-26T17:10:57.884366",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

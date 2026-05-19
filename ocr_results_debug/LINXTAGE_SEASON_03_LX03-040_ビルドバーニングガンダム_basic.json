@@ -1,0 +1,83 @@
+{
+  "card_number": "LX03-040",
+  "card_name": "ビルドバーニングガンダム",
+  "series": "LINXTAGE SEASON:03",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX03-040.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX03-040_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "LX03-040",
+    "type": "MS",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト6"
+    },
+    "name": "ビルドバーニングガンダム",
+    "model": "BG-011B BUILD BURNING GUNDAM",
+    "cost": 6,
+    "category": null,
+    "affiliation": "トライ・ファイターズ",
+    "pilot": "カミキ・セカイ",
+    "stats": {
+      "height": "18.0m",
+      "weight": "78.3t",
+      "mobility": 270,
+      "ranged_attack": 100,
+      "melee_attack": 550,
+      "hp": 480
+    },
+    "terrain_compatibility": {
+      "ground": "S",
+      "space": "B",
+      "desert": "A",
+      "water": "B"
+    },
+    "weapon": {
+      "main": {
+        "name": "次元覇王流聖拳突き",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "次元覇王流槍縫り",
+        "range": 2,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "奮起",
+      "activation": "出撃時発動",
+      "target": "自分",
+      "range": null,
+      "cost": null,
+      "description": "自身のHPが1以上で一定割合以下になると、一定時間、撃破されなくなり[遠／近攻撃力]を中アップする。出撃時1度のみ発動。"
+    },
+    "link_ability": [
+      {
+        "name": "トライ",
+        "condition": "デッキに3枚以上",
+        "effect": "[HP]小アップ"
+      },
+      {
+        "name": "迫撃の近距離戦",
+        "condition": "デッキに近距離が2枚以上",
+        "effect": "[近距離攻撃力]中アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "鳳凰覇王拳",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3900,
+      "description": "敵単体に射撃攻撃でダメージを与え、自身に小ダメージ。",
+      "united_sp": null
+    },
+    "rarity": "P",
+    "illustrator": "Naochika Morishita",
+    "raw": "近距離　コスト6　MS\nBG-011B BUILD BURNING GUNDAM\nビルドバーニングガンダム\n\n全高　18.0m\n本体重量　78.3t\n所属　トライ・ファイターズ\nパイロット　カミキ・セカイ\n\n地上 S　宇宙 B　砂漠 A　水中 B\n機動力 270\n遠距離攻撃 100\n近距離攻撃 550\nHP 480\n\nWEAPON\nMAIN　次元覇王流聖拳突き　射程 1　近距離\nSUB　次元覇王流槍縫り　射程 2　遠距離\n\nMS ABILITY\n奮起\n出撃時発動　自分　射程 ―　コスト ―\n自身のHPが1以上で一定割合以下になると、一定時間、撃破されなくなり[遠/近攻撃力]を中アップする。出撃時1度のみ発動。\n\nLINK ABILITY\nトライ　デッキに3枚以上\n[HP]小アップ\n\n迫撃の近距離戦　デッキに近距離が2枚以上\n[近距離攻撃力]中アップ\n\nSPECIAL ATTACK\n鳳凰覇王拳\n単体(敵)　射程 3\nSPコスト 2　威力 3900\n敵単体に射撃攻撃でダメージを与え、自身に小ダメージ。\n\nillust Naochika Morishita\n©創通・サンライズ\nBANDAI MADE IN JAPAN\nLX03-040　P"
+  },
+  "ocr_raw_file": "LINXTAGE_SEASON_03_LX03-040_ビルドバーニングガンダム_ocr_raw.json",
+  "ocr_timestamp": "2026-03-07T17:21:32.140302",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

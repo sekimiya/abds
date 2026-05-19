@@ -1,0 +1,92 @@
+{
+  "card_number": "FQ05-029",
+  "card_name": "ガンダム・エアリアル[パーメットスコア・シックス]",
+  "series": "FORSQUAD SEASON:05",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ05-029.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ05-029_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "FQ05-029",
+    "type": "MS",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト3"
+    },
+    "name": "ガンダム・エアリアル[パーメットスコア・シックス]",
+    "model": "XVX-016 GUNDAM AERIAL[PERMET SCORE SIX]",
+    "cost": 3,
+    "category": "近距離",
+    "affiliation": "シン・セー開発公社",
+    "pilot": "スレッタ・マーキュリー",
+    "stats": {
+      "height": "18.0m",
+      "weight": "43.9t",
+      "mobility": 220,
+      "ranged_attack": 60,
+      "melee_attack": 320,
+      "hp": 300
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "A",
+      "desert": "C",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "ビームブレイド",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "ガンビット",
+        "range": 4,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "増援[殲滅／貫通]",
+      "activation": "任意発動",
+      "target": "特殊(自分)",
+      "range": null,
+      "cost": 4,
+      "description": "自身の周囲に貫通射撃を行う殲滅タイプの味方ユニットを呼び出す。このユニットは移動しない。※上限3ユニットまで。"
+    },
+    "link_ability": [
+      {
+        "name": "水星の魔女",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "肉薄する戦い",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ビームブレイド強撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3300,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "R",
+    "illustrator": "ilshima060123",
+    "raw": "MS\n\n近距離　コスト3\n\nXVX-016 GUNDAM AERIAL[PERMET SCORE SIX]\n\nガンダム・エアリアル[パーメットスコア・シックス]\n\n[アイコン:水星の魔女]\n\n頭頂高　18.0m\n本体重量　43.9t\n\n地上 A　宇宙 A　砂漠 C　水中 C\n\n所属　シン・セー開発公社\nパイロット　スレッタ・マーキュリー\n\n機動力 220\n遠距離攻撃 60\n近距離攻撃 320\nHP 300\n\nWEAPON\nMAIN ビームブレイド　射程 1　近距離\nSUB ガンビット　射程 4　遠距離\n\nLINK ABILITY\n水星の魔女　デッキに3枚以上\n[機動力]小アップ\n\n肉薄する戦い　デッキに4枚以上\n[機動力][近距離攻撃力]小アップ\n\nMS ABILITY\n増援[殲滅/貫通]\n任意発動　特殊(自分)　射程 ー　コスト 4\n自身の周囲に貫通射撃を行う殲滅タイプの味方ユニットを呼び出す。このユニットは移動しない。※上限3ユニットまで。\n\nSPECIAL ATTACK　　UNITED SP\nビームブレイド強撃　　ー\n連携 ー　　連携 ー\n連携 ー　　連携 ー\n単体(敵)　射程 2　　ー　射程 ー\nSPコスト 2　威力 3300 / ー\n敵単体に格闘攻撃でダメージを与える。\n/ ー\n\nIMPACT AREA\n[アイコン:緑丸 中央やや左]\n[アイコン:黄三角 中央下]\n\nillust ilshima060123\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nFQ05-029　R"
+  },
+  "ocr_raw_file": "FORSQUAD_SEASON_05_FQ05-029_ガンダム・エアリアル[パーメットスコア・シックス]_ocr_raw.json",
+  "ocr_timestamp": "2026-02-24T18:29:02.055043",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined",
+  "_fix_history": [
+    {
+      "timestamp": "2026-03-03T23:47:29",
+      "changes": [
+        "ms_ability.name: \"増援[殲滅/貫通]\" → \"増援[殲滅／貫通]\""
+      ]
+    }
+  ],
+  "_fixed": true
+}

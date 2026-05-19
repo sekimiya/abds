@@ -1,0 +1,83 @@
+{
+  "card_number": "FQB05-014",
+  "card_name": "ミカエリス",
+  "series": "FQブースター5弾",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQB05-014.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQB05-014_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "FQB05-014",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト3"
+    },
+    "name": "ミカエリス",
+    "model": "CFK-029 MICHAELIS",
+    "cost": 3,
+    "category": "遠距離",
+    "affiliation": "グラスレー・ディフェンス・システムズ",
+    "pilot": "シャディク・ゼネリ",
+    "stats": {
+      "height": "20.3m",
+      "weight": "68.8t",
+      "mobility": 220,
+      "ranged_attack": 310,
+      "melee_attack": 90,
+      "hp": 330
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "A",
+      "desert": "C",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "大型ビームガン",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ビームサーベル",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "鼓舞[遠距離][弱体化解除]",
+      "activation": "任意発動",
+      "target": "範囲(味方)",
+      "range": null,
+      "cost": 6,
+      "description": "自身を中心とした大範囲内の味方ユニットの弱体化状態を無効化し、30秒間、[遠距離攻撃力]を中アップする。"
+    },
+    "link_ability": [
+      {
+        "name": "水星の魔女",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "的確な一撃",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][遠距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "大型ビームガン貫通射撃",
+      "target": "貫通(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3000,
+      "description": "射線上の敵に貫通射撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "M",
+    "illustrator": "ZB",
+    "raw": "MS\n\n遠距離　コスト3\n\nCFK-029 MICHAELIS\nミカエリス\n\n水星の魔女\n\n頭頂高　20.3m\n本体重量　68.8t\n所属　グラスレー・ディフェンス・システムズ\nパイロット　シャディク・ゼネリ\n\n地上 A　宇宙 A　砂漠 C　水中 C\n\n機動力 220\n遠距離攻撃 310\n近距離攻撃 90\nHP 330\n\nWEAPON\nMAIN　大型ビームガン　射程 3　遠距離\nSUB　ビームサーベル　射程 1　近距離\n\nLINK ABILITY\n水星の魔女　デッキに3枚以上\n[機動力]小アップ\n\n的確な一撃　デッキに4枚以上\n[機動力][遠距離攻撃力]小アップ\n\nMS ABILITY\n鼓舞[遠距離][弱体化解除]\n任意発動　範囲(味方)　射程ー　コスト 6\n自身を中心とした大範囲内の味方ユニットの弱体化状態を無効化し、30秒間、[遠距離攻撃力]を中アップする。\n\nSPECIAL ATTACK　　UNITED SP\n大型ビームガン貫通射撃　ー\n連携 ー　連携 ー\n連携 ー　連携 ー\n貫通(敵)　射程 3　ー　射程 ー\nSPコスト 2　威力 3000 / ー\n射線上の敵に貫通射撃でダメージを与える。/ー\n\nIMPACT AREA\n[アイコン:貫通型・前方直線]\n\nillust ZB\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nFQB05-014　M"
+  },
+  "ocr_raw_file": "FQブースター5弾_FQB05-014_ミカエリス_ocr_raw.json",
+  "ocr_timestamp": "2026-02-28T05:08:16.479838",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

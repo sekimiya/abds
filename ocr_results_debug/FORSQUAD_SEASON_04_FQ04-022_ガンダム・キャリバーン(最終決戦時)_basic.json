@@ -1,0 +1,83 @@
+{
+  "card_number": "FQ04-022",
+  "card_name": "ガンダム・キャリバーン(最終決戦時)",
+  "series": "FORSQUAD SEASON:04",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ04-022.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ04-022_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "FQ04-022",
+    "type": "MS",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト3"
+    },
+    "name": "ガンダム・キャリバーン（最終決戦時）",
+    "model": "X-EX01 GUNDAM CALIBARN",
+    "cost": 3,
+    "category": "近距離",
+    "affiliation": "オックス・アース・コーポレーション",
+    "pilot": "スレッタ・マーキュリー",
+    "stats": {
+      "height": "18.2m",
+      "weight": "44.7t",
+      "mobility": 200,
+      "ranged_attack": 80,
+      "melee_attack": 280,
+      "hp": 340
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "C",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "ビームサーベル",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "ガンビット",
+        "range": 4,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "砕撃",
+      "activation": "任意発動",
+      "target": "単体(敵)",
+      "range": 1,
+      "cost": 3,
+      "description": "ロックオン中の敵に単体攻撃でダメージを与え、メイン武装を使用不能にさせる。出撃時1度のみ使用可能。"
+    },
+    "link_ability": [
+      {
+        "name": "水星の魔女",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "肉薄する戦い",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ビームサーベル強撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3300,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "R",
+    "illustrator": "S Kei",
+    "raw": "近距離　コスト3　MS\n\nX-EX01 GUNDAM CALIBARN\nガンダム・キャリバーン（最終決戦時）\n\n頭頂高　18.2m\n本体重量　44.7t\n所属　オックス・アース・コーポレーション\nパイロット　スレッタ・マーキュリー\n\n地上 A　宇宙 S　砂漠 C　水中 C\n\n機動力 200\n遠距離攻撃 80\n近距離攻撃 280\nHP 340\n\nWEAPON\nMAIN ビームサーベル　射程 1　近距離\nSUB ガンビット　射程 4　遠距離\n\nLINK ABILITY\n水星の魔女　デッキに3枚以上\n[機動力]小アップ\n\n肉薄する戦い　デッキに4枚以上\n[機動力][近距離攻撃力]小アップ\n\nMS ABILITY\n砕撃\n任意発動　単体(敵)　射程 1　コスト 3\nロックオン中の敵に単体攻撃でダメージを与え、メイン武装を使用不能にさせる。\n出撃時1度のみ使用可能。\n\nSPECIAL ATTACK　　UNITED SP\nビームサーベル強撃　ー\n連携 ー　　連携 ー\n連携 ー　　連携 ー\n単体(敵)　射程 2　　射程 ー\nSPコスト 2　威力 3300 / ー\n敵単体に格闘攻撃でダメージを与える。\n/ ー\n\nIMPACT AREA\n[アイコン:中央と右の2マス点灯]\n\nillust S Kei\n©創通・サンライズ ©創通・サンライズ・MBS\n機動戦士ガンダム ARSENAL BASE\nBANDAI MADE IN JAPAN\nFQ04-022　R"
+  },
+  "ocr_raw_file": "FORSQUAD_SEASON_04_FQ04-022_ガンダム・キャリバーン(最終決戦時)_ocr_raw.json",
+  "ocr_timestamp": "2026-02-24T18:20:48.150996",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

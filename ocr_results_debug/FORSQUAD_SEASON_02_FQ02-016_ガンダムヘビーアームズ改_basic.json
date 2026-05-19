@@ -1,0 +1,90 @@
+{
+  "card_number": "FQ02-016",
+  "card_name": "ガンダムヘビーアームズ改",
+  "series": "FORSQUAD SEASON:02",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-016.jpg?v9",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-016_b.jpg?v9",
+  "ocr_data": {
+    "card_id": "FQ02-016",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト6"
+    },
+    "name": "ガンダムヘビーアームズ改",
+    "model": "XXXG-01H2 GUNDAM HEAVYARMS CUSTOM",
+    "cost": 6,
+    "category": "遠距離",
+    "pilot": "トロワ・バートン",
+    "stats": {
+      "height": "16.7m",
+      "weight": "8.2t",
+      "mobility": 290,
+      "ranged_attack": 380,
+      "melee_attack": 160,
+      "hp": 420
+    },
+    "terrain_compatibility": {
+      "ground": "B",
+      "space": "A",
+      "desert": "A",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "2連装ビームガトリング",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "アーミーナイフ",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "強化[遠隔]",
+      "type": "任意発動",
+      "range": 1,
+      "cost": 4,
+      "description": "30秒間、自身の「機動力」「遠距離攻撃力」を中アップする。"
+    },
+    "link_ability": [
+      {
+        "name": "ガンダムW",
+        "condition": "デッキに3枚以上",
+        "effect": "「機動力」小アップ"
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "「遠距離攻撃力」「近距離攻撃力」小アップ"
+      }
+    ],
+    "impact_area": {
+      "type": "circular",
+      "radius": 1,
+      "centered": true
+    },
+    "illustrator": "Robographer",
+    "raw": "遠距離 コスト6 XXXG-01H2 GUNDAM HEAVYARMS CUSTOM ガンダムヘビーアームズ改 頭頂高 16.7m 本体重量 8.2t 所属 パイロット トロワ・バートン 地上 B 宇宙 A 砂漠 A 水中 C 機動力 290 遠距離攻撃 380 近距離攻撃 160 HP 420 WEAPON MAIN 2連装ビームガトリング 射程 3 遠距離 SUB アーミーナイフ 射程 1 近距離 LINK ABILITY ガンダムW デッキに3枚以上 「機動力」小アップ 多彩な機術 デッキに4枚以上 「遠距離攻撃力」「近距離攻撃力」小アップ MS ABILITY 強化【遠隔】 任意発動 自分 射程 1 コスト 4 30秒間、自身の「機動力」「遠距離攻撃力」を中アップする。 SPECIAL ATTACK UNITED SP 2連装ビームガトリング射撃 連携 連携 連携 単体（敵） 射程 3 威力 3200 / 敵単体に射撃攻撃でダメージを与える。/— IMPACT AREA FQ02-016 C"
+  },
+  "ocr_timestamp": "2025-06-28T01:42:10.465670",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli",
+  "_fix_history": [
+    {
+      "timestamp": "2026-03-03T23:45:33",
+      "changes": [
+        "link_ability.name: \"多彩な機術\" → \"多彩な戦術\""
+      ]
+    },
+    {
+      "timestamp": "2026-03-03T23:46:58",
+      "changes": [
+        "ms_ability.name: \"強化【遠隔】\" → \"強化[遠隔]\""
+      ]
+    }
+  ],
+  "_fixed": true
+}

@@ -1,0 +1,83 @@
+{
+  "card_number": "PR-074",
+  "card_name": "ザクⅡ(量産機)",
+  "series": "プロモーション",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-074.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-074_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "PR-074",
+    "type": "MS",
+    "card_label": {
+      "class": "機動",
+      "cost_label": "コスト1"
+    },
+    "name": "ザクII（量産機）",
+    "model": "MS-06F ZAKUII",
+    "cost": 1,
+    "category": "機動戦士ガンダム",
+    "affiliation": "ジオン公国軍",
+    "pilot": null,
+    "stats": {
+      "height": "17.5m",
+      "weight": "56.2t",
+      "mobility": 240,
+      "ranged_attack": 240,
+      "melee_attack": 120,
+      "hp": 150
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "A",
+      "desert": "C",
+      "water": null
+    },
+    "weapon": {
+      "main": {
+        "name": "ザク・マシンガン",
+        "range": 2,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ヒート・ホーク",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "強化[遠隔]",
+      "activation": "任意発動",
+      "target": "自分",
+      "range": null,
+      "cost": 4,
+      "description": "30秒間、自身の[機動力][遠距離攻撃力]を中アップする。"
+    },
+    "link_ability": [
+      {
+        "name": "機動戦士ガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "ザクがザクザク",
+        "condition": "デッキに2枚以上",
+        "effect": "[HP]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ザク・マシンガン撃射",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3200,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "PR",
+    "illustrator": "Takumi Kousaka",
+    "raw": "機動 コスト1\nMS-06F ZAKUII\nザクII（量産機）\n全高 17.5m\n本体重量 56.2t\n所属 ジオン公国軍\nパイロット ー\n\n地上 A　宇宙 A　砂漠 C\n機動力 240\n遠距離攻撃 240\n近距離攻撃 120\nHP 150\n\nWEAPON\nMAIN ザク・マシンガン　射程 2　遠距離\nSUB ヒート・ホーク　射程 1　近距離\n\nMS ABILITY\n強化[遠隔]\n任意発動　自分　射程 ー　コスト 4\n30秒間、自身の[機動力][遠距離攻撃力]を中アップする。\n\nLINK ABILITY\n機動戦士ガンダム　デッキに3枚以上\n[機動力]小アップ\n\nザクがザクザク　デッキに2枚以上\n[HP]小アップ\n\nSPECIAL ATTACK\nザク・マシンガン撃射\n単体(敵)　射程 3\nSPコスト 2　威力 3200\n敵単体に射撃攻撃でダメージを与える。\n\nillust Takumi Kousaka\n©創通・サンライズ\nBANDAI MADE IN JAPAN\nNOT FOR SALE\nPR-074 PR"
+  },
+  "ocr_raw_file": "プロモーション_PR-074_ザクⅡ(量産機)_ocr_raw.json",
+  "ocr_timestamp": "2026-03-07T12:54:34.153773",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

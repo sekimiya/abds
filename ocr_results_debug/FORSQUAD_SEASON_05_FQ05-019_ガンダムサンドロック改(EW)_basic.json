@@ -1,0 +1,83 @@
+{
+  "card_number": "FQ05-019",
+  "card_name": "ガンダムサンドロック改(EW)",
+  "series": "FORSQUAD SEASON:05",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ05-019.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ05-019_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "FQ05-019",
+    "type": "MS",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト2"
+    },
+    "name": "ガンダムサンドロック改(EW)",
+    "model": "XXXG-01SR2 GUNDAM SANDROCK CUSTOM[EW]",
+    "cost": 2,
+    "category": "近距離",
+    "affiliation": "ー",
+    "pilot": "カトル・ラバーバ・ウィナー",
+    "stats": {
+      "height": "16.5m",
+      "weight": "7.9t",
+      "mobility": 220,
+      "ranged_attack": 40,
+      "melee_attack": 310,
+      "hp": 380
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "S",
+      "water": "B"
+    },
+    "weapon": {
+      "main": {
+        "name": "ヒートショーテル",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "ヒートショーテル(投擲)",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "転化[補給]",
+      "activation": "任意発動",
+      "target": "自分",
+      "range": null,
+      "cost": 4,
+      "description": "自身のHPを回復する。使用回数に応じて、回復効果、範囲が変わる。[1回:自身／中回復][2回:自身を中心とした範囲／中回復][3回以上:自身を中心とした範囲／大回復]"
+    },
+    "link_ability": [
+      {
+        "name": "Endless Waltz",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      },
+      {
+        "name": "肉薄する戦い",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ヒートショーテル強襲",
+      "target": "範囲(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3000,
+      "description": "自身を中心とした小範囲に格闘攻撃でダメージを与える。戦術技威力は地形適性に応じて変化する。",
+      "united_sp": null
+    },
+    "rarity": "P",
+    "illustrator": "PaintedMIKE",
+    "raw": "近距離 コスト2\n\nMS\n\nXXXG-01SR2 GUNDAM SANDROCK CUSTOM[EW]\nガンダムサンドロック改(EW)\n\n頭頂高 16.5m\n本体重量 7.9t\n所属 ー\nパイロット カトル・ラバーバ・ウィナー\n\n地上 A 宇宙 S 砂漠 S 水中 B\n\n機動力 220\n遠距離攻撃 40\n近距離攻撃 310\nHP 380\n\nWEAPON\n\nMAIN ヒートショーテル 射程 1 近距離\nSUB ヒートショーテル(投擲) 射程 3 遠距離\n\nLINK ABILITY\n\nEndless Waltz デッキに3枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\n肉薄する戦い デッキに4枚以上\n[機動力][近距離攻撃力]小アップ\n\nMS ABILITY\n\n転化[補給]\n任意発動 自分 射程 ー コスト 4\n自身のHPを回復する。使用回数に応じて、回復効果、範囲が変わる。[1回:自身／中回復][2回:自身を中心とした範囲／中回復][3回以上:自身を中心とした範囲／大回復]\n\nSPECIAL ATTACK\n\nヒートショーテル強襲\n\n連携 ー 連携 ー\n連携 ー 連携 ー\n範囲(敵) 射程 2\n\nSPコスト 2 威力 3000／ー\n\n自身を中心とした小範囲に格闘攻撃でダメージを与える。戦術技威力は地形適性に応じて変化する。／ー\n\nUNITED SP\n\nー 射程 ー\n威力 ー\n\nIMPACT AREA\n[アイコン:三角形 緑]\n\nillust PaintedMIKE\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n\n機動戦士ガンダム\nARSENAL BASE\n\nFQ05-019 P"
+  },
+  "ocr_raw_file": "FORSQUAD_SEASON_05_FQ05-019_ガンダムサンドロック改(EW)_ocr_raw.json",
+  "ocr_timestamp": "2026-02-24T18:28:12.399599",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

@@ -1,0 +1,78 @@
+{
+  "card_number": "AR03-003",
+  "card_name": "ジンクス",
+  "series": "アーセナルレア3弾[前半]",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AR03-003.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AR03-003_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "AR03-003",
+    "type": "MS",
+    "card_label": {
+      "class": "機動",
+      "cost_label": "コスト3"
+    },
+    "name": "ジンクス",
+    "model": "GNX-603T GN-X",
+    "cost": 3,
+    "category": "ガンダム00",
+    "affiliation": "国連軍",
+    "pilot": "ダリル・ダッジ、ソーマ・ピーリス、パトリック・コーラサワー",
+    "stats": {
+      "height": "19.0m",
+      "weight": "70.4t",
+      "mobility": 310,
+      "ranged_attack": 90,
+      "melee_attack": 250,
+      "hp": 300
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "A",
+      "desert": "C",
+      "water": null
+    },
+    "weapon": {
+      "main": {
+        "name": "GNビームサーベル",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "GNロングレンジライフル",
+        "range": 4,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "鼓舞[近接]",
+      "activation": "任意発動",
+      "target": "範囲(味方)",
+      "range": null,
+      "cost": 5,
+      "description": "30秒間、自身を中心とした大範囲内の味方ユニットの[機動力][近距離攻撃力]を小アップする。"
+    },
+    "link_ability": [
+      {
+        "name": "ガンダム00",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "GNビームサーベル強撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3400,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "A",
+    "illustrator": "MIZUNO PRODUCTION",
+    "raw": "機動　コスト3　MS\n\nGNX-603T GN-X\nジンクス\n\n全高　19.0m\n本体重量　70.4t\n所属　国連軍\nパイロット　ダリル・ダッジ、ソーマ・ピーリス、パトリック・コーラサワー\n\n地上 A　宇宙 A　砂漠 C\n機動力 310\n遠距離攻撃 90\n近距離攻撃 250\nHP 300\n\nWEAPON\nMAIN　GNビームサーベル　射程 1　近距離\nSUB　GNロングレンジライフル　射程 4　遠距離\n\nMS ABILITY\n鼓舞[近接]\n任意発動　範囲(味方)　射程 ー　コスト 5\n30秒間、自身を中心とした大範囲内の味方ユニットの[機動力][近距離攻撃力]を小アップする。\n\nLINK ABILITY\nガンダム00　デッキに3枚以上\n[機動力]小アップ\nー　ー\nー\n\nSPECIAL ATTACK\nGNビームサーベル強撃\n単体(敵)　射程 2\nSPコスト 2　威力 3400\n敵単体に格闘攻撃でダメージを与える。\n\nillust　MIZUNO PRODUCTION\n©創通・サンライズ\nBANDAI MADE IN JAPAN\nAR03-003　A"
+  },
+  "ocr_raw_file": "アーセナルレア3弾[前半]_AR03-003_ジンクス_ocr_raw.json",
+  "ocr_timestamp": "2026-03-07T15:16:15.188140",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

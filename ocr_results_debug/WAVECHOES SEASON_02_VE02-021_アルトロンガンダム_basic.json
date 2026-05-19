@@ -1,0 +1,82 @@
+{
+  "card_number": "VE02-021",
+  "card_name": "アルトロンガンダム",
+  "series": "WAVECHOES SEASON:02",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE02-021.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE02-021_b.jpg?v250630",
+  "ocr_engine": "claude_code_subagent",
+  "ocr_type": "basic",
+  "ocr_timestamp": "2026-04-22T20:30:00.000000",
+  "ocr_data": {
+    "card_id": "VE02-021",
+    "type": "MS",
+    "name": "アルトロンガンダム",
+    "model": "XXXG-01S2 ALTRON GUNDAM",
+    "cost": 5,
+    "category": "機動",
+    "affiliation": "—",
+    "pilot": "張 五飛",
+    "card_label": {
+      "class": "機動",
+      "cost_label": "コスト5"
+    },
+    "stats": {
+      "height": "16.4m",
+      "weight": "7.5t",
+      "mobility": 260,
+      "ranged_attack": 390,
+      "melee_attack": 80,
+      "hp": 370
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "C",
+      "water": "B"
+    },
+    "weapon": {
+      "main": {
+        "name": "ドラゴンハングファイヤー",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ツインビームトライデント",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "強襲",
+      "activation": "任意発動",
+      "target": "単体(敵)",
+      "range": 4,
+      "cost": 4,
+      "description": "一定範囲内のロックオン可能な残りHPの割合が最も高い敵ユニットにターゲットを切り替え、単体攻撃でダメージを与える。"
+    },
+    "link_ability": [
+      {
+        "name": "ガンダムW",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "的確な一撃",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][遠距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "2連装ビームキャノン撃射",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": "3200",
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "united_sp": null,
+      "echoes_beat": null
+    },
+    "rarity": "C",
+    "raw": "機動 コスト5 MS XXXG-01S2 ALTRON GUNDAM アルトロンガンダム 頭頂高 16.4m 本体重量 7.5t 所属 — パイロット 張 五飛 地上 A 宇宙 S 砂漠 C 水中 B 機動力 260 遠距離攻撃 390 近距離攻撃 80 HP 370 WEAPON MAIN ドラゴンハングファイヤー 射程 3 遠距離 SUB ツインビームトライデント 射程 1 近距離 MS ABILITY 強襲 任意発動 単体(敵) 射程 4 コスト 4 一定範囲内のロックオン可能な残りHPの割合が最も高い敵ユニットにターゲットを切り替え、単体攻撃でダメージを与える。 LINK ABILITY ガンダムW デッキに3枚以上 [機動力]小アップ 的確な一撃 デッキに4枚以上 [機動力][遠距離攻撃力]小アップ SPECIAL ATTACK ECHOES BEAT 2連装ビームキャノン撃射 — — 単体(敵) 射程 3 — 射程 — SPコスト 2 威力 3200 / — 敵単体に射撃攻撃でダメージを与える。 /— illust amasaki VE02-021 C"
+  }
+}

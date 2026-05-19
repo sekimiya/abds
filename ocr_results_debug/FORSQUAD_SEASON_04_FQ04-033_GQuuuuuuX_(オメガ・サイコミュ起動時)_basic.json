@@ -1,0 +1,91 @@
+{
+  "card_number": "FQ04-033",
+  "card_name": "GQuuuuuuX (オメガ・サイコミュ起動時)",
+  "series": "FORSQUAD SEASON:04",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ04-033.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ04-033_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "FQ04-033",
+    "type": "MS",
+    "card_label": {
+      "class": "機動",
+      "cost_label": "コスト3"
+    },
+    "name": "GQuuuuuuX (オメガ・サイコミュ起動時)",
+    "model": "gMS-Ω GQuuuuuuX (Omega Psycommu)",
+    "cost": 3,
+    "category": "機動",
+    "affiliation": null,
+    "pilot": "アマテ・ユズリハ(マチュ)",
+    "stats": {
+      "height": "18.0m",
+      "weight": "42.4t",
+      "mobility": 210,
+      "ranged_attack": 260,
+      "melee_attack": 110,
+      "hp": 320
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "C",
+      "water": "A"
+    },
+    "weapon": {
+      "main": {
+        "name": "ビーム・ライフル",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ビーム・サーベル",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "威圧",
+      "activation": "任意発動",
+      "target": "範囲(敵)",
+      "range": null,
+      "cost": 4,
+      "description": "自身を中心とした範囲内の敵ユニットをスタンさせ、一定時間被ダメージを少しアップする。"
+    },
+    "link_ability": [
+      {
+        "name": "GQuuuuuuX",
+        "condition": "デッキに3枚以上",
+        "effect": "[HP]小アップ"
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ビーム・ライフル撃射",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3200,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "united_sp": {
+        "name": "MAV連携",
+        "partner1": "シフレド",
+        "partner2": null,
+        "target": "単体(敵)",
+        "range": 3,
+        "power": 4700,
+        "description": "敵単体に射撃と格闘攻撃でダメージを与える。出撃時1度のみ使用可能。"
+      }
+    },
+    "rarity": "R",
+    "illustrator": "ZB",
+    "raw": "MS\n\n機動　コスト3\n\ngMS-Ω GQuuuuuuX (Omega Psycommu)\nGQuuuuuuX (オメガ・サイコミュ起動時)\n\n頭頂高　18.0m\n本体重量　42.4t\n所属　ー\nパイロット　アマテ・ユズリハ(マチュ)\n\n地上 A　宇宙 S　砂漠 C　水中 A\n機動力 210\n遠距離攻撃 260\n近距離攻撃 110\nHP 320\n\nWEAPON\nMAIN ビーム・ライフル　射程 3　遠距離\nSUB ビーム・サーベル　射程 1　近距離\n\nLINK ABILITY\nGQuuuuuuX　デッキに3枚以上\n[HP]小アップ\n\n戦況を変える力　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nMS ABILITY\n威圧\n任意発動　範囲(敵)　射程 ー　コスト 4\n自身を中心とした範囲内の敵ユニットをスタンさせ、一定時間被ダメージを少しアップする。\n\nSPECIAL ATTACK　　UNITED SP\nビーム・ライフル撃射　　MAV連携\n連携 シフレド　　連携 ー\n連携 ー　　連携 ー\n単体(敵)　射程 3　　単体(敵)　射程 3\nSPコスト 2　威力 3200 / 4700\n敵単体に射撃攻撃でダメージを与える。／敵単体に射撃と格闘攻撃でダメージを与える。出撃時1度のみ使用可能。\n\nIMPACT AREA\n[アイコン:中央やや上に小円、中央下に大円]\n\nillust ZB\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nFQ04-033　R"
+  },
+  "ocr_raw_file": "FORSQUAD_SEASON_04_FQ04-033_GQuuuuuuX_(オメガ・サイコミュ起動時)_ocr_raw.json",
+  "ocr_timestamp": "2026-02-24T18:22:09.212337",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

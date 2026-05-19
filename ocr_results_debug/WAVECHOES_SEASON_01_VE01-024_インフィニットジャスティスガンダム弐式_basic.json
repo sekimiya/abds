@@ -1,0 +1,94 @@
+{
+  "card_number": "VE01-024",
+  "card_name": "インフィニットジャスティスガンダム弐式",
+  "series": "WAVECHOES SEASON:01",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE01-024.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE01-024_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "VE01-024",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト4"
+    },
+    "name": "インフィニットジャスティスガンダム弐式",
+    "model": "ZGMF-X191M2 INFINITE JUSTICE GUNDAM TYPEⅡ",
+    "cost": 4,
+    "category": "遠距離",
+    "affiliation": "ターミナル",
+    "pilot": "アスラン・ザラ、カガリ・ユラ・アスハ",
+    "stats": {
+      "height": "19.64m",
+      "weight": "78.07t",
+      "mobility": 220,
+      "ranged_attack": 320,
+      "melee_attack": 100,
+      "hp": 360
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "A",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "高エネルギービームライフル",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "アンビデクストラス・ハルバード",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "縛射",
+      "activation": "任意発動",
+      "target": "範囲(敵)",
+      "range": 4,
+      "cost": 5,
+      "description": "自身を中心とした範囲内の敵ユニットをスタンさせ、一定時間ダメージを与える。"
+    },
+    "link_ability": [
+      {
+        "name": "SEED FREEDOM",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "高エネルギービームライフル連射",
+      "target": "単体(敵)",
+      "range": 4,
+      "sp_cost": 2,
+      "power": 3200,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "echoes_beat": {
+        "eb_type": "sp",
+        "eb_name": "スプリットビームトーピード・ビームサーベル連撃 Lv.3",
+        "eb_level": 3,
+        "eb_note": "ECHOES BEAT Lv.を下げることで、共鳴戦術技が発動する。",
+        "eb_target": "単体(敵)",
+        "eb_range": 4,
+        "eb_power": 4700,
+        "eb_description": "EBLv.を3下げる。敵単体に格闘攻撃でダメージを与える。出撃時1度のみ使用可能。"
+      },
+      "united_sp": null,
+      "sp_type": "ECHOES BEAT SP"
+    },
+    "rarity": "R",
+    "illustrator": "sakusya2nekoyanen",
+    "raw": ""
+  },
+  "ocr_raw_file": "WAVECHOES_SEASON_01_VE01-024_インフィニットジャスティスガンダム弐式_ocr_raw.json",
+  "ocr_timestamp": "2026-03-28T07:29:24.625418",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

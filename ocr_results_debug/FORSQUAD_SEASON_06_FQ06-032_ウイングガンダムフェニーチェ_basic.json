@@ -1,0 +1,83 @@
+{
+  "card_number": "FQ06-032",
+  "card_name": "ウイングガンダムフェニーチェ",
+  "series": "FORSQUAD SEASON:06",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ06-032.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ06-032_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "FQ06-032",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト3"
+    },
+    "name": "ウイングガンダムフェニーチェ",
+    "model": "XXXG-01Wf WING GUNDAM FENICE",
+    "cost": 3,
+    "category": "遠距離",
+    "affiliation": "ー",
+    "pilot": "リカルド・フェリーニ",
+    "stats": {
+      "height": "16.3m",
+      "weight": "7.2t",
+      "mobility": 230,
+      "ranged_attack": 380,
+      "melee_attack": 40,
+      "hp": 400
+    },
+    "terrain_compatibility": {
+      "ground": "S",
+      "space": "A",
+      "desert": "C",
+      "water": "B"
+    },
+    "weapon": {
+      "main": {
+        "name": "バスターライフルカスタム",
+        "range": 4,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ビームレイピア",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "縛射",
+      "activation": "任意発動",
+      "target": "単体(敵)",
+      "range": 4,
+      "cost": 3,
+      "description": "ロックオン中の敵ユニットに単体攻撃を行いダメージを与え、一定時間スタンさせる。"
+    },
+    "link_ability": [
+      {
+        "name": "ビルドファイターズ",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "バスターライフルカスタム貫通射撃",
+      "target": "貫通(敵)",
+      "range": 4,
+      "sp_cost": 2,
+      "power": 3000,
+      "description": "射線上の敵に貫通射撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "P",
+    "illustrator": "PaintedMIKE",
+    "raw": "遠距離 コスト3 MS\n\nXXXG-01Wf WING GUNDAM FENICE\n\nウイングガンダムフェニーチェ\n\n頭頂高 16.3m\n本体重量 7.2t\n所属 ー\nパイロット リカルド・フェリーニ\n\n地上 S 宇宙 A 砂漠 C 水中 B\n機動力 230\n遠距離攻撃 380\n近距離攻撃 40\nHP 400\n\nWEAPON\nMAIN バスターライフルカスタム 射程 4 遠距離\nSUB ビームレイピア 射程 1 近距離\n\nLINK ABILITY\nビルドファイターズ デッキに3枚以上\n[機動力]小アップ\n\n多彩な戦術 デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nMS ABILITY\n縛射\n任意発動 単体(敵) 射程 4 コスト 3\nロックオン中の敵ユニットに単体攻撃を行いダメージを与え、一定時間スタンさせる。\n\nIMPACT AREA\n[アイコン:縦長楕円形の射撃範囲]\n\nSPECIAL ATTACK\nバスターライフルカスタム貫通射撃\n\n連携 ー\n連携 ー\n連携 ー\n\n貫通(敵) 射程 4 ー 射程 ー\nSPコスト 2 威力 3000 / ー\n射線上の敵に貫通射撃でダメージを与える。/ ー\n\nUNITED SP\nー\n連携 ー\n連携 ー\n射程 ー\n\nillust PaintedMIKE\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\nFQ06-032 P"
+  },
+  "ocr_raw_file": "FORSQUAD_SEASON_06_FQ06-032_ウイングガンダムフェニーチェ_ocr_raw.json",
+  "ocr_timestamp": "2026-02-24T18:39:42.417949",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

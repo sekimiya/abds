@@ -1,0 +1,83 @@
+{
+  "card_number": "PR-211",
+  "card_name": "ザメル",
+  "series": "プロモーション",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-211.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-211_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "PR-211",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト5"
+    },
+    "name": "ザメル",
+    "model": "YMS-16M XAMEL",
+    "cost": 5,
+    "category": "機動戦士ガンダム0083",
+    "affiliation": "ジオン公国軍",
+    "pilot": "ボブ",
+    "stats": {
+      "height": "27.0m",
+      "weight": "75.0t",
+      "mobility": 170,
+      "ranged_attack": 430,
+      "melee_attack": 80,
+      "hp": 520
+    },
+    "terrain_compatibility": {
+      "ground": "S",
+      "space": "C",
+      "desert": "A",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "680mmカノン砲",
+        "range": 4,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "8連多弾倉ミサイルランチャー",
+        "range": 3,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "補給[弱体化解除]",
+      "activation": "任意発動",
+      "target": "範囲(味方)",
+      "range": null,
+      "cost": 5,
+      "description": "自身を中心とした大範囲の味方ユニットのHPを中回復し、弱体化状態を無効化する。"
+    },
+    "link_ability": [
+      {
+        "name": "ガンダム0083",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "固めた装甲",
+        "condition": "デッキに2枚以上",
+        "effect": "[HP]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "680mmカノン砲砲撃",
+      "target": "範囲(敵)",
+      "range": 4,
+      "sp_cost": 2,
+      "power": 2900,
+      "description": "対象の敵を中心として範囲射撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "PR",
+    "illustrator": "yuuiguchi",
+    "raw": "遠距離 コスト5\nYMS-16M XAMEL\nザメル\n\n全高　27.0m\n本体重量　75.0t\n所属　ジオン公国軍\nパイロット　ボブ\n\n地上 S　宇宙 C　砂漠 A　水中 C\n機動力　170\n遠距離攻撃　430\n近距離攻撃　80\nHP　520\n\nWEAPON\nMAIN　680mmカノン砲　射程4　遠距離\nSUB　8連多弾倉ミサイルランチャー　射程3　近距離\n\nMS ABILITY\n補給[弱体化解除]\n任意発動　範囲(味方)　射程ー　コスト5\n自身を中心とした大範囲の味方ユニットのHPを中回復し、弱体化状態を無効化する。\n\nLINK ABILITY\nガンダム0083　デッキに3枚以上\n[機動力]小アップ\n\n固めた装甲　デッキに2枚以上\n[HP]小アップ\n\nSPECIAL ATTACK　UNITED SP\n680mmカノン砲砲撃　ー\n連携ー　連携ー\n連携ー　連携ー\n範囲(敵)　射程4　ー　射程ー\nSPコスト2　威力　2900 / ー\n対象の敵を中心として範囲射撃でダメージを与える。/ー\n\nillust. yuuiguchi\n©創通・サンライズ\nBANDAI MADE IN JAPAN\nPR-211　PR\nNOT FOR SALE"
+  },
+  "ocr_raw_file": "プロモーション_PR-211_ザメル_ocr_raw.json",
+  "ocr_timestamp": "2026-03-03T22:41:15.585563",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

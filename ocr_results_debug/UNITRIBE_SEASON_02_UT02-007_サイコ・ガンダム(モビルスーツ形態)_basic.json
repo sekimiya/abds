@@ -1,0 +1,83 @@
+{
+  "card_number": "UT02-007",
+  "card_name": "サイコ・ガンダム(モビルスーツ形態)",
+  "series": "UNITRIBE SEASON:02",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT02-007.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT02-007_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "UT02-007",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト8"
+    },
+    "name": "サイコ・ガンダム（モビルスーツ形態）",
+    "model": "MRX-009 PSYCHO GUNDAM",
+    "cost": 8,
+    "category": "遠距離",
+    "affiliation": "ティターンズ",
+    "pilot": "フォウ・ムラサメ",
+    "stats": {
+      "height": "40.0m",
+      "weight": "214.1t",
+      "mobility": 100,
+      "ranged_attack": 500,
+      "melee_attack": 150,
+      "hp": 650
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "A",
+      "desert": "C",
+      "water": "B"
+    },
+    "weapon": {
+      "main": {
+        "name": "ビーム砲",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "格闘",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "威圧",
+      "activation": "任意発動",
+      "target": "範囲(敵)",
+      "range": null,
+      "cost": 4,
+      "description": "自身を中心とした範囲内の敵ユニットをスタンさせ、一定時間被ダメージを少しアップする。"
+    },
+    "link_ability": [
+      {
+        "name": "機動戦士Zガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力]小アップ"
+      },
+      {
+        "name": "撃ち倒す遠距離戦",
+        "condition": "デッキに遠距離が2枚以上",
+        "effect": "[遠距離攻撃力]中アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ビーム砲撃射",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3400,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "R",
+    "illustrator": "Kumagoro",
+    "raw": "遠距離　コスト8\n\nMS\n\nMRX-009 PSYCHO GUNDAM\nサイコ・ガンダム（モビルスーツ形態）\n\n機動戦士Zガンダム\n\n全高　40.0m\n本体重量　214.1t\n所属　ティターンズ\nパイロット　フォウ・ムラサメ\n\n地上 A　宇宙 A　砂漠 C　水中 B\n\n機動力 100\n遠距離攻撃 500\n近距離攻撃 150\nHP 650\n\nWEAPON\n\nMAIN ビーム砲　射程 3　遠距離\nSUB 格闘　射程 1　近距離\n\nLINK ABILITY\n\n機動戦士Zガンダム　デッキに3枚以上\n[遠距離攻撃力]小アップ\n\nMS ABILITY\n\n威圧\n任意発動　範囲(敵)　射程 ー　コスト 4\n\n自身を中心とした範囲内の敵ユニットを\nスタンさせ、一定時間被ダメージを少し\nアップする。\n\n撃ち倒す遠距離戦　デッキに遠距離が2枚以上\n[遠距離攻撃力]中アップ\n\nSPECIAL ATTACK　UNITED SP\n\nビーム砲撃射　ー\n連携 ー　連携 ー\n連携 ー　連携 ー\n単体(敵)　射程 3　ー　射程 ー\nSPコスト 2　威力　3400 / ー\n\n敵単体に射撃攻撃でダメージを与える。\n/ ー\n\nIMPACT AREA\n\nillust Kumagoro\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n\n機動戦士ガンダム ARSENAL BASE\n\nUT02-007　R"
+  },
+  "ocr_raw_file": "UNITRIBE_SEASON_02_UT02-007_サイコ・ガンダム(モビルスーツ形態)_ocr_raw.json",
+  "ocr_timestamp": "2026-02-26T17:33:36.524338",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

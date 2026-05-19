@@ -1,0 +1,57 @@
+{
+  "card_number": "BP07-010",
+  "card_name": "ギャンシュトローム(アグネス・ギーベンラート専用機)",
+  "series": "BOOSTER PACK [機動戦士ガンダムSEEDシリーズvol.3]",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP07-010.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP07-010_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "BP07-010",
+    "type": "MS",
+    "card_label": { "class": "近距離", "cost_label": "コスト5" },
+    "name": "ギャンシュトローム(アグネス・ギーベンラート専用機)",
+    "model": "ZGMF-2027/A GYAN STROM[AGNES GIEBENRATH CUSTOM]",
+    "cost": 5,
+    "category": "近距離",
+    "affiliation": "コンパス",
+    "pilot": "アグネス・ギーベンラート",
+    "stats": {
+      "height": "20.00m",
+      "weight": "74.56t",
+      "mobility": 230,
+      "ranged_attack": 70,
+      "melee_attack": 390,
+      "hp": 460
+    },
+    "terrain_compatibility": { "ground": "A", "space": "C", "desert": "C", "water": "A" },
+    "weapon": {
+      "main": { "name": "ファルクスG7 ビームアックス", "range": 1, "type": "近距離" },
+      "sub": { "name": "トリデンティ 3銃身回ビーム機銃", "range": 2, "type": "遠距離" }
+    },
+    "ms_ability": {
+      "name": "威圧",
+      "activation": "任意発動",
+      "target": "範囲(敵)",
+      "range": null,
+      "cost": 4,
+      "description": "自身を中心とした範囲内の敵ユニットをスタンさせ、一定時間被ダメージを少しアップする。"
+    },
+    "link_ability": [
+      { "name": "SEED FREEDOM", "condition": "デッキに3枚以上", "effect": "[機動力]小アップ" },
+      { "name": "多彩な戦術", "condition": "デッキに4枚以上", "effect": "[遠距離攻撃力][近距離攻撃力]小アップ" }
+    ],
+    "special_attack": {
+      "name": "ファルクスG7 ビームアックス強撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3400,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "R",
+    "raw": "近距離 コスト5 MS\nZGMF-2027/A GYAN STROM[AGNES GIEBENRATH CUSTOM]\nギャンシュトローム(アグネス・ギーベンラート専用機)\n頭頂高 20.00m\n本体重量 74.56t\n所属 コンパス\nパイロット アグネス・ギーベンラート\n地上 A 宇宙 C 砂漠 C 水中 A\n機動力 230\n遠距離攻撃 70\n近距離攻撃 390\nHP 460\nWEAPON\nMAIN ファルクスG7 ビームアックス 射程 1 近距離\nSUB トリデンティ 3銃身回ビーム機銃 射程 2 遠距離\nLINK ABILITY\nSEED FREEDOM デッキに3枚以上\n[機動力]小アップ\n多彩な戦術 デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\nMS ABILITY\n威圧\n任意発動 範囲(敵) 射程 ー コスト 4\n自身を中心とした範囲内の敵ユニットをスタンさせ、一定時間被ダメージを少しアップする。\nSPECIAL ATTACK ECHOES BEAT\nファルクスG7 ビームアックス強撃\n単体(敵) 射程 2 ー 射程 ー\nSPコスト 2 威力 3400 / ー\n敵単体に格闘攻撃でダメージを与える。/ ー\nBP07-010 R"
+  },
+  "ocr_timestamp": "2026-04-16T11:50:00.000000",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_subagent"
+}

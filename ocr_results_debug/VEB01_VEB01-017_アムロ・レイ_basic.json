@@ -1,0 +1,55 @@
+{
+  "card_number": "VEB01-017",
+  "card_name": "アムロ・レイ",
+  "series": "VEB01",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/VEB01-017.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/VEB01-017_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "VEB01-017",
+    "type": "PL",
+    "card_label": {
+      "class": "制圧",
+      "cost_label": "コスト3"
+    },
+    "name": "アムロ・レイ",
+    "cost": 3,
+    "category": "制圧",
+    "affiliation": "地球連邦軍",
+    "stats": {
+      "mobility": 200,
+      "ranged_attack": 50,
+      "melee_attack": 230,
+      "hp": 240
+    },
+    "pilot_skill": {
+      "name": "火花散る電撃作戦",
+      "trigger": "EBLv.1に上昇時",
+      "effect": "30秒間、自身の[機動力][近距離攻撃力]をアップする。",
+      "has_sq_skill": false,
+      "sq_skill_details": null,
+      "eb_skill": true,
+      "eb_trigger": "EBLv.1に上昇時",
+      "is_eb_skill": true,
+      "eb_trigger_level": 1
+    },
+    "link_ability": [
+      {
+        "name": "宇宙に響く鼓動",
+        "condition": "デッキに3枚以上",
+        "effect": "ECHOES BEAT Lv.が表示される。味方ユニットが戦術技を発動するとEBLv.が上がる。[HP][SP威力]小アップ",
+        "is_eb_link": true
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "rarity": "R",
+    "illustrator": null,
+    "raw": "制圧 コスト3\n\nアムロ・レイ\nAMURO RAY\n\n身長 168cm\n年齢 15歳\n所属 地球連邦軍\n搭乗機体 ガンダム(最終決戦仕様)、ガンダム\nEBLv.1(最上昇\n\nEB PL SKILL\n火花散る電撃作戦\nEBLv.1に上昇時\n\n30秒間、自身の[機動力][近距離攻撃力]をアップする。\n\nEB LINK ABILITY\n宇宙に響く鼓動 デッキに3枚以上\nECHOES BEAT Lv.が表示される。\n味方ユニットが戦術技を発動するとEBLv.が上がる。\n[HP][SP威力]小アップ\n\n戦況を変える力 デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\n機動力 200\n遠距離攻撃 50\n近距離攻撃 230\nHP 240\n\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nVEB01-017 R"
+  },
+  "ocr_timestamp": "2026-03-27T02:30:00",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli"
+}

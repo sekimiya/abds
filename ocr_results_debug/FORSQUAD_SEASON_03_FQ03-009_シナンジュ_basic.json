@@ -1,0 +1,92 @@
+{
+  "card_number": "FQ03-009",
+  "card_name": "シナンジュ",
+  "series": "FORSQUAD SEASON:03",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ03-009.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ03-009_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "FQ03-009",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト6"
+    },
+    "name": "シナンジュ",
+    "model": "MSN-06S SINANJU",
+    "cost": 6,
+    "category": "遠距離",
+    "affiliation": "ネオ・ジオン残党軍「袖付き」",
+    "pilot": "フル・フロンタル",
+    "stats": {
+      "height": "22.6m",
+      "weight": "25.2t",
+      "mobility": 220,
+      "ranged_attack": 540,
+      "melee_attack": 60,
+      "hp": 530
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "C",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "ビーム・ライフル",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ビーム・アックス",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "陣略[妨害／機動]",
+      "activation": "任意発動",
+      "target": "範囲(敵)",
+      "range": null,
+      "cost": 4,
+      "description": "一定時間、範囲内に入った敵ユニットの[機動力]をダウンするエリアを設置する。※上限3箇所まで。"
+    },
+    "link_ability": [
+      {
+        "name": "ガンダムUC",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "的確な一撃",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][遠距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ビーム・ライフル撃射",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3400,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "M",
+    "illustrator": "PaintedMIKE + Ultimateinudog",
+    "raw": "遠距離　コスト6\n\nMS\n\nMSN-06S SINANJU\nシナンジュ\n\n頭頂高　22.6m\n本体重量　25.2t\n所属　ネオ・ジオン残党軍「袖付き」\nパイロット　フル・フロンタル\n\n地上 A　宇宙 S　砂漠 C　水中 C\n\n機動力　220\n遠距離攻撃　540\n近距離攻撃　60\nHP　530\n\nWEAPON\nMAIN ビーム・ライフル　射程 3　遠距離\nSUB ビーム・アックス　射程 1　近距離\n\nMS ABILITY\n陣略【妨害／機動】\n任意発動　範囲(敵)　射程 ー　コスト 4\n一定時間、範囲内に入った敵ユニットの[機動力]をダウンするエリアを設置する。※上限3箇所まで。\n\nLINK ABILITY\nガンダムUC　デッキに3枚以上\n[機動力]小アップ\n\n的確な一撃　デッキに4枚以上\n[機動力][遠距離攻撃力]小アップ\n\nSPECIAL ATTACK　　UNITED SP\nビーム・ライフル撃射　ー\n連携 ー　連携 ー\n連携 ー　連携 ー\n単体(敵)　射程 3　ー　射程 ー\nSPコスト 2　威力 3400 / ー\n敵単体に射撃攻撃でダメージを与える。\n/ ー\n\nIMPACT AREA\n[アイコン:円形範囲 中央×印 左下に小円]\n\nillust PaintedMIKE + Ultimateinudog\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダムUC\nARSENAL BASE\nFQ03-009　M"
+  },
+  "ocr_raw_file": "FORSQUAD_SEASON_03_FQ03-009_シナンジュ_ocr_raw.json",
+  "ocr_timestamp": "2026-02-24T15:22:57.603679",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined",
+  "_fix_history": [
+    {
+      "timestamp": "2026-03-03T23:47:17",
+      "changes": [
+        "ms_ability.name: \"陣略【妨害／機動】\" → \"陣略[妨害／機動]\""
+      ]
+    }
+  ],
+  "_fixed": true
+}

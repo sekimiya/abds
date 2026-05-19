@@ -1,0 +1,83 @@
+{
+  "card_number": "UTB01-005",
+  "card_name": "シナンジュ",
+  "series": "UTブースター1弾",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UTB01-005.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UTB01-005_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "UTB01-005",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト6"
+    },
+    "name": "シナンジュ",
+    "model": "MSN-06S SINANJU",
+    "cost": 6,
+    "category": "遠距離",
+    "affiliation": "ネオ・ジオン残党軍『袖付き』",
+    "pilot": "フル・フロンタル",
+    "stats": {
+      "height": "22.6m",
+      "weight": "25.2t",
+      "mobility": 200,
+      "ranged_attack": 360,
+      "melee_attack": 120,
+      "hp": 420
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "C",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "ビーム・ライフル",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ビーム・アックス",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "断砕",
+      "activation": "任意発動",
+      "target": "単体(敵)",
+      "range": 3,
+      "cost": 3,
+      "description": "ロックオン中の敵ユニットに単体攻撃でダメージを与え、強化状態を無効化する。"
+    },
+    "link_ability": [
+      {
+        "name": "ガンダムUC",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ビーム・ライフル撃射",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3300,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "R",
+    "illustrator": "Robographer",
+    "raw": "MS\n\n遠距離　コスト6\nMSN-06S SINANJU\nシナンジュ\n\n全高　22.6m\n本体重量　25.2t\n所属　ネオ・ジオン残党軍『袖付き』\nパイロット　フル・フロンタル\n\n地上 A　宇宙 S　砂漠 C　水中 C\n\n機動力 200\n遠距離攻撃 360\n近距離攻撃 120\nHP 420\n\nWEAPON\nMAIN　ビーム・ライフル　射程 3　遠距離\nSUB　ビーム・アックス　射程 1　近距離\n\nLINK ABILITY\nガンダムUC　デッキに3枚以上\n[機動力]小アップ\n\nMS ABILITY\n断砕\n任意発動　単体(敵)　射程 3　コスト 3\n\nロックオン中の敵ユニットに単体攻撃で\nダメージを与え、強化状態を無効化する。\n\n多彩な戦術　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]\n小アップ\n\nSPECIAL ATTACK　　UNITED SP\nビーム・ライフル撃射　ー\n連携 ー　　連携 ー\n連携 ー　　連携 ー\n単体(敵)　射程 3　ー　射程 ー\nSPコスト 2　威力 3300 / ー\n\n敵単体に射撃攻撃でダメージを与える。\n/ ー\n\nIMPACT AREA\n[アイコン:射撃範囲 前方中距離]\n\nillust Robographer\n©創通・サンライズ\n機動戦士ガンダム ARSENAL BASE\nBANDAI MADE IN JAPAN\n\nUTB01-005　R"
+  },
+  "ocr_raw_file": "UTブースター1弾_UTB01-005_シナンジュ_ocr_raw.json",
+  "ocr_timestamp": "2026-02-28T02:27:42.879884",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

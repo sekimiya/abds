@@ -1,0 +1,91 @@
+{
+  "card_number": "FQ04-023",
+  "card_name": "ダリルバルデ",
+  "series": "FORSQUAD SEASON:04",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ04-023.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ04-023_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "FQ04-023",
+    "type": "MS",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト6"
+    },
+    "name": "ダリルバルデ",
+    "model": "MD-0064 DARILBALDE",
+    "cost": 6,
+    "category": "近距離",
+    "affiliation": "ジェターク・ヘビー・マシーナリー",
+    "pilot": "グエル・ジェターク",
+    "stats": {
+      "height": "18.7m",
+      "weight": "72.8t",
+      "mobility": 290,
+      "ranged_attack": 100,
+      "melee_attack": 550,
+      "hp": 610
+    },
+    "terrain_compatibility": {
+      "ground": "S",
+      "space": "A",
+      "desert": "C",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "ビームカタナ",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "ビームショットライフル",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "圧倒",
+      "activation": "任意発動",
+      "target": "単体(敵)",
+      "range": 2,
+      "cost": 3,
+      "description": "ロックオン中の敵が弱体化状態の時に発動可能となり、敵に単体攻撃でダメージを与え、その攻撃は必ずクリティカルになる。"
+    },
+    "link_ability": [
+      {
+        "name": "水星の魔女",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "肉薄する戦い",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "グスター・イーシュヴァラ連携",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3600,
+      "description": "敵単体に格闘攻撃でダメージを与え、一定時間、敵ユニットの被ダメージを上昇させる。",
+      "united_sp": {
+        "partner1": null,
+        "partner2": null,
+        "partner3": null,
+        "partner4": null,
+        "range": null,
+        "power": null,
+        "description": null
+      }
+    },
+    "rarity": "P",
+    "illustrator": "deraken",
+    "raw": "近距離 コスト6 MS\n\nMD-0064 DARILBALDE\nダリルバルデ\n\n水星の魔女\n\n頭頂高 18.7m\n本体重量 72.8t\n所属 ジェターク・ヘビー・マシーナリー\nパイロット グエル・ジェターク\n\n地上 S 宇宙 A 砂漠 C 水中 C\n機動力 290\n遠距離攻撃 100\n近距離攻撃 550\nHP 610\n\nWEAPON\nMAIN ビームカタナ 射程1 近距離\nSUB ビームショットライフル 射程3 遠距離\n\nLINK ABILITY\n水星の魔女 デッキに3枚以上\n[機動力]小アップ\n\nMS ABILITY\n圧倒\n任意発動 単体(敵) 射程2 コスト3\nロックオン中の敵が弱体化状態の時に発動可能となり、敵に単体攻撃でダメージを与え、その攻撃は必ずクリティカルになる。\n\n肉薄する戦い デッキに4枚以上\n[機動力][近距離攻撃力]小アップ\n\nIMPACT AREA\n[アイコン:中央やや下に黄緑丸]\n\nSPECIAL ATTACK\nUNITED SP\nグスター・イーシュヴァラ連携\n連携 ー 連携 ー\n連携 ー 連携 ー\n単体(敵) 射程2\nSPコスト 2 威力 3600 / ー\n\n敵単体に格闘攻撃でダメージを与え、一定時間、敵ユニットの被ダメージを上昇させる。/ ー\n\nillust deraken\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nFQ04-023 P"
+  },
+  "ocr_raw_file": "FORSQUAD_SEASON_04_FQ04-023_ダリルバルデ_ocr_raw.json",
+  "ocr_timestamp": "2026-02-24T18:20:58.359154",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

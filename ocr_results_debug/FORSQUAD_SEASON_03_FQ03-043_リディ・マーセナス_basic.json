@@ -1,0 +1,63 @@
+{
+  "card_number": "FQ03-043",
+  "card_name": "リディ・マーセナス",
+  "series": "FORSQUAD SEASON:03",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ03-043.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ03-043_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "FQ03-043",
+    "type": "PL",
+    "card_label": {
+      "class": "防衛",
+      "cost_label": "コスト2"
+    },
+    "name": "リディ・マーセナス",
+    "english_name": "RIDDHE MARCENAS",
+    "cost": 2,
+    "category": "防衛",
+    "affiliation": "地球連邦軍",
+    "physical": {
+      "height": null,
+      "age": 23
+    },
+    "units": [
+      "バンシィ・ノルン"
+    ],
+    "stats": {
+      "mobility": 210,
+      "ranged_attack": 330,
+      "melee_attack": 40,
+      "hp": 210
+    },
+    "pilot_skill": {
+      "name": "即応の射撃体勢",
+      "trigger": "MSアビリティ発動時",
+      "effect": "SQゲージ中アップ。",
+      "has_sq_skill": true,
+      "sq_skill_details": {
+        "sq_gauge_effect": "SQゲージ中アップ。",
+        "sq_max_effect": null,
+        "squad_rush_effect": "自身の[機動力][遠距離攻撃力]をアップする。"
+      }
+    },
+    "link_ability": [
+      {
+        "name": "虹の彼方に",
+        "condition": "デッキに3枚以上",
+        "effect": "SQゲージが表示される。SQゲージを溜めるとSQUAD RUSHが発動できる。[HP][SP威力]小アップ"
+      },
+      {
+        "name": "的確な一撃",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][遠距離攻撃力]小アップ"
+      }
+    ],
+    "rarity": "P",
+    "illustrator": null,
+    "raw": "防衛 コスト2\n\nPL\n\nリディ・マーセナス\nRIDDHE MARCENAS\n\n[ロゴ:機動戦士ガンダムUC]\n[アイコン:地球連邦軍]\n\n身長 ー\n年齢 23歳\n所属 地球連邦軍\n搭乗機体 バンシィ・ノルン\n\nSQ PL SKILL\n即応の射撃体勢\nMSアビリティ発動時\nSQゲージ中アップ。\n\nSQUAD RUSH中\n自身の[機動力][遠距離攻撃力]をアップする。\n\nSQ LINK ABILITY\n虹の彼方に デッキに3枚以上\nSQゲージが表示される。\nSQゲージを溜めるとSQUAD RUSHが発動できる。\n[HP][SP威力]小アップ\n\n的確な一撃 デッキに4枚以上\n[機動力][遠距離攻撃力]小アップ\n\n機動力 210\n遠距離攻撃 330\n近距離攻撃 40\nHP 210\n\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\n\nFQ03-043 P"
+  },
+  "ocr_raw_file": "FORSQUAD_SEASON_03_FQ03-043_リディ・マーセナス_ocr_raw.json",
+  "ocr_timestamp": "2026-02-24T16:20:07.728102",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

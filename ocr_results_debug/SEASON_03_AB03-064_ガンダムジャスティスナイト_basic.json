@@ -1,0 +1,83 @@
+{
+  "card_number": "AB03-064",
+  "card_name": "ガンダムジャスティスナイト",
+  "series": "SEASON:03",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB03-064.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB03-064_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "AB03-064",
+    "type": "MS",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト2"
+    },
+    "name": "ガンダムジャスティスナイト",
+    "model": "ZGMF-X19AK GUNDAM JUSTICE KNIGHT",
+    "cost": 2,
+    "category": "近距離",
+    "affiliation": "BUILD DIVERS",
+    "pilot": "カザミ",
+    "stats": {
+      "height": "18.9m",
+      "weight": "61.78t",
+      "mobility": 100,
+      "ranged_attack": 90,
+      "melee_attack": 230,
+      "hp": 180
+    },
+    "terrain_compatibility": {
+      "ground": "S",
+      "space": "A",
+      "desert": "B",
+      "water": null
+    },
+    "weapon": {
+      "main": {
+        "name": "ライテイ ショットランサー",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "ライテイショットランサー(射撃)",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "強撃",
+      "activation": "任意発動",
+      "target": "単体(敵)",
+      "range": 1,
+      "cost": 3,
+      "description": "ロックオン中の敵に単体攻撃でダメージを与える。"
+    },
+    "link_ability": [
+      {
+        "name": "Re:RISE",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力]小アップ"
+      },
+      {
+        "name": "間合いを詰めた接近戦",
+        "condition": "デッキに2枚以上",
+        "effect": "[近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ライテイ ショットランサー激突",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3100,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "C",
+    "illustrator": "Robographer",
+    "raw": "MS\n\n近距離 コスト2\n\nZGMF-X19AK GUNDAM JUSTICE KNIGHT\nガンダムジャスティスナイト\n\n全高 18.9m\n本体重量 61.78t\n所属 BUILD DIVERS\nパイロット カザミ\n\n地上 S 宇宙 A 砂漠 B\n機動力 100\n遠距離攻撃 90\n近距離攻撃 230\nHP 180\n\nWEAPON\n\nMAIN ライテイ ショットランサー 射程 1 近距離\nSUB ライテイショットランサー(射撃) 射程 3 遠距離\n\nLINK ABILITY\n\nRe:RISE デッキに3枚以上\n[遠距離攻撃力] 小アップ\n\n間合いを詰めた接近戦 デッキに2枚以上\n[近距離攻撃力] 小アップ\n\nMS ABILITY\n\n強撃\n任意発動 単体(敵) 射程 1 コスト 3\nロックオン中の敵に単体攻撃でダメージを与える。\n\nSPECIAL ATTACK\n\nライテイ ショットランサー激突\n単体(敵) 射程 2\nSPコスト 2 威力 3100\n敵単体に格闘攻撃でダメージを与える。\n\nIMPACT AREA\n\n[アイコン:緑丸] (中段右寄り)\n[アイコン:緑丸] (下段中央)\n[アイコン:白三角] (最下段中央)\n\nillust Robographer\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\n\nAB03-064 C"
+  },
+  "ocr_raw_file": "SEASON_03_AB03-064_ガンダムジャスティスナイト_ocr_raw.json",
+  "ocr_timestamp": "2026-02-23T15:17:32.961285",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli"
+}

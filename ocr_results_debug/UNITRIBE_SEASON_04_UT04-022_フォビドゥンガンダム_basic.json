@@ -1,0 +1,83 @@
+{
+  "card_number": "UT04-022",
+  "card_name": "フォビドゥンガンダム",
+  "series": "UNITRIBE SEASON:04",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT04-022.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT04-022_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "UT04-022",
+    "type": "MS",
+    "card_label": {
+      "class": "機動",
+      "cost_label": "コスト6"
+    },
+    "name": "フォビドゥンガンダム",
+    "model": "GAT-X252 FORBIDDEN GUNDAM",
+    "cost": 6,
+    "category": "機動",
+    "affiliation": "地球連合軍",
+    "pilot": "シャニ・アンドラス",
+    "stats": {
+      "height": "17.47m",
+      "weight": "85.33t",
+      "mobility": 250,
+      "ranged_attack": 50,
+      "melee_attack": 330,
+      "hp": 370
+    },
+    "terrain_compatibility": {
+      "ground": "S",
+      "space": "A",
+      "desert": "C",
+      "water": "A"
+    },
+    "weapon": {
+      "main": {
+        "name": "ニーズヘグ",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "エクツァーン",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "強撃",
+      "activation": "任意発動",
+      "target": "単体(敵)",
+      "range": 1,
+      "cost": 3,
+      "description": "ロックオン中の敵に単体攻撃でダメージを与える。"
+    },
+    "link_ability": [
+      {
+        "name": "ガンダムSEED",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ニーズヘグ強撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3300,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "C",
+    "illustrator": "J.YUZURU(willow_works)",
+    "raw": "機動 コスト6 MS\n\nGAT-X252 FORBIDDEN GUNDAM\nフォビドゥンガンダム\n\n頭頂高 17.47m\n本体重量 85.33t\n所属 地球連合軍\nパイロット シャニ・アンドラス\n\n地上 S 宇宙 A 砂漠 C 水中 A\n\n機動力 250\n遠距離攻撃 50\n近距離攻撃 330\nHP 370\n\nWEAPON\nMAIN ニーズヘグ 射程 1 近距離\nSUB エクツァーン 射程 3 遠距離\n\nLINK ABILITY\nガンダムSEED デッキに3枚以上\n[機動力]小アップ\n\n戦況を変える力 デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nMS ABILITY\n強撃\n任意発動 単体(敵) 射程 1 コスト 3\nロックオン中の敵に単体攻撃でダメージを与える。\n\nSPECIAL ATTACK　　UNITED SP\nニーズヘグ強撃　　ー\n連携 ー　　連携 ー\n連携 ー　　連携 ー\n単体(敵) 射程 2　　ー 射程 ー\nSPコスト 2 威力 3300 / ー\n敵単体に格闘攻撃でダメージを与える。\n/ ー\n\nIMPACT AREA\n[アイコン:3x3グリッド 中央と右下に緑丸]\n\nillust J.YUZURU(willow_works)\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nUT04-022 C"
+  },
+  "ocr_raw_file": "UNITRIBE_SEASON_04_UT04-022_フォビドゥンガンダム_ocr_raw.json",
+  "ocr_timestamp": "2026-02-28T08:29:06.039556",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

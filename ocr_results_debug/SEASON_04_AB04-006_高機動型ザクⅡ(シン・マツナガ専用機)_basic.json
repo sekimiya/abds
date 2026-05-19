@@ -1,0 +1,78 @@
+{
+  "card_number": "AB04-006",
+  "card_name": "高機動型ザクⅡ(シン・マツナガ専用機)",
+  "series": "SEASON:04",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB04-006.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB04-006_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "AB04-006",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト5"
+    },
+    "name": "高機動型ザクⅡ(シン・マツナガ専用機)",
+    "model": "MS-06R-1A ZAKUⅡ HIGH MOBILITY TYPE",
+    "cost": 5,
+    "category": "遠距離",
+    "affiliation": "ジオン公国軍",
+    "pilot": "シン・マツナガ",
+    "stats": {
+      "height": "18.0m",
+      "weight": "61.8t",
+      "mobility": 240,
+      "ranged_attack": 280,
+      "melee_attack": 80,
+      "hp": 200
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "C",
+      "water": null
+    },
+    "weapon": {
+      "main": {
+        "name": "320mm試作バズーカ",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ヒート・ホーク",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "妨害[遠距離]",
+      "activation": "出撃時発動",
+      "target": "範囲(敵)",
+      "range": null,
+      "cost": null,
+      "description": "20秒間、自身を中心とした大範囲内の敵ユニットの[遠距離攻撃力]を小ダウンする。"
+    },
+    "link_ability": [
+      {
+        "name": "MSV",
+        "condition": "デッキに2枚以上",
+        "effect": "[遠距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "320mm試作バズーカ撃射",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3300,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "R",
+    "illustrator": "Yousuke Ishibashi",
+    "raw": "MS\n\n遠距離　コスト5\n\nMS-06R-1A ZAKUⅡ HIGH MOBILITY TYPE\n高機動型ザクⅡ(シン・マツナガ専用機)\n\n全高　18.0m\n本体重量　61.8t\n所属　ジオン公国軍\nパイロット　シン・マツナガ\n\n地上　A　宇宙　S　砂漠　C\n\n機動力 240\n遠距離攻撃 280\n近距離攻撃 80\nHP 200\n\nWEAPON\n\nMAIN 320mm試作バズーカ　射程 3　遠距離\nSUB ヒート・ホーク　射程 1　近距離\n\nLINK ABILITY\n\nMSV　デッキに2枚以上\n[遠距離攻撃力]小アップ\n\nMS ABILITY\n\n妨害[遠距離]\n出撃時発動　範囲(敵)　射程 ー　コスト ー\n\n20秒間、自身を中心とした大範囲内の敵ユニットの[遠距離攻撃力]を小ダウンする。\n\nIMPACT AREA\n\nSPECIAL ATTACK\n\n320mm試作バズーカ撃射\n単体(敵)　射程 3\nSPコスト 2　威力 3300\n\n敵単体に射撃攻撃でダメージを与える。\n\n[アイコン:MOBILE SUIT VARIATION MSV]\n\nillust Yousuke Ishibashi\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\nAB04-006　R"
+  },
+  "ocr_raw_file": "SEASON_04_AB04-006_高機動型ザクⅡ(シン・マツナガ専用機)_ocr_raw.json",
+  "ocr_timestamp": "2026-02-23T15:20:17.338345",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli"
+}

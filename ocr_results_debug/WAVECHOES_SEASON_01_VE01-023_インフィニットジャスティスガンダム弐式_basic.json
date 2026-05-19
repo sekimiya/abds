@@ -1,0 +1,94 @@
+{
+  "card_number": "VE01-023",
+  "card_name": "インフィニットジャスティスガンダム弐式",
+  "series": "WAVECHOES SEASON:01",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE01-023.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE01-023_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "VE01-023",
+    "type": "MS",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト6"
+    },
+    "name": "インフィニットジャスティスガンダム弐式",
+    "model": "ZGMF-X191M2 INFINITE JUSTICE GUNDAM TYPEⅡ",
+    "cost": 6,
+    "category": "近距離",
+    "affiliation": "ターミナル",
+    "pilot": "アスラン・ザラ、カガリ・ユラ・アスハ",
+    "stats": {
+      "height": "19.64m",
+      "weight": "78.07t",
+      "mobility": 290,
+      "ranged_attack": 70,
+      "melee_attack": 650,
+      "hp": 590
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "A",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "アンビデクストラス・ハルバード",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "高エネルギービームライフル",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "飛転",
+      "activation": "任意発動",
+      "target": "特殊(自分)",
+      "range": null,
+      "cost": 5,
+      "description": "指定した味方ユニットの範囲内に移動する。15秒間自身の[遠距離攻撃力]をダウンさせ、[近距離攻撃力]をアップさせる。なお、回避した場合の修理時間が発生する。"
+    },
+    "link_ability": [
+      {
+        "name": "SEED FREEDOM",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "アンビデクストラス・ハルバード連撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3700,
+      "description": "敵単体に格闘攻撃でダメージを与え、一定時間、自身の[機動力][近距離攻撃力]をアップする。",
+      "echoes_beat": {
+        "eb_type": "sp",
+        "eb_name": "スピッツェシュヴァート ビームホーン Lv.3",
+        "eb_level": 3,
+        "eb_note": "ECHOES BEAT Lv.を下げることで、共鳴戦術技が発動する。",
+        "eb_target": "単体(敵)",
+        "eb_range": 2,
+        "eb_power": 5200,
+        "eb_description": "EBLv.を3下げる。敵単体に格闘攻撃でダメージを与え、一定時間、自身の[機動力]をアップし、受けるダメージを軽減する。以後通常攻撃がメイン武器のみになり、近距離攻撃力が一定値以上の間、撃破効果を持つ特殊攻撃に変化する。出撃時1度のみ使用可能。"
+      },
+      "united_sp": null,
+      "sp_type": "ECHOES BEAT SP"
+    },
+    "rarity": "U",
+    "illustrator": "Eske Yoshinob",
+    "raw": ""
+  },
+  "ocr_raw_file": "WAVECHOES_SEASON_01_VE01-023_インフィニットジャスティスガンダム弐式_ocr_raw.json",
+  "ocr_timestamp": "2026-03-28T07:39:26.198333",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

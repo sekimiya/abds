@@ -1,0 +1,83 @@
+{
+  "card_number": "UT06-005",
+  "card_name": "ジ・O",
+  "series": "UNITRIBE SEASON:06",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT06-005.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT06-005_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "UT06-005",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト3"
+    },
+    "name": "ジ・O",
+    "model": "PMX-003 THE-O",
+    "cost": 3,
+    "category": "遠距離",
+    "affiliation": "ティターンズ",
+    "pilot": "パプテマス・シロッコ",
+    "stats": {
+      "height": "28.4m",
+      "weight": "57.3t",
+      "mobility": 270,
+      "ranged_attack": 350,
+      "melee_attack": 50,
+      "hp": 380
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "C",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "ビーム・ライフル",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ビーム・ソード",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "再縮",
+      "activation": "任意発動",
+      "target": "範囲(味方)",
+      "range": null,
+      "cost": 2,
+      "description": "自身を中心とした大範囲内にいる、自身を除く味方ユニットのMSアビリティのクールタイムを、一定時間短縮する。"
+    },
+    "link_ability": [
+      {
+        "name": "機動戦士Zガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力]小アップ"
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ビーム・ライフル連携",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3400,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "P",
+    "illustrator": "Hayaken-sarena",
+    "raw": "MS\n\n遠距離　コスト3\n\nPMX-003 THE-O\nジ・O\n\n[アイコン:機動戦士Zガンダム]\n\n頭頂高　28.4m\n本体重量　57.3t\n所属　ティターンズ\nパイロット　パプテマス・シロッコ\n\n地上 A　宇宙 S　砂漠 C　水中 C\n機動力 270\n遠距離攻撃 350\n近距離攻撃 50\nHP 380\n\nWEAPON\nMAIN ビーム・ライフル　射程 3　遠距離\nSUB ビーム・ソード　射程 1　近距離\n\nLINK ABILITY\n機動戦士Zガンダム　デッキに3枚以上\n[遠距離攻撃力]小アップ\n\nMS ABILITY\n再縮\n任意発動　範囲(味方)　射程 ー　コスト 2\n自身を中心とした大範囲内にいる、自身を除く味方ユニットのMSアビリティのクールタイムを、一定時間短縮する。\n\n多彩な戦術\nデッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nSPECIAL ATTACK　　UNITED SP\nビーム・ライフル連携　ー\n連携 ー　連携 ー\n連携 ー　連携 ー\n単体(敵)　射程 3　ー　射程 ー\nSPコスト 2　威力 3400 / ー\n敵単体に射撃攻撃でダメージを与える。\n/ ー\n\nIMPACT AREA\n[アイコン:大円形範囲・中央やや前方]\n\nillust Hayaken-sarena\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\nUT06-005 P"
+  },
+  "ocr_raw_file": "UNITRIBE_SEASON_06_UT06-005_ジ・O_ocr_raw.json",
+  "ocr_timestamp": "2026-02-26T17:33:09.943233",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

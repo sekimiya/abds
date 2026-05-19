@@ -1,0 +1,83 @@
+{
+  "card_number": "LX04-041",
+  "card_name": "ブレイズザクファントム(レイ・ザ・バレル専用機)",
+  "series": "LINXTAGE SEASON:04",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX04-041.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX04-041_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "LX04-041",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト3"
+    },
+    "name": "ブレイズザクファントム(レイ・ザ・バレル専用機)",
+    "model": "ZGMF-1001/M REY'S BLAZE ZAKU PHANTOM",
+    "cost": 3,
+    "category": "SEED DESTINY",
+    "affiliation": "ザフト",
+    "pilot": "レイ・ザ・バレル",
+    "stats": {
+      "height": "20.4m",
+      "weight": "91.2t",
+      "mobility": 260,
+      "ranged_attack": 330,
+      "melee_attack": 170,
+      "hp": 290
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "C",
+      "water": "A"
+    },
+    "weapon": {
+      "main": {
+        "name": "ビーム突撃銃",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ビームトマホーク",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "全弾発射",
+      "activation": "任意発動",
+      "target": "範囲(敵)",
+      "range": 3,
+      "cost": 5,
+      "description": "ロックオン中の敵を中心に扇状の範囲攻撃を行い、範囲内の敵にダメージを与え、以後通常攻撃がサブ武装のみになる。"
+    },
+    "link_ability": [
+      {
+        "name": "SEED DESTINY",
+        "condition": "デッキに3枚以上",
+        "effect": "[HP]小アップ"
+      },
+      {
+        "name": "的確な一撃",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][遠距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ファイヤビー誘導ミサイル爆撃",
+      "target": "範囲(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3000,
+      "description": "対象の敵を中心として範囲射撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "P",
+    "illustrator": "Nadare",
+    "raw": "遠距離　コスト3　MS\nZGMF-1001/M REY'S BLAZE ZAKU PHANTOM\nブレイズザクファントム(レイ・ザ・バレル専用機)\n\n全高　20.4m\n本体重量　91.2t　　地上 A　宇宙 S　砂漠 C　水中 A\n所属　ザフト　　　　　　　　　　　　機動力　260\nパイロット　レイ・ザ・バレル　　　　遠距離攻撃　330\n　　　　　　　　　　　　　　　　　　近距離攻撃　170\n　　　　　　　　　　　　　　　　　　HP　290\n\nWEAPON\nMAIN　ビーム突撃銃　　射程 3　遠距離\nSUB　ビームトマホーク　射程 1　近距離\n\nMS ABILITY\n全弾発射\n任意発動　範囲(敵)　射程 3　コスト 5\nロックオン中の敵を中心に扇状の範囲攻撃を行い、範囲内の敵にダメージを与え、以後通常攻撃がサブ武装のみになる。\n\nLINK ABILITY\nSEED DESTINY　デッキに3枚以上\n[HP]小アップ\n\n的確な一撃　デッキに4枚以上\n[機動力][遠距離攻撃力]小アップ\n\nSPECIAL ATTACK\nファイヤビー誘導ミサイル爆撃\n範囲(敵)　射程 3\nSPコスト 2　威力 3000\n対象の敵を中心として範囲射撃でダメージを与える。\n\nillust. Nadare\n©創通・サンライズ\nBANDAI MADE IN JAPAN\nLX04-041　P"
+  },
+  "ocr_raw_file": "LINXTAGE_SEASON_04_LX04-041_ブレイズザクファントム(レイ・ザ・バレル専用機)_ocr_raw.json",
+  "ocr_timestamp": "2026-03-07T19:03:36.612062",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

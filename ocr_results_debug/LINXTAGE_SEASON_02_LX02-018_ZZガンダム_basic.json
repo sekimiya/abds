@@ -1,0 +1,83 @@
+{
+  "card_number": "LX02-018",
+  "card_name": "ZZガンダム",
+  "series": "LINXTAGE SEASON:02",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX02-018.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX02-018_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "LX02-018",
+    "type": "MS",
+    "card_label": {
+      "class": "機動",
+      "cost_label": "コスト6"
+    },
+    "name": "ZZガンダム",
+    "model": "MSZ-010 ZZ GUNDAM",
+    "cost": 6,
+    "category": "MS",
+    "affiliation": "エゥーゴ",
+    "pilot": "ジュドー・アーシタ",
+    "stats": {
+      "height": "19.86m",
+      "weight": "32.7t",
+      "mobility": 190,
+      "ranged_attack": 350,
+      "melee_attack": 180,
+      "hp": 280
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "B",
+      "water": "A"
+    },
+    "weapon": {
+      "main": {
+        "name": "ダブル・ビーム・ライフル",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ハイパー・ビーム・サーベル",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "全弾発射",
+      "activation": "任意発動",
+      "target": "範囲（敵）",
+      "range": 3,
+      "cost": 5,
+      "description": "ロックオン中の敵を中心に扇状の範囲攻撃を行い、範囲内の敵にダメージを与え、以後通常攻撃がサブ武装のみになる。"
+    },
+    "link_ability": [
+      {
+        "name": "機動戦士ガンダムZZ",
+        "condition": "デッキに3枚以上",
+        "effect": "[HP]小アップ"
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ダブル・ビーム・ライフル撃射",
+      "target": "単体（敵）",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3200,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "C",
+    "illustrator": "funbolt",
+    "raw": "機動　コスト6　MS\nMSZ-010 ZZ GUNDAM\nZZガンダム\n全高　19.86m\n本体重量　32.7t\n所属　エゥーゴ\nパイロット　ジュドー・アーシタ\n地上 A　宇宙 S　砂漠 B　水中 A\n機動力　190\n遠距離攻撃　350\n近距離攻撃　180\nHP　280\n\nWEAPON\nMAIN　ダブル・ビーム・ライフル　射程 3　遠距離\nSUB　ハイパー・ビーム・サーベル　射程 1　近距離\n\nMS ABILITY\n全弾発射\n任意発動　範囲（敵）　射程 3　コスト 5\nロックオン中の敵を中心に扇状の範囲攻撃を行い、範囲内の敵にダメージを与え、以後通常攻撃がサブ武装のみになる。\n\nLINK ABILITY\n機動戦士ガンダムZZ　デッキに3枚以上\n[HP]小アップ\n\n戦況を変える力　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nSPECIAL ATTACK\nダブル・ビーム・ライフル撃射\n単体（敵）　射程 3\nSPコスト 2　威力　3200\n敵単体に射撃攻撃でダメージを与える。\n\nIMPACT AREA\n\nillust. funbolt\n©創通・サンライズ\nBANDAI MADE IN JAPAN\nLX02-018　C"
+  },
+  "ocr_raw_file": "LINXTAGE_SEASON_02_LX02-018_ZZガンダム_ocr_raw.json",
+  "ocr_timestamp": "2026-03-07T15:50:18.715720",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

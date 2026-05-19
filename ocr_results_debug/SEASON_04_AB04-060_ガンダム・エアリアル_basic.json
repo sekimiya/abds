@@ -1,0 +1,83 @@
+{
+  "card_number": "AB04-060",
+  "card_name": "ガンダム・エアリアル",
+  "series": "SEASON:04",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB04-060.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB04-060_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "AB04-060",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト3"
+    },
+    "name": "ガンダム・エアリアル",
+    "model": "XVX-016 GUNDAM AERIAL",
+    "cost": 3,
+    "category": "遠距離",
+    "affiliation": "シン・セー開発公社",
+    "pilot": "スレッタ・マーキュリー",
+    "stats": {
+      "height": "18.0m",
+      "weight": "43.9t",
+      "mobility": 200,
+      "ranged_attack": 290,
+      "melee_attack": 80,
+      "hp": 180
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "A",
+      "desert": "C",
+      "water": null
+    },
+    "weapon": {
+      "main": {
+        "name": "ビームライフル",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ビームサーベル",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "オールレンジ[妨撃]",
+      "activation": "任意発動",
+      "target": "範囲(敵)",
+      "range": 4,
+      "cost": 3,
+      "description": "30秒間、自身の周囲の敵ユニットに継続的にダメージを与え、[遠距離攻撃力][近距離攻撃力]を小ダウンする。"
+    },
+    "link_ability": [
+      {
+        "name": "水星の魔女",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "オールレンジ兵器",
+        "condition": "デッキに2枚以上",
+        "effect": "[遠距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ビームライフル撃射",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3200,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "R",
+    "illustrator": "StudioVIGOR Co.,Ltd.",
+    "raw": "遠距離　コスト3\n\nMS\n\nXVX-016 GUNDAM AERIAL\nガンダム・エアリアル\n\n水星の魔女\n\n頭頂高　18.0m\n本体重量　43.9t\n所属　シン・セー開発公社\nパイロット　スレッタ・マーキュリー\n\n地上　A　宇宙　A　砂漠　C\n\n機動力　200\n遠距離攻撃　290\n近距離攻撃　80\nHP　180\n\nWEAPON\nMAIN　ビームライフル　射程 3　遠距離\nSUB　ビームサーベル　射程 1　近距離\n\nLINK ABILITY\n水星の魔女　デッキに3枚以上\n[機動力]小アップ\n\nオールレンジ兵器　デッキに2枚以上\n[遠距離攻撃力]小アップ\n\nMS ABILITY\nオールレンジ[妨撃]\n任意発動　範囲(敵)　射程 4　コスト 3\n30秒間、自身の周囲の敵ユニットに継続的にダメージを与え、[遠距離攻撃力][近距離攻撃力]を小ダウンする。\n\nSPECIAL ATTACK\nビームライフル撃射\n単体(敵)　射程 3\nSPコスト 2　威力 3200\n敵単体に射撃攻撃でダメージを与える。\n\nIMPACT AREA\n[アイコン:中央やや下に黄色菱形ハイライト]\n\nillust StudioVIGOR Co.,Ltd.\n©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\nAB04-060　R"
+  },
+  "ocr_raw_file": "SEASON_04_AB04-060_ガンダム・エアリアル_ocr_raw.json",
+  "ocr_timestamp": "2026-03-02T06:06:47.337328",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

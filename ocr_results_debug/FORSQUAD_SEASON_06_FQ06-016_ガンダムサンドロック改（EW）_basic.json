@@ -1,0 +1,83 @@
+{
+  "card_number": "FQ06-016",
+  "card_name": "ガンダムサンドロック改（EW）",
+  "series": "FORSQUAD SEASON:06",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ06-016.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ06-016_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "FQ06-016",
+    "type": "MS",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト5"
+    },
+    "name": "ガンダムサンドロック改(EW)",
+    "model": "XXXG-01SR2 GUNDAM SANDROCK CUSTOM[EW]",
+    "cost": 5,
+    "category": "近距離",
+    "affiliation": "ー",
+    "pilot": "カトル・ラバーバ・ウィナー",
+    "stats": {
+      "height": "16.5m",
+      "weight": "7.9t",
+      "mobility": 280,
+      "ranged_attack": 40,
+      "melee_attack": 420,
+      "hp": 360
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "S",
+      "water": "B"
+    },
+    "weapon": {
+      "main": {
+        "name": "ヒートショーテル",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "ヒートショーテル(投擲)",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "強撃",
+      "activation": "任意発動",
+      "target": "単体(敵)",
+      "range": 1,
+      "cost": 3,
+      "description": "ロックオン中の敵に単体攻撃でダメージを与える。"
+    },
+    "link_ability": [
+      {
+        "name": "Endless Waltz",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ヒートショーテル強襲",
+      "target": "範囲(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 2900,
+      "description": "自身を中心とした小範囲に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "C",
+    "illustrator": "J.YUZURU(willow_works)",
+    "raw": "近距離　コスト5\n\nXXXG-01SR2 GUNDAM SANDROCK CUSTOM[EW]\nガンダムサンドロック改(EW)\n\nMS\n\n頭頂高　16.5m\n本体重量　7.9t\n所属　ー\nパイロット　カトル・ラバーバ・ウィナー\n\n地上 A　宇宙 S　砂漠 S　水中 B\n\n機動力 280\n遠距離攻撃 40\n近距離攻撃 420\nHP 360\n\nWEAPON\n\nMAIN ヒートショーテル　射程 1　近距離\nSUB ヒートショーテル(投擲)　射程 3　遠距離\n\nLINK ABILITY\n\nEndless Waltz　デッキに3枚以上\n[遠距離攻撃力][近距離攻撃力]\n小アップ\n\n戦況を変える力　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]\n小アップ\n\nMS ABILITY\n\n強撃\n任意発動　単体(敵)　射程 1　コスト 3\n\nロックオン中の敵に単体攻撃でダメージを与える。\n\nSPECIAL ATTACK　　UNITED SP\n\nヒートショーテル強襲　ー\n連携 ー　　連携 ー\n連携 ー　　連携 ー\n範囲(敵)　射程 2　ー　射程 ー\nSPコスト 2　威力 2900 / ー\n\n自身を中心とした小範囲に格闘攻撃でダメージを与える。/ ー\n\nIMPACT AREA\n[アイコン:自身中心の小範囲円形]\n\nillustr J.YUZURU(willow_works)\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n\n機動戦士ガンダム ARSENAL BASE\n\nFQ06-016　C"
+  },
+  "ocr_raw_file": "FORSQUAD_SEASON_06_FQ06-016_ガンダムサンドロック改（EW）_ocr_raw.json",
+  "ocr_timestamp": "2026-02-24T18:38:29.558400",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

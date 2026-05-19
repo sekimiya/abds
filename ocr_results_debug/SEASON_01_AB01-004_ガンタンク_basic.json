@@ -1,0 +1,78 @@
+{
+  "card_number": "AB01-004",
+  "card_name": "ガンタンク",
+  "series": "SEASON:01",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB01-004.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB01-004_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "AB01-004",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト5"
+    },
+    "name": "ガンタンク",
+    "model": "RX-75 GUNTANK",
+    "cost": 5,
+    "category": "遠距離",
+    "affiliation": "地球連邦軍",
+    "pilot": "ハヤト・コバヤシ",
+    "stats": {
+      "height": "15.0m",
+      "weight": "56.0t",
+      "mobility": 60,
+      "ranged_attack": 280,
+      "melee_attack": 50,
+      "hp": 180
+    },
+    "terrain_compatibility": {
+      "ground": "S",
+      "space": "C",
+      "desert": "S",
+      "water": null
+    },
+    "weapon": {
+      "main": {
+        "name": "120mmキャノン砲",
+        "range": 4,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ボップ・ミサイル",
+        "range": 2,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "砲撃",
+      "activation": "任意発動",
+      "target": "範囲(敵)",
+      "range": 5,
+      "cost": 4,
+      "description": "射程範囲内の指定した位置に小範囲の砲撃を行い、範囲内の敵にダメージを与える。"
+    },
+    "link_ability": [
+      {
+        "name": "機動戦士ガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "120mmキャノン砲砲撃",
+      "target": "範囲(敵)",
+      "range": 4,
+      "sp_cost": 3,
+      "power": 3200,
+      "description": "対象の敵を中心として範囲射撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "C",
+    "illustrator": "deraken",
+    "raw": "MS\n\n遠距離 コスト5\n\nRX-75 GUNTANK\nガンタンク\n\n全高 15.0m\n本体重量 56.0t\n所属 地球連邦軍\nパイロット ハヤト・コバヤシ\n\n地上 S 宇宙 C 砂漠 S\n機動力 60\n遠距離攻撃 280\n近距離攻撃 50\nHP 180\n\nWEAPON\n\nMAIN 120mmキャノン砲 射程 4 遠距離\nSUB ボップ・ミサイル 射程 2 近距離\n\nLINK ABILITY\n\n機動戦士ガンダム デッキに3枚以上\n[機動力]小アップ\n\nMS ABILITY\n\n砲撃\n任意発動 範囲(敵) 射程 5 コスト 4\n\n射程範囲内の指定した位置に小範囲の砲撃を行い、範囲内の敵にダメージを与える。\n\nIMPACT AREA\n\n[アイコン:中央にバツ印のある円形範囲、黄緑色の小範囲円]\n\nSPECIAL ATTACK\n\n120mmキャノン砲砲撃\n範囲(敵) 射程 4\nSPコスト 3 威力 3200\n\n対象の敵を中心として範囲射撃でダメージを与える。\n\nillust deraken\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n\n[アイコン:機動戦士ガンダム ARSENAL BASE ロゴ]\n\nAB01-004 C"
+  },
+  "ocr_raw_file": "SEASON_01_AB01-004_ガンタンク_ocr_raw.json",
+  "ocr_timestamp": "2026-02-23T11:59:36.913508",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli"
+}

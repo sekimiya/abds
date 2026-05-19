@@ -1,0 +1,83 @@
+{
+  "card_number": "PR-439",
+  "card_name": "グフ・カスタム",
+  "series": "プロモーション",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-439.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-439_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "PR-439",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト3"
+    },
+    "name": "グフ・カスタム",
+    "model": "MS-07B-3 GOUF CUSTOM",
+    "cost": 3,
+    "category": "遠距離",
+    "affiliation": "ジオン公国軍",
+    "pilot": "ノリス・パッカード",
+    "stats": {
+      "height": "18.2m",
+      "weight": "58.5t",
+      "mobility": 220,
+      "ranged_attack": 300,
+      "melee_attack": 90,
+      "hp": 340
+    },
+    "terrain_compatibility": {
+      "ground": "S",
+      "space": "C",
+      "desert": "A",
+      "water": "B"
+    },
+    "weapon": {
+      "main": {
+        "name": "ガトリング・シールド",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ヒート・サーベル",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "補給[弱体化解除]",
+      "activation": "任意発動",
+      "target": "範囲(味方)",
+      "range": null,
+      "cost": 5,
+      "description": "自身を中心とした大範囲の味方ユニットのHPを中回復し、弱体化状態を無効化する。"
+    },
+    "link_ability": [
+      {
+        "name": "第08MS小隊",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ガトリング・シールド撃射",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3300,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "PR",
+    "illustrator": "nakazaki tow",
+    "raw": "MS\n\n遠距離 コスト3\n\nMS-07B-3 GOUF CUSTOM\nグフ・カスタム\n\n[アイコン:機動戦士ガンダム 第08MS小隊 シリーズロゴ]\n\n頭頂高 18.2m\n本体重量 58.5t\n所属 ジオン公国軍\nパイロット ノリス・パッカード\n\n地上 S 宇宙 C 砂漠 A 水中 B\n\n機動力 220\n遠距離攻撃 300\n近距離攻撃 90\nHP 340\n\nWEAPON\nMAIN ガトリング・シールド 射程 3 遠距離\nSUB ヒート・サーベル 射程 1 近距離\n\nMS ABILITY\n補給[弱体化解除]\n任意発動 範囲(味方) 射程 — コスト 5\n自身を中心とした大範囲の味方ユニットのHPを中回復し、弱体化状態を無効化する。\n\nLINK ABILITY\n第08MS小隊 デッキに3枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n多彩な戦術 デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nSPECIAL ATTACK | ECHOES BEAT\nガトリング・シールド撃射 —\n単体(敵) 射程 3 — 射程 —\nSPコスト 2 威力 3300 / —\n敵単体に射撃攻撃でダメージを与える。\n/ —\n\nIMPACT AREA\n[アイコン:インパクトエリアグリッド]\n\nillust nakazaki tow\n© 創通・サンライズ © 創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\nNOT FOR SALE\nPR-439 PR"
+  },
+  "ocr_raw_file": "プロモーション_PR-439_グフ・カスタム_ocr_raw.json",
+  "ocr_timestamp": "2026-05-19T00:00:00",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

@@ -1,0 +1,83 @@
+{
+  "card_number": "FQB01-014",
+  "card_name": "高機動型ザクⅡ(シン・マツナガ専用機)",
+  "series": "FQブースター1弾",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQB01-014.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQB01-014_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "FQB01-014",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト3"
+    },
+    "name": "高機動型ザクⅡ(シン・マツナガ専用機)",
+    "model": "MS-06R-1A ZAKUⅡ HIGH MOBILITY TYPE",
+    "cost": 3,
+    "category": "遠距離",
+    "affiliation": "ジオン公国軍",
+    "pilot": "シン・マツナガ",
+    "stats": {
+      "height": "18.0m",
+      "weight": "61.8t",
+      "mobility": 310,
+      "ranged_attack": 360,
+      "melee_attack": 50,
+      "hp": 330
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "C",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "320mm試作バズーカ",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ヒート・ホーク",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "増援[防衛]",
+      "activation": "任意発動",
+      "target": "特殊(自分)",
+      "range": null,
+      "cost": 4,
+      "description": "自身の周囲に防衛タイプの味方ユニットを呼び出す。※上限3ユニットまで。"
+    },
+    "link_ability": [
+      {
+        "name": "U.C. ENGAGE",
+        "condition": "デッキに2枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "320mm試作バズーカ撃射",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3400,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "P",
+    "illustrator": "deraken",
+    "raw": "遠距離　コスト3　MS\n\nMS-06R-1A ZAKUⅡ HIGH MOBILITY TYPE\n高機動型ザクⅡ(シン・マツナガ専用機)\n\n機動戦士ガンダム U.C. ENGAGE\n\n頭頂高　18.0m\n本体重量　61.8t\n所属　ジオン公国軍\nパイロット　シン・マツナガ\n\n[アイコン:地上A] [アイコン:宇宙S] [アイコン:砂漠C] [アイコン:水中C]\n\n機動力　310\n遠距離攻撃　360\n近距離攻撃　50\nHP　330\n\nWEAPON\nMAIN　320mm試作バズーカ　射程 3　遠距離\nSUB　ヒート・ホーク　射程 1　近距離\n\nLINK ABILITY\nU.C. ENGAGE　デッキに2枚以上\n[機動力]小アップ\n\n多彩な戦術　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nMS ABILITY\n増援[防衛]\n任意発動　特殊(自分)　射程 —　コスト 4\n自身の周囲に防衛タイプの味方ユニットを呼び出す。※上限3ユニットまで。\n\nIMPACT AREA\n[アイコン:射程3グリッド表示]\n\nSPECIAL ATTACK　　UNITED SP\n320mm試作バズーカ撃射　　ー\n連携 ー　　連携 ー\n連携 ー　　連携 ー\n単体(敵)　射程 3　　ー　射程 ー\nSPコスト 2　　威力　3400 / ー\n敵単体に射撃攻撃でダメージを与える。\n/ ー\n\nillust　deraken\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nFQB01-014　P"
+  },
+  "ocr_raw_file": "FQブースター1弾_FQB01-014_高機動型ザクⅡ(シン・マツナガ専用機)_ocr_raw.json",
+  "ocr_timestamp": "2026-02-28T03:24:40.167935",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

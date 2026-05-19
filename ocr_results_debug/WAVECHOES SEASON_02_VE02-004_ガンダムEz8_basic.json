@@ -1,0 +1,88 @@
+{
+  "card_number": "VE02-004",
+  "card_name": "ガンダムEz8",
+  "series": "WAVECHOES SEASON:02",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE02-004.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE02-004_b.jpg?v250630",
+  "ocr_engine": "claude_code_subagent",
+  "ocr_type": "basic",
+  "ocr_timestamp": "2026-04-22T20:30:00.000000",
+  "ocr_data": {
+    "card_id": "VE02-004",
+    "type": "MS",
+    "name": "ガンダムEz8",
+    "model": "RX-79[G]Ez-8 GUNDAM Ez8",
+    "cost": 3,
+    "category": "遠距離",
+    "affiliation": "地球連邦軍",
+    "pilot": "シロー・アマダ",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト3"
+    },
+    "stats": {
+      "height": "18.0m",
+      "weight": "51.5t",
+      "mobility": 200,
+      "ranged_attack": 230,
+      "melee_attack": 40,
+      "hp": 330
+    },
+    "terrain_compatibility": {
+      "ground": "S",
+      "space": "C",
+      "desert": "A",
+      "water": "B"
+    },
+    "weapon": {
+      "main": {
+        "name": "ビーム・ライフル",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ビーム・サーベル",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "誘導",
+      "activation": "任意発動",
+      "target": "特殊(敵)",
+      "range": null,
+      "cost": 4,
+      "description": "25秒間、自身をロックオン距離内に捉えている敵ユニットのターゲットを自身に集める。"
+    },
+    "link_ability": [
+      {
+        "name": "第08MS小隊",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ビーム・ライフル撃射",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": "3100 / 6500",
+      "description": "敵単体に射撃攻撃でダメージを与える。／対象の敵を中心として範囲射撃と格闘でダメージを与える。",
+      "united_sp": null,
+      "echoes_beat": null,
+      "squad_sp": {
+        "name": "ラスト・リゾート",
+        "note": "SQUAD RUSH発動中に1度だけ、SQUAD SPを使用できる。",
+        "target": "範囲(敵)",
+        "range": 3
+      }
+    },
+    "rarity": "C",
+    "raw": "遠距離 コスト3 RX-79[G]Ez-8 GUNDAM Ez8 ガンダムEz8\n頭頂高 18.0m 本体重量 51.5t 所属 地球連邦軍 パイロット シロー・アマダ\n地上 S 宇宙 C 砂漠 A 水中 B 機動力 200 遠距離攻撃 230 近距離攻撃 40 HP 330\nWEAPON\nMAIN ビーム・ライフル 射程3 遠距離\nSUB ビーム・サーベル 射程1 近距離\nMS ABILITY\n誘導\n任意発動 特殊(敵) 射程－ コスト4\n25秒間、自身をロックオン距離内に捉えている敵ユニットのターゲットを自身に集める。\nLINK ABILITY\n第08MS小隊 デッキに3枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n多彩な戦術 デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\nSPECIAL ATTACK SQUAD SP\nビーム・ライフル撃射 ラスト・リゾート\nSQUAD RUSH発動中に1度だけ、SQUAD SPを使用できる。\n単体(敵) 射程3 範囲(敵) 射程3\nSPコスト2 威力 3100 / 6500\n敵単体に射撃攻撃でダメージを与える。／対象の敵を中心として範囲射撃と格闘でダメージを与える。\nVE02-004 C"
+  }
+}

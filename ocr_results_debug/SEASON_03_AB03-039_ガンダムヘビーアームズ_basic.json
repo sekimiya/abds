@@ -1,0 +1,83 @@
+{
+  "card_number": "AB03-039",
+  "card_name": "ガンダムヘビーアームズ",
+  "series": "SEASON:03",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB03-039.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB03-039_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "AB03-039",
+    "type": "MS",
+    "card_label": {
+      "class": "機動",
+      "cost_label": "コスト4"
+    },
+    "name": "ガンダムヘビーアームズ",
+    "model": "XXXG-01H GUNDAM HEAVYARMS",
+    "cost": 4,
+    "category": "機動",
+    "affiliation": null,
+    "pilot": "トロワ・バートン",
+    "stats": {
+      "height": "16.7m",
+      "weight": "7.7t",
+      "mobility": 240,
+      "ranged_attack": 110,
+      "melee_attack": 80,
+      "hp": 220
+    },
+    "terrain_compatibility": {
+      "ground": "S",
+      "space": "B",
+      "desert": "A",
+      "water": null
+    },
+    "weapon": {
+      "main": {
+        "name": "ビームガトリング",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "アーミーナイフ",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "妨害[機動]",
+      "activation": "出撃時発動",
+      "target": "範囲(敵)",
+      "range": null,
+      "cost": null,
+      "description": "20秒間、自身を中心とした大範囲内の敵ユニットの[機動力]を小ダウンする。"
+    },
+    "link_ability": [
+      {
+        "name": "ガンダムW",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "その名はガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ビームガトリング撃射",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3100,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "C",
+    "illustrator": "akamiho",
+    "raw": "MS\n\n機動 コスト4\nXXXG-01H GUNDAM HEAVYARMS\nガンダムヘビーアームズ\n\n全高 16.7m\n本体重量 7.7t\n所属 —\nパイロット トロワ・バートン\n\n地上 S 宇宙 B 砂漠 A\n機動力 240\n遠距離攻撃 110\n近距離攻撃 80\nHP 220\n\nWEAPON\n\nMAIN ビームガトリング 射程 3 遠距離\nSUB アーミーナイフ 射程 1 近距離\n\nLINK ABILITY\n\nガンダムW デッキに3枚以上\n[機動力]小アップ\n\nその名はガンダム デッキに3枚以上\n[機動力]小アップ\n\nMS ABILITY\n\n妨害[機動]\n出撃時発動 範囲(敵) 射程 — コスト —\n\n20秒間、自身を中心とした大範囲内の敵ユニットの[機動力]を小ダウンする。\n\nSPECIAL ATTACK\n\nビームガトリング撃射\n単体(敵) 射程 3\nSPコスト 2 威力 3100\n\n敵単体に射撃攻撃でダメージを与える。\n\nIMPACT AREA\n\n[アイコン:円形の黄色い攻撃範囲、中央やや上に青い丸点、下部に三角マーカー]\n\nillust akamiho\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n\n[アイコン:新機動戦記ガンダムWロゴ]\n[アイコン:機動戦士ガンダムロゴ]\n[アイコン:ARSENAL BASEロゴ]\n\nAB03-039 C"
+  },
+  "ocr_raw_file": "SEASON_03_AB03-039_ガンダムヘビーアームズ_ocr_raw.json",
+  "ocr_timestamp": "2026-02-23T15:15:36.673833",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli"
+}

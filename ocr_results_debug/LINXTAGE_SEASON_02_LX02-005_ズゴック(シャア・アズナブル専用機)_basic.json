@@ -1,0 +1,83 @@
+{
+  "card_number": "LX02-005",
+  "card_name": "ズゴック(シャア・アズナブル専用機)",
+  "series": "LINXTAGE SEASON:02",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX02-005.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX02-005_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "LX02-005",
+    "type": "MS",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト5"
+    },
+    "name": "ズゴック（シャア・アズナブル専用機）",
+    "model": "MSM-07S CHAR'S Z'GOK",
+    "cost": 5,
+    "category": "MS",
+    "affiliation": "ジオン公国軍",
+    "pilot": "シャア・アズナブル",
+    "stats": {
+      "height": "18.4m",
+      "weight": "65.1t",
+      "mobility": 300,
+      "ranged_attack": 320,
+      "melee_attack": 400,
+      "hp": 330
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "C",
+      "desert": "C",
+      "water": "S"
+    },
+    "weapon": {
+      "main": {
+        "name": "アイアン・ネイル",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "メガ粒子砲",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "強撃",
+      "activation": "任意発動",
+      "target": "単体（敵）",
+      "range": 1,
+      "cost": 3,
+      "description": "ロックオン中の敵に単体攻撃でダメージを与える。"
+    },
+    "link_ability": [
+      {
+        "name": "機動戦士ガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "水面下の闘争",
+        "condition": "デッキに2枚以上",
+        "effect": "[近距離攻撃力][HP]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "アイアン・ネイル強襲",
+      "target": "単体（敵）",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3600,
+      "description": "敵単体に格闘攻撃でダメージを与える。戦術技威力は地形適性に応じて変化する。",
+      "united_sp": null
+    },
+    "rarity": "U",
+    "illustrator": "YAMAGUCHI JUN",
+    "raw": "近距離　コスト5\nMSM-07S CHAR'S Z'GOK\nズゴック（シャア・アズナブル専用機）\n\n全高　18.4m\n本体重量　65.1t\n所属　ジオン公国軍\nパイロット　シャア・アズナブル\n\n地上 A　宇宙 C　砂漠 C　水中 S\n機動力 300\n遠距離攻撃 320\n近距離攻撃 400\nHP 330\n\nWEAPON\nMAIN　アイアン・ネイル　射程 1　近距離\nSUB　メガ粒子砲　射程 3　遠距離\n\nMS ABILITY\n強撃\n任意発動　単体（敵）　射程 1　コスト 3\nロックオン中の敵に単体攻撃でダメージを与える。\n\nLINK ABILITY\n機動戦士ガンダム　デッキに3枚以上\n[機動力]小アップ\n\n水面下の闘争　デッキに2枚以上\n[近距離攻撃力][HP]小アップ\n\nIMPACT AREA\n（グリッド：(2,1)緑丸, (2,2)黄丸, (2,3)三角）\n\nSPECIAL ATTACK\nアイアン・ネイル強襲\n単体（敵）　射程 3\nSPコスト 2　威力 3600\n敵単体に格闘攻撃でダメージを与える。\n戦術技威力は地形適性に応じて変化する。\n\nillust. YAMAGUCHI JUN\n©創通・サンライズ\nBANDAI MADE IN JAPAN\nLX02-005　U"
+  },
+  "ocr_raw_file": "LINXTAGE_SEASON_02_LX02-005_ズゴック(シャア・アズナブル専用機)_ocr_raw.json",
+  "ocr_timestamp": "2026-03-07T15:42:33.062150",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

@@ -1,0 +1,83 @@
+{
+  "card_number": "PR-259",
+  "card_name": "グフイグナイテッド(ハイネ・ヴェステンフルス専用機)",
+  "series": "プロモーション",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-259.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-259_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "PR-259",
+    "type": "MS",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト5"
+    },
+    "name": "グフイグナイテッド（ハイネ・ヴェステンフルス専用機）",
+    "model": "ZGMF-X2000 HEINE'S GOUF IGNITED",
+    "cost": 5,
+    "category": "近距離",
+    "affiliation": "ザフト",
+    "pilot": "ハイネ・ヴェステンフルス",
+    "stats": {
+      "height": "19.2m",
+      "weight": "72.13t",
+      "mobility": 280,
+      "ranged_attack": 100,
+      "melee_attack": 520,
+      "hp": 500
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "A",
+      "desert": "C",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "テンペスト ビームソード",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "ドラウプニル4連装ビームガン",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "増援[殲滅／破甲]",
+      "activation": "任意発動",
+      "target": "特殊(自分)",
+      "range": null,
+      "cost": 5,
+      "description": "自身の周囲に殲滅タイプの味方ユニットを呼び出す。このユニットの攻撃は一定時間、被ダメージを一定値アップさせる。※上限3ユニットまで。"
+    },
+    "link_ability": [
+      {
+        "name": "SEED DESTINY",
+        "condition": "デッキに3枚以上",
+        "effect": "[HP]小アップ"
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "テンペスト ビームソード強撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3600,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "PR",
+    "illustrator": "SOEZY",
+    "raw": "近距離 コスト5\nZGMF-X2000 HEINE'S GOUF IGNITED\nグフイグナイテッド（ハイネ・ヴェステンフルス専用機）\n\n頭頂高 19.2m\n本体重量 72.13t\n地上 A　宇宙 A　砂漠 C　水中 C\n所属 ザフト\nパイロット ハイネ・ヴェステンフルス\n\n機動力 280\n遠距離攻撃 100\n近距離攻撃 520\nHP 500\n\nWEAPON\nMAIN テンペスト ビームソード　射程 1　近距離\nSUB ドラウプニル4連装ビームガン　射程 3　遠距離\n\nMS ABILITY\n増援[殲滅／破甲]\n任意発動　特殊(自分)　射程 —　コスト 5\n自身の周囲に殲滅タイプの味方ユニットを呼び出す。このユニットの攻撃は一定時間、被ダメージを一定値アップさせる。\n※上限3ユニットまで。\n\nLINK ABILITY\nSEED DESTINY　デッキに3枚以上\n[HP]小アップ\n\n多彩な戦術　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nIMPACT AREA\n\nSPECIAL ATTACK　UNITED SP\nテンペスト ビームソード強撃　—\n連携 —　連携 —\n連携 —\n単体(敵)　射程 2　—　射程 —\nSPコスト 2　威力 3600 / —\n敵単体に格闘攻撃でダメージを与える。\n／—\n\nillust SOEZY\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\nNOT FOR SALE\nPR-259　PR"
+  },
+  "ocr_raw_file": "プロモーション_PR-259_グフイグナイテッド(ハイネ・ヴェステンフルス専用機)_ocr_raw.json",
+  "ocr_timestamp": "2026-03-03T23:07:29.572730",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

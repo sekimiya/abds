@@ -1,0 +1,83 @@
+{
+  "card_number": "UTB01-014",
+  "card_name": "モモカプル",
+  "series": "UTブースター1弾",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UTB01-014.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UTB01-014_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "UTB01-014",
+    "type": "MS",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト4"
+    },
+    "name": "モモカプル",
+    "model": "PEN-01M MOMOKAPOOL",
+    "cost": 4,
+    "category": "近距離",
+    "affiliation": "ビルドダイバーズ",
+    "pilot": "モモ",
+    "stats": {
+      "height": "12.8m",
+      "weight": "31.8t",
+      "mobility": 180,
+      "ranged_attack": 160,
+      "melee_attack": 240,
+      "hp": 320
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "B",
+      "desert": "B",
+      "water": "S"
+    },
+    "weapon": {
+      "main": {
+        "name": "手のツメ",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "手のビーム",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "デコイ[ユニット]",
+      "activation": "任意発動",
+      "target": "特殊(自分)",
+      "range": null,
+      "cost": 2,
+      "description": "自身の周囲にユニット扱いでロックオンされるデコイを3体配置する。※上限6体まで。効果の対象やユニット数には含まれない。"
+    },
+    "link_ability": [
+      {
+        "name": "ビルドダイバーズ",
+        "condition": "デッキに3枚以上",
+        "effect": "[HP]小アップ"
+      },
+      {
+        "name": "間合いを詰めた接近戦",
+        "condition": "デッキに2枚以上",
+        "effect": "[近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "丸まりモード突撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3300,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "R",
+    "illustrator": "sakusaku sakurai",
+    "raw": "MS\n\n近距離 コスト4\n\nPEN-01M MOMOKAPOOL\nモモカプル\n\n全高 12.8m\n本体重量 31.8t\n所属 ビルドダイバーズ\nパイロット モモ\n\n地上 A 宇宙 B 砂漠 B 水中 S\n\n機動力 180\n遠距離攻撃 160\n近距離攻撃 240\nHP 320\n\nWEAPON\nMAIN 手のツメ 射程 1 近距離\nSUB 手のビーム 射程 3 遠距離\n\nLINK ABILITY\nビルドダイバーズ デッキに3枚以上\n[HP]小アップ\n\n間合いを詰めた接近戦 デッキに2枚以上\n[近距離攻撃力]小アップ\n\nMS ABILITY\nデコイ[ユニット]\n任意発動 特殊(自分) 射程 ー コスト 2\n自身の周囲にユニット扱いでロックオンされるデコイを3体配置する。※上限6体まで。効果の対象やユニット数には含まれない。\n\nSPECIAL ATTACK\n丸まりモード突撃\n連携 ー 連携 ー\n連携 ー 連携 ー\n単体(敵) 射程 2 ー 射程 ー\nSPコスト 2 威力 3300 / ー\n敵単体に格闘攻撃でダメージを与える。\n/ ー\n\nUNITED SP\nー\n\nIMPACT AREA\n[アイコン:緑丸 中央やや左] [アイコン:黄三角 中央下]\n\nillust sakusaku sakurai\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nUTB01-014 R"
+  },
+  "ocr_raw_file": "UTブースター1弾_UTB01-014_モモカプル_ocr_raw.json",
+  "ocr_timestamp": "2026-03-02T02:09:50.138658",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

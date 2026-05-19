@@ -1,0 +1,83 @@
+{
+  "card_number": "UTB03-001",
+  "card_name": "νガンダム",
+  "series": "UTブースター3弾",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UTB03-001.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UTB03-001_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "UTB03-001",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト6"
+    },
+    "name": "νガンダム",
+    "model": "RX-93 νGUNDAM",
+    "cost": 6,
+    "category": "遠距離",
+    "affiliation": "地球連邦軍",
+    "pilot": "アムロ・レイ",
+    "stats": {
+      "height": "22.0m",
+      "weight": "27.9t",
+      "mobility": 250,
+      "ranged_attack": 480,
+      "melee_attack": 0,
+      "hp": 530
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "C",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "ビーム・ライフル",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "シールド",
+        "range": null,
+        "type": null
+      }
+    },
+    "ms_ability": {
+      "name": "誘導",
+      "activation": "任意発動",
+      "target": "特殊(敵)",
+      "range": null,
+      "cost": 4,
+      "description": "25秒間、自身をロックオン距離内に捉えている敵ユニットのターゲットを自身に集める。"
+    },
+    "link_ability": [
+      {
+        "name": "逆襲のシャア",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力]小アップ"
+      },
+      {
+        "name": "的確な一撃",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][遠距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "フィン・ファンネル斉射",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3500,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "P",
+    "illustrator": "PLANETA_Yamashita",
+    "raw": "MS\n\n遠距離　コスト6\nRX-93 νGUNDAM\nνガンダム\n\n機動戦士ガンダム 逆襲のシャア\n\n頭頂高　22.0m\n本体重量　27.9t\n所属　地球連邦軍\nパイロット　アムロ・レイ\n\n[アイコン:地上A] [アイコン:宇宙S] [アイコン:砂漠C] [アイコン:水中C]\n\n機動力　250\n遠距離攻撃　480\n近距離攻撃　0\nHP　530\n\nWEAPON\nMAIN　ビーム・ライフル　射程 3　遠距離\nSUB　シールド　射程 —\n\nLINK ABILITY\n逆襲のシャア　デッキに3枚以上\n[遠距離攻撃力]小アップ\n\n的確な一撃　デッキに4枚以上\n[機動力][遠距離攻撃力]小アップ\n\nMS ABILITY\n誘導\n任意発動　特殊(敵)　射程 —　コスト 4\n25秒間、自身をロックオン距離内に捉えている敵ユニットのターゲットを自身に集める。\n\nSPECIAL ATTACK　　UNITED SP\nフィン・ファンネル斉射　　—\n連携 —　　連携 —\n連携 —　　連携 —\n単体(敵)　射程 3　　—　射程 —\nSPコスト 2　威力 3500 / —\n\n敵単体に射撃攻撃でダメージを与える。\n/ —\n\nIMPACT AREA\n[グリッド表示]\n\nillust PLANETA_Yamashita\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\nUTB03-001　P"
+  },
+  "ocr_raw_file": "UTブースター3弾_UTB03-001_νガンダム_ocr_raw.json",
+  "ocr_timestamp": "2026-02-28T03:56:31.469233",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

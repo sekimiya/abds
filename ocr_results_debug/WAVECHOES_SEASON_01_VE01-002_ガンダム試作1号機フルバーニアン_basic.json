@@ -1,0 +1,86 @@
+{
+  "card_number": "VE01-002",
+  "card_name": "ガンダム試作1号機フルバーニアン",
+  "series": "WAVECHOES SEASON:01",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE01-002.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE01-002_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "VE01-002",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト4"
+    },
+    "name": "ガンダム試作1号機フルバーニアン",
+    "model": "RX-78GP01-Fb GUNDAM GP01Fb",
+    "cost": 4,
+    "category": "遠距離",
+    "affiliation": "地球連邦軍",
+    "pilot": "コウ・ウラキ",
+    "stats": {
+      "height": "18.5m",
+      "weight": "43.2t",
+      "mobility": 230,
+      "ranged_attack": 340,
+      "melee_attack": 70,
+      "hp": 310
+    },
+    "terrain_compatibility": {
+      "ground": "B",
+      "space": "S",
+      "desert": "B",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "ビーム・ライフル",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ビーム・サーベル",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "解撃",
+      "activation": "任意発動",
+      "target": "単体(敵)",
+      "range": 3,
+      "cost": 3,
+      "description": "自身が弱体化状態の時に発動可能となり、自身の弱体化状態を無効化し、ロックオン中の敵に単体攻撃でダメージを与える。"
+    },
+    "link_ability": [
+      {
+        "name": "ガンダム0083",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false
+      },
+      {
+        "name": "的確な一撃",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][遠距離攻撃力]小アップ",
+        "is_eb_link": false
+      }
+    ],
+    "special_attack": {
+      "name": "ビーム・ライフル撃射",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3100,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "echoes_beat": null,
+      "united_sp": null
+    },
+    "rarity": "C",
+    "illustrator": "nakaoka taku",
+    "raw": ""
+  },
+  "ocr_raw_file": "WAVECHOES_SEASON_01_VE01-002_ガンダム試作1号機フルバーニアン_ocr_raw.json",
+  "ocr_timestamp": "2026-03-27T00:00:00.000000",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

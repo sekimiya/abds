@@ -1,0 +1,78 @@
+{
+  "card_number": "AR02-010",
+  "card_name": "ガンダム・端白星",
+  "series": "アーセナルレア2弾[後半]",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AR02-010.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AR02-010_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "AR02-010",
+    "type": "MS",
+    "card_label": {
+      "class": "機動",
+      "cost_label": "コスト3"
+    },
+    "name": "ガンダム・端白星",
+    "model": "GUNDAM HAJIROBOSHI",
+    "cost": 3,
+    "category": "ウルズハント",
+    "affiliation": "アファム設備",
+    "pilot": "ウィスタリオ・アファム",
+    "stats": {
+      "height": "18.6m",
+      "weight": "32.9t",
+      "mobility": 300,
+      "ranged_attack": 200,
+      "melee_attack": 290,
+      "hp": 240
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "A",
+      "desert": "B",
+      "water": null
+    },
+    "weapon": {
+      "main": {
+        "name": "スマートメイス",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "110mmショートレンジライフル",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "縛撃",
+      "activation": "任意発動",
+      "target": "単体(敵)",
+      "range": 1,
+      "cost": 3,
+      "description": "ロックオン中の敵ユニットに単体攻撃を行いダメージを与え、一定時間スタンさせる。"
+    },
+    "link_ability": [
+      {
+        "name": "ウルズハント",
+        "condition": "デッキに2枚以上",
+        "effect": "[近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "スマートメイス強撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3600,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "A",
+    "illustrator": "Naohiro Washio",
+    "raw": "機動　コスト3　MS\nGUNDAM HAJIROBOSHI\nガンダム・端白星\n\n全高　18.6m\n本体重量　32.9t\n所属　アファム設備\nパイロット　ウィスタリオ・アファム\n\n地上 A　宇宙 A　砂漠 B\n機動力 300\n遠距離攻撃 200\n近距離攻撃 290\nHP 240\n\nWEAPON\nMAIN スマートメイス　射程 1　近距離\nSUB 110mmショートレンジライフル　射程 3　遠距離\n\nMS ABILITY\n縛撃\n任意発動　単体(敵)　射程 1　コスト 3\nロックオン中の敵ユニットに単体攻撃を行いダメージを与え、一定時間スタンさせる。\n\nLINK ABILITY\nウルズハント　デッキに2枚以上\n[近距離攻撃力]小アップ\n\nー　ー\nー\n\nSPECIAL ATTACK\nスマートメイス強撃\n単体(敵)　射程 2\nSPコスト 2　威力 3600\n敵単体に格闘攻撃でダメージを与える。\n\nillust  Naohiro Washio\n©創通・サンライズ\nBANDAI MADE IN JAPAN\nAR02-010　A"
+  },
+  "ocr_raw_file": "アーセナルレア2弾[後半]_AR02-010_ガンダム・端白星_ocr_raw.json",
+  "ocr_timestamp": "2026-03-07T15:07:33.313428",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

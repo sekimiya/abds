@@ -1,0 +1,76 @@
+{
+  "card_number": "LX01-065",
+  "card_name": "デミトレーナー",
+  "series": "LINXTAGE SEASON:01",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX01-065.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX01-065_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "LX01-065",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト3"
+    },
+    "name": "デミトレーナー",
+    "model": "MSJ-121 DEMI TRAINER",
+    "cost": 3,
+    "category": "遠距離",
+    "affiliation": "アスティカシア高等専門学園",
+    "pilot": null,
+    "stats": {
+      "height": "16.2m",
+      "weight": "59.3t",
+      "mobility": 160,
+      "ranged_attack": 230,
+      "melee_attack": 110,
+      "hp": 200
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "A",
+      "desert": "C",
+      "water": null
+    },
+    "weapon": {
+      "main": {
+        "name": "テダラス（ガトリングバレル）",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "コンバットナイフ",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": null,
+    "link_ability": [
+      {
+        "name": "水星の魔女",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "距離をとった射撃戦",
+        "condition": "デッキに2枚以上",
+        "effect": "[遠距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "テダラス（ガトリングバレル）撃射",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3100,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "C",
+    "illustrator": "BIRU YAMAGUCHI",
+    "raw": "MS\n\n遠距離　コスト3\n\nMSJ-121 DEMI TRAINER\nデミトレーナー\n\n頭頂高　16.2m\n本体重量　59.3t\n所属　アスティカシア高等専門学園\nパイロット　ー\n\n地上 A　宇宙 A　砂漠 C\n機動力 160\n遠距離攻撃 230\n近距離攻撃 110\nHP 200\n\nWEAPON\nMAIN テダラス（ガトリングバレル）　射程 3　遠距離\nSUB コンバットナイフ　射程 1　近距離\n\nLINK ABILITY\n水星の魔女　デッキに3枚以上\n[機動力]小アップ\n\n距離をとった射撃戦　デッキに2枚以上\n[遠距離攻撃力]小アップ\n\nMS ABILITY\nー　ー　射程 ー　コスト ー\n\nSPECIAL ATTACK\nテダラス（ガトリングバレル）撃射\n単体（敵）　射程 3\nSPコスト 2　威力 3100\n敵単体に射撃攻撃でダメージを与える。\n\nIMPACT AREA\n[アイコン:中央に緑丸]\n\nillustr BIRU YAMAGUCHI\n©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n\n機動戦士ガンダム ARSENAL BASE\nLX01-065　C"
+  },
+  "ocr_raw_file": "LINXTAGE_SEASON_01_LX01-065_デミトレーナー_ocr_raw.json",
+  "ocr_timestamp": "2026-03-02T07:37:53.082203",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

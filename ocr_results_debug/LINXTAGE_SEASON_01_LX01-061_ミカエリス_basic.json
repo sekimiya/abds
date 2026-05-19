@@ -1,0 +1,83 @@
+{
+  "card_number": "LX01-061",
+  "card_name": "ミカエリス",
+  "series": "LINXTAGE SEASON:01",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX01-061.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX01-061_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "LX01-061",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト5"
+    },
+    "name": "ミカエリス",
+    "model": "CFK-029 MICHAELIS",
+    "cost": 5,
+    "category": "遠距離",
+    "affiliation": "グラスレー・ディフェンス・システムズ",
+    "pilot": "シャディク・ゼネリ",
+    "stats": {
+      "height": "20.3m",
+      "weight": "68.8t",
+      "mobility": 270,
+      "ranged_attack": 430,
+      "melee_attack": 300,
+      "hp": 300
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "A",
+      "desert": "C",
+      "water": null
+    },
+    "weapon": {
+      "main": {
+        "name": "大型ビームガン",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ビームサーベル",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "集中砲火",
+      "activation": "任意発動",
+      "target": "範囲(味方)",
+      "range": null,
+      "cost": 4,
+      "description": "20秒間、ロックオンしている敵に周囲の味方ターゲットを集め、[遠／近攻撃力]を中アップ。攻撃対象が変わると効果は終了する。"
+    },
+    "link_ability": [
+      {
+        "name": "水星の魔女",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "大型ビームガン貫通射撃",
+      "target": "貫通(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3200,
+      "description": "射線上の敵に貫通射撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "P",
+    "illustrator": "akamiho",
+    "raw": "MS\n\n遠距離　コスト5\n\nCFK-029 MICHAELIS\nミカエリス\n\n頭頂高　20.3m\n本体重量　68.8t\n所属　グラスレー・ディフェンス・システムズ\nパイロット　シャディク・ゼネリ\n\n地上　A　宇宙　A　砂漠　C\n\n機動力　270\n遠距離攻撃　430\n近距離攻撃　300\nHP　300\n\nWEAPON\n\nMAIN　大型ビームガン　射程 3　遠距離\nSUB　ビームサーベル　射程 1　近距離\n\nMS ABILITY\n\n集中砲火\n任意発動　範囲(味方)　射程 ー　コスト 4\n\n20秒間、ロックオンしている敵に周囲の味方ターゲットを集め、[遠／近攻撃力]を中アップ。攻撃対象が変わると効果は終了する。\n\nSPECIAL ATTACK\n\n大型ビームガン貫通射撃\n貫通(敵)　射程 3\nSPコスト 2　威力　3200\n\n射線上の敵に貫通射撃でダメージを与える。\n\nLINK ABILITY\n\n水星の魔女　デッキに3枚以上\n[機動力]小アップ\n\n戦況を変える力　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nIMPACT AREA\n\n[アイコン:前方扇型の貫通範囲]\n\nillust akamiho\n©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n\n機動戦士ガンダム\nARSENAL BASE\n\nLX01-061　P"
+  },
+  "ocr_raw_file": "LINXTAGE_SEASON_01_LX01-061_ミカエリス_ocr_raw.json",
+  "ocr_timestamp": "2026-03-02T07:35:51.995787",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

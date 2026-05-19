@@ -1,0 +1,36 @@
+{
+  "card_number": "VEB02-024",
+  "card_name": "カミキ・セカイ",
+  "series": "VEブースター2弾",
+  "ocr_data": {
+    "card_number": "VEB02-024",
+    "type": "PL",
+    "name": "カミキ・セカイ",
+    "english_name": "SEKAI KAMIKI",
+    "cost": 1,
+    "category": "制圧",
+    "rarity": "R",
+    "stats": {"mobility": 200, "ranged": 180, "melee": 60, "hp": 220},
+    "pilot_skill": {
+      "name": "電光石火の射撃術",
+      "activation": "EBLv.2に上昇時",
+      "description": "30秒間、自身の[機動力][遠距離攻撃力]をアップする。"
+    },
+    "link_ability": [
+      {
+        "name": "新時代の高鳴り",
+        "condition": "デッキに3枚以上",
+        "effect": "ECHOES BEAT Lv.が表示される。味方ユニットが戦術技を発動するとEBLv.が上がる。[HP][SP威力]小アップ",
+        "is_eb_link": true
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false
+      }
+    ]
+  },
+  "ocr_engine": "claude_code_subagent",
+  "ocr_timestamp": "2026-05-15T00:00:00"
+}

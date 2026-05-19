@@ -1,0 +1,83 @@
+{
+  "card_number": "UTB06-002",
+  "card_name": "Zザク",
+  "series": "UTブースター6弾",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UTB06-002.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UTB06-002_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "UTB06-002",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト1"
+    },
+    "name": "Zザク",
+    "model": "MSZ-006 Z ZAKU",
+    "cost": 1,
+    "category": "遠距離",
+    "affiliation": "エゥーゴ",
+    "pilot": "イーノ・アッバーブ",
+    "stats": {
+      "height": "19.85m",
+      "weight": "28.7t",
+      "mobility": 150,
+      "ranged_attack": 150,
+      "melee_attack": 70,
+      "hp": 230
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "C",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "ビーム・ライフル",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ビーム・サーベル",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "縛射",
+      "activation": "任意発動",
+      "target": "単体(敵)",
+      "range": 3,
+      "cost": 3,
+      "description": "ロックオン中の敵ユニットに単体攻撃を行いダメージを与え、一定時間スタンさせる。"
+    },
+    "link_ability": [
+      {
+        "name": "機動戦士ガンダムZZ",
+        "condition": "デッキに3枚以上",
+        "effect": "[HP]小アップ"
+      },
+      {
+        "name": "的確な一撃",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][遠距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ビーム・ライフル撃射",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3100,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "R",
+    "illustrator": "Kouki Tajima",
+    "raw": "MS\n\n遠距離　コスト1\n\nMSZ-006 Z ZAKU\nZザク\n\n頭頂高　19.85m\n本体重量　28.7t\n所属　エゥーゴ\nパイロット　イーノ・アッバーブ\n\n[アイコン:地上A] [アイコン:宇宙S] [アイコン:砂漠C] [アイコン:水中C]\n\n機動力　150\n遠距離攻撃　150\n近距離攻撃　70\nHP　230\n\nWEAPON\nMAIN　ビーム・ライフル　射程3　遠距離\nSUB　ビーム・サーベル　射程1　近距離\n\nLINK ABILITY\n機動戦士ガンダムZZ　デッキに3枚以上\n[HP]小アップ\n\n的確な一撃　デッキに4枚以上\n[機動力][遠距離攻撃力]小アップ\n\nMS ABILITY\n縛射\n任意発動　単体(敵)　射程3　コスト3\nロックオン中の敵ユニットに単体攻撃を行いダメージを与え、一定時間スタンさせる。\n\nSPECIAL ATTACK　　UNITED SP\nビーム・ライフル撃射　ー\n連携　ー　　連携　ー\n連携　ー　　連携　ー\n単体(敵)　射程3　　ー　射程ー\nSPコスト2　威力　3100　/ー\n敵単体に射撃攻撃でダメージを与える。\n/ー\n\nIMPACT AREA\n[アイコン:自機位置から前方やや遠距離に円形範囲]\n\nillust　Kouki Tajima\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nUTB06-002　R"
+  },
+  "ocr_raw_file": "UTブースター6弾_UTB06-002_Zザク_ocr_raw.json",
+  "ocr_timestamp": "2026-02-28T03:44:39.341091",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

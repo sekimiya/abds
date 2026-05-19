@@ -1,0 +1,83 @@
+{
+  "card_number": "FQ01-034",
+  "card_name": "高機動型ザクⅡ(ジョニー・ライデン専用機)",
+  "series": "FORSQUAD SEASON:01",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ01-034.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ01-034_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "FQ01-034",
+    "type": "MS",
+    "card_label": {
+      "class": "機動",
+      "cost_label": "コスト5"
+    },
+    "name": "高機動型ザクⅡ(ジョニー・ライデン専用機)",
+    "model": "MS-06R-2 ZAKUII HIGH MOBILITY TYPE",
+    "cost": 5,
+    "category": "機動",
+    "affiliation": "ジオン公国軍",
+    "pilot": "ジョニー・ライデン",
+    "stats": {
+      "height": "18.0m",
+      "weight": "58.2t",
+      "mobility": 290,
+      "ranged_attack": 500,
+      "melee_attack": 90,
+      "hp": 520
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "C",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "ジャイアント・バズ",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ヒート・ホーク",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "断砕",
+      "activation": "任意発動",
+      "target": "単体(敵)",
+      "range": 3,
+      "cost": 3,
+      "description": "ロックオン中の敵に単体攻撃でダメージを与え、強化状態を無効化する。"
+    },
+    "link_ability": [
+      {
+        "name": "U.C. ENGAGE",
+        "condition": "デッキに2枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ジャイアント・バズ撃射",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3700,
+      "description": "敵単体に射撃攻撃でダメージを与える。この攻撃で敵ユニットを撃破した場合、敵ユニットの修理時間を延長させる。",
+      "united_sp": null
+    },
+    "rarity": "P",
+    "illustrator": "haru",
+    "raw": "MS\n\n機動 コスト5\n\nMS-06R-2 ZAKUII HIGH MOBILITY TYPE\n高機動型ザクⅡ(ジョニー・ライデン専用機)\n\n頭頂高 18.0m\n本体重量 58.2t\n所属 ジオン公国軍\nパイロット ジョニー・ライデン\n\n地上 A 宇宙 S 砂漠 C 水中 C\n機動力 290\n遠距離攻撃 500\n近距離攻撃 90\nHP 520\n\n[アイコン:U.C.ENGAGE]\n\nWEAPON\n\nMAIN ジャイアント・バズ 射程 3 遠距離\nSUB ヒート・ホーク 射程 1 近距離\n\nLINK ABILITY\n\nU.C. ENGAGE デッキに2枚以上\n[機動力]小アップ\n\nMS ABILITY\n\n断砕\n任意発動 単体(敵) 射程 3 コスト 3\n\nロックオン中の敵に単体攻撃でダメージを与え、強化状態を無効化する。\n\n多彩な戦術\nデッキに4枚以上\n\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nSPECIAL ATTACK\n\nジャイアント・バズ撃射\n連携 ―\n連携 ―\n単体(敵) 射程 3\nSPコスト 2 威力 3700 / ―\n\nUNITED SP\n\n―\n連携 / ―\n連携 ―\n― 射程 ―\n\nIMPACT AREA\n\n[アイコン:中央やや下に単体着弾点]\n\n敵単体に射撃攻撃でダメージを与える。この攻撃で敵ユニットを撃破した場合、敵ユニットの修理時間を延長させる。/ ―\n\nillust haru\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nFQ01-034 P"
+  },
+  "ocr_raw_file": "FORSQUAD_SEASON_01_FQ01-034_高機動型ザクⅡ(ジョニー・ライデン専用機)_ocr_raw.json",
+  "ocr_timestamp": "2026-02-24T01:32:36.931688",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli"
+}

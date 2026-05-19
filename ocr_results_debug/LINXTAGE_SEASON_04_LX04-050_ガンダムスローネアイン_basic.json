@@ -1,0 +1,83 @@
+{
+  "card_number": "LX04-050",
+  "card_name": "ガンダムスローネアイン",
+  "series": "LINXTAGE SEASON:04",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX04-050.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX04-050_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "LX04-050",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト5"
+    },
+    "name": "ガンダムスローネアイン",
+    "model": "GNW-001",
+    "cost": 5,
+    "category": "ガンダム00",
+    "affiliation": "ソレスタルビーイング",
+    "pilot": "ヨハン・トリニティ",
+    "stats": {
+      "height": "18.6m",
+      "weight": "67.1t",
+      "mobility": 160,
+      "ranged_attack": 270,
+      "melee_attack": 120,
+      "hp": 250
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "A",
+      "desert": "C",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "GNビームライフル",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "GNビームサーベル",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "強化[遠距離]",
+      "activation": "任意発動",
+      "target": "自分",
+      "range": null,
+      "cost": 3,
+      "description": "30秒間、自身の[遠距離攻撃力]を小アップする。"
+    },
+    "link_ability": [
+      {
+        "name": "ガンダム00",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "GNビームライフル撃射",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3200,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "C",
+    "illustrator": "Tatsumi Takuan",
+    "raw": "遠距離　コスト5　MS\nGNW-001 GUNDAM THRONE EINS\nガンダムスローネアイン\n\n全高　18.6m\n本体重量　67.1t　　　　地上 A　宇宙 A　砂漠 C　水中 C\n所属　ソレスタルビーイング　　　　　　　　　機動力　160\nパイロット　ヨハン・トリニティ　　　　　　　遠距離攻撃　270\n　　　　　　　　　　　　　　　　　　　　　　近距離攻撃　120\n　　　　　　　　　　　　　　　　　　　　　　HP　250\n\nWEAPON\nMAIN　GNビームライフル　射程 3　遠距離\nSUB　GNビームサーベル　射程 1　近距離\n\nMS ABILITY\n強化[遠距離]\n任意発動　自分　射程ー　コスト 3\n30秒間、自身の[遠距離攻撃力]を小アップする。\n\nLINK ABILITY\nガンダム00　デッキに3枚以上\n[機動力]小アップ\n\n戦況を変える力　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nIMPACT AREA\n\nSPECIAL ATTACK\nGNビームライフル撃射\n単体(敵)　射程 3\nSPコスト 2　威力　3200\n敵単体に射撃攻撃でダメージを与える。\n\nillust　Tatsumi Takuan\n©創通・サンライズ\nBANDAI MADE IN JAPAN　　FS ARSENAL BASE®　　LX04-050　C"
+  },
+  "ocr_raw_file": "LINXTAGE_SEASON_04_LX04-050_ガンダムスローネアイン_ocr_raw.json",
+  "ocr_timestamp": "2026-03-07T19:10:07.971540",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

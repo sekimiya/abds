@@ -1,0 +1,83 @@
+{
+  "card_number": "FQ06-023",
+  "card_name": "アリオスガンダム",
+  "series": "FORSQUAD SEASON:06",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ06-023.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ06-023_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "FQ06-023",
+    "type": "MS",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト3"
+    },
+    "name": "アリオスガンダム",
+    "model": "GN-007 ARIOS GUNDAM",
+    "cost": 3,
+    "category": "近距離",
+    "affiliation": "ソレスタルビーイング",
+    "pilot": "アレルヤ・ハプティズム",
+    "stats": {
+      "height": "19.1m",
+      "weight": "55.4t",
+      "mobility": 230,
+      "ranged_attack": 50,
+      "melee_attack": 320,
+      "hp": 350
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "B",
+      "water": "B"
+    },
+    "weapon": {
+      "main": {
+        "name": "GNビームサーベル",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "GNツインビームライフル",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "転化[支援]",
+      "activation": "任意発動",
+      "target": "範囲(味方)",
+      "range": null,
+      "cost": 4,
+      "description": "一定時間、自身を中心とした範囲内の味方ユニットを強化する。使用回数に応じて、強化効果が変わる。[1回:遠／近攻撃力アップ][2回:遠／近攻撃力アップ][3回以上:遠／近攻撃力アップ&回復]"
+    },
+    "link_ability": [
+      {
+        "name": "ガンダム00",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "肉薄する戦い",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "GNビームシールド激突",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3400,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "M",
+    "illustrator": "ilshima060123",
+    "raw": "MS\n\n近距離　コスト3\n\nGN-007 ARIOS GUNDAM\nアリオスガンダム\n\n頭頂高　19.1m\n本体重量　55.4t\n所属　ソレスタルビーイング\nパイロット　アレルヤ・ハプティズム\n\n地上 A　宇宙 S　砂漠 B　水中 B\n\n機動力 230\n遠距離攻撃 50\n近距離攻撃 320\nHP 350\n\nWEAPON\nMAIN GNビームサーベル　射程 1　近距離\nSUB GNツインビームライフル　射程 3　遠距離\n\nLINK ABILITY\nガンダム00　デッキに3枚以上\n[機動力]小アップ\n\n肉薄する戦い　デッキに4枚以上\n[機動力][近距離攻撃力]小アップ\n\nMS ABILITY\n転化[支援]\n任意発動　範囲(味方)　射程 ー　コスト 4\n一定時間、自身を中心とした範囲内の味方ユニットを強化する。使用回数に応じて、強化効果が変わる。[1回:遠／近攻撃力アップ][2回:遠／近攻撃力アップ][3回以上:遠／近攻撃力アップ&回復]\n\nSPECIAL ATTACK　　UNITED SP\nGNビームシールド激突　ー\n連携 ー　　連携 ー\n連携 ー　　連携 ー\n単体(敵)　射程 2　　射程 ー\nSPコスト 2　威力 3400 / ー\n敵単体に格闘攻撃でダメージを与える。\n/ ー\n\nIMPACT AREA\n[アイコン:自機中心の円形範囲]\n\nillust ilshima060123\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nFQ06-023　M"
+  },
+  "ocr_raw_file": "FORSQUAD_SEASON_06_FQ06-023_アリオスガンダム_ocr_raw.json",
+  "ocr_timestamp": "2026-02-24T18:39:24.476477",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

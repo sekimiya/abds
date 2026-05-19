@@ -1,0 +1,83 @@
+{
+  "card_number": "AB03-002",
+  "card_name": "ガンダム",
+  "series": "SEASON:03",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB03-002.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB03-002_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "AB03-002",
+    "type": "MS",
+    "card_label": {
+      "class": "機動",
+      "cost_label": "コスト6"
+    },
+    "name": "ガンダム",
+    "model": "RX-78-2 GUNDAM",
+    "cost": 6,
+    "category": "機動",
+    "affiliation": "地球連邦軍",
+    "pilot": "アムロ・レイ",
+    "stats": {
+      "height": "18.0m",
+      "weight": "43.4t",
+      "mobility": 370,
+      "ranged_attack": 220,
+      "melee_attack": 210,
+      "hp": 200
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "A",
+      "desert": "C",
+      "water": null
+    },
+    "weapon": {
+      "main": {
+        "name": "ビーム・ライフル",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ビーム・サーベル",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "補給",
+      "activation": "任意発動",
+      "target": "範囲(味方)",
+      "range": null,
+      "cost": 4,
+      "description": "自身を中心とした大範囲の味方ユニットのHPを中回復する。"
+    },
+    "link_ability": [
+      {
+        "name": "機動戦士ガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "その名はガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ビーム・ライフル撃射",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3200,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "C",
+    "illustrator": "Moyasi",
+    "raw": "MS\n\n機動 コスト6\n\nRX-78-2 GUNDAM\nガンダム\n\n全高 18.0m\n本体重量 43.4t\n所属 地球連邦軍\nパイロット アムロ・レイ\n\n地上 A 宇宙 A 砂漠 C\n機動力 370\n遠距離攻撃 220\n近距離攻撃 210\nHP 200\n\nWEAPON\nMAIN ビーム・ライフル 射程3 遠距離\nSUB ビーム・サーベル 射程1 近距離\n\nLINK ABILITY\n機動戦士ガンダム デッキに3枚以上\n[機動力]小アップ\n\nその名はガンダム デッキに3枚以上\n[機動力]小アップ\n\nMS ABILITY\n補給\n任意発動 範囲(味方) 射程— コスト4\n\n自身を中心とした大範囲の味方ユニットのHPを中回復する。\n\nIMPACT AREA\n[アイコン:黄色の大きな円形範囲、中央やや下に三角マーカー、上部に緑色の小円]\n\nSPECIAL ATTACK\nビーム・ライフル撃射\n単体(敵) 射程3\nSPコスト2 威力 3200\n\n敵単体に射撃攻撃でダメージを与える。\n\nillust Moyasi\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n[アイコン:機動戦士ガンダム ARSENAL BASE ロゴ]\nAB03-002 C"
+  },
+  "ocr_raw_file": "SEASON_03_AB03-002_ガンダム_ocr_raw.json",
+  "ocr_timestamp": "2026-02-23T15:12:40.588877",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli"
+}

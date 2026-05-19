@@ -1,0 +1,83 @@
+{
+  "card_number": "AB04-027",
+  "card_name": "サザビー",
+  "series": "SEASON:04",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB04-027.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB04-027_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "AB04-027",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト5"
+    },
+    "name": "サザビー",
+    "model": "MSN-04 SAZABI",
+    "cost": 5,
+    "category": "遠距離",
+    "affiliation": "新生ネオ・ジオン",
+    "pilot": "シャア・アズナブル",
+    "stats": {
+      "height": "25.0m",
+      "weight": "30.5t",
+      "mobility": 250,
+      "ranged_attack": 290,
+      "melee_attack": 110,
+      "hp": 250
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "C",
+      "water": null
+    },
+    "weapon": {
+      "main": {
+        "name": "ビーム・ショット・ライフル",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ビーム・トマホーク",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "オールレンジ",
+      "activation": "任意発動",
+      "target": "範囲(敵)",
+      "range": 4,
+      "cost": 4,
+      "description": "30秒間、自身の周囲の敵ユニットに継続的にダメージを与える。"
+    },
+    "link_ability": [
+      {
+        "name": "逆襲のシャア",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力]小アップ"
+      },
+      {
+        "name": "赤のプライド",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ビーム・ショット・ライフル撃射",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3300,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "R",
+    "illustrator": "Nadare",
+    "raw": "MS\n\n遠距離　コスト5\n\nMSN-04 SAZABI\nサザビー\n\n全高　25.0m\n本体重量　30.5t\n所属　新生ネオ・ジオン\nパイロット　シャア・アズナブル\n\n地上 A　宇宙 S　砂漠 C\n機動力 250\n遠距離攻撃 290\n近距離攻撃 110\nHP 250\n\nWEAPON\nMAIN ビーム・ショット・ライフル　射程 3　遠距離\nSUB ビーム・トマホーク　射程 1　近距離\n\nLINK ABILITY\n逆襲のシャア　デッキに3枚以上\n[遠距離攻撃力]小アップ\n\n赤のプライド　デッキに3枚以上\n[機動力]小アップ\n\nMS ABILITY\nオールレンジ\n任意発動　範囲(敵)　射程 4　コスト 4\n30秒間、自身の周囲の敵ユニットに継続的にダメージを与える。\n\nSPECIAL ATTACK\nビーム・ショット・ライフル撃射\n単体(敵)　射程 3\nSPコスト 2　威力 3300\n敵単体に射撃攻撃でダメージを与える。\n\nIMPACT AREA\n[アイコン:中央やや上に円、下半分に大きな半円エリア]\n\nillust Nadare\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nAB04-027　R"
+  },
+  "ocr_raw_file": "SEASON_04_AB04-027_サザビー_ocr_raw.json",
+  "ocr_timestamp": "2026-03-02T05:44:11.795038",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

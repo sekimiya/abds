@@ -1,0 +1,83 @@
+{
+  "card_number": "UT03-031",
+  "card_name": "ガンダムアストレイ ゴールドフレーム天",
+  "series": "UNITRIBE SEASON:03",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT03-031.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT03-031_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "UT03-031",
+    "type": "MS",
+    "card_label": {
+      "class": "機動",
+      "cost_label": "コスト3"
+    },
+    "name": "ガンダムアストレイ ゴールドフレーム天",
+    "model": "MBF-P01-Re GUNDAM ASTRAY GOLD FRAME AMATSU",
+    "cost": 3,
+    "category": "機動",
+    "affiliation": "オーブ",
+    "pilot": "ロンド・ギナ・サハク",
+    "stats": {
+      "height": "17.99m",
+      "weight": "73.2t",
+      "mobility": 200,
+      "ranged_attack": 170,
+      "melee_attack": 80,
+      "hp": 250
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "B",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "トリケロス改(ビームライフル)",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "トリケロス改(ビームサーベル)",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "隠密",
+      "activation": "出撃時発動",
+      "target": "自分",
+      "range": null,
+      "cost": null,
+      "description": "20秒間、敵側の表示から消えてロックオンされなくなる。効果時間が切れるか、何らかの攻撃が当たると効果が解除される。"
+    },
+    "link_ability": [
+      {
+        "name": "SEED ASTRAY",
+        "condition": "デッキに2枚以上",
+        "effect": "[近距離攻撃力]小アップ"
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "トリケロス改(ビームライフル)撃射",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3200,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "R",
+    "illustrator": "ZB",
+    "raw": "MS\n\n機動　コスト3\n\nMBF-P01-Re GUNDAM ASTRAY GOLD FRAME AMATSU\n\nガンダムアストレイ ゴールドフレーム天\n\n頭頂高　17.99m\n本体重量　73.2t\n所属　オーブ\nパイロット　ロンド・ギナ・サハク\n\n地上 A　宇宙 S　砂漠 B　水中 C\n\n機動力 200\n遠距離攻撃 170\n近距離攻撃 80\nHP 250\n\nWEAPON\nMAIN トリケロス改(ビームライフル)　射程 3　遠距離\nSUB トリケロス改(ビームサーベル)　射程 1　近距離\n\nLINK ABILITY\nSEED ASTRAY　デッキに2枚以上\n[近距離攻撃力]小アップ\n\n多彩な戦術　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nMS ABILITY\n隠密\n出撃時発動　自分　射程 ー　コスト ー\n20秒間、敵側の表示から消えてロックオンされなくなる。効果時間が切れるか、何らかの攻撃が当たると効果が解除される。\n\nSPECIAL ATTACK　　UNITED SP\nトリケロス改(ビームライフル)撃射　ー\n連携 ー　連携 ー\n連携 ー　連携 ー\n単体(敵)　射程 3　ー　射程 ー\nSPコスト 2　威力 3200 / ー\n\n敵単体に射撃攻撃でダメージを与える。\n/ ー\n\nIMPACT AREA\n[アイコン:緑丸 中央]\n[アイコン:黄三角 中央下]\n\nillust ZB\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\n\nUT03-031　R"
+  },
+  "ocr_raw_file": "UNITRIBE_SEASON_03_UT03-031_ガンダムアストレイ_ゴールドフレーム天_ocr_raw.json",
+  "ocr_timestamp": "2026-02-26T17:23:10.923673",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

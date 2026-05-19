@@ -1,0 +1,83 @@
+{
+  "card_number": "FQ04-038",
+  "card_name": "エグザベ専用ギャン(ハクジ装備)(GQ)",
+  "series": "FORSQUAD SEASON:04",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ04-038.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ04-038_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "FQ04-038",
+    "type": "MS",
+    "card_label": {
+      "class": "機動",
+      "cost_label": "コスト4"
+    },
+    "name": "エグザベ専用ギャン(ハクジ装備)(GQ)",
+    "model": "Xavier's GYAN HAKUJI-PACKS(GQ)",
+    "cost": 4,
+    "category": "機動",
+    "affiliation": "ジオン公国軍",
+    "pilot": null,
+    "stats": {
+      "height": null,
+      "weight": null,
+      "mobility": 270,
+      "ranged_attack": 60,
+      "melee_attack": 280,
+      "hp": 340
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "C",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "ハクジ",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "ミサイル・シールド",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "強襲",
+      "activation": "任意発動",
+      "target": "単体(敵)",
+      "range": 4,
+      "cost": 4,
+      "description": "一定範囲内のロックオン可能な残りHPの割合が最も高い敵ユニットにターゲットを切り替え、単体攻撃でダメージを与える。"
+    },
+    "link_ability": [
+      {
+        "name": "GQuuuuuuX",
+        "condition": "デッキに3枚以上",
+        "effect": "[HP]小アップ"
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ハクジ強撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3200,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "C",
+    "illustrator": "yuuiguchi",
+    "raw": "MS\n\n機動　コスト4\n\nXavier's GYAN HAKUJI-PACKS(GQ)\nエグザベ専用ギャン(ハクジ装備)(GQ)\n\n[アイコン:GQuuuuuuX]\n\n頭頂高　ー\n本体重量　ー\n所属　ジオン公国軍\nパイロット　ー\n\n[アイコン:地上A] [アイコン:宇宙S] [アイコン:砂漠C] [アイコン:水中C]\n\n機動力 270\n遠距離攻撃 60\n近距離攻撃 280\nHP 340\n\nWEAPON\nMAIN ハクジ　射程 1　近距離\nSUB ミサイル・シールド　射程 3　遠距離\n\nLINK ABILITY\nGQuuuuuuX　デッキに3枚以上\n[HP]小アップ\n\n戦況を変える力　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nMS ABILITY\n強襲\n任意発動　単体(敵)　射程 4　コスト 4\n一定範囲内のロックオン可能な残りHPの割合が最も高い敵ユニットにターゲットを切り替え、単体攻撃でダメージを与える。\n\nIMPACT AREA\n[グリッド5x3:右上と左下に緑丸]\n\nSPECIAL ATTACK　　UNITED SP\nハクジ強撃　　　　ー\n連携 ー　　　　　連携 ー\n連携 ー　　　　　連携 ー\n単体(敵)　射程 2　ー　射程 ー\nSPコスト 2　威力 3200 / ー\n\n敵単体に格闘攻撃でダメージを与える。\n/ ー\n\nillust yuuiguchi\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nFQ04-038　C"
+  },
+  "ocr_raw_file": "FORSQUAD_SEASON_04_FQ04-038_エグザベ専用ギャン(ハクジ装備)(GQ)_ocr_raw.json",
+  "ocr_timestamp": "2026-02-24T18:22:28.711487",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

@@ -1,0 +1,98 @@
+{
+  "card_number": "UT05-021",
+  "card_name": "レジェンドガンダム",
+  "series": "UNITRIBE SEASON:05",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT05-021.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT05-021_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "UT05-021",
+    "type": "MS",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト2"
+    },
+    "name": "レジェンドガンダム",
+    "model": "ZGMF-X666S LEGEND GUNDAM",
+    "cost": 2,
+    "category": "近距離",
+    "affiliation": "ザフト",
+    "pilot": "レイ・ザ・バレル",
+    "stats": {
+      "height": "18.66m",
+      "weight": "86.02t",
+      "mobility": 190,
+      "ranged_attack": 70,
+      "melee_attack": 210,
+      "hp": 280
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "A",
+      "water": "B"
+    },
+    "weapon": {
+      "main": {
+        "name": "デファイアント改ビームジャベリン",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "高エネルギービームライフル",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "陣略[妨害／機動]",
+      "activation": "任意発動",
+      "target": "範囲(敵)",
+      "range": null,
+      "cost": 4,
+      "description": "一定時間、範囲内に入った敵ユニットの[機動力]をダウンするエリアを設置する。※上限3箇所まで。"
+    },
+    "link_ability": [
+      {
+        "name": "SEED DESTINY",
+        "condition": "デッキに3枚以上",
+        "effect": "[HP]小アップ"
+      },
+      {
+        "name": "肉薄する戦い",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "デファイアント改ビームジャベリン強撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3200,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": {
+        "partner1": null,
+        "partner2": null,
+        "range": null,
+        "power": null,
+        "description": null
+      }
+    },
+    "rarity": "R",
+    "illustrator": "SOEZY",
+    "raw": "MS\n\n近距離 コスト2\n\nZGMF-X666S LEGEND GUNDAM\nレジェンドガンダム\n\n頭頂高 18.66m\n本体重量 86.02t\n所属 ザフト\nパイロット レイ・ザ・バレル\n\n地上 A 宇宙 S 砂漠 A 水中 B\n機動力 190\n遠距離攻撃 70\n近距離攻撃 210\nHP 280\n\nWEAPON\nMAIN デファイアント改ビームジャベリン 射程 1 近距離\nSUB 高エネルギービームライフル 射程 3 遠距離\n\nMS ABILITY\n陣略[妨害/機動]\n任意発動 範囲(敵) 射程 ー コスト 4\n一定時間、範囲内に入った敵ユニットの[機動力]をダウンするエリアを設置する。\n※上限3箇所まで。\n\nLINK ABILITY\nSEED DESTINY デッキに3枚以上\n[HP]小アップ\n\n肉薄する戦い デッキに4枚以上\n[機動力][近距離攻撃力]小アップ\n\nSPECIAL ATTACK　　UNITED SP\nデファイアント改ビームジャベリン強撃\n連携 ー　連携 ー\n連携 ー　連携 ー\n単体(敵) 射程 2　射程 ー\nSPコスト 2 威力 3200 / ー\n敵単体に格闘攻撃でダメージを与える。\n/ ー\n\nIMPACT AREA\n[アイコン:×印の円形エリア 中央やや上]\n\nillust SOEZY\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nUT05-021 R"
+  },
+  "ocr_raw_file": "UNITRIBE_SEASON_05_UT05-021_レジェンドガンダム_ocr_raw.json",
+  "ocr_timestamp": "2026-02-26T19:27:02.333143",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined",
+  "_fix_history": [
+    {
+      "timestamp": "2026-03-03T23:45:41",
+      "changes": [
+        "ms_ability.name: \"陣略[妨害/機動]\" → \"陣略[妨害／機動]\""
+      ]
+    }
+  ],
+  "_fixed": true
+}

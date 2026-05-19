@@ -1,0 +1,89 @@
+{
+  "card_number": "PR-470",
+  "card_name": "ウイングガンダムゼロ（EW）",
+  "series": "プロモーション",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-470.jpg?v8",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-470_b.jpg?v8",
+  "ocr_data": {
+    "card_id": "PR-470",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト5"
+    },
+    "name": "ウイングガンダムゼロ（EW）",
+    "model": "XXXG-00W0 WING GUNDAM ZERO[EW]",
+    "cost": 5,
+    "category": "遠距離",
+    "affiliation": "ー",
+    "pilot": "ヒイロ・ユイ",
+    "stats": {
+      "height": "16.7m",
+      "weight": "8.0t",
+      "mobility": 230,
+      "ranged_attack": 420,
+      "melee_attack": 50,
+      "hp": 350
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "C",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "ツインバスターライフル",
+        "range": 4,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ビームサーベル",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "奇襲",
+      "activation": "任意発動",
+      "target": "範囲(敵)",
+      "range": null,
+      "cost": 6,
+      "description": "指定した位置に範囲攻撃を行い、その地点に移動する。"
+    },
+    "link_ability": [
+      {
+        "name": "Endless Waltz",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      },
+      {
+        "name": "的確な一撃",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][遠距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ツインバスターライフル斉射",
+      "target": "範囲(敵)",
+      "range": 4,
+      "sp_cost": 2,
+      "power": 3300,
+      "description": "対象の敵を中心として範囲射撃でダメージを与え、自身に小ダメージ。/敵単体に射撃攻撃でダメージを与え、ゼロシステムが発動する。ゼロシステム発動中は回避攻撃が発生し、能力が上昇し、MSアビリティ[奇襲]が強化される。自身が撤退するまで効果は持続する。リンクアビリティ[Endless Waltz]の数に応じて、出撃中の全味方ユニットの能力を一定時間アップする。",
+      "sp_type": "SQUAD SP",
+      "squad_sp": {
+        "name": "オペレーション・メテオ",
+        "condition": "SQUAD RUSH発動中に1度だけ、SQUAD SPを使用できる。",
+        "target": "単体(敵)",
+        "range": 4,
+        "power": 6500
+      },
+      "united_sp": null
+    },
+    "rarity": "PR",
+    "illustrator": "Eske Yoshinob"
+  },
+  "ocr_timestamp": "2026-05-11T00:00:00.000000",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_subagent"
+}

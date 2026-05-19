@@ -1,0 +1,83 @@
+{
+  "card_number": "AR04-011",
+  "card_name": "ブリッツガンダム",
+  "series": "アーセナルレア4弾[後半]",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AR04-011.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AR04-011_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "AR04-011",
+    "type": "MS",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト2"
+    },
+    "name": "ブリッツガンダム",
+    "model": "GAT-X207 BLITZ GUNDAM",
+    "cost": 2,
+    "category": "MS",
+    "affiliation": "ザフト",
+    "pilot": "ニコル・アマルフィ",
+    "stats": {
+      "height": "18.63m",
+      "weight": "73.5t",
+      "mobility": 210,
+      "ranged_attack": 50,
+      "melee_attack": 250,
+      "hp": 240
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "A",
+      "desert": "C",
+      "water": null
+    },
+    "weapon": {
+      "main": {
+        "name": "ビームサーベル",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "高エネルギービームライフル",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "妨害[機動]",
+      "activation": "出撃時発動",
+      "target": "範囲（敵）",
+      "range": null,
+      "cost": null,
+      "description": "20秒間、自身を中心とした大範囲内の敵ユニットの[機動力]を小ダウンする。"
+    },
+    "link_ability": [
+      {
+        "name": "ガンダムSEED",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "間合いを詰めた接近戦",
+        "condition": "デッキに2枚以上",
+        "effect": "[近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ビームサーベル強撃",
+      "target": "単体（敵）",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3300,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "A",
+    "illustrator": "Yoichi Fukano",
+    "raw": "近距離 コスト2\nGAT-X207 BLITZ GUNDAM\nブリッツガンダム\n全高 18.63m\n本体重量 73.5t\n所属 ザフト\nパイロット ニコル・アマルフィ\n\n地上 A 宇宙 A 砂漠 C\n機動力 210\n遠距離攻撃 50\n近距離攻撃 250\nHP 240\n\nWEAPON\nMAIN ビームサーベル 射程 1 近距離\nSUB 高エネルギービームライフル 射程 3 遠距離\n\nMS ABILITY\n妨害[機動]\n出撃時発動 範囲（敵） 射程 ー コスト ー\n20秒間、自身を中心とした大範囲内の敵ユニットの[機動力]を小ダウンする。\n\nLINK ABILITY\nガンダムSEED デッキに3枚以上\n[機動力]小アップ\n\n間合いを詰めた接近戦 デッキに2枚以上\n[近距離攻撃力]小アップ\n\nSPECIAL ATTACK\nビームサーベル強撃\n単体（敵） 射程 2\nSPコスト 2 威力 3300\n敵単体に格闘攻撃でダメージを与える。\n\nillust Yoichi Fukano\n©創通・サンライズ\nBANDAI MADE IN JAPAN\nAR04-011 A"
+  },
+  "ocr_raw_file": "アーセナルレア4弾[後半]_AR04-011_ブリッツガンダム_ocr_raw.json",
+  "ocr_timestamp": "2026-03-07T15:36:23.100957",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

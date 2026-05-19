@@ -1,0 +1,83 @@
+{
+  "card_number": "LX01-032",
+  "card_name": "ジャスティスガンダム",
+  "series": "LINXTAGE SEASON:01",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX01-032.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX01-032_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "LX01-032",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト3"
+    },
+    "name": "ジャスティスガンダム",
+    "model": "ZGMF-X09A JUSTICE GUNDAM",
+    "cost": 3,
+    "category": "遠距離",
+    "affiliation": "ー",
+    "pilot": "アスラン・ザラ",
+    "stats": {
+      "height": "18.56m",
+      "weight": "75.4t",
+      "mobility": 160,
+      "ranged_attack": 230,
+      "melee_attack": 180,
+      "hp": 180
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "A",
+      "water": null
+    },
+    "weapon": {
+      "main": {
+        "name": "ルプス・ビームライフル",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "アンビデクストラス・ハルバード",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "支援砲撃",
+      "activation": "任意発動",
+      "target": "範囲(敵)",
+      "range": null,
+      "cost": 5,
+      "description": "指定した位置に中範囲の支援砲撃を要請し、範囲内の敵にダメージを与える。"
+    },
+    "link_ability": [
+      {
+        "name": "ガンダムSEED",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ルプス・ビームライフル撃射",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3200,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "R",
+    "illustrator": "Moyasi",
+    "raw": "遠距離　コスト3　MS\n\nZGMF-X09A JUSTICE GUNDAM\nジャスティスガンダム\n\n全高　18.56m\n本体重量　75.4t\n所属　ー\nパイロット　アスラン・ザラ\n\n地上 A　宇宙 S　砂漠 A\n\n機動力 160\n遠距離攻撃 230\n近距離攻撃 180\nHP 180\n\nWEAPON\nMAIN ルプス・ビームライフル　射程 3　遠距離\nSUB アンビデクストラス・ハルバード　射程 1　近距離\n\nLINK ABILITY\nガンダムSEED　デッキに3枚以上\n[機動力]小アップ\n\n戦況を変える力　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nMS ABILITY\n支援砲撃\n任意発動　範囲(敵)　射程 ー　コスト 5\n指定した位置に中範囲の支援砲撃を要請し、範囲内の敵にダメージを与える。\n\nSPECIAL ATTACK\nルプス・ビームライフル撃射\n単体(敵)　射程 3\nSPコスト 2　威力 3200\n敵単体に射撃攻撃でダメージを与える。\n\nIMPACT AREA\n[アイコン:十字型インパクトエリア]\n\nillust Moyasi\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nLX01-032　R"
+  },
+  "ocr_raw_file": "LINXTAGE_SEASON_01_LX01-032_ジャスティスガンダム_ocr_raw.json",
+  "ocr_timestamp": "2026-03-02T07:18:43.014828",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

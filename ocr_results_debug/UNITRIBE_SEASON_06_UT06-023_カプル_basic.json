@@ -1,0 +1,92 @@
+{
+  "card_number": "UT06-023",
+  "card_name": "カプル",
+  "series": "UNITRIBE SEASON:06",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT06-023.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT06-023_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "UT06-023",
+    "type": "MS",
+    "card_label": {
+      "class": "機動",
+      "cost_label": "コスト1"
+    },
+    "name": "カプル",
+    "model": "AMX-109 KAPOOL",
+    "cost": 1,
+    "category": "機動",
+    "affiliation": "イングレッサ・ミリシャ",
+    "pilot": "ソシエ・ハイム、メシェー・クン",
+    "stats": {
+      "height": "14m",
+      "weight": "38.7t",
+      "mobility": 150,
+      "ranged_attack": 150,
+      "melee_attack": 80,
+      "hp": 170
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "B",
+      "desert": "B",
+      "water": "S"
+    },
+    "weapon": {
+      "main": {
+        "name": "ハンドガン",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "クロー",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "増援[殲滅／砲撃]",
+      "activation": "任意発動",
+      "target": "特殊(自分)",
+      "range": null,
+      "cost": 4,
+      "description": "自身の周囲に砲撃を行う殲滅タイプの味方ユニットを呼び出す。このユニットは移動しない。※上限3ユニットまで。"
+    },
+    "link_ability": [
+      {
+        "name": "∀ガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[HP]小アップ"
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ミサイル爆撃",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3000,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "C",
+    "illustrator": "sakusaku sakurai",
+    "raw": "MS\n\n機動 コスト1\n\nAMX-109 KAPOOL\nカプル\n\n∀ガンダム [アイコン:作品ロゴ]\n\n頭頂高 14m\n本体重量 38.7t\n所属 イングレッサ・ミリシャ\nパイロット ソシエ・ハイム、メシェー・クン\n\n[アイコン:地上A] [アイコン:宇宙B] [アイコン:砂漠B] [アイコン:水中S]\n\n機動力 150\n遠距離攻撃 150\n近距離攻撃 80\nHP 170\n\nWEAPON\nMAIN ハンドガン 射程 3 遠距離\nSUB クロー 射程 1 近距離\n\nLINK ABILITY\n∀ガンダム デッキに3枚以上\n[HP]小アップ\n\nMS ABILITY\n増援[殲滅/砲撃]\n任意発動 特殊(自分) 射程 ー コスト 4\n自身の周囲に砲撃を行う殲滅タイプの味方ユニットを呼び出す。このユニットは移動しない。※上限3ユニットまで。\n\n戦況を変える力 デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nSPECIAL ATTACK          UNITED SP\nミサイル爆撃            ー\n連携 ー                 連携 ー\n連携 ー                 連携 ー\n単体(敵) 射程 3         射程 ー\nSPコスト 2 威力 3000 / ー\n敵単体に射撃攻撃でダメージを与える。\n/ ー\n\nIMPACT AREA\n[アイコン:3×5グリッド 中央に緑丸、下段中央に黄三角]\n\nillust sakusaku sakurai\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nUT06-023 C"
+  },
+  "ocr_raw_file": "UNITRIBE_SEASON_06_UT06-023_カプル_ocr_raw.json",
+  "ocr_timestamp": "2026-02-26T17:40:27.421343",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined",
+  "_fix_history": [
+    {
+      "timestamp": "2026-03-03T23:46:18",
+      "changes": [
+        "ms_ability.name: \"増援[殲滅/砲撃]\" → \"増援[殲滅／砲撃]\""
+      ]
+    }
+  ],
+  "_fixed": true
+}

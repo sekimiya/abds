@@ -1,0 +1,83 @@
+{
+  "card_number": "UTB03-002",
+  "card_name": "νガンダム",
+  "series": "UTブースター3弾",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UTB03-002.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UTB03-002_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "UTB03-002",
+    "type": "MS",
+    "card_label": {
+      "class": "機動",
+      "cost_label": "コスト3"
+    },
+    "name": "νガンダム",
+    "model": "RX-93 νGUNDAM",
+    "cost": 3,
+    "category": "機動",
+    "affiliation": "地球連邦軍",
+    "pilot": "アムロ・レイ",
+    "stats": {
+      "height": "22.0m",
+      "weight": "27.9t",
+      "mobility": 230,
+      "ranged_attack": 30,
+      "melee_attack": 270,
+      "hp": 270
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "C",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "ビーム・サーベル",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "ビーム・ライフル",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "双甲",
+      "activation": "任意発動",
+      "target": "特殊(自分)",
+      "range": null,
+      "cost": 4,
+      "description": "指定した味方ユニットの範囲内に移動後、一定時間連携状態となり、自身と連携中の味方が受けるダメージを軽減する。"
+    },
+    "link_ability": [
+      {
+        "name": "逆襲のシャア",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力]小アップ"
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ビーム・サーベル強撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3300,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "R",
+    "illustrator": "Chifuyu Yukishiro",
+    "raw": "MS\n\n機動 コスト3\n\nRX-93 νGUNDAM\n\nνガンダム\n\n[ロゴ:機動戦士ガンダム 逆襲のシャア]\n\n頭頂高 22.0m\n本体重量 27.9t\n\n地上 A 宇宙 S 砂漠 C 水中 C\n\n所属 地球連邦軍\nパイロット アムロ・レイ\n\n機動力 230\n遠距離攻撃 30\n近距離攻撃 270\nHP 270\n\nWEAPON\nMAIN ビーム・サーベル 射程 1 近距離\nSUB ビーム・ライフル 射程 3 遠距離\n\nLINK ABILITY\n逆襲のシャア デッキに3枚以上\n[遠距離攻撃力]小アップ\n\n戦況を変える力 デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nMS ABILITY\n双甲\n任意発動 特殊(自分) 射程 ー コスト 4\n指定した味方ユニットの範囲内に移動後、一定時間連携状態となり、自身と連携中の味方が受けるダメージを軽減する。\n\nSPECIAL ATTACK\nビーム・サーベル強撃\n\nUNITED SP\n連携 ー 連携 ー\n連携 ー 連携 ー\n単体(敵) 射程 2 ー 射程 ー\nSPコスト 2 威力 3300 / ー\n敵単体に格闘攻撃でダメージを与える。\n/ ー\n\nIMPACT AREA\n[アイコン:緑丸 中央]\n[アイコン:黄三角 中央下]\n\nillust Chifuyu Yukishiro\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n[ロゴ:機動戦士ガンダム]\nARSENAL BASE\nUTB03-002 R"
+  },
+  "ocr_raw_file": "UTブースター3弾_UTB03-002_νガンダム_ocr_raw.json",
+  "ocr_timestamp": "2026-02-28T03:57:09.419725",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

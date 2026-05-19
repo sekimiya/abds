@@ -1,0 +1,83 @@
+{
+  "card_number": "FQ06-015",
+  "card_name": "ガンダムヘビーアームズ改（EW）",
+  "series": "FORSQUAD SEASON:06",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ06-015.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ06-015_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "FQ06-015",
+    "type": "MS",
+    "card_label": {
+      "class": "機動",
+      "cost_label": "コスト2"
+    },
+    "name": "ガンダムヘビーアームズ改(EW)",
+    "model": "XXXG-01H2 GUNDAM HEAVYARMS CUSTOM[EW]",
+    "cost": 2,
+    "category": "機動",
+    "affiliation": null,
+    "pilot": "トロワ・バートン",
+    "stats": {
+      "height": "16.7m",
+      "weight": "8.2t",
+      "mobility": 220,
+      "ranged_attack": 250,
+      "melee_attack": 30,
+      "hp": 250
+    },
+    "terrain_compatibility": {
+      "ground": "S",
+      "space": "A",
+      "desert": "A",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "ダブルガトリングガン",
+        "range": 4,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ホーミングミサイル",
+        "range": 2,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "集中砲火",
+      "activation": "任意発動",
+      "target": "範囲(味方)",
+      "range": null,
+      "cost": 4,
+      "description": "20秒間、ロックオンしている敵に周囲の味方ターゲットを集め、[遠/近攻撃力]を中アップ。攻撃対象が変わると効果は終了する。"
+    },
+    "link_ability": [
+      {
+        "name": "Endless Waltz",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ダブルガトリングガン撃射",
+      "target": "単体(敵)",
+      "range": 4,
+      "sp_cost": 2,
+      "power": 2900,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "C",
+    "illustrator": "StudioVIGOR Co.,Ltd.",
+    "raw": "機動　コスト2　MS\n\nXXXG-01H2 GUNDAM HEAVYARMS CUSTOM[EW]\nガンダムヘビーアームズ改(EW)\n\n頭頂高　16.7m\n本体重量　8.2t\n地上 S　宇宙 A　砂漠 A　水中 C\n所属　ー\n機動力　220\nパイロット　トロワ・バートン\n遠距離攻撃　250\n近距離攻撃　30\nHP　250\n\nWEAPON\nMAIN ダブルガトリングガン　射程 4　遠距離\nSUB ホーミングミサイル　射程 2　近距離\n\nLINK ABILITY\nEndless Waltz　デッキに3枚以上\n[遠距離攻撃力][近距離攻撃力]\n小アップ\n\n戦況を変える力　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]\n小アップ\n\nMS ABILITY\n集中砲火\n任意発動　範囲(味方)　射程ー　コスト 4\n20秒間、ロックオンしている敵に周囲の味方ターゲットを集め、[遠/近攻撃力]を中アップ。攻撃対象が変わると効果は終了する。\n\nSPECIAL ATTACK　　UNITED SP\nダブルガトリングガン撃射\n連携 ー　　　　　連携 ー\n連携 ー　　　　　連携 ー\n単体(敵)　射程 4　　射程 ー\nSPコスト 2　威力 2900　/ー\n敵単体に射撃攻撃でダメージを与える。\n/ー\n\nIMPACT AREA\n[アイコン:円形範囲]\n\nillust StudioVIGOR Co.,Ltd.\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nFQ06-015　C"
+  },
+  "ocr_raw_file": "FORSQUAD_SEASON_06_FQ06-015_ガンダムヘビーアームズ改（EW）_ocr_raw.json",
+  "ocr_timestamp": "2026-02-24T18:38:53.925104",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

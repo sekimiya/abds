@@ -1,0 +1,78 @@
+{
+  "card_number": "AB04-051",
+  "card_name": "0ガンダム(ロールアウトカラー)",
+  "series": "SEASON:04",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB04-051.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB04-051_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "AB04-051",
+    "type": "MS",
+    "card_label": {
+      "class": "機動",
+      "cost_label": "コスト6"
+    },
+    "name": "0ガンダム（ロールアウトカラー）",
+    "model": "GN-000 0 GUNDAM(ROLL OUT COLOR)",
+    "cost": 6,
+    "category": "機動",
+    "affiliation": "ソレスタルビーイング",
+    "pilot": "リボンズ・アルマーク",
+    "stats": {
+      "height": "18.0m",
+      "weight": "53.4t",
+      "mobility": 280,
+      "ranged_attack": 200,
+      "melee_attack": 110,
+      "hp": 210
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "A",
+      "desert": "C",
+      "water": null
+    },
+    "weapon": {
+      "main": {
+        "name": "ビームガン",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ビームサーベル",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "妨害[機動]",
+      "activation": "出撃時発動",
+      "target": "範囲(敵)",
+      "range": null,
+      "cost": null,
+      "description": "20秒間、自身を中心とした大範囲内の敵ユニットの[機動力]を小ダウンする。"
+    },
+    "link_ability": [
+      {
+        "name": "ガンダム00",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ビームガン撃射",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3200,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "C",
+    "illustrator": "kazumasa yasukuni",
+    "raw": "MS\n\n機動　コスト6\n\nGN-000 0 GUNDAM(ROLL OUT COLOR)\n0ガンダム（ロールアウトカラー）\n\n全高　18.0m\n本体重量　53.4t\n所属　ソレスタルビーイング\nパイロット　リボンズ・アルマーク\n\n地上　A　宇宙　A　砂漠　C\n\n機動力　280\n遠距離攻撃　200\n近距離攻撃　110\nHP　210\n\nWEAPON\nMAIN　ビームガン　射程　3　遠距離\nSUB　ビームサーベル　射程　1　近距離\n\nLINK ABILITY\nガンダム00\nデッキに3枚以上\n[機動力]小アップ\n\nMS ABILITY\n妨害[機動]\n出撃時発動　範囲(敵)　射程　ー　コスト　ー\n20秒間、自身を中心とした大範囲内の敵ユニットの[機動力]を小ダウンする。\n\nIMPACT AREA\n[アイコン:前方円形範囲]\n\nSPECIAL ATTACK\nビームガン撃射\n単体(敵)　射程　3\nSPコスト　2　威力　3200\n敵単体に射撃攻撃でダメージを与える。\n\nillust　kazumasa yasukuni\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\nAB04-051　C"
+  },
+  "ocr_raw_file": "SEASON_04_AB04-051_0ガンダム(ロールアウトカラー)_ocr_raw.json",
+  "ocr_timestamp": "2026-03-02T06:00:13.002462",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

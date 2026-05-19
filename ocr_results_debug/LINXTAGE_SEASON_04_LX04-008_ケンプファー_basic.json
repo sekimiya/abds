@@ -1,0 +1,83 @@
+{
+  "card_number": "LX04-008",
+  "card_name": "ケンプファー",
+  "series": "LINXTAGE SEASON:04",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX04-008.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX04-008_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "LX04-008",
+    "type": "MS",
+    "card_label": {
+      "class": "機動",
+      "cost_label": "コスト6"
+    },
+    "name": "ケンプファー",
+    "model": "MS-18E KÄMPFER",
+    "cost": 6,
+    "category": "ポケットの中の戦争",
+    "affiliation": "ジオン公国軍",
+    "pilot": "ミハイル・カミンスキー",
+    "stats": {
+      "height": "17.7m",
+      "weight": "43.5t",
+      "mobility": 300,
+      "ranged_attack": 520,
+      "melee_attack": 200,
+      "hp": 530
+    },
+    "terrain_compatibility": {
+      "ground": "S",
+      "space": "B",
+      "desert": "S",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "ショットガン",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ビーム・サーベル",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "逆襲",
+      "activation": "任意発動",
+      "target": "単体(敵)",
+      "range": 3,
+      "cost": 4,
+      "description": "ロックオン中の敵に単体攻撃でダメージを与える。自身の残りHPが少ない程、ダメージが上昇する。"
+    },
+    "link_ability": [
+      {
+        "name": "ポケットの中の戦争",
+        "condition": "デッキに3枚以上",
+        "effect": "[HP]小アップ"
+      },
+      {
+        "name": "実弾の突破力",
+        "condition": "デッキに2枚以上",
+        "effect": "[遠距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "チェーン・マイン爆撃",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3500,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "P",
+    "illustrator": "Eske Yoshinob",
+    "raw": "機動　コスト6　MS\nMS-18E KÄMPFER\nケンプファー\n\nMOBILE SUIT GUNDAM 0080\nポケットの中の戦争\n\n全高　17.7m\n本体重量　43.5t\n所属　ジオン公国軍\nパイロット　ミハイル・カミンスキー\n\n地上 S　宇宙 B　砂漠 S　水中 C\n\n機動力　300\n遠距離攻撃　520\n近距離攻撃　200\nHP　530\n\nWEAPON\nMAIN　ショットガン　射程 3　遠距離\nSUB　ビーム・サーベル　射程 1　近距離\n\nMS ABILITY\n逆襲\n任意発動　単体(敵)　射程 3　コスト 4\nロックオン中の敵に単体攻撃でダメージを与える。自身の残りHPが少ない程、ダメージが上昇する。\n\nLINK ABILITY\nポケットの中の戦争　デッキに3枚以上\n[HP]小アップ\n\n実弾の突破力　デッキに2枚以上\n[遠距離攻撃力]小アップ\n\nIMPACT AREA\n（射程3・単体マス表示）\n\nSPECIAL ATTACK\nチェーン・マイン爆撃\n単体(敵)　射程 3\nSPコスト 2　威力 3500\n敵単体に射撃攻撃でダメージを与える。\n\nillust. Eske Yoshinob\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\nLX04-008　P"
+  },
+  "ocr_raw_file": "LINXTAGE_SEASON_04_LX04-008_ケンプファー_ocr_raw.json",
+  "ocr_timestamp": "2026-03-07T18:16:05.174648",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

@@ -1,0 +1,83 @@
+{
+  "card_number": "LX04-010",
+  "card_name": "ハイゴッグ",
+  "series": "LINXTAGE SEASON:04",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX04-010.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX04-010_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "LX04-010",
+    "type": "MS",
+    "card_label": {
+      "class": "機動",
+      "cost_label": "コスト5"
+    },
+    "name": "ハイゴッグ",
+    "model": "MSM-03C HY-GOGG",
+    "cost": 5,
+    "category": "ポケットの中の戦争",
+    "affiliation": "ジオン公国軍",
+    "pilot": "ミハイル・カミンスキー、アンディ・ストロース",
+    "stats": {
+      "height": "15.4m",
+      "weight": "54.5t",
+      "mobility": 280,
+      "ranged_attack": 440,
+      "melee_attack": 110,
+      "hp": 470
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "C",
+      "desert": "C",
+      "water": "S"
+    },
+    "weapon": {
+      "main": {
+        "name": "ビーム・カノン",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "バイス・クロー",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "爆撃",
+      "activation": "任意発動",
+      "target": "範囲(敵)",
+      "range": 3,
+      "cost": 3,
+      "description": "ロックオン中の敵を中心に小範囲攻撃を行い、範囲内の敵にダメージを与える。"
+    },
+    "link_ability": [
+      {
+        "name": "ポケットの中の戦争",
+        "condition": "デッキに3枚以上",
+        "effect": "[HP]小アップ"
+      },
+      {
+        "name": "機動で制する射撃戦",
+        "condition": "デッキに機動が2枚以上",
+        "effect": "[遠距離攻撃力]中アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ハンド・ミサイル・ユニット爆撃",
+      "target": "範囲(敵)",
+      "range": 3,
+      "sp_cost": 3,
+      "power": 3600,
+      "description": "対象の敵を中心として範囲射撃でダメージを与え、20秒間、自身の[遠距離攻撃力]を大アップする。",
+      "united_sp": null
+    },
+    "rarity": "P",
+    "illustrator": "deraken",
+    "raw": "機動　コスト5　MS\nMSM-03C HY-GOGG\nハイゴッグ\nポケットの中の戦争\n\n全高　15.4m\n本体重量　54.5t\n所属　ジオン公国軍\nパイロット　ミハイル・カミンスキー、アンディ・ストロース\n\n地上 A　宇宙 C　砂漠 C　水中 S\n機動力　280\n遠距離攻撃　440\n近距離攻撃　110\nHP　470\n\nWEAPON\nMAIN　ビーム・カノン　射程 3　遠距離\nSUB　バイス・クロー　射程 1　近距離\n\nMS ABILITY\n爆撃\n任意発動　範囲(敵)　射程 3　コスト 3\nロックオン中の敵を中心に小範囲攻撃を行い、範囲内の敵にダメージを与える。\n\nLINK ABILITY\nポケットの中の戦争　デッキに3枚以上\n[HP]小アップ\n\n機動で制する射撃戦　デッキに機動が2枚以上\n[遠距離攻撃力]中アップ\n\nIMPACT AREA\n（範囲(敵)中心・射程3の爆撃パターン）\n\nSPECIAL ATTACK\nハンド・ミサイル・ユニット爆撃\n範囲(敵)　射程 3\nSPコスト 3　威力 3600\n対象の敵を中心として範囲射撃でダメージを与え、20秒間、自身の[遠距離攻撃力]を大アップする。\n\nillust. deraken\n©創通・サンライズ\nBANDAI MADE IN JAPAN\nLX04-010　P"
+  },
+  "ocr_raw_file": "LINXTAGE_SEASON_04_LX04-010_ハイゴッグ_ocr_raw.json",
+  "ocr_timestamp": "2026-03-07T18:17:17.815580",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

@@ -1,0 +1,83 @@
+{
+  "card_number": "LXR02-003",
+  "card_name": "νガンダム",
+  "series": "リンクステージレア2弾",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LXR02-003.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LXR02-003_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "LXR02-003",
+    "type": "MS",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト4"
+    },
+    "name": "νガンダム",
+    "model": "RX-93 νGUNDAM",
+    "cost": 4,
+    "category": "逆襲のシャア",
+    "affiliation": "地球連邦軍",
+    "pilot": "アムロ・レイ",
+    "stats": {
+      "height": "22.0m",
+      "weight": "27.9t",
+      "mobility": 260,
+      "ranged_attack": 110,
+      "melee_attack": 340,
+      "hp": 340
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "C",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "ビーム・サーベル",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "ビーム・ライフル",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "砕撃",
+      "activation": "任意発動",
+      "target": "単体(敵)",
+      "range": 1,
+      "cost": 3,
+      "description": "ロックオン中の敵に単体攻撃でダメージを与え、メイン武装を使用不能にさせる。出撃時１度のみ使用可能。"
+    },
+    "link_ability": [
+      {
+        "name": "逆襲のシャア",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力]小アップ"
+      },
+      {
+        "name": "間合いを詰めた接近戦",
+        "condition": "デッキに2枚以上",
+        "effect": "[近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ビーム・サーベル強攻",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3400,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "LX",
+    "illustrator": "Eske Yoshinob",
+    "raw": "近距離　コスト4　MS\n\nRX-93 νGUNDAM\nνガンダム\n\n全高　22.0m\n本体重量　27.9t\n所属　地球連邦軍\nパイロット　アムロ・レイ\n\n地上 A　宇宙 S　砂漠 C　水中 C\n\n機動力　260\n遠距離攻撃　110\n近距離攻撃　340\nHP　340\n\nWEAPON\nMAIN　ビーム・サーベル　射程 1　近距離\nSUB　ビーム・ライフル　射程 3　遠距離\n\nMS ABILITY\n砕撃\n任意発動　単体(敵)　射程 1　コスト 3\nロックオン中の敵に単体攻撃でダメージを与え、メイン武装を使用不能にさせる。出撃時１度のみ使用可能。\n\nLINK ABILITY\n逆襲のシャア　デッキに3枚以上\n[遠距離攻撃力]小アップ\n\n間合いを詰めた接近戦　デッキに2枚以上\n[近距離攻撃力]小アップ\n\nSPECIAL ATTACK\nビーム・サーベル強攻\n単体(敵)　射程 2\nSPコスト 2　威力 3400\n敵単体に格闘攻撃でダメージを与える。\n\nillust　Eske Yoshinob\n©創通・サンライズ\nBANDAI MADE IN JAPAN\nLXR02-003　LX"
+  },
+  "ocr_raw_file": "リンクステージレア2弾_LXR02-003_νガンダム_ocr_raw.json",
+  "ocr_timestamp": "2026-03-07T14:44:03.630577",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

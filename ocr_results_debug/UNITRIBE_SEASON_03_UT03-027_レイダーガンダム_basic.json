@@ -1,0 +1,83 @@
+{
+  "card_number": "UT03-027",
+  "card_name": "レイダーガンダム",
+  "series": "UNITRIBE SEASON:03",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT03-027.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT03-027_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "UT03-027",
+    "type": "MS",
+    "card_label": {
+      "class": "機動",
+      "cost_label": "コスト7"
+    },
+    "name": "レイダーガンダム",
+    "model": "GAT-X370 RAIDER GUNDAM",
+    "cost": 7,
+    "category": "機動",
+    "affiliation": "地球連合軍",
+    "pilot": "クロト・ブエル",
+    "stats": {
+      "height": "17.94m",
+      "weight": "84.9t",
+      "mobility": 300,
+      "ranged_attack": 200,
+      "melee_attack": 580,
+      "hp": 570
+    },
+    "terrain_compatibility": {
+      "ground": "S",
+      "space": "A",
+      "desert": "C",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "ミョルニル",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "2連装52mm超高初速防盾砲",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "撃滅",
+      "activation": "任意発動",
+      "target": "単体(敵)",
+      "range": 2,
+      "cost": 4,
+      "description": "ロックオン中の敵に単体攻撃でダメージを与える。この攻撃で敵ユニットを撃破した場合、敵ユニットの修理時間を延長させる。"
+    },
+    "link_ability": [
+      {
+        "name": "ガンダムSEED",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ミョルニル強撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3700,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "P",
+    "illustrator": "deraken",
+    "raw": "MS\n\n機動　コスト7\n\nGAT-X370 RAIDER GUNDAM\nレイダーガンダム\n\n[ロゴ:機動戦士ガンダムSEED]\n\n頭頂高 17.94m\n本体重量 84.9t\n所属 地球連合軍\nパイロット クロト・ブエル\n\n[アイコン:地上S] [アイコン:宇宙A] [アイコン:砂漠C] [アイコン:水中C]\n\n機動力 300\n遠距離攻撃 200\n近距離攻撃 580\nHP 570\n\nWEAPON\nMAIN ミョルニル 射程 1 近距離\nSUB 2連装52mm超高初速防盾砲 射程 3 遠距離\n\nLINK ABILITY\nガンダムSEED デッキに3枚以上\n[機動力]小アップ\n\n戦況を変える力 デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nMS ABILITY\n撃滅\n任意発動 単体(敵) 射程 2 コスト 4\nロックオン中の敵に単体攻撃でダメージを与える。この攻撃で敵ユニットを撃破した場合、敵ユニットの修理時間を延長させる。\n\nSPECIAL ATTACK　UNITED SP\nミョルニル強撃　ー\n連携 ー　連携 ー\n連携 ー　連携 ー\n単体(敵) 射程 2　ー 射程 ー\nSPコスト 2 威力 3700 / ー\n敵単体に格闘攻撃でダメージを与える。\n/ ー\n\nIMPACT AREA\n[グリッド表示]\n\nillust deraken\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\nUT03-027 P"
+  },
+  "ocr_raw_file": "UNITRIBE_SEASON_03_UT03-027_レイダーガンダム_ocr_raw.json",
+  "ocr_timestamp": "2026-02-26T17:21:46.665431",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

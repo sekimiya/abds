@@ -1,0 +1,56 @@
+{
+  "card_number": "FQ02-046",
+  "card_name": "チボデー・クロケット",
+  "series": "FORSQUAD SEASON:02",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-046.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-046_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "FQ02-046",
+    "type": "PL",
+    "card_label": {
+      "class": "殲滅",
+      "cost_label": "コスト3"
+    },
+    "name": "チボデー・クロケット",
+    "cost": 3,
+    "category": "Gガンダム",
+    "affiliation": "ネオアメリカ",
+    "stats": {
+      "mobility": 190,
+      "ranged_attack": 20,
+      "melee_attack": 280,
+      "hp": 330
+    },
+    "pilot_skill": {
+      "name": "電光石火の殴撃",
+      "trigger": "敵ユニットを撃破時",
+      "effect": "SQゲージ大アップ。",
+      "has_sq_skill": true,
+      "sq_skill_details": {
+        "trigger": "敵ユニットを撃破時",
+        "sq_gauge_effect": "SQゲージ大アップ。",
+        "sq_rush_effect": "自身の[機動力][近距離攻撃力]をアップする。",
+        "sq_max_effect": null
+      }
+    },
+    "link_ability": [
+      {
+        "name": "[SQ]新シャッフル同盟",
+        "condition": "デッキに3枚以上",
+        "effect": "SQゲージが表示される。SQゲージを溜めるとSQUAD RUSHが発動できる。[機動力][HP]小アップ"
+      },
+      {
+        "name": "ガンダムファイター",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力][HP]小アップ"
+      }
+    ],
+    "rarity": "M",
+    "illustrator": null,
+    "raw": "殲滅　コスト3　PL\n\nチボデー・クロケット\nCHIBODEE CROCKET\n\n身長　192cm\n年齢　20歳\n所属　ネオアメリカ\n搭乗機体　ガンダムマックスター\n\nSQ　PL SKILL\n電光石火の殴撃\n敵ユニットを撃破時\nSQゲージ大アップ。\n\nSQUAD RUSH中\n自身の[機動力][近距離攻撃力]をアップする。\n\nSQ　LINK ABILITY\n新シャッフル同盟　デッキに3枚以上\nSQゲージが表示される。\nSQゲージを溜めるとSQUAD RUSHが発動できる。\n[機動力][HP]小アップ\n\nガンダムファイター　デッキに3枚以上\n[機動力][HP]小アップ\n\n機動力　190\n遠距離攻撃　20\n近距離攻撃　280\nHP　330\n\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE ®\nFQ02-046　M"
+  },
+  "ocr_raw_file": "FORSQUAD_SEASON_02_FQ02-046_チボデー・クロケット_ocr_raw.json",
+  "ocr_timestamp": "2026-03-03T18:35:09.601798",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

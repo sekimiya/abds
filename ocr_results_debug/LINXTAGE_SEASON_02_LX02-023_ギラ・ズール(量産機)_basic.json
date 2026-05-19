@@ -1,0 +1,83 @@
+{
+  "card_number": "LX02-023",
+  "card_name": "ギラ・ズール(量産機)",
+  "series": "LINXTAGE SEASON:02",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX02-023.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX02-023_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "LX02-023",
+    "type": "MS",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト5"
+    },
+    "name": "ギラ・ズール（量産機）",
+    "model": "AMS-129 GEARA ZULU",
+    "cost": 5,
+    "category": "MS",
+    "affiliation": "ネオ・ジオン残党軍『袖付き』",
+    "pilot": null,
+    "stats": {
+      "height": "20.0m",
+      "weight": "21.8t",
+      "mobility": 230,
+      "ranged_attack": 140,
+      "melee_attack": 290,
+      "hp": 390
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "A",
+      "desert": "C",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "ビーム・ホーク",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "グレネード・ランチャー",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "特攻",
+      "activation": "出撃時発動",
+      "target": "自分",
+      "range": null,
+      "cost": null,
+      "description": "自身の[遠／近攻撃力]をアップし[怯み無効]となるが、[回避／ガード不可][修理時間延長]となる。効果は撤退するまで持続。"
+    },
+    "link_ability": [
+      {
+        "name": "ガンダムUC",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "量産機の戦い方",
+        "condition": "デッキに2枚以上",
+        "effect": "[機動力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ビーム・ホーク強撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3500,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "M",
+    "illustrator": "deraken",
+    "raw": "近距離 コスト5 MS\nAMS-129 GEARA ZULU\nギラ・ズール（量産機）\n全高 20.0m\n本体重量 21.8t\n所属 ネオ・ジオン残党軍『袖付き』\nパイロット ー\n\n地上 A 宇宙 A 砂漠 C 水中 C\n機動力 230\n遠距離攻撃 140\n近距離攻撃 290\nHP 390\n\nWEAPON\nMAIN ビーム・ホーク 射程 1 近距離\nSUB グレネード・ランチャー 射程 3 遠距離\n\nMS ABILITY\n特攻\n出撃時発動 自分 射程ー コストー\n\n自身の[遠／近攻撃力]をアップし[怯み無効]となるが、[回避／ガード不可][修理時間延長]となる。効果は撤退するまで持続。\n\nLINK ABILITY\nガンダムUC デッキに3枚以上\n[機動力]小アップ\n\n量産機の戦い方 デッキに2枚以上\n[機動力]小アップ\n\nSPECIAL ATTACK\nビーム・ホーク強撃\n単体(敵) 射程 2\nSPコスト 2 威力 3500\n敵単体に格闘攻撃でダメージを与える。\n\nillust deraken\n©創通・サンライズ\nBANDAI MADE IN JAPAN\nLX02-023 M"
+  },
+  "ocr_raw_file": "LINXTAGE_SEASON_02_LX02-023_ギラ・ズール(量産機)_ocr_raw.json",
+  "ocr_timestamp": "2026-03-07T15:53:42.944707",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

@@ -1,0 +1,78 @@
+{
+  "card_number": "TEST-003",
+  "card_name": "ガンキャノン",
+  "series": "ロケーションテスト",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/TEST-003.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/TEST-003_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "TEST-003",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト3"
+    },
+    "name": "ガンキャノン",
+    "model": "RX-77-2 GUNCANNON",
+    "cost": 3,
+    "category": "遠距離",
+    "affiliation": "地球連邦軍",
+    "pilot": "カイ・シデン",
+    "stats": {
+      "height": "17.5m",
+      "weight": "51.0t",
+      "mobility": 100,
+      "ranged_attack": 330,
+      "melee_attack": 80,
+      "hp": 150
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "A",
+      "desert": "C",
+      "water": null
+    },
+    "weapon": {
+      "main": {
+        "name": "240mmキャノン砲",
+        "range": 4,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ビーム・ライフル",
+        "range": 3,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "砲撃",
+      "activation": "任意発動",
+      "target": "範囲(敵)",
+      "range": 4,
+      "cost": 4,
+      "description": "射程範囲内の指定した位置に小範囲の砲撃を行い、範囲内の敵にダメージを与える。"
+    },
+    "link_ability": [
+      {
+        "name": "機動戦士ガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "240mmキャノン砲砲撃",
+      "target": "単体(敵)",
+      "range": 4,
+      "sp_cost": 2,
+      "power": 2800,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "R",
+    "illustrator": "Hiroshi Ayaragi",
+    "raw": "MS\n\n遠距離 コスト3\n\nRX-77-2 GUNCANNON\nガンキャノン\n\n全高 17.5m\n本体重量 51.0t\n所属 地球連邦軍\nパイロット カイ・シデン\n\n地上 A 宇宙 A 砂漠 C\n機動力 100\n遠距離攻撃 330\n近距離攻撃 80\nHP 150\n\nWEAPON\nMAIN 240mmキャノン砲 射程 4 遠距離\nSUB ビーム・ライフル 射程 3 近距離\n\nLINK ABILITY\n機動戦士ガンダム デッキに3枚以上\n[機動力]小アップ\n\nー\nー\n\nMS ABILITY\n砲撃\n任意発動 範囲(敵) 射程 4 コスト 4\n射程範囲内の指定した位置に小範囲の砲撃を行い、範囲内の敵にダメージを与える。\n\nIMPACT AREA\n[アイコン:中心×印の円形範囲]\n\nSPECIAL ATTACK\n240mmキャノン砲砲撃\n単体(敵) 射程 4\nSPコスト 2 威力 2800\n敵単体に射撃攻撃でダメージを与える。\n\nillust Hiroshi Ayaragi\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nTEST-003 R"
+  },
+  "ocr_raw_file": "ロケーションテスト_TEST-003_ガンキャノン_ocr_raw.json",
+  "ocr_timestamp": "2026-03-02T05:00:09.307954",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

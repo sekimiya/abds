@@ -1,0 +1,89 @@
+{
+  "card_number": "UT02-029",
+  "card_name": "ライジングフリーダムガンダム",
+  "series": "UNITRIBE SEASON:02",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT02-029.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT02-029_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "UT02-029",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト2"
+    },
+    "name": "ライジングフリーダムガンダム",
+    "model": "STTS-909 RISING FREEDOM GUNDAM",
+    "cost": 2,
+    "category": "遠距離",
+    "affiliation": "コンパス",
+    "pilot": "キラ・ヤマト",
+    "stats": {
+      "height": "17.80m",
+      "weight": "67.90t",
+      "mobility": 150,
+      "ranged_attack": 200,
+      "melee_attack": 60,
+      "hp": 190
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "A",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "高エネルギービームライフル",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ヴェルシーナ ビームサーベル",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "圧倒",
+      "activation": "任意発動",
+      "target": "単体(敵)",
+      "range": 3,
+      "cost": 3,
+      "description": "ロックオン中の敵が弱体化状態の時に発動可能となり、敵に単体攻撃でダメージを与え、その攻撃は必ずクリティカルになる。"
+    },
+    "link_ability": [
+      {
+        "name": "SEED FREEDOM",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "高エネルギービームライフル撃射",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3000,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "united_sp": {
+        "partner1": "イモータルジャスティスガンダム",
+        "partner2": null,
+        "range": 3,
+        "power": 5100,
+        "description": "敵単体に格闘攻撃でダメージを与える。出撃時1度のみ使用可能。"
+      }
+    },
+    "rarity": "C",
+    "illustrator": "amasaki",
+    "raw": "遠距離　コスト2　MS\n\nSTTS-909 RISING FREEDOM GUNDAM\nライジングフリーダムガンダム\n\n全高　17.80m\n本体重量　67.90t\n所属　コンパス\nパイロット　キラ・ヤマト\n\n地上 A　宇宙 S　砂漠 A　水中 C\n\n機動力　150\n遠距離攻撃　200\n近距離攻撃　60\nHP　190\n\nWEAPON\nMAIN　高エネルギービームライフル　射程 3　遠距離\nSUB　ヴェルシーナ ビームサーベル　射程 1　近距離\n\nLINK ABILITY\nSEED FREEDOM　デッキに3枚以上\n[機動力]小アップ\n\nMS ABILITY\n圧倒\n任意発動　単体(敵)　射程 3　コスト 3\n\nロックオン中の敵が弱体化状態の時に発動可能となり、敵に単体攻撃でダメージを与え、その攻撃は必ずクリティカルになる。\n\n多彩な戦術　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nSPECIAL ATTACK　UNITED SP\n高エネルギービームライフル撃射　コンビネーション・アサルト\n連携　イモータルジャスティスガンダム　連携　ー\n連携　ー　連携　ー\n単体(敵)　射程 3　単体(敵)　射程 3\nSPコスト 2　威力 3000 / 5100\n\n敵単体に射撃攻撃でダメージを与える。／敵単体に格闘攻撃でダメージを与える。出撃時1度のみ使用可能。\n\nIMPACT AREA\n[アイコン:着弾エリア図]\n\nillust　amasaki\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nUT02-029　C"
+  },
+  "ocr_raw_file": "UNITRIBE_SEASON_02_UT02-029_ライジングフリーダムガンダム_ocr_raw.json",
+  "ocr_timestamp": "2026-02-26T17:45:36.042649",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

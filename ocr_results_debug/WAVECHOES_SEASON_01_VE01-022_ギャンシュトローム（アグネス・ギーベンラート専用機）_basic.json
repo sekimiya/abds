@@ -1,0 +1,84 @@
+{
+  "card_number": "VE01-022",
+  "card_name": "ギャンシュトローム（アグネス・ギーベンラート専用機）",
+  "series": "WAVECHOES SEASON:01",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE01-022.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE01-022_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "VE01-022",
+    "type": "MS",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト1"
+    },
+    "name": "ギャンシュトローム（アグネス・ギーベンラート専用機）",
+    "model": "GELLS-GEHE [SIEBEN-RATH CUSTOM]",
+    "cost": 1,
+    "category": "近距離",
+    "affiliation": "コンパス",
+    "pilot": "アグネス・ギーベンラート",
+    "stats": {
+      "height": "20.00m",
+      "weight": "74.56t",
+      "mobility": 230,
+      "ranged_attack": 40,
+      "melee_attack": 150,
+      "hp": 230
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "C",
+      "desert": "C",
+      "water": "A"
+    },
+    "weapon": {
+      "main": {
+        "name": "ファルクスG7 ビームアックス",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "トリデンティ 3段回旋ビーム砲",
+        "range": 2,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "増援[殲滅]",
+      "activation": "任意発動",
+      "target": "特殊(自分)",
+      "range": null,
+      "cost": 3,
+      "description": "自身の周囲に殲滅タイプの味方ユニットを呼び出す。※上限3ユニットまで。"
+    },
+    "link_ability": [
+      {
+        "name": "SEED FREEDOM",
+        "condition": "デッキに3枚以上",
+        "effect": "【機動力】小アップ"
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "【遠距離攻撃力】【近距離攻撃力】小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ファルクスG7 ビームアックス斬撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3100,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "echoes_beat": null,
+      "united_sp": null
+    },
+    "rarity": "C",
+    "illustrator": "S.Kai",
+    "raw": ""
+  },
+  "ocr_raw_file": "WAVECHOES_SEASON_01_VE01-022_ギャンシュトローム（アグネス・ギーベンラート専用機）_ocr_raw.json",
+  "ocr_timestamp": "2026-03-28T07:29:24.625418",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

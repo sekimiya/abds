@@ -1,0 +1,90 @@
+{
+  "card_number": "VE02-023",
+  "card_name": "デスティニーガンダムSpecⅡ",
+  "series": "WAVECHOES SEASON:02",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE02-023.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE02-023_b.jpg?v250630",
+  "ocr_engine": "claude_code_subagent",
+  "ocr_type": "basic",
+  "ocr_timestamp": "2026-04-22T20:30:00.000000",
+  "ocr_data": {
+    "card_id": "VE02-023",
+    "type": "MS",
+    "name": "デスティニーガンダムSpecⅡ",
+    "model": "ZGMF/A-42S2 DESTINY GUNDAM SPECII",
+    "cost": 3,
+    "category": "近距離",
+    "affiliation": "コンパス",
+    "pilot": "シン・アスカ",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト3"
+    },
+    "stats": {
+      "height": "18.08m",
+      "weight": "79.44t",
+      "mobility": 230,
+      "ranged_attack": 90,
+      "melee_attack": 250,
+      "hp": 280
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "B",
+      "water": "A"
+    },
+    "weapon": {
+      "main": {
+        "name": "アロンダイトビームソード",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "高エネルギー長射程ビーム砲",
+        "range": 4,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "鼓舞[近距離][弱体化解除]",
+      "activation": "任意発動",
+      "target": "範囲(味方)",
+      "range": null,
+      "cost": 6,
+      "description": "自身を中心とした大範囲内の味方ユニットの弱体化状態を無効化し、30秒間、[近距離攻撃力]を中アップする。"
+    },
+    "link_ability": [
+      {
+        "name": "SEED FREEDOM",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "アロンダイトビームソード強撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": "3200",
+      "sp_type": "ECHOES BEAT SP",
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null,
+      "echoes_beat": {
+        "name": "DUPE粒子分身連撃",
+        "level": 3,
+        "target": "単体(敵)",
+        "range": 3,
+        "power": "4700",
+        "description": "EBLv.を3下げる。敵単体に格闘攻撃でダメージを与える。出撃時1度のみ使用可能。"
+      }
+    },
+    "rarity": "C",
+    "raw": "近距離 コスト3 MS ZGMF/A-42S2 DESTINY GUNDAM SPECII デスティニーガンダムSpecⅡ 頭頂高 18.08m 本体重量 79.44t 所属 コンパス パイロット シン・アスカ 地上 A 宇宙 S 砂漠 B 水中 A 機動力 230 遠距離攻撃 90 近距離攻撃 250 HP 280 WEAPON MAIN アロンダイトビームソード 射程 1 近距離 SUB 高エネルギー長射程ビーム砲 射程 4 遠距離 MS ABILITY 鼓舞[近距離][弱体化解除] 任意発動 範囲(味方) 射程 — コスト 6 自身を中心とした大範囲内の味方ユニットの弱体化状態を無効化し、30秒間、[近距離攻撃力]を中アップする。 LINK ABILITY SEED FREEDOM デッキに3枚以上 [機動力]小アップ 多彩な戦術 デッキに4枚以上 [遠距離攻撃力][近距離攻撃力]小アップ SPECIAL ATTACK ECHOES BEAT SP アロンダイトビームソード強撃 DUPE粒子分身連撃 Lv.3 ECHOES BEAT Lv.を下げることで、共鳴戦術技が発動する。 単体(敵) 射程 2 単体(敵) 射程 3 SPコスト 2 威力 3200 / 4700 敵単体に格闘攻撃でダメージを与える。 / EBLv.を3下げる。敵単体に格闘攻撃でダメージを与える。出撃時1度のみ使用可能。 illust Shiratori U VE02-023 C"
+  }
+}

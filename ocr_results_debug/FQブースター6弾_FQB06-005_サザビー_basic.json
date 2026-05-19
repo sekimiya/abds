@@ -1,0 +1,83 @@
+{
+  "card_number": "FQB06-005",
+  "card_name": "サザビー",
+  "series": "FQブースター6弾",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQB06-005.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQB06-005_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "FQB06-005",
+    "type": "MS",
+    "card_label": {
+      "class": "機動",
+      "cost_label": "コスト5"
+    },
+    "name": "サザビー",
+    "model": "MSN-04 SAZABI",
+    "cost": 5,
+    "category": "機動",
+    "affiliation": "新生ネオ・ジオン",
+    "pilot": "シャア・アズナブル",
+    "stats": {
+      "height": "25.0m",
+      "weight": "30.5t",
+      "mobility": 260,
+      "ranged_attack": 120,
+      "melee_attack": 330,
+      "hp": 290
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "C",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "ビーム・トマホーク",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "ビーム・ショット・ライフル",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "妨害[防御]",
+      "activation": "出撃時発動",
+      "target": "範囲(敵)",
+      "range": null,
+      "cost": null,
+      "description": "20秒間、自身を中心とした大範囲内の敵ユニットの被ダメージを少しアップする。"
+    },
+    "link_ability": [
+      {
+        "name": "逆襲のシャア",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ビーム・トマホーク強撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3400,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "R",
+    "illustrator": "monban",
+    "raw": "機動　コスト5\n\nMS\n\nMSN-04 SAZABI\nサザビー\n\n機動戦士ガンダム 逆襲のシャア\n\n頭頂高　25.0m\n本体重量　30.5t\n所属　新生ネオ・ジオン\nパイロット　シャア・アズナブル\n\n地上 A　宇宙 S　砂漠 C　水中 C\n\n機動力　260\n遠距離攻撃　120\n近距離攻撃　330\nHP　290\n\nWEAPON\nMAIN ビーム・トマホーク　射程 1　近距離\nSUB ビーム・ショット・ライフル　射程 3　遠距離\n\nLINK ABILITY\n逆襲のシャア　デッキに3枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\n多彩な戦術　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nMS ABILITY\n妨害[防御]\n出撃時発動　範囲(敵)　射程 ー　コスト ー\n20秒間、自身を中心とした大範囲内の敵ユニットの被ダメージを少しアップする。\n\nSPECIAL ATTACK　　UNITED SP\nビーム・トマホーク強撃　ー\n連携 ー　　連携 ー\n連携 ー　　連携 ー\n単体(敵)　射程 2　ー　射程 ー\nSPコスト 2　威力 3400 / ー\n敵単体に格闘攻撃でダメージを与える。\n/ ー\n\nIMPACT AREA\n[アイコン:円形・中央やや前方]\n\nillust　monban\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nFQB06-005　R"
+  },
+  "ocr_raw_file": "FQブースター6弾_FQB06-005_サザビー_ocr_raw.json",
+  "ocr_timestamp": "2026-02-28T06:50:08.365348",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

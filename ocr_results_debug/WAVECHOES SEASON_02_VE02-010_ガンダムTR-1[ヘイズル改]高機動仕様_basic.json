@@ -1,0 +1,82 @@
+{
+  "card_number": "VE02-010",
+  "card_name": "ガンダムTR-1[ヘイズル改]高機動仕様",
+  "series": "WAVECHOES SEASON:02",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE02-010.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE02-010_b.jpg?v250630",
+  "ocr_engine": "claude_code_subagent",
+  "ocr_type": "basic",
+  "ocr_timestamp": "2026-04-22T20:30:00.000000",
+  "ocr_data": {
+    "card_id": "VE02-010",
+    "type": "MS",
+    "name": "ガンダムTR-1[ヘイズル改]高機動仕様",
+    "model": "RX-121-1 GUNDAM TR-1 [HAZEL CUSTOM] HIGH MOBILITY TYPE",
+    "cost": 3,
+    "category": "遠距離",
+    "affiliation": "ティターンズ",
+    "pilot": null,
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト3"
+    },
+    "stats": {
+      "height": "18.1m",
+      "weight": "41.5t",
+      "mobility": 200,
+      "ranged_attack": 220,
+      "melee_attack": 70,
+      "hp": 260
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "C",
+      "water": "B"
+    },
+    "weapon": {
+      "main": {
+        "name": "ビーム・ライフル",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ビーム・サーベル",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "妨害[攻撃]",
+      "activation": "出撃時発動",
+      "target": "範囲(敵)",
+      "range": null,
+      "cost": null,
+      "description": "20秒間、自身を中心とした大範囲内の敵ユニットの[遠距離攻撃力][近距離攻撃力]を小ダウンする。"
+    },
+    "link_ability": [
+      {
+        "name": "ADVANCE OF Z",
+        "condition": "デッキに2枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ビーム・ライフル射撃",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3100,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "united_sp": null,
+      "echoes_beat": null
+    },
+    "rarity": "C",
+    "raw": "遠距離 コスト3 MS RX-121-1 GUNDAM TR-1 [HAZEL CUSTOM] HIGH MOBILITY TYPE ガンダムTR-1[ヘイズル改]高機動仕様 頭頂高 18.1m 本体重量 41.5t 所属 ティターンズ パイロット — 地上A 宇宙S 砂漠C 水中B 機動力200 遠距離攻撃220 近距離攻撃70 HP260 WEAPON MAIN ビーム・ライフル 射程3 遠距離 SUB ビーム・サーベル 射程1 近距離 MS ABILITY 妨害[攻撃] 出撃時発動 範囲(敵) 射程— コスト— 20秒間、自身を中心とした大範囲内の敵ユニットの[遠距離攻撃力][近距離攻撃力]を小ダウンする。 LINK ABILITY ADVANCE OF Z デッキに2枚以上 [機動力]小アップ 多彩な戦術 デッキに4枚以上 [遠距離攻撃力][近距離攻撃力]小アップ SPECIAL ATTACK ECHOES BEAT ビーム・ライフル射撃 — — 単体(敵) 射程3 — 射程— SPコスト2 威力 3100 /— 敵単体に射撃攻撃でダメージを与える。 /— VE02-010 C"
+  }
+}

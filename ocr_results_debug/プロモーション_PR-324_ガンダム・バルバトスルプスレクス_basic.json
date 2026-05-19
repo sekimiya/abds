@@ -1,0 +1,83 @@
+{
+  "card_number": "PR-324",
+  "card_name": "ガンダム・バルバトスルプスレクス",
+  "series": "プロモーション",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-324.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-324_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "PR-324",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト5"
+    },
+    "name": "ガンダム・バルバトスルプスレクス",
+    "model": "ASW-G-08 GUNDAM BARBATOS LUPUS REX",
+    "cost": 5,
+    "category": null,
+    "affiliation": "鉄華団",
+    "pilot": "三日月・オーガス",
+    "stats": {
+      "height": "19.0m",
+      "weight": "32.1t",
+      "mobility": 240,
+      "ranged_attack": 330,
+      "melee_attack": 80,
+      "hp": 550
+    },
+    "terrain_compatibility": {
+      "ground": "S",
+      "space": "A",
+      "desert": "S",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "200mm砲",
+        "range": 2,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "超大型メイス",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "威圧",
+      "activation": "任意発動",
+      "target": "範囲(敵)",
+      "range": null,
+      "cost": 4,
+      "description": "自身を中心とした範囲内の敵ユニットをスタンさせ、一定時間被ダメージを少しアップする。"
+    },
+    "link_ability": [
+      {
+        "name": "鉄血のオルフェンズ",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "200mm砲撃射",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3400,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "PR",
+    "illustrator": "amasaki",
+    "raw": "遠距離 コスト5\nASW-G-08 GUNDAM BARBATOS LUPUS REX\nガンダム・バルバトスルプスレクス\n\n頭頂高　19.0m\n本体重量　32.1t\n所属　鉄華団\nパイロット　三日月・オーガス\n\n地上 S　宇宙 A　砂漠 S　水中 C\n機動力 240\n遠距離攻撃 330\n近距離攻撃 80\nHP 550\n\nWEAPON\nMAIN　200mm砲　射程 2　遠距離\nSUB　超大型メイス　射程 1　近距離\n\nMS ABILITY\n威圧\n任意発動　範囲(敵)　射程 ー　コスト 4\n自身を中心とした範囲内の敵ユニットをスタンさせ、一定時間被ダメージを少しアップする。\n\nLINK ABILITY\n鉄血のオルフェンズ　デッキに3枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\n戦況を変える力　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nIMPACT AREA\n\nSPECIAL ATTACK　UNITED SP\n200mm砲撃射　ー\n連携 ー　連携 ー\n連携 ー\n単体(敵)　射程 3　ー　射程 ー\nSPコスト 2　威力 3400 / ー\n敵単体に射撃攻撃でダメージを与える。\n/ー\n\nillust　amasaki\n©創通・サンライズ\nBANDAI MADE IN JAPAN\nNOT FOR SALE\nPR-324　PR"
+  },
+  "ocr_raw_file": "プロモーション_PR-324_ガンダム・バルバトスルプスレクス_ocr_raw.json",
+  "ocr_timestamp": "2026-03-03T18:55:53.529828",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

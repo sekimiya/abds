@@ -1,0 +1,83 @@
+{
+  "card_number": "FQ06-034",
+  "card_name": "ガーベラ・テトラ（キララ専用機）",
+  "series": "FORSQUAD SEASON:06",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ06-034.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ06-034_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "FQ06-034",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト4"
+    },
+    "name": "ガーベラ・テトラ(キララ専用機)",
+    "model": "KIRARA'S GERBERA TETRA",
+    "cost": 4,
+    "category": "遠距離",
+    "affiliation": null,
+    "pilot": "キララ",
+    "stats": {
+      "height": null,
+      "weight": null,
+      "mobility": 250,
+      "ranged_attack": 430,
+      "melee_attack": 70,
+      "hp": 450
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "B",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "ビーム・マシンガン",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ビーム・サーベル",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "転化[妨害]",
+      "activation": "任意発動",
+      "target": "範囲(敵)",
+      "range": null,
+      "cost": 4,
+      "description": "一定時間、自身を中心とした範囲内の敵ユニットを弱体化する。使用回数に応じて、弱体化効果、範囲が変わる。[1回:遠/近攻撃力ダウン][2回:被ダメージアップ][3回以上:遠/近攻撃力ダウン&被ダメージアップ]"
+    },
+    "link_ability": [
+      {
+        "name": "ビルドファイターズ",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ビーム・マシンガン連射",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3400,
+      "description": "敵単体に射撃攻撃でダメージを与える。戦術技威力は地形適性に応じて変化する。",
+      "united_sp": null
+    },
+    "rarity": "P",
+    "illustrator": "PaintedMIKE",
+    "raw": "遠距離　コスト4\n\nMS\n\nKIRARA'S GERBERA TETRA\nガーベラ・テトラ(キララ専用機)\n\n頭頂高　ー\n本体重量　ー\n所属　ー\nパイロット　キララ\n\n地上 A　宇宙 S　砂漠 B　水中 C\n\n機動力 250\n遠距離攻撃 430\n近距離攻撃 70\nHP 450\n\nWEAPON\nMAIN ビーム・マシンガン　射程3　遠距離\nSUB ビーム・サーベル　射程1　近距離\n\nLINK ABILITY\nビルドファイターズ　デッキに3枚以上\n[機動力]小アップ\n\nMS ABILITY\n転化[妨害]\n任意発動　範囲(敵)　射程ー　コスト4\n一定時間、自身を中心とした範囲内の敵ユニットを弱体化する。使用回数に応じて、弱体化効果、範囲が変わる。[1回:遠/近攻撃力ダウン][2回:被ダメージアップ][3回以上:遠/近攻撃力ダウン&被ダメージアップ]\n\n多彩な戦術　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nIMPACT AREA\n[アイコン:前方中円]\n\nSPECIAL ATTACK　　UNITED SP\nビーム・マシンガン連射　ー\n連携 ー　　連携 ー\n連携 ー　　連携 ー\n単体(敵)　射程3　ー　射程ー\nSPコスト2　威力 3400/ー\n\n敵単体に射撃攻撃でダメージを与える。戦術技威力は地形適性に応じて変化する。/ー\n\nillust PaintedMIKE\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nFQ06-034　P"
+  },
+  "ocr_raw_file": "FORSQUAD_SEASON_06_FQ06-034_ガーベラ・テトラ（キララ専用機）_ocr_raw.json",
+  "ocr_timestamp": "2026-02-24T18:40:26.485933",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

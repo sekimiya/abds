@@ -1,0 +1,91 @@
+{
+  "card_number": "UT01-024",
+  "card_name": "ライジングフリーダムガンダム",
+  "series": "UNITRIBE SEASON:01",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT01-024.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT01-024_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "UT01-024",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト5"
+    },
+    "name": "ライジングフリーダムガンダム",
+    "model": "STTS-909 RISING FREEDOM GUNDAM",
+    "cost": 5,
+    "category": "遠距離",
+    "affiliation": "コンパス",
+    "pilot": "キラ・ヤマト",
+    "stats": {
+      "height": "17.80m",
+      "weight": "67.90t",
+      "mobility": 260,
+      "ranged_attack": 500,
+      "melee_attack": 210,
+      "hp": 480
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "A",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "高エネルギービームライフル",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ヴェルシーナ ビームサーベル",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "双甲",
+      "activation": "任意発動",
+      "target": "特殊(自分)",
+      "range": null,
+      "cost": 4,
+      "description": "指定した味方ユニットの範囲内に移動後、一定時間連携状態となり、自身と連携中の味方が受けるダメージを軽減する。"
+    },
+    "link_ability": [
+      {
+        "name": "SEED FREEDOM",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ハイマットフルバースト",
+      "target": "範囲(敵)",
+      "range": 4,
+      "sp_cost": 2,
+      "power": 3300,
+      "description": "ロックオン中の敵を中心に扇状の範囲攻撃を行い、範囲内の敵にダメージを与える。",
+      "united_sp": {
+        "name": "コンビネーション・アサルト",
+        "partner1": "イモータルジャスティスガンダム",
+        "partner2": null,
+        "target": "単体(敵)",
+        "range": 4,
+        "power": 6700,
+        "description": "敵単体に格闘攻撃でダメージを与える。出撃時1度のみ使用可能。"
+      }
+    },
+    "rarity": "U",
+    "illustrator": "toriyufu",
+    "raw": "MS\n\n遠距離 コスト5\n\nSTTS-909 RISING FREEDOM GUNDAM\nライジングフリーダムガンダム\n\n全高 17.80m\n本体重量 67.90t\n所属 コンパス\nパイロット キラ・ヤマト\n\n地上 A 宇宙 S 砂漠 A 水中 C\n機動力 260\n遠距離攻撃 500\n近距離攻撃 210\nHP 480\n\nWEAPON\nMAIN 高エネルギービームライフル 射程 3 遠距離\nSUB ヴェルシーナ ビームサーベル 射程 1 近距離\n\nLINK ABILITY\nSEED FREEDOM デッキに3枚以上\n[機動力]小アップ\n\n多彩な戦術 デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nMS ABILITY\n双甲\n任意発動 特殊(自分) 射程 ー コスト 4\n指定した味方ユニットの範囲内に移動後、一定時間連携状態となり、自身と連携中の味方が受けるダメージを軽減する。\n\nSPECIAL ATTACK\nハイマットフルバースト\n\nUNITED SP\nコンビネーション・アサルト\n連携 イモータルジャスティスガンダム 連携 ー\n連携 ー 連携 ー\n範囲(敵) 射程 4 単体(敵) 射程 4\nSPコスト 2 威力 3300 / 6700\nロックオン中の敵を中心に扇状の範囲攻撃を行い、範囲内の敵にダメージを与える。／敵単体に格闘攻撃でダメージを与える。出撃時1度のみ使用可能。\n\nIMPACT AREA\n[アイコン:扇状範囲 前方広角]\n\nillust toriyufu\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nUT01-024 U"
+  },
+  "ocr_raw_file": "UNITRIBE_SEASON_01_UT01-024_ライジングフリーダムガンダム_ocr_raw.json",
+  "ocr_timestamp": "2026-03-02T03:12:59.425054",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

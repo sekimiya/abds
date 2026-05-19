@@ -1,0 +1,96 @@
+{
+  "card_number": "VE01-006",
+  "card_name": "ガンダムTR-1[ヘイズル改]高機動仕様（実戦配備カラー）",
+  "series": "WAVECHOES SEASON:01",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE01-006.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE01-006_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "VE01-006",
+    "type": "MS",
+    "card_label": {
+      "class": "機動",
+      "cost_label": "コスト2"
+    },
+    "name": "ガンダムTR-1[ヘイズル改]高機動仕様(実戦配備カラー)",
+    "model": "RX-121-1 GUNDAM TR-1 [HAZEL CUSTOM] HIGH MOBILITY TYPE (COMBAT DEPLOYMENT COLORS)",
+    "cost": 2,
+    "category": "機動",
+    "affiliation": "ティターンズ",
+    "pilot": null,
+    "stats": {
+      "height": "18.1m",
+      "weight": "41.5t",
+      "mobility": 250,
+      "ranged_attack": 40,
+      "melee_attack": 260,
+      "hp": 300
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "C",
+      "water": "B"
+    },
+    "weapon": {
+      "main": {
+        "name": "ビーム・サーベル",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "ビーム・ライフル",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "誘導[防御]",
+      "activation": "任意発動",
+      "target": "特殊(敵)",
+      "range": null,
+      "cost": 5,
+      "description": "25秒間、自身をロックオン距離内に捉えている敵ユニットのターゲットを自身に集め、受けるダメージを軽減する。"
+    },
+    "link_ability": [
+      {
+        "name": "ADVANCE OF Z",
+        "condition": "デッキに2枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false
+      },
+      {
+        "name": "堅牢な高機動機",
+        "condition": "デッキに機動が2枚以上",
+        "effect": "[HP]中アップ",
+        "is_eb_link": false
+      }
+    ],
+    "special_attack": {
+      "name": "ビーム・サーベル連撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3400,
+      "sp_type": "ECHOES BEAT",
+      "description": "敵単体に格闘攻撃でダメージを与え、一定時間、自身の受けるダメージを軽減する。",
+      "echoes_beat": {
+        "eb_type": "normal",
+        "eb_name": "ビーム・サーベル連撃 Lv.2",
+        "eb_level": 2,
+        "eb_note": "ECHOES BEAT Lv.を下げることで、Lv.戦術技が発動する。",
+        "eb_target": "単体(敵)",
+        "eb_range": 2,
+        "eb_power": 4000,
+        "eb_description": "EBLv.を2下げる。敵単体に格闘攻撃でダメージを与え、一定時間、自身の受けるダメージを軽減し、出撃中の全味方ユニットの[遠距離攻撃力][近距離攻撃力]をアップする。出撃時1度のみ使用可能。"
+      },
+      "united_sp": null
+    },
+    "rarity": "P",
+    "illustrator": "deraken",
+    "raw": ""
+  },
+  "ocr_raw_file": "WAVECHOES_SEASON_01_VE01-006_ガンダムTR-1[ヘイズル改]高機動仕様（実戦配備カラー）_ocr_raw.json",
+  "ocr_timestamp": "2026-03-27T00:00:00.000000",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

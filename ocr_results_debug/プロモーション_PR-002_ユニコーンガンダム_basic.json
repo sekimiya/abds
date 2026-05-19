@@ -1,0 +1,78 @@
+{
+  "card_number": "PR-002",
+  "card_name": "ユニコーンガンダム",
+  "series": "プロモーション",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-002.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-002_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "PR-002",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト4"
+    },
+    "name": "ユニコーンガンダム",
+    "model": "RX-0 UNICORN GUNDAM",
+    "cost": 4,
+    "category": "ガンダムUC",
+    "affiliation": "ビスト財団",
+    "pilot": "バナージ・リンクス",
+    "stats": {
+      "height": "21.7m",
+      "weight": "23.7t",
+      "mobility": 110,
+      "ranged_attack": 270,
+      "melee_attack": 130,
+      "hp": 180
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "C",
+      "water": null
+    },
+    "weapon": {
+      "main": {
+        "name": "ビーム・マグナム",
+        "range": 3,
+        "type": "遠距離攻撃"
+      },
+      "sub": {
+        "name": "ビーム・トンファー",
+        "range": 1,
+        "type": "近距離攻撃"
+      }
+    },
+    "ms_ability": {
+      "name": "連撃",
+      "activation": "任意発動",
+      "target": "単体",
+      "range": null,
+      "cost": 3,
+      "description": "ロックオン中の敵に単体攻撃でダメージを与える。"
+    },
+    "link_ability": [
+      {
+        "name": "その名はガンダム",
+        "condition": "デッキに[その名はガンダム]のカードが3枚以上編成されている時",
+        "effect": "[機動力]を小アップする。"
+      }
+    ],
+    "special_attack": {
+      "name": "ビーム・マグナム撃射",
+      "target": "敵単体",
+      "range": 2,
+      "sp_cost": 1,
+      "power": 3200,
+      "description": "敵単体に射撃攻撃で大ダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "PR",
+    "illustrator": "Eske Yoshinob",
+    "raw": "遠距離　COST 4　MS\n\nRX-0 UNICORN GUNDAM\nユニコーンガンダム\n\n全高　21.7m\n本体重量　23.7t\n所属　ビスト財団\nパイロット　バナージ・リンクス\n\n地上 A　宇宙 S　砂漠 C\n\n機動力　110\n遠距離攻撃　270\n近距離攻撃　130\nHP　180\n\nMAIN WEAPON　遠距離攻撃　射程 3\nビーム・マグナム\n\nSUB WEAPON　近距離攻撃　射程 1\nビーム・トンファー\n\nMS ABILITY　コスト 3\n連撃【任意発動】\nロックオン中の敵に単体攻撃でダメージを与える。\n\nSPECIAL ATTACK　コスト 1\nビーム・マグナム撃射\n敵単体に射撃攻撃で大ダメージを与える。\n威力 3200\n\nLINK ABILITY　その名はガンダム\nデッキに[その名はガンダム]のカードが3枚以上編成されている時、[機動力]を小アップする。\n\nillust Eske Yoshinob\n© 創通・サンライズ\nBANDAI MADE IN JAPAN\n\nNOT FOR SALE\nPR-002　PR"
+  },
+  "ocr_raw_file": "プロモーション_PR-002_ユニコーンガンダム_ocr_raw.json",
+  "ocr_timestamp": "2026-03-07T12:11:05.928424",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

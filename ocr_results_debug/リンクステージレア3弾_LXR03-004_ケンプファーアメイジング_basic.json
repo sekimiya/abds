@@ -1,0 +1,83 @@
+{
+  "card_number": "LXR03-004",
+  "card_name": "ケンプファーアメイジング",
+  "series": "リンクステージレア3弾",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LXR03-004.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LXR03-004_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "LXR03-004",
+    "type": "MS",
+    "card_label": {
+      "class": "機動",
+      "cost_label": "コスト7"
+    },
+    "name": "ケンプファーアメイジング",
+    "model": "PPMS-18E KÄMPFER AMAZING",
+    "cost": 7,
+    "category": "MS",
+    "affiliation": null,
+    "pilot": "メイジン・カワグチ",
+    "stats": {
+      "height": "17.7m",
+      "weight": "47.8t",
+      "mobility": 270,
+      "ranged_attack": 580,
+      "melee_attack": 200,
+      "hp": 550
+    },
+    "terrain_compatibility": {
+      "ground": "S",
+      "space": "A",
+      "desert": "B",
+      "water": "A"
+    },
+    "weapon": {
+      "main": {
+        "name": "アメイジングライフル",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ビームサーベル",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "奮起",
+      "activation": "出撃時発動",
+      "target": "自分",
+      "range": null,
+      "cost": null,
+      "description": "自身のHPが1以上で一定割合以下になると、一定時間、撃破されなくなり[遠／近攻撃力]を中アップする。出撃時1度のみ発動。"
+    },
+    "link_ability": [
+      {
+        "name": "ビルドファイターズ",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "アメイジングロングレンジライフル撃射",
+      "target": "単体（敵）",
+      "range": 4,
+      "sp_cost": 2,
+      "power": 3600,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "LX",
+    "illustrator": "PLANETA_Yamashita",
+    "raw": "機動　コスト7　MS\nPPMS-18E KÄMPFER AMAZING\nケンプファーアメイジング\n\n全高　17.7m\n本体重量　47.8t　　地上 S　宇宙 A　砂漠 B　水中 A\n所属　ー\nパイロット　メイジン・カワグチ　　　機動力 270\n　　　　　　　　　　　　　　　　　遠距離攻撃 580\n　　　　　　　　　　　　　　　　　近距離攻撃 200\n　　　　　　　　　　　　　　　　　HP 550\n\nWEAPON\nMAIN　アメイジングライフル　射程 3　遠距離\nSUB　ビームサーベル　射程 1　近距離\n\nMS ABILITY\n奮起\n出撃時発動　自分　射程 ー　コスト ー\n\n自身のHPが1以上で一定割合以下になると、一定時間、撃破されなくなり[遠／近攻撃力]を中アップする。出撃時1度のみ発動。\n\nLINK ABILITY\nビルドファイターズ　デッキに3枚以上\n[機動力]小アップ\n\n多彩な戦術　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nIMPACT AREA\n\nSPECIAL ATTACK\nアメイジングロングレンジライフル撃射\n単体（敵）　射程 4\nSPコスト 2　威力 3600\n敵単体に射撃攻撃でダメージを与える。\n\nillust_PLANETA_Yamashita\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\nLXR03-004　LX"
+  },
+  "ocr_raw_file": "リンクステージレア3弾_LXR03-004_ケンプファーアメイジング_ocr_raw.json",
+  "ocr_timestamp": "2026-03-07T14:00:39.186722",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

@@ -1,0 +1,83 @@
+{
+  "card_number": "UT04-015",
+  "card_name": "シャイニングガンダム",
+  "series": "UNITRIBE SEASON:04",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT04-015.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT04-015_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "UT04-015",
+    "type": "MS",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト2"
+    },
+    "name": "シャイニングガンダム",
+    "model": "GF13-017NJ SHINING GUNDAM",
+    "cost": 2,
+    "category": "近距離",
+    "affiliation": "ネオジャパン",
+    "pilot": "ドモン・カッシュ、レイン・ミカムラ",
+    "stats": {
+      "height": "16.2m",
+      "weight": "6.8t",
+      "mobility": 200,
+      "ranged_attack": 60,
+      "melee_attack": 270,
+      "hp": 320
+    },
+    "terrain_compatibility": {
+      "ground": "S",
+      "space": "C",
+      "desert": "B",
+      "water": "B"
+    },
+    "weapon": {
+      "main": {
+        "name": "格闘",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "遠距離格闘",
+        "range": 2,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "解撃",
+      "activation": "任意発動",
+      "target": "単体(敵)",
+      "range": 2,
+      "cost": 3,
+      "description": "自身が弱体化状態の時に発動可能となり、自身の弱体化状態を無効化し、ロックオン中の敵に単体攻撃でダメージを与える。"
+    },
+    "link_ability": [
+      {
+        "name": "Gガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[近距離攻撃力]小アップ"
+      },
+      {
+        "name": "肉薄する戦い",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "シャイニングフィンガー",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3300,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null
+    },
+    "rarity": "M",
+    "illustrator": "kenko",
+    "raw": "MS\n\n近距離　コスト2\n\nGF13-017NJ SHINING GUNDAM\nシャイニングガンダム\n\n頭頂高　16.2m\n本体重量　6.8t\n\n[アイコン:地上S] [アイコン:宇宙C] [アイコン:砂漠B] [アイコン:水中B]\n\n所属　ネオジャパン\nパイロット　ドモン・カッシュ、レイン・ミカムラ\n\n機動力　200\n遠距離攻撃　60\n近距離攻撃　270\nHP　320\n\nWEAPON\nMAIN　格闘　射程 1　近距離\nSUB　遠距離格闘　射程 2　遠距離\n\nLINK ABILITY\nGガンダム　デッキに3枚以上\n[近距離攻撃力]小アップ\n\nMS ABILITY\n解撃\n任意発動　単体(敵)　射程 2　コスト 3\n自身が弱体化状態の時に発動可能となり、自身の弱体化状態を無効化し、ロックオン中の敵に単体攻撃でダメージを与える。\n\n肉薄する戦い　デッキに4枚以上\n[機動力][近距離攻撃力]小アップ\n\nSPECIAL ATTACK　　UNITED SP\nシャイニングフィンガー　ー\n連携　ー　　連携　ー\n連携　ー　　連携　ー\n単体(敵)　射程 2　　ー　射程\nSPコスト 2　威力　3300 / ー\n敵単体に格闘攻撃でダメージを与える。\n/ ー\n\nIMPACT AREA\n[アイコン:単体中央]\n\nillust　kenko\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\nUT04-015　M"
+  },
+  "ocr_raw_file": "UNITRIBE_SEASON_04_UT04-015_シャイニングガンダム_ocr_raw.json",
+  "ocr_timestamp": "2026-02-28T08:22:17.424139",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}
