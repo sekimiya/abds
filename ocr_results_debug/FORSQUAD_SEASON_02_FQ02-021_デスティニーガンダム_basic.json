@@ -1,75 +1,75 @@
 {
-  "card_number": "FQ02-021",
-  "card_name": "デスティニーガンダム",
-  "series": "FORSQUAD SEASON:02",
-  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-021.jpg?v9",
-  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-021_b.jpg?v9",
-  "ocr_data": {
-    "card_id": "FQ02-021",
-    "type": "MS",
-    "card_label": {
-      "class": "機動",
-      "cost_label": "コスト3"
+    "card_number": "FQ02-021",
+    "card_name": "デスティニーガンダム",
+    "series": "FORSQUAD SEASON:02",
+    "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-021.jpg?v9",
+    "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-021_b.jpg?v9",
+    "ocr_data": {
+        "card_id": "FQ02-021",
+        "type": "MS",
+        "card_label": {
+            "class": "機動",
+            "cost_label": "コスト3"
+        },
+        "name": "デスティニーガンダム",
+        "model": "ZGMF-X42S DESTINY GUNDAM",
+        "cost": 3,
+        "category": "機動",
+        "pilot": "シン・アスカ",
+        "stats": {
+            "height": "18.08m",
+            "weight": "79.44t",
+            "mobility": 240,
+            "ranged_attack": 260,
+            "melee_attack": 50,
+            "hp": 400
+        },
+        "terrain_compatibility": {
+            "ground": "A",
+            "space": "S",
+            "desert": "B",
+            "water": "A"
+        },
+        "weapon": {
+            "main": {
+                "name": "高エネルギービームライフル",
+                "range": 3,
+                "type": "遠距離"
+            },
+            "sub": {
+                "name": "アロンダイトビームソード",
+                "range": 1,
+                "type": "近距離"
+            }
+        },
+        "ms_ability": {
+            "name": "集中砲火",
+            "range": 1,
+            "cost": 4,
+            "description": "20秒間、ロックオンしている敵に周囲の味方ターゲットを集め、[遠／近攻撃力]を中アップ。攻撃対象が変わると効果は終了する。",
+            "activation": "任意発動"
+        },
+        "link_ability": [
+            {
+                "name": "SEED DESTINY",
+                "condition": "デッキに3枚以上",
+                "effect": "[HP]小アップ"
+            },
+            {
+                "name": "戦況を変える力",
+                "condition": "デッキに4枚以上",
+                "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+            }
+        ],
+        "impact_area": {
+            "type": "circular",
+            "radius": 3,
+            "centered": true
+        },
+        "illustrator": "ishima060123",
+        "raw": "機動 コスト3 ZGMF-X42S DESTINY GUNDAM デスティニーガンダム 頭頂高 18.08m 本体重量 79.44t 所属 ザフト パイロット シン・アスカ 地上 A 宇宙 S 砂漠 B 水中 A 機動力 240 遠距離攻撃 260 近距離攻撃 50 HP 400 WEAPON MAIN 高エネルギービームライフル 射程 3 遠距離 SUB アロンダイトビームソード 射程 1 近距離 MS ABILITY 集中砲火 任意発動 範囲 (味方) 射程 1 コスト 4 20秒間、ロックオンしている敵に周囲の味方ターゲットを集め、[遠／近攻撃力]を中アップ。攻撃対象が変わると効果は終了する。 SPECIAL ATTACK UNITED SP 高エネルギー長射程ビーム砲撃 連携 単体 (敵) 射程 4 威力 3200 / 敵単体に射撃攻撃でダメージを与える。 / - IMPACT AREA FQ02-021"
     },
-    "name": "デスティニーガンダム",
-    "model": "ZGMF-X42S DESTINY GUNDAM",
-    "cost": 3,
-    "category": "機動",
-    "pilot": "シン・アスカ",
-    "stats": {
-      "height": "18.08m",
-      "weight": "79.44t",
-      "mobility": 240,
-      "ranged_attack": 260,
-      "melee_attack": 50,
-      "hp": 400
-    },
-    "terrain_compatibility": {
-      "ground": "A",
-      "space": "S",
-      "desert": "B",
-      "water": "A"
-    },
-    "weapon": {
-      "main": {
-        "name": "高エネルギービームライフル",
-        "range": 3,
-        "type": "遠距離"
-      },
-      "sub": {
-        "name": "アロンダイトビームソード",
-        "range": 1,
-        "type": "近距離"
-      }
-    },
-    "ms_ability": {
-      "name": "集中砲火",
-      "type": "任意発動",
-      "range": 1,
-      "cost": 4,
-      "description": "20秒間、ロックオンしている敵に周囲の味方ターゲットを集め、[遠／近攻撃力]を中アップ。攻撃対象が変わると効果は終了する。"
-    },
-    "link_ability": [
-      {
-        "name": "SEED DESTINY",
-        "condition": "デッキに3枚以上",
-        "effect": "[HP]小アップ"
-      },
-      {
-        "name": "戦況を変える力",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      }
-    ],
-    "impact_area": {
-      "type": "circular",
-      "radius": 3,
-      "centered": true
-    },
-    "illustrator": "ishima060123",
-    "raw": "機動 コスト3 ZGMF-X42S DESTINY GUNDAM デスティニーガンダム 頭頂高 18.08m 本体重量 79.44t 所属 ザフト パイロット シン・アスカ 地上 A 宇宙 S 砂漠 B 水中 A 機動力 240 遠距離攻撃 260 近距離攻撃 50 HP 400 WEAPON MAIN 高エネルギービームライフル 射程 3 遠距離 SUB アロンダイトビームソード 射程 1 近距離 MS ABILITY 集中砲火 任意発動 範囲 (味方) 射程 1 コスト 4 20秒間、ロックオンしている敵に周囲の味方ターゲットを集め、[遠／近攻撃力]を中アップ。攻撃対象が変わると効果は終了する。 SPECIAL ATTACK UNITED SP 高エネルギー長射程ビーム砲撃 連携 単体 (敵) 射程 4 威力 3200 / 敵単体に射撃攻撃でダメージを与える。 / - IMPACT AREA FQ02-021"
-  },
-  "ocr_timestamp": "2025-06-28T01:35:21.279358",
-  "ocr_type": "basic",
-  "ocr_engine": "claude_code_cli"
+    "ocr_timestamp": "2025-06-28T01:35:21.279358",
+    "ocr_type": "basic",
+    "ocr_engine": "claude_code_cli"
 }

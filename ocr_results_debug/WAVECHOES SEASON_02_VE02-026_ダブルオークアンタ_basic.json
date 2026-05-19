@@ -1,102 +1,90 @@
 {
-  "card_number": "VE02-026",
-  "card_name": "ダブルオークアンタ",
-  "series": "WAVECHOES SEASON:02",
-  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE02-026.jpg?v250630",
-  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE02-026_b.jpg?v250630",
-  "ocr_engine": "claude_code_subagent",
-  "ocr_type": "basic",
-  "ocr_timestamp": "2026-04-22T20:30:00.000000",
-  "ocr_data": {
-    "card_id": "VE02-026",
-    "type": "MS",
-    "name": "ダブルオークアンタ",
-    "model": "GNT-0000 00 QAN[T]",
-    "cost": 7,
-    "category": "近距離",
-    "affiliation": "ソレスタルビーイング",
-    "pilot": "刹那・F・セイエイ",
-    "card_label": {
-      "class": "近距離",
-      "cost_label": "コスト7"
-    },
-    "stats": {
-      "height": "18.3m",
-      "weight": "63.5t",
-      "mobility": 300,
-      "ranged_attack": 60,
-      "melee_attack": 670,
-      "hp": 670
-    },
-    "terrain_compatibility": {
-      "ground": "S",
-      "space": "S",
-      "desert": "C",
-      "water": "A"
-    },
-    "weapon": {
-      "main": {
-        "name": "GNソードV",
-        "range": 1,
-        "type": "近距離"
-      },
-      "sub": {
-        "name": "GNソードV・ライフルモード",
-        "range": 3,
-        "type": "遠距離"
-      }
-    },
-    "ms_ability": {
-      "name": "トランザム[破裂]",
-      "activation": "任意発動",
-      "target": "自分",
-      "range": "-",
-      "cost": 4,
-      "description": "一定時間、自身の[遠/近距攻撃][SP威力]をアップ、自身の弱体化状態を無効化し、トランザム中は弱体効果を受けない状態となる。"
-    },
-    "link_ability": [
-      {
-        "name": "[HP]小アップ",
-        "condition": "劇場版ガンダム00 デッキに3枚以上",
-        "effect": "[HP]小アップ"
-      },
-      {
-        "name": "[機動力][近距離攻撃力]小アップ",
-        "condition": "肉薄する戦い デッキに4枚以上",
-        "effect": "[機動力][近距離攻撃力]小アップ"
-      }
-    ],
-    "special_attack": {
-      "name": "GNソードV&GNソードビット乱撃",
-      "target": "単体(敵)",
-      "range": 2,
-      "sp_cost": 2,
-      "power": 3800,
-      "sp_type": "ECHOES BEAT SP",
-      "description": "敵単体に格闘攻撃でダメージを与え、一定時間、自身の[機動力][近距攻撃力]をアップする。/ EBLv.を3下げる。ロックオン中の敵ユニットと自身をロックオンしている敵ユニットを回収し、自身のHPを回復する。回収したユニットの修理時間は発生しない。出撃時1度のみ使用可能。",
-      "echoes_beat": {
-        "name": "クアンタムバースト",
-        "level": 3,
-        "target": "特殊",
-        "range": 4,
-        "power": 0,
-        "description": "EBLv.を3下げる。ロックオン中の敵ユニットと自身をロックオンしている敵ユニットを回収し、自身のHPを回復する。回収したユニットの修理時間は発生しない。出撃時1度のみ使用可能。"
-      },
-      "united_sp": null
-    },
-    "rarity": "U",
-    "raw": "近距離 コスト7 MS GNT-0000 00 QAN[T] ダブルオークアンタ 頭頂高 18.3m 本体重量 63.5t 所属 ソレスタルビーイング パイロット 刹那・F・セイエイ 地上S 宇宙S 砂漠C 水中A 機動力300 遠距離攻撃60 近距離攻撃670 HP670 WEAPON MAIN GNソードV 射程1 近距離 SUB GNソードV・ライフルモード 射程3 遠距離 MS ABILITY トランザム[破裂] 任意発動 自分 射程ー コスト4 一定時間、自身の[遠/近距攻撃][SP威力]をアップ、自身の弱体化状態を無効化し、トランザム中は弱体効果を受けない状態となる。 LINK ABILITY 劇場版ガンダム00 デッキに3枚以上 [HP]小アップ 肉薄する戦い デッキに4枚以上 [機動力][近距離攻撃力]小アップ SPECIAL ATTACK ECHOES BEAT SP GNソードV&GNソードビット乱撃 クアンタムバースト Lv.3 ECHOES BEAT Lv.を下げることで、共鳴戦術技が発動する。 単体(敵) 射程2 特殊 射程4 SPコスト2 威力3800/0 敵単体に格闘攻撃でダメージを与え、一定時間、自身の[機動力][近距攻撃力]をアップする。/ EBLv.を3下げる。ロックオン中の敵ユニットと自身をロックオンしている敵ユニットを回収し、自身のHPを回復する。回収したユニットの修理時間は発生しない。出撃時1度のみ使用可能。 VE02-026 U",
-    "link_abilities": [
-      {
-        "name": "劇場版ガンダム00",
-        "condition": "デッキに3枚以上",
-        "effect": "[HP]小アップ"
-      },
-      {
-        "name": "肉薄する戦い",
-        "condition": "デッキに4枚以上",
-        "effect": "[機動力][近距離攻撃力]小アップ"
-      }
-    ]
-  }
+    "card_number": "VE02-026",
+    "card_name": "ダブルオークアンタ",
+    "series": "WAVECHOES SEASON:02",
+    "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE02-026.jpg?v250630",
+    "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE02-026_b.jpg?v250630",
+    "ocr_engine": "claude_code_subagent",
+    "ocr_type": "basic",
+    "ocr_timestamp": "2026-04-22T20:30:00.000000",
+    "ocr_data": {
+        "card_id": "VE02-026",
+        "type": "MS",
+        "name": "ダブルオークアンタ",
+        "model": "GNT-0000 00 QAN[T]",
+        "cost": 7,
+        "category": "近距離",
+        "affiliation": "ソレスタルビーイング",
+        "pilot": "刹那・F・セイエイ",
+        "card_label": {
+            "class": "近距離",
+            "cost_label": "コスト7"
+        },
+        "stats": {
+            "height": "18.3m",
+            "weight": "63.5t",
+            "mobility": 300,
+            "ranged_attack": 60,
+            "melee_attack": 670,
+            "hp": 670
+        },
+        "terrain_compatibility": {
+            "ground": "S",
+            "space": "S",
+            "desert": "C",
+            "water": "A"
+        },
+        "weapon": {
+            "main": {
+                "name": "GNソードV",
+                "range": 1,
+                "type": "近距離"
+            },
+            "sub": {
+                "name": "GNソードV・ライフルモード",
+                "range": 3,
+                "type": "遠距離"
+            }
+        },
+        "ms_ability": {
+            "name": "トランザム[破裂]",
+            "activation": "任意発動",
+            "target": "自分",
+            "range": "-",
+            "cost": 4,
+            "description": "一定時間、自身の[遠/近距攻撃][SP威力]をアップ、自身の弱体化状態を無効化し、トランザム中は弱体効果を受けない状態となる。"
+        },
+        "link_ability": [
+            {
+                "name": "[HP]小アップ",
+                "condition": "劇場版ガンダム00 デッキに3枚以上",
+                "effect": "[HP]小アップ"
+            },
+            {
+                "name": "[機動力][近距離攻撃力]小アップ",
+                "condition": "肉薄する戦い デッキに4枚以上",
+                "effect": "[機動力][近距離攻撃力]小アップ"
+            }
+        ],
+        "special_attack": {
+            "name": "GNソードV&GNソードビット乱撃",
+            "target": "単体(敵)",
+            "range": 2,
+            "sp_cost": 2,
+            "power": 3800,
+            "sp_type": "ECHOES BEAT SP",
+            "description": "敵単体に格闘攻撃でダメージを与え、一定時間、自身の[機動力][近距攻撃力]をアップする。/ EBLv.を3下げる。ロックオン中の敵ユニットと自身をロックオンしている敵ユニットを回収し、自身のHPを回復する。回収したユニットの修理時間は発生しない。出撃時1度のみ使用可能。",
+            "echoes_beat": {
+                "name": "クアンタムバースト",
+                "level": 3,
+                "target": "特殊",
+                "range": 4,
+                "power": 0,
+                "description": "EBLv.を3下げる。ロックオン中の敵ユニットと自身をロックオンしている敵ユニットを回収し、自身のHPを回復する。回収したユニットの修理時間は発生しない。出撃時1度のみ使用可能。"
+            },
+            "united_sp": null
+        },
+        "rarity": "U",
+        "raw": "近距離 コスト7 MS GNT-0000 00 QAN[T] ダブルオークアンタ 頭頂高 18.3m 本体重量 63.5t 所属 ソレスタルビーイング パイロット 刹那・F・セイエイ 地上S 宇宙S 砂漠C 水中A 機動力300 遠距離攻撃60 近距離攻撃670 HP670 WEAPON MAIN GNソードV 射程1 近距離 SUB GNソードV・ライフルモード 射程3 遠距離 MS ABILITY トランザム[破裂] 任意発動 自分 射程ー コスト4 一定時間、自身の[遠/近距攻撃][SP威力]をアップ、自身の弱体化状態を無効化し、トランザム中は弱体効果を受けない状態となる。 LINK ABILITY 劇場版ガンダム00 デッキに3枚以上 [HP]小アップ 肉薄する戦い デッキに4枚以上 [機動力][近距離攻撃力]小アップ SPECIAL ATTACK ECHOES BEAT SP GNソードV&GNソードビット乱撃 クアンタムバースト Lv.3 ECHOES BEAT Lv.を下げることで、共鳴戦術技が発動する。 単体(敵) 射程2 特殊 射程4 SPコスト2 威力3800/0 敵単体に格闘攻撃でダメージを与え、一定時間、自身の[機動力][近距攻撃力]をアップする。/ EBLv.を3下げる。ロックオン中の敵ユニットと自身をロックオンしている敵ユニットを回収し、自身のHPを回復する。回収したユニットの修理時間は発生しない。出撃時1度のみ使用可能。 VE02-026 U"
+    }
 }

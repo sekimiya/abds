@@ -1,36 +1,41 @@
 {
-  "card_number": "VEB02-021",
-  "card_name": "レディ・アン",
-  "series": "VEブースター2弾",
-  "ocr_data": {
     "card_number": "VEB02-021",
-    "type": "PL",
-    "name": "レディ・アン",
-    "english_name": "LADY UNE",
-    "cost": 3,
-    "category": "制圧",
-    "rarity": "R",
-    "stats": {"mobility": 210, "ranged": 190, "melee": 90, "hp": 240},
-    "pilot_skill": {
-      "name": "強固な意志",
-      "activation": "MSアビリティ発動時",
-      "description": "35秒間、自身の[遠距離攻撃力]を中アップし、受けるダメージを軽減する。"
+    "card_name": "レディ・アン",
+    "series": "VEブースター2弾",
+    "ocr_data": {
+        "card_number": "VEB02-021",
+        "type": "PL",
+        "name": "レディ・アン",
+        "english_name": "LADY UNE",
+        "cost": 3,
+        "category": "制圧",
+        "rarity": "R",
+        "stats": {
+            "mobility": 210,
+            "hp": 240,
+            "ranged_attack": 190,
+            "melee_attack": 90
+        },
+        "pilot_skill": {
+            "name": "強固な意志",
+            "activation": "MSアビリティ発動時",
+            "description": "35秒間、自身の[遠距離攻撃力]を中アップし、受けるダメージを軽減する。"
+        },
+        "link_ability": [
+            {
+                "name": "ガンダムW",
+                "condition": "デッキに3枚以上",
+                "effect": "[機動力]小アップ",
+                "is_eb_link": false
+            },
+            {
+                "name": "的確な一撃",
+                "condition": "デッキに4枚以上",
+                "effect": "[機動力][遠距離攻撃力]小アップ",
+                "is_eb_link": false
+            }
+        ]
     },
-    "link_ability": [
-      {
-        "name": "ガンダムW",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ",
-        "is_eb_link": false
-      },
-      {
-        "name": "的確な一撃",
-        "condition": "デッキに4枚以上",
-        "effect": "[機動力][遠距離攻撃力]小アップ",
-        "is_eb_link": false
-      }
-    ]
-  },
-  "ocr_engine": "claude_code_subagent",
-  "ocr_timestamp": "2026-05-15T00:00:00"
+    "ocr_engine": "claude_code_subagent",
+    "ocr_timestamp": "2026-05-15T00:00:00"
 }

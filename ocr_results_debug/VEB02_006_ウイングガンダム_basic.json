@@ -1,53 +1,71 @@
 {
-  "card_number": "VEB02-006",
-  "card_name": "ウイングガンダム",
-  "series": "VEブースター2弾",
-  "ocr_data": {
     "card_number": "VEB02-006",
-    "type": "MS",
-    "name": "ウイングガンダム",
-    "english_name": "XXXG-01W WING GUNDAM",
-    "cost": 3,
-    "category": "機動",
-    "rarity": "R",
-    "pilot": "ヒイロ・ユイ、レディ・アン",
-    "affiliation": "ー",
-    "series_name": "新機動戦記ガンダムW",
-    "stats": {"mobility": 240, "ranged": 270, "melee": 60, "hp": 330},
-    "terrain_compatibility": {"ground": "S", "space": "A", "desert": "C", "water": "C"},
-    "weapon": {
-      "main": {"name": "バスターライフル", "range": 4, "type": "遠距離"},
-      "sub": {"name": "ビームサーベル", "range": 1, "type": "近距離"}
+    "card_name": "ウイングガンダム",
+    "series": "VEブースター2弾",
+    "ocr_data": {
+        "card_number": "VEB02-006",
+        "type": "MS",
+        "name": "ウイングガンダム",
+        "english_name": "XXXG-01W WING GUNDAM",
+        "cost": 3,
+        "category": "機動",
+        "rarity": "R",
+        "pilot": "ヒイロ・ユイ、レディ・アン",
+        "affiliation": "ー",
+        "series_name": "新機動戦記ガンダムW",
+        "stats": {
+            "mobility": 240,
+            "hp": 330,
+            "ranged_attack": 270,
+            "melee_attack": 60
+        },
+        "terrain_compatibility": {
+            "ground": "S",
+            "space": "A",
+            "desert": "C",
+            "water": "C"
+        },
+        "weapon": {
+            "main": {
+                "name": "バスターライフル",
+                "range": 4,
+                "type": "遠距離"
+            },
+            "sub": {
+                "name": "ビームサーベル",
+                "range": 1,
+                "type": "近距離"
+            }
+        },
+        "ms_ability": {
+            "name": "強化[遠隔]",
+            "target": "自分",
+            "range": "ー",
+            "cost": 4,
+            "description": "30秒間、自身の[機動力][遠距離攻撃力]を中アップする。",
+            "activation": "任意発動"
+        },
+        "link_ability": [
+            {
+                "name": "ガンダムW",
+                "condition": "デッキに3枚以上",
+                "effect": "[機動力]小アップ"
+            },
+            {
+                "name": "的確な一撃",
+                "condition": "デッキに4枚以上",
+                "effect": "[機動力][遠距離攻撃力]小アップ"
+            }
+        ],
+        "special_attack": {
+            "name": "バスターライフル撃射",
+            "target": "単体(敵)",
+            "range": 4,
+            "sp_cost": 2,
+            "power": 3100,
+            "description": "敵単体に射撃攻撃でダメージを与える。"
+        }
     },
-    "ms_ability": {
-      "name": "強化[遠隔]",
-      "timing": "任意発動",
-      "target": "自分",
-      "range": "ー",
-      "cost": 4,
-      "description": "30秒間、自身の[機動力][遠距離攻撃力]を中アップする。"
-    },
-    "link_ability": [
-      {
-        "name": "ガンダムW",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "的確な一撃",
-        "condition": "デッキに4枚以上",
-        "effect": "[機動力][遠距離攻撃力]小アップ"
-      }
-    ],
-    "special_attack": {
-      "name": "バスターライフル撃射",
-      "target": "単体(敵)",
-      "range": 4,
-      "sp_cost": 2,
-      "power": 3100,
-      "description": "敵単体に射撃攻撃でダメージを与える。"
-    }
-  },
-  "ocr_engine": "claude_code_subagent",
-  "ocr_timestamp": "2026-05-15T00:00:00"
+    "ocr_engine": "claude_code_subagent",
+    "ocr_timestamp": "2026-05-15T00:00:00"
 }

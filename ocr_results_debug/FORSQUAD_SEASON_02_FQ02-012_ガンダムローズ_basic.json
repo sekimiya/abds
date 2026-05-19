@@ -1,75 +1,75 @@
 {
-  "card_number": "FQ02-012",
-  "card_name": "ガンダムローズ",
-  "series": "FORSQUAD SEASON:02",
-  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-012.jpg?v9",
-  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-012_b.jpg?v9",
-  "ocr_data": {
-    "card_id": "FQ02-012",
-    "type": "MS",
-    "card_label": {
-      "class": "遠距離",
-      "cost_label": "コスト4"
+    "card_number": "FQ02-012",
+    "card_name": "ガンダムローズ",
+    "series": "FORSQUAD SEASON:02",
+    "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-012.jpg?v9",
+    "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-012_b.jpg?v9",
+    "ocr_data": {
+        "card_id": "FQ02-012",
+        "type": "MS",
+        "card_label": {
+            "class": "遠距離",
+            "cost_label": "コスト4"
+        },
+        "name": "ガンダムローズ",
+        "model": "GF13-009NF GUNDAM ROSE",
+        "cost": 4,
+        "category": "遠距離",
+        "pilot": "ジョルジュ・ド・サンド",
+        "stats": {
+            "height": "16.2m",
+            "weight": "7.2t",
+            "mobility": 240,
+            "ranged_attack": 480,
+            "melee_attack": 50,
+            "hp": 430
+        },
+        "terrain_compatibility": {
+            "ground": "B",
+            "space": "A",
+            "desert": "A",
+            "water": "B"
+        },
+        "weapon": {
+            "main": {
+                "name": "ローゼスビット",
+                "range": 4,
+                "type": "遠距離"
+            },
+            "sub": {
+                "name": "シュバリエサーベル",
+                "range": 1,
+                "type": "近距離"
+            }
+        },
+        "ms_ability": {
+            "name": "断砕",
+            "range": 4,
+            "cost": 3,
+            "description": "ロックオン中の敵に単体攻撃でダメージを与え、強化状態を無効化する。",
+            "activation": "任意発動"
+        },
+        "link_ability": [
+            {
+                "name": "Gガンダム",
+                "condition": "デッキに3枚以上",
+                "effect": "[遠距離攻撃力] [近距離攻撃力] 小アップ"
+            },
+            {
+                "name": "黄金のMF",
+                "condition": "デッキに3枚以上",
+                "effect": "[機動力] [HP] 小アップ"
+            }
+        ],
+        "impact_area": {
+            "type": "circular",
+            "radius": 1,
+            "centered": true
+        },
+        "illustrator": "Hayaken-sarena",
+        "raw": "遠距離 コスト4\nGF13-009NF GUNDAM ROSE\nガンダムローズ\n頭頂高 16.2m\n本体重量 7.2t\n所属 ネオフランス\nパイロット ジョルジュ・ド・サンド\n地上 B 宇宙 A 砂漠 A 水中 B\n機動力 240\n遠距離攻撃 480\n近距離攻撃 50\nHP 430\nWEAPON\nMAIN ローゼスビット\n射程 4 遠距離\nSUB シュバリエサーベル\n射程 1 近距離\nMS ABILITY\n断砕\n任意発動 単体(敵) 射程 4 コスト 3\nロックオン中の敵に単体攻撃でダメージを与え、強化状態を無効化する。\nLINK ABILITY\nGガンダム デッキに3枚以上\n[遠距離攻撃力] [近距離攻撃力] 小アップ\n黄金のMF デッキに3枚以上\n[機動力] [HP] 小アップ\nSPECIAL ATTACK\nローゼスハリケーン\n連携\n連携\n単体(敵) 射程 4\nUNITED SP\n威力 3300 /\n敵単体に射撃攻撃でダメージを与える。/\nIMPACT AREA\nillust Hayaken-sarena\n©創通・サンライズ\nBANDAI MADE IN JAPAN\nFQ02-012"
     },
-    "name": "ガンダムローズ",
-    "model": "GF13-009NF GUNDAM ROSE",
-    "cost": 4,
-    "category": "遠距離",
-    "pilot": "ジョルジュ・ド・サンド",
-    "stats": {
-      "height": "16.2m",
-      "weight": "7.2t",
-      "mobility": 240,
-      "ranged_attack": 480,
-      "melee_attack": 50,
-      "hp": 430
-    },
-    "terrain_compatibility": {
-      "ground": "B",
-      "space": "A",
-      "desert": "A",
-      "water": "B"
-    },
-    "weapon": {
-      "main": {
-        "name": "ローゼスビット",
-        "range": 4,
-        "type": "遠距離"
-      },
-      "sub": {
-        "name": "シュバリエサーベル",
-        "range": 1,
-        "type": "近距離"
-      }
-    },
-    "ms_ability": {
-      "name": "断砕",
-      "type": "任意発動",
-      "range": 4,
-      "cost": 3,
-      "description": "ロックオン中の敵に単体攻撃でダメージを与え、強化状態を無効化する。"
-    },
-    "link_ability": [
-      {
-        "name": "Gガンダム",
-        "condition": "デッキに3枚以上",
-        "effect": "[遠距離攻撃力] [近距離攻撃力] 小アップ"
-      },
-      {
-        "name": "黄金のMF",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力] [HP] 小アップ"
-      }
-    ],
-    "impact_area": {
-      "type": "circular",
-      "radius": 1,
-      "centered": true
-    },
-    "illustrator": "Hayaken-sarena",
-    "raw": "遠距離 コスト4\nGF13-009NF GUNDAM ROSE\nガンダムローズ\n頭頂高 16.2m\n本体重量 7.2t\n所属 ネオフランス\nパイロット ジョルジュ・ド・サンド\n地上 B 宇宙 A 砂漠 A 水中 B\n機動力 240\n遠距離攻撃 480\n近距離攻撃 50\nHP 430\nWEAPON\nMAIN ローゼスビット\n射程 4 遠距離\nSUB シュバリエサーベル\n射程 1 近距離\nMS ABILITY\n断砕\n任意発動 単体(敵) 射程 4 コスト 3\nロックオン中の敵に単体攻撃でダメージを与え、強化状態を無効化する。\nLINK ABILITY\nGガンダム デッキに3枚以上\n[遠距離攻撃力] [近距離攻撃力] 小アップ\n黄金のMF デッキに3枚以上\n[機動力] [HP] 小アップ\nSPECIAL ATTACK\nローゼスハリケーン\n連携\n連携\n単体(敵) 射程 4\nUNITED SP\n威力 3300 /\n敵単体に射撃攻撃でダメージを与える。/\nIMPACT AREA\nillust Hayaken-sarena\n©創通・サンライズ\nBANDAI MADE IN JAPAN\nFQ02-012"
-  },
-  "ocr_timestamp": "2025-06-28T02:08:58.283016",
-  "ocr_type": "basic",
-  "ocr_engine": "claude_code_cli"
+    "ocr_timestamp": "2025-06-28T02:08:58.283016",
+    "ocr_type": "basic",
+    "ocr_engine": "claude_code_cli"
 }

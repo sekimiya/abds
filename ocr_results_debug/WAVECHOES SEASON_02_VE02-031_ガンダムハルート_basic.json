@@ -1,102 +1,90 @@
 {
-  "card_number": "VE02-031",
-  "card_name": "ガンダムハルート",
-  "series": "WAVECHOES SEASON:02",
-  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE02-031.jpg?v250630",
-  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE02-031_b.jpg?v250630",
-  "ocr_engine": "claude_code_subagent",
-  "ocr_type": "basic",
-  "ocr_timestamp": "2026-04-22T20:30:00.000000",
-  "ocr_data": {
-    "card_id": "VE02-031",
-    "type": "MS",
-    "name": "ガンダムハルート",
-    "model": "GN-011 GUNDAM HARUTE",
-    "cost": 5,
-    "category": "遠距離",
-    "affiliation": "ソレスタルビーイング",
-    "pilot": "アレルヤ・ハプティズム&マリー・パーファシー",
-    "card_label": {
-      "class": "遠距離",
-      "cost_label": "コスト5"
-    },
-    "stats": {
-      "height": "19.0m",
-      "weight": "77.1t",
-      "mobility": 250,
-      "ranged_attack": 380,
-      "melee_attack": 100,
-      "hp": 430
-    },
-    "terrain_compatibility": {
-      "ground": "A",
-      "space": "S",
-      "desert": "B",
-      "water": "B"
-    },
-    "weapon": {
-      "main": {
-        "name": "GNソードライフル(ライフルモード)",
-        "range": 3,
-        "type": "遠距離"
-      },
-      "sub": {
-        "name": "GNソードライフル(ソードモード)",
-        "range": 1,
-        "type": "近距離"
-      }
-    },
-    "ms_ability": {
-      "name": "縛射",
-      "activation": "任意発動",
-      "target": "単体(敵)",
-      "range": 3,
-      "cost": 3,
-      "description": "ロックオン中の敵ユニットに単体攻撃を行いダメージを与え、一定時間スタンさせる。"
-    },
-    "link_ability": [
-      {
-        "name": "[HP]小アップ",
-        "condition": "劇場版ガンダム00",
-        "effect": "デッキに3枚以上"
-      },
-      {
-        "name": "[機動力][遠距離攻撃力]小アップ",
-        "condition": "的確な一撃",
-        "effect": "デッキに4枚以上"
-      }
-    ],
-    "special_attack": {
-      "name": "GNソードライフル(ライフルモード)撃射",
-      "target": "単体(敵)",
-      "range": 3,
-      "sp_cost": 2,
-      "power": "3300 / —",
-      "description": "敵単体に射撃攻撃でダメージを与える。",
-      "united_sp": null,
-      "echoes_beat": {
-        "name": "—",
-        "level": null,
-        "target": "—",
-        "range": "—",
-        "power": "—",
-        "description": "/—"
-      },
-      "sp_type": "ECHOES BEAT"
-    },
-    "rarity": "R",
-    "raw": "遠距離 コスト5 MS GN-011 GUNDAM HARUTE ガンダムハルート 頭頂高 19.0m 本体重量 77.1t 所属 ソレスタルビーイング パイロット アレルヤ・ハプティズム&マリー・パーファシー 地上A 宇宙S 砂漠B 水中B 機動力 250 遠距離攻撃 380 近距離攻撃 100 HP 430 WEAPON MAIN GNソードライフル(ライフルモード) 射程3 遠距離 SUB GNソードライフル(ソードモード) 射程1 近距離 MS ABILITY 縛射 任意発動 単体(敵) 射程3 コスト3 ロックオン中の敵ユニットに単体攻撃を行いダメージを与え、一定時間スタンさせる。 LINK ABILITY 劇場版ガンダム00 デッキに3枚以上 [HP]小アップ 的確な一撃 デッキに4枚以上 [機動力][遠距離攻撃力]小アップ SPECIAL ATTACK ECHOES BEAT GNソードライフル(ライフルモード)撃射 — — 単体(敵) 射程3 — 射程— SPコスト2 威力 3300 /— 敵単体に射撃攻撃でダメージを与える。/— VE02-031 R",
-    "link_abilities": [
-      {
-        "name": "劇場版ガンダム00",
-        "condition": "デッキに3枚以上",
-        "effect": "[HP]小アップ"
-      },
-      {
-        "name": "的確な一撃",
-        "condition": "デッキに4枚以上",
-        "effect": "[機動力][遠距離攻撃力]小アップ"
-      }
-    ]
-  }
+    "card_number": "VE02-031",
+    "card_name": "ガンダムハルート",
+    "series": "WAVECHOES SEASON:02",
+    "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE02-031.jpg?v250630",
+    "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE02-031_b.jpg?v250630",
+    "ocr_engine": "claude_code_subagent",
+    "ocr_type": "basic",
+    "ocr_timestamp": "2026-04-22T20:30:00.000000",
+    "ocr_data": {
+        "card_id": "VE02-031",
+        "type": "MS",
+        "name": "ガンダムハルート",
+        "model": "GN-011 GUNDAM HARUTE",
+        "cost": 5,
+        "category": "遠距離",
+        "affiliation": "ソレスタルビーイング",
+        "pilot": "アレルヤ・ハプティズム&マリー・パーファシー",
+        "card_label": {
+            "class": "遠距離",
+            "cost_label": "コスト5"
+        },
+        "stats": {
+            "height": "19.0m",
+            "weight": "77.1t",
+            "mobility": 250,
+            "ranged_attack": 380,
+            "melee_attack": 100,
+            "hp": 430
+        },
+        "terrain_compatibility": {
+            "ground": "A",
+            "space": "S",
+            "desert": "B",
+            "water": "B"
+        },
+        "weapon": {
+            "main": {
+                "name": "GNソードライフル(ライフルモード)",
+                "range": 3,
+                "type": "遠距離"
+            },
+            "sub": {
+                "name": "GNソードライフル(ソードモード)",
+                "range": 1,
+                "type": "近距離"
+            }
+        },
+        "ms_ability": {
+            "name": "縛射",
+            "activation": "任意発動",
+            "target": "単体(敵)",
+            "range": 3,
+            "cost": 3,
+            "description": "ロックオン中の敵ユニットに単体攻撃を行いダメージを与え、一定時間スタンさせる。"
+        },
+        "link_ability": [
+            {
+                "name": "[HP]小アップ",
+                "condition": "劇場版ガンダム00",
+                "effect": "デッキに3枚以上"
+            },
+            {
+                "name": "[機動力][遠距離攻撃力]小アップ",
+                "condition": "的確な一撃",
+                "effect": "デッキに4枚以上"
+            }
+        ],
+        "special_attack": {
+            "name": "GNソードライフル(ライフルモード)撃射",
+            "target": "単体(敵)",
+            "range": 3,
+            "sp_cost": 2,
+            "power": "3300 / —",
+            "description": "敵単体に射撃攻撃でダメージを与える。",
+            "united_sp": null,
+            "echoes_beat": {
+                "name": "—",
+                "level": null,
+                "target": "—",
+                "range": "—",
+                "power": "—",
+                "description": "/—"
+            },
+            "sp_type": "ECHOES BEAT"
+        },
+        "rarity": "R",
+        "raw": "遠距離 コスト5 MS GN-011 GUNDAM HARUTE ガンダムハルート 頭頂高 19.0m 本体重量 77.1t 所属 ソレスタルビーイング パイロット アレルヤ・ハプティズム&マリー・パーファシー 地上A 宇宙S 砂漠B 水中B 機動力 250 遠距離攻撃 380 近距離攻撃 100 HP 430 WEAPON MAIN GNソードライフル(ライフルモード) 射程3 遠距離 SUB GNソードライフル(ソードモード) 射程1 近距離 MS ABILITY 縛射 任意発動 単体(敵) 射程3 コスト3 ロックオン中の敵ユニットに単体攻撃を行いダメージを与え、一定時間スタンさせる。 LINK ABILITY 劇場版ガンダム00 デッキに3枚以上 [HP]小アップ 的確な一撃 デッキに4枚以上 [機動力][遠距離攻撃力]小アップ SPECIAL ATTACK ECHOES BEAT GNソードライフル(ライフルモード)撃射 — — 単体(敵) 射程3 — 射程— SPコスト2 威力 3300 /— 敵単体に射撃攻撃でダメージを与える。/— VE02-031 R"
+    }
 }

@@ -1,36 +1,41 @@
 {
-  "card_number": "VEB02-027",
-  "card_name": "ホシノ・フミナ",
-  "series": "VEブースター2弾",
-  "ocr_data": {
     "card_number": "VEB02-027",
-    "type": "PL",
-    "name": "ホシノ・フミナ",
-    "english_name": "FUMINA HOSHINO",
-    "cost": 2,
-    "category": "制圧",
-    "rarity": "P",
-    "stats": {"mobility": 210, "ranged": 240, "melee": 40, "hp": 300},
-    "pilot_skill": {
-      "name": "冷静な指揮系統",
-      "activation": "EBLv.1時",
-      "description": "自身のSPゲージ回復速度がアップする。このPLスキルの効果は重複しない。"
+    "card_name": "ホシノ・フミナ",
+    "series": "VEブースター2弾",
+    "ocr_data": {
+        "card_number": "VEB02-027",
+        "type": "PL",
+        "name": "ホシノ・フミナ",
+        "english_name": "FUMINA HOSHINO",
+        "cost": 2,
+        "category": "制圧",
+        "rarity": "P",
+        "stats": {
+            "mobility": 210,
+            "hp": 300,
+            "ranged_attack": 240,
+            "melee_attack": 40
+        },
+        "pilot_skill": {
+            "name": "冷静な指揮系統",
+            "activation": "EBLv.1時",
+            "description": "自身のSPゲージ回復速度がアップする。このPLスキルの効果は重複しない。"
+        },
+        "link_ability": [
+            {
+                "name": "新時代の高鳴り",
+                "condition": "デッキに3枚以上",
+                "effect": "ECHOES BEAT Lv.が表示される。味方ユニットが戦術技を発動するとEBLv.が上がる。[HP][SP威力]小アップ",
+                "is_eb_link": true
+            },
+            {
+                "name": "多彩な戦術",
+                "condition": "デッキに4枚以上",
+                "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+                "is_eb_link": false
+            }
+        ]
     },
-    "link_ability": [
-      {
-        "name": "新時代の高鳴り",
-        "condition": "デッキに3枚以上",
-        "effect": "ECHOES BEAT Lv.が表示される。味方ユニットが戦術技を発動するとEBLv.が上がる。[HP][SP威力]小アップ",
-        "is_eb_link": true
-      },
-      {
-        "name": "多彩な戦術",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
-        "is_eb_link": false
-      }
-    ]
-  },
-  "ocr_engine": "claude_code_subagent",
-  "ocr_timestamp": "2026-05-15T00:00:00"
+    "ocr_engine": "claude_code_subagent",
+    "ocr_timestamp": "2026-05-15T00:00:00"
 }

@@ -19,6 +19,8 @@ import sys
 import argparse
 from datetime import datetime
 
+from schema import normalize_ocr_data
+
 
 DATA_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'data')
 OCR_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'ocr_results_debug')
@@ -63,6 +65,7 @@ def load_ocr_results(series_filter=None):
             if series_filter and not num.startswith(series_filter):
                 continue
             if num not in results:
+                data, _ = normalize_ocr_data(data)
                 results[num] = data
     if len(dirs) > 1:
         print(f'OCRソース: ローカル + abds-ocr フォールバック')
@@ -130,8 +133,8 @@ def detect_series(card_number):
 
 
 def get_links(ocr_data):
-    """ocr_data からリンクアビリティを取得(link_abilities / link_ability 両対応)"""
-    return ocr_data.get('link_abilities', []) or ocr_data.get('link_ability', []) or []
+    """ocr_data からリンクアビリティを取得"""
+    return ocr_data.get('link_ability', []) or []
 
 
 def build_search_text(card_number, ocr_data):
@@ -300,8 +303,8 @@ def build_card_index_entry(card_number, card_data):
         'back_url': back_url,
         'has_back_image': True,
         'mobility': stats.get('mobility', 0),
-        'ranged': stats.get('ranged_attack') or stats.get('ranged', 0),
-        'melee': stats.get('melee_attack') or stats.get('melee', 0),
+        'ranged': stats.get('ranged_attack', 0),
+        'melee': stats.get('melee_attack', 0),
         'hp': stats.get('hp', 0),
         'has_ocr': True,
         'ocr_timestamp': card_data.get('ocr_timestamp', ''),

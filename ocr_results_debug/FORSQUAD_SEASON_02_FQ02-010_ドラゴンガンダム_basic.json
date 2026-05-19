@@ -1,75 +1,75 @@
 {
-  "card_number": "FQ02-010",
-  "card_name": "ドラゴンガンダム",
-  "series": "FORSQUAD SEASON:02",
-  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-010.jpg?v9",
-  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-010_b.jpg?v9",
-  "ocr_data": {
-    "card_id": "FQ02-010",
-    "type": "MS",
-    "card_label": {
-      "class": "機動",
-      "cost_label": "コスト5"
+    "card_number": "FQ02-010",
+    "card_name": "ドラゴンガンダム",
+    "series": "FORSQUAD SEASON:02",
+    "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-010.jpg?v9",
+    "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-010_b.jpg?v9",
+    "ocr_data": {
+        "card_id": "FQ02-010",
+        "type": "MS",
+        "card_label": {
+            "class": "機動",
+            "cost_label": "コスト5"
+        },
+        "name": "ドラゴンガンダム",
+        "model": "GF13-011NC DRAGON GUNDAM",
+        "cost": 5,
+        "category": "機動",
+        "pilot": "サイ・サイシー",
+        "stats": {
+            "height": "16.4m",
+            "weight": "7.4t",
+            "mobility": 260,
+            "ranged_attack": 100,
+            "melee_attack": 500,
+            "hp": 540
+        },
+        "terrain_compatibility": {
+            "ground": "B",
+            "space": "S",
+            "desert": "A",
+            "water": "A"
+        },
+        "weapon": {
+            "main": {
+                "name": "ドラゴンクロー",
+                "range": 2,
+                "type": "近距離"
+            },
+            "sub": {
+                "name": "ドラゴンファイヤー",
+                "range": 3,
+                "type": "遠距離"
+            }
+        },
+        "ms_ability": {
+            "name": "転化[攻撃]",
+            "range": 2,
+            "cost": 4,
+            "description": "ロックオン中の敵に攻撃を行う。使用回数に応じて、攻撃範囲が変わる。[1回:単体][2回:敵を中心に扇状][3回以上:自身を中心とした範囲]",
+            "activation": "任意発動"
+        },
+        "link_ability": [
+            {
+                "name": "Gガンダム",
+                "condition": "デッキに3枚以上",
+                "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+            },
+            {
+                "name": "黄金のMF",
+                "condition": "デッキに3枚以上",
+                "effect": "[機動力][HP]小アップ"
+            }
+        ],
+        "impact_area": {
+            "type": "circular",
+            "radius": 1,
+            "centered": true
+        },
+        "illustrator": "SOEZY",
+        "raw": "機動 コスト5 GF13-011NC DRAGON GUNDAM ドラゴンガンダム 頭頂高 16.4m 本体重量 7.4t 所属 ネオチャイナ パイロット サイ・サイシー 地上 B 宇宙 A 砂漠 A 水中 A 機動力 260 遠距離攻撃 100 近距離攻撃 500 HP 540 WEAPON MAIN ドラゴンクロー 射程 2 近距離 SUB ドラゴンファイヤー 射程 3 遠距離 MS ABILITY 転化[攻撃] 任意発動 単体(敵) 射程 2 コスト 4 ロックオン中の敵に攻撃を行う。使用回数に応じて、攻撃範囲が変わる。[1回:単体][2回:敵を中心に扇状][3回以上:自身を中心とした範囲] LINK ABILITY Gガンダム デッキに3枚以上 [遠距離攻撃力][近距離攻撃力]小アップ 黄金のMF デッキに3枚以上 [機動力][HP]小アップ SPECIAL ATTACK UNITED SP 真流星胡蝶剣 連携 連携 連携 SP ATTACK 単体(敵) 射程 2 成功 3600 / 敵単体に格闘攻撃でダメージを与える。/— IMPACT AREA FQ02-010 P"
     },
-    "name": "ドラゴンガンダム",
-    "model": "GF13-011NC DRAGON GUNDAM",
-    "cost": 5,
-    "category": "機動",
-    "pilot": "サイ・サイシー",
-    "stats": {
-      "height": "16.4m",
-      "weight": "7.4t",
-      "mobility": 260,
-      "ranged_attack": 100,
-      "melee_attack": 500,
-      "hp": 540
-    },
-    "terrain_compatibility": {
-      "ground": "B",
-      "space": "S",
-      "desert": "A",
-      "water": "A"
-    },
-    "weapon": {
-      "main": {
-        "name": "ドラゴンクロー",
-        "range": 2,
-        "type": "近距離"
-      },
-      "sub": {
-        "name": "ドラゴンファイヤー",
-        "range": 3,
-        "type": "遠距離"
-      }
-    },
-    "ms_ability": {
-      "name": "転化[攻撃]",
-      "type": "任意発動",
-      "range": 2,
-      "cost": 4,
-      "description": "ロックオン中の敵に攻撃を行う。使用回数に応じて、攻撃範囲が変わる。[1回:単体][2回:敵を中心に扇状][3回以上:自身を中心とした範囲]"
-    },
-    "link_ability": [
-      {
-        "name": "Gガンダム",
-        "condition": "デッキに3枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      },
-      {
-        "name": "黄金のMF",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力][HP]小アップ"
-      }
-    ],
-    "impact_area": {
-      "type": "circular",
-      "radius": 1,
-      "centered": true
-    },
-    "illustrator": "SOEZY",
-    "raw": "機動 コスト5 GF13-011NC DRAGON GUNDAM ドラゴンガンダム 頭頂高 16.4m 本体重量 7.4t 所属 ネオチャイナ パイロット サイ・サイシー 地上 B 宇宙 A 砂漠 A 水中 A 機動力 260 遠距離攻撃 100 近距離攻撃 500 HP 540 WEAPON MAIN ドラゴンクロー 射程 2 近距離 SUB ドラゴンファイヤー 射程 3 遠距離 MS ABILITY 転化[攻撃] 任意発動 単体(敵) 射程 2 コスト 4 ロックオン中の敵に攻撃を行う。使用回数に応じて、攻撃範囲が変わる。[1回:単体][2回:敵を中心に扇状][3回以上:自身を中心とした範囲] LINK ABILITY Gガンダム デッキに3枚以上 [遠距離攻撃力][近距離攻撃力]小アップ 黄金のMF デッキに3枚以上 [機動力][HP]小アップ SPECIAL ATTACK UNITED SP 真流星胡蝶剣 連携 連携 連携 SP ATTACK 単体(敵) 射程 2 成功 3600 / 敵単体に格闘攻撃でダメージを与える。/— IMPACT AREA FQ02-010 P"
-  },
-  "ocr_timestamp": "2025-06-28T02:08:03.562262",
-  "ocr_type": "basic",
-  "ocr_engine": "claude_code_cli"
+    "ocr_timestamp": "2025-06-28T02:08:03.562262",
+    "ocr_type": "basic",
+    "ocr_engine": "claude_code_cli"
 }

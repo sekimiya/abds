@@ -2024,7 +2024,7 @@ const ParamCorrections = {
   },
   getCorrectionLevel(msOcr, plOcr) {
     let level = 0;
-    const links = msOcr?.link_abilities || msOcr?.link_ability || [];
+    const links = msOcr?.link_ability || [];
     for (const la of links) {
       if (la?.name && this.work[la.name]) { level += this.work[la.name]; break; }
     }
@@ -3721,7 +3721,7 @@ const UIRenderer = {
       abilities.forEach(a => {
         html += `<div class="ms-detail-ability-name">${escapeHtml(a.name || '')}</div>`;
         const aTags = [];
-        if (a.type || a.activation) aTags.push(a.type || a.activation);
+        if (a.activation) aTags.push(a.activation);
         if (a.target) aTags.push(a.target);
         if (a.range !== undefined && a.range !== null) aTags.push(`射程${a.range}`);
         if (a.cost !== undefined && a.cost !== null) aTags.push(`コスト${a.cost}`);
@@ -4172,7 +4172,7 @@ const UIRenderer = {
 
     [msOcr, plOcr].forEach(ocr => {
       if (!ocr) return;
-      const links = ocr.link_abilities || ocr.link_ability || [];
+      const links = ocr.link_ability || [];
       if (!Array.isArray(links)) return;
       links.forEach(link => {
         if (link.name && !allUnitLinks.find(l => l.name === link.name)) {
@@ -4305,7 +4305,7 @@ const UIRenderer = {
     for (let i = 0; i < 10; i++) {
       const ocr = AppState.deckOcr[i];
       if (!ocr) continue;
-      const links = ocr.link_abilities || ocr.link_ability || [];
+      const links = ocr.link_ability || [];
       if (!Array.isArray(links)) continue;
       links.forEach(l => {
         if (l?.is_eb_link && l.name) {
@@ -4332,7 +4332,7 @@ const UIRenderer = {
       const msIdxEntry = msNum ? AppState.cardIndex.find(c => c.number === msNum) : null;
       const hasEb = !!(msOcr?.special_attack?.echoes_beat) || !!(msIdxEntry?.has_eb);
       if (!hasEb) continue;
-      const plLinks = plOcr?.link_abilities || plOcr?.link_ability || [];
+      const plLinks = plOcr?.link_ability || [];
       if (!Array.isArray(plLinks)) continue;
       const activeLink = plLinks.find(l => l?.is_eb_link && l.name && activeEbLinks[l.name]);
       if (activeLink) {
@@ -4366,7 +4366,7 @@ const UIRenderer = {
     for (let i = 0; i < 10; i++) {
       const ocr = AppState.deckOcr[i];
       if (!ocr) continue;
-      const links = ocr.link_abilities || ocr.link_ability || [];
+      const links = ocr.link_ability || [];
       if (!Array.isArray(links)) continue;
       links.forEach(link => {
         if (!link.name) return;
@@ -4509,7 +4509,7 @@ const UIRenderer = {
       numDiv.className = 'card-slot-number';
       numDiv.textContent = AppState.deck[i] || '';
       tagsDiv.appendChild(numDiv);
-      const cardLinks = ocr ? (ocr.link_abilities || ocr.link_ability || []) : [];
+      const cardLinks = ocr ? (ocr.link_ability || []) : [];
       if (Array.isArray(cardLinks)) {
         cardLinks.forEach(link => {
           if (!link.name) return;
@@ -5583,7 +5583,7 @@ function _countLinkInDeck(linkName, category) {
   let count = 0;
   for (let i = 0; i < 10; i++) {
     const d = AppState.deckOcr[i]; if (!d) continue;
-    const dLinks = d.link_abilities || d.link_ability || [];
+    const dLinks = d.link_ability || [];
     if (Array.isArray(dLinks) && dLinks.some(l => l.name === linkName)) count++;
   }
   return count;
@@ -5618,7 +5618,7 @@ function getLinkBuffs(ocr) {
     melee: { small: 0, medium: 0 },
     hp: { small: 0, medium: 0 }
   };
-  const links = ocr?.link_abilities || ocr?.link_ability || [];
+  const links = ocr?.link_ability || [];
   if (!Array.isArray(links)) return buffs;
 
   links.forEach(link => {
@@ -5823,7 +5823,7 @@ const SERIES_CANONICAL = {
   'ガンダムトライエイジ':'トライエイジ','トライエイジ':'トライエイジ',
 };
 function _getCardSeries(ocr) {
-  const links = ocr?.link_abilities || ocr?.link_ability || [];
+  const links = ocr?.link_ability || [];
   if (!Array.isArray(links)) return '';
   for (const la of links) {
     const name = la?.name || '';
@@ -5847,7 +5847,7 @@ function getLvBonus(series, msOrPl, stat, lv) {
 // 公式: ROUNDDOWN((MS表記値*地形適正 + MS_Lvボーナス + PL表記値 + PL_Lvボーナス) × 1.1^小 × 1.2^中, 0)
 function calcUnitStats(msOcr, plOcr, terrainMult) {
   const si = (v) => parseInt(v) || 0;
-  const getStats = (ocr) => ({ mobility: si(ocr?.stats?.mobility), ranged: si(ocr?.stats?.ranged_attack || ocr?.stats?.ranged), melee: si(ocr?.stats?.melee_attack || ocr?.stats?.melee), hp: si(ocr?.stats?.hp) });
+  const getStats = (ocr) => ({ mobility: si(ocr?.stats?.mobility), ranged: si(ocr?.stats?.ranged_attack), melee: si(ocr?.stats?.melee_attack), hp: si(ocr?.stats?.hp) });
   const ms = getStats(msOcr), pl = getStats(plOcr);
   const msBuffs = getLinkBuffs(msOcr), plBuffs = getLinkBuffs(plOcr);
   const msSeries = _getCardSeries(msOcr);
@@ -6134,8 +6134,8 @@ async function showCardModal(number) {
       <div class="modal-param-title">ステータス</div>
       <div class="modal-param-row">
         <div class="modal-param-item"><span class="modal-param-label">機動力:</span>${ocr.stats.mobility || '-'}</div>
-        <div class="modal-param-item"><span class="modal-param-label">遠距離:</span>${ocr.stats.ranged_attack || ocr.stats.ranged || '-'}</div>
-        <div class="modal-param-item"><span class="modal-param-label">近距離:</span>${ocr.stats.melee_attack || ocr.stats.melee || '-'}</div>
+        <div class="modal-param-item"><span class="modal-param-label">遠距離:</span>${ocr.stats.ranged_attack || '-'}</div>
+        <div class="modal-param-item"><span class="modal-param-label">近距離:</span>${ocr.stats.melee_attack || '-'}</div>
         <div class="modal-param-item"><span class="modal-param-label">HP:</span>${ocr.stats.hp || '-'}</div>
       </div>
       ${ocr.stats.height || ocr.stats.weight ? `<div class="modal-param-row" style="margin-top:0.2rem">
@@ -6273,7 +6273,7 @@ async function showCardModal(number) {
     }
   }
 
-  const links = ocr.link_abilities || ocr.link_ability || [];
+  const links = ocr.link_ability || [];
   if (Array.isArray(links) && links.length > 0) {
     html += `<div class="modal-param-group"><div class="modal-param-title">リンクアビリティ</div>`;
     links.forEach(l => {

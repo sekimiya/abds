@@ -1,75 +1,75 @@
 {
-  "card_number": "FQ02-023",
-  "card_name": "デストロイガンダム",
-  "series": "FORSQUAD SEASON:02",
-  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-023.jpg?v9",
-  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-023_b.jpg?v9",
-  "ocr_data": {
-    "card_id": "FQ02-023",
-    "type": "MS",
-    "card_label": {
-      "class": "遠距離",
-      "cost_label": "コスト4"
+    "card_number": "FQ02-023",
+    "card_name": "デストロイガンダム",
+    "series": "FORSQUAD SEASON:02",
+    "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-023.jpg?v9",
+    "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-023_b.jpg?v9",
+    "ocr_data": {
+        "card_id": "FQ02-023",
+        "type": "MS",
+        "card_label": {
+            "class": "遠距離",
+            "cost_label": "コスト4"
+        },
+        "name": "デストロイガンダム",
+        "model": "GFAS-X1 DESTROY GUNDAM",
+        "cost": 4,
+        "category": "遠距離",
+        "pilot": "ステラ・ルーシェ",
+        "stats": {
+            "height": "38.07m",
+            "weight": "404.93t",
+            "mobility": 220,
+            "ranged_attack": 280,
+            "melee_attack": 0,
+            "hp": 450
+        },
+        "terrain_compatibility": {
+            "ground": "A",
+            "space": "A",
+            "desert": "C",
+            "water": "B"
+        },
+        "weapon": {
+            "main": {
+                "name": "アウフアール・ドライツェーン",
+                "range": 4,
+                "type": "遠距離"
+            },
+            "sub": {
+                "name": "",
+                "range": 0,
+                "type": ""
+            }
+        },
+        "ms_ability": {
+            "name": "逆襲",
+            "range": 4,
+            "cost": 4,
+            "description": "ロックオン中の敵に単体攻撃でダメージを与える。自身の残りHPが少ない程、ダメージが上昇する。",
+            "activation": "任意発動"
+        },
+        "link_ability": [
+            {
+                "name": "SEED DESTINY",
+                "condition": "デッキに3枚以上",
+                "effect": "[HP]小アップ"
+            },
+            {
+                "name": "戦況を変える力",
+                "condition": "デッキに4枚以上",
+                "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+            }
+        ],
+        "impact_area": {
+            "type": "circular",
+            "radius": 0,
+            "centered": false
+        },
+        "illustrator": "J.YUZURU (willow_works)",
+        "raw": "遠距離 コスト4\nGFAS-X1 DESTROY GUNDAM\nデストロイガンダム\n頭頂高 38.07m\n本体重量 404.93t\n所属 地球連合軍\nパイロット ステラ・ルーシェ\n地上 A 宇宙 A 砂漠 C 水中 B\n機動力 220\n遠距離攻撃 280\n近距離攻撃 0\nHP 450\nWEAPON\nMAIN アウフアール・ドライツェーン\n射程 4 遠距離\nSUB\n射程 -\nMS ABILITY\n逆襲\n任意発動 単体(敵) 射程 4 コスト 4\nロックオン中の敵に単体攻撃でダメージを与える。自身の残りHPが少ない程、ダメージが上昇する。\nLINK ABILITY\nSEED DESTINY デッキに3枚以上\n[HP]小アップ\n戦況を変える力 デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\nIMPACT AREA\nSPECIAL ATTACK UNITED SP\nスーパースキュラ撃射\n連携\n黄連(敵) 射程 4\nSPコスト\n3400 /-\nMS形態に変形、射線上の敵に貫通射撃でダメージを与える。変形後は能力が上昇。自分が撤退するまで効果は持続する。\nillust. J.YUZURU (willow_works)\n©創通・サンライズ\nBANDAI MADE IN JAPAN"
     },
-    "name": "デストロイガンダム",
-    "model": "GFAS-X1 DESTROY GUNDAM",
-    "cost": 4,
-    "category": "遠距離",
-    "pilot": "ステラ・ルーシェ",
-    "stats": {
-      "height": "38.07m",
-      "weight": "404.93t",
-      "mobility": 220,
-      "ranged_attack": 280,
-      "melee_attack": 0,
-      "hp": 450
-    },
-    "terrain_compatibility": {
-      "ground": "A",
-      "space": "A",
-      "desert": "C",
-      "water": "B"
-    },
-    "weapon": {
-      "main": {
-        "name": "アウフアール・ドライツェーン",
-        "range": 4,
-        "type": "遠距離"
-      },
-      "sub": {
-        "name": "",
-        "range": 0,
-        "type": ""
-      }
-    },
-    "ms_ability": {
-      "name": "逆襲",
-      "type": "任意発動",
-      "range": 4,
-      "cost": 4,
-      "description": "ロックオン中の敵に単体攻撃でダメージを与える。自身の残りHPが少ない程、ダメージが上昇する。"
-    },
-    "link_ability": [
-      {
-        "name": "SEED DESTINY",
-        "condition": "デッキに3枚以上",
-        "effect": "[HP]小アップ"
-      },
-      {
-        "name": "戦況を変える力",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      }
-    ],
-    "impact_area": {
-      "type": "circular",
-      "radius": 0,
-      "centered": false
-    },
-    "illustrator": "J.YUZURU (willow_works)",
-    "raw": "遠距離 コスト4\nGFAS-X1 DESTROY GUNDAM\nデストロイガンダム\n頭頂高 38.07m\n本体重量 404.93t\n所属 地球連合軍\nパイロット ステラ・ルーシェ\n地上 A 宇宙 A 砂漠 C 水中 B\n機動力 220\n遠距離攻撃 280\n近距離攻撃 0\nHP 450\nWEAPON\nMAIN アウフアール・ドライツェーン\n射程 4 遠距離\nSUB\n射程 -\nMS ABILITY\n逆襲\n任意発動 単体(敵) 射程 4 コスト 4\nロックオン中の敵に単体攻撃でダメージを与える。自身の残りHPが少ない程、ダメージが上昇する。\nLINK ABILITY\nSEED DESTINY デッキに3枚以上\n[HP]小アップ\n戦況を変える力 デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\nIMPACT AREA\nSPECIAL ATTACK UNITED SP\nスーパースキュラ撃射\n連携\n黄連(敵) 射程 4\nSPコスト\n3400 /-\nMS形態に変形、射線上の敵に貫通射撃でダメージを与える。変形後は能力が上昇。自分が撤退するまで効果は持続する。\nillust. J.YUZURU (willow_works)\n©創通・サンライズ\nBANDAI MADE IN JAPAN"
-  },
-  "ocr_timestamp": "2025-06-28T01:38:43.784801",
-  "ocr_type": "basic",
-  "ocr_engine": "claude_code_cli"
+    "ocr_timestamp": "2025-06-28T01:38:43.784801",
+    "ocr_type": "basic",
+    "ocr_engine": "claude_code_cli"
 }

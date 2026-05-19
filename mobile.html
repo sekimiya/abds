@@ -1873,7 +1873,7 @@ const ParamCorrections = {
   },
   getCorrectionLevel(msOcr, plOcr) {
     let level = 0;
-    const links = msOcr?.link_abilities || msOcr?.link_ability || [];
+    const links = msOcr?.link_ability || [];
     for (const la of links) {
       if (la?.name && this.work[la.name]) { level += this.work[la.name]; break; }
     }
@@ -1993,7 +1993,7 @@ function _countLinkInDeck(linkName, category) {
   let count = 0;
   for (let i = 0; i < 10; i++) {
     const d = AppState.deckOcr[i]; if (!d) continue;
-    const dLinks = d.link_abilities || d.link_ability || [];
+    const dLinks = d.link_ability || [];
     if (Array.isArray(dLinks) && dLinks.some(l => l.name === linkName)) count++;
   }
   return count;
@@ -2017,11 +2017,11 @@ function _countLinkInDeckVirtual(linkName, category, virtualCard) {
   for (let i = 0; i < 10; i++) {
     const d = AppState.deckOcr[i]; if (!d) continue;
     if (inDeck && AppState.deck[i] === vNum) continue;
-    const dLinks = d.link_abilities || d.link_ability || [];
+    const dLinks = d.link_ability || [];
     if (Array.isArray(dLinks) && dLinks.some(l => l.name === linkName)) count++;
   }
   const vDet = CardService.getDetail(vNum);
-  const vLinks = vDet?.ocr_data?.link_abilities || vDet?.ocr_data?.link_ability || [];
+  const vLinks = vDet?.ocr_data?.link_ability || [];
   if (!inDeck && Array.isArray(vLinks) && vLinks.some(l => l.name === linkName)) count++;
   return count;
 }
@@ -2230,7 +2230,7 @@ const SERIES_CANONICAL = {
   'ガンダムトライエイジ':'トライエイジ','トライエイジ':'トライエイジ',
 };
 function _getCardSeries(ocr) {
-  const links = ocr?.link_abilities || ocr?.link_ability || [];
+  const links = ocr?.link_ability || [];
   if (!Array.isArray(links)) return '';
   for (const la of links) {
     const name = la?.name || '';
@@ -2254,7 +2254,7 @@ function getLvBonus(series, msOrPl, stat, lv) {
 // 公式: ROUNDDOWN((MS表記値*地形適正 + MS_Lvボーナス + PL表記値 + PL_Lvボーナス) × 1.1^小 × 1.2^中, 0)
 function calcUnitStats(msOcr, plOcr, terrainMult) {
   const si = (v) => parseInt(v) || 0;
-  const getStats = (ocr) => ({ mobility: si(ocr?.stats?.mobility), ranged: si(ocr?.stats?.ranged_attack || ocr?.stats?.ranged), melee: si(ocr?.stats?.melee_attack || ocr?.stats?.melee), hp: si(ocr?.stats?.hp) });
+  const getStats = (ocr) => ({ mobility: si(ocr?.stats?.mobility), ranged: si(ocr?.stats?.ranged_attack), melee: si(ocr?.stats?.melee_attack), hp: si(ocr?.stats?.hp) });
   const ms = getStats(msOcr), pl = getStats(plOcr);
   const msBuffs = getLinkBuffs(msOcr), plBuffs = getLinkBuffs(plOcr);
   const msSeries = _getCardSeries(msOcr);
@@ -2292,7 +2292,7 @@ function getLinkBuffs(ocr) {
     melee: { small: 0, medium: 0 },
     hp: { small: 0, medium: 0 }
   };
-  const links = ocr?.link_abilities || ocr?.link_ability || [];
+  const links = ocr?.link_ability || [];
   if (!Array.isArray(links)) return buffs;
   links.forEach(link => {
     const eff = link.effect || '';
@@ -3658,7 +3658,7 @@ const UIRenderer = {
     const spTags = indexEntry?.sp_effect_tags || [];
 
     // Count active links per type (single pass, reused for glow + tags)
-    const cardLinks = ocr?.link_abilities || ocr?.link_ability || [];
+    const cardLinks = ocr?.link_ability || [];
     let activeEb = 0, activeSq = 0, activeAb = 0, activeNormal = 0;
     const linkResults = []; // {link, isActive, ltype}
     if (Array.isArray(cardLinks)) {
@@ -3943,7 +3943,7 @@ const UIRenderer = {
     abilities.forEach(a => {
       html += `<div class="detail-ability-name">${escapeHtml(a.name || '')}</div>`;
       const tags = [];
-      if (a.type || a.activation) tags.push(a.type || a.activation);
+      if (a.activation) tags.push(a.activation);
       if (a.target) tags.push(a.target);
       if (a.range !== undefined && a.range !== null) tags.push(`射程${a.range}`);
       if (a.cost !== undefined && a.cost !== null) tags.push(`コスト${a.cost}`);
@@ -4065,7 +4065,7 @@ const UIRenderer = {
     const unitLinkCount = {}; // ユニット内でMS・PL両方に同じリンクがあるかカウント
     [msOcr, plOcr].forEach(ocr => {
       if (!ocr) return;
-      const links = ocr.link_abilities || ocr.link_ability || [];
+      const links = ocr.link_ability || [];
       if (!Array.isArray(links)) return;
       links.forEach(link => {
         if (!link.name) return;
@@ -4146,7 +4146,7 @@ const UIRenderer = {
 
     // EB判定
     const ebLinkCounts = {};
-    for (let i = 0; i < 10; i++) { const ocr = AppState.deckOcr[i]; if (!ocr) continue; const links = ocr.link_abilities || ocr.link_ability || []; if (!Array.isArray(links)) continue; links.forEach(l => { if (l?.is_eb_link && l.name) { if (!ebLinkCounts[l.name]) { const cm = (l.condition||'').match(/(\d+)枚以上/); ebLinkCounts[l.name] = { count: 0, required: cm ? parseInt(cm[1]) : 2 }; } ebLinkCounts[l.name].count++; } }); }
+    for (let i = 0; i < 10; i++) { const ocr = AppState.deckOcr[i]; if (!ocr) continue; const links = ocr.link_ability || []; if (!Array.isArray(links)) continue; links.forEach(l => { if (l?.is_eb_link && l.name) { if (!ebLinkCounts[l.name]) { const cm = (l.condition||'').match(/(\d+)枚以上/); ebLinkCounts[l.name] = { count: 0, required: cm ? parseInt(cm[1]) : 2 }; } ebLinkCounts[l.name].count++; } }); }
     const activeEbLinks = {};
     for (const [name, info] of Object.entries(ebLinkCounts)) { if (info.count >= info.required) activeEbLinks[name] = true; }
     let ebActive = false;
@@ -4154,7 +4154,7 @@ const UIRenderer = {
       const msOcr = AppState.deckOcr[u]; const plOcr = AppState.deckOcr[u + 5];
       const msIdx4eb = AppState.deck[u] ? this._getIndexEntry(AppState.deck[u]) : null;
       if (!msOcr?.special_attack?.echoes_beat && !msIdx4eb?.has_eb) continue;
-      const plLinks = plOcr?.link_abilities || plOcr?.link_ability || [];
+      const plLinks = plOcr?.link_ability || [];
       if (Array.isArray(plLinks) && plLinks.find(l => l?.is_eb_link && l.name && activeEbLinks[l.name])) { ebActive = true; break; }
     }
     const ebEl = document.getElementById('ebStatus');
@@ -4169,7 +4169,7 @@ const UIRenderer = {
     const linkMap = {};
     for (let i = 0; i < 10; i++) {
       const ocr = AppState.deckOcr[i]; if (!ocr) continue;
-      const links = ocr.link_abilities || ocr.link_ability || [];
+      const links = ocr.link_ability || [];
       if (!Array.isArray(links)) continue;
       links.forEach(link => {
         if (!link.name) return;
@@ -4853,7 +4853,7 @@ const SearchPanel = {
         </div>`;
       // リンクアビリティタグをオーバーレイ
       const det = CardService.getDetail(card.number);
-      const cLinks = det?.ocr_data?.link_abilities || det?.ocr_data?.link_ability || [];
+      const cLinks = det?.ocr_data?.link_ability || [];
       if (Array.isArray(cLinks) && cLinks.length > 0) {
         const tagsDiv = document.createElement('div');
         tagsDiv.className = 'thumb-link-tags';
@@ -5421,8 +5421,8 @@ function openScreenshotMode() {
     if (catCounts[cat] !== undefined) catCounts[cat]++;
     const stats = calcUnitStats(msOcr, plOcr, UIRenderer._getTerrainMultiplier(msOcr));
     const tc = msOcr?.terrain_compatibility || null;
-    const msLinks = Array.isArray(msOcr?.link_abilities || msOcr?.link_ability) ? (msOcr?.link_abilities || msOcr?.link_ability) : [];
-    const plLinks = Array.isArray(plOcr?.link_abilities || plOcr?.link_ability) ? (plOcr?.link_abilities || plOcr?.link_ability) : [];
+    const msLinks = Array.isArray(msOcr?.link_ability) ? msOcr?.link_ability : [];
+    const plLinks = Array.isArray(plOcr?.link_ability) ? plOcr?.link_ability : [];
     const sp = msOcr?.special_attack;
     const plSkill = plOcr?.pl_skill || plOcr?.pilot_skill;
     const eb = msOcr?.special_attack?.echoes_beat || (msOcr?.special_attack?.united_sp && /EBLv\./.test(msOcr.special_attack.united_sp.description || '') ? msOcr.special_attack.united_sp : null);
@@ -5454,7 +5454,7 @@ function openScreenshotMode() {
   const ssLinkMap = {};
   for (let i = 0; i < 10; i++) {
     const ocr = AppState.deckOcr[i]; if (!ocr) continue;
-    const links = ocr.link_abilities || ocr.link_ability || [];
+    const links = ocr.link_ability || [];
     if (!Array.isArray(links)) continue;
     for (const link of links) {
       if (!link.name || ssLinkMap[link.name]) continue;
@@ -5480,7 +5480,7 @@ function openScreenshotMode() {
     if (!img) return '';
     let ov = '';
     // Badge (EB/SQ/AB)
-    const links = ocr?.link_abilities || ocr?.link_ability || [];
+    const links = ocr?.link_ability || [];
     const hasEbLink = idx?.has_eb_link;
     const hasAbLink = idx?.has_ab_link;
     const hasSqLink = idx?.has_sq_link;
@@ -5656,7 +5656,7 @@ function openScreenshotMode() {
       s += `<div class="ss-skill-block">`;
       s += `<div class="ss-skill-name">${h(a.name||'')}</div>`;
       const tags = [];
-      if (a.type || a.activation) tags.push(a.type || a.activation);
+      if (a.activation) tags.push(a.activation);
       if (a.target) tags.push(a.target);
       if (a.range !== undefined && a.range !== null) tags.push('射程'+a.range);
       if (a.cost !== undefined && a.cost !== null) tags.push('コスト'+a.cost);
@@ -5830,7 +5830,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const nonSq = new Set();
     AppState.cardIndex.forEach(c => {
       const d = CardService.getDetail(c.number);
-      const links = d && d.ocr_data ? (d.ocr_data.link_abilities || d.ocr_data.link_ability || []) : [];
+      const links = d && d.ocr_data ? (d.ocr_data.link_ability || []) : [];
       links.forEach(l => {
         if (!l.name) return;
         if (c.has_sq_link) sqOnly.add(l.name);

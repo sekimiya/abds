@@ -239,8 +239,9 @@ def check_ocr_completeness(index, details, r: CheckResult):
             r.warning(cat, num, "rarity が未設定")
 
     if no_ocr_cards:
-        r.warning(cat, "-", f"OCR未実施カード {len(no_ocr_cards)}枚: {', '.join(no_ocr_cards[:20])}" +
-                  (f" ... (+{len(no_ocr_cards)-20})" if len(no_ocr_cards) > 20 else ""))
+        for nc in no_ocr_cards:
+            r.error(cat, nc, "has_ocr=false: OCR未実施")
+        r.error(cat, "-", f"OCR未実施カード合計 {len(no_ocr_cards)}枚")
 
 
 # ---------------------------------------------------------------------------
@@ -449,7 +450,7 @@ def check_suspicious_ocr(index, details, r: CheckResult):
             base_num = m.group(1)
             base_d = details.get(base_num)
             if not base_d:
-                r.error(cat, num, f"ベースカード {base_num} が details に存在しない")
+                r.warning(cat, num, f"ベースカード {base_num} が details に存在しない（コラボ限定等）")
                 continue
             base_ocr = base_d.get("ocr_data") or {}
 

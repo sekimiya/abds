@@ -1,40 +1,45 @@
 {
-  "card_number": "VEB02-020",
-  "card_name": "トレーズ・クシュリナーダ",
-  "series": "VEブースター2弾",
-  "ocr_data": {
     "card_number": "VEB02-020",
-    "type": "PL",
-    "name": "トレーズ・クシュリナーダ",
-    "english_name": "TREIZE KHUSHRENADA",
-    "cost": 2,
-    "category": "防衛",
-    "rarity": "M",
-    "height": "181cm",
-    "age": "24歳",
-    "affiliation": "OZ",
-    "boarding_machine": "トールギスII",
-    "stats": {"mobility": 180, "ranged": 250, "melee": 30, "hp": 280},
-    "pilot_skill": {
-      "name": "速攻の射撃術",
-      "activation": "EBLv.1に上昇時",
-      "description": "30秒間、自身の[機動力][遠距離攻撃力]をアップする。",
-      "skill_type": "EB"
+    "card_name": "トレーズ・クシュリナーダ",
+    "series": "VEブースター2弾",
+    "ocr_data": {
+        "card_number": "VEB02-020",
+        "type": "PL",
+        "name": "トレーズ・クシュリナーダ",
+        "english_name": "TREIZE KHUSHRENADA",
+        "cost": 2,
+        "category": "防衛",
+        "rarity": "M",
+        "height": "181cm",
+        "age": "24歳",
+        "affiliation": "OZ",
+        "boarding_machine": "トールギスII",
+        "stats": {
+            "mobility": 180,
+            "hp": 280,
+            "ranged_attack": 250,
+            "melee_attack": 30
+        },
+        "pilot_skill": {
+            "name": "速攻の射撃術",
+            "activation": "EBLv.1に上昇時",
+            "description": "30秒間、自身の[機動力][遠距離攻撃力]をアップする。",
+            "skill_type": "EB"
+        },
+        "link_ability": [
+            {
+                "name": "傍流する覚醒の共振",
+                "condition": "デッキに3枚以上",
+                "effect": "ECHOES BEAT Lv.が表示される。味方ユニットが戦術技を発動するとEBLv.が上がる。[遠距離攻撃力][近距離攻撃力]小アップ",
+                "is_eb_link": true
+            },
+            {
+                "name": "的確な一撃",
+                "condition": "デッキに4枚以上",
+                "effect": "[機動力][遠距離攻撃力]小アップ"
+            }
+        ]
     },
-    "link_ability": [
-      {
-        "name": "傍流する覚醒の共振",
-        "condition": "デッキに3枚以上",
-        "effect": "ECHOES BEAT Lv.が表示される。味方ユニットが戦術技を発動するとEBLv.が上がる。[遠距離攻撃力][近距離攻撃力]小アップ",
-        "is_eb_link": true
-      },
-      {
-        "name": "的確な一撃",
-        "condition": "デッキに4枚以上",
-        "effect": "[機動力][遠距離攻撃力]小アップ"
-      }
-    ]
-  },
-  "ocr_engine": "claude_code_subagent",
-  "ocr_timestamp": "2026-05-15T00:00:00"
+    "ocr_engine": "claude_code_subagent",
+    "ocr_timestamp": "2026-05-15T00:00:00"
 }

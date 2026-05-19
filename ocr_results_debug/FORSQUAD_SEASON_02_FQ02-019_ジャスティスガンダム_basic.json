@@ -1,84 +1,84 @@
 {
-  "card_number": "FQ02-019",
-  "card_name": "ジャスティスガンダム",
-  "series": "FORSQUAD SEASON:02",
-  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-019.jpg?v9",
-  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-019_b.jpg?v9",
-  "ocr_data": {
-    "card_id": "FQ02-019",
-    "type": "MS",
-    "card_label": {
-      "class": "遠距離",
-      "cost_label": "コスト2"
+    "card_number": "FQ02-019",
+    "card_name": "ジャスティスガンダム",
+    "series": "FORSQUAD SEASON:02",
+    "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-019.jpg?v9",
+    "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-019_b.jpg?v9",
+    "ocr_data": {
+        "card_id": "FQ02-019",
+        "type": "MS",
+        "card_label": {
+            "class": "遠距離",
+            "cost_label": "コスト2"
+        },
+        "name": "ジャスティスガンダム",
+        "model": "ZGMF-X09A JUSTICE GUNDAM",
+        "cost": 2,
+        "category": "遠距離",
+        "pilot": "アスラン・ザラ",
+        "stats": {
+            "height": "18.56m",
+            "weight": "75.4t",
+            "mobility": 240,
+            "ranged_attack": 210,
+            "melee_attack": 60,
+            "hp": 340
+        },
+        "terrain_compatibility": {
+            "ground": "A",
+            "space": "S",
+            "desert": "A",
+            "water": "C"
+        },
+        "weapon": {
+            "main": {
+                "name": "ルプス・ビームライフル",
+                "range": 3,
+                "type": "遠距離"
+            },
+            "sub": {
+                "name": "アンビデクストラス・ハルバード",
+                "range": 1,
+                "type": "近距離"
+            }
+        },
+        "ms_ability": {
+            "name": "鼓舞[遠距離][弱体化解除]",
+            "range": "範囲（味方）",
+            "cost": 6,
+            "description": "自身を中心とした大範囲内の味方ユニットの弱体化状態を無効化し、30秒間、「遠距離攻撃力」を中アップする。",
+            "activation": "任意発動"
+        },
+        "link_ability": [
+            {
+                "name": "ガンダムSEED",
+                "condition": "デッキに3枚以上",
+                "effect": "「機動力」小アップ"
+            },
+            {
+                "name": "戦況を変える力",
+                "condition": "デッキに4枚以上",
+                "effect": "「遠距離攻撃力」「近距離攻撃力」小アップ"
+            }
+        ],
+        "impact_area": {
+            "type": "circular",
+            "radius": 3,
+            "centered": true
+        },
+        "illustrator": "ishima060123",
+        "raw": "遠距離 コスト2\nZGMF-X09A JUSTICE GUNDAM\nジャスティスガンダム\n頭頂高 18.56m\n本体重 75.4t\n所属\nパイロット アスラン・ザラ\n地上 A 宇宙 S 砂漠 A 水中 C\n機動力 240\n遠距離攻撃 210\n近距離攻撃 60\nHP 340\nWEAPON\nMAIN ルプス・ビームライフル\n射程 3 遠距離\nSUB アンビデクストラス・ハルバード\n射程 1 近距離\nMS ABILITY\n鼓舞【遠距離】[弱体化解除]\n任意発動 範囲（味方） 射程 — コスト 6\n自身を中心とした大範囲内の味方ユニットの弱体化状態を無効化し、30秒間、「遠距離攻撃力」を中アップする。\nLINK ABILITY\nガンダムSEED デッキに3枚以上\n「機動力」小アップ\n戦況を変える力 デッキに4枚以上\n「遠距離攻撃力」「近距離攻撃力」小アップ\nIMPACT AREA\nSPECIAL ATTACK\nルプス・ビームライフル撃ち\n連携\n単体（敵） 射程 — 射程 —\nSPコスト 3200 / —\n敵単体に射撃攻撃でダメージを与える。／—\nillust ishim060123\nBANDAI MADE IN JAPAN"
     },
-    "name": "ジャスティスガンダム",
-    "model": "ZGMF-X09A JUSTICE GUNDAM",
-    "cost": 2,
-    "category": "遠距離",
-    "pilot": "アスラン・ザラ",
-    "stats": {
-      "height": "18.56m",
-      "weight": "75.4t",
-      "mobility": 240,
-      "ranged_attack": 210,
-      "melee_attack": 60,
-      "hp": 340
-    },
-    "terrain_compatibility": {
-      "ground": "A",
-      "space": "S",
-      "desert": "A",
-      "water": "C"
-    },
-    "weapon": {
-      "main": {
-        "name": "ルプス・ビームライフル",
-        "range": 3,
-        "type": "遠距離"
-      },
-      "sub": {
-        "name": "アンビデクストラス・ハルバード",
-        "range": 1,
-        "type": "近距離"
-      }
-    },
-    "ms_ability": {
-      "name": "鼓舞[遠距離][弱体化解除]",
-      "type": "任意発動",
-      "range": "範囲（味方）",
-      "cost": 6,
-      "description": "自身を中心とした大範囲内の味方ユニットの弱体化状態を無効化し、30秒間、「遠距離攻撃力」を中アップする。"
-    },
-    "link_ability": [
-      {
-        "name": "ガンダムSEED",
-        "condition": "デッキに3枚以上",
-        "effect": "「機動力」小アップ"
-      },
-      {
-        "name": "戦況を変える力",
-        "condition": "デッキに4枚以上",
-        "effect": "「遠距離攻撃力」「近距離攻撃力」小アップ"
-      }
+    "ocr_timestamp": "2025-06-28T01:52:50.518417",
+    "ocr_type": "basic",
+    "ocr_engine": "claude_code_cli",
+    "_fix_history": [
+        {
+            "timestamp": "2026-03-03T23:49:21",
+            "changes": [
+                "ms_ability.name: \"鼓舞【遠距離】[弱体化解除]\" → \"鼓舞[遠距離][弱体化解除]\""
+            ]
+        }
     ],
-    "impact_area": {
-      "type": "circular",
-      "radius": 3,
-      "centered": true
-    },
-    "illustrator": "ishima060123",
-    "raw": "遠距離 コスト2\nZGMF-X09A JUSTICE GUNDAM\nジャスティスガンダム\n頭頂高 18.56m\n本体重 75.4t\n所属\nパイロット アスラン・ザラ\n地上 A 宇宙 S 砂漠 A 水中 C\n機動力 240\n遠距離攻撃 210\n近距離攻撃 60\nHP 340\nWEAPON\nMAIN ルプス・ビームライフル\n射程 3 遠距離\nSUB アンビデクストラス・ハルバード\n射程 1 近距離\nMS ABILITY\n鼓舞【遠距離】[弱体化解除]\n任意発動 範囲（味方） 射程 — コスト 6\n自身を中心とした大範囲内の味方ユニットの弱体化状態を無効化し、30秒間、「遠距離攻撃力」を中アップする。\nLINK ABILITY\nガンダムSEED デッキに3枚以上\n「機動力」小アップ\n戦況を変える力 デッキに4枚以上\n「遠距離攻撃力」「近距離攻撃力」小アップ\nIMPACT AREA\nSPECIAL ATTACK\nルプス・ビームライフル撃ち\n連携\n単体（敵） 射程 — 射程 —\nSPコスト 3200 / —\n敵単体に射撃攻撃でダメージを与える。／—\nillust ishim060123\nBANDAI MADE IN JAPAN"
-  },
-  "ocr_timestamp": "2025-06-28T01:52:50.518417",
-  "ocr_type": "basic",
-  "ocr_engine": "claude_code_cli",
-  "_fix_history": [
-    {
-      "timestamp": "2026-03-03T23:49:21",
-      "changes": [
-        "ms_ability.name: \"鼓舞【遠距離】[弱体化解除]\" → \"鼓舞[遠距離][弱体化解除]\""
-      ]
-    }
-  ],
-  "_fixed": true
+    "_fixed": true
 }
