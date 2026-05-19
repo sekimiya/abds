@@ -263,6 +263,58 @@ def detect_eb_info(ocr_data):
     }
 
 
+def detect_sq_info(ocr_data):
+    """SQUAD SP / SQリンク / SQスキル関連情報を検出"""
+    card_type = ocr_data.get('type', '')
+    links = get_links(ocr_data)
+
+    has_sq_link = False
+    for la in links:
+        if not isinstance(la, dict):
+            continue
+        if la.get('is_sq_link'):
+            has_sq_link = True
+            break
+
+    has_sqsp = False
+    sqsp_text = ''
+    if card_type == 'MS':
+        sp = ocr_data.get('special_attack', {}) or {}
+        sp_type = sp.get('sp_type', '') or ''
+        if sp_type == 'SQUAD SP':
+            has_sqsp = True
+            sqsp_text = f"SQUAD SP\n{sp.get('name','')}\n威力:{sp.get('power','')}\n{sp.get('description','')}"
+
+    has_sq_skill = False
+    sq_skill_text = ''
+    if card_type == 'PL':
+        ps = ocr_data.get('pilot_skill', {}) or {}
+        if ps.get('has_sq_skill'):
+            has_sq_skill = True
+            sq_skill_text = f"{ps.get('name','')}\n{ps.get('description','') or ps.get('effect','')}"
+
+    return {
+        'has_sqsp': has_sqsp,
+        'has_sq_skill': has_sq_skill,
+        'has_sq_link': has_sq_link,
+        'sqsp_text': sqsp_text,
+        'sq_skill_text': sq_skill_text,
+    }
+
+
+def detect_ab_info(ocr_data):
+    """ABリンク関連情報を検出"""
+    links = get_links(ocr_data)
+    has_ab_link = False
+    for la in links:
+        if not isinstance(la, dict):
+            continue
+        if la.get('is_ab_link'):
+            has_ab_link = True
+            break
+    return {'has_ab_link': has_ab_link}
+
+
 def build_card_index_entry(card_number, card_data):
     """1枚分のcard_index エントリを構築"""
     ocr = card_data.get('ocr_data', {})
@@ -280,6 +332,8 @@ def build_card_index_entry(card_number, card_data):
         back_url = f'https://www.gundam-ab.com/images/cardlist/card/{base}_b.jpg?v250630'
 
     eb_info = detect_eb_info(ocr)
+    sq_info = detect_sq_info(ocr)
+    ab_info = detect_ab_info(ocr)
 
     # Skill / ability name
     skill_name = ''
@@ -319,11 +373,11 @@ def build_card_index_entry(card_number, card_data):
         'model': ocr.get('model', '') or '' if card_type == 'MS' else '',
         'illustrator': ocr.get('illustrator', '') or '',
         'sq_rush_effect': '',
-        'sqsp_text': '',
-        'sq_skill_text': '',
-        'has_sqsp': False,
-        'has_sq_skill': False,
-        'has_sq_link': False,
+        'sqsp_text': sq_info['sqsp_text'],
+        'sq_skill_text': sq_info['sq_skill_text'],
+        'has_sqsp': sq_info['has_sqsp'],
+        'has_sq_skill': sq_info['has_sq_skill'],
+        'has_sq_link': sq_info['has_sq_link'],
         'sq_trigger': '',
         'sq_gauge_rate': '',
         'sq_skill_effect_tags': [],
@@ -334,7 +388,7 @@ def build_card_index_entry(card_number, card_data):
         'has_eb': eb_info['has_eb'],
         'has_eb_skill': eb_info['has_eb_skill'],
         'has_eb_link': eb_info['has_eb_link'],
-        'has_ab_link': False,
+        'has_ab_link': ab_info['has_ab_link'],
         'eb_level': eb_info['eb_level'],
         'eb_trigger_level': eb_info['eb_trigger_level'],
         'eb_trigger_cond': eb_info['eb_trigger_cond'],
