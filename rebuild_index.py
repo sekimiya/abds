@@ -439,7 +439,7 @@ def build_card_index_entry(card_number, card_data):
 
     entry = {
         'number': card_number,
-        'name': ocr.get('name', '') or card_data.get('card_name', ''),
+        'name': card_data.get('card_name', '') or ocr.get('name', ''),
         'type': card_type,
         'category': label.get('class', '') or ocr.get('category', ''),
         'cost': ocr.get('cost', 0),
@@ -502,7 +502,7 @@ def build_card_details_entry(card_number, card_data):
 
     return {
         'number': card_number,
-        'name': ocr.get('name', '') or card_data.get('card_name', ''),
+        'name': card_data.get('card_name', '') or ocr.get('name', ''),
         'url': front_url,
         'category': label.get('class', '') or ocr.get('category', ''),
         'series': detect_series(card_number),

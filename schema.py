@@ -51,10 +51,7 @@ def normalize_ocr_data(data):
     if not ocr or not isinstance(ocr, dict):
         return data, changes
 
-    if ocr.get('ms_name_jp'):
-        ocr['name'] = ocr['ms_name_jp']
-        changes.append('ms_name_jp -> name')
-    elif not ocr.get('name'):
+    if not ocr.get('name'):
         for alias in NAME_ALIASES:
             if ocr.get(alias):
                 ocr['name'] = ocr[alias]
