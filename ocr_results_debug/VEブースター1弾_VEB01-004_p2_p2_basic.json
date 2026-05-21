@@ -1,0 +1,98 @@
+{
+  "card_number": "VEB01-004_p2",
+  "card_name": "p2",
+  "series": "VEブースター1弾",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/VEB01-004_p2.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/VEB01-004_p2_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "VEB01-004_p2",
+    "type": "MS",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト5"
+    },
+    "name": "ゲルググ（シャア・アズナブル専用機）",
+    "model": "YMS-14 CHAR'S GELGOOG",
+    "cost": 5,
+    "category": "機動戦士ガンダム",
+    "affiliation": "ジオン公国軍",
+    "pilot": "シャア・アズナブル",
+    "stats": {
+      "height": "19.2m",
+      "weight": "42.1t",
+      "mobility": 240,
+      "ranged_attack": 80,
+      "melee_attack": 580,
+      "hp": 500
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "C",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "ビーム・ナギナタ",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "ビーム・ライフル",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "瞬撃",
+      "activation": "任意発動",
+      "target": "範囲(敵)",
+      "range": 5,
+      "cost": 4,
+      "description": "射程範囲内の指定した位置に小範囲攻撃を行い、範囲内の敵にダメージを与える。"
+    },
+    "link_ability": [
+      {
+        "name": "機動戦士ガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ビーム・ナギナタ強襲",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3600,
+      "sp_type": "SQUAD SP",
+      "description": "敵単体に格闘攻撃でダメージを与え、自身のHPを回復する。",
+      "squad_sp": {
+        "name": "ビーム・ナギナタ強襲",
+        "target": "貫通(敵)",
+        "range": 3,
+        "power": 4100,
+        "description": "対象の敵を中心として射程よりも広い範囲で、射線上の敵に貫通射撃でダメージを与え、一定時間スタンさせる。攻撃に参加したユニットはHPが最大値を超えて回復し、一定時間、[遠／近攻撃力]をアップする。出撃時1度のみ使用可能。"
+      },
+      "united_sp": {
+        "name": "彗星と亡霊",
+        "partner1": null,
+        "partner2": null,
+        "range": null,
+        "power": null,
+        "description": null
+      }
+    },
+    "rarity": "VE",
+    "illustrator": "Moyasi",
+    "raw": "近距離 コスト5\nYMS-14 CHAR'S GELGOOG\nゲルググ（シャア・アズナブル専用機）\n頭頂高 19.2m\n本体重量 42.1t\n所属 ジオン公国軍\nパイロット シャア・アズナブル\n地上 A 宇宙 S 砂漠 C 水中 C\n機動力 240\n遠距離攻撃 80\n近距離攻撃 580\nHP 500\n\nWEAPON\nMAIN ビーム・ナギナタ 射程1 近距離\nSUB ビーム・ライフル 射程3 遠距離\n\nMS ABILITY\n瞬撃\n任意発動 範囲(敵) 射程5 コスト4\n射程範囲内の指定した位置に小範囲攻撃を行い、範囲内の敵にダメージを与える。\n\nLINK ABILITY\n機動戦士ガンダム デッキに3枚以上\n[機動力]小アップ\n戦況を変える力 デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nSPECIAL ATTACK          UNITED SP\nビーム・ナギナタ強襲     彗星と亡霊\n連携 エルメス            連携 ー\n連携 ー                  連携 ー\n単体(敵) 射程2    貫通(敵) 射程3\nSPコスト2    威力 3600 / 4100\n敵単体に格闘攻撃でダメージを与え、自身のHPを回復する。/対象の敵を中心として射程よりも広い範囲で、射線上の敵に貫通射撃でダメージを与え、一定時間スタンさせる。攻撃に参加したユニットはHPが最大値を超えて回復し、一定時間、[遠／近攻撃力]をアップする。出撃時1度のみ使用可能。\n\nillust Moyasi\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\nVEB01-004 VE"
+  },
+  "ocr_raw_file": "VEブースター1弾_VEB01-004_p2_p2_ocr_raw.json",
+  "ocr_timestamp": "2026-03-19T20:05:55.523803",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

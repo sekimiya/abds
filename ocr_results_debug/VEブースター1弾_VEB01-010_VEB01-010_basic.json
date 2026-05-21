@@ -1,0 +1,88 @@
+{
+  "card_number": "VEB01-010",
+  "card_name": "VEB01-010",
+  "series": "VEブースター1弾",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/VEB01-010.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/VEB01-010_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "VEB01-010",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト4"
+    },
+    "name": "シルバースモー",
+    "model": "MRC-F20 SILVER SUMO",
+    "cost": 4,
+    "category": "∀ガンダム",
+    "affiliation": "ディアナ親衛隊",
+    "pilot": "ポゥ・エイジ",
+    "stats": {
+      "height": "20.3m",
+      "weight": "34.2t",
+      "mobility": 260,
+      "ranged_attack": 360,
+      "melee_attack": 60,
+      "hp": 320
+    },
+    "terrain_compatibility": {
+      "ground": "S",
+      "space": "A",
+      "desert": "C",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "ハンドビームガン",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ヒートファン",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "破閃",
+      "activation": "任意発動",
+      "target": "単体(敵)",
+      "range": 3,
+      "cost": 4,
+      "description": "ロックオン中の敵に単体攻撃でダメージを与える。この攻撃で敵ユニットにダメージを与えた場合、一定時間、被ダメージをアップする。"
+    },
+    "link_ability": [
+      {
+        "name": "∀ガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[HP]小アップ"
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ハンドビームガン撃射",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3200,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "united_sp": null,
+      "eb_level": null,
+      "eb_power": null,
+      "eb_description": null,
+      "eb_target": null,
+      "eb_range": null
+    },
+    "rarity": "R",
+    "illustrator": "Shiratori U",
+    "raw": "遠距離 コスト4 MS\nMRC-F20 SILVER SUMO\nシルバースモー\n\n頭頂高 20.3m\n本体重量 34.2t\n所属 ディアナ親衛隊\nパイロット ポゥ・エイジ\n\n地上 S 宇宙 A 砂漠 C 水中 C\n機動力 260\n遠距離攻撃 360\n近距離攻撃 60\nHP 320\n\nWEAPON\nMAIN ハンドビームガン 射程 3 遠距離\nSUB ヒートファン 射程 1 近距離\n\nMS ABILITY\n破閃\n任意発動 単体(敵) 射程 3 コスト 4\nロックオン中の敵に単体攻撃でダメージを与える。この攻撃で敵ユニットにダメージを与えた場合、一定時間、被ダメージをアップする。\n\nLINK ABILITY\n∀ガンダム デッキに3枚以上\n[HP]小アップ\n\n戦況を変える力 デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nSPECIAL ATTACK ECHOES BEAT\nハンドビームガン撃射 ー\nー\n単体(敵) 射程 3 ー 射程 ー\nSPコスト 2 威力 3200 / ー\n敵単体に射撃攻撃でダメージを与える。\n/ ー\n\nillust. Shiratori U\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\nVEB01-010 R"
+  },
+  "ocr_raw_file": "VEブースター1弾_VEB01-010_VEB01-010_ocr_raw.json",
+  "ocr_timestamp": "2026-03-19T20:14:22.749148",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

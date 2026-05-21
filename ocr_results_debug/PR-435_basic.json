@@ -1,0 +1,50 @@
+{
+  "card_id": "PR-435",
+  "type": "PL",
+  "card_label": {
+    "class": "制圧",
+    "cost_label": "コスト3"
+  },
+  "name": "アヤメ",
+  "english_name": "AYAME",
+  "cost": 3,
+  "category": "制圧",
+  "affiliation": "ビルドダイバーズ",
+  "units": [
+    "RX-零丸"
+  ],
+  "stats": {
+    "mobility": 210,
+    "ranged_attack": 50,
+    "melee_attack": 220,
+    "hp": 290
+  },
+  "pilot_skill": {
+    "name": "次元一体の割腕術",
+    "trigger": "敵戦艦／拠点をロックオン時",
+    "effect": "40秒間、自身の[近距離攻撃力]を中アップし、受けるダメージを軽減する。",
+    "is_eb_skill": false,
+    "has_sq_skill": false,
+    "sq_skill_details": null
+  },
+  "link_abilities": [
+    {
+      "name": "ビルドダイバーズ",
+      "condition": "デッキに3枚以上",
+      "effect": "[HP]小アップ"
+    },
+    {
+      "name": "多彩な戦術",
+      "condition": "デッキに4枚以上",
+      "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+    }
+  ],
+  "rarity": "PR",
+  "illustrator": "Raki (STUDIO 03)",
+  "front": {
+    "image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-435.jpg?v250630"
+  },
+  "back": {
+    "image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-435_b.jpg?v250630"
+  }
+}

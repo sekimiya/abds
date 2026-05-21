@@ -1,0 +1,88 @@
+{
+  "card_number": "VEB01-003",
+  "card_name": "VEB01-003",
+  "series": "VEブースター1弾",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/VEB01-003.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/VEB01-003_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "VEB01-003",
+    "type": "MS",
+    "card_label": {
+      "class": "遠距離",
+      "cost_label": "コスト2"
+    },
+    "name": "ジム",
+    "model": "RGM-79 GM",
+    "cost": 2,
+    "category": "MS",
+    "affiliation": "地球連邦軍",
+    "pilot": null,
+    "stats": {
+      "height": "18.0m",
+      "weight": "41.2t",
+      "mobility": 210,
+      "ranged_attack": 270,
+      "melee_attack": 50,
+      "hp": 320
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "A",
+      "desert": "C",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "ビーム・スプレーガン",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ビーム・サーベル",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "増援[殲滅／破甲]",
+      "activation": "任意発動",
+      "target": "特殊(自分)",
+      "range": null,
+      "cost": 5,
+      "description": "自身の周囲に殲滅タイプの味方ユニットを呼び出す。このユニットの攻撃は一定時間、被ダメージを一定値アップさせる。※上限3ユニットまで。"
+    },
+    "link_ability": [
+      {
+        "name": "機動戦士ガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "ビーム・スプレーガン射撃",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3200,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "united_sp": null,
+      "eb_level": 2,
+      "eb_power": 3800,
+      "eb_description": "EBLv.を2下げる。敵単体に射撃攻撃でダメージを与え、一定時間、出撃中の全味方ユニットの[遠距離攻撃力][近距離攻撃力]をアップする。出撃時1度のみ使用可能。",
+      "eb_target": "単体(敵)",
+      "eb_range": 3
+    },
+    "rarity": "M",
+    "illustrator": "Kumagoro",
+    "raw": "遠距離　コスト2\nRGM-79 GM\nジム\n\n頭頂高　18.0m\n本体重量　41.2t\n所属　地球連邦軍\nパイロット　ー\n\n地上 A　宇宙 A　砂漠 C　水中 C\n\n機動力　210\n遠距離攻撃　270\n近距離攻撃　50\nHP　320\n\nWEAPON\nMAIN　ビーム・スプレーガン　射程 3　遠距離\nSUB　ビーム・サーベル　射程 1　近距離\n\nMS ABILITY\n増援[殲滅／破甲]\n任意発動　特殊(自分)　射程 ー　コスト 5\n自身の周囲に殲滅タイプの味方ユニットを呼び出す。このユニットの攻撃は一定時間、被ダメージを一定値アップさせる。\n※上限3ユニットまで。\n\nSPECIAL ATTACK　ECHOES BEAT\nビーム・スプレーガン射撃　ビーム・スプレーガン撃 Lv.2\nECHOES BEAT Lv.を下げることで、Lv.戦術技が発動する。\n\n単体(敵)　射程 3　単体(敵)　射程 3\nSPコスト 2　威力　3200 / 3800\n敵単体に射撃攻撃でダメージを与える。／\nEBLv.を2下げる。敵単体に射撃攻撃でダメージを与え、一定時間、出撃中の全味方ユニットの[遠距離攻撃力][近距離攻撃力]をアップする。出撃時1度のみ使用可能。\n\nLINK ABILITY\n機動戦士ガンダム　デッキに3枚以上\n[機動力]小アップ\n\n戦況を変える力　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nIMPACT AREA\n\nillust. Kumagoro\n©創通・サンライズ　©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\nVEB01-003　M"
+  },
+  "ocr_raw_file": "VEブースター1弾_VEB01-003_VEB01-003_ocr_raw.json",
+  "ocr_timestamp": "2026-03-19T20:02:51.042637",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

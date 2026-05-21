@@ -1,0 +1,88 @@
+{
+  "card_number": "VEB01-014",
+  "card_name": "VEB01-014",
+  "series": "VEブースター1弾",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/VEB01-014.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/VEB01-014_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "VEB01-014",
+    "type": "MS",
+    "card_label": {
+      "class": "機動",
+      "cost_label": "コスト4"
+    },
+    "name": "戦国アストレイ頑駄無",
+    "model": "侍ノ弐 SENGOKU ASTRAY GUNDAM",
+    "cost": 4,
+    "category": null,
+    "affiliation": null,
+    "pilot": "ニルス・ニールセン",
+    "stats": {
+      "height": null,
+      "weight": null,
+      "mobility": 190,
+      "ranged_attack": 340,
+      "melee_attack": 100,
+      "hp": 370
+    },
+    "terrain_compatibility": {
+      "ground": "S",
+      "space": "A",
+      "desert": "B",
+      "water": "B"
+    },
+    "weapon": {
+      "main": {
+        "name": "サムライソード二刀流(衝撃波)",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "サムライソード二刀流",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "縛射",
+      "activation": "任意発動",
+      "target": "単体(敵)",
+      "range": 3,
+      "cost": 3,
+      "description": "ロックオン中の敵ユニットに単体攻撃を行いダメージを与え、一定時間スタンさせる。"
+    },
+    "link_ability": [
+      {
+        "name": "ビルドファイターズ",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ"
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "サムライソード二刀流(衝撃波)撃射",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3200,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "united_sp": null,
+      "eb_level": null,
+      "eb_power": null,
+      "eb_description": null,
+      "eb_target": null,
+      "eb_range": null
+    },
+    "rarity": "R",
+    "illustrator": "amasaki",
+    "raw": "機動　コスト4\n侍ノ弐 SENGOKU ASTRAY GUNDAM\n戦国アストレイ頑駄無\n\n頭頂高　—\n本体重量　—\n所属　—\nパイロット　ニルス・ニールセン\n\n地上 S　宇宙 A　砂漠 B　水中 B\n\n機動力　190\n遠距離攻撃　340\n近距離攻撃　100\nHP　370\n\nWEAPON\nMAIN　サムライソード二刀流(衝撃波)　射程 3　遠距離\nSUB　サムライソード二刀流　射程 1　近距離\n\nMS ABILITY\n縛射\n任意発動　単体(敵)　射程 3　コスト 3\nロックオン中の敵ユニットに単体攻撃を行いダメージを与え、一定時間スタンさせる。\n\nLINK ABILITY\nビルドファイターズ　デッキに3枚以上\n[機動力]小アップ\n\n多彩な戦術　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nSPECIAL ATTACK　ECHOES BEAT\nサムライソード二刀流(衝撃波)撃射　—\n—\n単体(敵)　射程 3　—　射程 —\nSPコスト 2　威力　3200 / —\n敵単体に射撃攻撃でダメージを与える。\n/ —\n\nillust. amasaki\nVEB01-014　R"
+  },
+  "ocr_raw_file": "VEブースター1弾_VEB01-014_VEB01-014_ocr_raw.json",
+  "ocr_timestamp": "2026-03-19T20:21:38.036789",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

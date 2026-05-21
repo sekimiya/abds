@@ -1,0 +1,48 @@
+{
+  "card_id": "PR-438",
+  "type": "PL",
+  "card_label": {
+    "class": "制圧",
+    "cost_label": "コスト1"
+  },
+  "name": "シャリア・ブル(0085)(GQ)",
+  "english_name": "CHALLIA BULL(0085)(GQ)",
+  "cost": 1,
+  "category": "制圧",
+  "affiliation": "ジオン公国軍",
+  "stats": {
+    "mobility": 200,
+    "ranged_attack": 190,
+    "melee_attack": 70,
+    "hp": 250
+  },
+  "pilot_skill": {
+    "name": "潤いをめぐる意思疎通",
+    "trigger": "EBLv.1に上昇時",
+    "effect": "30秒間、自身の[遠距離攻撃力]をアップし、受けるダメージを軽減する。",
+    "is_eb_skill": true,
+    "has_sq_skill": false,
+    "sq_skill_details": null
+  },
+  "link_abilities": [
+    {
+      "name": "ECHOES BEAT lv.が前世代以上",
+      "condition": "デッキに3枚以上",
+      "effect": "[HP][SP威力]小アップ",
+      "is_eb_link": true
+    },
+    {
+      "name": "多彩な戦術",
+      "condition": "デッキに4枚以上",
+      "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+    }
+  ],
+  "rarity": "PR",
+  "illustrator": "Kazuya Hayashi",
+  "front": {
+    "image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-438.jpg?v250630"
+  },
+  "back": {
+    "image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-438_b.jpg?v250630"
+  }
+}

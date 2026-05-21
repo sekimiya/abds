@@ -1,0 +1,88 @@
+{
+  "card_number": "VEB01-015",
+  "card_name": "VEB01-015",
+  "series": "VEブースター1弾",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/VEB01-015.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/VEB01-015_b.jpg?v250630",
+  "ocr_data": {
+    "card_id": "VEB01-015",
+    "type": "MS",
+    "card_label": {
+      "class": "近距離",
+      "cost_label": "コスト1"
+    },
+    "name": "ガンダムダブルオーダイバー",
+    "model": "GN-0000DVR GUNDAM 00 DIVER",
+    "cost": 1,
+    "category": "MS",
+    "affiliation": "ビルドダイバーズ",
+    "pilot": "リク",
+    "stats": {
+      "height": "18.3m",
+      "weight": "55.5t",
+      "mobility": 200,
+      "ranged_attack": 50,
+      "melee_attack": 210,
+      "hp": 250
+    },
+    "terrain_compatibility": {
+      "ground": "S",
+      "space": "A",
+      "desert": "A",
+      "water": "B"
+    },
+    "weapon": {
+      "main": {
+        "name": "GNソードII",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "GNソードII（ライフルモード）",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "威圧",
+      "activation": "任意発動",
+      "target": "範囲（敵）",
+      "range": null,
+      "cost": 4,
+      "description": "自身を中心とした範囲内の敵ユニットをスタンさせ、一定時間被ダメージを少しアップする。"
+    },
+    "link_ability": [
+      {
+        "name": "ビルドダイバーズ",
+        "condition": "デッキに3枚以上",
+        "effect": "[HP]小アップ"
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+      }
+    ],
+    "special_attack": {
+      "name": "GNソードII強撃",
+      "target": "単体（敵）",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3200,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "united_sp": null,
+      "eb_level": null,
+      "eb_power": null,
+      "eb_description": null,
+      "eb_target": null,
+      "eb_range": null
+    },
+    "rarity": "R",
+    "illustrator": "Ultimateinudog",
+    "raw": "近距離 コスト1\nGN-0000DVR GUNDAM 00 DIVER\nガンダムダブルオーダイバー\n\n頭頂高 18.3m\n本体重量 55.5t\n所属 ビルドダイバーズ\nパイロット リク\n\n地上 S 宇宙 A 砂漠 A 水中 B\n機動力 200\n遠距離攻撃 50\n近距離攻撃 210\nHP 250\n\nWEAPON\nMAIN GNソードII 射程 1 近距離\nSUB GNソードII（ライフルモード） 射程 3 遠距離\n\nMS ABILITY\n威圧\n任意発動 範囲（敵） 射程 ー コスト 4\n自身を中心とした範囲内の敵ユニットをスタンさせ、一定時間被ダメージを少しアップする。\n\nLINK ABILITY\nビルドダイバーズ デッキに3枚以上\n[HP]小アップ\n\n多彩な戦術 デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nIMPACT AREA\n\nSPECIAL ATTACK　ECHOES BEAT\nGNソードII強撃　ー\nー\n\n単体（敵） 射程 2 　ー　射程 ー\nSPコスト 2 威力 3200 / ー\n敵単体に格闘攻撃でダメージを与える。\n／ー\n\nillust Ultimateinudog\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN　機動戦士ガンダム ARSENAL BASE®\nVEB01-015 R"
+  },
+  "ocr_raw_file": "VEブースター1弾_VEB01-015_VEB01-015_ocr_raw.json",
+  "ocr_timestamp": "2026-03-19T20:22:11.983823",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
+}

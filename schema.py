@@ -101,6 +101,31 @@ def normalize_ocr_data(data):
         changes.append('link_ability: dict -> list')
         la = ocr['link_ability']
 
+    la = ocr.get('link_ability')
+    if isinstance(la, list):
+        for entry in la:
+            if not isinstance(entry, dict):
+                continue
+            name = entry.get('name', '') or ''
+            effect = entry.get('effect', '') or ''
+            cond = entry.get('condition', '') or ''
+            if re.search(r'\[.+\].*(アップ|ダウン)', name):
+                if re.search(r'デッキに\d枚以上', effect):
+                    real_name = cond
+                    real_cond = effect
+                    real_effect = name
+                    entry['name'] = real_name
+                    entry['condition'] = real_cond
+                    entry['effect'] = real_effect
+                    changes.append(f'link_ability: name/cond/effect入替({real_name})')
+                elif re.search(r'.+\sデッキに\d枚以上', cond):
+                    m = re.match(r'(.+?)\s+(デッキに\d枚以上)', cond)
+                    if m:
+                        entry['name'] = m.group(1)
+                        entry['condition'] = m.group(2)
+                        entry['effect'] = name
+                        changes.append(f'link_ability: cond分離+name/effect入替({m.group(1)})')
+
     eb_la = ocr.get('eb_link_ability')
     if isinstance(eb_la, dict):
         eb_la['is_eb_link'] = True

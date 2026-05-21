@@ -1,0 +1,81 @@
+{
+  "card_id": "PR-348_p1",
+  "type": "MS",
+  "card_label": {
+    "class": "近距離",
+    "cost_label": "コスト2"
+  },
+  "name": "ZガンダムVer. MOMOIRO CLOVER Z",
+  "english_name": "MSZ-006 Z GUNDAM Ver. MOMOIRO CLOVER Z",
+  "cost": 2,
+  "category": "近距離",
+  "affiliation": "もいろクローバーZ",
+  "physical": {
+    "height": "19.8m",
+    "weight": "28.7t"
+  },
+  "pilot": "百田夏菜子",
+  "model": "MSZ-006 Z GUNDAM Ver. MOMOIRO CLOVER Z",
+  "terrain_compatibility": {
+    "ground": "A",
+    "space": "A",
+    "desert": "C",
+    "water": "C"
+  },
+  "stats": {
+    "mobility": 210,
+    "ranged_attack": 100,
+    "melee_attack": 220,
+    "hp": 320
+  },
+  "weapon": {
+    "main": {
+      "name": "ビーム・サーベル",
+      "range": 1,
+      "type": "近距離"
+    },
+    "sub": {
+      "name": "ビーム・ライフル",
+      "range": 3,
+      "type": "遠距離"
+    }
+  },
+  "ms_ability": {
+    "name": "Event Horizon",
+    "type": "任意発動",
+    "target": "範囲(味方)",
+    "range": null,
+    "cost": 5,
+    "description": "自身を中心とした大範囲内の味方ユニットの弱体化を無効化し、30秒間、[遠距離攻撃力]をアップする。"
+  },
+  "special_attack": {
+    "name": "ビーム・サーベル強撃",
+    "sp_type": "UNITED SP",
+    "sp_cost": 2,
+    "power": {
+      "normal": 3300
+    },
+    "range": null,
+    "description": "敵単体に格闘攻撃でダメージを与える。"
+  },
+  "link_abilities": [
+    {
+      "name": "機動戦士Zガンダム",
+      "condition": "デッキに3枚以上",
+      "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+    },
+    {
+      "name": "多彩な戦術",
+      "condition": "デッキに4枚以上",
+      "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+    }
+  ],
+  "rarity": "PR",
+  "illustrator": "Kouhaku Honda",
+  "front": {
+    "image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-348_p1.jpg?v250630"
+  },
+  "back": {
+    "image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-348_p1_b.jpg?v250630"
+  }
+}
