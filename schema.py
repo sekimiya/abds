@@ -126,16 +126,6 @@ def normalize_ocr_data(data):
                         entry['effect'] = name
                         changes.append(f'link_ability: cond分離+name/effect入替({m.group(1)})')
 
-    eb_la = ocr.get('eb_link_ability')
-    if isinstance(eb_la, dict):
-        eb_la['is_eb_link'] = True
-        if not isinstance(la, list):
-            la = []
-        la.append(eb_la)
-        ocr['link_ability'] = la
-        del ocr['eb_link_ability']
-        changes.append('eb_link_ability -> link_ability (is_eb_link=true)')
-
     sp = ocr.get('special_attack')
     if isinstance(sp, dict):
         top_eb = ocr.get('echoes_beat')
@@ -226,14 +216,6 @@ def _extract_links(ocr):
             'is_eb_link': bool(entry.get('is_eb_link')),
             'is_sq_link': bool(entry.get('is_sq_link')),
             'is_ab_link': bool(entry.get('is_ab_link')),
-        })
-    eb_la = ocr.get('eb_link_ability')
-    if isinstance(eb_la, dict):
-        result.append({
-            'name': eb_la.get('name', ''),
-            'condition': eb_la.get('condition', ''),
-            'effect': eb_la.get('effect', ''),
-            'is_eb_link': True, 'is_sq_link': False, 'is_ab_link': False,
         })
     return result
 

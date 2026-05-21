@@ -34,14 +34,6 @@
         "is_eb_link": false,
         "is_sq_link": false,
         "is_ab_link": false
-      },
-      {
-        "name": "宇宙に響く鼓動",
-        "condition": "デッキに3枚以上で",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
-        "is_eb_link": true,
-        "is_sq_link": false,
-        "is_ab_link": false
       }
     ],
     "pilot": "",
@@ -78,15 +70,15 @@
       "range": 3,
       "sp_cost": 2,
       "power": 3300,
-      "description": "",
+      "description": "ロックオン中の敵を中心に扇状の範囲攻撃を行い、範囲内の敵にダメージを与え、一定時間スタンさせる。リンクアビリティ「閃光のハサウェイ」が発動している場合、一定時間、自身の「遠距離攻撃力」をアップする。",
       "sp_type": "ECHOES BEAT",
       "echoes_beat": {
-        "name": "",
-        "level": null,
+        "name": "ファンネル・ミサイル斉射 Lv.1",
+        "level": 1,
         "power": null,
-        "range": null,
-        "target": "",
-        "description": "ECHOES BEAT Lv.を下げることで、Lv.戦闘技が発動する。"
+        "range": 3,
+        "target": "範囲(射撃)",
+        "description": "EBLv.を1下げる。ロックオン中の敵を中心に扇状の範囲攻撃を行い、範囲内の敵にダメージを与え、一定時間スタンさせ、EBLv.が3に上昇する。リンクアビリティ「閃光のハサウェイ」が発動している場合、一定時間、自身の「遠距離攻撃力」をアップする。"
       },
       "united_sp": null,
       "squad_sp": null
