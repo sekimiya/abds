@@ -1,0 +1,64 @@
+{
+  "card_number": "PR-454",
+  "card_name": "フォウ・ムラサメ",
+  "series": "プロモーション",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-454.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-454_b.jpg?v250630",
+  "ocr_data": {
+    "type": "PL",
+    "name": "フォウ・ムラサメ",
+    "cost": 3,
+    "rarity": "PR",
+    "category": "制圧",
+    "affiliation": "機動戦士Zガンダム",
+    "illustrator": "Hiroyuki Kitazume",
+    "stats": {
+      "mobility": 170,
+      "ranged_attack": 220,
+      "melee_attack": 40,
+      "hp": 340
+    },
+    "link_ability": [
+      {
+        "name": "宇宙に響く鼓動",
+        "condition": "デッキに3枚以上",
+        "effect": "ECHOES BEAT Lv.が表示される。味方ユニットが戦術技を発動するとEBLv.が上がる。[HP][SP威力]小アップ",
+        "is_eb_link": true,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "FOUR MURASAME",
+    "physical": {
+      "height": "—",
+      "weight": "—"
+    },
+    "pilot_skill": {
+      "name": "消えない二人の影",
+      "trigger": "EBLv.2に上昇時",
+      "effect": "30秒間、自身の[遠距離攻撃力]をアップし、受けるダメージを軽減する。",
+      "has_sq_skill": false,
+      "sq_skill_details": null,
+      "is_eb_skill": true,
+      "eb_trigger_level": 2,
+      "sq_rush_effect": ""
+    },
+    "units": [
+      {
+        "name": "サイコ・ガンダム",
+        "model": ""
+      }
+    ]
+  },
+  "ocr_timestamp": "2026-05-21T00:00:00",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_subagent"
+}

@@ -1,0 +1,80 @@
+{
+  "card_number": "PR-461",
+  "card_name": "スレッタ・マーキュリー",
+  "series": "プロモーション",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-461.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-461_b.jpg?v250630",
+  "ocr_data": {
+    "type": "PL",
+    "name": "スレッタ・マーキュリー",
+    "cost": 3,
+    "rarity": "PR",
+    "category": "殲滅",
+    "affiliation": "機動戦士ガンダム 水星の魔女",
+    "illustrator": "Shuei Takagi",
+    "stats": {
+      "mobility": 170,
+      "ranged_attack": 290,
+      "melee_attack": 50,
+      "hp": 260
+    },
+    "link_ability": [
+      {
+        "name": "新時代の高鳴り",
+        "condition": "デッキに3枚以上",
+        "effect": "ECHOES BEAT Lv.が表示される。味方ユニットが戦術技を発動するとEBLv.が上がる。[HP][SP威力]小アップ",
+        "is_eb_link": true,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "的確な一撃",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][遠距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "SULETTA MERCURY",
+    "physical": {
+      "height": null,
+      "weight": null
+    },
+    "pilot_skill": {
+      "name": "進めば二つ",
+      "trigger": "EBLv.1に上昇時",
+      "effect": "30秒間、自身の[遠距離攻撃力]をアップし、受けるダメージを軽減する。",
+      "has_sq_skill": false,
+      "sq_skill_details": null,
+      "is_eb_skill": true,
+      "eb_trigger_level": 1,
+      "sq_rush_effect": ""
+    },
+    "units": [
+      {
+        "name": "ガンダム・キャリバーン(最終決戦時)",
+        "model": null
+      },
+      {
+        "name": "ガンダム・キャリバーン",
+        "model": null
+      },
+      {
+        "name": "ガンダム・エアリアル(改修型)",
+        "model": null
+      },
+      {
+        "name": "ガンダム・エアリアル[パーメットスコア・シックス]",
+        "model": null
+      },
+      {
+        "name": "ガンダム・エアリアル",
+        "model": null
+      }
+    ]
+  },
+  "ocr_timestamp": "2026-05-21T00:00:00",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_subagent"
+}

@@ -1,0 +1,72 @@
+{
+  "card_number": "PR-453",
+  "card_name": "コウ・ウラキ",
+  "series": "プロモーション",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-453.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-453_b.jpg?v250630",
+  "ocr_data": {
+    "type": "PL",
+    "name": "コウ・ウラキ",
+    "cost": 2,
+    "rarity": "PR",
+    "category": "制圧",
+    "affiliation": "機動戦士ガンダム0083 STARDUST MEMORY",
+    "illustrator": "Masato Natsumoto",
+    "stats": {
+      "mobility": 190,
+      "ranged_attack": 240,
+      "melee_attack": 60,
+      "hp": 250
+    },
+    "link_ability": [
+      {
+        "name": "宇宙に響く鼓動",
+        "condition": "デッキに3枚以上",
+        "effect": "ECHOES BEAT Lvが表示される。味方ユニットが戦術技を発動するとEBLvが上がる。[HP][SP威力]小アップ",
+        "is_eb_link": true,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "KOU URAKI",
+    "physical": {
+      "height": "—",
+      "weight": "—"
+    },
+    "pilot_skill": {
+      "name": "星屑に抗う戦士",
+      "trigger": "EBLv.1に上昇時",
+      "effect": "30秒間、自身の[機動力][遠距離攻撃力]をアップする。",
+      "has_sq_skill": false,
+      "sq_skill_details": null,
+      "is_eb_skill": true,
+      "eb_trigger_level": 1,
+      "sq_rush_effect": ""
+    },
+    "units": [
+      {
+        "name": "ガンダム試作3号機",
+        "model": ""
+      },
+      {
+        "name": "ガンダム試作1号機フルバーニアン",
+        "model": ""
+      },
+      {
+        "name": "ガンダム試作1号機",
+        "model": ""
+      }
+    ]
+  },
+  "ocr_timestamp": "2026-05-21T00:00:00",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_subagent"
+}
