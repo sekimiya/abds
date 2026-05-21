@@ -19,7 +19,7 @@ import sys
 import argparse
 from datetime import datetime
 
-from schema import normalize_ocr_data
+from schema import normalize_ocr_data, canonicalize_ocr_data
 
 
 DATA_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'data')
@@ -90,6 +90,8 @@ def load_ocr_results(series_filter=None):
                 sp_path = fpath.replace('_basic.json', '_sp.json')
                 if os.path.exists(sp_path):
                     _merge_sp_data(data, sp_path)
+                card_name = data.get('card_name', '') or ''
+                data['ocr_data'] = canonicalize_ocr_data(data.get('ocr_data', {}), card_name)
                 results[num] = data
     if len(dirs) > 1:
         print(f'OCRソース: ローカル + abds-ocr フォールバック')
@@ -432,15 +434,11 @@ def build_card_index_entry(card_number, card_data):
     if card_type == 'PL':
         ps = ocr.get('pilot_skill', {}) or {}
         skill_name = ps.get('name', '')
-        ps_desc = ps.get('description', '') or ps.get('effect', '') or ''
+        ps_desc = ps.get('effect', '') or ''
         if ps.get('has_sq_skill'):
             sq_skill_effect_tags = extract_skill_effect_tags(ps_desc)
         skill_effect_tags = extract_skill_effect_tags(ps_desc)
-        sq_rush = ocr.get('sq_rush', {}) or ocr.get('squad_rush', {}) or {}
-        if isinstance(sq_rush, dict) and sq_rush.get('effect'):
-            sq_rush_effect = sq_rush['effect']
-        elif isinstance(sq_rush, str) and sq_rush:
-            sq_rush_effect = sq_rush
+        sq_rush_effect = ps.get('sq_rush_effect', '') or ''
     else:
         msa = ocr.get('ms_ability', {}) or {}
         ability_name = msa.get('name', '')
@@ -520,19 +518,21 @@ def build_card_index_entry(card_number, card_data):
 def build_card_details_entry(card_number, card_data):
     """1枚分のcard_details エントリを構築"""
     ocr = card_data.get('ocr_data', {})
-    label = ocr.get('card_label', {}) or {}
+    card_name = card_data.get('card_name', '') or ''
     front_url = card_data.get('front_image_url', '') or card_data.get('front', {}).get('image_url', '')
     back_url = card_data.get('back_image_url', '') or card_data.get('back', {}).get('image_url', '')
 
+    canonical = canonicalize_ocr_data(ocr, card_name)
+
     return {
         'number': card_number,
-        'name': card_data.get('card_name', '') or ocr.get('name', ''),
+        'name': canonical.get('name', '') or card_name,
         'url': front_url,
-        'category': label.get('class', '') or ocr.get('category', ''),
+        'category': canonical.get('category', ''),
         'series': detect_series(card_number),
         'front': {'image_url': front_url},
         'back': {'image_url': back_url},
-        'ocr_data': ocr,
+        'ocr_data': canonical,
     }
 
 

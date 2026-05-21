@@ -184,6 +184,336 @@ def normalize_ocr_data(data):
     return data, changes
 
 
+def _safe_int(val, default=0):
+    if isinstance(val, (int, float)):
+        return int(val)
+    if isinstance(val, str):
+        m = re.search(r'\d+', val)
+        return int(m.group()) if m else default
+    return default
+
+
+def _extract_links(ocr):
+    """link_ability/link_abilitiesを統一リスト形式で取得"""
+    la = ocr.get('link_ability') or ocr.get('link_abilities') or []
+    if isinstance(la, dict):
+        if 'condition_2' in la:
+            la2 = {'name': la.get('name', ''), 'condition': la.get('condition_2', ''),
+                    'effect': la.get('effect_2', '')}
+            la1 = {'name': la.get('name', ''), 'condition': la.get('condition', ''),
+                    'effect': la.get('effect', '')}
+            la = [la1, la2]
+        else:
+            la = [la]
+    result = []
+    for entry in la:
+        if not isinstance(entry, dict):
+            continue
+        name = entry.get('name', '') or ''
+        effect = entry.get('effect', '') or ''
+        cond = entry.get('condition', '') or ''
+        if re.search(r'\[.+\].*(アップ|ダウン)', name):
+            if re.search(r'デッキに\d枚以上', effect):
+                name, cond, effect = cond, effect, name
+            elif re.search(r'.+\sデッキに\d枚以上', cond):
+                m_c = re.match(r'(.+?)\s+(デッキに\d枚以上)', cond)
+                if m_c:
+                    name, cond, effect = m_c.group(1), m_c.group(2), name
+        result.append({
+            'name': name,
+            'condition': cond,
+            'effect': effect,
+            'is_eb_link': bool(entry.get('is_eb_link')),
+            'is_sq_link': bool(entry.get('is_sq_link')),
+            'is_ab_link': bool(entry.get('is_ab_link')),
+        })
+    eb_la = ocr.get('eb_link_ability')
+    if isinstance(eb_la, dict):
+        result.append({
+            'name': eb_la.get('name', ''),
+            'condition': eb_la.get('condition', ''),
+            'effect': eb_la.get('effect', ''),
+            'is_eb_link': True, 'is_sq_link': False, 'is_ab_link': False,
+        })
+    return result
+
+
+def _extract_stats(ocr):
+    """どのフォーマットからでもstatsを統一形式で取得"""
+    stats = ocr.get('stats')
+    if isinstance(stats, dict):
+        return {
+            'mobility': _safe_int(stats.get('mobility') or ocr.get('mobility', 0)),
+            'ranged_attack': _safe_int(stats.get('ranged_attack') or stats.get('ranged', 0)),
+            'melee_attack': _safe_int(stats.get('melee_attack') or stats.get('melee', 0)),
+            'hp': _safe_int(stats.get('hp', 0)),
+        }
+    return {
+        'mobility': _safe_int(ocr.get('mobility', 0)),
+        'ranged_attack': _safe_int(
+            ocr.get('ranged_attack') or ocr.get('long_range_attack', 0)),
+        'melee_attack': _safe_int(
+            ocr.get('melee_attack') or ocr.get('short_range_attack', 0)),
+        'hp': _safe_int(ocr.get('hp', 0)),
+    }
+
+
+def _extract_terrain(ocr):
+    """terrain_compatibility/terrainを統一形式で取得"""
+    tc = ocr.get('terrain_compatibility') or ocr.get('terrain')
+    if not isinstance(tc, dict):
+        return {'ground': '', 'space': '', 'desert': '', 'water': ''}
+    return {
+        'ground': tc.get('ground', '') or '',
+        'space': tc.get('space', '') or '',
+        'desert': tc.get('desert', '') or '',
+        'water': tc.get('water') or tc.get('underwater', '') or '',
+    }
+
+
+def _extract_weapon(ocr):
+    """weapon情報を統一形式で取得"""
+    w = ocr.get('weapon')
+    if not isinstance(w, dict):
+        return None
+    result = {}
+    for slot in ('main', 'sub'):
+        s = w.get(slot)
+        if not isinstance(s, dict):
+            result[slot] = None
+            continue
+        result[slot] = {
+            'name': s.get('name', '') or '',
+            'range': _safe_int(s.get('range')) if s.get('range') is not None else None,
+            'type': s.get('type', '') or '',
+        }
+    return result
+
+
+def _extract_ms_ability(ocr):
+    """ms_abilityを統一形式で取得"""
+    msa = ocr.get('ms_ability')
+    if not isinstance(msa, dict):
+        return None
+    activation = (msa.get('activation') or msa.get('timing') or '')
+    if not activation and msa.get('type') in ACTIVATION_KEYWORDS:
+        activation = msa['type']
+    return {
+        'name': msa.get('name', '') or '',
+        'activation': activation,
+        'target': msa.get('target', '') or '',
+        'range': _safe_int(msa.get('range')) if msa.get('range') is not None else None,
+        'cost': _safe_int(msa.get('cost')) if msa.get('cost') is not None else None,
+        'description': msa.get('description', '') or '',
+    }
+
+
+def _extract_echoes_beat(eb):
+    """echoes_beat内部のフォーマットを統一"""
+    if not isinstance(eb, dict):
+        return None
+    return {
+        'name': eb.get('name') or eb.get('eb_name', '') or '',
+        'level': _safe_int(eb.get('level') or eb.get('eb_level')) if (eb.get('level') or eb.get('eb_level')) else None,
+        'power': _safe_int(eb.get('power') or eb.get('eb_power')) if (eb.get('power') or eb.get('eb_power')) else None,
+        'range': _safe_int(eb.get('range') or eb.get('eb_range')) if (eb.get('range') or eb.get('eb_range')) else None,
+        'target': eb.get('target') or eb.get('eb_target', '') or '',
+        'description': eb.get('description') or eb.get('eb_description', '') or '',
+    }
+
+
+def _extract_squad_sp(sp):
+    """squad_sp情報を統一形式で取得(special_attack内の様々な形式から)"""
+    sq = sp.get('squad_sp')
+    if isinstance(sq, dict):
+        return {
+            'name': sq.get('name', '') or '',
+            'target': sq.get('target', '') or '',
+            'range': _safe_int(sq.get('range')) if sq.get('range') is not None else None,
+            'power': _safe_int(sq.get('power')) if sq.get('power') is not None else None,
+            'description': sq.get('description', '') or '',
+            'note': sq.get('note', '') or '',
+        }
+    name = sp.get('squad_sp_name') or sp.get('sq_sp_name', '')
+    if name:
+        return {
+            'name': name,
+            'target': sp.get('squad_sp_target') or sp.get('sq_sp_target', '') or '',
+            'range': _safe_int(sp.get('squad_sp_range') or sp.get('sq_sp_range')) if (sp.get('squad_sp_range') or sp.get('sq_sp_range')) else None,
+            'power': _safe_int(sp.get('squad_sp_power') or sp.get('sq_sp_power')) if (sp.get('squad_sp_power') or sp.get('sq_sp_power')) else None,
+            'description': sp.get('squad_sp_description') or sp.get('sq_sp_description') or sp.get('sq_description', '') or '',
+            'note': sp.get('squad_sp_condition') or sp.get('squad_rush_condition', '') or '',
+        }
+    return None
+
+
+def _extract_united_sp(usp):
+    """united_spを統一形式で取得"""
+    if not isinstance(usp, dict):
+        return None
+    partners = usp.get('partners') or []
+    if not partners:
+        p1 = usp.get('partner1')
+        p2 = usp.get('partner2')
+        p3 = usp.get('partner3')
+        p4 = usp.get('partner4')
+        partners = [p for p in [p1, p2, p3, p4] if p]
+    return {
+        'name': usp.get('name', '') or '',
+        'partners': partners,
+        'target': usp.get('target', '') or '',
+        'range': _safe_int(usp.get('range')) if usp.get('range') is not None else None,
+        'power': _safe_int(usp.get('power')) if usp.get('power') is not None else None,
+        'description': usp.get('description', '') or '',
+    }
+
+
+def _extract_special_attack(ocr):
+    """special_attackを統一形式で取得"""
+    sp = ocr.get('special_attack')
+    if not isinstance(sp, dict):
+        return None
+    power = sp.get('power')
+    if isinstance(power, str):
+        m = re.match(r'(\d+)', power)
+        power = int(m.group(1)) if m else None
+    elif isinstance(power, (int, float)):
+        power = int(power)
+    else:
+        power = None
+
+    eb_raw = sp.get('echoes_beat') or ocr.get('echoes_beat')
+    eb = _extract_echoes_beat(eb_raw)
+
+    usp = _extract_united_sp(sp.get('united_sp'))
+    sqsp = _extract_squad_sp(sp)
+
+    sp_type = sp.get('sp_type', '') or ''
+
+    return {
+        'name': sp.get('name', '') or '',
+        'target': sp.get('target', '') or '',
+        'range': _safe_int(sp.get('range')) if sp.get('range') is not None else None,
+        'sp_cost': _safe_int(sp.get('sp_cost')) if sp.get('sp_cost') is not None else None,
+        'power': power,
+        'description': sp.get('description', '') or '',
+        'sp_type': sp_type,
+        'echoes_beat': eb,
+        'united_sp': usp,
+        'squad_sp': sqsp,
+    }
+
+
+def _extract_pilot_skill(ocr):
+    """pilot_skillを統一形式で取得(ms_ability形式含む)"""
+    ps = ocr.get('pilot_skill')
+    if not isinstance(ps, dict):
+        return None
+    trigger = ps.get('trigger') or ps.get('activation', '') or ''
+    effect = ps.get('effect') or ps.get('description', '') or ''
+    has_sq = bool(ps.get('has_sq_skill'))
+    sq_details = ps.get('sq_skill_details')
+    if isinstance(sq_details, dict):
+        sq_details = {
+            'name': sq_details.get('name', '') or '',
+            'trigger': sq_details.get('trigger', '') or '',
+            'effect': sq_details.get('effect', '') or '',
+            'sq_gauge_effect': sq_details.get('sq_gauge_effect', '') or '',
+            'sq_max_effect': sq_details.get('sq_max_effect', '') or '',
+            'sq_rush_effect': sq_details.get('sq_rush_effect') or sq_details.get('squad_rush_effect', '') or '',
+        }
+    is_eb = bool(ps.get('is_eb_skill'))
+    eb_level = ps.get('eb_trigger_level')
+    if not eb_level and trigger:
+        m = re.search(r'EBLv\.(\d+)', trigger)
+        if m:
+            eb_level = int(m.group(1))
+    sq_rush = ps.get('sq_rush_effect') or ps.get('squad_rush_effect') or ''
+    if isinstance(sq_rush, dict):
+        sq_rush = sq_rush.get('effect', '') or ''
+    return {
+        'name': ps.get('name', '') or '',
+        'trigger': trigger,
+        'effect': effect,
+        'has_sq_skill': has_sq,
+        'sq_skill_details': sq_details,
+        'is_eb_skill': is_eb,
+        'eb_trigger_level': eb_level,
+        'sq_rush_effect': sq_rush,
+    }
+
+
+def _extract_physical(ocr):
+    """PL物理情報を統一形式で取得"""
+    phys = ocr.get('physical')
+    if isinstance(phys, dict):
+        return {
+            'height': phys.get('height', '') or '',
+            'age': phys.get('age', '') or '',
+        }
+    h = ocr.get('height', '') or ''
+    a = ocr.get('age', '') or ''
+    if h or a:
+        return {'height': str(h), 'age': str(a)}
+    return None
+
+
+def _extract_units(ocr):
+    """PL搭乗機体を統一リスト形式で取得"""
+    units = ocr.get('units')
+    if isinstance(units, list):
+        return units
+    for key in ('boarding_ms', 'riding_ms', 'piloted_ms', 'mobile_suit',
+                'ms', 'boarding_machine', 'piloted_units'):
+        val = ocr.get(key)
+        if isinstance(val, list):
+            return val
+        if isinstance(val, str) and val:
+            return [val]
+    return None
+
+
+def canonicalize_ocr_data(ocr, card_name=''):
+    """OCRデータをカノニカル形式に変換。入力フォーマットに依存しない統一出力を返す。"""
+    if not ocr or not isinstance(ocr, dict):
+        return {}
+
+    card_type = ocr.get('type', 'MS')
+    name = card_name or ocr.get('name', '') or ''
+    if not name:
+        for alias in NAME_ALIASES:
+            name = ocr.get(alias, '') or ''
+            if name:
+                break
+
+    base = {
+        'type': card_type,
+        'name': name,
+        'cost': _safe_int(ocr.get('cost', 0)),
+        'rarity': ocr.get('rarity', '') or '',
+        'category': (ocr.get('card_label', {}) or {}).get('class', '') or ocr.get('category', '') or '',
+        'affiliation': ocr.get('affiliation', '') or '',
+        'illustrator': ocr.get('illustrator', '') or '',
+        'stats': _extract_stats(ocr),
+        'link_ability': _extract_links(ocr),
+    }
+
+    if card_type == 'MS':
+        base['pilot'] = ocr.get('pilot', '') or ''
+        base['model'] = ocr.get('model', '') or ''
+        base['terrain_compatibility'] = _extract_terrain(ocr)
+        base['weapon'] = _extract_weapon(ocr)
+        base['ms_ability'] = _extract_ms_ability(ocr)
+        base['special_attack'] = _extract_special_attack(ocr)
+    else:
+        base['english_name'] = ocr.get('english_name') or ocr.get('name_en', '') or ''
+        base['physical'] = _extract_physical(ocr)
+        base['units'] = _extract_units(ocr)
+        base['pilot_skill'] = _extract_pilot_skill(ocr)
+
+    return base
+
+
 def validate_ocr_basic(data):
     """OCR _basic.json のバリデーション。エラーリストを返す(空=OK)。"""
     errors = []
