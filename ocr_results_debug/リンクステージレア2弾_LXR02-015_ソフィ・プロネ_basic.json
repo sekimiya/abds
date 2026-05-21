@@ -5,44 +5,50 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LXR02-015.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LXR02-015_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "LXR02-015",
     "type": "PL",
-    "card_label": {
-      "class": "殲滅",
-      "cost_label": "コスト3"
-    },
     "name": "ソフィ・プロネ",
     "cost": 3,
-    "category": "水星の魔女",
+    "rarity": "LX",
+    "category": "殲滅",
     "affiliation": "フォルドの夜明け",
+    "illustrator": "funbolt+SHINONOKO +Tsutomu Ohno",
     "stats": {
       "mobility": 240,
       "ranged_attack": 110,
       "melee_attack": 270,
       "hp": 150
     },
+    "link_ability": [
+      {
+        "name": "水星の魔女",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "地球の魔女",
+        "condition": "デッキに2枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "",
+    "physical": null,
+    "units": null,
     "pilot_skill": {
       "name": "強者の重圧",
       "trigger": "敵ユニットをロックオン時",
       "effect": "20秒間、ロックオン中の敵ユニットの[近距離攻撃力][遠距離攻撃力]を中ダウンする。",
       "has_sq_skill": false,
-      "sq_skill_details": null
-    },
-    "link_ability": [
-      {
-        "name": "水星の魔女",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "地球の魔女",
-        "condition": "デッキに2枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      }
-    ],
-    "rarity": "LX",
-    "illustrator": "funbolt+SHINONOKO +Tsutomu Ohno",
-    "raw": "殲滅 コスト3\n\nソフィ・プロネ\nSOPHIE PULONE\n\n身長　—\n年齢　—\n所属　フォルドの夜明け\n搭乗機体　ガンダム・ルブリス・ウル\n\nPL SKILL\n強者の重圧\n敵ユニットをロックオン時\n\n20秒間、ロックオン中の敵ユニットの[近距離攻撃力][遠距離攻撃力]を中ダウンする。\n\nLINK ABILITY\n水星の魔女　デッキに3枚以上\n[機動力]小アップ\n\n地球の魔女　デッキに2枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\n機動力 240\n遠距離攻撃 110\n近距離攻撃 270\nHP 150\n\nillust funbolt+SHINONOKO +Tsutomu Ohno\n©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n\nLXR02-015 LX"
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_raw_file": "リンクステージレア2弾_LXR02-015_ソフィ・プロネ_ocr_raw.json",
   "ocr_timestamp": "2026-03-07T14:50:26.799898",

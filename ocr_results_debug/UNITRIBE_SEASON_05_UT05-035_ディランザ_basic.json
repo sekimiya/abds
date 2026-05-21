@@ -5,26 +5,39 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT05-035.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT05-035_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "UT05-035",
     "type": "MS",
-    "card_label": {
-      "class": "近距離",
-      "cost_label": "コスト5"
-    },
     "name": "ディランザ",
-    "model": "MD-0031 DILANZA",
     "cost": 5,
+    "rarity": "C",
     "category": "近距離",
     "affiliation": "ジェターク寮",
-    "pilot": "フェルシー・ロロ",
+    "illustrator": "Kouki Tajima",
     "stats": {
-      "height": "18.2m",
-      "weight": "85.3t",
       "mobility": 200,
       "ranged_attack": 100,
       "melee_attack": 250,
       "hp": 300
     },
+    "link_ability": [
+      {
+        "name": "水星の魔女",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "迫撃の近距離戦",
+        "condition": "デッキに近距離が2枚以上",
+        "effect": "[近距離攻撃力]中アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "フェルシー・ロロ",
+    "model": "MD-0031 DILANZA",
     "terrain_compatibility": {
       "ground": "A",
       "space": "A",
@@ -51,18 +64,6 @@
       "cost": 4,
       "description": "指定した味方ユニットの範囲内に移動後、一定時間連携状態となり、自身と連携中の味方が受けるダメージを軽減する。"
     },
-    "link_ability": [
-      {
-        "name": "水星の魔女",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "迫撃の近距離戦",
-        "condition": "デッキに近距離が2枚以上",
-        "effect": "[近距離攻撃力]中アップ"
-      }
-    ],
     "special_attack": {
       "name": "ビームトーチ強撃",
       "target": "単体(敵)",
@@ -70,11 +71,11 @@
       "sp_cost": 2,
       "power": 3300,
       "description": "敵単体に格闘攻撃でダメージを与える。",
-      "united_sp": null
-    },
-    "rarity": "C",
-    "illustrator": "Kouki Tajima",
-    "raw": "MS\n\n近距離　コスト5\n\nMD-0031 DILANZA\nディランザ\n\n水星の魔女\n\n頭頂高　18.2m\n本体重量　85.3t\n所属　ジェターク寮\nパイロット　フェルシー・ロロ\n\n地上 A　宇宙 A　砂漠 A　水中 C\n\n機動力　200\n遠距離攻撃　100\n近距離攻撃　250\nHP　300\n\nWEAPON\nMAIN ビームトーチ　射程 1　近距離\nSUB ビームライフル　射程 3　遠距離\n\nLINK ABILITY\n水星の魔女　デッキに3枚以上\n[機動力]小アップ\n\n迫撃の近距離戦\nデッキに近距離が2枚以上\n[近距離攻撃力]中アップ\n\nMS ABILITY\n双甲\n任意発動　特殊(自分)　射程 ー　コスト 4\n指定した味方ユニットの範囲内に移動後、一定時間連携状態となり、自身と連携中の味方が受けるダメージを軽減する。\n\nSPECIAL ATTACK　　UNITED SP\nビームトーチ強撃　ー\n連携 ー　　連携 ー\n連携 ー　　連携 ー\n単体(敵)　射程 2　ー　射程 ー\nSPコスト 2　威力 3300 / ー\n敵単体に格闘攻撃でダメージを与える。\n/ ー\n\nIMPACT AREA\n[アイコン:緑丸 中央やや左]\n[アイコン:黄三角 中央下]\n\nillust Kouki Tajima\n©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nUT05-035　C"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "UNITRIBE_SEASON_05_UT05-035_ディランザ_ocr_raw.json",
   "ocr_timestamp": "2026-02-26T19:38:05.841449",

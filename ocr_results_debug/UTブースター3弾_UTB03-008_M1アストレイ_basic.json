@@ -5,26 +5,39 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UTB03-008.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UTB03-008_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "UTB03-008",
     "type": "MS",
-    "card_label": {
-      "class": "近距離",
-      "cost_label": "コスト3"
-    },
     "name": "M1アストレイ",
-    "model": "MBF-M1 M1 ASTRAY",
     "cost": 3,
+    "rarity": "R",
     "category": "近距離",
     "affiliation": "オーブ",
-    "pilot": "アサギ・コードウェル、マユラ・ラバッツ、ジュリ・ウー・ニェン",
+    "illustrator": "Kouki Tajima",
     "stats": {
-      "height": "17.53m",
-      "weight": "53.5t",
       "mobility": 170,
       "ranged_attack": 80,
       "melee_attack": 250,
       "hp": 300
     },
+    "link_ability": [
+      {
+        "name": "ガンダムSEED",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "間合いを詰めた接近戦",
+        "condition": "デッキに2枚以上",
+        "effect": "[近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "アサギ・コードウェル、マユラ・ラバッツ、ジュリ・ウー・ニェン",
+    "model": "MBF-M1 M1 ASTRAY",
     "terrain_compatibility": {
       "ground": "A",
       "space": "A",
@@ -51,18 +64,6 @@
       "cost": 4,
       "description": "30秒間、自身の[機動力][近距離攻撃力]を中アップする。"
     },
-    "link_ability": [
-      {
-        "name": "ガンダムSEED",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "間合いを詰めた接近戦",
-        "condition": "デッキに2枚以上",
-        "effect": "[近距離攻撃力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "70式ビームサーベル強撃",
       "target": "単体(敵)",
@@ -70,11 +71,11 @@
       "sp_cost": 2,
       "power": 3300,
       "description": "敵単体に格闘攻撃でダメージを与える。",
-      "united_sp": null
-    },
-    "rarity": "R",
-    "illustrator": "Kouki Tajima",
-    "raw": "MS\n\n近距離　コスト3\n\nMBF-M1 M1 ASTRAY\nM1アストレイ\n\n頭頂高　17.53m\n本体重量　53.5t\n所属　オーブ\nパイロット　アサギ・コードウェル、マユラ・ラバッツ、ジュリ・ウー・ニェン\n\n地上 A　宇宙 A　砂漠 C　水中 C\n\n機動力 170\n遠距離攻撃 80\n近距離攻撃 250\nHP 300\n\nWEAPON\nMAIN 70式ビームサーベル　射程 1　近距離\nSUB 71式ビームライフル　射程 3　遠距離\n\nLINK ABILITY\nガンダムSEED　デッキに3枚以上\n[機動力]小アップ\n\n間合いを詰めた接近戦　デッキに2枚以上\n[近距離攻撃力]小アップ\n\nMS ABILITY\n強化[近接]\n任意発動　自分　射程 ―　コスト 4\n30秒間、自身の[機動力][近距離攻撃力]を中アップする。\n\nSPECIAL ATTACK　　UNITED SP\n70式ビームサーベル強撃　―\n連携 ―　　連携 ―\n連携 ―　　連携 ―\n単体(敵)　射程 2　　―　射程 ―\nSPコスト 2　威力 3300 / ―\n敵単体に格闘攻撃でダメージを与える。\n/ ―\n\nIMPACT AREA\n[アイコン:緑丸 中央やや上]\n[アイコン:黄三角 中央下]\n\nillust Kouki Tajima\n©創通・サンライズ\n機動戦士ガンダム ARSENAL BASE\nBANDAI MADE IN JAPAN\nUTB03-008　R"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "UTブースター3弾_UTB03-008_M1アストレイ_ocr_raw.json",
   "ocr_timestamp": "2026-02-28T04:01:04.149343",

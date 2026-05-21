@@ -5,26 +5,39 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/VEB01-009.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/VEB01-009_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "VEB01-009",
     "type": "MS",
-    "card_label": {
-      "class": "機動",
-      "cost_label": "コスト5"
-    },
-    "name": "エルメス",
-    "model": "MAN-08 ELMETH",
+    "name": "VEB01-009",
     "cost": 5,
-    "category": "機動戦士ガンダム",
+    "rarity": "R",
+    "category": "機動",
     "affiliation": "ジオン公国軍",
-    "pilot": "ララァ・スン",
+    "illustrator": "Shiratori U",
     "stats": {
-      "height": "47.7m",
-      "weight": "163.7t",
       "mobility": 230,
       "ranged_attack": 400,
       "melee_attack": 0,
       "hp": 400
     },
+    "link_ability": [
+      {
+        "name": "機動戦士ガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "ララァ・スン",
+    "model": "MAN-08 ELMETH",
     "terrain_compatibility": {
       "ground": "C",
       "space": "S",
@@ -38,9 +51,9 @@
         "type": "遠距離"
       },
       "sub": {
-        "name": null,
+        "name": "",
         "range": null,
-        "type": null
+        "type": ""
       }
     },
     "ms_ability": {
@@ -51,18 +64,6 @@
       "cost": 3,
       "description": "ロックオン中の敵に単体攻撃でダメージを与える。"
     },
-    "link_ability": [
-      {
-        "name": "機動戦士ガンダム",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "戦況を変える力",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "ビット斉射",
       "target": "単体(敵)",
@@ -70,17 +71,11 @@
       "sp_cost": 2,
       "power": 3200,
       "description": "敵単体に射撃攻撃でダメージを与える。／EBLv.を3下げる。射線上の敵に貫通射撃でダメージを与える。出撃時1度のみ使用可能。",
-      "united_sp": null,
       "sp_type": "ECHOES BEAT SP",
-      "eb_level": 3,
-      "eb_power": 4700,
-      "eb_description": "ECHOES BEAT Lv.を下げることで、共鳴戦術技が発動する。",
-      "eb_target": "貫通(敵)",
-      "eb_range": 4
-    },
-    "rarity": "R",
-    "illustrator": "Shiratori U",
-    "raw": "機動　コスト5\nMAN-08 ELMETH\nエルメス\n\n全高　47.7m\n本体重量　163.7t\n所属　ジオン公国軍\nパイロット　ララァ・スン\n\n地上 C　宇宙 S　砂漠 B　水中 B\n機動力 230\n遠距離攻撃 400\n近距離攻撃 0\nHP 400\n\nWEAPON\nMAIN ビット　射程 4　遠距離\nSUB　ー　　　射程 ー　ー\n\nMS ABILITY\n精密射撃\n任意発動　単体(敵)　射程 4　コスト 3\nロックオン中の敵に単体攻撃でダメージを与える。\n\nLINK ABILITY\n機動戦士ガンダム　デッキに3枚以上\n[機動力]小アップ\n\n戦況を変える力　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nSPECIAL ATTACK　ECHOES BEAT SP\nビット斉射　光る宇宙 Lv.3\nECHOES BEAT Lv.を下げることで、共鳴戦術技が発動する。\n単体(敵)　射程 4　貫通(敵)　射程 4\nSPコスト 2　威力 3200 / 4700\n敵単体に射撃攻撃でダメージを与える。／EBLv.を3下げる。射線上の敵に貫通射撃でダメージを与える。出撃時1度のみ使用可能。\n\nillust　Shiratori U\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n機動戦士ガンダム　ARSENAL BASE®\nVEB01-009　R"
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "VEブースター1弾_VEB01-009_VEB01-009_ocr_raw.json",
   "ocr_timestamp": "2026-03-19T20:13:09.762797",

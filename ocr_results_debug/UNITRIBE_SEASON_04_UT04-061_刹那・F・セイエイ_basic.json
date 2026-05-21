@@ -5,17 +5,38 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT04-061.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT04-061_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "UT04-061",
     "type": "PL",
-    "card_label": {
-      "class": "制圧",
-      "cost_label": "コスト3"
-    },
     "name": "刹那・F・セイエイ",
-    "english_name": "SETSUNA F SEIEI",
     "cost": 3,
+    "rarity": "U",
     "category": "制圧",
     "affiliation": "ソレスタルビーイング",
+    "illustrator": "",
+    "stats": {
+      "mobility": 220,
+      "ranged_attack": 70,
+      "melee_attack": 320,
+      "hp": 260
+    },
+    "link_ability": [
+      {
+        "name": "ガンダム00",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "トランザムの真価",
+        "condition": "デッキに2枚以上",
+        "effect": "[遠／近攻撃力]小アップ、専用作戦カードが使用可能",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "SETSUNA F SEIEI",
     "physical": {
       "height": "175cm",
       "age": 21
@@ -23,34 +44,16 @@
     "units": [
       "ダブルオーガンダム"
     ],
-    "stats": {
-      "mobility": 220,
-      "ranged_attack": 70,
-      "melee_attack": 320,
-      "hp": 260
-    },
     "pilot_skill": {
       "name": "切り開く力",
       "trigger": "出撃時",
       "effect": "出撃中の味方ユニット数に応じて[機動力][近距離攻撃力]をアップする。味方ユニット数には自身を含む。",
       "has_sq_skill": false,
-      "sq_skill_details": null
-    },
-    "link_ability": [
-      {
-        "name": "ガンダム00",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "トランザムの真価",
-        "condition": "デッキに2枚以上",
-        "effect": "[遠／近攻撃力]小アップ、専用作戦カードが使用可能"
-      }
-    ],
-    "rarity": "U",
-    "illustrator": null,
-    "raw": "PL\n\n制圧　コスト3\n\n刹那・F・セイエイ\nSETSUNA F SEIEI\n\nガンダム00\n\n身長　175cm\n年齢　21歳\n所属　ソレスタルビーイング\n搭乗機体　ダブルオーガンダム\n\nPL SKILL\n切り開く力\n出撃時\n\n出撃中の味方ユニット数に応じて[機動力][近距離攻撃力]をアップする。味方ユニット数には自身を含む。\n\nLINK ABILITY\nガンダム00　デッキに3枚以上\n[機動力]小アップ\n\nトランザムの真価　デッキに2枚以上\n[遠／近攻撃力]小アップ、専用作戦カードが使用可能\n\n機動力 220\n遠距離攻撃 70\n近距離攻撃 320\nHP 260\n\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\nUT04-061　U"
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_raw_file": "UNITRIBE_SEASON_04_UT04-061_刹那・F・セイエイ_ocr_raw.json",
   "ocr_timestamp": "2026-02-28T08:47:50.653888",

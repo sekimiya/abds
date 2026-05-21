@@ -5,31 +5,44 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB04-053.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB04-053_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "AB04-053",
     "type": "MS",
-    "card_label": {
-      "class": "近距離",
-      "cost_label": "コスト2"
-    },
-    "name": "ガンダム・バルバトス（第1形態）",
-    "model": "ASW-G-08 GUNDAM BARBATOS",
+    "name": "ガンダム・バルバトス(第1形態)",
     "cost": 2,
+    "rarity": "C",
     "category": "近距離",
     "affiliation": "鉄華団",
-    "pilot": "三日月・オーガス",
+    "illustrator": "Kouki Tajima",
     "stats": {
-      "height": "18.0m",
-      "weight": "28.5t",
       "mobility": 170,
       "ranged_attack": 50,
       "melee_attack": 220,
       "hp": 160
     },
+    "link_ability": [
+      {
+        "name": "鉄血のオルフェンズ",
+        "condition": "デッキに3枚以上",
+        "effect": "[近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "陸戦特化の戦い",
+        "condition": "デッキに2枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "三日月・オーガス",
+    "model": "ASW-G-08 GUNDAM BARBATOS",
     "terrain_compatibility": {
       "ground": "S",
       "space": "A",
       "desert": "B",
-      "water": null
+      "water": ""
     },
     "weapon": {
       "main": {
@@ -51,18 +64,6 @@
       "cost": 3,
       "description": "ロックオン中の敵に単体攻撃でダメージを与える。"
     },
-    "link_ability": [
-      {
-        "name": "鉄血のオルフェンズ",
-        "condition": "デッキに3枚以上",
-        "effect": "[近距離攻撃力]小アップ"
-      },
-      {
-        "name": "陸戦特化の戦い",
-        "condition": "デッキに2枚以上",
-        "effect": "[機動力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "メイス撃砕",
       "target": "単体(敵)",
@@ -70,11 +71,11 @@
       "sp_cost": 2,
       "power": 3100,
       "description": "敵単体に格闘攻撃でダメージを与える。",
-      "united_sp": null
-    },
-    "rarity": "C",
-    "illustrator": "Kouki Tajima",
-    "raw": "MS\n\n近距離　コスト2\n\nASW-G-08 GUNDAM BARBATOS\n\nガンダム・バルバトス（第1形態）\n\n全高　18.0m\n本体重量　28.5t\n所属　鉄華団\nパイロット　三日月・オーガス\n\n地上 S　宇宙 A　砂漠 B\n\n機動力 170\n遠距離攻撃 50\n近距離攻撃 220\nHP 160\n\nWEAPON\n\nMAIN メイス　射程 1　近距離\nSUB メイス(投擲)　射程 2　遠距離\n\nLINK ABILITY\n\n鉄血のオルフェンズ　デッキに3枚以上\n[近距離攻撃力]小アップ\n\n陸戦特化の戦い　デッキに2枚以上\n[機動力]小アップ\n\nMS ABILITY\n\n強撃\n任意発動　単体(敵)　射程 1　コスト 3\nロックオン中の敵に単体攻撃でダメージを与える。\n\nSPECIAL ATTACK\n\nメイス撃砕\n単体(敵)　射程 2\nSPコスト 2　威力 3100\n敵単体に格闘攻撃でダメージを与える。\n\nIMPACT AREA\n[アイコン:中央と中央下に丸]\n[アイコン:下部中央に三角]\n\nillust Kouki Tajima\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n\n機動戦士ガンダム ARSENAL BASE\n\nAB04-053　C"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "SEASON_04_AB04-053_ガンダム・バルバトス(第1形態)_ocr_raw.json",
   "ocr_timestamp": "2026-03-02T06:01:29.019623",

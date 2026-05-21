@@ -5,31 +5,44 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX01-029.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX01-029_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "LX01-029",
     "type": "MS",
-    "card_label": {
-      "class": "遠距離",
-      "cost_label": "コスト6"
-    },
     "name": "フリーダムガンダム",
-    "model": "ZGMF-X10A FREEDOM GUNDAM",
     "cost": 6,
+    "rarity": "U",
     "category": "遠距離",
     "affiliation": "ー",
-    "pilot": "キラ・ヤマト",
+    "illustrator": "Eske Yoshinob",
     "stats": {
-      "height": "18.03m",
-      "weight": "71.5t",
       "mobility": 310,
       "ranged_attack": 560,
       "melee_attack": 310,
       "hp": 400
     },
+    "link_ability": [
+      {
+        "name": "ガンダムSEED",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "キラ・ヤマト",
+    "model": "ZGMF-X10A FREEDOM GUNDAM",
     "terrain_compatibility": {
       "ground": "A",
       "space": "S",
       "desert": "A",
-      "water": null
+      "water": ""
     },
     "weapon": {
       "main": {
@@ -51,18 +64,6 @@
       "cost": 4,
       "description": "ロックオン中の敵を中心に扇状の範囲攻撃を行い、メイン武装を使用不能にさせる。出撃時1度のみ使用可能。"
     },
-    "link_ability": [
-      {
-        "name": "ガンダムSEED",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "戦況を変える力",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "ハイマットフルバースト",
       "target": "範囲(敵)",
@@ -70,11 +71,11 @@
       "sp_cost": 2,
       "power": 3500,
       "description": "ロックオン中の敵を中心に扇状の範囲攻撃を行い、範囲内の敵にダメージを与える。",
-      "united_sp": null
-    },
-    "rarity": "U",
-    "illustrator": "Eske Yoshinob",
-    "raw": "MS\n\n遠距離　コスト6\n\nZGMF-X10A FREEDOM GUNDAM\nフリーダムガンダム\n\n全高　18.03m\n本体重量　71.5t\n所属　ー\nパイロット　キラ・ヤマト\n\n[アイコン:地上A]　[アイコン:宇宙S]　[アイコン:砂漠A]\n機動力　310\n遠距離攻撃　560\n近距離攻撃　310\nHP　400\n\nWEAPON\nMAIN　ルプス・ビームライフル　射程　3　遠距離\nSUB　ラケルタ・ビームサーベル　射程　1　近距離\n\nLINK ABILITY\nガンダムSEED　デッキに3枚以上\n[機動力]小アップ\n\n戦況を変える力　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nMS ABILITY\n砕撃[広角]\n任意発動　範囲(敵)　射程　4　コスト　4\nロックオン中の敵を中心に扇状の範囲攻撃を行い、メイン武装を使用不能にさせる。出撃時1度のみ使用可能。\n\nSPECIAL ATTACK\nハイマットフルバースト\n範囲(敵)　射程　4\nSPコスト　2　威力　3500\nロックオン中の敵を中心に扇状の範囲攻撃を行い、範囲内の敵にダメージを与える。\n\nIMPACT AREA\n[アイコン:扇状範囲]\n\nillust Eske Yoshinob\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n\nLX01-029　U"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "LINXTAGE_SEASON_01_LX01-029_フリーダムガンダム_ocr_raw.json",
   "ocr_timestamp": "2026-03-02T07:17:00.552681",

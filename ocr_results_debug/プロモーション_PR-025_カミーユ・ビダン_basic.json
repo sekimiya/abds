@@ -5,44 +5,50 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-025.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-025_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "PR-025",
     "type": "PL",
-    "card_label": {
-      "class": "防衛",
-      "cost_label": "コスト4"
-    },
     "name": "カミーユ・ビダン",
     "cost": 4,
-    "category": "機動戦士Zガンダム",
+    "rarity": "PR",
+    "category": "防衛",
     "affiliation": "エゥーゴ",
+    "illustrator": "",
     "stats": {
       "mobility": 180,
       "ranged_attack": 230,
       "melee_attack": 170,
       "hp": 190
     },
+    "link_ability": [
+      {
+        "name": "機動戦士Zガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "ニュータイプの潜在能力",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "",
+    "physical": null,
+    "units": null,
     "pilot_skill": {
       "name": "揺るがない攻勢",
       "trigger": "敵ユニットを撃破時",
       "effect": "30秒間、自身の[遠距離攻撃力][近距離攻撃力]を小アップする。",
       "has_sq_skill": false,
-      "sq_skill_details": null
-    },
-    "link_ability": [
-      {
-        "name": "機動戦士Zガンダム",
-        "condition": "デッキに3枚以上",
-        "effect": "[遠距離攻撃力]小アップ"
-      },
-      {
-        "name": "ニュータイプの潜在能力",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      }
-    ],
-    "rarity": "PR",
-    "illustrator": null,
-    "raw": "防衛　コスト4\n\nカミーユ・ビダン\nKAMILLE BIDAN\n\n身長　ー\n年齢　17歳\n所属　エゥーゴ\n搭乗機体　Zガンダム、ガンダムMk-II\n\nPL SKILL\n揺るがない攻勢\n敵ユニットを撃破時\n\n30秒間、自身の[遠距離攻撃力]\n[近距離攻撃力]を小アップする。\n\nLINK ABILITY\n機動戦士Zガンダム　デッキに3枚以上\n[遠距離攻撃力]小アップ\n\nニュータイプの潜在能力　デッキに3枚以上\n[機動力]小アップ\n\n機動力　180\n遠距離攻撃　230\n近距離攻撃　170\nHP　190\n\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\nNOT FOR SALE\nPR-025　PR"
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_raw_file": "プロモーション_PR-025_カミーユ・ビダン_ocr_raw.json",
   "ocr_timestamp": "2026-03-07T12:25:47.425577",

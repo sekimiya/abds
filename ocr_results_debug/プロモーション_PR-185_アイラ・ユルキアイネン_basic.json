@@ -5,44 +5,50 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-185.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-185_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "PR-185",
     "type": "PL",
-    "card_label": {
-      "class": "防衛",
-      "cost_label": "コスト1"
-    },
     "name": "アイラ・ユルキアイネン",
     "cost": 1,
+    "rarity": "PR",
     "category": "防衛",
-    "affiliation": null,
+    "affiliation": "",
+    "illustrator": "Mai Ohira + Hiroyuki Nishimura",
     "stats": {
       "mobility": 150,
       "ranged_attack": 180,
       "melee_attack": 180,
       "hp": 200
     },
+    "link_ability": [
+      {
+        "name": "ビルドファイターズ",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "",
+    "physical": null,
+    "units": null,
     "pilot_skill": {
       "name": "徹底した遠距離戦",
       "trigger": "敵ユニットをロックオン時",
       "effect": "20秒間、自身の[遠距離攻撃力]を中アップする。",
       "has_sq_skill": false,
-      "sq_skill_details": null
-    },
-    "link_ability": [
-      {
-        "name": "ビルドファイターズ",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "多彩な戦術",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      }
-    ],
-    "rarity": "PR",
-    "illustrator": "Mai Ohira + Hiroyuki Nishimura",
-    "raw": "防衛　コスト1　PL\n\nアイラ・ユルキアイネン\nAILA JYRKIÄINEN\n\n身長　—\n年齢　—\n所属　—\n搭乗機体　キュベレイパピヨン\n\nPL SKILL\n徹底した遠距離戦\n敵ユニットをロックオン時\n\n20秒間、自身の[遠距離攻撃力]を\n中アップする。\n\nLINK ABILITY\nビルドファイターズ　デッキに3枚以上\n[機動力]小アップ\n\n多彩な戦術　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]\n小アップ\n\n機動力 150\n遠距離攻撃 180\n近距離攻撃 180\nHP 200\n\nillust　Mai Ohira + Hiroyuki Nishimura\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n\nNOT FOR SALE\nPR-185　PR"
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_raw_file": "プロモーション_PR-185_アイラ・ユルキアイネン_ocr_raw.json",
   "ocr_timestamp": "2026-03-07T11:57:45.185551",

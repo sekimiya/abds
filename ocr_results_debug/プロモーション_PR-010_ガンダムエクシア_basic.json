@@ -5,31 +5,44 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-010.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-010_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "PR-010",
     "type": "MS",
-    "card_label": {
-      "class": "機動",
-      "cost_label": "コスト3"
-    },
     "name": "ガンダムエクシア",
-    "model": "GN-001 GUNDAM EXIA",
     "cost": 3,
-    "category": "MS",
+    "rarity": "PR",
+    "category": "機動",
     "affiliation": "ソレスタルビーイング",
-    "pilot": "刹那・F・セイエイ",
+    "illustrator": "",
     "stats": {
-      "height": "18.3m",
-      "weight": "57.2t",
       "mobility": 240,
       "ranged_attack": 170,
       "melee_attack": 190,
       "hp": 240
     },
+    "link_ability": [
+      {
+        "name": "ガンダム00",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "その名はガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "刹那・F・セイエイ",
+    "model": "GN-001 GUNDAM EXIA",
     "terrain_compatibility": {
       "ground": "S",
       "space": "A",
       "desert": "C",
-      "water": null
+      "water": ""
     },
     "weapon": {
       "main": {
@@ -51,18 +64,6 @@
       "cost": 4,
       "description": "30秒間、自身の[機動力][近距離攻撃力]を中アップする。"
     },
-    "link_ability": [
-      {
-        "name": "ガンダム00",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "その名はガンダム",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "トランザム連撃",
       "target": "単体(敵)",
@@ -70,11 +71,11 @@
       "sp_cost": 3,
       "power": 3700,
       "description": "敵単体に格闘攻撃でダメージを与える。",
-      "united_sp": null
-    },
-    "rarity": "PR",
-    "illustrator": null,
-    "raw": "機動 コスト3 MS\nGN-001 GUNDAM EXIA\nガンダムエクシア\n\n全高 18.3m\n本体重量 57.2t　地上 S　宇宙 A　砂漠 C\n所属 ソレスタルビーイング　機動力 240\nパイロット 刹那・F・セイエイ　遠距離攻撃 170\n近距離攻撃 190\nHP 240\n\nWEAPON\nMAIN GNソード 射程 1 近距離\nSUB GNソード(ライフルモード) 射程 3 遠距離\n\nMS ABILITY\n強化[近接]\n任意発動　自分　射程 ー　コスト 4\n30秒間、自身の[機動力][近距離攻撃力]を中アップする。\n\nLINK ABILITY\nガンダム00　デッキに3枚以上\n[機動力]小アップ\n\nその名はガンダム　デッキに3枚以上\n[機動力]小アップ\n\nSPECIAL ATTACK\nトランザム連撃\n単体(敵)　射程 2\nSPコスト 3　威力 3700\n敵単体に格闘攻撃でダメージを与える。\n\nIMPACT AREA（射程2、自機前方中央・斜め前）\n\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\nNOT FOR SALE\nPR-010 PR"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "プロモーション_PR-010_ガンダムエクシア_ocr_raw.json",
   "ocr_timestamp": "2026-03-07T12:17:00.612254",

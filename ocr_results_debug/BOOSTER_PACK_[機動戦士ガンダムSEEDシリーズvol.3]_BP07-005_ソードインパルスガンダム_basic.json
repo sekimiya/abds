@@ -5,26 +5,39 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP07-005.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP07-005_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "BP07-005",
     "type": "MS",
-    "card_label": {
-      "class": "近距離",
-      "cost_label": "コスト5"
-    },
     "name": "ソードインパルスガンダム",
-    "model": "ZGMF-X56S/β SWORD IMPULSE GUNDAM",
     "cost": 5,
+    "rarity": "R",
     "category": "近距離",
     "affiliation": "ザフト",
-    "pilot": "シン・アスカ、ルナマリア・ホーク",
+    "illustrator": "",
     "stats": {
-      "height": "19.37m",
-      "weight": "78.93t",
       "mobility": 270,
       "ranged_attack": 60,
       "melee_attack": 390,
       "hp": 430
     },
+    "link_ability": [
+      {
+        "name": "SEED DESTINY",
+        "condition": "デッキに3枚以上",
+        "effect": "[HP]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "シン・アスカ、ルナマリア・ホーク",
+    "model": "ZGMF-X56S/β SWORD IMPULSE GUNDAM",
     "terrain_compatibility": {
       "ground": "S",
       "space": "A",
@@ -51,18 +64,6 @@
       "cost": 4,
       "description": "一定時間、範囲内に入った敵ユニットの[機動力]をダウンするエリアを設置する。※上限3箇所まで。"
     },
-    "link_ability": [
-      {
-        "name": "SEED DESTINY",
-        "condition": "デッキに3枚以上",
-        "effect": "[HP]小アップ"
-      },
-      {
-        "name": "戦況を変える力",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "エクスカリバー レーザー対艦刀二刀流斬撃",
       "target": "単体(敵)",
@@ -70,10 +71,11 @@
       "sp_cost": 2,
       "power": 3400,
       "description": "敵単体に格闘攻撃でダメージを与える。/ー",
-      "united_sp": null
-    },
-    "rarity": "R",
-    "raw": "近距離 コスト5 MS\nZGMF-X56S/β SWORD IMPULSE GUNDAM\nソードインパルスガンダム\n頭頂高 19.37m\n本体重量 78.93t\n所属 ザフト\nパイロット シン・アスカ、ルナマリア・ホーク\n地上 S 宇宙 A 砂漠 B 水中 A\n機動力 270\n遠距離攻撃 60\n近距離攻撃 390\nHP 430\nWEAPON\nMAIN エクスカリバー レーザー対艦刀二刀流 射程 1 近距離\nSUB フラッシュエッジ ビームブーメラン 射程 3 遠距離\nLINK ABILITY\nSEED DESTINY デッキに3枚以上\n[HP]小アップ\n戦況を変える力 デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\nMS ABILITY\n陣略[妨害／機動]\n任意発動 範囲(敵) 射程 ー コスト 4\n一定時間、範囲内に入った敵ユニットの[機動力]をダウンするエリアを設置する。※上限3箇所まで。\nSPECIAL ATTACK\nエクスカリバー レーザー対艦刀二刀流斬撃\nECHOES BEAT\nー\n単体(敵) 射程 2 ー 射程 ー\nSPコスト 2 威力 3400 / ー\n敵単体に格闘攻撃でダメージを与える。/ー\nBP07-005 R"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_timestamp": "2026-04-16T11:50:00.000000",
   "ocr_type": "basic",

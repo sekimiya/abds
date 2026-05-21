@@ -5,44 +5,50 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LXR04-012.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LXR04-012_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "LXR04-012",
     "type": "PL",
-    "card_label": {
-      "class": "制圧",
-      "cost_label": "コスト3"
-    },
     "name": "シン・アスカ",
     "cost": 3,
-    "category": "SEED DESTINY",
+    "rarity": "LX",
+    "category": "制圧",
     "affiliation": "ザフト",
+    "illustrator": "Sakura Asagi",
     "stats": {
       "mobility": 200,
       "ranged_attack": 280,
       "melee_attack": 40,
       "hp": 300
     },
+    "link_ability": [
+      {
+        "name": "SEED DESTINY",
+        "condition": "デッキに3枚以上",
+        "effect": "[HP]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "戦いの運命",
+        "condition": "デッキに2枚以上",
+        "effect": "[機動力][HP]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "",
+    "physical": null,
+    "units": null,
     "pilot_skill": {
       "name": "操縦者の覚悟",
       "trigger": "出撃時",
       "effect": "30秒間、自身の[遠距離攻撃力][SP威力]を中アップする。",
       "has_sq_skill": false,
-      "sq_skill_details": null
-    },
-    "link_ability": [
-      {
-        "name": "SEED DESTINY",
-        "condition": "デッキに3枚以上",
-        "effect": "[HP]小アップ"
-      },
-      {
-        "name": "戦いの運命",
-        "condition": "デッキに2枚以上",
-        "effect": "[機動力][HP]小アップ"
-      }
-    ],
-    "rarity": "LX",
-    "illustrator": "Sakura Asagi",
-    "raw": "制圧　コスト3　PL\n\nシン・アスカ\nSHINN ASUKA\n\n身長　168cm\n年齢　16歳\n所属　ザフト\n搭乗機体　フォースインパルスガンダム、ソードインパルスガンダム\n\nPL SKILL\n操縦者の覚悟\n出撃時\n30秒間、自身の[遠距離攻撃力][SP威力]を中アップする。\n\nLINK ABILITY\nSEED DESTINY　デッキに3枚以上\n[HP]小アップ\n\n戦いの運命　デッキに2枚以上\n[機動力][HP]小アップ\n\n機動力　200\n遠距離攻撃　280\n近距離攻撃　40\nHP　300\n\nillust. Sakura Asagi\n©創通・サンライズ\nBANDAI MADE IN JAPAN\nLXR04-012　LX"
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_raw_file": "リンクステージレア4弾_LXR04-012_シン・アスカ_ocr_raw.json",
   "ocr_timestamp": "2026-03-07T13:56:32.455880",

@@ -5,44 +5,50 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-147.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-147_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "PR-147",
     "type": "PL",
-    "card_label": {
-      "class": "制圧",
-      "cost_label": "コスト1"
-    },
     "name": "メイ",
     "cost": 1,
-    "category": "BUILD DiVERS",
+    "rarity": "PR",
+    "category": "制圧",
     "affiliation": "BUILD DiVERS",
+    "illustrator": "Yoshika Sagawa + Hiroyuki Nishimura",
     "stats": {
       "mobility": 140,
       "ranged_attack": 220,
       "melee_attack": 180,
       "hp": 170
     },
+    "link_ability": [
+      {
+        "name": "Re:RISE",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "巧みな連携戦術",
+        "condition": "デッキに2枚以上",
+        "effect": "[遠距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "",
+    "physical": null,
+    "units": null,
     "pilot_skill": {
       "name": "優先すべき目標",
       "trigger": "敵戦艦／拠点をロックオン時",
       "effect": "敵戦艦／拠点へのダメージを小アップする。",
       "has_sq_skill": false,
-      "sq_skill_details": null
-    },
-    "link_ability": [
-      {
-        "name": "Re:RISE",
-        "condition": "デッキに3枚以上",
-        "effect": "[遠距離攻撃力]小アップ"
-      },
-      {
-        "name": "巧みな連携戦術",
-        "condition": "デッキに2枚以上",
-        "effect": "[遠距離攻撃力]小アップ"
-      }
-    ],
-    "rarity": "PR",
-    "illustrator": "Yoshika Sagawa + Hiroyuki Nishimura",
-    "raw": "制圧　コスト1　PL\n\nメイ\nMAY\n\n身長　—\n年齢　—\n所属　BUILD DiVERS\n搭乗機体　ウォドムポッド\n\nPL SKILL\n優先すべき目標\n敵戦艦／拠点をロックオン時\n敵戦艦／拠点へのダメージを小アップする。\n\nLINK ABILITY\nRe:RISE　デッキに3枚以上\n[遠距離攻撃力]小アップ\n\n巧みな連携戦術　デッキに2枚以上\n[遠距離攻撃力]小アップ\n\n機動力 140\n遠距離攻撃 220\n近距離攻撃 180\nHP 170\n\nillust Yoshika Sagawa + Hiroyuki Nishimura\n©創通・サンライズ\nBANDAI MADE IN JAPAN\nNOT FOR SALE\nPR-147　PR"
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_raw_file": "プロモーション_PR-147_メイ_ocr_raw.json",
   "ocr_timestamp": "2026-03-07T11:35:04.736893",

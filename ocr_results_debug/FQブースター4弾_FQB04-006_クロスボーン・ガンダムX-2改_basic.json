@@ -5,26 +5,39 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQB04-006.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQB04-006_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "FQB04-006",
     "type": "MS",
-    "card_label": {
-      "class": "機動",
-      "cost_label": "コスト2"
-    },
     "name": "クロスボーン・ガンダムX-2改",
-    "model": "XM-X2ex CROSSBONE GUNDAM X-2 KAI",
     "cost": 2,
+    "rarity": "R",
     "category": "機動",
     "affiliation": "木星帝国",
-    "pilot": "ザビーネ・シャル",
+    "illustrator": "amasaki",
     "stats": {
-      "height": "15.9m",
-      "weight": "9.5t",
       "mobility": 190,
       "ranged_attack": 60,
       "melee_attack": 220,
       "hp": 230
     },
+    "link_ability": [
+      {
+        "name": "クロスボーン・ガンダム",
+        "condition": "デッキに2枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "肉薄する戦い",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "ザビーネ・シャル",
+    "model": "XM-X2ex CROSSBONE GUNDAM X-2 KAI",
     "terrain_compatibility": {
       "ground": "A",
       "space": "S",
@@ -51,18 +64,6 @@
       "cost": null,
       "description": "自身のHPが1以上で一定割合以下になると、一定時間、撃破されなくなり[遠／近攻撃力]を中アップする。出撃時1度のみ発動。"
     },
-    "link_ability": [
-      {
-        "name": "クロスボーン・ガンダム",
-        "condition": "デッキに2枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "肉薄する戦い",
-        "condition": "デッキに4枚以上",
-        "effect": "[機動力][近距離攻撃力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "ショット・ランサー強撃",
       "target": "単体(敵)",
@@ -70,11 +71,11 @@
       "sp_cost": 2,
       "power": 3200,
       "description": "敵単体に格闘攻撃でダメージを与える。",
-      "united_sp": null
-    },
-    "rarity": "R",
-    "illustrator": "amasaki",
-    "raw": "機動　コスト2　MS\n\nXM-X2ex CROSSBONE GUNDAM X-2 KAI\nクロスボーン・ガンダムX-2改\n\n頭頂高　15.9m\n本体重量　9.5t\n所属　木星帝国\nパイロット　ザビーネ・シャル\n\n地上 A　宇宙 S　砂漠 A　水中 B\n\n機動力 190\n遠距離攻撃 60\n近距離攻撃 220\nHP 230\n\nWEAPON\nMAIN　ショット・ランサー　射程 1　近距離\nSUB　バスターランチャー　射程 4　遠距離\n\nLINK ABILITY\nクロスボーン・ガンダム　デッキに2枚以上\n[機動力]小アップ\n\nMS ABILITY\n奮起\n出撃時発動　自分　射程 ー　コスト ー\n自身のHPが1以上で一定割合以下になると、一定時間、撃破されなくなり[遠／近攻撃力]を中アップする。出撃時1度のみ発動。\n\n肉薄する戦い　デッキに4枚以上\n[機動力][近距離攻撃力]小アップ\n\nSPECIAL ATTACK　　UNITED SP\nショット・ランサー強撃　　ー\n連携　ー　　連携　ー\n連携　ー　　連携　ー\n単体(敵)　射程 2　　射程 ー\nSPコスト 2　威力 3200 / ー\n敵単体に格闘攻撃でダメージを与える。\n/ ー\n\nIMPACT AREA\n[アイコン:緑丸 中央やや下]\n[アイコン:黄三角 下端中央]\n\nillust amasaki\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nFQB04-006　R"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "FQブースター4弾_FQB04-006_クロスボーン・ガンダムX-2改_ocr_raw.json",
   "ocr_timestamp": "2026-02-28T04:12:07.014187",

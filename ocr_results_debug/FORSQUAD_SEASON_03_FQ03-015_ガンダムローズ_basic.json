@@ -5,26 +5,39 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ03-015.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ03-015_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "FQ03-015",
     "type": "MS",
-    "card_label": {
-      "class": "近距離",
-      "cost_label": "コスト3"
-    },
     "name": "ガンダムローズ",
-    "model": "GF13-009NF GUNDAM ROSE",
     "cost": 3,
+    "rarity": "C",
     "category": "近距離",
     "affiliation": "ネオフランス",
-    "pilot": "ジョルジュ・ド・サンド",
+    "illustrator": "Robographer",
     "stats": {
-      "height": "16.2m",
-      "weight": "7.2t",
       "mobility": 230,
       "ranged_attack": 50,
       "melee_attack": 270,
       "hp": 300
     },
+    "link_ability": [
+      {
+        "name": "Gガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "ジョルジュ・ド・サンド",
+    "model": "GF13-009NF GUNDAM ROSE",
     "terrain_compatibility": {
       "ground": "S",
       "space": "A",
@@ -51,18 +64,6 @@
       "cost": 4,
       "description": "30秒間、自身を中心とした大範囲内の味方ユニットの[近距離攻撃力]を小アップする。"
     },
-    "link_ability": [
-      {
-        "name": "Gガンダム",
-        "condition": "デッキに3枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      },
-      {
-        "name": "多彩な戦術",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "ローゼスハリケーン",
       "target": "単体(敵)",
@@ -70,11 +71,11 @@
       "sp_cost": 2,
       "power": 3000,
       "description": "敵単体に射撃攻撃でダメージを与える。",
-      "united_sp": null
-    },
-    "rarity": "C",
-    "illustrator": "Robographer",
-    "raw": "近距離　コスト3　MS\n\nGF13-009NF GUNDAM ROSE\nガンダムローズ\n\n頭頂高　16.2m\n本体重量　7.2t\n所属　ネオフランス\nパイロット　ジョルジュ・ド・サンド\n\n地上 S　宇宙 A　砂漠 A　水中 B\n\n機動力　230\n遠距離攻撃　50\n近距離攻撃　270\nHP　300\n\nWEAPON\nMAIN　シュバリエサーベル　射程 1　近距離\nSUB　ローゼスビット　射程 4　近距離\n\nLINK ABILITY\nGガンダム　デッキに3枚以上\n[遠距離攻撃力][近距離攻撃力] 小アップ\n\n多彩な戦術　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力] 小アップ\n\nMS ABILITY\n鼓舞[近距離]\n任意発動　範囲(味方)　射程 ー　コスト 4\n30秒間、自身を中心とした大範囲内の味方ユニットの[近距離攻撃力]を小アップする。\n\nSPECIAL ATTACK　　　UNITED SP\nローゼスハリケーン　　ー\n連携 ー　　連携 ー\n連携 ー　　連携 ー\n単体(敵)　射程 4　ー　射程 ー\nSPコスト 2　威力 3000 / ー\n敵単体に射撃攻撃でダメージを与える。\n/ ー\n\nIMPACT AREA\n[アイコン:円形範囲・中央]\n\nillust Robographer\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nFQ03-015　C"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "FORSQUAD_SEASON_03_FQ03-015_ガンダムローズ_ocr_raw.json",
   "ocr_timestamp": "2026-02-24T15:28:45.003087",

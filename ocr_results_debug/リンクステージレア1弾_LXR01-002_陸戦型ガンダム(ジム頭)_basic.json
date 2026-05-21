@@ -5,31 +5,44 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LXR01-002.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LXR01-002_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "LXR01-002",
     "type": "MS",
-    "card_label": {
-      "class": "近距離",
-      "cost_label": "コスト4"
-    },
     "name": "陸戦型ガンダム(ジム頭)",
-    "model": "RX-79[G] GUNDAM GROUND TYPE(GM HEAD)",
     "cost": 4,
-    "category": "MS",
+    "rarity": "LX",
+    "category": "近距離",
     "affiliation": "地球連邦軍",
-    "pilot": "カレン・ジョシュワ",
+    "illustrator": "YAMAGUCHI JUN",
     "stats": {
-      "height": "18.0m",
-      "weight": "52.8t",
       "mobility": 240,
       "ranged_attack": 0,
       "melee_attack": 300,
       "hp": 300
     },
+    "link_ability": [
+      {
+        "name": "第08MS小隊",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "陸戦特化の戦い",
+        "condition": "デッキに2枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "カレン・ジョシュワ",
+    "model": "RX-79[G] GUNDAM GROUND TYPE(GM HEAD)",
     "terrain_compatibility": {
       "ground": "S",
       "space": "C",
       "desert": "A",
-      "water": null
+      "water": ""
     },
     "weapon": {
       "main": {
@@ -40,7 +53,7 @@
       "sub": {
         "name": "シールド",
         "range": null,
-        "type": null
+        "type": ""
       }
     },
     "ms_ability": {
@@ -51,18 +64,6 @@
       "cost": 3,
       "description": "ロックオン中の敵ユニットに単体攻撃でダメージを与え、20秒間、[機動力]を中ダウンする。"
     },
-    "link_ability": [
-      {
-        "name": "第08MS小隊",
-        "condition": "デッキに3枚以上",
-        "effect": "[遠距離攻撃力]小アップ"
-      },
-      {
-        "name": "陸戦特化の戦い",
-        "condition": "デッキに2枚以上",
-        "effect": "[機動力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "ビーム・サーベル強撃",
       "target": "単体(敵)",
@@ -70,11 +71,11 @@
       "sp_cost": 2,
       "power": 3400,
       "description": "敵単体に格闘攻撃でダメージを与える。",
-      "united_sp": null
-    },
-    "rarity": "LX",
-    "illustrator": "YAMAGUCHI JUN",
-    "raw": "近距離 コスト4 MS\nRX-79[G] GUNDAM GROUND TYPE(GM HEAD)\n陸戦型ガンダム(ジム頭)\n\n全高　18.0m\n本体重量　52.8t\n所属　地球連邦軍\nパイロット　カレン・ジョシュワ\n\n地上 S　宇宙 C　砂漠 A\n機動力 240\n遠距離攻撃 0\n近距離攻撃 300\nHP 300\n\nWEAPON\nMAIN ビーム・サーベル　射程 1　近距離\nSUB シールド　射程 ー　ー\n\nMS ABILITY\n妨撃[機動]\n任意発動　単体(敵)　射程 1　コスト 3\nロックオン中の敵ユニットに単体攻撃でダメージを与え、20秒間、[機動力]を中ダウンする。\n\nLINK ABILITY\n第08MS小隊　デッキに3枚以上\n[遠距離攻撃力]小アップ\n\n陸戦特化の戦い　デッキに2枚以上\n[機動力]小アップ\n\nSPECIAL ATTACK\nビーム・サーベル強撃\n単体(敵)　射程 2\nSPコスト 2　威力 3400\n敵単体に格闘攻撃でダメージを与える。\n\nIMPACT AREA（緑丸・黄丸・△）\n\nillust YAMAGUCHI JUN\n©創通・サンライズ\nBANDAI MADE IN JAPAN\nLXR01-002 LX"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "リンクステージレア1弾_LXR01-002_陸戦型ガンダム(ジム頭)_ocr_raw.json",
   "ocr_timestamp": "2026-03-07T14:51:37.310832",

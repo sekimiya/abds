@@ -5,26 +5,39 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UTB05-001.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UTB05-001_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "UTB05-001",
     "type": "MS",
-    "card_label": {
-      "class": "機動",
-      "cost_label": "コスト6"
-    },
     "name": "ドム",
-    "model": "MS-09 DOM",
     "cost": 6,
+    "rarity": "P",
     "category": "機動",
     "affiliation": "ジオン公国軍",
-    "pilot": "ガイア、オルテガ、マッシュ",
+    "illustrator": "Moyasi",
     "stats": {
-      "height": "18.6m",
-      "weight": "62.6t",
       "mobility": 280,
       "ranged_attack": 550,
       "melee_attack": 160,
       "hp": 560
     },
+    "link_ability": [
+      {
+        "name": "機動戦士ガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "黒い三連星",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "ガイア、オルテガ、マッシュ",
+    "model": "MS-09 DOM",
     "terrain_compatibility": {
       "ground": "S",
       "space": "C",
@@ -51,18 +64,6 @@
       "cost": 4,
       "description": "自身を中心とした範囲内の敵ユニットをスタンさせ、一定時間被ダメージを少しアップする。"
     },
-    "link_ability": [
-      {
-        "name": "機動戦士ガンダム",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "黒い三連星",
-        "condition": "デッキに3枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "ジャイアント・バズ撃射",
       "target": "単体(敵)",
@@ -70,18 +71,20 @@
       "sp_cost": 2,
       "power": 3500,
       "description": "敵単体に射撃攻撃でダメージを与える。",
+      "sp_type": "",
+      "echoes_beat": null,
       "united_sp": {
         "name": "ジェット・ストリーム・アタック",
-        "partner1": "ドム",
-        "partner2": null,
+        "partners": [
+          "ドム"
+        ],
+        "target": "",
         "range": 3,
         "power": 5800,
         "description": "敵単体に射撃と格闘攻撃でダメージを与え、一定時間、敵ユニットの[機動力][遠／近攻撃力][SP威力]をダウンする。出撃時1度のみ使用可能。"
-      }
-    },
-    "rarity": "P",
-    "illustrator": "Moyasi",
-    "raw": "MS\n機動 コスト6\nMS-09 DOM\nドム\n\n頭頂高 18.6m\n本体重量 62.6t\n所属 ジオン公国軍\nパイロット ガイア、オルテガ、マッシュ\n\n地上 S 宇宙 C 砂漠 A 水中 C\n機動力 280\n遠距離攻撃 550\n近距離攻撃 160\nHP 560\n\nWEAPON\nMAIN ジャイアント・バズ 射程 3 遠距離\nSUB ヒート・サーベル 射程 1 近距離\n\nLINK ABILITY\n機動戦士ガンダム デッキに3枚以上\n[機動力]小アップ\n\n黒い三連星 デッキに3枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nMS ABILITY\n威圧\n任意発動 範囲(敵) 射程 ー コスト 4\n自身を中心とした範囲内の敵ユニットをスタンさせ、一定時間被ダメージを少しアップする。\n\nSPECIAL ATTACK\nジャイアント・バズ撃射\n連携 ドム\n連携 ー\n単体(敵) 射程 3\n\nUNITED SP\nジェット・ストリーム・アタック\n連携 ドム\n連携 ー\n単体(敵) 射程 3\n\nSPコスト 2 威力 3500 / 5800\n\n敵単体に射撃攻撃でダメージを与える。／敵単体に射撃と格闘攻撃でダメージを与え、一定時間、敵ユニットの[機動力][遠／近攻撃力][SP威力]をダウンする。出撃時1度のみ使用可能。\n\nIMPACT AREA\n[アイコン:中央やや上に小円2つ（緑・青）、下部に大きな黄色円、中央に三角マーカー]\n\nillust Moyasi\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nUTB05-001 P"
+      },
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "UTブースター5弾_UTB05-001_ドム_ocr_raw.json",
   "ocr_timestamp": "2026-03-02T04:04:49.158389",

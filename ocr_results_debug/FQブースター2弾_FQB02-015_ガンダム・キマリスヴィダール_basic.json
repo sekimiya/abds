@@ -5,26 +5,39 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQB02-015.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQB02-015_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "FQB02-015",
     "type": "MS",
-    "card_label": {
-      "class": "遠距離",
-      "cost_label": "コスト3"
-    },
     "name": "ガンダム・キマリスヴィダール",
-    "model": "ASW-G-66 GUNDAM KIMARIS VIDAR",
     "cost": 3,
+    "rarity": "R",
     "category": "遠距離",
     "affiliation": "ギャラルホルン",
-    "pilot": "ガエリオ・ボードウィン",
+    "illustrator": "S Kei",
     "stats": {
-      "height": "19.5m",
-      "weight": "34.5t",
       "mobility": 250,
       "ranged_attack": 300,
       "melee_attack": 80,
       "hp": 270
     },
+    "link_ability": [
+      {
+        "name": "鉄血のオルフェンズ",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力] [近距離攻撃力] 小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力] [近距離攻撃力] 小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "ガエリオ・ボードウィン",
+    "model": "ASW-G-66 GUNDAM KIMARIS VIDAR",
     "terrain_compatibility": {
       "ground": "S",
       "space": "S",
@@ -51,18 +64,6 @@
       "cost": 5,
       "description": "自身を中心とした大範囲の味方ユニットのHPを中回復し、弱体化状態を無効化する。"
     },
-    "link_ability": [
-      {
-        "name": "鉄血のオルフェンズ",
-        "condition": "デッキに3枚以上",
-        "effect": "[遠距離攻撃力] [近距離攻撃力] 小アップ"
-      },
-      {
-        "name": "戦況を変える力",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力] [近距離攻撃力] 小アップ"
-      }
-    ],
     "special_attack": {
       "name": "ドリルランス撃射",
       "target": "単体(敵)",
@@ -70,11 +71,11 @@
       "sp_cost": 2,
       "power": 3200,
       "description": "敵単体に射撃攻撃でダメージを与える。",
-      "united_sp": null
-    },
-    "rarity": "R",
-    "illustrator": "S Kei",
-    "raw": "遠距離 コスト3\n\nMS\n\nASW-G-66 GUNDAM KIMARIS VIDAR\nガンダム・キマリスヴィダール\n\n鉄血のオルフェンズ\n\n頭頂高 19.5m\n本体重量 34.5t\n所属 ギャラルホルン\nパイロット ガエリオ・ボードウィン\n\n地上 S 宇宙 S 砂漠 A 水中 C\n\n機動力 250\n遠距離攻撃 300\n近距離攻撃 80\nHP 270\n\nWEAPON\nMAIN ドリルランス(200mm砲) 射程 3 遠距離\nSUB ドリルランス 射程 1 近距離\n\nLINK ABILITY\n鉄血のオルフェンズ デッキに3枚以上\n[遠距離攻撃力] [近距離攻撃力]\n小アップ\n\n戦況を変える力 デッキに4枚以上\n[遠距離攻撃力] [近距離攻撃力]\n小アップ\n\nMS ABILITY\n補給[弱体化解除]\n任意発動 範囲(味方) 射程 — コスト 5\n自身を中心とした大範囲の味方ユニットのHPを中回復し、弱体化状態を無効化する。\n\nSPECIAL ATTACK\nドリルランス撃射\n\nUNITED SP\n—\n\n連携 — 連携 —\n連携 — 連携 —\n\n単体(敵) 射程 3 — 射程 —\nSPコスト 2 威力 3200 / —\n\n敵単体に射撃攻撃でダメージを与える。\n/ —\n\nIMPACT AREA\n[アイコン:射撃範囲 前方中距離 円形]\n\nillust S Kei\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nFQB02-015 R"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "FQブースター2弾_FQB02-015_ガンダム・キマリスヴィダール_ocr_raw.json",
   "ocr_timestamp": "2026-02-28T01:53:29.667315",

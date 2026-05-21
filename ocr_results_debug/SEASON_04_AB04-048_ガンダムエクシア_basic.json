@@ -5,31 +5,44 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB04-048.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB04-048_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "AB04-048",
     "type": "MS",
-    "card_label": {
-      "class": "機動",
-      "cost_label": "コスト4"
-    },
     "name": "ガンダムエクシア",
-    "model": "GN-001 GUNDAM EXIA",
     "cost": 4,
+    "rarity": "C",
     "category": "機動",
     "affiliation": "ソレスタルビーイング",
-    "pilot": "刹那・F・セイエイ",
+    "illustrator": "Anderson",
     "stats": {
-      "height": "18.3m",
-      "weight": "57.2t",
       "mobility": 280,
       "ranged_attack": 200,
       "melee_attack": 170,
       "hp": 150
     },
+    "link_ability": [
+      {
+        "name": "ガンダム00",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "その名はガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "刹那・F・セイエイ",
+    "model": "GN-001 GUNDAM EXIA",
     "terrain_compatibility": {
       "ground": "S",
       "space": "A",
       "desert": "C",
-      "water": null
+      "water": ""
     },
     "weapon": {
       "main": {
@@ -44,18 +57,6 @@
       }
     },
     "ms_ability": null,
-    "link_ability": [
-      {
-        "name": "ガンダム00",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "その名はガンダム",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "GNソードライフル撃射",
       "target": "単体(敵)",
@@ -63,11 +64,11 @@
       "sp_cost": 2,
       "power": 3100,
       "description": "敵単体に射撃攻撃でダメージを与える。",
-      "united_sp": null
-    },
-    "rarity": "C",
-    "illustrator": "Anderson",
-    "raw": "機動 コスト4\n\nMS\n\nGN-001 GUNDAM EXIA\nガンダムエクシア\n\n[アイコン:ガンダム00]\n\n全高 18.3m\n本体重量 57.2t\n地上 S 宇宙 A 砂漠 C\n所属 ソレスタルビーイング\nパイロット 刹那・F・セイエイ\n機動力 280\n遠距離攻撃 200\n近距離攻撃 170\nHP 150\n\nWEAPON\nMAIN GNソード(ライフルモード) 射程 3 遠距離\nSUB GNソード 射程 1 近距離\n\nLINK ABILITY\nガンダム00 デッキに3枚以上\n[機動力]小アップ\n\nその名はガンダム デッキに3枚以上\n[機動力]小アップ\n\nMS ABILITY\nー\nー ー 射程 ー コスト ー\n\nSPECIAL ATTACK\nGNソードライフル撃射\n単体(敵) 射程 3\nSPコスト 2 威力 3100\n敵単体に射撃攻撃でダメージを与える。\n\nIMPACT AREA\n[アイコン:緑丸 中央右寄り]\n[アイコン:三角 下部中央]\n\nillust Anderson\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nAB04-048 C"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "SEASON_04_AB04-048_ガンダムエクシア_ocr_raw.json",
   "ocr_timestamp": "2026-03-02T05:58:16.641277",

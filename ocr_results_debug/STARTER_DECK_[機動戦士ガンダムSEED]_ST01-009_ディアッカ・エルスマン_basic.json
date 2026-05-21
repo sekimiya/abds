@@ -5,17 +5,30 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/ST01-009.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/ST01-009_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "ST01-009",
     "type": "PL",
-    "card_label": {
-      "class": "防衛",
-      "cost_label": "コスト2"
-    },
     "name": "ディアッカ・エルスマン",
-    "english_name": "DEARKA ELTHMAN",
     "cost": 2,
+    "rarity": "R",
     "category": "防衛",
     "affiliation": "ザフト",
+    "illustrator": "",
+    "stats": {
+      "mobility": 50,
+      "ranged_attack": 270,
+      "melee_attack": 70,
+      "hp": 130
+    },
+    "link_ability": [
+      {
+        "name": "ガンダムSEED",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "DEARKA ELTHMAN",
     "physical": {
       "height": "176cm",
       "age": 17
@@ -23,29 +36,16 @@
     "units": [
       "バスターガンダム"
     ],
-    "stats": {
-      "mobility": 50,
-      "ranged_attack": 270,
-      "melee_attack": 70,
-      "hp": 130
-    },
     "pilot_skill": {
       "name": "堅実な射線確保",
       "trigger": "一方的に敵をロックオン時",
       "effect": "40秒間、自身の[SP威力]を中アップする。",
       "has_sq_skill": false,
-      "sq_skill_details": null
-    },
-    "link_ability": [
-      {
-        "name": "ガンダムSEED",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      }
-    ],
-    "rarity": "R",
-    "illustrator": null,
-    "raw": "防衛 コスト2\n\nPL\n\nディアッカ・エルスマン\nDEARKA ELTHMAN\n\n身長 176cm\n年齢 17歳\n所属 ザフト\n搭乗機体 バスターガンダム\n\nPL SKILL\n堅実な射線確保\n一方的に敵をロックオン時\n40秒間、自身の[SP威力]を中アップする。\n\nLINK ABILITY\nガンダムSEED デッキに3枚以上\n[機動力]小アップ\n\n— —\n\n機動力 50\n遠距離攻撃 270\n近距離攻撃 70\nHP 130\n\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE™\nST01-009 R"
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_raw_file": "STARTER_DECK_[機動戦士ガンダムSEED]_ST01-009_ディアッカ・エルスマン_ocr_raw.json",
   "ocr_timestamp": "2026-03-03T08:38:37.786796",

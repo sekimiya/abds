@@ -8,50 +8,54 @@
   "ocr_type": "basic",
   "ocr_timestamp": "2026-04-22T20:30:00.000000",
   "ocr_data": {
-    "card_id": "VE02-058",
     "type": "PL",
     "name": "張 五飛",
-    "name_en": "CHANG WUFEI",
     "cost": 5,
     "rarity": "C",
-    "card_label": {
-      "class": "殲滅",
-      "cost_label": "コスト5"
-    },
-    "height": "156cm",
-    "age": "15歳",
+    "category": "殲滅",
     "affiliation": "—",
-    "piloted_ms": "アルトロンガンダム、シェンロンガンダム",
+    "illustrator": "",
     "stats": {
       "mobility": 210,
       "ranged_attack": 290,
       "melee_attack": 70,
       "hp": 280
     },
-    "pilot_skill": {
-      "name": "冷静な指揮系統",
-      "activation": "EBLv.1時",
-      "effect": "自身のSPゲージ回復速度がアップする。このPLスキルの効果は重複しない。",
-      "has_sq_skill": false,
-      "is_eb_skill": true,
-      "eb_skill_details": {
-        "level": 1
-      }
-    },
     "link_ability": [
       {
         "name": "傍流する覚醒の共振",
         "condition": "デッキに3枚以上",
         "effect": "ECHOES BEAT Lv.が表示される。味方ユニットが戦術技を発動するとEBLv.が上がる。[遠距離攻撃力][近距離攻撃力]小アップ",
-        "is_eb_link": true
+        "is_eb_link": true,
+        "is_sq_link": false,
+        "is_ab_link": false
       },
       {
         "name": "的確な一撃",
         "condition": "デッキに4枚以上",
         "effect": "[機動力][遠距離攻撃力]小アップ",
-        "is_eb_link": false
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
       }
     ],
-    "raw": "殲滅 コスト5 PL 張 五飛 CHANG WUFEI 身長 156cm 年齢 15歳 所属 — 搭乗機体 アルトロンガンダム、シェンロンガンダム EB PL SKILL 冷静な指揮系統 EBLv.1時 自身のSPゲージ回復速度がアップする。このPLスキルの効果は重複しない。 EB LINK ABILITY 傍流する覚醒の共振 デッキに3枚以上 ECHOES BEAT Lv.が表示される。味方ユニットが戦術技を発動するとEBLv.が上がる。[遠距離攻撃力][近距離攻撃力]小アップ 的確な一撃 デッキに4枚以上 [機動力][遠距離攻撃力]小アップ 機動力 210 遠距離攻撃 290 近距離攻撃 70 HP 280 VE02-058 C"
+    "english_name": "CHANG WUFEI",
+    "physical": {
+      "height": "156cm",
+      "age": "15歳"
+    },
+    "units": [
+      "アルトロンガンダム、シェンロンガンダム"
+    ],
+    "pilot_skill": {
+      "name": "冷静な指揮系統",
+      "trigger": "EBLv.1時",
+      "effect": "自身のSPゲージ回復速度がアップする。このPLスキルの効果は重複しない。",
+      "has_sq_skill": false,
+      "sq_skill_details": null,
+      "is_eb_skill": true,
+      "eb_trigger_level": 1,
+      "sq_rush_effect": ""
+    }
   }
 }

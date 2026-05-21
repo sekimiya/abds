@@ -5,52 +5,55 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT05-041.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT05-041_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "UT05-041",
     "type": "PL",
-    "card_label": {
-      "class": "殲滅",
-      "cost_label": "コスト2"
-    },
     "name": "ザビーネ・シャル",
-    "english_name": "ZABINE CHAREUX",
     "cost": 2,
+    "rarity": "P",
     "category": "殲滅",
     "affiliation": "クロスボーン・バンガード",
-    "physical": {
-      "height": null,
-      "age": 24
-    },
-    "units": [
-      "ベルガ・ギロス(ザビーネ・シャル専用機)"
-    ],
+    "illustrator": "",
     "stats": {
       "mobility": 160,
       "ranged_attack": 90,
       "melee_attack": 240,
       "hp": 300
     },
+    "link_ability": [
+      {
+        "name": "機動戦士ガンダムF91",
+        "condition": "デッキに2枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "圧倒する殲滅力",
+        "condition": "デッキに殲滅が3枚以上",
+        "effect": "殲滅タイプに対してダメージ中アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "ZABINE CHAREUX",
+    "physical": {
+      "height": "",
+      "age": 24
+    },
+    "units": [
+      "ベルガ・ギロス(ザビーネ・シャル専用機)"
+    ],
     "pilot_skill": {
       "name": "張り巡らせた謀略",
       "trigger": "出撃時",
       "effect": "20秒間、出撃中の全敵ユニットの[遠距離攻撃力][近距離攻撃力]を中ダウンする。",
       "has_sq_skill": false,
-      "sq_skill_details": null
-    },
-    "link_ability": [
-      {
-        "name": "機動戦士ガンダムF91",
-        "condition": "デッキに2枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "圧倒する殲滅力",
-        "condition": "デッキに殲滅が3枚以上",
-        "effect": "殲滅タイプに対してダメージ中アップ"
-      }
-    ],
-    "rarity": "P",
-    "illustrator": null,
-    "raw": "PL\n\n殲滅　コスト2\n\nザビーネ・シャル\nZABINE CHAREUX\n\n身長　ー\n年齢　24歳\n所属　クロスボーン・バンガード\n搭乗機体　ベルガ・ギロス(ザビーネ・シャル専用機)\n\nPL SKILL\n張り巡らせた謀略\n出撃時\n20秒間、出撃中の全敵ユニットの[遠距離攻撃力][近距離攻撃力]を中ダウンする。\n\nLINK ABILITY\n機動戦士ガンダムF91　デッキに2枚以上\n[機動力]小アップ\n\n圧倒する殲滅力　デッキに殲滅が3枚以上\n殲滅タイプに対してダメージ中アップ\n\n機動力 160\n遠距離攻撃 90\n近距離攻撃 240\nHP 300\n\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\nUT05-041　P"
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_raw_file": "UNITRIBE_SEASON_05_UT05-041_ザビーネ・シャル_ocr_raw.json",
   "ocr_timestamp": "2026-02-26T19:41:27.314561",

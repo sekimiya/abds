@@ -5,44 +5,50 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-226.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-226_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "PR-226",
     "type": "PL",
-    "card_label": {
-      "class": "殲滅",
-      "cost_label": "コスト4"
-    },
     "name": "シャニ・アンドラス",
     "cost": 4,
-    "category": "ガンダムSEED",
+    "rarity": "PR",
+    "category": "殲滅",
     "affiliation": "地球連合軍",
+    "illustrator": "",
     "stats": {
       "mobility": 250,
       "ranged_attack": 50,
       "melee_attack": 250,
       "hp": 300
     },
+    "link_ability": [
+      {
+        "name": "ガンダムSEED",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "圧倒する殲滅力",
+        "condition": "デッキに殲滅が3枚以上",
+        "effect": "殲滅タイプに対してダメージ中アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "",
+    "physical": null,
+    "units": null,
     "pilot_skill": {
       "name": "高まる集中力",
       "trigger": "出撃後一定時間経過毎",
       "effect": "40秒経過毎に自身の[機動力][近距離攻撃力]を小アップする。最大3回まで発動。",
       "has_sq_skill": false,
-      "sq_skill_details": null
-    },
-    "link_ability": [
-      {
-        "name": "ガンダムSEED",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "圧倒する殲滅力",
-        "condition": "デッキに殲滅が3枚以上",
-        "effect": "殲滅タイプに対してダメージ中アップ"
-      }
-    ],
-    "rarity": "PR",
-    "illustrator": null,
-    "raw": "殲滅　コスト4　PL\n\nシャニ・アンドラス\nSHANI ANDRAS\n\n身長　ー\n年齢　ー\n所属　地球連合軍\n搭乗機体　フォビドゥンガンダム\n\nPL SKILL\n高まる集中力\n出撃後一定時間経過毎\n\n40秒経過毎に自身の[機動力][近距離攻撃力]を小アップする。最大3回まで発動。\n\nLINK ABILITY\nガンダムSEED　デッキに3枚以上\n[機動力]小アップ\n\n圧倒する殲滅力　デッキに殲滅が3枚以上\n殲滅タイプに対してダメージ中アップ\n\n機動力　250\n遠距離攻撃　50\n近距離攻撃　250\nHP　300\n\n©創通・サンライズ\nBANDAI MADE IN JAPAN\nNOT FOR SALE\nPR-226　PR"
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_raw_file": "プロモーション_PR-226_シャニ・アンドラス_ocr_raw.json",
   "ocr_timestamp": "2026-03-03T22:50:33.145207",

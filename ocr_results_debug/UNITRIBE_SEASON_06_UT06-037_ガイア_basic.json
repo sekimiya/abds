@@ -5,53 +5,56 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT06-037.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT06-037_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "UT06-037",
     "type": "PL",
-    "card_label": {
-      "class": "制圧",
-      "cost_label": "コスト1"
-    },
     "name": "ガイア",
-    "english_name": "GAIA",
     "cost": 1,
+    "rarity": "C",
     "category": "制圧",
     "affiliation": "ジオン公国軍",
-    "physical": {
-      "height": null,
-      "age": null
-    },
-    "units": [
-      "ドム",
-      "高機動型ザクⅡ(ガイア専用機)"
-    ],
+    "illustrator": "",
     "stats": {
       "mobility": 140,
       "ranged_attack": 170,
       "melee_attack": 70,
       "hp": 150
     },
+    "link_ability": [
+      {
+        "name": "機動戦士ガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "GAIA",
+    "physical": {
+      "height": "",
+      "age": ""
+    },
+    "units": [
+      "ドム",
+      "高機動型ザクⅡ(ガイア専用機)"
+    ],
     "pilot_skill": {
       "name": "綿密な戦闘準備",
       "trigger": "出撃時",
       "effect": "40秒間、自身の[機動力][遠距離攻撃力]を小アップする。",
       "has_sq_skill": false,
-      "sq_skill_details": null
-    },
-    "link_ability": [
-      {
-        "name": "機動戦士ガンダム",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "戦況を変える力",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      }
-    ],
-    "rarity": "C",
-    "illustrator": null,
-    "raw": "PL\n\n制圧 コスト1\n\nガイア\nGAIA\n\n身長 ー\n年齢 ー\n所属 ジオン公国軍\n搭乗機体 ドム、高機動型ザクⅡ(ガイア専用機)\n\nPL SKILL\n綿密な戦闘準備\n出撃時\n40秒間、自身の[機動力][遠距離攻撃力]を小アップする。\n\nLINK ABILITY\n機動戦士ガンダム デッキに3枚以上\n[機動力]小アップ\n\n戦況を変える力 デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\n機動力 140\n遠距離攻撃 170\n近距離攻撃 70\nHP 150\n\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\nUT06-037 C"
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_raw_file": "UNITRIBE_SEASON_06_UT06-037_ガイア_ocr_raw.json",
   "ocr_timestamp": "2026-02-26T17:44:46.828294",

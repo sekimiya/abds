@@ -5,17 +5,38 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB01-074.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB01-074_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "AB01-074",
     "type": "PL",
-    "card_label": {
-      "class": "殲滅",
-      "cost_label": "コスト2"
-    },
     "name": "ディアッカ・エルスマン",
-    "english_name": "DEARKA ELTHMAN",
     "cost": 2,
+    "rarity": "R",
     "category": "殲滅",
     "affiliation": "ザフト",
+    "illustrator": "",
+    "stats": {
+      "mobility": 90,
+      "ranged_attack": 210,
+      "melee_attack": 50,
+      "hp": 170
+    },
+    "link_ability": [
+      {
+        "name": "ガンダムSEED",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "優れた射撃センス",
+        "condition": "デッキに2枚以上",
+        "effect": "[遠距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "DEARKA ELTHMAN",
     "physical": {
       "height": "176cm",
       "age": 17
@@ -23,34 +44,16 @@
     "units": [
       "バスターガンダム"
     ],
-    "stats": {
-      "mobility": 90,
-      "ranged_attack": 210,
-      "melee_attack": 50,
-      "hp": 170
-    },
     "pilot_skill": {
       "name": "高揚する戦意",
       "trigger": "敵ユニットを撃破時",
       "effect": "30秒間、自身の[遠距離攻撃力]を中アップする。",
       "has_sq_skill": false,
-      "sq_skill_details": null
-    },
-    "link_ability": [
-      {
-        "name": "ガンダムSEED",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "優れた射撃センス",
-        "condition": "デッキに2枚以上",
-        "effect": "[遠距離攻撃力]小アップ"
-      }
-    ],
-    "rarity": "R",
-    "illustrator": null,
-    "raw": "PL\n\n殲滅 コスト2\n\nディアッカ・エルスマン\nDEARKA ELTHMAN\n\n身長 176cm\n年齢 17歳\n所属 ザフト\n搭乗機体 バスターガンダム\n\nPL SKILL\n\n高揚する戦意\n\n敵ユニットを撃破時\n\n30秒間、自身の[遠距離攻撃力]を\n中アップする。\n\nLINK ABILITY\n\nガンダムSEED デッキに3枚以上\n\n[機動力]小アップ\n\n優れた射撃センス デッキに2枚以上\n\n[遠距離攻撃力]小アップ\n\n機動力 90\n遠距離攻撃 210\n近距離攻撃 50\nHP 170\n\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n\n[アイコン:機動戦士ガンダム ARSENAL BASE ロゴ]\n\nAB01-074 R"
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_raw_file": "SEASON_01_AB01-074_ディアッカ・エルスマン_ocr_raw.json",
   "ocr_timestamp": "2026-02-23T12:47:35.932232",

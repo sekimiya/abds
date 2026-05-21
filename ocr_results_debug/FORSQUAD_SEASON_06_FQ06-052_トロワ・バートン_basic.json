@@ -5,17 +5,38 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ06-052.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ06-052_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "FQ06-052",
     "type": "PL",
-    "card_label": {
-      "class": "制圧",
-      "cost_label": "コスト4"
-    },
     "name": "トロワ・バートン",
-    "english_name": "TROWA BARTON",
     "cost": 4,
+    "rarity": "C",
     "category": "制圧",
     "affiliation": "ー",
+    "illustrator": "",
+    "stats": {
+      "mobility": 170,
+      "ranged_attack": 250,
+      "melee_attack": 70,
+      "hp": 260
+    },
+    "link_ability": [
+      {
+        "name": "Endless Waltz",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "TROWA BARTON",
     "physical": {
       "height": "160cm",
       "age": "不明(推定16歳)"
@@ -23,34 +44,16 @@
     "units": [
       "ガンダムヘビーアームズ改(EW)"
     ],
-    "stats": {
-      "mobility": 170,
-      "ranged_attack": 250,
-      "melee_attack": 70,
-      "hp": 260
-    },
     "pilot_skill": {
       "name": "粘り強い執念",
       "trigger": "HP50%以下の時",
       "effect": "35秒間、自身の[遠距離攻撃力][近距離攻撃力]を小アップする。",
       "has_sq_skill": false,
-      "sq_skill_details": null
-    },
-    "link_ability": [
-      {
-        "name": "Endless Waltz",
-        "condition": "デッキに3枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      },
-      {
-        "name": "戦況を変える力",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      }
-    ],
-    "rarity": "C",
-    "illustrator": null,
-    "raw": "PL\n\n制圧　コスト4\n\nトロワ・バートン\nTROWA BARTON\n\n身長　160cm\n年齢　不明(推定16歳)\n所属　ー\n搭乗機体　ガンダムヘビーアームズ改(EW)\n\nPL SKILL\n\n粘り強い執念\n\nHP50%以下の時\n\n35秒間、自身の[遠距離攻撃力][近距離攻撃力]を小アップする。\n\nLINK ABILITY\n\nEndless Waltz　デッキに3枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\n戦況を変える力　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\n機動力 170\n遠距離攻撃 250\n近距離攻撃 70\nHP 260\n\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nFQ06-052　C"
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_raw_file": "FORSQUAD_SEASON_06_FQ06-052_トロワ・バートン_ocr_raw.json",
   "ocr_timestamp": "2026-03-02T04:28:38.441978",

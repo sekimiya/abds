@@ -5,26 +5,39 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX02-055.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX02-055_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "LX02-055",
     "type": "MS",
-    "card_label": {
-      "class": "機動",
-      "cost_label": "コスト4"
-    },
     "name": "ガンダム・キマリストルーパー",
-    "model": "ASW-G-66 GUNDAM KIMARIS TROOPER",
     "cost": 4,
-    "category": null,
+    "rarity": "P",
+    "category": "機動",
     "affiliation": "ギャラルホルン",
-    "pilot": "ガエリオ・ボードウィン",
+    "illustrator": "ToMo",
     "stats": {
-      "height": "19.1m",
-      "weight": "32.7t",
       "mobility": 220,
       "ranged_attack": 100,
       "melee_attack": 450,
       "hp": 380
     },
+    "link_ability": [
+      {
+        "name": "鉄血のオルフェンズ",
+        "condition": "デッキに3枚以上",
+        "effect": "[近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "騎兵の激突",
+        "condition": "デッキに2枚以上",
+        "effect": "[近距離攻撃力][HP]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "ガエリオ・ボードウィン",
+    "model": "ASW-G-66 GUNDAM KIMARIS TROOPER",
     "terrain_compatibility": {
       "ground": "S",
       "space": "A",
@@ -51,18 +64,6 @@
       "cost": 4,
       "description": "ロックオン中の敵に単体攻撃でダメージを与える。この攻撃で敵ユニットを撃破した場合、敵ユニットの修理時間を延長させる。"
     },
-    "link_ability": [
-      {
-        "name": "鉄血のオルフェンズ",
-        "condition": "デッキに3枚以上",
-        "effect": "[近距離攻撃力]小アップ"
-      },
-      {
-        "name": "騎兵の激突",
-        "condition": "デッキに2枚以上",
-        "effect": "[近距離攻撃力][HP]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "デストロイヤー・ランス激突",
       "target": "単体(敵)",
@@ -70,11 +71,11 @@
       "sp_cost": 3,
       "power": 4000,
       "description": "敵単体に格闘攻撃でダメージを与え、20秒間、[機動力]を大ダウンする。",
-      "united_sp": null
-    },
-    "rarity": "P",
-    "illustrator": "ToMo",
-    "raw": "機動　コスト4\nASW-G-66 GUNDAM KIMARIS TROOPER\nガンダム・キマリストルーパー\n\n全高　19.1m\n本体重量　32.7t\n地上 S　宇宙 A　砂漠 A　水中 C\n所属　ギャラルホルン　機動力 220\nパイロット　ガエリオ・ボードウィン　遠距離攻撃 100\n近距離攻撃 450\nHP 380\n\nWEAPON\nMAIN　デストロイヤー・ランス　射程 1　近距離\nSUB　デストロイヤー・ランス(射撃)　射程 3　遠距離\n\nMS ABILITY\n撃滅\n任意発動　単体(敵)　射程 2　コスト 4\nロックオン中の敵に単体攻撃でダメージを与える。この攻撃で敵ユニットを撃破した場合、敵ユニットの修理時間を延長させる。\n\nLINK ABILITY\n鉄血のオルフェンズ　デッキに3枚以上\n[近距離攻撃力]小アップ\n\n騎兵の激突　デッキに2枚以上\n[近距離攻撃力][HP]小アップ\n\nSPECIAL ATTACK\nデストロイヤー・ランス激突\n単体(敵)　射程 3\nSPコスト 3　威力 4000\n敵単体に格闘攻撃でダメージを与え、20秒間、[機動力]を大ダウンする。\n\nillust ToMo\n©創通・サンライズ\nBANDAI MADE IN JAPAN\nLX02-055　P"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "LINXTAGE_SEASON_02_LX02-055_ガンダム・キマリストルーパー_ocr_raw.json",
   "ocr_timestamp": "2026-03-07T16:16:00.500675",

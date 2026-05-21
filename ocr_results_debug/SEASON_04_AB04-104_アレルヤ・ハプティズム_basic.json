@@ -5,17 +5,38 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB04-104.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB04-104_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "AB04-104",
     "type": "PL",
-    "card_label": {
-      "class": "殲滅",
-      "cost_label": "コスト6"
-    },
     "name": "アレルヤ・ハプティズム",
-    "english_name": "ALLELUJAH HAPTISM",
     "cost": 6,
+    "rarity": "M",
     "category": "殲滅",
     "affiliation": "ソレスタルビーイング",
+    "illustrator": "",
+    "stats": {
+      "mobility": 270,
+      "ranged_attack": 190,
+      "melee_attack": 290,
+      "hp": 250
+    },
+    "link_ability": [
+      {
+        "name": "ガンダム00",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "可変機ファイター",
+        "condition": "デッキに3枚以上",
+        "effect": "専用作戦カードが使用可能",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "ALLELUJAH HAPTISM",
     "physical": {
       "height": "186cm",
       "age": 19
@@ -23,34 +44,16 @@
     "units": [
       "ガンダムキュリオス"
     ],
-    "stats": {
-      "mobility": 270,
-      "ranged_attack": 190,
-      "melee_attack": 290,
-      "hp": 250
-    },
     "pilot_skill": {
       "name": "強者の覚醒",
       "trigger": "敵ユニットをロックオン時",
       "effect": "20秒間、自身の[機動力][遠距離攻撃力][近距離攻撃力][SP威力]を小アップする。",
       "has_sq_skill": false,
-      "sq_skill_details": null
-    },
-    "link_ability": [
-      {
-        "name": "ガンダム00",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "可変機ファイター",
-        "condition": "デッキに3枚以上",
-        "effect": "専用作戦カードが使用可能"
-      }
-    ],
-    "rarity": "M",
-    "illustrator": null,
-    "raw": "殲滅 コスト6\n\nPL\n\nアレルヤ・ハプティズム\nALLELUJAH HAPTISM\n\n身長 186cm\n年齢 19歳\n所属 ソレスタルビーイング\n搭乗機体 ガンダムキュリオス\n\n[アイコン:ガンダム00ロゴ]\n\nPL SKILL\n\n強者の覚醒\n\n敵ユニットをロックオン時\n\n20秒間、自身の[機動力][遠距離攻撃力][近距離攻撃力][SP威力]を小アップする。\n\nLINK ABILITY\n\nガンダム00 デッキに3枚以上\n[機動力]小アップ\n\n可変機ファイター デッキに3枚以上\n専用作戦カードが使用可能\n\n機動力 270\n遠距離攻撃 190\n近距離攻撃 290\nHP 250\n\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n\n機動戦士ガンダム ARSENAL BASE\n\nAB04-104 M"
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_raw_file": "SEASON_04_AB04-104_アレルヤ・ハプティズム_ocr_raw.json",
   "ocr_timestamp": "2026-03-02T06:27:48.061671",

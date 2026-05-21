@@ -5,52 +5,55 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB03-079.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB03-079_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "AB03-079",
     "type": "PL",
-    "card_label": {
-      "class": "殲滅",
-      "cost_label": "コスト3"
-    },
     "name": "アルファ・A・ベイト",
-    "english_name": "ALPHA A BAIT",
     "cost": 3,
+    "rarity": "C",
     "category": "殲滅",
     "affiliation": "地球連邦軍",
-    "physical": {
-      "height": null,
-      "age": 28
-    },
-    "units": [
-      "ジム・カスタム"
-    ],
+    "illustrator": "",
     "stats": {
       "mobility": 120,
       "ranged_attack": 150,
       "melee_attack": 140,
       "hp": 130
     },
+    "link_ability": [
+      {
+        "name": "ガンダム0083",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "巧みな連携戦術",
+        "condition": "デッキに2枚以上",
+        "effect": "[遠距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "ALPHA A BAIT",
+    "physical": {
+      "height": "",
+      "age": 28
+    },
+    "units": [
+      "ジム・カスタム"
+    ],
     "pilot_skill": {
       "name": "揺るがない攻勢",
       "trigger": "敵ユニットを撃破時",
       "effect": "30秒間、自身の[遠距離攻撃力][近距離攻撃力]を小アップする。",
       "has_sq_skill": false,
-      "sq_skill_details": null
-    },
-    "link_ability": [
-      {
-        "name": "ガンダム0083",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "巧みな連携戦術",
-        "condition": "デッキに2枚以上",
-        "effect": "[遠距離攻撃力]小アップ"
-      }
-    ],
-    "rarity": "C",
-    "illustrator": null,
-    "raw": "PL\n\n殲滅 コスト3\n\nアルファ・A・ベイト\nALPHA A BAIT\n\n機動戦士ガンダム0083\nSTARDUST MEMORY\n[アイコン:地球連邦軍エンブレム]\n\n身長 ー\n年齢 28歳\n所属 地球連邦軍\n搭乗機体 ジム・カスタム\n\nPL SKILL\n\n揺るがない攻勢\n\n敵ユニットを撃破時\n\n30秒間、自身の[遠距離攻撃力][近距離攻撃力]を小アップする。\n\nLINK ABILITY\n\nガンダム0083 デッキに3枚以上\n[機動力]小アップ\n\n巧みな連携戦術 デッキに2枚以上\n[遠距離攻撃力]小アップ\n\n機動力 120\n遠距離攻撃 150\n近距離攻撃 140\nHP 130\n\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n\n機動戦士ガンダム\nARSENAL BASE®\n\nAB03-079 C"
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_raw_file": "SEASON_03_AB03-079_アルファ・A・ベイト_ocr_raw.json",
   "ocr_timestamp": "2026-02-23T15:18:00.230837",

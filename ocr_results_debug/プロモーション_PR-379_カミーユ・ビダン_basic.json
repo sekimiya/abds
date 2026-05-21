@@ -5,44 +5,50 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-379.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-379_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "PR-379",
     "type": "PL",
-    "card_label": {
-      "class": "殲滅",
-      "cost_label": "コスト2"
-    },
     "name": "カミーユ・ビダン",
     "cost": 2,
-    "category": "機動戦士Zガンダム",
+    "rarity": "PR",
+    "category": "殲滅",
     "affiliation": "エゥーゴ",
+    "illustrator": "Kazuhiko Honda",
     "stats": {
       "mobility": 190,
       "ranged_attack": 50,
       "melee_attack": 230,
       "hp": 270
     },
+    "link_ability": [
+      {
+        "name": "機動戦士Zガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "圧倒する殲滅力",
+        "condition": "デッキに殲滅が3枚以上",
+        "effect": "殲滅タイプに対してダメージ中アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "",
+    "physical": null,
+    "units": null,
     "pilot_skill": {
       "name": "本領発揮",
       "trigger": "HP80%以下の時",
       "effect": "40秒間、自身の[近距離攻撃力]を中アップし、受けるダメージを軽減する。",
       "has_sq_skill": false,
-      "sq_skill_details": null
-    },
-    "link_ability": [
-      {
-        "name": "機動戦士Zガンダム",
-        "condition": "デッキに3枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      },
-      {
-        "name": "圧倒する殲滅力",
-        "condition": "デッキに殲滅が3枚以上",
-        "effect": "殲滅タイプに対してダメージ中アップ"
-      }
-    ],
-    "rarity": "PR",
-    "illustrator": "Kazuhiko Honda",
-    "raw": "殲滅　コスト2\n\nカミーユ・ビダン\nKAMILLE BIDAN\n\n身長　ー\n年齢　17歳\n所属　エゥーゴ\n搭乗機体　Zガンダム、ガンダムMk-Ⅱ、\n　　　　　ガンダムMk-Ⅱ（ティターンズ仕様）、Zガンダム（鑑賞カラー）\n\nPL SKILL\n本領発揮\nHP80%以下の時\n\n40秒間、自身の[近距離攻撃力]を\n中アップし、受けるダメージを軽減\nする。\n\nLINK ABILITY\n機動戦士Zガンダム　デッキに3枚以上\n[遠距離攻撃力][近距離攻撃力]\n小アップ\n\n圧倒する殲滅力　デッキに殲滅が3枚以上\n殲滅タイプに対してダメージ中\nアップ\n\n機動力　190\n遠距離攻撃　50\n近距離攻撃　230\nHP　270\n\nillust. Kazuhiko Honda\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n\nNOT FOR SALE\nPR-379　PR"
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_raw_file": "プロモーション_PR-379_カミーユ・ビダン_ocr_raw.json",
   "ocr_timestamp": "2026-03-03T19:21:08.349437",

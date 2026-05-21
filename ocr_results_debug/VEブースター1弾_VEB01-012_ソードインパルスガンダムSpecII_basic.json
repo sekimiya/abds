@@ -5,27 +5,56 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/VEB01-012.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/VEB01-012_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "VEB01-012",
     "type": "MS",
-    "card_label": { "class": "遠距離", "cost_label": "コスト3" },
     "name": "ソードインパルスガンダムSpecII",
-    "model": "ZGMF-56E2/β SWORD IMPULSE GUNDAM SPECII",
     "cost": 3,
+    "rarity": "R",
     "category": "遠距離",
     "affiliation": "コンパス",
-    "pilot": "ルナマリア・ホーク",
+    "illustrator": "",
     "stats": {
-      "height": "19.37m",
-      "weight": "78.93t",
       "mobility": 220,
       "ranged_attack": 210,
       "melee_attack": 80,
       "hp": 290
     },
-    "terrain_compatibility": { "ground": "S", "space": "A", "desert": "B", "water": "A" },
+    "link_ability": [
+      {
+        "name": "SEED FREEDOM",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "ルナマリア・ホーク",
+    "model": "ZGMF-56E2/β SWORD IMPULSE GUNDAM SPECII",
+    "terrain_compatibility": {
+      "ground": "S",
+      "space": "A",
+      "desert": "B",
+      "water": "A"
+    },
     "weapon": {
-      "main": { "name": "試製35式改レールガン", "range": 3, "type": "遠距離" },
-      "sub": { "name": "エクスカリバー レーザー対艦刀", "range": 1, "type": "近距離" }
+      "main": {
+        "name": "試製35式改レールガン",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "エクスカリバー レーザー対艦刀",
+        "range": 1,
+        "type": "近距離"
+      }
     },
     "ms_ability": {
       "name": "誘導",
@@ -35,18 +64,6 @@
       "cost": 4,
       "description": "25秒間、自身をロックオン距離内に捉えている敵ユニットのターゲットを自身に集める。"
     },
-    "link_ability": [
-      {
-        "name": "SEED FREEDOM",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "多彩な戦術",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "試製35式改レールガン撃射",
       "target": "単体(敵)",
@@ -54,10 +71,11 @@
       "sp_cost": 2,
       "power": 3200,
       "description": "敵単体に射撃攻撃でダメージを与える。/ー",
-      "united_sp": null
-    },
-    "rarity": "R",
-    "raw": "遠距離 コスト3\nZGMF-56E2/β SWORD IMPULSE GUNDAM SPECII\nソードインパルスガンダムSpecII\n頭頂高 19.37m\n本体重量 78.93t\n所属 コンパス\nパイロット ルナマリア・ホーク\n地上 S 宇宙 A 砂漠 B 水中 A\n機動力 220\n遠距離攻撃 210\n近距離攻撃 80\nHP 290\nWEAPON\nMAIN 試製35式改レールガン 射程3 遠距離\nSUB エクスカリバー レーザー対艦刀 射程1 近距離\nMS ABILITY\n誘導\n任意発動 特殊(敵) 射程ー コスト4\n25秒間、自身をロックオン距離内に捉えている敵ユニットのターゲットを自身に集める。\nLINK ABILITY\nSEED FREEDOM デッキに3枚以上\n[機動力]小アップ\n多彩な戦術 デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\nSPECIAL ATTACK ECHOES BEAT\n試製35式改レールガン撃射 ー\nー\n単体(敵) 射程3 ー 射程ー\nSPコスト2 威力 3200 / ー\n敵単体に射撃攻撃でダメージを与える。/ー\nVEB01-012 R"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_timestamp": "2026-04-16T11:50:00.000000",
   "ocr_type": "basic",

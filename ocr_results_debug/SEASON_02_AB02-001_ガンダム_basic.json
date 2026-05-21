@@ -5,31 +5,44 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB02-001.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB02-001_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "AB02-001",
     "type": "MS",
-    "card_label": {
-      "class": "近距離",
-      "cost_label": "コスト5"
-    },
     "name": "ガンダム",
-    "model": "RX-78-2 GUNDAM",
     "cost": 5,
+    "rarity": "R",
     "category": "近距離",
     "affiliation": "地球連邦軍",
-    "pilot": "アムロ・レイ",
+    "illustrator": "Hiroshi Ayaragi",
     "stats": {
-      "height": "18.0m",
-      "weight": "43.4t",
       "mobility": 100,
       "ranged_attack": 0,
       "melee_attack": 320,
       "hp": 350
     },
+    "link_ability": [
+      {
+        "name": "機動戦士ガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "その名はガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "アムロ・レイ",
+    "model": "RX-78-2 GUNDAM",
     "terrain_compatibility": {
       "ground": "A",
       "space": "A",
       "desert": "C",
-      "water": null
+      "water": ""
     },
     "weapon": {
       "main": {
@@ -40,7 +53,7 @@
       "sub": {
         "name": "シールド",
         "range": null,
-        "type": null
+        "type": ""
       }
     },
     "ms_ability": {
@@ -51,18 +64,6 @@
       "cost": 4,
       "description": "25秒間、自身をロックオン距離内に捉えている敵ユニットのターゲットを自身に集める。"
     },
-    "link_ability": [
-      {
-        "name": "機動戦士ガンダム",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "その名はガンダム",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "ビーム・サーベル強撃",
       "target": "単体(敵)",
@@ -70,11 +71,11 @@
       "sp_cost": 2,
       "power": 3400,
       "description": "敵単体に格闘攻撃でダメージを与える。",
-      "united_sp": null
-    },
-    "rarity": "R",
-    "illustrator": "Hiroshi Ayaragi",
-    "raw": "MS\n\n近距離 コスト5\n\nRX-78-2 GUNDAM\nガンダム\n\n全高 18.0m\n本体重量 43.4t\n所属 地球連邦軍\nパイロット アムロ・レイ\n\n地上 A 宇宙 A 砂漠 C\n機動力 100\n遠距離攻撃 0\n近距離攻撃 320\nHP 350\n\nWEAPON\n\nMAIN ビーム・サーベル 射程 1 近距離\nSUB シールド 射程 ―\n\nLINK ABILITY\n\n機動戦士ガンダム デッキに3枚以上\n[機動力]小アップ\n\nその名はガンダム デッキに3枚以上\n[機動力]小アップ\n\nMS ABILITY\n\n誘導\n\n任意発動 特殊(敵) 射程 ― コスト 4\n\n25秒間、自身をロックオン距離内に捉えている敵ユニットのターゲットを自身に集める。\n\nSPECIAL ATTACK\n\nビーム・サーベル強撃\n\n単体(敵) 射程 2\nSPコスト 2 威力 3400\n\n敵単体に格闘攻撃でダメージを与える。\n\nIMPACT AREA\n\n[アイコン:緑丸 中央]\n[アイコン:黄三角 中央下]\n\nillust Hiroshi Ayaragi\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n\n機動戦士ガンダム\nARSENAL BASE®\n\nAB02-001 R"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "SEASON_02_AB02-001_ガンダム_ocr_raw.json",
   "ocr_timestamp": "2026-02-23T15:07:14.744979",

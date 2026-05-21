@@ -5,31 +5,36 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB01-043_p1.jpg?v8",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB01-043_p1_b.jpg?v8",
   "ocr_data": {
-    "card_id": "AB01-043",
     "type": "MS",
-    "card_label": {
-      "class": "機動",
-      "cost_label": "コスト3"
-    },
     "name": "ガンダム・キマリス",
-    "model": "ASW-G-66 GUNDAM KIMARIS",
     "cost": 3,
+    "rarity": "P",
     "category": "機動",
     "affiliation": "ギャラルホルン",
-    "pilot": "ガエリオ・ボードウィン",
+    "illustrator": "Eske Yoshinob",
     "stats": {
-      "height": "19.3m",
-      "weight": "31.7t",
       "mobility": 300,
       "ranged_attack": 200,
       "melee_attack": 300,
       "hp": 290
     },
+    "link_ability": [
+      {
+        "name": "鉄血のオルフェンズ",
+        "condition": "デッキに3枚以上",
+        "effect": "[近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "ガエリオ・ボードウィン",
+    "model": "ASW-G-66 GUNDAM KIMARIS",
     "terrain_compatibility": {
       "ground": "A",
       "space": "S",
       "desert": "C",
-      "water": null
+      "water": ""
     },
     "weapon": {
       "main": {
@@ -51,13 +56,6 @@
       "cost": 3,
       "description": "20秒間、ロックオン中の敵を中心とした小範囲内の敵ユニットの[SP威力]を中ダウンする。"
     },
-    "link_ability": [
-      {
-        "name": "鉄血のオルフェンズ",
-        "condition": "デッキに3枚以上",
-        "effect": "[近距離攻撃力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "グングニール突撃",
       "target": "貫通(敵)",
@@ -65,11 +63,11 @@
       "sp_cost": 2,
       "power": 3200,
       "description": "射線上の敵に貫通格闘攻撃でダメージを与える。",
-      "united_sp": null
-    },
-    "rarity": "P",
-    "illustrator": "Eske Yoshinob",
-    "raw": "MS\n\n機動 コスト3\nASW-G-66 GUNDAM KIMARIS\nガンダム・キマリス\n\n全高 19.3m\n本体重量 31.7t\n所属 ギャラルホルン\nパイロット ガエリオ・ボードウィン\n\n地上 A 宇宙 S 砂漠 C\n機動力 300\n遠距離攻撃 200\n近距離攻撃 300\nHP 290\n\nWEAPON\nMAIN グングニール 射程 1 近距離\nSUB グングニール(120mm砲) 射程 3 遠距離\n\nLINK ABILITY\n鉄血のオルフェンズ\nデッキに3枚以上\n\n[近距離攻撃力]小アップ\n\nMS ABILITY\n閃光[SP]\n任意発動 範囲(敵) 射程 2 コスト 3\n\n20秒間、ロックオン中の敵を中心とした小範囲内の敵ユニットの[SP威力]を中ダウンする。\n\nSPECIAL ATTACK\nグングニール突撃\n貫通(敵) 射程 2\nSPコスト 2 威力 3200\n\n射線上の敵に貫通格闘攻撃でダメージを与える。\n\nIMPACT AREA\n[アイコン:×マーク付き円形範囲、中央に配置]\n\nillust Eske Yoshinob\n©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nAB01-043 P PARALLEL\n\n[アイコン:鉄血のオルフェンズ作品ロゴ]"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "AB01-043_p1_ガンダム・キマリス_ocr_raw.json",
   "ocr_timestamp": "2026-02-23T12:30:22.445710",

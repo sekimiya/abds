@@ -5,26 +5,39 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT04-027.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT04-027_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "UT04-027",
     "type": "MS",
-    "card_label": {
-      "class": "近距離",
-      "cost_label": "コスト3"
-    },
     "name": "ダブルオーガンダム",
-    "model": "GN-0000 00 GUNDAM",
     "cost": 3,
+    "rarity": "U",
     "category": "近距離",
     "affiliation": "ソレスタルビーイング",
-    "pilot": "刹那・F・セイエイ",
+    "illustrator": "TAKA-F",
     "stats": {
-      "height": "18.3m",
-      "weight": "54.9t",
       "mobility": 300,
       "ranged_attack": 100,
       "melee_attack": 400,
       "hp": 300
     },
+    "link_ability": [
+      {
+        "name": "ガンダム00",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "トランザムの真価",
+        "condition": "デッキに2枚以上",
+        "effect": "[遠／近攻撃力]小アップ、専用作戦カードが使用可能",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "刹那・F・セイエイ",
+    "model": "GN-0000 00 GUNDAM",
     "terrain_compatibility": {
       "ground": "S",
       "space": "A",
@@ -51,18 +64,6 @@
       "cost": 4,
       "description": "指定した味方ユニットの範囲内に移動後、一定時間連携状態となり、自身と連携中の味方が受けるダメージを軽減する。"
     },
-    "link_ability": [
-      {
-        "name": "ガンダム00",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "トランザムの真価",
-        "condition": "デッキに2枚以上",
-        "effect": "[遠／近攻撃力]小アップ、専用作戦カードが使用可能"
-      }
-    ],
     "special_attack": {
       "name": "GNソードII強撃",
       "target": "単体(敵)",
@@ -70,21 +71,22 @@
       "sp_cost": 2,
       "power": 3600,
       "description": "敵単体に格闘攻撃でダメージを与える。",
+      "sp_type": "",
+      "echoes_beat": null,
       "united_sp": {
         "name": "ソレスタルビーイング",
-        "partner1": "ケルディムガンダム",
-        "partner2": "アリオスガンダム",
-        "partner3": "セラヴィーガンダム",
-        "partner4": null,
+        "partners": [
+          "ケルディムガンダム",
+          "アリオスガンダム",
+          "セラヴィーガンダム"
+        ],
         "target": "範囲(敵)",
         "range": 3,
         "power": 4700,
         "description": "対象の敵を中心として範囲射撃と格闘でダメージを与え、攻撃に参加したユニットは一定時間トランザムを発動する。出撃時1度のみ使用可能。"
-      }
-    },
-    "rarity": "U",
-    "illustrator": "TAKA-F",
-    "raw": "MS\n\n近距離　コスト3\n\nGN-0000 00 GUNDAM\nダブルオーガンダム\n\n頭頂高　18.3m\n本体重量　54.9t\n所属　ソレスタルビーイング\nパイロット　刹那・F・セイエイ\n\n地上 S　宇宙 A　砂漠 C　水中 A\n\n機動力 300\n遠距離攻撃力 100\n近距離攻撃力 400\nHP 300\n\nWEAPON\nMAIN GNソードII　射程 1　近距離\nSUB GNソードII(ライフルモード)　射程 3　遠距離\n\nLINK ABILITY\nガンダム00　デッキに3枚以上\n[機動力]小アップ\n\nMS ABILITY\n双甲\n任意発動　特殊(自分)　射程 ー　コスト 4\n指定した味方ユニットの範囲内に移動後、一定時間連携状態となり、自身と連携中の味方が受けるダメージを軽減する。\n\nトランザムの真価　デッキに2枚以上\n[遠／近攻撃力]小アップ、専用作戦カードが使用可能\n\nSPECIAL ATTACK　　　　UNITED SP\nGNソードII強撃　　　　ソレスタルビーイング\n連携 ケルディムガンダム　連携 アリオスガンダム\n連携 セラヴィーガンダム　連携 ー\n単体(敵)　射程 2　　　範囲(敵)　射程 3\nSPコスト 2　威力 3600 / 4700\n\n敵単体に格闘攻撃でダメージを与える。／対象の敵を中心として範囲射撃と格闘でダメージを与え、攻撃に参加したユニットは一定時間トランザムを発動する。出撃時1度のみ使用可能。\n\nIMPACT AREA\n[アイコン:×マーカー 中央やや上]\n[アイコン:●マーカー 中央]\n[アイコン:△マーカー 中央やや下]\n\nillust TAKA-F\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\nUT04-027　U"
+      },
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "UNITRIBE_SEASON_04_UT04-027_ダブルオーガンダム_ocr_raw.json",
   "ocr_timestamp": "2026-02-28T08:32:48.822173",

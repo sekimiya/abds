@@ -5,26 +5,39 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-266.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-266_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "PR-266",
     "type": "MS",
-    "card_label": {
-      "class": "機動",
-      "cost_label": "コスト4"
-    },
     "name": "ライジングフリーダムガンダム",
-    "model": "STTS-909 RISING FREEDOM GUNDAM",
     "cost": 4,
-    "category": "機動戦士ガンダムSEED FREEDOM",
+    "rarity": "PR",
+    "category": "機動",
     "affiliation": "コンパス",
-    "pilot": "キラ・ヤマト",
+    "illustrator": "haru",
     "stats": {
-      "height": "17.80m",
-      "weight": "67.90t",
       "mobility": 280,
       "ranged_attack": 340,
       "melee_attack": 90,
       "hp": 340
     },
+    "link_ability": [
+      {
+        "name": "SEED FREEDOM",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "キラ・ヤマト",
+    "model": "STTS-909 RISING FREEDOM GUNDAM",
     "terrain_compatibility": {
       "ground": "A",
       "space": "S",
@@ -51,18 +64,6 @@
       "cost": 3,
       "description": "ロックオン中の敵に単体攻撃でダメージを与え、強化状態を無効化する。"
     },
-    "link_ability": [
-      {
-        "name": "SEED FREEDOM",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "多彩な戦術",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "ハイマットフルバースト",
       "target": "範囲(敵)",
@@ -70,17 +71,20 @@
       "sp_cost": 2,
       "power": 2800,
       "description": "ロックオン中の敵を中心に扇状の範囲攻撃を行い、範囲内の敵にダメージを与える。",
+      "sp_type": "",
+      "echoes_beat": null,
       "united_sp": {
-        "partner1": "イモータルジャスティスガンダム",
-        "partner2": null,
+        "name": "",
+        "partners": [
+          "イモータルジャスティスガンダム"
+        ],
+        "target": "",
         "range": 4,
         "power": 5400,
         "description": "敵単体に格闘攻撃でダメージを与える。出撃時1度のみ使用可能。"
-      }
-    },
-    "rarity": "PR",
-    "illustrator": "haru",
-    "raw": "機動 コスト4\nMS\nSTTS-909 RISING FREEDOM GUNDAM\nライジングフリーダムガンダム\n\n頭頂高 17.80m\n本体重量 67.90t\n所属 コンパス\nパイロット キラ・ヤマト\n\n地上 A 宇宙 S 砂漠 A 水中 C\n機動力 280\n遠距離攻撃 340\n近距離攻撃 90\nHP 340\n\nWEAPON\nMAIN 高エネルギービームライフル 射程 3 遠距離\nSUB ヴェルシーナ ビームサーベル 射程 1 近距離\n\nMS ABILITY\n断砕\n任意発動 単体(敵) 射程 3 コスト 3\nロックオン中の敵に単体攻撃でダメージを与え、強化状態を無効化する。\n\nLINK ABILITY\nSEED FREEDOM デッキに3枚以上\n[機動力]小アップ\n\n多彩な戦術 デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nSPECIAL ATTACK | UNITED SP\nハイマットフルバースト コンビネーション・アサルト\n連携 イモータルジャスティスガンダム 連携 ー\n連携 ー 連携 ー\n範囲(敵) 射程 4 単体(敵) 射程 4\nSPコスト 2 威力 2800 / 5400\nロックオン中の敵を中心に扇状の範囲攻撃を行い、範囲内の敵にダメージを与える。／敵単体に格闘攻撃でダメージを与える。出撃時1度のみ使用可能。\n\nIMPACT AREA\n\nillust. haru\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム\nARSENAL BASE®\nPR-266 PR"
+      },
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "プロモーション_PR-266_ライジングフリーダムガンダム_ocr_raw.json",
   "ocr_timestamp": "2026-03-03T23:10:38.808506",

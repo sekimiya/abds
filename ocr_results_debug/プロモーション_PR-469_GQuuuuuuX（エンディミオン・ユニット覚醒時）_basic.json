@@ -5,26 +5,39 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-469.jpg?v8",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-469_b.jpg?v8",
   "ocr_data": {
-    "card_id": "PR-469",
     "type": "MS",
-    "card_label": {
-      "class": "機動",
-      "cost_label": "コスト5"
-    },
     "name": "GQuuuuuuX（エンディミオン・ユニット覚醒時）",
-    "model": "gMS-Ω GQuuuuuuX (Endymion Unit Awakened)",
     "cost": 5,
+    "rarity": "PR",
     "category": "機動",
     "affiliation": "ー",
-    "pilot": "アマテ・ユズリハ（マチュ）",
+    "illustrator": "Eske Yoshinob",
     "stats": {
-      "height": "18.0m",
-      "weight": "42.4t",
       "mobility": 260,
       "ranged_attack": 60,
       "melee_attack": 420,
       "hp": 460
     },
+    "link_ability": [
+      {
+        "name": "GQuuuuuuX",
+        "condition": "デッキに3枚以上",
+        "effect": "[HP]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "アマテ・ユズリハ（マチュ）",
+    "model": "gMS-Ω GQuuuuuuX (Endymion Unit Awakened)",
     "terrain_compatibility": {
       "ground": "A",
       "space": "S",
@@ -51,18 +64,6 @@
       "cost": 4,
       "description": "自身を中心とした範囲内の敵に範囲攻撃を行い、メイン武装を使用不能にさせる。出撃時1度のみ使用可能。"
     },
-    "link_ability": [
-      {
-        "name": "GQuuuuuuX",
-        "condition": "デッキに3枚以上",
-        "effect": "[HP]小アップ"
-      },
-      {
-        "name": "戦況を変える力",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "ハイパー・ビーム・アックス",
       "target": "単体(敵)",
@@ -71,16 +72,19 @@
       "power": 3400,
       "description": "敵単体に格闘攻撃でダメージを与え、以後通常攻撃が自身を中心とした範囲攻撃に変化する。戦術技後は能力が上昇。自身が撤退するまで効果は持続する。/敵単体に射撃と格闘攻撃でダメージを与え、強化状態を無効化する。攻撃に参加したユニットは一定時間[遠/近攻撃力]を大アップする。出撃時1度のみ使用可能。",
       "sp_type": "UNITED SP",
+      "echoes_beat": null,
       "united_sp": {
         "name": "MAV連携",
-        "partners": ["GFreD"],
+        "partners": [
+          "GFreD"
+        ],
         "target": "単体(敵)",
         "range": 3,
-        "power": 4900
-      }
-    },
-    "rarity": "PR",
-    "illustrator": "Eske Yoshinob"
+        "power": 4900,
+        "description": ""
+      },
+      "squad_sp": null
+    }
   },
   "ocr_timestamp": "2026-05-11T00:00:00.000000",
   "ocr_type": "basic",

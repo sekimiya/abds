@@ -5,44 +5,50 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/VEB01-016.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/VEB01-016_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "VEB01-016",
     "type": "PL",
-    "card_label": {
-      "class": "殲滅",
-      "cost_label": "コスト3"
-    },
-    "name": "アムロ・レイ",
+    "name": "VEB01-016",
     "cost": 3,
-    "category": "機動戦士ガンダム",
+    "rarity": "P",
+    "category": "殲滅",
     "affiliation": "地球連邦軍",
+    "illustrator": "",
     "stats": {
       "mobility": 180,
       "ranged_attack": 290,
       "melee_attack": 20,
       "hp": 330
     },
+    "link_ability": [
+      {
+        "name": "[EB]宇宙に響く鼓動",
+        "condition": "デッキに3枚以上",
+        "effect": "ECHOES BEAT Lv.が表示される。味方ユニットが戦術技を発動するとEBLv.が上がる。[HP][SP威力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "",
+    "physical": null,
+    "units": null,
     "pilot_skill": {
       "name": "冷静な指揮系統",
       "trigger": "EBLv.1時",
       "effect": "自身のSPゲージ回復速度がアップする。このPLスキルの効果は重複しない。",
       "has_sq_skill": false,
-      "sq_skill_details": null
-    },
-    "link_ability": [
-      {
-        "name": "[EB]宇宙に響く鼓動",
-        "condition": "デッキに3枚以上",
-        "effect": "ECHOES BEAT Lv.が表示される。味方ユニットが戦術技を発動するとEBLv.が上がる。[HP][SP威力]小アップ"
-      },
-      {
-        "name": "戦況を変える力",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      }
-    ],
-    "rarity": "P",
-    "illustrator": null,
-    "raw": "殲滅　コスト3\n\nアムロ・レイ\nAMURO RAY\n\n身長　168cm\n年齢　15歳\n所属　地球連邦軍\n搭乗機体　ガンダム(最終決戦仕様)、ガンダム\n\nEB　PL SKILL\n冷静な指揮系統\nEBLv.1時\n\n自身のSPゲージ回復速度がアップする。このPLスキルの効果は重複しない。\n\nEB　LINK ABILITY\n宇宙に響く鼓動　デッキに3枚以上\nECHOES BEAT Lv.が表示される。\n味方ユニットが戦術技を発動するとEBLv.が上がる。\n[HP][SP威力]小アップ\n\n戦況を変える力　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\n機動力　180\n遠距離攻撃　290\n近距離攻撃　20\nHP　330\n\n©創通・サンライズ　©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n\nVEB01-016　P"
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": 1,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_raw_file": "VEブースター1弾_VEB01-016_VEB01-016_ocr_raw.json",
   "ocr_timestamp": "2026-03-19T20:22:37.280520",

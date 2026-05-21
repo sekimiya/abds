@@ -5,26 +5,39 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT03-030.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT03-030_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "UT03-030",
     "type": "MS",
-    "card_label": {
-      "class": "近距離",
-      "cost_label": "コスト6"
-    },
     "name": "ガンダムアストレイ ゴールドフレーム天",
-    "model": "MBF-P01-Re GUNDAM ASTRAY GOLD FRAME AMATSU",
     "cost": 6,
+    "rarity": "U",
     "category": "近距離",
     "affiliation": "オーブ",
-    "pilot": "ロンド・ギナ・サハク",
+    "illustrator": "Chifuyu Yukishiro",
     "stats": {
-      "height": "17.99m",
-      "weight": "73.2t",
       "mobility": 280,
       "ranged_attack": 220,
       "melee_attack": 550,
       "hp": 550
     },
+    "link_ability": [
+      {
+        "name": "SEED ASTRAY",
+        "condition": "デッキに2枚以上",
+        "effect": "[近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "選ばれし者",
+        "condition": "デッキに2枚以上",
+        "effect": "[近距離攻撃力][HP]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "ロンド・ギナ・サハク",
+    "model": "MBF-P01-Re GUNDAM ASTRAY GOLD FRAME AMATSU",
     "terrain_compatibility": {
       "ground": "A",
       "space": "S",
@@ -51,18 +64,6 @@
       "cost": 4,
       "description": "一定時間、範囲内に入った敵ユニットの[機動力]をダウンするエリアを設置する。※上限3箇所まで。"
     },
-    "link_ability": [
-      {
-        "name": "SEED ASTRAY",
-        "condition": "デッキに2枚以上",
-        "effect": "[近距離攻撃力]小アップ"
-      },
-      {
-        "name": "選ばれし者",
-        "condition": "デッキに2枚以上",
-        "effect": "[近距離攻撃力][HP]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "マガノイクタチ強襲",
       "target": "単体(敵)",
@@ -70,11 +71,11 @@
       "sp_cost": 2,
       "power": 3700,
       "description": "敵単体に格闘攻撃でダメージを与え、自身のHPを中回復する。",
-      "united_sp": null
-    },
-    "rarity": "U",
-    "illustrator": "Chifuyu Yukishiro",
-    "raw": "MS\n\n近距離　コスト6\n\nMBF-P01-Re GUNDAM ASTRAY GOLD FRAME AMATSU\nガンダムアストレイ ゴールドフレーム天\n\n頭頂高　17.99m\n本体重量　73.2t\n所属　オーブ\nパイロット　ロンド・ギナ・サハク\n\n地上 A　宇宙 S　砂漠 B　水中 C\n\n機動力 280\n遠距離攻撃 220\n近距離攻撃 550\nHP 550\n\nWEAPON\nMAIN トリケロス改(ビームサーベル)　射程 1　近距離\nSUB トリケロス改(ビームライフル)　射程 3　遠距離\n\nLINK ABILITY\nSEED ASTRAY　デッキに2枚以上\n[近距離攻撃力]小アップ\n\n選ばれし者　デッキに2枚以上\n[近距離攻撃力][HP]小アップ\n\nMS ABILITY\n陣略[妨害/機動]\n任意発動　範囲(敵)　射程 ー　コスト 4\n一定時間、範囲内に入った敵ユニットの[機動力]をダウンするエリアを設置する。\n※上限3箇所まで。\n\nSPECIAL ATTACK　　UNITED SP\nマガノイクタチ強襲　　ー\n連携 ー　　連携 ー\n連携 ー　　連携 ー\n単体(敵)　射程 2　　ー　射程 ー\nSPコスト 2　威力 3700 / ー\n\n敵単体に格闘攻撃でダメージを与え、自身のHPを中回復する。/ ー\n\nIMPACT AREA\n[アイコン:中央×印、前方やや右に黄色円エリア、後方中央に緑小円、下方中央に三角マーク]\n\nillust Chifuyu Yukishiro\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nUT03-030　U"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "UNITRIBE_SEASON_03_UT03-030_ガンダムアストレイ_ゴールドフレーム天_ocr_raw.json",
   "ocr_timestamp": "2026-02-26T17:22:55.792772",

@@ -5,52 +5,55 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB01-058.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB01-058_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "AB01-058",
     "type": "PL",
-    "card_label": {
-      "class": "殲滅",
-      "cost_label": "コスト3"
-    },
     "name": "ガイア",
-    "english_name": "GAIA",
     "cost": 3,
+    "rarity": "R",
     "category": "殲滅",
     "affiliation": "ジオン公国軍",
-    "physical": {
-      "height": null,
-      "age": null
-    },
-    "units": [
-      "ドム"
-    ],
+    "illustrator": "",
     "stats": {
       "mobility": 160,
       "ranged_attack": 60,
       "melee_attack": 200,
       "hp": 120
     },
+    "link_ability": [
+      {
+        "name": "機動戦士ガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "黒い三連星",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "GAIA",
+    "physical": {
+      "height": "",
+      "age": ""
+    },
+    "units": [
+      "ドム"
+    ],
     "pilot_skill": {
       "name": "統制された連携攻撃",
       "trigger": "味方ユニットと同じ敵をロックオン時",
       "effect": "30秒間、自身の[近距離攻撃力]を小アップする。",
       "has_sq_skill": false,
-      "sq_skill_details": null
-    },
-    "link_ability": [
-      {
-        "name": "機動戦士ガンダム",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "黒い三連星",
-        "condition": "デッキに3枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      }
-    ],
-    "rarity": "R",
-    "illustrator": null,
-    "raw": "PL\n\n殲滅 コスト3\n\nガイア\nGAIA\n\n身長 —\n年齢 —\n所属 ジオン公国軍\n搭乗機体 ドム\n\nPL SKILL\n\n統制された連携攻撃\n\n味方ユニットと同じ敵をロックオン時\n\n30秒間、自身の[近距離攻撃力]を\n小アップする。\n\nLINK ABILITY\n\n機動戦士ガンダム デッキに3枚以上\n[機動力]小アップ\n\n黒い三連星 デッキに3枚以上\n[遠距離攻撃力][近距離攻撃力]\n小アップ\n\n機動力 160\n遠距離攻撃 60\n近距離攻撃 200\nHP 120\n\n[アイコン:機動戦士ガンダム作品ロゴ]\n[アイコン:ジオン紋章]\n\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n\n[アイコン:ARSENAL BASEロゴ] 機動戦士ガンダム ARSENAL BASE™\n\nAB01-058 R"
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_raw_file": "SEASON_01_AB01-058_ガイア_ocr_raw.json",
   "ocr_timestamp": "2026-02-23T12:39:09.416817",

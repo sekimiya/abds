@@ -5,17 +5,30 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/TEST-020.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/TEST-020_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "TEST-020",
     "type": "PL",
-    "card_label": {
-      "class": "殲滅",
-      "cost_label": "コスト2"
-    },
     "name": "カイ・シデン",
-    "english_name": "KAI SHIDEN",
     "cost": 2,
+    "rarity": "C",
     "category": "殲滅",
     "affiliation": "地球連邦軍",
+    "illustrator": "",
+    "stats": {
+      "mobility": 100,
+      "ranged_attack": 130,
+      "melee_attack": 90,
+      "hp": 110
+    },
+    "link_ability": [
+      {
+        "name": "機動戦士ガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "KAI SHIDEN",
     "physical": {
       "height": "168cm",
       "age": 17
@@ -23,29 +36,16 @@
     "units": [
       "ガンキャノン"
     ],
-    "stats": {
-      "mobility": 100,
-      "ranged_attack": 130,
-      "melee_attack": 90,
-      "hp": 110
-    },
     "pilot_skill": {
       "name": "的確な援護射撃",
       "trigger": "味方ユニットと同じ敵をロックオン時",
       "effect": "30秒間、自身の[遠距離攻撃力]を小アップする。",
       "has_sq_skill": false,
-      "sq_skill_details": null
-    },
-    "link_ability": [
-      {
-        "name": "機動戦士ガンダム",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      }
-    ],
-    "rarity": "C",
-    "illustrator": null,
-    "raw": "殲滅 コスト2\n\nPL\n\nカイ・シデン\nKAI SHIDEN\n\n身長 168cm\n年齢 17歳\n所属 地球連邦軍\n搭乗機体 ガンキャノン\n\nPL SKILL\n的確な援護射撃\n味方ユニットと同じ敵をロックオン時\n30秒間、自身の[遠距離攻撃力]を\n小アップする。\n\nLINK ABILITY\n機動戦士ガンダム デッキに3枚以上\n[機動力]小アップ\n\nー\nー\n\n機動力 100\n遠距離攻撃 130\n近距離攻撃 90\nHP 110\n\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nTEST-020 C"
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_raw_file": "ロケーションテスト_TEST-020_カイ・シデン_ocr_raw.json",
   "ocr_timestamp": "2026-03-02T05:11:36.144796",

@@ -5,44 +5,50 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-104.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-104_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "PR-104",
     "type": "PL",
-    "card_label": {
-      "class": "制圧",
-      "cost_label": "コスト1"
-    },
     "name": "アムロ・レイ",
     "cost": 1,
-    "category": "機動戦士ガンダム",
+    "rarity": "PR",
+    "category": "制圧",
     "affiliation": "地球連邦軍",
+    "illustrator": "Yasuto Morioka (BNSI)",
     "stats": {
       "mobility": 150,
       "ranged_attack": 210,
       "melee_attack": 170,
       "hp": 180
     },
+    "link_ability": [
+      {
+        "name": "機動戦士ガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "",
+    "physical": null,
+    "units": null,
     "pilot_skill": {
       "name": "戦士の矜持",
       "trigger": "出撃時",
       "effect": "自身が使用するMSアビリティ[増援]の初回使用コストを1ダウンする。",
       "has_sq_skill": false,
-      "sq_skill_details": null
-    },
-    "link_ability": [
-      {
-        "name": "機動戦士ガンダム",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "戦況を変える力",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      }
-    ],
-    "rarity": "PR",
-    "illustrator": "Yasuto Morioka (BNSI)",
-    "raw": "制圧　コスト1　PL\n\nアムロ・レイ\nAMURO RAY\n\n身長　168cm\n年齢　15歳\n所属　地球連邦軍\n搭乗機体　ガンダム\n\nPL SKILL\n戦士の矜持\n出撃時\n自身が使用するMSアビリティ[増援]の初回使用コストを1ダウンする。\n\nLINK ABILITY\n機動戦士ガンダム　デッキに3枚以上\n[機動力]小アップ\n\n戦況を変える力　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\n機動力　150\n遠距離攻撃　210\n近距離攻撃　170\nHP　180\n\nillust. Yasuto Morioka (BNSI)\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n\nNOT FOR SALE\nPR-104　PR"
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_raw_file": "プロモーション_PR-104_アムロ・レイ_ocr_raw.json",
   "ocr_timestamp": "2026-03-07T11:10:54.824128",

@@ -5,52 +5,55 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB02-086.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB02-086_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "AB02-086",
     "type": "PL",
-    "card_label": {
-      "class": "殲滅",
-      "cost_label": "コスト2"
-    },
     "name": "ヒロト",
-    "english_name": "HIROTO",
     "cost": 2,
+    "rarity": "R",
     "category": "殲滅",
     "affiliation": "BUILD DiVERS",
-    "physical": {
-      "height": null,
-      "age": 17
-    },
-    "units": [
-      "アースリィガンダム"
-    ],
+    "illustrator": "Juri Toida",
     "stats": {
       "mobility": 100,
       "ranged_attack": 150,
       "melee_attack": 130,
       "hp": 140
     },
+    "link_ability": [
+      {
+        "name": "Re:RISE",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "可変機ファイター",
+        "condition": "デッキに3枚以上",
+        "effect": "専用作戦カードが使用可能",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "HIROTO",
+    "physical": {
+      "height": "",
+      "age": 17
+    },
+    "units": [
+      "アースリィガンダム"
+    ],
     "pilot_skill": {
       "name": "揺るがない攻勢",
       "trigger": "敵ユニットを撃破時",
       "effect": "30秒間、自身の[遠距離攻撃力][近距離攻撃力]を小アップする。",
       "has_sq_skill": false,
-      "sq_skill_details": null
-    },
-    "link_ability": [
-      {
-        "name": "Re:RISE",
-        "condition": "デッキに3枚以上",
-        "effect": "[遠距離攻撃力]小アップ"
-      },
-      {
-        "name": "可変機ファイター",
-        "condition": "デッキに3枚以上",
-        "effect": "専用作戦カードが使用可能"
-      }
-    ],
-    "rarity": "R",
-    "illustrator": "Juri Toida",
-    "raw": "PL\n\n殲滅 コスト2\n\nヒロト\nHIROTO\n\n身長 ー\n年齢 17歳\n所属 BUILD DiVERS\n搭乗機体 アースリィガンダム\n\nPL SKILL\n\n揺るがない攻勢\n\n敵ユニットを撃破時\n\n30秒間、自身の[遠距離攻撃力][近距離攻撃力]を小アップする。\n\nLINK ABILITY\n\nRe:RISE デッキに3枚以上\n[遠距離攻撃力]小アップ\n\n可変機ファイター デッキに3枚以上\n専用作戦カードが使用可能\n\n機動力 100\n遠距離攻撃 150\n近距離攻撃 130\nHP 140\n\nillust Juri Toida\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n\n機動戦士ガンダム ARSENAL BASE®\n\nAB02-086 R"
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_raw_file": "SEASON_02_AB02-086_ヒロト_ocr_raw.json",
   "ocr_timestamp": "2026-02-23T15:12:21.908577",

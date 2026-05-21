@@ -5,44 +5,50 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-171.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-171_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "PR-171",
     "type": "PL",
-    "card_label": {
-      "class": "殲滅",
-      "cost_label": "コスト5"
-    },
     "name": "エル・ビアンノ",
     "cost": 5,
-    "category": "機動戦士ガンダムZZ",
+    "rarity": "PR",
+    "category": "殲滅",
     "affiliation": "エゥーゴ",
+    "illustrator": "Yosuke Ichikawa",
     "stats": {
       "mobility": 180,
       "ranged_attack": 310,
       "melee_attack": 100,
       "hp": 360
     },
+    "link_ability": [
+      {
+        "name": "機動戦士ガンダムZZ",
+        "condition": "デッキに3枚以上",
+        "effect": "[HP]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "",
+    "physical": null,
+    "units": null,
     "pilot_skill": {
       "name": "奮い立つ戦意",
       "trigger": "MSアビリティ発動時",
       "effect": "20秒間、出撃中の全味方ユニットの[遠距離攻撃力][近距離攻撃力]をアップする。",
       "has_sq_skill": false,
-      "sq_skill_details": null
-    },
-    "link_ability": [
-      {
-        "name": "機動戦士ガンダムZZ",
-        "condition": "デッキに3枚以上",
-        "effect": "[HP]小アップ"
-      },
-      {
-        "name": "多彩な戦術",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      }
-    ],
-    "rarity": "PR",
-    "illustrator": "Yosuke Ichikawa",
-    "raw": "殲滅　コスト5\n\nエル・ビアンノ\nELLE VIANNO\n\n身長　ー\n年齢　14歳\n所属　エゥーゴ\n搭乗機体　ガンダムMk-II\n\nPL SKILL\n奮い立つ戦意\nMSアビリティ発動時\n\n20秒間、出撃中の全味方ユニットの[遠距離攻撃力][近距離攻撃力]をアップする。\n\nLINK ABILITY\n機動戦士ガンダムZZ　デッキに3枚以上\n[HP]小アップ\n\n多彩な戦術　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\n機動力　180\n遠距離攻撃　310\n近距離攻撃　100\nHP　360\n\nillust. Yosuke Ichikawa\n©創通・サンライズ\nBANDAI MADE IN JAPAN\nNOT FOR SALE\nPR-171　PR"
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_raw_file": "プロモーション_PR-171_エル・ビアンノ_ocr_raw.json",
   "ocr_timestamp": "2026-03-07T11:50:09.350792",

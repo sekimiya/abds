@@ -5,31 +5,44 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-067.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-067_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "PR-067",
     "type": "MS",
-    "card_label": {
-      "class": "遠距離",
-      "cost_label": "コスト7"
-    },
     "name": "フリーダムガンダム",
-    "model": "ZGMF-X10A FREEDOM GUNDAM",
     "cost": 7,
-    "category": "MS",
+    "rarity": "PR",
+    "category": "遠距離",
     "affiliation": "ー",
-    "pilot": "キラ・ヤマト",
+    "illustrator": "Naochika Morishita",
     "stats": {
-      "height": "18.03m",
-      "weight": "71.5t",
       "mobility": 300,
       "ranged_attack": 420,
       "melee_attack": 280,
       "hp": 450
     },
+    "link_ability": [
+      {
+        "name": "ガンダムSEED",
+        "condition": "デッキに3枚以上",
+        "effect": "【機動力】小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "奪われし機体",
+        "condition": "デッキに2枚以上",
+        "effect": "【遠距離攻撃力】小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "キラ・ヤマト",
+    "model": "ZGMF-X10A FREEDOM GUNDAM",
     "terrain_compatibility": {
       "ground": "A",
       "space": "S",
       "desert": "A",
-      "water": null
+      "water": ""
     },
     "weapon": {
       "main": {
@@ -51,18 +64,6 @@
       "cost": 3,
       "description": "ロックオン中の敵ユニットに単体攻撃を行いダメージを与え、一定時間スタンさせる。"
     },
-    "link_ability": [
-      {
-        "name": "ガンダムSEED",
-        "condition": "デッキに3枚以上",
-        "effect": "【機動力】小アップ"
-      },
-      {
-        "name": "奪われし機体",
-        "condition": "デッキに2枚以上",
-        "effect": "【遠距離攻撃力】小アップ"
-      }
-    ],
     "special_attack": {
       "name": "ルプス・ビームライフル撃射",
       "target": "単体（敵）",
@@ -70,11 +71,11 @@
       "sp_cost": 2,
       "power": 3500,
       "description": "敵単体に射撃攻撃でダメージを与える。",
-      "united_sp": null
-    },
-    "rarity": "PR",
-    "illustrator": "Naochika Morishita",
-    "raw": "遠距離 コスト7\nZGMF-X10A FREEDOM GUNDAM\nフリーダムガンダム\n\n全高 18.03m\n本体重量 71.5t\n所属 ー\nパイロット キラ・ヤマト\n\n地上 A 宇宙 S 砂漠 A\n\n機動力 300\n遠距離攻撃 420\n近距離攻撃 280\nHP 450\n\nWEAPON\nMAIN ルプス・ビームライフル 射程 3 遠距離\nSUB ラケルタ・ビームサーベル 射程 1 近距離\n\nMS ABILITY\n縛射\n任意発動 単体（敵） 射程 3 コスト 3\nロックオン中の敵ユニットに単体攻撃を行いダメージを与え、一定時間スタンさせる。\n\nLINK ABILITY\nガンダムSEED デッキに3枚以上\n【機動力】小アップ\n\n奪われし機体 デッキに2枚以上\n【遠距離攻撃力】小アップ\n\nSPECIAL ATTACK\nルプス・ビームライフル撃射\n単体（敵） 射程 3\nSPコスト 2 威力 3500\n敵単体に射撃攻撃でダメージを与える。\n\nIMPACT AREA\n\nillust. Naochika Morishita\n©創通・サンライズ\nBANDAI MADE IN JAPAN\nPR-067 PR"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "プロモーション_PR-067_フリーダムガンダム_ocr_raw.json",
   "ocr_timestamp": "2026-03-07T12:50:17.505393",

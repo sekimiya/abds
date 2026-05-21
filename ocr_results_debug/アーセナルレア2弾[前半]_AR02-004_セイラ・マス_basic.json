@@ -5,39 +5,42 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AR02-004.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AR02-004_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "AR02-004",
     "type": "PL",
-    "card_label": {
-      "class": "防衛",
-      "cost_label": "コスト3"
-    },
     "name": "セイラ・マス",
     "cost": 3,
-    "category": "機動戦士ガンダム",
+    "rarity": "A",
+    "category": "防衛",
     "affiliation": "地球連邦軍",
+    "illustrator": "Naomi Yamamura + Umegrafix",
     "stats": {
       "mobility": 230,
       "ranged_attack": 210,
       "melee_attack": 160,
       "hp": 130
     },
+    "link_ability": [
+      {
+        "name": "機動戦士ガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "",
+    "physical": null,
+    "units": null,
     "pilot_skill": {
       "name": "粘り強い執念",
       "trigger": "HP50%以下の時",
       "effect": "35秒間、自身の[遠距離攻撃力][近距離攻撃力]を小アップする。",
       "has_sq_skill": false,
-      "sq_skill_details": null
-    },
-    "link_ability": [
-      {
-        "name": "機動戦士ガンダム",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      }
-    ],
-    "rarity": "A",
-    "illustrator": "Naomi Yamamura + Umegrafix",
-    "raw": "防衛　コスト3　PL\n\nセイラ・マス\nSAYLA MASS\n\n身長　ー\n年齢　17歳\n所属　地球連邦軍\n搭乗機体　ー\n\nPL SKILL\n粘り強い執念\nHP50%以下の時\n35秒間、自身の[遠距離攻撃力]\n[近距離攻撃力]を小アップする。\n\nLINK ABILITY\n機動戦士ガンダム　デッキに3枚以上\n[機動力]小アップ\n\nー　ー\n\nー\n\n機動力　230\n遠距離攻撃　210\n近距離攻撃　160\nHP　130\n\nillust　Naomi Yamamura + Umegrafix\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム　ARSENAL BASE®\nAR02-004　A"
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_raw_file": "アーセナルレア2弾[前半]_AR02-004_セイラ・マス_ocr_raw.json",
   "ocr_timestamp": "2026-03-07T15:03:56.699285",

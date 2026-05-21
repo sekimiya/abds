@@ -5,17 +5,38 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQB06-017.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQB06-017_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "FQB06-017",
     "type": "PL",
-    "card_label": {
-      "class": "防衛",
-      "cost_label": "コスト3"
-    },
     "name": "アムロ・レイ",
-    "english_name": "AMURO RAY",
     "cost": 3,
+    "rarity": "R",
     "category": "防衛",
     "affiliation": "地球連邦軍",
+    "illustrator": "",
+    "stats": {
+      "mobility": 170,
+      "ranged_attack": 80,
+      "melee_attack": 230,
+      "hp": 240
+    },
+    "link_ability": [
+      {
+        "name": "逆襲のシャア",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "AMURO RAY",
     "physical": {
       "height": "ー",
       "age": 29
@@ -24,34 +45,16 @@
       "Hi-νガンダム",
       "νガンダム"
     ],
-    "stats": {
-      "mobility": 170,
-      "ranged_attack": 80,
-      "melee_attack": 230,
-      "hp": 240
-    },
     "pilot_skill": {
       "name": "手慣れた戦闘態勢",
       "trigger": "自身が撤退時",
       "effect": "自身の修理時間を短縮する。",
       "has_sq_skill": false,
-      "sq_skill_details": null
-    },
-    "link_ability": [
-      {
-        "name": "逆襲のシャア",
-        "condition": "デッキに3枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      },
-      {
-        "name": "戦況を変える力",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      }
-    ],
-    "rarity": "R",
-    "illustrator": null,
-    "raw": "PL\n\n防衛 コスト3\n\nアムロ・レイ\nAMURO RAY\n\n[ロゴ:機動戦士ガンダム 逆襲のシャア]\n[アイコン:十字マーク]\n\n身長 ー\n年齢 29歳\n所属 地球連邦軍\n搭乗機体 Hi-νガンダム、νガンダム\n\nPL SKILL\n手慣れた戦闘態勢\n自身が撤退時\n自身の修理時間を短縮する。\n\nLINK ABILITY\n逆襲のシャア デッキに3枚以上\n[遠距離攻撃力][近距離攻撃力]\n小アップ\n\n戦況を変える力 デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]\n小アップ\n\n機動力 170\n遠距離攻撃 80\n近距離攻撃 230\nHP 240\n\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\nFQB06-017 R"
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_raw_file": "FQブースター6弾_FQB06-017_アムロ・レイ_ocr_raw.json",
   "ocr_timestamp": "2026-02-28T07:02:17.583299",

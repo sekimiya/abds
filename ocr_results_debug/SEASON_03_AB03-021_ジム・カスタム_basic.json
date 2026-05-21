@@ -5,31 +5,44 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB03-021.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB03-021_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "AB03-021",
     "type": "MS",
-    "card_label": {
-      "class": "機動",
-      "cost_label": "コスト3"
-    },
     "name": "ジム・カスタム",
-    "model": "RGM-79N GM CUSTOM",
     "cost": 3,
+    "rarity": "C",
     "category": "機動",
     "affiliation": "地球連邦軍",
-    "pilot": "サウス・バニング,アルファ・A・ベイト,ベルナルド・モンシア",
+    "illustrator": "gomibako",
     "stats": {
-      "height": "18.0m",
-      "weight": "42.0t",
       "mobility": 200,
       "ranged_attack": 190,
       "melee_attack": 180,
       "hp": 130
     },
+    "link_ability": [
+      {
+        "name": "ガンダム0083",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "実弾の突破力",
+        "condition": "デッキに2枚以上",
+        "effect": "[遠距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "サウス・バニング,アルファ・A・ベイト,ベルナルド・モンシア",
+    "model": "RGM-79N GM CUSTOM",
     "terrain_compatibility": {
       "ground": "A",
       "space": "A",
       "desert": "C",
-      "water": null
+      "water": ""
     },
     "weapon": {
       "main": {
@@ -44,18 +57,6 @@
       }
     },
     "ms_ability": null,
-    "link_ability": [
-      {
-        "name": "ガンダム0083",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "実弾の突破力",
-        "condition": "デッキに2枚以上",
-        "effect": "[遠距離攻撃力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "ジム・ライフル撃射",
       "target": "単体(敵)",
@@ -63,11 +64,11 @@
       "sp_cost": 2,
       "power": 3100,
       "description": "敵単体に射撃攻撃でダメージを与える。",
-      "united_sp": null
-    },
-    "rarity": "C",
-    "illustrator": "gomibako",
-    "raw": "MS\n\n機動 コスト3\n\nRGM-79N GM CUSTOM\nジム・カスタム\n\n全高 18.0m\n本体重量 42.0t\n所属 地球連邦軍\nパイロット サウス・バニング,アルファ・A・ベイト,ベルナルド・モンシア\n\n地上 A 宇宙 A 砂漠 C\n機動力 200\n遠距離攻撃 190\n近距離攻撃 180\nHP 130\n\nWEAPON\n\nMAIN ジム・ライフル 射程 3 遠距離\nSUB ビーム・サーベル 射程 1 近距離\n\nMS ABILITY\n\n― ― 射程 ― コスト ―\n\nSPECIAL ATTACK\n\nジム・ライフル撃射\n単体(敵) 射程 3\nSPコスト 2 威力 3100\n敵単体に射撃攻撃でダメージを与える。\n\nLINK ABILITY\n\nガンダム0083 デッキに3枚以上\n[機動力]小アップ\n\n実弾の突破力 デッキに2枚以上\n[遠距離攻撃力]小アップ\n\nIMPACT AREA\n\n[アイコン:中央やや下に緑丸、最下段中央に黒丸]\n\nillust gomibako\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n\n[アイコン:機動戦士ガンダム ARSENAL BASE ロゴ]\n\nAB03-021 C\n\n[アイコン:SEASON 03 STARDUST MEMORY ロゴ]\n[アイコン:地球連邦軍エンブレム]"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "SEASON_03_AB03-021_ジム・カスタム_ocr_raw.json",
   "ocr_timestamp": "2026-02-23T15:14:09.878538",

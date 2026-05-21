@@ -5,52 +5,55 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT06-057.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT06-057_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "UT06-057",
     "type": "PL",
-    "card_label": {
-      "class": "制圧",
-      "cost_label": "コスト3"
-    },
     "name": "ロラン・セアック",
-    "english_name": "ROLAN CEHACK",
     "cost": 3,
+    "rarity": "R",
     "category": "制圧",
     "affiliation": "イングレッサ・ミリシャ",
-    "physical": {
-      "height": null,
-      "age": 17
-    },
-    "units": [
-      "∀ガンダム"
-    ],
+    "illustrator": "",
     "stats": {
       "mobility": 150,
       "ranged_attack": 80,
       "melee_attack": 220,
       "hp": 170
     },
+    "link_ability": [
+      {
+        "name": "∀ガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[HP]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "ROLAN CEHACK",
+    "physical": {
+      "height": "",
+      "age": 17
+    },
+    "units": [
+      "∀ガンダム"
+    ],
     "pilot_skill": {
       "name": "迅速な強襲",
       "trigger": "出撃時",
       "effect": "40秒間、自身の[機動力][遠距離攻撃力][近距離攻撃力]を小アップする。",
       "has_sq_skill": false,
-      "sq_skill_details": null
-    },
-    "link_ability": [
-      {
-        "name": "∀ガンダム",
-        "condition": "デッキに3枚以上",
-        "effect": "[HP]小アップ"
-      },
-      {
-        "name": "戦況を変える力",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      }
-    ],
-    "rarity": "R",
-    "illustrator": null,
-    "raw": "PL\n\n制圧　コスト3\n\nロラン・セアック\nROLAN CEHACK\n\n身長　ー\n年齢　17歳\n所属　イングレッサ・ミリシャ\n搭乗機体　∀ガンダム\n\nPL SKILL\n\n迅速な強襲\n\n出撃時\n\n40秒間、自身の[機動力][遠距離攻撃力][近距離攻撃力]を小アップする。\n\nLINK ABILITY\n\n∀ガンダム　デッキに3枚以上\n[HP]小アップ\n\n戦況を変える力　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\n機動力 150\n遠距離攻撃 80\n近距離攻撃 220\nHP 170\n\n[アイコン:地上A][アイコン:宇宙B][アイコン:砂漠C][アイコン:水中なし]\n\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\n\nUT06-057　R"
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_raw_file": "UNITRIBE_SEASON_06_UT06-057_ロラン・セアック_ocr_raw.json",
   "ocr_timestamp": "2026-02-26T17:49:19.639391",

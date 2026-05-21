@@ -5,31 +5,44 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB03-012.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB03-012_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "AB03-012",
     "type": "MS",
-    "card_label": {
-      "class": "機動",
-      "cost_label": "コスト3"
-    },
-    "name": "ザクⅡ（ドズル・ザビ専用機）",
-    "model": "MS-06F DOZLE'S ZAKUⅡ",
+    "name": "ザクⅡ(ドズル・ザビ専用機)",
     "cost": 3,
+    "rarity": "M",
     "category": "機動",
     "affiliation": "ジオン公国軍",
-    "pilot": "ドズル・ザビ",
+    "illustrator": "ishidaval",
     "stats": {
-      "height": "17.5m",
-      "weight": "56.2t",
       "mobility": 230,
       "ranged_attack": 130,
       "melee_attack": 350,
       "hp": 240
     },
+    "link_ability": [
+      {
+        "name": "MSV",
+        "condition": "デッキに2枚以上",
+        "effect": "[遠距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "専用機の実力",
+        "condition": "デッキに2枚以上",
+        "effect": "[近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "ドズル・ザビ",
+    "model": "MS-06F DOZLE'S ZAKUⅡ",
     "terrain_compatibility": {
       "ground": "A",
       "space": "A",
       "desert": "C",
-      "water": null
+      "water": ""
     },
     "weapon": {
       "main": {
@@ -51,18 +64,6 @@
       "cost": 4,
       "description": "20秒間、ロックオンしている敵に周囲の味方ターゲットを集め、[遠／近攻撃力]を中アップ。攻撃対象が変わると効果は終了する。"
     },
-    "link_ability": [
-      {
-        "name": "MSV",
-        "condition": "デッキに2枚以上",
-        "effect": "[遠距離攻撃力]小アップ"
-      },
-      {
-        "name": "専用機の実力",
-        "condition": "デッキに2枚以上",
-        "effect": "[近距離攻撃力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "大型ヒート・ホーク強撃",
       "target": "単体(敵)",
@@ -70,11 +71,11 @@
       "sp_cost": 2,
       "power": 3400,
       "description": "敵単体に格闘攻撃でダメージを与える。",
-      "united_sp": null
-    },
-    "rarity": "M",
-    "illustrator": "ishidaval",
-    "raw": "MS\n\n機動 コスト3\n\nMS-06F DOZLE'S ZAKUⅡ\nザクⅡ（ドズル・ザビ専用機）\n\n全高 17.5m\n本体重量 56.2t\n所属 ジオン公国軍\nパイロット ドズル・ザビ\n\n地上 A 宇宙 A 砂漠 C\n\n[アイコン:MOBILE SUIT VARIATION MSV]\n\n機動力 230\n遠距離攻撃 130\n近距離攻撃 350\nHP 240\n\nWEAPON\n\nMAIN 大型ヒート・ホーク 射程 1 近距離\nSUB ジャイアント・バズ 射程 3 遠距離\n\nLINK ABILITY\n\nMSV デッキに2枚以上\n[遠距離攻撃力] 小アップ\n\n専用機の実力 デッキに2枚以上\n[近距離攻撃力] 小アップ\n\nMS ABILITY\n\n集中砲火\n任意発動 範囲(味方) 射程 ー コスト 4\n\n20秒間、ロックオンしている敵に周囲の味方ターゲットを集め、[遠／近攻撃力]を中アップ。攻撃対象が変わると効果は終了する。\n\nSPECIAL ATTACK\n\n大型ヒート・ホーク強撃\n単体(敵) 射程 2\nSPコスト 2 威力 3400\n\n敵単体に格闘攻撃でダメージを与える。\n\nIMPACT AREA\n\n[アイコン:円形エリア中央下寄り三角マーカー]\n\nillust ishidaval\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\n\nAB03-012 M"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "SEASON_03_AB03-012_ザクⅡ(ドズル・ザビ専用機)_ocr_raw.json",
   "ocr_timestamp": "2026-02-23T15:13:17.667551",

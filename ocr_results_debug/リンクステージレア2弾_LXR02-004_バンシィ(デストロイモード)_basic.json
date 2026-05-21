@@ -5,26 +5,39 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LXR02-004.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LXR02-004_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "LXR02-004",
     "type": "MS",
-    "card_label": {
-      "class": "機動",
-      "cost_label": "コスト7"
-    },
-    "name": "バンシィ（デストロイモード）",
-    "model": "RX-0 UNICORN GUNDAM 02 BANSHEE",
+    "name": "バンシィ(デストロイモード)",
     "cost": 7,
-    "category": "ガンダムUC",
+    "rarity": "LX",
+    "category": "機動",
     "affiliation": "地球連邦軍",
-    "pilot": "ブルトゥエルブ",
+    "illustrator": "TAKA-F",
     "stats": {
-      "height": "21.7m",
-      "weight": "24.0t",
       "mobility": 250,
       "ranged_attack": 270,
       "melee_attack": 500,
       "hp": 630
     },
+    "link_ability": [
+      {
+        "name": "ガンダムUC",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "間合いを詰めた接近戦",
+        "condition": "デッキに2枚以上",
+        "effect": "[近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "ブルトゥエルブ",
+    "model": "RX-0 UNICORN GUNDAM 02 BANSHEE",
     "terrain_compatibility": {
       "ground": "A",
       "space": "A",
@@ -51,18 +64,6 @@
       "cost": 4,
       "description": "ロックオン中の敵に単体攻撃でダメージを与える。この攻撃で敵ユニットを撃破した場合、敵ユニットの修理時間を延長させる。"
     },
-    "link_ability": [
-      {
-        "name": "ガンダムUC",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "間合いを詰めた接近戦",
-        "condition": "デッキに2枚以上",
-        "effect": "[近距離攻撃力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "アームド・アーマーVN強襲",
       "target": "単体（敵）",
@@ -70,11 +71,11 @@
       "sp_cost": 2,
       "power": 3700,
       "description": "敵単体に格闘攻撃でダメージを与える。",
-      "united_sp": null
-    },
-    "rarity": "LX",
-    "illustrator": "TAKA-F",
-    "raw": "機動　コスト7\nRX-0 UNICORN GUNDAM 02 BANSHEE\nバンシィ（デストロイモード）\n全高　21.7m\n本体重量　24.0t\n所属　地球連邦軍\nパイロット　ブルトゥエルブ\n地上A　宇宙A　砂漠C　水中B\n機動力 250\n遠距離攻撃 270\n近距離攻撃 500\nHP 630\n\nWEAPON\nMAIN　アームド・アーマーVN　射程1　近距離\nSUB　アームド・アーマーBS　射程3　遠距離\n\nMS ABILITY\n撃滅\n任意発動　単体（敵）　射程2　コスト4\nロックオン中の敵に単体攻撃でダメージを与える。この攻撃で敵ユニットを撃破した場合、敵ユニットの修理時間を延長させる。\n\nLINK ABILITY\nガンダムUC　デッキに3枚以上\n[機動力]小アップ\n\n間合いを詰めた接近戦　デッキに2枚以上\n[近距離攻撃力]小アップ\n\nSPECIAL ATTACK\nアームド・アーマーVN強襲\n単体（敵）　射程2\nSPコスト2　威力 3700\n敵単体に格闘攻撃でダメージを与える。\n\nIMPACT AREA\n\nillust　TAKA-F\n©創通・サンライズ\nBANDAI MADE IN JAPAN\nLXR02-004　LX"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "リンクステージレア2弾_LXR02-004_バンシィ(デストロイモード)_ocr_raw.json",
   "ocr_timestamp": "2026-03-07T14:44:34.121422",

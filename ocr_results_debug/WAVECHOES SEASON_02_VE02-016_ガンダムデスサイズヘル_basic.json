@@ -8,26 +8,39 @@
   "ocr_type": "basic",
   "ocr_timestamp": "2026-04-22T20:30:00.000000",
   "ocr_data": {
-    "card_id": "VE02-016",
     "type": "MS",
     "name": "ガンダムデスサイズヘル",
-    "model": "XXXG-01D2 GUNDAM DEATHSCYTHE HELL",
     "cost": 5,
+    "rarity": "P",
     "category": "機動",
     "affiliation": "—",
-    "pilot": "デュオ・マックスウェル",
-    "card_label": {
-      "class": "機動",
-      "cost_label": "コスト5"
-    },
+    "illustrator": "",
     "stats": {
-      "height": "16.3m",
-      "weight": "7.4t",
       "mobility": 260,
       "ranged_attack": 50,
       "melee_attack": 520,
       "hp": 570
     },
+    "link_ability": [
+      {
+        "name": "ガンダムW",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "肉薄する戦い",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "デュオ・マックスウェル",
+    "model": "XXXG-01D2 GUNDAM DEATHSCYTHE HELL",
     "terrain_compatibility": {
       "ground": "A",
       "space": "S",
@@ -54,18 +67,6 @@
       "cost": 4,
       "description": "ロックオン中の敵に単体攻撃でダメージを与える。この攻撃で敵ユニットにダメージを与えた場合、一定時間、被ダメージをアップする。"
     },
-    "link_ability": [
-      {
-        "name": "ガンダムW",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "肉薄する戦い",
-        "condition": "デッキに4枚以上",
-        "effect": "[機動力][近距離攻撃力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "ツインビームサイズ旋撃",
       "target": "範囲(敵)",
@@ -73,17 +74,17 @@
       "sp_cost": 2,
       "power": 3200,
       "description": "自身を中心とした小範囲に格闘攻撃でダメージを与え、自身のHPを回復する。",
+      "sp_type": "",
+      "echoes_beat": null,
       "united_sp": {
         "name": "死神とゼロの共闘",
-        "link": ["ウイングガンダムゼロ", "—", "—"],
+        "partners": [],
         "target": "範囲(敵)",
         "range": 2,
         "power": 4100,
         "description": "対象の敵を中心として格闘と範囲射撃でダメージを与える。攻撃に参加したユニットは一定時間[遠／近攻撃力][SP威力]がアップする。出撃時1度のみ使用可能。"
       },
-      "echoes_beat": null
-    },
-    "rarity": "P",
-    "raw": "機動 コスト5 MS XXXG-01D2 GUNDAM DEATHSCYTHE HELL ガンダムデスサイズヘル 頭頂高 16.3m 本体重量 7.4t 所属 — パイロット デュオ・マックスウェル 地上A 宇宙S 砂漠C 水中A 機動力260 遠距離攻撃50 近距離攻撃520 HP570 WEAPON MAIN ツインビームサイズ 射程1 近距離 SUB バスターシールド 射程3 遠距離 MS ABILITY 破閃 任意発動 単体(敵) 射程2 コスト4 ロックオン中の敵に単体攻撃でダメージを与える。この攻撃で敵ユニットにダメージを与えた場合、一定時間、被ダメージをアップする。 LINK ABILITY ガンダムW デッキに3枚以上 [機動力]小アップ 肉薄する戦い デッキに4枚以上 [機動力][近距離攻撃力]小アップ SPECIAL ATTACK UNITED SP ツインビームサイズ旋撃 死神とゼロの共闘 連携 ウイングガンダムゼロ 連携 — 連携 — 範囲(敵) 射程2 範囲(敵) 射程2 SPコスト2 威力 3200 / 4100 自身を中心とした小範囲に格闘攻撃でダメージを与え、自身のHPを回復する。／対象の敵を中心として格闘と範囲射撃でダメージを与える。攻撃に参加したユニットは一定時間[遠／近攻撃力][SP威力]がアップする。出撃時1度のみ使用可能。 IMPACT AREA VE02-016 P illust Chifuyu Yukishiro 機動戦士ガンダム ARSENAL BASE BANDAI MADE IN JAPAN"
+      "squad_sp": null
+    }
   }
 }

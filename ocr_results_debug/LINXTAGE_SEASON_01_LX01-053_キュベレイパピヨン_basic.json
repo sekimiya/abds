@@ -5,31 +5,44 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX01-053.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX01-053_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "LX01-053",
     "type": "MS",
-    "card_label": {
-      "class": "遠距離",
-      "cost_label": "コスト4"
-    },
     "name": "キュベレイパピヨン",
-    "model": "NMX-004 QUBELEY PAPILLON",
     "cost": 4,
+    "rarity": "R",
     "category": "遠距離",
     "affiliation": "ー",
-    "pilot": "アイラ・ユルキアイネン",
+    "illustrator": "StudioVIGOR Co.,Ltd.",
     "stats": {
-      "height": "18.9m",
-      "weight": "40.1t",
       "mobility": 160,
       "ranged_attack": 250,
       "melee_attack": 100,
       "hp": 240
     },
+    "link_ability": [
+      {
+        "name": "ビルドファイターズ",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "距離をとった射撃戦",
+        "condition": "デッキに2枚以上",
+        "effect": "[遠距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "アイラ・ユルキアイネン",
+    "model": "NMX-004 QUBELEY PAPILLON",
     "terrain_compatibility": {
       "ground": "A",
       "space": "S",
       "desert": "C",
-      "water": null
+      "water": ""
     },
     "weapon": {
       "main": {
@@ -51,18 +64,6 @@
       "cost": null,
       "description": "20秒間、自身を中心とした大範囲内の敵ユニットの被ダメージを少しアップする。"
     },
-    "link_ability": [
-      {
-        "name": "ビルドファイターズ",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "距離をとった射撃戦",
-        "condition": "デッキに2枚以上",
-        "effect": "[遠距離攻撃力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "ビームガン撃射",
       "target": "単体(敵)",
@@ -70,11 +71,11 @@
       "sp_cost": 2,
       "power": 3200,
       "description": "敵単体に射撃攻撃でダメージを与える。",
-      "united_sp": null
-    },
-    "rarity": "R",
-    "illustrator": "StudioVIGOR Co.,Ltd.",
-    "raw": "MS\n\n遠距離　コスト4\n\nNMX-004 QUBELEY PAPILLON\nキュベレイパピヨン\n\n全高　18.9m\n本体重量　40.1t\n所属　ー\nパイロット　アイラ・ユルキアイネン\n\n地上　A　宇宙　S　砂漠　C\n\n機動力　160\n遠距離攻撃　250\n近距離攻撃　100\nHP　240\n\nWEAPON\nMAIN　ビームガン　射程 3　遠距離\nSUB　ランスビット　射程 1　近距離\n\nLINK ABILITY\nビルドファイターズ　デッキに3枚以上\n[機動力]小アップ\n\n距離をとった射撃戦　デッキに2枚以上\n[遠距離攻撃力]小アップ\n\nMS ABILITY\n妨害[防御]\n出撃時発動　範囲(敵)　射程 ー　コスト ー\n20秒間、自身を中心とした大範囲内の敵ユニットの被ダメージを少しアップする。\n\nSPECIAL ATTACK\nビームガン撃射\n単体(敵)　射程 3\nSPコスト 2　威力 3200\n敵単体に射撃攻撃でダメージを与える。\n\nIMPACT AREA\n[アイコン:単体前方円形]\n\nillust StudioVIGOR Co.,Ltd.\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\n\nLX01-053　R"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "LINXTAGE_SEASON_01_LX01-053_キュベレイパピヨン_ocr_raw.json",
   "ocr_timestamp": "2026-03-02T07:31:29.913749",

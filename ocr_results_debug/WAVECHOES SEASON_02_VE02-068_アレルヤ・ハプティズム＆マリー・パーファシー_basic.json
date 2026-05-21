@@ -8,46 +8,54 @@
   "ocr_type": "basic",
   "ocr_timestamp": "2026-04-22T20:30:00.000000",
   "ocr_data": {
-    "card_id": "VE02-068",
     "type": "PL",
     "name": "アレルヤ・ハプティズム＆マリー・パーファシー",
     "cost": 1,
-    "card_label": {
-      "class": "防衛",
-      "cost_label": "コスト1"
-    },
-    "height": "—",
-    "age": "26歳/25歳",
+    "rarity": "R",
+    "category": "防衛",
     "affiliation": "ソレスタルビーイング",
-    "mobile_suit": "ガンダムハルート",
+    "illustrator": "",
     "stats": {
       "mobility": 160,
       "ranged_attack": 180,
       "melee_attack": 70,
       "hp": 250
     },
-    "pilot_skill": {
-      "name": "電光石火の射撃術",
-      "activation": "EBLv.2に上昇時",
-      "effect": "30秒間、自身の[機動力][遠距離攻撃力]をアップする。",
-      "has_sq_skill": false,
-      "is_eb_skill": true
-    },
     "link_ability": [
       {
         "name": "新時代の高鳴り",
         "condition": "デッキに3枚以上",
         "effect": "ECHOES BEAT Lv.が表示される。味方ユニットが戦術技を発動するとEBLv.が上がる。[HP][SP威力]小アップ",
-        "is_eb_link": true
+        "is_eb_link": true,
+        "is_sq_link": false,
+        "is_ab_link": false
       },
       {
         "name": "的確な一撃",
         "condition": "デッキに4枚以上",
         "effect": "[機動力][遠距離攻撃力]小アップ",
-        "is_eb_link": false
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
       }
     ],
-    "rarity": "R",
-    "raw": "防衛 コスト1 PL アレルヤ・ハプティズム＆マリー・パーファシー ALLELUJAH HAPTISM & MARIE PARFACY 身長 — 年齢 26歳/25歳 所属 ソレスタルビーイング 搭乗機体 ガンダムハルート EB PL SKILL 電光石火の射撃術 EBLv.2に上昇時 30秒間、自身の[機動力][遠距離攻撃力]をアップする。 EB LINK ABILITY 新時代の高鳴り デッキに3枚以上 ECHOES BEAT Lv.が表示される。味方ユニットが戦術技を発動するとEBLv.が上がる。[HP][SP威力]小アップ 的確な一撃 デッキに4枚以上 [機動力][遠距離攻撃力]小アップ 機動力 160 遠距離攻撃 180 近距離攻撃 70 HP 250 VE02-068 R"
+    "english_name": "",
+    "physical": {
+      "height": "—",
+      "age": "26歳/25歳"
+    },
+    "units": [
+      "ガンダムハルート"
+    ],
+    "pilot_skill": {
+      "name": "電光石火の射撃術",
+      "trigger": "EBLv.2に上昇時",
+      "effect": "30秒間、自身の[機動力][遠距離攻撃力]をアップする。",
+      "has_sq_skill": false,
+      "sq_skill_details": null,
+      "is_eb_skill": true,
+      "eb_trigger_level": 2,
+      "sq_rush_effect": ""
+    }
   }
 }

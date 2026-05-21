@@ -5,26 +5,39 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ03-020.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ03-020_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "FQ03-020",
     "type": "MS",
-    "card_label": {
-      "class": "近距離",
-      "cost_label": "コスト6"
-    },
     "name": "ガンダムアストレイ レッドフレーム パワードレッド",
-    "model": "MBF-P02 GUNDAM ASTRAY RED FRAME POWERED RED",
     "cost": 6,
+    "rarity": "P",
     "category": "近距離",
     "affiliation": "ジャンク屋組合",
-    "pilot": "ロウ・ギュール",
+    "illustrator": "KURI (studio toujyou)",
     "stats": {
-      "height": null,
-      "weight": null,
       "mobility": 280,
       "ranged_attack": 140,
       "melee_attack": 530,
       "hp": 600
     },
+    "link_ability": [
+      {
+        "name": "SEED ASTRAY",
+        "condition": "デッキに2枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "肉薄する戦い",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "ロウ・ギュール",
+    "model": "MBF-P02 GUNDAM ASTRAY RED FRAME POWERED RED",
     "terrain_compatibility": {
       "ground": "S",
       "space": "A",
@@ -51,18 +64,6 @@
       "cost": 3,
       "description": "自身が弱体化状態の時に発動可能となり、自身の弱体化状態を無効化し、ロックオン中の敵に単体攻撃でダメージを与える。"
     },
-    "link_ability": [
-      {
-        "name": "SEED ASTRAY",
-        "condition": "デッキに2枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      },
-      {
-        "name": "肉薄する戦い",
-        "condition": "デッキに4枚以上",
-        "effect": "[機動力][近距離攻撃力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "150ガーベラ・ストレート",
       "target": "貫通(敵)",
@@ -70,11 +71,11 @@
       "sp_cost": 2,
       "power": 3200,
       "description": "射線上の敵に貫通格闘攻撃でダメージを与え、以後武装が150ガーベラになり、通常攻撃が自身を中心とした範囲攻撃に変化する。戦術技後は能力が上昇。自身が撤退するまで効果は持続する。",
-      "united_sp": null
-    },
-    "rarity": "P",
-    "illustrator": "KURI (studio toujyou)",
-    "raw": "近距離　コスト6　MS\n\nMBF-P02 GUNDAM ASTRAY RED FRAME POWERED RED\nガンダムアストレイ レッドフレーム パワードレッド\n\n頭頂高　ー\n本体重量　ー\n所属　ジャンク屋組合\nパイロット　ロウ・ギュール\n\n地上 S　宇宙 A　砂漠 B　水中 C\n\n機動力 280\n遠距離攻撃 140\n近距離攻撃 530\nHP 600\n\nWEAPON\n\nMAIN ガーベラ・ストレート　射程 1　近距離\nSUB イーゲルシュテルン　射程 2　近距離\n\nLINK ABILITY\n\nSEED ASTRAY　デッキに2枚以上\n[遠距離攻撃力][近距離攻撃力]\n小アップ\n\nMS ABILITY\n\n解撃\n\n任意発動　単体(敵)　射程 2　コスト 3\n\n自身が弱体化状態の時に発動可能となり、自身の弱体化状態を無効化し、ロックオン中の敵に単体攻撃でダメージを与える。\n\n肉薄する戦い　デッキに4枚以上\n[機動力][近距離攻撃力]小アップ\n\nSPECIAL ATTACK　UNITED SP\n\n150ガーベラ・ストレート　ー\n連携 ー　連携 ー\n連携 ー　連携 ー\n貫通(敵)　射程 3　射程 ー\nSPコスト 2　威力 3200 / ー\n\n射線上の敵に貫通格闘攻撃でダメージを与え、以後武装が150ガーベラになり、通常攻撃が自身を中心とした範囲攻撃に変化する。戦術技後は能力が上昇。自身が撤退するまで効果は持続する。/ ー\n\nIMPACT AREA\n[アイコン:縦長長方形の貫通範囲、中央に円形マーカー]\n\nillust KURI (studio toujyou)\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n\n機動戦士ガンダム ARSENAL BASE\n\nFQ03-020　P"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "FORSQUAD_SEASON_03_FQ03-020_ガンダムアストレイ_レッドフレーム_パワードレッド_ocr_raw.json",
   "ocr_timestamp": "2026-02-24T15:31:59.925343",

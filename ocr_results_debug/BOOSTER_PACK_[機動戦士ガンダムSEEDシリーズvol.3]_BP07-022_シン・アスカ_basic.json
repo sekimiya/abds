@@ -5,17 +5,38 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP07-022.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP07-022_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "BP07-022",
     "type": "PL",
-    "card_label": {
-      "class": "制圧",
-      "cost_label": "コスト3"
-    },
     "name": "シン・アスカ",
-    "english_name": "SHINN ASUKA",
     "cost": 3,
+    "rarity": "R",
     "category": "制圧",
     "affiliation": "コンパス",
+    "illustrator": "",
+    "stats": {
+      "mobility": 210,
+      "ranged_attack": 80,
+      "melee_attack": 230,
+      "hp": 200
+    },
+    "link_ability": [
+      {
+        "name": "傍流する覚醒の共振",
+        "condition": "デッキに3枚以上",
+        "effect": "ECHOES BEAT Lv.が表示される。味方ユニットが戦術技を発動するとEBLv.が上がる。[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "SHINN ASUKA",
     "physical": {
       "height": "169cm",
       "age": "17歳"
@@ -24,34 +45,16 @@
       "デスティニーガンダムSpecII",
       "イモータルジャスティスガンダム"
     ],
-    "stats": {
-      "mobility": 210,
-      "ranged_attack": 80,
-      "melee_attack": 230,
-      "hp": 200
-    },
     "pilot_skill": {
       "name": "閃光走る電撃作戦",
-      "activation": "EBLv.2に上昇時",
-      "target": null,
-      "range": null,
-      "cost": null,
-      "description": "30秒間、自身の[機動力][近距離攻撃力]をアップする。"
-    },
-    "link_ability": [
-      {
-        "name": "傍流する覚醒の共振",
-        "condition": "デッキに3枚以上",
-        "effect": "ECHOES BEAT Lv.が表示される。味方ユニットが戦術技を発動するとEBLv.が上がる。[遠距離攻撃力][近距離攻撃力]小アップ"
-      },
-      {
-        "name": "多彩な戦術",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      }
-    ],
-    "rarity": "R",
-    "raw": "PL\n制圧 コスト3\nシン・アスカ\nSHINN ASUKA\n身長 169cm\n年齢 17歳\n所属 コンパス\n搭乗機体 デスティニーガンダムSpecII、イモータルジャスティスガンダム\nPL SKILL\n閃光走る電撃作戦\nEBLv.2に上昇時\n30秒間、自身の[機動力][近距離攻撃力]をアップする。\nLINK ABILITY\n傍流する覚醒の共振 デッキに3枚以上\nECHOES BEAT Lv.が表示される。味方ユニットが戦術技を発動するとEBLv.が上がる。\n[遠距離攻撃力][近距離攻撃力]小アップ\n多彩な戦術 デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n機動力 210\n遠距離攻撃 80\n近距離攻撃 230\nHP 200\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nBP07-022 R"
+      "trigger": "EBLv.2に上昇時",
+      "effect": "30秒間、自身の[機動力][近距離攻撃力]をアップする。",
+      "has_sq_skill": false,
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": 2,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_timestamp": "2026-04-16T11:50:00.000000",
   "ocr_type": "basic",

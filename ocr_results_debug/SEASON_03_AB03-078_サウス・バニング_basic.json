@@ -5,52 +5,55 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB03-078.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB03-078_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "AB03-078",
     "type": "PL",
-    "card_label": {
-      "class": "殲滅",
-      "cost_label": "コスト4"
-    },
     "name": "サウス・バニング",
-    "english_name": "SOUTH BURNING",
     "cost": 4,
+    "rarity": "M",
     "category": "殲滅",
     "affiliation": "地球連邦軍",
-    "physical": {
-      "height": null,
-      "age": 39
-    },
-    "units": [
-      "ジム・カスタム"
-    ],
+    "illustrator": "",
     "stats": {
       "mobility": 190,
       "ranged_attack": 230,
       "melee_attack": 190,
       "hp": 190
     },
+    "link_ability": [
+      {
+        "name": "ガンダム0083",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "巧みな連携戦術",
+        "condition": "デッキに2枚以上",
+        "effect": "[遠距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "SOUTH BURNING",
+    "physical": {
+      "height": "",
+      "age": 39
+    },
+    "units": [
+      "ジム・カスタム"
+    ],
     "pilot_skill": {
       "name": "集結する力",
       "trigger": "味方ユニットと同じ敵をロックオン時",
       "effect": "30秒間、自身の[遠距離攻撃力][近距離攻撃力]を中アップする。",
       "has_sq_skill": false,
-      "sq_skill_details": null
-    },
-    "link_ability": [
-      {
-        "name": "ガンダム0083",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "巧みな連携戦術",
-        "condition": "デッキに2枚以上",
-        "effect": "[遠距離攻撃力]小アップ"
-      }
-    ],
-    "rarity": "M",
-    "illustrator": null,
-    "raw": "PL\n\n殲滅 コスト4\n\nサウス・バニング\nSOUTH BURNING\n\n身長　－\n年齢　39歳\n所属　地球連邦軍\n搭乗機体　ジム・カスタム\n\n機動戦士ガンダム0083\nSTARDUST MEMORY\n[アイコン:地上A 宇宙A]\n\nPL SKILL\n\n集結する力\n\n味方ユニットと同じ敵をロックオン時\n\n30秒間、自身の[遠距離攻撃力]\n[近距離攻撃力]を中アップする。\n\nLINK ABILITY\n\nガンダム0083　デッキに3枚以上\n[機動力]小アップ\n\n巧みな連携戦術　デッキに2枚以上\n[遠距離攻撃力]小アップ\n\n機動力 190\n遠距離攻撃 230\n近距離攻撃 190\nHP 190\n\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n\n機動戦士ガンダム\nARSENAL BASE\n\nAB03-078 M"
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_raw_file": "SEASON_03_AB03-078_サウス・バニング_ocr_raw.json",
   "ocr_timestamp": "2026-02-23T15:18:11.094673",

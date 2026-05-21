@@ -5,26 +5,39 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX04-064.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX04-064_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "LX04-064",
     "type": "MS",
-    "card_label": {
-      "class": "遠距離",
-      "cost_label": "コスト3"
-    },
     "name": "モモカプル",
-    "model": "PEN-01M MOMOKAPOOL",
     "cost": 3,
-    "category": "MS",
+    "rarity": "R",
+    "category": "遠距離",
     "affiliation": "ビルドダイバーズ",
-    "pilot": "モモ",
+    "illustrator": "kazumasa yasukuni",
     "stats": {
-      "height": "12.8m",
-      "weight": "31.8t",
       "mobility": 120,
       "ranged_attack": 250,
       "melee_attack": 160,
       "hp": 220
     },
+    "link_ability": [
+      {
+        "name": "ビルドダイバーズ",
+        "condition": "デッキに3枚以上",
+        "effect": "[HP]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "撃ち倒す遠距離戦",
+        "condition": "デッキに遠距離が2枚以上",
+        "effect": "[遠距離攻撃力]中アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "モモ",
+    "model": "PEN-01M MOMOKAPOOL",
     "terrain_compatibility": {
       "ground": "A",
       "space": "B",
@@ -51,18 +64,6 @@
       "cost": 3,
       "description": "ロックオン中の敵に単体攻撃でダメージを与える。"
     },
-    "link_ability": [
-      {
-        "name": "ビルドダイバーズ",
-        "condition": "デッキに3枚以上",
-        "effect": "[HP]小アップ"
-      },
-      {
-        "name": "撃ち倒す遠距離戦",
-        "condition": "デッキに遠距離が2枚以上",
-        "effect": "[遠距離攻撃力]中アップ"
-      }
-    ],
     "special_attack": {
       "name": "お腹のビーム射撃",
       "target": "単体（敵）",
@@ -70,11 +71,11 @@
       "sp_cost": 2,
       "power": 3200,
       "description": "敵単体に射撃攻撃でダメージを与える。",
-      "united_sp": null
-    },
-    "rarity": "R",
-    "illustrator": "kazumasa yasukuni",
-    "raw": "遠距離 コスト3\nPEN-01M MOMOKAPOOL\nモモカプル\n\n全高　12.8m\n本体重量　31.8t\n所属　ビルドダイバーズ\nパイロット　モモ\n\n地上 A　宇宙 B　砂漠 B　水中 S\n機動力 120\n遠距離攻撃 250\n近距離攻撃 160\nHP 220\n\nWEAPON\nMAIN 手のビーム　射程 3　遠距離\nSUB 手のツメ　射程 1　近距離\n\nMS ABILITY\n精密射撃\n任意発動　単体（敵）　射程 3　コスト 3\nロックオン中の敵に単体攻撃でダメージを与える。\n\nLINK ABILITY\nビルドダイバーズ　デッキに3枚以上\n[HP]小アップ\n\n撃ち倒す遠距離戦　デッキに遠距離が2枚以上\n[遠距離攻撃力]中アップ\n\nSPECIAL ATTACK\nお腹のビーム射撃\n単体（敵）　射程 3\nSPコスト 2　威力 3200\n敵単体に射撃攻撃でダメージを与える。\n\nIMPACT AREA\n（インパクトエリアマップあり）\n\nillust. kazumasa yasukuni\n©創通・サンライズ\nBANDAI MADE IN JAPAN\nARSENAL BASE\nLX04-064　R"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "LINXTAGE_SEASON_04_LX04-064_モモカプル_ocr_raw.json",
   "ocr_timestamp": "2026-03-07T19:19:22.256708",

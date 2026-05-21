@@ -5,52 +5,55 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UTB01-017.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UTB01-017_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "UTB01-017",
     "type": "PL",
-    "card_label": {
-      "class": "制圧",
-      "cost_label": "コスト1"
-    },
     "name": "リディ・マーセナス",
-    "english_name": "RIDDHE MARCENAS",
     "cost": 1,
+    "rarity": "M",
     "category": "制圧",
     "affiliation": "地球連邦軍",
-    "physical": {
-      "height": null,
-      "age": 23
-    },
-    "units": [
-      "デルタプラス"
-    ],
+    "illustrator": "",
     "stats": {
       "mobility": 180,
       "ranged_attack": 100,
       "melee_attack": 210,
       "hp": 220
     },
+    "link_ability": [
+      {
+        "name": "ガンダムUC",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "優れた格闘センス",
+        "condition": "デッキに2枚以上",
+        "effect": "[近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "RIDDHE MARCENAS",
+    "physical": {
+      "height": "",
+      "age": 23
+    },
+    "units": [
+      "デルタプラス"
+    ],
     "pilot_skill": {
       "name": "周到な奇襲作戦",
       "trigger": "出撃時",
       "effect": "自身が使用するMSアビリティ[奇襲]の初回使用コストを2ダウンする。",
       "has_sq_skill": false,
-      "sq_skill_details": null
-    },
-    "link_ability": [
-      {
-        "name": "ガンダムUC",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "優れた格闘センス",
-        "condition": "デッキに2枚以上",
-        "effect": "[近距離攻撃力]小アップ"
-      }
-    ],
-    "rarity": "M",
-    "illustrator": null,
-    "raw": "制圧　コスト1\n\nPL\n\nリディ・マーセナス\nRIDDHE MARCENAS\n\n身長　ー\n年齢　23歳\n所属　地球連邦軍\n搭乗機体　デルタプラス\n\nPL SKILL\n\n周到な奇襲作戦\n\n出撃時\n\n自身が使用するMSアビリティ[奇襲]の初回使用コストを2ダウンする。\n\nLINK ABILITY\n\nガンダムUC　デッキに3枚以上\n[機動力]小アップ\n\n優れた格闘センス　デッキに2枚以上\n[近距離攻撃力]小アップ\n\n機動力 180\n遠距離攻撃 100\n近距離攻撃 210\nHP 220\n\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\n\nUTB01-017　M"
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_raw_file": "UTブースター1弾_UTB01-017_リディ・マーセナス_ocr_raw.json",
   "ocr_timestamp": "2026-03-02T02:11:19.395684",

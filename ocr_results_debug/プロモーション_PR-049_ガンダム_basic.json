@@ -5,31 +5,44 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-049.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-049_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "PR-049",
     "type": "MS",
-    "card_label": {
-      "class": "機動",
-      "cost_label": "コスト4"
-    },
     "name": "ガンダム",
-    "model": "RX-78-2 GUNDAM",
     "cost": 4,
-    "category": "機動戦士ガンダム",
+    "rarity": "PR",
+    "category": "機動",
     "affiliation": "地球連邦軍",
-    "pilot": "アムロ・レイ",
+    "illustrator": "SA/TSU/KI",
     "stats": {
-      "height": "18.0m",
-      "weight": "43.4t",
       "mobility": 350,
       "ranged_attack": 220,
       "melee_attack": 130,
       "hp": 350
     },
+    "link_ability": [
+      {
+        "name": "機動戦士ガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "距離をとった射撃戦",
+        "condition": "デッキに2枚以上",
+        "effect": "[遠距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "アムロ・レイ",
+    "model": "RX-78-2 GUNDAM",
     "terrain_compatibility": {
       "ground": "A",
       "space": "A",
       "desert": "C",
-      "water": null
+      "water": ""
     },
     "weapon": {
       "main": {
@@ -51,18 +64,6 @@
       "cost": 3,
       "description": "自身の周囲に殲滅タイプの味方ユニットを呼び出す。※上限3ユニットまで。"
     },
-    "link_ability": [
-      {
-        "name": "機動戦士ガンダム",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "距離をとった射撃戦",
-        "condition": "デッキに2枚以上",
-        "effect": "[遠距離攻撃力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "ビーム・ライフル撃射",
       "target": "単体(敵)",
@@ -70,11 +71,11 @@
       "sp_cost": 2,
       "power": 3300,
       "description": "敵単体に射撃攻撃でダメージを与える。",
-      "united_sp": null
-    },
-    "rarity": "PR",
-    "illustrator": "SA/TSU/KI",
-    "raw": "機動　コスト4\nRX-78-2 GUNDAM\nガンダム\n\n全高　18.0m\n本体重量　43.4t\n所属　地球連邦軍\nパイロット　アムロ・レイ\n\n地上　A　宇宙　A　砂漠　C\n\n機動力　350\n遠距離攻撃　220\n近距離攻撃　130\nHP　350\n\nWEAPON\nMAIN　ビーム・ライフル　射程3　遠距離\nSUB　ビーム・サーベル　射程1　近距離\n\nMS ABILITY\n増援[殲滅]\n任意発動　特殊(自分)　射程ー　コスト3\n自身の周囲に殲滅タイプの味方ユニットを呼び出す。※上限3ユニットまで。\n\nLINK ABILITY\n機動戦士ガンダム　デッキに3枚以上\n[機動力]小アップ\n\n距離をとった射撃戦　デッキに2枚以上\n[遠距離攻撃力]小アップ\n\nIMPACT AREA\n\nSPECIAL ATTACK\nビーム・ライフル撃射\n単体(敵)　射程3\nSPコスト2　威力　3300\n敵単体に射撃攻撃でダメージを与える。\n\nillust. SA/TSU/KI\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n\nNOT FOR SALE\nPR-049　PR"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "プロモーション_PR-049_ガンダム_ocr_raw.json",
   "ocr_timestamp": "2026-03-07T12:39:48.488278",

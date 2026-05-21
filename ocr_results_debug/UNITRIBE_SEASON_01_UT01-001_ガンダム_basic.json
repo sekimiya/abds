@@ -5,26 +5,39 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT01-001.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT01-001_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "UT01-001",
     "type": "MS",
-    "card_label": {
-      "class": "近距離",
-      "cost_label": "コスト7"
-    },
     "name": "ガンダム",
-    "model": "RX-78-2 GUNDAM",
     "cost": 7,
+    "rarity": "P",
     "category": "近距離",
     "affiliation": "地球連邦軍",
-    "pilot": "アムロ・レイ",
+    "illustrator": "Kumagoro",
     "stats": {
-      "height": "18.0m",
-      "weight": "43.4t",
       "mobility": 280,
       "ranged_attack": 270,
       "melee_attack": 550,
       "hp": 550
     },
+    "link_ability": [
+      {
+        "name": "機動戦士ガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "迫撃の近距離戦",
+        "condition": "デッキに近距離が2枚以上",
+        "effect": "[近距離攻撃力]中アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "アムロ・レイ",
+    "model": "RX-78-2 GUNDAM",
     "terrain_compatibility": {
       "ground": "A",
       "space": "A",
@@ -51,18 +64,6 @@
       "cost": 3,
       "description": "ロックオン中の敵ユニットに単体攻撃でダメージを与え、強化状態を無効化する。"
     },
-    "link_ability": [
-      {
-        "name": "機動戦士ガンダム",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "迫撃の近距離戦",
-        "condition": "デッキに近距離が2枚以上",
-        "effect": "[近距離攻撃力]中アップ"
-      }
-    ],
     "special_attack": {
       "name": "ビーム・サーベル強撃",
       "target": "単体(敵)",
@@ -70,19 +71,21 @@
       "sp_cost": 2,
       "power": 3700,
       "description": "敵単体に格闘攻撃でダメージを与える。",
+      "sp_type": "",
+      "echoes_beat": null,
       "united_sp": {
         "name": "V作戦",
-        "partner1": "ガンキャノン",
-        "partner2": "ガンタンク",
+        "partners": [
+          "ガンキャノン",
+          "ガンタンク"
+        ],
         "target": "範囲(敵)",
         "range": 2,
         "power": 5400,
         "description": "対象の敵を中心として範囲射撃と格闘でダメージを与える。出撃時1度のみ使用可能。"
-      }
-    },
-    "rarity": "P",
-    "illustrator": "Kumagoro",
-    "raw": "MS\n機動戦士ガンダム\n\n近距離 コスト7\n\nRX-78-2 GUNDAM\nガンダム\n\n全高 18.0m\n本体重量 43.4t\n所属 地球連邦軍\nパイロット アムロ・レイ\n\n[アイコン:地上A] [アイコン:宇宙A] [アイコン:砂漠C] [アイコン:水中A]\n\n機動力 280\n遠距離攻撃 270\n近距離攻撃 550\nHP 550\n\nWEAPON\nMAIN ビーム・サーベル 射程 1 近距離\nSUB ビーム・ライフル 射程 3 遠距離\n\nLINK ABILITY\n機動戦士ガンダム デッキに3枚以上\n[機動力]小アップ\n\n迫撃の近距離戦 デッキに近距離が2枚以上\n[近距離攻撃力]中アップ\n\nMS ABILITY\n断砕\n任意発動 単体(敵) 射程 2 コスト 3\nロックオン中の敵ユニットに単体攻撃でダメージを与え、強化状態を無効化する。\n\nSPECIAL ATTACK          UNITED SP\nビーム・サーベル強撃     V作戦\n連携 ガンキャノン        連携 ガンタンク\n連携 ー                  連携 ー\n単体(敵) 射程 2          範囲(敵) 射程 2\nSPコスト 2  威力 3700 / 5400\n\n敵単体に格闘攻撃でダメージを与える。／対象の敵を中心として範囲射撃と格闘でダメージを与える。出撃時1度のみ使用可能。\n\nIMPACT AREA\n[アイコン:円形範囲エリア]\n\nillust Kumagoro\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nUT01-001 P"
+      },
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "UNITRIBE_SEASON_01_UT01-001_ガンダム_ocr_raw.json",
   "ocr_timestamp": "2026-03-02T02:53:10.036266",

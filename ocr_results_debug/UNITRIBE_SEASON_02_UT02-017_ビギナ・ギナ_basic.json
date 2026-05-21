@@ -5,26 +5,39 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT02-017.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT02-017_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "UT02-017",
     "type": "MS",
-    "card_label": {
-      "class": "遠距離",
-      "cost_label": "コスト1"
-    },
     "name": "ビギナ・ギナ",
-    "model": "XM-07 VIGNA-GHINA",
     "cost": 1,
+    "rarity": "C",
     "category": "遠距離",
     "affiliation": "クロスボーン・バンガード",
-    "pilot": "ベラ・ロナ",
+    "illustrator": "Ryohei Miyazaki",
     "stats": {
-      "height": "15.8m",
-      "weight": "8.9t",
       "mobility": 100,
       "ranged_attack": 170,
       "melee_attack": 150,
       "hp": 180
     },
+    "link_ability": [
+      {
+        "name": "機動戦士ガンダムF91",
+        "condition": "デッキに2枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "的確な一撃",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][遠距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "ベラ・ロナ",
+    "model": "XM-07 VIGNA-GHINA",
     "terrain_compatibility": {
       "ground": "A",
       "space": "A",
@@ -44,18 +57,6 @@
       }
     },
     "ms_ability": null,
-    "link_ability": [
-      {
-        "name": "機動戦士ガンダムF91",
-        "condition": "デッキに2枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "的確な一撃",
-        "condition": "デッキに4枚以上",
-        "effect": "[機動力][遠距離攻撃力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "一斉掃射",
       "target": "単体(敵)",
@@ -63,11 +64,11 @@
       "sp_cost": 2,
       "power": 3000,
       "description": "敵単体に射撃攻撃でダメージを与える。",
-      "united_sp": null
-    },
-    "rarity": "C",
-    "illustrator": "Ryohei Miyazaki",
-    "raw": "MS\n\n遠距離 コスト1\n\nXM-07 VIGNA-GHINA\nビギナ・ギナ\n\n全高 15.8m\n本体重量 8.9t\n\n地上 A 宇宙 A 砂漠 C 水中 C\n\n所属 クロスボーン・バンガード\nパイロット ベラ・ロナ\n\n機動力 100\n遠距離攻撃 170\n近距離攻撃 150\nHP 180\n\nWEAPON\nMAIN ビーム・ライフル 射程 3 遠距離\nSUB ビーム・サーベル 射程 1 近距離\n\nLINK ABILITY\n機動戦士ガンダムF91 デッキに2枚以上\n[機動力]小アップ\n\nMS ABILITY\nー\nー ー 射程 ー コスト ー\n\n的確な一撃 デッキに4枚以上\n[機動力][遠距離攻撃力]小アップ\n\nSPECIAL ATTACK\n一斉掃射\n\nUNITED SP\n連携 ー 連携 ー\n連携 ー 連携 ー\n\n単体(敵) 射程 3 ー 射程 ー\nSPコスト 2 威力 3000 / ー\n\n敵単体に射撃攻撃でダメージを与える。\n/ ー\n\nIMPACT AREA\n[アイコン:中央付近に緑丸]\n\nillust Ryohei Miyazaki\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nUT02-017 C"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "UNITRIBE_SEASON_02_UT02-017_ビギナ・ギナ_ocr_raw.json",
   "ocr_timestamp": "2026-02-26T17:41:12.806333",

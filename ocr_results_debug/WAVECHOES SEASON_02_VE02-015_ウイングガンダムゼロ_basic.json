@@ -8,26 +8,39 @@
   "ocr_type": "basic",
   "ocr_timestamp": "2026-04-22T20:30:00.000000",
   "ocr_data": {
-    "card_id": "VE02-015",
     "type": "MS",
     "name": "ウイングガンダムゼロ",
-    "model": "XXXG-00W0 WING GUNDAM ZERO",
     "cost": 4,
-    "category": "近距離",
-    "affiliation": null,
-    "pilot": "ヒイロ・ユイ、ゼクス・マーキス",
-    "card_label": {
-      "class": "新機動戦記ガンダムW",
-      "cost_label": "コスト4"
-    },
+    "rarity": "C",
+    "category": "新機動戦記ガンダムW",
+    "affiliation": "",
+    "illustrator": "",
     "stats": {
-      "height": "16.7m",
-      "weight": "8.0t",
       "mobility": 220,
       "ranged_attack": 80,
       "melee_attack": 300,
       "hp": 350
     },
+    "link_ability": [
+      {
+        "name": "ガンダムW",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "肉薄する戦い",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "ヒイロ・ユイ、ゼクス・マーキス",
+    "model": "XXXG-00W0 WING GUNDAM ZERO",
     "terrain_compatibility": {
       "ground": "A",
       "space": "S",
@@ -54,35 +67,24 @@
       "cost": 4,
       "description": "自身を中心とした範囲内の敵ユニットをスタンさせ、一定時間被ダメージを少しアップする。"
     },
-    "link_ability": [
-      {
-        "name": "ガンダムW",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "肉薄する戦い",
-        "condition": "デッキに4枚以上",
-        "effect": "[機動力][近距離攻撃力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "ビームサーベル強撃",
       "target": "単体(敵)",
       "range": 2,
       "sp_cost": 2,
-      "power": "3200",
+      "power": 3200,
       "description": "敵単体に格闘攻撃でダメージを与える。",
+      "sp_type": "",
       "echoes_beat": {
         "name": "—",
         "level": null,
-        "target": "—",
-        "range": "—",
         "power": null,
+        "range": 0,
+        "target": "—",
         "description": "—"
-      }
-    },
-    "rarity": "C",
-    "raw": "近距離 コスト4 MS XXXG-00W0 WING GUNDAM ZERO ウイングガンダムゼロ 頭頂高 16.7m 本体重量 8.0t 所属 — パイロット ヒイロ・ユイ、ゼクス・マーキス 地上 A 宇宙 S 砂漠 C 水中 C 機動力 220 遠距離攻撃 80 近距離攻撃 300 HP 350 WEAPON MAIN ビームサーベル 射程 1 近距離 SUB ツインバスターライフル 射程 4 遠距離 MS ABILITY 威圧 任意発動 範囲(敵) 射程 — コスト 4 自身を中心とした範囲内の敵ユニットをスタンさせ、一定時間被ダメージを少しアップする。 LINK ABILITY ガンダムW デッキに3枚以上 [機動力]小アップ 肉薄する戦い デッキに4枚以上 [機動力][近距離攻撃力]小アップ SPECIAL ATTACK ECHOES BEAT ビームサーベル強撃 — — 単体(敵) 射程 2 — 射程 — SPコスト 2 威力 3200 / — 敵単体に格闘攻撃でダメージを与える。 /— VE02-015 C"
+      },
+      "united_sp": null,
+      "squad_sp": null
+    }
   }
 }

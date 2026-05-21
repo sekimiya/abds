@@ -5,17 +5,38 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT02-068.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT02-068_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "UT02-068",
     "type": "PL",
-    "card_label": {
-      "class": "防衛",
-      "cost_label": "コスト4"
-    },
     "name": "アスラン・ザラ",
-    "english_name": "ATHRUN ZALA",
     "cost": 4,
+    "rarity": "C",
     "category": "防衛",
     "affiliation": "ターミナル",
+    "illustrator": "",
+    "stats": {
+      "mobility": 210,
+      "ranged_attack": 120,
+      "melee_attack": 210,
+      "hp": 230
+    },
+    "link_ability": [
+      {
+        "name": "SEED FREEDOM",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "肉薄する戦い",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "ATHRUN ZALA",
     "physical": {
       "height": "174cm",
       "age": 19
@@ -23,34 +44,16 @@
     "units": [
       "ズゴック(SEED FREEDOM Ver.)"
     ],
-    "stats": {
-      "mobility": 210,
-      "ranged_attack": 120,
-      "melee_attack": 210,
-      "hp": 230
-    },
     "pilot_skill": {
       "name": "冷静な戦況把握",
       "trigger": "出撃後一定時間経過毎",
       "effect": "40秒経過毎に自身の[機動力]を小アップする。最大3回まで発動。",
       "has_sq_skill": false,
-      "sq_skill_details": null
-    },
-    "link_ability": [
-      {
-        "name": "SEED FREEDOM",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "肉薄する戦い",
-        "condition": "デッキに4枚以上",
-        "effect": "[機動力][近距離攻撃力]小アップ"
-      }
-    ],
-    "rarity": "C",
-    "illustrator": null,
-    "raw": "PL\n\n防衛　コスト4\n\nアスラン・ザラ\nATHRUN ZALA\n\n身長　174cm\n年齢　19歳\n所属　ターミナル\n搭乗機体　ズゴック(SEED FREEDOM Ver.)\n\nPL SKILL\n\n冷静な戦況把握\n\n出撃後一定時間経過毎\n\n40秒経過毎に自身の[機動力]を\n小アップする。最大3回まで発動。\n\nLINK ABILITY\n\nSEED FREEDOM　デッキに3枚以上\n[機動力]小アップ\n\n肉薄する戦い　デッキに4枚以上\n[機動力][近距離攻撃力]小アップ\n\n機動力 210\n遠距離攻撃 120\n近距離攻撃 210\nHP 230\n\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\nUT02-068 C"
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_raw_file": "UNITRIBE_SEASON_02_UT02-068_アスラン・ザラ_ocr_raw.json",
   "ocr_timestamp": "2026-02-26T17:55:36.580523",

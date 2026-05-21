@@ -5,55 +5,55 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-446.jpg?v8",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-446_b.jpg?v8",
   "ocr_data": {
-    "card_id": "PR-446",
     "type": "PL",
-    "card_label": {
-      "class": "殲滅",
-      "cost_label": "コスト3"
-    },
     "name": "ビーチャ・オーレグ",
-    "english_name": "BEECHA OLEG",
     "cost": 3,
+    "rarity": "PR",
     "category": "殲滅",
     "affiliation": "エゥーゴ",
-    "physical": {
-      "height": null,
-      "age": 15
-    },
-    "units": [
-      "百式"
-    ],
+    "illustrator": "Yosuke Ichikawa",
     "stats": {
       "mobility": 220,
       "ranged_attack": 40,
       "melee_attack": 260,
       "hp": 300
     },
+    "link_ability": [
+      {
+        "name": "宇宙に響く鼓動",
+        "condition": "デッキに3枚以上",
+        "effect": "ECHOES BEAT Lv.が表示される。\n味方ユニットが戦術技を発動するとEBLv.が上がる。\n[HP][SP威力]小アップ",
+        "is_eb_link": true,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "BEECHA OLEG",
+    "physical": {
+      "height": "",
+      "age": 15
+    },
+    "units": [
+      "百式"
+    ],
     "pilot_skill": {
       "name": "火花散る電撃作戦",
       "trigger": "EBLv.1に上昇時",
       "effect": "30秒間、自身の[機動力][近距離攻撃力]をアップする。",
       "has_sq_skill": false,
       "sq_skill_details": null,
-      "is_eb_skill": true
-    },
-    "link_ability": [
-      {
-        "name": "宇宙に響く鼓動",
-        "condition": "デッキに3枚以上",
-        "effect": "ECHOES BEAT Lv.が表示される。\n味方ユニットが戦術技を発動するとEBLv.が上がる。\n[HP][SP威力]小アップ",
-        "is_eb_link": true
-      },
-      {
-        "name": "多彩な戦術",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
-        "is_eb_link": false
-      }
-    ],
-    "rarity": "PR",
-    "illustrator": "Yosuke Ichikawa",
-    "raw": "PL\n\n殲滅 コスト3\n\nビーチャ・オーレグ\nBEECHA OLEG\n\n身長 ー\n年齢 15歳\n所属 エゥーゴ\n搭乗機体 百式\n\nEB PL SKILL\n火花散る電撃作戦\n\nEBLv.1に上昇時\n\n30秒間、自身の[機動力][近距離攻撃力]をアップする。\n\nEB LINK ABILITY\n宇宙に響く鼓動 デッキに3枚以上\n\nECHOES BEAT Lv.が表示される。\n味方ユニットが戦術技を発動するとEBLv.が上がる。\n[HP][SP威力]小アップ\n\n多彩な戦術 デッキに4枚以上\n\n[遠距離攻撃力][近距離攻撃力]小アップ\n\n機動力 220\n遠距離攻撃 40\n近距離攻撃 260\nHP 300\n\nillust Yosuke Ichikawa\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n\n機動戦士ガンダムZZ\nARSENAL BASE\n\nPR-446 PR\nNOT FOR SALE"
+      "is_eb_skill": true,
+      "eb_trigger_level": 1,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_raw_file": "プロモーション_PR-446_ビーチャ・オーレグ_ocr_raw.json",
   "ocr_timestamp": "2026-05-11T00:00:00.000000",

@@ -5,17 +5,38 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE01-053.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE01-053_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "VE01-053",
     "type": "PL",
-    "card_label": {
-      "class": "殲滅",
-      "cost_label": "コスト3"
-    },
     "name": "キラ・ヤマト＆ラクス・クライン",
-    "english_name": "KIRA YAMATO & LACUS CLYNE",
     "cost": 3,
+    "rarity": "M",
     "category": "殲滅",
     "affiliation": "コンパス",
+    "illustrator": "",
+    "stats": {
+      "mobility": 190,
+      "ranged_attack": 240,
+      "melee_attack": 40,
+      "hp": 300
+    },
+    "link_ability": [
+      {
+        "name": "傍流する覚醒の共振",
+        "condition": "デッキに3枚以上",
+        "effect": "ECHOES BEAT Lv.が表示される。味方ユニットが戦術技を発動するとEBLv.が上がる。[遠距離攻撃力] [近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力] [近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "KIRA YAMATO & LACUS CLYNE",
     "physical": {
       "height": "170cm/160cm",
       "age": "19歳/20歳"
@@ -23,34 +44,16 @@
     "units": [
       "マイティーストライクフリーダムガンダム"
     ],
-    "stats": {
-      "mobility": 190,
-      "ranged_attack": 240,
-      "melee_attack": 40,
-      "hp": 300
-    },
     "pilot_skill": {
       "name": "速攻の射撃術",
       "trigger": "EBLv.1に上昇時",
       "effect": "30秒間、自身の[機動力] [遠距離攻撃力]をアップする。",
       "has_sq_skill": false,
-      "sq_skill_details": null
-    },
-    "link_ability": [
-      {
-        "name": "傍流する覚醒の共振",
-        "condition": "デッキに3枚以上",
-        "effect": "ECHOES BEAT Lv.が表示される。味方ユニットが戦術技を発動するとEBLv.が上がる。[遠距離攻撃力] [近距離攻撃力]小アップ"
-      },
-      {
-        "name": "多彩な戦術",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力] [近距離攻撃力]小アップ"
-      }
-    ],
-    "rarity": "M",
-    "illustrator": null,
-    "raw": "PL\n\n殲滅 コスト3\n\nキラ・ヤマト＆ラクス・クライン\nKIRA YAMATO & LACUS CLYNE\n\n身長 170cm/160cm\n年齢 19歳/20歳\n所属 コンパス\n搭乗機体 マイティーストライクフリーダムガンダム\n\n[アイコン:SEED FREEDOM]\n\nEB PL SKILL\n\n速攻の射撃術\n\nEBLv.1に上昇時\n\n30秒間、自身の[機動力] [遠距離攻撃力]をアップする。\n\nEB LINK ABILITY\n\n傍流する覚醒の共振 デッキに3枚以上\nECHOES BEAT Lv.が表示される。\n味方ユニットが戦術技を発動するとEBLv.が上がる。\n[遠距離攻撃力] [近距離攻撃力]小アップ\n\n多彩な戦術 デッキに4枚以上\n[遠距離攻撃力] [近距離攻撃力]\n小アップ\n\n機動力 190\n遠距離攻撃 240\n近距離攻撃 40\nHP 300\n\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n\n機動戦士ガンダム ARSENAL BASE\n\nVE01-053 M"
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": 1,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_raw_file": "WAVECHOES_SEASON_01_VE01-053_キラ・ヤマト＆ラクス・クライン_ocr_raw.json",
   "ocr_timestamp": "2026-02-23T13:20:11.873639",

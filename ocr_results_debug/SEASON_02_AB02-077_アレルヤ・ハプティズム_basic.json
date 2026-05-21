@@ -5,17 +5,38 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB02-077.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB02-077_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "AB02-077",
     "type": "PL",
-    "card_label": {
-      "class": "殲滅",
-      "cost_label": "コスト4"
-    },
     "name": "アレルヤ・ハプティズム",
-    "english_name": "ALLELUJAH HAPTISM",
     "cost": 4,
+    "rarity": "C",
     "category": "殲滅",
     "affiliation": "ソレスタルビーイング",
+    "illustrator": "",
+    "stats": {
+      "mobility": 180,
+      "ranged_attack": 140,
+      "melee_attack": 130,
+      "hp": 90
+    },
+    "link_ability": [
+      {
+        "name": "ガンダム00",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "ガンダムマイスター",
+        "condition": "デッキに2枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "ALLELUJAH HAPTISM",
     "physical": {
       "height": "186cm",
       "age": 19
@@ -23,34 +44,16 @@
     "units": [
       "ガンダムキュリオス"
     ],
-    "stats": {
-      "mobility": 180,
-      "ranged_attack": 140,
-      "melee_attack": 130,
-      "hp": 90
-    },
     "pilot_skill": {
       "name": "ガンダムマイスターの力",
       "trigger": "出撃時",
       "effect": "自身が使用するMSアビリティ[トランザム]の強化効果を小アップする。",
       "has_sq_skill": false,
-      "sq_skill_details": null
-    },
-    "link_ability": [
-      {
-        "name": "ガンダム00",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "ガンダムマイスター",
-        "condition": "デッキに2枚以上",
-        "effect": "[機動力]小アップ"
-      }
-    ],
-    "rarity": "C",
-    "illustrator": null,
-    "raw": "PL\n\n殲滅 コスト4\n\nアレルヤ・ハプティズム\nALLELUJAH HAPTISM\n\n身長 186cm\n年齢 19歳\n所属 ソレスタルビーイング\n搭乗機体 ガンダムキュリオス\n\n[アイコン:ガンダム00ロゴ]\n\nPL SKILL\n\nガンダムマイスターの力\n\n出撃時\n\n自身が使用するMSアビリティ[トランザム]の強化効果を小アップする。\n\nLINK ABILITY\n\nガンダム00 デッキに3枚以上\n[機動力]小アップ\n\nガンダムマイスター デッキに2枚以上\n[機動力]小アップ\n\n機動力 180\n遠距離攻撃 140\n近距離攻撃 130\nHP 90\n\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n\n機動戦士ガンダム ARSENAL BASE®\n\nAB02-077 C"
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_raw_file": "SEASON_02_AB02-077_アレルヤ・ハプティズム_ocr_raw.json",
   "ocr_timestamp": "2026-02-23T15:11:50.924540",

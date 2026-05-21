@@ -5,26 +5,39 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX04-001.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX04-001_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "LX04-001",
     "type": "MS",
-    "card_label": {
-      "class": "近距離",
-      "cost_label": "コスト2"
-    },
-    "name": "高機動型ザクII（シン・マツナガ専用機）",
-    "model": "MS-06R-1A",
+    "name": "高機動型ザクⅡ(シン・マツナガ専用機)",
     "cost": 2,
-    "category": "MS",
+    "rarity": "C",
+    "category": "近距離",
     "affiliation": "ジオン公国軍",
-    "pilot": "シン・マツナガ",
+    "illustrator": "hiropon",
     "stats": {
-      "height": "18.0m",
-      "weight": "61.8t",
       "mobility": 100,
       "ranged_attack": 110,
       "melee_attack": 210,
       "hp": 180
     },
+    "link_ability": [
+      {
+        "name": "MSV",
+        "condition": "デッキに2枚以上",
+        "effect": "[遠距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "専用機の実力",
+        "condition": "デッキに2枚以上",
+        "effect": "[近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "シン・マツナガ",
+    "model": "MS-06R-1A",
     "terrain_compatibility": {
       "ground": "A",
       "space": "S",
@@ -51,18 +64,6 @@
       "cost": 3,
       "description": "ロックオン中の敵に単体攻撃でダメージを与え、メイン武装を使用不能にさせる。出撃時１度のみ使用可能。"
     },
-    "link_ability": [
-      {
-        "name": "MSV",
-        "condition": "デッキに2枚以上",
-        "effect": "[遠距離攻撃力]小アップ"
-      },
-      {
-        "name": "専用機の実力",
-        "condition": "デッキに2枚以上",
-        "effect": "[近距離攻撃力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "ヒート・ホーク強撃",
       "target": "単体（敵）",
@@ -70,11 +71,11 @@
       "sp_cost": 2,
       "power": 3100,
       "description": "敵単体に格闘攻撃でダメージを与える。",
-      "united_sp": null
-    },
-    "rarity": "C",
-    "illustrator": "hiropon",
-    "raw": "近距離 コスト2\nMS-06R-1A ZAKUII HIGH MOBILITY TYPE\n高機動型ザクII（シン・マツナガ専用機）\n全高 18.0m\n本体重量 61.8t\n所属 ジオン公国軍\nパイロット シン・マツナガ\n地上 A 宇宙 S 砂漠 C 水中 C\n機動力 100\n遠距離攻撃 110\n近距離攻撃 210\nHP 180\n\nWEAPON\nMAIN ヒート・ホーク 射程 1 近距離\nSUB ザク・マシンガン 射程 3 遠距離\n\nMS ABILITY\n砕撃\n任意発動 単体（敵） 射程 1 コスト 3\nロックオン中の敵に単体攻撃でダメージを与え、メイン武装を使用不能にさせる。\n出撃時１度のみ使用可能。\n\nLINK ABILITY\nMSV デッキに2枚以上\n[遠距離攻撃力]小アップ\n\n専用機の実力 デッキに2枚以上\n[近距離攻撃力]小アップ\n\nSPECIAL ATTACK\nヒート・ホーク強撃\n単体（敵） 射程 2\nSPコスト 2 威力 3100\n敵単体に格闘攻撃でダメージを与える。\n\nIMPACT AREA\n（グリッド：緑丸2つ＋黄丸1つ＋自機三角）\n\nillust hiropon\n©創通・サンライズ\nBANDAI MADE IN JAPAN\nARSENAL BASE\nLX04-001 C"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "LINXTAGE_SEASON_04_LX04-001_高機動型ザクⅡ(シン・マツナガ専用機)_ocr_raw.json",
   "ocr_timestamp": "2026-03-07T18:11:22.079857",

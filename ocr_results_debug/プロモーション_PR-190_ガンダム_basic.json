@@ -5,26 +5,39 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-190.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-190_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "PR-190",
     "type": "MS",
-    "card_label": {
-      "class": "機動",
-      "cost_label": "コスト4"
-    },
     "name": "ガンダム",
-    "model": "RX-78-2 GUNDAM",
     "cost": 4,
-    "category": "機動戦士ガンダム",
+    "rarity": "PR",
+    "category": "機動",
     "affiliation": "地球連邦軍",
-    "pilot": "アムロ・レイ",
+    "illustrator": "kazumasa yasukuni",
     "stats": {
-      "height": "18.0m",
-      "weight": "43.4t",
       "mobility": 250,
       "ranged_attack": 70,
       "melee_attack": 350,
       "hp": 380
     },
+    "link_ability": [
+      {
+        "name": "機動戦士ガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "間合いを詰めた接近戦",
+        "condition": "デッキに2枚以上",
+        "effect": "[近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "アムロ・レイ",
+    "model": "RX-78-2 GUNDAM",
     "terrain_compatibility": {
       "ground": "A",
       "space": "A",
@@ -51,18 +64,6 @@
       "cost": 5,
       "description": "指定した位置に中範囲の支援砲撃を要請し、範囲内の敵にダメージを与える。"
     },
-    "link_ability": [
-      {
-        "name": "機動戦士ガンダム",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "間合いを詰めた接近戦",
-        "condition": "デッキに2枚以上",
-        "effect": "[近距離攻撃力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "ビーム・サーベル強攻",
       "target": "単体(敵)",
@@ -70,19 +71,21 @@
       "sp_cost": 2,
       "power": 3400,
       "description": "敵単体に格闘攻撃でダメージを与える。",
+      "sp_type": "",
+      "echoes_beat": null,
       "united_sp": {
         "name": "V作戦",
-        "partner1": "ガンキャノン",
-        "partner2": "ガンタンク",
+        "partners": [
+          "ガンキャノン",
+          "ガンタンク"
+        ],
         "target": "範囲(敵)",
         "range": 2,
         "power": 4800,
         "description": "対象の敵を中心として範囲射撃と格闘でダメージを与える。出撃時1度のみ使用可能。"
-      }
-    },
-    "rarity": "PR",
-    "illustrator": "kazumasa yasukuni",
-    "raw": "機動　コスト4\nRX-78-2 GUNDAM\nガンダム\n\n全高　18.0m\n本体重量　43.4t\n所属　地球連邦軍\nパイロット　アムロ・レイ\n\n地上 A　宇宙 A　砂漠 C　水中 A\n機動力　250\n遠距離攻撃　70\n近距離攻撃　350\nHP　380\n\nWEAPON\nMAIN　ビーム・サーベル　射程 1　近距離\nSUB　ビーム・ライフル　射程 3　遠距離\n\nMS ABILITY\n支援砲撃\n任意発動　範囲(敵)　射程 ー　コスト 5\n指定した位置に中範囲の支援砲撃を要請し、範囲内の敵にダメージを与える。\n\nLINK ABILITY\n機動戦士ガンダム　デッキに3枚以上\n[機動力]小アップ\n\n間合いを詰めた接近戦　デッキに2枚以上\n[近距離攻撃力]小アップ\n\nSPECIAL ATTACK　　UNITED SP\nビーム・サーベル強攻　　V作戦\n連携 ガンキャノン　　連携 ガンタンク\n連携 ー　　連携 ー\n単体(敵)　射程 2　　範囲(敵)　射程 2\nSPコスト 2　威力　3400 / 4800\n敵単体に格闘攻撃でダメージを与える。\n／対象の敵を中心として範囲射撃と格闘でダメージを与える。出撃時1度のみ使用可能。\n\nillust. kazumasa yasukuni\n©創通・サンライズ\nBANDAI MADE IN JAPAN\nNOT FOR SALE\nPR-190　PR"
+      },
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "プロモーション_PR-190_ガンダム_ocr_raw.json",
   "ocr_timestamp": "2026-03-07T12:02:11.325401",

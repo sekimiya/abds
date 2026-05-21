@@ -5,47 +5,47 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/TEST-029.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/TEST-029_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "TEST-029",
     "type": "PL",
-    "card_label": {
-      "class": "制圧",
-      "cost_label": "コスト4"
-    },
     "name": "三日月・オーガス",
-    "english_name": "MIKAZUKI AUGUS",
     "cost": 4,
+    "rarity": "C",
     "category": "制圧",
     "affiliation": "鉄華団",
-    "physical": {
-      "height": null,
-      "age": null
-    },
-    "units": [
-      "ガンダム・バルバトス(第1形態)"
-    ],
+    "illustrator": "",
     "stats": {
       "mobility": 130,
       "ranged_attack": 60,
       "melee_attack": 150,
       "hp": 120
     },
+    "link_ability": [
+      {
+        "name": "鉄血のオルフェンズ",
+        "condition": "デッキに3枚以上",
+        "effect": "[近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "MIKAZUKI AUGUS",
+    "physical": {
+      "height": "",
+      "age": ""
+    },
+    "units": [
+      "ガンダム・バルバトス(第1形態)"
+    ],
     "pilot_skill": {
       "name": "優先すべき目標",
       "trigger": "敵戦艦／拠点をロックオン時",
       "effect": "敵戦艦／拠点へのダメージを小アップする。",
       "has_sq_skill": false,
-      "sq_skill_details": null
-    },
-    "link_ability": [
-      {
-        "name": "鉄血のオルフェンズ",
-        "condition": "デッキに3枚以上",
-        "effect": "[近距離攻撃力]小アップ"
-      }
-    ],
-    "rarity": "C",
-    "illustrator": null,
-    "raw": "PL\n\n制圧　コスト4\n\n三日月・オーガス\nMIKAZUKI AUGUS\n\n鉄血のオルフェンズ\n\n身長　ー\n年齢　ー\n所属　鉄華団\n搭乗機体　ガンダム・バルバトス(第1形態)\n\nPL SKILL\n優先すべき目標\n敵戦艦／拠点をロックオン時\n敵戦艦／拠点へのダメージを小アップする。\n\nLINK ABILITY\n鉄血のオルフェンズ　デッキに3枚以上\n[近距離攻撃力]小アップ\n\nー　ー\n\n機動力　130\n遠距離攻撃　60\n近距離攻撃　150\nHP　120\n\n©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nTEST-029　C"
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_raw_file": "ロケーションテスト_TEST-029_三日月・オーガス_ocr_raw.json",
   "ocr_timestamp": "2026-03-02T05:15:58.127943",

@@ -5,31 +5,36 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB04-055.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB04-055_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "AB04-055",
     "type": "MS",
-    "card_label": {
-      "class": "機動",
-      "cost_label": "コスト5"
-    },
     "name": "ガンダム・キマリス",
-    "model": "ASW-G-66 GUNDAM KIMARIS",
     "cost": 5,
+    "rarity": "C",
     "category": "機動",
     "affiliation": "ギャラルホルン",
-    "pilot": "ガエリオ・ボードウィン",
+    "illustrator": "kenko",
     "stats": {
-      "height": "19.3m",
-      "weight": "31.7t",
       "mobility": 320,
       "ranged_attack": 230,
       "melee_attack": 250,
       "hp": 200
     },
+    "link_ability": [
+      {
+        "name": "鉄血のオルフェンズ",
+        "condition": "デッキに3枚以上",
+        "effect": "[近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "ガエリオ・ボードウィン",
+    "model": "ASW-G-66 GUNDAM KIMARIS",
     "terrain_compatibility": {
       "ground": "A",
       "space": "S",
       "desert": "C",
-      "water": null
+      "water": ""
     },
     "weapon": {
       "main": {
@@ -44,13 +49,6 @@
       }
     },
     "ms_ability": null,
-    "link_ability": [
-      {
-        "name": "鉄血のオルフェンズ",
-        "condition": "デッキに3枚以上",
-        "effect": "[近距離攻撃力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "グングニール強撃",
       "target": "単体(敵)",
@@ -58,11 +56,11 @@
       "sp_cost": 2,
       "power": 3300,
       "description": "敵単体に格闘攻撃でダメージを与える。",
-      "united_sp": null
-    },
-    "rarity": "C",
-    "illustrator": "kenko",
-    "raw": "MS\n\n機動 コスト5\n\nASW-G-66 GUNDAM KIMARIS\nガンダム・キマリス\n\n全高 19.3m\n本体重量 31.7t\n所属 ギャラルホルン\nパイロット ガエリオ・ボードウィン\n\n地上 A 宇宙 S 砂漠 C\n\n機動力 320\n遠距離攻撃 230\n近距離攻撃 250\nHP 200\n\nWEAPON\nMAIN グングニール 射程 1 近距離\nSUB グングニール(120mm砲) 射程 3 遠距離\n\nLINK ABILITY\n鉄血のオルフェンズ デッキに3枚以上\n[近距離攻撃力]小アップ\n\nMS ABILITY\nー\nー ー 射程 ー コスト ー\n\nSPECIAL ATTACK\nグングニール強撃\n単体(敵) 射程 2\nSPコスト 2 威力 3300\n敵単体に格闘攻撃でダメージを与える。\n\nIMPACT AREA\n[アイコン:中央に緑丸、下方に三角]\n\nillust kenko\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\nAB04-055 C"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "SEASON_04_AB04-055_ガンダム・キマリス_ocr_raw.json",
   "ocr_timestamp": "2026-03-02T06:02:42.404383",

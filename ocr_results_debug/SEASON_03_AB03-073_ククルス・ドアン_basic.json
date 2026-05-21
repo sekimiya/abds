@@ -5,52 +5,55 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB03-073.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB03-073_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "AB03-073",
     "type": "PL",
-    "card_label": {
-      "class": "制圧",
-      "cost_label": "コスト3"
-    },
     "name": "ククルス・ドアン",
-    "english_name": "CUCURUZ DOAN",
     "cost": 3,
+    "rarity": "M",
     "category": "制圧",
-    "affiliation": null,
-    "physical": {
-      "height": null,
-      "age": null
-    },
-    "units": [
-      "ドアン専用ザク"
-    ],
+    "affiliation": "",
+    "illustrator": "",
     "stats": {
       "mobility": 180,
       "ranged_attack": 130,
       "melee_attack": 200,
       "hp": 260
     },
+    "link_ability": [
+      {
+        "name": "ククルス・ドアンの島",
+        "condition": "デッキに2枚以上",
+        "effect": "[近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "優れた格闘センス",
+        "condition": "デッキに2枚以上",
+        "effect": "[近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "CUCURUZ DOAN",
+    "physical": {
+      "height": "",
+      "age": ""
+    },
+    "units": [
+      "ドアン専用ザク"
+    ],
     "pilot_skill": {
       "name": "不屈の意思",
       "trigger": "HP50%以下の時",
       "effect": "自身が受けるダメージを少し軽減する。",
       "has_sq_skill": false,
-      "sq_skill_details": null
-    },
-    "link_ability": [
-      {
-        "name": "ククルス・ドアンの島",
-        "condition": "デッキに2枚以上",
-        "effect": "[近距離攻撃力]小アップ"
-      },
-      {
-        "name": "優れた格闘センス",
-        "condition": "デッキに2枚以上",
-        "effect": "[近距離攻撃力]小アップ"
-      }
-    ],
-    "rarity": "M",
-    "illustrator": null,
-    "raw": "PL\n\n制圧 コスト3\n\nククルス・ドアン\nCUCURUZ DOAN\n\n[アイコン:機動戦士ガンダム ククルス・ドアンの島]\n[アイコン:ジオン紋章]\n\n身長 ー\n年齢 ー\n所属 ー\n搭乗機体 ドアン専用ザク\n\nPL SKILL\n\n不屈の意思\n\nHP50%以下の時\n\n自身が受けるダメージを少し軽減する。\n\nLINK ABILITY\n\nククルス・ドアンの島 デッキに2枚以上\n[近距離攻撃力]小アップ\n\n優れた格闘センス デッキに2枚以上\n[近距離攻撃力]小アップ\n\n機動力 180\n遠距離攻撃 130\n近距離攻撃 200\nHP 260\n\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n\n機動戦士ガンダム ARSENAL BASE©\n\nAB03-073 M"
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_raw_file": "SEASON_03_AB03-073_ククルス・ドアン_ocr_raw.json",
   "ocr_timestamp": "2026-02-23T15:17:46.744135",

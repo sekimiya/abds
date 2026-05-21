@@ -5,26 +5,39 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-386.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-386_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "PR-386",
     "type": "MS",
-    "card_label": {
-      "class": "機動",
-      "cost_label": "コスト4"
-    },
     "name": "ウイングガンダムゼロ（EW）",
-    "model": "XXXG-00W0 WING GUNDAM ZERO[EW]",
     "cost": 4,
-    "category": "機動戦士ガンダムW",
-    "affiliation": null,
-    "pilot": "ヒイロ・ユイ",
+    "rarity": "PR",
+    "category": "機動",
+    "affiliation": "",
+    "illustrator": "funbolt",
     "stats": {
-      "height": "16.7m",
-      "weight": "8.0t",
       "mobility": 270,
       "ranged_attack": 380,
       "melee_attack": 100,
       "hp": 450
     },
+    "link_ability": [
+      {
+        "name": "Endless Waltz",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "的確な一撃",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][遠距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "ヒイロ・ユイ",
+    "model": "XXXG-00W0 WING GUNDAM ZERO[EW]",
     "terrain_compatibility": {
       "ground": "A",
       "space": "S",
@@ -51,18 +64,6 @@
       "cost": 3,
       "description": "自身が弱体化状態の時に発動可能となり、自身の弱体化状態を無効化し、ロックオン中の敵に単体攻撃でダメージを与える。"
     },
-    "link_ability": [
-      {
-        "name": "Endless Waltz",
-        "condition": "デッキに3枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      },
-      {
-        "name": "的確な一撃",
-        "condition": "デッキに4枚以上",
-        "effect": "[機動力][遠距離攻撃力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "ツインバスターライフル斜射",
       "target": "範囲（敵）",
@@ -70,11 +71,11 @@
       "sp_cost": 2,
       "power": 3300,
       "description": "対象の敵を中心として範囲射撃でダメージを与え、自身に小ダメージ。",
-      "united_sp": null
-    },
-    "rarity": "PR",
-    "illustrator": "funbolt",
-    "raw": "機動 コスト4\nXXXG-00W0 WING GUNDAM ZERO[EW]\nウイングガンダムゼロ（EW）\n\n頭頂高 16.7m\n本体重量 8.0t\n所属 —\nパイロット ヒイロ・ユイ\n\n地上 A　宇宙 S　砂漠 C　水中 C\n機動力 270\n遠距離攻撃 380\n近距離攻撃 100\nHP 450\n\nWEAPON\nMAIN ツインバスターライフル　射程 4　遠距離\nSUB ビームサーベル　射程 1　近距離\n\nMS ABILITY\n解撃\n任意発動　単体（敵）　射程 4　コスト 3\n自身が弱体化状態の時に発動可能となり、自身の弱体化状態を無効化し、ロックオン中の敵に単体攻撃でダメージを与える。\n\nSPECIAL ATTACK　UNITED SP\nツインバスターライフル斜射　—\n連携 —　連携 —\n連携 —　連携 —\n範囲（敵）　射程 4　—　射程 —\nSPコスト 2　威力 3300 / —\n\n対象の敵を中心として範囲射撃でダメージを与え、自身に小ダメージ。／—\n\nLINK ABILITY\nEndless Waltz　デッキに3枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\n的確な一撃　デッキに4枚以上\n[機動力][遠距離攻撃力]小アップ\n\nillust funbolt\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\nNOT FOR SALE\nPR-386 PR"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "プロモーション_PR-386_ウイングガンダムゼロ（EW）_ocr_raw.json",
   "ocr_timestamp": "2026-03-03T19:24:13.763273",

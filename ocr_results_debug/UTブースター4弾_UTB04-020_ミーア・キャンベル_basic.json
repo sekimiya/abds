@@ -5,50 +5,53 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UTB04-020.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UTB04-020_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "UTB04-020",
     "type": "PL",
-    "card_label": {
-      "class": "防衛",
-      "cost_label": "コスト1"
-    },
     "name": "ミーア・キャンベル",
-    "english_name": "MEER CAMPBELL",
     "cost": 1,
+    "rarity": "M",
     "category": "防衛",
     "affiliation": "ザフト",
-    "physical": {
-      "height": "160cm",
-      "age": 17
-    },
-    "units": [],
+    "illustrator": "",
     "stats": {
       "mobility": 220,
       "ranged_attack": 90,
       "melee_attack": 180,
       "hp": 220
     },
+    "link_ability": [
+      {
+        "name": "SEED DESTINY",
+        "condition": "デッキに3枚以上",
+        "effect": "[HP]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "魅惑のステージ",
+        "condition": "デッキに2枚以上",
+        "effect": "[機動力][HP]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "MEER CAMPBELL",
+    "physical": {
+      "height": "160cm",
+      "age": 17
+    },
+    "units": [],
     "pilot_skill": {
       "name": "EMOTION",
       "trigger": "出撃時",
       "effect": "自身が使用するMSアビリティ[増援]の初回使用コストを1ダウンする。",
       "has_sq_skill": false,
-      "sq_skill_details": null
-    },
-    "link_ability": [
-      {
-        "name": "SEED DESTINY",
-        "condition": "デッキに3枚以上",
-        "effect": "[HP]小アップ"
-      },
-      {
-        "name": "魅惑のステージ",
-        "condition": "デッキに2枚以上",
-        "effect": "[機動力][HP]小アップ"
-      }
-    ],
-    "rarity": "M",
-    "illustrator": null,
-    "raw": "PL\n\n防衛　コスト1\n\nミーア・キャンベル\nMEER CAMPBELL\n\n身長　160cm\n年齢　17歳\n所属　ザフト\n搭乗機体　ー\n\nPL SKILL\nEMOTION\n出撃時\n\n自身が使用するMSアビリティ[増援]の初回使用コストを1ダウンする。\n\nLINK ABILITY\nSEED DESTINY　デッキに3枚以上\n[HP]小アップ\n\n魅惑のステージ　デッキに2枚以上\n[機動力][HP]小アップ\n\n機動力 220\n遠距離攻撃 90\n近距離攻撃 180\nHP 220\n\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\nUTB04-020 M"
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_raw_file": "UTブースター4弾_UTB04-020_ミーア・キャンベル_ocr_raw.json",
   "ocr_timestamp": "2026-03-02T02:44:34.802469",

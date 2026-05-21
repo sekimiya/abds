@@ -5,26 +5,39 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX03-013.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX03-013_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "LX03-013",
     "type": "MS",
-    "card_label": {
-      "class": "遠距離",
-      "cost_label": "コスト8"
-    },
-    "name": "サイコ・ガンダムMk-Ⅱ（モビルスーツ形態）",
-    "model": "MRX-010 PSYCHO GUNDAM Mk-Ⅱ",
+    "name": "サイコ・ガンダムMk-Ⅱ(モビルスーツ形態)",
     "cost": 8,
-    "category": "機動戦士ガンダムZZ",
+    "rarity": "C",
+    "category": "遠距離",
     "affiliation": "ネオ・ジオン",
-    "pilot": "ブルツー",
+    "illustrator": "Hiroshi Ayaragi",
     "stats": {
-      "height": "39.98m",
-      "weight": "283.9t",
       "mobility": 280,
       "ranged_attack": 370,
       "melee_attack": 300,
       "hp": 330
     },
+    "link_ability": [
+      {
+        "name": "機動戦士ガンダムZZ",
+        "condition": "デッキに3枚以上",
+        "effect": "[HP]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "距離をとった射撃戦",
+        "condition": "デッキに2枚以上",
+        "effect": "[遠距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "ブルツー",
+    "model": "MRX-010 PSYCHO GUNDAM Mk-Ⅱ",
     "terrain_compatibility": {
       "ground": "A",
       "space": "A",
@@ -44,25 +57,13 @@
       }
     },
     "ms_ability": {
-      "name": null,
-      "activation": null,
-      "target": null,
+      "name": "",
+      "activation": "",
+      "target": "",
       "range": null,
       "cost": null,
-      "description": null
+      "description": ""
     },
-    "link_ability": [
-      {
-        "name": "機動戦士ガンダムZZ",
-        "condition": "デッキに3枚以上",
-        "effect": "[HP]小アップ"
-      },
-      {
-        "name": "距離をとった射撃戦",
-        "condition": "デッキに2枚以上",
-        "effect": "[遠距離攻撃力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "有線サイコミュ式5連装ビーム砲撃射",
       "target": "単体(敵)",
@@ -70,11 +71,11 @@
       "sp_cost": 2,
       "power": 3300,
       "description": "敵単体に射撃攻撃でダメージを与える。",
-      "united_sp": null
-    },
-    "rarity": "C",
-    "illustrator": "Hiroshi Ayaragi",
-    "raw": "遠距離　コスト8　MS\nMRX-010 PSYCHO GUNDAM Mk-Ⅱ\nサイコ・ガンダムMk-Ⅱ（モビルスーツ形態）\n\n全高　39.98m\n本体重量　283.9t\n所属　ネオ・ジオン\nパイロット　ブルツー\n\n地上 A　宇宙 A　砂漠 C　水中 B\n機動力 280\n遠距離攻撃 370\n近距離攻撃 300\nHP 330\n\nWEAPON\nMAIN　有線サイコミュ式5連装ビーム砲　射程 3　遠距離\nSUB　有線サイコミュ式ビーム・ソード　射程 1　近距離\n\nMS ABILITY\nー\nー　ー　射程 ー　コスト ー\nー\n\nLINK ABILITY\n機動戦士ガンダムZZ　デッキに3枚以上\n[HP]小アップ\n\n距離をとった射撃戦　デッキに2枚以上\n[遠距離攻撃力]小アップ\n\nSPECIAL ATTACK\n有線サイコミュ式5連装ビーム砲撃射\n単体(敵)　射程 3\nSPコスト 2　威力 3300\n敵単体に射撃攻撃でダメージを与える。\n\nillust. Hiroshi Ayaragi\n©創通・サンライズ\nBANDAI MADE IN JAPAN\nLX03-013　C"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "LINXTAGE_SEASON_03_LX03-013_サイコ・ガンダムMk-Ⅱ(モビルスーツ形態)_ocr_raw.json",
   "ocr_timestamp": "2026-03-07T17:01:48.578025",

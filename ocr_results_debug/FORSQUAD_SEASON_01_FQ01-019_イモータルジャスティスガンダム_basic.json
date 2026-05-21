@@ -5,26 +5,39 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ01-019.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ01-019_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "FQ01-019",
     "type": "MS",
-    "card_label": {
-      "class": "近距離",
-      "cost_label": "コスト3"
-    },
     "name": "イモータルジャスティスガンダム",
-    "model": "STTS-808 IMMORTAL JUSTICE GUNDAM",
     "cost": 3,
+    "rarity": "M",
     "category": "近距離",
     "affiliation": "コンパス",
-    "pilot": "シン・アスカ",
+    "illustrator": "ilshima060123",
     "stats": {
-      "height": "18.50m",
-      "weight": "71.62t",
       "mobility": 230,
       "ranged_attack": 40,
       "melee_attack": 370,
       "hp": 310
     },
+    "link_ability": [
+      {
+        "name": "SEED FREEDOM",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "シン・アスカ",
+    "model": "STTS-808 IMMORTAL JUSTICE GUNDAM",
     "terrain_compatibility": {
       "ground": "A",
       "space": "S",
@@ -51,18 +64,6 @@
       "cost": 3,
       "description": "ロックオン中の敵に単体攻撃でダメージを与える。"
     },
-    "link_ability": [
-      {
-        "name": "SEED FREEDOM",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "多彩な戦術",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "ヴィーゼルナーゲル ビームブーメラン連撃",
       "target": "単体(敵)",
@@ -70,11 +71,11 @@
       "sp_cost": 2,
       "power": 3400,
       "description": "敵単体に格闘攻撃でダメージを与える。",
-      "united_sp": null
-    },
-    "rarity": "M",
-    "illustrator": "ilshima060123",
-    "raw": "MS\n\n近距離　コスト3\n\nSTTS-808 IMMORTAL JUSTICE GUNDAM\nイモータルジャスティスガンダム\n\n頭頂高　18.50m\n本体重量　71.62t\n所属　コンパス\nパイロット　シン・アスカ\n\n地上 A　宇宙 S　砂漠 A　水中 C\n\n機動力 230\n遠距離攻撃 40\n近距離攻撃 370\nHP 310\n\nWEAPON\n\nMAIN ヴィーゼルナーゲル ビームブーメラン　射程 1　近距離\nSUB 高エネルギービームライフル　射程 3　遠距離\n\nLINK ABILITY\n\nSEED FREEDOM　デッキに3枚以上\n[機動力]小アップ\n\n多彩な戦術　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nMS ABILITY\n\n強撃\n任意発動　単体(敵)　射程 1　コスト 3\n\nロックオン中の敵に単体攻撃でダメージを与える。\n\nSPECIAL ATTACK　　UNITED SP\n\nヴィーゼルナーゲル ビームブーメラン連撃\n連携 ―　　連携 ―\n連携 ―　　連携 ―\n単体(敵)　射程 2　　―　射程 ―\n\nSPコスト 2　威力 3400 / ―\n\n敵単体に格闘攻撃でダメージを与える。\n/ ―\n\nIMPACT AREA\n\n[アイコン:緑丸 中央やや右下]\n[アイコン:黄丸 右下]\n\nillust　ilshima060123\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nFQ01-019　M"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "FORSQUAD_SEASON_01_FQ01-019_イモータルジャスティスガンダム_ocr_raw.json",
   "ocr_timestamp": "2026-02-24T01:26:39.112220",

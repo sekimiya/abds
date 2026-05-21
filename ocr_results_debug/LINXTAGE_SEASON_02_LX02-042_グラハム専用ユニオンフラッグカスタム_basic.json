@@ -5,26 +5,39 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX02-042.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX02-042_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "LX02-042",
     "type": "MS",
-    "card_label": {
-      "class": "遠距離",
-      "cost_label": "コスト4"
-    },
     "name": "グラハム専用ユニオンフラッグカスタム",
-    "model": "SVMS-01E GRAHAM'S UNION FLAG CUSTOM",
     "cost": 4,
-    "category": "MS",
+    "rarity": "C",
+    "category": "遠距離",
     "affiliation": "ユニオン",
-    "pilot": "グラハム・エーカー",
+    "illustrator": "Masked",
     "stats": {
-      "height": "17.9m",
-      "weight": "66.6t",
       "mobility": 200,
       "ranged_attack": 210,
       "melee_attack": 50,
       "hp": 190
     },
+    "link_ability": [
+      {
+        "name": "ガンダム00",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "可変機ファイター",
+        "condition": "デッキに3枚以上",
+        "effect": "専用作戦カードが使用可能",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "グラハム・エーカー",
+    "model": "SVMS-01E GRAHAM'S UNION FLAG CUSTOM",
     "terrain_compatibility": {
       "ground": "S",
       "space": "B",
@@ -51,18 +64,6 @@
       "cost": 6,
       "description": "指定した位置に範囲攻撃を行い、その地点に移動する。"
     },
-    "link_ability": [
-      {
-        "name": "ガンダム00",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "可変機ファイター",
-        "condition": "デッキに3枚以上",
-        "effect": "専用作戦カードが使用可能"
-      }
-    ],
     "special_attack": {
       "name": "試作リニアライフル撃射",
       "target": "単体（敵）",
@@ -70,11 +71,11 @@
       "sp_cost": 2,
       "power": 3100,
       "description": "敵単体に射撃攻撃でダメージを与える。",
-      "united_sp": null
-    },
-    "rarity": "C",
-    "illustrator": "Masked",
-    "raw": "遠距離　コスト4　MS\nSVMS-01E GRAHAM'S UNION FLAG CUSTOM\nグラハム専用ユニオンフラッグカスタム\n\n全高　17.9m\n本体重量　66.6t　　地上 S　宇宙 B　砂漠 C　水中 C\n所属　ユニオン　　　　　　　　　機動力 200\nパイロット　グラハム・エーカー　　遠距離攻撃 210\n　　　　　　　　　　　　　　　　近距離攻撃 50\n　　　　　　　　　　　　　　　　HP 190\n\nWEAPON\nMAIN　試作リニアライフル　射程 3　遠距離\nSUB　プラズマソード　射程 1　近距離\n\nMS ABILITY\n奇襲\n任意発動　範囲（敵）　射程 ー　コスト 6\n指定した位置に範囲攻撃を行い、その地点に移動する。\n\nLINK ABILITY\nガンダム00　デッキに3枚以上\n[機動力]小アップ\n\n可変機ファイター　デッキに3枚以上\n専用作戦カードが使用可能\n\nIMPACT AREA\n\nSPECIAL ATTACK\n試作リニアライフル撃射\n単体（敵）　射程 3\nSPコスト 2　威力 3100\n敵単体に射撃攻撃でダメージを与える。\n\nillust　Masked\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\nLX02-042　C"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "LINXTAGE_SEASON_02_LX02-042_グラハム専用ユニオンフラッグカスタム_ocr_raw.json",
   "ocr_timestamp": "2026-03-07T16:06:58.065069",

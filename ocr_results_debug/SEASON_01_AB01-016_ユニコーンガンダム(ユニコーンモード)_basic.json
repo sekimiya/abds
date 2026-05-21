@@ -5,31 +5,44 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB01-016.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB01-016_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "AB01-016",
     "type": "MS",
-    "card_label": {
-      "class": "機動",
-      "cost_label": "コスト5"
-    },
     "name": "ユニコーンガンダム(ユニコーンモード)",
-    "model": "RX-0 UNICORN GUNDAM",
     "cost": 5,
+    "rarity": "C",
     "category": "機動",
     "affiliation": "ビスト財団",
-    "pilot": "バナージ・リンクス",
+    "illustrator": "Ayaragi Hiroshi",
     "stats": {
-      "height": "19.7m",
-      "weight": "23.7t",
       "mobility": 200,
       "ranged_attack": 120,
       "melee_attack": 150,
       "hp": 240
     },
+    "link_ability": [
+      {
+        "name": "ガンダムUC",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "その名はガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "バナージ・リンクス",
+    "model": "RX-0 UNICORN GUNDAM",
     "terrain_compatibility": {
       "ground": "A",
       "space": "S",
       "desert": "C",
-      "water": null
+      "water": ""
     },
     "weapon": {
       "main": {
@@ -44,18 +57,6 @@
       }
     },
     "ms_ability": null,
-    "link_ability": [
-      {
-        "name": "ガンダムUC",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "その名はガンダム",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "ビーム・サーベル強撃",
       "target": "単体(敵)",
@@ -63,11 +64,11 @@
       "sp_cost": 2,
       "power": 3300,
       "description": "敵単体に格闘攻撃でダメージを与える。",
-      "united_sp": null
-    },
-    "rarity": "C",
-    "illustrator": "Ayaragi Hiroshi",
-    "raw": "MS\n\n機動 コスト5\n\nRX-0 UNICORN GUNDAM\nユニコーンガンダム(ユニコーンモード)\n\n全高 19.7m\n本体重量 23.7t\n所属 ビスト財団\nパイロット バナージ・リンクス\n\n地上 A 宇宙 S 砂漠 C\n機動力 200\n遠距離攻撃 120\n近距離攻撃 150\nHP 240\n\nWEAPON\n\nMAIN ビーム・サーベル 射程 1 近距離\nSUB ビーム・マグナム 射程 3 遠距離\n\nMS ABILITY\n\n― ― 射程 ― コスト ―\n\nLINK ABILITY\n\nガンダಮUC デッキに3枚以上\n[機動力]小アップ\n\nその名はガンダム デッキに3枚以上\n[機動力]小アップ\n\nSPECIAL ATTACK\n\nビーム・サーベル強撃\n単体(敵) 射程 2\nSPコスト 2 威力 3300\n敵単体に格闘攻撃でダメージを与える。\n\nIMPACT AREA\n\n[アイコン:中央に緑丸、下段中央に三角]\n\nillust Ayaragi Hiroshi\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n\n機動戦士ガンダム ARSENAL BASE™\n\nAB01-016 C"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "SEASON_01_AB01-016_ユニコーンガンダム(ユニコーンモード)_ocr_raw.json",
   "ocr_timestamp": "2026-02-23T12:08:12.160323",

@@ -5,26 +5,39 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT01-009.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT01-009_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "UT01-009",
     "type": "MS",
-    "card_label": {
-      "class": "近距離",
-      "cost_label": "コスト3"
-    },
     "name": "ザクⅡ改",
-    "model": "MS-06FZ ZAKUⅡ FZ",
     "cost": 3,
+    "rarity": "C",
     "category": "近距離",
     "affiliation": "ジオン公国軍",
-    "pilot": "バーナード・ワイズマン",
+    "illustrator": "kenko",
     "stats": {
-      "height": "17.5m",
-      "weight": "56.2t",
       "mobility": 150,
       "ranged_attack": 70,
       "melee_attack": 200,
       "hp": 230
     },
+    "link_ability": [
+      {
+        "name": "ポケットの中の戦争",
+        "condition": "デッキに3枚以上",
+        "effect": "[HP]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "間合いを詰めた接近戦",
+        "condition": "デッキに2枚以上",
+        "effect": "[近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "バーナード・ワイズマン",
+    "model": "MS-06FZ ZAKUⅡ FZ",
     "terrain_compatibility": {
       "ground": "A",
       "space": "A",
@@ -51,18 +64,6 @@
       "cost": 4,
       "description": "ロックオン中の敵に単体攻撃でダメージを与える。自身の残りHPが少ない程、ダメージが上昇する。"
     },
-    "link_ability": [
-      {
-        "name": "ポケットの中の戦争",
-        "condition": "デッキに3枚以上",
-        "effect": "[HP]小アップ"
-      },
-      {
-        "name": "間合いを詰めた接近戦",
-        "condition": "デッキに2枚以上",
-        "effect": "[近距離攻撃力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "ヒート・ホーク強撃",
       "target": "単体(敵)",
@@ -70,11 +71,11 @@
       "sp_cost": 2,
       "power": 3200,
       "description": "敵単体に格闘攻撃でダメージを与える。",
-      "united_sp": null
-    },
-    "rarity": "C",
-    "illustrator": "kenko",
-    "raw": "MS\n\n近距離　コスト3\n\nMS-06FZ ZAKUⅡ FZ\nザクⅡ改\n\n全高　17.5m\n本体重量　56.2t\n所属　ジオン公国軍\nパイロット　バーナード・ワイズマン\n\n地上 A　宇宙 A　砂漠 C　水中 C\n\n機動力 150\n遠距離攻撃 70\n近距離攻撃 200\nHP 230\n\nWEAPON\nMAIN ヒート・ホーク　射程 1　近距離\nSUB MMP-80 90mmマシンガン　射程 3　遠距離\n\nLINK ABILITY\nポケットの中の戦争　デッキに3枚以上\n[HP]小アップ\n\n間合いを詰めた接近戦　デッキに2枚以上\n[近距離攻撃力]小アップ\n\nMS ABILITY\n逆襲\n任意発動　単体(敵)　射程 1　コスト 4\nロックオン中の敵に単体攻撃でダメージを与える。自身の残りHPが少ない程、ダメージが上昇する。\n\nSPECIAL ATTACK　　UNITED SP\nヒート・ホーク強撃　　ー\n連携 ー　　連携 ー\n連携 ー　　連携 ー\n単体(敵)　射程 2　　ー　射程 ー\nSPコスト 2　威力 3200 / ー\n敵単体に格闘攻撃でダメージを与える。\n/ ー\n\nIMPACT AREA\n[アイコン:3x3グリッド、中央・右中央・下中央に緑丸]\n\nillust kenko\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nUT01-009　C"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "UNITRIBE_SEASON_01_UT01-009_ザクⅡ改_ocr_raw.json",
   "ocr_timestamp": "2026-03-02T02:59:19.096160",

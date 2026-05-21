@@ -5,31 +5,44 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB04-017.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB04-017_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "AB04-017",
     "type": "MS",
-    "card_label": {
-      "class": "遠距離",
-      "cost_label": "コスト7"
-    },
     "name": "ザメル",
-    "model": "YMS-16M XAMEL",
     "cost": 7,
+    "rarity": "R",
     "category": "遠距離",
     "affiliation": "ジオン公国軍",
-    "pilot": "ボブ",
+    "illustrator": "sakusaku sakurai",
     "stats": {
-      "height": "27.0m",
-      "weight": "75.0t",
       "mobility": 290,
       "ranged_attack": 320,
       "melee_attack": 190,
       "hp": 290
     },
+    "link_ability": [
+      {
+        "name": "ガンダム0083",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "実弾の突破力",
+        "condition": "デッキに2枚以上",
+        "effect": "[遠距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "ボブ",
+    "model": "YMS-16M XAMEL",
     "terrain_compatibility": {
       "ground": "S",
       "space": "C",
       "desert": "A",
-      "water": null
+      "water": ""
     },
     "weapon": {
       "main": {
@@ -51,18 +64,6 @@
       "cost": 4,
       "description": "射程範囲内の指定した位置に小範囲の砲撃を行い、範囲内の敵にダメージを与える。"
     },
-    "link_ability": [
-      {
-        "name": "ガンダム0083",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "実弾の突破力",
-        "condition": "デッキに2枚以上",
-        "effect": "[遠距離攻撃力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "680mmカノン砲砲撃",
       "target": "範囲(敵)",
@@ -70,11 +71,11 @@
       "sp_cost": 2,
       "power": 3000,
       "description": "対象の敵を中心として範囲射撃でダメージを与える。",
-      "united_sp": null
-    },
-    "rarity": "R",
-    "illustrator": "sakusaku sakurai",
-    "raw": "MS\n\n遠距離 コスト7\n\nYMS-16M XAMEL\nザメル\n\n全高 27.0m\n本体重量 75.0t\n所属 ジオン公国軍\nパイロット ボブ\n\n地上 S 宇宙 C 砂漠 A\n\n機動力 290\n遠距離攻撃 320\n近距離攻撃 190\nHP 290\n\n[アイコン:SEASON04ロゴ]\n\nWEAPON\nMAIN 680mmカノン砲 射程 4 遠距離\nSUB 8連多弾頭ミサイルランチャー 射程 3 近距離\n\nLINK ABILITY\nガンダム0083 デッキに3枚以上\n[機動力]小アップ\n\n実弾の突破力 デッキに2枚以上\n[遠距離攻撃力]小アップ\n\nMS ABILITY\n砲撃\n任意発動 範囲(敵) 射程 5 コスト 4\n\n射程範囲内の指定した位置に小範囲の砲撃を行い、範囲内の敵にダメージを与える。\n\nIMPACT AREA\n[アイコン:十字型の着弾範囲図、中央に×マーク、下に▽マーク]\n\nSPECIAL ATTACK\n680mmカノン砲砲撃\n範囲(敵) 射程 4\nSPコスト 2 威力 3000\n\n対象の敵を中心として範囲射撃でダメージを与える。\n\nillust sakusaku sakurai\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\nAB04-017 R"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "SEASON_04_AB04-017_ザメル_ocr_raw.json",
   "ocr_timestamp": "2026-02-23T15:20:52.170543",

@@ -1,43 +1,58 @@
 {
-    "card_number": "VEB02-019",
-    "card_name": "ジェリド・メサ",
-    "series": "VEブースター2弾",
-    "ocr_data": {
-        "card_number": "VEB02-019",
-        "type": "PL",
-        "name": "ジェリド・メサ",
-        "english_name": "JERID MESSA",
-        "cost": 2,
-        "category": "制圧",
-        "rarity": "R",
-        "height": "-",
-        "age": "24歳",
-        "affiliation": "ティターンズ",
-        "boarding_machine": "マラサイ、ガンダムMk-II(ティターンズ仕様)",
-        "stats": {
-            "mobility": 180,
-            "hp": 230,
-            "ranged_attack": 210,
-            "melee_attack": 70
-        },
-        "pilot_skill": {
-            "name": "精確な照準",
-            "activation": "MSアビリティ発動時",
-            "description": "30秒間、自身の[遠距離攻撃力]を中アップする。"
-        },
-        "link_ability": [
-            {
-                "name": "機動戦士Zガンダム",
-                "condition": "デッキに3枚以上",
-                "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-            },
-            {
-                "name": "多彩な戦術",
-                "condition": "デッキに4枚以上",
-                "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-            }
-        ]
+  "card_number": "VEB02-019",
+  "card_name": "ジェリド・メサ",
+  "series": "VEブースター2弾",
+  "ocr_data": {
+    "type": "PL",
+    "name": "ジェリド・メサ",
+    "cost": 2,
+    "rarity": "R",
+    "category": "制圧",
+    "affiliation": "ティターンズ",
+    "illustrator": "",
+    "stats": {
+      "mobility": 180,
+      "ranged_attack": 210,
+      "melee_attack": 70,
+      "hp": 230
     },
-    "ocr_engine": "claude_code_subagent",
-    "ocr_timestamp": "2026-05-15T00:00:00"
+    "link_ability": [
+      {
+        "name": "機動戦士Zガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "JERID MESSA",
+    "physical": {
+      "height": "-",
+      "age": "24歳"
+    },
+    "units": [
+      "マラサイ、ガンダムMk-II(ティターンズ仕様)"
+    ],
+    "pilot_skill": {
+      "name": "精確な照準",
+      "trigger": "MSアビリティ発動時",
+      "effect": "30秒間、自身の[遠距離攻撃力]を中アップする。",
+      "has_sq_skill": false,
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
+  },
+  "ocr_engine": "claude_code_subagent",
+  "ocr_timestamp": "2026-05-15T00:00:00"
 }

@@ -5,26 +5,39 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ05-009.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ05-009_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "FQ05-009",
     "type": "MS",
-    "card_label": {
-      "class": "遠距離",
-      "cost_label": "コスト3"
-    },
-    "name": "ザクⅡ（ドズル・ザビ専用機）",
-    "model": "MS-06F DOZLE'S ZAKUⅡ",
+    "name": "ザクⅡ(ドズル・ザビ専用機)",
     "cost": 3,
+    "rarity": "R",
     "category": "遠距離",
     "affiliation": "ジオン公国軍",
-    "pilot": "ドズル・ザビ",
+    "illustrator": "J.YUZURU(willow_works)",
     "stats": {
-      "height": "17.5m",
-      "weight": "56.2t",
       "mobility": 230,
       "ranged_attack": 300,
       "melee_attack": 30,
       "hp": 350
     },
+    "link_ability": [
+      {
+        "name": "MSV",
+        "condition": "デッキに2枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "的確な一撃",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][遠距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "ドズル・ザビ",
+    "model": "MS-06F DOZLE'S ZAKUⅡ",
     "terrain_compatibility": {
       "ground": "A",
       "space": "A",
@@ -51,18 +64,6 @@
       "cost": 4,
       "description": "自身の周囲に防衛タイプの味方ユニットを呼び出す。※上限3ユニットまで。"
     },
-    "link_ability": [
-      {
-        "name": "MSV",
-        "condition": "デッキに2枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      },
-      {
-        "name": "的確な一撃",
-        "condition": "デッキに4枚以上",
-        "effect": "[機動力][遠距離攻撃力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "大型ヒート・ホーク強撃",
       "target": "単体(敵)",
@@ -70,11 +71,11 @@
       "sp_cost": 2,
       "power": 3200,
       "description": "敵単体に格闘攻撃でダメージを与える。",
-      "united_sp": null
-    },
-    "rarity": "R",
-    "illustrator": "J.YUZURU(willow_works)",
-    "raw": "遠距離　コスト3\n\nMS\nMSV\n\nMS-06F DOZLE'S ZAKUⅡ\nザクⅡ（ドズル・ザビ専用機）\n\n頭頂高 17.5m\n本体重量 56.2t\n所属 ジオン公国軍\nパイロット ドズル・ザビ\n\n地上 A　宇宙 A　砂漠 C　水中 C\n\n機動力 230\n遠距離攻撃 300\n近距離攻撃 30\nHP 350\n\nWEAPON\nMAIN ジャイアント・バズ　射程 3　遠距離\nSUB 大型ヒート・ホーク　射程 1　近距離\n\nLINK ABILITY\nMSV　デッキに2枚以上\n[遠距離攻撃力][近距離攻撃力]\n小アップ\n\n的確な一撃　デッキに4枚以上\n[機動力][遠距離攻撃力]小アップ\n\nMS ABILITY\n増援[防衛]\n任意発動　特殊（自分）　射程 ー　コスト 4\n自身の周囲に防衛タイプの味方ユニット\nを呼び出す。※上限3ユニットまで。\n\nSPECIAL ATTACK　　UNITED SP\n大型ヒート・ホーク強撃　ー\n連携 ー　　連携 ー\n連携 ー　　連携 ー\n単体(敵)　射程 3　ー　射程 ー\nSPコスト 2　威力 3200 / ー\n敵単体に格闘攻撃でダメージを与える。\n/ー\n\nIMPACT AREA\n[アイコン:3x3グリッド 中央に緑丸、下中央に黄三角]\n\nillust J.YUZURU(willow_works)\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nFQ05-009　R"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "FORSQUAD_SEASON_05_FQ05-009_ザクⅡ(ドズル・ザビ専用機)_ocr_raw.json",
   "ocr_timestamp": "2026-02-24T18:27:36.402394",

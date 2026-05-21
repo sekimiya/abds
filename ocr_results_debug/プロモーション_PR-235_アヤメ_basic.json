@@ -5,44 +5,50 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-235.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-235_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "PR-235",
     "type": "PL",
-    "card_label": {
-      "class": "殲滅",
-      "cost_label": "コスト3"
-    },
     "name": "アヤメ",
     "cost": 3,
-    "category": "ビルドダイバーズ",
+    "rarity": "PR",
+    "category": "殲滅",
     "affiliation": "ビルドダイバーズ",
+    "illustrator": "Hisayuki Tabata",
     "stats": {
       "mobility": 170,
       "ranged_attack": 50,
       "melee_attack": 280,
       "hp": 320
     },
+    "link_ability": [
+      {
+        "name": "ビルドダイバーズ",
+        "condition": "デッキに3枚以上",
+        "effect": "[HP]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "",
+    "physical": null,
+    "units": null,
     "pilot_skill": {
       "name": "本領発揮",
       "trigger": "HP80%以下の時",
       "effect": "40秒間、自身の[近距離攻撃力]を中アップし、受けるダメージを軽減する。",
       "has_sq_skill": false,
-      "sq_skill_details": null
-    },
-    "link_ability": [
-      {
-        "name": "ビルドダイバーズ",
-        "condition": "デッキに3枚以上",
-        "effect": "[HP]小アップ"
-      },
-      {
-        "name": "多彩な戦術",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      }
-    ],
-    "rarity": "PR",
-    "illustrator": "Hisayuki Tabata",
-    "raw": "殲滅　コスト3\n\nアヤメ\nAYAME\n\n身長　ー\n年齢　ー\n所属　ビルドダイバーズ\n搭乗機体　RX-零丸\n\nPL SKILL\n本領発揮\nHP80%以下の時\n\n40秒間、自身の[近距離攻撃力]を\n中アップし、受けるダメージを軽減\nする。\n\nLINK ABILITY\nビルドダイバーズ　デッキに3枚以上\n[HP]小アップ\n\n多彩な戦術　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]\n小アップ\n\n機動力　170\n遠距離攻撃　50\n近距離攻撃　280\nHP　320\n\nillust Hisayuki Tabata\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n\nNOT FOR SALE\nPR-235　PR"
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_raw_file": "プロモーション_PR-235_アヤメ_ocr_raw.json",
   "ocr_timestamp": "2026-03-03T22:54:49.641655",

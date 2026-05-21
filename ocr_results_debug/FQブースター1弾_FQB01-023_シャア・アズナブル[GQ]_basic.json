@@ -5,50 +5,53 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQB01-023.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQB01-023_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "FQB01-023",
     "type": "PL",
-    "card_label": {
-      "class": "殲滅",
-      "cost_label": "コスト3"
-    },
     "name": "シャア・アズナブル[GQ]",
-    "english_name": "CHAR AZNABLE[GQ]",
     "cost": 3,
+    "rarity": "M",
     "category": "殲滅",
     "affiliation": "ジオン公国軍",
-    "physical": {
-      "height": null,
-      "age": null
-    },
-    "units": [],
+    "illustrator": "",
     "stats": {
       "mobility": 200,
       "ranged_attack": 300,
       "melee_attack": 40,
       "hp": 230
     },
+    "link_ability": [
+      {
+        "name": "GQuuuuuuX",
+        "condition": "デッキに3枚以上",
+        "effect": "[HP]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "CHAR AZNABLE[GQ]",
+    "physical": {
+      "height": "",
+      "age": ""
+    },
+    "units": [],
     "pilot_skill": {
       "name": "迎撃の構え",
       "trigger": "一方的に敵をロックオン時",
       "effect": "30秒間、自身の[機動力][遠距離攻撃力]を中アップする。",
       "has_sq_skill": false,
-      "sq_skill_details": null
-    },
-    "link_ability": [
-      {
-        "name": "GQuuuuuuX",
-        "condition": "デッキに3枚以上",
-        "effect": "[HP]小アップ"
-      },
-      {
-        "name": "戦況を変える力",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      }
-    ],
-    "rarity": "M",
-    "illustrator": null,
-    "raw": "殲滅 コスト3\n\nPL\n\nシャア・アズナブル[GQ]\nCHAR AZNABLE[GQ]\n\nGQuuuuuuX\n\n[アイコン:ジオン紋章]\n\n身長 ー\n年齢 ー\n所属 ジオン公国軍\n搭乗機体 ー\n\nPL SKILL\n\n迎撃の構え\n\n一方的に敵をロックオン時\n\n30秒間、自身の[機動力][遠距離攻撃力]を中アップする。\n\nLINK ABILITY\n\nGQuuuuuuX デッキに3枚以上\n[HP]小アップ\n\n戦況を変える力 デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\n機動力 200\n遠距離攻撃 300\n近距離攻撃 40\nHP 230\n\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n\n機動戦士ガンダム\nARSENAL BASE®\n\nFQB01-023 M"
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_raw_file": "FQブースター1弾_FQB01-023_シャア・アズナブル[GQ]_ocr_raw.json",
   "ocr_timestamp": "2026-02-28T03:28:12.791360",

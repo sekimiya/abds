@@ -1,75 +1,72 @@
 {
-    "card_number": "FQ02-018",
-    "card_name": "フリーダムガンダム",
-    "series": "FORSQUAD SEASON:02",
-    "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-018.jpg?v9",
-    "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-018_b.jpg?v9",
-    "ocr_data": {
-        "card_id": "FQ02-018",
-        "type": "MS",
-        "card_label": {
-            "class": "機動",
-            "cost_label": "コスト4"
-        },
-        "name": "フリーダムガンダム",
-        "model": "ZGMF-X10A FREEDOM GUNDAM",
-        "cost": 4,
-        "category": "機動",
-        "pilot": "キラ・ヤマト",
-        "stats": {
-            "height": "18.03m",
-            "weight": "71.5t",
-            "mobility": 240,
-            "ranged_attack": 90,
-            "melee_attack": 250,
-            "hp": 320
-        },
-        "terrain_compatibility": {
-            "ground": "A",
-            "space": "S",
-            "desert": "A",
-            "water": "C"
-        },
-        "weapon": {
-            "main": {
-                "name": "ラケルタ・ビームサーベル",
-                "range": 1,
-                "type": "近距離"
-            },
-            "sub": {
-                "name": "ルプス・ビームライフル",
-                "range": 3,
-                "type": "遠距離"
-            }
-        },
-        "ms_ability": {
-            "name": "誘導",
-            "range": 1,
-            "cost": 4,
-            "description": "25秒間、自身をロックオン距離内に捉えている敵ユニットのターゲットを自身に集める。",
-            "activation": "任意発動"
-        },
-        "link_ability": [
-            {
-                "name": "ガンダムSEED",
-                "condition": "デッキに3枚以上",
-                "effect": "「機動力」小アップ"
-            },
-            {
-                "name": "高速機動の接近戦",
-                "condition": "デッキに機動力2枚以上",
-                "effect": "「近距離攻撃力」中アップ"
-            }
-        ],
-        "impact_area": {
-            "type": "circular",
-            "radius": 2,
-            "centered": true
-        },
-        "illustrator": "JYUZURU (willow_works)",
-        "raw": "機動 コスト4\nZGMF-X10A FREEDOM GUNDAM\nフリーダムガンダム\n頭頂高 18.03m\n本体重量 71.5t\n所属 一\nパイロット キラ・ヤマト\n地上A 宇宙S 砂漠A 水中C\n機動力 240\n遠距離攻撃 90\n近距離攻撃 250\nHP 320\nWEAPON\nMAIN ラケルタ・ビームサーベル 射程1 近距離\nSUB ルプス・ビームライフル 射程3 遠距離\nMS ABILITY\n誘導\n任意発動 特殊（敵） 射程1 コスト4\n25秒間、自身をロックオン距離内に捉えている敵ユニットのターゲットを自身に集める。\nLINK ABILITY\nガンダムSEED デッキに3枚以上\n「機動力」小アップ\n高速機動の接近戦 デッキに機動力2枚以上\n「近距離攻撃力」中アップ\nIMPACT AREA\nSPECIAL ATTACK\nラケルタ・ビームサーベル強襲\n連携 ジャスティスガンダム\n単体（敵） 射程2\nUNITED SP\nコンビネーション・アサルト\n連携\n単体（敵） 射程2\nSPアタック\n3300 / 3400\n敵単体に格闘攻撃でダメージを与える／射線の敵に貫通射撃でダメージを与える。出撃時1度のみ使用可能。\nillust. JYUZURU (willow_works)\n企画・制作 サンライズ\nBANDAI MADE IN JAPAN\nFQ02-018 R"
+  "card_number": "FQ02-018",
+  "card_name": "フリーダムガンダム",
+  "series": "FORSQUAD SEASON:02",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-018.jpg?v9",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-018_b.jpg?v9",
+  "ocr_data": {
+    "type": "MS",
+    "name": "フリーダムガンダム",
+    "cost": 4,
+    "rarity": "",
+    "category": "機動",
+    "affiliation": "",
+    "illustrator": "JYUZURU (willow_works)",
+    "stats": {
+      "mobility": 240,
+      "ranged_attack": 90,
+      "melee_attack": 250,
+      "hp": 320
     },
-    "ocr_timestamp": "2025-06-28T01:45:43.018421",
-    "ocr_type": "basic",
-    "ocr_engine": "claude_code_cli"
+    "link_ability": [
+      {
+        "name": "ガンダムSEED",
+        "condition": "デッキに3枚以上",
+        "effect": "「機動力」小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "高速機動の接近戦",
+        "condition": "デッキに機動力2枚以上",
+        "effect": "「近距離攻撃力」中アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "キラ・ヤマト",
+    "model": "ZGMF-X10A FREEDOM GUNDAM",
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "A",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "ラケルタ・ビームサーベル",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "ルプス・ビームライフル",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "誘導",
+      "activation": "任意発動",
+      "target": "",
+      "range": 1,
+      "cost": 4,
+      "description": "25秒間、自身をロックオン距離内に捉えている敵ユニットのターゲットを自身に集める。"
+    },
+    "special_attack": null
+  },
+  "ocr_timestamp": "2025-06-28T01:45:43.018421",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli"
 }

@@ -5,56 +5,62 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ03-044.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ03-044_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "FQ03-044",
     "type": "PL",
-    "card_label": {
-      "class": "殲滅",
-      "cost_label": "コスト3"
-    },
     "name": "リディ・マーセナス",
-    "english_name": "RIDDHE MARCENAS",
     "cost": 3,
+    "rarity": "R",
     "category": "殲滅",
     "affiliation": "地球連邦軍",
-    "physical": {
-      "height": null,
-      "age": 23
-    },
-    "units": [
-      "バンシィ・ノルン"
-    ],
+    "illustrator": "",
     "stats": {
       "mobility": 190,
       "ranged_attack": 80,
       "melee_attack": 240,
       "hp": 210
     },
+    "link_ability": [
+      {
+        "name": "虹の彼方に",
+        "condition": "デッキに3枚以上",
+        "effect": "SQゲージが表示される。SQゲージを溜めるとSQUAD RUSHが発動できる。[HP][SP威力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "RIDDHE MARCENAS",
+    "physical": {
+      "height": "",
+      "age": 23
+    },
+    "units": [
+      "バンシィ・ノルン"
+    ],
     "pilot_skill": {
       "name": "淀みない戦闘思考",
       "trigger": "敵ユニットをロックオン時",
       "effect": "SQゲージ小アップ。",
       "has_sq_skill": true,
       "sq_skill_details": {
+        "name": "",
+        "trigger": "",
+        "effect": "",
         "sq_gauge_effect": "SQゲージ小アップ。",
-        "sq_max_effect": null,
-        "squad_rush_effect": "自身の[機動力][近距離攻撃力]をアップし、受けるダメージを軽減する。"
-      }
-    },
-    "link_ability": [
-      {
-        "name": "虹の彼方に",
-        "condition": "デッキに3枚以上",
-        "effect": "SQゲージが表示される。SQゲージを溜めるとSQUAD RUSHが発動できる。[HP][SP威力]小アップ"
+        "sq_max_effect": "",
+        "sq_rush_effect": "自身の[機動力][近距離攻撃力]をアップし、受けるダメージを軽減する。"
       },
-      {
-        "name": "多彩な戦術",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      }
-    ],
-    "rarity": "R",
-    "illustrator": null,
-    "raw": "殲滅 コスト3\n\nPL\n\nリディ・マーセナス\nRIDDHE MARCENAS\n\n[アイコン:機動戦士ガンダムUC]\n[アイコン:地球連邦軍]\n\n身長 ー\n年齢 23歳\n所属 地球連邦軍\n搭乗機体 バンシィ・ノルン\n\nSQ PL SKILL\n淀みない戦闘思考\n敵ユニットをロックオン時\nSQゲージ小アップ。\n\nSQUAD RUSH中\n自身の[機動力][近距離攻撃力]をアップし、受けるダメージを軽減する。\n\nSQ LINK ABILITY\n虹の彼方に デッキに3枚以上\nSQゲージが表示される。\nSQゲージを溜めるとSQUAD RUSHが発動できる。\n[HP][SP威力]小アップ\n\n多彩な戦術 デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]\n小アップ\n\n機動力 190\n遠距離攻撃 80\n近距離攻撃 240\nHP 210\n\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\nFQ03-044 R"
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_raw_file": "FORSQUAD_SEASON_03_FQ03-044_リディ・マーセナス_ocr_raw.json",
   "ocr_timestamp": "2026-02-24T16:20:29.989481",

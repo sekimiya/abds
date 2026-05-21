@@ -5,17 +5,38 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ05-053.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ05-053_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "FQ05-053",
     "type": "PL",
-    "card_label": {
-      "class": "殲滅",
-      "cost_label": "コスト2"
-    },
     "name": "デュオ・マックスウェル",
-    "english_name": "DUO MAXWELL",
     "cost": 2,
+    "rarity": "R",
     "category": "殲滅",
-    "affiliation": null,
+    "affiliation": "",
+    "illustrator": "",
+    "stats": {
+      "mobility": 190,
+      "ranged_attack": 30,
+      "melee_attack": 270,
+      "hp": 200
+    },
+    "link_ability": [
+      {
+        "name": "永遠への回帰",
+        "condition": "デッキに3枚以上",
+        "effect": "SQゲージが表示される。SQゲージを溜めるとSQUAD RUSHが発動できる。[機動力][HP]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "肉薄する戦い",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "DUO MAXWELL",
     "physical": {
       "height": "156cm",
       "age": 16
@@ -23,38 +44,23 @@
     "units": [
       "ガンダムデスサイズヘル(EW)"
     ],
-    "stats": {
-      "mobility": 190,
-      "ranged_attack": 30,
-      "melee_attack": 270,
-      "hp": 200
-    },
     "pilot_skill": {
       "name": "激化する戦闘意欲",
       "trigger": "MSアビリティ発動時",
       "effect": "SQゲージ中アップ。SQUAD RUSH中自身の[近距離攻撃力]をアップする。",
       "has_sq_skill": true,
       "sq_skill_details": {
+        "name": "",
+        "trigger": "",
+        "effect": "",
         "sq_gauge_effect": "SQゲージ中アップ。",
-        "sq_max_effect": null,
-        "squad_rush_effect": "自身の[近距離攻撃力]をアップする。"
-      }
-    },
-    "link_ability": [
-      {
-        "name": "永遠への回帰",
-        "condition": "デッキに3枚以上",
-        "effect": "SQゲージが表示される。SQゲージを溜めるとSQUAD RUSHが発動できる。[機動力][HP]小アップ"
+        "sq_max_effect": "",
+        "sq_rush_effect": "自身の[近距離攻撃力]をアップする。"
       },
-      {
-        "name": "肉薄する戦い",
-        "condition": "デッキに4枚以上",
-        "effect": "[機動力][近距離攻撃力]小アップ"
-      }
-    ],
-    "rarity": "R",
-    "illustrator": null,
-    "raw": "殲滅 コスト2\n\nPL\n\nデュオ・マックスウェル\nDUO MAXWELL\n\n身長 156cm\n年齢 16歳\n所属 ー\n搭乗機体 ガンダムデスサイズヘル(EW)\n\nSQ PL SKILL\n激化する戦闘意欲\nMSアビリティ発動時\nSQゲージ中アップ。\n\nSQUAD RUSH中\n自身の[近距離攻撃力]をアップする。\n\nSQ LINK ABILITY\n永遠への回帰 デッキに3枚以上\nSQゲージが表示される。\nSQゲージを溜めるとSQUAD RUSHが発動できる。\n[機動力][HP]小アップ\n\n肉薄する戦い デッキに4枚以上\n[機動力][近距離攻撃力]小アップ\n\n機動力 190\n遠距離攻撃 30\n近距離攻撃 270\nHP 200\n\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nFQ05-053 R"
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_raw_file": "FORSQUAD_SEASON_05_FQ05-053_デュオ・マックスウェル_ocr_raw.json",
   "ocr_timestamp": "2026-02-24T18:29:53.139118",

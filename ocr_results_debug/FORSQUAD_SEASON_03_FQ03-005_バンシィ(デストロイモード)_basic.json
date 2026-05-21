@@ -5,26 +5,39 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ03-005.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ03-005_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "FQ03-005",
     "type": "MS",
-    "card_label": {
-      "class": "近距離",
-      "cost_label": "コスト4"
-    },
-    "name": "バンシィ（デストロイモード）",
-    "model": "RX-0 UNICORN GUNDAM 02 BANSHEE",
+    "name": "バンシィ(デストロイモード)",
     "cost": 4,
+    "rarity": "M",
     "category": "近距離",
     "affiliation": "地球連邦軍",
-    "pilot": "プルトゥエルブ",
+    "illustrator": "yuuiguchi",
     "stats": {
-      "height": "21.7m",
-      "weight": "24.0t",
       "mobility": 200,
       "ranged_attack": 50,
       "melee_attack": 400,
       "hp": 400
     },
+    "link_ability": [
+      {
+        "name": "ガンダムUC",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "プルトゥエルブ",
+    "model": "RX-0 UNICORN GUNDAM 02 BANSHEE",
     "terrain_compatibility": {
       "ground": "A",
       "space": "S",
@@ -51,18 +64,6 @@
       "cost": 3,
       "description": "自身の周りにバリアを展開する。展開したバリアは自身へのダメージを一定値防ぎ、バリア展開中は弱体効果を受けない状態となる。"
     },
-    "link_ability": [
-      {
-        "name": "ガンダムUC",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "多彩な戦術",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "アームド・アーマー VN強襲",
       "target": "単体(敵)",
@@ -70,11 +71,11 @@
       "sp_cost": 2,
       "power": 3400,
       "description": "敵単体に格闘攻撃でダメージを与える。",
-      "united_sp": null
-    },
-    "rarity": "M",
-    "illustrator": "yuuiguchi",
-    "raw": "近距離　コスト4　MS\n\nRX-0 UNICORN GUNDAM 02 BANSHEE\n\nバンシィ（デストロイモード）\n\n頭頂高　21.7m\n本体重量　24.0t\n所属　地球連邦軍\nパイロット　プルトゥエルブ\n\n地上 A　宇宙 S　砂漠 C　水中 B\n\n機動力 200\n遠距離攻撃 50\n近距離攻撃 400\nHP 400\n\nWEAPON\nMAIN　アームド・アーマー VN　射程 1　近距離\nSUB　アームド・アーマー BS　射程 3　遠距離\n\nLINK ABILITY\nガンダムUC　デッキに3枚以上\n[機動力]小アップ\n\n多彩な戦術　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nMS ABILITY\n障壁\n任意発動　自分　射程 ー　コスト 3\n\n自身の周りにバリアを展開する。展開したバリアは自身へのダメージを一定値防ぎ、バリア展開中は弱体効果を受けない状態となる。\n\nSPECIAL ATTACK　UNITED SP\nアームド・アーマー VN強襲　ー\n連携 ー　　連携 ー\n連携 ー　　連携 ー\n単体(敵)　射程 2　　射程 ー\nSPコスト 2　威力 3400 / ー\n\n敵単体に格闘攻撃でダメージを与える。\n/ ー\n\nIMPACT AREA\n[アイコン:緑丸 中央やや左下]\n[アイコン:黄三角 中央下]\n\nillust yuuiguchi\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nFQ03-005　M"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "FORSQUAD_SEASON_03_FQ03-005_バンシィ(デストロイモード)_ocr_raw.json",
   "ocr_timestamp": "2026-02-24T15:20:19.096835",

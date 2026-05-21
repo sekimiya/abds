@@ -5,52 +5,55 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP06-025.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP06-025_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "BP06-025",
     "type": "PL",
-    "card_label": {
-      "class": "制圧",
-      "cost_label": "コスト4"
-    },
     "name": "フリット・アスノ",
-    "english_name": "FLIT ASUNO",
     "cost": 4,
+    "rarity": "R",
     "category": "制圧",
     "affiliation": "地球連邦軍",
-    "physical": {
-      "height": null,
-      "age": 14
-    },
-    "units": [
-      "ガンダムAGE-1 ノーマル"
-    ],
+    "illustrator": "",
     "stats": {
       "mobility": 200,
       "ranged_attack": 240,
       "melee_attack": 60,
       "hp": 350
     },
+    "link_ability": [
+      {
+        "name": "俺たちのトライエイジ",
+        "condition": "デッキに3枚以上",
+        "effect": "専用作戦カードが使用可能 [遠距離攻撃力][近距離攻撃力]中アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "的確な一撃",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][遠距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "FLIT ASUNO",
+    "physical": {
+      "height": "",
+      "age": 14
+    },
+    "units": [
+      "ガンダムAGE-1 ノーマル"
+    ],
     "pilot_skill": {
       "name": "漲る気勢",
       "trigger": "出撃時",
       "effect": "20秒間、出撃中の全味方殲滅タイプユニットの[遠距離攻撃力][近距離攻撃力]をアップする。",
       "has_sq_skill": false,
-      "sq_skill_details": null
-    },
-    "link_ability": [
-      {
-        "name": "俺たちのトライエイジ",
-        "condition": "デッキに3枚以上",
-        "effect": "専用作戦カードが使用可能 [遠距離攻撃力][近距離攻撃力]中アップ"
-      },
-      {
-        "name": "的確な一撃",
-        "condition": "デッキに4枚以上",
-        "effect": "[機動力][遠距離攻撃力]小アップ"
-      }
-    ],
-    "rarity": "R",
-    "illustrator": null,
-    "raw": "制圧　コスト4\n\nPL\n\nフリット・アスノ\nFLIT ASUNO\n\n機動戦士ガンダムAGE\n[アイコン:地球連邦軍]\n\n身長　ー\n年齢　14歳\n所属　地球連邦軍\n搭乗機体　ガンダムAGE-1 ノーマル\n\nPL SKILL\n\n漲る気勢\n\n出撃時\n\n20秒間、出撃中の全味方殲滅タイプユニットの[遠距離攻撃力][近距離攻撃力]をアップする。\n\nLINK ABILITY\n\n俺たちのトライエイジ　デッキに3枚以上\n専用作戦カードが使用可能\n[遠距離攻撃力][近距離攻撃力]中アップ\n\n的確な一撃　デッキに4枚以上\n[機動力][遠距離攻撃力]小アップ\n\n機動力　200\n遠距離攻撃　240\n近距離攻撃　60\nHP　350\n\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\nBP06-025　R"
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_raw_file": "BOOSTER_PACK_[DCD20th_Anniversary_ガンダムトライエイジ]_BP06-025_フリット・アスノ_ocr_raw.json",
   "ocr_timestamp": "2026-02-26T18:03:01.548497",

@@ -5,26 +5,39 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/VEB01-004.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/VEB01-004_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "VEB01-004",
     "type": "MS",
-    "card_label": {
-      "class": "近距離",
-      "cost_label": "コスト5"
-    },
-    "name": "ゲルググ（シャア・アズナブル専用機）",
-    "model": "YMS-14 CHAR'S GELGOOG",
+    "name": "VEB01-004",
     "cost": 5,
-    "category": "機動戦士ガンダム",
+    "rarity": "P",
+    "category": "近距離",
     "affiliation": "ジオン公国軍",
-    "pilot": "シャア・アズナブル",
+    "illustrator": "Moyasi",
     "stats": {
-      "height": "19.2m",
-      "weight": "42.1t",
       "mobility": 240,
       "ranged_attack": 80,
       "melee_attack": 580,
       "hp": 500
     },
+    "link_ability": [
+      {
+        "name": "機動戦士ガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "シャア・アズナブル",
+    "model": "YMS-14 CHAR'S GELGOOG",
     "terrain_compatibility": {
       "ground": "A",
       "space": "S",
@@ -51,18 +64,6 @@
       "cost": 4,
       "description": "射程範囲内の指定した位置に小範囲攻撃を行い、範囲内の敵にダメージを与える。"
     },
-    "link_ability": [
-      {
-        "name": "機動戦士ガンダム",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "戦況を変える力",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "ビーム・ナギナタ強襲",
       "target": "単体（敵）",
@@ -70,19 +71,20 @@
       "sp_cost": 2,
       "power": 3600,
       "description": "敵単体に格闘攻撃でダメージを与え、自身のHPを回復する。",
+      "sp_type": "",
+      "echoes_beat": null,
       "united_sp": {
-        "partner1": "エルメス",
-        "partner2": null,
         "name": "彗星と亡霊",
+        "partners": [
+          "エルメス"
+        ],
         "target": "貫通（敵）",
         "range": 3,
         "power": 4100,
         "description": "対象の敵を中心として射程よりも広い範囲で、射線上の敵に貫通射撃でダメージを与え、一定時間スタンさせる。攻撃に参加したユニットはHPが最大値を超えて回復し、一定時間、[遠／近攻撃力]をアップする。出撃時1度のみ使用可能。"
-      }
-    },
-    "rarity": "P",
-    "illustrator": "Moyasi",
-    "raw": "近距離 コスト5\nYMS-14 CHAR'S GELGOOG\nゲルググ（シャア・アズナブル専用機）\n\n頭頂高 19.2m\n本体重量 42.1t\n所属 ジオン公国軍\nパイロット シャア・アズナブル\n\n地上 A  宇宙 S  砂漠 C  水中 C\n機動力 240\n遠距離攻撃 80\n近距離攻撃 580\nHP 500\n\nWEAPON\nMAIN ビーム・ナギナタ  射程 1  近距離\nSUB  ビーム・ライフル  射程 3  遠距離\n\nMS ABILITY\n瞬撃\n任意発動  範囲（敵）  射程 5  コスト 4\n射程範囲内の指定した位置に小範囲攻撃を行い、範囲内の敵にダメージを与える。\n\nLINK ABILITY\n機動戦士ガンダム  デッキに3枚以上\n[機動力]小アップ\n\n戦況を変える力  デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nIMPACT AREA\n\nSPECIAL ATTACK  UNITED SP\nビーム・ナギナタ強襲  彗星と亡霊\n連携 エルメス  連携 ー\n連携 ー       連携 ー\n単体（敵）  射程 2  貫通（敵）  射程 3\nSPコスト 2  威力 3600 / 4100\n\n敵単体に格闘攻撃でダメージを与え、自身のHPを回復する。\n／対象の敵を中心として射程よりも広い範囲で、射線上の敵に貫通射撃でダメージを与え、一定時間スタンさせる。攻撃に参加したユニットはHPが最大値を超えて回復し、一定時間、[遠／近攻撃力]をアップする。出撃時1度のみ使用可能。\n\nillust Moyasi\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN  ARSENAL BASE  VEB01-004  P"
+      },
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "VEブースター1弾_VEB01-004_VEB01-004_ocr_raw.json",
   "ocr_timestamp": "2026-03-19T20:03:27.946893",

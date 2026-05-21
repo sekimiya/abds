@@ -5,53 +5,56 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB02-054.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB02-054_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "AB02-054",
     "type": "PL",
-    "card_label": {
-      "class": "防衛",
-      "cost_label": "コスト3"
-    },
     "name": "シロー・アマダ",
-    "english_name": "SHIRO AMADA",
     "cost": 3,
+    "rarity": "R",
     "category": "防衛",
     "affiliation": "地球連邦軍",
-    "physical": {
-      "height": null,
-      "age": 23
-    },
-    "units": [
-      "ガンダムEz8",
-      "陸戦型ガンダム"
-    ],
+    "illustrator": "",
     "stats": {
       "mobility": 100,
       "ranged_attack": 150,
       "melee_attack": 160,
       "hp": 130
     },
+    "link_ability": [
+      {
+        "name": "第08MS小隊",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "巧みな連携戦術",
+        "condition": "デッキに2枚以上",
+        "effect": "[遠距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "SHIRO AMADA",
+    "physical": {
+      "height": "",
+      "age": 23
+    },
+    "units": [
+      "ガンダムEz8",
+      "陸戦型ガンダム"
+    ],
     "pilot_skill": {
       "name": "戦士の矜持",
       "trigger": "出撃時",
       "effect": "自身が使用するMSアビリティ[増援]の初回使用コストを1ダウンする。",
       "has_sq_skill": false,
-      "sq_skill_details": null
-    },
-    "link_ability": [
-      {
-        "name": "第08MS小隊",
-        "condition": "デッキに3枚以上",
-        "effect": "[遠距離攻撃力]小アップ"
-      },
-      {
-        "name": "巧みな連携戦術",
-        "condition": "デッキに2枚以上",
-        "effect": "[遠距離攻撃力]小アップ"
-      }
-    ],
-    "rarity": "R",
-    "illustrator": null,
-    "raw": "PL\n\n防衛 コスト3\n\nシロー・アマダ\nSHIRO AMADA\n\n身長　―\n年齢　23歳\n所属　地球連邦軍\n搭乗機体　ガンダムEz8、陸戦型ガンダム\n\n機動戦士ガンダム 第08MS小隊\n[アイコン:地上A]\n\nPL SKILL\n\n戦士の矜持\n\n出撃時\n\n自身が使用するMSアビリティ[増援]の初回使用コストを1ダウンする。\n\nLINK ABILITY\n\n第08MS小隊　デッキに3枚以上\n[遠距離攻撃力]小アップ\n\n巧みな連携戦術　デッキに2枚以上\n[遠距離攻撃力]小アップ\n\n機動力 100\n遠距離攻撃 150\n近距離攻撃 160\nHP 130\n\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n\n機動戦士ガンダム ARSENAL BASE\n\nAB02-054 R"
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_raw_file": "SEASON_02_AB02-054_シロー・アマダ_ocr_raw.json",
   "ocr_timestamp": "2026-02-23T15:10:38.465688",

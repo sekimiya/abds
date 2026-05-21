@@ -5,26 +5,39 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-224.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-224_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "PR-224",
     "type": "MS",
-    "card_label": {
-      "class": "近距離",
-      "cost_label": "コスト5"
-    },
     "name": "フォビドゥンガンダム",
-    "model": "GAT-X252 FORBIDDEN GUNDAM",
     "cost": 5,
-    "category": "ガンダムSEED",
+    "rarity": "PR",
+    "category": "近距離",
     "affiliation": "地球連合軍",
-    "pilot": "シャニ・アンドラス",
+    "illustrator": "yuuiguchi",
     "stats": {
-      "height": "17.47m",
-      "weight": "85.33t",
       "mobility": 150,
       "ranged_attack": 50,
       "melee_attack": 300,
       "hp": 550
     },
+    "link_ability": [
+      {
+        "name": "ガンダムSEED",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "固めた装甲",
+        "condition": "デッキに2枚以上",
+        "effect": "[HP]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "シャニ・アンドラス",
+    "model": "GAT-X252 FORBIDDEN GUNDAM",
     "terrain_compatibility": {
       "ground": "S",
       "space": "A",
@@ -51,18 +64,6 @@
       "cost": 4,
       "description": "25秒間、自身をロックオン距離内に捉えている敵ユニットのターゲットを自身に集める。"
     },
-    "link_ability": [
-      {
-        "name": "ガンダムSEED",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "固めた装甲",
-        "condition": "デッキに2枚以上",
-        "effect": "[HP]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "ニーズヘグ強撃",
       "target": "単体(敵)",
@@ -70,11 +71,11 @@
       "sp_cost": 2,
       "power": 3500,
       "description": "敵単体に格闘攻撃でダメージを与える。",
-      "united_sp": null
-    },
-    "rarity": "PR",
-    "illustrator": "yuuiguchi",
-    "raw": "近距離 コスト5 MS\nGAT-X252 FORBIDDEN GUNDAM\nフォビドゥンガンダム\n\n頭頂高 17.47m\n本体重量 85.33t\n地上 S 宇宙 A 砂漠 C 水中 A\n所属 地球連合軍\nパイロット シャニ・アンドラス\n機動力 150\n遠距離攻撃 50\n近距離攻撃 300\nHP 550\n\nWEAPON\nMAIN ニーズヘグ 射程 1 近距離\nSUB エクツァーン 射程 3 遠距離\n\nMS ABILITY\n誘導\n任意発動 特殊(敵) 射程 ー コスト 4\n25秒間、自身をロックオン距離内に捉えている敵ユニットのターゲットを自身に集める。\n\nLINK ABILITY\nガンダムSEED デッキに3枚以上\n[機動力]小アップ\n\n固めた装甲 デッキに2枚以上\n[HP]小アップ\n\nSPECIAL ATTACK UNITED SP\nニーズヘグ強撃 ー\n連携 ー 連携 ー\n連携 ー 連携 ー\n単体(敵) 射程 2 ー 射程 ー\nSPコスト 2 威力 3500 / ー\n敵単体に格闘攻撃でダメージを与える。\n/ー\n\nillust. yuuiguchi\n©創通・サンライズ\nBANDAI MADE IN JAPAN\nNOT FOR SALE PR-224 PR"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "プロモーション_PR-224_フォビドゥンガンダム_ocr_raw.json",
   "ocr_timestamp": "2026-03-03T22:49:28.309951",

@@ -5,31 +5,36 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB04-016.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB04-016_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "AB04-016",
     "type": "MS",
-    "card_label": {
-      "class": "近距離",
-      "cost_label": "コスト2"
-    },
     "name": "ガンダム試作2号機",
-    "model": "RX-78GP02A GUNDAM GP02A",
     "cost": 2,
+    "rarity": "C",
     "category": "近距離",
     "affiliation": "ジオン公国軍",
-    "pilot": "アナベル・ガトー",
+    "illustrator": "akamiho",
     "stats": {
-      "height": "18.5m",
-      "weight": "54.5t",
       "mobility": 170,
       "ranged_attack": 50,
       "melee_attack": 180,
       "hp": 200
     },
+    "link_ability": [
+      {
+        "name": "ガンダム0083",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "アナベル・ガトー",
+    "model": "RX-78GP02A GUNDAM GP02A",
     "terrain_compatibility": {
       "ground": "A",
       "space": "A",
       "desert": "C",
-      "water": null
+      "water": ""
     },
     "weapon": {
       "main": {
@@ -51,13 +56,6 @@
       "cost": 4,
       "description": "ロックオン中の敵に単体攻撃でダメージを与える。自身の残りHPが少ない程、ダメージが上昇する。"
     },
-    "link_ability": [
-      {
-        "name": "ガンダム0083",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "ビーム・サーベル強撃",
       "target": "単体(敵)",
@@ -65,11 +63,11 @@
       "sp_cost": 2,
       "power": 3100,
       "description": "敵単体に格闘攻撃でダメージを与える。",
-      "united_sp": null
-    },
-    "rarity": "C",
-    "illustrator": "akamiho",
-    "raw": "MS\n\n近距離 コスト2\n\nRX-78GP02A GUNDAM GP02A\nガンダム試作2号機\n\n全高 18.5m\n本体重量 54.5t\n所属 ジオン公国軍\nパイロット アナベル・ガトー\n\n地上 A 宇宙 A 砂漠 C\n\n機動力 170\n遠距離攻撃 50\n近距離攻撃 180\nHP 200\n\nWEAPON\n\nMAIN ビーム・サーベル 射程 1 近距離\nSUB 頭部バルカン 射程 2 遠距離\n\nLINK ABILITY\n\nガンダム0083 デッキに3枚以上\n[機動力]小アップ\n\nMS ABILITY\n\n逆襲\n\n任意発動 単体(敵) 射程 1 コスト 4\n\nロックオン中の敵に単体攻撃でダメージを与える。自身の残りHPが少ない程、ダメージが上昇する。\n\nSPECIAL ATTACK\n\nビーム・サーベル強撃\n\n単体(敵) 射程 2\nSPコスト 2 威力 3100\n\n敵単体に格闘攻撃でダメージを与える。\n\nIMPACT AREA\n\n[アイコン:緑丸] (中央やや上)\n[アイコン:緑丸] (中央やや下)\n[アイコン:グレー三角] (下段中央)\n\nillust akamiho\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n\n機動戦士ガンダム ARSENAL BASE®\n\nAB04-016 C"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "SEASON_04_AB04-016_ガンダム試作2号機_ocr_raw.json",
   "ocr_timestamp": "2026-02-23T15:20:49.322277",

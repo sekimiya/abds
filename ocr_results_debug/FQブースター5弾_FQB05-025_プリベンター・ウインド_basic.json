@@ -5,17 +5,38 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQB05-025.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQB05-025_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "FQB05-025",
     "type": "PL",
-    "card_label": {
-      "class": "防衛",
-      "cost_label": "コスト3"
-    },
     "name": "プリベンター・ウインド",
-    "english_name": "PREVENTER WIND",
     "cost": 3,
+    "rarity": "R",
     "category": "防衛",
     "affiliation": "プリベンター",
+    "illustrator": "",
+    "stats": {
+      "mobility": 200,
+      "ranged_attack": 40,
+      "melee_attack": 200,
+      "hp": 280
+    },
+    "link_ability": [
+      {
+        "name": "[SQ]永遠への回帰",
+        "condition": "デッキに3枚以上",
+        "effect": "SQゲージが表示される。SQゲージを溜めるとSQUAD RUSHが発動できる。[機動力][HP]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "肉薄する戦い",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "PREVENTER WIND",
     "physical": {
       "height": "184cm",
       "age": 20
@@ -23,38 +44,23 @@
     "units": [
       "トールギスIII"
     ],
-    "stats": {
-      "mobility": 200,
-      "ranged_attack": 40,
-      "melee_attack": 200,
-      "hp": 280
-    },
     "pilot_skill": {
       "name": "淀みない戦闘思考",
       "trigger": "敵ユニットをロックオン時",
       "effect": "SQゲージ小アップ。",
       "has_sq_skill": true,
       "sq_skill_details": {
+        "name": "",
+        "trigger": "",
+        "effect": "",
         "sq_gauge_effect": "SQゲージ小アップ。",
-        "sq_max_effect": null,
-        "squad_rush_effect": "自身の[機動力][近距離攻撃力]をアップし、受けるダメージを軽減する。"
-      }
-    },
-    "link_ability": [
-      {
-        "name": "[SQ]永遠への回帰",
-        "condition": "デッキに3枚以上",
-        "effect": "SQゲージが表示される。SQゲージを溜めるとSQUAD RUSHが発動できる。[機動力][HP]小アップ"
+        "sq_max_effect": "",
+        "sq_rush_effect": "自身の[機動力][近距離攻撃力]をアップし、受けるダメージを軽減する。"
       },
-      {
-        "name": "肉薄する戦い",
-        "condition": "デッキに4枚以上",
-        "effect": "[機動力][近距離攻撃力]小アップ"
-      }
-    ],
-    "rarity": "R",
-    "illustrator": null,
-    "raw": "PL\n\n防衛 コスト3\n\nプリベンター・ウインド\nPREVENTER WIND\n\n身長 184cm\n年齢 20歳\n所属 プリベンター\n搭乗機体 トールギスIII\n\nSQ PL SKILL\n淀みない戦闘思考\n敵ユニットをロックオン時\nSQゲージ小アップ。\n\nSQUAD RUSH中\n自身の[機動力][近距離攻撃力]をアップし、受けるダメージを軽減する。\n\nSQ LINK ABILITY\n永遠への回帰 デッキに3枚以上\nSQゲージが表示される。\nSQゲージを溜めるとSQUAD RUSHが発動できる。\n[機動力][HP]小アップ\n\n肉薄する戦い デッキに4枚以上\n[機動力][近距離攻撃力]小アップ\n\n機動力 200\n遠距離攻撃 40\n近距離攻撃 200\nHP 280\n\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nFQB05-025 R"
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_raw_file": "FQブースター5弾_FQB05-025_プリベンター・ウインド_ocr_raw.json",
   "ocr_timestamp": "2026-03-02T02:25:05.935197",

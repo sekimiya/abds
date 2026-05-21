@@ -5,52 +5,55 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB04-081.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB04-081_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "AB04-081",
     "type": "PL",
-    "card_label": {
-      "class": "防衛",
-      "cost_label": "コスト4"
-    },
     "name": "アムロ・レイ",
-    "english_name": "AMURO RAY",
     "cost": 4,
+    "rarity": "U",
     "category": "防衛",
     "affiliation": "地球連邦軍",
-    "physical": {
-      "height": null,
-      "age": 29
-    },
-    "units": [
-      "νガンダム"
-    ],
+    "illustrator": "",
     "stats": {
       "mobility": 270,
       "ranged_attack": 250,
       "melee_attack": 90,
       "hp": 290
     },
+    "link_ability": [
+      {
+        "name": "逆襲のシャア",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "ニュータイプの潜在能力",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "AMURO RAY",
+    "physical": {
+      "height": "",
+      "age": 29
+    },
+    "units": [
+      "νガンダム"
+    ],
     "pilot_skill": {
       "name": "遠隔兵器の使い手",
       "trigger": "出撃時",
       "effect": "自身が使用するMSアビリティ[オールレンジ]の効果時間を延長する。",
       "has_sq_skill": false,
-      "sq_skill_details": null
-    },
-    "link_ability": [
-      {
-        "name": "逆襲のシャア",
-        "condition": "デッキに3枚以上",
-        "effect": "[遠距離攻撃力]小アップ"
-      },
-      {
-        "name": "ニュータイプの潜在能力",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      }
-    ],
-    "rarity": "U",
-    "illustrator": null,
-    "raw": "PL\n\n防衛 コスト4\n\nアムロ・レイ\nAMURO RAY\n\n機動戦士ガンダム 逆襲のシャア\n\n身長 ー\n年齢 29歳\n所属 地球連邦軍\n搭乗機体 νガンダム\n\nPL SKILL\n遠隔兵器の使い手\n出撃時\n自身が使用するMSアビリティ[オールレンジ]の効果時間を延長する。\n\nLINK ABILITY\n逆襲のシャア デッキに3枚以上\n[遠距離攻撃力]小アップ\n\nニュータイプの潜在能力 デッキに3枚以上\n[機動力]小アップ\n\n機動力 270\n遠距離攻撃 250\n近距離攻撃 90\nHP 290\n\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nAB04-081 U"
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_raw_file": "SEASON_04_AB04-081_アムロ・レイ_ocr_raw.json",
   "ocr_timestamp": "2026-03-02T06:17:35.389893",

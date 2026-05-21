@@ -5,26 +5,39 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ03-032.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ03-032_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "FQ03-032",
     "type": "MS",
-    "card_label": {
-      "class": "遠距離",
-      "cost_label": "コスト3"
-    },
     "name": "ラーガンダム",
-    "model": "RX-78-la-III LAH GUNDAM",
     "cost": 3,
+    "rarity": "M",
     "category": "遠距離",
-    "affiliation": null,
-    "pilot": "リオ",
+    "affiliation": "",
+    "illustrator": "SOEZY",
     "stats": {
-      "height": "18.0m",
-      "weight": "46.1t",
       "mobility": 200,
       "ranged_attack": 300,
       "melee_attack": 80,
       "hp": 370
     },
+    "link_ability": [
+      {
+        "name": "ビルドメタバース",
+        "condition": "デッキに2枚以上",
+        "effect": "[HP]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "リオ",
+    "model": "RX-78-la-III LAH GUNDAM",
     "terrain_compatibility": {
       "ground": "A",
       "space": "A",
@@ -51,18 +64,6 @@
       "cost": 3,
       "description": "ロックオン中の敵に単体攻撃でダメージを与え、メイン武装を使用不能にさせる。出撃時1度のみ使用可能。"
     },
-    "link_ability": [
-      {
-        "name": "ビルドメタバース",
-        "condition": "デッキに2枚以上",
-        "effect": "[HP]小アップ"
-      },
-      {
-        "name": "多彩な戦術",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "ビームラーライフル撃射",
       "target": "単体(敵)",
@@ -70,11 +71,11 @@
       "sp_cost": 2,
       "power": 3300,
       "description": "敵単体に射撃攻撃でダメージを与える。",
-      "united_sp": null
-    },
-    "rarity": "M",
-    "illustrator": "SOEZY",
-    "raw": "MS\n\n遠距離　コスト3\n\nRX-78-la-III LAH GUNDAM\nラーガンダム\n\n頭頂高　18.0m\n本体重量　46.1t\n所属　ー\nパイロット　リオ\n\n地上 A　宇宙 A　砂漠 A　水中 A\n\n機動力 200\n遠距離攻撃 300\n近距離攻撃 80\nHP 370\n\nWEAPON\nMAIN ビームラーライフル　射程 3　遠距離\nSUB ビームラーナギナタ　射程 1　近距離\n\nLINK ABILITY\nビルドメタバース　デッキに2枚以上\n[HP]小アップ\n\n多彩な戦術　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nMS ABILITY\n砕撃\n任意発動　単体(敵)　射程 3　コスト 3\n\nロックオン中の敵に単体攻撃でダメージを与え、メイン武装を使用不能にさせる。出撃時1度のみ使用可能。\n\nSPECIAL ATTACK　　UNITED SP\nビームラーライフル撃射　ー\n連携 ー　連携 ー\n連携 ー　連携 ー\n単体(敵)　射程 3　ー　射程 ー\nSPコスト 2　威力 3300 / ー\n\n敵単体に射撃攻撃でダメージを与える。\n/ ー\n\nIMPACT AREA\n[アイコン:照準グリッド 中央やや下に黄緑マーカー]\n\nillust SOEZY\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nFQ03-032　M"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "FORSQUAD_SEASON_03_FQ03-032_ラーガンダム_ocr_raw.json",
   "ocr_timestamp": "2026-02-24T15:41:22.353033",

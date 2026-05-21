@@ -5,26 +5,39 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-242.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-242_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "PR-242",
     "type": "MS",
-    "card_label": {
-      "class": "近距離",
-      "cost_label": "コスト3"
-    },
     "name": "マスターガンダム＆風雲再起",
-    "model": "GF13-001NHII",
     "cost": 3,
-    "category": null,
+    "rarity": "PR",
+    "category": "近距離",
     "affiliation": "ネオホンコン",
-    "pilot": "マスター・アジア＆風雲再起",
+    "illustrator": "kazumasa yasukuni",
     "stats": {
-      "height": "16.7m/ー",
-      "weight": "7.2t/ー",
       "mobility": 200,
       "ranged_attack": 40,
       "melee_attack": 350,
       "hp": 360
     },
+    "link_ability": [
+      {
+        "name": "Gガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "肉薄する戦い",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "マスター・アジア＆風雲再起",
+    "model": "GF13-001NHII",
     "terrain_compatibility": {
       "ground": "S",
       "space": "A",
@@ -51,18 +64,6 @@
       "cost": 3,
       "description": "ロックオン中の敵に単体攻撃でダメージを与える。"
     },
-    "link_ability": [
-      {
-        "name": "Gガンダム",
-        "condition": "デッキに3枚以上",
-        "effect": "[近距離攻撃力]小アップ"
-      },
-      {
-        "name": "肉薄する戦い",
-        "condition": "デッキに4枚以上",
-        "effect": "[機動力][近距離攻撃力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "ダークネスフィンガー",
       "target": "範囲(敵)",
@@ -70,11 +71,11 @@
       "sp_cost": 2,
       "power": 3400,
       "description": "対象の敵を中心とした小範囲に格闘攻撃でダメージを与え、自身に小ダメージ。戦術技威力は地形適性に応じて変化する。",
-      "united_sp": null
-    },
-    "rarity": "PR",
-    "illustrator": "kazumasa yasukuni",
-    "raw": "近距離 コスト3 MS\nGF13-001NHII MASTER GUNDAM & FUUNSAIKI\nマスターガンダム＆風雲再起\n\n頭頂高 16.7m/ー\n本体重量 7.2t/ー\n所属 ネオホンコン\nパイロット マスター・アジア＆風雲再起\n\n地上 S　宇宙 A　砂漠 S　水中 B\n機動力 200\n遠距離攻撃 40\n近距離攻撃 350\nHP 360\n\nWEAPON\nMAIN 格闘　射程 1　近距離\nSUB ダークネスショット　射程 3　遠距離\n\nMS ABILITY\n強撃\n任意発動　単体(敵)　射程 1　コスト 3\nロックオン中の敵に単体攻撃でダメージを与える。\n\nLINK ABILITY\nGガンダム　デッキに3枚以上\n[近距離攻撃力]小アップ\n\n肉薄する戦い　デッキに4枚以上\n[機動力][近距離攻撃力]小アップ\n\nSPECIAL ATTACK　UNITED SP\nダークネスフィンガー　ー\n連携ー　連携ー\n連携ー　連携ー\n範囲(敵)　射程 2　ー　射程ー\nSPコスト 2　威力 3400 / ー\n対象の敵を中心とした小範囲に格闘攻撃でダメージを与え、自身に小ダメージ。戦術技威力は地形適性に応じて変化する。\n/ー\n\nillust. kazumasa yasukuni\n©創通・サンライズ\nBANDAI MADE IN JAPAN\nPR-242　PR"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "プロモーション_PR-242_マスターガンダム＆風雲再起_ocr_raw.json",
   "ocr_timestamp": "2026-03-03T22:59:04.184955",

@@ -5,52 +5,55 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB01-089.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB01-089_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "AB01-089",
     "type": "PL",
-    "card_label": {
-      "class": "殲滅",
-      "cost_label": "コスト3"
-    },
     "name": "パルヴィーズ",
-    "english_name": "PARVIZ",
     "cost": 3,
+    "rarity": "M",
     "category": "殲滅",
     "affiliation": "BUILD DiVERS",
-    "physical": {
-      "height": null,
-      "age": null
-    },
-    "units": [
-      "ヴァルキランダー"
-    ],
+    "illustrator": "Juri Toida",
     "stats": {
       "mobility": 150,
       "ranged_attack": 260,
       "melee_attack": 200,
       "hp": 100
     },
+    "link_ability": [
+      {
+        "name": "Re:RISE",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "巧みな連携戦術",
+        "condition": "デッキに2枚以上",
+        "effect": "[遠距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "PARVIZ",
+    "physical": {
+      "height": "",
+      "age": ""
+    },
+    "units": [
+      "ヴァルキランダー"
+    ],
     "pilot_skill": {
       "name": "反撃の兆し",
       "trigger": "HP50%以下の時",
       "effect": "35秒間、自身の[遠距離攻撃力]を中アップする。",
       "has_sq_skill": false,
-      "sq_skill_details": null
-    },
-    "link_ability": [
-      {
-        "name": "Re:RISE",
-        "condition": "デッキに3枚以上",
-        "effect": "[遠距離攻撃力]小アップ"
-      },
-      {
-        "name": "巧みな連携戦術",
-        "condition": "デッキに2枚以上",
-        "effect": "[遠距離攻撃力]小アップ"
-      }
-    ],
-    "rarity": "M",
-    "illustrator": "Juri Toida",
-    "raw": "PL\n\n殲滅 コスト3\n\nパルヴィーズ\nPARVIZ\n\n身長　―\n年齢　―\n所属　BUILD DiVERS\n搭乗機体　ヴァルキランダー\n\nPL SKILL\n\n反撃の兆し\n\nHP50%以下の時\n\n35秒間、自身の[遠距離攻撃力]を中アップする。\n\nLINK ABILITY\n\nRe:RISE　デッキに3枚以上\n\n[遠距離攻撃力]小アップ\n\n巧みな連携戦術　デッキに2枚以上\n\n[遠距離攻撃力]小アップ\n\n機動力　150\n遠距離攻撃　260\n近距離攻撃　200\nHP　100\n\nillust Juri Toida\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n\n機動戦士ガンダム\nARSENAL BASE™\n\nAB01-089　M"
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_raw_file": "SEASON_01_AB01-089_パルヴィーズ_ocr_raw.json",
   "ocr_timestamp": "2026-02-23T12:55:11.733176",

@@ -1,75 +1,72 @@
 {
-    "card_number": "FQ02-004",
-    "card_name": "ナラティブガンダム(C装備)",
-    "series": "FORSQUAD SEASON:02",
-    "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-004.jpg?v9",
-    "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-004_b.jpg?v9",
-    "ocr_data": {
-        "card_id": "FQ02-004",
-        "type": "MS",
-        "card_label": {
-            "class": "近距離",
-            "cost_label": "コスト4"
-        },
-        "name": "ナラティブガンダム (C装備)",
-        "model": "RX-9/C NARRATIVE GUNDAM C-PACKS",
-        "cost": 4,
-        "category": "近距離",
-        "pilot": "ヨナ・バシュタ",
-        "stats": {
-            "height": "21.0m",
-            "weight": "26.8t",
-            "mobility": 240,
-            "ranged_attack": 90,
-            "melee_attack": 350,
-            "hp": 270
-        },
-        "terrain_compatibility": {
-            "ground": "A",
-            "space": "S",
-            "desert": "C",
-            "water": "C"
-        },
-        "weapon": {
-            "main": {
-                "name": "ビーム・サーベル",
-                "range": 1,
-                "type": "近距離"
-            },
-            "sub": {
-                "name": "ビーム・ライフル",
-                "range": 3,
-                "type": "遠距離"
-            }
-        },
-        "ms_ability": {
-            "name": "鼓舞【近距離】【弱体化解除】",
-            "range": 1,
-            "cost": 6,
-            "description": "自身を中心とした大範囲内の味方ユニットの弱体化状態を無効化し、30秒間、[近距離攻撃力]を中アップする。",
-            "activation": "任意発動"
-        },
-        "link_ability": [
-            {
-                "name": "機動戦士ガンダムNT",
-                "condition": "デッキに2枚以上",
-                "effect": "[機動力]小アップ"
-            },
-            {
-                "name": "肉薄する戦い",
-                "condition": "デッキに4枚以上",
-                "effect": "[機動力][近距離攻撃力]小アップ"
-            }
-        ],
-        "impact_area": {
-            "type": "circular",
-            "radius": 3,
-            "centered": true
-        },
-        "illustrator": "ishima060123",
-        "raw": "近距離 コスト4 RX-9/C NARRATIVE GUNDAM C-PACKS ナラティブガンダム(C装備) 頭頂高 21.0m 本体重量 26.8t 所属 地球連邦軍 パイロット ヨナ・バシュタ 地上A 宇宙S 砂漠C 水中C 機動力 240 遠距離攻撃 90 近距離攻撃 350 HP 270 WEAPON MAIN ビーム・サーベル 射程 1 近距離 SUB ビーム・ライフル 射程 3 遠距離 MS ABILITY 鼓舞【近距離】【弱体化解除】 任意発動 範囲(味方) 射程1 コスト6 自身を中心とした大範囲内の味方ユニットの弱体化状態を無効化し、30秒間、[近距離攻撃力]を中アップする。 LINK ABILITY 機動戦士ガンダムNT デッキに2枚以上 [機動力]小アップ 肉薄する戦い デッキに4枚以上 [機動力][近距離攻撃力]小アップ IMPACT AREA SPECIAL ATTACK UNITED SP ビーム・サーベル強撃 連携 射程2 威力 3200 / 単体(敵) 射程2 SPコスト 連携 単体に格闘攻撃でダメージを与える。/ー illust ishim060123 企画・制作 BANDAI MADE IN JAPAN"
+  "card_number": "FQ02-004",
+  "card_name": "ナラティブガンダム(C装備)",
+  "series": "FORSQUAD SEASON:02",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-004.jpg?v9",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-004_b.jpg?v9",
+  "ocr_data": {
+    "type": "MS",
+    "name": "ナラティブガンダム(C装備)",
+    "cost": 4,
+    "rarity": "",
+    "category": "近距離",
+    "affiliation": "",
+    "illustrator": "ishima060123",
+    "stats": {
+      "mobility": 240,
+      "ranged_attack": 90,
+      "melee_attack": 350,
+      "hp": 270
     },
-    "ocr_timestamp": "2025-06-28T01:29:02.586765",
-    "ocr_type": "basic",
-    "ocr_engine": "claude_code_cli"
+    "link_ability": [
+      {
+        "name": "機動戦士ガンダムNT",
+        "condition": "デッキに2枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "肉薄する戦い",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "ヨナ・バシュタ",
+    "model": "RX-9/C NARRATIVE GUNDAM C-PACKS",
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "C",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "ビーム・サーベル",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "ビーム・ライフル",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "鼓舞【近距離】【弱体化解除】",
+      "activation": "任意発動",
+      "target": "",
+      "range": 1,
+      "cost": 6,
+      "description": "自身を中心とした大範囲内の味方ユニットの弱体化状態を無効化し、30秒間、[近距離攻撃力]を中アップする。"
+    },
+    "special_attack": null
+  },
+  "ocr_timestamp": "2025-06-28T01:29:02.586765",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli"
 }

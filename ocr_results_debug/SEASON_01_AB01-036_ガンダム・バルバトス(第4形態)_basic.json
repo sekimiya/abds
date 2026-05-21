@@ -5,31 +5,44 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB01-036.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB01-036_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "AB01-036",
     "type": "MS",
-    "card_label": {
-      "class": "遠距離",
-      "cost_label": "コスト3"
-    },
-    "name": "ガンダム・バルバトス（第4形態）",
-    "model": "ASW-G-08 GUNDAM BARBATOS",
+    "name": "ガンダム・バルバトス(第4形態)",
     "cost": 3,
+    "rarity": "C",
     "category": "遠距離",
     "affiliation": "鉄華団",
-    "pilot": "三日月・オーガス",
+    "illustrator": "Tatumi Takuan",
     "stats": {
-      "height": "18.0m",
-      "weight": "28.5t",
       "mobility": 180,
       "ranged_attack": 150,
       "melee_attack": 50,
       "hp": 80
     },
+    "link_ability": [
+      {
+        "name": "鉄血のオルフェンズ",
+        "condition": "デッキに3枚以上",
+        "effect": "[近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "屈強なる鉄の華",
+        "condition": "デッキに3枚以上",
+        "effect": "[近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "三日月・オーガス",
+    "model": "ASW-G-08 GUNDAM BARBATOS",
     "terrain_compatibility": {
       "ground": "S",
       "space": "A",
       "desert": "B",
-      "water": null
+      "water": ""
     },
     "weapon": {
       "main": {
@@ -44,18 +57,6 @@
       }
     },
     "ms_ability": null,
-    "link_ability": [
-      {
-        "name": "鉄血のオルフェンズ",
-        "condition": "デッキに3枚以上",
-        "effect": "[近距離攻撃力]小アップ"
-      },
-      {
-        "name": "屈強なる鉄の華",
-        "condition": "デッキに3枚以上",
-        "effect": "[近距離攻撃力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "滑腔砲撃射",
       "target": "単体(敵)",
@@ -63,11 +64,11 @@
       "sp_cost": 2,
       "power": 3100,
       "description": "敵単体に射撃攻撃でダメージを与える。",
-      "united_sp": null
-    },
-    "rarity": "C",
-    "illustrator": "Tatumi Takuan",
-    "raw": "MS\n\n遠距離 コスト3\n\nASW-G-08 GUNDAM BARBATOS\nガンダム・バルバトス（第4形態）\n\n全高 18.0m\n本体重量 28.5t\n所属 鉄華団\nパイロット 三日月・オーガス\n\n地上 S 宇宙 A 砂漠 B\n\n機動力 180\n遠距離攻撃 150\n近距離攻撃 50\nHP 80\n\n[アイコン:鉄血のオルフェンズ 機動戦士ガンダム]\n\nWEAPON\n\nMAIN 滑腔砲 射程 2 遠距離\nSUB 太刀 射程 1 近距離\n\nLINK ABILITY\n\n鉄血のオルフェンズ デッキに3枚以上\n[近距離攻撃力]小アップ\n\n屈強なる鉄の華 デッキに3枚以上\n[近距離攻撃力]小アップ\n\nMS ABILITY\n\n— — 射程 — コスト —\n\nSPECIAL ATTACK\n\n滑腔砲撃射\n単体(敵) 射程 3\nSPコスト 2 威力 3100\n\n敵単体に射撃攻撃でダメージを与える。\n\nIMPACT AREA\n\n[アイコン:中央に緑丸、下部に三角マーカー]\n\nillust Tatumi Takuan\n©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n\n[アイコン:機動戦士ガンダム ARSENAL BASE]\n\nAB01-036 C"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "SEASON_01_AB01-036_ガンダム・バルバトス(第4形態)_ocr_raw.json",
   "ocr_timestamp": "2026-02-23T12:25:01.362537",

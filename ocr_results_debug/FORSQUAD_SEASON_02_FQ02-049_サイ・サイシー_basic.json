@@ -5,49 +5,57 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-049.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-049_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "FQ02-049",
     "type": "PL",
-    "card_label": {
-      "class": "制圧",
-      "cost_label": "コスト3"
-    },
     "name": "サイ・サイシー",
     "cost": 3,
-    "category": "Gガンダム",
+    "rarity": "C",
+    "category": "制圧",
     "affiliation": "ネオチャイナ",
+    "illustrator": "",
     "stats": {
       "mobility": 180,
       "ranged_attack": 210,
       "melee_attack": 80,
       "hp": 200
     },
+    "link_ability": [
+      {
+        "name": "[SQ]新シャッフル同盟",
+        "condition": "デッキに3枚以上",
+        "effect": "SQゲージが表示される。SQゲージを溜めるとSQUAD RUSHが発動できる。[機動力][HP]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "",
+    "physical": null,
+    "units": null,
     "pilot_skill": {
       "name": "盤石な制圧陣形",
       "trigger": "敵戦艦／拠点をロックオン時",
       "effect": "SQゲージ小アップ",
       "has_sq_skill": true,
       "sq_skill_details": {
+        "name": "",
         "trigger": "敵戦艦／拠点をロックオン時",
+        "effect": "",
         "sq_gauge_effect": "SQゲージ小アップ",
-        "sq_rush_effect": "自身の[遠距離攻撃力]をアップし、受けるダメージを軽減する。",
-        "sq_max_effect": null
-      }
-    },
-    "link_ability": [
-      {
-        "name": "[SQ]新シャッフル同盟",
-        "condition": "デッキに3枚以上",
-        "effect": "SQゲージが表示される。SQゲージを溜めるとSQUAD RUSHが発動できる。[機動力][HP]小アップ"
+        "sq_max_effect": "",
+        "sq_rush_effect": "自身の[遠距離攻撃力]をアップし、受けるダメージを軽減する。"
       },
-      {
-        "name": "戦況を変える力",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      }
-    ],
-    "rarity": "C",
-    "illustrator": null,
-    "raw": "制圧　コスト3　PL\n\nサイ・サイシー\nSAI SAICI\n\n身長　132cm\n年齢　16歳\n所属　ネオチャイナ\n搭乗機体　ドラゴンガンダム\n\nSQ　PL SKILL\n盤石な制圧陣形\n敵戦艦／拠点をロックオン時\nSQゲージ小アップ\n\nSQUAD RUSH中\n自身の[遠距離攻撃力]をアップし、受けるダメージを軽減する。\n\nSQ　LINK ABILITY\n新シャッフル同盟　デッキに3枚以上\nSQゲージが表示される。\nSQゲージを溜めるとSQUAD RUSHが発動できる。\n[機動力][HP]小アップ\n\n戦況を変える力　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]\n小アップ\n\n機動力　180\n遠距離攻撃　210\n近距離攻撃　80\nHP　200\n\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム　ARSENAL BASE®\nFQ02-049　C"
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_raw_file": "FORSQUAD_SEASON_02_FQ02-049_サイ・サイシー_ocr_raw.json",
   "ocr_timestamp": "2026-03-03T18:36:41.521329",

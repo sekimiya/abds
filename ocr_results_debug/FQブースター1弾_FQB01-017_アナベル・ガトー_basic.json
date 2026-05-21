@@ -5,56 +5,62 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQB01-017.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQB01-017_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "FQB01-017",
     "type": "PL",
-    "card_label": {
-      "class": "制圧",
-      "cost_label": "コスト1"
-    },
     "name": "アナベル・ガトー",
-    "english_name": "ANAVEL GATO",
     "cost": 1,
+    "rarity": "R",
     "category": "制圧",
     "affiliation": "ジオン公国軍",
-    "physical": {
-      "height": null,
-      "age": 25
-    },
-    "units": [
-      "ガンダム試作2号機"
-    ],
+    "illustrator": "",
     "stats": {
       "mobility": 190,
       "ranged_attack": 100,
       "melee_attack": 180,
       "hp": 190
     },
+    "link_ability": [
+      {
+        "name": "駆け抜ける嵐",
+        "condition": "デッキに3枚以上",
+        "effect": "SQゲージが表示される。SQゲージを溜めるとSQUAD RUSHが発動できる。[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "肉薄する戦い",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "ANAVEL GATO",
+    "physical": {
+      "height": "",
+      "age": 25
+    },
+    "units": [
+      "ガンダム試作2号機"
+    ],
     "pilot_skill": {
       "name": "猛烈な攻撃陣形",
       "trigger": "敵戦艦／拠点をロックオン時",
       "effect": "SQゲージ小アップ。",
       "has_sq_skill": true,
       "sq_skill_details": {
+        "name": "",
+        "trigger": "",
+        "effect": "",
         "sq_gauge_effect": "SQゲージ小アップ。",
-        "sq_max_effect": null,
-        "squad_rush_effect": "自身の[近距離攻撃力]をアップし、受けるダメージを軽減する。"
-      }
-    },
-    "link_ability": [
-      {
-        "name": "駆け抜ける嵐",
-        "condition": "デッキに3枚以上",
-        "effect": "SQゲージが表示される。SQゲージを溜めるとSQUAD RUSHが発動できる。[遠距離攻撃力][近距離攻撃力]小アップ"
+        "sq_max_effect": "",
+        "sq_rush_effect": "自身の[近距離攻撃力]をアップし、受けるダメージを軽減する。"
       },
-      {
-        "name": "肉薄する戦い",
-        "condition": "デッキに4枚以上",
-        "effect": "[機動力][近距離攻撃力]小アップ"
-      }
-    ],
-    "rarity": "R",
-    "illustrator": null,
-    "raw": "制圧 コスト1\n\nPL\n\nアナベル・ガトー\nANAVEL GATO\n\n[アイコン:機動戦士ガンダム0083 STARDUST MEMORY]\n[アイコン:ジオン公国軍エンブレム]\n\n身長 ー\n年齢 25歳\n所属 ジオン公国軍\n搭乗機体 ガンダム試作2号機\n\nSQ PL SKILL\n猛烈な攻撃陣形\n敵戦艦／拠点をロックオン時\nSQゲージ小アップ。\n\nSQUAD RUSH中\n自身の[近距離攻撃力]をアップし、受けるダメージを軽減する。\n\nSQ LINK ABILITY\n駆け抜ける嵐 デッキに3枚以上\nSQゲージが表示される。\nSQゲージを溜めるとSQUAD RUSHが発動できる。\n[遠距離攻撃力][近距離攻撃力]小アップ\n\n肉薄する戦い デッキに4枚以上\n[機動力][近距離攻撃力]小アップ\n\n機動力 190\n遠距離攻撃 100\n近距離攻撃 180\nHP 190\n\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\nFQB01-017 R"
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_raw_file": "FQブースター1弾_FQB01-017_アナベル・ガトー_ocr_raw.json",
   "ocr_timestamp": "2026-02-28T03:25:59.809240",

@@ -5,49 +5,57 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-047.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-047_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "FQ02-047",
     "type": "PL",
-    "card_label": {
-      "class": "制圧",
-      "cost_label": "コスト2"
-    },
     "name": "チボデー・クロケット",
     "cost": 2,
-    "category": "Gガンダム",
+    "rarity": "R",
+    "category": "制圧",
     "affiliation": "ネオアメリカ",
+    "illustrator": "",
     "stats": {
       "mobility": 190,
       "ranged_attack": 210,
       "melee_attack": 100,
       "hp": 190
     },
+    "link_ability": [
+      {
+        "name": "[SQ]新シャッフル同盟",
+        "condition": "デッキに3枚以上",
+        "effect": "SQゲージが表示される。SQゲージを溜めるとSQUAD RUSHが発動できる。[機動力][HP]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "",
+    "physical": null,
+    "units": null,
     "pilot_skill": {
       "name": "即応の射撃体勢",
       "trigger": "MSアビリティ発動時",
       "effect": "SQゲージ中アップ。",
       "has_sq_skill": true,
       "sq_skill_details": {
+        "name": "",
         "trigger": "MSアビリティ発動時",
+        "effect": "",
         "sq_gauge_effect": "SQゲージ中アップ。",
-        "sq_rush_effect": "自身の[機動力][遠距離攻撃力]をアップする。",
-        "sq_max_effect": null
-      }
-    },
-    "link_ability": [
-      {
-        "name": "[SQ]新シャッフル同盟",
-        "condition": "デッキに3枚以上",
-        "effect": "SQゲージが表示される。SQゲージを溜めるとSQUAD RUSHが発動できる。[機動力][HP]小アップ"
+        "sq_max_effect": "",
+        "sq_rush_effect": "自身の[機動力][遠距離攻撃力]をアップする。"
       },
-      {
-        "name": "戦況を変える力",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      }
-    ],
-    "rarity": "R",
-    "illustrator": null,
-    "raw": "制圧　コスト2　PL\n\nチボデー・クロケット\nCHIBODEE CROCKET\n\n身長　192cm\n年齢　20歳\n所属　ネオアメリカ\n搭乗機体　ガンダムマックスター\n\nSQ　PL SKILL\n即応の射撃体勢\nMSアビリティ発動時\nSQゲージ中アップ。\n\nSQUAD RUSH中\n自身の[機動力][遠距離攻撃力]をアップする。\n\nSQ　LINK ABILITY\n新シャッフル同盟　デッキに3枚以上\nSQゲージが表示される。\nSQゲージを溜めるとSQUAD RUSHが発動できる。\n[機動力][HP]小アップ\n\n戦況を変える力　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\n機動力　190\n遠距離攻撃　210\n近距離攻撃　100\nHP　190\n\n©創通・サンライズ　BANDAI MADE IN JAPAN\nFQ02-047　R"
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_raw_file": "FORSQUAD_SEASON_02_FQ02-047_チボデー・クロケット_ocr_raw.json",
   "ocr_timestamp": "2026-03-03T18:35:54.096314",

@@ -1,75 +1,72 @@
 {
-    "card_number": "FQ02-024",
-    "card_name": "マイティーストライクフリーダムガンダム",
-    "series": "FORSQUAD SEASON:02",
-    "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-024.jpg?v9",
-    "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-024_b.jpg?v9",
-    "ocr_data": {
-        "card_id": "FQ02-024",
-        "type": "MS",
-        "card_label": {
-            "class": "遠距離",
-            "cost_label": "コスト3"
-        },
-        "name": "マイティーストライクフリーダムガンダム",
-        "model": "ZGMF/A-262PD-P MIGHTY STRIKE FREEDOM GUNDAM",
-        "cost": 3,
-        "category": "遠距離",
-        "pilot": "キラ・ヤマト＆ラクス・クライン",
-        "stats": {
-            "height": "18.88m",
-            "weight": "91.65t",
-            "mobility": 210,
-            "ranged_attack": 220,
-            "melee_attack": 90,
-            "hp": 230
-        },
-        "terrain_compatibility": {
-            "ground": "A",
-            "space": "S",
-            "desert": "A",
-            "water": "C"
-        },
-        "weapon": {
-            "main": {
-                "name": "高エネルギービームライフル",
-                "range": 3,
-                "type": "遠距離"
-            },
-            "sub": {
-                "name": "アクティブカノン＆高エネルギー砲",
-                "range": 1,
-                "type": "近距離"
-            }
-        },
-        "ms_ability": {
-            "name": "奮起",
-            "range": 3,
-            "cost": 1,
-            "description": "自身のHPが1以上で一定割合以下になると、一定時間、撃破されなくなり「遠近攻撃力」を中アップする。出撃時1度のみ発動。",
-            "activation": "出撃時発動"
-        },
-        "link_ability": [
-            {
-                "name": "SEED FREEDOM",
-                "condition": "デッキに3枚以上",
-                "effect": "[機動力]小アップ"
-            },
-            {
-                "name": "撃ち倒す勇気",
-                "condition": "デッキに遠距離が2枚以上",
-                "effect": "[遠距離攻撃力]中アップ"
-            }
-        ],
-        "impact_area": {
-            "type": "circular",
-            "radius": 3,
-            "centered": true
-        },
-        "illustrator": "masaki",
-        "raw": "遠距離 コスト3\nZGMF/A-262PD-P MIGHTY STRIKE FREEDOM GUNDAM\nマイティーストライクフリーダムガンダム\n頭頂高 18.88m\n本体重量 91.65t\n所属 コンパス\nパイロット キラ・ヤマト＆ラクス・クライン\n地上 A 宇宙 S 砂漠 A 水中 C\n機動力 210\n遠距離攻撃 220\n近距離攻撃 90\nHP 230\nWEAPON\nMAIN 高エネルギービームライフル 射程 3 遠距離\nSUB アクティブカノン＆高エネルギー砲 射程 1 近距離\nMS ABILITY\n奮起\n出撃時発動 自分 射程 3 コスト 1\n自身のHPが1以上で一定割合以下になると、一定時間、撃破されなくなり「遠近攻撃力」を中アップする。出撃時1度のみ発動。\nLINK ABILITY\nSEED FREEDOM デッキに3枚以上\n[機動力]小アップ\n撃ち倒す勇気 デッキに遠距離が2枚以上\n[遠距離攻撃力]中アップ\nIMPACT AREA\nillust = masaki\nBANDAI MADE IN JAPAN\nFQ02-024 C"
+  "card_number": "FQ02-024",
+  "card_name": "マイティーストライクフリーダムガンダム",
+  "series": "FORSQUAD SEASON:02",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-024.jpg?v9",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-024_b.jpg?v9",
+  "ocr_data": {
+    "type": "MS",
+    "name": "マイティーストライクフリーダムガンダム",
+    "cost": 3,
+    "rarity": "",
+    "category": "遠距離",
+    "affiliation": "",
+    "illustrator": "masaki",
+    "stats": {
+      "mobility": 210,
+      "ranged_attack": 220,
+      "melee_attack": 90,
+      "hp": 230
     },
-    "ocr_timestamp": "2025-06-28T01:33:14.254919",
-    "ocr_type": "basic",
-    "ocr_engine": "claude_code_cli"
+    "link_ability": [
+      {
+        "name": "SEED FREEDOM",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "撃ち倒す勇気",
+        "condition": "デッキに遠距離が2枚以上",
+        "effect": "[遠距離攻撃力]中アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "キラ・ヤマト＆ラクス・クライン",
+    "model": "ZGMF/A-262PD-P MIGHTY STRIKE FREEDOM GUNDAM",
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "A",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "高エネルギービームライフル",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "アクティブカノン＆高エネルギー砲",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "奮起",
+      "activation": "出撃時発動",
+      "target": "",
+      "range": 3,
+      "cost": 1,
+      "description": "自身のHPが1以上で一定割合以下になると、一定時間、撃破されなくなり「遠近攻撃力」を中アップする。出撃時1度のみ発動。"
+    },
+    "special_attack": null
+  },
+  "ocr_timestamp": "2025-06-28T01:33:14.254919",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli"
 }

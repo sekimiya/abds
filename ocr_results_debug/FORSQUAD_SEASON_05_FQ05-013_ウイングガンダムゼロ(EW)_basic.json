@@ -5,26 +5,39 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ05-013.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ05-013_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "FQ05-013",
     "type": "MS",
-    "card_label": {
-      "class": "遠距離",
-      "cost_label": "コスト7"
-    },
     "name": "ウイングガンダムゼロ(EW)",
-    "model": "XXXG-00W0 WING GUNDAM ZERO[EW]",
     "cost": 7,
+    "rarity": "U",
     "category": "遠距離",
     "affiliation": "ー",
-    "pilot": "ヒイロ・ユイ",
+    "illustrator": "Eske Yoshinob",
     "stats": {
-      "height": "16.7m",
-      "weight": "8.0t",
       "mobility": 310,
       "ranged_attack": 560,
       "melee_attack": 130,
       "hp": 600
     },
+    "link_ability": [
+      {
+        "name": "Endless Waltz",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "的確な一撃",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][遠距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "ヒイロ・ユイ",
+    "model": "XXXG-00W0 WING GUNDAM ZERO[EW]",
     "terrain_compatibility": {
       "ground": "A",
       "space": "S",
@@ -51,18 +64,6 @@
       "cost": 6,
       "description": "指定した位置に範囲攻撃を行い、その地点に移動する。"
     },
-    "link_ability": [
-      {
-        "name": "Endless Waltz",
-        "condition": "デッキに3枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      },
-      {
-        "name": "的確な一撃",
-        "condition": "デッキに4枚以上",
-        "effect": "[機動力][遠距離攻撃力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "ツインバスターライフル斉射",
       "target": "範囲(敵)",
@@ -70,17 +71,20 @@
       "sp_cost": 2,
       "power": 3600,
       "description": "対象の敵を中心として範囲射撃でダメージを与え、自身に小ダメージ。/敵単体に射撃攻撃でダメージを与え、ゼロシステムが発動する。ゼロシステム発動中は回避時に回避攻撃が発生し、能力が上昇し、MSアビリティ[奇襲]が強化される。自身が撃墜されるまで効果は持続する。リンクアビリティ[Endless Waltz]の数に応じて、出撃中の全味方ユニットの能力を一定時間アップする。",
+      "sp_type": "",
+      "echoes_beat": null,
       "united_sp": {
-        "partner1": "オペレーション・メテオ",
-        "partner2": null,
+        "name": "",
+        "partners": [
+          "オペレーション・メテオ"
+        ],
+        "target": "",
         "range": 4,
         "power": 6500,
         "description": "SQUAD RUSH発動中に1度だけ、SQUAD SPを使用できる。単体(敵)射程4"
-      }
-    },
-    "rarity": "U",
-    "illustrator": "Eske Yoshinob",
-    "raw": "MS\n\n遠距離　コスト7\n\nXXXG-00W0 WING GUNDAM ZERO[EW]\nウイングガンダムゼロ(EW)\n\n頭頂高　16.7m\n本体重量　8.0t\n所属　ー\nパイロット　ヒイロ・ユイ\n\n地上 A　宇宙 S　砂漠 C　水中 C\n\n機動力 310\n遠距離攻撃 560\n近距離攻撃 130\nHP 600\n\nWEAPON\n\nMAIN ツインバスターライフル　射程 4　遠距離\nSUB ビームサーベル　射程 1　近距離\n\nMS ABILITY\n\n奇襲\n任意発動　範囲(敵)　射程 ー　コスト 6\n\n指定した位置に範囲攻撃を行い、その地点に移動する。\n\nSPECIAL ATTACK　▶ SQUAD SP\n\nツインバスターライフル斉射　オペレーション・メテオ\nSQUAD RUSH発動中に1度だけ、SQUAD SPを使用できる。\n範囲(敵)　射程 4　単体(敵)　射程 4\nSPコスト 2　威力 3600 / 6500\n\nLINK ABILITY\n\nEndless Waltz　デッキに3枚以上\n[遠距離攻撃力][近距離攻撃力]\n小アップ\n\n的確な一撃　デッキに4枚以上\n[機動力][遠距離攻撃力]小アップ\n\nIMPACT AREA\n\n[アイコン:十字型範囲、中央×、上○、右○、下×、左○]\n\n対象の敵を中心として範囲射撃でダメージを与え、自身に小ダメージ。/敵単体に射撃攻撃でダメージを与え、ゼロシステムが発動する。ゼロシステム発動中は回避時に回避攻撃が発生し、能力が上昇し、MSアビリティ[奇襲]が強化される。自身が撃墜されるまで効果は持続する。リンクアビリティ[Endless Waltz]の数に応じて、出撃中の全味方ユニットの能力を一定時間アップする。\n\nillust Eske Yoshinob\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n\n機動戦士ガンダム\nARSENAL BASE\n\nFQ05-013　U"
+      },
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "FORSQUAD_SEASON_05_FQ05-013_ウイングガンダムゼロ(EW)_ocr_raw.json",
   "ocr_timestamp": "2026-02-24T18:27:47.730610",

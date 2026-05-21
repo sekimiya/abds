@@ -5,26 +5,39 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT03-008.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT03-008_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "UT03-008",
     "type": "MS",
-    "card_label": {
-      "class": "遠距離",
-      "cost_label": "コスト2"
-    },
     "name": "Zガンダム",
-    "model": "MSZ-006 Z GUNDAM",
     "cost": 2,
+    "rarity": "P",
     "category": "遠距離",
     "affiliation": "エゥーゴ",
-    "pilot": "ジュドー・アーシタ、ルー・ルカ",
+    "illustrator": "S Kei",
     "stats": {
-      "height": "19.85m",
-      "weight": "28.7t",
       "mobility": 200,
       "ranged_attack": 280,
       "melee_attack": 100,
       "hp": 370
     },
+    "link_ability": [
+      {
+        "name": "機動戦士ガンダムZZ",
+        "condition": "デッキに3枚以上",
+        "effect": "[HP]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "的確な一撃",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][遠距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "ジュドー・アーシタ、ルー・ルカ",
+    "model": "MSZ-006 Z GUNDAM",
     "terrain_compatibility": {
       "ground": "A",
       "space": "S",
@@ -51,18 +64,6 @@
       "cost": 5,
       "description": "自身の周囲に殲滅タイプの味方ユニットを呼び出す。このユニットの攻撃は一定時間、被ダメージを一定値アップさせる。※上限3ユニットまで。"
     },
-    "link_ability": [
-      {
-        "name": "機動戦士ガンダムZZ",
-        "condition": "デッキに3枚以上",
-        "effect": "[HP]小アップ"
-      },
-      {
-        "name": "的確な一撃",
-        "condition": "デッキに4枚以上",
-        "effect": "[機動力][遠距離攻撃力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "ビーム・ライフル撃射",
       "target": "単体(敵)",
@@ -70,11 +71,11 @@
       "sp_cost": 2,
       "power": 3300,
       "description": "敵単体に射撃攻撃でダメージを与える。",
-      "united_sp": null
-    },
-    "rarity": "P",
-    "illustrator": "S Kei",
-    "raw": "MS\n\n遠距離　コスト2\n\nMSZ-006 Z GUNDAM\nZガンダム\n\n頭頂高　19.85m\n本体重量　28.7t\n所属　エゥーゴ\nパイロット　ジュドー・アーシタ、ルー・ルカ\n\n地上 A　宇宙 S　砂漠 C　水中 C\n\n機動力　200\n遠距離攻撃力　280\n近距離攻撃力　100\nHP　370\n\nWEAPON\nMAIN　ビーム・ライフル　射程 3　遠距離\nSUB　ビーム・サーベル　射程 1　近距離\n\nLINK ABILITY\n機動戦士ガンダムZZ　デッキに3枚以上\n[HP]小アップ\n\nMS ABILITY\n増援[殲滅／破甲]\n任意発動　特殊(自分)　射程 ー　コスト 5\n自身の周囲に殲滅タイプの味方ユニットを呼び出す。このユニットの攻撃は一定時間、被ダメージを一定値アップさせる。※上限3ユニットまで。\n\n的確な一撃　デッキに4枚以上\n[機動力][遠距離攻撃力]小アップ\n\nSPECIAL ATTACK　　UNITED SP\nビーム・ライフル撃射　　ー\n連携 ー　　連携 ー　射程 ー\n連携 ー　　連携 ー\n単体(敵)　射程 3　　ー　射程 ー\nSPコスト 2　威力 3300 / ー\n敵単体に射撃攻撃でダメージを与える。\n/ ー\n\nIMPACT AREA\n[アイコン:緑丸 中央やや左]\n[アイコン:黄三角 中央やや下]\n\nillust　S Kei\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nUT03-008　P"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "UNITRIBE_SEASON_03_UT03-008_Zガンダム_ocr_raw.json",
   "ocr_timestamp": "2026-02-26T17:14:47.826443",

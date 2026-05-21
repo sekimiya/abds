@@ -5,52 +5,55 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT01-072.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT01-072_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "UT01-072",
     "type": "PL",
-    "card_label": {
-      "class": "殲滅",
-      "cost_label": "コスト4"
-    },
     "name": "ウルフ・エニアクル",
-    "english_name": "WOOLF ENNEACLE",
     "cost": 4,
+    "rarity": "R",
     "category": "殲滅",
     "affiliation": "地球連邦軍",
-    "physical": {
-      "height": null,
-      "age": 23
-    },
-    "units": [
-      "Gエグゼス"
-    ],
+    "illustrator": "",
     "stats": {
       "mobility": 200,
       "ranged_attack": 220,
       "melee_attack": 130,
       "hp": 250
     },
+    "link_ability": [
+      {
+        "name": "ガンダムAGE",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "揺るがぬ意志",
+        "condition": "デッキに2枚以上",
+        "effect": "[HP]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "WOOLF ENNEACLE",
+    "physical": {
+      "height": "",
+      "age": 23
+    },
+    "units": [
+      "Gエグゼス"
+    ],
     "pilot_skill": {
       "name": "確固たる信念",
       "trigger": "HP50%以下の時",
       "effect": "自身が受けるダメージを軽減する。",
       "has_sq_skill": false,
-      "sq_skill_details": null
-    },
-    "link_ability": [
-      {
-        "name": "ガンダムAGE",
-        "condition": "デッキに3枚以上",
-        "effect": "[遠距離攻撃力]小アップ"
-      },
-      {
-        "name": "揺るがぬ意志",
-        "condition": "デッキに2枚以上",
-        "effect": "[HP]小アップ"
-      }
-    ],
-    "rarity": "R",
-    "illustrator": null,
-    "raw": "殲滅 コスト4\nPL\n\nウルフ・エニアクル\nWOOLF ENNEACLE\n\n[アイコン:ガンダムAGE]\n\n身長　ー\n年齢　23歳\n所属　地球連邦軍\n搭乗機体　Gエグゼス\n\nPL SKILL\n確固たる信念\nHP50%以下の時\n\n自身が受けるダメージを軽減する。\n\nLINK ABILITY\nガンダムAGE　デッキに3枚以上\n[遠距離攻撃力]小アップ\n\n揺るがぬ意志　デッキに2枚以上\n[HP]小アップ\n\n機動力 200\n遠距離攻撃 220\n近距離攻撃 130\nHP 250\n\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\nUT01-072 R"
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_raw_file": "UNITRIBE_SEASON_01_UT01-072_ウルフ・エニアクル_ocr_raw.json",
   "ocr_timestamp": "2026-03-02T03:41:55.371540",

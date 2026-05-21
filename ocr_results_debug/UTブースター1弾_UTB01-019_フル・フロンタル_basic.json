@@ -5,52 +5,55 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UTB01-019.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UTB01-019_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "UTB01-019",
     "type": "PL",
-    "card_label": {
-      "class": "殲滅",
-      "cost_label": "コスト4"
-    },
     "name": "フル・フロンタル",
-    "english_name": "FULL FRONTAL",
     "cost": 4,
+    "rarity": "R",
     "category": "殲滅",
     "affiliation": "ネオ・ジオン残党軍『袖付き』",
-    "physical": {
-      "height": "ー",
-      "age": null
-    },
-    "units": [
-      "シナンジュ"
-    ],
+    "illustrator": "",
     "stats": {
       "mobility": 180,
       "ranged_attack": 300,
       "melee_attack": 80,
       "hp": 240
     },
+    "link_ability": [
+      {
+        "name": "ガンダムUC",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "FULL FRONTAL",
+    "physical": {
+      "height": "ー",
+      "age": ""
+    },
+    "units": [
+      "シナンジュ"
+    ],
     "pilot_skill": {
       "name": "慎重な遠距離戦",
       "trigger": "敵ユニットをロックオン時",
       "effect": "20秒間、自身の[遠距離攻撃力]を小アップする。",
       "has_sq_skill": false,
-      "sq_skill_details": null
-    },
-    "link_ability": [
-      {
-        "name": "ガンダムUC",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "多彩な戦術",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      }
-    ],
-    "rarity": "R",
-    "illustrator": null,
-    "raw": "殲滅　コスト4\n\nPL\n\nフル・フロンタル\nFULL FRONTAL\n\n身長　ー\n年齢　不明\n所属　ネオ・ジオン残党軍『袖付き』\n搭乗機体　シナンジュ\n\nPL SKILL\n\n慎重な遠距離戦\n\n敵ユニットをロックオン時\n\n20秒間、自身の[遠距離攻撃力]を\n小アップする。\n\nLINK ABILITY\n\nガンダムUC　デッキに3枚以上\n[機動力]小アップ\n\n多彩な戦術　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]\n小アップ\n\n機動力 180\n遠距離攻撃 300\n近距離攻撃 80\nHP 240\n\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\nUTB01-019　R"
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_raw_file": "UTブースター1弾_UTB01-019_フル・フロンタル_ocr_raw.json",
   "ocr_timestamp": "2026-03-02T02:12:22.369725",

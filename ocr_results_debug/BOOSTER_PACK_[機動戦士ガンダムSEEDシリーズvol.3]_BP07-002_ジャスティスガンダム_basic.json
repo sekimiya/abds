@@ -5,26 +5,39 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP07-002.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP07-002_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "BP07-002",
     "type": "MS",
-    "card_label": {
-      "class": "近距離",
-      "cost_label": "コスト4"
-    },
     "name": "ジャスティスガンダム",
-    "model": "ZGMF-X09A JUSTICE GUNDAM",
     "cost": 4,
+    "rarity": "M",
     "category": "近距離",
     "affiliation": "ー",
-    "pilot": "アスラン・ザラ",
+    "illustrator": "",
     "stats": {
-      "height": "18.56m",
-      "weight": "75.4t",
       "mobility": 240,
       "ranged_attack": 70,
       "melee_attack": 380,
       "hp": 410
     },
+    "link_ability": [
+      {
+        "name": "ガンダムSEED",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "アスラン・ザラ",
+    "model": "ZGMF-X09A JUSTICE GUNDAM",
     "terrain_compatibility": {
       "ground": "A",
       "space": "S",
@@ -51,18 +64,6 @@
       "cost": 5,
       "description": "指定した味方ユニットの範囲内に移動後、一番近い味方ユニットを回収し、一定時間自身の[遠/近攻撃力]をアップする。回収したユニットの修理時間は発生しない。"
     },
-    "link_ability": [
-      {
-        "name": "ガンダムSEED",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "戦況を変える力",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "ファトゥム-00連携",
       "target": "単体(敵)",
@@ -70,17 +71,20 @@
       "sp_cost": 2,
       "power": 3400,
       "description": "敵単体に格闘攻撃でダメージを与える。/射線上の敵に貫通射撃でダメージを与え、攻撃に参加したユニットはHPが最大値を超えて回復し、一定時間受けるダメージを軽減する。出撃時1度のみ使用可能。",
+      "sp_type": "",
+      "echoes_beat": null,
       "united_sp": {
         "name": "コンビネーション・アサルト",
+        "partners": [
+          "フリーダムガンダム"
+        ],
         "target": "貫通(敵)",
         "range": 4,
         "power": 3700,
-        "description": "射線上の敵に貫通射撃でダメージを与え、攻撃に参加したユニットはHPが最大値を超えて回復し、一定時間受けるダメージを軽減する。出撃時1度のみ使用可能。",
-        "partners": ["フリーダムガンダム"]
-      }
-    },
-    "rarity": "M",
-    "raw": "近距離 コスト4 MS\nZGMF-X09A JUSTICE GUNDAM\nジャスティスガンダム\n頭頂高 18.56m\n本体重量 75.4t\n所属 ー\nパイロット アスラン・ザラ\n地上 A 宇宙 S 砂漠 A 水中 C\n機動力 240\n遠距離攻撃 70\n近距離攻撃 380\nHP 410\nWEAPON\nMAIN アンビデクストラス・ハルバート 射程 1 近距離\nSUB フォルティス・ビーム砲 射程 3 遠距離\nLINK ABILITY\nガンダムSEED デッキに3枚以上\n[機動力]小アップ\n戦況を変える力 デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\nMS ABILITY\n飛転\n任意発動 特殊(自分) 射程 ー コスト 5\n指定した味方ユニットの範囲内に移動後、一番近い味方ユニットを回収し、一定時間自身の[遠/近攻撃力]をアップする。回収したユニットの修理時間は発生しない。\nSPECIAL ATTACK\nファトゥム-00連携\nUNITED SP\nコンビネーション・アサルト\n連携 フリーダムガンダム\n連携 ー\n単体(敵) 射程 2 貫通(敵) 射程 4\nSPコスト 2 威力 3400 / 3700\n敵単体に格闘攻撃でダメージを与える。/射線上の敵に貫通射撃でダメージを与え、攻撃に参加したユニットはHPが最大値を超えて回復し、一定時間受けるダメージを軽減する。出撃時1度のみ使用可能。\nBP07-002 M"
+        "description": "射線上の敵に貫通射撃でダメージを与え、攻撃に参加したユニットはHPが最大値を超えて回復し、一定時間受けるダメージを軽減する。出撃時1度のみ使用可能。"
+      },
+      "squad_sp": null
+    }
   },
   "ocr_timestamp": "2026-04-16T11:50:00.000000",
   "ocr_type": "basic",

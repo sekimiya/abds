@@ -1,84 +1,81 @@
 {
-    "card_number": "FQ02-002",
-    "card_name": "ハイゴッグ",
-    "series": "FORSQUAD SEASON:02",
-    "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-002.jpg?v9",
-    "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-002_b.jpg?v9",
-    "ocr_data": {
-        "card_id": "FQ02-002",
-        "type": "MS",
-        "card_label": {
-            "class": "機動",
-            "cost_label": "コスト7"
-        },
-        "name": "ハイゴッグ",
-        "model": "MSM-03C HY-GOGG",
-        "cost": 7,
-        "category": "機動",
-        "pilot": "ミハイル・カミンスキー、アンドリュ・ストロース",
-        "stats": {
-            "height": "15.4m",
-            "weight": "54.5t",
-            "mobility": 290,
-            "ranged_attack": 470,
-            "melee_attack": 150,
-            "hp": 440
-        },
-        "terrain_compatibility": {
-            "ground": "A",
-            "space": "C",
-            "desert": "C",
-            "water": "S"
-        },
-        "weapon": {
-            "main": {
-                "name": "ビーム・カノン",
-                "range": 3,
-                "type": "遠距離"
-            },
-            "sub": {
-                "name": "バイス・クロー",
-                "range": 1,
-                "type": "近距離"
-            }
-        },
-        "ms_ability": {
-            "name": "増援[防衛]",
-            "range": 1,
-            "cost": 4,
-            "description": "自身の周囲に防衛タイプの味方ユニットを呼び出す。※上限3ユニットまで。",
-            "activation": "任意発動"
-        },
-        "link_ability": [
-            {
-                "name": "ポケットの中の戦争",
-                "condition": "デッキに3枚以上",
-                "effect": "[HP]小アップ"
-            },
-            {
-                "name": "多彩な戦術",
-                "condition": "デッキに4枚以上",
-                "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-            }
-        ],
-        "impact_area": {
-            "type": "circular",
-            "radius": 1,
-            "centered": true
-        },
-        "illustrator": "Kazue Saitou",
-        "raw": "機動 コスト7\nMSM-03C HY-GOGG\nハイゴッグ\n頭頂高 15.4m\n本体重量 54.5t\n所属 ジオン公国軍\nパイロット ミハイル・カミンスキー、アンドリュ・ストロース\n地上A 宇宙C 砂漠C 水中S\n機動力 290\n遠距離攻撃 470\n近距離攻撃 150\nHP 440\nWEAPON\nMAIN ビーム・カノン 射程3 遠距離\nSUB バイス・クロー 射程1 近距離\nMS ABILITY\n増援【防衛】\n任意発動 特殊(自分) 射程1 コスト4\n自身の周囲に防衛タイプの味方ユニットを呼び出す。※上限3ユニットまで。\nLINK ABILITY\nポケットの中の戦争 デッキに3枚以上\n[HP]小アップ\n多彩な戦術 デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\nIMPACT AREA\nSPECIAL ATTACK\nビーム・カノン撃射\n単体(敵) 射程3\nSPコスト / 威力 3300 / -\n敵単体に射撃攻撃でダメージを与える。/\nillust Kazue Saitou\n©創通・サンライズ\nBANDAI MADE IN JAPAN"
+  "card_number": "FQ02-002",
+  "card_name": "ハイゴッグ",
+  "series": "FORSQUAD SEASON:02",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-002.jpg?v9",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-002_b.jpg?v9",
+  "ocr_data": {
+    "type": "MS",
+    "name": "ハイゴッグ",
+    "cost": 7,
+    "rarity": "",
+    "category": "機動",
+    "affiliation": "",
+    "illustrator": "Kazue Saitou",
+    "stats": {
+      "mobility": 290,
+      "ranged_attack": 470,
+      "melee_attack": 150,
+      "hp": 440
     },
-    "ocr_timestamp": "2025-06-28T01:34:43.008370",
-    "ocr_type": "basic",
-    "ocr_engine": "claude_code_cli",
-    "_fix_history": [
-        {
-            "timestamp": "2026-03-03T23:49:16",
-            "changes": [
-                "ms_ability.name: \"増援【防衛】\" → \"増援[防衛]\""
-            ]
-        }
+    "link_ability": [
+      {
+        "name": "ポケットの中の戦争",
+        "condition": "デッキに3枚以上",
+        "effect": "[HP]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
     ],
-    "_fixed": true
+    "pilot": "ミハイル・カミンスキー、アンドリュ・ストロース",
+    "model": "MSM-03C HY-GOGG",
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "C",
+      "desert": "C",
+      "water": "S"
+    },
+    "weapon": {
+      "main": {
+        "name": "ビーム・カノン",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "バイス・クロー",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "増援[防衛]",
+      "activation": "任意発動",
+      "target": "",
+      "range": 1,
+      "cost": 4,
+      "description": "自身の周囲に防衛タイプの味方ユニットを呼び出す。※上限3ユニットまで。"
+    },
+    "special_attack": null
+  },
+  "ocr_timestamp": "2025-06-28T01:34:43.008370",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli",
+  "_fix_history": [
+    {
+      "timestamp": "2026-03-03T23:49:16",
+      "changes": [
+        "ms_ability.name: \"増援【防衛】\" → \"増援[防衛]\""
+      ]
+    }
+  ],
+  "_fixed": true
 }

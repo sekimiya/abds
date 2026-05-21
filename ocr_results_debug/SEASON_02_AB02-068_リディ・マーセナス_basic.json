@@ -5,52 +5,55 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB02-068.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB02-068_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "AB02-068",
     "type": "PL",
-    "card_label": {
-      "class": "殲滅",
-      "cost_label": "コスト3"
-    },
     "name": "リディ・マーセナス",
-    "english_name": "RIDDHE MARCENAS",
     "cost": 3,
+    "rarity": "R",
     "category": "殲滅",
     "affiliation": "地球連邦軍",
-    "physical": {
-      "height": null,
-      "age": 23
-    },
-    "units": [
-      "バンシィ・ノルン"
-    ],
+    "illustrator": "",
     "stats": {
       "mobility": 150,
       "ranged_attack": 130,
       "melee_attack": 100,
       "hp": 150
     },
+    "link_ability": [
+      {
+        "name": "ガンダムUC",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "ニュータイプの潜在能力",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "RIDDHE MARCENAS",
+    "physical": {
+      "height": "",
+      "age": 23
+    },
+    "units": [
+      "バンシィ・ノルン"
+    ],
     "pilot_skill": {
       "name": "剥き出しの敵意",
       "trigger": "敵ユニットをロックオン時",
       "effect": "20秒間、ロックオン中の敵ユニットの[機動力][遠距離攻撃力]を小ダウンする。",
       "has_sq_skill": false,
-      "sq_skill_details": null
-    },
-    "link_ability": [
-      {
-        "name": "ガンダムUC",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "ニュータイプの潜在能力",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      }
-    ],
-    "rarity": "R",
-    "illustrator": null,
-    "raw": "PL\n\n殲滅 コスト3\n\nリディ・マーセナス\nRIDDHE MARCENAS\n\n身長 ー\n年齢 23歳\n所属 地球連邦軍\n搭乗機体 バンシィ・ノルン\n\n[アイコン:機動戦士ガンダムUC]\n[アイコン:地球連邦軍エンブレム]\n\nPL SKILL\n\n剥き出しの敵意\n\n敵ユニットをロックオン時\n\n20秒間、ロックオン中の敵ユニットの[機動力][遠距離攻撃力]を小ダウンする。\n\nLINK ABILITY\n\nガンダムUC デッキに3枚以上\n[機動力]小アップ\n\nニュータイプの潜在能力 デッキに3枚以上\n[機動力]小アップ\n\n機動力 150\n遠距離攻撃 130\n近距離攻撃 100\nHP 150\n\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n\n機動戦士ガンダム ARSENAL BASE®\n\nAB02-068 R"
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_raw_file": "SEASON_02_AB02-068_リディ・マーセナス_ocr_raw.json",
   "ocr_timestamp": "2026-02-23T15:11:30.649879",

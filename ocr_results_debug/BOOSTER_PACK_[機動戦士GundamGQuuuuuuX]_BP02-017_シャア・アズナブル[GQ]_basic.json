@@ -5,50 +5,53 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP02-017.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP02-017_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "BP02-017",
     "type": "PL",
-    "card_label": {
-      "class": "殲滅",
-      "cost_label": "コスト2"
-    },
     "name": "シャア・アズナブル[GQ]",
-    "english_name": "CHAR AZNABLE[GQ]",
     "cost": 2,
+    "rarity": "P",
     "category": "殲滅",
     "affiliation": "ジオン公国軍",
-    "physical": {
-      "height": null,
-      "age": null
-    },
-    "units": [],
+    "illustrator": "",
     "stats": {
       "mobility": 200,
       "ranged_attack": 50,
       "melee_attack": 260,
       "hp": 330
     },
+    "link_ability": [
+      {
+        "name": "GQuuuuuuX",
+        "condition": "デッキに3枚以上",
+        "effect": "[HP]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "CHAR AZNABLE[GQ]",
+    "physical": {
+      "height": "",
+      "age": ""
+    },
+    "units": [],
     "pilot_skill": {
       "name": "大胆不敵",
       "trigger": "出撃時",
       "effect": "出撃中の敵ユニット数に応じて[機動力][近距離攻撃力]をアップする。",
       "has_sq_skill": false,
-      "sq_skill_details": null
-    },
-    "link_ability": [
-      {
-        "name": "GQuuuuuuX",
-        "condition": "デッキに3枚以上",
-        "effect": "[HP]小アップ"
-      },
-      {
-        "name": "戦況を変える力",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      }
-    ],
-    "rarity": "P",
-    "illustrator": null,
-    "raw": "PL\n\n殲滅 コスト2\n\nシャア・アズナブル[GQ]\nCHAR AZNABLE[GQ]\n\nGQuuuuuuX [アイコン:GQuuuuuuXロゴ]\n\n身長 ー\n年齢 ー\n所属 ジオン公国軍\n搭乗機体 ー\n\nPL SKILL\n大胆不敵\n出撃時\n出撃中の敵ユニット数に応じて[機動力][近距離攻撃力]をアップする。\n\nLINK ABILITY\nGQuuuuuuX　デッキに3枚以上\n[HP]小アップ\n\n戦況を変える力　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\n機動力 200\n遠距離攻撃 50\n近距離攻撃 260\nHP 330\n\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nBP02-017 P"
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_raw_file": "BOOSTER_PACK_[機動戦士GundamGQuuuuuuX]_BP02-017_シャア・アズナブル[GQ]_ocr_raw.json",
   "ocr_timestamp": "2026-02-28T04:53:40.418949",

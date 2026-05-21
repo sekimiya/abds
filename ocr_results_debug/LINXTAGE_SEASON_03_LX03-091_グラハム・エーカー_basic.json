@@ -5,44 +5,50 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX03-091.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX03-091_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "LX03-091",
     "type": "PL",
-    "card_label": {
-      "class": "制圧",
-      "cost_label": "コスト1"
-    },
     "name": "グラハム・エーカー",
     "cost": 1,
-    "category": "ガンダム00",
+    "rarity": "R",
+    "category": "制圧",
     "affiliation": "ユニオン",
+    "illustrator": "",
     "stats": {
       "mobility": 150,
       "ranged_attack": 60,
       "melee_attack": 170,
       "hp": 130
     },
+    "link_ability": [
+      {
+        "name": "ガンダム00",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "最優先の任務",
+        "condition": "デッキに2枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "",
+    "physical": null,
+    "units": null,
     "pilot_skill": {
       "name": "打開の起点",
       "trigger": "HP50%以下の時",
       "effect": "35秒間、自身の[近距離攻撃力]をアップする。残りHPが少ない程、効果値が上昇する。",
       "has_sq_skill": false,
-      "sq_skill_details": null
-    },
-    "link_ability": [
-      {
-        "name": "ガンダム00",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "最優先の任務",
-        "condition": "デッキに2枚以上",
-        "effect": "[機動力]小アップ"
-      }
-    ],
-    "rarity": "R",
-    "illustrator": null,
-    "raw": "制圧 コスト1 PL\nグラハム・エーカー\nGRAHAM AKER\nガンダム00\n\n身長 180cm\n年齢 27歳\n所属 ユニオン\n搭乗機体 グラハム専用ユニオンフラッグカスタムII（GNフラッグ）、グラハム専用ユニオンフラッグカスタム、ユニオンフラッグ\n\nPL SKILL\n打開の起点\nHP50%以下の時\n\n35秒間、自身の[近距離攻撃力]をアップする。残りHPが少ない程、効果値が上昇する。\n\nLINK ABILITY\nガンダム00 デッキに3枚以上\n[機動力]小アップ\n\n最優先の任務 デッキに2枚以上\n[機動力]小アップ\n\n機動力 150\n遠距離攻撃 60\n近距離攻撃 170\nHP 130\n\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\nLX03-091 R"
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_raw_file": "LINXTAGE_SEASON_03_LX03-091_グラハム・エーカー_ocr_raw.json",
   "ocr_timestamp": "2026-03-07T17:54:27.545468",

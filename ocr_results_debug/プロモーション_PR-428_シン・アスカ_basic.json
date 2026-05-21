@@ -5,17 +5,38 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-428.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-428_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "PR-428",
     "type": "PL",
-    "card_label": {
-      "class": "殲滅",
-      "cost_label": "コスト2"
-    },
     "name": "シン・アスカ",
-    "english_name": "SHINN ASUKA",
     "cost": 2,
+    "rarity": "PR",
     "category": "殲滅",
     "affiliation": "コンパス",
+    "illustrator": "",
+    "stats": {
+      "mobility": 170,
+      "ranged_attack": 50,
+      "melee_attack": 240,
+      "hp": 280
+    },
+    "link_ability": [
+      {
+        "name": "SEED FREEDOM",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "SHINN ASUKA",
     "physical": {
       "height": "169cm",
       "age": 17
@@ -24,34 +45,16 @@
       "デスティニーガンダムSpecII",
       "イモータルジャスティスガンダム"
     ],
-    "stats": {
-      "mobility": 170,
-      "ranged_attack": 50,
-      "melee_attack": 240,
-      "hp": 280
-    },
     "pilot_skill": {
       "name": "奮い立つ戦意",
       "trigger": "MSアビリティ発動時",
       "effect": "20秒間、出撃中の全味方ユニットの[遠距離攻撃力][近距離攻撃力]をアップする。",
       "has_sq_skill": false,
-      "sq_skill_details": null
-    },
-    "link_ability": [
-      {
-        "name": "SEED FREEDOM",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "多彩な戦術",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      }
-    ],
-    "rarity": "PR",
-    "illustrator": null,
-    "raw": "PL\n\n殲滅 コスト2\n\nシン・アスカ\nSHINN ASUKA\n\n身長 169cm\n年齢 17歳\n所属 コンパス\n搭乗機体 デスティニーガンダムSpecII、\nイモータルジャスティスガンダム\n\nPL SKILL\n奮い立つ戦意\nMSアビリティ発動時\n20秒間、出撃中の全味方ユニットの[遠距離攻撃力][近距離攻撃力]をアップする。\n\nLINK ABILITY\nSEED FREEDOM デッキに3枚以上\n[機動力]小アップ\n\n多彩な戦術 デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\n機動力 170\n遠距離攻撃 50\n近距離攻撃 240\nHP 280\n\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nPR-428 PR\nNOT FOR SALE"
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_raw_file": "プロモーション_PR-428_シン・アスカ_ocr_raw.json",
   "ocr_timestamp": "2026-03-03T09:23:55.512927",

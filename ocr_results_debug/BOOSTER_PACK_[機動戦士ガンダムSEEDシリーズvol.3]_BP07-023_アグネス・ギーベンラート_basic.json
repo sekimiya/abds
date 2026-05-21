@@ -5,17 +5,38 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP07-023.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP07-023_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "BP07-023",
     "type": "PL",
-    "card_label": {
-      "class": "殲滅",
-      "cost_label": "コスト2"
-    },
     "name": "アグネス・ギーベンラート",
-    "english_name": "AGNES GIEBENRATH",
     "cost": 2,
+    "rarity": "R",
     "category": "殲滅",
     "affiliation": "コンパス",
+    "illustrator": "",
+    "stats": {
+      "mobility": 180,
+      "ranged_attack": 30,
+      "melee_attack": 270,
+      "hp": 210
+    },
+    "link_ability": [
+      {
+        "name": "傍流する覚醒の共振",
+        "condition": "デッキに3枚以上",
+        "effect": "ECHOES BEAT Lv.が表示される。味方ユニットが戦術技を発動するとEBLv.が上がる。[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "AGNES GIEBENRATH",
     "physical": {
       "height": "163cm",
       "age": "18歳"
@@ -23,34 +44,16 @@
     "units": [
       "ギャンシュトローム(アグネス・ギーベンラート専用機)"
     ],
-    "stats": {
-      "mobility": 180,
-      "ranged_attack": 30,
-      "melee_attack": 270,
-      "hp": 210
-    },
     "pilot_skill": {
       "name": "泰然自若な指揮系統",
-      "activation": "EBLv.2以上",
-      "target": null,
-      "range": null,
-      "cost": null,
-      "description": "自身のSPゲージ回復速度がアップする。このPLスキルの効果は重複しない。"
-    },
-    "link_ability": [
-      {
-        "name": "傍流する覚醒の共振",
-        "condition": "デッキに3枚以上",
-        "effect": "ECHOES BEAT Lv.が表示される。味方ユニットが戦術技を発動するとEBLv.が上がる。[遠距離攻撃力][近距離攻撃力]小アップ"
-      },
-      {
-        "name": "多彩な戦術",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      }
-    ],
-    "rarity": "R",
-    "raw": "PL\n殲滅 コスト2\nアグネス・ギーベンラート\nAGNES GIEBENRATH\n身長 163cm\n年齢 18歳\n所属 コンパス\n搭乗機体 ギャンシュトローム(アグネス・ギーベンラート専用機)\nPL SKILL\n泰然自若な指揮系統\nEBLv.2以上\n自身のSPゲージ回復速度がアップする。このPLスキルの効果は重複しない。\nLINK ABILITY\n傍流する覚醒の共振 デッキに3枚以上\nECHOES BEAT Lv.が表示される。味方ユニットが戦術技を発動するとEBLv.が上がる。\n[遠距離攻撃力][近距離攻撃力]小アップ\n多彩な戦術 デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n機動力 180\n遠距離攻撃 30\n近距離攻撃 270\nHP 210\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nBP07-023 R"
+      "trigger": "EBLv.2以上",
+      "effect": "自身のSPゲージ回復速度がアップする。このPLスキルの効果は重複しない。",
+      "has_sq_skill": false,
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": 2,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_timestamp": "2026-04-16T11:50:00.000000",
   "ocr_type": "basic",

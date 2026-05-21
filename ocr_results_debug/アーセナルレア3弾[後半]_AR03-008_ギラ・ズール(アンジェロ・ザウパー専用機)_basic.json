@@ -5,31 +5,44 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AR03-008.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AR03-008_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "AR03-008",
     "type": "MS",
-    "card_label": {
-      "class": "遠距離",
-      "cost_label": "コスト2"
-    },
-    "name": "ギラ・ズール（アンジェロ・ザウパー専用機）",
-    "model": "AMS-129 GEARA ZULU[ANGELO SAUPER USE]",
+    "name": "ギラ・ズール(アンジェロ・ザウパー専用機)",
     "cost": 2,
+    "rarity": "A",
     "category": "遠距離",
     "affiliation": "ネオ・ジオン残党軍『袖付き』",
-    "pilot": "アンジェロ・ザウパー",
+    "illustrator": "KENT",
     "stats": {
-      "height": "20.0m",
-      "weight": "27.3t",
       "mobility": 130,
       "ranged_attack": 270,
       "melee_attack": 240,
       "hp": 310
     },
+    "link_ability": [
+      {
+        "name": "ガンダムUC",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "距離をとった射撃戦",
+        "condition": "デッキに2枚以上",
+        "effect": "[遠距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "アンジェロ・ザウパー",
+    "model": "AMS-129 GEARA ZULU[ANGELO SAUPER USE]",
     "terrain_compatibility": {
       "ground": "A",
       "space": "A",
       "desert": "C",
-      "water": null
+      "water": ""
     },
     "weapon": {
       "main": {
@@ -51,18 +64,6 @@
       "cost": 4,
       "description": "30秒間、自身を中心とした大範囲内の味方ユニットの[遠距離攻撃力]を小アップする。"
     },
-    "link_ability": [
-      {
-        "name": "ガンダムUC",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "距離をとった射撃戦",
-        "condition": "デッキに2枚以上",
-        "effect": "[遠距離攻撃力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "ビーム・ショット・ライフル貫通射撃",
       "target": "貫通(敵)",
@@ -70,11 +71,11 @@
       "sp_cost": 3,
       "power": 3400,
       "description": "射線上の敵に貫通射撃でダメージを与える。",
-      "united_sp": null
-    },
-    "rarity": "A",
-    "illustrator": "KENT",
-    "raw": "遠距離 コスト2\n\nAMS-129 GEARA ZULU[ANGELO SAUPER USE]\nギラ・ズール（アンジェロ・ザウパー専用機）\n\n全高　20.0m\n本体重量　27.3t\n所属　ネオ・ジオン残党軍『袖付き』\nパイロット　アンジェロ・ザウパー\n\n地上 A　宇宙 A　砂漠 C\n機動力 130\n遠距離攻撃 270\n近距離攻撃 240\nHP 310\n\nWEAPON\nMAIN　ランゲ・ブルーノ砲・改　射程 4　遠距離\nSUB　ビーム・ホーク　射程 1　近距離\n\nMS ABILITY\n鼓舞[遠距離]\n任意発動　範囲(味方)　射程 ー　コスト 4\n30秒間、自身を中心とした大範囲内の味方ユニットの[遠距離攻撃力]を小アップする。\n\nLINK ABILITY\nガンダムUC　デッキに3枚以上\n[機動力]小アップ\n\n距離をとった射撃戦　デッキに2枚以上\n[遠距離攻撃力]小アップ\n\nSPECIAL ATTACK\nビーム・ショット・ライフル貫通射撃\n貫通(敵)　射程 4\nSPコスト 3　威力 3400\n射線上の敵に貫通射撃でダメージを与える。\n\nillust　KENT\nAR03-008　A"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "アーセナルレア3弾[後半]_AR03-008_ギラ・ズール(アンジェロ・ザウパー専用機)_ocr_raw.json",
   "ocr_timestamp": "2026-03-07T15:19:23.518684",

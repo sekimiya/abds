@@ -5,26 +5,39 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-268.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-268_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "PR-268",
     "type": "MS",
-    "card_label": {
-      "class": "遠距離",
-      "cost_label": "コスト5"
-    },
     "name": "ウイングガンダムゼロ",
-    "model": "XXXG-00W0 WING GUNDAM ZERO",
     "cost": 5,
-    "category": "MS",
+    "rarity": "PR",
+    "category": "遠距離",
     "affiliation": "—",
-    "pilot": "ヒイロ・ユイ、ゼクス・マーキス",
+    "illustrator": "Eske Yoshinob",
     "stats": {
-      "height": "16.7m",
-      "weight": "8.0t",
       "mobility": 250,
       "ranged_attack": 490,
       "melee_attack": 80,
       "hp": 380
     },
+    "link_ability": [
+      {
+        "name": "ガンダムW",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "ヒイロ・ユイ、ゼクス・マーキス",
+    "model": "XXXG-00W0 WING GUNDAM ZERO",
     "terrain_compatibility": {
       "ground": "A",
       "space": "S",
@@ -51,18 +64,6 @@
       "cost": 3,
       "description": "ロックオン中の敵ユニットに単体攻撃を行いダメージを与え、一定時間スタンさせる。"
     },
-    "link_ability": [
-      {
-        "name": "ガンダムW",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "戦況を変える力",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "ツインバスターライフル掃射",
       "target": "範囲(敵)",
@@ -70,17 +71,20 @@
       "sp_cost": 2,
       "power": 2900,
       "description": "自身を中心とした中範囲に射撃攻撃でダメージを与える。",
+      "sp_type": "",
+      "echoes_beat": null,
       "united_sp": {
-        "partner1": "ガンダムデスサイズヘル",
-        "partner2": null,
+        "name": "",
+        "partners": [
+          "ガンダムデスサイズヘル"
+        ],
+        "target": "",
         "range": 4,
         "power": 4500,
         "description": "対象の敵を中心として格闘と範囲射撃でダメージを与える。出撃時1度のみ使用可能。"
-      }
-    },
-    "rarity": "PR",
-    "illustrator": "Eske Yoshinob",
-    "raw": "遠距離 コスト5\nXXXG-00W0 WING GUNDAM ZERO\nウイングガンダムゼロ\n\n頭頂高 16.7m\n本体重量 8.0t\n所属 —\nパイロット ヒイロ・ユイ、ゼクス・マーキス\n\n地上 A 宇宙 S 砂漠 C 水中 C\n機動力 250\n遠距離攻撃 490\n近距離攻撃 80\nHP 380\n\nWEAPON\nMAIN ツインバスターライフル 射程 4 遠距離\nSUB ビームサーベル 射程 1 近距離\n\nMS ABILITY\n縛射\n任意発動 単体(敵) 射程 4 コスト 3\nロックオン中の敵ユニットに単体攻撃を行いダメージを与え、一定時間スタンさせる。\n\nLINK ABILITY\nガンダムW デッキに3枚以上\n[機動力]小アップ\n\n戦況を変える力 デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nSPECIAL ATTACK | UNITED SP\nツインバスターライフル掃射 死神とゼロの共闘\n連携 ガンダムデスサイズヘル 連携 —\n連携 — 連携 —\n範囲(敵) 射程 4 範囲(敵) 射程 4\nSPコスト 2 威力 2900 / 4500\n自身を中心とした中範囲に射撃攻撃でダメージを与える。／対象の敵を中心として格闘と範囲射撃でダメージを与える。出撃時1度のみ使用可能。\n\nillust Eske Yoshinob\n©創通・サンライズ\nBANDAI MADE IN JAPAN\nPR-268 PR"
+      },
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "プロモーション_PR-268_ウイングガンダムゼロ_ocr_raw.json",
   "ocr_timestamp": "2026-03-03T23:11:42.580183",

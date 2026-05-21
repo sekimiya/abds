@@ -5,31 +5,44 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB02-038.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB02-038_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "AB02-038",
     "type": "MS",
-    "card_label": {
-      "class": "遠距離",
-      "cost_label": "コスト7"
-    },
     "name": "ガンダムヴァーチェ",
-    "model": "GN-005 GUNDAM VIRTUE",
     "cost": 7,
+    "rarity": "P",
     "category": "遠距離",
     "affiliation": "ソレスタルビーイング",
-    "pilot": "ティエリア・アーデ",
+    "illustrator": "Eske Yoshinob",
     "stats": {
-      "height": "18.4m",
-      "weight": "66.7t",
       "mobility": 140,
       "ranged_attack": 430,
       "melee_attack": 260,
       "hp": 400
     },
+    "link_ability": [
+      {
+        "name": "ガンダム00",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "その名はガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "ティエリア・アーデ",
+    "model": "GN-005 GUNDAM VIRTUE",
     "terrain_compatibility": {
       "ground": "A",
       "space": "S",
       "desert": "C",
-      "water": null
+      "water": ""
     },
     "weapon": {
       "main": {
@@ -51,18 +64,6 @@
       "cost": 3,
       "description": "ロックオン中の敵に一定時間チャージ後、貫通射撃を行い、射線上の敵にダメージを与える。"
     },
-    "link_ability": [
-      {
-        "name": "ガンダム00",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "その名はガンダム",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "GNバズーカ掃射",
       "target": "範囲(敵)",
@@ -70,11 +71,11 @@
       "sp_cost": 3,
       "power": 3600,
       "description": "ロックオン中の敵を中心に扇状の範囲攻撃を行い、範囲内の敵にダメージを与える。",
-      "united_sp": null
-    },
-    "rarity": "P",
-    "illustrator": "Eske Yoshinob",
-    "raw": "MS\n\n遠距離 コスト7\nGN-005 GUNDAM VIRTUE\nガンダムヴァーチェ\n\n全高 18.4m\n本体重量 66.7t\n所属 ソレスタルビーイング\nパイロット ティエリア・アーデ\n\n地上 A 宇宙 S 砂漠 C\n機動力 140\n遠距離攻撃 430\n近距離攻撃 260\nHP 400\n\nWEAPON\nMAIN GNバズーカ 射程 4 遠距離\nSUB GNビームサーベル 射程 1 近距離\n\nLINK ABILITY\nガンダム00 デッキに3枚以上\n[機動力]小アップ\n\nその名はガンダム デッキに3枚以上\n[機動力]小アップ\n\nMS ABILITY\n貫通\n任意発動 貫通(敵) 射程 4 コスト 3\n\nロックオン中の敵に一定時間チャージ後、貫通射撃を行い、射線上の敵にダメージを与える。\n\nSPECIAL ATTACK\nGNバズーカ掃射\n範囲(敵) 射程 4\nSPコスト 3 威力 3600\n\nロックオン中の敵を中心に扇状の範囲攻撃を行い、範囲内の敵にダメージを与える。\n\nIMPACT AREA\n[アイコン:前方扇状範囲]\n\nillust Eske Yoshinob\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n[アイコン:機動戦士ガンダム ARSENAL BASE]\nAB02-038 P"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "SEASON_02_AB02-038_ガンダムヴァーチェ_ocr_raw.json",
   "ocr_timestamp": "2026-02-23T15:09:41.900524",

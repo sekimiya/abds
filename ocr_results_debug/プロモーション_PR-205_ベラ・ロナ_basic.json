@@ -5,44 +5,50 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-205.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-205_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "PR-205",
     "type": "PL",
-    "card_label": {
-      "class": "防衛",
-      "cost_label": "コスト1"
-    },
     "name": "ベラ・ロナ",
     "cost": 1,
-    "category": "機動戦士ガンダムF91",
+    "rarity": "PR",
+    "category": "防衛",
     "affiliation": "クロスボーン・バンガード",
+    "illustrator": "",
     "stats": {
       "mobility": 120,
       "ranged_attack": 210,
       "melee_attack": 180,
       "hp": 200
     },
+    "link_ability": [
+      {
+        "name": "機動戦士ガンダムF91",
+        "condition": "デッキに2枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "的確な一撃",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][遠距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "",
+    "physical": null,
+    "units": null,
     "pilot_skill": {
       "name": "冷静な防衛戦",
       "trigger": "防衛拠点変更完了時",
       "effect": "30秒間、自身の[遠距離攻撃力]を中アップする。",
       "has_sq_skill": false,
-      "sq_skill_details": null
-    },
-    "link_ability": [
-      {
-        "name": "機動戦士ガンダムF91",
-        "condition": "デッキに2枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "的確な一撃",
-        "condition": "デッキに4枚以上",
-        "effect": "[機動力][遠距離攻撃力]小アップ"
-      }
-    ],
-    "rarity": "PR",
-    "illustrator": null,
-    "raw": "防衛　コスト1\n\nベラ・ロナ\nBERAH RONAH\n\n身長　ー\n年齢　17歳\n所属　クロスボーン・バンガード\n搭乗機体　ビギナ・ギナ\n\nPL SKILL\n冷静な防衛戦\n防衛拠点変更完了時\n\n30秒間、自身の[遠距離攻撃力]を\n中アップする。\n\nLINK ABILITY\n機動戦士ガンダムF91　デッキに2枚以上\n[機動力]小アップ\n\n的確な一撃　デッキに4枚以上\n[機動力][遠距離攻撃力]小アップ\n\n機動力 120\n遠距離攻撃 210\n近距離攻撃 180\nHP 200\n\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n\nNOT FOR SALE\nPR-205　PR"
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_raw_file": "プロモーション_PR-205_ベラ・ロナ_ocr_raw.json",
   "ocr_timestamp": "2026-03-03T22:36:07.788382",

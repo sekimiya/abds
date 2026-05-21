@@ -5,26 +5,39 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-424.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-424_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "PR-424",
     "type": "MS",
-    "card_label": {
-      "class": "遠距離",
-      "cost_label": "コスト3"
-    },
     "name": "フリーダムガンダム",
-    "model": "ZGMF-X10A FREEDOM GUNDAM",
     "cost": 3,
+    "rarity": "PR",
     "category": "遠距離",
-    "affiliation": null,
-    "pilot": "キラ・ヤマト",
+    "affiliation": "",
+    "illustrator": "Tomofumi Ogasawara",
     "stats": {
-      "height": "18.03m",
-      "weight": "71.5t",
       "mobility": 240,
       "ranged_attack": 310,
       "melee_attack": 60,
       "hp": 340
     },
+    "link_ability": [
+      {
+        "name": "ガンダムSEED",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "キラ・ヤマト",
+    "model": "ZGMF-X10A FREEDOM GUNDAM",
     "terrain_compatibility": {
       "ground": "A",
       "space": "S",
@@ -51,18 +64,6 @@
       "cost": 5,
       "description": "自身を中心とした大範囲の味方ユニットのHPを中回復し、弱体化状態を無効化する。"
     },
-    "link_ability": [
-      {
-        "name": "ガンダムSEED",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "戦況を変える力",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "ハイマットフルバースト",
       "target": "範囲(敵)",
@@ -70,11 +71,11 @@
       "sp_cost": 2,
       "power": 2800,
       "description": "ロックオン中の敵を中心に扇状の範囲攻撃を行い、範囲内の敵にダメージを与える。",
-      "united_sp": null
-    },
-    "rarity": "PR",
-    "illustrator": "Tomofumi Ogasawara",
-    "raw": "MS\n\n遠距離　コスト3\n\nZGMF-X10A FREEDOM GUNDAM\nフリーダムガンダム\n\n頭頂高　18.03m\n本体重量　71.5t\n所属　ー\nパイロット　キラ・ヤマト\n\n地上 A　宇宙 S　砂漠 A　水中 C\n\n機動力 240\n遠距離攻撃 310\n近距離攻撃 60\nHP 340\n\nWEAPON\nMAIN ルプス・ビームライフル　射程 3　遠距離\nSUB ラケルタ・ビームサーベル　射程 1　近距離\n\nLINK ABILITY\nガンダムSEED　デッキに3枚以上\n[機動力]小アップ\n\nMS ABILITY\n補給[弱体化解除]\n任意発動　範囲(味方)　射程 ー　コスト 5\n自身を中心とした大範囲の味方ユニットのHPを中回復し、弱体化状態を無効化する。\n\n戦況を変える力　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nSPECIAL ATTACK　　ECHOES BEAT\nハイマットフルバースト　ー\n範囲(敵)　射程 4　ー　射程 ー\nSPコスト 2　威力 2800 / ー\nロックオン中の敵を中心に扇状の範囲攻撃を行い、範囲内の敵にダメージを与える。/ ー\n\nIMPACT AREA\n[アイコン:前方扇状範囲]\n\nillust Tomofumi Ogasawara\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nNOT FOR SALE\nPR-424　PR"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "プロモーション_PR-424_フリーダムガンダム_ocr_raw.json",
   "ocr_timestamp": "2026-03-03T09:20:47.266905",

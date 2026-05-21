@@ -1,46 +1,58 @@
 {
-    "card_number": "VEB02-016",
-    "card_name": "アイナ・サハリン",
-    "series": "VEブースター2弾",
-    "ocr_data": {
-        "card_number": "VEB02-016",
-        "type": "PL",
-        "name": "アイナ・サハリン",
-        "english_name": "AINA SAKHALIN",
-        "cost": 2,
-        "category": "殲滅",
-        "rarity": "R",
-        "height": "-",
-        "age": "20歳",
-        "affiliation": "ジオン公国軍",
-        "boarding_machine": "高機動試作型ザク",
-        "stats": {
-            "mobility": 180,
-            "hp": 290,
-            "ranged_attack": 240,
-            "melee_attack": 30
-        },
-        "pilot_skill": {
-            "name": "即応の射撃体勢",
-            "activation": "MSアビリティ発動時",
-            "description": "SQゲージ中アップ。",
-            "squad_rush": "SQUAD RUSH中 自身の[機動力][遠距離攻撃力]をアップする。",
-            "skill_type": "SQ"
-        },
-        "link_ability": [
-            {
-                "name": "嵐の中で輝いて",
-                "condition": "デッキに3枚以上",
-                "effect": "SQゲージが表示される。SQゲージを溜めるとSQUAD RUSHが発動できる。[機動力][HP]小アップ",
-                "is_sq_link": true
-            },
-            {
-                "name": "多彩な戦術",
-                "condition": "デッキに4枚以上",
-                "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-            }
-        ]
+  "card_number": "VEB02-016",
+  "card_name": "アイナ・サハリン",
+  "series": "VEブースター2弾",
+  "ocr_data": {
+    "type": "PL",
+    "name": "アイナ・サハリン",
+    "cost": 2,
+    "rarity": "R",
+    "category": "殲滅",
+    "affiliation": "ジオン公国軍",
+    "illustrator": "",
+    "stats": {
+      "mobility": 180,
+      "ranged_attack": 240,
+      "melee_attack": 30,
+      "hp": 290
     },
-    "ocr_engine": "claude_code_subagent",
-    "ocr_timestamp": "2026-05-15T00:00:00"
+    "link_ability": [
+      {
+        "name": "嵐の中で輝いて",
+        "condition": "デッキに3枚以上",
+        "effect": "SQゲージが表示される。SQゲージを溜めるとSQUAD RUSHが発動できる。[機動力][HP]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": true,
+        "is_ab_link": false
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "AINA SAKHALIN",
+    "physical": {
+      "height": "-",
+      "age": "20歳"
+    },
+    "units": [
+      "高機動試作型ザク"
+    ],
+    "pilot_skill": {
+      "name": "即応の射撃体勢",
+      "trigger": "MSアビリティ発動時",
+      "effect": "SQゲージ中アップ。",
+      "has_sq_skill": false,
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
+  },
+  "ocr_engine": "claude_code_subagent",
+  "ocr_timestamp": "2026-05-15T00:00:00"
 }

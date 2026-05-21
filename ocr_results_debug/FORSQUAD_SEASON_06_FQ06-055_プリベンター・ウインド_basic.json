@@ -5,17 +5,38 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ06-055.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ06-055_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "FQ06-055",
     "type": "PL",
-    "card_label": {
-      "class": "制圧",
-      "cost_label": "コスト1"
-    },
     "name": "プリベンター・ウインド",
-    "english_name": "PREVENTER WIND",
     "cost": 1,
+    "rarity": "C",
     "category": "制圧",
     "affiliation": "プリベンター",
+    "illustrator": "",
+    "stats": {
+      "mobility": 200,
+      "ranged_attack": 180,
+      "melee_attack": 60,
+      "hp": 180
+    },
+    "link_ability": [
+      {
+        "name": "Endless Waltz",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "PREVENTER WIND",
     "physical": {
       "height": "184cm",
       "age": 20
@@ -23,34 +44,16 @@
     "units": [
       "トールギスIII"
     ],
-    "stats": {
-      "mobility": 200,
-      "ranged_attack": 180,
-      "melee_attack": 60,
-      "hp": 180
-    },
     "pilot_skill": {
       "name": "優先すべき目標",
       "trigger": "敵戦艦／拠点をロックオン時",
       "effect": "敵戦艦／拠点へのダメージを小アップする。",
       "has_sq_skill": false,
-      "sq_skill_details": null
-    },
-    "link_ability": [
-      {
-        "name": "Endless Waltz",
-        "condition": "デッキに3枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      },
-      {
-        "name": "戦況を変える力",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      }
-    ],
-    "rarity": "C",
-    "illustrator": null,
-    "raw": "PL\n\n制圧　コスト1\n\nプリベンター・ウインド\nPREVENTER WIND\n\n身長　184cm\n年齢　20歳\n所属　プリベンター\n搭乗機体　トールギスIII\n\nPL SKILL\n優先すべき目標\n敵戦艦／拠点をロックオン時\n敵戦艦／拠点へのダメージを小アップする。\n\nLINK ABILITY\nEndless Waltz　デッキに3枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\n戦況を変える力　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\n機動力 200\n遠距離攻撃 180\n近距離攻撃 60\nHP 180\n\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nFQ06-055 C"
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_raw_file": "FORSQUAD_SEASON_06_FQ06-055_プリベンター・ウインド_ocr_raw.json",
   "ocr_timestamp": "2026-03-02T04:30:05.740173",

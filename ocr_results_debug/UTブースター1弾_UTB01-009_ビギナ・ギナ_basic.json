@@ -5,26 +5,39 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UTB01-009.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UTB01-009_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "UTB01-009",
     "type": "MS",
-    "card_label": {
-      "class": "近距離",
-      "cost_label": "コスト3"
-    },
     "name": "ビギナ・ギナ",
-    "model": "XM-07 VIGNA-GHINA",
     "cost": 3,
+    "rarity": "R",
     "category": "近距離",
     "affiliation": "クロスボーン・バンガード",
-    "pilot": "ベラ・ロナ",
+    "illustrator": "Hayaken-sarena",
     "stats": {
-      "height": "15.8m",
-      "weight": "8.9t",
       "mobility": 150,
       "ranged_attack": 100,
       "melee_attack": 270,
       "hp": 280
     },
+    "link_ability": [
+      {
+        "name": "機動戦士ガンダムF91",
+        "condition": "デッキに2枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "間合いを詰めた接近戦",
+        "condition": "デッキに2枚以上",
+        "effect": "[近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "ベラ・ロナ",
+    "model": "XM-07 VIGNA-GHINA",
     "terrain_compatibility": {
       "ground": "A",
       "space": "A",
@@ -51,18 +64,6 @@
       "cost": 5,
       "description": "自身を中心とした大範囲の味方ユニットのHPを中回復し、弱体化状態を無効化する。"
     },
-    "link_ability": [
-      {
-        "name": "機動戦士ガンダムF91",
-        "condition": "デッキに2枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "間合いを詰めた接近戦",
-        "condition": "デッキに2枚以上",
-        "effect": "[近距離攻撃力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "ビーム・サーベル強撃",
       "target": "単体(敵)",
@@ -70,11 +71,11 @@
       "sp_cost": 2,
       "power": 3300,
       "description": "敵単体に格闘攻撃でダメージを与える。",
-      "united_sp": null
-    },
-    "rarity": "R",
-    "illustrator": "Hayaken-sarena",
-    "raw": "MS\n\n近距離 コスト3\n\nXM-07 VIGNA-GHINA\nビギナ・ギナ\n\n[ロゴ:機動戦士ガンダムF91]\n\n全高 15.8m\n本体重量 8.9t\n所属 クロスボーン・バンガード\nパイロット ベラ・ロナ\n\n地上 A 宇宙 A 砂漠 C 水中 C\n\n機動力 150\n遠距離攻撃 100\n近距離攻撃 270\nHP 280\n\nWEAPON\nMAIN ビーム・サーベル 射程 1 近距離\nSUB ビーム・ライフル 射程 3 遠距離\n\nLINK ABILITY\n機動戦士ガンダムF91 デッキに2枚以上\n[機動力]小アップ\n\n間合いを詰めた接近戦 デッキに2枚以上\n[近距離攻撃力]小アップ\n\nMS ABILITY\n補給[弱体化解除]\n任意発動 範囲(味方) 射程 ー コスト 5\n自身を中心とした大範囲の味方ユニットのHPを中回復し、弱体化状態を無効化する。\n\nSPECIAL ATTACK          UNITED SP\nビーム・サーベル強撃    ー\n連携 ー                 連携 ー\n連携 ー                 連携 ー\n単体(敵) 射程 2         ー 射程 ー\nSPコスト 2 威力 3300    / ー\n敵単体に格闘攻撃でダメージを与える。\n/ ー\n\nIMPACT AREA\n[アイコン:自機中心 円形範囲 下方向三角]\n\nillust Hayaken-sarena\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nUTB01-009 R"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "UTブースター1弾_UTB01-009_ビギナ・ギナ_ocr_raw.json",
   "ocr_timestamp": "2026-03-02T02:06:15.100071",

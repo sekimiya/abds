@@ -5,31 +5,44 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB04-046.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB04-046_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "AB04-046",
     "type": "MS",
-    "card_label": {
-      "class": "機動",
-      "cost_label": "コスト5"
-    },
     "name": "バスターガンダム",
-    "model": "GAT-X103 BUSTER GUNDAM",
     "cost": 5,
+    "rarity": "C",
     "category": "機動",
     "affiliation": "ザフト",
-    "pilot": "ディアッカ・エルスマン",
+    "illustrator": "sakusaku sakurai",
     "stats": {
-      "height": "18.86m",
-      "weight": "84.2t",
       "mobility": 260,
       "ranged_attack": 200,
       "melee_attack": 100,
       "hp": 240
     },
+    "link_ability": [
+      {
+        "name": "ガンダムSEED",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "奪われし機体",
+        "condition": "デッキに2枚以上",
+        "effect": "[遠距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "ディアッカ・エルスマン",
+    "model": "GAT-X103 BUSTER GUNDAM",
     "terrain_compatibility": {
       "ground": "A",
       "space": "A",
       "desert": "C",
-      "water": null
+      "water": ""
     },
     "weapon": {
       "main": {
@@ -51,18 +64,6 @@
       "cost": 5,
       "description": "ロックオン中の敵を中心に扇状の範囲攻撃を行い、範囲内の敵にダメージを与え、以後通常攻撃がサブ武装のみになる。"
     },
-    "link_ability": [
-      {
-        "name": "ガンダムSEED",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "奪われし機体",
-        "condition": "デッキに2枚以上",
-        "effect": "[遠距離攻撃力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "ライフル貫通射撃",
       "target": "貫通(敵)",
@@ -70,11 +71,11 @@
       "sp_cost": 2,
       "power": 2800,
       "description": "射線上の敵に貫通射撃でダメージを与える。",
-      "united_sp": null
-    },
-    "rarity": "C",
-    "illustrator": "sakusaku sakurai",
-    "raw": "MS\n\n機動 コスト5\nGAT-X103 BUSTER GUNDAM\nバスターガンダム\n\n全高 18.86m\n本体重量 84.2t\n所属 ザフト\nパイロット ディアッカ・エルスマン\n\n地上 A 宇宙 A 砂漠 C\n\n機動力 260\n遠距離攻撃 200\n近距離攻撃 100\nHP 240\n\nWEAPON\nMAIN 高エネルギー収束火線ライフル 射程 4 遠距離\nSUB ガンランチャー 射程 2 近距離\n\nLINK ABILITY\nガンダムSEED デッキに3枚以上\n[機動力]小アップ\n\n奪われし機体 デッキに2枚以上\n[遠距離攻撃力]小アップ\n\nMS ABILITY\n全弾発射\n任意発動 範囲(敵) 射程 4 コスト 5\nロックオン中の敵を中心に扇状の範囲攻撃を行い、範囲内の敵にダメージを与え、以後通常攻撃がサブ武装のみになる。\n\nSPECIAL ATTACK\nライフル貫通射撃\n貫通(敵) 射程 4\nSPコスト 2 威力 2800\n射線上の敵に貫通射撃でダメージを与える。\n\nIMPACT AREA\n[アイコン:扇状下方向]\n\nillust sakusaku sakurai\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nAB04-046 C"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "SEASON_04_AB04-046_バスターガンダム_ocr_raw.json",
   "ocr_timestamp": "2026-03-02T05:57:02.173566",

@@ -5,44 +5,50 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-080.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-080_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "PR-080",
     "type": "PL",
-    "card_label": {
-      "class": "防衛",
-      "cost_label": "コスト3"
-    },
     "name": "シャディク・ゼネリ",
     "cost": 3,
-    "category": "水星の魔女",
+    "rarity": "PR",
+    "category": "防衛",
     "affiliation": "グラスレー寮",
+    "illustrator": "",
     "stats": {
       "mobility": 280,
       "ranged_attack": 240,
       "melee_attack": 50,
       "hp": 200
     },
+    "link_ability": [
+      {
+        "name": "水星の魔女",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "優れた射撃センス",
+        "condition": "デッキに2枚以上",
+        "effect": "[遠距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "",
+    "physical": null,
+    "units": null,
     "pilot_skill": {
       "name": "優秀な指揮",
       "trigger": "MSアビリティ[集中砲火]発動時",
       "effect": "30秒間、ロックオン中の敵ユニットの[機動力]を大ダウンする。",
       "has_sq_skill": false,
-      "sq_skill_details": null
-    },
-    "link_ability": [
-      {
-        "name": "水星の魔女",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "優れた射撃センス",
-        "condition": "デッキに2枚以上",
-        "effect": "[遠距離攻撃力]小アップ"
-      }
-    ],
-    "rarity": "PR",
-    "illustrator": null,
-    "raw": "防衛　コスト3\nPL\nシャディク・ゼネリ\nSHADDIQ ZENELLI\n水星の魔女\n\n身長　ー\n年齢　ー\n所属　グラスレー寮\n搭乗機体　ミカエリス\n\nPL SKILL\n優秀な指揮\nMSアビリティ[集中砲火]発動時\n30秒間、ロックオン中の敵ユニットの[機動力]を大ダウンする。\n\nLINK ABILITY\n水星の魔女　デッキに3枚以上\n[機動力]小アップ\n\n優れた射撃センス　デッキに2枚以上\n[遠距離攻撃力]小アップ\n\n機動力 280\n遠距離攻撃 240\n近距離攻撃 50\nHP 200\n\n©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\nNOT FOR SALE\nPR-080 PR"
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_raw_file": "プロモーション_PR-080_シャディク・ゼネリ_ocr_raw.json",
   "ocr_timestamp": "2026-03-07T12:57:15.752709",

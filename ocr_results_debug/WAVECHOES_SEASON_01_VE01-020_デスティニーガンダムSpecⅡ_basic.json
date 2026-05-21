@@ -5,26 +5,39 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE01-020.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE01-020_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "VE01-020",
     "type": "MS",
-    "card_label": {
-      "class": "近距離",
-      "cost_label": "コスト7"
-    },
     "name": "デスティニーガンダムSpecⅡ",
-    "model": "ZGMF/A-42S2 DESTINY GUNDAM SPECⅡ",
     "cost": 7,
+    "rarity": "U",
     "category": "近距離",
     "affiliation": "コンパス",
-    "pilot": "シン・アスカ",
+    "illustrator": "Eske Yoshinob",
     "stats": {
-      "height": "18.08m",
-      "weight": "79.44t",
       "mobility": 300,
       "ranged_attack": 70,
       "melee_attack": 680,
       "hp": 650
     },
+    "link_ability": [
+      {
+        "name": "SEED FREEDOM",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "シン・アスカ",
+    "model": "ZGMF/A-42S2 DESTINY GUNDAM SPECⅡ",
     "terrain_compatibility": {
       "ground": "A",
       "space": "S",
@@ -51,18 +64,6 @@
       "cost": 5,
       "description": "一定時間、回避時に回避攻撃が発生し、出撃中の味方ユニット数に応じて[機動力][遠／近攻撃力][SP威力]をアップ。機動力が高い程、回避の発生率が上昇する。"
     },
-    "link_ability": [
-      {
-        "name": "SEED FREEDOM",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "多彩な戦術",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "一斉連撃",
       "target": "単体(敵)",
@@ -70,22 +71,18 @@
       "sp_cost": 2,
       "power": 3700,
       "description": "光の翼を展開し、敵単体に格闘攻撃でダメージを与える。光の翼展開後は能力が上昇。自身が撤退するまで効果は持続する。",
+      "sp_type": "ECHOES BEAT SP",
       "echoes_beat": {
-        "eb_type": "sp",
-        "eb_name": "DUPE粒子分身連撃 Lv.3",
-        "eb_level": 3,
-        "eb_note": "ECHOES BEAT Lv.を下げることで、共鳴戦術技が発動する。",
-        "eb_target": "単体(敵)",
-        "eb_range": 3,
-        "eb_power": 5200,
-        "eb_description": "EBLv.を3下げる。光の翼を展開し、敵単体に格闘攻撃でダメージを与える。光の翼展開後は能力が上昇する。自身の周囲に機体のイメージの分身3機を呼び出す。このユニット+定時MSアビリティ「残像」を発動し攻撃する。自身と呼び出した分身は一定時間スタンを受けない状態となる。出撃時1度のみ使用可能。"
+        "name": "DUPE粒子分身連撃 Lv.3",
+        "level": 3,
+        "power": 5200,
+        "range": 3,
+        "target": "単体(敵)",
+        "description": "EBLv.を3下げる。光の翼を展開し、敵単体に格闘攻撃でダメージを与える。光の翼展開後は能力が上昇する。自身の周囲に機体のイメージの分身3機を呼び出す。このユニット+定時MSアビリティ「残像」を発動し攻撃する。自身と呼び出した分身は一定時間スタンを受けない状態となる。出撃時1度のみ使用可能。"
       },
       "united_sp": null,
-      "sp_type": "ECHOES BEAT SP"
-    },
-    "rarity": "U",
-    "illustrator": "Eske Yoshinob",
-    "raw": ""
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "WAVECHOES_SEASON_01_VE01-020_デスティニーガンダムSpecⅡ_ocr_raw.json",
   "ocr_timestamp": "2026-03-30T02:14:36.116350",

@@ -1,84 +1,81 @@
 {
-    "card_number": "FQ02-022",
-    "card_name": "デスティニーガンダム(ハイネ・ヴェステンフルス専用機)",
-    "series": "FORSQUAD SEASON:02",
-    "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-022.jpg?v9",
-    "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-022_b.jpg?v9",
-    "ocr_data": {
-        "card_id": "FQ02-022",
-        "type": "MS",
-        "card_label": {
-            "class": "近距離",
-            "cost_label": "コスト2"
-        },
-        "name": "デスティニーガンダム（ハイネ・ヴェステンフルス専用機）",
-        "model": "ZGMF-X42S-REVOLUTION HEINE'S DESTINY GUNDAM",
-        "cost": 2,
-        "category": "近距離",
-        "pilot": "ハイネ・ヴェステンフルス",
-        "stats": {
-            "height": "18.08m",
-            "weight": "79.44t",
-            "mobility": 200,
-            "ranged_attack": 90,
-            "melee_attack": 220,
-            "hp": 240
-        },
-        "terrain_compatibility": {
-            "ground": "A",
-            "space": "B",
-            "desert": "B",
-            "water": "A"
-        },
-        "weapon": {
-            "main": {
-                "name": "アロンダイトビームソード",
-                "range": 1,
-                "type": "近距離"
-            },
-            "sub": {
-                "name": "高エネルギービームライフル",
-                "range": 3,
-                "type": "遠距離"
-            }
-        },
-        "ms_ability": {
-            "name": "砲撃",
-            "range": 1,
-            "cost": 3,
-            "description": "ロックオン中の敵ユニットに単体攻撃を行いダメージを与え、一定時間スタンさせる。",
-            "activation": "任意発動"
-        },
-        "link_ability": [
-            {
-                "name": "SEED DESTINY",
-                "condition": "デッキに3枚以上",
-                "effect": "[HP]小アップ"
-            },
-            {
-                "name": "肉薄する戦い",
-                "condition": "デッキに4枚以上",
-                "effect": "[機動力][近距離攻撃力]小アップ"
-            }
-        ],
-        "impact_area": {
-            "type": "circular",
-            "radius": 2,
-            "centered": false
-        },
-        "illustrator": "gomibako",
-        "raw": "近距離 コスト2\nZGMF-X42S-REVOLUTION HEINE'S DESTINY GUNDAM\nデスティニーガンダム（ハイネ・ヴェステンフルス専用機）\n頭頂高 18.08m\n本体重 79.44t\n所属 ザフト\nパイロット ハイネ・ヴェステンフルス\n地上A 宇宙B 砂漠B 水中A\n機動力 200\n遠距離攻撃 90\n近距離攻撃 220\nHP 240\nWEAPON\nMAIN アロンダイトビームソード 射程 1 近距離\nSUB 高エネルギービームライフル 射程 3 遠距離\nMS ABILITY\n練撃\n任意発動 単体（敵） 射程 1 コスト 3\nロックオン中の敵ユニットに単体攻撃を行いダメージを与え、一定時間スタンさせる。\nLINK ABILITY\nSEED DESTINY デッキに3枚以上\n[HP]小アップ\n肉薄する戦い デッキに4枚以上\n[機動力][近距離攻撃力]小アップ\nSPECIAL ATTACK\nアロンダイトビームソード強襲\n連携\n単体（敵） 射程 2 威力 3100 /\nSPコスト 2\n単体に格闘攻撃でダメージを与える。/\nIMPACT AREA\nillust gomibako\n©創通・サンライズ\nBANDAI MADE IN JAPAN\nFQ02-022 C"
+  "card_number": "FQ02-022",
+  "card_name": "デスティニーガンダム(ハイネ・ヴェステンフルス専用機)",
+  "series": "FORSQUAD SEASON:02",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-022.jpg?v9",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-022_b.jpg?v9",
+  "ocr_data": {
+    "type": "MS",
+    "name": "デスティニーガンダム(ハイネ・ヴェステンフルス専用機)",
+    "cost": 2,
+    "rarity": "",
+    "category": "近距離",
+    "affiliation": "",
+    "illustrator": "gomibako",
+    "stats": {
+      "mobility": 200,
+      "ranged_attack": 90,
+      "melee_attack": 220,
+      "hp": 240
     },
-    "ocr_timestamp": "2025-06-28T01:21:01.599170",
-    "ocr_type": "basic",
-    "ocr_engine": "claude_code_cli",
-    "_fix_history": [
-        {
-            "timestamp": "2026-03-03T23:46:27",
-            "changes": [
-                "ms_ability.name: \"練撃\" → \"砲撃\""
-            ]
-        }
+    "link_ability": [
+      {
+        "name": "SEED DESTINY",
+        "condition": "デッキに3枚以上",
+        "effect": "[HP]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "肉薄する戦い",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
     ],
-    "_fixed": true
+    "pilot": "ハイネ・ヴェステンフルス",
+    "model": "ZGMF-X42S-REVOLUTION HEINE'S DESTINY GUNDAM",
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "B",
+      "desert": "B",
+      "water": "A"
+    },
+    "weapon": {
+      "main": {
+        "name": "アロンダイトビームソード",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "高エネルギービームライフル",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "砲撃",
+      "activation": "任意発動",
+      "target": "",
+      "range": 1,
+      "cost": 3,
+      "description": "ロックオン中の敵ユニットに単体攻撃を行いダメージを与え、一定時間スタンさせる。"
+    },
+    "special_attack": null
+  },
+  "ocr_timestamp": "2025-06-28T01:21:01.599170",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli",
+  "_fix_history": [
+    {
+      "timestamp": "2026-03-03T23:46:27",
+      "changes": [
+        "ms_ability.name: \"練撃\" → \"砲撃\""
+      ]
+    }
+  ],
+  "_fixed": true
 }

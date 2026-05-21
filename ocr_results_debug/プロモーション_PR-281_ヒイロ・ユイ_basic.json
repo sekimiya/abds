@@ -5,44 +5,50 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-281.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-281_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "PR-281",
     "type": "PL",
-    "card_label": {
-      "class": "防衛",
-      "cost_label": "コスト3"
-    },
     "name": "ヒイロ・ユイ",
     "cost": 3,
-    "category": "新機動戦記ガンダムW",
-    "affiliation": null,
+    "rarity": "PR",
+    "category": "防衛",
+    "affiliation": "",
+    "illustrator": "Yuto Ogura (STUDIO GS)",
     "stats": {
       "mobility": 240,
       "ranged_attack": 280,
       "melee_attack": 70,
       "hp": 230
     },
+    "link_ability": [
+      {
+        "name": "ガンダムW",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "オルタナティブ",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "",
+    "physical": null,
+    "units": null,
     "pilot_skill": {
       "name": "冴える戦闘勘",
       "trigger": "出撃後一定時間経過毎",
       "effect": "40秒経過毎に自身の[機動力][遠距離攻撃力]を小アップする。最大3回まで発動。",
       "has_sq_skill": false,
-      "sq_skill_details": null
-    },
-    "link_ability": [
-      {
-        "name": "ガンダムW",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "オルタナティブ",
-        "condition": "デッキに3枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      }
-    ],
-    "rarity": "PR",
-    "illustrator": "Yuto Ogura (STUDIO GS)",
-    "raw": "防衛　コスト3　PL\nヒイロ・ユイ\nHEERO YUY\n新機動戦記ガンダムW（ロゴ）\n\n身長　156cm\n年齢　15歳\n所属　ー\n搭乗機体　ウイングガンダムゼロ、ウイングガンダム、ガンダムエピオン\n\nPL SKILL\n冴える戦闘勘\n出撃後一定時間経過毎\n40秒経過毎に自身の[機動力][遠距離攻撃力]を小アップする。最大3回まで発動。\n\nLINK ABILITY\nガンダムW　デッキに3枚以上\n[機動力]小アップ\n\nオルタナティブ　デッキに3枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\n機動力　240\n遠距離攻撃　280\n近距離攻撃　70\nHP　230\n\nillust. Yuto Ogura (STUDIO GS)\n©創通・サンライズ\nBANDAI MADE IN JAPAN\nARSENAL BASE®\nNOT FOR SALE\nPR-281　PR"
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_raw_file": "プロモーション_PR-281_ヒイロ・ユイ_ocr_raw.json",
   "ocr_timestamp": "2026-03-04T03:10:39.901747",

@@ -5,26 +5,39 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UTB06-003.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UTB06-003_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "UTB06-003",
     "type": "MS",
-    "card_label": {
-      "class": "近距離",
-      "cost_label": "コスト5"
-    },
     "name": "ゴールドスモー",
-    "model": "MRC-F20 GOLD SUMO",
     "cost": 5,
+    "rarity": "P",
     "category": "近距離",
     "affiliation": "ディアナ親衛隊",
-    "pilot": "ハリー・オード",
+    "illustrator": "deraken",
     "stats": {
-      "height": "20.3m",
-      "weight": "34.2t",
       "mobility": 230,
       "ranged_attack": 120,
       "melee_attack": 550,
       "hp": 500
     },
+    "link_ability": [
+      {
+        "name": "∀ガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[HP]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "ハリー・オード",
+    "model": "MRC-F20 GOLD SUMO",
     "terrain_compatibility": {
       "ground": "S",
       "space": "A",
@@ -51,18 +64,6 @@
       "cost": 4,
       "description": "自身の周囲に防衛タイプの味方ユニットを呼び出す。※上限3ユニットまで。"
     },
-    "link_ability": [
-      {
-        "name": "∀ガンダム",
-        "condition": "デッキに3枚以上",
-        "effect": "[HP]小アップ"
-      },
-      {
-        "name": "戦況を変える力",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "ヒートファン強撃",
       "target": "単体(敵)",
@@ -70,11 +71,11 @@
       "sp_cost": 2,
       "power": 3600,
       "description": "敵単体に格闘攻撃でダメージを与える。",
-      "united_sp": null
-    },
-    "rarity": "P",
-    "illustrator": "deraken",
-    "raw": "MS\n\n近距離 コスト5\n\nMRC-F20 GOLD SUMO\nゴールドスモー\n\n[アイコン:∀ガンダム]\n\n頭頂高 20.3m\n本体重量 34.2t\n所属 ディアナ親衛隊\nパイロット ハリー・オード\n\n地上 S 宇宙 A 砂漠 C 水中 C\n\n機動力 230\n遠距離攻撃 120\n近距離攻撃 550\nHP 500\n\nWEAPON\nMAIN ヒートファン 射程 1 近距離\nSUB ハンドビームガン 射程 3 遠距離\n\nMS ABILITY\n増援[防衛]\n任意発動 特殊(自分) 射程 ー コスト 4\n自身の周囲に防衛タイプの味方ユニットを呼び出す。※上限3ユニットまで。\n\nLINK ABILITY\n∀ガンダム デッキに3枚以上\n[HP]小アップ\n\n戦況を変える力 デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nSPECIAL ATTACK\nヒートファン強撃\n単体(敵) 射程 2\nSPコスト 2 威力 3600\n\n敵単体に格闘攻撃でダメージを与える。\n\nUNITED SP\n連携 ー 連携 ー\n連携 ー 連携 ー\nー 射程 ー\n/ ー\n/ ー\n\nIMPACT AREA\n[アイコン:緑丸 中央]\n[アイコン:黄三角 中央下]\n\nillust deraken\nUTB06-003 P"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "UTブースター6弾_UTB06-003_ゴールドスモー_ocr_raw.json",
   "ocr_timestamp": "2026-02-28T09:14:19.910395",

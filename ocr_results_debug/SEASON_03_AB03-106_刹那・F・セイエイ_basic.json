@@ -5,17 +5,38 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB03-106.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB03-106_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "AB03-106",
     "type": "PL",
-    "card_label": {
-      "class": "殲滅",
-      "cost_label": "コスト1"
-    },
     "name": "刹那・F・セイエイ",
-    "english_name": "SETSUNA F SEIEI",
     "cost": 1,
+    "rarity": "R",
     "category": "殲滅",
     "affiliation": "ソレスタルビーイング",
+    "illustrator": "",
+    "stats": {
+      "mobility": 170,
+      "ranged_attack": 30,
+      "melee_attack": 170,
+      "hp": 140
+    },
+    "link_ability": [
+      {
+        "name": "ガンダム00",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "最優先の任務",
+        "condition": "デッキに2枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "SETSUNA F SEIEI",
     "physical": {
       "height": "162cm",
       "age": 16
@@ -23,34 +44,16 @@
     "units": [
       "ガンダムエクシア"
     ],
-    "stats": {
-      "mobility": 170,
-      "ranged_attack": 30,
-      "melee_attack": 170,
-      "hp": 140
-    },
     "pilot_skill": {
       "name": "ガンダムマイスターの力",
       "trigger": "出撃時",
       "effect": "自身が使用するMSアビリティ[トランザム]の強化効果を小アップする。",
       "has_sq_skill": false,
-      "sq_skill_details": null
-    },
-    "link_ability": [
-      {
-        "name": "ガンダム00",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "最優先の任務",
-        "condition": "デッキに2枚以上",
-        "effect": "[機動力]小アップ"
-      }
-    ],
-    "rarity": "R",
-    "illustrator": null,
-    "raw": "PL\n\n殲滅 コスト1\n\n刹那・F・セイエイ\nSETSUNA F SEIEI\n\n身長 162cm\n年齢 16歳\n所属 ソレスタルビーイング\n搭乗機体 ガンダムエクシア\n\n[アイコン:ガンダム00ロゴ]\n[アイコン:ソレスタルビーイングエンブレム]\n\nPL SKILL\n\nガンダムマイスターの力\n\n出撃時\n\n自身が使用するMSアビリティ[トランザム]の強化効果を小アップする。\n\nLINK ABILITY\n\nガンダム00 デッキに3枚以上\n[機動力]小アップ\n\n最優先の任務 デッキに2枚以上\n[機動力]小アップ\n\n機動力 170\n遠距離攻撃 30\n近距離攻撃 170\nHP 140\n\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n\n[アイコン:機動戦士ガンダム ARSENAL BASEロゴ]\n\nAB03-106 R"
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_raw_file": "SEASON_03_AB03-106_刹那・F・セイエイ_ocr_raw.json",
   "ocr_timestamp": "2026-02-23T15:19:29.390854",

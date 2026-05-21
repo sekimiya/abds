@@ -5,26 +5,39 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-464.jpg?v8",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-464_b.jpg?v8",
   "ocr_data": {
-    "card_id": "PR-464",
     "type": "MS",
-    "card_label": {
-      "class": "近距離",
-      "cost_label": "コスト4"
-    },
     "name": "デスティニーガンダムSpecⅡ",
-    "model": "ZGMF/A-42S2 DESTINY GUNDAM SPECⅡ",
     "cost": 4,
+    "rarity": "PR",
     "category": "近距離",
     "affiliation": "コンパス",
-    "pilot": "シン・アスカ",
+    "illustrator": "Eske Yoshinob",
     "stats": {
-      "height": "18.08m",
-      "weight": "79.44t",
       "mobility": 320,
       "ranged_attack": 80,
       "melee_attack": 290,
       "hp": 360
     },
+    "link_ability": [
+      {
+        "name": "SEED FREEDOM",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "シン・アスカ",
+    "model": "ZGMF/A-42S2 DESTINY GUNDAM SPECⅡ",
     "terrain_compatibility": {
       "ground": "A",
       "space": "S",
@@ -51,18 +64,6 @@
       "cost": 4,
       "description": "20秒間、ロックオンしている敵に周囲の味方ターゲットを集め、[遠／近攻撃力]を中アップ。攻撃対象が変わると効果は終了する。"
     },
-    "link_ability": [
-      {
-        "name": "SEED FREEDOM",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "多彩な戦術",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "一斉連撃",
       "target": "単体(敵)",
@@ -70,26 +71,18 @@
       "sp_cost": 2,
       "power": 3300,
       "description": "光の翼を展開し、敵単体に格闘攻撃でダメージを与える。光の翼展開後は能力が上昇、自身が撤退するまで効果は持続する。",
-      "united_sp": null,
       "sp_type": "ECHOES BEAT SP",
-      "eb_level": 3,
-      "eb_name": "DUPE粒子分身連撃 Lv.3",
-      "eb_power": 4800,
-      "eb_description": "EBLv.を3下げる。光の翼を展開し、敵単体に地殴攻撃でダメージを与える。光の翼展開後は、自身が撤退するまで能力が上昇する。自身の周囲に複滅力イノ力の3を呼び出す。このユニットは一定時間MSアビリティ[機能]を発動した状態となる。自身と呼び出した分身は一定期間スタンを受け付けない状態となる。出撃時1度のみ使用可能。",
-      "eb_target": "単体(敵)",
-      "eb_range": 3,
       "echoes_beat": {
         "name": "DUPE粒子分身連撃 Lv.3",
         "level": 3,
-        "target": "単体(敵)",
-        "range": 3,
         "power": 4800,
+        "range": 3,
+        "target": "単体(敵)",
         "description": "EBLv.を3下げる。光の翼を展開し、敵単体に格闘攻撃でダメージを与える。出撃時1度のみ使用可能。"
-      }
-    },
-    "rarity": "PR",
-    "illustrator": "Eske Yoshinob",
-    "raw": "MS\n\n近距離 コスト4\n\nZGMF/A-42S2 DESTINY GUNDAM SPECⅡ\nデスティニーガンダムSpecⅡ\n\n頭頂高 18.08m\n本体重量 79.44t\n所属 コンパス\nパイロット シン・アスカ\n\n地上 A 宇宙 S 砂漠 B 水中 A\n機動力 320\n遠距離攻撃 80\n近距離攻撃 290\nHP 360\n\nWEAPON\nMAIN アロンダイトビームソード 射程 1 近距離\nSUB 高エネルギー長射程ビーム砲 射程 4 遠距離\n\nLINK ABILITY\nSEED FREEDOM デッキに3枚以上\n[機動力]小アップ\n\n多彩な戦術 デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nMS ABILITY\n集中砲火\n任意発動 範囲(味方) 射程 ー コスト 4\n20秒間、ロックオンしている敵に周囲の味方ターゲットを集め、[遠／近攻撃力]を中アップ。攻撃対象が変わると効果は終了する。\n\nSPECIAL ATTACK ECHOES BEAT SP\n一斉連撃\nDUPE粒子分身連撃 Lv.3\nECHOES BEAT Lv.を下げることで、共鳴戦術技が発動する。\n単体(敵) 射程 3 単体(敵) 射程 3\nSPコスト 2 威力 3300 / 4800\n光の翼を展開し、敵単体に格闘攻撃でダメージを与える。光の翼展開後は能力が上昇、自身が撤退するまで効果は持続する。／ EBLv.を3下げる。光の翼を展開し、敵単体に地殴攻撃でダメージを与える。光の翼展開後は、自身が撤退するまで能力が上昇する。自身の周囲に複滅力イノ力の3を呼び出す。このユニットは一定時間MSアビリティ[機能]を発動した状態となる。自身と呼び出した分身は一定期間スタンを受け付けない状態となる。出撃時1度のみ使用可能。\n\nIMPACT AREA\n[アイコン:黄丸 大] [アイコン:三角 下段中央]\n\nillust Eske Yoshinob\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\nPR-464 PR"
+      },
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "プロモーション_PR-464_デスティニーガンダムSpecⅡ_ocr_raw.json",
   "ocr_timestamp": "2026-05-11T00:00:00.000000",

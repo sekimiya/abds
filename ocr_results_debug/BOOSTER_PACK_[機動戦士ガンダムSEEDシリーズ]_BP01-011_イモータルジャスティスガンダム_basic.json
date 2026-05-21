@@ -5,26 +5,39 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP01-011.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP01-011_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "BP01-011",
     "type": "MS",
-    "card_label": {
-      "class": "近距離",
-      "cost_label": "コスト6"
-    },
     "name": "イモータルジャスティスガンダム",
-    "model": "STTS-808 IMMORTAL JUSTICE GUNDAM",
     "cost": 6,
-    "category": "ガンダムSEED FREEDOM",
+    "rarity": "P",
+    "category": "近距離",
     "affiliation": "コンパス",
-    "pilot": "シン・アスカ",
+    "illustrator": "toriyufu",
     "stats": {
-      "height": "18.50m",
-      "weight": "71.62t",
       "mobility": 250,
       "ranged_attack": 210,
       "melee_attack": 530,
       "hp": 560
     },
+    "link_ability": [
+      {
+        "name": "SEED FREEDOM",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "シン・アスカ",
+    "model": "STTS-808 IMMORTAL JUSTICE GUNDAM",
     "terrain_compatibility": {
       "ground": "A",
       "space": "S",
@@ -51,18 +64,6 @@
       "cost": 3,
       "description": "ロックオン中の敵に単体攻撃でダメージを与える。"
     },
-    "link_ability": [
-      {
-        "name": "SEED FREEDOM",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "多彩な戦術",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "カルキトラ ビーム重斬脚強撃",
       "target": "単体(敵)",
@@ -70,11 +71,11 @@
       "sp_cost": 2,
       "power": 3600,
       "description": "敵単体に格闘攻撃でダメージを与える。",
-      "united_sp": null
-    },
-    "rarity": "P",
-    "illustrator": "toriyufu",
-    "raw": "近距離 コスト6\nSTTS-808 IMMORTAL JUSTICE GUNDAM\nイモータルジャスティスガンダム\n全高 18.50m\n本体重量 71.62t\n所属 コンパス\nパイロット シン・アスカ\n地上 A 宇宙 S 砂漠 A 水中 C\n機動力 250\n遠距離攻撃 210\n近距離攻撃 530\nHP 560\n\nWEAPON\nMAIN ヴィーゼルナーゲルビームブーメラン 射程 1 近距離\nSUB 高エネルギービームライフル 射程 3 遠距離\n\nMS ABILITY\n強撃\n任意発動 単体(敵) 射程 1 コスト 3\nロックオン中の敵に単体攻撃でダメージを与える。\n\nLINK ABILITY\nSEED FREEDOM デッキに3枚以上\n[機動力]小アップ\n\n多彩な戦術 デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nIMPACT AREA\n\nSPECIAL ATTACK\nカルキトラ ビーム重斬脚強撃\n単体(敵) 射程 2\nSPコスト 2 威力 3600\n敵単体に格闘攻撃でダメージを与える。\n\nillust. toriyufu\n©創通・サンライズ\nBANDAI MADE IN JAPAN\nBP01-011 P"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "BOOSTER_PACK_[機動戦士ガンダムSEEDシリーズ]_BP01-011_イモータルジャスティスガンダム_ocr_raw.json",
   "ocr_timestamp": "2026-03-04T00:00:29.837439",

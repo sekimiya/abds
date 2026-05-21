@@ -5,31 +5,44 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB03-014.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB03-014_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "AB03-014",
     "type": "MS",
-    "card_label": {
-      "class": "機動",
-      "cost_label": "コスト6"
-    },
     "name": "ガンダムEz8",
-    "model": "RX-79[G]Ez-8 GUNDAM Ez8",
     "cost": 6,
+    "rarity": "R",
     "category": "機動",
     "affiliation": "地球連邦軍",
-    "pilot": "シロー・アマダ",
+    "illustrator": "Ippei Soeda",
     "stats": {
-      "height": "18.0m",
-      "weight": "51.5t",
       "mobility": 390,
       "ranged_attack": 230,
       "melee_attack": 160,
       "hp": 320
     },
+    "link_ability": [
+      {
+        "name": "第08MS小隊",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "陸戦特化の戦い",
+        "condition": "デッキに2枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "シロー・アマダ",
+    "model": "RX-79[G]Ez-8 GUNDAM Ez8",
     "terrain_compatibility": {
       "ground": "S",
       "space": "C",
       "desert": "A",
-      "water": null
+      "water": ""
     },
     "weapon": {
       "main": {
@@ -51,18 +64,6 @@
       "cost": 4,
       "description": "30秒間、自身を中心とした大範囲内の味方ユニットの[遠距離攻撃力]を小アップする。"
     },
-    "link_ability": [
-      {
-        "name": "第08MS小隊",
-        "condition": "デッキに3枚以上",
-        "effect": "[遠距離攻撃力]小アップ"
-      },
-      {
-        "name": "陸戦特化の戦い",
-        "condition": "デッキに2枚以上",
-        "effect": "[機動力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "ビーム・ライフル撃射",
       "target": "単体(敵)",
@@ -70,11 +71,11 @@
       "sp_cost": 3,
       "power": 3800,
       "description": "敵単体に射撃攻撃でダメージを与える。",
-      "united_sp": null
-    },
-    "rarity": "R",
-    "illustrator": "Ippei Soeda",
-    "raw": "MS\n\n機動　コスト6\n\nRX-79[G]Ez-8 GUNDAM Ez8\nガンダムEz8\n\n第08MS小隊 [アイコン:緑矢印上]\n\n全高　18.0m\n本体重量　51.5t\n所属　地球連邦軍\nパイロット　シロー・アマダ\n\n地上 S　宇宙 C　砂漠 A\n\n機動力 390\n遠距離攻撃 230\n近距離攻撃 160\nHP 320\n\nWEAPON\n\nMAIN ビーム・ライフル　射程 3 遠距離\nSUB ビーム・サーベル　射程 1 近距離\n\nLINK ABILITY\n\n第08MS小隊　デッキに3枚以上\n[遠距離攻撃力]小アップ\n\n陸戦特化の戦い　デッキに2枚以上\n[機動力]小アップ\n\nMS ABILITY\n\n鼓舞[遠距離]\n\n任意発動　範囲(味方)　射程 —　コスト 4\n\n30秒間、自身を中心とした大範囲内の味方ユニットの[遠距離攻撃力]を小アップする。\n\nSPECIAL ATTACK\n\nビーム・ライフル撃射\n\n単体(敵)　射程 3\nSPコスト 3　威力 3800\n\n敵単体に射撃攻撃でダメージを与える。\n\nIMPACT AREA\n\n[アイコン:黄色円形エリア、中央やや上に緑丸、下部に緑三角]\n\nillust Ippei Soeda\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム\nARSENAL BASE\n\nAB03-014　R"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "SEASON_03_AB03-014_ガンダムEz8_ocr_raw.json",
   "ocr_timestamp": "2026-02-23T15:13:41.810484",

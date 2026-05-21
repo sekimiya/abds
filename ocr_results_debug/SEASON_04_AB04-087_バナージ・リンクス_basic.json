@@ -5,17 +5,38 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB04-087.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB04-087_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "AB04-087",
     "type": "PL",
-    "card_label": {
-      "class": "制圧",
-      "cost_label": "コスト2"
-    },
     "name": "バナージ・リンクス",
-    "english_name": "BANAGHER LINKS",
     "cost": 2,
+    "rarity": "R",
     "category": "制圧",
     "affiliation": "ー",
+    "illustrator": "",
+    "stats": {
+      "mobility": 110,
+      "ranged_attack": 200,
+      "melee_attack": 90,
+      "hp": 140
+    },
+    "link_ability": [
+      {
+        "name": "ガンダムUC",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "優れた射撃センス",
+        "condition": "デッキに2枚以上",
+        "effect": "[遠距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "BANAGHER LINKS",
     "physical": {
       "height": "ー",
       "age": 16
@@ -23,34 +44,16 @@
     "units": [
       "ユニコーンガンダム"
     ],
-    "stats": {
-      "mobility": 110,
-      "ranged_attack": 200,
-      "melee_attack": 90,
-      "hp": 140
-    },
     "pilot_skill": {
       "name": "決死の覚悟",
       "trigger": "HP50%以下の時",
       "effect": "40秒間、自身の[SP威力]を中アップする。",
       "has_sq_skill": false,
-      "sq_skill_details": null
-    },
-    "link_ability": [
-      {
-        "name": "ガンダムUC",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "優れた射撃センス",
-        "condition": "デッキに2枚以上",
-        "effect": "[遠距離攻撃力]小アップ"
-      }
-    ],
-    "rarity": "R",
-    "illustrator": null,
-    "raw": "PL\n\n制圧　コスト2\n\nバナージ・リンクス\nBANAGHER LINKS\n\n身長　ー\n年齢　16歳\n所属　ー\n搭乗機体　ユニコーンガンダム\n\nPL SKILL\n決死の覚悟\nHP50%以下の時\n40秒間、自身の[SP威力]を中アップする。\n\nLINK ABILITY\nガンダムUC　デッキに3枚以上\n[機動力]小アップ\n\n優れた射撃センス　デッキに2枚以上\n[遠距離攻撃力]小アップ\n\n機動力 110\n遠距離攻撃 200\n近距離攻撃 90\nHP 140\n\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\nAB04-087 R"
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_raw_file": "SEASON_04_AB04-087_バナージ・リンクス_ocr_raw.json",
   "ocr_timestamp": "2026-03-02T06:20:24.743432",

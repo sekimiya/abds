@@ -1,71 +1,80 @@
 {
-    "card_number": "VEB02-001",
-    "card_name": "高機動試作型ザク",
-    "series": "VEブースター2弾",
-    "ocr_data": {
-        "card_number": "VEB02-001",
-        "type": "MS",
-        "name": "高機動試作型ザク",
-        "english_name": "MS-06RD-4 ZAKU HIGH MOBILITY TEST TYPE",
-        "cost": 3,
-        "category": "遠距離",
-        "rarity": "R",
-        "pilot": "アイナ・サハリン",
-        "affiliation": "ジオン公国軍",
-        "series_name": "第08MS小隊",
-        "stats": {
-            "mobility": 230,
-            "hp": 300,
-            "ranged_attack": 340,
-            "melee_attack": 80
-        },
-        "terrain_compatibility": {
-            "ground": "A",
-            "space": "S",
-            "desert": "C",
-            "water": "C"
-        },
-        "weapon": {
-            "main": {
-                "name": "ザク・マシンガン",
-                "range": 3,
-                "type": "遠距離"
-            },
-            "sub": {
-                "name": "ヒート・ホーク",
-                "range": 1,
-                "type": "近距離"
-            }
-        },
-        "ms_ability": {
-            "name": "転化[妨害]",
-            "target": "範囲(敵)",
-            "range": "ー",
-            "cost": 4,
-            "description": "一定時間、自身を中心とした範囲内の敵ユニットを弱体化する。使用回数に応じて、弱体化効果、範囲が変わる。[1回:遠/近攻撃力カダウン][2回:被ダメージアップ][3回以上:遠/近攻撃力カダウン&被ダメージアップ]",
-            "activation": "任意発動"
-        },
-        "link_ability": [
-            {
-                "name": "第08MS小隊",
-                "condition": "デッキに3枚以上",
-                "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-            },
-            {
-                "name": "多彩な戦術",
-                "condition": "デッキに4枚以上",
-                "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-            }
-        ],
-        "special_attack": {
-            "name": "ザク・マシンガン撃射",
-            "target": "単体(敵)",
-            "range": 3,
-            "sp_cost": 2,
-            "power": 3200,
-            "description": "敵単体に射撃攻撃でダメージを与える。"
-        }
+  "card_number": "VEB02-001",
+  "card_name": "高機動試作型ザク",
+  "series": "VEブースター2弾",
+  "ocr_data": {
+    "type": "MS",
+    "name": "高機動試作型ザク",
+    "cost": 3,
+    "rarity": "R",
+    "category": "遠距離",
+    "affiliation": "ジオン公国軍",
+    "illustrator": "",
+    "stats": {
+      "mobility": 230,
+      "ranged_attack": 340,
+      "melee_attack": 80,
+      "hp": 300
     },
-    "ocr_engine": "claude_code_subagent",
-    "ocr_timestamp": "2026-05-15T00:00:00"
+    "link_ability": [
+      {
+        "name": "第08MS小隊",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "アイナ・サハリン",
+    "model": "",
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "C",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "ザク・マシンガン",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ヒート・ホーク",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "転化[妨害]",
+      "activation": "任意発動",
+      "target": "範囲(敵)",
+      "range": 0,
+      "cost": 4,
+      "description": "一定時間、自身を中心とした範囲内の敵ユニットを弱体化する。使用回数に応じて、弱体化効果、範囲が変わる。[1回:遠/近攻撃力カダウン][2回:被ダメージアップ][3回以上:遠/近攻撃力カダウン&被ダメージアップ]"
+    },
+    "special_attack": {
+      "name": "ザク・マシンガン撃射",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3200,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
+  },
+  "ocr_engine": "claude_code_subagent",
+  "ocr_timestamp": "2026-05-15T00:00:00"
 }

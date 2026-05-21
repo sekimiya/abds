@@ -5,26 +5,39 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX04-038.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX04-038_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "LX04-038",
     "type": "MS",
-    "card_label": {
-      "class": "遠距離",
-      "cost_label": "コスト5"
-    },
-    "name": "ジン（ミゲル・アイマン専用機）",
-    "model": "ZGMF-1017 MIGUEL'S GINN",
+    "name": "ジン(ミゲル・アイマン専用機)",
     "cost": 5,
-    "category": null,
+    "rarity": "R",
+    "category": "遠距離",
     "affiliation": "ザフト",
-    "pilot": "ミゲル・アイマン",
+    "illustrator": "haru",
     "stats": {
-      "height": "21.43m",
-      "weight": "78.5t",
       "mobility": 130,
       "ranged_attack": 240,
       "melee_attack": 120,
       "hp": 310
     },
+    "link_ability": [
+      {
+        "name": "ガンダムSEED",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "的確な一撃",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][遠距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "ミゲル・アイマン",
+    "model": "ZGMF-1017 MIGUEL'S GINN",
     "terrain_compatibility": {
       "ground": "A",
       "space": "A",
@@ -51,18 +64,6 @@
       "cost": null,
       "description": "20秒間、自身を中心とした大範囲内の敵ユニットの[近距離攻撃力]を小ダウンする。"
     },
-    "link_ability": [
-      {
-        "name": "ガンダムSEED",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "的確な一撃",
-        "condition": "デッキに4枚以上",
-        "effect": "[機動力][遠距離攻撃力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "バルルス改・特火重粒子砲撃射",
       "target": "単体(敵)",
@@ -70,11 +71,11 @@
       "sp_cost": 2,
       "power": 3200,
       "description": "敵単体に射撃攻撃でダメージを与える。",
-      "united_sp": null
-    },
-    "rarity": "R",
-    "illustrator": "haru",
-    "raw": "遠距離　コスト5　MS\nZGMF-1017 MIGUEL'S GINN\nジン（ミゲル・アイマン専用機）\n\n全高　21.43m\n本体重量　78.5t　　地上 A　宇宙 A　砂漠 B　水中 C\n所属　ザフト　　　　　　　　　　　　機動力　130\nパイロット　ミゲル・アイマン　　　　遠距離攻撃　240\n　　　　　　　　　　　　　　　　　近距離攻撃　120\n　　　　　　　　　　　　　　　　　HP　310\n\nWEAPON\nMAIN　バルルス改・特火重粒子砲　射程 4　遠距離\nSUB　76mm重突撃機銃　射程 2　近距離\n\nMS ABILITY\n妨害[近距離]\n出撃時発動　範囲（敵）　射程 ー　コスト ー\n\n20秒間、自身を中心とした大範囲内の敵ユニットの[近距離攻撃力]を小ダウンする。\n\nLINK ABILITY\nガンダムSEED　デッキに3枚以上\n[機動力]小アップ\n\n的確な一撃　デッキに4枚以上\n[機動力][遠距離攻撃力]小アップ\n\nSPECIAL ATTACK\nバルルス改・特火重粒子砲撃射\n単体（敵）　射程 4\nSPコスト 2　威力 3200\n敵単体に射撃攻撃でダメージを与える。\n\nillust_haru\n©創通・サンライズ\nBANDAI MADE IN JAPAN　ARSENAL BASE　LX04-038　R"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "LINXTAGE_SEASON_04_LX04-038_ジン(ミゲル・アイマン専用機)_ocr_raw.json",
   "ocr_timestamp": "2026-03-07T19:01:29.002406",

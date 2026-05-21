@@ -5,26 +5,39 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ04-012.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ04-012_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "FQ04-012",
     "type": "MS",
-    "card_label": {
-      "class": "機動",
-      "cost_label": "コスト5"
-    },
     "name": "ガンダムアストレイ ブルーフレーム セカンドリバイ",
-    "model": "MBF-P03R GUNDAM ASTRAY BLUE FRAME SECOND REVISE",
     "cost": 5,
+    "rarity": "C",
     "category": "機動",
     "affiliation": "サーペントテール",
-    "pilot": "叢雲劾",
+    "illustrator": "yuuiguchi",
     "stats": {
-      "height": "18.32m",
-      "weight": "62.7t",
       "mobility": 280,
       "ranged_attack": 90,
       "melee_attack": 370,
       "hp": 360
     },
+    "link_ability": [
+      {
+        "name": "SEED ASTRAY",
+        "condition": "デッキに2枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "肉薄する戦い",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "叢雲劾",
+    "model": "MBF-P03R GUNDAM ASTRAY BLUE FRAME SECOND REVISE",
     "terrain_compatibility": {
       "ground": "A",
       "space": "S",
@@ -51,18 +64,6 @@
       "cost": 3,
       "description": "ロックオン中の敵ユニットに単体攻撃を行いダメージを与え、一定時間スタンさせる。"
     },
-    "link_ability": [
-      {
-        "name": "SEED ASTRAY",
-        "condition": "デッキに2枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      },
-      {
-        "name": "肉薄する戦い",
-        "condition": "デッキに4枚以上",
-        "effect": "[機動力][近距離攻撃力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "ソードフォーム連撃",
       "target": "単体(敵)",
@@ -70,11 +71,11 @@
       "sp_cost": 2,
       "power": 3300,
       "description": "敵単体に格闘攻撃でダメージを与える。",
-      "united_sp": null
-    },
-    "rarity": "C",
-    "illustrator": "yuuiguchi",
-    "raw": "機動　コスト5　MS\n\nMBF-P03R GUNDAM ASTRAY BLUE FRAME SECOND REVISE\n\nガンダムアストレイ ブルーフレーム セカンドリバイ\n\n頭頂高　18.32m\n本体重量　62.7t\n所属　サーペントテール\nパイロット　叢雲劾\n\n地上 A　宇宙 S　砂漠 C　水中 C\n\n機動力 280\n遠距離攻撃 90\n近距離攻撃 370\nHP 360\n\nWEAPON\nMAIN ソードアーム　射程 1　近距離\nSUB ガトリングアーム　射程 3　遠距離\n\nLINK ABILITY\nSEED ASTRAY　デッキに2枚以上\n[遠距離攻撃力][近距離攻撃力]\n小アップ\n\n肉薄する戦い　デッキに4枚以上\n[機動力][近距離攻撃力]小アップ\n\nMS ABILITY\n縛撃\n任意発動　単体(敵)　射程 1　コスト 3\nロックオン中の敵ユニットに単体攻撃を\n行いダメージを与え、一定時間スタンさ\nせる。\n\nSPECIAL ATTACK　　UNITED SP\nソードフォーム連撃　　ー\n連携 ー　　連携 ー\n連携 ー　　連携 ー\n単体(敵)　射程 2　　ー 射程 ー\nSPコスト 2　威力　3300 / ー\n敵単体に格闘攻撃でダメージを与える。\n/ ー\n\nIMPACT AREA\n[アイコン:緑丸 中央]\n[アイコン:緑丸 中央下]\n[アイコン:三角 中央下端]\n\nillust yuuiguchi\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nFQ04-012　C"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "FORSQUAD_SEASON_04_FQ04-012_ガンダムアストレイ_ブルーフレーム_セカンドリバイ_ocr_raw.json",
   "ocr_timestamp": "2026-02-24T18:20:11.271412",

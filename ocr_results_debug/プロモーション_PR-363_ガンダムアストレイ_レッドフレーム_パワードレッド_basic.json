@@ -5,26 +5,39 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-363.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-363_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "PR-363",
     "type": "MS",
-    "card_label": {
-      "class": "近距離",
-      "cost_label": "コスト5"
-    },
-    "name": "ガンダムアストレイレッドフレーム パワードレッド",
-    "model": "MBF-P02",
+    "name": "ガンダムアストレイ レッドフレーム パワードレッド",
     "cost": 5,
-    "category": "SEED ASTRAY",
+    "rarity": "PR",
+    "category": "近距離",
     "affiliation": "ジャンク屋組合",
-    "pilot": "ロウ・ギュール",
+    "illustrator": "Kouichi Tokita",
     "stats": {
-      "height": null,
-      "weight": null,
       "mobility": 210,
       "ranged_attack": 40,
       "melee_attack": 400,
       "hp": 400
     },
+    "link_ability": [
+      {
+        "name": "SEED ASTRAY",
+        "condition": "デッキに2枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "肉薄する戦い",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "ロウ・ギュール",
+    "model": "MBF-P02",
     "terrain_compatibility": {
       "ground": "S",
       "space": "A",
@@ -51,18 +64,6 @@
       "cost": null,
       "description": "自身のHPが1以上で一定割合以下になると、一定時間、撃破されなくなり[遠／近攻撃力]を中アップする。出撃時1度のみ発動。"
     },
-    "link_ability": [
-      {
-        "name": "SEED ASTRAY",
-        "condition": "デッキに2枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      },
-      {
-        "name": "肉薄する戦い",
-        "condition": "デッキに4枚以上",
-        "effect": "[機動力][近距離攻撃力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "150ガーベラ・ストレート",
       "target": "貫通(敵)",
@@ -70,11 +71,11 @@
       "sp_cost": 2,
       "power": 3100,
       "description": "射線上の敵に貫通格闘攻撃でダメージを与え、以後武装が150ガーベラになり、通常攻撃が自身を中心とした範囲攻撃に変化する。戦術技後は能力が上昇。自身が撤退するまで効果は持続する。",
-      "united_sp": null
-    },
-    "rarity": "PR",
-    "illustrator": "Kouichi Tokita",
-    "raw": "近距離　コスト5　MS\n\nMBF-P02 GUNDAM ASTRAY RED FRAME POWERED RED\nガンダムアストレイレッドフレーム パワードレッド\n\n頭頂高　—\n本体重量　—\n地上　S　宇宙　A　砂漠　B　水中　C\n所属　ジャンク屋組合\nパイロット　ロウ・ギュール\n機動力　210\n遠距離攻撃　40\n近距離攻撃　400\nHP　400\n\nWEAPON\nMAIN　ガーベラ・ストレート　射程 1　近距離\nSUB　イーゲルシュテルン　射程 2　遠距離\n\nMS ABILITY\n奮起\n出撃時発動　自分　射程 —　コスト —\n自身のHPが1以上で一定割合以下になると、一定時間、撃破されなくなり[遠／近攻撃力]を中アップする。出撃時1度のみ発動。\n\nLINK ABILITY\nSEED ASTRAY　デッキに2枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\n肉薄する戦い　デッキに4枚以上\n[機動力][近距離攻撃力]小アップ\n\nSPECIAL ATTACK　UNITED SP\n150ガーベラ・ストレート　—\n連携 —　連携 —\n連携 —　連携 —\n貫通(敵)　射程 3　—　射程 —\nSPコスト 2　威力 3100 / —\n\n射線上の敵に貫通格闘攻撃でダメージを与え、以後武装が150ガーベラになり、通常攻撃が自身を中心とした範囲攻撃に変化する。戦術技後は能力が上昇。自身が撤退するまで効果は持続する。/ —\n\nIMPACT AREA\n\nillust　Kouichi Tokita\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN　ARSENAL BASE　PR-363　PR"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "プロモーション_PR-363_ガンダムアストレイ_レッドフレーム_パワードレッド_ocr_raw.json",
   "ocr_timestamp": "2026-03-03T19:13:24.445165",

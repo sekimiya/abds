@@ -5,26 +5,39 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX04-036.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX04-036_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "LX04-036",
     "type": "MS",
-    "card_label": {
-      "class": "機動",
-      "cost_label": "コスト4"
-    },
     "name": "ストライクルージュ",
-    "model": "MBF-02 STRIKE ROUGE",
     "cost": 4,
-    "category": "ガンダムSEED",
+    "rarity": "R",
+    "category": "機動",
     "affiliation": "オーブ",
-    "pilot": "カガリ・ユラ・アスハ",
+    "illustrator": "akamiho",
     "stats": {
-      "height": "17.72m",
-      "weight": "85.1t",
       "mobility": 240,
       "ranged_attack": 90,
       "melee_attack": 260,
       "hp": 210
     },
+    "link_ability": [
+      {
+        "name": "ガンダムSEED",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "間合いを詰めた接近戦",
+        "condition": "デッキに2枚以上",
+        "effect": "[近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "カガリ・ユラ・アスハ",
+    "model": "MBF-02 STRIKE ROUGE",
     "terrain_compatibility": {
       "ground": "A",
       "space": "S",
@@ -51,18 +64,6 @@
       "cost": 4,
       "description": "一定時間、回避時に回避攻撃が発生する。機動力が高い程、回避の発生率が上昇する。"
     },
-    "link_ability": [
-      {
-        "name": "ガンダムSEED",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "間合いを詰めた接近戦",
-        "condition": "デッキに2枚以上",
-        "effect": "[近距離攻撃力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "ビームサーベル強撃",
       "target": "単体(敵)",
@@ -70,11 +71,11 @@
       "sp_cost": 2,
       "power": 3300,
       "description": "敵単体に格闘攻撃でダメージを与える。",
-      "united_sp": null
-    },
-    "rarity": "R",
-    "illustrator": "akamiho",
-    "raw": "機動　コスト4　MS\nMBF-02 STRIKE ROUGE\nストライクルージュ\n\n全高　17.72m\n本体重量　85.1t　　地上 A　宇宙 S　砂漠 C　水中 B\n所属　オーブ　　　　　　　　　　　機動力 240\nパイロット　カガリ・ユラ・アスハ　遠距離攻撃 90\n　　　　　　　　　　　　　　　　　近距離攻撃 260\n　　　　　　　　　　　　　　　　　HP 210\n\nWEAPON\nMAIN　ビームサーベル　射程 1　近距離\nSUB　高エネルギービームライフル　射程 3　遠距離\n\nMS ABILITY\n迅舞\n任意発動　自分　射程 ー　コスト 4\n一定時間、回避時に回避攻撃が発生する。機動力が高い程、回避の発生率が上昇する。\n\nLINK ABILITY\nガンダムSEED　デッキに3枚以上\n[機動力]小アップ\n\n間合いを詰めた接近戦　デッキに2枚以上\n[近距離攻撃力]小アップ\n\nSPECIAL ATTACK\nビームサーベル強撃\n単体(敵)　射程 2\nSPコスト 2　威力 3300\n敵単体に格闘攻撃でダメージを与える。\n\nillust. akamiho\n©創通・サンライズ\nBANDAI MADE IN JAPAN　機動戦士ガンダム ARSENAL BASE©\nLX04-036　R"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "LINXTAGE_SEASON_04_LX04-036_ストライクルージュ_ocr_raw.json",
   "ocr_timestamp": "2026-03-07T18:59:53.537646",

@@ -5,31 +5,44 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB02-021.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB02-021_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "AB02-021",
     "type": "MS",
-    "card_label": {
-      "class": "遠距離",
-      "cost_label": "コスト13"
-    },
     "name": "サイコ・ガンダム",
-    "model": "MRX-009 PSYCHO GUNDAM",
     "cost": 13,
+    "rarity": "P",
     "category": "遠距離",
     "affiliation": "ティターンズ",
-    "pilot": "フォウ・ムラサメ",
+    "illustrator": "Naochika Morishita",
     "stats": {
-      "height": "40.0m",
-      "weight": "214.1t",
       "mobility": 200,
       "ranged_attack": 450,
       "melee_attack": 0,
       "hp": 570
     },
+    "link_ability": [
+      {
+        "name": "機動戦士Zガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "可変機ファイター",
+        "condition": "デッキに3枚以上",
+        "effect": "専用作戦カードが使用可能",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "フォウ・ムラサメ",
+    "model": "MRX-009 PSYCHO GUNDAM",
     "terrain_compatibility": {
       "ground": "A",
       "space": "A",
       "desert": "C",
-      "water": null
+      "water": ""
     },
     "weapon": {
       "main": {
@@ -38,9 +51,9 @@
         "type": "遠距離"
       },
       "sub": {
-        "name": null,
+        "name": "",
         "range": null,
-        "type": null
+        "type": ""
       }
     },
     "ms_ability": {
@@ -51,18 +64,6 @@
       "cost": null,
       "description": "自身の受けるダメージを少し軽減する。自身が撤退するまで効果は持続する。"
     },
-    "link_ability": [
-      {
-        "name": "機動戦士Zガンダム",
-        "condition": "デッキに3枚以上",
-        "effect": "[遠距離攻撃力]小アップ"
-      },
-      {
-        "name": "可変機ファイター",
-        "condition": "デッキに3枚以上",
-        "effect": "専用作戦カードが使用可能"
-      }
-    ],
     "special_attack": {
       "name": "一斉掃射(変形)",
       "target": "範囲(敵)",
@@ -70,11 +71,11 @@
       "sp_cost": 3,
       "power": 3700,
       "description": "MS形態に変形、範囲内の敵にダメージを与える。変形後は能力が上昇。自身が撤退するまで効果は持続する。",
-      "united_sp": null
-    },
-    "rarity": "P",
-    "illustrator": "Naochika Morishita",
-    "raw": "MS\n\n遠距離 コスト13\n\nMRX-009 PSYCHO GUNDAM\nサイコ・ガンダム\n\n全高 40.0m\n本体重量 214.1t\n所属 ティターンズ\nパイロット フォウ・ムラサメ\n\n地上 A 宇宙 A 砂漠 C\n機動力 200\n遠距離攻撃 450\n近距離攻撃 0\nHP 570\n\n[アイコン:機動戦士Zガンダム]\n\nWEAPON\nMAIN 3連装拡散メガ粒子砲 射程 2 遠距離\nSUB ― 射程 ―\n\nLINK ABILITY\n機動戦士Zガンダム デッキに3枚以上\n[遠距離攻撃力] 小アップ\n\n可変機ファイター デッキに3枚以上\n専用作戦カードが使用可能\n\nMS ABILITY\n鉄壁\n出撃時発動 自分 射程 ― コスト ―\n\n自身の受けるダメージを少し軽減する。\n自身が撤退するまで効果は持続する。\n\nSPECIAL ATTACK\n一斉掃射(変形)\n範囲(敵) 射程 3\nSPコスト 3 威力 3700\n\nMS形態に変形、範囲内の敵にダメージ\nを与える。変形後は能力が上昇。自身が\n撤退するまで効果は持続する。\n\nIMPACT AREA\n[アイコン:扇形の射程範囲図、前方広角]\n\nillust Naochika Morishita\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n\n[アイコン:機動戦士ガンダム ARSENAL BASE]\n\nAB02-021 P"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "SEASON_02_AB02-021_サイコ・ガンダム_ocr_raw.json",
   "ocr_timestamp": "2026-02-23T15:08:35.132235",

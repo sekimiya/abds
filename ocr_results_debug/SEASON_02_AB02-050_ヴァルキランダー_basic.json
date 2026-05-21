@@ -5,31 +5,44 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB02-050.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB02-050_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "AB02-050",
     "type": "MS",
-    "card_label": {
-      "class": "機動",
-      "cost_label": "コスト3"
-    },
     "name": "ヴァルキランダー",
-    "model": "VALKYLANDER",
     "cost": 3,
+    "rarity": "C",
     "category": "機動",
     "affiliation": "BUILD DiVERS",
-    "pilot": "パルヴィーズ",
+    "illustrator": "Moyasi",
     "stats": {
-      "height": "12.0m",
-      "weight": "29.2t",
       "mobility": 210,
       "ranged_attack": 130,
       "melee_attack": 160,
       "hp": 130
     },
+    "link_ability": [
+      {
+        "name": "Re:RISE",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "可変機ファイター",
+        "condition": "デッキに3枚以上",
+        "effect": "専用作戦カードが使用可能",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "パルヴィーズ",
+    "model": "VALKYLANDER",
     "terrain_compatibility": {
       "ground": "S",
       "space": "A",
       "desert": "B",
-      "water": null
+      "water": ""
     },
     "weapon": {
       "main": {
@@ -51,18 +64,6 @@
       "cost": 4,
       "description": "30秒間、自身を中心とした大範囲内の味方ユニットの[機動力]を小アップする。"
     },
-    "link_ability": [
-      {
-        "name": "Re:RISE",
-        "condition": "デッキに3枚以上",
-        "effect": "[遠距離攻撃力]小アップ"
-      },
-      {
-        "name": "可変機ファイター",
-        "condition": "デッキに3枚以上",
-        "effect": "専用作戦カードが使用可能"
-      }
-    ],
     "special_attack": {
       "name": "GNガンソード強撃",
       "target": "単体(敵)",
@@ -70,11 +71,11 @@
       "sp_cost": 2,
       "power": 3200,
       "description": "敵単体に格闘攻撃でダメージを与える。",
-      "united_sp": null
-    },
-    "rarity": "C",
-    "illustrator": "Moyasi",
-    "raw": "MS\n\n機動 コスト3\n機竜化士 VALKYLANDER\nヴァルキランダー\n\n全高 12.0m\n本体重量 29.2t\n所属 BUILD DiVERS\nパイロット パルヴィーズ\n\n地上 S 宇宙 A 砂漠 B\n機動力 210\n遠距離攻撃 130\n近距離攻撃 160\nHP 130\n\nWEAPON\n\nMAIN GNガンソード 射程 1 近距離\nSUB GNフレアーデバイス 射程 4 遠距離\n\nLINK ABILITY\n\nRe:RISE デッキに3枚以上\n[遠距離攻撃力] 小アップ\n\n可変機ファイター デッキに3枚以上\n専用作戦カードが使用可能\n\nMS ABILITY\n\n鼓舞[機動]\n任意発動 範囲(味方) 射程 — コスト 4\n\n30秒間、自身を中心とした大範囲内の味方ユニットの[機動力]を小アップする。\n\nSPECIAL ATTACK\n\nGNガンソード強撃\n単体(敵) 射程 2\nSPコスト 2 威力 3200\n\n敵単体に格闘攻撃でダメージを与える。\n\nIMPACT AREA\n\n[アイコン:黄色円形範囲、中央やや上に緑丸、下部に三角マーカー]\n\nillust Moyasi\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nAB02-050 C"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "SEASON_02_AB02-050_ヴァルキランダー_ocr_raw.json",
   "ocr_timestamp": "2026-02-23T15:10:31.632464",

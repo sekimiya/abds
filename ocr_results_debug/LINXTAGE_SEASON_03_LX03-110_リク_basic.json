@@ -5,44 +5,50 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX03-110.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX03-110_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "LX03-110",
     "type": "PL",
-    "card_label": {
-      "class": "殲滅",
-      "cost_label": "コスト2"
-    },
     "name": "リク",
     "cost": 2,
-    "category": "ビルドダイバーズ",
+    "rarity": "R",
+    "category": "殲滅",
     "affiliation": "ビルドダイバーズ",
+    "illustrator": "",
     "stats": {
       "mobility": 150,
       "ranged_attack": 150,
       "melee_attack": 70,
       "hp": 170
     },
+    "link_ability": [
+      {
+        "name": "ビルドダイバーズ",
+        "condition": "デッキに3枚以上",
+        "effect": "[HP]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "",
+    "physical": null,
+    "units": null,
     "pilot_skill": {
       "name": "逆境の奮戦",
       "trigger": "複数の敵ユニットにロックオンされている時",
       "effect": "20秒間、自身の[遠距離攻撃力]を中アップする。",
       "has_sq_skill": false,
-      "sq_skill_details": null
-    },
-    "link_ability": [
-      {
-        "name": "ビルドダイバーズ",
-        "condition": "デッキに3枚以上",
-        "effect": "[HP]小アップ"
-      },
-      {
-        "name": "多彩な戦術",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      }
-    ],
-    "rarity": "R",
-    "illustrator": null,
-    "raw": "殲滅　コスト2\n\nリク\nRIKU\n\n身長　―\n年齢　14歳\n所属　ビルドダイバーズ\n搭乗機体　ガンダムダブルオーダイバー\n\nPL SKILL\n逆境の奮戦\n複数の敵ユニットにロックオンされている時\n20秒間、自身の[遠距離攻撃力]を中アップする。\n\nLINK ABILITY\nビルドダイバーズ　デッキに3枚以上\n[HP]小アップ\n\n多彩な戦術　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\n機動力　150\n遠距離攻撃　150\n近距離攻撃　70\nHP　170\n\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE ®\nLX03-110　R"
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_raw_file": "LINXTAGE_SEASON_03_LX03-110_リク_ocr_raw.json",
   "ocr_timestamp": "2026-03-07T18:04:52.414012",

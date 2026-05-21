@@ -5,53 +5,56 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP07-017.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP07-017_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "BP07-017",
     "type": "PL",
-    "card_label": {
-      "class": "防衛",
-      "cost_label": "コスト1"
-    },
     "name": "レイ・ザ・バレル",
-    "english_name": "REY ZA BURREL",
     "cost": 1,
+    "rarity": "R",
     "category": "防衛",
     "affiliation": "ザフト",
-    "physical": {
-      "height": "168cm",
-      "age": null
-    },
-    "units": [
-      "レジェンドガンダム",
-      "ブレイズザクファントム(レイ・ザ・バレル専用機)"
-    ],
+    "illustrator": "",
     "stats": {
       "mobility": 180,
       "ranged_attack": 180,
       "melee_attack": 50,
       "hp": 250
     },
-    "pilot_skill": {
-      "name": "電光石火の射撃術",
-      "activation": "EBLv.2に上昇時",
-      "target": null,
-      "range": null,
-      "cost": null,
-      "description": "30秒間、自身の[機動力][遠距離攻撃力]をアップする。"
-    },
     "link_ability": [
       {
         "name": "傍流する覚醒の共振",
         "condition": "デッキに3枚以上",
-        "effect": "ECHOES BEAT Lv.が表示される。味方ユニットが戦術技を発動するとEBLv.が上がる。[遠距離攻撃力][近距離攻撃力]小アップ"
+        "effect": "ECHOES BEAT Lv.が表示される。味方ユニットが戦術技を発動するとEBLv.が上がる。[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
       },
       {
         "name": "戦況を変える力",
         "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
       }
     ],
-    "rarity": "R",
-    "raw": "PL\n防衛 コスト1\nレイ・ザ・バレル\nREY ZA BURREL\n身長 168cm\n年齢 ー\n所属 ザフト\n搭乗機体 レジェンドガンダム、ブレイズザクファントム(レイ・ザ・バレル専用機)\nPL SKILL\n電光石火の射撃術\nEBLv.2に上昇時\n30秒間、自身の[機動力][遠距離攻撃力]をアップする。\nLINK ABILITY\n傍流する覚醒の共振 デッキに3枚以上\nECHOES BEAT Lv.が表示される。味方ユニットが戦術技を発動するとEBLv.が上がる。\n[遠距離攻撃力][近距離攻撃力]小アップ\n戦況を変える力 デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n機動力 180\n遠距離攻撃 180\n近距離攻撃 50\nHP 250\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nBP07-017 R"
+    "english_name": "REY ZA BURREL",
+    "physical": {
+      "height": "168cm",
+      "age": ""
+    },
+    "units": [
+      "レジェンドガンダム",
+      "ブレイズザクファントム(レイ・ザ・バレル専用機)"
+    ],
+    "pilot_skill": {
+      "name": "電光石火の射撃術",
+      "trigger": "EBLv.2に上昇時",
+      "effect": "30秒間、自身の[機動力][遠距離攻撃力]をアップする。",
+      "has_sq_skill": false,
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": 2,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_timestamp": "2026-04-16T11:50:00.000000",
   "ocr_type": "basic",

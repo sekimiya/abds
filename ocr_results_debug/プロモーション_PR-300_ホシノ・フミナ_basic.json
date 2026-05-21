@@ -5,44 +5,50 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-300.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-300_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "PR-300",
     "type": "PL",
-    "card_label": {
-      "class": "殲滅",
-      "cost_label": "コスト2"
-    },
     "name": "ホシノ・フミナ",
     "cost": 2,
-    "category": "トライ・ファイターズ",
+    "rarity": "PR",
+    "category": "殲滅",
     "affiliation": "トライ・ファイターズ",
+    "illustrator": "Akinori Takaba (STUDIO GS)",
     "stats": {
       "mobility": 190,
       "ranged_attack": 40,
       "melee_attack": 240,
       "hp": 320
     },
+    "link_ability": [
+      {
+        "name": "トライ",
+        "condition": "デッキに3枚以上",
+        "effect": "[HP]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "圧倒する殲滅力",
+        "condition": "デッキに殲滅が3枚以上",
+        "effect": "殲滅タイプに対してダメージ中アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "",
+    "physical": null,
+    "units": null,
     "pilot_skill": {
       "name": "仲間との絆",
       "trigger": "MSアビリティ発動時",
       "effect": "20秒間、出撃中の全味方ユニットの[機動力][遠距離攻撃力][近距離攻撃力]をアップする。",
       "has_sq_skill": false,
-      "sq_skill_details": null
-    },
-    "link_ability": [
-      {
-        "name": "トライ",
-        "condition": "デッキに3枚以上",
-        "effect": "[HP]小アップ"
-      },
-      {
-        "name": "圧倒する殲滅力",
-        "condition": "デッキに殲滅が3枚以上",
-        "effect": "殲滅タイプに対してダメージ中アップ"
-      }
-    ],
-    "rarity": "PR",
-    "illustrator": "Akinori Takaba (STUDIO GS)",
-    "raw": "殲滅　コスト2　PL\n\nホシノ・フミナ\nFUMINA HOSHINO\n\n身長　ー\n年齢　15歳\n所属　トライ・ファイターズ\n搭乗機体　ウイニングガンダム\n\nPL SKILL\n仲間との絆\nMSアビリティ発動時\n20秒間、出撃中の全味方ユニットの[機動力][遠距離攻撃力][近距離攻撃力]をアップする。\n\nLINK ABILITY\nトライ　デッキに3枚以上\n[HP]小アップ\n\n圧倒する殲滅力　デッキに殲滅が3枚以上\n殲滅タイプに対してダメージ中アップ\n\n機動力　190\n遠距離攻撃　40\n近距離攻撃　240\nHP　320\n\nillust　Akinori Takaba (STUDIO GS)\n©創通・サンライズ\nBANDAI MADE IN JAPAN\nARSENAL BASE®\nNOT FOR SALE\nPR-300　PR"
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_raw_file": "プロモーション_PR-300_ホシノ・フミナ_ocr_raw.json",
   "ocr_timestamp": "2026-03-04T03:21:35.533273",

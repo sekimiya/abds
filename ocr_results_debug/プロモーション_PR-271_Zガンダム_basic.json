@@ -5,26 +5,39 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-271.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-271_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "PR-271",
     "type": "MS",
-    "card_label": {
-      "class": "機動",
-      "cost_label": "コスト3"
-    },
     "name": "Zガンダム",
-    "model": "MSZ-006 Z GUNDAM",
     "cost": 3,
-    "category": "機動戦士ガンダムZZ",
+    "rarity": "PR",
+    "category": "機動",
     "affiliation": "エゥーゴ",
-    "pilot": "ジュドー・アーシタ、ルー・ルカ",
+    "illustrator": "Kumagoro",
     "stats": {
-      "height": "19.85m",
-      "weight": "28.7t",
       "mobility": 260,
       "ranged_attack": 310,
       "melee_attack": 80,
       "hp": 300
     },
+    "link_ability": [
+      {
+        "name": "機動戦士ガンダムZZ",
+        "condition": "デッキに3枚以上",
+        "effect": "[HP]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "的確な一撃",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][遠距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "ジュドー・アーシタ、ルー・ルカ",
+    "model": "MSZ-006 Z GUNDAM",
     "terrain_compatibility": {
       "ground": "A",
       "space": "S",
@@ -51,18 +64,6 @@
       "cost": 2,
       "description": "自身の周囲にユニット扱いでロックオンされるデコイを3体配置する。※上限6体まで。効果の対象やユニット数には含まれない。"
     },
-    "link_ability": [
-      {
-        "name": "機動戦士ガンダムZZ",
-        "condition": "デッキに3枚以上",
-        "effect": "[HP]小アップ"
-      },
-      {
-        "name": "的確な一撃",
-        "condition": "デッキに4枚以上",
-        "effect": "[機動力][遠距離攻撃力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "ビーム・ライフル撃射",
       "target": "単体(敵)",
@@ -70,11 +71,11 @@
       "sp_cost": 2,
       "power": 3300,
       "description": "敵単体に射撃攻撃でダメージを与える。",
-      "united_sp": null
-    },
-    "rarity": "PR",
-    "illustrator": "Kumagoro",
-    "raw": "機動　コスト3　MS\nMSZ-006 Z GUNDAM\nZガンダム\n機動戦士ガンダムZZ（ロゴ）\n\n頭頂高　19.85m\n本体重量　28.7t\n所属　エゥーゴ\nパイロット　ジュドー・アーシタ、ルー・ルカ\n\n地上 A　宇宙 S　砂漠 C　水中 C\n機動力　260\n遠距離攻撃　310\n近距離攻撃　80\nHP　300\n\nWEAPON\nMAIN　ビーム・ライフル　射程 3　遠距離\nSUB　ビーム・サーベル　射程 1　近距離\n\nMS ABILITY\nデコイ[ユニット]\n任意発動　特殊(自分)　射程 ー　コスト 2\n自身の周囲にユニット扱いでロックオンされるデコイを3体配置する。※上限6体まで。効果の対象やユニット数には含まれない。\n\nLINK ABILITY\n機動戦士ガンダムZZ　デッキに3枚以上\n[HP]小アップ\n\n的確な一撃　デッキに4枚以上\n[機動力][遠距離攻撃力]小アップ\n\nSPECIAL ATTACK　UNITED SP\nビーム・ライフル撃射　ー\n連携 ー　連携 ー\n連携 ー　連携 ー\n単体(敵)　射程 3　ー　射程 ー\nSPコスト 2　威力　3300 / ー\n敵単体に射撃攻撃でダメージを与える。\n/ ー\n\nillust. Kumagoro\n©創通・サンライズ\nBANDAI MADE IN JAPAN\nPR-271　PR"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "プロモーション_PR-271_Zガンダム_ocr_raw.json",
   "ocr_timestamp": "2026-03-04T02:59:29.451585",

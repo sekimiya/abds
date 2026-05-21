@@ -5,26 +5,39 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX04-047.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX04-047_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "LX04-047",
     "type": "MS",
-    "card_label": {
-      "class": "近距離",
-      "cost_label": "コスト7"
-    },
     "name": "ガンダムアストレイ ブルーフレーム セカンドL",
-    "model": "MBF-P03 second L GUNDAM ASTRAY BLUE FRAME SECOND L",
     "cost": 7,
-    "category": "ガンダムSEED ASTRAY",
+    "rarity": "U",
+    "category": "近距離",
     "affiliation": "サーペントテール",
-    "pilot": "叢雲劾",
+    "illustrator": "Gas1",
     "stats": {
-      "height": "17.78m",
-      "weight": "64.4t",
       "mobility": 330,
       "ranged_attack": 200,
       "melee_attack": 600,
       "hp": 570
     },
+    "link_ability": [
+      {
+        "name": "SEED ASTRAY",
+        "condition": "デッキに2枚以上",
+        "effect": "[近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "叢雲劾",
+    "model": "MBF-P03 second L GUNDAM ASTRAY BLUE FRAME SECOND L",
     "terrain_compatibility": {
       "ground": "A",
       "space": "S",
@@ -51,18 +64,6 @@
       "cost": 4,
       "description": "ロックオン中の敵に単体攻撃でダメージを与える。この攻撃で敵ユニットを撃破した場合、敵ユニットの修理時間を延長させる。"
     },
-    "link_ability": [
-      {
-        "name": "SEED ASTRAY",
-        "condition": "デッキに2枚以上",
-        "effect": "[近距離攻撃力]小アップ"
-      },
-      {
-        "name": "多彩な戦術",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "タクティカルアームズ(ソード) 強襲",
       "target": "単体(敵)",
@@ -70,11 +71,11 @@
       "sp_cost": 2,
       "power": 3800,
       "description": "敵単体に格闘攻撃でダメージを与える。",
-      "united_sp": null
-    },
-    "rarity": "U",
-    "illustrator": "Gas1",
-    "raw": "近距離　コスト7　MS\nMBF-P03 second L GUNDAM ASTRAY BLUE FRAME SECOND L\nガンダムアストレイ ブルーフレーム セカンドL\n\n全高　17.78m\n本体重量　64.4t\n所属　サーペントテール\nパイロット　叢雲劾\n\n地上 A　宇宙 S　砂漠 C　水中 C\n機動力 330\n遠距離攻撃 200\n近距離攻撃 600\nHP 570\n\nWEAPON\nMAIN　タクティカルアームズ(ソード)　射程 1　近距離\nSUB　ビームライフル　射程 3　遠距離\n\nMS ABILITY\n撃滅\n任意発動　単体(敵)　射程 2　コスト 4\nロックオン中の敵に単体攻撃でダメージを与える。この攻撃で敵ユニットを撃破した場合、敵ユニットの修理時間を延長させる。\n\nLINK ABILITY\nSEED ASTRAY　デッキに2枚以上\n[近距離攻撃力]小アップ\n\n多彩な戦術　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nSPECIAL ATTACK\nタクティカルアームズ(ソード) 強襲\n単体(敵)　射程 2\nSPコスト 2　威力 3800\n敵単体に格闘攻撃でダメージを与える。\n\nillust Gas1\n©創通・サンライズ\nBANDAI MADE IN JAPAN\nLX04-047　U"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "LINXTAGE_SEASON_04_LX04-047_ガンダムアストレイ_ブルーフレーム_セカンドL_ocr_raw.json",
   "ocr_timestamp": "2026-03-07T19:07:52.734264",

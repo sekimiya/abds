@@ -5,44 +5,50 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-125.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-125_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "PR-125",
     "type": "PL",
-    "card_label": {
-      "class": "制圧",
-      "cost_label": "コスト3"
-    },
     "name": "カザミ",
     "cost": 3,
-    "category": "Re:RISE",
+    "rarity": "PR",
+    "category": "制圧",
     "affiliation": "BUILD DiVERS",
+    "illustrator": "",
     "stats": {
       "mobility": 200,
       "ranged_attack": 280,
       "melee_attack": 70,
       "hp": 220
     },
+    "link_ability": [
+      {
+        "name": "Re:RISE",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "",
+    "physical": null,
+    "units": null,
     "pilot_skill": {
       "name": "猛る闘志",
       "trigger": "出撃時",
       "effect": "40秒、自身の[SP威力]を中アップする。",
       "has_sq_skill": false,
-      "sq_skill_details": null
-    },
-    "link_ability": [
-      {
-        "name": "Re:RISE",
-        "condition": "デッキに3枚以上",
-        "effect": "[遠距離攻撃力]小アップ"
-      },
-      {
-        "name": "多彩な戦術",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      }
-    ],
-    "rarity": "PR",
-    "illustrator": null,
-    "raw": "制圧　コスト3　PL\n\nカザミ\nKAZAMI\n\n身長　ー\n年齢　17歳\n所属　BUILD DiVERS\n搭乗機体　ガンダムジャスティスナイト\n\nPL SKILL\n猛る闘志\n出撃時\n40秒、自身の[SP威力]を中アップする。\n\nLINK ABILITY\nRe:RISE　デッキに3枚以上\n[遠距離攻撃力]小アップ\n\n多彩な戦術　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\n機動力　200\n遠距離攻撃　280\n近距離攻撃　70\nHP　220\n\n©創通・サンライズ\nBANDAI MADE IN JAPAN\nNOT FOR SALE\nPR-125　PR"
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_raw_file": "プロモーション_PR-125_カザミ_ocr_raw.json",
   "ocr_timestamp": "2026-03-07T11:22:28.853445",

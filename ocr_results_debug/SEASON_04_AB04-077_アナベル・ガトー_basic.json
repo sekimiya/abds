@@ -5,47 +5,47 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB04-077.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB04-077_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "AB04-077",
     "type": "PL",
-    "card_label": {
-      "class": "制圧",
-      "cost_label": "コスト5"
-    },
     "name": "アナベル・ガトー",
-    "english_name": "ANAVEL GATO",
     "cost": 5,
+    "rarity": "C",
     "category": "制圧",
     "affiliation": "ジオン公国軍",
-    "physical": {
-      "height": null,
-      "age": 25
-    },
-    "units": [
-      "ガンダム試作2号機"
-    ],
+    "illustrator": "",
     "stats": {
       "mobility": 220,
       "ranged_attack": 100,
       "melee_attack": 250,
       "hp": 150
     },
+    "link_ability": [
+      {
+        "name": "ガンダム0083",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "ANAVEL GATO",
+    "physical": {
+      "height": "",
+      "age": 25
+    },
+    "units": [
+      "ガンダム試作2号機"
+    ],
     "pilot_skill": {
       "name": "抑えきれない激情",
       "trigger": "HP50%以下の時",
       "effect": "40秒間、自身の[近距離攻撃力]を中アップ、[機動力]を小アップする。",
       "has_sq_skill": false,
-      "sq_skill_details": null
-    },
-    "link_ability": [
-      {
-        "name": "ガンダム0083",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      }
-    ],
-    "rarity": "C",
-    "illustrator": null,
-    "raw": "PL\n\n制圧　コスト5\n\nアナベル・ガトー\nANAVEL GATO\n\n機動戦士ガンダム0083 STARDUST MEMORY\n[アイコン:ジオン紋章]\n\n身長　ー\n年齢　25歳\n所属　ジオン公国軍\n搭乗機体　ガンダム試作2号機\n\nPL SKILL\n抑えきれない激情\nHP50%以下の時\n40秒間、自身の[近距離攻撃力]を中アップ、[機動力]を小アップする。\n\nLINK ABILITY\nガンダム0083　デッキに3枚以上\n[機動力]小アップ\n\nー\nー\n\n機動力 220\n遠距離攻撃 100\n近距離攻撃 250\nHP 150\n\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\nAB04-077 C"
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_raw_file": "SEASON_04_AB04-077_アナベル・ガトー_ocr_raw.json",
   "ocr_timestamp": "2026-03-02T06:15:35.815352",

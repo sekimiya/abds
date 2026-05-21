@@ -5,31 +5,44 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AR01-002.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AR01-002_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "AR01-002",
     "type": "MS",
-    "card_label": {
-      "class": "遠距離",
-      "cost_label": "コスト2"
-    },
     "name": "プロトタイプガンダム",
-    "model": "RX-78-1 PROTOTYPE GUNDAM",
     "cost": 2,
-    "category": "MS",
+    "rarity": "A",
+    "category": "遠距離",
     "affiliation": "地球連邦軍",
-    "pilot": null,
+    "illustrator": "Yuji Kaida",
     "stats": {
-      "height": "18.0m",
-      "weight": "43.4t",
       "mobility": 150,
       "ranged_attack": 290,
       "melee_attack": 120,
       "hp": 150
     },
+    "link_ability": [
+      {
+        "name": "MSV",
+        "condition": "デッキに2枚以上",
+        "effect": "[遠距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "漆黒の戦士",
+        "condition": "デッキに2枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "",
+    "model": "RX-78-1 PROTOTYPE GUNDAM",
     "terrain_compatibility": {
       "ground": "B",
       "space": "A",
       "desert": "C",
-      "water": null
+      "water": ""
     },
     "weapon": {
       "main": {
@@ -51,18 +64,6 @@
       "cost": 4,
       "description": "30秒間、自身を中心とした大範囲内の味方ユニットの[遠距離攻撃力]を小アップする。"
     },
-    "link_ability": [
-      {
-        "name": "MSV",
-        "condition": "デッキに2枚以上",
-        "effect": "[遠距離攻撃力]小アップ"
-      },
-      {
-        "name": "漆黒の戦士",
-        "condition": "デッキに2枚以上",
-        "effect": "[機動力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "ビーム・ライフル撃射",
       "target": "単体(敵)",
@@ -70,11 +71,11 @@
       "sp_cost": 2,
       "power": 3200,
       "description": "敵単体に射撃攻撃でダメージを与える。",
-      "united_sp": null
-    },
-    "rarity": "A",
-    "illustrator": "Yuji Kaida",
-    "raw": "遠距離　コスト2\nRX-78-1 PROTOTYPE GUNDAM\nプロトタイプガンダム\n\n全高　18.0m\n本体重量　43.4t\n所属　地球連邦軍\nパイロット　ー\n\n地上 B　宇宙 A　砂漠 C\n機動力 150\n遠距離攻撃 290\n近距離攻撃 120\nHP 150\n\nWEAPON\nMAIN ビーム・ライフル　射程 3　遠距離\nSUB ビーム・サーベル　射程 1　近距離\n\nMS ABILITY\n鼓舞[遠距離]\n任意発動　範囲(味方)　射程 ー　コスト 4\n30秒間、自身を中心とした大範囲内の味方ユニットの[遠距離攻撃力]を小アップする。\n\nLINK ABILITY\nMSV　デッキに2枚以上\n[遠距離攻撃力]小アップ\n\n漆黒の戦士　デッキに2枚以上\n[機動力]小アップ\n\nSPECIAL ATTACK\nビーム・ライフル撃射\n単体(敵)　射程 3\nSPコスト 2　威力 3200\n敵単体に射撃攻撃でダメージを与える。\n\nIMPACT AREA\n\nillust. Yuji Kaida\n©創通・サンライズ\nBANDAI MADE IN JAPAN\nAR01-002　A"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "アーセナルレア1弾[前半]_AR01-002_プロトタイプガンダム_ocr_raw.json",
   "ocr_timestamp": "2026-03-07T14:12:16.155016",

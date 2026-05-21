@@ -5,49 +5,57 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-357.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-357_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "PR-357",
     "type": "PL",
-    "card_label": {
-      "class": "殲滅",
-      "cost_label": "コスト4"
-    },
     "name": "アイラ・ユルキアイネン",
     "cost": 4,
-    "category": null,
-    "affiliation": null,
+    "rarity": "PR",
+    "category": "殲滅",
+    "affiliation": "",
+    "illustrator": "STUDIO GS",
     "stats": {
       "mobility": 220,
       "ranged_attack": 30,
       "melee_attack": 330,
       "hp": 370
     },
+    "link_ability": [
+      {
+        "name": "[SQ]夏の訪れ",
+        "condition": "デッキに3枚以上",
+        "effect": "SQゲージが表示される。SQゲージを溜めるとSQUAD RUSHが発動できる。[機動力][HP]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "",
+    "physical": null,
+    "units": null,
     "pilot_skill": {
       "name": "圧倒する近距離戦",
       "trigger": "SQゲージが最大時",
       "effect": "自身の[機動力][近距離攻撃力]をアップする。SQUAD RUSH中、[機動力][近距離攻撃力]の効果値がさらに上昇する。",
       "has_sq_skill": true,
       "sq_skill_details": {
+        "name": "",
         "trigger": "SQゲージが最大時",
+        "effect": "",
         "sq_gauge_effect": "自身の[機動力][近距離攻撃力]をアップする。",
-        "sq_rush_effect": "[機動力][近距離攻撃力]の効果値がさらに上昇する。",
-        "sq_max_effect": null
-      }
-    },
-    "link_ability": [
-      {
-        "name": "[SQ]夏の訪れ",
-        "condition": "デッキに3枚以上",
-        "effect": "SQゲージが表示される。SQゲージを溜めるとSQUAD RUSHが発動できる。[機動力][HP]小アップ"
+        "sq_max_effect": "",
+        "sq_rush_effect": "[機動力][近距離攻撃力]の効果値がさらに上昇する。"
       },
-      {
-        "name": "多彩な戦術",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      }
-    ],
-    "rarity": "PR",
-    "illustrator": "STUDIO GS",
-    "raw": "殲滅　コスト4\n\nアイラ・ユルキアイネン\nAILA JYRKIÄINEN\n\n身長　—\n年齢　—\n所属　—\n搭乗機体　キュベレイパピヨン\n\nSQ　PL SKILL\n圧倒する近距離戦\nSQゲージが最大時\n\n自身の[機動力][近距離攻撃力]をアップする。\nSQUAD RUSH中\n[機動力][近距離攻撃力]の効果値がさらに上昇する。\n\nSQ　LINK ABILITY\n夏の訪れ　デッキに3枚以上\nSQゲージが表示される。\nSQゲージを溜めるとSQUAD RUSHが発動できる。\n[機動力][HP]小アップ\n\n多彩な戦術　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\n機動力　220\n遠距離攻撃　30\n近距離攻撃　330\nHP　370\n\nillust　STUDIO GS\n©創通・サンライズ\nBANDAI MADE IN JAPAN\nNOT FOR SALE\nPR-357　PR"
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_raw_file": "プロモーション_PR-357_アイラ・ユルキアイネン_ocr_raw.json",
   "ocr_timestamp": "2026-03-03T19:10:06.885283",

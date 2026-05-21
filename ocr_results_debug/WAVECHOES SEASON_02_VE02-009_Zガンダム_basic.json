@@ -8,26 +8,39 @@
   "ocr_type": "basic",
   "ocr_timestamp": "2026-04-22T20:30:00.000000",
   "ocr_data": {
-    "card_id": "VE02-009",
     "type": "MS",
     "name": "Zガンダム",
-    "model": "MSZ-006 Z GUNDAM",
     "cost": 6,
+    "rarity": "LE",
     "category": "近距離",
     "affiliation": "エゥーゴ",
-    "pilot": "カミーユ・ビダン",
-    "card_label": {
-      "class": "近距離",
-      "cost_label": "コスト6"
-    },
+    "illustrator": "",
     "stats": {
-      "height": "19.85m",
-      "weight": "28.7t",
       "mobility": 300,
       "ranged_attack": 100,
       "melee_attack": 640,
       "hp": 610
     },
+    "link_ability": [
+      {
+        "name": "機動戦士Zガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "カミーユ・ビダン",
+    "model": "MSZ-006 Z GUNDAM",
     "terrain_compatibility": {
       "ground": "A",
       "space": "S",
@@ -54,18 +67,6 @@
       "cost": 4,
       "description": "ロックオン中の敵ユニットに向かって高速移動を行い移動終了地点まで押し上げ、範囲内の敵ユニットにダメージを与え、一定時間スタンさせる。"
     },
-    "link_ability": [
-      {
-        "name": "機動戦士Zガンダム",
-        "condition": "デッキに3枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      },
-      {
-        "name": "多彩な戦術",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "ウェイブ・ライダー突撃",
       "target": "単体(敵)",
@@ -73,10 +74,10 @@
       "sp_cost": 2,
       "power": 3200,
       "description": "敵単体に格闘攻撃でダメージを与える。味方ユニットの撃破数に応じて威力が上昇。上限5。リンクアビリティ[[EB]宇宙に響く鼓動]が発動している場合、バイオセンサーが起動、自身が撤退するまで能力が上昇、戦術技で受けるダメージをかなり軽減。出撃中のリンクアビリティ[[EB]宇宙に響く鼓動]を持つ味方ユニットは、一定時間[遠/近攻撃力]をアップ。",
+      "sp_type": "",
+      "echoes_beat": null,
       "united_sp": null,
-      "echoes_beat": null
-    },
-    "rarity": "LE",
-    "raw": "近距離 コスト6 MS MSZ-006 Z GUNDAM Zガンダム 頭頂高 19.85m 本体重量 28.7t 所属 エゥーゴ パイロット カミーユ・ビダン 地上A 宇宙S 砂漠C 水中C 機動力300 遠距離攻撃100 近距離攻撃640 HP610 WEAPON MAIN ビーム・サーベル 射程1 近距離 SUB ビーム・ライフル 射程3 遠距離 MS ABILITY 突貫 任意発動 貫通(敵) 射程1 コスト4 ロックオン中の敵ユニットに向かって高速移動を行い移動終了地点まで押し上げ、範囲内の敵ユニットにダメージを与え、一定時間スタンさせる。 LINK ABILITY 機動戦士Zガンダム デッキに3枚以上 [遠距離攻撃力][近距離攻撃力]小アップ 多彩な戦術 デッキに4枚以上 [遠距離攻撃力][近距離攻撃力]小アップ SPECIAL ATTACK ECHOES BEAT ウェイブ・ライダー突撃 — — 単体(敵) 射程2 — 射程— SPコスト2 威力 3200 /— 敵単体に格闘攻撃でダメージを与える。味方ユニットの撃破数に応じて威力が上昇。上限5。リンクアビリティ[[EB]宇宙に響く鼓動]が発動している場合、バイオセンサーが起動、自身が撤退するまで能力が上昇、戦術技で受けるダメージをかなり軽減。出撃中のリンクアビリティ[[EB]宇宙に響く鼓動]を持つ味方ユニットは、一定時間[遠/近攻撃力]をアップ。/— VE02-009 LE"
+      "squad_sp": null
+    }
   }
 }

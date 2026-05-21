@@ -5,26 +5,39 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT01-032.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT01-032_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "UT01-032",
     "type": "MS",
-    "card_label": {
-      "class": "近距離",
-      "cost_label": "コスト4"
-    },
     "name": "ズゴック(SEED FREEDOM Ver.)",
-    "model": "ZGMF-MM07 Z'GOK[SEED FREEDOM Ver.]",
     "cost": 4,
+    "rarity": "M",
     "category": "近距離",
     "affiliation": "ターミナル",
-    "pilot": "アスラン・ザラ",
+    "illustrator": "Kumagoro",
     "stats": {
-      "height": null,
-      "weight": null,
       "mobility": 210,
       "ranged_attack": 70,
       "melee_attack": 420,
       "hp": 350
     },
+    "link_ability": [
+      {
+        "name": "SEED FREEDOM",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "迫撃の近距離戦",
+        "condition": "デッキに近距離が2枚以上",
+        "effect": "[近距離攻撃力]中アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "アスラン・ザラ",
+    "model": "ZGMF-MM07 Z'GOK[SEED FREEDOM Ver.]",
     "terrain_compatibility": {
       "ground": "B",
       "space": "S",
@@ -51,18 +64,6 @@
       "cost": 3,
       "description": "ロックオン中の敵ユニットに単体攻撃でダメージを与え、強化状態を無効化する。"
     },
-    "link_ability": [
-      {
-        "name": "SEED FREEDOM",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "迫撃の近距離戦",
-        "condition": "デッキに近距離が2枚以上",
-        "effect": "[近距離攻撃力]中アップ"
-      }
-    ],
     "special_attack": {
       "name": "対装甲斬牙爪強撃",
       "target": "単体(敵)",
@@ -70,11 +71,11 @@
       "sp_cost": 2,
       "power": 3400,
       "description": "敵単体に格闘攻撃でダメージを与える。",
-      "united_sp": null
-    },
-    "rarity": "M",
-    "illustrator": "Kumagoro",
-    "raw": "MS\n\n近距離 コスト4\n\nZGMF-MM07 Z'GOK[SEED FREEDOM Ver.]\nズゴック(SEED FREEDOM Ver.)\n\n全高 ー\n本体重量 ー\n所属 ターミナル\nパイロット アスラン・ザラ\n\n地上 B 宇宙 S 砂漠 C 水中 S\n\n機動力 210\n遠距離攻撃 70\n近距離攻撃 420\nHP 350\n\nWEAPON\nMAIN 対装甲斬牙爪 射程 1 近距離\nSUB 重粒子力線砲 射程 3 遠距離\n\nLINK ABILITY\nSEED FREEDOM デッキに3枚以上\n[機動力]小アップ\n\n迫撃の近距離戦\nデッキに近距離が2枚以上\n[近距離攻撃力]中アップ\n\nMS ABILITY\n断砕\n任意発動 単体(敵) 射程 2 コスト 3\nロックオン中の敵ユニットに単体攻撃でダメージを与え、強化状態を無効化する。\n\nSPECIAL ATTACK　　UNITED SP\n対装甲斬牙爪強撃\n連携 ー　　連携 ー\n連携 ー　　連携 ー\n単体(敵) 射程 2　→　射程 ー\nSPコスト 2 威力 3400 / ー\n敵単体に格闘攻撃でダメージを与える。\n/ ー\n\nIMPACT AREA\n[アイコン:着弾エリア 中央やや左下に黄緑マーカー]\n\nillust Kumagoro\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nUT01-032 M"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "UNITRIBE_SEASON_01_UT01-032_ズゴック(SEED_FREEDOM_Ver.)_ocr_raw.json",
   "ocr_timestamp": "2026-03-02T03:22:17.521066",

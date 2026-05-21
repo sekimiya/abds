@@ -5,52 +5,55 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB04-105.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB04-105_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "AB04-105",
     "type": "PL",
-    "card_label": {
-      "class": "制圧",
-      "cost_label": "コスト2"
-    },
     "name": "三日月・オーガス",
-    "english_name": "MIKAZUKI AUGUS",
     "cost": 2,
+    "rarity": "C",
     "category": "制圧",
     "affiliation": "鉄華団",
-    "physical": {
-      "height": null,
-      "age": null
-    },
-    "units": [
-      "ガンダム・バルバトス"
-    ],
+    "illustrator": "",
     "stats": {
       "mobility": 120,
       "ranged_attack": 120,
       "melee_attack": 170,
       "hp": 100
     },
+    "link_ability": [
+      {
+        "name": "鉄血のオルフェンズ",
+        "condition": "デッキに3枚以上",
+        "effect": "[近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "優れた格闘センス",
+        "condition": "デッキに2枚以上",
+        "effect": "[近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "MIKAZUKI AUGUS",
+    "physical": {
+      "height": "",
+      "age": ""
+    },
+    "units": [
+      "ガンダム・バルバトス"
+    ],
     "pilot_skill": {
       "name": "不屈の意思",
       "trigger": "HP50%以下の時",
       "effect": "自身が受けるダメージを少し軽減する。",
       "has_sq_skill": false,
-      "sq_skill_details": null
-    },
-    "link_ability": [
-      {
-        "name": "鉄血のオルフェンズ",
-        "condition": "デッキに3枚以上",
-        "effect": "[近距離攻撃力]小アップ"
-      },
-      {
-        "name": "優れた格闘センス",
-        "condition": "デッキに2枚以上",
-        "effect": "[近距離攻撃力]小アップ"
-      }
-    ],
-    "rarity": "C",
-    "illustrator": null,
-    "raw": "PL\n\n制圧　コスト2\n\n三日月・オーガス\nMIKAZUKI AUGUS\n\n鉄血のオルフェンズ [アイコン:作品ロゴ]\n\n身長　ー\n年齢　ー\n所属　鉄華団\n搭乗機体　ガンダム・バルバトス\n\nPL SKILL\n不屈の意思\nHP50%以下の時\n自身が受けるダメージを少し軽減する。\n\nLINK ABILITY\n鉄血のオルフェンズ　デッキに3枚以上\n[近距離攻撃力]小アップ\n\n優れた格闘センス　デッキに2枚以上\n[近距離攻撃力]小アップ\n\n機動力 120\n遠距離攻撃 120\n近距離攻撃 170\nHP 100\n\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\nAB04-105　C"
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_raw_file": "SEASON_04_AB04-105_三日月・オーガス_ocr_raw.json",
   "ocr_timestamp": "2026-03-02T06:28:16.425871",

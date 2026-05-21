@@ -5,31 +5,44 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB01-007.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB01-007_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "AB01-007",
     "type": "MS",
-    "card_label": {
-      "class": "遠距離",
-      "cost_label": "コスト5"
-    },
     "name": "ザクⅡ(シャア・アズナブル専用機)",
-    "model": "MS-06S CHAR'S ZAKUⅡ",
     "cost": 5,
+    "rarity": "M",
     "category": "遠距離",
     "affiliation": "ジオン公国軍",
-    "pilot": "シャア・アズナブル",
+    "illustrator": "Eske Yoshinob",
     "stats": {
-      "height": "17.5m",
-      "weight": "56.2t",
       "mobility": 190,
       "ranged_attack": 360,
       "melee_attack": 110,
       "hp": 240
     },
+    "link_ability": [
+      {
+        "name": "機動戦士ガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "赤のプライド",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "シャア・アズナブル",
+    "model": "MS-06S CHAR'S ZAKUⅡ",
     "terrain_compatibility": {
       "ground": "A",
       "space": "S",
       "desert": "C",
-      "water": null
+      "water": ""
     },
     "weapon": {
       "main": {
@@ -51,18 +64,6 @@
       "cost": 3,
       "description": "自身の周囲に殲滅タイプの味方ユニットを呼び出す。※上限3ユニットまで。"
     },
-    "link_ability": [
-      {
-        "name": "機動戦士ガンダム",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "赤のプライド",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "ザク・バズーカ斉射",
       "target": "単体(敵)",
@@ -70,11 +71,11 @@
       "sp_cost": 3,
       "power": 3800,
       "description": "敵単体に射撃攻撃でダメージを与える。",
-      "united_sp": null
-    },
-    "rarity": "M",
-    "illustrator": "Eske Yoshinob",
-    "raw": "MS\n\n遠距離 コスト5\nMS-06S CHAR'S ZAKUⅡ\nザクⅡ(シャア・アズナブル専用機)\n\n全高 17.5m\n本体重量 56.2t\n所属 ジオン公国軍\nパイロット シャア・アズナブル\n\n地上 A 宇宙 S 砂漠 C\n機動力 190\n遠距離攻撃 360\n近距離攻撃 110\nHP 240\n\nWEAPON\n\nMAIN ザク・バズーカ 射程 3 遠距離\nSUB ヒート・ホーク 射程 1 近距離\n\nLINK ABILITY\n\n機動戦士ガンダム デッキに3枚以上\n[機動力]小アップ\n\n赤のプライド デッキに3枚以上\n[機動力]小アップ\n\nMS ABILITY\n\n増援[殲滅]\n任意発動 特殊(自分) 射程 - コスト 3\n\n自身の周囲に殲滅タイプの味方ユニット\nを呼び出す。※上限3ユニットまで。\n\nSPECIAL ATTACK\n\nザク・バズーカ斉射\n単体(敵) 射程 3\nSPコスト 3 威力 3800\n\n敵単体に射撃攻撃でダメージを与える。\n\nIMPACT AREA\n\n[アイコン:緑丸 中央やや左]\n[アイコン:黄三角 中央下]\n\nillust Eske Yoshinob\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nAB01-007 M"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "SEASON_01_AB01-007_ザクⅡ(シャア・アズナブル専用機)_ocr_raw.json",
   "ocr_timestamp": "2026-02-23T12:01:35.453967",

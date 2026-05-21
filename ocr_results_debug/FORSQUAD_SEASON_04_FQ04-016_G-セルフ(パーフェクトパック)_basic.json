@@ -5,26 +5,39 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ04-016.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ04-016_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "FQ04-016",
     "type": "MS",
-    "card_label": {
-      "class": "近距離",
-      "cost_label": "コスト4"
-    },
-    "name": "G-セルフ（パーフェクトパック）",
-    "model": "YG-111 G-SELF[PERFECT PACK]",
+    "name": "G-セルフ(パーフェクトパック)",
     "cost": 4,
+    "rarity": "R",
     "category": "近距離",
     "affiliation": "メガファウナ",
-    "pilot": "ベルリ・ゼナム",
+    "illustrator": "yuuiguchi",
     "stats": {
-      "height": "18.0m",
-      "weight": "31.1t",
       "mobility": 240,
       "ranged_attack": 90,
       "melee_attack": 360,
       "hp": 310
     },
+    "link_ability": [
+      {
+        "name": "Gのレコンギスタ",
+        "condition": "デッキに2枚以上",
+        "effect": "[HP]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "ベルリ・ゼナム",
+    "model": "YG-111 G-SELF[PERFECT PACK]",
     "terrain_compatibility": {
       "ground": "S",
       "space": "S",
@@ -51,18 +64,6 @@
       "cost": 4,
       "description": "敵ユニットのターゲットを自身に変更し、ロックオン中の敵ユニットに単体攻撃を行う。効果中は対象の味方、敵ユニットをロックオンすることが出来ない。"
     },
-    "link_ability": [
-      {
-        "name": "Gのレコンギスタ",
-        "condition": "デッキに2枚以上",
-        "effect": "[HP]小アップ"
-      },
-      {
-        "name": "戦況を変える力",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "高トルクモード強撃",
       "target": "単体(敵)",
@@ -70,17 +71,20 @@
       "sp_cost": 2,
       "power": 3300,
       "description": "敵単体に格闘攻撃でダメージを与える。",
+      "sp_type": "",
+      "echoes_beat": null,
       "united_sp": {
-        "partner1": "フォトン・トルピード",
-        "partner2": null,
+        "name": "",
+        "partners": [
+          "フォトン・トルピード"
+        ],
+        "target": "",
         "range": 4,
         "power": 7600,
         "description": "SQUAD RUSH発動中に1度だけ、SQUAD SPを使用できる。ロックオン中の敵を中心に扇状の範囲攻撃を行い、範囲内の敵にダメージを与える。"
-      }
-    },
-    "rarity": "R",
-    "illustrator": "yuuiguchi",
-    "raw": "MS\n\n近距離 コスト4\n\nYG-111 G-SELF[PERFECT PACK]\nG-セルフ（パーフェクトパック）\n\n頭頂高 18.0m\n本体重量 31.1t\n所属 メガファウナ\nパイロット ベルリ・ゼナム\n\n地上 S 宇宙 S 砂漠 B 水中 B\n\n機動力 240\n遠距離攻撃 90\n近距離攻撃 360\nHP 310\n\nWEAPON\nMAIN 高トルクモード 射程 1 近距離\nSUB アサルトモード 射程 4 遠距離\n\nLINK ABILITY\nGのレコンギスタ デッキに2枚以上\n[HP]小アップ\n\n戦況を変える力 デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nMS ABILITY\n決闘\n任意発動 単体(敵) 射程 2 コスト 4\n敵ユニットのターゲットを自身に変更し、ロックオン中の敵ユニットに単体攻撃を行う。効果中は対象の味方、敵ユニットをロックオンすることが出来ない。\n\nSPECIAL ATTACK SQUAD SP\n高トルクモード強撃 フォトン・トルピード\nSQUAD RUSH発動中に1度だけ、SQUAD SPを使用できる。\n単体(敵) 射程 2 範囲(敵) 射程 4\nSPコスト 2 威力 3300 / 7600\n敵単体に格闘攻撃でダメージを与える。／ロックオン中の敵を中心に扇状の範囲攻撃を行い、範囲内の敵にダメージを与える。\n\nIMPACT AREA\n[アイコン:扇状範囲 前方]\n\nillust yuuiguchi\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nFQ04-016 R\n\nGのレコンギスタ"
+      },
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "FORSQUAD_SEASON_04_FQ04-016_G-セルフ(パーフェクトパック)_ocr_raw.json",
   "ocr_timestamp": "2026-02-24T18:20:19.812702",

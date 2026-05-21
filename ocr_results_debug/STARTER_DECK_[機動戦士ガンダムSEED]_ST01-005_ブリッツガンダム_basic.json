@@ -5,31 +5,36 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/ST01-005.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/ST01-005_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "ST01-005",
     "type": "MS",
-    "card_label": {
-      "class": "機動",
-      "cost_label": "コスト3"
-    },
     "name": "ブリッツガンダム",
-    "model": "GAT-X207 BLITZ GUNDAM",
     "cost": 3,
+    "rarity": "R",
     "category": "機動",
     "affiliation": "ザフト",
-    "pilot": "ニコル・アマルフィ",
+    "illustrator": "deraken",
     "stats": {
-      "height": "18.63m",
-      "weight": "73.5t",
       "mobility": 250,
       "ranged_attack": 170,
       "melee_attack": 140,
       "hp": 160
     },
+    "link_ability": [
+      {
+        "name": "ガンダムSEED",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "ニコル・アマルフィ",
+    "model": "GAT-X207 BLITZ GUNDAM",
     "terrain_compatibility": {
       "ground": "A",
       "space": "A",
       "desert": "C",
-      "water": null
+      "water": ""
     },
     "weapon": {
       "main": {
@@ -51,13 +56,6 @@
       "cost": 4,
       "description": "30秒間、自身を中心とした大範囲内の味方ユニットの[遠距離攻撃力]を小アップする。"
     },
-    "link_ability": [
-      {
-        "name": "ガンダムSEED",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "高エネルギービームライフル撃射",
       "target": "単体(敵)",
@@ -65,11 +63,11 @@
       "sp_cost": 2,
       "power": 3200,
       "description": "敵単体に射撃攻撃でダメージを与える。",
-      "united_sp": null
-    },
-    "rarity": "R",
-    "illustrator": "deraken",
-    "raw": "MS\n\n機動 コスト3\n\nGAT-X207 BLITZ GUNDAM\nブリッツガンダム\n\n全高 18.63m\n本体重量 73.5t\n所属 ザフト\nパイロット ニコル・アマルフィ\n\n[アイコン:地上A] [アイコン:宇宙A] [アイコン:砂漠C]\n機動力 250\n遠距離攻撃 170\n近距離攻撃 140\nHP 160\n\nWEAPON\nMAIN 高エネルギービームライフル 射程 3 遠距離\nSUB ビームサーベル 射程 1 近距離\n\nLINK ABILITY\nガンダムSEED デッキに3枚以上\n[機動力]小アップ\n\nMS ABILITY\n鼓舞[遠距離]\n任意発動 範囲(味方) 射程 — コスト 4\n30秒間、自身を中心とした大範囲内の味方ユニットの[遠距離攻撃力]を小アップする。\n\nIMPACT AREA\n—\n\nSPECIAL ATTACK\n高エネルギービームライフル撃射\n単体(敵) 射程 3\nSPコスト 2 威力 3200\n敵単体に射撃攻撃でダメージを与える。\n\nillust deraken\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n\n機動戦士ガンダム ARSENAL BASE\n\nST01-005 R"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "STARTER_DECK_[機動戦士ガンダムSEED]_ST01-005_ブリッツガンダム_ocr_raw.json",
   "ocr_timestamp": "2026-03-03T08:37:08.601273",

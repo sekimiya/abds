@@ -5,26 +5,39 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ05-027.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ05-027_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "FQ05-027",
     "type": "MS",
-    "card_label": {
-      "class": "近距離",
-      "cost_label": "コスト4"
-    },
-    "name": "ガンダム・バルバトス（第4形態）",
-    "model": "ASW-G-08 GUNDAM BARBATOS",
+    "name": "ガンダム・バルバトス(第4形態)",
     "cost": 4,
+    "rarity": "LE",
     "category": "近距離",
     "affiliation": "鉄華団",
-    "pilot": "三日月・オーガス",
+    "illustrator": "Koji Nishino",
     "stats": {
-      "height": "18.0m",
-      "weight": "28.5t",
       "mobility": 280,
       "ranged_attack": 20,
       "melee_attack": 600,
       "hp": 400
     },
+    "link_ability": [
+      {
+        "name": "鉄血のオルフェンズ",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "三日月・オーガス",
+    "model": "ASW-G-08 GUNDAM BARBATOS",
     "terrain_compatibility": {
       "ground": "S",
       "space": "A",
@@ -51,18 +64,6 @@
       "cost": 3,
       "description": "ロックオン中の敵に単体攻撃でダメージを与える。"
     },
-    "link_ability": [
-      {
-        "name": "鉄血のオルフェンズ",
-        "condition": "デッキに3枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      },
-      {
-        "name": "戦況を変える力",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "太刀激突",
       "target": "単体(敵)",
@@ -70,11 +71,11 @@
       "sp_cost": 2,
       "power": 3600,
       "description": "敵単体に格闘攻撃でダメージを与え、次に使用する自身のMSアビリティの使用コストを、一定値ダウンする。リンクアビリティ[鉄血のオルフェンズ]が発動している場合、自身の[近距離攻撃力]を大アップし、受けるダメージを大きく軽減する。",
-      "united_sp": null
-    },
-    "rarity": "LE",
-    "illustrator": "Koji Nishino",
-    "raw": "MS\n\n近距離　コスト4\n\nASW-G-08 GUNDAM BARBATOS\nガンダム・バルバトス（第4形態）\n\n頭頂高　18.0m\n本体重量　28.5t\n所属　鉄華団\nパイロット　三日月・オーガス\n\n地上 S　宇宙 A　砂漠 B　水中 C\n\n機動力 280\n遠距離攻撃 20\n近距離攻撃 600\nHP 400\n\nWEAPON\nMAIN　太刀　射程 1　近距離\nSUB　滑腔砲　射程 2　遠距離\n\nLINK ABILITY\n鉄血のオルフェンズ　デッキに3枚以上\n[遠距離攻撃力] [近距離攻撃力]\n小アップ\n\n戦況を変える力　デッキに4枚以上\n[遠距離攻撃力] [近距離攻撃力]\n小アップ\n\nMS ABILITY\n強撃\n任意発動　単体(敵)　射程 1　コスト 3\n\nロックオン中の敵に単体攻撃でダメージ\nを与える。\n\nSPECIAL ATTACK　　UNITED SP\n太刀激突　　　　　ー\n連携 ー　　　　　　連携 ー\n連携 ー　　　　　　連携 ー\n単体(敵)　射程 2　　射程 ー\nSPコスト 2　威力　3600 / ー\n\n敵単体に格闘攻撃でダメージを与え、次に使用する自身のMSアビリティの使用コストを、一定値ダウンする。リンクアビリティ[鉄血のオルフェンズ]が発動している場合、自身の[近距離攻撃力]を大アップし、受けるダメージを大きく軽減する。/ ー\n\nIMPACT AREA\n[アイコン:中央〇][アイコン:右〇]\n[アイコン:中央下▲]\n\nillust　Koji Nishino\n©創通・サンライズ ©創通・サンライズ・MBS\n\n機動戦士ガンダム\n鉄血のオルフェンズ\n\nARSENAL BASE\n\nBANDAI MADE IN JAPAN\n\nFQ05-027　LE"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "FORSQUAD_SEASON_05_FQ05-027_ガンダム・バルバトス(第4形態)_ocr_raw.json",
   "ocr_timestamp": "2026-02-24T18:28:38.212407",

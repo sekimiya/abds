@@ -5,26 +5,39 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UTB01-010.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UTB01-010_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "UTB01-010",
     "type": "MS",
-    "card_label": {
-      "class": "遠距離",
-      "cost_label": "コスト6"
-    },
     "name": "ガンダムX",
-    "model": "GX-9900 GUNDAM X",
     "cost": 6,
+    "rarity": "U",
     "category": "遠距離",
     "affiliation": "フリーデン",
-    "pilot": "ガロード・ラン&ティファ・アディール",
+    "illustrator": "Moyasi",
     "stats": {
-      "height": "17.1m",
-      "weight": "7.5t",
       "mobility": 250,
       "ranged_attack": 590,
       "melee_attack": 180,
       "hp": 580
     },
+    "link_ability": [
+      {
+        "name": "機動新世紀ガンダムX",
+        "condition": "デッキに2枚以上",
+        "effect": "[遠距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "的確な一撃",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][遠距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "ガロード・ラン&ティファ・アディール",
+    "model": "GX-9900 GUNDAM X",
     "terrain_compatibility": {
       "ground": "A",
       "space": "A",
@@ -51,18 +64,6 @@
       "cost": 3,
       "description": "ロックオン中の敵ユニットに単体攻撃でダメージを与え、強化状態を無効化する。"
     },
-    "link_ability": [
-      {
-        "name": "機動新世紀ガンダムX",
-        "condition": "デッキに2枚以上",
-        "effect": "[遠距離攻撃力]小アップ"
-      },
-      {
-        "name": "的確な一撃",
-        "condition": "デッキに4枚以上",
-        "effect": "[機動力][遠距離攻撃力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "サテライトキャノン照射",
       "target": "貫通(敵)",
@@ -70,11 +71,11 @@
       "sp_cost": 5,
       "power": 7200,
       "description": "対象の敵を中心として射程よりも広い範囲で、射線上の敵に貫通射撃でダメージを与える。この攻撃は敵味方関係なくヒットする。",
-      "united_sp": null
-    },
-    "rarity": "U",
-    "illustrator": "Moyasi",
-    "raw": "MS\n\n遠距離　コスト6\n\nGX-9900 GUNDAM X\nガンダムX\n\n全高　17.1m\n本体重量　7.5t\n所属　フリーデン\nパイロット　ガロード・ラン&ティファ・アディール\n\n地上 A　宇宙 A　砂漠 B　水中 B\n\n機動力 250\n遠距離攻撃 590\n近距離攻撃 180\nHP 580\n\nWEAPON\nMAIN シールドバスターライフル　射程 3　遠距離\nSUB 大型ビームソード　射程 1　近距離\n\nLINK ABILITY\n機動新世紀ガンダムX　デッキに2枚以上\n[遠距離攻撃力]小アップ\n\n的確な一撃　デッキに4枚以上\n[機動力][遠距離攻撃力]小アップ\n\nMS ABILITY\n断砕\n任意発動　単体(敵)　射程 3　コスト 3\n\nロックオン中の敵ユニットに単体攻撃で\nダメージを与え、強化状態を無効化する。\n\nSPECIAL ATTACK　　UNITED SP\nサテライトキャノン照射　　ー\n連携 ー　　連携 ー\n連携 ー　　連携 ー\n貫通(敵)　射程 4　　ー　　射程 ー\nSPコスト 5　威力 7200 / ー\n\n対象の敵を中心として射程よりも広い範囲で、射線上の敵に貫通射撃でダメージを与える。この攻撃は敵味方関係なくヒットする。/ ー\n\nIMPACT AREA\n[アイコン:×印が中央上部、黄色丸が中央、▲が中央下部の射撃範囲図]\n\nillust Moyasi\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n\n機動戦士ガンダム ARSENAL BASE\n\nUTB01-010　U"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "UTブースター1弾_UTB01-010_ガンダムX_ocr_raw.json",
   "ocr_timestamp": "2026-03-02T02:06:50.412949",

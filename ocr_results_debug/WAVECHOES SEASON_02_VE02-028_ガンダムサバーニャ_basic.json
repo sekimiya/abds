@@ -1,90 +1,90 @@
 {
-    "card_number": "VE02-028",
-    "card_name": "ガンダムサバーニャ",
-    "series": "WAVECHOES SEASON:02",
-    "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE02-028.jpg?v250630",
-    "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE02-028_b.jpg?v250630",
-    "ocr_engine": "claude_code_subagent",
-    "ocr_type": "basic",
-    "ocr_timestamp": "2026-04-22T20:30:00.000000",
-    "ocr_data": {
-        "card_id": "VE02-028",
-        "type": "MS",
-        "name": "ガンダムサバーニャ",
-        "model": "GN-010 GUNDAM ZABANYA",
-        "cost": 5,
-        "category": "遠距離",
-        "affiliation": "ソレスタルビーイング",
-        "pilot": "ロックオン・ストラトス",
-        "card_label": {
-            "class": "遠距離",
-            "cost_label": "コスト5"
-        },
-        "stats": {
-            "height": "18.0m",
-            "weight": "86.8t",
-            "mobility": 250,
-            "ranged_attack": 530,
-            "melee_attack": 100,
-            "hp": 570
-        },
-        "terrain_compatibility": {
-            "ground": "A",
-            "space": "S",
-            "desert": "C",
-            "water": "B"
-        },
-        "weapon": {
-            "main": {
-                "name": "GNライフルビットII",
-                "range": 4,
-                "type": "遠距離"
-            },
-            "sub": {
-                "name": "GNピストルビット",
-                "range": 2,
-                "type": "近距離"
-            }
-        },
-        "ms_ability": {
-            "name": "絨射[広角]",
-            "activation": "任意発動",
-            "target": "範囲(敵)",
-            "range": 4,
-            "cost": 4,
-            "description": "ロックオン中の敵ユニットを中心に扇状の範囲攻撃を行い、一定時間スタンさせる。"
-        },
-        "link_ability": [
-            {
-                "name": "劇場版ガンダム00",
-                "condition": "デッキに3枚以上",
-                "effect": "[HP]小アップ"
-            },
-            {
-                "name": "的確な一撃",
-                "condition": "デッキに4枚以上",
-                "effect": "[機動力][遠距離攻撃力]小アップ"
-            }
-        ],
-        "special_attack": {
-            "name": "一斉射撃",
-            "target": "範囲(敵)",
-            "range": 4,
-            "sp_cost": 2,
-            "power": 3100,
-            "sp_type": "ECHOES BEAT",
-            "description": "一定時間トランザムを発動し、自身を中心に半円状の範囲攻撃でダメージを与える。/ EBLv.を1下げる。一定時間トランザムを発動し、自身を中心に半円状の範囲攻撃でダメージを与え、EBLv.が3に上昇する。出撃時1度のみ使用可能。",
-            "echoes_beat": {
-                "name": "一斉射撃",
-                "level": 1,
-                "target": "範囲(敵)",
-                "range": 4,
-                "power": 3400,
-                "description": "EBLv.を1下げる。一定時間トランザムを発動し、自身を中心に半円状の範囲攻撃でダメージを与え、EBLv.が3に上昇する。出撃時1度のみ使用可能。"
-            },
-            "united_sp": null
-        },
-        "rarity": "U",
-        "raw": "遠距離 コスト5 MS GN-010 GUNDAM ZABANYA ガンダムサバーニャ 頭頂高 18.0m 本体重量 86.8t 所属 ソレスタルビーイング パイロット ロックオン・ストラトス 地上A 宇宙S 砂漠C 水中B 機動力250 遠距離攻撃530 近距離攻撃100 HP570 WEAPON MAIN GNライフルビットII 射程4 遠距離 SUB GNピストルビット 射程2 近距離 MS ABILITY 絨射[広角] 任意発動 範囲(敵) 射程4 コスト4 ロックオン中の敵ユニットを中心に扇状の範囲攻撃を行い、一定時間スタンさせる。 LINK ABILITY 劇場版ガンダム00 デッキに3枚以上 [HP]小アップ 的確な一撃 デッキに4枚以上 [機動力][遠距離攻撃力]小アップ SPECIAL ATTACK ECHOES BEAT 一斉射撃 一斉射撃 Lv.1 ECHOES BEAT Lv.を下げることで、Lv.戦術技が発動する。 範囲(敵) 射程4 範囲(敵) 射程4 SPコスト2 威力3100/3400 一定時間トランザムを発動し、自身を中心に半円状の範囲攻撃でダメージを与える。/ EBLv.を1下げる。一定時間トランザムを発動し、自身を中心に半円状の範囲攻撃でダメージを与え、EBLv.が3に上昇する。出撃時1度のみ使用可能。 VE02-028 U"
+  "card_number": "VE02-028",
+  "card_name": "ガンダムサバーニャ",
+  "series": "WAVECHOES SEASON:02",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE02-028.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE02-028_b.jpg?v250630",
+  "ocr_engine": "claude_code_subagent",
+  "ocr_type": "basic",
+  "ocr_timestamp": "2026-04-22T20:30:00.000000",
+  "ocr_data": {
+    "type": "MS",
+    "name": "ガンダムサバーニャ",
+    "cost": 5,
+    "rarity": "U",
+    "category": "遠距離",
+    "affiliation": "ソレスタルビーイング",
+    "illustrator": "",
+    "stats": {
+      "mobility": 250,
+      "ranged_attack": 530,
+      "melee_attack": 100,
+      "hp": 570
+    },
+    "link_ability": [
+      {
+        "name": "劇場版ガンダム00",
+        "condition": "デッキに3枚以上",
+        "effect": "[HP]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "的確な一撃",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][遠距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "ロックオン・ストラトス",
+    "model": "GN-010 GUNDAM ZABANYA",
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "C",
+      "water": "B"
+    },
+    "weapon": {
+      "main": {
+        "name": "GNライフルビットII",
+        "range": 4,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "GNピストルビット",
+        "range": 2,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "絨射[広角]",
+      "activation": "任意発動",
+      "target": "範囲(敵)",
+      "range": 4,
+      "cost": 4,
+      "description": "ロックオン中の敵ユニットを中心に扇状の範囲攻撃を行い、一定時間スタンさせる。"
+    },
+    "special_attack": {
+      "name": "一斉射撃",
+      "target": "範囲(敵)",
+      "range": 4,
+      "sp_cost": 2,
+      "power": 3100,
+      "description": "一定時間トランザムを発動し、自身を中心に半円状の範囲攻撃でダメージを与える。/ EBLv.を1下げる。一定時間トランザムを発動し、自身を中心に半円状の範囲攻撃でダメージを与え、EBLv.が3に上昇する。出撃時1度のみ使用可能。",
+      "sp_type": "ECHOES BEAT",
+      "echoes_beat": {
+        "name": "一斉射撃",
+        "level": 1,
+        "power": 3400,
+        "range": 4,
+        "target": "範囲(敵)",
+        "description": "EBLv.を1下げる。一定時間トランザムを発動し、自身を中心に半円状の範囲攻撃でダメージを与え、EBLv.が3に上昇する。出撃時1度のみ使用可能。"
+      },
+      "united_sp": null,
+      "squad_sp": null
     }
+  }
 }

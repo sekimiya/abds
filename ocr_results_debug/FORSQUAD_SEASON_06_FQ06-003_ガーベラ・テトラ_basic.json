@@ -5,26 +5,39 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ06-003.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ06-003_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "FQ06-003",
     "type": "MS",
-    "card_label": {
-      "class": "機動",
-      "cost_label": "コスト4"
-    },
     "name": "ガーベラ・テトラ",
-    "model": "AGX-04 GERBERA-TETRA",
     "cost": 4,
+    "rarity": "M",
     "category": "機動",
     "affiliation": "ジオン公国軍",
-    "pilot": "シーマ・ガラハウ",
+    "illustrator": "deraken",
     "stats": {
-      "height": "18.0m",
-      "weight": "46.7t",
       "mobility": 230,
       "ranged_attack": 50,
       "melee_attack": 370,
       "hp": 400
     },
+    "link_ability": [
+      {
+        "name": "ガンダム0083",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "高速機動の接近戦",
+        "condition": "デッキに機動が2枚以上",
+        "effect": "[近距離攻撃力]中アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "シーマ・ガラハウ",
+    "model": "AGX-04 GERBERA-TETRA",
     "terrain_compatibility": {
       "ground": "A",
       "space": "S",
@@ -51,18 +64,6 @@
       "cost": 3,
       "description": "ロックオン中の敵ユニットに単体攻撃を行いダメージを与え、一定時間スタンさせる。"
     },
-    "link_ability": [
-      {
-        "name": "ガンダム0083",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "高速機動の接近戦",
-        "condition": "デッキに機動が2枚以上",
-        "effect": "[近距離攻撃力]中アップ"
-      }
-    ],
     "special_attack": {
       "name": "ビーム・サーベル強撃",
       "target": "単体(敵)",
@@ -70,11 +71,11 @@
       "sp_cost": 2,
       "power": 3400,
       "description": "敵単体に格闘攻撃でダメージを与える。",
-      "united_sp": null
-    },
-    "rarity": "M",
-    "illustrator": "deraken",
-    "raw": "機動 コスト4 MS\n\nAGX-04 GERBERA-TETRA\nガーベラ・テトラ\n\n頭頂高 18.0m\n本体重量 46.7t\n所属 ジオン公国軍\nパイロット シーマ・ガラハウ\n\n[アイコン:STARDUST MEMORY]\n\n地上 A 宇宙 S 砂漠 C 水中 C\n機動力 230\n遠距離攻撃 50\n近距離攻撃 370\nHP 400\n\nWEAPON\nMAIN ビーム・サーベル 射程 1 近距離\nSUB ビーム・マシンガン 射程 3 遠距離\n\nLINK ABILITY\nガンダム0083 デッキに3枚以上\n[機動力]小アップ\n\n高速機動の接近戦 デッキに機動が2枚以上\n[近距離攻撃力]中アップ\n\nMS ABILITY\n縛撃\n任意発動 単体(敵) 射程 1 コスト 3\nロックオン中の敵ユニットに単体攻撃を行いダメージを与え、一定時間スタンさせる。\n\nSPECIAL ATTACK          UNITED SP\nビーム・サーベル強撃      ー\n連携 ー                  連携 ー\n連携 ー                  連携 ー\n単体(敵) 射程 2          ー 射程 ー\nSPコスト 2 威力 3400 / ー\n敵単体に格闘攻撃でダメージを与える。\n/ー\n\nIMPACT AREA\n[アイコン:3x5グリッド 中央列上から2番目と中央列上から4番目に緑丸]\n\nillust deraken\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nFQ06-003 M"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "FORSQUAD_SEASON_06_FQ06-003_ガーベラ・テトラ_ocr_raw.json",
   "ocr_timestamp": "2026-02-24T18:38:07.648448",

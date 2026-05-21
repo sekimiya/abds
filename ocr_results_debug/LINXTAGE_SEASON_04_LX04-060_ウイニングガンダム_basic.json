@@ -5,26 +5,39 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX04-060.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX04-060_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "LX04-060",
     "type": "MS",
-    "card_label": {
-      "class": "遠距離",
-      "cost_label": "コスト5"
-    },
     "name": "ウイニングガンダム",
-    "model": "SD-237 WINNING GUNDAM",
     "cost": 5,
-    "category": "MS",
+    "rarity": "C",
+    "category": "遠距離",
     "affiliation": "トライ・ファイターズ",
-    "pilot": "ホシノ・フミナ",
+    "illustrator": "gomibako",
     "stats": {
-      "height": null,
-      "weight": null,
       "mobility": 140,
       "ranged_attack": 300,
       "melee_attack": 90,
       "hp": 270
     },
+    "link_ability": [
+      {
+        "name": "トライ",
+        "condition": "デッキに3枚以上",
+        "effect": "[HP]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "ホシノ・フミナ",
+    "model": "SD-237 WINNING GUNDAM",
     "terrain_compatibility": {
       "ground": "A",
       "space": "A",
@@ -51,18 +64,6 @@
       "cost": 3,
       "description": "ロックオン中の敵に単体攻撃でダメージを与える。"
     },
-    "link_ability": [
-      {
-        "name": "トライ",
-        "condition": "デッキに3枚以上",
-        "effect": "[HP]小アップ"
-      },
-      {
-        "name": "多彩な戦術",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "ビームマシンガン撃射",
       "target": "単体（敵）",
@@ -70,11 +71,11 @@
       "sp_cost": 2,
       "power": 3200,
       "description": "敵単体に射撃攻撃でダメージを与える。",
-      "united_sp": null
-    },
-    "rarity": "C",
-    "illustrator": "gomibako",
-    "raw": "遠距離 コスト5\nSD-237 WINNING GUNDAM\nウイニングガンダム\n\n全高　—\n本体重量　—　　地上 A　宇宙 A　砂漠 B　水中 B\n所属　トライ・ファイターズ　　　　　機動力 140\nパイロット　ホシノ・フミナ　　　遠距離攻撃 300\n　　　　　　　　　　　　　　　近距離攻撃 90\n　　　　　　　　　　　　　　　HP 270\n\nWEAPON\nMAIN ビームマシンガン　射程 3　遠距離\nSUB バズソー　　　　　射程 1　近距離\n\nMS ABILITY\n連射\n任意発動　単体（敵）　射程 3　コスト 3\nロックオン中の敵に単体攻撃でダメージを与える。\n\nLINK ABILITY\nトライ　デッキに3枚以上\n[HP]小アップ\n\n多彩な戦術　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nSPECIAL ATTACK\nビームマシンガン撃射\n単体（敵）　射程 3\nSPコスト 2　威力 3200\n敵単体に射撃攻撃でダメージを与える。\n\nIMPACT AREA\n\nillust　gomibako\n©創通・サンライズ\nBANDAI MADE IN JAPAN\nLX04-060　C"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "LINXTAGE_SEASON_04_LX04-060_ウイニングガンダム_ocr_raw.json",
   "ocr_timestamp": "2026-03-07T19:16:41.330845",

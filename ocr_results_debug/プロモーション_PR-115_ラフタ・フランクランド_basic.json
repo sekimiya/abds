@@ -5,44 +5,50 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-115.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-115_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "PR-115",
     "type": "PL",
-    "card_label": {
-      "class": "殲滅",
-      "cost_label": "コスト5"
-    },
     "name": "ラフタ・フランクランド",
     "cost": 5,
-    "category": "鉄血のオルフェンズ",
+    "rarity": "PR",
+    "category": "殲滅",
     "affiliation": "タービンズ",
+    "illustrator": "",
     "stats": {
       "mobility": 150,
       "ranged_attack": 300,
       "melee_attack": 200,
       "hp": 300
     },
+    "link_ability": [
+      {
+        "name": "鉄血のオルフェンズ",
+        "condition": "デッキに3枚以上",
+        "effect": "[近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "優れた射撃センス",
+        "condition": "デッキに2枚以上",
+        "effect": "[遠距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "",
+    "physical": null,
+    "units": null,
     "pilot_skill": {
       "name": "機敏な先制射撃",
       "trigger": "出撃時",
       "effect": "40秒間、自身の[機動力][遠距離攻撃力]を中アップする。",
       "has_sq_skill": false,
-      "sq_skill_details": null
-    },
-    "link_ability": [
-      {
-        "name": "鉄血のオルフェンズ",
-        "condition": "デッキに3枚以上",
-        "effect": "[近距離攻撃力]小アップ"
-      },
-      {
-        "name": "優れた射撃センス",
-        "condition": "デッキに2枚以上",
-        "effect": "[遠距離攻撃力]小アップ"
-      }
-    ],
-    "rarity": "PR",
-    "illustrator": null,
-    "raw": "殲滅　コスト5\nラフタ・フランクランド\nLAFTER FRANKLAND\n\n身長　—\n年齢　—\n所属　タービンズ\n搭乗機体　漏影\n\nPL SKILL\n機敏な先制射撃\n出撃時\n40秒間、自身の[機動力][遠距離攻撃力]を中アップする。\n\nLINK ABILITY\n鉄血のオルフェンズ　デッキに3枚以上\n[近距離攻撃力]小アップ\n\n優れた射撃センス　デッキに2枚以上\n[遠距離攻撃力]小アップ\n\n機動力 150\n遠距離攻撃 300\n近距離攻撃 200\nHP 300\n\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\nNOT FOR SALE\nPR-115　PR"
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_raw_file": "プロモーション_PR-115_ラフタ・フランクランド_ocr_raw.json",
   "ocr_timestamp": "2026-03-07T11:16:18.657090",

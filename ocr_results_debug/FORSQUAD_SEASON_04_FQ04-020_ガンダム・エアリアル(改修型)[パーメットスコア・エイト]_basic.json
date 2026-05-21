@@ -5,26 +5,39 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ04-020.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ04-020_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "FQ04-020",
     "type": "MS",
-    "card_label": {
-      "class": "遠距離",
-      "cost_label": "コスト5"
-    },
-    "name": "ガンダム・エアリアル（改修型）[パーメットスコア・エイト]",
-    "model": "XVX-016RN GUNDAM AERIAL REBUILD [PERMET SCORE EIGHT]",
+    "name": "ガンダム・エアリアル(改修型)[パーメットスコア・エイト]",
     "cost": 5,
+    "rarity": "M",
     "category": "遠距離",
     "affiliation": "シン・セー開発公社",
-    "pilot": null,
+    "illustrator": "Gas1",
     "stats": {
-      "height": "18.2m",
-      "weight": "53.2t",
       "mobility": 260,
       "ranged_attack": 440,
       "melee_attack": 90,
       "hp": 410
     },
+    "link_ability": [
+      {
+        "name": "水星の魔女",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "的確な一撃",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][遠距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "",
+    "model": "XVX-016RN GUNDAM AERIAL REBUILD [PERMET SCORE EIGHT]",
     "terrain_compatibility": {
       "ground": "A",
       "space": "S",
@@ -51,18 +64,6 @@
       "cost": 3,
       "description": "自身の周りにバリアを展開する。展開したバリアは自身へのダメージを一定値防ぎ、バリア展開中は弱体効果を受けない状態となる。"
     },
-    "link_ability": [
-      {
-        "name": "水星の魔女",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "的確な一撃",
-        "condition": "デッキに4枚以上",
-        "effect": "[機動力][遠距離攻撃力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "ガンビット斉射",
       "target": "単体（敵）",
@@ -70,11 +71,11 @@
       "sp_cost": 2,
       "power": 3300,
       "description": "敵単体に射撃攻撃でダメージを与える。",
-      "united_sp": null
-    },
-    "rarity": "M",
-    "illustrator": "Gas1",
-    "raw": "遠距離 コスト5 MS\n\nXVX-016RN GUNDAM AERIAL REBUILD [PERMET SCORE EIGHT]\n\nガンダム・エアリアル（改修型）[パーメットスコア・エイト]\n\n頭頂高 18.2m\n本体重量 53.2t\n所属 シン・セー開発公社\nパイロット ー\n\n地上 A 宇宙 S 砂漠 C 水中 C\n\n機動力 260\n遠距離攻撃 440\n近距離攻撃 90\nHP 410\n\nWEAPON\nMAIN ガンビット 射程 4 遠距離\nSUB ビームサーベル 射程 1 近距離\n\nLINK ABILITY\n水星の魔女 デッキに3枚以上\n[機動力]小アップ\n\n的確な一撃 デッキに4枚以上\n[機動力][遠距離攻撃力]小アップ\n\nMS ABILITY\n障壁\n任意発動 自分 射程 ー コスト 3\n自身の周りにバリアを展開する。展開したバリアは自身へのダメージを一定値防ぎ、バリア展開中は弱体効果を受けない状態となる。\n\nSPECIAL ATTACK\nガンビット斉射\n連携 ー 連携 ー\n連携 ー 連携 ー\n単体（敵） 射程 4 射程 ー\nSPコスト 2 威力 3300 / ー\n敵単体に射撃攻撃でダメージを与える。\n/ ー\n\nUNITED SP\nー\n\nIMPACT AREA\n[アイコン:緑丸 中央やや上]\n[アイコン:黄三角 中央やや下]\n\nillust Gas1\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nFQ04-020 M"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "FORSQUAD_SEASON_04_FQ04-020_ガンダム・エアリアル(改修型)[パーメットスコア・エイト]_ocr_raw.json",
   "ocr_timestamp": "2026-02-24T18:20:38.839304",

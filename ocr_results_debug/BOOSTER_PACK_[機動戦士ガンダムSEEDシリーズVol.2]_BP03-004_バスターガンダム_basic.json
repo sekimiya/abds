@@ -5,26 +5,39 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP03-004.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP03-004_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "BP03-004",
     "type": "MS",
-    "card_label": {
-      "class": "遠距離",
-      "cost_label": "コスト6"
-    },
     "name": "バスターガンダム",
-    "model": "GAT-X103 BUSTER GUNDAM",
     "cost": 6,
+    "rarity": "R",
     "category": "遠距離",
     "affiliation": "ザフト",
-    "pilot": "ディアッカ・エルスマン",
+    "illustrator": "toriyufu",
     "stats": {
-      "height": "18.86m",
-      "weight": "84.2t",
       "mobility": 230,
       "ranged_attack": 500,
       "melee_attack": 90,
       "hp": 480
     },
+    "link_ability": [
+      {
+        "name": "ガンダムSEED",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "ディアッカ・エルスマン",
+    "model": "GAT-X103 BUSTER GUNDAM",
     "terrain_compatibility": {
       "ground": "A",
       "space": "A",
@@ -51,18 +64,6 @@
       "cost": 5,
       "description": "通常攻撃がチャージを伴う強力な貫通射撃のメイン攻撃のみになる。この効果は自身が撤退するまで解除できない。"
     },
-    "link_ability": [
-      {
-        "name": "ガンダムSEED",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "戦況を変える力",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "ライフル貫通射撃",
       "target": "貫通(敵)",
@@ -70,11 +71,11 @@
       "sp_cost": 2,
       "power": 2900,
       "description": "射線上の敵に貫通射撃でダメージを与える。",
-      "united_sp": null
-    },
-    "rarity": "R",
-    "illustrator": "toriyufu",
-    "raw": "MS\n\n遠距離　コスト6\nGAT-X103 BUSTER GUNDAM\nバスターガンダム\n\n頭頂高　18.86m\n本体重量　84.2t\n所属　ザフト\nパイロット　ディアッカ・エルスマン\n\n地上 A　宇宙 A　砂漠 C　水中 C\n\n機動力 230\n遠距離攻撃 500\n近距離攻撃 90\nHP 480\n\nWEAPON\nMAIN 高エネルギー収束火線ライフル　射程 4　遠距離\nSUB ガンランチャー　射程 2　近距離\n\nLINK ABILITY\nガンダムSEED　デッキに3枚以上\n[機動力]小アップ\n\nMS ABILITY\n装束[貫通改]\n任意発動　自分　射程 ー　コスト 5\n通常攻撃がチャージを伴う強力な貫通射撃のメイン攻撃のみになる。この効果は自身が撤退するまで解除できない。\n\n戦況を変える力　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nSPECIAL ATTACK　UNITED SP\nライフル貫通射撃\n連携 ー　連携 ー\n連携 ー　連携 ー\n貫通(敵)　射程 4　ー　射程 ー\nSPコスト 2　威力 2900 / ー\n\n射線上の敵に貫通射撃でダメージを与える。/ ー\n\nIMPACT AREA\n[アイコン:縦一列貫通エリア、中央寄り]\n\nillust toriyufu\n©創通・サンライズ\n機動戦士ガンダム\nARSENAL BASE\nBANDAI MADE IN JAPAN\n\nBP03-004　R"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "BOOSTER_PACK_[機動戦士ガンダムSEEDシリーズVol.2]_BP03-004_バスターガンダム_ocr_raw.json",
   "ocr_timestamp": "2026-02-28T02:54:35.633874",

@@ -5,26 +5,39 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-465.jpg?v8",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-465_b.jpg?v8",
   "ocr_data": {
-    "card_id": "PR-465",
     "type": "MS",
-    "card_label": {
-      "class": "近距離",
-      "cost_label": "コスト5"
-    },
     "name": "インフィニットジャスティスガンダム弐式",
-    "model": "ZGMF-X191M2 INFINITE JUSTICE GUNDAM TYPEⅡ",
     "cost": 5,
+    "rarity": "PR",
     "category": "近距離",
     "affiliation": "ターミナル",
-    "pilot": "アスラン・ザラ、カガリ・ユラ・アスハ",
+    "illustrator": "Eske Yoshinob",
     "stats": {
-      "height": "19.64m",
-      "weight": "78.07t",
       "mobility": 250,
       "ranged_attack": 90,
       "melee_attack": 470,
       "hp": 390
     },
+    "link_ability": [
+      {
+        "name": "SEED FREEDOM",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "アスラン・ザラ、カガリ・ユラ・アスハ",
+    "model": "ZGMF-X191M2 INFINITE JUSTICE GUNDAM TYPEⅡ",
     "terrain_compatibility": {
       "ground": "A",
       "space": "S",
@@ -51,18 +64,6 @@
       "cost": 6,
       "description": "自身を中心とした大範囲内の味方ユニットの弱体化状態を無効化し、30秒間、[近距離攻撃力]を中アップする。"
     },
-    "link_ability": [
-      {
-        "name": "SEED FREEDOM",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "多彩な戦術",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "アンビデクストラス・ハルバード強装",
       "target": "単体(敵)",
@@ -70,26 +71,18 @@
       "sp_cost": 2,
       "power": 3500,
       "description": "敵単体に格闘攻撃でダメージを与え、一定時間、自身の[機動力][近距離攻撃力]をアップする。",
-      "united_sp": null,
       "sp_type": "ECHOES BEAT SP",
-      "eb_level": 3,
-      "eb_name": "スピッツェシュヴァート ビームホーン Lv.3",
-      "eb_power": 5000,
-      "eb_description": "EBLv.を3下げる。敵単体に格闘攻撃でダメージを与え、一定時間、自身の[機動力]をアップし、受けるダメージを軽減する。以後通常攻撃がメイン武装のみとなり、近距離攻撃力が一定値以上の間、撃破効果を持つ特殊攻撃に変化する。出撃時1度のみ使用可能。",
-      "eb_target": "単体(敵)",
-      "eb_range": 2,
       "echoes_beat": {
         "name": "スピッツェシュヴァート ビームホーン Lv.3",
         "level": 3,
-        "target": "単体(敵)",
-        "range": 2,
         "power": 5000,
+        "range": 2,
+        "target": "単体(敵)",
         "description": "EBLv.を3下げる。敵単体に格闘攻撃でダメージを与える。出撃時1度のみ使用可能。"
-      }
-    },
-    "rarity": "PR",
-    "illustrator": "Eske Yoshinob",
-    "raw": "MS\n\n近距離 コスト5\n\nZGMF-X191M2 INFINITE JUSTICE GUNDAM TYPEⅡ\nインフィニットジャスティスガンダム弐式\n\n頭頂高 19.64m\n本体重量 78.07t\n所属 ターミナル\nパイロット アスラン・ザラ、カガリ・ユラ・アスハ\n\n地上 A 宇宙 S 砂漠 A 水中 C\n機動力 250\n遠距離攻撃 90\n近距離攻撃 470\nHP 390\n\nWEAPON\nMAIN アンビデクストラス・ハルバード 射程 1 近距離\nSUB 高エネルギービームライフル 射程 3 遠距離\n\nLINK ABILITY\nSEED FREEDOM デッキに3枚以上\n[機動力]小アップ\n\n多彩な戦術 デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nMS ABILITY\n鼓舞[近距離][弱体化解除]\n任意発動 範囲(味方) 射程 ー コスト 6\n自身を中心とした大範囲内の味方ユニットの弱体化状態を無効化し、30秒間、[近距離攻撃力]を中アップする。\n\nSPECIAL ATTACK ECHOES BEAT SP\nアンビデクストラス・ハルバード強装\nスピッツェシュヴァート ビームホーン Lv.3\nECHOES BEAT Lv.を下げることで、共鳴戦術技が発動する。\n単体(敵) 射程 2 単体(敵) 射程 2\nSPコスト 2 威力 3500 / 5000\n敵単体に格闘攻撃でダメージを与え、一定時間、自身の[機動力][近距離攻撃力]をアップする。／ EBLv.を3下げる。敵単体に格闘攻撃でダメージを与え、一定時間、自身の[機動力]をアップし、受けるダメージを軽減する。以後通常攻撃がメイン武装のみとなり、近距離攻撃力が一定値以上の間、撃破効果を持つ特殊攻撃に変化する。出撃時1度のみ使用可能。\n\nIMPACT AREA\n[アイコン:赤丸 小] [アイコン:緑丸 小] [アイコン:黄丸 大] [アイコン:三角 下段中央]\n\nillust Eske Yoshinob\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\nPR-465 PR"
+      },
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "プロモーション_PR-465_インフィニットジャスティスガンダム弐式_ocr_raw.json",
   "ocr_timestamp": "2026-05-11T00:00:00.000000",

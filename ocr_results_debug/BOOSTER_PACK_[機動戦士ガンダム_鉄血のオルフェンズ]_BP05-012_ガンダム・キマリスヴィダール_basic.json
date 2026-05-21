@@ -5,26 +5,39 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP05-012.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP05-012_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "BP05-012",
     "type": "MS",
-    "card_label": {
-      "class": "機動",
-      "cost_label": "コスト2"
-    },
     "name": "ガンダム・キマリスヴィダール",
-    "model": "ASW-G-66 GUNDAM KIMARIS VIDAR",
     "cost": 2,
+    "rarity": "P",
     "category": "機動",
     "affiliation": "ギャラルホルン",
-    "pilot": "ガエリオ・ボードウィン",
+    "illustrator": "toriyufu",
     "stats": {
-      "height": "19.5m",
-      "weight": "34.5t",
       "mobility": 230,
       "ranged_attack": 60,
       "melee_attack": 290,
       "hp": 370
     },
+    "link_ability": [
+      {
+        "name": "鉄血のオルフェンズ",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "肉薄する戦い",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "ガエリオ・ボードウィン",
+    "model": "ASW-G-66 GUNDAM KIMARIS VIDAR",
     "terrain_compatibility": {
       "ground": "S",
       "space": "S",
@@ -51,18 +64,6 @@
       "cost": 5,
       "description": "自身を中心とした大範囲の味方ユニットのHPを中回復し、弱体化状態を無効化する。"
     },
-    "link_ability": [
-      {
-        "name": "鉄血のオルフェンズ",
-        "condition": "デッキに3枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      },
-      {
-        "name": "肉薄する戦い",
-        "condition": "デッキに4枚以上",
-        "effect": "[機動力][近距離攻撃力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "阿頼耶識 typeE",
       "target": "単体(敵)",
@@ -70,11 +71,11 @@
       "sp_cost": 2,
       "power": 3400,
       "description": "敵単体にダメージを与え、メイン武装のみになり能力が上昇。自身が撤退するまで効果は持続。SP威力は地形適性で変化。",
-      "united_sp": null
-    },
-    "rarity": "P",
-    "illustrator": "toriyufu",
-    "raw": "機動 コスト2\n\nASW-G-66 GUNDAM KIMARIS VIDAR\n\nMS\n\nガンダム・キマリスヴィダール\n\n鉄血のオルフェンズ\n機動戦士ガンダム\n\n頭頂高 19.5m\n本体重量 34.5t\n所属 ギャラルホルン\nパイロット ガエリオ・ボードウィン\n\n地上 S 宇宙 S 砂漠 A 水中 C\n\n機動力 230\n遠距離攻撃 60\n近距離攻撃 290\nHP 370\n\nWEAPON\n\nMAIN ドリルランス 射程 1 近距離\nSUB ドリルランス(200mm砲) 射程 3 遠距離\n\nLINK ABILITY\n\n鉄血のオルフェンズ デッキに3枚以上\n[遠距離攻撃力] [近距離攻撃力]\n小アップ\n\nMS ABILITY\n\n補給[弱体化解除]\n任意発動 範囲(味方) 射程 ー コスト 5\n\n自身を中心とした大範囲の味方ユニットのHPを中回復し、弱体化状態を無効化する。\n\n肉薄する戦い デッキに4枚以上\n[機動力] [近距離攻撃力] 小アップ\n\nSPECIAL ATTACK\n\n阿頼耶識 typeE\n連携 ー 連携 ー\n連携 ー 連携 ー\n単体(敵) 射程 2\nSPコスト 2 威力 3400 / ー\n\nUNITED SP\nー\n射程 ー\n\n敵単体にダメージを与え、メイン武装のみになり能力が上昇。自身が撤退するまで効果は持続。SP威力は地形適性で変化。/ ー\n\nIMPACT AREA\n\nillust toriyufu\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n\n機動戦士ガンダム\nARSENAL BASE\n\nBP05-012 P"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "BOOSTER_PACK_[機動戦士ガンダム_鉄血のオルフェンズ]_BP05-012_ガンダム・キマリスヴィダール_ocr_raw.json",
   "ocr_timestamp": "2026-02-26T18:27:02.414205",

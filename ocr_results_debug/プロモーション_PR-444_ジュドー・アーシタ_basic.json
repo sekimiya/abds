@@ -5,19 +5,40 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-444.jpg?v8",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-444_b.jpg?v8",
   "ocr_data": {
-    "card_id": "PR-444",
     "type": "PL",
-    "card_label": {
-      "class": "殲滅",
-      "cost_label": "コスト4"
-    },
     "name": "ジュドー・アーシタ",
-    "english_name": "JUDAU ASHTA",
     "cost": 4,
+    "rarity": "PR",
     "category": "殲滅",
     "affiliation": "エゥーゴ",
+    "illustrator": "Yosuke Ichikawa",
+    "stats": {
+      "mobility": 220,
+      "ranged_attack": 360,
+      "melee_attack": 40,
+      "hp": 330
+    },
+    "link_ability": [
+      {
+        "name": "宇宙に響く鼓動",
+        "condition": "デッキに3枚以上",
+        "effect": "ECHOES BEAT Lv.が表示される。\n味方ユニットが戦術技を発動するとEBLv.が上がる。\n[HP][SP威力]小アップ",
+        "is_eb_link": true,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "JUDAU ASHTA",
     "physical": {
-      "height": null,
+      "height": "",
       "age": 14
     },
     "units": [
@@ -25,37 +46,16 @@
       "ZZガンダム",
       "Zガンダム"
     ],
-    "stats": {
-      "mobility": 220,
-      "ranged_attack": 360,
-      "melee_attack": 40,
-      "hp": 330
-    },
     "pilot_skill": {
       "name": "一千万年銀河",
       "trigger": "EBLv.3に上昇時",
       "effect": "30秒間、自身の[遠距離攻撃力]をアップし、受けるダメージを軽減する。",
       "has_sq_skill": false,
       "sq_skill_details": null,
-      "is_eb_skill": true
-    },
-    "link_ability": [
-      {
-        "name": "宇宙に響く鼓動",
-        "condition": "デッキに3枚以上",
-        "effect": "ECHOES BEAT Lv.が表示される。\n味方ユニットが戦術技を発動するとEBLv.が上がる。\n[HP][SP威力]小アップ",
-        "is_eb_link": true
-      },
-      {
-        "name": "多彩な戦術",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
-        "is_eb_link": false
-      }
-    ],
-    "rarity": "PR",
-    "illustrator": "Yosuke Ichikawa",
-    "raw": "PL\n\n殲滅 コスト4\n\nジュドー・アーシタ\nJUDAU ASHTA\n\n身長 ー\n年齢 14歳\n所属 エゥーゴ\n搭乗機体 フルアーマー ZZガンダム、ZZガンダム、Zガンダム\n\nEB PL SKILL\n一千万年銀河\n\nEBLv.3に上昇時\n\n30秒間、自身の[遠距離攻撃力]をアップし、受けるダメージを軽減する。\n\nEB LINK ABILITY\n宇宙に響く鼓動 デッキに3枚以上\n\nECHOES BEAT Lv.が表示される。\n味方ユニットが戦術技を発動するとEBLv.が上がる。\n[HP][SP威力]小アップ\n\n多彩な戦術 デッキに4枚以上\n\n[遠距離攻撃力][近距離攻撃力]小アップ\n\n機動力 220\n遠距離攻撃 360\n近距離攻撃 40\nHP 330\n\nillust Yosuke Ichikawa\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n\n機動戦士ガンダムZZ\nARSENAL BASE\n\nPR-444 PR\nNOT FOR SALE"
+      "is_eb_skill": true,
+      "eb_trigger_level": 3,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_raw_file": "プロモーション_PR-444_ジュドー・アーシタ_ocr_raw.json",
   "ocr_timestamp": "2026-05-11T00:00:00.000000",

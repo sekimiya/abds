@@ -5,17 +5,38 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB01-051.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB01-051_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "AB01-051",
     "type": "PL",
-    "card_label": {
-      "class": "制圧",
-      "cost_label": "コスト4"
-    },
     "name": "アムロ・レイ",
-    "english_name": "AMURO RAY",
     "cost": 4,
+    "rarity": "M",
     "category": "制圧",
     "affiliation": "地球連邦軍",
+    "illustrator": "",
+    "stats": {
+      "mobility": 150,
+      "ranged_attack": 200,
+      "melee_attack": 240,
+      "hp": 160
+    },
+    "link_ability": [
+      {
+        "name": "機動戦士ガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "ニュータイプの潜在能力",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "AMURO RAY",
     "physical": {
       "height": "168cm",
       "age": 15
@@ -23,34 +44,16 @@
     "units": [
       "ガンダム"
     ],
-    "stats": {
-      "mobility": 150,
-      "ranged_attack": 200,
-      "melee_attack": 240,
-      "hp": 160
-    },
     "pilot_skill": {
       "name": "決定的な一撃",
       "trigger": "敵戦艦／拠点をロックオン時",
       "effect": "敵戦艦／拠点へのダメージを中アップする。",
       "has_sq_skill": false,
-      "sq_skill_details": null
-    },
-    "link_ability": [
-      {
-        "name": "機動戦士ガンダム",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "ニュータイプの潜在能力",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      }
-    ],
-    "rarity": "M",
-    "illustrator": null,
-    "raw": "PL\n\n制圧 コスト4\n\nアムロ・レイ\nAMURO RAY\n\n身長 168cm\n年齢 15歳\n所属 地球連邦軍\n搭乗機体 ガンダム\n\n[アイコン:機動戦士ガンダム]\n[アイコン:地上○宇宙○]\n\nPL SKILL\n\n決定的な一撃\n\n敵戦艦／拠点をロックオン時\n\n敵戦艦／拠点へのダメージを中\nアップする。\n\nLINK ABILITY\n\n機動戦士ガンダム デッキに3枚以上\n[機動力] 小アップ\n\nニュータイプの潜在能力 デッキに3枚以上\n[機動力] 小アップ\n\n機動力 150\n遠距離攻撃 200\n近距離攻撃 240\nHP 160\n\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n\n機動戦士ガンダム\nARSENAL BASE\n\nAB01-051 M"
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_raw_file": "SEASON_01_AB01-051_アムロ・レイ_ocr_raw.json",
   "ocr_timestamp": "2026-02-23T12:35:45.071776",

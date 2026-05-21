@@ -5,31 +5,36 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX01-019.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX01-019_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "LX01-019",
     "type": "MS",
-    "card_label": {
-      "class": "近距離",
-      "cost_label": "コスト7"
-    },
     "name": "サザビー",
-    "model": "MSN-04 SAZABI",
     "cost": 7,
+    "rarity": "C",
     "category": "近距離",
     "affiliation": "新生ネオ・ジオン",
-    "pilot": "シャア・アズナブル",
+    "illustrator": "Tatsumi Takuan",
     "stats": {
-      "height": "25.0m",
-      "weight": "30.5t",
       "mobility": 170,
       "ranged_attack": 180,
       "melee_attack": 320,
       "hp": 300
     },
+    "link_ability": [
+      {
+        "name": "逆襲のシャア",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "シャア・アズナブル",
+    "model": "MSN-04 SAZABI",
     "terrain_compatibility": {
       "ground": "A",
       "space": "S",
       "desert": "C",
-      "water": null
+      "water": ""
     },
     "weapon": {
       "main": {
@@ -51,13 +56,6 @@
       "cost": 3,
       "description": "自身の周囲に殲滅タイプの味方ユニットを呼び出す。※上限3ユニットまで。"
     },
-    "link_ability": [
-      {
-        "name": "逆襲のシャア",
-        "condition": "デッキに3枚以上",
-        "effect": "[遠距離攻撃力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "ビーム・トマホーク強撃",
       "target": "単体(敵)",
@@ -65,11 +63,11 @@
       "sp_cost": 2,
       "power": 3400,
       "description": "敵単体に格闘攻撃でダメージを与える。",
-      "united_sp": null
-    },
-    "rarity": "C",
-    "illustrator": "Tatsumi Takuan",
-    "raw": "MS\n\n近距離 コスト7\n\nMSN-04 SAZABI\nサザビー\n\n全高 25.0m\n本体重量 30.5t\n所属 新生ネオ・ジオン\nパイロット シャア・アズナブル\n\n地上 A 宇宙 S 砂漠 C\n\n機動力 170\n遠距離攻撃 180\n近距離攻撃 320\nHP 300\n\nWEAPON\nMAIN ビーム・トマホーク 射程 1 近距離\nSUB 拡散メガ粒子砲 射程 3 遠距離\n\nLINK ABILITY\n逆襲のシャア デッキに3枚以上\n[遠距離攻撃力]小アップ\n\nMS ABILITY\n増援[殲滅]\n任意発動 特殊(自分) 射程 ー コスト 3\n自身の周囲に殲滅タイプの味方ユニットを呼び出す。※上限3ユニットまで。\n\nSPECIAL ATTACK\nビーム・トマホーク強撃\n単体(敵) 射程 2\nSPコスト 2 威力 3400\n敵単体に格闘攻撃でダメージを与える。\n\nillust Tatsumi Takuan\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nLX01-019 C"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "LINXTAGE_SEASON_01_LX01-019_サザビー_ocr_raw.json",
   "ocr_timestamp": "2026-03-02T07:11:17.476213",

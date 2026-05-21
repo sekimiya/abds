@@ -1,93 +1,99 @@
 {
-    "card_number": "VE01-013",
-    "card_name": "アリュゼウス",
-    "series": "WAVECHOES SEASON:01",
-    "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE01-013.jpg?v250630",
-    "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE01-013_b.jpg?v250630",
-    "ocr_data": {
-        "card_number": "VE01-013",
-        "rarity": "U",
-        "ms_name": "アリュゼウス・ノブエリス",
-        "ms_name_en": "ALYZEUS NOVOERIS",
-        "type": "MS",
-        "cost": 7,
-        "spec": {
-            "head_height": null,
-            "weight": null,
-            "affiliation": null
-        },
-        "pilot": null,
-        "stats": {
-            "ranged_attack": 640,
-            "melee_attack": 90,
-            "hp": 700,
-            "mobility": 270
-        },
-        "weapon": {
-            "main": {
-                "name": "ビーム・ライフル",
-                "type": "射撃",
-                "range": 3,
-                "area": "遠距離"
-            },
-            "sub": {
-                "name": "90mm腕部マシンガン",
-                "type": "射撃",
-                "range": 2,
-                "area": "近距離"
-            }
-        },
-        "link_ability": [
-            {
-                "name": "閃光のハサウェイ",
-                "condition": "デッキに3枚以上",
-                "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-            },
-            {
-                "name": "戦況を変える力",
-                "condition": "デッキに4枚以上",
-                "effect": "[機動力][HP]小アップ"
-            },
-            {
-                "name": "宇宙に響く鼓動",
-                "condition": "デッキに3枚以上で",
-                "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
-                "is_eb_link": true
-            }
-        ],
-        "ms_ability": {
-            "name": "転化[攻撃]",
-            "activation": "任意発動",
-            "target": "単体(複)",
-            "range": 3,
-            "cost": 4,
-            "description": "ロックオン中の敵に攻撃を行う。使用回数に応じて、攻撃範囲が変わる。[1回:単体][2回:敵を中心とした範囲][3回以上:敵を中心とした範囲／ダメージ上昇]"
-        },
-        "special_attack": {
-            "name": "ファンネル・ミサイル斉射",
-            "level": 1,
-            "echoes_beat": {
-                "description": "ECHOES BEAT Lv.を下げることで、Lv.戦闘技が発動する。"
-            },
-            "sp_type": "ECHOES BEAT",
-            "power": 3300,
-            "range": 3,
-            "sp_cost": 2,
-            "target": "範囲(射撃)",
-            "description": ""
-        },
-        "raw": "",
-        "category": "遠距離",
-        "terrain_compatibility": {
-            "ground": "S",
-            "space": "A",
-            "desert": "B",
-            "water": "C"
-        },
-        "name": "アリュゼウス・ノブエリス"
+  "card_number": "VE01-013",
+  "card_name": "アリュゼウス",
+  "series": "WAVECHOES SEASON:01",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE01-013.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE01-013_b.jpg?v250630",
+  "ocr_data": {
+    "type": "MS",
+    "name": "アリュゼウス",
+    "cost": 7,
+    "rarity": "U",
+    "category": "遠距離",
+    "affiliation": "",
+    "illustrator": "",
+    "stats": {
+      "mobility": 270,
+      "ranged_attack": 640,
+      "melee_attack": 90,
+      "hp": 700
     },
-    "ocr_raw_file": "WAVECHOES_SEASON_01_VE01-013_アリュゼウス_ocr_raw.json",
-    "ocr_timestamp": "2026-03-30T01:33:43.970646",
-    "ocr_type": "basic",
-    "ocr_engine": "claude_code_cli_combined"
+    "link_ability": [
+      {
+        "name": "閃光のハサウェイ",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][HP]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "宇宙に響く鼓動",
+        "condition": "デッキに3枚以上で",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": true,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "",
+    "model": "",
+    "terrain_compatibility": {
+      "ground": "S",
+      "space": "A",
+      "desert": "B",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "ビーム・ライフル",
+        "range": 3,
+        "type": "射撃"
+      },
+      "sub": {
+        "name": "90mm腕部マシンガン",
+        "range": 2,
+        "type": "射撃"
+      }
+    },
+    "ms_ability": {
+      "name": "転化[攻撃]",
+      "activation": "任意発動",
+      "target": "単体(複)",
+      "range": 3,
+      "cost": 4,
+      "description": "ロックオン中の敵に攻撃を行う。使用回数に応じて、攻撃範囲が変わる。[1回:単体][2回:敵を中心とした範囲][3回以上:敵を中心とした範囲／ダメージ上昇]"
+    },
+    "special_attack": {
+      "name": "ファンネル・ミサイル斉射",
+      "target": "範囲(射撃)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3300,
+      "description": "",
+      "sp_type": "ECHOES BEAT",
+      "echoes_beat": {
+        "name": "",
+        "level": null,
+        "power": null,
+        "range": null,
+        "target": "",
+        "description": "ECHOES BEAT Lv.を下げることで、Lv.戦闘技が発動する。"
+      },
+      "united_sp": null,
+      "squad_sp": null
+    }
+  },
+  "ocr_raw_file": "WAVECHOES_SEASON_01_VE01-013_アリュゼウス_ocr_raw.json",
+  "ocr_timestamp": "2026-03-30T01:33:43.970646",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli_combined"
 }

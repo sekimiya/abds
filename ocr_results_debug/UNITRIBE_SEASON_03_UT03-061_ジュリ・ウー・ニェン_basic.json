@@ -5,52 +5,55 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT03-061.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT03-061_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "UT03-061",
     "type": "PL",
-    "card_label": {
-      "class": "防衛",
-      "cost_label": "コスト1"
-    },
     "name": "ジュリ・ウー・ニェン",
-    "english_name": "JURI WU NIEN",
     "cost": 1,
+    "rarity": "M",
     "category": "防衛",
     "affiliation": "オーブ",
-    "physical": {
-      "height": null,
-      "age": null
-    },
-    "units": [
-      "M1アストレイ"
-    ],
+    "illustrator": "",
     "stats": {
       "mobility": 170,
       "ranged_attack": 210,
       "melee_attack": 100,
       "hp": 230
     },
+    "link_ability": [
+      {
+        "name": "ガンダムSEED",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "揺るがぬ意志",
+        "condition": "デッキに2枚以上",
+        "effect": "[HP]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "JURI WU NIEN",
+    "physical": {
+      "height": "",
+      "age": ""
+    },
+    "units": [
+      "M1アストレイ"
+    ],
     "pilot_skill": {
       "name": "徹底した遠距離戦",
       "trigger": "敵ユニットをロックオン時",
       "effect": "20秒間、自身の[遠距離攻撃力]を中アップする。",
       "has_sq_skill": false,
-      "sq_skill_details": null
-    },
-    "link_ability": [
-      {
-        "name": "ガンダムSEED",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "揺るがぬ意志",
-        "condition": "デッキに2枚以上",
-        "effect": "[HP]小アップ"
-      }
-    ],
-    "rarity": "M",
-    "illustrator": null,
-    "raw": "PL\n\n防衛 コスト1\n\nジュリ・ウー・ニェン\nJURI WU NIEN\n\n身長 ー\n年齢 ー\n所属 オーブ\n搭乗機体 M1アストレイ\n\nPL SKILL\n徹底した遠距離戦\n敵ユニットをロックオン時\n20秒間、自身の[遠距離攻撃力]を\n中アップする。\n\nLINK ABILITY\nガンダムSEED デッキに3枚以上\n[機動力]小アップ\n\n揺るがぬ意志 デッキに2枚以上\n[HP]小アップ\n\n機動力 170\n遠距離攻撃 210\n近距離攻撃 100\nHP 230\n\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\nUT03-061 M"
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_raw_file": "UNITRIBE_SEASON_03_UT03-061_ジュリ・ウー・ニェン_ocr_raw.json",
   "ocr_timestamp": "2026-02-26T17:30:04.975009",

@@ -5,26 +5,39 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ03-007.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ03-007_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "FQ03-007",
     "type": "MS",
-    "card_label": {
-      "class": "遠距離",
-      "cost_label": "コスト5"
-    },
     "name": "バンシィ・ノルン(デストロイモード)",
-    "model": "RX-0[N] UNICORN GUNDAM 02 BANSHEE NORN",
     "cost": 5,
+    "rarity": "P",
     "category": "遠距離",
     "affiliation": "地球連邦軍",
-    "pilot": "リディ・マーセナス",
+    "illustrator": "Gas1",
     "stats": {
-      "height": "21.7m",
-      "weight": "27.3t",
       "mobility": 260,
       "ranged_attack": 550,
       "melee_attack": 20,
       "hp": 570
     },
+    "link_ability": [
+      {
+        "name": "ガンダムUC",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "的確な一撃",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][遠距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "リディ・マーセナス",
+    "model": "RX-0[N] UNICORN GUNDAM 02 BANSHEE NORN",
     "terrain_compatibility": {
       "ground": "A",
       "space": "S",
@@ -51,18 +64,6 @@
       "cost": 4,
       "description": "自身を中心とした範囲内の敵ユニットをスタンさせ、一定時間被ダメージを少しアップする。"
     },
-    "link_ability": [
-      {
-        "name": "ガンダムUC",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "的確な一撃",
-        "condition": "デッキに4枚以上",
-        "effect": "[機動力][遠距離攻撃力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "リボルビング・ランチャー斉射",
       "target": "単体(敵)",
@@ -70,11 +71,11 @@
       "sp_cost": 2,
       "power": 3500,
       "description": "敵単体に射撃攻撃でダメージを与える。",
-      "united_sp": null
-    },
-    "rarity": "P",
-    "illustrator": "Gas1",
-    "raw": "遠距離　コスト5　MS\n\nRX-0[N] UNICORN GUNDAM 02 BANSHEE NORN\n機動戦士ガンダムUC\n\nバンシィ・ノルン(デストロイモード)\n\n頭頂高　21.7m\n本体重量　27.3t\n所属　地球連邦軍\nパイロット　リディ・マーセナス\n\n地上 A　宇宙 S　砂漠 C　水中 B\n\n機動力　260\n遠距離攻撃　550\n近距離攻撃　20\nHP　570\n\nWEAPON\nMAIN ビーム・マグナム　射程 3　遠距離\nSUB ビーム・サーベル　射程 1　近距離\n\nLINK ABILITY\nガンダムUC　デッキに3枚以上\n[機動力]小アップ\n\nMS ABILITY\n威圧\n任意発動　範囲(敵)　射程ー　コスト 4\n自身を中心とした範囲内の敵ユニットをスタンさせ、一定時間被ダメージを少しアップする。\n\n的確な一撃　デッキに4枚以上\n[機動力][遠距離攻撃力]小アップ\n\nSPECIAL ATTACK　　UNITED SP\nリボルビング・ランチャー斉射　ー\n連携 ー　　連携 ー\n連携 ー　　連携 ー\n単体(敵)　射程 3　ー　射程 ー\nSPコスト 2　威力　3500 / ー\n\n敵単体に射撃攻撃でダメージを与える。\n/ ー\n\nIMPACT AREA\n[アイコン:自機前方に緑小円1つ、中心に黄色大円]\n\nillust Gas1\n©創通・サンライズ\n機動戦士ガンダム ARSENAL BASE\nBANDAI MADE IN JAPAN\nFQ03-007　P"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "FORSQUAD_SEASON_03_FQ03-007_バンシィ・ノルン(デストロイモード)_ocr_raw.json",
   "ocr_timestamp": "2026-02-24T15:21:45.749227",

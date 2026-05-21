@@ -8,26 +8,39 @@
   "ocr_type": "basic",
   "ocr_timestamp": "2026-04-22T20:30:00.000000",
   "ocr_data": {
-    "card_id": "VE02-002",
     "type": "MS",
     "name": "エルメス",
-    "model": "MAN-08 ELMETH",
     "cost": 3,
+    "rarity": "C",
     "category": "遠距離",
     "affiliation": "ジオン公国軍",
-    "pilot": "ララァ・スン",
-    "card_label": {
-      "class": "遠距離",
-      "cost_label": "コスト3"
-    },
+    "illustrator": "",
     "stats": {
-      "height": "47.7m",
-      "weight": "163.7t",
       "mobility": 200,
       "ranged_attack": 280,
       "melee_attack": 0,
       "hp": 280
     },
+    "link_ability": [
+      {
+        "name": "機動戦士ガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "ララァ・スン",
+    "model": "MAN-08 ELMETH",
     "terrain_compatibility": {
       "ground": "C",
       "space": "S",
@@ -41,9 +54,9 @@
         "type": "遠距離"
       },
       "sub": {
-        "name": null,
+        "name": "",
         "range": null,
-        "type": null
+        "type": ""
       }
     },
     "ms_ability": {
@@ -54,38 +67,24 @@
       "cost": 2,
       "description": "自身を中心とした大範囲内にいる、自身を除く味方ユニットのMSアビリティのクールタイムを、一定時間短縮する。"
     },
-    "link_ability": [
-      {
-        "name": "機動戦士ガンダム",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "戦況を変える力",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "ビット斉射",
       "target": "単体(敵)",
       "range": 4,
       "sp_cost": 2,
-      "power": "3000 / 4500",
-      "sp_type": "ECHOES BEAT SP",
+      "power": 3000,
       "description": "敵単体に射撃攻撃でダメージを与える。",
-      "united_sp": null,
+      "sp_type": "ECHOES BEAT SP",
       "echoes_beat": {
         "name": "光る宇宙",
         "level": 3,
-        "target": "貫通(敵)",
-        "range": 4,
         "power": 4500,
-        "description": "EBLv.を3下げる。射線上の敵に貫通射撃でダメージを与える。出撃時1度のみ使用可能。",
-        "activation_note": "ECHOES BEAT Lv.を下げることで、共鳴戦術技が発動する。"
-      }
-    },
-    "rarity": "C",
-    "raw": "遠距離 コスト3 MAN-08 ELMETH エルメス\n全高 47.7m 本体重量 163.7t 所属 ジオン公国軍 パイロット ララァ・スン\n地上 C 宇宙 S 砂漠 B 水中 B 機動力 200 遠距離攻撃 280 近距離攻撃 0 HP 280\nWEAPON\nMAIN ビット 射程4 遠距離\nSUB － 射程－ －\nMS ABILITY\n再縮\n任意発動 範囲(味方) 射程－ コスト2\n自身を中心とした大範囲内にいる、自身を除く味方ユニットのMSアビリティのクールタイムを、一定時間短縮する。\nLINK ABILITY\n機動戦士ガンダム デッキに3枚以上\n[機動力]小アップ\n戦況を変える力 デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\nSPECIAL ATTACK ECHOES BEAT SP\nビット斉射 光る宇宙 Lv.3\nECHOES BEAT Lv.を下げることで、共鳴戦術技が発動する。\n単体(敵) 射程4 貫通(敵) 射程4\nSPコスト2 威力 3000 / 4500\n敵単体に射撃攻撃でダメージを与える。／EBLv.を3下げる。射線上の敵に貫通射撃でダメージを与える。出撃時1度のみ使用可能。\nVE02-002 C"
+        "range": 4,
+        "target": "貫通(敵)",
+        "description": "EBLv.を3下げる。射線上の敵に貫通射撃でダメージを与える。出撃時1度のみ使用可能。"
+      },
+      "united_sp": null,
+      "squad_sp": null
+    }
   }
 }

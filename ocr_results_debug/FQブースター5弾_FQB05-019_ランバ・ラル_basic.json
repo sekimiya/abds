@@ -5,52 +5,55 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQB05-019.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQB05-019_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "FQB05-019",
     "type": "PL",
-    "card_label": {
-      "class": "防衛",
-      "cost_label": "コスト2"
-    },
     "name": "ランバ・ラル",
-    "english_name": "RAMBA RAL",
     "cost": 2,
+    "rarity": "R",
     "category": "防衛",
     "affiliation": "ジオン公国軍",
-    "physical": {
-      "height": null,
-      "age": 35
-    },
-    "units": [
-      "グフ"
-    ],
+    "illustrator": "",
     "stats": {
       "mobility": 170,
       "ranged_attack": 250,
       "melee_attack": 30,
       "hp": 250
     },
+    "link_ability": [
+      {
+        "name": "機動戦士ガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "RAMBA RAL",
+    "physical": {
+      "height": "",
+      "age": 35
+    },
+    "units": [
+      "グフ"
+    ],
     "pilot_skill": {
       "name": "確固たる信念",
       "trigger": "HP50%以下の時",
       "effect": "自身が受けるダメージを軽減する。",
       "has_sq_skill": false,
-      "sq_skill_details": null
-    },
-    "link_ability": [
-      {
-        "name": "機動戦士ガンダム",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "多彩な戦術",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      }
-    ],
-    "rarity": "R",
-    "illustrator": null,
-    "raw": "防衛 コスト2\n\nPL\n\nランバ・ラル\nRAMBA RAL\n\n身長 ー\n年齢 35歳\n所属 ジオン公国軍\n搭乗機体 グフ\n\nPL SKILL\n\n確固たる信念\n\nHP50%以下の時\n\n自身が受けるダメージを軽減する。\n\nLINK ABILITY\n\n機動戦士ガンダム デッキに3枚以上\n[機動力]小アップ\n\n多彩な戦術 デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\n機動力 170\n遠距離攻撃 250\n近距離攻撃 30\nHP 250\n\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\n\nFQB05-019 R"
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_raw_file": "FQブースター5弾_FQB05-019_ランバ・ラル_ocr_raw.json",
   "ocr_timestamp": "2026-02-28T05:10:36.919854",

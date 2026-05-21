@@ -5,26 +5,39 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-218.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-218_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "PR-218",
     "type": "MS",
-    "card_label": {
-      "class": "機動",
-      "cost_label": "コスト2"
-    },
     "name": "フリーダムガンダム",
-    "model": "ZGMF-X10A FREEDOM GUNDAM",
     "cost": 2,
-    "category": "MS",
-    "affiliation": null,
-    "pilot": "キラ・ヤマト",
+    "rarity": "PR",
+    "category": "機動",
+    "affiliation": "",
+    "illustrator": "Eske Yoshinob",
     "stats": {
-      "height": "18.03m",
-      "weight": "71.5t",
       "mobility": 240,
       "ranged_attack": 250,
       "melee_attack": 40,
       "hp": 320
     },
+    "link_ability": [
+      {
+        "name": "ガンダムSEED",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "キラ・ヤマト",
+    "model": "ZGMF-X10A FREEDOM GUNDAM",
     "terrain_compatibility": {
       "ground": "A",
       "space": "S",
@@ -51,18 +64,6 @@
       "cost": 3,
       "description": "自身の周囲に殲滅タイプの味方ユニットを呼び出す。※上限3ユニットまで。"
     },
-    "link_ability": [
-      {
-        "name": "ガンダムSEED",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "戦況を変える力",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "ハイマットフルバースト",
       "target": "範囲(敵)",
@@ -70,11 +71,11 @@
       "sp_cost": 2,
       "power": 2700,
       "description": "ロックオン中の敵を中心に扇状の範囲攻撃を行い、範囲内の敵にダメージを与える。",
-      "united_sp": null
-    },
-    "rarity": "PR",
-    "illustrator": "Eske Yoshinob",
-    "raw": "機動　コスト2　MS\nZGMF-X10A FREEDOM GUNDAM\nフリーダムガンダム\nガンダムSEED（ロゴ）\n\n全高　18.03m\n本体重量　71.5t　　地上 A　宇宙 S　砂漠 A　水中 C\n所属　—　　　　　機動力 240\nパイロット　キラ・ヤマト　　遠距離攻撃 250\n　　　　　　　　　近距離攻撃 40\n　　　　　　　　　HP 320\n\nWEAPON\nMAIN　ルプス・ビームライフル　射程 3　遠距離\nSUB　ラケルダ・ビームサーベル　射程 1　近距離\n\nMS ABILITY\n増援[殲滅]\n任意発動　特殊(自分)　射程 —　コスト 3\n自身の周囲に殲滅タイプの味方ユニットを呼び出す。※上限3ユニットまで。\n\nLINK ABILITY\nガンダムSEED　デッキに3枚以上\n[機動力]小アップ\n\n戦況を変える力　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nIMPACT AREA（扇状・遠距離）\n\nSPECIAL ATTACK　UNITED SP\nハイマットフルバースト　—\n連携 —　　連携 —\n連携 —　　連携 —\n範囲(敵)　射程 4　—　射程 —\nSPコスト 2　威力 2700 / —\nロックオン中の敵を中心に扇状の範囲攻撃を行い、範囲内の敵にダメージを与える。/ —\n\nillust　Eske Yoshinob\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\nPR-218　PR"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "プロモーション_PR-218_フリーダムガンダム_ocr_raw.json",
   "ocr_timestamp": "2026-03-03T22:44:28.376822",

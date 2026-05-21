@@ -5,52 +5,55 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT05-064.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT05-064_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "UT05-064",
     "type": "PL",
-    "card_label": {
-      "class": "防衛",
-      "cost_label": "コスト2"
-    },
     "name": "カミキ・ミライ",
-    "english_name": "MIRAI KAMIKI",
     "cost": 2,
+    "rarity": "C",
     "category": "防衛",
-    "affiliation": null,
-    "physical": {
-      "height": null,
-      "age": 17
-    },
-    "units": [
-      "ベアッガイF"
-    ],
+    "affiliation": "",
+    "illustrator": "",
     "stats": {
       "mobility": 150,
       "ranged_attack": 140,
       "melee_attack": 70,
       "hp": 200
     },
+    "link_ability": [
+      {
+        "name": "トライ",
+        "condition": "デッキに3枚以上",
+        "effect": "[HP]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "的確な一撃",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][遠距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "MIRAI KAMIKI",
+    "physical": {
+      "height": "",
+      "age": 17
+    },
+    "units": [
+      "ベアッガイF"
+    ],
     "pilot_skill": {
       "name": "瓦解する敵陣",
       "trigger": "敵ユニットを撃破時",
       "effect": "40秒間、自身の[遠距離攻撃力]を大アップし、受けるダメージを軽減する。",
       "has_sq_skill": false,
-      "sq_skill_details": null
-    },
-    "link_ability": [
-      {
-        "name": "トライ",
-        "condition": "デッキに3枚以上",
-        "effect": "[HP]小アップ"
-      },
-      {
-        "name": "的確な一撃",
-        "condition": "デッキに4枚以上",
-        "effect": "[機動力][遠距離攻撃力]小アップ"
-      }
-    ],
-    "rarity": "C",
-    "illustrator": null,
-    "raw": "PL\n\n防衛　コスト2\n\nカミキ・ミライ\nMIRAI KAMIKI\n\n身長　ー\n年齢　17歳\n所属　ー\n搭乗機体　ベアッガイF\n\nPL SKILL\n瓦解する敵陣\n敵ユニットを撃破時\n\n40秒間、自身の[遠距離攻撃力]を\n大アップし、受けるダメージを軽減\nする。\n\nLINK ABILITY\nトライ　デッキに3枚以上\n[HP]小アップ\n\n的確な一撃　デッキに4枚以上\n[機動力][遠距離攻撃力]小アップ\n\n機動力　150\n遠距離攻撃　140\n近距離攻撃　70\nHP　200\n\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\nUT05-064　C"
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_raw_file": "UNITRIBE_SEASON_05_UT05-064_カミキ・ミライ_ocr_raw.json",
   "ocr_timestamp": "2026-02-26T19:51:03.799918",

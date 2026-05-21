@@ -5,26 +5,39 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-288.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-288_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "PR-288",
     "type": "MS",
-    "card_label": {
-      "class": "近距離",
-      "cost_label": "コスト4"
-    },
     "name": "ジークアクス",
-    "model": "GQuuuuuuX",
     "cost": 4,
-    "category": "GQuuuuuuX",
+    "rarity": "PR",
+    "category": "近距離",
     "affiliation": "ポメラニアンズ",
-    "pilot": "アマテ・ユズリハ(マチュ)",
+    "illustrator": "Gas1",
     "stats": {
-      "height": "18.0m",
-      "weight": "42.4t",
       "mobility": 210,
       "ranged_attack": 0,
       "melee_attack": 340,
       "hp": 400
     },
+    "link_ability": [
+      {
+        "name": "GQuuuuuuX",
+        "condition": "デッキに3枚以上",
+        "effect": "[HP]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "アマテ・ユズリハ(マチュ)",
+    "model": "GQuuuuuuX",
     "terrain_compatibility": {
       "ground": "A",
       "space": "S",
@@ -40,7 +53,7 @@
       "sub": {
         "name": "シールド",
         "range": null,
-        "type": null
+        "type": ""
       }
     },
     "ms_ability": {
@@ -51,18 +64,6 @@
       "cost": 3,
       "description": "ロックオン中の敵に単体攻撃でダメージを与える。"
     },
-    "link_ability": [
-      {
-        "name": "GQuuuuuuX",
-        "condition": "デッキに3枚以上",
-        "effect": "[HP]小アップ"
-      },
-      {
-        "name": "戦況を変える力",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "トメノスケ・ヒート・ホーク強襲",
       "target": "単体(敵)",
@@ -71,11 +72,10 @@
       "power": 3400,
       "description": "敵単体に格闘攻撃でダメージを与える。",
       "sp_type": "UNITED SP",
-      "united_sp": null
-    },
-    "rarity": "PR",
-    "illustrator": "Gas1",
-    "raw": "近距離 コスト4 MS\nGQuuuuuuX\nジークアクス\n頭頂高 18.0m\n本体重量 42.4t\n所属 ポメラニアンズ\nパイロット アマテ・ユズリハ(マチュ)\n地上 A 宇宙 S 砂漠 C 水中 A\n機動力 210\n遠距離攻撃 0\n近距離攻撃 340\nHP 400\n\nWEAPON\nMAIN トメノスケ・ヒート・ホーク 射程 1 近距離\nSUB シールド 射程 ー ー\n\nMS ABILITY\n強撃\n任意発動 単体(敵) 射程 1 コスト 3\nロックオン中の敵に単体攻撃でダメージを与える。\n\nLINK ABILITY\nGQuuuuuuX デッキに3枚以上\n[HP]小アップ\n\n戦況を変える力 デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nSPECIAL ATTACK UNITED SP\nトメノスケ・ヒート・ホーク強襲 ー\n連携 ー 連携 ー\n連携 ー 連携 ー\n単体(敵) 射程 2 ー 射程 ー\nSPコスト 2 威力 3400 / ー\n敵単体に格闘攻撃でダメージを与える。\n/ー\n\nillust Gas1\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\nNOT FOR SALE\nPR-288 PR"
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "プロモーション_PR-288_ジークアクス_ocr_raw.json",
   "ocr_timestamp": "2026-03-04T03:15:16.940231",

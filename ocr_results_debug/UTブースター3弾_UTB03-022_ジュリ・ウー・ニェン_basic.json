@@ -5,52 +5,55 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UTB03-022.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UTB03-022_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "UTB03-022",
     "type": "PL",
-    "card_label": {
-      "class": "制圧",
-      "cost_label": "コスト1"
-    },
     "name": "ジュリ・ウー・ニェン",
-    "english_name": "JURI WU NIEN",
     "cost": 1,
+    "rarity": "R",
     "category": "制圧",
     "affiliation": "オーブ",
-    "physical": {
-      "height": null,
-      "age": null
-    },
-    "units": [
-      "M1アストレイ"
-    ],
+    "illustrator": "",
     "stats": {
       "mobility": 160,
       "ranged_attack": 120,
       "melee_attack": 150,
       "hp": 130
     },
+    "link_ability": [
+      {
+        "name": "ガンダムSEED",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "揺るがぬ意志",
+        "condition": "デッキに2枚以上",
+        "effect": "[HP]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "JURI WU NIEN",
+    "physical": {
+      "height": "",
+      "age": ""
+    },
+    "units": [
+      "M1アストレイ"
+    ],
     "pilot_skill": {
       "name": "手慣れた戦闘態勢",
       "trigger": "自身が撤退時",
       "effect": "自身の修理時間を短縮する。",
       "has_sq_skill": false,
-      "sq_skill_details": null
-    },
-    "link_ability": [
-      {
-        "name": "ガンダムSEED",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "揺るがぬ意志",
-        "condition": "デッキに2枚以上",
-        "effect": "[HP]小アップ"
-      }
-    ],
-    "rarity": "R",
-    "illustrator": null,
-    "raw": "制圧 コスト1\n\nPL\n\nジュリ・ウー・ニェン\nJURI WU NIEN\n\n[アイコン:ガンダムSEED]\n[アイコン:黄色シンボル]\n\n身長 ー\n年齢 ー\n所属 オーブ\n搭乗機体 M1アストレイ\n\nPL SKILL\n\n手慣れた戦闘態勢\n\n自身が撤退時\n\n自身の修理時間を短縮する。\n\nLINK ABILITY\n\nガンダムSEED デッキに3枚以上\n[機動力]小アップ\n\n揺るがぬ意志 デッキに2枚以上\n[HP]小アップ\n\n機動力 160\n遠距離攻撃 120\n近距離攻撃 150\nHP 130\n\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n\n機動戦士ガンダム\nARSENAL BASE®\n\nUTB03-022 R"
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_raw_file": "UTブースター3弾_UTB03-022_ジュリ・ウー・ニェン_ocr_raw.json",
   "ocr_timestamp": "2026-02-28T04:07:57.577346",

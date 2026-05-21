@@ -5,26 +5,39 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-204.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-204_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "PR-204",
     "type": "MS",
-    "card_label": {
-      "class": "遠距離",
-      "cost_label": "コスト4"
-    },
     "name": "ガンダムX魔王",
-    "model": "GX-9999 GUNDAM X MAOH",
     "cost": 4,
-    "category": "MS",
-    "affiliation": null,
-    "pilot": "ヤサカ・マオ",
+    "rarity": "PR",
+    "category": "遠距離",
+    "affiliation": "",
+    "illustrator": "Masked",
     "stats": {
-      "height": "17.1m",
-      "weight": "7.6t",
       "mobility": 260,
       "ranged_attack": 310,
       "melee_attack": 80,
       "hp": 400
     },
+    "link_ability": [
+      {
+        "name": "ビルドファイターズ",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "ヤサカ・マオ",
+    "model": "GX-9999 GUNDAM X MAOH",
     "terrain_compatibility": {
       "ground": "A",
       "space": "A",
@@ -51,18 +64,6 @@
       "cost": 3,
       "description": "ロックオン中の敵に単体攻撃でダメージを与える。"
     },
-    "link_ability": [
-      {
-        "name": "ビルドファイターズ",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "多彩な戦術",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "ハイパーサテライトキャノン撃！",
       "target": "貫通(敵)",
@@ -70,11 +71,11 @@
       "sp_cost": 2,
       "power": 2900,
       "description": "射線上の敵に貫通射撃でダメージを与える。",
-      "united_sp": null
-    },
-    "rarity": "PR",
-    "illustrator": "Masked",
-    "raw": "遠距離 コスト4\nGX-9999 GUNDAM X MAOH\nガンダムX魔王\n全高 17.1m\n本体重量 7.6t\n所属 —\nパイロット ヤサカ・マオ\n\n地上 A 宇宙 A 砂漠 B 水中 B\n機動力 260\n遠距離攻撃 310\n近距離攻撃 80\nHP 400\n\nWEAPON\nMAIN シールドバスターライフル 射程 3 遠距離\nSUB 大型ビームソード 射程 1 近距離\n\nMS ABILITY\n精密射撃\n任意発動 単体(敵) 射程 3 コスト 3\nロックオン中の敵に単体攻撃でダメージを与える。\n\nLINK ABILITY\nビルドファイターズ デッキに3枚以上\n[機動力]小アップ\n\n多彩な戦術 デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nIMPACT AREA\n\nSPECIAL ATTACK | UNITED SP\nハイパーサテライトキャノン撃！ —\n連携 — 連携 —\n連携 — 連携 —\n貫通(敵) 射程 4 — 射程 —\nSPコスト 2 威力 2900 / —\n射線上の敵に貫通射撃でダメージを与える。/ —\n\nillust Masked\n©創通・サンライズ\nBANDAI MADE IN JAPAN\nNOT FOR SALE\nPR-204 PR"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "プロモーション_PR-204_ガンダムX魔王_ocr_raw.json",
   "ocr_timestamp": "2026-03-03T22:35:46.587547",

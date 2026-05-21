@@ -5,52 +5,55 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-301.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-301_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "PR-301",
     "type": "PL",
-    "card_label": {
-      "class": "防衛",
-      "cost_label": "コスト3"
-    },
     "name": "ラライヤ・アクパール",
-    "english_name": "RARAIYA AKUPARL",
     "cost": 3,
+    "rarity": "PR",
     "category": "防衛",
     "affiliation": "メガファウナ",
-    "physical": {
-      "height": null,
-      "age": null
-    },
-    "units": [
-      "G-セルフ(宇宙用パック)"
-    ],
+    "illustrator": "Yosuke Ichikawa",
     "stats": {
       "mobility": 220,
       "ranged_attack": 290,
       "melee_attack": 40,
       "hp": 220
     },
+    "link_ability": [
+      {
+        "name": "Gのレコンギスタ",
+        "condition": "デッキに2枚以上",
+        "effect": "[HP]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "RARAIYA AKUPARL",
+    "physical": {
+      "height": "",
+      "age": ""
+    },
+    "units": [
+      "G-セルフ(宇宙用パック)"
+    ],
     "pilot_skill": {
       "name": "迎撃の構え",
       "trigger": "一方的に敵をロックオン時",
       "effect": "30秒間、自身の[機動力][遠距離攻撃力]を中アップする。",
       "has_sq_skill": false,
-      "sq_skill_details": null
-    },
-    "link_ability": [
-      {
-        "name": "Gのレコンギスタ",
-        "condition": "デッキに2枚以上",
-        "effect": "[HP]小アップ"
-      },
-      {
-        "name": "多彩な戦術",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      }
-    ],
-    "rarity": "PR",
-    "illustrator": "Yosuke Ichikawa",
-    "raw": "PL\n\n防衛 コスト3\n\nラライヤ・アクパール\nRARAIYA AKUPARL\n\n身長 ー\n年齢 ー\n所属 メガファウナ\n搭乗機体 G-セルフ(宇宙用パック)\n\nPL SKILL\n迎撃の構え\n一方的に敵をロックオン時\n30秒間、自身の[機動力][遠距離攻撃力]を中アップする。\n\nLINK ABILITY\nGのレコンギスタ デッキに2枚以上\n[HP]小アップ\n\n多彩な戦術 デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\n機動力 220\n遠距離攻撃 290\n近距離攻撃 40\nHP 220\n\nillust Yosuke Ichikawa\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\nNOT FOR SALE\nPR-301 PR"
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_raw_file": "プロモーション_PR-301_ラライヤ・アクパール_ocr_raw.json",
   "ocr_timestamp": "2026-03-03T13:15:28.165666",

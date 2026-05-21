@@ -5,26 +5,39 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-470.jpg?v8",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-470_b.jpg?v8",
   "ocr_data": {
-    "card_id": "PR-470",
     "type": "MS",
-    "card_label": {
-      "class": "遠距離",
-      "cost_label": "コスト5"
-    },
     "name": "ウイングガンダムゼロ（EW）",
-    "model": "XXXG-00W0 WING GUNDAM ZERO[EW]",
     "cost": 5,
+    "rarity": "PR",
     "category": "遠距離",
     "affiliation": "ー",
-    "pilot": "ヒイロ・ユイ",
+    "illustrator": "Eske Yoshinob",
     "stats": {
-      "height": "16.7m",
-      "weight": "8.0t",
       "mobility": 230,
       "ranged_attack": 420,
       "melee_attack": 50,
       "hp": 350
     },
+    "link_ability": [
+      {
+        "name": "Endless Waltz",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "的確な一撃",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][遠距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "ヒイロ・ユイ",
+    "model": "XXXG-00W0 WING GUNDAM ZERO[EW]",
     "terrain_compatibility": {
       "ground": "A",
       "space": "S",
@@ -51,18 +64,6 @@
       "cost": 6,
       "description": "指定した位置に範囲攻撃を行い、その地点に移動する。"
     },
-    "link_ability": [
-      {
-        "name": "Endless Waltz",
-        "condition": "デッキに3枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      },
-      {
-        "name": "的確な一撃",
-        "condition": "デッキに4枚以上",
-        "effect": "[機動力][遠距離攻撃力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "ツインバスターライフル斉射",
       "target": "範囲(敵)",
@@ -71,17 +72,17 @@
       "power": 3300,
       "description": "対象の敵を中心として範囲射撃でダメージを与え、自身に小ダメージ。/敵単体に射撃攻撃でダメージを与え、ゼロシステムが発動する。ゼロシステム発動中は回避攻撃が発生し、能力が上昇し、MSアビリティ[奇襲]が強化される。自身が撤退するまで効果は持続する。リンクアビリティ[Endless Waltz]の数に応じて、出撃中の全味方ユニットの能力を一定時間アップする。",
       "sp_type": "SQUAD SP",
+      "echoes_beat": null,
+      "united_sp": null,
       "squad_sp": {
         "name": "オペレーション・メテオ",
-        "condition": "SQUAD RUSH発動中に1度だけ、SQUAD SPを使用できる。",
         "target": "単体(敵)",
         "range": 4,
-        "power": 6500
-      },
-      "united_sp": null
-    },
-    "rarity": "PR",
-    "illustrator": "Eske Yoshinob"
+        "power": 6500,
+        "description": "",
+        "note": ""
+      }
+    }
   },
   "ocr_timestamp": "2026-05-11T00:00:00.000000",
   "ocr_type": "basic",

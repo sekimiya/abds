@@ -5,17 +5,38 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT01-042.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT01-042_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "UT01-042",
     "type": "PL",
-    "card_label": {
-      "class": "制圧",
-      "cost_label": "コスト3"
-    },
     "name": "ハヤト・コバヤシ",
-    "english_name": "HAYATO KOBAYASHI",
     "cost": 3,
+    "rarity": "C",
     "category": "制圧",
     "affiliation": "地球連邦軍",
+    "illustrator": "",
+    "stats": {
+      "mobility": 140,
+      "ranged_attack": 230,
+      "melee_attack": 20,
+      "hp": 200
+    },
+    "link_ability": [
+      {
+        "name": "機動戦士ガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "優れた射撃センス",
+        "condition": "デッキに2枚以上",
+        "effect": "[遠距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "HAYATO KOBAYASHI",
     "physical": {
       "height": "150cm",
       "age": 15
@@ -23,34 +44,16 @@
     "units": [
       "ガンタンク"
     ],
-    "stats": {
-      "mobility": 140,
-      "ranged_attack": 230,
-      "melee_attack": 20,
-      "hp": 200
-    },
     "pilot_skill": {
       "name": "砂海に沈める狙撃",
       "trigger": "出撃時",
       "effect": "35秒間、自身の[遠距離攻撃力]を小アップする。地形が砂漠の場合、効果値がさらにアップする。",
       "has_sq_skill": false,
-      "sq_skill_details": null
-    },
-    "link_ability": [
-      {
-        "name": "機動戦士ガンダム",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "優れた射撃センス",
-        "condition": "デッキに2枚以上",
-        "effect": "[遠距離攻撃力]小アップ"
-      }
-    ],
-    "rarity": "C",
-    "illustrator": null,
-    "raw": "制圧 コスト3\n\nPL\n\nハヤト・コバヤシ\nHAYATO KOBAYASHI\n\n身長 150cm\n年齢 15歳\n所属 地球連邦軍\n搭乗機体 ガンタンク\n\nPL SKILL\n砂海に沈める狙撃\n出撃時\n35秒間、自身の[遠距離攻撃力]を小アップする。地形が砂漠の場合、効果値がさらにアップする。\n\nLINK ABILITY\n機動戦士ガンダム デッキに3枚以上\n[機動力]小アップ\n\n優れた射撃センス デッキに2枚以上\n[遠距離攻撃力]小アップ\n\n機動力 140\n遠距離攻撃 230\n近距離攻撃 20\nHP 200\n\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\nUT01-042 C"
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_raw_file": "UNITRIBE_SEASON_01_UT01-042_ハヤト・コバヤシ_ocr_raw.json",
   "ocr_timestamp": "2026-03-02T03:27:58.765218",

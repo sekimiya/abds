@@ -5,53 +5,56 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT04-060.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT04-060_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "UT04-060",
     "type": "PL",
-    "card_label": {
-      "class": "殲滅",
-      "cost_label": "コスト4"
-    },
     "name": "ロンド・ギナ・サハク",
-    "english_name": "RONDO GINA SAHAKU",
     "cost": 4,
+    "rarity": "C",
     "category": "殲滅",
     "affiliation": "オーブ",
-    "physical": {
-      "height": null,
-      "age": null
-    },
-    "units": [
-      "ガンダムアストレイ ゴールドフレーム天",
-      "ガンダムアストレイ ゴールドフレーム"
-    ],
+    "illustrator": "",
     "stats": {
       "mobility": 160,
       "ranged_attack": 260,
       "melee_attack": 40,
       "hp": 310
     },
+    "link_ability": [
+      {
+        "name": "SEED ASTRAY",
+        "condition": "デッキに2枚以上",
+        "effect": "[近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "的確な一撃",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][遠距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "RONDO GINA SAHAKU",
+    "physical": {
+      "height": "",
+      "age": ""
+    },
+    "units": [
+      "ガンダムアストレイ ゴールドフレーム天",
+      "ガンダムアストレイ ゴールドフレーム"
+    ],
     "pilot_skill": {
       "name": "精確な照準",
       "trigger": "MSアビリティ発動時",
       "effect": "30秒間、自身の[遠距離攻撃力]を中アップする。",
       "has_sq_skill": false,
-      "sq_skill_details": null
-    },
-    "link_ability": [
-      {
-        "name": "SEED ASTRAY",
-        "condition": "デッキに2枚以上",
-        "effect": "[近距離攻撃力]小アップ"
-      },
-      {
-        "name": "的確な一撃",
-        "condition": "デッキに4枚以上",
-        "effect": "[機動力][遠距離攻撃力]小アップ"
-      }
-    ],
-    "rarity": "C",
-    "illustrator": null,
-    "raw": "PL\n\n殲滅 コスト4\n\nロンド・ギナ・サハク\nRONDO GINA SAHAKU\n\n[アイコン:ガンダムSEED ASTRAY ロゴ]\n[アイコン:金色エンブレム]\n\n身長 ー\n年齢 ー\n所属 オーブ\n搭乗機体 ガンダムアストレイ ゴールドフレーム天、\n　　　　 ガンダムアストレイ ゴールドフレーム\n\nPL SKILL\n精確な照準\nMSアビリティ発動時\n30秒間、自身の[遠距離攻撃力]を中アップする。\n\nLINK ABILITY\nSEED ASTRAY　デッキに2枚以上\n[近距離攻撃力]小アップ\n\n的確な一撃　デッキに4枚以上\n[機動力][遠距離攻撃力]小アップ\n\n機動力 160\n遠距離攻撃 260\n近距離攻撃 40\nHP 310\n\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\nUT04-060 C"
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_raw_file": "UNITRIBE_SEASON_04_UT04-060_ロンド・ギナ・サハク_ocr_raw.json",
   "ocr_timestamp": "2026-02-28T08:47:25.883906",

@@ -5,26 +5,39 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX03-053.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX03-053_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "LX03-053",
     "type": "MS",
-    "card_label": {
-      "class": "遠距離",
-      "cost_label": "コスト5"
-    },
-    "name": "グレイズリッター（カルタ機）",
-    "model": "EB-06rs CARTA'S GRAZE RITTER",
+    "name": "グレイズリッター(カルタ機)",
     "cost": 5,
-    "category": "鉄血のオルフェンズ",
+    "rarity": "R",
+    "category": "遠距離",
     "affiliation": "ギャラルホルン",
-    "pilot": "カルタ・イシュー",
+    "illustrator": "gomibako",
     "stats": {
-      "height": "18.7m",
-      "weight": "32.1t",
       "mobility": 200,
       "ranged_attack": 280,
       "melee_attack": 120,
       "hp": 300
     },
+    "link_ability": [
+      {
+        "name": "鉄血のオルフェンズ",
+        "condition": "デッキに3枚以上",
+        "effect": "[近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "実弾の突破力",
+        "condition": "デッキに2枚以上",
+        "effect": "[遠距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "カルタ・イシュー",
+    "model": "EB-06rs CARTA'S GRAZE RITTER",
     "terrain_compatibility": {
       "ground": "A",
       "space": "A",
@@ -51,18 +64,6 @@
       "cost": 5,
       "description": "指定した位置に中範囲の支援砲撃を要請し、範囲内の敵にダメージを与える。"
     },
-    "link_ability": [
-      {
-        "name": "鉄血のオルフェンズ",
-        "condition": "デッキに3枚以上",
-        "effect": "[近距離攻撃力]小アップ"
-      },
-      {
-        "name": "実弾の突破力",
-        "condition": "デッキに2枚以上",
-        "effect": "[遠距離攻撃力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "120mmライフル撃射",
       "target": "単体(敵)",
@@ -70,11 +71,11 @@
       "sp_cost": 2,
       "power": 3300,
       "description": "敵単体に射撃攻撃でダメージを与える。",
-      "united_sp": null
-    },
-    "rarity": "R",
-    "illustrator": "gomibako",
-    "raw": "遠距離　コスト5　MS\nEB-06rs CARTA'S GRAZE RITTER\nグレイズリッター（カルタ機）\n\n全高　18.7m\n本体重量　32.1t　　　　地上 A　宇宙 A　砂漠 S　水中 C\n所属　ギャラルホルン\nパイロット　カルタ・イシュー\n機動力　200\n遠距離攻撃　280\n近距離攻撃　120\nHP　300\n\nWEAPON\nMAIN　120mmライフル　射程 3　遠距離\nSUB　ナイトブレード　射程 1　近距離\n\nMS ABILITY\n支援砲撃\n任意発動　範囲(敵)　射程 ー　コスト 5\n指定した位置に中範囲の支援砲撃を要請し、範囲内の敵にダメージを与える。\n\nLINK ABILITY\n鉄血のオルフェンズ　デッキに3枚以上\n[近距離攻撃力]小アップ\n\n実弾の突破力　デッキに2枚以上\n[遠距離攻撃力]小アップ\n\nSPECIAL ATTACK\n120mmライフル撃射\n単体(敵)　射程 3\nSPコスト 2　威力 3300\n敵単体に射撃攻撃でダメージを与える。\n\nillust　gomibako\n©創通・サンライズ\nBANDAI MADE IN JAPAN\nLX03-053　R"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "LINXTAGE_SEASON_03_LX03-053_グレイズリッター(カルタ機)_ocr_raw.json",
   "ocr_timestamp": "2026-03-07T17:30:53.053460",

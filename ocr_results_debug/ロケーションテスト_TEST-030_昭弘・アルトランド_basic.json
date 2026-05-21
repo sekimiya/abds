@@ -5,47 +5,47 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/TEST-030.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/TEST-030_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "TEST-030",
     "type": "PL",
-    "card_label": {
-      "class": "殲滅",
-      "cost_label": "コスト3"
-    },
     "name": "昭弘・アルトランド",
-    "english_name": "AKIHIRO ALTLAND",
     "cost": 3,
+    "rarity": "R",
     "category": "殲滅",
     "affiliation": "鉄華団",
-    "physical": {
-      "height": null,
-      "age": null
-    },
-    "units": [
-      "ガンダム・グシオンリベイク"
-    ],
+    "illustrator": "",
     "stats": {
       "mobility": 100,
       "ranged_attack": 50,
       "melee_attack": 120,
       "hp": 200
     },
+    "link_ability": [
+      {
+        "name": "鉄血のオルフェンズ",
+        "condition": "デッキに3枚以上",
+        "effect": "[近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "AKIHIRO ALTLAND",
+    "physical": {
+      "height": "",
+      "age": ""
+    },
+    "units": [
+      "ガンダム・グシオンリベイク"
+    ],
     "pilot_skill": {
       "name": "不屈の意思",
       "trigger": "HP50%以下の時",
       "effect": "自身が受けるダメージを少し軽減する。",
       "has_sq_skill": false,
-      "sq_skill_details": null
-    },
-    "link_ability": [
-      {
-        "name": "鉄血のオルフェンズ",
-        "condition": "デッキに3枚以上",
-        "effect": "[近距離攻撃力]小アップ"
-      }
-    ],
-    "rarity": "R",
-    "illustrator": null,
-    "raw": "PL\n\n殲滅　コスト3\n\n昭弘・アルトランド\nAKIHIRO ALTLAND\n\n鉄血のオルフェンズ\n\n身長　ー\n年齢　ー\n所属　鉄華団\n搭乗機体　ガンダム・グシオンリベイク\n\nPL SKILL\n不屈の意思\nHP50%以下の時\n自身が受けるダメージを少し軽減する。\n\nLINK ABILITY\n鉄血のオルフェンズ　デッキに3枚以上\n[近距離攻撃力]小アップ\nー　ー\n\n機動力 100\n遠距離攻撃 50\n近距離攻撃 120\nHP 200\n\n©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE™\n\nTEST-030　R"
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_raw_file": "ロケーションテスト_TEST-030_昭弘・アルトランド_ocr_raw.json",
   "ocr_timestamp": "2026-03-02T05:16:26.099661",

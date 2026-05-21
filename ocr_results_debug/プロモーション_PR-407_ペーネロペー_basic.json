@@ -5,26 +5,39 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-407.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-407_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "PR-407",
     "type": "MS",
-    "card_label": {
-      "class": "遠距離",
-      "cost_label": "コスト4"
-    },
     "name": "ペーネロペー",
-    "model": "RX-104FF PENELOPE",
     "cost": 4,
+    "rarity": "PR",
     "category": "遠距離",
     "affiliation": "地球連邦軍",
-    "pilot": "レーン・エイム",
+    "illustrator": "Umegrafix",
     "stats": {
-      "height": "26.0m",
-      "weight": "36.4t",
       "mobility": 280,
       "ranged_attack": 420,
       "melee_attack": 130,
       "hp": 370
     },
+    "link_ability": [
+      {
+        "name": "閃光のハサウェイ",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "レーン・エイム",
+    "model": "RX-104FF PENELOPE",
     "terrain_compatibility": {
       "ground": "S",
       "space": "A",
@@ -51,18 +64,6 @@
       "cost": 4,
       "description": "ロックオン中の敵に貫通射撃を行い、メイン武装を使用不能にさせる。出撃時1度のみ使用可能。"
     },
-    "link_ability": [
-      {
-        "name": "閃光のハサウェイ",
-        "condition": "デッキに3枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      },
-      {
-        "name": "戦況を変える力",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "ビーム・ライフル斉射",
       "target": "範囲(敵)",
@@ -70,11 +71,11 @@
       "sp_cost": 2,
       "power": 2900,
       "description": "対象の敵を中心として範囲射撃でダメージを与え、一定時間スタンさせる。",
-      "united_sp": null
-    },
-    "rarity": "PR",
-    "illustrator": "Umegrafix",
-    "raw": "MS\n\n遠距離　コスト4\n\nRX-104FF PENELOPE\nペーネロペー\n\n閃光のハサウェイ\n\n頭頂高　26.0m\n本体重量　36.4t\n\n地上 S　宇宙 A　砂漠 B　水中 C\n\n所属　地球連邦軍\nパイロット　レーン・エイム\n\n機動力 280\n遠距離攻撃 420\n近距離攻撃 130\nHP 370\n\nWEAPON\nMAIN ビーム・ライフル　射程 3　遠距離\nSUB ビーム・サーベル　射程 1　近距離\n\nLINK ABILITY\n閃光のハサウェイ　デッキに3枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\n戦況を変える力　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nMS ABILITY\n砕撃[貫通]\n任意発動　貫通(敵)　射程 3　コスト 4\nロックオン中の敵に貫通射撃を行い、メイン武装を使用不能にさせる。出撃時1度のみ使用可能。\n\nSPECIAL ATTACK　　UNITED SP\nビーム・ライフル斉射　ー\n連携 ー　　連携 ー\n連携 ー　　連携 ー\n範囲(敵)　射程 4　ー　射程 ー\nSPコスト 2　威力 2900 / ー\n\n対象の敵を中心として範囲射撃でダメージを与え、一定時間スタンさせる。/ ー\n\nIMPACT AREA\n[アイコン:範囲射撃エリア表示]\n\nillust Umegrafix\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\nNOT FOR SALE\nPR-407　PR"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "プロモーション_PR-407_ペーネロペー_ocr_raw.json",
   "ocr_timestamp": "2026-03-03T09:08:28.395008",

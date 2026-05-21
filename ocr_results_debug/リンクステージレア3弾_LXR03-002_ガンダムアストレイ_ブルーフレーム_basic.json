@@ -5,26 +5,39 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LXR03-002.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LXR03-002_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "LXR03-002",
     "type": "MS",
-    "card_label": {
-      "class": "遠距離",
-      "cost_label": "コスト3"
-    },
     "name": "ガンダムアストレイ ブルーフレーム",
-    "model": "MBF-P03 GUNDAM ASTRAY BLUE FRAME",
     "cost": 3,
-    "category": "MS",
+    "rarity": "LX",
+    "category": "遠距離",
     "affiliation": "サーペントテール",
-    "pilot": "叢雲劾",
+    "illustrator": "deraken",
     "stats": {
-      "height": "17.53m",
-      "weight": "49.8t",
       "mobility": 250,
       "ranged_attack": 320,
       "melee_attack": 140,
       "hp": 340
     },
+    "link_ability": [
+      {
+        "name": "SEED ASTRAY",
+        "condition": "デッキに2枚以上",
+        "effect": "[近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "叢雲劾",
+    "model": "MBF-P03 GUNDAM ASTRAY BLUE FRAME",
     "terrain_compatibility": {
       "ground": "A",
       "space": "S",
@@ -51,18 +64,6 @@
       "cost": 3,
       "description": "ロックオン中の敵に単体攻撃でダメージを与え、メイン武装を使用不能にさせる。出撃時１度のみ使用可能。"
     },
-    "link_ability": [
-      {
-        "name": "SEED ASTRAY",
-        "condition": "デッキに2枚以上",
-        "effect": "[近距離攻撃力]小アップ"
-      },
-      {
-        "name": "戦況を変える力",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "500mm無反動砲撃射",
       "target": "単体（敵）",
@@ -70,11 +71,11 @@
       "sp_cost": 2,
       "power": 3400,
       "description": "敵単体に射撃攻撃でダメージを与える。",
-      "united_sp": null
-    },
-    "rarity": "LX",
-    "illustrator": "deraken",
-    "raw": "遠距離 コスト3\nMBF-P03 GUNDAM ASTRAY BLUE FRAME\nガンダムアストレイ ブルーフレーム\n\n全高　17.53m\n本体重量　49.8t\n所属　サーペントテール\nパイロット　叢雲劾\n\n地上 A　宇宙 S　砂漠 C　水中 C\n機動力 250\n遠距離攻撃 320\n近距離攻撃 140\nHP 340\n\nWEAPON\nMAIN 500mm無反動砲　射程 3 遠距離\nSUB ビームサーベル　射程 1 近距離\n\nMS ABILITY\n砕撃\n任意発動　単体（敵）　射程 3 コスト 3\nロックオン中の敵に単体攻撃でダメージを与え、メイン武装を使用不能にさせる。\n出撃時１度のみ使用可能。\n\nLINK ABILITY\nSEED ASTRAY　デッキに2枚以上\n[近距離攻撃力]小アップ\n\n戦況を変える力　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nIMPACT AREA\n\nSPECIAL ATTACK\n500mm無反動砲撃射\n単体（敵）　射程 3\nSPコスト 2　威力 3400\n敵単体に射撃攻撃でダメージを与える。\n\nillust_deraken\n©創通・サンライズ\nBANDAI MADE IN JAPAN\nARSENAL BASE\nLXR03-002 LX"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "リンクステージレア3弾_LXR03-002_ガンダムアストレイ_ブルーフレーム_ocr_raw.json",
   "ocr_timestamp": "2026-03-07T13:59:20.719975",

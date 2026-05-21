@@ -5,52 +5,55 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ05-046.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ05-046_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "FQ05-046",
     "type": "PL",
-    "card_label": {
-      "class": "制圧",
-      "cost_label": "コスト3"
-    },
     "name": "ドズル・ザビ",
-    "english_name": "DOZLE ZABI",
     "cost": 3,
+    "rarity": "C",
     "category": "制圧",
     "affiliation": "ジオン公国軍",
-    "physical": {
-      "height": null,
-      "age": 28
-    },
-    "units": [
-      "ザクⅡ(ドズル・ザビ専用機)"
-    ],
+    "illustrator": "",
     "stats": {
       "mobility": 170,
       "ranged_attack": 200,
       "melee_attack": 50,
       "hp": 250
     },
+    "link_ability": [
+      {
+        "name": "機動戦士ガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "揺るがぬ意志",
+        "condition": "デッキに2枚以上",
+        "effect": "[HP]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "DOZLE ZABI",
+    "physical": {
+      "height": "",
+      "age": 28
+    },
+    "units": [
+      "ザクⅡ(ドズル・ザビ専用機)"
+    ],
     "pilot_skill": {
       "name": "確固たる信念",
       "trigger": "HP50%以下の時",
       "effect": "自身が受けるダメージを軽減する。",
       "has_sq_skill": false,
-      "sq_skill_details": null
-    },
-    "link_ability": [
-      {
-        "name": "機動戦士ガンダム",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "揺るがぬ意志",
-        "condition": "デッキに2枚以上",
-        "effect": "[HP]小アップ"
-      }
-    ],
-    "rarity": "C",
-    "illustrator": null,
-    "raw": "制圧 コスト3\n\nPL\n[アイコン:機動戦士ガンダム]\n\nドズル・ザビ\nDOZLE ZABI\n\n身長 ー\n年齢 28歳\n所属 ジオン公国軍\n搭乗機体 ザクⅡ(ドズル・ザビ専用機)\n\nPL SKILL\n確固たる信念\nHP50%以下の時\n自身が受けるダメージを軽減する。\n\nLINK ABILITY\n機動戦士ガンダム デッキに3枚以上\n[機動力]小アップ\n\n揺るがぬ意志 デッキに2枚以上\n[HP]小アップ\n\n機動力 170\n遠距離攻撃 200\n近距離攻撃 50\nHP 250\n\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\nFQ05-046 C"
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_raw_file": "FORSQUAD_SEASON_05_FQ05-046_ドズル・ザビ_ocr_raw.json",
   "ocr_timestamp": "2026-02-24T18:29:27.765513",

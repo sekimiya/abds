@@ -5,31 +5,36 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB02-042.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB02-042_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "AB02-042",
     "type": "MS",
-    "card_label": {
-      "class": "機動",
-      "cost_label": "コスト2"
-    },
     "name": "ユニオンフラッグ",
-    "model": "SVMS-01 UNION FLAG",
     "cost": 2,
+    "rarity": "C",
     "category": "機動",
     "affiliation": "ユニオン",
-    "pilot": "グラハム・エーカー、ハワード・メイスン、ダリル・ダッジ",
+    "illustrator": "Tatumi Takuan",
     "stats": {
-      "height": "17.9m",
-      "weight": "67.1t",
       "mobility": 230,
       "ranged_attack": 130,
       "melee_attack": 130,
       "hp": 110
     },
+    "link_ability": [
+      {
+        "name": "ガンダム00",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "グラハム・エーカー、ハワード・メイスン、ダリル・ダッジ",
+    "model": "SVMS-01 UNION FLAG",
     "terrain_compatibility": {
       "ground": "S",
       "space": "B",
       "desert": "C",
-      "water": null
+      "water": ""
     },
     "weapon": {
       "main": {
@@ -44,20 +49,13 @@
       }
     },
     "ms_ability": {
-      "name": null,
-      "activation": null,
-      "target": null,
+      "name": "",
+      "activation": "",
+      "target": "",
       "range": null,
       "cost": null,
-      "description": null
+      "description": ""
     },
-    "link_ability": [
-      {
-        "name": "ガンダム00",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "リニアライフル撃射",
       "target": "単体(敵)",
@@ -65,11 +63,11 @@
       "sp_cost": 2,
       "power": 3000,
       "description": "敵単体に射撃攻撃でダメージを与える。",
-      "united_sp": null
-    },
-    "rarity": "C",
-    "illustrator": "Tatumi Takuan",
-    "raw": "MS\n\n機動 コスト2\nSVMS-01 UNION FLAG\nユニオンフラッグ\n\n全高 17.9m\n本体重量 67.1t\n所属 ユニオン\nパイロット グラハム・エーカー、ハワード・メイスン、ダリル・ダッジ\n\n地上 S 宇宙 B 砂漠 C\n機動力 230\n遠距離攻撃 130\n近距離攻撃 130\nHP 110\n\nWEAPON\n\nMAIN リニアライフル 射程 3 遠距離\nSUB プラズマソード 射程 1 近距離\n\nLINK ABILITY\n\nガンダム00 デッキに3枚以上\n[機動力]小アップ\n\nMS ABILITY\n\n— — — 射程 — コスト —\n\nSPECIAL ATTACK\n\nリニアライフル撃射\n単体(敵) 射程 3\nSPコスト 2 威力 3000\n敵単体に射撃攻撃でダメージを与える。\n\nIMPACT AREA\n\n[アイコン:中央に緑丸、下部中央に黒三角]\n\nillust Tatumi Takuan\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n\n[アイコン:機動戦士ガンダム ARSENAL BASE ロゴ]\n\nAB02-042 C"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "SEASON_02_AB02-042_ユニオンフラッグ_ocr_raw.json",
   "ocr_timestamp": "2026-02-23T15:09:57.664880",

@@ -5,26 +5,39 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ01-028.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ01-028_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "FQ01-028",
     "type": "MS",
-    "card_label": {
-      "class": "近距離",
-      "cost_label": "コスト6"
-    },
     "name": "ジークアクス(オメガサイコミュ発動)",
-    "model": "GQuuuuuuX (Omega Psycommu)",
     "cost": 6,
+    "rarity": "U",
     "category": "近距離",
     "affiliation": "ポメラニアンズ",
-    "pilot": "アマテ・ユズリハ（マチュ）",
+    "illustrator": "Naochika Morishita",
     "stats": {
-      "height": "18.0m",
-      "weight": "42.4t",
       "mobility": 300,
       "ranged_attack": 0,
       "melee_attack": 590,
       "hp": 550
     },
+    "link_ability": [
+      {
+        "name": "GQuuuuuuX",
+        "condition": "デッキに3枚以上",
+        "effect": "[HP]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "アマテ・ユズリハ（マチュ）",
+    "model": "GQuuuuuuX (Omega Psycommu)",
     "terrain_compatibility": {
       "ground": "A",
       "space": "S",
@@ -40,7 +53,7 @@
       "sub": {
         "name": "シールド",
         "range": null,
-        "type": null
+        "type": ""
       }
     },
     "ms_ability": {
@@ -51,18 +64,6 @@
       "cost": 3,
       "description": "自身が弱化状態の時に発動可能となり、自身の弱化状態を無効化し、ロックオン中の敵に単体攻撃でダメージを与える。"
     },
-    "link_ability": [
-      {
-        "name": "GQuuuuuuX",
-        "condition": "デッキに3枚以上",
-        "effect": "[HP]小アップ"
-      },
-      {
-        "name": "戦況を変える力",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "トメノスケ・ヒート・ホーク強襲",
       "target": "単体(敵)",
@@ -70,18 +71,20 @@
       "sp_cost": 2,
       "power": 3700,
       "description": "敵単体に格闘攻撃でダメージを与え、自身のHPを回復する。",
+      "sp_type": "",
+      "echoes_beat": null,
       "united_sp": {
         "name": "ジークアクス&赤いガンダム連携",
-        "partner1": "赤いガンダム(0085)",
-        "partner2": null,
+        "partners": [
+          "赤いガンダム(0085)"
+        ],
+        "target": "",
         "range": 2,
         "power": 6300,
         "description": "敵単体に格闘攻撃でダメージを与え、攻撃に参加したユニットは一定時間[遠／近攻撃力]をアップし、HPを回復する。出撃時1度のみ使用可能。"
-      }
-    },
-    "rarity": "U",
-    "illustrator": "Naochika Morishita",
-    "raw": "MS\n\n近距離 コスト6\n\nGQuuuuuuX (Omega Psycommu)\nジークアクス(オメガサイコミュ発動)\n\n[アイコン:GQuuuuuuX]\n\n頭頂高 18.0m\n本体重量 42.4t\n所属 ポメラニアンズ\nパイロット アマテ・ユズリハ（マチュ）\n\n地上 A 宇宙 S 砂漠 C 水中 A\n機動力 300\n遠距離攻撃 0\n近距離攻撃 590\nHP 550\n\nWEAPON\n\nMAIN トメノスケ・ヒート・ホーク 射程 1 近距離\nSUB シールド 射程 — —\n\nMS ABILITY\n\n解撃\n\n任意発動 単体(敵) 射程 2 コスト 3\n\n自身が弱化状態の時に発動可能となり、自身の弱化状態を無効化し、ロックオン中の敵に単体攻撃でダメージを与える。\n\nLINK ABILITY\n\nGQuuuuuuX デッキに3枚以上\n[HP]小アップ\n\n戦況を変える力 デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nSPECIAL ATTACK\n\nトメノスケ・ヒート・ホーク強襲\n連携 赤いガンダム(0085)\n連携 —\n単体(敵) 射程 2\nSPコスト 2 威力 3700 / 6300\n\nUNITED SP\n\nジークアクス&赤いガンダム連携\n連携 —\n単体(敵) 射程 2\n\nIMPACT AREA\n\n[アイコン:着弾エリア図 中央やや下に黄・青・緑の円]\n\n敵単体に格闘攻撃でダメージを与え、自身のHPを回復する。／敵単体に格闘攻撃でダメージを与え、攻撃に参加したユニットは一定時間[遠／近攻撃力]をアップし、HPを回復する。出撃時1度のみ使用可能。\n\nillust Naochika Morishita\n©創通・サンライズ\n\n機動戦士ガンダム\nARSENAL BASE\n\nBANDAI MADE IN JAPAN\n\nFQ01-028 U"
+      },
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "FORSQUAD_SEASON_01_FQ01-028_ジークアクス(オメガサイコミュ発動)_ocr_raw.json",
   "ocr_timestamp": "2026-02-24T01:30:28.986147",

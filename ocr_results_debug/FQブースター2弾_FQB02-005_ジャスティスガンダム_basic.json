@@ -5,26 +5,39 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQB02-005.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQB02-005_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "FQB02-005",
     "type": "MS",
-    "card_label": {
-      "class": "機動",
-      "cost_label": "コスト6"
-    },
     "name": "ジャスティスガンダム",
-    "model": "ZGMF-X09A JUSTICE GUNDAM",
     "cost": 6,
+    "rarity": "P",
     "category": "機動",
-    "affiliation": null,
-    "pilot": "アスラン・ザラ",
+    "affiliation": "",
+    "illustrator": "haru",
     "stats": {
-      "height": "18.56m",
-      "weight": "75.4t",
       "mobility": 310,
       "ranged_attack": 110,
       "melee_attack": 540,
       "hp": 590
     },
+    "link_ability": [
+      {
+        "name": "ガンダムSEED",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "アスラン・ザラ",
+    "model": "ZGMF-X09A JUSTICE GUNDAM",
     "terrain_compatibility": {
       "ground": "A",
       "space": "S",
@@ -51,18 +64,6 @@
       "cost": 4,
       "description": "自身を中心とした範囲内の敵ユニットをスタンさせ、一定時間被ダメージを少しアップする。"
     },
-    "link_ability": [
-      {
-        "name": "ガンダムSEED",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "戦況を変える力",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "ファトゥム-00連携",
       "target": "単体(敵)",
@@ -70,11 +71,11 @@
       "sp_cost": 2,
       "power": 3600,
       "description": "敵単体に格闘攻撃でダメージを与える。",
-      "united_sp": null
-    },
-    "rarity": "P",
-    "illustrator": "haru",
-    "raw": "機動　コスト6　MS\n\nZGMF-X09A JUSTICE GUNDAM\nジャスティスガンダム\n\n頭頂高　18.56m\n本体重量　75.4t\n所属　―\nパイロット　アスラン・ザラ\n\n地上 A　宇宙 S　砂漠 A　水中 C\n\n機動力 310\n遠距離攻撃 110\n近距離攻撃 540\nHP 590\n\nWEAPON\nMAIN アンビデクストラス・ハルバード　射程 1　近距離\nSUB ルプス・ビームライフル　射程 3　遠距離\n\nLINK ABILITY\nガンダムSEED　デッキに3枚以上\n[機動力]小アップ\n\n戦況を変える力　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nMS ABILITY\n威圧\n任意発動　範囲(敵)　射程 ―　コスト 4\n自身を中心とした範囲内の敵ユニットをスタンさせ、一定時間被ダメージを少しアップする。\n\nSPECIAL ATTACK　　UNITED SP\nファトゥム-00連携　―\n連携 ―　　連携 ―\n連携 ―　　連携 ―\n単体(敵)　射程 2　―　射程 ―\nSPコスト 2　威力 3600 / ―\n敵単体に格闘攻撃でダメージを与える。\n/ ―\n\nIMPACT AREA\n[アイコン:円形範囲・中央]\n\nillust haru\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\nFQB02-005 P"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "FQブースター2弾_FQB02-005_ジャスティスガンダム_ocr_raw.json",
   "ocr_timestamp": "2026-02-28T01:48:06.995555",

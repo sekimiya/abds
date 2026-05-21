@@ -5,31 +5,44 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB01-020.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB01-020_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "AB01-020",
     "type": "MS",
-    "card_label": {
-      "class": "近距離",
-      "cost_label": "コスト6"
-    },
     "name": "シナンジュ",
-    "model": "MSN-06S SINANJU",
     "cost": 6,
+    "rarity": "P",
     "category": "近距離",
     "affiliation": "ネオ・ジオン残党軍「袖付き」",
-    "pilot": "フル・フロンタル",
+    "illustrator": "Eske Yoshinob",
     "stats": {
-      "height": "22.6m",
-      "weight": "25.2t",
       "mobility": 240,
       "ranged_attack": 240,
       "melee_attack": 480,
       "hp": 500
     },
+    "link_ability": [
+      {
+        "name": "ガンダムUC",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "赤のプライド",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "フル・フロンタル",
+    "model": "MSN-06S SINANJU",
     "terrain_compatibility": {
       "ground": "A",
       "space": "S",
       "desert": "C",
-      "water": null
+      "water": ""
     },
     "weapon": {
       "main": {
@@ -51,18 +64,6 @@
       "cost": 4,
       "description": "ロックオン中の敵ユニットに単体攻撃でダメージを与え、20秒間、[遠距離攻撃力][近距離攻撃力]を中ダウンする。"
     },
-    "link_ability": [
-      {
-        "name": "ガンダムUC",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "赤のプライド",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "ビーム・ナギナタ強撃",
       "target": "単体(敵)",
@@ -70,11 +71,11 @@
       "sp_cost": 2,
       "power": 3600,
       "description": "敵単体に格闘攻撃でダメージを与える。",
-      "united_sp": null
-    },
-    "rarity": "P",
-    "illustrator": "Eske Yoshinob",
-    "raw": "MS\n\n近距離 コスト6\n\nMSN-06S SINANJU\nシナンジュ\n\n全高 22.6m\n本体重量 25.2t\n所属 ネオ・ジオン残党軍「袖付き」\nパイロット フル・フロンタル\n\n地上 A 宇宙 S 砂漠 C\n\n機動力 240\n遠距離攻撃 240\n近距離攻撃 480\nHP 500\n\nWEAPON\n\nMAIN ビーム・ナギナタ 射程 1 近距離\nSUB ビーム・ライフル 射程 3 遠距離\n\nLINK ABILITY\n\nガンダムUC デッキに3枚以上\n[機動力]小アップ\n\n赤のプライド デッキに3枚以上\n[機動力]小アップ\n\nMS ABILITY\n\n妨撃[攻撃]\n任意発動 単体(敵) 射程 1 コスト 4\n\nロックオン中の敵ユニットに単体攻撃で\nダメージを与え、20秒間、[遠距離攻撃\n力][近距離攻撃力]を中ダウンする。\n\nSPECIAL ATTACK\n\nビーム・ナギナタ強撃\n単体(敵) 射程 2\nSPコスト 2 威力 3600\n\n敵単体に格闘攻撃でダメージを与える。\n\nIMPACT AREA\n\n[アイコン:緑丸] (3行目・4列目)\n[アイコン:緑丸] (5行目・4列目)\n[アイコン:三角] (6行目・4列目)\n\nillust Eske Yoshinob\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\n\nAB01-020 P"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "SEASON_01_AB01-020_シナンジュ_ocr_raw.json",
   "ocr_timestamp": "2026-02-23T12:11:44.427691",

@@ -5,26 +5,39 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP02-003.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP02-003_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "BP02-003",
     "type": "MS",
-    "card_label": {
-      "class": "遠距離",
-      "cost_label": "コスト5"
-    },
     "name": "ジークアクス",
-    "model": null,
     "cost": 5,
+    "rarity": "U",
     "category": "遠距離",
     "affiliation": "ジオン公国軍",
-    "pilot": null,
+    "illustrator": "Moyasi",
     "stats": {
-      "height": "18.0m",
-      "weight": "42.4t",
       "mobility": 300,
       "ranged_attack": 540,
       "melee_attack": 0,
       "hp": 470
     },
+    "link_ability": [
+      {
+        "name": "GQuuuuuuX",
+        "condition": "デッキに3枚以上",
+        "effect": "[HP]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "",
+    "model": "",
     "terrain_compatibility": {
       "ground": "A",
       "space": "S",
@@ -40,7 +53,7 @@
       "sub": {
         "name": "シールド",
         "range": null,
-        "type": null
+        "type": ""
       }
     },
     "ms_ability": {
@@ -51,18 +64,6 @@
       "cost": 3,
       "description": "ロックオン中の敵ユニットに単体攻撃を行いダメージを与え、一定時間スタンさせる。"
     },
-    "link_ability": [
-      {
-        "name": "GQuuuuuuX",
-        "condition": "デッキに3枚以上",
-        "effect": "[HP]小アップ"
-      },
-      {
-        "name": "戦況を変える力",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "ビーム・ライフル撃射",
       "target": "単体(敵)",
@@ -70,11 +71,11 @@
       "sp_cost": 2,
       "power": 3600,
       "description": "敵単体に射撃攻撃でダメージを与える。",
-      "united_sp": null
-    },
-    "rarity": "U",
-    "illustrator": "Moyasi",
-    "raw": "MS\n\n遠距離 コスト5\n\nGQuuuuuuX\nジークアクス\n\n頭頂高 18.0m\n本体重量 42.4t\n所属 ジオン公国軍\nパイロット ー\n\n地上 A 宇宙 S 砂漠 C 水中 A\n\n機動力 300\n遠距離攻撃 540\n近距離攻撃 0\nHP 470\n\nWEAPON\nMAIN ビーム・ライフル 射程 3 遠距離\nSUB シールド 射程 [?]\n\nLINK ABILITY\nGQuuuuuuX デッキに3枚以上\n[HP]小アップ\n\nMS ABILITY\n縛射\n任意発動 単体(敵) 射程 3 コスト 3\nロックオン中の敵ユニットに単体攻撃を行いダメージを与え、一定時間スタンさせる。\n\n戦況を変える力 デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nSPECIAL ATTACK          UNITED SP\nビーム・ライフル撃射    ー\n連携 ー                 連携 ー\n連携 ー                 連携 ー\n単体(敵) 射程 3         ー 射程 ー\nSPコスト 2 威力 3600 / ー\n\n敵単体に射撃攻撃でダメージを与える。\n/ー\n\nIMPACT AREA\n[アイコン:中央やや下に緑黄色の丸マーカー]\n\nillust Moyasi\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nBP02-003 U"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "BOOSTER_PACK_[機動戦士GundamGQuuuuuuX]_BP02-003_ジークアクス_ocr_raw.json",
   "ocr_timestamp": "2026-02-28T04:42:45.563939",

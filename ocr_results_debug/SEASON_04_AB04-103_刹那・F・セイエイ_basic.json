@@ -5,17 +5,38 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB04-103.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB04-103_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "AB04-103",
     "type": "PL",
-    "card_label": {
-      "class": "制圧",
-      "cost_label": "コスト3"
-    },
     "name": "刹那・F・セイエイ",
-    "english_name": "SETSUNA F SEIEI",
     "cost": 3,
+    "rarity": "C",
     "category": "制圧",
     "affiliation": "ソレスタルビーイング",
+    "illustrator": "",
+    "stats": {
+      "mobility": 140,
+      "ranged_attack": 200,
+      "melee_attack": 90,
+      "hp": 110
+    },
+    "link_ability": [
+      {
+        "name": "ガンダム00",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "ガンダムマイスター",
+        "condition": "デッキに2枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "SETSUNA F SEIEI",
     "physical": {
       "height": "162cm",
       "age": 16
@@ -23,34 +44,16 @@
     "units": [
       "ガンダムエクシア"
     ],
-    "stats": {
-      "mobility": 140,
-      "ranged_attack": 200,
-      "melee_attack": 90,
-      "hp": 110
-    },
     "pilot_skill": {
       "name": "冴える戦闘勘",
       "trigger": "出撃後一定時間経過毎",
       "effect": "40秒経過毎に自身の[機動力][遠距離攻撃力]を小アップする。最大3回まで発動。",
       "has_sq_skill": false,
-      "sq_skill_details": null
-    },
-    "link_ability": [
-      {
-        "name": "ガンダム00",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "ガンダムマイスター",
-        "condition": "デッキに2枚以上",
-        "effect": "[機動力]小アップ"
-      }
-    ],
-    "rarity": "C",
-    "illustrator": null,
-    "raw": "制圧 コスト3\n\n刹那・F・セイエイ\nSETSUNA F SEIEI\n\nPL\n\n[アイコン:ガンダム00ロゴ]\n[アイコン:ソレスタルビーイングエンブレム]\n\n身長 162cm\n年齢 16歳\n所属 ソレスタルビーイング\n搭乗機体 ガンダムエクシア\n\nPL SKILL\n\n冴える戦闘勘\n\n出撃後一定時間経過毎\n\n40秒経過毎に自身の[機動力][遠距離攻撃力]を小アップする。最大3回まで発動。\n\nLINK ABILITY\n\nガンダム00 デッキに3枚以上\n[機動力]小アップ\n\nガンダムマイスター デッキに2枚以上\n[機動力]小アップ\n\n機動力 140\n遠距離攻撃 200\n近距離攻撃 90\nHP 110\n\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\nAB04-103 C"
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_raw_file": "SEASON_04_AB04-103_刹那・F・セイエイ_ocr_raw.json",
   "ocr_timestamp": "2026-03-02T06:27:21.107727",

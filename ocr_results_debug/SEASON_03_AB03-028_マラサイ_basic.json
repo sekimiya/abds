@@ -5,31 +5,36 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB03-028.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB03-028_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "AB03-028",
     "type": "MS",
-    "card_label": {
-      "class": "機動",
-      "cost_label": "コスト4"
-    },
     "name": "マラサイ",
-    "model": "RMS-108 MARASAI",
     "cost": 4,
+    "rarity": "C",
     "category": "機動",
     "affiliation": "ティターンズ",
-    "pilot": "ジェリド・メサ",
+    "illustrator": "kenko",
     "stats": {
-      "height": "20.5m",
-      "weight": "33.1t",
       "mobility": 230,
       "ranged_attack": 200,
       "melee_attack": 180,
       "hp": 190
     },
+    "link_ability": [
+      {
+        "name": "機動戦士Zガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "ジェリド・メサ",
+    "model": "RMS-108 MARASAI",
     "terrain_compatibility": {
       "ground": "A",
       "space": "A",
       "desert": "C",
-      "water": null
+      "water": ""
     },
     "weapon": {
       "main": {
@@ -44,20 +49,13 @@
       }
     },
     "ms_ability": {
-      "name": null,
-      "activation": null,
-      "target": null,
+      "name": "",
+      "activation": "",
+      "target": "",
       "range": null,
       "cost": null,
-      "description": null
+      "description": ""
     },
-    "link_ability": [
-      {
-        "name": "機動戦士Zガンダム",
-        "condition": "デッキに3枚以上",
-        "effect": "[遠距離攻撃力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "ビーム・ライフル撃射",
       "target": "単体(敵)",
@@ -65,11 +63,11 @@
       "sp_cost": 2,
       "power": 3100,
       "description": "敵単体に射撃攻撃でダメージを与える。",
-      "united_sp": null
-    },
-    "rarity": "C",
-    "illustrator": "kenko",
-    "raw": "MS\n\n機動 コスト4\n\nRMS-108 MARASAI\nマラサイ\n\n全高 20.5m\n本体重量 33.1t\n所属 ティターンズ\nパイロット ジェリド・メサ\n\n地上 A 宇宙 A 砂漠 C\n機動力 230\n遠距離攻撃 200\n近距離攻撃 180\nHP 190\n\nWEAPON\nMAIN ビーム・ライフル 射程 3 遠距離\nSUB ビーム・サーベル 射程 1 近距離\n\nLINK ABILITY\n機動戦士Zガンダム デッキに3枚以上\n[遠距離攻撃力] 小アップ\n\nMS ABILITY\n― ―\n― ― 射程 ― コスト ―\n\nSPECIAL ATTACK\nビーム・ライフル撃射\n単体(敵) 射程 3\nSPコスト 2 威力 3100\n敵単体に射撃攻撃でダメージを与える。\n\nIMPACT AREA\n[アイコン:緑丸 中央やや上]\n[アイコン:三角 下部中央]\n\nillust kenko\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\n\nAB03-028 C"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "SEASON_03_AB03-028_マラサイ_ocr_raw.json",
   "ocr_timestamp": "2026-02-23T15:14:31.822866",

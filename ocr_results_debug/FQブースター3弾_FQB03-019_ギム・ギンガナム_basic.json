@@ -5,52 +5,55 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQB03-019.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQB03-019_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "FQB03-019",
     "type": "PL",
-    "card_label": {
-      "class": "殲滅",
-      "cost_label": "コスト3"
-    },
     "name": "ギム・ギンガナム",
-    "english_name": "GYM GHINGHAM",
     "cost": 3,
+    "rarity": "R",
     "category": "殲滅",
     "affiliation": "ギンガナム艦隊",
-    "physical": {
-      "height": null,
-      "age": null
-    },
-    "units": [
-      "ターンX"
-    ],
+    "illustrator": "",
     "stats": {
       "mobility": 200,
       "ranged_attack": 230,
       "melee_attack": 80,
       "hp": 210
     },
+    "link_ability": [
+      {
+        "name": "∀ガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[HP]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "GYM GHINGHAM",
+    "physical": {
+      "height": "",
+      "age": ""
+    },
+    "units": [
+      "ターンX"
+    ],
     "pilot_skill": {
       "name": "瓦解する敵陣",
       "trigger": "敵ユニットを撃破時",
       "effect": "40秒間、自身の[遠距離攻撃力]を大アップし、受けるダメージを軽減する。",
       "has_sq_skill": false,
-      "sq_skill_details": null
-    },
-    "link_ability": [
-      {
-        "name": "∀ガンダム",
-        "condition": "デッキに3枚以上",
-        "effect": "[HP]小アップ"
-      },
-      {
-        "name": "戦況を変える力",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      }
-    ],
-    "rarity": "R",
-    "illustrator": null,
-    "raw": "PL\n\n殲滅 コスト3\n\nギム・ギンガナム\nGYM GHINGHAM\n\n身長　ー\n年齢　ー\n所属　ギンガナム艦隊\n搭乗機体　ターンX\n\nPL SKILL\n瓦解する敵陣\n敵ユニットを撃破時\n40秒間、自身の[遠距離攻撃力]を大アップし、受けるダメージを軽減する。\n\nLINK ABILITY\n∀ガンダム　デッキに3枚以上\n[HP]小アップ\n\n戦況を変える力　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\n機動力 200\n遠距離攻撃 230\n近距離攻撃 80\nHP 210\n\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\nFQB03-019　R"
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_raw_file": "FQブースター3弾_FQB03-019_ギム・ギンガナム_ocr_raw.json",
   "ocr_timestamp": "2026-02-28T02:16:11.050588",

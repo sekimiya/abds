@@ -5,26 +5,39 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX04-040.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX04-040_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "LX04-040",
     "type": "MS",
-    "card_label": {
-      "class": "機動",
-      "cost_label": "コスト3"
-    },
     "name": "ソードインパルスガンダム",
-    "model": "ZGMF-X56S/β SWORD IMPULSE GUNDAM",
     "cost": 3,
-    "category": "SEED DESTINY",
+    "rarity": "R",
+    "category": "機動",
     "affiliation": "ザフト",
-    "pilot": "シン・アスカ",
+    "illustrator": "Ayato",
     "stats": {
-      "height": "19.37m",
-      "weight": "78.93t",
       "mobility": 230,
       "ranged_attack": 100,
       "melee_attack": 220,
       "hp": 200
     },
+    "link_ability": [
+      {
+        "name": "SEED DESTINY",
+        "condition": "デッキに3枚以上",
+        "effect": "[HP]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "間合いを詰めた接近戦",
+        "condition": "デッキに2枚以上",
+        "effect": "[近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "シン・アスカ",
+    "model": "ZGMF-X56S/β SWORD IMPULSE GUNDAM",
     "terrain_compatibility": {
       "ground": "S",
       "space": "A",
@@ -51,18 +64,6 @@
       "cost": 3,
       "description": "ロックオン中の敵に単体攻撃でダメージを与える。"
     },
-    "link_ability": [
-      {
-        "name": "SEED DESTINY",
-        "condition": "デッキに3枚以上",
-        "effect": "[HP]小アップ"
-      },
-      {
-        "name": "間合いを詰めた接近戦",
-        "condition": "デッキに2枚以上",
-        "effect": "[近距離攻撃力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "エクスカリバー レーザー対艦刀ニ刀流強撃",
       "target": "単体(敵)",
@@ -70,11 +71,11 @@
       "sp_cost": 2,
       "power": 3300,
       "description": "敵単体に格闘攻撃でダメージを与える。",
-      "united_sp": null
-    },
-    "rarity": "R",
-    "illustrator": "Ayato",
-    "raw": "機動　コスト3　MS\nZGMF-X56S/β SWORD IMPULSE GUNDAM\nソードインパルスガンダム\n\n全高　19.37m\n本体重量　78.93t\n所属　ザフト\nパイロット　シン・アスカ\n\n地上 S　宇宙 A　砂漠 B　水中 A\n機動力　230\n遠距離攻撃　100\n近距離攻撃　220\nHP　200\n\nWEAPON\nMAIN　エクスカリバー レーザー対艦刀ニ刀流　射程 1　近距離\nSUB　フラッシュエッジ ビームブーメラン　射程 3　遠距離\n\nMS ABILITY\n強撃\n任意発動　単体(敵)　射程 1　コスト 3\nロックオン中の敵に単体攻撃でダメージを与える。\n\nLINK ABILITY\nSEED DESTINY　デッキに3枚以上\n[HP]小アップ\n\n間合いを詰めた接近戦　デッキに2枚以上\n[近距離攻撃力]小アップ\n\nSPECIAL ATTACK\nエクスカリバー レーザー対艦刀ニ刀流強撃\n単体(敵)　射程 2\nSPコスト 2　威力 3300\n敵単体に格闘攻撃でダメージを与える。\n\nillust. Ayato\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n\nLX04-040　R"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "LINXTAGE_SEASON_04_LX04-040_ソードインパルスガンダム_ocr_raw.json",
   "ocr_timestamp": "2026-03-07T19:02:48.080749",

@@ -5,31 +5,36 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AR02-003.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AR02-003_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "AR02-003",
     "type": "MS",
-    "card_label": {
-      "class": "機動",
-      "cost_label": "コスト4"
-    },
-    "name": "0ガンダム（ロールアウトカラー）",
-    "model": "GN-000 0 GUNDAM(ROLL OUT COLOR)",
+    "name": "0ガンダム(ロールアウトカラー)",
     "cost": 4,
-    "category": "ガンダム00",
+    "rarity": "A",
+    "category": "機動",
     "affiliation": "ソレスタルビーイング",
-    "pilot": "リボンズ・アルマーク",
+    "illustrator": "Syusei Yamashiro",
     "stats": {
-      "height": "18.0m",
-      "weight": "53.4t",
       "mobility": 300,
       "ranged_attack": 280,
       "melee_attack": 210,
       "hp": 230
     },
+    "link_ability": [
+      {
+        "name": "ガンダム00",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "リボンズ・アルマーク",
+    "model": "GN-000 0 GUNDAM(ROLL OUT COLOR)",
     "terrain_compatibility": {
       "ground": "A",
       "space": "A",
       "desert": "C",
-      "water": null
+      "water": ""
     },
     "weapon": {
       "main": {
@@ -51,13 +56,6 @@
       "cost": null,
       "description": "20秒間、自身を中心とした大範囲内の敵ユニットの[遠距離攻撃][近距離攻撃力]を小ダウンする。"
     },
-    "link_ability": [
-      {
-        "name": "ガンダム00",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "ビームガン射撃",
       "target": "単体（敵）",
@@ -65,11 +63,11 @@
       "sp_cost": 2,
       "power": 3300,
       "description": "敵単体に射撃攻撃でダメージを与える。",
-      "united_sp": null
-    },
-    "rarity": "A",
-    "illustrator": "Syusei Yamashiro",
-    "raw": "機動　コスト4　MS\n\nGN-000 0 GUNDAM(ROLL OUT COLOR)\n0ガンダム（ロールアウトカラー）\n\n全高　18.0m\n本体重量　53.4t　　　　地上 A　宇宙 A　砂漠 C\n所属　ソレスタルビーイング　　　　　　　　機動力 300\nパイロット　リボンズ・アルマーク　　　遠距離攻撃 280\n　　　　　　　　　　　　　　　　　　近距離攻撃 210\n　　　　　　　　　　　　　　　　　　HP 230\n\nWEAPON\nMAIN　ビームガン　　射程 3　遠距離\nSUB　　ビームサーベル　射程 1　近距離\n\nLINK ABILITY\nガンダム00　デッキに3枚以上\n[機動力]小アップ\n\nー　ー\nー\n\nMS ABILITY\n妨害[攻撃]\n出撃時発動　範囲（敵）　射程 ー　コスト ー\n\n20秒間、自身を中心とした大範囲内の敵\nユニットの[遠距離攻撃][近距離攻撃力]\nを小ダウンする。\n\nSPECIAL ATTACK\nビームガン射撃\n単体（敵）　射程 3\nSPコスト 2　威力 3300\n敵単体に射撃攻撃でダメージを与える。\n\nillust　Syusei Yamashiro\n©創通・サンライズ\nBANDAI MADE IN JAPAN　　ARSENAL BASE®　　AR02-003　A"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "アーセナルレア2弾[前半]_AR02-003_0ガンダム(ロールアウトカラー)_ocr_raw.json",
   "ocr_timestamp": "2026-03-07T15:03:32.778916",

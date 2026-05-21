@@ -5,26 +5,39 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE01-004.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE01-004_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "VE01-004",
     "type": "MS",
-    "card_label": {
-      "class": "機動",
-      "cost_label": "コスト4"
-    },
     "name": "ガンダムTR-1[ヘイズル改]高機動仕様",
-    "model": "RX-121-1 GUNDAM TR-1 [HAZEL CUSTOM] HIGH MOBILITY TYPE",
     "cost": 4,
+    "rarity": "P",
     "category": "機動",
     "affiliation": "ティターンズ",
-    "pilot": null,
+    "illustrator": "Kumagoro",
     "stats": {
-      "height": "18.1m",
-      "weight": "41.5t",
       "mobility": 260,
       "ranged_attack": 420,
       "melee_attack": 50,
       "hp": 470
     },
+    "link_ability": [
+      {
+        "name": "ADVANCE OF Z",
+        "condition": "デッキに2枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "堅牢な高機動機",
+        "condition": "デッキに機動が2枚以上",
+        "effect": "[HP]中アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "",
+    "model": "RX-121-1 GUNDAM TR-1 [HAZEL CUSTOM] HIGH MOBILITY TYPE",
     "terrain_compatibility": {
       "ground": "A",
       "space": "S",
@@ -51,43 +64,25 @@
       "cost": 4,
       "description": "一定時間、自身を中心とした範囲内の敵ユニットを弱体化する。使用回数に応じて、弱体化効果、範囲が変わる。[1回:遠／近攻撃力ダウン][2回:被ダメージアップ][3回以上:出撃中の全敵ユニットの遠／近攻撃力&SP威力ダウン]"
     },
-    "link_ability": [
-      {
-        "name": "ADVANCE OF Z",
-        "condition": "デッキに2枚以上",
-        "effect": "[機動力]小アップ",
-        "is_eb_link": false
-      },
-      {
-        "name": "堅牢な高機動機",
-        "condition": "デッキに機動が2枚以上",
-        "effect": "[HP]中アップ",
-        "is_eb_link": false
-      }
-    ],
     "special_attack": {
       "name": "ビーム・ライフル撃射",
       "target": "単体(敵)",
       "range": 3,
       "sp_cost": 2,
       "power": 3400,
-      "sp_type": "ECHOES BEAT",
       "description": "敵単体に射撃攻撃でダメージを与え、一定時間、自身の[遠距離攻撃力]をアップする。",
+      "sp_type": "ECHOES BEAT",
       "echoes_beat": {
-        "eb_type": "normal",
-        "eb_name": "ビーム・ライフル撃射 Lv.1",
-        "eb_level": 1,
-        "eb_note": "ECHOES BEAT Lv.を下げることで、Lv.戦術技が発動する。",
-        "eb_target": "単体(敵)",
-        "eb_range": 3,
-        "eb_power": 3700,
-        "eb_description": "EBLv.を1下げる。敵単体に射撃攻撃でダメージを与え、EBLv.が3に上昇する。一定時間、自身の[遠距離攻撃力]をアップする。出撃時1度のみ使用可能。"
+        "name": "ビーム・ライフル撃射 Lv.1",
+        "level": 1,
+        "power": 3700,
+        "range": 3,
+        "target": "単体(敵)",
+        "description": "EBLv.を1下げる。敵単体に射撃攻撃でダメージを与え、EBLv.が3に上昇する。一定時間、自身の[遠距離攻撃力]をアップする。出撃時1度のみ使用可能。"
       },
-      "united_sp": null
-    },
-    "rarity": "P",
-    "illustrator": "Kumagoro",
-    "raw": ""
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "WAVECHOES_SEASON_01_VE01-004_ガンダムTR-1[ヘイズル改]高機動仕様_ocr_raw.json",
   "ocr_timestamp": "2026-03-30T01:39:02.642004",

@@ -5,31 +5,44 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB04-036.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB04-036_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "AB04-036",
     "type": "MS",
-    "card_label": {
-      "class": "機動",
-      "cost_label": "コスト5"
-    },
     "name": "シャイニングガンダム",
-    "model": "GF13-017NJ SHINING GUNDAM",
     "cost": 5,
+    "rarity": "R",
     "category": "機動",
     "affiliation": "ネオジャパン",
-    "pilot": "ドモン・カッシュ",
+    "illustrator": "Tonbi Aburaya",
     "stats": {
-      "height": "16.2m",
-      "weight": "6.8t",
       "mobility": 300,
       "ranged_attack": 250,
       "melee_attack": 170,
       "hp": 180
     },
+    "link_ability": [
+      {
+        "name": "Gガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "その名はガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "ドモン・カッシュ",
+    "model": "GF13-017NJ SHINING GUNDAM",
     "terrain_compatibility": {
       "ground": "S",
       "space": "C",
       "desert": "B",
-      "water": null
+      "water": ""
     },
     "weapon": {
       "main": {
@@ -51,18 +64,6 @@
       "cost": 3,
       "description": "30秒間、自身の[遠距離攻撃力]を小アップする。"
     },
-    "link_ability": [
-      {
-        "name": "Gガンダム",
-        "condition": "デッキに3枚以上",
-        "effect": "[近距離攻撃力]小アップ"
-      },
-      {
-        "name": "その名はガンダム",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "シャイニングショット撃射",
       "target": "単体(敵)",
@@ -70,11 +71,11 @@
       "sp_cost": 2,
       "power": 3200,
       "description": "敵単体に射撃攻撃でダメージを与える。",
-      "united_sp": null
-    },
-    "rarity": "R",
-    "illustrator": "Tonbi Aburaya",
-    "raw": "MS\n\n機動　コスト5\nGF13-017NJ SHINING GUNDAM\nシャイニングガンダム\n\n全高　16.2m\n本体重量　6.8t\n所属　ネオジャパン\nパイロット　ドモン・カッシュ\n\n地上 S　宇宙 C　砂漠 B\n\n機動力 300\n遠距離攻撃 250\n近距離攻撃 170\nHP 180\n\nWEAPON\nMAIN シャイニングショット　射程 3　遠距離\nSUB 格闘　射程 1　近距離\n\nLINK ABILITY\nGガンダム　デッキに3枚以上\n[近距離攻撃力]小アップ\n\nMS ABILITY\n強化[遠距離]\n任意発動　自分　射程 ー　コスト 3\n30秒間、自身の[遠距離攻撃力]を小アップする。\n\nその名はガンダム　デッキに3枚以上\n[機動力]小アップ\n\nIMPACT AREA\n[アイコン:中央やや上に緑丸、下部中央に黄三角]\n\nSPECIAL ATTACK\nシャイニングショット撃射\n単体(敵)　射程 3\nSPコスト 2　威力 3200\n敵単体に射撃攻撃でダメージを与える。\n\nillust Tonbi Aburaya\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nAB04-036　R"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "SEASON_04_AB04-036_シャイニングガンダム_ocr_raw.json",
   "ocr_timestamp": "2026-03-02T05:50:18.364510",

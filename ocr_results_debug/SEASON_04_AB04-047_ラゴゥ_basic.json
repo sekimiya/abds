@@ -5,31 +5,44 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB04-047.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB04-047_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "AB04-047",
     "type": "MS",
-    "card_label": {
-      "class": "機動",
-      "cost_label": "コスト3"
-    },
     "name": "ラゴゥ",
-    "model": "TMF/A-803 LaGOWE",
     "cost": 3,
+    "rarity": "C",
     "category": "機動",
     "affiliation": "ザフト",
-    "pilot": "アンドリュー・バルトフェルド",
+    "illustrator": "mercy rabbit",
     "stats": {
-      "height": "11.49m(ターレット基部まで)",
-      "weight": "70.18t",
       "mobility": 200,
       "ranged_attack": 180,
       "melee_attack": 70,
       "hp": 150
     },
+    "link_ability": [
+      {
+        "name": "ガンダムSEED",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "陸戦特化の戦い",
+        "condition": "デッキに2枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "アンドリュー・バルトフェルド",
+    "model": "TMF/A-803 LaGOWE",
     "terrain_compatibility": {
       "ground": "S",
       "space": "C",
       "desert": "S",
-      "water": null
+      "water": ""
     },
     "weapon": {
       "main": {
@@ -51,18 +64,6 @@
       "cost": null,
       "description": "20秒間、自身を中心とした大範囲内の敵ユニットの[遠距離攻撃力]を小ダウンする。"
     },
-    "link_ability": [
-      {
-        "name": "ガンダムSEED",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "陸戦特化の戦い",
-        "condition": "デッキに2枚以上",
-        "effect": "[機動力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "2連装ビームキャノン撃射",
       "target": "単体(敵)",
@@ -70,11 +71,11 @@
       "sp_cost": 2,
       "power": 3100,
       "description": "敵単体に射撃攻撃でダメージを与える。",
-      "united_sp": null
-    },
-    "rarity": "C",
-    "illustrator": "mercy rabbit",
-    "raw": "MS\n\n機動　コスト3\n\nTMF/A-803 LaGOWE\nラゴゥ\n\n全高　11.49m(ターレット基部まで)\n本体重量　70.18t\n所属　ザフト\nパイロット　アンドリュー・バルトフェルド\n\n地上　S　宇宙　C　砂漠　S\n\n機動力　200\n遠距離攻撃　180\n近距離攻撃　70\nHP　150\n\nWEAPON\nMAIN　2連装ビームキャノン　射程 2　遠距離\nSUB　2連装ビームサーベル　射程 1　近距離\n\nLINK ABILITY\nガンダムSEED　デッキに3枚以上\n[機動力]小アップ\n\n陸戦特化の戦い　デッキに2枚以上\n[機動力]小アップ\n\nMS ABILITY\n妨害[遠距離]\n出撃時発動　範囲(敵)　射程 ー　コスト ー\n20秒間、自身を中心とした大範囲内の敵ユニットの[遠距離攻撃力]を小ダウンする。\n\nSPECIAL ATTACK\n2連装ビームキャノン撃射\n単体(敵)　射程 3\nSPコスト 2　威力　3100\n敵単体に射撃攻撃でダメージを与える。\n\nIMPACT AREA\n[アイコン:円形範囲・中央下寄り三角マーカー]\n\nillust　mercy rabbit\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\nAB04-047　C"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "SEASON_04_AB04-047_ラゴゥ_ocr_raw.json",
   "ocr_timestamp": "2026-03-02T05:57:40.361539",

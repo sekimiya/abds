@@ -5,31 +5,44 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX01-038.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX01-038_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "LX01-038",
     "type": "MS",
-    "card_label": {
-      "class": "遠距離",
-      "cost_label": "コスト7"
-    },
     "name": "プロヴィデンスガンダム",
-    "model": "ZGMF-X13A PROVIDENCE GUNDAM",
     "cost": 7,
+    "rarity": "P",
     "category": "遠距離",
     "affiliation": "ザフト",
-    "pilot": "ラウ・ル・クルーゼ",
+    "illustrator": "Moyasi",
     "stats": {
-      "height": "18.16m",
-      "weight": "90.68t",
       "mobility": 300,
       "ranged_attack": 540,
       "melee_attack": 320,
       "hp": 440
     },
+    "link_ability": [
+      {
+        "name": "ガンダムSEED",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "オールレンジ兵器",
+        "condition": "デッキに2枚以上",
+        "effect": "[遠距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "ラウ・ル・クルーゼ",
+    "model": "ZGMF-X13A PROVIDENCE GUNDAM",
     "terrain_compatibility": {
       "ground": "A",
       "space": "S",
       "desert": "A",
-      "water": null
+      "water": ""
     },
     "weapon": {
       "main": {
@@ -51,18 +64,6 @@
       "cost": 3,
       "description": "30秒間、自身の周囲の敵ユニットに継続的にダメージを与え、[遠距離攻撃力][近距離攻撃力]を小ダウンする。"
     },
-    "link_ability": [
-      {
-        "name": "ガンダムSEED",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "オールレンジ兵器",
-        "condition": "デッキに2枚以上",
-        "effect": "[遠距離攻撃力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "ドラグーン斉射",
       "target": "単体(敵)",
@@ -70,11 +71,11 @@
       "sp_cost": 3,
       "power": 3900,
       "description": "敵単体に射撃攻撃でダメージを与え、20秒間、[遠距離攻撃力][近距離攻撃力]を中ダウンする。",
-      "united_sp": null
-    },
-    "rarity": "P",
-    "illustrator": "Moyasi",
-    "raw": "遠距離　コスト7　MS\n\nZGMF-X13A PROVIDENCE GUNDAM\nプロヴィデンスガンダム\n\n全高　18.16m\n本体重量　90.68t\n所属　ザフト\nパイロット　ラウ・ル・クルーゼ\n\n地上　A　宇宙　S　砂漠　A\n\n機動力　300\n遠距離攻撃　540\n近距離攻撃　320\nHP　440\n\nWEAPON\nMAIN　ユーティキウム・ビームライフル　射程 3　遠距離\nSUB　複合兵装防盾システム　射程 1　近距離\n\nLINK ABILITY\nガンダムSEED　デッキに3枚以上\n[機動力]小アップ\n\nオールレンジ兵器　デッキに2枚以上\n[遠距離攻撃力]小アップ\n\nMS ABILITY\nオールレンジ[妨撃]\n任意発動　範囲(敵)　射程 4　コスト 3\n30秒間、自身の周囲の敵ユニットに継続的にダメージを与え、[遠距離攻撃力][近距離攻撃力]を小ダウンする。\n\nSPECIAL ATTACK\nドラグーン斉射\n単体(敵)　射程 3\nSPコスト 3　威力　3900\n敵単体に射撃攻撃でダメージを与え、20秒間、[遠距離攻撃力][近距離攻撃力]を中ダウンする。\n\nIMPACT AREA\n[アイコン:前方中距離 菱形範囲]\n\nillust Moyasi\n©創通・サンライズ\nBANDAI MADE IN JAPAN\nLX01-038　P"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "LINXTAGE_SEASON_01_LX01-038_プロヴィデンスガンダム_ocr_raw.json",
   "ocr_timestamp": "2026-03-02T07:22:23.469945",

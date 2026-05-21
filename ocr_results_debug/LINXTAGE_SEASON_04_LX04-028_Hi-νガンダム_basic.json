@@ -5,26 +5,39 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX04-028.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX04-028_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "LX04-028",
     "type": "MS",
-    "card_label": {
-      "class": "近距離",
-      "cost_label": "コスト4"
-    },
     "name": "Hi-νガンダム",
-    "model": "RX-93-ν2 Hi-νGUNDAM",
     "cost": 4,
-    "category": "逆襲のシャア",
+    "rarity": "R",
+    "category": "近距離",
     "affiliation": "地球連邦軍",
-    "pilot": "アムロ・レイ",
+    "illustrator": "Hayaken-sarena",
     "stats": {
-      "height": "20.0m",
-      "weight": "27.9t",
       "mobility": 150,
       "ranged_attack": 180,
       "melee_attack": 270,
       "hp": 200
     },
+    "link_ability": [
+      {
+        "name": "逆襲のシャア",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "アムロ・レイ",
+    "model": "RX-93-ν2 Hi-νGUNDAM",
     "terrain_compatibility": {
       "ground": "A",
       "space": "S",
@@ -51,18 +64,6 @@
       "cost": 2,
       "description": "自身の周囲にユニット扱いでロックオンされるデコイを3体配置する。※上限6体まで。効果の対象やユニット数には含まれない。"
     },
-    "link_ability": [
-      {
-        "name": "逆襲のシャア",
-        "condition": "デッキに3枚以上",
-        "effect": "[遠距離攻撃力]小アップ"
-      },
-      {
-        "name": "戦況を変える力",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "ビーム・サーベル強撃",
       "target": "単体(敵)",
@@ -70,11 +71,11 @@
       "sp_cost": 2,
       "power": 3300,
       "description": "敵単体に格闘攻撃でダメージを与える。",
-      "united_sp": null
-    },
-    "rarity": "R",
-    "illustrator": "Hayaken-sarena",
-    "raw": "近距離 コスト4 MS\nRX-93-ν2 Hi-νGUNDAM\nHi-νガンダム\n\n全高 20.0m\n本体重量 27.9t\n所属 地球連邦軍\nパイロット アムロ・レイ\n\n地上 A 宇宙 S 砂漠 C 水中 C\n機動力 150\n遠距離攻撃 180\n近距離攻撃 270\nHP 200\n\nWEAPON\nMAIN ビーム・サーベル 射程 1 近距離\nSUB ビーム・ライフル 射程 3 遠距離\n\nMS ABILITY\nデコイ[ユニット]\n任意発動 特殊(自分) 射程 ー コスト 2\n自身の周囲にユニット扱いでロックオンされるデコイを3体配置する。※上限6体まで。効果の対象やユニット数には含まれない。\n\nLINK ABILITY\n逆襲のシャア デッキに3枚以上\n[遠距離攻撃力]小アップ\n\n戦況を変える力 デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nSPECIAL ATTACK\nビーム・サーベル強撃\n単体(敵) 射程 2\nSPコスト 2 威力 3300\n敵単体に格闘攻撃でダメージを与える。\n\nillust. Hayaken-sarena\n©創通・サンライズ\nBANDAI MADE IN JAPAN\nLX04-028 R"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "LINXTAGE_SEASON_04_LX04-028_Hi-νガンダム_ocr_raw.json",
   "ocr_timestamp": "2026-03-07T18:32:38.855958",

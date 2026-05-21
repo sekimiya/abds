@@ -5,26 +5,39 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP06-014.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP06-014_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "BP06-014",
     "type": "MS",
-    "card_label": {
-      "class": "遠距離",
-      "cost_label": "コスト6"
-    },
     "name": "トライエイジガンダム",
-    "model": "TRYAGE GUNDAM",
     "cost": 6,
+    "rarity": "U",
     "category": "遠距離",
-    "affiliation": null,
-    "pilot": "クジョウ・キョウヤ",
+    "affiliation": "",
+    "illustrator": "Naochika Morishita",
     "stats": {
-      "height": null,
-      "weight": null,
       "mobility": 300,
       "ranged_attack": 680,
       "melee_attack": 100,
       "hp": 520
     },
+    "link_ability": [
+      {
+        "name": "トライエイジ",
+        "condition": "デッキに2枚以上",
+        "effect": "[HP]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "クジョウ・キョウヤ",
+    "model": "TRYAGE GUNDAM",
     "terrain_compatibility": {
       "ground": "A",
       "space": "A",
@@ -51,18 +64,6 @@
       "cost": 4,
       "description": "1回目の発動でチャージ状態になり、2回目の発動でロックオン中の敵に貫通射撃でダメージを与える。チャージ時間に応じて、ダメージ値が上昇する。"
     },
-    "link_ability": [
-      {
-        "name": "トライエイジ",
-        "condition": "デッキに2枚以上",
-        "effect": "[HP]小アップ"
-      },
-      {
-        "name": "多彩な戦術",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "トライエイジ・エタニティシューティング",
       "target": "貫通(敵)",
@@ -70,17 +71,18 @@
       "sp_cost": 3,
       "power": 4000,
       "description": "射線上の敵に貫通射撃でダメージを与え、一定時間スタンさせる。一定時間、出撃中の全味方ユニットの[遠距離攻撃力][近距離攻撃力]をアップする。",
+      "sp_type": "",
+      "echoes_beat": null,
       "united_sp": {
-        "partner1": null,
-        "partner2": null,
+        "name": "",
+        "partners": [],
+        "target": "",
         "range": null,
         "power": null,
-        "description": null
-      }
-    },
-    "rarity": "U",
-    "illustrator": "Naochika Morishita",
-    "raw": "MS\n\n遠距離　コスト6\nTRYAGE GUNDAM\nトライエイジガンダム\n\n頭頂高　ー\n本体重量　ー\n所属　ー\nパイロット　クジョウ・キョウヤ\n\n地上 A 宇宙 A 砂漠 A 水中 A\n機動力 300\n遠距離攻撃 680\n近距離攻撃 100\nHP 520\n\nWEAPON\nMAIN トライドッズライフル　射程 3 遠距離\nSUB トライアームソード　射程 1 近距離\n\nLINK ABILITY\nトライエイジ　デッキに2枚以上\n[HP]小アップ\n\nMS ABILITY\n練破[貫通]\n任意発動　貫通(敵)　射程 4 コスト 4\n\n1回目の発動でチャージ状態になり、2回目の発動でロックオン中の敵に貫通射撃でダメージを与える。チャージ時間に応じて、ダメージ値が上昇する。\n\n多彩な戦術　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nSPECIAL ATTACK　UNITED SP\nトライエイジ・エタニティシューティング\n連携 ー　連携 ー\n連携 ー　連携 ー\n貫通(敵)　射程 4　ー　射程 ー\nSPコスト 3　威力 4000 / ー\n\n射線上の敵に貫通射撃でダメージを与え、一定時間スタンさせる。一定時間、出撃中の全味方ユニットの[遠距離攻撃力][近距離攻撃力]をアップする。/ ー\n\nIMPACT AREA\n[アイコン:縦長長方形の貫通エリア]\n\nillust　Naochika Morishita\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\nBP06-014　U"
+        "description": ""
+      },
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "BOOSTER_PACK_[DCD20th_Anniversary_ガンダムトライエイジ]_BP06-014_トライエイジガンダム_ocr_raw.json",
   "ocr_timestamp": "2026-02-26T17:57:30.690453",

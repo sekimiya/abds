@@ -5,27 +5,56 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/VEB01-007.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/VEB01-007_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "VEB01-007",
     "type": "MS",
-    "card_label": { "class": "近距離", "cost_label": "コスト2" },
     "name": "ゲルググ(量産機)",
-    "model": "MS-14A GELGOOG",
     "cost": 2,
+    "rarity": "R",
     "category": "近距離",
     "affiliation": "ジオン公国軍",
-    "pilot": null,
+    "illustrator": "",
     "stats": {
-      "height": "19.2m",
-      "weight": "42.1t",
       "mobility": 210,
       "ranged_attack": 70,
       "melee_attack": 240,
       "hp": 280
     },
-    "terrain_compatibility": { "ground": "A", "space": "S", "desert": "C", "water": "C" },
+    "link_ability": [
+      {
+        "name": "機動戦士ガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "",
+    "model": "MS-14A GELGOOG",
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "C",
+      "water": "C"
+    },
     "weapon": {
-      "main": { "name": "ビーム・ナギナタ", "range": 1, "type": "近距離" },
-      "sub": { "name": "ビーム・ライフル", "range": 3, "type": "遠距離" }
+      "main": {
+        "name": "ビーム・ナギナタ",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "ビーム・ライフル",
+        "range": 3,
+        "type": "遠距離"
+      }
     },
     "ms_ability": {
       "name": "増援[防衛]",
@@ -35,10 +64,6 @@
       "cost": 4,
       "description": "自身の周囲に防衛タイプの味方ユニットを呼び出す。※上限3ユニットまで。"
     },
-    "link_ability": [
-      { "name": "機動戦士ガンダム", "condition": "デッキに3枚以上", "effect": "[機動力]小アップ" },
-      { "name": "戦況を変える力", "condition": "デッキに4枚以上", "effect": "[遠距離攻撃力][近距離攻撃力]小アップ" }
-    ],
     "special_attack": {
       "name": "ビーム・ナギナタ強撃",
       "target": "単体(敵)",
@@ -46,11 +71,11 @@
       "sp_cost": 2,
       "power": 3200,
       "description": "敵単体に格闘攻撃でダメージを与える。/ー",
+      "sp_type": "",
+      "echoes_beat": null,
       "united_sp": null,
-      "echoes_beat": null
-    },
-    "rarity": "R",
-    "raw": "近距離 コスト2\nMS\nMS-14A GELGOOG\nゲルググ(量産機)\n頭頂高 19.2m\n本体重量 42.1t\n地上 A 宇宙 S 砂漠 C 水中 C\n所属 ジオン公国軍\n機動力 210\nパイロット ー\n遠距離攻撃 70\n近距離攻撃 240\nHP 280\nWEAPON\nMAIN ビーム・ナギナタ 射程1 近距離\nSUB ビーム・ライフル 射程3 遠距離\nMS ABILITY\n増援[防衛]\n任意発動 特殊(自分) 射程ー コスト4\n自身の周囲に防衛タイプの味方ユニットを呼び出す。※上限3ユニットまで。\nLINK ABILITY\n機動戦士ガンダム デッキに3枚以上\n[機動力]小アップ\n戦況を変える力 デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\nSPECIAL ATTACK\nビーム・ナギナタ強撃\nー\n単体(敵) 射程2 ー 射程ー\nSPコスト2 威力 3200/ー\n敵単体に格闘攻撃でダメージを与える。/ー\nVEB01-007 R"
+      "squad_sp": null
+    }
   },
   "ocr_timestamp": "2026-04-16T11:50:00.000000",
   "ocr_type": "basic",

@@ -8,47 +8,54 @@
   "ocr_type": "basic",
   "ocr_timestamp": "2026-04-22T20:30:00.000000",
   "ocr_data": {
-    "card_id": "VE02-059",
     "type": "PL",
     "name": "キラ・ヤマト",
-    "name_en": "KIRA YAMATO",
     "cost": 2,
     "rarity": "C",
-    "card_label": {
-      "class": "制圧",
-      "cost_label": "コスト2"
-    },
-    "height": "170cm",
-    "age": "19歳",
+    "category": "制圧",
     "affiliation": "コンパス",
-    "piloted_ms": "ストライクフリーダムガンダム弐式、ライジングフリーダムガンダム",
+    "illustrator": "",
     "stats": {
       "mobility": 200,
       "ranged_attack": 160,
       "melee_attack": 70,
       "hp": 210
     },
-    "pilot_skill": {
-      "name": "優れた集中力",
-      "activation": "出撃時",
-      "effect": "30秒間、自身の[SP威力]を中アップする。",
-      "has_sq_skill": false,
-      "is_eb_skill": false
-    },
     "link_ability": [
       {
         "name": "SEED FREEDOM",
         "condition": "デッキに3枚以上",
         "effect": "[機動力]小アップ",
-        "is_eb_link": false
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
       },
       {
         "name": "多彩な戦術",
         "condition": "デッキに4枚以上",
         "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
-        "is_eb_link": false
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
       }
     ],
-    "raw": "制圧 コスト2 PL キラ・ヤマト KIRA YAMATO 身長 170cm 年齢 19歳 所属 コンパス 搭乗機体 ストライクフリーダムガンダム弐式、ライジングフリーダムガンダム PL SKILL 優れた集中力 出撃時 30秒間、自身の[SP威力]を中アップする。 LINK ABILITY SEED FREEDOM デッキに3枚以上 [機動力]小アップ 多彩な戦術 デッキに4枚以上 [遠距離攻撃力][近距離攻撃力]小アップ 機動力 200 遠距離攻撃 160 近距離攻撃 70 HP 210 VE02-059 C"
+    "english_name": "KIRA YAMATO",
+    "physical": {
+      "height": "170cm",
+      "age": "19歳"
+    },
+    "units": [
+      "ストライクフリーダムガンダム弐式、ライジングフリーダムガンダム"
+    ],
+    "pilot_skill": {
+      "name": "優れた集中力",
+      "trigger": "出撃時",
+      "effect": "30秒間、自身の[SP威力]を中アップする。",
+      "has_sq_skill": false,
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
   }
 }

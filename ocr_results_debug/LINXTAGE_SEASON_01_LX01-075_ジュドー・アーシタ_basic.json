@@ -5,53 +5,56 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX01-075.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX01-075_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "LX01-075",
     "type": "PL",
-    "card_label": {
-      "class": "殲滅",
-      "cost_label": "コスト3"
-    },
     "name": "ジュドー・アーシタ",
-    "english_name": "JUDAU ASHTA",
     "cost": 3,
+    "rarity": "R",
     "category": "殲滅",
     "affiliation": "エゥーゴ",
-    "physical": {
-      "height": null,
-      "age": 14
-    },
-    "units": [
-      "ZZガンダム",
-      "Zガンダム"
-    ],
+    "illustrator": "",
     "stats": {
       "mobility": 110,
       "ranged_attack": 110,
       "melee_attack": 140,
       "hp": 210
     },
+    "link_ability": [
+      {
+        "name": "機動戦士ガンダムZZ",
+        "condition": "デッキに3枚以上",
+        "effect": "[HP]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "数奇な運命",
+        "condition": "デッキに2枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "JUDAU ASHTA",
+    "physical": {
+      "height": "",
+      "age": 14
+    },
+    "units": [
+      "ZZガンダム",
+      "Zガンダム"
+    ],
     "pilot_skill": {
       "name": "軽快な進撃",
       "trigger": "MSアビリティ発動時",
       "effect": "20秒間、自身の[機動力][近距離攻撃力]を小アップする。",
       "has_sq_skill": false,
-      "sq_skill_details": null
-    },
-    "link_ability": [
-      {
-        "name": "機動戦士ガンダムZZ",
-        "condition": "デッキに3枚以上",
-        "effect": "[HP]小アップ"
-      },
-      {
-        "name": "数奇な運命",
-        "condition": "デッキに2枚以上",
-        "effect": "[機動力]小アップ"
-      }
-    ],
-    "rarity": "R",
-    "illustrator": null,
-    "raw": "PL\n\n殲滅 コスト3\n\nジュドー・アーシタ\nJUDAU ASHTA\n\n身長 ー\n年齢 14歳\n所属 エゥーゴ\n搭乗機体 ZZガンダム、Zガンダム\n\nPL SKILL\n軽快な進撃\nMSアビリティ発動時\n20秒間、自身の[機動力][近距離攻撃力]を小アップする。\n\nLINK ABILITY\n機動戦士ガンダムZZ デッキに3枚以上\n[HP]小アップ\n\n数奇な運命 デッキに2枚以上\n[機動力]小アップ\n\n機動力 110\n遠距離攻撃 110\n近距離攻撃 140\nHP 210\n\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\nLX01-075 R"
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_raw_file": "LINXTAGE_SEASON_01_LX01-075_ジュドー・アーシタ_ocr_raw.json",
   "ocr_timestamp": "2026-03-02T07:42:04.908523",

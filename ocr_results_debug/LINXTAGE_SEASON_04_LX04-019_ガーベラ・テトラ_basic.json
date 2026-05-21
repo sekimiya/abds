@@ -5,26 +5,39 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX04-019.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX04-019_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "LX04-019",
     "type": "MS",
-    "card_label": {
-      "class": "近距離",
-      "cost_label": "コスト4"
-    },
     "name": "ガーベラ・テトラ",
-    "model": "AGX-04 GERBERA-TETRA",
     "cost": 4,
-    "category": "ガンダム0083",
+    "rarity": "R",
+    "category": "近距離",
     "affiliation": "ジオン公国軍",
-    "pilot": "シーマ・ガラハウ",
+    "illustrator": "Ayato",
     "stats": {
-      "height": "18.0m",
-      "weight": "46.7t",
       "mobility": 180,
       "ranged_attack": 70,
       "melee_attack": 260,
       "hp": 290
     },
+    "link_ability": [
+      {
+        "name": "ガンダム0083",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "間合いを詰めた接近戦",
+        "condition": "デッキに2枚以上",
+        "effect": "[近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "シーマ・ガラハウ",
+    "model": "AGX-04 GERBERA-TETRA",
     "terrain_compatibility": {
       "ground": "A",
       "space": "S",
@@ -51,18 +64,6 @@
       "cost": 6,
       "description": "自身を中心とした大範囲内の味方ユニットの弱体化状態を無効化し、30秒間、[近距離攻撃力]を中アップする。"
     },
-    "link_ability": [
-      {
-        "name": "ガンダム0083",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "間合いを詰めた接近戦",
-        "condition": "デッキに2枚以上",
-        "effect": "[近距離攻撃力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "ビーム・サーベル強撃",
       "target": "単体(敵)",
@@ -70,11 +71,11 @@
       "sp_cost": 2,
       "power": 3300,
       "description": "敵単体に格闘攻撃でダメージを与える。",
-      "united_sp": null
-    },
-    "rarity": "R",
-    "illustrator": "Ayato",
-    "raw": "近距離　コスト4\nAGX-04 GERBERA-TETRA\nガーベラ・テトラ\n\n全高　18.0m\n本体重量　46.7t\n所属　ジオン公国軍\nパイロット　シーマ・ガラハウ\n\n地上 A　宇宙 S　砂漠 C　水中 C\n機動力　180\n遠距離攻撃　70\n近距離攻撃　260\nHP　290\n\nWEAPON\nMAIN　ビーム・サーベル　射程 1　近距離\nSUB　ビーム・マシンガン　射程 3　遠距離\n\nMS ABILITY\n鼓舞[近距離][弱体化解除]\n任意発動　範囲(味方)　射程 ー　コスト 6\n自身を中心とした大範囲内の味方ユニットの弱体化状態を無効化し、30秒間、[近距離攻撃力]を中アップする。\n\nLINK ABILITY\nガンダム0083　デッキに3枚以上\n[機動力]小アップ\n\n間合いを詰めた接近戦　デッキに2枚以上\n[近距離攻撃力]小アップ\n\nSPECIAL ATTACK\nビーム・サーベル強撃\n単体(敵)　射程 2\nSPコスト 2　威力 3300\n敵単体に格闘攻撃でダメージを与える。\n\nillust. Ayato\n©創通・サンライズ\nBANDAI MADE IN JAPAN\nLX04-019　R"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "LINXTAGE_SEASON_04_LX04-019_ガーベラ・テトラ_ocr_raw.json",
   "ocr_timestamp": "2026-03-07T18:24:13.592638",

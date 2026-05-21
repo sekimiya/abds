@@ -5,17 +5,38 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT04-062.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT04-062_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "UT04-062",
     "type": "PL",
-    "card_label": {
-      "class": "殲滅",
-      "cost_label": "コスト4"
-    },
     "name": "刹那・F・セイエイ",
-    "english_name": "SETSUNA F SEIEI",
     "cost": 4,
+    "rarity": "R",
     "category": "殲滅",
     "affiliation": "ソレスタルビーイング",
+    "illustrator": "",
+    "stats": {
+      "mobility": 160,
+      "ranged_attack": 260,
+      "melee_attack": 60,
+      "hp": 320
+    },
+    "link_ability": [
+      {
+        "name": "ガンダム00",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "SETSUNA F SEIEI",
     "physical": {
       "height": "175cm",
       "age": 21
@@ -23,34 +44,16 @@
     "units": [
       "ダブルオーガンダム"
     ],
-    "stats": {
-      "mobility": 160,
-      "ranged_attack": 260,
-      "melee_attack": 60,
-      "hp": 320
-    },
     "pilot_skill": {
       "name": "綿密な戦闘準備",
       "trigger": "出撃時",
       "effect": "40秒間、自身の[機動力][遠距離攻撃力]を小アップする。",
       "has_sq_skill": false,
-      "sq_skill_details": null
-    },
-    "link_ability": [
-      {
-        "name": "ガンダム00",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "戦況を変える力",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      }
-    ],
-    "rarity": "R",
-    "illustrator": null,
-    "raw": "殲滅 コスト4\n\nPL\n\n刹那・F・セイエイ\nSETSUNA F SEIEI\n\n[アイコン:ガンダム00ロゴ]\n[アイコン:ソレスタルビーイングエンブレム]\n\n身長 175cm\n年齢 21歳\n所属 ソレスタルビーイング\n搭乗機体 ダブルオーガンダム\n\nPL SKILL\n\n綿密な戦闘準備\n\n出撃時\n\n40秒間、自身の[機動力][遠距離攻撃力]を小アップする。\n\nLINK ABILITY\n\nガンダム00 デッキに3枚以上\n\n[機動力]小アップ\n\n戦況を変える力 デッキに4枚以上\n\n[遠距離攻撃力][近距離攻撃力]小アップ\n\n機動力 160\n遠距離攻撃 260\n近距離攻撃 60\nHP 320\n\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\n\nUT04-062 R"
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_raw_file": "UNITRIBE_SEASON_04_UT04-062_刹那・F・セイエイ_ocr_raw.json",
   "ocr_timestamp": "2026-02-28T08:48:12.977977",

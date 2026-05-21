@@ -1,41 +1,53 @@
 {
-    "card_number": "VEB02-028",
-    "card_name": "ホシノ・フミナ",
-    "series": "VEブースター2弾",
-    "ocr_data": {
-        "card_number": "VEB02-028",
-        "type": "PL",
-        "name": "ホシノ・フミナ",
-        "english_name": "FUMINA HOSHINO",
-        "cost": 2,
-        "category": "防衛",
-        "rarity": "R",
-        "stats": {
-            "mobility": 170,
-            "hp": 260,
-            "ranged_attack": 60,
-            "melee_attack": 200
-        },
-        "pilot_skill": {
-            "name": "燃え上がる闘気",
-            "activation": "EBLv.1に上昇時",
-            "description": "30秒間、自身の[近距離攻撃力]をアップし、受けるダメージを軽減する。"
-        },
-        "link_ability": [
-            {
-                "name": "新時代の高鳴り",
-                "condition": "デッキに3枚以上",
-                "effect": "ECHOES BEAT Lv.が表示される。味方ユニットが戦術技を発動するとEBLv.が上がる。[HP][SP威力]小アップ",
-                "is_eb_link": true
-            },
-            {
-                "name": "多彩な戦術",
-                "condition": "デッキに4枚以上",
-                "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
-                "is_eb_link": false
-            }
-        ]
+  "card_number": "VEB02-028",
+  "card_name": "ホシノ・フミナ",
+  "series": "VEブースター2弾",
+  "ocr_data": {
+    "type": "PL",
+    "name": "ホシノ・フミナ",
+    "cost": 2,
+    "rarity": "R",
+    "category": "防衛",
+    "affiliation": "",
+    "illustrator": "",
+    "stats": {
+      "mobility": 170,
+      "ranged_attack": 60,
+      "melee_attack": 200,
+      "hp": 260
     },
-    "ocr_engine": "claude_code_subagent",
-    "ocr_timestamp": "2026-05-15T00:00:00"
+    "link_ability": [
+      {
+        "name": "新時代の高鳴り",
+        "condition": "デッキに3枚以上",
+        "effect": "ECHOES BEAT Lv.が表示される。味方ユニットが戦術技を発動するとEBLv.が上がる。[HP][SP威力]小アップ",
+        "is_eb_link": true,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "FUMINA HOSHINO",
+    "physical": null,
+    "units": null,
+    "pilot_skill": {
+      "name": "燃え上がる闘気",
+      "trigger": "EBLv.1に上昇時",
+      "effect": "30秒間、自身の[近距離攻撃力]をアップし、受けるダメージを軽減する。",
+      "has_sq_skill": false,
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": 1,
+      "sq_rush_effect": ""
+    }
+  },
+  "ocr_engine": "claude_code_subagent",
+  "ocr_timestamp": "2026-05-15T00:00:00"
 }

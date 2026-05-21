@@ -5,26 +5,39 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-159.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-159_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "PR-159",
     "type": "MS",
-    "card_label": {
-      "class": "近距離",
-      "cost_label": "コスト3"
-    },
     "name": "ケンプファー",
-    "model": "MS-18E KÄMPFER",
     "cost": 3,
-    "category": "ポケットの中の戦争",
+    "rarity": "PR",
+    "category": "近距離",
     "affiliation": "ジオン公国軍",
-    "pilot": "ミハイル・カミンスキー",
+    "illustrator": "Kai Hajime",
     "stats": {
-      "height": "17.7m",
-      "weight": "43.5t",
       "mobility": 220,
       "ranged_attack": 130,
       "melee_attack": 320,
       "hp": 380
     },
+    "link_ability": [
+      {
+        "name": "ポケットの中の戦争",
+        "condition": "デッキに3枚以上",
+        "effect": "[HP]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "迫撃の近距離戦",
+        "condition": "デッキに近距離が2枚以上",
+        "effect": "[近距離攻撃力]中アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "ミハイル・カミンスキー",
+    "model": "MS-18E KÄMPFER",
     "terrain_compatibility": {
       "ground": "S",
       "space": "B",
@@ -51,18 +64,6 @@
       "cost": 3,
       "description": "ロックオン中の敵に単体攻撃でダメージを与える。"
     },
-    "link_ability": [
-      {
-        "name": "ポケットの中の戦争",
-        "condition": "デッキに3枚以上",
-        "effect": "[HP]小アップ"
-      },
-      {
-        "name": "迫撃の近距離戦",
-        "condition": "デッキに近距離が2枚以上",
-        "effect": "[近距離攻撃力]中アップ"
-      }
-    ],
     "special_attack": {
       "name": "ビーム・サーベル強撃",
       "target": "単体（敵）",
@@ -70,11 +71,11 @@
       "sp_cost": 2,
       "power": 3500,
       "description": "敵単体に格闘攻撃でダメージを与える。",
-      "united_sp": null
-    },
-    "rarity": "PR",
-    "illustrator": "Kai Hajime",
-    "raw": "近距離 コスト3\nMS-18E KÄMPFER\nケンプファー\n\n全高 17.7m\n本体重量 43.5t\n所属 ジオン公国軍\nパイロット ミハイル・カミンスキー\n\n地上 S 宇宙 B 砂漠 S 水中 C\n\n機動力 220\n遠距離攻撃 130\n近距離攻撃 320\nHP 380\n\nWEAPON\nMAIN ビーム・サーベル 射程 1 近距離\nSUB ショットガン 射程 3 遠距離\n\nMS ABILITY\n強撃\n任意発動 単体（敵） 射程 1 コスト 3\nロックオン中の敵に単体攻撃でダメージを与える。\n\nLINK ABILITY\nポケットの中の戦争 デッキに3枚以上\n[HP]小アップ\n\n迫撃の近距離戦 デッキに近距離が2枚以上\n[近距離攻撃力]中アップ\n\nIMPACT AREA\n（グリッド図：上段中央に緑丸、中段中央に黄丸、下段中央に白三角）\n\nSPECIAL ATTACK\nビーム・サーベル強撃\n単体（敵） 射程 2\nSPコスト 2 威力 3500\n敵単体に格闘攻撃でダメージを与える。\n\nillust Kai Hajime\n©創通・サンライズ\nBANDAI MADE IN JAPAN\nNOT FOR SALE\nPR-159 PR"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "プロモーション_PR-159_ケンプファー_ocr_raw.json",
   "ocr_timestamp": "2026-03-07T11:42:26.342362",

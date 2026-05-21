@@ -5,44 +5,50 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX04-069.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX04-069_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "LX04-069",
     "type": "PL",
-    "card_label": {
-      "class": "制圧",
-      "cost_label": "コスト3"
-    },
     "name": "バーナード・ワイズマン",
     "cost": 3,
-    "category": "ポケットの中の戦争",
+    "rarity": "U",
+    "category": "制圧",
     "affiliation": "ジオン公国軍",
+    "illustrator": "",
     "stats": {
       "mobility": 190,
       "ranged_attack": 20,
       "melee_attack": 320,
       "hp": 340
     },
+    "link_ability": [
+      {
+        "name": "ポケットの中の戦争",
+        "condition": "デッキに3枚以上",
+        "effect": "[HP]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "揺るがぬ意志",
+        "condition": "デッキに2枚以上",
+        "effect": "[HP]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "",
+    "physical": null,
+    "units": null,
     "pilot_skill": {
       "name": "攻防一体の制圧戦術",
       "trigger": "敵戦艦／拠点をロックオン時",
       "effect": "40秒間、自身の[近距離攻撃力]を中アップし、受けるダメージを軽減する。",
       "has_sq_skill": false,
-      "sq_skill_details": null
-    },
-    "link_ability": [
-      {
-        "name": "ポケットの中の戦争",
-        "condition": "デッキに3枚以上",
-        "effect": "[HP]小アップ"
-      },
-      {
-        "name": "揺るがぬ意志",
-        "condition": "デッキに2枚以上",
-        "effect": "[HP]小アップ"
-      }
-    ],
-    "rarity": "U",
-    "illustrator": null,
-    "raw": "制圧　コスト3\nバーナード・ワイズマン\nBERNARD WISEMAN\n\nMOBILE SUIT GUNDAM 0080\nポケットの中の戦争\n\n身長　ー\n年齢　19歳\n所属　ジオン公国軍\n搭乗機体　ザクⅡ改\n\nPL SKILL\n攻防一体の制圧戦術\n敵戦艦／拠点をロックオン時\n40秒間、自身の[近距離攻撃力]を\n中アップし、受けるダメージを軽減\nする。\n\nLINK ABILITY\nポケットの中の戦争　デッキに3枚以上\n[HP]小アップ\n\n揺るがぬ意志　デッキに2枚以上\n[HP]小アップ\n\n機動力　190\n遠距離攻撃　20\n近距離攻撃　320\nHP　340\n\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\nLX04-069　U"
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_raw_file": "LINXTAGE_SEASON_04_LX04-069_バーナード・ワイズマン_ocr_raw.json",
   "ocr_timestamp": "2026-03-07T19:22:25.772966",

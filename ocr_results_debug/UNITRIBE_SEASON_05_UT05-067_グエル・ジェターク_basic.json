@@ -5,53 +5,56 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT05-067.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT05-067_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "UT05-067",
     "type": "PL",
-    "card_label": {
-      "class": "制圧",
-      "cost_label": "コスト3"
-    },
     "name": "グエル・ジェターク",
-    "english_name": "GUEL JETURK",
     "cost": 3,
+    "rarity": "U",
     "category": "制圧",
     "affiliation": "ジェターク・ヘビー・マシーナリー",
-    "physical": {
-      "height": null,
-      "age": null
-    },
-    "units": [
-      "ディランザ(グエル専用機)",
-      "ダリルバルデ"
-    ],
+    "illustrator": "",
     "stats": {
       "mobility": 220,
       "ranged_attack": 40,
       "melee_attack": 300,
       "hp": 310
     },
+    "link_ability": [
+      {
+        "name": "水星の魔女",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "肉薄する戦い",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "GUEL JETURK",
+    "physical": {
+      "height": "",
+      "age": ""
+    },
+    "units": [
+      "ディランザ(グエル専用機)",
+      "ダリルバルデ"
+    ],
     "pilot_skill": {
       "name": "臆さない勇士",
       "trigger": "出撃時",
       "effect": "30秒間、自身の[機動力][近距離攻撃力][SP威力]を中アップする。",
       "has_sq_skill": false,
-      "sq_skill_details": null
-    },
-    "link_ability": [
-      {
-        "name": "水星の魔女",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "肉薄する戦い",
-        "condition": "デッキに4枚以上",
-        "effect": "[機動力][近距離攻撃力]小アップ"
-      }
-    ],
-    "rarity": "U",
-    "illustrator": null,
-    "raw": "PL\n\n制圧　コスト3\n\nグエル・ジェターク\nGUEL JETURK\n\n水星の魔女\n\n身長　ー\n年齢　ー\n所属　ジェターク・ヘビー・マシーナリー\n搭乗機体　ディランザ(グエル専用機)、ダリルバルデ\n\nPL SKILL\n臆さない勇士\n出撃時\n30秒間、自身の[機動力][近距離攻撃力][SP威力]を中アップする。\n\nLINK ABILITY\n水星の魔女　デッキに3枚以上\n[機動力]小アップ\n\n肉薄する戦い　デッキに4枚以上\n[機動力][近距離攻撃力]小アップ\n\n機動力 220\n遠距離攻撃 40\n近距離攻撃 300\nHP 310\n\n©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nUT05-067　U"
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_raw_file": "UNITRIBE_SEASON_05_UT05-067_グエル・ジェターク_ocr_raw.json",
   "ocr_timestamp": "2026-02-26T19:52:16.865954",

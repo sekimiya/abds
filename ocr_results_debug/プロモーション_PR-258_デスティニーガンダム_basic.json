@@ -5,26 +5,39 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-258.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-258_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "PR-258",
     "type": "MS",
-    "card_label": {
-      "class": "遠距離",
-      "cost_label": "コスト6"
-    },
     "name": "デスティニーガンダム",
-    "model": "ZGMF-X42S DESTINY GUNDAM",
     "cost": 6,
-    "category": "MS",
+    "rarity": "PR",
+    "category": "遠距離",
     "affiliation": "ザフト",
-    "pilot": "シン・アスカ",
+    "illustrator": "Moyasi",
     "stats": {
-      "height": "18.08m",
-      "weight": "79.44t",
       "mobility": 320,
       "ranged_attack": 530,
       "melee_attack": 200,
       "hp": 500
     },
+    "link_ability": [
+      {
+        "name": "SEED DESTINY",
+        "condition": "デッキに3枚以上",
+        "effect": "[HP]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "撃ち倒す遠距離戦",
+        "condition": "デッキに遠距離が2枚以上",
+        "effect": "[遠距離攻撃力]中アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "シン・アスカ",
+    "model": "ZGMF-X42S DESTINY GUNDAM",
     "terrain_compatibility": {
       "ground": "A",
       "space": "S",
@@ -51,18 +64,6 @@
       "cost": 4,
       "description": "指定した味方ユニットの範囲内に移動後、一定時間連携状態となり、自身と連携中の味方が受けるダメージを軽減する。"
     },
-    "link_ability": [
-      {
-        "name": "SEED DESTINY",
-        "condition": "デッキに3枚以上",
-        "effect": "[HP]小アップ"
-      },
-      {
-        "name": "撃ち倒す遠距離戦",
-        "condition": "デッキに遠距離が2枚以上",
-        "effect": "[遠距離攻撃力]中アップ"
-      }
-    ],
     "special_attack": {
       "name": "高エネルギー長射程ビーム砲撃射",
       "target": "単体(敵)",
@@ -70,11 +71,11 @@
       "sp_cost": 2,
       "power": 3400,
       "description": "敵単体に射撃攻撃でダメージを与える。",
-      "united_sp": null
-    },
-    "rarity": "PR",
-    "illustrator": "Moyasi",
-    "raw": "遠距離 コスト6\nZGMF-X42S DESTINY GUNDAM\nデスティニーガンダム\n\n頭頂高 18.08m\n本体重量 79.44t　　地上 A　宇宙 S　砂漠 B　水中 A\n所属 ザフト　　　　　　　　　　　　　機動力 320\nパイロット シン・アスカ　　　　　　遠距離攻撃 530\n　　　　　　　　　　　　　　　　　近距離攻撃 200\n　　　　　　　　　　　　　　　　　HP 500\n\nWEAPON\nMAIN 高エネルギービームライフル　射程 3　遠距離\nSUB アロンダイトビームソード　射程 1　近距離\n\nMS ABILITY\n双甲\n任意発動　特殊(自分)　射程 ー　コスト 4\n指定した味方ユニットの範囲内に移動後、一定時間連携状態となり、自身と連携中の味方が受けるダメージを軽減する。\n\nLINK ABILITY\nSEED DESTINY　デッキに3枚以上\n[HP]小アップ\n\n撃ち倒す遠距離戦　デッキに遠距離が2枚以上\n[遠距離攻撃力]中アップ\n\nSPECIAL ATTACK　UNITED SP\n高エネルギー長射程ビーム砲撃射　ー\n連携 ー　　連携 ー\n連携 ー　　連携 ー\n単体(敵)　射程 4　　ー　射程 ー\nSPコスト 2　威力 3400 / ー\n敵単体に射撃攻撃でダメージを与える。\n／ー\n\nIMPACT AREA\n（マップ図：遠距離位置 右上・近距離位置 右下）\n\nillust Moyasi\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\nNOT FOR SALE\nPR-258 PR"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "プロモーション_PR-258_デスティニーガンダム_ocr_raw.json",
   "ocr_timestamp": "2026-03-03T23:06:54.799004",

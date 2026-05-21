@@ -5,26 +5,39 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ06-028.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ06-028_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "FQ06-028",
     "type": "MS",
-    "card_label": {
-      "class": "遠距離",
-      "cost_label": "コスト3"
-    },
     "name": "スタービルドストライクガンダム",
-    "model": "GAT-X105B/ST STAR BUILD STRIKE GUNDAM",
     "cost": 3,
+    "rarity": "R",
     "category": "遠距離",
     "affiliation": "ー",
-    "pilot": "レイジ、イオリ・セイ",
+    "illustrator": "Ultimateinudog",
     "stats": {
-      "height": "17.7m",
-      "weight": "90.1t",
       "mobility": 230,
       "ranged_attack": 270,
       "melee_attack": 90,
       "hp": 310
     },
+    "link_ability": [
+      {
+        "name": "ビルドファイターズ",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "レイジ、イオリ・セイ",
+    "model": "GAT-X105B/ST STAR BUILD STRIKE GUNDAM",
     "terrain_compatibility": {
       "ground": "A",
       "space": "S",
@@ -51,18 +64,6 @@
       "cost": 3,
       "description": "自身の周囲に殲滅タイプの味方ユニットを呼び出す。※上限3ユニットまで。"
     },
-    "link_ability": [
-      {
-        "name": "ビルドファイターズ",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "多彩な戦術",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "スタービームライフル撃射",
       "target": "単体(敵)",
@@ -70,17 +71,20 @@
       "sp_cost": 2,
       "power": 3200,
       "description": "敵単体に射撃攻撃でダメージを与える。",
+      "sp_type": "",
+      "echoes_beat": null,
       "united_sp": {
-        "partner1": "RGダブルビルドナックル",
-        "partner2": null,
+        "name": "",
+        "partners": [
+          "RGダブルビルドナックル"
+        ],
+        "target": "",
         "range": 3,
         "power": 6500,
         "description": "SQUAD RUSH発動中に1度だけ、SQUAD SPを使用できる。／敵単体に格闘攻撃でダメージを与える。"
-      }
-    },
-    "rarity": "R",
-    "illustrator": "Ultimateinudog",
-    "raw": "遠距離　コスト3　MS\n\nGAT-X105B/ST STAR BUILD STRIKE GUNDAM\nスタービルドストライクガンダム\n\n頭頂高　17.7m\n本体重量　90.1t\n所属　ー\nパイロット　レイジ、イオリ・セイ\n\n地上 A　宇宙 S　砂漠 B　水中 B\n機動力 230\n遠距離攻撃 270\n近距離攻撃 90\nHP 310\n\nWEAPON\nMAIN スタービームライフル　射程 3　遠距離\nSUB ビームサーベル　射程 1　近距離\n\nLINK ABILITY\nビルドファイターズ　デッキに3枚以上\n[機動力]小アップ\n\nMS ABILITY\n増援[殲滅]\n任意発動　特殊(自分)　射程 ー　コスト 3\n自身の周囲に殲滅タイプの味方ユニットを呼び出す。※上限3ユニットまで。\n\n多彩な戦術　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nSPECIAL ATTACK　▶ SQUAD SP\nスタービームライフル撃射　RGダブルビルドナックル\nSQUAD RUSH発動中に1度だけ、SQUAD SPを使用できる。\n単体(敵)　射程 3　単体(敵)　射程 3\nSPコスト 2　威力 3200 / 6500\n\n敵単体に射撃攻撃でダメージを与える。\n／敵単体に格闘攻撃でダメージを与える。\n\nIMPACT AREA\n[アイコン:射撃範囲マーカー 中央やや上に赤丸、中央にピンク丸、下部に黄色三角]\n\nillust Ultimateinudog\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nFQ06-028　R"
+      },
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "FORSQUAD_SEASON_06_FQ06-028_スタービルドストライクガンダム_ocr_raw.json",
   "ocr_timestamp": "2026-02-24T18:39:24.462564",

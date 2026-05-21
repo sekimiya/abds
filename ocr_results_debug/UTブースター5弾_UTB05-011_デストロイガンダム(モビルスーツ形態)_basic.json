@@ -5,26 +5,39 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UTB05-011.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UTB05-011_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "UTB05-011",
     "type": "MS",
-    "card_label": {
-      "class": "遠距離",
-      "cost_label": "コスト7"
-    },
     "name": "デストロイガンダム(モビルスーツ形態)",
-    "model": "GFAS-X1 DESTROY GUNDAM",
     "cost": 7,
+    "rarity": "R",
     "category": "遠距離",
     "affiliation": "地球連合軍",
-    "pilot": "ステラ・ルーシェ",
+    "illustrator": "J.YUZURU(willow_works)",
     "stats": {
-      "height": "38.07m",
-      "weight": "404.93t",
       "mobility": 60,
       "ranged_attack": 470,
       "melee_attack": 50,
       "hp": 520
     },
+    "link_ability": [
+      {
+        "name": "SEED DESTINY",
+        "condition": "デッキに3枚以上",
+        "effect": "[HP]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "撃ち倒す遠距離戦",
+        "condition": "デッキに遠距離が2枚以上",
+        "effect": "[遠距離攻撃力]中アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "ステラ・ルーシェ",
+    "model": "GFAS-X1 DESTROY GUNDAM",
     "terrain_compatibility": {
       "ground": "A",
       "space": "A",
@@ -51,18 +64,6 @@
       "cost": null,
       "description": "自身の受けるダメージを少し軽減する。自身が撤退するまで効果は持続する。"
     },
-    "link_ability": [
-      {
-        "name": "SEED DESTINY",
-        "condition": "デッキに3枚以上",
-        "effect": "[HP]小アップ"
-      },
-      {
-        "name": "撃ち倒す遠距離戦",
-        "condition": "デッキに遠距離が2枚以上",
-        "effect": "[遠距離攻撃力]中アップ"
-      }
-    ],
     "special_attack": {
       "name": "シュトゥルムファウスト撃射",
       "target": "単体(敵)",
@@ -70,11 +71,11 @@
       "sp_cost": 2,
       "power": 3300,
       "description": "敵単体に射撃攻撃でダメージを与える。",
-      "united_sp": null
-    },
-    "rarity": "R",
-    "illustrator": "J.YUZURU(willow_works)",
-    "raw": "MS\n\n遠距離　コスト7\n\nGFAS-X1 DESTROY GUNDAM\nデストロイガンダム(モビルスーツ形態)\n\n頭頂高　38.07m\n本体重量　404.93t\n所属　地球連合軍\nパイロット　ステラ・ルーシェ\n\n地上 A　宇宙 A　砂漠 C　水中 B\n機動力　60\n遠距離攻撃　470\n近距離攻撃　50\nHP　520\n\nWEAPON\nMAIN　シュトゥルムファウスト　射程 4　遠距離\nSUB　格闘　射程 1　近距離\n\nLINK ABILITY\nSEED DESTINY　デッキに3枚以上\n[HP]小アップ\n\nMS ABILITY\n鉄壁\n出撃時発動　自分　射程 ー　コスト ー\n自身の受けるダメージを少し軽減する。自身が撤退するまで効果は持続する。\n\n撃ち倒す遠距離戦　デッキに遠距離が2枚以上\n[遠距離攻撃力]中アップ\n\nSPECIAL ATTACK　　UNITED SP\nシュトゥルムファウスト撃射　ー\n連携 ー　／　連携 ー\n連携 ー　／　連携 ー\n単体(敵)　射程 4　ー　射程 ー\nSPコスト 2　威力 3300 / ー\n敵単体に射撃攻撃でダメージを与える。\n/ ー\n\nIMPACT AREA\n[アイコン:円形マーカー中央]\n[アイコン:三角マーカー下部]\n\nillust J.YUZURU(willow_works)\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\nUTB05-011　R"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "UTブースター5弾_UTB05-011_デストロイガンダム(モビルスーツ形態)_ocr_raw.json",
   "ocr_timestamp": "2026-03-02T04:14:08.618963",

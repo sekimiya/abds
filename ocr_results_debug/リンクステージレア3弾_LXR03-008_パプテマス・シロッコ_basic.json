@@ -5,44 +5,50 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LXR03-008.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LXR03-008_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "LXR03-008",
     "type": "PL",
-    "card_label": {
-      "class": "防衛",
-      "cost_label": "コスト2"
-    },
     "name": "パプテマス・シロッコ",
     "cost": 2,
-    "category": "機動戦士Zガンダム",
+    "rarity": "LX",
+    "category": "防衛",
     "affiliation": "ティターンズ",
+    "illustrator": "Umegrafix",
     "stats": {
       "mobility": 260,
       "ranged_attack": 150,
       "melee_attack": 90,
       "hp": 240
     },
+    "link_ability": [
+      {
+        "name": "機動戦士Zガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "徹底した防衛陣",
+        "condition": "デッキに防衛が2枚以上",
+        "effect": "[防衛拠点の攻撃力]中アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "",
+    "physical": null,
+    "units": null,
     "pilot_skill": {
       "name": "的確な狙撃",
       "trigger": "一方的に敵をロックオン時",
       "effect": "30秒間、自身の[遠距離攻撃力]を中アップする。",
       "has_sq_skill": false,
-      "sq_skill_details": null
-    },
-    "link_ability": [
-      {
-        "name": "機動戦士Zガンダム",
-        "condition": "デッキに3枚以上",
-        "effect": "[遠距離攻撃力]小アップ"
-      },
-      {
-        "name": "徹底した防衛陣",
-        "condition": "デッキに防衛が2枚以上",
-        "effect": "[防衛拠点の攻撃力]中アップ"
-      }
-    ],
-    "rarity": "LX",
-    "illustrator": "Umegrafix",
-    "raw": "防衛　コスト2\n\nパプテマス・シロッコ\nPAPTIMUS SCIROCCO\n\n身長　ー\n年齢　26歳\n所属　ティターンズ\n搭乗機体　ジ・O\n\nPL SKILL\n的確な狙撃\n一方的に敵をロックオン時\n\n30秒間、自身の[遠距離攻撃力]を\n中アップする。\n\nLINK ABILITY\n機動戦士Zガンダム　デッキに3枚以上\n[遠距離攻撃力]小アップ\n\n徹底した防衛陣　デッキに防衛が2枚以上\n[防衛拠点の攻撃力]中アップ\n\n機動力 260\n遠距離攻撃 150\n近距離攻撃 90\nHP 240\n\nillust. Umegrafix\n©創通・サンライズ\nBANDAI MADE IN JAPAN\nLXR03-008　LX"
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_raw_file": "リンクステージレア3弾_LXR03-008_パプテマス・シロッコ_ocr_raw.json",
   "ocr_timestamp": "2026-03-07T14:03:00.614263",

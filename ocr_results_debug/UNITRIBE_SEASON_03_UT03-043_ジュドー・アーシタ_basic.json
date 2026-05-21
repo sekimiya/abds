@@ -5,19 +5,40 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT03-043.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT03-043_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "UT03-043",
     "type": "PL",
-    "card_label": {
-      "class": "制圧",
-      "cost_label": "コスト3"
-    },
     "name": "ジュドー・アーシタ",
-    "english_name": "JUDAU ASHTA",
     "cost": 3,
+    "rarity": "U",
     "category": "制圧",
     "affiliation": "エゥーゴ",
+    "illustrator": "",
+    "stats": {
+      "mobility": 170,
+      "ranged_attack": 330,
+      "melee_attack": 70,
+      "hp": 300
+    },
+    "link_ability": [
+      {
+        "name": "機動戦士ガンダムZZ",
+        "condition": "デッキに3枚以上",
+        "effect": "[HP]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "的確な一撃",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][遠距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "JUDAU ASHTA",
     "physical": {
-      "height": null,
+      "height": "",
       "age": 14
     },
     "units": [
@@ -25,34 +46,16 @@
       "ZZガンダム",
       "Zガンダム"
     ],
-    "stats": {
-      "mobility": 170,
-      "ranged_attack": 330,
-      "melee_attack": 70,
-      "hp": 300
-    },
     "pilot_skill": {
       "name": "類稀な操縦技術",
       "trigger": "出撃時",
       "effect": "自身搭乗MSのSPコストが3の場合、初回使用SPコストを1ダウンし、30秒間、自身の[遠距離攻撃力]を中アップする。",
       "has_sq_skill": false,
-      "sq_skill_details": null
-    },
-    "link_ability": [
-      {
-        "name": "機動戦士ガンダムZZ",
-        "condition": "デッキに3枚以上",
-        "effect": "[HP]小アップ"
-      },
-      {
-        "name": "的確な一撃",
-        "condition": "デッキに4枚以上",
-        "effect": "[機動力][遠距離攻撃力]小アップ"
-      }
-    ],
-    "rarity": "U",
-    "illustrator": null,
-    "raw": "制圧　コスト3\n\nPL\n\nジュドー・アーシタ\nJUDAU ASHTA\n\n身長　ー\n年齢　14歳\n所属　エゥーゴ\n搭乗機体　フルアーマーZZガンダム、ZZガンダム、Zガンダム\n\nPL SKILL\n類稀な操縦技術\n出撃時\n自身搭乗MSのSPコストが3の場合、初回使用SPコストを1ダウンし、30秒間、自身の[遠距離攻撃力]を中アップする。\n\nLINK ABILITY\n機動戦士ガンダムZZ　デッキに3枚以上\n[HP]小アップ\n\n的確な一撃　デッキに4枚以上\n[機動力][遠距離攻撃力]小アップ\n\n機動力 170\n遠距離攻撃 330\n近距離攻撃 70\nHP 300\n\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\nUT03-043　U"
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_raw_file": "UNITRIBE_SEASON_03_UT03-043_ジュドー・アーシタ_ocr_raw.json",
   "ocr_timestamp": "2026-02-26T17:26:07.771484",

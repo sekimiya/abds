@@ -1,73 +1,80 @@
 {
-    "card_number": "VEB02-014",
-    "card_name": "スターウイニングガンダム",
-    "series": "VEブースター2弾",
-    "ocr_data": {
-        "card_number": "VEB02-014",
-        "type": "MS",
-        "name": "スターウイニングガンダム",
-        "english_name": "SD-237S STAR WINNING GUNDAM",
-        "cost": 2,
-        "category": "近距離",
-        "rarity": "R",
-        "pilot": "ホシノ・フミナ",
-        "head_height": "-",
-        "weight": "-",
-        "affiliation": "トライ・ファイターズ",
-        "stats": {
-            "mobility": 220,
-            "hp": 270,
-            "ranged_attack": 90,
-            "melee_attack": 220
-        },
-        "terrain_compatibility": {
-            "ground": "A",
-            "space": "A",
-            "desert": "B",
-            "water": "B"
-        },
-        "weapon": {
-            "main": {
-                "name": "メガブレード",
-                "range": 1,
-                "type": "近距離"
-            },
-            "sub": {
-                "name": "ビームマシンガン",
-                "range": 3,
-                "type": "遠距離"
-            }
-        },
-        "ms_ability": {
-            "name": "砕撃",
-            "target": "単体(敵)",
-            "range": "射程1",
-            "cost": "コスト3",
-            "description": "ロックオン中の敵に単体攻撃でダメージを与え、メイン武装を使用不能にさせる。出撃時1度のみ使用可能。",
-            "activation": "任意発動"
-        },
-        "link_ability": [
-            {
-                "name": "トライ",
-                "condition": "デッキに3枚以上",
-                "effect": "[HP]小アップ"
-            },
-            {
-                "name": "多彩な戦術",
-                "condition": "デッキに4枚以上",
-                "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-            }
-        ],
-        "special_attack": {
-            "name": "メガブレード強撃",
-            "target": "単体(敵)",
-            "range": 2,
-            "sp_cost": 2,
-            "power": 3200,
-            "description": "敵単体に格闘攻撃でダメージを与える。",
-            "echoes_beat": null
-        }
+  "card_number": "VEB02-014",
+  "card_name": "スターウイニングガンダム",
+  "series": "VEブースター2弾",
+  "ocr_data": {
+    "type": "MS",
+    "name": "スターウイニングガンダム",
+    "cost": 2,
+    "rarity": "R",
+    "category": "近距離",
+    "affiliation": "トライ・ファイターズ",
+    "illustrator": "",
+    "stats": {
+      "mobility": 220,
+      "ranged_attack": 90,
+      "melee_attack": 220,
+      "hp": 270
     },
-    "ocr_engine": "claude_code_subagent",
-    "ocr_timestamp": "2026-05-15T00:00:00"
+    "link_ability": [
+      {
+        "name": "トライ",
+        "condition": "デッキに3枚以上",
+        "effect": "[HP]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "ホシノ・フミナ",
+    "model": "",
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "A",
+      "desert": "B",
+      "water": "B"
+    },
+    "weapon": {
+      "main": {
+        "name": "メガブレード",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "ビームマシンガン",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "砕撃",
+      "activation": "任意発動",
+      "target": "単体(敵)",
+      "range": 1,
+      "cost": 3,
+      "description": "ロックオン中の敵に単体攻撃でダメージを与え、メイン武装を使用不能にさせる。出撃時1度のみ使用可能。"
+    },
+    "special_attack": {
+      "name": "メガブレード強撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3200,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
+  },
+  "ocr_engine": "claude_code_subagent",
+  "ocr_timestamp": "2026-05-15T00:00:00"
 }

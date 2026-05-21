@@ -5,26 +5,39 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX03-043.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX03-043_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "LX03-043",
     "type": "MS",
-    "card_label": {
-      "class": "機動",
-      "cost_label": "コスト6"
-    },
     "name": "ライトニングガンダム",
-    "model": "LGZ-91 LIGHTNING GUNDAM",
     "cost": 6,
-    "category": "ガンダムビルドファイターズ トライ",
+    "rarity": "R",
+    "category": "機動",
     "affiliation": "トライ・ファイターズ",
-    "pilot": "コウサカ・ユウマ",
+    "illustrator": "akamiho",
     "stats": {
-      "height": "19.4m",
-      "weight": "50.2t",
       "mobility": 300,
       "ranged_attack": 250,
       "melee_attack": 120,
       "hp": 330
     },
+    "link_ability": [
+      {
+        "name": "トライ",
+        "condition": "デッキに3枚以上",
+        "effect": "[HP]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "練磨の機体",
+        "condition": "デッキに2枚以上",
+        "effect": "[HP]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "コウサカ・ユウマ",
+    "model": "LGZ-91 LIGHTNING GUNDAM",
     "terrain_compatibility": {
       "ground": "A",
       "space": "S",
@@ -51,18 +64,6 @@
       "cost": 3,
       "description": "ロックオン中の敵に単体攻撃でダメージを与える。"
     },
-    "link_ability": [
-      {
-        "name": "トライ",
-        "condition": "デッキに3枚以上",
-        "effect": "[HP]小アップ"
-      },
-      {
-        "name": "練磨の機体",
-        "condition": "デッキに2枚以上",
-        "effect": "[HP]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "ビームライフル射撃",
       "target": "単体(敵)",
@@ -70,11 +71,11 @@
       "sp_cost": 2,
       "power": 3300,
       "description": "敵単体に射撃攻撃でダメージを与える。",
-      "united_sp": null
-    },
-    "rarity": "R",
-    "illustrator": "akamiho",
-    "raw": "機動　コスト6　MS\nLGZ-91 LIGHTNING GUNDAM\nライトニングガンダム\n\n全高　19.4m\n本体重量　50.2t　　地上 A　宇宙 S　砂漠 C　水中 C\n所属　トライ・ファイターズ　　　　　　機動力 300\nパイロット　コウサカ・ユウマ　　　　遠距離攻撃 250\n　　　　　　　　　　　　　　　　　　近距離攻撃 120\n　　　　　　　　　　　　　　　　　　HP 330\n\nWEAPON\nMAIN　ビームライフル　射程 3　遠距離\nSUB　ビームサーベル　射程 1　近距離\n\nMS ABILITY\n精密射撃\n任意発動　単体(敵)　射程 4　コスト 3\nロックオン中の敵に単体攻撃でダメージを与える。\n\nLINK ABILITY\nトライ　　　　　デッキに3枚以上\n[HP]小アップ\n\n練磨の機体　　デッキに2枚以上\n[HP]小アップ\n\nSPECIAL ATTACK\nビームライフル射撃\n単体(敵)　射程 3\nSPコスト 2　威力 3300\n敵単体に射撃攻撃でダメージを与える。\n\nillust　akamiho\n©創通・サンライズ\nBANDAI MADE IN JAPAN　　　　LX03-043　R"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "LINXTAGE_SEASON_03_LX03-043_ライトニングガンダム_ocr_raw.json",
   "ocr_timestamp": "2026-03-07T17:24:32.205520",

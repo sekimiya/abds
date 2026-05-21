@@ -5,31 +5,44 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-052.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-052_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "PR-052",
     "type": "MS",
-    "card_label": {
-      "class": "近距離",
-      "cost_label": "コスト6"
-    },
-    "name": "ガンダム・バルバトス（第4形態）",
-    "model": "ASW-G-08 GUNDAM BARBATOS",
+    "name": "ガンダム・バルバトス(第4形態)",
     "cost": 6,
-    "category": "MS",
+    "rarity": "PR",
+    "category": "近距離",
     "affiliation": "鉄華団",
-    "pilot": "三日月・オーガス",
+    "illustrator": "SA/TSU/KI",
     "stats": {
-      "height": "18.0m",
-      "weight": "28.5t",
       "mobility": 330,
       "ranged_attack": 120,
       "melee_attack": 500,
       "hp": 400
     },
+    "link_ability": [
+      {
+        "name": "鉄血のオルフェンズ",
+        "condition": "デッキに3枚以上",
+        "effect": "[近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "間合いを詰めた接近戦",
+        "condition": "デッキに2枚以上",
+        "effect": "[近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "三日月・オーガス",
+    "model": "ASW-G-08 GUNDAM BARBATOS",
     "terrain_compatibility": {
       "ground": "S",
       "space": "A",
       "desert": "B",
-      "water": null
+      "water": ""
     },
     "weapon": {
       "main": {
@@ -51,18 +64,6 @@
       "cost": 4,
       "description": "30秒間、自身の[機動力][近距離攻撃力]を中アップする。"
     },
-    "link_ability": [
-      {
-        "name": "鉄血のオルフェンズ",
-        "condition": "デッキに3枚以上",
-        "effect": "[近距離攻撃力]小アップ"
-      },
-      {
-        "name": "間合いを詰めた接近戦",
-        "condition": "デッキに2枚以上",
-        "effect": "[近距離攻撃力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "太刀激突",
       "target": "単体（敵）",
@@ -70,11 +71,11 @@
       "sp_cost": 2,
       "power": 3400,
       "description": "敵単体に格闘攻撃でダメージを与える。",
-      "united_sp": null
-    },
-    "rarity": "PR",
-    "illustrator": "SA/TSU/KI",
-    "raw": "近距離 コスト6\nASW-G-08 GUNDAM BARBATOS\nガンダム・バルバトス（第4形態）\n\n全高　18.0m\n本体重量　28.5t\n所属　鉄華団\nパイロット　三日月・オーガス\n\n地上 S　宇宙 A　砂漠 B\n\n機動力 330\n遠距離攻撃 120\n近距離攻撃 500\nHP 400\n\nWEAPON\nMAIN　太刀　射程 1　近距離\nSUB　滑腔砲　射程 2　遠距離\n\nMS ABILITY\n強化[近接]\n任意発動　自分　射程 ー　コスト 4\n30秒間、自身の[機動力][近距離攻撃力]を中アップする。\n\nLINK ABILITY\n鉄血のオルフェンズ　デッキに3枚以上\n[近距離攻撃力]小アップ\n\n間合いを詰めた接近戦　デッキに2枚以上\n[近距離攻撃力]小アップ\n\nSPECIAL ATTACK\n太刀激突\n単体（敵）　射程 2\nSPコスト 2　威力 3400\n敵単体に格闘攻撃でダメージを与える。\n\nIMPACT AREA\n\nillust. SA/TSU/KI\n©創通・サンライズ\nBANDAI MADE IN JAPAN\nNOT FOR SALE\nPR-052 PR"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "プロモーション_PR-052_ガンダム・バルバトス(第4形態)_ocr_raw.json",
   "ocr_timestamp": "2026-03-07T12:41:49.908434",

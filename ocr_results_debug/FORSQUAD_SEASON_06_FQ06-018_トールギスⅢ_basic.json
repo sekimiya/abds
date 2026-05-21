@@ -5,26 +5,39 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ06-018.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ06-018_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "FQ06-018",
     "type": "MS",
-    "card_label": {
-      "class": "機動",
-      "cost_label": "コスト4"
-    },
     "name": "トールギスⅢ",
-    "model": "OZ-00MS2B TALLGEESEⅢ",
     "cost": 4,
+    "rarity": "C",
     "category": "機動",
     "affiliation": "プリベンター",
-    "pilot": "プリベンター・ウインド",
+    "illustrator": "Misaki Yuzuruha",
     "stats": {
-      "height": "17.4m",
-      "weight": "8.2t",
       "mobility": 280,
       "ranged_attack": 250,
       "melee_attack": 90,
       "hp": 330
     },
+    "link_ability": [
+      {
+        "name": "Endless Waltz",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "プリベンター・ウインド",
+    "model": "OZ-00MS2B TALLGEESEⅢ",
     "terrain_compatibility": {
       "ground": "A",
       "space": "S",
@@ -51,18 +64,6 @@
       "cost": 3,
       "description": "ロックオン中の敵に単体攻撃でダメージを与える。"
     },
-    "link_ability": [
-      {
-        "name": "Endless Waltz",
-        "condition": "デッキに3枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      },
-      {
-        "name": "戦況を変える力",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "メガキャノン撃射",
       "target": "単体(敵)",
@@ -70,11 +71,11 @@
       "sp_cost": 2,
       "power": 3000,
       "description": "敵単体に射撃攻撃でダメージを与える。",
-      "united_sp": null
-    },
-    "rarity": "C",
-    "illustrator": "Misaki Yuzuruha",
-    "raw": "機動　コスト4　MS\n\nOZ-00MS2B TALLGEESEⅢ\nトールギスⅢ\n\n頭頂高　17.4m\n本体重量　8.2t\n所属　プリベンター\nパイロット　プリベンター・ウインド\n\n地上 A　宇宙 S　砂漠 C　水中 A\n\n機動力　280\n遠距離攻撃　250\n近距離攻撃　90\nHP　330\n\nWEAPON\nMAIN　メガキャノン　射程 4　遠距離\nSUB　ヒートロッド　射程 2　近距離\n\nLINK ABILITY\nEndless Waltz　デッキに3枚以上\n[遠距離攻撃力][近距離攻撃力]\n小アップ\n\nMS ABILITY\n精密射撃\n任意発動　単体(敵)　射程 4　コスト 3\n\nロックオン中の敵に単体攻撃でダメージ\nを与える。\n\n戦況を変える力　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]\n小アップ\n\nSPECIAL ATTACK　　UNITED SP\nメガキャノン撃射　　ー\n連携 ー　　連携 ー\n連携 ー　　連携 ー\n単体(敵)　射程 4　ー　射程 ー\nSPコスト 2　威力　3000 / ー\n\n敵単体に射撃攻撃でダメージを与える。\n/ ー\n\nIMPACT AREA\n[アイコン:前方中央に丸マーカー]\n\nillust　Misaki Yuzuruha\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nFQ06-018　C"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "FORSQUAD_SEASON_06_FQ06-018_トールギスⅢ_ocr_raw.json",
   "ocr_timestamp": "2026-02-24T18:38:42.371319",

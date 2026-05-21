@@ -5,44 +5,50 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX03-081.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX03-081_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "LX03-081",
     "type": "PL",
-    "card_label": {
-      "class": "殲滅",
-      "cost_label": "コスト4"
-    },
     "name": "プルトゥエルブ",
     "cost": 4,
-    "category": "ガンダムUC",
+    "rarity": "R",
+    "category": "殲滅",
     "affiliation": "地球連邦軍",
+    "illustrator": "",
     "stats": {
       "mobility": 180,
       "ranged_attack": 200,
       "melee_attack": 80,
       "hp": 190
     },
+    "link_ability": [
+      {
+        "name": "ガンダムUC",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "圧倒する殲滅力",
+        "condition": "デッキに殲滅が3枚以上",
+        "effect": "殲滅タイプに対してダメージ中アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "",
+    "physical": null,
+    "units": null,
     "pilot_skill": {
       "name": "乱れる心",
       "trigger": "HP50%以下の時",
       "effect": "35秒間、自身の[遠距離攻撃力]を中アップ、[近距離攻撃力]を小ダウンする。",
       "has_sq_skill": false,
-      "sq_skill_details": null
-    },
-    "link_ability": [
-      {
-        "name": "ガンダムUC",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "圧倒する殲滅力",
-        "condition": "デッキに殲滅が3枚以上",
-        "effect": "殲滅タイプに対してダメージ中アップ"
-      }
-    ],
-    "rarity": "R",
-    "illustrator": null,
-    "raw": "殲滅　コスト4　PL\nプルトゥエルブ\nPLE TWELVE\n\n身長　ー\n年齢　18歳\n所属　地球連邦軍\n搭乗機体　バンシィ\n\nPL SKILL\n乱れる心\nHP50%以下の時\n35秒間、自身の[遠距離攻撃力]を中アップ、[近距離攻撃力]を小ダウンする。\n\nLINK ABILITY\nガンダムUC　デッキに3枚以上\n[機動力]小アップ\n\n圧倒する殲滅力　デッキに殲滅が3枚以上\n殲滅タイプに対してダメージ中アップ\n\n機動力　180\n遠距離攻撃　200\n近距離攻撃　80\nHP　190\n\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\nLX03-081　R"
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_raw_file": "LINXTAGE_SEASON_03_LX03-081_プルトゥエルブ_ocr_raw.json",
   "ocr_timestamp": "2026-03-07T17:49:22.149693",

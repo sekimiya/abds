@@ -5,44 +5,50 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX02-096.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX02-096_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "LX02-096",
     "type": "PL",
-    "card_label": {
-      "class": "殲滅",
-      "cost_label": "コスト4"
-    },
     "name": "スウェン・カル・バヤン",
     "cost": 4,
-    "category": "STARGAZER",
+    "rarity": "U",
+    "category": "殲滅",
     "affiliation": "地球連合軍",
+    "illustrator": "",
     "stats": {
       "mobility": 190,
       "ranged_attack": 380,
       "melee_attack": 100,
       "hp": 330
     },
+    "link_ability": [
+      {
+        "name": "STARGAZER",
+        "condition": "デッキに2枚以上",
+        "effect": "[遠距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "揺るがぬ意志",
+        "condition": "デッキに2枚以上",
+        "effect": "[HP]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "",
+    "physical": null,
+    "units": null,
     "pilot_skill": {
       "name": "瓦解する敵陣",
       "trigger": "敵ユニットを撃破時",
       "effect": "40秒間、自身の[遠距離攻撃力]を大アップし、受けるダメージを軽減する。",
       "has_sq_skill": false,
-      "sq_skill_details": null
-    },
-    "link_ability": [
-      {
-        "name": "STARGAZER",
-        "condition": "デッキに2枚以上",
-        "effect": "[遠距離攻撃力]小アップ"
-      },
-      {
-        "name": "揺るがぬ意志",
-        "condition": "デッキに2枚以上",
-        "effect": "[HP]小アップ"
-      }
-    ],
-    "rarity": "U",
-    "illustrator": null,
-    "raw": "殲滅　コスト4　PL\n\nスウェン・カル・バヤン\nSVEN CAL BAYANG\n\n身長　―\n年齢　20歳\n所属　地球連合軍\n搭乗機体　ストライクノワールガンダム\n\nPL SKILL\n瓦解する敵陣\n敵ユニットを撃破時\n40秒間、自身の[遠距離攻撃力]を大アップし、受けるダメージを軽減する。\n\nLINK ABILITY\nSTARGAZER　デッキに2枚以上\n[遠距離攻撃力]小アップ\n\n揺るがぬ意志　デッキに2枚以上\n[HP]小アップ\n\n機動力　190\n遠距離攻撃　380\n近距離攻撃　100\nHP　330\n\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\nLX02-096　U"
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_raw_file": "LINXTAGE_SEASON_02_LX02-096_スウェン・カル・バヤン_ocr_raw.json",
   "ocr_timestamp": "2026-03-07T16:37:51.696708",

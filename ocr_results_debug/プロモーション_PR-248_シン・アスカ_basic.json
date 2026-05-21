@@ -5,44 +5,50 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-248.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-248_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "PR-248",
     "type": "PL",
-    "card_label": {
-      "class": "殲滅",
-      "cost_label": "コスト3"
-    },
     "name": "シン・アスカ",
     "cost": 3,
-    "category": "コンパス",
+    "rarity": "PR",
+    "category": "殲滅",
     "affiliation": "コンパス",
+    "illustrator": "TOMOMI NISHI",
     "stats": {
       "mobility": 200,
       "ranged_attack": 260,
       "melee_attack": 40,
       "hp": 320
     },
+    "link_ability": [
+      {
+        "name": "SEED FREEDOM",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "",
+    "physical": null,
+    "units": null,
     "pilot_skill": {
       "name": "解り合う力",
       "trigger": "敵ユニットをロックオン時",
       "effect": "30秒間、出撃中の全敵ユニットの[遠距離攻撃力][近距離攻撃力]をダウンする。",
       "has_sq_skill": false,
-      "sq_skill_details": null
-    },
-    "link_ability": [
-      {
-        "name": "SEED FREEDOM",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "多彩な戦術",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      }
-    ],
-    "rarity": "PR",
-    "illustrator": "TOMOMI NISHI",
-    "raw": "殲滅　コスト3　PL\n\nシン・アスカ\nSHINN ASUKA\n\n身長　169cm\n年齢　17歳\n所属　コンパス\n搭乗機体　イモータルジャスティスガンダム\n\nPL SKILL\n解り合う力\n敵ユニットをロックオン時\n30秒間、出撃中の全敵ユニットの\n[遠距離攻撃力][近距離攻撃力]\nをダウンする。\n\nLINK ABILITY\nSEED FREEDOM　デッキに3枚以上\n[機動力]小アップ\n\n多彩な戦術　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]\n小アップ\n\n機動力　200\n遠距離攻撃　260\n近距離攻撃　40\nHP　320\n\nillust　TOMOMI NISHI\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n\nNOT FOR SALE\nPR-248　PR"
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_raw_file": "プロモーション_PR-248_シン・アスカ_ocr_raw.json",
   "ocr_timestamp": "2026-03-03T23:02:06.363023",

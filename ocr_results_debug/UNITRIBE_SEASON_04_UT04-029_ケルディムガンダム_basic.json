@@ -5,26 +5,39 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT04-029.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT04-029_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "UT04-029",
     "type": "MS",
-    "card_label": {
-      "class": "遠距離",
-      "cost_label": "コスト4"
-    },
     "name": "ケルディムガンダム",
-    "model": "GN-006 CHERUDIM GUNDAM",
     "cost": 4,
+    "rarity": "P",
     "category": "遠距離",
     "affiliation": "ソレスタルビーイング",
-    "pilot": "ロックオン・ストラトス",
+    "illustrator": "KURI(studio toujyou)",
     "stats": {
-      "height": "18.0m",
-      "weight": "58.9t",
       "mobility": 250,
       "ranged_attack": 470,
       "melee_attack": 100,
       "hp": 380
     },
+    "link_ability": [
+      {
+        "name": "ガンダム00",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "トランザムの真価",
+        "condition": "デッキに2枚以上",
+        "effect": "[遠／近攻撃力]小アップ、専用作戦カードが使用可能",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "ロックオン・ストラトス",
+    "model": "GN-006 CHERUDIM GUNDAM",
     "terrain_compatibility": {
       "ground": "S",
       "space": "A",
@@ -51,18 +64,6 @@
       "cost": 3,
       "description": "ロックオン中の敵に単体攻撃でダメージを与える。"
     },
-    "link_ability": [
-      {
-        "name": "ガンダム00",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "トランザムの真価",
-        "condition": "デッキに2枚以上",
-        "effect": "[遠／近攻撃力]小アップ、専用作戦カードが使用可能"
-      }
-    ],
     "special_attack": {
       "name": "トランザム一斉射",
       "target": "範囲(敵)",
@@ -70,11 +71,11 @@
       "sp_cost": 2,
       "power": 2900,
       "description": "ロックオン中の敵を中心に扇状の範囲攻撃を行い、範囲内の敵にダメージを与える。",
-      "united_sp": null
-    },
-    "rarity": "P",
-    "illustrator": "KURI(studio toujyou)",
-    "raw": "MS\n\n遠距離　コスト4\nGN-006 CHERUDIM GUNDAM\nケルディムガンダム\n\nガンダム00\n\n頭頂高　18.0m\n本体重量　58.9t\n所属　ソレスタルビーイング\nパイロット　ロックオン・ストラトス\n\n地上 S　宇宙 A　砂漠 C　水中 B\n\n機動力 250\n遠距離攻撃 470\n近距離攻撃 100\nHP 380\n\nWEAPON\nMAIN　GNスナイパーライフルII　射程 4　遠距離\nSUB　GNピストルII　射程 2　近距離\n\nLINK ABILITY\nガンダム00　デッキに3枚以上\n[機動力]小アップ\n\nMS ABILITY\n精密射撃\n任意発動　単体(敵)　射程 4　コスト 3\nロックオン中の敵に単体攻撃でダメージを与える。\n\nトランザムの真価　デッキに2枚以上\n[遠／近攻撃力]小アップ、専用作戦カードが使用可能\n\nSPECIAL ATTACK　　UNITED SP\nトランザム一斉射　　ー\n連携 ー　　連携 ー\n連携 ー　　連携 ー\n範囲(敵)　射程 4　　ー　射程\nSPコスト 2　威力 2900 / ー\nロックオン中の敵を中心に扇状の範囲攻撃を行い、範囲内の敵にダメージを与える。/ ー\n\nIMPACT AREA\n[扇状範囲図]\n\nillust　KURI(studio toujyou)\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n\n機動戦士ガンダム\nARSENAL BASE®\n\nUT04-029　P"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "UNITRIBE_SEASON_04_UT04-029_ケルディムガンダム_ocr_raw.json",
   "ocr_timestamp": "2026-02-28T08:33:52.671097",

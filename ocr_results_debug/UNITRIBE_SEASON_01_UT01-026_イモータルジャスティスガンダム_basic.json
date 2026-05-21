@@ -5,26 +5,39 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT01-026.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT01-026_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "UT01-026",
     "type": "MS",
-    "card_label": {
-      "class": "機動",
-      "cost_label": "コスト5"
-    },
     "name": "イモータルジャスティスガンダム",
-    "model": "STTS-808 IMMORTAL JUSTICE GUNDAM",
     "cost": 5,
+    "rarity": "P",
     "category": "機動",
     "affiliation": "コンパス",
-    "pilot": "シン・アスカ",
+    "illustrator": "PLANETA_Yamashita",
     "stats": {
-      "height": "18.50m",
-      "weight": "71.62t",
       "mobility": 300,
       "ranged_attack": 30,
       "melee_attack": 450,
       "hp": 450
     },
+    "link_ability": [
+      {
+        "name": "SEED FREEDOM",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "シン・アスカ",
+    "model": "STTS-808 IMMORTAL JUSTICE GUNDAM",
     "terrain_compatibility": {
       "ground": "A",
       "space": "S",
@@ -51,18 +64,6 @@
       "cost": null,
       "description": "自身のHPが1以上で一定割合以下になると、一定時間、撃破されなくなり[遠／近距離攻撃力]を中アップする。出撃時1度のみ発動。"
     },
-    "link_ability": [
-      {
-        "name": "SEED FREEDOM",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "多彩な戦術",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "カルキトラ ビーム重斬脚強撃",
       "target": "単体(敵)",
@@ -70,11 +71,11 @@
       "sp_cost": 2,
       "power": 3600,
       "description": "敵単体に格闘攻撃でダメージを与える。",
-      "united_sp": null
-    },
-    "rarity": "P",
-    "illustrator": "PLANETA_Yamashita",
-    "raw": "MS\n\n機動　コスト5\n\nSTTS-808 IMMORTAL JUSTICE GUNDAM\nイモータルジャスティスガンダム\n\n全高　18.50m\n本体重量　71.62t\n所属　コンパス\nパイロット　シン・アスカ\n\n地上 A　宇宙 S　砂漠 A　水中 C\n\n機動力　300\n遠距離攻撃　30\n近距離攻撃　450\nHP　450\n\nWEAPON\nMAIN　ヴィーゼルナーゲル ビームブーメラン　射程 1　近距離\nSUB　高エネルギービームライフル　射程 3　遠距離\n\nLINK ABILITY\nSEED FREEDOM　デッキに3枚以上\n[機動力]小アップ\n\n多彩な戦術　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nMS ABILITY\n奮起\n出撃時発動　自分　射程 ー　コスト ー\n自身のHPが1以上で一定割合以下になると、一定時間、撃破されなくなり[遠／近距離攻撃力]を中アップする。出撃時1度のみ発動。\n\nSPECIAL ATTACK　UNITED SP\nカルキトラ ビーム重斬脚強撃　ー\n連携 ー　連携 ー\n単体(敵)　射程 2　ー　射程 ー\nSPコスト 2　威力 3600 / ー\n敵単体に格闘攻撃でダメージを与える。\n/ ー\n\nIMPACT AREA\n[アイコン:緑丸 中央やや下]\n[アイコン:黄三角 下部中央]\n\nillust PLANETA_Yamashita\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nUT01-026　P"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "UNITRIBE_SEASON_01_UT01-026_イモータルジャスティスガンダム_ocr_raw.json",
   "ocr_timestamp": "2026-03-02T03:14:57.110690",

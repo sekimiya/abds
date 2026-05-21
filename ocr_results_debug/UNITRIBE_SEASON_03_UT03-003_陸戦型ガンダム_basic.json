@@ -5,26 +5,39 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT03-003.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT03-003_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "UT03-003",
     "type": "MS",
-    "card_label": {
-      "class": "遠距離",
-      "cost_label": "コスト3"
-    },
     "name": "陸戦型ガンダム",
-    "model": "RX-79[G] GUNDAM GROUND TYPE",
     "cost": 3,
+    "rarity": "C",
     "category": "遠距離",
     "affiliation": "地球連邦軍",
-    "pilot": "シロー・アマダ, カレン・ジョシュワ, テリー・サンダースJr.",
+    "illustrator": "BIRU YAMAGUCHI",
     "stats": {
-      "height": "18.0m",
-      "weight": "52.8t",
       "mobility": 140,
       "ranged_attack": 250,
       "melee_attack": 60,
       "hp": 200
     },
+    "link_ability": [
+      {
+        "name": "第08MS小隊",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "シロー・アマダ, カレン・ジョシュワ, テリー・サンダースJr.",
+    "model": "RX-79[G] GUNDAM GROUND TYPE",
     "terrain_compatibility": {
       "ground": "S",
       "space": "C",
@@ -51,18 +64,6 @@
       "cost": 3,
       "description": "ロックオン中の敵に単体攻撃でダメージを与える。"
     },
-    "link_ability": [
-      {
-        "name": "第08MS小隊",
-        "condition": "デッキに3枚以上",
-        "effect": "[遠距離攻撃力]小アップ"
-      },
-      {
-        "name": "多彩な戦術",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "180mmキャノン砲撃",
       "target": "単体(敵)",
@@ -70,11 +71,11 @@
       "sp_cost": 2,
       "power": 3000,
       "description": "敵単体に射撃攻撃でダメージを与える。",
-      "united_sp": null
-    },
-    "rarity": "C",
-    "illustrator": "BIRU YAMAGUCHI",
-    "raw": "MS\n\n遠距離　コスト3\n\nRX-79[G] GUNDAM GROUND TYPE\n陸戦型ガンダム\n\n第08MS小隊\n\n頭頂高　18.0m\n本体重量　52.8t\n所属　地球連邦軍\nパイロット　シロー・アマダ, カレン・ジョシュワ, テリー・サンダースJr.\n\n[アイコン:地上S] [アイコン:宇宙C] [アイコン:砂漠A] [アイコン:水中B]\n\n機動力　140\n遠距離攻撃　250\n近距離攻撃　60\nHP　200\n\nWEAPON\nMAIN　180mmキャノン　射程 4　遠距離\nSUB　ビーム・サーベル　射程 1　近距離\n\nLINK ABILITY\n第08MS小隊　デッキに3枚以上\n[遠距離攻撃力]小アップ\n\n多彩な戦術　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nMS ABILITY\n精密射撃\n任意発動　単体(敵)　射程 4　コスト 3\nロックオン中の敵に単体攻撃でダメージを与える。\n\nSPECIAL ATTACK　　UNITED SP\n180mmキャノン砲撃　ー\n連携　ー　　連携　ー\n連携　ー　　連携　ー\n単体(敵)　射程 4　ー　射程 ー\nSPコスト 2　威力　3000 / ー\n敵単体に射撃攻撃でダメージを与える。\n/ ー\n\nIMPACT AREA\n[アイコン:着弾エリア 中央やや左寄り]\n\nillust　BIRU YAMAGUCHI\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nUT03-003　C"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "UNITRIBE_SEASON_03_UT03-003_陸戦型ガンダム_ocr_raw.json",
   "ocr_timestamp": "2026-02-26T17:10:09.790234",

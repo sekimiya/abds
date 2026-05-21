@@ -5,53 +5,56 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT03-036.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT03-036_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "UT03-036",
     "type": "PL",
-    "card_label": {
-      "class": "防衛",
-      "cost_label": "コスト2"
-    },
     "name": "カレン・ジョシュワ",
-    "english_name": "KAREN JOSHUA",
     "cost": 2,
+    "rarity": "C",
     "category": "防衛",
     "affiliation": "地球連邦軍",
-    "physical": {
-      "height": null,
-      "age": 26
-    },
-    "units": [
-      "陸戦型ガンダム",
-      "陸戦型ガンダム(ジム頭)"
-    ],
+    "illustrator": "",
     "stats": {
       "mobility": 180,
       "ranged_attack": 150,
       "melee_attack": 70,
       "hp": 160
     },
+    "link_ability": [
+      {
+        "name": "第08MS小隊",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "徹底した防衛陣",
+        "condition": "デッキに防衛が2枚以上",
+        "effect": "[防衛拠点の攻撃力]中アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "KAREN JOSHUA",
+    "physical": {
+      "height": "",
+      "age": 26
+    },
+    "units": [
+      "陸戦型ガンダム",
+      "陸戦型ガンダム(ジム頭)"
+    ],
     "pilot_skill": {
       "name": "冷静な防衛戦",
       "trigger": "防衛拠点変更完了時",
       "effect": "30秒間、自身の[遠距離攻撃力]を中アップする。",
       "has_sq_skill": false,
-      "sq_skill_details": null
-    },
-    "link_ability": [
-      {
-        "name": "第08MS小隊",
-        "condition": "デッキに3枚以上",
-        "effect": "[遠距離攻撃力]小アップ"
-      },
-      {
-        "name": "徹底した防衛陣",
-        "condition": "デッキに防衛が2枚以上",
-        "effect": "[防衛拠点の攻撃力]中アップ"
-      }
-    ],
-    "rarity": "C",
-    "illustrator": null,
-    "raw": "防衛 コスト2\n\nPL\n\nカレン・ジョシュワ\nKAREN JOSHUA\n\n第08MS小隊\n機動戦士ガンダム\n[アイコン:地球連邦軍]\n\n身長 ー\n年齢 26歳\n所属 地球連邦軍\n搭乗機体 陸戦型ガンダム,陸戦型ガンダム(ジム頭)\n\nPL SKILL\n\n冷静な防衛戦\n\n防衛拠点変更完了時\n\n30秒間、自身の[遠距離攻撃力]を\n中アップする。\n\nLINK ABILITY\n\n第08MS小隊 デッキに3枚以上\n[遠距離攻撃力]小アップ\n\n徹底した防衛陣 デッキに防衛が2枚以上\n[防衛拠点の攻撃力]中アップ\n\n機動力 180\n遠距離攻撃 150\n近距離攻撃 70\nHP 160\n\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n\n機動戦士ガンダム\nARSENAL BASE®\n\nUT03-036 C"
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_raw_file": "UNITRIBE_SEASON_03_UT03-036_カレン・ジョシュワ_ocr_raw.json",
   "ocr_timestamp": "2026-02-26T17:24:29.506548",

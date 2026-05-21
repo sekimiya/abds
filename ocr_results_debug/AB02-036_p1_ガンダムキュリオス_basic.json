@@ -5,31 +5,44 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB02-036_p1.jpg?v8",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB02-036_p1_b.jpg?v8",
   "ocr_data": {
-    "card_id": "AB02-036",
     "type": "MS",
-    "card_label": {
-      "class": "機動",
-      "cost_label": "コスト4"
-    },
     "name": "ガンダムキュリオス",
-    "model": "GN-003 GUNDAM KYRIOS",
     "cost": 4,
+    "rarity": "P",
     "category": "機動",
     "affiliation": "ソレスタルビーイング",
-    "pilot": "アレルヤ・ハプティズム",
+    "illustrator": "TAKA-F",
     "stats": {
-      "height": "18.9m",
-      "weight": "54.8t",
       "mobility": 260,
       "ranged_attack": 160,
       "melee_attack": 230,
       "hp": 280
     },
+    "link_ability": [
+      {
+        "name": "ガンダム00",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "可変機ファイター",
+        "condition": "デッキに3枚以上",
+        "effect": "専用作戦カードが使用可能",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "アレルヤ・ハプティズム",
+    "model": "GN-003 GUNDAM KYRIOS",
     "terrain_compatibility": {
       "ground": "A",
       "space": "A",
       "desert": "B",
-      "water": null
+      "water": ""
     },
     "weapon": {
       "main": {
@@ -51,18 +64,6 @@
       "cost": 6,
       "description": "指定した位置に範囲攻撃を行い、その地点に移動する。"
     },
-    "link_ability": [
-      {
-        "name": "ガンダム00",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "可変機ファイター",
-        "condition": "デッキに3枚以上",
-        "effect": "専用作戦カードが使用可能"
-      }
-    ],
     "special_attack": {
       "name": "シールドニードル激突",
       "target": "単体(敵)",
@@ -70,11 +71,11 @@
       "sp_cost": 2,
       "power": 3300,
       "description": "敵単体に格闘攻撃でダメージを与える。",
-      "united_sp": null
-    },
-    "rarity": "P",
-    "illustrator": "TAKA-F",
-    "raw": "MS\n\n機動 コスト4\nGN-003 GUNDAM KYRIOS\nガンダムキュリオス\n[アイコン:機動戦士ガンダム00]\n\n全高 18.9m\n本体重量 54.8t\n所属 ソレスタルビーイング\nパイロット アレルヤ・ハプティズム\n\n地上 A 宇宙 A 砂漠 B\n機動力 260\n遠距離攻撃 160\n近距離攻撃 230\nHP 280\n\nWEAPON\nMAIN GNビームサーベル 射程 1 近距離\nSUB GNビームサブマシンガン 射程 3 遠距離\n\nLINK ABILITY\nガンダム00 デッキに3枚以上\n[機動力]小アップ\n\nMS ABILITY\n奇襲\n任意発動 範囲(敵) 射程 — コスト 6\n指定した位置に範囲攻撃を行い、その地点に移動する。\n\n可変機ファイター デッキに3枚以上\n専用作戦カードが使用可能\n\nSPECIAL ATTACK\nシールドニードル激突\n単体(敵) 射程 2\nSPコスト 2 威力 3300\n敵単体に格闘攻撃でダメージを与える。\n\nIMPACT AREA\n[アイコン:×] 右上\n[アイコン:●] 中央\n[アイコン:▲] 下中央\n\nillust TAKA-F\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\nPARALLEL\nAB02-036 P"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "AB02-036_p1_ガンダムキュリオス_ocr_raw.json",
   "ocr_timestamp": "2026-02-23T15:10:09.948142",

@@ -5,52 +5,55 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ06-047.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ06-047_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "FQ06-047",
     "type": "PL",
-    "card_label": {
-      "class": "殲滅",
-      "cost_label": "コスト3"
-    },
     "name": "ガウマン・ノビル",
-    "english_name": "GAWMAN NOBILE",
     "cost": 3,
+    "rarity": "R",
     "category": "殲滅",
     "affiliation": "マフティー",
-    "physical": {
-      "height": null,
-      "age": null
-    },
-    "units": [
-      "メッサー F01型"
-    ],
+    "illustrator": "",
     "stats": {
       "mobility": 170,
       "ranged_attack": 270,
       "melee_attack": 50,
       "hp": 230
     },
+    "link_ability": [
+      {
+        "name": "閃光",
+        "condition": "デッキに3枚以上",
+        "effect": "専用作戦カードが使用可能 [HP]中アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "GAWMAN NOBILE",
+    "physical": {
+      "height": "",
+      "age": ""
+    },
+    "units": [
+      "メッサー F01型"
+    ],
     "pilot_skill": {
       "name": "解放される闘志",
       "trigger": "出撃後一定時間経過毎",
       "effect": "40秒経過毎に自身の[遠距離攻撃力][近距離攻撃力]を小アップする。最大3回まで発動。",
       "has_sq_skill": false,
-      "sq_skill_details": null
-    },
-    "link_ability": [
-      {
-        "name": "閃光",
-        "condition": "デッキに3枚以上",
-        "effect": "専用作戦カードが使用可能 [HP]中アップ"
-      },
-      {
-        "name": "戦況を変える力",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      }
-    ],
-    "rarity": "R",
-    "illustrator": null,
-    "raw": "殲滅 コスト3\n\nPL\n\nガウマン・ノビル\nGAWMAN NOBILE\n\n閃光のハサウェイ\n\n身長　ー\n年齢　ー\n所属　マフティー\n搭乗機体　メッサー F01型\n\nPL SKILL\n解放される闘志\n出撃後一定時間経過毎\n40秒経過毎に自身の[遠距離攻撃力][近距離攻撃力]を小アップする。最大3回まで発動。\n\nLINK ABILITY\n[アイコン:AS] 閃光　デッキに3枚以上\n専用作戦カードが使用可能\n[HP]中アップ\n\n戦況を変える力　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\n機動力 170\n遠距離攻撃 270\n近距離攻撃 50\nHP 230\n\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nFQ06-047 R"
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_raw_file": "FORSQUAD_SEASON_06_FQ06-047_ガウマン・ノビル_ocr_raw.json",
   "ocr_timestamp": "2026-02-24T18:40:30.558347",

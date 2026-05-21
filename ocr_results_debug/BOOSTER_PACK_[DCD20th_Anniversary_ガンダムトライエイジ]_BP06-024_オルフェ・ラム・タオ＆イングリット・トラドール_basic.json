@@ -5,17 +5,38 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP06-024.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP06-024_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "BP06-024",
     "type": "PL",
-    "card_label": {
-      "class": "殲滅",
-      "cost_label": "コスト3"
-    },
-    "name": "オルフェ・ラム・タオ&イングリット・トラドール",
-    "english_name": "ORPHEE LAM TAO & INGRID TRADOLL",
+    "name": "オルフェ・ラム・タオ＆イングリット・トラドール",
     "cost": 3,
+    "rarity": "M",
     "category": "殲滅",
     "affiliation": "ファウンデーション王国",
+    "illustrator": "",
+    "stats": {
+      "mobility": 210,
+      "ranged_attack": 270,
+      "melee_attack": 50,
+      "hp": 240
+    },
+    "link_ability": [
+      {
+        "name": "俺たちのトライエイジ",
+        "condition": "デッキに3枚以上",
+        "effect": "専用作戦カードが使用可能 [遠距離攻撃力][近距離攻撃力]中アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "的確な一撃",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][遠距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "ORPHEE LAM TAO & INGRID TRADOLL",
     "physical": {
       "height": "170cm/159cm",
       "age": "20歳/20歳"
@@ -23,34 +44,16 @@
     "units": [
       "ブラックナイツスコード カルラ"
     ],
-    "stats": {
-      "mobility": 210,
-      "ranged_attack": 270,
-      "melee_attack": 50,
-      "hp": 240
-    },
     "pilot_skill": {
       "name": "暴威を振るう戦闘術",
       "trigger": "一方的に敵をロックオン時",
       "effect": "30秒間、自身の[機動力][遠距離攻撃力]を中アップする。",
       "has_sq_skill": false,
-      "sq_skill_details": null
-    },
-    "link_ability": [
-      {
-        "name": "俺たちのトライエイジ",
-        "condition": "デッキに3枚以上",
-        "effect": "専用作戦カードが使用可能 [遠距離攻撃力][近距離攻撃力]中アップ"
-      },
-      {
-        "name": "的確な一撃",
-        "condition": "デッキに4枚以上",
-        "effect": "[機動力][遠距離攻撃力]小アップ"
-      }
-    ],
-    "rarity": "M",
-    "illustrator": null,
-    "raw": "PL\n\n殲滅 コスト3\n\nオルフェ・ラム・タオ&イングリット・トラドール\nORPHEE LAM TAO & INGRID TRADOLL\n\n身長 170cm/159cm\n年齢 20歳/20歳\n所属 ファウンデーション王国\n搭乗機体 ブラックナイツスコード カルラ\n\nPL SKILL\n\n暴威を振るう戦闘術\n\n一方的に敵をロックオン時\n\n30秒間、自身の[機動力][遠距離攻撃力]を中アップする。\n\n[アイコン:LINK ABILITY] LINK ABILITY\n\n俺たちのトライエイジ デッキに3枚以上\n\n専用作戦カードが使用可能\n[遠距離攻撃力][近距離攻撃力]\n中アップ\n\n的確な一撃 デッキに4枚以上\n\n[機動力][遠距離攻撃力]小アップ\n\n機動力 210\n遠距離攻撃 270\n近距離攻撃 50\nHP 240\n\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nBP06-024 M"
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_raw_file": "BOOSTER_PACK_[DCD20th_Anniversary_ガンダムトライエイジ]_BP06-024_オルフェ・ラム・タオ＆イングリット・トラドール_ocr_raw.json",
   "ocr_timestamp": "2026-02-26T18:02:39.158159",

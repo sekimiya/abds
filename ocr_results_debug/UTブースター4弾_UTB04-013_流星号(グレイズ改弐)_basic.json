@@ -5,26 +5,39 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UTB04-013.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UTB04-013_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "UTB04-013",
     "type": "MS",
-    "card_label": {
-      "class": "近距離",
-      "cost_label": "コスト7"
-    },
-    "name": "流星号（グレイズ改弐）",
-    "model": "EB-06/tc2 RYUSEI-GO (GRAZE CUSTOM Ⅱ)",
+    "name": "流星号(グレイズ改弐)",
     "cost": 7,
+    "rarity": "R",
     "category": "近距離",
     "affiliation": "鉄華団",
-    "pilot": "ノルバ・シノ",
+    "illustrator": "S Kei",
     "stats": {
-      "height": "18.9m",
-      "weight": "31.2t",
       "mobility": 150,
       "ranged_attack": 130,
       "melee_attack": 340,
       "hp": 480
     },
+    "link_ability": [
+      {
+        "name": "鉄血のオルフェンズ",
+        "condition": "デッキに3枚以上",
+        "effect": "[近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "肉薄する戦い",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "ノルバ・シノ",
+    "model": "EB-06/tc2 RYUSEI-GO (GRAZE CUSTOM Ⅱ)",
     "terrain_compatibility": {
       "ground": "A",
       "space": "A",
@@ -51,18 +64,6 @@
       "cost": null,
       "description": "自身のHPが1以上で一定割合以下になると、一定時間、撃破されなくなり[遠／近攻撃力]を中アップする。出撃時1度のみ発動。"
     },
-    "link_ability": [
-      {
-        "name": "鉄血のオルフェンズ",
-        "condition": "デッキに3枚以上",
-        "effect": "[近距離攻撃力]小アップ"
-      },
-      {
-        "name": "肉薄する戦い",
-        "condition": "デッキに4枚以上",
-        "effect": "[機動力][近距離攻撃力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "バトルアックス強撃",
       "target": "単体(敵)",
@@ -70,11 +71,11 @@
       "sp_cost": 2,
       "power": 3500,
       "description": "敵単体に格闘攻撃でダメージを与える。",
-      "united_sp": null
-    },
-    "rarity": "R",
-    "illustrator": "S Kei",
-    "raw": "近距離 コスト7\n\nMS\n\n鉄血のオルフェンズ\n\nEB-06/tc2 RYUSEI-GO (GRAZE CUSTOM Ⅱ)\n流星号（グレイズ改弐）\n\n頭頂高 18.9m\n本体重量 31.2t\n所属 鉄華団\nパイロット ノルバ・シノ\n\n地上 A 宇宙 A 砂漠 C 水中 C\n\n機動力 150\n遠距離攻撃 130\n近距離攻撃 340\nHP 480\n\nWEAPON\nMAIN バトルアックス 射程 1 近距離\nSUB 120mmライフル 射程 3 遠距離\n\nLINK ABILITY\n鉄血のオルフェンズ デッキに3枚以上\n[近距離攻撃力]小アップ\n\n肉薄する戦い デッキに4枚以上\n[機動力][近距離攻撃力]小アップ\n\nMS ABILITY\n奮起\n出撃時発動 自分 射程— コスト—\n自身のHPが1以上で一定割合以下になると、一定時間、撃破されなくなり[遠／近攻撃力]を中アップする。出撃時1度のみ発動。\n\nSPECIAL ATTACK\nバトルアックス強撃\n連携 —　連携 —\n連携 —　連携 —\n単体(敵) 射程 2　— 射程 —\nSPコスト 2 威力 3500 / —\n敵単体に格闘攻撃でダメージを与える。\n/ —\n\nUNITED SP\n\nIMPACT AREA\n[アイコン:緑丸] [アイコン:黄三角]\n\nillust S Kei\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nUTB04-013 R"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "UTブースター4弾_UTB04-013_流星号(グレイズ改弐)_ocr_raw.json",
   "ocr_timestamp": "2026-03-02T02:41:00.567728",

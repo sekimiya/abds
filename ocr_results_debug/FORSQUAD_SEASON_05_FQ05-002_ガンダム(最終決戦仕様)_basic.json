@@ -5,26 +5,39 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ05-002.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ05-002_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "FQ05-002",
     "type": "MS",
-    "card_label": {
-      "class": "遠距離",
-      "cost_label": "コスト6"
-    },
-    "name": "ガンダム（最終決戦仕様）",
-    "model": "RX-78-2 GUNDAM",
+    "name": "ガンダム(最終決戦仕様)",
     "cost": 6,
+    "rarity": "U",
     "category": "遠距離",
     "affiliation": "地球連邦軍",
-    "pilot": "アムロ・レイ",
+    "illustrator": "Kumagoro",
     "stats": {
-      "height": "18.0m",
-      "weight": "43.4t",
       "mobility": 260,
       "ranged_attack": 600,
       "melee_attack": 90,
       "hp": 650
     },
+    "link_ability": [
+      {
+        "name": "機動戦士ガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "連邦の白い悪魔",
+        "condition": "デッキに2枚以上",
+        "effect": "[遠距離攻撃力][HP]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "アムロ・レイ",
+    "model": "RX-78-2 GUNDAM",
     "terrain_compatibility": {
       "ground": "A",
       "space": "A",
@@ -51,18 +64,6 @@
       "cost": 4,
       "description": "自身を中心とした範囲内の敵ユニットをスタンさせ、一定時間被ダメージを少しアップする。"
     },
-    "link_ability": [
-      {
-        "name": "機動戦士ガンダム",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "連邦の白い悪魔",
-        "condition": "デッキに2枚以上",
-        "effect": "[遠距離攻撃力][HP]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "ハイパー・バズーカ(2T)斉射",
       "target": "範囲(敵)",
@@ -70,19 +71,18 @@
       "sp_cost": 2,
       "power": 3100,
       "description": "対象の敵を中心として範囲射撃でダメージを与え、自身のHPを回復する。",
+      "sp_type": "",
+      "echoes_beat": null,
       "united_sp": {
-        "partner1": null,
-        "partner2": null,
         "name": "ラストシューティング",
-        "type": "SQUAD SP",
+        "partners": [],
+        "target": "",
         "range": 4,
-        "power": "WIN",
+        "power": 0,
         "description": "搭乗しているPLが「アムロ・レイ」の場合、使用可能。自身が撤退するまで、撃破効果を受けない。結束戦術技使用後から一定時間撤退しなかった場合に発動し、自軍はバトルに勝利する。"
-      }
-    },
-    "rarity": "U",
-    "illustrator": "Kumagoro",
-    "raw": "MS ガンダム\n\n遠距離 コスト6\n\nRX-78-2 GUNDAM\nガンダム（最終決戦仕様）\n\n頭頂高 18.0m\n本体重量 43.4t\n所属 地球連邦軍\nパイロット アムロ・レイ\n\n地上 A 宇宙 A 砂漠 C 水中 A\n\n機動力 260\n遠距離攻撃 600\n近距離攻撃 90\nHP 650\n\nWEAPON\nMAIN ハイパー・バズーカ(2T) 射程 4 遠距離\nSUB ビーム・サーベル 射程 1 近距離\n\nLINK ABILITY\n機動戦士ガンダム デッキに3枚以上\n[機動力]小アップ\n\n連邦の白い悪魔 デッキに2枚以上\n[遠距離攻撃力][HP]小アップ\n\nMS ABILITY\n威圧\n任意発動 範囲(敵) 射程 ー コスト 4\n自身を中心とした範囲内の敵ユニットをスタンさせ、一定時間被ダメージを少しアップする。\n\nSPECIAL ATTACK ▶ SQUAD SP\nハイパー・バズーカ(2T)斉射 ラストシューティング\nSQUAD RUSH発動中に1度だけ、SQUAD SPを使用できる。\n範囲(敵) 射程 4 特殊 射程 4\nSPコスト 2 威力 3100 / WIN\n対象の敵を中心として範囲射撃でダメージを与え、自身のHPを回復する。／搭乗しているPLが「アムロ・レイ」の場合、使用可能。自身が撤退するまで、撃破効果を受けない。結束戦術技使用後から一定時間撤退しなかった場合に発動し、自軍はバトルに勝利する。\n\nIMPACT AREA\n[アイコン:×マーカー 上段中央]\n[アイコン:△マーカー 下段中央]\n\nillust Kumagoro\n©創通・サンライズ ©創通・サンライズ・MBS\n機動戦士ガンダム\nARSENAL BASE\nBANDAI MADE IN JAPAN\nFQ05-002 U"
+      },
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "FORSQUAD_SEASON_05_FQ05-002_ガンダム(最終決戦仕様)_ocr_raw.json",
   "ocr_timestamp": "2026-02-24T18:28:07.155542",

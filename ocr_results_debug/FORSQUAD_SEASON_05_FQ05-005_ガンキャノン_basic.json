@@ -5,26 +5,39 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ05-005.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ05-005_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "FQ05-005",
     "type": "MS",
-    "card_label": {
-      "class": "遠距離",
-      "cost_label": "コスト4"
-    },
     "name": "ガンキャノン",
-    "model": "RX-77-2 GUNCANNON",
     "cost": 4,
+    "rarity": "C",
     "category": "遠距離",
     "affiliation": "地球連邦軍",
-    "pilot": "カイ・シデン",
+    "illustrator": "J.YUZURU(willow_works)",
     "stats": {
-      "height": "17.5m",
-      "weight": "51.0t",
       "mobility": 230,
       "ranged_attack": 300,
       "melee_attack": 70,
       "hp": 350
     },
+    "link_ability": [
+      {
+        "name": "機動戦士ガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "カイ・シデン",
+    "model": "RX-77-2 GUNCANNON",
     "terrain_compatibility": {
       "ground": "A",
       "space": "A",
@@ -51,18 +64,6 @@
       "cost": 5,
       "description": "30秒間、自身を中心とした大範囲内の味方ユニットの[遠距離攻撃力][近距離攻撃力]を小アップする。"
     },
-    "link_ability": [
-      {
-        "name": "機動戦士ガンダム",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "多彩な戦術",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "240mmキャノン砲砲撃",
       "target": "単体(敵)",
@@ -70,11 +71,11 @@
       "sp_cost": 2,
       "power": 3000,
       "description": "敵単体に射撃攻撃でダメージを与える。",
-      "united_sp": null
-    },
-    "rarity": "C",
-    "illustrator": "J.YUZURU(willow_works)",
-    "raw": "MS\n\n遠距離 コスト4\nRX-77-2 GUNCANNON\nガンキャノン\n\n頭頂高 17.5m\n本体重量 51.0t\n所属 地球連邦軍\nパイロット カイ・シデン\n\n地上 A 宇宙 A 砂漠 C 水中 C\n\n機動力 230\n遠距離攻撃 300\n近距離攻撃 70\nHP 350\n\nWEAPON\nMAIN 240mmキャノン砲 射程4 遠距離\nSUB ビーム・ライフル 射程3 近距離\n\nLINK ABILITY\n機動戦士ガンダム デッキに3枚以上\n[機動力]小アップ\n\n多彩な戦術 デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nMS ABILITY\n鼓舞[攻撃]\n任意発動 範囲(味方) 射程ー コスト 5\n30秒間、自身を中心とした大範囲内の味方ユニットの[遠距離攻撃力][近距離攻撃力]を小アップする。\n\nSPECIAL ATTACK UNITED SP\n240mmキャノン砲砲撃 ー\n連携 ー 連携 ー\n連携 ー 連携 ー\n単体(敵) 射程4 射程ー\nSPコスト 2 威力 3000 / ー\n敵単体に射撃攻撃でダメージを与える。\n/ー\n\nIMPACT AREA\n[アイコン:円形範囲・前方中距離]\n\nillust J.YUZURU(willow_works)\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nFQ05-005 C"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "FORSQUAD_SEASON_05_FQ05-005_ガンキャノン_ocr_raw.json",
   "ocr_timestamp": "2026-02-24T18:27:29.645624",

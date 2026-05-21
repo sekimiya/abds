@@ -5,26 +5,39 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-223.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-223_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "PR-223",
     "type": "MS",
-    "card_label": {
-      "class": "遠距離",
-      "cost_label": "コスト4"
-    },
     "name": "クィン・マンサ",
-    "model": "NZ-000 QUIN-MANTHA",
     "cost": 4,
-    "category": "機動戦士ガンダムZZ",
+    "rarity": "PR",
+    "category": "遠距離",
     "affiliation": "ネオ・ジオン",
-    "pilot": "ブルツー",
+    "illustrator": "kenko",
     "stats": {
-      "height": "39.2m",
-      "weight": "143.2t",
       "mobility": 210,
       "ranged_attack": 310,
       "melee_attack": 70,
       "hp": 360
     },
+    "link_ability": [
+      {
+        "name": "機動戦士ガンダムZZ",
+        "condition": "デッキに3枚以上",
+        "effect": "[HP]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "的確な一撃",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][遠距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "ブルツー",
+    "model": "NZ-000 QUIN-MANTHA",
     "terrain_compatibility": {
       "ground": "A",
       "space": "S",
@@ -51,18 +64,6 @@
       "cost": null,
       "description": "自身のHPが1以上で一定割合以下になると、一定時間、撃破されなくなり[遠／近攻撃力]を中アップする。出撃時1度のみ発動。"
     },
-    "link_ability": [
-      {
-        "name": "機動戦士ガンダムZZ",
-        "condition": "デッキに3枚以上",
-        "effect": "[HP]小アップ"
-      },
-      {
-        "name": "的確な一撃",
-        "condition": "デッキに4枚以上",
-        "effect": "[機動力][遠距離攻撃力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "胸部メガ粒子砲撃射",
       "target": "貫通(敵)",
@@ -70,11 +71,11 @@
       "sp_cost": 2,
       "power": 2900,
       "description": "射線上の敵に貫通射撃でダメージを与える。",
-      "united_sp": null
-    },
-    "rarity": "PR",
-    "illustrator": "kenko",
-    "raw": "遠距離　コスト4　MS\nNZ-000 QUIN-MANTHA\nクィン・マンサ\n\n頭頂高　39.2m\n本体重量　143.2t　　地上 A　宇宙 S　砂漠 C　水中 C\n所属　ネオ・ジオン　　　　　　機動力　210\nパイロット　ブルツー　　　　　遠距離攻撃　310\n　　　　　　　　　　　　　　　近距離攻撃　70\n　　　　　　　　　　　　　　　HP　360\n\nWEAPON\nMAIN　腕部メガ粒子砲　射程 4　遠距離\nSUB　ビーム・サーベル　射程 1　近距離\n\nMS ABILITY\n奮起\n出撃時発動　自分　射程 ー　コスト ー\n\n自身のHPが1以上で一定割合以下になると、一定時間、撃破されなくなり[遠／近攻撃力]を中アップする。出撃時1度のみ発動。\n\nLINK ABILITY\n機動戦士ガンダムZZ　デッキに3枚以上\n[HP]小アップ\n\n的確な一撃　デッキに4枚以上\n[機動力][遠距離攻撃力]小アップ\n\nSPECIAL ATTACK　UNITED SP\n胸部メガ粒子砲撃射　ー\n連携 ー　　連携 ー\n連携 ー\n貫通(敵)　射程 4　ー　射程 ー\nSPコスト 2　威力 2900 / ー\n\n射線上の敵に貫通射撃でダメージを与える。/ ー\n\nillust. kenko\n©創通・サンライズ\nBANDAI MADE IN JAPAN\nNOT FOR SALE\nPR-223　PR"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "プロモーション_PR-223_クィン・マンサ_ocr_raw.json",
   "ocr_timestamp": "2026-03-03T22:48:34.618487",

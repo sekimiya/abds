@@ -5,31 +5,36 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB01-003.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB01-003_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "AB01-003",
     "type": "MS",
-    "card_label": {
-      "class": "遠距離",
-      "cost_label": "コスト2"
-    },
     "name": "ガンキャノン",
-    "model": "RX-77-2 GUNCANNON",
     "cost": 2,
+    "rarity": "R",
     "category": "遠距離",
     "affiliation": "地球連邦軍",
-    "pilot": "カイ・シデン",
+    "illustrator": "deraken",
     "stats": {
-      "height": "17.5m",
-      "weight": "51.0t",
       "mobility": 110,
       "ranged_attack": 190,
       "melee_attack": 90,
       "hp": 110
     },
+    "link_ability": [
+      {
+        "name": "機動戦士ガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "カイ・シデン",
+    "model": "RX-77-2 GUNCANNON",
     "terrain_compatibility": {
       "ground": "A",
       "space": "A",
       "desert": "C",
-      "water": null
+      "water": ""
     },
     "weapon": {
       "main": {
@@ -51,13 +56,6 @@
       "cost": 4,
       "description": "射程範囲内の指定した位置に小範囲の砲撃を行い、範囲内の敵にダメージを与える。"
     },
-    "link_ability": [
-      {
-        "name": "機動戦士ガンダム",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "240mmキャノン砲砲撃",
       "target": "単体(敵)",
@@ -65,11 +63,11 @@
       "sp_cost": 2,
       "power": 3000,
       "description": "敵単体に射撃攻撃でダメージを与える。",
-      "united_sp": null
-    },
-    "rarity": "R",
-    "illustrator": "deraken",
-    "raw": "遠距離 コスト2\nRX-77-2 GUNCANNON\nガンキャノン\n全高 17.5m\n本体重量 51.0t\n所属 地球連邦軍\nパイロット カイ・シデン\n地上 A 宇宙 A 砂漠 C\n機動力 110\n遠距離攻撃 190\n近距離攻撃 90\nHP 110\nWEAPON\nMAIN 240mmキャノン砲 射程 4 遠距離\nSUB ビーム・ライフル 射程 3 近距離\nLINK ABILITY\n機動戦士ガンダム デッキに3枚以上 [機動力]小アップ\nMS ABILITY\n砲撃\n任意発動 範囲(敵) 射程 5 コスト 4\n射程範囲内の指定した位置に小範囲の砲撃を行い、範囲内の敵にダメージを与える。\nSPECIAL ATTACK\n240mmキャノン砲砲撃\n単体(敵) 射程 4\nSPコスト 2 威力 3000\n敵単体に射撃攻撃でダメージを与える。\nillust deraken\nAB01-003 R"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_timestamp": "2026-02-23T11:34:47.771309",
   "ocr_type": "basic",

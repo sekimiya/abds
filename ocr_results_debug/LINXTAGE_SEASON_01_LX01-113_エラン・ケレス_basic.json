@@ -5,52 +5,55 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX01-113.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX01-113_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "LX01-113",
     "type": "PL",
-    "card_label": {
-      "class": "殲滅",
-      "cost_label": "コスト4"
-    },
     "name": "エラン・ケレス",
-    "english_name": "ELAN CERES",
     "cost": 4,
+    "rarity": "M",
     "category": "殲滅",
     "affiliation": "ベイル寮",
-    "physical": {
-      "height": null,
-      "age": null
-    },
-    "units": [
-      "ガンダム・ファラクト"
-    ],
+    "illustrator": "",
     "stats": {
       "mobility": 180,
       "ranged_attack": 280,
       "melee_attack": 140,
       "hp": 250
     },
+    "link_ability": [
+      {
+        "name": "水星の魔女",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "優れた射撃センス",
+        "condition": "デッキに2枚以上",
+        "effect": "[遠距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "ELAN CERES",
+    "physical": {
+      "height": "",
+      "age": ""
+    },
+    "units": [
+      "ガンダム・ファラクト"
+    ],
     "pilot_skill": {
       "name": "戦局の見極め",
       "trigger": "MSアビリティ発動時",
       "effect": "30秒間、自身の[機動力][遠距離攻撃力]を中アップする。",
       "has_sq_skill": false,
-      "sq_skill_details": null
-    },
-    "link_ability": [
-      {
-        "name": "水星の魔女",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "優れた射撃センス",
-        "condition": "デッキに2枚以上",
-        "effect": "[遠距離攻撃力]小アップ"
-      }
-    ],
-    "rarity": "M",
-    "illustrator": null,
-    "raw": "殲滅 コスト4\n\nPL\n\nエラン・ケレス\nELAN CERES\n\n水星の魔女\n\n身長 ー\n年齢 ー\n所属 ベイル寮\n搭乗機体 ガンダム・ファラクト\n\nPL SKILL\n戦局の見極め\nMSアビリティ発動時\n30秒間、自身の[機動力][遠距離攻撃力]を中アップする。\n\nLINK ABILITY\n水星の魔女 デッキに3枚以上\n[機動力]小アップ\n\n優れた射撃センス デッキに2枚以上\n[遠距離攻撃力]小アップ\n\n機動力 180\n遠距離攻撃 280\n近距離攻撃 140\nHP 250\n\n©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nLX01-113 M"
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_raw_file": "LINXTAGE_SEASON_01_LX01-113_エラン・ケレス_ocr_raw.json",
   "ocr_timestamp": "2026-03-02T07:57:12.163711",

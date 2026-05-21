@@ -5,52 +5,55 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT02-038.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT02-038_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "UT02-038",
     "type": "PL",
-    "card_label": {
-      "class": "防衛",
-      "cost_label": "コスト1"
-    },
     "name": "アイナ・サハリン",
-    "english_name": "AINA SAKHALIN",
     "cost": 1,
+    "rarity": "M",
     "category": "防衛",
     "affiliation": "ジオン公国軍",
-    "physical": {
-      "height": null,
-      "age": 20
-    },
-    "units": [
-      "高機動試作型ザク"
-    ],
+    "illustrator": "",
     "stats": {
       "mobility": 160,
       "ranged_attack": 170,
       "melee_attack": 150,
       "hp": 230
     },
+    "link_ability": [
+      {
+        "name": "第08MS小隊",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "AINA SAKHALIN",
+    "physical": {
+      "height": "",
+      "age": 20
+    },
+    "units": [
+      "高機動試作型ザク"
+    ],
     "pilot_skill": {
       "name": "徹底した遠距離戦",
       "trigger": "敵ユニットをロックオン時",
       "effect": "20秒間、自身の[遠距離攻撃力]を中アップする。",
       "has_sq_skill": false,
-      "sq_skill_details": null
-    },
-    "link_ability": [
-      {
-        "name": "第08MS小隊",
-        "condition": "デッキに3枚以上",
-        "effect": "[遠距離攻撃力]小アップ"
-      },
-      {
-        "name": "多彩な戦術",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      }
-    ],
-    "rarity": "M",
-    "illustrator": null,
-    "raw": "防衛 コスト1\n\nPL\n\nアイナ・サハリン\nAINA SAKHALIN\n\n機動戦士ガンダム 第08MS小隊\n[アイコン:ジオン紋章]\n\n身長 ー\n年齢 20歳\n所属 ジオン公国軍\n搭乗機体 高機動試作型ザク\n\nPL SKILL\n徹底した遠距離戦\n敵ユニットをロックオン時\n20秒間、自身の[遠距離攻撃力]を中アップする。\n\nLINK ABILITY\n第08MS小隊 デッキに3枚以上\n[遠距離攻撃力]小アップ\n\n多彩な戦術 デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\n機動力 160\n遠距離攻撃 170\n近距離攻撃 150\nHP 230\n\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\nUT02-038 M"
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_raw_file": "UNITRIBE_SEASON_02_UT02-038_アイナ・サハリン_ocr_raw.json",
   "ocr_timestamp": "2026-02-26T17:47:53.504932",

@@ -5,31 +5,36 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB02-046.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB02-046_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "AB02-046",
     "type": "MS",
-    "card_label": {
-      "class": "近距離",
-      "cost_label": "コスト4"
-    },
-    "name": "シュヴァルベ・グレイズ（マクギリス・ファリド専用）",
-    "model": "EB-05s SCHWALBE GRAZE",
+    "name": "シュヴァルベ・グレイズ(マクギリス・ファリド専用)",
     "cost": 4,
+    "rarity": "R",
     "category": "近距離",
     "affiliation": "ギャラルホルン",
-    "pilot": "マクギリス・ファリド",
+    "illustrator": "kazumasa yasukuni",
     "stats": {
-      "height": "18.1m",
-      "weight": "32.5t",
       "mobility": 160,
       "ranged_attack": 120,
       "melee_attack": 240,
       "hp": 200
     },
+    "link_ability": [
+      {
+        "name": "鉄血のオルフェンズ",
+        "condition": "デッキに3枚以上",
+        "effect": "［近距離攻撃力］小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "マクギリス・ファリド",
+    "model": "EB-05s SCHWALBE GRAZE",
     "terrain_compatibility": {
       "ground": "A",
       "space": "A",
       "desert": "C",
-      "water": null
+      "water": ""
     },
     "weapon": {
       "main": {
@@ -51,13 +56,6 @@
       "cost": 3,
       "description": "30秒間、自身の［近距離攻撃力］を小アップする。"
     },
-    "link_ability": [
-      {
-        "name": "鉄血のオルフェンズ",
-        "condition": "デッキに3枚以上",
-        "effect": "［近距離攻撃力］小アップ"
-      }
-    ],
     "special_attack": {
       "name": "バトルアックス強撃",
       "target": "単体（敵）",
@@ -65,11 +63,11 @@
       "sp_cost": 2,
       "power": 3300,
       "description": "敵単体に格闘攻撃でダメージを与える。",
-      "united_sp": null
-    },
-    "rarity": "R",
-    "illustrator": "kazumasa yasukuni",
-    "raw": "MS\n\n近距離　コスト4\nEB-05s SCHWALBE GRAZE\nシュヴァルベ・グレイズ（マクギリス・ファリド専用）\n\n全高　18.1m\n本体重量　32.5t\n所属　ギャラルホルン\nパイロット　マクギリス・ファリド\n\n地上　A　宇宙　A　砂漠　C\n機動力　160\n遠距離攻撃　120\n近距離攻撃　240\nHP　200\n\nWEAPON\n\nMAIN　バトルアックス　射程　1　近距離\nSUB　120mmライフル　射程　3　遠距離\n\nMS ABILITY\n\n強化【近距離】\n\n任意発動　自分　射程　－　コスト　3\n\n30秒間、自身の［近距離攻撃力］を小アップする。\n\nLINK ABILITY\n\n鉄血のオルフェンズ\n\nデッキに3枚以上\n\n［近距離攻撃力］小アップ\n\nSPECIAL ATTACK\n\nバトルアックス強撃\n\n単体（敵）　射程　2\nSPコスト　2　威力　3300\n\n敵単体に格闘攻撃でダメージを与える。\n\nIMPACT AREA\n\n[アイコン:緑丸 中央やや上]\n[アイコン:黄三角 中央下]\n\nillust　kazumasa yasukuni\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\n\nAB02-046　R"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "SEASON_02_AB02-046_シュヴァルベ・グレイズ(マクギリス・ファリド専用)_ocr_raw.json",
   "ocr_timestamp": "2026-02-23T15:10:28.725679",

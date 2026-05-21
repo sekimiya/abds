@@ -5,26 +5,39 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ04-027.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ04-027_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "FQ04-027",
     "type": "MS",
-    "card_label": {
-      "class": "近距離",
-      "cost_label": "コスト2"
-    },
     "name": "ミカエリス",
-    "model": "CFK-029 MICHAELIS",
     "cost": 2,
+    "rarity": "P",
     "category": "近距離",
     "affiliation": "グラスレー・ディフェンス・システムズ",
-    "pilot": "シャディク・ゼネリ",
+    "illustrator": "SOEZY",
     "stats": {
-      "height": "20.3m",
-      "weight": "68.8t",
       "mobility": 210,
       "ranged_attack": 30,
       "melee_attack": 260,
       "hp": 350
     },
+    "link_ability": [
+      {
+        "name": "水星の魔女",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "肉薄する戦い",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "シャディク・ゼネリ",
+    "model": "CFK-029 MICHAELIS",
     "terrain_compatibility": {
       "ground": "A",
       "space": "S",
@@ -51,18 +64,6 @@
       "cost": 4,
       "description": "25秒間、自身をロックオン距離内に捉えている敵ユニットのターゲットを自身に集める。"
     },
-    "link_ability": [
-      {
-        "name": "水星の魔女",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "肉薄する戦い",
-        "condition": "デッキに4枚以上",
-        "effect": "[機動力][近距離攻撃力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "ジャベリンブレイサー強撃",
       "target": "単体(敵)",
@@ -70,11 +71,11 @@
       "sp_cost": 2,
       "power": 3400,
       "description": "敵単体に格闘攻撃でダメージを与える。戦術技威力は地形適性に応じて変化する。",
-      "united_sp": null
-    },
-    "rarity": "P",
-    "illustrator": "SOEZY",
-    "raw": "MS\n\n近距離 コスト2\n\nCFK-029 MICHAELIS\nミカエリス\n\n水星の魔女\n\n頭頂高 20.3m\n本体重量 68.8t\n所属 グラスレー・ディフェンス・システムズ\nパイロット シャディク・ゼネリ\n\n地上 A 宇宙 S 砂漠 C 水中 C\n\n機動力 210\n遠距離攻撃 30\n近距離攻撃 260\nHP 350\n\nWEAPON\nMAIN ジャベリンブレイサー 射程 1 近距離\nSUB 大型ビームガン 射程 3 遠距離\n\nLINK ABILITY\n水星の魔女 デッキに3枚以上\n[機動力]小アップ\n\nMS ABILITY\n誘導\n任意発動 特殊(敵) 射程 ー コスト 4\n25秒間、自身をロックオン距離内に捉えている敵ユニットのターゲットを自身に集める。\n\n肉薄する戦い デッキに4枚以上\n[機動力][近距離攻撃力]小アップ\n\nSPECIAL ATTACK          UNITED SP\nジャベリンブレイサー強撃  ー\n連携 ー  連携 ー\n連携 ー  連携 ー\n単体(敵) 射程 2  ー 射程 ー\nSPコスト 2  威力 3400 / ー\n\n敵単体に格闘攻撃でダメージを与える。戦術技威力は地形適性に応じて変化する。/ ー\n\nIMPACT AREA\n[アイコン:緑丸 中央下寄り]\n[アイコン:黄三角 最下段中央]\n\nillust SOEZY\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nFQ04-027 P"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "FORSQUAD_SEASON_04_FQ04-027_ミカエリス_ocr_raw.json",
   "ocr_timestamp": "2026-02-24T18:21:17.603435",

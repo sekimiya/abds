@@ -5,31 +5,36 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AR01-006.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AR01-006_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "AR01-006",
     "type": "MS",
-    "card_label": {
-      "class": "近距離",
-      "cost_label": "コスト6"
-    },
-    "name": "ガンダム・バルバトス（第1形態）",
-    "model": "ASW-G-08 GUNDAM BARBATOS",
+    "name": "ガンダム・バルバトス(第1形態)",
     "cost": 6,
-    "category": "MS",
+    "rarity": "A",
+    "category": "近距離",
     "affiliation": "鉄華団",
-    "pilot": "三日月・オーガス",
+    "illustrator": "Naohiro Washio",
     "stats": {
-      "height": "18.0m",
-      "weight": "28.5t",
       "mobility": 170,
       "ranged_attack": 200,
       "melee_attack": 380,
       "hp": 400
     },
+    "link_ability": [
+      {
+        "name": "鉄血のオルフェンズ",
+        "condition": "デッキに3枚以上",
+        "effect": "[近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "三日月・オーガス",
+    "model": "ASW-G-08 GUNDAM BARBATOS",
     "terrain_compatibility": {
       "ground": "S",
       "space": "A",
       "desert": "B",
-      "water": null
+      "water": ""
     },
     "weapon": {
       "main": {
@@ -51,13 +56,6 @@
       "cost": 4,
       "description": "ロックオン中の敵ユニットに単体攻撃でダメージを与え、20秒間、[機動力][近距離攻撃力]を小ダウンする。"
     },
-    "link_ability": [
-      {
-        "name": "鉄血のオルフェンズ",
-        "condition": "デッキに3枚以上",
-        "effect": "[近距離攻撃力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "メイス撃砕",
       "target": "範囲（敵）",
@@ -65,11 +63,11 @@
       "sp_cost": 2,
       "power": 3100,
       "description": "対象の敵を中心とした小範囲に格闘攻撃でダメージを与える。",
-      "united_sp": null
-    },
-    "rarity": "A",
-    "illustrator": "Naohiro Washio",
-    "raw": "近距離 コスト6\nASW-G-08 GUNDAM BARBATOS\nガンダム・バルバトス（第1形態）\n\n全高　18.0m\n本体重量　28.5t\n所属　鉄華団\nパイロット　三日月・オーガス\n\n地上 S　宇宙 A　砂漠 B\n機動力 170\n遠距離攻撃 200\n近距離攻撃 380\nHP 400\n\nWEAPON\nMAIN メイス　射程 1　近距離\nSUB メイス（投擲）　射程 2　遠距離\n\nMS ABILITY\n妨撃[近接]\n任意発動　単体（敵）　射程 1　コスト 4\nロックオン中の敵ユニットに単体攻撃でダメージを与え、20秒間、[機動力][近距離攻撃力]を小ダウンする。\n\nLINK ABILITY\n鉄血のオルフェンズ　デッキに3枚以上\n[近距離攻撃力]小アップ\n\n－　－\n－\n\nSPECIAL ATTACK\nメイス撃砕\n範囲（敵）　射程 2\nSPコスト 2　威力 3100\n対象の敵を中心とした小範囲に格闘攻撃でダメージを与える。\n\nillust. Naohiro Washio\n©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\nAR01-006 A"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "アーセナルレア1弾[前半]_AR01-006_ガンダム・バルバトス(第1形態)_ocr_raw.json",
   "ocr_timestamp": "2026-03-07T14:14:18.870796",

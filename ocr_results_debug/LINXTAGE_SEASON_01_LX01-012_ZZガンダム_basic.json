@@ -5,31 +5,44 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX01-012.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX01-012_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "LX01-012",
     "type": "MS",
-    "card_label": {
-      "class": "機動",
-      "cost_label": "コスト4"
-    },
     "name": "ZZガンダム",
-    "model": "MSZ-010 ZZ GUNDAM",
     "cost": 4,
+    "rarity": "R",
     "category": "機動",
     "affiliation": "エゥーゴ",
-    "pilot": "ジュドー・アーシタ",
+    "illustrator": "Kouki Tajima",
     "stats": {
-      "height": "19.86m",
-      "weight": "32.7t",
       "mobility": 190,
       "ranged_attack": 100,
       "melee_attack": 200,
       "hp": 260
     },
+    "link_ability": [
+      {
+        "name": "機動戦士ガンダムZZ",
+        "condition": "デッキに3枚以上",
+        "effect": "[HP]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "固めた装甲",
+        "condition": "デッキに2枚以上",
+        "effect": "[HP]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "ジュドー・アーシタ",
+    "model": "MSZ-010 ZZ GUNDAM",
     "terrain_compatibility": {
       "ground": "A",
       "space": "S",
       "desert": "B",
-      "water": null
+      "water": ""
     },
     "weapon": {
       "main": {
@@ -51,18 +64,6 @@
       "cost": 3,
       "description": "ロックオン中の敵に単体攻撃でダメージを与え、メイン武装を使用不能にさせる。出撃時1度のみ使用可能。"
     },
-    "link_ability": [
-      {
-        "name": "機動戦士ガンダムZZ",
-        "condition": "デッキに3枚以上",
-        "effect": "[HP]小アップ"
-      },
-      {
-        "name": "固めた装甲",
-        "condition": "デッキに2枚以上",
-        "effect": "[HP]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "ハイパー・ビーム・サーベル強撃",
       "target": "単体(敵)",
@@ -70,11 +71,11 @@
       "sp_cost": 2,
       "power": 3300,
       "description": "敵単体に格闘攻撃でダメージを与える。",
-      "united_sp": null
-    },
-    "rarity": "R",
-    "illustrator": "Kouki Tajima",
-    "raw": "MS\n\n機動　コスト4\n\nMSZ-010 ZZ GUNDAM\nZZガンダム\n\n全高　19.86m\n本体重量　32.7t\n所属　エゥーゴ\nパイロット　ジュドー・アーシタ\n\n地上　A　宇宙　S　砂漠　B\n\n機動力　190\n遠距離攻撃　100\n近距離攻撃　200\nHP　260\n\nWEAPON\nMAIN　ハイパー・ビーム・サーベル　射程　1　近距離\nSUB　ダブル・ビーム・ライフル　射程　3　遠距離\n\nLINK ABILITY\n機動戦士ガンダムZZ　デッキに3枚以上\n[HP]小アップ\n\n固めた装甲　デッキに2枚以上\n[HP]小アップ\n\nMS ABILITY\n砕撃\n任意発動　単体(敵)　射程　1　コスト　3\nロックオン中の敵に単体攻撃でダメージを与え、メイン武装を使用不能にさせる。出撃時1度のみ使用可能。\n\nSPECIAL ATTACK\nハイパー・ビーム・サーベル強撃\n単体(敵)　射程　2\nSPコスト　2　威力　3300\n敵単体に格闘攻撃でダメージを与える。\n\nIMPACT AREA\n[アイコン:中央に緑丸、下段中央に黄丸]\n\nillust　Kouki Tajima\n©創通・サンライズ\nBANDAI MADE IN JAPAN\nLX01-012　R"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "LINXTAGE_SEASON_01_LX01-012_ZZガンダム_ocr_raw.json",
   "ocr_timestamp": "2026-03-02T07:07:15.637490",

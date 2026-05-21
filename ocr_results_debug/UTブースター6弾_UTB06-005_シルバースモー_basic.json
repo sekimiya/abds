@@ -5,26 +5,39 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UTB06-005.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UTB06-005_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "UTB06-005",
     "type": "MS",
-    "card_label": {
-      "class": "近距離",
-      "cost_label": "コスト4"
-    },
     "name": "シルバースモー",
-    "model": "MRC-F20 SILVER SUMO",
     "cost": 4,
+    "rarity": "R",
     "category": "近距離",
     "affiliation": "ディアナ親衛隊",
-    "pilot": "ポゥ・エイジ",
+    "illustrator": "sakusaku sakurai",
     "stats": {
-      "height": "20.3m",
-      "weight": "34.2t",
       "mobility": 100,
       "ranged_attack": 40,
       "melee_attack": 200,
       "hp": 460
     },
+    "link_ability": [
+      {
+        "name": "∀ガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[HP]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "ポゥ・エイジ",
+    "model": "MRC-F20 SILVER SUMO",
     "terrain_compatibility": {
       "ground": "S",
       "space": "A",
@@ -51,18 +64,6 @@
       "cost": 4,
       "description": "25秒間、自身をロックオン距離内に捉えている敵ユニットのターゲットを自身に集める。"
     },
-    "link_ability": [
-      {
-        "name": "∀ガンダム",
-        "condition": "デッキに3枚以上",
-        "effect": "[HP]小アップ"
-      },
-      {
-        "name": "戦況を変える力",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "ヒートファン強撃",
       "target": "単体(敵)",
@@ -70,11 +71,11 @@
       "sp_cost": 2,
       "power": 3300,
       "description": "敵単体に格闘攻撃でダメージを与える。",
-      "united_sp": null
-    },
-    "rarity": "R",
-    "illustrator": "sakusaku sakurai",
-    "raw": "MS\n\n近距離　コスト4\n\nMRC-F20 SILVER SUMO\nシルバースモー\n\n頭頂高　20.3m\n本体重量　34.2t\n所属　ディアナ親衛隊\nパイロット　ポゥ・エイジ\n\n地上 S　宇宙 A　砂漠 C　水中 C\n\n機動力 100\n遠距離攻撃 40\n近距離攻撃 200\nHP 460\n\nWEAPON\nMAIN ヒートファン　射程 1　近距離\nSUB ハンドビームガン　射程 3　遠距離\n\nMS ABILITY\n誘導\n任意発動　特殊(敵)　射程 ー　コスト 4\n25秒間、自身をロックオン距離内に捉えている敵ユニットのターゲットを自身に集める。\n\nLINK ABILITY\n∀ガンダム　デッキに3枚以上\n[HP]小アップ\n\n戦況を変える力　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nSPECIAL ATTACK　　UNITED SP\nヒートファン強撃　　ー\n連携 ー　連携 ー\n連携 ー　連携 ー\n単体(敵)　射程 2　ー　射程 ー\nSPコスト 2　威力 3300 / ー\n敵単体に格闘攻撃でダメージを与える。\n/ ー\n\nIMPACT AREA\n[アイコン:緑丸 中央やや左]\n[アイコン:黄三角 中央下]\n\nillust sakusaku sakurai\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nUTB06-005　R"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "UTブースター6弾_UTB06-005_シルバースモー_ocr_raw.json",
   "ocr_timestamp": "2026-02-28T09:15:42.880233",

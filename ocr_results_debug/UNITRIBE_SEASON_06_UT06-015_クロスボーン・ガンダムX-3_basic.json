@@ -5,26 +5,39 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT06-015.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT06-015_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "UT06-015",
     "type": "MS",
-    "card_label": {
-      "class": "近距離",
-      "cost_label": "コスト5"
-    },
     "name": "クロスボーン・ガンダムX-3",
-    "model": "XM-X3 CROSSBONE GUNDAM X-3",
     "cost": 5,
+    "rarity": "C",
     "category": "近距離",
     "affiliation": "宇宙海賊クロスボーン・バンガード",
-    "pilot": "トビア・アロナクス",
+    "illustrator": "Kouki Tajima",
     "stats": {
-      "height": "15.9m",
-      "weight": "9.5t",
       "mobility": 180,
       "ranged_attack": 50,
       "melee_attack": 320,
       "hp": 300
     },
+    "link_ability": [
+      {
+        "name": "クロスボーン・ガンダム",
+        "condition": "デッキに2枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "肉薄する戦い",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "トビア・アロナクス",
+    "model": "XM-X3 CROSSBONE GUNDAM X-3",
     "terrain_compatibility": {
       "ground": "A",
       "space": "S",
@@ -51,18 +64,6 @@
       "cost": 2,
       "description": "自身を中心とした大範囲内にいる、自身を除く味方ユニットのMSアビリティのクールタイムを、一定時間短縮する。"
     },
-    "link_ability": [
-      {
-        "name": "クロスボーン・ガンダム",
-        "condition": "デッキに2枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "肉薄する戦い",
-        "condition": "デッキに4枚以上",
-        "effect": "[機動力][近距離攻撃力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "ムラマサ・ブラスター強撃",
       "target": "単体(敵)",
@@ -70,17 +71,18 @@
       "sp_cost": 2,
       "power": 3300,
       "description": "敵単体に格闘攻撃でダメージを与える。",
+      "sp_type": "",
+      "echoes_beat": null,
       "united_sp": {
-        "partner1": null,
-        "partner2": null,
+        "name": "",
+        "partners": [],
+        "target": "",
         "range": null,
         "power": null,
-        "description": null
-      }
-    },
-    "rarity": "C",
-    "illustrator": "Kouki Tajima",
-    "raw": "近距離　コスト5　MS\n\nXM-X3 CROSSBONE GUNDAM X-3\nクロスボーン・ガンダムX-3\n\n頭頂高　15.9m\n本体重量　9.5t\n所属　宇宙海賊クロスボーン・バンガード\nパイロット　トビア・アロナクス\n\n地上 A　宇宙 S　砂漠 B　水中 B\n\n機動力 180\n遠距離攻撃 50\n近距離攻撃 320\nHP 300\n\nWEAPON\nMAIN ムラマサ・ブラスター　射程 1　近距離\nSUB ムラマサ・ブラスター(射撃)　射程 3　遠距離\n\nLINK ABILITY\nクロスボーン・ガンダム　デッキに2枚以上\n[機動力]小アップ\n\n肉薄する戦い　デッキに4枚以上\n[機動力][近距離攻撃力]小アップ\n\nMS ABILITY\n再縮\n任意発動　範囲(味方)　射程 ー　コスト 2\n自身を中心とした大範囲内にいる、自身を除く味方ユニットのMSアビリティのクールタイムを、一定時間短縮する。\n\nSPECIAL ATTACK　　UNITED SP\nムラマサ・ブラスター強撃\n連携 ー　　連携 ー\n連携 ー　　連携 ー\n単体(敵)　射程 2　ー　射程 ー\nSPコスト 2　威力 3300 / ー\n敵単体に格闘攻撃でダメージを与える。\n/ ー\n\nIMPACT AREA\n[アイコン:円形・前方]\n\nillust　Kouki Tajima\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nUT06-015　C"
+        "description": ""
+      },
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "UNITRIBE_SEASON_06_UT06-015_クロスボーン・ガンダムX-3_ocr_raw.json",
   "ocr_timestamp": "2026-02-26T17:37:21.588003",

@@ -5,26 +5,39 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ06-039.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ06-039_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "FQ06-039",
     "type": "MS",
-    "card_label": {
-      "class": "遠距離",
-      "cost_label": "コスト4"
-    },
     "name": "ガンダム・エアリアル[パーメットスコア・シックス]",
-    "model": "XVX-016 GUNDAM AERIAL[PERMET SCORE SIX]",
     "cost": 4,
+    "rarity": "C",
     "category": "遠距離",
     "affiliation": "シン・セー開発公社",
-    "pilot": "スレッタ・マーキュリー",
+    "illustrator": "gomibako",
     "stats": {
-      "height": "18.0m",
-      "weight": "43.9t",
       "mobility": 240,
       "ranged_attack": 310,
       "melee_attack": 90,
       "hp": 310
     },
+    "link_ability": [
+      {
+        "name": "水星の魔女",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "的確な一撃",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][遠距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "スレッタ・マーキュリー",
+    "model": "XVX-016 GUNDAM AERIAL[PERMET SCORE SIX]",
     "terrain_compatibility": {
       "ground": "A",
       "space": "A",
@@ -51,18 +64,6 @@
       "cost": 6,
       "description": "自身を中心とした大範囲内の味方ユニットの弱体化状態を無効化し、30秒間、[遠距離攻撃力]を中アップする。"
     },
-    "link_ability": [
-      {
-        "name": "水星の魔女",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "的確な一撃",
-        "condition": "デッキに4枚以上",
-        "effect": "[機動力][遠距離攻撃力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "ガンビット斉射",
       "target": "範囲(敵)",
@@ -70,11 +71,11 @@
       "sp_cost": 2,
       "power": 2600,
       "description": "対象の敵を中心として範囲射撃でダメージを与える。",
-      "united_sp": null
-    },
-    "rarity": "C",
-    "illustrator": "gomibako",
-    "raw": "MS\n\n遠距離　コスト4\n\nXVX-016 GUNDAM AERIAL[PERMET SCORE SIX]\nガンダム・エアリアル[パーメットスコア・シックス]\n\n水星の魔女\n\n頭頂高 18.0m\n本体重量 43.9t\n\n地上 A 宇宙 A 砂漠 C 水中 C\n\n所属 シン・セー開発公社\nパイロット スレッタ・マーキュリー\n\n機動力 240\n遠距離攻撃 310\n近距離攻撃 90\nHP 310\n\nWEAPON\nMAIN ガンビット　射程 4　遠距離\nSUB ビームブレイド　射程 1　近距離\n\nLINK ABILITY\n水星の魔女　デッキに3枚以上\n[機動力]小アップ\n\n的確な一撃　デッキに4枚以上\n[機動力][遠距離攻撃力]小アップ\n\nMS ABILITY\n鼓舞[遠距離][弱体化解除]\n任意発動　範囲(味方)　射程ー　コスト 6\n\n自身を中心とした大範囲内の味方ユニットの弱体化状態を無効化し、30秒間、[遠距離攻撃力]を中アップする。\n\nSPECIAL ATTACK　UNITED SP\nガンビット斉射　ー\n連携 ー　連携 ー\n連携 ー　連携 ー\n範囲(敵)　射程 4　ー　射程 ー\nSPコスト 2　威力 2600 / ー\n\n対象の敵を中心として範囲射撃でダメージを与える。/ ー\n\nIMPACT AREA\n[アイコン:×マーカー上方]\n[アイコン:大円範囲・黄緑]\n[アイコン:△マーカー下方]\n\nillust gomibako\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nFQ06-039 C"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "FORSQUAD_SEASON_06_FQ06-039_ガンダム・エアリアル[パーメットスコア・シックス]_ocr_raw.json",
   "ocr_timestamp": "2026-02-24T18:40:16.333990",

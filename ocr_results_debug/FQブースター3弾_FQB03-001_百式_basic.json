@@ -5,26 +5,39 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQB03-001.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQB03-001_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "FQB03-001",
     "type": "MS",
-    "card_label": {
-      "class": "遠距離",
-      "cost_label": "コスト3"
-    },
     "name": "百式",
-    "model": "MSN-00100 HYAKU-SHIKI",
     "cost": 3,
+    "rarity": "P",
     "category": "遠距離",
     "affiliation": "エゥーゴ",
-    "pilot": "クワトロ・バジーナ",
+    "illustrator": "ZB",
     "stats": {
-      "height": "19.2m",
-      "weight": "31.5t",
       "mobility": 240,
       "ranged_attack": 230,
       "melee_attack": 60,
       "hp": 420
     },
+    "link_ability": [
+      {
+        "name": "機動戦士Zガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "クワトロ・バジーナ",
+    "model": "MSN-00100 HYAKU-SHIKI",
     "terrain_compatibility": {
       "ground": "A",
       "space": "A",
@@ -51,18 +64,6 @@
       "cost": 4,
       "description": "25秒間、自身をロックオン距離内に捉えている敵ユニットのターゲットを自身に集める。"
     },
-    "link_ability": [
-      {
-        "name": "機動戦士Zガンダム",
-        "condition": "デッキに3枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      },
-      {
-        "name": "多彩な戦術",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "メガ・バズーカ・ランチャー貫通射撃",
       "target": "貫通(敵)",
@@ -70,19 +71,20 @@
       "sp_cost": 2,
       "power": 3000,
       "description": "射線上の敵に貫通射撃でダメージを与える。",
+      "sp_type": "",
+      "echoes_beat": null,
       "united_sp": {
         "name": "デルタ・ゼータインターセプト",
-        "partner1": "Zガンダム",
-        "partner2": null,
+        "partners": [
+          "Zガンダム"
+        ],
         "target": "単体(敵)",
         "range": 4,
         "power": 5600,
         "description": "敵単体に射撃攻撃でダメージを与え、強化状態を無効化する。攻撃に参加したユニットは一定時間[遠/近攻撃力]をアップし、受けるダメージを少し軽減する。出撃時1度のみ使用可能。"
-      }
-    },
-    "rarity": "P",
-    "illustrator": "ZB",
-    "raw": "MS\n機動戦士Zガンダム\n\n遠距離　コスト3\n\nMSN-00100 HYAKU-SHIKI\n百式\n\n頭頂高　19.2m\n本体重量　31.5t\n所属　エゥーゴ\nパイロット　クワトロ・バジーナ\n\n[アイコン:地上A] [アイコン:宇宙A] [アイコン:砂漠C] [アイコン:水中B]\n\n機動力　240\n遠距離攻撃　230\n近距離攻撃　60\nHP　420\n\nWEAPON\nMAIN ビーム・ライフル　射程 3　遠距離\nSUB ビーム・サーベル　射程 1　近距離\n\nLINK ABILITY\n機動戦士Zガンダム　デッキに3枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\n多彩な戦術　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nMS ABILITY\n誘導\n任意発動　特殊(敵)　射程 ー　コスト 4\n25秒間、自身をロックオン距離内に捉えている敵ユニットのターゲットを自身に集める。\n\nSPECIAL ATTACK　　　　UNITED SP\nメガ・バズーカ・ランチャー貫通射撃　デルタ・ゼータインターセプト\n連携 Zガンダム　　連携 ー\n連携 ー　　　　　連携 ー\n貫通(敵)　射程 4　単体(敵)　射程 4\nSPコスト 2　威力 3000 / 5600\n\n射線上の敵に貫通射撃でダメージを与える。／敵単体に射撃攻撃でダメージを与え、強化状態を無効化する。攻撃に参加したユニットは一定時間[遠/近攻撃力]をアップし、受けるダメージを少し軽減する。出撃時1度のみ使用可能。\n\nIMPACT AREA\n[図: 縦長の貫通型エリア、中央下に三角マーク]\n\nillust ZB\n©創通・サンライズ\n機動戦士ガンダム\nARSENAL BASE\nBANDAI MADE IN JAPAN\nFQB03-001　P"
+      },
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "FQブースター3弾_FQB03-001_百式_ocr_raw.json",
   "ocr_timestamp": "2026-02-28T02:05:46.118113",

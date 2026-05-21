@@ -5,31 +5,44 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB03-034.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB03-034_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "AB03-034",
     "type": "MS",
-    "card_label": {
-      "class": "遠距離",
-      "cost_label": "コスト6"
-    },
     "name": "ウイングガンダム",
-    "model": "XXXG-01W WING GUNDAM",
     "cost": 6,
+    "rarity": "U",
     "category": "遠距離",
-    "affiliation": null,
-    "pilot": "ヒイロ・ユイ",
+    "affiliation": "",
+    "illustrator": "Eske Yoshinob",
     "stats": {
-      "height": "16.3m",
-      "weight": "7.1t",
       "mobility": 240,
       "ranged_attack": 500,
       "melee_attack": 280,
       "hp": 330
     },
+    "link_ability": [
+      {
+        "name": "ガンダムW",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "その名はガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "ヒイロ・ユイ",
+    "model": "XXXG-01W WING GUNDAM",
     "terrain_compatibility": {
       "ground": "S",
       "space": "A",
       "desert": "C",
-      "water": null
+      "water": ""
     },
     "weapon": {
       "main": {
@@ -51,18 +64,6 @@
       "cost": 6,
       "description": "指定した位置に範囲攻撃を行い、その地点に移動する。"
     },
-    "link_ability": [
-      {
-        "name": "ガンダムW",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "その名はガンダム",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "バスターライフル貫通射撃",
       "target": "貫通(敵)",
@@ -70,11 +71,11 @@
       "sp_cost": 2,
       "power": 3500,
       "description": "射線上の敵に貫通射撃でダメージを与える。",
-      "united_sp": null
-    },
-    "rarity": "U",
-    "illustrator": "Eske Yoshinob",
-    "raw": "MS\n\n遠距離 コスト6\nXXXG-01W WING GUNDAM\nウイングガンダム\n\n全高 16.3m\n本体重量 7.1t\n所属 —\nパイロット ヒイロ・ユイ\n\n地上 S 宇宙 A 砂漠 C\n機動力 240\n遠距離攻撃 500\n近距離攻撃 280\nHP 330\n\nWEAPON\n\nMAIN バスターライフル 射程 4 遠距離\nSUB ビームサーベル 射程 1 近距離\n\nLINK ABILITY\n\nガンダムW デッキに3枚以上\n[機動力]小アップ\n\nその名はガンダム デッキに3枚以上\n[機動力]小アップ\n\nMS ABILITY\n\n奇襲\n任意発動 範囲(敵) 射程 — コスト 6\n\n指定した位置に範囲攻撃を行い、その地点に移動する。\n\nSPECIAL ATTACK\n\nバスターライフル貫通射撃\n貫通(敵) 射程 4\nSPコスト 2 威力 3500\n\n射線上の敵に貫通射撃でダメージを与える。\n\nIMPACT AREA\n\n[アイコン:中央に黄緑色の円形範囲、中心にバツ印、下部に三角マーカー]\n\nillust Eske Yoshinob\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nAB03-034 U"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "SEASON_03_AB03-034_ウイングガンダム_ocr_raw.json",
   "ocr_timestamp": "2026-02-23T15:15:07.276261",

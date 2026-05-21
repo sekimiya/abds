@@ -5,44 +5,50 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-184.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-184_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "PR-184",
     "type": "PL",
-    "card_label": {
-      "class": "防衛",
-      "cost_label": "コスト2"
-    },
     "name": "ネーナ・トリニティ",
     "cost": 2,
-    "category": "ガンダム00",
+    "rarity": "PR",
+    "category": "防衛",
     "affiliation": "ソレスタルビーイング",
+    "illustrator": "Aoi Yamaguchi",
     "stats": {
       "mobility": 200,
       "ranged_attack": 220,
       "melee_attack": 100,
       "hp": 270
     },
+    "link_ability": [
+      {
+        "name": "ガンダム00",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "",
+    "physical": null,
+    "units": null,
     "pilot_skill": {
       "name": "徹底した遠距離戦",
       "trigger": "敵ユニットをロックオン時",
       "effect": "20秒間、自身の[遠距離攻撃力]を中アップする。",
       "has_sq_skill": false,
-      "sq_skill_details": null
-    },
-    "link_ability": [
-      {
-        "name": "ガンダム00",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "戦況を変える力",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      }
-    ],
-    "rarity": "PR",
-    "illustrator": "Aoi Yamaguchi",
-    "raw": "防衛　コスト2　PL\nネーナ・トリニティ\nNENA TRINITY\nガンダム00\n\n身長　151cm\n年齢　17歳\n所属　ソレスタルビーイング\n搭乗機体　ガンダムスローネドライ\n\nPL SKILL\n徹底した遠距離戦\n敵ユニットをロックオン時\n20秒間、自身の[遠距離攻撃力]を中アップする。\n\nLINK ABILITY\nガンダム00　デッキに3枚以上\n[機動力]小アップ\n\n戦況を変える力　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\n機動力　200\n遠距離攻撃　220\n近距離攻撃　100\nHP　270\n\nillust Aoi Yamaguchi\n©創通・サンライズ\nBANDAI MADE IN JAPAN\nARSENAL BASE\nNOT FOR SALE\nPR-184　PR"
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_raw_file": "プロモーション_PR-184_ネーナ・トリニティ_ocr_raw.json",
   "ocr_timestamp": "2026-03-07T11:57:13.072168",

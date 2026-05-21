@@ -5,17 +5,38 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UTB03-017.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UTB03-017_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "UTB03-017",
     "type": "PL",
-    "card_label": {
-      "class": "殲滅",
-      "cost_label": "コスト3"
-    },
     "name": "ウッソ・エヴィン",
-    "english_name": "ÜSO EWIN",
     "cost": 3,
+    "rarity": "P",
     "category": "殲滅",
     "affiliation": "リガ・ミリティア",
+    "illustrator": "",
+    "stats": {
+      "mobility": 160,
+      "ranged_attack": 270,
+      "melee_attack": 80,
+      "hp": 310
+    },
+    "link_ability": [
+      {
+        "name": "機動戦士Vガンダム",
+        "condition": "デッキに2枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "的確な一撃",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][遠距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "ÜSO EWIN",
     "physical": {
       "height": "ー",
       "age": 13
@@ -23,34 +44,16 @@
     "units": [
       "ヴィクトリーガンダム"
     ],
-    "stats": {
-      "mobility": 160,
-      "ranged_attack": 270,
-      "melee_attack": 80,
-      "hp": 310
-    },
     "pilot_skill": {
       "name": "仲間との絆",
       "trigger": "MSアビリティ発動時",
       "effect": "20秒間、出撃中の全味方ユニットの[機動力][遠距離攻撃力][近距離攻撃力]をアップする。",
       "has_sq_skill": false,
-      "sq_skill_details": null
-    },
-    "link_ability": [
-      {
-        "name": "機動戦士Vガンダム",
-        "condition": "デッキに2枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "的確な一撃",
-        "condition": "デッキに4枚以上",
-        "effect": "[機動力][遠距離攻撃力]小アップ"
-      }
-    ],
-    "rarity": "P",
-    "illustrator": null,
-    "raw": "PL\n\n殲滅 コスト3\n\nウッソ・エヴィン\nÜSO EWIN\n\n身長 ー\n年齢 13歳\n所属 リガ・ミリティア\n搭乗機体 ヴィクトリーガンダム\n\nPL SKILL\n\n仲間との絆\n\nMSアビリティ発動時\n\n20秒間、出撃中の全味方ユニットの[機動力][遠距離攻撃力][近距離攻撃力]をアップする。\n\nLINK ABILITY\n\n機動戦士Vガンダム デッキに2枚以上\n[機動力]小アップ\n\n的確な一撃 デッキに4枚以上\n[機動力][遠距離攻撃力]小アップ\n\n機動力 160\n遠距離攻撃 270\n近距離攻撃 80\nHP 310\n\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\nUTB03-017 P"
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_raw_file": "UTブースター3弾_UTB03-017_ウッソ・エヴィン_ocr_raw.json",
   "ocr_timestamp": "2026-02-28T04:06:03.111731",

@@ -5,53 +5,56 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQB05-026.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQB05-026_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "FQB05-026",
     "type": "PL",
-    "card_label": {
-      "class": "殲滅",
-      "cost_label": "コスト3"
-    },
     "name": "グエル・ジェターク",
-    "english_name": "GUEL JETURK",
     "cost": 3,
+    "rarity": "P",
     "category": "殲滅",
     "affiliation": "ジェターク寮",
-    "physical": {
-      "height": null,
-      "age": null
-    },
-    "units": [
-      "ディランザ(グエル専用機)",
-      "ダリルバルデ"
-    ],
+    "illustrator": "",
     "stats": {
       "mobility": 200,
       "ranged_attack": 50,
       "melee_attack": 300,
       "hp": 270
     },
+    "link_ability": [
+      {
+        "name": "水星の魔女",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "肉薄する戦い",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "GUEL JETURK",
+    "physical": {
+      "height": "",
+      "age": ""
+    },
+    "units": [
+      "ディランザ(グエル専用機)",
+      "ダリルバルデ"
+    ],
     "pilot_skill": {
       "name": "熾烈な強攻",
       "trigger": "MSアビリティ[決闘]発動時",
       "effect": "30秒間、自身の[近距離攻撃力][SP威力]をアップし、受けるダメージを大きく軽減する。",
       "has_sq_skill": false,
-      "sq_skill_details": null
-    },
-    "link_ability": [
-      {
-        "name": "水星の魔女",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "肉薄する戦い",
-        "condition": "デッキに4枚以上",
-        "effect": "[機動力][近距離攻撃力]小アップ"
-      }
-    ],
-    "rarity": "P",
-    "illustrator": null,
-    "raw": "PL\n\n殲滅 コスト3\n\nグエル・ジェターク\nGUEL JETURK\n\n水星の魔女\n\n身長 ー\n年齢 ー\n所属 ジェターク寮\n搭乗機体 ディランザ(グエル専用機)、ダリルバルデ\n\nPL SKILL\n\n熾烈な強攻\n\nMSアビリティ[決闘]発動時\n\n30秒間、自身の[近距離攻撃力][SP威力]をアップし、受けるダメージを大きく軽減する。\n\nLINK ABILITY\n\n水星の魔女 デッキに3枚以上\n[機動力]小アップ\n\n肉薄する戦い デッキに4枚以上\n[機動力][近距離攻撃力]小アップ\n\n機動力 200\n遠距離攻撃 50\n近距離攻撃 300\nHP 270\n\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\nFQB05-026 P"
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_raw_file": "FQブースター5弾_FQB05-026_グエル・ジェターク_ocr_raw.json",
   "ocr_timestamp": "2026-03-02T02:25:35.244363",

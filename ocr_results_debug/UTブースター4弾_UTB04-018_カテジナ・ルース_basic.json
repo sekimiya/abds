@@ -5,52 +5,55 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UTB04-018.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UTB04-018_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "UTB04-018",
     "type": "PL",
-    "card_label": {
-      "class": "殲滅",
-      "cost_label": "コスト4"
-    },
     "name": "カテジナ・ルース",
-    "english_name": "KATEJINA LOOS",
     "cost": 4,
+    "rarity": "U",
     "category": "殲滅",
     "affiliation": "ザンスカール帝国",
-    "physical": {
-      "height": null,
-      "age": 17
-    },
-    "units": [
-      "ゴトラタン"
-    ],
+    "illustrator": "",
     "stats": {
       "mobility": 200,
       "ranged_attack": 280,
       "melee_attack": 100,
       "hp": 420
     },
+    "link_ability": [
+      {
+        "name": "機動戦士Vガンダム",
+        "condition": "デッキに2枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "歪んだ狂気",
+        "condition": "デッキに2枚以上",
+        "effect": "[遠距離攻撃力][HP]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "KATEJINA LOOS",
+    "physical": {
+      "height": "",
+      "age": 17
+    },
+    "units": [
+      "ゴトラタン"
+    ],
     "pilot_skill": {
       "name": "執拗な追撃",
       "trigger": "戦術技発動時",
       "effect": "20秒間、自身の[遠距離攻撃力]を大アップし、受けるダメージを軽減する。",
       "has_sq_skill": false,
-      "sq_skill_details": null
-    },
-    "link_ability": [
-      {
-        "name": "機動戦士Vガンダム",
-        "condition": "デッキに2枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "歪んだ狂気",
-        "condition": "デッキに2枚以上",
-        "effect": "[遠距離攻撃力][HP]小アップ"
-      }
-    ],
-    "rarity": "U",
-    "illustrator": null,
-    "raw": "PL\n\n殲滅　コスト4\n\nカテジナ・ルース\nKATEJINA LOOS\n\n身長　ー\n年齢　17歳\n所属　ザンスカール帝国\n搭乗機体　ゴトラタン\n\nPL SKILL\n執拗な追撃\n戦術技発動時\n\n20秒間、自身の[遠距離攻撃力]を大アップし、受けるダメージを軽減する。\n\nLINK ABILITY\n機動戦士Vガンダム　デッキに2枚以上\n[機動力]小アップ\n\n歪んだ狂気　デッキに2枚以上\n[遠距離攻撃力][HP]小アップ\n\n機動力 200\n遠距離攻撃 280\n近距離攻撃 100\nHP 420\n\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\nUTB04-018　U"
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_raw_file": "UTブースター4弾_UTB04-018_カテジナ・ルース_ocr_raw.json",
   "ocr_timestamp": "2026-03-02T02:43:32.433898",

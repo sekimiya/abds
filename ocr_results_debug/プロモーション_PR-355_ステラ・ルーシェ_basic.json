@@ -5,44 +5,50 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-355.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-355_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "PR-355",
     "type": "PL",
-    "card_label": {
-      "class": "殲滅",
-      "cost_label": "コスト4"
-    },
     "name": "ステラ・ルーシェ",
     "cost": 4,
-    "category": "SEED DESTINY",
+    "rarity": "PR",
+    "category": "殲滅",
     "affiliation": "地球連合軍",
+    "illustrator": "STUDIO GS",
     "stats": {
       "mobility": 170,
       "ranged_attack": 310,
       "melee_attack": 70,
       "hp": 300
     },
+    "link_ability": [
+      {
+        "name": "SEED DESTINY",
+        "condition": "デッキに3枚以上",
+        "effect": "[HP]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "圧倒する殲滅力",
+        "condition": "デッキに殲滅が3枚以上",
+        "effect": "殲滅タイプに対してダメージ中アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "",
+    "physical": null,
+    "units": null,
     "pilot_skill": {
       "name": "執拗な追撃",
       "trigger": "戦術技発動時",
       "effect": "20秒間、自身の[遠距離攻撃力]を大アップし、受けるダメージを軽減する。",
       "has_sq_skill": false,
-      "sq_skill_details": null
-    },
-    "link_ability": [
-      {
-        "name": "SEED DESTINY",
-        "condition": "デッキに3枚以上",
-        "effect": "[HP]小アップ"
-      },
-      {
-        "name": "圧倒する殲滅力",
-        "condition": "デッキに殲滅が3枚以上",
-        "effect": "殲滅タイプに対してダメージ中アップ"
-      }
-    ],
-    "rarity": "PR",
-    "illustrator": "STUDIO GS",
-    "raw": "殲滅　コスト4　PL\n機動戦士ガンダムSEED DESTINY\n\nステラ・ルーシェ\nSTELLAR LOUSSIER\n\n身長　163cm\n年齢　ー\n所属　地球連合軍\n搭乗機体　デストロイガンダム\n\nPL SKILL\n執拗な追撃\n戦術技発動時\n\n20秒間、自身の[遠距離攻撃力]を大アップし、受けるダメージを軽減する。\n\nLINK ABILITY\nSEED DESTINY　デッキに3枚以上\n[HP]小アップ\n\n圧倒する殲滅力　デッキに殲滅が3枚以上\n殲滅タイプに対してダメージ中アップ\n\n機動力 170\n遠距離攻撃 310\n近距離攻撃 70\nHP 300\n\nillust STUDIO GS\n©創通・サンライズ\nBANDAI MADE IN JAPAN\nNOT FOR SALE\nPR-355　PR"
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_raw_file": "プロモーション_PR-355_ステラ・ルーシェ_ocr_raw.json",
   "ocr_timestamp": "2026-03-03T19:09:18.458985",

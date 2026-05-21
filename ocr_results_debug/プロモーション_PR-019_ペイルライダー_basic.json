@@ -5,26 +5,39 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-019.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-019_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "PR-019",
     "type": "MS",
-    "card_label": {
-      "class": "近距離",
-      "cost_label": "コスト4"
-    },
     "name": "ペイルライダー",
-    "model": "RX-80PR PALE RIDER",
     "cost": 4,
-    "category": "機動戦士ガンダム外伝",
+    "rarity": "PR",
+    "category": "近距離",
     "affiliation": "地球連邦軍",
-    "pilot": "クロエ・クローチェ",
+    "illustrator": "Robographer",
     "stats": {
-      "height": "18.0m",
-      "weight": "43.7t",
       "mobility": 140,
       "ranged_attack": 170,
       "melee_attack": 330,
       "hp": 400
     },
+    "link_ability": [
+      {
+        "name": "機動戦士ガンダム外伝",
+        "condition": "デッキに2枚以上",
+        "effect": "[近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "陸戦特化の戦い",
+        "condition": "デッキに2枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "クロエ・クローチェ",
+    "model": "RX-80PR PALE RIDER",
     "terrain_compatibility": {
       "ground": "S",
       "space": "B",
@@ -51,18 +64,6 @@
       "cost": null,
       "description": "自身の受けるダメージを少し軽減する。自身が撤退するまで効果は持続する。"
     },
-    "link_ability": [
-      {
-        "name": "機動戦士ガンダム外伝",
-        "condition": "デッキに2枚以上",
-        "effect": "[近距離攻撃力]小アップ"
-      },
-      {
-        "name": "陸戦特化の戦い",
-        "condition": "デッキに2枚以上",
-        "effect": "[機動力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "ビーム・サーベル二刀流強撃",
       "target": "単体(敵)",
@@ -70,11 +71,11 @@
       "sp_cost": 2,
       "power": 3400,
       "description": "敵単体に格闘攻撃でダメージを与える。",
-      "united_sp": null
-    },
-    "rarity": "PR",
-    "illustrator": "Robographer",
-    "raw": "近距離　コスト4　MS\nRX-80PR PALE RIDER\nペイルライダー\nMISSING LINK\n\n全高　18.0m\n本体重量　43.7t\n所属　地球連邦軍\nパイロット　クロエ・クローチェ\n\n地上 S　宇宙 B　砂漠 A\n機動力　140\n遠距離攻撃　170\n近距離攻撃　330\nHP　400\n\nWEAPON\nMAIN　ビーム・サーベル二刀流　射程1　近距離\nSUB　頭部バルカン砲　射程2　遠距離\n\nMS ABILITY\n鉄壁\n出撃時発動　自分　射程ー　コストー\n自身の受けるダメージを少し軽減する。\n自身が撤退するまで効果は持続する。\n\nLINK ABILITY\n機動戦士ガンダム外伝　デッキに2枚以上\n[近距離攻撃力]小アップ\n\n陸戦特化の戦い　デッキに2枚以上\n[機動力]小アップ\n\nSPECIAL ATTACK\nビーム・サーベル二刀流強撃\n単体(敵)　射程2\nSPコスト2　威力　3400\n敵単体に格闘攻撃でダメージを与える。\n\nillust　Robographer\n©創通・サンライズ\nBANDAI MADE IN JAPAN\nNOT FOR SALE\nPR-019　PR"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "プロモーション_PR-019_ペイルライダー_ocr_raw.json",
   "ocr_timestamp": "2026-03-07T12:22:06.241648",

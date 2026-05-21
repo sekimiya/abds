@@ -5,31 +5,44 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB04-018.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB04-018_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "AB04-018",
     "type": "MS",
-    "card_label": {
-      "class": "遠距離",
-      "cost_label": "コスト4"
-    },
     "name": "Zガンダム",
-    "model": "MSZ-006 Z GUNDAM",
     "cost": 4,
+    "rarity": "M",
     "category": "遠距離",
     "affiliation": "エゥーゴ",
-    "pilot": "カミーユ・ビダン",
+    "illustrator": "yutori",
     "stats": {
-      "height": "19.85m",
-      "weight": "28.7t",
       "mobility": 290,
       "ranged_attack": 420,
       "melee_attack": 90,
       "hp": 250
     },
+    "link_ability": [
+      {
+        "name": "機動戦士Zガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "その名はガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "カミーユ・ビダン",
+    "model": "MSZ-006 Z GUNDAM",
     "terrain_compatibility": {
       "ground": "A",
       "space": "S",
       "desert": "C",
-      "water": null
+      "water": ""
     },
     "weapon": {
       "main": {
@@ -51,18 +64,6 @@
       "cost": 3,
       "description": "30秒間、自身の[遠距離攻撃力]を小アップする。"
     },
-    "link_ability": [
-      {
-        "name": "機動戦士Zガンダム",
-        "condition": "デッキに3枚以上",
-        "effect": "[遠距離攻撃力]小アップ"
-      },
-      {
-        "name": "その名はガンダム",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "ビーム・ライフル撃射",
       "target": "単体(敵)",
@@ -70,11 +71,11 @@
       "sp_cost": 2,
       "power": 3300,
       "description": "敵単体に射撃攻撃でダメージを与える。",
-      "united_sp": null
-    },
-    "rarity": "M",
-    "illustrator": "yutori",
-    "raw": "MS\n\n遠距離 コスト4\n\nMSZ-006 Z GUNDAM\nZガンダム\n\n全高 19.85m\n本体重量 28.7t\n所属 エゥーゴ\nパイロット カミーユ・ビダン\n\n地上 A 宇宙 S 砂漠 C\n機動力 290\n遠距離攻撃 420\n近距離攻撃 90\nHP 250\n\nWEAPON\n\nMAIN ビーム・ライフル 射程 3 遠距離\nSUB ビーム・サーベル 射程 1 近距離\n\nMS ABILITY\n\n強化[遠距離]\n任意発動 自分 射程 — コスト 3\n\n30秒間、自身の[遠距離攻撃力]を小アップする。\n\nLINK ABILITY\n\n機動戦士Zガンダム デッキに3枚以上\n[遠距離攻撃力]小アップ\n\nその名はガンダム デッキに3枚以上\n[機動力]小アップ\n\nSPECIAL ATTACK\n\nビーム・ライフル撃射\n単体(敵) 射程 3\nSPコスト 2 威力 3300\n\n敵単体に射撃攻撃でダメージを与える。\n\nIMPACT AREA\n\n[アイコン:中央に緑丸、下部に黄三角]\n\nillust yutori\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム\nARSENAL BASE\nAB04-018 M"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "SEASON_04_AB04-018_Zガンダム_ocr_raw.json",
   "ocr_timestamp": "2026-02-23T15:20:51.511217",

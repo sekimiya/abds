@@ -5,53 +5,56 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ03-040.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ03-040_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "FQ03-040",
     "type": "PL",
-    "card_label": {
-      "class": "防衛",
-      "cost_label": "コスト1"
-    },
     "name": "カミーユ・ビダン",
-    "english_name": "KAMILLE BIDAN",
     "cost": 1,
+    "rarity": "C",
     "category": "防衛",
     "affiliation": "エゥーゴ",
-    "physical": {
-      "height": null,
-      "age": 17
-    },
-    "units": [
-      "Zガンダム",
-      "ガンダムMk-II"
-    ],
+    "illustrator": "",
     "stats": {
       "mobility": 210,
       "ranged_attack": 180,
       "melee_attack": 50,
       "hp": 170
     },
+    "link_ability": [
+      {
+        "name": "機動戦士Zガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "可変機ファイター",
+        "condition": "デッキに3枚以上",
+        "effect": "専用作戦カードが使用可能",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "KAMILLE BIDAN",
+    "physical": {
+      "height": "",
+      "age": 17
+    },
+    "units": [
+      "Zガンダム",
+      "ガンダムMk-II"
+    ],
     "pilot_skill": {
       "name": "暴威を振るう戦闘術",
       "trigger": "一方的に敵をロックオン時",
       "effect": "30秒間、自身の[機動力][遠距離攻撃力]を中アップする。",
       "has_sq_skill": false,
-      "sq_skill_details": null
-    },
-    "link_ability": [
-      {
-        "name": "機動戦士Zガンダム",
-        "condition": "デッキに3枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      },
-      {
-        "name": "可変機ファイター",
-        "condition": "デッキに3枚以上",
-        "effect": "専用作戦カードが使用可能"
-      }
-    ],
-    "rarity": "C",
-    "illustrator": null,
-    "raw": "防衛 コスト1\n\nPL\n\nカミーユ・ビダン\nKAMILLE BIDAN\n\n[アイコン:機動戦士Zガンダム]\n\n身長 ー\n年齢 17歳\n所属 エゥーゴ\n搭乗機体 Zガンダム、ガンダムMk-II\n\nPL SKILL\n暴威を振るう戦闘術\n一方的に敵をロックオン時\n30秒間、自身の[機動力][遠距離攻撃力]を中アップする。\n\nLINK ABILITY\n機動戦士Zガンダム　デッキに3枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\n可変機ファイター　デッキに3枚以上\n専用作戦カードが使用可能\n\n機動力 210\n遠距離攻撃 180\n近距離攻撃 50\nHP 170\n\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\nFQ03-040 C"
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_raw_file": "FORSQUAD_SEASON_03_FQ03-040_カミーユ・ビダン_ocr_raw.json",
   "ocr_timestamp": "2026-02-24T15:50:39.751294",

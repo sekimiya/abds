@@ -8,26 +8,39 @@
   "ocr_type": "basic",
   "ocr_timestamp": "2026-04-22T20:30:00.000000",
   "ocr_data": {
-    "card_id": "VE02-011",
     "type": "MS",
     "name": "ガンダムTR-1[ヘイズル改]高機動仕様（実戦配備カラー）",
-    "model": "RX-121-1 GUNDAM TR-1 [HAZEL CUSTOM] HIGH-MOBILITY TYPE (COMBAT DEPLOYMENT COLORS)",
     "cost": 5,
-    "category": "近距離",
+    "rarity": "C",
+    "category": "ADVANCE OF Z",
     "affiliation": "ティターンズ",
-    "pilot": null,
-    "card_label": {
-      "class": "ADVANCE OF Z",
-      "cost_label": "コスト5"
-    },
+    "illustrator": "",
     "stats": {
-      "height": "18.1m",
-      "weight": "41.5t",
       "mobility": 270,
       "ranged_attack": 120,
       "melee_attack": 380,
       "hp": 330
     },
+    "link_ability": [
+      {
+        "name": "ADVANCE OF Z",
+        "condition": "デッキに2枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "",
+    "model": "RX-121-1 GUNDAM TR-1 [HAZEL CUSTOM] HIGH-MOBILITY TYPE (COMBAT DEPLOYMENT COLORS)",
     "terrain_compatibility": {
       "ground": "A",
       "space": "S",
@@ -54,35 +67,24 @@
       "cost": 4,
       "description": "ロックオン中の敵ユニットに単体攻撃を行い、残りHPを半分にする。"
     },
-    "link_ability": [
-      {
-        "name": "ADVANCE OF Z",
-        "condition": "デッキに2枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "多彩な戦術",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "ビーム・サーベル強撃",
       "target": "単体(敵)",
       "range": 2,
       "sp_cost": 2,
-      "power": "3300",
+      "power": 3300,
       "description": "敵単体に格闘攻撃でダメージを与える。",
+      "sp_type": "",
       "echoes_beat": {
         "name": "—",
         "level": null,
-        "target": "—",
-        "range": "—",
         "power": null,
+        "range": 0,
+        "target": "—",
         "description": "—"
-      }
-    },
-    "rarity": "C",
-    "raw": "近距離 コスト5 MS RX-121-1 GUNDAM TR-1 [HAZEL CUSTOM] HIGH-MOBILITY TYPE (COMBAT DEPLOYMENT COLORS) ガンダムTR-1[ヘイズル改]高機動仕様（実戦配備カラー） 頭頂高 18.1m 本体重量 41.5t 所属 ティターンズ パイロット — 地上 A 宇宙 S 砂漠 C 水中 B 機動力 270 遠距離攻撃 120 近距離攻撃 380 HP 330 WEAPON MAIN ビーム・サーベル 射程 1 近距離 SUB ビーム・ライフル 射程 3 遠距離 MS ABILITY 烈撃 任意発動 単体(敵) 射程 2 コスト 4 ロックオン中の敵ユニットに単体攻撃を行い、残りHPを半分にする。 LINK ABILITY ADVANCE OF Z デッキに2枚以上 [機動力]小アップ 多彩な戦術 デッキに4枚以上 [遠距離攻撃力][近距離攻撃力]小アップ SPECIAL ATTACK ECHOES BEAT ビーム・サーベル強撃 — — 単体(敵) 射程 2 — 射程 — SPコスト 2 威力 3300 / — 敵単体に格闘攻撃でダメージを与える。 /— VE02-011 C"
+      },
+      "united_sp": null,
+      "squad_sp": null
+    }
   }
 }

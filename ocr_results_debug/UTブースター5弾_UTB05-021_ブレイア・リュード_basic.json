@@ -5,52 +5,55 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UTB05-021.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UTB05-021_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "UTB05-021",
     "type": "PL",
-    "card_label": {
-      "class": "制圧",
-      "cost_label": "コスト3"
-    },
     "name": "ブレイア・リュード",
-    "english_name": "BRAIER RYUDE",
     "cost": 3,
+    "rarity": "P",
     "category": "制圧",
     "affiliation": "地球連邦軍",
-    "physical": {
-      "height": null,
-      "age": null
-    },
-    "units": [
-      "ガンダムデルタカイ"
-    ],
+    "illustrator": "",
     "stats": {
       "mobility": 200,
       "ranged_attack": 270,
       "melee_attack": 30,
       "hp": 370
     },
+    "link_ability": [
+      {
+        "name": "アクロス・ザ・スカイ",
+        "condition": "デッキに2枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "的確な一撃",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][遠距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "BRAIER RYUDE",
+    "physical": {
+      "height": "",
+      "age": ""
+    },
+    "units": [
+      "ガンダムデルタカイ"
+    ],
     "pilot_skill": {
       "name": "手慣れた戦闘態勢",
       "trigger": "自身が撤退時",
       "effect": "自身の修理時間を短縮する。",
       "has_sq_skill": false,
-      "sq_skill_details": null
-    },
-    "link_ability": [
-      {
-        "name": "アクロス・ザ・スカイ",
-        "condition": "デッキに2枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "的確な一撃",
-        "condition": "デッキに4枚以上",
-        "effect": "[機動力][遠距離攻撃力]小アップ"
-      }
-    ],
-    "rarity": "P",
-    "illustrator": null,
-    "raw": "PL\n\n制圧　コスト3\n\n機動戦士ガンダム U.C.0094\nアクロス・ザ・スカイ\n[アイコン:アクロス・ザ・スカイエンブレム]\n\nブレイア・リュード\nBRAIER RYUDE\n\n身長　ー\n年齢　ー\n所属　地球連邦軍\n搭乗機体　ガンダムデルタカイ\n\nPL SKILL\n手慣れた戦闘態勢\n自身が撤退時\n自身の修理時間を短縮する。\n\nLINK ABILITY\nアクロス・ザ・スカイ　デッキに2枚以上\n[機動力]小アップ\n\n的確な一撃　デッキに4枚以上\n[機動力][遠距離攻撃力]小アップ\n\n機動力　200\n遠距離攻撃　270\n近距離攻撃　30\nHP　370\n\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\nUTB05-021　P"
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_raw_file": "UTブースター5弾_UTB05-021_ブレイア・リュード_ocr_raw.json",
   "ocr_timestamp": "2026-03-02T04:20:26.169419",

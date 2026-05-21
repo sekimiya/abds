@@ -5,26 +5,39 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQB02-011.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQB02-011_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "FQB02-011",
     "type": "MS",
-    "card_label": {
-      "class": "近距離",
-      "cost_label": "コスト6"
-    },
     "name": "キュベレイパピヨン",
-    "model": "NMX-004 QUBELEY PAPILLON",
     "cost": 6,
+    "rarity": "R",
     "category": "近距離",
-    "affiliation": null,
-    "pilot": "アイラ・ユルキアイネン",
+    "affiliation": "",
+    "illustrator": "ilshima060123",
     "stats": {
-      "height": "18.9m",
-      "weight": "40.1t",
       "mobility": 340,
       "ranged_attack": 150,
       "melee_attack": 420,
       "hp": 390
     },
+    "link_ability": [
+      {
+        "name": "ビルドファイターズ",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "肉薄する戦い",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "アイラ・ユルキアイネン",
+    "model": "NMX-004 QUBELEY PAPILLON",
     "terrain_compatibility": {
       "ground": "A",
       "space": "S",
@@ -51,18 +64,6 @@
       "cost": 3,
       "description": "ロックオン中の敵に単体攻撃でダメージを与える。"
     },
-    "link_ability": [
-      {
-        "name": "ビルドファイターズ",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "肉薄する戦い",
-        "condition": "デッキに4枚以上",
-        "effect": "[機動力][近距離攻撃力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "クリアファンネル連携",
       "target": "単体(敵)",
@@ -70,11 +71,11 @@
       "sp_cost": 2,
       "power": 3400,
       "description": "敵単体に格闘攻撃でダメージを与える。",
-      "united_sp": null
-    },
-    "rarity": "R",
-    "illustrator": "ilshima060123",
-    "raw": "MS\n\n近距離　コスト6\n\nNMX-004 QUBELEY PAPILLON\nキュベレイパピヨン\n\n頭頂高　18.9m\n本体重量　40.1t\n所属　ー\nパイロット　アイラ・ユルキアイネン\n\n地上 A　宇宙 S　砂漠 C　水中 B\n\n機動力 340\n遠距離攻撃 150\n近距離攻撃 420\nHP 390\n\nWEAPON\nMAIN ランスビット　射程 1　近距離\nSUB ビームガン　射程 3　遠距離\n\nMS ABILITY\n強撃\n任意発動　単体(敵)　射程 1　コスト 3\nロックオン中の敵に単体攻撃でダメージを与える。\n\nLINK ABILITY\nビルドファイターズ　デッキに3枚以上\n[機動力]小アップ\n\n肉薄する戦い　デッキに4枚以上\n[機動力][近距離攻撃力]小アップ\n\nSPECIAL ATTACK　　UNITED SP\nクリアファンネル連携　ー\n連携 ー　　連携 ー\n連携 ー　　連携 ー\n単体(敵)　射程 2　ー　射程 ー\nSPコスト 2　威力 3400 / ー\n敵単体に格闘攻撃でダメージを与える。\n/ ー\n\nIMPACT AREA\n[アイコン:5×5グリッド 中央に緑丸、中央下に緑丸、最下段中央に黄丸]\n\nillust ilshima060123\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nFQB02-011　R"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "FQブースター2弾_FQB02-011_キュベレイパピヨン_ocr_raw.json",
   "ocr_timestamp": "2026-02-28T01:51:40.844376",

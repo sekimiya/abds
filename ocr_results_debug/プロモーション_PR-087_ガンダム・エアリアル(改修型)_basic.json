@@ -5,31 +5,44 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-087.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-087_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "PR-087",
     "type": "MS",
-    "card_label": {
-      "class": "遠距離",
-      "cost_label": "コスト4"
-    },
     "name": "ガンダム・エアリアル(改修型)",
-    "model": "XVX-016RN GUNDAM AERIAL REBUILD",
     "cost": 4,
-    "category": "水星の魔女",
+    "rarity": "PR",
+    "category": "遠距離",
     "affiliation": "シン・セー開発公社",
-    "pilot": "スレッタ・マーキュリー",
+    "illustrator": "kenko",
     "stats": {
-      "height": "18.2m",
-      "weight": "53.2t",
       "mobility": 230,
       "ranged_attack": 380,
       "melee_attack": 150,
       "hp": 290
     },
+    "link_ability": [
+      {
+        "name": "水星の魔女",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "その名はガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "スレッタ・マーキュリー",
+    "model": "XVX-016RN GUNDAM AERIAL REBUILD",
     "terrain_compatibility": {
       "ground": "A",
       "space": "S",
       "desert": "C",
-      "water": null
+      "water": ""
     },
     "weapon": {
       "main": {
@@ -51,18 +64,6 @@
       "cost": 3,
       "description": "ロックオン中の敵に単体攻撃でダメージを与える。"
     },
-    "link_ability": [
-      {
-        "name": "水星の魔女",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "その名はガンダム",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "ビームライフル撃射",
       "target": "単体(敵)",
@@ -70,11 +71,11 @@
       "sp_cost": 2,
       "power": 3200,
       "description": "敵単体に射撃攻撃でダメージを与える。",
-      "united_sp": null
-    },
-    "rarity": "PR",
-    "illustrator": "kenko",
-    "raw": "遠距離 コスト4\nXVX-016RN GUNDAM AERIAL REBUILD\nガンダム・エアリアル(改修型)\nMS\n\n水星の魔女\n\n頭頂高 18.2m\n本体重量 53.2t\n所属 シン・セー開発公社\nパイロット スレッタ・マーキュリー\n\n地上 A 宇宙 S 砂漠 C\n\n機動力 230\n遠距離攻撃 380\n近距離攻撃 150\nHP 290\n\nWEAPON\nMAIN ビームライフル 射程 4 遠距離\nSUB ビームサーベル 射程 1 近距離\n\nMS ABILITY\n精密射撃\n任意発動 単体(敵) 射程 4 コスト 3\nロックオン中の敵に単体攻撃でダメージを与える。\n\nLINK ABILITY\n水星の魔女 デッキに3枚以上\n[機動力]小アップ\n\nその名はガンダム デッキに3枚以上\n[機動力]小アップ\n\nIMPACT AREA\n\nSPECIAL ATTACK\nビームライフル撃射\n単体(敵) 射程 4\nSPコスト 2 威力 3200\n敵単体に射撃攻撃でダメージを与える。\n\nillust. kenko\n©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n\n機動戦士ガンダム ARSENAL BASE®\nNOT FOR SALE\nPR-087 PR"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "プロモーション_PR-087_ガンダム・エアリアル(改修型)_ocr_raw.json",
   "ocr_timestamp": "2026-03-07T13:00:38.601679",

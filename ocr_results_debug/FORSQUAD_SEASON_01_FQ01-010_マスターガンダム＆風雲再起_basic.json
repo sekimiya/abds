@@ -5,26 +5,39 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ01-010.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ01-010_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "FQ01-010",
     "type": "MS",
-    "card_label": {
-      "class": "遠距離",
-      "cost_label": "コスト4"
-    },
-    "name": "マスターガンダム&風雲再起",
-    "model": "GF13-001NHII MASTER GUNDAM & FUUNSAIKI",
+    "name": "マスターガンダム＆風雲再起",
     "cost": 4,
+    "rarity": "C",
     "category": "遠距離",
     "affiliation": "ネオホンコン",
-    "pilot": "マスター・アジア&風雲再起",
+    "illustrator": "S Kei",
     "stats": {
-      "height": "16.7m/－",
-      "weight": "7.2t/－",
       "mobility": 240,
       "ranged_attack": 310,
       "melee_attack": 80,
       "hp": 320
     },
+    "link_ability": [
+      {
+        "name": "Gガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力] [近距離攻撃力] 小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "的確な一撃",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力] [遠距離攻撃力] 小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "マスター・アジア&風雲再起",
+    "model": "GF13-001NHII MASTER GUNDAM & FUUNSAIKI",
     "terrain_compatibility": {
       "ground": "S",
       "space": "A",
@@ -51,18 +64,6 @@
       "cost": 3,
       "description": "自身が弱体化状態の時に発動可能となり、自身の弱体化状態を無効化し、ロックオン中の敵に単体攻撃でダメージを与える。"
     },
-    "link_ability": [
-      {
-        "name": "Gガンダム",
-        "condition": "デッキに3枚以上",
-        "effect": "[遠距離攻撃力] [近距離攻撃力] 小アップ"
-      },
-      {
-        "name": "的確な一撃",
-        "condition": "デッキに4枚以上",
-        "effect": "[機動力] [遠距離攻撃力] 小アップ"
-      }
-    ],
     "special_attack": {
       "name": "ダークネスショット撃射",
       "target": "単体(敵)",
@@ -70,17 +71,18 @@
       "sp_cost": 2,
       "power": 3100,
       "description": "敵単体に射撃攻撃でダメージを与える。",
+      "sp_type": "",
+      "echoes_beat": null,
       "united_sp": {
-        "partner1": null,
-        "partner2": null,
+        "name": "",
+        "partners": [],
+        "target": "",
         "range": null,
         "power": null,
-        "description": null
-      }
-    },
-    "rarity": "C",
-    "illustrator": "S Kei",
-    "raw": "MS\n\n遠距離 コスト4\nGF13-001NHII MASTER GUNDAM & FUUNSAIKI\nマスターガンダム&風雲再起\n\n頭頂高 16.7m/－\n本体重量 7.2t/－\n所属 ネオホンコン\nパイロット マスター・アジア&風雲再起\n\n地上 S 宇宙 A 砂漠 S 水中 B\n\n機動力 240\n遠距離攻撃 310\n近距離攻撃 80\nHP 320\n\nWEAPON\n\nMAIN ダークネスショット 射程 3 遠距離\nSUB 格闘 射程 1 近距離\n\nLINK ABILITY\n\nGガンダム デッキに3枚以上\n\n[遠距離攻撃力] [近距離攻撃力]\n小アップ\n\nMS ABILITY\n\n解撃\n\n任意発動 単体(敵) 射程 3 コスト 3\n\n自身が弱体化状態の時に発動可能となり、自身の弱体化状態を無効化し、ロックオン中の敵に単体攻撃でダメージを与える。\n\n的確な一撃 デッキに4枚以上\n\n[機動力] [遠距離攻撃力] 小アップ\n\nSPECIAL ATTACK\n\nダークネスショット撃射 —\n連携 —\n連携 —\n単体(敵) 射程 3 射程 —\n\nSPコスト 2 威力 3100 /－\n\n敵単体に射撃攻撃でダメージを与える。\n/－\n\nUNITED SP\n\n連携 —\n連携 —\n射程 —\n\nIMPACT AREA\n\n[アイコン:黄緑色の円形マーカー 中央やや下寄り]\n\nillust S Kei\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動武闘伝Gガンダム\nARSENAL BASE®\n\nFQ01-010 C"
+        "description": ""
+      },
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "FORSQUAD_SEASON_01_FQ01-010_マスターガンダム＆風雲再起_ocr_raw.json",
   "ocr_timestamp": "2026-02-24T01:21:44.796235",

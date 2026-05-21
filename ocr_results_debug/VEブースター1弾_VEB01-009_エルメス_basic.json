@@ -5,27 +5,56 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/VEB01-009.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/VEB01-009_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "VEB01-009",
     "type": "MS",
-    "card_label": { "class": "機動", "cost_label": "コスト5" },
     "name": "エルメス",
-    "model": "MAN-08 ELMETH",
     "cost": 5,
+    "rarity": "R",
     "category": "機動",
     "affiliation": "ジオン公国軍",
-    "pilot": "ララァ・スン",
+    "illustrator": "",
     "stats": {
-      "height": "47.7m",
-      "weight": "163.7t",
       "mobility": 230,
       "ranged_attack": 400,
       "melee_attack": 0,
       "hp": 400
     },
-    "terrain_compatibility": { "ground": "C", "space": "S", "desert": "B", "water": "B" },
+    "link_ability": [
+      {
+        "name": "機動戦士ガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "ララァ・スン",
+    "model": "MAN-08 ELMETH",
+    "terrain_compatibility": {
+      "ground": "C",
+      "space": "S",
+      "desert": "B",
+      "water": "B"
+    },
     "weapon": {
-      "main": { "name": "ビット", "range": 4, "type": "遠距離" },
-      "sub": { "name": null, "range": null, "type": null }
+      "main": {
+        "name": "ビット",
+        "range": 4,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "",
+        "range": null,
+        "type": ""
+      }
     },
     "ms_ability": {
       "name": "精密射撃",
@@ -35,18 +64,6 @@
       "cost": 3,
       "description": "ロックオン中の敵に単体攻撃でダメージを与える。"
     },
-    "link_ability": [
-      {
-        "name": "機動戦士ガンダム",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "戦況を変える力",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "ビット斉射",
       "target": "単体(敵)",
@@ -54,17 +71,18 @@
       "sp_cost": 2,
       "power": 3200,
       "description": "敵単体に射撃攻撃でダメージを与える。/ EBLv.を3下げる。射線上の敵に貫通射撃でダメージを与える。出撃時1度のみ使用可能。",
+      "sp_type": "",
+      "echoes_beat": null,
       "united_sp": {
         "name": "光る宇宙",
+        "partners": [],
         "target": "貫通(敵)",
         "range": 4,
         "power": 4700,
-        "description": "ECHOES BEAT Lv.を下げることで、共鳴戦術技が発動する。EBLv.を3下げる。射線上の敵に貫通射撃でダメージを与える。出撃時1度のみ使用可能。",
-        "partners": []
-      }
-    },
-    "rarity": "R",
-    "raw": "機動 コスト5\nMAN-08 ELMETH\nエルメス\n全高 47.7m\n本体重量 163.7t\n所属 ジオン公国軍\nパイロット ララァ・スン\n地上 C 宇宙 S 砂漠 B 水中 B\n機動力 230\n遠距離攻撃 400\n近距離攻撃 0\nHP 400\nWEAPON\nMAIN ビット 射程4 遠距離\nSUB ー 射程ー\nMS ABILITY\n精密射撃\n任意発動 単体(敵) 射程4 コスト3\nロックオン中の敵に単体攻撃でダメージを与える。\nLINK ABILITY\n機動戦士ガンダム デッキに3枚以上\n[機動力]小アップ\n戦況を変える力 デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\nSPECIAL ATTACK ECHOES BEAT SP\nビット斉射 光る宇宙 Lv.3\nECHOES BEAT Lv.を下げることで、共鳴戦術技が発動する。\n単体(敵) 射程4 貫通(敵) 射程4\nSPコスト2 威力 3200 / 4700\n敵単体に射撃攻撃でダメージを与える。/ EBLv.を3下げる。射線上の敵に貫通射撃でダメージを与える。出撃時1度のみ使用可能。\nVEB01-009 R"
+        "description": "ECHOES BEAT Lv.を下げることで、共鳴戦術技が発動する。EBLv.を3下げる。射線上の敵に貫通射撃でダメージを与える。出撃時1度のみ使用可能。"
+      },
+      "squad_sp": null
+    }
   },
   "ocr_timestamp": "2026-04-16T11:50:00.000000",
   "ocr_type": "basic",

@@ -1,75 +1,72 @@
 {
-    "card_number": "FQ02-015",
-    "card_name": "ボルトガンダム",
-    "series": "FORSQUAD SEASON:02",
-    "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-015.jpg?v9",
-    "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-015_b.jpg?v9",
-    "ocr_data": {
-        "card_id": "FQ02-015",
-        "type": "MS",
-        "card_label": {
-            "class": "近距離",
-            "cost_label": "コスト5"
-        },
-        "name": "ボルトガンダム",
-        "model": "GF13-013NR BOLT GUNDAM",
-        "cost": 5,
-        "category": "近距離",
-        "pilot": "アルゴ・ガルスキー",
-        "stats": {
-            "height": "17.3m",
-            "weight": "8.9t",
-            "mobility": 290,
-            "ranged_attack": 0,
-            "melee_attack": 390,
-            "hp": 350
-        },
-        "terrain_compatibility": {
-            "ground": "S",
-            "space": "A",
-            "desert": "A",
-            "water": "B"
-        },
-        "weapon": {
-            "main": {
-                "name": "グラビトンハンマー",
-                "range": 2,
-                "type": "近距離"
-            },
-            "sub": {
-                "name": "シールド",
-                "range": null,
-                "type": null
-            }
-        },
-        "ms_ability": {
-            "name": "決闘",
-            "range": 2,
-            "cost": 4,
-            "description": "敵ユニットのターゲットを自身に変更し、ロックオン中の敵ユニットに単体攻撃を行う。効果中は対象の味方、敵ユニットをロックオンすることが出来ない。",
-            "activation": "任意発動"
-        },
-        "link_ability": [
-            {
-                "name": "Gガンダム",
-                "condition": "デッキに3枚以上",
-                "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-            },
-            {
-                "name": "戦況を変える力",
-                "condition": "デッキに4枚以上",
-                "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-            }
-        ],
-        "impact_area": {
-            "type": "circular",
-            "radius": null,
-            "centered": true
-        },
-        "illustrator": "Kazue Saitou",
-        "raw": "近距離 コスト5 GF13-013NR BOLT GUNDAM ボルトガンダム 頭頂高 17.3m 本体重量 8.9t 所属 ネオロシア パイロット アルゴ・ガルスキー 地上 S 宇宙 A 砂漠 A 水中 B 機動力 290 遠距離攻撃 0 近距離攻撃 390 HP 350 WEAPON MAIN グラビトンハンマー 射程 2 近距離 SUB シールド 射程 — — MS ABILITY 決闘 任意発動 単体（敵） 射程 2 コスト 4 敵ユニットのターゲットを自身に変更し、ロックオン中の敵ユニットに単体攻撃を行う。効果中は対象の味方、敵ユニットをロックオンすることが出来ない。 SPECIAL ATTACK 焔裂ガイアクラッシャー 射程 — 射程 — SPコスト 2 威力 3000/— 自身を中心とした範囲に格闘攻撃でダメージを与える。/— LINK ABILITY Gガンダム デッキに3枚以上 [遠距離攻撃力][近距離攻撃力]小アップ 戦況を変える力 デッキに4枚以上 [遠距離攻撃力][近距離攻撃力]小アップ IMPACT AREA Illust Kazue Saitou 設定協力 サンライズ BANDAI MADE IN JAPAN"
+  "card_number": "FQ02-015",
+  "card_name": "ボルトガンダム",
+  "series": "FORSQUAD SEASON:02",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-015.jpg?v9",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-015_b.jpg?v9",
+  "ocr_data": {
+    "type": "MS",
+    "name": "ボルトガンダム",
+    "cost": 5,
+    "rarity": "",
+    "category": "近距離",
+    "affiliation": "",
+    "illustrator": "Kazue Saitou",
+    "stats": {
+      "mobility": 290,
+      "ranged_attack": 0,
+      "melee_attack": 390,
+      "hp": 350
     },
-    "ocr_timestamp": "2025-06-28T02:11:22.353747",
-    "ocr_type": "basic",
-    "ocr_engine": "claude_code_cli"
+    "link_ability": [
+      {
+        "name": "Gガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "アルゴ・ガルスキー",
+    "model": "GF13-013NR BOLT GUNDAM",
+    "terrain_compatibility": {
+      "ground": "S",
+      "space": "A",
+      "desert": "A",
+      "water": "B"
+    },
+    "weapon": {
+      "main": {
+        "name": "グラビトンハンマー",
+        "range": 2,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "シールド",
+        "range": null,
+        "type": ""
+      }
+    },
+    "ms_ability": {
+      "name": "決闘",
+      "activation": "任意発動",
+      "target": "",
+      "range": 2,
+      "cost": 4,
+      "description": "敵ユニットのターゲットを自身に変更し、ロックオン中の敵ユニットに単体攻撃を行う。効果中は対象の味方、敵ユニットをロックオンすることが出来ない。"
+    },
+    "special_attack": null
+  },
+  "ocr_timestamp": "2025-06-28T02:11:22.353747",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli"
 }

@@ -8,26 +8,39 @@
   "ocr_type": "basic",
   "ocr_timestamp": "2026-04-22T20:30:00.000000",
   "ocr_data": {
-    "card_id": "VE02-022",
     "type": "MS",
     "name": "ストライクフリーダムガンダム弐式",
-    "model": "ZGMFA-262B STRIKE FREEDOM GUNDAM TYPEII",
     "cost": 2,
+    "rarity": "C",
     "category": "遠距離",
     "affiliation": "コンパス",
-    "pilot": "キラ・ヤマト、アスラン・ザラ",
-    "card_label": {
-      "class": "遠距離",
-      "cost_label": "コスト2"
-    },
+    "illustrator": "",
     "stats": {
-      "height": "18.88m",
-      "weight": "82.09t",
       "mobility": 200,
       "ranged_attack": 230,
       "melee_attack": 60,
       "hp": 260
     },
+    "link_ability": [
+      {
+        "name": "SEED FREEDOM",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "キラ・ヤマト、アスラン・ザラ",
+    "model": "ZGMFA-262B STRIKE FREEDOM GUNDAM TYPEII",
     "terrain_compatibility": {
       "ground": "A",
       "space": "S",
@@ -54,29 +67,17 @@
       "cost": 4,
       "description": "20秒間、ロックオンしている敵に周囲の味方ターゲットを集め、[遠／近攻撃力]を中アップ。攻撃対象が変わると効果は終了する。"
     },
-    "link_ability": [
-      {
-        "name": "SEED FREEDOM",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "多彩な戦術",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "ドラグーン斉射",
       "target": "範囲(敵)",
       "range": 4,
       "sp_cost": 2,
-      "power": "2500",
+      "power": 2500,
       "description": "対象の敵を中心として範囲射撃でダメージを与える。",
+      "sp_type": "",
+      "echoes_beat": null,
       "united_sp": null,
-      "echoes_beat": null
-    },
-    "rarity": "C",
-    "raw": "遠距離 コスト2 MS ZGMFA-262B STRIKE FREEDOM GUNDAM TYPEII ストライクフリーダムガンダム弐式 頭頂高 18.88m 本体重量 82.09t 所属 コンパス パイロット キラ・ヤマト、アスラン・ザラ 地上 A 宇宙 S 砂漠 A 水中 C 機動力 200 遠距離攻撃 230 近距離攻撃 60 HP 260 WEAPON MAIN 試製35式高レールガン&高エネルギービームライフル 射程 3 遠距離 SUB ビームサーベル アクータラケルタ 射程 1 近距離 MS ABILITY 集中砲火 任意発動 範囲(味方) 射程 — コスト 4 20秒間、ロックオンしている敵に周囲の味方ターゲットを集め、[遠／近攻撃力]を中アップ。攻撃対象が変わると効果は終了する。 LINK ABILITY SEED FREEDOM デッキに3枚以上 [機動力]小アップ 多彩な戦術 デッキに4枚以上 [遠距離攻撃力][近距離攻撃力]小アップ SPECIAL ATTACK ECHOES BEAT ドラグーン斉射 — — 範囲(敵) 射程 4 — 射程 — SPコスト 2 威力 2500 / — 対象の敵を中心として範囲射撃でダメージを与える。 /— illust Misaki Yuzuruha VE02-022 C"
+      "squad_sp": null
+    }
   }
 }

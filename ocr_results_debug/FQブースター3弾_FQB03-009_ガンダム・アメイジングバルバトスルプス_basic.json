@@ -5,26 +5,39 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQB03-009.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQB03-009_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "FQB03-009",
     "type": "MS",
-    "card_label": {
-      "class": "遠距離",
-      "cost_label": "コスト3"
-    },
     "name": "ガンダム・アメイジングバルバトスルプス",
-    "model": "ASW-G-08A GUNDAM AMAZING BARBATOS LUPUS",
     "cost": 3,
+    "rarity": "R",
     "category": "遠距離",
-    "affiliation": null,
-    "pilot": "メイジン・カワグチ",
+    "affiliation": "",
+    "illustrator": "KOU",
     "stats": {
-      "height": "19.0m",
-      "weight": "29.1t",
       "mobility": 190,
       "ranged_attack": 300,
       "melee_attack": 100,
       "hp": 310
     },
+    "link_ability": [
+      {
+        "name": "ビルドメタバース",
+        "condition": "デッキに2枚以上",
+        "effect": "[HP]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "メイジン・カワグチ",
+    "model": "ASW-G-08A GUNDAM AMAZING BARBATOS LUPUS",
     "terrain_compatibility": {
       "ground": "A",
       "space": "S",
@@ -51,18 +64,6 @@
       "cost": 6,
       "description": "自身を中心とした大範囲内の味方ユニットの弱体化状態を無効化し、30秒間、[遠距離攻撃力]を中アップする。"
     },
-    "link_ability": [
-      {
-        "name": "ビルドメタバース",
-        "condition": "デッキに2枚以上",
-        "effect": "[HP]小アップ"
-      },
-      {
-        "name": "多彩な戦術",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "アメイジングアイアンブラッド撃射",
       "target": "貫通(敵)",
@@ -70,17 +71,18 @@
       "sp_cost": 2,
       "power": 2800,
       "description": "射線上の敵に貫通射撃でダメージを与える。",
+      "sp_type": "",
+      "echoes_beat": null,
       "united_sp": {
-        "partner1": null,
-        "partner2": null,
+        "name": "",
+        "partners": [],
+        "target": "",
         "range": null,
         "power": null,
-        "description": null
-      }
-    },
-    "rarity": "R",
-    "illustrator": "KOU",
-    "raw": "MS\n\n遠距離　コスト3\n\nASW-G-08A GUNDAM AMAZING BARBATOS LUPUS\nガンダム・アメイジングバルバトスルプス\n\n頭頂高　19.0m\n本体重量　29.1t\n所属　―\nパイロット　メイジン・カワグチ\n\n地上 A　宇宙 S　砂漠 A　水中 C\n機動力　190\n遠距離攻撃　300\n近距離攻撃　100\nHP　310\n\nWEAPON\nMAIN　アメイジングメイス(射撃)　射程 3　遠距離\nSUB　アメイジングメイス　射程 1　近距離\n\nLINK ABILITY\nビルドメタバース　デッキに2枚以上\n[HP]小アップ\n\n多彩な戦術　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nMS ABILITY\n鼓舞[遠距離][弱体化解除]\n任意発動　範囲(味方)　射程 ―　コスト 6\n自身を中心とした大範囲内の味方ユニットの弱体化状態を無効化し、30秒間、[遠距離攻撃力]を中アップする。\n\nSPECIAL ATTACK　　UNITED SP\nアメイジングアイアンブラッド撃射\n連携 ―　　連携 ―\n連携 ―　　連携 ―\n貫通(敵)　射程 4　　― 射程 ―\nSPコスト 2　威力　2800 / ―\n射線上の敵に貫通射撃でダメージを与える。/ ―\n\nIMPACT AREA\n[アイコン:前方扇形範囲]\n\nillust　KOU\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nFQB03-009　R"
+        "description": ""
+      },
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "FQブースター3弾_FQB03-009_ガンダム・アメイジングバルバトスルプス_ocr_raw.json",
   "ocr_timestamp": "2026-02-28T02:10:14.311864",

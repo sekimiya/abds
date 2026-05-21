@@ -5,31 +5,44 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-043.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-043_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "PR-043",
     "type": "MS",
-    "card_label": {
-      "class": "近距離",
-      "cost_label": "コスト6"
-    },
     "name": "キュベレイパピヨン",
-    "model": "NMX-004 QUBELEY PAPILLON",
     "cost": 6,
-    "category": "機動戦士ガンダムZZ",
+    "rarity": "PR",
+    "category": "近距離",
     "affiliation": "—",
-    "pilot": "アイラ・ユルキアイネン",
+    "illustrator": "TAKA-F",
     "stats": {
-      "height": "18.9m",
-      "weight": "40.1t",
       "mobility": 320,
       "ranged_attack": 320,
       "melee_attack": 480,
       "hp": 430
     },
+    "link_ability": [
+      {
+        "name": "ビルドファイターズ",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "間合いを詰めた接近戦",
+        "condition": "デッキに2枚以上",
+        "effect": "[近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "アイラ・ユルキアイネン",
+    "model": "NMX-004 QUBELEY PAPILLON",
     "terrain_compatibility": {
       "ground": "A",
       "space": "S",
       "desert": "C",
-      "water": null
+      "water": ""
     },
     "weapon": {
       "main": {
@@ -51,18 +64,6 @@
       "cost": 3,
       "description": "ロックオン中の敵ユニットに単体攻撃を行いダメージを与え、一定時間スタンさせる。"
     },
-    "link_ability": [
-      {
-        "name": "ビルドファイターズ",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "間合いを詰めた接近戦",
-        "condition": "デッキに2枚以上",
-        "effect": "[近距離攻撃力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "クリアファンネル連携",
       "target": "単体(敵)",
@@ -70,11 +71,11 @@
       "sp_cost": 2,
       "power": 3500,
       "description": "敵単体に格闘攻撃でダメージを与える。",
-      "united_sp": null
-    },
-    "rarity": "PR",
-    "illustrator": "TAKA-F",
-    "raw": "近距離 コスト6 MS\nNMX-004 QUBELEY PAPILLON\nキュベレイパピヨン\n\n全高　18.9m\n本体重量　40.1t\n所属　—\nパイロット　アイラ・ユルキアイネン\n\n地上 A　宇宙 S　砂漠 C\n機動力 320\n遠距離攻撃 320\n近距離攻撃 480\nHP 430\n\nWEAPON\nMAIN　ランスビット　射程 1　近距離\nSUB　ビームガン　射程 3　遠距離\n\nMS ABILITY\n縛撃\n任意発動　単体(敵)　射程 1　コスト 3\nロックオン中の敵ユニットに単体攻撃を行いダメージを与え、一定時間スタンさせる。\n\nLINK ABILITY\nビルドファイターズ　デッキに3枚以上\n[機動力]小アップ\n\n間合いを詰めた接近戦　デッキに2枚以上\n[近距離攻撃力]小アップ\n\nSPECIAL ATTACK\nクリアファンネル連携\n単体(敵)　射程 2\nSPコスト 2　威力 3500\n敵単体に格闘攻撃でダメージを与える。\n\nIMPACT AREA（グリッド図）\n\nillust　TAKA-F\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nNOT FOR SALE\nPR-043　PR"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "プロモーション_PR-043_キュベレイパピヨン_ocr_raw.json",
   "ocr_timestamp": "2026-03-07T12:36:33.898025",

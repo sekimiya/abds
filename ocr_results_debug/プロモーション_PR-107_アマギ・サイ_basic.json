@@ -5,44 +5,50 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-107.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-107_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "PR-107",
     "type": "PL",
-    "card_label": {
-      "class": "殲滅",
-      "cost_label": "コスト3"
-    },
     "name": "アマギ・サイ",
     "cost": 3,
-    "category": "N-EXTREME",
+    "rarity": "PR",
+    "category": "殲滅",
     "affiliation": "G-ガーディアンズ",
+    "illustrator": "Yasuto Morioka (BNSI)",
     "stats": {
       "mobility": 230,
       "ranged_attack": 100,
       "melee_attack": 240,
       "hp": 300
     },
+    "link_ability": [
+      {
+        "name": "N-EXTREME",
+        "condition": "デッキに2枚以上",
+        "effect": "[HP]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "優れた格闘センス",
+        "condition": "デッキに2枚以上",
+        "effect": "[近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "",
+    "physical": null,
+    "units": null,
     "pilot_skill": {
       "name": "本領発揮",
       "trigger": "HP80%以下の時",
       "effect": "40秒間、自身の[近距離攻撃力]を中アップし、受けるダメージを軽減する。",
       "has_sq_skill": false,
-      "sq_skill_details": null
-    },
-    "link_ability": [
-      {
-        "name": "N-EXTREME",
-        "condition": "デッキに2枚以上",
-        "effect": "[HP]小アップ"
-      },
-      {
-        "name": "優れた格闘センス",
-        "condition": "デッキに2枚以上",
-        "effect": "[近距離攻撃力]小アップ"
-      }
-    ],
-    "rarity": "PR",
-    "illustrator": "Yasuto Morioka (BNSI)",
-    "raw": "殲滅　コスト3\n\nアマギ・サイ\nAMAGI SAI\n\n身長　175cm\n年齢　17歳\n所属　G-ガーディアンズ\n搭乗機体　N-EXTREMEガンダム エクスプロージョン\n\nPL SKILL\n本領発揮\nHP80%以下の時\n40秒間、自身の[近距離攻撃力]を中アップし、受けるダメージを軽減する。\n\nLINK ABILITY\nN-EXTREME　デッキに2枚以上\n[HP]小アップ\n\n優れた格闘センス　デッキに2枚以上\n[近距離攻撃力]小アップ\n\n機動力　230\n遠距離攻撃　100\n近距離攻撃　240\nHP　300\n\nillust. Yasuto Morioka (BNSI)\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n\nNOT FOR SALE\nPR-107　PR"
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_raw_file": "プロモーション_PR-107_アマギ・サイ_ocr_raw.json",
   "ocr_timestamp": "2026-03-07T11:12:20.110532",

@@ -5,26 +5,39 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-322.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-322_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "PR-322",
     "type": "MS",
-    "card_label": {
-      "class": "遠距離",
-      "cost_label": "コスト3"
-    },
     "name": "ジフレド",
-    "model": "GFreD",
     "cost": 3,
-    "category": "GQuuuuuuX",
-    "affiliation": null,
-    "pilot": null,
+    "rarity": "PR",
+    "category": "遠距離",
+    "affiliation": "",
+    "illustrator": "ZB",
     "stats": {
-      "height": null,
-      "weight": null,
       "mobility": 250,
       "ranged_attack": 280,
       "melee_attack": 80,
       "hp": 340
     },
+    "link_ability": [
+      {
+        "name": "GQuuuuuuX",
+        "condition": "デッキに3枚以上",
+        "effect": "[HP]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "",
+    "model": "GFreD",
     "terrain_compatibility": {
       "ground": "A",
       "space": "S",
@@ -51,18 +64,6 @@
       "cost": 3,
       "description": "ロックオン中の敵ユニットに単体攻撃を行いダメージを与え、一定時間スタンさせる。"
     },
-    "link_ability": [
-      {
-        "name": "GQuuuuuuX",
-        "condition": "デッキに3枚以上",
-        "effect": "[HP]小アップ"
-      },
-      {
-        "name": "戦況を変える力",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "オールレンジ射撃",
       "target": "単体(敵)",
@@ -70,11 +71,11 @@
       "sp_cost": 2,
       "power": 3200,
       "description": "敵単体に射撃攻撃でダメージを与える。",
-      "united_sp": null
-    },
-    "rarity": "PR",
-    "illustrator": "ZB",
-    "raw": "遠距離　コスト3　MS\nGFreD\nジフレド\nGQuuuuuuX\n\n頭頂高　－\n本体重量　－\n所属　－\nパイロット　－\n\n地上 A　宇宙 S　砂漠 C　水中 A\n機動力　250\n遠距離攻撃　280\n近距離攻撃　80\nHP　340\n\nWEAPON\nMAIN　オールレンジ攻撃　射程 4　遠距離\nSUB　ビーム・サーベル　射程 1　近距離\n\nMS ABILITY\n縛射\n任意発動　単体(敵)　射程 4　コスト 3\nロックオン中の敵ユニットに単体攻撃を行いダメージを与え、一定時間スタンさせる。\n\nLINK ABILITY\nGQuuuuuuX　デッキに3枚以上\n[HP]小アップ\n\n戦況を変える力　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nSPECIAL ATTACK　UNITED SP\nオールレンジ射撃　－\n連携 －　連携 －\n連携 －　連携 －\n単体(敵)　射程 4　－　射程 －\nSPコスト 2　威力　3200 / －\n敵単体に射撃攻撃でダメージを与える。\n/ －\n\nillust　ZB\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nNOT FOR SALE\nPR-322　PR"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "プロモーション_PR-322_ジフレド_ocr_raw.json",
   "ocr_timestamp": "2026-03-03T18:54:55.677001",

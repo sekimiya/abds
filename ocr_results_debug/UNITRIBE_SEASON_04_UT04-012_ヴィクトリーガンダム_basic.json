@@ -5,26 +5,39 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT04-012.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT04-012_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "UT04-012",
     "type": "MS",
-    "card_label": {
-      "class": "近距離",
-      "cost_label": "コスト1"
-    },
     "name": "ヴィクトリーガンダム",
-    "model": "LM312V04 VICTORY GUNDAM",
     "cost": 1,
+    "rarity": "C",
     "category": "近距離",
     "affiliation": "リガ・ミリティア",
-    "pilot": "ウッソ・エヴィン",
+    "illustrator": "Ryohei Miyazaki",
     "stats": {
-      "height": "15.2m",
-      "weight": "7.6t",
       "mobility": 160,
       "ranged_attack": 40,
       "melee_attack": 150,
       "hp": 200
     },
+    "link_ability": [
+      {
+        "name": "機動戦士Vガンダム",
+        "condition": "デッキに2枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "ウッソ・エヴィン",
+    "model": "LM312V04 VICTORY GUNDAM",
     "terrain_compatibility": {
       "ground": "S",
       "space": "A",
@@ -51,18 +64,6 @@
       "cost": 5,
       "description": "指定した位置に中範囲の支援砲撃を要請し、範囲内の敵にダメージを与える。"
     },
-    "link_ability": [
-      {
-        "name": "機動戦士Vガンダム",
-        "condition": "デッキに2枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "多彩な戦術",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "ビーム・サーベル強撃",
       "target": "単体(敵)",
@@ -70,11 +71,11 @@
       "sp_cost": 2,
       "power": 3100,
       "description": "敵単体に格闘攻撃でダメージを与える。",
-      "united_sp": null
-    },
-    "rarity": "C",
-    "illustrator": "Ryohei Miyazaki",
-    "raw": "MS\n\n近距離　コスト1\n\nLM312V04 VICTORY GUNDAM\nヴィクトリーガンダム\n\n頭頂高　15.2m\n本体重量　7.6t\n\n地上 S　宇宙 A　砂漠 B　水中 C\n\n所属　リガ・ミリティア\nパイロット　ウッソ・エヴィン\n\n機動力 160\n遠距離攻撃 40\n近距離攻撃 150\nHP 200\n\nWEAPON\nMAIN ビーム・サーベル　射程 1　近距離\nSUB ビーム・ライフル　射程 3　遠距離\n\nLINK ABILITY\n機動戦士Vガンダム　デッキに2枚以上\n[機動力]小アップ\n\n多彩な戦術　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nMS ABILITY\n支援砲撃\n任意発動　範囲(敵)　射程 ー　コスト 5\n指定した位置に中範囲の支援砲撃を要請し、範囲内の敵にダメージを与える。\n\nIMPACT AREA\n[アイコン:中範囲ひし形、中央×黄色、下方○緑]\n\nSPECIAL ATTACK　　UNITED SP\nビーム・サーベル強撃　　ー\n連携 ー　連携 ー\n連携 ー　連携 ー\n単体(敵)　射程 2　　ー　射程 ー\nSPコスト 2　威力 3100 / ー\n敵単体に格闘攻撃でダメージを与える。\n/ ー\n\nillust Ryohei Miyazaki\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nUT04-012　C"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "UNITRIBE_SEASON_04_UT04-012_ヴィクトリーガンダム_ocr_raw.json",
   "ocr_timestamp": "2026-02-28T08:20:14.206072",

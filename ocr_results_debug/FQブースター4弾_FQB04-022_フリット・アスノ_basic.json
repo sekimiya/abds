@@ -5,52 +5,55 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQB04-022.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQB04-022_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "FQB04-022",
     "type": "PL",
-    "card_label": {
-      "class": "殲滅",
-      "cost_label": "コスト5"
-    },
     "name": "フリット・アスノ",
-    "english_name": "FLIT ASUNO",
     "cost": 5,
+    "rarity": "R",
     "category": "殲滅",
     "affiliation": "地球連邦軍",
-    "physical": {
-      "height": null,
-      "age": 14
-    },
-    "units": [
-      "ガンダムAGE-1 ノーマル"
-    ],
+    "illustrator": "",
     "stats": {
       "mobility": 200,
       "ranged_attack": 110,
       "melee_attack": 300,
       "hp": 290
     },
+    "link_ability": [
+      {
+        "name": "ガンダムAGE",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "FLIT ASUNO",
+    "physical": {
+      "height": "",
+      "age": 14
+    },
+    "units": [
+      "ガンダムAGE-1 ノーマル"
+    ],
     "pilot_skill": {
       "name": "優れた集中力",
       "trigger": "出撃時",
       "effect": "30秒間、自身の[SP威力]を中アップする。",
       "has_sq_skill": false,
-      "sq_skill_details": null
-    },
-    "link_ability": [
-      {
-        "name": "ガンダムAGE",
-        "condition": "デッキに3枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      },
-      {
-        "name": "戦況を変える力",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      }
-    ],
-    "rarity": "R",
-    "illustrator": null,
-    "raw": "殲滅 コスト5\n\nPL\n\nフリット・アスノ\nFLIT ASUNO\n\n[アイコン:ガンダムAGEシリーズロゴ]\n[アイコン:地球連邦軍エンブレム]\n\n身長　ー\n年齢　14歳\n所属　地球連邦軍\n搭乗機体　ガンダムAGE-1 ノーマル\n\nPL SKILL\n優れた集中力\n出撃時\n\n30秒間、自身の[SP威力]を中アップする。\n\nLINK ABILITY\nガンダムAGE　デッキに3枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\n戦況を変える力　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\n機動力 200\n遠距離攻撃 110\n近距離攻撃 300\nHP 290\n\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\n\nFQB04-022 R"
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_raw_file": "FQブースター4弾_FQB04-022_フリット・アスノ_ocr_raw.json",
   "ocr_timestamp": "2026-02-28T04:21:27.353842",

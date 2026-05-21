@@ -5,26 +5,39 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP05-010.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP05-010_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "BP05-010",
     "type": "MS",
-    "card_label": {
-      "class": "近距離",
-      "cost_label": "コスト5"
-    },
     "name": "ガンダム・ヴィダール",
-    "model": "ASW-G-XX GUNDAM VIDAR",
     "cost": 5,
+    "rarity": "U",
     "category": "近距離",
     "affiliation": "ギャラルホルン",
-    "pilot": "ヴィダール",
+    "illustrator": "mercy rabbit",
     "stats": {
-      "height": "18.5m",
-      "weight": "30.9t",
       "mobility": 290,
       "ranged_attack": 80,
       "melee_attack": 560,
       "hp": 520
     },
+    "link_ability": [
+      {
+        "name": "鉄血のオルフェンズ",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "肉薄する戦い",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "ヴィダール",
+    "model": "ASW-G-XX GUNDAM VIDAR",
     "terrain_compatibility": {
       "ground": "S",
       "space": "A",
@@ -51,18 +64,6 @@
       "cost": 4,
       "description": "一定時間、範囲内に入った敵ユニットの[機動力]をダウンするエリアを設置する。※上限3箇所まで。"
     },
-    "link_ability": [
-      {
-        "name": "鉄血のオルフェンズ",
-        "condition": "デッキに3枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      },
-      {
-        "name": "肉薄する戦い",
-        "condition": "デッキに4枚以上",
-        "effect": "[機動力][近距離攻撃力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "バーストサーベル強襲",
       "target": "単体(敵)",
@@ -70,11 +71,11 @@
       "sp_cost": 2,
       "power": 3700,
       "description": "敵単体に格闘攻撃でダメージを与える。戦術技威力は地形適性に応じて変化する。",
-      "united_sp": null
-    },
-    "rarity": "U",
-    "illustrator": "mercy rabbit",
-    "raw": "近距離　コスト5　MS\n\nASW-G-XX GUNDAM VIDAR\nガンダム・ヴィダール\n\n頭頂高　18.5m\n本体重量　30.9t\n所属　ギャラルホルン\nパイロット　ヴィダール\n\n地上 S　宇宙 A　砂漠 A　水中 C\n\n機動力 290\n遠距離攻撃 80\n近距離攻撃 560\nHP 520\n\nWEAPON\nMAIN バーストサーベル　射程 1　近距離\nSUB ハンドガン　射程 3　遠距離\n\nLINK ABILITY\n鉄血のオルフェンズ　デッキに3枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\n肉薄する戦い　デッキに4枚以上\n[機動力][近距離攻撃力]小アップ\n\nMS ABILITY\n陣略[妨害／機動]\n任意発動　範囲(敵)　射程 ー　コスト 4\n一定時間、範囲内に入った敵ユニットの[機動力]をダウンするエリアを設置する。\n※上限3箇所まで。\n\nSPECIAL ATTACK　UNITED SP\nバーストサーベル強襲\n連携 ー　連携 ー\n連携 ー　連携 ー\n単体(敵)　射程 2　ー　射程 ー\nSPコスト 2　威力 3700　／ ー\n\n敵単体に格闘攻撃でダメージを与える。戦術技威力は地形適性に応じて変化する。／ ー\n\nIMPACT AREA\n[アイコン:×マーク中央、前方1マス緑表示]\n\nillust mercy rabbit\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nBP05-010　U"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "BOOSTER_PACK_[機動戦士ガンダム_鉄血のオルフェンズ]_BP05-010_ガンダム・ヴィダール_ocr_raw.json",
   "ocr_timestamp": "2026-02-26T18:26:00.559472",

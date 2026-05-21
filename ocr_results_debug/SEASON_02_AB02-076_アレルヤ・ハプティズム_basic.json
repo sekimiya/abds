@@ -5,17 +5,38 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB02-076.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB02-076_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "AB02-076",
     "type": "PL",
-    "card_label": {
-      "class": "制圧",
-      "cost_label": "コスト3"
-    },
     "name": "アレルヤ・ハプティズム",
-    "english_name": "ALLELUJAH HAPTISM",
     "cost": 3,
+    "rarity": "P",
     "category": "制圧",
     "affiliation": "ソレスタルビーイング",
+    "illustrator": "",
+    "stats": {
+      "mobility": 230,
+      "ranged_attack": 170,
+      "melee_attack": 170,
+      "hp": 220
+    },
+    "link_ability": [
+      {
+        "name": "ガンダム00",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "可変機ファイター",
+        "condition": "デッキに3枚以上",
+        "effect": "専用作戦カードが使用可能",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "ALLELUJAH HAPTISM",
     "physical": {
       "height": "186cm",
       "age": 19
@@ -23,34 +44,16 @@
     "units": [
       "ガンダムキュリオス"
     ],
-    "stats": {
-      "mobility": 230,
-      "ranged_attack": 170,
-      "melee_attack": 170,
-      "hp": 220
-    },
     "pilot_skill": {
       "name": "周到な奇襲作戦",
       "trigger": "出撃時",
       "effect": "自身が使用するMSアビリティ[奇襲]の初回使用コストを2ダウンする。",
       "has_sq_skill": false,
-      "sq_skill_details": null
-    },
-    "link_ability": [
-      {
-        "name": "ガンダム00",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "可変機ファイター",
-        "condition": "デッキに3枚以上",
-        "effect": "専用作戦カードが使用可能"
-      }
-    ],
-    "rarity": "P",
-    "illustrator": null,
-    "raw": "PL\n\n制圧 コスト3\n\nアレルヤ・ハプティズム\nALLELUJAH HAPTISM\n\n身長 186cm\n年齢 19歳\n所属 ソレスタルビーイング\n搭乗機体 ガンダムキュリオス\n\n[アイコン:ガンダム00ロゴ]\n\nPL SKILL\n\n周到な奇襲作戦\n\n出撃時\n\n自身が使用するMSアビリティ[奇襲]の初回使用コストを2ダウンする。\n\nLINK ABILITY\n\nガンダム00 デッキに3枚以上\n[機動力]小アップ\n\n可変機ファイター デッキに3枚以上\n専用作戦カードが使用可能\n\n機動力 230\n遠距離攻撃 170\n近距離攻撃 170\nHP 220\n\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n\n機動戦士ガンダム ARSENAL BASE®\n\nAB02-076 P"
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_raw_file": "SEASON_02_AB02-076_アレルヤ・ハプティズム_ocr_raw.json",
   "ocr_timestamp": "2026-02-23T15:11:53.861789",

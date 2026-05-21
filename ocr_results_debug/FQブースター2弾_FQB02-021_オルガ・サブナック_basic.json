@@ -5,52 +5,55 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQB02-021.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQB02-021_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "FQB02-021",
     "type": "PL",
-    "card_label": {
-      "class": "制圧",
-      "cost_label": "コスト4"
-    },
     "name": "オルガ・サブナック",
-    "english_name": "ORGA SABNACK",
     "cost": 4,
+    "rarity": "R",
     "category": "制圧",
     "affiliation": "地球連合軍",
-    "physical": {
-      "height": null,
-      "age": null
-    },
-    "units": [
-      "カラミティガンダム"
-    ],
+    "illustrator": "",
     "stats": {
       "mobility": 190,
       "ranged_attack": 250,
       "melee_attack": 90,
       "hp": 270
     },
+    "link_ability": [
+      {
+        "name": "ガンダムSEED",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "ORGA SABNACK",
+    "physical": {
+      "height": "",
+      "age": ""
+    },
+    "units": [
+      "カラミティガンダム"
+    ],
     "pilot_skill": {
       "name": "綿密な戦闘準備",
       "trigger": "出撃時",
       "effect": "40秒間、自分の[機動力][遠距離攻撃力]を小アップする。",
       "has_sq_skill": false,
-      "sq_skill_details": null
-    },
-    "link_ability": [
-      {
-        "name": "ガンダムSEED",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "戦況を変える力",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      }
-    ],
-    "rarity": "R",
-    "illustrator": null,
-    "raw": "PL\n\n制圧　コスト4\n\nオルガ・サブナック\nORGA SABNACK\n\n身長　ー\n年齢　ー\n所属　地球連合軍\n搭乗機体　カラミティガンダム\n\nPL SKILL\n綿密な戦闘準備\n出撃時\n40秒間、自分の[機動力][遠距離攻撃力]を小アップする。\n\nLINK ABILITY\nガンダムSEED　デッキに3枚以上\n[機動力]小アップ\n\n戦況を変える力　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\n機動力 190\n遠距離攻撃 250\n近距離攻撃 90\nHP 270\n\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\nFQB02-021　R"
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_raw_file": "FQブースター2弾_FQB02-021_オルガ・サブナック_ocr_raw.json",
   "ocr_timestamp": "2026-02-28T01:55:32.020701",

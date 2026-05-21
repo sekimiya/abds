@@ -8,26 +8,39 @@
   "ocr_type": "basic",
   "ocr_timestamp": "2026-04-22T20:30:00.000000",
   "ocr_data": {
-    "card_id": "VE02-018",
     "type": "MS",
     "name": "ガンダムヘビーアームズ改",
-    "model": "XXXG-01H2 GUNDAM HEAVYARMS CUSTOM",
     "cost": 3,
+    "rarity": "M",
     "category": "遠距離",
     "affiliation": "—",
-    "pilot": "トロワ・バートン",
-    "card_label": {
-      "class": "遠距離",
-      "cost_label": "コスト3"
-    },
+    "illustrator": "",
     "stats": {
-      "height": "16.7m",
-      "weight": "8.2t",
       "mobility": 230,
       "ranged_attack": 310,
       "melee_attack": 60,
       "hp": 350
     },
+    "link_ability": [
+      {
+        "name": "ガンダムW",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "的確な一撃",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][遠距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "トロワ・バートン",
+    "model": "XXXG-01H2 GUNDAM HEAVYARMS CUSTOM",
     "terrain_compatibility": {
       "ground": "S",
       "space": "A",
@@ -54,18 +67,6 @@
       "cost": 3,
       "description": "ロックオン中の敵に単体攻撃でダメージを与え、メイン武装を使用不能にさせる。出撃時1度のみ使用可能。"
     },
-    "link_ability": [
-      {
-        "name": "ガンダムW",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "的確な一撃",
-        "condition": "デッキに4枚以上",
-        "effect": "[機動力][遠距離攻撃力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "2連装ビームガトリング撃射",
       "target": "単体(敵)",
@@ -73,18 +74,17 @@
       "sp_cost": 2,
       "power": 3300,
       "description": "敵単体に射撃攻撃でダメージを与える。",
-      "united_sp": null,
+      "sp_type": "",
       "echoes_beat": {
         "name": "2連装ビームガトリング撃射 Lv.2",
         "level": 2,
-        "target": "単体(敵)",
-        "range": 3,
         "power": 3900,
-        "description": "EBLv.を2下げる。敵単体に射撃攻撃でダメージを与え、一定時間、出撃中の全味方ユニットの受けるダメージを軽減する。出撃時1度のみ使用可能。",
-        "eb_activation_note": "ECHOES BEAT Lv.を下げることで、Lv.戦術技が発動する。"
-      }
-    },
-    "rarity": "M",
-    "raw": "遠距離 コスト3 MS XXXG-01H2 GUNDAM HEAVYARMS CUSTOM ガンダムヘビーアームズ改 頭頂高 16.7m 本体重量 8.2t 所属 — パイロット トロワ・バートン 地上S 宇宙A 砂漠A 水中C 機動力230 遠距離攻撃310 近距離攻撃60 HP350 WEAPON MAIN 2連装ビームガトリング 射程3 遠距離 SUB アーミーナイフ 射程1 近距離 MS ABILITY 砕撃 任意発動 単体(敵) 射程3 コスト3 ロックオン中の敵に単体攻撃でダメージを与え、メイン武装を使用不能にさせる。出撃時1度のみ使用可能。 LINK ABILITY ガンダムW デッキに3枚以上 [機動力]小アップ 的確な一撃 デッキに4枚以上 [機動力][遠距離攻撃力]小アップ SPECIAL ATTACK ECHOES BEAT 2連装ビームガトリング撃射 2連装ビームガトリング撃射 Lv.2 ECHOES BEAT Lv.を下げることで、Lv.戦術技が発動する。 単体(敵) 射程3 単体(敵) 射程3 SPコスト2 威力 3300 / 3900 敵単体に射撃攻撃でダメージを与える。／EBLv.を2下げる。敵単体に射撃攻撃でダメージを与え、一定時間、出撃中の全味方ユニットの受けるダメージを軽減する。出撃時1度のみ使用可能。 IMPACT AREA VE02-018 M illust nakazaki tow 機動戦士ガンダム ARSENAL BASE BANDAI MADE IN JAPAN"
+        "range": 3,
+        "target": "単体(敵)",
+        "description": "EBLv.を2下げる。敵単体に射撃攻撃でダメージを与え、一定時間、出撃中の全味方ユニットの受けるダメージを軽減する。出撃時1度のみ使用可能。"
+      },
+      "united_sp": null,
+      "squad_sp": null
+    }
   }
 }

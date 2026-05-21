@@ -5,49 +5,57 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-044.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-044_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "FQ02-044",
     "type": "PL",
-    "card_label": {
-      "class": "殲滅",
-      "cost_label": "コスト4"
-    },
     "name": "ドモン・カッシュ",
     "cost": 4,
-    "category": "Gガンダム",
+    "rarity": "U",
+    "category": "殲滅",
     "affiliation": "ネオジャパン",
+    "illustrator": "",
     "stats": {
       "mobility": 200,
       "ranged_attack": 30,
       "melee_attack": 370,
       "hp": 400
     },
+    "link_ability": [
+      {
+        "name": "[SQ]新シャッフル同盟",
+        "condition": "デッキに3枚以上",
+        "effect": "SQゲージが表示される。SQゲージを溜めるとSQUAD RUSHが発動できる。[機動力][HP]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "黄金のMF",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力][HP]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "",
+    "physical": null,
+    "units": null,
     "pilot_skill": {
       "name": "明鏡止水",
       "trigger": "SQゲージが最大時",
       "effect": "自身の[機動力][近距離攻撃力]をアップし、弱体効果を受けない状態となる。SQUAD RUSH中[近距離攻撃力]の効果値がさらに上昇する。",
       "has_sq_skill": true,
       "sq_skill_details": {
+        "name": "",
         "trigger": "SQゲージが最大時",
+        "effect": "",
         "sq_gauge_effect": "自身の[機動力][近距離攻撃力]をアップし、弱体効果を受けない状態となる。",
-        "sq_rush_effect": "[近距離攻撃力]の効果値がさらに上昇する。",
-        "sq_max_effect": null
-      }
-    },
-    "link_ability": [
-      {
-        "name": "[SQ]新シャッフル同盟",
-        "condition": "デッキに3枚以上",
-        "effect": "SQゲージが表示される。SQゲージを溜めるとSQUAD RUSHが発動できる。[機動力][HP]小アップ"
+        "sq_max_effect": "",
+        "sq_rush_effect": "[近距離攻撃力]の効果値がさらに上昇する。"
       },
-      {
-        "name": "黄金のMF",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力][HP]小アップ"
-      }
-    ],
-    "rarity": "U",
-    "illustrator": null,
-    "raw": "殲滅　コスト4　PL\n\nドモン・カッシュ\nDOMON KASSHU\n\n身長　180cm\n年齢　20歳\n所属　ネオジャパン\n搭乗機体　ゴッドガンダム、シャイニングガンダム\n\nSQ　PL SKILL\n明鏡止水\nSQゲージが最大時\n\n自身の[機動力][近距離攻撃力]をアップし、弱体効果を受けない状態となる。\nSQUAD RUSH中\n[近距離攻撃力]の効果値がさらに上昇する。\n\nSQ　LINK ABILITY\n新シャッフル同盟　デッキに3枚以上\nSQゲージが表示される。\nSQゲージを溜めるとSQUAD RUSHが発動できる。\n[機動力][HP]小アップ\n\nガンダムファイター　デッキに3枚以上\n[機動力][HP]小アップ\n\n機動力　200\n遠距離攻撃　30\n近距離攻撃　370\nHP　400\n\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE ®\nFQ02-044　U"
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_raw_file": "FORSQUAD_SEASON_02_FQ02-044_ドモン・カッシュ_ocr_raw.json",
   "ocr_timestamp": "2026-03-03T18:34:20.794404",

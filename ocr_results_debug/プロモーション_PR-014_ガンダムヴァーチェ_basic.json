@@ -5,31 +5,44 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-014.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-014_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "PR-014",
     "type": "MS",
-    "card_label": {
-      "class": "遠距離",
-      "cost_label": "コスト5"
-    },
     "name": "ガンダムヴァーチェ",
-    "model": "GN-005 GUNDAM VIRTUE",
     "cost": 5,
-    "category": "MS",
+    "rarity": "PR",
+    "category": "遠距離",
     "affiliation": "ソレスタルビーイング",
-    "pilot": "ティエリア・アーデ",
+    "illustrator": "",
     "stats": {
-      "height": "18.4m",
-      "weight": "66.7t",
       "mobility": 60,
       "ranged_attack": 220,
       "melee_attack": 100,
       "hp": 300
     },
+    "link_ability": [
+      {
+        "name": "ガンダム00",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "その名はガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "ティエリア・アーデ",
+    "model": "GN-005 GUNDAM VIRTUE",
     "terrain_compatibility": {
       "ground": "A",
       "space": "S",
       "desert": "C",
-      "water": null
+      "water": ""
     },
     "weapon": {
       "main": {
@@ -51,18 +64,6 @@
       "cost": 4,
       "description": "25秒間、自身をロックオン距離内に捉えている敵ユニットのターゲットを自身に集める。"
     },
-    "link_ability": [
-      {
-        "name": "ガンダム00",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "その名はガンダム",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "GNバズーカ掃射",
       "target": "範囲(敵)",
@@ -70,11 +71,11 @@
       "sp_cost": 3,
       "power": 3500,
       "description": "ロックオン中の敵を中心に扇状の範囲攻撃を行い、範囲内の敵にダメージを与える。",
-      "united_sp": null
-    },
-    "rarity": "PR",
-    "illustrator": null,
-    "raw": "遠距離 コスト5 MS\nGN-005 GUNDAM VIRTUE\nガンダムヴァーチェ\n全高 18.4m\n本体重量 66.7t\n所属 ソレスタルビーイング\nパイロット ティエリア・アーデ\n地上 A 宇宙 S 砂漠 C\n機動力 60\n遠距離攻撃 220\n近距離攻撃 100\nHP 300\n\nWEAPON\nMAIN GNバズーカ 射程 4 遠距離\nSUB GNビームサーベル 射程 1 近距離\n\nMS ABILITY\n誘導\n任意発動 特殊(敵) 射程 ー コスト 4\n25秒間、自身をロックオン距離内に捉えている敵ユニットのターゲットを自身に集める。\n\nLINK ABILITY\nガンダム00 デッキに3枚以上\n[機動力]小アップ\n\nその名はガンダム デッキに3枚以上\n[機動力]小アップ\n\nSPECIAL ATTACK\nGNバズーカ掃射\n範囲(敵) 射程 4\nSPコスト 3 威力 3500\nロックオン中の敵を中心に扇状の範囲攻撃を行い、範囲内の敵にダメージを与える。\n\nIMPACT AREA\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\nNOT FOR SALE\nPR-014 PR"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "プロモーション_PR-014_ガンダムヴァーチェ_ocr_raw.json",
   "ocr_timestamp": "2026-03-07T12:19:11.312764",

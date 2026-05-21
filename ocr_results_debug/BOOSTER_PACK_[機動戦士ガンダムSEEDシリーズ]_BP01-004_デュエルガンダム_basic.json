@@ -5,26 +5,39 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP01-004.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP01-004_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "BP01-004",
     "type": "MS",
-    "card_label": {
-      "class": "機動",
-      "cost_label": "コスト1"
-    },
     "name": "デュエルガンダム",
-    "model": "GAT-X102 DUEL GUNDAM",
     "cost": 1,
-    "category": "MS",
+    "rarity": "R",
+    "category": "機動",
     "affiliation": "ザフト",
-    "pilot": "イザーク・ジュール",
+    "illustrator": "Moyasi",
     "stats": {
-      "height": "17.5m",
-      "weight": "61.9t",
       "mobility": 150,
       "ranged_attack": 150,
       "melee_attack": 50,
       "hp": 200
     },
+    "link_ability": [
+      {
+        "name": "ガンダムSEED",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "的確な一撃",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][遠距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "イザーク・ジュール",
+    "model": "GAT-X102 DUEL GUNDAM",
     "terrain_compatibility": {
       "ground": "A",
       "space": "A",
@@ -51,18 +64,6 @@
       "cost": 4,
       "description": "自身の周囲に砲撃を行う殲滅タイプの味方ユニットを呼び出す。このユニットは移動しない。※上限3ユニットまで。"
     },
-    "link_ability": [
-      {
-        "name": "ガンダムSEED",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "的確な一撃",
-        "condition": "デッキに4枚以上",
-        "effect": "[機動力][遠距離攻撃力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "ゲイボルグ撃射",
       "target": "単体(敵)",
@@ -70,11 +71,11 @@
       "sp_cost": 2,
       "power": 3100,
       "description": "敵単体に射撃攻撃でダメージを与える。",
-      "united_sp": null
-    },
-    "rarity": "R",
-    "illustrator": "Moyasi",
-    "raw": "機動 コスト1\nGAT-X102 DUEL GUNDAM\nデュエルガンダム\n全高 17.5m\n本体重量 61.9t\n所属 ザフト\nパイロット イザーク・ジュール\n地上 A 宇宙 A 砂漠 C 水中 C\n機動力 150\n遠距離攻撃 150\n近距離攻撃 50\nHP 200\n\nWEAPON\nMAIN 高エネルギービームライフル 射程 3 遠距離\nSUB ビームサーベル 射程 1 近距離\n\nMS ABILITY\n増援[殲滅／砲撃]\n任意発動 特殊(自分) 射程 ー コスト 4\n自身の周囲に砲撃を行う殲滅タイプの味方ユニットを呼び出す。このユニットは移動しない。※上限3ユニットまで。\n\nLINK ABILITY\nガンダムSEED デッキに3枚以上\n[機動力]小アップ\n\n的確な一撃 デッキに4枚以上\n[機動力][遠距離攻撃力]小アップ\n\nIMPACT AREA\n（グリッドマップ：範囲表示あり）\n\nSPECIAL ATTACK\nゲイボルグ撃射\n単体(敵) 射程 3\nSPコスト 2 威力 3100\n敵単体に射撃攻撃でダメージを与える。\n\nillust Moyasi\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\nBP01-004 R"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "BOOSTER_PACK_[機動戦士ガンダムSEEDシリーズ]_BP01-004_デュエルガンダム_ocr_raw.json",
   "ocr_timestamp": "2026-03-03T23:56:54.775549",

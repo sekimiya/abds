@@ -5,17 +5,38 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB02-074.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB02-074_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "AB02-074",
     "type": "PL",
-    "card_label": {
-      "class": "防衛",
-      "cost_label": "コスト4"
-    },
     "name": "ロックオン・ストラトス",
-    "english_name": "LOCKON STRATOS",
     "cost": 4,
+    "rarity": "P",
     "category": "防衛",
     "affiliation": "ソレスタルビーイング",
+    "illustrator": "",
+    "stats": {
+      "mobility": 160,
+      "ranged_attack": 380,
+      "melee_attack": 160,
+      "hp": 130
+    },
+    "link_ability": [
+      {
+        "name": "ガンダム00",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "ガンダムマイスター",
+        "condition": "デッキに2枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "LOCKON STRATOS",
     "physical": {
       "height": "185cm",
       "age": 24
@@ -23,34 +44,16 @@
     "units": [
       "ガンダムデュナメス"
     ],
-    "stats": {
-      "mobility": 160,
-      "ranged_attack": 380,
-      "melee_attack": 160,
-      "hp": 130
-    },
     "pilot_skill": {
       "name": "的確な狙撃",
       "trigger": "一方的に敵をロックオン時",
       "effect": "30秒間、自身の[遠距離攻撃力]を中アップする。",
       "has_sq_skill": false,
-      "sq_skill_details": null
-    },
-    "link_ability": [
-      {
-        "name": "ガンダム00",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "ガンダムマイスター",
-        "condition": "デッキに2枚以上",
-        "effect": "[機動力]小アップ"
-      }
-    ],
-    "rarity": "P",
-    "illustrator": null,
-    "raw": "PL\n\n防衛 コスト4\n\nロックオン・ストラトス\nLOCKON STRATOS\n\n身長 185cm\n年齢 24歳\n所属 ソレスタルビーイング\n搭乗機体 ガンダムデュナメス\n\n[アイコン:機動戦士ガンダム00ロゴ]\n[アイコン:ソレスタルビーイングエンブレム]\n\nPL SKILL\n\n的確な狙撃\n\n一方的に敵をロックオン時\n\n30秒間、自身の[遠距離攻撃力]を\n中アップする。\n\nLINK ABILITY\n\nガンダム00 デッキに3枚以上\n[機動力]小アップ\n\nガンダムマイスター デッキに2枚以上\n[機動力]小アップ\n\n機動力 160\n遠距離攻撃 380\n近距離攻撃 160\nHP 130\n\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n\n[アイコン:機動戦士ガンダム ARSENAL BASEロゴ]\n\nAB02-074 P"
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_raw_file": "SEASON_02_AB02-074_ロックオン・ストラトス_ocr_raw.json",
   "ocr_timestamp": "2026-02-23T15:11:44.739634",

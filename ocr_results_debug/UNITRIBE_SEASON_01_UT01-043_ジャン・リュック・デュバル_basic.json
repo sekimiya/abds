@@ -5,52 +5,55 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT01-043.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT01-043_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "UT01-043",
     "type": "PL",
-    "card_label": {
-      "class": "防衛",
-      "cost_label": "コスト1"
-    },
     "name": "ジャン・リュック・デュバル",
-    "english_name": "JEAN LUC DUVALL",
     "cost": 1,
+    "rarity": "C",
     "category": "防衛",
     "affiliation": "ジオン公国軍",
-    "physical": {
-      "height": null,
-      "age": 35
-    },
-    "units": [
-      "ヅダ"
-    ],
+    "illustrator": "",
     "stats": {
       "mobility": 130,
       "ranged_attack": 40,
       "melee_attack": 190,
       "hp": 170
     },
+    "link_ability": [
+      {
+        "name": "MS IGLOO",
+        "condition": "デッキに2枚以上",
+        "effect": "[近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "揺るがぬ意志",
+        "condition": "デッキに2枚以上",
+        "effect": "[HP]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "JEAN LUC DUVALL",
+    "physical": {
+      "height": "",
+      "age": 35
+    },
+    "units": [
+      "ヅダ"
+    ],
     "pilot_skill": {
       "name": "戦士の矜持",
       "trigger": "出撃時",
       "effect": "自身が使用するMSアビリティ[増援]の初回使用コストを1ダウンする。",
       "has_sq_skill": false,
-      "sq_skill_details": null
-    },
-    "link_ability": [
-      {
-        "name": "MS IGLOO",
-        "condition": "デッキに2枚以上",
-        "effect": "[近距離攻撃力]小アップ"
-      },
-      {
-        "name": "揺るがぬ意志",
-        "condition": "デッキに2枚以上",
-        "effect": "[HP]小アップ"
-      }
-    ],
-    "rarity": "C",
-    "illustrator": null,
-    "raw": "PL\n\n防衛　コスト1\n\nジャン・リュック・デュバル\nJEAN LUC DUVALL\n\n身長　ー\n年齢　35歳\n所属　ジオン公国軍\n搭乗機体　ヅダ\n\nPL SKILL\n戦士の矜持\n出撃時\n自身が使用するMSアビリティ[増援]の初回使用コストを1ダウンする。\n\nLINK ABILITY\nMS IGLOO　デッキに2枚以上\n[近距離攻撃力]小アップ\n\n揺るがぬ意志　デッキに2枚以上\n[HP]小アップ\n\n機動力 130\n遠距離攻撃 40\n近距離攻撃 190\nHP 170\n\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\nUT01-043 C"
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_raw_file": "UNITRIBE_SEASON_01_UT01-043_ジャン・リュック・デュバル_ocr_raw.json",
   "ocr_timestamp": "2026-03-02T03:28:26.455402",

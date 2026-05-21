@@ -5,17 +5,38 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-425.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-425_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "PR-425",
     "type": "PL",
-    "card_label": {
-      "class": "制圧",
-      "cost_label": "コスト2"
-    },
     "name": "キラ・ヤマト",
-    "english_name": "KIRA YAMATO",
     "cost": 2,
+    "rarity": "PR",
     "category": "制圧",
-    "affiliation": null,
+    "affiliation": "",
+    "illustrator": "Tomofumi Ogasawara",
+    "stats": {
+      "mobility": 190,
+      "ranged_attack": 210,
+      "melee_attack": 60,
+      "hp": 280
+    },
+    "link_ability": [
+      {
+        "name": "ガンダムSEED",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "KIRA YAMATO",
     "physical": {
       "height": "165cm",
       "age": 16
@@ -25,34 +46,16 @@
       "エールストライクガンダム",
       "ストライクガンダム"
     ],
-    "stats": {
-      "mobility": 190,
-      "ranged_attack": 210,
-      "melee_attack": 60,
-      "hp": 280
-    },
     "pilot_skill": {
       "name": "破綻する敵陣営",
       "trigger": "敵戦艦／拠点をロックオン時",
       "effect": "40秒間、自身の[遠距離攻撃力]を中アップし、受けるダメージを少し軽減する。",
       "has_sq_skill": false,
-      "sq_skill_details": null
-    },
-    "link_ability": [
-      {
-        "name": "ガンダムSEED",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "戦況を変える力",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      }
-    ],
-    "rarity": "PR",
-    "illustrator": "Tomofumi Ogasawara",
-    "raw": "PL\n\n制圧　コスト2\n\nキラ・ヤマト\nKIRA YAMATO\n\n身長　165cm\n年齢　16歳\n所属　ー\n搭乗機体　フリーダムガンダム、エールストライクガンダム、ストライクガンダム\n\nPL SKILL\n破綻する敵陣営\n敵戦艦／拠点をロックオン時\n40秒間、自身の[遠距離攻撃力]を中アップし、受けるダメージを少し軽減する。\n\nLINK ABILITY\nガンダムSEED　デッキに3枚以上\n[機動力]小アップ\n\n戦況を変える力　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\n機動力 190\n遠距離攻撃 210\n近距離攻撃 60\nHP 280\n\nillust Tomofumi Ogasawara\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nNOT FOR SALE\nPR-425　PR"
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_raw_file": "プロモーション_PR-425_キラ・ヤマト_ocr_raw.json",
   "ocr_timestamp": "2026-03-03T09:21:18.359625",

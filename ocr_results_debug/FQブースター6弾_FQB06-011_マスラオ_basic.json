@@ -5,26 +5,39 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQB06-011.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQB06-011_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "FQB06-011",
     "type": "MS",
-    "card_label": {
-      "class": "近距離",
-      "cost_label": "コスト5"
-    },
     "name": "マスラオ",
-    "model": "GNX-U02X MASURAO",
     "cost": 5,
+    "rarity": "U",
     "category": "近距離",
     "affiliation": "アロウズ",
-    "pilot": "ミスター・ブシドー",
+    "illustrator": "KURI (studio toujyou)",
     "stats": {
-      "height": "20.4m",
-      "weight": "61.5t",
       "mobility": 230,
       "ranged_attack": 50,
       "melee_attack": 580,
       "hp": 590
     },
+    "link_ability": [
+      {
+        "name": "ガンダム00",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "武士道",
+        "condition": "デッキに2枚以上",
+        "effect": "[近距離攻撃力][HP]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "ミスター・ブシドー",
+    "model": "GNX-U02X MASURAO",
     "terrain_compatibility": {
       "ground": "S",
       "space": "A",
@@ -51,18 +64,6 @@
       "cost": 4,
       "description": "ロックオン中の敵に攻撃を行い、一定時間、弱体化する。使用回数に応じて、弱体化効果、範囲が変わる。[1回:単体/遠/近攻撃ダウン][2回:自身を中心とした範囲/被ダメージアップ][3回以上:自身を中心とした範囲/遠/近攻撃力ダウン&被ダメージアップ]"
     },
-    "link_ability": [
-      {
-        "name": "ガンダム00",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "武士道",
-        "condition": "デッキに2枚以上",
-        "effect": "[近距離攻撃力][HP]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "トランザム斬撃",
       "target": "単体(敵)",
@@ -70,11 +71,11 @@
       "sp_cost": 2,
       "power": 3700,
       "description": "一定時間トランザムを発動し、敵単体に格闘攻撃でダメージを与える。",
-      "united_sp": null
-    },
-    "rarity": "U",
-    "illustrator": "KURI (studio toujyou)",
-    "raw": "MS\n\n近距離 コスト5\nGNX-U02X MASURAO\nマスラオ\n\n頭頂高 20.4m\n本体重量 61.5t\n所属 アロウズ\nパイロット ミスター・ブシドー\n\n地上 S 宇宙 A 砂漠 C 水中 C\n\n機動力 230\n遠距離攻撃 50\n近距離攻撃 580\nHP 590\n\nWEAPON\nMAIN GNビームサーベル[ハワード/ダリル] 射程 1 近距離\nSUB GNビームサーベル[ハワード/ダリル](斬撃) 射程 3 遠距離\n\nLINK ABILITY\nガンダム00 デッキに3枚以上\n[機動力]小アップ\n\n武士道 デッキに2枚以上\n[近距離攻撃力][HP]小アップ\n\nMS ABILITY\n転化[妨撃]\n任意発動 単体(敵) 射程 1 コスト 4\nロックオン中の敵に攻撃を行い、一定時間、弱体化する。使用回数に応じて、弱体化効果、範囲が変わる。[1回:単体/遠/近攻撃ダウン][2回:自身を中心とした範囲/被ダメージアップ][3回以上:自身を中心とした範囲/遠/近攻撃力ダウン&被ダメージアップ]\n\nSPECIAL ATTACK UNITED SP\nトランザム斬撃 ー\n連携 ー 連携 ー\n連携 ー 連携 ー\n単体(敵) 射程 2 射程 ー\nSPコスト 2 威力 3700 / ー\n一定時間トランザムを発動し、敵単体に格闘攻撃でダメージを与える。/ー\n\nIMPACT AREA\n[アイコン:緑丸 中央上]\n[アイコン:緑丸 左中]\n[アイコン:黄三角 中央下]\n\nillust KURI (studio toujyou)\n©創通・サンライズ ©創通・サンライズ・MBS\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nFQB06-011 U"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "FQブースター6弾_FQB06-011_マスラオ_ocr_raw.json",
   "ocr_timestamp": "2026-02-28T06:56:02.832440",

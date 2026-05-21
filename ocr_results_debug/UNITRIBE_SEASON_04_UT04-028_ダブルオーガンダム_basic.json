@@ -5,26 +5,39 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT04-028.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT04-028_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "UT04-028",
     "type": "MS",
-    "card_label": {
-      "class": "機動",
-      "cost_label": "コスト6"
-    },
     "name": "ダブルオーガンダム",
-    "model": "GN-0000 00 GUNDAM",
     "cost": 6,
+    "rarity": "R",
     "category": "機動",
     "affiliation": "ソレスタルビーイング",
-    "pilot": "刹那・F・セイエイ",
+    "illustrator": "Daiki Ueda",
     "stats": {
-      "height": "18.3m",
-      "weight": "54.9t",
       "mobility": 280,
       "ranged_attack": 350,
       "melee_attack": 70,
       "hp": 400
     },
+    "link_ability": [
+      {
+        "name": "ガンダム00",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "刹那・F・セイエイ",
+    "model": "GN-0000 00 GUNDAM",
     "terrain_compatibility": {
       "ground": "S",
       "space": "A",
@@ -51,18 +64,6 @@
       "cost": 3,
       "description": "自身が弱体化状態の時に発動可能となり、自身の弱体化状態を無効化し、ロックオン中の敵に単体攻撃でダメージを与える。"
     },
-    "link_ability": [
-      {
-        "name": "ガンダム00",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "戦況を変える力",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "GNソードII（ライフルモード）撃射",
       "target": "単体(敵)",
@@ -70,19 +71,22 @@
       "sp_cost": 2,
       "power": 3300,
       "description": "敵単体に射撃攻撃でダメージを与える。",
+      "sp_type": "",
+      "echoes_beat": null,
       "united_sp": {
-        "partner1": "ケルディムガンダム",
-        "partner2": "アリオスガンダム",
-        "partner3": "セラヴィーガンダム",
-        "partner4": null,
+        "name": "",
+        "partners": [
+          "ケルディムガンダム",
+          "アリオスガンダム",
+          "セラヴィーガンダム"
+        ],
+        "target": "",
         "range": 3,
         "power": 4300,
         "description": "対象の敵を中心として範囲射撃と格闘でダメージを与える。出撃時1度のみ使用可能。"
-      }
-    },
-    "rarity": "R",
-    "illustrator": "Daiki Ueda",
-    "raw": "MS\n\n機動　コスト6\nGN-0000 00 GUNDAM\nダブルオーガンダム\n\n頭頂高　18.3m\n本体重量　54.9t\n所属　ソレスタルビーイング\nパイロット　刹那・F・セイエイ\n\n地上 S　宇宙 A　砂漠 C　水中 A\n機動力　280\n遠距離攻撃　350\n近距離攻撃　70\nHP　400\n\nWEAPON\nMAIN　GNソードII（ライフルモード）　射程 3　遠距離\nSUB　GNソードII　射程 1　近距離\n\nLINK ABILITY\nガンダム00　デッキに3枚以上\n[機動力]小アップ\n\nMS ABILITY\n解撃\n任意発動　単体(敵)　射程 3　コスト 3\n\n自身が弱体化状態の時に発動可能となり、自身の弱体化状態を無効化し、ロックオン中の敵に単体攻撃でダメージを与える。\n\n戦況を変える力　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nSPECIAL ATTACK　　UNITED SP\nGNソードII（ライフルモード）撃射　ソレスタルビーイング\n連携　ケルディムガンダム　　連携　アリオスガンダム\n連携　セラヴィーガンダム　　連携　ー\n単体(敵)　射程 3　　範囲(敵)　射程 3\nSPコスト 2　威力　3300 / 4300\n\n敵単体に射撃攻撃でダメージを与える。／対象の敵を中心として範囲射撃と格闘でダメージを与える。出撃時1度のみ使用可能。\n\nIMPACT AREA\n[アイコン:中央やや下に円形範囲]\n\nillust　Daiki Ueda\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n\n相模戦士ガンダム ARSENAL BASE\nUT04-028　R"
+      },
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "UNITRIBE_SEASON_04_UT04-028_ダブルオーガンダム_ocr_raw.json",
   "ocr_timestamp": "2026-02-28T08:33:21.383975",

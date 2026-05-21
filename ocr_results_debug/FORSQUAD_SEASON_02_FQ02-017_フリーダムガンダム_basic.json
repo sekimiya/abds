@@ -1,75 +1,72 @@
 {
-    "card_number": "FQ02-017",
-    "card_name": "フリーダムガンダム",
-    "series": "FORSQUAD SEASON:02",
-    "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-017.jpg?v9",
-    "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-017_b.jpg?v9",
-    "ocr_data": {
-        "card_id": "FQ02-017",
-        "type": "MS",
-        "card_label": {
-            "class": "遠距離",
-            "cost_label": "コスト4"
-        },
-        "name": "フリーダムガンダム",
-        "model": "ZGMF-X10A FREEDOM GUNDAM",
-        "cost": 4,
-        "category": "遠距離",
-        "pilot": "キラ・ヤマト",
-        "stats": {
-            "height": "18.03m",
-            "weight": "71.5t",
-            "mobility": 220,
-            "ranged_attack": 500,
-            "melee_attack": 30,
-            "hp": 500
-        },
-        "terrain_compatibility": {
-            "ground": "A",
-            "space": "S",
-            "desert": "A",
-            "water": "C"
-        },
-        "weapon": {
-            "main": {
-                "name": "ルプス・ビームライフル",
-                "range": 3,
-                "type": "遠距離"
-            },
-            "sub": {
-                "name": "ラケルタ・ビームサーベル",
-                "range": 1,
-                "type": "近距離"
-            }
-        },
-        "ms_ability": {
-            "name": "断砕【広角】",
-            "range": 4,
-            "cost": 4,
-            "description": "ロックオン中の敵を中心に扇状の範囲攻撃を行い、強化状態を無効化する。",
-            "activation": "任意発動"
-        },
-        "link_ability": [
-            {
-                "name": "ガンダムSEED",
-                "condition": "デッキに3枚以上",
-                "effect": "「機動力」小アップ"
-            },
-            {
-                "name": "戦況を変える力",
-                "condition": "デッキに4枚以上",
-                "effect": "「遠距離攻撃力」「近距離攻撃力」小アップ"
-            }
-        ],
-        "impact_area": {
-            "type": "circular",
-            "radius": 4,
-            "centered": true
-        },
-        "illustrator": "瀧川虚至",
-        "raw": "遠距離 コスト4\nZGMF-X10A FREEDOM GUNDAM\nフリーダムガンダム\n頭頂高 18.03m\n本体重量 71.5t\n所属\nパイロット キラ・ヤマト\n地上A 宇宙S 砂漠A 水中C\n機動力 220\n遠距離攻撃 500\n近距離攻撃 30\nHP 500\nWEAPON\nMAIN ルプス・ビームライフル 射程3 遠距離\nSUB ラケルタ・ビームサーベル 射程1 近距離\nMS ABILITY\n断砕【広角】\n任意発動 範囲(敵) 射程4 コスト4\nロックオン中の敵を中心に扇状の範囲攻撃を行い、強化状態を無効化する。\nLINK ABILITY\nガンダムSEED デッキに3枚以上\n「機動力」小アップ\n戦況を変える力 デッキに4枚以上\n「遠距離攻撃力」「近距離攻撃力」小アップ\nIMPACT AREA\nSPECIAL ATTACK\nハイマットフルバースト\n連携 ジャスティスガンダム\n範囲(敵) 貫通(敵) 射程2\nSPAT 3000/5900\nロックオン中の敵を中心に扇状の範囲攻撃を行い、範囲内に敵にダメージを与える。範囲攻撃を行う際、敵の強化状態を無効化する。連携中、範囲攻撃を行う際「機動力」「近距離攻撃力」を強化する。発動時のみに使用可能。\nIllustrator 瀧川虚至\nBANDAI MADE IN JAPAN"
+  "card_number": "FQ02-017",
+  "card_name": "フリーダムガンダム",
+  "series": "FORSQUAD SEASON:02",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-017.jpg?v9",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-017_b.jpg?v9",
+  "ocr_data": {
+    "type": "MS",
+    "name": "フリーダムガンダム",
+    "cost": 4,
+    "rarity": "",
+    "category": "遠距離",
+    "affiliation": "",
+    "illustrator": "瀧川虚至",
+    "stats": {
+      "mobility": 220,
+      "ranged_attack": 500,
+      "melee_attack": 30,
+      "hp": 500
     },
-    "ocr_timestamp": "2025-06-28T01:24:47.098764",
-    "ocr_type": "basic",
-    "ocr_engine": "claude_code_cli"
+    "link_ability": [
+      {
+        "name": "ガンダムSEED",
+        "condition": "デッキに3枚以上",
+        "effect": "「機動力」小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "「遠距離攻撃力」「近距離攻撃力」小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "キラ・ヤマト",
+    "model": "ZGMF-X10A FREEDOM GUNDAM",
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "A",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "ルプス・ビームライフル",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ラケルタ・ビームサーベル",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "断砕【広角】",
+      "activation": "任意発動",
+      "target": "",
+      "range": 4,
+      "cost": 4,
+      "description": "ロックオン中の敵を中心に扇状の範囲攻撃を行い、強化状態を無効化する。"
+    },
+    "special_attack": null
+  },
+  "ocr_timestamp": "2025-06-28T01:24:47.098764",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_cli"
 }

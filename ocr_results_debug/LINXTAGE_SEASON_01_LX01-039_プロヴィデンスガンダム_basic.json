@@ -5,31 +5,44 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX01-039.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX01-039_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "LX01-039",
     "type": "MS",
-    "card_label": {
-      "class": "近距離",
-      "cost_label": "コスト5"
-    },
     "name": "プロヴィデンスガンダム",
-    "model": "ZGMF-X13A PROVIDENCE GUNDAM",
     "cost": 5,
+    "rarity": "C",
     "category": "近距離",
     "affiliation": "ザフト",
-    "pilot": "ラウ・ル・クルーゼ",
+    "illustrator": "Ishibashi Yosuke",
     "stats": {
-      "height": "18.16m",
-      "weight": "90.68t",
       "mobility": 150,
       "ranged_attack": 100,
       "melee_attack": 210,
       "hp": 240
     },
+    "link_ability": [
+      {
+        "name": "ガンダムSEED",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "ラウ・ル・クルーゼ",
+    "model": "ZGMF-X13A PROVIDENCE GUNDAM",
     "terrain_compatibility": {
       "ground": "A",
       "space": "S",
       "desert": "A",
-      "water": null
+      "water": ""
     },
     "weapon": {
       "main": {
@@ -51,18 +64,6 @@
       "cost": 3,
       "description": "ロックオン中の敵に単体攻撃でダメージを与え、メイン武装を使用不能にさせる。出撃時1度のみ使用可能。"
     },
-    "link_ability": [
-      {
-        "name": "ガンダムSEED",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "戦況を変える力",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "複合兵装防盾システム強撃",
       "target": "単体(敵)",
@@ -70,11 +71,11 @@
       "sp_cost": 2,
       "power": 3300,
       "description": "敵単体に格闘攻撃でダメージを与える。",
-      "united_sp": null
-    },
-    "rarity": "C",
-    "illustrator": "Ishibashi Yosuke",
-    "raw": "MS\n\n近距離　コスト5\n\nZGMF-X13A PROVIDENCE GUNDAM\nプロヴィデンスガンダム\n\n全高　18.16m\n本体重量　90.68t\n所属　ザフト\nパイロット　ラウ・ル・クルーゼ\n\n地上　A　宇宙　S　砂漠　A\n\n機動力　150\n遠距離攻撃　100\n近距離攻撃　210\nHP　240\n\nWEAPON\nMAIN　複合兵装防盾システム　射程 1　近距離\nSUB　ユーディキウム・ビームライフル　射程 3　遠距離\n\nLINK ABILITY\nガンダムSEED　デッキに3枚以上\n[機動力]小アップ\n\n戦況を変える力　デッキに4枚以上\n[遠距離攻撃力][近距離攻撃力]小アップ\n\nMS ABILITY\n砕撃\n任意発動　単体(敵)　射程 1　コスト 3\nロックオン中の敵に単体攻撃でダメージを与え、メイン武装を使用不能にさせる。\n出撃時1度のみ使用可能。\n\nSPECIAL ATTACK\n複合兵装防盾システム強撃\n単体(敵)　射程 2\nSPコスト 2　威力 3300\n敵単体に格闘攻撃でダメージを与える。\n\nIMPACT AREA\n[アイコン:黄丸 中央やや上]\n[アイコン:黄丸 中央やや下]\n[アイコン:三角 下段中央]\n\nillust　Ishibashi Yosuke\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nLX01-039　C"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "LINXTAGE_SEASON_01_LX01-039_プロヴィデンスガンダム_ocr_raw.json",
   "ocr_timestamp": "2026-03-02T07:22:55.311490",

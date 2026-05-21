@@ -5,26 +5,39 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQB06-012.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQB06-012_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "FQB06-012",
     "type": "MS",
-    "card_label": {
-      "class": "機動",
-      "cost_label": "コスト4"
-    },
     "name": "マスラオ",
-    "model": "GNX-U02X MASURAO",
     "cost": 4,
+    "rarity": "R",
     "category": "機動",
     "affiliation": "アロウズ",
-    "pilot": "ミスター・ブシドー",
+    "illustrator": "Kazue Saitou",
     "stats": {
-      "height": "20.4m",
-      "weight": "61.5t",
       "mobility": 240,
       "ranged_attack": 290,
       "melee_attack": 70,
       "hp": 400
     },
+    "link_ability": [
+      {
+        "name": "ガンダム00",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "的確な一撃",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][遠距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "ミスター・ブシドー",
+    "model": "GNX-U02X MASURAO",
     "terrain_compatibility": {
       "ground": "S",
       "space": "A",
@@ -51,18 +64,6 @@
       "cost": 3,
       "description": "自身が弱体化状態の時に発動可能となり、自身の弱体化状態を無効化し、ロックオン中の敵に単体攻撃でダメージを与える。"
     },
-    "link_ability": [
-      {
-        "name": "ガンダム00",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "的確な一撃",
-        "condition": "デッキに4枚以上",
-        "effect": "[機動力][遠距離攻撃力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "ビームチャクラム撃射",
       "target": "単体(敵)",
@@ -70,11 +71,11 @@
       "sp_cost": 2,
       "power": 3200,
       "description": "敵単体に射撃攻撃でダメージを与える。",
-      "united_sp": null
-    },
-    "rarity": "R",
-    "illustrator": "Kazue Saitou",
-    "raw": "MS\n\n機動　コスト4\nGNX-U02X MASURAO\nマスラオ\n\n頭頂高　20.4m\n本体重量　61.5t\n所属　アロウズ\nパイロット　ミスター・ブシドー\n\n地上 S　宇宙 A　砂漠 C　水中 C\n\n機動力 240\n遠距離攻撃 290\n近距離攻撃 70\nHP 400\n\nWEAPON\nMAIN　ビームチャクラム　射程 3　遠距離\nSUB　GNビームサーベル　射程 1　近距離\n\nLINK ABILITY\nガンダム00　デッキに3枚以上\n[機動力]小アップ\n\n的確な一撃　デッキに4枚以上\n[機動力][遠距離攻撃力]小アップ\n\nMS ABILITY\n解撃\n任意発動　単体(敵)　射程 3　コスト 3\n自身が弱体化状態の時に発動可能となり、自身の弱体化状態を無効化し、ロックオン中の敵に単体攻撃でダメージを与える。\n\nSPECIAL ATTACK　　UNITED SP\nビームチャクラム撃射　ー\n連携 ー　　連携 ー\n連携 ー　　連携 ー\n単体(敵)　射程 3　ー　射程 ー\nSPコスト 2　威力 3200 / ー\n敵単体に射撃攻撃でダメージを与える。\n/ー\n\nIMPACT AREA\n[アイコン:射程3・単体]\n\nillust Kazue Saitou\nFQB06-012　R"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "FQブースター6弾_FQB06-012_マスラオ_ocr_raw.json",
   "ocr_timestamp": "2026-02-28T06:59:02.988672",

@@ -5,47 +5,47 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB02-085.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB02-085_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "AB02-085",
     "type": "PL",
-    "card_label": {
-      "class": "殲滅",
-      "cost_label": "コスト2"
-    },
     "name": "マクギリス・ファリド",
-    "english_name": "MCGILLIS FAREED",
     "cost": 2,
+    "rarity": "C",
     "category": "殲滅",
     "affiliation": "ギャラルホルン",
-    "physical": {
-      "height": null,
-      "age": null
-    },
-    "units": [
-      "シュヴァルベ・グレイズ（マクギリス・ファリド専用）"
-    ],
+    "illustrator": "",
     "stats": {
       "mobility": 100,
       "ranged_attack": 100,
       "melee_attack": 140,
       "hp": 160
     },
+    "link_ability": [
+      {
+        "name": "鉄血のオルフェンズ",
+        "condition": "デッキに3枚以上",
+        "effect": "[近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "MCGILLIS FAREED",
+    "physical": {
+      "height": "",
+      "age": ""
+    },
+    "units": [
+      "シュヴァルベ・グレイズ（マクギリス・ファリド専用）"
+    ],
     "pilot_skill": {
       "name": "揺るがない攻勢",
       "trigger": "敵ユニットを撃破時",
       "effect": "30秒間、自身の[遠距離攻撃力][近距離攻撃力]を小アップする。",
       "has_sq_skill": false,
-      "sq_skill_details": null
-    },
-    "link_ability": [
-      {
-        "name": "鉄血のオルフェンズ",
-        "condition": "デッキに3枚以上",
-        "effect": "[近距離攻撃力]小アップ"
-      }
-    ],
-    "rarity": "C",
-    "illustrator": null,
-    "raw": "PL\n\n殲滅 コスト2\n\nマクギリス・ファリド\nMCGILLIS FAREED\n\n身長 ―\n年齢 ―\n所属 ギャラルホルン\n搭乗機体 シュヴァルベ・グレイズ（マクギリス・ファリド専用）\n\n[アイコン:鉄血のオルフェンズ 機動戦士ガンダム]\n[アイコン:SEASON 02]\n\nPL SKILL\n\n揺るがない攻勢\n\n敵ユニットを撃破時\n\n30秒間、自身の[遠距離攻撃力]\n[近距離攻撃力]を小アップする。\n\nLINK ABILITY\n\n鉄血のオルフェンズ デッキに3枚以上\n\n[近距離攻撃力]小アップ\n\n― ―\n\n機動力 100\n遠距離攻撃 100\n近距離攻撃 140\nHP 160\n\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n\n[アイコン:機動戦士ガンダム ARSENAL BASE]\n\nAB02-085 C"
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_raw_file": "SEASON_02_AB02-085_マクギリス・ファリド_ocr_raw.json",
   "ocr_timestamp": "2026-02-23T15:12:23.307874",

@@ -5,52 +5,55 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT02-043.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT02-043_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "UT02-043",
     "type": "PL",
-    "card_label": {
-      "class": "防衛",
-      "cost_label": "コスト7"
-    },
     "name": "フォウ・ムラサメ",
-    "english_name": "FOUR MURASAME",
     "cost": 7,
+    "rarity": "U",
     "category": "防衛",
     "affiliation": "ティターンズ",
-    "physical": {
-      "height": null,
-      "age": null
-    },
-    "units": [
-      "サイコ・ガンダム"
-    ],
+    "illustrator": "",
     "stats": {
       "mobility": 220,
       "ranged_attack": 500,
       "melee_attack": 100,
       "hp": 530
     },
+    "link_ability": [
+      {
+        "name": "機動戦士Zガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "黒き脅威",
+        "condition": "デッキに2枚以上",
+        "effect": "[HP]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "FOUR MURASAME",
+    "physical": {
+      "height": "",
+      "age": ""
+    },
+    "units": [
+      "サイコ・ガンダム"
+    ],
     "pilot_skill": {
       "name": "強固な防戦",
       "trigger": "出撃時",
       "effect": "一定時間、MSアビリティ[巨壁]のダメージ軽減効果を上昇させる。PLタイプが変わると効果が終了する。",
       "has_sq_skill": false,
-      "sq_skill_details": null
-    },
-    "link_ability": [
-      {
-        "name": "機動戦士Zガンダム",
-        "condition": "デッキに3枚以上",
-        "effect": "[遠距離攻撃力]小アップ"
-      },
-      {
-        "name": "黒き脅威",
-        "condition": "デッキに2枚以上",
-        "effect": "[HP]小アップ"
-      }
-    ],
-    "rarity": "U",
-    "illustrator": null,
-    "raw": "防衛　コスト7\n\nPL\n機動戦士Zガンダム\n\nフォウ・ムラサメ\nFOUR MURASAME\n\n身長　ー\n年齢　ー\n所属　ティターンズ\n搭乗機体　サイコ・ガンダム\n\nPL SKILL\n強固な防戦\n出撃時\n一定時間、MSアビリティ[巨壁]のダメージ軽減効果を上昇させる。PLタイプが変わると効果が終了する。\n\nLINK ABILITY\n機動戦士Zガンダム　デッキに3枚以上\n[遠距離攻撃力]小アップ\n\n黒き脅威　デッキに2枚以上\n[HP]小アップ\n\n機動力　220\n遠距離攻撃　500\n近距離攻撃　100\nHP　530\n\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\nUT02-043　U"
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_raw_file": "UNITRIBE_SEASON_02_UT02-043_フォウ・ムラサメ_ocr_raw.json",
   "ocr_timestamp": "2026-02-26T17:48:56.439181",

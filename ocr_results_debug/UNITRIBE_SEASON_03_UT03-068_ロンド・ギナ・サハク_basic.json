@@ -5,53 +5,56 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT03-068.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT03-068_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "UT03-068",
     "type": "PL",
-    "card_label": {
-      "class": "殲滅",
-      "cost_label": "コスト5"
-    },
     "name": "ロンド・ギナ・サハク",
-    "english_name": "RONDO GINA SAHAKU",
     "cost": 5,
+    "rarity": "U",
     "category": "殲滅",
     "affiliation": "オーブ",
-    "physical": {
-      "height": null,
-      "age": null
-    },
-    "units": [
-      "ガンダムアストレイ ゴールドフレーム天",
-      "ガンダムアストレイ ゴールドフレーム"
-    ],
+    "illustrator": "",
     "stats": {
       "mobility": 240,
       "ranged_attack": 110,
       "melee_attack": 400,
       "hp": 400
     },
+    "link_ability": [
+      {
+        "name": "SEED ASTRAY",
+        "condition": "デッキに2枚以上",
+        "effect": "[近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "選ばれし者",
+        "condition": "デッキに2枚以上",
+        "effect": "[近距離攻撃力][HP]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "RONDO GINA SAHAKU",
+    "physical": {
+      "height": "",
+      "age": ""
+    },
+    "units": [
+      "ガンダムアストレイ ゴールドフレーム天",
+      "ガンダムアストレイ ゴールドフレーム"
+    ],
     "pilot_skill": {
       "name": "非情な戦略",
       "trigger": "敵ユニットをロックオン時",
       "effect": "20秒間、ロックオン中の敵ユニットの[遠距離攻撃力][近距離攻撃力][SP威力]を大ダウンする。",
       "has_sq_skill": false,
-      "sq_skill_details": null
-    },
-    "link_ability": [
-      {
-        "name": "SEED ASTRAY",
-        "condition": "デッキに2枚以上",
-        "effect": "[近距離攻撃力]小アップ"
-      },
-      {
-        "name": "選ばれし者",
-        "condition": "デッキに2枚以上",
-        "effect": "[近距離攻撃力][HP]小アップ"
-      }
-    ],
-    "rarity": "U",
-    "illustrator": null,
-    "raw": "殲滅 コスト5\n\nPL\n\nロンド・ギナ・サハク\nRONDO GINA SAHAKU\n\n身長　ー\n年齢　ー\n所属　オーブ\n搭乗機体　ガンダムアストレイ ゴールドフレーム天、\n　　　　　ガンダムアストレイ ゴールドフレーム\n\nPL SKILL\n非情な戦略\n敵ユニットをロックオン時\n20秒間、ロックオン中の敵ユニットの[遠距離攻撃力][近距離攻撃力][SP威力]を大ダウンする。\n\nLINK ABILITY\nSEED ASTRAY　デッキに2枚以上\n[近距離攻撃力]小アップ\n\n選ばれし者　デッキに2枚以上\n[近距離攻撃力][HP]小アップ\n\n機動力 240\n遠距離攻撃 110\n近距離攻撃 400\nHP 400\n\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE®\nUT03-068　U"
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
   },
   "ocr_raw_file": "UNITRIBE_SEASON_03_UT03-068_ロンド・ギナ・サハク_ocr_raw.json",
   "ocr_timestamp": "2026-02-26T17:31:24.689619",

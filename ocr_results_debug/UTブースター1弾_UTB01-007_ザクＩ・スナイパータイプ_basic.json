@@ -5,26 +5,39 @@
   "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UTB01-007.jpg?v250630",
   "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UTB01-007_b.jpg?v250630",
   "ocr_data": {
-    "card_id": "UTB01-007",
     "type": "MS",
-    "card_label": {
-      "class": "機動",
-      "cost_label": "コスト5"
-    },
-    "name": "ザクI・スナイパータイプ",
-    "model": "MS-05L ZAKU I SNIPER TYPE",
+    "name": "ザクＩ・スナイパータイプ",
     "cost": 5,
+    "rarity": "R",
     "category": "機動",
     "affiliation": "ジオン公国軍",
-    "pilot": "ヨンム・カークス",
+    "illustrator": "yuuiguchi",
     "stats": {
-      "height": "17.5m",
-      "weight": "67.9t",
       "mobility": 190,
       "ranged_attack": 350,
       "melee_attack": 190,
       "hp": 270
     },
+    "link_ability": [
+      {
+        "name": "ガンダムUC",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "距離をとった射撃戦",
+        "condition": "デッキに2枚以上",
+        "effect": "[遠距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "ヨンム・カークス",
+    "model": "MS-05L ZAKU I SNIPER TYPE",
     "terrain_compatibility": {
       "ground": "A",
       "space": "C",
@@ -51,18 +64,6 @@
       "cost": 4,
       "description": "30秒間、自身の[機動力][遠距離攻撃力]を中アップする。"
     },
-    "link_ability": [
-      {
-        "name": "ガンダムUC",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ"
-      },
-      {
-        "name": "距離をとった射撃戦",
-        "condition": "デッキに2枚以上",
-        "effect": "[遠距離攻撃力]小アップ"
-      }
-    ],
     "special_attack": {
       "name": "ビーム・スナイパー・ライフル撃射",
       "target": "単体(敵)",
@@ -70,11 +71,11 @@
       "sp_cost": 2,
       "power": 3200,
       "description": "敵単体に射撃攻撃でダメージを与える。",
-      "united_sp": null
-    },
-    "rarity": "R",
-    "illustrator": "yuuiguchi",
-    "raw": "MS\n\n機動　コスト5\n\nMS-05L ZAKU I SNIPER TYPE\nザクI・スナイパータイプ\n\n全高　17.5m\n本体重量　67.9t\n所属　ジオン公国軍\nパイロット　ヨンム・カークス\n\n[アイコン:地上A] [アイコン:宇宙C] [アイコン:砂漠B] [アイコン:水中C]\n\n機動力　190\n遠距離攻撃　350\n近距離攻撃　190\nHP　270\n\nWEAPON\nMAIN　ビーム・スナイパー・ライフル　射程 4　遠距離\nSUB　格闘　射程 1　近距離\n\nLINK ABILITY\nガンダムUC　デッキに3枚以上\n[機動力]小アップ\n\n距離をとった射撃戦　デッキに2枚以上\n[遠距離攻撃力]小アップ\n\nMS ABILITY\n強化[遠隔]\n任意発動　自分　射程 ー　コスト 4\n30秒間、自身の[機動力][遠距離攻撃力]を中アップする。\n\nSPECIAL ATTACK　　UNITED SP\nビーム・スナイパー・ライフル撃射　ー\n連携 ー　連携 ー\n連携 ー　連携 ー\n単体(敵)　射程 4　ー　射程 ー\nSPコスト 2　威力　3200 / ー\n敵単体に射撃攻撃でダメージを与える。\n/ ー\n\nIMPACT AREA\n[アイコン:前方中央に緑丸マーカー、下方中央に黄三角マーカー]\n\nillust yuuiguchi\n©創通・サンライズ\nBANDAI MADE IN JAPAN\n機動戦士ガンダム ARSENAL BASE\nUTB01-007　R"
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
   },
   "ocr_raw_file": "UTブースター1弾_UTB01-007_ザクＩ・スナイパータイプ_ocr_raw.json",
   "ocr_timestamp": "2026-02-28T02:29:55.545199",
