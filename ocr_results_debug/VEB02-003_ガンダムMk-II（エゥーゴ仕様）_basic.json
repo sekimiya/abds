@@ -1,22 +1,20 @@
 {
-  "card_number": "PR-348",
-  "card_name": "ZガンダムVer. MOMOIRO CLOVER Z",
-  "series": "プロモーション",
-  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-348.jpg?v250630",
-  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-348_b.jpg?v250630",
+  "card_number": "VEB02-003",
+  "card_name": "ガンダムMk-II（エゥーゴ仕様）",
+  "series": "VEブースター2弾",
   "ocr_data": {
     "type": "MS",
-    "name": "ZガンダムVer. MOMOIRO CLOVER Z",
-    "cost": 2,
-    "rarity": "PR",
+    "name": "ガンダムMk-II（エゥーゴ仕様）",
+    "cost": 3,
+    "rarity": "P",
     "category": "近距離",
-    "affiliation": "もいろクローバーZ",
-    "illustrator": "Kouhaku Honda",
+    "affiliation": "エゥーゴ",
+    "illustrator": "",
     "stats": {
-      "mobility": 210,
-      "ranged_attack": 100,
-      "melee_attack": 220,
-      "hp": 320
+      "mobility": 220,
+      "ranged_attack": 80,
+      "melee_attack": 240,
+      "hp": 410
     },
     "link_ability": [
       {
@@ -36,13 +34,13 @@
         "is_ab_link": false
       }
     ],
-    "pilot": "百田夏菜子",
-    "model": "MSZ-006 Z GUNDAM Ver. MOMOIRO CLOVER Z",
+    "pilot": "カミーユ・ビダン、エマ・シーン",
+    "model": "",
     "terrain_compatibility": {
       "ground": "A",
       "space": "A",
       "desert": "C",
-      "water": "C"
+      "water": "B"
     },
     "weapon": {
       "main": {
@@ -57,27 +55,33 @@
       }
     },
     "ms_ability": {
-      "name": "Event Horizon",
+      "name": "誘導",
       "activation": "任意発動",
-      "target": "範囲(味方)",
-      "range": null,
-      "cost": 5,
-      "description": "自身を中心とした大範囲内の味方ユニットの弱体化を無効化し、30秒間、[遠距離攻撃力]をアップする。"
+      "target": "特殊(敵)",
+      "range": 0,
+      "cost": 4,
+      "description": "25秒間、自身をロックオン距離内に捉えている敵ユニットのターゲットを自身に集める。"
     },
     "special_attack": {
       "name": "ビーム・サーベル強撃",
-      "target": "",
-      "range": null,
+      "target": "単体(敵)",
+      "range": 2,
       "sp_cost": 2,
-      "power": null,
+      "power": 3500,
       "description": "敵単体に格闘攻撃でダメージを与える。",
-      "sp_type": "UNITED SP",
-      "echoes_beat": null,
+      "sp_type": "ECHOES BEAT",
+      "echoes_beat": {
+        "name": "ビーム・サーベル強撃 Lv.1",
+        "level": 1,
+        "power": 3800,
+        "range": 2,
+        "target": "単体(敵)",
+        "description": "EBLv.を1下げる。敵単体に格闘攻撃でダメージを与え、EBLv.が3に上昇する。出撃時1度のみ使用可能。"
+      },
       "united_sp": null,
       "squad_sp": null
     }
   },
-  "ocr_timestamp": "",
-  "ocr_type": "basic",
-  "ocr_engine": "claude_code_cli_combined"
+  "ocr_engine": "claude_code_subagent",
+  "ocr_timestamp": "2026-05-15T00:00:00"
 }

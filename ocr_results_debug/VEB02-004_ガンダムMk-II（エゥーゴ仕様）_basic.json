@@ -1,0 +1,80 @@
+{
+  "card_number": "VEB02-004",
+  "card_name": "ガンダムMk-II（エゥーゴ仕様）",
+  "series": "VEブースター2弾",
+  "ocr_data": {
+    "type": "MS",
+    "name": "ガンダムMk-II（エゥーゴ仕様）",
+    "cost": 4,
+    "rarity": "R",
+    "category": "遠距離",
+    "affiliation": "エゥーゴ",
+    "illustrator": "",
+    "stats": {
+      "mobility": 200,
+      "ranged_attack": 350,
+      "melee_attack": 80,
+      "hp": 380
+    },
+    "link_ability": [
+      {
+        "name": "機動戦士Zガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "カミーユ・ビダン、エマ・シーン",
+    "model": "",
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "A",
+      "desert": "C",
+      "water": "B"
+    },
+    "weapon": {
+      "main": {
+        "name": "ビーム・ライフル",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ビーム・サーベル",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "縛射",
+      "activation": "任意発動",
+      "target": "単体(敵)",
+      "range": 3,
+      "cost": 3,
+      "description": "ロックオン中の敵ユニットに単体攻撃を行いダメージを与え、一定時間スタンさせる。"
+    },
+    "special_attack": {
+      "name": "ビーム・ライフル撃射",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3200,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
+  },
+  "ocr_engine": "claude_code_subagent",
+  "ocr_timestamp": "2026-05-15T00:00:00"
+}
