@@ -506,6 +506,10 @@ select,input{font-family:inherit}
   border-color:#d9a040;border-width:3px;
   box-shadow:0 0 8px rgba(255,152,0,0.4),0 0 8px rgba(104,239,189,0.4);
 }
+.card-slot.link-active.ab{
+  border-color:#b388ff;border-width:3px;
+  box-shadow:0 0 8px rgba(179,136,255,0.4),0 0 8px rgba(104,239,189,0.4);
+}
 .link-active-badge{
   position:absolute;top:44px;right:4px;z-index:2;
   background:linear-gradient(135deg,#68efbd,#68efbd);color:#0a0a0a;
@@ -559,6 +563,12 @@ select,input{font-family:inherit}
 }
 .slot-link-tag.link-on{
   background:rgba(104,239,189,0.85);color:#0a0a0a;
+}
+.slot-link-tag.link-on.eb-link{
+  background:rgba(255,152,0,0.9);color:#0a0a0a;
+}
+.slot-link-tag.link-on.ab-link{
+  background:rgba(179,136,255,0.9);color:#0a0a0a;
 }
 .slot-link-tag.link-off{
   background:rgba(60,60,60,0.75);color:#666;
@@ -718,6 +728,8 @@ select,input{font-family:inherit}
 }
 .unit-link-item:last-child{border-bottom:none}
 .unit-link-name{font-weight:bold;color:#ccc}
+.unit-link-name.eb{color:#ffb74d}
+.unit-link-name.ab{color:#b388ff}
 .unit-link-badge{
   display:inline-block;padding:0 0.25rem;border-radius:2px;
   font-size:0.65rem;font-weight:bold;margin-left:0.2rem;
@@ -4189,9 +4201,10 @@ const UIRenderer = {
       const count = _countLinkInDeck(link.name, category);
       const isActive = count >= required;
 
+      const linkCls = link.is_eb_link ? 'eb' : link.is_ab_link ? 'ab' : '';
       html += `
         <div class="unit-link-item">
-          <span class="unit-link-name">${escapeHtml(link.name)}</span>
+          <span class="unit-link-name${linkCls ? ' ' + linkCls : ''}">${escapeHtml(link.name)}</span>
           <span class="unit-link-badge ${isActive ? 'on' : 'off'}">${isActive ? '発動' : count + '/' + required}</span>
           <div class="unit-link-effect">${escapeHtml(link.effect || '')}</div>
         </div>
@@ -4474,7 +4487,7 @@ const UIRenderer = {
       if (!slotEl) continue;
 
       // 既存のlink-active関連を除去
-      slotEl.classList.remove('link-active');
+      slotEl.classList.remove('link-active', 'eb', 'ab');
       const oldBadge = slotEl.querySelector('.link-active-badge');
       if (oldBadge) oldBadge.remove();
       const oldTags = slotEl.querySelector('.slot-link-tags');
@@ -4485,6 +4498,9 @@ const UIRenderer = {
       const cnt = slotActiveCounts[i] || 0;
       if (cnt > 0) {
         slotEl.classList.add('link-active');
+        const names = slotActiveNames[i] || [];
+        if (names.some(n => linkMap[n]?.is_eb_link)) slotEl.classList.add('eb');
+        else if (names.some(n => linkMap[n]?.is_ab_link)) slotEl.classList.add('ab');
       }
 
       // カードが持つリンクアビリティをタグ表示
@@ -4516,7 +4532,8 @@ const UIRenderer = {
           const info = linkMap && linkMap[link.name];
           const isActive = info && info.count >= info.required;
           const tag = document.createElement('div');
-          tag.className = 'slot-link-tag ' + (isActive ? 'link-on' : 'link-off');
+          const linkTypeCls = link.is_eb_link ? ' eb-link' : link.is_ab_link ? ' ab-link' : '';
+          tag.className = 'slot-link-tag ' + (isActive ? 'link-on' : 'link-off') + linkTypeCls;
           const effectText = isActive && link.effect ? ` ${link.effect}` : '';
           tag.textContent = link.name + effectText;
           tagsDiv.appendChild(tag);
@@ -6277,8 +6294,10 @@ async function showCardModal(number) {
   if (Array.isArray(links) && links.length > 0) {
     html += `<div class="modal-param-group"><div class="modal-param-title">リンクアビリティ</div>`;
     links.forEach(l => {
+      const linkColor = l.is_eb_link ? '#ffb74d' : l.is_ab_link ? '#b388ff' : '#ffe082';
+      const linkBg = l.is_eb_link ? 'background:rgba(255,152,0,0.15);border:1px solid rgba(255,152,0,0.3);border-radius:4px;padding:1px 6px' : l.is_ab_link ? 'background:rgba(179,136,255,0.15);border:1px solid rgba(179,136,255,0.3);border-radius:4px;padding:1px 6px' : '';
       html += `<div style="font-size:0.85rem;margin-top:0.2rem">
-        <span style="color:#ffe082">${escapeHtml(l.name || '')}</span>
+        <span style="color:${linkColor};font-weight:${l.is_eb_link || l.is_ab_link ? 'bold' : 'normal'};${linkBg}">${escapeHtml(l.name || '')}</span>
         <span style="color:#888"> ${escapeHtml(l.condition || '')}</span>
         <span style="color:#aaa"> ${escapeHtml(l.effect || '')}</span>
       </div>`;

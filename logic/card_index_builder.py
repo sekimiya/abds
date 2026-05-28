@@ -414,6 +414,11 @@ def build_card_index(all_cards_dir='all_cards_list', ocr_dir='ocr_results_debug'
                                     _eb_obj['eb_description'] = _eb_part
                         else:
                             _sa_final['description'] = _normal
+                            if not prev.get('echoes_beat'):
+                                prev['echoes_beat'] = {
+                                    'has_eb': True, 'eb_type': 'normal', 'eb_level': None,
+                                    'eb_sp_name': '', 'eb_description': '', 'eb_power': None,
+                                }
                         _split_done = True
                     # "/ " followed by "EBLv" or "ー" or "—" で分割（半角）
                     if not _split_done:
@@ -430,6 +435,11 @@ def build_card_index(all_cards_dir='all_cards_list', ocr_dir='ocr_results_debug'
                                         _eb_obj['eb_description'] = _eb_part
                             else:
                                 _sa_final['description'] = _normal
+                                if not prev.get('echoes_beat'):
+                                    prev['echoes_beat'] = {
+                                        'has_eb': True, 'eb_type': 'normal', 'eb_level': None,
+                                        'eb_sp_name': '', 'eb_description': '', 'eb_power': None,
+                                    }
                             _split_done = True
                     if not _split_done:
                         _sa_final['description'] = _desc
@@ -442,6 +452,16 @@ def build_card_index(all_cards_dir='all_cards_list', ocr_dir='ocr_results_debug'
                     for _gn in _eb_generic_notes:
                         _ebd = _ebd.replace(_gn, '').strip()
                     _eb_clean['eb_description'] = _ebd
+
+                # sp_type 自動補完: echoes_beat があるのに sp_type が空の場合
+                _sa_sptype = prev.get('special_attack')
+                if isinstance(_sa_sptype, dict) and not _sa_sptype.get('sp_type'):
+                    _eb_for_sptype = prev.get('echoes_beat')
+                    if isinstance(_eb_for_sptype, dict) and _eb_for_sptype.get('has_eb'):
+                        if _eb_for_sptype.get('eb_type') == 'sp':
+                            _sa_sptype['sp_type'] = 'ECHOES BEAT SP'
+                        else:
+                            _sa_sptype['sp_type'] = 'ECHOES BEAT'
 
                 # PL の EB PL SKILL 検出
                 if raw_ocr and 'EB PL SKILL' in raw_ocr:
@@ -477,11 +497,9 @@ def build_card_index(all_cards_dir='all_cards_list', ocr_dir='ocr_results_debug'
                     for la_item in la_list:
                         if isinstance(la_item, dict):
                             la_name = la_item.get('name', '').strip()
-                            bare_name = la_name.replace('[AB]', '')
+                            bare_name = re.sub(r'^\[(EB|SQ|AB)\]', '', la_name)
                             if bare_name in _ab_link_names:
                                 la_item['is_ab_link'] = True
-                                if not la_name.startswith('[AB]'):
-                                    la_item['name'] = f'[AB]{la_name}'
 
                 # タイムスタンプ収集（各ファイル種別のタイムスタンプから最新を取得）
                 for ts_key in ['ocr_timestamp', 'sp_ocr_timestamp', 'sq_analysis_timestamp']:
@@ -917,15 +935,23 @@ def build_card_index(all_cards_dir='all_cards_list', ocr_dir='ocr_results_debug'
     index_list.sort(key=lambda x: x['number'])
 
     # リンクアビリティ索引を構築（logic.get_link_abilities / parse_link_condition を使用）
+    _link_prefix_re = re.compile(r'^\[(EB|SQ|AB)\]')
+
     link_map = {}
     for card_number, detail in detail_map.items():
         ocr = detail.get('ocr_data', {})
         card_type = ocr.get('type') or detail.get('category', 'MS')
+        # OCRデータ内のリンク名も正規化（フロントエンドでの名前マッチング用）
+        _la_list = ocr.get('link_abilities') or ocr.get('link_ability') or []
+        if isinstance(_la_list, list):
+            for _la_item in _la_list:
+                if isinstance(_la_item, dict) and _la_item.get('name'):
+                    _la_item['name'] = _link_prefix_re.sub('', _la_item['name']).strip()
         links = get_link_abilities(ocr)
         for link in links:
             if not isinstance(link, dict):
                 continue
-            name = link.get('name', '').strip()
+            name = _link_prefix_re.sub('', link.get('name', '')).strip()
             if not name:
                 continue
             if name not in link_map:
