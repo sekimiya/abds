@@ -1,0 +1,85 @@
+{
+  "card_number": "BP08-011",
+  "card_name": "スタービルドストライクガンダム",
+  "series": "BOOSTER PACK ガンダムトライエイジ Vol.2",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP08-011.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP08-011_b.jpg?v250630",
+  "ocr_data": {
+    "type": "MS",
+    "name": "スタービルドストライクガンダム",
+    "cost": 5,
+    "rarity": "P",
+    "category": "近距離",
+    "affiliation": "",
+    "illustrator": "studio A-CAT",
+    "english_name": "GAT-X105B/ST STAR BUILD STRIKE GUNDAM",
+    "stats": {
+      "mobility": 280,
+      "ranged_attack": 50,
+      "melee_attack": 550,
+      "hp": 520
+    },
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "B",
+      "water": "B"
+    },
+    "physical": {
+      "height": "17.7m",
+      "weight": "90.1t"
+    },
+    "pilot": "レイジ、イオリ・セイ",
+    "weapon": {
+      "main": {"name": "ビームサーベル", "range": 1, "type": "近距離"},
+      "sub": {"name": "スタービームライフル", "range": 3, "type": "遠距離"}
+    },
+    "link_ability": [
+      {
+        "name": "トライエイジ",
+        "condition": "デッキに2枚以上",
+        "effect": "[HP]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "肉薄する戦い",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "ms_ability": {
+      "name": "突貫",
+      "trigger": "任意発動",
+      "target": "貫通(敵)",
+      "range": "射程1",
+      "cost": "コスト 4",
+      "effect": "ロックオン中の敵ユニットに向かって高速移動を行い移動終了地点まで押し上げ、範囲内の敵ユニットにダメージを与え、一定時間スタンさせる。"
+    },
+    "special_attack": {
+      "name": "RGビルドナックル",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3500,
+      "description": "敵単体に格闘攻撃でダメージを与え、自身のHPを回復する。一定時間、自身の[近距離攻撃力]をアップする。"
+    },
+    "echoes_beat": {
+      "name": "RGビルドナックル Lv.1",
+      "eb_level": 1,
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3800,
+      "description": "EBLv.を1下げる。敵単体に格闘攻撃でダメージを与え、自身のHPを回復し、EBLv.が3に上昇する。一定時間、自身の[近距離攻撃力]をアップする。出撃時1度のみ使用可能。"
+    },
+    "units": null
+  },
+  "ocr_timestamp": "2026-06-02T12:45:00",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_subagent"
+}

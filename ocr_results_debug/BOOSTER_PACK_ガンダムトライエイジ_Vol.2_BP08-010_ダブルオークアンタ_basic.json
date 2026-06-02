@@ -1,0 +1,90 @@
+{
+  "card_number": "BP08-010",
+  "card_name": "ダブルオークアンタ",
+  "series": "BOOSTER PACK ガンダムトライエイジ Vol.2",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP08-010.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP08-010_b.jpg?v250630",
+  "ocr_data": {
+    "type": "MS",
+    "name": "ダブルオークアンタ",
+    "cost": 4,
+    "rarity": "M",
+    "category": "遠距離",
+    "affiliation": "ソレスタルビーイング",
+    "illustrator": "ALMEGA",
+    "stats": {
+      "mobility": 210,
+      "ranged_attack": 390,
+      "melee_attack": 40,
+      "hp": 410
+    },
+    "link_ability": [
+      {
+        "name": "トライエイジ",
+        "condition": "デッキに2枚以上",
+        "effect": "[HP]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "刹那・F・セイエイ",
+    "model": "GNT-0000 00 QAN[T]",
+    "terrain_compatibility": {
+      "ground": "S",
+      "space": "S",
+      "desert": "C",
+      "water": "A"
+    },
+    "weapon": {
+      "main": {
+        "name": "GNソードV・ライフルモード",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "GNソードV",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "威圧",
+      "activation": "任意発動",
+      "target": "範囲(敵)",
+      "range": null,
+      "cost": 4,
+      "description": "自身を中心とした範囲内の敵ユニットをスタンさせ、一定時間被ダメージを少しアップする。"
+    },
+    "special_attack": {
+      "name": "GNバスターライフル撃射",
+      "target": "貫通(敵)",
+      "range": 4,
+      "sp_cost": 2,
+      "power": 2900,
+      "description": "射線上の敵に貫通射撃でダメージを与える。/EBLv.を2下げる。射線上の敵に貫通射撃でダメージを与える。一定時間、出撃中の全敵ユニットの[遠距離攻撃力][近距離攻撃力]をダウンする。出撃時1度のみ使用可能。",
+      "sp_type": "",
+      "echoes_beat": {
+        "name": "GNバスターライフル撃射 Lv.2",
+        "level": 2,
+        "power": 3500,
+        "range": 4,
+        "target": "貫通(敵)",
+        "description": "EBLv.を2下げる。射線上の敵に貫通射撃でダメージを与える。一定時間、出撃中の全敵ユニットの[遠距離攻撃力][近距離攻撃力]をダウンする。出撃時1度のみ使用可能。"
+      },
+      "united_sp": null,
+      "squad_sp": null
+    }
+  },
+  "ocr_timestamp": "2026-06-02T12:30:00",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_subagent"
+}

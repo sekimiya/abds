@@ -1,0 +1,90 @@
+{
+  "card_number": "BP08-005",
+  "card_name": "ストライクルージュ",
+  "series": "BOOSTER PACK ガンダムトライエイジ Vol.2",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP08-005.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP08-005_b.jpg?v250630",
+  "ocr_data": {
+    "type": "MS",
+    "name": "ストライクルージュ",
+    "cost": 5,
+    "rarity": "M",
+    "category": "遠距離",
+    "affiliation": "オーブ",
+    "illustrator": "tyuga",
+    "stats": {
+      "mobility": 260,
+      "ranged_attack": 440,
+      "melee_attack": 50,
+      "hp": 450
+    },
+    "link_ability": [
+      {
+        "name": "トライエイジ",
+        "condition": "デッキに2枚以上",
+        "effect": "[HP]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "カガリ・ユラ・アスハ",
+    "model": "MBF-02 STRIKE ROUGE",
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "C",
+      "water": "B"
+    },
+    "weapon": {
+      "main": {
+        "name": "高エネルギービームライフル",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ビームサーベル",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "圧倒",
+      "activation": "任意発動",
+      "target": "単体(敵)",
+      "range": 3,
+      "cost": 3,
+      "description": "ロックオン中の敵が弱体化状態の時に発動可能となり、敵に単体攻撃でダメージを与え、その攻撃は必ずクリティカルになる。"
+    },
+    "special_attack": {
+      "name": "高エネルギービームライフル撃射",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3400,
+      "description": "敵単体に射撃攻撃でダメージを与え、一定時間、敵ユニットの[遠距離攻撃力][近距離攻撃力]をダウンする。/EBLv.を2下げる。敵単体に射撃攻撃でダメージを与え、一定時間、敵ユニットの[遠距離攻撃力][近距離攻撃力]をダウンし、出撃中の全敵ユニットの被ダメージを上昇させる。出撃時1度のみ使用可能。",
+      "sp_type": "",
+      "echoes_beat": {
+        "name": "高エネルギービームライフル撃射 Lv.2",
+        "level": 2,
+        "power": 4000,
+        "range": 3,
+        "target": "単体(敵)",
+        "description": "EBLv.を2下げる。敵単体に射撃攻撃でダメージを与え、一定時間、敵ユニットの[遠距離攻撃力][近距離攻撃力]をダウンし、出撃中の全敵ユニットの被ダメージを上昇させる。出撃時1度のみ使用可能。"
+      },
+      "united_sp": null,
+      "squad_sp": null
+    }
+  },
+  "ocr_timestamp": "2026-06-02T12:30:00",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_subagent"
+}

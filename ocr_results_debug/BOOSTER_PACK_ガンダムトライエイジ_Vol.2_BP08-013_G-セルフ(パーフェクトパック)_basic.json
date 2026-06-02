@@ -1,0 +1,91 @@
+{
+  "card_number": "BP08-013",
+  "card_name": "G-セルフ(パーフェクトパック)",
+  "series": "BOOSTER PACK ガンダムトライエイジ Vol.2",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP08-013.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP08-013_b.jpg?v250630",
+  "ocr_data": {
+    "type": "MS",
+    "name": "G-セルフ(パーフェクトパック)",
+    "cost": 5,
+    "rarity": "R",
+    "category": "近距離",
+    "affiliation": "メガファウナ",
+    "illustrator": "Shirataki kinoko",
+    "stats": {
+      "mobility": 270,
+      "ranged_attack": 70,
+      "melee_attack": 450,
+      "hp": 360
+    },
+    "link_ability": [
+      {
+        "name": "トライエイジ",
+        "condition": "デッキに2枚以上",
+        "effect": "[HP]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "YG-111 G-SELF[PERFECT PACK]",
+    "physical": {
+      "height": "18.0m",
+      "weight": "31.1t"
+    },
+    "units": null,
+    "pilot": "ベルリ・ゼナム",
+    "model": "YG-111",
+    "terrain_compatibility": {
+      "ground": "S",
+      "space": "S",
+      "desert": "B",
+      "water": "B"
+    },
+    "weapon": {
+      "main": {
+        "name": "高トルクモード",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "アサルトモード",
+        "range": 4,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "増援[殲滅/貫通]",
+      "activation": "任意発動",
+      "target": "特殊(自分)",
+      "range": null,
+      "cost": 4,
+      "description": "自身の周囲に貫通射撃を行う殲滅タイプの味方ユニットを呼び出す。このユニットは移動しない。※上限3ユニットまで。"
+    },
+    "special_attack": {
+      "name": "高トルクモード強撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3400,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    },
+    "echoes_beat": null,
+    "pilot_skill": null
+  },
+  "ocr_timestamp": "2026-06-02T12:30:00",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_subagent"
+}

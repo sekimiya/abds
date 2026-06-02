@@ -1,0 +1,98 @@
+{
+  "card_number": "BP08-017",
+  "card_name": "クィン・マンサ・セプテット",
+  "series": "BOOSTER PACK ガンダムトライエイジ Vol.2",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP08-017.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP08-017_b.jpg?v250630",
+  "ocr_data": {
+    "type": "MS",
+    "name": "クィン・マンサ・セプテット",
+    "cost": 7,
+    "rarity": "P",
+    "category": "遠距離",
+    "affiliation": "",
+    "illustrator": "PLANETA_Igarashi",
+    "stats": {
+      "mobility": 300,
+      "ranged_attack": 630,
+      "melee_attack": 110,
+      "hp": 630
+    },
+    "link_ability": [
+      {
+        "name": "トライエイジ",
+        "condition": "デッキに2枚以上",
+        "effect": "[HP]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "NZ-000SP QUIN-MANTHA SEPTET",
+    "physical": {
+      "height": "39.2m",
+      "weight": "199.8t"
+    },
+    "units": null,
+    "pilot": "",
+    "model": "NZ-000SP",
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "C",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "メガ粒子砲",
+        "range": 4,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ビーム・サーベル",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "オールレンジ[七重奏]",
+      "activation": "任意発動",
+      "target": "範囲(敵)",
+      "range": 4,
+      "cost": 3,
+      "description": "30秒間、自身の周囲の敵に継続的にダメージを与える。EBLv.が変動するたびに効果時間を延長し、効果が強化され、ダメージを与えた敵の[機動力][遠/近攻撃力]をダウン、被ダメージを上昇させる効果が付与される。最大7回まで発動。"
+    },
+    "special_attack": {
+      "name": "セプテット・パーフェクトブルーム",
+      "target": "単体(敵)",
+      "range": 4,
+      "sp_cost": 2,
+      "power": 3700,
+      "description": "敵単体に格闘攻撃でダメージを与え、自身のHPを回復する。一定時間、自身の受けるダメージを軽減する。／EBLv.を1下げる。敵単体に格闘攻撃でダメージを与え、自身のHPを回復し、EBLv.が3に上昇する。一定時間、自身の受けるダメージを軽減する。出撃時1度のみ使用可能。",
+      "sp_type": "",
+      "echoes_beat": {
+        "name": "セプテット・パーフェクトブルーム Lv.1",
+        "level": 1,
+        "power": 4000,
+        "range": 4,
+        "target": "単体(敵)",
+        "description": "EBLv.を1下げる。敵単体に格闘攻撃でダメージを与え、自身のHPを回復し、EBLv.が3に上昇する。一定時間、自身の受けるダメージを軽減する。出撃時1度のみ使用可能。"
+      },
+      "united_sp": null,
+      "squad_sp": null
+    },
+    "echoes_beat": null,
+    "pilot_skill": null
+  },
+  "ocr_timestamp": "2026-06-02T12:30:00",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_subagent"
+}

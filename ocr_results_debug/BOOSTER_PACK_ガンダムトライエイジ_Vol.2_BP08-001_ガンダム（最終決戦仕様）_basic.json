@@ -1,0 +1,90 @@
+{
+  "card_number": "BP08-001",
+  "card_name": "ガンダム（最終決戦仕様）",
+  "series": "BOOSTER PACK ガンダムトライエイジ Vol.2",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP08-001.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP08-001_b.jpg?v250630",
+  "ocr_data": {
+    "type": "MS",
+    "name": "ガンダム（最終決戦仕様）",
+    "cost": 5,
+    "rarity": "M",
+    "category": "遠距離",
+    "affiliation": "地球連邦軍",
+    "illustrator": "Ryouta Magaki",
+    "stats": {
+      "mobility": 270,
+      "ranged_attack": 380,
+      "melee_attack": 60,
+      "hp": 540
+    },
+    "link_ability": [
+      {
+        "name": "機動戦士ガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "連邦の白い悪魔",
+        "condition": "デッキに2枚以上",
+        "effect": "[遠距離攻撃力][HP]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "アムロ・レイ",
+    "model": "RX-78-2 GUNDAM",
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "A",
+      "desert": "C",
+      "water": "A"
+    },
+    "weapon": {
+      "main": {
+        "name": "ハイパー・バズーカ(2丁)",
+        "range": 4,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ビーム・サーベル",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "転化[補給]",
+      "activation": "任意発動",
+      "target": "自分",
+      "range": null,
+      "cost": 4,
+      "description": "自身のHPを回復する。使用回数に応じて、回復効果、範囲が変わる。[1回:自身/中回復][2回:自身を中心とした範囲/中回復][3回以上:自身を中心とした範囲/大回復]"
+    },
+    "special_attack": {
+      "name": "ハイパー・バズーカ(2丁)斉射",
+      "target": "範囲(敵)",
+      "range": 4,
+      "sp_cost": 2,
+      "power": 2900,
+      "description": "対象の敵を中心として範囲射撃でダメージを与え、自身のHPを回復する。/搭乗しているPLが[アムロ・レイ]の場合、使用可能。自身が撤退するまで、撃破効果を受けない。結束戦術技使用後から一定時間撤退しなかった場合に発動し、自軍はバトルに勝利する。",
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": {
+        "name": "ラストシューティング",
+        "target": "特殊",
+        "range": 4,
+        "power": null,
+        "description": "搭乗しているPLが[アムロ・レイ]の場合、使用可能。自身が撤退するまで、撃破効果を受けない。結束戦術技使用後から一定時間撤退しなかった場合に発動し、自軍はバトルに勝利する。",
+        "note": "SQUAD RUSH発動中に1度だけ、SQUAD SPを使用できる。"
+      }
+    }
+  },
+  "ocr_timestamp": "2026-06-02T12:30:00",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_subagent"
+}

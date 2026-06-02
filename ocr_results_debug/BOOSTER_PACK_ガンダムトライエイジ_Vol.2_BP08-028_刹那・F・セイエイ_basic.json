@@ -1,0 +1,64 @@
+{
+  "card_number": "BP08-028",
+  "card_name": "刹那・F・セイエイ",
+  "series": "BOOSTER PACK ガンダムトライエイジ Vol.2",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP08-028.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP08-028_b.jpg?v250630",
+  "ocr_data": {
+    "type": "PL",
+    "name": "刹那・F・セイエイ",
+    "cost": 2,
+    "rarity": "M",
+    "category": "防衛",
+    "affiliation": "ソレスタルビーイング",
+    "illustrator": "",
+    "stats": {
+      "mobility": 200,
+      "ranged_attack": 260,
+      "melee_attack": 30,
+      "hp": 260
+    },
+    "link_ability": [
+      {
+        "name": "BUILD MS SYSTEM",
+        "condition": "デッキに3枚以上",
+        "effect": "ECHOES BEAT Lv.が表示される。\n味方ユニットが戦術技を発動するとEBLv.が上がる。\n[HP][SP威力]小アップ",
+        "is_eb_link": true,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "SETSUNA F SEIEI",
+    "physical": {
+      "height": "",
+      "age": 23
+    },
+    "units": [
+      "ダブルオークアンタ"
+    ],
+    "pilot_skill": {
+      "name": "一発必中の長距離戦",
+      "trigger": "EBLv.2に上昇時",
+      "effect": "30秒間、自身の[遠距離攻撃力]をアップし、受けるダメージを軽減する。",
+      "has_sq_skill": false,
+      "sq_skill_details": null,
+      "is_eb_skill": true,
+      "eb_trigger_level": 2,
+      "sq_rush_effect": ""
+    },
+    "special_attack": null,
+    "ms_ability": null,
+    "echoes_beat": null
+  },
+  "ocr_timestamp": "2026-06-02T12:30:00",
+  "ocr_type": "basic",
+  "ocr_engine": "claude_code_subagent"
+}
