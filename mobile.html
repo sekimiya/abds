@@ -1982,7 +1982,7 @@ function _parseLinkCondition(condition) {
 function _countLinkInDeck(linkName, category) {
   if (category) {
     let count = 0;
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 10; i++) {
       const num = AppState.deck[i];
       if (!num) continue;
       const card = AppState.cardIndex.find(c => c.number === num);
@@ -2003,7 +2003,7 @@ function _countLinkInDeckVirtual(linkName, category, virtualCard) {
   const inDeck = AppState.deck.includes(vNum);
   if (category) {
     let count = 0;
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 10; i++) {
       const num = AppState.deck[i];
       if (!num) continue;
       if (inDeck && num === vNum) continue;
