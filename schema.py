@@ -209,13 +209,22 @@ def _extract_links(ocr):
                 m_c = re.match(r'(.+?)\s+(デッキに\d枚以上)', cond)
                 if m_c:
                     name, cond, effect = m_c.group(1), m_c.group(2), name
+        is_eb = bool(entry.get('is_eb_link')) or name.startswith('[EB]') or 'ECHOES BEAT' in effect
+        is_sq = bool(entry.get('is_sq_link')) or name.startswith('[SQ]') or 'SQゲージ' in effect
+        is_ab = bool(entry.get('is_ab_link')) or name.startswith('[AB]')
+        if name.startswith('[EB]'):
+            name = re.sub(r'^\[EB\]\s*', '', name)
+        elif name.startswith('[SQ]'):
+            name = re.sub(r'^\[SQ\]\s*', '', name)
+        elif name.startswith('[AB]'):
+            name = re.sub(r'^\[AB\]\s*', '', name)
         result.append({
             'name': name,
             'condition': cond,
             'effect': effect,
-            'is_eb_link': bool(entry.get('is_eb_link')),
-            'is_sq_link': bool(entry.get('is_sq_link')),
-            'is_ab_link': bool(entry.get('is_ab_link')),
+            'is_eb_link': is_eb,
+            'is_sq_link': is_sq,
+            'is_ab_link': is_ab,
         })
     return result
 
