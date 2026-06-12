@@ -1,14 +1,10 @@
 name: Deploy data to gh-pages
 
+# 注意: mainのall_cards_list/ocr_results_debugはgh-pages側より古く、
+# 自動デプロイするとgh-pages上の修正が古いデータで巻き戻るため
+# push発火を無効化 (手動実行のみ)。
+# データの正本はgh-pagesブランチ + rebuild_index.py。
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'all_cards_list/**'
-      - 'ocr_results_debug/**'
-      - 'logic/**'
-      - 'scripts/build_gh_pages.py'
-      - 'tactics_cards.json'
   workflow_dispatch:
 
 jobs:
