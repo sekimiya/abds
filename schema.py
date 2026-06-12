@@ -249,16 +249,24 @@ def _extract_stats(ocr):
     }
 
 
+def _terrain_grade(val):
+    """地形適性1値を正規化。項目なし(ー/-/None等)は ''"""
+    if not val or not isinstance(val, str):
+        return ''
+    v = val.strip()
+    return '' if v in ('-', 'ー', '−', '一') else v
+
+
 def _extract_terrain(ocr):
     """terrain_compatibility/terrainを統一形式で取得"""
     tc = ocr.get('terrain_compatibility') or ocr.get('terrain')
     if not isinstance(tc, dict):
         return {'ground': '', 'space': '', 'desert': '', 'water': ''}
     return {
-        'ground': tc.get('ground', '') or '',
-        'space': tc.get('space', '') or '',
-        'desert': tc.get('desert', '') or '',
-        'water': tc.get('water') or tc.get('underwater', '') or '',
+        'ground': _terrain_grade(tc.get('ground')),
+        'space': _terrain_grade(tc.get('space')),
+        'desert': _terrain_grade(tc.get('desert')),
+        'water': _terrain_grade(tc.get('water') or tc.get('underwater')),
     }
 
 

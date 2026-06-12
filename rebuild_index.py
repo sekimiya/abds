@@ -93,6 +93,9 @@ def load_ocr_results(series_filter=None):
                 card_name = data.get('card_name', '') or ''
                 data['ocr_data'] = canonicalize_ocr_data(data.get('ocr_data', {}), card_name)
                 results[num] = data
+            else:
+                print(f'警告: {num} のOCRソースが重複しています (無視: {fname})。'
+                      f'同一card_numberの_basic.jsonは1つにしてください。')
     if len(dirs) > 1:
         print(f'OCRソース: ローカル + abds-ocr フォールバック')
     return results

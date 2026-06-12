@@ -86,7 +86,7 @@ OCR_PROMPT = """カードゲーム「ガンダム アーセナルベース」の
     "sub": { "name": "ビーム・ライフル", "range": 3, "type": "遠距離" }
   },
   "ms_ability": { "name": "連撃", "activation": "任意発動", "target": "単体(敵)", "range": 2, "cost": 3, "description": "ロックオン中の敵に単体攻撃でダメージを与える。" },
-  "link_ability": [ { "name": "機動戦士ガンダム", "condition": "デッキに3枚以上", "effect": "[機動力]小アップ" } ],
+  "link_ability": [ { "name": "機動戦士ガンダム", "condition": "デッキに3枚以上", "effect": "[機動力]小アップ", "is_eb_link": false, "is_sq_link": false, "is_ab_link": false } ],
   "special_attack": { "name": "ビーム・サーベル強撃", "target": "単体(敵)", "range": 2, "sp_cost": 2, "power": 3400, "description": "敵単体に格闘攻撃でダメージを与える。", "echoes_beat": null, "united_sp": null },
   "rarity": "M", "illustrator": "toriyufu",
   "raw": "（カード上の全テキストをそのまま記録）"
@@ -142,7 +142,7 @@ UNITED SP がある場合（FQ/UT系）: special_attack.united_sp = { "partner1"
   "units": ["ガンダム"],
   "stats": { "mobility": 150, "ranged_attack": 200, "melee_attack": 240, "hp": 160 },
   "pilot_skill": { "name": "決定的な一撃", "trigger": "敵戦艦／拠点をロックオン時", "effect": "敵戦艦／拠点へのダメージを中アップする。", "has_sq_skill": false, "sq_skill_details": null, "is_eb_skill": false },
-  "link_ability": [ { "name": "機動戦士ガンダム", "condition": "デッキに3枚以上", "effect": "[機動力]小アップ", "is_eb_link": false } ],
+  "link_ability": [ { "name": "機動戦士ガンダム", "condition": "デッキに3枚以上", "effect": "[機動力]小アップ", "is_eb_link": false, "is_sq_link": false, "is_ab_link": false } ],
   "rarity": "M", "illustrator": null,
   "raw": "（カード上の全テキストをそのまま記録）"
 }
@@ -157,7 +157,9 @@ EB LINK ABILITY (is_eb_link: true): カード上に「EB LINK ABILITY」と表�
 - card_label.class: MSは「近距離/遠距離/機動」、PLは「殲滅/制圧/防衛」
 - category は card_label.class と同じ値
 - raw にはカード上の全テキストをプレーンテキストで記録
-- rarity はカード番号の右に記載（M, R, C, P, U, SR, PR, LR, LE, CP 等。1〜2文字）
+- rarity はカード番号の右に記載（C, U, R, M, P, PR, A, LX, LE 等。1〜2文字。AR弾は「A」、LXR弾は「LX」が正規値）
+- パラレル版の種別（SN, SECRET, PARALLEL, VE 等の封入種別）は rarity に入れないこと。rarity は必ずカードに印字されたレアリティ記号のみ
+- link_ability の各要素には is_eb_link, is_sq_link（[SQ]表記またはeffectにSQゲージ）, is_ab_link（AB LINK表記）のboolフラグを必ず含める
 - ms_ability は1カードにつき1つ（オブジェクト）。link_ability は1カードにつき通常2つ（配列）。生テキスト上のセクション見出し位置ではなく内容形式で分類すること。ms_ability は発動条件（任意発動等）・対象・射程・コストを持つ戦闘アビリティ。link_ability はデッキ条件とバフ効果を持つ。セクション内に混在している場合も内容に基づいて正しいフィールドに振り分けること
 - 出力は ```json ``` で囲み、JSON以外のテキストは出力しない
 """

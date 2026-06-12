@@ -124,21 +124,23 @@ STRUCTURE_PROMPT = r"""カード裏面のOCR生テキストを解析し、JSON�
     "sub": { "name": "ビーム・ライフル", "range": 3, "type": "遠距離" }
   },
   "ms_ability": { "name": "連撃", "activation": "任意発動", "target": "単体(敵)", "range": 2, "cost": 3, "description": "ロックオン中の敵に単体攻撃でダメージを与える。" },
-  "link_ability": [ { "name": "機動戦士ガンダム", "condition": "デッキに3枚以上", "effect": "[機動力]小アップ" } ],
-  "special_attack": { "name": "ビーム・サーベル強撃", "target": "単体(敵)", "range": 2, "sp_cost": 2, "power": 3400, "description": "敵単体に格闘攻撃でダメージを与える。", "united_sp": null },
+  "link_ability": [ { "name": "機動戦士ガンダム", "condition": "デッキに3枚以上", "effect": "[機動力]小アップ", "is_eb_link": false, "is_sq_link": false, "is_ab_link": false } ],
+  "special_attack": { "name": "ビーム・サーベル強撃", "target": "単体(敵)", "range": 2, "sp_cost": 2, "power": 3400, "description": "敵単体に格闘攻撃でダメージを与える。", "echoes_beat": null, "united_sp": null },
   "rarity": "M", "illustrator": "toriyufu",
   "raw": "（元の生テキストをそのまま記録）"
 }
 ```
 UNITED SP がある場合（FQ/UT系）: special_attack.united_sp = { "partner1", "partner2", "range", "power", "description" }。連携相手が「ー」なら null。
-ECHOES BEAT がある場合: special_attack に以下のフィールドを追加（キー名は必ずこの通りにすること）:
-- "eb_level": EBレベル（整数。例: 2）
-- "eb_power": EB時の威力（整数。通常威力とEB威力が「3200 / 3800」のように併記される場合、後者がeb_power）
-- "eb_description": EB発動時の効果説明（通常説明と「／」で区切られている場合、「／」以降がEB説明）
-- "eb_target": EB時の対象（例: "単体(敵)"。通常と同じ場合も記載）
-- "eb_range": EB時の射程（整数。通常と同じ場合も記載）
-- "sp_type": "ECHOES BEAT SP"（ECHOES BEAT SPの場合のみ。通常のECHOES BEATにはこのフィールドを付けない）
-※ echoes_beat_lv, power_eb 等の別名は使わないこと。必ず上記のキー名を使用する。
+ECHOES BEAT がある場合: special_attack.echoes_beat に以下のネスト構造で格納する（eb_level等をspecial_attack直下にフラットに置かないこと）:
+```json
+"echoes_beat": { "eb_type": "normal", "eb_name": "", "eb_level": 1, "eb_note": "", "eb_target": "", "eb_range": 3, "eb_power": 3600, "eb_description": "" }
+```
+- eb_type: "normal"（ECHOES BEAT）または "sp"（ECHOES BEAT SP）
+- 威力が「3300 / 3600」のように2つ併記される場合、前半がspecial_attack.power、後半がeb_power
+- 説明文が「／」区切りの場合、前半がspecial_attack.description、後半がeb_description
+- 「ECHOES BEAT Lv.を下げることで…」等のシステム説明文は eb_note に格納し、descriptionには含めない
+- ECHOES BEAT表記がない場合は echoes_beat = null
+※ echoes_beat_lv, power_eb、special_attack直下のeb_*等の別名・別配置は使わないこと。
 
 ## PLカードの場合
 ```json
@@ -151,7 +153,7 @@ ECHOES BEAT がある場合: special_attack に以下のフィールドを追加
   "units": ["ガンダム"],
   "stats": { "mobility": 150, "ranged_attack": 200, "melee_attack": 240, "hp": 160 },
   "pilot_skill": { "name": "決定的な一撃", "trigger": "敵戦艦／拠点をロックオン時", "effect": "敵戦艦／拠点へのダメージを中アップする。", "has_sq_skill": false, "sq_skill_details": null, "is_eb_skill": false },
-  "link_ability": [ { "name": "機動戦士ガンダム", "condition": "デッキに3枚以上", "effect": "[機動力]小アップ", "is_eb_link": false } ],
+  "link_ability": [ { "name": "機動戦士ガンダム", "condition": "デッキに3枚以上", "effect": "[機動力]小アップ", "is_eb_link": false, "is_sq_link": false, "is_ab_link": false } ],
   "rarity": "M", "illustrator": null,
   "raw": "（元の生テキストをそのまま記録）"
 }
@@ -166,7 +168,9 @@ EB LINK ABILITY (is_eb_link: true): カード上に「EB LINK ABILITY」と表�
 - card_label.class: MSは「近距離/遠距離/機動」、PLは「殲滅/制圧/防衛」
 - category は card_label.class と同じ値
 - raw には入力された生テキストをそのまま記録
-- rarity はカード番号の右に記載（M, R, C, P, U, SR, PR, LR, LE, CP 等。1〜2文字）
+- rarity はカード番号の右に記載（C, U, R, M, P, PR, A, LX, LE 等。1〜2文字。AR弾は「A」、LXR弾は「LX」が正規値）
+- パラレル版の種別（SN, SECRET, PARALLEL, VE 等の封入種別）は rarity に入れないこと。rarity は必ずカードに印字されたレアリティ記号のみ
+- link_ability の各要素には is_eb_link（EB LINK ABILITY表記）, is_sq_link（[SQ]表記またはeffectにSQゲージ）, is_ab_link（AB LINK表記）のboolフラグを必ず含める
 - ms_ability は1カードにつき1つ（オブジェクト）。link_ability は1カードにつき通常2つ（配列）。生テキスト上のセクション見出し位置ではなく内容形式で分類すること。ms_ability は発動条件（任意発動等）・対象・射程・コストを持つ戦闘アビリティ。link_ability はデッキ条件とバフ効果を持つ。セクション内に混在している場合も内容に基づいて正しいフィールドに振り分けること
 - 出力は ```json ``` で囲み、JSON以外のテキストは出力しない
 """
@@ -222,7 +226,7 @@ MSカードの場合:
     "sub": { "name": "", "range": 0, "type": "" }
   },
   "ms_ability": { "name": "", "activation": "", "target": "", "range": 0, "cost": 0, "description": "" },
-  "link_ability": [ { "name": "", "condition": "", "effect": "" } ],
+  "link_ability": [ { "name": "", "condition": "", "effect": "", "is_eb_link": false, "is_sq_link": false, "is_ab_link": false } ],
   "special_attack": { "name": "", "target": "", "range": 0, "sp_cost": 0, "power": 0, "description": "", "echoes_beat": null, "united_sp": null },
   "rarity": "", "illustrator": "", "raw": ""
 }
@@ -250,7 +254,7 @@ PLカードの場合:
   "units": [],
   "stats": { "mobility": 0, "ranged_attack": 0, "melee_attack": 0, "hp": 0 },
   "pilot_skill": { "name": "", "trigger": "", "effect": "", "has_sq_skill": false, "sq_skill_details": null, "is_eb_skill": false },
-  "link_ability": [ { "name": "", "condition": "", "effect": "", "is_eb_link": false } ],
+  "link_ability": [ { "name": "", "condition": "", "effect": "", "is_eb_link": false, "is_sq_link": false, "is_ab_link": false } ],
   "rarity": "", "illustrator": "", "raw": ""
 }
 ```
@@ -262,117 +266,10 @@ PLカードの場合:
 - 読み取れないフィールドは null
 - 数値は数値型
 - category は card_label.class と同じ値（作品名ではない）
+- rarity の正規値: C, U, R, M, P, PR, A, LX, LE 等（AR弾は「A」、LXR弾は「LX」）。パラレル種別（SN, SECRET, PARALLEL, VE等）は rarity に入れない
 - raw は空文字列 "" でよい
-- link_ability は通常2つ（配列で全て含める）
+- link_ability は通常2つ（配列で全て含める）。is_eb_link/is_sq_link/is_ab_link のフラグを必ず含める
 - 出力は ```json ``` で囲み、JSON以外のテキストは出力しない
-"""
-
-# ---------------------------------------------------------------------------
-# Combined Prompt — (レガシー) 1回の呼び出しで画像→生テキスト＋構造化JSONを同時生成
-# ---------------------------------------------------------------------------
-COMBINED_PROMPT = r"""カードゲーム「ガンダム アーセナルベース」のカード裏面画像を読み取り、以下の2パートを出力してください。
-
-## PART A: 生テキスト抽出
-画像上の全テキストを上から下、左から右の順に忠実に書き起こす。
-===RAW_START===
-（生テキスト）
-===RAW_END===
-
-## PART B: 構造化JSON
-画像の全情報を正確に読み取り、以下のJSON形式で出力してください（```json```で囲む）。
-
-### MSカードの場合
-```json
-{
-  "card_id": "AB01-001", "type": "MS",
-  "card_label": { "class": "近距離", "cost_label": "コスト4" },
-  "name": "ガンダム", "model": "RX-78-2 GUNDAM", "cost": 4, "category": "近距離",
-  "affiliation": "地球連邦軍", "pilot": "アムロ・レイ",
-  "stats": { "height": "18.0m", "weight": "43.4t", "mobility": 200, "ranged_attack": 110, "melee_attack": 370, "hp": 380 },
-  "terrain_compatibility": { "ground": "A", "space": "A", "desert": "C", "water": null },
-  "weapon": {
-    "main": { "name": "ビーム・サーベル", "range": 1, "type": "近距離" },
-    "sub": { "name": "ビーム・ライフル", "range": 3, "type": "遠距離" }
-  },
-  "ms_ability": { "name": "連撃", "activation": "任意発動", "target": "単体(敵)", "range": 2, "cost": 3, "description": "ロックオン中の敵に単体攻撃でダメージを与える。" },
-  "link_ability": [ { "name": "機動戦士ガンダム", "condition": "デッキに3枚以上", "effect": "[機動力]小アップ" } ],
-  "special_attack": { "name": "ビーム・サーベル強撃", "target": "単体(敵)", "range": 2, "sp_cost": 2, "power": 3400, "description": "敵単体に格闘攻撃でダメージを与える。", "echoes_beat": null, "united_sp": null },
-  "rarity": "M", "illustrator": "toriyufu",
-  "raw": ""
-}
-```
-UNITED SP がある場合（FQ/UT系）: special_attack.united_sp = { "partner1", "partner2", "range", "power", "description" }。連携相手が「ー」なら null。
-SQUAD SP がある場合: sp_type:"SQUAD SP"を追加。squad_sp:{name,target,range,power(整数),description}を別途追加。
-
-#### ECHOES BEAT がある場合（VE系等）
-カード上に「ECHOES BEAT」または「ECHOES BEAT SP」の表記がある場合、通常SPとEBを明確に分離する。
-
-**description の分離ルール:**
-- カード上の説明文は「通常SP説明 / EB説明」の形式で「/」区切りで2つ並んでいる
-- `special_attack.description` には通常SPの説明文のみを格納する（"/"より前の部分）
-- EB側の説明文は `echoes_beat.eb_description` に格納する（"/"より後の部分）
-- 「ECHOES BEAT Lv.を下げることで、Lv.戦術技が発動する。」等のシステム説明文は `echoes_beat.eb_note` に格納し、description には含めない
-
-**power の分離ルール:**
-- 威力が「3300 / 3600」のように2つ表記されている場合、前半が通常SP威力、後半がEB威力
-- `special_attack.power` には通常SP威力（前半の数値）
-- `echoes_beat.eb_power` にはEB威力（後半の数値）
-- EB威力が「ー」なら null
-
-**echoes_beat 構造:**
-```json
-"echoes_beat": {
-  "eb_type": "normal",
-  "eb_name": "ファンネル・ミサイル斉射 Lv.1",
-  "eb_level": 1,
-  "eb_note": "ECHOES BEAT Lv.を下げることで、Lv.戦術技が発動する。",
-  "eb_target": "範囲(敵)",
-  "eb_range": 3,
-  "eb_power": 3600,
-  "eb_description": "EBLv.を1下げる。ロックオン中の敵を中心に扇状の範囲攻撃を行い、..."
-}
-```
-- `eb_type`: "normal"（ECHOES BEAT）または "sp"（ECHOES BEAT SP）
-- `eb_level`: EB名に含まれる Lv.X の数値（1, 2, 3）
-- `eb_name`: EB側のSP名（例: "ファンネル・ミサイル斉射 Lv.1"）
-- `eb_note`: システム説明文（"ECHOES BEAT Lv.を下げることで..."）
-- `eb_target`, `eb_range`: EB側の対象・射程（通常SPと異なる場合がある）
-- `eb_power`: EB威力（数値）
-- `eb_description`: EB側の効果説明（"EBLv.をX下げる。..."で始まる文）
-- ECHOES BEAT表記がない、または「ー」のみの場合は echoes_beat = null
-
-### PLカードの場合
-```json
-{
-  "card_id": "AB01-051", "type": "PL",
-  "card_label": { "class": "制圧", "cost_label": "コスト4" },
-  "name": "アムロ・レイ", "english_name": "AMURO RAY", "cost": 4, "category": "制圧",
-  "affiliation": "地球連邦軍",
-  "physical": { "height": "168cm", "age": 15 },
-  "units": ["ガンダム"],
-  "stats": { "mobility": 150, "ranged_attack": 200, "melee_attack": 240, "hp": 160 },
-  "pilot_skill": { "name": "決定的な一撃", "trigger": "敵戦艦／拠点をロックオン時", "effect": "敵戦艦／拠点へのダメージを中アップする。", "has_sq_skill": false, "sq_skill_details": null, "is_eb_skill": false },
-  "link_ability": [ { "name": "機動戦士ガンダム", "condition": "デッキに3枚以上", "effect": "[機動力]小アップ", "is_eb_link": false } ],
-  "rarity": "M", "illustrator": null,
-  "raw": ""
-}
-```
-SQ関連スキル (has_sq_skill: true): sq_skill_details = { "sq_gauge_effect", "sq_max_effect", "squad_rush_effect" }。SQ/SQUAD/ゲージ がスキルテキストにあれば true。
-EB PL SKILL (is_eb_skill: true): カード上に「EB PL SKILL」と表記されている場合、またはtriggerに「EBLv.」を含む場合。
-EB LINK ABILITY (is_eb_link: true): カード上に「EB LINK ABILITY」と表記されている場合、またはeffectに「ECHOES BEAT」「EBLv.」を含む場合。
-
-### 共通ルール
-- 読み取れないフィールドは null（空文字列ではなく）
-- 数値は数値型（cost, range, power, stats等）
-- card_label.class: MSは「近距離/遠距離/機動」、PLは「殲滅/制圧/防衛」
-- category は card_label.class と同じ値（作品名ではない）
-- raw にはPART Aの生テキストをそのまま記録
-- rarity はカード番号の右に記載（M, R, C, P, U, SR, PR, LR, LE, CP 等。1〜2文字）
-- ms_ability は1カードにつき1つ（オブジェクト）。link_ability は1カードにつき通常2つ（配列）。内容形式で分類：発動条件+射程+コスト→ms_ability、デッキ条件+バフ→link_ability
-- link_abilityが複数ある場合はすべて配列に含める。EB LINKと通常LINKが混在する場合も個別にis_eb_linkを設定
-- 出力は ```json ``` で囲み、JSON以外のテキストは出力しない
-
-出力順序: PART A → PART B
 """
 
 # ---------------------------------------------------------------------------
@@ -408,36 +305,6 @@ def extract_json_from_text(text: str) -> Optional[dict]:
         json_str = text.strip()
 
     return json.loads(json_str)
-
-
-def _parse_combined_response(response: str) -> tuple:
-    """
-    統合プロンプトのレスポンスから raw_text と ocr_data を分離する。
-    戻り値: (raw_text, ocr_data) — どちらか欠けたら (None, None)
-    """
-    # ===RAW_START=== 〜 ===RAW_END=== を抽出
-    raw_match = re.search(
-        r"===RAW_START===\s*\n(.*?)\n\s*===RAW_END===",
-        response,
-        re.DOTALL,
-    )
-    if not raw_match:
-        return (None, None)
-    raw_text = raw_match.group(1).strip()
-    if not raw_text:
-        return (None, None)
-
-    # RAWマーカー以降の部分からJSONを抽出
-    after_raw = response[raw_match.end():]
-    try:
-        ocr_data = extract_json_from_text(after_raw)
-    except (json.JSONDecodeError, IndexError):
-        return (None, None)
-
-    if not isinstance(ocr_data, dict):
-        return (None, None)
-
-    return (raw_text, ocr_data)
 
 
 def make_file_prefix(card_number: str, card_name: str, series: str) -> str:
