@@ -122,9 +122,11 @@ def load_parallel_cards(ocr_results, card_details):
             continue
         parallel_data = json.loads(json.dumps(base_ocr))
         parallel_data['card_number'] = num
-        # パラレル固有のレアリティ(VE/SN等が印字されている場合)を上書き
-        if data.get('rarity'):
-            parallel_data.setdefault('ocr_data', {})['rarity'] = data['rarity']
+        # レアリティの優先順: all_cards_listの明示指定 > 既存データの値(P等) > ベースのコピー
+        rarity = data.get('rarity') or (
+            (card_details.get(num, {}).get('ocr_data') or {}).get('rarity'))
+        if rarity:
+            parallel_data.setdefault('ocr_data', {})['rarity'] = rarity
         front_url = data.get('front_image_url') or (data.get('front', {}) or {}).get('image_url', '')
         back_url = data.get('back_image_url') or (data.get('back', {}) or {}).get('image_url', '')
         if front_url:
@@ -677,17 +679,20 @@ def main():
             card_details[num] = build_card_details_entry(num, data)
             added += 1
 
-    # パラレルカード(_p1, _p2等)をall_cards_listから追加
+    # パラレルカード(_p1, _p2等)をall_cards_listから生成
+    # 既存パラレルも毎回ベースから再生成する(ベース側のデータ改善を反映するため)。
+    # レアリティはload_parallel_cards内で引き継がれる。
     existing_nums = {c['number'] for c in card_index}
     parallels = load_parallel_cards(ocr_results, card_details)
-    parallel_added = 0
-    for num, data in sorted(parallels.items()):
-        if num not in existing_nums:
+    parallel_added = sum(1 for n in parallels if n not in existing_nums)
+    parallel_refreshed = len(parallels) - parallel_added
+    if parallels:
+        card_index = [c for c in card_index if c['number'] not in parallels]
+        for num, data in sorted(parallels.items()):
             card_index.append(build_card_index_entry(num, data))
             card_details[num] = build_card_details_entry(num, data)
-            parallel_added += 1
-    if parallel_added:
-        print(f'パラレルカード追加: {parallel_added}枚')
+    if parallel_added or parallel_refreshed:
+        print(f'パラレルカード: 追加{parallel_added}枚 / ベースから再生成{parallel_refreshed}枚')
 
     # Sort card_index by number
     card_index.sort(key=lambda c: c['number'])
