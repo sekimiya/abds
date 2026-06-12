@@ -122,6 +122,9 @@ def load_parallel_cards(ocr_results, card_details):
             continue
         parallel_data = json.loads(json.dumps(base_ocr))
         parallel_data['card_number'] = num
+        # パラレル固有のレアリティ(VE/SN等が印字されている場合)を上書き
+        if data.get('rarity'):
+            parallel_data.setdefault('ocr_data', {})['rarity'] = data['rarity']
         front_url = data.get('front_image_url') or (data.get('front', {}) or {}).get('image_url', '')
         back_url = data.get('back_image_url') or (data.get('back', {}) or {}).get('image_url', '')
         if front_url:

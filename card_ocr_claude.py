@@ -157,8 +157,8 @@ EB LINK ABILITY (is_eb_link: true): カード上に「EB LINK ABILITY」と表�
 - card_label.class: MSは「近距離/遠距離/機動」、PLは「殲滅/制圧/防衛」
 - category は card_label.class と同じ値
 - raw にはカード上の全テキストをプレーンテキストで記録
-- rarity はカード番号の右に記載（C, U, R, M, P, PR, A, LX, LE 等。1〜2文字。AR弾は「A」、LXR弾は「LX」が正規値）
-- パラレル版の種別（SN, SECRET, PARALLEL, VE 等の封入種別）は rarity に入れないこと。rarity は必ずカードに印字されたレアリティ記号のみ
+- rarity はカード番号の右に印字された記号のみ（C, U, R, M, P, PR, A, LX, VE, SN, LE 等。1〜2文字。AR弾は「A」、LXR弾は「LX」、VEパラレルの一部は「VE」「SN」）
+- カード番号の左に大きく書かれた「SECRET」「PARALLEL」はバナー表記でありレアリティではない。rarity に入れないこと（その場合も番号右の記号を読む）
 - link_ability の各要素には is_eb_link, is_sq_link（[SQ]表記またはeffectにSQゲージ）, is_ab_link（AB LINK表記）のboolフラグを必ず含める
 - ms_ability は1カードにつき1つ（オブジェクト）。link_ability は1カードにつき通常2つ（配列）。生テキスト上のセクション見出し位置ではなく内容形式で分類すること。ms_ability は発動条件（任意発動等）・対象・射程・コストを持つ戦闘アビリティ。link_ability はデッキ条件とバフ効果を持つ。セクション内に混在している場合も内容に基づいて正しいフィールドに振り分けること
 - 出力は ```json ``` で囲み、JSON以外のテキストは出力しない

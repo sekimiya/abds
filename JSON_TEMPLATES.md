@@ -56,7 +56,7 @@ data/version.json          ビルドメタデータ
 | type | "MS" / "PL" | カード種別 |
 | name | string | 表示名 (型式名ms_nameではなくカード名) |
 | cost | int | コスト |
-| rarity | string | C, U, R, M, P, PR, A(AR弾), LX(LXR弾), LE 等。**パラレル種別(SN/SECRET/PARALLEL/VE)は入れない** |
+| rarity | string | C, U, R, M, P, PR, A(AR弾), LX(LXR弾), VE/SN(VEパラレル), LE 等の印字記号。**「SECRET」「PARALLEL」バナーはレアリティではない**。パラレル固有レアリティはall_cards_listエントリの`rarity`で上書き可 |
 | category | string | MS: 近距離/遠距離/機動、PL: 殲滅/制圧/防衛 |
 | affiliation | string | 所属 |
 | illustrator | string | イラストレーター (不明は "") |
