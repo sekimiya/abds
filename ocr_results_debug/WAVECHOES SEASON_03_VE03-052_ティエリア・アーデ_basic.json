@@ -1,0 +1,59 @@
+{
+  "card_number": "VE03-052",
+  "card_name": "ティエリア・アーデ",
+  "series": "WAVECHOES SEASON:03",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE03-052.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE03-052_b.jpg?v250630",
+  "ocr_engine": "claude_code_subagent",
+  "ocr_type": "basic",
+  "ocr_timestamp": "2026-06-17T00:00:00.000000",
+  "ocr_data": {
+    "type": "PL",
+    "name": "ティエリア・アーデ",
+    "cost": 1,
+    "rarity": "C",
+    "category": "防衛",
+    "affiliation": "ソレスタルビーイング",
+    "illustrator": "",
+    "stats": {
+      "mobility": 140,
+      "ranged_attack": 180,
+      "melee_attack": 70,
+      "hp": 220
+    },
+    "english_name": "TIERIA ERDE",
+    "physical": {
+      "height": "",
+      "age": ""
+    },
+    "units": ["ラファエルガンダム"],
+    "pilot_skill": {
+      "name": "精確な照準",
+      "trigger": "MSアビリティ発動時",
+      "effect": "30秒間、自身の[遠距離攻撃力]を中アップする。",
+      "has_sq_skill": false,
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    },
+    "link_ability": [
+      {
+        "name": "劇場版ガンダム00",
+        "condition": "デッキに3枚以上",
+        "effect": "[HP]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "的確な一撃",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][遠距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ]
+  }
+}

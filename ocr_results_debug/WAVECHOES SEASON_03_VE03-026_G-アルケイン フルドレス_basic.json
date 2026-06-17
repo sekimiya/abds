@@ -1,0 +1,75 @@
+{
+  "card_number": "VE03-026",
+  "card_name": "G-アルケイン フルドレス",
+  "series": "WAVECHOES SEASON:03",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE03-026.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE03-026_b.jpg?v250630",
+  "ocr_engine": "claude_code_subagent",
+  "ocr_type": "basic",
+  "ocr_timestamp": "2026-06-17T00:00:00.000000",
+  "ocr_data": {
+    "type": "MS",
+    "name": "G-アルケイン フルドレス",
+    "cost": 4,
+    "rarity": "R",
+    "category": "近距離",
+    "affiliation": "メガファウナ",
+    "illustrator": "TSUBASA KOYAMA_Aidle Co., Ltd.",
+    "stats": {
+      "mobility": 240,
+      "ranged_attack": 50,
+      "melee_attack": 370,
+      "hp": 340
+    },
+    "pilot": "アイーダ・スルガン",
+    "model": "MSAM-033 G-ARCANE FULL DRESS",
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "B",
+      "water": "C"
+    },
+    "weapon": {
+      "main": { "name": "ビーム・ソード", "range": 1, "type": "近距離" },
+      "sub": { "name": "対艦ビーム・ライフル", "range": 4, "type": "遠距離" }
+    },
+    "ms_ability": {
+      "name": "断砕",
+      "activation": "任意発動",
+      "target": "単体(敵)",
+      "range": 2,
+      "cost": 3,
+      "description": "ロックオン中の敵に単体攻撃でダメージを与え、強化状態を無効化する。"
+    },
+    "special_attack": {
+      "name": "ビーム・ソード強撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3300,
+      "description": "敵単体に格闘攻撃でダメージを与える。／",
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    },
+    "link_ability": [
+      {
+        "name": "Gのレコンギスタ",
+        "condition": "デッキに2枚以上",
+        "effect": "[HP]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ]
+  }
+}

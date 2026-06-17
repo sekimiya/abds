@@ -1,0 +1,75 @@
+{
+  "card_number": "VE03-030",
+  "card_name": "カバカーリー",
+  "series": "WAVECHOES SEASON:03",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE03-030.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE03-030_b.jpg?v250630",
+  "ocr_engine": "claude_code_subagent",
+  "ocr_type": "basic",
+  "ocr_timestamp": "2026-06-17T00:00:00.000000",
+  "ocr_data": {
+    "type": "MS",
+    "name": "カバカーリー",
+    "cost": 3,
+    "rarity": "R",
+    "category": "遠距離",
+    "affiliation": "キャピタル・アーミィ",
+    "illustrator": "Ultimateinudog",
+    "stats": {
+      "mobility": 190,
+      "ranged_attack": 290,
+      "melee_attack": 80,
+      "hp": 340
+    },
+    "pilot": "マスク",
+    "model": "VGMM-Git01 KABAKALI",
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "B",
+      "water": "C"
+    },
+    "weapon": {
+      "main": { "name": "ビーム・ショットガン", "range": 3, "type": "遠距離" },
+      "sub": { "name": "ビーム・リング", "range": 2, "type": "近距離" }
+    },
+    "ms_ability": {
+      "name": "砕撃",
+      "activation": "任意発動",
+      "target": "単体(敵)",
+      "range": 3,
+      "cost": 3,
+      "description": "ロックオン中の敵に単体攻撃でダメージを与え、メイン武装を使用不能にさせる。出撃時1度のみ使用可能。"
+    },
+    "special_attack": {
+      "name": "ビーム・ショットガン撃射",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3200,
+      "description": "敵単体に射撃攻撃でダメージを与える。／",
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    },
+    "link_ability": [
+      {
+        "name": "Gのレコンギスタ",
+        "condition": "デッキに2枚以上",
+        "effect": "[HP]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ]
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "card_number": "VE03-012",
+  "card_name": "ディキトゥス（影のカリスト専用機）",
+  "series": "WAVECHOES SEASON:03",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE03-012.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE03-012_b.jpg?v250630",
+  "ocr_engine": "claude_code_subagent",
+  "ocr_type": "basic",
+  "ocr_timestamp": "2026-06-17T00:00:00.000000",
+  "ocr_data": {
+    "type": "MS",
+    "name": "ディキトゥス（影のカリスト専用機）",
+    "cost": 4,
+    "rarity": "P",
+    "category": "近距離",
+    "affiliation": "木星帝国",
+    "illustrator": "",
+    "stats": {
+      "mobility": 250,
+      "ranged_attack": 30,
+      "melee_attack": 400,
+      "hp": 520
+    },
+    "pilot": "影のカリスト",
+    "model": "DICTUS (CALLISTO OF SHADOW CUSTOM)",
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "C",
+      "water": "C"
+    },
+    "weapon": {
+      "main": { "name": "ビーム・クロー", "range": 1, "type": "近距離" },
+      "sub": { "name": "頭部メガ粒子砲", "range": 4, "type": "遠距離" }
+    },
+    "ms_ability": {
+      "name": "絆盟",
+      "activation": "任意発動",
+      "target": "特殊(自分)",
+      "range": null,
+      "cost": 4,
+      "description": "自身と自身に一番近い味方ユニットは絆盟状態になる。絆盟状態のユニットのメイン攻撃力は、メイン攻撃力が高い方のユニットと同じ値になり、どちらかのユニットが撃破されるまで効果は持続する。※増援、デコイは対象外。"
+    },
+    "special_attack": {
+      "name": "ビーム・クロー連撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3500,
+      "description": "敵単体に格闘攻撃でダメージを与え、一定時間、自身の[近距離攻撃力]をアップする。",
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": {
+        "name": "影と光の掌握",
+        "partners": ["ディキトゥス(光のカリスト専用機)"],
+        "target": "単体(敵)",
+        "range": 3,
+        "power": 4500,
+        "description": "敵単体に格闘攻撃でダメージを与え、強化状態を無効化する。攻撃に参加したユニットはHPが最大値を超えて回復し、一定時間[遠／近攻撃力]をアップさせ、受けるダメージを軽減する。出撃時1度のみ使用可能。"
+      },
+      "squad_sp": null
+    },
+    "link_ability": [
+      {
+        "name": "クロスボーン・ガンダム",
+        "condition": "デッキに2枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "肉薄する戦い",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ]
+  }
+}

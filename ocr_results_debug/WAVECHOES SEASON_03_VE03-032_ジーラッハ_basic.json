@@ -1,0 +1,75 @@
+{
+  "card_number": "VE03-032",
+  "card_name": "ジーラッハ",
+  "series": "WAVECHOES SEASON:03",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE03-032.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE03-032_b.jpg?v250630",
+  "ocr_engine": "claude_code_subagent",
+  "ocr_type": "basic",
+  "ocr_timestamp": "2026-06-17T00:00:00.000000",
+  "ocr_data": {
+    "type": "MS",
+    "name": "ジーラッハ",
+    "cost": 4,
+    "rarity": "R",
+    "category": "遠距離",
+    "affiliation": "キャピタル・アーミィ",
+    "illustrator": "nakazaki tow",
+    "stats": {
+      "mobility": 220,
+      "ranged_attack": 310,
+      "melee_attack": 110,
+      "hp": 370
+    },
+    "pilot": "マニィ・アンバサダ",
+    "model": "G-RACH",
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "B",
+      "water": "C"
+    },
+    "weapon": {
+      "main": { "name": "ビーム砲", "range": 3, "type": "遠距離" },
+      "sub": { "name": "センチピード", "range": 2, "type": "近距離" }
+    },
+    "ms_ability": {
+      "name": "威圧",
+      "activation": "任意発動",
+      "target": "範囲(敵)",
+      "range": null,
+      "cost": 4,
+      "description": "自身を中心とした範囲内の敵ユニットをスタンさせ、一定時間被ダメージを少しアップする。"
+    },
+    "special_attack": {
+      "name": "ビフレストビット斉射",
+      "target": "範囲(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 2800,
+      "description": "ロックオン中の敵を中心に扇状の範囲攻撃を行い、範囲内の敵にダメージを与える。／",
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    },
+    "link_ability": [
+      {
+        "name": "Gのレコンギスタ",
+        "condition": "デッキに2枚以上",
+        "effect": "[HP]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ]
+  }
+}

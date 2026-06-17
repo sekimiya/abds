@@ -1,0 +1,80 @@
+{
+  "card_number": "VE03-008",
+  "card_name": "クロスボーン・ガンダムX-1 フルクロス",
+  "series": "WAVECHOES SEASON:03",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE03-008.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE03-008_b.jpg?v250630",
+  "ocr_engine": "claude_code_subagent",
+  "ocr_type": "basic",
+  "ocr_timestamp": "2026-06-17T00:00:00.000000",
+  "ocr_data": {
+    "type": "MS",
+    "name": "クロスボーン・ガンダムX-1 フルクロス",
+    "cost": 8,
+    "rarity": "U",
+    "category": "近距離",
+    "affiliation": "宇宙海賊クロスボーン・バンガード",
+    "illustrator": "",
+    "stats": {
+      "mobility": 260,
+      "ranged_attack": 30,
+      "melee_attack": 690,
+      "hp": 720
+    },
+    "pilot": "トビア・アロナクス",
+    "model": "XM-X1 CROSSBONE GUNDAM X-1 FULL CLOTH",
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "A",
+      "water": "B"
+    },
+    "weapon": {
+      "main": { "name": "ムラマサ・ブラスター", "range": 1, "type": "近距離" },
+      "sub": { "name": "ピーコック・スマッシャー", "range": 4, "type": "遠距離" }
+    },
+    "ms_ability": {
+      "name": "追撃[広角]",
+      "activation": "出撃時発動",
+      "target": "自分",
+      "range": null,
+      "cost": null,
+      "description": "ロックオン中の敵を通常攻撃後、追撃ゲージ(弾薬数)を消費してロックオン中の敵を中心に扇状の範囲追撃を行い、ダメージを与える。／追撃ゲージが0の時に任意発動可能となり、コストを5使用することで、追撃ゲージを再装填する。"
+    },
+    "special_attack": {
+      "name": "ザンバー・コンビネーション",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3800,
+      "description": "敵単体に格闘攻撃でダメージを与え、一定時間、自身の[機動力][近距離攻撃力]をアップする。／ EBLv.を3下げる。セーフティを解除し、敵単体に格闘攻撃でダメージを与え、HPが最大値を超えて回復する。セーフティ解除後は、能力が上昇、以後通常攻撃がメイン武器のみになり、自身を中心とした範囲攻撃に変化、回避されにくくなり、[斬り無効][ガード不可]となり、撃破される受けない状態となる。自身が激減するまで効果は持続、出撃時1度のみ使用可能。",
+      "sp_type": "",
+      "echoes_beat": {
+        "name": "ECHOES BEAT SP",
+        "level": 3,
+        "power": 5300,
+        "description": "ECHOES BEAT Lv.を下げることで、共鳴戦術技が発動する。"
+      },
+      "united_sp": null,
+      "squad_sp": null
+    },
+    "link_ability": [
+      {
+        "name": "クロスボーン・ガンダム",
+        "condition": "デッキに2枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "正義の宇宙海賊",
+        "condition": "デッキに4枚以上",
+        "effect": "[近距離攻撃力][HP]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ]
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "card_number": "VE03-001",
+  "card_name": "グフ・カスタム",
+  "series": "WAVECHOES SEASON:03",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE03-001.jpg?v250630",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE03-001_b.jpg?v250630",
+  "ocr_engine": "claude_code_subagent",
+  "ocr_type": "basic",
+  "ocr_timestamp": "2026-06-17T00:00:00.000000",
+  "ocr_data": {
+    "type": "MS",
+    "name": "グフ・カスタム",
+    "cost": 1,
+    "rarity": "C",
+    "category": "近距離",
+    "affiliation": "ジオン公国軍",
+    "illustrator": "",
+    "stats": {
+      "mobility": 200,
+      "ranged_attack": 60,
+      "melee_attack": 170,
+      "hp": 220
+    },
+    "pilot": "ノリス・パッカード",
+    "model": "MS-07B-3 GOUF CUSTOM",
+    "terrain_compatibility": {
+      "ground": "S",
+      "space": "C",
+      "desert": "A",
+      "water": "B"
+    },
+    "weapon": {
+      "main": { "name": "ヒート・サーベル", "range": 1, "type": "近距離" },
+      "sub": { "name": "ガトリング・シールド", "range": 3, "type": "遠距離" }
+    },
+    "ms_ability": {
+      "name": "強撃",
+      "activation": "任意発動",
+      "target": "単体(敵)",
+      "range": 1,
+      "cost": 3,
+      "description": "ロックオン中の敵に単体攻撃でダメージを与える。"
+    },
+    "special_attack": {
+      "name": "ヒート・サーベル激突",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3100,
+      "description": "敵単体に格闘攻撃でダメージを与える。／",
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    },
+    "link_ability": [
+      {
+        "name": "第08MS小隊",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ]
+  }
+}
