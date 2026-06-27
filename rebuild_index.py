@@ -371,9 +371,14 @@ def detect_sq_info(ocr_data):
     if card_type == 'MS':
         sp = ocr_data.get('special_attack', {}) or {}
         sp_type = sp.get('sp_type', '') or ''
+        squad_sp = sp.get('squad_sp') if isinstance(sp.get('squad_sp'), dict) else None
         if sp_type == 'SQUAD SP':
             has_sqsp = True
             sqsp_text = f"SQUAD SP\n{sp.get('name','')}\n威力:{sp.get('power','')}\n{sp.get('description','')}"
+        elif squad_sp:
+            # SQUAD SPが専用フィールド(squad_sp)に格納されているケース(本体SP+スカッドSP併記等)
+            has_sqsp = True
+            sqsp_text = f"SQUAD SP\n{squad_sp.get('name','')}\n威力:{squad_sp.get('power','')}\n{squad_sp.get('description','')}"
 
     has_sq_skill = False
     sq_skill_text = ''
@@ -452,7 +457,10 @@ def build_card_index_entry(card_number, card_data):
         ability_name = msa.get('name', '')
         if sp_type == 'SQUAD SP':
             sqsp_effect_tags = extract_effect_tags(sp_desc, sp)
-        elif sp_type in ('ECHOES BEAT', 'ECHOES BEAT SP'):
+        elif isinstance(sp.get('squad_sp'), dict):
+            _sq = sp['squad_sp']
+            sqsp_effect_tags = extract_effect_tags(_sq.get('description', '') or '', _sq)
+        if sp_type in ('ECHOES BEAT', 'ECHOES BEAT SP'):
             ebsp_effect_tags = extract_effect_tags(sp_desc, sp)
             eb_sp = sp.get('echoes_beat', {}) or {}
             if isinstance(eb_sp, dict):
