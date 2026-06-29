@@ -30,6 +30,7 @@ ALL_CARDS_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'all_ca
 CARD_INDEX_PATH = os.path.join(DATA_DIR, 'card_index.json')
 CARD_DETAILS_PATH = os.path.join(DATA_DIR, 'card_details.json')
 LINK_INDEX_PATH = os.path.join(DATA_DIR, 'link_index.json')
+CARD_NUMBERS_PATH = os.path.join(DATA_DIR, 'card_numbers.json')
 VERSION_PATH = os.path.join(DATA_DIR, 'version.json')
 
 
@@ -493,10 +494,10 @@ def build_card_index_entry(card_number, card_data):
         'has_ocr': True,
         'ocr_timestamp': card_data.get('ocr_timestamp', ''),
         'terrain': {
-            'ground': tc.get('ground', ''),
-            'space': tc.get('space', ''),
-            'desert': tc.get('desert', ''),
-            'water': tc.get('water', ''),
+            'ground': tc.get('ground') or None,
+            'space': tc.get('space') or None,
+            'desert': tc.get('desert') or None,
+            'water': tc.get('water') or None,
         },
         'search_text': build_search_text(card_number, ocr),
         'pilot': ocr.get('pilot', '') or '' if card_type == 'MS' else '',
@@ -728,16 +729,21 @@ def main():
         'built_at': now.isoformat(timespec='seconds'),
     }
 
+    # Build card_numbers from card_details keys
+    card_numbers = sorted(card_details.keys())
+
     # Save
     if not args.dry_run:
         save_json(CARD_INDEX_PATH, card_index)
         save_json(CARD_DETAILS_PATH, card_details)
         save_json(LINK_INDEX_PATH, link_index)
+        save_json(CARD_NUMBERS_PATH, card_numbers)
         save_json(VERSION_PATH, version)
         print('全ファイル保存完了:')
         print(f'  {CARD_INDEX_PATH}')
         print(f'  {CARD_DETAILS_PATH}')
         print(f'  {LINK_INDEX_PATH}')
+        print(f'  {CARD_NUMBERS_PATH}')
         print(f'  {VERSION_PATH}')
     else:
         print('(dry-run: ファイル書き込みスキップ)')

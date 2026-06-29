@@ -250,18 +250,18 @@ def _extract_stats(ocr):
 
 
 def _terrain_grade(val):
-    """地形適性1値を正規化。項目なし(ー/-/None等)は ''"""
+    """地形適性1値を正規化。項目なし(ー/-/None等)は None"""
     if not val or not isinstance(val, str):
-        return ''
+        return None
     v = val.strip()
-    return '' if v in ('-', 'ー', '−', '一') else v
+    return None if v in ('-', 'ー', '−', '一', '') else v
 
 
 def _extract_terrain(ocr):
     """terrain_compatibility/terrainを統一形式で取得"""
     tc = ocr.get('terrain_compatibility') or ocr.get('terrain')
     if not isinstance(tc, dict):
-        return {'ground': '', 'space': '', 'desert': '', 'water': ''}
+        return {'ground': None, 'space': None, 'desert': None, 'water': None}
     return {
         'ground': _terrain_grade(tc.get('ground')),
         'space': _terrain_grade(tc.get('space')),
@@ -446,14 +446,27 @@ def _extract_physical(ocr):
     """PL物理情報を統一形式で取得"""
     phys = ocr.get('physical')
     if isinstance(phys, dict):
+        raw_age = phys.get('age')
+        if isinstance(raw_age, int):
+            age = raw_age
+        elif isinstance(raw_age, str) and raw_age not in ('', 'ー', '-', '−'):
+            age = _safe_int(raw_age, default=None)
+        else:
+            age = None
         return {
             'height': phys.get('height', '') or '',
-            'age': phys.get('age', '') or '',
+            'age': age,
         }
     h = ocr.get('height', '') or ''
-    a = ocr.get('age', '') or ''
-    if h or a:
-        return {'height': str(h), 'age': str(a)}
+    a = ocr.get('age')
+    if isinstance(a, int):
+        age = a
+    elif isinstance(a, str) and a not in ('', 'ー', '-', '−'):
+        age = _safe_int(a, default=None)
+    else:
+        age = None
+    if h or age is not None:
+        return {'height': str(h), 'age': age}
     return None
 
 
@@ -491,7 +504,7 @@ def canonicalize_ocr_data(ocr, card_name=''):
         'cost': _safe_int(ocr.get('cost', 0)),
         'rarity': ocr.get('rarity', '') or '',
         'category': (ocr.get('card_label', {}) or {}).get('class', '') or ocr.get('category', '') or '',
-        'affiliation': ocr.get('affiliation', '') or '',
+        'affiliation': '' if ocr.get('affiliation', '') in ('', 'ー', '−', '-') else ocr.get('affiliation', ''),
         'illustrator': ocr.get('illustrator', '') or '',
         'stats': _extract_stats(ocr),
         'link_ability': _extract_links(ocr),
