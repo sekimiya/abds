@@ -97,17 +97,28 @@ UNITED SP がある場合（FQ/UT系）: special_attack.united_sp = { "partner1"
 ### ECHOES BEAT がある場合（VE系等）
 カード上に「ECHOES BEAT」または「ECHOES BEAT SP」の表記がある場合、通常SPとEBを明確に分離する。
 
+**eb_type の判定ルール（最重要）:**
+- **カードのバナー印字だけで判定する**: 橙色バナー「ECHOES BEAT」→ "normal"、青色バナー「ECHOES BEAT SP」→ "sp"
+- **技名のLv.数値から推定してはならない**（Lv.3でも橙色ECHOES BEATのカードが実在する: VE02-037等）
+
 **description の分離ルール:**
-- カード上の説明文は「通常SP説明 / EB説明」の形式で「/」区切りで2つ並んでいる
-- `special_attack.description` には通常SPの説明文のみを格納する（"/"より前の部分）
-- EB側の説明文は `echoes_beat.eb_description` に格納する（"/"より後の部分）
+- カード上の説明文は「通常SP説明 ／ EB説明」の形式で「／」または「/」区切りで2つ並んでいる
+- `special_attack.description` には通常SPの説明文のみを格納する（区切りより前の部分）。
+  **「EBLv.を」を含む文をspecial_attack.descriptionに残してはならない**
+- EB側の説明文は `echoes_beat.eb_description` に格納する（区切りより後、「EBLv.をN下げる。」で始まる部分）
+- 効果文中の「[遠／近攻撃力]」のようなスラッシュは区切りではない。区切りは直後に「EBLv.を」が続くものだけ
+- 「EBLv.が3に上昇する」等の文言も効果文の一部としてそのまま含める（後段でスキップSP分類に使う）
 - 「ECHOES BEAT Lv.を下げることで、Lv.戦術技が発動する。」等のシステム説明文は `echoes_beat.eb_note` に格納し、description には含めない
 
 **power の分離ルール:**
 - 威力が「3300 / 3600」のように2つ表記されている場合、前半が通常SP威力、後半がEB威力
 - `special_attack.power` には通常SP威力（前半の数値）
 - `echoes_beat.eb_power` にはEB威力（後半の数値）
+- 「3800 / 0」のように後半が0のカードも実在する（威力0のユーティリティEB技）。0のまま記録する
 - EB威力が「ー」なら null
+
+**格納場所のルール:**
+- EB戦術技は必ず `echoes_beat` に格納する。**`united_sp` に入れてはならない**（united_spはUNITED SP連携技専用）
 
 **echoes_beat 構造:**
 ```json

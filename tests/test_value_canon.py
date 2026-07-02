@@ -69,6 +69,43 @@ def test_validate_rejects_unknown_vocabulary():
     assert "ms_ability.target" in joined
 
 
+def test_canonicalize_derives_sp_type_from_eb_type():
+    """OCR生出力のeb_type(normal/sp)からsp_typeを補完する"""
+    ocr = {"special_attack": {"description": "通常効果。", "sp_type": "",
+                              "echoes_beat": {"eb_type": "sp", "name": "技名 Lv.3",
+                                              "description": "EBLv.を3下げる。効果。"}}}
+    canonicalize_values(ocr)
+    assert ocr["special_attack"]["sp_type"] == "ECHOES BEAT SP"
+
+    ocr2 = {"special_attack": {"description": "", "sp_type": "",
+                               "echoes_beat": {"eb_type": "normal", "name": "技名 Lv.1",
+                                               "description": "EBLv.を1下げる。効果。"}}}
+    canonicalize_values(ocr2)
+    assert ocr2["special_attack"]["sp_type"] == "ECHOES BEAT"
+
+
+def test_canonicalize_splits_eb_from_sp_description():
+    """通常SP／EB併記の自動分離。文中の[遠／近攻撃力]は誤爆しない"""
+    ocr = {"special_attack": {
+        "sp_type": "ECHOES BEAT",
+        "description": "敵の[遠／近攻撃力]をダウンする。／EBLv.を2下げる。EB効果。",
+        "echoes_beat": {"name": "技名 Lv.2", "description": ""}}}
+    changes = canonicalize_values(ocr)
+    sp = ocr["special_attack"]
+    assert sp["description"] == "敵の[遠／近攻撃力]をダウンする。"
+    assert sp["echoes_beat"]["description"] == "EBLv.を2下げる。EB効果。"
+    assert changes
+
+    # 半角スラッシュ区切り + EB側が既に正しい場合はsp側の切り詰めのみ
+    ocr2 = {"special_attack": {
+        "sp_type": "ECHOES BEAT",
+        "description": "通常効果。/EBLv.を1下げる。重複EB効果。",
+        "echoes_beat": {"name": "技名 Lv.1", "description": "EBLv.を1下げる。正しいEB効果。"}}}
+    canonicalize_values(ocr2)
+    assert ocr2["special_attack"]["description"] == "通常効果。"
+    assert ocr2["special_attack"]["echoes_beat"]["description"] == "EBLv.を1下げる。正しいEB効果。"
+
+
 def test_canonicalize_empties_dash_weapon_slot():
     ocr = {"weapon": {"main": {"name": "ビーム", "range": 1, "type": "近距離"},
                       "sub": {"name": "—", "range": 0, "type": "—"}}}

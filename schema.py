@@ -178,6 +178,30 @@ def canonicalize_values(ocr):
                     sp['sp_type'] = ''
                     changes.append('sp_type: EBなしのため "" に')
 
+        # OCR生出力のechoes_beat.eb_type("normal"/"sp")からsp_typeを導出
+        # (OCRはバナー印字を読んでeb_typeを設定する。sp_type未設定時のみ補完)
+        eb = sp.get('echoes_beat')
+        if isinstance(eb, dict) and sp.get('sp_type') not in ('ECHOES BEAT', 'ECHOES BEAT SP'):
+            raw_eb_type = eb.get('eb_type')
+            if raw_eb_type in ('normal', 'sp'):
+                sp['sp_type'] = 'ECHOES BEAT SP' if raw_eb_type == 'sp' else 'ECHOES BEAT'
+                changes.append(f'sp_type: eb_type={raw_eb_type!r}から{sp["sp_type"]!r}を導出')
+
+        # 「通常SP効果 ／ EB効果」併記の自動分離:
+        # special_attack.description に区切り(／or/)+EBLv.を… が残っていたら
+        # 通常分のみに切り詰め、EB側が未収録ならechoes_beat.descriptionへ移す。
+        # ([遠／近攻撃力]等の文中スラッシュを誤爆しないようEBLv.をを後読み条件にする)
+        eb = sp.get('echoes_beat')
+        if isinstance(eb, dict):
+            desc = sp.get('description') or ''
+            parts = re.split(r'\s*[／/]\s*(?=EBLv\.を)', desc, maxsplit=1)
+            if len(parts) == 2:
+                sp['description'] = parts[0].strip()
+                changes.append('special_attack.description: EB併記分を除去')
+                if 'EBLv.を' not in (eb.get('description') or ''):
+                    eb['description'] = parts[1].strip()
+                    changes.append('echoes_beat.description: 併記分から補完')
+
     # pilot_skill: トリガーがEBLv.を含むならis_eb_skill=true (仕様書ルールの自動適用)
     ps = ocr.get('pilot_skill')
     if isinstance(ps, dict):
@@ -258,6 +282,12 @@ def validate_values(ocr, cn='?'):
             if 'ECHOES BEAT Lv.を下げることで' in eb_desc:
                 errors.append(f'{cn}: echoes_beat.descriptionがバナー定型文。'
                               'EB側の効果文(EBLv.をN下げる。…)を入れる')
+            elif 'EBLv.を' not in eb_desc:
+                errors.append(f'{cn}: echoes_beat.descriptionにEBLv.消費文がない'
+                              '(EB効果文は「EBLv.をN下げる。」で始まる)')
+            if 'EBLv.を' in (sp.get('description') or ''):
+                errors.append(f'{cn}: special_attack.descriptionにEB効果文が残留'
+                              '(通常分のみにし、EB分はechoes_beatへ)')
         elif st in ('ECHOES BEAT', 'ECHOES BEAT SP'):
             errors.append(f'{cn}: sp_type={st!r}なのにechoes_beatがnull')
 

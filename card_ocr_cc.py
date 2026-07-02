@@ -135,11 +135,19 @@ ECHOES BEAT がある場合: special_attack.echoes_beat に以下のネスト構
 ```json
 "echoes_beat": { "eb_type": "normal", "eb_name": "", "eb_level": 1, "eb_note": "", "eb_target": "", "eb_range": 3, "eb_power": 3600, "eb_description": "" }
 ```
-- eb_type: "normal"（ECHOES BEAT）または "sp"（ECHOES BEAT SP）
-- 威力が「3300 / 3600」のように2つ併記される場合、前半がspecial_attack.power、後半がeb_power
-- 説明文が「／」区切りの場合、前半がspecial_attack.description、後半がeb_description
-- 「ECHOES BEAT Lv.を下げることで…」等のシステム説明文は eb_note に格納し、descriptionには含めない
-- ECHOES BEAT表記がない場合は echoes_beat = null
+- eb_type: **カードのバナー印字だけで判定する**。橙色バナー「ECHOES BEAT」→ "normal"、青色バナー「ECHOES BEAT SP」→ "sp"。
+  **技名のLv.数値から推定してはならない**（Lv.3でも橙色ECHOES BEATのカードが実在する。逆にLv.1のECHOES BEAT SPは存在しない想定でもバナーを読むこと）
+- 威力が「3300 / 3600」のように2つ併記される場合、前半がspecial_attack.power、後半がeb_power。
+  「3800 / 0」のように後半が0のカードも実在する（威力0のユーティリティEB技）。0をそのまま記録する
+- 説明文が「／」または「/」区切りでEB効果が併記される場合、区切りの前半（通常SP効果）だけを
+  special_attack.description に、後半（「EBLv.をN下げる。」で始まる）を eb_description に入れる。
+  **special_attack.description に「EBLv.を」を含む文を残してはならない**。
+  ※効果文中の「[遠／近攻撃力]」のようなスラッシュは区切りではない。区切りは直後に「EBLv.を」が続くものだけ
+- eb_description は必ず「EBLv.をN下げる。」から始まる（Nは技名のLv.と同じ数値）。
+  「EBLv.が3に上昇する」等の文言も効果文の一部としてそのまま含める（後段でスキップSP分類に使う）
+- 「ECHOES BEAT Lv.を下げることで…」等のシステム説明文（バナー下の定型文）は eb_note に格納し、eb_descriptionには含めない
+- ECHOES BEAT表記がない場合、またはEB欄が「ー」（ダッシュ）印字の場合は echoes_beat = null
+  （nameやtypeがーのdictを作らない）
 ※ echoes_beat_lv, power_eb、special_attack直下のeb_*等の別名・別配置は使わないこと。
 
 ## PLカードの場合
@@ -236,10 +244,13 @@ echoes_beat がある場合の構造:
 ```json
 "echoes_beat": { "eb_type": "normal/sp", "eb_name": "", "eb_level": 0, "eb_note": "", "eb_target": "", "eb_range": 0, "eb_power": 0, "eb_description": "" }
 ```
-- eb_type: "normal"（ECHOES BEAT）または "sp"（ECHOES BEAT SP）
-- 威力が「3300 / 3600」のように2つある場合、前半がspecial_attack.power、後半がeb_power
-- 説明文が「/」区切りの場合、前半がspecial_attack.description、後半がeb_description
-- ECHOES BEAT表記がない場合は echoes_beat = null
+- eb_type: **バナー印字だけで判定** — 橙「ECHOES BEAT」→ "normal"、青「ECHOES BEAT SP」→ "sp"。技名のLv.数値から推定禁止
+- 威力が「3300 / 3600」のように2つある場合、前半がspecial_attack.power、後半がeb_power（「/ 0」も0のまま記録）
+- 説明文が「／」or「/」区切りの場合、前半のみspecial_attack.description、後半（EBLv.をN下げる。で始まる）をeb_description。
+  special_attack.descriptionに「EBLv.を」を残さない。[遠／近攻撃力]等の文中スラッシュは区切りではない
+- eb_descriptionは「EBLv.をN下げる。」から始める。「EBLv.が3に上昇する」等もそのまま含める
+- ECHOES BEAT表記がない、またはEB欄が「ー」印字の場合は echoes_beat = null
+- **EB戦術技をunited_spに入れない**（united_spはUNITED SP連携技専用）
 
 united_sp がある場合: { "partner1": "", "partner2": "", "range": 0, "power": 0, "description": "" }。「ー」なら null。
 

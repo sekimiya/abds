@@ -1,90 +1,90 @@
 {
-  "card_number": "BP08-006",
-  "card_name": "デスティニーガンダムSpecII",
-  "series": "BOOSTER PACK ガンダムトライエイジ Vol.2",
-  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP08-006.jpg?v250630",
-  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP08-006_b.jpg?v250630",
-  "ocr_data": {
-    "type": "MS",
-    "name": "デスティニーガンダムSpecII",
-    "cost": 5,
-    "rarity": "U",
-    "category": "近距離",
-    "affiliation": "コンパス",
-    "illustrator": "Exocet",
-    "stats": {
-      "mobility": 300,
-      "ranged_attack": 50,
-      "melee_attack": 570,
-      "hp": 530
+    "card_number": "BP08-006",
+    "card_name": "デスティニーガンダムSpecII",
+    "series": "BOOSTER PACK ガンダムトライエイジ Vol.2",
+    "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP08-006.jpg?v250630",
+    "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP08-006_b.jpg?v250630",
+    "ocr_data": {
+        "type": "MS",
+        "name": "デスティニーガンダムSpecII",
+        "cost": 5,
+        "rarity": "U",
+        "category": "近距離",
+        "affiliation": "コンパス",
+        "illustrator": "Exocet",
+        "stats": {
+            "mobility": 300,
+            "ranged_attack": 50,
+            "melee_attack": 570,
+            "hp": 530
+        },
+        "link_ability": [
+            {
+                "name": "トライエイジ",
+                "condition": "デッキに2枚以上",
+                "effect": "[HP]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            },
+            {
+                "name": "肉薄する戦い",
+                "condition": "デッキに4枚以上",
+                "effect": "[機動力][近距離攻撃力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            }
+        ],
+        "pilot": "シン・アスカ",
+        "model": "ZGMF/A-42S2 DESTINY GUNDAM SPECII",
+        "terrain_compatibility": {
+            "ground": "A",
+            "space": "S",
+            "desert": "B",
+            "water": "A"
+        },
+        "weapon": {
+            "main": {
+                "name": "アロンダイトビームソード",
+                "range": 1,
+                "type": "近距離"
+            },
+            "sub": {
+                "name": "高エネルギー長射程ビーム砲",
+                "range": 4,
+                "type": "遠距離"
+            }
+        },
+        "ms_ability": {
+            "name": "双甲",
+            "activation": "任意発動",
+            "target": "特殊(自分)",
+            "range": null,
+            "cost": 4,
+            "description": "指定した味方ユニットの範囲内に移動後、一定時間連携状態となり、自身と連携中の味方が受けるダメージを軽減する。"
+        },
+        "special_attack": {
+            "name": "一斉連撃",
+            "target": "単体(敵)",
+            "range": 3,
+            "sp_cost": 2,
+            "power": 3600,
+            "description": "光の翼を展開し、敵単体に格闘攻撃でダメージを与える。光の翼展開後は能力が上昇し、自身が撤退するまで効果は持続する。",
+            "sp_type": "ECHOES BEAT SP",
+            "echoes_beat": {
+                "name": "DUPE粒子分身連撃 Lv.3",
+                "level": 3,
+                "power": 5100,
+                "range": 3,
+                "target": "単体(敵)",
+                "description": "EBLv.を3下げる。光の翼を展開し、敵単体に格闘攻撃でダメージを与える。光の翼展開後は、自身が撤退するまで能力が上昇する。自身の周囲に電磁タイプの分身9体を呼び出す。このユニットは一定時間MSアビリティ[残像]を発動した状態になる。自身と呼び出した分身は一定時間スタンを受けない状態になる。出撃時1度のみ使用可能。"
+            },
+            "united_sp": null,
+            "squad_sp": null
+        }
     },
-    "link_ability": [
-      {
-        "name": "トライエイジ",
-        "condition": "デッキに2枚以上",
-        "effect": "[HP]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      },
-      {
-        "name": "肉薄する戦い",
-        "condition": "デッキに4枚以上",
-        "effect": "[機動力][近距離攻撃力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      }
-    ],
-    "pilot": "シン・アスカ",
-    "model": "ZGMF/A-42S2 DESTINY GUNDAM SPECII",
-    "terrain_compatibility": {
-      "ground": "A",
-      "space": "S",
-      "desert": "B",
-      "water": "A"
-    },
-    "weapon": {
-      "main": {
-        "name": "アロンダイトビームソード",
-        "range": 1,
-        "type": "近距離"
-      },
-      "sub": {
-        "name": "高エネルギー長射程ビーム砲",
-        "range": 4,
-        "type": "遠距離"
-      }
-    },
-    "ms_ability": {
-      "name": "双甲",
-      "activation": "任意発動",
-      "target": "特殊(自分)",
-      "range": null,
-      "cost": 4,
-      "description": "指定した味方ユニットの範囲内に移動後、一定時間連携状態となり、自身と連携中の味方が受けるダメージを軽減する。"
-    },
-    "special_attack": {
-      "name": "一斉連撃",
-      "target": "単体(敵)",
-      "range": 3,
-      "sp_cost": 2,
-      "power": 3600,
-      "description": "光の翼を展開し、敵単体に格闘攻撃でダメージを与える。光の翼展開後は能力が上昇し、自身が撤退するまで効果は持続する。/EBLv.を3下げる。光の翼を展開し、敵単体に格闘攻撃でダメージを与える。光の翼展開後は、自身が撤退するまで能力が上昇する。自身の周囲に電磁タイプの分身9体を呼び出す。このユニットは一定時間MSアビリティ[残像]を発動した状態になる。自身と呼び出した分身は一定時間スタンを受けない状態になる。出撃時1度のみ使用可能。",
-      "sp_type": "ECHOES BEAT SP",
-      "echoes_beat": {
-        "name": "DUPE粒子分身連撃 Lv.3",
-        "level": 3,
-        "power": 5100,
-        "range": 3,
-        "target": "単体(敵)",
-        "description": "EBLv.を3下げる。光の翼を展開し、敵単体に格闘攻撃でダメージを与える。光の翼展開後は、自身が撤退するまで能力が上昇する。自身の周囲に電磁タイプの分身9体を呼び出す。このユニットは一定時間MSアビリティ[残像]を発動した状態になる。自身と呼び出した分身は一定時間スタンを受けない状態になる。出撃時1度のみ使用可能。"
-      },
-      "united_sp": null,
-      "squad_sp": null
-    }
-  },
-  "ocr_timestamp": "2026-06-02T12:30:00",
-  "ocr_type": "basic",
-  "ocr_engine": "claude_code_subagent"
+    "ocr_timestamp": "2026-06-02T12:30:00",
+    "ocr_type": "basic",
+    "ocr_engine": "claude_code_subagent"
 }

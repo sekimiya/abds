@@ -1,90 +1,90 @@
 {
-  "card_number": "BP08-007",
-  "card_name": "ソードインパルスガンダムSpecII",
-  "series": "BOOSTER PACK ガンダムトライエイジ Vol.2",
-  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP08-007.jpg?v250630",
-  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP08-007_b.jpg?v250630",
-  "ocr_data": {
-    "type": "MS",
-    "name": "ソードインパルスガンダムSpecII",
-    "cost": 3,
-    "rarity": "P",
-    "category": "機動",
-    "affiliation": "コンパス",
-    "illustrator": "kenko",
-    "stats": {
-      "mobility": 250,
-      "ranged_attack": 50,
-      "melee_attack": 340,
-      "hp": 410
+    "card_number": "BP08-007",
+    "card_name": "ソードインパルスガンダムSpecII",
+    "series": "BOOSTER PACK ガンダムトライエイジ Vol.2",
+    "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP08-007.jpg?v250630",
+    "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP08-007_b.jpg?v250630",
+    "ocr_data": {
+        "type": "MS",
+        "name": "ソードインパルスガンダムSpecII",
+        "cost": 3,
+        "rarity": "P",
+        "category": "機動",
+        "affiliation": "コンパス",
+        "illustrator": "kenko",
+        "stats": {
+            "mobility": 250,
+            "ranged_attack": 50,
+            "melee_attack": 340,
+            "hp": 410
+        },
+        "link_ability": [
+            {
+                "name": "トライエイジ",
+                "condition": "デッキに2枚以上",
+                "effect": "[HP]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            },
+            {
+                "name": "肉薄する戦い",
+                "condition": "デッキに4枚以上",
+                "effect": "[機動力][近距離攻撃力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            }
+        ],
+        "pilot": "ルナマリア・ホーク",
+        "model": "ZGMF-56E2/β SWORD IMPULSE GUNDAM SPECII",
+        "terrain_compatibility": {
+            "ground": "S",
+            "space": "A",
+            "desert": "B",
+            "water": "A"
+        },
+        "weapon": {
+            "main": {
+                "name": "エクスカリバー レーザー対艦刀",
+                "range": 1,
+                "type": "近距離"
+            },
+            "sub": {
+                "name": "試製35式改レールガン",
+                "range": 3,
+                "type": "遠距離"
+            }
+        },
+        "ms_ability": {
+            "name": "補給[弱体化解除]",
+            "activation": "任意発動",
+            "target": "範囲(味方)",
+            "range": null,
+            "cost": 5,
+            "description": "自身を中心とした大範囲の味方ユニットのHPを中回復し、弱体化状態を無効化する。"
+        },
+        "special_attack": {
+            "name": "エクスカリバー レーザー対艦刀強撃",
+            "target": "単体(敵)",
+            "range": 2,
+            "sp_cost": 2,
+            "power": 3500,
+            "description": "敵単体に格闘攻撃でダメージを与え、一定時間、自身の[近距離攻撃力]をアップする。",
+            "sp_type": "ECHOES BEAT",
+            "echoes_beat": {
+                "name": "エクスカリバー レーザー対艦刀強撃 Lv.1",
+                "level": 1,
+                "power": 3800,
+                "range": 2,
+                "target": "単体(敵)",
+                "description": "EBLv.を1下げる。敵単体に格闘攻撃でダメージを与え、EBLv.が3に上昇する。一定時間、自身の[近距離攻撃力]をアップする。出撃時1度のみ使用可能。"
+            },
+            "united_sp": null,
+            "squad_sp": null
+        }
     },
-    "link_ability": [
-      {
-        "name": "トライエイジ",
-        "condition": "デッキに2枚以上",
-        "effect": "[HP]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      },
-      {
-        "name": "肉薄する戦い",
-        "condition": "デッキに4枚以上",
-        "effect": "[機動力][近距離攻撃力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      }
-    ],
-    "pilot": "ルナマリア・ホーク",
-    "model": "ZGMF-56E2/β SWORD IMPULSE GUNDAM SPECII",
-    "terrain_compatibility": {
-      "ground": "S",
-      "space": "A",
-      "desert": "B",
-      "water": "A"
-    },
-    "weapon": {
-      "main": {
-        "name": "エクスカリバー レーザー対艦刀",
-        "range": 1,
-        "type": "近距離"
-      },
-      "sub": {
-        "name": "試製35式改レールガン",
-        "range": 3,
-        "type": "遠距離"
-      }
-    },
-    "ms_ability": {
-      "name": "補給[弱体化解除]",
-      "activation": "任意発動",
-      "target": "範囲(味方)",
-      "range": null,
-      "cost": 5,
-      "description": "自身を中心とした大範囲の味方ユニットのHPを中回復し、弱体化状態を無効化する。"
-    },
-    "special_attack": {
-      "name": "エクスカリバー レーザー対艦刀強撃",
-      "target": "単体(敵)",
-      "range": 2,
-      "sp_cost": 2,
-      "power": 3500,
-      "description": "敵単体に格闘攻撃でダメージを与え、一定時間、自身の[近距離攻撃力]をアップする。/EBLv.を1下げる。敵単体に格闘攻撃でダメージを与え、EBLv.が3に上昇する。一定時間、自身の[近距離攻撃力]をアップする。出撃時1度のみ使用可能。",
-      "sp_type": "ECHOES BEAT",
-      "echoes_beat": {
-        "name": "エクスカリバー レーザー対艦刀強撃 Lv.1",
-        "level": 1,
-        "power": 3800,
-        "range": 2,
-        "target": "単体(敵)",
-        "description": "EBLv.を1下げる。敵単体に格闘攻撃でダメージを与え、EBLv.が3に上昇する。一定時間、自身の[近距離攻撃力]をアップする。出撃時1度のみ使用可能。"
-      },
-      "united_sp": null,
-      "squad_sp": null
-    }
-  },
-  "ocr_timestamp": "2026-06-02T12:30:00",
-  "ocr_type": "basic",
-  "ocr_engine": "claude_code_subagent"
+    "ocr_timestamp": "2026-06-02T12:30:00",
+    "ocr_type": "basic",
+    "ocr_engine": "claude_code_subagent"
 }
