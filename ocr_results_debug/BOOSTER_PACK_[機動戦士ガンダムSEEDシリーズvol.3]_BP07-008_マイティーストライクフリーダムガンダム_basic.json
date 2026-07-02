@@ -1,90 +1,90 @@
 {
-  "card_number": "BP07-008",
-  "card_name": "マイティーストライクフリーダムガンダム",
-  "series": "BOOSTER PACK [機動戦士ガンダムSEEDシリーズvol.3]",
-  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP07-008.jpg?v250630",
-  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP07-008_b.jpg?v250630",
-  "ocr_data": {
-    "type": "MS",
-    "name": "マイティーストライクフリーダムガンダム",
-    "cost": 6,
-    "rarity": "U",
-    "category": "近距離",
-    "affiliation": "コンパス",
-    "illustrator": "",
-    "stats": {
-      "mobility": 270,
-      "ranged_attack": 70,
-      "melee_attack": 640,
-      "hp": 620
+    "card_number": "BP07-008",
+    "card_name": "マイティーストライクフリーダムガンダム",
+    "series": "BOOSTER PACK [機動戦士ガンダムSEEDシリーズvol.3]",
+    "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP07-008.jpg?v250630",
+    "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP07-008_b.jpg?v250630",
+    "ocr_data": {
+        "type": "MS",
+        "name": "マイティーストライクフリーダムガンダム",
+        "cost": 6,
+        "rarity": "U",
+        "category": "近距離",
+        "affiliation": "コンパス",
+        "illustrator": "",
+        "stats": {
+            "mobility": 270,
+            "ranged_attack": 70,
+            "melee_attack": 640,
+            "hp": 620
+        },
+        "link_ability": [
+            {
+                "name": "SEED FREEDOM",
+                "condition": "デッキに3枚以上",
+                "effect": "[機動力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            },
+            {
+                "name": "多彩な戦術",
+                "condition": "デッキに4枚以上",
+                "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            }
+        ],
+        "pilot": "キラ・ヤマト&ラクス・クライン",
+        "model": "ZGMF/A-262PD-P MIGHTY STRIKE FREEDOM GUNDAM",
+        "terrain_compatibility": {
+            "ground": "A",
+            "space": "S",
+            "desert": "A",
+            "water": "C"
+        },
+        "weapon": {
+            "main": {
+                "name": "アクータラケルタ&対艦刀フツノミタマ二刀流",
+                "range": 1,
+                "type": "近距離"
+            },
+            "sub": {
+                "name": "高エネルギービームライフル",
+                "range": 3,
+                "type": "遠距離"
+            }
+        },
+        "ms_ability": {
+            "name": "縛撃[範囲]",
+            "activation": "任意発動",
+            "target": "範囲(敵)",
+            "range": 2,
+            "cost": 5,
+            "description": "自身を中心とした範囲内の敵ユニットに範囲攻撃を行い、一定時間スタンさせる。"
+        },
+        "special_attack": {
+            "name": "MDE262S プラウドディフェンダー",
+            "target": "範囲(敵)",
+            "range": 2,
+            "sp_cost": 2,
+            "power": 3300,
+            "description": "自身を中心とした中範囲に射撃攻撃でダメージを与え、一定時間スタンさせる。/EBLv.を3下げる。敵単体に格闘攻撃でダメージを与え、対象がユニットの場合は撃破する。この攻撃で敵ユニットを撃破した場合、敵ユニットの修理時間を延長させ、出撃中の全敵ユニットの強化状態を無効化する。一定時間、出撃中の全味方ユニットの[遠/近攻撃力]をアップ、受けるダメージを軽減する。出撃時1度のみ使用可能。",
+            "sp_type": "ECHOES BEAT SP",
+            "echoes_beat": {
+                "name": "未来をつかむ自由の翼 Lv.3",
+                "level": 3,
+                "power": 4800,
+                "range": 2,
+                "target": "単体(敵)",
+                "description": "EBLv.を3下げる。敵単体に格闘攻撃でダメージを与え、対象がユニットの場合は撃破する。この攻撃で敵ユニットを撃破した場合、敵ユニットの修理時間を延長させ、出撃中の全敵ユニットの強化状態を無効化する。一定時間、出撃中の全味方ユニットの[遠/近攻撃力]をアップ、受けるダメージを軽減する。出撃時1度のみ使用可能。"
+            },
+            "united_sp": null,
+            "squad_sp": null
+        }
     },
-    "link_ability": [
-      {
-        "name": "SEED FREEDOM",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      },
-      {
-        "name": "多彩な戦術",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      }
-    ],
-    "pilot": "キラ・ヤマト&ラクス・クライン",
-    "model": "ZGMF/A-262PD-P MIGHTY STRIKE FREEDOM GUNDAM",
-    "terrain_compatibility": {
-      "ground": "A",
-      "space": "S",
-      "desert": "A",
-      "water": "C"
-    },
-    "weapon": {
-      "main": {
-        "name": "アクータラケルタ&対艦刀フツノミタマ二刀流",
-        "range": 1,
-        "type": "近距離"
-      },
-      "sub": {
-        "name": "高エネルギービームライフル",
-        "range": 3,
-        "type": "遠距離"
-      }
-    },
-    "ms_ability": {
-      "name": "縛撃[範囲]",
-      "activation": "任意発動",
-      "target": "範囲(敵)",
-      "range": 2,
-      "cost": 5,
-      "description": "自身を中心とした範囲内の敵ユニットに範囲攻撃を行い、一定時間スタンさせる。"
-    },
-    "special_attack": {
-      "name": "MDE262S プラウドディフェンダー",
-      "target": "範囲(敵)",
-      "range": 2,
-      "sp_cost": 2,
-      "power": 3300,
-      "description": "自身を中心とした中範囲に射撃攻撃でダメージを与え、一定時間スタンさせる。/EBLv.を3下げる。敵単体に格闘攻撃でダメージを与え、対象がユニットの場合は撃破する。この攻撃で敵ユニットを撃破した場合、敵ユニットの修理時間を延長させ、出撃中の全敵ユニットの強化状態を無効化する。一定時間、出撃中の全味方ユニットの[遠/近攻撃力]をアップ、受けるダメージを軽減する。出撃時1度のみ使用可能。",
-      "sp_type": "",
-      "echoes_beat": null,
-      "united_sp": {
-        "name": "未来をつかむ自由の翼 Lv.3",
-        "partners": [],
-        "target": "単体(敵)",
-        "range": 2,
-        "power": 4800,
-        "description": "EBLv.を3下げる。敵単体に格闘攻撃でダメージを与え、対象がユニットの場合は撃破する。この攻撃で敵ユニットを撃破した場合、敵ユニットの修理時間を延長させ、出撃中の全敵ユニットの強化状態を無効化する。一定時間、出撃中の全味方ユニットの[遠/近攻撃力]をアップ、受けるダメージを軽減する。出撃時1度のみ使用可能。"
-      },
-      "squad_sp": null
-    }
-  },
-  "ocr_timestamp": "2026-04-16T11:50:00.000000",
-  "ocr_type": "basic",
-  "ocr_engine": "claude_code_subagent"
+    "ocr_timestamp": "2026-04-16T11:50:00.000000",
+    "ocr_type": "basic",
+    "ocr_engine": "claude_code_subagent"
 }

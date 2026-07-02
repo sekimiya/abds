@@ -166,6 +166,32 @@ def canonicalize_values(ocr):
                 la['condition'] = new
                 changes.append(f'link_ability[{i}].condition: {old!r} -> {new!r}')
 
+    # echoes_beat: 全フィールドがダッシュ/空 = カードのEB欄がー印字 → null化
+    if isinstance(sp, dict):
+        eb = sp.get('echoes_beat')
+        if isinstance(eb, dict):
+            eb_name = (eb.get('name') or '').strip()
+            if eb_name in DASH_CHARS or (eb_name == '' and not (eb.get('description') or '').strip('－ー-—− ')):
+                sp['echoes_beat'] = None
+                changes.append('special_attack.echoes_beat: 空EB -> null')
+                if sp.get('sp_type') in ('ECHOES BEAT', 'ECHOES BEAT SP'):
+                    sp['sp_type'] = ''
+                    changes.append('sp_type: EBなしのため "" に')
+
+    # pilot_skill: トリガーがEBLv.を含むならis_eb_skill=true (仕様書ルールの自動適用)
+    ps = ocr.get('pilot_skill')
+    if isinstance(ps, dict):
+        trigger = ps.get('trigger') or ''
+        if 'EBLv.' in trigger:
+            if not ps.get('is_eb_skill'):
+                ps['is_eb_skill'] = True
+                changes.append('pilot_skill.is_eb_skill: trigger準拠でtrue化')
+            if ps.get('eb_trigger_level') is None:
+                m = re.search(r'EBLv\.(\d+)', trigger)
+                if m:
+                    ps['eb_trigger_level'] = int(m.group(1))
+                    changes.append(f'pilot_skill.eb_trigger_level: triggerから{m.group(1)}を補完')
+
     return changes
 
 
@@ -215,6 +241,33 @@ def validate_values(ocr, cn='?'):
             obj = sp.get(sub_key)
             if isinstance(obj, dict) and not _is_valid_target(obj.get('target')):
                 errors.append(f'{cn}: {sub_key}.target {obj.get("target")!r} は正規値にない')
+
+        # EB格納の整合ルール:
+        # echoes_beatの有無とsp_type(カードのバナー印字)は必ず対応する。
+        # EB/EBSPの区別はレベルから推定できない(Lv.3でも橙EBが実在: VE02-037等)ため、
+        # sp_typeは必ずカード画像のバナーを見て設定すること。
+        eb = sp.get('echoes_beat')
+        if isinstance(eb, dict):
+            if st not in ('ECHOES BEAT', 'ECHOES BEAT SP'):
+                errors.append(f'{cn}: echoes_beatがあるのにsp_type={st!r}'
+                              '(バナー印字に従いECHOES BEAT/ECHOES BEAT SPを設定)')
+            eb_name = (eb.get('name') or '').strip()
+            if not eb_name or eb_name in DASH_CHARS:
+                errors.append(f'{cn}: echoes_beat.nameが空/ダッシュ(EB欄がー印字ならechoes_beat=null)')
+        elif st in ('ECHOES BEAT', 'ECHOES BEAT SP'):
+            errors.append(f'{cn}: sp_type={st!r}なのにechoes_beatがnull')
+
+        # UNITED SPフィールドへのEB誤格納検知
+        usp = sp.get('united_sp')
+        if isinstance(usp, dict) and re.search(r'EBLv\.を\d+下げる', usp.get('description') or ''):
+            errors.append(f'{cn}: united_sp.descriptionにEB文言(EBLv.をN下げる)。'
+                          'EB戦術技はechoes_beatに格納する')
+
+    # PL: トリガーとis_eb_skillフラグの整合
+    ps = ocr.get('pilot_skill')
+    if isinstance(ps, dict):
+        if 'EBLv.' in (ps.get('trigger') or '') and not ps.get('is_eb_skill'):
+            errors.append(f'{cn}: triggerにEBLv.を含むのにis_eb_skill=false')
 
     tc = ocr.get('terrain_compatibility')
     if isinstance(tc, dict):

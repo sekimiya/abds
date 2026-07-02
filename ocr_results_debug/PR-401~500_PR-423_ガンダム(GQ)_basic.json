@@ -1,91 +1,91 @@
 {
-  "card_number": "PR-423",
-  "card_name": "ガンダム(GQ)",
-  "series": "PR-401~500",
-  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-423.jpg?v250630",
-  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-423_b.jpg?v250630",
-  "ocr_data": {
-    "type": "MS",
-    "name": "ガンダム(GQ)",
-    "cost": 3,
-    "rarity": "PR",
-    "category": "近距離",
-    "affiliation": "",
-    "illustrator": "",
-    "stats": {
-      "mobility": 220,
-      "ranged_attack": 0,
-      "melee_attack": 260,
-      "hp": 380
+    "card_number": "PR-423",
+    "card_name": "ガンダム(GQ)",
+    "series": "PR-401~500",
+    "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-423.jpg?v250630",
+    "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-423_b.jpg?v250630",
+    "ocr_data": {
+        "type": "MS",
+        "name": "ガンダム(GQ)",
+        "cost": 3,
+        "rarity": "PR",
+        "category": "近距離",
+        "affiliation": "",
+        "illustrator": "",
+        "stats": {
+            "mobility": 220,
+            "ranged_attack": 0,
+            "melee_attack": 260,
+            "hp": 380
+        },
+        "link_ability": [
+            {
+                "name": "GQuuuuuuX",
+                "condition": "デッキに3枚以上",
+                "effect": "[HP]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            },
+            {
+                "name": "戦況を変える力",
+                "condition": "デッキに4枚以上",
+                "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            }
+        ],
+        "pilot": "",
+        "model": "RX-78-2 Gundam(GQ)",
+        "terrain_compatibility": {
+            "ground": "A",
+            "space": "S",
+            "desert": "C",
+            "water": "A"
+        },
+        "weapon": {
+            "main": {
+                "name": "ビーム・サーベル",
+                "range": 1,
+                "type": "近距離"
+            },
+            "sub": {
+                "name": "シールド",
+                "range": null,
+                "type": ""
+            }
+        },
+        "ms_ability": {
+            "name": "補給[弱体化解除]",
+            "activation": "任意発動",
+            "target": "範囲(味方)",
+            "range": null,
+            "cost": 5,
+            "description": "自身を中心とした大範囲の味方ユニットのHPを中回復し、弱体化状態を無効化する。"
+        },
+        "special_attack": {
+            "name": "ビーム・サーベル強撃",
+            "target": "単体(敵)",
+            "range": 2,
+            "sp_cost": 2,
+            "power": 3400,
+            "description": "敵単体に格闘攻撃でダメージを与える。",
+            "sp_type": "ECHOES BEAT",
+            "echoes_beat": {
+                "name": "ビーム・サーベル強撃 Lv.1",
+                "level": 1,
+                "power": 3700,
+                "range": 2,
+                "target": "単体(敵)",
+                "description": "EBLv.を1下げる。敵単体に格闘攻撃でダメージを与え、EBLv.が3に上昇する。出撃時1度のみ使用可能。"
+            },
+            "united_sp": null,
+            "squad_sp": null
+        }
     },
-    "link_ability": [
-      {
-        "name": "GQuuuuuuX",
-        "condition": "デッキに3枚以上",
-        "effect": "[HP]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      },
-      {
-        "name": "戦況を変える力",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      }
-    ],
-    "pilot": "",
-    "model": "RX-78-2 Gundam(GQ)",
-    "terrain_compatibility": {
-      "ground": "A",
-      "space": "S",
-      "desert": "C",
-      "water": "A"
-    },
-    "weapon": {
-      "main": {
-        "name": "ビーム・サーベル",
-        "range": 1,
-        "type": "近距離"
-      },
-      "sub": {
-        "name": "シールド",
-        "range": null,
-        "type": ""
-      }
-    },
-    "ms_ability": {
-      "name": "補給[弱体化解除]",
-      "activation": "任意発動",
-      "target": "範囲(味方)",
-      "range": null,
-      "cost": 5,
-      "description": "自身を中心とした大範囲の味方ユニットのHPを中回復し、弱体化状態を無効化する。"
-    },
-    "special_attack": {
-      "name": "ビーム・サーベル強撃",
-      "target": "単体(敵)",
-      "range": 2,
-      "sp_cost": 2,
-      "power": 3400,
-      "description": "敵単体に格闘攻撃でダメージを与える。",
-      "sp_type": "ECHOES BEAT SP",
-      "echoes_beat": {
-        "name": "ビーム・サーベル強撃 Lv.1",
-        "level": 1,
-        "power": 3700,
-        "range": 2,
-        "target": "単体(敵)",
-        "description": "EBLv.を1下げる。敵単体に格闘攻撃でダメージを与え、EBLv.が3に上昇する。出撃時1度のみ使用可能。"
-      },
-      "united_sp": null,
-      "squad_sp": null
-    }
-  },
-  "ocr_raw_file": "PR-401~500_PR-423_ガンダム(GQ)_ocr_raw.json",
-  "ocr_timestamp": "2026-03-30T02:09:19.743719",
-  "ocr_type": "basic",
-  "ocr_engine": "claude_code_cli_combined"
+    "ocr_raw_file": "PR-401~500_PR-423_ガンダム(GQ)_ocr_raw.json",
+    "ocr_timestamp": "2026-03-30T02:09:19.743719",
+    "ocr_type": "basic",
+    "ocr_engine": "claude_code_cli_combined"
 }

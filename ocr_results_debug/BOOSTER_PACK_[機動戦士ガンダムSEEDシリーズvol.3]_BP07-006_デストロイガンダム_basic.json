@@ -67,16 +67,16 @@
             "sp_cost": 2,
             "power": 3000,
             "description": "MS形態に変形、射線上の敵に貫通射撃でダメージを与える。変形後は能力が上昇、自身が撤退するまで効果は持続する。/EBLv.を1下げる。MS形態に変形、射線上の敵に貫通射撃でダメージを与え、EBLv.が3に上昇する。変形後は能力が上昇、自身が撤退するまで効果は持続する。出撃時1度のみ使用可能。",
-            "sp_type": "",
-            "echoes_beat": null,
-            "united_sp": {
+            "sp_type": "ECHOES BEAT",
+            "echoes_beat": {
                 "name": "スーパースキュラ撃射 Lv.1",
-                "partners": [],
-                "target": "貫通(敵)",
-                "range": 4,
+                "level": 1,
                 "power": 3300,
+                "range": 4,
+                "target": "貫通(敵)",
                 "description": "EBLv.を1下げる。MS形態に変形、射線上の敵に貫通射撃でダメージを与え、EBLv.が3に上昇する。変形後は能力が上昇、自身が撤退するまで効果は持続する。出撃時1度のみ使用可能。"
             },
+            "united_sp": null,
             "squad_sp": null
         }
     },

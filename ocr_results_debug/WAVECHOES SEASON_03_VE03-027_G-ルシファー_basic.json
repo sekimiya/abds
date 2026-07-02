@@ -1,80 +1,88 @@
 {
-  "card_number": "VE03-027",
-  "card_name": "G-ルシファー",
-  "series": "WAVECHOES SEASON:03",
-  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE03-027.jpg?v250630",
-  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE03-027_b.jpg?v250630",
-  "ocr_engine": "claude_code_subagent",
-  "ocr_type": "basic",
-  "ocr_timestamp": "2026-06-17T00:00:00.000000",
-  "ocr_data": {
-    "type": "MS",
-    "name": "G-ルシファー",
-    "cost": 7,
-    "rarity": "U",
-    "category": "遠距離",
-    "affiliation": "メガファウナ",
-    "illustrator": "Moyasi",
-    "stats": {
-      "mobility": 270,
-      "ranged_attack": 680,
-      "melee_attack": 110,
-      "hp": 640
-    },
-    "pilot": "ララィヤ・アクパール&ノルド・ナグ",
-    "model": "VGMM-Gf10 G-LUCIFER",
-    "terrain_compatibility": {
-      "ground": "A",
-      "space": "S",
-      "desert": "C",
-      "water": "C"
-    },
-    "weapon": {
-      "main": { "name": "メガ・キャノン", "range": 4, "type": "遠距離" },
-      "sub": { "name": "ビーム・サーベル", "range": 1, "type": "近距離" }
-    },
-    "ms_ability": {
-      "name": "絆盟",
-      "activation": "任意発動",
-      "target": "特殊(自分)",
-      "range": null,
-      "cost": 4,
-      "description": "自身と自身に一番近い味方ユニットは絆盟状態になる。絆盟状態のユニットのメイン攻撃力は、メイン攻撃力が高い方のユニットと同じ値になり、どちらかのユニットが撃破されるまで効果は持続する。※増援、デコイは対象外。"
-    },
-    "special_attack": {
-      "name": "スカート・ファンネル斉射",
-      "target": "範囲(敵)",
-      "range": 4,
-      "sp_cost": 2,
-      "power": 3200,
-      "description": "対象の敵を中心として範囲射撃でダメージを与え、自身のHPを回復する。一定時間、自身の[遠距離攻撃力]をアップする。／EBLv.を3下げる。",
-      "sp_type": "",
-      "echoes_beat": {
-        "name": "ECHOES BEAT",
-        "level": 3,
-        "power": 4100,
-        "description": "対象の敵を中心として範囲射撃でダメージを与え、自身のHPを回復し、出撃中の全味方ユニットの弱体化状態を無効化する。以後月光様状態になり、能力が上昇、貫通攻撃がチャージを伴う強力な強烈射撃のメイン攻撃のみになる。自身が撃破するまで効果は持続する。出撃時1度のみ使用可能。"
-      },
-      "united_sp": null,
-      "squad_sp": null
-    },
-    "link_ability": [
-      {
-        "name": "Gのレコンギスタ",
-        "condition": "デッキに2枚以上",
-        "effect": "[HP]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      },
-      {
-        "name": "戦況を変える力",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      }
-    ]
-  }
+    "card_number": "VE03-027",
+    "card_name": "G-ルシファー",
+    "series": "WAVECHOES SEASON:03",
+    "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE03-027.jpg?v250630",
+    "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE03-027_b.jpg?v250630",
+    "ocr_engine": "claude_code_subagent",
+    "ocr_type": "basic",
+    "ocr_timestamp": "2026-06-17T00:00:00.000000",
+    "ocr_data": {
+        "type": "MS",
+        "name": "G-ルシファー",
+        "cost": 7,
+        "rarity": "U",
+        "category": "遠距離",
+        "affiliation": "メガファウナ",
+        "illustrator": "Moyasi",
+        "stats": {
+            "mobility": 270,
+            "ranged_attack": 680,
+            "melee_attack": 110,
+            "hp": 640
+        },
+        "pilot": "ララィヤ・アクパール&ノルド・ナグ",
+        "model": "VGMM-Gf10 G-LUCIFER",
+        "terrain_compatibility": {
+            "ground": "A",
+            "space": "S",
+            "desert": "C",
+            "water": "C"
+        },
+        "weapon": {
+            "main": {
+                "name": "メガ・キャノン",
+                "range": 4,
+                "type": "遠距離"
+            },
+            "sub": {
+                "name": "ビーム・サーベル",
+                "range": 1,
+                "type": "近距離"
+            }
+        },
+        "ms_ability": {
+            "name": "絆盟",
+            "activation": "任意発動",
+            "target": "特殊(自分)",
+            "range": null,
+            "cost": 4,
+            "description": "自身と自身に一番近い味方ユニットは絆盟状態になる。絆盟状態のユニットのメイン攻撃力は、メイン攻撃力が高い方のユニットと同じ値になり、どちらかのユニットが撃破されるまで効果は持続する。※増援、デコイは対象外。"
+        },
+        "special_attack": {
+            "name": "スカート・ファンネル斉射",
+            "target": "範囲(敵)",
+            "range": 4,
+            "sp_cost": 2,
+            "power": 3200,
+            "description": "対象の敵を中心として範囲射撃でダメージを与え、自身のHPを回復する。一定時間、自身の[遠距離攻撃力]をアップする。／EBLv.を3下げる。",
+            "sp_type": "ECHOES BEAT",
+            "echoes_beat": {
+                "name": "ECHOES BEAT",
+                "level": 3,
+                "power": 4100,
+                "description": "対象の敵を中心として範囲射撃でダメージを与え、自身のHPを回復し、出撃中の全味方ユニットの弱体化状態を無効化する。以後月光様状態になり、能力が上昇、貫通攻撃がチャージを伴う強力な強烈射撃のメイン攻撃のみになる。自身が撃破するまで効果は持続する。出撃時1度のみ使用可能。"
+            },
+            "united_sp": null,
+            "squad_sp": null
+        },
+        "link_ability": [
+            {
+                "name": "Gのレコンギスタ",
+                "condition": "デッキに2枚以上",
+                "effect": "[HP]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            },
+            {
+                "name": "戦況を変える力",
+                "condition": "デッキに4枚以上",
+                "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            }
+        ]
+    }
 }

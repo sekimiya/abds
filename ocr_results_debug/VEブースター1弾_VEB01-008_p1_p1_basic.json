@@ -68,7 +68,14 @@
             "power": 3400,
             "description": "敵単体に射撃攻撃でダメージを与え、一定時間、敵ユニットの[遠距離攻撃力][近距離攻撃力]をダウンする。",
             "sp_type": "ECHOES BEAT SP",
-            "echoes_beat": null,
+            "echoes_beat": {
+                "name": "光る宇宙 Lv.3",
+                "level": 3,
+                "power": 4900,
+                "range": 4,
+                "target": "貫通(敵)",
+                "description": "EBLv.を3下げる。ロックオン中の敵に貫通射撃でダメージを与え、メイン武装を使用不能にし、自身の[機動力][遠距離攻撃力]をアップする。この効果は解除できない。出撃時1度のみ使用可能。"
+            },
             "united_sp": null,
             "squad_sp": null
         }

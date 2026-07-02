@@ -4507,8 +4507,9 @@ const UIRenderer = {
       const ocr = AppState.deckOcr[i];
       const tagsDiv = document.createElement('div');
       tagsDiv.className = 'slot-link-tags';
-      // SP効果タグをカードナンバーの上に表示
-      const spEffects = ocr?.sp_effect_tags || [];
+      // SP効果タグをカードナンバーの上に表示 (sp_effect_tagsはcard_index側のフィールド)
+      const idxEntry = UIRenderer._getIndexEntry(AppState.deck[i]);
+      const spEffects = idxEntry?.sp_effect_tags || [];
       if (spEffects.length) {
         const spDiv = document.createElement('div');
         spDiv.className = 'slot-sp-tags sp-tags';

@@ -1,80 +1,88 @@
 {
-  "card_number": "VE03-002",
-  "card_name": "ガンダムF91",
-  "series": "WAVECHOES SEASON:03",
-  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE03-002.jpg?v250630",
-  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE03-002_b.jpg?v250630",
-  "ocr_engine": "claude_code_subagent",
-  "ocr_type": "basic",
-  "ocr_timestamp": "2026-06-17T00:00:00.000000",
-  "ocr_data": {
-    "type": "MS",
-    "name": "ガンダムF91",
-    "cost": 5,
-    "rarity": "P",
-    "category": "遠距離",
-    "affiliation": "地球連邦軍",
-    "illustrator": "",
-    "stats": {
-      "mobility": 300,
-      "ranged_attack": 530,
-      "melee_attack": 70,
-      "hp": 500
-    },
-    "pilot": "シーブック・アノー",
-    "model": "F91 GUNDAM F91",
-    "terrain_compatibility": {
-      "ground": "A",
-      "space": "S",
-      "desert": "C",
-      "water": "C"
-    },
-    "weapon": {
-      "main": { "name": "ビーム・ライフル", "range": 3, "type": "遠距離" },
-      "sub": { "name": "ビーム・サーベル", "range": 1, "type": "近距離" }
-    },
-    "ms_ability": {
-      "name": "M.E.P.E.",
-      "activation": "任意発動",
-      "target": "自分",
-      "range": null,
-      "cost": 5,
-      "description": "一定時間、回避時に回避攻撃が発生し、自身の[遠／近攻撃力][SP威力]をアップ。機動力が高い程、回避の発生率が上昇する。"
-    },
-    "special_attack": {
-      "name": "V.S.B.R.撃射",
-      "target": "貫通(敵)",
-      "range": 4,
-      "sp_cost": 2,
-      "power": 3100,
-      "description": "射線上の敵に貫通射撃でダメージを与え、一定時間、自身の[機動力][遠距離攻撃力]をアップする。／ EBLv.を1下げる。射線上の敵に貫通射撃でダメージを与え、EBLv.が3に上昇する。一定時間、自身の[機動力][遠距離攻撃力]をアップする。出撃時1度のみ使用可能。",
-      "sp_type": "",
-      "echoes_beat": {
-        "name": "ECHOES BEAT",
-        "level": 1,
-        "power": 3400,
-        "description": "ECHOES BEAT Lv.を下げることで、Lv.戦術技が発動する。"
-      },
-      "united_sp": null,
-      "squad_sp": null
-    },
-    "link_ability": [
-      {
-        "name": "機動戦士ガンダムF91",
-        "condition": "デッキに2枚以上",
-        "effect": "[機動力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      },
-      {
-        "name": "的確な一撃",
-        "condition": "デッキに4枚以上",
-        "effect": "[機動力][遠距離攻撃力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      }
-    ]
-  }
+    "card_number": "VE03-002",
+    "card_name": "ガンダムF91",
+    "series": "WAVECHOES SEASON:03",
+    "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE03-002.jpg?v250630",
+    "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE03-002_b.jpg?v250630",
+    "ocr_engine": "claude_code_subagent",
+    "ocr_type": "basic",
+    "ocr_timestamp": "2026-06-17T00:00:00.000000",
+    "ocr_data": {
+        "type": "MS",
+        "name": "ガンダムF91",
+        "cost": 5,
+        "rarity": "P",
+        "category": "遠距離",
+        "affiliation": "地球連邦軍",
+        "illustrator": "",
+        "stats": {
+            "mobility": 300,
+            "ranged_attack": 530,
+            "melee_attack": 70,
+            "hp": 500
+        },
+        "pilot": "シーブック・アノー",
+        "model": "F91 GUNDAM F91",
+        "terrain_compatibility": {
+            "ground": "A",
+            "space": "S",
+            "desert": "C",
+            "water": "C"
+        },
+        "weapon": {
+            "main": {
+                "name": "ビーム・ライフル",
+                "range": 3,
+                "type": "遠距離"
+            },
+            "sub": {
+                "name": "ビーム・サーベル",
+                "range": 1,
+                "type": "近距離"
+            }
+        },
+        "ms_ability": {
+            "name": "M.E.P.E.",
+            "activation": "任意発動",
+            "target": "自分",
+            "range": null,
+            "cost": 5,
+            "description": "一定時間、回避時に回避攻撃が発生し、自身の[遠／近攻撃力][SP威力]をアップ。機動力が高い程、回避の発生率が上昇する。"
+        },
+        "special_attack": {
+            "name": "V.S.B.R.撃射",
+            "target": "貫通(敵)",
+            "range": 4,
+            "sp_cost": 2,
+            "power": 3100,
+            "description": "射線上の敵に貫通射撃でダメージを与え、一定時間、自身の[機動力][遠距離攻撃力]をアップする。／ EBLv.を1下げる。射線上の敵に貫通射撃でダメージを与え、EBLv.が3に上昇する。一定時間、自身の[機動力][遠距離攻撃力]をアップする。出撃時1度のみ使用可能。",
+            "sp_type": "ECHOES BEAT",
+            "echoes_beat": {
+                "name": "ECHOES BEAT",
+                "level": 1,
+                "power": 3400,
+                "description": "ECHOES BEAT Lv.を下げることで、Lv.戦術技が発動する。"
+            },
+            "united_sp": null,
+            "squad_sp": null
+        },
+        "link_ability": [
+            {
+                "name": "機動戦士ガンダムF91",
+                "condition": "デッキに2枚以上",
+                "effect": "[機動力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            },
+            {
+                "name": "的確な一撃",
+                "condition": "デッキに4枚以上",
+                "effect": "[機動力][遠距離攻撃力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            }
+        ]
+    }
 }

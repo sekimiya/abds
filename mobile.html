@@ -2455,7 +2455,7 @@ const CardService = {
     const ebSeries = new Set();
     AppState.cardIndex.forEach(c => {
       if (!c.series) return;
-      if ((c.has_sqsp && !(c.search_text||'').includes('united sp')) || c.has_sq_skill || c.has_sq_link || c.sq_rush_effect) sqSeries.add(c.series);
+      if (c.has_sqsp || c.has_sq_skill || c.has_sq_link || c.sq_rush_effect) sqSeries.add(c.series);
       if (c.has_eb || c.has_eb_skill || c.has_eb_link) ebSeries.add(c.series);
     });
     AppState.seriesList.forEach(s => {
@@ -4687,7 +4687,7 @@ const SearchPanel = {
     if (ebLv.size > 0) cards = cards.filter(c => { const lvls = [...ebLv].map(Number); return lvls.includes(c.eb_level) || lvls.includes(c.eb_trigger_level); });
     if (_isPL && this._t.ebCond.size > 0) cards = cards.filter(c => this._t.ebCond.has(c.eb_trigger_cond));
     const sqCat = this._t.sqCat;
-    if (sqCat.size > 0) cards = cards.filter(c => (sqCat.has('sqsp') && c.has_sqsp && !(c.search_text||'').includes('united sp')) || (sqCat.has('sq_skill') && c.has_sq_skill) || (sqCat.has('sq_link') && c.has_sq_link) || (sqCat.has('sq_rush') && c.sq_rush_effect));
+    if (sqCat.size > 0) cards = cards.filter(c => (sqCat.has('sqsp') && c.has_sqsp) || (sqCat.has('sq_skill') && c.has_sq_skill) || (sqCat.has('sq_link') && c.has_sq_link) || (sqCat.has('sq_rush') && c.sq_rush_effect));
     if (_isPL && this._t.sqGauge.size > 0) cards = cards.filter(c => this._t.sqGauge.has(c.sq_gauge_rate));
     if (_isPL && this._t.sqTrig.size > 0) cards = cards.filter(c => this._t.sqTrig.has(c.sq_trigger));
     if (_isPL && this._t.sqEff.size > 0) cards = cards.filter(c => c.sq_skill_effect_tags && c.sq_skill_effect_tags.some(t => this._t.sqEff.has(t)));
@@ -4803,7 +4803,7 @@ const SearchPanel = {
       const card = cards[i];
       const el = document.createElement('div');
       const isEb = card.has_eb || card.has_eb_skill || card.has_eb_link;
-      const isSq = (card.has_sqsp && !(card.search_text||'').includes('united sp')) || card.has_sq_skill || card.has_sq_link || !!card.sq_rush_effect;
+      const isSq = card.has_sqsp || card.has_sq_skill || card.has_sq_link || !!card.sq_rush_effect;
       const isAb = card.has_ab_link;
       const noOcr = !card.has_ocr;
       el.className = 'thumb-card' + (isEb ? ' card-eb' : '') + (isSq ? ' card-sq' : '') + (isAb ? ' card-ab' : '') + (noOcr ? ' no-ocr' : '');

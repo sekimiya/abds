@@ -71,8 +71,15 @@
             "sp_cost": 2,
             "power": 3500,
             "description": "敵単体に射撃攻撃でダメージを与え、一定時間、自身の受けるダメージを軽減する。",
-            "sp_type": "ECHOES BEAT SP",
-            "echoes_beat": null,
+            "sp_type": "ECHOES BEAT",
+            "echoes_beat": {
+                "name": "ハイパー・バズーカ撃射 Lv.1",
+                "level": 1,
+                "power": 3800,
+                "range": 3,
+                "target": "単体(敵)",
+                "description": "EBLv.を1下げる。敵単体に射撃攻撃でダメージを与え、一定時間、自身の受けるダメージを軽減する。EBLv.が3に上昇する。出撃時1度のみ使用可能。"
+            },
             "united_sp": null,
             "squad_sp": null
         }

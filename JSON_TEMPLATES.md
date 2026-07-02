@@ -125,6 +125,16 @@ data/version.json          ビルドメタデータ
 - sp_type: "" (通常) / "ECHOES BEAT" / "ECHOES BEAT SP" / "SQUAD SP" / "UNITED SP"
 - 威力・説明が「通常 / EB」併記の場合、special_attack側は通常分のみ、EB分はechoes_beat側へ分離
 
+### EB格納の整合ルール (validate_valuesが強制)
+
+- `echoes_beat` があるなら `sp_type` は必ず ECHOES BEAT / ECHOES BEAT SP のどちらか。
+  **EBとEBSPの区別はカードのバナー印字のみが真実**。レベルからの推定は不可
+  (Lv.3でも橙色ECHOES BEATバナーのカードが実在: VE02-037, VE03-015, VE03-027)。
+- EB欄がー(ダッシュ)印字のカードは `echoes_beat: null` (ダッシュ入りdictを作らない)。
+- EB戦術技を `united_sp` に入れない (説明にEBLv.をN下げるを含むunited_spはエラー)。
+- PL: triggerに EBLv. を含むなら `is_eb_skill: true` + `eb_trigger_level` 必須
+  (normalize_ocr.pyが自動補正)。
+
 **echoes_beat** (EBがある場合。フラットなeb_level等をspecial_attack直下に置かない):
 
 ```json

@@ -1,98 +1,98 @@
 {
-  "card_number": "BP08-018",
-  "card_name": "ガンダムゴッドマスター",
-  "series": "BOOSTER PACK ガンダムトライエイジ Vol.2",
-  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP08-018.jpg?v250630",
-  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP08-018_b.jpg?v250630",
-  "ocr_data": {
-    "type": "MS",
-    "name": "ガンダムゴッドマスター",
-    "cost": 8,
-    "rarity": "U",
-    "category": "近距離",
-    "affiliation": "",
-    "illustrator": "Naochika Morishita",
-    "stats": {
-      "mobility": 330,
-      "ranged_attack": 120,
-      "melee_attack": 730,
-      "hp": 670
+    "card_number": "BP08-018",
+    "card_name": "ガンダムゴッドマスター",
+    "series": "BOOSTER PACK ガンダムトライエイジ Vol.2",
+    "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP08-018.jpg?v250630",
+    "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP08-018_b.jpg?v250630",
+    "ocr_data": {
+        "type": "MS",
+        "name": "ガンダムゴッドマスター",
+        "cost": 8,
+        "rarity": "U",
+        "category": "近距離",
+        "affiliation": "",
+        "illustrator": "Naochika Morishita",
+        "stats": {
+            "mobility": 330,
+            "ranged_attack": 120,
+            "melee_attack": 730,
+            "hp": 670
+        },
+        "link_ability": [
+            {
+                "name": "トライエイジ",
+                "condition": "デッキに2枚以上",
+                "effect": "[HP]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            },
+            {
+                "name": "肉薄する戦い",
+                "condition": "デッキに4枚以上",
+                "effect": "[機動力][近距離攻撃力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            }
+        ],
+        "english_name": "GF13-017∞ GUNDAM BURNING MASTER",
+        "physical": {
+            "height": "16.6m",
+            "weight": "7.7t"
+        },
+        "units": null,
+        "pilot": "",
+        "model": "GF13-017∞",
+        "terrain_compatibility": {
+            "ground": "S",
+            "space": "A",
+            "desert": "A",
+            "water": "B"
+        },
+        "weapon": {
+            "main": {
+                "name": "ゴッドデビル・スラッシュ",
+                "range": 1,
+                "type": "近距離"
+            },
+            "sub": {
+                "name": "ゴッドデビルフィンガー(照射)",
+                "range": 3,
+                "type": "遠距離"
+            }
+        },
+        "ms_ability": {
+            "name": "瞬撃",
+            "activation": "任意発動",
+            "target": "範囲(敵)",
+            "range": 5,
+            "cost": 4,
+            "description": "射程範囲内の指定した位置に小範囲攻撃を行い、範囲内の敵にダメージを与える。"
+        },
+        "special_attack": {
+            "name": "爆裂！デビルフィンガー！！",
+            "target": "単体(敵)",
+            "range": 2,
+            "sp_cost": 2,
+            "power": 4000,
+            "description": "敵単体に格闘攻撃でダメージを与え、敵ユニットをスタンさせ、一定時間、被ダメージを上昇させる。/EBLv.を3下げる。戦術技の効果に加え、ハイパーモードに変化し、能力が上昇、自身のHPを回復し、弱体化状態を無効化する。MSアビリティ[瞬撃]が強化され、一定時間、ダメージを与えた敵の[機動力][遠／近攻撃力]をダウンする[瞬撃[双烈]]に変化する。自身が撃墜されるまで効果は持続する。出撃時1度のみ使用可能。",
+            "sp_type": "ECHOES BEAT SP",
+            "echoes_beat": {
+                "name": "双旋！ゴッドデビルフィンガー！！ Lv.3",
+                "level": 3,
+                "power": 5500,
+                "range": 2,
+                "target": "単体(敵)",
+                "description": "EBLv.を3下げる。戦術技の効果に加え、ハイパーモードに変化し、能力が上昇、自身のHPを回復し、弱体化状態を無効化する。MSアビリティ[瞬撃]が強化され、一定時間、ダメージを与えた敵の[機動力][遠／近攻撃力]をダウンする[瞬撃[双烈]]に変化する。自身が撃墜されるまで効果は持続する。出撃時1度のみ使用可能。"
+            },
+            "united_sp": null,
+            "squad_sp": null
+        },
+        "echoes_beat": null,
+        "pilot_skill": null
     },
-    "link_ability": [
-      {
-        "name": "トライエイジ",
-        "condition": "デッキに2枚以上",
-        "effect": "[HP]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      },
-      {
-        "name": "肉薄する戦い",
-        "condition": "デッキに4枚以上",
-        "effect": "[機動力][近距離攻撃力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      }
-    ],
-    "english_name": "GF13-017∞ GUNDAM BURNING MASTER",
-    "physical": {
-      "height": "16.6m",
-      "weight": "7.7t"
-    },
-    "units": null,
-    "pilot": "",
-    "model": "GF13-017∞",
-    "terrain_compatibility": {
-      "ground": "S",
-      "space": "A",
-      "desert": "A",
-      "water": "B"
-    },
-    "weapon": {
-      "main": {
-        "name": "ゴッドデビル・スラッシュ",
-        "range": 1,
-        "type": "近距離"
-      },
-      "sub": {
-        "name": "ゴッドデビルフィンガー(照射)",
-        "range": 3,
-        "type": "遠距離"
-      }
-    },
-    "ms_ability": {
-      "name": "瞬撃",
-      "activation": "任意発動",
-      "target": "範囲(敵)",
-      "range": 5,
-      "cost": 4,
-      "description": "射程範囲内の指定した位置に小範囲攻撃を行い、範囲内の敵にダメージを与える。"
-    },
-    "special_attack": {
-      "name": "爆裂！デビルフィンガー！！",
-      "target": "単体(敵)",
-      "range": 2,
-      "sp_cost": 2,
-      "power": 4000,
-      "description": "敵単体に格闘攻撃でダメージを与え、敵ユニットをスタンさせ、一定時間、被ダメージを上昇させる。/EBLv.を3下げる。戦術技の効果に加え、ハイパーモードに変化し、能力が上昇、自身のHPを回復し、弱体化状態を無効化する。MSアビリティ[瞬撃]が強化され、一定時間、ダメージを与えた敵の[機動力][遠／近攻撃力]をダウンする[瞬撃[双烈]]に変化する。自身が撃墜されるまで効果は持続する。出撃時1度のみ使用可能。",
-      "sp_type": "",
-      "echoes_beat": {
-        "name": "双旋！ゴッドデビルフィンガー！！ Lv.3",
-        "level": 3,
-        "power": 5500,
-        "range": 2,
-        "target": "単体(敵)",
-        "description": "EBLv.を3下げる。戦術技の効果に加え、ハイパーモードに変化し、能力が上昇、自身のHPを回復し、弱体化状態を無効化する。MSアビリティ[瞬撃]が強化され、一定時間、ダメージを与えた敵の[機動力][遠／近攻撃力]をダウンする[瞬撃[双烈]]に変化する。自身が撃墜されるまで効果は持続する。出撃時1度のみ使用可能。"
-      },
-      "united_sp": null,
-      "squad_sp": null
-    },
-    "echoes_beat": null,
-    "pilot_skill": null
-  },
-  "ocr_timestamp": "2026-06-02T12:30:00",
-  "ocr_type": "basic",
-  "ocr_engine": "claude_code_subagent"
+    "ocr_timestamp": "2026-06-02T12:30:00",
+    "ocr_type": "basic",
+    "ocr_engine": "claude_code_subagent"
 }

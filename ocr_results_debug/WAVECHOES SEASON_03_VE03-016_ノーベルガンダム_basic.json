@@ -1,80 +1,88 @@
 {
-  "card_number": "VE03-016",
-  "card_name": "ノーベルガンダム",
-  "series": "WAVECHOES SEASON:03",
-  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE03-016.jpg?v250630",
-  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE03-016_b.jpg?v250630",
-  "ocr_engine": "claude_code_subagent",
-  "ocr_type": "basic",
-  "ocr_timestamp": "2026-06-17T00:00:00.000000",
-  "ocr_data": {
-    "type": "MS",
-    "name": "ノーベルガンダム",
-    "cost": 3,
-    "rarity": "M",
-    "category": "近距離",
-    "affiliation": "ネオスウェーデン",
-    "illustrator": "",
-    "stats": {
-      "mobility": 250,
-      "ranged_attack": 50,
-      "melee_attack": 310,
-      "hp": 340
-    },
-    "pilot": "アレンビー・ビアズリー",
-    "model": "GF13-050NSW NOBELL GUNDAM",
-    "terrain_compatibility": {
-      "ground": "S",
-      "space": "C",
-      "desert": "B",
-      "water": "B"
-    },
-    "weapon": {
-      "main": { "name": "ビームリボン", "range": 1, "type": "近距離" },
-      "sub": { "name": "ビームフープ", "range": 2, "type": "遠距離" }
-    },
-    "ms_ability": {
-      "name": "強撃",
-      "activation": "任意発動",
-      "target": "単体(敵)",
-      "range": 1,
-      "cost": 3,
-      "description": "ロックオン中の敵に単体攻撃でダメージを与える。"
-    },
-    "special_attack": {
-      "name": "バーサーカー連撃",
-      "target": "単体(敵)",
-      "range": 2,
-      "sp_cost": 2,
-      "power": 3400,
-      "description": "敵単体に格闘攻撃でダメージを与え、自身のHPを回復する。／EBLv.を1下げる。敵単体に格闘攻撃でダメージを与え、自身のHPを回復する。出撃時1度のみ使用可能。",
-      "sp_type": "",
-      "echoes_beat": {
-        "name": "ECHOES BEAT",
-        "level": 1,
-        "power": 5600,
-        "description": "バーサーカー連撃 Lv.1。ECHOES BEAT Lv.を下げることで、Lv.戦術技が発動する。"
-      },
-      "united_sp": null,
-      "squad_sp": null
-    },
-    "link_ability": [
-      {
-        "name": "Gガンダム",
-        "condition": "デッキに3枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      },
-      {
-        "name": "肉薄する戦い",
-        "condition": "デッキに4枚以上",
-        "effect": "[機動力][近距離攻撃力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      }
-    ]
-  }
+    "card_number": "VE03-016",
+    "card_name": "ノーベルガンダム",
+    "series": "WAVECHOES SEASON:03",
+    "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE03-016.jpg?v250630",
+    "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE03-016_b.jpg?v250630",
+    "ocr_engine": "claude_code_subagent",
+    "ocr_type": "basic",
+    "ocr_timestamp": "2026-06-17T00:00:00.000000",
+    "ocr_data": {
+        "type": "MS",
+        "name": "ノーベルガンダム",
+        "cost": 3,
+        "rarity": "M",
+        "category": "近距離",
+        "affiliation": "ネオスウェーデン",
+        "illustrator": "",
+        "stats": {
+            "mobility": 250,
+            "ranged_attack": 50,
+            "melee_attack": 310,
+            "hp": 340
+        },
+        "pilot": "アレンビー・ビアズリー",
+        "model": "GF13-050NSW NOBELL GUNDAM",
+        "terrain_compatibility": {
+            "ground": "S",
+            "space": "C",
+            "desert": "B",
+            "water": "B"
+        },
+        "weapon": {
+            "main": {
+                "name": "ビームリボン",
+                "range": 1,
+                "type": "近距離"
+            },
+            "sub": {
+                "name": "ビームフープ",
+                "range": 2,
+                "type": "遠距離"
+            }
+        },
+        "ms_ability": {
+            "name": "強撃",
+            "activation": "任意発動",
+            "target": "単体(敵)",
+            "range": 1,
+            "cost": 3,
+            "description": "ロックオン中の敵に単体攻撃でダメージを与える。"
+        },
+        "special_attack": {
+            "name": "バーサーカー連撃",
+            "target": "単体(敵)",
+            "range": 2,
+            "sp_cost": 2,
+            "power": 3400,
+            "description": "敵単体に格闘攻撃でダメージを与え、自身のHPを回復する。／EBLv.を1下げる。敵単体に格闘攻撃でダメージを与え、自身のHPを回復する。出撃時1度のみ使用可能。",
+            "sp_type": "ECHOES BEAT",
+            "echoes_beat": {
+                "name": "ECHOES BEAT",
+                "level": 1,
+                "power": 5600,
+                "description": "バーサーカー連撃 Lv.1。ECHOES BEAT Lv.を下げることで、Lv.戦術技が発動する。"
+            },
+            "united_sp": null,
+            "squad_sp": null
+        },
+        "link_ability": [
+            {
+                "name": "Gガンダム",
+                "condition": "デッキに3枚以上",
+                "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            },
+            {
+                "name": "肉薄する戦い",
+                "condition": "デッキに4枚以上",
+                "effect": "[機動力][近距離攻撃力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            }
+        ]
+    }
 }

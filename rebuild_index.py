@@ -211,75 +211,59 @@ def build_search_text(card_number, ocr_data):
 
 
 def detect_eb_info(ocr_data):
-    """ECHOES BEAT関連情報を検出"""
+    """ECHOES BEAT関連情報を検出。
+
+    導出はcanonicalフィールドのみを参照する(テキスト再パースは表示用フォールバックのみ):
+    - has_eb (MS):      special_attack.echoes_beat の有無
+    - eb_type:          sp_type印字が唯一の真実(Lv.3でも橙EBが実在するためレベル推定は不可)
+    - eb_level:         echoes_beat.level 優先、技名の Lv.N はフォールバック
+    - has_eb_skill (PL): pilot_skill.is_eb_skill フラグ
+    - eb_trigger_level:  pilot_skill.eb_trigger_level 優先、trigger文字列はフォールバック
+    """
     card_type = ocr_data.get('type', '')
     links = get_links(ocr_data)
 
-    has_eb_link = False
-    for la in links:
-        if not isinstance(la, dict):
-            continue
-        desc = (la.get('effect', '') or '') + ' ' + str(la.get('is_eb_link', ''))
-        if la.get('is_eb_link') or 'ECHOES BEAT' in desc:
-            has_eb_link = True
-            break
+    has_eb_link = any(
+        isinstance(la, dict) and la.get('is_eb_link') for la in links)
 
-    # MS: ECHOES BEAT SP detection
+    # MS: EB戦術技 (special_attack.echoes_beat が唯一の格納場所)
     has_eb = False
     eb_level = None
     eb_type = ''
     eb_text = ''
     if card_type == 'MS':
         sp = ocr_data.get('special_attack', {}) or {}
-        usp = sp.get('united_sp', {}) or {}
-        eb_sp = sp.get('echoes_beat', {}) or {}
-        usp_name = usp.get('name', '') or ''
-        eb_name = eb_sp.get('name', '') or ''
-        sp_type = sp.get('sp_type', '') or ''
-        if usp and 'Lv.' in usp_name:
+        eb_sp = sp.get('echoes_beat')
+        if isinstance(eb_sp, dict):
             has_eb = True
-            m = re.search(r'Lv\.(\d+)', usp_name)
-            if m:
-                eb_level = int(m.group(1))
-            if 'ECHOES BEAT SP' in str(sp) or eb_level and eb_level >= 3:
-                eb_type = 'sp'
-                eb_text = f"ECHOES BEAT SP\nLv.{eb_level}\n威力:{usp.get('power','')}\n{usp.get('description','')}"
-            else:
-                eb_type = 'normal'
-                eb_text = f"ECHOES BEAT\nLv.{eb_level}\n威力:{usp.get('power','')}\n{usp.get('description','')}"
-        elif eb_sp and (eb_name or sp_type in ('ECHOES BEAT', 'ECHOES BEAT SP')):
-            has_eb = True
-            _eb_name = eb_name or eb_sp.get('eb_name', '') or ''
-            m = re.search(r'Lv\.(\d+)', _eb_name)
-            if not m:
-                eb_level = eb_sp.get('level') or eb_sp.get('eb_level')
-            else:
-                eb_level = int(m.group(1))
-            eb_power = eb_sp.get('power', '') or eb_sp.get('eb_power', '')
-            eb_desc = eb_sp.get('description', '') or eb_sp.get('eb_description', '')
-            if eb_level and eb_level >= 3:
-                eb_type = 'sp'
-                eb_text = f"ECHOES BEAT SP\nLv.{eb_level}\n威力:{eb_power}\n{eb_desc}"
-            else:
-                eb_type = 'normal'
-                eb_text = f"ECHOES BEAT\nLv.{eb_level}\n威力:{eb_power}\n{eb_desc}"
+            eb_level = eb_sp.get('level')
+            if eb_level is None:
+                m = re.search(r'Lv\.(\d+)', eb_sp.get('name', '') or '')
+                if m:
+                    eb_level = int(m.group(1))
+            eb_type = 'sp' if sp.get('sp_type') == 'ECHOES BEAT SP' else 'normal'
+            label = 'ECHOES BEAT SP' if eb_type == 'sp' else 'ECHOES BEAT'
+            eb_text = (f"{label}\nLv.{eb_level}\n威力:{eb_sp.get('power', '')}"
+                       f"\n{eb_sp.get('description', '')}")
 
-    # PL: EB skill detection
+    # PL: EB PLスキル (is_eb_skill フラグが唯一の真実)
     has_eb_skill = False
     eb_skill_text = ''
     eb_trigger_level = None
     eb_trigger_cond = ''
     if card_type == 'PL':
         ps = ocr_data.get('pilot_skill', {}) or {}
-        trigger = ps.get('activation', '') or ps.get('trigger', '') or ''
-        if 'EBLv.' in trigger or 'EB' in trigger:
+        trigger = ps.get('trigger', '') or ''
+        if ps.get('is_eb_skill'):
             has_eb_skill = True
             skill_name = ps.get('name', '')
             skill_desc = ps.get('description', '') or ps.get('effect', '') or ''
             eb_skill_text = f"{skill_name}\n{skill_desc}"
-            m = re.search(r'EBLv\.(\d+)', trigger)
-            if m:
-                eb_trigger_level = int(m.group(1))
+            eb_trigger_level = ps.get('eb_trigger_level')
+            if eb_trigger_level is None:
+                m = re.search(r'EBLv\.(\d+)', trigger)
+                if m:
+                    eb_trigger_level = int(m.group(1))
             if '上昇時' in trigger:
                 eb_trigger_cond = '上昇時'
             elif '以上' in trigger:
@@ -299,11 +283,12 @@ def detect_eb_info(ocr_data):
 
 
 def extract_effect_tags(description, sp_data=None):
-    """SP/スキルのdescriptionからエフェクトタグを抽出"""
+    """SP/スキルのdescriptionからエフェクトタグを抽出。
+    貫通/範囲はtarget(正規語彙)を第一情報源とし、説明文は補助。"""
     tags = []
     desc = description or ''
     sp = sp_data or {}
-    target = sp.get('target', '') or sp.get('range', '') or ''
+    target = sp.get('target') if isinstance(sp.get('target'), str) else ''
 
     if '貫通' in target or '貫通' in desc:
         tags.append('貫通')
@@ -383,11 +368,20 @@ def detect_sq_info(ocr_data):
 
     has_sq_skill = False
     sq_skill_text = ''
+    sq_trigger = ''
+    sq_gauge_rate = ''
     if card_type == 'PL':
         ps = ocr_data.get('pilot_skill', {}) or {}
         if ps.get('has_sq_skill'):
             has_sq_skill = True
             sq_skill_text = f"{ps.get('name','')}\n{ps.get('description','') or ps.get('effect','')}"
+            sq = ps.get('sq_skill_details') if isinstance(ps.get('sq_skill_details'), dict) else {}
+            # フィルタUIのキーに合わせて発動条件を正規化
+            raw_trig = (sq.get('trigger') or '') or (ps.get('trigger') or '')
+            sq_trigger = _classify_sq_trigger(raw_trig)
+            m = re.search(r'SQゲージ(大|中|小)アップ', sq.get('sq_gauge_effect') or '')
+            if m:
+                sq_gauge_rate = m.group(1)
 
     return {
         'has_sqsp': has_sqsp,
@@ -395,7 +389,27 @@ def detect_sq_info(ocr_data):
         'has_sq_link': has_sq_link,
         'sqsp_text': sqsp_text,
         'sq_skill_text': sq_skill_text,
+        'sq_trigger': sq_trigger,
+        'sq_gauge_rate': sq_gauge_rate,
     }
+
+
+def _classify_sq_trigger(trigger):
+    """SQスキル発動条件をフィルタUIのキーに分類"""
+    t = trigger or ''
+    if '戦艦' in t and 'ロックオン' in t:
+        return '戦艦/拠点ロックオン時'
+    if 'ロックオン' in t:
+        return 'ロックオン時'
+    if '撃破' in t:
+        return '撃破時'
+    if 'SQゲージ' in t and '最大' in t:
+        return 'SQゲージ最大時'
+    if 'MSアビリティ' in t:
+        return 'MSアビリティ発動時'
+    if '出撃時' in t:
+        return '出撃時'
+    return ''
 
 
 def detect_ab_info(ocr_data):
@@ -461,19 +475,12 @@ def build_card_index_entry(card_number, card_data):
         elif isinstance(sp.get('squad_sp'), dict):
             _sq = sp['squad_sp']
             sqsp_effect_tags = extract_effect_tags(_sq.get('description', '') or '', _sq)
-        if sp_type in ('ECHOES BEAT', 'ECHOES BEAT SP'):
-            ebsp_effect_tags = extract_effect_tags(sp_desc, sp)
-            eb_sp = sp.get('echoes_beat', {}) or {}
-            if isinstance(eb_sp, dict):
-                eb_desc = eb_sp.get('description', '') or ''
-                if eb_desc:
-                    ebsp_effect_tags = extract_effect_tags(eb_desc, eb_sp)
-        elif sp_type == 'UNITED SP':
-            usp = sp.get('united_sp', {}) or {}
-            usp_desc = usp.get('description', '') or ''
-            if usp_desc:
-                sp_effect_tags = extract_effect_tags(usp_desc, usp)
-        if not sp_effect_tags and sp_desc:
+        eb_sp = sp.get('echoes_beat')
+        if isinstance(eb_sp, dict):
+            eb_desc = eb_sp.get('description', '') or ''
+            ebsp_effect_tags = extract_effect_tags(eb_desc or sp_desc, eb_sp)
+        # sp_effect_tags は通常SP本体のみから導出(UNITED SP等は混ぜない)
+        if sp_desc:
             sp_effect_tags = extract_effect_tags(sp_desc, sp)
 
     entry = {
@@ -509,8 +516,8 @@ def build_card_index_entry(card_number, card_data):
         'has_sqsp': sq_info['has_sqsp'],
         'has_sq_skill': sq_info['has_sq_skill'],
         'has_sq_link': sq_info['has_sq_link'],
-        'sq_trigger': '',
-        'sq_gauge_rate': '',
+        'sq_trigger': sq_info['sq_trigger'],
+        'sq_gauge_rate': sq_info['sq_gauge_rate'],
         'sq_skill_effect_tags': sq_skill_effect_tags,
         'skill_name': skill_name,
         'skill_effect_tags': skill_effect_tags,
