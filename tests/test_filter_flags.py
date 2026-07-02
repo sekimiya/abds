@@ -147,6 +147,43 @@ def test_eb_desc_not_boilerplate(built):
     assert not bad, f"EB説明がバナー定型文(↓↑バッジ/効果タグが出ない): {bad[:10]}"
 
 
+def test_skill_trigger_populated(built):
+    """PLスキルタイミングフィルタ(UI: skTim)の参照先が導出されていること"""
+    index, _ = built
+    ui_keys = {"出撃時", "ロックオン時", "MSアビリティ", "HP条件時", "撃破時"}
+    values = {c.get("skill_trigger") for c in index.values() if c.get("skill_trigger")}
+    assert values <= ui_keys, f"UIキーにないskill_trigger: {values - ui_keys}"
+    assert values, "skill_triggerが全カード空(スキルタイミングフィルタが常に0件になる)"
+
+
+def test_no_fullwidth_slash_in_text_fields(built):
+    """テキストフィールドのスラッシュは半角に統一されていること"""
+    _, details = built
+    bad = []
+    for num, entry in details.items():
+        ocr = entry.get("ocr_data") or {}
+        texts = []
+        msa = ocr.get("ms_ability") or {}
+        if isinstance(msa, dict):
+            texts.append(msa.get("description"))
+        sp = ocr.get("special_attack") or {}
+        if isinstance(sp, dict):
+            texts.append(sp.get("description"))
+            for k in ("echoes_beat", "united_sp", "squad_sp"):
+                o = sp.get(k)
+                if isinstance(o, dict):
+                    texts.append(o.get("description"))
+        ps = ocr.get("pilot_skill") or {}
+        if isinstance(ps, dict):
+            texts.extend([ps.get("trigger"), ps.get("effect")])
+        for la in (ocr.get("link_ability") or []):
+            if isinstance(la, dict):
+                texts.append(la.get("effect"))
+        if any(isinstance(t, str) and "／" in t for t in texts):
+            bad.append(num)
+    assert not bad, f"全角スラッシュ残留: {bad[:10]}"
+
+
 def test_sq_trigger_populated(built):
     """SQ発動条件フィルタの参照先が導出されていること"""
     index, _ = built

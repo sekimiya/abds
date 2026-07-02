@@ -1,70 +1,70 @@
 {
-  "card_number": "FQ04-044",
-  "card_name": "バナージ・リンクス",
-  "series": "FORSQUAD SEASON:04",
-  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ04-044.jpg?v250630",
-  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ04-044_b.jpg?v250630",
-  "ocr_data": {
-    "type": "PL",
-    "name": "バナージ・リンクス",
-    "cost": 3,
-    "rarity": "C",
-    "category": "制圧",
-    "affiliation": "",
-    "illustrator": "",
-    "stats": {
-      "mobility": 170,
-      "ranged_attack": 200,
-      "melee_attack": 70,
-      "hp": 230
+    "card_number": "FQ04-044",
+    "card_name": "バナージ・リンクス",
+    "series": "FORSQUAD SEASON:04",
+    "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ04-044.jpg?v250630",
+    "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ04-044_b.jpg?v250630",
+    "ocr_data": {
+        "type": "PL",
+        "name": "バナージ・リンクス",
+        "cost": 3,
+        "rarity": "C",
+        "category": "制圧",
+        "affiliation": "",
+        "illustrator": "",
+        "stats": {
+            "mobility": 170,
+            "ranged_attack": 200,
+            "melee_attack": 70,
+            "hp": 230
+        },
+        "link_ability": [
+            {
+                "name": "虹の彼方に",
+                "condition": "デッキに3枚以上",
+                "effect": "SQゲージが表示される。SQゲージを溜めるとSQUAD RUSHが発動できる。[HP][SP威力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            },
+            {
+                "name": "的確な一撃",
+                "condition": "デッキに4枚以上",
+                "effect": "[機動力][遠距離攻撃力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            }
+        ],
+        "english_name": "BANAGHER LINKS",
+        "physical": {
+            "height": "ー",
+            "age": 16
+        },
+        "units": [
+            "フルアーマー・ユニコーンガンダム",
+            "ユニコーンガンダム"
+        ],
+        "pilot_skill": {
+            "name": "盤石な制圧陣形",
+            "trigger": "敵戦艦/拠点をロックオン時",
+            "effect": "SQゲージ小アップ。",
+            "has_sq_skill": true,
+            "sq_skill_details": {
+                "name": "",
+                "trigger": "",
+                "effect": "",
+                "sq_gauge_effect": "SQゲージ小アップ。",
+                "sq_max_effect": "",
+                "sq_rush_effect": "自身の[遠距離攻撃力]をアップし、受けるダメージを軽減する。"
+            },
+            "is_eb_skill": false,
+            "eb_trigger_level": null,
+            "sq_rush_effect": ""
+        }
     },
-    "link_ability": [
-      {
-        "name": "虹の彼方に",
-        "condition": "デッキに3枚以上",
-        "effect": "SQゲージが表示される。SQゲージを溜めるとSQUAD RUSHが発動できる。[HP][SP威力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      },
-      {
-        "name": "的確な一撃",
-        "condition": "デッキに4枚以上",
-        "effect": "[機動力][遠距離攻撃力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      }
-    ],
-    "english_name": "BANAGHER LINKS",
-    "physical": {
-      "height": "ー",
-      "age": 16
-    },
-    "units": [
-      "フルアーマー・ユニコーンガンダム",
-      "ユニコーンガンダム"
-    ],
-    "pilot_skill": {
-      "name": "盤石な制圧陣形",
-      "trigger": "敵戦艦／拠点をロックオン時",
-      "effect": "SQゲージ小アップ。",
-      "has_sq_skill": true,
-      "sq_skill_details": {
-        "name": "",
-        "trigger": "",
-        "effect": "",
-        "sq_gauge_effect": "SQゲージ小アップ。",
-        "sq_max_effect": "",
-        "sq_rush_effect": "自身の[遠距離攻撃力]をアップし、受けるダメージを軽減する。"
-      },
-      "is_eb_skill": false,
-      "eb_trigger_level": null,
-      "sq_rush_effect": ""
-    }
-  },
-  "ocr_raw_file": "FORSQUAD_SEASON_04_FQ04-044_バナージ・リンクス_ocr_raw.json",
-  "ocr_timestamp": "2026-02-24T18:22:11.425261",
-  "ocr_type": "basic",
-  "ocr_engine": "claude_code_cli_combined"
+    "ocr_raw_file": "FORSQUAD_SEASON_04_FQ04-044_バナージ・リンクス_ocr_raw.json",
+    "ocr_timestamp": "2026-02-24T18:22:11.425261",
+    "ocr_type": "basic",
+    "ocr_engine": "claude_code_cli_combined"
 }

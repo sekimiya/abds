@@ -1,62 +1,62 @@
 {
-  "card_number": "AB04-089",
-  "card_name": "アンジェロ・ザウパー",
-  "series": "SEASON:04",
-  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB04-089.jpg?v250630",
-  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB04-089_b.jpg?v250630",
-  "ocr_data": {
-    "type": "PL",
-    "name": "アンジェロ・ザウパー",
-    "cost": 3,
-    "rarity": "C",
-    "category": "制圧",
-    "affiliation": "ネオ・ジオン残党軍『袖付き』",
-    "illustrator": "",
-    "stats": {
-      "mobility": 190,
-      "ranged_attack": 120,
-      "melee_attack": 110,
-      "hp": 120
+    "card_number": "AB04-089",
+    "card_name": "アンジェロ・ザウパー",
+    "series": "SEASON:04",
+    "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB04-089.jpg?v250630",
+    "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB04-089_b.jpg?v250630",
+    "ocr_data": {
+        "type": "PL",
+        "name": "アンジェロ・ザウパー",
+        "cost": 3,
+        "rarity": "C",
+        "category": "制圧",
+        "affiliation": "ネオ・ジオン残党軍『袖付き』",
+        "illustrator": "",
+        "stats": {
+            "mobility": 190,
+            "ranged_attack": 120,
+            "melee_attack": 110,
+            "hp": 120
+        },
+        "link_ability": [
+            {
+                "name": "ガンダムUC",
+                "condition": "デッキに3枚以上",
+                "effect": "[機動力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            },
+            {
+                "name": "揺るがぬ意志",
+                "condition": "デッキに2枚以上",
+                "effect": "[HP]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            }
+        ],
+        "english_name": "ANGELO SAUPER",
+        "physical": {
+            "height": "",
+            "age": 19
+        },
+        "units": [
+            "ギラ・ズール(アンジェロ・ザウパー専用機)"
+        ],
+        "pilot_skill": {
+            "name": "優先すべき目標",
+            "trigger": "敵戦艦/拠点をロックオン時",
+            "effect": "敵戦艦/拠点へのダメージを小アップする。",
+            "has_sq_skill": false,
+            "sq_skill_details": null,
+            "is_eb_skill": false,
+            "eb_trigger_level": null,
+            "sq_rush_effect": ""
+        }
     },
-    "link_ability": [
-      {
-        "name": "ガンダムUC",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      },
-      {
-        "name": "揺るがぬ意志",
-        "condition": "デッキに2枚以上",
-        "effect": "[HP]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      }
-    ],
-    "english_name": "ANGELO SAUPER",
-    "physical": {
-      "height": "",
-      "age": 19
-    },
-    "units": [
-      "ギラ・ズール(アンジェロ・ザウパー専用機)"
-    ],
-    "pilot_skill": {
-      "name": "優先すべき目標",
-      "trigger": "敵戦艦／拠点をロックオン時",
-      "effect": "敵戦艦／拠点へのダメージを小アップする。",
-      "has_sq_skill": false,
-      "sq_skill_details": null,
-      "is_eb_skill": false,
-      "eb_trigger_level": null,
-      "sq_rush_effect": ""
-    }
-  },
-  "ocr_raw_file": "SEASON_04_AB04-089_アンジェロ・ザウパー_ocr_raw.json",
-  "ocr_timestamp": "2026-03-02T06:21:16.122832",
-  "ocr_type": "basic",
-  "ocr_engine": "claude_code_cli_combined"
+    "ocr_raw_file": "SEASON_04_AB04-089_アンジェロ・ザウパー_ocr_raw.json",
+    "ocr_timestamp": "2026-03-02T06:21:16.122832",
+    "ocr_type": "basic",
+    "ocr_engine": "claude_code_cli_combined"
 }

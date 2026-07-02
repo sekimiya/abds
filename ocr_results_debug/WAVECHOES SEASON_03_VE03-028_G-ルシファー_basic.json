@@ -1,75 +1,83 @@
 {
-  "card_number": "VE03-028",
-  "card_name": "G-ルシファー",
-  "series": "WAVECHOES SEASON:03",
-  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE03-028.jpg?v250630",
-  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE03-028_b.jpg?v250630",
-  "ocr_engine": "claude_code_subagent",
-  "ocr_type": "basic",
-  "ocr_timestamp": "2026-06-17T00:00:00.000000",
-  "ocr_data": {
-    "type": "MS",
-    "name": "G-ルシファー",
-    "cost": 6,
-    "rarity": "R",
-    "category": "近距離",
-    "affiliation": "メガファウナ",
-    "illustrator": "gomibako",
-    "stats": {
-      "mobility": 230,
-      "ranged_attack": 70,
-      "melee_attack": 440,
-      "hp": 410
-    },
-    "pilot": "ララィヤ・アクパール&ノルド・ナグ",
-    "model": "VGMM-Gf10 G-LUCIFER",
-    "terrain_compatibility": {
-      "ground": "A",
-      "space": "S",
-      "desert": "C",
-      "water": "C"
-    },
-    "weapon": {
-      "main": { "name": "ビーム・サーベル", "range": 1, "type": "近距離" },
-      "sub": { "name": "メガ・キャノン", "range": 4, "type": "遠距離" }
-    },
-    "ms_ability": {
-      "name": "妨害[攻撃]",
-      "activation": "出撃時発動",
-      "target": "範囲(敵)",
-      "range": null,
-      "cost": 1,
-      "description": "20秒間、自身を中心とした大範囲内の敵ユニットの[遠距離攻撃力][近距離攻撃力]を小ダウンする。"
-    },
-    "special_attack": {
-      "name": "ビーム・サーベル強撃",
-      "target": "単体(敵)",
-      "range": 2,
-      "sp_cost": 2,
-      "power": 3400,
-      "description": "敵単体に格闘攻撃でダメージを与える。／",
-      "sp_type": "",
-      "echoes_beat": null,
-      "united_sp": null,
-      "squad_sp": null
-    },
-    "link_ability": [
-      {
-        "name": "Gのレコンギスタ",
-        "condition": "デッキに2枚以上",
-        "effect": "[HP]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      },
-      {
-        "name": "戦況を変える力",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      }
-    ]
-  }
+    "card_number": "VE03-028",
+    "card_name": "G-ルシファー",
+    "series": "WAVECHOES SEASON:03",
+    "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE03-028.jpg?v250630",
+    "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE03-028_b.jpg?v250630",
+    "ocr_engine": "claude_code_subagent",
+    "ocr_type": "basic",
+    "ocr_timestamp": "2026-06-17T00:00:00.000000",
+    "ocr_data": {
+        "type": "MS",
+        "name": "G-ルシファー",
+        "cost": 6,
+        "rarity": "R",
+        "category": "近距離",
+        "affiliation": "メガファウナ",
+        "illustrator": "gomibako",
+        "stats": {
+            "mobility": 230,
+            "ranged_attack": 70,
+            "melee_attack": 440,
+            "hp": 410
+        },
+        "pilot": "ララィヤ・アクパール&ノルド・ナグ",
+        "model": "VGMM-Gf10 G-LUCIFER",
+        "terrain_compatibility": {
+            "ground": "A",
+            "space": "S",
+            "desert": "C",
+            "water": "C"
+        },
+        "weapon": {
+            "main": {
+                "name": "ビーム・サーベル",
+                "range": 1,
+                "type": "近距離"
+            },
+            "sub": {
+                "name": "メガ・キャノン",
+                "range": 4,
+                "type": "遠距離"
+            }
+        },
+        "ms_ability": {
+            "name": "妨害[攻撃]",
+            "activation": "出撃時発動",
+            "target": "範囲(敵)",
+            "range": null,
+            "cost": 1,
+            "description": "20秒間、自身を中心とした大範囲内の敵ユニットの[遠距離攻撃力][近距離攻撃力]を小ダウンする。"
+        },
+        "special_attack": {
+            "name": "ビーム・サーベル強撃",
+            "target": "単体(敵)",
+            "range": 2,
+            "sp_cost": 2,
+            "power": 3400,
+            "description": "敵単体に格闘攻撃でダメージを与える。/",
+            "sp_type": "",
+            "echoes_beat": null,
+            "united_sp": null,
+            "squad_sp": null
+        },
+        "link_ability": [
+            {
+                "name": "Gのレコンギスタ",
+                "condition": "デッキに2枚以上",
+                "effect": "[HP]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            },
+            {
+                "name": "戦況を変える力",
+                "condition": "デッキに4枚以上",
+                "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            }
+        ]
+    }
 }

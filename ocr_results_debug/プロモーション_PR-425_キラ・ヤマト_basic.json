@@ -1,64 +1,64 @@
 {
-  "card_number": "PR-425",
-  "card_name": "キラ・ヤマト",
-  "series": "プロモーション",
-  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-425.jpg?v250630",
-  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-425_b.jpg?v250630",
-  "ocr_data": {
-    "type": "PL",
-    "name": "キラ・ヤマト",
-    "cost": 2,
-    "rarity": "PR",
-    "category": "制圧",
-    "affiliation": "",
-    "illustrator": "Tomofumi Ogasawara",
-    "stats": {
-      "mobility": 190,
-      "ranged_attack": 210,
-      "melee_attack": 60,
-      "hp": 280
+    "card_number": "PR-425",
+    "card_name": "キラ・ヤマト",
+    "series": "プロモーション",
+    "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-425.jpg?v250630",
+    "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-425_b.jpg?v250630",
+    "ocr_data": {
+        "type": "PL",
+        "name": "キラ・ヤマト",
+        "cost": 2,
+        "rarity": "PR",
+        "category": "制圧",
+        "affiliation": "",
+        "illustrator": "Tomofumi Ogasawara",
+        "stats": {
+            "mobility": 190,
+            "ranged_attack": 210,
+            "melee_attack": 60,
+            "hp": 280
+        },
+        "link_ability": [
+            {
+                "name": "ガンダムSEED",
+                "condition": "デッキに3枚以上",
+                "effect": "[機動力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            },
+            {
+                "name": "戦況を変える力",
+                "condition": "デッキに4枚以上",
+                "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            }
+        ],
+        "english_name": "KIRA YAMATO",
+        "physical": {
+            "height": "165cm",
+            "age": 16
+        },
+        "units": [
+            "フリーダムガンダム",
+            "エールストライクガンダム",
+            "ストライクガンダム"
+        ],
+        "pilot_skill": {
+            "name": "破綻する敵陣営",
+            "trigger": "敵戦艦/拠点をロックオン時",
+            "effect": "40秒間、自身の[遠距離攻撃力]を中アップし、受けるダメージを少し軽減する。",
+            "has_sq_skill": false,
+            "sq_skill_details": null,
+            "is_eb_skill": false,
+            "eb_trigger_level": null,
+            "sq_rush_effect": ""
+        }
     },
-    "link_ability": [
-      {
-        "name": "ガンダムSEED",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      },
-      {
-        "name": "戦況を変える力",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      }
-    ],
-    "english_name": "KIRA YAMATO",
-    "physical": {
-      "height": "165cm",
-      "age": 16
-    },
-    "units": [
-      "フリーダムガンダム",
-      "エールストライクガンダム",
-      "ストライクガンダム"
-    ],
-    "pilot_skill": {
-      "name": "破綻する敵陣営",
-      "trigger": "敵戦艦／拠点をロックオン時",
-      "effect": "40秒間、自身の[遠距離攻撃力]を中アップし、受けるダメージを少し軽減する。",
-      "has_sq_skill": false,
-      "sq_skill_details": null,
-      "is_eb_skill": false,
-      "eb_trigger_level": null,
-      "sq_rush_effect": ""
-    }
-  },
-  "ocr_raw_file": "プロモーション_PR-425_キラ・ヤマト_ocr_raw.json",
-  "ocr_timestamp": "2026-03-03T09:21:18.359625",
-  "ocr_type": "basic",
-  "ocr_engine": "claude_code_cli_combined"
+    "ocr_raw_file": "プロモーション_PR-425_キラ・ヤマト_ocr_raw.json",
+    "ocr_timestamp": "2026-03-03T09:21:18.359625",
+    "ocr_type": "basic",
+    "ocr_engine": "claude_code_cli_combined"
 }

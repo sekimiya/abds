@@ -1,84 +1,84 @@
 {
-  "card_number": "FQB05-013",
-  "card_name": "ディランザ(グエル専用機)",
-  "series": "FQブースター5弾",
-  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQB05-013.jpg?v250630",
-  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQB05-013_b.jpg?v250630",
-  "ocr_data": {
-    "type": "MS",
-    "name": "ディランザ(グエル専用機)",
-    "cost": 3,
-    "rarity": "R",
-    "category": "遠距離",
-    "affiliation": "ジェターク・ヘビー・マシーナリー",
-    "illustrator": "TSUBASA KOYAMA_Aidle Co., Ltd.",
-    "stats": {
-      "mobility": 180,
-      "ranged_attack": 270,
-      "melee_attack": 90,
-      "hp": 360
+    "card_number": "FQB05-013",
+    "card_name": "ディランザ(グエル専用機)",
+    "series": "FQブースター5弾",
+    "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQB05-013.jpg?v250630",
+    "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQB05-013_b.jpg?v250630",
+    "ocr_data": {
+        "type": "MS",
+        "name": "ディランザ(グエル専用機)",
+        "cost": 3,
+        "rarity": "R",
+        "category": "遠距離",
+        "affiliation": "ジェターク・ヘビー・マシーナリー",
+        "illustrator": "TSUBASA KOYAMA_Aidle Co., Ltd.",
+        "stats": {
+            "mobility": 180,
+            "ranged_attack": 270,
+            "melee_attack": 90,
+            "hp": 360
+        },
+        "link_ability": [
+            {
+                "name": "水星の魔女",
+                "condition": "デッキに3枚以上",
+                "effect": "[機動力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            },
+            {
+                "name": "的確な一撃",
+                "condition": "デッキに4枚以上",
+                "effect": "[機動力][遠距離攻撃力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            }
+        ],
+        "pilot": "グエル・ジェターク",
+        "model": "MD-0032G GUEL'S DILANZA",
+        "terrain_compatibility": {
+            "ground": "S",
+            "space": "A",
+            "desert": "A",
+            "water": "C"
+        },
+        "weapon": {
+            "main": {
+                "name": "ビームライフル",
+                "range": 3,
+                "type": "遠距離"
+            },
+            "sub": {
+                "name": "ビームパルチザン",
+                "range": 1,
+                "type": "近距離"
+            }
+        },
+        "ms_ability": {
+            "name": "転化[妨害]",
+            "activation": "任意発動",
+            "target": "範囲(敵)",
+            "range": null,
+            "cost": 4,
+            "description": "一定時間、自身を中心とした範囲内の敵ユニットを弱体化する。使用回数に応じて、弱体化効果、範囲が変わる。[1回:遠/近攻撃力ダウン][2回:被ダメージアップ][3回以上:遠/近攻撃力ダウン&被ダメージアップ]"
+        },
+        "special_attack": {
+            "name": "ビームライフル撃射",
+            "target": "単体(敵)",
+            "range": 3,
+            "sp_cost": 2,
+            "power": 3200,
+            "description": "敵単体に射撃攻撃でダメージを与える。",
+            "sp_type": "",
+            "echoes_beat": null,
+            "united_sp": null,
+            "squad_sp": null
+        }
     },
-    "link_ability": [
-      {
-        "name": "水星の魔女",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      },
-      {
-        "name": "的確な一撃",
-        "condition": "デッキに4枚以上",
-        "effect": "[機動力][遠距離攻撃力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      }
-    ],
-    "pilot": "グエル・ジェターク",
-    "model": "MD-0032G GUEL'S DILANZA",
-    "terrain_compatibility": {
-      "ground": "S",
-      "space": "A",
-      "desert": "A",
-      "water": "C"
-    },
-    "weapon": {
-      "main": {
-        "name": "ビームライフル",
-        "range": 3,
-        "type": "遠距離"
-      },
-      "sub": {
-        "name": "ビームパルチザン",
-        "range": 1,
-        "type": "近距離"
-      }
-    },
-    "ms_ability": {
-      "name": "転化[妨害]",
-      "activation": "任意発動",
-      "target": "範囲(敵)",
-      "range": null,
-      "cost": 4,
-      "description": "一定時間、自身を中心とした範囲内の敵ユニットを弱体化する。使用回数に応じて、弱体化効果、範囲が変わる。[1回:遠／近攻撃力ダウン][2回:被ダメージアップ][3回以上:遠／近攻撃力ダウン&被ダメージアップ]"
-    },
-    "special_attack": {
-      "name": "ビームライフル撃射",
-      "target": "単体(敵)",
-      "range": 3,
-      "sp_cost": 2,
-      "power": 3200,
-      "description": "敵単体に射撃攻撃でダメージを与える。",
-      "sp_type": "",
-      "echoes_beat": null,
-      "united_sp": null,
-      "squad_sp": null
-    }
-  },
-  "ocr_raw_file": "FQブースター5弾_FQB05-013_ディランザ(グエル専用機)_ocr_raw.json",
-  "ocr_timestamp": "2026-02-28T05:07:37.361127",
-  "ocr_type": "basic",
-  "ocr_engine": "claude_code_cli_combined"
+    "ocr_raw_file": "FQブースター5弾_FQB05-013_ディランザ(グエル専用機)_ocr_raw.json",
+    "ocr_timestamp": "2026-02-28T05:07:37.361127",
+    "ocr_type": "basic",
+    "ocr_engine": "claude_code_cli_combined"
 }

@@ -1,62 +1,62 @@
 {
-  "card_number": "UT02-041",
-  "card_name": "クロエ・クローチェ",
-  "series": "UNITRIBE SEASON:02",
-  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT02-041.jpg?v250630",
-  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT02-041_b.jpg?v250630",
-  "ocr_data": {
-    "type": "PL",
-    "name": "クロエ・クローチェ",
-    "cost": 3,
-    "rarity": "P",
-    "category": "防衛",
-    "affiliation": "地球連邦軍",
-    "illustrator": "",
-    "stats": {
-      "mobility": 170,
-      "ranged_attack": 230,
-      "melee_attack": 50,
-      "hp": 370
+    "card_number": "UT02-041",
+    "card_name": "クロエ・クローチェ",
+    "series": "UNITRIBE SEASON:02",
+    "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT02-041.jpg?v250630",
+    "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT02-041_b.jpg?v250630",
+    "ocr_data": {
+        "type": "PL",
+        "name": "クロエ・クローチェ",
+        "cost": 3,
+        "rarity": "P",
+        "category": "防衛",
+        "affiliation": "地球連邦軍",
+        "illustrator": "",
+        "stats": {
+            "mobility": 170,
+            "ranged_attack": 230,
+            "melee_attack": 50,
+            "hp": 370
+        },
+        "link_ability": [
+            {
+                "name": "機動戦士ガンダム外伝",
+                "condition": "デッキに2枚以上",
+                "effect": "[近距離攻撃力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            },
+            {
+                "name": "的確な一撃",
+                "condition": "デッキに4枚以上",
+                "effect": "[機動力][遠距離攻撃力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            }
+        ],
+        "english_name": "CHLOE CROCE",
+        "physical": {
+            "height": "ー",
+            "age": 15
+        },
+        "units": [
+            "ペイルライダー"
+        ],
+        "pilot_skill": {
+            "name": "堅守の心得",
+            "trigger": "防衛拠点変更開始時",
+            "effect": "一定時間、防衛拠点変更する前の拠点/戦艦の被ダメージをかなり軽減する。",
+            "has_sq_skill": false,
+            "sq_skill_details": null,
+            "is_eb_skill": false,
+            "eb_trigger_level": null,
+            "sq_rush_effect": ""
+        }
     },
-    "link_ability": [
-      {
-        "name": "機動戦士ガンダム外伝",
-        "condition": "デッキに2枚以上",
-        "effect": "[近距離攻撃力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      },
-      {
-        "name": "的確な一撃",
-        "condition": "デッキに4枚以上",
-        "effect": "[機動力][遠距離攻撃力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      }
-    ],
-    "english_name": "CHLOE CROCE",
-    "physical": {
-      "height": "ー",
-      "age": 15
-    },
-    "units": [
-      "ペイルライダー"
-    ],
-    "pilot_skill": {
-      "name": "堅守の心得",
-      "trigger": "防衛拠点変更開始時",
-      "effect": "一定時間、防衛拠点変更する前の拠点／戦艦の被ダメージをかなり軽減する。",
-      "has_sq_skill": false,
-      "sq_skill_details": null,
-      "is_eb_skill": false,
-      "eb_trigger_level": null,
-      "sq_rush_effect": ""
-    }
-  },
-  "ocr_raw_file": "UNITRIBE_SEASON_02_UT02-041_クロエ・クローチェ_ocr_raw.json",
-  "ocr_timestamp": "2026-02-26T17:48:28.972970",
-  "ocr_type": "basic",
-  "ocr_engine": "claude_code_cli_combined"
+    "ocr_raw_file": "UNITRIBE_SEASON_02_UT02-041_クロエ・クローチェ_ocr_raw.json",
+    "ocr_timestamp": "2026-02-26T17:48:28.972970",
+    "ocr_type": "basic",
+    "ocr_engine": "claude_code_cli_combined"
 }

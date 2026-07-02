@@ -1,84 +1,84 @@
 {
-  "card_number": "LX04-007",
-  "card_name": "ザクⅡ改",
-  "series": "LINXTAGE SEASON:04",
-  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX04-007.jpg?v250630",
-  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX04-007_b.jpg?v250630",
-  "ocr_data": {
-    "type": "MS",
-    "name": "ザクⅡ改",
-    "cost": 4,
-    "rarity": "R",
-    "category": "機動",
-    "affiliation": "ジオン公国軍",
-    "illustrator": "Moyasi",
-    "stats": {
-      "mobility": 220,
-      "ranged_attack": 200,
-      "melee_attack": 80,
-      "hp": 250
+    "card_number": "LX04-007",
+    "card_name": "ザクⅡ改",
+    "series": "LINXTAGE SEASON:04",
+    "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX04-007.jpg?v250630",
+    "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX04-007_b.jpg?v250630",
+    "ocr_data": {
+        "type": "MS",
+        "name": "ザクⅡ改",
+        "cost": 4,
+        "rarity": "R",
+        "category": "機動",
+        "affiliation": "ジオン公国軍",
+        "illustrator": "Moyasi",
+        "stats": {
+            "mobility": 220,
+            "ranged_attack": 200,
+            "melee_attack": 80,
+            "hp": 250
+        },
+        "link_ability": [
+            {
+                "name": "ポケットの中の戦争",
+                "condition": "デッキに3枚以上",
+                "effect": "[HP]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            },
+            {
+                "name": "実弾の突破力",
+                "condition": "デッキに2枚以上",
+                "effect": "[遠距離攻撃力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            }
+        ],
+        "pilot": "バーナード・ワイズマン",
+        "model": "MS-06FZ ZAKUII FZ",
+        "terrain_compatibility": {
+            "ground": "A",
+            "space": "A",
+            "desert": "C",
+            "water": "C"
+        },
+        "weapon": {
+            "main": {
+                "name": "MMP-80 90mmマシンガン",
+                "range": 3,
+                "type": "遠距離"
+            },
+            "sub": {
+                "name": "ヒート・ホーク",
+                "range": 1,
+                "type": "近距離"
+            }
+        },
+        "ms_ability": {
+            "name": "奮起",
+            "activation": "出撃時発動",
+            "target": "自分",
+            "range": null,
+            "cost": null,
+            "description": "自身のHPが1以上で一定割合以下になると、一定時間、撃破されなくなり[遠/近攻撃力]を中アップする。出撃時1度のみ発動。"
+        },
+        "special_attack": {
+            "name": "MMP-80 90mmマシンガン撃射",
+            "target": "単体(敵)",
+            "range": 3,
+            "sp_cost": 2,
+            "power": 3200,
+            "description": "敵単体に射撃攻撃でダメージを与える。",
+            "sp_type": "",
+            "echoes_beat": null,
+            "united_sp": null,
+            "squad_sp": null
+        }
     },
-    "link_ability": [
-      {
-        "name": "ポケットの中の戦争",
-        "condition": "デッキに3枚以上",
-        "effect": "[HP]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      },
-      {
-        "name": "実弾の突破力",
-        "condition": "デッキに2枚以上",
-        "effect": "[遠距離攻撃力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      }
-    ],
-    "pilot": "バーナード・ワイズマン",
-    "model": "MS-06FZ ZAKUII FZ",
-    "terrain_compatibility": {
-      "ground": "A",
-      "space": "A",
-      "desert": "C",
-      "water": "C"
-    },
-    "weapon": {
-      "main": {
-        "name": "MMP-80 90mmマシンガン",
-        "range": 3,
-        "type": "遠距離"
-      },
-      "sub": {
-        "name": "ヒート・ホーク",
-        "range": 1,
-        "type": "近距離"
-      }
-    },
-    "ms_ability": {
-      "name": "奮起",
-      "activation": "出撃時発動",
-      "target": "自分",
-      "range": null,
-      "cost": null,
-      "description": "自身のHPが1以上で一定割合以下になると、一定時間、撃破されなくなり[遠／近攻撃力]を中アップする。出撃時1度のみ発動。"
-    },
-    "special_attack": {
-      "name": "MMP-80 90mmマシンガン撃射",
-      "target": "単体(敵)",
-      "range": 3,
-      "sp_cost": 2,
-      "power": 3200,
-      "description": "敵単体に射撃攻撃でダメージを与える。",
-      "sp_type": "",
-      "echoes_beat": null,
-      "united_sp": null,
-      "squad_sp": null
-    }
-  },
-  "ocr_raw_file": "LINXTAGE_SEASON_04_LX04-007_ザクⅡ改_ocr_raw.json",
-  "ocr_timestamp": "2026-03-07T18:15:20.314975",
-  "ocr_type": "basic",
-  "ocr_engine": "claude_code_cli_combined"
+    "ocr_raw_file": "LINXTAGE_SEASON_04_LX04-007_ザクⅡ改_ocr_raw.json",
+    "ocr_timestamp": "2026-03-07T18:15:20.314975",
+    "ocr_type": "basic",
+    "ocr_engine": "claude_code_cli_combined"
 }

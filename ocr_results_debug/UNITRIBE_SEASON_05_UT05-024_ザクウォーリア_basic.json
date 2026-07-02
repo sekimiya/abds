@@ -1,84 +1,84 @@
 {
-  "card_number": "UT05-024",
-  "card_name": "ザクウォーリア",
-  "series": "UNITRIBE SEASON:05",
-  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT05-024.jpg?v250630",
-  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT05-024_b.jpg?v250630",
-  "ocr_data": {
-    "type": "MS",
-    "name": "ザクウォーリア",
-    "cost": 5,
-    "rarity": "C",
-    "category": "機動",
-    "affiliation": "ザフト",
-    "illustrator": "Ryohei Miyazaki",
-    "stats": {
-      "mobility": 150,
-      "ranged_attack": 270,
-      "melee_attack": 80,
-      "hp": 250
+    "card_number": "UT05-024",
+    "card_name": "ザクウォーリア",
+    "series": "UNITRIBE SEASON:05",
+    "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT05-024.jpg?v250630",
+    "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT05-024_b.jpg?v250630",
+    "ocr_data": {
+        "type": "MS",
+        "name": "ザクウォーリア",
+        "cost": 5,
+        "rarity": "C",
+        "category": "機動",
+        "affiliation": "ザフト",
+        "illustrator": "Ryohei Miyazaki",
+        "stats": {
+            "mobility": 150,
+            "ranged_attack": 270,
+            "melee_attack": 80,
+            "hp": 250
+        },
+        "link_ability": [
+            {
+                "name": "SEED DESTINY",
+                "condition": "デッキに3枚以上",
+                "effect": "[HP]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            },
+            {
+                "name": "機動で制する射撃戦",
+                "condition": "デッキに機動が2枚以上",
+                "effect": "[遠距離攻撃力]中アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            }
+        ],
+        "pilot": "アレックス・ディノ",
+        "model": "ZGMF-1000 ZAKU WARRIOR",
+        "terrain_compatibility": {
+            "ground": "A",
+            "space": "A",
+            "desert": "C",
+            "water": "A"
+        },
+        "weapon": {
+            "main": {
+                "name": "ビーム突撃銃",
+                "range": 3,
+                "type": "遠距離"
+            },
+            "sub": {
+                "name": "ビームトマホーク",
+                "range": 1,
+                "type": "近距離"
+            }
+        },
+        "ms_ability": {
+            "name": "特攻",
+            "activation": "出撃時発動",
+            "target": "自分",
+            "range": null,
+            "cost": null,
+            "description": "自身の[遠/近攻撃力]をアップし[怯み無効]となるが、[回避/ガード不可][修理時間延長]となる。効果は撤退するまで持続。"
+        },
+        "special_attack": {
+            "name": "ビーム突撃銃撃射",
+            "target": "単体(敵)",
+            "range": 3,
+            "sp_cost": 2,
+            "power": 3200,
+            "description": "敵単体に射撃攻撃でダメージを与える。",
+            "sp_type": "",
+            "echoes_beat": null,
+            "united_sp": null,
+            "squad_sp": null
+        }
     },
-    "link_ability": [
-      {
-        "name": "SEED DESTINY",
-        "condition": "デッキに3枚以上",
-        "effect": "[HP]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      },
-      {
-        "name": "機動で制する射撃戦",
-        "condition": "デッキに機動が2枚以上",
-        "effect": "[遠距離攻撃力]中アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      }
-    ],
-    "pilot": "アレックス・ディノ",
-    "model": "ZGMF-1000 ZAKU WARRIOR",
-    "terrain_compatibility": {
-      "ground": "A",
-      "space": "A",
-      "desert": "C",
-      "water": "A"
-    },
-    "weapon": {
-      "main": {
-        "name": "ビーム突撃銃",
-        "range": 3,
-        "type": "遠距離"
-      },
-      "sub": {
-        "name": "ビームトマホーク",
-        "range": 1,
-        "type": "近距離"
-      }
-    },
-    "ms_ability": {
-      "name": "特攻",
-      "activation": "出撃時発動",
-      "target": "自分",
-      "range": null,
-      "cost": null,
-      "description": "自身の[遠／近攻撃力]をアップし[怯み無効]となるが、[回避／ガード不可][修理時間延長]となる。効果は撤退するまで持続。"
-    },
-    "special_attack": {
-      "name": "ビーム突撃銃撃射",
-      "target": "単体(敵)",
-      "range": 3,
-      "sp_cost": 2,
-      "power": 3200,
-      "description": "敵単体に射撃攻撃でダメージを与える。",
-      "sp_type": "",
-      "echoes_beat": null,
-      "united_sp": null,
-      "squad_sp": null
-    }
-  },
-  "ocr_raw_file": "UNITRIBE_SEASON_05_UT05-024_ザクウォーリア_ocr_raw.json",
-  "ocr_timestamp": "2026-02-26T19:29:15.139490",
-  "ocr_type": "basic",
-  "ocr_engine": "claude_code_cli_combined"
+    "ocr_raw_file": "UNITRIBE_SEASON_05_UT05-024_ザクウォーリア_ocr_raw.json",
+    "ocr_timestamp": "2026-02-26T19:29:15.139490",
+    "ocr_type": "basic",
+    "ocr_engine": "claude_code_cli_combined"
 }

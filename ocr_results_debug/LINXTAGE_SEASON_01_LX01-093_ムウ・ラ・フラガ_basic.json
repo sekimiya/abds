@@ -1,62 +1,62 @@
 {
-  "card_number": "LX01-093",
-  "card_name": "ムウ・ラ・フラガ",
-  "series": "LINXTAGE SEASON:01",
-  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX01-093.jpg?v250630",
-  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX01-093_b.jpg?v250630",
-  "ocr_data": {
-    "type": "PL",
-    "name": "ムウ・ラ・フラガ",
-    "cost": 2,
-    "rarity": "M",
-    "category": "制圧",
-    "affiliation": "地球連合軍",
-    "illustrator": "",
-    "stats": {
-      "mobility": 180,
-      "ranged_attack": 100,
-      "melee_attack": 240,
-      "hp": 220
+    "card_number": "LX01-093",
+    "card_name": "ムウ・ラ・フラガ",
+    "series": "LINXTAGE SEASON:01",
+    "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX01-093.jpg?v250630",
+    "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX01-093_b.jpg?v250630",
+    "ocr_data": {
+        "type": "PL",
+        "name": "ムウ・ラ・フラガ",
+        "cost": 2,
+        "rarity": "M",
+        "category": "制圧",
+        "affiliation": "地球連合軍",
+        "illustrator": "",
+        "stats": {
+            "mobility": 180,
+            "ranged_attack": 100,
+            "melee_attack": 240,
+            "hp": 220
+        },
+        "link_ability": [
+            {
+                "name": "ガンダムSEED",
+                "condition": "デッキに3枚以上",
+                "effect": "[機動力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            },
+            {
+                "name": "数奇な運命",
+                "condition": "デッキに2枚以上",
+                "effect": "[機動力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            }
+        ],
+        "english_name": "MU LA FLAGA",
+        "physical": {
+            "height": "183cm",
+            "age": 28
+        },
+        "units": [
+            "エールストライクガンダム"
+        ],
+        "pilot_skill": {
+            "name": "決定的な一撃",
+            "trigger": "敵戦艦/拠点をロックオン時",
+            "effect": "敵戦艦/拠点へのダメージを中アップする。",
+            "has_sq_skill": false,
+            "sq_skill_details": null,
+            "is_eb_skill": false,
+            "eb_trigger_level": null,
+            "sq_rush_effect": ""
+        }
     },
-    "link_ability": [
-      {
-        "name": "ガンダムSEED",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      },
-      {
-        "name": "数奇な運命",
-        "condition": "デッキに2枚以上",
-        "effect": "[機動力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      }
-    ],
-    "english_name": "MU LA FLAGA",
-    "physical": {
-      "height": "183cm",
-      "age": 28
-    },
-    "units": [
-      "エールストライクガンダム"
-    ],
-    "pilot_skill": {
-      "name": "決定的な一撃",
-      "trigger": "敵戦艦／拠点をロックオン時",
-      "effect": "敵戦艦／拠点へのダメージを中アップする。",
-      "has_sq_skill": false,
-      "sq_skill_details": null,
-      "is_eb_skill": false,
-      "eb_trigger_level": null,
-      "sq_rush_effect": ""
-    }
-  },
-  "ocr_raw_file": "LINXTAGE_SEASON_01_LX01-093_ムウ・ラ・フラガ_ocr_raw.json",
-  "ocr_timestamp": "2026-03-02T07:49:09.202776",
-  "ocr_type": "basic",
-  "ocr_engine": "claude_code_cli_combined"
+    "ocr_raw_file": "LINXTAGE_SEASON_01_LX01-093_ムウ・ラ・フラガ_ocr_raw.json",
+    "ocr_timestamp": "2026-03-02T07:49:09.202776",
+    "ocr_type": "basic",
+    "ocr_engine": "claude_code_cli_combined"
 }

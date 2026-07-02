@@ -1,91 +1,91 @@
 {
-  "card_number": "FQ01-016",
-  "card_name": "デスティニーガンダム(ハイネ・ヴェステンフルス専用機)",
-  "series": "FORSQUAD SEASON:01",
-  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ01-016.jpg?v250630",
-  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ01-016_b.jpg?v250630",
-  "ocr_data": {
-    "type": "MS",
-    "name": "デスティニーガンダム(ハイネ・ヴェステンフルス専用機)",
-    "cost": 4,
-    "rarity": "R",
-    "category": "遠距離",
-    "affiliation": "ザフト",
-    "illustrator": "BIRU YAMAGUCHI",
-    "stats": {
-      "mobility": 250,
-      "ranged_attack": 330,
-      "melee_attack": 130,
-      "hp": 300
+    "card_number": "FQ01-016",
+    "card_name": "デスティニーガンダム(ハイネ・ヴェステンフルス専用機)",
+    "series": "FORSQUAD SEASON:01",
+    "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ01-016.jpg?v250630",
+    "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ01-016_b.jpg?v250630",
+    "ocr_data": {
+        "type": "MS",
+        "name": "デスティニーガンダム(ハイネ・ヴェステンフルス専用機)",
+        "cost": 4,
+        "rarity": "R",
+        "category": "遠距離",
+        "affiliation": "ザフト",
+        "illustrator": "BIRU YAMAGUCHI",
+        "stats": {
+            "mobility": 250,
+            "ranged_attack": 330,
+            "melee_attack": 130,
+            "hp": 300
+        },
+        "link_ability": [
+            {
+                "name": "SEED DESTINY",
+                "condition": "デッキに3枚以上",
+                "effect": "[HP]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            },
+            {
+                "name": "多彩な戦術",
+                "condition": "デッキに4枚以上",
+                "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            }
+        ],
+        "pilot": "ハイネ・ヴェステンフルス",
+        "model": "ZGMF-X42S-REVOLUTION HEINE'S DESTINY GUNDAM",
+        "terrain_compatibility": {
+            "ground": "A",
+            "space": "S",
+            "desert": "B",
+            "water": "A"
+        },
+        "weapon": {
+            "main": {
+                "name": "高エネルギービームライフル",
+                "range": 3,
+                "type": "遠距離"
+            },
+            "sub": {
+                "name": "アロンダイトビームソード",
+                "range": 1,
+                "type": "近距離"
+            }
+        },
+        "ms_ability": {
+            "name": "転化[支援]",
+            "activation": "任意発動",
+            "target": "範囲(味方)",
+            "range": null,
+            "cost": 4,
+            "description": "一定時間、自身を中心とした範囲内の味方ユニットを強化する。使用回数に応じて、強化効果が変わる。[1回:遠/近攻撃力アップ][2回:遠/近攻撃力アップ][3回以上:遠/近攻撃力アップ&回復]"
+        },
+        "special_attack": {
+            "name": "高エネルギー長射程ビーム砲撃射",
+            "target": "単体(敵)",
+            "range": 3,
+            "sp_cost": 2,
+            "power": 3200,
+            "description": "敵単体に射撃攻撃でダメージを与える。",
+            "sp_type": "",
+            "echoes_beat": null,
+            "united_sp": {
+                "name": "",
+                "partners": [],
+                "target": "",
+                "range": null,
+                "power": null,
+                "description": ""
+            },
+            "squad_sp": null
+        }
     },
-    "link_ability": [
-      {
-        "name": "SEED DESTINY",
-        "condition": "デッキに3枚以上",
-        "effect": "[HP]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      },
-      {
-        "name": "多彩な戦術",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      }
-    ],
-    "pilot": "ハイネ・ヴェステンフルス",
-    "model": "ZGMF-X42S-REVOLUTION HEINE'S DESTINY GUNDAM",
-    "terrain_compatibility": {
-      "ground": "A",
-      "space": "S",
-      "desert": "B",
-      "water": "A"
-    },
-    "weapon": {
-      "main": {
-        "name": "高エネルギービームライフル",
-        "range": 3,
-        "type": "遠距離"
-      },
-      "sub": {
-        "name": "アロンダイトビームソード",
-        "range": 1,
-        "type": "近距離"
-      }
-    },
-    "ms_ability": {
-      "name": "転化[支援]",
-      "activation": "任意発動",
-      "target": "範囲(味方)",
-      "range": null,
-      "cost": 4,
-      "description": "一定時間、自身を中心とした範囲内の味方ユニットを強化する。使用回数に応じて、強化効果が変わる。[1回:遠／近攻撃力アップ][2回:遠／近攻撃力アップ][3回以上:遠／近攻撃力アップ&回復]"
-    },
-    "special_attack": {
-      "name": "高エネルギー長射程ビーム砲撃射",
-      "target": "単体(敵)",
-      "range": 3,
-      "sp_cost": 2,
-      "power": 3200,
-      "description": "敵単体に射撃攻撃でダメージを与える。",
-      "sp_type": "",
-      "echoes_beat": null,
-      "united_sp": {
-        "name": "",
-        "partners": [],
-        "target": "",
-        "range": null,
-        "power": null,
-        "description": ""
-      },
-      "squad_sp": null
-    }
-  },
-  "ocr_raw_file": "FORSQUAD_SEASON_01_FQ01-016_デスティニーガンダム(ハイネ・ヴェステンフルス専用機)_ocr_raw.json",
-  "ocr_timestamp": "2026-02-24T01:23:42.372834",
-  "ocr_type": "basic",
-  "ocr_engine": "claude_code_cli"
+    "ocr_raw_file": "FORSQUAD_SEASON_01_FQ01-016_デスティニーガンダム(ハイネ・ヴェステンフルス専用機)_ocr_raw.json",
+    "ocr_timestamp": "2026-02-24T01:23:42.372834",
+    "ocr_type": "basic",
+    "ocr_engine": "claude_code_cli"
 }

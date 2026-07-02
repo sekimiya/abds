@@ -1,84 +1,84 @@
 {
-  "card_number": "BP04-008",
-  "card_name": "マイティーストライクフリーダムガンダム",
-  "series": "3.5th Anniversary MEMORIAL BOOSTER PACK",
-  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP04-008.jpg?v250630",
-  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP04-008_b.jpg?v250630",
-  "ocr_data": {
-    "type": "MS",
-    "name": "マイティーストライクフリーダムガンダム",
-    "cost": 7,
-    "rarity": "M",
-    "category": "近距離",
-    "affiliation": "コンパス",
-    "illustrator": "Naochika Morishita",
-    "stats": {
-      "mobility": 270,
-      "ranged_attack": 80,
-      "melee_attack": 550,
-      "hp": 550
+    "card_number": "BP04-008",
+    "card_name": "マイティーストライクフリーダムガンダム",
+    "series": "3.5th Anniversary MEMORIAL BOOSTER PACK",
+    "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP04-008.jpg?v250630",
+    "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP04-008_b.jpg?v250630",
+    "ocr_data": {
+        "type": "MS",
+        "name": "マイティーストライクフリーダムガンダム",
+        "cost": 7,
+        "rarity": "M",
+        "category": "近距離",
+        "affiliation": "コンパス",
+        "illustrator": "Naochika Morishita",
+        "stats": {
+            "mobility": 270,
+            "ranged_attack": 80,
+            "melee_attack": 550,
+            "hp": 550
+        },
+        "link_ability": [
+            {
+                "name": "SEED FREEDOM",
+                "condition": "デッキに3枚以上",
+                "effect": "[機動力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            },
+            {
+                "name": "多彩な戦術",
+                "condition": "デッキに4枚以上",
+                "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            }
+        ],
+        "pilot": "キラ・ヤマト&ラクス・クライン",
+        "model": "ZGMF/A-262PD-P MIGHTY STRIKE FREEDOM GUNDAM",
+        "terrain_compatibility": {
+            "ground": "A",
+            "space": "S",
+            "desert": "A",
+            "water": "C"
+        },
+        "weapon": {
+            "main": {
+                "name": "アクータラクルタ&対艦刀アロンダイト/ミタケヨリ派連装",
+                "range": 1,
+                "type": "近距離"
+            },
+            "sub": {
+                "name": "高エネルギービームライフル",
+                "range": 3,
+                "type": "遠距離"
+            }
+        },
+        "ms_ability": {
+            "name": "障壁",
+            "activation": "任意発動",
+            "target": "自分",
+            "range": null,
+            "cost": 3,
+            "description": "自身の周りにバリアを展開する。展開したバリアは自身へのダメージを一定値防ぎ、バリア展開中は弱体効果を受けない状態となる。"
+        },
+        "special_attack": {
+            "name": "アクータラクルタ&対艦刀アロンダイト/ミタケヨリ派連装 収束重核子ビーム砲ディスラプター",
+            "target": "単体(敵)",
+            "range": 2,
+            "sp_cost": 2,
+            "power": 3600,
+            "description": "敵単体に格闘攻撃でダメージを与え、一定時間、出撃中の全味方殲滅タイプユニットの[機動力][近距離攻撃力]をアップする。/射線上の敵に貫通射撃でダメージを与え、対象がユニットの場合は撃破する。拠点、戦艦は防御効果を無視してダメージを与える。",
+            "sp_type": "SQUAD SP",
+            "echoes_beat": null,
+            "united_sp": null,
+            "squad_sp": null
+        }
     },
-    "link_ability": [
-      {
-        "name": "SEED FREEDOM",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      },
-      {
-        "name": "多彩な戦術",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      }
-    ],
-    "pilot": "キラ・ヤマト&ラクス・クライン",
-    "model": "ZGMF/A-262PD-P MIGHTY STRIKE FREEDOM GUNDAM",
-    "terrain_compatibility": {
-      "ground": "A",
-      "space": "S",
-      "desert": "A",
-      "water": "C"
-    },
-    "weapon": {
-      "main": {
-        "name": "アクータラクルタ&対艦刀アロンダイト/ミタケヨリ派連装",
-        "range": 1,
-        "type": "近距離"
-      },
-      "sub": {
-        "name": "高エネルギービームライフル",
-        "range": 3,
-        "type": "遠距離"
-      }
-    },
-    "ms_ability": {
-      "name": "障壁",
-      "activation": "任意発動",
-      "target": "自分",
-      "range": null,
-      "cost": 3,
-      "description": "自身の周りにバリアを展開する。展開したバリアは自身へのダメージを一定値防ぎ、バリア展開中は弱体効果を受けない状態となる。"
-    },
-    "special_attack": {
-      "name": "アクータラクルタ&対艦刀アロンダイト/ミタケヨリ派連装 収束重核子ビーム砲ディスラプター",
-      "target": "単体(敵)",
-      "range": 2,
-      "sp_cost": 2,
-      "power": 3600,
-      "description": "敵単体に格闘攻撃でダメージを与え、一定時間、出撃中の全味方殲滅タイプユニットの[機動力][近距離攻撃力]をアップする。／射線上の敵に貫通射撃でダメージを与え、対象がユニットの場合は撃破する。拠点、戦艦は防御効果を無視してダメージを与える。",
-      "sp_type": "SQUAD SP",
-      "echoes_beat": null,
-      "united_sp": null,
-      "squad_sp": null
-    }
-  },
-  "ocr_raw_file": "3.5th_Anniversary_MEMORIAL_BOOSTER_PACK_BP04-008_マイティーストライクフリーダムガンダム_ocr_raw.json",
-  "ocr_timestamp": "2026-02-26T18:54:13.664291",
-  "ocr_type": "basic",
-  "ocr_engine": "claude_code_cli_combined"
+    "ocr_raw_file": "3.5th_Anniversary_MEMORIAL_BOOSTER_PACK_BP04-008_マイティーストライクフリーダムガンダム_ocr_raw.json",
+    "ocr_timestamp": "2026-02-26T18:54:13.664291",
+    "ocr_type": "basic",
+    "ocr_engine": "claude_code_cli_combined"
 }

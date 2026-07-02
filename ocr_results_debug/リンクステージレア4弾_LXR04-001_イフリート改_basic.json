@@ -1,84 +1,84 @@
 {
-  "card_number": "LXR04-001",
-  "card_name": "イフリート改",
-  "series": "リンクステージレア4弾",
-  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LXR04-001.jpg?v250630",
-  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LXR04-001_b.jpg?v250630",
-  "ocr_data": {
-    "type": "MS",
-    "name": "イフリート改",
-    "cost": 5,
-    "rarity": "LX",
-    "category": "機動",
-    "affiliation": "ジオン公国軍",
-    "illustrator": "haru",
-    "stats": {
-      "mobility": 270,
-      "ranged_attack": 60,
-      "melee_attack": 430,
-      "hp": 440
+    "card_number": "LXR04-001",
+    "card_name": "イフリート改",
+    "series": "リンクステージレア4弾",
+    "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LXR04-001.jpg?v250630",
+    "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LXR04-001_b.jpg?v250630",
+    "ocr_data": {
+        "type": "MS",
+        "name": "イフリート改",
+        "cost": 5,
+        "rarity": "LX",
+        "category": "機動",
+        "affiliation": "ジオン公国軍",
+        "illustrator": "haru",
+        "stats": {
+            "mobility": 270,
+            "ranged_attack": 60,
+            "melee_attack": 430,
+            "hp": 440
+        },
+        "link_ability": [
+            {
+                "name": "THE BLUE DESTINY",
+                "condition": "デッキに2枚以上",
+                "effect": "[近距離攻撃力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            },
+            {
+                "name": "高速機動の接近戦",
+                "condition": "デッキに機動が2枚以上",
+                "effect": "[近距離攻撃力]中アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            }
+        ],
+        "pilot": "ニムバス・シュターゼン",
+        "model": "MS-08TX[EXAM] EFREET CUSTOM",
+        "terrain_compatibility": {
+            "ground": "S",
+            "space": "C",
+            "desert": "S",
+            "water": "C"
+        },
+        "weapon": {
+            "main": {
+                "name": "ヒート・サーベルニ刀流",
+                "range": 1,
+                "type": "近距離"
+            },
+            "sub": {
+                "name": "腕部2連装グレネード・ランチャー",
+                "range": 3,
+                "type": "遠距離"
+            }
+        },
+        "ms_ability": {
+            "name": "奮起",
+            "activation": "出撃時発動",
+            "target": "自分",
+            "range": null,
+            "cost": null,
+            "description": "自身のHPが1以上で一定割合以下になると、一定時間、撃破されなくなり[遠/近攻撃力]を中アップする。出撃時1度のみ発動。"
+        },
+        "special_attack": {
+            "name": "ヒート・サーベルニ刀流連撃",
+            "target": "単体(敵)",
+            "range": 2,
+            "sp_cost": 2,
+            "power": 3700,
+            "description": "敵単体に格闘攻撃でダメージを与える。",
+            "sp_type": "",
+            "echoes_beat": null,
+            "united_sp": null,
+            "squad_sp": null
+        }
     },
-    "link_ability": [
-      {
-        "name": "THE BLUE DESTINY",
-        "condition": "デッキに2枚以上",
-        "effect": "[近距離攻撃力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      },
-      {
-        "name": "高速機動の接近戦",
-        "condition": "デッキに機動が2枚以上",
-        "effect": "[近距離攻撃力]中アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      }
-    ],
-    "pilot": "ニムバス・シュターゼン",
-    "model": "MS-08TX[EXAM] EFREET CUSTOM",
-    "terrain_compatibility": {
-      "ground": "S",
-      "space": "C",
-      "desert": "S",
-      "water": "C"
-    },
-    "weapon": {
-      "main": {
-        "name": "ヒート・サーベルニ刀流",
-        "range": 1,
-        "type": "近距離"
-      },
-      "sub": {
-        "name": "腕部2連装グレネード・ランチャー",
-        "range": 3,
-        "type": "遠距離"
-      }
-    },
-    "ms_ability": {
-      "name": "奮起",
-      "activation": "出撃時発動",
-      "target": "自分",
-      "range": null,
-      "cost": null,
-      "description": "自身のHPが1以上で一定割合以下になると、一定時間、撃破されなくなり[遠／近攻撃力]を中アップする。出撃時1度のみ発動。"
-    },
-    "special_attack": {
-      "name": "ヒート・サーベルニ刀流連撃",
-      "target": "単体(敵)",
-      "range": 2,
-      "sp_cost": 2,
-      "power": 3700,
-      "description": "敵単体に格闘攻撃でダメージを与える。",
-      "sp_type": "",
-      "echoes_beat": null,
-      "united_sp": null,
-      "squad_sp": null
-    }
-  },
-  "ocr_raw_file": "リンクステージレア4弾_LXR04-001_イフリート改_ocr_raw.json",
-  "ocr_timestamp": "2026-03-07T13:50:10.464455",
-  "ocr_type": "basic",
-  "ocr_engine": "claude_code_cli_combined"
+    "ocr_raw_file": "リンクステージレア4弾_LXR04-001_イフリート改_ocr_raw.json",
+    "ocr_timestamp": "2026-03-07T13:50:10.464455",
+    "ocr_type": "basic",
+    "ocr_engine": "claude_code_cli_combined"
 }

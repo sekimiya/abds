@@ -1,64 +1,64 @@
 {
-  "card_number": "FQ02-064",
-  "card_name": "昭弘・アルトランド",
-  "series": "FORSQUAD SEASON:02",
-  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-064.jpg?v250630",
-  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-064_b.jpg?v250630",
-  "ocr_data": {
-    "type": "PL",
-    "name": "昭弘・アルトランド",
-    "cost": 2,
-    "rarity": "P",
-    "category": "制圧",
-    "affiliation": "鉄華団",
-    "illustrator": "",
-    "stats": {
-      "mobility": 200,
-      "ranged_attack": 50,
-      "melee_attack": 240,
-      "hp": 300
+    "card_number": "FQ02-064",
+    "card_name": "昭弘・アルトランド",
+    "series": "FORSQUAD SEASON:02",
+    "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-064.jpg?v250630",
+    "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-064_b.jpg?v250630",
+    "ocr_data": {
+        "type": "PL",
+        "name": "昭弘・アルトランド",
+        "cost": 2,
+        "rarity": "P",
+        "category": "制圧",
+        "affiliation": "鉄華団",
+        "illustrator": "",
+        "stats": {
+            "mobility": 200,
+            "ranged_attack": 50,
+            "melee_attack": 240,
+            "hp": 300
+        },
+        "link_ability": [
+            {
+                "name": "彼等の居場所",
+                "condition": "デッキに3枚以上",
+                "effect": "SQゲージが表示される。SQゲージを溜めるとSQUAD RUSHが発動できる。[遠距離攻撃力][近距離攻撃力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": true,
+                "is_ab_link": false
+            },
+            {
+                "name": "戦況を変える力",
+                "condition": "デッキに4枚以上",
+                "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            }
+        ],
+        "english_name": "",
+        "physical": null,
+        "units": null,
+        "pilot_skill": {
+            "name": "猛烈な攻撃陣形",
+            "trigger": "敵戦艦/拠点をロックオン時",
+            "effect": "SQゲージ小アップ。",
+            "has_sq_skill": true,
+            "sq_skill_details": {
+                "name": "",
+                "trigger": "敵戦艦/拠点をロックオン時",
+                "effect": "",
+                "sq_gauge_effect": "SQゲージ小アップ。",
+                "sq_max_effect": "",
+                "sq_rush_effect": "自身の[近距離攻撃力]をアップし、受けるダメージを軽減する。"
+            },
+            "is_eb_skill": false,
+            "eb_trigger_level": null,
+            "sq_rush_effect": ""
+        }
     },
-    "link_ability": [
-      {
-        "name": "彼等の居場所",
-        "condition": "デッキに3枚以上",
-        "effect": "SQゲージが表示される。SQゲージを溜めるとSQUAD RUSHが発動できる。[遠距離攻撃力][近距離攻撃力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": true,
-        "is_ab_link": false
-      },
-      {
-        "name": "戦況を変える力",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      }
-    ],
-    "english_name": "",
-    "physical": null,
-    "units": null,
-    "pilot_skill": {
-      "name": "猛烈な攻撃陣形",
-      "trigger": "敵戦艦／拠点をロックオン時",
-      "effect": "SQゲージ小アップ。",
-      "has_sq_skill": true,
-      "sq_skill_details": {
-        "name": "",
-        "trigger": "敵戦艦／拠点をロックオン時",
-        "effect": "",
-        "sq_gauge_effect": "SQゲージ小アップ。",
-        "sq_max_effect": "",
-        "sq_rush_effect": "自身の[近距離攻撃力]をアップし、受けるダメージを軽減する。"
-      },
-      "is_eb_skill": false,
-      "eb_trigger_level": null,
-      "sq_rush_effect": ""
-    }
-  },
-  "ocr_raw_file": "FORSQUAD_SEASON_02_FQ02-064_昭弘・アルトランド_ocr_raw.json",
-  "ocr_timestamp": "2026-03-03T18:43:01.184980",
-  "ocr_type": "basic",
-  "ocr_engine": "claude_code_cli_combined"
+    "ocr_raw_file": "FORSQUAD_SEASON_02_FQ02-064_昭弘・アルトランド_ocr_raw.json",
+    "ocr_timestamp": "2026-03-03T18:43:01.184980",
+    "ocr_type": "basic",
+    "ocr_engine": "claude_code_cli_combined"
 }

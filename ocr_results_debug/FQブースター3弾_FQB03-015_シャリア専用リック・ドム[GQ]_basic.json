@@ -1,93 +1,93 @@
 {
-  "card_number": "FQB03-015",
-  "card_name": "シャリア専用リック・ドム[GQ]",
-  "series": "FQブースター3弾",
-  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQB03-015.jpg?v250630",
-  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQB03-015_b.jpg?v250630",
-  "ocr_data": {
-    "type": "MS",
-    "name": "シャリア専用リック・ドム[GQ]",
-    "cost": 2,
-    "rarity": "R",
-    "category": "近距離",
-    "affiliation": "ジオン公国軍",
-    "illustrator": "Moyasi",
-    "stats": {
-      "mobility": 200,
-      "ranged_attack": 80,
-      "melee_attack": 220,
-      "hp": 300
-    },
-    "link_ability": [
-      {
-        "name": "GQuuuuuuX",
-        "condition": "デッキに3枚以上",
-        "effect": "[HP]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      },
-      {
-        "name": "戦況を変える力",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      }
-    ],
-    "pilot": "",
-    "model": "Challia's Rick Dom [GQ]",
-    "terrain_compatibility": {
-      "ground": "B",
-      "space": "S",
-      "desert": "C",
-      "water": "C"
-    },
-    "weapon": {
-      "main": {
-        "name": "ヒート・サーベル",
-        "range": 1,
-        "type": "近距離"
-      },
-      "sub": {
-        "name": "ジャイアント・バズ",
-        "range": 3,
-        "type": "遠距離"
-      }
-    },
-    "ms_ability": {
-      "name": "縛撃",
-      "activation": "任意発動",
-      "target": "単体(敵)",
-      "range": 1,
-      "cost": 3,
-      "description": "ロックオン中の敵ユニットに単体攻撃を行いダメージを与え、一定時間スタンさせる。"
-    },
-    "special_attack": {
-      "name": "ヒート・サーベル強撃",
-      "target": "単体(敵)",
-      "range": 2,
-      "sp_cost": 2,
-      "power": 3200,
-      "description": "敵単体に格闘攻撃でダメージを与える。／対象の敵を中心として範囲射撃でダメージを与える。出撃時1度のみ使用可能。",
-      "sp_type": "",
-      "echoes_beat": null,
-      "united_sp": {
-        "name": "",
-        "partners": [
-          "赤いガンダム(0079)"
+    "card_number": "FQB03-015",
+    "card_name": "シャリア専用リック・ドム[GQ]",
+    "series": "FQブースター3弾",
+    "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQB03-015.jpg?v250630",
+    "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQB03-015_b.jpg?v250630",
+    "ocr_data": {
+        "type": "MS",
+        "name": "シャリア専用リック・ドム[GQ]",
+        "cost": 2,
+        "rarity": "R",
+        "category": "近距離",
+        "affiliation": "ジオン公国軍",
+        "illustrator": "Moyasi",
+        "stats": {
+            "mobility": 200,
+            "ranged_attack": 80,
+            "melee_attack": 220,
+            "hp": 300
+        },
+        "link_ability": [
+            {
+                "name": "GQuuuuuuX",
+                "condition": "デッキに3枚以上",
+                "effect": "[HP]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            },
+            {
+                "name": "戦況を変える力",
+                "condition": "デッキに4枚以上",
+                "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            }
         ],
-        "target": "",
-        "range": 4,
-        "power": 3500,
-        "description": "対象の敵を中心として範囲射撃でダメージを与える。出撃時1度のみ使用可能。"
-      },
-      "squad_sp": null
-    }
-  },
-  "ocr_raw_file": "FQブースター3弾_FQB03-015_シャリア専用リック・ドム[GQ]_ocr_raw.json",
-  "ocr_timestamp": "2026-02-28T02:14:53.313681",
-  "ocr_type": "basic",
-  "ocr_engine": "claude_code_cli_combined"
+        "pilot": "",
+        "model": "Challia's Rick Dom [GQ]",
+        "terrain_compatibility": {
+            "ground": "B",
+            "space": "S",
+            "desert": "C",
+            "water": "C"
+        },
+        "weapon": {
+            "main": {
+                "name": "ヒート・サーベル",
+                "range": 1,
+                "type": "近距離"
+            },
+            "sub": {
+                "name": "ジャイアント・バズ",
+                "range": 3,
+                "type": "遠距離"
+            }
+        },
+        "ms_ability": {
+            "name": "縛撃",
+            "activation": "任意発動",
+            "target": "単体(敵)",
+            "range": 1,
+            "cost": 3,
+            "description": "ロックオン中の敵ユニットに単体攻撃を行いダメージを与え、一定時間スタンさせる。"
+        },
+        "special_attack": {
+            "name": "ヒート・サーベル強撃",
+            "target": "単体(敵)",
+            "range": 2,
+            "sp_cost": 2,
+            "power": 3200,
+            "description": "敵単体に格闘攻撃でダメージを与える。/対象の敵を中心として範囲射撃でダメージを与える。出撃時1度のみ使用可能。",
+            "sp_type": "",
+            "echoes_beat": null,
+            "united_sp": {
+                "name": "",
+                "partners": [
+                    "赤いガンダム(0079)"
+                ],
+                "target": "",
+                "range": 4,
+                "power": 3500,
+                "description": "対象の敵を中心として範囲射撃でダメージを与える。出撃時1度のみ使用可能。"
+            },
+            "squad_sp": null
+        }
+    },
+    "ocr_raw_file": "FQブースター3弾_FQB03-015_シャリア専用リック・ドム[GQ]_ocr_raw.json",
+    "ocr_timestamp": "2026-02-28T02:14:53.313681",
+    "ocr_type": "basic",
+    "ocr_engine": "claude_code_cli_combined"
 }

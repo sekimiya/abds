@@ -1,67 +1,67 @@
 {
-  "card_number": "FQ05-044",
-  "card_name": "セイラ・マス",
-  "series": "FORSQUAD SEASON:05",
-  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ05-044.jpg?v250630",
-  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ05-044_b.jpg?v250630",
-  "ocr_data": {
-    "type": "PL",
-    "name": "セイラ・マス",
-    "cost": 2,
-    "rarity": "M",
-    "category": "制圧",
-    "affiliation": "地球連邦軍",
-    "illustrator": "",
-    "stats": {
-      "mobility": 200,
-      "ranged_attack": 30,
-      "melee_attack": 230,
-      "hp": 280
+    "card_number": "FQ05-044",
+    "card_name": "セイラ・マス",
+    "series": "FORSQUAD SEASON:05",
+    "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ05-044.jpg?v250630",
+    "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ05-044_b.jpg?v250630",
+    "ocr_data": {
+        "type": "PL",
+        "name": "セイラ・マス",
+        "cost": 2,
+        "rarity": "M",
+        "category": "制圧",
+        "affiliation": "地球連邦軍",
+        "illustrator": "",
+        "stats": {
+            "mobility": 200,
+            "ranged_attack": 30,
+            "melee_attack": 230,
+            "hp": 280
+        },
+        "link_ability": [
+            {
+                "name": "めぐりあい宇宙",
+                "condition": "デッキに3枚以上",
+                "effect": "SQゲージが表示される。SQゲージを溜めるとSQUAD RUSHが発動できる。[機動力][HP]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            },
+            {
+                "name": "多彩な戦術",
+                "condition": "デッキに4枚以上",
+                "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            }
+        ],
+        "english_name": "SAYLA MASS",
+        "physical": {
+            "height": "",
+            "age": 17
+        },
+        "units": [],
+        "pilot_skill": {
+            "name": "計算された優位性",
+            "trigger": "敵戦艦/拠点をロックオン時",
+            "effect": "SQゲージ小アップ。SQUAD RUSH中出撃中の全敵ユニットの[機動力][遠/近攻撃力]をダウンする。",
+            "has_sq_skill": true,
+            "sq_skill_details": {
+                "name": "",
+                "trigger": "",
+                "effect": "",
+                "sq_gauge_effect": "SQゲージ小アップ。",
+                "sq_max_effect": "",
+                "sq_rush_effect": "出撃中の全敵ユニットの[機動力][遠/近攻撃力]をダウンする。"
+            },
+            "is_eb_skill": false,
+            "eb_trigger_level": null,
+            "sq_rush_effect": ""
+        }
     },
-    "link_ability": [
-      {
-        "name": "めぐりあい宇宙",
-        "condition": "デッキに3枚以上",
-        "effect": "SQゲージが表示される。SQゲージを溜めるとSQUAD RUSHが発動できる。[機動力][HP]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      },
-      {
-        "name": "多彩な戦術",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      }
-    ],
-    "english_name": "SAYLA MASS",
-    "physical": {
-      "height": "",
-      "age": 17
-    },
-    "units": [],
-    "pilot_skill": {
-      "name": "計算された優位性",
-      "trigger": "敵戦艦／拠点をロックオン時",
-      "effect": "SQゲージ小アップ。SQUAD RUSH中出撃中の全敵ユニットの[機動力][遠/近攻撃力]をダウンする。",
-      "has_sq_skill": true,
-      "sq_skill_details": {
-        "name": "",
-        "trigger": "",
-        "effect": "",
-        "sq_gauge_effect": "SQゲージ小アップ。",
-        "sq_max_effect": "",
-        "sq_rush_effect": "出撃中の全敵ユニットの[機動力][遠/近攻撃力]をダウンする。"
-      },
-      "is_eb_skill": false,
-      "eb_trigger_level": null,
-      "sq_rush_effect": ""
-    }
-  },
-  "ocr_raw_file": "FORSQUAD_SEASON_05_FQ05-044_セイラ・マス_ocr_raw.json",
-  "ocr_timestamp": "2026-02-24T18:29:34.995127",
-  "ocr_type": "basic",
-  "ocr_engine": "claude_code_cli_combined"
+    "ocr_raw_file": "FORSQUAD_SEASON_05_FQ05-044_セイラ・マス_ocr_raw.json",
+    "ocr_timestamp": "2026-02-24T18:29:34.995127",
+    "ocr_type": "basic",
+    "ocr_engine": "claude_code_cli_combined"
 }

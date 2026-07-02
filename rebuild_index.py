@@ -410,6 +410,22 @@ def detect_sq_info(ocr_data):
     }
 
 
+def _classify_skill_timing(trigger):
+    """PLスキル発動タイミングをフィルタUI(skTim)のキーに分類"""
+    t = trigger or ''
+    if 'ロックオン' in t:
+        return 'ロックオン時'
+    if 'MSアビリティ' in t:
+        return 'MSアビリティ'
+    if re.search(r'HP\d+%', t):
+        return 'HP条件時'
+    if '撃破' in t:
+        return '撃破時'
+    if t.startswith('出撃時'):
+        return '出撃時'
+    return ''
+
+
 def _classify_sq_trigger(trigger):
     """SQスキル発動条件をフィルタUIのキーに分類"""
     t = trigger or ''
@@ -475,6 +491,7 @@ def build_card_index_entry(card_number, card_data):
     sp_desc = sp.get('description', '') or ''
     sp_type = sp.get('sp_type', '') or ''
 
+    skill_trigger = ''
     if card_type == 'PL':
         ps = ocr.get('pilot_skill', {}) or {}
         skill_name = ps.get('name', '')
@@ -483,6 +500,7 @@ def build_card_index_entry(card_number, card_data):
             sq_skill_effect_tags = extract_skill_effect_tags(ps_desc)
         skill_effect_tags = extract_skill_effect_tags(ps_desc)
         sq_rush_effect = ps.get('sq_rush_effect', '') or ''
+        skill_trigger = _classify_skill_timing(ps.get('trigger', '') or '')
     else:
         msa = ocr.get('ms_ability', {}) or {}
         ability_name = msa.get('name', '')
@@ -536,6 +554,7 @@ def build_card_index_entry(card_number, card_data):
         'sq_gauge_rate': sq_info['sq_gauge_rate'],
         'sq_skill_effect_tags': sq_skill_effect_tags,
         'skill_name': skill_name,
+        'skill_trigger': skill_trigger,
         'skill_effect_tags': skill_effect_tags,
         'eb_text': eb_info['eb_text'],
         'eb_skill_text': eb_info['eb_skill_text'],

@@ -1,84 +1,84 @@
 {
-  "card_number": "FQB03-004",
-  "card_name": "クロスボーン・ガンダムX-1",
-  "series": "FQブースター3弾",
-  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQB03-004.jpg?v250630",
-  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQB03-004_b.jpg?v250630",
-  "ocr_data": {
-    "type": "MS",
-    "name": "クロスボーン・ガンダムX-1",
-    "cost": 4,
-    "rarity": "M",
-    "category": "遠距離",
-    "affiliation": "宇宙海賊クロスボーン・バンガード",
-    "illustrator": "J.YUZURU(willow_works)",
-    "stats": {
-      "mobility": 180,
-      "ranged_attack": 240,
-      "melee_attack": 50,
-      "hp": 480
+    "card_number": "FQB03-004",
+    "card_name": "クロスボーン・ガンダムX-1",
+    "series": "FQブースター3弾",
+    "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQB03-004.jpg?v250630",
+    "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQB03-004_b.jpg?v250630",
+    "ocr_data": {
+        "type": "MS",
+        "name": "クロスボーン・ガンダムX-1",
+        "cost": 4,
+        "rarity": "M",
+        "category": "遠距離",
+        "affiliation": "宇宙海賊クロスボーン・バンガード",
+        "illustrator": "J.YUZURU(willow_works)",
+        "stats": {
+            "mobility": 180,
+            "ranged_attack": 240,
+            "melee_attack": 50,
+            "hp": 480
+        },
+        "link_ability": [
+            {
+                "name": "クロスボーン・ガンダム",
+                "condition": "デッキに2枚以上",
+                "effect": "[機動力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            },
+            {
+                "name": "的確な一撃",
+                "condition": "デッキに4枚以上",
+                "effect": "[機動力][遠距離攻撃力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            }
+        ],
+        "pilot": "キンケドゥ・ナウ",
+        "model": "XM-X1 CROSSBONE GUNDAM X-1",
+        "terrain_compatibility": {
+            "ground": "A",
+            "space": "S",
+            "desert": "B",
+            "water": "B"
+        },
+        "weapon": {
+            "main": {
+                "name": "ザンバスター",
+                "range": 3,
+                "type": "遠距離"
+            },
+            "sub": {
+                "name": "ビーム・ザンバー",
+                "range": 1,
+                "type": "近距離"
+            }
+        },
+        "ms_ability": {
+            "name": "奮起",
+            "activation": "出撃時発動",
+            "target": "自分",
+            "range": null,
+            "cost": null,
+            "description": "自身のHPが1以上で一定割合以下になると、一定時間、撃破されなくなり[遠/近攻撃力]を中アップする。出撃時1度のみ発動。"
+        },
+        "special_attack": {
+            "name": "ザンバスター撃射",
+            "target": "単体(敵)",
+            "range": 3,
+            "sp_cost": 2,
+            "power": 3300,
+            "description": "敵単体に射撃攻撃でダメージを与える。",
+            "sp_type": "",
+            "echoes_beat": null,
+            "united_sp": null,
+            "squad_sp": null
+        }
     },
-    "link_ability": [
-      {
-        "name": "クロスボーン・ガンダム",
-        "condition": "デッキに2枚以上",
-        "effect": "[機動力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      },
-      {
-        "name": "的確な一撃",
-        "condition": "デッキに4枚以上",
-        "effect": "[機動力][遠距離攻撃力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      }
-    ],
-    "pilot": "キンケドゥ・ナウ",
-    "model": "XM-X1 CROSSBONE GUNDAM X-1",
-    "terrain_compatibility": {
-      "ground": "A",
-      "space": "S",
-      "desert": "B",
-      "water": "B"
-    },
-    "weapon": {
-      "main": {
-        "name": "ザンバスター",
-        "range": 3,
-        "type": "遠距離"
-      },
-      "sub": {
-        "name": "ビーム・ザンバー",
-        "range": 1,
-        "type": "近距離"
-      }
-    },
-    "ms_ability": {
-      "name": "奮起",
-      "activation": "出撃時発動",
-      "target": "自分",
-      "range": null,
-      "cost": null,
-      "description": "自身のHPが1以上で一定割合以下になると、一定時間、撃破されなくなり[遠／近攻撃力]を中アップする。出撃時1度のみ発動。"
-    },
-    "special_attack": {
-      "name": "ザンバスター撃射",
-      "target": "単体(敵)",
-      "range": 3,
-      "sp_cost": 2,
-      "power": 3300,
-      "description": "敵単体に射撃攻撃でダメージを与える。",
-      "sp_type": "",
-      "echoes_beat": null,
-      "united_sp": null,
-      "squad_sp": null
-    }
-  },
-  "ocr_raw_file": "FQブースター3弾_FQB03-004_クロスボーン・ガンダムX-1_ocr_raw.json",
-  "ocr_timestamp": "2026-02-28T02:07:27.631304",
-  "ocr_type": "basic",
-  "ocr_engine": "claude_code_cli_combined"
+    "ocr_raw_file": "FQブースター3弾_FQB03-004_クロスボーン・ガンダムX-1_ocr_raw.json",
+    "ocr_timestamp": "2026-02-28T02:07:27.631304",
+    "ocr_type": "basic",
+    "ocr_engine": "claude_code_cli_combined"
 }

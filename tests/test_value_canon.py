@@ -92,7 +92,8 @@ def test_canonicalize_splits_eb_from_sp_description():
         "echoes_beat": {"name": "技名 Lv.2", "description": ""}}}
     changes = canonicalize_values(ocr)
     sp = ocr["special_attack"]
-    assert sp["description"] == "敵の[遠／近攻撃力]をダウンする。"
+    # 分離後、文中の全角スラッシュは半角に統一される
+    assert sp["description"] == "敵の[遠/近攻撃力]をダウンする。"
     assert sp["echoes_beat"]["description"] == "EBLv.を2下げる。EB効果。"
     assert changes
 
@@ -104,6 +105,22 @@ def test_canonicalize_splits_eb_from_sp_description():
     canonicalize_values(ocr2)
     assert ocr2["special_attack"]["description"] == "通常効果。"
     assert ocr2["special_attack"]["echoes_beat"]["description"] == "EBLv.を1下げる。正しいEB効果。"
+
+
+def test_canonicalize_halfwidth_slash_in_text_fields():
+    """説明/効果/トリガー系テキストの全角スラッシュは半角に統一される"""
+    ocr = {
+        "ms_ability": {"description": "敵の[遠／近攻撃力]をダウンする。"},
+        "pilot_skill": {"trigger": "敵戦艦／拠点をロックオン時",
+                        "effect": "[遠／近攻撃力]をアップする。"},
+        "link_ability": [{"name": "テスト", "condition": "デッキに3枚以上",
+                          "effect": "[遠／近攻撃力]小アップ"}],
+    }
+    canonicalize_values(ocr)
+    assert ocr["ms_ability"]["description"] == "敵の[遠/近攻撃力]をダウンする。"
+    assert ocr["pilot_skill"]["trigger"] == "敵戦艦/拠点をロックオン時"
+    assert ocr["pilot_skill"]["effect"] == "[遠/近攻撃力]をアップする。"
+    assert ocr["link_ability"][0]["effect"] == "[遠/近攻撃力]小アップ"
 
 
 def test_canonicalize_empties_dash_weapon_slot():

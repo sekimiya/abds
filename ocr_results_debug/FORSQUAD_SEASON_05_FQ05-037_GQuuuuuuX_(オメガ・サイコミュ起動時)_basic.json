@@ -1,93 +1,93 @@
 {
-  "card_number": "FQ05-037",
-  "card_name": "GQuuuuuuX (オメガ・サイコミュ起動時)",
-  "series": "FORSQUAD SEASON:05",
-  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ05-037.jpg?v250630",
-  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ05-037_b.jpg?v250630",
-  "ocr_data": {
-    "type": "MS",
-    "name": "GQuuuuuuX (オメガ・サイコミュ起動時)",
-    "cost": 3,
-    "rarity": "C",
-    "category": "機動",
-    "affiliation": "",
-    "illustrator": "SOEZY",
-    "stats": {
-      "mobility": 230,
-      "ranged_attack": 100,
-      "melee_attack": 210,
-      "hp": 220
-    },
-    "link_ability": [
-      {
-        "name": "GQuuuuuuX",
-        "condition": "デッキに3枚以上",
-        "effect": "[HP]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      },
-      {
-        "name": "肉薄する戦い",
-        "condition": "デッキに4枚以上",
-        "effect": "[機動力][近距離攻撃力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      }
-    ],
-    "pilot": "アマテ・ユズリハ（マチュ）",
-    "model": "gMS-Ω GQuuuuuuX (Omega Psycommu)",
-    "terrain_compatibility": {
-      "ground": "A",
-      "space": "S",
-      "desert": "C",
-      "water": "A"
-    },
-    "weapon": {
-      "main": {
-        "name": "ビーム・サーベル",
-        "range": 1,
-        "type": "近距離"
-      },
-      "sub": {
-        "name": "ビーム・ライフル",
-        "range": 3,
-        "type": "遠距離"
-      }
-    },
-    "ms_ability": {
-      "name": "特攻",
-      "activation": "出撃時発動",
-      "target": "自分",
-      "range": null,
-      "cost": null,
-      "description": "自身の[遠／近攻撃力]をアップし[怯み無効]となるが、[回避／ガード不可][修理時間延長]となる。効果は撤退するまで持続。"
-    },
-    "special_attack": {
-      "name": "ビーム・サーベル強襲",
-      "target": "単体(敵)",
-      "range": 3,
-      "sp_cost": 2,
-      "power": 3100,
-      "description": "敵単体に格闘攻撃でダメージを与え、以後通常攻撃が自身を中心とした範囲攻撃に変化する。戦術技後は能力が上昇。自身が撤退するまで効果は持続する。",
-      "sp_type": "",
-      "echoes_beat": null,
-      "united_sp": {
-        "name": "MAV連携",
-        "partners": [
-          "ジフレド"
+    "card_number": "FQ05-037",
+    "card_name": "GQuuuuuuX (オメガ・サイコミュ起動時)",
+    "series": "FORSQUAD SEASON:05",
+    "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ05-037.jpg?v250630",
+    "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ05-037_b.jpg?v250630",
+    "ocr_data": {
+        "type": "MS",
+        "name": "GQuuuuuuX (オメガ・サイコミュ起動時)",
+        "cost": 3,
+        "rarity": "C",
+        "category": "機動",
+        "affiliation": "",
+        "illustrator": "SOEZY",
+        "stats": {
+            "mobility": 230,
+            "ranged_attack": 100,
+            "melee_attack": 210,
+            "hp": 220
+        },
+        "link_ability": [
+            {
+                "name": "GQuuuuuuX",
+                "condition": "デッキに3枚以上",
+                "effect": "[HP]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            },
+            {
+                "name": "肉薄する戦い",
+                "condition": "デッキに4枚以上",
+                "effect": "[機動力][近距離攻撃力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            }
         ],
-        "target": "",
-        "range": 3,
-        "power": 4600,
-        "description": "敵単体に射撃と格闘攻撃でダメージを与える。出撃時1度のみ使用可能。"
-      },
-      "squad_sp": null
-    }
-  },
-  "ocr_raw_file": "FORSQUAD_SEASON_05_FQ05-037_GQuuuuuuX_(オメガ・サイコミュ起動時)_ocr_raw.json",
-  "ocr_timestamp": "2026-02-24T18:30:32.651764",
-  "ocr_type": "basic",
-  "ocr_engine": "claude_code_cli_combined"
+        "pilot": "アマテ・ユズリハ（マチュ）",
+        "model": "gMS-Ω GQuuuuuuX (Omega Psycommu)",
+        "terrain_compatibility": {
+            "ground": "A",
+            "space": "S",
+            "desert": "C",
+            "water": "A"
+        },
+        "weapon": {
+            "main": {
+                "name": "ビーム・サーベル",
+                "range": 1,
+                "type": "近距離"
+            },
+            "sub": {
+                "name": "ビーム・ライフル",
+                "range": 3,
+                "type": "遠距離"
+            }
+        },
+        "ms_ability": {
+            "name": "特攻",
+            "activation": "出撃時発動",
+            "target": "自分",
+            "range": null,
+            "cost": null,
+            "description": "自身の[遠/近攻撃力]をアップし[怯み無効]となるが、[回避/ガード不可][修理時間延長]となる。効果は撤退するまで持続。"
+        },
+        "special_attack": {
+            "name": "ビーム・サーベル強襲",
+            "target": "単体(敵)",
+            "range": 3,
+            "sp_cost": 2,
+            "power": 3100,
+            "description": "敵単体に格闘攻撃でダメージを与え、以後通常攻撃が自身を中心とした範囲攻撃に変化する。戦術技後は能力が上昇。自身が撤退するまで効果は持続する。",
+            "sp_type": "",
+            "echoes_beat": null,
+            "united_sp": {
+                "name": "MAV連携",
+                "partners": [
+                    "ジフレド"
+                ],
+                "target": "",
+                "range": 3,
+                "power": 4600,
+                "description": "敵単体に射撃と格闘攻撃でダメージを与える。出撃時1度のみ使用可能。"
+            },
+            "squad_sp": null
+        }
+    },
+    "ocr_raw_file": "FORSQUAD_SEASON_05_FQ05-037_GQuuuuuuX_(オメガ・サイコミュ起動時)_ocr_raw.json",
+    "ocr_timestamp": "2026-02-24T18:30:32.651764",
+    "ocr_type": "basic",
+    "ocr_engine": "claude_code_cli_combined"
 }

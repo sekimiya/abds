@@ -1,57 +1,57 @@
 {
-  "card_number": "PR-109",
-  "card_name": "ハマーン・カーン",
-  "series": "プロモーション",
-  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-109.jpg?v250630",
-  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-109_b.jpg?v250630",
-  "ocr_data": {
-    "type": "PL",
-    "name": "ハマーン・カーン",
-    "cost": 3,
-    "rarity": "PR",
-    "category": "制圧",
-    "affiliation": "ネオ・ジオン",
-    "illustrator": "Youichi Ueda",
-    "stats": {
-      "mobility": 200,
-      "ranged_attack": 210,
-      "melee_attack": 140,
-      "hp": 220
+    "card_number": "PR-109",
+    "card_name": "ハマーン・カーン",
+    "series": "プロモーション",
+    "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-109.jpg?v250630",
+    "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-109_b.jpg?v250630",
+    "ocr_data": {
+        "type": "PL",
+        "name": "ハマーン・カーン",
+        "cost": 3,
+        "rarity": "PR",
+        "category": "制圧",
+        "affiliation": "ネオ・ジオン",
+        "illustrator": "Youichi Ueda",
+        "stats": {
+            "mobility": 200,
+            "ranged_attack": 210,
+            "melee_attack": 140,
+            "hp": 220
+        },
+        "link_ability": [
+            {
+                "name": "機動戦士ガンダムZZ",
+                "condition": "デッキに3枚以上",
+                "effect": "[HP]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            },
+            {
+                "name": "優れた射撃センス",
+                "condition": "デッキに2枚以上",
+                "effect": "[遠距離攻撃力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            }
+        ],
+        "english_name": "",
+        "physical": null,
+        "units": null,
+        "pilot_skill": {
+            "name": "手堅い拠点制圧",
+            "trigger": "敵戦艦/拠点をロックオン時",
+            "effect": "40秒間、自身の[遠距離攻撃力]を中アップし、受けるダメージを軽減する。",
+            "has_sq_skill": false,
+            "sq_skill_details": null,
+            "is_eb_skill": false,
+            "eb_trigger_level": null,
+            "sq_rush_effect": ""
+        }
     },
-    "link_ability": [
-      {
-        "name": "機動戦士ガンダムZZ",
-        "condition": "デッキに3枚以上",
-        "effect": "[HP]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      },
-      {
-        "name": "優れた射撃センス",
-        "condition": "デッキに2枚以上",
-        "effect": "[遠距離攻撃力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      }
-    ],
-    "english_name": "",
-    "physical": null,
-    "units": null,
-    "pilot_skill": {
-      "name": "手堅い拠点制圧",
-      "trigger": "敵戦艦／拠点をロックオン時",
-      "effect": "40秒間、自身の[遠距離攻撃力]を中アップし、受けるダメージを軽減する。",
-      "has_sq_skill": false,
-      "sq_skill_details": null,
-      "is_eb_skill": false,
-      "eb_trigger_level": null,
-      "sq_rush_effect": ""
-    }
-  },
-  "ocr_raw_file": "プロモーション_PR-109_ハマーン・カーン_ocr_raw.json",
-  "ocr_timestamp": "2026-03-07T11:13:08.825402",
-  "ocr_type": "basic",
-  "ocr_engine": "claude_code_cli_combined"
+    "ocr_raw_file": "プロモーション_PR-109_ハマーン・カーン_ocr_raw.json",
+    "ocr_timestamp": "2026-03-07T11:13:08.825402",
+    "ocr_type": "basic",
+    "ocr_engine": "claude_code_cli_combined"
 }

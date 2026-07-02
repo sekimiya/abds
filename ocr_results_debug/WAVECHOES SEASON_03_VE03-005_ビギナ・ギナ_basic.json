@@ -1,75 +1,83 @@
 {
-  "card_number": "VE03-005",
-  "card_name": "ビギナ・ギナ",
-  "series": "WAVECHOES SEASON:03",
-  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE03-005.jpg?v250630",
-  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE03-005_b.jpg?v250630",
-  "ocr_engine": "claude_code_subagent",
-  "ocr_type": "basic",
-  "ocr_timestamp": "2026-06-17T00:00:00.000000",
-  "ocr_data": {
-    "type": "MS",
-    "name": "ビギナ・ギナ",
-    "cost": 6,
-    "rarity": "C",
-    "category": "近距離",
-    "affiliation": "クロスボーン・バンガード",
-    "illustrator": "",
-    "stats": {
-      "mobility": 260,
-      "ranged_attack": 90,
-      "melee_attack": 430,
-      "hp": 470
-    },
-    "pilot": "ベラ・ロナ",
-    "model": "XM-07 VIGNA-GHINA",
-    "terrain_compatibility": {
-      "ground": "A",
-      "space": "A",
-      "desert": "C",
-      "water": "C"
-    },
-    "weapon": {
-      "main": { "name": "ビーム・サーベル", "range": 1, "type": "近距離" },
-      "sub": { "name": "ビーム・ライフル", "range": 3, "type": "遠距離" }
-    },
-    "ms_ability": {
-      "name": "絆盟",
-      "activation": "任意発動",
-      "target": "特殊(自分)",
-      "range": null,
-      "cost": 4,
-      "description": "自身と自身に一番近い味方ユニットは絆盟状態になる。絆盟状態のユニットのメイン攻撃力は、メイン攻撃力が高い方のユニットと同じ値になり、どちらかのユニットが撃破されるまで効果は持続する。※増援、デコイは対象外。"
-    },
-    "special_attack": {
-      "name": "ビーム・サーベル強撃",
-      "target": "単体(敵)",
-      "range": 2,
-      "sp_cost": 2,
-      "power": 3300,
-      "description": "敵単体に格闘攻撃でダメージを与える。／",
-      "sp_type": "",
-      "echoes_beat": null,
-      "united_sp": null,
-      "squad_sp": null
-    },
-    "link_ability": [
-      {
-        "name": "機動戦士ガンダムF91",
-        "condition": "デッキに2枚以上",
-        "effect": "[機動力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      },
-      {
-        "name": "肉薄する戦い",
-        "condition": "デッキに4枚以上",
-        "effect": "[機動力][近距離攻撃力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      }
-    ]
-  }
+    "card_number": "VE03-005",
+    "card_name": "ビギナ・ギナ",
+    "series": "WAVECHOES SEASON:03",
+    "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE03-005.jpg?v250630",
+    "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE03-005_b.jpg?v250630",
+    "ocr_engine": "claude_code_subagent",
+    "ocr_type": "basic",
+    "ocr_timestamp": "2026-06-17T00:00:00.000000",
+    "ocr_data": {
+        "type": "MS",
+        "name": "ビギナ・ギナ",
+        "cost": 6,
+        "rarity": "C",
+        "category": "近距離",
+        "affiliation": "クロスボーン・バンガード",
+        "illustrator": "",
+        "stats": {
+            "mobility": 260,
+            "ranged_attack": 90,
+            "melee_attack": 430,
+            "hp": 470
+        },
+        "pilot": "ベラ・ロナ",
+        "model": "XM-07 VIGNA-GHINA",
+        "terrain_compatibility": {
+            "ground": "A",
+            "space": "A",
+            "desert": "C",
+            "water": "C"
+        },
+        "weapon": {
+            "main": {
+                "name": "ビーム・サーベル",
+                "range": 1,
+                "type": "近距離"
+            },
+            "sub": {
+                "name": "ビーム・ライフル",
+                "range": 3,
+                "type": "遠距離"
+            }
+        },
+        "ms_ability": {
+            "name": "絆盟",
+            "activation": "任意発動",
+            "target": "特殊(自分)",
+            "range": null,
+            "cost": 4,
+            "description": "自身と自身に一番近い味方ユニットは絆盟状態になる。絆盟状態のユニットのメイン攻撃力は、メイン攻撃力が高い方のユニットと同じ値になり、どちらかのユニットが撃破されるまで効果は持続する。※増援、デコイは対象外。"
+        },
+        "special_attack": {
+            "name": "ビーム・サーベル強撃",
+            "target": "単体(敵)",
+            "range": 2,
+            "sp_cost": 2,
+            "power": 3300,
+            "description": "敵単体に格闘攻撃でダメージを与える。/",
+            "sp_type": "",
+            "echoes_beat": null,
+            "united_sp": null,
+            "squad_sp": null
+        },
+        "link_ability": [
+            {
+                "name": "機動戦士ガンダムF91",
+                "condition": "デッキに2枚以上",
+                "effect": "[機動力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            },
+            {
+                "name": "肉薄する戦い",
+                "condition": "デッキに4枚以上",
+                "effect": "[機動力][近距離攻撃力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            }
+        ]
+    }
 }

@@ -1,83 +1,83 @@
 {
-  "card_number": "PR-473",
-  "card_name": "クロスボーン・ガンダムX-1 フルクロス",
-  "series": "プロモーション",
-  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-473.jpg?v250630",
-  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-473_b.jpg?v250630",
-  "ocr_engine": "claude_code_subagent",
-  "ocr_type": "basic",
-  "ocr_timestamp": "2026-06-28T00:00:00.000000",
-  "ocr_data": {
-    "type": "MS",
-    "name": "クロスボーン・ガンダムX-1 フルクロス",
-    "cost": 3,
-    "rarity": "PR",
-    "category": "遠距離",
-    "affiliation": "宇宙海賊クロスボーン・バンガード",
-    "illustrator": "",
-    "pilot": "トビア・アロナクス",
-    "model": "XM-X1",
-    "stats": {
-      "mobility": 210,
-      "ranged_attack": 330,
-      "melee_attack": 40,
-      "hp": 370
-    },
-    "terrain_compatibility": {
-      "ground": "A",
-      "space": "S",
-      "desert": "A",
-      "water": "B"
-    },
-    "weapon": {
-      "main": {
-        "name": "ピーコック・スマッシャー",
-        "range": 4,
-        "type": "遠距離"
-      },
-      "sub": {
-        "name": "ムラマサ・ブラスター",
-        "range": 1,
-        "type": "近距離"
-      }
-    },
-    "ms_ability": {
-      "name": "縛射",
-      "activation": "任意発動",
-      "target": "単体(敵)",
-      "range": 4,
-      "cost": 3,
-      "description": "ロックオン中の敵ユニットに単体攻撃を行いダメージを与え、一定時間スタンさせる。"
-    },
-    "special_attack": {
-      "name": "ピーコック・スマッシャー撃射",
-      "target": "範囲(敵)",
-      "range": 4,
-      "sp_cost": 2,
-      "power": 2800,
-      "description": "ロックオン中の敵を中心に扇状の範囲攻撃を行い、範囲内の敵にダメージを与える。／―",
-      "sp_type": "",
-      "echoes_beat": null,
-      "united_sp": null,
-      "squad_sp": null
-    },
-    "link_ability": [
-      {
-        "name": "クロスボーン・ガンダム",
-        "condition": "デッキに2枚以上",
-        "effect": "[機動力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      },
-      {
-        "name": "的確な一撃",
-        "condition": "デッキに4枚以上",
-        "effect": "[機動力][遠距離攻撃力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      }
-    ]
-  }
+    "card_number": "PR-473",
+    "card_name": "クロスボーン・ガンダムX-1 フルクロス",
+    "series": "プロモーション",
+    "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-473.jpg?v250630",
+    "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-473_b.jpg?v250630",
+    "ocr_engine": "claude_code_subagent",
+    "ocr_type": "basic",
+    "ocr_timestamp": "2026-06-28T00:00:00.000000",
+    "ocr_data": {
+        "type": "MS",
+        "name": "クロスボーン・ガンダムX-1 フルクロス",
+        "cost": 3,
+        "rarity": "PR",
+        "category": "遠距離",
+        "affiliation": "宇宙海賊クロスボーン・バンガード",
+        "illustrator": "",
+        "pilot": "トビア・アロナクス",
+        "model": "XM-X1",
+        "stats": {
+            "mobility": 210,
+            "ranged_attack": 330,
+            "melee_attack": 40,
+            "hp": 370
+        },
+        "terrain_compatibility": {
+            "ground": "A",
+            "space": "S",
+            "desert": "A",
+            "water": "B"
+        },
+        "weapon": {
+            "main": {
+                "name": "ピーコック・スマッシャー",
+                "range": 4,
+                "type": "遠距離"
+            },
+            "sub": {
+                "name": "ムラマサ・ブラスター",
+                "range": 1,
+                "type": "近距離"
+            }
+        },
+        "ms_ability": {
+            "name": "縛射",
+            "activation": "任意発動",
+            "target": "単体(敵)",
+            "range": 4,
+            "cost": 3,
+            "description": "ロックオン中の敵ユニットに単体攻撃を行いダメージを与え、一定時間スタンさせる。"
+        },
+        "special_attack": {
+            "name": "ピーコック・スマッシャー撃射",
+            "target": "範囲(敵)",
+            "range": 4,
+            "sp_cost": 2,
+            "power": 2800,
+            "description": "ロックオン中の敵を中心に扇状の範囲攻撃を行い、範囲内の敵にダメージを与える。/―",
+            "sp_type": "",
+            "echoes_beat": null,
+            "united_sp": null,
+            "squad_sp": null
+        },
+        "link_ability": [
+            {
+                "name": "クロスボーン・ガンダム",
+                "condition": "デッキに2枚以上",
+                "effect": "[機動力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            },
+            {
+                "name": "的確な一撃",
+                "condition": "デッキに4枚以上",
+                "effect": "[機動力][遠距離攻撃力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            }
+        ]
+    }
 }

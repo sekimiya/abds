@@ -1,69 +1,69 @@
 {
-  "card_number": "FQ06-074",
-  "card_name": "メイジン・カワグチ",
-  "series": "FORSQUAD SEASON:06",
-  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ06-074.jpg?v250630",
-  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ06-074_b.jpg?v250630",
-  "ocr_data": {
-    "type": "PL",
-    "name": "メイジン・カワグチ",
-    "cost": 4,
-    "rarity": "R",
-    "category": "制圧",
-    "affiliation": "",
-    "illustrator": "",
-    "stats": {
-      "mobility": 190,
-      "ranged_attack": 90,
-      "melee_attack": 250,
-      "hp": 270
+    "card_number": "FQ06-074",
+    "card_name": "メイジン・カワグチ",
+    "series": "FORSQUAD SEASON:06",
+    "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ06-074.jpg?v250630",
+    "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ06-074_b.jpg?v250630",
+    "ocr_data": {
+        "type": "PL",
+        "name": "メイジン・カワグチ",
+        "cost": 4,
+        "rarity": "R",
+        "category": "制圧",
+        "affiliation": "",
+        "illustrator": "",
+        "stats": {
+            "mobility": 190,
+            "ranged_attack": 90,
+            "melee_attack": 250,
+            "hp": 270
+        },
+        "link_ability": [
+            {
+                "name": "戦士のかがやき",
+                "condition": "デッキに3枚以上",
+                "effect": "SQゲージが表示される。SQゲージを溜めるとSQUAD RUSHが発動できる。[HP][SP威力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            },
+            {
+                "name": "多彩な戦術",
+                "condition": "デッキに4枚以上",
+                "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            }
+        ],
+        "english_name": "MEIJIN KAWAGUCHI",
+        "physical": {
+            "height": "",
+            "age": null
+        },
+        "units": [
+            "ガンダムエクシアダークマター"
+        ],
+        "pilot_skill": {
+            "name": "猛烈な攻撃陣形",
+            "trigger": "敵戦艦/拠点をロックオン時",
+            "effect": "SQゲージ小アップ。SQUAD RUSH中自身の[近距離攻撃力]をアップし、受けるダメージを軽減する。",
+            "has_sq_skill": true,
+            "sq_skill_details": {
+                "name": "",
+                "trigger": "",
+                "effect": "",
+                "sq_gauge_effect": "SQゲージ小アップ。",
+                "sq_max_effect": "",
+                "sq_rush_effect": "自身の[近距離攻撃力]をアップし、受けるダメージを軽減する。"
+            },
+            "is_eb_skill": false,
+            "eb_trigger_level": null,
+            "sq_rush_effect": ""
+        }
     },
-    "link_ability": [
-      {
-        "name": "戦士のかがやき",
-        "condition": "デッキに3枚以上",
-        "effect": "SQゲージが表示される。SQゲージを溜めるとSQUAD RUSHが発動できる。[HP][SP威力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      },
-      {
-        "name": "多彩な戦術",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      }
-    ],
-    "english_name": "MEIJIN KAWAGUCHI",
-    "physical": {
-      "height": "",
-      "age": null
-    },
-    "units": [
-      "ガンダムエクシアダークマター"
-    ],
-    "pilot_skill": {
-      "name": "猛烈な攻撃陣形",
-      "trigger": "敵戦艦／拠点をロックオン時",
-      "effect": "SQゲージ小アップ。SQUAD RUSH中自身の[近距離攻撃力]をアップし、受けるダメージを軽減する。",
-      "has_sq_skill": true,
-      "sq_skill_details": {
-        "name": "",
-        "trigger": "",
-        "effect": "",
-        "sq_gauge_effect": "SQゲージ小アップ。",
-        "sq_max_effect": "",
-        "sq_rush_effect": "自身の[近距離攻撃力]をアップし、受けるダメージを軽減する。"
-      },
-      "is_eb_skill": false,
-      "eb_trigger_level": null,
-      "sq_rush_effect": ""
-    }
-  },
-  "ocr_raw_file": "FORSQUAD_SEASON_06_FQ06-074_メイジン・カワグチ_ocr_raw.json",
-  "ocr_timestamp": "2026-02-24T18:41:39.940918",
-  "ocr_type": "basic",
-  "ocr_engine": "claude_code_cli_combined"
+    "ocr_raw_file": "FORSQUAD_SEASON_06_FQ06-074_メイジン・カワグチ_ocr_raw.json",
+    "ocr_timestamp": "2026-02-24T18:41:39.940918",
+    "ocr_type": "basic",
+    "ocr_engine": "claude_code_cli_combined"
 }

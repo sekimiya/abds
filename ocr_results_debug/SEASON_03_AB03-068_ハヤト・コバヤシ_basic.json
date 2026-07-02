@@ -1,62 +1,62 @@
 {
-  "card_number": "AB03-068",
-  "card_name": "ハヤト・コバヤシ",
-  "series": "SEASON:03",
-  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB03-068.jpg?v250630",
-  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB03-068_b.jpg?v250630",
-  "ocr_data": {
-    "type": "PL",
-    "name": "ハヤト・コバヤシ",
-    "cost": 4,
-    "rarity": "R",
-    "category": "制圧",
-    "affiliation": "地球連邦軍",
-    "illustrator": "",
-    "stats": {
-      "mobility": 90,
-      "ranged_attack": 280,
-      "melee_attack": 110,
-      "hp": 120
+    "card_number": "AB03-068",
+    "card_name": "ハヤト・コバヤシ",
+    "series": "SEASON:03",
+    "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB03-068.jpg?v250630",
+    "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB03-068_b.jpg?v250630",
+    "ocr_data": {
+        "type": "PL",
+        "name": "ハヤト・コバヤシ",
+        "cost": 4,
+        "rarity": "R",
+        "category": "制圧",
+        "affiliation": "地球連邦軍",
+        "illustrator": "",
+        "stats": {
+            "mobility": 90,
+            "ranged_attack": 280,
+            "melee_attack": 110,
+            "hp": 120
+        },
+        "link_ability": [
+            {
+                "name": "機動戦士ガンダム",
+                "condition": "デッキに3枚以上",
+                "effect": "[機動力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            },
+            {
+                "name": "優れた射撃センス",
+                "condition": "デッキに2枚以上",
+                "effect": "[遠距離攻撃力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            }
+        ],
+        "english_name": "HAYATO KOBAYASHI",
+        "physical": {
+            "height": "150cm",
+            "age": 15
+        },
+        "units": [
+            "ガンタンク"
+        ],
+        "pilot_skill": {
+            "name": "優先すべき目標",
+            "trigger": "敵戦艦/拠点をロックオン時",
+            "effect": "敵戦艦/拠点へのダメージを小アップする。",
+            "has_sq_skill": false,
+            "sq_skill_details": null,
+            "is_eb_skill": false,
+            "eb_trigger_level": null,
+            "sq_rush_effect": ""
+        }
     },
-    "link_ability": [
-      {
-        "name": "機動戦士ガンダム",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      },
-      {
-        "name": "優れた射撃センス",
-        "condition": "デッキに2枚以上",
-        "effect": "[遠距離攻撃力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      }
-    ],
-    "english_name": "HAYATO KOBAYASHI",
-    "physical": {
-      "height": "150cm",
-      "age": 15
-    },
-    "units": [
-      "ガンタンク"
-    ],
-    "pilot_skill": {
-      "name": "優先すべき目標",
-      "trigger": "敵戦艦／拠点をロックオン時",
-      "effect": "敵戦艦／拠点へのダメージを小アップする。",
-      "has_sq_skill": false,
-      "sq_skill_details": null,
-      "is_eb_skill": false,
-      "eb_trigger_level": null,
-      "sq_rush_effect": ""
-    }
-  },
-  "ocr_raw_file": "SEASON_03_AB03-068_ハヤト・コバヤシ_ocr_raw.json",
-  "ocr_timestamp": "2026-02-23T15:17:23.300667",
-  "ocr_type": "basic",
-  "ocr_engine": "claude_code_cli"
+    "ocr_raw_file": "SEASON_03_AB03-068_ハヤト・コバヤシ_ocr_raw.json",
+    "ocr_timestamp": "2026-02-23T15:17:23.300667",
+    "ocr_type": "basic",
+    "ocr_engine": "claude_code_cli"
 }

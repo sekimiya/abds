@@ -1,93 +1,93 @@
 {
-  "card_number": "UTB05-002",
-  "card_name": "ドム",
-  "series": "UTブースター5弾",
-  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UTB05-002.jpg?v250630",
-  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UTB05-002_b.jpg?v250630",
-  "ocr_data": {
-    "type": "MS",
-    "name": "ドム",
-    "cost": 3,
-    "rarity": "M",
-    "category": "近距離",
-    "affiliation": "ジオン公国軍",
-    "illustrator": "S Kei",
-    "stats": {
-      "mobility": 270,
-      "ranged_attack": 30,
-      "melee_attack": 340,
-      "hp": 360
-    },
-    "link_ability": [
-      {
-        "name": "機動戦士ガンダム",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      },
-      {
-        "name": "黒い三連星",
-        "condition": "デッキに3枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      }
-    ],
-    "pilot": "ガイア、オルテガ、マッシュ",
-    "model": "MS-09 DOM",
-    "terrain_compatibility": {
-      "ground": "S",
-      "space": "C",
-      "desert": "A",
-      "water": "C"
-    },
-    "weapon": {
-      "main": {
-        "name": "ヒート・サーベル",
-        "range": 1,
-        "type": "近距離"
-      },
-      "sub": {
-        "name": "ジャイアント・バズ",
-        "range": 3,
-        "type": "遠距離"
-      }
-    },
-    "ms_ability": {
-      "name": "補給[弱体化解除]",
-      "activation": "任意発動",
-      "target": "範囲(味方)",
-      "range": null,
-      "cost": 5,
-      "description": "自身を中心とした大範囲の味方ユニットのHPを中回復し、弱体化状態を無効化する。"
-    },
-    "special_attack": {
-      "name": "ヒート・サーベル強撃",
-      "target": "単体(敵)",
-      "range": 2,
-      "sp_cost": 2,
-      "power": 3400,
-      "description": "敵単体に格闘攻撃でダメージを与える。",
-      "sp_type": "",
-      "echoes_beat": null,
-      "united_sp": {
-        "name": "ジェット・ストリーム・アタック",
-        "partners": [
-          "ドム"
+    "card_number": "UTB05-002",
+    "card_name": "ドム",
+    "series": "UTブースター5弾",
+    "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UTB05-002.jpg?v250630",
+    "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UTB05-002_b.jpg?v250630",
+    "ocr_data": {
+        "type": "MS",
+        "name": "ドム",
+        "cost": 3,
+        "rarity": "M",
+        "category": "近距離",
+        "affiliation": "ジオン公国軍",
+        "illustrator": "S Kei",
+        "stats": {
+            "mobility": 270,
+            "ranged_attack": 30,
+            "melee_attack": 340,
+            "hp": 360
+        },
+        "link_ability": [
+            {
+                "name": "機動戦士ガンダム",
+                "condition": "デッキに3枚以上",
+                "effect": "[機動力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            },
+            {
+                "name": "黒い三連星",
+                "condition": "デッキに3枚以上",
+                "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            }
         ],
-        "target": "単体(敵)",
-        "range": 3,
-        "power": 5500,
-        "description": "敵単体に射撃と格闘攻撃でダメージを与え、一定時間、敵ユニットの[機動力][遠／近攻撃力][SP威力]をダウンする。出撃時1度のみ使用可能。"
-      },
-      "squad_sp": null
-    }
-  },
-  "ocr_raw_file": "UTブースター5弾_UTB05-002_ドム_ocr_raw.json",
-  "ocr_timestamp": "2026-03-02T04:06:00.512383",
-  "ocr_type": "basic",
-  "ocr_engine": "claude_code_cli_combined"
+        "pilot": "ガイア、オルテガ、マッシュ",
+        "model": "MS-09 DOM",
+        "terrain_compatibility": {
+            "ground": "S",
+            "space": "C",
+            "desert": "A",
+            "water": "C"
+        },
+        "weapon": {
+            "main": {
+                "name": "ヒート・サーベル",
+                "range": 1,
+                "type": "近距離"
+            },
+            "sub": {
+                "name": "ジャイアント・バズ",
+                "range": 3,
+                "type": "遠距離"
+            }
+        },
+        "ms_ability": {
+            "name": "補給[弱体化解除]",
+            "activation": "任意発動",
+            "target": "範囲(味方)",
+            "range": null,
+            "cost": 5,
+            "description": "自身を中心とした大範囲の味方ユニットのHPを中回復し、弱体化状態を無効化する。"
+        },
+        "special_attack": {
+            "name": "ヒート・サーベル強撃",
+            "target": "単体(敵)",
+            "range": 2,
+            "sp_cost": 2,
+            "power": 3400,
+            "description": "敵単体に格闘攻撃でダメージを与える。",
+            "sp_type": "",
+            "echoes_beat": null,
+            "united_sp": {
+                "name": "ジェット・ストリーム・アタック",
+                "partners": [
+                    "ドム"
+                ],
+                "target": "単体(敵)",
+                "range": 3,
+                "power": 5500,
+                "description": "敵単体に射撃と格闘攻撃でダメージを与え、一定時間、敵ユニットの[機動力][遠/近攻撃力][SP威力]をダウンする。出撃時1度のみ使用可能。"
+            },
+            "squad_sp": null
+        }
+    },
+    "ocr_raw_file": "UTブースター5弾_UTB05-002_ドム_ocr_raw.json",
+    "ocr_timestamp": "2026-03-02T04:06:00.512383",
+    "ocr_type": "basic",
+    "ocr_engine": "claude_code_cli_combined"
 }

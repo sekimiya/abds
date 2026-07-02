@@ -1,62 +1,62 @@
 {
-  "card_number": "UTB02-027",
-  "card_name": "アヤメ",
-  "series": "UTブースター2弾",
-  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UTB02-027.jpg?v250630",
-  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UTB02-027_b.jpg?v250630",
-  "ocr_data": {
-    "type": "PL",
-    "name": "アヤメ",
-    "cost": 2,
-    "rarity": "P",
-    "category": "制圧",
-    "affiliation": "ビルドダイバーズ",
-    "illustrator": "",
-    "stats": {
-      "mobility": 250,
-      "ranged_attack": 30,
-      "melee_attack": 200,
-      "hp": 310
+    "card_number": "UTB02-027",
+    "card_name": "アヤメ",
+    "series": "UTブースター2弾",
+    "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UTB02-027.jpg?v250630",
+    "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UTB02-027_b.jpg?v250630",
+    "ocr_data": {
+        "type": "PL",
+        "name": "アヤメ",
+        "cost": 2,
+        "rarity": "P",
+        "category": "制圧",
+        "affiliation": "ビルドダイバーズ",
+        "illustrator": "",
+        "stats": {
+            "mobility": 250,
+            "ranged_attack": 30,
+            "melee_attack": 200,
+            "hp": 310
+        },
+        "link_ability": [
+            {
+                "name": "ビルドダイバーズ",
+                "condition": "デッキに3枚以上",
+                "effect": "[HP]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            },
+            {
+                "name": "多彩な戦術",
+                "condition": "デッキに4枚以上",
+                "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            }
+        ],
+        "english_name": "AYAME",
+        "physical": {
+            "height": "ー",
+            "age": null
+        },
+        "units": [
+            "RX-零丸"
+        ],
+        "pilot_skill": {
+            "name": "迅速な制圧術",
+            "trigger": "敵戦艦/拠点をロックオン時",
+            "effect": "40秒間、自身の[機動力][近距離攻撃力]を中アップする。",
+            "has_sq_skill": false,
+            "sq_skill_details": null,
+            "is_eb_skill": false,
+            "eb_trigger_level": null,
+            "sq_rush_effect": ""
+        }
     },
-    "link_ability": [
-      {
-        "name": "ビルドダイバーズ",
-        "condition": "デッキに3枚以上",
-        "effect": "[HP]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      },
-      {
-        "name": "多彩な戦術",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      }
-    ],
-    "english_name": "AYAME",
-    "physical": {
-      "height": "ー",
-      "age": null
-    },
-    "units": [
-      "RX-零丸"
-    ],
-    "pilot_skill": {
-      "name": "迅速な制圧術",
-      "trigger": "敵戦艦／拠点をロックオン時",
-      "effect": "40秒間、自身の[機動力][近距離攻撃力]を中アップする。",
-      "has_sq_skill": false,
-      "sq_skill_details": null,
-      "is_eb_skill": false,
-      "eb_trigger_level": null,
-      "sq_rush_effect": ""
-    }
-  },
-  "ocr_raw_file": "UTブースター2弾_UTB02-027_アヤメ_ocr_raw.json",
-  "ocr_timestamp": "2026-02-28T04:45:20.620471",
-  "ocr_type": "basic",
-  "ocr_engine": "claude_code_cli_combined"
+    "ocr_raw_file": "UTブースター2弾_UTB02-027_アヤメ_ocr_raw.json",
+    "ocr_timestamp": "2026-02-28T04:45:20.620471",
+    "ocr_type": "basic",
+    "ocr_engine": "claude_code_cli_combined"
 }

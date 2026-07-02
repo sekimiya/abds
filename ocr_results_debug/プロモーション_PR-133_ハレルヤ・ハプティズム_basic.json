@@ -1,57 +1,57 @@
 {
-  "card_number": "PR-133",
-  "card_name": "ハレルヤ・ハプティズム",
-  "series": "プロモーション",
-  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-133.jpg?v250630",
-  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-133_b.jpg?v250630",
-  "ocr_data": {
-    "type": "PL",
-    "name": "ハレルヤ・ハプティズム",
-    "cost": 2,
-    "rarity": "PR",
-    "category": "制圧",
-    "affiliation": "ソレスタルビーイング",
-    "illustrator": "",
-    "stats": {
-      "mobility": 150,
-      "ranged_attack": 50,
-      "melee_attack": 240,
-      "hp": 350
+    "card_number": "PR-133",
+    "card_name": "ハレルヤ・ハプティズム",
+    "series": "プロモーション",
+    "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-133.jpg?v250630",
+    "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-133_b.jpg?v250630",
+    "ocr_data": {
+        "type": "PL",
+        "name": "ハレルヤ・ハプティズム",
+        "cost": 2,
+        "rarity": "PR",
+        "category": "制圧",
+        "affiliation": "ソレスタルビーイング",
+        "illustrator": "",
+        "stats": {
+            "mobility": 150,
+            "ranged_attack": 50,
+            "melee_attack": 240,
+            "hp": 350
+        },
+        "link_ability": [
+            {
+                "name": "ガンダム00",
+                "condition": "デッキに3枚以上",
+                "effect": "[機動力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            },
+            {
+                "name": "トランザムの真価",
+                "condition": "デッキに2枚以上",
+                "effect": "[遠/近攻撃力]小アップ、専用作戦カードが使用可能",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            }
+        ],
+        "english_name": "",
+        "physical": null,
+        "units": null,
+        "pilot_skill": {
+            "name": "ガンダムマイスターの本領",
+            "trigger": "出撃時",
+            "effect": "自身が使用するMSアビリティ[トランザム]の使用コストを2ダウンし、強化効果を中アップする。",
+            "has_sq_skill": false,
+            "sq_skill_details": null,
+            "is_eb_skill": false,
+            "eb_trigger_level": null,
+            "sq_rush_effect": ""
+        }
     },
-    "link_ability": [
-      {
-        "name": "ガンダム00",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      },
-      {
-        "name": "トランザムの真価",
-        "condition": "デッキに2枚以上",
-        "effect": "[遠／近攻撃力]小アップ、専用作戦カードが使用可能",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      }
-    ],
-    "english_name": "",
-    "physical": null,
-    "units": null,
-    "pilot_skill": {
-      "name": "ガンダムマイスターの本領",
-      "trigger": "出撃時",
-      "effect": "自身が使用するMSアビリティ[トランザム]の使用コストを2ダウンし、強化効果を中アップする。",
-      "has_sq_skill": false,
-      "sq_skill_details": null,
-      "is_eb_skill": false,
-      "eb_trigger_level": null,
-      "sq_rush_effect": ""
-    }
-  },
-  "ocr_raw_file": "プロモーション_PR-133_ハレルヤ・ハプティズム_ocr_raw.json",
-  "ocr_timestamp": "2026-03-07T11:27:50.337761",
-  "ocr_type": "basic",
-  "ocr_engine": "claude_code_cli_combined"
+    "ocr_raw_file": "プロモーション_PR-133_ハレルヤ・ハプティズム_ocr_raw.json",
+    "ocr_timestamp": "2026-03-07T11:27:50.337761",
+    "ocr_type": "basic",
+    "ocr_engine": "claude_code_cli_combined"
 }

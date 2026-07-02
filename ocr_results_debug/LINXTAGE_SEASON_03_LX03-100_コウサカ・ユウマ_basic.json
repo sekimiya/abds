@@ -1,57 +1,57 @@
 {
-  "card_number": "LX03-100",
-  "card_name": "コウサカ・ユウマ",
-  "series": "LINXTAGE SEASON:03",
-  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX03-100.jpg?v250630",
-  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX03-100_b.jpg?v250630",
-  "ocr_data": {
-    "type": "PL",
-    "name": "コウサカ・ユウマ",
-    "cost": 2,
-    "rarity": "P",
-    "category": "制圧",
-    "affiliation": "トライ・ファイターズ",
-    "illustrator": "",
-    "stats": {
-      "mobility": 190,
-      "ranged_attack": 240,
-      "melee_attack": 40,
-      "hp": 320
+    "card_number": "LX03-100",
+    "card_name": "コウサカ・ユウマ",
+    "series": "LINXTAGE SEASON:03",
+    "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX03-100.jpg?v250630",
+    "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX03-100_b.jpg?v250630",
+    "ocr_data": {
+        "type": "PL",
+        "name": "コウサカ・ユウマ",
+        "cost": 2,
+        "rarity": "P",
+        "category": "制圧",
+        "affiliation": "トライ・ファイターズ",
+        "illustrator": "",
+        "stats": {
+            "mobility": 190,
+            "ranged_attack": 240,
+            "melee_attack": 40,
+            "hp": 320
+        },
+        "link_ability": [
+            {
+                "name": "トライ",
+                "condition": "デッキに3枚以上",
+                "effect": "[HP]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            },
+            {
+                "name": "多彩な戦術",
+                "condition": "デッキに4枚以上",
+                "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            }
+        ],
+        "english_name": "",
+        "physical": null,
+        "units": null,
+        "pilot_skill": {
+            "name": "決定的な一撃",
+            "trigger": "敵戦艦/拠点をロックオン時",
+            "effect": "敵戦艦/拠点へのダメージを中アップする。",
+            "has_sq_skill": false,
+            "sq_skill_details": null,
+            "is_eb_skill": false,
+            "eb_trigger_level": null,
+            "sq_rush_effect": ""
+        }
     },
-    "link_ability": [
-      {
-        "name": "トライ",
-        "condition": "デッキに3枚以上",
-        "effect": "[HP]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      },
-      {
-        "name": "多彩な戦術",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      }
-    ],
-    "english_name": "",
-    "physical": null,
-    "units": null,
-    "pilot_skill": {
-      "name": "決定的な一撃",
-      "trigger": "敵戦艦／拠点をロックオン時",
-      "effect": "敵戦艦／拠点へのダメージを中アップする。",
-      "has_sq_skill": false,
-      "sq_skill_details": null,
-      "is_eb_skill": false,
-      "eb_trigger_level": null,
-      "sq_rush_effect": ""
-    }
-  },
-  "ocr_raw_file": "LINXTAGE_SEASON_03_LX03-100_コウサカ・ユウマ_ocr_raw.json",
-  "ocr_timestamp": "2026-03-07T17:59:09.480677",
-  "ocr_type": "basic",
-  "ocr_engine": "claude_code_cli_combined"
+    "ocr_raw_file": "LINXTAGE_SEASON_03_LX03-100_コウサカ・ユウマ_ocr_raw.json",
+    "ocr_timestamp": "2026-03-07T17:59:09.480677",
+    "ocr_type": "basic",
+    "ocr_engine": "claude_code_cli_combined"
 }

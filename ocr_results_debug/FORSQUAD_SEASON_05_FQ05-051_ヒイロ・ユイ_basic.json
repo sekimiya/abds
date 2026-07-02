@@ -1,69 +1,69 @@
 {
-  "card_number": "FQ05-051",
-  "card_name": "ヒイロ・ユイ",
-  "series": "FORSQUAD SEASON:05",
-  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ05-051.jpg?v250630",
-  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ05-051_b.jpg?v250630",
-  "ocr_data": {
-    "type": "PL",
-    "name": "ヒイロ・ユイ",
-    "cost": 3,
-    "rarity": "R",
-    "category": "制圧",
-    "affiliation": "",
-    "illustrator": "",
-    "stats": {
-      "mobility": 200,
-      "ranged_attack": 50,
-      "melee_attack": 250,
-      "hp": 220
+    "card_number": "FQ05-051",
+    "card_name": "ヒイロ・ユイ",
+    "series": "FORSQUAD SEASON:05",
+    "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ05-051.jpg?v250630",
+    "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ05-051_b.jpg?v250630",
+    "ocr_data": {
+        "type": "PL",
+        "name": "ヒイロ・ユイ",
+        "cost": 3,
+        "rarity": "R",
+        "category": "制圧",
+        "affiliation": "",
+        "illustrator": "",
+        "stats": {
+            "mobility": 200,
+            "ranged_attack": 50,
+            "melee_attack": 250,
+            "hp": 220
+        },
+        "link_ability": [
+            {
+                "name": "永遠への回帰",
+                "condition": "デッキに3枚以上",
+                "effect": "SQゲージが表示される。SQゲージを溜めるとSQUAD RUSHが発動できる。[機動力][HP]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            },
+            {
+                "name": "肉薄する戦い",
+                "condition": "デッキに4枚以上",
+                "effect": "[機動力][近距離攻撃力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            }
+        ],
+        "english_name": "HEERO YUY",
+        "physical": {
+            "height": "156cm",
+            "age": 16
+        },
+        "units": [
+            "ウイングガンダムゼロ(EW)"
+        ],
+        "pilot_skill": {
+            "name": "無駄のない遂行力",
+            "trigger": "敵戦艦/拠点をロックオン時",
+            "effect": "SQゲージ小アップ。SQUAD RUSH中自身の[機動力][近距離攻撃力]をアップする。",
+            "has_sq_skill": true,
+            "sq_skill_details": {
+                "name": "",
+                "trigger": "",
+                "effect": "",
+                "sq_gauge_effect": "SQゲージ小アップ。",
+                "sq_max_effect": "",
+                "sq_rush_effect": "自身の[機動力][近距離攻撃力]をアップする。"
+            },
+            "is_eb_skill": false,
+            "eb_trigger_level": null,
+            "sq_rush_effect": ""
+        }
     },
-    "link_ability": [
-      {
-        "name": "永遠への回帰",
-        "condition": "デッキに3枚以上",
-        "effect": "SQゲージが表示される。SQゲージを溜めるとSQUAD RUSHが発動できる。[機動力][HP]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      },
-      {
-        "name": "肉薄する戦い",
-        "condition": "デッキに4枚以上",
-        "effect": "[機動力][近距離攻撃力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      }
-    ],
-    "english_name": "HEERO YUY",
-    "physical": {
-      "height": "156cm",
-      "age": 16
-    },
-    "units": [
-      "ウイングガンダムゼロ(EW)"
-    ],
-    "pilot_skill": {
-      "name": "無駄のない遂行力",
-      "trigger": "敵戦艦／拠点をロックオン時",
-      "effect": "SQゲージ小アップ。SQUAD RUSH中自身の[機動力][近距離攻撃力]をアップする。",
-      "has_sq_skill": true,
-      "sq_skill_details": {
-        "name": "",
-        "trigger": "",
-        "effect": "",
-        "sq_gauge_effect": "SQゲージ小アップ。",
-        "sq_max_effect": "",
-        "sq_rush_effect": "自身の[機動力][近距離攻撃力]をアップする。"
-      },
-      "is_eb_skill": false,
-      "eb_trigger_level": null,
-      "sq_rush_effect": ""
-    }
-  },
-  "ocr_raw_file": "FORSQUAD_SEASON_05_FQ05-051_ヒイロ・ユイ_ocr_raw.json",
-  "ocr_timestamp": "2026-02-24T18:29:51.963891",
-  "ocr_type": "basic",
-  "ocr_engine": "claude_code_cli_combined"
+    "ocr_raw_file": "FORSQUAD_SEASON_05_FQ05-051_ヒイロ・ユイ_ocr_raw.json",
+    "ocr_timestamp": "2026-02-24T18:29:51.963891",
+    "ocr_type": "basic",
+    "ocr_engine": "claude_code_cli_combined"
 }

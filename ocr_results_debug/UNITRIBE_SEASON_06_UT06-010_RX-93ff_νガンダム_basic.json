@@ -1,84 +1,84 @@
 {
-  "card_number": "UT06-010",
-  "card_name": "RX-93ff νガンダム",
-  "series": "UNITRIBE SEASON:06",
-  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT06-010.jpg?v250630",
-  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT06-010_b.jpg?v250630",
-  "ocr_data": {
-    "type": "MS",
-    "name": "RX-93ff νガンダム",
-    "cost": 2,
-    "rarity": "R",
-    "category": "機動",
-    "affiliation": "ロンド・ベル",
-    "illustrator": "S Kei",
-    "stats": {
-      "mobility": 220,
-      "ranged_attack": 230,
-      "melee_attack": 30,
-      "hp": 270
+    "card_number": "UT06-010",
+    "card_name": "RX-93ff νガンダム",
+    "series": "UNITRIBE SEASON:06",
+    "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT06-010.jpg?v250630",
+    "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT06-010_b.jpg?v250630",
+    "ocr_data": {
+        "type": "MS",
+        "name": "RX-93ff νガンダム",
+        "cost": 2,
+        "rarity": "R",
+        "category": "機動",
+        "affiliation": "ロンド・ベル",
+        "illustrator": "S Kei",
+        "stats": {
+            "mobility": 220,
+            "ranged_attack": 230,
+            "melee_attack": 30,
+            "hp": 270
+        },
+        "link_ability": [
+            {
+                "name": "逆襲のシャア(SIDE-F)",
+                "condition": "デッキに2枚以上",
+                "effect": "[HP]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            },
+            {
+                "name": "的確な一撃",
+                "condition": "デッキに4枚以上",
+                "effect": "[機動力][遠距離攻撃力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            }
+        ],
+        "pilot": "アムロ・レイ",
+        "model": "RX-93ff νGUNDAM",
+        "terrain_compatibility": {
+            "ground": "A",
+            "space": "S",
+            "desert": "C",
+            "water": "C"
+        },
+        "weapon": {
+            "main": {
+                "name": "ロングレンジ・フィン・ファンネル",
+                "range": 4,
+                "type": "遠距離"
+            },
+            "sub": {
+                "name": "ロングレンジ・フィン・ファンネル(サーベルモード)",
+                "range": 2,
+                "type": "近距離"
+            }
+        },
+        "ms_ability": {
+            "name": "集中砲火",
+            "activation": "任意発動",
+            "target": "範囲(味方)",
+            "range": null,
+            "cost": 4,
+            "description": "20秒間、ロックオンしている敵に周囲の味方ターゲットを集め、[遠/近攻撃力]を中アップ。攻撃対象が変わると効果は終了する。"
+        },
+        "special_attack": {
+            "name": "ロングレンジ・フィン・ファンネル撃射",
+            "target": "単体(敵)",
+            "range": 4,
+            "sp_cost": 2,
+            "power": 3000,
+            "description": "敵単体に射撃攻撃でダメージを与える。",
+            "sp_type": "",
+            "echoes_beat": null,
+            "united_sp": null,
+            "squad_sp": null
+        }
     },
-    "link_ability": [
-      {
-        "name": "逆襲のシャア(SIDE-F)",
-        "condition": "デッキに2枚以上",
-        "effect": "[HP]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      },
-      {
-        "name": "的確な一撃",
-        "condition": "デッキに4枚以上",
-        "effect": "[機動力][遠距離攻撃力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      }
-    ],
-    "pilot": "アムロ・レイ",
-    "model": "RX-93ff νGUNDAM",
-    "terrain_compatibility": {
-      "ground": "A",
-      "space": "S",
-      "desert": "C",
-      "water": "C"
-    },
-    "weapon": {
-      "main": {
-        "name": "ロングレンジ・フィン・ファンネル",
-        "range": 4,
-        "type": "遠距離"
-      },
-      "sub": {
-        "name": "ロングレンジ・フィン・ファンネル(サーベルモード)",
-        "range": 2,
-        "type": "近距離"
-      }
-    },
-    "ms_ability": {
-      "name": "集中砲火",
-      "activation": "任意発動",
-      "target": "範囲(味方)",
-      "range": null,
-      "cost": 4,
-      "description": "20秒間、ロックオンしている敵に周囲の味方ターゲットを集め、[遠／近攻撃力]を中アップ。攻撃対象が変わると効果は終了する。"
-    },
-    "special_attack": {
-      "name": "ロングレンジ・フィン・ファンネル撃射",
-      "target": "単体(敵)",
-      "range": 4,
-      "sp_cost": 2,
-      "power": 3000,
-      "description": "敵単体に射撃攻撃でダメージを与える。",
-      "sp_type": "",
-      "echoes_beat": null,
-      "united_sp": null,
-      "squad_sp": null
-    }
-  },
-  "ocr_raw_file": "UNITRIBE_SEASON_06_UT06-010_RX-93ff_νガンダム_ocr_raw.json",
-  "ocr_timestamp": "2026-02-26T17:35:31.778588",
-  "ocr_type": "basic",
-  "ocr_engine": "claude_code_cli_combined"
+    "ocr_raw_file": "UNITRIBE_SEASON_06_UT06-010_RX-93ff_νガンダム_ocr_raw.json",
+    "ocr_timestamp": "2026-02-26T17:35:31.778588",
+    "ocr_type": "basic",
+    "ocr_engine": "claude_code_cli_combined"
 }

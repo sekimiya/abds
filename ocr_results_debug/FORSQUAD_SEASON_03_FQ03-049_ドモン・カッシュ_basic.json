@@ -1,70 +1,70 @@
 {
-  "card_number": "FQ03-049",
-  "card_name": "ドモン・カッシュ",
-  "series": "FORSQUAD SEASON:03",
-  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ03-049.jpg?v250630",
-  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ03-049_b.jpg?v250630",
-  "ocr_data": {
-    "type": "PL",
-    "name": "ドモン・カッシュ",
-    "cost": 5,
-    "rarity": "C",
-    "category": "制圧",
-    "affiliation": "ネオジャパン",
-    "illustrator": "",
-    "stats": {
-      "mobility": 210,
-      "ranged_attack": 100,
-      "melee_attack": 240,
-      "hp": 300
+    "card_number": "FQ03-049",
+    "card_name": "ドモン・カッシュ",
+    "series": "FORSQUAD SEASON:03",
+    "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ03-049.jpg?v250630",
+    "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ03-049_b.jpg?v250630",
+    "ocr_data": {
+        "type": "PL",
+        "name": "ドモン・カッシュ",
+        "cost": 5,
+        "rarity": "C",
+        "category": "制圧",
+        "affiliation": "ネオジャパン",
+        "illustrator": "",
+        "stats": {
+            "mobility": 210,
+            "ranged_attack": 100,
+            "melee_attack": 240,
+            "hp": 300
+        },
+        "link_ability": [
+            {
+                "name": "新シャッフル同盟",
+                "condition": "デッキに3枚以上",
+                "effect": "SQゲージが表示される。SQゲージを溜めるとSQUAD RUSHが発動できる。[機動力][HP]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            },
+            {
+                "name": "多彩な戦術",
+                "condition": "デッキに4枚以上",
+                "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            }
+        ],
+        "english_name": "DOMON KASSHU",
+        "physical": {
+            "height": "180cm",
+            "age": 20
+        },
+        "units": [
+            "ゴッドガンダム",
+            "シャイニングガンダム"
+        ],
+        "pilot_skill": {
+            "name": "計算された優位性",
+            "trigger": "敵戦艦/拠点をロックオン時",
+            "effect": "SQゲージ小アップ。",
+            "has_sq_skill": true,
+            "sq_skill_details": {
+                "name": "",
+                "trigger": "",
+                "effect": "",
+                "sq_gauge_effect": "SQゲージ小アップ。",
+                "sq_max_effect": "",
+                "sq_rush_effect": "出撃中の全敵ユニットの[機動力][遠/近攻撃力]をダウンする。"
+            },
+            "is_eb_skill": false,
+            "eb_trigger_level": null,
+            "sq_rush_effect": ""
+        }
     },
-    "link_ability": [
-      {
-        "name": "新シャッフル同盟",
-        "condition": "デッキに3枚以上",
-        "effect": "SQゲージが表示される。SQゲージを溜めるとSQUAD RUSHが発動できる。[機動力][HP]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      },
-      {
-        "name": "多彩な戦術",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      }
-    ],
-    "english_name": "DOMON KASSHU",
-    "physical": {
-      "height": "180cm",
-      "age": 20
-    },
-    "units": [
-      "ゴッドガンダム",
-      "シャイニングガンダム"
-    ],
-    "pilot_skill": {
-      "name": "計算された優位性",
-      "trigger": "敵戦艦／拠点をロックオン時",
-      "effect": "SQゲージ小アップ。",
-      "has_sq_skill": true,
-      "sq_skill_details": {
-        "name": "",
-        "trigger": "",
-        "effect": "",
-        "sq_gauge_effect": "SQゲージ小アップ。",
-        "sq_max_effect": "",
-        "sq_rush_effect": "出撃中の全敵ユニットの[機動力][遠／近攻撃力]をダウンする。"
-      },
-      "is_eb_skill": false,
-      "eb_trigger_level": null,
-      "sq_rush_effect": ""
-    }
-  },
-  "ocr_raw_file": "FORSQUAD_SEASON_03_FQ03-049_ドモン・カッシュ_ocr_raw.json",
-  "ocr_timestamp": "2026-02-24T16:22:30.248330",
-  "ocr_type": "basic",
-  "ocr_engine": "claude_code_cli_combined"
+    "ocr_raw_file": "FORSQUAD_SEASON_03_FQ03-049_ドモン・カッシュ_ocr_raw.json",
+    "ocr_timestamp": "2026-02-24T16:22:30.248330",
+    "ocr_type": "basic",
+    "ocr_engine": "claude_code_cli_combined"
 }

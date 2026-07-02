@@ -1,93 +1,93 @@
 {
-  "card_number": "FQ01-030_p2",
-  "card_name": "赤いガンダム(0085)",
-  "series": "FORSQUAD SEASON:01",
-  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ01-030_p2.jpg?v8",
-  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ01-030_p2_b.jpg?v8",
-  "ocr_data": {
-    "type": "MS",
-    "name": "赤いガンダム(0085)",
-    "cost": 5,
-    "rarity": "P",
-    "category": "近距離",
-    "affiliation": "",
-    "illustrator": "toriyufu",
-    "stats": {
-      "mobility": 210,
-      "ranged_attack": 40,
-      "melee_attack": 450,
-      "hp": 550
+    "card_number": "FQ01-030_p2",
+    "card_name": "赤いガンダム(0085)",
+    "series": "FORSQUAD SEASON:01",
+    "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ01-030_p2.jpg?v8",
+    "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ01-030_p2_b.jpg?v8",
+    "ocr_data": {
+        "type": "MS",
+        "name": "赤いガンダム(0085)",
+        "cost": 5,
+        "rarity": "P",
+        "category": "近距離",
+        "affiliation": "",
+        "illustrator": "toriyufu",
+        "stats": {
+            "mobility": 210,
+            "ranged_attack": 40,
+            "melee_attack": 450,
+            "hp": 550
+        },
+        "link_ability": [
+            {
+                "name": "GQuuuuuuX",
+                "condition": "デッキに3枚以上",
+                "effect": "[HP]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            },
+            {
+                "name": "戦況を変える力",
+                "condition": "デッキに4枚以上",
+                "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            }
+        ],
+        "pilot": "シュウジ・イトウ",
+        "model": "Red Gundam(0085)",
+        "terrain_compatibility": {
+            "ground": "A",
+            "space": "S",
+            "desert": "C",
+            "water": "A"
+        },
+        "weapon": {
+            "main": {
+                "name": "ハンマー",
+                "range": 2,
+                "type": "近距離"
+            },
+            "sub": {
+                "name": "ビット",
+                "range": 4,
+                "type": "遠距離"
+            }
+        },
+        "ms_ability": {
+            "name": "奮起",
+            "activation": "出撃時発動",
+            "target": "自分",
+            "range": null,
+            "cost": null,
+            "description": "自身のHPが1以上で一定割合以下になると、一定時間、撃破されなくなり[遠/近攻撃力]を中アップする。出撃時1度のみ発動。"
+        },
+        "special_attack": {
+            "name": "ビーム・サーベル強襲",
+            "target": "単体(敵)",
+            "range": 2,
+            "sp_cost": 2,
+            "power": 4000,
+            "description": "敵単体に格闘攻撃でダメージを与え、自身に小ダメージ。戦術技威力は地形適性に応じて変化する。",
+            "sp_type": "",
+            "echoes_beat": null,
+            "united_sp": null,
+            "squad_sp": null
+        }
     },
-    "link_ability": [
-      {
-        "name": "GQuuuuuuX",
-        "condition": "デッキに3枚以上",
-        "effect": "[HP]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      },
-      {
-        "name": "戦況を変える力",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      }
+    "ocr_raw_file": "FORSQUAD_SEASON_01_FQ01-030_p2_赤いガンダム(0085)_ocr_raw.json",
+    "ocr_timestamp": "2026-02-24T13:47:39.746114",
+    "ocr_type": "basic",
+    "ocr_engine": "claude_code_cli_combined",
+    "_fix_history": [
+        {
+            "timestamp": "2026-03-03T23:46:45",
+            "changes": [
+                "ms_ability.name: \"蒼起\" → \"奮起\""
+            ]
+        }
     ],
-    "pilot": "シュウジ・イトウ",
-    "model": "Red Gundam(0085)",
-    "terrain_compatibility": {
-      "ground": "A",
-      "space": "S",
-      "desert": "C",
-      "water": "A"
-    },
-    "weapon": {
-      "main": {
-        "name": "ハンマー",
-        "range": 2,
-        "type": "近距離"
-      },
-      "sub": {
-        "name": "ビット",
-        "range": 4,
-        "type": "遠距離"
-      }
-    },
-    "ms_ability": {
-      "name": "奮起",
-      "activation": "出撃時発動",
-      "target": "自分",
-      "range": null,
-      "cost": null,
-      "description": "自身のHPが1以上で一定割合以下になると、一定時間、撃破されなくなり[遠／近攻撃力]を中アップする。出撃時1度のみ発動。"
-    },
-    "special_attack": {
-      "name": "ビーム・サーベル強襲",
-      "target": "単体(敵)",
-      "range": 2,
-      "sp_cost": 2,
-      "power": 4000,
-      "description": "敵単体に格闘攻撃でダメージを与え、自身に小ダメージ。戦術技威力は地形適性に応じて変化する。",
-      "sp_type": "",
-      "echoes_beat": null,
-      "united_sp": null,
-      "squad_sp": null
-    }
-  },
-  "ocr_raw_file": "FORSQUAD_SEASON_01_FQ01-030_p2_赤いガンダム(0085)_ocr_raw.json",
-  "ocr_timestamp": "2026-02-24T13:47:39.746114",
-  "ocr_type": "basic",
-  "ocr_engine": "claude_code_cli_combined",
-  "_fix_history": [
-    {
-      "timestamp": "2026-03-03T23:46:45",
-      "changes": [
-        "ms_ability.name: \"蒼起\" → \"奮起\""
-      ]
-    }
-  ],
-  "_fixed": true
+    "_fixed": true
 }

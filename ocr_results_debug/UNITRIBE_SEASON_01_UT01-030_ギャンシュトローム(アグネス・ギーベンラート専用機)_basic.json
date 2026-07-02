@@ -1,84 +1,84 @@
 {
-  "card_number": "UT01-030",
-  "card_name": "ギャンシュトローム(アグネス・ギーベンラート専用機)",
-  "series": "UNITRIBE SEASON:01",
-  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT01-030.jpg?v250630",
-  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT01-030_b.jpg?v250630",
-  "ocr_data": {
-    "type": "MS",
-    "name": "ギャンシュトローム(アグネス・ギーベンラート専用機)",
-    "cost": 6,
-    "rarity": "M",
-    "category": "近距離",
-    "affiliation": "コンパス",
-    "illustrator": "kenko",
-    "stats": {
-      "mobility": 240,
-      "ranged_attack": 90,
-      "melee_attack": 430,
-      "hp": 440
+    "card_number": "UT01-030",
+    "card_name": "ギャンシュトローム(アグネス・ギーベンラート専用機)",
+    "series": "UNITRIBE SEASON:01",
+    "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT01-030.jpg?v250630",
+    "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT01-030_b.jpg?v250630",
+    "ocr_data": {
+        "type": "MS",
+        "name": "ギャンシュトローム(アグネス・ギーベンラート専用機)",
+        "cost": 6,
+        "rarity": "M",
+        "category": "近距離",
+        "affiliation": "コンパス",
+        "illustrator": "kenko",
+        "stats": {
+            "mobility": 240,
+            "ranged_attack": 90,
+            "melee_attack": 430,
+            "hp": 440
+        },
+        "link_ability": [
+            {
+                "name": "SEED FREEDOM",
+                "condition": "デッキに3枚以上",
+                "effect": "[機動力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            },
+            {
+                "name": "多彩な戦術",
+                "condition": "デッキに4枚以上",
+                "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            }
+        ],
+        "pilot": "アグネス・ギーベンラート",
+        "model": "ZGMF-2027/A GYAN STROM[AGNES GIEBENRATH CUSTOM]",
+        "terrain_compatibility": {
+            "ground": "A",
+            "space": "C",
+            "desert": "C",
+            "water": "A"
+        },
+        "weapon": {
+            "main": {
+                "name": "ファルクスG7 ビームアックス",
+                "range": 1,
+                "type": "近距離"
+            },
+            "sub": {
+                "name": "トリデンティ3銃身回転ビーム機銃",
+                "range": 2,
+                "type": "遠距離"
+            }
+        },
+        "ms_ability": {
+            "name": "奮起",
+            "activation": "出撃時発動",
+            "target": "自分",
+            "range": null,
+            "cost": null,
+            "description": "自身のHPが1以上で一定割合以下になると、一定時間、撃破されなくなり[遠/近攻撃力]を中アップする。出撃時1度のみ発動。"
+        },
+        "special_attack": {
+            "name": "ファルクスG7 ビームアックス強撃",
+            "target": "単体(敵)",
+            "range": 2,
+            "sp_cost": 2,
+            "power": 3500,
+            "description": "敵単体に格闘攻撃でダメージを与える。",
+            "sp_type": "",
+            "echoes_beat": null,
+            "united_sp": null,
+            "squad_sp": null
+        }
     },
-    "link_ability": [
-      {
-        "name": "SEED FREEDOM",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      },
-      {
-        "name": "多彩な戦術",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      }
-    ],
-    "pilot": "アグネス・ギーベンラート",
-    "model": "ZGMF-2027/A GYAN STROM[AGNES GIEBENRATH CUSTOM]",
-    "terrain_compatibility": {
-      "ground": "A",
-      "space": "C",
-      "desert": "C",
-      "water": "A"
-    },
-    "weapon": {
-      "main": {
-        "name": "ファルクスG7 ビームアックス",
-        "range": 1,
-        "type": "近距離"
-      },
-      "sub": {
-        "name": "トリデンティ3銃身回転ビーム機銃",
-        "range": 2,
-        "type": "遠距離"
-      }
-    },
-    "ms_ability": {
-      "name": "奮起",
-      "activation": "出撃時発動",
-      "target": "自分",
-      "range": null,
-      "cost": null,
-      "description": "自身のHPが1以上で一定割合以下になると、一定時間、撃破されなくなり[遠／近攻撃力]を中アップする。出撃時1度のみ発動。"
-    },
-    "special_attack": {
-      "name": "ファルクスG7 ビームアックス強撃",
-      "target": "単体(敵)",
-      "range": 2,
-      "sp_cost": 2,
-      "power": 3500,
-      "description": "敵単体に格闘攻撃でダメージを与える。",
-      "sp_type": "",
-      "echoes_beat": null,
-      "united_sp": null,
-      "squad_sp": null
-    }
-  },
-  "ocr_raw_file": "UNITRIBE_SEASON_01_UT01-030_ギャンシュトローム(アグネス・ギーベンラート専用機)_ocr_raw.json",
-  "ocr_timestamp": "2026-03-02T03:20:01.592850",
-  "ocr_type": "basic",
-  "ocr_engine": "claude_code_cli_combined"
+    "ocr_raw_file": "UNITRIBE_SEASON_01_UT01-030_ギャンシュトローム(アグネス・ギーベンラート専用機)_ocr_raw.json",
+    "ocr_timestamp": "2026-03-02T03:20:01.592850",
+    "ocr_type": "basic",
+    "ocr_engine": "claude_code_cli_combined"
 }

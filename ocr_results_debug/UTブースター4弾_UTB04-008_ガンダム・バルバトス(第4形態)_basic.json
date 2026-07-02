@@ -1,94 +1,94 @@
 {
-  "card_number": "UTB04-008",
-  "card_name": "ガンダム・バルバトス(第4形態)",
-  "series": "UTブースター4弾",
-  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UTB04-008.jpg?v250630",
-  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UTB04-008_b.jpg?v250630",
-  "ocr_data": {
-    "type": "MS",
-    "name": "ガンダム・バルバトス(第4形態)",
-    "cost": 5,
-    "rarity": "P",
-    "category": "近距離",
-    "affiliation": "鉄華団",
-    "illustrator": "kenko",
-    "stats": {
-      "mobility": 220,
-      "ranged_attack": 30,
-      "melee_attack": 500,
-      "hp": 450
-    },
-    "link_ability": [
-      {
-        "name": "鉄血のオルフェンズ",
-        "condition": "デッキに3枚以上",
-        "effect": "[近距離攻撃力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      },
-      {
-        "name": "肉薄する戦い",
-        "condition": "デッキに4枚以上",
-        "effect": "[機動力][近距離攻撃力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      }
-    ],
-    "pilot": "三日月・オーガス",
-    "model": "ASW-G-08 GUNDAM BARBATOS",
-    "terrain_compatibility": {
-      "ground": "S",
-      "space": "A",
-      "desert": "B",
-      "water": "C"
-    },
-    "weapon": {
-      "main": {
-        "name": "太刀",
-        "range": 1,
-        "type": "近距離"
-      },
-      "sub": {
-        "name": "滑腔砲",
-        "range": 2,
-        "type": "近距離"
-      }
-    },
-    "ms_ability": {
-      "name": "奮起",
-      "activation": "出撃時発動",
-      "target": "自分",
-      "range": null,
-      "cost": null,
-      "description": "自身のHPが1以上で一定割合以下になると、一定時間、撃破されなくなり[遠／近攻撃力]を中アップする。出撃時1度のみ発動。"
-    },
-    "special_attack": {
-      "name": "太刀激突",
-      "target": "単体(敵)",
-      "range": 2,
-      "sp_cost": 2,
-      "power": 3600,
-      "description": "敵単体に格闘攻撃でダメージを与える。",
-      "sp_type": "",
-      "echoes_beat": null,
-      "united_sp": {
-        "name": "鉄華団",
-        "partners": [
-          "ガンダム・グシオンリベイク",
-          "流星号(グレイズ改弐)"
+    "card_number": "UTB04-008",
+    "card_name": "ガンダム・バルバトス(第4形態)",
+    "series": "UTブースター4弾",
+    "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UTB04-008.jpg?v250630",
+    "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UTB04-008_b.jpg?v250630",
+    "ocr_data": {
+        "type": "MS",
+        "name": "ガンダム・バルバトス(第4形態)",
+        "cost": 5,
+        "rarity": "P",
+        "category": "近距離",
+        "affiliation": "鉄華団",
+        "illustrator": "kenko",
+        "stats": {
+            "mobility": 220,
+            "ranged_attack": 30,
+            "melee_attack": 500,
+            "hp": 450
+        },
+        "link_ability": [
+            {
+                "name": "鉄血のオルフェンズ",
+                "condition": "デッキに3枚以上",
+                "effect": "[近距離攻撃力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            },
+            {
+                "name": "肉薄する戦い",
+                "condition": "デッキに4枚以上",
+                "effect": "[機動力][近距離攻撃力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            }
         ],
-        "target": "",
-        "range": 3,
-        "power": 5300,
-        "description": "敵単体に射撃と格闘攻撃でダメージを与え、攻撃に参加したユニットの次回出撃コストを3ダウンする。出撃時1度のみ使用可能。"
-      },
-      "squad_sp": null
-    }
-  },
-  "ocr_raw_file": "UTブースター4弾_UTB04-008_ガンダム・バルバトス(第4形態)_ocr_raw.json",
-  "ocr_timestamp": "2026-03-02T02:36:20.140231",
-  "ocr_type": "basic",
-  "ocr_engine": "claude_code_cli_combined"
+        "pilot": "三日月・オーガス",
+        "model": "ASW-G-08 GUNDAM BARBATOS",
+        "terrain_compatibility": {
+            "ground": "S",
+            "space": "A",
+            "desert": "B",
+            "water": "C"
+        },
+        "weapon": {
+            "main": {
+                "name": "太刀",
+                "range": 1,
+                "type": "近距離"
+            },
+            "sub": {
+                "name": "滑腔砲",
+                "range": 2,
+                "type": "近距離"
+            }
+        },
+        "ms_ability": {
+            "name": "奮起",
+            "activation": "出撃時発動",
+            "target": "自分",
+            "range": null,
+            "cost": null,
+            "description": "自身のHPが1以上で一定割合以下になると、一定時間、撃破されなくなり[遠/近攻撃力]を中アップする。出撃時1度のみ発動。"
+        },
+        "special_attack": {
+            "name": "太刀激突",
+            "target": "単体(敵)",
+            "range": 2,
+            "sp_cost": 2,
+            "power": 3600,
+            "description": "敵単体に格闘攻撃でダメージを与える。",
+            "sp_type": "",
+            "echoes_beat": null,
+            "united_sp": {
+                "name": "鉄華団",
+                "partners": [
+                    "ガンダム・グシオンリベイク",
+                    "流星号(グレイズ改弐)"
+                ],
+                "target": "",
+                "range": 3,
+                "power": 5300,
+                "description": "敵単体に射撃と格闘攻撃でダメージを与え、攻撃に参加したユニットの次回出撃コストを3ダウンする。出撃時1度のみ使用可能。"
+            },
+            "squad_sp": null
+        }
+    },
+    "ocr_raw_file": "UTブースター4弾_UTB04-008_ガンダム・バルバトス(第4形態)_ocr_raw.json",
+    "ocr_timestamp": "2026-03-02T02:36:20.140231",
+    "ocr_type": "basic",
+    "ocr_engine": "claude_code_cli_combined"
 }

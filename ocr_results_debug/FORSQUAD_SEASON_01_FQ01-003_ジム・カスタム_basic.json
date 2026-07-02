@@ -1,84 +1,84 @@
 {
-  "card_number": "FQ01-003",
-  "card_name": "ジム・カスタム",
-  "series": "FORSQUAD SEASON:01",
-  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ01-003.jpg?v250630",
-  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ01-003_b.jpg?v250630",
-  "ocr_data": {
-    "type": "MS",
-    "name": "ジム・カスタム",
-    "cost": 5,
-    "rarity": "M",
-    "category": "遠距離",
-    "affiliation": "地球連邦軍",
-    "illustrator": "Kumagoro",
-    "stats": {
-      "mobility": 240,
-      "ranged_attack": 400,
-      "melee_attack": 80,
-      "hp": 530
+    "card_number": "FQ01-003",
+    "card_name": "ジム・カスタム",
+    "series": "FORSQUAD SEASON:01",
+    "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ01-003.jpg?v250630",
+    "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ01-003_b.jpg?v250630",
+    "ocr_data": {
+        "type": "MS",
+        "name": "ジム・カスタム",
+        "cost": 5,
+        "rarity": "M",
+        "category": "遠距離",
+        "affiliation": "地球連邦軍",
+        "illustrator": "Kumagoro",
+        "stats": {
+            "mobility": 240,
+            "ranged_attack": 400,
+            "melee_attack": 80,
+            "hp": 530
+        },
+        "link_ability": [
+            {
+                "name": "ガンダム0083",
+                "condition": "デッキに3枚以上",
+                "effect": "[機動力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            },
+            {
+                "name": "的確な一撃",
+                "condition": "デッキに4枚以上",
+                "effect": "[機動力][遠距離攻撃力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            }
+        ],
+        "pilot": "サウス・バニング、アルファ・A・ベイト、ベルナルド・モンシア",
+        "model": "RGM-79N GM CUSTOM",
+        "terrain_compatibility": {
+            "ground": "A",
+            "space": "A",
+            "desert": "C",
+            "water": "C"
+        },
+        "weapon": {
+            "main": {
+                "name": "ジム・ライフル",
+                "range": 3,
+                "type": "遠距離"
+            },
+            "sub": {
+                "name": "ビーム・サーベル",
+                "range": 1,
+                "type": "近距離"
+            }
+        },
+        "ms_ability": {
+            "name": "転化[支援]",
+            "activation": "任意発動",
+            "target": "範囲(味方)",
+            "range": null,
+            "cost": 4,
+            "description": "一定時間、自身を中心とした範囲内の味方ユニットを強化する。使用回数に応じて、強化効果が変わる。[1回:遠/近攻撃力アップ][2回:遠/近攻撃力アップ][3回以上:遠/近攻撃力アップ&回復]"
+        },
+        "special_attack": {
+            "name": "ジム・ライフル撃射",
+            "target": "単体(敵)",
+            "range": 3,
+            "sp_cost": 2,
+            "power": 3400,
+            "description": "敵単体に射撃攻撃でダメージを与える。",
+            "sp_type": "",
+            "echoes_beat": null,
+            "united_sp": null,
+            "squad_sp": null
+        }
     },
-    "link_ability": [
-      {
-        "name": "ガンダム0083",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      },
-      {
-        "name": "的確な一撃",
-        "condition": "デッキに4枚以上",
-        "effect": "[機動力][遠距離攻撃力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      }
-    ],
-    "pilot": "サウス・バニング、アルファ・A・ベイト、ベルナルド・モンシア",
-    "model": "RGM-79N GM CUSTOM",
-    "terrain_compatibility": {
-      "ground": "A",
-      "space": "A",
-      "desert": "C",
-      "water": "C"
-    },
-    "weapon": {
-      "main": {
-        "name": "ジム・ライフル",
-        "range": 3,
-        "type": "遠距離"
-      },
-      "sub": {
-        "name": "ビーム・サーベル",
-        "range": 1,
-        "type": "近距離"
-      }
-    },
-    "ms_ability": {
-      "name": "転化[支援]",
-      "activation": "任意発動",
-      "target": "範囲(味方)",
-      "range": null,
-      "cost": 4,
-      "description": "一定時間、自身を中心とした範囲内の味方ユニットを強化する。使用回数に応じて、強化効果が変わる。[1回:遠／近攻撃力アップ][2回:遠／近攻撃力アップ][3回以上:遠／近攻撃力アップ&回復]"
-    },
-    "special_attack": {
-      "name": "ジム・ライフル撃射",
-      "target": "単体(敵)",
-      "range": 3,
-      "sp_cost": 2,
-      "power": 3400,
-      "description": "敵単体に射撃攻撃でダメージを与える。",
-      "sp_type": "",
-      "echoes_beat": null,
-      "united_sp": null,
-      "squad_sp": null
-    }
-  },
-  "ocr_raw_file": "FORSQUAD_SEASON_01_FQ01-003_ジム・カスタム_ocr_raw.json",
-  "ocr_timestamp": "2026-02-24T01:18:17.919408",
-  "ocr_type": "basic",
-  "ocr_engine": "claude_code_cli"
+    "ocr_raw_file": "FORSQUAD_SEASON_01_FQ01-003_ジム・カスタム_ocr_raw.json",
+    "ocr_timestamp": "2026-02-24T01:18:17.919408",
+    "ocr_type": "basic",
+    "ocr_engine": "claude_code_cli"
 }

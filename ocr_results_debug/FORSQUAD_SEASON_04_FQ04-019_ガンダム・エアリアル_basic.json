@@ -1,84 +1,84 @@
 {
-  "card_number": "FQ04-019",
-  "card_name": "ガンダム・エアリアル",
-  "series": "FORSQUAD SEASON:04",
-  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ04-019.jpg?v250630",
-  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ04-019_b.jpg?v250630",
-  "ocr_data": {
-    "type": "MS",
-    "name": "ガンダム・エアリアル",
-    "cost": 5,
-    "rarity": "LE",
-    "category": "遠距離",
-    "affiliation": "シン・セー開発公社",
-    "illustrator": "shishizaru",
-    "stats": {
-      "mobility": 300,
-      "ranged_attack": 580,
-      "melee_attack": 50,
-      "hp": 570
+    "card_number": "FQ04-019",
+    "card_name": "ガンダム・エアリアル",
+    "series": "FORSQUAD SEASON:04",
+    "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ04-019.jpg?v250630",
+    "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ04-019_b.jpg?v250630",
+    "ocr_data": {
+        "type": "MS",
+        "name": "ガンダム・エアリアル",
+        "cost": 5,
+        "rarity": "LE",
+        "category": "遠距離",
+        "affiliation": "シン・セー開発公社",
+        "illustrator": "shishizaru",
+        "stats": {
+            "mobility": 300,
+            "ranged_attack": 580,
+            "melee_attack": 50,
+            "hp": 570
+        },
+        "link_ability": [
+            {
+                "name": "水星の魔女",
+                "condition": "デッキに3枚以上",
+                "effect": "[機動力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            },
+            {
+                "name": "的確な一撃",
+                "condition": "デッキに4枚以上",
+                "effect": "[機動力][遠距離攻撃力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            }
+        ],
+        "pilot": "スレッタ・マーキュリー",
+        "model": "XVX-016 GUNDAM AERIAL",
+        "terrain_compatibility": {
+            "ground": "A",
+            "space": "A",
+            "desert": "C",
+            "water": "C"
+        },
+        "weapon": {
+            "main": {
+                "name": "ビームライフル",
+                "range": 3,
+                "type": "遠距離"
+            },
+            "sub": {
+                "name": "ビームサーベル",
+                "range": 1,
+                "type": "近距離"
+            }
+        },
+        "ms_ability": {
+            "name": "圧倒",
+            "activation": "任意発動",
+            "target": "単体(敵)",
+            "range": 3,
+            "cost": 3,
+            "description": "ロックオン中の敵が弱体化状態の時に発動可能となり、敵に単体攻撃でダメージを与え、その攻撃は必ずクリティカルになる。"
+        },
+        "special_attack": {
+            "name": "ビットステイヴ斉射",
+            "target": "単体(敵)",
+            "range": 4,
+            "sp_cost": 2,
+            "power": 3500,
+            "description": "敵単体に射撃攻撃でダメージを与える。一定時間、自身の周囲の敵に継続的にダメージを与え、[遠/近攻撃力]をダウンする。リンクアビリティ[水星の魔女]が発動している場合、自身の[機動力][遠距離攻撃力]を大アップする。",
+            "sp_type": "",
+            "echoes_beat": null,
+            "united_sp": null,
+            "squad_sp": null
+        }
     },
-    "link_ability": [
-      {
-        "name": "水星の魔女",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      },
-      {
-        "name": "的確な一撃",
-        "condition": "デッキに4枚以上",
-        "effect": "[機動力][遠距離攻撃力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      }
-    ],
-    "pilot": "スレッタ・マーキュリー",
-    "model": "XVX-016 GUNDAM AERIAL",
-    "terrain_compatibility": {
-      "ground": "A",
-      "space": "A",
-      "desert": "C",
-      "water": "C"
-    },
-    "weapon": {
-      "main": {
-        "name": "ビームライフル",
-        "range": 3,
-        "type": "遠距離"
-      },
-      "sub": {
-        "name": "ビームサーベル",
-        "range": 1,
-        "type": "近距離"
-      }
-    },
-    "ms_ability": {
-      "name": "圧倒",
-      "activation": "任意発動",
-      "target": "単体(敵)",
-      "range": 3,
-      "cost": 3,
-      "description": "ロックオン中の敵が弱体化状態の時に発動可能となり、敵に単体攻撃でダメージを与え、その攻撃は必ずクリティカルになる。"
-    },
-    "special_attack": {
-      "name": "ビットステイヴ斉射",
-      "target": "単体(敵)",
-      "range": 4,
-      "sp_cost": 2,
-      "power": 3500,
-      "description": "敵単体に射撃攻撃でダメージを与える。一定時間、自身の周囲の敵に継続的にダメージを与え、[遠／近攻撃力]をダウンする。リンクアビリティ[水星の魔女]が発動している場合、自身の[機動力][遠距離攻撃力]を大アップする。",
-      "sp_type": "",
-      "echoes_beat": null,
-      "united_sp": null,
-      "squad_sp": null
-    }
-  },
-  "ocr_raw_file": "FORSQUAD_SEASON_04_FQ04-019_ガンダム・エアリアル_ocr_raw.json",
-  "ocr_timestamp": "2026-02-24T18:20:49.972574",
-  "ocr_type": "basic",
-  "ocr_engine": "claude_code_cli_combined"
+    "ocr_raw_file": "FORSQUAD_SEASON_04_FQ04-019_ガンダム・エアリアル_ocr_raw.json",
+    "ocr_timestamp": "2026-02-24T18:20:49.972574",
+    "ocr_type": "basic",
+    "ocr_engine": "claude_code_cli_combined"
 }

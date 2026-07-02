@@ -1,90 +1,90 @@
 {
-  "card_number": "VE02-003",
-  "card_name": "ガンダムEz8",
-  "series": "WAVECHOES SEASON:02",
-  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE02-003.jpg?v250630",
-  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE02-003_b.jpg?v250630",
-  "ocr_engine": "claude_code_subagent",
-  "ocr_type": "basic",
-  "ocr_timestamp": "2026-04-22T20:30:00.000000",
-  "ocr_data": {
-    "type": "MS",
-    "name": "ガンダムEz8",
-    "cost": 5,
-    "rarity": "P",
-    "category": "近距離",
-    "affiliation": "地球連邦軍",
-    "illustrator": "",
-    "stats": {
-      "mobility": 280,
-      "ranged_attack": 40,
-      "melee_attack": 570,
-      "hp": 510
-    },
-    "link_ability": [
-      {
-        "name": "第08MS小隊",
-        "condition": "デッキに3枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      },
-      {
-        "name": "多彩な戦術",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      }
-    ],
-    "pilot": "シロー・アマダ",
-    "model": "RX-79[G]Ez-8 GUNDAM Ez8",
-    "terrain_compatibility": {
-      "ground": "S",
-      "space": "C",
-      "desert": "A",
-      "water": "B"
-    },
-    "weapon": {
-      "main": {
-        "name": "ビーム・サーベル",
-        "range": 1,
-        "type": "近距離"
-      },
-      "sub": {
-        "name": "ビーム・ライフル",
-        "range": 3,
-        "type": "遠距離"
-      }
-    },
-    "ms_ability": {
-      "name": "撃滅",
-      "activation": "任意発動",
-      "target": "単体(敵)",
-      "range": 2,
-      "cost": 4,
-      "description": "ロックオン中の敵に単体攻撃でダメージを与える。この攻撃で敵ユニットを撃破した場合、敵ユニットの修理時間を延長させる。"
-    },
-    "special_attack": {
-      "name": "一斉射撃",
-      "target": "単体(敵)",
-      "range": 3,
-      "sp_cost": 2,
-      "power": 3500,
-      "description": "敵単体に射撃攻撃でダメージを与える。自身のHPを回復する。リンクアビリティ[[SQ]風の中で]が発動している場合、一定時間、全味方ユニットの[機動力][速/攻撃力]をアップする。／対象の敵を中心として範囲射撃と格闘でダメージを与え、一定時間、受けるダメージを大きく軽減する。自身のMSアビリティのクールタイムを一定時間短縮し、撃破効果を受けない状態となり、敵にダメージを与えると自身の能力が上昇する。自身が撃滅するまで効果は持続する。",
-      "sp_type": "",
-      "echoes_beat": null,
-      "united_sp": null,
-      "squad_sp": {
-        "name": "ラスト・リゾート",
-        "target": "範囲(敵)",
-        "range": 3,
-        "power": null,
-        "description": "",
-        "note": "SQUAD RUSH発動中に1度だけ、SQUAD SPを使用できる。"
-      }
+    "card_number": "VE02-003",
+    "card_name": "ガンダムEz8",
+    "series": "WAVECHOES SEASON:02",
+    "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE02-003.jpg?v250630",
+    "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE02-003_b.jpg?v250630",
+    "ocr_engine": "claude_code_subagent",
+    "ocr_type": "basic",
+    "ocr_timestamp": "2026-04-22T20:30:00.000000",
+    "ocr_data": {
+        "type": "MS",
+        "name": "ガンダムEz8",
+        "cost": 5,
+        "rarity": "P",
+        "category": "近距離",
+        "affiliation": "地球連邦軍",
+        "illustrator": "",
+        "stats": {
+            "mobility": 280,
+            "ranged_attack": 40,
+            "melee_attack": 570,
+            "hp": 510
+        },
+        "link_ability": [
+            {
+                "name": "第08MS小隊",
+                "condition": "デッキに3枚以上",
+                "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            },
+            {
+                "name": "多彩な戦術",
+                "condition": "デッキに4枚以上",
+                "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            }
+        ],
+        "pilot": "シロー・アマダ",
+        "model": "RX-79[G]Ez-8 GUNDAM Ez8",
+        "terrain_compatibility": {
+            "ground": "S",
+            "space": "C",
+            "desert": "A",
+            "water": "B"
+        },
+        "weapon": {
+            "main": {
+                "name": "ビーム・サーベル",
+                "range": 1,
+                "type": "近距離"
+            },
+            "sub": {
+                "name": "ビーム・ライフル",
+                "range": 3,
+                "type": "遠距離"
+            }
+        },
+        "ms_ability": {
+            "name": "撃滅",
+            "activation": "任意発動",
+            "target": "単体(敵)",
+            "range": 2,
+            "cost": 4,
+            "description": "ロックオン中の敵に単体攻撃でダメージを与える。この攻撃で敵ユニットを撃破した場合、敵ユニットの修理時間を延長させる。"
+        },
+        "special_attack": {
+            "name": "一斉射撃",
+            "target": "単体(敵)",
+            "range": 3,
+            "sp_cost": 2,
+            "power": 3500,
+            "description": "敵単体に射撃攻撃でダメージを与える。自身のHPを回復する。リンクアビリティ[[SQ]風の中で]が発動している場合、一定時間、全味方ユニットの[機動力][速/攻撃力]をアップする。/対象の敵を中心として範囲射撃と格闘でダメージを与え、一定時間、受けるダメージを大きく軽減する。自身のMSアビリティのクールタイムを一定時間短縮し、撃破効果を受けない状態となり、敵にダメージを与えると自身の能力が上昇する。自身が撃滅するまで効果は持続する。",
+            "sp_type": "",
+            "echoes_beat": null,
+            "united_sp": null,
+            "squad_sp": {
+                "name": "ラスト・リゾート",
+                "target": "範囲(敵)",
+                "range": 3,
+                "power": null,
+                "description": "",
+                "note": "SQUAD RUSH発動中に1度だけ、SQUAD SPを使用できる。"
+            }
+        }
     }
-  }
 }

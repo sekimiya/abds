@@ -1,62 +1,62 @@
 {
-  "card_number": "FQ01-062",
-  "card_name": "ラフタ・フランクランド",
-  "series": "FORSQUAD SEASON:01",
-  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ01-062.jpg?v250630",
-  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ01-062_b.jpg?v250630",
-  "ocr_data": {
-    "type": "PL",
-    "name": "ラフタ・フランクランド",
-    "cost": 3,
-    "rarity": "C",
-    "category": "制圧",
-    "affiliation": "タービンズ",
-    "illustrator": "",
-    "stats": {
-      "mobility": 180,
-      "ranged_attack": 70,
-      "melee_attack": 200,
-      "hp": 220
+    "card_number": "FQ01-062",
+    "card_name": "ラフタ・フランクランド",
+    "series": "FORSQUAD SEASON:01",
+    "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ01-062.jpg?v250630",
+    "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ01-062_b.jpg?v250630",
+    "ocr_data": {
+        "type": "PL",
+        "name": "ラフタ・フランクランド",
+        "cost": 3,
+        "rarity": "C",
+        "category": "制圧",
+        "affiliation": "タービンズ",
+        "illustrator": "",
+        "stats": {
+            "mobility": 180,
+            "ranged_attack": 70,
+            "melee_attack": 200,
+            "hp": 220
+        },
+        "link_ability": [
+            {
+                "name": "鉄血のオルフェンズ",
+                "condition": "デッキに3枚以上",
+                "effect": "[遠距離攻撃力] [近距離攻撃力] 小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            },
+            {
+                "name": "肉薄する戦い",
+                "condition": "デッキに4枚以上",
+                "effect": "[機動力] [近距離攻撃力] 小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            }
+        ],
+        "english_name": "LAFTER FRANKLAND",
+        "physical": {
+            "height": "",
+            "age": null
+        },
+        "units": [
+            "漏影"
+        ],
+        "pilot_skill": {
+            "name": "決定的な一撃",
+            "trigger": "敵戦艦/拠点をロックオン時",
+            "effect": "敵戦艦/拠点へのダメージを中アップする。",
+            "has_sq_skill": false,
+            "sq_skill_details": null,
+            "is_eb_skill": false,
+            "eb_trigger_level": null,
+            "sq_rush_effect": ""
+        }
     },
-    "link_ability": [
-      {
-        "name": "鉄血のオルフェンズ",
-        "condition": "デッキに3枚以上",
-        "effect": "[遠距離攻撃力] [近距離攻撃力] 小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      },
-      {
-        "name": "肉薄する戦い",
-        "condition": "デッキに4枚以上",
-        "effect": "[機動力] [近距離攻撃力] 小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      }
-    ],
-    "english_name": "LAFTER FRANKLAND",
-    "physical": {
-      "height": "",
-      "age": null
-    },
-    "units": [
-      "漏影"
-    ],
-    "pilot_skill": {
-      "name": "決定的な一撃",
-      "trigger": "敵戦艦／拠点をロックオン時",
-      "effect": "敵戦艦／拠点へのダメージを中アップする。",
-      "has_sq_skill": false,
-      "sq_skill_details": null,
-      "is_eb_skill": false,
-      "eb_trigger_level": null,
-      "sq_rush_effect": ""
-    }
-  },
-  "ocr_raw_file": "FORSQUAD_SEASON_01_FQ01-062_ラフタ・フランクランド_ocr_raw.json",
-  "ocr_timestamp": "2026-02-24T01:39:26.079031",
-  "ocr_type": "basic",
-  "ocr_engine": "claude_code_cli"
+    "ocr_raw_file": "FORSQUAD_SEASON_01_FQ01-062_ラフタ・フランクランド_ocr_raw.json",
+    "ocr_timestamp": "2026-02-24T01:39:26.079031",
+    "ocr_type": "basic",
+    "ocr_engine": "claude_code_cli"
 }

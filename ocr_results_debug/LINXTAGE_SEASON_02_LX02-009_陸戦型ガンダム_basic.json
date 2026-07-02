@@ -1,84 +1,84 @@
 {
-  "card_number": "LX02-009",
-  "card_name": "陸戦型ガンダム",
-  "series": "LINXTAGE SEASON:02",
-  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX02-009.jpg?v250630",
-  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX02-009_b.jpg?v250630",
-  "ocr_data": {
-    "type": "MS",
-    "name": "陸戦型ガンダム",
-    "cost": 4,
-    "rarity": "R",
-    "category": "遠距離",
-    "affiliation": "地球連邦軍",
-    "illustrator": "kenko",
-    "stats": {
-      "mobility": 160,
-      "ranged_attack": 350,
-      "melee_attack": 90,
-      "hp": 200
+    "card_number": "LX02-009",
+    "card_name": "陸戦型ガンダム",
+    "series": "LINXTAGE SEASON:02",
+    "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX02-009.jpg?v250630",
+    "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX02-009_b.jpg?v250630",
+    "ocr_data": {
+        "type": "MS",
+        "name": "陸戦型ガンダム",
+        "cost": 4,
+        "rarity": "R",
+        "category": "遠距離",
+        "affiliation": "地球連邦軍",
+        "illustrator": "kenko",
+        "stats": {
+            "mobility": 160,
+            "ranged_attack": 350,
+            "melee_attack": 90,
+            "hp": 200
+        },
+        "link_ability": [
+            {
+                "name": "第08MS小隊",
+                "condition": "デッキに3枚以上",
+                "effect": "[遠距離攻撃力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            },
+            {
+                "name": "距離をとった射撃戦",
+                "condition": "デッキに2枚以上",
+                "effect": "[遠距離攻撃力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            }
+        ],
+        "pilot": "シロー・アマダ、カレン・ジョシュク、デリー・サンダースJr.",
+        "model": "RX-79[G] GUNDAM GROUND TYPE",
+        "terrain_compatibility": {
+            "ground": "S",
+            "space": "C",
+            "desert": "A",
+            "water": "B"
+        },
+        "weapon": {
+            "main": {
+                "name": "180mmキャノン",
+                "range": 4,
+                "type": "遠距離"
+            },
+            "sub": {
+                "name": "ビーム・サーベル",
+                "range": 1,
+                "type": "近距離"
+            }
+        },
+        "ms_ability": {
+            "name": "集中砲火",
+            "activation": "任意発動",
+            "target": "範囲(味方)",
+            "range": null,
+            "cost": 4,
+            "description": "20秒間、ロックオンしている敵に周囲の味方ターゲットを集め、[遠/近攻撃力]を中アップ。攻撃対象が変わると効果は終了する。"
+        },
+        "special_attack": {
+            "name": "180mmキャノン砲撃",
+            "target": "単体(敵)",
+            "range": 4,
+            "sp_cost": 2,
+            "power": 3100,
+            "description": "敵単体に射撃攻撃でダメージを与える。",
+            "sp_type": "",
+            "echoes_beat": null,
+            "united_sp": null,
+            "squad_sp": null
+        }
     },
-    "link_ability": [
-      {
-        "name": "第08MS小隊",
-        "condition": "デッキに3枚以上",
-        "effect": "[遠距離攻撃力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      },
-      {
-        "name": "距離をとった射撃戦",
-        "condition": "デッキに2枚以上",
-        "effect": "[遠距離攻撃力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      }
-    ],
-    "pilot": "シロー・アマダ、カレン・ジョシュク、デリー・サンダースJr.",
-    "model": "RX-79[G] GUNDAM GROUND TYPE",
-    "terrain_compatibility": {
-      "ground": "S",
-      "space": "C",
-      "desert": "A",
-      "water": "B"
-    },
-    "weapon": {
-      "main": {
-        "name": "180mmキャノン",
-        "range": 4,
-        "type": "遠距離"
-      },
-      "sub": {
-        "name": "ビーム・サーベル",
-        "range": 1,
-        "type": "近距離"
-      }
-    },
-    "ms_ability": {
-      "name": "集中砲火",
-      "activation": "任意発動",
-      "target": "範囲(味方)",
-      "range": null,
-      "cost": 4,
-      "description": "20秒間、ロックオンしている敵に周囲の味方ターゲットを集め、[遠／近攻撃力]を中アップ。攻撃対象が変わると効果は終了する。"
-    },
-    "special_attack": {
-      "name": "180mmキャノン砲撃",
-      "target": "単体(敵)",
-      "range": 4,
-      "sp_cost": 2,
-      "power": 3100,
-      "description": "敵単体に射撃攻撃でダメージを与える。",
-      "sp_type": "",
-      "echoes_beat": null,
-      "united_sp": null,
-      "squad_sp": null
-    }
-  },
-  "ocr_raw_file": "LINXTAGE_SEASON_02_LX02-009_陸戦型ガンダム_ocr_raw.json",
-  "ocr_timestamp": "2026-03-07T15:44:40.307877",
-  "ocr_type": "basic",
-  "ocr_engine": "claude_code_cli_combined"
+    "ocr_raw_file": "LINXTAGE_SEASON_02_LX02-009_陸戦型ガンダム_ocr_raw.json",
+    "ocr_timestamp": "2026-03-07T15:44:40.307877",
+    "ocr_type": "basic",
+    "ocr_engine": "claude_code_cli_combined"
 }

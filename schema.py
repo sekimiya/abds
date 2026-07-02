@@ -202,6 +202,39 @@ def canonicalize_values(ocr):
                     eb['description'] = parts[1].strip()
                     changes.append('echoes_beat.description: 併記分から補完')
 
+    # テキストフィールドの全角スラッシュ→半角統一
+    # (「遠／近攻撃力」と「遠/近攻撃力」等の表記揺れを解消。名前系フィールドは対象外)
+    def _halfwidth_slash(obj, key, path):
+        v = obj.get(key)
+        if isinstance(v, str) and '／' in v:
+            obj[key] = v.replace('／', '/')
+            changes.append(f'{path}: ／ -> /')
+
+    msa = ocr.get('ms_ability')
+    if isinstance(msa, dict):
+        _halfwidth_slash(msa, 'description', 'ms_ability.description')
+    if isinstance(sp, dict):
+        _halfwidth_slash(sp, 'description', 'special_attack.description')
+        for sub_key in ('echoes_beat', 'united_sp', 'squad_sp'):
+            obj = sp.get(sub_key)
+            if isinstance(obj, dict):
+                _halfwidth_slash(obj, 'description', f'{sub_key}.description')
+                if sub_key == 'squad_sp':
+                    _halfwidth_slash(obj, 'note', 'squad_sp.note')
+    ps0 = ocr.get('pilot_skill')
+    if isinstance(ps0, dict):
+        _halfwidth_slash(ps0, 'trigger', 'pilot_skill.trigger')
+        _halfwidth_slash(ps0, 'effect', 'pilot_skill.effect')
+        _halfwidth_slash(ps0, 'sq_rush_effect', 'pilot_skill.sq_rush_effect')
+        sq = ps0.get('sq_skill_details')
+        if isinstance(sq, dict):
+            for k in ('trigger', 'effect', 'sq_gauge_effect', 'sq_max_effect', 'sq_rush_effect'):
+                _halfwidth_slash(sq, k, f'sq_skill_details.{k}')
+    for i, la in enumerate(ocr.get('link_ability') or []):
+        if isinstance(la, dict):
+            _halfwidth_slash(la, 'effect', f'link_ability[{i}].effect')
+            _halfwidth_slash(la, 'condition', f'link_ability[{i}].condition')
+
     # pilot_skill: トリガーがEBLv.を含むならis_eb_skill=true (仕様書ルールの自動適用)
     ps = ocr.get('pilot_skill')
     if isinstance(ps, dict):

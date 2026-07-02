@@ -2328,7 +2328,7 @@ const CardService = {
     const baseMap = {};
     cards.forEach(c => { if (c.number && !/_p\d+$/.test(c.number)) baseMap[c.number] = c; });
     const inheritFields = ['cost','mobility','ranged','melee','hp','terrain','pilot','model','illustrator',
-      'skill_name','skill_effect_tags','sp_effect_tags','sqsp_effect_tags','ebsp_effect_tags',
+      'skill_name','skill_trigger','skill_effect_tags','sp_effect_tags','sqsp_effect_tags','ebsp_effect_tags',
       'sq_rush_effect','sqsp_text','sq_skill_text','has_sqsp','has_sq_skill','has_sq_link',
       'sq_trigger','sq_gauge_rate','sq_skill_effect_tags',
       'eb_text','eb_skill_text','has_eb','has_eb_skill','has_eb_link','has_ab_link',

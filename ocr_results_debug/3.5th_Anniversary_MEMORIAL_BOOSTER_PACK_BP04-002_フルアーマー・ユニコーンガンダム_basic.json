@@ -1,84 +1,84 @@
 {
-  "card_number": "BP04-002",
-  "card_name": "フルアーマー・ユニコーンガンダム",
-  "series": "3.5th Anniversary MEMORIAL BOOSTER PACK",
-  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP04-002.jpg?v250630",
-  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP04-002_b.jpg?v250630",
-  "ocr_data": {
-    "type": "MS",
-    "name": "フルアーマー・ユニコーンガンダム",
-    "cost": 2,
-    "rarity": "R",
-    "category": "遠距離",
-    "affiliation": "ビスト財団",
-    "illustrator": "Chifuyu Yukishiro",
-    "stats": {
-      "mobility": 200,
-      "ranged_attack": 240,
-      "melee_attack": 90,
-      "hp": 300
+    "card_number": "BP04-002",
+    "card_name": "フルアーマー・ユニコーンガンダム",
+    "series": "3.5th Anniversary MEMORIAL BOOSTER PACK",
+    "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP04-002.jpg?v250630",
+    "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP04-002_b.jpg?v250630",
+    "ocr_data": {
+        "type": "MS",
+        "name": "フルアーマー・ユニコーンガンダム",
+        "cost": 2,
+        "rarity": "R",
+        "category": "遠距離",
+        "affiliation": "ビスト財団",
+        "illustrator": "Chifuyu Yukishiro",
+        "stats": {
+            "mobility": 200,
+            "ranged_attack": 240,
+            "melee_attack": 90,
+            "hp": 300
+        },
+        "link_ability": [
+            {
+                "name": "ガンダムUC",
+                "condition": "デッキに3枚以上",
+                "effect": "[機動力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            },
+            {
+                "name": "的確な一撃",
+                "condition": "デッキに4枚以上",
+                "effect": "[機動力][遠距離攻撃力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            }
+        ],
+        "pilot": "バナージ・リンクス",
+        "model": "RX-0 FULL ARMOR UNICORN GUNDAM",
+        "terrain_compatibility": {
+            "ground": "A",
+            "space": "S",
+            "desert": "C",
+            "water": "B"
+        },
+        "weapon": {
+            "main": {
+                "name": "ビーム・ガトリングガン",
+                "range": 3,
+                "type": "遠距離"
+            },
+            "sub": {
+                "name": "ビーム・サーベル",
+                "range": 1,
+                "type": "近距離"
+            }
+        },
+        "ms_ability": {
+            "name": "転化[妨害]",
+            "activation": "任意発動",
+            "target": "範囲(敵)",
+            "range": null,
+            "cost": 4,
+            "description": "一定時間、自身を中心とした範囲内の敵ユニットを弱体化する。使用回数に応じて、弱体化効果、範囲が変わる。[1回:遠/近攻撃力ダウン][2回:被ダメージアップ][3回以上:出撃中の全敵ユニットの遠/近攻撃力&SP威力ダウン]"
+        },
+        "special_attack": {
+            "name": "ビーム・ガトリングガン斉射(変身)",
+            "target": "範囲(敵)",
+            "range": 3,
+            "sp_cost": 4,
+            "power": 3700,
+            "description": "デストロイモードに変身、扇状の範囲攻撃を行い、自身のHPを大回復する。能力が大きく上昇し、自身が撤退するまで効果は持続する。",
+            "sp_type": "",
+            "echoes_beat": null,
+            "united_sp": null,
+            "squad_sp": null
+        }
     },
-    "link_ability": [
-      {
-        "name": "ガンダムUC",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      },
-      {
-        "name": "的確な一撃",
-        "condition": "デッキに4枚以上",
-        "effect": "[機動力][遠距離攻撃力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      }
-    ],
-    "pilot": "バナージ・リンクス",
-    "model": "RX-0 FULL ARMOR UNICORN GUNDAM",
-    "terrain_compatibility": {
-      "ground": "A",
-      "space": "S",
-      "desert": "C",
-      "water": "B"
-    },
-    "weapon": {
-      "main": {
-        "name": "ビーム・ガトリングガン",
-        "range": 3,
-        "type": "遠距離"
-      },
-      "sub": {
-        "name": "ビーム・サーベル",
-        "range": 1,
-        "type": "近距離"
-      }
-    },
-    "ms_ability": {
-      "name": "転化[妨害]",
-      "activation": "任意発動",
-      "target": "範囲(敵)",
-      "range": null,
-      "cost": 4,
-      "description": "一定時間、自身を中心とした範囲内の敵ユニットを弱体化する。使用回数に応じて、弱体化効果、範囲が変わる。[1回:遠／近攻撃力ダウン][2回:被ダメージアップ][3回以上:出撃中の全敵ユニットの遠／近攻撃力&SP威力ダウン]"
-    },
-    "special_attack": {
-      "name": "ビーム・ガトリングガン斉射(変身)",
-      "target": "範囲(敵)",
-      "range": 3,
-      "sp_cost": 4,
-      "power": 3700,
-      "description": "デストロイモードに変身、扇状の範囲攻撃を行い、自身のHPを大回復する。能力が大きく上昇し、自身が撤退するまで効果は持続する。",
-      "sp_type": "",
-      "echoes_beat": null,
-      "united_sp": null,
-      "squad_sp": null
-    }
-  },
-  "ocr_raw_file": "3.5th_Anniversary_MEMORIAL_BOOSTER_PACK_BP04-002_フルアーマー・ユニコーンガンダム_ocr_raw.json",
-  "ocr_timestamp": "2026-02-26T18:39:04.306703",
-  "ocr_type": "basic",
-  "ocr_engine": "claude_code_cli_combined"
+    "ocr_raw_file": "3.5th_Anniversary_MEMORIAL_BOOSTER_PACK_BP04-002_フルアーマー・ユニコーンガンダム_ocr_raw.json",
+    "ocr_timestamp": "2026-02-26T18:39:04.306703",
+    "ocr_type": "basic",
+    "ocr_engine": "claude_code_cli_combined"
 }

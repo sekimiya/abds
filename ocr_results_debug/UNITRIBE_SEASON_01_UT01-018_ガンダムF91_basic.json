@@ -1,84 +1,84 @@
 {
-  "card_number": "UT01-018",
-  "card_name": "ガンダムF91",
-  "series": "UNITRIBE SEASON:01",
-  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT01-018.jpg?v250630",
-  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT01-018_b.jpg?v250630",
-  "ocr_data": {
-    "type": "MS",
-    "name": "ガンダムF91",
-    "cost": 6,
-    "rarity": "U",
-    "category": "機動",
-    "affiliation": "地球連邦軍",
-    "illustrator": "unaginogoro",
-    "stats": {
-      "mobility": 340,
-      "ranged_attack": 570,
-      "melee_attack": 250,
-      "hp": 440
+    "card_number": "UT01-018",
+    "card_name": "ガンダムF91",
+    "series": "UNITRIBE SEASON:01",
+    "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT01-018.jpg?v250630",
+    "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT01-018_b.jpg?v250630",
+    "ocr_data": {
+        "type": "MS",
+        "name": "ガンダムF91",
+        "cost": 6,
+        "rarity": "U",
+        "category": "機動",
+        "affiliation": "地球連邦軍",
+        "illustrator": "unaginogoro",
+        "stats": {
+            "mobility": 340,
+            "ranged_attack": 570,
+            "melee_attack": 250,
+            "hp": 440
+        },
+        "link_ability": [
+            {
+                "name": "機動戦士ガンダムF91",
+                "condition": "デッキに2枚以上",
+                "effect": "[機動力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            },
+            {
+                "name": "的確な一撃",
+                "condition": "デッキに4枚以上",
+                "effect": "[機動力][遠距離攻撃力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            }
+        ],
+        "pilot": "シーブック・アノー",
+        "model": "F91 GUNDAM F91",
+        "terrain_compatibility": {
+            "ground": "A",
+            "space": "S",
+            "desert": "C",
+            "water": "C"
+        },
+        "weapon": {
+            "main": {
+                "name": "ビーム・ライフル",
+                "range": 3,
+                "type": "遠距離"
+            },
+            "sub": {
+                "name": "ビーム・サーベル",
+                "range": 1,
+                "type": "近距離"
+            }
+        },
+        "ms_ability": {
+            "name": "M.E.P.E.",
+            "activation": "任意発動",
+            "target": "自分",
+            "range": null,
+            "cost": 5,
+            "description": "一定時間、回避時に回避攻撃が発生し、自身の[遠/近攻撃力][SP威力]をアップ。機動力が高い程、回避の発生率が上昇する。"
+        },
+        "special_attack": {
+            "name": "V.S.B.R.撃射",
+            "target": "貫通(敵)",
+            "range": 4,
+            "sp_cost": 2,
+            "power": 3700,
+            "description": "射線上の敵に貫通射撃でダメージを与える。",
+            "sp_type": "",
+            "echoes_beat": null,
+            "united_sp": null,
+            "squad_sp": null
+        }
     },
-    "link_ability": [
-      {
-        "name": "機動戦士ガンダムF91",
-        "condition": "デッキに2枚以上",
-        "effect": "[機動力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      },
-      {
-        "name": "的確な一撃",
-        "condition": "デッキに4枚以上",
-        "effect": "[機動力][遠距離攻撃力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      }
-    ],
-    "pilot": "シーブック・アノー",
-    "model": "F91 GUNDAM F91",
-    "terrain_compatibility": {
-      "ground": "A",
-      "space": "S",
-      "desert": "C",
-      "water": "C"
-    },
-    "weapon": {
-      "main": {
-        "name": "ビーム・ライフル",
-        "range": 3,
-        "type": "遠距離"
-      },
-      "sub": {
-        "name": "ビーム・サーベル",
-        "range": 1,
-        "type": "近距離"
-      }
-    },
-    "ms_ability": {
-      "name": "M.E.P.E.",
-      "activation": "任意発動",
-      "target": "自分",
-      "range": null,
-      "cost": 5,
-      "description": "一定時間、回避時に回避攻撃が発生し、自身の[遠／近攻撃力][SP威力]をアップ。機動力が高い程、回避の発生率が上昇する。"
-    },
-    "special_attack": {
-      "name": "V.S.B.R.撃射",
-      "target": "貫通(敵)",
-      "range": 4,
-      "sp_cost": 2,
-      "power": 3700,
-      "description": "射線上の敵に貫通射撃でダメージを与える。",
-      "sp_type": "",
-      "echoes_beat": null,
-      "united_sp": null,
-      "squad_sp": null
-    }
-  },
-  "ocr_raw_file": "UNITRIBE_SEASON_01_UT01-018_ガンダムF91_ocr_raw.json",
-  "ocr_timestamp": "2026-03-02T03:06:11.814615",
-  "ocr_type": "basic",
-  "ocr_engine": "claude_code_cli_combined"
+    "ocr_raw_file": "UNITRIBE_SEASON_01_UT01-018_ガンダムF91_ocr_raw.json",
+    "ocr_timestamp": "2026-03-02T03:06:11.814615",
+    "ocr_type": "basic",
+    "ocr_engine": "claude_code_cli_combined"
 }

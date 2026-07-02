@@ -1,72 +1,72 @@
 {
-  "card_number": "FQ02-021",
-  "card_name": "デスティニーガンダム",
-  "series": "FORSQUAD SEASON:02",
-  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-021.jpg?v9",
-  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-021_b.jpg?v9",
-  "ocr_data": {
-    "type": "MS",
-    "name": "デスティニーガンダム",
-    "cost": 3,
-    "rarity": "M",
-    "category": "機動",
-    "affiliation": "",
-    "illustrator": "ishima060123",
-    "stats": {
-      "mobility": 240,
-      "ranged_attack": 260,
-      "melee_attack": 50,
-      "hp": 400
+    "card_number": "FQ02-021",
+    "card_name": "デスティニーガンダム",
+    "series": "FORSQUAD SEASON:02",
+    "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-021.jpg?v9",
+    "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-021_b.jpg?v9",
+    "ocr_data": {
+        "type": "MS",
+        "name": "デスティニーガンダム",
+        "cost": 3,
+        "rarity": "M",
+        "category": "機動",
+        "affiliation": "",
+        "illustrator": "ishima060123",
+        "stats": {
+            "mobility": 240,
+            "ranged_attack": 260,
+            "melee_attack": 50,
+            "hp": 400
+        },
+        "link_ability": [
+            {
+                "name": "SEED DESTINY",
+                "condition": "デッキに3枚以上",
+                "effect": "[HP]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            },
+            {
+                "name": "戦況を変える力",
+                "condition": "デッキに4枚以上",
+                "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            }
+        ],
+        "pilot": "シン・アスカ",
+        "model": "ZGMF-X42S DESTINY GUNDAM",
+        "terrain_compatibility": {
+            "ground": "A",
+            "space": "S",
+            "desert": "B",
+            "water": "A"
+        },
+        "weapon": {
+            "main": {
+                "name": "高エネルギービームライフル",
+                "range": 3,
+                "type": "遠距離"
+            },
+            "sub": {
+                "name": "アロンダイトビームソード",
+                "range": 1,
+                "type": "近距離"
+            }
+        },
+        "ms_ability": {
+            "name": "集中砲火",
+            "activation": "任意発動",
+            "target": "",
+            "range": 1,
+            "cost": 4,
+            "description": "20秒間、ロックオンしている敵に周囲の味方ターゲットを集め、[遠/近攻撃力]を中アップ。攻撃対象が変わると効果は終了する。"
+        },
+        "special_attack": null
     },
-    "link_ability": [
-      {
-        "name": "SEED DESTINY",
-        "condition": "デッキに3枚以上",
-        "effect": "[HP]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      },
-      {
-        "name": "戦況を変える力",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      }
-    ],
-    "pilot": "シン・アスカ",
-    "model": "ZGMF-X42S DESTINY GUNDAM",
-    "terrain_compatibility": {
-      "ground": "A",
-      "space": "S",
-      "desert": "B",
-      "water": "A"
-    },
-    "weapon": {
-      "main": {
-        "name": "高エネルギービームライフル",
-        "range": 3,
-        "type": "遠距離"
-      },
-      "sub": {
-        "name": "アロンダイトビームソード",
-        "range": 1,
-        "type": "近距離"
-      }
-    },
-    "ms_ability": {
-      "name": "集中砲火",
-      "activation": "任意発動",
-      "target": "",
-      "range": 1,
-      "cost": 4,
-      "description": "20秒間、ロックオンしている敵に周囲の味方ターゲットを集め、[遠／近攻撃力]を中アップ。攻撃対象が変わると効果は終了する。"
-    },
-    "special_attack": null
-  },
-  "ocr_timestamp": "2025-06-28T01:35:21.279358",
-  "ocr_type": "basic",
-  "ocr_engine": "claude_code_cli"
+    "ocr_timestamp": "2025-06-28T01:35:21.279358",
+    "ocr_type": "basic",
+    "ocr_engine": "claude_code_cli"
 }

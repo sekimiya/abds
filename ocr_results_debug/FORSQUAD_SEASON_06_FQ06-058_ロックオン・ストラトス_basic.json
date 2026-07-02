@@ -1,69 +1,69 @@
 {
-  "card_number": "FQ06-058",
-  "card_name": "ロックオン・ストラトス",
-  "series": "FORSQUAD SEASON:06",
-  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ06-058.jpg?v250630",
-  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ06-058_b.jpg?v250630",
-  "ocr_data": {
-    "type": "PL",
-    "name": "ロックオン・ストラトス",
-    "cost": 2,
-    "rarity": "M",
-    "category": "制圧",
-    "affiliation": "ソレスタルビーイング",
-    "illustrator": "",
-    "stats": {
-      "mobility": 180,
-      "ranged_attack": 210,
-      "melee_attack": 50,
-      "hp": 300
+    "card_number": "FQ06-058",
+    "card_name": "ロックオン・ストラトス",
+    "series": "FORSQUAD SEASON:06",
+    "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ06-058.jpg?v250630",
+    "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ06-058_b.jpg?v250630",
+    "ocr_data": {
+        "type": "PL",
+        "name": "ロックオン・ストラトス",
+        "cost": 2,
+        "rarity": "M",
+        "category": "制圧",
+        "affiliation": "ソレスタルビーイング",
+        "illustrator": "",
+        "stats": {
+            "mobility": 180,
+            "ranged_attack": 210,
+            "melee_attack": 50,
+            "hp": 300
+        },
+        "link_ability": [
+            {
+                "name": "ダブルオーの声",
+                "condition": "デッキに3枚以上",
+                "effect": "SQゲージが表示される。SQゲージを溜めるとSQUAD RUSHが発動できる。[遠距離攻撃力][近距離攻撃力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            },
+            {
+                "name": "的確な一撃",
+                "condition": "デッキに4枚以上",
+                "effect": "[機動力][遠距離攻撃力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            }
+        ],
+        "english_name": "LOCKON STRATOS",
+        "physical": {
+            "height": "186cm",
+            "age": 29
+        },
+        "units": [
+            "ケルディムガンダム"
+        ],
+        "pilot_skill": {
+            "name": "盤石な制圧陣形",
+            "trigger": "敵戦艦/拠点をロックオン時",
+            "effect": "SQゲージ小アップ。SQUAD RUSH中 自身の[遠距離攻撃力]をアップし、受けるダメージを軽減する。",
+            "has_sq_skill": true,
+            "sq_skill_details": {
+                "name": "",
+                "trigger": "",
+                "effect": "",
+                "sq_gauge_effect": "SQゲージ小アップ。",
+                "sq_max_effect": "",
+                "sq_rush_effect": "自身の[遠距離攻撃力]をアップし、受けるダメージを軽減する。"
+            },
+            "is_eb_skill": false,
+            "eb_trigger_level": null,
+            "sq_rush_effect": ""
+        }
     },
-    "link_ability": [
-      {
-        "name": "ダブルオーの声",
-        "condition": "デッキに3枚以上",
-        "effect": "SQゲージが表示される。SQゲージを溜めるとSQUAD RUSHが発動できる。[遠距離攻撃力][近距離攻撃力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      },
-      {
-        "name": "的確な一撃",
-        "condition": "デッキに4枚以上",
-        "effect": "[機動力][遠距離攻撃力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      }
-    ],
-    "english_name": "LOCKON STRATOS",
-    "physical": {
-      "height": "186cm",
-      "age": 29
-    },
-    "units": [
-      "ケルディムガンダム"
-    ],
-    "pilot_skill": {
-      "name": "盤石な制圧陣形",
-      "trigger": "敵戦艦／拠点をロックオン時",
-      "effect": "SQゲージ小アップ。SQUAD RUSH中 自身の[遠距離攻撃力]をアップし、受けるダメージを軽減する。",
-      "has_sq_skill": true,
-      "sq_skill_details": {
-        "name": "",
-        "trigger": "",
-        "effect": "",
-        "sq_gauge_effect": "SQゲージ小アップ。",
-        "sq_max_effect": "",
-        "sq_rush_effect": "自身の[遠距離攻撃力]をアップし、受けるダメージを軽減する。"
-      },
-      "is_eb_skill": false,
-      "eb_trigger_level": null,
-      "sq_rush_effect": ""
-    }
-  },
-  "ocr_raw_file": "FORSQUAD_SEASON_06_FQ06-058_ロックオン・ストラトス_ocr_raw.json",
-  "ocr_timestamp": "2026-02-24T18:41:14.669335",
-  "ocr_type": "basic",
-  "ocr_engine": "claude_code_cli_combined"
+    "ocr_raw_file": "FORSQUAD_SEASON_06_FQ06-058_ロックオン・ストラトス_ocr_raw.json",
+    "ocr_timestamp": "2026-02-24T18:41:14.669335",
+    "ocr_type": "basic",
+    "ocr_engine": "claude_code_cli_combined"
 }

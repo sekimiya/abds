@@ -1,93 +1,93 @@
 {
-  "card_number": "FQ06-028",
-  "card_name": "スタービルドストライクガンダム",
-  "series": "FORSQUAD SEASON:06",
-  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ06-028.jpg?v250630",
-  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ06-028_b.jpg?v250630",
-  "ocr_data": {
-    "type": "MS",
-    "name": "スタービルドストライクガンダム",
-    "cost": 3,
-    "rarity": "R",
-    "category": "遠距離",
-    "affiliation": "",
-    "illustrator": "Ultimateinudog",
-    "stats": {
-      "mobility": 230,
-      "ranged_attack": 270,
-      "melee_attack": 90,
-      "hp": 310
-    },
-    "link_ability": [
-      {
-        "name": "ビルドファイターズ",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      },
-      {
-        "name": "多彩な戦術",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      }
-    ],
-    "pilot": "レイジ、イオリ・セイ",
-    "model": "GAT-X105B/ST STAR BUILD STRIKE GUNDAM",
-    "terrain_compatibility": {
-      "ground": "A",
-      "space": "S",
-      "desert": "B",
-      "water": "B"
-    },
-    "weapon": {
-      "main": {
-        "name": "スタービームライフル",
-        "range": 3,
-        "type": "遠距離"
-      },
-      "sub": {
-        "name": "ビームサーベル",
-        "range": 1,
-        "type": "近距離"
-      }
-    },
-    "ms_ability": {
-      "name": "増援[殲滅]",
-      "activation": "任意発動",
-      "target": "特殊(自分)",
-      "range": null,
-      "cost": 3,
-      "description": "自身の周囲に殲滅タイプの味方ユニットを呼び出す。※上限3ユニットまで。"
-    },
-    "special_attack": {
-      "name": "スタービームライフル撃射",
-      "target": "単体(敵)",
-      "range": 3,
-      "sp_cost": 2,
-      "power": 3200,
-      "description": "敵単体に射撃攻撃でダメージを与える。",
-      "sp_type": "",
-      "echoes_beat": null,
-      "united_sp": {
-        "name": "",
-        "partners": [
-          "RGダブルビルドナックル"
+    "card_number": "FQ06-028",
+    "card_name": "スタービルドストライクガンダム",
+    "series": "FORSQUAD SEASON:06",
+    "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ06-028.jpg?v250630",
+    "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ06-028_b.jpg?v250630",
+    "ocr_data": {
+        "type": "MS",
+        "name": "スタービルドストライクガンダム",
+        "cost": 3,
+        "rarity": "R",
+        "category": "遠距離",
+        "affiliation": "",
+        "illustrator": "Ultimateinudog",
+        "stats": {
+            "mobility": 230,
+            "ranged_attack": 270,
+            "melee_attack": 90,
+            "hp": 310
+        },
+        "link_ability": [
+            {
+                "name": "ビルドファイターズ",
+                "condition": "デッキに3枚以上",
+                "effect": "[機動力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            },
+            {
+                "name": "多彩な戦術",
+                "condition": "デッキに4枚以上",
+                "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            }
         ],
-        "target": "",
-        "range": 3,
-        "power": 6500,
-        "description": "SQUAD RUSH発動中に1度だけ、SQUAD SPを使用できる。／敵単体に格闘攻撃でダメージを与える。"
-      },
-      "squad_sp": null
-    }
-  },
-  "ocr_raw_file": "FORSQUAD_SEASON_06_FQ06-028_スタービルドストライクガンダム_ocr_raw.json",
-  "ocr_timestamp": "2026-02-24T18:39:24.462564",
-  "ocr_type": "basic",
-  "ocr_engine": "claude_code_cli_combined"
+        "pilot": "レイジ、イオリ・セイ",
+        "model": "GAT-X105B/ST STAR BUILD STRIKE GUNDAM",
+        "terrain_compatibility": {
+            "ground": "A",
+            "space": "S",
+            "desert": "B",
+            "water": "B"
+        },
+        "weapon": {
+            "main": {
+                "name": "スタービームライフル",
+                "range": 3,
+                "type": "遠距離"
+            },
+            "sub": {
+                "name": "ビームサーベル",
+                "range": 1,
+                "type": "近距離"
+            }
+        },
+        "ms_ability": {
+            "name": "増援[殲滅]",
+            "activation": "任意発動",
+            "target": "特殊(自分)",
+            "range": null,
+            "cost": 3,
+            "description": "自身の周囲に殲滅タイプの味方ユニットを呼び出す。※上限3ユニットまで。"
+        },
+        "special_attack": {
+            "name": "スタービームライフル撃射",
+            "target": "単体(敵)",
+            "range": 3,
+            "sp_cost": 2,
+            "power": 3200,
+            "description": "敵単体に射撃攻撃でダメージを与える。",
+            "sp_type": "",
+            "echoes_beat": null,
+            "united_sp": {
+                "name": "",
+                "partners": [
+                    "RGダブルビルドナックル"
+                ],
+                "target": "",
+                "range": 3,
+                "power": 6500,
+                "description": "SQUAD RUSH発動中に1度だけ、SQUAD SPを使用できる。/敵単体に格闘攻撃でダメージを与える。"
+            },
+            "squad_sp": null
+        }
+    },
+    "ocr_raw_file": "FORSQUAD_SEASON_06_FQ06-028_スタービルドストライクガンダム_ocr_raw.json",
+    "ocr_timestamp": "2026-02-24T18:39:24.462564",
+    "ocr_type": "basic",
+    "ocr_engine": "claude_code_cli_combined"
 }

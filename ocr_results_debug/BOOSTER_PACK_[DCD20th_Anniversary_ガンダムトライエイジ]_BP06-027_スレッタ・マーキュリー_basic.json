@@ -1,66 +1,66 @@
 {
-  "card_number": "BP06-027",
-  "card_name": "スレッタ・マーキュリー",
-  "series": "BOOSTER PACK [DCD20th Anniversary ガンダムトライエイジ]",
-  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP06-027.jpg?v250630",
-  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP06-027_b.jpg?v250630",
-  "ocr_data": {
-    "type": "PL",
-    "name": "スレッタ・マーキュリー",
-    "cost": 4,
-    "rarity": "P",
-    "category": "殲滅",
-    "affiliation": "地球寮",
-    "illustrator": "",
-    "stats": {
-      "mobility": 190,
-      "ranged_attack": 390,
-      "melee_attack": 50,
-      "hp": 320
+    "card_number": "BP06-027",
+    "card_name": "スレッタ・マーキュリー",
+    "series": "BOOSTER PACK [DCD20th Anniversary ガンダムトライエイジ]",
+    "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP06-027.jpg?v250630",
+    "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP06-027_b.jpg?v250630",
+    "ocr_data": {
+        "type": "PL",
+        "name": "スレッタ・マーキュリー",
+        "cost": 4,
+        "rarity": "P",
+        "category": "殲滅",
+        "affiliation": "地球寮",
+        "illustrator": "",
+        "stats": {
+            "mobility": 190,
+            "ranged_attack": 390,
+            "melee_attack": 50,
+            "hp": 320
+        },
+        "link_ability": [
+            {
+                "name": "俺たちのトライエイジ",
+                "condition": "デッキに3枚以上",
+                "effect": "専用作戦カードが使用可能 [遠距離攻撃力][近距離攻撃力]中アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            },
+            {
+                "name": "的確な一撃",
+                "condition": "デッキに4枚以上",
+                "effect": "[機動力][遠距離攻撃力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            }
+        ],
+        "english_name": "SULETTA MERCURY",
+        "physical": {
+            "height": "",
+            "age": null
+        },
+        "units": [
+            "ガンダム・キャリバーン(最終決戦時)",
+            "ガンダム・キャリバーン",
+            "ガンダム・エアリアル(改修型)",
+            "ガンダム・エアリアル[パーメットスコア・シックス]",
+            "ガンダム・エアリアル"
+        ],
+        "pilot_skill": {
+            "name": "秀でた統率力",
+            "trigger": "戦術技発動時",
+            "effect": "30秒間、出撃中の全味方殲滅タイプユニットの［遠/近攻撃力］をアップし、受けるダメージを軽減する。",
+            "has_sq_skill": false,
+            "sq_skill_details": null,
+            "is_eb_skill": false,
+            "eb_trigger_level": null,
+            "sq_rush_effect": ""
+        }
     },
-    "link_ability": [
-      {
-        "name": "俺たちのトライエイジ",
-        "condition": "デッキに3枚以上",
-        "effect": "専用作戦カードが使用可能 [遠距離攻撃力][近距離攻撃力]中アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      },
-      {
-        "name": "的確な一撃",
-        "condition": "デッキに4枚以上",
-        "effect": "[機動力][遠距離攻撃力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      }
-    ],
-    "english_name": "SULETTA MERCURY",
-    "physical": {
-      "height": "",
-      "age": null
-    },
-    "units": [
-      "ガンダム・キャリバーン(最終決戦時)",
-      "ガンダム・キャリバーン",
-      "ガンダム・エアリアル(改修型)",
-      "ガンダム・エアリアル[パーメットスコア・シックス]",
-      "ガンダム・エアリアル"
-    ],
-    "pilot_skill": {
-      "name": "秀でた統率力",
-      "trigger": "戦術技発動時",
-      "effect": "30秒間、出撃中の全味方殲滅タイプユニットの［遠／近攻撃力］をアップし、受けるダメージを軽減する。",
-      "has_sq_skill": false,
-      "sq_skill_details": null,
-      "is_eb_skill": false,
-      "eb_trigger_level": null,
-      "sq_rush_effect": ""
-    }
-  },
-  "ocr_raw_file": "BOOSTER_PACK_[DCD20th_Anniversary_ガンダムトライエイジ]_BP06-027_スレッタ・マーキュリー_ocr_raw.json",
-  "ocr_timestamp": "2026-02-26T18:03:50.748878",
-  "ocr_type": "basic",
-  "ocr_engine": "claude_code_cli_combined"
+    "ocr_raw_file": "BOOSTER_PACK_[DCD20th_Anniversary_ガンダムトライエイジ]_BP06-027_スレッタ・マーキュリー_ocr_raw.json",
+    "ocr_timestamp": "2026-02-26T18:03:50.748878",
+    "ocr_type": "basic",
+    "ocr_engine": "claude_code_cli_combined"
 }

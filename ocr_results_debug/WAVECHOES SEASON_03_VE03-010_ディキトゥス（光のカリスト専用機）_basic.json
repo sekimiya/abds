@@ -1,82 +1,92 @@
 {
-  "card_number": "VE03-010",
-  "card_name": "ディキトゥス（光のカリスト専用機）",
-  "series": "WAVECHOES SEASON:03",
-  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE03-010.jpg?v250630",
-  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE03-010_b.jpg?v250630",
-  "ocr_engine": "claude_code_subagent",
-  "ocr_type": "basic",
-  "ocr_timestamp": "2026-06-17T00:00:00.000000",
-  "ocr_data": {
-    "type": "MS",
-    "name": "ディキトゥス（光のカリスト専用機）",
-    "cost": 4,
-    "rarity": "P",
-    "category": "機動",
-    "affiliation": "木星帝国",
-    "illustrator": "",
-    "stats": {
-      "mobility": 220,
-      "ranged_attack": 50,
-      "melee_attack": 430,
-      "hp": 500
-    },
-    "pilot": "光のカリスト",
-    "model": "DICTUS (CALLISTO OF LIGHT CUSTOM)",
-    "terrain_compatibility": {
-      "ground": "A",
-      "space": "S",
-      "desert": "C",
-      "water": "C"
-    },
-    "weapon": {
-      "main": { "name": "ビーム・クロー", "range": 1, "type": "近距離" },
-      "sub": { "name": "頭部メガ粒子砲", "range": 4, "type": "遠距離" }
-    },
-    "ms_ability": {
-      "name": "飛転",
-      "activation": "任意発動",
-      "target": "特殊(自分)",
-      "range": null,
-      "cost": 5,
-      "description": "指定した味方ユニットの範囲内に移動後、一番近い味方ユニットを回収し、一定時間自身の[遠／近攻撃力]をアップする。回収したユニットの修理時間は発生しない。"
-    },
-    "special_attack": {
-      "name": "ビーム・クロー連撃",
-      "target": "単体(敵)",
-      "range": 2,
-      "sp_cost": 2,
-      "power": 3500,
-      "description": "敵単体に格闘攻撃でダメージを与え、一定時間、敵ユニットの被ダメージを上昇させる。",
-      "sp_type": "",
-      "echoes_beat": null,
-      "united_sp": {
-        "name": "光と影の掌握",
-        "partners": ["ディキトゥス(影のカリスト専用機)"],
-        "target": "単体(敵)",
-        "range": 3,
-        "power": 4500,
-        "description": "敵単体に格闘攻撃でダメージを与え、一定時間スタンさせる。攻撃に参加したユニットは一定時間、[遠／近攻撃力]をアップし、受けるダメージを軽減させ、弱体効果を受けない状態となる。出撃時1度のみ使用可能。"
-      },
-      "squad_sp": null
-    },
-    "link_ability": [
-      {
-        "name": "クロスボーン・ガンダム",
-        "condition": "デッキに2枚以上",
-        "effect": "[機動力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      },
-      {
-        "name": "肉薄する戦い",
-        "condition": "デッキに4枚以上",
-        "effect": "[機動力][近距離攻撃力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      }
-    ]
-  }
+    "card_number": "VE03-010",
+    "card_name": "ディキトゥス（光のカリスト専用機）",
+    "series": "WAVECHOES SEASON:03",
+    "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE03-010.jpg?v250630",
+    "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE03-010_b.jpg?v250630",
+    "ocr_engine": "claude_code_subagent",
+    "ocr_type": "basic",
+    "ocr_timestamp": "2026-06-17T00:00:00.000000",
+    "ocr_data": {
+        "type": "MS",
+        "name": "ディキトゥス（光のカリスト専用機）",
+        "cost": 4,
+        "rarity": "P",
+        "category": "機動",
+        "affiliation": "木星帝国",
+        "illustrator": "",
+        "stats": {
+            "mobility": 220,
+            "ranged_attack": 50,
+            "melee_attack": 430,
+            "hp": 500
+        },
+        "pilot": "光のカリスト",
+        "model": "DICTUS (CALLISTO OF LIGHT CUSTOM)",
+        "terrain_compatibility": {
+            "ground": "A",
+            "space": "S",
+            "desert": "C",
+            "water": "C"
+        },
+        "weapon": {
+            "main": {
+                "name": "ビーム・クロー",
+                "range": 1,
+                "type": "近距離"
+            },
+            "sub": {
+                "name": "頭部メガ粒子砲",
+                "range": 4,
+                "type": "遠距離"
+            }
+        },
+        "ms_ability": {
+            "name": "飛転",
+            "activation": "任意発動",
+            "target": "特殊(自分)",
+            "range": null,
+            "cost": 5,
+            "description": "指定した味方ユニットの範囲内に移動後、一番近い味方ユニットを回収し、一定時間自身の[遠/近攻撃力]をアップする。回収したユニットの修理時間は発生しない。"
+        },
+        "special_attack": {
+            "name": "ビーム・クロー連撃",
+            "target": "単体(敵)",
+            "range": 2,
+            "sp_cost": 2,
+            "power": 3500,
+            "description": "敵単体に格闘攻撃でダメージを与え、一定時間、敵ユニットの被ダメージを上昇させる。",
+            "sp_type": "",
+            "echoes_beat": null,
+            "united_sp": {
+                "name": "光と影の掌握",
+                "partners": [
+                    "ディキトゥス(影のカリスト専用機)"
+                ],
+                "target": "単体(敵)",
+                "range": 3,
+                "power": 4500,
+                "description": "敵単体に格闘攻撃でダメージを与え、一定時間スタンさせる。攻撃に参加したユニットは一定時間、[遠/近攻撃力]をアップし、受けるダメージを軽減させ、弱体効果を受けない状態となる。出撃時1度のみ使用可能。"
+            },
+            "squad_sp": null
+        },
+        "link_ability": [
+            {
+                "name": "クロスボーン・ガンダム",
+                "condition": "デッキに2枚以上",
+                "effect": "[機動力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            },
+            {
+                "name": "肉薄する戦い",
+                "condition": "デッキに4枚以上",
+                "effect": "[機動力][近距離攻撃力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            }
+        ]
+    }
 }

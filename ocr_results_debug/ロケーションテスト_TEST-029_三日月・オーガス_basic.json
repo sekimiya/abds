@@ -1,54 +1,54 @@
 {
-  "card_number": "TEST-029",
-  "card_name": "三日月・オーガス",
-  "series": "ロケーションテスト",
-  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/TEST-029.jpg?v250630",
-  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/TEST-029_b.jpg?v250630",
-  "ocr_data": {
-    "type": "PL",
-    "name": "三日月・オーガス",
-    "cost": 4,
-    "rarity": "C",
-    "category": "制圧",
-    "affiliation": "鉄華団",
-    "illustrator": "",
-    "stats": {
-      "mobility": 130,
-      "ranged_attack": 60,
-      "melee_attack": 150,
-      "hp": 120
+    "card_number": "TEST-029",
+    "card_name": "三日月・オーガス",
+    "series": "ロケーションテスト",
+    "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/TEST-029.jpg?v250630",
+    "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/TEST-029_b.jpg?v250630",
+    "ocr_data": {
+        "type": "PL",
+        "name": "三日月・オーガス",
+        "cost": 4,
+        "rarity": "C",
+        "category": "制圧",
+        "affiliation": "鉄華団",
+        "illustrator": "",
+        "stats": {
+            "mobility": 130,
+            "ranged_attack": 60,
+            "melee_attack": 150,
+            "hp": 120
+        },
+        "link_ability": [
+            {
+                "name": "鉄血のオルフェンズ",
+                "condition": "デッキに3枚以上",
+                "effect": "[近距離攻撃力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            }
+        ],
+        "english_name": "MIKAZUKI AUGUS",
+        "physical": {
+            "height": "",
+            "age": null
+        },
+        "units": [
+            "ガンダム・バルバトス(第1形態)"
+        ],
+        "pilot_skill": {
+            "name": "優先すべき目標",
+            "trigger": "敵戦艦/拠点をロックオン時",
+            "effect": "敵戦艦/拠点へのダメージを小アップする。",
+            "has_sq_skill": false,
+            "sq_skill_details": null,
+            "is_eb_skill": false,
+            "eb_trigger_level": null,
+            "sq_rush_effect": ""
+        }
     },
-    "link_ability": [
-      {
-        "name": "鉄血のオルフェンズ",
-        "condition": "デッキに3枚以上",
-        "effect": "[近距離攻撃力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      }
-    ],
-    "english_name": "MIKAZUKI AUGUS",
-    "physical": {
-      "height": "",
-      "age": null
-    },
-    "units": [
-      "ガンダム・バルバトス(第1形態)"
-    ],
-    "pilot_skill": {
-      "name": "優先すべき目標",
-      "trigger": "敵戦艦／拠点をロックオン時",
-      "effect": "敵戦艦／拠点へのダメージを小アップする。",
-      "has_sq_skill": false,
-      "sq_skill_details": null,
-      "is_eb_skill": false,
-      "eb_trigger_level": null,
-      "sq_rush_effect": ""
-    }
-  },
-  "ocr_raw_file": "ロケーションテスト_TEST-029_三日月・オーガス_ocr_raw.json",
-  "ocr_timestamp": "2026-03-02T05:15:58.127943",
-  "ocr_type": "basic",
-  "ocr_engine": "claude_code_cli_combined"
+    "ocr_raw_file": "ロケーションテスト_TEST-029_三日月・オーガス_ocr_raw.json",
+    "ocr_timestamp": "2026-03-02T05:15:58.127943",
+    "ocr_type": "basic",
+    "ocr_engine": "claude_code_cli_combined"
 }

@@ -1,84 +1,84 @@
 {
-  "card_number": "PR-040",
-  "card_name": "ビルドストライクガンダム",
-  "series": "プロモーション",
-  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-040.jpg?v250630",
-  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-040_b.jpg?v250630",
-  "ocr_data": {
-    "type": "MS",
-    "name": "ビルドストライクガンダム",
-    "cost": 5,
-    "rarity": "PR",
-    "category": "機動",
-    "affiliation": "",
-    "illustrator": "Naochika Morishita",
-    "stats": {
-      "mobility": 360,
-      "ranged_attack": 240,
-      "melee_attack": 400,
-      "hp": 350
+    "card_number": "PR-040",
+    "card_name": "ビルドストライクガンダム",
+    "series": "プロモーション",
+    "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-040.jpg?v250630",
+    "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-040_b.jpg?v250630",
+    "ocr_data": {
+        "type": "MS",
+        "name": "ビルドストライクガンダム",
+        "cost": 5,
+        "rarity": "PR",
+        "category": "機動",
+        "affiliation": "",
+        "illustrator": "Naochika Morishita",
+        "stats": {
+            "mobility": 360,
+            "ranged_attack": 240,
+            "melee_attack": 400,
+            "hp": 350
+        },
+        "link_ability": [
+            {
+                "name": "ビルドファイターズ",
+                "condition": "デッキに3枚以上",
+                "effect": "[機動力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            },
+            {
+                "name": "その名はガンダム",
+                "condition": "デッキに3枚以上",
+                "effect": "[機動力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            }
+        ],
+        "pilot": "レイジ、イオリ・セイ",
+        "model": "GAT-X105B BUILD STRIKE GUNDAM",
+        "terrain_compatibility": {
+            "ground": "A",
+            "space": "A",
+            "desert": "C",
+            "water": ""
+        },
+        "weapon": {
+            "main": {
+                "name": "ビームサーベル",
+                "range": 1,
+                "type": "近距離"
+            },
+            "sub": {
+                "name": "頭部バルカン砲",
+                "range": 2,
+                "type": "遠距離"
+            }
+        },
+        "ms_ability": {
+            "name": "集中砲火",
+            "activation": "任意発動",
+            "target": "範囲(味方)",
+            "range": null,
+            "cost": 4,
+            "description": "20秒間、ロックオンしている敵に周囲の味方ターゲットを集め、[遠/近攻撃力]を中アップ。攻撃対象が変わると効果は終了する。"
+        },
+        "special_attack": {
+            "name": "ビームサーベル二刀流強撃",
+            "target": "単体(敵)",
+            "range": 2,
+            "sp_cost": 2,
+            "power": 3500,
+            "description": "敵単体に格闘攻撃でダメージを与える。",
+            "sp_type": "",
+            "echoes_beat": null,
+            "united_sp": null,
+            "squad_sp": null
+        }
     },
-    "link_ability": [
-      {
-        "name": "ビルドファイターズ",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      },
-      {
-        "name": "その名はガンダム",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      }
-    ],
-    "pilot": "レイジ、イオリ・セイ",
-    "model": "GAT-X105B BUILD STRIKE GUNDAM",
-    "terrain_compatibility": {
-      "ground": "A",
-      "space": "A",
-      "desert": "C",
-      "water": ""
-    },
-    "weapon": {
-      "main": {
-        "name": "ビームサーベル",
-        "range": 1,
-        "type": "近距離"
-      },
-      "sub": {
-        "name": "頭部バルカン砲",
-        "range": 2,
-        "type": "遠距離"
-      }
-    },
-    "ms_ability": {
-      "name": "集中砲火",
-      "activation": "任意発動",
-      "target": "範囲(味方)",
-      "range": null,
-      "cost": 4,
-      "description": "20秒間、ロックオンしている敵に周囲の味方ターゲットを集め、[遠／近攻撃力]を中アップ。攻撃対象が変わると効果は終了する。"
-    },
-    "special_attack": {
-      "name": "ビームサーベル二刀流強撃",
-      "target": "単体(敵)",
-      "range": 2,
-      "sp_cost": 2,
-      "power": 3500,
-      "description": "敵単体に格闘攻撃でダメージを与える。",
-      "sp_type": "",
-      "echoes_beat": null,
-      "united_sp": null,
-      "squad_sp": null
-    }
-  },
-  "ocr_raw_file": "プロモーション_PR-040_ビルドストライクガンダム_ocr_raw.json",
-  "ocr_timestamp": "2026-03-07T12:34:28.770098",
-  "ocr_type": "basic",
-  "ocr_engine": "claude_code_cli_combined"
+    "ocr_raw_file": "プロモーション_PR-040_ビルドストライクガンダム_ocr_raw.json",
+    "ocr_timestamp": "2026-03-07T12:34:28.770098",
+    "ocr_type": "basic",
+    "ocr_engine": "claude_code_cli_combined"
 }

@@ -1,84 +1,84 @@
 {
-  "card_number": "LXR04-003",
-  "card_name": "ガンダム試作2号機",
-  "series": "リンクステージレア4弾",
-  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LXR04-003.jpg?v250630",
-  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LXR04-003_b.jpg?v250630",
-  "ocr_data": {
-    "type": "MS",
-    "name": "ガンダム試作2号機",
-    "cost": 7,
-    "rarity": "LX",
-    "category": "機動",
-    "affiliation": "ジオン公国軍",
-    "illustrator": "Moyasi",
-    "stats": {
-      "mobility": 330,
-      "ranged_attack": 150,
-      "melee_attack": 520,
-      "hp": 550
+    "card_number": "LXR04-003",
+    "card_name": "ガンダム試作2号機",
+    "series": "リンクステージレア4弾",
+    "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LXR04-003.jpg?v250630",
+    "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LXR04-003_b.jpg?v250630",
+    "ocr_data": {
+        "type": "MS",
+        "name": "ガンダム試作2号機",
+        "cost": 7,
+        "rarity": "LX",
+        "category": "機動",
+        "affiliation": "ジオン公国軍",
+        "illustrator": "Moyasi",
+        "stats": {
+            "mobility": 330,
+            "ranged_attack": 150,
+            "melee_attack": 520,
+            "hp": 550
+        },
+        "link_ability": [
+            {
+                "name": "ガンダム0083",
+                "condition": "デッキに3枚以上",
+                "effect": "[機動力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            },
+            {
+                "name": "固めた装甲",
+                "condition": "デッキに2枚以上",
+                "effect": "[HP]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            }
+        ],
+        "pilot": "アナベル・ガトー",
+        "model": "RX-78GP02A GUNDAM GP02A",
+        "terrain_compatibility": {
+            "ground": "A",
+            "space": "A",
+            "desert": "C",
+            "water": "C"
+        },
+        "weapon": {
+            "main": {
+                "name": "ビーム・サーベル",
+                "range": 1,
+                "type": "近距離"
+            },
+            "sub": {
+                "name": "頭部バルカン",
+                "range": 2,
+                "type": "遠距離"
+            }
+        },
+        "ms_ability": {
+            "name": "特攻",
+            "activation": "出撃時発動",
+            "target": "自分",
+            "range": null,
+            "cost": null,
+            "description": "自身の[遠/近攻撃力]をアップし[怯み無効]となるが、[回避/ガード不可][修理時間延長]となる。効果は撤退するまで持続。"
+        },
+        "special_attack": {
+            "name": "アトミックバズーカ爆撃",
+            "target": "範囲(敵)",
+            "range": 4,
+            "sp_cost": 4,
+            "power": 4500,
+            "description": "対象の敵を中心として範囲射撃でダメージを与える。この攻撃は敵味方関係なくヒットする。",
+            "sp_type": "",
+            "echoes_beat": null,
+            "united_sp": null,
+            "squad_sp": null
+        }
     },
-    "link_ability": [
-      {
-        "name": "ガンダム0083",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      },
-      {
-        "name": "固めた装甲",
-        "condition": "デッキに2枚以上",
-        "effect": "[HP]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      }
-    ],
-    "pilot": "アナベル・ガトー",
-    "model": "RX-78GP02A GUNDAM GP02A",
-    "terrain_compatibility": {
-      "ground": "A",
-      "space": "A",
-      "desert": "C",
-      "water": "C"
-    },
-    "weapon": {
-      "main": {
-        "name": "ビーム・サーベル",
-        "range": 1,
-        "type": "近距離"
-      },
-      "sub": {
-        "name": "頭部バルカン",
-        "range": 2,
-        "type": "遠距離"
-      }
-    },
-    "ms_ability": {
-      "name": "特攻",
-      "activation": "出撃時発動",
-      "target": "自分",
-      "range": null,
-      "cost": null,
-      "description": "自身の[遠／近攻撃力]をアップし[怯み無効]となるが、[回避／ガード不可][修理時間延長]となる。効果は撤退するまで持続。"
-    },
-    "special_attack": {
-      "name": "アトミックバズーカ爆撃",
-      "target": "範囲(敵)",
-      "range": 4,
-      "sp_cost": 4,
-      "power": 4500,
-      "description": "対象の敵を中心として範囲射撃でダメージを与える。この攻撃は敵味方関係なくヒットする。",
-      "sp_type": "",
-      "echoes_beat": null,
-      "united_sp": null,
-      "squad_sp": null
-    }
-  },
-  "ocr_raw_file": "リンクステージレア4弾_LXR04-003_ガンダム試作2号機_ocr_raw.json",
-  "ocr_timestamp": "2026-03-07T13:51:35.060851",
-  "ocr_type": "basic",
-  "ocr_engine": "claude_code_cli_combined"
+    "ocr_raw_file": "リンクステージレア4弾_LXR04-003_ガンダム試作2号機_ocr_raw.json",
+    "ocr_timestamp": "2026-03-07T13:51:35.060851",
+    "ocr_type": "basic",
+    "ocr_engine": "claude_code_cli_combined"
 }

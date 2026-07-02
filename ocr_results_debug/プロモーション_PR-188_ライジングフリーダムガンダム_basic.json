@@ -1,93 +1,93 @@
 {
-  "card_number": "PR-188",
-  "card_name": "ライジングフリーダムガンダム",
-  "series": "プロモーション",
-  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-188.jpg?v250630",
-  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-188_b.jpg?v250630",
-  "ocr_data": {
-    "type": "MS",
-    "name": "ライジングフリーダムガンダム",
-    "cost": 6,
-    "rarity": "PR",
-    "category": "機動",
-    "affiliation": "コンパス",
-    "illustrator": "kazumasa yasukuni",
-    "stats": {
-      "mobility": 300,
-      "ranged_attack": 450,
-      "melee_attack": 150,
-      "hp": 450
-    },
-    "link_ability": [
-      {
-        "name": "SEED FREEDOM",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      },
-      {
-        "name": "多彩な戦術",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      }
-    ],
-    "pilot": "キラ・ヤマト",
-    "model": "STTS-909 RISING FREEDOM GUNDAM",
-    "terrain_compatibility": {
-      "ground": "A",
-      "space": "S",
-      "desert": "A",
-      "water": "C"
-    },
-    "weapon": {
-      "main": {
-        "name": "高エネルギービームライフル",
-        "range": 3,
-        "type": "遠距離"
-      },
-      "sub": {
-        "name": "ヴェルシーナ ビームサーベル",
-        "range": 1,
-        "type": "近距離"
-      }
-    },
-    "ms_ability": {
-      "name": "砕撃",
-      "activation": "任意発動",
-      "target": "単体(敵)",
-      "range": 3,
-      "cost": 3,
-      "description": "ロックオン中の敵に単体攻撃でダメージを与え、メイン武装を使用不能にさせる。出撃時1度のみ使用可能。"
-    },
-    "special_attack": {
-      "name": "ハイマットフルバースト",
-      "target": "範囲(敵)",
-      "range": 4,
-      "sp_cost": 2,
-      "power": 2900,
-      "description": "ロックオン中の敵を中心に扇状の範囲攻撃を行い、範囲内の敵にダメージを与える。／敵単体に格闘攻撃でダメージを与える。出撃時1度のみ使用可能。",
-      "sp_type": "",
-      "echoes_beat": null,
-      "united_sp": {
-        "name": "",
-        "partners": [
-          "イモータルジャスティスガンダム"
+    "card_number": "PR-188",
+    "card_name": "ライジングフリーダムガンダム",
+    "series": "プロモーション",
+    "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-188.jpg?v250630",
+    "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-188_b.jpg?v250630",
+    "ocr_data": {
+        "type": "MS",
+        "name": "ライジングフリーダムガンダム",
+        "cost": 6,
+        "rarity": "PR",
+        "category": "機動",
+        "affiliation": "コンパス",
+        "illustrator": "kazumasa yasukuni",
+        "stats": {
+            "mobility": 300,
+            "ranged_attack": 450,
+            "melee_attack": 150,
+            "hp": 450
+        },
+        "link_ability": [
+            {
+                "name": "SEED FREEDOM",
+                "condition": "デッキに3枚以上",
+                "effect": "[機動力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            },
+            {
+                "name": "多彩な戦術",
+                "condition": "デッキに4枚以上",
+                "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            }
         ],
-        "target": "",
-        "range": 4,
-        "power": 5500,
-        "description": "敵単体に格闘攻撃でダメージを与える。出撃時1度のみ使用可能。"
-      },
-      "squad_sp": null
-    }
-  },
-  "ocr_raw_file": "プロモーション_PR-188_ライジングフリーダムガンダム_ocr_raw.json",
-  "ocr_timestamp": "2026-03-07T12:00:10.161825",
-  "ocr_type": "basic",
-  "ocr_engine": "claude_code_cli_combined"
+        "pilot": "キラ・ヤマト",
+        "model": "STTS-909 RISING FREEDOM GUNDAM",
+        "terrain_compatibility": {
+            "ground": "A",
+            "space": "S",
+            "desert": "A",
+            "water": "C"
+        },
+        "weapon": {
+            "main": {
+                "name": "高エネルギービームライフル",
+                "range": 3,
+                "type": "遠距離"
+            },
+            "sub": {
+                "name": "ヴェルシーナ ビームサーベル",
+                "range": 1,
+                "type": "近距離"
+            }
+        },
+        "ms_ability": {
+            "name": "砕撃",
+            "activation": "任意発動",
+            "target": "単体(敵)",
+            "range": 3,
+            "cost": 3,
+            "description": "ロックオン中の敵に単体攻撃でダメージを与え、メイン武装を使用不能にさせる。出撃時1度のみ使用可能。"
+        },
+        "special_attack": {
+            "name": "ハイマットフルバースト",
+            "target": "範囲(敵)",
+            "range": 4,
+            "sp_cost": 2,
+            "power": 2900,
+            "description": "ロックオン中の敵を中心に扇状の範囲攻撃を行い、範囲内の敵にダメージを与える。/敵単体に格闘攻撃でダメージを与える。出撃時1度のみ使用可能。",
+            "sp_type": "",
+            "echoes_beat": null,
+            "united_sp": {
+                "name": "",
+                "partners": [
+                    "イモータルジャスティスガンダム"
+                ],
+                "target": "",
+                "range": 4,
+                "power": 5500,
+                "description": "敵単体に格闘攻撃でダメージを与える。出撃時1度のみ使用可能。"
+            },
+            "squad_sp": null
+        }
+    },
+    "ocr_raw_file": "プロモーション_PR-188_ライジングフリーダムガンダム_ocr_raw.json",
+    "ocr_timestamp": "2026-03-07T12:00:10.161825",
+    "ocr_type": "basic",
+    "ocr_engine": "claude_code_cli_combined"
 }

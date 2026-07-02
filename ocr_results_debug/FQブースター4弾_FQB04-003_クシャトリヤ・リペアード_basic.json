@@ -1,84 +1,84 @@
 {
-  "card_number": "FQB04-003",
-  "card_name": "クシャトリヤ・リペアード",
-  "series": "FQブースター4弾",
-  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQB04-003.jpg?v250630",
-  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQB04-003_b.jpg?v250630",
-  "ocr_data": {
-    "type": "MS",
-    "name": "クシャトリヤ・リペアード",
-    "cost": 3,
-    "rarity": "P",
-    "category": "遠距離",
-    "affiliation": "ネオ・ジオン残党軍『袖付き』",
-    "illustrator": "sakusaku sakurai",
-    "stats": {
-      "mobility": 240,
-      "ranged_attack": 370,
-      "melee_attack": 40,
-      "hp": 400
+    "card_number": "FQB04-003",
+    "card_name": "クシャトリヤ・リペアード",
+    "series": "FQブースター4弾",
+    "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQB04-003.jpg?v250630",
+    "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQB04-003_b.jpg?v250630",
+    "ocr_data": {
+        "type": "MS",
+        "name": "クシャトリヤ・リペアード",
+        "cost": 3,
+        "rarity": "P",
+        "category": "遠距離",
+        "affiliation": "ネオ・ジオン残党軍『袖付き』",
+        "illustrator": "sakusaku sakurai",
+        "stats": {
+            "mobility": 240,
+            "ranged_attack": 370,
+            "melee_attack": 40,
+            "hp": 400
+        },
+        "link_ability": [
+            {
+                "name": "ガンダムUC",
+                "condition": "デッキに3枚以上",
+                "effect": "[機動力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            },
+            {
+                "name": "的確な一撃",
+                "condition": "デッキに4枚以上",
+                "effect": "[機動力][遠距離攻撃力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            }
+        ],
+        "pilot": "マリーダ・クルス",
+        "model": "NZ-666 KSHATRIYA REPAIRED",
+        "terrain_compatibility": {
+            "ground": "B",
+            "space": "S",
+            "desert": "C",
+            "water": "C"
+        },
+        "weapon": {
+            "main": {
+                "name": "3連装シュツルム・ファウスト",
+                "range": 3,
+                "type": "遠距離"
+            },
+            "sub": {
+                "name": "ハイパー・ビーム・ジャベリン",
+                "range": 1,
+                "type": "近距離"
+            }
+        },
+        "ms_ability": {
+            "name": "転化[支援]",
+            "activation": "任意発動",
+            "target": "範囲(味方)",
+            "range": null,
+            "cost": 4,
+            "description": "一定時間、自身を中心とした範囲内の味方ユニットを強化する。使用回数に応じて、強化効果が変わる。[1回: 遠/近攻撃力アップ] [2回: 遠/近攻撃力アップ] [3回以上: 遠/近攻撃力アップ&回復]"
+        },
+        "special_attack": {
+            "name": "改造ファンネル撃射",
+            "target": "範囲(敵)",
+            "range": 4,
+            "sp_cost": 2,
+            "power": 2900,
+            "description": "対象の敵を中心として範囲射撃でダメージを与える。",
+            "sp_type": "",
+            "echoes_beat": null,
+            "united_sp": null,
+            "squad_sp": null
+        }
     },
-    "link_ability": [
-      {
-        "name": "ガンダムUC",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      },
-      {
-        "name": "的確な一撃",
-        "condition": "デッキに4枚以上",
-        "effect": "[機動力][遠距離攻撃力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      }
-    ],
-    "pilot": "マリーダ・クルス",
-    "model": "NZ-666 KSHATRIYA REPAIRED",
-    "terrain_compatibility": {
-      "ground": "B",
-      "space": "S",
-      "desert": "C",
-      "water": "C"
-    },
-    "weapon": {
-      "main": {
-        "name": "3連装シュツルム・ファウスト",
-        "range": 3,
-        "type": "遠距離"
-      },
-      "sub": {
-        "name": "ハイパー・ビーム・ジャベリン",
-        "range": 1,
-        "type": "近距離"
-      }
-    },
-    "ms_ability": {
-      "name": "転化[支援]",
-      "activation": "任意発動",
-      "target": "範囲(味方)",
-      "range": null,
-      "cost": 4,
-      "description": "一定時間、自身を中心とした範囲内の味方ユニットを強化する。使用回数に応じて、強化効果が変わる。[1回: 遠／近攻撃力アップ] [2回: 遠／近攻撃力アップ] [3回以上: 遠／近攻撃力アップ&回復]"
-    },
-    "special_attack": {
-      "name": "改造ファンネル撃射",
-      "target": "範囲(敵)",
-      "range": 4,
-      "sp_cost": 2,
-      "power": 2900,
-      "description": "対象の敵を中心として範囲射撃でダメージを与える。",
-      "sp_type": "",
-      "echoes_beat": null,
-      "united_sp": null,
-      "squad_sp": null
-    }
-  },
-  "ocr_raw_file": "FQブースター4弾_FQB04-003_クシャトリヤ・リペアード_ocr_raw.json",
-  "ocr_timestamp": "2026-02-28T04:10:18.810525",
-  "ocr_type": "basic",
-  "ocr_engine": "claude_code_cli_combined"
+    "ocr_raw_file": "FQブースター4弾_FQB04-003_クシャトリヤ・リペアード_ocr_raw.json",
+    "ocr_timestamp": "2026-02-28T04:10:18.810525",
+    "ocr_type": "basic",
+    "ocr_engine": "claude_code_cli_combined"
 }

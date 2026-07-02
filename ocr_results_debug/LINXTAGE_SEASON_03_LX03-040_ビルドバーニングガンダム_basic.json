@@ -1,84 +1,84 @@
 {
-  "card_number": "LX03-040",
-  "card_name": "ビルドバーニングガンダム",
-  "series": "LINXTAGE SEASON:03",
-  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX03-040.jpg?v250630",
-  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX03-040_b.jpg?v250630",
-  "ocr_data": {
-    "type": "MS",
-    "name": "ビルドバーニングガンダム",
-    "cost": 6,
-    "rarity": "P",
-    "category": "近距離",
-    "affiliation": "トライ・ファイターズ",
-    "illustrator": "Naochika Morishita",
-    "stats": {
-      "mobility": 270,
-      "ranged_attack": 100,
-      "melee_attack": 550,
-      "hp": 480
+    "card_number": "LX03-040",
+    "card_name": "ビルドバーニングガンダム",
+    "series": "LINXTAGE SEASON:03",
+    "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX03-040.jpg?v250630",
+    "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX03-040_b.jpg?v250630",
+    "ocr_data": {
+        "type": "MS",
+        "name": "ビルドバーニングガンダム",
+        "cost": 6,
+        "rarity": "P",
+        "category": "近距離",
+        "affiliation": "トライ・ファイターズ",
+        "illustrator": "Naochika Morishita",
+        "stats": {
+            "mobility": 270,
+            "ranged_attack": 100,
+            "melee_attack": 550,
+            "hp": 480
+        },
+        "link_ability": [
+            {
+                "name": "トライ",
+                "condition": "デッキに3枚以上",
+                "effect": "[HP]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            },
+            {
+                "name": "迫撃の近距離戦",
+                "condition": "デッキに近距離が2枚以上",
+                "effect": "[近距離攻撃力]中アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            }
+        ],
+        "pilot": "カミキ・セカイ",
+        "model": "BG-011B BUILD BURNING GUNDAM",
+        "terrain_compatibility": {
+            "ground": "S",
+            "space": "B",
+            "desert": "A",
+            "water": "B"
+        },
+        "weapon": {
+            "main": {
+                "name": "次元覇王流聖拳突き",
+                "range": 1,
+                "type": "近距離"
+            },
+            "sub": {
+                "name": "次元覇王流槍縫り",
+                "range": 2,
+                "type": "遠距離"
+            }
+        },
+        "ms_ability": {
+            "name": "奮起",
+            "activation": "出撃時発動",
+            "target": "自分",
+            "range": null,
+            "cost": null,
+            "description": "自身のHPが1以上で一定割合以下になると、一定時間、撃破されなくなり[遠/近攻撃力]を中アップする。出撃時1度のみ発動。"
+        },
+        "special_attack": {
+            "name": "鳳凰覇王拳",
+            "target": "単体(敵)",
+            "range": 3,
+            "sp_cost": 2,
+            "power": 3900,
+            "description": "敵単体に射撃攻撃でダメージを与え、自身に小ダメージ。",
+            "sp_type": "",
+            "echoes_beat": null,
+            "united_sp": null,
+            "squad_sp": null
+        }
     },
-    "link_ability": [
-      {
-        "name": "トライ",
-        "condition": "デッキに3枚以上",
-        "effect": "[HP]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      },
-      {
-        "name": "迫撃の近距離戦",
-        "condition": "デッキに近距離が2枚以上",
-        "effect": "[近距離攻撃力]中アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      }
-    ],
-    "pilot": "カミキ・セカイ",
-    "model": "BG-011B BUILD BURNING GUNDAM",
-    "terrain_compatibility": {
-      "ground": "S",
-      "space": "B",
-      "desert": "A",
-      "water": "B"
-    },
-    "weapon": {
-      "main": {
-        "name": "次元覇王流聖拳突き",
-        "range": 1,
-        "type": "近距離"
-      },
-      "sub": {
-        "name": "次元覇王流槍縫り",
-        "range": 2,
-        "type": "遠距離"
-      }
-    },
-    "ms_ability": {
-      "name": "奮起",
-      "activation": "出撃時発動",
-      "target": "自分",
-      "range": null,
-      "cost": null,
-      "description": "自身のHPが1以上で一定割合以下になると、一定時間、撃破されなくなり[遠／近攻撃力]を中アップする。出撃時1度のみ発動。"
-    },
-    "special_attack": {
-      "name": "鳳凰覇王拳",
-      "target": "単体(敵)",
-      "range": 3,
-      "sp_cost": 2,
-      "power": 3900,
-      "description": "敵単体に射撃攻撃でダメージを与え、自身に小ダメージ。",
-      "sp_type": "",
-      "echoes_beat": null,
-      "united_sp": null,
-      "squad_sp": null
-    }
-  },
-  "ocr_raw_file": "LINXTAGE_SEASON_03_LX03-040_ビルドバーニングガンダム_ocr_raw.json",
-  "ocr_timestamp": "2026-03-07T17:21:32.140302",
-  "ocr_type": "basic",
-  "ocr_engine": "claude_code_cli_combined"
+    "ocr_raw_file": "LINXTAGE_SEASON_03_LX03-040_ビルドバーニングガンダム_ocr_raw.json",
+    "ocr_timestamp": "2026-03-07T17:21:32.140302",
+    "ocr_type": "basic",
+    "ocr_engine": "claude_code_cli_combined"
 }

@@ -1,69 +1,69 @@
 {
-  "card_number": "FQB01-017",
-  "card_name": "アナベル・ガトー",
-  "series": "FQブースター1弾",
-  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQB01-017.jpg?v250630",
-  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQB01-017_b.jpg?v250630",
-  "ocr_data": {
-    "type": "PL",
-    "name": "アナベル・ガトー",
-    "cost": 1,
-    "rarity": "R",
-    "category": "制圧",
-    "affiliation": "ジオン公国軍",
-    "illustrator": "",
-    "stats": {
-      "mobility": 190,
-      "ranged_attack": 100,
-      "melee_attack": 180,
-      "hp": 190
+    "card_number": "FQB01-017",
+    "card_name": "アナベル・ガトー",
+    "series": "FQブースター1弾",
+    "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQB01-017.jpg?v250630",
+    "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQB01-017_b.jpg?v250630",
+    "ocr_data": {
+        "type": "PL",
+        "name": "アナベル・ガトー",
+        "cost": 1,
+        "rarity": "R",
+        "category": "制圧",
+        "affiliation": "ジオン公国軍",
+        "illustrator": "",
+        "stats": {
+            "mobility": 190,
+            "ranged_attack": 100,
+            "melee_attack": 180,
+            "hp": 190
+        },
+        "link_ability": [
+            {
+                "name": "駆け抜ける嵐",
+                "condition": "デッキに3枚以上",
+                "effect": "SQゲージが表示される。SQゲージを溜めるとSQUAD RUSHが発動できる。[遠距離攻撃力][近距離攻撃力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            },
+            {
+                "name": "肉薄する戦い",
+                "condition": "デッキに4枚以上",
+                "effect": "[機動力][近距離攻撃力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            }
+        ],
+        "english_name": "ANAVEL GATO",
+        "physical": {
+            "height": "",
+            "age": 25
+        },
+        "units": [
+            "ガンダム試作2号機"
+        ],
+        "pilot_skill": {
+            "name": "猛烈な攻撃陣形",
+            "trigger": "敵戦艦/拠点をロックオン時",
+            "effect": "SQゲージ小アップ。",
+            "has_sq_skill": true,
+            "sq_skill_details": {
+                "name": "",
+                "trigger": "",
+                "effect": "",
+                "sq_gauge_effect": "SQゲージ小アップ。",
+                "sq_max_effect": "",
+                "sq_rush_effect": "自身の[近距離攻撃力]をアップし、受けるダメージを軽減する。"
+            },
+            "is_eb_skill": false,
+            "eb_trigger_level": null,
+            "sq_rush_effect": ""
+        }
     },
-    "link_ability": [
-      {
-        "name": "駆け抜ける嵐",
-        "condition": "デッキに3枚以上",
-        "effect": "SQゲージが表示される。SQゲージを溜めるとSQUAD RUSHが発動できる。[遠距離攻撃力][近距離攻撃力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      },
-      {
-        "name": "肉薄する戦い",
-        "condition": "デッキに4枚以上",
-        "effect": "[機動力][近距離攻撃力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      }
-    ],
-    "english_name": "ANAVEL GATO",
-    "physical": {
-      "height": "",
-      "age": 25
-    },
-    "units": [
-      "ガンダム試作2号機"
-    ],
-    "pilot_skill": {
-      "name": "猛烈な攻撃陣形",
-      "trigger": "敵戦艦／拠点をロックオン時",
-      "effect": "SQゲージ小アップ。",
-      "has_sq_skill": true,
-      "sq_skill_details": {
-        "name": "",
-        "trigger": "",
-        "effect": "",
-        "sq_gauge_effect": "SQゲージ小アップ。",
-        "sq_max_effect": "",
-        "sq_rush_effect": "自身の[近距離攻撃力]をアップし、受けるダメージを軽減する。"
-      },
-      "is_eb_skill": false,
-      "eb_trigger_level": null,
-      "sq_rush_effect": ""
-    }
-  },
-  "ocr_raw_file": "FQブースター1弾_FQB01-017_アナベル・ガトー_ocr_raw.json",
-  "ocr_timestamp": "2026-02-28T03:25:59.809240",
-  "ocr_type": "basic",
-  "ocr_engine": "claude_code_cli_combined"
+    "ocr_raw_file": "FQブースター1弾_FQB01-017_アナベル・ガトー_ocr_raw.json",
+    "ocr_timestamp": "2026-02-28T03:25:59.809240",
+    "ocr_type": "basic",
+    "ocr_engine": "claude_code_cli_combined"
 }
