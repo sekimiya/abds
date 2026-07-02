@@ -1638,6 +1638,7 @@ select,input{font-family:inherit}
             <button class="tbtn" data-key="HP回復" onclick="SearchPanel.toggle('ebspEff',this)">HP回復</button>
             <button class="tbtn" data-key="防衛無視" onclick="SearchPanel.toggle('ebspEff',this)">防衛無視</button>
             <button class="tbtn" data-key="EBLv上昇" onclick="SearchPanel.toggle('ebspEff',this)">EBLv上昇</button>
+            <button class="tbtn" data-key="スキップSP" onclick="SearchPanel.toggle('ebspEff',this)">スキップSP</button>
           </div>
           <label class="ocr-toggle" style="margin-left:0" id="filterEbLabel"><input type="checkbox" id="filterEb" onchange="SearchPanel.applyFilters()"><span class="ocr-toggle-text" style="color:#ff9800">EBSP詳細表示</span></label>
         </div>
@@ -2148,7 +2149,8 @@ const CardService = {
       'sq_rush_effect','sqsp_text','sq_skill_text','has_sqsp','has_sq_skill','has_sq_link',
       'sq_trigger','sq_gauge_rate','sq_skill_effect_tags',
       'eb_text','eb_skill_text','has_eb','has_eb_skill','has_eb_link','has_ab_link',
-      'eb_level','eb_trigger_level','eb_trigger_cond','eb_type'];
+      'eb_level','eb_trigger_level','eb_trigger_cond','eb_type',
+      'eb_lv_down','eb_lv_jump','has_skip_sp'];
     cards.forEach(c => {
       if (!c.number || !/_p\d+$/.test(c.number)) return;
       const base = baseMap[c.number.replace(/_p\d+$/, '')];
@@ -5182,7 +5184,7 @@ const SearchPanel = {
     // EBSP効果（MS専用）
     if (_isMS && this._t.ebspEff.size > 0) {
       const ebspEff = this._t.ebspEff;
-      cards = cards.filter(c => _noDetail(c) || (c.ebsp_effect_tags && c.ebsp_effect_tags.some(t => ebspEff.has(t))) || (ebspEff.has('EBLv上昇') && c.eb_text && /EBLv\.が\d+に上昇/.test(c.eb_text)));
+      cards = cards.filter(c => _noDetail(c) || (c.ebsp_effect_tags && c.ebsp_effect_tags.some(t => ebspEff.has(t))) || (ebspEff.has('EBLv上昇') && c.eb_lv_jump) || (ebspEff.has('スキップSP') && c.has_skip_sp));
     }
     // SP効果（MS専用）
     if (_isMS && this._t.spEff.size > 0) {
@@ -5397,14 +5399,10 @@ const SearchPanel = {
           ${(()=>{
             if (!card.has_eb && !card.has_eb_skill && !card.has_eb_link) return '';
             let ebLabel = card.eb_type === 'sp' ? 'EBSP' : 'EB';
-            if (card.has_eb && card.eb_text) {
-              const dm = card.eb_text.match(/EBLv\.を(\d+)下げ/);
-              const um = card.eb_text.match(/EBLv\.が(\d+)に上昇/);
-              if (dm || um) {
-                ebLabel += '<br>';
-                if (dm) ebLabel += '<span class="eb-lv-down">↓' + dm[1] + '</span>';
-                if (um) ebLabel += '<span class="eb-lv-up">↑' + um[1] + '</span>';
-              }
+            if (card.has_eb && (card.eb_lv_down || card.eb_lv_jump)) {
+              ebLabel += '<br>';
+              if (card.eb_lv_down) ebLabel += '<span class="eb-lv-down">↓' + card.eb_lv_down + '</span>';
+              if (card.eb_lv_jump) ebLabel += '<span class="eb-lv-up">↑' + card.eb_lv_jump + '</span>';
             }
             return '<div class="thumb-eb-badge">' + ebLabel + '</div>';
           })()}

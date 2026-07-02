@@ -231,6 +231,9 @@ def detect_eb_info(ocr_data):
     eb_level = None
     eb_type = ''
     eb_text = ''
+    eb_lv_down = None
+    eb_lv_jump = None
+    has_skip_sp = False
     if card_type == 'MS':
         sp = ocr_data.get('special_attack', {}) or {}
         eb_sp = sp.get('echoes_beat')
@@ -243,8 +246,18 @@ def detect_eb_info(ocr_data):
                     eb_level = int(m.group(1))
             eb_type = 'sp' if sp.get('sp_type') == 'ECHOES BEAT SP' else 'normal'
             label = 'ECHOES BEAT SP' if eb_type == 'sp' else 'ECHOES BEAT'
+            eb_desc = eb_sp.get('description', '') or ''
             eb_text = (f"{label}\nLv.{eb_level}\n威力:{eb_sp.get('power', '')}"
-                       f"\n{eb_sp.get('description', '')}")
+                       f"\n{eb_desc}")
+            # EBLvの消費量/上昇先 (効果文の印字から。バッジ表示・フィルタ用)
+            m = re.search(r'EBLv\.を(\d+)下げ', eb_desc)
+            if m:
+                eb_lv_down = int(m.group(1))
+            m = re.search(r'EBLv\.が(\d+)に上昇', eb_desc)
+            if m:
+                eb_lv_jump = int(m.group(1))
+            # スキップSP: Lv.1のEB技でEBLv.が3に上昇するもの(1→3スキップ)
+            has_skip_sp = (eb_level == 1 and eb_lv_jump == 3)
 
     # PL: EB PLスキル (is_eb_skill フラグが唯一の真実)
     has_eb_skill = False
@@ -279,6 +292,9 @@ def detect_eb_info(ocr_data):
         'eb_skill_text': eb_skill_text,
         'eb_trigger_level': eb_trigger_level,
         'eb_trigger_cond': eb_trigger_cond,
+        'eb_lv_down': eb_lv_down,
+        'eb_lv_jump': eb_lv_jump,
+        'has_skip_sp': has_skip_sp,
     }
 
 
@@ -531,6 +547,9 @@ def build_card_index_entry(card_number, card_data):
         'eb_trigger_level': eb_info['eb_trigger_level'],
         'eb_trigger_cond': eb_info['eb_trigger_cond'],
         'eb_type': eb_info['eb_type'],
+        'eb_lv_down': eb_info['eb_lv_down'],
+        'eb_lv_jump': eb_info['eb_lv_jump'],
+        'has_skip_sp': eb_info['has_skip_sp'],
         'sp_effect_tags': sp_effect_tags,
         'sqsp_effect_tags': sqsp_effect_tags,
         'ebsp_effect_tags': ebsp_effect_tags,

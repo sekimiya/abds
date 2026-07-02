@@ -119,6 +119,34 @@ def test_sq_gauge_rate_populated(built):
     assert values, "sq_gauge_rateが全カード空(SQゲージフィルタが常に0件になる)"
 
 
+def test_skip_sp_consistency(built):
+    """スキップSP = Lv.1のEB技でEBLv.が3に上昇するもの"""
+    import re
+    index, details = built
+    bad = []
+    for num, c in index.items():
+        ocr = details.get(num, {}).get("ocr_data", {})
+        eb = (ocr.get("special_attack") or {}).get("echoes_beat")
+        desc = eb.get("description", "") if isinstance(eb, dict) else ""
+        jump = re.search(r"EBLv\.が(\d+)に上昇", desc)
+        expected = (isinstance(eb, dict) and c.get("eb_level") == 1
+                    and jump is not None and jump.group(1) == "3")
+        if bool(c.get("has_skip_sp")) != expected:
+            bad.append(num)
+    assert not bad, f"has_skip_spの不整合: {bad[:10]}"
+
+
+def test_eb_desc_not_boilerplate(built):
+    """echoes_beat.descriptionにバナー定型文が入っていない(効果文が入っていること)"""
+    _, details = built
+    bad = []
+    for num, entry in details.items():
+        eb = ((entry.get("ocr_data") or {}).get("special_attack") or {}).get("echoes_beat")
+        if isinstance(eb, dict) and "ECHOES BEAT Lv.を下げることで" in (eb.get("description") or ""):
+            bad.append(num)
+    assert not bad, f"EB説明がバナー定型文(↓↑バッジ/効果タグが出ない): {bad[:10]}"
+
+
 def test_sq_trigger_populated(built):
     """SQ発動条件フィルタの参照先が導出されていること"""
     index, _ = built

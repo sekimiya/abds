@@ -254,6 +254,10 @@ def validate_values(ocr, cn='?'):
             eb_name = (eb.get('name') or '').strip()
             if not eb_name or eb_name in DASH_CHARS:
                 errors.append(f'{cn}: echoes_beat.nameが空/ダッシュ(EB欄がー印字ならechoes_beat=null)')
+            eb_desc = eb.get('description') or ''
+            if 'ECHOES BEAT Lv.を下げることで' in eb_desc:
+                errors.append(f'{cn}: echoes_beat.descriptionがバナー定型文。'
+                              'EB側の効果文(EBLv.をN下げる。…)を入れる')
         elif st in ('ECHOES BEAT', 'ECHOES BEAT SP'):
             errors.append(f'{cn}: sp_type={st!r}なのにechoes_beatがnull')
 
