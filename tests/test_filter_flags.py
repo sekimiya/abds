@@ -147,13 +147,41 @@ def test_eb_desc_not_boilerplate(built):
     assert not bad, f"EB説明がバナー定型文(↓↑バッジ/効果タグが出ない): {bad[:10]}"
 
 
-def test_skill_trigger_populated(built):
-    """PLスキルタイミングフィルタ(UI: skTim)の参照先が導出されていること"""
+def test_skill_trigger_ui_keys_all_match(built):
+    """skTimフィルタの全UIキーが少なくとも1枚にマッチすること
+    (フロントはskill_trigger(生トリガー文)への部分一致。HP条件時のみ正規表現)"""
+    import re
     index, _ = built
-    ui_keys = {"出撃時", "ロックオン時", "MSアビリティ", "HP条件時", "撃破時"}
-    values = {c.get("skill_trigger") for c in index.values() if c.get("skill_trigger")}
-    assert values <= ui_keys, f"UIキーにないskill_trigger: {values - ui_keys}"
-    assert values, "skill_triggerが全カード空(スキルタイミングフィルタが常に0件になる)"
+    ui_keys = ["出撃時", "ロックオン時", "MSアビリティ", "HP条件時", "撃破時",
+               "一定時間経過毎", "撤退時", "EBLv", "戦術技発動時", "防衛拠点変更", "SQゲージ"]
+    triggers = [c.get("skill_trigger") or "" for c in index.values()]
+    dead = []
+    for k in ui_keys:
+        if k == "HP条件時":
+            n = sum(1 for t in triggers if re.search(r"HP\d+%", t))
+        else:
+            n = sum(1 for t in triggers if k in t)
+        if n == 0:
+            dead.append(k)
+    assert not dead, f"どのカードにもマッチしないskTimキー(死にボタン): {dead}"
+
+
+def test_eb_trigger_cond_ui_keys_all_match(built):
+    """ebCondフィルタの全UIキー(上昇時/以上/Lv到達時)がマッチすること"""
+    index, _ = built
+    values = {c.get("eb_trigger_cond") for c in index.values() if c.get("eb_trigger_cond")}
+    ui_keys = {"上昇時", "以上", "Lv到達時"}
+    assert values == ui_keys, f"ebCond導出値とUIキーの不一致: 導出={values}"
+
+
+def test_skill_effect_ui_keys_all_match(built):
+    """skEffフィルタの全UIキーがskill_effect_tagsに存在すること"""
+    index, _ = built
+    ui_keys = {"機動力UP", "遠距離攻撃力UP", "近距離攻撃力UP", "SP威力UP", "ダメージ軽減",
+               "敵デバフ", "対戦艦/拠点", "SQゲージ増加", "全味方バフ", "全味方殲滅", "HP条件"}
+    derived = {t for c in index.values() for t in (c.get("skill_effect_tags") or [])}
+    dead = ui_keys - derived
+    assert not dead, f"どのカードにも付かないskEffキー(死にボタン): {dead}"
 
 
 def test_no_fullwidth_slash_in_text_fields(built):

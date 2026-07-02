@@ -281,6 +281,9 @@ def detect_eb_info(ocr_data):
                 eb_trigger_cond = '上昇時'
             elif '以上' in trigger:
                 eb_trigger_cond = '以上'
+            elif re.search(r'EBLv\.\d+時', trigger):
+                # 「EBLv.1時」= そのLvに到達している間有効
+                eb_trigger_cond = 'Lv到達時'
 
     return {
         'has_eb': has_eb,
@@ -312,7 +315,7 @@ def extract_effect_tags(description, sp_data=None):
         tags.append('範囲')
     if 'スタン' in desc or '行動不能' in desc:
         tags.append('スタン')
-    if '変身' in desc or 'に変身' in desc:
+    if '変身' in desc or '変形' in desc:
         tags.append('変身')
     if '撃破' in desc or '撃墜' in desc:
         tags.append('撃破')
@@ -332,10 +335,11 @@ def extract_effect_tags(description, sp_data=None):
     return list(dict.fromkeys(tags))
 
 
-def extract_skill_effect_tags(description):
-    """PLスキルのdescriptionからSQスキル用タグを抽出"""
+def extract_skill_effect_tags(description, trigger=''):
+    """PLスキルのeffect/triggerからスキル効果タグを抽出"""
     tags = []
     desc = description or ''
+    trig = trigger or ''
 
     if '機動力' in desc and re.search(r'アップ|上昇', desc):
         tags.append('機動力UP')
@@ -347,10 +351,18 @@ def extract_skill_effect_tags(description):
         tags.append('SP威力UP')
     if 'ダメージ' in desc and re.search(r'軽減|カット', desc):
         tags.append('ダメージ軽減')
-    if '弱体' in desc and re.search(r'無効|解除', desc):
-        tags.append('弱体無効')
+    if re.search(r'敵.*(ダウン|低下)', desc):
+        tags.append('敵デバフ')
+    if '戦艦' in desc or '拠点' in desc:
+        tags.append('対戦艦/拠点')
+    if re.search(r'SQゲージ.*(アップ|増加|上昇)', desc):
+        tags.append('SQゲージ増加')
     if re.search(r'全.*味方|出撃中の.*味方|全ユニット', desc) and re.search(r'アップ|上昇', desc):
         tags.append('全味方バフ')
+    if '殲滅タイプ' in desc and '味方' in desc:
+        tags.append('全味方殲滅')
+    if re.search(r'HP\d+%', trig):
+        tags.append('HP条件')
 
     return list(dict.fromkeys(tags))
 
@@ -408,22 +420,6 @@ def detect_sq_info(ocr_data):
         'sq_trigger': sq_trigger,
         'sq_gauge_rate': sq_gauge_rate,
     }
-
-
-def _classify_skill_timing(trigger):
-    """PLスキル発動タイミングをフィルタUI(skTim)のキーに分類"""
-    t = trigger or ''
-    if 'ロックオン' in t:
-        return 'ロックオン時'
-    if 'MSアビリティ' in t:
-        return 'MSアビリティ'
-    if re.search(r'HP\d+%', t):
-        return 'HP条件時'
-    if '撃破' in t:
-        return '撃破時'
-    if t.startswith('出撃時'):
-        return '出撃時'
-    return ''
 
 
 def _classify_sq_trigger(trigger):
@@ -496,11 +492,13 @@ def build_card_index_entry(card_number, card_data):
         ps = ocr.get('pilot_skill', {}) or {}
         skill_name = ps.get('name', '')
         ps_desc = ps.get('effect', '') or ''
+        ps_trig = ps.get('trigger', '') or ''
         if ps.get('has_sq_skill'):
-            sq_skill_effect_tags = extract_skill_effect_tags(ps_desc)
-        skill_effect_tags = extract_skill_effect_tags(ps_desc)
+            sq_skill_effect_tags = extract_skill_effect_tags(ps_desc, ps_trig)
+        skill_effect_tags = extract_skill_effect_tags(ps_desc, ps_trig)
         sq_rush_effect = ps.get('sq_rush_effect', '') or ''
-        skill_trigger = _classify_skill_timing(ps.get('trigger', '') or '')
+        # フィルタ(skTim)は生トリガー文への部分一致で判定する(HP条件時のみフロント側で正規表現)
+        skill_trigger = ps_trig
     else:
         msa = ocr.get('ms_ability', {}) or {}
         ability_name = msa.get('name', '')

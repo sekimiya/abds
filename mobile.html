@@ -1385,14 +1385,12 @@ body.light .ss-text{color:#555}
           <button class="tbtn" data-key="デバフ" onclick="SearchPanel.toggle('ebspEff',this)">デバフ</button>
           <button class="tbtn" data-key="バフ" onclick="SearchPanel.toggle('ebspEff',this)">バフ</button>
           <button class="tbtn" data-key="HP回復" onclick="SearchPanel.toggle('ebspEff',this)">HP回復</button>
-          <button class="tbtn" data-key="防衛無視" onclick="SearchPanel.toggle('ebspEff',this)">防衛無視</button>
           <button class="tbtn" data-key="EBLv上昇" onclick="SearchPanel.toggle('ebspEff',this)">EBLv上昇</button>
           <button class="tbtn" data-key="スキップSP" onclick="SearchPanel.toggle('ebspEff',this)">スキップSP</button>
         </div>
         <div class="toggle-filter" data-for="PL" id="ebCondBtns">
           <span class="toggle-filter-label">EB発動条件</span>
           <button class="tbtn" data-key="上昇時" onclick="SearchPanel.toggle('ebCond',this)">Lv上昇時</button>
-          <button class="tbtn" data-key="上昇毎" onclick="SearchPanel.toggle('ebCond',this)">上昇毎</button>
           <button class="tbtn" data-key="以上" onclick="SearchPanel.toggle('ebCond',this)">Lv以上</button>
           <button class="tbtn" data-key="Lv到達時" onclick="SearchPanel.toggle('ebCond',this)">Lv到達時</button>
         </div>
@@ -1421,7 +1419,6 @@ body.light .ss-text{color:#555}
           <button class="tbtn" data-key="デバフ" onclick="SearchPanel.toggle('sqspEff',this)">デバフ</button>
           <button class="tbtn" data-key="バフ" onclick="SearchPanel.toggle('sqspEff',this)">バフ</button>
           <button class="tbtn" data-key="HP回復" onclick="SearchPanel.toggle('sqspEff',this)">HP回復</button>
-          <button class="tbtn" data-key="防衛無視" onclick="SearchPanel.toggle('sqspEff',this)">防衛無視</button>
           <button class="tbtn" data-key="支援攻撃" onclick="SearchPanel.toggle('sqspEff',this)">支援攻撃</button>
         </div>
         <div class="toggle-filter" data-for="PL" id="sqGaugeBtns">
@@ -1446,7 +1443,6 @@ body.light .ss-text{color:#555}
           <button class="tbtn" data-key="近距離攻撃力UP" onclick="SearchPanel.toggle('sqEff',this)">近距離</button>
           <button class="tbtn" data-key="SP威力UP" onclick="SearchPanel.toggle('sqEff',this)">SP威力</button>
           <button class="tbtn" data-key="ダメージ軽減" onclick="SearchPanel.toggle('sqEff',this)">ダメ軽減</button>
-          <button class="tbtn" data-key="弱体無効" onclick="SearchPanel.toggle('sqEff',this)">弱体無効</button>
           <button class="tbtn" data-key="全味方バフ" onclick="SearchPanel.toggle('sqEff',this)">全味方</button>
         </div>
         <div style="display:flex;flex-wrap:wrap;gap:4px">
@@ -1484,8 +1480,6 @@ body.light .ss-text{color:#555}
           <button class="tbtn" data-key="デバフ" onclick="SearchPanel.toggle('spEff',this)">デバフ</button>
           <button class="tbtn" data-key="バフ" onclick="SearchPanel.toggle('spEff',this)">バフ</button>
           <button class="tbtn" data-key="HP回復" onclick="SearchPanel.toggle('spEff',this)">HP回復</button>
-          <button class="tbtn" data-key="防衛無視" onclick="SearchPanel.toggle('spEff',this)">防衛無視</button>
-          <button class="tbtn" data-key="必中" onclick="SearchPanel.toggle('spEff',this)">必中</button>
         </div>
         <div class="toggle-filter" id="spEbLevelBtns">
           <span class="toggle-filter-label" style="color:#ff9800">EB Lv.</span>
@@ -1512,7 +1506,6 @@ body.light .ss-text{color:#555}
           <button class="tbtn" data-key="全味方バフ" onclick="SearchPanel.toggle('skEff',this)">全味方</button>
           <button class="tbtn" data-key="全味方殲滅" onclick="SearchPanel.toggle('skEff',this)">全味方殲滅</button>
           <button class="tbtn" data-key="HP条件" onclick="SearchPanel.toggle('skEff',this)">HP条件</button>
-          <button class="tbtn" data-key="弱体無効" onclick="SearchPanel.toggle('skEff',this)">弱体無効</button>
         </div>
         <div class="toggle-filter" id="skillTimingBtns">
           <span class="toggle-filter-label">発動タイミング</span>
@@ -4707,7 +4700,7 @@ const SearchPanel = {
     const skillName = _isPL ? document.getElementById('filterSkillName').value : '';
     if (skillName) cards = cards.filter(c => c.skill_name === skillName);
     if (_isPL && this._t.skEff.size > 0) cards = cards.filter(c => c.skill_effect_tags && c.skill_effect_tags.some(t => this._t.skEff.has(t)));
-    if (_isPL && this._t.skTim.size > 0) cards = cards.filter(c => { const tr = c.skill_trigger || ''; return [...this._t.skTim].some(k => tr.includes(k)); });
+    if (_isPL && this._t.skTim.size > 0) cards = cards.filter(c => { const tr = c.skill_trigger || ''; return [...this._t.skTim].some(k => k === 'HP条件時' ? /HP\d+%/.test(tr) : tr.includes(k)); });
     const qRaw = document.getElementById('searchInput').value.trim();
     if (qRaw) { const qN = _normalizeSearch(qRaw); cards = cards.filter(c => _normalizeSearch(c.number||'').includes(qN) || _normalizeSearch(c.name||'').includes(qN)); }
     const sti = document.getElementById('searchTextInput');
