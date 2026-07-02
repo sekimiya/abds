@@ -1,84 +1,84 @@
 {
-  "card_number": "LX04-044",
-  "card_name": "ガナーザクウォーリア(ルナマリア・ホーク専用機)",
-  "series": "LINXTAGE SEASON:04",
-  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX04-044.jpg?v250630",
-  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX04-044_b.jpg?v250630",
-  "ocr_data": {
-    "type": "MS",
-    "name": "ガナーザクウォーリア(ルナマリア・ホーク専用機)",
-    "cost": 4,
-    "rarity": "R",
-    "category": "機動",
-    "affiliation": "ザフト",
-    "illustrator": "kenko",
-    "stats": {
-      "mobility": 220,
-      "ranged_attack": 220,
-      "melee_attack": 160,
-      "hp": 200
+    "card_number": "LX04-044",
+    "card_name": "ガナーザクウォーリア(ルナマリア・ホーク専用機)",
+    "series": "LINXTAGE SEASON:04",
+    "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX04-044.jpg?v250630",
+    "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX04-044_b.jpg?v250630",
+    "ocr_data": {
+        "type": "MS",
+        "name": "ガナーザクウォーリア(ルナマリア・ホーク専用機)",
+        "cost": 4,
+        "rarity": "R",
+        "category": "機動",
+        "affiliation": "ザフト",
+        "illustrator": "kenko",
+        "stats": {
+            "mobility": 220,
+            "ranged_attack": 220,
+            "melee_attack": 160,
+            "hp": 200
+        },
+        "link_ability": [
+            {
+                "name": "SEED DESTINY",
+                "condition": "デッキに3枚以上",
+                "effect": "[HP]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            },
+            {
+                "name": "距離をとった射撃戦",
+                "condition": "デッキに2枚以上",
+                "effect": "[遠距離攻撃力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            }
+        ],
+        "pilot": "ルナマリア・ホーク",
+        "model": "ZGMF-1000/A1 LUNAMARIA'S GUNNER ZAKU WARRIOR",
+        "terrain_compatibility": {
+            "ground": "A",
+            "space": "A",
+            "desert": "C",
+            "water": "A"
+        },
+        "weapon": {
+            "main": {
+                "name": "オルトロス高エネルギー長射程ビーム砲",
+                "range": 4,
+                "type": "遠距離"
+            },
+            "sub": {
+                "name": "ビームトマホーク",
+                "range": 1,
+                "type": "近距離"
+            }
+        },
+        "ms_ability": {
+            "name": "強化[遠隔]",
+            "activation": "任意発動",
+            "target": "自分",
+            "range": null,
+            "cost": 4,
+            "description": "30秒間、自身の[機動力][遠距離攻撃力]を中アップする。"
+        },
+        "special_attack": {
+            "name": "オルトロス高エネルギー長射程ビーム砲撃射",
+            "target": "単体(敵)",
+            "range": 4,
+            "sp_cost": 2,
+            "power": 3100,
+            "description": "敵単体に射撃攻撃でダメージを与える。",
+            "sp_type": "",
+            "echoes_beat": null,
+            "united_sp": null,
+            "squad_sp": null
+        }
     },
-    "link_ability": [
-      {
-        "name": "SEED DESTINY",
-        "condition": "デッキに3枚以上",
-        "effect": "[HP]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      },
-      {
-        "name": "距離をとった射撃戦",
-        "condition": "デッキに2枚以上",
-        "effect": "[遠距離攻撃力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      }
-    ],
-    "pilot": "ルナマリア・ホーク",
-    "model": "ZGMF-1000/A1 LUNAMARIA'S GUNNER ZAKU WARRIOR",
-    "terrain_compatibility": {
-      "ground": "A",
-      "space": "A",
-      "desert": "C",
-      "water": "A"
-    },
-    "weapon": {
-      "main": {
-        "name": "オルトロス高エネルギー長射程ビーム砲",
-        "range": 4,
-        "type": "遠距離"
-      },
-      "sub": {
-        "name": "ビームトマホーク",
-        "range": 1,
-        "type": "近距離"
-      }
-    },
-    "ms_ability": {
-      "name": "強化[遠隔]",
-      "activation": "任意発動",
-      "target": "自分",
-      "range": null,
-      "cost": 4,
-      "description": "30秒間、自身の[機動力][遠距離攻撃力]を中アップする。"
-    },
-    "special_attack": {
-      "name": "オルトロス高エネルギー長射程ビーム砲撃射",
-      "target": "単体（敵）",
-      "range": 4,
-      "sp_cost": 2,
-      "power": 3100,
-      "description": "敵単体に射撃攻撃でダメージを与える。",
-      "sp_type": "",
-      "echoes_beat": null,
-      "united_sp": null,
-      "squad_sp": null
-    }
-  },
-  "ocr_raw_file": "LINXTAGE_SEASON_04_LX04-044_ガナーザクウォーリア(ルナマリア・ホーク専用機)_ocr_raw.json",
-  "ocr_timestamp": "2026-03-07T19:06:10.634680",
-  "ocr_type": "basic",
-  "ocr_engine": "claude_code_cli_combined"
+    "ocr_raw_file": "LINXTAGE_SEASON_04_LX04-044_ガナーザクウォーリア(ルナマリア・ホーク専用機)_ocr_raw.json",
+    "ocr_timestamp": "2026-03-07T19:06:10.634680",
+    "ocr_type": "basic",
+    "ocr_engine": "claude_code_cli_combined"
 }

@@ -1,84 +1,84 @@
 {
-  "card_number": "PR-075",
-  "card_name": "ザクⅡ(量産機)",
-  "series": "プロモーション",
-  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-075.jpg?v250630",
-  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-075_b.jpg?v250630",
-  "ocr_data": {
-    "type": "MS",
-    "name": "ザクⅡ(量産機)",
-    "cost": 4,
-    "rarity": "PR",
-    "category": "近距離",
-    "affiliation": "ジオン公国軍",
-    "illustrator": "Ryohei Miyazaki",
-    "stats": {
-      "mobility": 210,
-      "ranged_attack": 120,
-      "melee_attack": 240,
-      "hp": 380
+    "card_number": "PR-075",
+    "card_name": "ザクⅡ(量産機)",
+    "series": "プロモーション",
+    "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-075.jpg?v250630",
+    "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-075_b.jpg?v250630",
+    "ocr_data": {
+        "type": "MS",
+        "name": "ザクⅡ(量産機)",
+        "cost": 4,
+        "rarity": "PR",
+        "category": "近距離",
+        "affiliation": "ジオン公国軍",
+        "illustrator": "Ryohei Miyazaki",
+        "stats": {
+            "mobility": 210,
+            "ranged_attack": 120,
+            "melee_attack": 240,
+            "hp": 380
+        },
+        "link_ability": [
+            {
+                "name": "機動戦士ガンダム",
+                "condition": "デッキに3枚以上",
+                "effect": "[機動力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            },
+            {
+                "name": "ザクがザクザク",
+                "condition": "デッキに2枚以上",
+                "effect": "[HP]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            }
+        ],
+        "pilot": "",
+        "model": "MS-06F ZAKUⅡ",
+        "terrain_compatibility": {
+            "ground": "A",
+            "space": "A",
+            "desert": "C",
+            "water": ""
+        },
+        "weapon": {
+            "main": {
+                "name": "ヒート・ホーク",
+                "range": 1,
+                "type": "近距離"
+            },
+            "sub": {
+                "name": "ザク・マシンガン",
+                "range": 2,
+                "type": "遠距離"
+            }
+        },
+        "ms_ability": {
+            "name": "誘導",
+            "activation": "任意発動",
+            "target": "特殊(敵)",
+            "range": null,
+            "cost": 4,
+            "description": "25秒間、自身をロックオン距離内に捉えている敵ユニットのターゲットを自身に集める。"
+        },
+        "special_attack": {
+            "name": "ヒート・ホーク強撃",
+            "target": "単体(敵)",
+            "range": 2,
+            "sp_cost": 2,
+            "power": 3400,
+            "description": "敵単体に格闘攻撃でダメージを与える。",
+            "sp_type": "",
+            "echoes_beat": null,
+            "united_sp": null,
+            "squad_sp": null
+        }
     },
-    "link_ability": [
-      {
-        "name": "機動戦士ガンダム",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      },
-      {
-        "name": "ザクがザクザク",
-        "condition": "デッキに2枚以上",
-        "effect": "[HP]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      }
-    ],
-    "pilot": "",
-    "model": "MS-06F ZAKUⅡ",
-    "terrain_compatibility": {
-      "ground": "A",
-      "space": "A",
-      "desert": "C",
-      "water": ""
-    },
-    "weapon": {
-      "main": {
-        "name": "ヒート・ホーク",
-        "range": 1,
-        "type": "近距離"
-      },
-      "sub": {
-        "name": "ザク・マシンガン",
-        "range": 2,
-        "type": "遠距離"
-      }
-    },
-    "ms_ability": {
-      "name": "誘導",
-      "activation": "任意発動",
-      "target": "特殊（敵）",
-      "range": null,
-      "cost": 4,
-      "description": "25秒間、自身をロックオン距離内に捉えている敵ユニットのターゲットを自身に集める。"
-    },
-    "special_attack": {
-      "name": "ヒート・ホーク強撃",
-      "target": "単体（敵）",
-      "range": 2,
-      "sp_cost": 2,
-      "power": 3400,
-      "description": "敵単体に格闘攻撃でダメージを与える。",
-      "sp_type": "",
-      "echoes_beat": null,
-      "united_sp": null,
-      "squad_sp": null
-    }
-  },
-  "ocr_raw_file": "プロモーション_PR-075_ザクⅡ(量産機)_ocr_raw.json",
-  "ocr_timestamp": "2026-03-07T12:55:05.554756",
-  "ocr_type": "basic",
-  "ocr_engine": "claude_code_cli_combined"
+    "ocr_raw_file": "プロモーション_PR-075_ザクⅡ(量産機)_ocr_raw.json",
+    "ocr_timestamp": "2026-03-07T12:55:05.554756",
+    "ocr_type": "basic",
+    "ocr_engine": "claude_code_cli_combined"
 }

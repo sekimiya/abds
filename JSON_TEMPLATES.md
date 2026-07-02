@@ -187,6 +187,30 @@ python3 rebuild_index.py --dry-run # ビルド差分確認
 
 CI: gh-pagesへのpush時に `.github/workflows/test.yml` が上記を実行する。
 
+## 7. 値の正規語彙 (value canonical vocabulary)
+
+フィールド名だけでなく**値**も以下の語彙に固定する。定義の正は `schema.py` の
+`RARITY_ENUM` / `CATEGORY_ENUM` / `WEAPON_TYPE_ENUM` / `TARGET_ENUM` /
+`ACTIVATION_ENUM` / `SP_TYPE_ENUM` / `TERRAIN_ENUM`。
+エイリアス(下表の旧表記)は `normalize_ocr.py` が自動変換する。
+どちらにも該当しない値は `normalize_ocr.py --check` / pytest / pre_deploy_check が
+エラーにするため、**新規OCRデータの表記揺れはpush時にブロックされる**。
+
+| フィールド | 正規値 | 自動変換されるエイリアス |
+|---|---|---|
+| rarity | C / U / R / M / P / PR / A / LX / LE | なし(SN/SECRET/PARALLEL/VE等は**エラー**。パラレル種別はall_cards_list側) |
+| category (MS) | 近距離 / 遠距離 / 機動 | なし |
+| category (PL) | 殲滅 / 制圧 / 防衛 | なし |
+| weapon.*.type | 近距離 / 遠距離 / 防御 / ""(欄がー) | 射撃→遠距離, 格闘→近距離, 遠距離攻撃→遠距離, 近距離攻撃→近距離, 中距離射撃→遠距離, 近接格闘→近距離, 速距離→遠距離, ー/-/—→"" |
+| target (ms_ability / special_attack / echoes_beat / united_sp / squad_sp) | 単体(敵) / 範囲(敵) / 貫通(敵) / 特殊(敵) / 全体(敵) / 単体(味方) / 範囲(味方) / 特殊(味方) / 自分 / 特殊(自分) / 特殊 / ""。複合は `/` 区切り(空白なし) | 全角（）→半角(), ／→/, 敵単体→単体(敵), 単体→単体(敵), 自身→自分, ー/—→"" |
+| ms_ability.activation | 任意発動 / 出撃時発動 / 常時発動 / 自動発動 / "" | なし |
+| sp_type | "" / ECHOES BEAT / ECHOES BEAT SP / SQUAD SP / UNITED SP | なし |
+| terrain_compatibility.* | S / A / B / C / ""(項目なし) | なし |
+| link_ability.condition | `デッキにN枚以上` / `デッキに<カテゴリ>がN枚以上` (旧レイアウトの長文も許容) | 機動力N枚→機動がN枚 等 |
+
+- 武器スロット自体が存在しない(名前がー印字)場合は `null`(name:""やダッシュではなく)
+- カードにMSアビリティがない(ー印字)場合は `ms_ability: null`
+
 ## 非canonicalな旧フィールド (使用禁止)
 
 | 旧 | 正 |

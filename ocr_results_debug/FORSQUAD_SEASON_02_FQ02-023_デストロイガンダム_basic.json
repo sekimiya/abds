@@ -1,72 +1,68 @@
 {
-  "card_number": "FQ02-023",
-  "card_name": "デストロイガンダム",
-  "series": "FORSQUAD SEASON:02",
-  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-023.jpg?v9",
-  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-023_b.jpg?v9",
-  "ocr_data": {
-    "type": "MS",
-    "name": "デストロイガンダム",
-    "cost": 4,
-    "rarity": "M",
-    "category": "遠距離",
-    "affiliation": "",
-    "illustrator": "J.YUZURU (willow_works)",
-    "stats": {
-      "mobility": 220,
-      "ranged_attack": 280,
-      "melee_attack": 0,
-      "hp": 450
+    "card_number": "FQ02-023",
+    "card_name": "デストロイガンダム",
+    "series": "FORSQUAD SEASON:02",
+    "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-023.jpg?v9",
+    "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-023_b.jpg?v9",
+    "ocr_data": {
+        "type": "MS",
+        "name": "デストロイガンダム",
+        "cost": 4,
+        "rarity": "M",
+        "category": "遠距離",
+        "affiliation": "",
+        "illustrator": "J.YUZURU (willow_works)",
+        "stats": {
+            "mobility": 220,
+            "ranged_attack": 280,
+            "melee_attack": 0,
+            "hp": 450
+        },
+        "link_ability": [
+            {
+                "name": "SEED DESTINY",
+                "condition": "デッキに3枚以上",
+                "effect": "[HP]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            },
+            {
+                "name": "戦況を変える力",
+                "condition": "デッキに4枚以上",
+                "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            }
+        ],
+        "pilot": "ステラ・ルーシェ",
+        "model": "GFAS-X1 DESTROY GUNDAM",
+        "terrain_compatibility": {
+            "ground": "A",
+            "space": "A",
+            "desert": "C",
+            "water": "B"
+        },
+        "weapon": {
+            "main": {
+                "name": "アウフアール・ドライツェーン",
+                "range": 4,
+                "type": "遠距離"
+            },
+            "sub": null
+        },
+        "ms_ability": {
+            "name": "逆襲",
+            "activation": "任意発動",
+            "target": "",
+            "range": 4,
+            "cost": 4,
+            "description": "ロックオン中の敵に単体攻撃でダメージを与える。自身の残りHPが少ない程、ダメージが上昇する。"
+        },
+        "special_attack": null
     },
-    "link_ability": [
-      {
-        "name": "SEED DESTINY",
-        "condition": "デッキに3枚以上",
-        "effect": "[HP]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      },
-      {
-        "name": "戦況を変える力",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      }
-    ],
-    "pilot": "ステラ・ルーシェ",
-    "model": "GFAS-X1 DESTROY GUNDAM",
-    "terrain_compatibility": {
-      "ground": "A",
-      "space": "A",
-      "desert": "C",
-      "water": "B"
-    },
-    "weapon": {
-      "main": {
-        "name": "アウフアール・ドライツェーン",
-        "range": 4,
-        "type": "遠距離"
-      },
-      "sub": {
-        "name": "",
-        "range": 0,
-        "type": ""
-      }
-    },
-    "ms_ability": {
-      "name": "逆襲",
-      "activation": "任意発動",
-      "target": "",
-      "range": 4,
-      "cost": 4,
-      "description": "ロックオン中の敵に単体攻撃でダメージを与える。自身の残りHPが少ない程、ダメージが上昇する。"
-    },
-    "special_attack": null
-  },
-  "ocr_timestamp": "2025-06-28T01:38:43.784801",
-  "ocr_type": "basic",
-  "ocr_engine": "claude_code_cli"
+    "ocr_timestamp": "2025-06-28T01:38:43.784801",
+    "ocr_type": "basic",
+    "ocr_engine": "claude_code_cli"
 }

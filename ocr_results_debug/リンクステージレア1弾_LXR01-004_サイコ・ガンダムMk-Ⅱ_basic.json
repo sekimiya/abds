@@ -1,84 +1,80 @@
 {
-  "card_number": "LXR01-004",
-  "card_name": "サイコ・ガンダムMk-Ⅱ",
-  "series": "リンクステージレア1弾",
-  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LXR01-004.jpg?v250630",
-  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LXR01-004_b.jpg?v250630",
-  "ocr_data": {
-    "type": "MS",
-    "name": "サイコ・ガンダムMk-Ⅱ",
-    "cost": 9,
-    "rarity": "LX",
-    "category": "遠距離",
-    "affiliation": "ネオ・ジオン",
-    "illustrator": "Takumi Kousaka",
-    "stats": {
-      "mobility": 200,
-      "ranged_attack": 650,
-      "melee_attack": 0,
-      "hp": 650
+    "card_number": "LXR01-004",
+    "card_name": "サイコ・ガンダムMk-Ⅱ",
+    "series": "リンクステージレア1弾",
+    "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LXR01-004.jpg?v250630",
+    "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LXR01-004_b.jpg?v250630",
+    "ocr_data": {
+        "type": "MS",
+        "name": "サイコ・ガンダムMk-Ⅱ",
+        "cost": 9,
+        "rarity": "LX",
+        "category": "遠距離",
+        "affiliation": "ネオ・ジオン",
+        "illustrator": "Takumi Kousaka",
+        "stats": {
+            "mobility": 200,
+            "ranged_attack": 650,
+            "melee_attack": 0,
+            "hp": 650
+        },
+        "link_ability": [
+            {
+                "name": "機動戦士ガンダムZZ",
+                "condition": "デッキに3枚以上",
+                "effect": "[HP]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            },
+            {
+                "name": "戦況を変える力",
+                "condition": "デッキに4枚以上",
+                "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            }
+        ],
+        "pilot": "プルツー",
+        "model": "MRX-010 PSYCHO GUNDAM Mk-Ⅱ",
+        "terrain_compatibility": {
+            "ground": "A",
+            "space": "A",
+            "desert": "C",
+            "water": ""
+        },
+        "weapon": {
+            "main": {
+                "name": "メガ拡散ビーム砲",
+                "range": 2,
+                "type": "遠距離"
+            },
+            "sub": null
+        },
+        "ms_ability": {
+            "name": "掃射[広角]",
+            "activation": "任意発動",
+            "target": "範囲(敵)",
+            "range": 2,
+            "cost": 3,
+            "description": "ロックオン中の敵を中心に扇状の範囲攻撃を行い、範囲内の敵にダメージを与える。"
+        },
+        "special_attack": {
+            "name": "メガ拡散ビーム砲撃射(変形)",
+            "target": "範囲(敵)",
+            "range": 3,
+            "sp_cost": 3,
+            "power": 3500,
+            "description": "MS形態に変形、範囲内の敵にダメージを与える。変形後は能力が上昇。自身が撤退するまで効果は持続する。",
+            "sp_type": "",
+            "echoes_beat": null,
+            "united_sp": null,
+            "squad_sp": null
+        }
     },
-    "link_ability": [
-      {
-        "name": "機動戦士ガンダムZZ",
-        "condition": "デッキに3枚以上",
-        "effect": "[HP]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      },
-      {
-        "name": "戦況を変える力",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      }
-    ],
-    "pilot": "プルツー",
-    "model": "MRX-010 PSYCHO GUNDAM Mk-Ⅱ",
-    "terrain_compatibility": {
-      "ground": "A",
-      "space": "A",
-      "desert": "C",
-      "water": ""
-    },
-    "weapon": {
-      "main": {
-        "name": "メガ拡散ビーム砲",
-        "range": 2,
-        "type": "遠距離"
-      },
-      "sub": {
-        "name": "",
-        "range": null,
-        "type": ""
-      }
-    },
-    "ms_ability": {
-      "name": "掃射[広角]",
-      "activation": "任意発動",
-      "target": "範囲(敵)",
-      "range": 2,
-      "cost": 3,
-      "description": "ロックオン中の敵を中心に扇状の範囲攻撃を行い、範囲内の敵にダメージを与える。"
-    },
-    "special_attack": {
-      "name": "メガ拡散ビーム砲撃射(変形)",
-      "target": "範囲(敵)",
-      "range": 3,
-      "sp_cost": 3,
-      "power": 3500,
-      "description": "MS形態に変形、範囲内の敵にダメージを与える。変形後は能力が上昇。自身が撤退するまで効果は持続する。",
-      "sp_type": "",
-      "echoes_beat": null,
-      "united_sp": null,
-      "squad_sp": null
-    }
-  },
-  "ocr_raw_file": "リンクステージレア1弾_LXR01-004_サイコ・ガンダムMk-Ⅱ_ocr_raw.json",
-  "ocr_timestamp": "2026-03-07T14:52:57.733796",
-  "ocr_type": "basic",
-  "ocr_engine": "claude_code_cli_combined"
+    "ocr_raw_file": "リンクステージレア1弾_LXR01-004_サイコ・ガンダムMk-Ⅱ_ocr_raw.json",
+    "ocr_timestamp": "2026-03-07T14:52:57.733796",
+    "ocr_type": "basic",
+    "ocr_engine": "claude_code_cli_combined"
 }

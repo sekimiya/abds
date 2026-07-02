@@ -1,84 +1,84 @@
 {
-  "card_number": "LX02-042",
-  "card_name": "グラハム専用ユニオンフラッグカスタム",
-  "series": "LINXTAGE SEASON:02",
-  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX02-042.jpg?v250630",
-  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX02-042_b.jpg?v250630",
-  "ocr_data": {
-    "type": "MS",
-    "name": "グラハム専用ユニオンフラッグカスタム",
-    "cost": 4,
-    "rarity": "C",
-    "category": "遠距離",
-    "affiliation": "ユニオン",
-    "illustrator": "Masked",
-    "stats": {
-      "mobility": 200,
-      "ranged_attack": 210,
-      "melee_attack": 50,
-      "hp": 190
+    "card_number": "LX02-042",
+    "card_name": "グラハム専用ユニオンフラッグカスタム",
+    "series": "LINXTAGE SEASON:02",
+    "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX02-042.jpg?v250630",
+    "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX02-042_b.jpg?v250630",
+    "ocr_data": {
+        "type": "MS",
+        "name": "グラハム専用ユニオンフラッグカスタム",
+        "cost": 4,
+        "rarity": "C",
+        "category": "遠距離",
+        "affiliation": "ユニオン",
+        "illustrator": "Masked",
+        "stats": {
+            "mobility": 200,
+            "ranged_attack": 210,
+            "melee_attack": 50,
+            "hp": 190
+        },
+        "link_ability": [
+            {
+                "name": "ガンダム00",
+                "condition": "デッキに3枚以上",
+                "effect": "[機動力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            },
+            {
+                "name": "可変機ファイター",
+                "condition": "デッキに3枚以上",
+                "effect": "専用作戦カードが使用可能",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            }
+        ],
+        "pilot": "グラハム・エーカー",
+        "model": "SVMS-01E GRAHAM'S UNION FLAG CUSTOM",
+        "terrain_compatibility": {
+            "ground": "S",
+            "space": "B",
+            "desert": "C",
+            "water": "C"
+        },
+        "weapon": {
+            "main": {
+                "name": "試作リニアライフル",
+                "range": 3,
+                "type": "遠距離"
+            },
+            "sub": {
+                "name": "プラズマソード",
+                "range": 1,
+                "type": "近距離"
+            }
+        },
+        "ms_ability": {
+            "name": "奇襲",
+            "activation": "任意発動",
+            "target": "範囲(敵)",
+            "range": null,
+            "cost": 6,
+            "description": "指定した位置に範囲攻撃を行い、その地点に移動する。"
+        },
+        "special_attack": {
+            "name": "試作リニアライフル撃射",
+            "target": "単体(敵)",
+            "range": 3,
+            "sp_cost": 2,
+            "power": 3100,
+            "description": "敵単体に射撃攻撃でダメージを与える。",
+            "sp_type": "",
+            "echoes_beat": null,
+            "united_sp": null,
+            "squad_sp": null
+        }
     },
-    "link_ability": [
-      {
-        "name": "ガンダム00",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      },
-      {
-        "name": "可変機ファイター",
-        "condition": "デッキに3枚以上",
-        "effect": "専用作戦カードが使用可能",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      }
-    ],
-    "pilot": "グラハム・エーカー",
-    "model": "SVMS-01E GRAHAM'S UNION FLAG CUSTOM",
-    "terrain_compatibility": {
-      "ground": "S",
-      "space": "B",
-      "desert": "C",
-      "water": "C"
-    },
-    "weapon": {
-      "main": {
-        "name": "試作リニアライフル",
-        "range": 3,
-        "type": "遠距離"
-      },
-      "sub": {
-        "name": "プラズマソード",
-        "range": 1,
-        "type": "近距離"
-      }
-    },
-    "ms_ability": {
-      "name": "奇襲",
-      "activation": "任意発動",
-      "target": "範囲（敵）",
-      "range": null,
-      "cost": 6,
-      "description": "指定した位置に範囲攻撃を行い、その地点に移動する。"
-    },
-    "special_attack": {
-      "name": "試作リニアライフル撃射",
-      "target": "単体（敵）",
-      "range": 3,
-      "sp_cost": 2,
-      "power": 3100,
-      "description": "敵単体に射撃攻撃でダメージを与える。",
-      "sp_type": "",
-      "echoes_beat": null,
-      "united_sp": null,
-      "squad_sp": null
-    }
-  },
-  "ocr_raw_file": "LINXTAGE_SEASON_02_LX02-042_グラハム専用ユニオンフラッグカスタム_ocr_raw.json",
-  "ocr_timestamp": "2026-03-07T16:06:58.065069",
-  "ocr_type": "basic",
-  "ocr_engine": "claude_code_cli_combined"
+    "ocr_raw_file": "LINXTAGE_SEASON_02_LX02-042_グラハム専用ユニオンフラッグカスタム_ocr_raw.json",
+    "ocr_timestamp": "2026-03-07T16:06:58.065069",
+    "ocr_type": "basic",
+    "ocr_engine": "claude_code_cli_combined"
 }

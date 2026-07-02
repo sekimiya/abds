@@ -1,84 +1,84 @@
 {
-  "card_number": "LX04-016",
-  "card_name": "ガンダム試作1号機フルバーニアン",
-  "series": "LINXTAGE SEASON:04",
-  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX04-016.jpg?v250630",
-  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX04-016_b.jpg?v250630",
-  "ocr_data": {
-    "type": "MS",
-    "name": "ガンダム試作1号機フルバーニアン",
-    "cost": 3,
-    "rarity": "R",
-    "category": "近距離",
-    "affiliation": "地球連邦軍",
-    "illustrator": "Kumagoro",
-    "stats": {
-      "mobility": 150,
-      "ranged_attack": 90,
-      "melee_attack": 260,
-      "hp": 250
+    "card_number": "LX04-016",
+    "card_name": "ガンダム試作1号機フルバーニアン",
+    "series": "LINXTAGE SEASON:04",
+    "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX04-016.jpg?v250630",
+    "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX04-016_b.jpg?v250630",
+    "ocr_data": {
+        "type": "MS",
+        "name": "ガンダム試作1号機フルバーニアン",
+        "cost": 3,
+        "rarity": "R",
+        "category": "近距離",
+        "affiliation": "地球連邦軍",
+        "illustrator": "Kumagoro",
+        "stats": {
+            "mobility": 150,
+            "ranged_attack": 90,
+            "melee_attack": 260,
+            "hp": 250
+        },
+        "link_ability": [
+            {
+                "name": "ガンダム0083",
+                "condition": "デッキに3枚以上",
+                "effect": "[機動力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            },
+            {
+                "name": "間合いを詰めた接近戦",
+                "condition": "デッキに2枚以上",
+                "effect": "[近距離攻撃力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            }
+        ],
+        "pilot": "コウ・ウラキ",
+        "model": "RX-78GP01-Fb GUNDAM GP01Fb",
+        "terrain_compatibility": {
+            "ground": "B",
+            "space": "S",
+            "desert": "B",
+            "water": "C"
+        },
+        "weapon": {
+            "main": {
+                "name": "ビーム・サーベル",
+                "range": 1,
+                "type": "近距離"
+            },
+            "sub": {
+                "name": "ビーム・ライフル",
+                "range": 3,
+                "type": "遠距離"
+            }
+        },
+        "ms_ability": {
+            "name": "逆襲",
+            "activation": "任意発動",
+            "target": "単体(敵)",
+            "range": 1,
+            "cost": 4,
+            "description": "ロックオン中の敵に単体攻撃でダメージを与える。自身の残りHPが少ない程、ダメージが上昇する。"
+        },
+        "special_attack": {
+            "name": "ビーム・サーベル強撃",
+            "target": "単体(敵)",
+            "range": 2,
+            "sp_cost": 2,
+            "power": 3300,
+            "description": "敵単体に格闘攻撃でダメージを与える。",
+            "sp_type": "",
+            "echoes_beat": null,
+            "united_sp": null,
+            "squad_sp": null
+        }
     },
-    "link_ability": [
-      {
-        "name": "ガンダム0083",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      },
-      {
-        "name": "間合いを詰めた接近戦",
-        "condition": "デッキに2枚以上",
-        "effect": "[近距離攻撃力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      }
-    ],
-    "pilot": "コウ・ウラキ",
-    "model": "RX-78GP01-Fb GUNDAM GP01Fb",
-    "terrain_compatibility": {
-      "ground": "B",
-      "space": "S",
-      "desert": "B",
-      "water": "C"
-    },
-    "weapon": {
-      "main": {
-        "name": "ビーム・サーベル",
-        "range": 1,
-        "type": "近距離"
-      },
-      "sub": {
-        "name": "ビーム・ライフル",
-        "range": 3,
-        "type": "遠距離"
-      }
-    },
-    "ms_ability": {
-      "name": "逆襲",
-      "activation": "任意発動",
-      "target": "単体（敵）",
-      "range": 1,
-      "cost": 4,
-      "description": "ロックオン中の敵に単体攻撃でダメージを与える。自身の残りHPが少ない程、ダメージが上昇する。"
-    },
-    "special_attack": {
-      "name": "ビーム・サーベル強撃",
-      "target": "単体（敵）",
-      "range": 2,
-      "sp_cost": 2,
-      "power": 3300,
-      "description": "敵単体に格闘攻撃でダメージを与える。",
-      "sp_type": "",
-      "echoes_beat": null,
-      "united_sp": null,
-      "squad_sp": null
-    }
-  },
-  "ocr_raw_file": "LINXTAGE_SEASON_04_LX04-016_ガンダム試作1号機フルバーニアン_ocr_raw.json",
-  "ocr_timestamp": "2026-03-07T18:21:59.641941",
-  "ocr_type": "basic",
-  "ocr_engine": "claude_code_cli_combined"
+    "ocr_raw_file": "LINXTAGE_SEASON_04_LX04-016_ガンダム試作1号機フルバーニアン_ocr_raw.json",
+    "ocr_timestamp": "2026-03-07T18:21:59.641941",
+    "ocr_type": "basic",
+    "ocr_engine": "claude_code_cli_combined"
 }

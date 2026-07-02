@@ -1,84 +1,84 @@
 {
-  "card_number": "FQB05-003",
-  "card_name": "グフ",
-  "series": "FQブースター5弾",
-  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQB05-003.jpg?v250630",
-  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQB05-003_b.jpg?v250630",
-  "ocr_data": {
-    "type": "MS",
-    "name": "グフ",
-    "cost": 4,
-    "rarity": "M",
-    "category": "近距離",
-    "affiliation": "ジオン公国軍",
-    "illustrator": "Moyasi",
-    "stats": {
-      "mobility": 220,
-      "ranged_attack": 100,
-      "melee_attack": 350,
-      "hp": 380
+    "card_number": "FQB05-003",
+    "card_name": "グフ",
+    "series": "FQブースター5弾",
+    "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQB05-003.jpg?v250630",
+    "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQB05-003_b.jpg?v250630",
+    "ocr_data": {
+        "type": "MS",
+        "name": "グフ",
+        "cost": 4,
+        "rarity": "M",
+        "category": "近距離",
+        "affiliation": "ジオン公国軍",
+        "illustrator": "Moyasi",
+        "stats": {
+            "mobility": 220,
+            "ranged_attack": 100,
+            "melee_attack": 350,
+            "hp": 380
+        },
+        "link_ability": [
+            {
+                "name": "機動戦士ガンダム",
+                "condition": "デッキに3枚以上",
+                "effect": "[機動力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            },
+            {
+                "name": "多彩な戦術",
+                "condition": "デッキに4枚以上",
+                "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            }
+        ],
+        "pilot": "ランバ・ラル",
+        "model": "MS-07B GOUF",
+        "terrain_compatibility": {
+            "ground": "S",
+            "space": "C",
+            "desert": "A",
+            "water": "C"
+        },
+        "weapon": {
+            "main": {
+                "name": "ヒート・サーベル",
+                "range": 1,
+                "type": "近距離"
+            },
+            "sub": {
+                "name": "フィンガー・バルカン",
+                "range": 2,
+                "type": "遠距離"
+            }
+        },
+        "ms_ability": {
+            "name": "増援[防衛]",
+            "activation": "任意発動",
+            "target": "特殊(自分)",
+            "range": null,
+            "cost": 4,
+            "description": "自身の周囲に防衛タイプの味方ユニットを呼び出す。※上限3ユニットまで。"
+        },
+        "special_attack": {
+            "name": "ヒート・サーベル強撃",
+            "target": "単体(敵)",
+            "range": 2,
+            "sp_cost": 2,
+            "power": 3400,
+            "description": "敵単体に格闘攻撃でダメージを与える。",
+            "sp_type": "",
+            "echoes_beat": null,
+            "united_sp": null,
+            "squad_sp": null
+        }
     },
-    "link_ability": [
-      {
-        "name": "機動戦士ガンダム",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      },
-      {
-        "name": "多彩な戦術",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      }
-    ],
-    "pilot": "ランバ・ラル",
-    "model": "MS-07B GOUF",
-    "terrain_compatibility": {
-      "ground": "S",
-      "space": "C",
-      "desert": "A",
-      "water": "C"
-    },
-    "weapon": {
-      "main": {
-        "name": "ヒート・サーベル",
-        "range": 1,
-        "type": "近距離"
-      },
-      "sub": {
-        "name": "フィンガー・バルカン",
-        "range": 2,
-        "type": "速距離"
-      }
-    },
-    "ms_ability": {
-      "name": "増援[防衛]",
-      "activation": "任意発動",
-      "target": "特殊(自分)",
-      "range": null,
-      "cost": 4,
-      "description": "自身の周囲に防衛タイプの味方ユニットを呼び出す。※上限3ユニットまで。"
-    },
-    "special_attack": {
-      "name": "ヒート・サーベル強撃",
-      "target": "単体(敵)",
-      "range": 2,
-      "sp_cost": 2,
-      "power": 3400,
-      "description": "敵単体に格闘攻撃でダメージを与える。",
-      "sp_type": "",
-      "echoes_beat": null,
-      "united_sp": null,
-      "squad_sp": null
-    }
-  },
-  "ocr_raw_file": "FQブースター5弾_FQB05-003_グフ_ocr_raw.json",
-  "ocr_timestamp": "2026-02-28T05:00:40.496484",
-  "ocr_type": "basic",
-  "ocr_engine": "claude_code_cli_combined"
+    "ocr_raw_file": "FQブースター5弾_FQB05-003_グフ_ocr_raw.json",
+    "ocr_timestamp": "2026-02-28T05:00:40.496484",
+    "ocr_type": "basic",
+    "ocr_engine": "claude_code_cli_combined"
 }

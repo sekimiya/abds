@@ -1,90 +1,86 @@
 {
-  "card_number": "VE02-035",
-  "card_name": "キケロガ（GQ）",
-  "series": "WAVECHOES SEASON:02",
-  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE02-035.jpg?v250630",
-  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE02-035_b.jpg?v250630",
-  "ocr_engine": "claude_code_subagent",
-  "ocr_type": "basic",
-  "ocr_timestamp": "2026-04-22T20:30:00.000000",
-  "ocr_data": {
-    "type": "MS",
-    "name": "キケロガ（GQ）",
-    "cost": 2,
-    "rarity": "M",
-    "category": "遠距離",
-    "affiliation": "ジオン公国軍",
-    "illustrator": "",
-    "stats": {
-      "mobility": 200,
-      "ranged_attack": 250,
-      "melee_attack": 0,
-      "hp": 320
-    },
-    "link_ability": [
-      {
-        "name": "GQuuuuuuX",
-        "condition": "デッキに3枚以上",
-        "effect": "[HP]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      },
-      {
-        "name": "戦況を変える力",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      }
-    ],
-    "pilot": "シャリア・ブル(0085)(GQ), シャリア・ブル(0079)(GQ)",
-    "model": "Kikeroga(GQ)",
-    "terrain_compatibility": {
-      "ground": "B",
-      "space": "S",
-      "desert": "B",
-      "water": "B"
-    },
-    "weapon": {
-      "main": {
-        "name": "メガ粒子砲",
-        "range": 4,
-        "type": "遠距離"
-      },
-      "sub": {
-        "name": "—",
-        "range": 0,
-        "type": "—"
-      }
-    },
-    "ms_ability": {
-      "name": "縛射",
-      "activation": "任意発動",
-      "target": "単体(敵)",
-      "range": 4,
-      "cost": 3,
-      "description": "ロックオン中の敵ユニットに単体攻撃を行いダメージを与え、一定時間スタンさせる。"
-    },
-    "special_attack": {
-      "name": "メガ粒子砲掃射",
-      "target": "範囲(敵)",
-      "range": 4,
-      "sp_cost": 3,
-      "power": 3200,
-      "description": "MS形態に変形し、自身を中心に半円状の範囲攻撃でダメージを与える。変形後は能力が上昇。自身が撤退するまで効果は持続する。",
-      "sp_type": "ECHOES BEAT",
-      "echoes_beat": {
-        "name": "メガ粒子砲掃射 Lv.1",
-        "level": 1,
-        "power": 3500,
-        "range": 4,
-        "target": "範囲(敵)",
-        "description": "EBLv.を1下げる。MS形態に変形し、自身を中心に半円状の範囲攻撃でダメージを与え、EBLv.が3に上昇する。変形後は能力が上昇。自身が撤退するまで効果は持続する。出撃時1度のみ使用可能。"
-      },
-      "united_sp": null,
-      "squad_sp": null
+    "card_number": "VE02-035",
+    "card_name": "キケロガ（GQ）",
+    "series": "WAVECHOES SEASON:02",
+    "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE02-035.jpg?v250630",
+    "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE02-035_b.jpg?v250630",
+    "ocr_engine": "claude_code_subagent",
+    "ocr_type": "basic",
+    "ocr_timestamp": "2026-04-22T20:30:00.000000",
+    "ocr_data": {
+        "type": "MS",
+        "name": "キケロガ（GQ）",
+        "cost": 2,
+        "rarity": "M",
+        "category": "遠距離",
+        "affiliation": "ジオン公国軍",
+        "illustrator": "",
+        "stats": {
+            "mobility": 200,
+            "ranged_attack": 250,
+            "melee_attack": 0,
+            "hp": 320
+        },
+        "link_ability": [
+            {
+                "name": "GQuuuuuuX",
+                "condition": "デッキに3枚以上",
+                "effect": "[HP]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            },
+            {
+                "name": "戦況を変える力",
+                "condition": "デッキに4枚以上",
+                "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            }
+        ],
+        "pilot": "シャリア・ブル(0085)(GQ), シャリア・ブル(0079)(GQ)",
+        "model": "Kikeroga(GQ)",
+        "terrain_compatibility": {
+            "ground": "B",
+            "space": "S",
+            "desert": "B",
+            "water": "B"
+        },
+        "weapon": {
+            "main": {
+                "name": "メガ粒子砲",
+                "range": 4,
+                "type": "遠距離"
+            },
+            "sub": null
+        },
+        "ms_ability": {
+            "name": "縛射",
+            "activation": "任意発動",
+            "target": "単体(敵)",
+            "range": 4,
+            "cost": 3,
+            "description": "ロックオン中の敵ユニットに単体攻撃を行いダメージを与え、一定時間スタンさせる。"
+        },
+        "special_attack": {
+            "name": "メガ粒子砲掃射",
+            "target": "範囲(敵)",
+            "range": 4,
+            "sp_cost": 3,
+            "power": 3200,
+            "description": "MS形態に変形し、自身を中心に半円状の範囲攻撃でダメージを与える。変形後は能力が上昇。自身が撤退するまで効果は持続する。",
+            "sp_type": "ECHOES BEAT",
+            "echoes_beat": {
+                "name": "メガ粒子砲掃射 Lv.1",
+                "level": 1,
+                "power": 3500,
+                "range": 4,
+                "target": "範囲(敵)",
+                "description": "EBLv.を1下げる。MS形態に変形し、自身を中心に半円状の範囲攻撃でダメージを与え、EBLv.が3に上昇する。変形後は能力が上昇。自身が撤退するまで効果は持続する。出撃時1度のみ使用可能。"
+            },
+            "united_sp": null,
+            "squad_sp": null
+        }
     }
-  }
 }

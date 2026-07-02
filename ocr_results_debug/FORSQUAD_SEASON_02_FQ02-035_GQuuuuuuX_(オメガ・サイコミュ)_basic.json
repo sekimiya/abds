@@ -1,72 +1,72 @@
 {
-  "card_number": "FQ02-035",
-  "card_name": "GQuuuuuuX (オメガ・サイコミュ)",
-  "series": "FORSQUAD SEASON:02",
-  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-035.jpg?v9",
-  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-035_b.jpg?v9",
-  "ocr_data": {
-    "type": "MS",
-    "name": "GQuuuuuuX (オメガ・サイコミュ)",
-    "cost": 2,
-    "rarity": "P",
-    "category": "機動",
-    "affiliation": "",
-    "illustrator": "ToMo",
-    "stats": {
-      "mobility": 270,
-      "ranged_attack": 0,
-      "melee_attack": 230,
-      "hp": 320
+    "card_number": "FQ02-035",
+    "card_name": "GQuuuuuuX (オメガ・サイコミュ)",
+    "series": "FORSQUAD SEASON:02",
+    "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-035.jpg?v9",
+    "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-035_b.jpg?v9",
+    "ocr_data": {
+        "type": "MS",
+        "name": "GQuuuuuuX (オメガ・サイコミュ)",
+        "cost": 2,
+        "rarity": "P",
+        "category": "機動",
+        "affiliation": "",
+        "illustrator": "ToMo",
+        "stats": {
+            "mobility": 270,
+            "ranged_attack": 0,
+            "melee_attack": 230,
+            "hp": 320
+        },
+        "link_ability": [
+            {
+                "name": "GQuuuuuuX",
+                "condition": "デッキに3枚以上",
+                "effect": "[HP]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            },
+            {
+                "name": "戦況を変える力",
+                "condition": "デッキに4枚以上",
+                "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            }
+        ],
+        "pilot": "アマテ・ユスリハ（マチュ）",
+        "model": "gMS-Ω GQuuuuuuX (Omega Psycommu)",
+        "terrain_compatibility": {
+            "ground": "A",
+            "space": "S",
+            "desert": "C",
+            "water": "A"
+        },
+        "weapon": {
+            "main": {
+                "name": "トメノスケ・ヒート・ホーク",
+                "range": 1,
+                "type": "近距離"
+            },
+            "sub": {
+                "name": "シールド",
+                "range": null,
+                "type": ""
+            }
+        },
+        "ms_ability": {
+            "name": "誘導",
+            "activation": "任意発動",
+            "target": "",
+            "range": 1,
+            "cost": 4,
+            "description": "25秒間、自身をロックオン距離内に捉えている敵ユニットのターゲットを自身に集める。"
+        },
+        "special_attack": null
     },
-    "link_ability": [
-      {
-        "name": "GQuuuuuuX",
-        "condition": "デッキに3枚以上",
-        "effect": "[HP]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      },
-      {
-        "name": "戦況を変える力",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      }
-    ],
-    "pilot": "アマテ・ユスリハ（マチュ）",
-    "model": "gMS-Ω GQuuuuuuX (Omega Psycommu)",
-    "terrain_compatibility": {
-      "ground": "A",
-      "space": "S",
-      "desert": "C",
-      "water": "A"
-    },
-    "weapon": {
-      "main": {
-        "name": "トメノスケ・ヒート・ホーク",
-        "range": 1,
-        "type": "近距離"
-      },
-      "sub": {
-        "name": "シールド",
-        "range": 2,
-        "type": "射程"
-      }
-    },
-    "ms_ability": {
-      "name": "誘導",
-      "activation": "任意発動",
-      "target": "",
-      "range": 1,
-      "cost": 4,
-      "description": "25秒間、自身をロックオン距離内に捉えている敵ユニットのターゲットを自身に集める。"
-    },
-    "special_attack": null
-  },
-  "ocr_timestamp": "2025-06-28T02:17:58.198012",
-  "ocr_type": "basic",
-  "ocr_engine": "claude_code_cli"
+    "ocr_timestamp": "2025-06-28T02:17:58.198012",
+    "ocr_type": "basic",
+    "ocr_engine": "claude_code_cli"
 }

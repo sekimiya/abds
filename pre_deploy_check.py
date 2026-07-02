@@ -180,6 +180,19 @@ def check_data_integrity():
         if len(errors) > 5:
             R.fail(f"  ... and {len(errors) - 5} more")
 
+    result = subprocess.run(
+        [sys.executable, 'normalize_ocr.py', '--check'],
+        capture_output=True, text=True, timeout=120
+    )
+    if result.returncode == 0:
+        R.ok("normalize_ocr.py --check: OCRソース正規形OK")
+    else:
+        lines = [l for l in result.stdout.strip().split('\n')
+                 if l.strip().startswith(('要正規化', 'バリデーション')) or ': ' in l]
+        R.fail("normalize_ocr.py --check: 非正規のOCRソースあり")
+        for l in lines[:8]:
+            R.fail(f"  {l.strip()}")
+
 
 # ============================================================
 # 4. フィルタテスト (test_filters.py)

@@ -1,84 +1,84 @@
 {
-  "card_number": "UT02-035",
-  "card_name": "ガンダムX魔王",
-  "series": "UNITRIBE SEASON:02",
-  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT02-035.jpg?v250630",
-  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT02-035_b.jpg?v250630",
-  "ocr_data": {
-    "type": "MS",
-    "name": "ガンダムX魔王",
-    "cost": 6,
-    "rarity": "P",
-    "category": "近距離",
-    "affiliation": "",
-    "illustrator": "Eske Yoshinob",
-    "stats": {
-      "mobility": 260,
-      "ranged_attack": 230,
-      "melee_attack": 500,
-      "hp": 560
+    "card_number": "UT02-035",
+    "card_name": "ガンダムX魔王",
+    "series": "UNITRIBE SEASON:02",
+    "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT02-035.jpg?v250630",
+    "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/UT02-035_b.jpg?v250630",
+    "ocr_data": {
+        "type": "MS",
+        "name": "ガンダムX魔王",
+        "cost": 6,
+        "rarity": "P",
+        "category": "近距離",
+        "affiliation": "",
+        "illustrator": "Eske Yoshinob",
+        "stats": {
+            "mobility": 260,
+            "ranged_attack": 230,
+            "melee_attack": 500,
+            "hp": 560
+        },
+        "link_ability": [
+            {
+                "name": "ビルドファイターズ",
+                "condition": "デッキに3枚以上",
+                "effect": "[機動力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            },
+            {
+                "name": "多彩な戦術",
+                "condition": "デッキに4枚以上",
+                "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            }
+        ],
+        "pilot": "ヤサカ・マオ",
+        "model": "GX-9999 GUNDAM X MAOH",
+        "terrain_compatibility": {
+            "ground": "A",
+            "space": "A",
+            "desert": "B",
+            "water": "B"
+        },
+        "weapon": {
+            "main": {
+                "name": "大型ビームソード",
+                "range": 1,
+                "type": "近距離"
+            },
+            "sub": {
+                "name": "シールドバスターライフル",
+                "range": 3,
+                "type": "遠距離"
+            }
+        },
+        "ms_ability": {
+            "name": "撃滅",
+            "activation": "任意発動",
+            "target": "単体(敵)",
+            "range": 2,
+            "cost": 4,
+            "description": "ロックオン中の敵に単体攻撃でダメージを与える。この攻撃で敵ユニットを撃破した場合、敵ユニットの修理時間を延長させる。"
+        },
+        "special_attack": {
+            "name": "魔王剣",
+            "target": "貫通(敵)",
+            "range": 3,
+            "sp_cost": 2,
+            "power": 3200,
+            "description": "射線上の敵に貫通格闘攻撃でダメージを与える。",
+            "sp_type": "",
+            "echoes_beat": null,
+            "united_sp": null,
+            "squad_sp": null
+        }
     },
-    "link_ability": [
-      {
-        "name": "ビルドファイターズ",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      },
-      {
-        "name": "多彩な戦術",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      }
-    ],
-    "pilot": "ヤサカ・マオ",
-    "model": "GX-9999 GUNDAM X MAOH",
-    "terrain_compatibility": {
-      "ground": "A",
-      "space": "A",
-      "desert": "B",
-      "water": "B"
-    },
-    "weapon": {
-      "main": {
-        "name": "大型ビームソード",
-        "range": 1,
-        "type": "近距離"
-      },
-      "sub": {
-        "name": "シールドバスターライフル",
-        "range": 3,
-        "type": "速距離"
-      }
-    },
-    "ms_ability": {
-      "name": "撃滅",
-      "activation": "任意発動",
-      "target": "単体(敵)",
-      "range": 2,
-      "cost": 4,
-      "description": "ロックオン中の敵に単体攻撃でダメージを与える。この攻撃で敵ユニットを撃破した場合、敵ユニットの修理時間を延長させる。"
-    },
-    "special_attack": {
-      "name": "魔王剣",
-      "target": "貫通(敵)",
-      "range": 3,
-      "sp_cost": 2,
-      "power": 3200,
-      "description": "射線上の敵に貫通格闘攻撃でダメージを与える。",
-      "sp_type": "",
-      "echoes_beat": null,
-      "united_sp": null,
-      "squad_sp": null
-    }
-  },
-  "ocr_raw_file": "UNITRIBE_SEASON_02_UT02-035_ガンダムX魔王_ocr_raw.json",
-  "ocr_timestamp": "2026-02-26T17:47:14.810870",
-  "ocr_type": "basic",
-  "ocr_engine": "claude_code_cli_combined"
+    "ocr_raw_file": "UNITRIBE_SEASON_02_UT02-035_ガンダムX魔王_ocr_raw.json",
+    "ocr_timestamp": "2026-02-26T17:47:14.810870",
+    "ocr_type": "basic",
+    "ocr_engine": "claude_code_cli_combined"
 }

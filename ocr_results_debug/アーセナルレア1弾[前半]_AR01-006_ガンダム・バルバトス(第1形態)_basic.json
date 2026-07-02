@@ -1,76 +1,76 @@
 {
-  "card_number": "AR01-006",
-  "card_name": "ガンダム・バルバトス(第1形態)",
-  "series": "アーセナルレア1弾[前半]",
-  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AR01-006.jpg?v250630",
-  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AR01-006_b.jpg?v250630",
-  "ocr_data": {
-    "type": "MS",
-    "name": "ガンダム・バルバトス(第1形態)",
-    "cost": 6,
-    "rarity": "A",
-    "category": "近距離",
-    "affiliation": "鉄華団",
-    "illustrator": "Naohiro Washio",
-    "stats": {
-      "mobility": 170,
-      "ranged_attack": 200,
-      "melee_attack": 380,
-      "hp": 400
+    "card_number": "AR01-006",
+    "card_name": "ガンダム・バルバトス(第1形態)",
+    "series": "アーセナルレア1弾[前半]",
+    "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AR01-006.jpg?v250630",
+    "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AR01-006_b.jpg?v250630",
+    "ocr_data": {
+        "type": "MS",
+        "name": "ガンダム・バルバトス(第1形態)",
+        "cost": 6,
+        "rarity": "A",
+        "category": "近距離",
+        "affiliation": "鉄華団",
+        "illustrator": "Naohiro Washio",
+        "stats": {
+            "mobility": 170,
+            "ranged_attack": 200,
+            "melee_attack": 380,
+            "hp": 400
+        },
+        "link_ability": [
+            {
+                "name": "鉄血のオルフェンズ",
+                "condition": "デッキに3枚以上",
+                "effect": "[近距離攻撃力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            }
+        ],
+        "pilot": "三日月・オーガス",
+        "model": "ASW-G-08 GUNDAM BARBATOS",
+        "terrain_compatibility": {
+            "ground": "S",
+            "space": "A",
+            "desert": "B",
+            "water": ""
+        },
+        "weapon": {
+            "main": {
+                "name": "メイス",
+                "range": 1,
+                "type": "近距離"
+            },
+            "sub": {
+                "name": "メイス（投擲）",
+                "range": 2,
+                "type": "遠距離"
+            }
+        },
+        "ms_ability": {
+            "name": "妨撃[近接]",
+            "activation": "任意発動",
+            "target": "単体(敵)",
+            "range": 1,
+            "cost": 4,
+            "description": "ロックオン中の敵ユニットに単体攻撃でダメージを与え、20秒間、[機動力][近距離攻撃力]を小ダウンする。"
+        },
+        "special_attack": {
+            "name": "メイス撃砕",
+            "target": "範囲(敵)",
+            "range": 2,
+            "sp_cost": 2,
+            "power": 3100,
+            "description": "対象の敵を中心とした小範囲に格闘攻撃でダメージを与える。",
+            "sp_type": "",
+            "echoes_beat": null,
+            "united_sp": null,
+            "squad_sp": null
+        }
     },
-    "link_ability": [
-      {
-        "name": "鉄血のオルフェンズ",
-        "condition": "デッキに3枚以上",
-        "effect": "[近距離攻撃力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      }
-    ],
-    "pilot": "三日月・オーガス",
-    "model": "ASW-G-08 GUNDAM BARBATOS",
-    "terrain_compatibility": {
-      "ground": "S",
-      "space": "A",
-      "desert": "B",
-      "water": ""
-    },
-    "weapon": {
-      "main": {
-        "name": "メイス",
-        "range": 1,
-        "type": "近距離"
-      },
-      "sub": {
-        "name": "メイス（投擲）",
-        "range": 2,
-        "type": "遠距離"
-      }
-    },
-    "ms_ability": {
-      "name": "妨撃[近接]",
-      "activation": "任意発動",
-      "target": "単体（敵）",
-      "range": 1,
-      "cost": 4,
-      "description": "ロックオン中の敵ユニットに単体攻撃でダメージを与え、20秒間、[機動力][近距離攻撃力]を小ダウンする。"
-    },
-    "special_attack": {
-      "name": "メイス撃砕",
-      "target": "範囲（敵）",
-      "range": 2,
-      "sp_cost": 2,
-      "power": 3100,
-      "description": "対象の敵を中心とした小範囲に格闘攻撃でダメージを与える。",
-      "sp_type": "",
-      "echoes_beat": null,
-      "united_sp": null,
-      "squad_sp": null
-    }
-  },
-  "ocr_raw_file": "アーセナルレア1弾[前半]_AR01-006_ガンダム・バルバトス(第1形態)_ocr_raw.json",
-  "ocr_timestamp": "2026-03-07T14:14:18.870796",
-  "ocr_type": "basic",
-  "ocr_engine": "claude_code_cli_combined"
+    "ocr_raw_file": "アーセナルレア1弾[前半]_AR01-006_ガンダム・バルバトス(第1形態)_ocr_raw.json",
+    "ocr_timestamp": "2026-03-07T14:14:18.870796",
+    "ocr_type": "basic",
+    "ocr_engine": "claude_code_cli_combined"
 }

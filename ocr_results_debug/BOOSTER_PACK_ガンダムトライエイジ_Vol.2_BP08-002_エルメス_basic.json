@@ -1,83 +1,79 @@
 {
-  "card_number": "BP08-002",
-  "card_name": "エルメス",
-  "series": "BOOSTER PACK ガンダムトライエイジ Vol.2",
-  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP08-002.jpg?v250630",
-  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP08-002_b.jpg?v250630",
-  "ocr_data": {
-    "type": "MS",
-    "name": "エルメス",
-    "cost": 6,
-    "rarity": "R",
-    "category": "遠距離",
-    "affiliation": "ジオン公国軍",
-    "illustrator": "Hideki Hoshino",
-    "stats": {
-      "mobility": 250,
-      "ranged_attack": 430,
-      "melee_attack": 0,
-      "hp": 490
+    "card_number": "BP08-002",
+    "card_name": "エルメス",
+    "series": "BOOSTER PACK ガンダムトライエイジ Vol.2",
+    "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP08-002.jpg?v250630",
+    "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP08-002_b.jpg?v250630",
+    "ocr_data": {
+        "type": "MS",
+        "name": "エルメス",
+        "cost": 6,
+        "rarity": "R",
+        "category": "遠距離",
+        "affiliation": "ジオン公国軍",
+        "illustrator": "Hideki Hoshino",
+        "stats": {
+            "mobility": 250,
+            "ranged_attack": 430,
+            "melee_attack": 0,
+            "hp": 490
+        },
+        "link_ability": [
+            {
+                "name": "トライエイジ",
+                "condition": "デッキに2枚以上",
+                "effect": "[HP]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            },
+            {
+                "name": "戦況を変える力",
+                "condition": "デッキに4枚以上",
+                "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            }
+        ],
+        "pilot": "ララァ・スン",
+        "model": "MAN-08 ELMETH",
+        "terrain_compatibility": {
+            "ground": "C",
+            "space": "S",
+            "desert": "B",
+            "water": "B"
+        },
+        "weapon": {
+            "main": {
+                "name": "ビット",
+                "range": 4,
+                "type": "遠距離"
+            },
+            "sub": null
+        },
+        "ms_ability": {
+            "name": "破閃",
+            "activation": "任意発動",
+            "target": "単体(敵)",
+            "range": 4,
+            "cost": 4,
+            "description": "ロックオン中の敵に単体攻撃でダメージを与える。この攻撃で敵ユニットにダメージを与えた場合、一定時間、被ダメージをアップする。"
+        },
+        "special_attack": {
+            "name": "ビット斉射",
+            "target": "単体(敵)",
+            "range": 4,
+            "sp_cost": 2,
+            "power": 3200,
+            "description": "敵単体に射撃攻撃でダメージを与える。",
+            "sp_type": "",
+            "echoes_beat": null,
+            "united_sp": null,
+            "squad_sp": null
+        }
     },
-    "link_ability": [
-      {
-        "name": "トライエイジ",
-        "condition": "デッキに2枚以上",
-        "effect": "[HP]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      },
-      {
-        "name": "戦況を変える力",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      }
-    ],
-    "pilot": "ララァ・スン",
-    "model": "MAN-08 ELMETH",
-    "terrain_compatibility": {
-      "ground": "C",
-      "space": "S",
-      "desert": "B",
-      "water": "B"
-    },
-    "weapon": {
-      "main": {
-        "name": "ビット",
-        "range": 4,
-        "type": "遠距離"
-      },
-      "sub": {
-        "name": "ー",
-        "range": null,
-        "type": null
-      }
-    },
-    "ms_ability": {
-      "name": "破閃",
-      "activation": "任意発動",
-      "target": "単体(敵)",
-      "range": 4,
-      "cost": 4,
-      "description": "ロックオン中の敵に単体攻撃でダメージを与える。この攻撃で敵ユニットにダメージを与えた場合、一定時間、被ダメージをアップする。"
-    },
-    "special_attack": {
-      "name": "ビット斉射",
-      "target": "単体(敵)",
-      "range": 4,
-      "sp_cost": 2,
-      "power": 3200,
-      "description": "敵単体に射撃攻撃でダメージを与える。",
-      "sp_type": "",
-      "echoes_beat": null,
-      "united_sp": null,
-      "squad_sp": null
-    }
-  },
-  "ocr_timestamp": "2026-06-02T12:30:00",
-  "ocr_type": "basic",
-  "ocr_engine": "claude_code_subagent"
+    "ocr_timestamp": "2026-06-02T12:30:00",
+    "ocr_type": "basic",
+    "ocr_engine": "claude_code_subagent"
 }

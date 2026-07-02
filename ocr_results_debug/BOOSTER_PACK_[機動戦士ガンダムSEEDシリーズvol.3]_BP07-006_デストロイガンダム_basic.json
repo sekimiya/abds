@@ -1,90 +1,86 @@
 {
-  "card_number": "BP07-006",
-  "card_name": "デストロイガンダム",
-  "series": "BOOSTER PACK [機動戦士ガンダムSEEDシリーズvol.3]",
-  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP07-006.jpg?v250630",
-  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP07-006_b.jpg?v250630",
-  "ocr_data": {
-    "type": "MS",
-    "name": "デストロイガンダム",
-    "cost": 4,
-    "rarity": "P",
-    "category": "遠距離",
-    "affiliation": "地球連合軍",
-    "illustrator": "",
-    "stats": {
-      "mobility": 210,
-      "ranged_attack": 370,
-      "melee_attack": 0,
-      "hp": 500
+    "card_number": "BP07-006",
+    "card_name": "デストロイガンダム",
+    "series": "BOOSTER PACK [機動戦士ガンダムSEEDシリーズvol.3]",
+    "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP07-006.jpg?v250630",
+    "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP07-006_b.jpg?v250630",
+    "ocr_data": {
+        "type": "MS",
+        "name": "デストロイガンダム",
+        "cost": 4,
+        "rarity": "P",
+        "category": "遠距離",
+        "affiliation": "地球連合軍",
+        "illustrator": "",
+        "stats": {
+            "mobility": 210,
+            "ranged_attack": 370,
+            "melee_attack": 0,
+            "hp": 500
+        },
+        "link_ability": [
+            {
+                "name": "SEED DESTINY",
+                "condition": "デッキに3枚以上",
+                "effect": "[HP]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            },
+            {
+                "name": "戦況を変える力",
+                "condition": "デッキに4枚以上",
+                "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            }
+        ],
+        "pilot": "ステラ・ルーシェ",
+        "model": "GFAS-X1 DESTROY GUNDAM",
+        "terrain_compatibility": {
+            "ground": "A",
+            "space": "A",
+            "desert": "C",
+            "water": "B"
+        },
+        "weapon": {
+            "main": {
+                "name": "アウフプラール・ドライツェーン",
+                "range": 4,
+                "type": "遠距離"
+            },
+            "sub": null
+        },
+        "ms_ability": {
+            "name": "断砕[貫通]",
+            "activation": "任意発動",
+            "target": "貫通(敵)",
+            "range": 4,
+            "cost": 4,
+            "description": "ロックオン中の敵に貫通射撃を行い、強化状態を無効化する。"
+        },
+        "special_attack": {
+            "name": "スーパースキュラ撃射",
+            "target": "貫通(敵)",
+            "range": 4,
+            "sp_cost": 2,
+            "power": 3000,
+            "description": "MS形態に変形、射線上の敵に貫通射撃でダメージを与える。変形後は能力が上昇、自身が撤退するまで効果は持続する。/EBLv.を1下げる。MS形態に変形、射線上の敵に貫通射撃でダメージを与え、EBLv.が3に上昇する。変形後は能力が上昇、自身が撤退するまで効果は持続する。出撃時1度のみ使用可能。",
+            "sp_type": "",
+            "echoes_beat": null,
+            "united_sp": {
+                "name": "スーパースキュラ撃射 Lv.1",
+                "partners": [],
+                "target": "貫通(敵)",
+                "range": 4,
+                "power": 3300,
+                "description": "EBLv.を1下げる。MS形態に変形、射線上の敵に貫通射撃でダメージを与え、EBLv.が3に上昇する。変形後は能力が上昇、自身が撤退するまで効果は持続する。出撃時1度のみ使用可能。"
+            },
+            "squad_sp": null
+        }
     },
-    "link_ability": [
-      {
-        "name": "SEED DESTINY",
-        "condition": "デッキに3枚以上",
-        "effect": "[HP]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      },
-      {
-        "name": "戦況を変える力",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      }
-    ],
-    "pilot": "ステラ・ルーシェ",
-    "model": "GFAS-X1 DESTROY GUNDAM",
-    "terrain_compatibility": {
-      "ground": "A",
-      "space": "A",
-      "desert": "C",
-      "water": "B"
-    },
-    "weapon": {
-      "main": {
-        "name": "アウフプラール・ドライツェーン",
-        "range": 4,
-        "type": "遠距離"
-      },
-      "sub": {
-        "name": "ー",
-        "range": null,
-        "type": ""
-      }
-    },
-    "ms_ability": {
-      "name": "断砕[貫通]",
-      "activation": "任意発動",
-      "target": "貫通(敵)",
-      "range": 4,
-      "cost": 4,
-      "description": "ロックオン中の敵に貫通射撃を行い、強化状態を無効化する。"
-    },
-    "special_attack": {
-      "name": "スーパースキュラ撃射",
-      "target": "貫通(敵)",
-      "range": 4,
-      "sp_cost": 2,
-      "power": 3000,
-      "description": "MS形態に変形、射線上の敵に貫通射撃でダメージを与える。変形後は能力が上昇、自身が撤退するまで効果は持続する。/EBLv.を1下げる。MS形態に変形、射線上の敵に貫通射撃でダメージを与え、EBLv.が3に上昇する。変形後は能力が上昇、自身が撤退するまで効果は持続する。出撃時1度のみ使用可能。",
-      "sp_type": "",
-      "echoes_beat": null,
-      "united_sp": {
-        "name": "スーパースキュラ撃射 Lv.1",
-        "partners": [],
-        "target": "貫通(敵)",
-        "range": 4,
-        "power": 3300,
-        "description": "EBLv.を1下げる。MS形態に変形、射線上の敵に貫通射撃でダメージを与え、EBLv.が3に上昇する。変形後は能力が上昇、自身が撤退するまで効果は持続する。出撃時1度のみ使用可能。"
-      },
-      "squad_sp": null
-    }
-  },
-  "ocr_timestamp": "2026-04-16T11:50:00.000000",
-  "ocr_type": "basic",
-  "ocr_engine": "claude_code_subagent"
+    "ocr_timestamp": "2026-04-16T11:50:00.000000",
+    "ocr_type": "basic",
+    "ocr_engine": "claude_code_subagent"
 }

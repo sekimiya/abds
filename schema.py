@@ -10,7 +10,227 @@ schema.py - OCRデータの正規スキーマ定義・正規化・バリデー�
 
 import re
 
-ACTIVATION_KEYWORDS = {'任意発動', '出撃時発動', '常時発動', '自動発動', 'デッキに2枚以上'}
+ACTIVATION_KEYWORDS = {'任意発動', '出撃時発動', '常時発動', '自動発動'}
+
+# ===== 値レベルの正規語彙 (canonical vocabulary) =====
+# 新規OCRデータはこの語彙に従うこと。エイリアスは normalize_ocr.py が自動変換し、
+# どちらにも該当しない値は validate_ocr_basic がエラーにする(CI/pre-pushで検出)。
+
+RARITY_ENUM = {'C', 'U', 'R', 'M', 'P', 'PR', 'A', 'LX', 'LE'}
+
+CATEGORY_ENUM = {
+    'MS': {'近距離', '遠距離', '機動'},
+    'PL': {'殲滅', '制圧', '防衛'},
+}
+
+# 防御はシールド系サブ武器の実在印字(AB01-008等で画像確認済み)
+WEAPON_TYPE_ENUM = {'近距離', '遠距離', '防御'}
+WEAPON_TYPE_ALIASES = {
+    '射撃': '遠距離',
+    '格闘': '近距離',
+    '遠距離攻撃': '遠距離',
+    '近距離攻撃': '近距離',
+    '中距離射撃': '遠距離',
+    '近接格闘': '近距離',
+    '速距離': '遠距離',  # 「遠」のOCR誤読(BP05-009等4件を画像確認済み)
+}
+
+# 全体(敵)はUT06-020 ∀ガンダム月光蝶、裸の「特殊」は同カードUNITED SP欄の実在印字
+TARGET_ENUM = {
+    '単体(敵)', '範囲(敵)', '貫通(敵)', '特殊(敵)', '全体(敵)',
+    '単体(味方)', '範囲(味方)', '特殊(味方)',
+    '自分', '特殊(自分)', '特殊',
+}
+TARGET_ALIASES = {
+    '敵単体': '単体(敵)',
+    '単体': '単体(敵)',
+    '単体(複)': '単体(敵)',   # VE01-013 誤読(画像確認済み)
+    '範囲(射撃)': '範囲(敵)',  # VE01-013 誤読(画像確認済み)
+    '自身': '自分',
+}
+
+ACTIVATION_ENUM = {'任意発動', '出撃時発動', '常時発動', '自動発動'}
+
+SP_TYPE_ENUM = {'', 'ECHOES BEAT', 'ECHOES BEAT SP', 'SQUAD SP', 'UNITED SP'}
+
+TERRAIN_ENUM = {'S', 'A', 'B', 'C'}
+
+DASH_CHARS = {'-', 'ー', '—', '−', '一'}
+
+# 標準形: デッキに3枚以上 / デッキに機動が2枚以上
+LINK_CONDITION_RE = re.compile(
+    r'^デッキに(?:(?:近距離|遠距離|機動|殲滅|制圧|防衛)が)?\d枚以上$')
+# 旧レイアウト(PR-001〜003等)の長文条件も許容
+LINK_CONDITION_LONG_RE = re.compile(r'^デッキに.+\d枚以上.*$')
+LINK_CONDITION_ALIASES = {
+    'デッキに機動力2枚以上': 'デッキに機動が2枚以上',
+    'デッキに遠距離2枚以上': 'デッキに遠距離が2枚以上',
+}
+
+
+def _canon_text(s):
+    """対象表記の機械的正規化: 全角括弧/スラッシュ→半角、スラッシュ周りの空白除去"""
+    if not isinstance(s, str):
+        return s
+    t = s.strip()
+    t = t.replace('（', '(').replace('）', ')').replace('／', '/')
+    t = re.sub(r'\s*/\s*', '/', t)
+    return t
+
+
+def _canon_target(val):
+    """target値を正規化して返す。複合値は '/' 区切りの各要素を個別に変換。
+    ダッシュ表記(対象欄がー印字)は空文字に。"""
+    if not isinstance(val, str) or not val:
+        return val
+    t = _canon_text(val)
+    if t in DASH_CHARS:
+        return ''
+    parts = [TARGET_ALIASES.get(p, p) for p in t.split('/')]
+    return '/'.join(parts)
+
+
+def _is_valid_target(val):
+    if val is None or val == '':
+        return True
+    if not isinstance(val, str):
+        return False
+    return all(p in TARGET_ENUM for p in val.split('/'))
+
+
+def _canon_weapon_type(val):
+    if not isinstance(val, str):
+        return val
+    t = _canon_text(val)
+    if t in DASH_CHARS:
+        return ''
+    return WEAPON_TYPE_ALIASES.get(t, t)
+
+
+def canonicalize_values(ocr):
+    """ocr_data内の値語彙を正規形に変換する。Returns: list[str] 変更内容"""
+    changes = []
+    if not isinstance(ocr, dict):
+        return changes
+
+    # weapon: type正規化 + 「武器なし」ダッシュ表記のスロットはnullに
+    w = ocr.get('weapon')
+    if isinstance(w, dict):
+        for slot in ('main', 'sub'):
+            s = w.get(slot)
+            if not isinstance(s, dict):
+                continue
+            name = (s.get('name') or '').strip()
+            if name in DASH_CHARS or name == '':
+                w[slot] = None
+                changes.append(f'weapon.{slot}: 空武器({name!r}) -> null')
+                continue
+            old_t = s.get('type')
+            new_t = _canon_weapon_type(old_t)
+            if new_t != old_t:
+                s['type'] = new_t
+                changes.append(f'weapon.{slot}.type: {old_t!r} -> {new_t!r}')
+
+    # ms_ability.target
+    msa = ocr.get('ms_ability')
+    if isinstance(msa, dict):
+        old = msa.get('target')
+        new = _canon_target(old)
+        if new != old:
+            msa['target'] = new
+            changes.append(f'ms_ability.target: {old!r} -> {new!r}')
+
+    # special_attack系のtarget (本体/echoes_beat/united_sp/squad_sp)
+    sp = ocr.get('special_attack')
+    if isinstance(sp, dict):
+        for path, obj in [('special_attack', sp),
+                          ('special_attack.echoes_beat', sp.get('echoes_beat')),
+                          ('special_attack.united_sp', sp.get('united_sp')),
+                          ('special_attack.squad_sp', sp.get('squad_sp'))]:
+            if not isinstance(obj, dict):
+                continue
+            old = obj.get('target')
+            new = _canon_target(old)
+            if new != old:
+                obj['target'] = new
+                changes.append(f'{path}.target: {old!r} -> {new!r}')
+
+    # link_ability.condition
+    for i, la in enumerate(ocr.get('link_ability') or []):
+        if not isinstance(la, dict):
+            continue
+        old = la.get('condition')
+        if isinstance(old, str):
+            new = LINK_CONDITION_ALIASES.get(old.strip(), old.strip())
+            if new != old:
+                la['condition'] = new
+                changes.append(f'link_ability[{i}].condition: {old!r} -> {new!r}')
+
+    return changes
+
+
+def validate_values(ocr, cn='?'):
+    """値語彙のバリデーション。エラーリストを返す(空=OK)。"""
+    errors = []
+    if not isinstance(ocr, dict):
+        return errors
+
+    card_type = ocr.get('type')
+
+    rarity = ocr.get('rarity')
+    if rarity and rarity not in RARITY_ENUM:
+        errors.append(f'{cn}: rarity {rarity!r} は正規値{sorted(RARITY_ENUM)}にない'
+                      '(パラレル種別SN/SECRET等はrarityに入れない)')
+
+    category = ocr.get('category')
+    if category and card_type in CATEGORY_ENUM and category not in CATEGORY_ENUM[card_type]:
+        errors.append(f'{cn}: category {category!r} は{card_type}の正規値'
+                      f'{sorted(CATEGORY_ENUM[card_type])}にない')
+
+    w = ocr.get('weapon')
+    if isinstance(w, dict):
+        for slot in ('main', 'sub'):
+            s = w.get(slot)
+            if isinstance(s, dict):
+                t = s.get('type')
+                if t and t not in WEAPON_TYPE_ENUM:
+                    errors.append(f'{cn}: weapon.{slot}.type {t!r} は正規値にない')
+
+    msa = ocr.get('ms_ability')
+    if isinstance(msa, dict):
+        act = msa.get('activation')
+        if act and act not in ACTIVATION_ENUM:
+            errors.append(f'{cn}: ms_ability.activation {act!r} は正規値にない')
+        if not _is_valid_target(msa.get('target')):
+            errors.append(f'{cn}: ms_ability.target {msa.get("target")!r} は正規値にない')
+
+    sp = ocr.get('special_attack')
+    if isinstance(sp, dict):
+        if not _is_valid_target(sp.get('target')):
+            errors.append(f'{cn}: special_attack.target {sp.get("target")!r} は正規値にない')
+        st = sp.get('sp_type')
+        if st is not None and st not in SP_TYPE_ENUM:
+            errors.append(f'{cn}: sp_type {st!r} は正規値にない')
+        for sub_key in ('echoes_beat', 'united_sp', 'squad_sp'):
+            obj = sp.get(sub_key)
+            if isinstance(obj, dict) and not _is_valid_target(obj.get('target')):
+                errors.append(f'{cn}: {sub_key}.target {obj.get("target")!r} は正規値にない')
+
+    tc = ocr.get('terrain_compatibility')
+    if isinstance(tc, dict):
+        for k, v in tc.items():
+            if v not in TERRAIN_ENUM and v not in (None, ''):
+                errors.append(f'{cn}: terrain.{k} {v!r} は正規値にない')
+
+    for i, la in enumerate(ocr.get('link_ability') or []):
+        if not isinstance(la, dict):
+            continue
+        cond = la.get('condition') or ''
+        if cond and not (LINK_CONDITION_RE.match(cond) or LINK_CONDITION_LONG_RE.match(cond)):
+            errors.append(f'{cn}: link_ability[{i}].condition {cond!r} が標準形'
+                          '「デッキにN枚以上」に合致しない')
+
+    return errors
 
 STAT_ALIASES = {
     'ranged': 'ranged_attack',
@@ -170,6 +390,8 @@ def normalize_ocr_data(data):
             if msa['type'] in ACTIVATION_KEYWORDS:
                 msa['activation'] = msa.pop('type')
                 changes.append('ms_ability.type -> ms_ability.activation')
+
+    changes.extend(canonicalize_values(ocr))
 
     return data, changes
 
@@ -560,6 +782,8 @@ def validate_ocr_basic(data):
             errors.append(f'{cn}: non-canonical "ms_ability.timing"')
         if 'type' in msa and 'activation' not in msa and msa['type'] in ACTIVATION_KEYWORDS:
             errors.append(f'{cn}: non-canonical "ms_ability.type" used as activation')
+
+    errors.extend(validate_values(ocr, cn))
 
     return errors
 

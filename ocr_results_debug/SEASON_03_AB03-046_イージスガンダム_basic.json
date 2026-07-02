@@ -1,76 +1,77 @@
 {
-  "card_number": "AB03-046",
-  "card_name": "イージスガンダム",
-  "series": "SEASON:03",
-  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB03-046.jpg?v250630",
-  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB03-046_b.jpg?v250630",
-  "ocr_data": {
-    "type": "MS",
-    "name": "イージスガンダム",
-    "cost": 7,
-    "rarity": "C",
-    "category": "近距離",
-    "affiliation": "ザフト",
-    "illustrator": "StudioVIGOR Co.,Ltd.",
-    "stats": {
-      "mobility": 290,
-      "ranged_attack": 230,
-      "melee_attack": 390,
-      "hp": 340
+    "card_number": "AB03-046",
+    "card_name": "イージスガンダム",
+    "series": "SEASON:03",
+    "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB03-046.jpg?v250630",
+    "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AB03-046_b.jpg?v250630",
+    "ocr_data": {
+        "type": "MS",
+        "name": "イージスガンダム",
+        "cost": 7,
+        "rarity": "C",
+        "category": "近距離",
+        "affiliation": "ザフト",
+        "illustrator": "StudioVIGOR Co.,Ltd.",
+        "stats": {
+            "mobility": 290,
+            "ranged_attack": 230,
+            "melee_attack": 390,
+            "hp": 340
+        },
+        "link_ability": [
+            {
+                "name": "ガンダムSEED",
+                "condition": "デッキに3枚以上",
+                "effect": "[機動力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            },
+            {
+                "name": "間合いを詰めた接近戦",
+                "condition": "デッキに2枚以上",
+                "effect": "[近距離攻撃力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            }
+        ],
+        "pilot": "アスラン・ザラ",
+        "model": "GAT-X303 AEGIS GUNDAM",
+        "terrain_compatibility": {
+            "ground": "A",
+            "space": "A",
+            "desert": "C",
+            "water": ""
+        },
+        "weapon": {
+            "main": {
+                "name": "ビームサーベル",
+                "range": 1,
+                "type": "近距離"
+            },
+            "sub": {
+                "name": "高エネルギービームライフル",
+                "range": 3,
+                "type": "遠距離"
+            }
+        },
+        "ms_ability": null,
+        "special_attack": {
+            "name": "ビームサーベル強撃",
+            "target": "単体(敵)",
+            "range": 2,
+            "sp_cost": 2,
+            "power": 3400,
+            "description": "敵単体に格闘攻撃でダメージを与える。",
+            "sp_type": "",
+            "echoes_beat": null,
+            "united_sp": null,
+            "squad_sp": null
+        }
     },
-    "link_ability": [
-      {
-        "name": "ガンダムSEED",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      }
-    ],
-    "pilot": "アスラン・ザラ",
-    "model": "GAT-X303 AEGIS GUNDAM",
-    "terrain_compatibility": {
-      "ground": "A",
-      "space": "A",
-      "desert": "C",
-      "water": ""
-    },
-    "weapon": {
-      "main": {
-        "name": "ビームサーベル",
-        "range": 1,
-        "type": "近距離"
-      },
-      "sub": {
-        "name": "高エネルギービームライフル",
-        "range": 3,
-        "type": "遠距離"
-      }
-    },
-    "ms_ability": {
-      "name": "間合いを詰めた接近戦",
-      "activation": "デッキに2枚以上",
-      "target": "",
-      "range": null,
-      "cost": null,
-      "description": "[近距離攻撃力]小アップ"
-    },
-    "special_attack": {
-      "name": "ビームサーベル強撃",
-      "target": "単体(敵)",
-      "range": 2,
-      "sp_cost": 2,
-      "power": 3400,
-      "description": "敵単体に格闘攻撃でダメージを与える。",
-      "sp_type": "",
-      "echoes_beat": null,
-      "united_sp": null,
-      "squad_sp": null
-    }
-  },
-  "ocr_raw_file": "SEASON_03_AB03-046_イージスガンダム_ocr_raw.json",
-  "ocr_timestamp": "2026-02-23T15:16:08.217171",
-  "ocr_type": "basic",
-  "ocr_engine": "claude_code_cli"
+    "ocr_raw_file": "SEASON_03_AB03-046_イージスガンダム_ocr_raw.json",
+    "ocr_timestamp": "2026-02-23T15:16:08.217171",
+    "ocr_type": "basic",
+    "ocr_engine": "claude_code_cli"
 }

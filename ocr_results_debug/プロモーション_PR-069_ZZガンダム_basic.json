@@ -1,84 +1,84 @@
 {
-  "card_number": "PR-069",
-  "card_name": "ZZガンダム",
-  "series": "プロモーション",
-  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-069.jpg?v250630",
-  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-069_b.jpg?v250630",
-  "ocr_data": {
-    "type": "MS",
-    "name": "ZZガンダム",
-    "cost": 4,
-    "rarity": "PR",
-    "category": "遠距離",
-    "affiliation": "エゥーゴ",
-    "illustrator": "Tatsumi Takuan",
-    "stats": {
-      "mobility": 270,
-      "ranged_attack": 350,
-      "melee_attack": 110,
-      "hp": 320
+    "card_number": "PR-069",
+    "card_name": "ZZガンダム",
+    "series": "プロモーション",
+    "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-069.jpg?v250630",
+    "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-069_b.jpg?v250630",
+    "ocr_data": {
+        "type": "MS",
+        "name": "ZZガンダム",
+        "cost": 4,
+        "rarity": "PR",
+        "category": "遠距離",
+        "affiliation": "エゥーゴ",
+        "illustrator": "Tatsumi Takuan",
+        "stats": {
+            "mobility": 270,
+            "ranged_attack": 350,
+            "melee_attack": 110,
+            "hp": 320
+        },
+        "link_ability": [
+            {
+                "name": "機動戦士ガンダムZZ",
+                "condition": "デッキに3枚以上",
+                "effect": "[HP]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            },
+            {
+                "name": "戦況を変える力",
+                "condition": "デッキに4枚以上",
+                "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            }
+        ],
+        "pilot": "ジュドー・アーシタ",
+        "model": "MSZ-010 ZZ GUNDAM",
+        "terrain_compatibility": {
+            "ground": "A",
+            "space": "S",
+            "desert": "B",
+            "water": ""
+        },
+        "weapon": {
+            "main": {
+                "name": "ダブル・ビーム・ライフル",
+                "range": 3,
+                "type": "遠距離"
+            },
+            "sub": {
+                "name": "ハイパー・ビーム・サーベル",
+                "range": 1,
+                "type": "近距離"
+            }
+        },
+        "ms_ability": {
+            "name": "全弾発射",
+            "activation": "任意発動",
+            "target": "範囲(敵)",
+            "range": 3,
+            "cost": 5,
+            "description": "ロックオン中の敵を中心に扇状の範囲攻撃を行い、範囲内の敵にダメージを与え、以後通常攻撃がサブ武装のみになる。"
+        },
+        "special_attack": {
+            "name": "ダブル・ビーム・ライフル撃射",
+            "target": "単体(敵)",
+            "range": 3,
+            "sp_cost": 2,
+            "power": 3300,
+            "description": "敵単体に射撃攻撃でダメージを与える。",
+            "sp_type": "",
+            "echoes_beat": null,
+            "united_sp": null,
+            "squad_sp": null
+        }
     },
-    "link_ability": [
-      {
-        "name": "機動戦士ガンダムZZ",
-        "condition": "デッキに3枚以上",
-        "effect": "[HP]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      },
-      {
-        "name": "戦況を変える力",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      }
-    ],
-    "pilot": "ジュドー・アーシタ",
-    "model": "MSZ-010 ZZ GUNDAM",
-    "terrain_compatibility": {
-      "ground": "A",
-      "space": "S",
-      "desert": "B",
-      "water": ""
-    },
-    "weapon": {
-      "main": {
-        "name": "ダブル・ビーム・ライフル",
-        "range": 3,
-        "type": "遠距離"
-      },
-      "sub": {
-        "name": "ハイパー・ビーム・サーベル",
-        "range": 1,
-        "type": "近距離"
-      }
-    },
-    "ms_ability": {
-      "name": "全弾発射",
-      "activation": "任意発動",
-      "target": "範囲（敵）",
-      "range": 3,
-      "cost": 5,
-      "description": "ロックオン中の敵を中心に扇状の範囲攻撃を行い、範囲内の敵にダメージを与え、以後通常攻撃がサブ武装のみになる。"
-    },
-    "special_attack": {
-      "name": "ダブル・ビーム・ライフル撃射",
-      "target": "単体（敵）",
-      "range": 3,
-      "sp_cost": 2,
-      "power": 3300,
-      "description": "敵単体に射撃攻撃でダメージを与える。",
-      "sp_type": "",
-      "echoes_beat": null,
-      "united_sp": null,
-      "squad_sp": null
-    }
-  },
-  "ocr_raw_file": "プロモーション_PR-069_ZZガンダム_ocr_raw.json",
-  "ocr_timestamp": "2026-03-07T12:51:36.798913",
-  "ocr_type": "basic",
-  "ocr_engine": "claude_code_cli_combined"
+    "ocr_raw_file": "プロモーション_PR-069_ZZガンダム_ocr_raw.json",
+    "ocr_timestamp": "2026-03-07T12:51:36.798913",
+    "ocr_type": "basic",
+    "ocr_engine": "claude_code_cli_combined"
 }

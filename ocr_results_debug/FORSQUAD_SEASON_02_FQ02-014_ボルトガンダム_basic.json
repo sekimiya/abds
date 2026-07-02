@@ -1,81 +1,81 @@
 {
-  "card_number": "FQ02-014",
-  "card_name": "ボルトガンダム",
-  "series": "FORSQUAD SEASON:02",
-  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-014.jpg?v9",
-  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-014_b.jpg?v9",
-  "ocr_data": {
-    "type": "MS",
-    "name": "ボルトガンダム",
-    "cost": 3,
-    "rarity": "P",
-    "category": "近距離",
-    "affiliation": "",
-    "illustrator": "K2 Shoukai",
-    "stats": {
-      "mobility": 220,
-      "ranged_attack": 0,
-      "melee_attack": 310,
-      "hp": 420
+    "card_number": "FQ02-014",
+    "card_name": "ボルトガンダム",
+    "series": "FORSQUAD SEASON:02",
+    "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-014.jpg?v9",
+    "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/FQ02-014_b.jpg?v9",
+    "ocr_data": {
+        "type": "MS",
+        "name": "ボルトガンダム",
+        "cost": 3,
+        "rarity": "P",
+        "category": "近距離",
+        "affiliation": "",
+        "illustrator": "K2 Shoukai",
+        "stats": {
+            "mobility": 220,
+            "ranged_attack": 0,
+            "melee_attack": 310,
+            "hp": 420
+        },
+        "link_ability": [
+            {
+                "name": "Gガンダム",
+                "condition": "デッキに3枚以上",
+                "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            },
+            {
+                "name": "黄金のMF",
+                "condition": "デッキに3枚以上",
+                "effect": "[機動力][HP]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            }
+        ],
+        "pilot": "アルゴ・ガルスキー",
+        "model": "GF13-013NR BOLT GUNDAM",
+        "terrain_compatibility": {
+            "ground": "A",
+            "space": "B",
+            "desert": "A",
+            "water": "B"
+        },
+        "weapon": {
+            "main": {
+                "name": "グラビトンハンマー",
+                "range": 2,
+                "type": "近距離"
+            },
+            "sub": {
+                "name": "シールド",
+                "range": 0,
+                "type": ""
+            }
+        },
+        "ms_ability": {
+            "name": "鼓舞[近距離][弱体化解除]",
+            "activation": "任意発動",
+            "target": "",
+            "range": 0,
+            "cost": 6,
+            "description": "自身を中心とした大範囲内の味方ユニットの弱体化状態を無効化し、30秒間、[近距離攻撃力]を中アップする。"
+        },
+        "special_attack": null
     },
-    "link_ability": [
-      {
-        "name": "Gガンダム",
-        "condition": "デッキに3枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      },
-      {
-        "name": "黄金のMF",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力][HP]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      }
+    "ocr_timestamp": "2025-06-28T01:56:48.817485",
+    "ocr_type": "basic",
+    "ocr_engine": "claude_code_cli",
+    "_fix_history": [
+        {
+            "timestamp": "2026-03-03T23:46:52",
+            "changes": [
+                "ms_ability.name: \"鼓舞【近距離】[弱体化解除]\" → \"鼓舞[近距離][弱体化解除]\""
+            ]
+        }
     ],
-    "pilot": "アルゴ・ガルスキー",
-    "model": "GF13-013NR BOLT GUNDAM",
-    "terrain_compatibility": {
-      "ground": "A",
-      "space": "B",
-      "desert": "A",
-      "water": "B"
-    },
-    "weapon": {
-      "main": {
-        "name": "グラビトンハンマー",
-        "range": 2,
-        "type": "近距離"
-      },
-      "sub": {
-        "name": "シールド",
-        "range": 0,
-        "type": "-"
-      }
-    },
-    "ms_ability": {
-      "name": "鼓舞[近距離][弱体化解除]",
-      "activation": "任意発動",
-      "target": "",
-      "range": 0,
-      "cost": 6,
-      "description": "自身を中心とした大範囲内の味方ユニットの弱体化状態を無効化し、30秒間、[近距離攻撃力]を中アップする。"
-    },
-    "special_attack": null
-  },
-  "ocr_timestamp": "2025-06-28T01:56:48.817485",
-  "ocr_type": "basic",
-  "ocr_engine": "claude_code_cli",
-  "_fix_history": [
-    {
-      "timestamp": "2026-03-03T23:46:52",
-      "changes": [
-        "ms_ability.name: \"鼓舞【近距離】[弱体化解除]\" → \"鼓舞[近距離][弱体化解除]\""
-      ]
-    }
-  ],
-  "_fixed": true
+    "_fixed": true
 }

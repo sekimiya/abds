@@ -1,84 +1,84 @@
 {
-  "card_number": "BP01-008",
-  "card_name": "ザクウォーリア(ライブ仕様)",
-  "series": "BOOSTER PACK [機動戦士ガンダムSEEDシリーズ]",
-  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP01-008.jpg?v250630",
-  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP01-008_b.jpg?v250630",
-  "ocr_data": {
-    "type": "MS",
-    "name": "ザクウォーリア(ライブ仕様)",
-    "cost": 1,
-    "rarity": "M",
-    "category": "機動",
-    "affiliation": "ザフト",
-    "illustrator": "kenko",
-    "stats": {
-      "mobility": 250,
-      "ranged_attack": 150,
-      "melee_attack": 100,
-      "hp": 250
+    "card_number": "BP01-008",
+    "card_name": "ザクウォーリア(ライブ仕様)",
+    "series": "BOOSTER PACK [機動戦士ガンダムSEEDシリーズ]",
+    "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP01-008.jpg?v250630",
+    "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/BP01-008_b.jpg?v250630",
+    "ocr_data": {
+        "type": "MS",
+        "name": "ザクウォーリア(ライブ仕様)",
+        "cost": 1,
+        "rarity": "M",
+        "category": "機動",
+        "affiliation": "ザフト",
+        "illustrator": "kenko",
+        "stats": {
+            "mobility": 250,
+            "ranged_attack": 150,
+            "melee_attack": 100,
+            "hp": 250
+        },
+        "link_ability": [
+            {
+                "name": "SEED DESTINY",
+                "condition": "デッキに3枚以上",
+                "effect": "[HP]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            },
+            {
+                "name": "魅惑のステージ",
+                "condition": "デッキに2枚以上",
+                "effect": "[機動力][HP]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            }
+        ],
+        "pilot": "",
+        "model": "ZGMF-1000 ZAKU WARRIOR [LIVE CONCERT VERSION]",
+        "terrain_compatibility": {
+            "ground": "A",
+            "space": "A",
+            "desert": "C",
+            "water": "A"
+        },
+        "weapon": {
+            "main": {
+                "name": "手榴弾（ハンドグレネード）",
+                "range": 3,
+                "type": "遠距離"
+            },
+            "sub": {
+                "name": "格闘",
+                "range": 1,
+                "type": "近距離"
+            }
+        },
+        "ms_ability": {
+            "name": "キュア★ライブ",
+            "activation": "任意発動",
+            "target": "範囲(味方)",
+            "range": null,
+            "cost": 5,
+            "description": "自身を中心とした大範囲の味方ユニットのHPを中回復し、弱体化状態を無効化する。"
+        },
+        "special_attack": {
+            "name": "★親・衛・隊★",
+            "target": "範囲(敵)",
+            "range": 4,
+            "sp_cost": 2,
+            "power": 500,
+            "description": "ロックオン中の敵を中心に扇状の範囲攻撃を行い、強化状態を無効化する。",
+            "sp_type": "",
+            "echoes_beat": null,
+            "united_sp": null,
+            "squad_sp": null
+        }
     },
-    "link_ability": [
-      {
-        "name": "SEED DESTINY",
-        "condition": "デッキに3枚以上",
-        "effect": "[HP]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      },
-      {
-        "name": "魅惑のステージ",
-        "condition": "デッキに2枚以上",
-        "effect": "[機動力][HP]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      }
-    ],
-    "pilot": "",
-    "model": "ZGMF-1000 ZAKU WARRIOR [LIVE CONCERT VERSION]",
-    "terrain_compatibility": {
-      "ground": "A",
-      "space": "A",
-      "desert": "C",
-      "water": "A"
-    },
-    "weapon": {
-      "main": {
-        "name": "手榴弾（ハンドグレネード）",
-        "range": 3,
-        "type": "遠距離"
-      },
-      "sub": {
-        "name": "格闘",
-        "range": 1,
-        "type": "近距離"
-      }
-    },
-    "ms_ability": {
-      "name": "キュア★ライブ",
-      "activation": "任意発動",
-      "target": "範囲（味方）",
-      "range": null,
-      "cost": 5,
-      "description": "自身を中心とした大範囲の味方ユニットのHPを中回復し、弱体化状態を無効化する。"
-    },
-    "special_attack": {
-      "name": "★親・衛・隊★",
-      "target": "範囲（敵）",
-      "range": 4,
-      "sp_cost": 2,
-      "power": 500,
-      "description": "ロックオン中の敵を中心に扇状の範囲攻撃を行い、強化状態を無効化する。",
-      "sp_type": "",
-      "echoes_beat": null,
-      "united_sp": null,
-      "squad_sp": null
-    }
-  },
-  "ocr_raw_file": "BOOSTER_PACK_[機動戦士ガンダムSEEDシリーズ]_BP01-008_ザクウォーリア(ライブ仕様)_ocr_raw.json",
-  "ocr_timestamp": "2026-03-03T23:59:02.457198",
-  "ocr_type": "basic",
-  "ocr_engine": "claude_code_cli_combined"
+    "ocr_raw_file": "BOOSTER_PACK_[機動戦士ガンダムSEEDシリーズ]_BP01-008_ザクウォーリア(ライブ仕様)_ocr_raw.json",
+    "ocr_timestamp": "2026-03-03T23:59:02.457198",
+    "ocr_type": "basic",
+    "ocr_engine": "claude_code_cli_combined"
 }

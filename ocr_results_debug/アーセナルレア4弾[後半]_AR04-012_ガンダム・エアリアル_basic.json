@@ -1,84 +1,84 @@
 {
-  "card_number": "AR04-012",
-  "card_name": "ガンダム・エアリアル",
-  "series": "アーセナルレア4弾[後半]",
-  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AR04-012.jpg?v250630",
-  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AR04-012_b.jpg?v250630",
-  "ocr_data": {
-    "type": "MS",
-    "name": "ガンダム・エアリアル",
-    "cost": 4,
-    "rarity": "A",
-    "category": "機動",
-    "affiliation": "シン・セー開発公社",
-    "illustrator": "Gas1",
-    "stats": {
-      "mobility": 290,
-      "ranged_attack": 300,
-      "melee_attack": 200,
-      "hp": 260
+    "card_number": "AR04-012",
+    "card_name": "ガンダム・エアリアル",
+    "series": "アーセナルレア4弾[後半]",
+    "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AR04-012.jpg?v250630",
+    "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AR04-012_b.jpg?v250630",
+    "ocr_data": {
+        "type": "MS",
+        "name": "ガンダム・エアリアル",
+        "cost": 4,
+        "rarity": "A",
+        "category": "機動",
+        "affiliation": "シン・セー開発公社",
+        "illustrator": "Gas1",
+        "stats": {
+            "mobility": 290,
+            "ranged_attack": 300,
+            "melee_attack": 200,
+            "hp": 260
+        },
+        "link_ability": [
+            {
+                "name": "水星の魔女",
+                "condition": "デッキに3枚以上",
+                "effect": "[機動力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            },
+            {
+                "name": "オールレンジ兵器",
+                "condition": "デッキに2枚以上",
+                "effect": "[遠距離攻撃力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            }
+        ],
+        "pilot": "スレッタ・マーキュリー",
+        "model": "XVX-016 GUNDAM AERIAL",
+        "terrain_compatibility": {
+            "ground": "A",
+            "space": "A",
+            "desert": "C",
+            "water": ""
+        },
+        "weapon": {
+            "main": {
+                "name": "ビームライフル",
+                "range": 3,
+                "type": "遠距離"
+            },
+            "sub": {
+                "name": "ビームサーベル",
+                "range": 1,
+                "type": "近距離"
+            }
+        },
+        "ms_ability": {
+            "name": "オールレンジ",
+            "activation": "任意発動",
+            "target": "範囲(敵)",
+            "range": 4,
+            "cost": 4,
+            "description": "30秒間、自身の周囲の敵ユニットに継続的にダメージを与える。"
+        },
+        "special_attack": {
+            "name": "ビットステイヴ斉射",
+            "target": "単体(敵)",
+            "range": 4,
+            "sp_cost": 2,
+            "power": 3300,
+            "description": "敵単体に射撃攻撃でダメージを与える。",
+            "sp_type": "",
+            "echoes_beat": null,
+            "united_sp": null,
+            "squad_sp": null
+        }
     },
-    "link_ability": [
-      {
-        "name": "水星の魔女",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      },
-      {
-        "name": "オールレンジ兵器",
-        "condition": "デッキに2枚以上",
-        "effect": "[遠距離攻撃力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      }
-    ],
-    "pilot": "スレッタ・マーキュリー",
-    "model": "XVX-016 GUNDAM AERIAL",
-    "terrain_compatibility": {
-      "ground": "A",
-      "space": "A",
-      "desert": "C",
-      "water": ""
-    },
-    "weapon": {
-      "main": {
-        "name": "ビームライフル",
-        "range": 3,
-        "type": "遠距離"
-      },
-      "sub": {
-        "name": "ビームサーベル",
-        "range": 1,
-        "type": "近距離"
-      }
-    },
-    "ms_ability": {
-      "name": "オールレンジ",
-      "activation": "任意発動",
-      "target": "範囲（敵）",
-      "range": 4,
-      "cost": 4,
-      "description": "30秒間、自身の周囲の敵ユニットに継続的にダメージを与える。"
-    },
-    "special_attack": {
-      "name": "ビットステイヴ斉射",
-      "target": "単体（敵）",
-      "range": 4,
-      "sp_cost": 2,
-      "power": 3300,
-      "description": "敵単体に射撃攻撃でダメージを与える。",
-      "sp_type": "",
-      "echoes_beat": null,
-      "united_sp": null,
-      "squad_sp": null
-    }
-  },
-  "ocr_raw_file": "アーセナルレア4弾[後半]_AR04-012_ガンダム・エアリアル_ocr_raw.json",
-  "ocr_timestamp": "2026-03-07T15:37:12.144638",
-  "ocr_type": "basic",
-  "ocr_engine": "claude_code_cli_combined"
+    "ocr_raw_file": "アーセナルレア4弾[後半]_AR04-012_ガンダム・エアリアル_ocr_raw.json",
+    "ocr_timestamp": "2026-03-07T15:37:12.144638",
+    "ocr_type": "basic",
+    "ocr_engine": "claude_code_cli_combined"
 }

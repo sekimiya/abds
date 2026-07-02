@@ -96,6 +96,11 @@ def main():
         print(f'\n非正規ファイルが{result["modified"]}件あります。normalize_ocr.py を実行してください。')
         sys.exit(1)
 
+    if args.check and result['validation_errors']:
+        print(f'\nバリデーションエラーが{len(result["validation_errors"])}件あります。'
+              'エイリアスで自動変換できない値は手動で修正してください。')
+        sys.exit(1)
+
     if not args.dry_run and not args.check and result['modified'] > 0:
         print(f'\n{result["modified"]}ファイルを正規化しました。')
 

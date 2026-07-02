@@ -1,84 +1,84 @@
 {
-  "card_number": "LX02-043",
-  "card_name": "ファルシア",
-  "series": "LINXTAGE SEASON:02",
-  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX02-043.jpg?v250630",
-  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX02-043_b.jpg?v250630",
-  "ocr_data": {
-    "type": "MS",
-    "name": "ファルシア",
-    "cost": 5,
-    "rarity": "R",
-    "category": "機動",
-    "affiliation": "ヴェイガン",
-    "illustrator": "kazumasa yasukuni",
-    "stats": {
-      "mobility": 190,
-      "ranged_attack": 280,
-      "melee_attack": 130,
-      "hp": 300
+    "card_number": "LX02-043",
+    "card_name": "ファルシア",
+    "series": "LINXTAGE SEASON:02",
+    "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX02-043.jpg?v250630",
+    "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX02-043_b.jpg?v250630",
+    "ocr_data": {
+        "type": "MS",
+        "name": "ファルシア",
+        "cost": 5,
+        "rarity": "R",
+        "category": "機動",
+        "affiliation": "ヴェイガン",
+        "illustrator": "kazumasa yasukuni",
+        "stats": {
+            "mobility": 190,
+            "ranged_attack": 280,
+            "melee_attack": 130,
+            "hp": 300
+        },
+        "link_ability": [
+            {
+                "name": "ガンダムAGE",
+                "condition": "デッキに3枚以上",
+                "effect": "[遠距離攻撃力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            },
+            {
+                "name": "オールレンジ兵器",
+                "condition": "デッキに2枚以上",
+                "effect": "[遠距離攻撃力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            }
+        ],
+        "pilot": "ユリン・ルシェル",
+        "model": "xvb-xd FARSIA",
+        "terrain_compatibility": {
+            "ground": "A",
+            "space": "A",
+            "desert": "C",
+            "water": "C"
+        },
+        "weapon": {
+            "main": {
+                "name": "ビームバルカン",
+                "range": 3,
+                "type": "遠距離"
+            },
+            "sub": {
+                "name": "ファルシアソード",
+                "range": 1,
+                "type": "近距離"
+            }
+        },
+        "ms_ability": {
+            "name": "オールレンジ[妨撃]",
+            "activation": "任意発動",
+            "target": "範囲(敵)",
+            "range": 4,
+            "cost": 3,
+            "description": "30秒間、自身の周囲の敵ユニットに継続的にダメージを与え、[遠距離攻撃力][近距離攻撃力]を小ダウンする。"
+        },
+        "special_attack": {
+            "name": "ビームバルカン射撃",
+            "target": "単体(敵)",
+            "range": 3,
+            "sp_cost": 2,
+            "power": 3300,
+            "description": "敵単体に射撃攻撃でダメージを与える。",
+            "sp_type": "",
+            "echoes_beat": null,
+            "united_sp": null,
+            "squad_sp": null
+        }
     },
-    "link_ability": [
-      {
-        "name": "ガンダムAGE",
-        "condition": "デッキに3枚以上",
-        "effect": "[遠距離攻撃力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      },
-      {
-        "name": "オールレンジ兵器",
-        "condition": "デッキに2枚以上",
-        "effect": "[遠距離攻撃力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      }
-    ],
-    "pilot": "ユリン・ルシェル",
-    "model": "xvb-xd FARSIA",
-    "terrain_compatibility": {
-      "ground": "A",
-      "space": "A",
-      "desert": "C",
-      "water": "C"
-    },
-    "weapon": {
-      "main": {
-        "name": "ビームバルカン",
-        "range": 3,
-        "type": "遠距離"
-      },
-      "sub": {
-        "name": "ファルシアソード",
-        "range": 1,
-        "type": "近距離"
-      }
-    },
-    "ms_ability": {
-      "name": "オールレンジ[妨撃]",
-      "activation": "任意発動",
-      "target": "範囲（敵）",
-      "range": 4,
-      "cost": 3,
-      "description": "30秒間、自身の周囲の敵ユニットに継続的にダメージを与え、[遠距離攻撃力][近距離攻撃力]を小ダウンする。"
-    },
-    "special_attack": {
-      "name": "ビームバルカン射撃",
-      "target": "単体（敵）",
-      "range": 3,
-      "sp_cost": 2,
-      "power": 3300,
-      "description": "敵単体に射撃攻撃でダメージを与える。",
-      "sp_type": "",
-      "echoes_beat": null,
-      "united_sp": null,
-      "squad_sp": null
-    }
-  },
-  "ocr_raw_file": "LINXTAGE_SEASON_02_LX02-043_ファルシア_ocr_raw.json",
-  "ocr_timestamp": "2026-03-07T16:07:28.510453",
-  "ocr_type": "basic",
-  "ocr_engine": "claude_code_cli_combined"
+    "ocr_raw_file": "LINXTAGE_SEASON_02_LX02-043_ファルシア_ocr_raw.json",
+    "ocr_timestamp": "2026-03-07T16:07:28.510453",
+    "ocr_type": "basic",
+    "ocr_engine": "claude_code_cli_combined"
 }

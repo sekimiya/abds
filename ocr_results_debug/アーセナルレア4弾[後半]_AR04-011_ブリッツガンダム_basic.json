@@ -1,84 +1,84 @@
 {
-  "card_number": "AR04-011",
-  "card_name": "ブリッツガンダム",
-  "series": "アーセナルレア4弾[後半]",
-  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AR04-011.jpg?v250630",
-  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AR04-011_b.jpg?v250630",
-  "ocr_data": {
-    "type": "MS",
-    "name": "ブリッツガンダム",
-    "cost": 2,
-    "rarity": "A",
-    "category": "近距離",
-    "affiliation": "ザフト",
-    "illustrator": "Yoichi Fukano",
-    "stats": {
-      "mobility": 210,
-      "ranged_attack": 50,
-      "melee_attack": 250,
-      "hp": 240
+    "card_number": "AR04-011",
+    "card_name": "ブリッツガンダム",
+    "series": "アーセナルレア4弾[後半]",
+    "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/AR04-011.jpg?v250630",
+    "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/AR04-011_b.jpg?v250630",
+    "ocr_data": {
+        "type": "MS",
+        "name": "ブリッツガンダム",
+        "cost": 2,
+        "rarity": "A",
+        "category": "近距離",
+        "affiliation": "ザフト",
+        "illustrator": "Yoichi Fukano",
+        "stats": {
+            "mobility": 210,
+            "ranged_attack": 50,
+            "melee_attack": 250,
+            "hp": 240
+        },
+        "link_ability": [
+            {
+                "name": "ガンダムSEED",
+                "condition": "デッキに3枚以上",
+                "effect": "[機動力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            },
+            {
+                "name": "間合いを詰めた接近戦",
+                "condition": "デッキに2枚以上",
+                "effect": "[近距離攻撃力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            }
+        ],
+        "pilot": "ニコル・アマルフィ",
+        "model": "GAT-X207 BLITZ GUNDAM",
+        "terrain_compatibility": {
+            "ground": "A",
+            "space": "A",
+            "desert": "C",
+            "water": ""
+        },
+        "weapon": {
+            "main": {
+                "name": "ビームサーベル",
+                "range": 1,
+                "type": "近距離"
+            },
+            "sub": {
+                "name": "高エネルギービームライフル",
+                "range": 3,
+                "type": "遠距離"
+            }
+        },
+        "ms_ability": {
+            "name": "妨害[機動]",
+            "activation": "出撃時発動",
+            "target": "範囲(敵)",
+            "range": null,
+            "cost": null,
+            "description": "20秒間、自身を中心とした大範囲内の敵ユニットの[機動力]を小ダウンする。"
+        },
+        "special_attack": {
+            "name": "ビームサーベル強撃",
+            "target": "単体(敵)",
+            "range": 2,
+            "sp_cost": 2,
+            "power": 3300,
+            "description": "敵単体に格闘攻撃でダメージを与える。",
+            "sp_type": "",
+            "echoes_beat": null,
+            "united_sp": null,
+            "squad_sp": null
+        }
     },
-    "link_ability": [
-      {
-        "name": "ガンダムSEED",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      },
-      {
-        "name": "間合いを詰めた接近戦",
-        "condition": "デッキに2枚以上",
-        "effect": "[近距離攻撃力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      }
-    ],
-    "pilot": "ニコル・アマルフィ",
-    "model": "GAT-X207 BLITZ GUNDAM",
-    "terrain_compatibility": {
-      "ground": "A",
-      "space": "A",
-      "desert": "C",
-      "water": ""
-    },
-    "weapon": {
-      "main": {
-        "name": "ビームサーベル",
-        "range": 1,
-        "type": "近距離"
-      },
-      "sub": {
-        "name": "高エネルギービームライフル",
-        "range": 3,
-        "type": "遠距離"
-      }
-    },
-    "ms_ability": {
-      "name": "妨害[機動]",
-      "activation": "出撃時発動",
-      "target": "範囲（敵）",
-      "range": null,
-      "cost": null,
-      "description": "20秒間、自身を中心とした大範囲内の敵ユニットの[機動力]を小ダウンする。"
-    },
-    "special_attack": {
-      "name": "ビームサーベル強撃",
-      "target": "単体（敵）",
-      "range": 2,
-      "sp_cost": 2,
-      "power": 3300,
-      "description": "敵単体に格闘攻撃でダメージを与える。",
-      "sp_type": "",
-      "echoes_beat": null,
-      "united_sp": null,
-      "squad_sp": null
-    }
-  },
-  "ocr_raw_file": "アーセナルレア4弾[後半]_AR04-011_ブリッツガンダム_ocr_raw.json",
-  "ocr_timestamp": "2026-03-07T15:36:23.100957",
-  "ocr_type": "basic",
-  "ocr_engine": "claude_code_cli_combined"
+    "ocr_raw_file": "アーセナルレア4弾[後半]_AR04-011_ブリッツガンダム_ocr_raw.json",
+    "ocr_timestamp": "2026-03-07T15:36:23.100957",
+    "ocr_type": "basic",
+    "ocr_engine": "claude_code_cli_combined"
 }

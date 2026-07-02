@@ -1,84 +1,84 @@
 {
-  "card_number": "LX04-059",
-  "card_name": "ウイニングガンダム",
-  "series": "LINXTAGE SEASON:04",
-  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX04-059.jpg?v250630",
-  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX04-059_b.jpg?v250630",
-  "ocr_data": {
-    "type": "MS",
-    "name": "ウイニングガンダム",
-    "cost": 3,
-    "rarity": "M",
-    "category": "遠距離",
-    "affiliation": "トライ・ファイターズ",
-    "illustrator": "robomisutya",
-    "stats": {
-      "mobility": 200,
-      "ranged_attack": 230,
-      "melee_attack": 100,
-      "hp": 320
+    "card_number": "LX04-059",
+    "card_name": "ウイニングガンダム",
+    "series": "LINXTAGE SEASON:04",
+    "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX04-059.jpg?v250630",
+    "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX04-059_b.jpg?v250630",
+    "ocr_data": {
+        "type": "MS",
+        "name": "ウイニングガンダム",
+        "cost": 3,
+        "rarity": "M",
+        "category": "遠距離",
+        "affiliation": "トライ・ファイターズ",
+        "illustrator": "robomisutya",
+        "stats": {
+            "mobility": 200,
+            "ranged_attack": 230,
+            "melee_attack": 100,
+            "hp": 320
+        },
+        "link_ability": [
+            {
+                "name": "トライ",
+                "condition": "デッキに3枚以上",
+                "effect": "[HP]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            },
+            {
+                "name": "的確な一撃",
+                "condition": "デッキに4枚以上",
+                "effect": "[機動力][遠距離攻撃力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            }
+        ],
+        "pilot": "ホシノ・フミナ",
+        "model": "SD-237 WINNING GUNDAM",
+        "terrain_compatibility": {
+            "ground": "A",
+            "space": "A",
+            "desert": "B",
+            "water": "B"
+        },
+        "weapon": {
+            "main": {
+                "name": "ビームマシンガン",
+                "range": 3,
+                "type": "遠距離"
+            },
+            "sub": {
+                "name": "バズーカ",
+                "range": 1,
+                "type": "近距離"
+            }
+        },
+        "ms_ability": {
+            "name": "奇襲",
+            "activation": "任意発動",
+            "target": "範囲(敵)",
+            "range": null,
+            "cost": 6,
+            "description": "指定した位置に範囲攻撃を行い、その地点に移動する。"
+        },
+        "special_attack": {
+            "name": "ビームボウガン撃射",
+            "target": "単体(敵)",
+            "range": 3,
+            "sp_cost": 2,
+            "power": 3300,
+            "description": "敵単体に射撃攻撃でダメージを与える。",
+            "sp_type": "",
+            "echoes_beat": null,
+            "united_sp": null,
+            "squad_sp": null
+        }
     },
-    "link_ability": [
-      {
-        "name": "トライ",
-        "condition": "デッキに3枚以上",
-        "effect": "[HP]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      },
-      {
-        "name": "的確な一撃",
-        "condition": "デッキに4枚以上",
-        "effect": "[機動力][遠距離攻撃力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      }
-    ],
-    "pilot": "ホシノ・フミナ",
-    "model": "SD-237 WINNING GUNDAM",
-    "terrain_compatibility": {
-      "ground": "A",
-      "space": "A",
-      "desert": "B",
-      "water": "B"
-    },
-    "weapon": {
-      "main": {
-        "name": "ビームマシンガン",
-        "range": 3,
-        "type": "遠距離"
-      },
-      "sub": {
-        "name": "バズーカ",
-        "range": 1,
-        "type": "近距離"
-      }
-    },
-    "ms_ability": {
-      "name": "奇襲",
-      "activation": "任意発動",
-      "target": "範囲（敵）",
-      "range": null,
-      "cost": 6,
-      "description": "指定した位置に範囲攻撃を行い、その地点に移動する。"
-    },
-    "special_attack": {
-      "name": "ビームボウガン撃射",
-      "target": "単体（敵）",
-      "range": 3,
-      "sp_cost": 2,
-      "power": 3300,
-      "description": "敵単体に射撃攻撃でダメージを与える。",
-      "sp_type": "",
-      "echoes_beat": null,
-      "united_sp": null,
-      "squad_sp": null
-    }
-  },
-  "ocr_raw_file": "LINXTAGE_SEASON_04_LX04-059_ウイニングガンダム_ocr_raw.json",
-  "ocr_timestamp": "2026-03-07T19:16:12.072054",
-  "ocr_type": "basic",
-  "ocr_engine": "claude_code_cli_combined"
+    "ocr_raw_file": "LINXTAGE_SEASON_04_LX04-059_ウイニングガンダム_ocr_raw.json",
+    "ocr_timestamp": "2026-03-07T19:16:12.072054",
+    "ocr_type": "basic",
+    "ocr_engine": "claude_code_cli_combined"
 }

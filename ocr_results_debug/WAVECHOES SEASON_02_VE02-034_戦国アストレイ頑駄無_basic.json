@@ -1,90 +1,90 @@
 {
-  "card_number": "VE02-034",
-  "card_name": "戦国アストレイ頑駄無",
-  "series": "WAVECHOES SEASON:02",
-  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE02-034.jpg?v250630",
-  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE02-034_b.jpg?v250630",
-  "ocr_engine": "claude_code_subagent",
-  "ocr_type": "basic",
-  "ocr_timestamp": "2026-04-22T20:30:00.000000",
-  "ocr_data": {
-    "type": "MS",
-    "name": "戦国アストレイ頑駄無",
-    "cost": 5,
-    "rarity": "C",
-    "category": "近距離",
-    "affiliation": "—",
-    "illustrator": "",
-    "stats": {
-      "mobility": 290,
-      "ranged_attack": 70,
-      "melee_attack": 360,
-      "hp": 390
-    },
-    "link_ability": [
-      {
-        "name": "ビルドファイターズ",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      },
-      {
-        "name": "多彩な戦術",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      }
-    ],
-    "pilot": "ニルス・ニールセン",
-    "model": "侍ノ弐 SENGOKU ASTRAY GUNDAM",
-    "terrain_compatibility": {
-      "ground": "S",
-      "space": "A",
-      "desert": "B",
-      "water": "B"
-    },
-    "weapon": {
-      "main": {
-        "name": "サムライソード二刀流",
-        "range": 1,
-        "type": "近距離"
-      },
-      "sub": {
-        "name": "サムライソード二刀流(衝撃波)",
-        "range": 3,
-        "type": "遠距離"
-      }
-    },
-    "ms_ability": {
-      "name": "瞬撃",
-      "activation": "任意発動",
-      "target": "範囲(敵)",
-      "range": 5,
-      "cost": 4,
-      "description": "射程範囲内の指定した位置に小範囲攻撃を行い、範囲内の敵にダメージを与える。"
-    },
-    "special_attack": {
-      "name": "サムライソード二刀流強撃",
-      "target": "単体(敵)",
-      "range": 2,
-      "sp_cost": 2,
-      "power": 3300,
-      "description": "敵単体に格闘攻撃でダメージを与える。",
-      "sp_type": "ECHOES BEAT",
-      "echoes_beat": {
-        "name": "—",
-        "level": null,
-        "power": 0,
-        "range": 0,
-        "target": "—",
-        "description": "/—"
-      },
-      "united_sp": null,
-      "squad_sp": null
+    "card_number": "VE02-034",
+    "card_name": "戦国アストレイ頑駄無",
+    "series": "WAVECHOES SEASON:02",
+    "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE02-034.jpg?v250630",
+    "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE02-034_b.jpg?v250630",
+    "ocr_engine": "claude_code_subagent",
+    "ocr_type": "basic",
+    "ocr_timestamp": "2026-04-22T20:30:00.000000",
+    "ocr_data": {
+        "type": "MS",
+        "name": "戦国アストレイ頑駄無",
+        "cost": 5,
+        "rarity": "C",
+        "category": "近距離",
+        "affiliation": "—",
+        "illustrator": "",
+        "stats": {
+            "mobility": 290,
+            "ranged_attack": 70,
+            "melee_attack": 360,
+            "hp": 390
+        },
+        "link_ability": [
+            {
+                "name": "ビルドファイターズ",
+                "condition": "デッキに3枚以上",
+                "effect": "[機動力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            },
+            {
+                "name": "多彩な戦術",
+                "condition": "デッキに4枚以上",
+                "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            }
+        ],
+        "pilot": "ニルス・ニールセン",
+        "model": "侍ノ弐 SENGOKU ASTRAY GUNDAM",
+        "terrain_compatibility": {
+            "ground": "S",
+            "space": "A",
+            "desert": "B",
+            "water": "B"
+        },
+        "weapon": {
+            "main": {
+                "name": "サムライソード二刀流",
+                "range": 1,
+                "type": "近距離"
+            },
+            "sub": {
+                "name": "サムライソード二刀流(衝撃波)",
+                "range": 3,
+                "type": "遠距離"
+            }
+        },
+        "ms_ability": {
+            "name": "瞬撃",
+            "activation": "任意発動",
+            "target": "範囲(敵)",
+            "range": 5,
+            "cost": 4,
+            "description": "射程範囲内の指定した位置に小範囲攻撃を行い、範囲内の敵にダメージを与える。"
+        },
+        "special_attack": {
+            "name": "サムライソード二刀流強撃",
+            "target": "単体(敵)",
+            "range": 2,
+            "sp_cost": 2,
+            "power": 3300,
+            "description": "敵単体に格闘攻撃でダメージを与える。",
+            "sp_type": "ECHOES BEAT",
+            "echoes_beat": {
+                "name": "—",
+                "level": null,
+                "power": 0,
+                "range": 0,
+                "target": "",
+                "description": "/—"
+            },
+            "united_sp": null,
+            "squad_sp": null
+        }
     }
-  }
 }

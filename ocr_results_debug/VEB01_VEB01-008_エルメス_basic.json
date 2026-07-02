@@ -1,90 +1,86 @@
 {
-  "card_number": "VEB01-008",
-  "card_name": "エルメス",
-  "series": "VEB01",
-  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/VEB01-008.jpg?v250630",
-  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/VEB01-008_b.jpg?v250630",
-  "ocr_data": {
-    "type": "MS",
-    "name": "エルメス",
-    "cost": 4,
-    "rarity": "U",
-    "category": "遠距離",
-    "affiliation": "ジオン公国軍",
-    "illustrator": "Chifuyu Yukishiro",
-    "stats": {
-      "mobility": 250,
-      "ranged_attack": 400,
-      "melee_attack": 0,
-      "hp": 480
+    "card_number": "VEB01-008",
+    "card_name": "エルメス",
+    "series": "VEB01",
+    "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/VEB01-008.jpg?v250630",
+    "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/VEB01-008_b.jpg?v250630",
+    "ocr_data": {
+        "type": "MS",
+        "name": "エルメス",
+        "cost": 4,
+        "rarity": "U",
+        "category": "遠距離",
+        "affiliation": "ジオン公国軍",
+        "illustrator": "Chifuyu Yukishiro",
+        "stats": {
+            "mobility": 250,
+            "ranged_attack": 400,
+            "melee_attack": 0,
+            "hp": 480
+        },
+        "link_ability": [
+            {
+                "name": "機動戦士ガンダム",
+                "condition": "デッキに3枚以上",
+                "effect": "[機動力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            },
+            {
+                "name": "戦況を変える力",
+                "condition": "デッキに4枚以上",
+                "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            }
+        ],
+        "pilot": "ララァ・スン",
+        "model": "MAN-08 ELMETH",
+        "terrain_compatibility": {
+            "ground": "C",
+            "space": "S",
+            "desert": "B",
+            "water": "B"
+        },
+        "weapon": {
+            "main": {
+                "name": "ビット",
+                "range": 4,
+                "type": "遠距離"
+            },
+            "sub": null
+        },
+        "ms_ability": {
+            "name": "断砕[広角]",
+            "activation": "任意発動",
+            "target": "範囲(敵)",
+            "range": 4,
+            "cost": 4,
+            "description": "ロックオン中の敵を中心に扇状の範囲攻撃を行い、強化状態を無効化する。"
+        },
+        "special_attack": {
+            "name": "ビット斉射",
+            "target": "単体(敵)",
+            "range": 4,
+            "sp_cost": 2,
+            "power": 3400,
+            "description": "敵単体に射撃攻撃でダメージを与え、一定時間、敵ユニットの[遠距離攻撃力][近距離攻撃力]をダウンする。",
+            "sp_type": "ECHOES BEAT SP",
+            "echoes_beat": {
+                "name": "光る宇宙 Lv.3",
+                "level": 3,
+                "power": 4900,
+                "range": 4,
+                "target": "貫通(敵)",
+                "description": "EBLv.を3下げる。ロックオン中の敵に貫通射撃でダメージを与え、メイン武装を使用不能にし、自身の[機動力][遠距離攻撃力]をアップする。この効果は解除できない。出撃時1度のみ使用可能。"
+            },
+            "united_sp": null,
+            "squad_sp": null
+        }
     },
-    "link_ability": [
-      {
-        "name": "機動戦士ガンダム",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      },
-      {
-        "name": "戦況を変える力",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      }
-    ],
-    "pilot": "ララァ・スン",
-    "model": "MAN-08 ELMETH",
-    "terrain_compatibility": {
-      "ground": "C",
-      "space": "S",
-      "desert": "B",
-      "water": "B"
-    },
-    "weapon": {
-      "main": {
-        "name": "ビット",
-        "range": 4,
-        "type": "遠距離"
-      },
-      "sub": {
-        "name": "",
-        "range": null,
-        "type": ""
-      }
-    },
-    "ms_ability": {
-      "name": "断砕[広角]",
-      "activation": "任意発動",
-      "target": "範囲(敵)",
-      "range": 4,
-      "cost": 4,
-      "description": "ロックオン中の敵を中心に扇状の範囲攻撃を行い、強化状態を無効化する。"
-    },
-    "special_attack": {
-      "name": "ビット斉射",
-      "target": "単体(敵)",
-      "range": 4,
-      "sp_cost": 2,
-      "power": 3400,
-      "description": "敵単体に射撃攻撃でダメージを与え、一定時間、敵ユニットの[遠距離攻撃力][近距離攻撃力]をダウンする。",
-      "sp_type": "ECHOES BEAT SP",
-      "echoes_beat": {
-        "name": "光る宇宙 Lv.3",
-        "level": 3,
-        "power": 4900,
-        "range": 4,
-        "target": "貫通(敵)",
-        "description": "EBLv.を3下げる。ロックオン中の敵に貫通射撃でダメージを与え、メイン武装を使用不能にし、自身の[機動力][遠距離攻撃力]をアップする。この効果は解除できない。出撃時1度のみ使用可能。"
-      },
-      "united_sp": null,
-      "squad_sp": null
-    }
-  },
-  "ocr_timestamp": "2026-03-27T02:30:00",
-  "ocr_type": "basic",
-  "ocr_engine": "claude_code_cli"
+    "ocr_timestamp": "2026-03-27T02:30:00",
+    "ocr_type": "basic",
+    "ocr_engine": "claude_code_cli"
 }

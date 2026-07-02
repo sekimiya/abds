@@ -1,84 +1,84 @@
 {
-  "card_number": "LX02-026",
-  "card_name": "マーメイドガンダム",
-  "series": "LINXTAGE SEASON:02",
-  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX02-026.jpg?v250630",
-  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX02-026_b.jpg?v250630",
-  "ocr_data": {
-    "type": "MS",
-    "name": "マーメイドガンダム",
-    "cost": 6,
-    "rarity": "R",
-    "category": "遠距離",
-    "affiliation": "ネオデンマーク",
-    "illustrator": "Hayaken-sarena",
-    "stats": {
-      "mobility": 190,
-      "ranged_attack": 280,
-      "melee_attack": 250,
-      "hp": 330
+    "card_number": "LX02-026",
+    "card_name": "マーメイドガンダム",
+    "series": "LINXTAGE SEASON:02",
+    "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX02-026.jpg?v250630",
+    "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX02-026_b.jpg?v250630",
+    "ocr_data": {
+        "type": "MS",
+        "name": "マーメイドガンダム",
+        "cost": 6,
+        "rarity": "R",
+        "category": "遠距離",
+        "affiliation": "ネオデンマーク",
+        "illustrator": "Hayaken-sarena",
+        "stats": {
+            "mobility": 190,
+            "ranged_attack": 280,
+            "melee_attack": 250,
+            "hp": 330
+        },
+        "link_ability": [
+            {
+                "name": "Gガンダム",
+                "condition": "デッキに3枚以上",
+                "effect": "[近距離攻撃力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            },
+            {
+                "name": "距離をとった射撃戦",
+                "condition": "デッキに2枚以上",
+                "effect": "[遠距離攻撃力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            }
+        ],
+        "pilot": "ハンス・ホルガー",
+        "model": "GF13-026ND MERMAID GUNDAM",
+        "terrain_compatibility": {
+            "ground": "A",
+            "space": "C",
+            "desert": "B",
+            "water": "S"
+        },
+        "weapon": {
+            "main": {
+                "name": "ビーム・トライデント",
+                "range": 3,
+                "type": "遠距離"
+            },
+            "sub": {
+                "name": "マーメイド・トライデント",
+                "range": 1,
+                "type": "近距離"
+            }
+        },
+        "ms_ability": {
+            "name": "縛射",
+            "activation": "任意発動",
+            "target": "単体(敵)",
+            "range": 3,
+            "cost": 3,
+            "description": "ロックオン中の敵ユニットに単体攻撃を行いダメージを与え、一定時間スタンさせる。"
+        },
+        "special_attack": {
+            "name": "ビーム・トライデント撃射",
+            "target": "単体(敵)",
+            "range": 3,
+            "sp_cost": 2,
+            "power": 3300,
+            "description": "敵単体に射撃攻撃でダメージを与える。",
+            "sp_type": "",
+            "echoes_beat": null,
+            "united_sp": null,
+            "squad_sp": null
+        }
     },
-    "link_ability": [
-      {
-        "name": "Gガンダム",
-        "condition": "デッキに3枚以上",
-        "effect": "[近距離攻撃力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      },
-      {
-        "name": "距離をとった射撃戦",
-        "condition": "デッキに2枚以上",
-        "effect": "[遠距離攻撃力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      }
-    ],
-    "pilot": "ハンス・ホルガー",
-    "model": "GF13-026ND MERMAID GUNDAM",
-    "terrain_compatibility": {
-      "ground": "A",
-      "space": "C",
-      "desert": "B",
-      "water": "S"
-    },
-    "weapon": {
-      "main": {
-        "name": "ビーム・トライデント",
-        "range": 3,
-        "type": "遠距離"
-      },
-      "sub": {
-        "name": "マーメイド・トライデント",
-        "range": 1,
-        "type": "近距離"
-      }
-    },
-    "ms_ability": {
-      "name": "縛射",
-      "activation": "任意発動",
-      "target": "単体（敵）",
-      "range": 3,
-      "cost": 3,
-      "description": "ロックオン中の敵ユニットに単体攻撃を行いダメージを与え、一定時間スタンさせる。"
-    },
-    "special_attack": {
-      "name": "ビーム・トライデント撃射",
-      "target": "単体（敵）",
-      "range": 3,
-      "sp_cost": 2,
-      "power": 3300,
-      "description": "敵単体に射撃攻撃でダメージを与える。",
-      "sp_type": "",
-      "echoes_beat": null,
-      "united_sp": null,
-      "squad_sp": null
-    }
-  },
-  "ocr_raw_file": "LINXTAGE_SEASON_02_LX02-026_マーメイドガンダム_ocr_raw.json",
-  "ocr_timestamp": "2026-03-07T15:55:33.917130",
-  "ocr_type": "basic",
-  "ocr_engine": "claude_code_cli_combined"
+    "ocr_raw_file": "LINXTAGE_SEASON_02_LX02-026_マーメイドガンダム_ocr_raw.json",
+    "ocr_timestamp": "2026-03-07T15:55:33.917130",
+    "ocr_type": "basic",
+    "ocr_engine": "claude_code_cli_combined"
 }

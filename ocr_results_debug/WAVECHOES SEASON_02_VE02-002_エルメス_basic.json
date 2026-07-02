@@ -1,90 +1,86 @@
 {
-  "card_number": "VE02-002",
-  "card_name": "エルメス",
-  "series": "WAVECHOES SEASON:02",
-  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE02-002.jpg?v250630",
-  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE02-002_b.jpg?v250630",
-  "ocr_engine": "claude_code_subagent",
-  "ocr_type": "basic",
-  "ocr_timestamp": "2026-04-22T20:30:00.000000",
-  "ocr_data": {
-    "type": "MS",
-    "name": "エルメス",
-    "cost": 3,
-    "rarity": "C",
-    "category": "遠距離",
-    "affiliation": "ジオン公国軍",
-    "illustrator": "",
-    "stats": {
-      "mobility": 200,
-      "ranged_attack": 280,
-      "melee_attack": 0,
-      "hp": 280
-    },
-    "link_ability": [
-      {
-        "name": "機動戦士ガンダム",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      },
-      {
-        "name": "戦況を変える力",
-        "condition": "デッキに4枚以上",
-        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      }
-    ],
-    "pilot": "ララァ・スン",
-    "model": "MAN-08 ELMETH",
-    "terrain_compatibility": {
-      "ground": "C",
-      "space": "S",
-      "desert": "B",
-      "water": "B"
-    },
-    "weapon": {
-      "main": {
-        "name": "ビット",
-        "range": 4,
-        "type": "遠距離"
-      },
-      "sub": {
-        "name": "",
-        "range": null,
-        "type": ""
-      }
-    },
-    "ms_ability": {
-      "name": "再縮",
-      "activation": "任意発動",
-      "target": "範囲(味方)",
-      "range": null,
-      "cost": 2,
-      "description": "自身を中心とした大範囲内にいる、自身を除く味方ユニットのMSアビリティのクールタイムを、一定時間短縮する。"
-    },
-    "special_attack": {
-      "name": "ビット斉射",
-      "target": "単体(敵)",
-      "range": 4,
-      "sp_cost": 2,
-      "power": 3000,
-      "description": "敵単体に射撃攻撃でダメージを与える。",
-      "sp_type": "ECHOES BEAT SP",
-      "echoes_beat": {
-        "name": "光る宇宙",
-        "level": 3,
-        "power": 4500,
-        "range": 4,
-        "target": "貫通(敵)",
-        "description": "EBLv.を3下げる。射線上の敵に貫通射撃でダメージを与える。出撃時1度のみ使用可能。"
-      },
-      "united_sp": null,
-      "squad_sp": null
+    "card_number": "VE02-002",
+    "card_name": "エルメス",
+    "series": "WAVECHOES SEASON:02",
+    "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE02-002.jpg?v250630",
+    "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/VE02-002_b.jpg?v250630",
+    "ocr_engine": "claude_code_subagent",
+    "ocr_type": "basic",
+    "ocr_timestamp": "2026-04-22T20:30:00.000000",
+    "ocr_data": {
+        "type": "MS",
+        "name": "エルメス",
+        "cost": 3,
+        "rarity": "C",
+        "category": "遠距離",
+        "affiliation": "ジオン公国軍",
+        "illustrator": "",
+        "stats": {
+            "mobility": 200,
+            "ranged_attack": 280,
+            "melee_attack": 0,
+            "hp": 280
+        },
+        "link_ability": [
+            {
+                "name": "機動戦士ガンダム",
+                "condition": "デッキに3枚以上",
+                "effect": "[機動力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            },
+            {
+                "name": "戦況を変える力",
+                "condition": "デッキに4枚以上",
+                "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            }
+        ],
+        "pilot": "ララァ・スン",
+        "model": "MAN-08 ELMETH",
+        "terrain_compatibility": {
+            "ground": "C",
+            "space": "S",
+            "desert": "B",
+            "water": "B"
+        },
+        "weapon": {
+            "main": {
+                "name": "ビット",
+                "range": 4,
+                "type": "遠距離"
+            },
+            "sub": null
+        },
+        "ms_ability": {
+            "name": "再縮",
+            "activation": "任意発動",
+            "target": "範囲(味方)",
+            "range": null,
+            "cost": 2,
+            "description": "自身を中心とした大範囲内にいる、自身を除く味方ユニットのMSアビリティのクールタイムを、一定時間短縮する。"
+        },
+        "special_attack": {
+            "name": "ビット斉射",
+            "target": "単体(敵)",
+            "range": 4,
+            "sp_cost": 2,
+            "power": 3000,
+            "description": "敵単体に射撃攻撃でダメージを与える。",
+            "sp_type": "ECHOES BEAT SP",
+            "echoes_beat": {
+                "name": "光る宇宙",
+                "level": 3,
+                "power": 4500,
+                "range": 4,
+                "target": "貫通(敵)",
+                "description": "EBLv.を3下げる。射線上の敵に貫通射撃でダメージを与える。出撃時1度のみ使用可能。"
+            },
+            "united_sp": null,
+            "squad_sp": null
+        }
     }
-  }
 }

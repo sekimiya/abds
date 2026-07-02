@@ -1,84 +1,84 @@
 {
-  "card_number": "LX02-014",
-  "card_name": "ガンダム試作1号機",
-  "series": "LINXTAGE SEASON:02",
-  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX02-014.jpg?v250630",
-  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX02-014_b.jpg?v250630",
-  "ocr_data": {
-    "type": "MS",
-    "name": "ガンダム試作1号機",
-    "cost": 5,
-    "rarity": "C",
-    "category": "遠距離",
-    "affiliation": "地球連邦軍",
-    "illustrator": "gomibako",
-    "stats": {
-      "mobility": 190,
-      "ranged_attack": 270,
-      "melee_attack": 90,
-      "hp": 250
+    "card_number": "LX02-014",
+    "card_name": "ガンダム試作1号機",
+    "series": "LINXTAGE SEASON:02",
+    "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX02-014.jpg?v250630",
+    "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LX02-014_b.jpg?v250630",
+    "ocr_data": {
+        "type": "MS",
+        "name": "ガンダム試作1号機",
+        "cost": 5,
+        "rarity": "C",
+        "category": "遠距離",
+        "affiliation": "地球連邦軍",
+        "illustrator": "gomibako",
+        "stats": {
+            "mobility": 190,
+            "ranged_attack": 270,
+            "melee_attack": 90,
+            "hp": 250
+        },
+        "link_ability": [
+            {
+                "name": "ガンダム0083",
+                "condition": "デッキに3枚以上",
+                "effect": "[機動力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            },
+            {
+                "name": "実弾の突破力",
+                "condition": "デッキに2枚以上",
+                "effect": "[遠距離攻撃力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            }
+        ],
+        "pilot": "コウ・ウラキ",
+        "model": "RX-78GP01 GUNDAM GP01",
+        "terrain_compatibility": {
+            "ground": "S",
+            "space": "C",
+            "desert": "A",
+            "water": "C"
+        },
+        "weapon": {
+            "main": {
+                "name": "90mmブルパップ・マシンガン",
+                "range": 2,
+                "type": "遠距離"
+            },
+            "sub": {
+                "name": "ビーム・サーベル",
+                "range": 1,
+                "type": "近距離"
+            }
+        },
+        "ms_ability": {
+            "name": "集中砲火",
+            "activation": "任意発動",
+            "target": "範囲(味方)",
+            "range": null,
+            "cost": 4,
+            "description": "20秒間、ロックオンしている敵に周囲の味方ターゲットを集め、[遠／近攻撃力]を中アップ。攻撃対象が変わると効果は終了する。"
+        },
+        "special_attack": {
+            "name": "90mmブルパップ・マシンガン撃射",
+            "target": "単体(敵)",
+            "range": 3,
+            "sp_cost": 2,
+            "power": 3200,
+            "description": "敵単体に射撃攻撃でダメージを与える。",
+            "sp_type": "",
+            "echoes_beat": null,
+            "united_sp": null,
+            "squad_sp": null
+        }
     },
-    "link_ability": [
-      {
-        "name": "ガンダム0083",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      },
-      {
-        "name": "実弾の突破力",
-        "condition": "デッキに2枚以上",
-        "effect": "[遠距離攻撃力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      }
-    ],
-    "pilot": "コウ・ウラキ",
-    "model": "RX-78GP01 GUNDAM GP01",
-    "terrain_compatibility": {
-      "ground": "S",
-      "space": "C",
-      "desert": "A",
-      "water": "C"
-    },
-    "weapon": {
-      "main": {
-        "name": "90mmブルパップ・マシンガン",
-        "range": 2,
-        "type": "遠距離"
-      },
-      "sub": {
-        "name": "ビーム・サーベル",
-        "range": 1,
-        "type": "近距離"
-      }
-    },
-    "ms_ability": {
-      "name": "集中砲火",
-      "activation": "任意発動",
-      "target": "範囲（味方）",
-      "range": null,
-      "cost": 4,
-      "description": "20秒間、ロックオンしている敵に周囲の味方ターゲットを集め、[遠／近攻撃力]を中アップ。攻撃対象が変わると効果は終了する。"
-    },
-    "special_attack": {
-      "name": "90mmブルパップ・マシンガン撃射",
-      "target": "単体（敵）",
-      "range": 3,
-      "sp_cost": 2,
-      "power": 3200,
-      "description": "敵単体に射撃攻撃でダメージを与える。",
-      "sp_type": "",
-      "echoes_beat": null,
-      "united_sp": null,
-      "squad_sp": null
-    }
-  },
-  "ocr_raw_file": "LINXTAGE_SEASON_02_LX02-014_ガンダム試作1号機_ocr_raw.json",
-  "ocr_timestamp": "2026-03-07T15:47:41.847742",
-  "ocr_type": "basic",
-  "ocr_engine": "claude_code_cli_combined"
+    "ocr_raw_file": "LINXTAGE_SEASON_02_LX02-014_ガンダム試作1号機_ocr_raw.json",
+    "ocr_timestamp": "2026-03-07T15:47:41.847742",
+    "ocr_type": "basic",
+    "ocr_engine": "claude_code_cli_combined"
 }

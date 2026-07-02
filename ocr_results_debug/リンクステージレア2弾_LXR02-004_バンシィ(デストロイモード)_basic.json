@@ -1,84 +1,84 @@
 {
-  "card_number": "LXR02-004",
-  "card_name": "バンシィ(デストロイモード)",
-  "series": "リンクステージレア2弾",
-  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LXR02-004.jpg?v250630",
-  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LXR02-004_b.jpg?v250630",
-  "ocr_data": {
-    "type": "MS",
-    "name": "バンシィ(デストロイモード)",
-    "cost": 7,
-    "rarity": "LX",
-    "category": "機動",
-    "affiliation": "地球連邦軍",
-    "illustrator": "TAKA-F",
-    "stats": {
-      "mobility": 250,
-      "ranged_attack": 270,
-      "melee_attack": 500,
-      "hp": 630
+    "card_number": "LXR02-004",
+    "card_name": "バンシィ(デストロイモード)",
+    "series": "リンクステージレア2弾",
+    "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/LXR02-004.jpg?v250630",
+    "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/LXR02-004_b.jpg?v250630",
+    "ocr_data": {
+        "type": "MS",
+        "name": "バンシィ(デストロイモード)",
+        "cost": 7,
+        "rarity": "LX",
+        "category": "機動",
+        "affiliation": "地球連邦軍",
+        "illustrator": "TAKA-F",
+        "stats": {
+            "mobility": 250,
+            "ranged_attack": 270,
+            "melee_attack": 500,
+            "hp": 630
+        },
+        "link_ability": [
+            {
+                "name": "ガンダムUC",
+                "condition": "デッキに3枚以上",
+                "effect": "[機動力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            },
+            {
+                "name": "間合いを詰めた接近戦",
+                "condition": "デッキに2枚以上",
+                "effect": "[近距離攻撃力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            }
+        ],
+        "pilot": "ブルトゥエルブ",
+        "model": "RX-0 UNICORN GUNDAM 02 BANSHEE",
+        "terrain_compatibility": {
+            "ground": "A",
+            "space": "A",
+            "desert": "C",
+            "water": "B"
+        },
+        "weapon": {
+            "main": {
+                "name": "アームド・アーマーVN",
+                "range": 1,
+                "type": "近距離"
+            },
+            "sub": {
+                "name": "アームド・アーマーBS",
+                "range": 3,
+                "type": "遠距離"
+            }
+        },
+        "ms_ability": {
+            "name": "撃滅",
+            "activation": "任意発動",
+            "target": "単体(敵)",
+            "range": 2,
+            "cost": 4,
+            "description": "ロックオン中の敵に単体攻撃でダメージを与える。この攻撃で敵ユニットを撃破した場合、敵ユニットの修理時間を延長させる。"
+        },
+        "special_attack": {
+            "name": "アームド・アーマーVN強襲",
+            "target": "単体(敵)",
+            "range": 2,
+            "sp_cost": 2,
+            "power": 3700,
+            "description": "敵単体に格闘攻撃でダメージを与える。",
+            "sp_type": "",
+            "echoes_beat": null,
+            "united_sp": null,
+            "squad_sp": null
+        }
     },
-    "link_ability": [
-      {
-        "name": "ガンダムUC",
-        "condition": "デッキに3枚以上",
-        "effect": "[機動力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      },
-      {
-        "name": "間合いを詰めた接近戦",
-        "condition": "デッキに2枚以上",
-        "effect": "[近距離攻撃力]小アップ",
-        "is_eb_link": false,
-        "is_sq_link": false,
-        "is_ab_link": false
-      }
-    ],
-    "pilot": "ブルトゥエルブ",
-    "model": "RX-0 UNICORN GUNDAM 02 BANSHEE",
-    "terrain_compatibility": {
-      "ground": "A",
-      "space": "A",
-      "desert": "C",
-      "water": "B"
-    },
-    "weapon": {
-      "main": {
-        "name": "アームド・アーマーVN",
-        "range": 1,
-        "type": "近距離"
-      },
-      "sub": {
-        "name": "アームド・アーマーBS",
-        "range": 3,
-        "type": "遠距離"
-      }
-    },
-    "ms_ability": {
-      "name": "撃滅",
-      "activation": "任意発動",
-      "target": "単体（敵）",
-      "range": 2,
-      "cost": 4,
-      "description": "ロックオン中の敵に単体攻撃でダメージを与える。この攻撃で敵ユニットを撃破した場合、敵ユニットの修理時間を延長させる。"
-    },
-    "special_attack": {
-      "name": "アームド・アーマーVN強襲",
-      "target": "単体（敵）",
-      "range": 2,
-      "sp_cost": 2,
-      "power": 3700,
-      "description": "敵単体に格闘攻撃でダメージを与える。",
-      "sp_type": "",
-      "echoes_beat": null,
-      "united_sp": null,
-      "squad_sp": null
-    }
-  },
-  "ocr_raw_file": "リンクステージレア2弾_LXR02-004_バンシィ(デストロイモード)_ocr_raw.json",
-  "ocr_timestamp": "2026-03-07T14:44:34.121422",
-  "ocr_type": "basic",
-  "ocr_engine": "claude_code_cli_combined"
+    "ocr_raw_file": "リンクステージレア2弾_LXR02-004_バンシィ(デストロイモード)_ocr_raw.json",
+    "ocr_timestamp": "2026-03-07T14:44:34.121422",
+    "ocr_type": "basic",
+    "ocr_engine": "claude_code_cli_combined"
 }
