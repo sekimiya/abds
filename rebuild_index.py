@@ -440,6 +440,12 @@ def _classify_sq_trigger(trigger):
     return ''
 
 
+# ABリンクのリンク名一覧。カード印字は「[AB]名前」だがOCRのnameには
+# プレフィックスなしで入るため、名前の完全一致で判定する
+# (「閃光のハサウェイ」「Gの閃光」等の通常リンクを誤検出しないこと)
+AB_LINK_NAMES = {'不思議な音', '閃光', '俺たちのトライエイジ'}
+
+
 def detect_ab_info(ocr_data):
     """ABリンク関連情報を検出"""
     links = get_links(ocr_data)
@@ -447,7 +453,8 @@ def detect_ab_info(ocr_data):
     for la in links:
         if not isinstance(la, dict):
             continue
-        if la.get('is_ab_link'):
+        name = (la.get('name') or '').replace('[AB]', '').strip()
+        if la.get('is_ab_link') or name in AB_LINK_NAMES:
             has_ab_link = True
             break
     return {'has_ab_link': has_ab_link}

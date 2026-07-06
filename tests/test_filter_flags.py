@@ -152,7 +152,7 @@ def test_skill_trigger_ui_keys_all_match(built):
     (フロントはskill_trigger(生トリガー文)への部分一致。HP条件時のみ正規表現)"""
     import re
     index, _ = built
-    ui_keys = ["出撃時", "ロックオン時", "MSアビリティ", "HP条件時", "撃破時",
+    ui_keys = ["出撃時", "ロックオン", "MSアビリティ", "HP条件時", "撃破時",
                "一定時間経過毎", "撤退時", "EBLv", "戦術技発動時", "防衛拠点変更", "SQゲージ"]
     triggers = [c.get("skill_trigger") or "" for c in index.values()]
     dead = []
@@ -213,10 +213,43 @@ def test_no_fullwidth_slash_in_text_fields(built):
 
 
 def test_sq_trigger_populated(built):
-    """SQ発動条件フィルタの参照先が導出されていること"""
+    """SQ発動条件フィルタのUIキーと導出値が双方向に一致すること
+    (値がUIにない=取りこぼし / UIキーに値がない=死にボタン)"""
     index, _ = built
     ui_keys = {"ロックオン時", "戦艦/拠点ロックオン時", "撃破時",
-               "SQゲージ最大時", "MSアビリティ発動時", "出撃時"}
+               "SQゲージ最大時", "MSアビリティ発動時"}
     values = {c.get("sq_trigger") for c in index.values() if c.get("sq_trigger")}
-    assert values <= ui_keys, f"UIキーにないsq_trigger: {values - ui_keys}"
-    assert values, "sq_triggerが全カード空(SQ発動条件フィルタが常に0件になる)"
+    assert values <= ui_keys, f"UIキーにないsq_trigger(取りこぼし): {values - ui_keys}"
+    assert ui_keys <= values, f"どのカードにもマッチしないsqTrigキー(死にボタン): {ui_keys - values}"
+
+
+# 各エフェクトタグフィルタのUIキー(index.html/mobile.htmlのdata-keyと一致させること)
+_EFFECT_TAG_UI_KEYS = {
+    "sp_effect_tags": {"変身", "スタン", "撃破", "貫通", "範囲", "デバフ", "バフ", "HP回復"},
+    "ebsp_effect_tags": {"変身", "スタン", "撃破", "貫通", "範囲", "デバフ", "バフ", "HP回復"},
+    "sqsp_effect_tags": {"スタン", "撃破", "貫通", "範囲", "バフ", "HP回復"},
+    "sq_skill_effect_tags": {"機動力UP", "遠距離攻撃力UP", "近距離攻撃力UP", "SP威力UP",
+                             "ダメージ軽減", "敵デバフ", "SQゲージ増加", "全味方バフ"},
+}
+
+
+@pytest.mark.parametrize("field", sorted(_EFFECT_TAG_UI_KEYS))
+def test_effect_tag_ui_parity(built, field):
+    """エフェクトタグフィルタのUIキーと導出タグが双方向に一致すること。
+    死にボタン(タグ0件のキー)も取りこぼし(ボタンのないタグ)も検出する。
+    失敗時はUIボタン(両HTML)とこのテーブルの両方を更新すること。"""
+    index, _ = built
+    ui_keys = _EFFECT_TAG_UI_KEYS[field]
+    derived = {t for c in index.values() for t in (c.get(field) or [])}
+    assert derived <= ui_keys, f"{field}: ボタンのないタグ(取りこぼし): {derived - ui_keys}"
+    assert ui_keys <= derived, f"{field}: どのカードにも付かないキー(死にボタン): {ui_keys - derived}"
+
+
+def test_category_flags_populated(built):
+    """カテゴリ系トグル(ebCat/sqCat/abCat/ebspEff特殊キー)の参照フラグが
+    それぞれ1枚以上に立っていること(死にボタン検出)"""
+    index, _ = built
+    flags = ["has_eb", "has_eb_skill", "has_eb_link", "has_sqsp", "has_sq_skill",
+             "has_sq_link", "sq_rush_effect", "has_ab_link", "eb_lv_jump", "has_skip_sp"]
+    dead = [f for f in flags if not any(c.get(f) for c in index.values())]
+    assert not dead, f"全カードでfalse/空のフィルタ参照フラグ(死にボタン): {dead}"

@@ -1351,7 +1351,6 @@ body.light .ss-text{color:#555}
           <select class="filter-select filter-select-sm" id="filterTerrainType"><option value="">-</option><option value="ground">地上</option><option value="space">宇宙</option><option value="desert">砂漠</option><option value="water">水中</option></select>
           <select class="filter-select filter-select-sm" id="filterTerrainRank" disabled><option value="">ランク</option><option value="S">S以上</option><option value="A">A以上</option><option value="B">B以上</option><option value="C">C以上</option></select>
         </div>
-        <label class="ocr-toggle"><input type="checkbox" id="filterOcr" onchange="SearchPanel.applyFilters()"><span class="ocr-toggle-text">OCRあり</span></label>
       </div>
     </div>
     <div class="filter-group collapsed" id="filterGroupLink">
@@ -1411,15 +1410,12 @@ body.light .ss-text{color:#555}
         </div>
         <div class="toggle-filter" data-for="MS" id="sqspEffectBtns">
           <span class="toggle-filter-label">SQSP効果</span>
-          <button class="tbtn" data-key="変身" onclick="SearchPanel.toggle('sqspEff',this)">変身</button>
           <button class="tbtn" data-key="スタン" onclick="SearchPanel.toggle('sqspEff',this)">スタン</button>
           <button class="tbtn" data-key="撃破" onclick="SearchPanel.toggle('sqspEff',this)">撃破</button>
           <button class="tbtn" data-key="貫通" onclick="SearchPanel.toggle('sqspEff',this)">貫通</button>
           <button class="tbtn" data-key="範囲" onclick="SearchPanel.toggle('sqspEff',this)">範囲</button>
-          <button class="tbtn" data-key="デバフ" onclick="SearchPanel.toggle('sqspEff',this)">デバフ</button>
           <button class="tbtn" data-key="バフ" onclick="SearchPanel.toggle('sqspEff',this)">バフ</button>
           <button class="tbtn" data-key="HP回復" onclick="SearchPanel.toggle('sqspEff',this)">HP回復</button>
-          <button class="tbtn" data-key="支援攻撃" onclick="SearchPanel.toggle('sqspEff',this)">支援攻撃</button>
         </div>
         <div class="toggle-filter" data-for="PL" id="sqGaugeBtns">
           <span class="toggle-filter-label">SQゲージ</span>
@@ -1434,7 +1430,6 @@ body.light .ss-text{color:#555}
           <button class="tbtn" data-key="撃破時" onclick="SearchPanel.toggle('sqTrig',this)">撃破</button>
           <button class="tbtn" data-key="SQゲージ最大時" onclick="SearchPanel.toggle('sqTrig',this)">ゲージ最大</button>
           <button class="tbtn" data-key="MSアビリティ発動時" onclick="SearchPanel.toggle('sqTrig',this)">MSアビリティ</button>
-          <button class="tbtn" data-key="出撃時" onclick="SearchPanel.toggle('sqTrig',this)">出撃</button>
         </div>
         <div class="toggle-filter" data-for="PL" id="sqEffectBtns">
           <span class="toggle-filter-label">SQスキル効果</span>
@@ -1443,6 +1438,8 @@ body.light .ss-text{color:#555}
           <button class="tbtn" data-key="近距離攻撃力UP" onclick="SearchPanel.toggle('sqEff',this)">近距離</button>
           <button class="tbtn" data-key="SP威力UP" onclick="SearchPanel.toggle('sqEff',this)">SP威力</button>
           <button class="tbtn" data-key="ダメージ軽減" onclick="SearchPanel.toggle('sqEff',this)">ダメ軽減</button>
+          <button class="tbtn" data-key="敵デバフ" onclick="SearchPanel.toggle('sqEff',this)">敵デバフ</button>
+          <button class="tbtn" data-key="SQゲージ増加" onclick="SearchPanel.toggle('sqEff',this)">SQゲージ</button>
           <button class="tbtn" data-key="全味方バフ" onclick="SearchPanel.toggle('sqEff',this)">全味方</button>
         </div>
         <div style="display:flex;flex-wrap:wrap;gap:4px">
@@ -1510,7 +1507,7 @@ body.light .ss-text{color:#555}
         <div class="toggle-filter" id="skillTimingBtns">
           <span class="toggle-filter-label">発動タイミング</span>
           <button class="tbtn" data-key="出撃時" onclick="SearchPanel.toggle('skTim',this)">出撃時</button>
-          <button class="tbtn" data-key="ロックオン時" onclick="SearchPanel.toggle('skTim',this)">ロックオン</button>
+          <button class="tbtn" data-key="ロックオン" onclick="SearchPanel.toggle('skTim',this)">ロックオン</button>
           <button class="tbtn" data-key="MSアビリティ" onclick="SearchPanel.toggle('skTim',this)">MSアビリティ</button>
           <button class="tbtn" data-key="HP条件時" onclick="SearchPanel.toggle('skTim',this)">HP条件</button>
           <button class="tbtn" data-key="撃破時" onclick="SearchPanel.toggle('skTim',this)">撃破時</button>
@@ -4320,7 +4317,6 @@ const SearchPanel = {
       hp: document.getElementById('filterHp').value,
       terrainType: document.getElementById('filterTerrainType').value,
       terrainRank: document.getElementById('filterTerrainRank').value,
-      ocr: document.getElementById('filterOcr').checked,
       sqsp: document.getElementById('filterSqsp').checked,
       eb: document.getElementById('filterEb').checked,
       sqSkill: document.getElementById('filterSqSkill').checked,
@@ -4410,7 +4406,6 @@ const SearchPanel = {
       document.getElementById('filterTerrainType').value = s.terrainType || '';
       document.getElementById('filterTerrainRank').value = s.terrainRank || '';
       document.getElementById('filterTerrainRank').disabled = !s.terrainType;
-      document.getElementById('filterOcr').checked = !!s.ocr;
       document.getElementById('filterSqsp').checked = !!s.sqsp;
       document.getElementById('filterEb').checked = !!s.eb;
       document.getElementById('filterSqSkill').checked = !!s.sqSkill;
@@ -4599,7 +4594,6 @@ const SearchPanel = {
     if (parseInt(document.getElementById('filterMelee').value) > 0) return true;
     if (parseInt(document.getElementById('filterHp').value) > 0) return true;
     if (document.getElementById('filterTerrainType').value) return true;
-    if (document.getElementById('filterOcr').checked) return true;
     if (document.getElementById('filterLinkName').value) return true;
     if ((document.getElementById('filterLinkName2') || {}).value) return true;
     if ((document.getElementById('filterSkillName') || {}).value) return true;
@@ -4628,7 +4622,7 @@ const SearchPanel = {
     const g = (id, active) => { const t = document.querySelector('#' + id + ' > .filter-group-title'); if (t) t.classList.toggle('has-active', active); };
     g('filterGroupBasic', this._selectedSeries.size > 0 || this._currentRarity.size > 0 || this._currentCategory.size > 0 || (document.getElementById('filterBookmarkCards') || {}).checked);
     g('filterGroupStats', parseInt(document.getElementById('filterCostMin').value) > 0 || parseInt(document.getElementById('filterCostMax').value) < 13 || parseInt(document.getElementById('filterMobility').value) > 0 || parseInt(document.getElementById('filterRanged').value) > 0 || parseInt(document.getElementById('filterMelee').value) > 0 || parseInt(document.getElementById('filterHp').value) > 0);
-    g('filterGroupTerrain', !!(document.getElementById('filterTerrainType').value) || (document.getElementById('filterOcr') || {}).checked);
+    g('filterGroupTerrain', !!(document.getElementById('filterTerrainType').value));
     g('filterGroupLink', !!(document.getElementById('filterLinkName').value) || !!((document.getElementById('filterLinkName2') || {}).value));
     g('filterGroupEb', this._t.ebCat.size > 0 || this._t.ebLv.size > 0 || this._t.ebspEff.size > 0 || this._t.ebCond.size > 0 || (document.getElementById('filterEb') || {}).checked || (document.getElementById('filterEbSkill') || {}).checked);
     g('filterGroupSq', this._t.sqCat.size > 0 || this._t.sqspEff.size > 0 || this._t.sqGauge.size > 0 || this._t.sqTrig.size > 0 || this._t.sqEff.size > 0 || (document.getElementById('filterSqsp') || {}).checked || (document.getElementById('filterSqSkill') || {}).checked);
@@ -4647,18 +4641,18 @@ const SearchPanel = {
       ? AppState.cardIndex.filter(c => c.has_ocr || this._currentRarity.has(c.rarity))
       : AppState.cardIndex.filter(c => c.has_ocr);
     if (this._lockedType && this._t.abCat.size === 0) cards = cards.filter(c => c.type === this._lockedType);
-    if (this._currentCategory.size > 0) cards = cards.filter(c => this._currentCategory.has(c.category));
+    if (this._currentCategory.size > 0) cards = cards.filter(c => !c.category || this._currentCategory.has(c.category));
     if (this._statFilter === 'ranged') cards = cards.filter(c => (c.ranged || 0) > (c.melee || 0));
     else if (this._statFilter === 'melee') cards = cards.filter(c => (c.melee || 0) > (c.ranged || 0));
     if (this._quickSeries) cards = cards.filter(c => c._gSeries === this._quickSeries);
-    if (this._currentRarity.size > 0) cards = cards.filter(c => this._currentRarity.has(c.rarity));
+    if (this._currentRarity.size > 0) cards = cards.filter(c => !c.rarity || this._currentRarity.has(c.rarity));
     if (this._altArt) cards = cards.filter(c => c.number.includes('_'));
     const allSeriesEl = document.getElementById('filterAllSeries');
     if (this._selectedSeries.size > 0 && !(allSeriesEl && allSeriesEl.checked)) cards = cards.filter(c => this._selectedSeries.has(c.series));
     const costMin = parseInt(document.getElementById('filterCostMin').value);
     const costMax = parseInt(document.getElementById('filterCostMax').value);
-    if (costMin > 0 || costMax < 13) cards = cards.filter(c => c.cost != null && c.cost >= costMin && c.cost <= costMax);
     const _noDetail = c => c.cost === null;
+    if (costMin > 0 || costMax < 13) cards = cards.filter(c => _noDetail(c) || (c.cost >= costMin && c.cost <= costMax));
     const mobMin = parseInt(document.getElementById('filterMobility').value);
     const rangedMin = parseInt(document.getElementById('filterRanged').value);
     const meleeMin = parseInt(document.getElementById('filterMelee').value);
@@ -4670,37 +4664,37 @@ const SearchPanel = {
     const terrainType = document.getElementById('filterTerrainType').value;
     const terrainRank = document.getElementById('filterTerrainRank').value;
     if (terrainType && terrainRank) { const ro = ['S','A','B','C','D']; const mi = ro.indexOf(terrainRank); cards = cards.filter(c => { if (_noDetail(c)) return true; const r = c.terrain?.[terrainType]; return r && ro.indexOf(r) <= mi; }); }
-    if (document.getElementById('filterOcr').checked) cards = cards.filter(c => c.has_ocr);
     const linkName = document.getElementById('filterLinkName').value;
     if (linkName && AppState.linkIndex[linkName]) { const li = AppState.linkIndex[linkName]; const lc = new Set([...(li.ms_cards||[]), ...(li.pl_cards||[])]); cards = cards.filter(c => lc.has(c.number)); }
     const linkName2 = document.getElementById('filterLinkName2').value;
     if (linkName2 && AppState.linkIndex[linkName2]) { const li = AppState.linkIndex[linkName2]; const lc = new Set([...(li.ms_cards||[]), ...(li.pl_cards||[])]); cards = cards.filter(c => lc.has(c.number)); }
     const _isMS = this._lockedType === 'MS', _isPL = this._lockedType === 'PL';
     const ebCat = this._t.ebCat;
-    if (ebCat.size > 0) cards = cards.filter(c => (ebCat.has('eb_sp') && c.has_eb) || (ebCat.has('eb_skill') && c.has_eb_skill) || (ebCat.has('eb_link') && c.has_eb_link));
+    if (ebCat.size > 0) cards = cards.filter(c => _noDetail(c) || (ebCat.has('eb_sp') && c.has_eb) || (ebCat.has('eb_skill') && c.has_eb_skill) || (ebCat.has('eb_link') && c.has_eb_link));
     const ebLv = this._t.ebLv;
-    if (ebLv.size > 0) cards = cards.filter(c => { const lvls = [...ebLv].map(Number); return lvls.includes(c.eb_level) || lvls.includes(c.eb_trigger_level); });
-    if (_isPL && this._t.ebCond.size > 0) cards = cards.filter(c => this._t.ebCond.has(c.eb_trigger_cond));
+    if (ebLv.size > 0) cards = cards.filter(c => { if (_noDetail(c)) return true; const lvls = [...ebLv].map(Number); return lvls.includes(c.eb_level) || lvls.includes(c.eb_trigger_level); });
+    if (_isPL && this._t.ebCond.size > 0) cards = cards.filter(c => _noDetail(c) || this._t.ebCond.has(c.eb_trigger_cond));
     const sqCat = this._t.sqCat;
-    if (sqCat.size > 0) cards = cards.filter(c => (sqCat.has('sqsp') && c.has_sqsp) || (sqCat.has('sq_skill') && c.has_sq_skill) || (sqCat.has('sq_link') && c.has_sq_link) || (sqCat.has('sq_rush') && c.sq_rush_effect));
-    if (_isPL && this._t.sqGauge.size > 0) cards = cards.filter(c => this._t.sqGauge.has(c.sq_gauge_rate));
-    if (_isPL && this._t.sqTrig.size > 0) cards = cards.filter(c => this._t.sqTrig.has(c.sq_trigger));
-    if (_isPL && this._t.sqEff.size > 0) cards = cards.filter(c => c.sq_skill_effect_tags && c.sq_skill_effect_tags.some(t => this._t.sqEff.has(t)));
-    if (_isMS && this._t.sqspEff.size > 0) cards = cards.filter(c => c.sqsp_effect_tags && c.sqsp_effect_tags.some(t => this._t.sqspEff.has(t)));
-    if (_isMS && this._t.ebspEff.size > 0) cards = cards.filter(c => (c.ebsp_effect_tags && c.ebsp_effect_tags.some(t => this._t.ebspEff.has(t))) || (this._t.ebspEff.has('EBLv上昇') && c.eb_lv_jump) || (this._t.ebspEff.has('スキップSP') && c.has_skip_sp));
+    if (sqCat.size > 0) cards = cards.filter(c => _noDetail(c) || (sqCat.has('sqsp') && c.has_sqsp) || (sqCat.has('sq_skill') && c.has_sq_skill) || (sqCat.has('sq_link') && c.has_sq_link) || (sqCat.has('sq_rush') && c.sq_rush_effect));
+    if (_isPL && this._t.sqGauge.size > 0) cards = cards.filter(c => _noDetail(c) || this._t.sqGauge.has(c.sq_gauge_rate));
+    if (_isPL && this._t.sqTrig.size > 0) cards = cards.filter(c => _noDetail(c) || this._t.sqTrig.has(c.sq_trigger));
+    if (_isPL && this._t.sqEff.size > 0) cards = cards.filter(c => _noDetail(c) || (c.sq_skill_effect_tags && c.sq_skill_effect_tags.some(t => this._t.sqEff.has(t))));
+    if (_isMS && this._t.sqspEff.size > 0) cards = cards.filter(c => _noDetail(c) || (c.sqsp_effect_tags && c.sqsp_effect_tags.some(t => this._t.sqspEff.has(t))));
+    if (_isMS && this._t.ebspEff.size > 0) cards = cards.filter(c => _noDetail(c) || (c.ebsp_effect_tags && c.ebsp_effect_tags.some(t => this._t.ebspEff.has(t))) || (this._t.ebspEff.has('EBLv上昇') && c.eb_lv_jump) || (this._t.ebspEff.has('スキップSP') && c.has_skip_sp));
     const abCat = this._t.abCat;
-    if (abCat.size > 0) cards = cards.filter(c => (abCat.has('ab_link') && c.has_ab_link));
+    if (abCat.size > 0) cards = cards.filter(c => _noDetail(c) || (abCat.has('ab_link') && c.has_ab_link));
     if (_isMS && this._t.msAbility.size > 0) cards = cards.filter(c => {
+      if (_noDetail(c)) return true;
       const an = c.ability_name;
       if (!an) return false;
       const names = Array.isArray(an) ? an : [an];
       return names.some(n => this._t.msAbility.has(n));
     });
-    if (_isMS && this._t.spEff.size > 0) cards = cards.filter(c => c.sp_effect_tags && c.sp_effect_tags.some(t => this._t.spEff.has(t)));
+    if (_isMS && this._t.spEff.size > 0) cards = cards.filter(c => _noDetail(c) || (c.sp_effect_tags && c.sp_effect_tags.some(t => this._t.spEff.has(t))));
     const skillName = _isPL ? document.getElementById('filterSkillName').value : '';
-    if (skillName) cards = cards.filter(c => c.skill_name === skillName);
-    if (_isPL && this._t.skEff.size > 0) cards = cards.filter(c => c.skill_effect_tags && c.skill_effect_tags.some(t => this._t.skEff.has(t)));
-    if (_isPL && this._t.skTim.size > 0) cards = cards.filter(c => { const tr = c.skill_trigger || ''; return [...this._t.skTim].some(k => k === 'HP条件時' ? /HP\d+%/.test(tr) : tr.includes(k)); });
+    if (skillName) cards = cards.filter(c => _noDetail(c) || c.skill_name === skillName);
+    if (_isPL && this._t.skEff.size > 0) cards = cards.filter(c => _noDetail(c) || (c.skill_effect_tags && c.skill_effect_tags.some(t => this._t.skEff.has(t))));
+    if (_isPL && this._t.skTim.size > 0) cards = cards.filter(c => { if (_noDetail(c)) return true; const tr = c.skill_trigger || ''; return [...this._t.skTim].some(k => k === 'HP条件時' ? /HP\d+%/.test(tr) : tr.includes(k)); });
     const qRaw = document.getElementById('searchInput').value.trim();
     if (qRaw) { const qN = _normalizeSearch(qRaw); cards = cards.filter(c => _normalizeSearch(c.number||'').includes(qN) || _normalizeSearch(c.name||'').includes(qN)); }
     const sti = document.getElementById('searchTextInput');
@@ -4740,7 +4734,6 @@ const SearchPanel = {
     document.getElementById('filterTerrainType').value = '';
     document.getElementById('filterTerrainRank').value = '';
     document.getElementById('filterTerrainRank').disabled = true;
-    document.getElementById('filterOcr').checked = false;
     document.getElementById('filterSqsp').checked = false;
     document.getElementById('filterEb').checked = false;
     document.getElementById('filterSqSkill').checked = false;
@@ -4824,9 +4817,7 @@ const SearchPanel = {
             if (!hasLvInfo && card.has_eb_skill && card.eb_trigger_level) {
               const cond = card.eb_trigger_cond || '';
               ebLabel += '<br>';
-              if (cond === '上昇毎') {
-                ebLabel += '<span class="eb-lv-up">↑毎</span>';
-              } else if (cond === '以上') {
+              if (cond === '以上') {
                 ebLabel += '<span class="eb-lv-up">≥' + card.eb_trigger_level + '</span>';
               } else {
                 ebLabel += '<span class="eb-lv-up">↑' + card.eb_trigger_level + '</span>';
@@ -5500,8 +5491,7 @@ function openScreenshotMode() {
         let plEb = 'EB';
         if (idx?.eb_trigger_level) {
           const cond = idx?.eb_trigger_cond || '';
-          if (cond === '上昇毎') plEb += '<br><span class="eb-lv-up">↑毎</span>';
-          else if (cond === '以上') plEb += '<br><span class="eb-lv-up">≥' + idx.eb_trigger_level + '</span>';
+          if (cond === '以上') plEb += '<br><span class="eb-lv-up">≥' + idx.eb_trigger_level + '</span>';
           else plEb += '<br><span class="eb-lv-up">↑' + idx.eb_trigger_level + '</span>';
         }
         ov += '<div class="ss-ov-badge eb-b">' + plEb + '</div>';

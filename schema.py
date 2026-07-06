@@ -235,6 +235,14 @@ def canonicalize_values(ocr):
             _halfwidth_slash(la, 'effect', f'link_ability[{i}].effect')
             _halfwidth_slash(la, 'condition', f'link_ability[{i}].condition')
 
+    # pilot_skill.trigger: OCR脱字の修正
+    # 「一定時間経毎」はカード印字「一定時間経過毎」の「過」脱字 (PR-250等、画像照合済み)
+    if isinstance(ps0, dict):
+        trig0 = ps0.get('trigger')
+        if isinstance(trig0, str) and '一定時間経毎' in trig0:
+            ps0['trigger'] = trig0.replace('一定時間経毎', '一定時間経過毎')
+            changes.append('pilot_skill.trigger: 一定時間経毎 -> 一定時間経過毎 (脱字補正)')
+
     # pilot_skill: トリガーがEBLv.を含むならis_eb_skill=true (仕様書ルールの自動適用)
     ps = ocr.get('pilot_skill')
     if isinstance(ps, dict):

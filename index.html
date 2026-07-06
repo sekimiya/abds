@@ -1608,7 +1608,6 @@ select,input{font-family:inherit}
               <option value="C">C以上</option>
             </select>
           </div>
-          <label class="ocr-toggle"><input type="checkbox" id="filterOcr" onchange="SearchPanel.applyFilters()"><span class="ocr-toggle-text">OCRあり</span></label>
         </div>
       </div>
 
@@ -1671,15 +1670,12 @@ select,input{font-family:inherit}
           </div>
           <div class="toggle-filter" id="sqspEffectBtns">
             <span class="toggle-filter-label">SQSP効果</span>
-            <button class="tbtn" data-key="変身" onclick="SearchPanel.toggle('sqspEff',this)">変身</button>
             <button class="tbtn" data-key="スタン" onclick="SearchPanel.toggle('sqspEff',this)">スタン</button>
             <button class="tbtn" data-key="撃破" onclick="SearchPanel.toggle('sqspEff',this)">撃破</button>
             <button class="tbtn" data-key="貫通" onclick="SearchPanel.toggle('sqspEff',this)">貫通</button>
             <button class="tbtn" data-key="範囲" onclick="SearchPanel.toggle('sqspEff',this)">範囲</button>
-            <button class="tbtn" data-key="デバフ" onclick="SearchPanel.toggle('sqspEff',this)">デバフ</button>
             <button class="tbtn" data-key="バフ" onclick="SearchPanel.toggle('sqspEff',this)">バフ</button>
             <button class="tbtn" data-key="HP回復" onclick="SearchPanel.toggle('sqspEff',this)">HP回復</button>
-            <button class="tbtn" data-key="支援攻撃" onclick="SearchPanel.toggle('sqspEff',this)">支援攻撃</button>
           </div>
           <label class="ocr-toggle" style="margin-left:0" id="filterSqspLabel"><input type="checkbox" id="filterSqsp" onchange="SearchPanel.applyFilters()"><span class="ocr-toggle-text" style="color:#ff69b4">SQSP詳細表示</span></label>
         </div>
@@ -1707,7 +1703,6 @@ select,input{font-family:inherit}
             <button class="tbtn" data-key="撃破時" onclick="SearchPanel.toggle('sqTrig',this)">撃破</button>
             <button class="tbtn" data-key="SQゲージ最大時" onclick="SearchPanel.toggle('sqTrig',this)">ゲージ最大</button>
             <button class="tbtn" data-key="MSアビリティ発動時" onclick="SearchPanel.toggle('sqTrig',this)">MSアビリティ</button>
-            <button class="tbtn" data-key="出撃時" onclick="SearchPanel.toggle('sqTrig',this)">出撃</button>
           </div>
           <div class="toggle-filter" id="sqEffectBtns">
             <span class="toggle-filter-label">SQスキル効果</span>
@@ -1716,6 +1711,8 @@ select,input{font-family:inherit}
             <button class="tbtn" data-key="近距離攻撃力UP" onclick="SearchPanel.toggle('sqEff',this)">近距離</button>
             <button class="tbtn" data-key="SP威力UP" onclick="SearchPanel.toggle('sqEff',this)">SP威力</button>
             <button class="tbtn" data-key="ダメージ軽減" onclick="SearchPanel.toggle('sqEff',this)">ダメ軽減</button>
+            <button class="tbtn" data-key="敵デバフ" onclick="SearchPanel.toggle('sqEff',this)">敵デバフ</button>
+            <button class="tbtn" data-key="SQゲージ増加" onclick="SearchPanel.toggle('sqEff',this)">SQゲージ</button>
             <button class="tbtn" data-key="全味方バフ" onclick="SearchPanel.toggle('sqEff',this)">全味方</button>
           </div>
           <label class="ocr-toggle" style="margin-left:0" id="filterSqSkillLabel"><input type="checkbox" id="filterSqSkill" onchange="SearchPanel.applyFilters()"><span class="ocr-toggle-text" style="color:#ff69b4">SQスキル表示</span></label>
@@ -1780,7 +1777,7 @@ select,input{font-family:inherit}
           <div class="toggle-filter" id="skillTimingBtns">
             <span class="toggle-filter-label">発動タイミング</span>
             <button class="tbtn" data-key="出撃時" onclick="SearchPanel.toggle('skTim',this)">出撃時</button>
-            <button class="tbtn" data-key="ロックオン時" onclick="SearchPanel.toggle('skTim',this)">ロックオン</button>
+            <button class="tbtn" data-key="ロックオン" onclick="SearchPanel.toggle('skTim',this)">ロックオン</button>
             <button class="tbtn" data-key="MSアビリティ" onclick="SearchPanel.toggle('skTim',this)">MSアビリティ</button>
             <button class="tbtn" data-key="HP条件時" onclick="SearchPanel.toggle('skTim',this)">HP条件</button>
             <button class="tbtn" data-key="撃破時" onclick="SearchPanel.toggle('skTim',this)">撃破時</button>
@@ -4812,7 +4809,6 @@ const SearchPanel = {
       hp: document.getElementById('filterHp').value,
       terrainType: document.getElementById('filterTerrainType').value,
       terrainRank: document.getElementById('filterTerrainRank').value,
-      ocr: document.getElementById('filterOcr').checked,
       sqsp: document.getElementById('filterSqsp').checked,
       eb: document.getElementById('filterEb').checked,
       sqSkill: document.getElementById('filterSqSkill').checked,
@@ -4868,7 +4864,6 @@ const SearchPanel = {
       document.getElementById('filterTerrainRank').value = s.terrainRank || '';
       document.getElementById('filterTerrainRank').disabled = !s.terrainType;
       // Checkboxes
-      document.getElementById('filterOcr').checked = !!s.ocr;
       document.getElementById('filterSqsp').checked = !!s.sqsp;
       document.getElementById('filterEb').checked = !!s.eb;
       document.getElementById('filterSqSkill').checked = !!s.sqSkill;
@@ -5085,14 +5080,14 @@ const SearchPanel = {
     if (illustrator) {
       cards = cards.filter(c => c.illustrator === illustrator);
     }
+    // 詳細データ未設定カード判定（プロモーション等: cost===nullなら詳細フィルタをパス）
+    const _noDetail = c => c.cost === null;
     // Cost (range slider)
     const costMin = parseInt(document.getElementById('filterCostMin').value);
     const costMax = parseInt(document.getElementById('filterCostMax').value);
     if (costMin > 0 || costMax < 13) {
-      cards = cards.filter(c => c.cost != null && c.cost >= costMin && c.cost <= costMax);
+      cards = cards.filter(c => _noDetail(c) || (c.cost >= costMin && c.cost <= costMax));
     }
-    // 詳細データ未設定カード判定（プロモーション等: cost===nullなら詳細フィルタをパス）
-    const _noDetail = c => c.cost === null;
     // Stat filters (sliders)
     const mobMin = parseInt(document.getElementById('filterMobility').value);
     const rangedMin = parseInt(document.getElementById('filterRanged').value);
@@ -5114,10 +5109,6 @@ const SearchPanel = {
         if (!r) return false;
         return rankOrder.indexOf(r) <= minIdx;
       });
-    }
-    // OCR filter
-    if (document.getElementById('filterOcr').checked) {
-      cards = cards.filter(c => c.has_ocr);
     }
     const _isMS = this._lockedType === 'MS', _isPL = this._lockedType === 'PL';
     // EB関連カード絞込（トグル複数選択: OR）
@@ -5195,7 +5186,7 @@ const SearchPanel = {
     }
     // PLスキル発動タイミング（PL専用）
     if (_isPL && this._t.skTim.size > 0) {
-      cards = cards.filter(c => { const tr = c.skill_trigger || ''; return [...this._t.skTim].some(k => k === 'HP条件時' ? /HP\d+%/.test(tr) : tr.includes(k)); });
+      cards = cards.filter(c => { if (_noDetail(c)) return true; const tr = c.skill_trigger || ''; return [...this._t.skTim].some(k => k === 'HP条件時' ? /HP\d+%/.test(tr) : tr.includes(k)); });
     }
     // Name/number search (fuzzy: numerals, separators normalized)
     const qRaw = document.getElementById('searchInput').value.trim();
@@ -5225,12 +5216,10 @@ const SearchPanel = {
       cards = cards.filter(c => c.number.includes('_'));
     }
 
-    // Bookmark OR merge: bookmarked cards are added to results (union)
+    // Bookmark絞込（mobile.htmlと同一のAND挙動）
     if (document.getElementById('filterBookmarkCards').checked) {
       const bmSet = CardBookmark.getAll();
-      const inResult = new Set(cards.map(c => c.number));
-      const bmCards = AppState.cardIndex.filter(c => bmSet.has(c.number) && !inResult.has(c.number));
-      cards = cards.concat(bmCards);
+      cards = cards.filter(c => bmSet.has(c.number));
     }
 
     this._filteredCards = cards;
@@ -5245,11 +5234,11 @@ const SearchPanel = {
       filterGroupSearch: !!(document.getElementById('searchInput').value.trim() || document.getElementById('searchTextInput').value.trim() || LinkSearch._selected),
       filterGroupBasic: this._currentCategory.size > 0 || this._currentRarity.size > 0 || this._altArt,
       filterGroupStats: parseInt(document.getElementById('filterCostMin').value) > 0 || parseInt(document.getElementById('filterCostMax').value) < 13 || parseInt(document.getElementById('filterMobility').value) > 0 || parseInt(document.getElementById('filterRanged').value) > 0 || parseInt(document.getElementById('filterMelee').value) > 0 || parseInt(document.getElementById('filterHp').value) > 0,
-      filterGroupTerrain: !!document.getElementById('filterTerrainType').value || document.getElementById('filterOcr').checked,
+      filterGroupTerrain: !!document.getElementById('filterTerrainType').value,
       filterGroupEbMs: this._t.ebCat.has('eb_sp') || this._t.ebCat.has('eb_link') || this._t.ebLv.size > 0 || this._t.ebspEff.size > 0,
-      filterGroupEbPl: this._t.ebCat.has('eb_skill') || this._t.ebCond.size > 0,
+      filterGroupEbPl: this._t.ebCat.has('eb_skill') || this._t.ebCat.has('eb_link') || this._t.ebCond.size > 0,
       filterGroupSqMs: this._t.sqCat.has('sqsp') || this._t.sqCat.has('sq_link') || this._t.sqspEff.size > 0,
-      filterGroupSqPl: this._t.sqCat.has('sq_skill') || this._t.sqGauge.size > 0 || this._t.sqTrig.size > 0 || this._t.sqEff.size > 0,
+      filterGroupSqPl: this._t.sqCat.has('sq_skill') || this._t.sqCat.has('sq_link') || this._t.sqGauge.size > 0 || this._t.sqTrig.size > 0 || this._t.sqEff.size > 0,
       filterGroupAb: this._t.abCat.size > 0,
       filterGroupSp: this._t.spEff.size > 0 || this._t.ebLv.size > 0,
       filterGroupPlSkill: !!document.getElementById('filterSkillName').value || this._t.skEff.size > 0 || this._t.skTim.size > 0,
@@ -5279,7 +5268,6 @@ const SearchPanel = {
     document.getElementById('meleeValue').textContent = '0'; document.getElementById('hpValue').textContent = '0';
     document.getElementById('filterTerrainType').value = '';
     document.getElementById('filterTerrainRank').value = ''; document.getElementById('filterTerrainRank').disabled = true;
-    document.getElementById('filterOcr').checked = false;
     document.getElementById('filterSqsp').checked = false; document.getElementById('filterEb').checked = false;
     document.getElementById('filterSqSkill').checked = false; document.getElementById('filterEbSkill').checked = false;
     document.getElementById('filterSkillName').value = '';
@@ -5318,7 +5306,6 @@ const SearchPanel = {
     document.getElementById('filterTerrainType').value = '';
     document.getElementById('filterTerrainRank').value = '';
     document.getElementById('filterTerrainRank').disabled = true;
-    document.getElementById('filterOcr').checked = false;
     document.getElementById('filterSqsp').checked = false;
     document.getElementById('filterEb').checked = false;
     document.getElementById('filterSqSkill').checked = false;
