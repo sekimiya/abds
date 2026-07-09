@@ -1,0 +1,87 @@
+{
+  "card_number": "VEB03-005",
+  "card_name": "ガンダムMk-Ⅱ（エゥーゴ仕様）",
+  "series": "VEブースター3弾",
+  "ocr_data": {
+    "type": "MS",
+    "name": "ガンダムMk-Ⅱ（エゥーゴ仕様）",
+    "cost": 4,
+    "rarity": "M",
+    "category": "遠距離",
+    "affiliation": "エゥーゴ",
+    "illustrator": "J.YUZURU(willow_works)",
+    "stats": {
+      "mobility": 260,
+      "ranged_attack": 330,
+      "melee_attack": 40,
+      "hp": 420
+    },
+    "link_ability": [
+      {
+        "name": "機動戦士Zガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "カミーユ・ビダン、エマ・シーン",
+    "model": "RX-178 GUNDAM Mk-Ⅱ[A.E.U.G.]",
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "A",
+      "desert": "C",
+      "water": "B"
+    },
+    "weapon": {
+      "main": {
+        "name": "ビーム・ライフル",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ビーム・サーベル",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "精密射撃",
+      "activation": "任意発動",
+      "target": "単体(敵)",
+      "range": 3,
+      "cost": 3,
+      "description": "ロックオン中の敵に単体攻撃でダメージを与える。"
+    },
+    "special_attack": {
+      "name": "ビーム・ライフル撃射",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3300,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "sp_type": "ECHOES BEAT",
+      "echoes_beat": {
+        "name": "ビーム・ライフル撃射 Lv.2",
+        "level": 2,
+        "power": 3900,
+        "range": 3,
+        "target": "単体(敵)",
+        "description": "EBLv.を2下げる。敵単体に射撃攻撃でダメージを与え、一定時間、出撃中の全敵ユニットの被ダメージを上昇させる。出撃時1度のみ使用可能。"
+      },
+      "united_sp": null,
+      "squad_sp": null
+    }
+  },
+  "ocr_engine": "claude_code_subagent",
+  "ocr_timestamp": "2026-07-09T00:00:00"
+}

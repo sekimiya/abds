@@ -1,0 +1,87 @@
+{
+  "card_number": "VEB03-011",
+  "card_name": "ガンダムアストレイ レッドフレーム パワードレッド",
+  "series": "VEブースター3弾",
+  "ocr_data": {
+    "type": "MS",
+    "name": "ガンダムアストレイ レッドフレーム パワードレッド",
+    "cost": 3,
+    "rarity": "M",
+    "category": "近距離",
+    "affiliation": "ジャンク屋組合",
+    "illustrator": "ilshima060123",
+    "stats": {
+      "mobility": 220,
+      "ranged_attack": 40,
+      "melee_attack": 370,
+      "hp": 320
+    },
+    "link_ability": [
+      {
+        "name": "SEED ASTRAY",
+        "condition": "デッキに2枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "肉薄する戦い",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][遠距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "ロウ・ギュール",
+    "model": "MBF-P02 GUNDAM ASTRAY RED FRAME POWERED RED",
+    "terrain_compatibility": {
+      "ground": "S",
+      "space": "A",
+      "desert": "B",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "ガーベラ・ストレート",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "イーゲルシュテルン",
+        "range": 2,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "転化[妨害]",
+      "activation": "任意発動",
+      "target": "範囲(敵)",
+      "range": null,
+      "cost": 4,
+      "description": "一定時間、自身を中心とした範囲内の敵ユニットを弱体化する。使用回数に応じて、弱体化効果、範囲が変わる。[1回:遠/近攻撃力ダウン][2回:被ダメージアップ][3回以上:遠/近攻撃力ダウン&被ダメージアップ]"
+    },
+    "special_attack": {
+      "name": "150ガーベラ・ストレート",
+      "target": "貫通(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3000,
+      "description": "射線上の敵に貫通格闘攻撃でダメージを与え、以後武装が150ガーベラになり、通常攻撃が自身を中心とした範囲攻撃に変化する。戦術技後は能力が上昇。自身が撤退するまで効果は持続する。",
+      "sp_type": "ECHOES BEAT",
+      "echoes_beat": {
+        "name": "150ガーベラ・ストレート Lv.1",
+        "level": 1,
+        "power": 3300,
+        "range": 3,
+        "target": "貫通(敵)",
+        "description": "EBLv.を1下げる。射線上の敵に貫通格闘攻撃でダメージを与え、EBLv.が3に上昇する。以後武装が150ガーベラになり、通常攻撃が自身を中心とした範囲攻撃に変化する。戦術技後は能力が上昇。自身が撤退するまで効果は持続する。出撃時1度のみ使用可能。"
+      },
+      "united_sp": null,
+      "squad_sp": null
+    }
+  },
+  "ocr_engine": "claude_code_subagent",
+  "ocr_timestamp": "2026-07-09T00:00:00"
+}

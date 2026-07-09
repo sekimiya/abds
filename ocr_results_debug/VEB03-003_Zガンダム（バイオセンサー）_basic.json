@@ -1,0 +1,87 @@
+{
+  "card_number": "VEB03-003",
+  "card_name": "Zガンダム（バイオセンサー）",
+  "series": "VEブースター3弾",
+  "ocr_data": {
+    "type": "MS",
+    "name": "Zガンダム（バイオセンサー）",
+    "cost": 5,
+    "rarity": "P",
+    "category": "遠距離",
+    "affiliation": "エゥーゴ",
+    "illustrator": "Daiki Ueda",
+    "stats": {
+      "mobility": 230,
+      "ranged_attack": 550,
+      "melee_attack": 50,
+      "hp": 570
+    },
+    "link_ability": [
+      {
+        "name": "機動戦士Zガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "カミーユ・ビダン",
+    "model": "MSZ-006 Z GUNDAM[BIOSENSOR]",
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "C",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "ハイパー・メガ・ランチャー",
+        "range": 4,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ハイパー・ビーム・サーベル",
+        "range": 2,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "装転[貫通改]",
+      "activation": "任意発動",
+      "target": "自分",
+      "range": null,
+      "cost": 5,
+      "description": "通常攻撃がチャージを伴う強力な貫通射撃のメイン攻撃のみになる。この効果は自身が撤退するまで解除できない。"
+    },
+    "special_attack": {
+      "name": "ウェイブ・ライダー突撃",
+      "target": "単体(敵)",
+      "range": 4,
+      "sp_cost": 2,
+      "power": 2900,
+      "description": "敵単体に格闘攻撃でダメージを与える。自身の出撃に関わらず撃破された味方ユニットの数に応じて威力が上昇する。上限10機まで。",
+      "sp_type": "ECHOES BEAT",
+      "echoes_beat": {
+        "name": "ウェイブ・ライダー突撃 Lv.1",
+        "level": 1,
+        "power": 3200,
+        "range": 4,
+        "target": "単体(敵)",
+        "description": "EBLv.を1下げる。敵単体に格闘攻撃でダメージを与え、EBLv.が3に上昇する。自身の出撃に関わらず撃破された味方ユニットの数に応じて威力が上昇する。上限10機まで。出撃時1度のみ使用可能。"
+      },
+      "united_sp": null,
+      "squad_sp": null
+    }
+  },
+  "ocr_engine": "claude_code_subagent",
+  "ocr_timestamp": "2026-07-09T00:00:00"
+}
