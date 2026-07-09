@@ -1730,6 +1730,10 @@ body.light .ss-text{color:#555}
     <button class="badge-sw active" data-badge="ab-badge" onclick="toggleBadgeSw(this)" style="color:#b388ff;border-color:#b388ff">AB</button>
     <button class="badge-sw active" data-badge="rarity" onclick="toggleBadgeSw(this)" style="color:#ffe082;border-color:#ffe082">RR</button>
   </div>
+  <div class="menu-label">セット合計バー</div>
+  <div class="badge-switches">
+    <button class="badge-sw" id="setStatBarsBtn" onclick="toggleSetStatBars()" style="flex:1">ステータスバー表示</button>
+  </div>
   <div class="menu-label">地形適性</div>
   <div class="terrain-switches" id="terrainSwitches">
     <button class="terrain-sw active" data-val="" onclick="setTerrainSwitch(this)">なし</button>
@@ -5028,6 +5032,20 @@ function toggleBadgeSw(btn) {
   localStorage.setItem('abds_badgeState', JSON.stringify(_badgeState));
   _applyBadgeVisibility(key, on);
 }
+
+// セット合計ステータスバーの表示切替 (デフォルトOFF)
+let _setStatBarsOn = localStorage.getItem('abds_setStatBars') === '1';
+function applySetStatBars() {
+  const row = document.getElementById('statsRow');
+  if (row) row.style.display = _setStatBarsOn ? '' : 'none';
+  const btn = document.getElementById('setStatBarsBtn');
+  if (btn) btn.classList.toggle('active', _setStatBarsOn);
+}
+function toggleSetStatBars() {
+  _setStatBarsOn = !_setStatBarsOn;
+  localStorage.setItem('abds_setStatBars', _setStatBarsOn ? '1' : '0');
+  applySetStatBars();
+}
 function _applyBadgeVisibility(key, on) {
   const map = {
     'sp-tags': '.ov-sp-tags,.thumb-sp-tags',
@@ -5805,6 +5823,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   SearchPanel.init();
   UndoManager.snapshot();
   _initBadges();
+  applySetStatBars();
 
   // ImageCache.init() と CardService.fetchIndex() を並列実行
   let imageCacheInitDone = false;
