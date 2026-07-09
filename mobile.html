@@ -319,6 +319,7 @@ body.light .bm-toggle-btn.active{background:#d0e8dc;border-color:var(--accent);c
 .ov-stats{flex:1;min-width:0;display:flex;flex-direction:column;gap:1px}
 .ov-stats.empty{opacity:0.25}
 .ov-stat-bar{position:relative;height:5px;background:#1a1a1a;border-radius:1px;overflow:hidden}
+.ov-stat-bar.best{box-shadow:0 0 0 1px #4caf50}
 .ov-stat-bar .ov-sb-base{position:absolute;top:0;left:0;height:100%;background:#2196f3}
 .ov-stat-bar .ov-sb-buff{position:absolute;top:0;height:100%;background:#e91e63}
 .ov-stat-bar .ov-sb-terrain{position:absolute;top:0;height:100%;background:var(--accent)}
@@ -3564,6 +3565,7 @@ const UIRenderer = {
   },
 
   _updateOverview() {
+    const unitStatTotals = [];
     for (let u = 0; u < 5; u++) {
       this._updateThumb(u, 'ms', u);
       this._updateThumb(u, 'pl', u + 5);
@@ -3591,27 +3593,31 @@ const UIRenderer = {
           catEl.className = 'ov-cat';
         }
       }
-      this._updateUnitStatBars(u);
+      unitStatTotals.push(this._updateUnitStatBars(u));
     }
+    this._highlightBestStatBars(unitStatTotals);
   },
 
   // カードセット下の合計ステータスバー(数値なし、詳細エリアのバーと同一の計算・配色)
+  // 戻り値: {mobility,ranged,melee,hp}の合計値(空ユニットはnull)
   _updateUnitStatBars(u) {
     const el = document.getElementById(`ov-stats-${u}`);
-    if (!el) return;
+    if (!el) return null;
     const msNumber = AppState.deck[u];
     const plNumber = AppState.deck[u + 5];
     if (!msNumber && !plNumber) {
       el.classList.add('empty');
       el.querySelectorAll('.ov-sb-base,.ov-sb-buff,.ov-sb-terrain').forEach(b => { b.style.width = '0%'; });
-      return;
+      return null;
     }
     el.classList.remove('empty');
     const msOcr = AppState.deckOcr[u];
     const plOcr = AppState.deckOcr[u + 5];
     const rows = calcUnitStats(msOcr, plOcr, this._getTerrainMultiplier(msOcr));
     const barMax = 1400;
+    const totals = {};
     rows.forEach(r => {
+      totals[r.key] = r.total;
       const bar = el.querySelector(`[data-stat="${r.key}"]`);
       if (!bar) return;
       // 地形マイナス時はtotalまでに切り詰め(負のオーバーレイは3pxバーでは描かない)
@@ -3625,6 +3631,21 @@ const UIRenderer = {
       const terrEl = bar.querySelector('.ov-sb-terrain');
       terrEl.style.left = (basePct + buffPct) + '%';
       terrEl.style.width = terrPct + '%';
+    });
+    return totals;
+  },
+
+  // 各パラメータの最大値を持つユニットのバーを緑枠で強調(同値は全て強調)
+  _highlightBestStatBars(unitTotals) {
+    ['mobility', 'ranged', 'melee', 'hp'].forEach(k => {
+      let max = 0;
+      unitTotals.forEach(t => { if (t && t[k] > max) max = t[k]; });
+      for (let u = 0; u < 5; u++) {
+        const bar = document.querySelector(`#ov-stats-${u} [data-stat="${k}"]`);
+        if (!bar) continue;
+        const isBest = max > 0 && !!unitTotals[u] && unitTotals[u][k] === max;
+        bar.classList.toggle('best', isBest);
+      }
     });
   },
 
