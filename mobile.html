@@ -315,6 +315,13 @@ body.light .bm-toggle-btn.active{background:#d0e8dc;border-color:var(--accent);c
 .ov-cat.cat-c{background:#1a4a8b;color:#82b1ff}
 .ov-cat.cat-b{background:#1a6b1a;color:#a5d6a7}
 .overview-thumbs{display:flex;gap:3px;margin-bottom:2px}
+.overview-stats{display:flex;gap:3px;margin-bottom:2px}
+.ov-stats{flex:1;min-width:0;display:flex;flex-direction:column;gap:1px}
+.ov-stats.empty{opacity:0.25}
+.ov-stat-bar{position:relative;height:3px;background:#1a1a1a;border-radius:1px;overflow:hidden}
+.ov-stat-bar .ov-sb-base{position:absolute;top:0;left:0;height:100%;background:#2196f3}
+.ov-stat-bar .ov-sb-buff{position:absolute;top:0;height:100%;background:#e91e63}
+.ov-stat-bar .ov-sb-terrain{position:absolute;top:0;height:100%;background:var(--accent)}
 .ov-thumb-col{flex:1;min-width:0;display:flex;flex-direction:column}
 .ov-card-name{
   font-size:0.56rem;color:#bbb;text-align:center;line-height:1.3;
@@ -1202,6 +1209,7 @@ body.light .ss-text{color:#555}
   }
   .overview-cats{gap:2px;margin-bottom:2px}
   .overview-thumbs{gap:2px;margin-bottom:2px}
+  .overview-stats{gap:2px;margin-bottom:2px}
   .ov-card-name{font-size:0.5rem}
   .unit-tabs{padding:2px 0}
   .unit-tab{padding:3px 0;font-size:0.65rem}
@@ -1254,6 +1262,7 @@ body.light .ss-text{color:#555}
     <div class="overview-cats" id="catRow"></div>
     <div class="overview-thumbs" id="msRow"></div>
     <div class="overview-thumbs" id="plRow"></div>
+    <div class="overview-stats" id="statsRow"></div>
     <div class="unit-tabs" id="unitTabs"></div>
   </div>
 
@@ -3496,15 +3505,20 @@ const UIRenderer = {
     const catRow = document.getElementById('catRow');
     const msRow = document.getElementById('msRow');
     const plRow = document.getElementById('plRow');
+    const statsRow = document.getElementById('statsRow');
     const tabs = document.getElementById('unitTabs');
     catRow.innerHTML = '';
     msRow.innerHTML = '';
     plRow.innerHTML = '';
+    statsRow.innerHTML = '';
     tabs.innerHTML = '';
+    const statBars = ['mobility', 'ranged', 'melee', 'hp'].map(k =>
+      `<div class="ov-stat-bar" data-stat="${k}"><div class="ov-sb-base"></div><div class="ov-sb-buff"></div><div class="ov-sb-terrain"></div></div>`).join('');
     for (let u = 0; u < 5; u++) {
       catRow.innerHTML += `<div class="ov-cat" id="ov-cat-${u}"></div>`;
       msRow.innerHTML += `<div class="ov-thumb-col"><div class="ov-card-name" id="ov-ms-name-${u}"></div><div class="overview-thumb empty" id="ov-ms-${u}"><span class="ov-badge" id="ov-ms-badge-${u}"></span><div class="ov-sp-tags" id="ov-ms-sp-${u}"></div></div></div>`;
       plRow.innerHTML += `<div class="ov-thumb-col"><div class="ov-card-name" id="ov-pl-name-${u}"></div><div class="overview-thumb empty" id="ov-pl-${u}"><span class="ov-badge" id="ov-pl-badge-${u}"></span><div class="ov-sp-tags" id="ov-pl-sp-${u}"></div></div></div>`;
+      statsRow.innerHTML += `<div class="ov-stats empty" id="ov-stats-${u}">${statBars}</div>`;
       tabs.innerHTML += `<div class="unit-tab${u === 0 ? ' active' : ''}" onclick="UIRenderer.selectUnit(${u})">${u + 1}</div>`;
     }
     // Attach tap (front/back toggle) + long-press (open picker) handlers
@@ -3573,7 +3587,41 @@ const UIRenderer = {
           catEl.className = 'ov-cat';
         }
       }
+      this._updateUnitStatBars(u);
     }
+  },
+
+  // カードセット下の合計ステータスバー(数値なし、詳細エリアのバーと同一の計算・配色)
+  _updateUnitStatBars(u) {
+    const el = document.getElementById(`ov-stats-${u}`);
+    if (!el) return;
+    const msNumber = AppState.deck[u];
+    const plNumber = AppState.deck[u + 5];
+    if (!msNumber && !plNumber) {
+      el.classList.add('empty');
+      el.querySelectorAll('.ov-sb-base,.ov-sb-buff,.ov-sb-terrain').forEach(b => { b.style.width = '0%'; });
+      return;
+    }
+    el.classList.remove('empty');
+    const msOcr = AppState.deckOcr[u];
+    const plOcr = AppState.deckOcr[u + 5];
+    const rows = calcUnitStats(msOcr, plOcr, this._getTerrainMultiplier(msOcr));
+    const barMax = 1400;
+    rows.forEach(r => {
+      const bar = el.querySelector(`[data-stat="${r.key}"]`);
+      if (!bar) return;
+      // 地形マイナス時はtotalまでに切り詰め(負のオーバーレイは3pxバーでは描かない)
+      const basePct = Math.min((Math.min(r.base, r.total) / barMax) * 100, 100);
+      const buffPct = r.linkBuff > 0 ? Math.min((r.linkBuff / barMax) * 100, 100 - basePct) : 0;
+      const terrPct = r.terrainBuff > 0 ? Math.min((r.terrainBuff / barMax) * 100, 100 - basePct - buffPct) : 0;
+      bar.querySelector('.ov-sb-base').style.width = basePct + '%';
+      const buffEl = bar.querySelector('.ov-sb-buff');
+      buffEl.style.left = basePct + '%';
+      buffEl.style.width = buffPct + '%';
+      const terrEl = bar.querySelector('.ov-sb-terrain');
+      terrEl.style.left = (basePct + buffPct) + '%';
+      terrEl.style.width = terrPct + '%';
+    });
   },
 
   _updateThumb(u, type, slotIdx) {
