@@ -686,6 +686,7 @@ select,input{font-family:inherit}
 .sg-label[data-stat="melee"]{color:#ab47bc}
 .sg-label[data-stat="hp"]{color:#66bb6a}
 .sg-bar{position:relative;overflow:hidden;background:#1a1a1a;border-radius:0;height:22px}
+.sg-bar.best{box-shadow:inset 0 0 0 2px #4caf50}
 .sg-bar-base{height:100%;background:#2196f3;position:absolute;top:0;left:0;transition:width 0.3s}
 .sg-bar-buff{height:100%;background:#e91e63;position:absolute;top:0;transition:width 0.3s}
 .sg-bar-terrain-pos{height:100%;background:#68efbd;position:absolute;top:0;transition:width 0.3s}
@@ -1399,6 +1400,11 @@ select,input{font-family:inherit}
         <button class="badge-sw active" data-badge="sq-badge" onclick="toggleBadgeSw(this)" style="color:#ff69b4;border-color:#ff69b4">SQ</button>
         <button class="badge-sw active" data-badge="ab-badge" onclick="toggleBadgeSw(this)" style="color:#b388ff;border-color:#b388ff">AB</button>
         <button class="badge-sw active" data-badge="rarity" onclick="toggleBadgeSw(this)" style="color:#ffe082;border-color:#ffe082">レアリティ</button>
+      </div>
+      <div class="header-menu-divider"></div>
+      <div class="header-menu-label">セット合計バー</div>
+      <div class="badge-switches">
+        <button class="badge-sw" id="setStatBarsBtn" onclick="toggleSetStatBars()" style="flex:1;color:#4caf50;border-color:#4caf50">最大ユニットを緑枠で強調</button>
       </div>
       <div class="header-menu-divider"></div>
       <div class="cache-menu-section">
@@ -3526,9 +3532,11 @@ const UIRenderer = {
   },
 
   renderAll() {
+    const unitStatTotals = [];
     for (let u = 0; u < 5; u++) {
-      this._renderUnit(u);
+      unitStatTotals.push(this._renderUnit(u));
     }
+    this._highlightBestStatBars(unitStatTotals);
     this._updateHeader();
     // Reset alignment state (DOM was rebuilt)
     this._isAligned = false;
@@ -3596,13 +3604,15 @@ const UIRenderer = {
     }
 
     // Stats
-    this._renderUnitStats(u, msOcr, plOcr);
+    const statTotals = this._renderUnitStats(u, msOcr, plOcr);
 
     // MS/PL Detail info
     this._renderMsDetail(u, msOcr, msNumber, plOcr, plNumber);
 
     // Links
     this._renderLinks(u, msOcr, plOcr);
+
+    return statTotals;
   },
 
   _renderSlot(slotIdx, cardNumber, type, unitIdx, highlight = '') {
@@ -3647,12 +3657,16 @@ const UIRenderer = {
     `;
   },
 
+  // 戻り値: {mobility,ranged,melee,hp}の合計値(空ユニットはnull)
   _renderUnitStats(u, msOcr, plOcr) {
     const container = document.getElementById(`unit-stats-${u}`);
     const result = calcUnitStats(msOcr, plOcr, this._getTerrainMultiplier(msOcr));
     const barMax = 1400;
+    const isEmpty = !msOcr && !plOcr;
+    const totals = {};
     let html = '<div class="stat-grid">';
     result.forEach(r => {
+      totals[r.key] = r.total;
       const basePct = Math.min((r.base / barMax) * 100, 100);
       const linkBuffPct = Math.min((r.linkBuff / barMax) * 100, 100 - basePct);
       let terrainBarHtml = '';
@@ -3670,7 +3684,7 @@ const UIRenderer = {
       const corrText = corrVal !== 0 ? `+${corrVal}` : '+0';
       const corrVis = corrVal !== 0 ? '' : ' style="visibility:hidden"';
       html += `<div class="sg-cell sg-label" data-stat="${r.key}">${r.label}</div>` +
-        `<div class="sg-cell sg-bar">` +
+        `<div class="sg-cell sg-bar" data-stat="${r.key}">` +
           `<div class="sg-bar-base" style="width:${basePct}%"></div><div class="sg-bar-buff" style="left:${basePct}%;width:${linkBuffPct}%"></div>${terrainBarHtml}` +
           `<div class="sg-bar-vals">` +
             `<span class="sg-bar-formula"><span class="sg-bar-ms">${r.msVal || 0}</span><span class="sg-bar-op">+</span><span class="sg-bar-pl">${r.plVal || 0}</span><span class="sg-bar-op"${corrVis}>+</span><span class="sg-bar-corr"${corrVis}>${corrText}</span></span>` +
@@ -3680,6 +3694,21 @@ const UIRenderer = {
     });
     html += '</div>';
     container.innerHTML = html;
+    return isEmpty ? null : totals;
+  },
+
+  // 各パラメータの最大値を持つユニットのバーを緑枠で強調(同値は全て強調、デフォルトOFF)
+  _highlightBestStatBars(unitTotals) {
+    ['mobility', 'ranged', 'melee', 'hp'].forEach(k => {
+      let max = 0;
+      unitTotals.forEach(t => { if (t && t[k] > max) max = t[k]; });
+      for (let u = 0; u < 5; u++) {
+        const bar = document.querySelector(`#unit-stats-${u} .sg-bar[data-stat="${k}"]`);
+        if (!bar) continue;
+        const isBest = _setStatBarsOn && max > 0 && !!unitTotals[u] && unitTotals[u][k] === max;
+        bar.classList.toggle('best', isBest);
+      }
+    });
   },
 
   _getTerrainMultiplier(msOcr) {
@@ -5963,6 +5992,19 @@ function toggleBadgeSw(btn) {
   localStorage.setItem('abds_badgeState', JSON.stringify(_badgeState));
   _applyBadgeVisibility(key, on);
 }
+
+// ===== セット合計バー: 各パラメータ最大ユニットの緑枠強調 (デフォルトOFF) =====
+let _setStatBarsOn = localStorage.getItem('abds_setStatBars') === '1';
+function applySetStatBars() {
+  const btn = document.getElementById('setStatBarsBtn');
+  if (btn) btn.classList.toggle('active', _setStatBarsOn);
+  UIRenderer.renderAll();
+}
+function toggleSetStatBars() {
+  _setStatBarsOn = !_setStatBarsOn;
+  localStorage.setItem('abds_setStatBars', _setStatBarsOn ? '1' : '0');
+  applySetStatBars();
+}
 function _applyBadgeVisibility(key, on) {
   const map = {
     'sp-tags': '.thumb-sp-tags,.slot-sp-tags',
@@ -6413,6 +6455,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   Shortcuts.init();
   UndoManager.snapshot();
   _initBadges();
+  document.getElementById('setStatBarsBtn')?.classList.toggle('active', _setStatBarsOn);
 
   // ImageCache.init() と CardService.fetchIndex() を並列実行
   let imageCacheInitDone = false;
