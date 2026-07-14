@@ -4782,14 +4782,16 @@ const SearchPanel = {
   init() {
     this._updateCategoryButtons();
     // Enter key triggers search
-    document.getElementById('searchInput').addEventListener('keydown', (e) => {
-      if (e.key === 'Enter') this.applyFilters();
-    });
-    document.getElementById('searchInput').addEventListener('blur', () => this.applyFilters());
-    document.getElementById('searchTextInput').addEventListener('keydown', (e) => {
-      if (e.key === 'Enter') this.applyFilters();
-    });
-    document.getElementById('searchTextInput').addEventListener('blur', () => this.applyFilters());
+    // blur時は入力値が変化した場合のみ再検索する。値が同じなのにグリッドを
+    // 再生成すると、カードタイルへのmousedown→(input blur→再生成)でタイルが
+    // 差し替わり、mouseupが別要素に当たってclickが発火せず選択できなくなるため。
+    const bindSearchInput = (el) => {
+      el.addEventListener('keydown', (e) => { if (e.key === 'Enter') this.applyFilters(); });
+      el.addEventListener('focus', () => { el.dataset.prevVal = el.value; });
+      el.addEventListener('blur', () => { if (el.value !== el.dataset.prevVal) this.applyFilters(); });
+    };
+    bindSearchInput(document.getElementById('searchInput'));
+    bindSearchInput(document.getElementById('searchTextInput'));
     LinkSearch._init();
     // Terrain type enables rank select
     document.getElementById('filterTerrainType').addEventListener('change', () => {
