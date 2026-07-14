@@ -3550,11 +3550,12 @@ const UIRenderer = {
     const plNumber = AppState.deck[plIdx];
     const msOcr = AppState.deckOcr[msIdx];
     const plOcr = AppState.deckOcr[plIdx];
+    const msEntry = msNumber ? AppState.cardIndex.find(c => c.number === msNumber) : null;
 
     // SQSP判定（MS）
     const hasSqSp = msOcr?.special_attack?.sp_type === 'SQUAD SP';
     // EB判定（MS）
-    const hasEb = !!(msOcr?.special_attack?.echoes_beat) || !!(msIdx?.has_eb);
+    const hasEb = !!(msOcr?.special_attack?.echoes_beat) || !!(msEntry?.has_eb);
     // SQスキル判定（PL）
     const plSkill = plOcr?.pilot_skill || plOcr?.pl_skill;
     const hasSqSkill = !!(plSkill?.has_sq_skill);
@@ -3569,7 +3570,7 @@ const UIRenderer = {
 
     // Card names
     const namesEl = document.getElementById(`unit-names-${u}`);
-    const msCard = msNumber ? AppState.cardIndex.find(c => c.number === msNumber) : null;
+    const msCard = msEntry;
     const plCard = plNumber ? AppState.cardIndex.find(c => c.number === plNumber) : null;
     const msName = msCard?.name || (msNumber ? msNumber : '');
     const plName = plCard?.name || (plNumber ? plNumber : '');
@@ -3733,6 +3734,7 @@ const UIRenderer = {
     const el = document.getElementById(`unit-ms-detail-${u}`);
     const plEl = document.getElementById(`unit-pl-detail-${u}`);
     if (!msOcr || !msNumber) { el.innerHTML = ''; plEl.innerHTML = ''; this._renderPlInfoOnly(plEl, plOcr, plNumber); return; }
+    const msEntry = AppState.cardIndex.find(c => c.number === msNumber);
 
     // OCRデータが空（フィールドがない）場合
     const hasOcrFields = msOcr.ms_ability || msOcr.weapon || msOcr.special_attack || msOcr.terrain_compatibility || msOcr.model;
@@ -3874,7 +3876,7 @@ const UIRenderer = {
     if (ebSrc) {
       html += '<div class="unit-ms-detail" data-section="echoes-beat">';
       const ebTypeLabel = msOcr.special_attack?.sp_type === 'ECHOES BEAT SP'
-        || (msIdx?.eb_type === 'sp') ? 'ECHOES BEAT SP' : 'ECHOES BEAT';
+        || (msEntry?.eb_type === 'sp') ? 'ECHOES BEAT SP' : 'ECHOES BEAT';
       html += `<div class="ms-detail-title" style="color:#ffb74d">${ebTypeLabel}${ebSrc._uncertain ? ' <span class="uncertain-badge">?</span>' : ''}</div>`;
       if (ebSrc.name) {
         html += `<div class="ms-detail-ability-name" style="color:#ffb74d">${escapeHtml(ebSrc.name)}</div>`;
