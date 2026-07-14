@@ -2714,13 +2714,32 @@ const DeckManager = {
   },
 
   async copyCode() {
+    if (!AppState.deck.some(n => n) && !AppState.tacticsMain && !AppState.tacticsSub) {
+      Toast.show('デッキにカードがありません', 'error'); return;
+    }
     const code = this.generateCode();
     const base = location.origin + location.pathname.replace(/[^/]*$/, '') + 'index.html';
-    const sc = await ShortUrl.create(code);
-    const url = sc ? base + '?d=s:' + sc : base + '?d=' + code;
-    navigator.clipboard.writeText(url).then(() => {
+    const fallback = base + '?d=' + code;
+    // 短縮URL生成(通信)を待つ間もユーザー操作権限を保つため、ClipboardItemに
+    // Promiseを同期的に渡す。awaitを挟んでからwriteTextを呼ぶとモバイルSafariで
+    // user activationが失効し、無反応(サイレント失敗)になるため。
+    const urlPromise = ShortUrl.create(code).then(sc => sc ? base + '?d=s:' + sc : fallback).catch(() => fallback);
+    try {
+      if (navigator.clipboard && window.ClipboardItem) {
+        await navigator.clipboard.write([new ClipboardItem({
+          'text/plain': urlPromise.then(u => new Blob([u], { type: 'text/plain' }))
+        })]);
+        Toast.show('共有URLをコピーしました', 'success');
+        return;
+      }
+    } catch (e) { /* ClipboardItem非対応/失敗 → writeTextを試す */ }
+    try {
+      await navigator.clipboard.writeText(await urlPromise);
       Toast.show('共有URLをコピーしました', 'success');
-    });
+    } catch {
+      Toast.show('コピーできませんでした', 'error');
+      prompt('共有URL（コピーしてください）', await urlPromise);
+    }
   },
   tweetDeck() {
     if (!AppState.deck.some(n => n)) { Toast.show('デッキにカードがありません', 'error'); return; }
