@@ -9,3 +9,23 @@ APIkey.txt
 *.tmp
 nohup.out
 .DS_Store
+
+# ランタイム・キャッシュ（再生成可能）
+ocr_cache/
+ocr_errors/
+ocr_cc_progress.json
+ocr_config.json
+decks.json
+metrics.db
+series_data/
+.pytest_cache/
+.claude/
+
+# 個人・参考資料（リポジトリには含めない）
+doujinshi/
+design/
+my_cards/
+my_results/
+from_raw/
+*.xlsx
+official_master_data.json.bak

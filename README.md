@@ -36,7 +36,7 @@
 
 ### カードデータ管理
 - 公式サイトからのカードメタデータ自動取得
-- OpenAI Vision API / Claude APIによるOCR処理
+- Claude Code CLI によるOCR処理（`card_ocr_cc.py`、定額プラン利用）
 - 2段階OCR（Stage1: raw抽出 → Stage2: 構造化）
 - OCR管理画面（進捗確認・一括実行）
 
@@ -52,8 +52,8 @@
 | バックエンド | Flask (Python) |
 | フロントエンド | HTML/CSS/JS（テンプレート内、SPA風） |
 | データベース | Supabase PostgreSQL（本番） / JSON（ローカル開発） |
-| OCR | OpenAI Vision API / Claude API |
-| デプロイ | Render (gunicorn) |
+| OCR | Claude Code CLI (`card_ocr_cc.py`) |
+| デプロイ | GitHub Pages（静的サイト）/ Render（バックエンド, gunicorn） |
 | 画像キャッシュ | IndexedDB (ブラウザ側) |
 
 ## セットアップ
@@ -68,8 +68,12 @@
 ```bash
 git clone https://github.com/sekimiya/abds.git
 cd abds
-pip install -r requirements.txt
+pip install flask flask-limiter requests beautifulsoup4 python-dotenv supabase
+# 本番相当で動かす場合: pip install gunicorn gevent
+# テスト実行には別途 pytest が必要
 ```
+
+※ `requirements.txt` は未整備（今後の課題）
 
 ### 環境変数（任意）
 
@@ -78,8 +82,10 @@ pip install -r requirements.txt
 SUPABASE_URL=https://xxx.supabase.co
 SUPABASE_KEY=your-anon-key
 
-# OCR用（OCR機能を使う場合のみ）
-# APIkey.txt にOpenAI APIキーを記述
+# 管理系エンドポイント用トークン（未設定時は起動ごとにランダム生成）
+ADMIN_TOKEN=your-admin-token
+
+# OCRには Claude Code CLI のログインが必要（APIキー不要）
 ```
 
 ### 起動
@@ -155,17 +161,30 @@ abds/
 │   ├── admin.html             #   カードデータ管理
 │   ├── ocr_admin.html         #   OCR管理
 │   └── ocr_run.html           #   OCR実行
-├── card_ocr_cc.py             # OCR処理 (OpenAI Vision API)
-├── card_ocr_claude.py         # OCR処理 (Claude API)
+├── card_ocr_cc.py             # OCR処理 (Claude Code CLI, 2段階)
+├── generate_derivatives.py    # OCR結果からSP/SQ派生データ生成
+├── normalize_ocr.py           # OCRデータ正規化（CIでもチェック）
+├── rebuild_index.py           # data/*.json インデックス再構築
+├── pre_deploy_check.py        # デプロイ前チェック（pre-pushフック）
 ├── fetch_cards.py             # カードメタデータ取得
 ├── fetch_series_ids.py        # シリーズID取得
 ├── download_card_images.py    # OCR用画像ダウンロード
-├── all_cards_list/            # カードJSONデータ
-├── ocr_results_debug/         # OCR結果
-├── requirements.txt           # Python依存パッケージ
-├── Procfile                   # Render デプロイ設定
-└── runtime.txt                # Pythonバージョン指定
+├── index.html / mobile.html   # 静的デッキシミュレータ（GitHub Pages）
+├── decks.html 他              # 静的ページ群
+├── data/                      # 生成済みJSON（サイト配信用）
+├── all_cards_list/            # カードJSONデータ（公式サイト取得分）
+├── ocr_results_debug/         # OCR結果（事実上のマスター）
+├── tests/                     # pytest テスト（CIで実行）
+├── docs/                      # ドキュメント集約（課題管理・設計等）
+└── Procfile                   # Render デプロイ設定
 ```
+
+## ドキュメント
+
+- `docs/ISSUES.md` — 課題管理
+- `docs/SECURITY_REVIEW.md` — セキュリティレビュー
+- `docs/IMPROVEMENTS.md` / `docs/CLEANUP_LOG.md` — 改善・整理の作業ログ
+- `docs/SETUP.md` / `docs/STARTUP.md` — セットアップ詳細
 
 ## 注意事項
 
