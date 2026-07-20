@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Gundam Arsenal Base - Detailed Deck Simulator</title>
+    <style>
+        body { background: #1a1a1a; color: #fff; font-family: sans-serif; }
+        .header { 
+            background: #1a472a; 
+            color: #fff; 
+            text-align: center; 
+            padding: 1rem; 
+            font-size: 2rem; 
+            min-width: 100%;
+            box-sizing: border-box;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+        @media (max-width: 768px) {
+            .header {
+                font-size: 1.5rem;
+                padding: 0.8rem;
+            }
+        }
+        @media (max-width: 480px) {
+            .header {
+                font-size: 1.2rem;
+                padding: 0.6rem;
+            }
+        }
+        .deck-table2 { border-collapse: collapse; width: 100%; max-width: 1800px; margin: 2rem auto; background: #222; }
+        .deck-table2 th, .deck-table2 td { border: 1px solid #444; padding: 0.3em 0.5em; font-size: 0.95em; }
+        .deck-table2 th { background: #333; color: #ffe082; }
+        .deck-table2 td { background: #222; }
+        .card-img2 { max-width: 80px; border-radius: 4px; background: #111; }
+        .select2 { width: 95%; margin: 0.2em 0; padding: 0.2em; border-radius: 4px; border: 1px solid #444; background: #333; color: #fff; font-size: 0.95em; }
+        .param-bar { height: 8px; border-radius: 4px; background: #444; margin: 2px 0; }
+        .param-bar-inner { height: 100%; border-radius: 4px; }
+        .cost-box { font-size: 1.5em; color: #4caf50; font-weight: bold; background: #333; border-radius: 6px; padding: 0.3em 1em; display: inline-block; margin-right: 1em; }
+        .terrain-select { font-size: 1em; background: #333; color: #fff; border-radius: 4px; border: 1px solid #444; padding: 0.2em 0.5em; }
+    </style>
+</head>
+<body>
+    <div class="header">Gundam Arsenal Base - Detailed Deck Simulator</div>
+    <div style="max-width:1800px;margin:1rem auto 0 auto;display:flex;align-items:center;gap:2em;">
+        <div class="cost-box" id="totalCost2">総コスト 0</div>
+        <div>
+            地形補正
+            <select class="terrain-select" id="terrainSelect">
+                <option value="">-</option>
+                <option value="地上">地上</option>
+                <option value="宇宙">宇宙</option>
+                <option value="砂漠">砂漠</option>
+                <option value="水中">水中</option>
+            </select>
+        </div>
+    </div>
+    <table class="deck-table2">
+        <thead>
+            <tr>
+                <th>カード画像</th>
+                <th>カード番号</th>
+                <th>パイロット番号</th>
+                <th>カード名</th>
+                <th>パイロット名</th>
+                <th>コスト</th>
+                <th>機動力</th>
+                <th>遠距離</th>
+                <th>近距離</th>
+                <th>HP</th>
+                <th>地形適正</th>
+                <th>リンクアビリティ(MS)</th>
+                <th>リンクアビリティ(PL)</th>
+                <th>MSアビリティ</th>
+                <th>PLスキル</th>
+                <th>戦術技</th>
+                <th>SP</th>
+            </tr>
+        </thead>
+        <tbody id="deckTable2Body">
+            <!-- JSで10枚分生成予定。まずはサンプル1行 -->
+            <tr>
+                <td><img src="" class="card-img2" id="img-0"></td>
+                <td><select class="select2" id="ms-select-0"></select></td>
+                <td><select class="select2" id="pl-select-0"></select></td>
+                <td id="ms-name-0"></td>
+                <td id="pl-name-0"></td>
+                <td id="cost-0"></td>
+                <td id="mobility-0"></td>
+                <td id="ranged-0"></td>
+                <td id="melee-0"></td>
+                <td id="hp-0"></td>
+                <td id="terrain-0"></td>
+                <td id="link-ms-0"></td>
+                <td id="link-pl-0"></td>
+                <td id="ms-ability-0"></td>
+                <td id="pl-skill-0"></td>
+                <td id="tactics-0"></td>
+                <td id="sp-0"></td>
+            </tr>
+        </tbody>
+    </table>
+    <script>
+        let allCards2 = [];
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('/fetch_cards')
+                .then(res => res.json())
+                .then(data => {
+                    if (!data.success) return;
+                    allCards2 = data.images;
+                    const msSelect = document.getElementById('ms-select-0');
+                    msSelect.innerHTML = '';
+                    allCards2.forEach((c, idx) => {
+                        const opt = document.createElement('option');
+                        opt.value = idx;
+                        opt.textContent = `${c.number} - ${c.name}`;
+                        msSelect.appendChild(opt);
+                    });
+                    msSelect.onchange = function() {
+                        updateRow0(this.value);
+                    };
+                    updateRow0(0);
+                });
+        });
+        function updateRow0(idx) {
+            const card = allCards2[idx];
+            document.getElementById('img-0').src = card.url;
+            document.getElementById('ms-name-0').textContent = card.name;
+            document.getElementById('cost-0').textContent = '';
+            document.getElementById('mobility-0').textContent = '';
+            document.getElementById('ranged-0').textContent = '';
+            document.getElementById('melee-0').textContent = '';
+            document.getElementById('hp-0').textContent = '';
+            document.getElementById('terrain-0').textContent = '';
+            document.getElementById('link-ms-0').textContent = '';
+            document.getElementById('ms-ability-0').textContent = '';
+            document.getElementById('tactics-0').textContent = '';
+            document.getElementById('sp-0').textContent = '';
+            // OCRデータ取得
+            const ocrFile = `ocr_results/${card.number}_b_ocr.json`;
+            fetch(ocrFile)
+                .then(res => res.ok ? res.json() : null)
+                .then(data => {
+                    if (!data) return;
+                    let ocrJson = null;
+                    try {
+                        const match = data.ocr_result.match(/```json\n([\s\S]*)```/);
+                        if (match) {
+                            ocrJson = JSON.parse(match[1]);
+                        }
+                    } catch (e) {}
+                    if (!ocrJson) return;
+                    document.getElementById('cost-0').textContent = ocrJson.機体情報?.コスト ?? '';
+                    document.getElementById('mobility-0').textContent = ocrJson.ステータス?.機動力 ?? '';
+                    document.getElementById('ranged-0').textContent = ocrJson.ステータス?.遠距離攻撃 ?? '';
+                    document.getElementById('melee-0').textContent = ocrJson.ステータス?.近距離攻撃 ?? '';
+                    document.getElementById('hp-0').textContent = ocrJson.ステータス?.HP ?? '';
+                    document.getElementById('terrain-0').textContent = ocrJson.機体情報?.地形適正 ?? '';
+                    // リンクアビリティ
+                    if (Array.isArray(ocrJson.リンクアビリティ) && ocrJson.リンクアビリティ.length > 0) {
+                        document.getElementById('link-ms-0').textContent = ocrJson.リンクアビリティ.map(a => a.条件).join(' / ');
+                    }
+                    document.getElementById('ms-ability-0').textContent = ocrJson.MSアビリティ ?? '';
+                    document.getElementById('tactics-0').textContent = ocrJson.戦術技 ?? '';
+                    document.getElementById('sp-0').textContent = ocrJson.SP ?? '';
+                });
+        }
+    </script>
+</body>
+</html> 

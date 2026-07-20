@@ -1,0 +1,1335 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>デッキ一覧 - ABDS</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:14px}
+body{background:#0f0f0f;color:#e0e0e0;font-family:'Segoe UI','Hiragino Sans',sans-serif;min-height:100vh}
+a{color:#68efbd;text-decoration:none}
+button{cursor:pointer;font-family:inherit}
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:#1a1a1a}
+::-webkit-scrollbar-thumb{background:#444;border-radius:3px}
+
+/* ===== HEADER ===== */
+.app-header{
+  display:flex;align-items:center;justify-content:space-between;
+  background:linear-gradient(135deg,#1e2924,#1e2924);
+  border-bottom:2px solid #68efbd;
+  padding:0 1.2rem;min-height:52px;
+}
+.header-left{display:flex;align-items:center;gap:0.8rem}
+.logo{
+  color:#68efbd;font-weight:bold;font-size:0.85rem;white-space:nowrap;
+  font-style:italic;letter-spacing:1px;
+}
+.header-title{color:#fff;font-size:1.1rem;font-weight:bold}
+.header-btn{
+  background:#222;border:1px solid #555;border-radius:6px;
+  color:#ccc;padding:0.3rem 0.6rem;font-size:0.8rem;
+  transition:all 0.15s;white-space:nowrap;text-decoration:none;
+  display:inline-flex;align-items:center;gap:4px;
+}
+.header-btn:hover{background:#333;border-color:#68efbd;color:#68efbd}
+
+/* ===== HAMBURGER + SLIDE MENU ===== */
+.hamburger-btn{
+  background:none;border:none;color:#ccc;font-size:1.4rem;
+  padding:0.2rem 0.4rem;cursor:pointer;display:flex;align-items:center;
+  transition:color 0.15s;line-height:1;
+}
+.hamburger-btn:hover{color:#68efbd}
+.slide-overlay{
+  display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);
+  z-index:50;transition:opacity 0.25s;
+}
+.slide-overlay.active{display:block}
+.slide-menu{
+  position:fixed;top:0;left:-280px;width:280px;height:100%;
+  background:#1a1a1a;border-right:2px solid #333;
+  z-index:51;transition:left 0.25s ease;
+  display:flex;flex-direction:column;overflow-y:auto;
+}
+.slide-menu.open{left:0}
+.slide-menu-header{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0.8rem 1rem;border-bottom:1px solid #333;
+  background:#1e2924;
+}
+.slide-menu-title{color:#68efbd;font-weight:bold;font-size:0.9rem}
+.slide-menu-close{
+  background:none;border:none;color:#888;font-size:1.2rem;
+  cursor:pointer;padding:0.2rem 0.4rem;line-height:1;
+}
+.slide-menu-close:hover{color:#ff5252}
+.slide-menu-body{padding:0.8rem 1rem;display:flex;flex-direction:column;gap:0.3rem}
+.menu-section-label{color:#888;font-size:0.7rem;padding:0.4rem 0 0.2rem;text-transform:uppercase;letter-spacing:1px}
+.menu-item{
+  display:flex;align-items:center;gap:0.5rem;
+  background:transparent;border:1px solid transparent;border-radius:6px;
+  color:#ccc;padding:0.5rem 0.6rem;font-size:0.8rem;
+  cursor:pointer;transition:all 0.15s;width:100%;text-align:left;
+}
+.menu-item:hover{background:#222;border-color:#333;color:#68efbd}
+.menu-item.active{background:#1e2924;border-color:#3a5a4a;color:#68efbd}
+.menu-item .menu-icon{font-size:0.85rem;width:20px;text-align:center;flex-shrink:0}
+.menu-badge{
+  margin-left:auto;background:#333;color:#888;
+  font-size:0.65rem;padding:0.1rem 0.4rem;border-radius:10px;
+}
+.menu-item.active .menu-badge{background:#3a5a4a;color:#68efbd}
+
+/* Bookmark button */
+.btn-bookmark{
+  background:transparent;border:1px solid #555;border-radius:4px;
+  color:#888;padding:0.2rem 0.5rem;font-size:0.75rem;
+  transition:all 0.15s;display:inline-flex;align-items:center;gap:3px;
+}
+.btn-bookmark:hover{border-color:#ffe082;color:#ffe082;background:rgba(255,224,130,0.1)}
+.btn-bookmark.bookmarked{border-color:#ffe082;color:#ffe082}
+.btn-bookmark .bm-icon{font-size:0.85rem}
+
+/* ===== CONTENT ===== */
+.content{max-width:1000px;margin:0 auto;padding:1.5rem 1rem 3rem}
+
+/* ===== DECK CARD ===== */
+.deck-entry{
+  background:#1a1a1a;border:1px solid #333;border-radius:8px;
+  padding:1.2rem;margin-bottom:1.2rem;
+  transition:all 0.2s ease;
+}
+.deck-entry:hover{border-color:#68efbd;box-shadow:0 2px 12px rgba(104,239,189,0.1)}
+.deck-entry.deck-entry-eb{
+  background:linear-gradient(135deg,#1a1610,#1f1a12);
+  border-color:#5a3a10;
+}
+.deck-entry.deck-entry-eb:hover{border-color:#ff9800;box-shadow:0 2px 12px rgba(255,152,0,0.15)}
+.deck-entry.deck-entry-sq{
+  background:linear-gradient(135deg,#1a1018,#1f1219);
+  border-color:#5a1040;
+}
+.deck-entry.deck-entry-sq:hover{border-color:#ff69b4;box-shadow:0 2px 12px rgba(255,105,180,0.15)}
+
+.deck-header{display:flex;align-items:flex-start;justify-content:space-between;gap:0.8rem;margin-bottom:0.5rem}
+.deck-title{
+  color:#68efbd;font-size:1.15rem;font-weight:bold;cursor:pointer;
+  transition:color 0.15s;
+}
+.deck-title:hover{color:#a0ffd8}
+.deck-actions{display:flex;gap:0.4rem;flex-shrink:0}
+
+.btn-action{
+  background:transparent;border:1px solid #555;border-radius:4px;
+  color:#888;padding:0.2rem 0.5rem;font-size:0.75rem;
+  transition:all 0.15s;
+}
+.btn-action:hover{border-color:#68efbd;color:#68efbd;background:rgba(104,239,189,0.1)}
+.btn-action.btn-open{border-color:#68efbd;color:#68efbd;text-decoration:none}
+.btn-action.btn-open:hover{background:rgba(104,239,189,0.15)}
+.btn-action.btn-copy-deck{border-color:#ffe082;color:#ffe082;text-decoration:none}
+.btn-action.btn-copy-deck:hover{background:rgba(255,224,130,0.15)}
+.btn-action.btn-tweet{border-color:#1DA1F2;color:#1DA1F2;text-decoration:none}
+.btn-action.btn-tweet:hover{background:rgba(29,161,242,0.15)}
+.btn-action.copied{border-color:#68efbd;color:#68efbd}
+.btn-like{
+  background:transparent;border:1px solid #555;border-radius:4px;
+  color:#888;padding:0.2rem 0.5rem;font-size:0.75rem;
+  transition:all 0.15s;display:inline-flex;align-items:center;gap:3px;
+}
+.btn-like:hover{border-color:#ff6b9d;color:#ff6b9d;background:rgba(255,107,157,0.1)}
+.btn-like.liked{border-color:#ff6b9d;color:#ff6b9d}
+.btn-like .like-heart{font-size:0.85rem}
+.btn-like .like-count{font-size:0.75rem;min-width:8px}
+
+.deck-meta{color:#888;font-size:0.8rem;margin-bottom:0.5rem}
+.deck-comment{color:#aaa;font-size:0.85rem;margin-bottom:0.8rem;line-height:1.5}
+
+/* ===== DECK PREVIEW (mini simulator view) ===== */
+.deck-preview{
+  display:flex;gap:0;
+  background:#111;border:1px solid #2a2a2a;border-radius:6px;
+  overflow-x:auto;overflow-y:hidden;
+  padding:0;
+}
+.dp-unit{
+  flex:1;min-width:120px;max-width:200px;
+  border-right:1px solid #1a1a1a;
+  display:flex;flex-direction:column;
+  padding:0.25rem;
+}
+.dp-unit:last-child{border-right:none}
+
+/* Card names */
+.dp-names{
+  text-align:left;font-size:0.6rem;margin-bottom:0.2rem;
+  flex-shrink:0;line-height:1.25;
+}
+.dp-names .dp-ms-name,.dp-names .dp-pl-name{
+  display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+}
+.dp-names .dp-ms-name{color:#68efbd}
+.dp-names .dp-pl-name{color:#68efbd}
+.dp-names.names-eb .dp-ms-name,.dp-names.names-eb .dp-pl-name{color:#ffb74d}
+.dp-names.names-sq .dp-ms-name,.dp-names.names-sq .dp-pl-name{color:#ff8cc8}
+
+/* Rarity tag (mini) */
+.dp-rarity{
+  display:inline-flex;align-items:center;justify-content:center;
+  padding:0rem 0.2rem;border-radius:2px;
+  font-size:0.5rem;font-weight:bold;
+  min-width:1rem;text-align:center;vertical-align:middle;
+}
+.dp-rarity.rarity-M{background:#5e3a1a;color:#ffcc80}
+.dp-rarity.rarity-C{background:#1a3a1a;color:#a5d6a7}
+.dp-rarity.rarity-R{background:#1a1a5e;color:#90caf9}
+.dp-rarity.rarity-SR{background:#5e1a5e;color:#ce93d8}
+.dp-rarity.rarity-U{background:#5e5e1a;color:#fff59d}
+.dp-rarity.rarity-P{background:#1a5e5e;color:#80deea}
+.dp-rarity.rarity-PR{background:#4a1a4a;color:#f48fb1}
+.dp-rarity.rarity-LR{background:#5e4a1a;color:#ffe082}
+.dp-rarity.rarity-LE{background:#4a1a1a;color:#ff8a80}
+.dp-rarity.rarity-CP{background:#3a3a3a;color:#bdbdbd}
+
+/* Cost + terrain badge row */
+.dp-cost-row{
+  display:flex;align-items:center;justify-content:center;gap:2px;
+  padding:0.1rem 0.15rem;margin-bottom:0.2rem;
+  background:linear-gradient(135deg,#1a1a1a,#1e1e1e);border-radius:3px;
+  border:1px solid #2a2a2a;
+  font-weight:bold;font-size:0.55rem;
+  flex-shrink:0;flex-wrap:nowrap;
+}
+.dp-cost-val{
+  display:inline-flex;align-items:center;gap:1px;
+  background:linear-gradient(135deg,#2a1f0a,#3a2a0a);
+  border:1px solid #5a4a1a;border-radius:2px;
+  padding:0rem 0.2rem;color:#ffe082;
+}
+.dp-cost-val .cost-label{color:#aa8a42;font-size:0.4rem}
+.dp-cost-val .cost-num{font-size:0.55rem;line-height:1}
+.dp-terrain{
+  padding:0rem 0.15rem;border-radius:2px;font-size:0.45rem;font-weight:bold;
+  background:#1a1a1a;border:1px solid #333;
+}
+.dp-terrain.rank-S{color:#ff8a80;border-color:#c62828}
+.dp-terrain.rank-A{color:#82b1ff;border-color:#1565c0}
+.dp-terrain.rank-B{color:#a5d6a7;border-color:#2e7d32}
+.dp-terrain.rank-C{color:#ffcc80;border-color:#e65100}
+.dp-terrain.rank-none{color:#444;border-color:#222}
+
+/* Card images (stacked MS + PL) */
+.dp-card-img-wrap{
+  position:relative;background:#0f0f0f;border:1px solid #2a2a2a;border-radius:4px;
+  aspect-ratio:63/88;overflow:hidden;margin-bottom:0.15rem;flex-shrink:0;
+}
+.dp-card-img-wrap img{
+  width:100%;height:100%;object-fit:cover;display:block;
+}
+.dp-card-img-wrap .dp-no-img{
+  width:100%;height:100%;display:flex;align-items:center;justify-content:center;
+  color:#444;font-size:0.5rem;
+}
+/* SQ/EB/SQSP highlight borders on card images */
+.dp-card-img-wrap.dp-sqsp{border-color:#ff69b4;border-width:2px;box-shadow:0 0 4px rgba(255,105,180,0.4)}
+.dp-card-img-wrap.dp-sq{border-color:#ff69b4;border-width:2px;box-shadow:0 0 4px rgba(255,105,180,0.4)}
+.dp-card-img-wrap.dp-eb{border-color:#ff9800;border-width:2px;box-shadow:0 0 4px rgba(255,152,0,0.4)}
+/* Badge overlay */
+.dp-badge{
+  position:absolute;top:2px;left:2px;z-index:2;
+  font-size:0.45rem;font-weight:bold;padding:0.05rem 0.25rem;border-radius:2px;
+  color:#fff;letter-spacing:0.3px;box-shadow:0 1px 2px rgba(0,0,0,0.5);
+}
+.dp-badge-sqsp,.dp-badge-sq{background:linear-gradient(135deg,#ff69b4,#e91e8c)}
+.dp-badge-eb{background:linear-gradient(135deg,#ff9800,#e65100)}
+
+/* Stat bars (mini) */
+.dp-stats{margin-bottom:0.1rem}
+.dp-stat{display:flex;align-items:center;gap:2px;margin-bottom:1px}
+.dp-stat-label{color:#888;font-size:0.45rem;width:16px;text-align:right;flex-shrink:0}
+.dp-stat-track{flex:0 0 45%;height:8px;background:#1a1a1a;border-radius:1px;overflow:hidden;position:relative;display:flex}
+.dp-stat-bar{height:100%;background:#2196f3;transition:width 0.3s}
+.dp-stat-value{color:#aaa;font-size:0.45rem;flex:1;min-width:0;text-align:left;padding-left:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+/* ===== COMMENTS ===== */
+.deck-comments{margin-top:0.8rem;border-top:1px solid #2a2a2a;padding-top:0.6rem}
+.comments-toggle{
+  background:none;border:none;color:#888;font-size:0.75rem;
+  padding:0;cursor:pointer;transition:color 0.15s;
+}
+.comments-toggle:hover{color:#68efbd}
+.comments-list{margin-top:0.5rem;display:flex;flex-direction:column;gap:0.4rem}
+.comment-item{
+  background:#111;border:1px solid #2a2a2a;border-radius:4px;
+  padding:0.4rem 0.6rem;font-size:0.8rem;
+}
+.comment-item.is-reply{
+  margin-left:1.5rem;border-left:2px solid #3a5a4a;
+  background:#0d1510;
+}
+.comment-header{display:flex;align-items:center;gap:0.5rem;margin-bottom:0.2rem}
+.comment-name{color:#68efbd;font-weight:bold;font-size:0.75rem}
+.comment-time{color:#555;font-size:0.65rem}
+.comment-text{color:#ccc;line-height:1.5;word-break:break-word}
+.comment-form{display:flex;gap:0.4rem;margin-top:0.5rem;align-items:flex-start}
+.comment-name-input{
+  background:#111;border:1px solid #333;border-radius:4px;color:#ccc;
+  padding:0.3rem 0.5rem;font-size:0.75rem;width:80px;flex-shrink:0;
+}
+.comment-text-input{
+  background:#111;border:1px solid #333;border-radius:4px;color:#ccc;
+  padding:0.3rem 0.5rem;font-size:0.75rem;flex:1;min-height:32px;
+  resize:vertical;font-family:inherit;
+}
+.comment-name-input:focus,.comment-text-input:focus{border-color:#68efbd;outline:none}
+.comment-submit{
+  background:#1e2924;border:1px solid #3a5a4a;border-radius:4px;
+  color:#68efbd;padding:0.3rem 0.6rem;font-size:0.75rem;
+  white-space:nowrap;transition:all 0.15s;flex-shrink:0;
+}
+.comment-submit:hover{background:#2a4a35;border-color:#68efbd}
+.comment-submit:disabled{opacity:0.4;cursor:default}
+.comment-reply-btn{
+  background:none;border:none;color:#555;font-size:0.65rem;
+  cursor:pointer;padding:0;margin-left:auto;transition:color 0.15s;
+}
+.comment-reply-btn:hover{color:#68efbd}
+.comment-reply-tag{
+  display:inline-block;background:#1e2924;border:1px solid #3a5a4a;
+  border-radius:3px;color:#68efbd;font-size:0.65rem;
+  padding:0 0.3rem;margin-right:0.3rem;vertical-align:middle;
+}
+.comment-reply-indicator{
+  display:inline-flex;align-items:center;gap:4px;
+  background:#1e2924;border:1px solid #3a5a4a;border-radius:4px;
+  color:#68efbd;font-size:0.7rem;padding:0.15rem 0.4rem;margin-bottom:0.3rem;
+}
+.comment-reply-indicator .reply-cancel{
+  background:none;border:none;color:#888;font-size:0.8rem;
+  cursor:pointer;padding:0 0 0 4px;line-height:1;
+}
+.comment-reply-indicator .reply-cancel:hover{color:#ff5252}
+
+.deck-tactics{margin-top:0.6rem;display:flex;gap:0.6rem;align-items:center;flex-wrap:wrap}
+.deck-tactics-label{color:#888;font-size:0.75rem}
+.deck-tactics-card{
+  background:#1e2924;border:1px solid #3a5a4a;border-radius:4px;
+  color:#68efbd;font-size:0.75rem;padding:0.15rem 0.5rem;
+  display:inline-flex;align-items:center;gap:4px;
+}
+.tactics-thumb{width:20px;height:20px;border-radius:2px;object-fit:cover}
+
+/* ===== ACTIVE LINKS ===== */
+.deck-links{margin-top:0.4rem;display:flex;gap:0.4rem;align-items:center;flex-wrap:wrap}
+.deck-links-label{color:#888;font-size:0.75rem;flex-shrink:0}
+.link-chip{
+  display:inline-flex;align-items:center;gap:3px;
+  background:#222;border:1px solid #555;border-radius:4px;
+  padding:0.15rem 0.5rem;font-size:0.7rem;color:#aaa;
+  transition:all 0.15s;
+}
+.link-chip .link-badge{
+  font-size:0.55rem;font-weight:bold;padding:0.05rem 0.2rem;
+  border-radius:2px;color:#fff;letter-spacing:0.3px;
+}
+.link-chip .link-name{color:#aaa}
+.link-chip.link-sq{border-color:#ff69b4;background:#2a1a24}
+.link-chip.link-sq .link-name{color:#ff8cc8}
+.link-chip.link-sq .link-badge{background:linear-gradient(135deg,#ff69b4,#e91e8c)}
+.link-chip.link-eb{border-color:#ff9800;background:#2a2218}
+.link-chip.link-eb .link-name{color:#ffb74d}
+.link-chip.link-eb .link-badge{background:linear-gradient(135deg,#ff9800,#e65100)}
+.link-chip.link-normal{border-color:#555;background:#222}
+.link-chip.link-normal .link-name{color:#aaa}
+
+.toast-container{position:fixed;top:60px;right:1rem;z-index:200;display:flex;flex-direction:column;gap:0.4rem}
+.toast{
+  background:#1a1a1a;border:1px solid #68efbd;border-radius:6px;
+  color:#e0e0e0;padding:0.5rem 1rem;font-size:0.85rem;
+  animation:toastIn 0.3s ease;
+}
+.toast.fadeout{opacity:0;transition:opacity 0.3s}
+@keyframes toastIn{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:none}}
+
+/* ===== STATES ===== */
+.empty-state,.error-state,.loading-state{
+  text-align:center;padding:4rem 1rem;
+}
+.empty-state{color:#666}
+.empty-state .icon{font-size:3rem;margin-bottom:0.8rem;opacity:0.3}
+.empty-state p{font-size:0.95rem}
+.empty-state .sub{color:#555;font-size:0.8rem;margin-top:0.4rem}
+
+.error-state{color:#ff5252}
+.error-state .icon{font-size:3rem;margin-bottom:0.8rem}
+.error-state p{font-size:0.95rem}
+
+.loading-state{color:#888}
+.loading-state .spinner{
+  display:inline-block;width:24px;height:24px;
+  border:2px solid #333;border-top-color:#68efbd;border-radius:50%;
+  animation:spin 0.8s linear infinite;margin-bottom:0.8rem;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ===== CONFIRM DIALOG ===== */
+.overlay{
+  display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);
+  z-index:100;align-items:center;justify-content:center;
+}
+.overlay.active{display:flex}
+.dialog{
+  background:#1a1a1a;border:1px solid #444;border-radius:8px;
+  padding:1.5rem;max-width:360px;width:90%;text-align:center;
+}
+.dialog p{margin-bottom:1rem;font-size:0.95rem}
+.dialog-btns{display:flex;gap:0.6rem;justify-content:center}
+.dialog-btn{
+  padding:0.4rem 1.2rem;border-radius:6px;font-size:0.85rem;
+  border:1px solid #555;background:#222;color:#ccc;
+  transition:all 0.15s;
+}
+.dialog-btn:hover{background:#333;border-color:#68efbd;color:#68efbd}
+.dialog-btn.danger{border-color:#ff5252;color:#ff5252}
+.dialog-btn.danger:hover{background:rgba(255,82,82,0.15)}
+
+/* ===== COMPACT MODE ===== */
+body.compact-mode .dp-card-img-wrap{display:none}
+body.compact-mode .dp-stats{display:none}
+body.compact-mode .dp-unit{min-width:80px}
+body.compact-mode .deck-preview{gap:0}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:700px){
+  .content{padding:1rem 0.6rem 2rem}
+  .deck-entry{padding:0.8rem}
+  .deck-title{font-size:1rem}
+  .dp-unit{min-width:100px}
+  .dp-names{font-size:0.5rem}
+  .dp-cost-row{font-size:0.45rem}
+  .dp-stat-label{font-size:0.4rem;width:14px}
+  .dp-stat-value{font-size:0.4rem}
+  .dp-stat-track{height:6px}
+}
+@media(max-width:480px){
+  .deck-preview{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .dp-unit{min-width:90px}
+}
+</style>
+</head>
+<body>
+
+<div class="app-header">
+  <div class="header-left">
+    <button class="hamburger-btn" id="hamburgerBtn" onclick="toggleSlideMenu()">&#9776;</button>
+    <span class="logo">ABDS</span>
+    <span class="header-title">デッキ一覧</span>
+  </div>
+  <a href="/" class="header-btn">← ホーム</a>
+</div>
+
+<!-- Slide menu -->
+<div class="slide-overlay" id="slideOverlay" onclick="closeSlideMenu()"></div>
+<div class="slide-menu" id="slideMenu">
+  <div class="slide-menu-header">
+    <span class="slide-menu-title">メニュー</span>
+    <button class="slide-menu-close" onclick="closeSlideMenu()">&times;</button>
+  </div>
+  <div class="slide-menu-body">
+    <div class="menu-section-label">フィルター</div>
+    <button class="menu-item active" id="filterAll" onclick="setFilter('all')">
+      <span class="menu-icon">&#9744;</span>すべてのデッキ<span class="menu-badge" id="badgeAll">0</span>
+    </button>
+    <button class="menu-item" id="filterBookmark" onclick="setFilter('bookmark')">
+      <span class="menu-icon">&#9733;</span>ブックマーク<span class="menu-badge" id="badgeBookmark">0</span>
+    </button>
+    <div class="menu-section-label">ソート</div>
+    <button class="menu-item active" id="sortNewest" onclick="setSort('newest')">
+      <span class="menu-icon">&#8595;</span>新着順
+    </button>
+    <button class="menu-item" id="sortLikes" onclick="setSort('likes')">
+      <span class="menu-icon">&#9829;</span>イイネ順
+    </button>
+    <button class="menu-item" id="sortBookmarks" onclick="setSort('bookmarks')">
+      <span class="menu-icon">&#9733;</span>ブックマーク数順
+    </button>
+    <div class="menu-section-label">期間</div>
+    <button class="menu-item active" id="periodAll" onclick="setPeriod('all')">
+      <span class="menu-icon">&#8734;</span>全期間
+    </button>
+    <button class="menu-item" id="periodWeek" onclick="setPeriod('week')">
+      <span class="menu-icon">7</span>週間
+    </button>
+    <button class="menu-item" id="periodMonth" onclick="setPeriod('month')">
+      <span class="menu-icon">30</span>月間
+    </button>
+    <div class="menu-section-label">表示</div>
+    <label class="menu-item" style="cursor:pointer">
+      <input type="checkbox" id="compactToggle" onchange="toggleCompact(this.checked)" style="accent-color:#68efbd">
+      <span>カード画像を折りたたむ</span>
+    </label>
+    <div class="menu-section-label">ナビゲーション</div>
+    <a class="menu-item" href="/v2" style="text-decoration:none">
+      <span class="menu-icon">&#9998;</span>デッキエディター
+    </a>
+    <a class="menu-item" href="/" style="text-decoration:none">
+      <span class="menu-icon">&#8962;</span>ホーム
+    </a>
+  </div>
+</div>
+
+<div class="toast-container" id="toastContainer"></div>
+
+<!-- Delete confirmation dialog -->
+<div class="overlay" id="deleteOverlay">
+  <div class="dialog">
+    <p>削除パスワードを入力してください</p>
+    <input type="password" id="deletePasswordInput" style="background:#111;border:1px solid #333;border-radius:4px;color:#ccc;padding:0.4rem 0.6rem;font-size:0.85rem;width:100%;margin-bottom:1rem" placeholder="パスワード">
+    <div class="dialog-btns">
+      <button class="dialog-btn" onclick="closeDeleteDialog()">キャンセル</button>
+      <button class="dialog-btn danger" id="deleteConfirmBtn" onclick="confirmDelete()">削除</button>
+    </div>
+  </div>
+</div>
+
+<div class="content">
+  <div id="deckList">
+    <div class="loading-state">
+      <div class="spinner"></div>
+      <p>読み込み中...</p>
+    </div>
+  </div>
+</div>
+
+
+<script>
+// ================================================================
+// Supabase Configuration
+// ================================================================
+const SUPABASE_URL = 'https://hwavpmbdtxuffrlumlrf.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh3YXZwbWJkdHh1ZmZybHVtbHJmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE5NTQyOTIsImV4cCI6MjA4NzUzMDI5Mn0.Y9Q_zIhzSMdxjxI9pXpAzpOWyfbojkrJ-ueqiGaHNK0';
+const SB_HEADERS = {
+  'apikey': SUPABASE_ANON_KEY,
+  'Authorization': 'Bearer ' + SUPABASE_ANON_KEY,
+  'Content-Type': 'application/json'
+};
+async function sha256(text) {
+  const data = new TextEncoder().encode(text);
+  const hash = await crypto.subtle.digest('SHA-256', data);
+  return [...new Uint8Array(hash)].map(b => b.toString(16).padStart(2, '0')).join('');
+}
+
+// ================================================================
+// ShortUrl - Supabase短縮URL管理
+// ================================================================
+const ShortUrl = {
+  async create(deckCode) {
+    try {
+      const codeHash = await sha256(deckCode);
+      const check = await fetch(SUPABASE_URL + '/rest/v1/short_links?code_hash=eq.' + codeHash + '&select=id', {
+        headers: SB_HEADERS
+      });
+      if (check.ok) {
+        const rows = await check.json();
+        if (rows.length > 0) return rows[0].id;
+      }
+      const id = codeHash.substring(0, 8);
+      const res = await fetch(SUPABASE_URL + '/rest/v1/short_links', {
+        method: 'POST',
+        headers: { ...SB_HEADERS, 'Prefer': 'return=representation' },
+        body: JSON.stringify({ id, deck_code: deckCode, code_hash: codeHash })
+      });
+      if (res.ok) return id;
+      if (res.status === 409) {
+        const id2 = codeHash.substring(4, 12);
+        const res2 = await fetch(SUPABASE_URL + '/rest/v1/short_links', {
+          method: 'POST',
+          headers: { ...SB_HEADERS, 'Prefer': 'return=representation' },
+          body: JSON.stringify({ id: id2, deck_code: deckCode, code_hash: codeHash })
+        });
+        if (res2.ok) return id2;
+      }
+      return null;
+    } catch { return null; }
+  }
+};
+
+// --- Slide menu ---
+function toggleSlideMenu() {
+  const menu = document.getElementById('slideMenu');
+  const overlay = document.getElementById('slideOverlay');
+  const isOpen = menu.classList.contains('open');
+  if (isOpen) { closeSlideMenu(); } else {
+    menu.classList.add('open');
+    overlay.classList.add('active');
+  }
+}
+function closeSlideMenu() {
+  document.getElementById('slideMenu').classList.remove('open');
+  document.getElementById('slideOverlay').classList.remove('active');
+}
+
+// --- Compact mode ---
+function toggleCompact(checked) {
+  document.body.classList.toggle('compact-mode', checked);
+  localStorage.setItem('gab_compact_mode', checked ? '1' : '0');
+}
+// Restore compact mode from localStorage
+if (localStorage.getItem('gab_compact_mode') === '1') {
+  document.body.classList.add('compact-mode');
+  setTimeout(() => { const cb = document.getElementById('compactToggle'); if (cb) cb.checked = true; }, 0);
+}
+
+// --- Bookmark管理 (localStorage) ---
+function getBookmarkSet() {
+  try { return new Set(JSON.parse(localStorage.getItem('gab_bookmarked_decks') || '[]')); }
+  catch { return new Set(); }
+}
+function isBookmarked(deckId) { return getBookmarkSet().has(deckId); }
+function toggleBookmark(deckId, btn) {
+  const s = getBookmarkSet();
+  if (s.has(deckId)) {
+    s.delete(deckId);
+    btn.classList.remove('bookmarked');
+    btn.querySelector('.bm-icon').innerHTML = '&#9734;';
+    showToast('ブックマークを解除しました');
+  } else {
+    s.add(deckId);
+    btn.classList.add('bookmarked');
+    btn.querySelector('.bm-icon').innerHTML = '&#9733;';
+    showToast('ブックマークしました');
+  }
+  localStorage.setItem('gab_bookmarked_decks', JSON.stringify([...s]));
+  updateBadgeCounts();
+}
+
+// --- Filter, Sort & Period state ---
+let _currentFilter = 'all';
+let _currentSort = 'newest';
+let _currentPeriod = 'all';
+let _cachedDecks = null;
+let _cachedCardData = null;
+let _cachedTacticsMap = null;
+
+function setFilter(filter) {
+  _currentFilter = filter;
+  document.getElementById('filterAll').classList.toggle('active', filter === 'all');
+  document.getElementById('filterBookmark').classList.toggle('active', filter === 'bookmark');
+  if (_cachedDecks) renderDeckList(_cachedDecks, _cachedCardData, _cachedTacticsMap);
+  closeSlideMenu();
+}
+function setSort(sort) {
+  _currentSort = sort;
+  document.getElementById('sortNewest').classList.toggle('active', sort === 'newest');
+  document.getElementById('sortLikes').classList.toggle('active', sort === 'likes');
+  document.getElementById('sortBookmarks').classList.toggle('active', sort === 'bookmarks');
+  if (_cachedDecks) renderDeckList(_cachedDecks, _cachedCardData, _cachedTacticsMap);
+  closeSlideMenu();
+}
+function setPeriod(period) {
+  _currentPeriod = period;
+  document.getElementById('periodAll').classList.toggle('active', period === 'all');
+  document.getElementById('periodWeek').classList.toggle('active', period === 'week');
+  document.getElementById('periodMonth').classList.toggle('active', period === 'month');
+  if (_cachedDecks) renderDeckList(_cachedDecks, _cachedCardData, _cachedTacticsMap);
+  closeSlideMenu();
+}
+function filterByPeriod(decks) {
+  if (_currentPeriod === 'all') return decks;
+  const now = Date.now();
+  const ms = _currentPeriod === 'week' ? 7 * 24 * 3600 * 1000 : 30 * 24 * 3600 * 1000;
+  const cutoff = now - ms;
+  return decks.filter(d => {
+    const ts = d.timestamp || d.created_at;
+    if (!ts) return true;
+    return new Date(ts).getTime() >= cutoff;
+  });
+}
+function filterByBookmark(decks) {
+  if (_currentFilter !== 'bookmark') return decks;
+  const bmSet = getBookmarkSet();
+  return decks.filter(d => bmSet.has(d.id));
+}
+function sortDecks(decks) {
+  const sorted = decks.slice();
+  if (_currentSort === 'likes') {
+    sorted.sort((a, b) => (b.likes || 0) - (a.likes || 0));
+  } else if (_currentSort === 'bookmarks') {
+    const bmSet = getBookmarkSet();
+    sorted.sort((a, b) => {
+      const aBm = bmSet.has(a.id) ? 1 : 0;
+      const bBm = bmSet.has(b.id) ? 1 : 0;
+      return bBm - aBm || (b.likes || 0) - (a.likes || 0);
+    });
+  } else {
+    // newest first (reverse chronological)
+    sorted.reverse();
+  }
+  return sorted;
+}
+function updateBadgeCounts(totalCount) {
+  const bmSet = getBookmarkSet();
+  let bmCount = 0;
+  if (_cachedDecks) {
+    _cachedDecks.forEach(d => { if (bmSet.has(d.id)) bmCount++; });
+  }
+  document.getElementById('badgeAll').textContent = totalCount ?? (_cachedDecks ? _cachedDecks.length : 0);
+  document.getElementById('badgeBookmark').textContent = bmCount;
+}
+
+// --- 匿名ID (localStorage永続) ---
+function getAnonId() {
+  let id = localStorage.getItem('gab_anon_id');
+  if (!id) {
+    id = String(Math.floor(10000 + Math.random() * 90000));
+    localStorage.setItem('gab_anon_id', id);
+  }
+  return id;
+}
+function getDefaultName() { return 'アースノイド#' + getAnonId(); }
+
+// --- イイネ管理 (localStorage) ---
+function getLikedSet() {
+  try { return new Set(JSON.parse(localStorage.getItem('gab_liked_decks') || '[]')); }
+  catch { return new Set(); }
+}
+function isLiked(deckId) { return getLikedSet().has(deckId); }
+function setLiked(deckId) {
+  const s = getLikedSet(); s.add(deckId);
+  localStorage.setItem('gab_liked_decks', JSON.stringify([...s]));
+}
+
+async function likeDeck(deckId, btn) {
+  if (isLiked(deckId)) { showToast('すでにイイネ済みです'); return; }
+  try {
+    const res = await fetch(`/api/decks/${deckId}/like`, { method: 'POST' });
+    const data = await res.json();
+    if (data.success) {
+      setLiked(deckId);
+      btn.classList.add('liked');
+      btn.querySelector('.like-heart').innerHTML = '&#9829;';
+      btn.querySelector('.like-count').textContent = data.likes;
+      showToast('イイネしました');
+    } else {
+      showToast('エラーが発生しました');
+    }
+  } catch { showToast('通信エラー'); }
+}
+
+function showToast(msg, duration = 2500) {
+  const container = document.getElementById('toastContainer');
+  const el = document.createElement('div');
+  el.className = 'toast';
+  el.textContent = msg;
+  container.appendChild(el);
+  setTimeout(() => { el.classList.add('fadeout'); setTimeout(() => el.remove(), 300); }, duration);
+}
+
+async function fetchDecks() {
+  try {
+    const res = await fetch('/api/decks');
+    const data = await res.json();
+    if (!data.success) throw new Error(data.error || 'API error');
+    return data.decks || [];
+  } catch (e) {
+    document.getElementById('deckList').innerHTML =
+      '<div class="error-state"><div class="icon">!</div><p>デッキ一覧の取得に失敗しました</p></div>';
+    return null;
+  }
+}
+
+async function fetchCardImages(numbers) {
+  if (!numbers.length) return {};
+  try {
+    const res = await fetch('/api/cards/batch', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({numbers})
+    });
+    const data = await res.json();
+    return data.success ? data.cards : {};
+  } catch { return {}; }
+}
+
+function getImageUrl(cardData) {
+  if (!cardData) return '';
+  if (cardData.front && cardData.front.image_url) return cardData.front.image_url;
+  if (cardData.image_url) return cardData.image_url;
+  if (cardData.url) return cardData.url;
+  return '';
+}
+
+function escapeHtml(str) {
+  const d = document.createElement('div');
+  d.textContent = str;
+  return d.innerHTML;
+}
+
+function generateDeckCode(deck) {
+  const cards = (deck.cards || []).map(c => typeof c === 'string' ? c : (c.number || ''));
+  // Pad to 10 slots
+  while (cards.length < 10) cards.push('');
+  if (deck.tactics_main || deck.tactics_sub) {
+    cards.push(deck.tactics_main || '');
+    cards.push(deck.tactics_sub || '');
+  }
+  return btoa(unescape(encodeURIComponent(cards.join(','))));
+}
+
+function getDeckV2Url(deck) {
+  return location.origin + '/v2#' + generateDeckCode(deck);
+}
+
+function copyDeckToLocal(deck, btn) {
+  const name = deck.deck_name || 'コピーデッキ';
+  const cards = Array.isArray(deck.cards) ? deck.cards.slice(0, 10) : [];
+  while (cards.length < 10) cards.push('');
+  const entry = {
+    cards,
+    tacticsMain: deck.tactics_main || null,
+    tacticsSub: deck.tactics_sub || null,
+    timestamp: Date.now()
+  };
+  const decks = JSON.parse(localStorage.getItem('gab_decks') || '{}');
+  let saveName = name;
+  if (decks[saveName]) saveName = name + '_copy';
+  let i = 2;
+  while (decks[saveName]) { saveName = name + '_copy' + i; i++; }
+  decks[saveName] = entry;
+  localStorage.setItem('gab_decks', JSON.stringify(decks));
+  const orig = btn.textContent;
+  btn.textContent = 'コピー完了!';
+  btn.style.borderColor = '#68efbd';
+  btn.style.color = '#68efbd';
+  showToast(`「${saveName}」をデッキ一覧に保存しました`);
+  setTimeout(() => { btn.textContent = orig; btn.style.borderColor = ''; btn.style.color = ''; }, 2000);
+}
+
+async function copyShareUrl(deck, btn) {
+  const code = generateDeckCode(deck);
+  const base = location.origin + '/v2';
+  const sc = await ShortUrl.create(code);
+  const url = sc ? base + '#s:' + sc : getDeckV2Url(deck);
+  try {
+    await navigator.clipboard.writeText(url);
+    btn.textContent = 'Copied!';
+    btn.classList.add('copied');
+    showToast('短縮URLをコピーしました');
+    setTimeout(() => { btn.textContent = '共有URL'; btn.classList.remove('copied'); }, 2000);
+  } catch {
+    showToast('コピーに失敗しました');
+  }
+}
+
+async function fetchTacticsMap() {
+  try {
+    const res = await fetch('/api/tactics_cards');
+    const data = await res.json();
+    if (!data.success) return {};
+    const map = {};
+    (data.data.main || []).forEach(c => { map[c.id] = c; });
+    (data.data.sub || []).forEach(c => { map[c.id] = c; });
+    return map;
+  } catch { return {}; }
+}
+
+let _deleteDeckId = null;
+function openDeleteDialog(deckId) {
+  _deleteDeckId = deckId;
+  document.getElementById('deletePasswordInput').value = '';
+  document.getElementById('deleteOverlay').classList.add('active');
+  document.getElementById('deletePasswordInput').focus();
+}
+function closeDeleteDialog() {
+  _deleteDeckId = null;
+  document.getElementById('deleteOverlay').classList.remove('active');
+}
+async function confirmDelete() {
+  if (!_deleteDeckId) return;
+  const pw = document.getElementById('deletePasswordInput').value;
+  if (!pw) { showToast('パスワードを入力してください'); return; }
+  const btn = document.getElementById('deleteConfirmBtn');
+  btn.disabled = true;
+  try {
+    const res = await fetch(`/api/decks/${_deleteDeckId}`, {
+      method: 'DELETE',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({ password: pw })
+    });
+    const data = await res.json();
+    if (data.success) {
+      closeDeleteDialog();
+      showToast('デッキを削除しました');
+      renderDecks();
+    } else {
+      showToast(data.error || '削除に失敗しました');
+    }
+  } catch { showToast('通信エラー'); }
+  btn.disabled = false;
+}
+
+// --- Reply state ---
+const _replyState = {}; // deckId -> replyToName
+
+function setReplyTo(deckId, name) {
+  _replyState[deckId] = name;
+  const indicator = document.getElementById('reply-indicator-' + deckId);
+  indicator.style.display = '';
+  indicator.innerHTML = `<div class="comment-reply-indicator">@${escapeHtml(name)} に返信<button class="reply-cancel" onclick="clearReplyTo('${deckId}')">&times;</button></div>`;
+  const textInput = document.getElementById('ctext-' + deckId);
+  textInput.focus();
+}
+
+function clearReplyTo(deckId) {
+  delete _replyState[deckId];
+  const indicator = document.getElementById('reply-indicator-' + deckId);
+  if (indicator) { indicator.style.display = 'none'; indicator.innerHTML = ''; }
+}
+
+function safeInt(val, def = 0) {
+  if (val === null || val === undefined) return def;
+  const n = parseInt(val, 10);
+  return isNaN(n) ? def : n;
+}
+
+function computeActiveLinks(deck, cardData) {
+  const cards = (deck.cards || []).map(c => typeof c === 'string' ? c : (c.number || ''));
+  while (cards.length < 10) cards.push('');
+
+  // Collect all link abilities with their source card info
+  const linkMap = {}; // linkName -> { link, count, sqCount, ebCount }
+  for (let i = 0; i < 10; i++) {
+    const num = cards[i];
+    const detail = cardData[num] || null;
+    const ocr = detail?.ocr_data || null;
+    if (!ocr) continue;
+    const links = ocr.link_abilities || ocr.link_ability || [];
+    if (!Array.isArray(links)) continue;
+
+    // Determine if this card is SQ or EB
+    const isSq = ocr.special_attack?.sp_type === 'SQUAD SP' || !!(ocr.pilot_skill?.has_sq_skill || ocr.pl_skill?.has_sq_skill);
+    const isEb = !!(ocr.echoes_beat?.has_eb) || !!(ocr.pilot_skill?.is_eb_skill || ocr.pl_skill?.is_eb_skill);
+
+    links.forEach(link => {
+      if (!link.name) return;
+      if (!linkMap[link.name]) {
+        linkMap[link.name] = { link, count: 0, sqCount: 0, ebCount: 0 };
+      }
+      linkMap[link.name].count++;
+      if (isSq) linkMap[link.name].sqCount++;
+      if (isEb) linkMap[link.name].ebCount++;
+    });
+  }
+
+  // Filter to active links only
+  const active = [];
+  Object.values(linkMap).forEach(entry => {
+    const condMatch = (entry.link.condition || '').match(/(\d+)枚以上/);
+    const required = condMatch ? parseInt(condMatch[1]) : 2;
+    if (entry.count >= required) {
+      const type = entry.sqCount > 0 ? 'sq' : (entry.ebCount > 0 ? 'eb' : 'normal');
+      active.push({ name: entry.link.name, effect: entry.link.effect || '', type, count: entry.count, required });
+    }
+  });
+  return active;
+}
+
+function renderDeckPreview(deck, cardData) {
+  const cards = (deck.cards || []).map(c => typeof c === 'string' ? c : (c.number || ''));
+  while (cards.length < 10) cards.push('');
+
+  let html = '<div class="deck-preview">';
+  for (let u = 0; u < 5; u++) {
+    const msNum = cards[u];
+    const plNum = cards[u + 5];
+    const msDetail = cardData[msNum] || null;
+    const plDetail = cardData[plNum] || null;
+    const msOcr = msDetail?.ocr_data || null;
+    const plOcr = plDetail?.ocr_data || null;
+
+    // Determine highlight type
+    const hasSqSp = msOcr?.special_attack?.sp_type === 'SQUAD SP';
+    const hasEb = !!(msOcr?.echoes_beat?.has_eb);
+    const plSkill = plOcr?.pilot_skill || plOcr?.pl_skill;
+    const hasSqSkill = !!(plSkill?.has_sq_skill);
+    const hasEbSkill = !!(plSkill?.is_eb_skill);
+    const namesCls = (hasSqSp || hasSqSkill) ? ' names-sq' : (hasEb || hasEbSkill) ? ' names-eb' : '';
+
+    html += '<div class="dp-unit">';
+
+    // --- Card names with rarity ---
+    const msName = msDetail?.name || (msNum || '');
+    const plName = plDetail?.name || (plNum || '');
+    const msRarity = msOcr?.rarity || '';
+    const plRarity = plOcr?.rarity || '';
+    const msRarityHtml = msRarity ? `<span class="dp-rarity rarity-${escapeHtml(msRarity)}">${escapeHtml(msRarity)}</span> ` : '';
+    const plRarityHtml = plRarity ? `<span class="dp-rarity rarity-${escapeHtml(plRarity)}">${escapeHtml(plRarity)}</span> ` : '';
+    if (msName || plName) {
+      html += `<div class="dp-names${namesCls}">`;
+      html += `<span class="dp-ms-name">${msRarityHtml}${escapeHtml(msName)}</span>`;
+      html += `<span class="dp-pl-name">${plRarityHtml}${escapeHtml(plName)}</span>`;
+      html += '</div>';
+    } else {
+      html += '<div class="dp-names">&nbsp;</div>';
+    }
+
+    // --- Cost + terrain badges ---
+    const msCost = safeInt(msOcr?.cost);
+    const plCost = safeInt(plOcr?.cost);
+    const unitCost = msCost + plCost;
+    html += '<div class="dp-cost-row">';
+    html += `<span class="dp-cost-val"><span class="cost-label">TCOST</span><span class="cost-num">${unitCost || '-'}</span></span>`;
+    const tc = msOcr?.terrain_compatibility || null;
+    const tList = [{k:'ground',l:'地'},{k:'space',l:'宇'},{k:'desert',l:'砂'},{k:'water',l:'水'}];
+    tList.forEach(t => {
+      const rank = tc ? (tc[t.k] || null) : null;
+      const cls = rank ? `rank-${rank}` : 'rank-none';
+      html += `<span class="dp-terrain ${cls}">${t.l}:${rank || '-'}</span>`;
+    });
+    html += '</div>';
+
+    // --- MS card image ---
+    const msHighlight = hasSqSp ? ' dp-sqsp' : (hasEb ? ' dp-eb' : '');
+    const msImgUrl = getImageUrl(msDetail);
+    const msBadge = hasSqSp ? '<span class="dp-badge dp-badge-sqsp">SQSP</span>'
+                 : hasEb ? '<span class="dp-badge dp-badge-eb">EB</span>' : '';
+    html += `<div class="dp-card-img-wrap${msHighlight}">`;
+    if (msImgUrl) {
+      html += `${msBadge}<img src="${msImgUrl}" alt="${escapeHtml(msNum)}" loading="lazy" onerror="this.onerror=null;this.parentElement.innerHTML='<div class=\\'dp-no-img\\'>No Image</div>'">`;
+    } else {
+      html += `<div class="dp-no-img">${msNum ? escapeHtml(msNum) : 'MS'}</div>`;
+    }
+    html += '</div>';
+
+    // --- PL card image ---
+    const plHighlight = hasSqSkill ? ' dp-sq' : (hasEbSkill ? ' dp-eb' : '');
+    const plImgUrl = getImageUrl(plDetail);
+    const plBadge = hasSqSkill ? '<span class="dp-badge dp-badge-sq">SQ</span>'
+                 : hasEbSkill ? '<span class="dp-badge dp-badge-eb">EB</span>' : '';
+    html += `<div class="dp-card-img-wrap${plHighlight}">`;
+    if (plImgUrl) {
+      html += `${plBadge}<img src="${plImgUrl}" alt="${escapeHtml(plNum)}" loading="lazy" onerror="this.onerror=null;this.parentElement.innerHTML='<div class=\\'dp-no-img\\'>No Image</div>'">`;
+    } else {
+      html += `<div class="dp-no-img">${plNum ? escapeHtml(plNum) : 'PL'}</div>`;
+    }
+    html += '</div>';
+
+    // --- Stat bars (base stats only, no link buffs) ---
+    const maxVal = 660;
+    const msStats = {
+      mobility: safeInt(msOcr?.stats?.mobility),
+      ranged: safeInt(msOcr?.stats?.ranged_attack),
+      melee: safeInt(msOcr?.stats?.melee_attack),
+      hp: safeInt(msOcr?.stats?.hp)
+    };
+    const plStats = {
+      mobility: safeInt(plOcr?.stats?.mobility),
+      ranged: safeInt(plOcr?.stats?.ranged_attack),
+      melee: safeInt(plOcr?.stats?.melee_attack),
+      hp: safeInt(plOcr?.stats?.hp)
+    };
+    const statDefs = [
+      {key:'mobility', label:'機動'},
+      {key:'ranged', label:'遠距'},
+      {key:'melee', label:'近距'},
+      {key:'hp', label:'HP'}
+    ];
+    html += '<div class="dp-stats">';
+    statDefs.forEach(s => {
+      const base = msStats[s.key] + plStats[s.key];
+      const pct = Math.min((base / maxVal) * 100, 100);
+      html += `<div class="dp-stat">`;
+      html += `<span class="dp-stat-label">${s.label}</span>`;
+      html += `<div class="dp-stat-track"><div class="dp-stat-bar" style="width:${pct}%"></div></div>`;
+      html += `<span class="dp-stat-value">${base || '-'}</span>`;
+      html += '</div>';
+    });
+    html += '</div>';
+
+    html += '</div>'; // .dp-unit
+  }
+  html += '</div>'; // .deck-preview
+  return html;
+}
+
+async function renderDecks() {
+  const decks = await fetchDecks();
+  if (decks === null) return;
+
+  if (decks.length === 0) {
+    document.getElementById('deckList').innerHTML =
+      '<div class="empty-state"><div class="icon">&#x1F0CF;</div><p>まだ投稿されたデッキはありません</p><div class="sub">v2 シミュレーターでデッキを作成・投稿できます</div></div>';
+    return;
+  }
+
+  // Collect all unique card numbers for batch fetch
+  const allNumbers = new Set();
+  decks.forEach(d => {
+    (d.cards || []).forEach(c => {
+      const num = typeof c === 'string' ? c : (c.number || '');
+      if (num) allNumbers.add(num);
+    });
+  });
+
+  // Fetch card images and tactics data in parallel
+  const [cardData, tacticsMap] = await Promise.all([
+    fetchCardImages([...allNumbers]),
+    fetchTacticsMap()
+  ]);
+
+  // Cache for re-render on sort/filter change
+  _cachedDecks = decks;
+  _cachedCardData = cardData;
+  _cachedTacticsMap = tacticsMap;
+
+  renderDeckList(decks, cardData, tacticsMap);
+}
+
+function renderDeckList(decks, cardData, tacticsMap) {
+  let filtered = filterByPeriod(decks);
+  filtered = filterByBookmark(filtered);
+  const sorted = sortDecks(filtered);
+
+  if (sorted.length === 0) {
+    document.getElementById('deckList').innerHTML =
+      '<div class="empty-state"><p>条件に一致するデッキがありません</p></div>';
+    updateBadgeCounts(decks.length);
+    return;
+  }
+  let html = '';
+  sorted.forEach((deck, idx) => {
+    const name = escapeHtml(deck.deck_name || '無名デッキ');
+    const ts = deck.timestamp ? new Date(deck.timestamp).toLocaleString('ja-JP') : '';
+    const comment = deck.comment ? escapeHtml(deck.comment).replace(/\n/g, '<br>') : '';
+    const deckId = deck.id || '';
+
+    // Compute active links early for background color
+    const activeLinks = computeActiveLinks(deck, cardData);
+    const hasSqLink = activeLinks.some(l => l.type === 'sq');
+    const hasEbLink = activeLinks.some(l => l.type === 'eb');
+    const deckBgCls = hasSqLink ? ' deck-entry-sq' : (hasEbLink ? ' deck-entry-eb' : '');
+
+    html += `<div class="deck-entry${deckBgCls}" data-id="${deckId}">`;
+    html += `<div class="deck-header">`;
+    html += `<a class="deck-title" href="${escapeHtml(getDeckV2Url(deck))}">${name}</a>`;
+    html += `<div class="deck-actions">`;
+    html += `<a class="btn-action btn-open" href="${escapeHtml(getDeckV2Url(deck))}">シミュレータで表示</a>`;
+    html += `<button class="btn-action btn-copy-deck" data-idx="${idx}">デッキコピー</button>`;
+    html += `<button class="btn-action btn-share" data-idx="${idx}">共有URL</button>`;
+    html += `<button class="btn-action btn-tweet" data-idx="${idx}">Twitterに投稿</button>`;
+    if (deckId) {
+      const likes = deck.likes || 0;
+      const liked = isLiked(deckId);
+      html += `<button class="btn-like${liked ? ' liked' : ''}" data-id="${deckId}"><span class="like-heart">${liked ? '&#9829;' : '&#9825;'}</span><span class="like-count">${likes || ''}</span></button>`;
+      const bm = isBookmarked(deckId);
+      html += `<button class="btn-bookmark${bm ? ' bookmarked' : ''}" data-id="${deckId}"><span class="bm-icon">${bm ? '&#9733;' : '&#9734;'}</span></button>`;
+      if (deck.delete_password_hash) {
+        html += `<button class="btn-action btn-delete" data-id="${deckId}" style="border-color:#ff5252;color:#ff5252">削除</button>`;
+      }
+    }
+    html += `</div></div>`;
+    const author = deck.author ? escapeHtml(deck.author) : '';
+    if (ts || author) {
+      html += `<div class="deck-meta">`;
+      if (author) html += `<span style="color:#68efbd">${author}</span>`;
+      if (author && ts) html += ' ・ ';
+      if (ts) html += ts;
+      html += `</div>`;
+    }
+    if (comment) html += `<div class="deck-comment">${comment}</div>`;
+
+    // Tactics + Active Links display (ABOVE deck preview)
+    if (deck.tactics_main || deck.tactics_sub || activeLinks.length > 0) {
+      // Tactics
+      if (deck.tactics_main || deck.tactics_sub) {
+        html += `<div class="deck-tactics">`;
+        html += `<span class="deck-tactics-label">作戦:</span>`;
+        if (deck.tactics_main) {
+          const t = tacticsMap[deck.tactics_main];
+          const tName = t ? t.name : deck.tactics_main;
+          const tImg = t ? t.thumbnail_url : '';
+          html += `<span class="deck-tactics-card">${tImg ? `<img src="${tImg}" class="tactics-thumb">` : ''}${escapeHtml(tName)}</span>`;
+        }
+        if (deck.tactics_sub) {
+          const t = tacticsMap[deck.tactics_sub];
+          const tName = t ? t.name : deck.tactics_sub;
+          const tImg = t ? t.thumbnail_url : '';
+          html += `<span class="deck-tactics-card">${tImg ? `<img src="${tImg}" class="tactics-thumb">` : ''}${escapeHtml(tName)}</span>`;
+        }
+        html += `</div>`;
+      }
+      // Active links
+      if (activeLinks.length > 0) {
+        html += `<div class="deck-links">`;
+        html += `<span class="deck-links-label">発動LINK:</span>`;
+        activeLinks.forEach(lk => {
+          const typeCls = `link-${lk.type}`;
+          const badgeLabel = lk.type === 'sq' ? 'SQ' : (lk.type === 'eb' ? 'EB' : '');
+          const badgeHtml = badgeLabel ? `<span class="link-badge">${badgeLabel}</span>` : '';
+          html += `<span class="link-chip ${typeCls}">${badgeHtml}<span class="link-name">${escapeHtml(lk.name)}</span></span>`;
+        });
+        html += `</div>`;
+      }
+    }
+
+    html += renderDeckPreview(deck, cardData);
+
+    // Comments section
+    if (deckId) {
+      const comments = deck.comments || [];
+      html += `<div class="deck-comments" data-deck-id="${deckId}">`;
+      html += `<button class="comments-toggle" data-deck-id="${deckId}">コメント (${comments.length})</button>`;
+      html += `<div class="comments-body" id="comments-${deckId}" style="display:none">`;
+      html += `<div class="comments-list" id="clist-${deckId}">`;
+      comments.forEach(c => {
+        const cTime = c.timestamp ? new Date(c.timestamp).toLocaleString('ja-JP') : '';
+        const cName = escapeHtml(c.name || 'アースノイド');
+        const replyTag = c.reply_to ? `<span class="comment-reply-tag">@${escapeHtml(c.reply_to)}</span>` : '';
+        const replyCls = c.reply_to ? ' is-reply' : '';
+        html += `<div class="comment-item${replyCls}" data-comment-id="${c.id}" data-comment-name="${cName}"><div class="comment-header"><span class="comment-name">${cName}</span><span class="comment-time">${cTime}</span><button class="comment-reply-btn" data-deck-id="${deckId}" data-reply-name="${cName}">返信</button></div><div class="comment-text">${replyTag}${escapeHtml(c.text).replace(/\n/g, '<br>')}</div></div>`;
+      });
+      html += `</div>`;
+      html += `<div id="reply-indicator-${deckId}" style="display:none"></div>`;
+      html += `<div class="comment-form">`;
+      html += `<input class="comment-name-input" id="cname-${deckId}" placeholder="${getDefaultName()}" maxlength="20">`;
+      html += `<textarea class="comment-text-input" id="ctext-${deckId}" placeholder="コメントを入力..." maxlength="500" rows="1"></textarea>`;
+      html += `<button class="comment-submit" data-deck-id="${deckId}">送信</button>`;
+      html += `</div></div></div>`;
+    }
+
+    html += `</div>`;
+  });
+
+  document.getElementById('deckList').innerHTML = html;
+
+  // Share URL buttons
+  document.querySelectorAll('.btn-share').forEach(el => {
+    el.addEventListener('click', e => {
+      e.stopPropagation();
+      const deck = sorted[parseInt(el.dataset.idx)];
+      copyShareUrl(deck, el);
+    });
+  });
+
+  // Tweet buttons
+  document.querySelectorAll('.btn-tweet').forEach(el => {
+    el.addEventListener('click', async e => {
+      e.stopPropagation();
+      const deck = sorted[parseInt(el.dataset.idx)];
+      const name = deck.deck_name || 'デッキ';
+      const code = generateDeckCode(deck);
+      const base = location.origin + '/v2';
+      const sc = await ShortUrl.create(code);
+      const url = sc ? base + '#s:' + sc : getDeckV2Url(deck);
+      const text = `${name} のデッキレシピ #アーセナルベース #ABDS`;
+      window.open('https://x.com/intent/tweet?text=' + encodeURIComponent(text) + '&url=' + encodeURIComponent(url), '_blank');
+    });
+  });
+
+  // Copy deck to local storage
+  document.querySelectorAll('.btn-copy-deck').forEach(el => {
+    el.addEventListener('click', e => {
+      e.stopPropagation();
+      const deck = sorted[parseInt(el.dataset.idx)];
+      copyDeckToLocal(deck, el);
+    });
+  });
+
+  // Like buttons
+  document.querySelectorAll('.btn-like').forEach(el => {
+    el.addEventListener('click', e => {
+      e.stopPropagation();
+      likeDeck(el.dataset.id, el);
+    });
+  });
+
+  // Bookmark buttons
+  document.querySelectorAll('.btn-bookmark').forEach(el => {
+    el.addEventListener('click', e => {
+      e.stopPropagation();
+      toggleBookmark(el.dataset.id, el);
+    });
+  });
+
+  // Delete buttons
+  document.querySelectorAll('.btn-delete').forEach(el => {
+    el.addEventListener('click', e => {
+      e.stopPropagation();
+      openDeleteDialog(el.dataset.id);
+    });
+  });
+
+  // Comment toggles
+  document.querySelectorAll('.comments-toggle').forEach(el => {
+    el.addEventListener('click', () => {
+      const body = document.getElementById('comments-' + el.dataset.deckId);
+      if (body.style.display === 'none') {
+        body.style.display = '';
+      } else {
+        body.style.display = 'none';
+      }
+    });
+  });
+
+  // Reply buttons
+  document.querySelectorAll('.comment-reply-btn').forEach(el => {
+    el.addEventListener('click', () => {
+      setReplyTo(el.dataset.deckId, el.dataset.replyName);
+    });
+  });
+
+  // Comment submit buttons
+  document.querySelectorAll('.comment-submit').forEach(el => {
+    el.addEventListener('click', async () => {
+      const deckId = el.dataset.deckId;
+      const nameInput = document.getElementById('cname-' + deckId);
+      const textInput = document.getElementById('ctext-' + deckId);
+      const text = textInput.value.trim();
+      if (!text) { showToast('コメントを入力してください'); return; }
+      const replyTo = _replyState[deckId] || null;
+      el.disabled = true;
+      try {
+        const res = await fetch(`/api/decks/${deckId}/comments`, {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({ name: nameInput.value.trim() || getDefaultName(), text, reply_to: replyTo })
+        });
+        const data = await res.json();
+        if (data.success) {
+          const c = data.comment;
+          const cTime = c.timestamp ? new Date(c.timestamp).toLocaleString('ja-JP') : '';
+          const cName = escapeHtml(c.name || 'アースノイド');
+          const replyTag = c.reply_to ? `<span class="comment-reply-tag">@${escapeHtml(c.reply_to)}</span>` : '';
+          const replyCls = c.reply_to ? ' is-reply' : '';
+          const list = document.getElementById('clist-' + deckId);
+          list.insertAdjacentHTML('beforeend',
+            `<div class="comment-item${replyCls}" data-comment-name="${cName}"><div class="comment-header"><span class="comment-name">${cName}</span><span class="comment-time">${cTime}</span><button class="comment-reply-btn" data-deck-id="${deckId}" data-reply-name="${cName}">返信</button></div><div class="comment-text">${replyTag}${escapeHtml(c.text).replace(/\n/g, '<br>')}</div></div>`
+          );
+          // Bind reply on new comment
+          list.querySelector('.comment-item:last-child .comment-reply-btn')?.addEventListener('click', function() {
+            setReplyTo(this.dataset.deckId, this.dataset.replyName);
+          });
+          textInput.value = '';
+          clearReplyTo(deckId);
+          const toggle = document.querySelector(`.comments-toggle[data-deck-id="${deckId}"]`);
+          const count = list.querySelectorAll('.comment-item').length;
+          toggle.textContent = `コメント (${count})`;
+          showToast('コメントを投稿しました');
+        } else {
+          showToast(data.error || 'エラーが発生しました');
+        }
+      } catch { showToast('通信エラー'); }
+      el.disabled = false;
+    });
+  });
+
+  // Update badge counts
+  updateBadgeCounts(decks.length);
+}
+
+renderDecks();
+</script>
+</body>
+</html>

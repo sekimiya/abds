@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>カード検索 - Gundam Arsenal Base Deck Simulator</title>
+    <style>
+/* ===== Base ===== */
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#111;color:#fff;font-family:'Segoe UI',sans-serif;overflow:hidden;height:100vh;display:flex;flex-direction:column}
+a{color:#68efbd}
+.header{
+  background:linear-gradient(135deg,#1a3a2a,#0a1a12);color:#68efbd;
+  text-align:center;padding:0.6rem 1rem;font-size:1.2rem;font-weight:bold;
+  border-bottom:1px solid #333;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;gap:1rem;
+}
+.header a{font-size:0.8rem;color:#888;text-decoration:none}
+.header a:hover{color:#68efbd}
+
+/* ===== 2-column Layout ===== */
+.main-layout{display:flex;flex:1;overflow:hidden}
+
+/* Left: Filter Panel */
+.filter-panel{
+  width:300px;flex-shrink:0;overflow-y:auto;
+  padding:0.6rem;border-right:1px solid #333;
+  display:flex;flex-direction:column;gap:0.3rem;
+  background:#151515;
+}
+
+/* Right: Results */
+.results-panel{flex:1;display:flex;flex-direction:column;overflow:hidden}
+
+/* Top bar (tabs + buttons) */
+.results-topbar{
+  display:flex;align-items:center;gap:0.5rem;
+  padding:0.5rem 0.8rem;border-bottom:1px solid #333;flex-shrink:0;
+}
+
+/* ===== Filter group (collapsible) ===== */
+.filter-group{border:1px solid #2a2a2a;border-radius:4px;overflow:hidden}
+.filter-group-title{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0.3rem 0.5rem;background:#1a1a1a;
+  color:#888;font-size:0.7rem;cursor:pointer;user-select:none;
+}
+.filter-group-title::after{content:'▼';font-size:0.5rem;transition:transform 0.2s}
+.filter-group.collapsed .filter-group-title::after{transform:rotate(-90deg)}
+.filter-group-body{padding:0.4rem 0.5rem;display:flex;flex-direction:column;gap:0.35rem}
+.filter-group.collapsed .filter-group-body{display:none}
+
+/* Tabs */
+.sidebar-tabs{display:flex;gap:2px}
+.sidebar-tab{
+  text-align:center;padding:0.35rem 0.7rem;
+  background:#1a1a1a;border:1px solid #333;border-radius:4px;
+  color:#888;font-size:0.85rem;cursor:pointer;transition:all 0.15s;
+}
+.sidebar-tab.active{background:#1e2924;border-color:#68efbd;color:#68efbd}
+
+/* Rarity filter */
+.rarity-filter{display:flex;gap:3px;flex-wrap:wrap;align-items:center}
+.rarity-label{color:#888;font-size:0.7rem;flex-shrink:0}
+.rarity-btn{
+  padding:0.2rem 0.45rem;background:#222;border:1px solid #444;
+  border-radius:3px;color:#888;font-size:0.7rem;cursor:pointer;transition:all 0.15s;
+}
+.rarity-btn.active{background:#4a1a1a;border-color:#ff8a80;color:#ff8a80}
+
+/* Toggle filter buttons */
+.toggle-filter{display:flex;gap:3px;flex-wrap:wrap;margin-bottom:0.2rem}
+.toggle-filter-label{color:#666;font-size:0.6rem;flex-basis:100%;margin-bottom:-1px}
+.tbtn{
+  padding:0.15rem 0.35rem;background:#222;border:1px solid #444;
+  border-radius:3px;color:#888;font-size:0.65rem;cursor:pointer;transition:all 0.15s;white-space:nowrap;
+}
+.tbtn.active-eb{background:#3a2200;border-color:#ff9800;color:#ff9800}
+.tbtn.active-sq{background:#2a0020;border-color:#ff69b4;color:#ff69b4}
+.tbtn.active-pl{background:#1e2924;border-color:#68efbd;color:#68efbd}
+.tbtn.active-sp{background:#1a2a3a;border-color:#4fc3f7;color:#4fc3f7}
+
+/* Category filter */
+.category-filter{display:flex;gap:3px;flex-wrap:wrap}
+.cat-btn{
+  padding:0.2rem 0.4rem;background:#222;border:1px solid #444;
+  border-radius:3px;color:#888;font-size:0.7rem;cursor:pointer;transition:all 0.15s;
+}
+.cat-btn.active{background:#1e2924;border-color:#68efbd;color:#68efbd}
+
+/* Series filter */
+.series-filter{display:flex;gap:3px;flex-wrap:wrap}
+.series-btn{
+  padding:0.2rem 0.4rem;background:#222;border:1px solid #444;
+  border-radius:3px;color:#888;font-size:0.7rem;cursor:pointer;transition:all 0.15s;
+}
+.series-btn.active{background:#1e2924;border-color:#68efbd;color:#68efbd}
+
+/* Range/select/input */
+.filter-row{display:flex;gap:0.3rem;align-items:center}
+.filter-select{
+  flex:1;padding:0.3rem;background:#1a1a1a;border:1px solid #333;
+  border-radius:4px;color:#ccc;font-size:0.8rem;
+}
+.filter-select-sm{width:auto;min-width:50px;flex:0 1 auto;padding:0.25rem;font-size:0.75rem}
+.range-filter{display:flex;align-items:center;gap:0.3rem}
+.range-label{color:#888;font-size:0.7rem;flex-shrink:0;min-width:42px;text-align:right}
+.range-value{color:#68efbd;font-size:0.7rem;min-width:36px;text-align:center;flex-shrink:0}
+.range-filter input[type="range"]{
+  flex:1;-webkit-appearance:none;appearance:none;height:6px;
+  background:#333;border-radius:3px;outline:none;min-width:40px;
+}
+.range-filter input[type="range"]::-webkit-slider-thumb{
+  -webkit-appearance:none;appearance:none;width:14px;height:14px;
+  background:#68efbd;border-radius:50%;cursor:pointer;
+}
+.range-filter input[type="range"]::-moz-range-thumb{
+  width:14px;height:14px;background:#68efbd;border-radius:50%;cursor:pointer;border:none;
+}
+.stat-slider-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.3rem}
+.ocr-toggle{display:flex;align-items:center;gap:3px;cursor:pointer;margin-left:auto;flex-shrink:0}
+.ocr-toggle input{accent-color:#68efbd;width:14px;height:14px}
+.ocr-toggle-text{color:#888;font-size:0.7rem;white-space:nowrap}
+
+/* Search input */
+.search-input{
+  width:100%;padding:0.35rem 0.5rem;background:#1a1a1a;
+  border:1px solid #333;border-radius:6px;color:#fff;font-size:0.85rem;
+}
+.search-input:focus{border-color:#68efbd;outline:none}
+.search-btn{
+  padding:0.4rem 0.8rem;background:#1e2924;border:1px solid #68efbd;
+  border-radius:6px;color:#68efbd;font-size:0.8rem;font-weight:bold;
+  cursor:pointer;transition:all 0.15s;flex-shrink:0;
+}
+.search-btn:hover{background:#2a6a45}
+.clear-btn{
+  padding:0.4rem 0.8rem;background:#333;border:1px solid #555;
+  border-radius:6px;color:#ccc;font-size:0.8rem;cursor:pointer;transition:all 0.15s;flex-shrink:0;
+}
+.clear-btn:hover{background:#444;color:#fff}
+
+/* ===== Thumbnail grid ===== */
+.thumb-grid{
+  flex:1 1 0;min-height:0;overflow-y:auto;padding:0.5rem;
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:8px;
+  align-content:start;
+}
+.thumb-card{
+  cursor:pointer;border:2px solid transparent;border-radius:4px;
+  overflow:hidden;transition:all 0.15s;position:relative;
+  background:#1a1a1a;display:flex;flex-direction:column;
+}
+.thumb-card:hover{border-color:#68efbd}
+.thumb-card.card-eb{border-color:rgba(255,152,0,0.6)}
+.thumb-card.card-sq{border-color:rgba(255,105,180,0.6)}
+.thumb-card.card-eb.card-sq{border-image:linear-gradient(135deg,rgba(255,152,0,0.7),rgba(255,105,180,0.7)) 1}
+.thumb-card.card-eb:hover,.thumb-card.card-sq:hover,.thumb-card.card-eb.card-sq:hover{border-color:#68efbd;border-image:none}
+.thumb-card-img-wrap{
+  position:relative;width:100%;aspect-ratio:63/88;overflow:hidden;
+}
+.thumb-card-img-wrap img{
+  width:100%;height:auto;display:block;
+  object-fit:cover;object-position:top center;
+  position:absolute;top:0;left:0;
+}
+.thumb-card-info{
+  padding:2px 3px;background:#111;display:flex;flex-direction:column;gap:1px;
+}
+.thumb-card-number{
+  display:flex;align-items:center;gap:3px;
+  color:#68efbd;font-size:0.55rem;white-space:nowrap;overflow:hidden;
+}
+.thumb-card-number .thumb-inline-rarity{
+  font-size:0.5rem;font-weight:bold;padding:0 2px;border-radius:2px;
+  background:#222;flex-shrink:0;
+}
+.thumb-card-number .thumb-no-ocr{
+  color:#666;font-size:0.5rem;font-style:italic;flex-shrink:0;
+}
+.thumb-card-name{
+  color:#ddd;font-size:0.6rem;font-weight:bold;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.thumb-card-sub{
+  color:#888;font-size:0.5rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.thumb-card-badges{
+  position:absolute;top:2px;right:2px;display:flex;flex-direction:column;gap:1px;align-items:flex-end;
+}
+.thumb-card-cost{
+  background:rgba(0,0,0,0.75);color:#ffe082;
+  font-size:0.55rem;font-weight:bold;padding:0 3px;border-radius:2px;line-height:1.4;
+}
+.thumb-card-rarity{
+  background:rgba(0,0,0,0.75);font-size:0.55rem;font-weight:bold;padding:0 3px;border-radius:2px;line-height:1.4;
+}
+.thumb-card-rarity.r-M{color:#82b1ff}.thumb-card-rarity.r-C{color:#aaa}
+.thumb-card-rarity.r-R{color:#ffe082}.thumb-card-rarity.r-SR{color:#ff8a80}
+.thumb-card-rarity.r-U{color:#ce93d8}.thumb-card-rarity.r-P{color:#68efbd}
+.thumb-card-rarity.r-PR{color:#f48fb1}.thumb-card-rarity.r-LR{color:#ffcc80}
+.thumb-card-rarity.r-LE{color:#ff8a80}.thumb-card-rarity.r-CP{color:#80deea}
+.thumb-ocr-badge{
+  position:absolute;bottom:2px;right:2px;
+  background:rgba(104,239,189,0.85);color:#000;
+  font-size:0.45rem;font-weight:bold;padding:0 3px;border-radius:2px;
+  line-height:1.4;
+}
+.thumb-sq-badge{
+  position:absolute;bottom:2px;left:2px;
+  background:rgba(255,105,180,0.9);color:#fff;
+  font-size:0.45rem;font-weight:bold;padding:0 3px;border-radius:2px;
+  line-height:1.4;
+}
+.thumb-eb-badge{
+  position:absolute;bottom:2px;right:2px;
+  background:rgba(255,152,0,0.9);color:#fff;
+  font-size:0.45rem;font-weight:bold;padding:0 3px;border-radius:2px;
+  line-height:1.4;
+}
+.thumb-card-sq{
+  font-size:0.55rem;color:#ff69b4;line-height:1.3;
+}
+.thumb-card-eb-lv{
+  font-size:0.55rem;color:#ff9800;line-height:1.3;
+  margin-top:1px;overflow:hidden;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;
+}
+.thumb-overlay{
+  position:absolute;top:0;left:0;right:0;bottom:0;
+  background:rgba(0,0,0,0.82);color:#ff69b4;
+  font-size:0.55rem;line-height:1.4;padding:4px;
+  display:flex;flex-direction:column;justify-content:center;
+  overflow:hidden;word-break:break-all;
+  white-space:pre-wrap;
+}
+.thumb-overlay-title{
+  font-weight:bold;font-size:0.65rem;margin-bottom:2px;color:#fff;
+}
+
+/* Pagination */
+.results-pagination{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:0.4rem 0.6rem;border-top:1px solid #333;flex-shrink:0;
+}
+.page-info{color:#888;font-size:0.75rem}
+.page-btn{
+  padding:0.3rem 0.8rem;background:#222;border:1px solid #444;
+  border-radius:4px;color:#ccc;font-size:0.8rem;cursor:pointer;
+}
+.page-btn:hover{border-color:#68efbd;color:#68efbd}
+.page-btn:disabled{opacity:0.3;cursor:default}
+
+/* Slot mode banner */
+.slot-banner{
+  background:#3a2200;color:#ff9800;text-align:center;
+  padding:0.4rem;font-size:0.85rem;font-weight:bold;
+  border-bottom:1px solid #ff9800;flex-shrink:0;
+}
+
+/* Loading */
+.loading{text-align:center;color:#888;padding:3rem;font-size:1rem}
+
+/* Mobile */
+@media(max-width:768px){
+  .main-layout{flex-direction:column}
+  .filter-panel{width:100%;max-height:40vh;border-right:none;border-bottom:1px solid #333}
+  .thumb-grid{grid-template-columns:repeat(auto-fill,minmax(80px,1fr))}
+}
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+      <a href="/">← 戻る</a>
+      <span id="headerTitle">カード検索</span>
+      <span style="width:60px"></span>
+    </div>
+
+    <!-- Slot mode banner (hidden by default) -->
+    <div class="slot-banner" id="slotBanner" style="display:none"></div>
+
+    <div class="main-layout">
+      <!-- LEFT: Filter Panel -->
+      <div class="filter-panel">
+
+        <!-- 基本フィルタ -->
+        <div class="filter-group" id="filterGroupBasic">
+          <div class="filter-group-title" onclick="toggleFilterGroup('filterGroupBasic')">基本</div>
+          <div class="filter-group-body">
+            <div class="rarity-filter" id="rarityFilter">
+              <span class="rarity-label">レアリティ:</span>
+              <button class="rarity-btn" data-rarity="M" onclick="SearchPanel.toggleRarity('M')">M</button>
+              <button class="rarity-btn" data-rarity="C" onclick="SearchPanel.toggleRarity('C')">C</button>
+              <button class="rarity-btn" data-rarity="R" onclick="SearchPanel.toggleRarity('R')">R</button>
+              <button class="rarity-btn" data-rarity="SR" onclick="SearchPanel.toggleRarity('SR')">SR</button>
+              <button class="rarity-btn" data-rarity="U" onclick="SearchPanel.toggleRarity('U')">U</button>
+              <button class="rarity-btn" data-rarity="P" onclick="SearchPanel.toggleRarity('P')">P</button>
+              <button class="rarity-btn" data-rarity="LE" onclick="SearchPanel.toggleRarity('LE')">LE</button>
+            </div>
+            <div class="category-filter" id="categoryFilter"></div>
+            <div class="series-filter" id="seriesFilter"></div>
+          </div>
+        </div>
+
+        <!-- コスト・ステータス -->
+        <div class="filter-group" id="filterGroupStats">
+          <div class="filter-group-title" onclick="toggleFilterGroup('filterGroupStats')">コスト・ステータス</div>
+          <div class="filter-group-body">
+            <div class="range-filter">
+              <span class="range-label">コスト</span>
+              <input type="range" id="filterCostMin" min="0" max="13" value="0">
+              <input type="range" id="filterCostMax" min="0" max="13" value="13">
+              <span class="range-value" id="costRangeValue">0〜13</span>
+            </div>
+            <div class="stat-slider-grid">
+              <div class="range-filter">
+                <span class="range-label">機動≥</span>
+                <input type="range" id="filterMobility" min="0" max="700" value="0" step="10">
+                <span class="range-value" id="mobilityValue">0</span>
+              </div>
+              <div class="range-filter">
+                <span class="range-label">遠距≥</span>
+                <input type="range" id="filterRanged" min="0" max="700" value="0" step="10">
+                <span class="range-value" id="rangedValue">0</span>
+              </div>
+              <div class="range-filter">
+                <span class="range-label">近距≥</span>
+                <input type="range" id="filterMelee" min="0" max="700" value="0" step="10">
+                <span class="range-value" id="meleeValue">0</span>
+              </div>
+              <div class="range-filter">
+                <span class="range-label">HP≥</span>
+                <input type="range" id="filterHp" min="0" max="700" value="0" step="10">
+                <span class="range-value" id="hpValue">0</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 地形・属性 -->
+        <div class="filter-group collapsed" id="filterGroupTerrain">
+          <div class="filter-group-title" onclick="toggleFilterGroup('filterGroupTerrain')">地形・属性</div>
+          <div class="filter-group-body">
+            <div class="filter-row" id="terrainFilterRow">
+              <span style="color:#888;font-size:0.7rem;flex-shrink:0">地形:</span>
+              <select class="filter-select filter-select-sm" id="filterTerrainType">
+                <option value="">-</option>
+                <option value="ground">地上</option>
+                <option value="space">宇宙</option>
+                <option value="desert">砂漠</option>
+                <option value="water">水中</option>
+              </select>
+              <select class="filter-select filter-select-sm" id="filterTerrainRank" disabled>
+                <option value="">ランク</option>
+                <option value="S">S以上</option>
+                <option value="A">A以上</option>
+                <option value="B">B以上</option>
+                <option value="C">C以上</option>
+              </select>
+            </div>
+            <label class="ocr-toggle"><input type="checkbox" id="filterOcr" onchange="SearchPanel.applyFilters()"><span class="ocr-toggle-text">OCRあり</span></label>
+          </div>
+        </div>
+
+        <!-- EB -->
+        <div class="filter-group collapsed" id="filterGroupEb">
+          <div class="filter-group-title" onclick="toggleFilterGroup('filterGroupEb')" style="color:#ff9800">EB</div>
+          <div class="filter-group-body">
+            <div class="toggle-filter" id="ebCategoryBtns">
+              <button class="tbtn" data-key="eb_sp" data-for="MS" onclick="SearchPanel.toggle('ebCat',this)">EB SP</button>
+              <button class="tbtn" data-key="eb_skill" data-for="PL" onclick="SearchPanel.toggle('ebCat',this)">EBスキル</button>
+              <button class="tbtn" data-key="eb_link" onclick="SearchPanel.toggle('ebCat',this)">EBリンク</button>
+            </div>
+            <div class="toggle-filter" id="ebLevelBtns">
+              <span class="toggle-filter-label">EB Lv.</span>
+              <button class="tbtn" data-key="1" onclick="SearchPanel.toggle('ebLv',this)">1</button>
+              <button class="tbtn" data-key="2" onclick="SearchPanel.toggle('ebLv',this)">2</button>
+              <button class="tbtn" data-key="3" onclick="SearchPanel.toggle('ebLv',this)">3</button>
+            </div>
+            <div class="toggle-filter" data-for="MS" id="ebspEffectBtns">
+              <span class="toggle-filter-label">EBSP効果</span>
+              <button class="tbtn" data-key="変身" onclick="SearchPanel.toggle('ebspEff',this)">変身</button>
+              <button class="tbtn" data-key="スタン" onclick="SearchPanel.toggle('ebspEff',this)">スタン</button>
+              <button class="tbtn" data-key="撃破" onclick="SearchPanel.toggle('ebspEff',this)">撃破</button>
+              <button class="tbtn" data-key="貫通" onclick="SearchPanel.toggle('ebspEff',this)">貫通</button>
+              <button class="tbtn" data-key="範囲" onclick="SearchPanel.toggle('ebspEff',this)">範囲</button>
+              <button class="tbtn" data-key="デバフ" onclick="SearchPanel.toggle('ebspEff',this)">デバフ</button>
+              <button class="tbtn" data-key="バフ" onclick="SearchPanel.toggle('ebspEff',this)">バフ</button>
+              <button class="tbtn" data-key="HP回復" onclick="SearchPanel.toggle('ebspEff',this)">HP回復</button>
+              <button class="tbtn" data-key="防衛無視" onclick="SearchPanel.toggle('ebspEff',this)">防衛無視</button>
+            </div>
+            <div class="toggle-filter" data-for="PL" id="ebCondBtns">
+              <span class="toggle-filter-label">EB発動条件</span>
+              <button class="tbtn" data-key="上昇時" onclick="SearchPanel.toggle('ebCond',this)">Lv上昇時</button>
+              <button class="tbtn" data-key="上昇毎" onclick="SearchPanel.toggle('ebCond',this)">上昇毎</button>
+              <button class="tbtn" data-key="以上" onclick="SearchPanel.toggle('ebCond',this)">Lv以上</button>
+              <button class="tbtn" data-key="Lv到達時" onclick="SearchPanel.toggle('ebCond',this)">Lv到達時</button>
+            </div>
+            <div style="display:flex;flex-wrap:wrap;gap:0.3rem">
+              <label class="ocr-toggle" data-for="MS" id="filterEbLabel"><input type="checkbox" id="filterEb" onchange="SearchPanel.applyFilters()"><span class="ocr-toggle-text" style="color:#ff9800">EB表示</span></label>
+              <label class="ocr-toggle" data-for="PL" id="filterEbSkillLabel"><input type="checkbox" id="filterEbSkill" onchange="SearchPanel.applyFilters()"><span class="ocr-toggle-text" style="color:#ff9800">EBスキル表示</span></label>
+            </div>
+          </div>
+        </div>
+
+        <!-- SQ -->
+        <div class="filter-group collapsed" id="filterGroupSq">
+          <div class="filter-group-title" onclick="toggleFilterGroup('filterGroupSq')" style="color:#ff69b4">SQ</div>
+          <div class="filter-group-body">
+            <div class="toggle-filter" id="sqCategoryBtns">
+              <button class="tbtn" data-key="sqsp" data-for="MS" onclick="SearchPanel.toggle('sqCat',this)">SQSP</button>
+              <button class="tbtn" data-key="sq_skill" data-for="PL" onclick="SearchPanel.toggle('sqCat',this)">SQスキル</button>
+              <button class="tbtn" data-key="sq_link" onclick="SearchPanel.toggle('sqCat',this)">SQリンク</button>
+              <button class="tbtn" data-key="sq_rush" data-for="PL" onclick="SearchPanel.toggle('sqCat',this)">SQラッシュ</button>
+            </div>
+            <div class="toggle-filter" data-for="MS" id="sqspEffectBtns">
+              <span class="toggle-filter-label">SQSP効果</span>
+              <button class="tbtn" data-key="変身" onclick="SearchPanel.toggle('sqspEff',this)">変身</button>
+              <button class="tbtn" data-key="スタン" onclick="SearchPanel.toggle('sqspEff',this)">スタン</button>
+              <button class="tbtn" data-key="撃破" onclick="SearchPanel.toggle('sqspEff',this)">撃破</button>
+              <button class="tbtn" data-key="貫通" onclick="SearchPanel.toggle('sqspEff',this)">貫通</button>
+              <button class="tbtn" data-key="範囲" onclick="SearchPanel.toggle('sqspEff',this)">範囲</button>
+              <button class="tbtn" data-key="デバフ" onclick="SearchPanel.toggle('sqspEff',this)">デバフ</button>
+              <button class="tbtn" data-key="バフ" onclick="SearchPanel.toggle('sqspEff',this)">バフ</button>
+              <button class="tbtn" data-key="HP回復" onclick="SearchPanel.toggle('sqspEff',this)">HP回復</button>
+              <button class="tbtn" data-key="防衛無視" onclick="SearchPanel.toggle('sqspEff',this)">防衛無視</button>
+              <button class="tbtn" data-key="支援攻撃" onclick="SearchPanel.toggle('sqspEff',this)">支援攻撃</button>
+            </div>
+            <div class="toggle-filter" data-for="PL" id="sqGaugeBtns">
+              <span class="toggle-filter-label">SQゲージ</span>
+              <button class="tbtn" data-key="大" onclick="SearchPanel.toggle('sqGauge',this)">大</button>
+              <button class="tbtn" data-key="中" onclick="SearchPanel.toggle('sqGauge',this)">中</button>
+              <button class="tbtn" data-key="小" onclick="SearchPanel.toggle('sqGauge',this)">小</button>
+            </div>
+            <div class="toggle-filter" data-for="PL" id="sqTriggerBtns">
+              <span class="toggle-filter-label">SQ発動条件</span>
+              <button class="tbtn" data-key="ロックオン時" onclick="SearchPanel.toggle('sqTrig',this)">ロックオン</button>
+              <button class="tbtn" data-key="戦艦/拠点ロックオン時" onclick="SearchPanel.toggle('sqTrig',this)">戦艦/拠点</button>
+              <button class="tbtn" data-key="撃破時" onclick="SearchPanel.toggle('sqTrig',this)">撃破</button>
+              <button class="tbtn" data-key="SQゲージ最大時" onclick="SearchPanel.toggle('sqTrig',this)">ゲージ最大</button>
+              <button class="tbtn" data-key="MSアビリティ発動時" onclick="SearchPanel.toggle('sqTrig',this)">MSアビリティ</button>
+              <button class="tbtn" data-key="出撃時" onclick="SearchPanel.toggle('sqTrig',this)">出撃</button>
+            </div>
+            <div class="toggle-filter" data-for="PL" id="sqEffectBtns">
+              <span class="toggle-filter-label">SQスキル効果</span>
+              <button class="tbtn" data-key="機動力UP" onclick="SearchPanel.toggle('sqEff',this)">機動力</button>
+              <button class="tbtn" data-key="遠距離攻撃力UP" onclick="SearchPanel.toggle('sqEff',this)">遠距離</button>
+              <button class="tbtn" data-key="近距離攻撃力UP" onclick="SearchPanel.toggle('sqEff',this)">近距離</button>
+              <button class="tbtn" data-key="SP威力UP" onclick="SearchPanel.toggle('sqEff',this)">SP威力</button>
+              <button class="tbtn" data-key="ダメージ軽減" onclick="SearchPanel.toggle('sqEff',this)">ダメ軽減</button>
+              <button class="tbtn" data-key="弱体無効" onclick="SearchPanel.toggle('sqEff',this)">弱体無効</button>
+              <button class="tbtn" data-key="全味方バフ" onclick="SearchPanel.toggle('sqEff',this)">全味方</button>
+            </div>
+            <div style="display:flex;flex-wrap:wrap;gap:0.3rem">
+              <label class="ocr-toggle" data-for="MS" id="filterSqspLabel"><input type="checkbox" id="filterSqsp" onchange="SearchPanel.applyFilters()"><span class="ocr-toggle-text" style="color:#ff69b4">SQSP表示</span></label>
+              <label class="ocr-toggle" data-for="PL" id="filterSqSkillLabel"><input type="checkbox" id="filterSqSkill" onchange="SearchPanel.applyFilters()"><span class="ocr-toggle-text" style="color:#ff69b4">SQスキル表示</span></label>
+            </div>
+          </div>
+        </div>
+
+        <!-- SP -->
+        <div class="filter-group collapsed" data-for="MS" id="filterGroupSp">
+          <div class="filter-group-title" onclick="toggleFilterGroup('filterGroupSp')" style="color:#4fc3f7">SP</div>
+          <div class="filter-group-body">
+            <div class="toggle-filter" id="spEffectBtns">
+              <span class="toggle-filter-label">SP効果</span>
+              <button class="tbtn" data-key="変身" onclick="SearchPanel.toggle('spEff',this)">変身</button>
+              <button class="tbtn" data-key="スタン" onclick="SearchPanel.toggle('spEff',this)">スタン</button>
+              <button class="tbtn" data-key="撃破" onclick="SearchPanel.toggle('spEff',this)">撃破</button>
+              <button class="tbtn" data-key="貫通" onclick="SearchPanel.toggle('spEff',this)">貫通</button>
+              <button class="tbtn" data-key="範囲" onclick="SearchPanel.toggle('spEff',this)">範囲</button>
+              <button class="tbtn" data-key="デバフ" onclick="SearchPanel.toggle('spEff',this)">デバフ</button>
+              <button class="tbtn" data-key="バフ" onclick="SearchPanel.toggle('spEff',this)">バフ</button>
+              <button class="tbtn" data-key="HP回復" onclick="SearchPanel.toggle('spEff',this)">HP回復</button>
+              <button class="tbtn" data-key="防衛無視" onclick="SearchPanel.toggle('spEff',this)">防衛無視</button>
+              <button class="tbtn" data-key="必中" onclick="SearchPanel.toggle('spEff',this)">必中</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- PLスキル -->
+        <div class="filter-group collapsed" data-for="PL" id="filterGroupPlSkill">
+          <div class="filter-group-title" onclick="toggleFilterGroup('filterGroupPlSkill')">PLスキル</div>
+          <div class="filter-group-body">
+            <div class="filter-row">
+              <select class="filter-select" id="filterSkillName" onchange="SearchPanel.applyFilters()" style="flex:1">
+                <option value="">PLスキル名</option>
+              </select>
+            </div>
+            <div class="toggle-filter" id="skillEffectBtns">
+              <span class="toggle-filter-label">スキル効果</span>
+              <button class="tbtn" data-key="機動力UP" onclick="SearchPanel.toggle('skEff',this)">機動力</button>
+              <button class="tbtn" data-key="遠距離攻撃力UP" onclick="SearchPanel.toggle('skEff',this)">遠距離</button>
+              <button class="tbtn" data-key="近距離攻撃力UP" onclick="SearchPanel.toggle('skEff',this)">近距離</button>
+              <button class="tbtn" data-key="SP威力UP" onclick="SearchPanel.toggle('skEff',this)">SP威力</button>
+              <button class="tbtn" data-key="ダメージ軽減" onclick="SearchPanel.toggle('skEff',this)">ダメ軽減</button>
+              <button class="tbtn" data-key="敵デバフ" onclick="SearchPanel.toggle('skEff',this)">敵デバフ</button>
+              <button class="tbtn" data-key="対戦艦/拠点" onclick="SearchPanel.toggle('skEff',this)">対戦艦/拠点</button>
+              <button class="tbtn" data-key="SQゲージ増加" onclick="SearchPanel.toggle('skEff',this)">SQゲージ</button>
+              <button class="tbtn" data-key="全味方バフ" onclick="SearchPanel.toggle('skEff',this)">全味方</button>
+              <button class="tbtn" data-key="HP条件" onclick="SearchPanel.toggle('skEff',this)">HP条件</button>
+              <button class="tbtn" data-key="弱体無効" onclick="SearchPanel.toggle('skEff',this)">弱体無効</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- テキスト検索 -->
+        <div class="filter-group" id="filterGroupSearch">
+          <div class="filter-group-title" onclick="toggleFilterGroup('filterGroupSearch')">テキスト検索</div>
+          <div class="filter-group-body">
+            <input type="text" class="search-input" id="searchInput" placeholder="名前・番号で検索..." autocomplete="off">
+            <input type="text" class="search-input" id="searchTextInput" placeholder="カードテキスト検索..." autocomplete="off">
+          </div>
+        </div>
+
+      </div>
+
+      <!-- RIGHT: Results Panel -->
+      <div class="results-panel">
+        <!-- Top bar -->
+        <div class="results-topbar">
+          <div class="sidebar-tabs" id="typeTabs">
+            <div class="sidebar-tab active" data-type="" onclick="SearchPanel.setType('')">ALL</div>
+            <div class="sidebar-tab" data-type="MS" onclick="SearchPanel.setType('MS')">MS</div>
+            <div class="sidebar-tab" data-type="PL" onclick="SearchPanel.setType('PL')">PL</div>
+          </div>
+          <div style="flex:1"></div>
+          <button class="search-btn" onclick="SearchPanel.applyFilters()">SEARCH</button>
+          <button class="clear-btn" onclick="SearchPanel.clearFilters()">CLEAR</button>
+        </div>
+
+        <!-- Card grid -->
+        <div class="thumb-grid" id="thumbGrid">
+          <div class="loading">カードデータを読み込み中...</div>
+        </div>
+
+        <!-- Pagination -->
+        <div class="results-pagination">
+          <button class="page-btn" id="prevBtn" onclick="SearchPanel.prevPage()" disabled>PREV</button>
+          <span class="page-info" id="pageInfo">-</span>
+          <button class="page-btn" id="nextBtn" onclick="SearchPanel.nextPage()">NEXT</button>
+        </div>
+      </div>
+    </div>
+
+<script>
+// ================================================================
+// Globals
+// ================================================================
+let allCards = [];
+let seriesList = [];
+let targetSlot = null;
+
+// ================================================================
+// Utility
+// ================================================================
+function escapeHtml(str) {
+  if (!str) return '';
+  const div = document.createElement('div');
+  div.textContent = str;
+  return div.innerHTML;
+}
+
+function toggleFilterGroup(id) {
+  document.getElementById(id).classList.toggle('collapsed');
+}
+
+function getUrlParam(name) {
+  return new URLSearchParams(window.location.search).get(name);
+}
+
+// ================================================================
+// SearchPanel
+// ================================================================
+const SearchPanel = {
+  _lockedType: null,
+  _currentRarity: new Set(),
+  _currentCategory: '',
+  _selectedSeries: new Set(),
+  _filteredCards: [],
+  _page: 0,
+  _perPage: 60,
+  _t: { ebCat:new Set(), ebLv:new Set(), ebCond:new Set(), ebspEff:new Set(), sqCat:new Set(), sqGauge:new Set(), sqTrig:new Set(), sqEff:new Set(), sqspEff:new Set(), spEff:new Set(), skEff:new Set() },
+  _tStyle: { ebCat:'eb', ebLv:'eb', ebCond:'eb', ebspEff:'eb', sqCat:'sq', sqGauge:'sq', sqTrig:'sq', sqEff:'sq', sqspEff:'sq', spEff:'sp', skEff:'pl' },
+
+  init() {
+    this._updateCategoryButtons();
+    // Enter key triggers search
+    document.getElementById('searchInput').addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') this.applyFilters();
+    });
+    document.getElementById('searchTextInput').addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') this.applyFilters();
+    });
+    // Terrain type enables rank select
+    document.getElementById('filterTerrainType').addEventListener('change', () => {
+      const hasType = !!document.getElementById('filterTerrainType').value;
+      document.getElementById('filterTerrainRank').disabled = !hasType;
+      if (!hasType) document.getElementById('filterTerrainRank').value = '';
+      this.applyFilters();
+    });
+    document.getElementById('filterTerrainRank').addEventListener('change', () => this.applyFilters());
+    // Slider event listeners
+    const costMin = document.getElementById('filterCostMin');
+    const costMax = document.getElementById('filterCostMax');
+    const costLabel = document.getElementById('costRangeValue');
+    const updateCostLabel = () => {
+      let mn = parseInt(costMin.value), mx = parseInt(costMax.value);
+      if (mn > mx) { costMax.value = mn; mx = mn; }
+      costLabel.textContent = mn + '〜' + mx;
+    };
+    costMin.addEventListener('input', () => { updateCostLabel(); this.applyFilters(); });
+    costMax.addEventListener('input', () => { updateCostLabel(); this.applyFilters(); });
+    // Stat sliders
+    ['Mobility','Ranged','Melee','Hp'].forEach(stat => {
+      const slider = document.getElementById('filter' + stat);
+      const label = document.getElementById(stat.toLowerCase() + 'Value');
+      slider.addEventListener('input', () => { label.textContent = slider.value; this.applyFilters(); });
+    });
+    // PLスキル名プルダウンを初期化
+    this._populateSkillNames();
+  },
+
+  _updateFilterVisibility() {
+    const t = this._lockedType;
+    const containerGroupMap = {
+      'ebCategoryBtns': 'ebCat', 'ebLevelBtns': 'ebLv', 'ebCondBtns': 'ebCond', 'ebspEffectBtns': 'ebspEff',
+      'sqCategoryBtns': 'sqCat', 'sqGaugeBtns': 'sqGauge', 'sqTriggerBtns': 'sqTrig',
+      'sqEffectBtns': 'sqEff', 'sqspEffectBtns': 'sqspEff',
+      'spEffectBtns': 'spEff', 'skillEffectBtns': 'skEff'
+    };
+    document.querySelectorAll('.filter-panel [data-for]').forEach(el => {
+      const hidden = t && el.dataset.for !== t;
+      el.style.display = hidden ? 'none' : '';
+      if (hidden) {
+        if (el.classList.contains('tbtn')) {
+          const group = containerGroupMap[el.closest('.toggle-filter')?.id];
+          if (group) {
+            this._t[group].delete(el.dataset.key);
+            el.classList.remove('active-eb', 'active-sq', 'active-pl');
+          }
+        }
+        el.querySelectorAll('.tbtn').forEach(btn => {
+          const group = containerGroupMap[btn.closest('.toggle-filter')?.id];
+          if (group) {
+            this._t[group].delete(btn.dataset.key);
+            btn.classList.remove('active-eb', 'active-sq', 'active-pl');
+          }
+        });
+        const sel = el.querySelector('#filterSkillName');
+        if (sel) sel.value = '';
+        el.querySelectorAll('input[type="checkbox"]').forEach(cb => { cb.checked = false; });
+      }
+    });
+  },
+
+  toggleSeries(series) {
+    if (this._selectedSeries.has(series)) {
+      this._selectedSeries.delete(series);
+    } else {
+      this._selectedSeries.add(series);
+    }
+    document.querySelectorAll('.series-btn').forEach(b => {
+      b.classList.toggle('active', this._selectedSeries.has(b.dataset.series));
+    });
+    this.applyFilters();
+  },
+
+  setType(type) {
+    this._lockedType = type || null;
+    document.querySelectorAll('#typeTabs .sidebar-tab').forEach(tab => {
+      tab.classList.toggle('active', (tab.dataset.type || '') === (type || ''));
+    });
+    this._updateFilterVisibility();
+    this.applyFilters();
+  },
+
+  toggle(group, btn) {
+    const s = this._t[group];
+    const key = btn.dataset.key;
+    if (s.has(key)) { s.delete(key); } else { s.add(key); }
+    btn.classList.toggle('active-' + this._tStyle[group], s.has(key));
+    this.applyFilters();
+  },
+
+  toggleRarity(rarity) {
+    if (this._currentRarity.has(rarity)) {
+      this._currentRarity.delete(rarity);
+    } else {
+      this._currentRarity.add(rarity);
+    }
+    document.querySelectorAll('.rarity-btn').forEach(b => {
+      b.classList.toggle('active', this._currentRarity.has(b.dataset.rarity));
+    });
+    this.applyFilters();
+  },
+
+  setCategory(cat) {
+    if (this._currentCategory === cat) {
+      this._currentCategory = '';
+    } else {
+      this._currentCategory = cat;
+    }
+    document.querySelectorAll('.cat-btn').forEach(b => {
+      b.classList.toggle('active', b.dataset.cat === this._currentCategory);
+    });
+    this.applyFilters();
+  },
+
+  _updateCategoryButtons() {
+    const container = document.getElementById('categoryFilter');
+    const allCats = ['機動', '近距離', '遠距離', '装甲', '汎用', '殲滅', '制圧', '防衛'];
+    container.innerHTML = allCats.map(c =>
+      `<button class="cat-btn${this._currentCategory === c ? ' active' : ''}" data-cat="${c}" onclick="SearchPanel.setCategory('${c}')">${c}</button>`
+    ).join('');
+  },
+
+  _populateSeriesFilter() {
+    const container = document.getElementById('seriesFilter');
+    container.innerHTML = '';
+    seriesList.forEach(s => {
+      const btn = document.createElement('button');
+      btn.className = 'series-btn';
+      btn.dataset.series = s;
+      btn.textContent = s;
+      btn.addEventListener('click', () => SearchPanel.toggleSeries(s));
+      container.appendChild(btn);
+    });
+  },
+
+  _populateSkillNames() {
+    const sel = document.getElementById('filterSkillName');
+    const current = sel.value;
+    const names = [...new Set(
+      allCards
+        .filter(c => c.type === 'PL' && c.skill_name)
+        .map(c => c.skill_name)
+    )].sort();
+    sel.innerHTML = '<option value="">PLスキル名</option>' +
+      names.map(n => `<option value="${escapeHtml(n)}"${n === current ? ' selected' : ''}>${escapeHtml(n)}</option>`).join('');
+  },
+
+  // ===== 22-stage filter chain (identical to V2) =====
+  applyFilters() {
+    let cards = allCards;
+
+    // Type filter
+    if (this._lockedType) {
+      cards = cards.filter(c => c.type === this._lockedType);
+    }
+    // Category
+    if (this._currentCategory) {
+      cards = cards.filter(c => c.category === this._currentCategory);
+    }
+    // Rarity (multi-select)
+    if (this._currentRarity.size > 0) {
+      cards = cards.filter(c => this._currentRarity.has(c.rarity));
+    }
+    // Series (multi-select)
+    if (this._selectedSeries.size > 0) {
+      cards = cards.filter(c => this._selectedSeries.has(c.series));
+    }
+    // Cost (range slider)
+    const costMin = parseInt(document.getElementById('filterCostMin').value);
+    const costMax = parseInt(document.getElementById('filterCostMax').value);
+    if (costMin > 0 || costMax < 13) {
+      cards = cards.filter(c => c.cost !== null && c.cost >= costMin && c.cost <= costMax);
+    }
+    // Stat filters (sliders)
+    const mobMin = parseInt(document.getElementById('filterMobility').value);
+    const rangedMin = parseInt(document.getElementById('filterRanged').value);
+    const meleeMin = parseInt(document.getElementById('filterMelee').value);
+    const hpMin = parseInt(document.getElementById('filterHp').value);
+    if (mobMin > 0) cards = cards.filter(c => c.mobility >= mobMin);
+    if (rangedMin > 0) cards = cards.filter(c => c.ranged >= rangedMin);
+    if (meleeMin > 0) cards = cards.filter(c => c.melee >= meleeMin);
+    if (hpMin > 0) cards = cards.filter(c => c.hp >= hpMin);
+    // Terrain filter
+    const terrainType = document.getElementById('filterTerrainType').value;
+    const terrainRank = document.getElementById('filterTerrainRank').value;
+    if (terrainType && terrainRank) {
+      const rankOrder = ['S','A','B','C','D'];
+      const minIdx = rankOrder.indexOf(terrainRank);
+      cards = cards.filter(c => {
+        const r = c.terrain?.[terrainType];
+        if (!r) return false;
+        return rankOrder.indexOf(r) <= minIdx;
+      });
+    }
+    // OCR filter
+    if (document.getElementById('filterOcr').checked) {
+      cards = cards.filter(c => c.has_ocr);
+    }
+    // EB category
+    const ebCat = this._t.ebCat;
+    if (ebCat.size > 0) {
+      cards = cards.filter(c =>
+        (ebCat.has('eb_sp') && c.has_eb) ||
+        (ebCat.has('eb_skill') && c.has_eb_skill) ||
+        (ebCat.has('eb_link') && c.has_eb_link)
+      );
+    }
+    // EB Level
+    const ebLv = this._t.ebLv;
+    if (ebLv.size > 0) {
+      cards = cards.filter(c => {
+        const lvls = [...ebLv].map(Number);
+        return lvls.includes(c.eb_level) || lvls.includes(c.eb_trigger_level);
+      });
+    }
+    // EB trigger condition
+    const ebCond = this._t.ebCond;
+    if (ebCond.size > 0) {
+      cards = cards.filter(c => ebCond.has(c.eb_trigger_cond));
+    }
+    // SQ category
+    const sqCat = this._t.sqCat;
+    if (sqCat.size > 0) {
+      cards = cards.filter(c =>
+        (sqCat.has('sqsp') && c.has_sqsp) ||
+        (sqCat.has('sq_skill') && c.has_sq_skill) ||
+        (sqCat.has('sq_link') && c.has_sq_link) ||
+        (sqCat.has('sq_rush') && c.sq_rush_effect)
+      );
+    }
+    // SQ gauge rate
+    const sqGauge = this._t.sqGauge;
+    if (sqGauge.size > 0) {
+      cards = cards.filter(c => sqGauge.has(c.sq_gauge_rate));
+    }
+    // SQ trigger
+    const sqTrig = this._t.sqTrig;
+    if (sqTrig.size > 0) {
+      cards = cards.filter(c => sqTrig.has(c.sq_trigger));
+    }
+    // SQ skill effect
+    const sqEff = this._t.sqEff;
+    if (sqEff.size > 0) {
+      cards = cards.filter(c => c.sq_skill_effect_tags && c.sq_skill_effect_tags.some(t => sqEff.has(t)));
+    }
+    // SQSP effect
+    const sqspEff = this._t.sqspEff;
+    if (sqspEff.size > 0) {
+      cards = cards.filter(c => c.sqsp_effect_tags && c.sqsp_effect_tags.some(t => sqspEff.has(t)));
+    }
+    // EBSP effect
+    const ebspEff = this._t.ebspEff;
+    if (ebspEff.size > 0) {
+      cards = cards.filter(c => c.ebsp_effect_tags && c.ebsp_effect_tags.some(t => ebspEff.has(t)));
+    }
+    // SP effect
+    const spEff = this._t.spEff;
+    if (spEff.size > 0) {
+      cards = cards.filter(c => c.sp_effect_tags && c.sp_effect_tags.some(t => spEff.has(t)));
+    }
+    // PL skill name
+    const skillName = document.getElementById('filterSkillName').value;
+    if (skillName) {
+      cards = cards.filter(c => c.skill_name === skillName);
+    }
+    // Skill effect
+    const skEff = this._t.skEff;
+    if (skEff.size > 0) {
+      cards = cards.filter(c => c.skill_effect_tags && c.skill_effect_tags.some(t => skEff.has(t)));
+    }
+    // Name/number search
+    const q = document.getElementById('searchInput').value.trim().toLowerCase();
+    if (q) {
+      cards = cards.filter(c =>
+        (c.number || '').toLowerCase().includes(q) ||
+        (c.name || '').toLowerCase().includes(q)
+      );
+    }
+    // Full text search
+    const qt = document.getElementById('searchTextInput').value.trim().toLowerCase();
+    if (qt) {
+      const terms = qt.split(/\s+/);
+      cards = cards.filter(c => {
+        const txt = c.search_text || '';
+        return terms.every(t => txt.includes(t));
+      });
+    }
+
+    this._filteredCards = cards;
+    this._page = 0;
+    this._renderGrid();
+  },
+
+  clearFilters() {
+    // Series
+    this._selectedSeries.clear();
+    document.querySelectorAll('.series-btn').forEach(b => b.classList.remove('active'));
+    // Cost slider
+    document.getElementById('filterCostMin').value = 0;
+    document.getElementById('filterCostMax').value = 13;
+    document.getElementById('costRangeValue').textContent = '0〜13';
+    // Stat sliders
+    document.getElementById('filterMobility').value = 0;
+    document.getElementById('filterRanged').value = 0;
+    document.getElementById('filterMelee').value = 0;
+    document.getElementById('filterHp').value = 0;
+    document.getElementById('mobilityValue').textContent = '0';
+    document.getElementById('rangedValue').textContent = '0';
+    document.getElementById('meleeValue').textContent = '0';
+    document.getElementById('hpValue').textContent = '0';
+    // Other filters
+    document.getElementById('filterTerrainType').value = '';
+    document.getElementById('filterTerrainRank').value = '';
+    document.getElementById('filterTerrainRank').disabled = true;
+    document.getElementById('filterOcr').checked = false;
+    document.getElementById('filterSqsp').checked = false;
+    document.getElementById('filterEb').checked = false;
+    document.getElementById('filterSqSkill').checked = false;
+    document.getElementById('filterEbSkill').checked = false;
+    document.getElementById('filterSkillName').value = '';
+    document.getElementById('searchInput').value = '';
+    document.getElementById('searchTextInput').value = '';
+    // Toggle filters
+    Object.values(this._t).forEach(s => s.clear());
+    document.querySelectorAll('.tbtn').forEach(b => b.className = 'tbtn');
+    this._currentRarity = new Set();
+    this._currentCategory = '';
+    document.querySelectorAll('.rarity-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+    // Type tabs (reset to ALL)
+    this._lockedType = null;
+    document.querySelectorAll('#typeTabs .sidebar-tab').forEach(tab => {
+      tab.classList.toggle('active', !tab.dataset.type);
+    });
+    this._updateFilterVisibility();
+    this.applyFilters();
+  },
+
+  _renderGrid() {
+    const grid = document.getElementById('thumbGrid');
+    const start = this._page * this._perPage;
+    const end = Math.min(start + this._perPage, this._filteredCards.length);
+    const cards = this._filteredCards.slice(start, end);
+
+    const showSqsp = document.getElementById('filterSqsp').checked;
+    const showEb = document.getElementById('filterEb').checked;
+    const showSqSkill = document.getElementById('filterSqSkill').checked;
+    const showEbSkill = document.getElementById('filterEbSkill').checked;
+
+    const rarityColors = {'M':'#82b1ff','C':'#aaa','R':'#ffe082','SR':'#ff8a80','U':'#ce93d8','P':'#68efbd','PR':'#f48fb1','LR':'#ffcc80','LE':'#ff8a80','CP':'#80deea'};
+    const placeholderSvg = "data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2280%22 height=%22120%22><rect fill=%22%23222%22 width=%2280%22 height=%22120%22/></svg>";
+
+    grid.innerHTML = '';
+    cards.forEach(card => {
+      const el = document.createElement('div');
+      const isEb = card.has_eb || card.has_eb_skill || card.has_eb_link;
+      const isSq = card.has_sqsp || card.has_sq_skill || card.has_sq_link || !!card.sq_rush_effect;
+      el.className = 'thumb-card' + (isEb ? ' card-eb' : '') + (isSq ? ' card-sq' : '');
+      const pilotOrModel = card.pilot || card.model || '';
+      const rarityHtml = card.rarity
+        ? `<span class="thumb-card-rarity r-${escapeHtml(card.rarity)}">${escapeHtml(card.rarity)}</span>` : '';
+      // Overlay
+      let overlayHtml = '';
+      if (showSqsp && card.sqsp_text) {
+        const lines = card.sqsp_text.split('\n');
+        overlayHtml = `<div class="thumb-overlay"><div class="thumb-overlay-title">SQSP</div>${escapeHtml(lines[0])}<br><span style="font-size:0.5rem;color:#ccc">${escapeHtml(lines.slice(1).join(' '))}</span></div>`;
+      } else if (showEb && card.eb_text) {
+        const lines = card.eb_text.split('\n');
+        overlayHtml = `<div class="thumb-overlay" style="border-color:#ff9800"><div class="thumb-overlay-title" style="color:#ff9800">EB</div>${escapeHtml(lines[0])}<br><span style="font-size:0.5rem;color:#ccc">${escapeHtml(lines.slice(1).join(' '))}</span></div>`;
+      } else if (showSqSkill && card.sq_skill_text) {
+        const lines = card.sq_skill_text.split('\n');
+        overlayHtml = `<div class="thumb-overlay"><div class="thumb-overlay-title">SQスキル</div>${escapeHtml(lines[0])}<br><span style="font-size:0.5rem;color:#ccc">${escapeHtml(lines.slice(1).join(' '))}</span></div>`;
+      } else if (showEbSkill && card.eb_skill_text) {
+        const lines = card.eb_skill_text.split('\n');
+        const ebLvLabel = card.eb_trigger_level ? ` (Lv.${card.eb_trigger_level})` : '';
+        overlayHtml = `<div class="thumb-overlay" style="border-color:#ff9800"><div class="thumb-overlay-title" style="color:#ff9800">EBスキル${ebLvLabel}</div>${escapeHtml(lines[0])}<br><span style="font-size:0.5rem;color:#ccc">${escapeHtml(lines.slice(1).join(' '))}</span></div>`;
+      }
+      el.innerHTML = `
+        <div class="thumb-card-img-wrap">
+          <img src="${escapeHtml(card.front_url || '')}" alt="${escapeHtml(card.name)}" loading="lazy"
+               onerror="this.onerror=null;this.src='${placeholderSvg}'">
+          <div class="thumb-card-badges">
+            ${card.cost !== null ? `<span class="thumb-card-cost">C${card.cost}</span>` : ''}
+            ${rarityHtml}
+          </div>
+          ${card.has_ocr ? '<div class="thumb-ocr-badge">OCR</div>' : ''}
+          ${card.sq_rush_effect || card.sqsp_text ? '<div class="thumb-sq-badge">SQ</div>' : ''}
+          ${isEb ? '<div class="thumb-eb-badge">EB</div>' : ''}
+          ${overlayHtml}
+        </div>
+        <div class="thumb-card-info">
+          <div class="thumb-card-number">
+            <span>${escapeHtml(card.number)}</span>
+            ${card.rarity ? `<span class="thumb-inline-rarity" style="color:${rarityColors[card.rarity]||'#888'}">${escapeHtml(card.rarity)}</span>` : ''}
+            ${!card.has_ocr ? '<span class="thumb-no-ocr">未OCR</span>' : ''}
+          </div>
+          <div class="thumb-card-name">${escapeHtml(card.name || '')}</div>
+          ${pilotOrModel ? `<div class="thumb-card-sub">${escapeHtml(pilotOrModel)}</div>` : ''}
+          ${card.sq_rush_effect ? `<div class="thumb-card-sq">${escapeHtml(card.sq_rush_effect)}</div>` : ''}
+          ${card.eb_trigger_level ? `<div class="thumb-card-eb-lv">EBLv.${card.eb_trigger_level}発動</div>` : ''}
+        </div>
+      `;
+      el.addEventListener('click', () => this._onCardClick(card));
+      grid.appendChild(el);
+    });
+
+    // Pagination update
+    const total = this._filteredCards.length;
+    document.getElementById('pageInfo').textContent = total > 0
+      ? `${start+1}-${end} / ${total}件`
+      : '0件';
+    document.getElementById('prevBtn').disabled = this._page <= 0;
+    document.getElementById('nextBtn').disabled = end >= total;
+  },
+
+  nextPage() {
+    const maxPage = Math.ceil(this._filteredCards.length / this._perPage) - 1;
+    if (this._page < maxPage) {
+      this._page++;
+      this._renderGrid();
+      document.getElementById('thumbGrid').scrollTop = 0;
+    }
+  },
+
+  prevPage() {
+    if (this._page > 0) {
+      this._page--;
+      this._renderGrid();
+      document.getElementById('thumbGrid').scrollTop = 0;
+    }
+  },
+
+  _onCardClick(card) {
+    if (targetSlot !== null) {
+      // Deck linkage: save selection and go back
+      const selectedCardData = {
+        slot: parseInt(targetSlot),
+        cardNumber: card.number,
+        cardName: card.name,
+        timestamp: new Date().toISOString()
+      };
+      localStorage.setItem('selectedCardForDeck', JSON.stringify(selectedCardData));
+      window.location.href = '/';
+    }
+  }
+};
+
+// ================================================================
+// Init
+// ================================================================
+document.addEventListener('DOMContentLoaded', async () => {
+  // Slot mode
+  targetSlot = getUrlParam('slot');
+  if (targetSlot !== null) {
+    document.getElementById('headerTitle').textContent = `カード検索 — スロット${parseInt(targetSlot) + 1}にセット`;
+    const banner = document.getElementById('slotBanner');
+    banner.textContent = `カードをクリックしてスロット${parseInt(targetSlot) + 1}にセットします`;
+    banner.style.display = '';
+  }
+
+  // Fetch card index
+  try {
+    const res = await fetch('/api/card_index');
+    const data = await res.json();
+    if (!data.success) throw new Error('API error');
+    allCards = data.cards;
+    // Build series list
+    const seriesSet = new Set();
+    allCards.forEach(c => { if (c.series) seriesSet.add(c.series); });
+    seriesList = [...seriesSet].sort();
+
+    SearchPanel._populateSeriesFilter();
+    SearchPanel.init();
+    SearchPanel.applyFilters();
+  } catch (e) {
+    document.getElementById('thumbGrid').innerHTML =
+      '<div class="loading" style="color:#f44">カードデータの取得に失敗しました</div>';
+    console.error('Failed to load card index:', e);
+  }
+});
+</script>
+</body>
+</html>

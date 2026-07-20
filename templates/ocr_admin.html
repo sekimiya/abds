@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OCRデータ管理 - Arsenal Base</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: #1a1a1a;
+  color: #fff;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  min-height: 100vh;
+}
+a { color: #66f2c5; text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.header {
+  background: #66f2c5;
+  color: #1a1a1a;
+  padding: 12px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+.header a { color: #1a1a1a; margin-left: 16px; }
+.header-links { display: flex; gap: 8px; }
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Stats Panel */
+.stats-panel {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+  margin-bottom: 24px;
+}
+.stat-card {
+  background: #2a2a2a;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  border: 1px solid #444;
+}
+.stat-card .stat-value {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #66f2c5;
+}
+.stat-card .stat-label {
+  font-size: 0.85rem;
+  color: #aaa;
+  margin-top: 4px;
+}
+
+/* Section */
+.section {
+  background: #2a2a2a;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 24px;
+  border: 1px solid #444;
+}
+.section-title {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #66f2c5;
+  margin-bottom: 16px;
+}
+
+/* Coverage Table */
+.coverage-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.coverage-table th {
+  background: #333;
+  color: #66f2c5;
+  padding: 8px 12px;
+  text-align: left;
+  font-size: 0.85rem;
+  position: sticky;
+  top: 0;
+}
+.coverage-table td {
+  padding: 6px 12px;
+  border-bottom: 1px solid #333;
+  font-size: 0.85rem;
+  vertical-align: middle;
+}
+.coverage-table tr:hover { background: #333; cursor: pointer; }
+.coverage-table .bar-cell { width: 120px; }
+.coverage-bar-outer {
+  background: #444;
+  border-radius: 4px;
+  height: 16px;
+  overflow: hidden;
+}
+.coverage-bar-inner {
+  background: #66f2c5;
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.3s;
+  min-width: 0;
+}
+
+/* Card List Controls */
+.card-controls {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.card-controls select,
+.card-controls input {
+  background: #333;
+  color: #fff;
+  border: 1px solid #555;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 0.9rem;
+}
+.card-controls select:focus,
+.card-controls input:focus {
+  outline: none;
+  border-color: #66f2c5;
+}
+.card-controls label {
+  color: #66f2c5;
+  font-size: 0.85rem;
+  font-weight: bold;
+}
+
+/* Card Table */
+.card-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.card-table th {
+  background: #333;
+  color: #66f2c5;
+  padding: 10px 12px;
+  text-align: left;
+  font-size: 0.85rem;
+  position: sticky;
+  top: 0;
+}
+.card-table td {
+  padding: 8px 12px;
+  border-bottom: 1px solid #333;
+  font-size: 0.85rem;
+  vertical-align: middle;
+}
+.card-table tr:hover { background: #333; cursor: pointer; }
+.card-table .thumb {
+  width: 40px;
+  height: 56px;
+  object-fit: cover;
+  border-radius: 4px;
+  background: #111;
+}
+.ocr-yes { color: #66f2c5; }
+.ocr-no { color: #666; }
+.type-badge {
+  display: inline-block;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: bold;
+}
+.type-ms { background: #2a4a6a; color: #6ab0f3; }
+.type-pl { background: #4a2a4a; color: #d66af3; }
+
+/* Pagination */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  margin-top: 16px;
+  flex-wrap: wrap;
+}
+.pagination button {
+  background: #333;
+  color: #fff;
+  border: 1px solid #555;
+  border-radius: 6px;
+  padding: 6px 12px;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+.pagination button:hover { border-color: #66f2c5; }
+.pagination button.active {
+  background: #66f2c5;
+  color: #1a1a1a;
+  border-color: #66f2c5;
+  font-weight: bold;
+}
+.pagination button:disabled { opacity: 0.4; cursor: not-allowed; }
+
+/* Modal */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.8);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+.modal-overlay.active { display: flex; }
+.modal {
+  background: #2a2a2a;
+  border-radius: 12px;
+  padding: 24px;
+  max-width: 900px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  border: 1px solid #444;
+  position: relative;
+}
+.modal-close {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  background: none;
+  border: none;
+  color: #aaa;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+.modal-close:hover { color: #fff; }
+.modal-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #66f2c5;
+  margin-bottom: 16px;
+  padding-right: 30px;
+}
+.modal-images {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.modal-images img {
+  width: 100%;
+  border-radius: 8px;
+  background: #111;
+}
+.modal-images .img-label {
+  text-align: center;
+  font-size: 0.8rem;
+  color: #aaa;
+  margin-bottom: 4px;
+}
+
+/* Tabs */
+.tab-bar {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 12px;
+  border-bottom: 2px solid #444;
+  padding-bottom: 0;
+}
+.tab-btn {
+  background: transparent;
+  color: #aaa;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: bold;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  transition: color 0.2s, border-color 0.2s;
+}
+.tab-btn:hover { color: #fff; }
+.tab-btn.active {
+  color: #66f2c5;
+  border-bottom-color: #66f2c5;
+}
+.tab-content {
+  display: none;
+}
+.tab-content.active {
+  display: block;
+}
+
+.ocr-pre {
+  background: #111;
+  border-radius: 8px;
+  padding: 12px;
+  font-family: monospace;
+  font-size: 0.8rem;
+  color: #ccc;
+  white-space: pre-wrap;
+  max-height: 400px;
+  overflow-y: auto;
+  word-break: break-all;
+}
+.no-data { color: #666; font-size: 0.85rem; padding: 12px; }
+
+.loading { color: #aaa; text-align: center; padding: 40px; }
+
+/* Status indicators in coverage table */
+.cov-num { text-align: right; font-variant-numeric: tabular-nums; }
+
+@media (max-width: 600px) {
+  .modal-images { grid-template-columns: 1fr; }
+  .card-controls { flex-direction: column; }
+  .stats-panel { grid-template-columns: repeat(3, 1fr); }
+}
+</style>
+</head>
+<body>
+<div class="header">
+  <span>OCRデータ管理</span>
+  <div class="header-links">
+    <a href="/">&larr; トップ</a>
+    <a href="/admin">管理画面</a>
+    <a href="/ocr-run">OCR実行</a>
+    <a href="/ocr-validate">OCR検証</a>
+    <a href="/ocr-quality">品質チェック</a>
+  </div>
+</div>
+
+<div class="container">
+  <!-- Stats Panel -->
+  <div class="stats-panel" id="statsPanel">
+    <div class="stat-card">
+      <div class="stat-value" id="statTotal">-</div>
+      <div class="stat-label">全カード</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value" id="statRaw">-</div>
+      <div class="stat-label">RAW済み</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value" id="statBasic">-</div>
+      <div class="stat-label">構造化済み</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value" id="statCoverage">-</div>
+      <div class="stat-label">カバレッジ</div>
+    </div>
+  </div>
+
+  <!-- Series Coverage Table -->
+  <div class="section">
+    <div class="section-title">シリーズ別カバレッジ</div>
+    <div style="max-height:300px;overflow-y:auto;">
+      <table class="coverage-table">
+        <thead>
+          <tr>
+            <th>シリーズ</th>
+            <th class="cov-num">総数</th>
+            <th class="cov-num">RAW</th>
+            <th class="cov-num">構造化</th>
+            <th class="bar-cell">カバレッジ</th>
+          </tr>
+        </thead>
+        <tbody id="coverageBody">
+          <tr><td colspan="5" class="loading">読み込み中...</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Card OCR List -->
+  <div class="section">
+    <div class="section-title">カードOCR一覧</div>
+    <div class="card-controls">
+      <div>
+        <label>シリーズ:</label>
+        <select id="seriesFilter" onchange="loadCards(1)">
+          <option value="">全て</option>
+        </select>
+      </div>
+      <div>
+        <label>ステータス:</label>
+        <select id="statusFilter" onchange="loadCards(1)">
+          <option value="">全て</option>
+          <option value="basic">構造化済み</option>
+          <option value="raw_only">RAWのみ</option>
+          <option value="none">未処理</option>
+        </select>
+      </div>
+      <div>
+        <label>検索:</label>
+        <input type="text" id="searchInput" placeholder="番号・名前で検索" oninput="debounceSearch()">
+      </div>
+    </div>
+    <div id="cardTableWrap">
+      <table class="card-table">
+        <thead>
+          <tr>
+            <th></th>
+            <th>番号</th>
+            <th>名前</th>
+            <th>シリーズ</th>
+            <th>RAW</th>
+            <th>構造化</th>
+          </tr>
+        </thead>
+        <tbody id="cardTableBody">
+          <tr><td colspan="6" class="loading">読み込み中...</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="pagination" id="pagination"></div>
+  </div>
+</div>
+
+<!-- Detail Modal -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+  <div class="modal" onclick="event.stopPropagation()">
+    <button class="modal-close" onclick="closeModal()">&times;</button>
+    <div class="modal-title" id="modalTitle"></div>
+    <div class="modal-images" id="modalImages"></div>
+    <div id="modalTabSection"></div>
+  </div>
+</div>
+
+<script>
+// --- Admin Token Management ---
+(function() {
+  const params = new URLSearchParams(window.location.search);
+  const urlToken = params.get('token');
+  if (urlToken) {
+    sessionStorage.setItem('admin_token', urlToken);
+    params.delete('token');
+    const clean = params.toString();
+    const newUrl = window.location.pathname + (clean ? '?' + clean : '');
+    window.history.replaceState({}, '', newUrl);
+  }
+})();
+
+function getAdminToken() {
+  return sessionStorage.getItem('admin_token') || '';
+}
+
+function adminHeaders(extra) {
+  const h = { 'Authorization': 'Bearer ' + getAdminToken() };
+  return Object.assign(h, extra || {});
+}
+
+function adminFetch(url, options) {
+  options = options || {};
+  options.headers = adminHeaders(options.headers);
+  return fetch(url, options);
+}
+
+let searchTimer = null;
+let currentPage = 1;
+
+// --- Escape HTML ---
+function escapeHtml(str) {
+  if (!str) return '';
+  const d = document.createElement('div');
+  d.textContent = str;
+  return d.innerHTML;
+}
+
+// --- Stats ---
+async function loadStats() {
+  try {
+    const res = await adminFetch('/api/ocr-admin/stats');
+    const data = await res.json();
+    if (!data.success) return;
+
+    document.getElementById('statTotal').textContent = data.total_cards.toLocaleString();
+    document.getElementById('statRaw').textContent = data.raw_count.toLocaleString();
+    document.getElementById('statBasic').textContent = data.basic_count.toLocaleString();
+    document.getElementById('statCoverage').textContent = data.coverage_pct + '%';
+
+    // Series coverage table
+    renderCoverage(data.series_coverage);
+  } catch (e) {
+    console.error('Stats load error:', e);
+  }
+}
+
+function renderCoverage(series) {
+  const tbody = document.getElementById('coverageBody');
+  if (!series || series.length === 0) {
+    tbody.innerHTML = '<tr><td colspan="7" class="no-data">データなし</td></tr>';
+    return;
+  }
+  tbody.innerHTML = series.map(s => `
+    <tr onclick="filterBySeries('${escapeHtml(s.series)}')">
+      <td>${escapeHtml(s.series)}</td>
+      <td class="cov-num">${s.total}</td>
+      <td class="cov-num">${s.raw}</td>
+      <td class="cov-num">${s.basic}</td>
+      <td class="bar-cell">
+        <div class="coverage-bar-outer" title="${s.coverage}%">
+          <div class="coverage-bar-inner" style="width:${s.coverage}%"></div>
+        </div>
+      </td>
+    </tr>
+  `).join('');
+}
+
+function filterBySeries(series) {
+  const sel = document.getElementById('seriesFilter');
+  sel.value = series;
+  loadCards(1);
+  // Scroll to card list
+  document.getElementById('cardTableWrap').scrollIntoView({ behavior: 'smooth' });
+}
+
+// --- Card List ---
+async function loadCards(page) {
+  currentPage = page || 1;
+  const series = document.getElementById('seriesFilter').value;
+  const status = document.getElementById('statusFilter').value;
+  const q = document.getElementById('searchInput').value.trim();
+  const params = new URLSearchParams({ page: currentPage, per_page: 50 });
+  if (series) params.set('series', series);
+  if (status) params.set('status', status);
+  if (q) params.set('q', q);
+
+  try {
+    const res = await adminFetch('/api/ocr-admin/cards?' + params.toString());
+    const data = await res.json();
+    if (!data.success) return;
+
+    // Populate series filter (only on first load)
+    const sel = document.getElementById('seriesFilter');
+    if (sel.options.length <= 1 && data.series_list && data.series_list.length > 0) {
+      data.series_list.forEach(s => {
+        const opt = document.createElement('option');
+        opt.value = s;
+        opt.textContent = s;
+        sel.appendChild(opt);
+      });
+    }
+
+    // Render table
+    const tbody = document.getElementById('cardTableBody');
+    if (data.cards.length === 0) {
+      tbody.innerHTML = '<tr><td colspan="8" class="loading">カードが見つかりません</td></tr>';
+    } else {
+      tbody.innerHTML = data.cards.map(c => `
+        <tr onclick="showDetail('${escapeHtml(c.number)}')">
+          <td><img class="thumb" src="${escapeHtml(c.front_url)}" alt="" loading="lazy" onerror="this.style.display='none'"></td>
+          <td>${escapeHtml(c.number)}</td>
+          <td>${escapeHtml(c.name)}</td>
+          <td>${escapeHtml(c.series)}</td>
+          <td class="${c.has_raw ? 'ocr-yes' : 'ocr-no'}">${c.has_raw ? '\u2713' : '\u2717'}</td>
+          <td class="${c.has_basic ? 'ocr-yes' : 'ocr-no'}">${c.has_basic ? '\u2713' : '\u2717'}</td>
+        </tr>
+      `).join('');
+    }
+
+    renderPagination(data.page, data.total_pages, data.total);
+  } catch (e) {
+    console.error('Cards load error:', e);
+  }
+}
+
+function renderPagination(page, totalPages, total) {
+  const div = document.getElementById('pagination');
+  if (totalPages <= 1) { div.innerHTML = ''; return; }
+
+  let html = `<button ${page <= 1 ? 'disabled' : ''} onclick="loadCards(${page-1})">&laquo;</button>`;
+
+  const range = [];
+  range.push(1);
+  for (let i = Math.max(2, page - 2); i <= Math.min(totalPages - 1, page + 2); i++) {
+    range.push(i);
+  }
+  if (totalPages > 1) range.push(totalPages);
+
+  const unique = [...new Set(range)].sort((a, b) => a - b);
+  let prev = 0;
+  unique.forEach(p => {
+    if (p - prev > 1) html += '<span style="color:#666">...</span>';
+    html += `<button class="${p === page ? 'active' : ''}" onclick="loadCards(${p})">${p}</button>`;
+    prev = p;
+  });
+
+  html += `<button ${page >= totalPages ? 'disabled' : ''} onclick="loadCards(${page+1})">&raquo;</button>`;
+  html += `<span style="color:#666;margin-left:8px;font-size:0.8rem">(${total.toLocaleString()}件)</span>`;
+  div.innerHTML = html;
+}
+
+function debounceSearch() {
+  clearTimeout(searchTimer);
+  searchTimer = setTimeout(() => loadCards(1), 300);
+}
+
+// --- Detail Modal ---
+async function showDetail(number) {
+  const overlay = document.getElementById('modalOverlay');
+  overlay.classList.add('active');
+  document.getElementById('modalTitle').textContent = number + ' 読み込み中...';
+  document.getElementById('modalImages').innerHTML = '';
+  document.getElementById('modalTabSection').innerHTML = '';
+
+  try {
+    const res = await adminFetch('/api/ocr-admin/card/' + encodeURIComponent(number));
+    const data = await res.json();
+    if (!data.success) {
+      document.getElementById('modalTitle').textContent = number + ' (データなし)';
+      return;
+    }
+    const card = data.card;
+    document.getElementById('modalTitle').textContent = `${card.number} - ${card.name}`;
+
+    // Images
+    document.getElementById('modalImages').innerHTML = `
+      <div>
+        <div class="img-label">表面</div>
+        <img src="${escapeHtml(card.front_url)}" alt="表面" onerror="this.alt='画像なし';this.style.minHeight='200px'">
+      </div>
+      <div>
+        <div class="img-label">裏面</div>
+        <img src="${escapeHtml(card.back_url)}" alt="裏面" onerror="this.alt='画像なし';this.style.minHeight='200px'">
+      </div>
+    `;
+
+    // Tabs
+    const tabs = [];
+    if (data.raw_text) tabs.push({ id: 'raw', label: 'RAWテキスト', data: data.raw_text });
+    if (data.basic) tabs.push({ id: 'basic', label: '構造化JSON', data: data.basic });
+
+    if (tabs.length === 0) {
+      document.getElementById('modalTabSection').innerHTML = '<div class="no-data">OCRデータなし</div>';
+      return;
+    }
+
+    let tabBarHtml = '<div class="tab-bar">';
+    let tabContentHtml = '';
+    tabs.forEach((tab, i) => {
+      const active = i === 0 ? ' active' : '';
+      tabBarHtml += `<button class="tab-btn${active}" onclick="switchTab('${tab.id}')" data-tab="${tab.id}">${tab.label}</button>`;
+      const content = typeof tab.data === 'string' ? tab.data : JSON.stringify(tab.data, null, 2);
+      tabContentHtml += `<div class="tab-content${active}" id="tabContent_${tab.id}"><pre class="ocr-pre">${escapeHtml(content)}</pre></div>`;
+    });
+    tabBarHtml += '</div>';
+
+    document.getElementById('modalTabSection').innerHTML = tabBarHtml + tabContentHtml;
+  } catch (e) {
+    document.getElementById('modalTitle').textContent = number + ' (読み込みエラー)';
+  }
+}
+
+function switchTab(tabId) {
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.tab === tabId);
+  });
+  document.querySelectorAll('.tab-content').forEach(el => {
+    el.classList.toggle('active', el.id === 'tabContent_' + tabId);
+  });
+}
+
+function closeModal(event) {
+  if (event && event.target !== document.getElementById('modalOverlay')) return;
+  document.getElementById('modalOverlay').classList.remove('active');
+}
+
+// ESC key to close modal
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeModal();
+});
+
+// Init
+loadStats();
+loadCards(1);
+</script>
+</body>
+</html>

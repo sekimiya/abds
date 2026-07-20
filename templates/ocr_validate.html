@@ -1,0 +1,1426 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OCRデータ検証 - Arsenal Base</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: #1a1a1a;
+  color: #fff;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  min-height: 100vh;
+}
+a { color: #66f2c5; text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.header {
+  background: #66f2c5;
+  color: #1a1a1a;
+  padding: 12px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+.header a { color: #1a1a1a; }
+.header-links { display: flex; gap: 8px; }
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Stats Panel */
+.stats-panel {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+  margin-bottom: 24px;
+}
+.stat-card {
+  background: #2a2a2a;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  border: 1px solid #444;
+}
+.stat-card .stat-value {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #66f2c5;
+}
+.stat-card .stat-label {
+  font-size: 0.85rem;
+  color: #aaa;
+  margin-top: 4px;
+}
+.stat-card.warn .stat-value { color: #ffc107; }
+.stat-card.error .stat-value { color: #ff6b6b; }
+
+/* Section */
+.section {
+  background: #2a2a2a;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 24px;
+  border: 1px solid #444;
+}
+.section-title {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #66f2c5;
+  margin-bottom: 16px;
+}
+
+/* Controls */
+.control-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  margin-bottom: 16px;
+}
+.control-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.control-group label {
+  color: #66f2c5;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+.control-group select {
+  background: #333;
+  color: #fff;
+  border: 1px solid #555;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 0.9rem;
+}
+.control-group select:focus {
+  outline: none;
+  border-color: #66f2c5;
+}
+
+.checkbox-group {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 12px;
+}
+.checkbox-group label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+.checkbox-group input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: #66f2c5;
+}
+
+.action-btn {
+  background: #66f2c5;
+  color: #1a1a1a;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.action-btn:hover { opacity: 0.85; }
+.action-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.action-btn.danger {
+  background: #ff6b6b;
+  color: #fff;
+}
+
+.action-btn.secondary {
+  background: #555;
+  color: #fff;
+}
+
+/* Spinner */
+.spinner {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  border: 3px solid #555;
+  border-top-color: #66f2c5;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  vertical-align: middle;
+  margin-right: 8px;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Badges */
+.badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.badge-warning { background: #ffc107; color: #1a1a1a; }
+.badge-error { background: #ff6b6b; color: #fff; }
+.badge-ok { background: #66f2c5; color: #1a1a1a; }
+.badge-info { background: #555; color: #ccc; }
+
+/* Result Items */
+.result-section {
+  margin-bottom: 20px;
+}
+.result-section-title {
+  font-size: 0.95rem;
+  font-weight: bold;
+  color: #66f2c5;
+  margin-bottom: 8px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid #444;
+}
+.result-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 8px 0;
+  border-bottom: 1px solid #333;
+  font-size: 0.85rem;
+}
+.result-item:last-child { border-bottom: none; }
+.result-msg { flex: 1; }
+.result-detail { color: #aaa; font-size: 0.8rem; margin-top: 2px; }
+.result-actions { flex-shrink: 0; }
+
+.dict-btn {
+  background: #66f2c5;
+  color: #1a1a1a;
+  border: none;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.dict-btn:hover { opacity: 0.85; }
+.dict-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+.dict-btn.remove {
+  background: #ff6b6b;
+  color: #fff;
+}
+
+/* Tab */
+.tab-bar {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 12px;
+  border-bottom: 2px solid #444;
+  padding-bottom: 0;
+}
+.tab-btn {
+  background: transparent;
+  color: #aaa;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: bold;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  transition: color 0.2s, border-color 0.2s;
+}
+.tab-btn:hover { color: #fff; }
+.tab-btn.active {
+  color: #66f2c5;
+  border-bottom-color: #66f2c5;
+}
+.tab-content { display: none; }
+.tab-content.active { display: block; }
+
+/* Dictionary Table */
+.dict-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.dict-table th {
+  background: #333;
+  color: #66f2c5;
+  padding: 8px 12px;
+  text-align: left;
+  font-size: 0.85rem;
+}
+.dict-table td {
+  padding: 6px 12px;
+  border-bottom: 1px solid #333;
+  font-size: 0.85rem;
+  vertical-align: middle;
+}
+.dict-table tr:hover { background: #333; }
+
+/* Manual Add Form */
+.add-form {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid #444;
+}
+.add-form select,
+.add-form input {
+  background: #333;
+  color: #fff;
+  border: 1px solid #555;
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 0.85rem;
+}
+.add-form select:focus,
+.add-form input:focus {
+  outline: none;
+  border-color: #66f2c5;
+}
+
+/* Fix Changes */
+.change-file {
+  font-weight: bold;
+  color: #66f2c5;
+  margin-top: 12px;
+  margin-bottom: 4px;
+  font-size: 0.85rem;
+}
+.change-item {
+  font-size: 0.8rem;
+  color: #ccc;
+  padding: 2px 0 2px 16px;
+  font-family: monospace;
+}
+
+/* Auto-correct table */
+.ac-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 12px;
+}
+.ac-table th {
+  background: #333;
+  color: #66f2c5;
+  padding: 8px 12px;
+  text-align: left;
+  font-size: 0.8rem;
+  position: sticky;
+  top: 0;
+}
+.ac-table td {
+  padding: 6px 12px;
+  border-bottom: 1px solid #333;
+  font-size: 0.83rem;
+  vertical-align: middle;
+}
+.ac-table tr:hover { background: #333; }
+.ac-table input[type="checkbox"] { width: 16px; height: 16px; accent-color: #66f2c5; }
+.ac-category {
+  display: inline-block;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-weight: bold;
+}
+.ac-category.ms { background: #2d5a88; color: #8ec8f0; }
+.ac-category.link { background: #2d7a5a; color: #8ef0c8; }
+.ac-category.pilot { background: #7a5a2d; color: #f0c88e; }
+.ac-distance { font-family: monospace; color: #ffc107; }
+.ac-arrow { color: #66f2c5; font-weight: bold; }
+
+/* Correction Review Table */
+.cr-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 12px;
+}
+.cr-table th {
+  background: #333;
+  color: #66f2c5;
+  padding: 8px 10px;
+  text-align: left;
+  font-size: 0.8rem;
+  position: sticky;
+  top: 0;
+}
+.cr-table td {
+  padding: 6px 10px;
+  border-bottom: 1px solid #333;
+  font-size: 0.83rem;
+  vertical-align: middle;
+}
+.cr-table tr:hover { background: #333; }
+.cr-table tr.skipped { opacity: 0.4; }
+.cr-old { color: #ff6b6b; }
+.cr-new { color: #66f2c5; font-weight: bold; }
+.cr-source {
+  display: inline-block;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-weight: bold;
+}
+.cr-source.dictionary { background: #2d5a88; color: #8ec8f0; }
+.cr-source.char_normalize { background: #7a5a2d; color: #f0c88e; }
+.cr-action-select {
+  background: #333;
+  color: #fff;
+  border: 1px solid #555;
+  border-radius: 4px;
+  padding: 4px 6px;
+  font-size: 0.8rem;
+}
+.cr-action-select:focus { outline: none; border-color: #66f2c5; }
+.cr-edit-input {
+  background: #333;
+  color: #66f2c5;
+  border: 1px solid #66f2c5;
+  border-radius: 4px;
+  padding: 4px 8px;
+  font-size: 0.83rem;
+  width: 100%;
+}
+.cr-summary {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  font-size: 0.85rem;
+  margin-bottom: 12px;
+  padding: 8px 12px;
+  background: #333;
+  border-radius: 8px;
+}
+.cr-summary .count { font-weight: bold; }
+.cr-summary .accept { color: #66f2c5; }
+.cr-summary .skip { color: #aaa; }
+.cr-summary .edit { color: #ffc107; }
+
+/* Master data panel */
+.master-panel {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+.master-stat {
+  background: #333;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  color: #ccc;
+}
+.master-stat .val { color: #66f2c5; font-weight: bold; }
+
+/* Master data tag list */
+.md-list-area {
+  margin-top: 16px;
+}
+.md-list-area details {
+  margin-bottom: 8px;
+}
+.md-list-area summary {
+  color: #66f2c5;
+  font-size: 0.85rem;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 6px 0;
+}
+.md-list-area summary:hover { text-decoration: underline; }
+.md-tag-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 10px 0;
+  max-height: 260px;
+  overflow-y: auto;
+}
+.md-tag {
+  display: inline-block;
+  background: #333;
+  border: 1px solid #555;
+  border-radius: 6px;
+  padding: 3px 10px;
+  font-size: 0.78rem;
+  color: #ddd;
+  white-space: nowrap;
+}
+.md-tag.ms { border-color: #2d5a88; color: #8ec8f0; }
+.md-tag.link { border-color: #2d7a5a; color: #8ef0c8; }
+.md-tag.sq { border-color: #6a3d8a; color: #c8a0f0; }
+
+/* Master check NG items */
+.mc-item {
+  background: #222;
+  border: 1px solid #444;
+  border-left: 4px solid #ff6b6b;
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin-bottom: 10px;
+  transition: border-color 0.2s;
+}
+.mc-item:hover { border-color: #ff6b6b; }
+.mc-item.has-suggest { border-left-color: #ffc107; }
+.mc-item-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.mc-ocr-val {
+  color: #ff6b6b;
+  font-weight: bold;
+  font-size: 1rem;
+}
+.mc-arrow { color: #66f2c5; font-weight: bold; font-size: 1.1em; }
+.mc-suggest {
+  color: #66f2c5;
+  font-weight: bold;
+  font-size: 1rem;
+}
+.mc-no-suggest { color: #666; font-size: 0.85rem; font-style: italic; }
+.mc-dist {
+  font-family: monospace;
+  font-size: 0.75rem;
+  background: #333;
+  color: #ffc107;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+.mc-count {
+  font-size: 0.8rem;
+  color: #aaa;
+  margin-left: auto;
+}
+.mc-count strong { color: #ff6b6b; }
+.mc-cat {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-weight: bold;
+}
+.mc-cat.ms { background: #2d5a88; color: #8ec8f0; }
+.mc-cat.link { background: #2d7a5a; color: #8ef0c8; }
+.mc-cards {
+  margin-top: 6px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+.mc-card-tag {
+  background: #333;
+  color: #999;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.72rem;
+  font-family: monospace;
+}
+.mc-item-actions {
+  margin-top: 8px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.no-data { color: #666; font-size: 0.85rem; padding: 12px; text-align: center; }
+.loading { color: #aaa; text-align: center; padding: 40px; }
+
+@media (max-width: 600px) {
+  .control-row { flex-direction: column; }
+  .stats-panel { grid-template-columns: repeat(2, 1fr); }
+  .checkbox-group { flex-direction: column; }
+}
+</style>
+</head>
+<body>
+<div class="header">
+  <span>OCRデータ検証</span>
+  <div class="header-links">
+    <a href="/">&larr; トップ</a>
+    <a href="/admin">管理画面</a>
+    <a href="/ocr-run">OCR実行</a>
+    <a href="/ocr-quality">品質チェック</a>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- B. Stats Panel -->
+  <div class="stats-panel">
+    <div class="stat-card">
+      <div class="stat-value" id="statCards">-</div>
+      <div class="stat-label">検査済みカード</div>
+    </div>
+    <div class="stat-card warn">
+      <div class="stat-value" id="statWarnings">-</div>
+      <div class="stat-label">Warnings</div>
+    </div>
+    <div class="stat-card error">
+      <div class="stat-value" id="statErrors">-</div>
+      <div class="stat-label">Errors</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value" id="statDict">-</div>
+      <div class="stat-label">辞書エントリ</div>
+    </div>
+  </div>
+
+  <!-- B2. Master Data Panel -->
+  <div class="section">
+    <div class="section-title">公式マスターデータ管理</div>
+    <div class="master-panel" id="masterDataPanel">
+      <div class="master-stat">MSアビリティ(公式): <span class="val" id="mdMsCount">-</span>種</div>
+      <div class="master-stat">リンク名(公式): <span class="val" id="mdLinkCount">-</span>種</div>
+      <div class="master-stat">ABILITY_DATA: <span class="val" id="mdAbilityCount">-</span></div>
+      <div class="master-stat">最終取得: <span class="val" id="mdFetchedAt">-</span></div>
+    </div>
+    <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;">
+      <button class="action-btn" id="masterFetchBtn" onclick="fetchMasterData()">マスター更新（公式サイトから再取得）</button>
+      <span id="masterFetchSpinner" style="display:none;"><span class="spinner"></span>取得中...</span>
+      <span id="masterFetchMsg" style="font-size:0.8rem;color:#aaa;"></span>
+    </div>
+    <div class="md-list-area" id="mdListArea"></div>
+  </div>
+
+  <!-- C. Master Check -->
+  <div class="section">
+    <div class="section-title">マスターとの比較</div>
+    <div class="control-row">
+      <div class="control-group">
+        <label>シリーズフィルタ</label>
+        <select id="seriesFilter">
+          <option value="">全シリーズ</option>
+        </select>
+      </div>
+      <button class="action-btn" id="masterCheckBtn" onclick="runMasterCheck()">
+        <span style="font-size:1.1em;">&#9654;</span> マスターとの比較を実行
+      </button>
+      <span id="masterCheckSpinner" style="display:none;"><span class="spinner"></span>照合中...</span>
+    </div>
+
+    <!-- 照合結果 -->
+    <div id="masterCheckArea" style="display:none;">
+
+      <!-- サマリカード -->
+      <div class="stats-panel" style="margin-top:16px;margin-bottom:16px;">
+        <div class="stat-card">
+          <div class="stat-value" id="mcTotal">-</div>
+          <div class="stat-label">検査カード数</div>
+        </div>
+        <div class="stat-card error">
+          <div class="stat-value" id="mcMismatches">-</div>
+          <div class="stat-label">NG（不一致）</div>
+        </div>
+        <div class="stat-card warn">
+          <div class="stat-value" id="mcUnique">-</div>
+          <div class="stat-label">ユニーク不一致</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value" id="mcOkRate">-</div>
+          <div class="stat-label">OK率</div>
+        </div>
+      </div>
+
+      <!-- フィルタタブ -->
+      <div class="tab-bar" style="margin-bottom:12px;">
+        <button class="tab-btn active" onclick="filterMasterCheck('all')" data-mc-tab="all">全て</button>
+        <button class="tab-btn" onclick="filterMasterCheck('ms_ability')" data-mc-tab="ms_ability">MSアビリティ <span id="mcMsBadge" class="badge badge-warning" style="margin-left:4px;"></span></button>
+        <button class="tab-btn" onclick="filterMasterCheck('link_ability')" data-mc-tab="link_ability">リンク名 <span id="mcLinkBadge" class="badge badge-warning" style="margin-left:4px;"></span></button>
+      </div>
+
+      <!-- 結果リスト -->
+      <div id="masterCheckResults"></div>
+    </div>
+  </div>
+
+  <!-- F. Corrections Dictionary -->
+  <!-- (was E. before auto-correct section was added) -->
+  <div class="section">
+    <div class="section-title">補正辞書</div>
+    <div class="tab-bar" id="dictTabBar">
+      <button class="tab-btn active" onclick="switchDictTab('link_ability_names')" data-tab="link_ability_names">リンク名</button>
+      <button class="tab-btn" onclick="switchDictTab('pilot_skill_names')" data-tab="pilot_skill_names">パイロットスキル</button>
+      <button class="tab-btn" onclick="switchDictTab('ms_ability_names')" data-tab="ms_ability_names">MSアビリティ</button>
+      <button class="tab-btn" onclick="switchDictTab('link_effects')" data-tab="link_effects">リンク効果</button>
+    </div>
+    <div id="dictContent"></div>
+
+    <!-- Manual Add -->
+    <div class="add-form">
+      <select id="addCategory">
+        <option value="link_ability_names">リンク名</option>
+        <option value="pilot_skill_names">パイロットスキル</option>
+        <option value="ms_ability_names">MSアビリティ</option>
+        <option value="link_effects">リンク効果</option>
+      </select>
+      <input type="text" id="addKey" placeholder="誤読テキスト" style="width:200px;">
+      <input type="text" id="addValue" placeholder="正しいテキスト" style="width:200px;">
+      <button class="action-btn" onclick="addDictEntry()" style="padding:6px 16px;font-size:0.85rem;">追加</button>
+    </div>
+  </div>
+
+  <!-- F. Fix Application (Individual Review) -->
+  <div class="section">
+    <div class="section-title">修正適用（個別レビュー）</div>
+
+    <!-- Step 1: Preview -->
+    <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:16px;">
+      <button class="action-btn" id="fixPreviewBtn" onclick="runFixPreview()">修正プレビュー</button>
+      <span id="fixPreviewSpinner" style="display:none;"><span class="spinner"></span>生成中...</span>
+    </div>
+
+    <!-- Step 2: Review Table -->
+    <div id="fixReviewArea" style="display:none;">
+      <div class="cr-summary" id="fixSummary"></div>
+      <div style="display:flex;gap:8px;margin-bottom:12px;">
+        <button class="action-btn secondary" onclick="bulkAction('accept')" style="padding:6px 14px;font-size:0.8rem;">全て承認</button>
+        <button class="action-btn secondary" onclick="bulkAction('skip')" style="padding:6px 14px;font-size:0.8rem;">全てスキップ</button>
+      </div>
+      <div style="max-height:500px;overflow-y:auto;">
+        <table class="cr-table">
+          <thead><tr>
+            <th style="width:90px;">操作</th>
+            <th>ファイル</th>
+            <th>フィールド</th>
+            <th>現在値</th>
+            <th style="width:30px;"></th>
+            <th>修正値</th>
+            <th>種別</th>
+          </tr></thead>
+          <tbody id="fixReviewBody"></tbody>
+        </table>
+      </div>
+
+      <!-- Step 3: Apply -->
+      <div style="display:flex;gap:12px;align-items:center;margin-top:16px;">
+        <button class="action-btn danger" id="fixApplyBtn" onclick="runFixApply()">選択した修正を適用</button>
+        <span id="fixApplySpinner" style="display:none;"><span class="spinner"></span>適用中...</span>
+      </div>
+      <div id="fixApplyResults" style="margin-top:12px;"></div>
+    </div>
+
+    <!-- Legacy: Bulk fix (hidden, still functional) -->
+    <details style="margin-top:16px;">
+      <summary style="color:#aaa;font-size:0.8rem;cursor:pointer;">一括適用（従来方式）</summary>
+      <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:8px;">
+        <button class="action-btn secondary" id="dryRunBtn" onclick="runFix(true)">ドライラン</button>
+        <button class="action-btn danger" id="fixBtn" onclick="runFix(false)">修正適用</button>
+        <span id="fixSpinner" style="display:none;"><span class="spinner"></span>処理中...</span>
+      </div>
+      <div id="fixResults" style="margin-top:16px;"></div>
+    </details>
+  </div>
+
+</div>
+
+<script>
+// --- Admin Token Management ---
+(function() {
+  const params = new URLSearchParams(window.location.search);
+  const urlToken = params.get('token');
+  if (urlToken) {
+    sessionStorage.setItem('admin_token', urlToken);
+    params.delete('token');
+    const clean = params.toString();
+    const newUrl = window.location.pathname + (clean ? '?' + clean : '');
+    window.history.replaceState({}, '', newUrl);
+  }
+})();
+
+function getAdminToken() {
+  return sessionStorage.getItem('admin_token') || '';
+}
+
+function adminHeaders(extra) {
+  const h = { 'Authorization': 'Bearer ' + getAdminToken() };
+  return Object.assign(h, extra || {});
+}
+
+function adminFetch(url, options) {
+  options = options || {};
+  options.headers = adminHeaders(options.headers);
+  return fetch(url, options);
+}
+
+function escapeHtml(str) {
+  if (!str) return '';
+  const d = document.createElement('div');
+  d.textContent = str;
+  return d.innerHTML;
+}
+
+let currentDictTab = 'link_ability_names';
+let correctionsCache = null;
+
+// --- Series dropdown population ---
+async function loadSeriesList() {
+  try {
+    const res = await adminFetch('/api/ocr-run/series-stats');
+    const data = await res.json();
+    if (!data.success) return;
+    const sel = document.getElementById('seriesFilter');
+    data.series.forEach(s => {
+      const opt = document.createElement('option');
+      opt.value = s.series;
+      opt.textContent = s.series;
+      sel.appendChild(opt);
+    });
+  } catch (e) {
+    console.error('Series list load error:', e);
+  }
+}
+
+// --- Master Check ---
+let masterCheckGroups = [];
+let masterCheckFilter = 'all';
+
+async function runMasterCheck() {
+  const btn = document.getElementById('masterCheckBtn');
+  const spinner = document.getElementById('masterCheckSpinner');
+  btn.disabled = true;
+  spinner.style.display = 'inline';
+
+  const series = document.getElementById('seriesFilter').value;
+  const params = new URLSearchParams();
+  if (series) params.set('series', series);
+
+  try {
+    const res = await adminFetch('/api/ocr-validate/master-check?' + params.toString());
+    const data = await res.json();
+    if (!data.success) {
+      alert(data.error || '照合に失敗しました');
+      return;
+    }
+
+    masterCheckGroups = data.groups;
+
+    // Stats
+    const okCount = data.total_cards - data.total_mismatches;
+    const okRate = data.total_cards > 0 ? ((okCount / data.total_cards) * 100).toFixed(1) : '100';
+
+    document.getElementById('statCards').textContent = data.total_cards.toLocaleString();
+    document.getElementById('statWarnings').textContent = data.total_mismatches.toLocaleString();
+    document.getElementById('statErrors').textContent = '0';
+
+    document.getElementById('mcTotal').textContent = data.total_cards.toLocaleString();
+    document.getElementById('mcMismatches').textContent = data.total_mismatches.toLocaleString();
+    document.getElementById('mcUnique').textContent = data.unique_mismatches.toLocaleString();
+    document.getElementById('mcOkRate').textContent = okRate + '%';
+
+    document.getElementById('mcMsBadge').textContent = data.ms_ability_mismatches;
+    document.getElementById('mcLinkBadge').textContent = data.link_ability_mismatches;
+
+    document.getElementById('masterCheckArea').style.display = '';
+
+    masterCheckFilter = 'all';
+    document.querySelectorAll('[data-mc-tab]').forEach(b => {
+      b.classList.toggle('active', b.dataset.mcTab === 'all');
+    });
+    renderMasterCheck(data.groups);
+  } catch (e) {
+    alert('エラー: ' + e.message);
+  } finally {
+    btn.disabled = false;
+    spinner.style.display = 'none';
+  }
+}
+
+function filterMasterCheck(category) {
+  masterCheckFilter = category;
+  document.querySelectorAll('[data-mc-tab]').forEach(b => {
+    b.classList.toggle('active', b.dataset.mcTab === category);
+  });
+  const filtered = category === 'all'
+    ? masterCheckGroups
+    : masterCheckGroups.filter(g => g.category === category);
+  renderMasterCheck(filtered);
+}
+
+function renderMasterCheck(groups) {
+  const container = document.getElementById('masterCheckResults');
+
+  if (groups.length === 0) {
+    container.innerHTML = '<div class="no-data" style="color:#66f2c5;font-size:1rem;padding:24px;">&#10003; 全てマスターと一致しています</div>';
+    return;
+  }
+
+  let html = `<div style="max-height:600px;overflow-y:auto;">`;
+
+  for (const g of groups) {
+    const catClass = g.category === 'ms_ability' ? 'ms' : 'link';
+    const catLabel = g.category === 'ms_ability' ? 'MSアビリティ' : 'リンク名';
+    const hasSuggest = g.closest_match !== null;
+    const itemClass = hasSuggest ? 'mc-item has-suggest' : 'mc-item';
+
+    const dictCategory = g.category === 'ms_ability' ? 'ms_ability_names' : 'link_ability_names';
+
+    html += `<div class="${itemClass}">`;
+    html += `<div class="mc-item-header">`;
+    html += `<span class="mc-cat ${catClass}">${catLabel}</span>`;
+    html += `<span class="mc-ocr-val">${escapeHtml(g.ocr_value)}</span>`;
+
+    if (hasSuggest) {
+      html += `<span class="mc-arrow">&rarr;</span>`;
+      html += `<span class="mc-suggest">${escapeHtml(g.closest_match)}</span>`;
+      html += `<span class="mc-dist">距離 ${g.distance}</span>`;
+    } else {
+      html += `<span class="mc-no-suggest">候補なし</span>`;
+    }
+
+    html += `<span class="mc-count"><strong>${g.count}</strong>件</span>`;
+    html += `</div>`;
+
+    // 該当カード一覧
+    html += `<div class="mc-cards">`;
+    const showCards = g.cards.slice(0, 10);
+    showCards.forEach(c => {
+      html += `<span class="mc-card-tag">${escapeHtml(c)}</span>`;
+    });
+    if (g.cards.length > 10) {
+      html += `<span class="mc-card-tag">...他${g.cards.length - 10}件</span>`;
+    }
+    html += `</div>`;
+
+    // アクション
+    if (hasSuggest) {
+      const fixData = JSON.stringify({category: dictCategory, key: g.ocr_value, value: g.closest_match});
+      html += `<div class="mc-item-actions">`;
+      html += `<button class="dict-btn" onclick='applyDirectFix(this, ${fixData.replace(/'/g, "&#39;")})' style="background:#4caf50;">修正を実行</button>`;
+      html += `</div>`;
+    }
+
+    html += `</div>`;
+  }
+
+  html += '</div>';
+  container.innerHTML = html;
+}
+
+async function applyDirectFix(btn, fixData) {
+  const s = typeof fixData === 'string' ? JSON.parse(fixData) : fixData;
+  if (!confirm(`"${s.key}" → "${s.value}" に修正しますか？\n（元ファイルは .back にバックアップされます）`)) return;
+
+  btn.disabled = true;
+  btn.textContent = '修正中...';
+
+  try {
+    const res = await adminFetch('/api/ocr-validate/direct-fix', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ fixes: [{ category: s.category, key: s.key, value: s.value }] }),
+    });
+    const data = await res.json();
+    if (!data.success) {
+      alert(data.error || '修正に失敗しました');
+      btn.disabled = false;
+      btn.textContent = '修正を実行';
+      return;
+    }
+    btn.textContent = `修正完了 (${data.files_modified}件)`;
+    btn.style.opacity = '0.5';
+    btn.style.background = '#888';
+  } catch (e) {
+    alert('エラー: ' + e.message);
+    btn.disabled = false;
+    btn.textContent = '修正を実行';
+  }
+}
+
+// --- Corrections Dictionary ---
+async function loadCorrections() {
+  try {
+    const res = await adminFetch('/api/ocr-validate/corrections');
+    const data = await res.json();
+    if (!data.success) return;
+    correctionsCache = data.corrections;
+    document.getElementById('statDict').textContent = data.entry_count.toLocaleString();
+    renderDictTab();
+  } catch (e) {
+    console.error('Corrections load error:', e);
+  }
+}
+
+function switchDictTab(tab) {
+  currentDictTab = tab;
+  document.querySelectorAll('#dictTabBar .tab-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.tab === tab);
+  });
+  renderDictTab();
+}
+
+function renderDictTab() {
+  const container = document.getElementById('dictContent');
+  if (!correctionsCache) {
+    container.innerHTML = '<div class="no-data">読み込み中...</div>';
+    return;
+  }
+  const entries = correctionsCache[currentDictTab] || {};
+  const keys = Object.keys(entries);
+
+  if (keys.length === 0) {
+    container.innerHTML = '<div class="no-data">エントリなし</div>';
+    return;
+  }
+
+  let html = '<table class="dict-table"><thead><tr><th>誤読</th><th>正解</th><th></th></tr></thead><tbody>';
+  for (const k of keys) {
+    html += `<tr>
+      <td>${escapeHtml(k)}</td>
+      <td>${escapeHtml(entries[k])}</td>
+      <td><button class="dict-btn remove" onclick="removeDictEntry('${currentDictTab}', ${JSON.stringify(k)})">削除</button></td>
+    </tr>`;
+  }
+  html += '</tbody></table>';
+  container.innerHTML = html;
+}
+
+async function removeDictEntry(category, key) {
+  try {
+    const res = await adminFetch('/api/ocr-validate/corrections', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ action: 'remove', category: category, key: key }),
+    });
+    const data = await res.json();
+    if (!data.success) {
+      alert(data.error || '削除に失敗しました');
+      return;
+    }
+    correctionsCache = data.corrections;
+    document.getElementById('statDict').textContent = data.entry_count.toLocaleString();
+    renderDictTab();
+  } catch (e) {
+    alert('エラー: ' + e.message);
+  }
+}
+
+async function addDictEntry() {
+  const category = document.getElementById('addCategory').value;
+  const key = document.getElementById('addKey').value.trim();
+  const value = document.getElementById('addValue').value.trim();
+  if (!key || !value) {
+    alert('誤読テキストと正しいテキストを入力してください');
+    return;
+  }
+  try {
+    const res = await adminFetch('/api/ocr-validate/corrections', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ action: 'add', category: category, key: key, value: value }),
+    });
+    const data = await res.json();
+    if (!data.success) {
+      alert(data.error || '追加に失敗しました');
+      return;
+    }
+    correctionsCache = data.corrections;
+    document.getElementById('statDict').textContent = data.entry_count.toLocaleString();
+    document.getElementById('addKey').value = '';
+    document.getElementById('addValue').value = '';
+    // Switch to the tab of added category
+    switchDictTab(category);
+  } catch (e) {
+    alert('エラー: ' + e.message);
+  }
+}
+
+// --- Master Data ---
+async function loadMasterDataStatus() {
+  try {
+    const res = await adminFetch('/api/ocr-validate/master-data/status');
+    const data = await res.json();
+    if (!data.success) return;
+    document.getElementById('mdMsCount').textContent = data.ms_abilities_count;
+    document.getElementById('mdLinkCount').textContent = data.link_names_count;
+    document.getElementById('mdAbilityCount').textContent = data.ability_data_count;
+    if (data.fetched_at) {
+      document.getElementById('mdFetchedAt').textContent = data.fetched_at.split('T')[0];
+    } else {
+      document.getElementById('mdFetchedAt').textContent = '未取得';
+    }
+    renderMasterDataLists(data);
+  } catch (e) {
+    console.error('Master data status error:', e);
+  }
+}
+
+function renderMasterDataLists(data) {
+  const area = document.getElementById('mdListArea');
+  if (!data.exists) {
+    area.innerHTML = '<div class="no-data">マスターデータ未取得。「公式データ取得/更新」を押してください。</div>';
+    return;
+  }
+
+  const msAbilities = data.ms_abilities || [];
+  const linkNames = data.link_names || [];
+
+  // リンク名を分類: SQ系, AB/EB系, 通常
+  const linkNormal = [];
+  const linkSQ = [];
+  const linkSpecial = [];
+  linkNames.forEach(n => {
+    if (n.startsWith('[SQ]')) linkSQ.push(n);
+    else if (n.startsWith('[AB]') || n.startsWith('[EB]')) linkSpecial.push(n);
+    else linkNormal.push(n);
+  });
+
+  let html = '';
+
+  // MSアビリティ一覧
+  html += `<details>`;
+  html += `<summary>MSアビリティ一覧 (${msAbilities.length}種)</summary>`;
+  html += `<div class="md-tag-wrap">`;
+  msAbilities.forEach(name => {
+    html += `<span class="md-tag ms">${escapeHtml(name)}</span>`;
+  });
+  html += `</div></details>`;
+
+  // リンクアビリティ名一覧
+  html += `<details>`;
+  html += `<summary>リンクアビリティ名一覧 (${linkNames.length}種)</summary>`;
+
+  if (linkNormal.length > 0) {
+    html += `<div style="font-size:0.75rem;color:#aaa;margin-top:6px;">作品・特性系 (${linkNormal.length})</div>`;
+    html += `<div class="md-tag-wrap">`;
+    linkNormal.forEach(name => {
+      html += `<span class="md-tag link">${escapeHtml(name)}</span>`;
+    });
+    html += `</div>`;
+  }
+  if (linkSQ.length > 0) {
+    html += `<div style="font-size:0.75rem;color:#aaa;margin-top:6px;">SQ系 (${linkSQ.length})</div>`;
+    html += `<div class="md-tag-wrap">`;
+    linkSQ.forEach(name => {
+      html += `<span class="md-tag sq">${escapeHtml(name)}</span>`;
+    });
+    html += `</div>`;
+  }
+  if (linkSpecial.length > 0) {
+    html += `<div style="font-size:0.75rem;color:#aaa;margin-top:6px;">AB/EB系 (${linkSpecial.length})</div>`;
+    html += `<div class="md-tag-wrap">`;
+    linkSpecial.forEach(name => {
+      html += `<span class="md-tag sq">${escapeHtml(name)}</span>`;
+    });
+    html += `</div>`;
+  }
+
+  html += `</details>`;
+
+  area.innerHTML = html;
+}
+
+async function fetchMasterData() {
+  const btn = document.getElementById('masterFetchBtn');
+  const spinner = document.getElementById('masterFetchSpinner');
+  const msg = document.getElementById('masterFetchMsg');
+  btn.disabled = true;
+  spinner.style.display = 'inline';
+  msg.textContent = '';
+
+  try {
+    const res = await adminFetch('/api/ocr-validate/master-data/fetch', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: '{}',
+    });
+    const data = await res.json();
+    if (!data.success) {
+      msg.textContent = data.error || '取得に失敗しました';
+      msg.style.color = '#ff6b6b';
+      return;
+    }
+    document.getElementById('mdMsCount').textContent = data.ms_abilities_count;
+    document.getElementById('mdLinkCount').textContent = data.link_names_count;
+    document.getElementById('mdAbilityCount').textContent = data.ability_data_after;
+    if (data.fetched_at) {
+      document.getElementById('mdFetchedAt').textContent = data.fetched_at.split('T')[0];
+    }
+    const diff = data.ability_data_after - data.ability_data_before;
+    msg.textContent = `更新完了 (ABILITY_DATA: ${diff > 0 ? '+' + diff : diff}件)`;
+    msg.style.color = '#66f2c5';
+  } catch (e) {
+    msg.textContent = 'エラー: ' + e.message;
+    msg.style.color = '#ff6b6b';
+  } finally {
+    btn.disabled = false;
+    spinner.style.display = 'none';
+  }
+}
+
+// --- Fix Preview & Apply ---
+let fixPreviewItems = [];
+
+function updateFixSummary() {
+  const summary = document.getElementById('fixSummary');
+  let accept = 0, skip = 0, edit = 0;
+  fixPreviewItems.forEach((item, i) => {
+    const sel = document.querySelector(`#fixAction_${i}`);
+    if (!sel) return;
+    const action = sel.value;
+    if (action === 'accept') accept++;
+    else if (action === 'skip') skip++;
+    else if (action === 'edit') edit++;
+  });
+  summary.innerHTML = `<span>承認: <span class="count accept">${accept}件</span></span>` +
+    `<span>スキップ: <span class="count skip">${skip}件</span></span>` +
+    `<span>手動: <span class="count edit">${edit}件</span></span>` +
+    `<span style="color:#aaa;">合計: ${fixPreviewItems.length}件</span>`;
+}
+
+function onFixActionChange(idx) {
+  const sel = document.getElementById(`fixAction_${idx}`);
+  const row = document.getElementById(`fixRow_${idx}`);
+  const newValCell = document.getElementById(`fixNewVal_${idx}`);
+  const item = fixPreviewItems[idx];
+
+  if (sel.value === 'skip') {
+    row.classList.add('skipped');
+    newValCell.innerHTML = `<span class="cr-new">${escapeHtml(item.new_value)}</span>`;
+  } else if (sel.value === 'edit') {
+    row.classList.remove('skipped');
+    newValCell.innerHTML = `<input type="text" class="cr-edit-input" id="fixEditVal_${idx}" value="${escapeHtml(item.new_value)}">`;
+  } else {
+    row.classList.remove('skipped');
+    newValCell.innerHTML = `<span class="cr-new">${escapeHtml(item.new_value)}</span>`;
+  }
+  updateFixSummary();
+}
+
+function bulkAction(action) {
+  fixPreviewItems.forEach((item, i) => {
+    const sel = document.getElementById(`fixAction_${i}`);
+    if (sel) {
+      sel.value = action;
+      onFixActionChange(i);
+    }
+  });
+}
+
+async function runFixPreview() {
+  const btn = document.getElementById('fixPreviewBtn');
+  const spinner = document.getElementById('fixPreviewSpinner');
+  btn.disabled = true;
+  spinner.style.display = 'inline';
+
+  const series = document.getElementById('seriesFilter').value;
+
+  try {
+    const res = await adminFetch('/api/ocr-validate/fix/preview', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ series: series || '' }),
+    });
+    const data = await res.json();
+    if (!data.success) {
+      alert(data.error || 'プレビュー生成に失敗しました');
+      return;
+    }
+
+    fixPreviewItems = data.items;
+
+    if (data.items.length === 0) {
+      document.getElementById('fixReviewArea').style.display = 'none';
+      alert(data.message || '補正対象なし');
+      return;
+    }
+
+    renderFixReview(data.items);
+    document.getElementById('fixReviewArea').style.display = '';
+    document.getElementById('fixApplyResults').innerHTML = '';
+  } catch (e) {
+    alert('エラー: ' + e.message);
+  } finally {
+    btn.disabled = false;
+    spinner.style.display = 'none';
+  }
+}
+
+function renderFixReview(items) {
+  const tbody = document.getElementById('fixReviewBody');
+  let html = '';
+
+  items.forEach((item, i) => {
+    const sourceClass = item.source === 'dictionary' ? 'dictionary' : 'char_normalize';
+    const sourceLabel = item.source === 'dictionary' ? '辞書' : '文字正規化';
+    // Extract short filename (e.g. BP04-001 from BP04-001_basic.json)
+    const shortFile = item.file.replace(/_basic\.json$/, '');
+
+    html += `<tr id="fixRow_${i}">
+      <td>
+        <select class="cr-action-select" id="fixAction_${i}" onchange="onFixActionChange(${i})">
+          <option value="accept">&#10003; 承認</option>
+          <option value="skip">&#10007; スキップ</option>
+          <option value="edit">&#9998; 手動</option>
+        </select>
+      </td>
+      <td>${escapeHtml(shortFile)}</td>
+      <td style="font-family:monospace;font-size:0.78rem;">${escapeHtml(item.field)}</td>
+      <td class="cr-old">${escapeHtml(item.old_value)}</td>
+      <td style="color:#66f2c5;font-weight:bold;">&rarr;</td>
+      <td id="fixNewVal_${i}"><span class="cr-new">${escapeHtml(item.new_value)}</span></td>
+      <td><span class="cr-source ${sourceClass}">${sourceLabel}</span></td>
+    </tr>`;
+  });
+
+  tbody.innerHTML = html;
+  updateFixSummary();
+}
+
+async function runFixApply() {
+  if (fixPreviewItems.length === 0) {
+    alert('先に修正プレビューを実行してください');
+    return;
+  }
+
+  // Collect user decisions
+  const userItems = [];
+  let acceptCount = 0;
+  fixPreviewItems.forEach((item, i) => {
+    const sel = document.getElementById(`fixAction_${i}`);
+    if (!sel) return;
+    const action = sel.value;
+    const entry = { id: item.id, action: action };
+    if (action === 'edit') {
+      const input = document.getElementById(`fixEditVal_${i}`);
+      entry.new_value = input ? input.value : item.new_value;
+    }
+    if (action === 'accept') acceptCount++;
+    userItems.push(entry);
+  });
+
+  const applyCount = userItems.filter(i => i.action === 'accept' || i.action === 'edit').length;
+  if (applyCount === 0) {
+    alert('承認または手動修正のアイテムがありません');
+    return;
+  }
+
+  if (!confirm(`${applyCount}件の修正をファイルに適用します。よろしいですか？`)) return;
+
+  const btn = document.getElementById('fixApplyBtn');
+  const spinner = document.getElementById('fixApplySpinner');
+  btn.disabled = true;
+  spinner.style.display = 'inline';
+
+  const series = document.getElementById('seriesFilter').value;
+
+  try {
+    const res = await adminFetch('/api/ocr-validate/fix/apply', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ series: series || '', items: userItems }),
+    });
+    const data = await res.json();
+    if (!data.success) {
+      alert(data.error || '適用に失敗しました');
+      return;
+    }
+
+    let html = `<div style="font-size:0.9rem;color:#66f2c5;font-weight:bold;">適用完了</div>`;
+    html += `<div style="font-size:0.85rem;margin-top:4px;">適用: ${data.applied}件 / スキップ: ${data.skipped}件 / 手動: ${data.edited}件 / ファイル: ${data.files_modified}件</div>`;
+
+    if (data.errors && data.errors.length > 0) {
+      html += `<div style="margin-top:8px;color:#ff6b6b;font-size:0.8rem;">`;
+      data.errors.forEach(err => { html += `<div>${escapeHtml(err)}</div>`; });
+      html += `</div>`;
+    }
+
+    html += `<div style="margin-top:8px;font-size:0.8rem;color:#ffc107;">_basic.json を修正しました。_sp.json / _sq_analysis.json も更新するには OCR 再実行（構造化のみ）を行ってください。</div>`;
+
+    document.getElementById('fixApplyResults').innerHTML = html;
+  } catch (e) {
+    alert('エラー: ' + e.message);
+  } finally {
+    btn.disabled = false;
+    spinner.style.display = 'none';
+  }
+}
+
+// --- Fix (Legacy Bulk) ---
+async function runFix(dryRun) {
+  if (!dryRun) {
+    if (!confirm('補正辞書の内容でOCRデータファイルを修正します。よろしいですか？')) return;
+  }
+
+  const dryRunBtn = document.getElementById('dryRunBtn');
+  const fixBtn = document.getElementById('fixBtn');
+  const spinner = document.getElementById('fixSpinner');
+  dryRunBtn.disabled = true;
+  fixBtn.disabled = true;
+  spinner.style.display = 'inline';
+
+  const series = document.getElementById('seriesFilter').value;
+
+  try {
+    const res = await adminFetch('/api/ocr-validate/fix', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ dry_run: dryRun, series: series || '' }),
+    });
+    const data = await res.json();
+    if (!data.success) {
+      alert(data.error || '修正に失敗しました');
+      return;
+    }
+
+    renderFixResults(data, dryRun);
+  } catch (e) {
+    alert('エラー: ' + e.message);
+  } finally {
+    dryRunBtn.disabled = false;
+    fixBtn.disabled = false;
+    spinner.style.display = 'none';
+  }
+}
+
+function renderFixResults(data, dryRun) {
+  const container = document.getElementById('fixResults');
+  const mode = dryRun ? 'ドライラン' : '修正適用';
+
+  if (data.changes.length === 0) {
+    container.innerHTML = `<div class="no-data">${escapeHtml(data.message || '補正対象なし')}</div>`;
+    return;
+  }
+
+  let html = `<div style="margin-bottom:12px;font-size:0.9rem;color:#66f2c5;font-weight:bold;">${escapeHtml(mode)}: ${data.total_files}ファイル / ${data.total_changes}件の変更</div>`;
+
+  for (const item of data.changes) {
+    html += `<div class="change-file">${escapeHtml(item.file)}</div>`;
+    for (const change of item.changes) {
+      html += `<div class="change-item">${escapeHtml(change)}</div>`;
+    }
+  }
+
+  if (!dryRun) {
+    html += `<div style="margin-top:12px;font-size:0.8rem;color:#ffc107;">_basic.json を修正しました。_sp.json / _sq_analysis.json も更新するには OCR 再実行（構造化のみ）を行ってください。</div>`;
+  }
+
+  container.innerHTML = html;
+}
+
+// --- Init ---
+loadSeriesList();
+loadCorrections();
+loadMasterDataStatus();
+</script>
+</body>
+</html>

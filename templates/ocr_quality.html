@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OCR品質チェック - Arsenal Base</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: #1a1a1a;
+  color: #fff;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  min-height: 100vh;
+}
+a { color: #66f2c5; text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.header {
+  background: #66f2c5;
+  color: #1a1a1a;
+  padding: 12px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+.header a { color: #1a1a1a; }
+.header-links { display: flex; gap: 8px; }
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Summary Bar */
+.summary-bar {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+.summary-card {
+  background: #2a2a2a;
+  border-radius: 10px;
+  padding: 14px 20px;
+  text-align: center;
+  border: 1px solid #444;
+  min-width: 120px;
+  flex: 1;
+}
+.summary-card .val {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #66f2c5;
+}
+.summary-card .lbl {
+  font-size: 0.8rem;
+  color: #aaa;
+  margin-top: 2px;
+}
+.summary-card.critical .val { color: #ff5252; }
+.summary-card.high .val { color: #ff9800; }
+.summary-card.medium .val { color: #ffe082; }
+.summary-card.low .val { color: #888; }
+
+/* Filters */
+.filter-section {
+  background: #2a2a2a;
+  border-radius: 10px;
+  padding: 16px;
+  margin-bottom: 20px;
+  border: 1px solid #444;
+}
+.filter-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.filter-row label {
+  color: #66f2c5;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.severity-toggles {
+  display: flex;
+  gap: 6px;
+}
+.sev-btn {
+  padding: 6px 14px;
+  border: 2px solid;
+  border-radius: 6px;
+  background: transparent;
+  font-size: 0.85rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.sev-btn.active { color: #1a1a1a; }
+.sev-btn[data-sev="CRITICAL"] { border-color: #ff5252; color: #ff5252; }
+.sev-btn[data-sev="CRITICAL"].active { background: #ff5252; color: #fff; }
+.sev-btn[data-sev="HIGH"] { border-color: #ff9800; color: #ff9800; }
+.sev-btn[data-sev="HIGH"].active { background: #ff9800; color: #fff; }
+.sev-btn[data-sev="MEDIUM"] { border-color: #ffe082; color: #ffe082; }
+.sev-btn[data-sev="MEDIUM"].active { background: #ffe082; color: #1a1a1a; }
+.sev-btn[data-sev="LOW"] { border-color: #888; color: #888; }
+.sev-btn[data-sev="LOW"].active { background: #888; color: #fff; }
+
+select, input[type="text"] {
+  background: #333;
+  color: #fff;
+  border: 1px solid #555;
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 0.85rem;
+}
+select:focus, input:focus { outline: none; border-color: #66f2c5; }
+
+.bulk-actions {
+  margin-left: auto;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+/* Action Buttons */
+.action-btn {
+  background: #66f2c5;
+  color: #1a1a1a;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.action-btn:hover { opacity: 0.85; }
+.action-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+.action-btn.danger { background: #ff5252; color: #fff; }
+.action-btn.secondary { background: #555; color: #fff; }
+.action-btn.small { padding: 4px 10px; font-size: 0.78rem; }
+
+/* Card List */
+.card-list { display: flex; flex-direction: column; gap: 12px; }
+
+.card-row {
+  background: #222;
+  border-radius: 10px;
+  border: 1px solid #333;
+  padding: 14px;
+  transition: border-color 0.15s;
+}
+.card-row:hover { border-color: #66f2c5; }
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.card-images {
+  display: flex;
+  gap: 6px;
+  flex-shrink: 0;
+}
+.card-images img {
+  width: 50px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 4px;
+  border: 1px solid #444;
+  cursor: pointer;
+}
+.card-info {
+  flex: 1;
+  min-width: 200px;
+}
+.card-number {
+  font-weight: bold;
+  color: #66f2c5;
+  font-size: 0.95rem;
+}
+.card-name {
+  font-size: 0.9rem;
+  color: #ddd;
+}
+.card-meta {
+  font-size: 0.75rem;
+  color: #888;
+  margin-top: 2px;
+}
+.type-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  background: #444;
+  color: #fff;
+  margin-left: 8px;
+}
+.type-badge.ms { background: #2196f3; }
+.type-badge.pl { background: #9c27b0; }
+
+.card-select {
+  width: 18px;
+  height: 18px;
+  accent-color: #66f2c5;
+  cursor: pointer;
+}
+
+/* Issues */
+.issues-list {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.issue-item {
+  font-size: 0.82rem;
+  padding: 4px 8px;
+  border-radius: 4px;
+  background: #1a1a1a;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.issue-item.CRITICAL { border-left: 3px solid #ff5252; color: #ff5252; }
+.issue-item.HIGH { border-left: 3px solid #ff9800; color: #ff9800; }
+.issue-item.MEDIUM { border-left: 3px solid #ffe082; color: #ffe082; }
+.issue-item.LOW { border-left: 3px solid #888; color: #aaa; }
+
+.issue-text { flex: 1; }
+.sev-icon { margin-right: 4px; }
+
+.fix-btn {
+  background: #4caf50;
+  color: #fff;
+  border: none;
+  padding: 2px 10px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.fix-btn:hover { background: #66bb6a; }
+.fix-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+.fix-btn.applied { background: #888; }
+
+/* OCR Data Expandable */
+.ocr-toggle {
+  margin-top: 8px;
+  font-size: 0.8rem;
+  color: #66f2c5;
+  cursor: pointer;
+  user-select: none;
+}
+.ocr-toggle:hover { text-decoration: underline; }
+.ocr-data-block {
+  display: none;
+  margin-top: 8px;
+  background: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 6px;
+  padding: 10px;
+  font-family: 'Consolas', 'Monaco', monospace;
+  font-size: 0.78rem;
+  color: #ccc;
+  max-height: 400px;
+  overflow: auto;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+.ocr-data-block.open { display: block; }
+
+/* Card Action Buttons */
+.card-actions {
+  margin-top: 10px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* Rule Stats Table */
+.rule-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+.rule-table th {
+  background: #333;
+  color: #66f2c5;
+  padding: 6px 10px;
+  text-align: left;
+  font-size: 0.8rem;
+}
+.rule-table td {
+  padding: 5px 10px;
+  border-bottom: 1px solid #333;
+  font-size: 0.82rem;
+}
+.rule-table tr:hover { background: #2a2a2a; }
+.rule-table .rule-count { font-weight: bold; }
+
+/* Modal */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.8);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+}
+.modal-overlay.open { display: flex; }
+.modal {
+  background: #222;
+  border-radius: 12px;
+  padding: 24px;
+  max-width: 900px;
+  width: 95%;
+  max-height: 90vh;
+  overflow-y: auto;
+  border: 1px solid #444;
+  position: relative;
+}
+.modal-close {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #aaa;
+  background: none;
+  border: none;
+}
+.modal-close:hover { color: #fff; }
+.modal-title {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #66f2c5;
+  margin-bottom: 16px;
+}
+.modal-images {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+  justify-content: center;
+}
+.modal-images img {
+  max-width: 300px;
+  max-height: 420px;
+  border-radius: 8px;
+  border: 1px solid #555;
+}
+.json-editor {
+  width: 100%;
+  min-height: 300px;
+  background: #1a1a1a;
+  color: #ccc;
+  border: 1px solid #444;
+  border-radius: 6px;
+  padding: 10px;
+  font-family: 'Consolas', 'Monaco', monospace;
+  font-size: 0.82rem;
+  resize: vertical;
+}
+.json-editor:focus { outline: none; border-color: #66f2c5; }
+.json-error { color: #ff5252; font-size: 0.8rem; margin-top: 4px; }
+
+/* Loading */
+.loading {
+  text-align: center;
+  padding: 60px 20px;
+  color: #888;
+  font-size: 1.1rem;
+}
+.loading .spinner {
+  display: inline-block;
+  width: 30px; height: 30px;
+  border: 3px solid #444;
+  border-top-color: #66f2c5;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin-bottom: 12px;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Result count */
+.result-count {
+  font-size: 0.85rem;
+  color: #888;
+  margin-bottom: 12px;
+}
+
+/* Toast */
+.toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: #333;
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  z-index: 2000;
+  transition: opacity 0.3s;
+  border-left: 4px solid #66f2c5;
+}
+.toast.error { border-left-color: #ff5252; }
+.toast.hidden { opacity: 0; pointer-events: none; }
+
+/* Collapsible rule section */
+.rule-section {
+  background: #2a2a2a;
+  border-radius: 10px;
+  padding: 16px;
+  margin-bottom: 20px;
+  border: 1px solid #444;
+}
+.rule-section-title {
+  font-size: 0.95rem;
+  font-weight: bold;
+  color: #66f2c5;
+  cursor: pointer;
+  user-select: none;
+}
+.rule-section-title:hover { text-decoration: underline; }
+.rule-section-body { margin-top: 12px; }
+.rule-section-body.collapsed { display: none; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <span>OCR品質チェック</span>
+  <div class="header-links">
+    <a href="/">&larr; トップ</a>
+    <a href="/admin">管理画面</a>
+    <a href="/ocr-run">OCR実行</a>
+    <a href="/ocr-validate">OCR検証</a>
+  </div>
+</div>
+
+<div class="container">
+  <!-- Loading -->
+  <div id="loading" class="loading">
+    <div class="spinner"></div><br>
+    品質チェックを実行中...
+  </div>
+
+  <!-- Main Content (hidden until loaded) -->
+  <div id="mainContent" style="display:none;">
+    <!-- Summary Bar -->
+    <div class="summary-bar" id="summaryBar"></div>
+
+    <!-- Rule Stats (collapsible) -->
+    <div class="rule-section">
+      <div class="rule-section-title" onclick="toggleRuleSection()">
+        &#9654; ルール別集計
+      </div>
+      <div class="rule-section-body collapsed" id="ruleBody">
+        <table class="rule-table" id="ruleTable">
+          <thead>
+            <tr><th>#</th><th>ルール</th><th>深刻度</th><th>件数</th></tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Filters -->
+    <div class="filter-section">
+      <div class="filter-row">
+        <div class="filter-group">
+          <label>深刻度</label>
+          <div class="severity-toggles" id="sevToggles">
+            <button class="sev-btn active" data-sev="CRITICAL">CRITICAL</button>
+            <button class="sev-btn active" data-sev="HIGH">HIGH</button>
+            <button class="sev-btn active" data-sev="MEDIUM">MEDIUM</button>
+            <button class="sev-btn active" data-sev="LOW">LOW</button>
+          </div>
+        </div>
+        <div class="filter-group">
+          <label>シリーズ</label>
+          <select id="seriesFilter"><option value="">全て</option></select>
+        </div>
+        <div class="filter-group">
+          <label>ルール</label>
+          <select id="ruleFilter"><option value="">全て</option></select>
+        </div>
+        <div class="filter-group">
+          <label>検索</label>
+          <input type="text" id="searchInput" placeholder="番号 / 名前">
+        </div>
+        <div class="bulk-actions">
+          <label style="font-size:0.8rem;color:#aaa;cursor:pointer;">
+            <input type="checkbox" id="selectAll" style="accent-color:#66f2c5;"> 全選択
+          </label>
+          <button class="action-btn small" id="bulkFix" onclick="applyAllFixes()" style="background:#4caf50;color:#fff;">修正可能を全て適用</button>
+          <button class="action-btn danger small" id="bulkReocr" disabled>選択を再OCR</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Result Count -->
+    <div class="result-count" id="resultCount"></div>
+
+    <!-- Card List -->
+    <div class="card-list" id="cardList"></div>
+  </div>
+</div>
+
+<!-- Detail Modal -->
+<div class="modal-overlay" id="detailModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">&times;</button>
+    <div class="modal-title" id="modalTitle"></div>
+    <div class="modal-images" id="modalImages"></div>
+    <div style="margin-bottom:12px;">
+      <label style="color:#66f2c5;font-size:0.85rem;font-weight:bold;">OCRデータ (JSON編集)</label>
+      <div class="json-error" id="jsonError"></div>
+    </div>
+    <textarea class="json-editor" id="jsonEditor"></textarea>
+    <div style="margin-top:12px;display:flex;gap:8px;">
+      <button class="action-btn" id="saveJsonBtn" onclick="saveJson()">保存</button>
+      <button class="action-btn secondary" onclick="closeModal()">キャンセル</button>
+    </div>
+  </div>
+</div>
+
+<!-- Toast -->
+<div class="toast hidden" id="toast"></div>
+
+<script>
+// --- Auth helpers ---
+function getAdminToken() {
+  return sessionStorage.getItem('admin_token') || '';
+}
+function adminHeaders(extra) {
+  const h = { 'Authorization': 'Bearer ' + getAdminToken() };
+  return Object.assign(h, extra || {});
+}
+function adminFetch(url, options) {
+  options = options || {};
+  options.headers = adminHeaders(options.headers);
+  return fetch(url, options);
+}
+
+// --- State ---
+let reportData = null;
+let filteredCards = [];
+const activeSeverities = new Set(['CRITICAL', 'HIGH', 'MEDIUM', 'LOW']);
+let currentModalNumber = null;
+
+// --- Escape ---
+function esc(s) {
+  if (!s) return '';
+  const d = document.createElement('div');
+  d.textContent = s;
+  return d.innerHTML;
+}
+
+// --- Severity icon ---
+function sevIcon(sev) {
+  const map = {
+    'CRITICAL': '<span class="sev-icon" style="color:#ff5252;">&#9679;</span>',
+    'HIGH': '<span class="sev-icon" style="color:#ff9800;">&#9679;</span>',
+    'MEDIUM': '<span class="sev-icon" style="color:#ffe082;">&#9679;</span>',
+    'LOW': '<span class="sev-icon" style="color:#888;">&#9679;</span>',
+  };
+  return map[sev] || '';
+}
+
+// --- Toast ---
+function showToast(msg, isError) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = 'toast' + (isError ? ' error' : '');
+  setTimeout(() => { t.classList.add('hidden'); }, 3000);
+}
+
+// --- Load Report ---
+async function loadReport() {
+  try {
+    const res = await adminFetch('/api/ocr-quality/report');
+    reportData = await res.json();
+    if (!reportData.success) {
+      document.getElementById('loading').innerHTML = '<span style="color:#ff5252;">エラー: ' + esc(reportData.error || '不明') + '</span>';
+      return;
+    }
+    document.getElementById('loading').style.display = 'none';
+    document.getElementById('mainContent').style.display = 'block';
+    renderSummary();
+    renderRuleTable();
+    populateFilters();
+    applyFilters();
+  } catch (e) {
+    document.getElementById('loading').innerHTML = '<span style="color:#ff5252;">通信エラー</span>';
+  }
+}
+
+// --- Render Summary ---
+function renderSummary() {
+  const s = reportData.summary;
+  const bar = document.getElementById('summaryBar');
+  bar.innerHTML = `
+    <div class="summary-card">
+      <div class="val">${s.total_checked}</div>
+      <div class="lbl">チェック済み</div>
+    </div>
+    <div class="summary-card critical">
+      <div class="val">${s.by_severity.CRITICAL || 0}</div>
+      <div class="lbl">CRITICAL</div>
+    </div>
+    <div class="summary-card high">
+      <div class="val">${s.by_severity.HIGH || 0}</div>
+      <div class="lbl">HIGH</div>
+    </div>
+    <div class="summary-card medium">
+      <div class="val">${s.by_severity.MEDIUM || 0}</div>
+      <div class="lbl">MEDIUM</div>
+    </div>
+    <div class="summary-card low">
+      <div class="val">${s.by_severity.LOW || 0}</div>
+      <div class="lbl">LOW</div>
+    </div>
+    <div class="summary-card">
+      <div class="val">${s.problem_count}</div>
+      <div class="lbl">問題カード</div>
+    </div>
+  `;
+}
+
+// --- Render Rule Table ---
+function renderRuleTable() {
+  const tbody = document.querySelector('#ruleTable tbody');
+  tbody.innerHTML = '';
+  for (const r of reportData.summary.by_rule) {
+    if (r.count === 0) continue;
+    const sevColor = {'CRITICAL':'#ff5252','HIGH':'#ff9800','MEDIUM':'#ffe082','LOW':'#888'}[r.severity] || '#fff';
+    tbody.innerHTML += `<tr>
+      <td>${r.id}</td>
+      <td>${esc(r.name)}</td>
+      <td style="color:${sevColor};">${r.severity}</td>
+      <td class="rule-count">${r.count}</td>
+    </tr>`;
+  }
+}
+
+function toggleRuleSection() {
+  const body = document.getElementById('ruleBody');
+  const title = body.previousElementSibling;
+  body.classList.toggle('collapsed');
+  title.innerHTML = (body.classList.contains('collapsed') ? '&#9654;' : '&#9660;') + ' ルール別集計';
+}
+
+// --- Populate Filters ---
+function populateFilters() {
+  const series = new Set();
+  for (const c of reportData.cards) {
+    if (c.series) series.add(c.series);
+  }
+  const sel = document.getElementById('seriesFilter');
+  for (const s of [...series].sort()) {
+    sel.innerHTML += `<option value="${esc(s)}">${esc(s)}</option>`;
+  }
+  const ruleSel = document.getElementById('ruleFilter');
+  for (const r of reportData.summary.by_rule) {
+    if (r.count > 0) {
+      ruleSel.innerHTML += `<option value="${r.id}">${r.id}: ${esc(r.name)} (${r.count})</option>`;
+    }
+  }
+}
+
+// --- Severity Toggles ---
+document.getElementById('sevToggles').addEventListener('click', e => {
+  if (e.target.classList.contains('sev-btn')) {
+    e.target.classList.toggle('active');
+    const sev = e.target.dataset.sev;
+    if (activeSeverities.has(sev)) activeSeverities.delete(sev);
+    else activeSeverities.add(sev);
+    applyFilters();
+  }
+});
+
+// --- Filter events ---
+document.getElementById('seriesFilter').addEventListener('change', applyFilters);
+document.getElementById('ruleFilter').addEventListener('change', applyFilters);
+let searchTimer = null;
+document.getElementById('searchInput').addEventListener('input', () => {
+  clearTimeout(searchTimer);
+  searchTimer = setTimeout(applyFilters, 300);
+});
+
+// --- Apply Filters ---
+function applyFilters() {
+  if (!reportData) return;
+  const seriesVal = document.getElementById('seriesFilter').value;
+  const ruleVal = document.getElementById('ruleFilter').value;
+  const search = document.getElementById('searchInput').value.trim().toLowerCase();
+
+  filteredCards = reportData.cards.filter(card => {
+    // Severity: card must have at least one issue matching active severities
+    const hasMatchingSev = card.issues.some(i => activeSeverities.has(i.severity));
+    if (!hasMatchingSev) return false;
+
+    // Series
+    if (seriesVal && card.series !== seriesVal) return false;
+
+    // Rule
+    if (ruleVal && !card.issues.some(i => String(i.rule_id) === ruleVal)) return false;
+
+    // Search
+    if (search) {
+      const haystack = (card.number + ' ' + card.name).toLowerCase();
+      if (!haystack.includes(search)) return false;
+    }
+
+    return true;
+  });
+
+  document.getElementById('resultCount').textContent = `${filteredCards.length} 件の問題カード`;
+  renderCardList();
+  updateBulkState();
+}
+
+// --- Render Card List ---
+function renderCardList() {
+  const list = document.getElementById('cardList');
+  list.innerHTML = '';
+
+  for (const card of filteredCards) {
+    const typeCls = card.type === 'MS' ? 'ms' : card.type === 'PL' ? 'pl' : '';
+    // Filter issues by active severities
+    const visibleIssues = card.issues.filter(i => activeSeverities.has(i.severity));
+
+    const row = document.createElement('div');
+    row.className = 'card-row';
+    row.dataset.number = card.number;
+
+    row.innerHTML = `
+      <div class="card-header">
+        <input type="checkbox" class="card-select" data-number="${esc(card.number)}">
+        <div class="card-images">
+          ${card.front_url ? `<img src="${esc(card.front_url)}" alt="表面" loading="lazy" onclick="openModal('${esc(card.number)}')">` : ''}
+          ${card.back_url ? `<img src="${esc(card.back_url)}" alt="裏面" loading="lazy" onclick="openModal('${esc(card.number)}')">` : ''}
+        </div>
+        <div class="card-info">
+          <span class="card-number">${esc(card.number)}</span>
+          <span class="card-name">${esc(card.name)}</span>
+          <span class="type-badge ${typeCls}">${esc(card.type || '?')}</span>
+          <div class="card-meta">シリーズ: ${esc(card.series)}</div>
+        </div>
+      </div>
+      <div class="issues-list">
+        ${visibleIssues.map((i, idx) => {
+          const fixData = i.fix ? `data-fix='${JSON.stringify(i.fix).replace(/'/g, "&#39;")}'` : '';
+          const fixBtn = i.fix
+            ? `<button class="fix-btn" ${fixData} data-number="${esc(card.number)}" onclick="applySingleFix(this)" title="${esc(i.fix.field)}: ${esc(String(i.fix.current))} → ${esc(String(i.fix.correct))}">修正: ${esc(String(i.fix.correct))}</button>`
+            : '';
+          return `<div class="issue-item ${i.severity}"><span class="issue-text">${sevIcon(i.severity)} <strong>${i.severity}</strong>: ${esc(i.message)}</span>${fixBtn}</div>`;
+        }).join('')}
+      </div>
+      <div class="ocr-toggle" onclick="toggleOcr(this)">&#9654; OCRデータを表示</div>
+      <div class="ocr-data-block">${esc(JSON.stringify(card.ocr_data, null, 2))}</div>
+      <div class="card-actions">
+        <button class="action-btn small" onclick="reocr('${esc(card.number)}', this)">再OCR</button>
+        <button class="action-btn secondary small" onclick="openModal('${esc(card.number)}')">JSON編集</button>
+      </div>
+    `;
+    list.appendChild(row);
+  }
+}
+
+// --- Toggle OCR Data ---
+function toggleOcr(el) {
+  const block = el.nextElementSibling;
+  block.classList.toggle('open');
+  el.innerHTML = (block.classList.contains('open') ? '&#9660;' : '&#9654;') + ' OCRデータを' + (block.classList.contains('open') ? '非表示' : '表示');
+}
+
+// --- Re-OCR ---
+async function reocr(number, btn) {
+  if (btn) btn.disabled = true;
+  showToast(`${number} を再OCR中...`);
+  try {
+    const res = await adminFetch('/api/ocr-quality/reocr', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ numbers: [number] }),
+    });
+    const data = await res.json();
+    if (data.success && data.success_count > 0) {
+      showToast(`${number} の再OCR完了`);
+    } else {
+      showToast(`${number} の再OCR失敗: ${(data.results && data.results[0] && data.results[0].error) || '不明'}`, true);
+    }
+  } catch (e) {
+    showToast('通信エラー', true);
+  }
+  if (btn) btn.disabled = false;
+}
+
+// --- Bulk Re-OCR ---
+document.getElementById('bulkReocr').addEventListener('click', async () => {
+  const checked = getCheckedNumbers();
+  if (checked.length === 0) return;
+  if (!confirm(`${checked.length}件のカードを再OCRしますか？\n（課金が発生する可能性があります）`)) return;
+
+  const btn = document.getElementById('bulkReocr');
+  btn.disabled = true;
+  btn.textContent = '再OCR実行中...';
+
+  try {
+    const res = await adminFetch('/api/ocr-quality/reocr', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ numbers: checked }),
+    });
+    const data = await res.json();
+    if (data.success) {
+      showToast(`再OCR完了: 成功${data.success_count}件, 失敗${data.failed_count}件`);
+    } else {
+      showToast('再OCRエラー: ' + (data.error || '不明'), true);
+    }
+  } catch (e) {
+    showToast('通信エラー', true);
+  }
+
+  btn.disabled = false;
+  btn.textContent = '選択を再OCR';
+});
+
+// --- Select All ---
+document.getElementById('selectAll').addEventListener('change', function() {
+  const checks = document.querySelectorAll('.card-select');
+  checks.forEach(cb => { cb.checked = this.checked; });
+  updateBulkState();
+});
+
+document.getElementById('cardList').addEventListener('change', e => {
+  if (e.target.classList.contains('card-select')) updateBulkState();
+});
+
+function getCheckedNumbers() {
+  return [...document.querySelectorAll('.card-select:checked')].map(cb => cb.dataset.number);
+}
+
+function updateBulkState() {
+  const n = getCheckedNumbers().length;
+  const btn = document.getElementById('bulkReocr');
+  btn.disabled = n === 0;
+  btn.textContent = n > 0 ? `選択を再OCR (${n}件)` : '選択を再OCR';
+}
+
+// --- Modal ---
+function openModal(number) {
+  currentModalNumber = number;
+  const card = reportData.cards.find(c => c.number === number);
+  if (!card) return;
+
+  document.getElementById('modalTitle').textContent = `${card.number} ${card.name}`;
+  const imgDiv = document.getElementById('modalImages');
+  imgDiv.innerHTML = '';
+  if (card.front_url) imgDiv.innerHTML += `<img src="${esc(card.front_url)}" alt="表面">`;
+  if (card.back_url) imgDiv.innerHTML += `<img src="${esc(card.back_url)}" alt="裏面">`;
+
+  document.getElementById('jsonEditor').value = JSON.stringify(card.ocr_data, null, 2);
+  document.getElementById('jsonError').textContent = '';
+  document.getElementById('detailModal').classList.add('open');
+}
+
+function closeModal() {
+  document.getElementById('detailModal').classList.remove('open');
+  currentModalNumber = null;
+}
+
+// Close modal on overlay click
+document.getElementById('detailModal').addEventListener('click', function(e) {
+  if (e.target === this) closeModal();
+});
+
+// Close modal on Escape
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeModal();
+});
+
+// --- Save JSON ---
+async function saveJson() {
+  const editor = document.getElementById('jsonEditor');
+  const errEl = document.getElementById('jsonError');
+  errEl.textContent = '';
+
+  let parsed;
+  try {
+    parsed = JSON.parse(editor.value);
+  } catch (e) {
+    errEl.textContent = 'JSON解析エラー: ' + e.message;
+    return;
+  }
+
+  const btn = document.getElementById('saveJsonBtn');
+  btn.disabled = true;
+  btn.textContent = '保存中...';
+
+  try {
+    const res = await adminFetch('/api/ocr-quality/update-field', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ number: currentModalNumber, ocr_data: parsed }),
+    });
+    const data = await res.json();
+    if (data.success) {
+      showToast(`${currentModalNumber} を保存しました`);
+      closeModal();
+      // Update local data
+      const card = reportData.cards.find(c => c.number === currentModalNumber);
+      if (card) card.ocr_data = parsed;
+    } else {
+      errEl.textContent = 'エラー: ' + (data.error || '不明');
+    }
+  } catch (e) {
+    errEl.textContent = '通信エラー';
+  }
+
+  btn.disabled = false;
+  btn.textContent = '保存';
+}
+
+// --- Apply Single Fix ---
+async function applySingleFix(btn) {
+  const fix = JSON.parse(btn.dataset.fix);
+  const number = btn.dataset.number;
+  btn.disabled = true;
+  btn.textContent = '適用中...';
+
+  try {
+    const res = await adminFetch('/api/ocr-quality/apply-fix', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ fixes: [{ number, field: fix.field, correct: fix.correct }] }),
+    });
+    const data = await res.json();
+    if (data.success && data.applied > 0) {
+      btn.textContent = '適用済み';
+      btn.classList.add('applied');
+      showToast(`${number} の ${fix.field} を "${fix.correct}" に修正しました`);
+    } else {
+      btn.textContent = '失敗';
+      showToast('修正失敗: ' + (data.errors && data.errors[0] || '不明'), true);
+      btn.disabled = false;
+    }
+  } catch (e) {
+    btn.textContent = '修正';
+    btn.disabled = false;
+    showToast('通信エラー', true);
+  }
+}
+
+// --- Apply All Fixes ---
+async function applyAllFixes() {
+  // Collect all fixable issues from filtered cards
+  const fixes = [];
+  for (const card of filteredCards) {
+    for (const issue of card.issues) {
+      if (issue.fix) {
+        fixes.push({ number: card.number, field: issue.fix.field, correct: issue.fix.correct });
+      }
+    }
+  }
+  if (fixes.length === 0) {
+    showToast('修正可能な問題がありません', true);
+    return;
+  }
+  if (!confirm(`${fixes.length}件の修正を適用しますか？\n（公式データの値でOCRデータを上書きします）`)) return;
+
+  const btn = document.getElementById('bulkFix');
+  btn.disabled = true;
+  btn.textContent = '適用中...';
+
+  try {
+    const res = await adminFetch('/api/ocr-quality/apply-fix', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ fixes }),
+    });
+    const data = await res.json();
+    if (data.success) {
+      showToast(`${data.applied}件の修正を適用しました` + (data.errors.length ? ` (${data.errors.length}件エラー)` : ''));
+      // Mark all fix buttons as applied
+      document.querySelectorAll('.fix-btn:not(.applied)').forEach(b => {
+        b.textContent = '適用済み';
+        b.classList.add('applied');
+        b.disabled = true;
+      });
+    } else {
+      showToast('修正エラー: ' + (data.error || '不明'), true);
+    }
+  } catch (e) {
+    showToast('通信エラー', true);
+  }
+
+  btn.disabled = false;
+  btn.textContent = '修正可能を全て適用';
+}
+
+// --- Init ---
+loadReport();
+</script>
+</body>
+</html>

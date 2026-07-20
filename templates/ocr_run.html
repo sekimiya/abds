@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OCR実行管理 - Arsenal Base</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: #1a1a1a;
+  color: #fff;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  min-height: 100vh;
+}
+a { color: #66f2c5; text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.header {
+  background: #66f2c5;
+  color: #1a1a1a;
+  padding: 12px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+.header a { color: #1a1a1a; }
+.header-links { display: flex; gap: 8px; }
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Stats Panel */
+.stats-panel {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+  margin-bottom: 24px;
+}
+.stat-card {
+  background: #2a2a2a;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  border: 1px solid #444;
+}
+.stat-card .stat-value {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #66f2c5;
+}
+.stat-card .stat-label {
+  font-size: 0.85rem;
+  color: #aaa;
+  margin-top: 4px;
+}
+
+/* Section */
+.section {
+  background: #2a2a2a;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 24px;
+  border: 1px solid #444;
+}
+.section-title {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #66f2c5;
+  margin-bottom: 16px;
+}
+
+/* Coverage Table */
+.coverage-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.coverage-table th {
+  background: #333;
+  color: #66f2c5;
+  padding: 8px 12px;
+  text-align: left;
+  font-size: 0.85rem;
+  position: sticky;
+  top: 0;
+}
+.coverage-table td {
+  padding: 6px 12px;
+  border-bottom: 1px solid #333;
+  font-size: 0.85rem;
+  vertical-align: middle;
+}
+.coverage-table tr:hover { background: #333; }
+.coverage-table .bar-cell { width: 120px; }
+.cov-num { text-align: right; font-variant-numeric: tabular-nums; }
+.coverage-bar-outer {
+  background: #444;
+  border-radius: 4px;
+  height: 16px;
+  overflow: hidden;
+}
+.coverage-bar-inner {
+  background: #66f2c5;
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.3s;
+  min-width: 0;
+}
+
+/* Run button in table */
+.run-btn-small {
+  background: #66f2c5;
+  color: #1a1a1a;
+  border: none;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.run-btn-small:hover { opacity: 0.85; }
+
+/* Controls */
+.control-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  margin-bottom: 16px;
+}
+.control-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.control-group label {
+  color: #66f2c5;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+.control-group select,
+.control-group input[type="number"] {
+  background: #333;
+  color: #fff;
+  border: 1px solid #555;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 0.9rem;
+}
+.control-group select:focus,
+.control-group input:focus {
+  outline: none;
+  border-color: #66f2c5;
+}
+.control-group .checkbox-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 38px;
+}
+.control-group .checkbox-row input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: #66f2c5;
+}
+
+.action-btn {
+  background: #66f2c5;
+  color: #1a1a1a;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.action-btn:hover { opacity: 0.85; }
+.action-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.stop-btn {
+  background: #ff6b6b;
+  color: #fff;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.stop-btn:hover { opacity: 0.85; }
+.stop-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* Progress */
+.progress-area {
+  margin-top: 16px;
+  display: none;
+}
+.progress-area.active { display: block; }
+
+.progress-bar-outer {
+  background: #444;
+  border-radius: 8px;
+  height: 28px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+.progress-bar-inner {
+  background: #66f2c5;
+  height: 100%;
+  border-radius: 8px;
+  transition: width 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  font-weight: bold;
+  color: #1a1a1a;
+  min-width: 40px;
+}
+
+.progress-text {
+  font-size: 0.9rem;
+  color: #ccc;
+  margin-bottom: 8px;
+  font-family: monospace;
+}
+.progress-detail {
+  font-size: 0.85rem;
+  color: #aaa;
+  margin-bottom: 12px;
+}
+
+.log-area {
+  background: #111;
+  border-radius: 8px;
+  padding: 12px;
+  max-height: 300px;
+  overflow-y: auto;
+  font-family: monospace;
+  font-size: 0.8rem;
+  color: #ccc;
+  margin-top: 12px;
+}
+.log-area .log-line { padding: 2px 0; }
+.log-area .log-error { color: #ff6b6b; }
+.log-area .log-warn { color: #ffc107; }
+
+.loading { color: #aaa; text-align: center; padding: 40px; }
+
+@media (max-width: 600px) {
+  .control-row { flex-direction: column; }
+  .stats-panel { grid-template-columns: repeat(3, 1fr); }
+}
+</style>
+</head>
+<body>
+<div class="header">
+  <span>OCR実行管理</span>
+  <div class="header-links">
+    <a href="/">&larr; トップ</a>
+    <a href="/admin">管理画面</a>
+    <a href="/ocr-validate">OCR検証</a>
+    <a href="/ocr-quality">品質チェック</a>
+  </div>
+</div>
+
+<div class="container">
+  <!-- Stats Panel -->
+  <div class="stats-panel" id="statsPanel">
+    <div class="stat-card">
+      <div class="stat-value" id="statSeriesCount">-</div>
+      <div class="stat-label">全シリーズ数</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value" id="statTotalCards">-</div>
+      <div class="stat-label">全カード</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value" id="statRaw">-</div>
+      <div class="stat-label">RAW済み</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value" id="statBasic">-</div>
+      <div class="stat-label">構造化済み</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value" id="statRemaining">-</div>
+      <div class="stat-label">未処理</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value" id="statNoOcr">-</div>
+      <div class="stat-label">OCR未実施</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value" id="statCoverage">-</div>
+      <div class="stat-label">カバレッジ</div>
+    </div>
+  </div>
+
+  <!-- Series Table -->
+  <div class="section">
+    <div class="section-title">シリーズ別OCR状況</div>
+    <div style="max-height:350px;overflow-y:auto;">
+      <table class="coverage-table">
+        <thead>
+          <tr>
+            <th>シリーズ</th>
+            <th class="cov-num">総数</th>
+            <th class="cov-num">RAW</th>
+            <th class="cov-num">構造化</th>
+            <th class="cov-num">残り</th>
+            <th class="bar-cell">カバレッジ</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="seriesTableBody">
+          <tr><td colspan="7" class="loading">読み込み中...</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- OCR Execution Control -->
+  <div class="section">
+    <div class="section-title">OCR実行コントロール</div>
+    <div class="control-row">
+      <div class="control-group">
+        <label>シリーズ</label>
+        <select id="seriesSelect">
+          <option value="">-- 選択 --</option>
+        </select>
+      </div>
+      <div class="control-group">
+        <label>ステージ</label>
+        <select id="stageSelect">
+          <option value="both">RAW + 構造化 (both)</option>
+          <option value="raw">RAW抽出のみ (raw)</option>
+          <option value="structure">構造化のみ (structure)</option>
+        </select>
+      </div>
+      <div class="control-group">
+        <label>件数制限</label>
+        <input type="number" id="limitInput" value="0" min="0" placeholder="0=無制限" style="width:100px;">
+      </div>
+      <div class="control-group">
+        <label>&nbsp;</label>
+        <div class="checkbox-row">
+          <input type="checkbox" id="forceCheck">
+          <span style="font-size:0.85rem;">強制上書き</span>
+        </div>
+      </div>
+    </div>
+    <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;">
+      <button class="action-btn" id="startBtn" onclick="startOcr()">実行開始</button>
+      <button class="action-btn" id="startNoOcrBtn" onclick="startNoOcr()" style="background:#ff9800;">OCR未実施を一括実行 (<span id="noOcrBtnCount">0</span>件)</button>
+      <button class="action-btn" id="startNewPromoBtn" onclick="startNewPromo()" style="background:#e040fb;">新プロモOCR (PR-348_p1, PR-430~438)</button>
+      <button class="stop-btn" id="stopBtn" onclick="stopOcr()" disabled>停止</button>
+      <span id="stopNote" style="display:none;font-size:0.8rem;color:#ffc107;">現在のカード処理完了後に停止します</span>
+    </div>
+
+    <!-- Progress Area -->
+    <div class="progress-area" id="progressArea">
+      <div class="progress-bar-outer">
+        <div class="progress-bar-inner" id="progressBar" style="width:0%">0%</div>
+      </div>
+      <div class="progress-text" id="progressText"></div>
+      <div class="progress-detail" id="progressDetail"></div>
+      <div class="log-area" id="logArea"></div>
+    </div>
+  </div>
+
+  <!-- Deploy Section -->
+  <div class="section">
+    <div class="section-title">デプロイ (GitHub Pages)</div>
+    <p style="font-size:0.85rem;color:#aaa;margin-bottom:12px;">
+      OCR結果を git commit &amp; push → GitHub Actions が自動で gh-pages を更新します
+    </p>
+    <div style="display:flex;gap:12px;align-items:center;">
+      <button class="action-btn" id="deployBtn" onclick="startDeploy()" style="background:#4CAF50;">デプロイ実行</button>
+      <span id="deployStatus" style="font-size:0.85rem;color:#aaa;"></span>
+    </div>
+    <div class="progress-area" id="deployArea">
+      <div class="log-area" id="deployLog" style="max-height:200px;"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+// --- Admin Token Management ---
+(function() {
+  const params = new URLSearchParams(window.location.search);
+  const urlToken = params.get('token');
+  if (urlToken) {
+    sessionStorage.setItem('admin_token', urlToken);
+    params.delete('token');
+    const clean = params.toString();
+    const newUrl = window.location.pathname + (clean ? '?' + clean : '');
+    window.history.replaceState({}, '', newUrl);
+  }
+})();
+
+function getAdminToken() {
+  return sessionStorage.getItem('admin_token') || '';
+}
+
+function adminHeaders(extra) {
+  const h = { 'Authorization': 'Bearer ' + getAdminToken() };
+  return Object.assign(h, extra || {});
+}
+
+function adminFetch(url, options) {
+  options = options || {};
+  options.headers = adminHeaders(options.headers);
+  return fetch(url, options);
+}
+
+let pollInterval = null;
+let seriesData = [];
+
+// --- Escape HTML ---
+function escapeHtml(str) {
+  if (!str) return '';
+  const d = document.createElement('div');
+  d.textContent = str;
+  return d.innerHTML;
+}
+
+function formatTime(seconds) {
+  if (!seconds || seconds <= 0) return '--:--';
+  const m = Math.floor(seconds / 60);
+  const s = Math.floor(seconds % 60);
+  return m + ':' + String(s).padStart(2, '0');
+}
+
+// --- Load Series Stats ---
+async function loadSeriesStats() {
+  try {
+    const res = await adminFetch('/api/ocr-run/series-stats');
+    const data = await res.json();
+    if (!data.success) return;
+
+    seriesData = data.series;
+
+    // Stats panel
+    document.getElementById('statSeriesCount').textContent = data.series.length;
+    document.getElementById('statTotalCards').textContent = data.total_cards.toLocaleString();
+    document.getElementById('statRaw').textContent = data.total_raw.toLocaleString();
+    document.getElementById('statBasic').textContent = data.total_basic.toLocaleString();
+    const remaining = data.total_cards - data.total_basic;
+    document.getElementById('statRemaining').textContent = remaining.toLocaleString();
+    const noOcr = data.total_no_ocr || 0;
+    document.getElementById('statNoOcr').textContent = noOcr.toLocaleString();
+    document.getElementById('noOcrBtnCount').textContent = noOcr.toLocaleString();
+    document.getElementById('startNoOcrBtn').disabled = noOcr === 0;
+    const coverage = data.total_cards > 0 ? (data.total_basic / data.total_cards * 100).toFixed(1) : '0.0';
+    document.getElementById('statCoverage').textContent = coverage + '%';
+
+    // Series table
+    const tbody = document.getElementById('seriesTableBody');
+    if (data.series.length === 0) {
+      tbody.innerHTML = '<tr><td colspan="7" class="loading">データなし</td></tr>';
+      return;
+    }
+    tbody.innerHTML = data.series.map(s => `
+      <tr>
+        <td>${escapeHtml(s.series)}</td>
+        <td class="cov-num">${s.total}</td>
+        <td class="cov-num">${s.raw}</td>
+        <td class="cov-num">${s.basic}</td>
+        <td class="cov-num">${s.remaining}</td>
+        <td class="bar-cell">
+          <div class="coverage-bar-outer" title="${s.coverage}%">
+            <div class="coverage-bar-inner" style="width:${s.coverage}%"></div>
+          </div>
+        </td>
+        <td>
+          <button class="run-btn-small" onclick="quickRun('${escapeHtml(s.series)}')">実行</button>
+        </td>
+      </tr>
+    `).join('');
+
+    // Populate dropdown
+    const sel = document.getElementById('seriesSelect');
+    const currentVal = sel.value;
+    // Clear existing options except first
+    while (sel.options.length > 1) sel.remove(1);
+    data.series.forEach(s => {
+      const opt = document.createElement('option');
+      opt.value = s.series;
+      opt.textContent = `${s.series} (${s.remaining}件残)`;
+      sel.appendChild(opt);
+    });
+    if (currentVal) sel.value = currentVal;
+  } catch (e) {
+    console.error('Series stats load error:', e);
+  }
+}
+
+// --- Quick Run from table ---
+function quickRun(series) {
+  document.getElementById('seriesSelect').value = series;
+  startOcr();
+}
+
+// --- Start OCR ---
+async function startOcr() {
+  const series = document.getElementById('seriesSelect').value;
+  if (!series) {
+    alert('シリーズを選択してください');
+    return;
+  }
+
+  const stage = document.getElementById('stageSelect').value;
+  const force = document.getElementById('forceCheck').checked;
+  const limit = parseInt(document.getElementById('limitInput').value) || 0;
+
+  const startBtn = document.getElementById('startBtn');
+  const stopBtn = document.getElementById('stopBtn');
+  startBtn.disabled = true;
+
+  try {
+    const res = await adminFetch('/api/ocr-run/start', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ series, stage, force, limit }),
+    });
+    const data = await res.json();
+    if (!data.success) {
+      alert(data.error || 'OCR実行の開始に失敗しました');
+      startBtn.disabled = false;
+      return;
+    }
+
+    stopBtn.disabled = false;
+    document.getElementById('progressArea').classList.add('active');
+    document.getElementById('stopNote').style.display = 'none';
+    startPolling();
+  } catch (e) {
+    alert('エラー: ' + e.message);
+    startBtn.disabled = false;
+  }
+}
+
+// --- Start No-OCR bulk ---
+async function startNoOcr() {
+  if (!confirm('OCR未実施カードをまとめてOCR実行しますか？')) return;
+
+  const startBtn = document.getElementById('startBtn');
+  const startNoOcrBtn = document.getElementById('startNoOcrBtn');
+  const stopBtn = document.getElementById('stopBtn');
+  startBtn.disabled = true;
+  startNoOcrBtn.disabled = true;
+
+  try {
+    const res = await adminFetch('/api/ocr-run/start-no-ocr', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+    });
+    const data = await res.json();
+    if (!data.success) {
+      alert(data.error || 'OCR実行の開始に失敗しました');
+      startBtn.disabled = false;
+      startNoOcrBtn.disabled = false;
+      return;
+    }
+
+    stopBtn.disabled = false;
+    document.getElementById('progressArea').classList.add('active');
+    document.getElementById('stopNote').style.display = 'none';
+    startPolling();
+  } catch (e) {
+    alert('エラー: ' + e.message);
+    startBtn.disabled = false;
+    startNoOcrBtn.disabled = false;
+  }
+}
+
+// --- Start New Promo batch ---
+async function startNewPromo() {
+  const numbers = [
+    'PR-348_p1', 'PR-430', 'PR-431', 'PR-432', 'PR-433',
+    'PR-434', 'PR-435', 'PR-436', 'PR-437', 'PR-438'
+  ];
+  if (!confirm('新プロモカード10枚をOCR実行しますか？\n' + numbers.join(', '))) return;
+
+  const startBtn = document.getElementById('startBtn');
+  const promoBtn = document.getElementById('startNewPromoBtn');
+  const stopBtn = document.getElementById('stopBtn');
+  startBtn.disabled = true;
+  promoBtn.disabled = true;
+
+  try {
+    const res = await adminFetch('/api/ocr-run/start-batch', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ numbers }),
+    });
+    const data = await res.json();
+    if (!data.success) {
+      alert(data.error || 'OCR実行の開始に失敗しました');
+      startBtn.disabled = false;
+      promoBtn.disabled = false;
+      return;
+    }
+
+    stopBtn.disabled = false;
+    document.getElementById('progressArea').classList.add('active');
+    document.getElementById('stopNote').style.display = 'none';
+    startPolling();
+  } catch (e) {
+    alert('エラー: ' + e.message);
+    startBtn.disabled = false;
+    promoBtn.disabled = false;
+  }
+}
+
+// --- Stop OCR ---
+async function stopOcr() {
+  try {
+    const res = await adminFetch('/api/ocr-run/stop', { method: 'POST' });
+    const data = await res.json();
+    if (data.success) {
+      document.getElementById('stopBtn').disabled = true;
+      document.getElementById('stopNote').style.display = 'inline';
+    }
+  } catch (e) {
+    console.error('Stop error:', e);
+  }
+}
+
+// --- Polling ---
+function startPolling() {
+  if (pollInterval) clearInterval(pollInterval);
+  pollInterval = setInterval(pollStatus, 2000);
+  pollStatus();
+}
+
+async function pollStatus() {
+  try {
+    const res = await adminFetch('/api/ocr-run/status');
+    const data = await res.json();
+    if (!data.success) return;
+
+    const total = data.total_target;
+    const done = data.processed_count;
+    const pct = total > 0 ? Math.round((done / total) * 100) : 0;
+
+    const bar = document.getElementById('progressBar');
+    bar.style.width = pct + '%';
+    bar.textContent = pct + '%';
+
+    // Progress text
+    let progressParts = [];
+    if (data.current_card) {
+      progressParts.push(`${data.current_card} ${data.current_card_name}`);
+    }
+    progressParts.push(`${done}/${total}`);
+    progressParts.push(`成功:${data.success_count}`);
+    if (data.failed_count > 0) progressParts.push(`失敗:${data.failed_count}`);
+    if (data.eta_seconds > 0) progressParts.push(`ETA: ${formatTime(data.eta_seconds)}`);
+    document.getElementById('progressText').textContent = progressParts.join(' | ');
+
+    // Detail
+    let detailParts = [];
+    detailParts.push(`シリーズ: ${data.series}`);
+    detailParts.push(`ステージ: ${data.stage}`);
+    if (data.elapsed_seconds > 0) detailParts.push(`経過: ${formatTime(data.elapsed_seconds)}`);
+    document.getElementById('progressDetail').textContent = detailParts.join(' | ');
+
+    // Log
+    const logArea = document.getElementById('logArea');
+    logArea.innerHTML = data.log.map(line => {
+      let cls = '';
+      if (line.includes('エラー') || line.includes('FAIL') || line.includes('致命的')) cls = 'log-error';
+      else if (line.includes('WARNING') || line.includes('停止')) cls = 'log-warn';
+      return `<div class="log-line ${cls}">${escapeHtml(line)}</div>`;
+    }).join('');
+    logArea.scrollTop = logArea.scrollHeight;
+
+    // Stop note
+    if (data.stop_requested) {
+      document.getElementById('stopNote').style.display = 'inline';
+    }
+
+    // Finished
+    if (!data.running) {
+      clearInterval(pollInterval);
+      pollInterval = null;
+      document.getElementById('startBtn').disabled = false;
+      document.getElementById('startNoOcrBtn').disabled = false;
+      document.getElementById('startNewPromoBtn').disabled = false;
+      document.getElementById('stopBtn').disabled = true;
+      document.getElementById('stopNote').style.display = 'none';
+      // Refresh series stats
+      loadSeriesStats();
+    }
+  } catch (e) {
+    console.error('Poll error:', e);
+  }
+}
+
+// --- Check if already running on page load ---
+async function checkRunning() {
+  try {
+    const res = await adminFetch('/api/ocr-run/status');
+    const data = await res.json();
+    if (data.success && data.running) {
+      document.getElementById('startBtn').disabled = true;
+      document.getElementById('stopBtn').disabled = false;
+      document.getElementById('progressArea').classList.add('active');
+      if (data.series) {
+        document.getElementById('seriesSelect').value = data.series;
+      }
+      startPolling();
+    }
+  } catch (e) {}
+}
+
+// --- Deploy ---
+let deployPollInterval = null;
+
+async function startDeploy() {
+  if (!confirm('OCR結果を commit & push しますか？\nGitHub Actions が gh-pages を自動更新します。')) return;
+
+  const btn = document.getElementById('deployBtn');
+  btn.disabled = true;
+  document.getElementById('deployStatus').textContent = '実行中...';
+  document.getElementById('deployArea').classList.add('active');
+  document.getElementById('deployLog').innerHTML = '';
+
+  try {
+    const res = await adminFetch('/api/deploy/start', { method: 'POST', headers: { 'Content-Type': 'application/json' } });
+    const data = await res.json();
+    if (!data.success) {
+      alert(data.error || 'デプロイ開始に失敗');
+      btn.disabled = false;
+      document.getElementById('deployStatus').textContent = '';
+      return;
+    }
+    deployPollInterval = setInterval(pollDeploy, 1500);
+    pollDeploy();
+  } catch (e) {
+    alert('エラー: ' + e.message);
+    btn.disabled = false;
+    document.getElementById('deployStatus').textContent = '';
+  }
+}
+
+async function pollDeploy() {
+  try {
+    const res = await adminFetch('/api/deploy/status');
+    const data = await res.json();
+    if (!data.success) return;
+
+    const logArea = document.getElementById('deployLog');
+    logArea.innerHTML = data.log.map(line => {
+      let cls = '';
+      if (line.includes('[ERR]') || line.includes('失敗')) cls = 'log-error';
+      else if (line.startsWith('$')) cls = '';
+      return `<div class="log-line ${cls}">${escapeHtml(line)}</div>`;
+    }).join('');
+    logArea.scrollTop = logArea.scrollHeight;
+
+    if (!data.running) {
+      clearInterval(deployPollInterval);
+      deployPollInterval = null;
+      document.getElementById('deployBtn').disabled = false;
+      if (data.deploy_success) {
+        document.getElementById('deployStatus').textContent = '完了';
+        document.getElementById('deployStatus').style.color = '#4CAF50';
+      } else {
+        document.getElementById('deployStatus').textContent = '失敗';
+        document.getElementById('deployStatus').style.color = '#ff6b6b';
+      }
+    }
+  } catch (e) {
+    console.error('Deploy poll error:', e);
+  }
+}
+
+// Check deploy status on load
+async function checkDeploy() {
+  try {
+    const res = await adminFetch('/api/deploy/status');
+    const data = await res.json();
+    if (data.success && data.running) {
+      document.getElementById('deployBtn').disabled = true;
+      document.getElementById('deployStatus').textContent = '実行中...';
+      document.getElementById('deployArea').classList.add('active');
+      deployPollInterval = setInterval(pollDeploy, 1500);
+      pollDeploy();
+    }
+  } catch (e) {}
+}
+
+// Init
+loadSeriesStats();
+checkRunning();
+checkDeploy();
+</script>
+</body>
+</html>
