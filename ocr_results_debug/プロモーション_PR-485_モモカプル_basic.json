@@ -1,0 +1,90 @@
+{
+    "card_number": "PR-485",
+    "card_name": "モモカプル",
+    "series": "プロモーション",
+    "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-485.jpg?v250630",
+    "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-485_b.jpg?v250630",
+    "ocr_engine": "claude_code_subagent",
+    "ocr_type": "basic",
+    "ocr_timestamp": "2026-07-24T00:00:00.000000",
+    "ocr_data": {
+        "type": "MS",
+        "name": "モモカプル",
+        "cost": 3,
+        "rarity": "PR",
+        "category": "機動",
+        "affiliation": "ビルドダイバーズ",
+        "illustrator": "NINNIN",
+        "pilot": "モモ",
+        "model": "PEN-01M MOMOKAPOOL",
+        "stats": {
+            "mobility": 260,
+            "ranged_attack": 50,
+            "melee_attack": 230,
+            "hp": 360
+        },
+        "terrain_compatibility": {
+            "ground": "A",
+            "space": "B",
+            "desert": "B",
+            "water": "S"
+        },
+        "weapon": {
+            "main": {
+                "name": "手のツメ",
+                "range": 1,
+                "type": "近距離"
+            },
+            "sub": {
+                "name": "手のビーム",
+                "range": 3,
+                "type": "遠距離"
+            }
+        },
+        "ms_ability": {
+            "name": "誘導[防御]",
+            "activation": "任意発動",
+            "target": "特殊(敵)",
+            "range": null,
+            "cost": 5,
+            "description": "25秒間、自身をロックオン距離内に捉えている敵ユニットのターゲットを自身に集め、受けるダメージを軽減する。"
+        },
+        "special_attack": {
+            "name": "丸まりモード突撃",
+            "target": "単体(敵)",
+            "range": 2,
+            "sp_cost": 2,
+            "power": 3400,
+            "description": "敵単体に格闘攻撃でダメージを与え、一定時間、自身の[近距離攻撃力]をアップする。",
+            "sp_type": "ECHOES BEAT",
+            "echoes_beat": {
+                "name": "丸まりモード突撃 Lv.1",
+                "level": 1,
+                "power": 3700,
+                "range": 2,
+                "target": "単体(敵)",
+                "description": "EBLv.を1下げる。敵単体に格闘攻撃でダメージを与え、EBLv.が3に上昇する。一定時間、自身の[近距離攻撃力]をアップする。出撃時1度のみ使用可能。"
+            },
+            "united_sp": null,
+            "squad_sp": null
+        },
+        "link_ability": [
+            {
+                "name": "ビルドダイバーズ",
+                "condition": "デッキに3枚以上",
+                "effect": "[HP]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            },
+            {
+                "name": "堅牢な高機動機",
+                "condition": "デッキに機動が2枚以上",
+                "effect": "[HP]中アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            }
+        ]
+    }
+}

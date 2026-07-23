@@ -1,0 +1,90 @@
+{
+    "card_number": "PR-483",
+    "card_name": "マーメイドガンダム",
+    "series": "プロモーション",
+    "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-483.jpg?v250630",
+    "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-483_b.jpg?v250630",
+    "ocr_engine": "claude_code_subagent",
+    "ocr_type": "basic",
+    "ocr_timestamp": "2026-07-24T00:00:00.000000",
+    "ocr_data": {
+        "type": "MS",
+        "name": "マーメイドガンダム",
+        "cost": 4,
+        "rarity": "PR",
+        "category": "近距離",
+        "affiliation": "ネオデンマーク",
+        "illustrator": "NINNIN",
+        "pilot": "ハンス・ホルガー",
+        "model": "GF13-026ND MERMAID GUNDAM",
+        "stats": {
+            "mobility": 250,
+            "ranged_attack": 30,
+            "melee_attack": 350,
+            "hp": 470
+        },
+        "terrain_compatibility": {
+            "ground": "A",
+            "space": "C",
+            "desert": "B",
+            "water": "S"
+        },
+        "weapon": {
+            "main": {
+                "name": "マーメイド・トライデント",
+                "range": 1,
+                "type": "近距離"
+            },
+            "sub": {
+                "name": "ビーム・トライデント",
+                "range": 3,
+                "type": "遠距離"
+            }
+        },
+        "ms_ability": {
+            "name": "瞬撃",
+            "activation": "任意発動",
+            "target": "範囲(敵)",
+            "range": 5,
+            "cost": 4,
+            "description": "射程範囲内の指定した位置に小範囲攻撃を行い、範囲内の敵にダメージを与える。"
+        },
+        "special_attack": {
+            "name": "マーメイド・トライデント連携",
+            "target": "単体(敵)",
+            "range": 3,
+            "sp_cost": 2,
+            "power": 3300,
+            "description": "敵単体に射撃攻撃でダメージを与え、自身のHPを回復する。",
+            "sp_type": "ECHOES BEAT",
+            "echoes_beat": {
+                "name": "マーメイド・トライデント連携 Lv.1",
+                "level": 1,
+                "power": 3600,
+                "range": 3,
+                "target": "単体(敵)",
+                "description": "EBLv.を1下げる。敵単体に射撃攻撃でダメージを与え、自身のHPを回復し、EBLv.が3に上昇する。出撃時1度のみ使用可能。"
+            },
+            "united_sp": null,
+            "squad_sp": null
+        },
+        "link_ability": [
+            {
+                "name": "Gガンダム",
+                "condition": "デッキに3枚以上",
+                "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            },
+            {
+                "name": "肉薄する戦い",
+                "condition": "デッキに4枚以上",
+                "effect": "[機動力][近距離攻撃力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            }
+        ]
+    }
+}

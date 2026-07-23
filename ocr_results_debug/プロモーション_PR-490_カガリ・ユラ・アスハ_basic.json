@@ -1,0 +1,59 @@
+{
+    "card_number": "PR-490",
+    "card_name": "カガリ・ユラ・アスハ",
+    "series": "プロモーション",
+    "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-490.jpg?v250630",
+    "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-490_b.jpg?v250630",
+    "ocr_engine": "claude_code_subagent",
+    "ocr_type": "basic",
+    "ocr_timestamp": "2026-07-24T00:00:00.000000",
+    "ocr_data": {
+        "type": "PL",
+        "name": "カガリ・ユラ・アスハ",
+        "cost": 2,
+        "rarity": "PR",
+        "category": "殲滅",
+        "affiliation": "オーブ",
+        "illustrator": "miki onizuki + saebihantyou (STUDIO GS)",
+        "english_name": "CAGALLI YULA ATHHA",
+        "physical": {
+            "height": "162cm",
+            "age": "16歳"
+        },
+        "units": ["ストライクルージュ"],
+        "stats": {
+            "mobility": 190,
+            "ranged_attack": 260,
+            "melee_attack": 30,
+            "hp": 310
+        },
+        "pilot_skill": {
+            "name": "少女が見据える未来",
+            "trigger": "EBLv.が上昇時",
+            "effect": "EBLv.が上昇するたびに自身の[遠距離攻撃力]をアップし、受けるダメージを軽減する。最大3回まで発動。",
+            "has_sq_skill": false,
+            "sq_skill_details": null,
+            "is_eb_skill": true,
+            "eb_trigger_level": null,
+            "sq_rush_effect": ""
+        },
+        "link_ability": [
+            {
+                "name": "傍流する覚醒の共振",
+                "condition": "デッキに3枚以上",
+                "effect": "ECHOES BEAT Lv.が表示される。味方ユニットが戦術技を発動するとEBLv.が上がる。[遠距離攻撃力][近距離攻撃力]小アップ",
+                "is_eb_link": true,
+                "is_sq_link": false,
+                "is_ab_link": false
+            },
+            {
+                "name": "戦況を変える力",
+                "condition": "デッキに4枚以上",
+                "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            }
+        ]
+    }
+}
