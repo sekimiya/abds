@@ -1,0 +1,87 @@
+{
+  "card_number": "VE04-025",
+  "card_name": "ガンダムAGE-FX",
+  "series": "WAVECHOES SEASON:04",
+  "ocr_data": {
+    "type": "MS",
+    "name": "ガンダムAGE-FX",
+    "cost": 7,
+    "rarity": "U",
+    "category": "近距離",
+    "affiliation": "地球連邦軍",
+    "illustrator": "KURI (studio toujyou)",
+    "stats": {
+      "mobility": 320,
+      "ranged_attack": 50,
+      "melee_attack": 680,
+      "hp": 650
+    },
+    "link_ability": [
+      {
+        "name": "ガンダムAGE",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "肉薄する戦い",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][遠距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "キオ・アスノ",
+    "model": "AGE-FX GUNDAM AGE-FX",
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "B",
+      "water": "B"
+    },
+    "weapon": {
+      "main": {
+        "name": "Cファンネル",
+        "range": 2,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "スタングルライフル",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "破廻",
+      "activation": "任意発動",
+      "target": "単体(敵)",
+      "range": 2,
+      "cost": 4,
+      "description": "ロックオン中の敵に単体攻撃でダメージを与える。この攻撃で敵ユニットを撃破した場合、MSアビリティのクールタイムを、一定時間短縮する。使用回数に応じて、ダメージが上昇する。※最大5段階。"
+    },
+    "special_attack": {
+      "name": "Cファンネル突撃",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3700,
+      "description": "敵単体に格闘攻撃を行い、自身のHPを回復。一定時間、自身の[近距離攻撃力]をアップ。",
+      "sp_type": "ECHOES BEAT SP",
+      "echoes_beat": {
+        "name": "FXバースト Lv.3",
+        "level": 3,
+        "power": 5200,
+        "range": 4,
+        "target": "貫通(敵)",
+        "description": "EBLv.を3下げる。ロックオン中の敵に貫通格闘攻撃を行い、自身のHPを回復。FXバーストモードが起動し能力が上昇、通常攻撃がメイン武装のみになり、被ダメージを軽減、自身のMSアビリティ[破廻]の効果が最大まで上昇、自身が与える全てのダメージが必ずクリティカルになり[怯み無効]になる。自身が撤退するまで効果は持続。出撃時1度のみ使用可能。"
+      },
+      "united_sp": null,
+      "squad_sp": null
+    }
+  },
+  "ocr_engine": "claude_code_subagent",
+  "ocr_timestamp": "2026-08-10T00:00:00"
+}

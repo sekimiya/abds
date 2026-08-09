@@ -1,0 +1,80 @@
+{
+  "card_number": "VE04-014",
+  "card_name": "ガンダムローズ",
+  "series": "WAVECHOES SEASON:04",
+  "ocr_data": {
+    "type": "MS",
+    "name": "ガンダムローズ",
+    "cost": 2,
+    "rarity": "C",
+    "category": "機動",
+    "affiliation": "ネオフランス",
+    "illustrator": "Ayato",
+    "stats": {
+      "mobility": 220,
+      "ranged_attack": 220,
+      "melee_attack": 60,
+      "hp": 260
+    },
+    "link_ability": [
+      {
+        "name": "Gガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "的確な一撃",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][遠距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "ジョルジュ・ド・サンド",
+    "model": "GF13-009NF GUNDAM ROSE",
+    "terrain_compatibility": {
+      "ground": "S",
+      "space": "A",
+      "desert": "A",
+      "water": "B"
+    },
+    "weapon": {
+      "main": {
+        "name": "ローゼスビット",
+        "range": 4,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "シュバリエサーベル",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "精密射撃",
+      "activation": "任意発動",
+      "target": "単体(敵)",
+      "range": 4,
+      "cost": 3,
+      "description": "ロックオン中の敵に単体攻撃でダメージを与える。"
+    },
+    "special_attack": {
+      "name": "ローゼスビット撃射",
+      "target": "単体(敵)",
+      "range": 4,
+      "sp_cost": 2,
+      "power": 2900,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
+  },
+  "ocr_engine": "claude_code_subagent",
+  "ocr_timestamp": "2026-08-10T00:00:00"
+}

@@ -1,0 +1,58 @@
+{
+  "card_number": "VE04-061",
+  "card_name": "キオ・アスノ",
+  "series": "WAVECHOES SEASON:04",
+  "ocr_data": {
+    "type": "PL",
+    "name": "キオ・アスノ",
+    "cost": 3,
+    "rarity": "R",
+    "category": "防衛",
+    "affiliation": "",
+    "illustrator": "",
+    "stats": {
+      "mobility": 170,
+      "ranged_attack": 210,
+      "melee_attack": 90,
+      "hp": 250
+    },
+    "link_ability": [
+      {
+        "name": "新時代の高鳴り",
+        "condition": "デッキに3枚以上",
+        "effect": "ECHOES BEAT Lv.が表示される。味方ユニットが戦術技を発動するとEBLv.が上がる。[HP][SP威力]小アップ",
+        "is_eb_link": true,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "的確な一撃",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][遠距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "KIO ASUNO",
+    "physical": {
+      "height": "",
+      "age": "13歳"
+    },
+    "units": [
+      "ガンダムAGE-FX"
+    ],
+    "pilot_skill": {
+      "name": "疾風怒濤の殲滅陣形",
+      "trigger": "EBLv.2に上昇時",
+      "effect": "30秒間、出撃中の全味方殲滅タイプユニットの[遠距離攻撃力][近距離攻撃力]をアップする。",
+      "has_sq_skill": false,
+      "sq_skill_details": null,
+      "is_eb_skill": true,
+      "eb_trigger_level": 2,
+      "sq_rush_effect": ""
+    }
+  },
+  "ocr_engine": "claude_code_subagent",
+  "ocr_timestamp": "2026-08-10T00:00:00"
+}

@@ -1,0 +1,58 @@
+{
+  "card_number": "VE04-045",
+  "card_name": "シーブック・アノー",
+  "series": "WAVECHOES SEASON:04",
+  "ocr_data": {
+    "type": "PL",
+    "name": "シーブック・アノー",
+    "cost": 1,
+    "rarity": "C",
+    "category": "防衛",
+    "affiliation": "",
+    "illustrator": "",
+    "stats": {
+      "mobility": 180,
+      "ranged_attack": 180,
+      "melee_attack": 40,
+      "hp": 210
+    },
+    "link_ability": [
+      {
+        "name": "機動戦士ガンダムF91",
+        "condition": "デッキに2枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "的確な一撃",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][遠距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "SEABOOK ARNO",
+    "physical": {
+      "height": "",
+      "age": "17歳"
+    },
+    "units": [
+      "ガンダムF91"
+    ],
+    "pilot_skill": {
+      "name": "高揚する戦意",
+      "trigger": "敵ユニットを撃破時",
+      "effect": "30秒間、自身の[遠距離攻撃力]を中アップする。",
+      "has_sq_skill": false,
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
+  },
+  "ocr_engine": "claude_code_subagent",
+  "ocr_timestamp": "2026-08-10T00:00:00"
+}

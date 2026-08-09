@@ -1,0 +1,87 @@
+{
+  "card_number": "VE04-026",
+  "card_name": "ガンダムAGE-FX",
+  "series": "WAVECHOES SEASON:04",
+  "ocr_data": {
+    "type": "MS",
+    "name": "ガンダムAGE-FX",
+    "cost": 3,
+    "rarity": "R",
+    "category": "遠距離",
+    "affiliation": "地球連邦軍",
+    "illustrator": "HeyZAN",
+    "stats": {
+      "mobility": 180,
+      "ranged_attack": 320,
+      "melee_attack": 60,
+      "hp": 350
+    },
+    "link_ability": [
+      {
+        "name": "ガンダムAGE",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "的確な一撃",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][遠距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "キオ・アスノ",
+    "model": "AGE-FX GUNDAM AGE-FX",
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "B",
+      "water": "B"
+    },
+    "weapon": {
+      "main": {
+        "name": "スタングルライフル",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "Cファンネル",
+        "range": 2,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "威圧",
+      "activation": "任意発動",
+      "target": "範囲(敵)",
+      "range": null,
+      "cost": 4,
+      "description": "自身を中心とした範囲内の敵ユニットをスタンさせ、一定時間被ダメージを少しアップする。"
+    },
+    "special_attack": {
+      "name": "ダイダルバズーカ撃射",
+      "target": "貫通(敵)",
+      "range": 4,
+      "sp_cost": 2,
+      "power": 2800,
+      "description": "射線上の敵に貫通射撃でダメージを与える。",
+      "sp_type": "ECHOES BEAT SP",
+      "echoes_beat": {
+        "name": "FXバースト Lv.3",
+        "level": 3,
+        "power": 4300,
+        "range": 4,
+        "target": "貫通(敵)",
+        "description": "EBLv.を3下げる。ロックオン中の敵に貫通格闘攻撃でダメージを与える。出撃時1度のみ使用可能。"
+      },
+      "united_sp": null,
+      "squad_sp": null
+    }
+  },
+  "ocr_engine": "claude_code_subagent",
+  "ocr_timestamp": "2026-08-10T00:00:00"
+}

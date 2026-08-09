@@ -1,0 +1,58 @@
+{
+  "card_number": "VE04-040",
+  "card_name": "クリスチーナ・マッケンジー",
+  "series": "WAVECHOES SEASON:04",
+  "ocr_data": {
+    "type": "PL",
+    "name": "クリスチーナ・マッケンジー",
+    "cost": 2,
+    "rarity": "M",
+    "category": "制圧",
+    "affiliation": "地球連邦軍",
+    "illustrator": "",
+    "stats": {
+      "mobility": 160,
+      "ranged_attack": 230,
+      "melee_attack": 50,
+      "hp": 300
+    },
+    "link_ability": [
+      {
+        "name": "宇宙に響く鼓動",
+        "condition": "デッキに3枚以上",
+        "effect": "ECHOES BEAT Lv.が表示される。味方ユニットが戦術技を発動するとEBLv.が上がる。[HP][SP威力]小アップ",
+        "is_eb_link": true,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "揺るがぬ意志",
+        "condition": "デッキに2枚以上",
+        "effect": "[HP]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "CHRISTINA MACKENZIE",
+    "physical": {
+      "height": "",
+      "age": "21歳"
+    },
+    "units": [
+      "ガンダムNT-1 アレックス"
+    ],
+    "pilot_skill": {
+      "name": "冷静な指揮系統",
+      "trigger": "EBLv.1時",
+      "effect": "自身のSPゲージ回復速度がアップする。このPLスキルの効果は重複しない。",
+      "has_sq_skill": false,
+      "sq_skill_details": null,
+      "is_eb_skill": true,
+      "eb_trigger_level": 1,
+      "sq_rush_effect": ""
+    }
+  },
+  "ocr_engine": "claude_code_subagent",
+  "ocr_timestamp": "2026-08-10T00:00:00"
+}

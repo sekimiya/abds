@@ -1,0 +1,89 @@
+{
+  "card_number": "VE04-012",
+  "card_name": "ディキトゥス(影のカリスト専用機)",
+  "series": "WAVECHOES SEASON:04",
+  "ocr_data": {
+    "type": "MS",
+    "name": "ディキトゥス(影のカリスト専用機)",
+    "cost": 3,
+    "rarity": "C",
+    "category": "近距離",
+    "affiliation": "木星帝国",
+    "illustrator": "S Kei",
+    "stats": {
+      "mobility": 250,
+      "ranged_attack": 60,
+      "melee_attack": 260,
+      "hp": 280
+    },
+    "link_ability": [
+      {
+        "name": "クロスボーン・ガンダム",
+        "condition": "デッキに2枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "肉薄する戦い",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][遠距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "影のカリスト",
+    "model": "DICTUS (CALLISTO OF SHADOW CUSTOM)",
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "C",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "ビーム・クロー",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "頭部メガ粒子砲",
+        "range": 4,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "鼓舞[近距離][弱体化解除]",
+      "activation": "任意発動",
+      "target": "範囲(味方)",
+      "range": null,
+      "cost": 6,
+      "description": "自身を中心とした大範囲内の味方ユニットの弱体化状態を無効化し、30秒間、[近距離攻撃力]を中アップする。"
+    },
+    "special_attack": {
+      "name": "ビーム・クロー強撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3200,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": {
+        "name": "影と光の掌握",
+        "partners": [
+          "ディキトゥス(光のカリスト専用機)"
+        ],
+        "target": "単体(敵)",
+        "range": 3,
+        "power": 4600,
+        "description": "敵単体に格闘攻撃でダメージを与える。出撃時1度のみ使用可能。"
+      },
+      "squad_sp": null
+    }
+  },
+  "ocr_engine": "claude_code_subagent",
+  "ocr_timestamp": "2026-08-10T00:00:00"
+}

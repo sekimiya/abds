@@ -1,0 +1,80 @@
+{
+  "card_number": "VE04-034",
+  "card_name": "G-アルケイン フルドレス",
+  "series": "WAVECHOES SEASON:04",
+  "ocr_data": {
+    "type": "MS",
+    "name": "G-アルケイン フルドレス",
+    "cost": 2,
+    "rarity": "C",
+    "category": "遠距離",
+    "affiliation": "メガファウナ",
+    "illustrator": "Misaki Yuzuruha",
+    "stats": {
+      "mobility": 200,
+      "ranged_attack": 230,
+      "melee_attack": 40,
+      "hp": 280
+    },
+    "link_ability": [
+      {
+        "name": "Gのレコンギスタ",
+        "condition": "デッキに2枚以上",
+        "effect": "[HP]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "アイーダ・スルガン",
+    "model": "MSAM-033 G-ARCANE FULL DRESS",
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "B",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "対艦ビーム・ライフル",
+        "range": 4,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ビーム・ソード",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "練破",
+      "activation": "任意発動",
+      "target": "単体(敵)",
+      "range": 4,
+      "cost": 3,
+      "description": "1回目の発動でチャージ状態になり、2回目の発動でロックオン中の敵にダメージを与える。チャージ時間に応じて、ダメージ値が上昇する。"
+    },
+    "special_attack": {
+      "name": "フルドレス斉射",
+      "target": "範囲(敵)",
+      "range": 4,
+      "sp_cost": 2,
+      "power": 2500,
+      "description": "ロックオン中の敵を中心に扇状の範囲攻撃を行い、範囲内の敵にダメージを与える。",
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
+  },
+  "ocr_engine": "claude_code_subagent",
+  "ocr_timestamp": "2026-08-10T00:00:00"
+}

@@ -1,0 +1,60 @@
+{
+  "card_number": "VE04-044",
+  "card_name": "プルツー",
+  "series": "WAVECHOES SEASON:04",
+  "ocr_data": {
+    "type": "PL",
+    "name": "プルツー",
+    "cost": 3,
+    "rarity": "M",
+    "category": "防衛",
+    "affiliation": "ネオ・ジオン",
+    "illustrator": "",
+    "stats": {
+      "mobility": 180,
+      "ranged_attack": 250,
+      "melee_attack": 40,
+      "hp": 300
+    },
+    "link_ability": [
+      {
+        "name": "宇宙に響く鼓動",
+        "condition": "デッキに3枚以上",
+        "effect": "ECHOES BEAT Lv.が表示される。味方ユニットが戦術技を発動するとEBLv.が上がる。[HP][SP威力]小アップ",
+        "is_eb_link": true,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "揺るがぬ意志",
+        "condition": "デッキに2枚以上",
+        "effect": "[HP]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "PLE TWO",
+    "physical": {
+      "height": "",
+      "age": ""
+    },
+    "units": [
+      "キュベレイMk-Ⅱ(プルツー専用機)",
+      "クィン・マンサ",
+      "サイコ・ガンダムMk-Ⅱ"
+    ],
+    "pilot_skill": {
+      "name": "一発必中の長距離戦",
+      "trigger": "EBLv.2に上昇時",
+      "effect": "30秒間、自身の[遠距離攻撃力]をアップし、受けるダメージを軽減する。",
+      "has_sq_skill": false,
+      "sq_skill_details": null,
+      "is_eb_skill": true,
+      "eb_trigger_level": 2,
+      "sq_rush_effect": ""
+    }
+  },
+  "ocr_engine": "claude_code_subagent",
+  "ocr_timestamp": "2026-08-10T00:00:00"
+}

@@ -1,0 +1,87 @@
+{
+  "card_number": "VE04-031",
+  "card_name": "ガンダムAGE-2 ダークハウンド",
+  "series": "WAVECHOES SEASON:04",
+  "ocr_data": {
+    "type": "MS",
+    "name": "ガンダムAGE-2 ダークハウンド",
+    "cost": 3,
+    "rarity": "M",
+    "category": "近距離",
+    "affiliation": "宇宙海賊ビシディアン",
+    "illustrator": "yuuiguchi",
+    "stats": {
+      "mobility": 220,
+      "ranged_attack": 30,
+      "melee_attack": 280,
+      "hp": 320
+    },
+    "link_ability": [
+      {
+        "name": "ガンダムAGE",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "肉薄する戦い",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "キャプテン・アッシュ",
+    "model": "AGE-2DH GUNDAM AGE-2 DARK HOUND",
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "B",
+      "water": "B"
+    },
+    "weapon": {
+      "main": {
+        "name": "ドッズランサー",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "ドッズガン",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "誘導",
+      "activation": "任意発動",
+      "target": "特殊(敵)",
+      "range": null,
+      "cost": 4,
+      "description": "25秒間、自身をロックオン距離内に捉えている敵ユニットのターゲットを自身に集める。"
+    },
+    "special_attack": {
+      "name": "ドッズランサー強襲",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3300,
+      "description": "敵単体に格闘攻撃でダメージを与え、一定時間、自身の[機動力][近距離攻撃力]をアップする。",
+      "sp_type": "ECHOES BEAT",
+      "echoes_beat": {
+        "name": "ドッズランサー強襲 Lv.2",
+        "level": 2,
+        "power": 3900,
+        "range": 3,
+        "target": "単体(敵)",
+        "description": "EBLv.を2下げる。敵単体に格闘攻撃でダメージを与える。一定時間、自身の[機動力][近距離攻撃力]をアップし、出撃中の全味方ユニットの受けるダメージを軽減する。出撃時1度のみ使用可能。"
+      },
+      "united_sp": null,
+      "squad_sp": null
+    }
+  },
+  "ocr_engine": "claude_code_subagent",
+  "ocr_timestamp": "2026-08-10T00:00:00"
+}
