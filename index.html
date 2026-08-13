@@ -1418,7 +1418,7 @@ body.resizing-sidebar{cursor:ns-resize;user-select:none}
         <button class="header-btn" onclick="openCardViewer();closeHeaderMenu()" style="flex:1">&#128269; カード検索</button>
       </div>
       <div class="header-menu-row">
-        <button class="header-btn" id="halfModeBtn" onclick="SidebarHalf.toggle()" title="検索パネルを下半分に置き、デッキを見ながら選べるようにする" style="flex:1">検索: 下半分に表示</button>
+        <button class="header-btn" id="halfModeBtn" onclick="SidebarHalf.toggle();closeHeaderMenu()" title="検索パネルを下半分に置き、デッキを見ながら選べるようにする" style="flex:1">検索: 下半分に表示</button>
       </div>
       <div class="header-menu-row" style="gap:0.3rem">
         <button class="header-btn" id="alignBtn" onclick="UIRenderer.alignDisplay()" title="カラム表示を揃える" style="flex:1">表示を整理</button>
@@ -6023,10 +6023,18 @@ const SidebarHalf = {
   },
 
   toggle() {
-    const on = document.getElementById('sidebar').classList.toggle('half-mode');
+    const sidebar = document.getElementById('sidebar');
+    const on = sidebar.classList.toggle('half-mode');
     localStorage.setItem(this._KEY, on ? '1' : '0');
     this._syncBtn();
     this.sync();
+    // パネルを開いていないと見た目が一切変わらず「効いていない」と見えるため、
+    // 閉じている場合はその場で検索を開いて結果を見せる
+    if (!sidebar.classList.contains('open')) {
+      if (on) openCardViewer();
+    } else if (typeof Toast !== 'undefined') {
+      Toast.show(on ? '検索パネルを下半分に表示します' : '検索パネルを全画面に戻しました', 'success', 2000);
+    }
   },
 
   // オーバーレイとデッキ領域の高さを現在の状態に合わせる
