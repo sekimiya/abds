@@ -6001,7 +6001,8 @@ function closeCardPicker() {
 // 全画面だとデッキが完全に隠れるため、デッキを見ながらカードを選べるようにする。
 // ================================================================
 const SidebarHalf = {
-  _KEY: 'abds_halfMode',
+  // v2: 既定値を「ハーフ」に変更したためキー名を変えて旧設定を引き継がない
+  _KEY: 'abds_halfMode2',
   _TOP_KEY: 'abds_halfTop',
   MIN_PCT: 20,
   MAX_PCT: 80,
@@ -6014,8 +6015,10 @@ const SidebarHalf = {
   restore() {
     const top = parseFloat(localStorage.getItem(this._TOP_KEY));
     this._setTop(isNaN(top) ? this.DEFAULT_PCT : top);
+    // 既定はハーフ。カードスロットから開いたときにデッキを見ながら選べるようにする
+    const saved = localStorage.getItem(this._KEY);
     document.getElementById('sidebar')
-      .classList.toggle('half-mode', localStorage.getItem(this._KEY) === '1');
+      .classList.toggle('half-mode', saved === null ? true : saved === '1');
     this._initDrag();
     this._syncBtn();
     this.sync();
