@@ -3568,8 +3568,9 @@ const UIRenderer = {
     // Attach click handlers to slots
     document.querySelectorAll('.card-slot').forEach(slot => {
       slot.addEventListener('click', (e) => {
-        // カード画像・×ボタン・詳細ボタンのタップではピッカーを開かない
-        if (e.target.closest('.card-slot-img, .card-slot-clear, .card-slot-detail')) return;
+        // カード画像を含めスロットのクリックはカード選択に入る。
+        // 詳細表示は「詳細」ボタンのみ。×ボタンはクリア。
+        if (e.target.closest('.card-slot-clear, .card-slot-detail')) return;
         const idx = parseInt(slot.dataset.slot);
         this.setActiveSlot(idx);
         const type = slot.dataset.type;
@@ -3706,7 +3707,6 @@ const UIRenderer = {
       ${badgeHtml}
       ${rarityBadge}
       <img class="card-slot-img" src="${frontUrl}" alt="${cardNumber}"
-           onclick="event.stopPropagation();showCardModal('${escapeJsForAttr(cardNumber)}')"
            onerror="this.onerror=null;this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22160%22 height=%22240%22><rect fill=%22%23222%22 width=%22160%22 height=%22240%22/><text x=%2280%22 y=%22120%22 fill=%22%23666%22 text-anchor=%22middle%22>No Image</text></svg>'">
       <button class="card-slot-detail" onclick="event.stopPropagation();showCardModal('${escapeJsForAttr(cardNumber)}')">詳細</button>
       ${cardName ? `<div class="card-slot-name">${escapeHtml(cardName)}</div>` : ''}
