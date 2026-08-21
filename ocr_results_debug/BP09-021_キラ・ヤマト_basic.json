@@ -1,0 +1,58 @@
+{
+  "card_number": "BP09-021",
+  "card_name": "キラ・ヤマト",
+  "series": "BOOSTER PACK [4.5th Anniversary NEXT Selection]",
+  "ocr_data": {
+    "type": "PL",
+    "name": "キラ・ヤマト",
+    "cost": 4,
+    "rarity": "U",
+    "category": "殲滅",
+    "affiliation": "",
+    "illustrator": "",
+    "stats": {
+      "mobility": 230,
+      "ranged_attack": 350,
+      "melee_attack": 30,
+      "hp": 390
+    },
+    "link_ability": [
+      {
+        "name": "僕たちのGAB",
+        "condition": "デッキに3枚以上",
+        "effect": "専用作戦カードが使用可能 [HP]中アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "的確な一撃",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][遠距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "KIRA YAMATO",
+    "physical": {
+      "height": "",
+      "age": ""
+    },
+    "units": [],
+    "pilot_skill": {
+      "name": "戦う覚悟",
+      "trigger": "出撃時",
+      "effect": "出撃中の味方ユニット数に応じて[機動力][遠距離攻撃力]をアップする。味方ユニット数には自身を含む。",
+      "has_sq_skill": false,
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    },
+    "ms_ability": null,
+    "special_attack": null
+  },
+  "ocr_engine": "claude_code_subagent",
+  "ocr_timestamp": "2026-08-21T00:00:00"
+}

@@ -1,0 +1,80 @@
+{
+  "card_number": "BP09-004",
+  "card_name": "ガンダム試作2号機",
+  "series": "BOOSTER PACK [4.5th Anniversary NEXT Selection]",
+  "ocr_data": {
+    "type": "MS",
+    "name": "ガンダム試作2号機",
+    "cost": 3,
+    "rarity": "M",
+    "category": "遠距離",
+    "affiliation": "",
+    "illustrator": "monban",
+    "stats": {
+      "mobility": 210,
+      "ranged_attack": 340,
+      "melee_attack": 40,
+      "hp": 360
+    },
+    "link_ability": [
+      {
+        "name": "NEXT",
+        "condition": "デッキに3枚以上",
+        "effect": "[HP]中アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "的確な一撃",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][遠距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "",
+    "model": "RX-78GP02A GUNDAM GP02A",
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "A",
+      "desert": "C",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "対艦ライフル",
+        "range": 4,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ビーム・サーベル",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "転化[妨害]",
+      "activation": "任意発動",
+      "target": "範囲(敵)",
+      "range": null,
+      "cost": 4,
+      "description": "一定時間、自身を中心とした範囲内の敵ユニットを弱体化する。使用回数に応じて、弱体化効果、範囲が変わる。[1回:遠/近攻撃力ダウン][2回:被ダメージアップ][3回以上:出撃中の全敵ユニットの遠/近攻撃力&SP威力ダウン]"
+    },
+    "special_attack": {
+      "name": "アトミックバズーカ爆撃",
+      "target": "範囲(敵)",
+      "range": 4,
+      "sp_cost": 2,
+      "power": 3200,
+      "description": "対象の敵を中心として範囲射撃でダメージを与える。この攻撃は敵味方関係なくヒットする。",
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
+  },
+  "ocr_engine": "claude_code_subagent",
+  "ocr_timestamp": "2026-08-21T00:00:00"
+}

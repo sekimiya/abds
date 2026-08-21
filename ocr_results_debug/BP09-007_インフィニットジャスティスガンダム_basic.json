@@ -1,0 +1,80 @@
+{
+  "card_number": "BP09-007",
+  "card_name": "インフィニットジャスティスガンダム",
+  "series": "BOOSTER PACK [4.5th Anniversary NEXT Selection]",
+  "ocr_data": {
+    "type": "MS",
+    "name": "インフィニットジャスティスガンダム",
+    "cost": 6,
+    "rarity": "U",
+    "category": "近距離",
+    "affiliation": "",
+    "illustrator": "haru",
+    "stats": {
+      "mobility": 270,
+      "ranged_attack": 70,
+      "melee_attack": 620,
+      "hp": 640
+    },
+    "link_ability": [
+      {
+        "name": "NEXT",
+        "condition": "デッキに3枚以上",
+        "effect": "[HP]中アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "肉薄する戦い",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "",
+    "model": "ZGMF-X19A INFINITE JUSTICE GUNDAM",
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "A",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "アンビデクストラス・ハルバード",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "高エネルギービームライフル",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "強撃",
+      "activation": "任意発動",
+      "target": "単体(敵)",
+      "range": 1,
+      "cost": 3,
+      "description": "ロックオン中の敵に単体攻撃でダメージを与える。"
+    },
+    "special_attack": {
+      "name": "一斉連撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 3,
+      "power": 4200,
+      "description": "敵単体に格闘攻撃でダメージを与え、一定時間、出撃中の全味方殲滅ユニットの[遠/近攻撃力]をアップし、受けるダメージを軽減する。搭乗しているPLが[アスラン・ザラ]、かつリンクアビリティ[NEXT]が発動している場合、この戦術技の対象が拠点なら撃破する。",
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
+  },
+  "ocr_engine": "claude_code_subagent",
+  "ocr_timestamp": "2026-08-21T00:00:00"
+}

@@ -1,0 +1,80 @@
+{
+  "card_number": "BP09-014",
+  "card_name": "ダリルバルデ",
+  "series": "BOOSTER PACK [4.5th Anniversary NEXT Selection]",
+  "ocr_data": {
+    "type": "MS",
+    "name": "ダリルバルデ",
+    "cost": 2,
+    "rarity": "R",
+    "category": "近距離",
+    "affiliation": "",
+    "illustrator": "Aidle Co., Ltd._TSUBASA KOYAMA",
+    "stats": {
+      "mobility": 260,
+      "ranged_attack": 30,
+      "melee_attack": 230,
+      "hp": 280
+    },
+    "link_ability": [
+      {
+        "name": "NEXT",
+        "condition": "デッキに3枚以上",
+        "effect": "[HP]中アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "肉薄する戦い",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "",
+    "model": "MD-0064 DARILBALDE",
+    "terrain_compatibility": {
+      "ground": "S",
+      "space": "A",
+      "desert": "C",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "ビームカタナ",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "ビームショットライフル",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "強撃",
+      "activation": "任意発動",
+      "target": "単体(敵)",
+      "range": 1,
+      "cost": 3,
+      "description": "ロックオン中の敵に単体攻撃でダメージを与える。"
+    },
+    "special_attack": {
+      "name": "グスサー・イーシュヴァラ連携",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3200,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
+  },
+  "ocr_engine": "claude_code_subagent",
+  "ocr_timestamp": "2026-08-21T00:00:00"
+}

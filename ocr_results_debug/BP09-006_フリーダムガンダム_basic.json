@@ -1,0 +1,80 @@
+{
+  "card_number": "BP09-006",
+  "card_name": "フリーダムガンダム",
+  "series": "BOOSTER PACK [4.5th Anniversary NEXT Selection]",
+  "ocr_data": {
+    "type": "MS",
+    "name": "フリーダムガンダム",
+    "cost": 7,
+    "rarity": "U",
+    "category": "遠距離",
+    "affiliation": "",
+    "illustrator": "KURI (studio toujyou)",
+    "stats": {
+      "mobility": 290,
+      "ranged_attack": 630,
+      "melee_attack": 70,
+      "hp": 610
+    },
+    "link_ability": [
+      {
+        "name": "NEXT",
+        "condition": "デッキに3枚以上",
+        "effect": "[HP]中アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "的確な一撃",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][遠距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "",
+    "model": "ZGMF-X10A FREEDOM GUNDAM",
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "A",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "ルプス・ビームライフル",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ラケルタ・ビームサーベル",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "追撃[貫通]",
+      "activation": "出撃時発動",
+      "target": "自分",
+      "range": null,
+      "cost": null,
+      "description": "ロックオン中の敵を通常攻撃後、追撃ゲージ(弾薬数)を消費してロックオン中の敵に貫通追撃を行い、ダメージを与える。/追撃ゲージが0の時に任意発動可能となり、コストを5使用することで、追撃ゲージを再装填する。"
+    },
+    "special_attack": {
+      "name": "ハイマットフルバースト",
+      "target": "範囲(敵)",
+      "range": 4,
+      "sp_cost": 2,
+      "power": 3200,
+      "description": "ロックオン中の敵を中心に扇状の範囲攻撃を行い、一定時間、自身の被ダメージを軽減。自身が撤退するまで[遠攻撃力]アップ。リンクアビリティ[NEXT]が発動している場合、[遠攻撃力]アップの効果値がさらに上昇。通常攻撃に、一定時間[機動力]をダウンさせる効果が追加。自身が撤退するまで効果は持続。",
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
+  },
+  "ocr_engine": "claude_code_subagent",
+  "ocr_timestamp": "2026-08-21T00:00:00"
+}
