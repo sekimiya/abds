@@ -1,0 +1,34 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>card signature builder</title>
+<!-- 端末側と同一の解析コードを使う(ここがズレると照合精度が落ちる) -->
+<script src="./deck_scan.js"></script>
+<script>
+(async () => {
+  const save = new URLSearchParams(location.search).get('save');
+  const nums = await (await fetch('./_fronts.tmp.json')).json();
+  console.log('[B] 対象 ' + nums.length);
+  const loadImg = s => new Promise(r => {
+    const i = new Image();
+    i.onload = () => r(i);
+    i.onerror = () => r(null);
+    i.src = s;
+  });
+  const out = {};
+  let next = 0, done = 0, failed = 0;
+  const worker = async () => {
+    for (;;) {
+      const k = next++;
+      if (k >= nums.length) return;
+      const img = await loadImg('./images/cards/' + nums[k] + '.jpg');
+      if (!img) { failed++; continue; }
+      out[nums[k]] = DeckScan.signatureHex(img);
+      if (++done % 500 === 0) console.log('[B] ' + done);
+    }
+  };
+  await Promise.all(Array.from({ length: 12 }, worker));
+  console.log('[B] 完了 ' + Object.keys(out).length + ' 失敗 ' + failed);
+  await fetch(save, { method: 'POST', body: JSON.stringify(out) });
+  console.log('[B] POSTED');
+})();
+</script>

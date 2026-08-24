@@ -1219,6 +1219,40 @@ body.light .ss-text{color:#555}
 
   .detail-area{width:40%;flex:1;overflow-y:auto;padding:6px}
 }
+/* ===== デッキ画像照合 (DeckScan) ===== */
+.ds-overlay{display:none;position:fixed;inset:0;z-index:190;background:var(--bg2);flex-direction:column}
+.ds-overlay.open{display:flex}
+.ds-topbar{
+  display:flex;align-items:center;gap:6px;flex-shrink:0;padding:6px 8px;
+  border-bottom:1px solid #333;
+  padding-top:calc(6px + env(safe-area-inset-top));height:calc(44px + env(safe-area-inset-top));
+}
+.ds-title{color:var(--accent);font-weight:bold;font-size:0.95rem}
+.ds-close{margin-left:auto;background:none;border:none;color:#888;font-size:1.3rem;padding:4px 8px}
+.ds-body{
+  flex:1 1 0;min-height:0;overflow-y:auto;-webkit-overflow-scrolling:touch;
+  padding:12px;padding-bottom:calc(12px + env(safe-area-inset-bottom));
+  display:flex;flex-direction:column;align-items:center;gap:10px;
+}
+.ds-drop{
+  width:100%;border:2px dashed #444;border-radius:10px;padding:28px 12px;
+  text-align:center;color:#888;background:transparent;
+}
+.ds-drop .ds-drop-icon{font-size:2rem;line-height:1;margin-bottom:6px}
+.ds-drop .ds-drop-main{color:var(--accent);font-weight:bold;font-size:0.95rem;margin-bottom:4px}
+.ds-drop .ds-drop-sub{font-size:0.7rem;line-height:1.6}
+.ds-status{color:var(--accent);font-size:0.8rem;min-height:1.2em;text-align:center}
+.ds-status.err{color:#ff8a80}
+.ds-preview{max-width:100%;max-height:30vh;border-radius:6px;border:1px solid #333}
+.ds-result{display:grid;grid-template-columns:repeat(5,1fr);gap:4px;width:100%}
+.ds-cell{border:1px solid #333;border-radius:5px;overflow:hidden;background:var(--bg-card)}
+.ds-cell.low{border-color:#ff9800}
+.ds-cell img{width:100%;aspect-ratio:600/875;object-fit:cover;display:block}
+.ds-cell-name{font-size:0.52rem;color:#ccc;padding:2px 3px 0;line-height:1.2;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+body.light .ds-cell-name{color:#444}
+.ds-cell-num{font-size:0.48rem;color:#777;padding:0 3px 3px}
+
 /* ===== 所持カードチェック ===== */
 /* 未所持は一律グレーアウトし、ダブルタップで所持に切り替える */
 body.owned-mode .thumb-card{filter:grayscale(1);opacity:0.42;-webkit-user-select:none;user-select:none}
@@ -1792,6 +1826,25 @@ body.picking-split .trade-sec.picking .trade-grid{
   </div>
 </div>
 
+<!-- ===== デッキ画像照合 ===== -->
+<div class="ds-overlay" id="dsOverlay">
+  <div class="ds-topbar">
+    <span class="ds-title">デッキ画像照合</span>
+    <button class="ds-close" onclick="DeckScanUI.close()">&times;</button>
+  </div>
+  <div class="ds-body">
+    <div class="ds-drop" onclick="document.getElementById('dsFile').click()">
+      <div class="ds-drop-icon">&#128247;</div>
+      <div class="ds-drop-main">画像を選択</div>
+      <div class="ds-drop-sub">MS5枚 + PL5枚が5×2で並んだ画像<br>カード1枚あたり70px以上あると確実です</div>
+    </div>
+    <input type="file" id="dsFile" accept="image/*" style="display:none" onchange="DeckScanUI.onFile(this.files[0])">
+    <div class="ds-status" id="dsStatus"></div>
+    <img class="ds-preview" id="dsPreview" style="display:none" alt="">
+    <div class="ds-result" id="dsResult"></div>
+  </div>
+</div>
+
 <!-- ===== 交換画像作成 ===== -->
 <div class="trade-overlay" id="tradeOverlay">
   <div class="trade-topbar">
@@ -1869,6 +1922,7 @@ body.picking-split .trade-sec.picking .trade-grid{
   <button class="menu-btn" onclick="openCardViewer();toggleMenu()" style="width:100%;margin-bottom:6px">&#128269; カード検索</button>
   <button class="menu-btn" onclick="TradeMaker.open();toggleMenu()" style="width:100%;margin-bottom:6px;color:#4fc3f7;border-color:#4fc3f7">&#128257; 交換画像作成</button>
   <button class="menu-btn" onclick="openOwnedChecker();toggleMenu()" style="width:100%;margin-bottom:6px;color:var(--accent);border-color:var(--accent)">&#9989; 所持カードチェック</button>
+  <button class="menu-btn" onclick="DeckScanUI.open();toggleMenu()" style="width:100%;margin-bottom:6px;color:#ffb74d;border-color:#ffb74d">&#128247; デッキ画像照合</button>
   <div class="menu-row" style="gap:4px">
     <button class="menu-btn" onclick="DeckManager.sortByCategory();toggleMenu()" title="殲滅→制圧→防衛の順に並び替え" style="flex:1">並び順を整理</button>
   </div>
@@ -1934,6 +1988,146 @@ body.picking-split .trade-sec.picking .trade-grid{
   </div>
 </div>
 
+<script src="./deck_scan.js"></script>
+<script>
+// ================================================================
+// DeckScanUI - デッキ画像照合
+// 画像を受け取り DeckScan で10枚を認識して、そのままデッキにセットする。
+// 索引(data/card_signatures.json)は初回利用時にだけ読み込む。
+// ================================================================
+const DeckScanUI = {
+  LOW_MARGIN: 25,   // 2位との差がこれ未満なら「要確認」として色を変える
+  _index: null,
+  _loading: null,
+  _busy: false,
+  _objUrl: null,
+
+  open() {
+    document.getElementById('dsOverlay').classList.add('open');
+    this._reset();
+    this._ensureIndex();   // 待っている間に索引を先読みしておく
+  },
+  close() {
+    document.getElementById('dsOverlay').classList.remove('open');
+    this._revoke();
+  },
+  isOpen() {
+    return document.getElementById('dsOverlay').classList.contains('open');
+  },
+  _reset() {
+    this._setStatus('');
+    document.getElementById('dsResult').innerHTML = '';
+    const pv = document.getElementById('dsPreview');
+    pv.style.display = 'none'; pv.removeAttribute('src');
+    this._revoke();
+    const f = document.getElementById('dsFile'); if (f) f.value = '';
+  },
+  _revoke() {
+    if (this._objUrl) { URL.revokeObjectURL(this._objUrl); this._objUrl = null; }
+  },
+  _setStatus(text, isErr) {
+    const el = document.getElementById('dsStatus');
+    el.textContent = text;
+    el.classList.toggle('err', !!isErr);
+  },
+
+  _ensureIndex() {
+    if (this._index) return Promise.resolve(this._index);
+    if (!this._loading) {
+      this._loading = fetch('./data/card_signatures.json')
+        .then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+        .then(raw => { this._index = DeckScan.prepareIndex(raw); return this._index; })
+        .catch(e => { this._loading = null; throw e; });
+    }
+    return this._loading;
+  },
+
+  // プレビューにも同じ URL を使うので、ここでは破棄しない(_reset で破棄する)
+  _loadImage(file) {
+    this._revoke();
+    return new Promise((resolve, reject) => {
+      const url = URL.createObjectURL(file);
+      this._objUrl = url;
+      const img = new Image();
+      img.onload = () => resolve(img);
+      img.onerror = () => reject(new Error('画像を読み込めませんでした'));
+      img.src = url;
+    });
+  },
+
+  async onFile(file) {
+    if (!file || this._busy) return;
+    if (!/^image\//.test(file.type)) { this._setStatus('画像ファイルを選んでください', true); return; }
+    this._busy = true;
+    document.getElementById('dsResult').innerHTML = '';
+    this._setStatus('読み込み中…');
+    try {
+      const img = await this._loadImage(file);
+      const pv = document.getElementById('dsPreview');
+      pv.src = this._objUrl; pv.style.display = '';
+      this._setStatus('照合データを準備中…');
+      const index = await this._ensureIndex();
+      this._setStatus('解析中…');
+      // 描画を1フレーム進めてから重い処理に入る(進捗表示が出ないまま固まるのを防ぐ)
+      await new Promise(r => requestAnimationFrame(() => setTimeout(r, 0)));
+      const t0 = performance.now();
+      const res = DeckScan.scanDeck(img, index);
+      console.log('DeckScan:', Math.round(performance.now() - t0) + 'ms');
+      if (!res || !res.cards || res.cards.length !== 10) {
+        this._setStatus('カードの並びを検出できませんでした。5×2の10枚が写っているか確認してください', true);
+        return;
+      }
+      this._renderResult(img, res);
+      this._apply(res);
+    } catch (e) {
+      console.error('DeckScanUI.onFile failed:', e);
+      this._setStatus((e && e.message) || '解析に失敗しました', true);
+    } finally {
+      this._busy = false;
+      const f = document.getElementById('dsFile'); if (f) f.value = '';
+    }
+  },
+
+  _renderResult(img, res) {
+    const grid = document.getElementById('dsResult');
+    grid.innerHTML = '';
+    res.cards.forEach(c => {
+      const card = UIRenderer._getIndexEntry(c.number);
+      const el = document.createElement('div');
+      el.className = 'ds-cell' + (c.margin < this.LOW_MARGIN ? ' low' : '');
+      el.innerHTML =
+        `<img src="${resolveImageUrl(null, c.number, 'front')}" alt="${escapeHtml(c.number)}"` +
+        ` onerror="this.onerror=null;this.src=PLACEHOLDER_SVG">` +
+        `<div class="ds-cell-name">${escapeHtml(card ? card.name : c.number)}</div>` +
+        `<div class="ds-cell-num">${escapeHtml(c.number)}</div>`;
+      grid.appendChild(el);
+    });
+  },
+
+  // 認識結果をデッキへ。MS→スロット0-4、PL→スロット5-9。
+  _apply(res) {
+    const nums = res.cards.map(c => c.number);
+    const typeOf = n => (UIRenderer._getIndexEntry(n) || {}).type;
+    const msList = nums.filter(n => typeOf(n) === 'MS');
+    const plList = nums.filter(n => typeOf(n) === 'PL');
+    if (msList.length !== 5 || plList.length !== 5) {
+      this._setStatus(`MS${msList.length}枚 / PL${plList.length}枚 と認識されました。MS5枚+PL5枚の並びではないようです`, true);
+      return;
+    }
+    if (AppState.deck.some(Boolean) && !confirm('現在のデッキを、認識した10枚で置き換えます。よろしいですか？')) {
+      this._setStatus('セットを中止しました');
+      return;
+    }
+    for (let i = 0; i < 5; i++) DeckManager.setCard(i, msList[i]);
+    for (let i = 0; i < 5; i++) DeckManager.setCard(i + 5, plList[i]);
+    const low = res.cards.filter(c => c.margin < this.LOW_MARGIN).length;
+    this._setStatus('10枚をデッキにセットしました' + (low ? ` ／ ${low}枚は自信が低めです` : ''));
+    Toast.show(low ? `10枚をセットしました（${low}枚は要確認）` : '10枚をデッキにセットしました',
+               low ? 'info' : 'success', low ? 4000 : 2500);
+    setTimeout(() => this.close(), low ? 2500 : 900);
+  }
+};
+</script>
 <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 <script>
 // ================================================================
