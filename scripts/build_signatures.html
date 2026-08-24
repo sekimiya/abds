@@ -26,7 +26,7 @@
       if (++done % 500 === 0) console.log('[B] ' + done);
     }
   };
-  await Promise.all(Array.from({ length: 12 }, worker));
+  await Promise.all(Array.from({ length: 8 }, worker));
   console.log('[B] 完了 ' + Object.keys(out).length + ' 失敗 ' + failed);
   await fetch(save, { method: 'POST', body: JSON.stringify(out) });
   console.log('[B] POSTED');

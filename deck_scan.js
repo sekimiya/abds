@@ -369,38 +369,66 @@
     return c.length ? c[0] : null;
   }
 
-  // 索引側(600x875のカード画像)と照会側(任意サイズの切り出し)で
-  // 縮小の元解像度が違うとエイリアスの出方が変わるため、必ず同じ中間解像度を経由する
+  // 索引側と照会側で必ず同じ値になるように、縮小はブラウザ任せにしない。
+  // canvas の drawImage による縮小はブラウザごとにアルゴリズムが違い、
+  // Chrome で作った索引が Safari では一致しなくなる(実測 dHash が最大25bitズレる)。
+  // そこで等倍で切り出してから、自前のボックスフィルタで縮小する。
   const MID_W = 120, MID_H = 175;
+
+  // 決定的な縮小(整数ブロック平均)。
+  // 入力画素を1回だけ走査して出力ビンに足し込む。
+  // ブラウザの drawImage による縮小と違い、どの環境でも同じ値になる。
+  function boxDownsample(src, sw, sh, dw, dh, stride) {
+    const st = stride || 4;
+    const n = dw * dh;
+    const acc = new Float64Array(n * 3), cnt = new Float64Array(n);
+    for (let y = 0; y < sh; y++) {
+      const dy = (y * dh / sh) | 0;
+      const rowOff = dy * dw;
+      for (let x = 0; x < sw; x++) {
+        const o = (rowOff + ((x * dw / sw) | 0)) * 3;
+        const p = (y * sw + x) * st;
+        acc[o] += src[p]; acc[o + 1] += src[p + 1]; acc[o + 2] += src[p + 2];
+        cnt[(rowOff + ((x * dw / sw) | 0))]++;
+      }
+    }
+    const out = new Float32Array(n * 3);
+    for (let i = 0; i < n; i++) {
+      const c = cnt[i] || 1, o = i * 3;
+      out[o] = acc[o] / c; out[o + 1] = acc[o + 1] / c; out[o + 2] = acc[o + 2] / c;
+    }
+    return out;
+  }
+
   function cellSignature(img, sx, sy, sw, sh) {
     // 外周6%はカード共通の枠なので除外
-    const ix = sx + sw*0.06, iy = sy + sh*0.06, iw = sw*0.88, ih = sh*0.88;
-    const mid = document.createElement('canvas');
-    mid.width = MID_W; mid.height = MID_H;
-    let ctx = mid.getContext('2d', { willReadFrequently: true });
-    ctx.imageSmoothingEnabled = true; ctx.imageSmoothingQuality = 'high';
-    ctx.drawImage(img, ix, iy, iw, ih, 0, 0, MID_W, MID_H);
+    let ix = Math.round(sx + sw*0.06), iy = Math.round(sy + sh*0.06);
+    let iw = Math.round(sw*0.88), ih = Math.round(sh*0.88);
+    const maxW = img.width || img.naturalWidth, maxH = img.height || img.naturalHeight;
+    ix = Math.max(0, Math.min(ix, maxW-1)); iy = Math.max(0, Math.min(iy, maxH-1));
+    iw = Math.max(1, Math.min(iw, maxW-ix)); ih = Math.max(1, Math.min(ih, maxH-iy));
 
+    // 等倍で切り出す(拡大縮小しないのでブラウザ差が出ない)
     const cv = document.createElement('canvas');
-    cv.width = HG+1; cv.height = HG;
-    ctx = cv.getContext('2d', { willReadFrequently: true });
-    ctx.imageSmoothingEnabled = true; ctx.imageSmoothingQuality = 'high';
-    ctx.drawImage(mid, 0, 0, MID_W, MID_H, 0, 0, HG+1, HG);
-    const gd = ctx.getImageData(0,0,HG+1,HG).data;
-    const gray = [];
-    for (let i=0,p=0;i<(HG+1)*HG;i++,p+=4) gray.push(0.299*gd[p]+0.587*gd[p+1]+0.114*gd[p+2]);
-    const bits=[];
-    for (let y=0;y<HG;y++) for (let x=0;x<HG;x++)
-      bits.push(gray[y*(HG+1)+x] < gray[y*(HG+1)+x+1] ? 1 : 0);
+    cv.width = iw; cv.height = ih;
+    const ctx = cv.getContext('2d', { willReadFrequently: true });
+    ctx.imageSmoothingEnabled = false;
+    ctx.drawImage(img, ix, iy, iw, ih, 0, 0, iw, ih);
+    const raw = ctx.getImageData(0, 0, iw, ih).data;
 
-    const cv2 = document.createElement('canvas');
-    cv2.width = CG; cv2.height = CG;
-    ctx = cv2.getContext('2d', { willReadFrequently: true });
-    ctx.imageSmoothingEnabled = true; ctx.imageSmoothingQuality = 'high';
-    ctx.drawImage(mid, 0, 0, MID_W, MID_H, 0, 0, CG, CG);
-    const cd = ctx.getImageData(0,0,CG,CG).data;
-    const col=[];
-    for (let i=0,p=0;i<CG*CG;i++,p+=4){ col.push(cd[p],cd[p+1],cd[p+2]); }
+    // ここから先は自前の縮小のみ(全ブラウザで同じ値になる)
+    const mid = boxDownsample(raw, iw, ih, MID_W, MID_H, 4);
+    const small = boxDownsample(mid, MID_W, MID_H, HG+1, HG, 3);
+    const bits = [];
+    for (let y=0; y<HG; y++) for (let x=0; x<HG; x++) {
+      const a = (y*(HG+1)+x)*3, b = (y*(HG+1)+x+1)*3;
+      const ga = 0.299*small[a]+0.587*small[a+1]+0.114*small[a+2];
+      const gb = 0.299*small[b]+0.587*small[b+1]+0.114*small[b+2];
+      bits.push(ga < gb ? 1 : 0);
+    }
+    const col4 = boxDownsample(mid, MID_W, MID_H, CG, CG, 3);
+    const col = [];
+    for (let i=0;i<CG*CG;i++) col.push(col4[i*3], col4[i*3+1], col4[i*3+2]);
     return { bits, col };
   }
 
@@ -472,8 +500,11 @@ global.DeckScan = {
     let hi = 0, lo = 0;
     for (let j = 0; j < 32; j++) hi = (hi << 1) | s.bits[j];
     for (let j = 32; j < 64; j++) lo = (lo << 1) | s.bits[j];
+    // 色は整数に丸める(小数のままだと索引が4倍に膨らむ。
+    // ブラウザ間の誤差が0.3程度なので丸めても影響はない)
     return [((hi >>> 0).toString(16).padStart(8, '0')) +
-            ((lo >>> 0).toString(16).padStart(8, '0')), s.col];
+            ((lo >>> 0).toString(16).padStart(8, '0')),
+            s.col.map(v => Math.round(v))];
   }
 };
 })(window);

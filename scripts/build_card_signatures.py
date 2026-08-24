@@ -1,13 +1,12 @@
 #!/usr/bin/env python3
 """data/card_signatures.json を再生成する。
 
-デッキ画像照合(index.html / mobile.html の DeckScan)が使う、
+デッキ画像照合(index.html / mobile.html の DeckScanUI)が使う、
 全カード表面の画像指紋(dHash 64bit + 4x4 色シグネチャ)の索引。
 
 重要: 索引は必ず「端末側と同じコードパス」で作ること。
-Pillow など別の縮小アルゴリズムで作ると、canvas で計算する照会側と
-わずかにズレて誤認識が増える。そのため実際に Chrome を起動し、
-index.html と同一の signature 関数(build_signatures.html に複製)で計算する。
+deck_scan.js の cellSignature() をそのまま使う必要があるため、
+Pillow ではなく実際に Chrome を起動して計算する。
 
 新弾を追加して images/cards/ が増えたら必ず実行すること。
 
@@ -27,7 +26,6 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / 'data' / 'card_signatures.json'
 PORT = 8765
-SAVE_PORT = 8766
 
 CHROME_CANDIDATES = [
     '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
@@ -42,20 +40,7 @@ def find_chrome():
     for c in CHROME_CANDIDATES:
         if c and os.path.exists(c):
             return c
-    sys.exit('Chrome / Chromium が見つかりません。デッキ画像照合の索引生成には必要です。')
-
-
-class _Quiet(http.server.SimpleHTTPRequestHandler):
-    def log_message(self, *a):
-        pass
-
-
-def serve(directory, port, handler=None):
-    h = handler or (lambda *a, **k: _Quiet(*a, directory=directory, **k))
-    socketserver.TCPServer.allow_reuse_address = True
-    srv = socketserver.TCPServer(('127.0.0.1', port), h)
-    threading.Thread(target=srv.serve_forever, daemon=True).start()
-    return srv
+    sys.exit('Chrome / Chromium が見つかりません。索引生成には必要です。')
 
 
 def main():
@@ -67,35 +52,53 @@ def main():
         sys.exit('images/cards/ にカード画像がありません。')
     print(f'対象カード: {len(fronts)}枚')
 
-    tmp = Path(tempfile.mkdtemp())
-    (tmp / 'fronts.json').write_text(json.dumps(fronts), encoding='utf-8')
-    shutil.copy(ROOT / 'scripts' / 'build_signatures.html', tmp / 'index.html')
-
     result = {}
+    done = threading.Event()
 
-    class Save(http.server.SimpleHTTPRequestHandler):
+    class Handler(http.server.SimpleHTTPRequestHandler):
+        def __init__(self, *a, **kw):
+            super().__init__(*a, directory=str(ROOT), **kw)
+
         def do_POST(self):
             n = int(self.headers['Content-Length'])
             result.update(json.loads(self.rfile.read(n)))
-            self.send_response(200); self.send_header('Content-Length', '2'); self.end_headers()
+            self.send_response(200)
+            self.send_header('Content-Length', '2')
+            self.end_headers()
             self.wfile.write(b'ok')
+            done.set()
+
         def log_message(self, *a):
             pass
 
-    s1 = serve(str(ROOT), PORT)
-    s2 = serve(str(tmp), SAVE_PORT, Save)
+    class Threaded(socketserver.ThreadingMixIn, socketserver.TCPServer):
+        # 画像を並列で配れるようにする(単一スレッドだと3941枚の取得が詰まる)
+        daemon_threads = True
+        allow_reuse_address = True
+
+    srv = Threaded(('127.0.0.1', PORT), Handler)
+    threading.Thread(target=srv.serve_forever, daemon=True).start()
+
+    tmp = Path(tempfile.mkdtemp())
+    (ROOT / '_fronts.tmp.json').write_text(json.dumps(fronts), encoding='utf-8')
+    shutil.copy(ROOT / 'scripts' / 'build_signatures.html', ROOT / '_build.tmp.html')
     try:
-        # 生成ページは一時ディレクトリから配信し、カード画像は本体側から取りに行かせる
-        shutil.copy(tmp / 'fronts.json', ROOT / '_fronts.tmp.json')
-        shutil.copy(ROOT / 'scripts' / 'build_signatures.html', ROOT / '_build.tmp.html')
-        profile = tmp / 'profile'
-        subprocess.run([
+        # ヘッドレスChromeはページが終わっても自分では終了しないので、
+        # 結果のPOSTを受け取った時点でこちらから止める。
+        proc = subprocess.Popen([
             find_chrome(), '--headless=new', '--disable-gpu', '--no-sandbox',
-            f'--user-data-dir={profile}', '--virtual-time-budget=900000',
-            f'http://127.0.0.1:{PORT}/_build.tmp.html?save=http://127.0.0.1:{SAVE_PORT}/save',
-        ], check=True, capture_output=True)
+            f'--user-data-dir={tmp}',
+            f'http://127.0.0.1:{PORT}/_build.tmp.html?save=http://127.0.0.1:{PORT}/save',
+        ], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        if not done.wait(timeout=900):
+            print('タイムアウト: 生成が終わりませんでした', file=sys.stderr)
+        proc.terminate()
+        try:
+            proc.wait(timeout=15)
+        except subprocess.TimeoutExpired:
+            proc.kill()
     finally:
-        s1.shutdown(); s2.shutdown()
+        srv.shutdown()
         for f in ('_fronts.tmp.json', '_build.tmp.html'):
             (ROOT / f).unlink(missing_ok=True)
         shutil.rmtree(tmp, ignore_errors=True)
