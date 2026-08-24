@@ -446,42 +446,60 @@
   }
   function popcount(v){ v=v-((v>>1)&0x55555555); v=(v&0x33333333)+((v>>2)&0x33333333);
     return (((v+(v>>4))&0x0f0f0f0f)*0x01010101)>>24; }
-  function matchOne(sig, idx, k=3) {
+  // accept を渡すと、それを満たすカードだけを候補にする。
+  // (スロットの位置で MS / PL が決まっているので、属性で絞れる)
+  function matchOne(sig, idx, k=3, accept) {
     let qh=0, ql=0;
     for (let i=0;i<32;i++) qh = (qh<<1)|sig.bits[i];
     for (let i=32;i<64;i++) ql = (ql<<1)|sig.bits[i];
     qh|=0; ql|=0;
     const res=[];
     for (let i=0;i<idx.nums.length;i++){
+      const num = idx.nums[i];
+      if (accept && !accept(num)) continue;
       const d = popcount(qh^idx.hi[i]) + popcount(ql^idx.lo[i]);
       const c = idx.cols[i];
       let s=0;
       for (let j=0;j<48;j++){ const t=sig.col[j]-c[j]; s+=t*t; }
-      res.push([d*22 + Math.sqrt(s)*0.11, idx.nums[i]]);
+      res.push([d*22 + Math.sqrt(s)*0.11, num]);
     }
     res.sort((a,b)=>a[0]-b[0]);
     return res.slice(0,k);
   }
-  function readGrid(img, g, idx) {
+  function readGrid(img, g, idx, accepts) {
     const ch = (g.y1-g.y0)/2, out = [];
     let conf = 0;
-    for (let r=0;r<2;r++) for (let c=0;c<5;c++){
+    let n = 0;
+    for (let r=0;r<2;r++) for (let c=0;c<5;c++, n++){
       const [x0,x1] = g.cols[c];
       const s = cellSignature(img, x0, g.y0+r*ch, x1-x0, ch);
-      const m = matchOne(s, idx);
-      const margin = m[1][0]-m[0][0];
-      out.push({ number: m[0][1], score: m[0][0], margin, alts: m.map(a=>a[1]) });
+      const free = matchOne(s, idx, 3);            // 属性を絞らない場合の最良
+      const acc = accepts && accepts[n];
+      let m = free, constrained = false;
+      if (acc && free.length && !acc(free[0][1])) {
+        // 属性が合わない = 取り違え。その属性のカードに限って選び直す
+        const alt = matchOne(s, idx, 3, acc);
+        if (alt.length) { m = alt; constrained = true; }
+      }
+      if (!m.length) { out.push({ number: null, score: Infinity, margin: 0, alts: [] }); continue; }
+      const margin = m.length > 1 ? m[1][0]-m[0][0] : 999;
+      out.push({ number: m[0][1], score: m[0][0], margin,
+                 alts: m.map(a=>a[1]),
+                 constrained,                        // 属性で選び直したか
+                 freeTop: free.length ? free[0][1] : null });
       conf += Math.min(margin, 200);   // 1枚の突出で全体が決まらないよう頭打ちにする
     }
     return { grid: g, cards: out, conf };
   }
 
-  function scanDeck(img, idx) {
+  // opts.accepts … 10マスぶんの絞り込み関数の配列(省略可)
+  function scanDeck(img, idx, opts) {
     const cands = detectGridCandidates(img);
     if (!cands.length) return null;
+    const accepts = opts && opts.accepts;
     let best = null;
     for (const g of cands) {
-      const r = readGrid(img, g, idx);
+      const r = readGrid(img, g, idx, accepts);
       if (!best || r.conf > best.conf) best = r;
     }
     return best;
