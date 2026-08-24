@@ -1382,6 +1382,9 @@ body.resizing-sidebar{cursor:ns-resize;user-select:none}
 .ds-result{display:grid;grid-template-columns:repeat(5,1fr);gap:0.5rem;width:100%;max-width:760px}
 .ds-cell{border:1px solid #333;border-radius:8px;overflow:hidden;background:#1b1b1b}
 .ds-cell.low{border-color:#ff9800}
+.ds-cell.skip{border-color:#f44336;opacity:0.6}
+.ds-cell.skip img{filter:grayscale(1)}
+.ds-cell-skip{font-size:0.6rem;color:#ff8a80;padding:0 4px 4px}
 .ds-cell img{width:100%;aspect-ratio:600/875;object-fit:cover;display:block}
 .ds-cell-name{font-size:0.68rem;color:#ccc;padding:3px 4px 0;line-height:1.25}
 .ds-cell-num{font-size:0.6rem;color:#777;padding:1px 4px 4px}
@@ -7637,43 +7640,63 @@ const DeckScanUI = {
     }
   },
 
+  // 5x2 の並びは 上段=MS / 下段=PL と決まっている。
+  // 認識結果の属性がその位置と合わないマスは取り違えなので、除外する。
+  _plan(res) {
+    return res.cards.map((c, i) => {
+      const want = i < 5 ? 'MS' : 'PL';
+      const got = (UIRenderer._getIndexEntry(c.number) || {}).type;
+      return { i, number: c.number, want, ok: got === want };
+    });
+  },
+
   _renderResult(img, res) {
     const grid = document.getElementById('dsResult');
     grid.innerHTML = '';
-    res.cards.forEach(c => {
+    const plan = this._plan(res);
+    res.cards.forEach((c, i) => {
       const card = UIRenderer._getIndexEntry(c.number);
       const el = document.createElement('div');
-      el.className = 'ds-cell' + (c.margin < this.LOW_MARGIN ? ' low' : '');
+      el.className = 'ds-cell' + (!plan[i].ok ? ' skip' : c.margin < this.LOW_MARGIN ? ' low' : '');
       el.innerHTML =
         `<img src="${resolveImageUrl(null, c.number, 'front')}" alt="${escapeHtml(c.number)}"` +
         ` onerror="this.onerror=null;this.src=PLACEHOLDER_SVG">` +
         `<div class="ds-cell-name">${escapeHtml(card ? card.name : c.number)}</div>` +
-        `<div class="ds-cell-num">${escapeHtml(c.number)}</div>`;
+        `<div class="ds-cell-num">${escapeHtml(c.number)}</div>` +
+        (!plan[i].ok ? `<div class="ds-cell-skip">${plan[i].want}のはず → 除外</div>` : '');
       grid.appendChild(el);
     });
   },
 
-  // 認識結果をデッキへ。MS→スロット0-4、PL→スロット5-9。
+  // 認識結果をデッキへ。スロット0-4がMS、5-9がPL。
+  // 属性が合わないマスは認識ミスなので、そこだけ空けたまま残りをセットする。
   _apply(res) {
-    const nums = res.cards.map(c => c.number);
-    const typeOf = n => (UIRenderer._getIndexEntry(n) || {}).type;
-    const msList = nums.filter(n => typeOf(n) === 'MS');
-    const plList = nums.filter(n => typeOf(n) === 'PL');
-    if (msList.length !== 5 || plList.length !== 5) {
-      this._setStatus(`MS${msList.length}枚 / PL${plList.length}枚 と認識されました。MS5枚+PL5枚の並びではないようです`, true);
+    const plan = this._plan(res);
+    const good = plan.filter(p => p.ok);
+    const skipped = plan.filter(p => !p.ok);
+    if (!good.length) {
+      this._setStatus('カードを認識できませんでした。もう一度撮り直してください', true);
       return;
     }
-    if (AppState.deck.some(Boolean) && !confirm('現在のデッキを、認識した10枚で置き換えます。よろしいですか？')) {
+    if (AppState.deck.some(Boolean) && !confirm('現在のデッキを、認識した内容で置き換えます。よろしいですか？')) {
       this._setStatus('セットを中止しました');
       return;
     }
-    for (let i = 0; i < 5; i++) DeckManager.setCard(i, msList[i]);
-    for (let i = 0; i < 5; i++) DeckManager.setCard(i + 5, plList[i]);
-    const low = res.cards.filter(c => c.margin < this.LOW_MARGIN).length;
-    this._setStatus('10枚をデッキにセットしました' + (low ? ` ／ ${low}枚は自信が低めです` : ''));
-    Toast.show(low ? `10枚をセットしました（${low}枚は要確認）` : '10枚をデッキにセットしました',
-               low ? 'info' : 'success', low ? 4000 : 2500);
-    setTimeout(() => this.close(), low ? 2500 : 900);
+    for (let i = 0; i < 10; i++) {
+      if (AppState.deck[i]) DeckManager.clearCard(i);
+    }
+    for (const p of good) DeckManager.setCard(p.i, p.number);
+    const low = good.filter(p => res.cards[p.i].margin < this.LOW_MARGIN).length;
+    const parts = [`${good.length}枚をデッキにセットしました`];
+    if (skipped.length) parts.push(`${skipped.length}枚は認識できず空けています（${skipped.map(p => p.i + 1).join(',')}枚目）`);
+    if (low) parts.push(`${low}枚は自信が低めです`);
+    this._setStatus(parts.join(' ／ '), skipped.length > 0);
+    const warn = skipped.length || low;
+    Toast.show(skipped.length ? `${good.length}枚をセット（${skipped.length}枚は認識できず）`
+                              : low ? `10枚をセットしました（${low}枚は要確認）`
+                                    : '10枚をデッキにセットしました',
+               warn ? 'info' : 'success', warn ? 4000 : 2500);
+    setTimeout(() => this.close(), warn ? 3000 : 900);
   }
 };
 
