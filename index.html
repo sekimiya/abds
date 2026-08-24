@@ -6958,7 +6958,8 @@ const TradeMaker = {
     want: { tag: '求', label: '求めるカード',       color: '#e5533d' }
   },
   state: { give: [], want: [], bg: 'green' },
-  _dataUrl: null,
+  _blob: null,
+  _objUrl: null,
 
   // ---- 永続化 ----
   _load() {
@@ -7101,8 +7102,9 @@ const TradeMaker = {
     btn.disabled = true;
     btn.textContent = '作成中…';
     try {
-      this._dataUrl = await this._draw();
-      document.getElementById('tradePreviewImg').src = this._dataUrl;
+      const url = await this._setResult(await this._draw());
+      if (!url) throw new Error('toBlob returned null');
+      document.getElementById('tradePreviewImg').src = url;
       document.getElementById('tradePreview').classList.add('open');
     } catch (e) {
       console.error('TradeMaker.generate failed:', e);
@@ -7123,21 +7125,22 @@ const TradeMaker = {
   _fileName() {
     const d = new Date();
     const p = n => String(n).padStart(2, '0');
-    return `trade_${d.getFullYear()}${p(d.getMonth() + 1)}${p(d.getDate())}_${p(d.getHours())}${p(d.getMinutes())}.png`;
+    const ext = (this._blob && this._blob.type === 'image/jpeg') ? 'jpg' : 'png';
+    return `trade_${d.getFullYear()}${p(d.getMonth() + 1)}${p(d.getDate())}_${p(d.getHours())}${p(d.getMinutes())}.${ext}`;
   },
   download() {
-    if (!this._dataUrl) return;
+    if (!this._objUrl) return;
     const a = document.createElement('a');
     a.download = this._fileName();
-    a.href = this._dataUrl;
+    a.href = this._objUrl;
+    document.body.appendChild(a);
     a.click();
+    a.remove();
   },
   openInTab() {
-    if (!this._dataUrl) return;
-    const win = window.open('');
-    if (!win) { Toast.show('ポップアップがブロックされました', 'error'); return; }
-    win.document.write('<html><head><title>ABDS 交換画像</title><style>body{margin:0;background:#111;display:flex;justify-content:center;align-items:start;min-height:100vh}img{max-width:100%;height:auto}</style></head><body><img src="' + this._dataUrl + '"></body></html>');
-    win.document.close();
+    if (!this._objUrl) return;
+    const win = window.open(this._objUrl, '_blank');
+    if (!win) Toast.show('ポップアップがブロックされました', 'error');
   },
 
   _loadImg(src) {
@@ -7286,7 +7289,27 @@ const TradeMaker = {
     ctx.font = `500 14px ${FONT}`;
     ctx.fillText('ABDS - ARSENAL BASE DECK SIMULATOR', PAD, H - 16);
 
-    return canvas.toDataURL('image/png');
+    return canvas;
+  },
+
+  // blob URL にしておくと data URL より確実に保存・共有できる
+  // (iOS の長押し保存、Android の「画像をダウンロード」がともに data: では失敗しやすい)
+  // PNG が大きくなりすぎると SNS の添付上限(5MB前後)に引っかかるので、
+  // その場合だけ JPEG に切り替える。
+  MAX_PNG_BYTES: 4 * 1024 * 1024,
+  _toBlob(canvas, type, quality) {
+    return new Promise(resolve => canvas.toBlob(resolve, type, quality));
+  },
+  async _setResult(canvas) {
+    let blob = await this._toBlob(canvas, 'image/png');
+    if (blob && blob.size > this.MAX_PNG_BYTES) {
+      const jpg = await this._toBlob(canvas, 'image/jpeg', 0.9);
+      if (jpg && jpg.size < blob.size) blob = jpg;
+    }
+    if (this._objUrl) URL.revokeObjectURL(this._objUrl);
+    this._blob = blob;
+    this._objUrl = blob ? URL.createObjectURL(blob) : null;
+    return this._objUrl;
   },
 
   _roundRect(ctx, x, y, w, h, r) {

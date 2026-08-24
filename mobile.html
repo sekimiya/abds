@@ -38,6 +38,8 @@ body{background:var(--bg);color:#e0e0e0;font-family:'Segoe UI','Hiragino Sans',s
   padding-top:env(safe-area-inset-top);padding-bottom:env(safe-area-inset-bottom);
   padding-left:env(safe-area-inset-left);padding-right:env(safe-area-inset-right)}
 img{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;pointer-events:auto}
+/* 交換画像は利用者自身が保存するものなので長押しメニューを許可する */
+.trade-preview img{-webkit-touch-callout:default;-webkit-user-select:auto;user-select:auto}
 a{color:var(--accent);text-decoration:none}
 button{cursor:pointer;font-family:inherit;-webkit-tap-highlight-color:transparent}
 select,input{font-family:inherit}
@@ -1307,7 +1309,7 @@ body.light .trade-bg-sw.active{background:#d0e8dc;color:#1a6b4a}
 </head>
 <body>
 <script>if(localStorage.getItem('abds_lightMode')==='1'){document.body.classList.add('light')}</script>
-<script>document.addEventListener('contextmenu',function(e){if(e.target.tagName==='IMG')e.preventDefault()});</script>
+<script>document.addEventListener('contextmenu',function(e){if(e.target.tagName==='IMG'&&!e.target.closest('.trade-preview'))e.preventDefault()});</script>
 
 <!-- HEADER -->
 <header class="app-header">
@@ -6239,7 +6241,8 @@ const TradeMaker = {
     want: { tag: '求', label: '求めるカード',       color: '#e5533d' }
   },
   state: { give: [], want: [], bg: 'green' },
-  _dataUrl: null,
+  _blob: null,
+  _objUrl: null,
 
   // ---- 永続化 ----
   _load() {
@@ -6381,10 +6384,11 @@ const TradeMaker = {
     btn.disabled = true;
     btn.textContent = '作成中…';
     try {
-      this._dataUrl = await this._draw();
-      document.getElementById('tradePreviewImg').src = this._dataUrl;
+      const url = await this._setResult(await this._draw());
+      if (!url) throw new Error('toBlob returned null');
+      document.getElementById('tradePreviewImg').src = url;
       const sb = document.getElementById('tradeShareBtn');
-      if (sb) sb.style.display = (navigator.canShare && navigator.share) ? '' : 'none';
+      if (sb) sb.style.display = this._canShare() ? '' : 'none';
       document.getElementById('tradePreview').classList.add('open');
     } catch (e) {
       console.error('TradeMaker.generate failed:', e);
@@ -6399,21 +6403,28 @@ const TradeMaker = {
   _fileName() {
     const d = new Date();
     const p = n => String(n).padStart(2, '0');
-    return `trade_${d.getFullYear()}${p(d.getMonth() + 1)}${p(d.getDate())}_${p(d.getHours())}${p(d.getMinutes())}.png`;
+    const ext = (this._blob && this._blob.type === 'image/jpeg') ? 'jpg' : 'png';
+    return `trade_${d.getFullYear()}${p(d.getMonth() + 1)}${p(d.getDate())}_${p(d.getHours())}${p(d.getMinutes())}.${ext}`;
   },
+  // iOS Safari は <a download> を無視するため、共有シートが使えるならそちらを優先する
   download() {
-    if (!this._dataUrl) return;
+    if (!this._objUrl) return;
     const a = document.createElement('a');
+    if (!('download' in a) && this._canShare()) { this.share(); return; }
     a.download = this._fileName();
-    a.href = this._dataUrl;
+    a.href = this._objUrl;
+    document.body.appendChild(a);
     a.click();
+    a.remove();
   },
-  // 端末の共有シート経由でそのまま投稿できるようにする
+  _canShare() {
+    return !!(navigator.share && navigator.canShare && window.File);
+  },
+  // 端末の共有シート経由でそのまま投稿・保存できるようにする
   async share() {
-    if (!this._dataUrl) return;
+    if (!this._blob) return;
     try {
-      const blob = await (await fetch(this._dataUrl)).blob();
-      const file = new File([blob], this._fileName(), { type: 'image/png' });
+      const file = new File([this._blob], this._fileName(), { type: this._blob.type || 'image/png' });
       if (!navigator.canShare || !navigator.canShare({ files: [file] })) {
         Toast.show('この端末では共有できません', 'info');
         return;
@@ -6572,7 +6583,27 @@ const TradeMaker = {
     ctx.font = `500 14px ${FONT}`;
     ctx.fillText('ABDS - ARSENAL BASE DECK SIMULATOR', PAD, H - 16);
 
-    return canvas.toDataURL('image/png');
+    return canvas;
+  },
+
+  // blob URL にしておくと data URL より確実に保存・共有できる
+  // (iOS の長押し保存、Android の「画像をダウンロード」がともに data: では失敗しやすい)
+  // PNG が大きくなりすぎると SNS の添付上限(5MB前後)に引っかかるので、
+  // その場合だけ JPEG に切り替える。
+  MAX_PNG_BYTES: 4 * 1024 * 1024,
+  _toBlob(canvas, type, quality) {
+    return new Promise(resolve => canvas.toBlob(resolve, type, quality));
+  },
+  async _setResult(canvas) {
+    let blob = await this._toBlob(canvas, 'image/png');
+    if (blob && blob.size > this.MAX_PNG_BYTES) {
+      const jpg = await this._toBlob(canvas, 'image/jpeg', 0.9);
+      if (jpg && jpg.size < blob.size) blob = jpg;
+    }
+    if (this._objUrl) URL.revokeObjectURL(this._objUrl);
+    this._blob = blob;
+    this._objUrl = blob ? URL.createObjectURL(blob) : null;
+    return this._objUrl;
   },
 
   _roundRect(ctx, x, y, w, h, r) {
