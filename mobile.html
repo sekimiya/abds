@@ -2068,8 +2068,14 @@ const DeckScanUI = {
       this._setStatus('照合データを準備中…');
       const index = await this._ensureIndex();
       this._setStatus('解析中…');
-      // 描画を1フレーム進めてから重い処理に入る(進捗表示が出ないまま固まるのを防ぐ)
-      await new Promise(r => requestAnimationFrame(() => setTimeout(r, 0)));
+      // 描画を1フレーム進めてから重い処理に入る(進捗表示が出ないまま固まるのを防ぐ)。
+      // 非表示タブなどでは rAF が発火しないので、タイムアウトでも必ず進める。
+      await new Promise(r => {
+        let done = false;
+        const go = () => { if (!done) { done = true; r(); } };
+        requestAnimationFrame(() => setTimeout(go, 0));
+        setTimeout(go, 60);
+      });
       const t0 = performance.now();
       const res = DeckScan.scanDeck(img, index);
       console.log('DeckScan:', Math.round(performance.now() - t0) + 'ms');

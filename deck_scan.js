@@ -90,6 +90,187 @@
     return top;
   }
 
+  // ===== カード帯の位置特定 =====
+  // ページ全体のスクリーンショット(ヘッダー・バナー・ブラウザUI込み)から、
+  // 10枚のカードが並んだ矩形だけを先に切り出す。
+  //
+  // 総当たりで窓を滑らせるのではなく、構造で絞る:
+  //   縦方向 … 「忙しい帯 / 平坦 / 忙しい帯」(= MS段・段間の隙間・PL段) を探す
+  //             段間の隙間が潰れている画像では、1本の帯を半分に割る
+  //   横方向 … その帯の中だけで列の profile を取り、幅の揃った5列を数える
+  // 最後に候補を高解像度で採点して1つ選ぶ。
+  const LOC_W = 600;
+
+  function profileEnergy(img, W) {
+    const H = Math.max(1, Math.round(img.height*W/img.width));
+    const d = drawTo(img, W, H).data;
+    const g = new Float32Array(W*H);
+    for (let i=0,p=0;i<g.length;i++,p+=4) g[i] = 0.299*d[p]+0.587*d[p+1]+0.114*d[p+2];
+    const bl = boxBlur(boxBlur(g, W, H, 2), W, H, 2);
+    const e = new Float32Array(W*H);
+    for (let i=0;i<e.length;i++) e[i] = Math.abs(g[i]-bl[i]);
+    return { e, W, H };
+  }
+  // 指定した縦範囲だけで列プロファイルを取る(バナー等の影響を受けないようにするため)
+  function colProfile(en, y0, y1) {
+    const { e, W } = en;
+    const out = new Float32Array(W);
+    const a = Math.max(0, Math.round(y0)), b = Math.min(en.H, Math.round(y1));
+    for (let y=a;y<b;y++) for (let x=0;x<W;x++) out[x] += e[y*W+x];
+    const n = Math.max(1, b-a);
+    let mx = 0;
+    for (let x=0;x<W;x++){ out[x] /= n; if (out[x]>mx) mx = out[x]; }
+    if (mx>0) for (let x=0;x<W;x++) out[x] /= mx;
+    return out;
+  }
+  function rowProfile(en) {
+    const { e, W, H } = en;
+    const out = new Float32Array(H);
+    for (let y=0;y<H;y++){ let s=0; for (let x=0;x<W;x++) s += e[y*W+x]; out[y] = s/W; }
+    let mx = 0;
+    for (const v of out) if (v>mx) mx = v;
+    if (mx>0) for (let y=0;y<H;y++) out[y] /= mx;
+    return out;
+  }
+  function bandsOf(prof, t, minLen) {
+    const out = []; let s = null;
+    for (let i=0;i<prof.length;i++){
+      if (prof[i] > t && s === null) s = i;
+      else if (prof[i] <= t && s !== null){ if (i-s >= minLen) out.push([s,i]); s = null; }
+    }
+    if (s !== null && prof.length-s >= minLen) out.push([s, prof.length]);
+    return out;
+  }
+  // 幅がほぼ揃った n 本の帯になっているか
+  function evenBands(bands, n, tol) {
+    if (bands.length !== n) return false;
+    const w = bands.map(b => b[1]-b[0]);
+    const mn = Math.min(...w), mx = Math.max(...w);
+    return mx > 0 && (mx-mn)/mx <= tol;
+  }
+
+  function locateBlock(img) {
+    const en = profileEnergy(img, Math.min(LOC_W, img.width));
+    const { W, H } = en;
+    if (W < 60 || H < 30) return null;
+    const rp = rowProfile(en);
+    const cands = [];
+
+    // カード間の隙間は縮小すると潰れて測れないので、内部の仕切りは当てにしない。
+    // 帯の外端(パネル地との境目)だけを取り、5等分してカードの縦横比で検証する。
+    const pushCand = (y0, y1) => {
+      if (y1-y0 < 16) return;
+      const cp = colProfile(en, y0, y1);
+      const ch = (y1-y0)/2;
+      const minLen = Math.max(3, Math.round(W/60));
+      const seen = [];
+      for (let ti=3; ti<45; ti+=2) {
+        const cb = bandsOf(cp, ti/100, minLen);
+        if (!cb.length) continue;
+        // 幅の揃った5本が取れるならそれを使う。無理なら一番長い塊の外端を使う。
+        let xL, xR;
+        if (evenBands(cb, 5, 0.30)) { xL = cb[0][0]; xR = cb[4][1]; }
+        else {
+          let big = cb[0];
+          for (const b of cb) if (b[1]-b[0] > big[1]-big[0]) big = b;
+          xL = big[0]; xR = big[1];
+        }
+        // デッキ表示は画面幅の1/4は占める。小さな塊を拾わない
+        if (xR-xL < W*0.25) continue;
+        const ar = ((xR-xL)/5)/ch;
+        if (Math.abs(ar - CARD_AR)/CARD_AR > 0.15) continue;
+        if (seen.some(v => Math.abs(v[0]-xL)<3 && Math.abs(v[1]-xR)<3)) continue;
+        seen.push([xL, xR]);
+        cands.push({ xL, xR, y0, y1 });
+      }
+    };
+
+    for (let ti=3; ti<50; ti+=2) {
+      const rb = bandsOf(rp, ti/100, Math.max(3, Math.round(H/80)));
+      if (!rb.length || rb.length > 40) continue;
+      // 「高さの揃った2本の帯が細い隙間で隣り合う」= MS段とPL段
+      for (let i=0;i+1<rb.length;i++){
+        const a = rb[i], b = rb[i+1];
+        const ha = a[1]-a[0], hb = b[1]-b[0], gap = b[0]-a[1];
+        if (ha<8 || hb<8) continue;
+        if (Math.abs(ha-hb)/Math.max(ha,hb) > 0.20) continue;
+        if (gap > Math.max(ha,hb)*0.35) continue;
+        pushCand(a[0], b[1]);
+      }
+      // 段間の隙間が潰れている場合は1本の帯を半分に割る
+      for (const b of rb) pushCand(b[0], b[1]);
+    }
+    if (!cands.length) return null;
+
+    // 同じ矩形を何度も拾うので間引く
+    const uniq = [];
+    for (const c of cands) {
+      if (!uniq.some(u => Math.abs(u.xL-c.xL)<4 && Math.abs(u.xR-c.xR)<4 &&
+                          Math.abs(u.y0-c.y0)<4 && Math.abs(u.y1-c.y1)<4)) uniq.push(c);
+    }
+
+    // 高解像度で採点して1つ選ぶ
+    const sx = img.width/W, sy = img.height/H;
+    let best = null;
+    for (const c of uniq.slice(0, 40)) {
+      const bx = c.xL*sx, by = c.y0*sy, bw = (c.xR-c.xL)*sx, bh = (c.y1-c.y0)*sy;
+      // 大きく取れている候補を優先する(部分的に切り取った窓に落ち着かせない)
+      const s = fineScore(img, bx, by, bw, bh) + 0.4*(bw/img.width);
+      if (!best || s > best.s) best = { s, bx, by, bw, bh };
+    }
+    if (!best) return null;
+    const padX = best.bw*0.04, padY = best.bh*0.04;
+    const x = Math.max(0, Math.round(best.bx - padX));
+    const y = Math.max(0, Math.round(best.by - padY));
+    return {
+      x, y,
+      w: Math.min(img.width,  Math.round(best.bx + best.bw + padX)) - x,
+      h: Math.min(img.height, Math.round(best.by + best.bh + padY)) - y
+    };
+  }
+
+  // 候補を高解像度で採点する。カード間の隙間は元画像で十数pxしかなく、
+  // 粗い解像度では潰れて測れないため、候補ごとに切り出し直して測る。
+  const FINE_W = 300;
+  function fineScore(img, bx, by, bw, bh) {
+    const W = FINE_W, H = Math.max(8, Math.round(bh*W/bw));
+    const cv = document.createElement('canvas');
+    cv.width = W; cv.height = H;
+    const cx = cv.getContext('2d', { willReadFrequently: true });
+    cx.imageSmoothingEnabled = true; cx.imageSmoothingQuality = 'high';
+    cx.drawImage(img, bx, by, bw, bh, 0, 0, W, H);
+    const d = cx.getImageData(0, 0, W, H).data;
+    const g = new Float32Array(W*H);
+    for (let i=0,p=0;i<g.length;i++,p+=4) g[i] = 0.299*d[p]+0.587*d[p+1]+0.114*d[p+2];
+    const bl = boxBlur(boxBlur(g, W, H, 2), W, H, 2);
+    const e = new Float32Array(W*H);
+    let mx = 0;
+    for (let i=0;i<e.length;i++){ const v = Math.abs(g[i]-bl[i]); e[i]=v; if (v>mx) mx=v; }
+    if (mx <= 0) return -Infinity;
+    for (let i=0;i<e.length;i++) e[i] /= mx;
+    const cw = W/5, ch = H/2;
+    const colBand = (x0,x1) => {
+      let s=0,n=0; const a=Math.max(0,Math.round(x0)), b=Math.min(W,Math.round(x1));
+      for (let y=0;y<H;y++) for (let x=a;x<b;x++){ s+=e[y*W+x]; n++; }
+      return n ? s/n : 0;
+    };
+    const rowBand = (y0,y1) => {
+      let s=0,n=0; const a=Math.max(0,Math.round(y0)), b=Math.min(H,Math.round(y1));
+      for (let y=a;y<b;y++) for (let x=0;x<W;x++){ s+=e[y*W+x]; n++; }
+      return n ? s/n : 0;
+    };
+    let cell = 0;
+    for (let c=0;c<5;c++) cell += colBand(c*cw+cw*0.2, (c+1)*cw-cw*0.2);
+    cell /= 5;
+    let gapV = 0;
+    for (let k=1;k<5;k++) gapV += colBand(k*cw-2, k*cw+2);
+    gapV /= 4;
+    const gapH = rowBand(ch-2, ch+2);
+    const E = 1e-6;
+    // MS段とPL段の間には必ず隙間が入るので、これが最も効く手がかりになる
+    return (cell-gapH)/(cell+gapH+E) + 0.5*(cell-gapV)/(cell+gapV+E) + 0.3*cell;
+  }
+
   // 余白が極端に大きいと当てはめが不安定になるので、まず内容の外接矩形へ粗く寄せる
   function coarseBox(img) {
     const w = 300, h = Math.max(1, Math.round(img.height*w/img.width));
@@ -114,11 +295,10 @@
              h: Math.min(img.height, Math.round(y1*sy+padY)) - by };
   }
 
-  function detectGrid(img, ncol=5, nrow=2) {
-    // 粗い外接矩形が画像の8割未満なら、そこだけを見る
-    const box = coarseBox(img);
+  // 切り出した領域の中で 5x2 の格子を精密に当てはめる
+  function fitGridIn(img, box, ncol, nrow) {
     let ox = 0, oy = 0, src = img;
-    if (box && (box.w*box.h) < img.width*img.height*0.8) {
+    if (box && (box.w*box.h) < img.width*img.height*0.8 && box.w > 8 && box.h > 8) {
       const cv = document.createElement('canvas');
       cv.width = box.w; cv.height = box.h;
       cv.getContext('2d').drawImage(img, box.x, box.y, box.w, box.h, 0, 0, box.w, box.h);
@@ -165,6 +345,30 @@
     return { score: best.score, aspect: best.ar, cols,
              y0: oy + Math.round(best.yT*inv), y1: oy + Math.round((best.yT+best.rspan)*inv) };
   }
+
+  // 2つの経路で格子候補を作る。
+  //   A: 従来どおり画像全体(粗い外接矩形)から当てはめる  … きれいなデッキ画像向き
+  //   B: カード帯を特定してから当てはめる                … ページ全体のスクショ向き
+  // どちらが正しいかは画像だけでは決めきれないので、両方返して
+  // 実際の照合の確信度で選ぶ(scanDeck 側)。
+  function detectGridCandidates(img, ncol=5, nrow=2) {
+    const out = [];
+    const a = fitGridIn(img, coarseBox(img), ncol, nrow);
+    if (a) out.push(a);
+    const lb = locateBlock(img);
+    if (lb) {
+      const b = fitGridIn(img, lb, ncol, nrow);
+      // ほぼ同じ格子なら片方でよい
+      if (b && !(a && Math.abs(a.cols[0][0]-b.cols[0][0]) < 3 &&
+                      Math.abs(a.y0-b.y0) < 3 && Math.abs(a.y1-b.y1) < 3)) out.push(b);
+    }
+    return out;
+  }
+  function detectGrid(img, ncol=5, nrow=2) {
+    const c = detectGridCandidates(img, ncol, nrow);
+    return c.length ? c[0] : null;
+  }
+
   // 索引側(600x875のカード画像)と照会側(任意サイズの切り出し)で
   // 縮小の元解像度が違うとエイリアスの出方が変わるため、必ず同じ中間解像度を経由する
   const MID_W = 120, MID_H = 175;
@@ -230,23 +434,36 @@
     res.sort((a,b)=>a[0]-b[0]);
     return res.slice(0,k);
   }
-  function scanDeck(img, idx) {
-    const g = detectGrid(img);
-    if (!g) return null;
-    const ch = (g.y1-g.y0)/2, out=[];
+  function readGrid(img, g, idx) {
+    const ch = (g.y1-g.y0)/2, out = [];
+    let conf = 0;
     for (let r=0;r<2;r++) for (let c=0;c<5;c++){
       const [x0,x1] = g.cols[c];
       const s = cellSignature(img, x0, g.y0+r*ch, x1-x0, ch);
       const m = matchOne(s, idx);
-      out.push({ number: m[0][1], score: m[0][0], margin: m[1][0]-m[0][0], alts: m.map(a=>a[1]) });
+      const margin = m[1][0]-m[0][0];
+      out.push({ number: m[0][1], score: m[0][0], margin, alts: m.map(a=>a[1]) });
+      conf += Math.min(margin, 200);   // 1枚の突出で全体が決まらないよう頭打ちにする
     }
-    return { grid: g, cards: out };
+    return { grid: g, cards: out, conf };
+  }
+
+  function scanDeck(img, idx) {
+    const cands = detectGridCandidates(img);
+    if (!cands.length) return null;
+    let best = null;
+    for (const g of cands) {
+      const r = readGrid(img, g, idx);
+      if (!best || r.conf > best.conf) best = r;
+    }
+    return best;
   }
 
 global.DeckScan = {
   prepareIndex: prepareIndex,
   cellSignature: cellSignature,
   detectGrid: detectGrid,
+  locateBlock: locateBlock,
   matchOne: matchOne,
   scanDeck: scanDeck,
   // 索引生成用: カード画像1枚から署名の16進表現を作る
