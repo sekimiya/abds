@@ -1294,6 +1294,17 @@ body.light .trade-bg-sw.active{background:#d0e8dc;color:#1a6b4a}
   background:var(--accent);color:#0b2a21;font-weight:bold;font-size:0.95rem;
 }
 .trade-make-btn:disabled{opacity:0.45}
+/* 選択中は上半分に選択済みカード、下半分に検索パネルを出す */
+body.picking-split .trade-overlay{bottom:auto;height:50%}
+body.picking-split .trade-footer{display:none}
+body.picking-split .trade-hint-idle{display:none}
+body.picking-split .trade-sec.picking .trade-sec-head{
+  position:sticky;top:0;background:var(--bg2);z-index:1;padding:3px 0;
+}
+/* 編集中のセクションだけ枠で示す(もう片方も見えたままにしておく) */
+body.picking-split .trade-sec.picking .trade-grid{
+  outline:2px solid var(--accent);outline-offset:4px;border-radius:4px;
+}
 /* 生成結果プレビュー */
 .trade-preview{
   display:none;position:fixed;inset:0;z-index:600;background:rgba(0,0,0,0.94);
@@ -1774,7 +1785,7 @@ body.light .trade-bg-sw.active{background:#d0e8dc;color:#1a6b4a}
     <button class="trade-close" onclick="TradeMaker.close()">&times;</button>
   </div>
   <div class="trade-body">
-    <div class="trade-hint">カード枠をタップするとカード検索から選べます</div>
+    <div class="trade-hint trade-hint-idle">カード枠をタップするとカード検索から選べます</div>
     <section class="trade-sec">
       <div class="trade-sec-head">
         <span class="trade-tag give">譲</span>
@@ -5389,6 +5400,8 @@ function openCardPicker(slotIdx, type) {
 }
 function closeCardPicker() {
   SearchPanel._pickCallback = null;
+  document.body.classList.remove('picking-split');
+  document.getElementById('pickerOverlay').style.removeProperty('--half-top');
   SearchPanel._saveFilters();
   SearchPanel._bookmarkMode = false;
   SearchPanel._viewerMode = false;
@@ -5404,7 +5417,8 @@ function closeCardPicker() {
 // ===== 汎用カード選択 =====
 // 検索パネルをそのまま流用し、選んだカードを callback に返す。
 // callback が truthy を返した場合はパネルを開いたまま連続選択できる。
-function openCardPickerFor(title, callback) {
+function openCardPickerFor(title, callback, opts) {
+  const split = !!(opts && opts.split);
   SearchPanel._bookmarkMode = false;
   // デッキ用の判定(リンク成立表示など)を避けるため閲覧モード扱いにし、
   // タップは _pickCallback があるときだけ通す。
@@ -5422,11 +5436,15 @@ function openCardPickerFor(title, callback) {
   SearchPanel._restoreFilters();
   SearchPanel._updateFilterVisibility();
   const ov = document.getElementById('pickerOverlay');
-  ov.classList.remove('half-mode');
+  // 分割モード: 画面下半分だけを検索パネルにし、上半分に呼び出し元を残す
+  ov.style.setProperty('--half-top', '50%');
+  ov.classList.toggle('half-mode', split);
   ov.classList.add('open');
+  document.body.classList.toggle('picking-split', split);
   const fs = document.getElementById('filterSheet');
   fs.style.display = 'flex';
-  fs.classList.remove('open', 'half-mode');
+  fs.classList.remove('open');
+  fs.classList.toggle('half-mode', split);
   SearchPanel._updateFilterBadge();
   SearchPanel.applyFilters();
   SearchPanel._pickCallback = callback;
@@ -6304,6 +6322,7 @@ const TradeMaker = {
     const title = append
       ? `${meta.tag} : ${meta.label}を選択`
       : `${meta.tag} : ${idx + 1}枚目を差し替え`;
+    this._setPicking(side);
     openCardPickerFor(title, (card) => {
       const arr = this.state[side];
       if (append) {
@@ -6322,7 +6341,18 @@ const TradeMaker = {
       this._save();
       this.render();
       return false;
-    });
+    }, { split: true });
+  },
+
+  // 選択中のセクションを強調し、上半分に見えるようスクロールする
+  _setPicking(side) {
+    const gridId = side === 'give' ? 'tradeGiveGrid' : 'tradeWantGrid';
+    document.querySelectorAll('#tradeOverlay .trade-sec').forEach(el => el.classList.remove('picking'));
+    const sec = document.getElementById(gridId).closest('.trade-sec');
+    if (sec) {
+      sec.classList.add('picking');
+      requestAnimationFrame(() => sec.scrollIntoView({ block: 'start', behavior: 'smooth' }));
+    }
   },
 
   // ---- 一覧描画 ----

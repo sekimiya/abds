@@ -1433,6 +1433,19 @@ body.resizing-sidebar{cursor:ns-resize;user-select:none}
 }
 .trade-make-btn:hover{filter:brightness(1.08)}
 .trade-make-btn:disabled{opacity:0.45;cursor:not-allowed}
+/* 選択中は上半分に選択済みカード、下半分に検索パネルを出す */
+body.picking-split .trade-overlay{bottom:auto;height:var(--half-top,50%)}
+body.picking-split .trade-footer{display:none}
+body.picking-split .trade-hint-idle{display:none}
+.trade-hint-picking{display:none;color:#68efbd;font-size:0.78rem}
+body.picking-split .trade-hint-picking{display:inline}
+body.picking-split .trade-sec.picking .trade-sec-head{
+  position:sticky;top:0;background:#111;z-index:1;padding:0.3rem 0;
+}
+/* 編集中のセクションだけ枠で示す(もう片方も見えたままにしておく) */
+body.picking-split .trade-sec.picking .trade-grid{
+  outline:2px solid #68efbd;outline-offset:6px;border-radius:4px;
+}
 /* 生成結果プレビュー */
 .trade-preview{
   display:none;position:fixed;inset:0;z-index:9998;background:rgba(0,0,0,0.92);
@@ -1956,7 +1969,8 @@ body.resizing-sidebar{cursor:ns-resize;user-select:none}
 <div class="trade-overlay" id="tradeOverlay">
   <div class="trade-topbar">
     <span class="trade-title">交換画像作成</span>
-    <span class="trade-hint">カード枠をクリックするとカード検索から選べます</span>
+    <span class="trade-hint trade-hint-idle">カード枠をクリックするとカード検索から選べます</span>
+    <span class="trade-hint-picking">下の検索からカードを選んでください（連続で追加できます）</span>
     <button class="trade-close" onclick="TradeMaker.close()" title="閉じる">&times;</button>
   </div>
   <div class="trade-body">
@@ -6139,6 +6153,16 @@ function toggleFilterGroup(id) {
 
 function closeCardPicker() {
   SearchPanel._pickCallback = null;
+  if (_pickerSplit) {
+    // 分割モードは一時的なものなので、利用者が保存したハーフモード設定に戻す
+    _pickerSplit = false;
+    document.body.classList.remove('picking-split');
+    const saved = localStorage.getItem(SidebarHalf._KEY);
+    document.getElementById('sidebar').classList.toggle('half-mode', saved === null ? true : saved === '1');
+    const top = parseFloat(localStorage.getItem(SidebarHalf._TOP_KEY));
+    SidebarHalf._setTop(isNaN(top) ? SidebarHalf.DEFAULT_PCT : top);
+    SidebarHalf._syncBtn();
+  }
   SearchPanel._saveFilters();
   document.getElementById('sidebar').classList.remove('open');
   document.getElementById('sidebarOverlay').classList.remove('active');
@@ -6247,7 +6271,15 @@ const SidebarHalf = {
 // ===== 汎用カード選択 =====
 // 検索パネルをそのまま流用し、選んだカードを callback に返す。
 // callback が truthy を返した場合はパネルを開いたまま連続選択できる。
-function openCardPickerFor(title, callback) {
+// _pickerSplit: 呼び出し元のパネルを上半分に残したまま検索する「分割モード」の復帰情報
+let _pickerSplit = false;
+function openCardPickerFor(title, callback, opts) {
+  if (opts && opts.split) {
+    _pickerSplit = true;
+    document.getElementById('sidebar').classList.add('half-mode');
+    SidebarHalf._setTop(50);
+    document.body.classList.add('picking-split');
+  }
   AppState.activeSlot = null;
   UIRenderer.setActiveSlot(null);
   document.getElementById('pickerTitle').textContent = title;
@@ -7021,6 +7053,7 @@ const TradeMaker = {
     const title = append
       ? `${meta.tag} : ${meta.label}を選択`
       : `${meta.tag} : ${idx + 1}枚目を差し替え`;
+    this._setPicking(side);
     openCardPickerFor(title, (card) => {
       const arr = this.state[side];
       if (append) {
@@ -7039,7 +7072,18 @@ const TradeMaker = {
       this._save();
       this.render();
       return false;
-    });
+    }, { split: true });
+  },
+
+  // 選択中のセクションを強調し、上半分に見えるようスクロールする
+  _setPicking(side) {
+    const gridId = side === 'give' ? 'tradeGiveGrid' : 'tradeWantGrid';
+    document.querySelectorAll('#tradeOverlay .trade-sec').forEach(el => el.classList.remove('picking'));
+    const sec = document.getElementById(gridId).closest('.trade-sec');
+    if (sec) {
+      sec.classList.add('picking');
+      requestAnimationFrame(() => sec.scrollIntoView({ block: 'start', behavior: 'smooth' }));
+    }
   },
 
   // ---- 一覧描画 ----
