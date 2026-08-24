@@ -1219,6 +1219,20 @@ body.light .ss-text{color:#555}
 
   .detail-area{width:40%;flex:1;overflow-y:auto;padding:6px}
 }
+/* ===== 所持カードチェック ===== */
+/* 未所持は一律グレーアウトし、ダブルタップで所持に切り替える */
+body.owned-mode .thumb-card{filter:grayscale(1);opacity:0.42;-webkit-user-select:none;user-select:none}
+body.owned-mode .thumb-card.card-owned{filter:none;opacity:1;border-color:var(--accent)}
+/* 画像の下側はリンクタグ・番号・名前で埋まっているので、バッジは左上に置く */
+body.owned-mode .thumb-card.card-owned .thumb-card-img-wrap::after{
+  content:'所持';position:absolute;top:2px;left:1px;z-index:5;
+  background:var(--accent);color:#0b2a21;font-size:0.5rem;font-weight:bold;
+  padding:0 4px;border-radius:2px;line-height:1.4;pointer-events:none;
+}
+/* SP効果タグも左上なのでバッジ分だけ右にずらす */
+body.owned-mode .thumb-card.card-owned .thumb-sp-tags{left:32px}
+.owned-count{color:var(--accent);font-size:0.72rem;font-weight:normal;margin-left:4px}
+
 /* ===== 交換画像作成 (TradeMaker) ===== */
 /* カードピッカー(z:200)より下に敷き、ピッカーが上に被さるようにする */
 .trade-overlay{
@@ -1854,6 +1868,7 @@ body.picking-split .trade-sec.picking .trade-grid{
   <button class="menu-btn" onclick="openBookmarkViewer();toggleMenu()" style="width:100%;color:#ffe082;border-color:#ffe082;margin-bottom:6px">&#9733; ブックマークカードを表示</button>
   <button class="menu-btn" onclick="openCardViewer();toggleMenu()" style="width:100%;margin-bottom:6px">&#128269; カード検索</button>
   <button class="menu-btn" onclick="TradeMaker.open();toggleMenu()" style="width:100%;margin-bottom:6px;color:#4fc3f7;border-color:#4fc3f7">&#128257; 交換画像作成</button>
+  <button class="menu-btn" onclick="openOwnedChecker();toggleMenu()" style="width:100%;margin-bottom:6px;color:var(--accent);border-color:var(--accent)">&#9989; 所持カードチェック</button>
   <div class="menu-row" style="gap:4px">
     <button class="menu-btn" onclick="DeckManager.sortByCategory();toggleMenu()" title="殲滅→制圧→防衛の順に並び替え" style="flex:1">並び順を整理</button>
   </div>
@@ -4478,6 +4493,31 @@ const UIRenderer = {
 </script>
 <script>
 // ================================================================
+// CardOwned - 所持カードの記録
+// ================================================================
+const CardOwned = {
+  _KEY: 'abds_owned_cards',
+  _set: null,
+  _load() {
+    if (!this._set) {
+      try { this._set = new Set(JSON.parse(localStorage.getItem(this._KEY) || '[]')); }
+      catch { this._set = new Set(); }
+    }
+    return this._set;
+  },
+  _save() { localStorage.setItem(this._KEY, JSON.stringify([...this._load()])); },
+  has(number) { return this._load().has(number); },
+  toggle(number) {
+    const s = this._load();
+    if (s.has(number)) { s.delete(number); } else { s.add(number); }
+    this._save();
+    return s.has(number);
+  },
+  size() { return this._load().size; },
+  getAll() { return this._load(); }
+};
+
+// ================================================================
 // SearchPanel — モバイル用
 // ================================================================
 function _normalizeSearch(s) {
@@ -5036,7 +5076,7 @@ const SearchPanel = {
       const isSq = card.has_sqsp || card.has_sq_skill || card.has_sq_link || !!card.sq_rush_effect;
       const isAb = card.has_ab_link;
       const noOcr = !card.has_ocr;
-      el.className = 'thumb-card' + (isEb ? ' card-eb' : '') + (isSq ? ' card-sq' : '') + (isAb ? ' card-ab' : '') + (noOcr ? ' no-ocr' : '');
+      el.className = 'thumb-card' + (isEb ? ' card-eb' : '') + (isSq ? ' card-sq' : '') + (isAb ? ' card-ab' : '') + (CardOwned.has(card.number) ? ' card-owned' : '') + (noOcr ? ' no-ocr' : '');
       const rarityHtml = card.rarity ? `<span class="thumb-card-rarity r-${escapeHtml(card.rarity)}">${escapeHtml(card.rarity)}</span>` : '';
       el.innerHTML = `
         <div class="thumb-card-img-wrap">
@@ -5107,7 +5147,20 @@ const SearchPanel = {
       }, { passive: true });
       el.addEventListener('touchend', () => { if (_lpTimer) clearTimeout(_lpTimer); });
       el.addEventListener('touchmove', () => { if (_lpTimer) { clearTimeout(_lpTimer); _lpTimer = null; } });
-      if (!noOcr) el.addEventListener('click', (e) => { if (_lpFired) { _lpFired = false; e.preventDefault(); return; } if (this._viewerMode && !this._pickCallback) return; this._selectCard(card); });
+      // 所持チェック中はダブルタップで所持を切り替える(dblclick は端末差が大きいので自前判定)
+      let _lastTap = 0;
+      el.addEventListener('click', (e) => {
+        if (_lpFired) { _lpFired = false; e.preventDefault(); return; }
+        if (this._ownedMode) {
+          const now = Date.now();
+          if (now - _lastTap < 350) { _lastTap = 0; this._toggleOwned(card, el); }
+          else { _lastTap = now; }
+          return;
+        }
+        if (noOcr) return;
+        if (this._viewerMode && !this._pickCallback) return;
+        this._selectCard(card);
+      });
       grid.appendChild(el);
     }
     this._rendered = end;
@@ -5116,6 +5169,15 @@ const SearchPanel = {
     if (this._rendered >= this._filteredCards.length) return;
     this._appendCards(this._perPage);
   },
+  // 所持チェックモード: デッキには入れず所持フラグだけを操作する
+  _ownedMode: false,
+  _toggleOwned(card, el) {
+    const on = CardOwned.toggle(card.number);
+    if (el) el.classList.toggle('card-owned', on);
+    Toast.show(`${card.name} を${on ? '所持' : '未所持'}に変更しました`, on ? 'success' : 'info', 1600);
+    _updateOwnedCount();
+  },
+
   _toggleBm(btn, number) {
     const on = CardBookmark.toggle(number);
     btn.innerHTML = on ? '&#9733;' : '&#9734;';
@@ -5124,6 +5186,8 @@ const SearchPanel = {
     if (bmEl && bmEl.checked) this.applyFilters();
   },
   _selectCard(card) {
+    // 所持チェック中はダブルタップの所持切替だけを受け付ける
+    if (this._ownedMode) return;
     // 汎用選択モード: デッキではなく呼び出し元にカードを返す
     if (this._pickCallback) {
       const keepOpen = this._pickCallback(card);
@@ -5346,6 +5410,7 @@ function toggleFilterGroup(id) {
 }
 function openCardViewer() {
   SearchPanel._pickCallback = null;
+  _exitOwnedMode();
   SearchPanel._bookmarkMode = false;
   SearchPanel._viewerMode = true;
   document.getElementById('bmToggleBar').style.display = 'none';
@@ -5370,6 +5435,7 @@ function openCardViewer() {
 }
 function openCardPicker(slotIdx, type) {
   SearchPanel._pickCallback = null;
+  _exitOwnedMode();
   SearchPanel._bookmarkMode = false;
   SearchPanel._viewerMode = false;
   document.getElementById('bmToggleBar').style.display = 'none';
@@ -5400,6 +5466,7 @@ function openCardPicker(slotIdx, type) {
 }
 function closeCardPicker() {
   SearchPanel._pickCallback = null;
+  _exitOwnedMode();
   document.body.classList.remove('picking-split');
   document.getElementById('pickerOverlay').style.removeProperty('--half-top');
   SearchPanel._saveFilters();
@@ -5418,6 +5485,7 @@ function closeCardPicker() {
 // 検索パネルをそのまま流用し、選んだカードを callback に返す。
 // callback が truthy を返した場合はパネルを開いたまま連続選択できる。
 function openCardPickerFor(title, callback, opts) {
+  _exitOwnedMode();
   const split = !!(opts && opts.split);
   SearchPanel._bookmarkMode = false;
   // デッキ用の判定(リンク成立表示など)を避けるため閲覧モード扱いにし、
@@ -5454,6 +5522,25 @@ function setPickerTitle(text) {
   if (el) el.textContent = text;
 }
 
+// ===== 所持カードチェック =====
+// 通常のカード検索画面をそのまま使い、未所持を一律グレーアウトして表示する。
+function openOwnedChecker() {
+  openCardViewer();
+  SearchPanel._ownedMode = true;
+  document.body.classList.add('owned-mode');
+  _updateOwnedCount();
+  SearchPanel.applyFilters();
+}
+function _exitOwnedMode() {
+  SearchPanel._ownedMode = false;
+  document.body.classList.remove('owned-mode');
+}
+function _updateOwnedCount() {
+  if (!SearchPanel._ownedMode) return;
+  document.getElementById('pickerTitle').innerHTML =
+    '所持カードチェック<span class="owned-count">' + CardOwned.size() + '枚所持</span>';
+}
+
 function toggleBmOverlay(type) {
   const grid = document.getElementById('pickerOverlay');
   if (type === 'link') {
@@ -5488,6 +5575,7 @@ function switchToBookmarkTab() {
 }
 function openBookmarkViewer() {
   SearchPanel._pickCallback = null;
+  _exitOwnedMode();
   AppState.activeSlot = null;
   SearchPanel._bookmarkMode = true;
   SearchPanel._viewerMode = true;
