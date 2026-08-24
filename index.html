@@ -1355,6 +1355,94 @@ body.resizing-sidebar{cursor:ns-resize;user-select:none}
 @media(max-width:1200px){
   .unit-column.h-cards .unit-cards-row{flex-direction:column;gap:0}
 }
+
+/* ===== 交換画像作成 (TradeMaker) ===== */
+/* カードピッカー(z:101)より下に敷き、ピッカーが上に被さるようにする */
+.trade-overlay{
+  display:none;position:fixed;inset:0;z-index:95;
+  background:#111;flex-direction:column;
+}
+.trade-overlay.open{display:flex}
+.trade-topbar{
+  display:flex;align-items:center;gap:0.6rem;flex-shrink:0;
+  padding:0.6rem 1rem;border-bottom:1px solid #333;background:#171717;
+}
+.trade-topbar .trade-title{color:#68efbd;font-weight:bold;font-size:1.3rem}
+.trade-topbar .trade-hint{color:#888;font-size:0.78rem}
+.trade-close{margin-left:auto;background:none;border:none;color:#888;font-size:1.7rem;cursor:pointer;line-height:1;padding:0 0.4rem}
+.trade-close:hover{color:#fff}
+.trade-body{flex:1 1 0;min-height:0;overflow-y:auto;padding:1rem}
+.trade-sec{margin-bottom:1.4rem}
+.trade-sec-head{display:flex;align-items:center;gap:0.5rem;margin-bottom:0.5rem}
+.trade-tag{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:2rem;height:2rem;border-radius:6px;font-weight:900;font-size:1.05rem;color:#fff;flex-shrink:0;
+}
+.trade-tag.give{background:#1e88e5}
+.trade-tag.want{background:#e5533d}
+.trade-sec-label{color:#e0e0e0;font-size:0.95rem;font-weight:bold}
+.trade-count{color:#888;font-size:0.8rem}
+.trade-sec-clear{
+  margin-left:auto;background:none;border:1px solid #555;color:#aaa;
+  border-radius:5px;font-size:0.75rem;padding:0.2rem 0.6rem;cursor:pointer;
+}
+.trade-sec-clear:hover{border-color:#f44336;color:#f44336}
+.trade-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(112px,1fr));gap:0.6rem}
+.trade-cell{
+  position:relative;border:1px solid #333;border-radius:8px;background:#1b1b1b;
+  overflow:hidden;cursor:pointer;
+}
+.trade-cell:hover{border-color:#68efbd}
+.trade-cell img{width:100%;aspect-ratio:600/875;object-fit:cover;display:block}
+.trade-cell-name{
+  font-size:0.68rem;color:#ccc;padding:3px 4px 0;line-height:1.25;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;
+}
+.trade-cell-num{font-size:0.6rem;color:#777;padding:1px 4px 4px}
+.trade-cell-del{
+  position:absolute;top:3px;right:3px;width:22px;height:22px;border-radius:50%;
+  background:rgba(0,0,0,0.72);border:1px solid #666;color:#fff;font-size:0.85rem;
+  line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;
+}
+.trade-cell-del:hover{background:#f44336;border-color:#f44336}
+.trade-add{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.2rem;
+  aspect-ratio:600/1010;border:2px dashed #444;border-radius:8px;background:#161616;
+  color:#68efbd;font-size:1.8rem;cursor:pointer;line-height:1;
+}
+.trade-add span{font-size:0.72rem;color:#888}
+.trade-add:hover{border-color:#68efbd;background:#18241f}
+.trade-empty{color:#666;font-size:0.8rem;padding:0.4rem 0}
+.trade-footer{
+  flex-shrink:0;border-top:1px solid #333;background:#171717;
+  padding:0.7rem 1rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap;
+}
+.trade-bg-row{display:flex;align-items:center;gap:0.4rem;flex-wrap:wrap}
+#tradeBgSwitches{display:flex;align-items:center;gap:0.4rem;flex-wrap:wrap}
+.trade-bg-label{color:#888;font-size:0.8rem}
+.trade-bg-sw{
+  display:flex;align-items:center;gap:0.35rem;padding:0.3rem 0.6rem;
+  background:#222;border:1px solid #444;border-radius:6px;color:#bbb;
+  font-size:0.78rem;cursor:pointer;
+}
+.trade-bg-sw .sw-chip{width:14px;height:14px;border-radius:3px;border:1px solid rgba(255,255,255,0.35)}
+.trade-bg-sw.active{border-color:#68efbd;color:#68efbd;background:#18241f}
+.trade-make-btn{
+  margin-left:auto;padding:0.6rem 1.6rem;border-radius:8px;border:none;
+  background:#68efbd;color:#0b2a21;font-weight:bold;font-size:1rem;cursor:pointer;
+}
+.trade-make-btn:hover{filter:brightness(1.08)}
+.trade-make-btn:disabled{opacity:0.45;cursor:not-allowed}
+/* 生成結果プレビュー */
+.trade-preview{
+  display:none;position:fixed;inset:0;z-index:9998;background:rgba(0,0,0,0.92);
+  flex-direction:column;align-items:center;padding:1rem;overflow:auto;
+}
+.trade-preview.open{display:flex}
+.trade-preview img{max-width:100%;height:auto;border-radius:6px;box-shadow:0 4px 24px rgba(0,0,0,0.6)}
+.trade-preview-bar{display:flex;gap:0.6rem;margin-bottom:0.8rem;flex-wrap:wrap;justify-content:center;align-items:center}
+.trade-preview-hint{color:#888;font-size:0.78rem;width:100%;text-align:center;margin-bottom:0.5rem}
+
 @media(max-width:768px){
   .main-area{gap:0}
   .app-header{padding:0 0.4rem;gap:0.3rem}
@@ -1416,6 +1504,9 @@ body.resizing-sidebar{cursor:ns-resize;user-select:none}
       <div class="header-menu-row">
         <button class="header-btn" onclick="openBookmarkViewer();closeHeaderMenu()" style="flex:1;color:#ffe082;border-color:#ffe082">&#9733; ブックマーク表示</button>
         <button class="header-btn" onclick="openCardViewer();closeHeaderMenu()" style="flex:1">&#128269; カード検索</button>
+      </div>
+      <div class="header-menu-row">
+        <button class="header-btn" onclick="TradeMaker.open();closeHeaderMenu()" style="flex:1;color:#4fc3f7;border-color:#4fc3f7">&#128257; 交換画像作成</button>
       </div>
       <div class="header-menu-row">
         <button class="header-btn" id="halfModeBtn" onclick="SidebarHalf.toggle();closeHeaderMenu()" title="検索パネルを下半分に置き、デッキを見ながら選べるようにする" style="flex:1">検索: 下半分に表示</button>
@@ -1860,6 +1951,53 @@ body.resizing-sidebar{cursor:ns-resize;user-select:none}
     </div>
   </div>
 </aside>
+
+<!-- ===== 交換画像作成 ===== -->
+<div class="trade-overlay" id="tradeOverlay">
+  <div class="trade-topbar">
+    <span class="trade-title">交換画像作成</span>
+    <span class="trade-hint">カード枠をクリックするとカード検索から選べます</span>
+    <button class="trade-close" onclick="TradeMaker.close()" title="閉じる">&times;</button>
+  </div>
+  <div class="trade-body">
+    <section class="trade-sec">
+      <div class="trade-sec-head">
+        <span class="trade-tag give">譲</span>
+        <span class="trade-sec-label">交換で出せるカード</span>
+        <span class="trade-count" id="tradeGiveCount"></span>
+        <button class="trade-sec-clear" onclick="TradeMaker.clearSide('give')">クリア</button>
+      </div>
+      <div class="trade-grid" id="tradeGiveGrid"></div>
+    </section>
+    <section class="trade-sec">
+      <div class="trade-sec-head">
+        <span class="trade-tag want">求</span>
+        <span class="trade-sec-label">求めるカード</span>
+        <span class="trade-count" id="tradeWantCount"></span>
+        <button class="trade-sec-clear" onclick="TradeMaker.clearSide('want')">クリア</button>
+      </div>
+      <div class="trade-grid" id="tradeWantGrid"></div>
+    </section>
+  </div>
+  <div class="trade-footer">
+    <div class="trade-bg-row">
+      <span class="trade-bg-label">背景色</span>
+      <span id="tradeBgSwitches"></span>
+    </div>
+    <button class="trade-make-btn" id="tradeMakeBtn" onclick="TradeMaker.generate()">画像を作成</button>
+  </div>
+</div>
+
+<!-- 交換画像プレビュー -->
+<div class="trade-preview" id="tradePreview">
+  <div class="trade-preview-bar">
+    <button class="header-btn primary" onclick="TradeMaker.download()">画像を保存</button>
+    <button class="header-btn" onclick="TradeMaker.openInTab()">新しいタブで開く</button>
+    <button class="header-btn" onclick="TradeMaker.closePreview()">閉じる</button>
+  </div>
+  <div class="trade-preview-hint">画像を右クリック（スマホは長押し）でも保存できます</div>
+  <img id="tradePreviewImg" alt="交換画像">
+</div>
 
 <!-- Toast Container -->
 <div class="toast-container" id="toastContainer"></div>
@@ -4823,6 +4961,8 @@ function _normalizeSearch(s) {
 }
 const SearchPanel = {
   _lockedType: null,
+  // 汎用カード選択モード: セットされていればデッキではなくここへカードを返す
+  _pickCallback: null,
   _currentRarity: new Set(),
   _currentCategory: new Set(),
   _selectedSeries: new Set(),
@@ -5529,6 +5669,12 @@ const SearchPanel = {
   },
 
   _selectCard(card) {
+    // 汎用選択モード: デッキではなく呼び出し元にカードを返す
+    if (this._pickCallback) {
+      const keepOpen = this._pickCallback(card);
+      if (!keepOpen) { this._pickCallback = null; closeCardPicker(); }
+      return;
+    }
     const slot = AppState.activeSlot;
     if (slot === null) {
       const type = card.type;
@@ -5600,6 +5746,11 @@ const Shortcuts = {
         e.preventDefault(); DeckManager.save(); return;
       }
       if (e.key === 'Escape') {
+        if (TradeMaker.closePreviewIfOpen()) return;
+        if (!document.getElementById('sidebar').classList.contains('open')
+            && document.getElementById('tradeOverlay').classList.contains('open')) {
+          TradeMaker.close(); return;
+        }
         closeSidebar(); closeCardModal(); closeDeckLoadModal();
         TacticsPicker.close();
         UIRenderer.setActiveSlot(null);
@@ -5965,6 +6116,7 @@ function calcUnitStats(msOcr, plOcr, terrainMult) {
 
 // ===== Sidebar Toggle =====
 function openCardPicker(slotIdx, type) {
+  SearchPanel._pickCallback = null;
   const unitIdx = slotIdx < 5 ? slotIdx : slotIdx - 5;
   const label = `${type} ${unitIdx + 1} を選択`;
   document.getElementById('pickerTitle').textContent = label;
@@ -5986,6 +6138,7 @@ function toggleFilterGroup(id) {
 }
 
 function closeCardPicker() {
+  SearchPanel._pickCallback = null;
   SearchPanel._saveFilters();
   document.getElementById('sidebar').classList.remove('open');
   document.getElementById('sidebarOverlay').classList.remove('active');
@@ -6091,12 +6244,40 @@ const SidebarHalf = {
   },
 };
 
+// ===== 汎用カード選択 =====
+// 検索パネルをそのまま流用し、選んだカードを callback に返す。
+// callback が truthy を返した場合はパネルを開いたまま連続選択できる。
+function openCardPickerFor(title, callback) {
+  AppState.activeSlot = null;
+  UIRenderer.setActiveSlot(null);
+  document.getElementById('pickerTitle').textContent = title;
+  const tabs = document.getElementById('sidebarTabs');
+  tabs.style.display = 'flex';
+  const lastType = SearchPanel._lockedType || 'MS';
+  tabs.querySelectorAll('.sidebar-tab').forEach(t => t.classList.toggle('active', t.dataset.type === lastType));
+  SearchPanel._lockedType = lastType;
+  SearchPanel._clearFiltersForSwitch();
+  SearchPanel._restoreFilters();
+  SearchPanel._updateFilterVisibility();
+  document.getElementById('sidebar').classList.add('open');
+  SidebarHalf.sync();
+  SearchPanel.applyFilters();
+  SearchPanel._pickCallback = callback;
+  const input = document.getElementById('searchInput');
+  if (input) setTimeout(() => input.focus(), 100);
+}
+function setPickerTitle(text) {
+  const el = document.getElementById('pickerTitle');
+  if (el) el.textContent = text;
+}
+
 // Keep legacy names for Escape key etc.
 function closeSidebar() { closeCardPicker(); }
 function openSidebar() { /* no-op, use openCardPicker */ }
 
 // ===== Bookmark Viewer / Card Viewer =====
 function openBookmarkViewer() {
+  SearchPanel._pickCallback = null;
   AppState.activeSlot = null;
   UIRenderer.setActiveSlot(null);
   document.getElementById('pickerTitle').textContent = '★ ブックマークカード';
@@ -6113,6 +6294,7 @@ function openBookmarkViewer() {
 }
 
 function openCardViewer() {
+  SearchPanel._pickCallback = null;
   AppState.activeSlot = null;
   UIRenderer.setActiveSlot(null);
   document.getElementById('pickerTitle').textContent = 'カード検索';
@@ -6754,6 +6936,395 @@ if ('serviceWorker' in navigator) {
     if (!document.hidden) checkUpdate();
   });
 })();
+</script>
+<script>
+// ================================================================
+// TradeMaker - 交換画像作成
+// 「譲(出せる)」「求(求める)」の2リストにカードを選び、投稿用の1枚画像を生成する。
+// カード選択は汎用カード選択画面(openCardPickerFor)を流用する。
+// ================================================================
+const TradeMaker = {
+  KEY: 'abds_trade',
+  MAX: 15,
+  // 背景色プリセット。既定はアーセナルベースのブランド緑(#68efbd)。
+  BGS: {
+    green: { label: 'AB緑',   bg: '#68efbd', ink: '#0b2a21', sub: '#2c6e5b', line: 'rgba(11,42,33,0.22)' },
+    black: { label: '黒',     bg: '#101010', ink: '#f2f2f2', sub: '#9a9a9a', line: 'rgba(255,255,255,0.18)' },
+    white: { label: '白',     bg: '#ffffff', ink: '#1a1a1a', sub: '#6a6a6a', line: 'rgba(0,0,0,0.15)' },
+    gray:  { label: 'グレー', bg: '#4c5155', ink: '#ffffff', sub: '#d5dade', line: 'rgba(255,255,255,0.22)' }
+  },
+  SIDES: {
+    give: { tag: '譲', label: '交換で出せるカード', color: '#1e88e5' },
+    want: { tag: '求', label: '求めるカード',       color: '#e5533d' }
+  },
+  state: { give: [], want: [], bg: 'green' },
+  _dataUrl: null,
+
+  // ---- 永続化 ----
+  _load() {
+    try {
+      const raw = JSON.parse(localStorage.getItem(this.KEY) || 'null');
+      if (raw && typeof raw === 'object') {
+        this.state.give = Array.isArray(raw.give) ? raw.give.slice(0, this.MAX) : [];
+        this.state.want = Array.isArray(raw.want) ? raw.want.slice(0, this.MAX) : [];
+        this.state.bg = this.BGS[raw.bg] ? raw.bg : 'green';
+      }
+    } catch (e) { /* 壊れていれば初期状態のまま */ }
+  },
+  _save() {
+    try { localStorage.setItem(this.KEY, JSON.stringify(this.state)); } catch (e) {}
+  },
+
+  // ---- 画面の開閉 ----
+  open() {
+    this._load();
+    this.render();
+    document.getElementById('tradeOverlay').classList.add('open');
+  },
+  close() {
+    document.getElementById('tradeOverlay').classList.remove('open');
+  },
+  isOpen() {
+    return document.getElementById('tradeOverlay').classList.contains('open');
+  },
+
+  // ---- リスト操作 ----
+  setBg(key) {
+    if (!this.BGS[key]) return;
+    this.state.bg = key;
+    this._save();
+    this._renderBgSwitches();
+  },
+  removeCard(side, idx, ev) {
+    if (ev) ev.stopPropagation();
+    this.state[side].splice(idx, 1);
+    this._save();
+    this.render();
+  },
+  clearSide(side) {
+    if (!this.state[side].length) return;
+    this.state[side] = [];
+    this._save();
+    this.render();
+  },
+
+  // カード枠のタップ: 汎用カード選択画面へ
+  // idx===null なら末尾に追加（連続選択できるようパネルは開いたまま）
+  pick(side, idx) {
+    const meta = this.SIDES[side];
+    const append = (idx === null || idx === undefined);
+    if (append && this.state[side].length >= this.MAX) {
+      Toast.show(`「${meta.tag}」は最大${this.MAX}枚までです`, 'info');
+      return;
+    }
+    const title = append
+      ? `${meta.tag} : ${meta.label}を選択`
+      : `${meta.tag} : ${idx + 1}枚目を差し替え`;
+    openCardPickerFor(title, (card) => {
+      const arr = this.state[side];
+      if (append) {
+        arr.push(card.number);
+        this._save();
+        this.render();
+        if (arr.length >= this.MAX) {
+          Toast.show(`「${meta.tag}」が上限の${this.MAX}枚になりました`, 'info');
+          return false; // 上限に達したら閉じる
+        }
+        setPickerTitle(`${meta.tag} : ${meta.label}を選択 (${arr.length}枚)`);
+        Toast.show(`${meta.tag} に「${card.name}」を追加 (${arr.length}枚)`, 'success', 1200);
+        return true; // 連続選択のため開いたまま
+      }
+      arr[idx] = card.number;
+      this._save();
+      this.render();
+      return false;
+    });
+  },
+
+  // ---- 一覧描画 ----
+  render() {
+    for (const side of ['give', 'want']) {
+      const nums = this.state[side];
+      const grid = document.getElementById(side === 'give' ? 'tradeGiveGrid' : 'tradeWantGrid');
+      const cnt = document.getElementById(side === 'give' ? 'tradeGiveCount' : 'tradeWantCount');
+      cnt.textContent = `${nums.length} / ${this.MAX}`;
+      grid.innerHTML = '';
+      nums.forEach((num, i) => {
+        const card = UIRenderer._getIndexEntry(num);
+        const cell = document.createElement('div');
+        cell.className = 'trade-cell';
+        cell.title = 'クリックで差し替え';
+        cell.innerHTML =
+          `<img src="${resolveImageUrl(null, num, 'front')}" alt="${escapeHtml(num)}"` +
+          ` onerror="this.onerror=null;this.src=PLACEHOLDER_SVG">` +
+          `<div class="trade-cell-name">${escapeHtml(card ? card.name : num)}</div>` +
+          `<div class="trade-cell-num">${escapeHtml(num)}</div>` +
+          `<button class="trade-cell-del" title="削除">&times;</button>`;
+        cell.querySelector('.trade-cell-del').addEventListener('click', (e) => this.removeCard(side, i, e));
+        cell.addEventListener('click', () => this.pick(side, i));
+        grid.appendChild(cell);
+      });
+      if (nums.length < this.MAX) {
+        const add = document.createElement('div');
+        add.className = 'trade-add';
+        add.innerHTML = '＋<span>カードを追加</span>';
+        add.addEventListener('click', () => this.pick(side, null));
+        grid.appendChild(add);
+      }
+    }
+    this._renderBgSwitches();
+    const btn = document.getElementById('tradeMakeBtn');
+    if (btn) btn.disabled = !(this.state.give.length || this.state.want.length);
+  },
+
+  _renderBgSwitches() {
+    const wrap = document.getElementById('tradeBgSwitches');
+    if (!wrap) return;
+    wrap.innerHTML = '';
+    for (const [key, th] of Object.entries(this.BGS)) {
+      const b = document.createElement('button');
+      b.className = 'trade-bg-sw' + (this.state.bg === key ? ' active' : '');
+      b.innerHTML = `<span class="sw-chip" style="background:${th.bg}"></span>${th.label}`;
+      b.addEventListener('click', () => this.setBg(key));
+      wrap.appendChild(b);
+    }
+  },
+
+  // ---- 画像生成 ----
+  async generate() {
+    if (!this.state.give.length && !this.state.want.length) {
+      Toast.show('カードを1枚以上選んでください', 'info');
+      return;
+    }
+    const btn = document.getElementById('tradeMakeBtn');
+    const label = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = '作成中…';
+    try {
+      this._dataUrl = await this._draw();
+      document.getElementById('tradePreviewImg').src = this._dataUrl;
+      document.getElementById('tradePreview').classList.add('open');
+    } catch (e) {
+      console.error('TradeMaker.generate failed:', e);
+      Toast.show('画像の作成に失敗しました', 'error');
+    } finally {
+      btn.disabled = false;
+      btn.textContent = label;
+    }
+  },
+
+  closePreview() { document.getElementById('tradePreview').classList.remove('open'); },
+  closePreviewIfOpen() {
+    const el = document.getElementById('tradePreview');
+    if (!el.classList.contains('open')) return false;
+    el.classList.remove('open');
+    return true;
+  },
+  _fileName() {
+    const d = new Date();
+    const p = n => String(n).padStart(2, '0');
+    return `trade_${d.getFullYear()}${p(d.getMonth() + 1)}${p(d.getDate())}_${p(d.getHours())}${p(d.getMinutes())}.png`;
+  },
+  download() {
+    if (!this._dataUrl) return;
+    const a = document.createElement('a');
+    a.download = this._fileName();
+    a.href = this._dataUrl;
+    a.click();
+  },
+  openInTab() {
+    if (!this._dataUrl) return;
+    const win = window.open('');
+    if (!win) { Toast.show('ポップアップがブロックされました', 'error'); return; }
+    win.document.write('<html><head><title>ABDS 交換画像</title><style>body{margin:0;background:#111;display:flex;justify-content:center;align-items:start;min-height:100vh}img{max-width:100%;height:auto}</style></head><body><img src="' + this._dataUrl + '"></body></html>');
+    win.document.close();
+  },
+
+  _loadImg(src) {
+    return new Promise(resolve => {
+      const img = new Image();
+      img.onload = () => resolve(img);
+      img.onerror = () => resolve(null);
+      img.src = src;
+    });
+  },
+
+  // canvas に直接描画する。カード画像は同一オリジン(./images/cards/)か
+  // data: のプレースホルダーなので canvas が汚染されず toDataURL できる。
+  async _draw() {
+    const FONT = '"Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans JP","Yu Gothic",sans-serif';
+    const th = this.BGS[this.state.bg] || this.BGS.green;
+    const S = 2;                       // 出力倍率
+    const CW = 200;                    // カード幅
+    const CH = Math.round(CW * 875 / 600);
+    const GAP = 16, PAD = 40;
+    const NAME_H = 58;                 // カード下の名前(最大2行)+番号
+    const CELL_H = CH + NAME_H;
+    // 端数の行がスカスカにならないよう列数を釣り合わせる(最小3・最大5列)
+    const maxN = Math.max(this.state.give.length, this.state.want.length);
+    const COLS = Math.min(5, Math.max(3, maxN <= 5 ? maxN : Math.ceil(maxN / Math.ceil(maxN / 5))));
+    const W = PAD * 2 + COLS * CW + (COLS - 1) * GAP;
+    const HEAD_H = 108, FOOT_H = 52, LABEL_H = 54, SEC_GAP = 26;
+
+    const secGridH = (n) => {
+      if (!n) return 46;
+      const rows = Math.ceil(n / COLS);
+      return rows * CELL_H + (rows - 1) * GAP;
+    };
+    const secH = (n) => LABEL_H + secGridH(n) + SEC_GAP;
+    const H = HEAD_H + secH(this.state.give.length) + secH(this.state.want.length) + FOOT_H;
+
+    const canvas = document.createElement('canvas');
+    canvas.width = W * S;
+    canvas.height = H * S;
+    const ctx = canvas.getContext('2d');
+    ctx.scale(S, S);
+    ctx.textBaseline = 'alphabetic';
+
+    ctx.fillStyle = th.bg;
+    ctx.fillRect(0, 0, W, H);
+
+    // ---- ヘッダー ----
+    ctx.fillStyle = th.ink;
+    ctx.font = `900 42px ${FONT}`;
+    ctx.textAlign = 'left';
+    ctx.fillText('カード交換', PAD, PAD + 40);
+    ctx.font = `500 16px ${FONT}`;
+    ctx.fillStyle = th.sub;
+    ctx.textAlign = 'right';
+    ctx.fillText('ガンダムアーセナルベース', W - PAD, PAD + 40);
+    ctx.textAlign = 'left';
+    ctx.fillStyle = th.line;
+    ctx.fillRect(PAD, HEAD_H - 20, W - PAD * 2, 2);
+
+    // ---- 画像を先読み ----
+    const allNums = [...new Set([...this.state.give, ...this.state.want])];
+    const imgMap = {};
+    await Promise.all(allNums.map(async n => {
+      // 未キャッシュ時は data: のプレースホルダーが返るので描画対象にしない
+      const url = resolveImageUrl(null, n, 'front');
+      imgMap[n] = (url && url.slice(0, 5) !== 'data:') ? await this._loadImg(url) : null;
+    }));
+
+    // ---- セクション ----
+    let y = HEAD_H;
+    for (const side of ['give', 'want']) {
+      const meta = this.SIDES[side];
+      const nums = this.state[side];
+
+      // ラベル行
+      const chip = 38;
+      this._roundRect(ctx, PAD, y, chip, chip, 8);
+      ctx.fillStyle = meta.color;
+      ctx.fill();
+      ctx.fillStyle = '#ffffff';
+      ctx.font = `900 24px ${FONT}`;
+      ctx.textAlign = 'center';
+      ctx.fillText(meta.tag, PAD + chip / 2, y + chip / 2 + 9);
+      ctx.textAlign = 'left';
+      ctx.fillStyle = th.ink;
+      ctx.font = `700 24px ${FONT}`;
+      ctx.fillText(meta.label, PAD + chip + 12, y + chip / 2 + 8);
+      if (nums.length) {
+        const lw = ctx.measureText(meta.label).width;
+        ctx.fillStyle = th.sub;
+        ctx.font = `500 16px ${FONT}`;
+        ctx.fillText(`${nums.length}枚`, PAD + chip + 20 + lw, y + chip / 2 + 8);
+      }
+      y += LABEL_H;
+
+      if (!nums.length) {
+        ctx.fillStyle = th.sub;
+        ctx.font = `500 17px ${FONT}`;
+        ctx.fillText('（なし）', PAD + 4, y + 26);
+        y += 46 + SEC_GAP;
+        continue;
+      }
+
+      nums.forEach((num, i) => {
+        const cx = PAD + (i % COLS) * (CW + GAP);
+        const cy = y + Math.floor(i / COLS) * (CELL_H + GAP);
+        const img = imgMap[num];
+        if (img) {
+          ctx.save();
+          this._roundRect(ctx, cx, cy, CW, CH, 8);
+          ctx.clip();
+          ctx.drawImage(img, cx, cy, CW, CH);
+          ctx.restore();
+        } else {
+          // 画像キャッシュ未作成のカードは枠だけ描く
+          this._roundRect(ctx, cx, cy, CW, CH, 8);
+          ctx.fillStyle = th.line;
+          ctx.fill();
+          ctx.fillStyle = th.sub;
+          ctx.font = `700 15px ${FONT}`;
+          ctx.textAlign = 'center';
+          ctx.fillText('NO IMAGE', cx + CW / 2, cy + CH / 2);
+          ctx.textAlign = 'left';
+        }
+        this._roundRect(ctx, cx + 0.5, cy + 0.5, CW - 1, CH - 1, 8);
+        ctx.strokeStyle = th.line;
+        ctx.lineWidth = 1;
+        ctx.stroke();
+
+        const card = UIRenderer._getIndexEntry(num);
+        ctx.fillStyle = th.ink;
+        ctx.font = `700 15px ${FONT}`;
+        const lines = this._wrap(ctx, card ? card.name : num, CW, 2);
+        lines.forEach((ln, li) => ctx.fillText(ln, cx, cy + CH + 17 + li * 17));
+        ctx.fillStyle = th.sub;
+        ctx.font = `500 13px ${FONT}`;
+        ctx.fillText(num, cx, cy + CH + 17 + lines.length * 17 + 2);
+      });
+      y += secGridH(nums.length) + SEC_GAP;
+    }
+
+    // ---- フッター ----
+    ctx.fillStyle = th.line;
+    ctx.fillRect(PAD, H - FOOT_H + 6, W - PAD * 2, 2);
+    ctx.fillStyle = th.sub;
+    ctx.font = `500 14px ${FONT}`;
+    ctx.fillText('ABDS - ARSENAL BASE DECK SIMULATOR', PAD, H - 16);
+
+    return canvas.toDataURL('image/png');
+  },
+
+  _roundRect(ctx, x, y, w, h, r) {
+    ctx.beginPath();
+    ctx.moveTo(x + r, y);
+    ctx.arcTo(x + w, y, x + w, y + h, r);
+    ctx.arcTo(x + w, y + h, x, y + h, r);
+    ctx.arcTo(x, y + h, x, y, r);
+    ctx.arcTo(x, y, x + w, y, r);
+    ctx.closePath();
+  },
+
+  // 日本語は単語区切りがないので1文字ずつ詰める
+  _wrap(ctx, text, maxW, maxLines) {
+    const chars = String(text || '').split('');
+    const lines = [];
+    let cur = '';
+    for (const ch of chars) {
+      if (ctx.measureText(cur + ch).width > maxW && cur) {
+        lines.push(cur);
+        cur = ch;
+        if (lines.length === maxLines) break;
+      } else {
+        cur += ch;
+      }
+    }
+    if (lines.length < maxLines && cur) lines.push(cur);
+    if (lines.length === maxLines) {
+      let last = lines[maxLines - 1];
+      const rest = chars.join('').slice(lines.join('').length);
+      if (rest) {
+        while (last && ctx.measureText(last + '…').width > maxW) last = last.slice(0, -1);
+        lines[maxLines - 1] = last + '…';
+      }
+    }
+    return lines;
+  }
+};
 </script>
 <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 <script>
