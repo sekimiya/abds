@@ -336,6 +336,93 @@ def check_link_index():
     else:
         R.ok("全リンクに所属カードあり")
 
+    check_link_ocr_confusions(links, details)
+
+
+# OCRが取り違えやすい字形ペア(濁点/半濁点、漢字とカタカナの同形)
+OCR_CONFUSABLE_PAIRS = [
+    ('ハ', 'パ'), ('ハ', 'バ'), ('バ', 'パ'), ('ヒ', 'ピ'), ('ヒ', 'ビ'), ('ビ', 'ピ'),
+    ('フ', 'プ'), ('フ', 'ブ'), ('ブ', 'プ'), ('ヘ', 'ペ'), ('ヘ', 'ベ'), ('ベ', 'ペ'),
+    ('ホ', 'ポ'), ('ホ', 'ボ'), ('ボ', 'ポ'),
+    ('カ', 'ガ'), ('キ', 'ギ'), ('ク', 'グ'), ('ケ', 'ゲ'), ('コ', 'ゴ'),
+    ('サ', 'ザ'), ('シ', 'ジ'), ('ス', 'ズ'), ('セ', 'ゼ'), ('ソ', 'ゾ'),
+    ('タ', 'ダ'), ('チ', 'ヂ'), ('ツ', 'ヅ'), ('テ', 'デ'), ('ト', 'ド'),
+    ('カ', '力'), ('ロ', '口'), ('エ', '工'), ('ニ', '二'), ('ハ', '八'),
+    ('ト', '卜'), ('タ', '夕'), ('モ', '乇'), ('ー', '一'), ('ミ', '三'),
+]
+OCR_CONFUSABLE = {frozenset(p) for p in OCR_CONFUSABLE_PAIRS}
+
+
+def _confusable_typo(a, b):
+    """a と b が1文字だけ違い、その1文字がOCR誤読ペアなら True"""
+    if len(a) != len(b) or a == b:
+        return False
+    diffs = [(x, y) for x, y in zip(a, b) if x != y]
+    return len(diffs) == 1 and frozenset(diffs[0]) in OCR_CONFUSABLE
+
+
+def check_link_ocr_confusions(links, details):
+    """リンク名/リンク効果に紛れ込んだOCR誤読を検出する。
+
+    - リンク名: 字形が紛らわしい1文字違いの別リンクが併存していないか
+      (例: プラフスキー粒子 / ブラフスキー粒子 → リンクが分断され不発になる)
+    - リンク効果: 同名リンクなのに 遠距離⇔近距離 だけが逆の少数派がいないか
+      (例: 肉薄する戦い が [機動力][遠距離攻撃力] になっている → 伸びるステータスが逆になる)
+    """
+    size = {n: len(d.get('ms_cards', [])) + len(d.get('pl_cards', []))
+            for n, d in links.items()}
+    names = sorted(links)
+    name_issues = []
+    for i, a in enumerate(names):
+        for b in names[i + 1:]:
+            if _confusable_typo(a, b):
+                minor, major = sorted((a, b), key=lambda n: size[n])
+                name_issues.append(
+                    f"{minor!r}({size[minor]}枚) は {major!r}({size[major]}枚) の"
+                    f"OCR誤読の可能性: {links[minor].get('ms_cards', [])[:5]}")
+    if name_issues:
+        for msg in name_issues:
+            R.fail(f"リンク名にOCR誤読の疑い: {msg}")
+    else:
+        R.ok("リンク名にOCR誤読(1文字違いの重複)なし")
+
+    def norm_effect(s):
+        return re.sub(r'[\[\]【】「」［］\s]', '', s or '')
+
+    variants = {}
+    holders = {}
+    for num, card in details.items():
+        for la in (card.get('ocr_data') or {}).get('link_ability') or []:
+            if not isinstance(la, dict):
+                continue
+            name = (la.get('name') or '').strip()
+            if not name:
+                continue
+            eff = norm_effect(la.get('effect'))
+            variants.setdefault(name, {}).setdefault(eff, 0)
+            variants[name][eff] += 1
+            holders.setdefault((name, eff), []).append(num)
+
+    eff_issues = []
+    for name, counts in variants.items():
+        total = sum(counts.values())
+        if total < 10:
+            continue
+        major = max(counts, key=lambda e: counts[e])
+        for eff, cnt in counts.items():
+            if eff == major or cnt * 5 > total:
+                continue
+            # 遠⇔近を揃えると多数派と一致 = ステータス取り違え
+            if eff.replace('遠距離', '近距離') == major.replace('遠距離', '近距離'):
+                eff_issues.append(
+                    f"{name!r}: {cnt}/{total}枚だけ {eff!r} (多数派 {major!r}) "
+                    f"→ {sorted(holders[(name, eff)])[:5]}")
+    if eff_issues:
+        for msg in eff_issues:
+            R.fail(f"リンク効果の遠/近が多数派と逆: {msg}")
+    else:
+        R.ok("同名リンクの遠/近攻撃力アップに食い違いなし")
+
 
 # ============================================================
 # 8. フロント参照ファイルの一貫性

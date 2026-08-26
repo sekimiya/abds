@@ -648,10 +648,17 @@ def rebuild_link_index(card_details, existing_link_index=None):
         data['pl_cards'].sort()
 
     # 既存link_indexの特殊エントリを保持 (ECHOES BEAT等、card_dataから導出できないもの)
+    # 所属カードを持つ既存エントリは card_details が正本なので引き継がない。
+    # (リンク名のOCR誤字を修正した際、旧名エントリが亡霊として残り続けるのを防ぐ)
     if existing_link_index:
         for name, data in existing_link_index.items():
-            if name not in link_index:
-                link_index[name] = data
+            if name in link_index:
+                continue
+            if data.get('ms_cards') or data.get('pl_cards'):
+                print(f'link_index: 廃止されたリンク {name!r} を削除 '
+                      f'(所属カードがcard_detailsに存在しない)')
+                continue
+            link_index[name] = data
 
     return link_index
 
