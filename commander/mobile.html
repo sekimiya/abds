@@ -257,6 +257,15 @@ body.light .bm-toggle-btn.active{background:#d0e8dc;border-color:var(--accent);c
 }
 .terrain-sw.active{background:#1e2924;border-color:var(--accent);color:var(--accent)}
 
+/* ===== COLOR BUFF BAR ===== */
+.color-buff-bar{display:flex;flex-wrap:wrap;gap:4px;flex:0 0 auto;align-items:center}
+.color-buff-bar:empty{display:none}
+.color-buff-chip{display:inline-flex;align-items:center;gap:3px;padding:3px 8px;border-radius:10px;font-size:0.68rem;font-weight:bold;white-space:nowrap;transition:all 0.2s}
+.color-buff-chip.inactive{opacity:0.35;border:1px solid #333;background:#1a1a1a}
+.color-buff-chip.active-red{background:linear-gradient(135deg,#2e1a1a,#3a1010);border:1px solid #f44336;color:#ff8a80;box-shadow:0 0 6px rgba(244,67,54,0.3)}
+.color-buff-chip.active-blue{background:linear-gradient(135deg,#1a1a2e,#101030);border:1px solid #42a5f5;color:#90caf9;box-shadow:0 0 6px rgba(66,165,245,0.3)}
+.color-buff-chip.active-green{background:linear-gradient(135deg,#1a2e1a,#103010);border:1px solid #66bb6a;color:#a5d6a7;box-shadow:0 0 6px rgba(102,187,106,0.3)}
+
 /* ===== LINK CHIPS (tactics-row内) ===== */
 .link-chips{
   display:flex;align-items:center;gap:3px;
@@ -1381,28 +1390,24 @@ body.picking-split .trade-sec.picking .trade-grid{
   <span class="hdr-class c" id="badgeSeiatsu">制0</span>
   <span class="hdr-class b" id="badgeBouei">防0</span>
   <span class="hdr-sep"></span>
-  <span class="sq-badge-h" id="sqStatus">SQ</span>
-  <span class="hdr-active-links" id="hdrSqLinks"></span>
-  <span class="eb-badge-h" id="ebStatus" style="margin-left:-2px">EB</span>
-  <span class="hdr-active-links" id="hdrEbLinks"></span>
-  <span class="ab-badge-h" id="abStatus" style="margin-left:-2px;display:none">AB</span>
-  <span class="hdr-active-links" id="hdrAbLinks"></span>
+  <span class="sq-badge-h" id="sqStatus" style="display:none">SQ</span>
+  <span class="hdr-active-links" id="hdrSqLinks" style="display:none"></span>
+  <span class="eb-badge-h" id="ebStatus" style="display:none">EB</span>
+  <span class="hdr-active-links" id="hdrEbLinks" style="display:none"></span>
+  <span class="ab-badge-h" id="abStatus" style="display:none">AB</span>
+  <span class="hdr-active-links" id="hdrAbLinks" style="display:none"></span>
   <span class="dupe-badge-h" id="dupeBadge">カード重複</span>
   <span class="fl-badge-h" id="fullLinkBadge">FULL LINK</span>
   <span class="hdr-spacer"></span>
   <button class="hamburger-btn" id="hamburgerBtn" onclick="toggleMenu()">&#9776;</button>
 </header>
 
-<!-- TACTICS & LINK ROW -->
+<!-- CMD & COLOR BUFF & LINK ROW -->
 <div class="tactics-row">
-  <div class="tactics-thumb" id="tacticsBtnMain" onclick="TacticsPicker.open('main')">
-    <span class="tactics-thumb-label">M</span>
-    <img class="tactics-thumb-img" id="tacticsImgMain" src="" alt="メイン作戦" style="display:none">
+  <div class="tactics-thumb" id="cmdBtn" onclick="CmdPicker.open()" style="border-color:#e040fb">
+    <span style="color:#e040fb;font-weight:bold">CMD</span>
   </div>
-  <div class="tactics-thumb" id="tacticsBtnSub" onclick="TacticsPicker.open('sub')">
-    <span class="tactics-thumb-label">S</span>
-    <img class="tactics-thumb-img" id="tacticsImgSub" src="" alt="サブ作戦" style="display:none">
-  </div>
+  <div class="color-buff-bar" id="colorBuffBar"></div>
   <div class="link-chips" id="linkBar" onclick="this.classList.toggle('expanded')"></div>
 </div>
 
@@ -1696,12 +1701,12 @@ body.picking-split .trade-sec.picking .trade-grid{
 <!-- TOAST -->
 <div class="toast-container" id="toastContainer"></div>
 
-<!-- TACTICS PICKER MODAL -->
-<div class="modal-overlay" id="tacticsPickerModal">
+<!-- CMD PICKER MODAL -->
+<div class="modal-overlay" id="cmdPickerModal">
   <div class="modal-content" style="max-width:400px">
-    <button class="modal-close" onclick="TacticsPicker.close()">&times;</button>
-    <h3 id="tacticsPickerTitle" style="color:var(--pl-gold);margin-bottom:8px;font-size:1rem">作戦カードを選択</h3>
-    <div id="tacticsPickerBody"></div>
+    <button class="modal-close" onclick="CmdPicker.close()">&times;</button>
+    <h3 style="color:#e040fb;margin-bottom:8px;font-size:1rem">コマンダーカードを選択</h3>
+    <div id="cmdPickerBody"></div>
   </div>
 </div>
 
@@ -1945,10 +1950,6 @@ body.picking-split .trade-sec.picking .trade-grid{
   </div>
   <div class="menu-label">バッジ表示</div>
   <div class="badge-switches" id="badgeSwitches">
-    <button class="badge-sw active" data-badge="sp-tags" onclick="toggleBadgeSw(this)" style="color:#42a5f5;border-color:#42a5f5">SP効果</button>
-    <button class="badge-sw active" data-badge="eb-badge" onclick="toggleBadgeSw(this)" style="color:#ff9800;border-color:#ff9800">EB</button>
-    <button class="badge-sw active" data-badge="sq-badge" onclick="toggleBadgeSw(this)" style="color:#ff69b4;border-color:#ff69b4">SQ</button>
-    <button class="badge-sw active" data-badge="ab-badge" onclick="toggleBadgeSw(this)" style="color:#b388ff;border-color:#b388ff">AB</button>
     <button class="badge-sw active" data-badge="rarity" onclick="toggleBadgeSw(this)" style="color:#ffe082;border-color:#ffe082">RR</button>
   </div>
   <div class="menu-label">セット合計バー</div>
@@ -2243,6 +2244,7 @@ const AppState = {
   tacticsMain: null,
   tacticsSub: null,
   tacticsCards: { main: [], sub: [] },
+  cmdCard: null,
   activeTerrain: null,
   imageSource: 'cache',
   _lastDeckName: '',
@@ -2297,7 +2299,7 @@ const UndoManager = {
   _stack: [],
   _pos: -1,
   snapshot() {
-    const state = JSON.stringify({deck: AppState.deck, tm: AppState.tacticsMain, ts: AppState.tacticsSub});
+    const state = JSON.stringify({deck: AppState.deck, tm: AppState.tacticsMain, ts: AppState.tacticsSub, cmd: AppState.cmdCard});
     if (this._pos >= 0 && this._stack[this._pos] === state) return;
     this._stack = this._stack.slice(0, this._pos + 1);
     this._stack.push(state);
@@ -2323,6 +2325,7 @@ const UndoManager = {
       AppState.deck = raw.deck;
       AppState.tacticsMain = raw.tm || null;
       AppState.tacticsSub = raw.ts || null;
+      AppState.cmdCard = raw.cmd || null;
     }
     const numbers = AppState.deck.filter(n => n);
     if (numbers.length > 0) {
@@ -3253,7 +3256,9 @@ const ImageCache = {
 
 function resolveImageUrl(originalUrl, cardNumber, side = 'front') {
   if (!cardNumber) return PLACEHOLDER_SVG;
-  const card = UIRenderer._getIndexEntry(cardNumber);
+  const card = (typeof UIRenderer !== 'undefined' && UIRenderer._getIndexEntry)
+    ? UIRenderer._getIndexEntry(cardNumber)
+    : AppState.cardIndex.find(c => c.number === cardNumber);
   if (card) {
     const url = side === 'back' ? card.back_url : card.front_url;
     if (url) return url;
@@ -3263,86 +3268,95 @@ function resolveImageUrl(originalUrl, cardNumber, side = 'front') {
 </script>
 <script>
 // ================================================================
-// TacticsPicker — 作戦カード選択
+// CmdPicker — コマンダーカード選択 + 色バフ判定
 // ================================================================
-const TacticsPicker = {
-  _currentType: null,
-  open(type) {
-    this._currentType = type;
-    const cards = type === 'main' ? AppState.tacticsCards.main : AppState.tacticsCards.sub;
-    const title = type === 'main' ? 'メイン作戦カードを選択' : 'サブ作戦カードを選択';
-    const currentId = type === 'main' ? AppState.tacticsMain : AppState.tacticsSub;
-    document.getElementById('tacticsPickerTitle').textContent = title;
-    const body = document.getElementById('tacticsPickerBody');
-    if (!cards || cards.length === 0) {
-      body.innerHTML = '<p style="color:#888">作戦カードデータを読み込み中...</p>';
-      document.getElementById('tacticsPickerModal').classList.add('open');
+const CmdPicker = {
+  open() {
+    const cmdCards = AppState.cardIndex.filter(c => c.type === 'CMD');
+    const currentNum = AppState.cmdCard;
+    const body = document.getElementById('cmdPickerBody');
+    if (cmdCards.length === 0) {
+      body.innerHTML = '<p style="color:#888">コマンダーカードが見つかりません</p>';
+      document.getElementById('cmdPickerModal').classList.add('open');
       return;
     }
-    body.innerHTML = `<div class="tactics-picker-grid">${cards.map(card => {
-      const imgUrl = ImageCache.resolveTacticsUrl(card.thumbnail_url);
+    const clearBtn = currentNum ? `<div class="tactics-picker-card" onclick="CmdPicker._select(null)" style="justify-content:center;color:#f44336;font-weight:bold;font-size:1rem;border-color:#f44336">選択解除</div>` : '';
+    body.innerHTML = `<div class="tactics-picker-grid">${clearBtn}${cmdCards.map(card => {
+      const imgUrl = resolveImageUrl(null, card.number, 'front');
+      const colorTags = (card.color || []).map(c => {
+        const cls = c === '赤' ? 'color:#ff8a80' : c === '青' ? 'color:#90caf9' : 'color:#a5d6a7';
+        return `<span style="${cls};font-weight:bold;margin-right:4px">${c}</span>`;
+      }).join('');
       return `
-      <div class="tactics-picker-card${card.id === currentId ? ' selected' : ''}" onclick="TacticsPicker._select('${card.id}')">
+      <div class="tactics-picker-card${card.number === currentNum ? ' selected' : ''}" onclick="CmdPicker._select('${card.number}')" style="border-color:#e040fb">
         ${imgUrl ? `<img src="${imgUrl}" alt="${card.name}">` : ''}
         <div class="tp-info">
-          <div class="tp-name">${card.name}</div>
-          <div class="tp-effect">${card.effect}</div>
-          ${card.condition ? `<div class="tp-condition">${card.condition}</div>` : ''}
+          <div class="tp-name" style="color:#e040fb">${card.name}</div>
+          <div class="tp-effect">${colorTags}</div>
         </div>
       </div>`;
     }).join('')}</div>`;
-    document.getElementById('tacticsPickerModal').classList.add('open');
-    requestAnimationFrame(() => {
-      body.querySelectorAll('.tp-name').forEach(el => {
-        if (el.scrollWidth > el.clientWidth) el.classList.add('tp-name-left');
-      });
-    });
+    document.getElementById('cmdPickerModal').classList.add('open');
   },
-  _select(id) {
-    const type = this._currentType;
+  _select(number) {
     UndoManager.snapshot();
-    if (type === 'main') AppState.tacticsMain = id;
-    else AppState.tacticsSub = id;
-    this.renderButtons();
+    AppState.cmdCard = number;
+    this.renderButton();
+    this.updateColorBuff();
     UndoManager.snapshot();
     DeckManager._autoSave();
     DeckManager._updateHash();
     this.close();
-    const cards = type === 'main' ? AppState.tacticsCards.main : AppState.tacticsCards.sub;
-    const card = cards.find(c => c.id === id);
-    Toast.show(`作戦カード「${card?.name || id}」を選択`, 'success');
+    if (number) {
+      const card = AppState.cardIndex.find(c => c.number === number);
+      Toast.show(`コマンダー「${card?.name || number}」を選択`, 'success');
+    } else {
+      Toast.show('コマンダーカードを解除しました', 'success');
+    }
   },
-  clear(type) {
-    UndoManager.snapshot();
-    if (type === 'main') AppState.tacticsMain = null;
-    else AppState.tacticsSub = null;
-    this.renderButtons();
-    UndoManager.snapshot();
-    DeckManager._autoSave();
-    DeckManager._updateHash();
+  close() { document.getElementById('cmdPickerModal').classList.remove('open'); },
+  renderButton() {
+    const btn = document.getElementById('cmdBtn');
+    if (!btn) return;
+    const num = AppState.cmdCard;
+    const card = num ? AppState.cardIndex.find(c => c.number === num) : null;
+    if (!card) {
+      btn.className = 'tactics-thumb';
+      btn.style.borderColor = '#e040fb';
+      btn.innerHTML = '<span style="color:#e040fb;font-weight:bold">CMD</span>';
+      return;
+    }
+    const imgUrl = resolveImageUrl(null, card.number, 'front');
+    btn.className = 'tactics-thumb has-card';
+    btn.style.borderColor = '#e040fb';
+    btn.innerHTML = imgUrl ? `<img src="${imgUrl}" alt="${card.name}" style="width:100%;height:100%;object-fit:cover;border-radius:4px">` : `<span style="color:#e040fb">${card.name}</span>`;
   },
-  close() { document.getElementById('tacticsPickerModal').classList.remove('open'); },
-  renderButtons() {
-    ['main', 'sub'].forEach(type => {
-      const btn = document.getElementById(type === 'main' ? 'tacticsBtnMain' : 'tacticsBtnSub');
-      const img = document.getElementById(type === 'main' ? 'tacticsImgMain' : 'tacticsImgSub');
-      if (!btn || !img) return;
-      const id = type === 'main' ? AppState.tacticsMain : AppState.tacticsSub;
-      const cards = type === 'main' ? AppState.tacticsCards.main : AppState.tacticsCards.sub;
-      const card = id ? cards.find(c => c.id === id) : null;
-      const imgUrl = card ? ImageCache.resolveTacticsUrl(card.thumbnail_url) : null;
-      if (card && imgUrl) {
-        img.src = imgUrl;
-        img.style.display = '';
-        btn.classList.add('has-card');
-      } else {
-        img.src = '';
-        img.style.display = 'none';
-        btn.classList.remove('has-card');
-      }
-    });
+  updateColorBuff() {
+    const bar = document.getElementById('colorBuffBar');
+    if (!bar) return;
+    const cmdNum = AppState.cmdCard;
+    const cmdCard = cmdNum ? AppState.cardIndex.find(c => c.number === cmdNum) : null;
+    const cmdColors = cmdCard?.color || [];
+    if (cmdColors.length === 0) { bar.innerHTML = ''; return; }
+    const colorMap = {赤: {label:'赤バフ', css:'active-red', count:0}, 青: {label:'青バフ', css:'active-blue', count:0}, 緑: {label:'緑バフ', css:'active-green', count:0}};
+    for (let i = 0; i < 10; i++) {
+      const num = AppState.deck[i];
+      if (!num) continue;
+      const card = AppState.cardIndex.find(c => c.number === num);
+      if (!card || !card.color) continue;
+      card.color.forEach(col => { if (colorMap[col]) colorMap[col].count++; });
+    }
+    bar.innerHTML = cmdColors.map(col => {
+      const info = colorMap[col];
+      if (!info) return '';
+      const active = info.count > 0;
+      const cls = active ? info.css : 'inactive';
+      const text = active ? `${info.label}発動中 (${info.count})` : `${info.label}`;
+      return `<span class="color-buff-chip ${cls}">${text}</span>`;
+    }).join('');
   }
 };
+const TacticsPicker = { renderButtons() { CmdPicker.renderButton(); CmdPicker.updateColorBuff(); }, close() { CmdPicker.close(); } };
 
 </script>
 <script>
@@ -3457,6 +3471,7 @@ const DeckManager = {
     AppState.deckOcr = Array(10).fill(null);
     AppState.tacticsMain = null;
     AppState.tacticsSub = null;
+    AppState.cmdCard = null;
     UIRenderer.renderAll();
     TacticsPicker.renderButtons();
     UndoManager.snapshot();
@@ -3637,7 +3652,7 @@ const DeckManager = {
     Toast.show(`デッキ「${trimmed}」を保存しました`, 'success');
   },
   _autoSave() {
-    localStorage.setItem('gac_autosave', JSON.stringify({ cards: [...AppState.deck], tacticsMain: AppState.tacticsMain, tacticsSub: AppState.tacticsSub, timestamp: new Date().toISOString() }));
+    localStorage.setItem('gac_autosave', JSON.stringify({ cards: [...AppState.deck], tacticsMain: AppState.tacticsMain, tacticsSub: AppState.tacticsSub, cmdCard: AppState.cmdCard, timestamp: new Date().toISOString() }));
   },
   async _autoLoad() {
     // クエリパラメータ ?d= からデッキコードを読み込み（Twitter等でハッシュが消える対策）
@@ -3701,7 +3716,9 @@ const DeckManager = {
           const numbers = [...data.cards];
           while (numbers.length < 10) numbers.push('');
           if (data.tacticsMain || data.tacticsSub) { numbers[10] = data.tacticsMain || ''; numbers[11] = data.tacticsSub || ''; }
-          await this._applyNumbers(numbers); return;
+          await this._applyNumbers(numbers);
+          if (data.cmdCard) { AppState.cmdCard = data.cmdCard; CmdPicker.renderButton(); CmdPicker.updateColorBuff(); }
+          return;
         }
         TacticsPicker.renderButtons();
       } catch {}
@@ -3968,6 +3985,7 @@ const UIRenderer = {
     this._updateOverview();
     this._updateHeader();
     this._updateLinkBar();
+    if (typeof CmdPicker !== 'undefined') CmdPicker.updateColorBuff();
     this._renderDetailForUnit(AppState.selectedUnit);
   },
 
@@ -4095,35 +4113,6 @@ const UIRenderer = {
       nameEl.innerHTML = `<span class="ov-inline-rarity" style="color:${rc}">${escapeHtml(cardRarity)}</span><span style="overflow:hidden;text-overflow:ellipsis">${escapeHtml(cardName)}</span>`;
     } else {
       nameEl.textContent = cardName;
-    }
-
-    if (type === 'ms') {
-      isSqCard = ocr?.special_attack?.sp_type === 'SQUAD SP' || !!(indexEntry?.has_sq_link);
-      isEbCard = !!(ocr?.special_attack?.echoes_beat) || !!(indexEntry?.has_eb) || !!(indexEntry?.has_eb_link);
-      isAbCard = !!(indexEntry?.has_ab_link);
-      if (isAbCard) { badge.textContent = 'AB'; badge.className = 'ov-badge ab-b'; }
-      else if (isEbCard && indexEntry?.has_eb) {
-        let ebHtml = indexEntry?.eb_type === 'sp' ? 'EBSP' : 'EB';
-        const ebText = indexEntry?.eb_text || '';
-        const dm = ebText.match(/EBLv\.を(\d+)下げ/);
-        const um = ebText.match(/EBLv\.が(\d+)に上昇/);
-        if (dm || um) {
-          ebHtml += '<br>';
-          if (dm) ebHtml += '<span style="color:#fff">↓' + dm[1] + '</span>';
-          if (um) ebHtml += '<span style="color:#a5d6a7">↑' + um[1] + '</span>';
-        }
-        badge.innerHTML = ebHtml; badge.className = 'ov-badge eb-b';
-      }
-      else if (isEbCard) { badge.textContent = 'EB'; badge.className = 'ov-badge eb-b'; }
-      else if (isSqCard) { badge.textContent = 'SQ'; badge.className = 'ov-badge sq-b'; }
-    } else {
-      const plSkill = ocr?.pilot_skill || ocr?.pl_skill;
-      isSqCard = !!(plSkill?.has_sq_skill) || !!(indexEntry?.has_sq_link);
-      isEbCard = !!(plSkill?.is_eb_skill) || !!(indexEntry?.has_eb_link);
-      isAbCard = !!(indexEntry?.has_ab_link);
-      if (isAbCard) { badge.textContent = 'AB'; badge.className = 'ov-badge ab-b'; }
-      else if (isEbCard) { badge.textContent = 'EB'; badge.className = 'ov-badge eb-b'; }
-      else if (isSqCard) { badge.textContent = 'SQ'; badge.className = 'ov-badge sq-b'; }
     }
 
     // SP effect tags (rendered in ov-num-row below)
@@ -5143,8 +5132,8 @@ const SearchPanel = {
   applyFilters() {
     if (this._suppressApply) return;
     if (!this._hasActiveFilter()) { this._filteredCards = []; this._page = 0; this._renderGrid(); this._saveFilters(); this._updateFilterBadge(); return; }
-    // 全カードを対象にする（AC版はOCRなし）
-    let cards = [...AppState.cardIndex];
+    // 全カードを対象にする（AC版はOCRなし、CMD除外）
+    let cards = AppState.cardIndex.filter(c => c.type !== 'CMD');
     if (this._lockedType && this._t.abCat.size === 0) cards = cards.filter(c => c.type === this._lockedType);
     if (this._currentCategory.size > 0) cards = cards.filter(c => !c.category || this._currentCategory.has(c.category));
     if (this._statFilter === 'ranged') cards = cards.filter(c => (c.ranged || 0) > (c.melee || 0));
@@ -5295,43 +5284,14 @@ const SearchPanel = {
     for (let i = this._rendered; i < end; i++) {
       const card = cards[i];
       const el = document.createElement('div');
-      const isEb = card.has_eb || card.has_eb_skill || card.has_eb_link;
-      const isSq = card.has_sqsp || card.has_sq_skill || card.has_sq_link || !!card.sq_rush_effect;
-      const isAb = card.has_ab_link;
       const noOcr = !card.has_ocr;
-      el.className = 'thumb-card' + (isEb ? ' card-eb' : '') + (isSq ? ' card-sq' : '') + (isAb ? ' card-ab' : '') + (CardOwned.has(card.number) ? ' card-owned' : '') + (noOcr ? ' no-ocr' : '');
+      el.className = 'thumb-card' + (CardOwned.has(card.number) ? ' card-owned' : '') + (noOcr ? ' no-ocr' : '');
       const rarityHtml = card.rarity ? `<span class="thumb-card-rarity r-${escapeHtml(card.rarity)}">${escapeHtml(card.rarity)}</span>` : '';
       el.innerHTML = `
         <div class="thumb-card-img-wrap">
           <img src="${resolveImageUrl(null, card.number, 'front')}" alt="${card.name}" loading="lazy" onerror="this.onerror=null;this.src=PLACEHOLDER_SVG">
           <div class="thumb-card-badges">${card.cost !== null ? `<span class="thumb-card-cost">C${card.cost}</span>` : ''}${rarityHtml}</div>
           ${noOcr ? '<div class="thumb-no-ocr-badge">未OCR</div>' : ''}
-          ${isSq ? '<div class="thumb-sq-badge">SQ</div>' : ''}
-          ${(()=>{
-            if (!isEb) return '';
-            let ebLabel = card.eb_type === 'sp' ? 'EBSP' : 'EB';
-            let hasLvInfo = false;
-            // MS: EB技のレベル消費/上昇 (rebuild_index導出のeb_lv_down/eb_lv_jump)
-            if (card.has_eb && (card.eb_lv_down || card.eb_lv_jump)) {
-              ebLabel += '<br>';
-              if (card.eb_lv_down) ebLabel += '<span class="eb-lv-down">↓' + card.eb_lv_down + '</span>';
-              if (card.eb_lv_jump) ebLabel += '<span class="eb-lv-up">↑' + card.eb_lv_jump + '</span>';
-              hasLvInfo = true;
-            }
-            // PL: EB スキルのトリガーレベル
-            if (!hasLvInfo && card.has_eb_skill && card.eb_trigger_level) {
-              const cond = card.eb_trigger_cond || '';
-              ebLabel += '<br>';
-              if (cond === '以上') {
-                ebLabel += '<span class="eb-lv-up">≥' + card.eb_trigger_level + '</span>';
-              } else {
-                ebLabel += '<span class="eb-lv-up">↑' + card.eb_trigger_level + '</span>';
-              }
-            }
-            return '<div class="thumb-eb-badge">' + ebLabel + '</div>';
-          })()}
-          ${isAb ? '<div class="thumb-ab-badge">AB</div>' : ''}
-          ${card.sp_effect_tags && card.sp_effect_tags.length ? '<div class="thumb-sp-tags">' + card.sp_effect_tags.map(t => '<span class="thumb-sp-tag sp-t-' + t + '">' + escapeHtml(t) + '</span>').join('') + '</div>' : ''}
           <div class="thumb-detail-btn" onclick="event.stopPropagation();showCardModal('${escapeJsForAttr(card.number)}')">詳細</div>
           <div class="thumb-card-info">
             <div class="thumb-card-number">${card.number}</div>
