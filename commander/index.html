@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Arsenal Commander Deck Simulator</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:14px;height:100%;-webkit-text-size-adjust:100%;touch-action:manipulation}
+body{background:#0a0a0f;color:#e0e0e0;font-family:'Segoe UI','Hiragino Sans',sans-serif;height:100%;overflow:hidden;display:flex;flex-direction:column;
+  padding-top:env(safe-area-inset-top);padding-bottom:env(safe-area-inset-bottom)}
+img{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;pointer-events:auto}
+button{cursor:pointer;font-family:inherit;-webkit-tap-highlight-color:transparent;border:none;background:none;color:inherit}
+select,input{font-family:inherit}
+::-webkit-scrollbar{width:5px;height:5px}
+::-webkit-scrollbar-track{background:#15151a}
+::-webkit-scrollbar-thumb{background:#333;border-radius:3px}
+
+:root{
+  --bg:#0a0a0f;--bg2:#101018;--bg-card:#1a1a25;--bg-hover:#252532;
+  --accent:#68efbd;--accent2:#64b5f6;--gold:#ffe082;
+  --red:#ef5350;--blue:#42a5f5;--green:#66bb6a;
+  --red-bg:rgba(239,83,80,0.15);--blue-bg:rgba(66,165,245,0.15);--green-bg:rgba(102,187,106,0.15);
+  --senmetsu:#ff8a80;--seiatsu:#82b1ff;--bouei:#a5d6a7;
+}
+
+/* ===== HEADER ===== */
+.app-header{
+  display:flex;align-items:center;gap:8px;
+  background:linear-gradient(135deg,#0f1520,#141828);
+  border-bottom:2px solid var(--accent);
+  padding:6px 10px;min-height:44px;flex-shrink:0;
+}
+.hdr-cost{
+  display:flex;flex-direction:column;align-items:center;
+  padding:2px 8px;
+  background:linear-gradient(135deg,rgba(255,224,130,0.08),rgba(255,183,77,0.04));
+  border:1px solid rgba(255,224,130,0.2);border-radius:6px;
+}
+.hdr-cost-label{font-size:0.5rem;color:#999;letter-spacing:1px;font-weight:600}
+.hdr-cost-val{font-family:'Courier New',monospace;font-size:1.2rem;font-weight:900;
+  background:linear-gradient(180deg,#ffe082,#ffb74d);-webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
+.hdr-class{font-size:0.7rem;font-weight:bold;padding:2px 6px;border-radius:4px;white-space:nowrap}
+.hdr-class.s{background:#8b1a1a;color:var(--senmetsu)}
+.hdr-class.c{background:#1a4a8b;color:var(--seiatsu)}
+.hdr-class.b{background:#1a6b1a;color:var(--bouei)}
+.hdr-spacer{flex:1}
+.hamburger-btn{
+  background:#1a1a2a;border:1px solid #555;border-radius:6px;
+  color:#ccc;padding:6px 10px;font-size:1.1rem;line-height:1;
+}
+.hamburger-btn:hover{border-color:var(--accent);color:var(--accent)}
+
+/* ===== COLOR BUFF BAR ===== */
+.color-buff-bar{
+  display:flex;align-items:center;gap:6px;
+  background:#0c0c14;border-bottom:1px solid #222;
+  padding:4px 10px;flex-shrink:0;min-height:28px;
+}
+.color-buff-chip{
+  display:inline-flex;align-items:center;gap:4px;
+  padding:2px 8px;border-radius:10px;font-size:0.65rem;font-weight:bold;
+  border:1px solid #333;color:#555;
+}
+.color-buff-chip.active.c-red{border-color:var(--red);color:var(--red);background:var(--red-bg)}
+.color-buff-chip.active.c-blue{border-color:var(--blue);color:var(--blue);background:var(--blue-bg)}
+.color-buff-chip.active.c-green{border-color:var(--green);color:var(--green);background:var(--green-bg)}
+
+/* ===== MAIN BODY ===== */
+.app-body{flex:1;display:flex;overflow:hidden}
+
+/* ===== SIDEBAR (card picker) ===== */
+.sidebar{
+  width:360px;max-width:45vw;
+  background:var(--bg2);border-right:1px solid #2a2a2a;
+  display:flex;flex-direction:column;flex-shrink:0;
+}
+.sidebar-topbar{
+  display:flex;align-items:center;gap:8px;
+  padding:8px 10px;border-bottom:1px solid #333;background:#0f0f16;flex-shrink:0;
+}
+.sidebar-title{color:var(--accent);font-weight:bold;font-size:0.9rem}
+.sidebar-tabs{display:flex;gap:4px}
+.sidebar-tab{
+  padding:4px 12px;border-radius:12px;font-size:0.75rem;font-weight:bold;
+  background:var(--bg-card);border:1px solid #333;color:#888;cursor:pointer;
+}
+.sidebar-tab.active{background:rgba(104,239,189,0.15);border-color:var(--accent);color:var(--accent)}
+
+.filter-panel{
+  padding:8px 10px;border-bottom:1px solid #222;flex-shrink:0;
+  display:flex;flex-direction:column;gap:6px;
+}
+.filter-row{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.filter-search{
+  flex:1;min-width:120px;
+  background:var(--bg-card);border:1px solid #333;border-radius:6px;
+  color:#e0e0e0;padding:6px 8px;font-size:0.8rem;
+}
+.filter-search:focus{border-color:var(--accent);outline:none}
+.filter-select{
+  background:var(--bg-card);border:1px solid #333;border-radius:6px;
+  color:#e0e0e0;padding:5px 6px;font-size:0.75rem;min-width:80px;
+}
+.filter-color-btn{
+  padding:3px 10px;border-radius:4px;font-size:0.7rem;font-weight:bold;
+  background:var(--bg-card);border:1px solid #333;color:#888;cursor:pointer;
+}
+.filter-color-btn.active.c-red{border-color:var(--red);color:var(--red);background:var(--red-bg)}
+.filter-color-btn.active.c-blue{border-color:var(--blue);color:var(--blue);background:var(--blue-bg)}
+.filter-color-btn.active.c-green{border-color:var(--green);color:var(--green);background:var(--green-bg)}
+.filter-count{color:#888;font-size:0.7rem;margin-left:auto}
+
+.sidebar-scroll{flex:1;overflow-y:auto;padding:8px}
+.card-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:6px;
+}
+.card-thumb{
+  position:relative;background:var(--bg-card);border-radius:6px;
+  overflow:hidden;border:2px solid transparent;cursor:pointer;
+  transition:border-color 0.15s;
+}
+.card-thumb:hover{border-color:var(--accent)}
+.card-thumb.in-deck{opacity:0.4}
+.card-thumb-img-wrap{position:relative;width:100%;padding-top:139.68%;overflow:hidden}
+.card-thumb-img-wrap img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:contain}
+.card-thumb-fallback{
+  position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  font-size:0.55rem;color:#777;text-align:center;padding:4px;word-break:break-all;
+}
+.card-thumb-info{
+  display:flex;align-items:center;gap:3px;padding:3px 4px;
+  font-size:0.55rem;background:rgba(0,0,0,0.5);
+}
+.card-thumb-info .ct-name{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:600}
+.card-thumb-info .ct-rarity{font-size:0.5rem;padding:1px 3px;border-radius:2px;font-weight:bold}
+.card-thumb-info .ct-rarity.rarity-M{background:#5e3a1a;color:#ffcc80}
+.card-thumb-info .ct-rarity.rarity-R{background:#1a1a5e;color:#90caf9}
+.card-thumb-info .ct-rarity.rarity-C{background:#1a3a1a;color:#a5d6a7}
+.card-thumb-info .ct-rarity.rarity-N{background:#3a3a3a;color:#bdbdbd}
+.card-thumb-info .ct-rarity.rarity-P{background:#1a5e5e;color:#80deea}
+.card-thumb-info .ct-rarity.rarity-PR{background:#4a1a4a;color:#f48fb1}
+.card-thumb-info .ct-cost{color:var(--gold);font-weight:bold;margin-left:auto}
+.card-thumb-colors{
+  position:absolute;top:2px;right:2px;display:flex;gap:2px;
+}
+.ct-color-dot{width:7px;height:7px;border-radius:50%;border:1px solid rgba(255,255,255,0.4)}
+
+/* ===== MAIN AREA ===== */
+.main-area{
+  flex:1;display:flex;flex-direction:column;overflow:hidden;
+  background:var(--bg);
+}
+
+/* Commander bar */
+.cmd-bar{
+  display:flex;align-items:center;gap:10px;
+  padding:8px 12px;background:var(--bg2);border-bottom:1px solid #2a2a2a;flex-shrink:0;
+}
+.cmd-label{font-size:0.65rem;color:#888;font-weight:bold;letter-spacing:1px}
+.cmd-slot{
+  width:48px;height:68px;background:var(--bg-card);
+  border:2px solid #444;border-radius:6px;overflow:hidden;cursor:pointer;
+  position:relative;flex-shrink:0;
+}
+.cmd-slot.empty{border-style:dashed;display:flex;align-items:center;justify-content:center}
+.cmd-slot.empty::after{content:'+';color:#444;font-size:1.2rem}
+.cmd-slot img{width:100%;height:100%;object-fit:cover}
+.cmd-info{flex:1;min-width:0}
+.cmd-name{font-size:0.85rem;font-weight:bold;color:#e0e0e0}
+.cmd-colors{display:flex;gap:4px;margin-top:2px}
+.cmd-color-dot{width:10px;height:10px;border-radius:50%;border:1px solid rgba(255,255,255,0.3)}
+.cmd-colorless{color:#666;font-size:0.7rem}
+.cmd-clear{color:#888;font-size:1.1rem;padding:4px}
+.cmd-clear:hover{color:var(--red)}
+
+/* Unit grid */
+.unit-grid{
+  flex:1;display:grid;grid-template-columns:repeat(5,1fr);gap:8px;
+  padding:10px;overflow-y:auto;align-content:start;
+}
+.unit-col{
+  background:var(--bg2);border:1px solid #2a2a2a;border-radius:8px;
+  padding:6px;display:flex;flex-direction:column;gap:6px;
+}
+.unit-col.selected{border-color:var(--accent);box-shadow:0 0 8px rgba(104,239,189,0.2)}
+.unit-cat{
+  text-align:center;font-size:0.6rem;font-weight:bold;padding:2px 0;border-radius:3px;
+  background:#1a1a25;color:#888;
+}
+.unit-cat.s{background:#8b1a1a;color:var(--senmetsu)}
+.unit-cat.c{background:#1a4a8b;color:var(--seiatsu)}
+.unit-cat.b{background:#1a6b1a;color:var(--bouei)}
+.unit-cost{text-align:center;font-size:0.65rem;color:var(--gold);font-weight:bold}
+.unit-card{
+  position:relative;background:var(--bg-card);border-radius:6px;
+  overflow:hidden;border:2px solid #333;cursor:pointer;aspect-ratio:63/88;
+}
+.unit-card.empty{border-style:dashed;display:flex;align-items:center;justify-content:center}
+.unit-card.empty::after{content:'+';color:#444;font-size:1.5rem}
+.unit-card img{width:100%;height:100%;object-fit:cover}
+.unit-card .uc-color-bar{
+  position:absolute;top:0;left:0;right:0;height:4px;display:flex;
+}
+.uc-color-seg{flex:1}
+.unit-card .uc-buff-star{
+  position:absolute;bottom:3px;right:3px;width:14px;height:14px;
+  border-radius:50%;background:rgba(255,215,0,0.9);color:#000;
+  font-size:8px;font-weight:bold;line-height:14px;text-align:center;
+  display:none;box-shadow:0 0 4px rgba(255,215,0,0.5);
+}
+.unit-card .uc-buff-star.active{display:block}
+.unit-card-name{
+  font-size:0.55rem;color:#bbb;text-align:center;line-height:1.2;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.unit-stats{
+  display:flex;justify-content:center;gap:6px;font-size:0.6rem;color:#888;
+}
+.unit-stats .buffed{text-shadow:0 0 4px rgba(255,215,0,0.5);color:#fff}
+
+/* Detail / stats panel */
+.detail-panel{
+  flex:1;min-height:180px;max-height:35vh;
+  background:var(--bg2);border-top:1px solid #2a2a2a;
+  overflow-y:auto;padding:10px;
+}
+.detail-empty{color:#555;text-align:center;padding:2rem;font-size:0.85rem}
+
+/* ===== MODAL ===== */
+.modal-overlay{
+  display:none;position:fixed;inset:0;
+  background:rgba(0,0,0,0.85);z-index:500;
+  align-items:center;justify-content:center;padding:16px;
+}
+.modal-overlay.open{display:flex}
+.modal-content{
+  background:var(--bg-card);border-radius:12px;
+  width:100%;max-width:520px;max-height:90vh;overflow-y:auto;
+  box-shadow:0 0 24px rgba(0,0,0,0.8);position:relative;
+  padding:1rem;
+}
+.modal-close{
+  position:absolute;top:6px;right:10px;background:none;border:none;
+  color:#888;font-size:1.5rem;padding:4px;cursor:pointer;z-index:2;
+}
+.modal-close:hover{color:var(--accent)}
+.modal-card-header{display:flex;gap:12px;margin-bottom:12px;align-items:flex-start}
+.modal-card-image{
+  width:140px;border-radius:6px;flex-shrink:0;background:var(--bg2);object-fit:contain;
+}
+.modal-card-info{flex:1;min-width:0}
+.modal-card-number{color:var(--accent);font-weight:bold;font-size:0.95rem}
+.modal-card-name{font-size:1.15rem;font-weight:bold;margin-top:2px;word-break:break-all}
+.modal-card-meta{color:#888;font-size:0.8rem;margin-top:4px}
+.modal-param-group{background:#111;border-radius:6px;padding:10px;margin-top:10px}
+.modal-param-title{color:var(--accent);font-weight:bold;font-size:0.8rem;margin-bottom:6px}
+.modal-param-row{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:4px}
+.modal-param-item{background:#1a1a25;border-radius:4px;padding:3px 8px;font-size:0.8rem}
+.modal-param-label{color:var(--accent);margin-right:4px}
+.modal-actions{
+  display:flex;gap:8px;margin-top:14px;
+}
+.modal-btn{
+  flex:1;padding:8px;border-radius:6px;font-size:0.85rem;font-weight:bold;cursor:pointer;
+  background:var(--bg2);border:1px solid #444;color:#ccc;
+}
+.modal-btn.primary{
+  background:linear-gradient(135deg,#1a3a2a,#142820);
+  border-color:var(--accent);color:var(--accent);
+}
+.modal-btn:hover{filter:brightness(1.2)}
+.rarity-tag{
+  display:inline-flex;align-items:center;justify-content:center;
+  padding:1px 6px;border-radius:3px;font-size:0.8rem;font-weight:bold;
+  min-width:1.6rem;text-align:center;margin-left:4px;
+}
+.rarity-tag.rarity-M{background:#5e3a1a;color:#ffcc80}
+.rarity-tag.rarity-C{background:#1a3a1a;color:#a5d6a7}
+.rarity-tag.rarity-R{background:#1a1a5e;color:#90caf9}
+.rarity-tag.rarity-N{background:#3a3a3a;color:#bdbdbd}
+.rarity-tag.rarity-P{background:#1a5e5e;color:#80deea}
+.rarity-tag.rarity-PR{background:#4a1a4a;color:#f48fb1}
+
+/* ===== MENU ===== */
+.menu-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:200}
+.menu-overlay.open{display:block}
+.menu-panel{
+  position:fixed;right:0;top:0;bottom:0;width:280px;max-width:85vw;
+  background:#12121a;border-left:2px solid var(--accent);
+  padding:0.8rem;z-index:201;display:flex;flex-direction:column;gap:0.4rem;
+  transform:translateX(100%);transition:transform 0.25s ease;overflow-y:auto;
+}
+.menu-panel.open{transform:translateX(0)}
+.menu-close{align-self:flex-end;background:transparent;border:none;color:#888;font-size:1.2rem;cursor:pointer}
+.menu-close:hover{color:var(--accent)}
+.menu-title{color:var(--accent);font-size:0.85rem;font-weight:bold;margin-bottom:2px}
+.menu-btn{
+  background:var(--bg-card);border:1px solid #444;border-radius:4px;
+  color:#ccc;padding:8px;font-size:0.75rem;width:100%;text-align:left;cursor:pointer;
+}
+.menu-btn:hover{border-color:var(--accent);color:var(--accent)}
+.menu-btn.danger{color:#ef5350}
+.menu-btn.danger:hover{border-color:#ef5350;background:rgba(239,83,80,0.1)}
+.menu-divider{height:1px;background:#333;margin:2px 0}
+.menu-label{color:#666;font-size:0.65rem;margin-bottom:1px}
+.deck-name-input{
+  background:var(--bg-card);border:1px solid #333;border-radius:4px;
+  color:#e0e0e0;padding:6px;font-size:0.8rem;width:100%;
+}
+.deck-name-input:focus{border-color:var(--accent);outline:none}
+
+.toast{
+  position:fixed;bottom:40px;left:50%;transform:translateX(-50%);
+  background:#333;color:#e0e0e0;padding:8px 16px;border-radius:6px;
+  font-size:0.8rem;z-index:999;opacity:0;transition:opacity 0.3s;pointer-events:none;
+}
+.toast.show{opacity:1}
+
+@media(max-width:768px){
+  .sidebar{position:fixed;left:0;top:0;bottom:0;z-index:150;transform:translateX(-100%);transition:transform 0.25s ease;width:85vw;max-width:320px}
+  .sidebar.open{transform:translateX(0)}
+  .card-grid{grid-template-columns:repeat(2,1fr)}
+  .unit-grid{grid-template-columns:repeat(5,1fr);gap:4px;padding:6px}
+  .unit-card-name{font-size:0.45rem}
+}
+</style>
+</head>
+<body>
+
+<header class="app-header">
+  <span class="hdr-cost"><span class="hdr-cost-label">TOTAL</span><span class="hdr-cost-val" id="totalCost">0</span></span>
+  <span class="hdr-class s" id="badgeSenmetsu">殲0</span>
+  <span class="hdr-class c" id="badgeSeiatsu">制0</span>
+  <span class="hdr-class b" id="badgeBouei">防0</span>
+  <span class="hdr-spacer"></span>
+  <span style="font-size:0.6rem;color:#888;white-space:nowrap;margin-right:6px">公式βカード / 数値未確定</span>
+  <button class="hamburger-btn" id="hamburgerBtn">&#9776;</button>
+</header>
+
+<div class="color-buff-bar" id="colorBuffBar"></div>
+
+<div class="app-body" id="appBody">
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-topbar">
+      <span class="sidebar-title">CARD LIST</span>
+      <div class="sidebar-tabs" id="sidebarTabs">
+        <button class="sidebar-tab" data-type="MS">MS</button>
+        <button class="sidebar-tab" data-type="PL">PL</button>
+        <button class="sidebar-tab" data-type="CMD">CMD</button>
+      </div>
+      <span class="hdr-spacer"></span>
+      <button class="modal-close" id="sidebarClose" style="position:static">&times;</button>
+    </div>
+    <div class="filter-panel">
+      <div class="filter-row">
+        <input type="text" class="filter-search" id="filterSearch" placeholder="検索...">
+      </div>
+      <div class="filter-row">
+        <button class="filter-color-btn c-red" data-color="赤">赤</button>
+        <button class="filter-color-btn c-blue" data-color="青">青</button>
+        <button class="filter-color-btn c-green" data-color="緑">緑</button>
+        <select class="filter-select" id="filterRarity"><option value="">全レア</option></select>
+        <select class="filter-select" id="filterCategory"><option value="">全カテ</option></select>
+        <span class="filter-count" id="filterCount">0件</span>
+      </div>
+    </div>
+    <div class="sidebar-scroll">
+      <div class="card-grid" id="cardGrid"></div>
+    </div>
+  </aside>
+
+  <main class="main-area">
+    <div class="cmd-bar" id="cmdBar">
+      <span class="cmd-label">COMMANDER</span>
+      <div class="cmd-slot empty" id="cmdSlot"></div>
+      <div class="cmd-info" id="cmdInfo">
+        <div class="cmd-name">未選択</div>
+        <div class="cmd-colors" id="cmdColors"></div>
+      </div>
+      <button class="cmd-clear" id="cmdClear" style="display:none">&times;</button>
+    </div>
+    <div class="unit-grid" id="unitGrid"></div>
+    <div class="detail-panel" id="detailPanel">
+      <div class="detail-empty">ユニットを選択するか、カードを選択してください</div>
+    </div>
+  </main>
+</div>
+
+<div class="menu-overlay" id="menuOverlay"></div>
+<div class="menu-panel" id="menuPanel">
+  <button class="menu-close" id="menuClose">&times;</button>
+  <span class="menu-title">MENU</span>
+  <button class="menu-btn" onclick="location.href='../'">&#8592; アーセナルベース版へ</button>
+  <div class="menu-divider"></div>
+  <label class="menu-label">デッキ名</label>
+  <input type="text" class="deck-name-input" id="deckNameInput" placeholder="My Deck">
+  <div class="menu-divider"></div>
+  <button class="menu-btn" id="btnShare">デッキコードをコピー</button>
+  <button class="menu-btn" id="btnLoad">デッキコードから読込</button>
+  <div class="menu-divider"></div>
+  <button class="menu-btn" id="btnSave">ローカルに保存</button>
+  <button class="menu-btn" id="btnLoadLocal">保存デッキを読込</button>
+  <div class="menu-divider"></div>
+  <button class="menu-btn danger" id="btnClear">デッキをクリア</button>
+</div>
+
+<div class="modal-overlay" id="cardModal" onclick="closeCardModal(event)">
+  <div class="modal-content" onclick="event.stopPropagation()">
+    <button class="modal-close" onclick="closeCardModal()">&times;</button>
+    <div id="cardModalBody"></div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+'use strict';
+
+const COLOR_MAP = {
+  '赤': { cls: 'red', css: 'var(--red)' },
+  '青': { cls: 'blue', css: 'var(--blue)' },
+  '緑': { cls: 'green', css: 'var(--green)' },
+};
+
+const AppState = {
+  cardIndex: [],
+  deck: Array(10).fill(null),
+  cmdCard: null,
+  selectedSlot: null, // null, 'cmd', or 0-9
+  sidebarType: 'MS',
+  filterColor: null,
+  filterSearch: '',
+  filterRarity: '',
+  filterCategory: '',
+  deckName: '',
+};
+
+function escapeHtml(text) {
+  if (text == null) return '';
+  return String(text).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
+}
+
+async function init() {
+  await loadCardIndex();
+  buildSidebarTabs();
+  buildRarityFilter();
+  buildCategoryFilter();
+  buildUnitGrid();
+  bindEvents();
+  loadDeckFromHash();
+  render();
+}
+
+async function loadCardIndex() {
+  try {
+    const res = await fetch('./data/card_index.json', { cache: 'no-store' });
+    AppState.cardIndex = await res.json();
+  } catch (e) {
+    console.error(e);
+    AppState.cardIndex = [];
+  }
+}
+
+function findCard(num) {
+  if (!num) return null;
+  return AppState.cardIndex.find(c => c.number === num) || null;
+}
+
+function getCmdColors() {
+  const cmd = findCard(AppState.cmdCard);
+  return cmd ? (cmd.color || []) : [];
+}
+
+function buildSidebarTabs() {
+  const tabs = document.getElementById('sidebarTabs');
+  tabs.innerHTML = '';
+  const available = [...new Set(AppState.cardIndex.map(c => c.type))].sort();
+  ['CMD', 'MS', 'PL'].forEach(type => {
+    if (!available.includes(type)) return;
+    const btn = document.createElement('button');
+    btn.className = 'sidebar-tab' + (type === AppState.sidebarType ? ' active' : '');
+    btn.textContent = type;
+    btn.dataset.type = type;
+    btn.addEventListener('click', () => {
+      AppState.sidebarType = type;
+      updateSidebarTabs();
+      renderCardGrid();
+    });
+    tabs.appendChild(btn);
+  });
+}
+
+function updateSidebarTabs() {
+  document.querySelectorAll('.sidebar-tab').forEach(t => {
+    t.classList.toggle('active', t.dataset.type === AppState.sidebarType);
+  });
+}
+
+function buildRarityFilter() {
+  const sel = document.getElementById('filterRarity');
+  const rarities = [...new Set(AppState.cardIndex.map(c => c.rarity).filter(Boolean))].sort();
+  rarities.forEach(r => {
+    const opt = document.createElement('option');
+    opt.value = r;
+    opt.textContent = r;
+    sel.appendChild(opt);
+  });
+}
+
+function buildCategoryFilter() {
+  const sel = document.getElementById('filterCategory');
+  const cats = [...new Set(AppState.cardIndex.map(c => c.category).filter(Boolean))].sort();
+  cats.forEach(c => {
+    const opt = document.createElement('option');
+    opt.value = c;
+    opt.textContent = c;
+    sel.appendChild(opt);
+  });
+}
+
+function buildUnitGrid() {
+  const grid = document.getElementById('unitGrid');
+  grid.innerHTML = '';
+  for (let i = 0; i < 5; i++) {
+    const col = document.createElement('div');
+    col.className = 'unit-col' + (i === 0 ? ' selected' : '');
+    col.dataset.unit = i;
+    col.innerHTML = `
+      <div class="unit-cat" id="unitCat${i}">-</div>
+      <div class="unit-cost" id="unitCost${i}">0</div>
+      <div class="unit-card empty" id="msSlot${i}" data-slot="${i}"><div class="uc-color-bar"></div><div class="uc-buff-star">&#9733;</div></div>
+      <div class="unit-card-name" id="msName${i}">&nbsp;</div>
+      <div class="unit-card empty" id="plSlot${i}" data-slot="${i + 5}"><div class="uc-color-bar"></div><div class="uc-buff-star">&#9733;</div></div>
+      <div class="unit-card-name" id="plName${i}">&nbsp;</div>
+      <div class="unit-stats" id="unitStats${i}">-</div>
+    `;
+    col.addEventListener('click', () => selectUnit(i));
+    grid.appendChild(col);
+  }
+}
+
+function selectUnit(idx) {
+  AppState.selectedSlot = idx;
+  document.querySelectorAll('.unit-col').forEach((c, i) => c.classList.toggle('selected', i === idx));
+  renderDetail();
+}
+
+function bindEvents() {
+  document.getElementById('hamburgerBtn').addEventListener('click', openMenu);
+  document.getElementById('menuClose').addEventListener('click', closeMenu);
+  document.getElementById('menuOverlay').addEventListener('click', closeMenu);
+  document.getElementById('sidebarClose').addEventListener('click', closeSidebar);
+
+  document.getElementById('cmdSlot').addEventListener('click', () => { AppState.selectedSlot = 'cmd'; openSidebar('CMD'); });
+  document.getElementById('cmdClear').addEventListener('click', e => { e.stopPropagation(); AppState.cmdCard = null; saveDeckToHash(); render(); });
+
+  document.getElementById('filterSearch').addEventListener('input', e => { AppState.filterSearch = e.target.value.toLowerCase(); renderCardGrid(); });
+  document.getElementById('filterRarity').addEventListener('change', e => { AppState.filterRarity = e.target.value; renderCardGrid(); });
+  document.getElementById('filterCategory').addEventListener('change', e => { AppState.filterCategory = e.target.value; renderCardGrid(); });
+  document.querySelectorAll('.filter-color-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      AppState.filterColor = AppState.filterColor === btn.dataset.color ? null : btn.dataset.color;
+      updateFilterColorBtns();
+      renderCardGrid();
+    });
+  });
+
+  document.getElementById('btnShare').addEventListener('click', shareDeck);
+  document.getElementById('btnLoad').addEventListener('click', loadDeckPrompt);
+  document.getElementById('btnSave').addEventListener('click', saveDeckLocal);
+  document.getElementById('btnLoadLocal').addEventListener('click', loadDeckLocal);
+  document.getElementById('btnClear').addEventListener('click', clearDeck);
+  document.getElementById('deckNameInput').addEventListener('input', e => { AppState.deckName = e.target.value; });
+
+  window.addEventListener('hashchange', () => { loadDeckFromHash(); render(); });
+}
+
+function updateFilterColorBtns() {
+  document.querySelectorAll('.filter-color-btn').forEach(b => {
+    b.classList.toggle('active', AppState.filterColor === b.dataset.color);
+  });
+}
+
+function openSidebar(type) {
+  if (type) AppState.sidebarType = type;
+  updateSidebarTabs();
+  renderCardGrid();
+  document.getElementById('sidebar').classList.add('open');
+}
+
+function closeSidebar() {
+  document.getElementById('sidebar').classList.remove('open');
+}
+
+function render() {
+  renderCmd();
+  renderUnits();
+  renderHeader();
+  renderColorBuff();
+  renderDetail();
+  renderCardGrid();
+}
+
+function renderCmd() {
+  const card = findCard(AppState.cmdCard);
+  const slot = document.getElementById('cmdSlot');
+  const nameEl = document.querySelector('.cmd-name');
+  const colorsEl = document.getElementById('cmdColors');
+  const clearBtn = document.getElementById('cmdClear');
+  slot.innerHTML = '';
+  colorsEl.innerHTML = '';
+  if (card) {
+    slot.classList.remove('empty');
+    const img = document.createElement('img');
+    img.src = card.front_url;
+    img.onerror = () => { img.style.display = 'none'; };
+    slot.appendChild(img);
+    nameEl.textContent = card.name;
+    if (card.color && card.color.length) {
+      card.color.forEach(c => {
+        const dot = document.createElement('div');
+        dot.className = 'cmd-color-dot ' + (COLOR_MAP[c]?.cls || '');
+        dot.style.background = COLOR_MAP[c]?.css || '#666';
+        colorsEl.appendChild(dot);
+      });
+    } else {
+      colorsEl.innerHTML = '<span class="cmd-colorless">無色</span>';
+    }
+    clearBtn.style.display = '';
+  } else {
+    slot.classList.add('empty');
+    nameEl.textContent = '未選択';
+    clearBtn.style.display = 'none';
+  }
+}
+
+function renderUnits() {
+  const cmdColors = getCmdColors();
+  for (let i = 0; i < 5; i++) {
+    const ms = findCard(AppState.deck[i]);
+    const pl = findCard(AppState.deck[i + 5]);
+    renderUnitCard('msSlot' + i, 'msName' + i, ms, cmdColors, i);
+    renderUnitCard('plSlot' + i, 'plName' + i, pl, cmdColors, i + 5);
+
+    const cat = pl ? pl.category : (ms ? ms.category : null);
+    const catEl = document.getElementById('unitCat' + i);
+    catEl.className = 'unit-cat';
+    catEl.textContent = cat || '-';
+    if (cat === '殲滅') catEl.classList.add('s');
+    else if (cat === '制圧') catEl.classList.add('c');
+    else if (cat === '防衛') catEl.classList.add('b');
+
+    const cost = (ms ? ms.cost || 0 : 0) + (pl ? pl.cost || 0 : 0);
+    document.getElementById('unitCost' + i).textContent = cost ? 'C' + cost : '0';
+
+    const atk = (ms ? ms.atk || 0 : 0) + (pl ? pl.atk || 0 : 0);
+    const hp = (ms ? ms.hp || 0 : 0) + (pl ? pl.hp || 0 : 0);
+    const msBuff = ms && ms.color && ms.color.some(c => cmdColors.includes(c));
+    const plBuff = pl && pl.color && pl.color.some(c => cmdColors.includes(c));
+    const buffed = msBuff || plBuff;
+    document.getElementById('unitStats' + i).innerHTML = `<span class="${buffed ? 'buffed' : ''}">${atk}/${hp}</span>`;
+  }
+}
+
+function renderUnitCard(slotId, nameId, card, cmdColors, slotIndex) {
+  const slot = document.getElementById(slotId);
+  const nameEl = document.getElementById(nameId);
+  const colorBar = slot.querySelector('.uc-color-bar');
+  const buffStar = slot.querySelector('.uc-buff-star');
+  colorBar.innerHTML = '';
+  slot.querySelectorAll('img').forEach(el => el.remove());
+  slot.querySelectorAll('.unit-card-fallback').forEach(el => el.remove());
+
+  if (card) {
+    slot.classList.remove('empty');
+    const img = document.createElement('img');
+    img.src = card.front_url;
+    img.loading = 'lazy';
+    img.onerror = () => { img.style.display = 'none'; };
+    slot.insertBefore(img, colorBar);
+    (card.color || []).forEach(c => {
+      const seg = document.createElement('div');
+      seg.className = 'uc-color-seg ' + (COLOR_MAP[c]?.cls || '');
+      seg.style.background = COLOR_MAP[c]?.css || '#666';
+      colorBar.appendChild(seg);
+    });
+    const hasBuff = card.color && card.color.length > 0 && cmdColors.length > 0 && card.color.some(c => cmdColors.includes(c));
+    buffStar.classList.toggle('active', !!hasBuff);
+    nameEl.textContent = card.name;
+    slot.onclick = () => { selectUnit(slotIndex % 5); showCardModal(card.number); };
+  } else {
+    slot.classList.add('empty');
+    buffStar.classList.remove('active');
+    nameEl.textContent = '\u00a0';
+    slot.onclick = () => { selectUnit(slotIndex % 5); openSidebar(slotIndex < 5 ? 'MS' : 'PL'); };
+  }
+}
+
+function renderHeader() {
+  let totalCost = 0;
+  let s = 0, c = 0, b = 0;
+  for (let i = 0; i < 10; i++) {
+    const card = findCard(AppState.deck[i]);
+    if (!card) continue;
+    totalCost += card.cost || 0;
+    const cat = card.category;
+    if (cat === '殲滅') s++;
+    else if (cat === '制圧') c++;
+    else if (cat === '防衛') b++;
+  }
+  document.getElementById('totalCost').textContent = totalCost;
+  document.getElementById('badgeSenmetsu').textContent = '殲' + s;
+  document.getElementById('badgeSeiatsu').textContent = '制' + c;
+  document.getElementById('badgeBouei').textContent = '防' + b;
+}
+
+function renderColorBuff() {
+  const bar = document.getElementById('colorBuffBar');
+  bar.innerHTML = '';
+  const cmdColors = getCmdColors();
+  if (!cmdColors.length) return;
+  const units = AppState.deck.map(n => findCard(n)).filter(Boolean);
+  cmdColors.forEach(color => {
+    const cm = COLOR_MAP[color];
+    if (!cm) return;
+    const count = units.filter(u => u.color && u.color.includes(color)).length;
+    const chip = document.createElement('div');
+    chip.className = `color-buff-chip c-${cm.cls}` + (count > 0 ? ' active' : '');
+    chip.innerHTML = `<span>${color} BUFF</span><span style="font-size:0.55rem;margin-left:3px">${count}/${units.length}</span>`;
+    bar.appendChild(chip);
+  });
+}
+
+function renderDetail() {
+  const panel = document.getElementById('detailPanel');
+  if (AppState.selectedSlot === 'cmd') {
+    const cmd = findCard(AppState.cmdCard);
+    if (!cmd) { panel.innerHTML = '<div class="detail-empty">コマンダーを選択してください</div>'; return; }
+    panel.innerHTML = renderCardDetailHtml(cmd, true);
+    return;
+  }
+  if (AppState.selectedSlot === null || typeof AppState.selectedSlot !== 'number') {
+    panel.innerHTML = renderDeckStatsHtml();
+    return;
+  }
+  const i = AppState.selectedSlot;
+  const ms = findCard(AppState.deck[i]);
+  const pl = findCard(AppState.deck[i + 5]);
+  if (!ms && !pl) { panel.innerHTML = '<div class="detail-empty">空のユニット</div>'; return; }
+
+  const cmdColors = getCmdColors();
+  const atk = (ms ? ms.atk || 0 : 0) + (pl ? pl.atk || 0 : 0);
+  const hp = (ms ? ms.hp || 0 : 0) + (pl ? pl.hp || 0 : 0);
+  const cat = pl ? pl.category : (ms ? ms.category : '-');
+
+  let html = `
+    <div class="modal-card-header">
+      ${ms ? `<img class="modal-card-image" src="${ms.front_url}" onerror="this.style.display='none'">` : ''}
+      ${pl ? `<img class="modal-card-image" src="${pl.front_url}" onerror="this.style.display='none'">` : ''}
+      <div class="modal-card-info">
+        <div class="modal-card-name">UNIT ${i + 1}</div>
+        <div class="modal-card-meta">${cat || '-'} | ATK ${atk} | HP ${hp}</div>
+      </div>
+    </div>
+    <div class="modal-param-group"><div class="modal-param-title">カラー</div>
+      <div class="modal-param-row">${renderColorInfo(ms, cmdColors)}${renderColorInfo(pl, cmdColors)}</div>
+    </div>
+  `;
+  panel.innerHTML = html;
+}
+
+function renderColorInfo(card, cmdColors) {
+  if (!card || !card.color || !card.color.length) return '<span style="color:#666">無色</span>';
+  return card.color.map(c => {
+    const cm = COLOR_MAP[c];
+    const match = cmdColors.includes(c);
+    return `<div class="modal-param-item" style="${match ? 'border-color:' + (cm?.css || '#666') : ''}"><span class="modal-param-label" style="color:${cm?.css || '#666'}">${c}</span>${match ? 'BUFF' : '-'}</div>`;
+  }).join('');
+}
+
+function renderDeckStatsHtml() {
+  const cards = AppState.deck.map(n => findCard(n)).filter(Boolean);
+  const totalCost = cards.reduce((s, c) => s + (c.cost || 0), 0);
+  const totalAtk = cards.reduce((s, c) => s + (c.atk || 0), 0);
+  const totalHp = cards.reduce((s, c) => s + (c.hp || 0), 0);
+  const cats = {};
+  cards.forEach(c => { if (c.category) cats[c.category] = (cats[c.category] || 0) + 1; });
+  const colors = {};
+  cards.forEach(c => { (c.color || []).forEach(col => { colors[col] = (colors[col] || 0) + 1; }); });
+  const costDist = {};
+  cards.forEach(c => { const cost = c.cost || 0; costDist[cost] = (costDist[cost] || 0) + 1; });
+
+  return `
+    <div class="modal-card-header"><div class="modal-card-info"><div class="modal-card-name">DECK STATS</div></div></div>
+    <div class="modal-param-group"><div class="modal-param-title">基本</div>
+      <div class="modal-param-row">
+        <div class="modal-param-item"><span class="modal-param-label">総コスト:</span>${totalCost}</div>
+        <div class="modal-param-item"><span class="modal-param-label">枚数:</span>${cards.length}</div>
+        <div class="modal-param-item"><span class="modal-param-label">ATK:</span>${totalAtk}</div>
+        <div class="modal-param-item"><span class="modal-param-label">HP:</span>${totalHp}</div>
+      </div>
+    </div>
+    <div class="modal-param-group"><div class="modal-param-title">カテゴリ</div><div class="modal-param-row">${Object.entries(cats).map(([k, v]) => `<div class="modal-param-item"><span class="modal-param-label">${k}:</span>${v}</div>`).join('') || '-'}</div></div>
+    <div class="modal-param-group"><div class="modal-param-title">色分布</div><div class="modal-param-row">${Object.entries(colors).map(([k, v]) => `<div class="modal-param-item"><span class="modal-param-label">${k}:</span>${v}</div>`).join('') || '-'}</div></div>
+    <div class="modal-param-group"><div class="modal-param-title">コスト分布</div><div class="modal-param-row">${Object.entries(costDist).sort((a, b) => a[0] - b[0]).map(([k, v]) => `<div class="modal-param-item"><span class="modal-param-label">${k}:</span>${v}</div>`).join('') || '-'}</div></div>
+  `;
+}
+
+function renderCardGrid() {
+  const grid = document.getElementById('cardGrid');
+  grid.innerHTML = '';
+  const inDeck = new Set(AppState.deck.filter(Boolean));
+  if (AppState.cmdCard) inDeck.add(AppState.cmdCard);
+
+  let cards = AppState.cardIndex.filter(c => c.type === AppState.sidebarType);
+  if (AppState.filterColor) cards = cards.filter(c => c.color && c.color.includes(AppState.filterColor));
+  if (AppState.filterRarity) cards = cards.filter(c => c.rarity === AppState.filterRarity);
+  if (AppState.filterCategory) cards = cards.filter(c => c.category === AppState.filterCategory);
+  if (AppState.filterSearch) {
+    const q = AppState.filterSearch;
+    cards = cards.filter(c => (c.search_text || '').includes(q) || (c.name || '').toLowerCase().includes(q) || (c.number || '').toLowerCase().includes(q));
+  }
+  document.getElementById('filterCount').textContent = cards.length + '件';
+
+  const frag = document.createDocumentFragment();
+  cards.forEach(card => {
+    const el = document.createElement('div');
+    el.className = 'card-thumb' + (inDeck.has(card.number) ? ' in-deck' : '');
+    let colorDots = '';
+    if (card.color && card.color.length) {
+      colorDots = card.color.map(c => `<div class="ct-color-dot" style="background:${COLOR_MAP[c]?.css || '#666'}"></div>`).join('');
+    }
+    const rarityTag = card.rarity ? `<span class="ct-rarity rarity-${escapeHtml(card.rarity)}">${escapeHtml(card.rarity)}</span>` : '';
+    el.innerHTML = `
+      <div class="card-thumb-img-wrap"><img src="${card.front_url}" alt="${escapeHtml(card.name)}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="card-thumb-fallback" style="display:none">${escapeHtml(card.name)}</div></div>
+      <div class="card-thumb-colors">${colorDots}</div>
+      <div class="card-thumb-info"><span class="ct-name">${escapeHtml(card.name)}</span>${rarityTag}<span class="ct-cost">${card.cost != null ? card.cost : ''}</span></div>
+    `;
+    el.addEventListener('click', () => showCardModal(card.number));
+    frag.appendChild(el);
+  });
+  grid.appendChild(frag);
+}
+
+function showCardModal(number) {
+  const card = findCard(number);
+  if (!card) return;
+  const body = document.getElementById('cardModalBody');
+  body.innerHTML = renderCardDetailHtml(card);
+  document.getElementById('cardModal').classList.add('open');
+}
+
+function renderCardDetailHtml(card, isCmd) {
+  const rarityHtml = card.rarity ? ` <span class="rarity-tag rarity-${escapeHtml(card.rarity)}">${escapeHtml(card.rarity)}</span>` : '';
+  const colorHtml = (card.color || []).map(c => {
+    const cm = COLOR_MAP[c];
+    return `<span style="display:inline-flex;align-items:center;gap:3px;margin-right:8px"><span style="width:10px;height:10px;border-radius:50%;background:${cm?.css || '#666'};border:1px solid rgba(255,255,255,0.3)"></span>${c}</span>`;
+  }).join('') || '<span style="color:#666">無色</span>';
+
+  let statsHtml = '';
+  if (card.type !== 'CMD' && (card.atk != null || card.hp != null)) {
+    statsHtml = `<div class="modal-param-group"><div class="modal-param-title">ステータス</div>
+      <div class="modal-param-row">
+        ${card.atk != null ? `<div class="modal-param-item"><span class="modal-param-label">ATK:</span>${card.atk}</div>` : ''}
+        ${card.hp != null ? `<div class="modal-param-item"><span class="modal-param-label">HP:</span>${card.hp}</div>` : ''}
+      </div>
+    </div>`;
+  }
+
+  const isInDeck = AppState.deck.includes(card.number) || AppState.cmdCard === card.number;
+  const canAdd = !isInDeck && (
+    (card.type === 'CMD') ||
+    (card.type === 'MS' && AppState.deck.slice(0, 5).includes(null)) ||
+    (card.type === 'PL' && AppState.deck.slice(5).includes(null))
+  );
+
+  return `
+    <div class="modal-card-header">
+      <img class="modal-card-image" src="${card.front_url}" alt="${escapeHtml(card.name)}" onerror="this.style.display='none'">
+      <div class="modal-card-info">
+        <div class="modal-card-number">${escapeHtml(card.number)}${rarityHtml}</div>
+        <div class="modal-card-name">${escapeHtml(card.name)}</div>
+        <div class="modal-card-meta">${escapeHtml(card.type || '')} ${card.category ? '| ' + escapeHtml(card.category) : ''} | コスト: ${card.cost != null ? card.cost : '-'}</div>
+        <div class="modal-card-meta" style="margin-top:4px">${colorHtml}</div>
+      </div>
+    </div>
+    ${statsHtml}
+    <div class="modal-actions">
+      ${canAdd ? `<button class="modal-btn primary" onclick="addCardToDeck('${card.number}')">デッキに追加</button>` : ''}
+      ${isInDeck ? `<button class="modal-btn danger" style="color:#ef5350;border-color:#ef5350" onclick="removeCardFromDeck('${card.number}')">デッキから外す</button>` : ''}
+      <button class="modal-btn" onclick="closeCardModal()">閉じる</button>
+    </div>
+  `;
+}
+
+function removeCardFromDeck(number) {
+  if (AppState.cmdCard === number) AppState.cmdCard = null;
+  const idx = AppState.deck.indexOf(number);
+  if (idx >= 0) AppState.deck[idx] = null;
+  closeCardModal();
+  saveDeckToHash();
+  render();
+  showToast('外しました');
+}
+
+function closeCardModal(e) {
+  if (e && e.target !== document.getElementById('cardModal') && !e.target.closest('.modal-close')) return;
+  document.getElementById('cardModal').classList.remove('open');
+}
+
+function addCardToDeck(number) {
+  const card = findCard(number);
+  if (!card) return;
+  if (card.type === 'CMD') {
+    AppState.cmdCard = number;
+  } else if (card.type === 'MS') {
+    let idx = AppState.deck.slice(0, 5).indexOf(null);
+    if (typeof AppState.selectedSlot === 'number' && AppState.selectedSlot < 5 && !AppState.deck[AppState.selectedSlot]) {
+      idx = AppState.selectedSlot;
+    }
+    if (idx >= 0) AppState.deck[idx] = number;
+  } else if (card.type === 'PL') {
+    let idx = AppState.deck.slice(5).indexOf(null);
+    if (typeof AppState.selectedSlot === 'number' && AppState.selectedSlot < 5 && !AppState.deck[AppState.selectedSlot + 5]) {
+      idx = AppState.selectedSlot;
+    }
+    if (idx >= 0) AppState.deck[idx + 5] = number;
+  }
+  closeCardModal();
+  saveDeckToHash();
+  render();
+  showToast('追加しました');
+}
+
+function openMenu() { document.getElementById('menuOverlay').classList.add('open'); document.getElementById('menuPanel').classList.add('open'); }
+function closeMenu() { document.getElementById('menuOverlay').classList.remove('open'); document.getElementById('menuPanel').classList.remove('open'); }
+
+function shareDeck() {
+  const url = location.href;
+  if (navigator.clipboard) navigator.clipboard.writeText(url).then(() => showToast('URLをコピーしました'));
+  else prompt('URL:', url);
+  closeMenu();
+}
+function loadDeckPrompt() {
+  const input = prompt('デッキコード (URLまたはハッシュ):');
+  if (!input) return;
+  let code = input.includes('#') ? input.split('#')[1] : input;
+  if (code) location.hash = code;
+  closeMenu();
+}
+function saveDeckLocal() {
+  const name = AppState.deckName || prompt('デッキ名:');
+  if (!name) return;
+  AppState.deckName = name;
+  document.getElementById('deckNameInput').value = name;
+  const decks = JSON.parse(localStorage.getItem('acd_decks') || '{}');
+  decks[name] = { deck: [...AppState.deck], cmd: AppState.cmdCard, ts: new Date().toISOString() };
+  localStorage.setItem('acd_decks', JSON.stringify(decks));
+  closeMenu();
+  showToast('保存しました');
+}
+function loadDeckLocal() {
+  const decks = JSON.parse(localStorage.getItem('acd_decks') || '{}');
+  const names = Object.keys(decks);
+  if (!names.length) { showToast('保存デッキがありません'); closeMenu(); return; }
+  const name = prompt('読込するデッキ名:\n' + names.join('\n'));
+  if (!name || !decks[name]) return;
+  AppState.deck = decks[name].deck;
+  AppState.cmdCard = decks[name].cmd || null;
+  AppState.deckName = name;
+  document.getElementById('deckNameInput').value = name;
+  saveDeckToHash();
+  render();
+  closeMenu();
+  showToast(name + ' を読込みました');
+}
+function clearDeck() {
+  if (!confirm('デッキをクリアしますか?')) return;
+  AppState.deck = Array(10).fill(null);
+  AppState.cmdCard = null;
+  AppState.deckName = '';
+  document.getElementById('deckNameInput').value = '';
+  saveDeckToHash();
+  render();
+  closeMenu();
+  showToast('クリアしました');
+}
+
+function encodeDeck() {
+  const parts = AppState.deck.map(n => n || '').join(',');
+  let code = parts;
+  if (AppState.cmdCard) code += '|cmd=' + AppState.cmdCard;
+  if (AppState.deckName) code += '|name=' + encodeURIComponent(AppState.deckName);
+  return code;
+}
+function decodeDeck(code) {
+  const deck = Array(10).fill(null);
+  let cmd = null, name = '';
+  const sections = code.split('|');
+  const cardPart = sections[0];
+  cardPart.split(',').forEach((n, i) => { if (i < 10 && n) deck[i] = n; });
+  sections.slice(1).forEach(s => {
+    if (s.startsWith('cmd=')) cmd = s.slice(4);
+    else if (s.startsWith('name=')) name = decodeURIComponent(s.slice(5));
+  });
+  return { deck, cmd, name };
+}
+function saveDeckToHash() {
+  const hasContent = AppState.deck.some(Boolean) || AppState.cmdCard;
+  if (hasContent) history.replaceState(null, '', '#' + encodeDeck());
+  else history.replaceState(null, '', location.pathname);
+}
+function loadDeckFromHash() {
+  const hash = location.hash.slice(1);
+  if (!hash) return;
+  const { deck, cmd, name } = decodeDeck(hash);
+  AppState.deck = deck;
+  AppState.cmdCard = cmd;
+  AppState.deckName = name || '';
+  document.getElementById('deckNameInput').value = AppState.deckName;
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2000);
+}
+
+document.addEventListener('DOMContentLoaded', init);
+</script>
+</body>
+</html>
