@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Arsenal Commander Deck Simulator</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<header class="app-header">
+  <span class="hdr-cost">
+    <span class="hdr-cost-label">TOTAL</span>
+    <span class="hdr-cost-val" id="totalCost">0</span>
+  </span>
+  <span class="hdr-sep"></span>
+  <span class="hdr-class s" id="badgeSenmetsu">殲0</span>
+  <span class="hdr-class c" id="badgeSeiatsu">制0</span>
+  <span class="hdr-class b" id="badgeBouei">防0</span>
+  <span class="hdr-spacer"></span>
+  <button class="hamburger-btn" id="hamburgerBtn">&#9776;</button>
+</header>
+
+<div class="cmd-section" id="cmdSection">
+  <span class="cmd-label">CMD</span>
+  <div class="cmd-slot empty" id="cmdSlot"></div>
+  <div class="cmd-colors" id="cmdColors"></div>
+  <span class="cmd-name" id="cmdName">未選択</span>
+  <button class="cmd-clear" id="cmdClear" style="display:none">&times;</button>
+</div>
+
+<div class="color-buff-bar" id="colorBuffBar"></div>
+
+<div class="main-content" id="mainContent">
+  <div class="overview-strip" id="overviewStrip">
+    <div class="overview-cats" id="catRow"></div>
+    <div class="overview-thumbs" id="msRow"></div>
+    <div class="overview-thumbs" id="plRow"></div>
+    <div class="overview-stats" id="statsRow"></div>
+    <div class="unit-tabs" id="unitTabs"></div>
+  </div>
+  <div class="detail-area" id="detailArea">
+    <div class="detail-empty">ユニットを選択してください</div>
+  </div>
+</div>
+
+<div class="picker-overlay" id="pickerOverlay">
+  <div class="picker-topbar">
+    <span class="picker-title" id="pickerTitle">カード選択</span>
+    <div class="picker-tabs" id="pickerTabs">
+      <button class="picker-tab" data-type="MS">MS</button>
+      <button class="picker-tab" data-type="PL">PL</button>
+    </div>
+    <button class="picker-close" id="pickerClose">&times;</button>
+  </div>
+  <div class="picker-toolbar">
+    <input type="text" class="picker-search-input" id="pickerSearch" placeholder="検索...">
+    <button class="picker-filter-btn c-red" data-color="赤">赤</button>
+    <button class="picker-filter-btn c-blue" data-color="青">青</button>
+    <button class="picker-filter-btn c-green" data-color="緑">緑</button>
+    <span class="page-info" id="pageInfo">-</span>
+  </div>
+  <div class="picker-scroll">
+    <div class="picker-grid" id="pickerGrid"></div>
+  </div>
+</div>
+
+<div class="menu-overlay" id="menuOverlay"></div>
+<div class="menu-panel" id="menuPanel">
+  <button class="menu-close" id="menuClose">&times;</button>
+  <span class="menu-title">MENU</span>
+  <label class="menu-label">デッキ名</label>
+  <input type="text" class="deck-name-input" id="deckNameInput" placeholder="My Deck">
+  <div class="menu-divider"></div>
+  <button class="menu-btn" id="btnShare">デッキコードをコピー</button>
+  <button class="menu-btn" id="btnLoad">デッキコードから読込</button>
+  <div class="menu-divider"></div>
+  <button class="menu-btn" id="btnSave">ローカルに保存</button>
+  <button class="menu-btn" id="btnLoadLocal">保存デッキを読込</button>
+  <div class="menu-divider"></div>
+  <button class="menu-btn danger" id="btnClear">デッキをクリア</button>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+'use strict';
+
+const COLOR_MAP = {
+  '赤': { cls: 'red', css: 'var(--red)' },
+  '青': { cls: 'blue', css: 'var(--blue)' },
+  '緑': { cls: 'green', css: 'var(--green)' },
+};
+
+const AppState = {
+  cardIndex: [],
+  deck: Array(10).fill(null),
+  deckName: '',
+  cmdCard: null,
+  selectedUnit: 0,
+  pickerSlot: -1,
+  pickerType: 'MS',
+  pickerColorFilter: null,
+  pickerSearch: '',
+};
+
+async function init() {
+  await loadCardIndex();
+  loadDeckFromHash();
+  buildOverview();
+  bindEvents();
+  render();
+}
+
+async function loadCardIndex() {
+  try {
+    const res = await fetch('{{ url_for("api_card_index") }}', { cache: 'no-store' });
+    AppState.cardIndex = await res.json();
+  } catch (e) {
+    console.error('card index load failed', e);
+    AppState.cardIndex = [];
+  }
+}
+
+function findCard(num) {
+  if (!num) return null;
+  return AppState.cardIndex.find(c => c.number === num) || null;
+}
+
+function getCmdColors() {
+  const cmd = findCard(AppState.cmdCard);
+  return cmd ? (cmd.color || []) : [];
+}
+
+function buildOverview() {
+  const catRow = document.getElementById('catRow');
+  const msRow = document.getElementById('msRow');
+  const plRow = document.getElementById('plRow');
+  const statsRow = document.getElementById('statsRow');
+  const unitTabs = document.getElementById('unitTabs');
+  for (let i = 0; i < 5; i++) {
+    catRow.innerHTML += `<div class="ov-cat" id="ovCat${i}"><span class="ov-cat-cost" id="ovCatCost${i}">0</span><span class="ov-cat-label" id="ovCatLabel${i}">-</span></div>`;
+    msRow.innerHTML += `<div class="ov-thumb-col"><div class="ov-card-name" id="ovMsName${i}">&nbsp;</div><div class="overview-thumb empty" id="ovMs${i}" data-slot="${i}"><div class="ov-color-bar"></div><div class="ov-buff-star">&#9733;</div></div></div>`;
+    plRow.innerHTML += `<div class="ov-thumb-col"><div class="overview-thumb empty" id="ovPl${i}" data-slot="${i + 5}"><div class="ov-color-bar"></div><div class="ov-buff-star">&#9733;</div></div><div class="ov-card-name" id="ovPlName${i}">&nbsp;</div></div>`;
+    statsRow.innerHTML += `<div class="ov-stats empty" id="ovStat${i}"><span class="ov-stat-val atk" id="ovAtk${i}">0</span> / <span class="ov-stat-val hp" id="ovHp${i}">0</span></div>`;
+    unitTabs.innerHTML += `<div class="unit-tab${i === 0 ? ' active' : ''}" id="unitTab${i}" data-unit="${i}">U${i + 1}</div>`;
+  }
+}
+
+function bindEvents() {
+  document.getElementById('cmdSlot').addEventListener('click', openCmdPicker);
+  document.getElementById('cmdClear').addEventListener('click', e => {
+    e.stopPropagation();
+    AppState.cmdCard = null;
+    saveDeckToHash();
+    render();
+  });
+
+  for (let i = 0; i < 5; i++) {
+    document.getElementById(`ovMs${i}`).addEventListener('click', () => { selectUnit(i); openPicker(i); });
+    document.getElementById(`ovPl${i}`).addEventListener('click', () => { selectUnit(i); openPicker(i + 5); });
+    document.getElementById(`unitTab${i}`).addEventListener('click', () => selectUnit(i));
+  }
+
+  document.getElementById('pickerClose').addEventListener('click', closePicker);
+  document.querySelectorAll('.picker-tab').forEach(t => t.addEventListener('click', () => {
+    AppState.pickerType = t.dataset.type;
+    updatePickerTabs();
+    renderPickerGrid();
+  }));
+  document.getElementById('pickerSearch').addEventListener('input', e => {
+    AppState.pickerSearch = e.target.value.toLowerCase();
+    renderPickerGrid();
+  });
+  document.querySelectorAll('.picker-filter-btn[data-color]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      AppState.pickerColorFilter = AppState.pickerColorFilter === btn.dataset.color ? null : btn.dataset.color;
+      updateColorFilterBtns();
+      renderPickerGrid();
+    });
+  });
+
+  document.getElementById('hamburgerBtn').addEventListener('click', openMenu);
+  document.getElementById('menuClose').addEventListener('click', closeMenu);
+  document.getElementById('menuOverlay').addEventListener('click', closeMenu);
+  document.getElementById('btnShare').addEventListener('click', shareDeck);
+  document.getElementById('btnLoad').addEventListener('click', loadDeckPrompt);
+  document.getElementById('btnClear').addEventListener('click', clearDeck);
+  document.getElementById('btnSave').addEventListener('click', saveDeckLocal);
+  document.getElementById('btnLoadLocal').addEventListener('click', loadDeckLocal);
+  document.getElementById('deckNameInput').addEventListener('input', e => { AppState.deckName = e.target.value; });
+  window.addEventListener('hashchange', () => { loadDeckFromHash(); render(); });
+}
+
+function selectUnit(idx) {
+  AppState.selectedUnit = idx;
+  document.querySelectorAll('.unit-tab').forEach((t, i) => t.classList.toggle('active', i === idx));
+  document.querySelectorAll('.overview-thumb').forEach(t => t.classList.remove('selected'));
+  document.getElementById(`ovMs${idx}`).classList.add('selected');
+  document.getElementById(`ovPl${idx}`).classList.add('selected');
+  renderDetail();
+}
+
+function openCmdPicker() {
+  AppState.pickerSlot = -1;
+  AppState.pickerType = 'CMD';
+  AppState.pickerSearch = '';
+  AppState.pickerColorFilter = null;
+  document.getElementById('pickerSearch').value = '';
+  document.getElementById('pickerTitle').textContent = 'コマンダー選択';
+  document.getElementById('pickerTabs').style.display = 'none';
+  updateColorFilterBtns();
+  renderPickerGrid();
+  document.getElementById('pickerOverlay').classList.add('open');
+}
+
+function openPicker(slot) {
+  AppState.pickerSlot = slot;
+  AppState.pickerType = slot < 5 ? 'MS' : 'PL';
+  AppState.pickerSearch = '';
+  AppState.pickerColorFilter = null;
+  document.getElementById('pickerSearch').value = '';
+  document.getElementById('pickerTitle').textContent = `${AppState.pickerType}選択 (U${(slot % 5) + 1})`;
+  document.getElementById('pickerTabs').style.display = 'flex';
+  updatePickerTabs();
+  updateColorFilterBtns();
+  renderPickerGrid();
+  document.getElementById('pickerOverlay').classList.add('open');
+}
+
+function closePicker() { document.getElementById('pickerOverlay').classList.remove('open'); }
+function updatePickerTabs() { document.querySelectorAll('.picker-tab').forEach(t => t.classList.toggle('active', t.dataset.type === AppState.pickerType)); }
+function updateColorFilterBtns() { document.querySelectorAll('.picker-filter-btn[data-color]').forEach(b => b.classList.toggle('active', AppState.pickerColorFilter === b.dataset.color)); }
+
+function renderPickerGrid() {
+  const grid = document.getElementById('pickerGrid');
+  grid.innerHTML = '';
+  const inDeck = new Set(AppState.deck.filter(Boolean));
+  if (AppState.cmdCard) inDeck.add(AppState.cmdCard);
+
+  let cards = AppState.cardIndex.filter(c => c.type === AppState.pickerType);
+  if (AppState.pickerColorFilter) cards = cards.filter(c => c.color && c.color.includes(AppState.pickerColorFilter));
+  if (AppState.pickerSearch) {
+    const q = AppState.pickerSearch;
+    cards = cards.filter(c => (c.search_text || '').includes(q) || (c.name || '').toLowerCase().includes(q) || (c.number || '').toLowerCase().includes(q));
+  }
+  document.getElementById('pageInfo').textContent = cards.length + '件';
+  if (!cards.length) { grid.innerHTML = '<div class="picker-empty">該当カードなし</div>'; return; }
+
+  const frag = document.createDocumentFragment();
+  cards.forEach(card => {
+    const el = document.createElement('div');
+    el.className = 'thumb-card' + (inDeck.has(card.number) ? ' in-deck' : '');
+    let colorDots = '';
+    if (card.color && card.color.length) {
+      colorDots = card.color.map(c => COLOR_MAP[c] ? `<div class="tc-color-dot" style="background:${COLOR_MAP[c].css}"></div>` : '').join('');
+    }
+    el.innerHTML = `<div class="thumb-card-img-wrap"><img src="${card.front_url}" alt="${card.name}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="tc-fallback" style="display:none">${card.name}</div></div><div class="thumb-card-badges">${colorDots}</div><div class="thumb-card-info"><span class="tc-name">${card.name}</span>${card.cost ? `<span class="tc-cost">${card.cost}</span>` : ''}</div>`;
+    el.addEventListener('click', () => pickCard(card));
+    frag.appendChild(el);
+  });
+  grid.appendChild(frag);
+}
+
+function pickCard(card) {
+  if (AppState.pickerSlot === -1) {
+    AppState.cmdCard = card.number;
+  } else {
+    AppState.deck[AppState.pickerSlot] = card.number;
+  }
+  closePicker();
+  saveDeckToHash();
+  render();
+}
+
+function render() {
+  renderCmd();
+  renderOverview();
+  renderStats();
+  renderColorBuff();
+  renderDetail();
+  renderHeader();
+}
+
+function renderCmd() {
+  const card = findCard(AppState.cmdCard);
+  const slot = document.getElementById('cmdSlot');
+  const colorsEl = document.getElementById('cmdColors');
+  const nameEl = document.getElementById('cmdName');
+  const clearEl = document.getElementById('cmdClear');
+  slot.innerHTML = '';
+  colorsEl.innerHTML = '';
+  if (card) {
+    slot.classList.remove('empty');
+    const img = document.createElement('img');
+    img.src = card.front_url;
+    img.onerror = function() { this.style.display = 'none'; const fb = document.createElement('div'); fb.className = 'cmd-fallback'; fb.textContent = card.name; slot.appendChild(fb); };
+    if (card.color && card.color.length) {
+      card.color.forEach(c => {
+        const dot = document.createElement('div');
+        dot.className = 'cmd-color-dot ' + (COLOR_MAP[c] ? COLOR_MAP[c].cls : '');
+        colorsEl.appendChild(dot);
+      });
+    } else {
+      colorsEl.innerHTML = '<span class="colorless-label">無色</span>';
+    }
+    nameEl.textContent = card.name;
+    clearEl.style.display = '';
+  } else {
+    slot.classList.add('empty');
+    nameEl.textContent = '未選択';
+    clearEl.style.display = 'none';
+  }
+}
+
+function renderOverview() {
+  const cmdColors = getCmdColors();
+  for (let i = 0; i < 5; i++) {
+    const msCard = findCard(AppState.deck[i]);
+    const plCard = findCard(AppState.deck[i + 5]);
+    renderThumb(`ovMs${i}`, msCard, cmdColors);
+    renderThumb(`ovPl${i}`, plCard, cmdColors);
+    document.getElementById(`ovMsName${i}`).textContent = msCard ? msCard.name : '';
+    document.getElementById(`ovPlName${i}`).textContent = plCard ? plCard.name : '';
+
+    const cat = plCard ? plCard.category : (msCard ? msCard.category : null);
+    const catEl = document.getElementById(`ovCat${i}`);
+    const catLabel = document.getElementById(`ovCatLabel${i}`);
+    const catCost = document.getElementById(`ovCatCost${i}`);
+    catEl.className = 'ov-cat';
+    if (cat === '殲滅') catEl.classList.add('cat-s');
+    else if (cat === '制圧') catEl.classList.add('cat-c');
+    else if (cat === '防衛') catEl.classList.add('cat-b');
+    catLabel.textContent = cat || '';
+    const msCost = msCard && typeof msCard.cost === 'number' ? msCard.cost : 0;
+    const plCost = plCard && typeof plCard.cost === 'number' ? plCard.cost : 0;
+    catCost.textContent = msCost + plCost || '';
+  }
+}
+
+function renderThumb(id, card, cmdColors) {
+  const el = document.getElementById(id);
+  const colorBar = el.querySelector('.ov-color-bar');
+  const buffStar = el.querySelector('.ov-buff-star');
+  const oldImg = el.querySelector('img');
+  if (oldImg) oldImg.remove();
+  const oldFb = el.querySelector('.ov-fallback');
+  if (oldFb) oldFb.remove();
+  colorBar.innerHTML = '';
+
+  if (card) {
+    el.classList.remove('empty');
+    const img = document.createElement('img');
+    img.src = card.front_url;
+    img.loading = 'lazy';
+    img.onerror = function() { this.style.display = 'none'; const fb = document.createElement('div'); fb.className = 'ov-fallback'; fb.textContent = card.name; el.appendChild(fb); };
+    el.insertBefore(img, colorBar);
+    if (card.color && card.color.length) {
+      card.color.forEach(c => {
+        const seg = document.createElement('div');
+        seg.className = 'ov-color-seg ' + (COLOR_MAP[c] ? COLOR_MAP[c].cls : '');
+        colorBar.appendChild(seg);
+      });
+    }
+    const hasMatch = card.color && card.color.length > 0 && cmdColors.length > 0 && card.color.some(c => cmdColors.includes(c));
+    buffStar.classList.toggle('active', !!hasMatch);
+  } else {
+    el.classList.add('empty');
+    buffStar.classList.remove('active');
+  }
+}
+
+function renderStats() {
+  const cmdColors = getCmdColors();
+  let totalCost = 0;
+  for (let i = 0; i < 5; i++) {
+    const ms = findCard(AppState.deck[i]);
+    const pl = findCard(AppState.deck[i + 5]);
+    const msAtk = ms && typeof ms.atk === 'number' ? ms.atk : null;
+    const msHp = ms && typeof ms.hp === 'number' ? ms.hp : null;
+    const plAtk = pl && typeof pl.atk === 'number' ? pl.atk : null;
+    const plHp = pl && typeof pl.hp === 'number' ? pl.hp : null;
+    const atk = (msAtk || 0) + (plAtk || 0);
+    const hp = (msHp || 0) + (plHp || 0);
+    if (ms && typeof ms.cost === 'number') totalCost += ms.cost;
+    if (pl && typeof pl.cost === 'number') totalCost += pl.cost;
+
+    const msMatch = ms && ms.color && ms.color.length > 0 && ms.color.some(c => cmdColors.includes(c));
+    const plMatch = pl && pl.color && pl.color.length > 0 && pl.color.some(c => cmdColors.includes(c));
+    const hasBuff = msMatch || plMatch;
+
+    const statEl = document.getElementById(`ovStat${i}`);
+    statEl.classList.toggle('empty', !ms && !pl);
+    const hasAnyStat = msAtk !== null || plAtk !== null;
+    document.getElementById(`ovAtk${i}`).textContent = hasAnyStat ? atk : '-';
+    document.getElementById(`ovAtk${i}`).classList.toggle('buffed', !!hasBuff);
+    document.getElementById(`ovHp${i}`).textContent = hasAnyStat ? hp : '-';
+    document.getElementById(`ovHp${i}`).classList.toggle('buffed', !!hasBuff);
+  }
+  document.getElementById('totalCost').textContent = totalCost;
+}
+
+function renderHeader() {
+  let s = 0, c = 0, b = 0;
+  for (let i = 0; i < 10; i++) {
+    const card = findCard(AppState.deck[i]);
+    if (!card) continue;
+    const cat = card.category;
+    if (cat === '殲滅') s++;
+    else if (cat === '制圧') c++;
+    else if (cat === '防衛') b++;
+  }
+  document.getElementById('badgeSenmetsu').textContent = '殲' + s;
+  document.getElementById('badgeSeiatsu').textContent = '制' + c;
+  document.getElementById('badgeBouei').textContent = '防' + b;
+}
+
+function renderColorBuff() {
+  const bar = document.getElementById('colorBuffBar');
+  bar.innerHTML = '';
+  const cmdColors = getCmdColors();
+  if (!cmdColors.length) return;
+  const allUnits = AppState.deck.map(n => findCard(n)).filter(Boolean);
+  cmdColors.forEach(color => {
+    const cm = COLOR_MAP[color];
+    if (!cm) return;
+    const matchCount = allUnits.filter(c => c.color && c.color.includes(color)).length;
+    const chip = document.createElement('div');
+    chip.className = `color-buff-chip c-${cm.cls}` + (matchCount > 0 ? ' active' : '');
+    chip.innerHTML = `<span>${color} BUFF</span><span class="buff-count">${matchCount}/${allUnits.length}</span>`;
+    bar.appendChild(chip);
+  });
+}
+
+function renderDetail() {
+  const area = document.getElementById('detailArea');
+  const i = AppState.selectedUnit;
+  const ms = findCard(AppState.deck[i]);
+  const pl = findCard(AppState.deck[i + 5]);
+  if (!ms && !pl) { area.innerHTML = '<div class="detail-empty">ユニットを選択してください</div>'; return; }
+
+  const cmdColors = getCmdColors();
+  const atk = ((ms && typeof ms.atk === 'number') ? ms.atk : 0) + ((pl && typeof pl.atk === 'number') ? pl.atk : 0);
+  const hp = ((ms && typeof ms.hp === 'number') ? ms.hp : 0) + ((pl && typeof pl.hp === 'number') ? pl.hp : 0);
+  const cat = pl ? pl.category : (ms ? ms.category : null);
+  const catCls = cat === '殲滅' ? 'cat-s' : cat === '制圧' ? 'cat-c' : cat === '防衛' ? 'cat-b' : '';
+  const catBadge = cat ? `<span class="detail-unit-cat ${catCls}">${cat}</span>` : '';
+
+  let colorInfo = '';
+  [ms, pl].forEach(card => {
+    if (!card) return;
+    const colors = card.color || [];
+    if (!colors.length) {
+      colorInfo += `<div class="detail-color-info"><span class="detail-color-label" style="color:#666">無色</span><span class="detail-buff-status off">BUFF OFF</span></div>`;
+      return;
+    }
+    colors.forEach(c => {
+      const cm = COLOR_MAP[c];
+      if (!cm) return;
+      const match = cmdColors.includes(c);
+      colorInfo += `<div class="detail-color-info"><div class="detail-color-dot ${cm.cls}"></div><span class="detail-color-label">${c}</span><span class="detail-buff-status ${match ? 'on' : 'off'}">${match ? 'BUFF ON' : 'BUFF OFF'}</span></div>`;
+    });
+  });
+
+  const fmt = (n) => typeof n === 'number' ? n : '-';
+
+  area.innerHTML = `
+    <div class="detail-header">
+      <span class="detail-unit-name">UNIT ${i + 1}</span>
+      ${catBadge}
+    </div>
+    <div class="detail-cards">
+      <div class="detail-card-wrap">
+        <div class="dc-label">MS</div>
+        <div class="dc-img" id="dcMs">${ms ? `<img src="${ms.front_url}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="dc-fallback" style="display:none">${ms.name}</div>` : ''}</div>
+      </div>
+      <div class="detail-card-wrap">
+        <div class="dc-label">PL</div>
+        <div class="dc-img" id="dcPl">${pl ? `<img src="${pl.front_url}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="dc-fallback" style="display:none">${pl.name}</div>` : ''}</div>
+      </div>
+    </div>
+    <div class="detail-stat-grid">
+      <div class="dsg-header dsg-label"></div><div class="dsg-header dsg-ms">MS</div><div class="dsg-header dsg-pl">PL</div><div class="dsg-header dsg-total">合計</div>
+      <div class="dsg-cell dsg-label">ATK</div><div class="dsg-cell dsg-ms">${fmt(ms ? ms.atk : null)}</div><div class="dsg-cell dsg-pl">${fmt(pl ? pl.atk : null)}</div><div class="dsg-cell dsg-total">${(ms || pl) ? atk : '-'}</div>
+      <div class="dsg-cell dsg-label">HP</div><div class="dsg-cell dsg-ms">${fmt(ms ? ms.hp : null)}</div><div class="dsg-cell dsg-pl">${fmt(pl ? pl.hp : null)}</div><div class="dsg-cell dsg-total">${(ms || pl) ? hp : '-'}</div>
+    </div>
+    ${colorInfo}
+  `;
+}
+
+function encodeDeck() {
+  const parts = AppState.deck.map(n => n || '').join(',');
+  let code = parts;
+  if (AppState.cmdCard) code += '|cmd=' + AppState.cmdCard;
+  if (AppState.deckName) code += '|name=' + encodeURIComponent(AppState.deckName);
+  return code;
+}
+
+function decodeDeck(code) {
+  const deck = Array(10).fill(null);
+  let cmd = null, name = '';
+  const sections = code.split('|');
+  const cardPart = sections[0];
+  cardPart.split(',').forEach((n, i) => { if (i < 10 && n) deck[i] = n; });
+  sections.slice(1).forEach(s => {
+    if (s.startsWith('cmd=')) cmd = s.slice(4);
+    else if (s.startsWith('name=')) name = decodeURIComponent(s.slice(5));
+  });
+  return { deck, cmd, name };
+}
+
+function saveDeckToHash() {
+  const hasContent = AppState.deck.some(Boolean) || AppState.cmdCard;
+  if (hasContent) history.replaceState(null, '', '#' + encodeDeck());
+  else history.replaceState(null, '', location.pathname);
+}
+
+function loadDeckFromHash() {
+  const hash = location.hash.slice(1);
+  if (!hash) return;
+  const { deck, cmd, name } = decodeDeck(hash);
+  AppState.deck = deck;
+  AppState.cmdCard = cmd;
+  AppState.deckName = name || '';
+  document.getElementById('deckNameInput').value = AppState.deckName;
+}
+
+function openMenu() { document.getElementById('menuOverlay').classList.add('open'); document.getElementById('menuPanel').classList.add('open'); }
+function closeMenu() { document.getElementById('menuOverlay').classList.remove('open'); document.getElementById('menuPanel').classList.remove('open'); }
+
+function shareDeck() {
+  const url = location.href;
+  if (navigator.clipboard) navigator.clipboard.writeText(url).then(() => showToast('URLをコピーしました'));
+  else prompt('URL:', url);
+  closeMenu();
+}
+function loadDeckPrompt() {
+  const input = prompt('デッキコード (URLまたはハッシュ):');
+  if (!input) return;
+  let code = input.includes('#') ? input.split('#')[1] : input;
+  if (code) location.hash = code;
+  closeMenu();
+}
+function clearDeck() {
+  if (!confirm('デッキをクリアしますか?')) return;
+  AppState.deck = Array(10).fill(null);
+  AppState.cmdCard = null;
+  AppState.deckName = '';
+  document.getElementById('deckNameInput').value = '';
+  saveDeckToHash();
+  render();
+  closeMenu();
+  showToast('クリアしました');
+}
+function saveDeckLocal() {
+  const name = AppState.deckName || prompt('デッキ名:');
+  if (!name) return;
+  AppState.deckName = name;
+  document.getElementById('deckNameInput').value = name;
+  const decks = JSON.parse(localStorage.getItem('acd_decks') || '{}');
+  decks[name] = { deck: [...AppState.deck], cmd: AppState.cmdCard, ts: new Date().toISOString() };
+  localStorage.setItem('acd_decks', JSON.stringify(decks));
+  closeMenu();
+  showToast('保存しました');
+}
+function loadDeckLocal() {
+  const decks = JSON.parse(localStorage.getItem('acd_decks') || '{}');
+  const names = Object.keys(decks);
+  if (!names.length) { showToast('保存デッキがありません'); closeMenu(); return; }
+  const name = prompt('読込するデッキ名:\n' + names.join('\n'));
+  if (!name || !decks[name]) return;
+  AppState.deck = decks[name].deck;
+  AppState.cmdCard = decks[name].cmd || null;
+  AppState.deckName = name;
+  document.getElementById('deckNameInput').value = name;
+  saveDeckToHash();
+  render();
+  closeMenu();
+  showToast(name + ' を読込みました');
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2000);
+}
+
+document.addEventListener('DOMContentLoaded', init);
+</script>
+</body>
+</html>
