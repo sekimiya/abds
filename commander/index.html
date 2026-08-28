@@ -5399,10 +5399,8 @@ const SearchPanel = {
       return;
     }
 
-    // PRレアリティ選択時は未OCRカードも含める
-    let cards = this._currentRarity.size > 0
-      ? AppState.cardIndex.filter(c => c.has_ocr || this._currentRarity.has(c.rarity))
-      : AppState.cardIndex.filter(c => c.has_ocr);
+    // 全カードを対象にする（AC版はOCRなし）
+    let cards = [...AppState.cardIndex];
 
     // Type filter (スロット指定時のみタイプ絞込、ABフィルター時は解除)
     if (this._lockedType && this._t.abCat.size === 0) {

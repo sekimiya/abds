@@ -5138,10 +5138,8 @@ const SearchPanel = {
   applyFilters() {
     if (this._suppressApply) return;
     if (!this._hasActiveFilter()) { this._filteredCards = []; this._page = 0; this._renderGrid(); this._saveFilters(); this._updateFilterBadge(); return; }
-    // PRレアリティ選択時は未OCRカードも含める
-    let cards = this._currentRarity.size > 0
-      ? AppState.cardIndex.filter(c => c.has_ocr || this._currentRarity.has(c.rarity))
-      : AppState.cardIndex.filter(c => c.has_ocr);
+    // 全カードを対象にする（AC版はOCRなし）
+    let cards = [...AppState.cardIndex];
     if (this._lockedType && this._t.abCat.size === 0) cards = cards.filter(c => c.type === this._lockedType);
     if (this._currentCategory.size > 0) cards = cards.filter(c => !c.category || this._currentCategory.has(c.category));
     if (this._statFilter === 'ranged') cards = cards.filter(c => (c.ranged || 0) > (c.melee || 0));
