@@ -1,0 +1,7 @@
+# 生成物。rebuild_index.py が出力する1行minified JSONで、
+# GitHubの差分ビューでは読めないため折りたたむ。
+# レビューは ocr_results_debug/*_basic.json の差分と調査報告で行う。
+data/card_index.json    -diff linguist-generated=true
+data/card_details.json  -diff linguist-generated=true
+data/link_index.json    -diff linguist-generated=true
+data/card_numbers.json  -diff linguist-generated=true
