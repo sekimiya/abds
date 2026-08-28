@@ -266,6 +266,11 @@ select,input{font-family:inherit}
 .picker-filter-btn.c-red.active{border-color:var(--red);color:var(--red);background:var(--red-bg)}
 .picker-filter-btn.c-blue.active{border-color:var(--blue);color:var(--blue);background:var(--blue-bg)}
 .picker-filter-btn.c-green.active{border-color:var(--green);color:var(--green);background:var(--green-bg)}
+.picker-select{
+  background:var(--bg-card);border:1px solid #333;border-radius:4px;
+  color:#e0e0e0;padding:3px 4px;font-size:0.65rem;max-width:70px;
+}
+.picker-select:focus{border-color:var(--accent);outline:none}
 .page-info{color:#888;font-size:0.7rem;margin-left:auto}
 
 .picker-scroll{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch}
@@ -291,6 +296,13 @@ select,input{font-family:inherit}
   font-size:0.5rem;color:#bbb;background:rgba(0,0,0,0.4);
 }
 .thumb-card-info .tc-name{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:600}
+.thumb-card-info .tc-rarity{font-size:0.5rem;padding:1px 3px;border-radius:2px;font-weight:bold;margin-right:3px}
+.thumb-card-info .tc-rarity.rarity-M{background:#5e3a1a;color:#ffcc80}
+.thumb-card-info .tc-rarity.rarity-R{background:#1a1a5e;color:#90caf9}
+.thumb-card-info .tc-rarity.rarity-C{background:#1a3a1a;color:#a5d6a7}
+.thumb-card-info .tc-rarity.rarity-N{background:#3a3a3a;color:#bdbdbd}
+.thumb-card-info .tc-rarity.rarity-P{background:#1a5e5e;color:#80deea}
+.thumb-card-info .tc-rarity.rarity-PR{background:#4a1a4a;color:#f48fb1}
 .thumb-card-info .tc-cost{color:var(--gold);font-weight:bold}
 .thumb-card-badges{position:absolute;top:1px;right:1px;display:flex;gap:2px;z-index:2;align-items:center}
 .thumb-card-badges .tc-color-dot{width:6px;height:6px;border-radius:50%;border:1px solid rgba(255,255,255,0.4)}
@@ -439,6 +451,9 @@ select,input{font-family:inherit}
     <button class="picker-filter-btn c-red" data-color="赤">赤</button>
     <button class="picker-filter-btn c-blue" data-color="青">青</button>
     <button class="picker-filter-btn c-green" data-color="緑">緑</button>
+    <select class="picker-select" id="pickerRarity"><option value="">全レア</option><option value="M">M</option><option value="R">R</option><option value="C">C</option><option value="N">N</option><option value="P">P</option><option value="PR">PR</option></select>
+    <select class="picker-select" id="pickerCategory"><option value="">全カテ</option><option value="近距離">近距離</option><option value="遠距離">遠距離</option><option value="殲滅">殲滅</option><option value="制圧">制圧</option><option value="防衛">防衛</option></select>
+    <select class="picker-select" id="pickerCost"><option value="">全コスト</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7+</option></select>
     <span class="page-info" id="pageInfo">-</span>
   </div>
   <div class="picker-scroll">
@@ -492,7 +507,15 @@ const AppState = {
   pickerType: 'MS',
   pickerColorFilter: null,
   pickerSearch: '',
+  pickerRarity: '',
+  pickerCategory: '',
+  pickerCost: '',
 };
+
+function escapeHtml(text) {
+  if (text == null) return '';
+  return String(text).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
+}
 
 async function init() {
   await loadCardIndex();
@@ -564,6 +587,9 @@ function bindEvents() {
       renderPickerGrid();
     });
   });
+  document.getElementById('pickerRarity').addEventListener('change', e => { AppState.pickerRarity = e.target.value; renderPickerGrid(); });
+  document.getElementById('pickerCategory').addEventListener('change', e => { AppState.pickerCategory = e.target.value; renderPickerGrid(); });
+  document.getElementById('pickerCost').addEventListener('change', e => { AppState.pickerCost = e.target.value; renderPickerGrid(); });
 
   document.getElementById('hamburgerBtn').addEventListener('click', openMenu);
   document.getElementById('menuClose').addEventListener('click', closeMenu);
@@ -594,7 +620,13 @@ function openCmdPicker() {
   AppState.pickerType = 'CMD';
   AppState.pickerSearch = '';
   AppState.pickerColorFilter = null;
+  AppState.pickerRarity = '';
+  AppState.pickerCategory = '';
+  AppState.pickerCost = '';
   document.getElementById('pickerSearch').value = '';
+  document.getElementById('pickerRarity').value = '';
+  document.getElementById('pickerCategory').value = '';
+  document.getElementById('pickerCost').value = '';
   document.getElementById('pickerTitle').textContent = 'コマンダー選択';
   document.getElementById('pickerTabs').style.display = 'none';
   updateColorFilterBtns();
@@ -607,7 +639,13 @@ function openPicker(slot) {
   AppState.pickerType = slot < 5 ? 'MS' : 'PL';
   AppState.pickerSearch = '';
   AppState.pickerColorFilter = null;
+  AppState.pickerRarity = '';
+  AppState.pickerCategory = '';
+  AppState.pickerCost = '';
   document.getElementById('pickerSearch').value = '';
+  document.getElementById('pickerRarity').value = '';
+  document.getElementById('pickerCategory').value = '';
+  document.getElementById('pickerCost').value = '';
   document.getElementById('pickerTitle').textContent = `${AppState.pickerType}選択 (U${(slot % 5) + 1})`;
   document.getElementById('pickerTabs').style.display = 'flex';
   updatePickerTabs();
@@ -628,6 +666,13 @@ function renderPickerGrid() {
 
   let cards = AppState.cardIndex.filter(c => c.type === AppState.pickerType);
   if (AppState.pickerColorFilter) cards = cards.filter(c => c.color && c.color.includes(AppState.pickerColorFilter));
+  if (AppState.pickerRarity) cards = cards.filter(c => c.rarity === AppState.pickerRarity);
+  if (AppState.pickerCategory) cards = cards.filter(c => c.category === AppState.pickerCategory);
+  if (AppState.pickerCost) {
+    const cost = parseInt(AppState.pickerCost, 10);
+    if (cost === 7) cards = cards.filter(c => (c.cost || 0) >= 7);
+    else cards = cards.filter(c => c.cost === cost);
+  }
   if (AppState.pickerSearch) {
     const q = AppState.pickerSearch;
     cards = cards.filter(c => (c.search_text || '').includes(q) || (c.name || '').toLowerCase().includes(q) || (c.number || '').toLowerCase().includes(q));
@@ -641,7 +686,8 @@ function renderPickerGrid() {
     el.className = 'thumb-card' + (inDeck.has(card.number) ? ' in-deck' : '');
     let colorDots = '';
     if (card.color) colorDots = card.color.map(c => COLOR_MAP[c] ? `<div class="tc-color-dot" style="background:${COLOR_MAP[c].css}"></div>` : '').join('');
-    el.innerHTML = `<div class="thumb-card-img-wrap" onclick="showCardModal('${card.number}')" style="cursor:pointer"><img src="${card.front_url}" alt="${card.name}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="tc-fallback" style="display:none">${card.name}</div></div><div class="thumb-card-badges"><span class="tc-info-btn" onclick="event.stopPropagation();showCardModal('${card.number}')" title="詳細">&#9432;</span>${colorDots}</div><div class="thumb-card-info"><span class="tc-name">${card.name}</span>${card.cost ? `<span class="tc-cost">${card.cost}</span>` : ''}</div><button class="tc-add-btn" onclick="event.stopPropagation();pickCardByNumber('${card.number}')">追加</button>`;
+    const rarityTag = card.rarity ? `<span class="tc-rarity rarity-${escapeHtml(card.rarity)}">${escapeHtml(card.rarity)}</span>` : '';
+    el.innerHTML = `<div class="thumb-card-img-wrap" onclick="showCardModal('${card.number}')" style="cursor:pointer"><img src="${card.front_url}" alt="${card.name}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="tc-fallback" style="display:none">${card.name}</div></div><div class="thumb-card-badges"><span class="tc-info-btn" onclick="event.stopPropagation();showCardModal('${card.number}')" title="詳細">&#9432;</span>${colorDots}</div><div class="thumb-card-info"><span class="tc-name">${card.name}</span>${rarityTag}${card.cost ? `<span class="tc-cost">${card.cost}</span>` : ''}</div><button class="tc-add-btn" onclick="event.stopPropagation();pickCardByNumber('${card.number}')">追加</button>`;
     el.addEventListener('click', () => pickCard(card));
     frag.appendChild(el);
   });
@@ -815,12 +861,44 @@ function renderColorBuff() {
   });
 }
 
+function renderDeckStats() {
+  const deckCards = AppState.deck.map(n => findCard(n)).filter(Boolean);
+  const totalCost = deckCards.reduce((s, c) => s + (c.cost || 0), 0);
+  const totalAtk = deckCards.reduce((s, c) => s + (c.atk || 0), 0);
+  const totalHp = deckCards.reduce((s, c) => s + (c.hp || 0), 0);
+  const cats = {};
+  deckCards.forEach(c => { if (c.category) cats[c.category] = (cats[c.category] || 0) + 1; });
+  const colors = {};
+  deckCards.forEach(c => { (c.color || []).forEach(col => { colors[col] = (colors[col] || 0) + 1; }); });
+  const costDist = {};
+  deckCards.forEach(c => { const cost = c.cost || 0; costDist[cost] = (costDist[cost] || 0) + 1; });
+
+  let catHtml = Object.entries(cats).map(([k, v]) => `<div class="modal-param-item"><span class="modal-param-label">${k}:</span>${v}</div>`).join('') || '<span style="color:#555">-</span>';
+  let colorHtml = Object.entries(colors).map(([k, v]) => `<div class="modal-param-item"><span class="modal-param-label">${k}:</span>${v}</div>`).join('') || '<span style="color:#555">-</span>';
+  let costHtml = Object.entries(costDist).sort((a, b) => a[0] - b[0]).map(([k, v]) => `<div class="modal-param-item"><span class="modal-param-label">${k}:</span>${v}</div>`).join('') || '<span style="color:#555">-</span>';
+
+  return `
+    <div class="detail-header"><span class="detail-unit-name">DECK STATS</span></div>
+    <div class="modal-param-group"><div class="modal-param-title">基本</div>
+      <div class="modal-param-row">
+        <div class="modal-param-item"><span class="modal-param-label">総コスト:</span>${totalCost}</div>
+        <div class="modal-param-item"><span class="modal-param-label">枚数:</span>${deckCards.length}</div>
+        <div class="modal-param-item"><span class="modal-param-label">ATK合計:</span>${totalAtk}</div>
+        <div class="modal-param-item"><span class="modal-param-label">HP合計:</span>${totalHp}</div>
+      </div>
+    </div>
+    <div class="modal-param-group"><div class="modal-param-title">カテゴリ</div><div class="modal-param-row">${catHtml}</div></div>
+    <div class="modal-param-group"><div class="modal-param-title">色分布</div><div class="modal-param-row">${colorHtml}</div></div>
+    <div class="modal-param-group"><div class="modal-param-title">コスト分布</div><div class="modal-param-row">${costHtml}</div></div>
+  `;
+}
+
 function renderDetail() {
   const area = document.getElementById('detailArea');
   const i = AppState.selectedUnit;
   const ms = findCard(AppState.deck[i]);
   const pl = findCard(AppState.deck[i + 5]);
-  if (!ms && !pl) { area.innerHTML = '<div class="detail-empty">ユニットを選択してください</div>'; return; }
+  if (!ms && !pl) { area.innerHTML = renderDeckStats(); return; }
 
   const cmdColors = getCmdColors();
   const atk = (ms ? ms.atk || 0 : 0) + (pl ? pl.atk || 0 : 0);
@@ -906,11 +984,6 @@ function loadDeckFromHash() {
 // ================================================================
 // Card Detail Modal (AB-style)
 // ================================================================
-function escapeHtml(text) {
-  if (text == null) return '';
-  return String(text).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
-}
-
 function closeCardModal(e) {
   if (e && e.target !== document.getElementById('cardDetailModal') && e.target !== document.querySelector('.modal-close')) return;
   document.getElementById('cardDetailModal').classList.remove('open');
