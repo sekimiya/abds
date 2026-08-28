@@ -1712,7 +1712,7 @@ body.picking-split .trade-sec.picking .trade-grid{
         <div class="filter-group-body">
           <input type="text" class="search-input" id="searchInput" placeholder="名前・番号で検索..." autocomplete="off">
           <input type="text" class="search-input" id="searchTextInput" placeholder="カードテキスト検索..." autocomplete="off">
-          <div class="link-search-wrap">
+          <div class="link-search-wrap" style="display:none">
             <input type="text" class="search-input" id="linkSearchInput" placeholder="リンクアビリティ検索..." autocomplete="off" style="border-color:#3a5a4a;color:#68efbd">
             <button class="link-search-clear" id="linkSearchClear" onclick="LinkSearch.clear()" style="display:none">&times;</button>
             <div class="link-suggest" id="linkSuggest"></div>
@@ -1767,7 +1767,7 @@ body.picking-split .trade-sec.picking .trade-grid{
             <input type="range" id="filterCostMax" min="0" max="13" value="13">
             <span class="range-value" id="costRangeValue">0〜13</span>
           </div>
-          <div class="stat-slider-grid">
+          <div class="stat-slider-grid" style="display:none">
             <div class="range-filter">
               <span class="range-label">機動≥</span>
               <input type="range" id="filterMobility" min="0" max="700" value="0" step="10">
@@ -1792,7 +1792,7 @@ body.picking-split .trade-sec.picking .trade-grid{
         </div>
       </div>
 
-      <div class="filter-group collapsed" id="filterGroupTerrain">
+      <div class="filter-group collapsed" id="filterGroupTerrain" style="display:none">
         <div class="filter-group-title" onclick="toggleFilterGroup('filterGroupTerrain')">地形・属性</div>
         <div class="filter-group-body">
           <div class="filter-row" id="terrainFilterRow">
@@ -1816,7 +1816,7 @@ body.picking-split .trade-sec.picking .trade-grid{
       </div>
 
       <!-- EB (MS) -->
-      <div class="filter-group collapsed" data-for="MS" id="filterGroupEbMs">
+      <div class="filter-group collapsed" data-for="MS" id="filterGroupEbMs" style="display:none">
         <div class="filter-group-title" onclick="toggleFilterGroup('filterGroupEbMs')" style="color:#ff9800">EB (MS)</div>
         <div class="filter-group-body">
           <div class="toggle-filter" id="ebCategoryBtns">
@@ -1847,7 +1847,7 @@ body.picking-split .trade-sec.picking .trade-grid{
       </div>
 
       <!-- EB (PL) -->
-      <div class="filter-group collapsed" data-for="PL" id="filterGroupEbPl">
+      <div class="filter-group collapsed" data-for="PL" id="filterGroupEbPl" style="display:none">
         <div class="filter-group-title" onclick="toggleFilterGroup('filterGroupEbPl')" style="color:#ff9800">EB (PL)</div>
         <div class="filter-group-body">
           <div class="toggle-filter" id="ebCategoryBtnsPl">
@@ -1865,7 +1865,7 @@ body.picking-split .trade-sec.picking .trade-grid{
       </div>
 
       <!-- SQ (MS) -->
-      <div class="filter-group collapsed" data-for="MS" id="filterGroupSqMs">
+      <div class="filter-group collapsed" data-for="MS" id="filterGroupSqMs" style="display:none">
         <div class="filter-group-title" onclick="toggleFilterGroup('filterGroupSqMs')" style="color:#ff69b4">SQ (MS)</div>
         <div class="filter-group-body">
           <div class="toggle-filter" id="sqCategoryBtns">
@@ -1886,7 +1886,7 @@ body.picking-split .trade-sec.picking .trade-grid{
       </div>
 
       <!-- SQ (PL) -->
-      <div class="filter-group collapsed" data-for="PL" id="filterGroupSqPl">
+      <div class="filter-group collapsed" data-for="PL" id="filterGroupSqPl" style="display:none">
         <div class="filter-group-title" onclick="toggleFilterGroup('filterGroupSqPl')" style="color:#ff69b4">SQ (PL)</div>
         <div class="filter-group-body">
           <div class="toggle-filter" id="sqCategoryBtnsPl">
@@ -1924,7 +1924,7 @@ body.picking-split .trade-sec.picking .trade-grid{
       </div>
 
       <!-- AB -->
-      <div class="filter-group collapsed" id="filterGroupAb">
+      <div class="filter-group collapsed" id="filterGroupAb" style="display:none">
         <div class="filter-group-title" onclick="toggleFilterGroup('filterGroupAb')" style="color:#b388ff">AB</div>
         <div class="filter-group-body">
           <div class="toggle-filter" id="abCategoryBtns">
@@ -1933,7 +1933,7 @@ body.picking-split .trade-sec.picking .trade-grid{
         </div>
       </div>
 
-      <div class="filter-group collapsed" data-for="MS" id="filterGroupSp">
+      <div class="filter-group collapsed" data-for="MS" id="filterGroupSp" style="display:none">
         <div class="filter-group-title" onclick="toggleFilterGroup('filterGroupSp')" style="color:#4fc3f7">SP</div>
         <div class="filter-group-body">
           <div class="toggle-filter" id="spEffectBtns">
@@ -1956,7 +1956,7 @@ body.picking-split .trade-sec.picking .trade-grid{
         </div>
       </div>
 
-      <div class="filter-group collapsed" data-for="PL" id="filterGroupPlSkill">
+      <div class="filter-group collapsed" data-for="PL" id="filterGroupPlSkill" style="display:none">
         <div class="filter-group-title" onclick="toggleFilterGroup('filterGroupPlSkill')">PLスキル</div>
         <div class="filter-group-body">
           <div class="filter-row">
@@ -1995,7 +1995,7 @@ body.picking-split .trade-sec.picking .trade-grid{
         </div>
       </div>
 
-      <div class="filter-group collapsed" id="filterGroupMisc">
+      <div class="filter-group collapsed" id="filterGroupMisc" style="display:none">
         <div class="filter-group-title" onclick="toggleFilterGroup('filterGroupMisc')">その他</div>
         <div class="filter-group-body">
           <select class="filter-select" id="filterIllustrator" onchange="SearchPanel.applyFilters()" style="width:100%">
