@@ -292,8 +292,21 @@ select,input{font-family:inherit}
 }
 .thumb-card-info .tc-name{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:600}
 .thumb-card-info .tc-cost{color:var(--gold);font-weight:bold}
-.thumb-card-badges{position:absolute;top:1px;right:1px;display:flex;gap:2px;z-index:2}
+.thumb-card-badges{position:absolute;top:1px;right:1px;display:flex;gap:2px;z-index:2;align-items:center}
 .thumb-card-badges .tc-color-dot{width:6px;height:6px;border-radius:50%;border:1px solid rgba(255,255,255,0.4)}
+.thumb-card-badges .tc-info-btn{
+  width:14px;height:14px;border-radius:50%;background:rgba(0,0,0,0.6);
+  color:#ccc;font-size:9px;line-height:14px;text-align:center;cursor:pointer;
+  border:1px solid rgba(255,255,255,0.3);
+}
+.thumb-card-badges .tc-info-btn:hover{background:var(--accent);color:#fff}
+.thumb-card .tc-add-btn{
+  position:absolute;bottom:1px;left:50%;transform:translateX(-50%);
+  background:rgba(0,0,0,0.7);border:1px solid #444;border-radius:3px;
+  color:#ccc;font-size:0.55rem;padding:1px 6px;cursor:pointer;z-index:3;
+  display:none;
+}
+.thumb-card:hover .tc-add-btn,.thumb-card:active .tc-add-btn{display:block}
 .picker-empty{grid-column:1/-1;text-align:center;color:#555;padding:2rem;font-size:0.8rem}
 
 /* ===== MENU ===== */
@@ -330,6 +343,51 @@ select,input{font-family:inherit}
   font-size:0.75rem;z-index:999;opacity:0;transition:opacity 0.3s;pointer-events:none;
 }
 .toast.show{opacity:1}
+
+/* ===== CARD DETAIL MODAL (from AB) ===== */
+.modal-overlay{
+  display:none;position:fixed;inset:0;
+  background:rgba(0,0,0,0.85);z-index:500;
+  align-items:center;justify-content:center;
+  padding:16px;
+}
+.modal-overlay.open{display:flex}
+.modal-content{
+  background:var(--bg-card);border-radius:12px;
+  width:100%;max-width:520px;max-height:90vh;overflow-y:auto;
+  box-shadow:0 0 24px rgba(0,0,0,0.8);position:relative;
+  padding:1rem;
+}
+.modal-close{
+  position:absolute;top:6px;right:10px;background:none;border:none;
+  color:#888;font-size:1.5rem;padding:4px;cursor:pointer;z-index:2;
+}
+.modal-close:hover{color:var(--accent)}
+.modal-card-header{display:flex;gap:12px;margin-bottom:12px;align-items:flex-start}
+.modal-card-image{
+  width:120px;border-radius:6px;flex-shrink:0;
+  background:var(--bg2);object-fit:contain;
+}
+.modal-card-info{flex:1;min-width:0}
+.modal-card-number{color:var(--accent);font-weight:bold;font-size:0.9rem}
+.modal-card-name{font-size:1.1rem;font-weight:bold;margin-top:2px;word-break:break-all}
+.modal-card-meta{color:#888;font-size:0.75rem;margin-top:4px}
+.modal-param-group{background:#111;border-radius:6px;padding:8px;margin-top:8px}
+.modal-param-title{color:var(--accent);font-weight:bold;font-size:0.75rem;margin-bottom:4px}
+.modal-param-row{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:4px}
+.modal-param-item{background:#1a1a25;border-radius:3px;padding:2px 6px;font-size:0.75rem}
+.modal-param-label{color:var(--accent);margin-right:2px}
+.rarity-tag{
+  display:inline-flex;align-items:center;justify-content:center;
+  padding:1px 5px;border-radius:3px;font-size:0.75rem;font-weight:bold;
+  min-width:1.5rem;text-align:center;margin-left:4px;
+}
+.rarity-tag.rarity-M{background:#5e3a1a;color:#ffcc80}
+.rarity-tag.rarity-C{background:#1a3a1a;color:#a5d6a7}
+.rarity-tag.rarity-R{background:#1a1a5e;color:#90caf9}
+.rarity-tag.rarity-N{background:#3a3a3a;color:#bdbdbd}
+.rarity-tag.rarity-P{background:#1a5e5e;color:#80deea}
+.rarity-tag.rarity-PR{background:#4a1a4a;color:#f48fb1}
 </style>
 </head>
 <body>
@@ -405,6 +463,13 @@ select,input{font-family:inherit}
 </div>
 
 <div class="toast" id="toast"></div>
+
+<div class="modal-overlay" id="cardDetailModal" onclick="closeCardModal(event)">
+  <div class="modal-content" id="cardDetailContent" onclick="event.stopPropagation()">
+    <button class="modal-close" onclick="closeCardModal()">&times;</button>
+    <div id="cardDetailBody"></div>
+  </div>
+</div>
 
 <script>
 'use strict';
@@ -574,7 +639,7 @@ function renderPickerGrid() {
     el.className = 'thumb-card' + (inDeck.has(card.number) ? ' in-deck' : '');
     let colorDots = '';
     if (card.color) colorDots = card.color.map(c => COLOR_MAP[c] ? `<div class="tc-color-dot" style="background:${COLOR_MAP[c].css}"></div>` : '').join('');
-    el.innerHTML = `<div class="thumb-card-img-wrap"><img src="${card.front_url}" alt="${card.name}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="tc-fallback" style="display:none">${card.name}</div></div><div class="thumb-card-badges">${colorDots}</div><div class="thumb-card-info"><span class="tc-name">${card.name}</span>${card.cost ? `<span class="tc-cost">${card.cost}</span>` : ''}</div>`;
+    el.innerHTML = `<div class="thumb-card-img-wrap" onclick="showCardModal('${card.number}')" style="cursor:pointer"><img src="${card.front_url}" alt="${card.name}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="tc-fallback" style="display:none">${card.name}</div></div><div class="thumb-card-badges"><span class="tc-info-btn" onclick="event.stopPropagation();showCardModal('${card.number}')" title="詳細">&#9432;</span>${colorDots}</div><div class="thumb-card-info"><span class="tc-name">${card.name}</span>${card.cost ? `<span class="tc-cost">${card.cost}</span>` : ''}</div><button class="tc-add-btn" onclick="event.stopPropagation();pickCardByNumber('${card.number}')">追加</button>`;
     el.addEventListener('click', () => pickCard(card));
     frag.appendChild(el);
   });
@@ -590,6 +655,12 @@ function pickCard(card) {
   closePicker();
   saveDeckToHash();
   render();
+}
+
+function pickCardByNumber(number) {
+  const card = findCard(number);
+  if (!card) return;
+  pickCard(card);
 }
 
 // ================================================================
@@ -774,11 +845,11 @@ function renderDetail() {
     <div class="detail-cards">
       <div class="detail-card-wrap">
         <div class="dc-label">MS</div>
-        <div class="dc-img" id="dcMs">${ms ? `<img src="${ms.front_url}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="dc-fallback" style="display:none">${ms.name}</div>` : ''}</div>
+        <div class="dc-img" id="dcMs" onclick="${ms ? `showCardModal('${ms.number}')` : ''}" style="${ms ? 'cursor:pointer' : ''}">${ms ? `<img src="${ms.front_url}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="dc-fallback" style="display:none">${ms.name}</div>` : ''}</div>
       </div>
       <div class="detail-card-wrap">
         <div class="dc-label">PL</div>
-        <div class="dc-img" id="dcPl">${pl ? `<img src="${pl.front_url}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="dc-fallback" style="display:none">${pl.name}</div>` : ''}</div>
+        <div class="dc-img" id="dcPl" onclick="${pl ? `showCardModal('${pl.number}')` : ''}" style="${pl ? 'cursor:pointer' : ''}">${pl ? `<img src="${pl.front_url}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="dc-fallback" style="display:none">${pl.name}</div>` : ''}</div>
       </div>
     </div>
     <div class="detail-stat-grid">
@@ -828,6 +899,68 @@ function loadDeckFromHash() {
   AppState.cmdCard = cmd;
   AppState.deckName = name || '';
   document.getElementById('deckNameInput').value = AppState.deckName;
+}
+
+// ================================================================
+// Card Detail Modal (AB-style)
+// ================================================================
+function escapeHtml(text) {
+  if (text == null) return '';
+  return String(text).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
+}
+
+function closeCardModal(e) {
+  if (e && e.target !== document.getElementById('cardDetailModal') && e.target !== document.querySelector('.modal-close')) return;
+  document.getElementById('cardDetailModal').classList.remove('open');
+}
+
+function showCardModal(number) {
+  const card = findCard(number);
+  if (!card) return;
+  const body = document.getElementById('cardDetailBody');
+  const rarityHtml = card.rarity ? ` <span class="rarity-tag rarity-${escapeHtml(card.rarity)}">${escapeHtml(card.rarity)}</span>` : '';
+  const colorHtml = (card.color || []).map(c => {
+    const cm = COLOR_MAP[c];
+    return `<span style="display:inline-flex;align-items:center;gap:2px;margin-right:6px"><span style="width:8px;height:8px;border-radius:50%;background:${cm ? cm.css : '#666'};border:1px solid rgba(255,255,255,0.3)"></span>${c}</span>`;
+  }).join('') || '<span style="color:#666">無色</span>';
+
+  let html = `<div class="modal-card-header">
+    <img class="modal-card-image" src="${card.front_url}" alt="${escapeHtml(card.name)}" onerror="this.style.display='none'">
+    <div class="modal-card-info">
+      <div class="modal-card-number">${escapeHtml(card.number)}${rarityHtml}</div>
+      <div class="modal-card-name">${escapeHtml(card.name)}</div>
+      <div class="modal-card-meta">${escapeHtml(card.type || '')} ${card.category ? '| ' + escapeHtml(card.category) : ''} | コスト: ${card.cost != null ? card.cost : '-'}</div>
+      <div class="modal-card-meta" style="margin-top:4px">${colorHtml}</div>
+    </div>
+  </div>`;
+
+  if (card.type !== 'CMD' && (card.atk != null || card.hp != null)) {
+    html += `<div class="modal-param-group"><div class="modal-param-title">ステータス</div>
+      <div class="modal-param-row">
+        ${card.atk != null ? `<div class="modal-param-item"><span class="modal-param-label">ATK:</span>${card.atk}</div>` : ''}
+        ${card.hp != null ? `<div class="modal-param-item"><span class="modal-param-label">HP:</span>${card.hp}</div>` : ''}
+      </div>
+    </div>`;
+  }
+
+  if (card.skill) {
+    html += `<div class="modal-param-group"><div class="modal-param-title">スキル</div>
+      <div style="font-size:0.85rem;color:#ccc">${escapeHtml(card.skill)}</div>
+    </div>`;
+  }
+  if (card.link_ability) {
+    html += `<div class="modal-param-group"><div class="modal-param-title">リンクアビリティ</div>
+      <div style="font-size:0.85rem;color:#ccc">${escapeHtml(card.link_ability)}</div>
+    </div>`;
+  }
+  if (card.terrain_compatibility) {
+    html += `<div class="modal-param-group"><div class="modal-param-title">地形適性</div>
+      <div class="modal-param-row">${Object.entries(card.terrain_compatibility).map(([k, v]) => `<div class="modal-param-item"><span class="modal-param-label">${k}:</span>${v || '-'}</div>`).join('')}</div>
+    </div>`;
+  }
+
+  body.innerHTML = html;
+  document.getElementById('cardDetailModal').classList.add('open');
 }
 
 // ================================================================

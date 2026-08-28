@@ -83,6 +83,13 @@
 
 <div class="toast" id="toast"></div>
 
+<div class="modal-overlay" id="cardDetailModal" onclick="closeCardModal(event)">
+  <div class="modal-content" id="cardDetailContent" onclick="event.stopPropagation()">
+    <button class="modal-close" onclick="closeCardModal()">&times;</button>
+    <div id="cardDetailBody"></div>
+  </div>
+</div>
+
 <script>
 'use strict';
 
@@ -472,11 +479,11 @@ function renderDetail() {
     <div class="detail-cards">
       <div class="detail-card-wrap">
         <div class="dc-label">MS</div>
-        <div class="dc-img" id="dcMs">${ms ? `<img src="${ms.front_url}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="dc-fallback" style="display:none">${ms.name}</div>` : ''}</div>
+        <div class="dc-img" id="dcMs" onclick="${ms ? `showCardModal('${ms.number}')` : ''}" style="${ms ? 'cursor:pointer' : ''}">${ms ? `<img src="${ms.front_url}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="dc-fallback" style="display:none">${ms.name}</div>` : ''}</div>
       </div>
       <div class="detail-card-wrap">
         <div class="dc-label">PL</div>
-        <div class="dc-img" id="dcPl">${pl ? `<img src="${pl.front_url}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="dc-fallback" style="display:none">${pl.name}</div>` : ''}</div>
+        <div class="dc-img" id="dcPl" onclick="${pl ? `showCardModal('${pl.number}')` : ''}" style="${pl ? 'cursor:pointer' : ''}">${pl ? `<img src="${pl.front_url}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="dc-fallback" style="display:none">${pl.name}</div>` : ''}</div>
       </div>
     </div>
     <div class="detail-stat-grid">
@@ -577,6 +584,73 @@ function loadDeckLocal() {
   render();
   closeMenu();
   showToast(name + ' を読込みました');
+}
+
+// ================================================================
+// Card Detail Modal (AB-style)
+// ================================================================
+function escapeHtml(text) {
+  if (text == null) return '';
+  return String(text).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
+}
+
+function closeCardModal(e) {
+  if (e && e.target !== document.getElementById('cardDetailModal') && e.target !== document.querySelector('.modal-close')) return;
+  document.getElementById('cardDetailModal').classList.remove('open');
+}
+
+function showCardModal(number) {
+  const card = findCard(number);
+  if (!card) return;
+  const body = document.getElementById('cardDetailBody');
+  const rarityHtml = card.rarity ? ` <span class="rarity-tag rarity-${escapeHtml(card.rarity)}">${escapeHtml(card.rarity)}</span>` : '';
+  const colorHtml = (card.color || []).map(c => {
+    const cm = COLOR_MAP[c];
+    return `<span style="display:inline-flex;align-items:center;gap:2px;margin-right:6px"><span style="width:8px;height:8px;border-radius:50%;background:${cm ? cm.css : '#666'};border:1px solid rgba(255,255,255,0.3)"></span>${c}</span>`;
+  }).join('') || '<span style="color:#666">無色</span>';
+
+  let html = `<div class="modal-card-header">
+    <img class="modal-card-image" src="${card.front_url}" alt="${escapeHtml(card.name)}" onerror="this.style.display='none'">
+    <div class="modal-card-info">
+      <div class="modal-card-number">${escapeHtml(card.number)}${rarityHtml}</div>
+      <div class="modal-card-name">${escapeHtml(card.name)}</div>
+      <div class="modal-card-meta">${escapeHtml(card.type || '')} ${card.category ? '| ' + escapeHtml(card.category) : ''} | コスト: ${card.cost != null ? card.cost : '-'}</div>
+      <div class="modal-card-meta" style="margin-top:4px">${colorHtml}</div>
+    </div>
+  </div>`;
+
+  if (card.type !== 'CMD' && (card.atk != null || card.hp != null)) {
+    html += `<div class="modal-param-group"><div class="modal-param-title">ステータス</div>
+      <div class="modal-param-row">
+        ${card.atk != null ? `<div class="modal-param-item"><span class="modal-param-label">ATK:</span>${card.atk}</div>` : ''}
+        ${card.hp != null ? `<div class="modal-param-item"><span class="modal-param-label">HP:</span>${card.hp}</div>` : ''}
+      </div>
+    </div>`;
+  }
+
+  if (card.skill) {
+    html += `<div class="modal-param-group"><div class="modal-param-title">スキル</div>
+      <div style="font-size:0.85rem;color:#ccc">${escapeHtml(card.skill)}</div>
+    </div>`;
+  }
+  if (card.link_ability) {
+    html += `<div class="modal-param-group"><div class="modal-param-title">リンクアビリティ</div>
+      <div style="font-size:0.85rem;color:#ccc">${escapeHtml(card.link_ability)}</div>
+    </div>`;
+  }
+  if (card.terrain_compatibility) {
+    html += `<div class="modal-param-group"><div class="modal-param-title">地形適性</div>
+      <div class="modal-param-row">${Object.entries(card.terrain_compatibility).map(([k, v]) => `<div class="modal-param-item"><span class="modal-param-label">${k}:</span>${v || '-'}</div>`).join('')}</div>
+    </div>`;
+  }
+
+  body.innerHTML = html;
+  document.getElementById('cardDetailModal').classList.add('open');
+}
+
+function pickCardByNumber(number) {
+  const card = findCard(number);
+  if (card) pickCard(card);
 }
 
 function showToast(msg) {
