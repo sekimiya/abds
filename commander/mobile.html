@@ -3253,6 +3253,11 @@ const ImageCache = {
 
 function resolveImageUrl(originalUrl, cardNumber, side = 'front') {
   if (!cardNumber) return PLACEHOLDER_SVG;
+  const card = UIRenderer._getIndexEntry(cardNumber);
+  if (card) {
+    const url = side === 'back' ? card.back_url : card.front_url;
+    if (url) return url;
+  }
   return ImageCache.resolve(cardNumber, side) || PLACEHOLDER_SVG;
 }
 </script>

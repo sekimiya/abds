@@ -3752,7 +3752,11 @@ const ImageCache = {
 // ================================================================
 function resolveImageUrl(originalUrl, cardNumber, side = 'front') {
   if (!cardNumber) return PLACEHOLDER_SVG;
-  // キャッシュ済みなら公式URL、未キャッシュならプレースホルダー
+  const card = UIRenderer.getCardByNumber(cardNumber);
+  if (card) {
+    const url = side === 'back' ? card.back_url : card.front_url;
+    if (url) return url;
+  }
   return ImageCache.resolve(cardNumber, side) || PLACEHOLDER_SVG;
 }
 
