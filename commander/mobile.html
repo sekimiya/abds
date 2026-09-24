@@ -1421,6 +1421,9 @@ body.picking-split .trade-sec.picking .trade-grid{
 .ac-cmd-none{color:#888}
 .ac-cmd-total b{font-size:0.85rem}
 /* AC: コマンダーカード(ユニットカードと同じ幅・色枠) */
+.ac-cmd-detail{position:absolute;top:3px;right:3px;z-index:3;background:rgba(0,0,0,0.8);border:1px solid rgba(104,239,189,0.4);color:#68efbd;border-radius:3px;font-size:0.5rem;font-weight:bold;padding:2px 4px;line-height:1.2;cursor:pointer}
+.ac-cmd-detail:active{background:rgba(104,239,189,0.25);color:#fff}
+
 .ac-cmd-card{width:var(--ac-card-w,120px)!important;height:var(--ac-card-h,168px)!important;align-self:flex-start;padding:3px!important;border:none!important;border-radius:8px!important;background:#2a2a2a;position:relative;display:block!important;flex-shrink:0;box-sizing:border-box;overflow:hidden;cursor:pointer}
 .ac-cmd-card img{width:100%;height:100%;object-fit:cover;border-radius:5px;display:block}
 .ac-cmd-card:not(.has-card){border:2px dashed #555!important;background:#1a1a1a}
@@ -3545,7 +3548,8 @@ const CmdPicker = {
     }
     btn.classList.add('has-card');
     btn.setAttribute('style', acColorFrameStyle(card.color));
-    btn.innerHTML = `<img src="${resolveImageUrl(null, card.number, 'front')}" alt="${escapeHtml(card.name)}">${acBadgesHtml(card)}`;
+    btn.innerHTML = `<img src="${resolveImageUrl(null, card.number, 'front')}" alt="${escapeHtml(card.name)}">${acBadgesHtml(card)}` +
+      `<span class="ac-cmd-detail" onclick="event.stopPropagation();showCardModal('${escapeJsForAttr(card.number)}')">詳細</span>`;
   },
   updateColorBuff() {
     acSyncCardWidth();
