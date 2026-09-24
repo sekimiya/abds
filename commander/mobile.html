@@ -1443,6 +1443,8 @@ body.picking-split .trade-sec.picking .trade-grid{
 .ac-band.on.trait{background:rgba(224,64,251,0.9);color:#fff}
 .ac-band.on.cond{background:rgba(255,152,0,0.92);color:#fff}
 .ac-band.off{background:rgba(40,40,40,0.85);color:#777}
+.ac-band.color.on{background:var(--band);color:#fff;text-shadow:0 1px 2px rgba(0,0,0,0.6);box-shadow:0 0 6px var(--band)}
+.ac-band.color.none{background:#fff;color:#111;text-shadow:none;border:none;opacity:1;box-shadow:0 0 6px rgba(255,255,255,0.8)}
 .card-slot.ac-glow,.overview-thumb.ac-glow{border-color:var(--ac-glow)!important;box-shadow:0 0 8px var(--ac-glow)}
 .overview-thumb .ac-bf,.overview-thumb .ac-tg{font-size:0.42rem;padding:0 2px;line-height:1.35}
 .overview-thumb .ac-num{font-size:0.42rem;padding:0 2px}
@@ -2827,7 +2829,10 @@ function acCardBands(card) {
   const cmd = acCmdCard();
   const cmdColors = cmd?.color || [];
   const colors = card.color || [];
-  const bands = [{ label: colors.length ? `${colors.join('')} 色一致` : '無色', on: acCardMatches(card, cmdColors), cls: 'color' }];
+  // 色帯: 一致した色(無ければカードの1色目)で塗る。無色は白
+  const hitColor = colors.find(c => cmdColors.includes(c)) || colors[0];
+  const bands = [{ label: colors.length ? `${colors.join('')} 色一致` : '無色', on: acCardMatches(card, cmdColors),
+    cls: 'color' + (colors.length ? '' : ' none'), hex: colors.length ? AC_COLOR_HEX[hitColor] : '#ffffff' }];
   const byTrait = {};
   (cmd?.ac_cmd_targets || []).forEach(t => {
     if ((card.traits || []).includes(t.trait)) (byTrait[t.trait] = byTrait[t.trait] || []).push(t.effect);
@@ -2848,7 +2853,7 @@ function acBadgesHtml(card) {
 function acCardOverlayHtml(card, maxBands) {
   const bands = acCardBands(card).slice(0, maxBands);
   return `<div class="ac-overlay">${acBadgesHtml(card)}<div class="ac-num">${escapeHtml(card.number)}</div>` +
-    bands.map(x => `<div class="ac-band ${x.cls} ${x.on ? 'on' : 'off'}">${escapeHtml(x.label)}</div>`).join('') + '</div>';
+    bands.map(x => `<div class="ac-band ${x.cls} ${x.on ? 'on' : 'off'}"${x.hex ? ` style="--band:${x.hex}"` : ''}>${escapeHtml(x.label)}</div>`).join('') + '</div>';
 }
 // コマンダーカードをユニットカードと同じ幅にする
 function acSyncCardWidth() {
