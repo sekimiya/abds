@@ -1,0 +1,45 @@
+{
+  "card_number": "PR-505",
+  "card_name": "インフィニットジャスティスガンダム(ラクス搭乗)",
+  "front_image": "PR_505_dummy.webp",
+  "back_image": "PR_505b_dummy.webp",
+  "ocr_engine": "claude_code_subagent",
+  "ocr_timestamp": "2026-09-24T00:00:00",
+  "ocr_data": {
+    "type": "MS",
+    "name": "インフィニットジャスティスガンダム(ラクス搭乗)",
+    "english_name": "INFINITE JUSTICE GUNDAM [LACUS]",
+    "model": "ZGMF-X19A",
+    "rarity": "PR",
+    "colors": [],
+    "category": "遠距離",
+    "cost": 3,
+    "traits": [
+      "アーセナルベース"
+    ],
+    "stats": {
+      "atk": 280,
+      "hp": 370
+    },
+    "ms_ability": {
+      "name": "補給[弱体化解除]",
+      "cost": 5,
+      "activation": "任意発動",
+      "target": "範囲(味方)",
+      "shape": "円自身中心",
+      "description": "自身を中心とした大範囲の味方ユニットのHPを中回復し、弱体化状態を無効化する。"
+    },
+    "special_attack": {
+      "name": "フルバースト・コンビネーション",
+      "sp_cost": 2,
+      "target": "貫通(敵)",
+      "power": 2900,
+      "shape": "直線",
+      "description": "射線上の敵に貫通射撃を行う。リンクアビリティ[NEXT]が発動している場合、出撃中のリンクアビリティ[NEXT]を持つ味方ユニットは、一定時間、[遠/近攻撃力]をアップ。"
+    },
+    "pilot_skill": null,
+    "commander_skill": null,
+    "commander_system": null,
+    "illustrator": "PaintedMIKE"
+  }
+}

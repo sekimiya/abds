@@ -1377,6 +1377,49 @@ body.picking-split .trade-sec.picking .trade-grid{
 .trade-preview-hint{color:#888;font-size:0.68rem;text-align:center;margin-bottom:8px}
 .trade-preview img{max-width:100%;height:auto;border-radius:4px;align-self:center}
 </style>
+<style>
+.ac-color-btn{padding:2px 8px;border-radius:4px;border:1px solid #444;background:#1a1a1a;color:#aaa;font-size:0.72rem;cursor:pointer;margin-right:3px}
+.ac-color-btn[data-color="赤"].active{background:#5a1a1a;border-color:#ff8a80;color:#ff8a80}
+.ac-color-btn[data-color="緑"].active{background:#1b3d1f;border-color:#a5d6a7;color:#a5d6a7}
+.ac-color-btn[data-color="青"].active{background:#12304f;border-color:#90caf9;color:#90caf9}
+.ac-color-btn[data-color="無"].active{background:#333;border-color:#ddd;color:#ddd}
+/* AC: 地形・リンク・EB・SQ・AB・SP効果タグはACに無いので絞り込みを出さない */
+#filterGroupTerrain,#filterGroupLink,#filterGroupEb,#filterGroupSq,#filterGroupAb,#filterGroupSp{display:none!important}
+.ac-sum{margin-top:0.5rem;padding:6px 8px;border:1px solid #2a2a2a;border-radius:6px;background:#111;font-size:0.8rem;color:#ccc;line-height:1.6;text-align:left}
+.ac-sum-row{display:flex;gap:8px;align-items:baseline}
+.ac-sum-label{flex:0 0 7.5em;color:#888;font-size:0.72rem}
+.ac-sum-atk{color:#ef5350}.ac-sum-hp{color:#66bb6a}
+/* AC: 武器射程・地形の枠はACに無い */
+.sg-info-box.box-weapon,.sg-info-box.box-terrain{display:none}
+#colorBuffBar{flex:1 1 100%;min-width:0;max-width:100%}
+.ac-cmd-panel{white-space:normal;overflow-wrap:anywhere;box-sizing:border-box}
+/* ===== AC: カラー・特徴 / コマンダーパネル ===== */
+.sg-label[data-stat="atk"]{color:#ef5350}
+.ov-stat-bar[data-stat="atk"] .ov-sb-base{background:#ef5350}
+.ac-color-chip{display:inline-block;font-size:0.68rem;font-weight:700;padding:0 6px;border-radius:3px;margin-right:3px;border:1px solid #444;color:#aaa;background:#1a1a1a}
+.ac-color-chip.ac-red{color:#ff8a80;border-color:#7a2f2f}
+.ac-color-chip.ac-green{color:#a5d6a7;border-color:#2f6a36}
+.ac-color-chip.ac-blue{color:#90caf9;border-color:#2c4f78}
+.ac-color-chip.on.ac-red{background:#5a1a1a;border-color:#ff8a80}
+.ac-color-chip.on.ac-green{background:#1b3d1f;border-color:#a5d6a7}
+.ac-color-chip.on.ac-blue{background:#12304f;border-color:#90caf9}
+.ac-unit-info{margin:4px 0 6px;padding:5px 6px;border:1px solid #2a2a2a;border-radius:6px;background:#111}
+.ac-unit-info-title{font-size:0.68rem;color:#888;margin-bottom:3px}
+.ac-unit-row{display:flex;flex-wrap:wrap;align-items:center;gap:2px;margin:2px 0}
+.ac-unit-label{font-size:0.66rem;color:#777;width:22px}
+.ac-match{font-size:0.64rem;padding:0 5px;border-radius:3px}
+.ac-match.on{color:#0b2a21;background:#68efbd;font-weight:700}
+.ac-match.off{color:#777;border:1px solid #333}
+.ac-traits{flex-basis:100%;display:flex;flex-wrap:wrap;gap:3px;padding-left:24px}
+.ac-trait{font-size:0.64rem;color:#bbb;background:#1e1e1e;border:1px solid #333;border-radius:3px;padding:0 5px}
+.ac-cmd-panel{width:100%;padding:6px 8px;border:1px solid #6a2b77;border-radius:6px;background:#1a1020;font-size:0.72rem;color:#ccc;line-height:1.5}
+.ac-cmd-head{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-bottom:2px}
+.ac-cmd-name{color:#e040fb;font-weight:700}
+.ac-cmd-count{color:#68efbd;font-size:0.7rem}
+.ac-cmd-line{margin-top:2px}
+.ac-cmd-tag{display:inline-block;font-size:0.62rem;color:#e040fb;border:1px solid #6a2b77;border-radius:3px;padding:0 4px;margin-right:5px}
+.ac-cmd-tag.sys{color:#68efbd;border-color:#2f6a55}
+</style>
 </head>
 <body>
 <script>if(localStorage.getItem('abds_lightMode')==='1'){document.body.classList.add('light')}</script>
@@ -1470,21 +1513,14 @@ body.picking-split .trade-sec.picking .trade-grid{
     <div class="filter-group collapsed" id="filterGroupBasic">
       <div class="filter-group-title" onclick="toggleFilterGroup('filterGroupBasic')">検索対象のシリーズを指定</div>
       <div class="filter-group-body">
+        <div class="rarity-filter" id="colorFilter" style="margin-bottom:0.3rem"><span class="rarity-label">色:</span><button class="ac-color-btn" data-color="赤" onclick="SearchPanel.toggleColor('赤')">赤</button><button class="ac-color-btn" data-color="緑" onclick="SearchPanel.toggleColor('緑')">緑</button><button class="ac-color-btn" data-color="青" onclick="SearchPanel.toggleColor('青')">青</button><button class="ac-color-btn" data-color="無" onclick="SearchPanel.toggleColor('無')">無色</button></div>
         <div class="rarity-filter" id="rarityFilter">
           <button class="rarity-btn" data-rarity="C" onclick="SearchPanel.toggleRarity('C')">C</button>
           <button class="rarity-btn" data-rarity="R" onclick="SearchPanel.toggleRarity('R')">R</button>
           <button class="rarity-btn" data-rarity="M" onclick="SearchPanel.toggleRarity('M')">M</button>
-          <button class="rarity-btn" data-rarity="A" onclick="SearchPanel.toggleRarity('A')">A</button>
-          <button class="rarity-btn" data-rarity="LX" onclick="SearchPanel.toggleRarity('LX')">LX</button>
-          <button class="rarity-btn" data-rarity="UT" onclick="SearchPanel.toggleRarity('UT')">UT</button>
-          <button class="rarity-btn" data-rarity="FQ" onclick="SearchPanel.toggleRarity('FQ')">FQ</button>
           <button class="rarity-btn" data-rarity="P" onclick="SearchPanel.toggleRarity('P')">P</button>
-          <button class="rarity-btn" data-rarity="U" onclick="SearchPanel.toggleRarity('U')">U</button>
-          <button class="rarity-btn" data-rarity="SP-SEC" onclick="SearchPanel.toggleRarity('SP-SEC')">SP-SEC</button>
+          <button class="rarity-btn" data-rarity="CMD" onclick="SearchPanel.toggleRarity('CMD')">CMD</button>
           <button class="rarity-btn" data-rarity="PR" onclick="SearchPanel.toggleRarity('PR')">PR</button>
-          <button class="rarity-btn" data-rarity="SN" onclick="SearchPanel.toggleRarity('SN')">SN</button>
-          <button class="rarity-btn" data-rarity="LE" onclick="SearchPanel.toggleRarity('LE')">LE</button>
-          <button class="rarity-btn" data-rarity="VE" onclick="SearchPanel.toggleRarity('VE')">VE</button>
           <button class="rarity-btn" id="filterAltArt" onclick="SearchPanel.toggleAltArt()" style="margin-left:4px;border-color:#e0a0ff;color:#e0a0ff">イラスト違い</button>
         </div>
         <label class="ocr-toggle"><input type="checkbox" id="filterAllSeries" checked onchange="SearchPanel.toggleAllSeries()"><span class="ocr-toggle-text">全シリーズ</span></label>
@@ -2643,37 +2679,56 @@ function getLvBonus(series, msOrPl, stat, lv) {
 }
 // 共通ステータス計算（mobile/desktop共通ロジック）
 // 公式: ROUNDDOWN((MS表記値*地形適正 + MS_Lvボーナス + PL表記値 + PL_Lvボーナス) × 1.1^小 × 1.2^中, 0)
+// ===== AC: カラー・特徴 =====
+// 公式の遊び方: MS/PLのカードの色をコマンダーの色と揃えると能力ボーナスが付く。
+// ボーナス量は公開されていないので、ここでは一致の有無だけを表示する(ステータスには加算しない)。
+const AC_COLOR_CSS = { 赤: 'ac-red', 緑: 'ac-green', 青: 'ac-blue' };
+function acCmdCard() {
+  return AppState.cmdCard ? AppState.cardIndex.find(c => c.number === AppState.cmdCard) : null;
+}
+function acCardMatches(card, cmdColors) {
+  return !!card && (card.color || []).some(c => cmdColors.includes(c));
+}
+function acColorChips(colors, cmdColors) {
+  if (!colors || colors.length === 0) return '<span class="ac-color-chip ac-none">無色</span>';
+  return colors.map(c => `<span class="ac-color-chip ${AC_COLOR_CSS[c] || ''}${cmdColors.includes(c) ? ' on' : ''}">${escapeHtml(c)}</span>`).join('');
+}
+function acUnitInfoHtml(u) {
+  const cmdColors = acCmdCard()?.color || [];
+  const rows = [['MS', AppState.deck[u]], ['PL', AppState.deck[u + 5]]].map(([label, num]) => {
+    const card = num ? AppState.cardIndex.find(c => c.number === num) : null;
+    if (!card) return '';
+    const hit = acCardMatches(card, cmdColors);
+    const match = cmdColors.length ? `<span class="ac-match ${hit ? 'on' : 'off'}">${hit ? '色一致' : '不一致'}</span>` : '';
+    const traits = (card.traits || []).map(t => `<span class="ac-trait">${escapeHtml(t)}</span>`).join('');
+    return `<div class="ac-unit-row"><span class="ac-unit-label">${label}</span>${acColorChips(card.color, cmdColors)}${match}<div class="ac-traits">${traits}</div></div>`;
+  }).join('');
+  if (!rows) return '';
+  return `<div class="ac-unit-info"><div class="ac-unit-info-title">カラー・特徴</div>${rows}</div>`;
+}
+
+function acCardSummaryHtml(number, ocr) {
+  const c = AppState.cardIndex.find(x => x.number === number);
+  if (!c) return '';
+  const cmdColors = acCmdCard()?.color || [];
+  const row = (label, body) => `<div class="ac-sum-row"><span class="ac-sum-label">${label}</span><span>${body}</span></div>`;
+  let h = '<div class="ac-sum">';
+  h += row('カラー', acColorChips(c.color, cmdColors));
+  if ((c.traits || []).length) h += row('特徴', c.traits.map(t => `<span class="ac-trait">${escapeHtml(t)}</span>`).join(' '));
+  if (c.type !== 'CMD') h += row('ステータス', `<b class="ac-sum-atk">ATK ${c.atk}</b> / <b class="ac-sum-hp">HP ${c.hp}</b>`);
+  const o = ocr || CardService.getDetail(number)?.ocr_data || {};
+  if (o.commander_skill?.description) h += row('コマンダースキル', escapeHtml(o.commander_skill.description));
+  if (o.commander_system) h += row('コマンダーシステム', `<b>${escapeHtml(o.commander_system.name || '')}</b> ${escapeHtml(o.commander_system.description || '')}`);
+  return h + '</div>';
+}
+
+// AC版: ユニットのATK/HP = MSとPLの表記値の合計(地形・リンク・作品Lvの概念は無い)
 function calcUnitStats(msOcr, plOcr, terrainMult) {
   const si = (v) => parseInt(v) || 0;
-  const getStats = (ocr) => ({ mobility: si(ocr?.stats?.mobility), ranged: si(ocr?.stats?.ranged_attack), melee: si(ocr?.stats?.melee_attack), hp: si(ocr?.stats?.hp) });
-  const ms = getStats(msOcr), pl = getStats(plOcr);
-  const msBuffs = getLinkBuffs(msOcr), plBuffs = getLinkBuffs(plOcr);
-  const msSeries = _getCardSeries(msOcr);
-  const plSeries = _getCardSeries(plOcr);
-  const seriesLv = ParamCorrections.work[msSeries] || 0;
-  const plName = plOcr?.name || '';
-  const plLv = ParamCorrections.pl[plName] || 0;
-  const keys = ['mobility', 'ranged', 'melee', 'hp'];
-  const labels = { mobility: '機動', ranged: '遠攻', melee: '近攻', hp: 'HP' };
-  const _debug = { msSeries, plSeries: plName, msLv: seriesLv, plLv };
-  return keys.map(s => {
-    const base = ms[s] + pl[s];
-    // MS+PL両方0のパラメータには補正をかけない
-    if (ms[s] === 0 && pl[s] === 0) {
-      return { key: s, label: labels[s], msVal: 0, plVal: 0, base: 0, linkBuff: 0, terrainBuff: 0, corrBuff: 0, total: 0, _debug };
-    }
-    const msWithTerrain = (s !== 'hp') ? ms[s] * terrainMult : ms[s];
-    const msLvBonus = getLvBonus(msSeries, 'ms', s, seriesLv);
-    const plLvBonus = getLvBonus(plSeries, 'pl', s, plLv);
-    const preLink = msWithTerrain + msLvBonus + pl[s] + plLvBonus;
-    const sm = msBuffs[s].small + plBuffs[s].small;
-    const med = msBuffs[s].medium + plBuffs[s].medium;
-    const linkMult = Math.pow(1.1, sm) * Math.pow(1.2, med);
-    const total = Math.floor(preLink * linkMult);
-    const terrainBuff = (s !== 'hp') ? Math.round(ms[s] * (terrainMult - 1)) : 0;
-    const corrBuff = msLvBonus + plLvBonus;
-    const linkBuff = total - Math.floor(preLink);
-    return { key: s, label: labels[s], msVal: ms[s], plVal: pl[s], base, linkBuff, terrainBuff, corrBuff, total, _debug };
+  return [['atk', 'ATK'], ['hp', 'HP']].map(([k, label]) => {
+    const msVal = si(msOcr?.stats?.[k]), plVal = si(plOcr?.stats?.[k]);
+    const base = msVal + plVal;
+    return { key: k, label, msVal, plVal, base, linkBuff: 0, terrainBuff: 0, corrBuff: 0, total: base };
   });
 }
 function getLinkBuffs(ocr) {
@@ -3302,7 +3357,7 @@ const CmdPicker = {
     UndoManager.snapshot();
     AppState.cmdCard = number;
     this.renderButton();
-    this.updateColorBuff();
+    UIRenderer.renderAll();
     UndoManager.snapshot();
     DeckManager._autoSave();
     DeckManager._updateHash();
@@ -3334,26 +3389,30 @@ const CmdPicker = {
   updateColorBuff() {
     const bar = document.getElementById('colorBuffBar');
     if (!bar) return;
-    const cmdNum = AppState.cmdCard;
-    const cmdCard = cmdNum ? AppState.cardIndex.find(c => c.number === cmdNum) : null;
-    const cmdColors = cmdCard?.color || [];
-    if (cmdColors.length === 0) { bar.innerHTML = ''; return; }
-    const colorMap = {赤: {label:'赤バフ', css:'active-red', count:0}, 青: {label:'青バフ', css:'active-blue', count:0}, 緑: {label:'緑バフ', css:'active-green', count:0}};
-    for (let i = 0; i < 10; i++) {
-      const num = AppState.deck[i];
-      if (!num) continue;
-      const card = AppState.cardIndex.find(c => c.number === num);
-      if (!card || !card.color) continue;
-      card.color.forEach(col => { if (colorMap[col]) colorMap[col].count++; });
+    const cmd = acCmdCard();
+    if (!cmd) { bar.innerHTML = ''; return; }
+    const cmdColors = cmd.color || [];
+    let ms = 0, pl = 0, both = 0;
+    for (let u = 0; u < 5; u++) {
+      const m = AppState.deck[u] ? AppState.cardIndex.find(c => c.number === AppState.deck[u]) : null;
+      const p = AppState.deck[u + 5] ? AppState.cardIndex.find(c => c.number === AppState.deck[u + 5]) : null;
+      const mh = acCardMatches(m, cmdColors), ph = acCardMatches(p, cmdColors);
+      if (mh) ms++;
+      if (ph) pl++;
+      if (mh && ph) both++;
     }
-    bar.innerHTML = cmdColors.map(col => {
-      const info = colorMap[col];
-      if (!info) return '';
-      const active = info.count > 0;
-      const cls = active ? info.css : 'inactive';
-      const text = active ? `${info.label}発動中 (${info.count})` : `${info.label}`;
-      return `<span class="color-buff-chip ${cls}">${text}</span>`;
-    }).join('');
+    const detail = CardService.getDetail(cmd.number);
+    if (!detail) {
+      CardService.fetchDetail(cmd.number).then(d => { if (d) this.updateColorBuff(); });
+    }
+    const o = detail?.ocr_data || {};
+    const skill = o.commander_skill?.description || '';
+    const sys = o.commander_system || {};
+    bar.innerHTML = `<div class="ac-cmd-panel">
+      <div class="ac-cmd-head"><span class="ac-cmd-name">${escapeHtml(cmd.name)}</span>${acColorChips(cmdColors, cmdColors)}<span class="ac-cmd-count">色一致 MS ${ms}/5 ・ PL ${pl}/5 ・ 両方 ${both}/5</span></div>
+      ${skill ? `<div class="ac-cmd-line"><span class="ac-cmd-tag">コマンダースキル</span>${escapeHtml(skill)}</div>` : ''}
+      ${(sys.name || sys.description) ? `<div class="ac-cmd-line"><span class="ac-cmd-tag sys">コマンダーシステム</span><b>${escapeHtml(sys.name || '')}</b> ${escapeHtml(sys.description || '')}</div>` : ''}
+    </div>`;
   }
 };
 const TacticsPicker = { renderButtons() { CmdPicker.renderButton(); CmdPicker.updateColorBuff(); }, close() { CmdPicker.close(); } };
@@ -3554,6 +3613,10 @@ const DeckManager = {
   generateCode() {
     const numbers = AppState.deck.map(n => n || '');
     if (AppState.tacticsMain || AppState.tacticsSub) { numbers.push(AppState.tacticsMain || ''); numbers.push(AppState.tacticsSub || ''); }
+    if (AppState.cmdCard) {
+      while (numbers.length < 12) numbers.push('');
+      numbers.push(AppState.cmdCard);
+    }
     return btoa(unescape(encodeURIComponent(numbers.join(','))));
   },
   parseCode(code) {
@@ -3628,6 +3691,9 @@ const DeckManager = {
     AppState.deck = deckNumbers.map(n => n || null);
     if (numbers.length >= 12) { AppState.tacticsMain = numbers[10] || null; AppState.tacticsSub = numbers[11] || null; }
     else { AppState.tacticsMain = null; AppState.tacticsSub = null; }
+    // AC: 13番目はコマンダー(10,11は旧作戦カード枠)
+    const cmdNum = numbers[12] || '';
+    AppState.cmdCard = AppState.cardIndex.some(c => c.number === cmdNum && c.type === 'CMD') ? cmdNum : null;
     const validNumbers = deckNumbers.filter(n => n);
     if (validNumbers.length > 0) await CardService.batchDetails(validNumbers);
     for (let i = 0; i < 10; i++) { AppState.deckOcr[i] = AppState.deck[i] ? (CardService.getDetail(AppState.deck[i])?.ocr_data || null) : null; }
@@ -3646,7 +3712,7 @@ const DeckManager = {
     AppState._lastDeckName = trimmed;
     if (nameInput) nameInput.value = trimmed;
     const decks = JSON.parse(localStorage.getItem('gac_decks') || '{}');
-    decks[trimmed] = { name: trimmed, cards: [...AppState.deck], tacticsMain: AppState.tacticsMain, tacticsSub: AppState.tacticsSub, timestamp: new Date().toISOString() };
+    decks[trimmed] = { name: trimmed, cards: [...AppState.deck], tacticsMain: AppState.tacticsMain, tacticsSub: AppState.tacticsSub, cmdCard: AppState.cmdCard, timestamp: new Date().toISOString() };
     localStorage.setItem('gac_decks', JSON.stringify(decks));
     this.populateLoadSelect();
     Toast.show(`デッキ「${trimmed}」を保存しました`, 'success');
@@ -3716,6 +3782,7 @@ const DeckManager = {
           const numbers = [...data.cards];
           while (numbers.length < 10) numbers.push('');
           if (data.tacticsMain || data.tacticsSub) { numbers[10] = data.tacticsMain || ''; numbers[11] = data.tacticsSub || ''; }
+          if (data.cmdCard) { numbers[10] = numbers[10] || ''; numbers[11] = numbers[11] || ''; numbers[12] = data.cmdCard; }
           await this._applyNumbers(numbers);
           if (data.cmdCard) { AppState.cmdCard = data.cmdCard; CmdPicker.renderButton(); CmdPicker.updateColorBuff(); }
           return;
@@ -3758,6 +3825,7 @@ const DeckManager = {
     const numbers = [...(deck.cards || [])];
     while (numbers.length < 10) numbers.push('');
     if (deck.tacticsMain || deck.tacticsSub) { numbers[10] = deck.tacticsMain || ''; numbers[11] = deck.tacticsSub || ''; }
+    if (deck.cmdCard) { numbers[10] = numbers[10] || ''; numbers[11] = numbers[11] || ''; numbers[12] = deck.cmdCard; }
     await this._applyNumbers(numbers);
     AppState._lastDeckName = name;
     const nameInput = document.getElementById('deckNameInput');
@@ -3941,7 +4009,7 @@ const UIRenderer = {
     plRow.innerHTML = '';
     statsRow.innerHTML = '';
     tabs.innerHTML = '';
-    const statBars = ['mobility', 'ranged', 'melee', 'hp'].map(k =>
+    const statBars = ['atk', 'hp'].map(k =>
       `<div class="ov-stat-bar" data-stat="${k}"><div class="ov-sb-base"></div><div class="ov-sb-buff"></div><div class="ov-sb-terrain"></div></div>`).join('');
     for (let u = 0; u < 5; u++) {
       catRow.innerHTML += `<div class="ov-cat" id="ov-cat-${u}"></div>`;
@@ -4062,7 +4130,7 @@ const UIRenderer = {
 
   // 各パラメータの最大値を持つユニットのバーを緑枠で強調(同値は全て強調)
   _highlightBestStatBars(unitTotals) {
-    ['mobility', 'ranged', 'melee', 'hp'].forEach(k => {
+    ['atk', 'hp'].forEach(k => {
       let max = 0;
       unitTotals.forEach(t => { if (t && t[k] > max) max = t[k]; });
       for (let u = 0; u < 5; u++) {
@@ -4522,36 +4590,8 @@ const UIRenderer = {
   },
 
   _renderLinksForUnit(u, msOcr, plOcr) {
-    const allUnitLinks = [];
-    const unitLinkCount = {}; // ユニット内でMS・PL両方に同じリンクがあるかカウント
-    [msOcr, plOcr].forEach(ocr => {
-      if (!ocr) return;
-      const links = ocr.link_ability || [];
-      if (!Array.isArray(links)) return;
-      links.forEach(link => {
-        if (!link.name) return;
-        unitLinkCount[link.name] = (unitLinkCount[link.name] || 0) + 1;
-        if (!allUnitLinks.find(l => l.name === link.name)) allUnitLinks.push(link);
-      });
-    });
-    if (allUnitLinks.length === 0) return '';
-    let html = '<div class="detail-section"><div class="detail-section-title link">リンクアビリティ</div>';
-    allUnitLinks.forEach(link => {
-      const { required, category } = _parseLinkCondition(link.condition);
-      const count = _countLinkInDeck(link.name, category);
-      const isActive = count >= required;
-      const linkType = link.is_eb_link ? 'eb' : AppState._sqLinkNames.has(link.name) ? 'sq' : link.is_ab_link ? 'ab' : '';
-      const activeClass = isActive ? 'link-active' : 'link-inactive';
-      const dupeCount = unitLinkCount[link.name] || 1;
-      html += `<div class="link-item ${activeClass}${linkType ? ' link-type-' + linkType : ''}">`;
-      if (linkType) html += `<span class="link-type-badge ${linkType}">${linkType.toUpperCase()}</span>`;
-      html += `<span class="link-name">${escapeHtml(link.name)}</span>`;
-      if (dupeCount >= 2) html += `<span class="link-dupe">x${dupeCount}</span>`;
-      html += `<span class="link-badge ${isActive ? 'on' : 'off'}">${isActive ? '発動' : '未発動'}</span>`;
-      html += `<div class="link-effect">${escapeHtml(link.effect || '')}</div></div>`;
-    });
-    html += '</div>';
-    return html;
+    // AC版: リンクアビリティは無い。カラー(コマンダーとの一致)と特徴を出す
+    return acUnitInfoHtml(u);
   },
 
   _updateHeader() {
@@ -4747,6 +4787,7 @@ const SearchPanel = {
   _pickCallback: null,
   _bookmarkMode: false,
   _currentRarity: new Set(),
+  _currentColor: new Set(),
   _currentCategory: new Set(),
   _statFilter: null,
   _quickSeries: '',
@@ -4827,14 +4868,14 @@ const SearchPanel = {
       bookmark: (document.getElementById('filterBookmarkCards') || {}).checked || false,
       altArt: this._altArt || false,
     };
-    const key = 'abds_search_filters' + (this._lockedType ? '_' + this._lockedType : '');
+    const key = 'acds_search_filters' + (this._lockedType ? '_' + this._lockedType : '');
     localStorage.setItem(key, JSON.stringify(state));
   },
 
   _restoreAllFilters() {
     // MS/PL両方のフィルタ設定をマージして復元
-    const msRaw = localStorage.getItem('abds_search_filters_MS');
-    const plRaw = localStorage.getItem('abds_search_filters_PL');
+    const msRaw = localStorage.getItem('acds_search_filters_MS');
+    const plRaw = localStorage.getItem('acds_search_filters_PL');
     const ms = msRaw ? JSON.parse(msRaw) : {};
     const pl = plRaw ? JSON.parse(plRaw) : {};
     // カテゴリはMS+PLの両方をマージ
@@ -4864,7 +4905,7 @@ const SearchPanel = {
     });
   },
   _restoreFilters() {
-    const key = 'abds_search_filters' + (this._lockedType ? '_' + this._lockedType : '');
+    const key = 'acds_search_filters' + (this._lockedType ? '_' + this._lockedType : '');
     const raw = localStorage.getItem(key);
     if (!raw) return;
     try {
@@ -5001,6 +5042,12 @@ const SearchPanel = {
     document.getElementById('filterAltArt').classList.toggle('active', this._altArt);
     this.applyFilters();
   },
+  toggleColor(color) {
+    if (this._currentColor.has(color)) this._currentColor.delete(color);
+    else this._currentColor.add(color);
+    document.querySelectorAll('.ac-color-btn').forEach(b => b.classList.toggle('active', this._currentColor.has(b.dataset.color)));
+    this.applyFilters();
+  },
   toggleRarity(rarity) {
     if (this._currentRarity.has(rarity)) this._currentRarity.delete(rarity);
     else this._currentRarity.add(rarity);
@@ -5022,12 +5069,10 @@ const SearchPanel = {
     const container = document.getElementById('categoryFilter');
     if (!container) return;
     const t = this._lockedType;
-    const msC = ['機動','近距離','遠距離'], plC = ['殲滅','制圧','防衛'];
+    const msC = ['近距離','遠距離'], plC = ['殲滅','制圧','防衛'];
     let cats; if (t === 'MS') cats = msC; else if (t === 'PL') cats = plC; else cats = [...msC, ...plC];
     if (t) { for (const c of [...this._currentCategory]) { if (!cats.includes(c)) this._currentCategory.delete(c); } }
-    container.innerHTML = cats.map(c => `<button class="cat-btn${this._currentCategory.has(c) ? ' active' : ''}" data-cat="${c}" onclick="SearchPanel.setCategory('${c}')">${c}</button>`).join('')
-      + `<button class="cat-btn cat-stat-btn${this._statFilter === 'ranged' ? ' active' : ''}" data-stat="ranged" onclick="SearchPanel.setStatFilter('ranged')">遠距離型</button>`
-      + `<button class="cat-btn cat-stat-btn${this._statFilter === 'melee' ? ' active' : ''}" data-stat="melee" onclick="SearchPanel.setStatFilter('melee')">近距離型</button>`;
+    container.innerHTML = cats.map(c => `<button class="cat-btn${this._currentCategory.has(c) ? ' active' : ''}" data-cat="${c}" onclick="SearchPanel.setCategory('${c}')">${c}</button>`).join('');
   },
   _populateSeriesQuick() {
     const sel = document.getElementById('filterSeriesQuick');
@@ -5080,7 +5125,7 @@ const SearchPanel = {
   _hasAnyFilter() {
     if (this._selectedSeries.size > 0) return true;
     const fas = document.getElementById('filterAllSeries'); if (fas && fas.checked) return true;
-    if (this._currentRarity.size > 0) return true;
+    if (this._currentRarity.size > 0 || this._currentColor.size > 0) return true;
     if (this._currentCategory.size > 0) return true;
     if (this._statFilter) return true;
     if (this._quickSeries) return true;
@@ -5139,6 +5184,10 @@ const SearchPanel = {
     if (this._statFilter === 'ranged') cards = cards.filter(c => (c.ranged || 0) > (c.melee || 0));
     else if (this._statFilter === 'melee') cards = cards.filter(c => (c.melee || 0) > (c.ranged || 0));
     if (this._quickSeries) cards = cards.filter(c => c._gSeries === this._quickSeries);
+    // AC: 色(複数選択はOR。「無」は無色カード)
+    if (this._currentColor.size > 0) {
+      cards = cards.filter(c => (c.color || []).length === 0 ? this._currentColor.has('無') : (c.color || []).some(x => this._currentColor.has(x)));
+    }
     if (this._currentRarity.size > 0) cards = cards.filter(c => !c.rarity || this._currentRarity.has(c.rarity));
     if (this._altArt) cards = cards.filter(c => c.number.includes('_'));
     const allSeriesEl = document.getElementById('filterAllSeries');
@@ -5248,8 +5297,8 @@ const SearchPanel = {
   },
   clearFilters() {
     this._clearFiltersUI();
-    localStorage.removeItem('abds_search_filters');
-    if (this._lockedType) localStorage.removeItem('abds_search_filters_' + this._lockedType);
+    localStorage.removeItem('acds_search_filters');
+    if (this._lockedType) localStorage.removeItem('acds_search_filters_' + this._lockedType);
     this.applyFilters();
   },
   _renderGrid() {
@@ -5933,9 +5982,8 @@ function _renderCardModal(number) {
   let showingFront = false;
   const body = document.getElementById('cardDetailBody');
   const cardIdx = AppState.cardIndex.find(c => c.number === number);
-  const analysisBtn = cardIdx && cardIdx.cost
-    ? `<div style="text-align:center;margin-top:8px"><button onclick="event.stopPropagation();toggleCardAnalysis('${escapeJsForAttr(number)}')" style="background:#1a2a20;color:#68efbd;border:1px solid #68efbd;border-radius:6px;padding:6px 16px;font-size:0.8rem;font-weight:600;cursor:pointer">カード解析</button></div><div id="cardAnalysisArea"></div>`
-    : '';
+  // AC版: カード解析(ABの4ステータス比較)の代わりに色・特徴・ATK/HPを出す
+  const analysisBtn = acCardSummaryHtml(number);
   body.innerHTML = `<img class="card-viewer-img" id="cardViewerImg" src="${backUrl}" alt="${escapeHtml(number)}" onerror="this.onerror=null;this.src=PLACEHOLDER_SVG"><div class="card-viewer-hint">タップで表面を表示</div>${analysisBtn}`;
   const img = document.getElementById('cardViewerImg');
   img.addEventListener('click', function(e) {
@@ -6462,7 +6510,7 @@ if ('serviceWorker' in navigator) {
 
 // Update checker: version.json を定期チェックして更新通知を表示
 (function() {
-  const STORAGE_KEY = 'abds_appVersion';
+  const STORAGE_KEY = 'acds_appVersion';
   const CHECK_INTERVAL = 5 * 60 * 1000;
   let _updateBarShown = false;
 

@@ -1,0 +1,48 @@
+{
+  "card_number": "TEST-016",
+  "card_name": "ガンダムNT-1 アレックス",
+  "front_image": "TEST_016M_dummy.webp",
+  "back_image": "TEST_016b_dummy.webp",
+  "ocr_engine": "claude_code_subagent",
+  "ocr_timestamp": "2026-09-24T00:00:00",
+  "ocr_data": {
+    "type": "MS",
+    "name": "ガンダムNT-1 アレックス",
+    "english_name": "GUNDAM NT-1",
+    "model": "RX-78NT-1",
+    "rarity": "M",
+    "colors": [
+      "青"
+    ],
+    "category": "遠距離",
+    "cost": 4,
+    "traits": [
+      "ポケットの中の戦争",
+      "地球連邦"
+    ],
+    "stats": {
+      "atk": 350,
+      "hp": 370
+    },
+    "ms_ability": {
+      "name": "妨波[攻撃]",
+      "cost": 2,
+      "activation": "任意発動",
+      "target": "範囲(敵)",
+      "shape": "円自身中心",
+      "description": "一定時間、自身を中心とした範囲内の敵ユニットの[攻撃力]をダウンする。"
+    },
+    "special_attack": {
+      "name": "90mmガトリング砲撃射",
+      "sp_cost": 2,
+      "target": "単体(敵)",
+      "power": 3300,
+      "shape": "単体遠距離",
+      "description": "敵単体に攻撃を行う。"
+    },
+    "pilot_skill": null,
+    "commander_skill": null,
+    "commander_system": null,
+    "illustrator": "unaginogoro(MIZUNO PRODUCTION)"
+  }
+}

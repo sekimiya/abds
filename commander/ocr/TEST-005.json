@@ -1,0 +1,48 @@
+{
+  "card_number": "TEST-005",
+  "card_name": "フォースインパルスガンダム",
+  "front_image": "TEST_005R_dummy.webp",
+  "back_image": "TEST_005b_dummy.webp",
+  "ocr_engine": "claude_code_subagent",
+  "ocr_timestamp": "2026-09-24T00:00:00",
+  "ocr_data": {
+    "type": "MS",
+    "name": "フォースインパルスガンダム",
+    "english_name": "FORCE IMPULSE GUNDAM",
+    "model": "ZGMF-X56S/α",
+    "rarity": "R",
+    "colors": [
+      "赤"
+    ],
+    "category": "遠距離",
+    "cost": 4,
+    "traits": [
+      "SEED DESTINY",
+      "ザフト"
+    ],
+    "stats": {
+      "atk": 360,
+      "hp": 350
+    },
+    "ms_ability": {
+      "name": "精密射撃",
+      "cost": 2,
+      "activation": "任意発動",
+      "target": "単体(敵)",
+      "shape": "単体遠距離",
+      "description": "敵単体に攻撃を行う。"
+    },
+    "special_attack": {
+      "name": "高エネルギービームライフル撃射",
+      "sp_cost": 2,
+      "target": "単体(敵)",
+      "power": 3400,
+      "shape": "単体遠距離",
+      "description": "敵単体に攻撃を行う。"
+    },
+    "pilot_skill": null,
+    "commander_skill": null,
+    "commander_system": null,
+    "illustrator": "haru"
+  }
+}

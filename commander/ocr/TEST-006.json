@@ -1,0 +1,47 @@
+{
+  "card_number": "TEST-006",
+  "card_name": "赤いガンダム(0085)",
+  "front_image": "TEST_006M_dummy.webp",
+  "back_image": "TEST_006b_dummy.webp",
+  "ocr_engine": "claude_code_subagent",
+  "ocr_timestamp": "2026-09-24T00:00:00",
+  "ocr_data": {
+    "type": "MS",
+    "name": "赤いガンダム(0085)",
+    "english_name": "Red Gundam(0085)",
+    "model": "gMS-α",
+    "rarity": "M",
+    "colors": [
+      "赤"
+    ],
+    "category": "近距離",
+    "cost": 4,
+    "traits": [
+      "GQuuuuuuX"
+    ],
+    "stats": {
+      "atk": 380,
+      "hp": 350
+    },
+    "ms_ability": {
+      "name": "強撃",
+      "cost": 2,
+      "activation": "任意発動",
+      "target": "単体(敵)",
+      "shape": "単体近距離",
+      "description": "敵単体に攻撃を行う。"
+    },
+    "special_attack": {
+      "name": "ビーム・サーベル強襲",
+      "sp_cost": 2,
+      "target": "単体(敵)",
+      "power": 3600,
+      "shape": "単体近距離",
+      "description": "敵単体に攻撃を行う。"
+    },
+    "pilot_skill": null,
+    "commander_skill": null,
+    "commander_system": null,
+    "illustrator": "kenko"
+  }
+}

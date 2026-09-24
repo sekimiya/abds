@@ -1,0 +1,49 @@
+{
+  "card_number": "TEST-011",
+  "card_name": "デスティニーガンダム",
+  "front_image": "TEST_011P_duumy.webp",
+  "back_image": "TEST_011Pb_duumy.webp",
+  "ocr_engine": "claude_code_subagent",
+  "ocr_timestamp": "2026-09-24T00:00:00",
+  "ocr_data": {
+    "type": "MS",
+    "name": "デスティニーガンダム",
+    "english_name": "DESTINY GUNDAM",
+    "model": "ZGMF-X42S",
+    "rarity": "P",
+    "colors": [
+      "緑"
+    ],
+    "category": "近距離",
+    "cost": 7,
+    "traits": [
+      "SEED DESTINY",
+      "ザフト",
+      "NJC"
+    ],
+    "stats": {
+      "atk": 620,
+      "hp": 650
+    },
+    "ms_ability": {
+      "name": "特攻",
+      "cost": null,
+      "activation": "出撃時発動",
+      "target": "自分",
+      "shape": "自身",
+      "description": "自身の[攻撃力]をアップし[怯み無効]となるが、[修理時間延長]となる。効果は撤退するまで持続する。"
+    },
+    "special_attack": {
+      "name": "一斉連撃",
+      "sp_cost": 2,
+      "target": "単体(敵)",
+      "power": 3700,
+      "shape": "単体近距離",
+      "description": "敵単体に攻撃を行う。"
+    },
+    "pilot_skill": null,
+    "commander_skill": null,
+    "commander_system": null,
+    "illustrator": "TAKA-F"
+  }
+}

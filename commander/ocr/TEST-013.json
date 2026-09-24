@@ -1,0 +1,48 @@
+{
+  "card_number": "TEST-013",
+  "card_name": "デストロイガンダム",
+  "front_image": "TEST_013M_dummy.webp",
+  "back_image": "TEST_013b_dummy.webp",
+  "ocr_engine": "claude_code_subagent",
+  "ocr_timestamp": "2026-09-24T00:00:00",
+  "ocr_data": {
+    "type": "MS",
+    "name": "デストロイガンダム",
+    "english_name": "DESTROY GUNDAM",
+    "model": "GFAS-X1",
+    "rarity": "M",
+    "colors": [
+      "緑"
+    ],
+    "category": "遠距離",
+    "cost": 12,
+    "traits": [
+      "SEED DESTINY",
+      "地球連合"
+    ],
+    "stats": {
+      "atk": 670,
+      "hp": 690
+    },
+    "ms_ability": {
+      "name": "鉄壁",
+      "cost": null,
+      "activation": "出撃時発動",
+      "target": "自分",
+      "shape": "自身",
+      "description": "自身の被ダメージを軽減する。効果は撤退するまで持続する。"
+    },
+    "special_attack": {
+      "name": "スーパースキュラ撃射",
+      "sp_cost": 3,
+      "target": "貫通(敵)",
+      "power": 4000,
+      "shape": "直線",
+      "description": "MS形態に変形し、射線上の敵に貫通攻撃を行う。変形後は能力が上昇。効果は撤退するまで持続する。"
+    },
+    "pilot_skill": null,
+    "commander_skill": null,
+    "commander_system": null,
+    "illustrator": "ilshima060123"
+  }
+}

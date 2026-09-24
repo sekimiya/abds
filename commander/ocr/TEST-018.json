@@ -1,0 +1,48 @@
+{
+  "card_number": "TEST-018",
+  "card_name": "Ξガンダム",
+  "front_image": "TEST_018R_dummy.webp",
+  "back_image": "TEST_018b_dummy.webp",
+  "ocr_engine": "claude_code_subagent",
+  "ocr_timestamp": "2026-09-24T00:00:00",
+  "ocr_data": {
+    "type": "MS",
+    "name": "Ξガンダム",
+    "english_name": "XI GUNDAM",
+    "model": "RX-105",
+    "rarity": "R",
+    "colors": [
+      "青"
+    ],
+    "category": "遠距離",
+    "cost": 5,
+    "traits": [
+      "閃光のハサウェイ",
+      "マフティー"
+    ],
+    "stats": {
+      "atk": 450,
+      "hp": 430
+    },
+    "ms_ability": {
+      "name": "縛射",
+      "cost": 3,
+      "activation": "任意発動",
+      "target": "単体(敵)",
+      "shape": "単体遠距離",
+      "description": "敵単体に攻撃を行う。この攻撃で敵ユニットにダメージを与えた場合、一定時間スタンさせる。"
+    },
+    "special_attack": {
+      "name": "ビーム・ライフル斉射",
+      "sp_cost": 2,
+      "target": "貫通(敵)",
+      "power": 3000,
+      "shape": "直線",
+      "description": "射線上の敵に貫通攻撃を行う。"
+    },
+    "pilot_skill": null,
+    "commander_skill": null,
+    "commander_system": null,
+    "illustrator": "S Kei"
+  }
+}
