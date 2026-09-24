@@ -1455,7 +1455,8 @@ body.picking-split .trade-sec.picking .trade-grid{
 .ac-band.on.trait{background:rgba(230,230,230,0.6);color:#111}
 .ac-band.on.cond{background:rgba(255,152,0,0.6);color:#fff}
 .ac-band.off{background:rgba(40,40,40,0.55);color:#999}
-.ac-band.color.on{background:color-mix(in srgb,var(--band) 55%,transparent);color:#fff;text-shadow:0 1px 2px rgba(0,0,0,0.6);box-shadow:0 0 6px var(--band)}
+.ac-band.color{border:1px solid rgba(20,20,20,0.9);box-sizing:border-box}
+.ac-band.color.on{border-color:color-mix(in srgb,var(--band) 65%,#000);background:color-mix(in srgb,var(--band) 55%,transparent);color:#fff;text-shadow:0 1px 2px rgba(0,0,0,0.6);box-shadow:0 0 6px var(--band)}
 .ac-band.color{display:flex;align-items:center;justify-content:center;min-height:calc(1.35em * 1.5)}
 .overview-thumb .ac-band.color{font-size:0.5rem}
 .card-slot.ac-glow,.overview-thumb.ac-glow{border-color:var(--ac-glow)!important;box-shadow:0 0 8px var(--ac-glow)}
@@ -2866,11 +2867,11 @@ function acTraitBandsHtml(card) {
     : `<span class="ac-trait-band">${escapeHtml(t)}</span>`).join('') + '</div>';
 }
 function acCardOverlayHtml(card, maxBands) {
+  // 下から: 色帯 → 特徴の帯 → カード番号 → バッジ の順に積む
   const bands = acCardBands(card).slice(0, maxBands);
   return `<div class="ac-overlay">${acBadgesHtml(card)}<div class="ac-num">${escapeHtml(card.number)}</div>` +
-    bands.map(x => `<div class="ac-band ${x.cls} ${x.on ? 'on' : 'off'}"${x.hex ? ` style="--band:${x.hex}"` : ''}>${escapeHtml(x.label)}</div>`).join('') +
-    // 特徴(券面の白帯: 作品名/所属/ニュータイプ等)。コマンダーの効果対象になっている特徴は強調
-    acTraitBandsHtml(card) + '</div>';
+    acTraitBandsHtml(card) +
+    bands.map(x => `<div class="ac-band ${x.cls} ${x.on ? 'on' : 'off'}"${x.hex ? ` style="--band:${x.hex}"` : ''}>${escapeHtml(x.label)}</div>`).join('') + '</div>';
 }
 // コマンダーカードをユニットカードと同じ幅にする
 function acSyncCardWidth() {
