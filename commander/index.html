@@ -2695,34 +2695,17 @@ const CardService = {
 // ================================================================
 const CmdPicker = {
   open() {
-    const cmdCards = AppState.cardIndex.filter(c => c.type === 'CMD');
-    const currentNum = AppState.cmdCard;
-    const body = document.getElementById('cmdPickerBody');
-
-    if (cmdCards.length === 0) {
-      body.innerHTML = '<p style="color:#888">コマンダーカードが見つかりません</p>';
-      document.getElementById('cmdPickerModal').classList.add('open');
-      return;
-    }
-
-    const clearBtn = currentNum ? `<div class="tactics-picker-card" onclick="CmdPicker._select(null)" style="justify-content:center;color:#f44336;font-weight:bold;font-size:1.1rem;border-color:#f44336">選択解除</div>` : '';
-    body.innerHTML = `<div class="tactics-picker-grid">${clearBtn}${cmdCards.map(card => {
-      const imgUrl = resolveImageUrl(null, card.number, 'front');
-      const colorTags = (card.color || []).map(c => {
-        const cls = c === '赤' ? 'color:#ff8a80' : c === '青' ? 'color:#90caf9' : 'color:#a5d6a7';
-        return `<span style="${cls};font-weight:bold;margin-right:4px">${c}</span>`;
-      }).join('');
-      return `
-      <div class="tactics-picker-card${card.number === currentNum ? ' selected' : ''}" onclick="CmdPicker._select('${card.number}')" >
-        ${imgUrl ? `<img src="${imgUrl}" alt="${card.name}">` : ''}
-        <div class="tp-info">
-          <div class="tp-name" >${card.name}</div>
-          <div class="tp-effect">${colorTags}</div>
-        </div>
-      </div>`;
-    }).join('')}</div>`;
-
-    document.getElementById('cmdPickerModal').classList.add('open');
+    // ユニットカードと同じカード選択画面(検索・絞り込み付き)をコマンダー専用で開く
+    openCardPicker(-1, 'CMD');
+    document.getElementById('pickerTitle').textContent = 'コマンダーを選択';
+    const tabs = document.getElementById('sidebarTabs');
+    if (tabs) tabs.style.display = 'none';
+    SearchPanel._pickCallback = (card) => {
+      if (card.type !== 'CMD') return true;
+      this._select(card.number);
+      return false;
+    };
+    SearchPanel.applyFilters();
   },
 
   _select(number) {
@@ -5225,7 +5208,7 @@ const SearchPanel = {
     }
 
     // 全カードを対象にする（AC版はOCRなし、CMD除外）
-    let cards = AppState.cardIndex.filter(c => c.type !== 'CMD');
+    let cards = AppState.cardIndex.filter(c => this._lockedType === 'CMD' ? c.type === 'CMD' : c.type !== 'CMD');
 
     // Type filter (スロット指定時のみタイプ絞込、ABフィルター時は解除)
     if (this._lockedType && this._t.abCat.size === 0) {
@@ -6176,6 +6159,8 @@ function openCardPicker(slotIdx, type) {
   SearchPanel._clearFiltersForSwitch();
   SearchPanel._restoreFilters();
   SearchPanel._updateFilterVisibility();
+  // 直前のコマンダー選択の一覧が残っていたら作り直す(ユニットとコマンダーを混ぜない)
+  if ((SearchPanel._filteredCards || []).some(c => (c.type === 'CMD') !== (type === 'CMD'))) SearchPanel.applyFilters();
   document.getElementById('sidebar').classList.add('open');
   SidebarHalf.sync();
   const input = document.getElementById('searchInput');
