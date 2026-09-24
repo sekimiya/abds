@@ -1424,6 +1424,11 @@ body.picking-split .trade-sec.picking .trade-grid{
 .ac-trait-band{flex:1 1 auto;font-size:0.6rem;font-weight:700;color:#eee;background:rgba(0,0,0,0.55);border-radius:3px;padding:0 4px;line-height:1.5;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
 .ac-trait-band.hit{background:color-mix(in srgb,var(--band) 60%,transparent);color:#fff;text-shadow:0 1px 2px rgba(0,0,0,0.7);box-shadow:0 0 5px var(--band)}
 .overview-thumb .ac-trait-band{font-size:0.42rem;padding:0 2px;line-height:1.4}
+/* AC: 一覧のATK/HPバー(数値をバーに重ねて表示) */
+.ov-stat-bar{height:11px!important;border-radius:2px!important}
+.ov-stat-bar[data-stat="atk"] .ov-sb-base{background:rgba(239,83,80,0.75)!important}
+.ov-stat-bar[data-stat="hp"] .ov-sb-base{background:rgba(102,187,106,0.75)!important}
+.ov-sb-val{position:absolute;inset:0;display:flex;align-items:center;padding-left:3px;font-size:0.5rem;font-weight:900;color:#fff;text-shadow:0 0 2px #000,0 0 2px #000;font-variant-numeric:tabular-nums;line-height:1;white-space:nowrap}
 /* AC: コマンダーカード(ユニットカードと同じ幅・色枠) */
 .ac-cmd-detail{position:absolute;top:3px;right:3px;z-index:3;background:rgba(0,0,0,0.8);border:1px solid rgba(104,239,189,0.4);color:#68efbd;border-radius:3px;font-size:0.5rem;font-weight:bold;padding:2px 4px;line-height:1.2;cursor:pointer}
 .ac-cmd-detail:active{background:rgba(104,239,189,0.25);color:#fff}
@@ -4175,7 +4180,7 @@ const UIRenderer = {
     statsRow.innerHTML = '';
     tabs.innerHTML = '';
     const statBars = ['atk', 'hp'].map(k =>
-      `<div class="ov-stat-bar" data-stat="${k}"><div class="ov-sb-base"></div><div class="ov-sb-buff"></div><div class="ov-sb-terrain"></div></div>`).join('');
+      `<div class="ov-stat-bar" data-stat="${k}"><div class="ov-sb-base"></div><div class="ov-sb-buff"></div><div class="ov-sb-terrain"></div><span class="ov-sb-val"></span></div>`).join('');
     for (let u = 0; u < 5; u++) {
       catRow.innerHTML += `<div class="ov-cat" id="ov-cat-${u}"></div>`;
       msRow.innerHTML += `<div class="ov-thumb-col"><div class="ov-card-name" id="ov-ms-name-${u}"></div><div class="overview-thumb empty" id="ov-ms-${u}"><span class="ov-badge" id="ov-ms-badge-${u}"></span><div class="ov-sp-tags" id="ov-ms-sp-${u}"></div></div></div>`;
@@ -4266,6 +4271,7 @@ const UIRenderer = {
     if (!msNumber && !plNumber) {
       el.classList.add('empty');
       el.querySelectorAll('.ov-sb-base,.ov-sb-buff,.ov-sb-terrain').forEach(b => { b.style.width = '0%'; });
+      el.querySelectorAll('.ov-sb-val').forEach(v => { v.textContent = ''; });
       return null;
     }
     el.classList.remove('empty');
@@ -4289,6 +4295,8 @@ const UIRenderer = {
       const terrEl = bar.querySelector('.ov-sb-terrain');
       terrEl.style.left = (basePct + buffPct) + '%';
       terrEl.style.width = terrPct + '%';
+      const v = bar.querySelector('.ov-sb-val');
+      if (v) v.textContent = `${r.label} ${r.total || '-'}`;
     });
     return totals;
   },
@@ -5583,7 +5591,8 @@ function toggleBadgeSw(btn) {
 }
 
 // セット合計ステータスバーの表示切替 (デフォルトOFF)
-let _setStatBarsOn = localStorage.getItem('abds_setStatBars') === '1';
+// AC版: ATK/HPのバーは既定で表示(AB版とは別キー)
+let _setStatBarsOn = localStorage.getItem('acds_setStatBars') !== '0';
 function applySetStatBars() {
   const row = document.getElementById('statsRow');
   if (row) row.style.display = _setStatBarsOn ? '' : 'none';
@@ -5592,7 +5601,7 @@ function applySetStatBars() {
 }
 function toggleSetStatBars() {
   _setStatBarsOn = !_setStatBarsOn;
-  localStorage.setItem('abds_setStatBars', _setStatBarsOn ? '1' : '0');
+  localStorage.setItem('acds_setStatBars', _setStatBarsOn ? '1' : '0');
   applySetStatBars();
 }
 function _applyBadgeVisibility(key, on) {
