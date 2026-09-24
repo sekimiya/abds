@@ -1391,7 +1391,9 @@ body.picking-split .trade-sec.picking .trade-grid{
 .ac-sum-atk{color:#ef5350}.ac-sum-hp{color:#66bb6a}
 /* AC: 武器射程・地形の枠はACに無い */
 .sg-info-box.box-weapon,.sg-info-box.box-terrain{display:none}
-#colorBuffBar{flex:1 1 100%;min-width:0;max-width:100%}
+.tactics-row{flex-wrap:nowrap!important;align-items:stretch!important}
+#colorBuffBar{flex:1 1 0;min-width:0;max-width:100%;display:flex}
+#colorBuffBar .ac-cmd-panel{height:100%}
 .ac-cmd-panel{white-space:normal;overflow-wrap:anywhere;box-sizing:border-box}
 .ac-stats{margin:4px 0;padding:4px 6px;border:1px solid #2a2a2a;border-radius:6px;background:#111}
 .ac-stat-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:3px;font-size:0.72rem;color:#aaa}
@@ -1418,6 +1420,35 @@ body.picking-split .trade-sec.picking .trade-grid{
 .ac-trait.hit{color:#0b2a21;background:#68efbd;border-color:#68efbd;font-weight:700}
 .ac-cmd-none{color:#888}
 .ac-cmd-total b{font-size:0.85rem}
+/* AC: コマンダーカード(ユニットカードと同じ幅・色枠) */
+.ac-cmd-card{width:var(--ac-card-w,120px)!important;height:auto!important;aspect-ratio:63/88;padding:3px!important;border:none!important;border-radius:8px!important;background:#2a2a2a;position:relative;display:block!important;flex-shrink:0;box-sizing:border-box;overflow:hidden;cursor:pointer}
+.ac-cmd-card img{width:100%;height:100%;object-fit:cover;border-radius:5px;display:block}
+.ac-cmd-card:not(.has-card){border:2px dashed #6a2b77!important;background:#1a1020}
+.ac-cmd-empty{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;color:#e040fb;font-weight:900;font-size:1rem;line-height:1.3}
+.ac-cmd-empty small{font-size:0.6rem;font-weight:400;color:#a070b0}
+.ac-cmd-card .ac-badges{position:absolute;left:5px;right:5px;bottom:5px}
+/* AC: カード上のバッジ・バフ帯(ABのリンク帯に相当) */
+.ac-overlay{position:absolute;left:0;right:0;bottom:0;z-index:2;display:flex;flex-direction:column;gap:1px;padding:2px;pointer-events:none}
+.ac-badges{display:flex;flex-wrap:wrap;gap:2px}
+.ac-bf,.ac-tg{font-size:0.6rem;font-weight:900;padding:0 4px;border-radius:3px;line-height:1.45;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,0.7)}
+.ac-bf-攻{background:rgba(239,83,80,0.9)}.ac-bf-速{background:rgba(66,165,245,0.9)}.ac-bf-SP{background:rgba(255,183,77,0.95);color:#222;text-shadow:none}
+.ac-bf-軽減{background:rgba(120,144,156,0.95)}.ac-bf-回復{background:rgba(76,175,80,0.9)}
+.ac-tg{background:rgba(40,40,40,0.9);border:1px solid rgba(255,255,255,0.35)}
+.ac-tg-貫通{background:rgba(66,165,245,0.9);border:none}.ac-tg-範囲{background:rgba(255,112,67,0.9);border:none}
+.ac-tg-スタン{background:rgba(255,235,59,0.9);color:#333;text-shadow:none;border:none}.ac-tg-変形{background:rgba(38,198,218,0.9);border:none}
+.ac-tg-デバフ{background:rgba(171,71,188,0.9);border:none}.ac-tg-CMD支援{background:rgba(224,64,251,0.9);border:none}
+.ac-num{align-self:flex-start;font-size:0.58rem;font-weight:700;color:#ddd;background:rgba(0,0,0,0.65);padding:0 4px;border-radius:3px}
+.ac-band{font-size:0.62rem;font-weight:700;padding:1px 4px;border-radius:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-align:center}
+.ac-band.on{background:rgba(104,239,189,0.92);color:#0a0a0a}
+.ac-band.on.trait{background:rgba(224,64,251,0.9);color:#fff}
+.ac-band.on.cond{background:rgba(255,152,0,0.92);color:#fff}
+.ac-band.off{background:rgba(40,40,40,0.85);color:#777}
+.card-slot.ac-glow,.overview-thumb.ac-glow{border-color:var(--ac-glow)!important;box-shadow:0 0 8px var(--ac-glow)}
+.overview-thumb .ac-bf,.overview-thumb .ac-tg{font-size:0.42rem;padding:0 2px;line-height:1.35}
+.overview-thumb .ac-num{font-size:0.42rem;padding:0 2px}
+.overview-thumb .ac-band{font-size:0.44rem;padding:0 2px;line-height:1.35}
+.overview-thumb .ac-overlay{gap:1px;padding:1px}
+.ac-cmd-card .ac-bf,.ac-cmd-card .ac-tg{font-size:0.5rem}
 /* ===== AC: カラー・特徴 / コマンダーパネル ===== */
 .sg-label[data-stat="atk"]{color:#ef5350}
 .ov-stat-bar[data-stat="atk"] .ov-sb-base{background:#ef5350}
@@ -2775,6 +2806,51 @@ function acCardSummaryHtml(number, ocr) {
   return h + '</div>';
 }
 
+// ===== AC: 色枠・バフ帯・バッジ =====
+const AC_COLOR_HEX = { 赤: '#ef5350', 緑: '#66bb6a', 青: '#42a5f5' };
+// カードの色で枠を塗る(2色は斜めに塗り分け、無色はグレー)
+function acColorFrameStyle(colors) {
+  const cs = (colors || []).map(c => AC_COLOR_HEX[c]).filter(Boolean);
+  if (!cs.length) return 'background:#777';
+  if (cs.length === 1) return `background:${cs[0]}`;
+  const step = 100 / cs.length;
+  return 'background:linear-gradient(135deg,' + cs.map((c, i) => `${c} ${i * step}%,${c} ${(i + 1) * step}%`).join(',') + ')';
+}
+// ABのリンク帯に相当: コマンダーとの関係で発動するもの(on=発動中)
+function acCardBands(card) {
+  const cmd = acCmdCard();
+  const cmdColors = cmd?.color || [];
+  const colors = card.color || [];
+  const bands = [{ label: colors.length ? `${colors.join('')} 色一致` : '無色', on: acCardMatches(card, cmdColors), cls: 'color' }];
+  const byTrait = {};
+  (cmd?.ac_cmd_targets || []).forEach(t => {
+    if ((card.traits || []).includes(t.trait)) (byTrait[t.trait] = byTrait[t.trait] || []).push(t.effect);
+  });
+  Object.entries(byTrait).forEach(([t, effs]) => bands.push({ label: `${t} ${[...new Set(effs)].join('/')}`, on: true, cls: 'trait' }));
+  (card.ac_cmd_conds || []).forEach(c => {
+    const on = !!cmd && (c.kind === 'name' ? cmd.name === c.value : (cmd.traits || []).includes(c.value));
+    bands.push({ label: c.kind === 'name' ? `CMD:${c.value.replace(/\(.*$/, '')}` : `CMD特徴:${c.value}`, on, cls: 'cond' });
+  });
+  return bands.sort((a, b) => (b.on ? 1 : 0) - (a.on ? 1 : 0));
+}
+// バッジ: ステータス系(攻/速/SP/軽減/回復)+効果系(貫通/範囲/スタン…)。カード文言から build_commander_data.py が分類
+function acBadgesHtml(card) {
+  const b = (card.ac_buffs || []).map(t => `<span class="ac-bf ac-bf-${t}">${t}</span>`).join('');
+  const g = (card.ac_tags || []).map(t => `<span class="ac-tg ac-tg-${t}">${t}</span>`).join('');
+  return (b || g) ? `<div class="ac-badges">${b}${g}</div>` : '';
+}
+function acCardOverlayHtml(card, maxBands) {
+  const bands = acCardBands(card).slice(0, maxBands);
+  return `<div class="ac-overlay">${acBadgesHtml(card)}<div class="ac-num">${escapeHtml(card.number)}</div>` +
+    bands.map(x => `<div class="ac-band ${x.cls} ${x.on ? 'on' : 'off'}">${escapeHtml(x.label)}</div>`).join('') + '</div>';
+}
+// コマンダーカードをユニットカードと同じ幅にする
+function acSyncCardWidth() {
+  const ref = document.getElementById('ms-slot-0') || document.getElementById('ov-ms-0');
+  if (ref && ref.offsetWidth) document.documentElement.style.setProperty('--ac-card-w', ref.offsetWidth + 'px');
+}
+window.addEventListener('resize', () => acSyncCardWidth());
+
 // AC版: ユニットのATK/HP = MSとPLの表記値の合計(地形・リンク・作品Lvの概念は無い)
 function calcUnitStats(msOcr, plOcr, terrainMult) {
   const si = (v) => parseInt(v) || 0;
@@ -3426,20 +3502,21 @@ const CmdPicker = {
   renderButton() {
     const btn = document.getElementById('cmdBtn');
     if (!btn) return;
-    const num = AppState.cmdCard;
-    const card = num ? AppState.cardIndex.find(c => c.number === num) : null;
+    const card = acCmdCard();
+    btn.classList.add('ac-cmd-card');
     if (!card) {
-      btn.className = 'tactics-thumb';
-      btn.style.borderColor = '#e040fb';
-      btn.innerHTML = '<span style="color:#e040fb;font-weight:bold">CMD</span>';
+      btn.classList.remove('has-card');
+      btn.setAttribute('style', '');
+      btn.innerHTML = '<div class="ac-cmd-empty">CMD<small>タップで選択</small></div>';
       return;
     }
-    const imgUrl = resolveImageUrl(null, card.number, 'front');
-    btn.className = 'tactics-thumb has-card';
-    btn.style.borderColor = '#e040fb';
-    btn.innerHTML = imgUrl ? `<img src="${imgUrl}" alt="${card.name}" style="width:100%;height:100%;object-fit:cover;border-radius:4px">` : `<span style="color:#e040fb">${card.name}</span>`;
+    btn.classList.add('has-card');
+    btn.setAttribute('style', acColorFrameStyle(card.color));
+    btn.innerHTML = `<img src="${resolveImageUrl(null, card.number, 'front')}" alt="${escapeHtml(card.name)}">${acBadgesHtml(card)}`;
   },
   updateColorBuff() {
+    acSyncCardWidth();
+    this.renderButton();
     const bar = document.getElementById('colorBuffBar');
     if (!bar) return;
     const cmd = acCmdCard();
@@ -4238,98 +4315,14 @@ const UIRenderer = {
       nameEl.textContent = cardName;
     }
 
-    // SP effect tags (rendered in ov-num-row below)
-    const spTags = indexEntry?.sp_effect_tags || [];
-
-    // Count active links per type (single pass, reused for glow + tags)
-    const cardLinks = ocr?.link_ability || [];
-    let activeEb = 0, activeSq = 0, activeAb = 0, activeNormal = 0;
-    const linkResults = []; // {link, isActive, ltype}
-    if (Array.isArray(cardLinks)) {
-      for (const link of cardLinks) {
-        if (!link.name) continue;
-        const { required, category } = _parseLinkCondition(link.condition);
-        const count = _countLinkInDeck(link.name, category);
-        const isActive = count >= required;
-        const ltype = link.is_eb_link ? 'link-eb' : AppState._sqLinkNames.has(link.name) ? 'link-sq' : link.is_ab_link ? 'link-ab' : '';
-        linkResults.push({ link, isActive, ltype });
-        if (isActive) {
-          if (ltype === 'link-eb') activeEb++;
-          else if (ltype === 'link-sq') activeSq++;
-          else if (ltype === 'link-ab') activeAb++;
-          else activeNormal++;
-        }
-      }
-    }
-    const totalActive = activeEb + activeSq + activeAb + activeNormal;
-
-    // Determine border glow: type-specific link must be active
-    let glowClass = '';
-    if (activeEb > 0) glowClass = 'ov-eb';
-    else if (activeSq > 0) glowClass = 'ov-sq';
-    else if (activeAb > 0) glowClass = 'ov-ab';
-    else if (totalActive >= 2) glowClass = 'ov-link';
-
-    el.className = 'overview-thumb has-card'
-      + (glowClass ? ' ' + glowClass : '')
-      + (u === AppState.selectedUnit ? ' selected' : '');
-
-
-    // Number badge + Link tags overlay
-    let oldTags = el.querySelector('.ov-link-tags');
-    if (oldTags) oldTags.remove();
-    const tagsDiv = document.createElement('div');
-    tagsDiv.className = 'ov-link-tags';
-    // Card number + SP effect tags (inline row)
-    const numRow = document.createElement('div');
-    numRow.className = 'ov-num-row';
-    const numTag = document.createElement('span');
-    numTag.className = 'ov-number';
-    numTag.textContent = number;
-    numRow.appendChild(numTag);
-    for (const t of spTags) {
-      const sp = document.createElement('span');
-      sp.className = 'ov-sp-tag sp-t-' + t;
-      sp.textContent = t;
-      numRow.appendChild(sp);
-    }
-    tagsDiv.appendChild(numRow);
-    // Link ability tags
-    if (linkResults.length > 0) {
-      const sorted = [...linkResults].sort((a, b) => (b.ltype ? 1 : 0) - (a.ltype ? 1 : 0) || (b.isActive ? 1 : 0) - (a.isActive ? 1 : 0));
-      for (const lr of sorted.slice(0, 2)) {
-        const tag = document.createElement('div');
-        tag.className = 'ov-link-tag ' + (lr.isActive ? 'link-on' : 'link-off') + (lr.ltype ? ' ' + lr.ltype : '');
-        tag.textContent = lr.link.name;
-        tagsDiv.appendChild(tag);
-      }
-    }
-    // Buff stat badges per card — insert before number badge in tagsDiv
-    if (Array.isArray(cardLinks) && cardLinks.length > 0) {
-      const buffCounts = { '機': 0, '遠': 0, '近': 0, 'HP': 0 };
-      for (const link of cardLinks) {
-        const eff = link.effect || '';
-        const { required, category } = _parseLinkCondition(link.condition);
-        if (_countLinkInDeck(link.name, category) < required) continue;
-        if (eff.match(/機動力.*(小|中)アップ/)) buffCounts['機']++;
-        if (eff.match(/遠距離攻撃力.*(小|中)アップ/)) buffCounts['遠']++;
-        if (eff.match(/近距離攻撃力.*(小|中)アップ/)) buffCounts['近']++;
-        if (eff.match(/HP.*(小|中)アップ/)) buffCounts['HP']++;
-      }
-      const entries = Object.entries(buffCounts).filter(([,v]) => v > 0);
-      if (entries.length > 0) {
-        const buffsDiv = document.createElement('div');
-        buffsDiv.className = 'ov-buff-tags';
-        for (const [label, count] of entries) {
-          const b = document.createElement('span');
-          b.className = 'ov-buff-tag ov-buff-' + label;
-          b.textContent = count > 1 ? `${label}x${count}` : label;
-          buffsDiv.appendChild(b);
-        }
-        tagsDiv.insertBefore(buffsDiv, numRow);
-      }
-    }
-    el.appendChild(tagsDiv);
+    // AC版: バッジとバフ帯(色一致・特徴・コマンダー条件)。色一致で枠を光らせる
+    const card = indexEntry || { number, color: [], traits: [] };
+    const cmdColors = acCmdCard()?.color || [];
+    const hit = (card.color || []).find(c => cmdColors.includes(c));
+    el.className = 'overview-thumb has-card' + (hit ? ' ac-glow' : '') + (u === AppState.selectedUnit ? ' selected' : '');
+    if (hit) el.style.setProperty('--ac-glow', AC_COLOR_HEX[hit]); else el.style.removeProperty('--ac-glow');
+    el.querySelectorAll('.ov-link-tags, .ac-overlay').forEach(e => e.remove());
+    el.insertAdjacentHTML('beforeend', acCardOverlayHtml(card, 2));
   },
 
   _renderDetailForUnit(u) {

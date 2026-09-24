@@ -74,6 +74,75 @@ def to_app_ocr(o):
     return a
 
 
+# ---- バッジ分類(ACのカード文言から作成。対象はMSアビリティ・戦術技・PLスキル・コマンダースキル/システム) ----
+# ステータス系: 自分/味方にかかる強化(ABの 遠/近/HP バッジに相当)。敵への「ダウン」は含めない
+BUFF_RULES = [
+    ('攻', r'\[攻撃力\][^。]*アップ|\[攻撃力\]をアップ|\[遠距離攻撃力\][^。]*アップ|\[近距離攻撃力\][^。]*アップ|\[遠/近攻撃力\]をアップ'),
+    ('速', r'\[移動速度\][^。]*アップ'),
+    ('SP', r'\[SP威力\][^。]*アップ'),
+    ('軽減', r'被ダメージを軽減|受けるダメージを軽減'),
+    ('回復', r'HPを[^。]*回復'),
+]
+# 効果系(ABの 貫通/範囲/スタン/変身 等に相当)
+TAG_RULES = [
+    ('貫通', lambda t, a: '貫通' in (a.get('target') or '')),
+    ('範囲', lambda t, a: (a.get('target') or '').startswith('範囲')),
+    ('連撃', lambda t, a: '連続攻撃' in t),
+    ('スタン', lambda t, a: 'スタン' in t),
+    ('変形', lambda t, a: '変形' in t),
+    ('デバフ', lambda t, a: bool(re.search(r'\]をダウン|攻撃力ダウン|被ダメージをアップ|弱体化する', t))),
+    ('誘導', lambda t, a: 'ターゲットを自身に向ける' in t),
+    ('解除', lambda t, a: '弱体化状態を無効化' in t),
+    ('CMD支援', lambda t, a: '味方コマンダー' in t and '場合' not in t),
+    ('全体', lambda t, a: '全味方ユニット' in t),
+    ('コスト', lambda t, a: bool(re.search(r'コスト(ゲージ)?を?回復|出撃コストをダウン|コストゲージ回復速度', t))),
+    ('拠点', lambda t, a: bool(re.search(r'戦艦/拠点|拠点数', t))),
+    ('修理', lambda t, a: '修理時間' in t),
+    ('CT短縮', lambda t, a: 'クールタイムが短縮' in t),
+]
+
+
+def ability_blocks(o):
+    return [o.get(k) for k in ('ms_ability', 'special_attack', 'pilot_skill', 'commander_skill', 'commander_system') if o.get(k)]
+
+
+def card_badges(o):
+    buffs, tags = [], []
+    for a in ability_blocks(o):
+        # 「リンクアビリティ[..]が発動している場合」はAB側の条件でACには無いので、その文は数えない
+        t = '。'.join(x for x in (a.get('description') or '').split('。') if 'リンクアビリティ' not in x)
+        for label, pat in BUFF_RULES:
+            if label not in buffs and re.search(pat, t):
+                buffs.append(label)
+        for label, fn in TAG_RULES:
+            if label not in tags and fn(t, a):
+                tags.append(label)
+    return buffs, tags
+
+
+def cmd_conditions(o):
+    """カードに書かれたコマンダー条件。[{kind:'name'|'trait', value}]"""
+    conds = []
+    for a in ability_blocks(o):
+        t = a.get('description') or ''
+        for m in re.finditer(r'味方コマンダーが\[([^\]]+)\]の場合', t):
+            conds.append({'kind': 'name', 'value': m.group(1)})
+        for m in re.finditer(r'特徴\[([^\]]+)\]を持つ味方コマンダー', t):
+            conds.append({'kind': 'trait', 'value': m.group(1)})
+    return conds
+
+
+def cmd_target_traits(o):
+    """コマンダースキル/システムが対象にする特徴(例: SEED DESTINY)と効果の要約"""
+    out = []
+    for key in ('commander_skill', 'commander_system'):
+        t = (o.get(key) or {}).get('description') or ''
+        for m in re.finditer(r'特徴\[([^\]]+)\]を持つ味方ユニット', t):
+            effect = '出撃コスト↓' if '出撃コストをダウン' in t else 'コスト回復' if 'コストを回復' in t else '効果対象'
+            out.append({'trait': m.group(1), 'effect': effect})
+    return out
+
+
 def index_entry(num, card, o, front, back):
     st = o.get('stats') or {}
     series = num.split('-')[0]
@@ -111,6 +180,10 @@ def index_entry(num, card, o, front, back):
         'ability_name': ms_ab.get('name') or '',
         'sp_name': sp.get('name') or '',
         'search_text': text.lower(),
+        'ac_buffs': card_badges(o)[0],
+        'ac_tags': card_badges(o)[1],
+        'ac_cmd_conds': cmd_conditions(o),
+        'ac_cmd_targets': cmd_target_traits(o),
         # AB版UIが参照する項目(ACでは常に無し)
         'mobility': 0, 'ranged': 0, 'melee': 0,
         'terrain': {}, 'has_sqsp': False, 'has_sq_skill': False, 'has_sq_link': False,
