@@ -140,19 +140,27 @@ def main():
             if os.path.exists(os.path.join(IMG_DIR, pf)) and os.path.exists(os.path.join(IMG_DIR, pb)):
                 entries.append((f'{num}_p1', pf, pb))
         for n, front, back in entries:
+            # パラレルは券面を読んだ commander/ocr/parallel/<番号>.json があればそちらを使う
+            po = os.path.join(OCR_DIR, 'parallel', f'{n}.json')
+            if n != num and os.path.exists(po):
+                pc = json.load(open(po, encoding='utf-8'))
+                o_n = pc['ocr_data']
+                errors += validate(n, o_n)
+            else:
+                o_n = o
             for f in (front, back):
                 if not os.path.exists(os.path.join(IMG_DIR, f)):
                     errors.append(f'{n}: 画像 {f} が無い')
-            index.append(index_entry(n, card, o, front, back))
+            index.append(index_entry(n, card, o_n, front, back))
             details[n] = {
                 'number': n,
-                'name': o.get('name', ''),
+                'name': o_n.get('name', ''),
                 'url': IMG_URL + front,
-                'category': o.get('category', ''),
+                'category': o_n.get('category', ''),
                 'series': index[-1]['series'],
                 'front': {'image_url': IMG_URL + front},
                 'back': {'image_url': IMG_URL + back},
-                'ocr_data': to_app_ocr(o),
+                'ocr_data': to_app_ocr(o_n),
             }
 
     if errors:

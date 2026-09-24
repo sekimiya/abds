@@ -1,0 +1,45 @@
+{
+  "card_number": "PR-506_p1",
+  "card_name": "ガンダムアストレイ レッドドラゴン",
+  "front_image": "PR_506PARA_dummy.webp",
+  "back_image": "PR_506PARAb_dummy.webp",
+  "ocr_engine": "claude_code_subagent",
+  "ocr_timestamp": "2026-09-24T00:00:00",
+  "ocr_data": {
+    "type": "MS",
+    "name": "ガンダムアストレイ レッドドラゴン",
+    "english_name": "GUNDAM ASTRAY RED DRAGON",
+    "model": "MBF-P02",
+    "rarity": "PR",
+    "colors": [],
+    "category": "近距離",
+    "cost": 7,
+    "traits": [
+      "アーセナルベース"
+    ],
+    "stats": {
+      "atk": 600,
+      "hp": 570
+    },
+    "ms_ability": {
+      "name": "破閃",
+      "cost": 4,
+      "activation": "任意発動",
+      "target": "単体(敵)",
+      "shape": "単体近距離",
+      "description": "ロックオン中の敵に単体攻撃でダメージを与える。この攻撃で敵ユニットにダメージを与えた場合、一定時間、被ダメージをアップする。"
+    },
+    "special_attack": {
+      "name": "赤い衝撃",
+      "sp_cost": 2,
+      "target": "単体(敵)",
+      "power": 3400,
+      "shape": "単体近距離",
+      "description": "リミッターを解除し、敵単体に格闘攻撃でダメージを与える。リミッター解除後は、一定時間能力が上昇する。"
+    },
+    "pilot_skill": null,
+    "commander_skill": null,
+    "commander_system": null,
+    "illustrator": "ilshima060123"
+  }
+}
