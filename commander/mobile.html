@@ -4449,7 +4449,10 @@ const UIRenderer = {
     // AC版: タイプ・出撃コスト → ATK/HP合計 → カラー・特徴 → 能力(1行表示)
     html += acStatsHtml(msOcr, plOcr, msCost + plCost, catClass);
     html += acUnitInfoHtml(u);
-    html += acAbilityRowsHtml(msOcr, plOcr);
+    // 詳細欄はAB版のレイアウト: MSアビリティ → PLスキル → SPアタック
+    if (msNumber && msOcr) html += this._renderMsAbility(msOcr);
+    if (plNumber && plOcr) html += this._renderPlSkill(plOcr);
+    if (msNumber && msOcr) html += this._renderSPSection(msOcr);
     area.innerHTML = html;
   },
 

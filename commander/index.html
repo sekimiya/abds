@@ -1578,6 +1578,8 @@ body.picking-split .trade-sec.picking .trade-grid{
 .ac-overlay .ac-traits{display:flex;flex-wrap:wrap;gap:1px;padding:0}
 .ac-trait-band{flex:1 1 auto;font-size:0.6rem;font-weight:700;color:#eee;background:rgba(0,0,0,0.55);border-radius:3px;padding:0 4px;line-height:1.5;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
 .ac-trait-band.hit{background:color-mix(in srgb,var(--band) 60%,transparent);color:#fff;text-shadow:0 1px 2px rgba(0,0,0,0.7);box-shadow:0 0 5px var(--band)}
+/* AC: 詳細欄はAB版のレイアウト(MSアビリティ・PLスキル・SPアタック)。ACに無い武装・地形と、上と重複する機体/パイロット情報は出さない */
+[data-section="weapon"],[data-section="terrain"],[data-section="ms-info"],[data-section="pl-info"]{display:none!important}
 /* AC: コマンダーカード(ユニットカードと同じ幅・色枠) */
 .ac-cmd-detail{position:absolute;top:4px;left:5px;z-index:3;background:rgba(0,0,0,0.8);border:1px solid #68efbd;color:#68efbd;border-radius:4px;font-size:0.65rem;font-weight:bold;padding:0.14rem 0.5rem;cursor:pointer;display:none}
 .ac-cmd-card.has-card:hover .ac-cmd-detail{display:block}
@@ -4107,9 +4109,219 @@ const UIRenderer = {
   },
 
   _renderMsDetail(u, msOcr, msNumber, plOcr, plNumber) {
-    // AC版: MSアビリティ・戦術技・PLスキルを1行ずつ(機体/パイロット情報は上と重複するので出さない)
-    document.getElementById(`unit-ms-detail-${u}`).innerHTML = acAbilityRowsHtml(msNumber ? msOcr : null, plNumber ? plOcr : null);
-    document.getElementById(`unit-pl-detail-${u}`).innerHTML = '';
+    const el = document.getElementById(`unit-ms-detail-${u}`);
+    const plEl = document.getElementById(`unit-pl-detail-${u}`);
+    if (!msOcr || !msNumber) { el.innerHTML = ''; plEl.innerHTML = ''; this._renderPlInfoOnly(plEl, plOcr, plNumber); return; }
+    const msEntry = AppState.cardIndex.find(c => c.number === msNumber);
+
+    // OCRデータが空（フィールドがない）場合
+    const hasOcrFields = msOcr.ms_ability || msOcr.weapon || msOcr.special_attack || msOcr.terrain_compatibility || msOcr.model;
+    if (!hasOcrFields) {
+      const backUrl = resolveImageUrl(null, msNumber, 'back');
+      el.innerHTML = `<div class="unit-ms-detail"><div class="ms-detail-title">MS詳細</div><div class="no-ocr-msg">OCRデータなし<br><span class="no-ocr-hint">裏面画像でカード情報を確認できます</span></div><img class="no-ocr-back-img" src="${backUrl}" alt="裏面" onerror="this.style.display='none'"></div>`;
+      plEl.innerHTML = '';
+      this._renderPlInfoOnly(plEl, plOcr, plNumber);
+      return;
+    }
+
+    let html = '';
+
+    // --- MS Ability ---
+    const rawAbility = msOcr.ms_ability;
+    const abilities = rawAbility ? (Array.isArray(rawAbility) ? rawAbility : [rawAbility]) : [];
+    if (abilities.length > 0) {
+      html += '<div class="unit-ms-detail" data-section="ms-ability">';
+      html += '<div class="ms-detail-title">MSアビリティ</div>';
+      abilities.forEach(a => {
+        html += `<div class="ms-detail-ability-name">${escapeHtml(a.name || '')}</div>`;
+        const aTags = [];
+        if (a.activation) aTags.push(a.activation);
+        if (a.target) aTags.push(a.target);
+        if (a.range !== undefined && a.range !== null) aTags.push(`射程${a.range}`);
+        if (a.cost !== undefined && a.cost !== null) aTags.push(`コスト${a.cost}`);
+        if (a.condition) aTags.push(a.condition);
+        if (aTags.length > 0) {
+          html += '<div class="ms-detail-tags">';
+          aTags.forEach(t => { html += `<span class="ms-detail-tag">${escapeHtml(t)}</span>`; });
+          html += '</div>';
+        }
+        if (a.description) {
+          html += `<div class="ms-detail-desc">${escapeHtml(a.description)}</div>`;
+        }
+      });
+      html += '</div>';
+    }
+
+    // --- PL Skill (MSアビリティの直後) ---
+    html += this._renderPlSkillHtml(plOcr);
+
+    // --- Weapon ---
+    const w = msOcr.weapon;
+    if (w && (w.main || w.sub)) {
+      html += '<div class="unit-ms-detail" data-section="weapon">';
+      html += '<div class="ms-detail-title weapon-color">武装</div>';
+      if (w.main) {
+        html += `<div class="ms-detail-weapon-row"><span class="ms-detail-weapon-slot">MAIN</span><span class="ms-detail-weapon-name">${escapeHtml(w.main.name || '')}</span>`;
+        html += `<span class="ms-detail-weapon-info">射程${w.main.range || '-'} ${escapeHtml(w.main.type || '')}</span></div>`;
+      }
+      if (w.sub) {
+        html += `<div class="ms-detail-weapon-row"><span class="ms-detail-weapon-slot sub">SUB</span><span class="ms-detail-weapon-name">${escapeHtml(w.sub.name || '')}</span>`;
+        html += `<span class="ms-detail-weapon-info">射程${w.sub.range || '-'} ${escapeHtml(w.sub.type || '')}</span></div>`;
+      }
+      html += '</div>';
+    }
+
+    // --- SP Attack ---
+    const sp = msOcr.special_attack;
+    if (sp) {
+      html += '<div class="unit-ms-detail" data-section="sp-attack">';
+      html += '<div class="ms-detail-title sp-color">SPアタック</div>';
+      html += `<div class="ms-detail-ability-name sp-color">${escapeHtml(sp.name || '')}</div>`;
+      const spTags = [];
+      if (sp.target) spTags.push(sp.target);
+      if (sp.range !== undefined && sp.range !== null) spTags.push(`射程${sp.range}`);
+      if (sp.sp_cost !== undefined && sp.sp_cost !== null) spTags.push(`SP${sp.sp_cost}`);
+      if (sp.sp_type) spTags.push(sp.sp_type);
+      if (sp.attack_type) spTags.push(sp.attack_type);
+      if (spTags.length > 0) {
+        html += '<div class="ms-detail-tags">';
+        spTags.forEach(t => { html += `<span class="ms-detail-tag sp-tag-color">${escapeHtml(t)}</span>`; });
+        html += '</div>';
+      }
+      // Power
+      if (sp.power) {
+        html += `<div class="ms-detail-power">威力:${sp.power}</div>`;
+      }
+      // Impact area
+      const ia = msOcr.impact_area;
+      if (ia) {
+        let iaText = ia.type === 'single' ? '単体' : ia.type === 'circular' ? '円形' : (ia.type || '');
+        if (ia.radius) iaText += ` R${ia.radius}`;
+        if (ia.centered) iaText += ' 中心';
+        html += `<div class="ms-detail-impact">着弾: ${escapeHtml(iaText)}</div>`;
+      }
+      if (sp.description) {
+        html += `<div class="ms-detail-desc">${escapeHtml(sp.description)}</div>`;
+      }
+      html += '</div>';
+    }
+
+    // --- UNITED SP ---
+    if (msOcr.special_attack?.united_sp) {
+      const u = msOcr.special_attack.united_sp;
+      html += '<div class="unit-ms-detail" data-section="united-sp">';
+      html += `<div class="ms-detail-title" style="color:#ffe082">UNITED SP${u._uncertain ? ' <span class="uncertain-badge">?</span>' : ''}</div>`;
+      if (u.name) html += `<div class="ms-detail-ability-name" style="color:#ffe082">${escapeHtml(u.name)}</div>`;
+      if (u.partners && u.partners.length) html += `<div class="detail-partners">パートナー: ${u.partners.map(p => escapeHtml(p)).join(', ')}</div>`;
+      if (u.condition) html += `<div class="detail-condition">${escapeHtml(u.condition)}</div>`;
+      const uTags = [];
+      if (u.target) uTags.push(u.target);
+      if (u.range !== undefined && u.range !== null) uTags.push(`射程${u.range}`);
+      if (uTags.length) {
+        html += '<div class="ms-detail-tags">';
+        uTags.forEach(t => { html += `<span class="ms-detail-tag" style="background:#3d3000;color:#ffe082;border-color:#f9a825">${escapeHtml(t)}</span>`; });
+        html += '</div>';
+      }
+      if (u.power) html += `<div class="ms-detail-power" style="color:#ffe082">UNITED威力:${u.power}</div>`;
+      if (u.description) html += `<div class="ms-detail-desc">${escapeHtml(u.description)}</div>`;
+      html += '</div>';
+    }
+
+    // --- SQUAD SP ---
+    if (msOcr.special_attack?.squad_sp) {
+      const sq = msOcr.special_attack.squad_sp;
+      html += '<div class="unit-ms-detail" data-section="squad-sp">';
+      html += `<div class="ms-detail-title" style="color:#a5d6a7">SQUAD SP${sq._uncertain ? ' <span class="uncertain-badge">?</span>' : ''}</div>`;
+      if (sq.name) html += `<div class="ms-detail-ability-name" style="color:#a5d6a7">${escapeHtml(sq.name)}</div>`;
+      if (sq.condition) html += `<div class="detail-condition">${escapeHtml(sq.condition)}</div>`;
+      const sqTags = [];
+      if (sq.target) sqTags.push(sq.target);
+      if (sq.range !== undefined && sq.range !== null) sqTags.push(`射程${sq.range}`);
+      if (sqTags.length) {
+        html += '<div class="ms-detail-tags">';
+        sqTags.forEach(t => { html += `<span class="ms-detail-tag" style="background:#1b3d1b;color:#a5d6a7;border-color:#388e3c">${escapeHtml(t)}</span>`; });
+        html += '</div>';
+      }
+      if (sq.power) html += `<div class="ms-detail-power" style="color:#a5d6a7">部隊威力:${sq.power}</div>`;
+      if (sq.description) html += `<div class="ms-detail-desc">${escapeHtml(sq.description)}</div>`;
+      html += '</div>';
+    }
+
+    // --- ECHOES BEAT ---
+    const eb = msOcr.special_attack?.echoes_beat;
+    const ebUsp = !eb ? msOcr.special_attack?.united_sp : null;
+    const ebSrc = eb || (ebUsp && /EBLv\./.test(ebUsp.description || '') ? ebUsp : null);
+    if (ebSrc) {
+      html += '<div class="unit-ms-detail" data-section="echoes-beat">';
+      const ebTypeLabel = msOcr.special_attack?.sp_type === 'ECHOES BEAT SP'
+        || (msEntry?.eb_type === 'sp') ? 'ECHOES BEAT SP' : 'ECHOES BEAT';
+      html += `<div class="ms-detail-title" style="color:#ffb74d">${ebTypeLabel}${ebSrc._uncertain ? ' <span class="uncertain-badge">?</span>' : ''}</div>`;
+      if (ebSrc.name) {
+        html += `<div class="ms-detail-ability-name" style="color:#ffb74d">${escapeHtml(ebSrc.name)}</div>`;
+      }
+      const ebTags = [];
+      if (ebSrc.level) ebTags.push(`Lv.${ebSrc.level}`);
+      if (ebSrc.target) ebTags.push(ebSrc.target);
+      if (ebSrc.range !== undefined && ebSrc.range !== null) ebTags.push(`射程${ebSrc.range}`);
+      if (ebTags.length > 0) {
+        html += '<div class="ms-detail-tags">';
+        ebTags.forEach(t => { html += `<span class="ms-detail-tag" style="background:#3d2800;color:#ffb74d;border-color:#ff9800">${escapeHtml(t)}</span>`; });
+        html += '</div>';
+      }
+      if (ebSrc.power) {
+        html += `<div class="ms-detail-power" style="color:#ffb74d">威力:${ebSrc.power}</div>`;
+      }
+      if (ebSrc.description) {
+        html += `<div class="ms-detail-desc">${escapeHtml(ebSrc.description)}</div>`;
+      }
+      html += '</div>';
+    }
+
+    // --- Terrain ---
+    const tc = msOcr.terrain_compatibility;
+    if (tc) {
+      html += '<div class="unit-ms-detail" data-section="terrain">';
+      html += '<div class="ms-detail-title terrain-color">地形適性</div>';
+      html += '<div class="ms-detail-terrain">';
+      const terrains = [
+        { key: 'ground', label: '地上' },
+        { key: 'space', label: '宇宙' },
+        { key: 'desert', label: '砂漠' },
+        { key: 'water', label: '水中' }
+      ];
+      terrains.forEach(t => {
+        const rank = tc[t.key] || '-';
+        html += `<span class="ms-terrain-item rank-${rank}">${t.label}:${rank}</span>`;
+      });
+      html += '</div></div>';
+    }
+
+    // --- Basic Info (card number, model, cost, category) ---
+    html += '<div class="unit-ms-detail" data-section="ms-info">';
+    html += '<div class="ms-detail-title info-color">機体情報</div>';
+    if (msNumber) {
+      html += `<div class="ms-detail-row"><span class="ms-detail-label">番号</span><span class="ms-detail-value">${escapeHtml(msNumber)}</span></div>`;
+    }
+    if (msOcr.model) {
+      html += `<div class="ms-detail-row"><span class="ms-detail-label">型式</span><span class="ms-detail-value">${escapeHtml(msOcr.model)}</span></div>`;
+    }
+    if (msOcr.pilot) {
+      html += `<div class="ms-detail-row"><span class="ms-detail-label">搭乗者</span><span class="ms-detail-value">${escapeHtml(msOcr.pilot)}</span></div>`;
+    }
+    const infoTags = [];
+    if (msOcr.category) infoTags.push(msOcr.category);
+    if (msOcr.cost !== undefined && msOcr.cost !== null) infoTags.push(`コスト${msOcr.cost}`);
+    if (infoTags.length > 0) {
+      html += '<div class="ms-detail-tags">';
+      infoTags.forEach(t => { html += `<span class="ms-detail-tag">${escapeHtml(t)}</span>`; });
+      html += '</div>';
+    }
+    html += '</div>';
+
+    el.innerHTML = html;
+
+    // PL情報はunit-pl-detailに描画
+    this._renderPlInfoOnly(plEl, plOcr, plNumber);
   },
 
   _renderPlSkillHtml(plOcr) {
