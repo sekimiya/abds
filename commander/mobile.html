@@ -1446,7 +1446,6 @@ body.picking-split .trade-sec.picking .trade-grid{
 .ac-band.color.on{background:color-mix(in srgb,var(--band) 55%,transparent);color:#fff;text-shadow:0 1px 2px rgba(0,0,0,0.6);box-shadow:0 0 6px var(--band)}
 .ac-band.color{display:flex;align-items:center;justify-content:center;min-height:calc(1.35em * 3)}
 .overview-thumb .ac-band.color{font-size:0.5rem}
-.ac-band.color.none{background:rgba(255,255,255,0.55);color:#111;text-shadow:none;border:none;opacity:1;box-shadow:0 0 6px rgba(255,255,255,0.8)}
 .card-slot.ac-glow,.overview-thumb.ac-glow{border-color:var(--ac-glow)!important;box-shadow:0 0 8px var(--ac-glow)}
 .overview-thumb .ac-bf,.overview-thumb .ac-tg{font-size:0.42rem;padding:0 2px;line-height:1.35}
 .overview-thumb .ac-num{font-size:0.42rem;padding:0 2px}
@@ -2829,23 +2828,11 @@ function acColorFrameStyle(colors) {
 }
 // ABのリンク帯に相当: コマンダーとの関係で発動するもの(on=発動中)
 function acCardBands(card) {
-  const cmd = acCmdCard();
-  const cmdColors = cmd?.color || [];
+  // 帯は色一致のみ。一致した色で塗り、不一致(無色含む)はグレー
+  const cmdColors = acCmdCard()?.color || [];
   const colors = card.color || [];
-  // 色帯: 一致した色(無ければカードの1色目)で塗る。無色は白
-  const hitColor = colors.find(c => cmdColors.includes(c)) || colors[0];
-  const bands = [{ label: colors.length ? `${colors.join('')} 色一致` : '無色', on: acCardMatches(card, cmdColors),
-    cls: 'color' + (colors.length ? '' : ' none'), hex: colors.length ? AC_COLOR_HEX[hitColor] : '#ffffff' }];
-  const byTrait = {};
-  (cmd?.ac_cmd_targets || []).forEach(t => {
-    if ((card.traits || []).includes(t.trait)) (byTrait[t.trait] = byTrait[t.trait] || []).push(t.effect);
-  });
-  Object.entries(byTrait).forEach(([t, effs]) => bands.push({ label: `${t} ${[...new Set(effs)].join('/')}`, on: true, cls: 'trait' }));
-  (card.ac_cmd_conds || []).forEach(c => {
-    const on = !!cmd && (c.kind === 'name' ? cmd.name === c.value : (cmd.traits || []).includes(c.value));
-    bands.push({ label: c.kind === 'name' ? `CMD:${c.value.replace(/\(.*$/, '')}` : `CMD特徴:${c.value}`, on, cls: 'cond' });
-  });
-  return bands.sort((a, b) => (b.on ? 1 : 0) - (a.on ? 1 : 0));
+  const hit = colors.find(c => cmdColors.includes(c));
+  return [{ label: colors.length ? `${colors.join('')} 色一致` : '無色', on: !!hit, cls: 'color', hex: hit ? AC_COLOR_HEX[hit] : '' }];
 }
 // バッジ: ステータス系(攻/速/SP/軽減/回復)+効果系(貫通/範囲/スタン…)。カード文言から build_commander_data.py が分類
 function acBadgesHtml(card) {
