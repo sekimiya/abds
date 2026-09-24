@@ -1,0 +1,61 @@
+{
+    "card_number": "PR-516",
+    "card_name": "ヤジマ・キャロライン",
+    "series": "プロモーション",
+    "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-516.jpg?v250821",
+    "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-516_b.jpg?v250821",
+    "ocr_engine": "claude_code_subagent",
+    "ocr_type": "basic",
+    "ocr_timestamp": "2026-09-24T00:00:00.000000",
+    "ocr_data": {
+        "type": "PL",
+        "name": "ヤジマ・キャロライン",
+        "cost": 2,
+        "rarity": "PR",
+        "category": "制圧",
+        "affiliation": "",
+        "illustrator": "Takashi Hirano (STUDIO GS)",
+        "english_name": "CAROLINE YAJIMA",
+        "physical": {
+            "height": "",
+            "age": ""
+        },
+        "units": [
+            "SD騎士ガンダム"
+        ],
+        "stats": {
+            "mobility": 240,
+            "ranged_attack": 30,
+            "melee_attack": 180,
+            "hp": 290
+        },
+        "pilot_skill": {
+            "name": "攻防一体の制圧戦術",
+            "trigger": "敵戦艦/拠点をロックオン時",
+            "effect": "40秒間、自身の[近距離攻撃力]を中アップし、受けるダメージを軽減する。",
+            "has_sq_skill": false,
+            "sq_skill_details": null,
+            "is_eb_skill": false,
+            "eb_trigger_level": null,
+            "sq_rush_effect": ""
+        },
+        "link_ability": [
+            {
+                "name": "ビルドファイターズ",
+                "condition": "デッキに3枚以上",
+                "effect": "[機動力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            },
+            {
+                "name": "多彩な戦術",
+                "condition": "デッキに4枚以上",
+                "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            }
+        ]
+    }
+}

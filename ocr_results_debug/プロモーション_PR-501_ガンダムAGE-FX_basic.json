@@ -1,0 +1,83 @@
+{
+  "card_number": "PR-501",
+  "card_name": "ガンダムAGE-FX",
+  "series": "プロモーション",
+  "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-501.jpg?v250821",
+  "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-501_b.jpg?v250821",
+  "ocr_engine": "claude_code_subagent",
+  "ocr_type": "basic",
+  "ocr_timestamp": "2026-09-24T00:00:00.000000",
+  "ocr_data": {
+    "type": "MS",
+    "name": "ガンダムAGE-FX",
+    "cost": 5,
+    "rarity": "PR",
+    "category": "機動",
+    "affiliation": "地球連邦軍",
+    "illustrator": "ilshima060123",
+    "stats": {
+      "mobility": 240,
+      "ranged_attack": 460,
+      "melee_attack": 80,
+      "hp": 420
+    },
+    "link_ability": [
+      {
+        "name": "ガンダムAGE",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "的確な一撃",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][遠距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "キオ・アスノ",
+    "model": "AGE-FX GUNDAM AGE-FX",
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "B",
+      "water": "B"
+    },
+    "weapon": {
+      "main": {
+        "name": "スタングルライフル",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "Cファンネル",
+        "range": 2,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "障壁",
+      "activation": "任意発動",
+      "target": "自分",
+      "range": null,
+      "cost": 3,
+      "description": "自身の周りにバリアを展開する。展開したバリアは自身へのダメージを一定値防ぎ、バリア展開中は弱体効果を受けない状態となる。"
+    },
+    "special_attack": {
+      "name": "ダイダルバズーカ撃射",
+      "target": "貫通(敵)",
+      "range": 4,
+      "sp_cost": 2,
+      "power": 3000,
+      "description": "射線上の敵に貫通射撃でダメージを与える。",
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
+  }
+}

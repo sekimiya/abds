@@ -1,0 +1,61 @@
+{
+    "card_number": "PR-515",
+    "card_name": "アイラ・ユルキアイネン",
+    "series": "プロモーション",
+    "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-515.jpg?v250821",
+    "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-515_b.jpg?v250821",
+    "ocr_engine": "claude_code_subagent",
+    "ocr_type": "basic",
+    "ocr_timestamp": "2026-09-24T00:00:00.000000",
+    "ocr_data": {
+        "type": "PL",
+        "name": "アイラ・ユルキアイネン",
+        "cost": 3,
+        "rarity": "PR",
+        "category": "殲滅",
+        "affiliation": "",
+        "illustrator": "Yuto Ogura + Kento Ueda (STUDIO GS)",
+        "english_name": "AILA JYRKIÄINEN",
+        "physical": {
+            "height": "",
+            "age": ""
+        },
+        "units": [
+            "キュベレイパピヨン"
+        ],
+        "stats": {
+            "mobility": 180,
+            "ranged_attack": 30,
+            "melee_attack": 260,
+            "hp": 350
+        },
+        "pilot_skill": {
+            "name": "冷静な指揮系統",
+            "trigger": "EBLv.1時",
+            "effect": "自身のSPゲージ回復速度がアップする。このPLスキルの効果は重複しない。",
+            "has_sq_skill": false,
+            "sq_skill_details": null,
+            "is_eb_skill": true,
+            "eb_trigger_level": 1,
+            "sq_rush_effect": ""
+        },
+        "link_ability": [
+            {
+                "name": "新時代の高鳴り",
+                "condition": "デッキに3枚以上",
+                "effect": "ECHOES BEAT Lv.が表示される。味方ユニットが戦術技を発動するとEBLv.が上がる。[HP][SP威力]小アップ",
+                "is_eb_link": true,
+                "is_sq_link": false,
+                "is_ab_link": false
+            },
+            {
+                "name": "多彩な戦術",
+                "condition": "デッキに4枚以上",
+                "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            }
+        ]
+    }
+}

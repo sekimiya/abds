@@ -161,8 +161,10 @@ def detect_series(card_number):
                 return 'PR-201~300'
             elif n <= 400:
                 return 'PR-301~400'
-            else:
+            elif n <= 500:
                 return 'PR-401~500'
+            else:
+                return 'PR-501~600'
         return prefix
     return ''
 

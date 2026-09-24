@@ -1,0 +1,90 @@
+{
+    "card_number": "PR-520",
+    "card_name": "ガンダム試作1号機フルバーニアン",
+    "series": "プロモーション",
+    "front_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-520.jpg?v250821",
+    "back_image_url": "https://www.gundam-ab.com/images/cardlist/card/PR-520_b.jpg?v250821",
+    "ocr_engine": "claude_code_subagent",
+    "ocr_type": "basic",
+    "ocr_timestamp": "2026-09-24T00:00:00.000000",
+    "ocr_data": {
+        "type": "MS",
+        "name": "ガンダム試作1号機フルバーニアン",
+        "cost": 3,
+        "rarity": "PR",
+        "category": "遠距離",
+        "affiliation": "地球連邦軍",
+        "illustrator": "",
+        "stats": {
+            "mobility": 260,
+            "ranged_attack": 280,
+            "melee_attack": 60,
+            "hp": 350
+        },
+        "link_ability": [
+            {
+                "name": "GCB連邦",
+                "condition": "デッキに3枚以上",
+                "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            },
+            {
+                "name": "的確な一撃",
+                "condition": "デッキに4枚以上",
+                "effect": "[機動力][遠距離攻撃力]小アップ",
+                "is_eb_link": false,
+                "is_sq_link": false,
+                "is_ab_link": false
+            }
+        ],
+        "pilot": "コウ・ウラキ",
+        "model": "RX-78GP01-Fb GUNDAM GP01Fb",
+        "terrain_compatibility": {
+            "ground": "B",
+            "space": "S",
+            "desert": "B",
+            "water": "C"
+        },
+        "weapon": {
+            "main": {
+                "name": "ビーム・ライフル",
+                "range": 3,
+                "type": "遠距離"
+            },
+            "sub": {
+                "name": "ビーム・サーベル",
+                "range": 1,
+                "type": "近距離"
+            }
+        },
+        "ms_ability": {
+            "name": "補給[弱体化解除]",
+            "activation": "任意発動",
+            "target": "範囲(味方)",
+            "range": null,
+            "cost": 5,
+            "description": "自身を中心とした大範囲の味方ユニットのHPを中回復し、弱体化状態を無効化する。"
+        },
+        "special_attack": {
+            "name": "ビーム・ライフル撃射",
+            "target": "単体(敵)",
+            "range": 3,
+            "sp_cost": 2,
+            "power": 3300,
+            "description": "敵単体に射撃攻撃でダメージを与える。",
+            "sp_type": "ECHOES BEAT",
+            "echoes_beat": {
+                "name": "ビーム・ライフル撃射 Lv.1",
+                "level": 1,
+                "power": 3600,
+                "range": 3,
+                "target": "単体(敵)",
+                "description": "EBLv.を1下げる。敵単体に射撃攻撃でダメージを与え、EBLv.が3に上昇する。出撃時1度のみ使用可能。"
+            },
+            "united_sp": null,
+            "squad_sp": null
+        }
+    }
+}
