@@ -1578,9 +1578,9 @@ body.picking-split .trade-sec.picking .trade-grid{
 /* AC: コマンダーカード(ユニットカードと同じ幅・色枠) */
 .ac-cmd-card{width:var(--ac-card-w,120px)!important;height:var(--ac-card-h,168px)!important;align-self:flex-start;padding:3px!important;border:none!important;border-radius:8px!important;background:#2a2a2a;position:relative;display:block!important;flex-shrink:0;box-sizing:border-box;overflow:hidden;cursor:pointer}
 .ac-cmd-card img{width:100%;height:100%;object-fit:cover;border-radius:5px;display:block}
-.ac-cmd-card:not(.has-card){border:2px dashed #6a2b77!important;background:#1a1020}
-.ac-cmd-empty{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;color:#e040fb;font-weight:900;font-size:1rem;line-height:1.3}
-.ac-cmd-empty small{font-size:0.6rem;font-weight:400;color:#a070b0}
+.ac-cmd-card:not(.has-card){border:2px dashed #555!important;background:#1a1a1a}
+.ac-cmd-empty{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;color:#bbb;font-weight:900;font-size:1rem;line-height:1.3}
+.ac-cmd-empty small{font-size:0.6rem;font-weight:400;color:#888}
 .ac-cmd-card .ac-badges{position:absolute;left:5px;right:5px;bottom:5px}
 /* AC: カード上のバッジ・バフ帯(ABのリンク帯に相当) */
 .ac-overlay{position:absolute;left:0;right:0;bottom:0;z-index:2;display:flex;flex-direction:column;gap:1px;padding:2px;pointer-events:none}
@@ -1591,11 +1591,11 @@ body.picking-split .trade-sec.picking .trade-grid{
 .ac-tg{background:rgba(40,40,40,0.9);border:1px solid rgba(255,255,255,0.35)}
 .ac-tg-貫通{background:rgba(66,165,245,0.9);border:none}.ac-tg-範囲{background:rgba(255,112,67,0.9);border:none}
 .ac-tg-スタン{background:rgba(255,235,59,0.9);color:#333;text-shadow:none;border:none}.ac-tg-変形{background:rgba(38,198,218,0.9);border:none}
-.ac-tg-デバフ{background:rgba(171,71,188,0.9);border:none}.ac-tg-CMD支援{background:rgba(224,64,251,0.9);border:none}
+.ac-tg-デバフ{background:rgba(171,71,188,0.9);border:none}.ac-tg-CMD支援{background:rgba(230,230,230,0.92);color:#111;text-shadow:none;border:none}
 .ac-num{align-self:flex-start;font-size:0.58rem;font-weight:700;color:#ddd;background:rgba(0,0,0,0.65);padding:0 4px;border-radius:3px}
 .ac-band{font-size:0.62rem;font-weight:700;padding:1px 4px;border-radius:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-align:center}
 .ac-band.on{background:rgba(104,239,189,0.92);color:#0a0a0a}
-.ac-band.on.trait{background:rgba(224,64,251,0.9);color:#fff}
+.ac-band.on.trait{background:rgba(230,230,230,0.92);color:#111}
 .ac-band.on.cond{background:rgba(255,152,0,0.92);color:#fff}
 .ac-band.off{background:rgba(40,40,40,0.85);color:#777}
 .ac-band.color.on{background:var(--band);color:#fff;text-shadow:0 1px 2px rgba(0,0,0,0.6);box-shadow:0 0 6px var(--band)}
@@ -1603,17 +1603,19 @@ body.picking-split .trade-sec.picking .trade-grid{
 .ac-band.color.none{background:#fff;color:#111;text-shadow:none;border:none;opacity:1;box-shadow:0 0 6px rgba(255,255,255,0.8)}
 .card-slot.ac-glow,.overview-thumb.ac-glow{border-color:var(--ac-glow)!important;box-shadow:0 0 8px var(--ac-glow)}
 /* ===== AC: カラー・特徴 / コマンダーパネル ===== */
-.ac-cmd-panel{width:100%;padding:6px 10px;border-radius:8px;font-size:0.72rem;color:#d8d8d8;line-height:1.55;position:relative;
+.ac-cmd-panel{width:100%;height:var(--ac-card-h,auto);max-height:var(--ac-card-h,none);overflow:hidden;box-sizing:border-box;padding:4px 8px;border-radius:8px;font-size:0.74rem;color:#d8d8d8;line-height:1.45;position:relative;
   border:1px solid transparent;
-  background:linear-gradient(120deg,var(--th-bg,#1a1020) 0%,#121212 55%,var(--th-bg2,#1a1020) 100%) padding-box,
-             linear-gradient(120deg,var(--th-c,#e040fb),var(--th-line,#6a2b77) 45%,var(--th-line2,#6a2b77) 55%,var(--th-c2,#e040fb)) border-box;
-  box-shadow:inset 4px 0 0 var(--th-c,#e040fb)}
-.ac-cmd-panel .ac-cmd-head{border-bottom:1px solid var(--th-line,#6a2b77);padding-bottom:3px;margin-bottom:3px}
-.ac-cmd-name{font-weight:900;background:linear-gradient(90deg,var(--th-c,#e040fb),var(--th-c2,#e040fb));-webkit-background-clip:text;background-clip:text;color:transparent}
-.ac-cmd-count{color:var(--th-c2,#68efbd);font-size:0.7rem}
-.ac-cmd-tag{display:inline-block;font-size:0.62rem;font-weight:700;color:#111;background:var(--th-c,#e040fb);border-radius:3px;padding:0 5px;margin-right:6px}
-.ac-cmd-tag.sys{color:var(--th-c2,#68efbd);background:transparent;border:1px solid var(--th-c2,#68efbd)}
-.ac-cmd-panel .ac-cmd-total b{color:#fff}
+  background:linear-gradient(120deg,var(--th-bg,#1a1a1a) 0%,#121212 55%,var(--th-bg2,#1a1a1a) 100%) padding-box,
+             linear-gradient(120deg,var(--th-c,#888),var(--th-line,#444) 45%,var(--th-line2,#444) 55%,var(--th-c2,#888)) border-box;
+  box-shadow:inset 4px 0 0 var(--th-c,#888)}
+.ac-cmd-panel .ac-cmd-head{border-bottom:1px solid var(--th-line,#444);padding-bottom:2px;margin-bottom:2px;display:flex;align-items:center;gap:6px}
+.ac-cmd-name{font-weight:900;font-size:1.1em;background:linear-gradient(90deg,var(--th-c,#ddd),var(--th-c2,#ddd));-webkit-background-clip:text;background-clip:text;color:transparent}
+.ac-cmd-meta{color:#999;font-size:0.9em}
+.ac-cmd-tag{display:inline-block;font-size:0.85em;font-weight:700;color:#111;background:var(--th-c,#ccc);border-radius:3px;padding:0 5px;margin-right:6px}
+.ac-cmd-panel.compact .ac-cmd-desc,.ac-cmd-panel.compact .ac-cmd-meta{display:none}
+.ac-cmd-panel.compact2 .ac-cmd-ab{display:none}
+.ac-cmd-tag.sub{color:#ddd;background:transparent;border:1px solid #666}
+.ac-cmd-tag.sys{color:var(--th-c2,#ccc);background:transparent;border:1px solid var(--th-c2,#ccc)}
 .sg-label[data-stat="atk"]{color:#ef5350}
 .ov-stat-bar[data-stat="atk"] .ov-sb-base{background:#ef5350}
 .ac-color-chip{display:inline-block;font-size:0.68rem;font-weight:700;padding:0 6px;border-radius:3px;margin-right:3px;border:1px solid #444;color:#aaa;background:#1a1a1a}
@@ -1632,7 +1634,6 @@ body.picking-split .trade-sec.picking .trade-grid{
 .ac-match.off{color:#777;border:1px solid #333}
 .ac-traits{flex-basis:100%;display:flex;flex-wrap:wrap;gap:3px;padding-left:24px}
 .ac-trait{font-size:0.64rem;color:#bbb;background:#1e1e1e;border:1px solid #333;border-radius:3px;padding:0 5px}
-.ac-cmd-head{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-bottom:2px}
 .ac-cmd-line{margin-top:2px}
 </style>
 </head>
@@ -1776,8 +1777,8 @@ body.picking-split .trade-sec.picking .trade-grid{
     <span class="total-cost-value" id="headerTotalCost">0</span>
   </div>
   <div class="tactics-inline" id="cmdBar">
-    <button class="tactics-btn" id="cmdBtn" onclick="CmdPicker.open()" style="border-color:#e040fb">
-      <div class="tactics-placeholder" style="color:#e040fb">CMD</div>
+    <button class="tactics-btn" id="cmdBtn" onclick="CmdPicker.open()" >
+      <div class="tactics-placeholder" >CMD</div>
     </button>
   </div>
   <div class="color-buff-bar" id="colorBuffBar"></div>
@@ -1788,7 +1789,7 @@ body.picking-split .trade-sec.picking .trade-grid{
 <div class="modal-overlay" id="cmdPickerModal">
   <div class="modal-content" style="max-width:900px">
     <button class="modal-close" onclick="CmdPicker.close()">&times;</button>
-    <h3 style="color:#e040fb;margin-bottom:1rem">コマンダーカードを選択</h3>
+    <h3 style="color:#ddd;margin-bottom:1rem">コマンダーカードを選択</h3>
     <div id="cmdPickerBody"></div>
   </div>
 </div>
@@ -2709,10 +2710,10 @@ const CmdPicker = {
         return `<span style="${cls};font-weight:bold;margin-right:4px">${c}</span>`;
       }).join('');
       return `
-      <div class="tactics-picker-card${card.number === currentNum ? ' selected' : ''}" onclick="CmdPicker._select('${card.number}')" style="border-color:#e040fb">
+      <div class="tactics-picker-card${card.number === currentNum ? ' selected' : ''}" onclick="CmdPicker._select('${card.number}')" >
         ${imgUrl ? `<img src="${imgUrl}" alt="${card.name}">` : ''}
         <div class="tp-info">
-          <div class="tp-name" style="color:#e040fb">${card.name}</div>
+          <div class="tp-name" >${card.name}</div>
           <div class="tp-effect">${colorTags}</div>
         </div>
       </div>`;
@@ -2763,32 +2764,23 @@ const CmdPicker = {
     this.renderButton();
     const bar = document.getElementById('colorBuffBar');
     if (!bar) return;
+    // カードに印字されている内容だけを出す(名前・色・コマンダースキル・MSアビリティ・コマンダーシステム)
     const cmd = acCmdCard();
-    const cards = AppState.deck.map(n => n ? AppState.cardIndex.find(c => c.number === n) : null);
-    if (!cmd && !cards.some(Boolean)) { bar.innerHTML = ''; return; }
-    if (cmd && !CardService.getDetail(cmd.number)) {
+    if (!cmd) { bar.innerHTML = ''; return; }
+    if (!CardService.getDetail(cmd.number)) {
       CardService.fetchDetail(cmd.number).then(d => { if (d) this.updateColorBuff(); });
     }
-    let atk = 0, hp = 0, cost = 0;
-    cards.forEach(c => { if (c) { atk += c.atk || 0; hp += c.hp || 0; cost += c.cost || 0; } });
-    const cmdColors = cmd?.color || [];
-    let unitHit = 0;
-    for (let u = 0; u < 5; u++) {
-      if (cmd && acCardMatches(cards[u], cmdColors) && acCardMatches(cards[u + 5], cmdColors)) unitHit++;
-    }
-    const traitHits = acCmdTraits(cmd).map(t =>
-      `特徴[${escapeHtml(t)}] ${cards.filter(c => c && (c.traits || []).includes(t)).length}/10枚`);
-    const o = cmd ? (CardService.getDetail(cmd.number)?.ocr_data || {}) : {};
-    const skill = o.commander_skill?.description || '';
+    const o = CardService.getDetail(cmd.number)?.ocr_data || {};
+    const ab = o.ms_ability || {};
     const sys = o.commander_system || {};
-    const fmt = n => n.toLocaleString();
-    bar.innerHTML = `<div class="ac-cmd-panel" style="${acCmdThemeStyle(cmdColors)}">
-      <div class="ac-cmd-head">${cmd ? `<span class="ac-cmd-name">${escapeHtml(cmd.name)}</span>${acColorChips(cmdColors, cmdColors)}` : '<span class="ac-cmd-none">コマンダー未選択</span>'}</div>
-      <div class="ac-cmd-line ac-cmd-total">合計 <b class="ac-sum-atk">ATK ${fmt(atk)}</b> / <b class="ac-sum-hp">HP ${fmt(hp)}</b> ・ 出撃コスト計 <b>${cost}</b></div>
-      ${cmd ? `<div class="ac-cmd-line ac-cmd-count">一致 色 ${unitHit}/5ユニット${traitHits.length ? ' ・ ' + traitHits.join(' ・ ') : ''}</div>` : ''}
-      ${skill ? `<div class="ac-cmd-line"><span class="ac-cmd-tag">コマンダースキル</span>${escapeHtml(skill)}</div>` : ''}
+    const abMeta = [ab.activation, ab.target, ab.cost != null ? `コスト${ab.cost}` : ''].filter(Boolean).join('・');
+    bar.innerHTML = `<div class="ac-cmd-panel" style="${acCmdThemeStyle(cmd.color)}">
+      <div class="ac-cmd-head"><span class="ac-cmd-name">${escapeHtml(cmd.name)}</span>${acColorChips(cmd.color, cmd.color)}</div>
+      ${o.commander_skill?.description ? `<div class="ac-cmd-line"><span class="ac-cmd-tag">コマンダースキル</span>${escapeHtml(o.commander_skill.description)}</div>` : ''}
+      ${ab.name ? `<div class="ac-cmd-line ac-cmd-ab"><span class="ac-cmd-tag sub">MSアビリティ</span><b>${escapeHtml(ab.name)}</b> <span class="ac-cmd-meta">${escapeHtml(abMeta)}</span> <span class="ac-cmd-desc">${escapeHtml(ab.description || '')}</span></div>` : ''}
       ${(sys.name || sys.description) ? `<div class="ac-cmd-line"><span class="ac-cmd-tag sys">コマンダーシステム</span><b>${escapeHtml(sys.name || '')}</b> ${escapeHtml(sys.description || '')}</div>` : ''}
     </div>`;
+    acFitCmdPanel();
   }
 };
 
@@ -6138,7 +6130,24 @@ function acSyncCardWidth() {
 }
 window.addEventListener('resize', () => acSyncCardWidth());
 
-// コマンダーの色でパネルのテーマ色を決める(1色目=主色、2色目があれば差し色。無色/未選択は紫)
+// パネルの文字をコマンダーカードの高さに収まるまで縮める
+function acFitCmdPanel() {
+  const p = document.querySelector('#colorBuffBar .ac-cmd-panel');
+  if (!p) return;
+  const h = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--ac-card-h')) || 0;
+  if (!h) return;
+  let fs = parseFloat(getComputedStyle(p).fontSize);
+  p.style.fontSize = '';
+  fs = parseFloat(getComputedStyle(p).fontSize);
+  p.classList.remove('compact', 'compact2');
+  for (let i = 0; i < 20 && p.scrollHeight > h + 1 && fs > 7; i++) { fs -= 0.5; p.style.fontSize = fs + 'px'; }
+  // まだはみ出す場合: MSアビリティの説明文 → MSアビリティ行 の順に省く(全文はカード詳細で見られる)
+  if (p.scrollHeight > h + 1) p.classList.add('compact');
+  if (p.scrollHeight > h + 1) p.classList.add('compact2');
+}
+window.addEventListener('resize', () => acFitCmdPanel());
+
+// コマンダーの色でパネルのテーマ色を決める
 const AC_THEME = {
   赤: { c: '#ff6b6b', bg: '#2a0d10', line: '#8a2a2e' },
   緑: { c: '#6fdc7e', bg: '#0b2212', line: '#2e7a3c' },
@@ -6146,7 +6155,7 @@ const AC_THEME = {
 };
 function acCmdThemeStyle(colors) {
   const t = (colors || []).map(c => AC_THEME[c]).filter(Boolean);
-  const a = t[0] || { c: '#e040fb', bg: '#1a1020', line: '#6a2b77' };
+  const a = t[0] || { c: '#cfcfcf', bg: '#1a1a1a', line: '#555' };
   const b = t[1] || a;
   return `--th-c:${a.c};--th-c2:${b.c};--th-bg:${a.bg};--th-bg2:${b.bg};--th-line:${a.line};--th-line2:${b.line}`;
 }
