@@ -1428,7 +1428,7 @@ body.picking-split .trade-sec.picking .trade-grid{
 .ac-cmd-empty small{font-size:0.6rem;font-weight:400;color:#888}
 .ac-cmd-card .ac-badges{position:absolute;left:5px;right:5px;bottom:5px}
 /* AC: カード上のバッジ・バフ帯(ABのリンク帯に相当) */
-.ac-overlay{position:absolute;left:0;right:0;bottom:0;z-index:2;display:flex;flex-direction:column;gap:1px;padding:2px;pointer-events:none}
+.ac-overlay{position:absolute;left:0;right:0;bottom:19%;z-index:2;display:flex;flex-direction:column;gap:1px;padding:2px;pointer-events:none}
 .ac-badges{display:flex;flex-wrap:wrap;gap:2px}
 .ac-bf,.ac-tg{font-size:0.6rem;font-weight:900;padding:0 4px;border-radius:3px;line-height:1.45;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,0.7)}
 .ac-bf-攻{background:rgba(239,83,80,0.9)}.ac-bf-速{background:rgba(66,165,245,0.9)}.ac-bf-SP{background:rgba(255,183,77,0.95);color:#222;text-shadow:none}
@@ -1439,14 +1439,14 @@ body.picking-split .trade-sec.picking .trade-grid{
 .ac-tg-デバフ{background:rgba(171,71,188,0.9);border:none}.ac-tg-CMD支援{background:rgba(230,230,230,0.92);color:#111;text-shadow:none;border:none}
 .ac-num{align-self:flex-start;font-size:0.58rem;font-weight:700;color:#ddd;background:rgba(0,0,0,0.65);padding:0 4px;border-radius:3px}
 .ac-band{font-size:0.62rem;font-weight:700;padding:1px 4px;border-radius:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-align:center}
-.ac-band.on{background:rgba(104,239,189,0.92);color:#0a0a0a}
-.ac-band.on.trait{background:rgba(230,230,230,0.92);color:#111}
-.ac-band.on.cond{background:rgba(255,152,0,0.92);color:#fff}
-.ac-band.off{background:rgba(40,40,40,0.85);color:#777}
-.ac-band.color.on{background:var(--band);color:#fff;text-shadow:0 1px 2px rgba(0,0,0,0.6);box-shadow:0 0 6px var(--band)}
+.ac-band.on{background:rgba(104,239,189,0.6);color:#0a0a0a}
+.ac-band.on.trait{background:rgba(230,230,230,0.6);color:#111}
+.ac-band.on.cond{background:rgba(255,152,0,0.6);color:#fff}
+.ac-band.off{background:rgba(40,40,40,0.55);color:#999}
+.ac-band.color.on{background:color-mix(in srgb,var(--band) 55%,transparent);color:#fff;text-shadow:0 1px 2px rgba(0,0,0,0.6);box-shadow:0 0 6px var(--band)}
 .ac-band.color{display:flex;align-items:center;justify-content:center;min-height:calc(1.35em * 3)}
 .overview-thumb .ac-band.color{font-size:0.5rem}
-.ac-band.color.none{background:#fff;color:#111;text-shadow:none;border:none;opacity:1;box-shadow:0 0 6px rgba(255,255,255,0.8)}
+.ac-band.color.none{background:rgba(255,255,255,0.55);color:#111;text-shadow:none;border:none;opacity:1;box-shadow:0 0 6px rgba(255,255,255,0.8)}
 .card-slot.ac-glow,.overview-thumb.ac-glow{border-color:var(--ac-glow)!important;box-shadow:0 0 8px var(--ac-glow)}
 .overview-thumb .ac-bf,.overview-thumb .ac-tg{font-size:0.42rem;padding:0 2px;line-height:1.35}
 .overview-thumb .ac-num{font-size:0.42rem;padding:0 2px}
