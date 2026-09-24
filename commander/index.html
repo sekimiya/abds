@@ -1575,8 +1575,9 @@ body.picking-split .trade-sec.picking .trade-grid{
 .link-tactics-row{align-items:stretch}
 #colorBuffBar{flex:1 1 0;min-width:0;display:flex}
 #colorBuffBar .ac-cmd-panel{height:100%;box-sizing:border-box;font-size:0.8rem}
-.ac-traits-band{font-size:0.6rem;font-weight:700;color:#fff;background:rgba(0,0,0,0.55);border-radius:3px;padding:0 4px;line-height:1.5;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.ac-traits-band .hit{color:#68efbd}
+.ac-overlay .ac-traits{display:flex;flex-wrap:wrap;gap:1px;padding:0}
+.ac-trait-band{flex:1 1 auto;font-size:0.6rem;font-weight:700;color:#eee;background:rgba(0,0,0,0.55);border-radius:3px;padding:0 4px;line-height:1.5;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+.ac-trait-band.hit{background:color-mix(in srgb,var(--band) 60%,transparent);color:#fff;text-shadow:0 1px 2px rgba(0,0,0,0.7);box-shadow:0 0 5px var(--band)}
 /* AC: コマンダーカード(ユニットカードと同じ幅・色枠) */
 .ac-cmd-detail{position:absolute;top:4px;left:5px;z-index:3;background:rgba(0,0,0,0.8);border:1px solid #68efbd;color:#68efbd;border-radius:4px;font-size:0.65rem;font-weight:bold;padding:0.14rem 0.5rem;cursor:pointer;display:none}
 .ac-cmd-card.has-card:hover .ac-cmd-detail{display:block}
@@ -6093,12 +6094,25 @@ function acBadgesHtml(card) {
   const g = (card.ac_tags || []).map(t => `<span class="ac-tg ac-tg-${t}">${t}</span>`).join('');
   return (b || g) ? `<div class="ac-badges">${b}${g}</div>` : '';
 }
+// 特徴を1つずつ帯にする。コマンダーに参照された特徴はカードの色(一致色優先、無色は白)で塗る
+function acTraitBandsHtml(card) {
+  const traits = card.traits || [];
+  if (!traits.length) return '';
+  const cmd = acCmdCard();
+  const refs = acCmdTraits(cmd);
+  const colors = card.color || [];
+  const c = colors.find(x => (cmd?.color || []).includes(x)) || colors[0];
+  const hex = c ? AC_COLOR_HEX[c] : '#ffffff';
+  return '<div class="ac-traits">' + traits.map(t => refs.includes(t)
+    ? `<span class="ac-trait-band hit" style="--band:${hex}">${escapeHtml(t)}</span>`
+    : `<span class="ac-trait-band">${escapeHtml(t)}</span>`).join('') + '</div>';
+}
 function acCardOverlayHtml(card, maxBands) {
   const bands = acCardBands(card).slice(0, maxBands);
   return `<div class="ac-overlay">${acBadgesHtml(card)}<div class="ac-num">${escapeHtml(card.number)}</div>` +
     bands.map(x => `<div class="ac-band ${x.cls} ${x.on ? 'on' : 'off'}"${x.hex ? ` style="--band:${x.hex}"` : ''}>${escapeHtml(x.label)}</div>`).join('') +
     // 特徴(券面の白帯: 作品名/所属/ニュータイプ等)。コマンダーの効果対象になっている特徴は強調
-    ((card.traits || []).length ? `<div class="ac-traits-band">${card.traits.map(t => `<span${acCmdTraits(acCmdCard()).includes(t) ? ' class="hit"' : ''}>${escapeHtml(t)}</span>`).join('/')}</div>` : '') + '</div>';
+    acTraitBandsHtml(card) + '</div>';
 }
 // コマンダーカードをユニットカードと同じ幅にする
 function acSyncCardWidth() {
