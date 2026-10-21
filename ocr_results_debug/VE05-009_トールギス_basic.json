@@ -1,0 +1,87 @@
+{
+  "card_number": "VE05-009",
+  "card_name": "トールギス",
+  "series": "WAVECHOES SEASON:05",
+  "ocr_data": {
+    "type": "MS",
+    "name": "トールギス",
+    "cost": 4,
+    "rarity": "M",
+    "category": "機動",
+    "affiliation": "OZ",
+    "illustrator": "kenko",
+    "stats": {
+      "mobility": 270,
+      "ranged_attack": 360,
+      "melee_attack": 30,
+      "hp": 390
+    },
+    "link_ability": [
+      {
+        "name": "ガンダムW",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "的確な一撃",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][遠距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "ゼクス・マーキス",
+    "model": "OZ-00MS TALLGEESE",
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "A",
+      "desert": "C",
+      "water": "A"
+    },
+    "weapon": {
+      "main": {
+        "name": "ドーバーガン",
+        "range": 4,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ビームサーベル",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "練破[貫通]",
+      "activation": "任意発動",
+      "target": "貫通(敵)",
+      "range": 4,
+      "cost": 4,
+      "description": "1回目の発動でチャージ状態になり、2回目の発動でロックオン中の敵に貫通射撃でダメージを与える。チャージ時間に応じて、ダメージ値が上昇する。"
+    },
+    "special_attack": {
+      "name": "ドーバーガン爆撃",
+      "target": "範囲(敵)",
+      "range": 4,
+      "sp_cost": 2,
+      "power": 2800,
+      "description": "対象の敵を中心として範囲射撃でダメージを与える。",
+      "sp_type": "ECHOES BEAT",
+      "echoes_beat": {
+        "name": "ドーバーガン爆撃 Lv.2",
+        "level": 2,
+        "power": 3400,
+        "range": 4,
+        "target": "範囲(敵)",
+        "description": "EBLv.を2下げる。対象の敵を中心として範囲射撃でダメージを与え、出撃中の全味方ユニットのHPを回復する。出撃時1度のみ使用可能。"
+      },
+      "united_sp": null,
+      "squad_sp": null
+    }
+  },
+  "ocr_engine": "claude_code_subagent",
+  "ocr_timestamp": "2026-10-21T00:00:00"
+}

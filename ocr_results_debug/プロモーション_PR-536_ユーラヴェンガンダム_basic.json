@@ -1,0 +1,80 @@
+{
+  "card_number": "PR-536",
+  "card_name": "ユーラヴェンガンダム",
+  "series": "プロモーション",
+  "ocr_data": {
+    "type": "MS",
+    "name": "ユーラヴェンガンダム",
+    "cost": 4,
+    "rarity": "PR",
+    "category": "機動",
+    "affiliation": "BUILD DiVERS",
+    "illustrator": "Layup Co., Ltd.",
+    "stats": {
+      "mobility": 230,
+      "ranged_attack": 330,
+      "melee_attack": 30,
+      "hp": 460
+    },
+    "link_ability": [
+      {
+        "name": "Re:RISE",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "ヒロト",
+    "model": "PFF-X7Ⅱ/U7 URAVEN GUNDAM",
+    "terrain_compatibility": {
+      "ground": "S",
+      "space": "A",
+      "desert": "C",
+      "water": "B"
+    },
+    "weapon": {
+      "main": {
+        "name": "ビームシュートライフルU7",
+        "range": 4,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "頭部バルカン砲",
+        "range": 2,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "絆盟",
+      "activation": "任意発動",
+      "target": "特殊(自分)",
+      "range": null,
+      "cost": 4,
+      "description": "自身と自身に一番近い味方ユニットは絆盟状態になる。絆盟状態のユニットのメイン攻撃力は、メイン攻撃力が高い方のユニットと同じ値になり、どちらかのユニットが撃破されるまで効果は持続する。※増援、デコイは対象外。"
+    },
+    "special_attack": {
+      "name": "ビームシュートライフルU7撃射",
+      "target": "単体(敵)",
+      "range": 4,
+      "sp_cost": 2,
+      "power": 3200,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
+  },
+  "ocr_engine": "claude_code_subagent",
+  "ocr_timestamp": "2026-10-21T00:00:00"
+}

@@ -1,0 +1,87 @@
+{
+  "card_number": "VE05-010",
+  "card_name": "ガンダムL.O.ブースター",
+  "series": "WAVECHOES SEASON:05",
+  "ocr_data": {
+    "type": "MS",
+    "name": "ガンダムL.O.ブースター",
+    "cost": 6,
+    "rarity": "P",
+    "category": "機動",
+    "affiliation": "MO-V",
+    "illustrator": "haru",
+    "stats": {
+      "mobility": 240,
+      "ranged_attack": 580,
+      "melee_attack": 50,
+      "hp": 530
+    },
+    "link_ability": [
+      {
+        "name": "G-UNIT",
+        "condition": "デッキに2枚以上",
+        "effect": "[HP]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "的確な一撃",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][遠距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "アディン・バーネット",
+    "model": "OZX-GU01LOB GUNDAM L.O.BOOSTER",
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "B",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "スラストビームキャノン",
+        "range": 4,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ビームソード",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "追撃",
+      "activation": "出撃時発動",
+      "target": "自分",
+      "range": null,
+      "cost": null,
+      "description": "ロックオン中の敵を通常攻撃後、追撃ゲージ(弾薬数)を消費して追撃を行い、ダメージを与える。/ 追撃ゲージが0の時に任意発動可能となり、コストを4使用することで、追撃ゲージを再装填する。"
+    },
+    "special_attack": {
+      "name": "PXシステム",
+      "target": "貫通(敵)",
+      "range": 4,
+      "sp_cost": 2,
+      "power": 3100,
+      "description": "PXシステムを発動し、射線上の敵に貫通射撃でダメージを与える。一定時間能力が上昇し、通常攻撃が貫通射撃に変化する。",
+      "sp_type": "ECHOES BEAT",
+      "echoes_beat": {
+        "name": "PXシステム Lv.1",
+        "level": 1,
+        "power": 3400,
+        "range": 4,
+        "target": "貫通(敵)",
+        "description": "EBLv.を1下げる。戦術技の効果に加え、EBLv.が3に上昇する。[W]または[G-UNIT]を含むリンクアビリティの数に応じて、一定時間、自身の[遠攻撃力]アップ。出撃時1度のみ使用可能。"
+      },
+      "united_sp": null,
+      "squad_sp": null
+    }
+  },
+  "ocr_engine": "claude_code_subagent",
+  "ocr_timestamp": "2026-10-21T00:00:00"
+}

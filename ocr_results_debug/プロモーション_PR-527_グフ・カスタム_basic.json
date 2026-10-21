@@ -1,0 +1,80 @@
+{
+  "card_number": "PR-527",
+  "card_name": "グフ・カスタム",
+  "series": "プロモーション",
+  "ocr_data": {
+    "type": "MS",
+    "name": "グフ・カスタム",
+    "cost": 2,
+    "rarity": "PR",
+    "category": "近距離",
+    "affiliation": "ジオン公国軍",
+    "illustrator": "HaeKing + JinArt",
+    "stats": {
+      "mobility": 240,
+      "ranged_attack": 30,
+      "melee_attack": 210,
+      "hp": 370
+    },
+    "link_ability": [
+      {
+        "name": "GCBジオン",
+        "condition": "デッキに3枚以上",
+        "effect": "[HP]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "肉薄する戦い",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "ノリス・パッカード",
+    "model": "MS-07B-3 GOUF CUSTOM",
+    "terrain_compatibility": {
+      "ground": "S",
+      "space": "C",
+      "desert": "A",
+      "water": "B"
+    },
+    "weapon": {
+      "main": {
+        "name": "ヒート・サーベル",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "ガトリング・シールド",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "誘導[防御]",
+      "activation": "任意発動",
+      "target": "特殊(敵)",
+      "range": null,
+      "cost": 5,
+      "description": "25秒間、自身をロックオン距離内に捉えている敵ユニットのターゲットを自身に集め、受けるダメージを軽減する。"
+    },
+    "special_attack": {
+      "name": "ヒート・サーベル激突",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3400,
+      "description": "敵単体に格闘攻撃でダメージを与え、出撃中の全味方ユニットのHPを回復する。リンクアビリティ[GCBジオン]が発動している場合、自身の周囲に殲滅タイプの味方ユニットを2機呼び出す。",
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
+  },
+  "ocr_engine": "claude_code_subagent",
+  "ocr_timestamp": "2026-10-21T00:00:00"
+}

@@ -1,0 +1,80 @@
+{
+  "card_number": "PR-529",
+  "card_name": "ケンプファー",
+  "series": "プロモーション",
+  "ocr_data": {
+    "type": "MS",
+    "name": "ケンプファー",
+    "cost": 7,
+    "rarity": "PR",
+    "category": "遠距離",
+    "affiliation": "ジオン公国軍",
+    "illustrator": "",
+    "stats": {
+      "mobility": 310,
+      "ranged_attack": 600,
+      "melee_attack": 40,
+      "hp": 600
+    },
+    "link_ability": [
+      {
+        "name": "GCBジオン",
+        "condition": "デッキに3枚以上",
+        "effect": "[HP]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "的確な一撃",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][遠距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "ミハイル・カミンスキー",
+    "model": "MS-18E KÄMPFER",
+    "terrain_compatibility": {
+      "ground": "S",
+      "space": "B",
+      "desert": "S",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "ショットガン",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ビーム・サーベル",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "追撃",
+      "activation": "出撃時発動",
+      "target": "自分",
+      "range": null,
+      "cost": null,
+      "description": "ロックオン中の敵を通常攻撃後、追撃ゲージ(弾薬数)を消費して追撃を行い、ダメージを与える。/追撃ゲージが0の時に任意発動可能となり、コストを4使用することで、追撃ゲージを再装填する。"
+    },
+    "special_attack": {
+      "name": "チェーン・マイン爆撃",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3600,
+      "description": "敵単体に射撃攻撃でダメージを与え、一定時間、自身の受けるダメージを軽減する。リンクアビリティ[GCBジオン]が発動している場合、一定時間、自身の[機動力][遠距離攻撃力]をアップする。",
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
+  },
+  "ocr_engine": "claude_code_subagent",
+  "ocr_timestamp": "2026-10-21T00:00:00"
+}

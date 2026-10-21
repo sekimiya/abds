@@ -1,0 +1,59 @@
+{
+  "card_number": "VE05-050",
+  "card_name": "ムウ・ラ・フラガ",
+  "series": "WAVECHOES SEASON:05",
+  "ocr_data": {
+    "type": "PL",
+    "name": "ムウ・ラ・フラガ",
+    "cost": 2,
+    "rarity": "P",
+    "category": "防衛",
+    "affiliation": "",
+    "illustrator": "",
+    "stats": {
+      "mobility": 190,
+      "ranged_attack": 220,
+      "melee_attack": 30,
+      "hp": 350
+    },
+    "link_ability": [
+      {
+        "name": "傍流する覚醒の共振",
+        "condition": "デッキに3枚以上",
+        "effect": "ECHOES BEAT Lv.が表示される。味方ユニットが戦術技を発動するとEBLv.が上がる。[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": true,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "的確な一撃",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][遠距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "MU LA FLAGA",
+    "physical": {
+      "height": "183cm",
+      "age": "28歳"
+    },
+    "units": [
+      "パーフェクトストライクガンダム",
+      "エールストライクガンダム"
+    ],
+    "pilot_skill": {
+      "name": "泰然自若な指揮系統",
+      "trigger": "EBLv.2以上",
+      "effect": "自身のSPゲージ回復速度がアップする。このPLスキルの効果は重複しない。",
+      "has_sq_skill": false,
+      "sq_skill_details": null,
+      "is_eb_skill": true,
+      "eb_trigger_level": 2,
+      "sq_rush_effect": ""
+    }
+  },
+  "ocr_engine": "claude_code_subagent",
+  "ocr_timestamp": "2026-10-21T00:00:00"
+}

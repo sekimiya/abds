@@ -1,0 +1,87 @@
+{
+  "card_number": "VE05-034",
+  "card_name": "モビルドールメイ",
+  "series": "WAVECHOES SEASON:05",
+  "ocr_data": {
+    "type": "MS",
+    "name": "モビルドールメイ",
+    "cost": 5,
+    "rarity": "U",
+    "category": "機動",
+    "affiliation": "BUILD DiVERS",
+    "illustrator": "Moyasi",
+    "stats": {
+      "mobility": 270,
+      "ranged_attack": 30,
+      "melee_attack": 450,
+      "hp": 500
+    },
+    "link_ability": [
+      {
+        "name": "Re:RISE",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "メイ",
+    "model": "HER-SELF MOBILE DOLL MAY",
+    "terrain_compatibility": {
+      "ground": "S",
+      "space": "A",
+      "desert": "B",
+      "water": "B"
+    },
+    "weapon": {
+      "main": {
+        "name": "格闘",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "ビームハンドガン",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "壮援[防御]",
+      "activation": "出撃時発動",
+      "target": "範囲(味方)",
+      "range": null,
+      "cost": null,
+      "description": "一定時間経過毎に、自身を中心とした範囲内の味方ユニットの受けるダメージを軽減する。"
+    },
+    "special_attack": {
+      "name": "格闘強撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3700,
+      "description": "敵単体に格闘攻撃を行い、HPが最大値を超えて回復。一定時間、自身の被ダメージ軽減。リンクアビリティ[Re:RISE]の数に応じて、一定時間、出撃中の全味方ユニットの[遠/近攻撃力]アップ。",
+      "sp_type": "ECHOES BEAT",
+      "echoes_beat": {
+        "name": "格闘強撃 Lv.1",
+        "level": 1,
+        "power": 4000,
+        "range": 2,
+        "target": "単体(敵)",
+        "description": "EBLv.を1下げる。戦術技の効果に加え、EBLv.が3に上昇する。出撃時1度のみ使用可能。"
+      },
+      "united_sp": null,
+      "squad_sp": null
+    }
+  },
+  "ocr_engine": "claude_code_subagent",
+  "ocr_timestamp": "2026-10-21T00:00:00"
+}

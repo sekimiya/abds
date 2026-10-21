@@ -1,0 +1,87 @@
+{
+  "card_number": "VE05-013",
+  "card_name": "カプル",
+  "series": "WAVECHOES SEASON:05",
+  "ocr_data": {
+    "type": "MS",
+    "name": "カプル",
+    "cost": 4,
+    "rarity": "M",
+    "category": "近距離",
+    "affiliation": "イングレッサ・ミリシャ",
+    "illustrator": "deraken",
+    "stats": {
+      "mobility": 230,
+      "ranged_attack": 50,
+      "melee_attack": 350,
+      "hp": 420
+    },
+    "link_ability": [
+      {
+        "name": "∀ガンダム",
+        "condition": "デッキに3枚以上",
+        "effect": "[HP]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "ソシエ・ハイム、メシェー・クン",
+    "model": "AMX-109 KAPOOL",
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "B",
+      "desert": "B",
+      "water": "S"
+    },
+    "weapon": {
+      "main": {
+        "name": "クロー",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "ハンドガン",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "突貫",
+      "activation": "任意発動",
+      "target": "貫通(敵)",
+      "range": 1,
+      "cost": 4,
+      "description": "ロックオン中の敵ユニットに向かって高速移動を行い移動終了地点まで押し上げ、範囲内の敵ユニットにダメージを与え、一定時間スタンさせる。"
+    },
+    "special_attack": {
+      "name": "クロー強撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3400,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "sp_type": "ECHOES BEAT",
+      "echoes_beat": {
+        "name": "クロー強撃 Lv.1",
+        "level": 1,
+        "power": 3700,
+        "range": 2,
+        "target": "単体(敵)",
+        "description": "EBLv.を1下げる。敵単体に格闘攻撃でダメージを与え、EBLv.が3に上昇する。出撃時1度のみ使用可能。"
+      },
+      "united_sp": null,
+      "squad_sp": null
+    }
+  },
+  "ocr_engine": "claude_code_subagent",
+  "ocr_timestamp": "2026-10-21T00:00:00"
+}

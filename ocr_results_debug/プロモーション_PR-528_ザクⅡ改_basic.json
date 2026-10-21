@@ -1,0 +1,80 @@
+{
+  "card_number": "PR-528",
+  "card_name": "ザクⅡ改",
+  "series": "プロモーション",
+  "ocr_data": {
+    "type": "MS",
+    "name": "ザクⅡ改",
+    "cost": 5,
+    "rarity": "PR",
+    "category": "近距離",
+    "affiliation": "ジオン公国軍",
+    "illustrator": "KEISUKE SASAKI + Hazuki(JinArt)",
+    "stats": {
+      "mobility": 300,
+      "ranged_attack": 70,
+      "melee_attack": 490,
+      "hp": 540
+    },
+    "link_ability": [
+      {
+        "name": "GCBジオン",
+        "condition": "デッキに3枚以上",
+        "effect": "[HP]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "肉薄する戦い",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "バーナード・ワイズマン",
+    "model": "MS-06FZ ZAKUⅡ FZ",
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "A",
+      "desert": "C",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "ヒート・ホーク",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "MMP-80 90mmマシンガン",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "陣略[妨害／機動]",
+      "activation": "任意発動",
+      "target": "範囲(敵)",
+      "range": null,
+      "cost": 4,
+      "description": "一定時間、範囲内に入った敵ユニットの[機動力]をダウンするエリアを設置する。※上限3箇所まで。"
+    },
+    "special_attack": {
+      "name": "ヒート・ホーク強襲",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3600,
+      "description": "敵単体に格闘攻撃でダメージを与え、自身のHPを回復する。リンクアビリティ[GCBジオン]が発動している場合、一定時間、出撃中の全味方ユニットの[遠/近攻撃力]をアップし、受けるダメージを軽減する。",
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
+  },
+  "ocr_engine": "claude_code_subagent",
+  "ocr_timestamp": "2026-10-21T00:00:00"
+}

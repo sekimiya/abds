@@ -1,0 +1,87 @@
+{
+  "card_number": "VE05-007",
+  "card_name": "ガンダムサンドロック",
+  "series": "WAVECHOES SEASON:05",
+  "ocr_data": {
+    "type": "MS",
+    "name": "ガンダムサンドロック",
+    "cost": 3,
+    "rarity": "LE",
+    "category": "近距離",
+    "affiliation": "",
+    "illustrator": "hippo",
+    "stats": {
+      "mobility": 230,
+      "ranged_attack": 70,
+      "melee_attack": 330,
+      "hp": 420
+    },
+    "link_ability": [
+      {
+        "name": "ガンダムW",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "肉薄する戦い",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "カトル・ラバーバ・ウィナー",
+    "model": "XXXG-01SR GUNDAM SANDROCK",
+    "terrain_compatibility": {
+      "ground": "S",
+      "space": "B",
+      "desert": "S",
+      "water": "B"
+    },
+    "weapon": {
+      "main": {
+        "name": "ヒートショーテル",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "バルカン",
+        "range": 2,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "誘導[防御]",
+      "activation": "任意発動",
+      "target": "特殊(敵)",
+      "range": null,
+      "cost": 5,
+      "description": "25秒間、自身をロックオン距離内に捉えている敵ユニットのターゲットを自身に集め、受けるダメージを軽減する。"
+    },
+    "special_attack": {
+      "name": "ヒートショーテル強撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3600,
+      "description": "敵単体に格闘攻撃を行い、HPが最大値を超えて回復。[W]か[G-UNIT]を含むリンクアビリティが発動している場合、一定時間、自身の被ダメージを軽減。",
+      "sp_type": "ECHOES BEAT",
+      "echoes_beat": {
+        "name": "ヒートショーテル強撃 Lv.1",
+        "level": 1,
+        "power": 3900,
+        "range": 2,
+        "target": "単体(敵)",
+        "description": "EBLv.を1下げる。戦術技の効果に加え、EBLv.が3に上昇する。出撃時1度のみ使用可能。"
+      },
+      "united_sp": null,
+      "squad_sp": null
+    }
+  },
+  "ocr_engine": "claude_code_subagent",
+  "ocr_timestamp": "2026-10-21T00:00:00"
+}

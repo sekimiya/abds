@@ -1,0 +1,87 @@
+{
+  "card_number": "VE05-008",
+  "card_name": "シェンロンガンダム",
+  "series": "WAVECHOES SEASON:05",
+  "ocr_data": {
+    "type": "MS",
+    "name": "シェンロンガンダム",
+    "cost": 6,
+    "rarity": "LE",
+    "category": "近距離",
+    "affiliation": "",
+    "illustrator": "hippo",
+    "stats": {
+      "mobility": 290,
+      "ranged_attack": 120,
+      "melee_attack": 590,
+      "hp": 650
+    },
+    "link_ability": [
+      {
+        "name": "ガンダムW",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "肉薄する戦い",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "張 五飛",
+    "model": "XXXG-01S SHENLONG GUNDAM",
+    "terrain_compatibility": {
+      "ground": "S",
+      "space": "B",
+      "desert": "C",
+      "water": "B"
+    },
+    "weapon": {
+      "main": {
+        "name": "ビームグレイブ",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "ドラゴンハングファイヤー",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "陣略[妨害／機動]",
+      "activation": "任意発動",
+      "target": "範囲(敵)",
+      "range": null,
+      "cost": 4,
+      "description": "一定時間、範囲内に入った敵ユニットの[機動力]をダウンするエリアを設置する。※上限3箇所まで。"
+    },
+    "special_attack": {
+      "name": "ドラゴンハング強撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3700,
+      "description": "敵単体に格闘攻撃を行い、一定時間、自身の被ダメージ軽減。[W]か[G-UNIT]を含むリンクアビリティが発動している場合、一定時間、出撃中の全敵ユニットの[遠/近攻撃力]ダウン。",
+      "sp_type": "ECHOES BEAT",
+      "echoes_beat": {
+        "name": "ドラゴンハング強撃 Lv.1",
+        "level": 1,
+        "power": 4000,
+        "range": 2,
+        "target": "単体(敵)",
+        "description": "EBLv.を1下げる。戦術技の効果に加え、EBLv.が3に上昇する。出撃時1度のみ使用可能。"
+      },
+      "united_sp": null,
+      "squad_sp": null
+    }
+  },
+  "ocr_engine": "claude_code_subagent",
+  "ocr_timestamp": "2026-10-21T00:00:00"
+}

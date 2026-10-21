@@ -1,0 +1,80 @@
+{
+  "card_number": "PR-531",
+  "card_name": "ガンダムNT-1 アレックス",
+  "series": "プロモーション",
+  "ocr_data": {
+    "type": "MS",
+    "name": "ガンダムNT-1 アレックス",
+    "cost": 4,
+    "rarity": "PR",
+    "category": "近距離",
+    "affiliation": "地球連邦軍",
+    "illustrator": "KEISUKE SASAKI + Hazuki(JinArt)",
+    "stats": {
+      "mobility": 270,
+      "ranged_attack": 60,
+      "melee_attack": 410,
+      "hp": 460
+    },
+    "link_ability": [
+      {
+        "name": "GCB連邦",
+        "condition": "デッキに3枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "肉薄する戦い",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "クリスチーナ・マッケンジー",
+    "model": "RX-78NT-1 GUNDAM NT-1",
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "A",
+      "desert": "C",
+      "water": "A"
+    },
+    "weapon": {
+      "main": {
+        "name": "ビーム・サーベル",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "90mmガトリング砲",
+        "range": 3,
+        "type": "遠距離"
+      }
+    },
+    "ms_ability": {
+      "name": "解撃",
+      "activation": "任意発動",
+      "target": "単体(敵)",
+      "range": 2,
+      "cost": 3,
+      "description": "自身が弱体化状態の時に発動可能となり、自身の弱体化状態を無効化し、ロックオン中の敵に単体攻撃でダメージを与える。"
+    },
+    "special_attack": {
+      "name": "ビーム・サーベル強撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3500,
+      "description": "敵単体に格闘攻撃でダメージを与え、一定時間、自身の[機動力][近距離攻撃力]をアップする。リンクアビリティ[GCB連邦]が発動している場合、自身の[近距離攻撃力]の効果値がさらに上昇し、一定時間、[遠距離攻撃力]をダウンする。",
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
+  },
+  "ocr_engine": "claude_code_subagent",
+  "ocr_timestamp": "2026-10-21T00:00:00"
+}

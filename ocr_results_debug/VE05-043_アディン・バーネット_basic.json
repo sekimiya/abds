@@ -1,0 +1,58 @@
+{
+  "card_number": "VE05-043",
+  "card_name": "アディン・バーネット",
+  "series": "WAVECHOES SEASON:05",
+  "ocr_data": {
+    "type": "PL",
+    "name": "アディン・バーネット",
+    "cost": 3,
+    "rarity": "P",
+    "category": "殲滅",
+    "affiliation": "MO-V",
+    "illustrator": "",
+    "stats": {
+      "mobility": 170,
+      "ranged_attack": 280,
+      "melee_attack": 30,
+      "hp": 340
+    },
+    "link_ability": [
+      {
+        "name": "G-UNIT",
+        "condition": "デッキに2枚以上",
+        "effect": "[HP]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "的確な一撃",
+        "condition": "デッキに4枚以上",
+        "effect": "[機動力][遠距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "ADIN BARNET",
+    "physical": {
+      "height": "",
+      "age": ""
+    },
+    "units": [
+      "ガンダムL.O.ブースター"
+    ],
+    "pilot_skill": {
+      "name": "解放する潜在能力",
+      "trigger": "出撃時",
+      "effect": "出撃中の敵ユニット数に応じて[機動力][遠距離攻撃力]をアップし、戦術技で受けるダメージをかなり軽減する。",
+      "has_sq_skill": false,
+      "sq_skill_details": null,
+      "is_eb_skill": false,
+      "eb_trigger_level": null,
+      "sq_rush_effect": ""
+    }
+  },
+  "ocr_engine": "claude_code_subagent",
+  "ocr_timestamp": "2026-10-21T00:00:00"
+}

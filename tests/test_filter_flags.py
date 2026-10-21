@@ -226,7 +226,7 @@ def test_sq_trigger_populated(built):
 # 各エフェクトタグフィルタのUIキー(index.html/mobile.htmlのdata-keyと一致させること)
 _EFFECT_TAG_UI_KEYS = {
     "sp_effect_tags": {"変身", "スタン", "撃破", "貫通", "範囲", "デバフ", "バフ", "HP回復"},
-    "ebsp_effect_tags": {"変身", "スタン", "撃破", "貫通", "範囲", "デバフ", "バフ", "HP回復"},
+    "ebsp_effect_tags": {"変身", "スタン", "撃破", "貫通", "範囲", "デバフ", "バフ", "HP回復", "支援攻撃"},
     "sqsp_effect_tags": {"スタン", "撃破", "貫通", "範囲", "バフ", "HP回復"},
     "sq_skill_effect_tags": {"機動力UP", "遠距離攻撃力UP", "近距離攻撃力UP", "SP威力UP",
                              "ダメージ軽減", "敵デバフ", "SQゲージ増加", "全味方バフ"},
