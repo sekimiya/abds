@@ -1,0 +1,58 @@
+{
+  "card_number": "VEB05-023",
+  "card_name": "カテジナ・ルース",
+  "series": "VEブースター5弾",
+  "ocr_data": {
+    "type": "PL",
+    "name": "カテジナ・ルース",
+    "cost": 2,
+    "rarity": "P",
+    "category": "制圧",
+    "affiliation": "ザンスカール帝国",
+    "illustrator": "",
+    "stats": {
+      "mobility": 200,
+      "ranged_attack": 30,
+      "melee_attack": 250,
+      "hp": 310
+    },
+    "link_ability": [
+      {
+        "name": "刻の風が編んだ旋律",
+        "condition": "デッキに3枚以上",
+        "effect": "ECHOES BEAT Lv.が表示される。味方ユニットが戦術技を発動するとEBLv.が上がる。[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": true,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "KATEJINA LOOS",
+    "physical": {
+      "height": "ー",
+      "age": "17歳"
+    },
+    "units": [
+      "ゴトラタン"
+    ],
+    "pilot_skill": {
+      "name": "怨念募る戦線交代",
+      "trigger": "EBLv.1以上で自身が撤退時",
+      "effect": "30秒間、出撃中の全敵ユニットの[機動力][遠距離攻撃力][近距離攻撃力]をダウンする。",
+      "has_sq_skill": false,
+      "sq_skill_details": null,
+      "is_eb_skill": true,
+      "eb_trigger_level": 1,
+      "sq_rush_effect": ""
+    }
+  },
+  "ocr_engine": "claude_code_subagent",
+  "ocr_timestamp": "2026-11-12T00:00:00"
+}

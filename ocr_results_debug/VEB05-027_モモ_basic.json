@@ -1,0 +1,58 @@
+{
+  "card_number": "VEB05-027",
+  "card_name": "モモ",
+  "series": "VEブースター5弾",
+  "ocr_data": {
+    "type": "PL",
+    "name": "モモ",
+    "cost": 3,
+    "rarity": "R",
+    "category": "殲滅",
+    "affiliation": "ビルドダイバーズ",
+    "illustrator": "",
+    "stats": {
+      "mobility": 190,
+      "ranged_attack": 60,
+      "melee_attack": 240,
+      "hp": 230
+    },
+    "link_ability": [
+      {
+        "name": "新時代の高鳴り",
+        "condition": "デッキに3枚以上",
+        "effect": "ECHOES BEAT Lv.が表示される。味方ユニットが戦術技を発動するとEBLv.が上がる。[HP][SP威力]小アップ",
+        "is_eb_link": true,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "戦況を変える力",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "MOMO",
+    "physical": {
+      "height": "ー",
+      "age": "14歳"
+    },
+    "units": [
+      "モモカプル"
+    ],
+    "pilot_skill": {
+      "name": "燃え盛る闘気",
+      "trigger": "EBLv.2に上昇時",
+      "effect": "30秒間、自身の[近距離攻撃力]をアップし、受けるダメージを軽減する。",
+      "has_sq_skill": false,
+      "sq_skill_details": null,
+      "is_eb_skill": true,
+      "eb_trigger_level": 2,
+      "sq_rush_effect": ""
+    }
+  },
+  "ocr_engine": "claude_code_subagent",
+  "ocr_timestamp": "2026-11-12T00:00:00"
+}

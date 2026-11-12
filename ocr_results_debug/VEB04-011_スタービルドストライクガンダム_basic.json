@@ -1,0 +1,87 @@
+{
+  "card_number": "VEB04-011",
+  "card_name": "スタービルドストライクガンダム",
+  "series": "VEブースター4弾",
+  "ocr_data": {
+    "type": "MS",
+    "name": "スタービルドストライクガンダム",
+    "cost": 3,
+    "rarity": "M",
+    "category": "遠距離",
+    "affiliation": null,
+    "illustrator": "kenko",
+    "stats": {
+      "mobility": 220,
+      "ranged_attack": 320,
+      "melee_attack": 50,
+      "hp": 360
+    },
+    "link_ability": [
+      {
+        "name": "ビルドファイターズ",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "プラフスキー粒子",
+        "condition": "デッキに2枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "レイジ、イオリ・セイ",
+    "model": "GAT-X105B/ST STAR BUILD STRIKE GUNDAM",
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "B",
+      "water": "B"
+    },
+    "weapon": {
+      "main": {
+        "name": "スタービームライフル",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ビームサーベル",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "転化[妨害]",
+      "activation": "任意発動",
+      "target": "範囲(敵)",
+      "range": null,
+      "cost": 4,
+      "description": "一定時間、自身を中心とした範囲内の敵ユニットを弱体化する。使用回数に応じて、弱体化効果、範囲が変わる。[1回:遠/近攻撃カダウン][2回:被ダメージアップ][3回以上:遠/近攻撃カダウン&被ダメージアップ]"
+    },
+    "special_attack": {
+      "name": "スタービームライフル撃射",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3300,
+      "description": "敵単体に射撃攻撃でダメージを与える。",
+      "sp_type": "ECHOES BEAT",
+      "echoes_beat": {
+        "name": "スタービームライフル撃射 Lv.2",
+        "level": 2,
+        "power": 3900,
+        "range": 3,
+        "target": "単体(敵)",
+        "description": "EBLv.を2下げる。敵単体に射撃攻撃でダメージを与え、一定時間、出撃中の全味方ユニットの[遠距離攻撃力][近距離攻撃力]をアップする。出撃時1度のみ使用可能。"
+      },
+      "united_sp": null,
+      "squad_sp": null
+    }
+  },
+  "ocr_engine": "claude_code_subagent",
+  "ocr_timestamp": "2026-11-12T00:00:00"
+}

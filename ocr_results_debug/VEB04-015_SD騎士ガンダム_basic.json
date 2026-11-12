@@ -1,0 +1,80 @@
+{
+  "card_number": "VEB04-015",
+  "card_name": "SD騎士ガンダム",
+  "series": "VEブースター4弾",
+  "ocr_data": {
+    "type": "MS",
+    "name": "SD騎士ガンダム",
+    "cost": 4,
+    "rarity": "R",
+    "category": "機動",
+    "affiliation": null,
+    "illustrator": "Aidle Co., Ltd.",
+    "stats": {
+      "mobility": 230,
+      "ranged_attack": 0,
+      "melee_attack": 300,
+      "hp": 370
+    },
+    "link_ability": [
+      {
+        "name": "ビルドファイターズ",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "多彩な戦術",
+        "condition": "デッキに4枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "ヤジマ・キャロライン",
+    "model": "SD KNIGHT GUNDAM",
+    "terrain_compatibility": {
+      "ground": "S",
+      "space": "A",
+      "desert": "B",
+      "water": "B"
+    },
+    "weapon": {
+      "main": {
+        "name": "電磁スピア",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "シールド",
+        "range": null,
+        "type": ""
+      }
+    },
+    "ms_ability": {
+      "name": "突貫",
+      "activation": "任意発動",
+      "target": "貫通(敵)",
+      "range": 1,
+      "cost": 4,
+      "description": "ロックオン中の敵ユニットに向かって高速移動を行い移動終了地点まで押し上げ、範囲内の敵ユニットにダメージを与え、一定時間スタンさせる。"
+    },
+    "special_attack": {
+      "name": "ナイトソード強撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3300,
+      "description": "敵単体に格闘攻撃でダメージを与える。",
+      "sp_type": "",
+      "echoes_beat": null,
+      "united_sp": null,
+      "squad_sp": null
+    }
+  },
+  "ocr_engine": "claude_code_subagent",
+  "ocr_timestamp": "2026-11-12T00:00:00"
+}

@@ -1,0 +1,60 @@
+{
+  "card_number": "VEB04-020",
+  "card_name": "ジュドー・アーシタ",
+  "series": "VEブースター4弾",
+  "ocr_data": {
+    "type": "PL",
+    "name": "ジュドー・アーシタ",
+    "cost": 2,
+    "rarity": "M",
+    "category": "制圧",
+    "affiliation": "エゥーゴ",
+    "illustrator": "",
+    "stats": {
+      "mobility": 210,
+      "ranged_attack": 250,
+      "melee_attack": 30,
+      "hp": 250
+    },
+    "link_ability": [
+      {
+        "name": "宇宙に響く鼓動",
+        "condition": "デッキに3枚以上",
+        "effect": "ECHOES BEAT Lv.が表示される。味方ユニットが戦術技を発動するとEBLv.が上がる。[HP][SP威力]小アップ",
+        "is_eb_link": true,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "揺るがぬ意志",
+        "condition": "デッキに2枚以上",
+        "effect": "[HP]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "english_name": "JUDAU ASHTA",
+    "physical": {
+      "height": "",
+      "age": 14
+    },
+    "units": [
+      "フルアーマーZZガンダム",
+      "ZZガンダム",
+      "Zガンダム"
+    ],
+    "pilot_skill": {
+      "name": "疾風怒濤の殲滅陣形",
+      "trigger": "EBLv.2に上昇時",
+      "effect": "30秒間、出撃中の全味方殲滅タイプユニットの[遠距離攻撃力][近距離攻撃力]をアップする。",
+      "has_sq_skill": false,
+      "sq_skill_details": null,
+      "is_eb_skill": true,
+      "eb_trigger_level": 2,
+      "sq_rush_effect": ""
+    }
+  },
+  "ocr_engine": "claude_code_subagent",
+  "ocr_timestamp": "2026-11-12T00:00:00"
+}

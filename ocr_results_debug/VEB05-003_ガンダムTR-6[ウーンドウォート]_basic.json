@@ -1,0 +1,87 @@
+{
+  "card_number": "VEB05-003",
+  "card_name": "ガンダムTR-6[ウーンドウォート]",
+  "series": "VEブースター5弾",
+  "ocr_data": {
+    "type": "MS",
+    "name": "ガンダムTR-6[ウーンドウォート]",
+    "cost": 5,
+    "rarity": "P",
+    "category": "機動",
+    "affiliation": "ティターンズ",
+    "illustrator": "Kumagoro",
+    "stats": {
+      "mobility": 270,
+      "ranged_attack": 500,
+      "melee_attack": 30,
+      "hp": 600
+    },
+    "link_ability": [
+      {
+        "name": "ADVANCE OF Z",
+        "condition": "デッキに2枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "堅牢な高機動機",
+        "condition": "デッキに機動が2枚以上",
+        "effect": "[HP]中アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "",
+    "model": "RX-124 GUNDAM TR-6 [WONDWART]",
+    "terrain_compatibility": {
+      "ground": "A",
+      "space": "S",
+      "desert": "C",
+      "water": "C"
+    },
+    "weapon": {
+      "main": {
+        "name": "コンポジット・シールド・ブースター",
+        "range": 3,
+        "type": "遠距離"
+      },
+      "sub": {
+        "name": "ヒート・ブレード",
+        "range": 1,
+        "type": "近距離"
+      }
+    },
+    "ms_ability": {
+      "name": "威圧",
+      "activation": "任意発動",
+      "target": "範囲(敵)",
+      "range": null,
+      "cost": 4,
+      "description": "自身を中心とした範囲内の敵ユニットをスタンさせ、一定時間被ダメージを少しアップする。"
+    },
+    "special_attack": {
+      "name": "コンポジット・シールド・ブースター撃射",
+      "target": "単体(敵)",
+      "range": 3,
+      "sp_cost": 2,
+      "power": 3500,
+      "description": "敵単体に射撃攻撃でダメージを与え、一定時間、自身の[遠距離攻撃力]をアップし、敵ユニットの被ダメージを上昇させる。",
+      "sp_type": "ECHOES BEAT",
+      "echoes_beat": {
+        "name": "コンポジット・シールド・ブースター撃射 Lv.1",
+        "level": 1,
+        "power": 3800,
+        "range": 3,
+        "target": "単体(敵)",
+        "description": "EBLv.を1下げる。敵単体に射撃攻撃でダメージを与え、EBLv.が3に上昇する。一定時間、自身の[遠距離攻撃力]をアップし、出撃中の全敵ユニットの被ダメージを上昇させる。出撃時1度のみ使用可能。"
+      },
+      "united_sp": null,
+      "squad_sp": null
+    }
+  },
+  "ocr_engine": "claude_code_subagent",
+  "ocr_timestamp": "2026-11-12T00:00:00"
+}

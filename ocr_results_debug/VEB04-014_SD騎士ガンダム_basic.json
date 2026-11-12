@@ -1,0 +1,87 @@
+{
+  "card_number": "VEB04-014",
+  "card_name": "SD騎士ガンダム",
+  "series": "VEブースター4弾",
+  "ocr_data": {
+    "type": "MS",
+    "name": "SD騎士ガンダム",
+    "cost": 6,
+    "rarity": "U",
+    "category": "近距離",
+    "affiliation": null,
+    "illustrator": "Moyasi",
+    "stats": {
+      "mobility": 280,
+      "ranged_attack": 0,
+      "melee_attack": 560,
+      "hp": 600
+    },
+    "link_ability": [
+      {
+        "name": "ビルドファイターズ",
+        "condition": "デッキに3枚以上",
+        "effect": "[機動力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      },
+      {
+        "name": "プラフスキー粒子",
+        "condition": "デッキに2枚以上",
+        "effect": "[遠距離攻撃力][近距離攻撃力]小アップ",
+        "is_eb_link": false,
+        "is_sq_link": false,
+        "is_ab_link": false
+      }
+    ],
+    "pilot": "ヤジマ・キャロライン",
+    "model": "SD KNIGHT GUNDAM",
+    "terrain_compatibility": {
+      "ground": "S",
+      "space": "A",
+      "desert": "B",
+      "water": "B"
+    },
+    "weapon": {
+      "main": {
+        "name": "電磁スピア",
+        "range": 1,
+        "type": "近距離"
+      },
+      "sub": {
+        "name": "シールド",
+        "range": null,
+        "type": ""
+      }
+    },
+    "ms_ability": {
+      "name": "増援[殲滅][殲滅／補給]",
+      "activation": "任意発動",
+      "target": "特殊(自分)",
+      "range": null,
+      "cost": 5,
+      "description": "自身の周囲に殲滅タイプの味方ユニットと、一定時間経過毎に、自身を中心とした大範囲の味方ユニットのHPを回復し、弱体化状態を無効化する殲滅タイプの味方ユニットを呼び出す。※上限3ユニットまで。"
+    },
+    "special_attack": {
+      "name": "ナイトソード強撃",
+      "target": "単体(敵)",
+      "range": 2,
+      "sp_cost": 2,
+      "power": 3700,
+      "description": "ケンタウロス形態に変形し、敵単体に格闘攻撃を行う。変形後は能力が上昇、自身が撤退するまで効果は持続。一定時間、被ダメージを軽減。",
+      "sp_type": "ECHOES BEAT",
+      "echoes_beat": {
+        "name": "ナイトソード強撃 Lv.3",
+        "level": 3,
+        "power": 4600,
+        "range": 2,
+        "target": "単体(敵)",
+        "description": "EBLv.を3下げる。戦術技の効果に加え、自身のHPを回復。周囲に殲滅タイプの増援を呼び出す。この増援の攻撃は一定時間、敵ユニットの[遠/近攻撃力][SP威力]をダウンする。一定時間、自身と自身が呼び出した増援の[遠/近攻撃力]をアップ、自身が呼び出した増援の被ダメージを軽減。出撃時1度のみ使用可能。"
+      },
+      "united_sp": null,
+      "squad_sp": null
+    }
+  },
+  "ocr_engine": "claude_code_subagent",
+  "ocr_timestamp": "2026-11-12T00:00:00"
+}
